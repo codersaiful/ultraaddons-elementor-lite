@@ -27,6 +27,7 @@ class Button extends Widget_Base{
      * @var int Widget Name.
      */
     public function get_name() {
+        return strtolower( str_replace( '\\','_', __CLASS__ ) );
         return __CLASS__;
     }
     
@@ -66,7 +67,7 @@ class Button extends Widget_Base{
      * @var int Widget Icon.
      */
     public function get_icon() {
-        return 'medilac eicon-button';
+        return 'ultraaddons eicon-button';
     }
     
     /**
@@ -80,7 +81,7 @@ class Button extends Widget_Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'medilac', 'button', 'btn', 'bt', 'recent content' ];
+        return [ 'ultraaddons', 'button', 'btn', 'bt', 'recent content' ];
     }
     /**
      * Widget Category.
@@ -128,6 +129,8 @@ class Button extends Widget_Base{
      * @access protected
      */
     protected function render() {
+        
+        
         $settings           = $this->get_settings_for_display();
 
         $this->add_render_attribute( 'wrapper', 'class', 'medilac-button-wrapper' );
