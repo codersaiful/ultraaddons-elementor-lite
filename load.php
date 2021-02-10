@@ -32,6 +32,10 @@ final class Loader {
         
         if( $this->widgetsArray && is_array( $this->widgetsArray ) ){
             
+            //Register and Including Base and common Class file
+            add_action( 'elementor/widgets/widgets_registered', [ $this, 'register' ] );
+            
+            //Register Widgets All
             add_action( 'elementor/widgets/widgets_registered', [ $this, 'init_widgets' ] );
             //add_action( 'elementor/controls/controls_registered', [ $this, 'init_controls' ] );
             add_action( 'elementor/elements/categories_registered', [ $this, 'add_categories' ] );
@@ -47,6 +51,29 @@ final class Loader {
         
     }
 
+    /**
+     * Included Base Class for our All Widgets
+     * will include button common file here
+     * 
+     * @since 1.0.0.1
+     */
+    public function register() {
+        $base = ULTRA_ADDONS_DIR . 'inc/base/base.php';
+        include_once( ULTRA_ADDONS_DIR . 'inc/base/base.php' );
+        
+//        if( ! is_file( $base ) ){
+//            return;
+//        }
+//        include $base; 
+//        $test = new \UltraAddons\Widget\Base();
+//        $another = new \UltraAddons\Widget\Saiful();
+//        
+//        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( $test );
+//        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( $another );
+        
+        //\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new UltraAddons\Widget\Base() );
+    }
+    
     /**
      * Init Widgets
      *
@@ -64,8 +91,8 @@ final class Loader {
             $name = str_replace('_','-', $name);
             
             $class_name = str_replace( '-','_', $name );
-            $class_name =  'UltraAddons\\' . ucwords( $class_name, '_' );
-            
+            $class_name =  '\UltraAddons\Widget\\' . ucwords( $class_name, '_' );
+
             $file = ULTRA_ADDONS_DIR . 'inc/widgets/'. $name . '.php';
             
             if( file_exists( $file ) ){

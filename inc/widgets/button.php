@@ -1,5 +1,5 @@
 <?php
-namespace UltraAddons;
+namespace UltraAddons\Widget;
 
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
@@ -14,7 +14,7 @@ use Elementor\Group_Control_Background;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Button extends Widget_Base{
+class Button extends Base{
     
     /**
      * Widget Pricing Table
@@ -28,7 +28,7 @@ class Button extends Widget_Base{
      */
     public function get_name() {
         return strtolower( str_replace( '\\','_', __CLASS__ ) );
-        return __CLASS__;
+        //return __CLASS__;
     }
     
     /**
