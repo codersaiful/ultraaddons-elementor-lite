@@ -1,0 +1,94 @@
+form.medilac-elementor-cf7-form input,
+form.medilac-elementor-cf7-form select,
+form.medilac-elementor-cf7-form textarea {
+    border-style: solid;
+}
+form.medilac-elementor-cf7-form {
+    width: 100%;
+}
+form.medilac-elementor-cf7-form .col-6::after,
+form.medilac-elementor-cf7-form .col-6::before {
+    content: "";
+    display: block;
+    clear: both;
+}
+form.medilac-elementor-cf7-form input,
+form.medilac-elementor-cf7-form select,
+form.medilac-elementor-cf7-form textarea {
+    width: 100%;
+}
+
+  input[type="text"],
+  input[type="email"],
+  input[type="url"],
+  input[type="password"],
+  input[type="search"],
+  input[type="number"],
+  input[type="tel"],
+  input[type="range"],
+  input[type="date"],
+  input[type="month"],
+  input[type="week"],
+  input[type="time"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="color"],
+  textarea,
+  select{
+    border: 1px solid #e2ebf1;
+    border: 1px solid var(--medilac-secondary-deep);
+    border-radius: 0;
+    padding: 12px 15px;
+    color: #5c6b79;
+    color: var(--medilac-light-dark);
+}
+input[type="text"].wpcf7-not-valid,
+input[type="email"].wpcf7-not-valid,
+input[type="url"].wpcf7-not-valid,
+input[type="password"].wpcf7-not-valid,
+input[type="search"].wpcf7-not-valid,
+input[type="number"].wpcf7-not-valid,
+input[type="tel"].wpcf7-not-valid,
+input[type="range"].wpcf7-not-valid,
+input[type="date"].wpcf7-not-valid,
+input[type="month"].wpcf7-not-valid,
+input[type="week"].wpcf7-not-valid,
+input[type="time"].wpcf7-not-valid,
+input[type="datetime"].wpcf7-not-valid,
+input[type="datetime-local"].wpcf7-not-valid,
+input[type="color"].wpcf7-not-valid,
+textarea.wpcf7-not-valid,
+select.wpcf7-not-valid {
+    
+}
+
+form.medilac-elementor-cf7-form .row > div{
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+@media screen and (min-width: 768px){
+    form.medilac-elementor-cf7-form .row > div
+    {
+        padding: 10px;
+        margin-bottom: 0; 
+    }
+    form.medilac-elementor-cf7-form .row .col-6 {
+        width: 50%;
+        float: left;
+    }
+    form.medilac-elementor-cf7-form .row .col-12 {
+        width: 100%;
+    }
+    form.medilac-elementor-cf7-form .row > div:first-child{
+        padding-left: 0; 
+    }
+    form.medilac-elementor-cf7-form .row > div:last-child:not(.single),
+    form.medilac-elementor-cf7-form .row > div.full:last-child{
+        padding-right: 0;
+    }
+    form.medilac-elementor-cf7-form input[type="submit"]{
+        min-width: 120px;
+        width: auto;
+    }
+}

@@ -1,0 +1,44 @@
+/*   Offer  Section CSS
+-------------------------------------------*/
+
+.mc-offer-card .mc-single-offer {
+    background-color: #e9fbeb;
+    padding: 40px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.mc-offer-card .mc-single-offer.pink {
+    background-color: #fff5f7;
+    position: relative;
+}
+
+.mc-offer-card .offer-subheading {
+    color: #fd5a5a;
+    font-weight: normal;
+    margin: 0;
+}
+
+.mc-offer-card .offer-heading {
+    font-size: 36px;
+    margin-top: 0;
+    font-weight: 600;
+    font-family: Roboto;
+    color: #021429;
+    margin-bottom: 1rem;
+}
+.mc-offer-card .offer-btn.v3 {
+    padding: 10px 22px;
+}
+
+.mc-offer-card .mc-offer-img img {
+    display: block;
+}
+
+.mc-offer-card .mc-single-offer.pink .mc-offer-img {
+    position: absolute;
+    right: 40px;
+    bottom: 40px;
+}

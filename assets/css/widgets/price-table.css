@@ -1,0 +1,83 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 4, 2021, 4:46:16 PM
+    Author     : Saiful
+*/
+
+.mc-price-table .mc-price-table__heading {
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+ul.mc-price-table__features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mc-price-table__header,
+.mc-price-table__price,
+.mc-price-table__features-list {
+    margin-bottom: 30px;
+}
+
+.mc-price-table__price {
+    font-size: 46px;
+    font-weight: 700;
+    font-family: "Roboto",sans-serif;
+    color: #0FC392;
+}
+.mc-price-table__original-price {
+    text-decoration: line-through;
+}
+span.mc-price-table__period.mc-typo-excluded {
+    font-size: 16px;
+}
+.mc-price-table .mc-price-table__button {
+    font-size: 16px;
+    font-family: "Roboto",sans-serif;
+    font-weight: 600;
+    color: #021429;
+    text-transform: capitalize;
+    background-color: transparent;
+    border: 2px solid #E2EBF1;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.elementor-widget-medilac_price_table .elementor-widget-container {
+    border-style: solid;
+}
+.mc-price-table__ribbon {
+    position: absolute;
+    background: #0FC392;
+    /* padding: 5px 20px; */
+    height: 111px;
+    width: 40px;
+}
+.mc-price-table__ribbon.mc-ribbon-right {
+    /* transform-origin: center; */
+    /* right: 0; */
+}
+
+.mc-price-table__ribbon.mc-ribbon-left {
+    /*transform-origin: left top;*/
+    /*left: 36px;*/
+}
+.mc-price-table__ribbon .mc-price-table__ribbon-inner {
+    transform: rotate(90deg) translate(-2px, -40px);
+    transform-origin: 0 0;
+    width: 111px;
+    height: 40px;
+    overflow: hidden;
+    text-align: center;
+    padding: 8px 0;
+}
+.medilac-featured-item-ribbon-bottom.medilac-featured-item-ribbon-left .mc-price-table__ribbon{left: 0;bottom: 0;}
+.medilac-featured-item-ribbon-bottom.medilac-featured-item-ribbon-right .mc-price-table__ribbon{right: 0;bottom: 0;}
+.medilac-featured-item-ribbon-top.medilac-featured-item-ribbon-left .mc-price-table__ribbon{left: 0;top: 0;}
+.medilac-featured-item-ribbon-top.medilac-featured-item-ribbon-right .mc-price-table__ribbon{right: 0;top: 0;}

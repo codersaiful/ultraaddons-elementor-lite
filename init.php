@@ -40,7 +40,7 @@ define( 'ULTRA_ADDONS_BASE_NAME', plugin_basename( __FILE__ ) );
 define( 'ULTRA_ADDONS_DIR', plugin_dir_path( ULTRA_ADDONS__FILE__ ) );
 define( 'ULTRA_ADDONS_URL', plugin_dir_url( ULTRA_ADDONS__FILE__ ) );
 define( 'ULTRA_ADDONS_ASSETS', trailingslashit( ULTRA_ADDONS_URL . 'assets' ) );
-define( 'ULTRA_ADDONS_REDIRECTION_FLAG', 'happyaddons_do_activation_direct' );
+
 
 define( 'ULTRA_ADDONS_MINIMUM_ELEMENTOR_VERSION', '2.5.0' );
 define( 'ULTRA_ADDONS_MINIMUM_PHP_VERSION', '5.4' );
@@ -191,7 +191,7 @@ final class UltraAddons {
                     include_once ULTRA_ADDONS_DIR . 'admin/enqueue.php'; //Menu/link show in Plugin Name
                 }
                 
-                //var_dump(ua_elementor());
+                //var_dump(ultraaddons_elementor());
                 
                 
                 //Elementor Widget and script Loader

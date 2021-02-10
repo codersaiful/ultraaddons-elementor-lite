@@ -1,0 +1,11 @@
+.mc-products-grid-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.elementor-element.elementor-element-edit-mode.elementor-widget-medilac_wc_products {
+    overflow: hidden;
+    outline: 1px solid #0000000a;
+    background: rgb(41 41 41 / 0.41%);
+    min-height: 300px;
+}

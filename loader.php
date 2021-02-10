@@ -14,7 +14,7 @@ class Loader {
         if( $this->widgetsArray && is_array( $this->widgetsArray ) ){
             
             //Register and Including Base and common Class file
-            add_action( 'elementor/widgets/widgets_registered', [ $this, 'register' ] );
+            add_action( 'elementor/widgets/widgets_registered', [ $this, 'register' ],1 );
             
             //Register Widgets All
             add_action( 'elementor/widgets/widgets_registered', [ $this, 'init_widgets' ] );
@@ -39,20 +39,9 @@ class Loader {
      * @since 1.0.0.1
      */
     public function register() {
-        $base = ULTRA_ADDONS_DIR . 'inc/base/base.php';
-        include_once( ULTRA_ADDONS_DIR . 'inc/base/base.php' );
-        
-//        if( ! is_file( $base ) ){
-//            return;
-//        }
-//        include $base; 
-//        $test = new \UltraAddons\Widget\Base();
-        $another = new \UltraAddons\Widget\Saiful();
-//        
-//        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( $test );
-        ua_elementor()->widgets_manager->register_widget_type( $another );
-        
-        //\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new UltraAddons\Widget\Base() );
+        $base_file = ULTRA_ADDONS_DIR . 'inc/base/base.php';
+        include_once $base_file;
+//        include_once( ULTRA_ADDONS_DIR . 'inc/base/base.php' );
     }
     
     /**
@@ -70,32 +59,24 @@ class Loader {
             $name = isset( $widget['name'] ) ? $widget['name'] : '';
 
             $name = str_replace('_','-', $name);
-
-            $file = ULTRA_ADDONS_DIR . 'inc/widgets/'. $name . '.php';
-            
-            if( file_exists( $file ) ){
-                var_dump($file);
-                //include_once( ULTRA_ADDONS_DIR . 'inc/base/base.php' );
-                include_once $file;
-            }
-            
-        }
-        
-        foreach( $this->widgetsArray as $widget_key => $widget ){
-            $name = isset( $widget['name'] ) ? $widget['name'] : '';
-
-            $name = str_replace('_','-', $name);
             
             $class_name = str_replace( '-','_', $name );
             $class_name =  '\UltraAddons\Widget\\' . ucwords( $class_name, '_' );
 
+
+            $file = ULTRA_ADDONS_DIR . 'inc/widgets/'. $name . '.php';
+
+            if( file_exists( $file ) ){
+                include_once $file;
+            }
             
             if( $class_name && class_exists( $class_name ) ){
-                var_dump( class_exists( '\UltraAddons\Widget\Base' ),$class_name);
-                //ua_elementor()->widgets_manager->register_widget_type( new $class_name() );
+                ultraaddons_elementor()->widgets_manager->register_widget_type( new $class_name() );
             }
+            
         }
         
+      
 
     }
     
@@ -207,22 +188,6 @@ class Loader {
             $name = isset( $widget['name'] ) ? $widget['name'] : '';
 
             $name = str_replace('_','-', $name);
-            
-            $class_name = str_replace( '-','_', $name );
-            $class_name =  'UltraAddons\\' . ucwords( $class_name, '_' );
-            
-            $file = ULTRA_ADDONS_DIR . 'inc/widgets/'. $name . '.php';
-            
-            if( file_exists( $file ) ){
-                require_once $file;
-            }else{
-                return;
-            }
-            
-            if( ! class_exists( $class_name ) ){
-                return;
-            }
-            
             
             /**
              * CSS file load based on Element/Widget
@@ -371,9 +336,15 @@ class Loader {
 }
 
 $widgetsArray = [
+    
     'button'=> [
             'name'  => 'Button',
     ],
+    
+    'Advance_Heading'=> [
+            'name'  => 'Advance_Heading',
+    ],
+    
 ];
 
 new Loader( $widgetsArray );//( $widgetsArray );

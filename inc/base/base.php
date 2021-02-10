@@ -20,24 +20,22 @@ class Base extends Widget_Base{
          * Card will be card
          * Blog_Card will be blog-card
          */
-        $name = str_replace( strtolower(__NAMESPACE__), '', strtolower($this->get_class_name()) );
+        $name = strtolower( $this->get_pure_name() );
         $name = str_replace( '_', '-', $name );
-        $name = ltrim( $name, '\\' );
-        return 'ua-' . $name;
+        return 'ultraaddons-' . $name;
     }
     
+    /**
+     * Retrieve default Title name from Class name without Name space
+     * 
+     * @since 1.0.0
+     * @access public
+     * @return String
+     */
     public function get_title() {
-        return __( 'UltraAddons Testing Base', 'medilac' );
+        return $this->get_pure_name();
     }
 
-    public function get_icon() {
-        return 'ultraaddons eicon-button';
-    }
-    
-    public function get_keywords() {
-        return [ 'ultraaddons', 'test', 'btn', 'bt', 'ua' ];
-    }
-    
     /**
      * Get widget categories.
      *
@@ -48,70 +46,63 @@ class Base extends Widget_Base{
      */
     public function get_categories() {
         return [ 'basic' ];
+        return [ 'ultraaddons' ];
     }
 
     /**
-     * Override from addon to add custom wrapper class.
+     * Help URL
      *
-     * @return string
+     * @since 1.0.0
+     * @access public
+     *
+     * @var int Widget Icon.
      */
-    protected function get_custom_wrapper_class() {
-        return '';
+    public function get_custom_help_url() {
+        
+        $name = $this->get_pure_name();
+        
+        return ultraaddons_help_url( $name, $this );
     }
-
+    
+    /**
+     * set Default keywords
+     * 
+     * @since 1.0.0
+     * @access public
+     * @return array Widget keyword's Array
+     */
+    public function get_keywords() {
+        return [ 'ultraaddons', 'addons', 'basic', 'ua', 'latest' ];
+    }
+    
     /**
      * Overriding default function to add custom html class.
      *
-     * @return string
+     * @since 1.0.0
+     * @access public
+     * 
+     * @return string Wrapper class for html markup
      */
     public function get_html_wrapper_class() {
         $html_class = parent::get_html_wrapper_class();
         $html_class .= ' ultraaddons-element';
-        $html_class .= ' ' . $this->get_name();
-        $html_class .= ' ' . $this->get_custom_wrapper_class();
+        $html_class .= ' ' . $this->get_name() . ' ';
         return rtrim( $html_class );
     }
     
-    protected function renderss() {
-        ?>
-            
-<h3>Hello </h3>    
-<h3>Hello </h3>    
-<h3>Hello </h3>    
-<h3>Hello </h3>    
-<h3>Hello </h3>    
-<h3>Hello </h3>    
-<h3>Hello </h3>    
-<h3>Hello </h3>    
-<h3>Hello </h3>    
-        <?php
-    }
-    
-}
-
-class Saiful extends Base{
-    function get_name() {
-        return 'saiful-i-another';
-    }
-    
-    public function get_title() {
-        return __( 'UltraAddons Saiful Base', 'medilac' );
-    }
-
-    public function get_icon() {
-        return 'ultraaddons eicon-button';
-    }
-    
-    public function get_keywords() {
-        return [ 'ultraaddons', 'test', 'btn', 'bt', 'ua' ];
-    }
-    
-    protected function render() {
-        ?>
-            
-<h1>Nothing To Do </h1>    
-   
-  
-        <?php
+    /**
+     * Retrive This Class name, Without NameSpace
+     * 
+     * & Removed Slash from the Right
+     * 
+     * @return String name of Class
+     * @since 1.0.0
+     * @access protected
+     * @author Saiful Islam
+     */
+    protected function get_pure_name(){
+        $name = str_replace( __NAMESPACE__, '', $this->get_class_name() );
+//        $name = str_replace( '_', '-', $name );
+        return ltrim( $name, '\\' );
     }
 }
