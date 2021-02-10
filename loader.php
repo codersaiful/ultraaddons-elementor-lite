@@ -1,6 +1,22 @@
 <?php
 namespace UltraAddons;
 
+defined( 'ABSPATH' ) || die();
+
+/**
+ * Loader Class 
+ * Here I will control all of loader file
+ * 
+ * Basically All Widget and Base widget,Control,Effect File will load from Here
+ * 
+ * Already did
+ * * elementor screen css file
+ * * base class included 
+ * * js loaded for frontend and css common file loaded here
+ * * category added
+ * 
+ * @since 1.0.0.2
+ */
 class Loader {
     public $errors = array();
     public $widgetsArray = array();

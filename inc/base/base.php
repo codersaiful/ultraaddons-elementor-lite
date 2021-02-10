@@ -3,6 +3,26 @@ namespace UltraAddons\Widget;
 
 use Elementor\Widget_Base;
 
+defined( 'ABSPATH' ) || die();
+
+/**
+ * Base Widget File
+ * Our All widget will extend this Base Class
+ * 
+ * Already declared dynamic name
+ * Already declared dynamic title
+ * Already declared dynamic wrapper class
+ * Already declared category of widget
+ * 
+ * *************************
+ * Declared a new method get_pure_name()
+ * this will return Class name without Namespace
+ * *************************
+ * 
+ * @since 1.0.0.1
+ * 
+ * @author Saiful Islam
+ */
 class Base extends Widget_Base{
 
     /**
@@ -14,11 +34,9 @@ class Base extends Widget_Base{
      * @return string Widget name.
      */
     public function get_name() {
+        
         /**
          * Automatically generate widget name from class
-         *
-         * Card will be card
-         * Blog_Card will be blog-card
          */
         $name = strtolower( $this->get_pure_name() );
         $name = str_replace( '_', '-', $name );
@@ -43,13 +61,17 @@ class Base extends Widget_Base{
      * @access public
      *
      * @return array Widget categories.
+     * @todo basic will removed after complete
      */
     public function get_categories() {
-        return [ 'basic' ];
+        return [ 'basic' ]; //Will remove this line
         return [ 'ultraaddons' ];
     }
 
     /**
+     * Retrieve Help your
+     * Temp: https://example.com/widgets/[Class_Name]
+     * 
      * Help URL
      *
      * @since 1.0.0
@@ -60,7 +82,6 @@ class Base extends Widget_Base{
     public function get_custom_help_url() {
         
         $name = $this->get_pure_name();
-        
         return ultraaddons_help_url( $name, $this );
     }
     
@@ -91,7 +112,7 @@ class Base extends Widget_Base{
     }
     
     /**
-     * Retrive This Class name, Without NameSpace
+     * Retrieve This Class name, Without NameSpace
      * 
      * & Removed Slash from the Right
      * 
@@ -102,7 +123,6 @@ class Base extends Widget_Base{
      */
     protected function get_pure_name(){
         $name = str_replace( __NAMESPACE__, '', $this->get_class_name() );
-//        $name = str_replace( '_', '-', $name );
         return ltrim( $name, '\\' );
     }
 }

@@ -41,18 +41,27 @@ define( 'ULTRA_ADDONS_DIR', plugin_dir_path( ULTRA_ADDONS__FILE__ ) );
 define( 'ULTRA_ADDONS_URL', plugin_dir_url( ULTRA_ADDONS__FILE__ ) );
 define( 'ULTRA_ADDONS_ASSETS', trailingslashit( ULTRA_ADDONS_URL . 'assets' ) );
 
+define( 'ULTRA_ADDONS_WIDGET_HELP_ULR', trailingslashit( 'https://example.com/widgets/' ) );
 
 define( 'ULTRA_ADDONS_MINIMUM_ELEMENTOR_VERSION', '2.5.0' );
 define( 'ULTRA_ADDONS_MINIMUM_PHP_VERSION', '5.4' );
 
-//var_dump(ULTRA_ADDONS_DIR,ULTRA_ADDONS_URL,ULTRA_ADDONS_ASSETS);
 
 /**
  * Main ULTRA_ADDONS Addons Class
  *
  * The main class that initiates and runs the plugin.
- *
+ * 
+ * *****************************
+ * * Check Elementor Activated or Not
+ * * Check PHP Version
+ * * Check Elementor's Version
+ * ******************************
+ * 
+ *@todo admin style method is empty now. Will add style for admin
+ * 
  * @since 1.0.0
+ * @author Saiful Islam<codersaiful@gmail.com>
  */
 final class UltraAddons {
         
