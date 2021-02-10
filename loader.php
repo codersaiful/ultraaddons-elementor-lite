@@ -1,6 +1,22 @@
 <?php
 namespace UltraAddons;
 
+defined( 'ABSPATH' ) || die();
+
+/**
+ * Loader Class 
+ * Here I will control all of loader file
+ * 
+ * Basically All Widget and Base widget,Control,Effect File will load from Here
+ * 
+ * Already did
+ * * elementor screen css file
+ * * base class included 
+ * * js loaded for frontend and css common file loaded here
+ * * category added
+ * 
+ * @since 1.0.0.2
+ */
 class Loader {
     public $errors = array();
     public $widgetsArray = array();
@@ -41,7 +57,6 @@ class Loader {
     public function register() {
         $base_file = ULTRA_ADDONS_DIR . 'inc/base/base.php';
         include_once $base_file;
-//        include_once( ULTRA_ADDONS_DIR . 'inc/base/base.php' );
     }
     
     /**
@@ -130,57 +145,15 @@ class Loader {
         $in_footer  = true;
         
         wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );
-//        
-//        
-//        
-//        //Naming of Args for Slick
-//        $name           = 'slick';
-//        $js_file_url    = apply_filters( 'medilac_elementor_slick_js', MEDILAC_CORE_BASE_URL . 'assets/vendor/js/frontend.js' );
-//        $dependency     =  apply_filters( 'medilac_elementor_slick_js_dependency', ['jquery'] );//['jquery'];
-//        $version        = MEDILAC_CORE_VERSION;
-//        $in_footer  = true;
-//        
-//        //wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-//        //wp_enqueue_script( $name );
-//        
-//        
-//        
-//        //Naming of Args for owlCarousel
-//        $name           = 'owlCarousel';
-//        $js_file_url    = apply_filters( 'medilac_elementor_slick_js', MEDILAC_CORE_BASE_URL . 'assets/vendor/js/owl.carousel.min.js' );
-//        $dependency     =  apply_filters( 'medilac_elementor_slick_js_dependency', ['jquery'] );//['jquery'];
-//        $version        = MEDILAC_CORE_VERSION;
-//        $in_footer  = true;
-//        
-//        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-//        wp_enqueue_script( $name );
-//        
-//        //Naming of Barfiller
-//        $name           = 'mc-barfiller';
-//        $js_file_url    = apply_filters( 'medilac_elementor_barfiller', MEDILAC_CORE_BASE_URL . 'assets/vendor/js/barfiller.js' );
-//        $dependency     =  apply_filters( 'medilac_elementor_barfiller_dependency', ['jquery'] );//['jquery'];
-//        $version        = MEDILAC_CORE_VERSION;
-//        $in_footer  = true;
-//        
-//        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-//        wp_enqueue_script( $name );
-//        wp_enqueue_style('mc-barfiller', MEDILAC_CORE_BASE_URL . 'assets/vendor/css/barfiller.css' );
-//        
-//        //Animate CSS Load
-//        wp_enqueue_style('mc-animate', MEDILAC_CORE_BASE_URL . 'assets/vendor/css/animate.min.css' );
-//        
-//        //CSS file for Slider Script Slick Slider
-//        //wp_enqueue_style('slick', MEDILAC_CORE_BASE_URL . 'assets/vendor/css/owl.carousel.css' );
-//        
-//        
-//        //CSS file for Slider Script Owl Carousel Slider
-//        wp_enqueue_style('owlCarousel', MEDILAC_CORE_BASE_URL . 'assets/vendor/css/owl.carousel.css' );
-//        wp_enqueue_style('owlCarousel-theme', MEDILAC_CORE_BASE_URL . 'assets/vendor/css/owl/owl.theme.default.css' );
-//        
+        wp_enqueue_script( $name );     
         
     }
     
+    /**
+     * Enqueue CSS file based on Widgets Class
+     * 
+     * @since 1.0.0.1
+     */
     public function widget_enqueue() {
         
         
@@ -188,7 +161,12 @@ class Loader {
             $name = isset( $widget['name'] ) ? $widget['name'] : '';
 
             $name = str_replace('_','-', $name);
+            $name = strtolower( $name );
+            $handle = 'ultraaddons-' . $name;
             
+            $deps = ['ultraaddons-widgets-style'];
+            $ver  = ULTRA_ADDONS_VERSION;
+            $media= 'all';
             /**
              * CSS file load based on Element/Widget
              * 
@@ -197,110 +175,16 @@ class Loader {
              * 
              * @since 1.0.0.12
              */
-            $css_file_url = ULTRA_ADDONS_ASSETS . 'css/widgets/' . $name . '.css';
+            $src = ULTRA_ADDONS_ASSETS . 'css/widgets/' . $name . '.css';
             $css_file_dir = ULTRA_ADDONS_DIR . 'assets/css/widgets/' . $name . '.css';
             
             if( is_file( $css_file_dir ) ){
-                 wp_register_style( $name, $css_file_url );
-                 wp_enqueue_style( $name );
+                 wp_register_style( $handle, $src, $deps, $ver, $media );
+                 wp_enqueue_style( $handle );
             }
             
         }
         
-        
-        
-        
-        
-//        /**
-//         * Load at elementor editing screen 
-//         * 
-//         * Mainly I have added an icon for our Elementor Widget
-//         * over this CSS file
-//         */
-//        wp_register_style( 'medilac-elementor-style', MEDILAC_CORE_ELEMENTOR_BASE_URL . 'assets/css/elementor-style.css' );
-//        wp_enqueue_style( 'medilac-elementor-style' );
-//        
-//        foreach( $this->widgetsArray as $widget ){
-//            $name = str_replace(' ','', $widget);
-//            $name = str_replace('_','-', $name);
-//            
-//            $class_name = str_replace( '-','_', $name );
-//            $class_name = "Medilac_" . ucwords( $class_name, '_' );
-//            
-//            $file = MEDILAC_CORE_ELEMENTOR_BASE_DIR . 'widgets/'. $name . '.php';
-//            
-//            if( file_exists( $file ) ){
-//                require_once $file;
-//            }else{
-//                return;
-//            }
-//            
-//            if( ! class_exists( $class_name ) ){
-//                return;
-//            }
-//            
-//            
-//            /**
-//             * CSS file load based on Element/Widget
-//             * 
-//             * we will load CSS file,
-//             * If only Available JS file
-//             * 
-//             * @since 1.0.0.12
-//             */
-//            $css_file_url = MEDILAC_CORE_ELEMENTOR_BASE_URL . 'assets/css/widgets/' . $name . '.css';
-//            $css_file_dir = MEDILAC_CORE_ELEMENTOR_BASE_DIR . 'assets/css/widgets/' . $name . '.css';
-//            
-//            if( is_file( $css_file_dir ) ){
-//                 wp_register_style( $name, $css_file_url );
-//                 wp_enqueue_style( $name );
-//            }
-//            
-//            
-//            /**
-//             * JS file load based on Element/Widget
-//             * 
-//             * we will load js file,
-//             * If only Available JS file
-//             * 
-//             * @since 1.0.0.12
-//             */
-//            $js_file_url = MEDILAC_CORE_ELEMENTOR_BASE_URL . 'assets/js/widgets/' . $name . '.js';
-//            $js_file_dir = MEDILAC_CORE_ELEMENTOR_BASE_DIR . 'assets/js/widgets/' . $name . '.js';
-//            if( is_file( $js_file_dir ) ){
-//                
-//                $elementObj = new $class_name();
-//                $settings = [];
-//                if( method_exists( $elementObj , 'medilac_settings') ){
-//                    $settings = $elementObj->medilac_settings();
-//                }
-//                
-//                if( isset( $settings['additional_scripts'] ) && is_array( $settings['additional_scripts'] ) ){
-//                    foreach( $settings['additional_scripts'] as $script_name => $script ){
-//                        
-//                        $_url = isset( $script['url'] ) ? $script['url'] : null;
-//                        $_dependency = isset( $script['dependency'] ) ? $script['dependency'] : [];
-//                        $_version = isset( $script['version'] ) ? $script['version'] : null;
-//                        $_in_footer = isset( $script['in_footer'] ) ? $script['in_footer'] : false;
-//                        wp_register_script( $script_name, $_url, $_dependency, $_version, $_in_footer );
-//                        wp_enqueue_script( $script_name );
-//                    }
-//                }
-//
-//                
-//                $dependency = isset( $settings['dependency'] ) ? $settings['dependency'] : null;
-//                $version = isset( $settings['version'] ) ? $settings['version'] : MEDILAC_CORE_VERSION;
-//                $in_footer = isset( $settings['in_footer'] ) ? $settings['in_footer'] : false;
-//                wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-//
-//                wp_enqueue_script( $name );
-//                 
-//                //wp_enqueue_script( 'medilac-counter', MEDILAC_CORE_ELEMENTOR_BASE_URL . 'assets/js/widgets/counter.js', ['jquery'], '', true );
-//        
-//            }
-//            
-//            
-//        }
 
     }
     
