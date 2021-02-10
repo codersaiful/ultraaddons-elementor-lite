@@ -1,6 +1,7 @@
 <?php
 namespace UltraAddons\Widget;
 
+
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Scheme_Color;
@@ -14,7 +15,7 @@ use Elementor\Group_Control_Background;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Button extends Base{
+class Button extends Widget_Base{
     
     /**
      * Widget Pricing Table

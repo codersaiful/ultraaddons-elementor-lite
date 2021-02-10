@@ -1,32 +1,13 @@
 <?php
 namespace UltraAddons;
 
-final class Loader {
+class Loader {
     public $errors = array();
     public $widgetsArray = array();
 
 
     public function __construct( $widgetsArray = false ) {
-        /**
-         * YOUR CUSTOM CODE START HERE
-         */
 
-
-
-
-
-
-
-
-
-        
-        /**
-         * YOUR CUSTOM CODE START HERE
-         */
-        
-        
-        
-        
         
         $this->widgetsArray = $widgetsArray;
         
@@ -59,7 +40,7 @@ final class Loader {
      */
     public function register() {
         $base = ULTRA_ADDONS_DIR . 'inc/base/base.php';
-        include_once( ULTRA_ADDONS_DIR . 'inc/base/base.php' );
+//        include_once( ULTRA_ADDONS_DIR . 'inc/base/base.php' );
         
 //        if( ! is_file( $base ) ){
 //            return;
@@ -89,24 +70,32 @@ final class Loader {
             $name = isset( $widget['name'] ) ? $widget['name'] : '';
 
             $name = str_replace('_','-', $name);
-            
-            $class_name = str_replace( '-','_', $name );
-            $class_name =  '\UltraAddons\Widget\\' . ucwords( $class_name, '_' );
 
             $file = ULTRA_ADDONS_DIR . 'inc/widgets/'. $name . '.php';
             
             if( file_exists( $file ) ){
-                require_once $file;
-            }else{
-                $this->errors[] = $file . ' File is not founded.';
-                $class_name = false;
+                var_dump($file);
+                //include_once( ULTRA_ADDONS_DIR . 'inc/base/base.php' );
+                include_once $file;
             }
             
+        }
+        
+        foreach( $this->widgetsArray as $widget_key => $widget ){
+            $name = isset( $widget['name'] ) ? $widget['name'] : '';
+
+            $name = str_replace('_','-', $name);
+            
+            $class_name = str_replace( '-','_', $name );
+            $class_name =  '\UltraAddons\Widget\\' . ucwords( $class_name, '_' );
+
+            
             if( $class_name && class_exists( $class_name ) ){
-                
+//                var_dump( class_exists( '\UltraAddons\Widget\Base' ),$class_name);
                 \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new $class_name() );
             }
         }
+        
 
     }
     

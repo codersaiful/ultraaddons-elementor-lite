@@ -193,7 +193,7 @@ final class UltraAddons {
                 include_once ULTRA_ADDONS_DIR . 'inc/functions.php';
                 
                 //Elementor Widget and script Loader
-                include_once ULTRA_ADDONS_DIR . 'load.php';
+                include_once ULTRA_ADDONS_DIR . 'loader.php';
                 
                 
 

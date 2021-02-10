@@ -14,7 +14,6 @@ class Base extends Widget_Base{
      * @return string Widget name.
      */
     public function get_name() {
-        return 'ultraaddons-saiful';
         /**
          * Automatically generate widget name from class
          *
@@ -73,7 +72,7 @@ class Base extends Widget_Base{
         return rtrim( $html_class );
     }
     
-    protected function render() {
+    protected function renderss() {
         ?>
             
 <h3>Hello </h3>    
