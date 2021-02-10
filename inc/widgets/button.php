@@ -46,19 +46,7 @@ class Button extends Base{
     public function get_keywords() {
         return [ 'medilac', 'button', 'btn', 'bt', 'recent content' ];
     }
-    /**
-     * Widget Category.
-     *
-     * Holds the Repeater counter data. Default is `0`.
-     *
-     * @since 1.0.0
-     * @static
-     *
-     * @var int Widget Category.
-     */
-    public function get_categories() {
-        return [ 'basic' ];
-    }
+    
     
     /**
      * Register oEmbed widget controls.

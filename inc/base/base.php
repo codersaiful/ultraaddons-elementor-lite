@@ -22,14 +22,24 @@ defined( 'ABSPATH' ) || die();
  * @since 1.0.0.1
  * 
  * @author Saiful Islam
+ * 
+ * @todo Remove return [ 'basic' ]; from get_catogories method.
  */
 class Base extends Widget_Base{
 
     /**
-     * Get widget name.
+     * Get widget name. Actually I will not re-declare widget name from main Widget
+     * Generate dynamic get_name() from this Base Class/Object
+     * 
+     * ********
+     * convert to lower case
+     * replace - to _
+     * added 'ultraaddons' as prefix of each widget name
+     * ********
      *
      * @since 1.0.0
      * @access public
+     * @author Saiful
      *
      * @return string Widget name.
      */
@@ -45,9 +55,14 @@ class Base extends Widget_Base{
     
     /**
      * Retrieve default Title name from Class name without Name space
+     * Need Override this method actually.
+     * 
+     * But if any Widget not declare the get_title() method, then title will come from this base class's method
      * 
      * @since 1.0.0
      * @access public
+     * @author Saiful
+     * 
      * @return String
      */
     public function get_title() {
@@ -56,11 +71,16 @@ class Base extends Widget_Base{
 
     /**
      * Get widget categories.
+     * Category set from one place, from this Base Class
+     * 
+     * No need re-declare from Widget.
      *
      * @since 1.0.0
      * @access public
+     * @author Saiful
      *
      * @return array Widget categories.
+     * 
      * @todo basic will removed after complete
      */
     public function get_categories() {
@@ -76,6 +96,7 @@ class Base extends Widget_Base{
      *
      * @since 1.0.0
      * @access public
+     * @author Saiful
      *
      * @var int Widget Icon.
      */
@@ -90,6 +111,8 @@ class Base extends Widget_Base{
      * 
      * @since 1.0.0
      * @access public
+     * @author Saiful
+     * 
      * @return array Widget keyword's Array
      */
     public function get_keywords() {
@@ -101,6 +124,7 @@ class Base extends Widget_Base{
      *
      * @since 1.0.0
      * @access public
+     * @author Saiful
      * 
      * @return string Wrapper class for html markup
      */
@@ -116,10 +140,11 @@ class Base extends Widget_Base{
      * 
      * & Removed Slash from the Right
      * 
-     * @return String name of Class
      * @since 1.0.0
      * @access protected
      * @author Saiful Islam
+     * 
+     * @return String name of Class
      */
     protected function get_pure_name(){
         $name = str_replace( __NAMESPACE__, '', $this->get_class_name() );

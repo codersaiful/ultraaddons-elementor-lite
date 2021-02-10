@@ -18,7 +18,21 @@ defined( 'ABSPATH' ) || die();
  * @since 1.0.0.2
  */
 class Loader {
+    
+    /**
+     * Array of Error, Such file not found, class is not exist etc.
+     *
+     * @access public
+     * @var array retrieve list of Error,  
+     */
     public $errors = array();
+    
+    /**
+     * Widget List, it will come from an another file.
+     * currently we insert at the bottom of this class
+     *
+     * @var array List of Widgets.  
+     */
     public $widgetsArray = array();
 
 
@@ -196,6 +210,8 @@ class Loader {
      * @since 1.0.0
      *
      * @access public
+     * 
+     * @todo Controll is not empty. we will add it later.
      */
     public function init_controls() {
 
@@ -210,23 +226,37 @@ class Loader {
      * Adding new categories
      * for custom cat
      * 
-     * @since 1.0
+     * @since 1.0.0
      */
     public function add_categories( $elements_manager ) {
-        $elements_manager->add_category('ultraaddons', ['title' => 'UltraAddons', 'icon' => 'fa fa-chat']);
+        $elements_manager->add_category('ultraaddons', 
+                [
+                    'title'     => __( 'Addons - UltraAddons', 'ultraaddons' ), 
+                    'icon'      => 'fa fa-chat'
+                ]
+        );
     }
 
 
 }
 
+/**
+ * List of Widget.
+ * 
+ * All of Supported widget will add here as array.
+ * 
+ * @important Index key of this array is not used yet. can be use later.
+ * 
+ * @author Saiful
+ */
 $widgetsArray = [
     
-    'button'=> [
-            'name'  => 'Button',
+    'Button'=> [
+            'name'  => __( 'Button', 'ultraaddons' ),
     ],
     
     'Advance_Heading'=> [
-            'name'  => 'Advance_Heading',
+            'name'  => __( 'Advance_Heading', 'ultraaddons' ),
     ],
     
 ];
