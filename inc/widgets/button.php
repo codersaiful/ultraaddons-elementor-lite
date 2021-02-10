@@ -16,45 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Button extends Base{
     
-    /**
-     * Widget Pricing Table
-     *
-     * Holds the Repeater counter data. Default is `0`.
-     *
-     * @since 1.0.0
-     * @static
-     *
-     * @var int Widget Name.
-     */
-    public function get_name() {
-        return strtolower( str_replace( '\\','_', __CLASS__ ) );
-        //return __CLASS__;
-    }
+
     
-    /**
-     * Widget Title.
-     *
-     * Holds the Repeater counter data. Default is `0`.
-     *
-     * @since 1.0.0
-     * @static
-     *
-     * @var int Widget Title.
-     */
-    public function get_title() {
-        return __( 'UltraAddons Button', 'medilac' );
-    }
-  
-    /**
-     * Help URL
-     *
-     * @since 1.0.0
-     *
-     * @var int Widget Icon.
-     */
-    public function get_custom_help_url() {
-            return 'https://example.com/Medilac_Button';
-    }
     
     /**
      * Widget Icon.
@@ -67,7 +30,7 @@ class Button extends Base{
      * @var int Widget Icon.
      */
     public function get_icon() {
-        return 'ultraaddons eicon-button';
+        return 'medilac eicon-button';
     }
     
     /**
@@ -81,7 +44,7 @@ class Button extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'button', 'btn', 'bt', 'recent content' ];
+        return [ 'medilac', 'button', 'btn', 'bt', 'recent content' ];
     }
     /**
      * Widget Category.
@@ -120,6 +83,8 @@ class Button extends Base{
        
     }
     
+
+    
     /**
      * Render oEmbed widget output on the frontend.
      *
@@ -129,35 +94,56 @@ class Button extends Base{
      * @access protected
      */
     protected function render() {
-        
-        
-        $settings           = $this->get_settings_for_display();
+        $settings = $this->get_settings_for_display();
 
         $this->add_render_attribute( 'wrapper', 'class', 'medilac-button-wrapper' );
-        $this->add_render_attribute( 'button', 'class', 'medilac-button' );
-       
-        if ( ! empty( $settings['link']['url'] ) ) {
-                $this->add_link_attributes( 'button', $settings['link'] );
-                $this->add_render_attribute( 'button', 'class', 'medilac-button-link' );
-        }
-
-        $this->add_render_attribute( 'button', 'role', 'button' );
-        $this->add_render_attribute( 'button', 'class', $settings['size'] );
-        $this->add_render_attribute( 'wrapper', 'class', $settings['button_type'] );
-
         
-        if( ! isset( $settings['text'] ) ){
+        $buttons = isset( $settings[ 'mc_button' ] ) ? $settings[ 'mc_button' ] : [];
+        if( count($buttons) < 1 ){
             return;
         }
-        $this->add_inline_editing_attributes( 'text', 'none' );
+        
+        $this->add_render_attribute( 'wrapper', 'class', $settings['button_type'] );
+        
+        
         $text = ! empty( $settings['text'] ) ? $settings['text'] : __( 'Click Here', 'medilac' );
         
         
         ?>
         <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
-          <a <?php echo $this->get_render_attribute_string( 'button' ); ?>>
-              <?php echo esc_html( $text ); ?>
-          </a>
+            <?php foreach( $buttons as $key => $button ) : 
+//                var_dump($button);
+                $_id = !empty( $button['_id'] ) ? $button['_id'] : false;
+                $text = !empty( $button['text'] ) ? $button['text'] : false;
+                $icon = !empty( $button['icon']['value'] ) ? $button['icon']['value'] : false;
+                $position = !empty( $button['icon_position'] ) ? $button['icon_position'] : false;
+                $this->add_render_attribute( $_id, 'class', 'medilac-button' );
+                $this->add_render_attribute( $_id, 'class', 'elementor-repeater-item-' . $_id );
+                $this->add_render_attribute( $_id . '_icon', 'class', 'medilac-button-icon align-' . $position );
+                
+                if ( ! empty( $button['link']['url'] ) ) {
+                        
+                        $this->add_link_attributes( $_id, $button['link'] );
+                        $this->add_render_attribute( $_id, 'class', 'medilac-button-link' );
+                        $this->add_render_attribute( $_id, 'class', $settings['size'] );
+                        $this->add_render_attribute( $_id, 'role', 'button' );
+                        
+                }
+                $icon_html = '';
+                if( $icon ){
+                    
+                        $icon_html .= '<span '. $this->get_render_attribute_string( $_id . '_icon' ) .'>';
+                        $icon_html .= '<i class="'. esc_attr( $icon ) .'"></i>';
+                        $icon_html .= '</span>';
+                }
+                ?>
+            
+            <a <?php echo $this->get_render_attribute_string( $_id ); ?>>
+                <?php echo $icon_html;?>
+                <span class="medilac-button-text"><?php echo esc_html( $text );?></span>
+            </a>
+            
+            <?php endforeach; ?>
         </div>
         <?php
 
@@ -212,7 +198,7 @@ class Button extends Base{
                         'label' => __( 'Button', 'medilac' ),
                 ]
         );
-
+        
         $this->add_control(
                 'button_type',
                 [
@@ -241,19 +227,50 @@ class Button extends Base{
                 
                 ]
         );
-
+        
         $this->add_control(
-			'size',
-			[
-				'label' => __( 'Size', 'medilac' ),
-				'type' => Controls_Manager::SELECT,
-				'default' => 'md',
-				'options' => self::get_button_sizes(),
-				'style_transfer' => true,
-			]
-		);
-
-        $this->add_control(
+                'size',
+                [
+                        'label' => __( 'Size', 'medilac' ),
+                        'type' => Controls_Manager::SELECT,
+                        'default' => 'md',
+                        'options' => self::get_button_sizes(),
+                        'style_transfer' => true,
+                ]
+        );
+        
+        $repeater = new \Elementor\Repeater();
+        
+        $repeater->add_control(
+                'icon',
+                [
+                        'label' => __( 'Icon', 'medilac' ),
+                        'type' => Controls_Manager::ICONS,
+                ]
+        );
+        
+        $repeater->add_control(
+                'icon_position',
+                [
+                        'label' => __( 'Icon', 'medilac' ),
+                        'type' => Controls_Manager::SELECT,
+                        'options' => [
+                            'left'     => __( 'Left', 'medilac' ),
+                            'right'     => __( 'Right', 'medilac' ),
+                    ],
+                    'default' => 'left',
+                        
+                ]
+        );
+        
+        $repeater->add_control(
+                'text_divider',
+                [
+                        'type' => Controls_Manager::DIVIDER,
+                ]
+        );
+        
+        $repeater->add_control(
                 'text',
                 [
                         'label' => __( 'Text', 'medilac' ),
@@ -266,7 +283,7 @@ class Button extends Base{
                 ]
         );
 
-        $this->add_control(
+        $repeater->add_control(
                 'link',
                 [
                         'label' => __( 'Link', 'medilac' ),
@@ -278,6 +295,149 @@ class Button extends Base{
                         'default' => [
                                 'url' => '#',
                         ],
+                ]
+        );
+        
+        $repeater->start_controls_tabs( 'button_hover_controls' );
+        $repeater->start_controls_tab(
+            'tab_button_content_normal',
+            [
+                'label'  => esc_html__( 'Normal', 'medilac' )
+            ]
+        );
+        
+        $repeater->add_control(
+                'text_color',
+                [
+                        'label' => __( 'Text Color', 'medilac' ),
+                        'type' => Controls_Manager::COLOR,
+                        'selectors' => [
+                                '{{WRAPPER}} {{CURRENT_ITEM}}.medilac-button .medilac-button-icon' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} {{CURRENT_ITEM}}.medilac-button .medilac-button-text' => 'color: {{VALUE}}',
+                        ],
+                ]
+        );
+        $repeater->add_control(
+                'bg_color',
+                [
+                        'label' => __( 'Background', 'medilac' ),
+                        'type' => Controls_Manager::COLOR,
+                        'selectors' => [
+                                '{{WRAPPER}} .medilac-button-wrapper {{CURRENT_ITEM}}.medilac-button' => 'background-color: {{VALUE}}',
+                        ],
+                ]
+        );
+        
+        $repeater->add_group_control(
+                Group_Control_Border::get_type(),
+                [
+                        'name' => 'border',
+                        'label' => __( 'Border', 'medilac' ),
+                        'selector' => '{{WRAPPER}} .medilac-button-wrapper {{CURRENT_ITEM}}.medilac-button',
+                ]
+        );
+        
+        $repeater->add_control(
+                'border_radius',
+                [
+                        'label' => __( 'Border Radius', 'medilac' ),
+                        'type' => Controls_Manager::DIMENSIONS,
+                        'size_units' => [ 'px' ],
+                        'selectors' => [
+                                '{{WRAPPER}} .medilac-button-wrapper {{CURRENT_ITEM}}.medilac-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                ]
+        );
+        
+        $repeater->add_group_control(
+                Group_Control_Box_Shadow::get_type(),
+                [
+                        'name' => 'box_shadow',
+                        'label' => __( 'Box Shadow', 'medilac' ),
+                        'selector' => '{{WRAPPER}} .medilac-button-wrapper {{CURRENT_ITEM}}.medilac-button',
+                ]
+        );
+        
+        $repeater->end_controls_tab();
+        
+        $repeater->start_controls_tab(
+            'icon_boxes_btn_content_hover',
+            [
+                'label' => esc_html__( 'Hover', 'medilac' ),
+            ]
+        );
+        
+        $repeater->add_control(
+                'text_color_hover',
+                [
+                        'label' => __( 'Text Color', 'medilac' ),
+                        'type' => Controls_Manager::COLOR,
+                        'selectors' => [
+                                '{{WRAPPER}} {{CURRENT_ITEM}}:hover .medilac-button-icon' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} {{CURRENT_ITEM}}:hover  .medilac-button-text' => 'color: {{VALUE}}',
+                        ],
+                ]
+        );
+        $repeater->add_control(
+                'bg_color_hover',
+                [
+                        'label' => __( 'Background', 'medilac' ),
+                        'type' => Controls_Manager::COLOR,
+                        'selectors' => [
+                                '{{WRAPPER}} .medilac-button-wrapper {{CURRENT_ITEM}}.medilac-button:hover' => 'background-color: {{VALUE}}',
+                        ],
+                ]
+        );
+        
+        $repeater->add_group_control(
+                Group_Control_Border::get_type(),
+                [
+                        'name' => 'border_hover',
+                        'label' => __( 'Border', 'medilac' ),
+                        'selector' => '{{WRAPPER}} .medilac-button-wrapper {{CURRENT_ITEM}}.medilac-button:hover',
+                ]
+        );
+        
+        $repeater->add_control(
+                'border_radius_hover',
+                [
+                        'label' => __( 'Border Radius', 'medilac' ),
+                        'type' => Controls_Manager::DIMENSIONS,
+                        'size_units' => [ 'px' ],
+                        'selectors' => [
+                                '{{WRAPPER}} .medilac-button-wrapper {{CURRENT_ITEM}}.medilac-button:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                ]
+        );
+        
+        $repeater->add_group_control(
+                Group_Control_Box_Shadow::get_type(),
+                [
+                        'name' => 'box_shadow_hover',
+                        'label' => __( 'Box Shadow', 'medilac' ),
+                        'selector' => '{{WRAPPER}} .medilac-button-wrapper {{CURRENT_ITEM}}.medilac-button:hover',
+                ]
+        );
+        
+        $repeater->end_controls_tab();
+        
+        $repeater->end_controls_tabs();
+        
+        $this->add_control(
+                'mc_button',
+                [
+                        'type' => Controls_Manager::REPEATER,
+                        'fields' => $repeater->get_controls(),
+                        'default' => [
+                                [
+                                        'size' => 'md',
+                                        'text' => __( 'Click Here', 'medilac' ),
+                                        'link'   =>  [
+                                            'url' => '#ee'
+                                        ],
+                                ],   
+                        ],
+                        'title_field' => '{{{ text }}}',
                 ]
         );
         
@@ -322,24 +482,182 @@ class Button extends Base{
             ]
         );
         
-        
+        $this->add_control(
+            'icon_space',
+            [
+                    'label'     => __( 'Icon Gap', 'medilac' ),
+                    'type'      => Controls_Manager::SLIDER,
+                    'default' => [
+                                    'size' => 20,
+                            ],
+                            'range' => [
+                                    'px' => [
+                                            'min' => 0,
+                                            'max' => 100,
+                                    ],
+                            ],
+                            'selectors' => [
+                                    '{{WRAPPER}} .medilac-button .medilac-button-icon.align-left' => 'margin-right: {{SIZE}}{{UNIT}};',
+                                    '{{WRAPPER}} .medilac-button .medilac-button-icon.align-right' => 'margin-left: {{SIZE}}{{UNIT}};',
+                            ],
+            ]
+        );
         
         $this->add_control(
-            'primary-color',
+            'button_space',
             [
-                'label'     => __( 'Primary Color', 'medilac' ),
+                    'label'     => __( 'Button Gap', 'medilac' ),
+                    'type'      => Controls_Manager::SLIDER,
+                    'default' => [
+                                    'size' => 20,
+                            ],
+                            'range' => [
+                                    'px' => [
+                                            'min' => 0,
+                                            'max' => 100,
+                                    ],
+                            ],
+                            'selectors' => [
+                                    '{{WRAPPER}} .medilac-button-wrapper' => 'column-gap: {{SIZE}}{{UNIT}};',
+                            ],
+            ]
+        );
+        
+        $this->start_controls_tabs( 'button_hover_controls_master' );
+        $this->start_controls_tab(
+            'tab_button_content_normal_master',
+            [
+                'label'  => esc_html__( 'Normal', 'medilac' )
+            ]
+        );
+        
+        $this->add_control(
+            'bg_color_master',
+            [
+                'label'     => __( 'Background', 'medilac' ),
                 'type'      => Controls_Manager::COLOR,
-                'scheme'    => [
-                    'type'  => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
                 'selectors' => [
                     '{{WRAPPER}} .medilac-button-wrapper .medilac-button' => 'background-color: {{VALUE}}',
-                    '{{WRAPPER}} .medilac-button-wrapper .medilac-button:hover' => 'background-color: transparent;border-color: {{VALUE}};color: {{VALUE}}',
                 ],
                 'default'   => '#0FC392',
             ]
         );
+        
+        
+        
+        $this->add_control(
+                'text_color_master',
+                [
+                        'label' => __( 'Text Color', 'medilac' ),
+                        'type' => Controls_Manager::COLOR,
+                        'selectors' => [
+                                '{{WRAPPER}} .medilac-button .medilac-button-icon' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} .medilac-button .medilac-button-text' => 'color: {{VALUE}}',
+                        ],
+                ]
+        );
+        
+        $this->add_group_control(
+                Group_Control_Border::get_type(),
+                [
+                        'name' => 'border_master',
+                        'label' => __( 'Border', 'medilac' ),
+                        'selector' => '{{WRAPPER}} .medilac-button-wrapper .medilac-button',
+                ]
+        );
+        
+        $this->add_control(
+                'border_radius_master',
+                [
+                        'label' => __( 'Border Radius', 'medilac' ),
+                        'type' => Controls_Manager::DIMENSIONS,
+                        'size_units' => [ 'px' ],
+                        'selectors' => [
+                                '{{WRAPPER}} .medilac-button-wrapper .medilac-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                ]
+        );
+        
+        $this->add_group_control(
+                Group_Control_Box_Shadow::get_type(),
+                [
+                        'name' => 'box_shadow_master',
+                        'label' => __( 'Box Shadow', 'medilac' ),
+                        'selector' => '{{WRAPPER}} .medilac-button-wrapper .medilac-button',
+                ]
+        );
+        
+        $this->end_controls_tab();
+        
+        $this->start_controls_tab(
+            'tab_button_content_hover_master',
+            [
+                'label'  => esc_html__( 'Hover', 'medilac' )
+            ]
+        );
+        
+        $this->add_control(
+            'bg_color_hover_master',
+            [
+                'label'     => __( 'Background', 'medilac' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .medilac-button-wrapper .medilac-button:hover' => 'background-color: {{VALUE}}',
+                ],
+                'default'   => '#FFF',
+            ]
+        );
+        
+        
+        
+        $this->add_control(
+                'text_color_hover_master',
+                [
+                        'label' => __( 'Text Color', 'medilac' ),
+                        'type' => Controls_Manager::COLOR,
+                        'selectors' => [
+                                '{{WRAPPER}} .medilac-button:hover .medilac-button-icon' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} .medilac-button:hover .medilac-button-text' => 'color: {{VALUE}}',
+                        ],
+                ]
+        );
+        
+        $this->add_group_control(
+                Group_Control_Border::get_type(),
+                [
+                        'name' => 'border_hover_master',
+                        'label' => __( 'Border', 'medilac' ),
+                        'selector' => '{{WRAPPER}} .medilac-button-wrapper .medilac-button:hover',
+                ]
+        );
+        
+        $this->add_control(
+                'border_radius_hover_master',
+                [
+                        'label' => __( 'Border Radius', 'medilac' ),
+                        'type' => Controls_Manager::DIMENSIONS,
+                        'size_units' => [ 'px' ],
+                        'selectors' => [
+                                '{{WRAPPER}} .medilac-button-wrapper .medilac-button:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                ]
+        );
+        
+        $this->add_group_control(
+                Group_Control_Box_Shadow::get_type(),
+                [
+                        'name' => 'box_shadow_hover_master',
+                        'label' => __( 'Box Shadow', 'medilac' ),
+                        'selector' => '{{WRAPPER}} .medilac-button-wrapper .medilac-button:hover',
+                ]
+        );
+        
+        $this->end_controls_tab();
+        
+        
+        $this->end_controls_tabs();
+        
+        
         
         
         $this->end_controls_section();

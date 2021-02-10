@@ -1,8 +1,17 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+defined( 'ABSPATH' ) || die();
 
+function ultraaddons_help_url( $class_name, $object = false ){
+    
+    return 'https://example.com/widgets/' . $class_name;
+}
+
+/**
+ * Get elementor instance
+ *
+ * @return \Elementor\Plugin
+ */
+function ultraaddons_elementor() {
+	return \Elementor\Plugin::instance();
+}

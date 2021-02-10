@@ -1,0 +1,97 @@
+.medilac-button-wrapper{display: inline;}
+.medilac-button-wrapper.fullwidth,
+.medilac-button-wrapper.center,
+.medilac-button-wrapper.left,
+.medilac-button-wrapper.right{
+    display: block;
+    width: 100%;
+}
+.medilac-button-wrapper .medilac-button {
+    display: inline-block;
+    font-size: 16px;
+    color: #fff;
+    line-height: 1.5;
+    text-align: center;
+    background-color: #0fc392;
+    background-color: var(--medilac-primary);;
+    padding: 16px 32px;
+    border: 2px solid transparent;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.medilac-button-wrapper .medilac-button.xs{padding: 4px 18px;}
+.medilac-button-wrapper .medilac-button.sm{padding: 10px 25px;}
+.medilac-button-wrapper .medilac-button.md{}
+.medilac-button-wrapper .medilac-button.lg{
+    padding: 15px 46px;
+    font-size: 22px;
+}
+.medilac-button-wrapper .medilac-button.xl{
+    padding: 18px 75px;
+    font-size: 30px;
+}
+
+.medilac-button-wrapper.center .medilac-button{
+    
+}
+.medilac-button-wrapper.left .medilac-button{
+    
+}
+.medilac-button-wrapper.right .medilac-button{
+    
+}
+.medilac-button-wrapper.fullwidth .medilac-button{
+    width: 100%;
+}
+
+.medilac-button-wrapper .medilac-button:hover {
+    color: #0fc392;
+    color: var(--medilac-primary);
+    border-color: #0fc392;
+    border-color: var(--medilac-primary);;
+    background-color: transparent;
+}
+
+.medilac-button-wrapper.right {
+    text-align: right;
+}
+.medilac-button-wrapper.center {
+    text-align: center;
+}
+.medilac-button-wrapper.left {
+    text-align: left;
+}
+.medilac-button-container .medilac-button-wrapper {
+    display: flex;
+    column-gap: 20px;
+}
+
+.medilac-button-container .medilac-button {
+    display: flex;
+    justify-content: center;
+}
+.medilac-button-container .medilac-button .medilac-button-icon.align-left {
+    order: 5;
+    margin-right: 10px;
+}
+.medilac-button-container .medilac-button .medilac-button-text {
+    order: 10;
+}
+
+.medilac-button-container .medilac-button .medilac-button-icon.align-right {
+    order: 20;
+    margin-left: 10px;
+}
+
+.medilac-button-container .medilac-button-wrapper.center {
+    justify-content: center;
+}
+
+.medilac-button-container .medilac-button-wrapper.left{
+    justify-content: flex-start;
+}
+
+.medilac-button-container .medilac-button-wrapper.right{
+    justify-content: flex-end;
+}

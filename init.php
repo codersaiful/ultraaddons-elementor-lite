@@ -40,7 +40,7 @@ define( 'ULTRA_ADDONS_BASE_NAME', plugin_basename( __FILE__ ) );
 define( 'ULTRA_ADDONS_DIR', plugin_dir_path( ULTRA_ADDONS__FILE__ ) );
 define( 'ULTRA_ADDONS_URL', plugin_dir_url( ULTRA_ADDONS__FILE__ ) );
 define( 'ULTRA_ADDONS_ASSETS', trailingslashit( ULTRA_ADDONS_URL . 'assets' ) );
-define( 'ULTRA_ADDONS_REDIRECTION_FLAG', 'happyaddons_do_activation_direct' );
+
 
 define( 'ULTRA_ADDONS_MINIMUM_ELEMENTOR_VERSION', '2.5.0' );
 define( 'ULTRA_ADDONS_MINIMUM_PHP_VERSION', '5.4' );
@@ -162,6 +162,8 @@ final class UltraAddons {
 	 */
 	public function init() {
             
+                //Including Function File. It will stay at the Top of the File
+                include_once ULTRA_ADDONS_DIR . 'inc/functions.php';
                 
                 add_action('admin_enqueue_scripts', [$this,'admin_style']);
 
@@ -189,11 +191,11 @@ final class UltraAddons {
                     include_once ULTRA_ADDONS_DIR . 'admin/enqueue.php'; //Menu/link show in Plugin Name
                 }
                 
-                //Including Function File. It will stay at the Top of the File
-                include_once ULTRA_ADDONS_DIR . 'inc/functions.php';
+                //var_dump(ultraaddons_elementor());
+                
                 
                 //Elementor Widget and script Loader
-                include_once ULTRA_ADDONS_DIR . 'load.php';
+                include_once ULTRA_ADDONS_DIR . 'loader.php';
                 
                 
 
