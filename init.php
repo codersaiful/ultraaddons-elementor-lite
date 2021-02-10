@@ -162,6 +162,8 @@ final class UltraAddons {
 	 */
 	public function init() {
             
+                //Including Function File. It will stay at the Top of the File
+                include_once ULTRA_ADDONS_DIR . 'inc/functions.php';
                 
                 add_action('admin_enqueue_scripts', [$this,'admin_style']);
 
@@ -189,8 +191,8 @@ final class UltraAddons {
                     include_once ULTRA_ADDONS_DIR . 'admin/enqueue.php'; //Menu/link show in Plugin Name
                 }
                 
-                //Including Function File. It will stay at the Top of the File
-                include_once ULTRA_ADDONS_DIR . 'inc/functions.php';
+                //var_dump(ua_elementor());
+                
                 
                 //Elementor Widget and script Loader
                 include_once ULTRA_ADDONS_DIR . 'loader.php';

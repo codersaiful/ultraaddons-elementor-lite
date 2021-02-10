@@ -40,17 +40,17 @@ class Loader {
      */
     public function register() {
         $base = ULTRA_ADDONS_DIR . 'inc/base/base.php';
-//        include_once( ULTRA_ADDONS_DIR . 'inc/base/base.php' );
+        include_once( ULTRA_ADDONS_DIR . 'inc/base/base.php' );
         
 //        if( ! is_file( $base ) ){
 //            return;
 //        }
 //        include $base; 
 //        $test = new \UltraAddons\Widget\Base();
-//        $another = new \UltraAddons\Widget\Saiful();
+        $another = new \UltraAddons\Widget\Saiful();
 //        
 //        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( $test );
-//        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( $another );
+        ua_elementor()->widgets_manager->register_widget_type( $another );
         
         //\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new UltraAddons\Widget\Base() );
     }
@@ -91,8 +91,8 @@ class Loader {
 
             
             if( $class_name && class_exists( $class_name ) ){
-//                var_dump( class_exists( '\UltraAddons\Widget\Base' ),$class_name);
-                \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new $class_name() );
+                var_dump( class_exists( '\UltraAddons\Widget\Base' ),$class_name);
+                //ua_elementor()->widgets_manager->register_widget_type( new $class_name() );
             }
         }
         
