@@ -30,7 +30,7 @@ class Button extends Base{
      * @var int Widget Icon.
      */
     public function get_icon() {
-        return 'medilac eicon-button';
+        return 'ultraaddons eicon-button';
     }
     
     /**

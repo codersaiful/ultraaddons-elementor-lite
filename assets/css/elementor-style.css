@@ -1,20 +1,52 @@
 /*.elementor-edit-area {
     width: 100%;
 }*/
-.elementor-panel .elementor-element-wrapper .icon i.ultraaddons:after {
+/*.elementor-panel .elementor-element-wrapper .icon i.ultraaddons:after {
     content: "";
     font-size: 11px;
     position: absolute;
     right: 2px;
     top: 2px;
-    background: url(../images/logo/UltraAddons-Animation-Favicon-small) center center;
+    background: url(../images/logo/UltraAddons-Animation-Favicon-small.gif) center center;
     padding: 2px 5px;
     color: white;
     width: 18px;
     height: 18px;
     background-size: cover;
     opacity: 0.4;
+}*/
+
+.elementor-control .elementor-control-content .elementor-panel-heading-title i.ultraaddons.ua_icon.ua_icon_small {
+    display: block;
+    height: 14px;
+    width: 14px;
+    position: absolute;
+    top: 12px;
+    right: 21px;
+    background: url(../images/icon-deep.png) no-repeat;
+    background-size: contain;
 }
-.elementor-panel .elementor-element-wrapper .elementor-element:hover .icon i.ultraaddons:after {
-opacity: 1;
+.elementor-panel .elementor-element-wrapper .elementor-element .icon i.ultraaddons:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 14px;
+    height: 14px;
+    background: url(../images/icon-light.png) no-repeat;
+    background-size: contain;
 }
+.elementor-panel .elementor-element-wrapper .elementor-element:hover .icon i.ultraaddons:after{
+    background-image: url(../images/icon-deep.png);
+}
+
+/*
+.elementor-panel .elementor-element-wrapper {
+    width: 33% !important;
+}
+.elementor-control .elementor-control-content .elementor-panel-heading-title {
+    color: #0b96ff;
+    font-weight: 700;
+}
+.elementor-panel .elementor-element-wrapper .elementor-element .icon{font-size: 20px;}*/

@@ -43,7 +43,7 @@ class Advance_Heading extends Base{
      * @var int Widget Icon.
      */
     public function get_icon() {
-        return 'medilac eicon-heading';
+        return 'ultraaddons eicon-heading';
     }
     
     /**

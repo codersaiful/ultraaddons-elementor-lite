@@ -6,7 +6,7 @@ use Elementor\Element_Base;
 
 defined('ABSPATH') || die();
 
-class Test {
+class Wrapper_Link {
 
 	public static function init() {
 		add_action( 'elementor/element/column/section_advanced/after_section_end', [ __CLASS__, 'add_controls_section' ], 1 );
@@ -23,18 +23,19 @@ class Test {
 			$tabs = Controls_Manager::TAB_LAYOUT;
 		}
 
+		
 		$element->start_controls_section(
-			'_section_ha_wrapper_links',
+			'_section_wrapper_link',
 			[
-				'label' => __( 'Testing Mesting', 'ultraaddons' ) . ha_get_section_icon(),
+				'label' => __( 'Wrapper Link', 'ultraaddons' ) . ultraaddons_icon_markup(),
 				'tab'   => $tabs,
 			]
 		);
 
 		$element->add_control(
-			'ua_element_linkss',
+			'element_link',
 			[
-				'label'       => __( 'Link', 'ultraaddons' ),
+				'label'       => __( 'Desired URL', 'ultraaddons' ),
 				'type'        => Controls_Manager::URL,
 				'dynamic'     => [
 					'active' => true,
@@ -44,16 +45,27 @@ class Test {
 		);
 
 		$element->end_controls_section();
+                
+                
 	}
 
+        /**
+         * Adding Attribute in wrapper
+         * which called as _wrapper
+         * 
+         * @access public
+         * @since 1.0.0.4
+         * 
+         * @param Element_Base $element
+         */
 	public static function before_section_render( Element_Base $element ) {
-		$link_settings = $element->get_settings_for_display( 'ua_element_link' );
+		$link_settings = $element->get_settings_for_display( 'element_link' );
 
 		if ( $link_settings && ! empty( $link_settings['url'] ) ) {
 			$element->add_render_attribute(
-				'_wrapperss',
+				'_wrapper',
 				[
-					'data-ha-element-link' => json_encode( $link_settings ),
+					'data-element_link' => json_encode( $link_settings ),
 					'style' => 'cursor: pointer'
 				]
 			);
@@ -61,4 +73,4 @@ class Test {
 	}
 }
 
-Test::init();
+Wrapper_Link::init();
