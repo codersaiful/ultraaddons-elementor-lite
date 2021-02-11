@@ -35,9 +35,9 @@
   0% {
     transform: rotate(1deg);
   }
-  50% {
+/*  50% {
     transform: rotate(88deg);
-  }
+  }*/
   100% {
     transform: rotate(360deg);
   }
@@ -63,7 +63,7 @@
     animation-duration: 1.5s; 
     animation-timing-function: ease-out; 
     animation-delay: 0;
-    animation-direction: alternate;
+    /*animation-direction: alternate;*/
     animation-iteration-count: infinite;
     animation-fill-mode: none;
     animation-play-state: running;
