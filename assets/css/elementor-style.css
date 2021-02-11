@@ -16,6 +16,35 @@
     opacity: 0.4;
 }*/
 
+/*********Animation Effect*********/
+
+@keyframes ultraaddons-icon-ultra-effect {
+  0% {
+    transform: scale(.3) rotate3d(1, 1, 1, 1deg);
+    
+  }
+  50% {
+    transform: rotate3d(1, 1, 1, 211deg)
+  }
+  100% {
+    transform: scale(1.5) rotate3d(1, 1, 1, 1deg);
+    
+  }
+}
+@keyframes ultraaddons-icon-ultra-effect-rotate {
+  0% {
+    transform: rotate(1deg);
+  }
+  50% {
+    transform: rotate(88deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*********Animation Effect End*********/
+
 .elementor-control .elementor-control-content .elementor-panel-heading-title i.ultraaddons.ua_icon.ua_icon_small {
     display: block;
     height: 14px;
@@ -28,6 +57,22 @@
 }
 .elementor-control.elementor-open .elementor-control-content .elementor-panel-heading-title i.ultraaddons.ua_icon.ua_icon_small {
     background-image: url(../images/svg-icon/color.svg);
+}
+.elementor-control.elementor-control-_section_ulltra_effects .elementor-control-content .elementor-panel-heading-title i.ultraaddons.ua_icon.ua_icon_small{
+    animation-name: ultraaddons-icon-ultra-effect-rotate !important;
+    animation-duration: 1.5s; 
+    animation-timing-function: ease-out; 
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-fill-mode: none;
+    animation-play-state: running;
+}
+.elementor-control.elementor-control-_section_ulltra_effects .elementor-control-content:hover .elementor-panel-heading-title i.ultraaddons.ua_icon.ua_icon_small{
+    animation-duration: 0.5s; 
+}
+.elementor-control.elementor-open .elementor-control-content .elementor-panel-heading-title i.ultraaddons.ua_icon.ua_icon_small{
+    animation-duration: 1s; 
 }
 .elementor-panel .elementor-element-wrapper .elementor-element .icon i.ultraaddons:after {
     content: "";
@@ -44,6 +89,8 @@
     background-image: url(../images/svg-icon/color.svg);
 }
 
+
+
 .elementor-control.elementor-control-_section_wrapper_link .elementor-control-content,
 .elementor-control.elementor-control-_section_hover_animation .elementor-control-content,
 .elementor-control.elementor-control-_section_ulltra_effects .elementor-control-content
@@ -53,7 +100,8 @@
 }
 
 .elementor-control.elementor-control-_section_ulltra_effects .elementor-panel-heading-title.elementor-section-title {
-    color: #ff5722;
+    color: #9c27b0;
+    /*color: #ff5722;*/
 }
 
 
