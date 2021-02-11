@@ -62,8 +62,17 @@ class Extensions_Manager{
     public static function get_list(){
         return [
             'wrapper-link'=> [
-                    'name'  => 'Wrapper Link',
+                    'name'  => __( 'Wrapper Link', 'ultraaddons' ),
             ],
+            
+            'hover-effect'=> [
+                    'name'  => __( 'Hover Effect', 'ultraaddons' ),
+            ],
+            
+            'ultra-effects'=> [
+                    'name'  => __( 'Ultra Effect', 'ultraaddons' ),
+            ],
+            
         ];
     }
     

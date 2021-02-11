@@ -44,6 +44,19 @@
     background-image: url(../images/svg-icon/color.svg);
 }
 
+.elementor-control.elementor-control-_section_wrapper_link .elementor-control-content,
+.elementor-control.elementor-control-_section_hover_animation .elementor-control-content,
+.elementor-control.elementor-control-_section_ulltra_effects .elementor-control-content
+{
+    background: #fffef6c7;
+    /*background: #fffef6;*/
+}
+
+.elementor-control.elementor-control-_section_ulltra_effects .elementor-panel-heading-title.elementor-section-title {
+    color: #ff5722;
+}
+
+
 /*
 .elementor-panel .elementor-element-wrapper {
     width: 33% !important;
