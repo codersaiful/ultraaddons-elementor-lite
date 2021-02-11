@@ -38,6 +38,8 @@ class Loader {
 
     public function __construct( $widgetsArray = false ) {
 
+        //File Including on init
+        add_action( 'init', [ $this, 'include_on_init' ] );
         
         $this->widgetsArray = $widgetsArray;
         
@@ -73,7 +75,11 @@ class Loader {
         include_once $base_file;
     }
     
-    /**
+    public function include_on_init(){
+        include_once ULTRA_ADDONS_DIR . 'inc/base/extentions-manager.php';
+    }
+
+        /**
      * Init Widgets
      *
      * Include widgets files and register them
