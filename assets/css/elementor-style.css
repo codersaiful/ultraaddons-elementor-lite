@@ -23,8 +23,11 @@
     position: absolute;
     top: 12px;
     right: 21px;
-    background: url(../images/icon-deep.png) no-repeat;
+    background: url(../images/svg-icon/black.svg) no-repeat;
     background-size: contain;
+}
+.elementor-control.elementor-open .elementor-control-content .elementor-panel-heading-title i.ultraaddons.ua_icon.ua_icon_small {
+    background-image: url(../images/svg-icon/color.svg);
 }
 .elementor-panel .elementor-element-wrapper .elementor-element .icon i.ultraaddons:after {
     content: "";
@@ -34,11 +37,11 @@
     right: 3px;
     width: 14px;
     height: 14px;
-    background: url(../images/icon-light.png) no-repeat;
+    background: url(../images/svg-icon/black.svg) no-repeat;
     background-size: contain;
 }
 .elementor-panel .elementor-element-wrapper .elementor-element:hover .icon i.ultraaddons:after{
-    background-image: url(../images/icon-deep.png);
+    background-image: url(../images/svg-icon/color.svg);
 }
 
 /*

@@ -66,7 +66,8 @@ class Wrapper_Link {
 				'_wrapper',
 				[
 					'data-element_link' => json_encode( $link_settings ),
-					'style' => 'cursor: pointer'
+					'style' => 'cursor: pointer',
+					'class' => 'ua-wrapper-link'
 				]
 			);
 		}
