@@ -1,0 +1,44 @@
+
+/*********** UltraAddons Style - In Plugin List ****************/
+
+table.wp-list-table.widefat.plugins tr[data-slug='addons-ultraaddons-elementor-lite'] td.plugin-title.column-primary strong,
+#elementor-panel-category-addons-ultra-elementor .elementor-panel-category-title{
+    color: #db3157;
+    background: linear-gradient(to right, #532d70 0%, #db3157 45%);
+    background: -webkit-linear-gradient(to right, #532d70 4%, #db3157 58%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /*transition: 10s all;*/
+    animation-name: ultraaddons-background-animation !important;
+    animation-duration: 5.5s; 
+    animation-timing-function: ease-out; 
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-fill-mode: none;
+    animation-play-state: running;
+}
+table.wp-list-table.widefat.plugins tr[data-slug='addons-ultraaddons-elementor-lite']:hover td.plugin-title.column-primary strong,
+#elementor-panel-category-addons-ultra-elementor:hover .elementor-panel-category-title {
+    background: linear-gradient(to right, #ff0039 0%,#411365 45%);
+    background: -webkit-linear-gradient(to right, #ff0039 0%,#411365 100%, #ff0039 68%);
+    /*#411365*/
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+@keyframes ultraaddons-background-animation {
+  0% {
+    background: linear-gradient(to right, #532d70 0%, #db3157 45%);
+    background: -webkit-linear-gradient(to right, #532d70 4%, #db3157 58%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+  }
+  100% {
+    background: linear-gradient(to right, #532d70 40%, #db3157 95%);
+    background: -webkit-linear-gradient(to right, #532d70 40%, #db3157 87%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+/*********** UltraAddons Style - In Plugin List | End Here ****************/

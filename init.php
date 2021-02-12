@@ -46,6 +46,8 @@ define( 'ULTRA_ADDONS_WIDGET_HELP_ULR', trailingslashit( 'https://example.com/wi
 define( 'ULTRA_ADDONS_MINIMUM_ELEMENTOR_VERSION', '2.5.0' );
 define( 'ULTRA_ADDONS_MINIMUM_PHP_VERSION', '5.4' );
 
+$ultraaddons_capability = apply_filters( 'ultraaddons_capability', 'manage_ultraaddons' );
+define( 'ULTRA_ADDONS_CAPABILITY', $ultraaddons_capability );
 
 /**
  * Main ULTRA_ADDONS Addons Class
@@ -175,7 +177,7 @@ final class UltraAddons {
                 include_once ULTRA_ADDONS_DIR . 'inc/functions.php';
                 
                 add_action('admin_enqueue_scripts', [$this,'admin_style']);
-
+                
 		// Check if Elementor installed and activated
 		if ( ! did_action( 'elementor/loaded' ) ) {
 			add_action( 'admin_notices', [ $this, 'admin_notice_missing_main_plugin' ] );
@@ -209,7 +211,7 @@ final class UltraAddons {
 
 	}
 
-	/**
+        /**
 	 * Admin notice
 	 *
 	 * Warning when the site doesn't have Elementor installed or activated.
@@ -290,3 +292,24 @@ final class UltraAddons {
 }
 
 UltraAddons::instance();
+register_activation_hook( __FILE__, 'ultraaddons_elementor_activation' );
+
+/**
+ * Activation Hook.
+ * 
+ * Our Procedure to this Activation is:
+ * ************************************
+ * ** Assign Role for manage Permision
+ * ** next Process
+ * ************************************
+ * 
+ * @return void Process on Plugin Instalation
+ */
+function ultraaddons_elementor_activation(){
+    
+    /**
+     * Assigning New Role From UltraAddons Plugin.
+     */
+    $role = get_role( 'administrator' );
+    $role->add_cap( ULTRA_ADDONS_CAPABILITY );
+}
