@@ -19,6 +19,13 @@ defined( 'ABSPATH' ) || die();
  * this will return Class name without Namespace
  * *************************
  * 
+ * ************************
+ * ####### IMPORTANT #######
+ * This class name space has now UltraAddons\Widget
+ * But if we use it as Base
+ * then we have to add 'use UltraAddons\Base\Base as Base;' in each widget
+ * ************************
+ * 
  * @since 1.0.0.1
  * 
  * @author Saiful Islam
