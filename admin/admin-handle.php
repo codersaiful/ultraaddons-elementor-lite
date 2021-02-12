@@ -2,6 +2,7 @@
 namespace UltraAddons\Admin;
 
 defined( 'ABSPATH' ) || die();
+
 /**
  * Full Admin are controlled from this Admin_Handle class.
  * 
