@@ -32,33 +32,44 @@ class Loader {
      * currently we insert at the bottom of this class
      *
      * @var array List of Widgets.  
+     * 
+     * @access public
      */
     public $widgetsArray = array();
 
 
     public function __construct( $widgetsArray = false ) {
-
         
-        $this->widgetsArray = $widgetsArray;
-        
-        if( $this->widgetsArray && is_array( $this->widgetsArray ) ){
-            
-            //Register and Including Base and common Class file
-            add_action( 'elementor/widgets/widgets_registered', [ $this, 'register' ],1 );
-            
-            //Register Widgets All
-            add_action( 'elementor/widgets/widgets_registered', [ $this, 'init_widgets' ] );
-            //add_action( 'elementor/controls/controls_registered', [ $this, 'init_controls' ] );
-            add_action( 'elementor/elements/categories_registered', [ $this, 'add_categories' ] );
-
-            //Add Style for Widgets
-            add_action( 'elementor/frontend/after_enqueue_styles', [ $this, 'widget_enqueue' ] );
-            add_action( 'wp_enqueue_scripts', [ $this, 'wp_enqueue_scripts' ] );
-            
-        }else{
-            $this->widgetsArray = array();
+        if( ! is_array( $widgetsArray ) ){
+            return;
         }
-        //var_dump($this->widgetsArray);
+        
+        /**
+         * Assigning $this->widgetsArray Array
+         * Over Constructor
+         * 
+         * @access public
+         */
+        $this->widgetsArray = $widgetsArray;
+
+        //File Including on init
+        add_action( 'init', [ $this, 'include_on_init' ] );
+             
+        //Register and Including Base and common Class file
+        add_action( 'elementor/widgets/widgets_registered', [ $this, 'register' ],1 );
+
+        //Register Widgets All
+        add_action( 'elementor/widgets/widgets_registered', [ $this, 'init_widgets' ] );
+        
+        //add_action( 'elementor/controls/controls_registered', [ $this, 'init_controls' ] );
+        add_action( 'elementor/elements/categories_registered', [ $this, 'add_categories' ] );
+
+        //Add Style for Widgets
+        add_action( 'elementor/frontend/after_enqueue_styles', [ $this, 'widget_enqueue' ] );
+        add_action( 'wp_enqueue_scripts', [ $this, 'wp_enqueue_scripts' ] );
+
+        //For Editor Screen
+        add_action('elementor/editor/before_enqueue_scripts', [ $this, 'elementor_screen_style' ]);
         
     }
 
@@ -73,6 +84,10 @@ class Loader {
         include_once $base_file;
     }
     
+    public function include_on_init(){
+        include_once ULTRA_ADDONS_DIR . 'inc/base/extentions-manager.php';
+    }
+
     /**
      * Init Widgets
      *
@@ -108,8 +123,7 @@ class Loader {
       
 
     }
-    
-    
+
     /**
      * Elementor Widget Related 
      * All script will stay here
@@ -132,16 +146,7 @@ class Loader {
      * @date Fri 15.1.2021 at Home
      */
     public function wp_enqueue_scripts(){
-        
-        /**
-         * Load at elementor editing screen 
-         * 
-         * Mainly I have added an icon for our Elementor Widget
-         * over this CSS file
-         */
-        wp_register_style( 'ultraaddons-screen-style', ULTRA_ADDONS_ASSETS . 'css/elementor-style.css' );
-        wp_enqueue_style( 'ultraaddons-screen-style' );
-        
+
         /**
          * Common CSS file for all Widgets
          * 
@@ -164,12 +169,35 @@ class Loader {
     }
     
     /**
+     * Style for Elementor Load Screen
+     * 
+     * *******************
+     * To Aply style on Elementor Editor Screen
+     * such as for Section, Section Title, secion Icon, box icon
+     * *******************
+     * 
+     * @access public
+     * 
+     * @since 1.0.0.4
+     * @return void Adding Elementor Screen Style File
+     */
+    public function elementor_screen_style() {
+        
+        /**
+         * Load at elementor editing screen 
+         * 
+         * Mainly I have added an icon for our Elementor Widget
+         * over this CSS file
+         */
+        wp_register_style( 'ultraaddons-screen-style', ULTRA_ADDONS_ASSETS . 'css/elementor-style.css' );
+        wp_enqueue_style( 'ultraaddons-screen-style' );
+    }
+    /**
      * Enqueue CSS file based on Widgets Class
      * 
      * @since 1.0.0.1
      */
     public function widget_enqueue() {
-        
         
         foreach( $this->widgetsArray as $widget_key => $widget ){
             $name = isset( $widget['name'] ) ? $widget['name'] : '';

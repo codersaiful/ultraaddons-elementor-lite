@@ -1,20 +1,116 @@
 /*.elementor-edit-area {
     width: 100%;
 }*/
-.elementor-panel .elementor-element-wrapper .icon i.ultraaddons:after {
+/*.elementor-panel .elementor-element-wrapper .icon i.ultraaddons:after {
     content: "";
     font-size: 11px;
     position: absolute;
     right: 2px;
     top: 2px;
-    background: url(../images/logo/UltraAddons-Animation-Favicon-small) center center;
+    background: url(../images/logo/UltraAddons-Animation-Favicon-small.gif) center center;
     padding: 2px 5px;
     color: white;
     width: 18px;
     height: 18px;
     background-size: cover;
     opacity: 0.4;
+}*/
+
+/*********Animation Effect*********/
+
+@keyframes ultraaddons-icon-ultra-effect {
+  0% {
+    transform: scale(.3) rotate3d(1, 1, 1, 1deg);
+    
+  }
+  50% {
+    transform: rotate3d(1, 1, 1, 211deg)
+  }
+  100% {
+    transform: scale(1.5) rotate3d(1, 1, 1, 1deg);
+    
+  }
 }
-.elementor-panel .elementor-element-wrapper .elementor-element:hover .icon i.ultraaddons:after {
-opacity: 1;
+@keyframes ultraaddons-icon-ultra-effect-rotate {
+  0% {
+    transform: rotate(1deg);
+  }
+/*  50% {
+    transform: rotate(88deg);
+  }*/
+  100% {
+    transform: rotate(360deg);
+  }
 }
+
+/*********Animation Effect End*********/
+
+.elementor-control .elementor-control-content .elementor-panel-heading-title i.ultraaddons.ua_icon.ua_icon_small {
+    display: block;
+    height: 14px;
+    width: 14px;
+    position: absolute;
+    top: 12px;
+    right: 21px;
+    background: url(../images/svg-icon/black.svg) no-repeat;
+    background-size: contain;
+}
+.elementor-control.elementor-open .elementor-control-content .elementor-panel-heading-title i.ultraaddons.ua_icon.ua_icon_small {
+    background-image: url(../images/svg-icon/color.svg);
+}
+.elementor-control.elementor-control-_section_ulltra_effects .elementor-control-content .elementor-panel-heading-title i.ultraaddons.ua_icon.ua_icon_small{
+    animation-name: ultraaddons-icon-ultra-effect-rotate !important;
+    animation-duration: 1.5s; 
+    animation-timing-function: ease-out; 
+    animation-delay: 0;
+    /*animation-direction: alternate;*/
+    animation-iteration-count: infinite;
+    animation-fill-mode: none;
+    animation-play-state: running;
+}
+.elementor-control.elementor-control-_section_ulltra_effects .elementor-control-content:hover .elementor-panel-heading-title i.ultraaddons.ua_icon.ua_icon_small{
+    animation-duration: 0.5s; 
+}
+.elementor-control.elementor-open .elementor-control-content .elementor-panel-heading-title i.ultraaddons.ua_icon.ua_icon_small{
+    animation-duration: 1s; 
+}
+.elementor-panel .elementor-element-wrapper .elementor-element .icon i.ultraaddons:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 14px;
+    height: 14px;
+    background: url(../images/svg-icon/black.svg) no-repeat;
+    background-size: contain;
+}
+.elementor-panel .elementor-element-wrapper .elementor-element:hover .icon i.ultraaddons:after{
+    background-image: url(../images/svg-icon/color.svg);
+}
+
+
+
+.elementor-control.elementor-control-_section_wrapper_link .elementor-control-content,
+.elementor-control.elementor-control-_section_hover_animation .elementor-control-content,
+.elementor-control.elementor-control-_section_ulltra_effects .elementor-control-content
+{
+    background: #fffef6c7;
+    /*background: #fffef6;*/
+}
+
+.elementor-control.elementor-control-_section_ulltra_effects .elementor-panel-heading-title.elementor-section-title {
+    color: #9c27b0;
+    /*color: #ff5722;*/
+}
+
+
+/*
+.elementor-panel .elementor-element-wrapper {
+    width: 33% !important;
+}
+.elementor-control .elementor-control-content .elementor-panel-heading-title {
+    color: #0b96ff;
+    font-weight: 700;
+}
+.elementor-panel .elementor-element-wrapper .elementor-element .icon{font-size: 20px;}*/
