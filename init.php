@@ -196,8 +196,7 @@ final class UltraAddons {
 
                 if( is_admin() ){
                     
-                    include_once ULTRA_ADDONS_DIR . 'admin/menu_plugin_setting_link.php'; //Menu/link show in Plugin Name
-                    include_once ULTRA_ADDONS_DIR . 'admin/enqueue.php'; //Menu/link show in Plugin Name
+                    include_once ULTRA_ADDONS_DIR . 'admin/admin-handle.php';
                 }
                 
                 //var_dump(ultraaddons_elementor());
@@ -291,99 +290,3 @@ final class UltraAddons {
 }
 
 UltraAddons::instance();
-
-
-//
-///**
-// * The journey of a thousand miles starts here.
-// *
-// * @return void Some voids are not really void, you have to explore to figure out why not!
-// */
-//function ha_let_the_journey_begin() {
-//    require( ULTRA_ADDONS_DIR . 'inc/functions.php' );
-//
-//    // Check for required PHP version
-//    if ( version_compare( PHP_VERSION, ULTRA_ADDONS_MINIMUM_PHP_VERSION, '<' ) ) {
-//        add_action( 'admin_notices', 'ha_required_php_version_missing_notice' );
-//        return;
-//    }
-//
-//    // Check if Elementor installed and activated
-//    if ( ! did_action( 'elementor/loaded' ) ) {
-//        add_action( 'admin_notices', 'ha_elementor_missing_notice' );
-//        return;
-//    }
-//
-//    // Check for required Elementor version
-//    if ( ! version_compare( ELEMENTOR_VERSION, ULTRA_ADDONS_MINIMUM_ELEMENTOR_VERSION, '>=' ) ) {
-//        add_action( 'admin_notices', 'ha_required_elementor_version_missing_notice' );
-//        return;
-//    }
-//
-//    require ULTRA_ADDONS_DIR . 'base.php';
-//    \Happy_Addons\Elementor\Base::instance();
-//}
-//
-//add_action( 'plugins_loaded', 'ha_let_the_journey_begin' );
-//
-///**
-// * Admin notice for required php version
-// *
-// * @return void
-// */
-//function ha_required_php_version_missing_notice() {
-//    $notice = sprintf(
-//        /* translators: 1: Plugin name 2: PHP 3: Required PHP version */
-//        esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'happy-elementor-addons' ),
-//        '<strong>' . esc_html__( 'Happy Elementor Addons', 'happy-elementor-addons' ) . '</strong>',
-//        '<strong>' . esc_html__( 'PHP', 'happy-elementor-addons' ) . '</strong>',
-//        ULTRA_ADDONS_MINIMUM_PHP_VERSION
-//    );
-//
-//    printf( '<div class="notice notice-warning is-dismissible"><p style="padding: 13px 0">%1$s</p></div>', $notice );
-//}
-//
-///**
-// * Admin notice for elementor if missing
-// *
-// * @return void
-// */
-//function ha_elementor_missing_notice() {
-//    $notice = ha_kses_intermediate( sprintf(
-//        /* translators: 1: Plugin name 2: Elementor 3: Elementor installation link */
-//        __( '%1$s requires %2$s to be installed and activated to function properly. %3$s', 'happy-elementor-addons' ),
-//        '<strong>' . __( 'Happy Elementor Addons', 'happy-elementor-addons' ) . '</strong>',
-//        '<strong>' . __( 'Elementor', 'happy-elementor-addons' ) . '</strong>',
-//        '<a href="' . esc_url( admin_url( 'plugin-install.php?s=Elementor&tab=search&type=term' ) ) . '">' . __( 'Please click on this link and install Elementor', 'happy-elementor-addons' ) . '</a>'
-//    ) );
-//
-//    printf( '<div class="notice notice-warning is-dismissible"><p style="padding: 13px 0">%1$s</p></div>', $notice );
-//}
-//
-///**
-// * Admin notice for required elementor version
-// *
-// * @return void
-// */
-//function ha_required_elementor_version_missing_notice() {
-//    $notice = sprintf(
-//        /* translators: 1: Plugin name 2: Elementor 3: Required Elementor version */
-//        esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'happy-elementor-addons' ),
-//        '<strong>' . esc_html__( 'Happy Elementor Addons', 'happy-elementor-addons' ) . '</strong>',
-//        '<strong>' . esc_html__( 'Elementor', 'happy-elementor-addons' ) . '</strong>',
-//        ULTRA_ADDONS_MINIMUM_ELEMENTOR_VERSION
-//    );
-//
-//    printf( '<div class="notice notice-warning is-dismissible"><p style="padding: 13px 0">%1$s</p></div>', $notice );
-//}
-//
-///**
-// * Register actions that should run on activation
-// *
-// * @return void
-// */
-//function ha_register_activation_hook() {
-//	add_option( ULTRA_ADDONS_REDIRECTION_FLAG, true );
-//}
-//
-//register_activation_hook( ULTRA_ADDONS__FILE__, 'ha_register_activation_hook' );
