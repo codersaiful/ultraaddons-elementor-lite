@@ -2,6 +2,7 @@
 namespace UltraAddons\Widget;
 
 use Elementor\Widget_Base;
+use UltraAddons\Core\Widgets_Manager;
 
 defined( 'ABSPATH' ) || die();
 
@@ -73,7 +74,7 @@ class Base extends Widget_Base{
      * @return String
      */
     public function get_title() {
-        $widgetsArray = \UltraAddons\Base\Widgets_Manager::widgets();
+        $widgetsArray = Widgets_Manager::widgets();
 
         $title = $this->get_pure_name();
         

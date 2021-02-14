@@ -1,5 +1,5 @@
 <?php
-namespace UltraAddons\Base;
+namespace UltraAddons\Core;
 
 /**
  * Extension of UltraAddons Manager

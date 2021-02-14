@@ -1,6 +1,8 @@
 <?php
 namespace UltraAddons;
 
+use UltraAddons\Core\Widgets_Manager;
+
 defined( 'ABSPATH' ) || die();
 
 /**
@@ -41,7 +43,7 @@ class Loader {
     public function __construct() {
         
         /**
-         * Widget has come from Plugin/ultraaddons-elementor-lite/inc/base/widgets_array.php file
+         * Widget has come from Plugin/ultraaddons-elementor-lite/inc/core/widgets_array.php file
          * Controll by Widgets_Manager Object/Class
          * 
          * In that file, The Array's Each Item array formate like bellow:
@@ -59,11 +61,13 @@ class Loader {
          * ****************************
          * and Each $widgets['name'] will be title of the widgets
          * Actually we will handle also it from database.
+         * 
+         * Previous Code of WidgetArray is:
+         * $widgetsArray = include ULTRA_ADDONS_DIR . 'inc/core/widgets_array.php';
          */
+       
+        $widgetsArray = Widgets_Manager::activeWidgets();
         
-        var_dump(\UltraAddons\Base\Widgets_Manager::widgets());
-        $widgetsArray = include ULTRA_ADDONS_DIR . 'inc/base/widgets_array.php';
-
         if( ! is_array( $widgetsArray ) ){
             return;
         }
@@ -109,7 +113,7 @@ class Loader {
     }
     
     public function include_on_init(){
-        include_once ULTRA_ADDONS_DIR . 'inc/base/extentions-manager.php';
+        include_once ULTRA_ADDONS_DIR . 'inc/core/extentions-manager.php';
     }
 
     /**
