@@ -115,6 +115,6 @@ class Widgets_Manager{
         if( is_array( $disable_widgets ) && ! empty( $disable_widgets ) ){
             return $disable_widgets;
         }
-        return ['Button'];
+        return [];//Tested with ['Button']
     }
 }

@@ -17,21 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class Advance_Heading extends Base{
     
     
-    /**
-     * Widget Title.
-     *
-     * Holds the Repeater counter data. Default is `0`.
-     *
-     * @since 1.0.0
-     * @static
-     *
-     * @var int Widget Title.
-     */
-    public function get_title() {
-        return __( 'Advance Heading', 'medilac' );
-    }
-  
-    
+        
     /**
      * Widget Icon.
      *

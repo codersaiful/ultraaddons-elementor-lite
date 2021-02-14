@@ -18,21 +18,6 @@ class Button extends Base{
     
     
     /**
-     * Widget Title.
-     *
-     * Title for Our Button
-     *
-     * @since 1.0.0
-     * @static
-     *
-     * @var int Widget Title.
-     */
-    public function get_title() {
-        return __( 'Button', 'ultraaddons' );
-    }
-  
-
-    /**
      * Widget Icon.
      *
      * Holds the Repeater counter data. Default is `0`.
