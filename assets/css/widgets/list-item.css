@@ -1,0 +1,197 @@
+.ua-list-items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 22px 0;
+}
+
+.ua-list-items li {
+    margin: 0 0 18px;
+    position: relative;
+    width: 100%;
+}
+
+.ua-list-items li i {
+    color: #0FC392;
+    font-size: 18px;
+    margin: 0 5px 0 0;
+    position: absolute;
+    top: 6px;
+    left:0;
+    font-size: 16px;
+    color:#0FC393;
+}
+
+.ua-list-items li h4 {
+    font-size: 18px;
+    font-family: "Roboto",sans-serif;
+    font-weight: 600;
+    color: #21272c;
+    display: inline-block;
+    line-height: 1.6;
+    padding-left: 23px;
+    margin: 0;
+}
+
+.ua-list-items li span{
+    font-size: 16px;
+    color: #5C6B79;
+    display: block;
+    line-height:26px;
+    margin: 0;
+    padding:0 0 0 23px;
+}
+.ua-list-item-wrapper ul {
+    list-style: none;
+}
+.elementor-element.ua-list-col-1 .ua-list-items li{
+    display: block;
+}
+
+
+
+.elementor-element.ua-list-temp-default{
+
+}
+.elementor-element.ua-list-temp-temp-2{
+
+}
+
+
+.ua-list-items {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: wrap;
+    margin: 22px 0;
+}
+
+.ua-list-items li {
+    margin: 0 0 18px;
+    position: relative;
+    width: 100%;
+    box-sizing: content-box;
+}
+
+.ua-list-items li i {
+    color: #0FC392;
+    font-size: 18px;
+    margin: 0 5px 0 0;
+    position: absolute;
+    top: 6px;
+    left:0;
+    font-size: 16px;
+    color:#0FC393;
+}
+
+div.ua-list-temp-default .ua-list-items li i {
+    padding: 0 1px;
+    border-radius: 2px;
+}
+.ua-list-items li h4 {
+    font-size: 18px;
+    font-family: "Roboto",sans-serif;
+    font-weight: 600;
+    color: #21272c;
+    display: inline-block;
+    line-height: 1.6;
+    padding-left: 23px;
+    margin: 0;
+}
+
+.ua-list-items li span{
+    font-size: 16px;
+    color: #5C6B79;
+    display: block;
+    line-height:26px;
+    margin: 0;
+    padding:0 0 0 23px;
+}
+.ua-list-item-wrapper ul {
+    list-style: none;
+}
+.elementor-element.ua-list-col-1 .ua-list-items li{
+    display: block;
+}
+
+/*.elementor-element.ua-list-col-2 .ua-list-items li{
+    width: 48%;
+}
+.elementor-element.ua-list-col-3 .ua-list-items li{
+    width: 30.3333%;
+}
+.elementor-element.ua-list-col-4 .ua-list-items li{
+    width: 23%;
+}*/
+
+
+.elementor-element.ua-list-temp-default{
+
+}
+.elementor-element.ua-list-temp-temp-2{
+
+}
+.elementor-element.ua-list-temp-temp-2{
+
+}
+
+.elementor-element.ua-list-temp-temp-3 .ua-list-items li i,
+.elementor-element.ua-list-temp-temp-2 .ua-list-items li i {
+    width: 58px;
+    height: 58px;
+    /*background-color: gray;*/
+    display: block;
+    font-size: 34px;
+    padding: 12px 12px 12px 14px;
+}
+.elementor-element.ua-list-temp-temp-3 .ua-list-items li i{
+    font-size: 40px;
+    padding: 9px 12px;
+    margin-top: 5px;
+}
+.elementor-element.ua-list-temp-temp-2 .ua-list-items li h4 {
+    padding-left: 70px;
+}
+
+.elementor-element.ua-list-temp-temp-2 .ua-list-items li span.list-item-description {
+    padding-left: 70px;
+    padding-right: 10px;
+}
+.elementor-element.ua-list-temp-temp-2 .ua-list-items li {
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    min-height: 70px;
+    padding-bottom: 15px;
+    box-sizing: content-box;
+}
+.elementor-element.ua-list-temp-temp-2 .ua-list-items li::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    background-color: #ff8b00;
+    height: 1px;
+    width: 70px;
+}
+.list-item-inside {
+    position: relative;
+}
+
+.elementor-element.ua-list-temp-temp-3 .ua-list-items li h4 {
+    padding-left: 55px;
+}
+
+.elementor-element.ua-list-temp-temp-3 .ua-list-items li span.list-item-description {
+    padding-left: 55px;
+    padding-right: 10px;
+}
+.elementor-element.ua-list-temp-temp-3 .ua-list-items li {
+    border: 1px solid rgba(0,0,0,0.07);
+    min-height: 70px;
+    box-sizing: content-box;
+    background: #FFFFFF;
+}
+.elementor-element.ua-list-temp-temp-3 .ua-list-items li .list-item-inside{
+    padding: 15px;
+    margin: 18px 14px 23px 13px;
+}

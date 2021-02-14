@@ -44,3 +44,42 @@ function ultraaddons_icon_markup( $size = 'small' ){
     $markup = "<i class='ultraaddons ua_icon ua_icon_{$size}'></i>";
     return apply_filters( 'ultraaddons_icon_murkup', $markup );
 }
+
+
+function ultraaddons_get_placeholder_image_src( $image = '' ) {
+        $placeholder_image = ULTRA_ADDONS_ASSETS . 'images/no-image.png';
+
+        /**
+         * Get placeholder image source.
+         * 
+         *
+         * Filters the source of the default placeholder image used by Elementor.
+         *
+         * @since 1.0.0
+         *
+         * @param string $placeholder_image The source of the default placeholder image.
+         */
+        $placeholder_image = apply_filters( 'ultraaddons_get_placeholder_image_src', $placeholder_image );
+
+        return $placeholder_image;
+}
+
+/**
+* Checks a control value for being empty, including a string of '0' not covered by PHP's empty().
+*
+* @param mixed $source
+* @param bool|string $key
+*
+* @return bool
+*/
+function ultraaddons_widget_data_is_empty( $source, $key = false ) {
+       if ( is_array( $source ) ) {
+               if ( ! isset( $source[ $key ] ) ) {
+                       return true;
+               }
+
+               $source = $source[ $key ];
+       }
+
+       return '0' !== $source && empty( $source );
+}
