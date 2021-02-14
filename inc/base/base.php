@@ -73,7 +73,15 @@ class Base extends Widget_Base{
      * @return String
      */
     public function get_title() {
-        return $this->get_pure_name();
+        $widgetsArray = \UltraAddons\Base\Widgets_Manager::widgets();
+
+        $title = $this->get_pure_name();
+        
+        if( is_array( $widgetsArray ) && isset( $widgetsArray[$title]['name'] ) && ! empty( $widgetsArray[$title]['name'] ) ){
+            return $widgetsArray[$title]['name'];
+        }
+        
+        return str_replace( '_', ' ', $title );
     }
 
     /**

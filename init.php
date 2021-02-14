@@ -175,6 +175,8 @@ final class UltraAddons {
             
                 //Including Function File. It will stay at the Top of the File
                 include_once ULTRA_ADDONS_DIR . 'inc/functions.php';
+                //Handleling Widgets
+                include_once ULTRA_ADDONS_DIR . 'inc/base/widgets-manager.php';
                 
                 add_action('admin_enqueue_scripts', [$this,'admin_style']);
                 
