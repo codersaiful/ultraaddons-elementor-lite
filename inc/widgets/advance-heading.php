@@ -138,22 +138,7 @@ class Advance_Heading extends Base{
         
     }
     
-    protected function _content_template() {
-        /*
-        ?>
-        <#
-        view.addInlineEditingAttributes( 'avd_heading', 'none' );
-        view.addInlineEditingAttributes( 'avd_sub_heading', 'none' );
-        #>
         
-        <div class="advance-heading-wrapper">
-            <span {{{ view.getRenderAttributeString( 'avd_sub_heading' ) }}}>{{{ settings.avd_sub_heading }}}</span>
-            <h4 class="heading-tag" {{{ view.getRenderAttributeString( 'avd_heading' ) }}}>{{{ settings.avd_heading }}}</h4>
-        </div>
-        <?php
-        */
-    }
-    
     /**
      * General Section for Content Controls
      * 
