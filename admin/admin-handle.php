@@ -84,13 +84,13 @@ class Admin_Handle{
      * return void Displaying menu for User
      */
     public static function admin_menu(){
-        $icon_url = ULTRA_ADDONS_ASSETS . 'images/svg-icon/color.svg';
+        $icon_url = ULTRA_ADDONS_ASSETS . 'images/svg-icon/orginal.svg';
         $menu = [
-            'page_title'    => __( 'UltraAddons ss', 'ultraaddons' ),
-            'menu_title'    => __( 'UltraAddons ssss', 'ultraaddons' ),
+            'page_title'    => __( 'UltraAddons Elementor Addons', 'ultraaddons' ),
+            'menu_title'    => __( 'UltraAddons', 'ultraaddons' ),
             'capability'    => self::$capability,
-            'menu_slug'    => 'ultraaddons-elementor',
-            'function'    => [],
+            'menu_slug'    => 'ultraaddons-elementor-light',
+            'function'    => [ __CLASS__, 'root_page' ],
             'icon_url'    => $icon_url,
             'position'    => 45,
         ];
@@ -99,14 +99,14 @@ class Admin_Handle{
         
         $page_title = isset( $menu['page_title'] ) ? $menu['page_title'] : false;
         $menu_title = isset( $menu['menu_title'] ) ? $menu['menu_title'] : false;
-        $capability = isset( $menu['capability'] ) ? $menu['capability'] : false;
+        $capability = 'manage_woocommerce';//isset( $menu['capability'] ) ? $menu['capability'] : false;
         $menu_slug = isset( $menu['menu_slug'] ) ? $menu['menu_slug'] : false;
         $function = isset( $menu['function'] ) ? $menu['function'] : false;
         $icon_url = isset( $menu['icon_url'] ) ? $menu['icon_url'] : false;
         $position = isset( $menu['position'] ) ? $menu['position'] : false;
         
         
-        add_menu_page($page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position);
+        add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
         
 //        add_submenu_page($parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function, $position);
     }
@@ -125,6 +125,13 @@ class Admin_Handle{
         ];
         
         return apply_filters( 'ultraaddons/admin/sub_menu', self::$sub_menu );
+    }
+    
+    public static function root_page() {
+        ?>
+            
+<h1><?php echo esc_html__( 'Welcome to UltraAddons Addons for Elementor Page Builder.' ); ?></h1>    
+        <?php
     }
 }
 Admin_Handle::init();

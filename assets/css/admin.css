@@ -42,3 +42,17 @@ table.wp-list-table.widefat.plugins tr[data-slug='addons-ultraaddons-elementor-l
   }
 }
 /*********** UltraAddons Style - In Plugin List | End Here ****************/
+
+/****************** Menu Text in Dashboard **********************/
+li#toplevel_page_ultraaddons-elementor-light .wp-menu-image img {
+    max-width: 20px;
+}
+
+/*#adminmenu a.toplevel_page_ultraaddons-elementor{
+    background: linear-gradient(to right, #ff0039 41%,#9822f4 100%)
+    background: -webkit-linear-gradient(to right, #ff0039 0%,#411365 100%, #9822f4 68%);
+    #411365
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}*/
+/****************** Menu Text in Dashboard | END **********************/

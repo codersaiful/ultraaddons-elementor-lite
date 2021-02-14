@@ -12,6 +12,12 @@
  * Domain Path: /languages/
  *
  * @package UltraAddons
+ * 
+ * ********************************
+ * Used Color Code:
+ * #ff00b1 - light of Elementor
+ * 
+ * ********************************
  */
 
 /*
