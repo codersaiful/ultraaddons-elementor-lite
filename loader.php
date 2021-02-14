@@ -1,6 +1,8 @@
 <?php
 namespace UltraAddons;
 
+use UltraAddons\Core\Widgets_Manager;
+
 defined( 'ABSPATH' ) || die();
 
 /**
@@ -38,12 +40,38 @@ class Loader {
     public $widgetsArray = array();
 
 
-    public function __construct( $widgetsArray = false ) {
+    public function __construct() {
+        
+        /**
+         * Widget has come from Plugin/ultraaddons-elementor-lite/inc/core/widgets_array.php file
+         * Controll by Widgets_Manager Object/Class
+         * 
+         * In that file, The Array's Each Item array formate like bellow:
+         * ******************************
+         * 'Button'=> [
+            'name'  => __( 'Button', 'ultraaddons' ),
+            ],
+         * ******************************
+         * 
+         * ### To that Array ####
+         * 
+         * Array key will be name of Class. and name should be like file name
+         * Actually If Aray key: Advance_Title, file name shold be: advance-title.php in widgets folder and advance-title.css in css folder
+         * 
+         * ****************************
+         * and Each $widgets['name'] will be title of the widgets
+         * Actually we will handle also it from database.
+         * 
+         * Previous Code of WidgetArray is:
+         * $widgetsArray = include ULTRA_ADDONS_DIR . 'inc/core/widgets_array.php';
+         */
+       
+        $widgetsArray = Widgets_Manager::activeWidgets();
         
         if( ! is_array( $widgetsArray ) ){
             return;
         }
-        
+
         /**
          * Assigning $this->widgetsArray Array
          * Over Constructor
@@ -85,7 +113,7 @@ class Loader {
     }
     
     public function include_on_init(){
-        include_once ULTRA_ADDONS_DIR . 'inc/base/extentions-manager.php';
+        include_once ULTRA_ADDONS_DIR . 'inc/core/extentions-manager.php';
     }
 
     /**
@@ -100,7 +128,7 @@ class Loader {
     public function init_widgets() {
 
         foreach( $this->widgetsArray as $widget_key => $widget ){
-            $name = isset( $widget['name'] ) ? $widget['name'] : '';
+            $name = $widget_key;//isset( $widget['name'] ) ? $widget['name'] : '';
 
             $name = str_replace('_','-', $name);
             
@@ -112,6 +140,9 @@ class Loader {
 
             if( file_exists( $file ) ){
                 include_once $file;
+            }else{
+                $error = printf( esc_html__( "The file ( %s ) of [%s] Class is not founded.", 'ultraaddons' ), $file, $name );
+                $this->errors[$widget_key] = $error;
             }
             
             if( $class_name && class_exists( $class_name ) ){
@@ -200,7 +231,7 @@ class Loader {
     public function widget_enqueue() {
         
         foreach( $this->widgetsArray as $widget_key => $widget ){
-            $name = isset( $widget['name'] ) ? $widget['name'] : '';
+            $name = $widget_key;//isset( $widget['name'] ) ? $widget['name'] : '';
 
             $name = str_replace('_','-', $name);
             $name = strtolower( $name );
@@ -268,25 +299,4 @@ class Loader {
 
 }
 
-/**
- * List of Widget.
- * 
- * All of Supported widget will add here as array.
- * 
- * @important Index key of this array is not used yet. can be use later.
- * 
- * @author Saiful
- */
-$widgetsArray = [
-    
-    'Button'=> [
-            'name'  => __( 'Button', 'ultraaddons' ),
-    ],
-    
-    'Advance_Heading'=> [
-            'name'  => __( 'Advance_Heading', 'ultraaddons' ),
-    ],
-    
-];
-
-new Loader( $widgetsArray );//( $widgetsArray );
+new Loader();//( $widgetsArray );

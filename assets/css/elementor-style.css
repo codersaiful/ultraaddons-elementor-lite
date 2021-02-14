@@ -56,7 +56,7 @@
     background-size: contain;
 }
 .elementor-control.elementor-open .elementor-control-content .elementor-panel-heading-title i.ultraaddons.ua_icon.ua_icon_small {
-    background-image: url(../images/svg-icon/color.svg);
+    background-image: url(../images/svg-icon/elementor-color.svg);
 }
 .elementor-control.elementor-control-_section_ulltra_effects .elementor-control-content .elementor-panel-heading-title i.ultraaddons.ua_icon.ua_icon_small{
     animation-name: ultraaddons-icon-ultra-effect-rotate !important;
@@ -86,7 +86,7 @@
     background-size: contain;
 }
 .elementor-panel .elementor-element-wrapper .elementor-element:hover .icon i.ultraaddons:after{
-    background-image: url(../images/svg-icon/color.svg);
+    background-image: url(../images/svg-icon/elementor-color.svg);
 }
 
 

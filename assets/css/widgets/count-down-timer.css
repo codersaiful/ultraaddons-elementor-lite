@@ -1,7 +1,7 @@
 /*   Stethoscope  Section CSS
 -------------------------------------------*/
 
-.mc-coun-down-timer-wrapper .mc-coun-down-timer{
+.ua-coun-down-timer-wrapper .ua-coun-down-timer{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,7 +9,7 @@
     font-size: 36px;
     padding-bottom: 5rem;
 }
-.mc-coun-down-timer-wrapper .mc-coun-down-timer .single-date {
+.ua-coun-down-timer-wrapper .ua-coun-down-timer .single-date {
     background-color: #fff;
     border-radius: 50%;
     padding: 25px;
@@ -20,12 +20,12 @@
     box-shadow: 0px 15px 25px 5px rgba(0,0,0,0.1);
 }
 
-.mc-coun-down-timer-wrapper .mc-coun-down-timer .single-date span:nth-child(1) {
+.ua-coun-down-timer-wrapper .ua-coun-down-timer .single-date span:nth-child(1) {
     font: bold 46px Roboto;
     color: #021429;
 }
 
-.mc-coun-down-timer-wrapper .mc-coun-down-timer .single-date span:nth-child(2) {
+.ua-coun-down-timer-wrapper .ua-coun-down-timer .single-date span:nth-child(2) {
     color: #5c6b79;
     font: normal 16px Roboto;
     font-weight: normal;

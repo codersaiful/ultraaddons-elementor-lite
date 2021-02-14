@@ -2,6 +2,7 @@
 namespace UltraAddons\Widget;
 
 use Elementor\Widget_Base;
+use UltraAddons\Core\Widgets_Manager;
 
 defined( 'ABSPATH' ) || die();
 
@@ -18,6 +19,13 @@ defined( 'ABSPATH' ) || die();
  * Declared a new method get_pure_name()
  * this will return Class name without Namespace
  * *************************
+ * 
+ * ************************
+ * ####### IMPORTANT #######
+ * This class name space has now UltraAddons\Widget
+ * But if we use it as Base
+ * then we have to add 'use UltraAddons\Base\Base as Base;' in each widget
+ * ************************
  * 
  * @since 1.0.0.1
  * 
@@ -66,7 +74,15 @@ class Base extends Widget_Base{
      * @return String
      */
     public function get_title() {
-        return $this->get_pure_name();
+        $widgetsArray = Widgets_Manager::widgets();
+
+        $title = $this->get_pure_name();
+        
+        if( is_array( $widgetsArray ) && isset( $widgetsArray[$title]['name'] ) && ! empty( $widgetsArray[$title]['name'] ) ){
+            return $widgetsArray[$title]['name'];
+        }
+        
+        return str_replace( '_', ' ', $title );
     }
 
     /**

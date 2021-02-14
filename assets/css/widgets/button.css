@@ -1,12 +1,12 @@
-.medilac-button-wrapper{display: inline;}
-.medilac-button-wrapper.fullwidth,
-.medilac-button-wrapper.center,
-.medilac-button-wrapper.left,
-.medilac-button-wrapper.right{
+.ultraaddons-button-wrapper{display: inline;}
+.ultraaddons-button-wrapper.fullwidth,
+.ultraaddons-button-wrapper.center,
+.ultraaddons-button-wrapper.left,
+.ultraaddons-button-wrapper.right{
     display: block;
     width: 100%;
 }
-.medilac-button-wrapper .medilac-button {
+.ultraaddons-button-wrapper .ultraaddons-button {
     display: inline-block;
     font-size: 16px;
     color: #fff;
@@ -20,32 +20,32 @@
     transition: 0.3s;
 }
 
-.medilac-button-wrapper .medilac-button.xs{padding: 4px 18px;}
-.medilac-button-wrapper .medilac-button.sm{padding: 10px 25px;}
-.medilac-button-wrapper .medilac-button.md{}
-.medilac-button-wrapper .medilac-button.lg{
+.ultraaddons-button-wrapper .ultraaddons-button.xs{padding: 4px 18px;}
+.ultraaddons-button-wrapper .ultraaddons-button.sm{padding: 10px 25px;}
+.ultraaddons-button-wrapper .ultraaddons-button.md{}
+.ultraaddons-button-wrapper .ultraaddons-button.lg{
     padding: 15px 46px;
     font-size: 22px;
 }
-.medilac-button-wrapper .medilac-button.xl{
+.ultraaddons-button-wrapper .ultraaddons-button.xl{
     padding: 18px 75px;
     font-size: 30px;
 }
 
-.medilac-button-wrapper.center .medilac-button{
+.ultraaddons-button-wrapper.center .ultraaddons-button{
     
 }
-.medilac-button-wrapper.left .medilac-button{
+.ultraaddons-button-wrapper.left .ultraaddons-button{
     
 }
-.medilac-button-wrapper.right .medilac-button{
+.ultraaddons-button-wrapper.right .ultraaddons-button{
     
 }
-.medilac-button-wrapper.fullwidth .medilac-button{
+.ultraaddons-button-wrapper.fullwidth .ultraaddons-button{
     width: 100%;
 }
 
-.medilac-button-wrapper .medilac-button:hover {
+.ultraaddons-button-wrapper .ultraaddons-button:hover {
     color: #0fc392;
     color: var(--medilac-primary);
     border-color: #0fc392;
@@ -53,45 +53,45 @@
     background-color: transparent;
 }
 
-.medilac-button-wrapper.right {
+.ultraaddons-button-wrapper.right {
     text-align: right;
 }
-.medilac-button-wrapper.center {
+.ultraaddons-button-wrapper.center {
     text-align: center;
 }
-.medilac-button-wrapper.left {
+.ultraaddons-button-wrapper.left {
     text-align: left;
 }
-.medilac-button-container .medilac-button-wrapper {
+.ultraaddons-element.ua-element-button .ultraaddons-button-wrapper {
     display: flex;
     column-gap: 20px;
 }
 
-.medilac-button-container .medilac-button {
+.ultraaddons-element.ua-element-button .ultraaddons-button {
     display: flex;
     justify-content: center;
 }
-.medilac-button-container .medilac-button .medilac-button-icon.align-left {
+.ultraaddons-element.ua-element-button .ultraaddons-button .ultraaddons-button-icon.align-left {
     order: 5;
     margin-right: 10px;
 }
-.medilac-button-container .medilac-button .medilac-button-text {
+.ultraaddons-element.ua-element-button .ultraaddons-button .ultraaddons-button-text {
     order: 10;
 }
 
-.medilac-button-container .medilac-button .medilac-button-icon.align-right {
+.ultraaddons-element.ua-element-button .ultraaddons-button .ultraaddons-button-icon.align-right {
     order: 20;
     margin-left: 10px;
 }
 
-.medilac-button-container .medilac-button-wrapper.center {
+.ultraaddons-element.ua-element-button .ultraaddons-button-wrapper.center {
     justify-content: center;
 }
 
-.medilac-button-container .medilac-button-wrapper.left{
+.ultraaddons-element.ua-element-button .ultraaddons-button-wrapper.left{
     justify-content: flex-start;
 }
 
-.medilac-button-container .medilac-button-wrapper.right{
+.ultraaddons-element.ua-element-button .ultraaddons-button-wrapper.right{
     justify-content: flex-end;
 }

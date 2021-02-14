@@ -16,8 +16,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Button extends Base{
     
-
-    
     
     /**
      * Widget Icon.
@@ -34,9 +32,8 @@ class Button extends Base{
     }
     
     /**
-     * Get your widget name
+     * Set your widget name keyword
      *
-     * Retrieve oEmbed widget title.
      *
      * @since 1.0.0
      * @access public
@@ -44,7 +41,7 @@ class Button extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'medilac', 'button', 'btn', 'bt', 'recent content' ];
+        return [ 'ultraaddons', 'button', 'btn', 'bt', 'recent content' ];
     }
     
     
@@ -71,8 +68,7 @@ class Button extends Base{
        
     }
     
-
-    
+        
     /**
      * Render oEmbed widget output on the frontend.
      *
@@ -84,9 +80,9 @@ class Button extends Base{
     protected function render() {
         $settings = $this->get_settings_for_display();
 
-        $this->add_render_attribute( 'wrapper', 'class', 'medilac-button-wrapper' );
+        $this->add_render_attribute( 'wrapper', 'class', 'ultraaddons-button-wrapper' );
         
-        $buttons = isset( $settings[ 'mc_button' ] ) ? $settings[ 'mc_button' ] : [];
+        $buttons = isset( $settings[ 'ua_button' ] ) ? $settings[ 'ua_button' ] : [];
         if( count($buttons) < 1 ){
             return;
         }
@@ -94,7 +90,7 @@ class Button extends Base{
         $this->add_render_attribute( 'wrapper', 'class', $settings['button_type'] );
         
         
-        $text = ! empty( $settings['text'] ) ? $settings['text'] : __( 'Click Here', 'medilac' );
+        $text = ! empty( $settings['text'] ) ? $settings['text'] : __( 'Click Here', 'ultraaddons' );
         
         
         ?>
@@ -105,14 +101,14 @@ class Button extends Base{
                 $text = !empty( $button['text'] ) ? $button['text'] : false;
                 $icon = !empty( $button['icon']['value'] ) ? $button['icon']['value'] : false;
                 $position = !empty( $button['icon_position'] ) ? $button['icon_position'] : false;
-                $this->add_render_attribute( $_id, 'class', 'medilac-button' );
+                $this->add_render_attribute( $_id, 'class', 'ultraaddons-button' );
                 $this->add_render_attribute( $_id, 'class', 'elementor-repeater-item-' . $_id );
-                $this->add_render_attribute( $_id . '_icon', 'class', 'medilac-button-icon align-' . $position );
+                $this->add_render_attribute( $_id . '_icon', 'class', 'ultraaddons-button-icon align-' . $position );
                 
                 if ( ! empty( $button['link']['url'] ) ) {
                         
                         $this->add_link_attributes( $_id, $button['link'] );
-                        $this->add_render_attribute( $_id, 'class', 'medilac-button-link' );
+                        $this->add_render_attribute( $_id, 'class', 'ultraaddons-button-link' );
                         $this->add_render_attribute( $_id, 'class', $settings['size'] );
                         $this->add_render_attribute( $_id, 'role', 'button' );
                         
@@ -128,7 +124,7 @@ class Button extends Base{
             
             <a <?php echo $this->get_render_attribute_string( $_id ); ?>>
                 <?php echo $icon_html;?>
-                <span class="medilac-button-text"><?php echo esc_html( $text );?></span>
+                <span class="ultraaddons-button-text"><?php echo esc_html( $text );?></span>
             </a>
             
             <?php endforeach; ?>
@@ -137,21 +133,6 @@ class Button extends Base{
 
     }
     
-    protected function _content_template() {
-        /*
-        ?>
-        <#
-        view.addInlineEditingAttributes( 'avd_heading', 'none' );
-        view.addInlineEditingAttributes( 'avd_sub_heading', 'none' );
-        #>
-        
-        <div class="advance-heading-wrapper">
-            <span {{{ view.getRenderAttributeString( 'avd_sub_heading' ) }}}>{{{ settings.avd_sub_heading }}}</span>
-            <h4 class="heading-tag" {{{ view.getRenderAttributeString( 'avd_heading' ) }}}>{{{ settings.avd_heading }}}</h4>
-        </div>
-        <?php
-        */
-    }
     
     /**
      * Get button sizes.
@@ -166,11 +147,11 @@ class Button extends Base{
      */
     public static function get_button_sizes() {
             return [
-                    'xs' => __( 'Extra Small', 'medilac' ),
-                    'sm' => __( 'Small', 'medilac' ),
-                    'md' => __( 'Medium', 'medilac' ),
-                    'lg' => __( 'Large', 'medilac' ),
-                    'xl' => __( 'Extra Large', 'medilac' ),
+                    'xs' => __( 'Extra Small', 'ultraaddons' ),
+                    'sm' => __( 'Small', 'ultraaddons' ),
+                    'md' => __( 'Medium', 'ultraaddons' ),
+                    'lg' => __( 'Large', 'ultraaddons' ),
+                    'xl' => __( 'Extra Large', 'ultraaddons' ),
             ];
     }
     
@@ -183,30 +164,30 @@ class Button extends Base{
         $this->start_controls_section(
                 'section_button',
                 [
-                        'label' => __( 'Button', 'medilac' ),
+                        'label' => __( 'Button', 'ultraaddons' ),
                 ]
         );
         
         $this->add_control(
                 'button_type',
                 [
-                        'label' => __( 'Type', 'medilac' ),
+                        'label' => __( 'Type', 'ultraaddons' ),
                         'type' => Controls_Manager::CHOOSE,
                         'options' => [
                                 'left'    => [
-                                        'title' => __( 'Left', 'medilac' ),
+                                        'title' => __( 'Left', 'ultraaddons' ),
                                         'icon' => 'eicon-text-align-left',
                                 ],
                                 'center' => [
-                                        'title' => __( 'Center', 'medilac' ),
+                                        'title' => __( 'Center', 'ultraaddons' ),
                                         'icon' => 'eicon-text-align-center',
                                 ],
                                 'right' => [
-                                        'title' => __( 'Right', 'medilac' ),
+                                        'title' => __( 'Right', 'ultraaddons' ),
                                         'icon' => 'eicon-text-align-right',
                                 ],
                                 'fullwidth' => [
-                                        'title' => __( 'Fullwidth', 'medilac' ),
+                                        'title' => __( 'Fullwidth', 'ultraaddons' ),
                                         'icon' => 'eicon-text-align-justify',
                                 ],
                         ],
@@ -219,7 +200,7 @@ class Button extends Base{
         $this->add_control(
                 'size',
                 [
-                        'label' => __( 'Size', 'medilac' ),
+                        'label' => __( 'Size', 'ultraaddons' ),
                         'type' => Controls_Manager::SELECT,
                         'default' => 'md',
                         'options' => self::get_button_sizes(),
@@ -232,7 +213,7 @@ class Button extends Base{
         $repeater->add_control(
                 'icon',
                 [
-                        'label' => __( 'Icon', 'medilac' ),
+                        'label' => __( 'Icon', 'ultraaddons' ),
                         'type' => Controls_Manager::ICONS,
                 ]
         );
@@ -240,11 +221,11 @@ class Button extends Base{
         $repeater->add_control(
                 'icon_position',
                 [
-                        'label' => __( 'Icon', 'medilac' ),
+                        'label' => __( 'Icon', 'ultraaddons' ),
                         'type' => Controls_Manager::SELECT,
                         'options' => [
-                            'left'     => __( 'Left', 'medilac' ),
-                            'right'     => __( 'Right', 'medilac' ),
+                            'left'     => __( 'Left', 'ultraaddons' ),
+                            'right'     => __( 'Right', 'ultraaddons' ),
                     ],
                     'default' => 'left',
                         
@@ -261,25 +242,25 @@ class Button extends Base{
         $repeater->add_control(
                 'text',
                 [
-                        'label' => __( 'Text', 'medilac' ),
+                        'label' => __( 'Text', 'ultraaddons' ),
                         'type' => Controls_Manager::TEXT,
                         'dynamic' => [
                                 'active' => true,
                         ],
-                        'default' => __( 'Click here', 'medilac' ),
-                        'placeholder' => __( 'Click here', 'medilac' ),
+                        'default' => __( 'Click here', 'ultraaddons' ),
+                        'placeholder' => __( 'Click here', 'ultraaddons' ),
                 ]
         );
 
         $repeater->add_control(
                 'link',
                 [
-                        'label' => __( 'Link', 'medilac' ),
+                        'label' => __( 'Link', 'ultraaddons' ),
                         'type' => Controls_Manager::URL,
                         'dynamic' => [
                                 'active' => true,
                         ],
-                        'placeholder' => __( 'https://your-link.com', 'medilac' ),
+                        'placeholder' => __( 'https://your-link.com', 'ultraaddons' ),
                         'default' => [
                                 'url' => '#',
                         ],
@@ -290,28 +271,28 @@ class Button extends Base{
         $repeater->start_controls_tab(
             'tab_button_content_normal',
             [
-                'label'  => esc_html__( 'Normal', 'medilac' )
+                'label'  => esc_html__( 'Normal', 'ultraaddons' )
             ]
         );
         
         $repeater->add_control(
                 'text_color',
                 [
-                        'label' => __( 'Text Color', 'medilac' ),
+                        'label' => __( 'Text Color', 'ultraaddons' ),
                         'type' => Controls_Manager::COLOR,
                         'selectors' => [
-                                '{{WRAPPER}} {{CURRENT_ITEM}}.medilac-button .medilac-button-icon' => 'color: {{VALUE}}',
-                                '{{WRAPPER}} {{CURRENT_ITEM}}.medilac-button .medilac-button-text' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} {{CURRENT_ITEM}}.ultraaddons-button .ultraaddons-button-icon' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} {{CURRENT_ITEM}}.ultraaddons-button .ultraaddons-button-text' => 'color: {{VALUE}}',
                         ],
                 ]
         );
         $repeater->add_control(
                 'bg_color',
                 [
-                        'label' => __( 'Background', 'medilac' ),
+                        'label' => __( 'Background', 'ultraaddons' ),
                         'type' => Controls_Manager::COLOR,
                         'selectors' => [
-                                '{{WRAPPER}} .medilac-button-wrapper {{CURRENT_ITEM}}.medilac-button' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .ultraaddons-button-wrapper {{CURRENT_ITEM}}.ultraaddons-button' => 'background-color: {{VALUE}}',
                         ],
                 ]
         );
@@ -320,19 +301,19 @@ class Button extends Base{
                 Group_Control_Border::get_type(),
                 [
                         'name' => 'border',
-                        'label' => __( 'Border', 'medilac' ),
-                        'selector' => '{{WRAPPER}} .medilac-button-wrapper {{CURRENT_ITEM}}.medilac-button',
+                        'label' => __( 'Border', 'ultraaddons' ),
+                        'selector' => '{{WRAPPER}} .ultraaddons-button-wrapper {{CURRENT_ITEM}}.ultraaddons-button',
                 ]
         );
         
         $repeater->add_control(
                 'border_radius',
                 [
-                        'label' => __( 'Border Radius', 'medilac' ),
+                        'label' => __( 'Border Radius', 'ultraaddons' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px' ],
                         'selectors' => [
-                                '{{WRAPPER}} .medilac-button-wrapper {{CURRENT_ITEM}}.medilac-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                '{{WRAPPER}} .ultraaddons-button-wrapper {{CURRENT_ITEM}}.ultraaddons-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                         ],
                 ]
         );
@@ -341,8 +322,8 @@ class Button extends Base{
                 Group_Control_Box_Shadow::get_type(),
                 [
                         'name' => 'box_shadow',
-                        'label' => __( 'Box Shadow', 'medilac' ),
-                        'selector' => '{{WRAPPER}} .medilac-button-wrapper {{CURRENT_ITEM}}.medilac-button',
+                        'label' => __( 'Box Shadow', 'ultraaddons' ),
+                        'selector' => '{{WRAPPER}} .ultraaddons-button-wrapper {{CURRENT_ITEM}}.ultraaddons-button',
                 ]
         );
         
@@ -351,28 +332,28 @@ class Button extends Base{
         $repeater->start_controls_tab(
             'icon_boxes_btn_content_hover',
             [
-                'label' => esc_html__( 'Hover', 'medilac' ),
+                'label' => esc_html__( 'Hover', 'ultraaddons' ),
             ]
         );
         
         $repeater->add_control(
                 'text_color_hover',
                 [
-                        'label' => __( 'Text Color', 'medilac' ),
+                        'label' => __( 'Text Color', 'ultraaddons' ),
                         'type' => Controls_Manager::COLOR,
                         'selectors' => [
-                                '{{WRAPPER}} {{CURRENT_ITEM}}:hover .medilac-button-icon' => 'color: {{VALUE}}',
-                                '{{WRAPPER}} {{CURRENT_ITEM}}:hover  .medilac-button-text' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} {{CURRENT_ITEM}}:hover .ultraaddons-button-icon' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} {{CURRENT_ITEM}}:hover  .ultraaddons-button-text' => 'color: {{VALUE}}',
                         ],
                 ]
         );
         $repeater->add_control(
                 'bg_color_hover',
                 [
-                        'label' => __( 'Background', 'medilac' ),
+                        'label' => __( 'Background', 'ultraaddons' ),
                         'type' => Controls_Manager::COLOR,
                         'selectors' => [
-                                '{{WRAPPER}} .medilac-button-wrapper {{CURRENT_ITEM}}.medilac-button:hover' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .ultraaddons-button-wrapper {{CURRENT_ITEM}}.ultraaddons-button:hover' => 'background-color: {{VALUE}}',
                         ],
                 ]
         );
@@ -381,19 +362,19 @@ class Button extends Base{
                 Group_Control_Border::get_type(),
                 [
                         'name' => 'border_hover',
-                        'label' => __( 'Border', 'medilac' ),
-                        'selector' => '{{WRAPPER}} .medilac-button-wrapper {{CURRENT_ITEM}}.medilac-button:hover',
+                        'label' => __( 'Border', 'ultraaddons' ),
+                        'selector' => '{{WRAPPER}} .ultraaddons-button-wrapper {{CURRENT_ITEM}}.ultraaddons-button:hover',
                 ]
         );
         
         $repeater->add_control(
                 'border_radius_hover',
                 [
-                        'label' => __( 'Border Radius', 'medilac' ),
+                        'label' => __( 'Border Radius', 'ultraaddons' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px' ],
                         'selectors' => [
-                                '{{WRAPPER}} .medilac-button-wrapper {{CURRENT_ITEM}}.medilac-button:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                '{{WRAPPER}} .ultraaddons-button-wrapper {{CURRENT_ITEM}}.ultraaddons-button:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                         ],
                 ]
         );
@@ -402,8 +383,8 @@ class Button extends Base{
                 Group_Control_Box_Shadow::get_type(),
                 [
                         'name' => 'box_shadow_hover',
-                        'label' => __( 'Box Shadow', 'medilac' ),
-                        'selector' => '{{WRAPPER}} .medilac-button-wrapper {{CURRENT_ITEM}}.medilac-button:hover',
+                        'label' => __( 'Box Shadow', 'ultraaddons' ),
+                        'selector' => '{{WRAPPER}} .ultraaddons-button-wrapper {{CURRENT_ITEM}}.ultraaddons-button:hover',
                 ]
         );
         
@@ -412,14 +393,14 @@ class Button extends Base{
         $repeater->end_controls_tabs();
         
         $this->add_control(
-                'mc_button',
+                'ua_button',
                 [
                         'type' => Controls_Manager::REPEATER,
                         'fields' => $repeater->get_controls(),
                         'default' => [
                                 [
                                         'size' => 'md',
-                                        'text' => __( 'Click Here', 'medilac' ),
+                                        'text' => __( 'Click Here', 'ultraaddons' ),
                                         'link'   =>  [
                                             'url' => '#ee'
                                         ],
@@ -465,7 +446,7 @@ class Button extends Base{
         $this->start_controls_section(
             'design',
             [
-                'label'     => esc_html__( 'Design', 'medilac' ),
+                'label'     => esc_html__( 'Design', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -473,7 +454,7 @@ class Button extends Base{
         $this->add_control(
             'icon_space',
             [
-                    'label'     => __( 'Icon Gap', 'medilac' ),
+                    'label'     => __( 'Icon Gap', 'ultraaddons' ),
                     'type'      => Controls_Manager::SLIDER,
                     'default' => [
                                     'size' => 20,
@@ -485,8 +466,8 @@ class Button extends Base{
                                     ],
                             ],
                             'selectors' => [
-                                    '{{WRAPPER}} .medilac-button .medilac-button-icon.align-left' => 'margin-right: {{SIZE}}{{UNIT}};',
-                                    '{{WRAPPER}} .medilac-button .medilac-button-icon.align-right' => 'margin-left: {{SIZE}}{{UNIT}};',
+                                    '{{WRAPPER}} .ultraaddons-button .ultraaddons-button-icon.align-left' => 'margin-right: {{SIZE}}{{UNIT}};',
+                                    '{{WRAPPER}} .ultraaddons-button .ultraaddons-button-icon.align-right' => 'margin-left: {{SIZE}}{{UNIT}};',
                             ],
             ]
         );
@@ -494,7 +475,7 @@ class Button extends Base{
         $this->add_control(
             'button_space',
             [
-                    'label'     => __( 'Button Gap', 'medilac' ),
+                    'label'     => __( 'Button Gap', 'ultraaddons' ),
                     'type'      => Controls_Manager::SLIDER,
                     'default' => [
                                     'size' => 20,
@@ -506,7 +487,7 @@ class Button extends Base{
                                     ],
                             ],
                             'selectors' => [
-                                    '{{WRAPPER}} .medilac-button-wrapper' => 'column-gap: {{SIZE}}{{UNIT}};',
+                                    '{{WRAPPER}} .ultraaddons-button-wrapper' => 'column-gap: {{SIZE}}{{UNIT}};',
                             ],
             ]
         );
@@ -515,17 +496,17 @@ class Button extends Base{
         $this->start_controls_tab(
             'tab_button_content_normal_master',
             [
-                'label'  => esc_html__( 'Normal', 'medilac' )
+                'label'  => esc_html__( 'Normal', 'ultraaddons' )
             ]
         );
         
         $this->add_control(
             'bg_color_master',
             [
-                'label'     => __( 'Background', 'medilac' ),
+                'label'     => __( 'Background', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .medilac-button-wrapper .medilac-button' => 'background-color: {{VALUE}}',
+                    '{{WRAPPER}} .ultraaddons-button-wrapper .ultraaddons-button' => 'background-color: {{VALUE}}',
                 ],
                 'default'   => '#0FC392',
             ]
@@ -536,11 +517,11 @@ class Button extends Base{
         $this->add_control(
                 'text_color_master',
                 [
-                        'label' => __( 'Text Color', 'medilac' ),
+                        'label' => __( 'Text Color', 'ultraaddons' ),
                         'type' => Controls_Manager::COLOR,
                         'selectors' => [
-                                '{{WRAPPER}} .medilac-button .medilac-button-icon' => 'color: {{VALUE}}',
-                                '{{WRAPPER}} .medilac-button .medilac-button-text' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} .ultraaddons-button .ultraaddons-button-icon' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} .ultraaddons-button .ultraaddons-button-text' => 'color: {{VALUE}}',
                         ],
                 ]
         );
@@ -549,19 +530,19 @@ class Button extends Base{
                 Group_Control_Border::get_type(),
                 [
                         'name' => 'border_master',
-                        'label' => __( 'Border', 'medilac' ),
-                        'selector' => '{{WRAPPER}} .medilac-button-wrapper .medilac-button',
+                        'label' => __( 'Border', 'ultraaddons' ),
+                        'selector' => '{{WRAPPER}} .ultraaddons-button-wrapper .ultraaddons-button',
                 ]
         );
         
         $this->add_control(
                 'border_radius_master',
                 [
-                        'label' => __( 'Border Radius', 'medilac' ),
+                        'label' => __( 'Border Radius', 'ultraaddons' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px' ],
                         'selectors' => [
-                                '{{WRAPPER}} .medilac-button-wrapper .medilac-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                '{{WRAPPER}} .ultraaddons-button-wrapper .ultraaddons-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                         ],
                 ]
         );
@@ -570,8 +551,8 @@ class Button extends Base{
                 Group_Control_Box_Shadow::get_type(),
                 [
                         'name' => 'box_shadow_master',
-                        'label' => __( 'Box Shadow', 'medilac' ),
-                        'selector' => '{{WRAPPER}} .medilac-button-wrapper .medilac-button',
+                        'label' => __( 'Box Shadow', 'ultraaddons' ),
+                        'selector' => '{{WRAPPER}} .ultraaddons-button-wrapper .ultraaddons-button',
                 ]
         );
         
@@ -580,17 +561,17 @@ class Button extends Base{
         $this->start_controls_tab(
             'tab_button_content_hover_master',
             [
-                'label'  => esc_html__( 'Hover', 'medilac' )
+                'label'  => esc_html__( 'Hover', 'ultraaddons' )
             ]
         );
         
         $this->add_control(
             'bg_color_hover_master',
             [
-                'label'     => __( 'Background', 'medilac' ),
+                'label'     => __( 'Background', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .medilac-button-wrapper .medilac-button:hover' => 'background-color: {{VALUE}}',
+                    '{{WRAPPER}} .ultraaddons-button-wrapper .ultraaddons-button:hover' => 'background-color: {{VALUE}}',
                 ],
                 'default'   => '#FFF',
             ]
@@ -601,11 +582,11 @@ class Button extends Base{
         $this->add_control(
                 'text_color_hover_master',
                 [
-                        'label' => __( 'Text Color', 'medilac' ),
+                        'label' => __( 'Text Color', 'ultraaddons' ),
                         'type' => Controls_Manager::COLOR,
                         'selectors' => [
-                                '{{WRAPPER}} .medilac-button:hover .medilac-button-icon' => 'color: {{VALUE}}',
-                                '{{WRAPPER}} .medilac-button:hover .medilac-button-text' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} .ultraaddons-button:hover .ultraaddons-button-icon' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} .ultraaddons-button:hover .ultraaddons-button-text' => 'color: {{VALUE}}',
                         ],
                 ]
         );
@@ -614,19 +595,19 @@ class Button extends Base{
                 Group_Control_Border::get_type(),
                 [
                         'name' => 'border_hover_master',
-                        'label' => __( 'Border', 'medilac' ),
-                        'selector' => '{{WRAPPER}} .medilac-button-wrapper .medilac-button:hover',
+                        'label' => __( 'Border', 'ultraaddons' ),
+                        'selector' => '{{WRAPPER}} .ultraaddons-button-wrapper .ultraaddons-button:hover',
                 ]
         );
         
         $this->add_control(
                 'border_radius_hover_master',
                 [
-                        'label' => __( 'Border Radius', 'medilac' ),
+                        'label' => __( 'Border Radius', 'ultraaddons' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px' ],
                         'selectors' => [
-                                '{{WRAPPER}} .medilac-button-wrapper .medilac-button:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                '{{WRAPPER}} .ultraaddons-button-wrapper .ultraaddons-button:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                         ],
                 ]
         );
@@ -635,8 +616,8 @@ class Button extends Base{
                 Group_Control_Box_Shadow::get_type(),
                 [
                         'name' => 'box_shadow_hover_master',
-                        'label' => __( 'Box Shadow', 'medilac' ),
-                        'selector' => '{{WRAPPER}} .medilac-button-wrapper .medilac-button:hover',
+                        'label' => __( 'Box Shadow', 'ultraaddons' ),
+                        'selector' => '{{WRAPPER}} .ultraaddons-button-wrapper .ultraaddons-button:hover',
                 ]
         );
         
@@ -658,9 +639,9 @@ class Button extends Base{
      */
     protected function style_typography_controls() {
         $this->start_controls_section(
-            'mc_rc_typography',
+            'ua_rc_typography',
             [
-                'label'     => esc_html__( 'Typography', 'medilac' ),
+                'label'     => esc_html__( 'Typography', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -672,7 +653,7 @@ class Button extends Base{
                         'global' => [
                                 'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
                         ],
-                        'selector' => '{{WRAPPER}} .medilac-button',
+                        'selector' => '{{WRAPPER}} .ultraaddons-button',
                 ]
         );
         
