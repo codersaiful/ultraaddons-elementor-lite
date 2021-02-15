@@ -1,17 +1,19 @@
 === UltraAddons Elementor Lite ===
 
-Contributors: codersaiful, codeastrology, ultraaddons
-Tags: addons, elemento addon, ultraaddons, page builder, page builder addons
+Plugin Name: UltraAddons Elementor Lite
 Version: 1.0.0
-Requires at least: 4.0.0
-Tested up to: 5.4.2
+Author: codersaiful
+Author URI: https://ultraaddons.com/
+Tags: addons, elementor addons, ultraaddons, page builder, page builder addons, Editor, Web Page Builder
+Contributors: codersaiful, codeastrology, ultraaddons
+Requires at least: 5.0.0
+Tested up to: 5.6.1
 Requires PHP: 5.6
-WC requires at least: 3.7
-WC tested up to: 4.2.2
+Stable tag: trunk
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl.html
 
-Build your desired page just few click. Easy to use and useable for any theme and plugin. Available many filter.
+Elementor Addons Plugin. Build your desired page just few click. Easy to use and useable for any theme and plugin. Available many filter.
 
 == Description ==
 

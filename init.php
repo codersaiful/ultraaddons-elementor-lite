@@ -1,42 +1,38 @@
 <?php
 /**
  * Plugin Name: Addons - UltraAddons Elementor Lite
- * Plugin URI: https://ultraelementor.com/
- * Description: This is Elementor Addons Plugin. This is Elementor Addons Plugin. This is Elementor Addons Plugin.
+ * Plugin URI: https://ultraaddons.com.com/
+ * Description: Elementor Addons Plugin. Build your desired page just few click. Easy to use and useable for any theme and plugin. Available many filter.
  * Version: 1.0.0
  * Author: codersaiful
- * Author URI: https://ultraelementor.com/
- * License: GPLv2
- * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ * Author URI: https://profiles.wordpress.org/codersaiful/#content-plugins
+ * License: GPL3+
+ * License URI: http://www.gnu.org/licenses/gpl.html
  * Text Domain: ultraaddons
  * Domain Path: /languages/
  *
  * @package UltraAddons
+ * @category Addons
  * 
  * ********************************
  * Used Color Code:
  * #ff00b1 - light of Elementor
  * 
  * ********************************
+ * 
+ * 
+ * UltraAddons Elementor Lite is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * UltraAddons Elementor Lite is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * 
  */
 
-/*
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation; either version 2
-of the License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-
-Copyright 2019 HappyMonster <http://happymonster.me>
-*/
 
 defined( 'ABSPATH' ) || die();
 
