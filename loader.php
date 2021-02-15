@@ -136,13 +136,14 @@ class Loader {
             $class_name =  '\UltraAddons\Widget\\' . ucwords( $class_name, '_' );
 
 
-            $file = ULTRA_ADDONS_DIR . 'inc/widgets/'. $name . '.php';
+            $file = ULTRA_ADDONS_DIR . 'inc/widgets/'. strtolower( $name ) . '.php';
 
             if( file_exists( $file ) ){
                 include_once $file;
             }else{
-                $error = printf( esc_html__( "The file ( %s ) of [%s] Class is not founded.", 'ultraaddons' ), $file, $name );
+                $error = esc_html__( "The file ( %s ) of [%s] Class is not founded.", 'ultraaddons' );
                 $this->errors[$widget_key] = $error;
+                printf( $error, $file, $name );
             }
             
             if( $class_name && class_exists( $class_name ) ){
@@ -248,8 +249,8 @@ class Loader {
              * 
              * @since 1.0.0.12
              */
-            $src = ULTRA_ADDONS_ASSETS . 'css/widgets/' . $name . '.css';
-            $css_file_dir = ULTRA_ADDONS_DIR . 'assets/css/widgets/' . $name . '.css';
+            $src = ULTRA_ADDONS_ASSETS . 'css/widgets/' . strtolower( $name ) . '.css';
+            $css_file_dir = ULTRA_ADDONS_DIR . 'assets/css/widgets/' . strtolower( $name ) . '.css';
             
             if( is_file( $css_file_dir ) ){
                  wp_register_style( $handle, $src, $deps, $ver, $media );
