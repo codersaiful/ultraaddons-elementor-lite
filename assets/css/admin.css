@@ -47,6 +47,9 @@ table.wp-list-table.widefat.plugins tr[data-slug='addons-ultraaddons-elementor-l
 li#toplevel_page_ultraaddons-elementor-light .wp-menu-image img {
     max-width: 20px;
 }
+li#toplevel_page_ultraaddons-elementor-light.current .wp-menu-image img {
+    opacity: 1;
+}
 
 /*#adminmenu a.toplevel_page_ultraaddons-elementor{
     background: linear-gradient(to right, #ff0039 41%,#9822f4 100%)

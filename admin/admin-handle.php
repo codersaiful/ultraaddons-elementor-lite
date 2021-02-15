@@ -84,7 +84,7 @@ class Admin_Handle{
      * return void Displaying menu for User
      */
     public static function admin_menu(){
-        $icon_url = ULTRA_ADDONS_ASSETS . 'images/svg-icon/orginal.svg';
+        $icon_url = ULTRA_ADDONS_ASSETS . 'images/svg-icon/white.svg';
         $menu = [
             'page_title'    => __( 'UltraAddons Elementor Addons', 'ultraaddons' ),
             'menu_title'    => __( 'UltraAddons', 'ultraaddons' ),

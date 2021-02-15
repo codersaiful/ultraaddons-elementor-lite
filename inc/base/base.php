@@ -123,7 +123,7 @@ class Base extends Widget_Base{
             $widget_category = 'ultraaddons';
         }
         
-        return [ 'basic' ]; //Will remove this line
+//        return [ 'basic' ]; //Will remove this line
         return [ $widget_category ]; //Here was Static 'ultraaddons'
     }
 
