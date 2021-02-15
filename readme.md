@@ -1,4 +1,4 @@
-![UltraAddons Elementor Lit](https://raw.githubusercontent.com/codersaiful/ultraaddons-elementor-lite/e52b6b333c4f1a5162246f42652948a9a558a18b/assets/images/svg-icon/elementor-color.svg)
+![UltraAddons Elementor Lit](https://raw.githubusercontent.com/codersaiful/ultraaddons-elementor-lite/master/assets/images/svg-icon/color.svg)
 
 # UltraAddons Elementor Lite
 
@@ -15,3 +15,5 @@
 * Advance Slider Slider
 * Slider with Any content. Dynamic content.
 * Slider with Pre-build Template of Elementor
+
+Elementor Addons Plugin. Build your desired page just few click. Easy to use and useable for any theme and plugin. Available many filter.
