@@ -1,4 +1,4 @@
-![UltraAddons Elementor Lit](https://raw.githubusercontent.com/codersaiful/ultraaddons-elementor-lite/master/assets/images/svg-icon/color.svg | width=100)
+![UltraAddons Elementor Lit](https://raw.githubusercontent.com/codersaiful/ultraaddons-elementor-lite/e52b6b333c4f1a5162246f42652948a9a558a18b/assets/images/svg-icon/elementor-color.svg)
 
 # UltraAddons Elementor Lite
 
