@@ -1,0 +1,63 @@
+=== UltraAddons Elementor Lite ===
+
+Contributors: codersaiful, codeastrology, ultraaddons
+Tags: addons, elemento addon, ultraaddons, page builder, page builder addons
+Version: 1.0.0
+Requires at least: 4.0.0
+Tested up to: 5.4.2
+Requires PHP: 5.6
+WC requires at least: 3.7
+WC tested up to: 4.2.2
+License: GPL3+
+License URI: http://www.gnu.org/licenses/gpl.html
+
+Build your desired page just few click. Easy to use and useable for any theme and plugin. Available many filter.
+
+== Description ==
+
+*UltraAddons Elementor Lite* has some Unique features and Ready made Widget. By using this plugin, You able to create a Full web site just by drag and drop.
+
+**Features**
+
+* Many Ready widget,
+* Drag and Drop
+* Wrapper Link for any section, column, widget.
+* Hover any animation for any section, column, widget.
+* Advance Heading/Title with customize color, Typography
+* Advance Button with customize color, Typography
+* Advance Slider Slider
+* Slider with Any content. Dynamic content.
+* Slider with Pre-build Template of Elementor
+
+
+== Frequently Asked Questions ==
+
+= Does this plugin support any theme? =
+
+Yes.
+
+= Cam I use this plugin for my Theme? =
+
+Yes.
+
+= Does this plugin support customizion by Filter or Action Hook? =
+
+Yes, there are lot of filter and action hook available here. You can customize for your site even for your premium theme or plugin.
+
+
+== Installation ==
+
+1. Upload 'ultraaddons-elementor-lite' to the '/wp-content/plugins/' directory
+2. Activate the plugin through the 'Plugins' menu in WordPress
+
+== Screenshots ==
+
+1. Advance Slider 
+2. Button of this plugin
+
+
+== Change log ==
+
+= 1.0 =
+
+* Initial release

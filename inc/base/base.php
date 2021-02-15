@@ -100,8 +100,31 @@ class Base extends Widget_Base{
      * @todo basic will removed after complete
      */
     public function get_categories() {
+        
+        /**
+         * Filter for Change Category for All for any specific 
+         * 
+         * User and any addons plugin/theme will able to change category
+         * 
+         * If any user want to set category for any specific Widget, then able to 
+         * set category.
+         * 
+         * *****************************
+         * **** To set Category *****
+         * To be confirm that, That widget Category is available.
+         * ******************************
+         * 
+         * @return String Widget category name/slug for Elemetor of UltraAddons Plugin
+         */
+        $widget_category = apply_filters( 'ultraaddons_widget_category', 'ultraaddons', $this );
+        
+        //Check if null or string
+        if( empty( $widget_category ) || ! is_string( $widget_category ) ){
+            $widget_category = 'ultraaddons';
+        }
+        
         return [ 'basic' ]; //Will remove this line
-        return [ 'ultraaddons' ];
+        return [ $widget_category ]; //Here was Static 'ultraaddons'
     }
 
     /**
