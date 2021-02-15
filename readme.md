@@ -1,10 +1,10 @@
-![UltraAddons Elementor Lit](https://raw.githubusercontent.com/codersaiful/ultraaddons-elementor-lite/master/assets/images/svg-icon/color.svg)
+![UltraAddons Elementor Lit](https://raw.githubusercontent.com/codersaiful/ultraaddons-elementor-lite/master/assets/images/svg-icon/color.svg | width=100)
 
 # UltraAddons Elementor Lite
 
 *UltraAddons Elementor Lite* has some Unique features and Ready made Widget. By using this plugin, You able to create a Full web site just by drag and drop.
 
-## Features**
+## Features
 
 * Many Ready widget,
 * Drag and Drop
