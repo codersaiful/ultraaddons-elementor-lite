@@ -1,10 +1,13 @@
 ;(function ($, w) {
     'use strict';
     
-    var win = $(w);
-    
-    
-    $( win ).on( 'elementor/frontend/init', function() {
+    var $window = $(w);
+
+    $.fn.ultraDataAttr = function( dataAttr ) {
+            return this.data( dataAttr );
+    };
+
+    $window.on( 'elementor/frontend/init', function() {
         
             var cx_settings;
             var EF = elementorFrontend,
