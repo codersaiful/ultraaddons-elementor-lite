@@ -92,7 +92,7 @@ class Count_Down_Timer extends Base{
          * @date 16.2.21 d.m.y
          * @author Saiful
          */
-        $date_time = apply_filters( 'ultraaddons/widget/count-down-timer/date_time', $date_time, $this->get_name, $this->get_id(), $this );
+        $date_time = apply_filters( 'ultraaddons/widget/count-down-timer/date_time', $date_time, $this->get_name(), $this->get_id(), $this );
 
         $separator = isset( $settings['show_separator'] ) && $settings['show_separator'] == 'yes' ? '<div class="sep"><span>:</span></div>' : '';
         ?>
