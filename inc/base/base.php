@@ -101,6 +101,7 @@ class Base extends Widget_Base{
      */
     public function get_categories() {
         
+        $default = [ 'ultraaddons' ]; //[ 'basic' ]
         /**
          * Filter for Change Category for All for any specific 
          * 
@@ -116,15 +117,14 @@ class Base extends Widget_Base{
          * 
          * @return String Widget category name/slug for Elemetor of UltraAddons Plugin
          */
-        $widget_category = apply_filters( 'ultraaddons_widget_category', 'ultraaddons', $this );
-        
-        //Check if null or string
-        if( empty( $widget_category ) || ! is_string( $widget_category ) ){
-            $widget_category = 'ultraaddons';
+        $widget_category = apply_filters( 'ultraaddons_widget_category', $default, $this );
+
+        //Check if null or array
+        if( empty( $widget_category ) || ! is_array( $widget_category ) ){
+            $widget_category = $default;
         }
         
-//        return [ 'basic' ]; //Will remove this line
-        return [ $widget_category ]; //Here was Static 'ultraaddons'
+        return $widget_category; //Here was Static 'ultraaddons'
     }
 
     /**
