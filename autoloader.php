@@ -1,15 +1,15 @@
 <?php
 
-namespace UltraElementor;
+namespace UltraAddons;
 
 defined('ABSPATH') || exit;
 
 /**
- * Autoloader for Ultra Elementor. All class will call from here by AutoLoader
+ * Autoloader for UltraAddons Elementor Lite. All class will call from here by AutoLoader
  *
  * @author Saiful Islam<codersaiful@gmail.com>
  * @since 1.0
- * @package UltraElementor
+ * @package UltraAddons
  * @link https://www.php.net/manual/en/language.oop5.autoload.php Autoloader Function
  */
 class Autoloader {
