@@ -174,6 +174,12 @@ final class UltraAddons {
 	 * @access public
 	 */
 	public function init() {
+                /**
+                 * Auto Loader
+                 * @todo will be enable asap. at this moment, not activated.
+                 */
+                 //include_once ULTRA_ADDONS_DIR . 'autoloader.php';
+            
             
                 //Including Function File. It will stay at the Top of the File
                 include_once ULTRA_ADDONS_DIR . 'inc/functions.php';
