@@ -1,6 +1,7 @@
 
 /*********** UltraAddons Style - In Plugin List ****************/
-
+.ultraaddons-color-heading,
+p.ultraaddons-info,
 table.wp-list-table.widefat.plugins tr[data-slug='addons-ultraaddons-elementor-lite'] td.plugin-title.column-primary strong,
 #elementor-panel-category-addons-ultra-elementor .elementor-panel-category-title{
     color: #db3157;
@@ -18,6 +19,8 @@ table.wp-list-table.widefat.plugins tr[data-slug='addons-ultraaddons-elementor-l
     animation-fill-mode: none;
     animation-play-state: running;
 }
+.ultraaddons-color-heading:hover,
+p.ultraaddons-info:hover,
 table.wp-list-table.widefat.plugins tr[data-slug='addons-ultraaddons-elementor-lite']:hover td.plugin-title.column-primary strong,
 #elementor-panel-category-addons-ultra-elementor:hover .elementor-panel-category-title {
     background: linear-gradient(to right, #ff0039 0%,#411365 45%);
@@ -47,6 +50,9 @@ table.wp-list-table.widefat.plugins tr[data-slug='addons-ultraaddons-elementor-l
 li#toplevel_page_ultraaddons-elementor-light .wp-menu-image img {
     max-width: 20px;
 }
+li#toplevel_page_ultraaddons-elementor-light.current .wp-menu-image img {
+    opacity: 1;
+}
 
 /*#adminmenu a.toplevel_page_ultraaddons-elementor{
     background: linear-gradient(to right, #ff0039 41%,#9822f4 100%)
@@ -56,3 +62,39 @@ li#toplevel_page_ultraaddons-elementor-light .wp-menu-image img {
     -webkit-text-fill-color: transparent;
 }*/
 /****************** Menu Text in Dashboard | END **********************/
+
+
+
+
+
+
+/***** Menu Page Start*******/
+.ultraaddons-license-details, .ultraaddons-system-stats {
+    background: #fff;
+    padding: 10px 30px 50px;
+    border-radius: 3px;
+    margin-top: 20px;
+    color: #000;
+    webkit-box-shadow: 0 5px 40px 0 rgba(10, 10, 25, .1);
+    -moz-box-shadow: 0 5px 40px 0 rgba(10, 10, 25, .1);
+    box-shadow: 0 5px 40px 0 rgb(10 10 25 / 10%);
+}
+.about-wrap h3 {
+    margin: 1.25em 0 .6em;
+    font-size: 1.4em;
+    line-height: 1.5;
+}
+.system-status-table {
+    width: 100%;
+}
+.system-status-table tr td {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+h1.ultraaddons-color-heading {
+    font-weight: 800;
+}
+p.ultraaddons-info {
+    font-size: 22px;
+}
+/***** Menu Page End*******/

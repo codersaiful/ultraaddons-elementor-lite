@@ -62,7 +62,7 @@ class Count_Down_Timer extends Base{
         $this->content_general_controls();
 
         //For Design Section Style Tab
-        //$this->style_design_controls();
+        $this->style_design_controls();
         
         //For Typography Section Style Tab
         $this->style_typography_controls();
@@ -79,30 +79,35 @@ class Count_Down_Timer extends Base{
      * @access protected
      */
     protected function render() {
-        $settings           = $this->get_settings_for_display();
+        $settings = $this->get_settings_for_display();
         $unique_class = 'ua-count-down-' . rand( 509,1254 );
         $this->add_render_attribute( 'wrapper', 'class', 'ua-coun-down-timer-wrapper' );
-        //$this->add_render_attribute( 'wrapper', 'class', $unique_class );
-        
-//        var_dump($settings['date_time']);
         $date = $settings['date_time'];
         $date_time = date( 'm/d/Y H:i', strtotime($date) );
-        //$items = $settings['list_items'];
-//echo '<pre>';
-//print_r( $settings );
-//echo '</pre>';
-        //var_dump($settings);
+        $separator = isset( $settings['show_separator'] ) && $settings['show_separator'] == 'yes' ? '<div class="sep"><span>:</span></div>' : '';
         ?>
     <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
         
         <div class="ua-coun-down-timer <?php echo esc_attr( $unique_class ); ?>">
-            <div class="single-date"><span class="timer_int days">00 </span><span class="timer_label">Days</span></div>
-          :
-          <div class="single-date"><span class="timer_int hrs">00 </span><span class="timer_label">Hours</span></div>
-          :
-          <div class="single-date"><span class="timer_int mnts">00 </span><span class="timer_label">Minutes</span></div>
-          :
-          <div class="single-date"><span class="timer_int secs">00 </span><span class="timer_label">Seconds</span></div>
+            <div class="single-date">
+                <span class="timer_int days">00 </span>
+                <span class="timer_label"><?php echo esc_html__( 'Days', 'ultraaddons' )?></span>
+            </div>
+            <?php echo $separator; ?>
+            <div class="single-date">
+                <span class="timer_int hrs">00 </span>
+                <span class="timer_label"><?php echo esc_html__( 'Hours', 'ultraaddons' )?></span>
+            </div>
+            <?php echo $separator; ?>
+            <div class="single-date">
+                <span class="timer_int mnts">00 </span>
+                <span class="timer_label"><?php echo esc_html__( 'Minutes', 'ultraaddons' )?></span>
+            </div>
+            <?php echo $separator; ?>
+            <div class="single-date">
+                <span class="timer_int secs">00 </span>
+                <span class="timer_label"><?php echo esc_html__( 'Seconds', 'ultraaddons' )?></span>
+            </div>
         </div>
     </div>
 <script type="text/javascript">
@@ -197,6 +202,109 @@ class Count_Down_Timer extends Base{
                
         
         $this->end_controls_section();
+        
+        $this->start_controls_section(
+            'general_timer_controls',
+            [
+                'label'     => esc_html__( 'Timer Controls', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+        
+        $this->add_control(
+                'view',
+                [
+                        'label' => __( 'View', 'ultraaddons' ),
+                        'type' => Controls_Manager::SELECT,
+                        'options' => [
+                                'default' => __( 'Default', 'ultraaddons' ),
+                                'stacked' => __( 'Stacked', 'ultraaddons' ),
+                                'framed' => __( 'Framed', 'ultraaddons' ),
+                        ],
+                        'default' => 'framed',
+                        'prefix_class' => 'elementor-view-',
+                ]
+        );
+        
+        $this->add_control(
+                'shape',
+                [
+                        'label' => __( 'Shape', 'ultraaddons' ),
+                        'type' => Controls_Manager::SELECT,
+                        'options' => [
+                                'circle' => __( 'Circle', 'ultraaddons' ),
+                                'square' => __( 'Square', 'ultraaddons' ),
+                        ],
+                        'default' => 'circle',
+                        'condition' => [
+                                'view!' => 'default',
+                        ],
+                        'prefix_class' => 'elementor-shape-',
+                ]
+        );
+        
+        $this->add_control(
+                'show_separator',
+                [
+                        'label' => __( 'Show Separator?', 'ultraaddons' ),
+                        'type' => Controls_Manager::SWITCHER,
+                        'label_on' => __( 'Show', 'ultraaddons' ),
+                        'label_off' => __( 'Hide', 'ultraaddons' ),
+                        'return_value' => 'yes',
+                        'default' => 'yes',
+                ]
+        );
+        
+        $this->add_responsive_control(
+                'box_size',
+                [
+                        'label' => __( 'Box Size', 'ultraaddons' ),
+                        'type' => Controls_Manager::SLIDER,
+                        'size_units' => [ 'px' ],
+                        'range' => [
+                                'px' => [
+                                        'min' => 50,
+                                        'max' => 200,
+                                        'step' => 1,
+                                ],
+                        ],
+                        'default' => [
+                                'unit' => 'px',
+                                'size' => 120,
+                        ],
+                        'condition' => [
+                                'view!' => 'default',
+                        ],
+                        'selectors' => [
+                                '{{WRAPPER}} .single-date' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                        ],
+                ]
+        );
+        
+        $this->add_responsive_control(
+                'box_gap',
+                [
+                        'label' => __( 'Box Gap', 'ultraaddons' ),
+                        'type' => Controls_Manager::SLIDER,
+                        'size_units' => [ 'px' ],
+                        'range' => [
+                                'px' => [
+                                        'min' => 0,
+                                        'max' => 50,
+                                        'step' => 1,
+                                ],
+                        ],
+                        'default' => [
+                                'unit' => 'px',
+                                'size' => 10,
+                        ],
+                        'selectors' => [
+                                '{{WRAPPER}} .single-date' => 'margin: 0 {{SIZE}}{{UNIT}};',
+                        ],
+                ]
+        );
+        
+        $this->end_controls_section();
     }
     
     /**
@@ -213,104 +321,58 @@ class Count_Down_Timer extends Base{
             ]
         );
         
-        $this->add_control(
-            'template',
-                [
-                    'label'         => esc_html__( 'Template', 'ultraaddons' ),
-                    'type'          => Controls_Manager::SELECT,
-                    'options' => [
-                            'default'   => __( 'Default', 'ultraaddons' ),
-                            'temp-2'    => __( 'Template Two', 'ultraaddons' ),
-                            'temp-3'    => __( 'Template Three', 'ultraaddons' ),
-                    ],
-                    'default' => 'default',
-                    'prefix_class' => 'ua-list-temp-',
-                ]
-        );
         
-        $this->add_responsive_control(
-            'list-column',
-                [
-                    'label'         => esc_html__( 'Column', 'ultraaddons' ),
-                    'type'          => Controls_Manager::SELECT,
-                    'options' => [
-                            '100%'     => __( 'One Column', 'ultraaddons' ),
-                            '48%'     => __( 'Two Column', 'ultraaddons' ),
-                            '30.33%'     => __( 'Three Column', 'ultraaddons' ),
-                            '23%'     => __( 'Four Column', 'ultraaddons' ),
-                    ],
-                    'default' => '30.33%',
-                    'prefix_class' => 'ua-list-',
-                    'selectors' => [
-                                        '{{WRAPPER}} .ua-list-items li' => 'width: {{VALUE}};',
-                                ],
-                ]
-        );
         
         
         
         $this->add_control(
-            'title_color',
+            'bg_color',
             [
-                'label'     => __( 'Title Color', 'ultraaddons' ),
+                'label'     => __( 'Background', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
-                'scheme'    => [
-                    'type'  => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
                 'selectors' => [
-                    '{{WRAPPER}} .ua-list-item-wrapper .ua-list-items li .list-item-title' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .single-date' => 'background-color: {{VALUE}}',
                 ],
-                'default'   => '#21272c',
             ]
         );
         
         $this->add_control(
-            'description_color',
+            'time_color',
             [
-                'label'     => __( 'Description Color', 'ultraaddons' ),
+                'label'     => __( 'Time Text Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
-                'scheme'    => [
-                    'type'  => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
                 'selectors' => [
-                    '{{WRAPPER}} .ua-list-item-wrapper .ua-list-items li .list-item-description' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .single-date span.timer_int' => 'color: {{VALUE}}',
                 ],
-                'default'   => '#5C6B79',
             ]
         );
         
-                
-        $this->add_responsive_control(
-                'padding',
+        $this->add_control(
+            'label_color',
+            [
+                'label'     => __( 'Label Color', 'ultraaddons' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .single-date span.timer_label' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+        
+        $this->add_group_control(
+                Group_Control_Border::get_type(),
                 [
-                        'label' => __( 'Padding', 'ultraaddons' ),
-                        'type' => Controls_Manager::DIMENSIONS,
-                        'size_units' => [ 'px', '%' ],
-                        'default'   => [
-                                'size' => 55,
-                                'unit' => 'px',
-                        ],
-                        'selectors' => [
-                                '{{WRAPPER}} .ua-list-items li.list-item .list-item-inside' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                        ],
+                        'name' => 'border',
+                        'label' => __( 'Border', 'ultraaddons' ),
+                        'selector' => '{{WRAPPER}} .single-date',
                 ]
         );
         
-        $this->add_responsive_control(
-                'margin',
+        $this->add_group_control(
+                Group_Control_Box_Shadow::get_type(),
                 [
-                        'label' => __( 'Margin', 'ultraaddons' ),
-                        'type' => Controls_Manager::DIMENSIONS,
-                        'size_units' => [ 'px', '%' ],
-                        'default'   => [
-                                'size' => 55,
-                                'unit' => 'px',
-                        ],
-                        'selectors' => [
-                                '{{WRAPPER}} .ua-list-items li.list-item' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                        ],
+                        'name' => 'box_shadow',
+                        'label' => __( 'Box Shadow', 'ultraaddons' ),
+                        'selector' => '{{WRAPPER}} .single-date',
                 ]
         );
         
@@ -338,10 +400,6 @@ class Count_Down_Timer extends Base{
                         'name' => 'int_typography',
                         'label' => 'Number Typography',
                         'selector' => '{{WRAPPER}} .ua-coun-down-timer .timer_int',
-//                        'global' => [
-//                                'default' => Global_Typography::TYPOGRAPHY_ACCENT,
-//                        ],
-
                 ]
         );
         
@@ -351,10 +409,6 @@ class Count_Down_Timer extends Base{
                         'name' => 'label_typography',
                         'label' => 'Label Typography',
                         'selector' => '{{WRAPPER}} .ua-coun-down-timer .timer_label',
-//                        'global' => [
-//                                'default' => Global_Typography::TYPOGRAPHY_ACCENT,
-//                        ],
-
                 ]
         );
         

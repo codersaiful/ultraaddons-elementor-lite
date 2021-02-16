@@ -9,24 +9,20 @@
     font-size: 36px;
     padding-bottom: 5rem;
 }
-.ua-coun-down-timer-wrapper .ua-coun-down-timer .single-date {
-    background-color: #fff;
-    border-radius: 50%;
-    padding: 25px;
-    width: 125px;
-    height: 125px;
+.ua-coun-down-timer-wrapper .single-date {
+    display: flex;
     margin: 0 25px;
     text-align: center;
-    box-shadow: 0px 15px 25px 5px rgba(0,0,0,0.1);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .ua-coun-down-timer-wrapper .ua-coun-down-timer .single-date span:nth-child(1) {
     font: bold 46px Roboto;
-    color: #021429;
 }
 
 .ua-coun-down-timer-wrapper .ua-coun-down-timer .single-date span:nth-child(2) {
-    color: #5c6b79;
     font: normal 16px Roboto;
     font-weight: normal;
     font-size: 16px;
@@ -34,4 +30,32 @@
     font-family: var(--medilac-font-secondary);
     display: block;
 }
-
+.elementor-shape-square .single-date {
+    border-radius: 0px;
+}
+.elementor-shape-circle .single-date {
+    border-radius: 50%;
+}
+.elementor-view-stacked .single-date,
+.elementor-view-framed .single-date {
+    width: 120px;
+    height: 120px;
+    box-shadow: 0px 15px 25px 5px rgb(0 0 0 / 10%);
+}
+.elementor-shape-default .single-date {
+    
+}
+.elementor-view-stacked .single-date {
+    background-color: #000;
+    color: #fff;
+}
+.elementor-shape-framed .single-date {
+    background-color: #fff;
+    color: #222;
+}
+.ua-coun-down-timer-wrapper .sep {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+}

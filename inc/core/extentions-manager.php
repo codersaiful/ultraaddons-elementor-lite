@@ -58,6 +58,8 @@ class Extensions_Manager{
      * @access public
      * 
      * @return array List of Supported Extension, Which will be included in extensions folder
+     * 
+     * @todo Ultra Effect is still not completed.
      */
     public static function get_list(){
         return [
@@ -68,10 +70,10 @@ class Extensions_Manager{
             'hover-effect'=> [
                     'name'  => __( 'Hover Effect', 'ultraaddons' ),
             ],
-            
-            'ultra-effects'=> [
-                    'name'  => __( 'Ultra Effect', 'ultraaddons' ),
-            ],
+//         Need more Customizer and to be update   
+//            'ultra-effects'=> [
+//                    'name'  => __( 'Ultra Effect', 'ultraaddons' ),
+//            ],
             
         ];
     }

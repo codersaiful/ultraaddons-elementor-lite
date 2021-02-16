@@ -84,7 +84,7 @@ class Admin_Handle{
      * return void Displaying menu for User
      */
     public static function admin_menu(){
-        $icon_url = ULTRA_ADDONS_ASSETS . 'images/svg-icon/orginal.svg';
+        $icon_url = ULTRA_ADDONS_ASSETS . 'images/svg-icon/white.svg';
         $menu = [
             'page_title'    => __( 'UltraAddons Elementor Addons', 'ultraaddons' ),
             'menu_title'    => __( 'UltraAddons', 'ultraaddons' ),
@@ -127,11 +127,11 @@ class Admin_Handle{
         return apply_filters( 'ultraaddons/admin/sub_menu', self::$sub_menu );
     }
     
+    /**
+     * Opening Welcome Page for User.
+     */
     public static function root_page() {
-        ?>
-            
-<h1><?php echo esc_html__( 'Welcome to UltraAddons Addons for Elementor Page Builder.' ); ?></h1>    
-        <?php
+        include ULTRA_ADDONS_DIR . 'admin/pages/main.php';
     }
 }
 Admin_Handle::init();
