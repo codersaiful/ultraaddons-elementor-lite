@@ -19,6 +19,8 @@ class Admin_Handle{
     public static $sub_menu = array();
     public static $capability = ULTRA_ADDONS_CAPABILITY;
     public static $menu_slug = 'ultraaddons-elementor-light';
+    public static $header_file = ULTRA_ADDONS_DIR . 'admin/pages/includes/admin-header.php';
+    public static $footer_file = ULTRA_ADDONS_DIR . 'admin/pages/includes/admin-footer.php';
 
     /**
      * Initialize Full class from here.
@@ -167,6 +169,15 @@ class Admin_Handle{
                 'function'      => [__CLASS__, 'extensions_page'],
                 'position'      =>  2,
             ],
+            [
+                'parent_slug'   => self::$menu_slug,//$parent_slug,
+                'page_title'    =>  __( 'Custom Header Footer', 'ultraaddons' ),
+                'menu_title'    =>  __( 'Header Footer', 'ultraaddons' ),
+                'capability'    => self::$capability,
+                'menu_slug'     => 'ultraaddons-header-footer',
+                'function'      => [__CLASS__, 'header_footer_page'],
+                'position'      =>  2,
+            ],
             
         ];
         
@@ -183,7 +194,11 @@ class Admin_Handle{
      * Opening Welcome Page for User.
      */
     public static function root_page() {
+        include_once self::$header_file;
+        
         include ULTRA_ADDONS_DIR . 'admin/pages/main.php';
+        
+        include_once self::$footer_file;
     }
     
     
@@ -191,7 +206,11 @@ class Admin_Handle{
      * Opening Widget User.
      */
     public static function widgets_page() {
+        include_once self::$header_file;
+        
         include ULTRA_ADDONS_DIR . 'admin/pages/widgets.php';
+        
+        include_once self::$footer_file;
     }
     
     
@@ -199,7 +218,22 @@ class Admin_Handle{
      * Opening Extension for User.
      */
     public static function extensions_page() {
+        include_once self::$header_file;
+        
         include ULTRA_ADDONS_DIR . 'admin/pages/extensions.php';
+        
+        include_once self::$footer_file;
+    }
+    
+    /**
+     * Opening Header Footer for User.
+     */
+    public static function header_footer_page() {
+        include_once self::$header_file;
+        
+        include ULTRA_ADDONS_DIR . 'admin/pages/header-footer.php';
+        
+        include_once self::$footer_file;
     }
     
     
