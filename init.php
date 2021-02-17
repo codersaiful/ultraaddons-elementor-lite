@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Addons - UltraAddons Elementor Lite
- * Plugin URI: https://ultraaddons.com.com/
+ * Plugin URI: https://ultraaddons.com/
  * Description: Elementor Addons Plugin. Build your desired page just few click. Easy to use and useable for any theme and plugin. Available many filter.
  * Version: 1.0.0
  * Author: codersaiful
