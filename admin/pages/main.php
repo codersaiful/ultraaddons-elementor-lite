@@ -1,13 +1,13 @@
 <?php
 
 defined( 'ABSPATH' ) || die();
-
+$full_logo_image = ULTRA_ADDONS_ASSETS . 'images/svg/full-color-logo.svg';
 ?>
 <div class="wrap about-wrap ultraaddons-wrap">
     <h1 class="ultraaddons-color-heading"><?php _e('Welcome to UltraAddons', 'ultraaddons'); ?></h1>
     
     <div class="ultraaddons-system-stats">
-        
+        <img src="<?php echo esc_attr( $full_logo_image ); ?>" style="height: 176px;width: auto;">
         <p class="ultraaddons-info"><?php esc_html_e('In elementor Page Builder, you will get a Category name [Addons - UltraAddons]. Choose your Widget.', 'ultraaddons'); ?></p>
         <h3><?php esc_html_e('Available Widgets and Features', 'ultraaddons'); ?></h3>
 
