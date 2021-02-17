@@ -18,8 +18,9 @@ class Admin_Handle{
     
     public static $sub_menu = array();
     public static $capability = ULTRA_ADDONS_CAPABILITY;
+    public static $menu_slug = 'ultraaddons-elementor-light';
 
-        /**
+    /**
      * Initialize Full class from here.
      * 
      * @hooked admin_enqueue_scripts
@@ -61,6 +62,7 @@ class Admin_Handle{
      */
     public static function add_action_links( $links ) {
         //$ultraaddons_links[] = '<a href="https://codecanyon.net/item/woo-product-table-pro/20676867" title="' . esc_attr__( 'Many awesome features is waiting for you', 'ultraaddons_pro' ) . '" target="_blank">'.esc_html__( 'GET PRO VERSION','ultraaddons_pro' ).'</a>';
+        //$ultraaddons_links[] = '<a href="https://codecanyon.net/item/woo-product-table-pro/20676867" title="' . esc_attr__( 'Many awesome features is waiting for you', 'ultraaddons_pro' ) . '" target="_blank">'.esc_html__( 'GET PRO VERSION','ultraaddons_pro' ).'</a>';
         $ultraaddons_links[] = '<a href="https://codeastrology.com/support/" title="' . esc_attr__( 'CodeAstrology Support', 'ultraaddons_pro' ) . '" target="_blank">'.esc_html__( 'Support','ultraaddons_pro' ).'</a>';
         $ultraaddons_links[] = '<a href="https://github.com/codersaiful/ultraaddons-elementor-lite" title="' . esc_attr__( 'Github Repo Link', 'ultraaddons_pro' ) . '" target="_blank">'.esc_html__( 'Github Repository','ultraaddons_pro' ).'</a>';
         return array_merge( $ultraaddons_links, $links );
@@ -89,7 +91,7 @@ class Admin_Handle{
             'page_title'    => __( 'UltraAddons Elementor Addons', 'ultraaddons' ),
             'menu_title'    => __( 'UltraAddons', 'ultraaddons' ),
             'capability'    => self::$capability,
-            'menu_slug'    => 'ultraaddons-elementor-light',
+            'menu_slug'    => self::$menu_slug,//'ultraaddons-elementor-light',
             'function'    => [ __CLASS__, 'root_page' ],
             'icon_url'    => $icon_url,
             'position'    => 45,
@@ -99,7 +101,7 @@ class Admin_Handle{
         
         $page_title = isset( $menu['page_title'] ) ? $menu['page_title'] : false;
         $menu_title = isset( $menu['menu_title'] ) ? $menu['menu_title'] : false;
-        $capability = 'manage_woocommerce';//isset( $menu['capability'] ) ? $menu['capability'] : false;
+        $capability = isset( $menu['capability'] ) ? $menu['capability'] : false; //'manage_woocommerce';//
         $menu_slug = isset( $menu['menu_slug'] ) ? $menu['menu_slug'] : false;
         $function = isset( $menu['function'] ) ? $menu['function'] : false;
         $icon_url = isset( $menu['icon_url'] ) ? $menu['icon_url'] : false;
@@ -108,23 +110,73 @@ class Admin_Handle{
         
         add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
         
-//        add_submenu_page($parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function, $position);
+        /**
+         * Adding Submenu
+         */
+        self::add_submenu( $menu_slug );
     }
     
-    public static function get_submenu( $parent_slug = false ){
+    /**
+     * Add Submenu
+     * Submenu 
+     * 
+     * @return void Adding Submenuj
+     */
+    public static function add_submenu( $parent_slug = false ) {
+        foreach( self::get_submenu() as $menu ){
+
+            $parent_slug = isset( $menu['parent_slug'] ) ? $menu['parent_slug'] : false;
+            $page_title = isset( $menu['page_title'] ) ? $menu['page_title'] : false;
+            $menu_title = isset( $menu['menu_title'] ) ? $menu['menu_title'] : false;
+            $capability = isset( $menu['capability'] ) ? $menu['capability'] : false;
+            $menu_slug = isset( $menu['menu_slug'] ) ? $menu['menu_slug'] : false;
+            $function = isset( $menu['function'] ) ? $menu['function'] : false;
+            $icon_url = isset( $menu['icon_url'] ) ? $menu['icon_url'] : false;
+            $position = isset( $menu['position'] ) ? $menu['position'] : false;
+
+            add_submenu_page($parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function, $position);
+        }
+    }
+    
+    /**
+     * Get Array of Submenu
+     * with title,menu title, capability
+     * slug,function etc.
+     * 
+     * @param string $parent_slug
+     * @return array
+     */
+    public static function get_submenu(){
         self::$sub_menu = [
             [
-                'parent_slug'   => $parent_slug,
-                'page_title'    =>  __( 'Welcome to UltraAddons', 'ultraaddons' ),
-                'menu_title'    =>  __( 'Welcome', 'ultraaddons' ),
+                'parent_slug'   => self::$menu_slug,//$parent_slug,
+                'page_title'    =>  __( 'UltraAddons Widgets', 'ultraaddons' ),
+                'menu_title'    =>  __( 'Widgets', 'ultraaddons' ),
                 'capability'    => self::$capability,
-                'menu_slug'     => 'ultraaddons-welcome',
-                'function'      => 'welcome_page',
+                'menu_slug'     => 'ultraaddons-widgets',
+                'function'      => [__CLASS__, 'widgets_page'],
                 'position'      =>  1,
             ],
+            
+            [
+                'parent_slug'   => self::$menu_slug,//$parent_slug,
+                'page_title'    =>  __( 'UltraAddons Extensions', 'ultraaddons' ),
+                'menu_title'    =>  __( 'Extensions', 'ultraaddons' ),
+                'capability'    => self::$capability,
+                'menu_slug'     => 'ultraaddons-extensions',
+                'function'      => [__CLASS__, 'extensions_page'],
+                'position'      =>  2,
+            ],
+            
         ];
         
-        return apply_filters( 'ultraaddons/admin/sub_menu', self::$sub_menu );
+        self::$sub_menu = apply_filters( 'ultraaddons/admin/sub_menu', self::$sub_menu );
+        
+        if( empty( self::$sub_menu ) || ! is_array( self::$sub_menu ) ){
+            self::$sub_menu = [];
+        }
+        
+        return self::$sub_menu;
     }
     
     /**
@@ -133,5 +185,23 @@ class Admin_Handle{
     public static function root_page() {
         include ULTRA_ADDONS_DIR . 'admin/pages/main.php';
     }
+    
+    
+    /**
+     * Opening Widget User.
+     */
+    public static function widgets_page() {
+        include ULTRA_ADDONS_DIR . 'admin/pages/widgets.php';
+    }
+    
+    
+    /**
+     * Opening Extension for User.
+     */
+    public static function extensions_page() {
+        include ULTRA_ADDONS_DIR . 'admin/pages/extensions.php';
+    }
+    
+    
 }
 Admin_Handle::init();
