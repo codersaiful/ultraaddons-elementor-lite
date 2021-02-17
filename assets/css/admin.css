@@ -1,6 +1,6 @@
 
 /*********** UltraAddons Style - In Plugin List ****************/
-.ultraaddons-color-heading,
+/*.ultraaddons-color-heading,*/
 p.ultraaddons-info,
 table.wp-list-table.widefat.plugins tr[data-slug='ultraaddons-elementor-lite'] td.plugin-title.column-primary strong,
 #elementor-panel-category-addons-ultra-elementor .elementor-panel-category-title{
@@ -19,7 +19,7 @@ table.wp-list-table.widefat.plugins tr[data-slug='ultraaddons-elementor-lite'] t
     animation-fill-mode: none;
     animation-play-state: running;
 }
-.ultraaddons-color-heading:hover,
+/*.ultraaddons-color-heading:hover,*/
 p.ultraaddons-info:hover,
 table.wp-list-table.widefat.plugins tr[data-slug='ultraaddons-elementor-lite']:hover td.plugin-title.column-primary strong,
 #elementor-panel-category-addons-ultra-elementor:hover .elementor-panel-category-title {
@@ -69,7 +69,7 @@ li#toplevel_page_ultraaddons-elementor-light.current .wp-menu-image img {
 
 
 /***** Menu Page Start*******/
-.ultraaddons-license-details, .ultraaddons-system-stats {
+.ultraaddons-license-details, .ultraaddons-section-area {
     background: #fff;
     padding: 10px 30px 50px;
     border-radius: 3px;
@@ -79,6 +79,15 @@ li#toplevel_page_ultraaddons-elementor-light.current .wp-menu-image img {
     -moz-box-shadow: 0 5px 40px 0 rgba(10, 10, 25, .1);
     box-shadow: 0 5px 40px 0 rgb(10 10 25 / 10%);
 }
+.ultraaddons-admin-wrapper {
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    margin-top: 0;
+    color: #000;
+    max-width: 100%;
+}
+
 .about-wrap h3 {
     margin: 1.25em 0 .6em;
     font-size: 1.4em;
@@ -92,7 +101,7 @@ li#toplevel_page_ultraaddons-elementor-light.current .wp-menu-image img {
     border-bottom: 1px solid #eee;
 }
 h1.ultraaddons-color-heading {
-    font-weight: 800;
+    font-weight: 900;
 }
 p.ultraaddons-info {
     font-size: 22px;
