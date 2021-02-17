@@ -43,7 +43,7 @@ class Advance_Heading extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'medilac', 'heading', 'header', 'title' ];
+        return [ 'ultraaddons', 'heading', 'header', 'title' ];
     }
     
     

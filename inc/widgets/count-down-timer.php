@@ -84,6 +84,16 @@ class Count_Down_Timer extends Base{
         $this->add_render_attribute( 'wrapper', 'class', 'ua-coun-down-timer-wrapper' );
         $date = $settings['date_time'];
         $date_time = date( 'm/d/Y H:i', strtotime($date) );
+        
+        /**
+         * Filter for Changing Date and time.
+         * 
+         * @since 1.0.0.9
+         * @date 16.2.21 d.m.y
+         * @author Saiful
+         */
+        $date_time = apply_filters( 'ultraaddons/widget/count-down-timer/date_time', $date_time, $this->get_name(), $this->get_id(), $this );
+
         $separator = isset( $settings['show_separator'] ) && $settings['show_separator'] == 'yes' ? '<div class="sep"><span>:</span></div>' : '';
         ?>
     <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
