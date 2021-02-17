@@ -51,7 +51,7 @@ Yes.
 
 Yes.
 
-= Does this plugin support customizion by Filter or Action Hook? =
+= Does this plugin support customization by Filter or Action Hook? =
 
 Yes, there are lot of filter and action hook available here. You can customize for your site even for your premium theme or plugin.
 
@@ -63,8 +63,15 @@ Yes, there are lot of filter and action hook available here. You can customize f
 
 == Screenshots ==
 
-1. Advance Slider 
-2. Button of this plugin
+1. Count Down timer
+2. Info Box
+3. Slider
+4. Count down timer with background image
+5. Different type button with our Button Widget.
+6. Advance List Items with different design
+7. Widgets in Elementor Screen Area
+8. Info Box widget Editing Area
+9. Hover Effect and Wrapper link for All Widget
 
 
 == Change log ==
