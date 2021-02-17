@@ -31,7 +31,7 @@ Elementor Addons Plugin. Build your desired page just few click. Easy to use and
 * Slider with Any content. Dynamic content.
 * Slider with Pre-build Template of Elementor
 
-** Demo **
+**Demo**
 
 - [**Slider**](https://ultraaddons.com/slider/) – Powerful Slider.
 - [**Advance Heading**](https://ultraaddons.com/advance-heading/) – Advance Heading.
