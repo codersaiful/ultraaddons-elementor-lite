@@ -117,6 +117,20 @@
             elementorFrontend.hooks.addAction( 'frontend/element_ready/ultraaddons-slider.default', add_number_inside_bullets);
            
            
+           // Cart Update in Editor Screen
+            elementorFrontend.hooks.addAction(
+                    'frontend/element_ready/ultraaddons-cart.default',
+                    function ($scope) {
+                            $( document.body ).trigger( 'updated_cart_totals' );
+                            $( document.body ).trigger( 'wc_fragments_refreshed' );
+                            $( document.body ).trigger( 'wc_fragments_refreshed' );
+                            $( document.body ).trigger( 'wc_fragments_refresh' );
+                            $( document.body ).trigger( 'wc_fragment_refresh' );
+                            $( document.body ).trigger( 'removed_from_cart' );
+                    }
+            );
+            
+           
            
            // Wrapper Link
            $('.ua-wrapper-link').each(function() {
