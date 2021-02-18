@@ -114,6 +114,7 @@ class Loader {
     
     public function include_on_init(){
         include_once ULTRA_ADDONS_DIR . 'inc/core/extentions-manager.php';
+        include_once ULTRA_ADDONS_DIR . 'inc/core/header_footer.php';
     }
 
     /**
