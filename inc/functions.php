@@ -40,6 +40,26 @@ function ultraaddons_elementor() {
 	return \Elementor\Plugin::instance();
 }
 
+/**
+ * Outpur elementor page content to any where
+ * Just need that template id
+ * Mean: Post ID of that template
+ * 
+ * @param int $post_id POST Id, can be any post id. basically for Elementor Template's POSD id
+ * @return boolean|String|null if not found, return false. if not set post id, return null and for success return content
+ */
+function ultraaddons_elementor_display_content( $post_id = false ){
+    if( empty( $post_id ) || ! $post_id || ! is_numeric( $post_id ) ){
+        return;
+    }
+    
+    (int) $select_post_id = $post_id;
+    if ( \Elementor\Plugin::instance()->db->is_built_with_elementor( $select_post_id ) ) {
+        return \Elementor\Plugin::instance()->frontend->get_builder_content_for_display( $select_post_id );
+    }
+    return false;
+}
+
 function ultraaddons_icon_markup( $size = 'small' ){
     $markup = "<i class='ultraaddons ua_icon ua_icon_{$size}'></i>";
     return apply_filters( 'ultraaddons_icon_murkup', $markup );

@@ -9,6 +9,13 @@ defined( 'ABSPATH' ) || die();
  */
 class Header_Footer {
     
+    public static $key = 'ultraaddons_header_footer';
+    public static $data = [
+        'header_id' => false,
+        'footer_id' =>  false,
+        'type'    => 'php' //It will php and css. In
+    ];
+
     public static function init() {
         //add_action( 'get_header', [__CLASS__, 'show_header'], 10, 2 );
         //add_action( 'get_footer', [__CLASS__, 'show_footer'], 10, 2 );
@@ -32,26 +39,12 @@ class Header_Footer {
     }
     public static function show_header( $name, $args ) {
 ?>
-    <html <?php language_attributes(); ?>>
-<head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	<link rel="profile" href="http://gmpg.org/xfn/11" />
-	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-	<?php wp_head(); ?>
-</head>
-
-<body <?php body_class(); ?>>
-<?php do_action( 'wp_body_open' ); ?>
-<div id="page" class="hfeed site">
+    
     <h2>ddddddddddddddddddddd</h2>
     <?php
         
         //var_dump($name, $args);
-        (int) $select_post_id = 2304;
-        if ( \Elementor\Plugin::instance()->db->is_built_with_elementor( $select_post_id ) ) {
-//            echo \Elementor\Plugin::instance()->frontend->get_builder_content_for_display( $select_post_id );
-        }
+        
         
         $templates   = [];
         $templates[] = 'header.php';
@@ -60,6 +53,32 @@ class Header_Footer {
         ob_start();
         locate_template( $templates, true );
         ob_get_clean();
+    }
+    
+    /**
+     * Getting templateing type.
+     * Such: PHP or CSS
+     * 
+     * *********************
+     * in CSS type:
+     * Original header footer will be hide by CSS
+     * 
+     * in PHP type:
+     * template file will be override by our own php header file
+     * **********************
+     * 
+     * @access public
+     * 
+     * @return string Getting templateing type.
+     */
+    public static function get_type() {
+        $return = 'php';
+        $data = self::$data;
+        if( isset( $data['type'] ) && !empty( $data['type'] ) ){
+            $return = $data['type'];
+        }
+        
+        return apply_filters( 'ultraaddons/header_footer/tepe', $return );
     }
 }
 
