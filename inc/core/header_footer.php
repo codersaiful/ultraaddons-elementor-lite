@@ -2,10 +2,16 @@
 namespace UltraAddons\Core;
 
 defined( 'ABSPATH' ) || die();
+
 /**
- * Description of Header_Footer
+ * Control of Header_Footer
+ * To show Custom Header which is made by elementor Page Builder
+ * 
+ * Primarily we will use Elementor Template as header and footer. 
  *
- * @author CODES
+ * @todo Header_Footer will load based on database. we have to handle it later.
+ * @author Saiful
+ * @since 1.0.1.0
  */
 class Header_Footer {
     
@@ -16,15 +22,18 @@ class Header_Footer {
         'type'    => 'php' //It will php and css. In
     ];
 
+    
     public static function init() {
         $h_f_data = self::get_data();
 
-        if( ! empty( $h_f_data['header_id'] ) ){
+        if( ! empty( $h_f_data['header_id'] ) && self::get_type() == 'php' ){
             add_action( 'get_header', [__CLASS__, 'show_header'], 10, 2 );
         }
         
-        if( ! empty( $h_f_data['footer_id'] ) ){
+        if( ! empty( $h_f_data['footer_id'] ) && self::get_type() == 'php' ){
             add_action( 'get_footer', [__CLASS__, 'show_footer'], 10, 2 );
+        }else{
+            
         }
         
         
@@ -76,15 +85,33 @@ class Header_Footer {
     public static function get_type() {
         $return = 'php';
         $data = self::$data;
-        if( isset( $data['type'] ) && !empty( $data['type'] ) ){
+        if( isset( $data['type'] ) && ! empty( $data['type'] ) ){
             $return = $data['type'];
         }
         
-        return apply_filters( 'ultraaddons/header_footer/tepe', $return );
+        return apply_filters( 'ultraaddons/header_footer/type', $return );
     }
     
+    /**
+     * Getting header footer data from
+     * database
+     * I have taken data based on sell:$key which is 'ultraaddons_header_footer'
+     * Actually if not found any data in database, based on this key
+     * then it will return default data from property
+     * 
+     * @Hook Available hook is ultraaddons/header_footer/data. can be call from pro version.
+     * 
+     * @return array|null
+     */
     public static function get_data() {
-        return get_option( self::$key, self::$data );
+        /**
+         * if not found data based on key, then it will return default 
+         * data from property
+         * 
+         * @since 1.0.1.0
+         */
+        $data = get_option( self::$key, self::$data );
+        return apply_filters( 'ultraaddons/header_footer/data', $data, self );
     }
 }
 
