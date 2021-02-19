@@ -63,7 +63,6 @@ class Autoloader {
 
         
         $file = ULTRA_ADDONS_DIR . 'inc/' . $filename . '.php'; //plugin_dir_path(__DIR__)
-        var_dump($file,is_file($file));
         if ( file_exists( $file ) ) {
             require_once $file;
         }
