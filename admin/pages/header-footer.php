@@ -18,7 +18,7 @@ if( $form_datas && $key ){
     update_option( $key, $form_datas );
 }
 $current_data = Header_Footer::get_data();
-
+var_dump($current_data);
 
 $template_obj = new Template_List();
 $templates = $template_obj->get_templates();
@@ -67,6 +67,6 @@ if( is_array( $templates ) && count( $templates ) > 0 ){
 <?php   
 }?>
     <label>Templating Type</label>
-    <input type="text" value="php" name="type">
+    <input type="text" value="<?php echo isset( $current_data['type'] ) ? $current_data['type'] : 'php'; ?>" name="type">
     <button type="submit"><?php echo esc_html__( 'Submit', 'ultraaddons' ); ?></button>
 </form>

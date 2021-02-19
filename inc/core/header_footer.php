@@ -15,31 +15,59 @@ defined( 'ABSPATH' ) || die();
  */
 class Header_Footer {
     
+    /**
+     * key for update and get data from database.
+     *
+     * @var string option key for update and get data from database. 
+     */
     public static $key = 'ultraaddons_header_footer';
+    
+    /**
+     * Default data for header id, and footer id.
+     *
+     * @var Array 
+     */
     public static $data = [
         'header_id' => false,
         'footer_id' =>  false,
         'type'    => 'php' //It will php and css. In
     ];
 
-    
-    public static function init() {
-        $h_f_data = self::get_data();
+    protected static $body_class = [];
 
-        if( ! empty( $h_f_data['header_id'] ) && self::get_type() == 'php' ){
-            add_action( 'get_header', [__CLASS__, 'show_header'], 10, 2 );
-        }
+
+    public static function init() {
+        $type = self::get_type();
         
-        if( ! empty( $h_f_data['footer_id'] ) && self::get_type() == 'php' ){
-            add_action( 'get_footer', [__CLASS__, 'show_footer'], 10, 2 );
-        }else{
+        if( self::get_header_id() ){
+            self::$body_class[] = 'ultraaddons-header-' . $type;
+            if( $type == 'php' ){
+                add_action( 'get_header', [__CLASS__, 'add_header'], 10, 2 );
+            }else if( $type == 'css' ){
+                add_action( 'wp_body_open', [__CLASS__, 'add_header'] );
+            }
             
         }
         
+        if( self::get_footer_id() ){
+            self::$body_class[] = 'ultraaddons-footer-' . $type;
+//            add_action( 'get_footer', [__CLASS__, 'show_footer'], 10, 2 );
+            if( $type == 'php' ){
+                add_action( 'get_footer', [__CLASS__, 'show_footer'], 10, 2 );
+            }else if( $type == 'css' ){
+                add_action( 'wp_footer', [__CLASS__, 'add_footer'], 0 );
+            }
+        }
         
-
+        if( self::get_header_id() || self::get_footer_id() ){
+            add_filter( 'body_class', [__CLASS__, 'body_class'] );
+        }
+        
     }
     
+    public static function add_footer() {
+        echo ultraaddons_elementor_display_content( self::get_footer_id() );
+    }
     public static function show_footer( $name, $args ) {
         include ULTRA_ADDONS_DIR . 'template/footer.php';
         
@@ -52,8 +80,13 @@ class Header_Footer {
         locate_template( $templates, true );
         ob_get_clean();
     }
+    
+    public static function add_header() {
+        echo ultraaddons_elementor_display_content( self::get_header_id() );
+    }
     public static function show_header( $name, $args ) {
         include ULTRA_ADDONS_DIR . 'template/header.php';
+        
         
         $templates   = [];
         $templates[] = 'header.php';
@@ -84,13 +117,45 @@ class Header_Footer {
      */
     public static function get_type() {
         $return = 'php';
-        $data = self::$data;
+        $data = self::get_data();
         if( isset( $data['type'] ) && ! empty( $data['type'] ) ){
             $return = $data['type'];
         }
         
         return apply_filters( 'ultraaddons/header_footer/type', $return );
     }
+    
+    /**
+     * Retrieve Header ID
+     * 
+     * @return int|false
+     */
+    public static function get_header_id(){
+        $header_id = false;
+        $data = self::get_data();
+        if( isset( $data['header_id'] ) && ! empty( $data['header_id'] ) ){
+            $header_id = (int) $data['header_id'];
+        }
+        
+        return apply_filters( 'ultraaddons/header_footer/header_id', $header_id );
+    }
+
+    
+    /**
+     * Retrieve footer_id ID
+     * 
+     * @return int|false
+     */
+    public static function get_footer_id(){
+        $footer_id = false;
+        $data = self::get_data();
+        if( isset( $data['footer_id'] ) && ! empty( $data['footer_id'] ) ){
+            $footer_id = (int) $data['footer_id'];
+        }
+        
+        return apply_filters( 'ultraaddons/header_footer/footer_id', $footer_id );
+    }
+
     
     /**
      * Getting header footer data from
@@ -111,7 +176,19 @@ class Header_Footer {
          * @since 1.0.1.0
          */
         $data = get_option( self::$key, self::$data );
-        return apply_filters( 'ultraaddons/header_footer/data', $data, self );
+        return apply_filters( 'ultraaddons/header_footer/data', $data );
+    }
+    
+    /**
+     * adding body class. why we adding body class. Actually
+     * if css type header footer, need custom body class
+     * 
+     * @param array $class Current array of class for site body tag
+     * @return array
+     */
+    public static function body_class( $class ) {
+        
+        return array_merge( self::$body_class, $class );
     }
 }
 

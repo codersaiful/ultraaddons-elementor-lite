@@ -1,0 +1,6 @@
+body.ultraaddons-header-css .site-header,
+body.ultraaddons-footer-css .site-footer
+{
+    display: none !important;
+    height: 0;
+}
