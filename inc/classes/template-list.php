@@ -1,5 +1,5 @@
 <?php
-namespace UltraAddons\Core;
+namespace UltraAddons\Classes;
 
 /**
  * Getting Elementor Template List

@@ -10,6 +10,11 @@
  * @since 1.0.0.10
  */
 
+$_ultraaddons_classes = [
+    'ultraaddons',
+    'ultraaddons-custom-header',
+    ];
+
 ?>
 <html <?php language_attributes(); ?>>
 <head>
@@ -29,5 +34,8 @@ body_class( $_ultraaddons_classes );
     <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'medilac' ); ?></a>
     
     <?php
-        echo ultraaddons_elementor_display_content();
+    $_header_footer_info = get_option( UltraAddons\Core\Header_Footer::$key );
+    $header_id = $_header_footer_info['header_id'];
+    echo ultraaddons_elementor_display_content( $header_id );
     ?>
+    <div id="page" class="hfeed site ultraaddons-page-container">

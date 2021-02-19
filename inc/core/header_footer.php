@@ -17,18 +17,24 @@ class Header_Footer {
     ];
 
     public static function init() {
-        //add_action( 'get_header', [__CLASS__, 'show_header'], 10, 2 );
-        //add_action( 'get_footer', [__CLASS__, 'show_footer'], 10, 2 );
-//        add_action( 'wp_body_open', [__CLASS__, 'show_header']);
+        $h_f_data = self::get_data();
+
+        if( ! empty( $h_f_data['header_id'] ) ){
+            add_action( 'get_header', [__CLASS__, 'show_header'], 10, 2 );
+        }
+        
+        if( ! empty( $h_f_data['footer_id'] ) ){
+            add_action( 'get_footer', [__CLASS__, 'show_footer'], 10, 2 );
+        }
+        
+        
+
     }
     
     public static function show_footer( $name, $args ) {
-        //var_dump($name, $args);
-        ?>
-        </div> 
-    </body>           
-</html>
-        <?php
+        include ULTRA_ADDONS_DIR . 'template/footer.php';
+        
+        
         $templates   = [];
         $templates[] = 'footer.php';
         // Avoid running wp_footer hooks again.
@@ -38,13 +44,7 @@ class Header_Footer {
         ob_get_clean();
     }
     public static function show_header( $name, $args ) {
-?>
-    
-    <h2>ddddddddddddddddddddd</h2>
-    <?php
-        
-        //var_dump($name, $args);
-        
+        include ULTRA_ADDONS_DIR . 'template/header.php';
         
         $templates   = [];
         $templates[] = 'header.php';
@@ -54,6 +54,8 @@ class Header_Footer {
         locate_template( $templates, true );
         ob_get_clean();
     }
+    
+    
     
     /**
      * Getting templateing type.
@@ -79,6 +81,10 @@ class Header_Footer {
         }
         
         return apply_filters( 'ultraaddons/header_footer/tepe', $return );
+    }
+    
+    public static function get_data() {
+        return get_option( self::$key, self::$data );
     }
 }
 
