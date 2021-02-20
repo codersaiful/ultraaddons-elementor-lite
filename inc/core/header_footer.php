@@ -42,8 +42,8 @@ class Header_Footer {
         if( self::get_header_id() ){
             self::$body_class[] = 'ultraaddons-header-' . $type;
             if( $type == 'php' ){
-                add_action( 'get_header', [__CLASS__, 'add_header'], 10, 2 );
-            }else if( $type == 'css' ){
+                add_action( 'get_header', [__CLASS__, 'show_header'], 10, 2 );
+            }else{ //else if( $type == 'css' )
                 add_action( 'wp_body_open', [__CLASS__, 'add_header'] );
             }
             
@@ -54,8 +54,8 @@ class Header_Footer {
 //            add_action( 'get_footer', [__CLASS__, 'show_footer'], 10, 2 );
             if( $type == 'php' ){
                 add_action( 'get_footer', [__CLASS__, 'show_footer'], 10, 2 );
-            }else if( $type == 'css' ){
-                add_action( 'wp_footer', [__CLASS__, 'add_footer'], 0 );
+            }else{//else if( $type == 'css' )
+                add_action( 'wp_footer', [__CLASS__, 'add_footer'] );
             }
         }
         
@@ -66,7 +66,7 @@ class Header_Footer {
     }
     
     public static function add_footer() {
-        echo ultraaddons_elementor_display_content( self::get_footer_id() );
+//        /echo ultraaddons_elementor_display_content( self::get_footer_id() );
     }
     public static function show_footer( $name, $args ) {
         include ULTRA_ADDONS_DIR . 'template/footer.php';

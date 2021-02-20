@@ -34,8 +34,8 @@ body_class( $_ultraaddons_classes );
     <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'medilac' ); ?></a>
     
     <?php
-    $_header_footer_info = get_option( UltraAddons\Core\Header_Footer::$key );
-    $header_id = $_header_footer_info['header_id'];
-    echo ultraaddons_elementor_display_content( $header_id );
+//    $_header_footer_info = get_option( UltraAddons\Core\Header_Footer::$key );
+//    $header_id = $_header_footer_info['header_id'];
+    echo ultraaddons_elementor_display_content( UltraAddons\Core\Header_Footer::get_header_id() );
     ?>
     <div id="page" class="hfeed site ultraaddons-page-container">
