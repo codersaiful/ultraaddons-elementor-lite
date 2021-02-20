@@ -76,6 +76,8 @@ class WPT_Elementor_Widget extends Base{
 	 * @access protected
 	 */
 	protected function render() {
+            //WPT_Product_Table
+            
             $settings = $this->get_settings_for_display();
             $table_id = isset( $settings['table_id'] ) && !empty( $settings['table_id'] ) ? $settings['table_id'] : false;
             if( $table_id && is_numeric( $table_id ) ){
