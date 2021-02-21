@@ -117,7 +117,7 @@
             elementorFrontend.hooks.addAction( 'frontend/element_ready/ultraaddons-slider.default', add_number_inside_bullets);
            
            
-           // Cart Update in Editor Screen
+            // Cart Update in Editor Screen
             elementorFrontend.hooks.addAction(
                     'frontend/element_ready/ultraaddons-cart.default',
                     function ($scope) {
@@ -128,6 +128,14 @@
                             $( document.body ).trigger( 'wc_fragments_refresh' );
                             $( document.body ).trigger( 'wc_fragment_refresh' );
                             $( document.body ).trigger( 'removed_from_cart' );
+                    }
+            );
+            
+            // Cart Update in Editor Screen
+            elementorFrontend.hooks.addAction(
+                    'frontend/element_ready/ultraaddons-product-table.default',
+                    function ($scope) {
+                        $('.wpt_product_table_wrapper .search_select,select.filter_select').select2();
                     }
             );
             
