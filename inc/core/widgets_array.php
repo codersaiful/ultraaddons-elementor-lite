@@ -75,7 +75,7 @@ $widgetsArray = [
             ],
     ],
     
-    'WOO_Product_Table' => [
+    'Product_Table' => [
             'name'  => __( 'Product Table', 'ultraaddons' ),
             'is_free'   => true,
             'icon'      => 'eicon-table',
