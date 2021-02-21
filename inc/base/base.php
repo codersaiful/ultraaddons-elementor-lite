@@ -62,6 +62,23 @@ class Base extends Widget_Base{
     }
     
     /**
+     * 
+     * @return string by default, 
+     */
+    public function get_icon() {
+        $widgetsArray = Widgets_Manager::widgets();
+        $title = $this->get_pure_name();
+        $icon = 'ultraaddons ';
+        if( is_array( $widgetsArray ) && isset( $widgetsArray[$title]['icon'] ) && ! empty( $widgetsArray[$title]['icon'] ) ){
+            $icon .= $widgetsArray[$title]['icon'];
+        }else{
+            $icon .= 'eicon-check-circle-o';
+        }
+        
+        return $icon;
+    }
+    
+    /**
      * Retrieve default Title name from Class name without Name space
      * Need Override this method actually.
      * 
@@ -101,7 +118,7 @@ class Base extends Widget_Base{
      */
     public function get_categories() {
         
-        $default = [ 'ultraaddons' ]; //[ 'basic' ]
+        $default = [ 'ultraaddons' ];
         /**
          * Filter for Change Category for All for any specific 
          * 

@@ -18,20 +18,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class List_Item extends Base{
     
     /**
-     * Widget Icon.
-     *
-     * Holds the Repeater counter data. Default is `0`.
-     *
-     * @since 1.0.0
-     * @static
-     *
-     * @var int Widget Icon.
-     */
-    public function get_icon() {
-        return 'ultraaddons eicon-editor-list-ul';
-    }
-    
-    /**
      * Get your widget name
      *
      * Retrieve oEmbed widget title.

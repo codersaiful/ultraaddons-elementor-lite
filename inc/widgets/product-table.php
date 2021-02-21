@@ -14,22 +14,9 @@ use Elementor\Group_Control_Background;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class WPT_Elementor_Widget extends Base{
+class Product_Table extends Base{
     
-        /**
-         * Widget Icon.
-         *
-         * Holds the Repeater counter data. Default is `0`.
-         *
-         * @since 1.0.0
-         * @static
-         *
-         * @var int Widget Icon.
-         */
-        public function get_icon() {
-            return 'ultraaddons eicon-table';
-        }
-
+        
         /**
          * Set your widget name keyword
          *
@@ -43,6 +30,34 @@ class WPT_Elementor_Widget extends Base{
             return [ 'ultraaddons', 'table', 'woo', 'product', 'wpt table', 'wc', 'tbl' ]; //'ultraaddons eicon-table'
         }
 
+        /**
+         * Retrieve the list of scripts the counter widget depended on.
+         *
+         * Used to set scripts dependencies required to run the widget.
+         *
+         * @since 1.0.0.13
+         * @access public
+         *
+         * @return array Widget scripts dependencies.
+         * @by Saiful
+         */
+        public function get_script_depends() {
+                return [ 'jquery','select2' ];
+        }
+
+        /**
+         * Whether the reload preview is required or not.
+         *
+         * Used to determine whether the reload preview is required.
+         *
+         * @since 1.0.0
+         * @access public
+         *
+         * @return bool Whether the reload preview is required.
+         */
+        public function is_reload_preview_required() {
+                return true;
+        }
 
 	
 	/**
@@ -76,7 +91,6 @@ class WPT_Elementor_Widget extends Base{
 	 * @access protected
 	 */
 	protected function render() {
-            //WPT_Product_Table
             
             $settings = $this->get_settings_for_display();
             $table_id = isset( $settings['table_id'] ) && !empty( $settings['table_id'] ) ? $settings['table_id'] : false;
@@ -110,7 +124,7 @@ class WPT_Elementor_Widget extends Base{
                     'posts_per_page'=> '-1',
                     'post_status' => 'publish',
                 );
-                $productTable = new WP_Query( $args );
+                $productTable = new \WP_Query( $args );
                 $table_options = array();
                 $wpt_extra_msg = false;
                 if ($productTable->have_posts()) : 
@@ -120,7 +134,7 @@ class WPT_Elementor_Widget extends Base{
                     $id = get_the_id();
                     $table_options[$id] = get_the_title();
                     endwhile;
-                    //$table_options[''] = esc_html__( 'Please Choose a Table', 'wpt_pro' );
+
                 else:
                     $table_options = false;
                     //Controls_Manager::HEADING
@@ -139,21 +153,7 @@ class WPT_Elementor_Widget extends Base{
                                     //'default' => '',
                             ]
                     );
-                    /****************************
-                    $this->add_control(
-                            'table_edit',
-                            [
-				'label' => __( 'Additional Info', 'wpt_pro' ),
-				'type' => Controls_Manager::RAW_HTML,
-				'raw' => sprintf( 
-                                        __( 'Edit your %sTable%s.', 'wpt_pro' ), 
-                                        '<a href="' . esc_attr( admin_url( 'post.php?post=' . $table_ID . '&action=edit&classic-editor' ) ) . '">',
-                                        '</a>'
-                                        ),
-				'content_classes' => 'wpt_add_new_table',
-                            ]
-                    );
-                    //***************************************/
+                    
                 }else{
                     $wpt_extra_msg = __( 'There is not founded any table to your. ', 'wpt_pro' );
                 }
