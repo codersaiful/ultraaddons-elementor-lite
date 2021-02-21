@@ -16,20 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class WPT_Elementor_Widget extends Base{
     
-        /**
-         * Widget Icon.
-         *
-         * Holds the Repeater counter data. Default is `0`.
-         *
-         * @since 1.0.0
-         * @static
-         *
-         * @var int Widget Icon.
-         */
-        public function get_icon() {
-            return 'ultraaddons eicon-table';
-        }
-
+        
         /**
          * Set your widget name keyword
          *

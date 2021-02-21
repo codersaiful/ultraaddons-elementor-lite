@@ -18,21 +18,6 @@ use Elementor\Utils;
 
 class Info_Box extends Base {
     
-    
-    /**
-     * Get widget icon.
-     *
-     * Retrieve widget icon.
-     *
-     * @since 1.0.0
-     * @access public
-     *
-     * @return string Widget icon.
-     */
-    public function get_icon() {
-            return 'ultraaddons eicon-icon-box';
-    }
-
     /**
      * Set Keyword for search in
      * 

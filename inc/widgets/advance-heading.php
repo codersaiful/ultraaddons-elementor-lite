@@ -16,22 +16,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Advance_Heading extends Base{
     
-    
-        
-    /**
-     * Widget Icon.
-     *
-     * Holds the Repeater counter data. Default is `0`.
-     *
-     * @since 1.0.0
-     * @static
-     *
-     * @var int Widget Icon.
-     */
-    public function get_icon() {
-        return 'ultraaddons eicon-heading';
-    }
-    
     /**
      * Get your widget name
      *
