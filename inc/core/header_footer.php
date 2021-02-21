@@ -30,7 +30,8 @@ class Header_Footer {
     public static $data = [
         'header_id' => false,
         'footer_id' =>  false,
-        'type'    => 'php' //It will php and css. In
+        'type'      => 'php', //It will php and css. In
+        'wrapper'   => 'flued',
     ];
 
     protected static $body_class = [];
@@ -38,6 +39,7 @@ class Header_Footer {
 
     public static function init() {
         $type = self::get_type();
+        self::$body_class[] = 'ultraaddons-wrapper-' . self::get_wrapper();
         
         if( self::get_header_id() ){
             self::$body_class[] = 'ultraaddons-header-' . $type;
@@ -123,6 +125,31 @@ class Header_Footer {
         }
         
         return apply_filters( 'ultraaddons/header_footer/type', $return );
+    }
+    
+    /**
+     * Getting wrapper,
+     * Mainly box size of Page container.
+     * 
+     * we will set page container.
+     * such: <div id="page" class="hfeed site ultraaddons-container">
+     * for this container, we have set width 100% for flued wrapper.
+     * 
+     * and for box, we will set standard width
+     * 
+     * @since 1.0.0.10
+     * @access public
+     * 
+     * @return String wrapper can be box or flued
+     */
+    public static function get_wrapper() {
+        $return = 'flued';
+        $data = self::get_data();
+        if( isset( $data['wrapper'] ) && ! empty( $data['wrapper'] ) ){
+            $return = $data['wrapper'];
+        }
+        
+        return apply_filters( 'ultraaddons/header_footer/wrapper', $return );
     }
     
     /**

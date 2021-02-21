@@ -50,4 +50,4 @@ $header_class = 'ultaaddons-elementor-header';
     do_action( 'ultraaddons_after_header' );
     
     ?>
-    <div id="page" class="hfeed site">
+    <div id="page" class="hfeed site ultraaddons-container">
