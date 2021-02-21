@@ -121,13 +121,7 @@
             elementorFrontend.hooks.addAction(
                     'frontend/element_ready/ultraaddons-cart.default',
                     function ($scope) {
-                        console.log( $scope );
-                            $( document.body ).trigger( 'updated_cart_totals' );
-                            $( document.body ).trigger( 'wc_fragments_refreshed' );
-                            $( document.body ).trigger( 'wc_fragments_refreshed' );
-                            $( document.body ).trigger( 'wc_fragments_refresh' );
-                            $( document.body ).trigger( 'wc_fragment_refresh' );
-                            $( document.body ).trigger( 'removed_from_cart' );
+                        trigger_cart_update();
                     }
             );
             
@@ -136,6 +130,7 @@
                     'frontend/element_ready/ultraaddons-product-table.default',
                     function ($scope) {
                         $('.wpt_product_table_wrapper .search_select,select.filter_select').select2();
+                        trigger_cart_update();
                     }
             );
             
@@ -174,6 +169,16 @@
             elem.innerHTML = text;
             i++;
         });
+    }
+    
+    function trigger_cart_update(){
+        $( document.body ).trigger( 'updated_cart_totals' );
+        $( document.body ).trigger( 'wc_fragments_refreshed' );
+        $( document.body ).trigger( 'wc_fragments_refreshed' );
+        $( document.body ).trigger( 'wc_fragments_refresh' );
+        $( document.body ).trigger( 'wc_fragment_refresh' );
+        $( document.body ).trigger( 'removed_from_cart' );
+//        $( document.body ).trigger( 'wpt_minicart_load' );
     }
 
 } (jQuery, window));

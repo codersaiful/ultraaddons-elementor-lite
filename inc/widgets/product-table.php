@@ -2,6 +2,7 @@
 namespace UltraAddons\Widget;
 
 use Elementor\Widget_Base;
+use Elementor\Repeater;
 use Elementor\Controls_Manager;
 use Elementor\Scheme_Color;
 use Elementor\Group_Control_Typography;
@@ -73,11 +74,31 @@ class Product_Table extends Base{
                 //For General/Content Tab
 		$this->content_general();
                 
-                //For Typography Section Style Tab
-                $this->style_table_head();
+                /**
+                 * All other Section will be active,
+                 * If found, Product Table installed properly
+                 * 
+                 * @since 1.0.1.0
+                 */
+                if( class_exists( '\WPT_Product_Table') ){
+                    //For Typography Section Style Tab
+                    $this->style_table_head();
+                    
+
+                    //For Typography Section Style Tab
+                    $this->style_table_body();
+
+                    //Style and Design and Typography for Minicart
+                    $this->style_mini_cart();
+                    
+
+                    //Style and Design and Typography for Minicart
+                    $this->style_search_box();
+                    
+                    //For Typography Section Style Tab
+                    $this->style_column_design();    
+                }
                 
-                //For Typography Section Style Tab
-                $this->style_table_body();
                 
                 
 	}
@@ -92,6 +113,7 @@ class Product_Table extends Base{
 	 */
 	protected function render() {
             
+            //var_dump(class_exists( '\WPT_Product_Table' ),\WPT_Product_Table::$columns_array);
             $settings = $this->get_settings_for_display();
             $table_id = isset( $settings['table_id'] ) && !empty( $settings['table_id'] ) ? $settings['table_id'] : false;
             if( $table_id && is_numeric( $table_id ) ){
@@ -229,7 +251,93 @@ class Product_Table extends Base{
             
             $this->end_controls_section();
         }
-    
+        
+        protected function style_mini_cart() {
+            $this->start_controls_section(
+                'minicart',
+                [
+                    'label'     => esc_html__( 'Mini Cart', 'medilac' ),
+                    'tab'       => Controls_Manager::TAB_STYLE,
+                ]
+            );
+
+            $this->add_group_control(
+                    Group_Control_Typography::get_type(),
+                    [
+                            'name' => 'mini_c_typography',
+                            'global' => [
+                                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                            ],
+                            'selector' => '{{WRAPPER}} .tables_cart_message_box',
+                    ]
+            );
+
+            $this->add_control(
+                'title-color',
+                [
+                    'label'     => __( 'Title Background', 'medilac' ),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .wpt_product_table_wrapper div.tables_cart_message_box a.cart-contents' => 'background-color: {{VALUE}}',
+                    ],
+                    'default'   => '#5c6b79',
+                ]
+            );
+            
+            $this->end_controls_section();
+        }
+        
+        
+        
+        protected function style_search_box() {
+            $this->start_controls_section(
+                'search_box',
+                [
+                    'label'     => esc_html__( 'Search & Filter Box', 'medilac' ),
+                    'tab'       => Controls_Manager::TAB_STYLE,
+                ]
+            );
+
+            $this->add_group_control(
+                    Group_Control_Typography::get_type(),
+                    [
+                            'name' => 'src_typography',
+                            'global' => [
+                                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                            ],
+                            'selectors' => [
+                                '{{WRAPPER}} .wpt_filter_wrapper select',
+                                '{{WRAPPER}} .wpt_filter_wrapper label',
+                                '{{WRAPPER}} .wpt_filter_wrapper span',
+                                '{{WRAPPER}} .wpt_filter_wrapper div',
+                                '{{WRAPPER}} .wpt_filter_wrapper input',
+                                
+                                '{{WRAPPER}} .search_box_wrapper select',
+                                '{{WRAPPER}} .search_box_wrapper label',
+                                '{{WRAPPER}} .search_box_wrapper span',
+                                '{{WRAPPER}} .search_box_wrapper div',
+                                '{{WRAPPER}} .search_box_wrapper input',
+                                
+                            ],
+                    ]
+            );
+
+            $this->add_control(
+                'color',
+                [
+                    'label'     => __( 'Text Color', 'medilac' ),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .wpt_product_table_wrapper .wpt_filter_wrapper' => 'color: {{VALUE}}',
+                        '{{WRAPPER}} .wpt_product_table_wrapper .search_box_wrapper' => 'color: {{VALUE}}',
+                    ],
+                    'default'   => '#5c6b79',
+                ]
+            );
+            
+            $this->end_controls_section();
+        }
+        
         
         
         /**
@@ -306,5 +414,136 @@ class Product_Table extends Base{
             $this->end_controls_section();
         }
     
+        /**
+         * Typography for Table Column
+         * with Repeater
+         * 
+         * We will take list from  WOO Product Table
+         * 
+         * @since 1.0.1.0
+         * @access protected
+         */
+        protected function style_column_design(){
+            $this->start_controls_section(
+                    'design_column',
+                    [
+                        'label' => __( 'Design Column', 'ultraaddons' ),
+                        'tab'       => Controls_Manager::TAB_STYLE,
+                    ]
+            );
+            
+            /**
+             * sample options
+                    [
+                            'left'     => __( 'Left', 'medilac' ),
+                            'right'     => __( 'Right', 'medilac' ),
+                    ]
+             */
+            $repeater = new Repeater();
+            $columns_options = \WPT_Product_Table::$columns_array;
+            $repeater->add_control(
+                    'column_name',
+                    [
+                            'label' => __( 'Select a Column', 'ultraaddons' ),
+                            'type' => Controls_Manager::SELECT,
+                            'options' => $columns_options,
+                        'default' => '',
 
+                    ]
+            );
+            
+            $repeater->add_control(
+                    'color',
+                    [
+                            'label' => __( 'Color', 'ultraaddons' ),
+                            'type' => Controls_Manager::COLOR,
+                            'selectors' => [
+                                    '{{WRAPPER}} .wpt_product_table .wpt{{{ column_name }}}' => 'color: {{VALUE}}',
+                                    
+                                    
+                            ],
+                        'condition'   => [
+                            'column_name!' => '',
+                        ],
+                    ]
+            );
+            
+            $repeater->add_control(
+                    'background-color',
+                    [
+                            'label' => __( 'Background Color', 'ultraaddons' ),
+                            'type' => Controls_Manager::COLOR,
+                            'selectors' => [
+                                    '{{WRAPPER}} .wpt_product_table .wpt{{{ column_name }}}' => 'color: {{VALUE}}',
+                                    
+                                    
+                            ],
+                        'condition'   => [
+                            'column_name!' => '',
+                        ],
+                    ]
+            );
+            
+            $repeater->add_group_control(
+                    Group_Control_Typography::get_type(),
+                    [
+                            'name' => 'tbody_typography',
+                            'global' => [
+                                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                            ],
+                            'selectors' => [
+                                '{{WRAPPER}} table.wpt_product_table tbody tr td',
+                            ],
+                            'condition'   => [
+                                'column_name!' => '',
+                            ],
+                    ]
+            );
+            
+            //var_dump($repeater->get_config());
+            $repeater->end_controls_tab();
+            
+            
+            $this->add_control(
+                    'table_column',
+                    [
+                            'type' => Controls_Manager::REPEATER,
+                            'fields' => $repeater->get_controls(),
+                            'default'   => [
+                                [
+                                    'column_name' => 'product_title',
+                                ],
+                                
+                                [
+                                    'column_name' => 'price',
+                                ],
+                                
+                                
+                                [
+                                    'column_name' => 'quantity',
+                                ],
+                                
+                                [
+                                    'column_name' => 'category',
+                                ],
+                                
+                                
+                                [
+                                    'column_name' => 'action',
+                                ],
+                                
+                                [
+                                    'column_name' => 'stock',
+                                ],
+                                
+                                
+                                
+                                
+                            ],
+                            'title_field' => '{{{ column_name }}}',
+                    ]
+            );
+            $this->end_controls_section();
+            
+        }
 }
