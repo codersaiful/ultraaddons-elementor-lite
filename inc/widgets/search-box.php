@@ -14,7 +14,7 @@ use Elementor\Group_Control_Background;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Cart extends Base{
+class Search_Box extends Base{
     
     
     /**
@@ -28,7 +28,7 @@ class Cart extends Base{
      * @var int Widget Icon.
      */
     public function get_icon() {
-        return 'ultraaddons eicon-cart-light';
+        return 'ultraaddons eicon-button';
     }
     
     /**
@@ -42,21 +42,6 @@ class Cart extends Base{
      */
     public function get_keywords() {
         return [ 'ultraaddons', 'cart', 'wc', 'woocommerce', 'minicart', 'mini cart' ];
-    }
-    
-    
-    /**
-     * Whether the reload preview is required or not.
-     *
-     * Used to determine whether the reload preview is required.
-     *
-     * @since 1.0.0
-     * @access public
-     *
-     * @return bool Whether the reload preview is required.
-     */
-    public function is_reload_preview_required() {
-            return true;
     }
     
     
@@ -97,22 +82,18 @@ class Cart extends Base{
         
         $this->add_render_attribute( 'wrapper', 'class', 'ultraaddons-cart-wrapper' );
         $this->add_render_attribute( 'cart_link', 'class', 'cart-link-li' );
-        $this->add_render_attribute( 'cart_text', 'class', 'cart-text-li' );
         
         $this->add_render_attribute( 'cart', 'class', 'site-elementor-cart' );
         $this->add_render_attribute( 'cart', 'id', 'site-elementor-cart' );
         
         
-        $title = 'My Details Cart'; //empty minimum
-        $cart_text = "Shopping Cart";
+        $title = 'My Cart'; //empty minimum
+        
         
         ?>
         <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
             
             <ul <?php echo $this->get_render_attribute_string( 'cart' ); ?>>
-			<li <?php echo $this->get_render_attribute_string( 'cart_text' ); ?>>
-				<?php echo $cart_text; ?>
-			</li>
 			<li <?php echo $this->get_render_attribute_string( 'cart_link' ); ?>>
 				<?php ultraaddons_woocommerce_cart_link(); ?>
 			</li>

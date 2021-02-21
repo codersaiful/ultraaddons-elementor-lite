@@ -121,6 +121,7 @@
             elementorFrontend.hooks.addAction(
                     'frontend/element_ready/ultraaddons-cart.default',
                     function ($scope) {
+                        console.log( $scope );
                             $( document.body ).trigger( 'updated_cart_totals' );
                             $( document.body ).trigger( 'wc_fragments_refreshed' );
                             $( document.body ).trigger( 'wc_fragments_refreshed' );
