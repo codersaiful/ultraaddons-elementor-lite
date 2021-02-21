@@ -76,6 +76,15 @@ Yes, there are lot of filter and action hook available here. You can customize f
 
 == Change log ==
 
-= 1.0 =
+= 1.0.1 =
+
+* [Added]: New widget for Woo Product Table
+* [Added]: Header Footer Features
+* [Added]: WC Cart Widget
+* [Added]: WP Menu Widget
+* [Added]: Compatibility for Medilac Theme
+* [Fixed]: Bug Fix
+
+= 1.0.0 =
 
 * Initial release
