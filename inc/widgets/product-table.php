@@ -30,6 +30,34 @@ class Product_Table extends Base{
             return [ 'ultraaddons', 'table', 'woo', 'product', 'wpt table', 'wc', 'tbl' ]; //'ultraaddons eicon-table'
         }
 
+        /**
+         * Retrieve the list of scripts the counter widget depended on.
+         *
+         * Used to set scripts dependencies required to run the widget.
+         *
+         * @since 1.0.0.13
+         * @access public
+         *
+         * @return array Widget scripts dependencies.
+         * @by Saiful
+         */
+        public function get_script_depends() {
+                return [ 'jquery','select2' ];
+        }
+
+        /**
+         * Whether the reload preview is required or not.
+         *
+         * Used to determine whether the reload preview is required.
+         *
+         * @since 1.0.0
+         * @access public
+         *
+         * @return bool Whether the reload preview is required.
+         */
+        public function is_reload_preview_required() {
+                return true;
+        }
 
 	
 	/**
