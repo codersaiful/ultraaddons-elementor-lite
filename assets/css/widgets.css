@@ -1,0 +1,45 @@
+body.ultraaddons-header-css .site-header,
+body.ultraaddons-header-css #site-header,
+body.ultraaddons-header-css #masthead,
+body.ultraaddons-footer-css .site-footer,
+body.ultraaddons-footer-css #site-footer
+{
+    display: none !important;
+    height: 0;
+}
+
+.ultraaddons-container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+@media (min-width:576px) {
+    body.ultraaddons-wrapper-box .ultraaddons-container {
+       max-width: 540px
+   }
+   
+}
+
+@media (min-width:768px) {
+    body.ultraaddons-wrapper-box .ultraaddons-container {
+        max-width: 730px
+    }
+}
+
+@media (min-width:992px) {
+    body.ultraaddons-wrapper-box .ultraaddons-container {
+        max-width: 960px
+    }
+}
+
+@media (min-width:1200px) {
+    body.ultraaddons-wrapper-box .ultraaddons-container{
+        max-width: 1170px;
+    }
+}
+
+

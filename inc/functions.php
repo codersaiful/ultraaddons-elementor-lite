@@ -40,6 +40,26 @@ function ultraaddons_elementor() {
 	return \Elementor\Plugin::instance();
 }
 
+/**
+ * Outpur elementor page content to any where
+ * Just need that template id
+ * Mean: Post ID of that template
+ * 
+ * @param int $post_id POST Id, can be any post id. basically for Elementor Template's POSD id
+ * @return boolean|String|null if not found, return false. if not set post id, return null and for success return content
+ */
+function ultraaddons_elementor_display_content( $post_id = false ){
+    if( empty( $post_id ) || ! $post_id || ! is_numeric( $post_id ) ){
+        return;
+    }
+    
+    (int) $select_post_id = $post_id;
+    if ( \Elementor\Plugin::instance()->db->is_built_with_elementor( $select_post_id ) ) {
+        return \Elementor\Plugin::instance()->frontend->get_builder_content_for_display( $select_post_id );
+    }
+    return false;
+}
+
 function ultraaddons_icon_markup( $size = 'small' ){
     $markup = "<i class='ultraaddons ua_icon ua_icon_{$size}'></i>";
     return apply_filters( 'ultraaddons_icon_murkup', $markup );
@@ -83,3 +103,49 @@ function ultraaddons_widget_data_is_empty( $source, $key = false ) {
 
        return '0' !== $source && empty( $source );
 }
+
+/**
+ * Cart Link.
+ *
+ * Displayed a link to the cart including the number of items present and the cart total.
+ *
+ * @return void
+ */
+function ultraaddons_woocommerce_cart_link() {
+        if( ! WC()->cart ) return;
+        ?>
+        <a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'ultraaddons' ); ?>">
+            <?php
+
+            /* translators: number of items in the mini cart. */
+            $item_count_text = _n( 'item', 'items', WC()->cart->get_cart_contents_count(), 'ultraaddons' );
+            if( WC()->cart->get_cart_contents_count() > 0 ){
+            ?>
+            <span class="count">
+                <span class="cart-count"><?php echo esc_html( WC()->cart->get_cart_contents_count() ); ?></span>
+                <span class="cart-item-text"><?php echo esc_html( $item_count_text ); ?></span>
+            </span>
+            <span class="amount"><?php echo wp_kses_data( WC()->cart->get_cart_subtotal() ); ?></span>
+            <?php
+            }
+            ?>
+        </a>
+        <?php
+}
+if ( ! function_exists( 'ultraaddons_woocommerce_cart_link_fragment' ) ) {
+	/**
+	 * Cart Fragments.
+	 *
+	 * Ensure cart contents update when products are added to the cart via AJAX.
+	 *
+	 * @param array $fragments Fragments to refresh via AJAX.
+	 * @return array Fragments to refresh via AJAX.
+	 */
+	function ultraaddons_woocommerce_cart_link_fragment( $fragments ) {
+		ob_start();
+		ultraaddons_woocommerce_cart_link();
+		$fragments['a.cart-contents'] = ob_get_clean();
+		return $fragments;
+	}
+}
+add_filter( 'woocommerce_add_to_cart_fragments', 'ultraaddons_woocommerce_cart_link_fragment' );

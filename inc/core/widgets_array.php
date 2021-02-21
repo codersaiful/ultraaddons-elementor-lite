@@ -63,6 +63,14 @@ $widgetsArray = [
             ],
     ],
     
+    'Cart' => [
+            'name'  => __( 'WC Cart', 'ultraaddons' ),
+            'is_free'   => true,
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
 ];
 
 return apply_filters( 'ultraaddons/widgets/array', $widgetsArray );
