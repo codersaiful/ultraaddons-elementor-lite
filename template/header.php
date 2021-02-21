@@ -1,41 +1,53 @@
 <?php
-
 /**
- * Custom Header file
- * by UltraAddons
- * 
- * @package UltraAddons
- * @category Core
- * 
- * @since 1.0.0.10
+ * The header for our theme
+ *
+ * This is the template that displays all of the <head> section and everything up until <div id="content">
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package Medilac
  */
-
-$_ultraaddons_classes = [
-    'ultraaddons',
-    'ultraaddons-custom-header',
-    ];
-
+$header_class = 'ultaaddons-elementor-header';
 ?>
+<!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	<link rel="profile" href="http://gmpg.org/xfn/11" />
-	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+
 	<?php wp_head(); ?>
 </head>
 
-<body <?php
-$_ultraaddons_classes = apply_filters( 'ultraaddons_body_class', $_ultraaddons_classes );
-body_class( $_ultraaddons_classes ); 
-?>>
+<body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-    
+
     <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'medilac' ); ?></a>
-    
     <?php
-//    $_header_footer_info = get_option( UltraAddons\Core\Header_Footer::$key );
-//    $header_id = $_header_footer_info['header_id'];
-    echo ultraaddons_elementor_display_content( UltraAddons\Core\Header_Footer::get_header_id() );
+    
+    /**
+     * Insert Content or Do something at the Before Header of Site.
+     * 
+     * @HOOK for at Before Header
+     */
+    do_action( 'ultraaddons_before_header' );
+    
     ?>
-    <div id="page" class="hfeed site ultraaddons-page-container">
+    <header id="masthead" class="site-header <?php echo esc_attr( $header_class ); ?>">
+        
+        <?php
+        echo ultraaddons_elementor_display_content( UltraAddons\Core\Header_Footer::get_header_id() );
+        ?>
+    </header><!-- #masthead -->
+    <?php
+    
+    /**
+     * Insert Content or Do something at the Before Header of Site.
+     * 
+     * @HOOK for at Before Header
+     */
+    do_action( 'ultraaddons_after_header' );
+    
+    ?>
+    <div id="page" class="hfeed site">
