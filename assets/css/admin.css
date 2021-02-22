@@ -147,16 +147,14 @@ ul.ua-submenu li.ua-current-menu a {
 /*********For Widget Menu List | Start *********/
 .ua-option-item i.ua-option-icon {
     font-size: 45px;
-    
     display: inline-block;
     padding: 15px;
-    
     border-radius: 8px;
-    
     color: #8020e7;
     border: 1px solid #8020e7;
-    
     background: #8020e705;
+/*    margin-bottom: 8px;
+    margin-top: 8px;*/
 }
 .ua-option-item:hover i.ua-option-icon {
     border: 1px solid #cb3bfa;
@@ -178,7 +176,7 @@ ul.ua-submenu li.ua-current-menu a {
     position: relative;
     overflow: hidden;
     box-shadow: 0 5px 40px 0 rgb(10 10 25 / 10%);
-    padding: 25px 15px;
+    padding: 30px 15px;
     text-align: center;
     cursor: pointer;
     background:white;
@@ -213,7 +211,7 @@ span.ua-option-version-type.ua-option-version-type-free {
 }
 h2.ua-widget-name {
     padding: 0;
-    margin: 15px auto;
+    margin: 20px auto;
     font-size: 25px;
 }
 .ua-option-item-wrappper .ua-option-item.pro {
@@ -252,9 +250,9 @@ h2.ua-widget-name {
     left: 35px;
 }
 input.ua-checkbox-hidden {
-    visibility: hidden;
-    height: 1px;
-    overflow: hidden;
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
 }
 /**##### Checkbox | END ######**/
 
