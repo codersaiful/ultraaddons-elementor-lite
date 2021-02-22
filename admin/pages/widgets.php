@@ -25,8 +25,8 @@ $disable_widgets = Widgets_Manager::disableWidgetKeys();
         <div class="ua-sectioon-content">
             <div class="ua-content-inside">
 
-                <form class="ua-widget-list-form" action="" method="post">
-                    <div class="ua-widget-item-wrappper">
+                <form class="ua-option-list-form" action="" method="post">
+                    <div class="ua-option-item-wrappper">
                         <?php 
                         foreach( $widgets as $class_name => $widget ){
 
@@ -48,12 +48,12 @@ $disable_widgets = Widgets_Manager::disableWidgetKeys();
                              data-object_name="<?php echo esc_attr( $class_name ); ?>"
                              data-category="<?php echo esc_attr( implode( ',', $cat ) ); ?>"
                              data-type="<?php echo esc_attr( $free_pro ); ?>"
-                             class="ua-widget-item <?php echo esc_attr( implode( " ", $html_class ) ); ?>">
-                            <div class="ua-widget-item-inside">
-                                <span class="ua-widget-version-type ua-widget-version-type-<?php echo esc_attr( $free_pro ); ?>"><?php echo $free_pro == 'pro' ? esc_html__( 'Pro', 'ultraaddons' ) : esc_html__( 'Free', 'ultraaddons' ); ?></span>
-                                <i class="ua-widget-icon <?php echo esc_attr( $icon ); ?>"></i>
+                             class="ua-option-item <?php echo esc_attr( implode( " ", $html_class ) ); ?>">
+                            <div class="ua-option-item-inside">
+                                <span class="ua-option-version-type ua-option-version-type-<?php echo esc_attr( $free_pro ); ?>"><?php echo $free_pro == 'pro' ? esc_html__( 'Pro', 'ultraaddons' ) : esc_html__( 'Free', 'ultraaddons' ); ?></span>
+                                <i class="ua-option-icon <?php echo esc_attr( $icon ); ?>"></i>
                                 <h2 class="ua-widget-name"><?php echo esc_html( $name ); ?></h2>
-                                <div class="ua-widget-checkbox">
+                                <div class="ua-option-checkbox">
                                     <input class="ua-checkbox-hidden" id="<?php echo esc_attr( $checkbox_id ); ?>" type="checkbox" name="widget[]" value="<?php echo esc_attr( $class_name ); ?>" <?php echo esc_attr( $checkbox ); ?>>
                                     <div class="ua-designed-checkbox"></div>
                                 </div>
@@ -62,7 +62,7 @@ $disable_widgets = Widgets_Manager::disableWidgetKeys();
                         <?php } ?>
                     </div>
                     <div class="ua-widget-footer">
-                        <button class="primary button button-primary" type="submit"><?php echo esc_html__( 'Save Change', 'ultraaddons' ); ?></button>
+                        <button class="primary button button-primary ua-primary ua-no-update" type="submit"><?php echo esc_html__( 'Save Change', 'ultraaddons' ); ?></button>
                     </div>
                 </form>
                 

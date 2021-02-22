@@ -84,6 +84,17 @@ $widgetsArray = [
             ],
     ],
     
+    'Animated_Header' => [
+            'name'  => __( 'Animated Header', 'ultraaddons' ),
+            'is_free'   => false,
+            'icon'      => 'eicon-animated-headline',
+            'cat'       => [
+                __( 'Modern', 'ultraaddons' ),
+                __( 'Pro', 'ultraaddons' ),
+            ],
+    ],
+    
+    
     'Product_Slider' => [
             'name'  => __( 'Product Slider', 'ultraaddons' ),
             'is_free'   => false,
