@@ -18,8 +18,34 @@ $full_logo_image    = apply_filters( 'ultraaddons/admin/header_logo', $full_logo
         <?php echo wp_kses_post( $header_title ); ?>
     </h1>
     
-        <div class="ultraaddons-section-area">
-        <img src="<?php echo esc_attr( $full_logo_image ); ?>" style="height: 176px;width: auto;">
+        <div class="ultraaddons-dashboard-area">
+            <div class="ua-admin-header-wrapper">
+                <div class="ua-branding">
+                    <img src="<?php echo esc_attr( $full_logo_image ); ?>" style="height: 176px;width: auto;">
+                </div>
+                <div class="ua-header-menu">
+                    <ul class="ua-submenu">
+                    <?php
+                    $sub_menus = UltraAddons\Admin\Admin_Handle::get_submenu();
+                    $current_page = isset( $_GET['page'] ) ? $_GET['page'] : false;
+                    foreach( $sub_menus as $sub_menu ){
+
+                        $menu_title = $sub_menu['menu_title'];
+                        $menu_slug = $sub_menu['menu_slug'];
+                        $active_class = $current_page == $menu_slug ? 'ua-current-menu' : '';
+                    ?>
+                        <li class="<?php echo esc_attr( $active_class . ' ' . $menu_slug ); ?>">
+                            <a href="<?php echo esc_url( admin_url( 'admin.php?page=' . $menu_slug ) ); ?>">
+                                <?php echo esc_html( $menu_title ); ?>
+                            </a>
+                        </li>
+                    <?php
+                    }
+                    ?>
+                    </ul>
+                </div>
+            </div>
+        
 <?php 
 
 do_action( 'ultraaddons/admin/after_admin_header' ); 

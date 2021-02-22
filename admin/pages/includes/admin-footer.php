@@ -3,5 +3,5 @@ defined( 'ABSPATH' ) || die();
 
 ?>
 
-        </div> <!-- /.ultraaddons-section-area -->
+        </div> <!-- /.ultraaddons-dashboard-area -->
 </div><!-- /.ultraaddons-admin-wrapper -->

@@ -16,10 +16,10 @@ $disable_widgets = Widgets_Manager::disableWidgetKeys();
 
 ?>
 
-<div class="ultraaddons-section ua-widgets-wrapper">
+<div class="ultraaddons-section ua-option-wrapper">
     <div class="ua-section-inside">
         <div class="ua-header">
-            <h1><?php echo esc_html__( 'Widgets', 'ultraaddons' ); ?></h1>
+            <h1 class="ua-page-title"><?php echo esc_html__( 'Widgets', 'ultraaddons' ); ?></h1>
         </div>
         
         <div class="ua-sectioon-content">
