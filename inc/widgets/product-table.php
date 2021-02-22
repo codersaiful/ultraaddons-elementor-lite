@@ -82,7 +82,7 @@ class Product_Table extends Base{
                  */
                 if( class_exists( '\WPT_Product_Table') ){
                     
-                    $this->style_table_general();
+//                    $this->style_table_general();
                     
                     //For Typography Section Style Tab
                     $this->style_table_head();
@@ -99,7 +99,10 @@ class Product_Table extends Base{
                     $this->style_search_box();
                     
                     //For Typography Section Style Tab
-                    $this->style_column_design();    
+//                    $this->style_column_design();
+                    
+                    //For Button Style
+                    $this->style_button();
                 }
                 
                 
@@ -215,48 +218,7 @@ class Product_Table extends Base{
                 ]
             );
             
-//            $this->add_control(
-//                    'template',
-//                    [
-//                            'label'     => __( 'Select a Skin', 'medilac' ),
-//                            'type'      => Controls_Manager::SELECT,
-//                            'default' => 'default',
-//                            'options' => [
-//                                    'material'  => __( 'Material', 'medilac' ),
-//                                    'bootstrap' => __( 'Bootstrap', 'medilac' ),
-//                                    'striped' => __( 'Striped', 'medilac' ),
-//                                    'default' => __( 'Default', 'medilac' ),
-//                            ],
-//                            'prefix_class' => 'wpt-skin-',
-//                    ]
-//            );
             
-            $this->add_responsive_control(
-                    'cell_gap',
-                    [
-                            'label' => __( 'Cell Padding', 'medilac' ),
-                            'type' => Controls_Manager::SLIDER,
-                            'size_units' => [ 'px', '%' ],
-                            'range' => [
-                                    'px' => [
-                                            'min' => 0,
-                                            'max' => 100,
-                                            'step' => 1,
-                                    ],
-                                    '%' => [
-                                            'min' => 0,
-                                            'max' => 100,
-                                    ],
-                            ],
-                            'default' => [
-                                    'unit' => 'px',
-                                    'size' => 10,
-                            ],
-                            'selectors' => [
-                                    '{{WRAPPER}} table.wpt_product_table tbody tr td, {{WRAPPER}} .custom_table thead .wpt_table_header_row th' => 'padding: {{SIZE}}{{UNIT}};',
-                            ],
-                    ]
-            );
             
             
             
@@ -312,7 +274,44 @@ class Product_Table extends Base{
                 ]
             );
             
+            $this->add_control(
+                'thead-border-color',
+                [
+                    'label'     => __( 'Border Color', 'medilac' ),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} table.wpt_product_table thead .wpt_table_header_row th' => 'border-color: {{VALUE}}',
+                    ],
+                    'default'   => '#0fc392',
+                ]
+            );
             
+            $this->add_responsive_control(
+                    'cell_gap',
+                    [
+                            'label' => __( 'Cell Padding', 'medilac' ),
+                            'type' => Controls_Manager::SLIDER,
+                            'size_units' => [ 'px', '%' ],
+                            'range' => [
+                                    'px' => [
+                                            'min' => 0,
+                                            'max' => 100,
+                                            'step' => 1,
+                                    ],
+                                    '%' => [
+                                            'min' => 0,
+                                            'max' => 100,
+                                    ],
+                            ],
+                            'default' => [
+                                    'unit' => 'px',
+                                    'size' => 10,
+                            ],
+                            'selectors' => [
+                                    '{{WRAPPER}} .custom_table thead .wpt_table_header_row th' => 'padding: {{SIZE}}{{UNIT}};',
+                            ],
+                    ]
+            );
             
             $this->end_controls_section();
         }
@@ -370,20 +369,16 @@ class Product_Table extends Base{
                             'global' => [
                                     'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
                             ],
-                            'selectors' => [
-                                '{{WRAPPER}} .wpt_filter_wrapper select',
-                                '{{WRAPPER}} .wpt_filter_wrapper label',
-                                '{{WRAPPER}} .wpt_filter_wrapper span',
-                                '{{WRAPPER}} .wpt_filter_wrapper div',
-                                '{{WRAPPER}} .wpt_filter_wrapper input',
-                                
-                                '{{WRAPPER}} .search_box_wrapper select',
-                                '{{WRAPPER}} .search_box_wrapper label',
-                                '{{WRAPPER}} .search_box_wrapper span',
-                                '{{WRAPPER}} .search_box_wrapper div',
-                                '{{WRAPPER}} .search_box_wrapper input',
-                                
-                            ],
+                            'selector' => '{{WRAPPER}} .wpt_filter_wrapper select, '
+                        . '{{WRAPPER}} .wpt_filter_wrapper label, '
+                        . '{{WRAPPER}} .wpt_filter_wrapper span, '
+                        . '{{WRAPPER}} .wpt_filter_wrapper div, '
+                        . '{{WRAPPER}} .wpt_filter_wrapper input, '
+                        . '{{WRAPPER}} .search_box_wrapper select, '
+                        . '{{WRAPPER}} .search_box_wrapper label, '
+                        . '{{WRAPPER}} .search_box_wrapper span, '
+                        . '{{WRAPPER}} .search_box_wrapper div, '
+                        . '{{WRAPPER}} .search_box_wrapper input',
                     ]
             );
 
@@ -397,6 +392,19 @@ class Product_Table extends Base{
                         '{{WRAPPER}} .wpt_product_table_wrapper .search_box_wrapper' => 'color: {{VALUE}}',
                     ],
                     'default'   => '#5c6b79',
+                ]
+            );
+            
+            $this->add_control(
+                'search_box_title',
+                [
+                    'label'     => __( 'Show Title', 'medilac' ),
+                    'type'      => Controls_Manager::SWITCHER,
+                    'label_on' => __( 'Yes', 'medilac' ),
+                    'label_off' => __( 'No', 'medilac' ),
+                    'return_value' => 'yes',
+                    'default' => 'yes',
+                    'prefix_class' => 'search-title-show-'
                 ]
             );
             
@@ -421,45 +429,233 @@ class Product_Table extends Base{
                 ]
             );
 
+            $this->add_control(
+                    'title_typo',
+                    [
+                            'label' => __( 'Product Title', 'medilac' ),
+                            'type' => Controls_Manager::HEADING,
+                    ]
+            );
+            
             $this->add_group_control(
                     Group_Control_Typography::get_type(),
                     [
-                            'name' => 'tbody_typography',
-                            'global' => [
-                                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
-                            ],
-                            'selectors' => [
-                                '{{WRAPPER}} table.wpt_product_table tbody tr td',
-                                '{{WRAPPER}} table.wpt_product_table tbody tr td a',
-                                '{{WRAPPER}} table.wpt_product_table tbody tr td p',
-                                '{{WRAPPER}} table.wpt_product_table tbody tr td div',
-                            ],
+                            'name' => 'tbody_title_typography',
+                            'selector' => '{{WRAPPER}} table.wpt_product_table tbody tr td .product_title a:not(.product_description), {{WRAPPER}} table.wpt_product_table tbody tr td .product_title span:not(.product_description)',
                     ]
             );
-
+            
             $this->add_control(
-                'tbody-text-color',
+                'tbody_title_color',
                 [
-                    'label'     => __( 'Text Color', 'medilac' ),
+                    'label'     => __( 'Color', 'medilac' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} table.wpt_product_table tbody tr td' => 'color: {{VALUE}}',
-                        '{{WRAPPER}} table.wpt_product_table tbody tr td p' => 'color: {{VALUE}}',
-                        '{{WRAPPER}} table.wpt_product_table tbody tr td div' => 'color: {{VALUE}}',
+                        '{{WRAPPER}} table.wpt_product_table tbody tr td .product_title a:not(.product_description), {{WRAPPER}} table.wpt_product_table tbody tr td .product_title span:not(.product_description)' => 'color: {{VALUE}}',
                     ],
                     'default'   => '#535353',
                 ]
             );
             
             $this->add_control(
-                'tbody-title-color',
+                    'links_typo',
+                    [
+                            'label' => __( 'Links', 'medilac' ),
+                            'type' => Controls_Manager::HEADING,
+                            'separator' => 'before',
+                    ]
+            );
+            
+            $this->add_group_control(
+                    Group_Control_Typography::get_type(),
+                    [
+                            'name' => 'tbody_links_typography',
+                            'selector' => '{{WRAPPER}} table.wpt_product_table tbody tr td:not(.wpt_product_title):not(.wpt_action) a',
+                    ]
+            );
+            
+            $this->add_control(
+                'tbody_links_color',
                 [
-                    'label'     => __( 'Product Title Color', 'medilac' ),
+                    'label'     => __( 'Color', 'medilac' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} table.wpt_product_table tbody tr td .product_title a' => 'color: {{VALUE}}',
+                        '{{WRAPPER}} table.wpt_product_table tbody tr td:not(.wpt_product_title):not(.wpt_action) a' => 'color: {{VALUE}}',
                     ],
-                    'default'   => '#000',
+                    'default'   => '#535353',
+                ]
+            );
+            
+            $this->add_control(
+                    'price_typo',
+                    [
+                            'label' => __( 'Price', 'medilac' ),
+                            'type' => Controls_Manager::HEADING,
+                            'separator' => 'before',
+                    ]
+            );
+            
+            $this->start_controls_tabs('product__price');
+            
+            // Sale Price
+            $this->start_controls_tab(
+                    'tab_sale_price',
+                    [
+                            'label'  => esc_html__( 'Sale Price', 'medilac' )
+                    ]
+            );
+            
+            $this->add_group_control(
+                    Group_Control_Typography::get_type(),
+                    [
+                            'name' => 'tbody_sale_price_typography',
+                            'selector' => '{{WRAPPER}} table.wpt_product_table tbody tr td.wpt_price del',
+                    ]
+            );
+            
+            $this->add_control(
+                'tbody_sale_price_color',
+                [
+                    'label'     => __( 'Text Color', 'medilac' ),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} table.wpt_product_table tbody tr td.wpt_price del' => 'color: {{VALUE}}',
+                        
+                    ],
+                    'default'   => '#535353',
+                ]
+            );
+            
+            $this->end_controls_tab();
+            
+            $this->start_controls_tab(
+                    'tab_regular_price',
+                    [
+                            'label'  => esc_html__( 'Regular Price', 'medilac' )
+                    ]
+            );
+            
+            $this->add_group_control(
+                    Group_Control_Typography::get_type(),
+                    [
+                            'name' => 'tbody_regular_price_typography',
+                            'selector' => '{{WRAPPER}} table.wpt_product_table tbody tr td.wpt_price ins, {{WRAPPER}} table.wpt_product_table tbody tr td.wpt_price .wpt_product_price',
+                    ]
+            );
+            
+            $this->add_control(
+                'tbody_regular_price_color',
+                [
+                    'label'     => __( 'Text Color', 'medilac' ),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} table.wpt_product_table tbody tr td.wpt_price ins' => 'color: {{VALUE}}',
+                        '{{WRAPPER}} table.wpt_product_table tbody tr td.wpt_price span.wpt_product_price' => 'color: {{VALUE}}',
+                        '{{WRAPPER}} table.wpt_product_table tbody tr td.wpt_price span.price' => 'color: {{VALUE}}',
+                        
+                    ],
+                    'default'   => '#535353',
+                ]
+            );
+            
+            $this->end_controls_tab();
+            
+            $this->end_controls_tabs();
+            
+            
+            
+            $this->add_control(
+                    'quantity_style',
+                    [
+                            'label' => __( 'Quantity', 'medilac' ),
+                            'type' => Controls_Manager::HEADING,
+                            'separator' => 'before',
+                    ]
+            );
+            
+            $this->add_control(
+                'tbody_qty_color',
+                [
+                    'label'     => __( 'Color', 'medilac' ),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .wpt_product_table_wrapper .quantity .qty' => 'color: {{VALUE}}',
+                        
+                    ],
+                    'default'   => '#222',
+                ]
+            );
+            
+            $this->add_control(
+                'tbody_qty_bg_color',
+                [
+                    'label'     => __( 'Background Color', 'medilac' ),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .wpt_product_table_wrapper .quantity .qty' => 'background-color: {{VALUE}}',
+                        
+                    ],
+                    'default'   => '#fff',
+                ]
+            );
+            
+            $this->add_responsive_control(
+                    'qty_input',
+                    [
+                            'label' => __( 'Padding', 'medilac' ),
+                            'type' => Controls_Manager::DIMENSIONS,
+                            'size_units' => [ 'px', '%' ],
+                            'range' => [
+                                    'px' => [
+                                            'min' => 0,
+                                            'max' => 100,
+                                            'step' => 1,
+                                    ],
+                                    '%' => [
+                                            'min' => 0,
+                                            'max' => 100,
+                                    ],
+                            ],
+                            'default' => [
+                                    'unit' => 'px',
+                                    'top' => 5,
+                                    'bottom' => 5,
+                                    'left' => 10,
+                                    'right' => 10,
+                            ],
+                            'selectors' => [
+                                    '{{WRAPPER}} .wpt_product_table_wrapper .quantity .qty' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                            ],
+                    ]
+            );
+            
+            $this->add_control(
+                    'others_typo',
+                    [
+                            'label' => __( 'Others', 'medilac' ),
+                            'type' => Controls_Manager::HEADING,
+                            'separator' => 'before',
+                    ]
+            );
+            
+            $this->add_group_control(
+                    Group_Control_Typography::get_type(),
+                    [
+                            'name' => 'tbody_other_typography',
+                            'selector' => '{{WRAPPER}} table.wpt_product_table tbody tr td p, {{WRAPPER}} table.wpt_product_table tbody tr td:not(.wpt_product_title):not(.wpt_action):not(.wpt_price) div, {{WRAPPER}} table.wpt_product_table tbody tr td div.product_description',
+                    ]
+            );
+
+            $this->add_control(
+                'tbody-other-color',
+                [
+                    'label'     => __( 'Text Color', 'medilac' ),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} table.wpt_product_table tbody tr td p, {{WRAPPER}} table.wpt_product_table tbody tr td:not(.wpt_product_title):not(.wpt_action):not(.wpt_price) div, {{WRAPPER}} table.wpt_product_table tbody tr td div.product_description' => 'color: {{VALUE}}',
+                        
+                    ],
+                    'default'   => '#535353',
                 ]
             );
             
@@ -503,6 +699,18 @@ class Product_Table extends Base{
                 ]
             );
             
+            $this->add_control(
+                'tbody_border_color_striped',
+                [
+                    'label'     => __( 'Border Color', 'medilac' ),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} table.wpt_product_table tbody tr td' => 'border-color: {{VALUE}}',
+                    ],
+                    'default' => 'rgba(0,0,0,.05)',
+                ]
+            );
+            
             $this->add_responsive_control(
                     'cell_gap_body',
                     [
@@ -529,6 +737,8 @@ class Product_Table extends Base{
                             ],
                     ]
             );
+            
+            
             
             $this->end_controls_section();
         }
@@ -663,6 +873,126 @@ class Product_Table extends Base{
                             'title_field' => '{{{ column_name }}}',
                     ]
             );
+            $this->end_controls_section();
+            
+        }
+        
+        /**
+         * Button Design
+         * 
+         * 
+         * @since 1.0.1.0
+         * @access protected
+         */
+        protected function style_button(){
+            
+            $this->start_controls_section(
+                'button_style_section',
+                [
+                    'label' => __( 'Button', 'ultraaddons' ),
+                    'tab'       => Controls_Manager::TAB_STYLE,
+                ]
+            );
+            
+            $this->add_group_control(
+                    Group_Control_Typography::get_type(),
+                    [
+                            'name' => 'wpt_button_typography',
+                            'selector' => '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.add_to_cart_button, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.button',
+                    ]
+            );
+            
+            $this->start_controls_tabs( 'button_style_tab' );
+            
+            $this->start_controls_tab(
+                    'wpt_button_style_normal',
+                    [
+                            'label'  => esc_html__( 'Normal', 'medilac' ),
+                    ]
+            );
+            
+            $this->add_control(
+                'wpt_button_color',
+                [
+                    'label'     => __( 'Color', 'medilac' ),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.add_to_cart_button, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.button' => 'color: {{VALUE}}',
+                    ],
+                    'default'   => '#fff',
+                ]
+            );
+            
+            $this->add_control(
+                'wpt_button_bg_color',
+                [
+                    'label'     => __( 'Background Color', 'medilac' ),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.add_to_cart_button, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.button' => 'background-color: {{VALUE}}',
+                    ],
+                    'default'   => '#0fc392',
+                ]
+            );
+            
+            $this->add_group_control(
+                    Group_Control_Border::get_type(),
+                    [
+                            'name' => 'border',
+                            'label' => __( 'Border', 'medilac' ),
+                            'selector' => '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table>tbody tr.wpt_row td a.add_to_cart_button, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table>tbody tr.wpt_row td a.button',
+                    ]
+            );
+            
+            $this->end_controls_tab();
+            
+            $this->start_controls_tab(
+                    'wpt_button_style_hover',
+                    [
+                            'label'  => esc_html__( 'Hover', 'medilac' ),
+                    ]
+            );
+            
+            $this->add_control(
+                'wpt_button_color_hover',
+                [
+                    'label'     => __( 'Color', 'medilac' ),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.add_to_cart_button:hover, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.button:hover' => 'color: {{VALUE}} !important',
+                    ],
+                    'default'   => '#0fc392',
+                ]
+            );
+            
+            $this->add_control(
+                'wpt_button_bg_color_hover',
+                [
+                    'label'     => __( 'Background Color', 'medilac' ),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.add_to_cart_button:hover, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.button:hover' => 'background-color: {{VALUE}} !important',
+                    ],
+                    'default'   => '#fff',
+                ]
+            );
+            
+            $this->add_group_control(
+                    Group_Control_Border::get_type(),
+                    [
+                            'name' => 'border_hover',
+                            'label' => __( 'Border', 'medilac' ),
+                            'selector' => '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table>tbody tr.wpt_row td a.add_to_cart_button:hover, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table>tbody tr.wpt_row td a.button:hover',
+                    ]
+            );
+            
+            $this->end_controls_tab();
+            
+            $this->end_controls_tabs();
+            
+            
+            
+            
             $this->end_controls_section();
             
         }

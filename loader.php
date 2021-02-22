@@ -144,7 +144,7 @@ class Loader {
             }else{
                 $error = esc_html__( "The file ( %s ) of [%s] Class is not founded.", 'ultraaddons' );
                 $this->errors[$widget_key] = $error;
-                printf( $error, $file, $name );
+                //printf( $error, $file, $name );
             }
             
             if( $class_name && class_exists( $class_name ) ){

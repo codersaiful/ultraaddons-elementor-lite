@@ -43,7 +43,7 @@ class Admin_Handle{
      * @since 1.0.0.5
      */
     public static function get_enqueue(){
-        $handle = 'ultraaddons-elementor-admin-style';
+        $handle = 'ultraaddons-admin-style';
         $src = ULTRA_ADDONS_ASSETS . 'css/admin.css';
         $deps = [];
         $ver = ULTRA_ADDONS_VERSION;
@@ -51,6 +51,15 @@ class Admin_Handle{
         
         wp_register_style( $handle, $src, $deps, $ver, $media );
         wp_enqueue_style( $handle );
+        
+        $handle = 'ultraaddons-admin-script';
+        $src = ULTRA_ADDONS_ASSETS . 'js/admin.js';
+        $deps = ['jquery'];
+        $ver = ULTRA_ADDONS_VERSION;
+        $in_footer = true;
+        
+        wp_register_script($handle, $src, $deps, $ver, $in_footer);
+        wp_enqueue_script($handle);
     }
     
     /**
@@ -63,10 +72,9 @@ class Admin_Handle{
      * @return Array
      */
     public static function add_action_links( $links ) {
-        //$ultraaddons_links[] = '<a href="https://codecanyon.net/item/woo-product-table-pro/20676867" title="' . esc_attr__( 'Many awesome features is waiting for you', 'ultraaddons_pro' ) . '" target="_blank">'.esc_html__( 'GET PRO VERSION','ultraaddons_pro' ).'</a>';
-        //$ultraaddons_links[] = '<a href="https://codecanyon.net/item/woo-product-table-pro/20676867" title="' . esc_attr__( 'Many awesome features is waiting for you', 'ultraaddons_pro' ) . '" target="_blank">'.esc_html__( 'GET PRO VERSION','ultraaddons_pro' ).'</a>';
-        $ultraaddons_links[] = '<a href="https://codeastrology.com/support/" title="' . esc_attr__( 'CodeAstrology Support', 'ultraaddons_pro' ) . '" target="_blank">'.esc_html__( 'Support','ultraaddons_pro' ).'</a>';
-        $ultraaddons_links[] = '<a href="https://github.com/codersaiful/ultraaddons-elementor-lite" title="' . esc_attr__( 'Github Repo Link', 'ultraaddons_pro' ) . '" target="_blank">'.esc_html__( 'Github Repository','ultraaddons_pro' ).'</a>';
+        $ultraaddons_links[] = '<a href="' . admin_url( 'admin.php?page=ultraaddons-elementor-light' ) . '" title="' . esc_attr__( 'Welcome to UltraAddons', 'ultraaddons' ) . '" target="_blank">' . esc_html__( 'Welcome','ultraaddons' ).'</a>';
+        $ultraaddons_links[] = '<a href="https://codeastrology.com/support/" title="' . esc_attr__( 'CodeAstrology Support', 'ultraaddons' ) . '" target="_blank">'.esc_html__( 'Support','ultraaddons' ).'</a>';
+        $ultraaddons_links[] = '<a href="https://github.com/codersaiful/ultraaddons-elementor-lite" title="' . esc_attr__( 'Github Repo Link', 'ultraaddons' ) . '" target="_blank">'.esc_html__( 'Github Repository','ultraaddons' ).'</a>';
         return array_merge( $ultraaddons_links, $links );
     } 
     

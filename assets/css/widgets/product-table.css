@@ -353,3 +353,12 @@ div.wpt-footer-cart-wrapper>a:after {
         /*background-color: var(--medilac-secondary-light);*/
     }
 }
+.wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.single_add_to_cart_button.button{
+    height: auto;
+}
+h3.search_box_label {
+    display: none;
+}
+.search-title-show-yes h3.search_box_label {
+    display: block;
+}

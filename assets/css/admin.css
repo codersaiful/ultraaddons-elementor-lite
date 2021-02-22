@@ -69,7 +69,7 @@ li#toplevel_page_ultraaddons-elementor-light.current .wp-menu-image img {
 
 
 /***** Menu Page Start*******/
-.ultraaddons-license-details, .ultraaddons-section-area {
+.ultraaddons-license-details, .ultraaddons-dashboard-area {
     background: #fff;
     padding: 10px 30px 50px;
     border-radius: 3px;
@@ -106,32 +106,169 @@ h1.ultraaddons-color-heading {
 p.ultraaddons-info {
     font-size: 22px;
 }
+
+.ua-admin-header-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.ua-header-menu {
+    display: block;
+    width: 100%;
+}
+
+ul.ua-submenu {
+    display: flex;
+    float: right;
+    flex-wrap: wrap;
+    column-gap: 1px;
+}
+
+ul.ua-submenu li {
+    font-size: 22px;
+}
+
+ul.ua-submenu li a {
+    color: white;
+    padding: 15px 30px;
+    display: block;
+    border-bottom: 6px solid #5a2ab7;
+    border-top-right-radius: 12px;
+    /* background: linear-gradient(160deg, #7934d5, #fb3bd2); */
+    background: #7439e5;
+}
+ul.ua-submenu li.ua-current-menu a {
+    background: #4caf50;
+    border-color: #409844;
+}
+
 /***** Menu Page End*******/
 
 /*********For Widget Menu List | Start *********/
-.ua-widget-item i.ua-widget-icon {
+.ua-option-item i.ua-option-icon {
     font-size: 45px;
     color: #cb3bfa;
 }
 
-.ua-widget-item-wrappper {
+.ua-option-item-wrappper {
     display: flex;
     flex-wrap: wrap;
-    column-gap: 10px;
-    row-gap: 10px;
+    column-gap: 30px;
+    row-gap: 30px;
     align-items: stretch;
+    margin: 35px 0;
 }
 
-.ua-widget-item-wrappper .ua-widget-item {
+.ua-option-item-wrappper .ua-option-item {
     width: 250px;
-    border: 1px solid #ddd;
     position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 40px 0 rgb(10 10 25 / 10%);
+    padding: 25px 15px;
+    text-align: center;
+    cursor: pointer;
+}
+.ua-option-item-wrappper .ua-option-item.free:hover {
+    box-shadow: 0 5px 40px 0 rgb(10 10 25 / 22%);
+    /*box-shadow: 0 5px 40px 0 rgb(10 10 25 / 10%);*/
 }
 
-.ua-widget-item {
+.ua-option-item {
 }
 
-.ua-widget-item-inside {
+.ua-option-item-inside {
     width: 100%;
 }
+span.ua-option-version-type{
+    position: absolute;
+    transform: rotate(45deg);
+    color: white;
+    width: 123px;
+    text-align: center;
+    top: -40px;
+    right: -63px;
+    height: 27px;
+    padding-top: 55px;
+}
+span.ua-option-version-type.ua-option-version-type-pro {
+    background: #e91e63;
+}
+span.ua-option-version-type.ua-option-version-type-free {
+    background: #4caf50;
+}
+h2.ua-widget-name {
+    padding: 0;
+    margin: 15px auto;
+    font-size: 25px;
+}
+.ua-option-item-wrappper .ua-option-item.pro {
+    opacity: .65;
+    background: #e6e6e6;
+}
+
+
+/**##### Checkbox ######**/
+.ua-designed-checkbox {
+    display: block;
+    height: 28px;
+    background: #eeeeee;
+    width: 63px;
+    margin: auto;
+    border-radius: 16px;
+    position: relative;
+}
+.ua-designed-checkbox:before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    background: white;
+    z-index: 55;
+    position: absolute;
+    border-radius: 50%;
+    top: 4px;
+    left: 7px;
+    transition: .4s all;
+}
+.ua-checkbox-hidden:checked + .ua-designed-checkbox{
+    background: #eeeeeec4;
+}
+.ua-checkbox-hidden:checked + .ua-designed-checkbox:before{
+    background: #4caf50;
+    left: 35px;
+}
+input.ua-checkbox-hidden {
+    visibility: hidden;
+    height: 1px;
+    overflow: hidden;
+}
+/**##### Checkbox | END ######**/
+
+/**##### Submit Button ######**/
+
+.ultraaddons-wrap button.ua-primary {
+    background: #4caf50;
+    border-color: #4caf50;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: none;
+    font-size: 1.4em;
+    padding: 5px 25px;
+}
+.ultraaddons-wrap button.ua-primary.ua-no-update,
+.ultraaddons-wrap button.ua-primary.ua-no-update:hover{
+    background: #eeeeee;
+    border-color: #eeeeee;
+}
+.ultraaddons-wrap button.ua-primary:hover {
+    background: #59ca5e;
+    border-color: #4caf50;
+}
+.ultraaddons-wrap button.ua-primary:hover,
+.ultraaddons-wrap button.ua-primary:focus,
+.ultraaddons-wrap button.ua-primary:active{
+    outline: 0 none !important;
+    box-shadow: none !important;
+}
+
+
 /*********For Widget Menu List | END *********/
