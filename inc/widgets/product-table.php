@@ -458,7 +458,8 @@ class Product_Table extends Base{
                             'label' => __( 'Color', 'ultraaddons' ),
                             'type' => Controls_Manager::COLOR,
                             'selectors' => [
-                                    '{{WRAPPER}} .wpt_product_table .wpt{{{ column_name }}}' => 'color: {{VALUE}}',
+                                    '{{WRAPPER}} table.wpt_product_table tbody tr td.wpt_product_title,{{WRAPPER}} table.wpt_product_table tbody tr td.wpt_{{column_name.VALUE}}' => 'color: {{VALUE}} !important',
+//                                    '{{WRAPPER}} table.wpt_product_table tbody tr td.wpt_{{{ column_name }}}' => 'color: {{VALUE}} !important',
                                     
                                     
                             ],
