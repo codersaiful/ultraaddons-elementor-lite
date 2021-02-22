@@ -9,13 +9,15 @@ body.ultraaddons-footer-css #site-footer
 }
 
 .ultraaddons-container {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }
-
+body:not(.elementor-page) .ultraaddons-container{
+    margin-top: 100px;    
+}
 
 @media (min-width:576px) {
     body.ultraaddons-wrapper-box .ultraaddons-container {
