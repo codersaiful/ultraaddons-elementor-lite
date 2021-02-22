@@ -120,13 +120,21 @@ p.ultraaddons-info {
     column-gap: 30px;
     row-gap: 30px;
     align-items: stretch;
+    margin: 35px 0;
 }
 
 .ua-widget-item-wrappper .ua-widget-item {
     width: 250px;
-    border: 1px solid #ddd;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 5px 40px 0 rgb(10 10 25 / 10%);
+    padding: 25px 15px;
+    text-align: center;
+    cursor: pointer;
+}
+.ua-widget-item-wrappper .ua-widget-item.free:hover {
+    box-shadow: 0 5px 40px 0 rgb(10 10 25 / 22%);
+    /*box-shadow: 0 5px 40px 0 rgb(10 10 25 / 10%);*/
 }
 
 .ua-widget-item {
@@ -147,11 +155,52 @@ span.ua-widget-version-type{
     padding-top: 55px;
 }
 span.ua-widget-version-type.ua-widget-version-type-pro {
-    background: #ff5722;
+    background: #e91e63;
 }
 span.ua-widget-version-type.ua-widget-version-type-free {
-    background: #dc39d0;
-    
+    background: #4caf50;
+}
+h2.ua-widget-name {
+    padding: 0;
+    margin: 15px auto;
+    font-size: 25px;
+}
+.ua-widget-item-wrappper .ua-widget-item.pro {
+    opacity: .65;
+    background: #e6e6e6;
 }
 
+.ua-designed-checkbox {
+    display: block;
+    height: 28px;
+    background: #eeeeee;
+    width: 63px;
+    margin: auto;
+    border-radius: 16px;
+    position: relative;
+}
+.ua-designed-checkbox:before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    background: white;
+    z-index: 55;
+    position: absolute;
+    border-radius: 50%;
+    top: 4px;
+    left: 7px;
+    transition: .4s all;
+}
+.ua-checkbox-hidden:checked + .ua-designed-checkbox{
+    background: #eeeeeec4;
+}
+.ua-checkbox-hidden:checked + .ua-designed-checkbox:before{
+    background: #4caf50;
+    left: 35px;
+}
+input.ua-checkbox-hidden {
+    visibility: hidden;
+    height: 1px;
+    overflow: hidden;
+}
 /*********For Widget Menu List | END *********/

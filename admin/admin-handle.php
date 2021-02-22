@@ -43,7 +43,7 @@ class Admin_Handle{
      * @since 1.0.0.5
      */
     public static function get_enqueue(){
-        $handle = 'ultraaddons-elementor-admin-style';
+        $handle = 'ultraaddons-admin-style';
         $src = ULTRA_ADDONS_ASSETS . 'css/admin.css';
         $deps = [];
         $ver = ULTRA_ADDONS_VERSION;
@@ -51,6 +51,15 @@ class Admin_Handle{
         
         wp_register_style( $handle, $src, $deps, $ver, $media );
         wp_enqueue_style( $handle );
+        
+        $handle = 'ultraaddons-admin-script';
+        $src = ULTRA_ADDONS_ASSETS . 'js/admin.js';
+        $deps = ['jquery'];
+        $ver = ULTRA_ADDONS_VERSION;
+        $in_footer = true;
+        
+        wp_register_script($handle, $src, $deps, $ver, $in_footer);
+        wp_enqueue_script($handle);
     }
     
     /**

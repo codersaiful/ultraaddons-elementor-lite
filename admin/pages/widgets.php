@@ -36,14 +36,15 @@ $disable_widgets = Widgets_Manager::disableWidgetKeys();
                             $free_pro = isset( $widget['is_free'] ) && $widget['is_free'] ? 'free' : 'pro';
                             
                             $checkbox = in_array( $class_name, $disable_widgets ) ? 'checked' : '';
-                            
+                            $checkbox_id = 'checkbox_' . $class_name;
                             $html_class = [];
                             $html_class[] = $name;
                             //$html_class[] = $icon;
                             $html_class[] = $free_pro;
                             $html_class[] = $class_name;
                         ?>
-                        <div data-name="<?php echo esc_attr( $name ); ?>" 
+                        <label data-name="<?php echo esc_attr( $name ); ?>" 
+                             for="<?php echo esc_attr( $checkbox_id ); ?>"
                              data-object_name="<?php echo esc_attr( $class_name ); ?>"
                              data-category="<?php echo esc_attr( implode( ',', $cat ) ); ?>"
                              data-type="<?php echo esc_attr( $free_pro ); ?>"
@@ -53,11 +54,11 @@ $disable_widgets = Widgets_Manager::disableWidgetKeys();
                                 <i class="ua-widget-icon <?php echo esc_attr( $icon ); ?>"></i>
                                 <h2 class="ua-widget-name"><?php echo esc_html( $name ); ?></h2>
                                 <div class="ua-widget-checkbox">
-
-                                    <input type="checkbox" name="widget[]" value="<?php echo esc_attr( $class_name ); ?>" <?php echo esc_attr( $checkbox ); ?>>
+                                    <input class="ua-checkbox-hidden" id="<?php echo esc_attr( $checkbox_id ); ?>" type="checkbox" name="widget[]" value="<?php echo esc_attr( $class_name ); ?>" <?php echo esc_attr( $checkbox ); ?>>
+                                    <div class="ua-designed-checkbox"></div>
                                 </div>
                             </div>
-                        </div>
+                        </label>
                         <?php } ?>
                     </div>
                     <div class="ua-widget-footer">
