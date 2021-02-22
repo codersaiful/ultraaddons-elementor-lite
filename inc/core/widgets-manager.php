@@ -44,7 +44,7 @@ class Widgets_Manager{
      *
      * @var type Key of get_options()
      */
-    public static $disabled_widgets_key = 'ultraaddons_disabled_widgets';
+    public static $disabled_items_key = 'ultraaddons_disabled_widgets';
 
     
     /**
@@ -110,7 +110,7 @@ class Widgets_Manager{
      * @return Array Disabled Widget key's array 
      */
     public static function disableWidgetKeys(){
-        $disable_widgets = get_option( self::$disabled_widgets_key, '' );
+        $disable_widgets = get_option( self::$disabled_items_key, '' );
         
         if( is_array( $disable_widgets ) && ! empty( $disable_widgets ) ){
             return apply_filters( 'ultraaddons/widgets/disabled', $disable_widgets );

@@ -6,14 +6,13 @@ defined( 'ABSPATH' ) || die();
 
 if( filter_input_array( INPUT_POST ) ){
     $updated = filter_input_array( INPUT_POST );
-    if( ! empty( $updated['extension'] ) ){
-        update_option( Extensions_Manager::$disabled_extenstions_key, $updated['extension'] );
+    if( ! empty( $updated['item'] ) ){
+        update_option( Extensions_Manager::$disabled_items_key, $updated['item'] );
     }
 }
 
-$extensions = Extensions_Manager::get_list();
-$disable_extension = Extensions_Manager::disableExtensionKeys();
-var_dump($disable_extension);
+$items = Extensions_Manager::get_list();
+$disable_item = Extensions_Manager::disableExtensionKeys();
 ?>
 
 <div class="ultraaddons-section ua-option-wrapper">
@@ -28,17 +27,20 @@ var_dump($disable_extension);
                 <form class="ua-option-list-form" action="" method="post">
                     <div class="ua-option-item-wrappper">
                         <?php 
-                        foreach( $extensions as $class_name => $extension ){
+                        foreach( $items as $class_name => $item ){
 
-                            $name = isset( $extension['name'] ) ? $extension['name'] : false;
-                            $icon = isset( $extension['icon'] ) ? $extension['icon'] : false;
-                            $cat = isset( $extension['cat'] ) && is_array( $extension['cat'] ) ? $extension['cat'] : [];
-                            $free_pro = isset( $extension['is_free'] ) && $extension['is_free'] ? 'free' : 'pro';
+                            $name = isset( $item['name'] ) ? $item['name'] : false;
+                            $icon = isset( $item['icon'] ) ? $item['icon'] : false;
+                            $cat = isset( $item['cat'] ) && is_array( $item['cat'] ) ? $item['cat'] : [];
+                            $free_pro = isset( $item['is_free'] ) && $item['is_free'] ? 'free' : 'pro';
                             
-                            $checkbox = in_array( $class_name, $disable_extension ) ? 'checked' : '';
+                            $checkbox = in_array( $class_name, $disable_item ) ? 'checked' : '';
+                            $enbl_disbl_class = in_array( $class_name, $disable_item ) ? 'disabled' : 'enabled';
+                            
                             $checkbox_id = 'checkbox_' . $class_name;
                             $html_class = [];
                             $html_class[] = $name;
+                            $html_class[] = $enbl_disbl_class;
                             //$html_class[] = $icon;
                             $html_class[] = $free_pro;
                             $html_class[] = $class_name;
@@ -52,9 +54,9 @@ var_dump($disable_extension);
                             <div class="ua-option-item-inside">
                                 <span class="ua-option-version-type ua-option-version-type-<?php echo esc_attr( $free_pro ); ?>"><?php echo $free_pro == 'pro' ? esc_html__( 'Pro', 'ultraaddons' ) : esc_html__( 'Free', 'ultraaddons' ); ?></span>
                                 <i class="ua-option-icon <?php echo esc_attr( $icon ); ?>"></i>
-                                <h2 class="ua-widget-name"><?php echo esc_html( $name ); ?></h2>
+                                <h2 class="ua-item-name"><?php echo esc_html( $name ); ?></h2>
                                 <div class="ua-option-checkbox">
-                                    <input class="ua-checkbox-hidden" id="<?php echo esc_attr( $checkbox_id ); ?>" type="checkbox" name="extension[]" value="<?php echo esc_attr( $class_name ); ?>" <?php echo esc_attr( $checkbox ); ?>>
+                                    <input class="ua-checkbox-hidden" id="<?php echo esc_attr( $checkbox_id ); ?>" type="checkbox" name="item[]" value="<?php echo esc_attr( $class_name ); ?>" <?php echo esc_attr( $checkbox ); ?>>
                                     <div class="ua-designed-checkbox"></div>
                                 </div>
                             </div>

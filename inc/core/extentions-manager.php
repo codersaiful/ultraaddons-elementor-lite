@@ -15,7 +15,7 @@ class Extensions_Manager{
      *
      * @var type Key of get_options()
      */
-    public static $disabled_extenstions_key = 'ultraaddons_disabled_extenstion';
+    public static $disabled_items_key = 'ultraaddons_disabled_extenstion';
 
     
     /**
@@ -36,8 +36,8 @@ class Extensions_Manager{
         $disable_keys = self::disableExtensionKeys();
         
         foreach( self::get_list() as $ex_name_key => $extension ){
-            
-            $file = ULTRA_ADDONS_DIR . "inc/extensions/{$ex_name_key}.php";
+            $file_name = strtolower( str_replace( '_', '-', $ex_name_key ) );
+            $file = ULTRA_ADDONS_DIR . "inc/extensions/{$file_name}.php";
             if( ! in_array( $ex_name_key, $disable_keys ) && is_readable( $file ) ){
                 include_once $file;
             }
@@ -71,14 +71,6 @@ class Extensions_Manager{
      */
     public static function get_list(){
         return [
-            'wrapper-link'=> [
-                    'name'  => __( 'Wrapper Link -d', 'ultraaddons' ),
-            ],
-            
-            'hover-effect'=> [
-                    'name'  => __( 'Hover Effect -d', 'ultraaddons' ),
-            ],
-            
             'Wrapper_Link'=> [
                     'name'      => __( 'Wrapper Link', 'ultraaddons' ),
                     'is_free'   => true,
@@ -110,7 +102,7 @@ class Extensions_Manager{
 
             'Advance_Heading' => [
                     'name'  => __( 'Advance Heading', 'ultraaddons' ),
-                    'is_free'   => true,
+                    'is_free'   => false,
                     'icon'      => 'eicon-heading',
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),
@@ -138,7 +130,7 @@ class Extensions_Manager{
      * @return Array Disabled Widget key's array 
      */
     public static function disableExtensionKeys(){
-        $disable_extension = get_option( self::$disabled_extenstions_key, '' );
+        $disable_extension = get_option( self::$disabled_items_key, '' );
         
         if( is_array( $disable_extension ) && ! empty( $disable_extension ) ){
             return apply_filters( 'ultraaddons/extension/disabled', $disable_extension );
