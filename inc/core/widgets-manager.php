@@ -94,7 +94,7 @@ class Widgets_Manager{
                $active_widget[$widget_key] = $widgets; 
             }
         }
-        return $active_widget;
+        return apply_filters( 'ultraaddons/widgets/active', $active_widget );//$active_widget;
     }
 
     /**
@@ -113,7 +113,7 @@ class Widgets_Manager{
         $disable_widgets = get_option( self::$disabled_widgets_key, '' );
         
         if( is_array( $disable_widgets ) && ! empty( $disable_widgets ) ){
-            return $disable_widgets;
+            return apply_filters( 'ultraaddons/widgets/disabled', $disable_widgets );
         }
         return [];//Tested with ['Button']
     }

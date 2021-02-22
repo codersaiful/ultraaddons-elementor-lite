@@ -107,3 +107,31 @@ p.ultraaddons-info {
     font-size: 22px;
 }
 /***** Menu Page End*******/
+
+/*********For Widget Menu List | Start *********/
+.ua-widget-item i.ua-widget-icon {
+    font-size: 45px;
+    color: #cb3bfa;
+}
+
+.ua-widget-item-wrappper {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    row-gap: 10px;
+    align-items: stretch;
+}
+
+.ua-widget-item-wrappper .ua-widget-item {
+    width: 250px;
+    border: 1px solid #ddd;
+    position: relative;
+}
+
+.ua-widget-item {
+}
+
+.ua-widget-item-inside {
+    width: 100%;
+}
+/*********For Widget Menu List | END *********/
