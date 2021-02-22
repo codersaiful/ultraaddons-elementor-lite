@@ -81,6 +81,9 @@ class Product_Table extends Base{
                  * @since 1.0.1.0
                  */
                 if( class_exists( '\WPT_Product_Table') ){
+                    
+                    $this->style_table_general();
+                    
                     //For Typography Section Style Tab
                     $this->style_table_head();
                     
@@ -198,6 +201,68 @@ class Product_Table extends Base{
 
         }
         
+        /**
+         * Typography Section for Style Tab
+         * 
+         * @since 1.0.0.9
+         */
+        protected function style_table_general() {
+            $this->start_controls_section(
+                'style_general',
+                [
+                    'label'     => esc_html__( 'General', 'medilac' ),
+                    'tab'       => Controls_Manager::TAB_STYLE,
+                ]
+            );
+            
+//            $this->add_control(
+//                    'template',
+//                    [
+//                            'label'     => __( 'Select a Skin', 'medilac' ),
+//                            'type'      => Controls_Manager::SELECT,
+//                            'default' => 'default',
+//                            'options' => [
+//                                    'material'  => __( 'Material', 'medilac' ),
+//                                    'bootstrap' => __( 'Bootstrap', 'medilac' ),
+//                                    'striped' => __( 'Striped', 'medilac' ),
+//                                    'default' => __( 'Default', 'medilac' ),
+//                            ],
+//                            'prefix_class' => 'wpt-skin-',
+//                    ]
+//            );
+            
+            $this->add_responsive_control(
+                    'cell_gap',
+                    [
+                            'label' => __( 'Cell Padding', 'medilac' ),
+                            'type' => Controls_Manager::SLIDER,
+                            'size_units' => [ 'px', '%' ],
+                            'range' => [
+                                    'px' => [
+                                            'min' => 0,
+                                            'max' => 100,
+                                            'step' => 1,
+                                    ],
+                                    '%' => [
+                                            'min' => 0,
+                                            'max' => 100,
+                                    ],
+                            ],
+                            'default' => [
+                                    'unit' => 'px',
+                                    'size' => 10,
+                            ],
+                            'selectors' => [
+                                    '{{WRAPPER}} table.wpt_product_table tbody tr td, {{WRAPPER}} .custom_table thead .wpt_table_header_row th' => 'padding: {{SIZE}}{{UNIT}};',
+                            ],
+                    ]
+            );
+            
+            
+            
+            $this->end_controls_section();
+            
+        }
         /**
          * Typography Section for Style Tab
          * 
@@ -407,8 +472,62 @@ class Product_Table extends Base{
                     'selectors' => [
                         '{{WRAPPER}} table.wpt_product_table tbody tr td' => 'background-color: {{VALUE}}',
                     ],
-                    //'default'   => '#fff',
+                    'default'   => '#fff',
                 ]
+            );
+            
+            $this->add_control(
+                'striped_table',
+                [
+                    'label'     => __( 'Striped Table', 'medilac' ),
+                    'type'      => Controls_Manager::SWITCHER,
+                    'label_on' => __( 'Yes', 'medilac' ),
+                    'label_off' => __( 'No', 'medilac' ),
+                    'return_value' => 'yes',
+                    'default' => 'yes',                    
+                ]
+            );
+            
+            $this->add_control(
+                'tbody_bg_color_striped',
+                [
+                    'label'     => __( 'Background Striped Color', 'medilac' ),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} table.wpt_product_table tbody tr:nth-child(2n+2) td' => 'background-color: {{VALUE}}',
+                    ],
+                    'default' => 'rgba(0,0,0,.05)',
+                    'condition' => [
+                            'striped_table' => 'yes',
+                    ],
+                ]
+            );
+            
+            $this->add_responsive_control(
+                    'cell_gap_body',
+                    [
+                            'label' => __( 'Cell Padding', 'medilac' ),
+                            'type' => Controls_Manager::SLIDER,
+                            'size_units' => [ 'px', '%' ],
+                            'range' => [
+                                    'px' => [
+                                            'min' => 0,
+                                            'max' => 100,
+                                            'step' => 1,
+                                    ],
+                                    '%' => [
+                                            'min' => 0,
+                                            'max' => 100,
+                                    ],
+                            ],
+                            'default' => [
+                                    'unit' => 'px',
+                                    'size' => 10,
+                            ],
+                            'selectors' => [
+                                    '{{WRAPPER}} table.wpt_product_table tbody tr td' => 'padding: {{SIZE}}{{UNIT}};',
+                            ],
+                    ]
             );
             
             $this->end_controls_section();
