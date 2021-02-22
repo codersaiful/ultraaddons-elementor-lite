@@ -117,8 +117,8 @@ p.ultraaddons-info {
 .ua-widget-item-wrappper {
     display: flex;
     flex-wrap: wrap;
-    column-gap: 10px;
-    row-gap: 10px;
+    column-gap: 30px;
+    row-gap: 30px;
     align-items: stretch;
 }
 
@@ -126,6 +126,7 @@ p.ultraaddons-info {
     width: 250px;
     border: 1px solid #ddd;
     position: relative;
+    overflow: hidden;
 }
 
 .ua-widget-item {
@@ -134,4 +135,23 @@ p.ultraaddons-info {
 .ua-widget-item-inside {
     width: 100%;
 }
+span.ua-widget-version-type{
+    position: absolute;
+    transform: rotate(45deg);
+    color: white;
+    width: 123px;
+    text-align: center;
+    top: -40px;
+    right: -63px;
+    height: 27px;
+    padding-top: 55px;
+}
+span.ua-widget-version-type.ua-widget-version-type-pro {
+    background: #ff5722;
+}
+span.ua-widget-version-type.ua-widget-version-type-free {
+    background: #dc39d0;
+    
+}
+
 /*********For Widget Menu List | END *********/

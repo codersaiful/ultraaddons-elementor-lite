@@ -49,7 +49,7 @@ $disable_widgets = Widgets_Manager::disableWidgetKeys();
                              data-type="<?php echo esc_attr( $free_pro ); ?>"
                              class="ua-widget-item <?php echo esc_attr( implode( " ", $html_class ) ); ?>">
                             <div class="ua-widget-item-inside">
-                                <span class="ua-widget-version-type ua-widget-version-type-<?php echo esc_attr( $free_pro ); ?>"><?php echo $free_pro == 'pro'? esc_html__( 'Premium', 'ultraaddons' ) : '' ?></span>
+                                <span class="ua-widget-version-type ua-widget-version-type-<?php echo esc_attr( $free_pro ); ?>"><?php echo $free_pro == 'pro' ? esc_html__( 'Pro', 'ultraaddons' ) : esc_html__( 'Free', 'ultraaddons' ); ?></span>
                                 <i class="ua-widget-icon <?php echo esc_attr( $icon ); ?>"></i>
                                 <h2 class="ua-widget-name"><?php echo esc_html( $name ); ?></h2>
                                 <div class="ua-widget-checkbox">

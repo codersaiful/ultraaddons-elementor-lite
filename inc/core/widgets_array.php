@@ -84,6 +84,16 @@ $widgetsArray = [
             ],
     ],
     
+    'Product_Slider' => [
+            'name'  => __( 'Product Slider', 'ultraaddons' ),
+            'is_free'   => false,
+            'icon'      => 'eicon-product-images',
+            'cat'       => [
+                __( 'WooCommerce', 'ultraaddons' ),
+                __( 'Pro', 'ultraaddons' ),
+            ],
+    ],
+    
     
 ];
 
