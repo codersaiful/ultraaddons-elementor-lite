@@ -30,8 +30,8 @@ $disable_widgets = Widgets_Manager::disableWidgetKeys();
                         <?php 
                         foreach( $widgets as $class_name => $widget ){
 
-                            $name = $widget['name'];
-                            $icon = $widget['icon'];
+                            $name = isset( $widget['name'] ) ? $widget['name'] : false;
+                            $icon = isset( $widget['icon'] ) ? $widget['icon'] : false;
                             $cat = isset( $widget['cat'] ) && is_array( $widget['cat'] ) ? $widget['cat'] : [];
                             $free_pro = isset( $widget['is_free'] ) && $widget['is_free'] ? 'free' : 'pro';
                             
