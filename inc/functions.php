@@ -40,6 +40,10 @@ function ultraaddons_elementor() {
 	return \Elementor\Plugin::instance();
 }
 
+function ultraaddons_plugin_version(){
+    return 'free';
+}
+
 /**
  * Outpur elementor page content to any where
  * Just need that template id

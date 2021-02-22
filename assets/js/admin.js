@@ -12,5 +12,9 @@
             $('.ultraaddons-wrap button.ua-primary').removeClass('ua-no-update');
         });
         
+        $(document.body).on('change','.ua-checkbox-hidden',function(e){
+            $(this).closest('.ua-option-item').toggleClass('disabled');
+        });
+        
     });
 } (jQuery, window));

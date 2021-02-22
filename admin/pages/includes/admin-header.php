@@ -13,7 +13,7 @@ $header_title       = apply_filters( 'ultraaddons/admin/header_title', $header_t
 $full_logo_image    = ULTRA_ADDONS_ASSETS . 'images/svg/full-color-logo.svg';
 $full_logo_image    = apply_filters( 'ultraaddons/admin/header_logo', $full_logo_image );
 ?>
-<div class="wrap about-wrap ultraaddons-wrap ultraaddons-admin-wrapper">
+<div class="wrap about-wrap ultraaddons-wrap ultraaddons-admin-wrapper ua-version-<?php echo esc_attr( ultraaddons_plugin_version() ); ?>">
     <h1 class="ultraaddons-color-heading">
         <?php echo wp_kses_post( $header_title ); ?>
     </h1>

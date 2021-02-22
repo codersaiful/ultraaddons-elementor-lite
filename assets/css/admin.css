@@ -223,10 +223,13 @@ span.ua-option-version-type{
 span.ua-option-version-type.ua-option-version-type-pro {
     background: #e91e63;
 }
+.ua-option-item.disabled.free span.ua-option-version-type.ua-option-version-type-free{
+    background: #bfbfbf;
+}
 span.ua-option-version-type.ua-option-version-type-free {
     background: #4caf50;
 }
-h2.ua-widget-name {
+h2.ua-item-name {
     padding: 0;
     margin: 20px auto;
     font-size: 25px;
@@ -241,7 +244,7 @@ h2.ua-widget-name {
 .ua-designed-checkbox {
     display: block;
     height: 32px;
-    background: #eeeeee;
+    background: #4caf50;
     width: 64px;
     margin: auto;
     border-radius: 16px;
@@ -256,15 +259,18 @@ h2.ua-widget-name {
     position: absolute;
     border-radius: 50%;
     top: 6px;
-    left: 8px;
+    left: 35px;
     transition: .4s all;
 }
 .ua-checkbox-hidden:checked + .ua-designed-checkbox{
-    background: #4caf50;
+    background: #eeeeee;
+}
+.ua-version-free .ua-option-item.pro .ua-designed-checkbox{
+    background: #bfbfbf;
 }
 .ua-checkbox-hidden:checked + .ua-designed-checkbox:before{
     background: #ffffff;
-    left: 35px;
+    left: 8px;
 }
 input.ua-checkbox-hidden {
     display: none !important;

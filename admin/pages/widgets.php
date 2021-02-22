@@ -6,14 +6,15 @@ defined( 'ABSPATH' ) || die();
 
 if( filter_input_array( INPUT_POST ) ){
     $updated = filter_input_array( INPUT_POST );
-    if( ! empty( $updated['widget'] ) ){
-        update_option( Widgets_Manager::$disabled_widgets_key, $updated['widget'] );
+    
+    if( ! empty( $updated['item'] ) ){
+        update_option( Widgets_Manager::$disabled_items_key, $updated['item'] );
     }
 }
 
-$widgets = Widgets_Manager::widgets();
-$disable_widgets = Widgets_Manager::disableWidgetKeys();
 
+$items = Widgets_Manager::widgets();
+$disable_items = Widgets_Manager::disableWidgetKeys();
 ?>
 
 <div class="ultraaddons-section ua-option-wrapper">
@@ -28,17 +29,19 @@ $disable_widgets = Widgets_Manager::disableWidgetKeys();
                 <form class="ua-option-list-form" action="" method="post">
                     <div class="ua-option-item-wrappper">
                         <?php 
-                        foreach( $widgets as $class_name => $widget ){
+                        foreach( $items as $class_name => $item ){
 
-                            $name = isset( $widget['name'] ) ? $widget['name'] : false;
-                            $icon = isset( $widget['icon'] ) ? $widget['icon'] : false;
-                            $cat = isset( $widget['cat'] ) && is_array( $widget['cat'] ) ? $widget['cat'] : [];
-                            $free_pro = isset( $widget['is_free'] ) && $widget['is_free'] ? 'free' : 'pro';
+                            $name = isset( $item['name'] ) ? $item['name'] : false;
+                            $icon = isset( $item['icon'] ) ? $item['icon'] : false;
+                            $cat = isset( $item['cat'] ) && is_array( $item['cat'] ) ? $item['cat'] : [];
+                            $free_pro = isset( $item['is_free'] ) && $item['is_free'] ? 'free' : 'pro';
                             
-                            $checkbox = in_array( $class_name, $disable_widgets ) ? 'checked' : '';
+                            $checkbox = in_array( $class_name, $disable_items ) ? 'checked' : '';
+                            $enbl_disbl_class = in_array( $class_name, $disable_items ) ? 'disabled' : 'enabled';
                             $checkbox_id = 'checkbox_' . $class_name;
                             $html_class = [];
                             $html_class[] = $name;
+                            $html_class[] = $enbl_disbl_class;
                             //$html_class[] = $icon;
                             $html_class[] = $free_pro;
                             $html_class[] = $class_name;
@@ -52,16 +55,16 @@ $disable_widgets = Widgets_Manager::disableWidgetKeys();
                             <div class="ua-option-item-inside">
                                 <span class="ua-option-version-type ua-option-version-type-<?php echo esc_attr( $free_pro ); ?>"><?php echo $free_pro == 'pro' ? esc_html__( 'Pro', 'ultraaddons' ) : esc_html__( 'Free', 'ultraaddons' ); ?></span>
                                 <i class="ua-option-icon <?php echo esc_attr( $icon ); ?>"></i>
-                                <h2 class="ua-widget-name"><?php echo esc_html( $name ); ?></h2>
+                                <h2 class="ua-item-name"><?php echo esc_html( $name ); ?></h2>
                                 <div class="ua-option-checkbox">
-                                    <input class="ua-checkbox-hidden" id="<?php echo esc_attr( $checkbox_id ); ?>" type="checkbox" name="widget[]" value="<?php echo esc_attr( $class_name ); ?>" <?php echo esc_attr( $checkbox ); ?>>
+                                    <input class="ua-checkbox-hidden" id="<?php echo esc_attr( $checkbox_id ); ?>" type="checkbox" name="item[]" value="<?php echo esc_attr( $class_name ); ?>" <?php echo esc_attr( $checkbox ); ?>>
                                     <div class="ua-designed-checkbox"></div>
                                 </div>
                             </div>
                         </label>
                         <?php } ?>
                     </div>
-                    <div class="ua-widget-footer">
+                    <div class="ua-item-footer">
                         <button class="primary button button-primary ua-primary ua-no-update" type="submit"><?php echo esc_html__( 'Save Change', 'ultraaddons' ); ?></button>
                     </div>
                 </form>
