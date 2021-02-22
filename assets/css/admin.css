@@ -147,9 +147,23 @@ ul.ua-submenu li.ua-current-menu a {
 /*********For Widget Menu List | Start *********/
 .ua-option-item i.ua-option-icon {
     font-size: 45px;
-    color: #cb3bfa;
+    
+    display: inline-block;
+    padding: 15px;
+    
+    border-radius: 8px;
+    
+    color: #8020e7;
+    border: 1px solid #8020e7;
+    
+    background: #8020e705;
 }
-
+.ua-option-item:hover i.ua-option-icon {
+    border: 1px solid #cb3bfa;
+    color: #cb3bfa;
+    border-radius: 5px;
+    background: transparent;
+}
 .ua-option-item-wrappper {
     display: flex;
     flex-wrap: wrap;
@@ -167,6 +181,7 @@ ul.ua-submenu li.ua-current-menu a {
     padding: 25px 15px;
     text-align: center;
     cursor: pointer;
+    background:white;
 }
 .ua-option-item-wrappper .ua-option-item.free:hover {
     box-shadow: 0 5px 40px 0 rgb(10 10 25 / 22%);
