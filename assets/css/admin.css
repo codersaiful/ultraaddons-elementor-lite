@@ -245,7 +245,9 @@ h2.ua-item-name {
 .ua-option-item-wrappper label.ua-option-item.More {
     background: #ffffff !important;
     opacity: 1 !important;
-    width: 100%;
+/*    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;*/
 }
 
 .ua-option-item-wrappper label.ua-option-item.More .ua-designed-checkbox {
@@ -268,7 +270,10 @@ h2.ua-item-name {
   from {left: 12px;background-color: black;}
   to {left: 35px;}
 }
-
+/*.ua-option-item-wrappper label.ua-option-item.More .ua-option-item-inside {
+    display: flex;
+    align-items: center;
+}*/
 /* for More End*/
 
 
