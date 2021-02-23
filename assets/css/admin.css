@@ -172,7 +172,7 @@ h1.ua-page-title {
     background: #8020e705;
     height: 45px;
     width: 45px;
-/*    margin-bottom: 8px;
+    /*    margin-bottom: 8px;
     margin-top: 8px;*/
 }
 .ua-option-item:hover i.ua-option-icon {
@@ -240,6 +240,37 @@ h2.ua-item-name {
     opacity: .65;
     background: #e6e6e6;
 }
+
+/* for More */
+.ua-option-item-wrappper label.ua-option-item.More {
+    background: #ffffff !important;
+    opacity: 1 !important;
+    width: 100%;
+}
+
+.ua-option-item-wrappper label.ua-option-item.More .ua-designed-checkbox {
+    background: #f06c99;
+}
+
+.ua-option-item-wrappper label.ua-option-item.More span.ua-option-version-type.ua-option-version-type-pro {
+    background: #ff9800;
+    font-size: 0;
+}
+
+.ua-option-item-wrappper label.ua-option-item.More h2.ua-item-name {font-style: italic;font-weight: bold;}
+.ua-option-item-wrappper label.ua-option-item.More .ua-designed-checkbox:before{
+    animation-name: ultraaddons-animated-on-off;
+    animation-duration: .4s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+@keyframes ultraaddons-animated-on-off {
+  from {left: 12px;background-color: black;}
+  to {left: 35px;}
+}
+
+/* for More End*/
+
 
 
 /**##### Checkbox ######**/
