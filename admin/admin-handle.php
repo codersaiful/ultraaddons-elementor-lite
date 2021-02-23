@@ -102,7 +102,8 @@ class Admin_Handle{
             'menu_title'    => __( 'UltraAddons', 'ultraaddons' ),
             'capability'    => self::$capability,
             'menu_slug'    => self::$menu_slug,//'ultraaddons-elementor-light',
-            'function'    => [ __CLASS__, 'root_page' ],
+            'function'    => [ __CLASS__, 'widgets_page' ],
+            //'function'    => [ __CLASS__, 'root_page' ], //When Welcome Page will Active, then it will active
             'icon_url'    => $icon_url,
             'position'    => 45,
         ];
@@ -163,7 +164,8 @@ class Admin_Handle{
                 'page_title'    =>  __( 'UltraAddons Widgets', 'ultraaddons' ),
                 'menu_title'    =>  __( 'Widgets', 'ultraaddons' ),
                 'capability'    => self::$capability,
-                'menu_slug'     => 'ultraaddons-widgets',
+//                'menu_slug'     => 'ultraaddons-widgets', //When Welcome Page will Active, then it will active
+                'menu_slug'     => 'ultraaddons-elementor-light',
                 'function'      => [__CLASS__, 'widgets_page'],
                 'position'      =>  1,
             ],
