@@ -103,6 +103,9 @@ class Product_Table extends Base{
                     
                     //For Button Style
                     $this->style_button();
+                    
+                    //For Footer CArt
+                    $this->style_footer_cart();
                 }
                 
                 
@@ -324,6 +327,59 @@ class Product_Table extends Base{
                     'tab'       => Controls_Manager::TAB_STYLE,
                 ]
             );
+            
+            $this->add_control(
+                'mini_cart_bg_color',
+                [
+                    'label'     => __( 'Background', 'medilac' ),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .wpt_product_table_wrapper div.tables_cart_message_box' => 'background-color: {{VALUE}}',
+                    ],
+                    'default'   => 'rgb(0 0 0 / 3%)',
+                ]
+            );
+            
+            $this->add_control(
+                    'mini_header_1',
+                    [
+                            'label' => __( 'Cart Header', 'medilac' ),
+                            'type' => Controls_Manager::HEADING,
+                            'separator' => 'before',
+                    ]
+            );
+            
+            $this->add_control(
+                'header-color',
+                [
+                    'label'     => __( 'Header Background', 'medilac' ),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                            '{{WRAPPER}} .wpt_product_table_wrapper div.tables_cart_message_box a.cart-contents' => 'background-color: {{VALUE}}',
+                    ],
+                    'default'   => '#5c6b79',
+                ]
+            );
+            
+            $this->add_control(
+                'header-amount-color',
+                [
+                    'label'     => __( 'Header Price Text Color', 'medilac' ),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                            '{{WRAPPER}} .wpt_product_table_wrapper div.tables_cart_message_box a.cart-contents span.amount' => 'color: {{VALUE}}',
+                    ],
+                ]
+            );
+            
+            $this->add_control(
+                    'mini_header_2',
+                    [
+                            'label' => __( 'Cart Contents', 'medilac' ),
+                            'type' => Controls_Manager::HEADING,
+                            'separator' => 'before',
+                    ]
+            );
 
             $this->add_group_control(
                     Group_Control_Typography::get_type(),
@@ -332,19 +388,71 @@ class Product_Table extends Base{
                             'global' => [
                                     'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
                             ],
-                            'selector' => '{{WRAPPER}} .tables_cart_message_box',
+                            'selector' => '{{WRAPPER}} .wpt_product_table_wrapper .widget_shopping_cart_content ul li a:not(.remove), {{WRAPPER}} .wpt_product_table_wrapper .widget_shopping_cart_content ul li span.quantity',
                     ]
             );
 
             $this->add_control(
                 'title-color',
                 [
-                    'label'     => __( 'Title Background', 'medilac' ),
+                    'label'     => __( 'Title Color', 'medilac' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .wpt_product_table_wrapper div.tables_cart_message_box a.cart-contents' => 'background-color: {{VALUE}}',
+                            '{{WRAPPER}} .wpt_product_table_wrapper .widget_shopping_cart_content ul li a:not(.remove)' => 'color: {{VALUE}}',
                     ],
-                    'default'   => '#5c6b79',
+                ]
+            );
+            
+            $this->add_control(
+                'price-color',
+                [
+                    'label'     => __( 'Quantity X Price Color', 'medilac' ),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                            '{{WRAPPER}} .wpt_product_table_wrapper .widget_shopping_cart_content ul li span.quantity' => 'color: {{VALUE}}',
+                    ],
+                ]
+            );
+            
+            $this->add_control(
+                    'mini_header_3',
+                    [
+                            'label' => __( 'Cart Total', 'medilac' ),
+                            'type' => Controls_Manager::HEADING,
+                            'separator' => 'before',
+                    ]
+            );
+            
+            $this->add_group_control(
+                    Group_Control_Typography::get_type(),
+                    [
+                            'name' => 'mini_total_typography',
+                            'global' => [
+                                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                            ],
+                            'selector' => '{{WRAPPER}} .wpt_product_table_wrapper .widget_shopping_cart_content p.woocommerce-mini-cart__total.total',
+                    ]
+            );
+            
+            $this->add_control(
+                'mini_cart_total_price_label_color',
+                [
+                    'label'     => __( 'Total Price Label Color', 'medilac' ),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .wpt_product_table_wrapper .widget_shopping_cart_content .total' => 'color: {{VALUE}}',
+                    ],
+                ]
+            );
+            
+            $this->add_control(
+                'mini_cart_total_price_color',
+                [
+                    'label'     => __( 'Total Price Text Color', 'medilac' ),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .wpt_product_table_wrapper .widget_shopping_cart_content .total span.amount' => 'color: {{VALUE}}',
+                    ],
                 ]
             );
             
@@ -657,8 +765,7 @@ class Product_Table extends Base{
                     ],
                     'default'   => '#535353',
                 ]
-            );
-            
+            );            
             
             $this->add_control(
                 'tbody-bg-color',
@@ -738,7 +845,18 @@ class Product_Table extends Base{
                     ]
             );
             
-            
+            $this->add_control(
+                    'tbody-scrollbar-color',
+                    [
+                            'label'     => __( 'Scrollbar Color', 'medilac' ),
+                            'type'      => Controls_Manager::COLOR,
+                            'selectors' => [
+                                    '{{WRAPPER}} .wpt_product_table_wrapper ::-webkit-scrollbar-thumb' => 'background: {{VALUE}}',
+
+                            ],
+                            'default'   => '#0a7f9c',
+                    ]
+            );
             
             $this->end_controls_section();
         }
@@ -898,7 +1016,25 @@ class Product_Table extends Base{
                     Group_Control_Typography::get_type(),
                     [
                             'name' => 'wpt_button_typography',
-                            'selector' => '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.add_to_cart_button, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.button',
+                            'selector' => '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.add_to_cart_button, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.button, {{WRAPPER}} .wpt_product_table_wrapper .all_check_header_footer a.button.add_to_cart_all_selected, {{WRAPPER}} .wpt_product_table_wrapper .widget_shopping_cart_content p.woocommerce-mini-cart__buttons.buttons a.button.wc-forward',
+                    ]
+            );
+            
+            $this->add_responsive_control(
+                    'button_padding',
+                    [
+                            'label' => __( 'Padding', 'ultraaddons' ),
+                            'type' => Controls_Manager::DIMENSIONS,
+                            'size_units' => [ 'px', '%', 'em' ],
+                            'default' => [
+                                'left' => 15,
+                                'right' => 15,
+                                'top' => 5,
+                                'bottom' => 5,
+                            ],
+                            'selectors' => [
+                                    '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.add_to_cart_button, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.button, {{WRAPPER}} .wpt_product_table_wrapper .all_check_header_footer a.button.add_to_cart_all_selected, {{WRAPPER}} .wpt_product_table_wrapper .widget_shopping_cart_content p.woocommerce-mini-cart__buttons.buttons a.button.wc-forward' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                            ],
                     ]
             );
             
@@ -918,6 +1054,8 @@ class Product_Table extends Base{
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.add_to_cart_button, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.button' => 'color: {{VALUE}}',
+                        '{{WRAPPER}} .wpt_product_table_wrapper .all_check_header_footer a.button.add_to_cart_all_selected' => 'color: {{VALUE}}',
+                        '{{WRAPPER}} .wpt_product_table_wrapper .widget_shopping_cart_content p.woocommerce-mini-cart__buttons.buttons a.button.wc-forward' => 'color: {{VALUE}}',
                     ],
                     'default'   => '#fff',
                 ]
@@ -930,6 +1068,8 @@ class Product_Table extends Base{
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.add_to_cart_button, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.button' => 'background-color: {{VALUE}}',
+                        '{{WRAPPER}} .wpt_product_table_wrapper .all_check_header_footer a.button.add_to_cart_all_selected' => 'background-color: {{VALUE}}',
+                        '{{WRAPPER}} .wpt_product_table_wrapper .widget_shopping_cart_content p.woocommerce-mini-cart__buttons.buttons a.button.wc-forward' => 'background-color: {{VALUE}}',
                     ],
                     'default'   => '#0fc392',
                 ]
@@ -940,7 +1080,7 @@ class Product_Table extends Base{
                     [
                             'name' => 'border',
                             'label' => __( 'Border', 'medilac' ),
-                            'selector' => '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table>tbody tr.wpt_row td a.add_to_cart_button, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table>tbody tr.wpt_row td a.button',
+                            'selector' => '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table>tbody tr.wpt_row td a.add_to_cart_button, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table>tbody tr.wpt_row td a.button, {{WRAPPER}} .wpt_product_table_wrapper .all_check_header_footer a.button.add_to_cart_all_selected, {{WRAPPER}} .wpt_product_table_wrapper .widget_shopping_cart_content p.woocommerce-mini-cart__buttons.buttons a.button.wc-forward',
                     ]
             );
             
@@ -960,6 +1100,8 @@ class Product_Table extends Base{
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.add_to_cart_button:hover, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.button:hover' => 'color: {{VALUE}} !important',
+                        '{{WRAPPER}} .wpt_product_table_wrapper .all_check_header_footer a.button.add_to_cart_all_selected:hover' => 'color: {{VALUE}}',
+                        '{{WRAPPER}} .wpt_product_table_wrapper .widget_shopping_cart_content p.woocommerce-mini-cart__buttons.buttons a.button.wc-forward:hover' => 'color: {{VALUE}}',
                     ],
                     'default'   => '#0fc392',
                 ]
@@ -972,6 +1114,8 @@ class Product_Table extends Base{
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.add_to_cart_button:hover, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.button:hover' => 'background-color: {{VALUE}} !important',
+                        '{{WRAPPER}} .wpt_product_table_wrapper .all_check_header_footer a.button.add_to_cart_all_selected:hover' => 'background-color: {{VALUE}}',
+                        '{{WRAPPER}} .wpt_product_table_wrapper .widget_shopping_cart_content p.woocommerce-mini-cart__buttons.buttons a.button.wc-forward:hover' => 'background-color: {{VALUE}}',
                     ],
                     'default'   => '#fff',
                 ]
@@ -982,7 +1126,7 @@ class Product_Table extends Base{
                     [
                             'name' => 'border_hover',
                             'label' => __( 'Border', 'medilac' ),
-                            'selector' => '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table>tbody tr.wpt_row td a.add_to_cart_button:hover, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table>tbody tr.wpt_row td a.button:hover',
+                            'selector' => '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table>tbody tr.wpt_row td a.add_to_cart_button:hover, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table>tbody tr.wpt_row td a.button:hover, {{WRAPPER}} .wpt_product_table_wrapper .all_check_header_footer a.button.add_to_cart_all_selected:hover, {{WRAPPER}} .wpt_product_table_wrapper .widget_shopping_cart_content p.woocommerce-mini-cart__buttons.buttons a.button.wc-forward:hover',
                     ]
             );
             
@@ -990,6 +1134,301 @@ class Product_Table extends Base{
             
             $this->end_controls_tabs();
             
+            
+            
+            
+            $this->end_controls_section();
+            
+        }
+        
+        /**
+         * Footer Cart
+         * 
+         * 
+         * @since 1.0.1.0
+         * @access protected
+         */
+        protected function style_footer_cart(){
+            
+            $this->start_controls_section(
+                'fc_style_section',
+                [
+                    'label' => __( 'Footer Cart', 'ultraaddons' ),
+                    'tab'       => Controls_Manager::TAB_STYLE,
+                ]
+            );
+            
+            $this->add_control(
+                'fc_cart_display',
+                [
+                    'label'     => __( 'Show or Hide', 'medilac' ),
+                    'type'      => Controls_Manager::SWITCHER,
+                    'label_on' => __( 'Hide', 'medilac' ),
+                    'label_off' => __( 'Show', 'medilac' ),
+                    'return_value' => 'yes',
+                    'default' => '',
+                    'selectors' => [
+                            '.wpt-footer-cart-wrapper' => 'display: none !important;',
+                    ],
+                ]
+            );
+            
+            $this->add_responsive_control(
+                    'fc_size',
+                    [
+                            'label' => __( 'Size', 'medilac' ),
+                            'type' => Controls_Manager::SLIDER,
+                            'size_units' => [ 'px' ],
+                            'range' => [
+                                    'px' => [
+                                            'min' => 40,
+                                            'max' => 200,
+                                            'step' => 5,
+                                    ],
+                            ],
+                            'default' => [
+                                    'unit' => 'px',
+                                    'size' => 74,
+                            ],
+                            'condition' => [
+                                    'fc_cart_display' => '',
+                            ],
+                            'selectors' => [
+                                    '.wpt-footer-cart-wrapper' => 'width: {{SIZE}}{{UNIT}} !important; height: {{SIZE}}{{UNIT}} !important;',
+                            ],
+                    ]
+            );
+            
+            $this->add_control(
+                    'fc_cart_color',
+                    [
+                        'label'     => __( 'Color', 'medilac' ),
+                        'type'      => Controls_Manager::COLOR,
+                        'condition' => [
+                                'fc_cart_display' => '',
+                        ],
+                        'selectors' => [
+                                '.wpt-footer-cart-wrapper > a > span' => 'color: {{VALUE}}!important',
+                                '.wpt-footer-cart-wrapper > a > span > span' => 'color: {{VALUE}}!important',
+                        ],
+                    ]
+            );
+            
+            $this->add_control(
+                    'fc_cart_background',
+                    [
+                            'label'     => __( 'Background', 'medilac' ),
+                            'type'      => Controls_Manager::COLOR,
+                            'condition' => [
+                                    'fc_cart_display' => '',
+                            ],
+                            'selectors' => [
+                                    '.wpt-footer-cart-wrapper > a' => 'background-color: {{VALUE}}!important',
+                                    'div.wpt-footer-cart-wrapper>a:after' => 'background-color: {{VALUE}}!important',
+                            ],
+                    ]
+            );
+            
+            $this->add_responsive_control(
+                    'fc_font_size',
+                    [
+                            'label' => __( 'Font Size', 'medilac' ),
+                            'type' => Controls_Manager::SLIDER,
+                            'size_units' => [ 'px', 'em' ],
+                            'range' => [
+                                    'px' => [
+                                            'min' => 0,
+                                            'max' => 100,
+                                            'step' => 1,
+                                    ],
+                                    'em' => [
+                                            'min' => 0.1,
+                                            'max' => 10,
+                                    ],
+                            ],
+                            'default' => [
+                                    'unit' => 'px',
+                                    'size' => 16,
+                            ],
+                            'condition' => [
+                                    'fc_cart_display' => '',
+                            ],
+                            'selectors' => [
+                                    '.wpt-footer-cart-wrapper > a > span' => 'font-size: {{SIZE}}{{UNIT}} !important;',
+                                    '.wpt-footer-cart-wrapper > a > span > span' => 'font-size: {{SIZE}}{{UNIT}} !important;',
+                            ],
+                    ]
+            );
+            
+            //Horizontal Orientation
+            $this->add_control(
+                    'fc_horizontal',
+                    [
+                            'label' => __( 'Horizontal Orientation', 'medilac' ),
+                            'type' => Controls_Manager::CHOOSE,
+                            'options' => [
+                                    'left' => [
+                                            'title' => __( 'Left', 'medilac' ),
+                                            'icon' => 'eicon-h-align-left',
+                                    ],
+                            ],
+                            'return_value' => 'left',
+                            'toggle' => true,
+                            'condition' => [
+                                    'fc_cart_display' => '',
+                            ],
+                            'selectors' => [
+                                    '.wpt-footer-cart-wrapper' => 'left: 1% !important; right: unset !important;',
+                            ],
+                    ]
+            );
+            
+            $this->add_responsive_control(
+                    'position_x_axis_toggle',
+                    [
+                            'label' => __( 'Offset', 'medilac' ),
+                            'type' => Controls_Manager::SLIDER,
+                            'size_units' => [ 'px', '%' ],
+                            'range' => [
+                                    'px' => [
+                                            'min' => 0,
+                                            'max' => 1000,
+                                            'step' => 1,
+                                    ],
+                                    '%' => [
+                                            'min' => 0,
+                                            'max' => 200,
+                                    ],
+                            ],
+                            'default' => [
+                                    'unit' => 'px',
+                                    'size' => 10,
+                            ],
+                            'condition' => [
+                                    'fc_cart_display' => '',
+                                    'fc_horizontal!' => '',
+                            ],
+                            'selectors' => [
+                                    '.wpt-footer-cart-wrapper' => 'left: {{SIZE}}{{UNIT}} !important;',
+                            ],
+                    ]
+            );
+            
+            $this->add_responsive_control(
+                    'position_x_axis',
+                    [
+                            'label' => __( 'Offset', 'medilac' ),
+                            'type' => Controls_Manager::SLIDER,
+                            'size_units' => [ 'px', '%' ],
+                            'range' => [
+                                    'px' => [
+                                            'min' => 0,
+                                            'max' => 1000,
+                                            'step' => 1,
+                                    ],
+                                    '%' => [
+                                            'min' => 0,
+                                            'max' => 200,
+                                    ],
+                            ],
+                            'default' => [
+                                    'unit' => 'px',
+                                    'size' => 10,
+                            ],
+                            'condition' => [
+                                    'fc_cart_display' => '',
+                                    'fc_horizontal' => '',
+                            ],
+                            'selectors' => [
+                                    '.wpt-footer-cart-wrapper' => 'right: {{SIZE}}{{UNIT}} !important;',
+                            ],
+                    ]
+            );
+            
+            //Vertical Orientation
+            $this->add_control(
+                    'fc_vertical',
+                    [
+                            'label' => __( 'Vertical Orientation', 'medilac' ),
+                            'type' => Controls_Manager::CHOOSE,
+                            'options' => [
+                                    'top' => [
+                                            'title' => __( 'Left', 'medilac' ),
+                                            'icon' => 'eicon-v-align-top',
+                                    ],
+                            ],
+                            'return_value' => 'top',
+                            'toggle' => true,
+                            'condition' => [
+                                    'fc_cart_display' => '',
+                            ],
+                            'selectors' => [
+                                    '.wpt-footer-cart-wrapper' => 'top: 1% !important; bottom: unset !important;',
+                            ],
+                    ]
+            );
+            
+            $this->add_responsive_control(
+                    'position_y_axis_toggle',
+                    [
+                            'label' => __( 'Offset', 'medilac' ),
+                            'type' => Controls_Manager::SLIDER,
+                            'size_units' => [ 'px', '%' ],
+                            'range' => [
+                                    'px' => [
+                                            'min' => 0,
+                                            'max' => 1000,
+                                            'step' => 1,
+                                    ],
+                                    '%' => [
+                                            'min' => 0,
+                                            'max' => 200,
+                                    ],
+                            ],
+                            'default' => [
+                                    'unit' => 'px',
+                                    'size' => 10,
+                            ],
+                            'condition' => [
+                                    'fc_cart_display' => '',
+                                    'fc_vertical!' => '',
+                            ],
+                            'selectors' => [
+                                    '.wpt-footer-cart-wrapper' => 'top: {{SIZE}}{{UNIT}} !important;',
+                            ],
+                    ]
+            );
+            
+            $this->add_responsive_control(
+                    'position_y_axis',
+                    [
+                            'label' => __( 'Offset', 'medilac' ),
+                            'type' => Controls_Manager::SLIDER,
+                            'size_units' => [ 'px', '%' ],
+                            'range' => [
+                                    'px' => [
+                                            'min' => 0,
+                                            'max' => 1000,
+                                            'step' => 1,
+                                    ],
+                                    '%' => [
+                                            'min' => 0,
+                                            'max' => 200,
+                                    ],
+                            ],
+                            'default' => [
+                                    'unit' => 'px',
+                                    'size' => 10,
+                            ],
+                            'condition' => [
+                                    'fc_cart_display' => '',
+                                    'fc_vertical' => '',
+                            ],
+                            'selectors' => [
+                                    '.wpt-footer-cart-wrapper' => 'bottom: {{SIZE}}{{UNIT}} !important;',
+                            ],
+                    ]
+            );
             
             
             

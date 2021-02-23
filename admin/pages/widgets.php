@@ -14,6 +14,14 @@ if( filter_input_array( INPUT_POST ) ){
 
 
 $items = Widgets_Manager::widgets();
+$items['More'] = [
+            'name'      => __( 'More Widget Comming Soon ....', 'ultraaddons' ),
+            'is_free'   => false,
+            'icon'      => 'eicon-global-colors',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ];
 $disable_items = Widgets_Manager::disableWidgetKeys();
 ?>
 
@@ -40,7 +48,7 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
                             $enbl_disbl_class = in_array( $class_name, $disable_items ) ? 'disabled' : 'enabled';
                             $checkbox_id = 'checkbox_' . $class_name;
                             $html_class = [];
-                            $html_class[] = $name;
+                            //$html_class[] = $name;
                             $html_class[] = $enbl_disbl_class;
                             //$html_class[] = $icon;
                             $html_class[] = $free_pro;

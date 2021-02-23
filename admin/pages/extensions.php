@@ -39,7 +39,7 @@ $disable_item = Extensions_Manager::disableExtensionKeys();
                             
                             $checkbox_id = 'checkbox_' . $class_name;
                             $html_class = [];
-                            $html_class[] = $name;
+//                            $html_class[] = $name;
                             $html_class[] = $enbl_disbl_class;
                             //$html_class[] = $icon;
                             $html_class[] = $free_pro;

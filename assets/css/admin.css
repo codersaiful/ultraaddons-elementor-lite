@@ -131,15 +131,17 @@ ul.ua-submenu li {
 }
 
 ul.ua-submenu li a {
-    color: #ebc3ff;
+    color: white;
     padding: 15px 30px;
     display: block;
-    border-bottom: 6px solid #07001526;
+    /*border-bottom: 6px solid #07001526;*/
     border-top-right-radius: 12px;
     border-bottom-left-radius: 7px;
     background: linear-gradient(160deg, #7934d5, #fb3bd2);
     /* background: #7439e5; */
-    background: #ac21f2;
+    /*background: #ac21f2;*/
+    border-bottom: 6px solid rgb(90, 42, 183);
+    background: rgb(116, 57, 229);
 }
 ul.ua-submenu li.ua-current-menu a {
     background: #4caf50;
@@ -170,7 +172,7 @@ h1.ua-page-title {
     background: #8020e705;
     height: 45px;
     width: 45px;
-/*    margin-bottom: 8px;
+    /*    margin-bottom: 8px;
     margin-top: 8px;*/
 }
 .ua-option-item:hover i.ua-option-icon {
@@ -238,6 +240,42 @@ h2.ua-item-name {
     opacity: .65;
     background: #e6e6e6;
 }
+
+/* for More */
+.ua-option-item-wrappper label.ua-option-item.More {
+    background: #ffffff !important;
+    opacity: 1 !important;
+/*    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;*/
+}
+
+.ua-option-item-wrappper label.ua-option-item.More .ua-designed-checkbox {
+    background: #f06c99;
+}
+
+.ua-option-item-wrappper label.ua-option-item.More span.ua-option-version-type.ua-option-version-type-pro {
+    background: #ff9800;
+    font-size: 0;
+}
+
+.ua-option-item-wrappper label.ua-option-item.More h2.ua-item-name {font-style: italic;font-weight: bold;}
+.ua-option-item-wrappper label.ua-option-item.More .ua-designed-checkbox:before{
+    animation-name: ultraaddons-animated-on-off;
+    animation-duration: .4s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+@keyframes ultraaddons-animated-on-off {
+  from {left: 12px;background-color: black;}
+  to {left: 35px;}
+}
+/*.ua-option-item-wrappper label.ua-option-item.More .ua-option-item-inside {
+    display: flex;
+    align-items: center;
+}*/
+/* for More End*/
+
 
 
 /**##### Checkbox ######**/
@@ -308,3 +346,66 @@ input.ua-checkbox-hidden {
 
 
 /*********For Widget Menu List | END *********/
+
+/**** Header Footer Form ****/
+
+.ua-form-wrappper {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 30px;
+    row-gap: 30px;
+    align-items: stretch;
+    margin: 45px 0;
+}
+.ultraaddons-field-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.ultraaddons-field-container label {
+    padding: 0 0 15px 0;
+    font-size: 1.2em;
+    display: block;
+}
+
+.ultraaddons-field-container select.ultraddons-select,
+.ultraaddons-field-container select,.ultraaddons-field-container input[type=text] {
+    width: 100%;
+    max-width: 25rem;
+}
+.ua-radio-top {
+    display: block;
+}
+
+h4.ua-hf-radio-label-title {
+    display: inline;
+    padding-left: 15px;
+}
+
+.ua-hf-type-radio {
+}
+
+.ua-radion-type {
+    background: #ddd0;
+    padding: 20px;
+    border: 1px solid #dddddd5c;
+}
+
+.ua-radio-message {
+    font-style: italic;
+    margin: 15px 15px 15px 40px;
+}
+.ua-form-message {
+    color: #afafaf;
+}
+.ua-hf-type-radio:checked + h4.ua-hf-radio-label-title {
+    color: #4caf50;
+    font-weight: bold;
+}
+
+input.ua-hf-type-radio[type=radio]:checked::before {
+    background-color: #4caf50;
+}
+.field-container-size{display: none;}
+/**** Header Footer Form | END****/
