@@ -1,0 +1,49 @@
+.ua-ultraaddons-cart .ultraaddons-cart-wrapper ul.site-elementor-cart {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+}
+.ua-ultraaddons-cart .ultraaddons-cart-wrapper ul.site-elementor-cart > li.minicart-content-wrapper {
+    display: none;
+    position: absolute;
+    top: 20px;
+    background: #fff;
+    width: 100%;
+    z-index: 10;
+}
+.ua-ultraaddons-cart .ultraaddons-cart-wrapper ul.site-elementor-cart:hover > li.minicart-content-wrapper,
+.ua-ultraaddons-cart .ultraaddons-cart-wrapper ul.site-elementor-cart:focus > li.minicart-content-wrapper {
+    display: block;    
+}
+.ua-ultraaddons-cart .ultraaddons-cart-wrapper ul.site-elementor-cart li.minicart-content-wrapper .widget_shopping_cart {
+    margin: 20px;
+}
+.ua-ultraaddons-cart .widget_shopping_cart_content ul.woocommerce-mini-cart.cart_list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.ua-ultraaddons-cart .widget_shopping_cart_content ul.woocommerce-mini-cart li.woocommerce-mini-cart-item.mini_cart_item a>img,
+.ua-ultraaddons-cart .widget_shopping_cart_content ul.product_list_widget li a>img {
+    left: 0;
+    top: -10px;
+}
+.ua-ultraaddons-cart .widget_shopping_cart_content ul.woocommerce-mini-cart li.woocommerce-mini-cart-item.mini_cart_item {
+    display: flex;
+    align-items: center;
+    padding: 20px 0 35px 0;
+}
+.ua-ultraaddons-cart .widget_shopping_cart_content ul.woocommerce-mini-cart li.woocommerce-mini-cart-item.mini_cart_item a.remove, .ua-ultraaddons-cart .widget_shopping_cart_content ul.product_list_widget li a.remove {
+    position: relative;
+    width: 20px;
+}
+.ua-ultraaddons-cart .widget_shopping_cart_content ul.woocommerce-mini-cart li.woocommerce-mini-cart-item.mini_cart_item a:not(.remove) {
+    display: block;
+    padding-left: 75px;
+    position: relative;
+}
+.ua-ultraaddons-cart .widget_shopping_cart_content ul.woocommerce-mini-cart li.woocommerce-mini-cart-item.mini_cart_item span.quantity {
+    right: 0;
+    position: absolute;
+}
