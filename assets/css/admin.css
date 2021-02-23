@@ -131,15 +131,17 @@ ul.ua-submenu li {
 }
 
 ul.ua-submenu li a {
-    color: #ebc3ff;
+    color: white;
     padding: 15px 30px;
     display: block;
-    border-bottom: 6px solid #07001526;
+    /*border-bottom: 6px solid #07001526;*/
     border-top-right-radius: 12px;
     border-bottom-left-radius: 7px;
     background: linear-gradient(160deg, #7934d5, #fb3bd2);
     /* background: #7439e5; */
-    background: #ac21f2;
+    /*background: #ac21f2;*/
+    border-bottom: 6px solid rgb(90, 42, 183);
+    background: rgb(116, 57, 229);
 }
 ul.ua-submenu li.ua-current-menu a {
     background: #4caf50;
