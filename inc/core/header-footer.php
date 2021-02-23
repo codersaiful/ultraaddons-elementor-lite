@@ -30,8 +30,8 @@ class Header_Footer {
     public static $data = [
         'header_id' => false,
         'footer_id' =>  false,
-        'type'      => 'php', //It will php and css. In
-        'wrapper'   => 'flued',
+        'type'      => 'css', //It will php and css. among php,css,additional
+        'wrapper'   => 'box', //Default value is: box, among box and flued
     ];
 
     protected static $body_class = [];
