@@ -765,8 +765,7 @@ class Product_Table extends Base{
                     ],
                     'default'   => '#535353',
                 ]
-            );
-            
+            );            
             
             $this->add_control(
                 'tbody-bg-color',
@@ -846,7 +845,18 @@ class Product_Table extends Base{
                     ]
             );
             
-            
+            $this->add_control(
+                    'tbody-scrollbar-color',
+                    [
+                            'label'     => __( 'Scrollbar Color', 'medilac' ),
+                            'type'      => Controls_Manager::COLOR,
+                            'selectors' => [
+                                    '{{WRAPPER}} .wpt_product_table_wrapper ::-webkit-scrollbar-thumb' => 'background: {{VALUE}}',
+
+                            ],
+                            'default'   => '#0a7f9c',
+                    ]
+            );
             
             $this->end_controls_section();
         }
@@ -1148,6 +1158,21 @@ class Product_Table extends Base{
                 ]
             );
             
+            $this->add_control(
+                'fc_cart_display',
+                [
+                    'label'     => __( 'Show or Hide', 'medilac' ),
+                    'type'      => Controls_Manager::SWITCHER,
+                    'label_on' => __( 'Hide', 'medilac' ),
+                    'label_off' => __( 'Show', 'medilac' ),
+                    'return_value' => 'yes',
+                    'default' => '',
+                    'selectors' => [
+                            '.wpt-footer-cart-wrapper' => 'display: none !important;',
+                    ],
+                ]
+            );
+            
             $this->add_responsive_control(
                     'fc_size',
                     [
@@ -1165,21 +1190,247 @@ class Product_Table extends Base{
                                     'unit' => 'px',
                                     'size' => 74,
                             ],
+                            'condition' => [
+                                    'fc_cart_display' => '',
+                            ],
                             'selectors' => [
-                                    '{{WRAPPER}} .wpt-footer-cart-wrapper' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                                    '.wpt-footer-cart-wrapper' => 'width: {{SIZE}}{{UNIT}} !important; height: {{SIZE}}{{UNIT}} !important;',
                             ],
                     ]
             );
             
-            $this->add_group_control(
-			Group_Control_Background::get_type(),
-			[
-				'name' => 'fc_cart_background',
-				'label' => __( 'Background', 'medilac' ),
-				'types' => [ 'classic', 'gradient' ],
-				'selector' => '{{WRAPPER}} .wpt-footer-cart-wrapper > a',
-			]
-		);
+            $this->add_control(
+                    'fc_cart_color',
+                    [
+                        'label'     => __( 'Color', 'medilac' ),
+                        'type'      => Controls_Manager::COLOR,
+                        'condition' => [
+                                'fc_cart_display' => '',
+                        ],
+                        'selectors' => [
+                                '.wpt-footer-cart-wrapper > a > span' => 'color: {{VALUE}}!important',
+                                '.wpt-footer-cart-wrapper > a > span > span' => 'color: {{VALUE}}!important',
+                        ],
+                    ]
+            );
+            
+            $this->add_control(
+                    'fc_cart_background',
+                    [
+                            'label'     => __( 'Background', 'medilac' ),
+                            'type'      => Controls_Manager::COLOR,
+                            'condition' => [
+                                    'fc_cart_display' => '',
+                            ],
+                            'selectors' => [
+                                    '.wpt-footer-cart-wrapper > a' => 'background-color: {{VALUE}}!important',
+                                    'div.wpt-footer-cart-wrapper>a:after' => 'background-color: {{VALUE}}!important',
+                            ],
+                    ]
+            );
+            
+            $this->add_responsive_control(
+                    'fc_font_size',
+                    [
+                            'label' => __( 'Font Size', 'medilac' ),
+                            'type' => Controls_Manager::SLIDER,
+                            'size_units' => [ 'px', 'em' ],
+                            'range' => [
+                                    'px' => [
+                                            'min' => 0,
+                                            'max' => 100,
+                                            'step' => 1,
+                                    ],
+                                    'em' => [
+                                            'min' => 0.1,
+                                            'max' => 10,
+                                    ],
+                            ],
+                            'default' => [
+                                    'unit' => 'px',
+                                    'size' => 16,
+                            ],
+                            'condition' => [
+                                    'fc_cart_display' => '',
+                            ],
+                            'selectors' => [
+                                    '.wpt-footer-cart-wrapper > a > span' => 'font-size: {{SIZE}}{{UNIT}} !important;',
+                                    '.wpt-footer-cart-wrapper > a > span > span' => 'font-size: {{SIZE}}{{UNIT}} !important;',
+                            ],
+                    ]
+            );
+            
+            //Horizontal Orientation
+            $this->add_control(
+                    'fc_horizontal',
+                    [
+                            'label' => __( 'Horizontal Orientation', 'medilac' ),
+                            'type' => Controls_Manager::CHOOSE,
+                            'options' => [
+                                    'left' => [
+                                            'title' => __( 'Left', 'medilac' ),
+                                            'icon' => 'eicon-h-align-left',
+                                    ],
+                            ],
+                            'return_value' => 'left',
+                            'toggle' => true,
+                            'condition' => [
+                                    'fc_cart_display' => '',
+                            ],
+                            'selectors' => [
+                                    '.wpt-footer-cart-wrapper' => 'left: 1% !important; right: unset !important;',
+                            ],
+                    ]
+            );
+            
+            $this->add_responsive_control(
+                    'position_x_axis_toggle',
+                    [
+                            'label' => __( 'Offset', 'medilac' ),
+                            'type' => Controls_Manager::SLIDER,
+                            'size_units' => [ 'px', '%' ],
+                            'range' => [
+                                    'px' => [
+                                            'min' => 0,
+                                            'max' => 1000,
+                                            'step' => 1,
+                                    ],
+                                    '%' => [
+                                            'min' => 0,
+                                            'max' => 200,
+                                    ],
+                            ],
+                            'default' => [
+                                    'unit' => 'px',
+                                    'size' => 10,
+                            ],
+                            'condition' => [
+                                    'fc_cart_display' => '',
+                                    'fc_horizontal!' => '',
+                            ],
+                            'selectors' => [
+                                    '.wpt-footer-cart-wrapper' => 'left: {{SIZE}}{{UNIT}} !important;',
+                            ],
+                    ]
+            );
+            
+            $this->add_responsive_control(
+                    'position_x_axis',
+                    [
+                            'label' => __( 'Offset', 'medilac' ),
+                            'type' => Controls_Manager::SLIDER,
+                            'size_units' => [ 'px', '%' ],
+                            'range' => [
+                                    'px' => [
+                                            'min' => 0,
+                                            'max' => 1000,
+                                            'step' => 1,
+                                    ],
+                                    '%' => [
+                                            'min' => 0,
+                                            'max' => 200,
+                                    ],
+                            ],
+                            'default' => [
+                                    'unit' => 'px',
+                                    'size' => 10,
+                            ],
+                            'condition' => [
+                                    'fc_cart_display' => '',
+                                    'fc_horizontal' => '',
+                            ],
+                            'selectors' => [
+                                    '.wpt-footer-cart-wrapper' => 'right: {{SIZE}}{{UNIT}} !important;',
+                            ],
+                    ]
+            );
+            
+            //Vertical Orientation
+            $this->add_control(
+                    'fc_vertical',
+                    [
+                            'label' => __( 'Vertical Orientation', 'medilac' ),
+                            'type' => Controls_Manager::CHOOSE,
+                            'options' => [
+                                    'top' => [
+                                            'title' => __( 'Left', 'medilac' ),
+                                            'icon' => 'eicon-v-align-top',
+                                    ],
+                            ],
+                            'return_value' => 'top',
+                            'toggle' => true,
+                            'condition' => [
+                                    'fc_cart_display' => '',
+                            ],
+                            'selectors' => [
+                                    '.wpt-footer-cart-wrapper' => 'top: 1% !important; bottom: unset !important;',
+                            ],
+                    ]
+            );
+            
+            $this->add_responsive_control(
+                    'position_y_axis_toggle',
+                    [
+                            'label' => __( 'Offset', 'medilac' ),
+                            'type' => Controls_Manager::SLIDER,
+                            'size_units' => [ 'px', '%' ],
+                            'range' => [
+                                    'px' => [
+                                            'min' => 0,
+                                            'max' => 1000,
+                                            'step' => 1,
+                                    ],
+                                    '%' => [
+                                            'min' => 0,
+                                            'max' => 200,
+                                    ],
+                            ],
+                            'default' => [
+                                    'unit' => 'px',
+                                    'size' => 10,
+                            ],
+                            'condition' => [
+                                    'fc_cart_display' => '',
+                                    'fc_vertical!' => '',
+                            ],
+                            'selectors' => [
+                                    '.wpt-footer-cart-wrapper' => 'top: {{SIZE}}{{UNIT}} !important;',
+                            ],
+                    ]
+            );
+            
+            $this->add_responsive_control(
+                    'position_y_axis',
+                    [
+                            'label' => __( 'Offset', 'medilac' ),
+                            'type' => Controls_Manager::SLIDER,
+                            'size_units' => [ 'px', '%' ],
+                            'range' => [
+                                    'px' => [
+                                            'min' => 0,
+                                            'max' => 1000,
+                                            'step' => 1,
+                                    ],
+                                    '%' => [
+                                            'min' => 0,
+                                            'max' => 200,
+                                    ],
+                            ],
+                            'default' => [
+                                    'unit' => 'px',
+                                    'size' => 10,
+                            ],
+                            'condition' => [
+                                    'fc_cart_display' => '',
+                                    'fc_vertical' => '',
+                            ],
+                            'selectors' => [
+                                    '.wpt-footer-cart-wrapper' => 'bottom: {{SIZE}}{{UNIT}} !important;',
+                            ],
+                    ]
+            );
+            
+            
             
             $this->end_controls_section();
             
