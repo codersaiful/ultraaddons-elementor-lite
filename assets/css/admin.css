@@ -310,3 +310,66 @@ input.ua-checkbox-hidden {
 
 
 /*********For Widget Menu List | END *********/
+
+/**** Header Footer Form ****/
+
+.ua-form-wrappper {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 30px;
+    row-gap: 30px;
+    align-items: stretch;
+    margin: 45px 0;
+}
+.ultraaddons-field-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.ultraaddons-field-container label {
+    padding: 0 0 15px 0;
+    font-size: 1.2em;
+    display: block;
+}
+
+.ultraaddons-field-container select.ultraddons-select,
+.ultraaddons-field-container select,.ultraaddons-field-container input[type=text] {
+    width: 100%;
+    max-width: 25rem;
+}
+.ua-radio-top {
+    display: block;
+}
+
+h4.ua-hf-radio-label-title {
+    display: inline;
+    padding-left: 15px;
+}
+
+.ua-hf-type-radio {
+}
+
+.ua-radion-type {
+    background: #ddd0;
+    padding: 20px;
+    border: 1px solid #dddddd5c;
+}
+
+.ua-radio-message {
+    font-style: italic;
+    margin: 15px 15px 15px 40px;
+}
+.ua-form-message {
+    color: #afafaf;
+}
+.ua-hf-type-radio:checked + h4.ua-hf-radio-label-title {
+    color: #4caf50;
+    font-weight: bold;
+}
+
+input.ua-hf-type-radio[type=radio]:checked::before {
+    background-color: #4caf50;
+}
+.field-container-size{display: none;}
+/**** Header Footer Form | END****/
