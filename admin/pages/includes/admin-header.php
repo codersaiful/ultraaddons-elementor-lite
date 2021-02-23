@@ -8,7 +8,7 @@ defined( 'ABSPATH' ) || die();
  * 
  * @version 1.0.0.11
  */
-$header_title       = esc_html__( 'UltraAddons Elementor Lite', 'ultraaddons' );
+$header_title       = esc_html__( 'UltraAddons', 'ultraaddons' );
 $header_title       = apply_filters( 'ultraaddons/admin/header_title', $header_title );
 $full_logo_image    = ULTRA_ADDONS_ASSETS . 'images/svg/full-color-logo.svg';
 $full_logo_image    = apply_filters( 'ultraaddons/admin/header_logo', $full_logo_image );
@@ -16,6 +16,7 @@ $full_logo_image    = apply_filters( 'ultraaddons/admin/header_logo', $full_logo
 <div class="wrap about-wrap ultraaddons-wrap ultraaddons-admin-wrapper ua-version-<?php echo esc_attr( ultraaddons_plugin_version() ); ?>">
     <h1 class="ultraaddons-color-heading">
         <?php echo wp_kses_post( $header_title ); ?>
+        <smal class="ultraaddons-version-in-title">v<?php echo esc_html( ULTRA_ADDONS_VERSION ); ?></smal>
     </h1>
     
         <div class="ultraaddons-dashboard-area">

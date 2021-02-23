@@ -101,7 +101,21 @@ li#toplevel_page_ultraaddons-elementor-light.current .wp-menu-image img {
     border-bottom: 1px solid #eee;
 }
 h1.ultraaddons-color-heading {
-    font-weight: 900;
+    font-weight: 400;
+    color: #691fe1;
+    color: #ffffff;
+    text-shadow: 2px 4px 7px #5050503d;
+    /* text-shadow: -5px 1px 0px #e0e0e0; */
+    /* background: linear-gradient(45deg, #d422fc, #2b1ed1); */
+    display: inline-block;
+    /* padding: 20px; */
+    /* -webkit-background-clip: text; */
+    /* -webkit-text-fill-color: transparent; */
+}
+smal.ultraaddons-version-in-title {
+    font-weight: 100;
+    color: #691fe1;
+    font-size: 70%;
 }
 p.ultraaddons-info {
     font-size: 22px;
