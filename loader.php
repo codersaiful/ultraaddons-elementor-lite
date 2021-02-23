@@ -81,7 +81,8 @@ class Loader {
         $this->widgetsArray = $widgetsArray;
 
         //File Including on init
-        add_action( 'init', [ $this, 'include_on_init' ] );
+        //Disable that init. because, These file will load by AutoLoader
+//        add_action( 'init', [ $this, 'include_on_init' ] );
              
         //Register and Including Base and common Class file
         add_action( 'elementor/widgets/widgets_registered', [ $this, 'register' ],1 );
@@ -112,9 +113,16 @@ class Loader {
         include_once $base_file;
     }
     
+    /**
+     * After AutoLoader,
+     * This method is not need
+     * Already comment out the include once link
+     * 
+     * Also deactivate on init of here
+     */
     public function include_on_init(){
-        include_once ULTRA_ADDONS_DIR . 'inc/core/extentions-manager.php';
-        include_once ULTRA_ADDONS_DIR . 'inc/core/header_footer.php';
+        //include_once ULTRA_ADDONS_DIR . 'inc/core/extentions-manager.php';
+        //include_once ULTRA_ADDONS_DIR . 'inc/core/header_footer.php';
     }
 
     /**
