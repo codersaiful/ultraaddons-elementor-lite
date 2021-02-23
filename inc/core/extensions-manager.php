@@ -90,20 +90,20 @@ class Extensions_Manager{
                     ],
             ],
             
-            'Button'=> [
-                    'name'      => __( 'Button', 'ultraaddons' ),
-                    'is_free'   => true,
-                    'icon'      => 'eicon-button',
+
+            'Animation_Effect' => [
+                    'name'  => __( 'Animation Effect', 'ultraaddons' ),
+                    'is_free'   => false,
+                    'icon'      => 'eicon-code-highlight',
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),
                     ],
             ],
 
-
-            'Advance_Heading' => [
-                    'name'  => __( 'Advance Heading', 'ultraaddons' ),
+            'Ultra_Effect' => [
+                    'name'  => __( 'Ultra Effect', 'ultraaddons' ),
                     'is_free'   => false,
-                    'icon'      => 'eicon-heading',
+                    'icon'      => 'eicon-spinner',
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),
                     ],
