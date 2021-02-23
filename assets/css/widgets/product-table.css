@@ -33,8 +33,6 @@
 .ua-element-product-table .wpt_product_table_wrapper div.tables_cart_message_box div.widget_shopping_cart_content li.woocommerce-mini-cart-item.mini_cart_item {
     border: 0 none;
     margin-bottom: 10px;
-    border-bottom: 1px solid #0fc392;
-    border-bottom: 1px solid var(--medilac-primary);
     border-radius: 0;
     padding-bottom: 5px;
     text-align: left;
@@ -370,8 +368,13 @@ h3.search_box_label {
 }
 .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.add_to_cart_button,
 .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.button,
-.wpt_product_table_wrapper .all_check_header_footer a.button.add_to_cart_all_selected {
+.wpt_product_table_wrapper .all_check_header_footer a.button.add_to_cart_all_selected,
+.wpt_product_table_wrapper .widget_shopping_cart_content p.woocommerce-mini-cart__buttons.buttons a.button.wc-forward {
     line-height: 26px;
     font-size: 16px;
     font-weight: 500;
+}
+.wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.add_to_cart_button.disabled,
+.wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.button.disabled{
+    opacity: 0.5;
 }
