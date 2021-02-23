@@ -898,7 +898,25 @@ class Product_Table extends Base{
                     Group_Control_Typography::get_type(),
                     [
                             'name' => 'wpt_button_typography',
-                            'selector' => '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.add_to_cart_button, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.button',
+                            'selector' => '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.add_to_cart_button, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.button, {{WRAPPER}} .wpt_product_table_wrapper .all_check_header_footer a.button.add_to_cart_all_selected',
+                    ]
+            );
+            
+            $this->add_responsive_control(
+                    'button_padding',
+                    [
+                            'label' => __( 'Padding', 'ultraaddons' ),
+                            'type' => Controls_Manager::DIMENSIONS,
+                            'size_units' => [ 'px', '%', 'em' ],
+                            'default' => [
+                                'left' => 15,
+                                'right' => 15,
+                                'top' => 5,
+                                'bottom' => 5,
+                            ],
+                            'selectors' => [
+                                    '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.add_to_cart_button, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.button, {{WRAPPER}} .wpt_product_table_wrapper .all_check_header_footer a.button.add_to_cart_all_selected' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                            ],
                     ]
             );
             
@@ -918,6 +936,7 @@ class Product_Table extends Base{
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.add_to_cart_button, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.button' => 'color: {{VALUE}}',
+                        '{{WRAPPER}} .wpt_product_table_wrapper .all_check_header_footer a.button.add_to_cart_all_selected' => 'color: {{VALUE}}',
                     ],
                     'default'   => '#fff',
                 ]
@@ -930,6 +949,7 @@ class Product_Table extends Base{
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.add_to_cart_button, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.button' => 'background-color: {{VALUE}}',
+                        '{{WRAPPER}} .wpt_product_table_wrapper .all_check_header_footer a.button.add_to_cart_all_selected' => 'background-color: {{VALUE}}',
                     ],
                     'default'   => '#0fc392',
                 ]
@@ -940,7 +960,7 @@ class Product_Table extends Base{
                     [
                             'name' => 'border',
                             'label' => __( 'Border', 'medilac' ),
-                            'selector' => '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table>tbody tr.wpt_row td a.add_to_cart_button, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table>tbody tr.wpt_row td a.button',
+                            'selector' => '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table>tbody tr.wpt_row td a.add_to_cart_button, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table>tbody tr.wpt_row td a.button, {{WRAPPER}} .wpt_product_table_wrapper .all_check_header_footer a.button.add_to_cart_all_selected',
                     ]
             );
             
@@ -960,6 +980,7 @@ class Product_Table extends Base{
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.add_to_cart_button:hover, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.button:hover' => 'color: {{VALUE}} !important',
+                        '{{WRAPPER}} .wpt_product_table_wrapper .all_check_header_footer a.button.add_to_cart_all_selected:hover' => 'color: {{VALUE}}',
                     ],
                     'default'   => '#0fc392',
                 ]
@@ -972,6 +993,7 @@ class Product_Table extends Base{
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.add_to_cart_button:hover, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.button:hover' => 'background-color: {{VALUE}} !important',
+                        '{{WRAPPER}} .wpt_product_table_wrapper .all_check_header_footer a.button.add_to_cart_all_selected:hover' => 'background-color: {{VALUE}}',
                     ],
                     'default'   => '#fff',
                 ]
@@ -982,7 +1004,7 @@ class Product_Table extends Base{
                     [
                             'name' => 'border_hover',
                             'label' => __( 'Border', 'medilac' ),
-                            'selector' => '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table>tbody tr.wpt_row td a.add_to_cart_button:hover, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table>tbody tr.wpt_row td a.button:hover',
+                            'selector' => '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table>tbody tr.wpt_row td a.add_to_cart_button:hover, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table>tbody tr.wpt_row td a.button:hover, {{WRAPPER}} .wpt_product_table_wrapper .all_check_header_footer a.button.add_to_cart_all_selected:hover',
                     ]
             );
             
