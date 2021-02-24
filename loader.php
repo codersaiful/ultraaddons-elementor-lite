@@ -43,7 +43,7 @@ class Loader {
     public function __construct() {
         
         //Header Footer Feature is Including Here.
-        add_action( 'init', [ $this, 'include_on_init' ] );
+        add_action( 'init', [ $this, 'core_load_on_init' ] );
         /**
          * Widget has come from Plugin/ultraaddons-elementor-lite/inc/core/widgets_array.php file
          * Controll by Widgets_Manager Object/Class
@@ -112,15 +112,16 @@ class Loader {
     }
     
     /**
-     * After AutoLoader,
-     * This method is not need
-     * Already comment out the include once link
+     * Core Class/Object init call Here.
      * 
-     * Also deactivate on init of here
+     * In Future, we can handle it by any Function
+     * and based on Condition Wise.
+     * 
+     * @since 1.0.1.1
      */
-    public function include_on_init(){
-        //include_once ULTRA_ADDONS_DIR . 'inc/core/extentions-manager.php'; //It's Called by
-        include_once ULTRA_ADDONS_DIR . 'inc/core/header-footer.php';
+    public function core_load_on_init(){
+        \UltraAddons\Core\Extensions_Manager::init();
+        \UltraAddons\Core\Header_Footer::init();
     }
 
     /**
