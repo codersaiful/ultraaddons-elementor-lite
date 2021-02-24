@@ -73,7 +73,7 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
                         <?php } ?>
                     </div>
                     <div class="ua-item-footer">
-                        <button class="primary button button-primary ua-primary ua-no-update" type="submit"><?php echo esc_html__( 'Save Change', 'ultraaddons' ); ?></button>
+                        <button class="primary button button-primary ua-primary ua-no-update" type="submit" name="submit"><?php echo esc_html__( 'Save Change', 'ultraaddons' ); ?></button>
                     </div>
                 </form>
                 
