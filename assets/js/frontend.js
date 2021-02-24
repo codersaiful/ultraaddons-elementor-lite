@@ -7,6 +7,11 @@
             return this.data( dataAttr );
     };
 
+    /**
+     * For Deleveloper Only
+     */
+    console.log(ULTRAADDONS_DATA);
+    
     $window.on( 'elementor/frontend/init', function() {
         
             var cx_settings;
@@ -100,10 +105,10 @@
             });
 
             // Slider
-            elementorFrontend.hooks.addAction(
+            EF.hooks.addAction(
                     'frontend/element_ready/ultraaddons-slider.default',
                     function ($scope) {
-                            elementorFrontend.elementsHandler.addHandler(SliderBase, {
+                            EF.elementsHandler.addHandler(SliderBase, {
                                     $element: $scope,
                                     selectors: {
                                             container: '.ua-slider-wrapper',
@@ -114,11 +119,11 @@
                     }
             );
             
-            elementorFrontend.hooks.addAction( 'frontend/element_ready/ultraaddons-slider.default', add_number_inside_bullets);
+            EF.hooks.addAction( 'frontend/element_ready/ultraaddons-slider.default', add_number_inside_bullets);
            
            
             // Cart Update in Editor Screen
-            elementorFrontend.hooks.addAction(
+            EF.hooks.addAction(
                     'frontend/element_ready/ultraaddons-cart.default',
                     function ($scope) {
                         trigger_cart_update();
@@ -126,11 +131,12 @@
             );
             
             // Cart Update in Editor Screen
-            elementorFrontend.hooks.addAction(
+            EF.hooks.addAction(
                     'frontend/element_ready/ultraaddons-product-table.default',
                     function ($scope) {
                         $('.wpt_product_table_wrapper .search_select,select.filter_select').select2();
                         trigger_cart_update();
+                        minicart_footer_load();
                     }
             );
             
@@ -180,5 +186,49 @@
         $( document.body ).trigger( 'removed_from_cart' );
 //        $( document.body ).trigger( 'wpt_minicart_load' );
     }
+    function minicart_footer_load(){
+        var footer_cart = 'always_show';
+        var footer_cart_size = '74'; 
+        var footer_possition = 'bottom_right'; 
 
+
+        $('body').append("<div class='wpt_notice_board'></div>");
+        $('body').append('<div style="height: ' + footer_cart_size + 'px;width: ' + footer_cart_size + 'px;" class="wpt-footer-cart-wrapper '+ footer_possition +' '+ footer_cart +'"><a target="_blank" href="#"></a></div>');
+
+        //$(window).trigger('wpt_minicart_now');
+
+        var minicart_type = $('div.tables_cart_message_box').attr('data-type');
+
+            $.ajax({
+                type: 'POST',
+                url: ULTRAADDONS_DATA.ajax_url,
+                data: {
+                    action: 'wpt_fragment_refresh'
+                },
+                success: function(response){
+
+//                                    setFragmentsRefresh( response );
+                    if(typeof minicart_type !== 'undefined'){
+                        var cart_hash = response.cart_hash;
+                        var fragments = response.fragments;
+                        var html = '';
+                        var supportedElement = ['div.widget_shopping_cart_content','a.cart-contents','a.footer-cart-contents'];
+                        if ( fragments && cart_hash !== '' ) {
+                            if(minicart_type === 'load'){
+                                $.each( fragments, function( key, value ) {
+                                    if('string' === typeof key && $.inArray(key, supportedElement) != -1 && typeof $( key ) === 'object') {
+                                        html += value;
+                                    }
+
+                                });
+                                $('div.tables_cart_message_box').attr('data-type','refresh');//Set
+                                $('div.tables_cart_message_box').html(html);
+                            }
+
+                        }
+
+                    }
+                }
+            });
+    }
 } (jQuery, window));
