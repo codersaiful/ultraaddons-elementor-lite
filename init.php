@@ -175,6 +175,14 @@ final class UltraAddons {
 	 */
 	public function init() {
                 /**
+                 * Mainly for check UltraAddons Installed or now.
+                 * 
+                 * If any user want to make a theme by our plugin,
+                 * He/she can check our plugin activation statys
+                 * by did_action( 'ultraaddons_init' )
+                 */
+                do_action( 'ultraaddons_init' );
+                /**
                  * Auto Loader
                  * finally activated and running now.
                  * 
