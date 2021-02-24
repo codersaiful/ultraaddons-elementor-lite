@@ -159,6 +159,7 @@ ul.ua-submenu li a {
     /*background: #ac21f2;*/
     border-bottom: 6px solid rgb(90, 42, 183);
     background: rgb(116, 57, 229);
+    text-decoration: none;
 }
 ul.ua-submenu li.ua-current-menu a {
     background: #4caf50;
