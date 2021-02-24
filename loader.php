@@ -42,6 +42,8 @@ class Loader {
 
     public function __construct() {
         
+        //Header Footer Feature is Including Here.
+        add_action( 'init', [ $this, 'include_on_init' ] );
         /**
          * Widget has come from Plugin/ultraaddons-elementor-lite/inc/core/widgets_array.php file
          * Controll by Widgets_Manager Object/Class
@@ -79,10 +81,6 @@ class Loader {
          * @access public
          */
         $this->widgetsArray = $widgetsArray;
-
-        //File Including on init
-        //Disable that init. because, These file will load by AutoLoader
-//        add_action( 'init', [ $this, 'include_on_init' ] );
              
         //Register and Including Base and common Class file
         add_action( 'elementor/widgets/widgets_registered', [ $this, 'register' ],1 );
@@ -121,8 +119,8 @@ class Loader {
      * Also deactivate on init of here
      */
     public function include_on_init(){
-        //include_once ULTRA_ADDONS_DIR . 'inc/core/extentions-manager.php';
-        //include_once ULTRA_ADDONS_DIR . 'inc/core/header_footer.php';
+        //include_once ULTRA_ADDONS_DIR . 'inc/core/extentions-manager.php'; //It's Called by
+        include_once ULTRA_ADDONS_DIR . 'inc/core/header-footer.php';
     }
 
     /**

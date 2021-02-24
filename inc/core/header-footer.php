@@ -68,7 +68,7 @@ class Header_Footer {
     }
     
     public static function add_footer() {
-//        /echo ultraaddons_elementor_display_content( self::get_footer_id() );
+        echo ultraaddons_elementor_display_content( self::get_footer_id() );
     }
     public static function show_footer( $name, $args ) {
         include ULTRA_ADDONS_DIR . 'template/footer.php';
