@@ -198,15 +198,33 @@ class Loader {
         
         
         //Naming of Args
-        $name           = 'ultraaddons-elementor-frontend';
+        $frontend_js_name           = 'ultraaddons-elementor-frontend';
         $js_file_url    = apply_filters( 'ultraaddons_elementor_frontend', ULTRA_ADDONS_ASSETS . 'js/frontend.js' );
         $dependency     =  apply_filters( 'ultraaddons_elementor_frontend_dependency', ['jquery'] );//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  = true;
         
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );     
+        wp_register_script( $frontend_js_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $frontend_js_name );     
         
+        $ajax_url = admin_url( 'admin-ajax.php' );
+       $version = ULTRA_ADDONS_VERSION;
+       $ULTRAADDONS_DATA = array( 
+           'plugin_name'        => 'UltraAddons',
+           'plugin_type'        => ultraaddons_plugin_version(),
+           'version'            => $version,
+           'active_widgets'     => $this->widgetsArray,
+           'widgets'            => Widgets_Manager::widgets(),
+           'ajaxurl'            => $ajax_url,
+           'ajax_url'           => $ajax_url,
+           'site_url'           => site_url(),
+           );
+        if( class_exists( '\WooCommerce' ) ){
+            $ULTRAADDONS_DATA['checkout_url'] = wc_get_checkout_url();
+            $ULTRAADDONS_DATA['cart_url'] = wc_get_cart_url();
+        }
+       $ULTRAADDONS_DATA = apply_filters( 'ultraaddons_localize_data', $ULTRAADDONS_DATA );
+       wp_localize_script( $frontend_js_name, 'ULTRAADDONS_DATA', $ULTRAADDONS_DATA );
     }
     
     /**
