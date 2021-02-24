@@ -114,8 +114,11 @@ h1.ultraaddons-color-heading {
 }
 smal.ultraaddons-version-in-title {
     font-weight: 100;
-    color: #691fe1;
-    font-size: 70%;
+    color: #ffffff;
+    font-size: 50%;
+    background: #4caf50;
+    padding: 0 4px;
+    border-radius: 3px;
 }
 p.ultraaddons-info {
     font-size: 22px;
