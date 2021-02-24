@@ -160,7 +160,7 @@ div.wpt-footer-cart-wrapper>a:after {
 
 .ua-element-product-table .wpt_product_table_wrapper div.tables_cart_message_box a.cart-contents span.amount {
     color: #16ecb2;
-    background: #021429;
+    background: rgb(0 0 0 / 45%);
     padding: 12px;
     height: 100%;
 }
