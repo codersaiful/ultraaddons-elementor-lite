@@ -219,4 +219,4 @@ class Header_Footer {
     }
 }
 
-Header_Footer::init();
+//Header_Footer::init();
