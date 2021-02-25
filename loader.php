@@ -102,11 +102,14 @@ class Loader {
          * 
          * @since 1.0.2.0
          */
-        add_action( 'admin_enqueue_scripts', [ $this, 'both_enqueue_scripts' ] );
-        add_action( 'wp_enqueue_scripts', [ $this, 'both_enqueue_scripts' ] );
+        add_action( 'admin_enqueue_scripts', [ $this, 'icon_enqueue_scripts' ] );
+        add_action( 'wp_enqueue_scripts', [ $this, 'icon_enqueue_scripts' ] );
 
         //For Editor Screen
         add_action('elementor/editor/before_enqueue_scripts', [ $this, 'elementor_screen_style' ]);
+        
+        //Mainly UltraAddons Icons font need to load in Elementor Screen.
+        add_action('elementor/editor/before_enqueue_scripts', [ $this, 'icon_enqueue_scripts' ]);
         
     }
 
@@ -182,16 +185,16 @@ class Loader {
      * BackEnd
      * 
      * ***************************
-     *         add_action( 'admin_enqueue_scripts', [ $this, 'both_enqueue_scripts' ] );
-     *         add_action( 'wp_enqueue_scripts', [ $this, 'both_enqueue_scripts' ] );
+     *         add_action( 'admin_enqueue_scripts', [ $this, 'icon_enqueue_scripts' ] );
+     *         add_action( 'wp_enqueue_scripts', [ $this, 'icon_enqueue_scripts' ] );
      *         CALLED in constructor
      * ***************************
      * 
      * @since 1.0.2.0
      * @author Saiful
      */
-    public function both_enqueue_scripts(){
-        
+    public function icon_enqueue_scripts( $hook_suffix ){
+        //var_dump($hook_suffix);
         /**
          * UltrAddons font added
          * Enqueue here ultraaddons-icon font
@@ -200,10 +203,7 @@ class Loader {
 
         $handle = 'ultraaddons-icon-font';
         $src = ULTRA_ADDONS_ASSETS . 'icons/ultraaddons/css/ultraaddons.css';
-        $deps = ['ultraaddons-widgets-style'];
-        $ver  = ULTRA_ADDONS_VERSION;
-        $media= 'all';
-        wp_register_style( $handle, $src, $deps, $ver, $media );
+        wp_register_style( $handle, $src );//, $deps, $ver, $media
         wp_enqueue_style( $handle );
     }
 

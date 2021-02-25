@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'UltraAddons';
+  font-family: 'UltraAddons Icons';
   src: url('../font/ultraaddons.eot?11338120');
   src: url('../font/ultraaddons.eot?11338120#iefix') format('embedded-opentype'),
        url('../font/ultraaddons.woff2?11338120') format('woff2'),
@@ -10,7 +10,7 @@
   font-style: normal;
 }
 @font-face {
-  font-family: 'UltraAddons';
+  font-family: 'UltraAddons Icons';
   src: url('../font/ultraaddons.eot?11338120');
   src: url('../font/ultraaddons.eot?11338120#iefix') format('embedded-opentype'),
        url('../font/ultraaddons.woff2?11338120') format('woff2'),
@@ -25,15 +25,24 @@
 /*
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
-    font-family: 'UltraAddons';
+    font-family: 'UltraAddons Icons';
     src: url('../font/ultraaddons.svg?11338120#ultraaddons') format('svg');
   }
 }
 */
  
- [class^="ua-"]:before, [class*=" ua-"]:before {
-  font-family: "UltraAddons";
-  font-style: normal;
+ [class^="uicon-"]:before, [class*=" uicon-"]:before {
+    font-family: "UltraAddons Icons";
+    display: inline-block;
+    font-size: inherit;
+    font-weight: 400;
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+/*  font-style: normal;
   font-weight: normal;
   speak: never;
  
@@ -42,35 +51,36 @@
   width: 1em;
   margin-right: .2em;
   text-align: center;
-  /* opacity: .8; */
+   opacity: .8; 
  
-  /* For safety - reset parent styles, that can break glyph codes*/
+   For safety - reset parent styles, that can break glyph codes
   font-variant: normal;
   text-transform: none;
  
-  /* fix buttons height, for twitter bootstrap */
+   fix buttons height, for twitter bootstrap 
   line-height: 1em;
  
-  /* Animation center compensation - margins should be symmetric */
-  /* remove if not needed */
+   Animation center compensation - margins should be symmetric 
+   remove if not needed 
   margin-left: .2em;
  
-  /* you can be more comfortable with increased icons size */
-  /* font-size: 120%; */
+   you can be more comfortable with increased icons size 
+   font-size: 120%; 
  
-  /* Font smoothing. That was taken from TWBS */
+   Font smoothing. That was taken from TWBS 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
  
-  /* Uncomment for 3D effect */
-  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+   Uncomment for 3D effect 
+   text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); 
+  */
 }
  
-.ua-ultraaddons:before { content: '\e800'; } /* '' */
-.ua-countdown:before { content: '\e801'; } /* '' */
-.ua-icon-box:before { content: '\e802'; } /* '' */
-.ua-price-table:before { content: '\e803'; } /* '' */
-.ua-progress-bar:before { content: '\e804'; } /* '' */
-.ua-review:before { content: '\e805'; } /* '' */
-.ua-slider:before { content: '\e806'; } /* '' */
-.ua-team-member:before { content: '\e807'; } /* '' */
+.uicon-ultraaddons:before { content: '\e800'; } /* '' */
+.uicon-countdown:before { content: '\e801'; } /* '' */
+.uicon-icon-box:before { content: '\e802'; } /* '' */
+.uicon-price-table:before { content: '\e803'; } /* '' */
+.uicon-progress-bar:before { content: '\e804'; } /* '' */
+.uicon-review:before { content: '\e805'; } /* '' */
+.uicon-slider:before { content: '\e806'; } /* '' */
+.uicon-team-member:before { content: '\e807'; } /* '' */

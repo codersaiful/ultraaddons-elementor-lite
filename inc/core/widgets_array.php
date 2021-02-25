@@ -79,7 +79,7 @@ $widgetsArray = [
     'Price_Table' => [
             'name'  => __( 'Pricing Table', 'ultraaddons' ),
             'is_free'   => true,
-            'icon'      => 'eicon-cart-light',
+            'icon'      => 'uicon-price-table',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
