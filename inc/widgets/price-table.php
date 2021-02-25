@@ -6,6 +6,7 @@ use Elementor\Core\Schemes;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
+use Elementor\Group_Control_Background;
 use Elementor\Icons_Manager;
 use Elementor\Repeater;
 
@@ -36,18 +37,6 @@ class Price_Table extends Base {
                     'lg' => __( 'Large', 'medilac' ),
                     'xl' => __( 'Extra Large', 'medilac' ),
             ];
-    }
-    
-    /**
-     * Overriding default function to add custom html class.
-     *
-     * @return string
-     */
-    public function get_html_wrapper_class() {
-        $html_class = parent::get_html_wrapper_class();
-        $html_class .= ' mc-addon';
-        $html_class .= ' ' . 'medilac-price-table-container';
-        return rtrim( $html_class );
     }
 
     /**
@@ -201,8 +190,8 @@ class Price_Table extends Base {
 				],
 			]
 		);
-
-		$this->add_control(
+                
+                $this->add_control(
 			'currency_format',
 			[
 				'label' => __( 'Currency Format', 'medilac' ),
@@ -211,6 +200,20 @@ class Price_Table extends Base {
 					'' => '1,234.56 (Default)',
 					',' => '1.234,56',
 				],
+			]
+		);
+                
+
+		$this->add_control(
+			'currency_style',
+			[
+				'label' => __( 'Currency Style', 'medilac' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'1' => __( 'Style 1', 'medilac' ),
+					'2' => __( 'Style 2', 'medilac' ),
+				],
+                                'default' => '1',
 			]
 		);
 
@@ -228,7 +231,7 @@ class Price_Table extends Base {
 		$this->add_control(
 			'original_price',
 			[
-				'label' => __( 'Original Price', 'medilac' ),
+				'label' => __( 'Sale Price', 'medilac' ),
 				'type' => Controls_Manager::NUMBER,
 				'default' => '59',
 				'condition' => [
@@ -451,6 +454,20 @@ class Price_Table extends Base {
 			]
 		);
                 
+                $this->add_control(
+			'template',
+			[
+				'label' => __( 'Style', 'medilac' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'1' => __( 'Lite', 'medilac' ),
+					'2' => __( 'Dark', 'medilac' ),
+				],
+				'default' => '1',
+                                'prefix_class' => 'pricing-table-temp-'
+			]
+		);
+                
                 $this->add_responsive_control(
                         'price_table_align',
                         [
@@ -511,6 +528,16 @@ class Price_Table extends Base {
 				'selectors' => [
 					'{{WRAPPER}} .elementor-widget-container' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
+			]
+		);
+                
+                $this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'background',
+				'label' => __( 'Background', 'medilac' ),
+				'types' => [ 'classic', 'gradient' ],
+				'selector' => '{{WRAPPER}} .elementor-widget-container',
 			]
 		);
                 
@@ -709,7 +736,6 @@ class Price_Table extends Base {
 			[
 				'label' => __( 'Color', 'medilac' ),
 				'type' => Controls_Manager::COLOR,
-                                'default' => '#5c6b79',
 				'selectors' => [
 					'{{WRAPPER}} .mc-price-table__heading' => 'color: {{VALUE}}',
 				],
@@ -757,6 +783,15 @@ class Price_Table extends Base {
 			]
 		);
                 
+                $this->add_control(
+			'heading_icon_style',
+			[
+				'label' => __( 'Icon', 'medilac' ),
+				'type' => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+                
                 $this->add_responsive_control(
                         'header_icon_size',
                         [
@@ -776,6 +811,17 @@ class Price_Table extends Base {
                                 ],
                         ]
                 );
+                
+                $this->add_control(
+			'header_icon_color',
+			[
+				'label' => __( 'Color', 'medilac' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .mc-pricing-table-icon' => 'color: {{VALUE}}',
+				],
+			]
+		);
 
 		$this->end_controls_section();
 
@@ -1005,7 +1051,7 @@ class Price_Table extends Base {
 		$this->add_control(
 			'heading_original_price_style',
 			[
-				'label' => __( 'Original Price', 'medilac' ),
+				'label' => __( 'Sale Price', 'medilac' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => [
@@ -1046,7 +1092,28 @@ class Price_Table extends Base {
 				],
 			]
 		);
-
+                
+                $this->add_responsive_control(
+			'sale_price_gap',
+			[
+				'label' => __( 'Space', 'medilac' ),
+				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 50,
+					],
+				],
+                                'default' => [
+                                        'size' => 10,
+                                        'unit' => 'px',
+                                ],
+				'selectors' => [
+					'{{WRAPPER}} span.mc-price-table__original-price' => 'margin-right: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+                
 		$this->add_control(
 			'original_price_vertical_position',
 			[
@@ -1401,7 +1468,6 @@ class Price_Table extends Base {
 			[
 				'label' => __( 'Text Color', 'medilac' ),
 				'type' => Controls_Manager::COLOR,
-				'default' => '#021429',
 				'selectors' => [
 					'{{WRAPPER}} .mc-price-table__button' => 'color: {{VALUE}};',
 				],
@@ -1712,6 +1778,7 @@ class Price_Table extends Base {
 			}
 		}
                 
+                $currency_style = isset( $settings['currency_style'] ) ? $settings['currency_style'] : false;
                 $currency_format = empty( $settings['currency_format'] ) ? '.' : $settings['currency_format'];
 		$price = explode( $currency_format, $settings['price'] );
                     $intpart = $price[0];
@@ -1791,8 +1858,11 @@ class Price_Table extends Base {
                                 <?php endif; ?>
                                 <?php $this->render_currency_symbol( $symbol, 'before' ); ?>
                                 <?php if ( '' !== $fraction ) : ?>
+                                    <?php if ( $currency_style && $currency_style == '2' ) : ?>
                                         <span class="currency-inner-wrapper"><span class="mc-price-table__integer-part"><?php echo $intpart; ?></span><span class="mc-price-table__currency_sep"><?php echo $currency_format; ?></span><span class="mc-price-table__fractional-part"><?php echo $fraction; ?></span></span>
-
+                                    <?php else : ?>
+                                        <span class="mc-price-table__integer-part"><?php echo $intpart; ?></span><span class="mc-price-table__currency_sep"><?php echo $currency_format; ?></span><span class="mc-price-table__fractional-part"><?php echo $fraction; ?></span>
+                                    <?php endif; ?>
                                 <?php else : ?>
                                             <span class="mc-price-table__integer-part"><?php echo $intpart; ?></span>
 

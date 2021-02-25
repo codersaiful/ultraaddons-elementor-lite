@@ -68,20 +68,20 @@ span.mc-price-table__period.mc-typo-excluded {
 .medilac-featured-item-ribbon-top.medilac-featured-item-ribbon-left .mc-price-table__ribbon{left: 0;top: 0;}
 .medilac-featured-item-ribbon-top.medilac-featured-item-ribbon-right .mc-price-table__ribbon{right: 0;top: 0;}
 
-.medilac-price-table-container .mc-button.mc-size-xs {
+.ua-ultraaddons-price-table .mc-button.mc-size-xs {
     padding: 4px 18px 4px 18px;
 }
-.medilac-price-table-container .mc-button.mc-size-sm {
+.ua-ultraaddons-price-table .mc-button.mc-size-sm {
     padding: 10px 25px;
 }
-.medilac-price-table-container .mc-button.mc-size-md {
+.ua-ultraaddons-price-table .mc-button.mc-size-md {
     padding: 15px 40px;
 }
-.medilac-price-table-container .mc-button.mc-size-lg {
+.ua-ultraaddons-price-table .mc-button.mc-size-lg {
     padding: 15px 46px;
     font-size: 22px;
 }
-.medilac-price-table-container .mc-button.mc-size-xl {
+.ua-ultraaddons-price-table .mc-button.mc-size-xl {
     padding: 18px 75px;
     font-size: 30px;
 }
@@ -114,4 +114,16 @@ span.currency-inner-wrapper span.mc-price-table__currency_sep {
 }
 .elementor-align-right ul.mc-price-table__features-list:before{
     margin-right: 0 !important;
+}
+
+/* Dark Theme */
+.pricing-table-temp-2 .elementor-widget-container {
+    background-color: #272727;
+}
+.pricing-table-temp-2 .mc-price-table__heading,
+.pricing-table-temp-2 span.mc-price-table__period.mc-typo-excluded,
+.pricing-table-temp-2 .mc-price-table__features-list li,
+.pricing-table-temp-2 .mc-price-table__button,
+.pricing-table-temp-2 .mc-pricing-table-icon {
+    color: #efefef;
 }
