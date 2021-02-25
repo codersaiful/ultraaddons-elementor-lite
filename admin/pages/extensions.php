@@ -4,8 +4,8 @@ use UltraAddons\Core\Extensions_Manager;
 
 defined( 'ABSPATH' ) || die();
 
-if( filter_input_array( INPUT_POST ) ){
-    $updated = filter_input_array( INPUT_POST );
+$updated = filter_input_array( INPUT_POST );
+if( $updated ){
     $update_value = false;
     if( ! empty( $updated['item'] ) ){
         $update_value = $updated['item'];
@@ -66,7 +66,7 @@ $disable_item = Extensions_Manager::disableExtensionKeys();
                         <?php } ?>
                     </div>
                     <div class="ua-widget-footer">
-                        <button class="primary button button-primary ua-primary ua-no-update" type="submit" name="submit"><?php echo esc_html__( 'Save Change', 'ultraaddons' ); ?></button>
+                        <button class="primary button button-primary ua-primary ua-no-update" type="submit" name="submit" value="submit"><?php echo esc_html__( 'Save Change', 'ultraaddons' ); ?></button>
                     </div>
                 </form>
                 
