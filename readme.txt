@@ -1,4 +1,4 @@
-=== UltraAddons Elementor Lite (Header & Footer Builder, Menu Builder, Cart Icon) ===
+=== UltraAddons Elementor Lite (Header & Footer Builder, Menu Builder, Cart Icon, Shortcode) ===
 
 Plugin Name: UltraAddons Elementor Lite
 Version: 1.0.0
@@ -13,11 +13,12 @@ Stable tag: trunk
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl.html
 
-Elementor Addons Plugin. Build your desired page just few click. Easy to use and use able for any theme and plugin. Available many filter.
+Elementor Addons Plugin. Different type Unique Element, Pre-defined block, Custom header Footer, Anywhere Elementor block by shortcode, Elementor in widget. 
 
 == Description ==
 
 *UltraAddons Elementor Lite* is a Elementor Addons Plugin and it has some Unique features and Ready made Widget. By using this plugin, You able to create a Full web site just by drag and drop.
+Build your desired page just few click. Easy to use and use able for any theme and plugin. Available many filter.
 
 Making custom header and custom footer. WooCommerce minicart anywhere. Elementor Template or Page or Section showing to anywhere of site.
 Elementor page/section show in Sidebar area. using WordPress widget.
@@ -43,9 +44,17 @@ Elementor page/section show in Sidebar area. using WordPress widget.
 - [**Advance Heading**](https://ultraaddons.com/advance-heading/) – Advance Heading.
 - [**Button**](https://ultraaddons.com/button/) – Advance Powerful Button.
 - [**Count Down timer**](https://ultraaddons.com/count-down-timer/) – Count Down timer.
-- [**Info Box**](https://ultraaddons.com/info-box/) – Info Box for making different titme service, info, content items group box.
-- [**Advance List Item**](https://ultraaddons.com/advance-list/) – Advance List Item for making different titme service, info, content items group box.
+- [**Info Box**](https://ultraaddons.com/info-box/) – Info Box for making different type service, info, content items group box.
+- [**Advance List Item**](https://ultraaddons.com/advance-list/) – Advance List Item for making different type service, info, content items group box.
+- [**Coming Soon --More Demo**](https://ultraaddons.com/) – We are working for our plugin. You can check from our Plugin's Site.
 
+**Github Contribute**
+- [**UltraAddons**](https://github.com/codersaiful/ultraaddons-elementor-lite/) – is a open source plugin. You are welcome to contribute to our plugin. We will show your name in our Contribute list.
+
+**Header & Footer**
+To change theme's default Header or Footer, Even add additional content to Header or Footer - UltraAddons has awesome feature. User able to choose any pre-build Elementor Template.
+*Step 1:* First create a template from `Dashboard->Elementor Template->Add new` and create template as page. 
+*Step 2:* go to `Dashboard->UltraAddons->Header Footer` and choose your Template from Elementor template as header. 
 
 == Frequently Asked Questions ==
 
@@ -69,9 +78,9 @@ Yes, there are lot of filter and action hook available here. You can customize f
 
 == Screenshots ==
 
-1. Count Down timer
+1. UltraAddons in Dashboard
 2. Info Box
-3. Slider
+3. Count Down timer
 4. Count down timer with background image
 5. Different type button with our Button Widget.
 6. Advance List Items with different design
