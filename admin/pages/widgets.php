@@ -4,12 +4,13 @@ use UltraAddons\Core\Widgets_Manager;
 
 defined( 'ABSPATH' ) || die();
 
-if( filter_input_array( INPUT_POST ) ){
-    $updated = filter_input_array( INPUT_POST );
-    
+$updated = filter_input_array( INPUT_POST );
+if( $updated ){
+    $update_value = false;
     if( ! empty( $updated['item'] ) ){
-        update_option( Widgets_Manager::$disabled_items_key, $updated['item'] );
+        $update_value = $updated['item'];
     }
+    update_option( Widgets_Manager::$disabled_items_key, $update_value );
 }
 
 
@@ -73,7 +74,7 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
                         <?php } ?>
                     </div>
                     <div class="ua-item-footer">
-                        <button class="primary button button-primary ua-primary ua-no-update" type="submit" name="submit"><?php echo esc_html__( 'Save Change', 'ultraaddons' ); ?></button>
+                        <button class="primary button button-primary ua-primary ua-no-update" type="submit" name="submit" value="submit"><?php echo esc_html__( 'Save Change', 'ultraaddons' ); ?></button>
                     </div>
                 </form>
                 
