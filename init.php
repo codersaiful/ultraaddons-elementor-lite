@@ -3,7 +3,7 @@
  * Plugin Name: Addons - UltraAddons Elementor Lite
  * Plugin URI: https://ultraaddons.com/
  * Description: Elementor Addons Plugin. Build your desired page just few click. Easy to use and useable for any theme and plugin. Available many filter.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: codersaiful
  * Author URI: https://profiles.wordpress.org/codersaiful/#content-plugins
  * License: GPL3+
@@ -19,7 +19,9 @@
  * #ff00b1 - light of Elementor
  * 
  * ********************************
- * 
+ * Can Used Color:
+ * #607d8b - For Elementor Screen section title background
+ * ********************************
  * 
  * UltraAddons Elementor Lite is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,7 +38,7 @@
 
 defined( 'ABSPATH' ) || die();
 
-define( 'ULTRA_ADDONS_VERSION', '1.0.0.3' );
+define( 'ULTRA_ADDONS_VERSION', '1.0.2.0' );
 define( 'ULTRA_ADDONS__FILE__', __FILE__ );
 define( 'ULTRA_ADDONS_BASE_NAME', plugin_basename( __FILE__ ) );
 define( 'ULTRA_ADDONS_DIR', plugin_dir_path( ULTRA_ADDONS__FILE__ ) );
@@ -175,6 +177,14 @@ final class UltraAddons {
 	 */
 	public function init() {
                 /**
+                 * Mainly for check UltraAddons Installed or now.
+                 * 
+                 * If any user want to make a theme by our plugin,
+                 * He/she can check our plugin activation statys
+                 * by did_action( 'ultraaddons_init' )
+                 */
+                do_action( 'ultraaddons_init' );
+                /**
                  * Auto Loader
                  * finally activated and running now.
                  * 
@@ -239,7 +249,7 @@ final class UltraAddons {
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor */
 			esc_html__( '"%1$s" requires "%2$s" to be installed and activated.', 'ultra-elementor' ),
-			'<strong>' . esc_html__( 'Ultra Elementor Addons', 'ultra-elementor' ) . '</strong>',
+			'<strong>' . esc_html__( 'UltraAddons Elementor Lite', 'ultra-elementor' ) . '</strong>',
 			'<strong>' . esc_html__( 'Elementor', 'ultra-elementor' ) . '</strong>'
 		);
 

@@ -33,7 +33,7 @@ $add_new_elementor_template = admin_url( 'edit.php?post_type=elementor_library#a
 <div class="ultraaddons-section ua-option-wrapper">
     <div class="ua-section-inside">
         <div class="ua-header">
-            <h1 class="ua-page-title"><?php echo esc_html__( 'Header & Footer Controlling', 'ultraaddons' ); ?></h1>
+            <h1 class="ua-page-title"><?php echo esc_html__( 'Header & Footer', 'ultraaddons' ); ?></h1>
         </div>
         
         <div class="ua-sectioon-content">
@@ -60,7 +60,7 @@ $add_new_elementor_template = admin_url( 'edit.php?post_type=elementor_library#a
                                    Template list is coming from Elementor Template. If you already made your header in Elementor 
                                    Template, Then Choose any one. Otherwise, 
                                    Create new 
-                                   <a href="<?php echo esc_url( $add_new_elementor_template ); ?>">
+                                   <a href="<?php echo esc_url( $add_new_elementor_template ); ?>" target="_blank">
                                        Header as Elementor Template
                                    </a>.
                                 </p>
@@ -79,11 +79,11 @@ $add_new_elementor_template = admin_url( 'edit.php?post_type=elementor_library#a
                             </select>
                             <div class="ua-form-message">
                                 <p>
-                                   Template list is coming from Elementor Template. If you already made your header in Elementor 
+                                   Template list is coming from Elementor Template. If you already made your footer in Elementor 
                                    Template, Then Choose any one. Otherwise, 
                                    Create new 
-                                   <a href="<?php echo esc_url( $add_new_elementor_template ); ?>">
-                                       Header as Elementor Template
+                                   <a href="<?php echo esc_url( $add_new_elementor_template ); ?>" target="_blank">
+                                       Footer as Elementor Template
                                    </a>.
                                 </p>
                             </div>

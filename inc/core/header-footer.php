@@ -30,8 +30,8 @@ class Header_Footer {
     public static $data = [
         'header_id' => false,
         'footer_id' =>  false,
-        'type'      => 'php', //It will php and css. In
-        'wrapper'   => 'flued',
+        'type'      => 'css', //It will php and css. among php,css,additional
+        'wrapper'   => 'box', //Default value is: box, among box and flued
     ];
 
     protected static $body_class = [];
@@ -68,7 +68,7 @@ class Header_Footer {
     }
     
     public static function add_footer() {
-//        /echo ultraaddons_elementor_display_content( self::get_footer_id() );
+        echo ultraaddons_elementor_display_content( self::get_footer_id() );
     }
     public static function show_footer( $name, $args ) {
         include ULTRA_ADDONS_DIR . 'template/footer.php';
@@ -219,4 +219,4 @@ class Header_Footer {
     }
 }
 
-Header_Footer::init();
+//Header_Footer::init();

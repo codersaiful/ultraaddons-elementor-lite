@@ -6,9 +6,11 @@ defined( 'ABSPATH' ) || die();
 
 if( filter_input_array( INPUT_POST ) ){
     $updated = filter_input_array( INPUT_POST );
+    $update_value = false;
     if( ! empty( $updated['item'] ) ){
-        update_option( Extensions_Manager::$disabled_items_key, $updated['item'] );
+        $update_value = $updated['item'];
     }
+    update_option( Extensions_Manager::$disabled_items_key, $update_value );
 }
 
 $items = Extensions_Manager::get_list();
@@ -64,7 +66,7 @@ $disable_item = Extensions_Manager::disableExtensionKeys();
                         <?php } ?>
                     </div>
                     <div class="ua-widget-footer">
-                        <button class="primary button button-primary ua-primary ua-no-update" type="submit"><?php echo esc_html__( 'Save Change', 'ultraaddons' ); ?></button>
+                        <button class="primary button button-primary ua-primary ua-no-update" type="submit" name="submit"><?php echo esc_html__( 'Save Change', 'ultraaddons' ); ?></button>
                     </div>
                 </form>
                 

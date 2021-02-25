@@ -42,6 +42,8 @@ class Loader {
 
     public function __construct() {
         
+        //Header Footer Feature is Including Here.
+        add_action( 'init', [ $this, 'core_load_on_init' ] );
         /**
          * Widget has come from Plugin/ultraaddons-elementor-lite/inc/core/widgets_array.php file
          * Controll by Widgets_Manager Object/Class
@@ -79,10 +81,6 @@ class Loader {
          * @access public
          */
         $this->widgetsArray = $widgetsArray;
-
-        //File Including on init
-        //Disable that init. because, These file will load by AutoLoader
-//        add_action( 'init', [ $this, 'include_on_init' ] );
              
         //Register and Including Base and common Class file
         add_action( 'elementor/widgets/widgets_registered', [ $this, 'register' ],1 );
@@ -114,15 +112,16 @@ class Loader {
     }
     
     /**
-     * After AutoLoader,
-     * This method is not need
-     * Already comment out the include once link
+     * Core Class/Object init call Here.
      * 
-     * Also deactivate on init of here
+     * In Future, we can handle it by any Function
+     * and based on Condition Wise.
+     * 
+     * @since 1.0.1.1
      */
-    public function include_on_init(){
-        //include_once ULTRA_ADDONS_DIR . 'inc/core/extentions-manager.php';
-        //include_once ULTRA_ADDONS_DIR . 'inc/core/header_footer.php';
+    public function core_load_on_init(){
+        \UltraAddons\Core\Extensions_Manager::init();
+        \UltraAddons\Core\Header_Footer::init();
     }
 
     /**
@@ -198,15 +197,33 @@ class Loader {
         
         
         //Naming of Args
-        $name           = 'ultraaddons-elementor-frontend';
+        $frontend_js_name           = 'ultraaddons-elementor-frontend';
         $js_file_url    = apply_filters( 'ultraaddons_elementor_frontend', ULTRA_ADDONS_ASSETS . 'js/frontend.js' );
         $dependency     =  apply_filters( 'ultraaddons_elementor_frontend_dependency', ['jquery'] );//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  = true;
         
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );     
+        wp_register_script( $frontend_js_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $frontend_js_name );     
         
+        $ajax_url = admin_url( 'admin-ajax.php' );
+       $version = ULTRA_ADDONS_VERSION;
+       $ULTRAADDONS_DATA = array( 
+           'plugin_name'        => 'UltraAddons',
+           'plugin_type'        => ultraaddons_plugin_version(),
+           'version'            => $version,
+           'active_widgets'     => $this->widgetsArray,
+           'widgets'            => Widgets_Manager::widgets(),
+           'ajaxurl'            => $ajax_url,
+           'ajax_url'           => $ajax_url,
+           'site_url'           => site_url(),
+           );
+        if( class_exists( '\WooCommerce' ) ){
+            $ULTRAADDONS_DATA['checkout_url'] = wc_get_checkout_url();
+            $ULTRAADDONS_DATA['cart_url'] = wc_get_cart_url();
+        }
+       $ULTRAADDONS_DATA = apply_filters( 'ultraaddons_localize_data', $ULTRAADDONS_DATA );
+       wp_localize_script( $frontend_js_name, 'ULTRAADDONS_DATA', $ULTRAADDONS_DATA );
     }
     
     /**

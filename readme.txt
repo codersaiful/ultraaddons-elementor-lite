@@ -1,4 +1,4 @@
-=== UltraAddons Elementor Lite ===
+=== UltraAddons Elementor Lite (Header & Footer Builder, Menu Builder, Cart Icon) ===
 
 Plugin Name: UltraAddons Elementor Lite
 Version: 1.0.0
@@ -13,16 +13,22 @@ Stable tag: trunk
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl.html
 
-Elementor Addons Plugin. Build your desired page just few click. Easy to use and useable for any theme and plugin. Available many filter.
+Elementor Addons Plugin. Build your desired page just few click. Easy to use and use able for any theme and plugin. Available many filter.
 
 == Description ==
 
-*UltraAddons Elementor Lite* has some Unique features and Ready made Widget. By using this plugin, You able to create a Full web site just by drag and drop.
+*UltraAddons Elementor Lite* is a Elementor Addons Plugin and it has some Unique features and Ready made Widget. By using this plugin, You able to create a Full web site just by drag and drop.
+
+Making custom header and custom footer. WooCommerce minicart anywhere. Elementor Template or Page or Section showing to anywhere of site.
+Elementor page/section show in Sidebar area. using WordPress widget.
 
 **Features**
 
+* Custom Header for whole site.
+* Custom Footer for whole site.
+* Elementor Page/Section/Template display in anywhere using shortcode. sample shortcode is `[UltraAddons id='123']`. Here 123 will be post ID of the Elementor Template.
 * Many Ready widget,
-* Drag and Drop
+* [**Woo Product Table**](https://wordpress.org/plugins/woo-product-table/) display anywhere with Designing and Customizing. Available Typography, Color and different style.
 * Wrapper Link for any section, column, widget.
 * Hover any animation for any section, column, widget.
 * Advance Heading/Title with customize color, Typography
