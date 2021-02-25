@@ -19,7 +19,9 @@
  * #ff00b1 - light of Elementor
  * 
  * ********************************
- * 
+ * Can Used Color:
+ * #607d8b - For Elementor Screen section title background
+ * ********************************
  * 
  * UltraAddons Elementor Lite is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
