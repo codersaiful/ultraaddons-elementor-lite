@@ -94,6 +94,16 @@ class Loader {
         //Add Style for Widgets
         add_action( 'elementor/frontend/after_enqueue_styles', [ $this, 'widget_enqueue' ] );
         add_action( 'wp_enqueue_scripts', [ $this, 'wp_enqueue_scripts' ] );
+        
+        /**
+         * For Admin and FrontEnd Enqueue 
+         * 
+         * Mainly I added our font
+         * 
+         * @since 1.0.2.0
+         */
+        add_action( 'admin_enqueue_scripts', [ $this, 'both_enqueue_scripts' ] );
+        add_action( 'wp_enqueue_scripts', [ $this, 'both_enqueue_scripts' ] );
 
         //For Editor Screen
         add_action('elementor/editor/before_enqueue_scripts', [ $this, 'elementor_screen_style' ]);
@@ -165,6 +175,39 @@ class Loader {
     }
 
     /**
+     * Adding JS or CSS file for Admin Area and Front End
+     * 
+     * Actually I have added our own font file for both
+     * Front AND
+     * BackEnd
+     * 
+     * ***************************
+     *         add_action( 'admin_enqueue_scripts', [ $this, 'both_enqueue_scripts' ] );
+     *         add_action( 'wp_enqueue_scripts', [ $this, 'both_enqueue_scripts' ] );
+     *         CALLED in constructor
+     * ***************************
+     * 
+     * @since 1.0.2.0
+     * @author Saiful
+     */
+    public function both_enqueue_scripts(){
+        
+        /**
+         * UltrAddons font added
+         * Enqueue here ultraaddons-icon font
+         * Location is: assets/icons/font
+         */
+
+        $handle = 'ultraaddons-icon-font';
+        $src = ULTRA_ADDONS_ASSETS . 'icons/ultraaddons/css/ultraaddons.css';
+        $deps = ['ultraaddons-widgets-style'];
+        $ver  = ULTRA_ADDONS_VERSION;
+        $media= 'all';
+        wp_register_style( $handle, $src, $deps, $ver, $media );
+        wp_enqueue_style( $handle );
+    }
+
+    /**
      * Elementor Widget Related 
      * All script will stay here
      * 
@@ -186,7 +229,7 @@ class Loader {
      * @date Fri 15.1.2021 at Home
      */
     public function wp_enqueue_scripts(){
-
+        
         /**
          * Common CSS file for all Widgets
          * 
