@@ -78,9 +78,9 @@ Yes, there are lot of filter and action hook available here. You can customize f
 
 == Screenshots ==
 
-1. Count Down timer
+1. UltraAddons in Dashboard
 2. Info Box
-3. Slider
+3. Count Down timer
 4. Count down timer with background image
 5. Different type button with our Button Widget.
 6. Advance List Items with different design
