@@ -45,7 +45,7 @@ class Count_Down_Timer extends Base{
 
         //For General Section
         $this->content_general_controls();
-
+        $this->content_label();
         //For Design Section Style Tab
         $this->style_design_controls();
         
@@ -70,6 +70,12 @@ class Count_Down_Timer extends Base{
         $date = $settings['date_time'];
         $date_time = date( 'm/d/Y H:i', strtotime($date) );
         
+        //Label's 
+        $days = $settings['days'];
+        $hours = $settings['hours'];
+        $minutes = $settings['minutes'];
+        $seconds = $settings['seconds'];
+        
         /**
          * Filter for Changing Date and time.
          * 
@@ -86,22 +92,22 @@ class Count_Down_Timer extends Base{
         <div class="ua-coun-down-timer <?php echo esc_attr( $unique_class ); ?>">
             <div class="single-date">
                 <span class="timer_int days">00 </span>
-                <span class="timer_label"><?php echo esc_html__( 'Days', 'ultraaddons' )?></span>
+                <span class="timer_label"><?php echo $days; ?></span>
             </div>
             <?php echo $separator; ?>
             <div class="single-date">
                 <span class="timer_int hrs">00 </span>
-                <span class="timer_label"><?php echo esc_html__( 'Hours', 'ultraaddons' )?></span>
+                <span class="timer_label"><?php echo esc_html( $hours ); ?></span>
             </div>
             <?php echo $separator; ?>
             <div class="single-date">
                 <span class="timer_int mnts">00 </span>
-                <span class="timer_label"><?php echo esc_html__( 'Minutes', 'ultraaddons' )?></span>
+                <span class="timer_label"><?php echo esc_html( $minutes ); ?></span>
             </div>
             <?php echo $separator; ?>
             <div class="single-date">
                 <span class="timer_int secs">00 </span>
-                <span class="timer_label"><?php echo esc_html__( 'Seconds', 'ultraaddons' )?></span>
+                <span class="timer_label"><?php echo esc_html( $seconds ); ?></span>
             </div>
         </div>
     </div>
@@ -109,14 +115,19 @@ class Count_Down_Timer extends Base{
     
     // Countdown for page 4
     function getTimeRemaining(endtime) {
-        if(Date.parse(endtime) < Date.parse(new Date())){
+
+        var current_time = Date.parse(new Date());
+        var finis_time = Date.parse(endtime);
+
+        if(finis_time < current_time){
             return;
         }
-        const total = Date.parse(endtime) - Date.parse(new Date());
-        const seconds = Math.floor((total / 1000) % 60);
-        const minutes = Math.floor((total / 1000 / 60) % 60);
-        const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
-        const days = Math.floor(total / (1000 * 60 * 60 * 24));
+
+        var total = finis_time - current_time;
+        var seconds = Math.floor((total / 1000) % 60);
+        var minutes = Math.floor((total / 1000 / 60) % 60);
+        var hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+        var days = Math.floor(total / (1000 * 60 * 60 * 24));
 
         return {
             total,
@@ -127,9 +138,9 @@ class Count_Down_Timer extends Base{
         };
     }
 
-    function initializeClock(id, endtime) {
+    function initializeClock(endtime) {
         try{
-//            const clock = document.getElementById('countdownsss');
+
             var clock = document.querySelector('.<?php echo esc_attr( $unique_class ); ?>');
             var daysSpan = clock.querySelector('.days');
             var hoursSpan = clock.querySelector('.hrs');
@@ -157,16 +168,81 @@ class Count_Down_Timer extends Base{
         }
     }
 
-    var deadline = new Date(Date.parse('<?php echo esc_attr( $settings['date_time'] ); ?>'));// new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000);
-//    const deadline = new Date(Date.parse('1/25/2021 10:20:00'));// new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000);
-//    console.log(deadline,new Date(Date.parse('1/25/2021 10:20:00')));
-    initializeClock('countdown', deadline);
+    var deadline = new Date(Date.parse('<?php echo esc_attr( $date_time ); ?>'));
+    initializeClock(deadline);
     </script>
           
         <?php
         
     }
     
+    protected function content_label(){
+        $this->start_controls_section(
+            'label',
+            [
+                'label'     => esc_html__( 'Label', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+        
+        
+        $this->add_control(
+            'days',
+            [
+                'label'                 => __( 'Day', 'ultraaddons' ),
+                'type'                  => Controls_Manager::TEXT,
+                'placeholder'   => __( 'eg: Days', 'ultraaddons' ),
+                'label_block'   => TRUE,
+                'dynamic'       => ['active' => true],
+                'default'       => esc_html__( 'Days', 'ultraaddons' ),
+            ]
+        );
+        
+        
+        $this->add_control(
+            'hours',
+            [
+                'label'                 => __( 'Hour', 'ultraaddons' ),
+                'type'                  => Controls_Manager::TEXT,
+                'placeholder'   => __( 'eg: Hours', 'ultraaddons' ),
+                'label_block'   => TRUE,
+                'dynamic'       => ['active' => true],
+                'default'       => esc_html__( 'Hours', 'ultraaddons' ),
+            ]
+        );
+        
+        
+        $this->add_control(
+            'minutes',
+            [
+                'label'                 => __( 'Minute', 'ultraaddons' ),
+                'type'                  => Controls_Manager::TEXT,
+                'placeholder'   => __( 'eg: Minutes', 'ultraaddons' ),
+                'label_block'   => TRUE,
+                'dynamic'       => ['active' => true],
+                'default'       => esc_html__( 'Minutes', 'ultraaddons' ),
+            ]
+        );
+        
+        
+        $this->add_control(
+            'seconds',
+            [
+                'label'                 => __( 'Second', 'ultraaddons' ),
+                'type'                  => Controls_Manager::TEXT,
+                'placeholder'   => __( 'eg: Seconds', 'ultraaddons' ),
+                'label_block'   => TRUE,
+                'dynamic'       => ['active' => true],
+                'default'       => esc_html__( 'Seconds', 'ultraaddons' ),
+            ]
+        );
+        
+               
+        
+        $this->end_controls_section();
+        
+    }
+
     /**
      * General Section for Content Controls
      * 
@@ -181,16 +257,12 @@ class Count_Down_Timer extends Base{
             ]
         );
         
-        $default_date_time = date( 'Y-m-d H:i', ( time() + ( 86400 * 16 ) ) );
+        
         $this->add_control(
             'date_time',
             [
                 'label'                 => __( 'End Date', 'ultraaddons' ),
                 'type'                  => Controls_Manager::DATE_TIME,
-                //'default'               => 'YYYY-mm-dd HH:ii',
-                ##'default'               => 'mm/dd/YYYY HH:ii',
-                'default'               => $default_date_time,//'2021-01-25 12:00',
-                'frontend_available'    => true,
             ]
         );
         
