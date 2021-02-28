@@ -56,6 +56,10 @@ class Cart extends Base{
     protected function _register_controls() {
         //For General Section
         $this->content_general_controls();
+        
+        $this->content_general_style();
+        $this->content_label_style();
+        $this->content_header_style();
 
     }
     
@@ -171,7 +175,7 @@ class Cart extends Base{
                 'see_hover',
                 [
                         'label' => __( 'Show Hover', 'ultraaddons' ),
-                        'description' => __( 'Only for Admin Screen. When user want to aply design on Cart items.', 'ultraaddons' ),
+                        'description' => __( 'Only for Admin Screen. When user want to apply design on Cart items.', 'ultraaddons' ),
                         'type' => Controls_Manager::SWITCHER,
                         'label_on' => __( 'Show', 'ultraaddons' ),
                         'label_off' => __( 'Hide', 'ultraaddons' ),
@@ -183,6 +187,327 @@ class Cart extends Base{
         
         
         $this->end_controls_section();
+    }
+    
+    /**
+     * General Style Section for Content Controls
+     * 
+     * @since 1.0.2.1
+     */
+    protected function content_general_style(){
+            $this->start_controls_section(
+                    'general_style',
+                    [
+                            'label' => __( 'General', 'ultraaddons' ),
+                            'tab' => Controls_Manager::TAB_STYLE,
+                    ]
+            );
+            
+            $this->add_responsive_control(
+                    'align',
+                    [
+                            'label' => __( 'Alignment', 'ultraaddons' ),
+                            'type' => Controls_Manager::CHOOSE,
+                            'options' => [
+                                    'left'    => [
+                                            'title' => __( 'Left', 'ultraaddons' ),
+                                            'icon' => 'eicon-text-align-left',
+                                    ],
+                                    'center' => [
+                                            'title' => __( 'Center', 'ultraaddons' ),
+                                            'icon' => 'eicon-text-align-center',
+                                    ],
+                                    'right' => [
+                                            'title' => __( 'Right', 'ultraaddons' ),
+                                            'icon' => 'eicon-text-align-right',
+                                    ]
+                            ],
+                            'prefix_class' => 'elementor%s-align-',
+                            'default' => 'center',
+                            'toggle' => false,
+                    ]
+            );
+            
+            $this->add_control(
+                    'wrapper_bg_color',
+                    [
+                            'label'     => __( 'Background', 'ultraaddons' ),
+                            'type'      => Controls_Manager::COLOR,
+                            'selectors' => [
+                                    '{{WRAPPER}} .ultraaddons-cart-wrapper ul.site-elementor-cart' => 'background-color: {{VALUE}}',
+                            ],
+                    ]
+            );
+            
+            $this->add_responsive_control(
+                    'wrapper_padding',
+                    [
+                            'label' => __( 'Padding', 'ultraaddons' ),
+                            'type' => Controls_Manager::DIMENSIONS,
+                            'size_units' => [ 'px', '%' ],
+                            'default'   => [
+                                    'top' => 5,
+                                    'bottom' => 5,
+                                    'unit' => 'px',
+                            ],
+                            'selectors' => [
+                                    '{{WRAPPER}} .ultraaddons-cart-wrapper ul.site-elementor-cart' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                            ],
+                    ]
+            );
+            
+            $this->end_controls_section();
+    }
+    
+    /**
+     * Header Label Section for Mini Cart
+     * 
+     * @since 1.0.2.1
+     */
+    protected function content_label_style(){
+            $this->start_controls_section(
+                    'label_style',
+                    [
+                            'label' => __( 'Label', 'ultraaddons' ),
+                            'tab' => Controls_Manager::TAB_STYLE,
+                    ]
+            );
+            
+            $this->add_control(
+                    'label_style_heading_1',
+                    [
+                            'label' => __( 'Label', 'ultraaddons' ),
+                            'type' => Controls_Manager::HEADING,
+                    ]
+            );
+            
+            $this->add_control(
+                    'label_color',
+                    [
+                            'label'     => __( 'Label Color', 'ultraaddons' ),
+                            'type'      => Controls_Manager::COLOR,
+                            'selectors' => [
+                                    '{{WRAPPER}} .ultraaddons-cart-wrapper ul.site-elementor-cart li.cart-text-li' => 'color: {{VALUE}}',
+                            ],
+                    ]
+            );
+            
+            $this->add_control(
+                    'label_bg_color',
+                    [
+                            'label'     => __( 'Label Background Color', 'ultraaddons' ),
+                            'type'      => Controls_Manager::COLOR,
+                            'selectors' => [
+                                    '{{WRAPPER}} .ultraaddons-cart-wrapper ul.site-elementor-cart li.cart-text-li' => 'background-color: {{VALUE}}',
+                            ],
+                    ]
+            );
+            
+            $this->add_group_control(
+                    Group_Control_Typography::get_type(),
+                    [
+                            'name' => 'label_typography',
+                            'label' => 'Typography',
+                            'selector' => '{{WRAPPER}} .ultraaddons-cart-wrapper ul.site-elementor-cart li.cart-text-li',
+                    ]
+            );
+            
+            $this->add_responsive_control(
+                    'label_padding',
+                    [
+                            'label' => __( 'Label Padding', 'ultraaddons' ),
+                            'type' => Controls_Manager::DIMENSIONS,
+                            'size_units' => [ 'px', '%' ],
+                            'default'   => [
+                                    'left' => 5,
+                                    'right' => 5,
+                                    'unit' => 'px',
+                            ],
+                            'selectors' => [
+                                    '{{WRAPPER}} .ultraaddons-cart-wrapper ul.site-elementor-cart li.cart-text-li' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                            ],
+                    ]
+            );
+            
+            $this->add_control(
+                    'label_style_heading_2',
+                    [
+                            'label' => __( 'Price', 'ultraaddons' ),
+                            'type' => Controls_Manager::HEADING,
+                            'separator' => 'before',
+                    ]
+            );
+            
+            $this->add_control(
+                    'price_color',
+                    [
+                            'label'     => __( 'Price Color', 'ultraaddons' ),
+                            'type'      => Controls_Manager::COLOR,
+                            'selectors' => [
+                                    '{{WRAPPER}} .ultraaddons-cart-wrapper .site-elementor-cart li.cart-link-li span.woocommerce-Price-amount.amount' => 'color: {{VALUE}}',
+                            ],
+                    ]
+            );
+            
+            $this->add_control(
+                    'price_bg_color',
+                    [
+                            'label'     => __( 'Price Background Color', 'ultraaddons' ),
+                            'type'      => Controls_Manager::COLOR,
+                            'selectors' => [
+                                    '{{WRAPPER}} .ultraaddons-cart-wrapper .site-elementor-cart li.cart-link-li span.woocommerce-Price-amount.amount' => 'background-color: {{VALUE}}',
+                            ],
+                    ]
+            );
+            
+            $this->add_group_control(
+                    Group_Control_Typography::get_type(),
+                    [
+                            'name' => 'price_typography',
+                            'label' => 'Typography',
+                            'selector' => '{{WRAPPER}} .ultraaddons-cart-wrapper .site-elementor-cart li.cart-link-li span.woocommerce-Price-amount.amount',
+                    ]
+            );
+            
+            $this->add_responsive_control(
+                    'price_padding',
+                    [
+                            'label' => __( 'Price Padding', 'ultraaddons' ),
+                            'type' => Controls_Manager::DIMENSIONS,
+                            'size_units' => [ 'px', '%' ],
+                            'default'   => [
+                                    'left' => 5,
+                                    'right' => 5,
+                                    'unit' => 'px',
+                            ],
+                            'selectors' => [
+                                    '{{WRAPPER}} .ultraaddons-cart-wrapper .site-elementor-cart li.cart-link-li span.woocommerce-Price-amount.amount' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                            ],
+                    ]
+            );
+            
+            $this->add_control(
+                    'label_style_heading_3',
+                    [
+                            'label' => __( 'Quantity', 'ultraaddons' ),
+                            'type' => Controls_Manager::HEADING,
+                            'separator' => 'before',
+                    ]
+            );
+            
+            $this->add_control(
+                    'qty_color',
+                    [
+                            'label'     => __( 'Quantity Color', 'ultraaddons' ),
+                            'type'      => Controls_Manager::COLOR,
+                            'selectors' => [
+                                    '{{WRAPPER}} .ultraaddons-cart-wrapper .site-elementor-cart li.cart-link-li span.count' => 'color: {{VALUE}}',
+                            ],
+                    ]
+            );
+            
+            $this->add_control(
+                    'qty_bg_color',
+                    [
+                            'label'     => __( 'Quantity Background Color', 'ultraaddons' ),
+                            'type'      => Controls_Manager::COLOR,
+                            'selectors' => [
+                                    '{{WRAPPER}} .ultraaddons-cart-wrapper .site-elementor-cart li.cart-link-li span.count' => 'background-color: {{VALUE}}',
+                            ],
+                    ]
+            );
+            
+            $this->add_group_control(
+                    Group_Control_Typography::get_type(),
+                    [
+                            'name' => 'qty_typography',
+                            'label' => 'Typography',
+                            'selector' => '{{WRAPPER}} .ultraaddons-cart-wrapper .site-elementor-cart li.cart-link-li span.count',
+                    ]
+            );
+            
+            $this->add_responsive_control(
+                    'qty_padding',
+                    [
+                            'label' => __( 'Quantity Padding', 'ultraaddons' ),
+                            'type' => Controls_Manager::DIMENSIONS,
+                            'size_units' => [ 'px', '%' ],
+                            'default'   => [
+                                    'left' => 5,
+                                    'right' => 5,
+                                    'unit' => 'px',
+                            ],
+                            'selectors' => [
+                                    '{{WRAPPER}} .ultraaddons-cart-wrapper .site-elementor-cart li.cart-link-li span.count' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                            ],
+                    ]
+            );
+            
+            $this->end_controls_section();
+            
+    }
+    
+    /**
+     * Header Style Section for Mini Cart
+     * 
+     * @since 1.0.2.1
+     */
+    protected function content_header_style(){
+            $this->start_controls_section(
+                    'header_style',
+                    [
+                            'label' => __( 'Header', 'ultraaddons' ),
+                            'tab' => Controls_Manager::TAB_STYLE,
+                    ]
+            );
+            
+            $this->add_responsive_control(
+                    'cart_title_align',
+                    [
+                            'label' => __( 'Alignment', 'ultraaddons' ),
+                            'type' => Controls_Manager::CHOOSE,
+                            'options' => [
+                                    'left'    => [
+                                            'title' => __( 'Left', 'ultraaddons' ),
+                                            'icon' => 'eicon-text-align-left',
+                                    ],
+                                    'center' => [
+                                            'title' => __( 'Center', 'ultraaddons' ),
+                                            'icon' => 'eicon-text-align-center',
+                                    ],
+                                    'right' => [
+                                            'title' => __( 'Right', 'ultraaddons' ),
+                                            'icon' => 'eicon-text-align-right',
+                                    ]
+                            ],
+                            'prefix_class' => 'cart-title-align-',
+                            'default' => 'center',
+                            'toggle' => false,
+                    ]
+            );
+            
+            $this->add_control(
+                    'title_color',
+                    [
+                            'label'     => __( 'Color', 'ultraaddons' ),
+                            'type'      => Controls_Manager::COLOR,
+                            'selectors' => [
+                                    '{{WRAPPER}} .widget_shopping_cart h2.widgettitle' => 'color: {{VALUE}}',
+                            ],
+                    ]
+            );
+            
+            $this->add_group_control(
+                    Group_Control_Typography::get_type(),
+                    [
+                            'name' => 'title_typography',
+                            'label' => 'Typography',
+                            'selector' => '{{WRAPPER}} .widget_shopping_cart h2.widgettitle',
+                    ]
+            );
+            
+            $this->end_controls_section();
+            
     }
     
     
