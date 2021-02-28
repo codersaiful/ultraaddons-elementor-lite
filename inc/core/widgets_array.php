@@ -51,7 +51,7 @@ $widgetsArray = [
     'Count_Down_Timer' => [
             'name'  => __( 'Count Down Timer', 'ultraaddons' ),
             'is_free'   => true,
-            'icon'      => 'eicon-countdown',
+            'icon'      => 'uicon-countdown',//eicon-countdown
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],

@@ -38,14 +38,14 @@
 
 defined( 'ABSPATH' ) || die();
 
-define( 'ULTRA_ADDONS_VERSION', '1.0.2.0' );
+define( 'ULTRA_ADDONS_VERSION', '1.0.2.1' );
 define( 'ULTRA_ADDONS__FILE__', __FILE__ );
 define( 'ULTRA_ADDONS_BASE_NAME', plugin_basename( __FILE__ ) );
 define( 'ULTRA_ADDONS_DIR', plugin_dir_path( ULTRA_ADDONS__FILE__ ) );
 define( 'ULTRA_ADDONS_URL', plugin_dir_url( ULTRA_ADDONS__FILE__ ) );
 define( 'ULTRA_ADDONS_ASSETS', trailingslashit( ULTRA_ADDONS_URL . 'assets' ) );
 
-define( 'ULTRA_ADDONS_WIDGET_HELP_ULR', trailingslashit( 'https://example.com/widgets/' ) );
+define( 'ULTRA_ADDONS_WIDGET_HELP_ULR', trailingslashit( 'https://ultraaddons.com/widgets/' ) );
 
 define( 'ULTRA_ADDONS_MINIMUM_ELEMENTOR_VERSION', '2.5.0' );
 define( 'ULTRA_ADDONS_MINIMUM_PHP_VERSION', '5.4' );
@@ -248,9 +248,9 @@ final class UltraAddons {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor */
-			esc_html__( '"%1$s" requires "%2$s" to be installed and activated.', 'ultra-elementor' ),
-			'<strong>' . esc_html__( 'UltraAddons Elementor Lite', 'ultra-elementor' ) . '</strong>',
-			'<strong>' . esc_html__( 'Elementor', 'ultra-elementor' ) . '</strong>'
+			esc_html__( '"%1$s" requires "%2$s" to be installed and activated.', 'ultraaddons' ),
+			'<strong>' . esc_html__( 'UltraAddons Elementor Lite', 'ultraaddons' ) . '</strong>',
+			'<strong>' . esc_html__( 'Elementor', 'ultraaddons' ) . '</strong>'
 		);
 
 		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message );
@@ -272,9 +272,9 @@ final class UltraAddons {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor 3: Required Elementor version */
-			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'ultra-elementor' ),
-			'<strong>' . esc_html__( 'Ultra Elementor Addons', 'ultra-elementor' ) . '</strong>',
-			'<strong>' . esc_html__( 'Elementor', 'ultra-elementor' ) . '</strong>',
+			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'ultraaddons' ),
+			'<strong>' . esc_html__( 'UltraAddons Elementor Lite', 'ultraaddons' ) . '</strong>',
+			'<strong>' . esc_html__( 'Elementor', 'ultraaddons' ) . '</strong>',
 			 self::MINIMUM_ELEMENTOR_VERSION
 		);
 
@@ -297,9 +297,9 @@ final class UltraAddons {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: PHP 3: Required PHP version */
-			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'ultra-elementor' ),
-			'<strong>' . esc_html__( 'Ultra Elementor Addons', 'ultra-elementor' ) . '</strong>',
-			'<strong>' . esc_html__( 'PHP', 'ultra-elementor' ) . '</strong>',
+			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'ultraaddons' ),
+			'<strong>' . esc_html__( 'UltraAddons Elementor Lite', 'ultraaddons' ) . '</strong>',
+			'<strong>' . esc_html__( 'PHP', 'ultraaddons' ) . '</strong>',
 			 self::MINIMUM_PHP_VERSION
 		);
 

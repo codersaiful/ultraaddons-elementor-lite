@@ -91,6 +91,11 @@ Yes, there are lot of filter and action hook available here. You can customize f
 
 == Change log ==
 
+= 1.0.2 =
+
+* [Added]: Price Table Widget.
+* [Fixed]: Widget On/Off issue fixed.
+
 = 1.0.1 =
 
 * [Added]: New widget for Woo Product Table
