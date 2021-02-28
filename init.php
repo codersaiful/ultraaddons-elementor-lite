@@ -45,7 +45,7 @@ define( 'ULTRA_ADDONS_DIR', plugin_dir_path( ULTRA_ADDONS__FILE__ ) );
 define( 'ULTRA_ADDONS_URL', plugin_dir_url( ULTRA_ADDONS__FILE__ ) );
 define( 'ULTRA_ADDONS_ASSETS', trailingslashit( ULTRA_ADDONS_URL . 'assets' ) );
 
-define( 'ULTRA_ADDONS_WIDGET_HELP_ULR', trailingslashit( 'https://example.com/widgets/' ) );
+define( 'ULTRA_ADDONS_WIDGET_HELP_ULR', trailingslashit( 'https://ultraaddons.com/widgets/' ) );
 
 define( 'ULTRA_ADDONS_MINIMUM_ELEMENTOR_VERSION', '2.5.0' );
 define( 'ULTRA_ADDONS_MINIMUM_PHP_VERSION', '5.4' );
