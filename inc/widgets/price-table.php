@@ -40,7 +40,7 @@ class Price_Table extends Base {
     }
 
     /**
-     * Register oEmbed widget controls.
+     * Register widget controls.
      *
      * Adds different input fields to allow the user to change and customize the widget settings.
      *
