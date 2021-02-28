@@ -135,6 +135,7 @@ class Loader {
     public function core_load_on_init(){
         \UltraAddons\Core\Extensions_Manager::init();
         \UltraAddons\Core\Header_Footer::init();
+        \UltraAddons\Core\Icons_Manager::init();
     }
 
     /**
@@ -361,7 +362,7 @@ class Loader {
         $elements_manager->add_category('ultraaddons', 
                 [
                     'title'     => __( 'Addons - UltraAddons', 'ultraaddons' ), 
-                    'icon'      => 'fa fa-chat'
+                    'icon'      => 'uicon-ultraaddons'
                 ]
         );
     }
