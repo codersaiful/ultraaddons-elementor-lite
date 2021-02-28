@@ -296,7 +296,7 @@ h2.ua-item-name {
 }
 
 .ua-option-item-wrappper label.ua-option-item.More .ua-designed-checkbox {
-    background: #f06c99;
+    /*background: #f06c99;*/
 }
 
 .ua-option-item-wrappper label.ua-option-item.More span.ua-option-version-type.ua-option-version-type-pro {
@@ -454,3 +454,13 @@ input.ua-hf-type-radio[type=radio]:checked::before {
 }
 .field-container-size{display: none;}
 /**** Header Footer Form | END****/
+
+label.ua-option-item i.ua-option-icon.uicon-ultraaddons:before{
+    -webkit-animation:ua-spin 2s linear infinite;
+    -moz-animation:ua-spin 2s linear infinite;
+    animation:ua-spin 2s linear infinite;
+}
+
+@-moz-keyframes ua-spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes ua-spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes ua-spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }

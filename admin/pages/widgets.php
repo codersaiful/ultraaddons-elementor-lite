@@ -18,7 +18,7 @@ $items = Widgets_Manager::widgets();
 $items['More'] = [
             'name'      => __( 'More Widget Comming Soon ....', 'ultraaddons' ),
             'is_free'   => false,
-            'icon'      => 'eicon-global-colors',
+            'icon'      => 'uicon-ultraaddons',//eicon-global-colors
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
