@@ -3,7 +3,7 @@
 /*.ultraaddons-color-heading,*/
 p.ultraaddons-info,
 table.wp-list-table.widefat.plugins tr[data-slug='ultraaddons-elementor-lite'] td.plugin-title.column-primary strong,
-#elementor-panel-category-addons-ultra-elementor .elementor-panel-category-title{
+#elementor-panel-category-addons-ultraaddons .elementor-panel-category-title{
     color: #db3157;
     background: linear-gradient(to right, #532d70 0%, #db3157 45%);
     background: -webkit-linear-gradient(to right, #532d70 4%, #db3157 58%);
@@ -11,7 +11,7 @@ table.wp-list-table.widefat.plugins tr[data-slug='ultraaddons-elementor-lite'] t
     -webkit-text-fill-color: transparent;
     /*transition: 10s all;*/
     animation-name: ultraaddons-background-animation !important;
-    animation-duration: 5.5s; 
+    animation-duration: 2.5s; 
     animation-timing-function: ease-out; 
     animation-delay: 0;
     animation-direction: alternate;
@@ -22,7 +22,7 @@ table.wp-list-table.widefat.plugins tr[data-slug='ultraaddons-elementor-lite'] t
 /*.ultraaddons-color-heading:hover,*/
 p.ultraaddons-info:hover,
 table.wp-list-table.widefat.plugins tr[data-slug='ultraaddons-elementor-lite']:hover td.plugin-title.column-primary strong,
-#elementor-panel-category-addons-ultra-elementor:hover .elementor-panel-category-title {
+#elementor-panel-category-addons-ultraaddons:hover .elementor-panel-category-title {
     background: linear-gradient(to right, #ff0039 0%,#411365 45%);
     background: -webkit-linear-gradient(to right, #ff0039 0%,#411365 100%, #ff0039 68%);
     /*#411365*/
@@ -45,6 +45,32 @@ table.wp-list-table.widefat.plugins tr[data-slug='ultraaddons-elementor-lite']:h
   }
 }
 /*********** UltraAddons Style - In Plugin List | End Here ****************/
+/*****UltraAddons Menu item in Dashboard********/
+#adminmenu li.menu-top a.wp-has-submenu.wp-not-current-submenu.menu-top.toplevel_page_ultraaddons-elementor-light.menu-top-last {
+    background: linear-gradient( 0deg, #673ab740, #0000002e);
+    background: -webkit-linear-gradient( 0deg, #673ab740, #0000002e);
+/*    border-top: 1px solid #ffffff29;
+    border-bottom: 1px solid black;*/
+/*    animation-name: ultraaddons-menu-bg-animation !important;
+    animation-duration: 1.05s; 
+    animation-timing-function: ease-out; 
+    animation-delay: 0;
+    animation-direction: forwards;
+    animation-iteration-count: infinite;
+    animation-fill-mode: none;
+    animation-play-state: running;*/
+}
+/*@keyframes ultraaddons-menu-bg-animation {
+  0% {
+        background: linear-gradient( 0deg, #673ab740, #e91e6391);
+        background: -webkit-linear-gradient( 0deg, #673ab740, #e91e6391);
+  }
+  100% {
+        background: linear-gradient( 360deg, #673ab740, #e91e6391);
+        background: -webkit-linear-gradient( 360deg, #673ab740, #e91e6391);
+  }
+}*/
+/*****UltraAddons Menu item in Dashboard | END********/
 
 /****************** Menu Text in Dashboard **********************/
 li#toplevel_page_ultraaddons-elementor-light .wp-menu-image img {

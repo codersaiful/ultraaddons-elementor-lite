@@ -248,9 +248,9 @@ final class UltraAddons {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor */
-			esc_html__( '"%1$s" requires "%2$s" to be installed and activated.', 'ultra-elementor' ),
-			'<strong>' . esc_html__( 'UltraAddons Elementor Lite', 'ultra-elementor' ) . '</strong>',
-			'<strong>' . esc_html__( 'Elementor', 'ultra-elementor' ) . '</strong>'
+			esc_html__( '"%1$s" requires "%2$s" to be installed and activated.', 'ultraaddons' ),
+			'<strong>' . esc_html__( 'UltraAddons Elementor Lite', 'ultraaddons' ) . '</strong>',
+			'<strong>' . esc_html__( 'Elementor', 'ultraaddons' ) . '</strong>'
 		);
 
 		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message );
@@ -272,9 +272,9 @@ final class UltraAddons {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor 3: Required Elementor version */
-			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'ultra-elementor' ),
-			'<strong>' . esc_html__( 'Ultra Elementor Addons', 'ultra-elementor' ) . '</strong>',
-			'<strong>' . esc_html__( 'Elementor', 'ultra-elementor' ) . '</strong>',
+			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'ultraaddons' ),
+			'<strong>' . esc_html__( 'UltraAddons Elementor Lite', 'ultraaddons' ) . '</strong>',
+			'<strong>' . esc_html__( 'Elementor', 'ultraaddons' ) . '</strong>',
 			 self::MINIMUM_ELEMENTOR_VERSION
 		);
 
@@ -297,9 +297,9 @@ final class UltraAddons {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: PHP 3: Required PHP version */
-			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'ultra-elementor' ),
-			'<strong>' . esc_html__( 'Ultra Elementor Addons', 'ultra-elementor' ) . '</strong>',
-			'<strong>' . esc_html__( 'PHP', 'ultra-elementor' ) . '</strong>',
+			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'ultraaddons' ),
+			'<strong>' . esc_html__( 'UltraAddons Elementor Lite', 'ultraaddons' ) . '</strong>',
+			'<strong>' . esc_html__( 'PHP', 'ultraaddons' ) . '</strong>',
 			 self::MINIMUM_PHP_VERSION
 		);
 
