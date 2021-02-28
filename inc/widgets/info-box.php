@@ -533,9 +533,9 @@ class Info_Box extends Base {
                     [
                             'label' => __( 'Spacing', 'ultraaddons' ),
                             'type' => Controls_Manager::SLIDER,
-                            'default' => [
-                                    'size' => 15,
-                            ],
+//                            'default' => [
+//                                    'size' => 15,
+//                            ],
                             'range' => [
                                     'px' => [
                                             'min' => 0,
@@ -562,9 +562,9 @@ class Info_Box extends Base {
                                             'max' => 300,
                                     ],
                             ],
-                            'default' => [
-                                    'size' => 30,
-                            ],
+//                            'default' => [
+//                                    'size' => 30,
+//                            ],
                             'selectors' => [
                                     '{{WRAPPER}}:hover .elementor-icon' => 'font-size: {{SIZE}}{{UNIT}};',
                             ],
@@ -596,10 +596,10 @@ class Info_Box extends Base {
                     [
                             'label' => __( 'Rotate', 'ultraaddons' ),
                             'type' => Controls_Manager::SLIDER,
-                            'default' => [
-                                    'size' => 0,
-                                    'unit' => 'deg',
-                            ],
+//                            'default' => [
+//                                    'size' => 0,
+//                                    'unit' => 'deg',
+//                            ],
                             'selectors' => [
                                     '{{WRAPPER}}:hover .elementor-icon i' => 'transform: rotate({{SIZE}}{{UNIT}});',
                             ],
