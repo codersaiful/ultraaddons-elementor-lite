@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class Price_Table extends Base {
     
     public function get_keywords() {
-            return [ 'ultraaddons', 'pricing', 'table', 'product' ];
+            return [ 'ultraaddons', 'pricing', 'table', 'price', 'list', 'compare' ];
     }
     
     /**
@@ -31,11 +31,11 @@ class Price_Table extends Base {
      */
     public static function get_button_sizes() {
             return [
-                    'xs' => __( 'Extra Small', 'medilac' ),
-                    'sm' => __( 'Small', 'medilac' ),
-                    'md' => __( 'Medium', 'medilac' ),
-                    'lg' => __( 'Large', 'medilac' ),
-                    'xl' => __( 'Extra Large', 'medilac' ),
+                    'xs' => __( 'Extra Small', 'ultraaddons' ),
+                    'sm' => __( 'Small', 'ultraaddons' ),
+                    'md' => __( 'Medium', 'ultraaddons' ),
+                    'lg' => __( 'Large', 'ultraaddons' ),
+                    'xl' => __( 'Extra Large', 'ultraaddons' ),
             ];
     }
 
@@ -52,23 +52,23 @@ class Price_Table extends Base {
                 $this->start_controls_section(
 			'section_header',
 			[
-				'label' => __( 'Header', 'medilac' ),
+				'label' => __( 'Header', 'ultraaddons' ),
 			]
 		);
 
 		$this->add_control(
 			'heading',
 			[
-				'label' => __( 'Title', 'medilac' ),
+				'label' => __( 'Title', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Basic Package', 'medilac' ),
+				'default' => __( 'Basic Package', 'ultraaddons' ),
 			]
 		);
 
 		$this->add_control(
 			'sub_heading',
 			[
-				'label' => __( 'Description', 'medilac' ),
+				'label' => __( 'Description', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => '',
 			]
@@ -77,7 +77,7 @@ class Price_Table extends Base {
 		$this->add_control(
 			'heading_tag',
 			[
-				'label' => __( 'Heading Tag', 'medilac' ),
+				'label' => __( 'Heading Tag', 'ultraaddons' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'h2' => 'H2',
@@ -91,40 +91,40 @@ class Price_Table extends Base {
 		);
                 
                 $this->add_control(
-                        'mc_icon_select',
+                        'ua_icon_select',
                         [
-                                'label'     => esc_html__( 'Select Icon/Image', 'medilac' ),
+                                'label'     => esc_html__( 'Select Icon/Image', 'ultraaddons' ),
                                 'type'      => Controls_Manager::SELECT,
                                 'options'   => [
-                                        'icon'      => __( 'Icon', 'medilac' ),
-                                        'image'     => __( 'Image', 'medilac')
+                                        'icon'      => __( 'Icon', 'ultraaddons' ),
+                                        'image'     => __( 'Image', 'ultraaddons')
                                 ],
                                 'default'       => 'icon',
 
                         ]
                 );
                 $this->add_control(
-                        'mc_icon_choose',
+                        'ua_icon_choose',
                         [
-                                'label'     => __( 'Icon', 'medilac' ),
+                                'label'     => __( 'Icon', 'ultraaddons' ),
                                 'type'      => Controls_Manager::ICONS,
                                 'default'   => [
                                         'value' => 'fas fa-star',
                                         'library' => 'solid',
                                 ],
                                 'condition' => [
-                                        'mc_icon_select' => 'icon',
+                                        'ua_icon_select' => 'icon',
                                 ]
                         ]
             );
 
                 $this->add_control(
-                        'mc_image_upload',
+                        'ua_image_upload',
                         [
-                                'label'     => __( 'Select Image', 'medilac' ),
+                                'label'     => __( 'Select Image', 'ultraaddons' ),
                                 'type'      => Controls_Manager::MEDIA,
                                 'condition' => [
-                                        'mc_icon_select'    => 'image',
+                                        'ua_icon_select'    => 'image',
                                 ]
                         ]
                 );
@@ -134,35 +134,35 @@ class Price_Table extends Base {
 		$this->start_controls_section(
 			'section_pricing',
 			[
-				'label' => __( 'Pricing', 'medilac' ),
+				'label' => __( 'Pricing', 'ultraaddons' ),
 			]
 		);
 
 		$this->add_control(
 			'currency_symbol',
 			[
-				'label' => __( 'Currency Symbol', 'medilac' ),
+				'label' => __( 'Currency Symbol', 'ultraaddons' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
-					'' => __( 'None', 'medilac' ),
-					'dollar' => '&#36; ' . _x( 'Dollar', 'Currency Symbol', 'medilac' ),
-					'euro' => '&#128; ' . _x( 'Euro', 'Currency Symbol', 'medilac' ),
-					'baht' => '&#3647; ' . _x( 'Baht', 'Currency Symbol', 'medilac' ),
-					'franc' => '&#8355; ' . _x( 'Franc', 'Currency Symbol', 'medilac' ),
-					'guilder' => '&fnof; ' . _x( 'Guilder', 'Currency Symbol', 'medilac' ),
-					'krona' => 'kr ' . _x( 'Krona', 'Currency Symbol', 'medilac' ),
-					'lira' => '&#8356; ' . _x( 'Lira', 'Currency Symbol', 'medilac' ),
-					'peseta' => '&#8359 ' . _x( 'Peseta', 'Currency Symbol', 'medilac' ),
-					'peso' => '&#8369; ' . _x( 'Peso', 'Currency Symbol', 'medilac' ),
-					'pound' => '&#163; ' . _x( 'Pound Sterling', 'Currency Symbol', 'medilac' ),
-					'real' => 'R$ ' . _x( 'Real', 'Currency Symbol', 'medilac' ),
-					'ruble' => '&#8381; ' . _x( 'Ruble', 'Currency Symbol', 'medilac' ),
-					'rupee' => '&#8360; ' . _x( 'Rupee', 'Currency Symbol', 'medilac' ),
-					'indian_rupee' => '&#8377; ' . _x( 'Rupee (Indian)', 'Currency Symbol', 'medilac' ),
-					'shekel' => '&#8362; ' . _x( 'Shekel', 'Currency Symbol', 'medilac' ),
-					'yen' => '&#165; ' . _x( 'Yen/Yuan', 'Currency Symbol', 'medilac' ),
-					'won' => '&#8361; ' . _x( 'Won', 'Currency Symbol', 'medilac' ),
-					'custom' => __( 'Custom', 'medilac' ),
+					'' => __( 'None', 'ultraaddons' ),
+					'dollar' => '&#36; ' . _x( 'Dollar', 'Currency Symbol', 'ultraaddons' ),
+					'euro' => '&#128; ' . _x( 'Euro', 'Currency Symbol', 'ultraaddons' ),
+					'baht' => '&#3647; ' . _x( 'Baht', 'Currency Symbol', 'ultraaddons' ),
+					'franc' => '&#8355; ' . _x( 'Franc', 'Currency Symbol', 'ultraaddons' ),
+					'guilder' => '&fnof; ' . _x( 'Guilder', 'Currency Symbol', 'ultraaddons' ),
+					'krona' => 'kr ' . _x( 'Krona', 'Currency Symbol', 'ultraaddons' ),
+					'lira' => '&#8356; ' . _x( 'Lira', 'Currency Symbol', 'ultraaddons' ),
+					'peseta' => '&#8359 ' . _x( 'Peseta', 'Currency Symbol', 'ultraaddons' ),
+					'peso' => '&#8369; ' . _x( 'Peso', 'Currency Symbol', 'ultraaddons' ),
+					'pound' => '&#163; ' . _x( 'Pound Sterling', 'Currency Symbol', 'ultraaddons' ),
+					'real' => 'R$ ' . _x( 'Real', 'Currency Symbol', 'ultraaddons' ),
+					'ruble' => '&#8381; ' . _x( 'Ruble', 'Currency Symbol', 'ultraaddons' ),
+					'rupee' => '&#8360; ' . _x( 'Rupee', 'Currency Symbol', 'ultraaddons' ),
+					'indian_rupee' => '&#8377; ' . _x( 'Rupee (Indian)', 'Currency Symbol', 'ultraaddons' ),
+					'shekel' => '&#8362; ' . _x( 'Shekel', 'Currency Symbol', 'ultraaddons' ),
+					'yen' => '&#165; ' . _x( 'Yen/Yuan', 'Currency Symbol', 'ultraaddons' ),
+					'won' => '&#8361; ' . _x( 'Won', 'Currency Symbol', 'ultraaddons' ),
+					'custom' => __( 'Custom', 'ultraaddons' ),
 				],
 				'default' => 'dollar',
 			]
@@ -171,7 +171,7 @@ class Price_Table extends Base {
 		$this->add_control(
 			'currency_symbol_custom',
 			[
-				'label' => __( 'Custom Symbol', 'medilac' ),
+				'label' => __( 'Custom Symbol', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
 				'condition' => [
 					'currency_symbol' => 'custom',
@@ -182,7 +182,7 @@ class Price_Table extends Base {
 		$this->add_control(
 			'price',
 			[
-				'label' => __( 'Price', 'medilac' ),
+				'label' => __( 'Price', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => '39.99',
 				'dynamic' => [
@@ -194,7 +194,7 @@ class Price_Table extends Base {
                 $this->add_control(
 			'currency_format',
 			[
-				'label' => __( 'Currency Format', 'medilac' ),
+				'label' => __( 'Currency Format', 'ultraaddons' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'' => '1,234.56 (Default)',
@@ -207,11 +207,11 @@ class Price_Table extends Base {
 		$this->add_control(
 			'currency_style',
 			[
-				'label' => __( 'Currency Style', 'medilac' ),
+				'label' => __( 'Currency Style', 'ultraaddons' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
-					'1' => __( 'Style 1', 'medilac' ),
-					'2' => __( 'Style 2', 'medilac' ),
+					'1' => __( 'Style 1', 'ultraaddons' ),
+					'2' => __( 'Style 2', 'ultraaddons' ),
 				],
                                 'default' => '1',
 			]
@@ -220,10 +220,10 @@ class Price_Table extends Base {
 		$this->add_control(
 			'sale',
 			[
-				'label' => __( 'Sale', 'medilac' ),
+				'label' => __( 'Sale', 'ultraaddons' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'On', 'medilac' ),
-				'label_off' => __( 'Off', 'medilac' ),
+				'label_on' => __( 'On', 'ultraaddons' ),
+				'label_off' => __( 'Off', 'ultraaddons' ),
 				'default' => '',
 			]
 		);
@@ -231,7 +231,7 @@ class Price_Table extends Base {
 		$this->add_control(
 			'original_price',
 			[
-				'label' => __( 'Sale Price', 'medilac' ),
+				'label' => __( 'Sale Price', 'ultraaddons' ),
 				'type' => Controls_Manager::NUMBER,
 				'default' => '59',
 				'condition' => [
@@ -246,9 +246,9 @@ class Price_Table extends Base {
 		$this->add_control(
 			'period',
 			[
-				'label' => __( 'Period', 'medilac' ),
+				'label' => __( 'Period', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( '/mon', 'medilac' ),
+				'default' => __( '/mon', 'ultraaddons' ),
 			]
 		);
 
@@ -257,7 +257,7 @@ class Price_Table extends Base {
 		$this->start_controls_section(
 			'section_features',
 			[
-				'label' => __( 'Features', 'medilac' ),
+				'label' => __( 'Features', 'ultraaddons' ),
 			]
 		);
 
@@ -266,9 +266,9 @@ class Price_Table extends Base {
 		$repeater->add_control(
 			'item_text',
 			[
-				'label' => __( 'Text', 'medilac' ),
+				'label' => __( 'Text', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'List Item', 'medilac' ),
+				'default' => __( 'List Item', 'ultraaddons' ),
 			]
 		);
 
@@ -280,7 +280,7 @@ class Price_Table extends Base {
 		$repeater->add_control(
 			'selected_item_icon',
 			[
-				'label' => __( 'Icon', 'medilac' ),
+				'label' => __( 'Icon', 'ultraaddons' ),
 				'type' => Controls_Manager::ICONS,
 				'fa4compatibility' => 'item_icon',
 				'default' => $default_icon,
@@ -290,7 +290,7 @@ class Price_Table extends Base {
 		$repeater->add_control(
 			'item_icon_color',
 			[
-				'label' => __( 'Icon Color', 'medilac' ),
+				'label' => __( 'Icon Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}} i' => 'color: {{VALUE}}',
@@ -306,15 +306,15 @@ class Price_Table extends Base {
 				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
-						'item_text' => __( 'List Item #1', 'medilac' ),
+						'item_text' => __( 'List Item #1', 'ultraaddons' ),
 						'selected_item_icon' => $default_icon,
 					],
 					[
-						'item_text' => __( 'List Item #2', 'medilac' ),
+						'item_text' => __( 'List Item #2', 'ultraaddons' ),
 						'selected_item_icon' => $default_icon,
 					],
 					[
-						'item_text' => __( 'List Item #3', 'medilac' ),
+						'item_text' => __( 'List Item #3', 'ultraaddons' ),
 						'selected_item_icon' => $default_icon,
 					],
 				],
@@ -327,25 +327,25 @@ class Price_Table extends Base {
 		$this->start_controls_section(
 			'section_footer',
 			[
-				'label' => __( 'Footer', 'medilac' ),
+				'label' => __( 'Footer', 'ultraaddons' ),
 			]
 		);
 
 		$this->add_control(
 			'button_text',
 			[
-				'label' => __( 'Button Text', 'medilac' ),
+				'label' => __( 'Button Text', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Click Here', 'medilac' ),
+				'default' => __( 'Click Here', 'ultraaddons' ),
 			]
 		);
 
 		$this->add_control(
 			'link',
 			[
-				'label' => __( 'Link', 'medilac' ),
+				'label' => __( 'Link', 'ultraaddons' ),
 				'type' => Controls_Manager::URL,
-				'placeholder' => __( 'https://your-link.com', 'medilac' ),
+				'placeholder' => __( 'https://your-link.com', 'ultraaddons' ),
 				'default' => [
 					'url' => '#',
 				],
@@ -358,7 +358,7 @@ class Price_Table extends Base {
 		$this->add_control(
 			'footer_additional_info',
 			[
-				'label' => __( 'Additional Info', 'medilac' ),
+				'label' => __( 'Additional Info', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'default' => '',
 				'rows' => 3,
@@ -370,14 +370,14 @@ class Price_Table extends Base {
 		$this->start_controls_section(
 			'section_ribbon',
 			[
-				'label' => __( 'Ribbon', 'medilac' ),
+				'label' => __( 'Ribbon', 'ultraaddons' ),
 			]
 		);
 
 		$this->add_control(
 			'show_ribbon',
 			[
-				'label' => __( 'Show', 'medilac' ),
+				'label' => __( 'Show', 'ultraaddons' ),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => 'no',
 				'separator' => 'before',
@@ -387,9 +387,9 @@ class Price_Table extends Base {
 		$this->add_control(
 			'ribbon_title',
 			[
-				'label' => __( 'Title', 'medilac' ),
+				'label' => __( 'Title', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Popular', 'medilac' ),
+				'default' => __( 'Popular', 'ultraaddons' ),
 				'condition' => [
 					'show_ribbon' => 'yes',
 				],
@@ -399,22 +399,22 @@ class Price_Table extends Base {
 		$this->add_control(
 			'ribbon_x_position',
 			[
-				'label' => __( 'Position X', 'medilac' ),
+				'label' => __( 'Position X', 'ultraaddons' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => __( 'Left', 'medilac' ),
+						'title' => __( 'Left', 'ultraaddons' ),
 						'icon' => 'eicon-h-align-left',
 					],
 					'right' => [
-						'title' => __( 'Right', 'medilac' ),
+						'title' => __( 'Right', 'ultraaddons' ),
 						'icon' => 'eicon-h-align-right',
 					],
 				],
 				'condition' => [
 					'show_ribbon' => 'yes',
 				],
-                                'prefix_class' => 'medilac-featured-item medilac-featured-item-ribbon-',
+                                'prefix_class' => 'ultraaddons-featured-item ultraaddons-featured-item-ribbon-',
                                 
                                 'default' => 'left',
 			]
@@ -422,22 +422,22 @@ class Price_Table extends Base {
 		$this->add_control(
 			'ribbon_y_position',
 			[
-				'label' => __( 'Position Y', 'medilac' ),
+				'label' => __( 'Position Y', 'ultraaddons' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'top' => [
-						'title' => __( 'Top', 'medilac' ),
+						'title' => __( 'Top', 'ultraaddons' ),
 						'icon' => 'eicon-v-align-top',
 					],
 					'bottom' => [
-						'title' => __( 'Bottom', 'medilac' ),
+						'title' => __( 'Bottom', 'ultraaddons' ),
 						'icon' => 'eicon-v-align-bottom',
 					],
 				],
 				'condition' => [
 					'show_ribbon' => 'yes',
 				],
-                                'prefix_class' => 'medilac-featured-item medilac-featured-item-ribbon-',
+                                'prefix_class' => 'ultraaddons-featured-item ultraaddons-featured-item-ribbon-',
                                 
                                 'default' => 'top',
 			]
@@ -448,42 +448,42 @@ class Price_Table extends Base {
                 $this->start_controls_section(
 			'section_header_general_style',
 			[
-				'label' => __( 'General', 'medilac' ),
+				'label' => __( 'General', 'ultraaddons' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 			]
 		);
                 
-                $this->add_control(
-			'template',
-			[
-				'label' => __( 'Style', 'medilac' ),
-				'type' => Controls_Manager::SELECT,
-				'options' => [
-					'1' => __( 'Lite', 'medilac' ),
-					'2' => __( 'Dark', 'medilac' ),
-				],
-				'default' => '1',
-                                'prefix_class' => 'pricing-table-temp-'
-			]
-		);
-                
+//                $this->add_control(
+//			'template',
+//			[
+//				'label' => __( 'Style', 'ultraaddons' ),
+//				'type' => Controls_Manager::SELECT,
+//				'options' => [
+//					'1' => __( 'Lite', 'ultraaddons' ),
+//					'2' => __( 'Dark', 'ultraaddons' ),
+//				],
+//				'default' => '1',
+//                                'prefix_class' => 'pricing-table-temp-'
+//			]
+//		);
+//                
                 $this->add_responsive_control(
                         'price_table_align',
                         [
-                                'label' => __( 'Alignment', 'medilac' ),
+                                'label' => __( 'Alignment', 'ultraaddons' ),
                                 'type' => Controls_Manager::CHOOSE,
                                 'options' => [
                                         'left'    => [
-                                                'title' => __( 'Left', 'medilac' ),
+                                                'title' => __( 'Left', 'ultraaddons' ),
                                                 'icon' => 'eicon-text-align-left',
                                         ],
                                         'center' => [
-                                                'title' => __( 'Center', 'medilac' ),
+                                                'title' => __( 'Center', 'ultraaddons' ),
                                                 'icon' => 'eicon-text-align-center',
                                         ],
                                         'right' => [
-                                                'title' => __( 'Right', 'medilac' ),
+                                                'title' => __( 'Right', 'ultraaddons' ),
                                                 'icon' => 'eicon-text-align-right',
                                         ]
                                 ],
@@ -496,7 +496,7 @@ class Price_Table extends Base {
                 $this->add_responsive_control(
 			'widget_padding',
 			[
-				'label' => __( 'Padding', 'medilac' ),
+				'label' => __( 'Padding', 'ultraaddons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
                                 'default' => [
@@ -511,31 +511,12 @@ class Price_Table extends Base {
 				],
 			]
 		);
-                
-                $this->add_responsive_control(
-			'widget_border_width',
-			[
-				'label' => __( 'Border Width', 'medilac' ),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%', 'em' ],
-                                'default' => [
-                                        'top' => 2,
-                                        'left' => 2,
-                                        'right' => 2,
-                                        'bottom' => 2,
-                                        'unit' => 'px',
-                                ],
-				'selectors' => [
-					'{{WRAPPER}} .elementor-widget-container' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-                
+
                 $this->add_group_control(
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'background',
-				'label' => __( 'Background', 'medilac' ),
+				'label' => __( 'Background', 'ultraaddons' ),
 				'types' => [ 'classic', 'gradient' ],
 				'selector' => '{{WRAPPER}} .elementor-widget-container',
 			]
@@ -544,7 +525,7 @@ class Price_Table extends Base {
                 $this->add_responsive_control(
 			'widget_border_color',
 			[
-				'label' => __( 'Border Color', 'medilac' ),
+				'label' => __( 'Border Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
                                 'default' => '#E2EBF1',
 				'selectors' => [
@@ -555,12 +536,12 @@ class Price_Table extends Base {
                 $this->add_responsive_control(
 			'widget_border_hover_color',
 			[
-				'label' => __( 'Border Hover Color', 'medilac' ),
+				'label' => __( 'Border Hover Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
                                 'default' => '#0FC393',
 				'selectors' => [
 					'{{WRAPPER}} .elementor-widget-container:hover' => 'border-color: {{VALUE}};',
-					//'{{WRAPPER}}.medilac-featured-item .elementor-widget-container' => 'border-color: {{VALUE}};',
+					//'{{WRAPPER}}.ultraaddons-featured-item .elementor-widget-container' => 'border-color: {{VALUE}};',
 				],
 			]
 		);
@@ -568,7 +549,7 @@ class Price_Table extends Base {
                 $this->add_control(
 			'section_divider',
 			[
-				'label' => __( 'Divider', 'medilac' ),
+				'label' => __( 'Divider', 'ultraaddons' ),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 				'separator' => 'before',
@@ -578,20 +559,20 @@ class Price_Table extends Base {
 		$this->add_control(
 			'divider_style',
 			[
-				'label' => __( 'Style', 'medilac' ),
+				'label' => __( 'Style', 'ultraaddons' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
-					'solid' => __( 'Solid', 'medilac' ),
-					'double' => __( 'Double', 'medilac' ),
-					'dotted' => __( 'Dotted', 'medilac' ),
-					'dashed' => __( 'Dashed', 'medilac' ),
+					'solid' => __( 'Solid', 'ultraaddons' ),
+					'double' => __( 'Double', 'ultraaddons' ),
+					'dotted' => __( 'Dotted', 'ultraaddons' ),
+					'dashed' => __( 'Dashed', 'ultraaddons' ),
 				],
 				'default' => 'solid',
 				'condition' => [
 					'section_divider' => 'yes',
 				],
 				'selectors' => [
-					'{{WRAPPER}} ul.mc-price-table__features-list:before' => 'border-top-style: {{VALUE}};',
+					'{{WRAPPER}} ul.ua-price-table__features-list:before' => 'border-top-style: {{VALUE}};',
 				],
 			]
 		);
@@ -599,7 +580,7 @@ class Price_Table extends Base {
 		$this->add_control(
 			'divider_color',
 			[
-				'label' => __( 'Color', 'medilac' ),
+				'label' => __( 'Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '#ddd',
 				'scheme' => [
@@ -610,7 +591,7 @@ class Price_Table extends Base {
 					'section_divider' => 'yes',
 				],
 				'selectors' => [
-					'{{WRAPPER}} ul.mc-price-table__features-list:before' => 'border-top-color: {{VALUE}};',
+					'{{WRAPPER}} ul.ua-price-table__features-list:before' => 'border-top-color: {{VALUE}};',
 				],
 			]
 		);
@@ -618,7 +599,7 @@ class Price_Table extends Base {
 		$this->add_control(
 			'divider_weight',
 			[
-				'label' => __( 'Weight', 'medilac' ),
+				'label' => __( 'Weight', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 2,
@@ -634,7 +615,7 @@ class Price_Table extends Base {
 					'section_divider' => 'yes',
 				],
 				'selectors' => [
-					'{{WRAPPER}} ul.mc-price-table__features-list:before' => 'border-top-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} ul.ua-price-table__features-list:before' => 'border-top-width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -642,7 +623,7 @@ class Price_Table extends Base {
 		$this->add_control(
 			'divider_width',
 			[
-				'label' => __( 'Width', 'medilac' ),
+				'label' => __( 'Width', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
                                 'default' => [
 					'size' => 15,
@@ -658,7 +639,7 @@ class Price_Table extends Base {
 					'section_divider' => 'yes',
 				],
 				'selectors' => [
-					'{{WRAPPER}} ul.mc-price-table__features-list:before' => 'margin-left: calc((100% - {{SIZE}}%)/2); margin-right: calc((100% - {{SIZE}}%)/2)',
+					'{{WRAPPER}} ul.ua-price-table__features-list:before' => 'margin-left: calc((100% - {{SIZE}}%)/2); margin-right: calc((100% - {{SIZE}}%)/2)',
 				],
 			]
 		);
@@ -666,7 +647,7 @@ class Price_Table extends Base {
 		$this->add_control(
 			'divider_gap',
 			[
-				'label' => __( 'Gap', 'medilac' ),
+				'label' => __( 'Gap', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 15,
@@ -682,7 +663,7 @@ class Price_Table extends Base {
 					'section_divider' => 'yes',
 				],
 				'selectors' => [
-					'{{WRAPPER}} ul.mc-price-table__features-list:before' => 'margin-top: {{SIZE}}{{UNIT}}; margin-bottom: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} ul.ua-price-table__features-list:before' => 'margin-top: {{SIZE}}{{UNIT}}; margin-bottom: {{SIZE}}{{UNIT}}',
 				],
 			]
 		);
@@ -693,7 +674,7 @@ class Price_Table extends Base {
 		$this->start_controls_section(
 			'section_header_style',
 			[
-				'label' => __( 'Header', 'medilac' ),
+				'label' => __( 'Header', 'ultraaddons' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 			]
@@ -702,10 +683,10 @@ class Price_Table extends Base {
 		$this->add_control(
 			'header_bg_color',
 			[
-				'label' => __( 'Background Color', 'medilac' ),
+				'label' => __( 'Background Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__header' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .ua-price-table__header' => 'background-color: {{VALUE}}',
 				],
 			]
 		);
@@ -713,11 +694,11 @@ class Price_Table extends Base {
 		$this->add_responsive_control(
 			'header_padding',
 			[
-				'label' => __( 'Padding', 'medilac' ),
+				'label' => __( 'Padding', 'ultraaddons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__header' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ua-price-table__header' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -725,7 +706,7 @@ class Price_Table extends Base {
 		$this->add_control(
 			'heading_heading_style',
 			[
-				'label' => __( 'Title', 'medilac' ),
+				'label' => __( 'Title', 'ultraaddons' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -734,10 +715,10 @@ class Price_Table extends Base {
 		$this->add_control(
 			'heading_color',
 			[
-				'label' => __( 'Color', 'medilac' ),
+				'label' => __( 'Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__heading' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .ua-price-table__heading' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -746,7 +727,7 @@ class Price_Table extends Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'heading_typography',
-				'selector' => '{{WRAPPER}} .mc-price-table__heading',
+				'selector' => '{{WRAPPER}} .ua-price-table__heading',
 				'scheme' => Schemes\Typography::TYPOGRAPHY_1,
                                 'default' => [
                                         'font-weight'   => 400,
@@ -757,7 +738,7 @@ class Price_Table extends Base {
 		$this->add_control(
 			'heading_sub_heading_style',
 			[
-				'label' => __( 'Sub Title', 'medilac' ),
+				'label' => __( 'Sub Title', 'ultraaddons' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -766,10 +747,10 @@ class Price_Table extends Base {
 		$this->add_control(
 			'sub_heading_color',
 			[
-				'label' => __( 'Color', 'medilac' ),
+				'label' => __( 'Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__subheading' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .ua-price-table__subheading' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -778,7 +759,7 @@ class Price_Table extends Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'sub_heading_typography',
-				'selector' => '{{WRAPPER}} .mc-price-table__subheading',
+				'selector' => '{{WRAPPER}} .ua-price-table__subheading',
 				'scheme' => Schemes\Typography::TYPOGRAPHY_2,
 			]
 		);
@@ -786,7 +767,7 @@ class Price_Table extends Base {
                 $this->add_control(
 			'heading_icon_style',
 			[
-				'label' => __( 'Icon', 'medilac' ),
+				'label' => __( 'Icon', 'ultraaddons' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -795,7 +776,7 @@ class Price_Table extends Base {
                 $this->add_responsive_control(
                         'header_icon_size',
                         [
-                                'label' => __( 'Icon Size', 'medilac' ),
+                                'label' => __( 'Icon Size', 'ultraaddons' ),
                                 'type' => Controls_Manager::SLIDER,
                                 'range' => [
                                         'px' => [
@@ -807,7 +788,7 @@ class Price_Table extends Base {
                                         'size' => 30,
                                 ],
                                 'selectors' => [
-                                        '{{WRAPPER}} .mc-price-table__header_icon' => 'font-size: {{SIZE}}{{UNIT}};',
+                                        '{{WRAPPER}} .ua-price-table__header_icon' => 'font-size: {{SIZE}}{{UNIT}};',
                                 ],
                         ]
                 );
@@ -815,10 +796,10 @@ class Price_Table extends Base {
                 $this->add_control(
 			'header_icon_color',
 			[
-				'label' => __( 'Color', 'medilac' ),
+				'label' => __( 'Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .mc-pricing-table-icon' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .ua-pricing-table-icon' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -828,7 +809,7 @@ class Price_Table extends Base {
 		$this->start_controls_section(
 			'section_pricing_element_style',
 			[
-				'label' => __( 'Pricing', 'medilac' ),
+				'label' => __( 'Pricing', 'ultraaddons' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 			]
@@ -837,10 +818,10 @@ class Price_Table extends Base {
 		$this->add_control(
 			'pricing_element_bg_color',
 			[
-				'label' => __( 'Background Color', 'medilac' ),
+				'label' => __( 'Background Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__price' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .ua-price-table__price' => 'background-color: {{VALUE}}',
 				],
 			]
 		);
@@ -848,11 +829,11 @@ class Price_Table extends Base {
 		$this->add_responsive_control(
 			'pricing_element_padding',
 			[
-				'label' => __( 'Padding', 'medilac' ),
+				'label' => __( 'Padding', 'ultraaddons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__price' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ua-price-table__price' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -860,10 +841,10 @@ class Price_Table extends Base {
 		$this->add_control(
 			'price_color',
 			[
-				'label' => __( 'Color', 'medilac' ),
+				'label' => __( 'Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__currency, {{WRAPPER}} .mc-price-table__integer-part, {{WRAPPER}} .mc-price-table__fractional-part, {{WRAPPER}} .mc-price-table__currency_sep' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .ua-price-table__currency, {{WRAPPER}} .ua-price-table__integer-part, {{WRAPPER}} .ua-price-table__fractional-part, {{WRAPPER}} .ua-price-table__currency_sep' => 'color: {{VALUE}}',
 				],
 				'separator' => 'before',
 			]
@@ -873,7 +854,7 @@ class Price_Table extends Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'price_typography',
-				'selector' => '{{WRAPPER}} .mc-price-table__price',
+				'selector' => '{{WRAPPER}} .ua-price-table__price',
 				'scheme' => Schemes\Typography::TYPOGRAPHY_1,
 			]
 		);
@@ -881,10 +862,10 @@ class Price_Table extends Base {
                 $this->add_control(
 			'price_addional_control',
 			[
-				'label' => __( 'Show Additional Controls?', 'medilac' ),
+				'label' => __( 'Show Additional Controls?', 'ultraaddons' ),
 				'type' => Controls_Manager::SWITCHER,
-                                'label_on' => __( 'Show', 'medilac' ),
-				'label_off' => __( 'Hide', 'medilac' ),
+                                'label_on' => __( 'Show', 'ultraaddons' ),
+				'label_off' => __( 'Hide', 'ultraaddons' ),
 				'default' => '',
 			]
 		);
@@ -892,7 +873,7 @@ class Price_Table extends Base {
                 $this->add_control(
 			'price_int_size',
 			[
-				'label' => __( 'Price Before Fraction', 'medilac' ),
+				'label' => __( 'Price Before Fraction', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -901,7 +882,7 @@ class Price_Table extends Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} span.mc-price-table__integer-part' => 'font-size: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} span.ua-price-table__integer-part' => 'font-size: {{SIZE}}{{UNIT}}',
 				],
 				'condition' => [
 					'price_addional_control!' => '',
@@ -912,7 +893,7 @@ class Price_Table extends Base {
                 $this->add_control(
 			'price_decimal_size',
 			[
-				'label' => __( 'Price After Fraction', 'medilac' ),
+				'label' => __( 'Price After Fraction', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -921,7 +902,7 @@ class Price_Table extends Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} span.mc-price-table__fractional-part' => 'font-size: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} span.ua-price-table__fractional-part' => 'font-size: {{SIZE}}{{UNIT}}',
 				],
 				'condition' => [
 					'price_addional_control!' => '',
@@ -932,16 +913,16 @@ class Price_Table extends Base {
                 $this->add_control(
 			'currency_fraction_position',
 			[
-				'label' => __( 'Fraction Position', 'medilac' ),
+				'label' => __( 'Fraction Position', 'ultraaddons' ),
 				'type' => Controls_Manager::CHOOSE,
 				'default' => 'right',
 				'options' => [
 					'left' => [
-						'title' => __( 'Before', 'medilac' ),
+						'title' => __( 'Before', 'ultraaddons' ),
 						'icon' => 'eicon-h-align-left',
 					],
 					'right' => [
-						'title' => __( 'After', 'medilac' ),
+						'title' => __( 'After', 'ultraaddons' ),
 						'icon' => 'eicon-h-align-right',
 					],
 				],
@@ -950,7 +931,7 @@ class Price_Table extends Base {
                                         'right' => 'flex-end',
                                 ],
                                 'selectors' => [
-                                        '{{WRAPPER}} span.mc-price-table__fractional-part' => 'align-self: {{VALUE}}',
+                                        '{{WRAPPER}} span.ua-price-table__fractional-part' => 'align-self: {{VALUE}}',
                                 ],
                                 'condition' => [
 					'price_addional_control!' => '',
@@ -963,7 +944,7 @@ class Price_Table extends Base {
 		$this->add_control(
 			'heading_currency_style',
 			[
-				'label' => __( 'Currency Symbol', 'medilac' ),
+				'label' => __( 'Currency Symbol', 'ultraaddons' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => [
@@ -975,7 +956,7 @@ class Price_Table extends Base {
 		$this->add_control(
 			'currency_size',
 			[
-				'label' => __( 'Size', 'medilac' ),
+				'label' => __( 'Size', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -987,7 +968,7 @@ class Price_Table extends Base {
                                         'size' => 60,
                                 ],
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__currency' => 'font-size: calc({{SIZE}}em/100)',
+					'{{WRAPPER}} .ua-price-table__currency' => 'font-size: calc({{SIZE}}em/100)',
 				],
 				'condition' => [
 					'currency_symbol!' => '',
@@ -998,16 +979,16 @@ class Price_Table extends Base {
 		$this->add_control(
 			'currency_position',
 			[
-				'label' => __( 'Position', 'medilac' ),
+				'label' => __( 'Position', 'ultraaddons' ),
 				'type' => Controls_Manager::CHOOSE,
 				'default' => 'before',
 				'options' => [
 					'before' => [
-						'title' => __( 'Before', 'medilac' ),
+						'title' => __( 'Before', 'ultraaddons' ),
 						'icon' => 'eicon-h-align-left',
 					],
 					'after' => [
-						'title' => __( 'After', 'medilac' ),
+						'title' => __( 'After', 'ultraaddons' ),
 						'icon' => 'eicon-h-align-right',
 					],
 				],
@@ -1017,19 +998,19 @@ class Price_Table extends Base {
 		$this->add_control(
 			'currency_vertical_position',
 			[
-				'label' => __( 'Vertical Position', 'medilac' ),
+				'label' => __( 'Vertical Position', 'ultraaddons' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'top' => [
-						'title' => __( 'Top', 'medilac' ),
+						'title' => __( 'Top', 'ultraaddons' ),
 						'icon' => 'eicon-v-align-top',
 					],
 					'middle' => [
-						'title' => __( 'Middle', 'medilac' ),
+						'title' => __( 'Middle', 'ultraaddons' ),
 						'icon' => 'eicon-v-align-middle',
 					],
 					'bottom' => [
-						'title' => __( 'Bottom', 'medilac' ),
+						'title' => __( 'Bottom', 'ultraaddons' ),
 						'icon' => 'eicon-v-align-bottom',
 					],
 				],
@@ -1040,7 +1021,7 @@ class Price_Table extends Base {
 					'bottom' => 'flex-end',
 				],
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__currency' => 'align-self: {{VALUE}}',
+					'{{WRAPPER}} .ua-price-table__currency' => 'align-self: {{VALUE}}',
 				],
 				'condition' => [
 					'currency_symbol!' => '',
@@ -1051,7 +1032,7 @@ class Price_Table extends Base {
                 $this->add_responsive_control(
 			'currency_symbol_gap',
 			[
-				'label' => __( 'Currency Space', 'medilac' ),
+				'label' => __( 'Currency Space', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -1064,7 +1045,7 @@ class Price_Table extends Base {
                                         'unit' => 'px',
                                 ],
 				'selectors' => [
-					'{{WRAPPER}} span.mc-price-table__currency' => 'margin-right: {{SIZE}}{{UNIT}}; margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} span.ua-price-table__currency' => 'margin-right: {{SIZE}}{{UNIT}}; margin-left: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -1072,7 +1053,7 @@ class Price_Table extends Base {
 		$this->add_control(
 			'heading_original_price_style',
 			[
-				'label' => __( 'Sale Price', 'medilac' ),
+				'label' => __( 'Sale Price', 'ultraaddons' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => [
@@ -1085,14 +1066,14 @@ class Price_Table extends Base {
 		$this->add_control(
 			'original_price_color',
 			[
-				'label' => __( 'Color', 'medilac' ),
+				'label' => __( 'Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Schemes\Color::get_type(),
 					'value' => Schemes\Color::COLOR_2,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__original-price' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .ua-price-table__original-price' => 'color: {{VALUE}}',
 				],
 				'condition' => [
 					'sale' => 'yes',
@@ -1105,7 +1086,7 @@ class Price_Table extends Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'original_price_typography',
-				'selector' => '{{WRAPPER}} .mc-price-table__original-price',
+				'selector' => '{{WRAPPER}} .ua-price-table__original-price',
 				'scheme' => Schemes\Typography::TYPOGRAPHY_1,
 				'condition' => [
 					'sale' => 'yes',
@@ -1117,7 +1098,7 @@ class Price_Table extends Base {
                 $this->add_responsive_control(
 			'sale_price_gap',
 			[
-				'label' => __( 'Space', 'medilac' ),
+				'label' => __( 'Space', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -1130,7 +1111,7 @@ class Price_Table extends Base {
                                         'unit' => 'px',
                                 ],
 				'selectors' => [
-					'{{WRAPPER}} span.mc-price-table__original-price' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} span.ua-price-table__original-price' => 'margin-right: {{SIZE}}{{UNIT}};',
 				],
                                 'condition' => [
 					'sale' => 'yes',
@@ -1142,19 +1123,19 @@ class Price_Table extends Base {
 		$this->add_control(
 			'original_price_vertical_position',
 			[
-				'label' => __( 'Vertical Position', 'medilac' ),
+				'label' => __( 'Vertical Position', 'ultraaddons' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'top' => [
-						'title' => __( 'Top', 'medilac' ),
+						'title' => __( 'Top', 'ultraaddons' ),
 						'icon' => 'eicon-v-align-top',
 					],
 					'middle' => [
-						'title' => __( 'Middle', 'medilac' ),
+						'title' => __( 'Middle', 'ultraaddons' ),
 						'icon' => 'eicon-v-align-middle',
 					],
 					'bottom' => [
-						'title' => __( 'Bottom', 'medilac' ),
+						'title' => __( 'Bottom', 'ultraaddons' ),
 						'icon' => 'eicon-v-align-bottom',
 					],
 				],
@@ -1165,7 +1146,7 @@ class Price_Table extends Base {
 				],
 				'default' => 'bottom',
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__original-price' => 'align-self: {{VALUE}}',
+					'{{WRAPPER}} .ua-price-table__original-price' => 'align-self: {{VALUE}}',
 				],
 				'condition' => [
 					'sale' => 'yes',
@@ -1177,7 +1158,7 @@ class Price_Table extends Base {
 		$this->add_control(
 			'heading_period_style',
 			[
-				'label' => __( 'Period', 'medilac' ),
+				'label' => __( 'Period', 'ultraaddons' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => [
@@ -1189,14 +1170,14 @@ class Price_Table extends Base {
 		$this->add_control(
 			'period_color',
 			[
-				'label' => __( 'Color', 'medilac' ),
+				'label' => __( 'Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Schemes\Color::get_type(),
 					'value' => Schemes\Color::COLOR_2,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__period' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .ua-price-table__period' => 'color: {{VALUE}}',
 				],
 				'condition' => [
 					'period!' => '',
@@ -1208,7 +1189,7 @@ class Price_Table extends Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'period_typography',
-				'selector' => '{{WRAPPER}} .mc-price-table__period',
+				'selector' => '{{WRAPPER}} .ua-price-table__period',
 				'scheme' => Schemes\Typography::TYPOGRAPHY_2,
 				'condition' => [
 					'period!' => '',
@@ -1219,12 +1200,12 @@ class Price_Table extends Base {
 		$this->add_control(
 			'period_position',
 			[
-				'label' => __( 'Position', 'medilac' ),
+				'label' => __( 'Position', 'ultraaddons' ),
 				'type' => Controls_Manager::SELECT,
 				'label_block' => false,
 				'options' => [
-					'below' => __( 'Below', 'medilac' ),
-					'beside' => __( 'Beside', 'medilac' ),
+					'below' => __( 'Below', 'ultraaddons' ),
+					'beside' => __( 'Beside', 'ultraaddons' ),
 				],
 				'default' => 'below',
 				'condition' => [
@@ -1236,19 +1217,19 @@ class Price_Table extends Base {
                 $this->add_control(
 			'period_vertical_position',
 			[
-				'label' => __( 'Vertical Position', 'medilac' ),
+				'label' => __( 'Vertical Position', 'ultraaddons' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'top' => [
-						'title' => __( 'Top', 'medilac' ),
+						'title' => __( 'Top', 'ultraaddons' ),
 						'icon' => 'eicon-v-align-top',
 					],
 					'middle' => [
-						'title' => __( 'Middle', 'medilac' ),
+						'title' => __( 'Middle', 'ultraaddons' ),
 						'icon' => 'eicon-v-align-middle',
 					],
 					'bottom' => [
-						'title' => __( 'Bottom', 'medilac' ),
+						'title' => __( 'Bottom', 'ultraaddons' ),
 						'icon' => 'eicon-v-align-bottom',
 					],
 				],
@@ -1259,7 +1240,7 @@ class Price_Table extends Base {
 					'bottom' => 'flex-end',
 				],
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__price span.mc-price-table__period' => 'align-self: {{VALUE}}',
+					'{{WRAPPER}} .ua-price-table__price span.ua-price-table__period' => 'align-self: {{VALUE}}',
 				],
 				'condition' => [
 					'period_position' => 'beside',
@@ -1270,14 +1251,14 @@ class Price_Table extends Base {
                 $this->add_responsive_control(
 			'period_margin_below',
 			[
-				'label' => __( 'Margin', 'medilac' ),
+				'label' => __( 'Margin', 'ultraaddons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
                                 'default' => [
                                         'isLinked' => false,
                                 ],
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__period-wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ua-price-table__period-wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1287,7 +1268,7 @@ class Price_Table extends Base {
 		$this->start_controls_section(
 			'section_features_list_style',
 			[
-				'label' => __( 'Features', 'medilac' ),
+				'label' => __( 'Features', 'ultraaddons' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 			]
@@ -1296,11 +1277,11 @@ class Price_Table extends Base {
 		$this->add_control(
 			'features_list_bg_color',
 			[
-				'label' => __( 'Background Color', 'medilac' ),
+				'label' => __( 'Background Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
 				'separator' => 'before',
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__features-list' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .ua-price-table__features-list' => 'background-color: {{VALUE}}',
 				],
 			]
 		);
@@ -1308,7 +1289,7 @@ class Price_Table extends Base {
 		$this->add_responsive_control(
 			'features_list_padding',
 			[
-				'label' => __( 'Padding', 'medilac' ),
+				'label' => __( 'Padding', 'ultraaddons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
                                 'default' => [
@@ -1317,7 +1298,7 @@ class Price_Table extends Base {
                                         'unit' => 'px',
                                 ],
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__features-list' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+					'{{WRAPPER}} .ua-price-table__features-list' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
 				],
 			]
 		);
@@ -1325,7 +1306,7 @@ class Price_Table extends Base {
 		$this->add_control(
 			'features_list_color',
 			[
-				'label' => __( 'Color', 'medilac' ),
+				'label' => __( 'Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Schemes\Color::get_type(),
@@ -1333,7 +1314,7 @@ class Price_Table extends Base {
 				],
 				'separator' => 'before',
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__features-list' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .ua-price-table__features-list' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -1342,7 +1323,7 @@ class Price_Table extends Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'features_list_typography',
-				'selector' => '{{WRAPPER}} .mc-price-table__features-list li',
+				'selector' => '{{WRAPPER}} .ua-price-table__features-list li',
 				'scheme' => Schemes\Typography::TYPOGRAPHY_3,
 			]
 		);
@@ -1350,24 +1331,24 @@ class Price_Table extends Base {
 		$this->add_control(
 			'features_list_alignment',
 			[
-				'label' => __( 'Alignment', 'medilac' ),
+				'label' => __( 'Alignment', 'ultraaddons' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => __( 'Left', 'medilac' ),
+						'title' => __( 'Left', 'ultraaddons' ),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => __( 'Center', 'medilac' ),
+						'title' => __( 'Center', 'ultraaddons' ),
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => __( 'Right', 'medilac' ),
+						'title' => __( 'Right', 'ultraaddons' ),
 						'icon' => 'eicon-text-align-right',
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__features-list' => 'text-align: {{VALUE}}',
+					'{{WRAPPER}} .ua-price-table__features-list' => 'text-align: {{VALUE}}',
 				],
 			]
 		);
@@ -1375,7 +1356,7 @@ class Price_Table extends Base {
 		$this->add_responsive_control(
 			'item_gap',
 			[
-				'label' => __( 'Item Gap', 'medilac' ),
+				'label' => __( 'Item Gap', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -1388,7 +1369,7 @@ class Price_Table extends Base {
                                         'unit' => 'px',
                                 ],
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__features-list li' => 'margin: {{SIZE}}{{UNIT}} 0;',
+					'{{WRAPPER}} .ua-price-table__features-list li' => 'margin: {{SIZE}}{{UNIT}} 0;',
 				],
 			]
 		);
@@ -1396,7 +1377,7 @@ class Price_Table extends Base {
                 $this->add_responsive_control(
 			'item_width',
 			[
-				'label' => __( 'Width', 'medilac' ),
+				'label' => __( 'Width', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'%' => [
@@ -1405,7 +1386,7 @@ class Price_Table extends Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__feature-inner' => 'margin-left: calc((100% - {{SIZE}}%)/2); margin-right: calc((100% - {{SIZE}}%)/2)',
+					'{{WRAPPER}} .ua-price-table__feature-inner' => 'margin-left: calc((100% - {{SIZE}}%)/2); margin-right: calc((100% - {{SIZE}}%)/2)',
 				],
 			]
 		);
@@ -1415,7 +1396,7 @@ class Price_Table extends Base {
 		$this->start_controls_section(
 			'section_footer_style',
 			[
-				'label' => __( 'Footer', 'medilac' ),
+				'label' => __( 'Footer', 'ultraaddons' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 			]
@@ -1424,10 +1405,10 @@ class Price_Table extends Base {
 		$this->add_control(
 			'footer_bg_color',
 			[
-				'label' => __( 'Background Color', 'medilac' ),
+				'label' => __( 'Background Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__footer' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .ua-price-table__footer' => 'background-color: {{VALUE}}',
 				],
 			]
 		);
@@ -1435,7 +1416,7 @@ class Price_Table extends Base {
 		$this->add_responsive_control(
 			'footer_padding',
 			[
-				'label' => __( 'Padding', 'medilac' ),
+				'label' => __( 'Padding', 'ultraaddons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
                                 'default' => [
@@ -1445,7 +1426,7 @@ class Price_Table extends Base {
                                         'left' => 0,
                                 ],
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__footer' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ua-price-table__footer' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1453,7 +1434,7 @@ class Price_Table extends Base {
 		$this->add_control(
 			'heading_footer_button',
 			[
-				'label' => __( 'Button', 'medilac' ),
+				'label' => __( 'Button', 'ultraaddons' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => [
@@ -1465,7 +1446,7 @@ class Price_Table extends Base {
 		$this->add_control(
 			'button_size',
 			[
-				'label' => __( 'Size', 'medilac' ),
+				'label' => __( 'Size', 'ultraaddons' ),
                                 'type' => Controls_Manager::SELECT,
                                 'default' => 'md',
                                 'options' => self::get_button_sizes(),
@@ -1481,7 +1462,7 @@ class Price_Table extends Base {
 		$this->start_controls_tab(
 			'tab_button_normal',
 			[
-				'label' => __( 'Normal', 'medilac' ),
+				'label' => __( 'Normal', 'ultraaddons' ),
 				'condition' => [
 					'button_text!' => '',
 				],
@@ -1491,10 +1472,10 @@ class Price_Table extends Base {
 		$this->add_control(
 			'button_text_color',
 			[
-				'label' => __( 'Text Color', 'medilac' ),
+				'label' => __( 'Text Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__button' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .ua-price-table__button' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -1504,17 +1485,17 @@ class Price_Table extends Base {
 			[
 				'name' => 'button_typography',
 				'scheme' => Schemes\Typography::TYPOGRAPHY_4,
-				'selector' => '{{WRAPPER}} .mc-price-table__button',
+				'selector' => '{{WRAPPER}} .ua-price-table__button',
 			]
 		);
 
 		$this->add_control(
 			'button_background_color',
 			[
-				'label' => __( 'Background Color', 'medilac' ),
+				'label' => __( 'Background Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__button' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .ua-price-table__button' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1522,7 +1503,7 @@ class Price_Table extends Base {
 		$this->add_group_control(
 			Group_Control_Border::get_type(), [
 				'name' => 'button_border',
-				'selector' => '{{WRAPPER}} .mc-price-table__button',
+				'selector' => '{{WRAPPER}} .ua-price-table__button',
 				'separator' => 'before',
 			]
 		);
@@ -1530,11 +1511,11 @@ class Price_Table extends Base {
 		$this->add_control(
 			'button_border_radius',
 			[
-				'label' => __( 'Border Radius', 'medilac' ),
+				'label' => __( 'Border Radius', 'ultraaddons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ua-price-table__button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1542,11 +1523,11 @@ class Price_Table extends Base {
 		$this->add_control(
 			'button_text_padding',
 			[
-				'label' => __( 'Text Padding', 'medilac' ),
+				'label' => __( 'Text Padding', 'ultraaddons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ua-price-table__button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1556,7 +1537,7 @@ class Price_Table extends Base {
 		$this->start_controls_tab(
 			'tab_button_hover',
 			[
-				'label' => __( 'Hover', 'medilac' ),
+				'label' => __( 'Hover', 'ultraaddons' ),
 				'condition' => [
 					'button_text!' => '',
 				],
@@ -1566,12 +1547,12 @@ class Price_Table extends Base {
 		$this->add_control(
 			'button_hover_color',
 			[
-				'label' => __( 'Text Color', 'medilac' ),
+				'label' => __( 'Text Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
                                 'default' => '#FFF',
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__button:hover' => 'color: {{VALUE}};',
-					//'{{WRAPPER}}.medilac-featured-item .mc-price-table__button' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .ua-price-table__button:hover' => 'color: {{VALUE}};',
+					//'{{WRAPPER}}.ultraaddons-featured-item .ua-price-table__button' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -1579,12 +1560,12 @@ class Price_Table extends Base {
 		$this->add_control(
 			'button_background_hover_color',
 			[
-				'label' => __( 'Background Color', 'medilac' ),
+				'label' => __( 'Background Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
                                 'default' => '#0FC392',
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__button:hover' => 'background-color: {{VALUE}};',
-					//'{{WRAPPER}}.medilac-featured-item .mc-price-table__button' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .ua-price-table__button:hover' => 'background-color: {{VALUE}};',
+					//'{{WRAPPER}}.ultraaddons-featured-item .ua-price-table__button' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1592,12 +1573,12 @@ class Price_Table extends Base {
 		$this->add_control(
 			'button_hover_border_color',
 			[
-				'label' => __( 'Border Color', 'medilac' ),
+				'label' => __( 'Border Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
                                 'default' => 'transparent',
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__button:hover' => 'border-color: {{VALUE}};',
-					//'{{WRAPPER}}.medilac-featured-item .mc-price-table__button' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .ua-price-table__button:hover' => 'border-color: {{VALUE}};',
+					//'{{WRAPPER}}.ultraaddons-featured-item .ua-price-table__button' => 'border-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1605,7 +1586,7 @@ class Price_Table extends Base {
 //		$this->add_control(
 //			'button_hover_animation',
 //			[
-//				'label' => __( 'Animation', 'medilac' ),
+//				'label' => __( 'Animation', 'ultraaddons' ),
 //				'type' => Controls_Manager::HOVER_ANIMATION,
 //			]
 //		);
@@ -1617,7 +1598,7 @@ class Price_Table extends Base {
 		$this->add_control(
 			'heading_additional_info',
 			[
-				'label' => __( 'Additional Info', 'medilac' ),
+				'label' => __( 'Additional Info', 'ultraaddons' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => [
@@ -1629,14 +1610,14 @@ class Price_Table extends Base {
 		$this->add_control(
 			'additional_info_color',
 			[
-				'label' => __( 'Color', 'medilac' ),
+				'label' => __( 'Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Schemes\Color::get_type(),
 					'value' => Schemes\Color::COLOR_3,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__additional_info' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .ua-price-table__additional_info' => 'color: {{VALUE}}',
 				],
 				'condition' => [
 					'footer_additional_info!' => '',
@@ -1648,7 +1629,7 @@ class Price_Table extends Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'additional_info_typography',
-				'selector' => '{{WRAPPER}} .mc-price-table__additional_info',
+				'selector' => '{{WRAPPER}} .ua-price-table__additional_info',
 				'scheme' => Schemes\Typography::TYPOGRAPHY_3,
 				'condition' => [
 					'footer_additional_info!' => '',
@@ -1659,7 +1640,7 @@ class Price_Table extends Base {
 		$this->add_control(
 			'additional_info_margin',
 			[
-				'label' => __( 'Margin', 'medilac' ),
+				'label' => __( 'Margin', 'ultraaddons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'default' => [
@@ -1670,7 +1651,7 @@ class Price_Table extends Base {
 					'unit' => 'px',
 				],
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__additional_info' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
+					'{{WRAPPER}} .ua-price-table__additional_info' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
 				],
 				'condition' => [
 					'footer_additional_info!' => '',
@@ -1683,7 +1664,7 @@ class Price_Table extends Base {
 		$this->start_controls_section(
 			'section_ribbon_style',
 			[
-				'label' => __( 'Ribbon', 'medilac' ),
+				'label' => __( 'Ribbon', 'ultraaddons' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => [
@@ -1695,11 +1676,11 @@ class Price_Table extends Base {
 		$this->add_control(
 			'ribbon_bg_color',
 			[
-				'label' => __( 'Background Color', 'medilac' ),
+				'label' => __( 'Background Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
                                 'default' => '#0FC392',
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__ribbon' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .ua-price-table__ribbon' => 'background-color: {{VALUE}}',
 				],
 			]
 		);
@@ -1708,12 +1689,12 @@ class Price_Table extends Base {
 		$this->add_control(
 			'ribbon_text_color',
 			[
-				'label' => __( 'Text Color', 'medilac' ),
+				'label' => __( 'Text Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '#ffffff',
 				'separator' => 'before',
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__ribbon-inner' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .ua-price-table__ribbon-inner' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -1722,7 +1703,7 @@ class Price_Table extends Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'ribbon_typography',
-				'selector' => '{{WRAPPER}} .mc-price-table__ribbon-inner',
+				'selector' => '{{WRAPPER}} .ua-price-table__ribbon-inner',
 				'scheme' => Schemes\Typography::TYPOGRAPHY_4,
 			]
 		);
@@ -1731,7 +1712,7 @@ class Price_Table extends Base {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'box_shadow',
-				'selector' => '{{WRAPPER}} .mc-price-table__ribbon-inner',
+				'selector' => '{{WRAPPER}} .ua-price-table__ribbon-inner',
 			]
 		);
 
@@ -1747,7 +1728,7 @@ class Price_Table extends Base {
 		$currency_position = $this->get_settings( 'currency_position' );
 		$location_setting = ! empty( $currency_position ) ? $currency_position : 'before';
 		if ( ! empty( $symbol ) && $location === $location_setting ) {
-			echo '<span class="mc-price-table__currency mc-currency--' . $location . '">' . $symbol . '</span>';
+			echo '<span class="ua-price-table__currency ua-currency--' . $location . '">' . $symbol . '</span>';
 		}
 	}
 
@@ -1788,10 +1769,10 @@ class Price_Table extends Base {
                 $settings   = $this->get_settings_for_display();
                 
                 // header icon
-                $mc_icon_select     = isset( $settings['mc_icon_select'] ) ? $settings['mc_icon_select'] : 'icon';
-                $mc_icon_choose     = !empty( $settings['mc_icon_choose']['value'] ) && is_string( $settings['mc_icon_choose']['value'] ) ? $settings['mc_icon_choose']['value'] : false;
-                $mc_image_upload    = isset( $settings['mc_image_upload']['url'] ) ? $settings['mc_image_upload']['url'] : '';
-                $svg                = !empty( $settings['mc_icon_choose']['value']['url'] ) && is_string( $settings['mc_icon_choose']['value']['url'] ) ? $settings['mc_icon_choose']['value']['url'] : false;
+                $ua_icon_select     = isset( $settings['ua_icon_select'] ) ? $settings['ua_icon_select'] : 'icon';
+                $ua_icon_choose     = !empty( $settings['ua_icon_choose']['value'] ) && is_string( $settings['ua_icon_choose']['value'] ) ? $settings['ua_icon_choose']['value'] : false;
+                $ua_image_upload    = isset( $settings['ua_image_upload']['url'] ) ? $settings['ua_image_upload']['url'] : '';
+                $svg                = !empty( $settings['ua_icon_choose']['value']['url'] ) && is_string( $settings['ua_icon_choose']['value']['url'] ) ? $settings['ua_icon_choose']['value']['url'] : false;
                 
                 $symbol = '';
 
@@ -1813,9 +1794,9 @@ class Price_Table extends Base {
 		}
                
                 $this->add_render_attribute( 'button_text', 'class', [
-			'mc-price-table__button',
-			'mc-button',
-			'mc-size-' . $settings['button_size'],
+			'ua-price-table__button',
+			'ua-button',
+			'ua-size-' . $settings['button_size'],
 		] );
                 
                 if ( ! empty( $settings['link']['url'] ) ) {
@@ -1823,14 +1804,14 @@ class Price_Table extends Base {
 		}
 
 		if ( ! empty( $settings['button_hover_animation'] ) ) {
-			$this->add_render_attribute( 'button_text', 'class', 'mc-animation-' . $settings['button_hover_animation'] );
+			$this->add_render_attribute( 'button_text', 'class', 'ua-animation-' . $settings['button_hover_animation'] );
 		}
                 
-                $this->add_render_attribute( 'heading', 'class', 'mc-price-table__heading' );
-		$this->add_render_attribute( 'sub_heading', 'class', 'mc-price-table__subheading' );
-		$this->add_render_attribute( 'period', 'class', [ 'mc-price-table__period', 'mc-typo-excluded' ] );
-		$this->add_render_attribute( 'footer_additional_info', 'class', 'mc-price-table__additional_info' );
-		$this->add_render_attribute( 'ribbon_title', 'class', 'mc-price-table__ribbon-inner' );
+                $this->add_render_attribute( 'heading', 'class', 'ua-price-table__heading' );
+		$this->add_render_attribute( 'sub_heading', 'class', 'ua-price-table__subheading' );
+		$this->add_render_attribute( 'period', 'class', [ 'ua-price-table__period', 'ua-typo-excluded' ] );
+		$this->add_render_attribute( 'footer_additional_info', 'class', 'ua-price-table__additional_info' );
+		$this->add_render_attribute( 'ribbon_title', 'class', 'ua-price-table__ribbon-inner' );
                 
 		$this->add_inline_editing_attributes( 'heading', 'none' );
 		$this->add_inline_editing_attributes( 'sub_heading', 'none' );
@@ -1847,19 +1828,19 @@ class Price_Table extends Base {
                 
                 
                 ?>
-                <div class="mc-price-table">
+                <div class="ua-price-table">
                         <?php if ( $settings['heading'] || $settings['sub_heading'] ) { ?>
-				<div class="mc-price-table__header">
-                                        <?php if( $mc_icon_select ) { ?>
-                                        <div class="mc-price-table__header_icon">
+				<div class="ua-price-table__header">
+                                        <?php if( $ua_icon_select ) { ?>
+                                        <div class="ua-price-table__header_icon">
                                                 <?php
                                                 
-                                                if( 'image' == $mc_icon_select ){ ?>
-                                                <img class="mc-pricing-table-image" src="<?php echo esc_url( $mc_image_upload );?>" alt="<?php esc_attr__( 'Pricing Image', 'medilac' ); ?>">
-                                                <?php }elseif( $mc_icon_choose ){ ?>
-                                                    <i class="mc-pricing-table-icon <?php echo esc_attr( $mc_icon_choose ); ?>"></i>        
+                                                if( 'image' == $ua_icon_select ){ ?>
+                                                <img class="ua-pricing-table-image" src="<?php echo esc_url( $ua_image_upload );?>" alt="<?php esc_attr__( 'Pricing Image', 'ultraaddons' ); ?>">
+                                                <?php }elseif( $ua_icon_choose ){ ?>
+                                                    <i class="ua-pricing-table-icon <?php echo esc_attr( $ua_icon_choose ); ?>"></i>        
                                                 <?php }elseif( $svg ){ ?>
-                                                    <img class="mc-pricing-table-image mc-pricing-table-svg-image" src="<?php echo esc_url( $svg );?>" alt="<?php esc_attr__( 'Pricing Image', 'medilac' ); ?>">
+                                                    <img class="ua-pricing-table-image ua-pricing-table-svg-image" src="<?php echo esc_url( $svg );?>" alt="<?php esc_attr__( 'Pricing Image', 'ultraaddons' ); ?>">
                                                 <?php } ?>
                                         </div>
                                         <?php } ?>
@@ -1876,20 +1857,20 @@ class Price_Table extends Base {
                     
                         <?php } ?>
                         
-                        <div class="mc-price-table__price">
-                            <div class="mc-price-table__price_inner">
+                        <div class="ua-price-table__price">
+                            <div class="ua-price-table__price_inner">
                                 <?php if ( 'yes' === $settings['sale'] && ! empty( $settings['original_price'] ) ) : ?>
-                                        <span class="mc-price-table__original-price mc-typo-excluded"><?php echo $symbol . $settings['original_price']; ?></span>
+                                        <span class="ua-price-table__original-price ua-typo-excluded"><?php echo $symbol . $settings['original_price']; ?></span>
                                 <?php endif; ?>
                                 <?php $this->render_currency_symbol( $symbol, 'before' ); ?>
                                 <?php if ( '' !== $fraction ) : ?>
                                     <?php if ( $currency_style && $currency_style == '2' ) : ?>
-                                        <span class="currency-inner-wrapper"><span class="mc-price-table__integer-part"><?php echo $intpart; ?></span><span class="mc-price-table__currency_sep"><?php echo $currency_format; ?></span><span class="mc-price-table__fractional-part"><?php echo $fraction; ?></span></span>
+                                        <span class="currency-inner-wrapper"><span class="ua-price-table__integer-part"><?php echo $intpart; ?></span><span class="ua-price-table__currency_sep"><?php echo $currency_format; ?></span><span class="ua-price-table__fractional-part"><?php echo $fraction; ?></span></span>
                                     <?php else : ?>
-                                        <span class="mc-price-table__integer-part"><?php echo $intpart; ?></span><span class="mc-price-table__currency_sep"><?php echo $currency_format; ?></span><span class="mc-price-table__fractional-part"><?php echo $fraction; ?></span>
+                                        <span class="ua-price-table__integer-part"><?php echo $intpart; ?></span><span class="ua-price-table__currency_sep"><?php echo $currency_format; ?></span><span class="ua-price-table__fractional-part"><?php echo $fraction; ?></span>
                                     <?php endif; ?>
                                 <?php else : ?>
-                                            <span class="mc-price-table__integer-part"><?php echo $intpart; ?></span>
+                                            <span class="ua-price-table__integer-part"><?php echo $intpart; ?></span>
 
                                 <?php endif; ?>
 
@@ -1904,13 +1885,13 @@ class Price_Table extends Base {
                             </div>
                         
                             <?php if ( ! empty( $settings['period'] ) && 'below' === $period_position ) : ?>
-                                <div class="mc-price-table__period-wrapper">
+                                <div class="ua-price-table__period-wrapper">
                                     <?php echo $period_element; ?>
                                 </div>
                             <?php endif; ?>
                         </div>
                         <?php if ( ! empty( $settings['features_list'] ) ) : ?>
-                                <ul class="mc-price-table__features-list">
+                                <ul class="ua-price-table__features-list">
                                         <?php
                                         foreach ( $settings['features_list'] as $index => $item ) :
                                                 $repeater_setting_key = $this->get_repeater_setting_key( 'item_text', 'features_list', $index );
@@ -1924,7 +1905,7 @@ class Price_Table extends Base {
                                                 $is_new = ! isset( $item['item_icon'] ) && $migration_allowed;
                                                 ?>
                                                 <li class="elementor-repeater-item-<?php echo $item['_id']; ?>">
-                                                        <div class="mc-price-table__feature-inner">
+                                                        <div class="ua-price-table__feature-inner">
                                                                 <?php if ( ! empty( $item['item_icon'] ) || ! empty( $item['selected_item_icon'] ) ) :
                                                                         if ( $is_new || $migrated ) :
                                                                                 Icons_Manager::render_icon( $item['selected_item_icon'], [ 'aria-hidden' => 'true' ] );
@@ -1949,7 +1930,7 @@ class Price_Table extends Base {
                         <?php endif; ?>
 
                         <?php if ( ! empty( $settings['button_text'] ) || ! empty( $settings['footer_additional_info'] ) ) : ?>
-                                <div class="mc-price-table__footer">
+                                <div class="ua-price-table__footer">
                                         <?php if ( ! empty( $settings['button_text'] ) ) : ?>
                                                 <a <?php echo $this->get_render_attribute_string( 'button_text' ); ?>><?php echo $settings['button_text']; ?></a>
                                         <?php endif; ?>
@@ -1963,10 +1944,10 @@ class Price_Table extends Base {
 
                 <?php
 		if ( 'yes' === $settings['show_ribbon'] && ! empty( $settings['ribbon_title'] ) ) :
-			$this->add_render_attribute( 'ribbon-wrapper', 'class', 'mc-price-table__ribbon' );
+			$this->add_render_attribute( 'ribbon-wrapper', 'class', 'ua-price-table__ribbon' );
 
 			if ( ! empty( $settings['ribbon_horizontal_position'] ) ) :
-				$this->add_render_attribute( 'ribbon-wrapper', 'class', 'mc-ribbon-' . $settings['ribbon_horizontal_position'] );
+				$this->add_render_attribute( 'ribbon-wrapper', 'class', 'ua-ribbon-' . $settings['ribbon_horizontal_position'] );
 			endif;
 
 			?>
