@@ -54,6 +54,8 @@ class Cart extends Base{
      * @author Saiful
      */
     protected function _register_controls() {
+        //For General Section
+        $this->content_general_controls();
 
     }
     
@@ -88,8 +90,8 @@ class Cart extends Base{
         $this->add_render_attribute( 'cart', 'id', 'site-elementor-cart' );
         
         
-        $title = 'My Details Cart'; //empty minimum
-        $cart_text = "Shopping Cart";
+        $title = $settings['cart_title'];
+        $cart_text = $settings['cart_label'];
         
         ?>
         <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
@@ -128,6 +130,60 @@ class Cart extends Base{
 
     }
     
+    /**
+     * General Section for Content Controls
+     * 
+     * @since 1.0.0.9
+     */
+    protected function content_general_controls() {
+        $this->start_controls_section(
+                'general',
+                [
+                        'label' => __( 'General', 'ultraaddons' ),
+                ]
+        );
+        
+        $this->add_control(
+                'cart_label',
+                [
+                        'label' => __( 'Cart Label', 'ultraaddons' ),
+                        'type' => Controls_Manager::TEXT,
+                        'dynamic' => [
+                                'active' => true,
+                        ],
+                        'default' => __( 'Shopping Cart', 'ultraaddons' ),
+                ]
+        );
+        
+        $this->add_control(
+                'cart_title',
+                [
+                        'label' => __( 'Cart Title', 'ultraaddons' ),
+                        'type' => Controls_Manager::TEXT,
+                        'dynamic' => [
+                                'active' => true,
+                        ],
+                        'default' => '',
+                ]
+        );
+        
+        $this->add_control(
+                'see_hover',
+                [
+                        'label' => __( 'Show Hover', 'ultraaddons' ),
+                        'description' => __( 'Only for Admin Screen. When user want to aply design on Cart items.', 'ultraaddons' ),
+                        'type' => Controls_Manager::SWITCHER,
+                        'label_on' => __( 'Show', 'ultraaddons' ),
+                        'label_off' => __( 'Hide', 'ultraaddons' ),
+                        'return_value' => 'yes',
+                        'default' => '',
+                        'prefix_class' => 'see-hover-in-admin-'
+                ]
+        );
+        
+        
+        $this->end_controls_section();
+    }
     
     
 }

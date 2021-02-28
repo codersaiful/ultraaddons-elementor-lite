@@ -120,13 +120,14 @@ function ultraaddons_woocommerce_cart_link() {
         ?>
         <a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'ultraaddons' ); ?>">
             <?php
-
+            $item_cmount = WC()->cart->get_cart_contents_count();
             /* translators: number of items in the mini cart. */
-            $item_count_text = _n( 'item', 'items', WC()->cart->get_cart_contents_count(), 'ultraaddons' );
-            if( WC()->cart->get_cart_contents_count() > 0 ){
+            $item_count_text = _n( 'item', 'items', $item_cmount, 'ultraaddons' );
+            $item_count_text = apply_filters( 'ultraaddons_item_text', $item_count_text, $item_cmount );
+            if( $item_cmount > 0 ){
             ?>
             <span class="count">
-                <span class="cart-count"><?php echo esc_html( WC()->cart->get_cart_contents_count() ); ?></span>
+                <span class="cart-count"><?php echo esc_html( $item_cmount ); ?></span>
                 <span class="cart-item-text"><?php echo esc_html( $item_count_text ); ?></span>
             </span>
             <span class="amount"><?php echo wp_kses_data( WC()->cart->get_cart_subtotal() ); ?></span>
