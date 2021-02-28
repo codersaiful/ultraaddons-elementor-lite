@@ -863,7 +863,7 @@ class Price_Table extends Base {
 				'label' => __( 'Color', 'medilac' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .mc-price-table__currency, {{WRAPPER}} .mc-price-table__integer-part, {{WRAPPER}} .mc-price-table__fractional-part' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .mc-price-table__currency, {{WRAPPER}} .mc-price-table__integer-part, {{WRAPPER}} .mc-price-table__fractional-part, {{WRAPPER}} .mc-price-table__currency_sep' => 'color: {{VALUE}}',
 				],
 				'separator' => 'before',
 			]
@@ -1047,6 +1047,27 @@ class Price_Table extends Base {
 				],
 			]
 		);
+                
+                $this->add_responsive_control(
+			'currency_symbol_gap',
+			[
+				'label' => __( 'Currency Space', 'medilac' ),
+				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 50,
+					],
+				],
+                                'default' => [
+                                        'size' => 10,
+                                        'unit' => 'px',
+                                ],
+				'selectors' => [
+					'{{WRAPPER}} span.mc-price-table__currency' => 'margin-right: {{SIZE}}{{UNIT}}; margin-left: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
 
 		$this->add_control(
 			'heading_original_price_style',
@@ -1110,6 +1131,10 @@ class Price_Table extends Base {
                                 ],
 				'selectors' => [
 					'{{WRAPPER}} span.mc-price-table__original-price' => 'margin-right: {{SIZE}}{{UNIT}};',
+				],
+                                'condition' => [
+					'sale' => 'yes',
+					'original_price!' => '',
 				],
 			]
 		);
