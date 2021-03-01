@@ -75,6 +75,15 @@ $widgetsArray = [
             ],
     ],
     
+    'Menu' => [
+            'name'  => __( 'Navigation', 'ultraaddons' ),
+            'is_free'   => true,
+            'icon'      => 'eicon-nav-menu',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
     
     'Price_Table' => [
             'name'  => __( 'Pricing Table', 'ultraaddons' ),
