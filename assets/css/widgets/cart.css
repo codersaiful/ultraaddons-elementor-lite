@@ -57,11 +57,12 @@
     white-space: nowrap;
 }
 
-.ultraaddons-cart-wrapper .site-elementor-cart li.cart-link-li {white-space: nowrap;}
+.ultraaddons-cart-wrapper .site-elementor-cart li.cart-link-li {white-space: nowrap;display: flex;align-items: center;}
 
 .ultraaddons-cart-wrapper li.cart-link-li a {
     text-decoration: none;
-    display: flex;
+    /* display: flex; */
+    /*margin-right: 15px;*/
 }
 
 .ultraaddons-cart-wrapper .site-elementor-cart li.cart-link-li span.woocommerce-Price-amount.amount {
@@ -191,4 +192,15 @@
 }
 .ultraaddons-cart-wrapper span.count {
     padding-left: 11px;
+    padding-right: 11px;
+}
+.ultraaddons-cart-wrapper .icon-wrapper.icon-svg {}
+
+.ultraaddons-cart-wrapper .icon-wrapper.icon-svg {
+    display: inline;
+    padding: 0;
+}
+
+.ultraaddons-cart-wrapper .icon-wrapper.icon-svg img {
+    width: 25px;
 }

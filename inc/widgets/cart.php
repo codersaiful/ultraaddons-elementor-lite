@@ -60,6 +60,7 @@ class Cart extends Base{
         $this->content_general_controls();
         
         $this->content_general_style();
+        $this->content_icon_style();
         $this->content_label_style();
         $this->content_header_style();
 
@@ -169,6 +170,32 @@ class Cart extends Base{
                         'label' => __( 'General', 'ultraaddons' ),
                 ]
         );
+        
+        $this->add_responsive_control(
+                    'align',
+                    [
+                            'label' => __( 'Alignment', 'ultraaddons' ),
+                            'type' => Controls_Manager::CHOOSE,
+                            'options' => [
+                                    'left'    => [
+                                            'title' => __( 'Left', 'ultraaddons' ),
+                                            'icon' => 'eicon-h-align-left',
+                                    ],
+                                    'center' => [
+                                            'title' => __( 'Center', 'ultraaddons' ),
+                                            'icon' => 'eicon-h-align-center',
+                                    ],
+                                    'right' => [
+                                            'title' => __( 'Right', 'ultraaddons' ),
+                                            'icon' => 'eicon-h-align-right',
+                                    ]
+                            ],
+                            'prefix_class' => 'elementor%s-align-',
+                            'default' => 'right',
+                            'toggle' => false,
+                    ]
+            );
+            
         
         $this->add_control(
                     'add_icon',
@@ -303,30 +330,6 @@ class Cart extends Base{
                     ]
             );
             
-            $this->add_responsive_control(
-                    'align',
-                    [
-                            'label' => __( 'Alignment', 'ultraaddons' ),
-                            'type' => Controls_Manager::CHOOSE,
-                            'options' => [
-                                    'left'    => [
-                                            'title' => __( 'Left', 'ultraaddons' ),
-                                            'icon' => 'eicon-text-align-left',
-                                    ],
-                                    'center' => [
-                                            'title' => __( 'Center', 'ultraaddons' ),
-                                            'icon' => 'eicon-text-align-center',
-                                    ],
-                                    'right' => [
-                                            'title' => __( 'Right', 'ultraaddons' ),
-                                            'icon' => 'eicon-text-align-right',
-                                    ]
-                            ],
-                            'prefix_class' => 'elementor%s-align-',
-                            'default' => 'center',
-                            'toggle' => false,
-                    ]
-            );
             
             $this->add_control(
                     'wrapper_bg_color',
@@ -352,6 +355,67 @@ class Cart extends Base{
                             ],
                             'selectors' => [
                                     '{{WRAPPER}} .ultraaddons-cart-wrapper ul.site-elementor-cart' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                            ],
+                    ]
+            );
+            
+            $this->end_controls_section();
+    }
+    
+    
+    /**
+     * General Style Section for Content Controls
+     * 
+     * @since 1.0.2.1
+     */
+    protected function content_icon_style(){
+            $this->start_controls_section(
+                    'icon_style',
+                    [
+                            'label' => __( 'Cart Icon', 'ultraaddons' ),
+                            'tab' => Controls_Manager::TAB_STYLE,
+                    ]
+            );
+            
+            
+            $this->add_control(
+                    'icon_color',
+                    [
+                            'label'     => __( 'Color', 'ultraaddons' ),
+                            'type'      => Controls_Manager::COLOR,
+                            'selectors' => [
+                                    '{{WRAPPER}} .ultraaddons-cart-wrapper .site-elementor-cart li.cart-link-li .icon-wrapper i' => 'color: {{VALUE}}',
+                                    '{{WRAPPER}} .ultraaddons-cart-wrapper .site-elementor-cart li.cart-link-li .icon-wrapper' => 'color: {{VALUE}}',
+                            ],
+                    ]
+            );
+            
+            $this->add_control(
+                    'icon_bg_color',
+                    [
+                            'label'     => __( 'Background', 'ultraaddons' ),
+                            'type'      => Controls_Manager::COLOR,
+                            'default'   => 'transparent',
+                            'selectors' => [
+                                    '{{WRAPPER}} .ultraaddons-cart-wrapper .site-elementor-cart li.cart-link-li .icon-wrapper' => 'background-color: {{VALUE}}',
+                            ],
+                    ]
+            );
+            
+            
+            $this->add_responsive_control(
+                    'icon-padding',
+                    [
+                            'label' => __( 'Padding', 'ultraaddons' ),
+                            'type' => Controls_Manager::DIMENSIONS,
+                            'size_units' => [ 'px', '%' ],
+                            'default'   => [
+                                    'top' => 5,
+                                    'bottom' => 5,
+                                    'unit' => 'px',
+                            ],
+                            'selectors' => [
+                                    '{{WRAPPER}} .ultraaddons-cart-wrapper .site-elementor-cart li.cart-link-li .icon-wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                             ],
                     ]
             );
@@ -454,6 +518,7 @@ class Cart extends Base{
                     [
                             'label'     => __( 'Price Background Color', 'ultraaddons' ),
                             'type'      => Controls_Manager::COLOR,
+                            'default'   => '#13c392',
                             'selectors' => [
                                     '{{WRAPPER}} .ultraaddons-cart-wrapper .site-elementor-cart li.cart-link-li span.woocommerce-Price-amount.amount' => 'background-color: {{VALUE}}',
                             ],
