@@ -1,6 +1,8 @@
 <?php
 namespace UltraAddons\Classes;
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 /**
  * Getting Elementor Template List
  * 
