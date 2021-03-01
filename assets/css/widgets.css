@@ -1,3 +1,7 @@
+/*
+* Style for Header
+* and for Footer
+*/
 body.ultraaddons-header-css .site-header,
 body.ultraaddons-header-css #site-header,
 body.ultraaddons-header-css #masthead,
@@ -43,5 +47,19 @@ body:not(.elementor-page) .ultraaddons-container{
         max-width: 1170px;
     }
 }
+/*******Header Footer Style END here********/
 
-
+/*******************************
+* Common of All Widgets
+********************************/
+.ultraaddons-element .hidden_text,
+.ultraaddons-element .hidden_message,
+.ultraaddons-element .hidden{
+    display: none;
+}
+.elementor-element-edit-mode.ultraaddons-element .hidden_text,
+.elementor-element-edit-mode.ultraaddons-element .hidden_message,
+.elementor-element-edit-mode.ultraaddons-element .hidden{
+    display: block !important;
+    color: #D00;
+}
