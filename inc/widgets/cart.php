@@ -10,6 +10,8 @@ use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Background;
+use Elementor\Icons_Manager;
+use Elementor\Utils;
 
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -97,6 +99,18 @@ class Cart extends Base{
         $title = $settings['cart_title'];
         $cart_text = $settings['cart_label'];
         
+
+        $has_icon = ! empty( $settings['add_icon'] );
+
+        if ( $has_icon ) {
+                $this->add_render_attribute( 'icon-wrapper', 'class', 'icon-wrapper' );
+                $this->add_render_attribute( 'i', 'class', $settings['add_icon'] );
+                $this->add_render_attribute( 'i', 'aria-hidden', 'true' );
+        }
+        $svg        = !empty( $settings['add_icon']['value']['url'] ) && is_string( $settings['add_icon']['value']['url'] ) ? $settings['add_icon']['value']['url'] : false;
+        if ( $svg ) {
+                $this->add_render_attribute( 'icon-wrapper', 'class', 'icon-svg' );
+        }
         ?>
         <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
             
@@ -106,6 +120,13 @@ class Cart extends Base{
 			</li>
 			<li <?php echo $this->get_render_attribute_string( 'cart_link' ); ?>>
 				<?php ultraaddons_woocommerce_cart_link(); ?>
+                            <div <?php echo $this->get_render_attribute_string( 'icon-wrapper' ); ?>>
+                                <?php if( $svg ){ ?>
+                                <img class="ua-cart-icon-image" src="<?php echo esc_url( $svg ); ?>">
+                                <?php }else{ ?>
+                                <i <?php echo $this->get_render_attribute_string( 'i' ); ?>></i>
+                                <?php } ?>
+                            </div>
 			</li>
                         <li class="minicart-content-wrapper">
 				<?php
@@ -128,6 +149,8 @@ class Cart extends Base{
                                 
 				?>
 			</li>
+                        
+                        
 		</ul>
         </div>
         <?php
@@ -148,6 +171,21 @@ class Cart extends Base{
         );
         
         $this->add_control(
+                    'add_icon',
+                    [
+                            'label' => __( 'Cart Icon', 'ultraaddons' ),
+                            'type' => Controls_Manager::ICONS,
+                            'fa4compatibility' => 'icon',
+                            'default' => [
+                                    'value' => 'fas fa-shopping-cart', //<i class="fas fa-shopping-cart"></i>
+                                    'library' => 'fa-solid',
+                            ],
+                    ]
+            );
+        
+        
+        
+        $this->add_control(
                 'cart_label',
                 [
                         'label' => __( 'Cart Label', 'ultraaddons' ),
@@ -158,6 +196,7 @@ class Cart extends Base{
                         'default' => __( 'Shopping Cart', 'ultraaddons' ),
                 ]
         );
+        
         
         $this->add_control(
                 'cart_title',
@@ -172,6 +211,20 @@ class Cart extends Base{
         );
         
         $this->add_control(
+                'expand_always',
+                [
+                        'label' => __( 'Expand Always', 'ultraaddons' ),
+                        'description' => __( 'Cart Item will stay exanded always.', 'ultraaddons' ),
+                        'type' => Controls_Manager::SWITCHER,
+                        'label_on' => __( 'On', 'ultraaddons' ),
+                        'label_off' => __( 'Off', 'ultraaddons' ),
+                        'return_value' => 'yes',
+                        'default' => '',
+                        'prefix_class' => 'expand-always-'
+                ]
+        );
+        
+        $this->add_control(
                 'see_hover',
                 [
                         'label' => __( 'Show Hover', 'ultraaddons' ),
@@ -181,9 +234,56 @@ class Cart extends Base{
                         'label_off' => __( 'Hide', 'ultraaddons' ),
                         'return_value' => 'yes',
                         'default' => '',
-                        'prefix_class' => 'see-hover-in-admin-'
+                        'prefix_class' => 'see-hover-in-admin-',
+                        'condition' => [
+                                'expand_always!' => 'yes',
+                        ],
                 ]
         );
+        
+        
+        $this->add_responsive_control(
+                'item_box_space',
+                [
+                        'label' => __( 'Item Box Spacing', 'medilac' ),
+                        'type' => Controls_Manager::SLIDER,
+                        'default' => [
+                                'size' => 30,
+                        ],
+                        'range' => [
+                                'px' => [
+                                        'min' => 0,
+                                        'max' => 100,
+                                ],
+                        ],
+                        'selectors' => [
+                                '{{WRAPPER}} .ultraaddons-cart-wrapper ul.site-elementor-cart li.minicart-content-wrapper .widget_shopping_cart' => 'margin-top: {{SIZE}}{{UNIT}};',
+                        ],
+                ]
+        );
+        
+        
+        $this->add_responsive_control(
+                'item_box_width',
+                [
+                        'label' => __( 'Item Box Width', 'medilac' ),
+                        'type' => Controls_Manager::SLIDER,
+                        'default' => [
+                                'size' => 400,
+                        ],
+                        'range' => [
+                                'px' => [
+                                        'min' => 200,
+                                        'max' => 800,
+                                ],
+                                
+                        ],
+                        'selectors' => [
+                                '{{WRAPPER}} .ultraaddons-cart-wrapper ul.site-elementor-cart > li.minicart-content-wrapper' => 'width: {{SIZE}}{{UNIT}};',
+                        ],
+                ]
+        );
+        
         
         
         $this->end_controls_section();
@@ -440,6 +540,21 @@ class Cart extends Base{
                             'selectors' => [
                                     '{{WRAPPER}} .ultraaddons-cart-wrapper .site-elementor-cart li.cart-link-li span.count' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                             ],
+                    ]
+            );
+            
+            $this->add_control(
+                    'hide_count',
+                    [
+                            'label' => __( 'Hide Count Item', 'ultraaddons' ),
+                            'type' => Controls_Manager::SWITCHER,
+                            'label_on' => __( 'Hide', 'ultraaddons' ),
+                            'label_off' => __( 'Show', 'ultraaddons' ),
+                            'return_value' => 'yes',
+                            'default' => '',
+                            'selectors' => [
+                                    '{{WRAPPER}} .ultraaddons-cart-wrapper .site-elementor-cart li.cart-link-li span.count' => 'display:none !important;',
+                            ]
                     ]
             );
             
