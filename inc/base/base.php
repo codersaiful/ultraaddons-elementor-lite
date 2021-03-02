@@ -3,6 +3,7 @@ namespace UltraAddons\Widget;
 
 use Elementor\Widget_Base;
 use UltraAddons\Core\Widgets_Manager;
+use UltraAddons\Core\Settings;
 
 defined( 'ABSPATH' ) || die();
 
@@ -135,6 +136,17 @@ class Base extends Widget_Base{
          * @return String Widget category name/slug for Elemetor of UltraAddons Plugin
          */
         $widget_category = apply_filters( 'ultraaddons_widget_category', $default, $this );
+
+        /**
+         * Widget showing in Desired Category
+         * it will come from database
+         * which is sroted from Setting page of UltraAddons
+         * 
+         * @since 1.0.2.1
+         */
+        if( Settings::get_widget_category() && is_array( $widget_category ) ){
+            array_push( $widget_category, Settings::get_widget_category() );
+        }
 
         //Check if null or array
         if( empty( $widget_category ) || ! is_array( $widget_category ) ){
