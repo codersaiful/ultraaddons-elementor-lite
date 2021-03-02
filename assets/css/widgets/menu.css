@@ -1,10 +1,10 @@
-.ua-element-menu ul.ua-menu {
+.ua-element-menu ul.nav-menu {
     /*display: none;*/
     list-style: none;
     margin: 0;
     padding-left: 0;
 }
-.ua-element-menu ul.ua-menu li > ul{
+.ua-element-menu ul.nav-menu li > ul{
     /*display: none;*/
     list-style: none;
 }
@@ -13,24 +13,24 @@ button.ua-menu-toggle {
     /*background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJmZWF0aGVyIGZlYXRoZXItbWVudSI+PGxpbmUgeDE9IjMiIHkxPSIxMiIgeDI9IjIxIiB5Mj0iMTIiPjwvbGluZT48bGluZSB4MT0iMyIgeTE9IjYiIHgyPSIyMSIgeTI9IjYiPjwvbGluZT48bGluZSB4MT0iMyIgeTE9IjE4IiB4Mj0iMjEiIHkyPSIxOCI+PC9saW5lPjwvc3ZnPg==);*/
     /*color: #0fc392;*/
 }
-.ua-element-menu ul.ua-menu > li {
+.ua-element-menu ul.nav-menu > li {
     position: relative;
     display: block;
 }
-.ua-element-menu ul.ua-menu li.menu-item-has-children {
+.ua-element-menu ul.nav-menu li.menu-item-has-children {
     position: relative;
     margin-right: 20px;
     padding-right: 20px;
 }
-.ua-element-menu ul.ua-menu li:after,
-.ua-element-menu ul.ua-menu li:before {
+.ua-element-menu ul.nav-menu li:after,
+.ua-element-menu ul.nav-menu li:before {
     content: "";
     display: block;
     clear: both;
 }
-.ua-element-menu ul.ua-menu > li > a,
-.ua-element-menu ul.ua-menu .focus a,
-.ua-element-menu ul.ua-menu a {
+.ua-element-menu ul.nav-menu > li > a,
+.ua-element-menu ul.nav-menu .focus a,
+.ua-element-menu ul.nav-menu a {
     color: #21272c;
     font-size: 16px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -38,30 +38,30 @@ button.ua-menu-toggle {
     position: relative;
     padding: 10px;
 }
-.ua-element-menu ul.ua-menu li a {
+.ua-element-menu ul.nav-menu li a {
     display: block;
 }
-.ua-element-menu ul.ua-menu li::before {
+.ua-element-menu ul.nav-menu li::before {
     position: absolute;
     color: #21272c;
 }
-.ua-element-menu ul.ua-menu li.menu-item-has-children::before {
+.ua-element-menu ul.nav-menu li.menu-item-has-children::before {
     right: 5px;
     top: 34%;
 }
-.ua-element-menu ul.ua-menu .menu-item-has-children::before {
+.ua-element-menu ul.nav-menu .menu-item-has-children::before {
     content: "\f107";
     font-family: "Font Awesome 5 Free";
     font-weight: 800;
     font-style: normal;
     font-size: 20px;
 }
-/*.ua-element-menu ul.ua-menu .focus > .available-submenu::before {
+/*.ua-element-menu ul.nav-menu .focus > .available-submenu::before {
     content: "\f106";
 }*/
 
 /* Sub Menu */
-/*.ua-element-menu ul.ua-menu ul {
+/*.ua-element-menu ul.nav-menu ul {
     box-shadow: 0 3px 3px rgb(0 0 0 / 20%);
     float: left;
     position: absolute;
@@ -79,22 +79,22 @@ button.ua-menu-toggle {
 }
 @media only screen and (min-width: 991px){
     /*.menu-toggle,*/
-    .ua-element-menu ul.ua-menu {
+    .ua-element-menu ul.nav-menu {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
     }
-    .ua-element-menu ul.ua-menu > li > .available-submenu {
+    .ua-element-menu ul.nav-menu > li > .available-submenu {
         right: -4px;
         top: 31px;
     }
-    .ua-element-menu ul.ua-menu .available-submenu::before {
+    .ua-element-menu ul.nav-menu .available-submenu::before {
         font-size: 14px;
     }
-    .ua-element-menu ul.ua-menu li > ul{
+    .ua-element-menu ul.nav-menu li > ul{
         display: none;
     }
-    .ua-element-menu ul.ua-menu > li > a:before {
+    .ua-element-menu ul.nav-menu > li > a:before {
         position: absolute;
         bottom: 0;
         left: 50%;
@@ -109,26 +109,26 @@ button.ua-menu-toggle {
         transition: 0.3s;
         -webkit-transition: 0.3s;
     }
-    .ua-element-menu ul.ua-menu > li.current-menu-ancestor > a:before,
-    .ua-element-menu ul.ua-menu > li.current-menu-item >a:before,
-    .ua-element-menu ul.ua-menu > li > a:focus:before,
-    .ua-element-menu ul.ua-menu > li.focus > a:hover:before,
-    .ua-element-menu ul.ua-menu > li > a:hover:before {
+    .ua-element-menu ul.nav-menu > li.current-menu-ancestor > a:before,
+    .ua-element-menu ul.nav-menu > li.current-menu-item >a:before,
+    .ua-element-menu ul.nav-menu > li > a:focus:before,
+    .ua-element-menu ul.nav-menu > li.focus > a:hover:before,
+    .ua-element-menu ul.nav-menu > li > a:hover:before {
         width: 100%;
         visibility: visible;
         opacity: 1;
     }
-    .ua-element-menu ul.ua-menu > li > a {
+    .ua-element-menu ul.nav-menu > li > a {
         padding: 30px 10px;
     }
-    .ua-element-menu ul.ua-menu > li.current-menu-ancestor > a,
-    .ua-element-menu ul.ua-menu > li.current-menu-item > a,
-    .ua-element-menu ul.ua-menu > li > a:focus,
-    .ua-element-menu ul.ua-menu > li > a:hover {
+    .ua-element-menu ul.nav-menu > li.current-menu-ancestor > a,
+    .ua-element-menu ul.nav-menu > li.current-menu-item > a,
+    .ua-element-menu ul.nav-menu > li > a:focus,
+    .ua-element-menu ul.nav-menu > li > a:hover {
         color: #0fc392;
         outline: none;
     }
-    .ua-element-menu ul.ua-menu li.menu-item-has-children .sub-menu>li>a {
+    .ua-element-menu ul.nav-menu li.menu-item-has-children .sub-menu>li>a {
         display: inline-block;
         transition: 0.3s;
         font-weight: 500;
@@ -144,11 +144,11 @@ button.ua-menu-toggle {
         transition: 0.3s;
         -webkit-transition: 0.3s;
     }
-    .ua-element-menu ul.ua-menu li:active .sub-menu,
-    .ua-element-menu ul.ua-menu li:hover .sub-menu,
-    .ua-element-menu ul.ua-menu li:focus .sub-menu,
-    .ua-element-menu ul.ua-menu li.menu-item-has-children.focus>ul.sub-menu,
-    .ua-element-menu ul.ua-menu li.focus .sub-menu {
+    .ua-element-menu ul.nav-menu li:active .sub-menu,
+    .ua-element-menu ul.nav-menu li:hover .sub-menu,
+    .ua-element-menu ul.nav-menu li:focus .sub-menu,
+    .ua-element-menu ul.nav-menu li.menu-item-has-children.focus>ul.sub-menu,
+    .ua-element-menu ul.nav-menu li.focus .sub-menu {
         display: block;
         position: absolute;
         text-align: left;
@@ -162,18 +162,18 @@ button.ua-menu-toggle {
         border-bottom-right-radius: 5px;
         flex-direction: column;
     }
-    .ua-element-menu ul.ua-menu li:hover .sub-menu .sub-menu {
+    .ua-element-menu ul.nav-menu li:hover .sub-menu .sub-menu {
         display: none;
     }
-    .ua-element-menu ul.ua-menu li.menu-item-has-children:hover>.sub-menu,
-    .ua-element-menu ul.ua-menu li.menu-item-has-children:focus>.sub-menu,
-    .ua-element-menu ul.ua-menu li.menu-item-has-children:active>.sub-menu {
+    .ua-element-menu ul.nav-menu li.menu-item-has-children:hover>.sub-menu,
+    .ua-element-menu ul.nav-menu li.menu-item-has-children:focus>.sub-menu,
+    .ua-element-menu ul.nav-menu li.menu-item-has-children:active>.sub-menu {
         transition-delay: 0s;
         visibility: visible;
         opacity: 1;
         display: block;
     }
-    .ua-element-menu ul.ua-menu li.menu-item-has-children .sub-menu li.menu-item-has-children .sub-menu {
+    .ua-element-menu ul.nav-menu li.menu-item-has-children .sub-menu li.menu-item-has-children .sub-menu {
         top: 0;
         left: 100%;
     }

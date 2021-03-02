@@ -82,7 +82,7 @@ class Menu extends Base{
         }
         $wrapper_id = 'ultraaddons-navigation-' . $this->get_id();
         $this->add_render_attribute( 'wrapper', 'class', [
-            'ultraaddons-navigation-wrapper',
+            'main-navigation',
             'ultraaddons-navigation',
             $wrapper_id,
         ] );
@@ -92,10 +92,10 @@ class Menu extends Base{
         $args = array(
 		'menu'                 => $menu_id,
 		'container'            => 'div',
-		'container_class'      => 'ua-menu-wrapper',
+		'container_class'      => 'menu',
 		'container_id'         => '',
 		'container_aria_label' => '',
-		'menu_class'           => 'ua-menu',
+		//'menu_class'           => '',
 		'menu_id'              => '',
 		'echo'                 => false,
 		'fallback_cb'          => '__return_empty_string',//'wp_page_menu',
