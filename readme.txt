@@ -38,6 +38,21 @@ Elementor page/section show in Sidebar area. using WordPress widget.
 * Slider with Any content. Dynamic content.
 * Slider with Pre-build Template of Elementor
 
+**Widgets**
+
+* Price Table
+* WooCommerce Mini Cart
+* Navigation
+* Button
+* Heading
+* Icon Box
+* Info Box
+* List Item
+* WordPress Search Box
+* WooCommerce Search Box
+* Woo Product Table
+
+
 **Demo**
 
 - [**Slider**](https://ultraaddons.com/slider/) – Powerful Slider.
