@@ -1,7 +1,7 @@
 === UltraAddons Elementor Lite (Header & Footer Builder, Menu Builder, Cart Icon, Shortcode) ===
 
 Plugin Name: UltraAddons Elementor Lite
-Version: 1.0.2
+Version: 1.0.3
 Author: codersaiful
 Author URI: https://ultraaddons.com/
 Tags: addons, elementor addons, ultraaddons, page builder, page builder addons, Editor, Web Page Builder
