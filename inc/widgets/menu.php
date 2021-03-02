@@ -80,10 +80,9 @@ class Menu extends Base{
             echo wp_kses_post( '<h2 class="hidden_text">' . __( 'There is no menu available. Please create First' ) . '</h2>' );
             return;
         }
-        $wrapper_id = 'ultraaddons-navigation-' . $this->get_id();
+        $wrapper_id = 'ua-navigation-' . $this->get_id();
         $this->add_render_attribute( 'wrapper', 'class', [
-            'main-navigation',
-            'ultraaddons-navigation',
+            'ua-navigation',
             $wrapper_id,
         ] );
         $this->add_render_attribute( 'wrapper', 'id', $wrapper_id );
@@ -92,10 +91,10 @@ class Menu extends Base{
         $args = array(
 		'menu'                 => $menu_id,
 		'container'            => 'div',
-		'container_class'      => 'menu',
+		'container_class'      => 'ua-menu-container',
 		'container_id'         => '',
 		'container_aria_label' => '',
-		//'menu_class'           => '',
+		'menu_class'           => 'ua-nav-menu',
 		'menu_id'              => '',
 		'echo'                 => false,
 		'fallback_cb'          => '__return_empty_string',//'wp_page_menu',
@@ -120,12 +119,12 @@ class Menu extends Base{
                 $this->add_render_attribute( 'i', 'class', $settings['add_icon'] );
                 $this->add_render_attribute( 'i', 'aria-hidden', 'true' );
         }
-        $svg        = !empty( $settings['add_add_icon']['value']['url'] ) && is_string( $settings['add_add_icon']['value']['url'] ) ? $settings['add_add_icon']['value']['url'] : false;
+        $svg        = !empty( $settings['add_icon']['value']['url'] ) && is_string( $settings['add_icon']['value']['url'] ) ? $settings['add_icon']['value']['url'] : false;
 
         ?>
         <nav <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
             <div class="ua-nav-inside">
-                <button class="ua-menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+                <button class="ua-menu-toggle" aria-controls="<?php echo esc_attr( $wrapper_id ); ?>" aria-expanded="false">
                     <?php if( $svg ){ ?>
                     <img class="ua-menu-icon-svg" src="<?php echo esc_url( $svg ); ?>">
                     <?php }elseif( $has_icon ){ ?>
