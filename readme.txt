@@ -1,7 +1,7 @@
 === UltraAddons Elementor Lite (Header & Footer Builder, Menu Builder, Cart Icon, Shortcode) ===
 
 Plugin Name: UltraAddons Elementor Lite
-Version: 1.0.0
+Version: 1.0.3
 Author: codersaiful
 Author URI: https://ultraaddons.com/
 Tags: addons, elementor addons, ultraaddons, page builder, page builder addons, Editor, Web Page Builder
@@ -37,6 +37,21 @@ Elementor page/section show in Sidebar area. using WordPress widget.
 * Advance Slider Slider
 * Slider with Any content. Dynamic content.
 * Slider with Pre-build Template of Elementor
+
+**Widgets**
+
+* Price Table
+* WooCommerce Mini Cart
+* Navigation
+* Button
+* Heading
+* Icon Box
+* Info Box
+* List Item
+* WordPress Search Box
+* WooCommerce Search Box
+* Woo Product Table
+
 
 **Demo**
 
