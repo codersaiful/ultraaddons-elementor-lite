@@ -189,6 +189,17 @@ class Admin_Handle{
                 'position'      =>  2,
             ],
             
+            [
+                'parent_slug'   => self::$menu_slug,//$parent_slug,
+                'page_title'    =>  __( 'Settings for UltraAddons', 'ultraaddons' ),
+                'menu_title'    =>  __( 'Settings', 'ultraaddons' ),
+                'capability'    => self::$capability,
+                'menu_slug'     => 'ultraaddons-elementor-settings',
+                'function'      => [__CLASS__, 'settings_page'],
+                'position'      =>  9992,
+            ],
+            
+            
         ];
         
         self::$sub_menu = apply_filters( 'ultraaddons/admin/sub_menu', self::$sub_menu );
@@ -242,6 +253,17 @@ class Admin_Handle{
         include_once self::$header_file;
         
         include ULTRA_ADDONS_DIR . 'admin/pages/header-footer.php';
+        
+        include_once self::$footer_file;
+    }
+    
+    /**
+     * Opening Header Footer for User.
+     */
+    public static function settings_page() {
+        include_once self::$header_file;
+        
+        include ULTRA_ADDONS_DIR . 'admin/pages/settings.php';
         
         include_once self::$footer_file;
     }

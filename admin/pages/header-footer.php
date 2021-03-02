@@ -140,8 +140,8 @@ $add_new_elementor_template = admin_url( 'edit.php?post_type=elementor_library#a
                         <div class="ultraaddons-field-container field-container-size">
                             <label class="field-label field-label-header-choose"><?php echo esc_html__( 'Container Size', 'ultraaddons' ); ?></label>    
                             <select class="ultraddons-select" name="wrapper">
-                                <option value="box" selected="<?php echo $wrapper == 'box' ? 'selected' : ''; ?>"><?php echo esc_html__( 'Box', 'ultraaddons' ); ?></option>
-                                <option value="flued" selected="<?php echo $wrapper == 'Flued' ? 'selected' : ''; ?>"><?php echo esc_html__( 'Flued', 'ultraaddons' ); ?></option>
+                                <option value="box" <?php echo $wrapper == 'box' ? 'selected' : ''; ?>><?php echo esc_html__( 'Box', 'ultraaddons' ); ?></option>
+                                <option value="flued" <?php echo $wrapper == 'flued' ? 'selected' : ''; ?>><?php echo esc_html__( 'Flued', 'ultraaddons' ); ?></option>
                                 
                             </select>
                             <div class="ua-form-message">

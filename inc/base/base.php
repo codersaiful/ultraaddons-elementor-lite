@@ -3,6 +3,7 @@ namespace UltraAddons\Widget;
 
 use Elementor\Widget_Base;
 use UltraAddons\Core\Widgets_Manager;
+use UltraAddons\Core\Settings;
 
 defined( 'ABSPATH' ) || die();
 
@@ -136,6 +137,17 @@ class Base extends Widget_Base{
          */
         $widget_category = apply_filters( 'ultraaddons_widget_category', $default, $this );
 
+        /**
+         * Widget showing in Desired Category
+         * it will come from database
+         * which is sroted from Setting page of UltraAddons
+         * 
+         * @since 1.0.2.1
+         */
+        if( Settings::get_widget_category() && is_array( $widget_category ) ){
+            array_push( $widget_category, Settings::get_widget_category() );
+        }
+
         //Check if null or array
         if( empty( $widget_category ) || ! is_array( $widget_category ) ){
             $widget_category = $default;
@@ -187,9 +199,9 @@ class Base extends Widget_Base{
     public function get_html_wrapper_class() {
         $wr_class = strtolower( str_replace( '_', '-', $this->get_pure_name() ) );
         $html_class = parent::get_html_wrapper_class();
-        $html_class .= ' ultraaddons-element';
+        $html_class .= ' ua-element';
         $html_class .= ' ua-element-' . $wr_class . ' ';
-        $html_class .= ' ua-' . $this->get_name() . ' ';
+        //$html_class .= ' ua-' . $this->get_name() . ' ';
         
         return rtrim( $html_class );
     }
