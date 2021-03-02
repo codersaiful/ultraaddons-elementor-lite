@@ -52,14 +52,14 @@ body:not(.elementor-page) .ultraaddons-container{
 /*******************************
 * Common of All Widgets
 ********************************/
-.ultraaddons-element .hidden_text,
-.ultraaddons-element .hidden_message,
-.ultraaddons-element .hidden{
+.ua-element .hidden_text,
+.ua-element .hidden_message,
+.ua-element .hidden{
     display: none;
 }
-.elementor-element-edit-mode.ultraaddons-element .hidden_text,
-.elementor-element-edit-mode.ultraaddons-element .hidden_message,
-.elementor-element-edit-mode.ultraaddons-element .hidden{
+.elementor-element-edit-mode.ua-element .hidden_text,
+.elementor-element-edit-mode.ua-element .hidden_message,
+.elementor-element-edit-mode.ua-element .hidden{
     display: block !important;
     color: #D00;
 }

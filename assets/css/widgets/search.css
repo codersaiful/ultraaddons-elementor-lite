@@ -1,12 +1,12 @@
 
-.ultraaddons-element form.search-form,
-.ultraaddons-element form.woocommerce-product-search{
+.ua-element form.search-form,
+.ua-element form.woocommerce-product-search{
   position: relative;
   display: flex;
 }
 
-.ultraaddons-element form.search-form input.search-field,
-.ultraaddons-element form.woocommerce-product-search input.search-field{
+.ua-element form.search-form input.search-field,
+.ua-element form.woocommerce-product-search input.search-field{
   width: 100%;
   height: 58px;
   border: 1px solid #e2ebf1;
@@ -16,33 +16,33 @@
   color: #5c6b79;
   color: var(--medilac-light-dark);
 }
-.ultraaddons-element form.search-form label{width: 100%;}
-.ultraaddons-element form.search-form input.search-field::-webkit-input-placeholder,
-.ultraaddons-element form.woocommerce-product-search input.search-field::-webkit-input-placeholder{
+.ua-element form.search-form label{width: 100%;}
+.ua-element form.search-form input.search-field::-webkit-input-placeholder,
+.ua-element form.woocommerce-product-search input.search-field::-webkit-input-placeholder{
   opacity:1;
   -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }
 
-.ultraaddons-element form.search-form input.search-field::-moz-placeholder,
-.ultraaddons-element form.woocommerce-product-search input.search-field::-moz-placeholder{
+.ua-element form.search-form input.search-field::-moz-placeholder,
+.ua-element form.woocommerce-product-search input.search-field::-moz-placeholder{
   opacity:1;
   -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }
 
-.ultraaddons-element form.search-form input.search-field:-ms-input-placeholder,
-.ultraaddons-element form.woocommerce-product-search input.search-field:-ms-input-placeholder{
+.ua-element form.search-form input.search-field:-ms-input-placeholder,
+.ua-element form.woocommerce-product-search input.search-field:-ms-input-placeholder{
   opacity:1;
   -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }
 
-.ultraaddons-element form.search-form input.search-field::placeholder,
-.ultraaddons-element form.woocommerce-product-search input.search-field::placeholder{
+.ua-element form.search-form input.search-field::placeholder,
+.ua-element form.woocommerce-product-search input.search-field::placeholder{
   opacity:1;
   -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }
 
-.ultraaddons-element form.search-form input.search-submit,
-.ultraaddons-element form.woocommerce-product-search button{
+.ua-element form.search-form input.search-submit,
+.ua-element form.woocommerce-product-search button{
   /* position: absolute; */
   top: 0;
   right: 0;
@@ -58,12 +58,12 @@
   background-color: #0fc392;
   cursor: pointer;
 }
-.ultraaddons-element form.search-form input.search-submit:hover, 
-.ultraaddons-element form.woocommerce-product-search button:hover,
-.ultraaddons-element form.search-form input.search-submit:focus, 
-.ultraaddons-element form.woocommerce-product-search button:focus,
-.ultraaddons-element form.search-form input.search-submit:active, 
-.ultraaddons-element form.woocommerce-product-search button:active
+.ua-element form.search-form input.search-submit:hover, 
+.ua-element form.woocommerce-product-search button:hover,
+.ua-element form.search-form input.search-submit:focus, 
+.ua-element form.woocommerce-product-search button:focus,
+.ua-element form.search-form input.search-submit:active, 
+.ua-element form.woocommerce-product-search button:active
 {
     background-color: #0c9e77;
 }

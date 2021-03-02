@@ -66,20 +66,20 @@ span.ua-price-table__period.ua-typo-excluded {
 .ultraaddons-featured-item-ribbon-top.ultraaddons-featured-item-ribbon-left .ua-price-table__ribbon{left: 0;top: 0;}
 .ultraaddons-featured-item-ribbon-top.ultraaddons-featured-item-ribbon-right .ua-price-table__ribbon{right: 0;top: 0;}
 
-.ua-ultraaddons-price-table .ua-button.ua-size-xs {
+.ua-element-price-table .ua-button.ua-size-xs {
     padding: 4px 18px 4px 18px;
 }
-.ua-ultraaddons-price-table .ua-button.ua-size-sm {
+.ua-element-price-table .ua-button.ua-size-sm {
     padding: 10px 25px;
 }
-.ua-ultraaddons-price-table .ua-button.ua-size-md {
+.ua-element-price-table .ua-button.ua-size-md {
     padding: 15px 40px;
 }
-.ua-ultraaddons-price-table .ua-button.ua-size-lg {
+.ua-element-price-table .ua-button.ua-size-lg {
     padding: 15px 46px;
     font-size: 22px;
 }
-.ua-ultraaddons-price-table .ua-button.ua-size-xl {
+.ua-element-price-table .ua-button.ua-size-xl {
     padding: 18px 75px;
     font-size: 30px;
 }
@@ -125,4 +125,4 @@ span.currency-inner-wrapper span.ua-price-table__currency_sep {
 .pricing-table-temp-2 .ua-pricing-table-icon {
     color: #efefef;
 }
-.ultraaddons-element.ua-element-price-table .ua-button{text-decoration: none;}
+.ua-element.ua-element-price-table .ua-button{text-decoration: none;}

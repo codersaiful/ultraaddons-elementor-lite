@@ -187,9 +187,9 @@ class Base extends Widget_Base{
     public function get_html_wrapper_class() {
         $wr_class = strtolower( str_replace( '_', '-', $this->get_pure_name() ) );
         $html_class = parent::get_html_wrapper_class();
-        $html_class .= ' ultraaddons-element';
+        $html_class .= ' ua-element';
         $html_class .= ' ua-element-' . $wr_class . ' ';
-        $html_class .= ' ua-' . $this->get_name() . ' ';
+        //$html_class .= ' ua-' . $this->get_name() . ' ';
         
         return rtrim( $html_class );
     }
