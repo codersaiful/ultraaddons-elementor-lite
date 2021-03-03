@@ -145,7 +145,38 @@
                     }
             );
             
+           /*
            
+                var fnHanlders = {
+			'ha-image-compare.default'      : HandleImageCompare,
+			'ha-number.default'             : NumberHandler,
+			'ha-skills.default'             : SkillHandler,
+			'ha-fun-factor.default'         : FunFactor,
+			'ha-bar-chart.default'          : BarChart,
+			'ha-twitter-feed.default'       : TwitterFeed,
+			'ha-threesixty-rotation.default': Threesixty_Rotation,
+			'ha-data-table.default'         : DataTable,
+			'widget'                        : BackgroundOverlay,
+		};
+
+		$.each( fnHanlders, function( widgetName, handlerFn ) {
+			elementorFrontend.hooks.addAction( 'frontend/element_ready/' + widgetName, handlerFn );
+		});
+
+		var classHandlers = {
+			'ha-image-grid.default'       : ImageGrid,
+			'ha-justified-gallery.default': JustifiedGrid,
+			'ha-news-ticker.default'      : NewsTicker,
+			'ha-post-tab.default'         : PostTab
+		};
+
+		$.each( classHandlers, function( widgetName, handlerClass ) {
+			elementorFrontend.hooks.addAction( 'frontend/element_ready/' + widgetName, function( $scope ) {
+				elementorFrontend.elementsHandler.addHandler( handlerClass, { $element: $scope });
+			});
+		});
+           
+           */
            
            // Wrapper Link
            $('.ua-wrapper-link').each(function() {
