@@ -18,6 +18,14 @@
             var EF = elementorFrontend,
                 EM = elementorModules;
             
+            /**
+             * Default Slider is Carousel Slider for UltraAddons.
+             * 
+             * In future, we will use other slider. But for now
+             * we have used only Carousel Slider.
+             * 
+             * @type Object of Slider
+             */
             var SliderBase = EM.frontend.handlers.Base.extend({
                     onInit: function () {
                             EM.frontend.handlers.Base.prototype.onInit.apply(this, arguments);
@@ -78,23 +86,20 @@
                             }
                             
                             settings.items = this.getElementSettings('slides_to_show') || 1;
-                            settings.responsive = [
-                                    {
-                                            breakpoint: EF.config.breakpoints.lg,
-                                            settings: {
-                                                    items: (this.getElementSettings('slides_to_show_tablet') || settings.slidesToShow),
-                                            }
-                                    },
-                                    {
-                                            breakpoint: EF.config.breakpoints.md,
-                                            settings: {
-                                                    items: (this.getElementSettings('slides_to_show_mobile') || this.getElementSettings('slides_to_show_tablet')) || settings.slidesToShow,
-                                            }
-                                    }
-                            ];
-
-
+                            settings.responsive={};
+                            settings.responsive[EF.config.breakpoints.xs] = {
+                                    items: (this.getElementSettings('slides_to_show_mobile') || this.getElementSettings('slides_to_show_tablet')) || settings.items,
+                                    nav:true
+                                };
                             
+                            settings.responsive[EF.config.breakpoints.md] = {
+                                    items: (this.getElementSettings('slides_to_show_tablet') || settings.items),
+                                    nav:true
+                                };
+                            
+                            settings.responsive[EF.config.breakpoints.lg] = {
+                                    items: settings.items
+                                };
 
                             return $.extend({}, this.getDefaultSettings(), settings);
                     },
