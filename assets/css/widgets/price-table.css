@@ -126,8 +126,12 @@ span.currency-inner-wrapper span.ua-price-table__currency_sep {
     color: #efefef;
 }
 .ua-element.ua-element-price-table .ua-button{text-decoration: none;}
-.mc-price-table__feature-inner {
+/* .elementor-align-left .ua-price-table__feature-inner,.elementor-align-right .ua-price-table__feature-inner{
     display: flex;
     column-gap: 10px;
     align-items: center;
 }
+.elementor-align-right .ua-price-table__feature-inner{
+    flex-direction:row-reverse;
+}
+ */
