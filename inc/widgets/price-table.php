@@ -854,7 +854,7 @@ class Price_Table extends Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'price_typography',
-				'selector' => '{{WRAPPER}} .ua-price-table__price',
+				'selector' => '{{WRAPPER}} .ua-price-table__price_inner',
 				'scheme' => Schemes\Typography::TYPOGRAPHY_1,
 			]
 		);

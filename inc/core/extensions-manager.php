@@ -90,6 +90,23 @@ class Extensions_Manager{
                     ],
             ],
             
+            /**
+             * CSS Transform Editing for
+             * Any content/any element/
+             * We will added this Extenstion at V1.0.3.0
+             * 
+             * @date 4.3.2021
+             * @since 1.0.3.0
+             */
+            'Transform' => [
+                    'name'  => __( 'CSS Transform', 'ultraaddons' ),
+                    'is_free'   => true,
+                    'icon'      => 'eicon-heading',
+                    'cat'       => [
+                        __( 'Basic', 'ultraaddons' ),
+                    ],
+            ],
+            
 
             'Animation_Effect' => [
                     'name'  => __( 'Animation Effect', 'ultraaddons' ),

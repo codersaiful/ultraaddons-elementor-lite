@@ -18,6 +18,14 @@
             var EF = elementorFrontend,
                 EM = elementorModules;
             
+            /**
+             * Default Slider is Carousel Slider for UltraAddons.
+             * 
+             * In future, we will use other slider. But for now
+             * we have used only Carousel Slider.
+             * 
+             * @type Object of Slider
+             */
             var SliderBase = EM.frontend.handlers.Base.extend({
                     onInit: function () {
                             EM.frontend.handlers.Base.prototype.onInit.apply(this, arguments);
@@ -78,23 +86,20 @@
                             }
                             
                             settings.items = this.getElementSettings('slides_to_show') || 1;
-                            settings.responsive = [
-                                    {
-                                            breakpoint: EF.config.breakpoints.lg,
-                                            settings: {
-                                                    items: (this.getElementSettings('slides_to_show_tablet') || settings.slidesToShow),
-                                            }
-                                    },
-                                    {
-                                            breakpoint: EF.config.breakpoints.md,
-                                            settings: {
-                                                    items: (this.getElementSettings('slides_to_show_mobile') || this.getElementSettings('slides_to_show_tablet')) || settings.slidesToShow,
-                                            }
-                                    }
-                            ];
-
-
+                            settings.responsive={};
+                            settings.responsive[EF.config.breakpoints.xs] = {
+                                    items: (this.getElementSettings('slides_to_show_mobile') || this.getElementSettings('slides_to_show_tablet')) || settings.items,
+                                    nav:true
+                                };
                             
+                            settings.responsive[EF.config.breakpoints.md] = {
+                                    items: (this.getElementSettings('slides_to_show_tablet') || settings.items),
+                                    nav:true
+                                };
+                            
+                            settings.responsive[EF.config.breakpoints.lg] = {
+                                    items: settings.items
+                                };
 
                             return $.extend({}, this.getDefaultSettings(), settings);
                     },
@@ -140,7 +145,38 @@
                     }
             );
             
+           /*
            
+                var fnHanlders = {
+			'ha-image-compare.default'      : HandleImageCompare,
+			'ha-number.default'             : NumberHandler,
+			'ha-skills.default'             : SkillHandler,
+			'ha-fun-factor.default'         : FunFactor,
+			'ha-bar-chart.default'          : BarChart,
+			'ha-twitter-feed.default'       : TwitterFeed,
+			'ha-threesixty-rotation.default': Threesixty_Rotation,
+			'ha-data-table.default'         : DataTable,
+			'widget'                        : BackgroundOverlay,
+		};
+
+		$.each( fnHanlders, function( widgetName, handlerFn ) {
+			elementorFrontend.hooks.addAction( 'frontend/element_ready/' + widgetName, handlerFn );
+		});
+
+		var classHandlers = {
+			'ha-image-grid.default'       : ImageGrid,
+			'ha-justified-gallery.default': JustifiedGrid,
+			'ha-news-ticker.default'      : NewsTicker,
+			'ha-post-tab.default'         : PostTab
+		};
+
+		$.each( classHandlers, function( widgetName, handlerClass ) {
+			elementorFrontend.hooks.addAction( 'frontend/element_ready/' + widgetName, function( $scope ) {
+				elementorFrontend.elementsHandler.addHandler( handlerClass, { $element: $scope });
+			});
+		});
+           
+           */
            
            // Wrapper Link
            $('.ua-wrapper-link').each(function() {
