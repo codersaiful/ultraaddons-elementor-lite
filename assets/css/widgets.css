@@ -63,3 +63,10 @@ body:not(.elementor-page) .ultraaddons-container{
     display: block !important;
     color: #D00;
 }
+
+/*******************************
+* Transition
+********************************/
+.ua-transformed .elementor-widget-container {
+    transition: 1s all;
+}
