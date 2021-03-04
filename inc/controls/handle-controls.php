@@ -15,6 +15,24 @@ class Handle_Controls{
     }
     
     /**
+     * Replace Args label value
+     * we will change $args['label'] value with our new name
+     * 
+     * @param array $args
+     * @param type $new_name
+     * @return Array
+     */
+    public static function replace_label( $args = [], $new_name = false ) {
+        if( ! is_array( $args ) || ! $new_name || empty( $new_name ) ){
+            return $args;
+        }
+        $args['label'] = $new_name;
+        
+        return $args;
+    }
+    
+    
+    /**
      * Changing anything from selector of Control Args
      * 
      * to change something from Selecto
