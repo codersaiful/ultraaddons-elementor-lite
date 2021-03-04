@@ -53,12 +53,12 @@ class Transform {
 				'label' => __( 'Rotation', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
-					'size' => 0,
+					'size' => '',
 					'unit' => 'deg',
 				],
 				'range' => [
 					'deg' => [
-						'min' => 0,
+						'min' => -360,
 						'max' => 360,
 					],
 				],
@@ -67,6 +67,10 @@ class Transform {
 					'{{WRAPPER}} .elementor-widget-container' => 'transform:rotate({{SIZE}}{{UNIT}});',
 				],
 			];
+                
+                $rotateX_args = Handle_Controls::replace_selector_value( $rotate_args, 'rotate', 'rotateX' );
+                $rotateY_args = Handle_Controls::replace_selector_value( $rotate_args, 'rotate', 'rotateY' );
+
                 
                 
                 $element->start_controls_tabs( 'transition_tabs',
@@ -84,7 +88,17 @@ class Transform {
 			]
 		);
                 
+                $element->add_control(
+			'rotation_heading',
+			[
+				'label' => __( 'Rotation', 'ultraaddons' ),
+                                'type' => Controls_Manager::HEADING,
+                                'separator'   => 'after', 
+			]
+		);
                 $element->add_control( 'rotate', $rotate_args );
+                $element->add_control( 'rotateX', $rotateX_args );
+                $element->add_control( 'rotateY', $rotateY_args );
 
                 $element->end_controls_tab(); //End of Normal Tab
                 
@@ -99,8 +113,9 @@ class Transform {
 			]
 		);
                 
-//                $element->add_control( 'rotate_hover', $rotate_args );
                 $element->add_control( 'rotate_hover', Handle_Controls::convert_hover( $rotate_args ) );
+                $element->add_control( 'rotateX_hover', Handle_Controls::convert_hover( $rotateX_args ) );
+                $element->add_control( 'rotateY_hover', Handle_Controls::convert_hover( $rotateY_args ) );
                 
                 $element->end_controls_tab(); //End of Hover Tab
                 
@@ -127,22 +142,42 @@ class Transform {
 	public static function before_section_render( Element_Base $element ) {
 		$settings = $element->get_settings_for_display();
                 $on_off = $settings['on_off'];
+
+                if ( empty( $on_off ) ) {
+                    return false;
+                }
+                
                 $data_transform = [
                     'on_off' => $on_off,
                     'transforms' => [
                         'rotate'      => $settings['rotate'],
+                        'rotateX'      => $settings['rotateX'],
+                        'rotateY'      => $settings['rotateY'],
                     ],
+                    
                 ];
-		if ( $on_off && ! empty( $on_off ) ) {
-			$element->add_render_attribute(
-				'_wrapper',
-				[
-					'data-transform' => json_encode( $data_transform ),
-					'class' => 'ua-transformed'
-				]
-			);
-		}
+                
+                /**
+                 * Convert data_transform transform
+                 */
+                foreach( $data_transform['transforms'] as $transform_key => $transform_value ){
+                    $target_setngs_key = $transform_key . '_hover';
+                    $data_transform['transforms_hover'][$transform_key] = isset( $settings[$target_setngs_key] ) ? $settings[$target_setngs_key] : false;
+                }
 
+                
+
+
+                /**
+                 * Adding Class where already Transform Selected
+                 */
+                $element->add_render_attribute(
+                        '_wrapper',
+                        [
+                                'data-transform' => json_encode( $data_transform ),
+                                'class' => 'ua-transformed'
+                        ]
+                );
 	}
 }
 
