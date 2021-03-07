@@ -14,31 +14,13 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Price_Table extends Base {
     
+    use \UltraAddons\Traits\Button_Helper;
+    
     public function get_keywords() {
             return [ 'ultraaddons', 'pricing', 'table', 'price', 'list', 'compare' ];
     }
     
-    /**
-     * Get button sizes.
-     *
-     * Retrieve an array of button sizes for the button widget.
-     *
-     * @since 1.0.0
-     * @access public
-     * @static
-     *
-     * @return array An array containing button sizes.
-     */
-    public static function get_button_sizes() {
-            return [
-                    'xs' => __( 'Extra Small', 'ultraaddons' ),
-                    'sm' => __( 'Small', 'ultraaddons' ),
-                    'md' => __( 'Medium', 'ultraaddons' ),
-                    'lg' => __( 'Large', 'ultraaddons' ),
-                    'xl' => __( 'Extra Large', 'ultraaddons' ),
-            ];
-    }
-
+    
     /**
      * Register widget controls.
      *
@@ -48,7 +30,16 @@ class Price_Table extends Base {
      * @access protected
      */
     protected function _register_controls() {
-            
+        
+        /**
+         * Register Controls of Button
+         * will come from our Trait Button Helper
+         * 
+         * @since 1.0.3.2
+         * @date 7.3.2021
+         */
+        $this->button_register_controls();
+        
                 $this->start_controls_section(
 			'section_header',
 			[
@@ -1929,6 +1920,10 @@ class Price_Table extends Base {
                                 </ul>
                         <?php endif; ?>
 
+                        <?php 
+                            $this->button_render();
+                        ?>
+                    
                         <?php if ( ! empty( $settings['button_text'] ) || ! empty( $settings['footer_additional_info'] ) ) : ?>
                                 <div class="ua-price-table__footer">
                                         <?php if ( ! empty( $settings['button_text'] ) ) : ?>

@@ -747,7 +747,7 @@ class Info_Box extends Base {
             <p <?php echo $this->get_render_attribute_string( 'description_text' ); ?>><?php echo $settings['description_text']; ?></p>
             <?php endif; ?>
         </div>
-        <?php $this->render_button(); ?>
+        <?php $this->button_render(); ?>
     </div>
     <?php
         

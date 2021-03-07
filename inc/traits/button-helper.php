@@ -12,7 +12,7 @@ use Elementor\Utils;
 
 trait Button_Helper{
     
-    public function render_button() {
+    public function button_render() {
             $settings = $this->get_settings_for_display();
 
             $has_button_link = ! empty( $settings['btn_link']['url'] );
@@ -21,10 +21,11 @@ trait Button_Helper{
                 $this->add_link_attributes( 'btn_link', $settings['btn_link'] );
                 $this->add_render_attribute( 'btn_link', 'class', 'elementor-button-link' );
                 
-                $this->add_render_attribute( 'infobox_button_wrapper', 'class', 'infobox-button-wrapper' );
+                $this->add_render_attribute( 'btn_wrapper', 'class', 'btn-wrapper' );
             }
             
             $this->add_render_attribute( 'btn_link', 'class', 'elementor-button' );
+            $this->add_render_attribute( 'btn_link', 'class', 'ua-button' );
             $this->add_render_attribute( 'btn_link', 'role', 'button' );
             
             
@@ -56,7 +57,7 @@ trait Button_Helper{
 
             ?>
 
-        <div <?php echo $this->get_render_attribute_string( 'infobox_button_wrapper' ); ?>>
+        <div <?php echo $this->get_render_attribute_string( 'btn_wrapper' ); ?>>
                 <a <?php echo $this->get_render_attribute_string( 'btn_link' ); ?>>
                     <span <?php echo $this->get_render_attribute_string( 'content-wrapper' ); ?>>
                             <?php if ( ! empty( $settings['icon'] ) || ! empty( $settings['btn_icon']['value'] ) ) : ?>
@@ -84,7 +85,7 @@ trait Button_Helper{
 
     public function button_style_control(){
         $this->start_controls_section(
-                    'section_style',
+                    'btn_section_style',
                     [
                             'label' => __( 'Button', 'ultraaddons' ),
                             'tab' => Controls_Manager::TAB_STYLE,
@@ -94,7 +95,7 @@ trait Button_Helper{
             $this->add_group_control(
                     Group_Control_Typography::get_type(),
                     [
-                            'name' => 'button_typography',
+                            'name' => 'btn_typography',
                             'label' => 'Typography',
                             'selector' => '{{WRAPPER}} .elementor-button',
                             'global' => [
@@ -104,17 +105,17 @@ trait Button_Helper{
                     ]
             );
             
-            $this->start_controls_tabs( 'tabs_button_style' );
+            $this->start_controls_tabs( 'tabs_btn_style' );
 
             $this->start_controls_tab(
-                    'tab_button_normal',
+                    'tab_btn_normal',
                     [
                             'label' => __( 'Normal', 'ultraaddons' ),
                     ]
             );
             
             $this->add_control(
-                    'button_text_color',
+                    'btn_text_color',
                     [
                             'label' => __( 'Text Color', 'ultraaddons' ),
                             'type' => Controls_Manager::COLOR,
@@ -126,7 +127,7 @@ trait Button_Helper{
             );
             
             $this->add_control(
-                    'background_color',
+                    'btn_background_color',
                     [
                             'label' => __( 'Background Color', 'ultraaddons' ),
                             'type' => Controls_Manager::COLOR,
@@ -141,7 +142,7 @@ trait Button_Helper{
             );
             
             $this->add_control(
-                    'button_border_type',
+                    'btn_border_type',
                     [
                             'label' => _x( 'Border Type', 'Border Control', 'ultraaddons' ),
                             'type' => Controls_Manager::SELECT,
@@ -160,7 +161,7 @@ trait Button_Helper{
             );
             
             $this->add_control(
-                    'button_border_color',
+                    'btn_border_color',
                     [
                             'label' => __( 'Color', 'ultraaddons' ),
                             'type' => Controls_Manager::COLOR,
@@ -172,7 +173,7 @@ trait Button_Helper{
             );
             
             $this->add_control(
-                    'button_border_width',
+                    'btn_border_width',
                     [
                             'label' => __( 'Border Width', 'ultraaddons' ),
                             'type' => Controls_Manager::DIMENSIONS,
@@ -191,7 +192,7 @@ trait Button_Helper{
             );
 
             $this->add_control(
-                    'button_border_radius',
+                    'btn_border_radius',
                     [
                             'label' => __( 'Border Radius', 'ultraaddons' ),
                             'type' => Controls_Manager::DIMENSIONS,
@@ -205,14 +206,14 @@ trait Button_Helper{
             $this->end_controls_tab();
             
             $this->start_controls_tab(
-                    'tab_button_hover',
+                    'tab_btn_hover',
                     [
                             'label' => __( 'Hover', 'ultraaddons' ),
                     ]
             );
 
             $this->add_control(
-                    'hover_color',
+                    'btn_hover_color',
                     [
                             'label' => __( 'Text Color', 'ultraaddons' ),
                             'type' => Controls_Manager::COLOR,
@@ -225,7 +226,7 @@ trait Button_Helper{
             );
 
             $this->add_control(
-                    'button_background_hover_color',
+                    'btn_background_hover_color',
                     [
                             'label' => __( 'Background Color', 'ultraaddons' ),
                             'type' => Controls_Manager::COLOR,
@@ -237,7 +238,7 @@ trait Button_Helper{
             );
             
             $this->add_control(
-                    'button_hover_border_type',
+                    'btn_hover_border_type',
                     [
                             'label' => _x( 'Border Type', 'Border Control', 'ultraaddons' ),
                             'type' => Controls_Manager::SELECT,
@@ -257,7 +258,7 @@ trait Button_Helper{
             );
             
             $this->add_control(
-                    'button_hover_border_width',
+                    'btn_hover_border_width',
                     [
                             'label' => __( 'Border Width', 'ultraaddons' ),
                             'type' => Controls_Manager::DIMENSIONS,
@@ -277,7 +278,7 @@ trait Button_Helper{
             );
 
             $this->add_control(
-                    'button_hover_border_radius',
+                    'btn_hover_border_radius',
                     [
                             'label' => __( 'Border Radius', 'ultraaddons' ),
                             'type' => Controls_Manager::DIMENSIONS,
@@ -290,7 +291,7 @@ trait Button_Helper{
             );
 
             $this->add_control(
-                    'button_hover_border_color',
+                    'btn_hover_border_color',
                     [
                             'label' => __( 'Border Color', 'ultraaddons' ),
                             'type' => Controls_Manager::COLOR,
@@ -401,32 +402,28 @@ trait Button_Helper{
         );
 
 
-
-        $this->end_controls_section();
-
-        $this->start_controls_section(
-                'section_style_general',
-                [
-                        'label' => __( 'General', 'ultraaddons' ),
-                        'tab'   => Controls_Manager::TAB_STYLE,
-                ]
-        );
-
         $this->add_responsive_control(
-                'infobox_padding',
+                'btn_padding',
                 [
                         'label' => __( 'Padding', 'ultraaddons' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', '%' ],
-                        'default'   => [
-                                'top' => 50,
-                                'bottom' => 50,
-                                'left' => 50,
-                                'right' => 50,
-                                'unit' => 'px',
-                        ],
+
                         'selectors' => [
-                                '{{WRAPPER}} .mc-info-box-wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                '{{WRAPPER}} .btn-wrapper .ua-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                ]
+        );
+
+        $this->add_responsive_control(
+                'btn_margin',
+                [
+                        'label' => __( 'Margin', 'ultraaddons' ),
+                        'type' => Controls_Manager::DIMENSIONS,
+                        'size_units' => [ 'px', '%' ],
+
+                        'selectors' => [
+                                '{{WRAPPER}} .btn-wrapper .ua-button' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                         ],
                 ]
         );
