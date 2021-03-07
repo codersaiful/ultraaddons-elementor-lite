@@ -212,18 +212,18 @@ h1.ua-page-title {
     display: inline-block;
     padding: 15px;
     border-radius: 4px;
-    color: #8020e7;
-    border: 1px solid #8020e7;
-    background: #8020e705;
+    color: #4a4a4a;
+    border: 1px solid #efefef;
+    background: #00000005;
     height: 45px;
     width: 45px;
     /*    margin-bottom: 8px;
     margin-top: 8px;*/
 }
 .ua-option-item:hover i.ua-option-icon {
-    border: 1px solid #cb3bfa;
-    color: #cb3bfa;
-    border-radius: 5px;
+    border: 1px solid #b5b3b3;
+    color: #000000;
+    /* border-radius: 5px; */
     background: transparent;
 }
 .ua-option-item-wrappper {

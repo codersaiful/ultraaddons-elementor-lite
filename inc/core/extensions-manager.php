@@ -74,7 +74,7 @@ class Extensions_Manager{
             'Wrapper_Link'=> [
                     'name'      => __( 'Wrapper Link', 'ultraaddons' ),
                     'is_free'   => true,
-                    'icon'      => 'eicon-button',
+                    'icon'      => 'uicon-button',
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),
                     ],
@@ -84,7 +84,7 @@ class Extensions_Manager{
             'Hover_Effect' => [
                     'name'  => __( 'Hover Effect', 'ultraaddons' ),
                     'is_free'   => true,
-                    'icon'      => 'eicon-heading',
+                    'icon'      => 'uicon-hover',
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),
                     ],

@@ -14,7 +14,7 @@ $widgetsArray = [
     'Button'=> [
             'name'      => __( 'Button', 'ultraaddons' ),
             'is_free'   => true,
-            'icon'      => 'eicon-button',
+            'icon'      => 'uicon-button',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
@@ -24,7 +24,7 @@ $widgetsArray = [
     'Advance_Heading' => [
             'name'  => __( 'Advance Heading', 'ultraaddons' ),
             'is_free'   => true,
-            'icon'      => 'eicon-heading',
+            'icon'      => 'uicon-header',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
@@ -33,7 +33,7 @@ $widgetsArray = [
     'Info_Box' => [
             'name'  => __( 'Info Box', 'ultraaddons' ),
             'is_free'   => true,
-            'icon'      => 'eicon-icon-box',
+            'icon'      => 'uicon-icon-box',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
@@ -42,7 +42,7 @@ $widgetsArray = [
     'List_Item' => [
             'name'  => __( 'Advance List', 'ultraaddons' ),
             'is_free'   => true,
-            'icon'      => 'eicon-editor-list-ul',
+            'icon'      => 'uicon-list',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
@@ -51,7 +51,7 @@ $widgetsArray = [
     'Count_Down_Timer' => [
             'name'  => __( 'Count Down Timer', 'ultraaddons' ),
             'is_free'   => true,
-            'icon'      => 'uicon-countdown',//eicon-countdown
+            'icon'      => 'uicon-clock',//eicon-countdown
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
@@ -60,7 +60,7 @@ $widgetsArray = [
     'Slider' => [
             'name'  => __( 'Ultra Slider', 'ultraaddons' ),
             'is_free'   => true,
-            'icon'      => 'eicon-slider-device',
+            'icon'      => 'uicon-slider',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
@@ -69,7 +69,7 @@ $widgetsArray = [
     'Cart' => [
             'name'  => __( 'WC Mini Cart', 'ultraaddons' ),
             'is_free'   => true,
-            'icon'      => 'eicon-cart-light',
+            'icon'      => 'uicon-cart',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
@@ -97,7 +97,7 @@ $widgetsArray = [
     'Price_Table' => [
             'name'  => __( 'Pricing Table', 'ultraaddons' ),
             'is_free'   => true,
-            'icon'      => 'uicon-price-table',
+            'icon'      => 'uicon-pricing-table',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
@@ -106,7 +106,7 @@ $widgetsArray = [
     'Product_Table' => [
             'name'  => __( 'Product Table', 'ultraaddons' ),
             'is_free'   => true,
-            'icon'      => 'eicon-table',
+            'icon'      => 'uicon-product-table',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
@@ -115,7 +115,7 @@ $widgetsArray = [
     'Animated_Header' => [
             'name'  => __( 'Animated Header', 'ultraaddons' ),
             'is_free'   => false,
-            'icon'      => 'eicon-animated-headline',
+            'icon'      => 'uicon-animated-header',
             'cat'       => [
                 __( 'Modern', 'ultraaddons' ),
                 __( 'Pro', 'ultraaddons' ),
@@ -126,7 +126,7 @@ $widgetsArray = [
     'Product_Slider' => [
             'name'  => __( 'Product Slider', 'ultraaddons' ),
             'is_free'   => false,
-            'icon'      => 'eicon-product-images',
+            'icon'      => 'uicon-product-slider',
             'cat'       => [
                 __( 'WooCommerce', 'ultraaddons' ),
                 __( 'Pro', 'ultraaddons' ),
