@@ -8,6 +8,7 @@ use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Icons_Manager;
 use Elementor\Group_Control_Border;
+use Elementor\Group_Control_Background;
 use Elementor\Utils;
 
 trait Button_Helper{
@@ -166,26 +167,34 @@ trait Button_Helper{
                     ]
             );
             
-            $this->add_control(
-                    'btn_background_color',
-                    [
-                            'label' => __( 'Background Color', 'ultraaddons' ),
-                            'type' => Controls_Manager::COLOR,
-//                            'global' => [
-//                                    'default' => Global_Colors::COLOR_ACCENT,
-//                            ],
-                            'default' => '#fff',
-                            'selectors' => [
-                                    '{{WRAPPER}} .elementor-button' => 'background-color: {{VALUE}};',
-                            ],
-                    ]
-            );
+
+            $this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'btn_background',
+				'types' => [ 'classic', 'gradient' ],
+				'selector' => '{{WRAPPER}} .btn-wrapper .ua-button',
+                                'separator' => 'before',
+				'fields_options' => [
+					'background' => [
+						'frontend_available' => true,
+					],
+					'color' => [
+						'dynamic' => [],
+					],
+					'color_b' => [
+						'dynamic' => [],
+					],
+				],
+			]
+		);
             
             $this->add_control(
                     'btn_border_type',
                     [
                             'label' => _x( 'Border Type', 'Border Control', 'ultraaddons' ),
                             'type' => Controls_Manager::SELECT,
+                            'separator' => 'before',
                             'options' => [
                                     '' => __( 'None', 'ultraaddons' ),
                                     'solid' => _x( 'Solid', 'Border Control', 'ultraaddons' ),
@@ -265,17 +274,28 @@ trait Button_Helper{
                     ]
             );
 
-            $this->add_control(
-                    'btn_background_hover_color',
-                    [
-                            'label' => __( 'Background Color', 'ultraaddons' ),
-                            'type' => Controls_Manager::COLOR,
-                            'default' => '#0FC392',
-                            'selectors' => [
-                                    '{{WRAPPER}} .elementor-button:hover, {{WRAPPER}} .elementor-button:focus' => 'background-color: {{VALUE}};',
-                            ],
-                    ]
-            );
+            
+            
+            $this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'btn_background_hover_color',
+				'types' => [ 'classic', 'gradient' ],
+				'selector' => '{{WRAPPER}} .btn-wrapper .ua-button:hover',
+                                'separator' => 'before',
+				'fields_options' => [
+					'background' => [
+						'frontend_available' => true,
+					],
+					'color' => [
+						'dynamic' => [],
+					],
+					'color_b' => [
+						'dynamic' => [],
+					],
+				],
+			]
+		);
             
             $this->add_control(
                     'btn_hover_border_type',
@@ -294,6 +314,7 @@ trait Button_Helper{
                                     '{{WRAPPER}} .elementor-button:hover' => 'border-style: {{VALUE}};',
                                     '{{WRAPPER}} .elementor-button:focus' => 'border-style: {{VALUE}};',
                             ],
+                            'separator' => 'before',
                     ]
             );
             
