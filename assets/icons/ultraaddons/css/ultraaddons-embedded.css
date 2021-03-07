@@ -57,10 +57,28 @@
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 .uicon-ultraaddons:before { content: '\e800'; } /* '' */
-.uicon-countdown:before { content: '\e801'; } /* '' */
-.uicon-icon-box:before { content: '\e802'; } /* '' */
-.uicon-price-table:before { content: '\e803'; } /* '' */
-.uicon-progress-bar:before { content: '\e804'; } /* '' */
-.uicon-review:before { content: '\e805'; } /* '' */
-.uicon-slider:before { content: '\e806'; } /* '' */
-.uicon-team-member:before { content: '\e807'; } /* '' */
+.uicon-animated-header:before { content: '\e801'; } /* '' */
+.uicon-blog-list:before { content: '\e802'; } /* '' */
+.uicon-button:before { content: '\e803'; } /* '' */
+.uicon-cart:before { content: '\e804'; } /* '' */
+.uicon-clock:before { content: '\e805'; } /* '' */
+.uicon-contact-form-7-light:before { content: '\e806'; } /* '' */
+.uicon-contact-form-7:before { content: '\e807'; } /* '' */
+.uicon-contact-form:before { content: '\e808'; } /* '' */
+.uicon-counter:before { content: '\e809'; } /* '' */
+.uicon-crown:before { content: '\e80a'; } /* '' */
+.uicon-header:before { content: '\e80b'; } /* '' */
+.uicon-hover:before { content: '\e80c'; } /* '' */
+.uicon-icon-box:before { content: '\e80d'; } /* '' */
+.uicon-list:before { content: '\e80e'; } /* '' */
+.uicon-offer-card:before { content: '\e80f'; } /* '' */
+.uicon-pricing-table:before { content: '\e810'; } /* '' */
+.uicon-product-slider:before { content: '\e811'; } /* '' */
+.uicon-product-table:before { content: '\e812'; } /* '' */
+.uicon-product:before { content: '\e813'; } /* '' */
+.uicon-rating:before { content: '\e814'; } /* '' */
+.uicon-skillbar:before { content: '\e815'; } /* '' */
+.uicon-slider:before { content: '\e816'; } /* '' */
+.uicon-team-box:before { content: '\e817'; } /* '' */
+.uicon-team-member:before { content: '\e818'; } /* '' */
+.uicon-testimonial:before { content: '\e819'; } /* '' */
