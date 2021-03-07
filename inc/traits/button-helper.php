@@ -21,10 +21,12 @@ trait Button_Helper{
                 $this->add_link_attributes( 'btn_link', $settings['btn_link'] );
                 $this->add_render_attribute( 'btn_link', 'class', 'elementor-button-link' );
                 
-                $this->add_render_attribute( 'btn_wrapper', 'class', 'btn-wrapper' );
+                
             }
+            $this->add_render_attribute( 'btn_wrapper', 'class', 'btn-wrapper' );
             
             $this->add_render_attribute( 'btn_link', 'class', 'elementor-button' );
+            $this->add_render_attribute( 'btn_link', 'class', 'btn-size-' . $settings['btn_size'] );
             $this->add_render_attribute( 'btn_link', 'class', 'ua-button' );
             $this->add_render_attribute( 'btn_link', 'role', 'button' );
             
@@ -50,11 +52,14 @@ trait Button_Helper{
                                     'elementor-align-icon-' . $settings['btn_icon_align'],
                             ],
                     ],
-                    'text' => [
+                    'btn_text' => [
                             'class' => 'elementor-button-text',
                     ],
             ] );
 
+            
+            //Inline Editing of Button Text
+            $this->add_inline_editing_attributes( 'btn_text' );
             ?>
 
         <div <?php echo $this->get_render_attribute_string( 'btn_wrapper' ); ?>>
@@ -69,7 +74,7 @@ trait Button_Helper{
                                     <?php endif; ?>
                             </span>
                             <?php endif; ?>
-                            <span <?php echo $this->get_render_attribute_string( 'text' ); ?>><?php echo $settings['btn_text']; ?></span>
+                            <span <?php echo $this->get_render_attribute_string( 'btn_text' ); ?>><?php echo $settings['btn_text']; ?></span>
                     </span>
                 </a>
         </div>
@@ -387,7 +392,7 @@ trait Button_Helper{
                         'type' => Controls_Manager::SLIDER,
                         'range' => [
                                 'px' => [
-                                        'max' => 50,
+                                        'max' => 100,
                                 ],
                         ],
                         'default' => [
@@ -401,6 +406,19 @@ trait Button_Helper{
                 ]
         );
 
+        $this->add_control(
+			'btn_size',
+			[
+				'label' => __( 'Size', 'ultraaddons' ),
+                                'type' => Controls_Manager::SELECT,
+                                'default' => 'md',
+                                'options' => self::get_button_sizes(),
+                                'style_transfer' => true,
+//				'condition' => [
+//					'btn_text!' => '',
+//				],
+			]
+		);
 
         $this->add_responsive_control(
                 'btn_padding',

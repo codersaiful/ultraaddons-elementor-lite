@@ -65,8 +65,31 @@ body:not(.elementor-page) .ultraaddons-container{
 }
 
 /*******************************
+* Button Common Style. Button has rendered from Traits
+********************************/
+.btn-wrapper .ua-button.btn-size-xs {
+    padding: 4px 18px 4px 18px;
+}
+.btn-wrapper .ua-button.btn-size-sm {
+    padding: 10px 25px;
+}
+.btn-wrapper .ua-button.btn-size-md {
+    padding: 15px 40px;
+}
+.btn-wrapper .ua-button.btn-size-lg {
+    padding: 15px 46px;
+    font-size: 22px;
+}
+.btn-wrapper .ua-button.btn-size-xl {
+    padding: 18px 75px;
+    font-size: 30px;
+}
+
+
+/*******************************
 * Transition
 ********************************/
 .ua-transformed .elementor-widget-container {
     transition: 1s all;
 }
+
