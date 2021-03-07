@@ -20,9 +20,16 @@ trait Button_Helper{
             if( $has_button_link ) {
                 $this->add_link_attributes( 'btn_link', $settings['btn_link'] );
                 $this->add_render_attribute( 'btn_link', 'class', 'elementor-button-link' );
-                
-                
             }
+            
+            
+            $btn_class = ! empty( $settings['btn_class'] ) ? $settings['btn_class'] : '';
+
+            if( $btn_class ) {
+                $this->add_render_attribute( 'btn_link', 'class', $btn_class );
+            }
+            
+            
             $this->add_render_attribute( 'btn_wrapper', 'class', 'btn-wrapper' );
             
             $this->add_render_attribute( 'btn_link', 'class', 'elementor-button' );
@@ -311,6 +318,15 @@ trait Button_Helper{
             $this->end_controls_tab();
 
             $this->end_controls_tabs();           
+            
+            $this->add_control(
+                    'btn_class',
+                    [
+                            'label' => __( 'Button Class', 'ultraaddons' ),
+                            'type' => Controls_Manager::TEXT,
+                            'default' => '',
+                    ]
+            );  
             
             $this->end_controls_section();
     }

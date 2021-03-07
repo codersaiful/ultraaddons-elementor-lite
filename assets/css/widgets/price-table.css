@@ -97,6 +97,10 @@ span.currency-inner-wrapper span.ua-price-table__currency_sep {
     margin-right: 0 !important;
 }
 
+.ua-price-table .btn-wrapper .ua-button {
+    margin: 30px 30px 30px 30px;
+}
+
 /* Dark Theme */
 .pricing-table-temp-2 .elementor-widget-container {
     background-color: #272727;

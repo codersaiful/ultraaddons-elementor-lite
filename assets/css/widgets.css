@@ -84,7 +84,9 @@ body:not(.elementor-page) .ultraaddons-container{
     padding: 18px 55px;
     font-size: 30px;
 }
-
+div.ua-element .elementor-widget-container .btn-wrapper a.ua-button {
+    text-decoration: none;
+}
 
 /*******************************
 * Transition
