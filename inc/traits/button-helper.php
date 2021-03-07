@@ -104,6 +104,34 @@ trait Button_Helper{
                     ]
             );
             
+            $this->add_responsive_control(
+                    'btn_align',
+                    [
+                            'label' => __( 'Alignment', 'ultraaddons' ),
+                            'type' => Controls_Manager::CHOOSE,
+                            'options' => [
+                                    'left'    => [
+                                            'title' => __( 'Left', 'ultraaddons' ),
+                                            'icon' => 'eicon-text-align-left',
+                                    ],
+                                    'center' => [
+                                            'title' => __( 'Center', 'ultraaddons' ),
+                                            'icon' => 'eicon-text-align-center',
+                                    ],
+                                    'right' => [
+                                            'title' => __( 'Right', 'ultraaddons' ),
+                                            'icon' => 'eicon-text-align-right',
+                                    ],
+                                    'justify' => [
+                                            'title' => __( 'Justified', 'ultraaddons' ),
+                                            'icon' => 'eicon-text-align-justify',
+                                    ],
+                            ],
+                            'prefix_class' => 'ua-align-',
+                            'default' => 'left',
+                    ]
+            );
+        
             $this->add_group_control(
                     Group_Control_Typography::get_type(),
                     [
