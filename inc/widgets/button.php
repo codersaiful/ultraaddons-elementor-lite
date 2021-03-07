@@ -399,28 +399,7 @@ class Button extends Base{
         $this->end_controls_section();
     }
     
-    /**
-     * Finding Category list as Array
-     * What to show as Option for Query Section
-     * 
-     * @since 1.0.0.9
-     */
-    protected function get_cat_as_options(){
-        $args = [
-            'orderby'   =>  'count',
-            'hide_empty'=>  0
-        ];
-        $categories = get_terms( 'category', $args );
-        
-        $options = [];
-        if( is_array( $categories ) && count( $categories ) > 0 ){
-            foreach( $categories as $category ){
-                $options[$category->term_id]  = $category->name;
-            }
-        }
-
-        return $options;
-    }
+    
     
     /**
      * Alignment Section for Style Tab
