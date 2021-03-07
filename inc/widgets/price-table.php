@@ -31,14 +31,7 @@ class Price_Table extends Base {
      */
     protected function _register_controls() {
         
-        /**
-         * Register Controls of Button
-         * will come from our Trait Button Helper
-         * 
-         * @since 1.0.3.2
-         * @date 7.3.2021
-         */
-        $this->button_register_controls();
+        
         
                 $this->start_controls_section(
 			'section_header',
@@ -322,30 +315,7 @@ class Price_Table extends Base {
 			]
 		);
 
-		$this->add_control(
-			'button_text',
-			[
-				'label' => __( 'Button Text', 'ultraaddons' ),
-				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Click Here', 'ultraaddons' ),
-			]
-		);
-
-		$this->add_control(
-			'link',
-			[
-				'label' => __( 'Link', 'ultraaddons' ),
-				'type' => Controls_Manager::URL,
-				'placeholder' => __( 'https://your-link.com', 'ultraaddons' ),
-				'default' => [
-					'url' => '#',
-				],
-				'dynamic' => [
-					'active' => true,
-				],
-			]
-		);
-
+		
 		$this->add_control(
 			'footer_additional_info',
 			[
@@ -1422,170 +1392,7 @@ class Price_Table extends Base {
 			]
 		);
 
-		$this->add_control(
-			'heading_footer_button',
-			[
-				'label' => __( 'Button', 'ultraaddons' ),
-				'type' => Controls_Manager::HEADING,
-				'separator' => 'before',
-				'condition' => [
-					'button_text!' => '',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_size',
-			[
-				'label' => __( 'Size', 'ultraaddons' ),
-                                'type' => Controls_Manager::SELECT,
-                                'default' => 'md',
-                                'options' => self::get_button_sizes(),
-                                'style_transfer' => true,
-				'condition' => [
-					'button_text!' => '',
-				],
-			]
-		);
-
-		$this->start_controls_tabs( 'tabs_button_style' );
-
-		$this->start_controls_tab(
-			'tab_button_normal',
-			[
-				'label' => __( 'Normal', 'ultraaddons' ),
-				'condition' => [
-					'button_text!' => '',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_text_color',
-			[
-				'label' => __( 'Text Color', 'ultraaddons' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .ua-price-table__button' => 'color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'button_typography',
-				'scheme' => Schemes\Typography::TYPOGRAPHY_4,
-				'selector' => '{{WRAPPER}} .ua-price-table__button',
-			]
-		);
-
-		$this->add_control(
-			'button_background_color',
-			[
-				'label' => __( 'Background Color', 'ultraaddons' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .ua-price-table__button' => 'background-color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Border::get_type(), [
-				'name' => 'button_border',
-				'selector' => '{{WRAPPER}} .ua-price-table__button',
-				'separator' => 'before',
-			]
-		);
-
-		$this->add_control(
-			'button_border_radius',
-			[
-				'label' => __( 'Border Radius', 'ultraaddons' ),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%' ],
-				'selectors' => [
-					'{{WRAPPER}} .ua-price-table__button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_text_padding',
-			[
-				'label' => __( 'Text Padding', 'ultraaddons' ),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', 'em', '%' ],
-				'selectors' => [
-					'{{WRAPPER}} .ua-price-table__button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->end_controls_tab();
-
-		$this->start_controls_tab(
-			'tab_button_hover',
-			[
-				'label' => __( 'Hover', 'ultraaddons' ),
-				'condition' => [
-					'button_text!' => '',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_hover_color',
-			[
-				'label' => __( 'Text Color', 'ultraaddons' ),
-				'type' => Controls_Manager::COLOR,
-                                'default' => '#FFF',
-				'selectors' => [
-					'{{WRAPPER}} .ua-price-table__button:hover' => 'color: {{VALUE}};',
-					//'{{WRAPPER}}.ultraaddons-featured-item .ua-price-table__button' => 'color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_background_hover_color',
-			[
-				'label' => __( 'Background Color', 'ultraaddons' ),
-				'type' => Controls_Manager::COLOR,
-                                'default' => '#0FC392',
-				'selectors' => [
-					'{{WRAPPER}} .ua-price-table__button:hover' => 'background-color: {{VALUE}};',
-					//'{{WRAPPER}}.ultraaddons-featured-item .ua-price-table__button' => 'background-color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_hover_border_color',
-			[
-				'label' => __( 'Border Color', 'ultraaddons' ),
-				'type' => Controls_Manager::COLOR,
-                                'default' => 'transparent',
-				'selectors' => [
-					'{{WRAPPER}} .ua-price-table__button:hover' => 'border-color: {{VALUE}};',
-					//'{{WRAPPER}}.ultraaddons-featured-item .ua-price-table__button' => 'border-color: {{VALUE}};',
-				],
-			]
-		);
-
-//		$this->add_control(
-//			'button_hover_animation',
-//			[
-//				'label' => __( 'Animation', 'ultraaddons' ),
-//				'type' => Controls_Manager::HOVER_ANIMATION,
-//			]
-//		);
-
-		$this->end_controls_tab();
-
-		$this->end_controls_tabs();
-
+		
 		$this->add_control(
 			'heading_additional_info',
 			[
@@ -1710,7 +1517,14 @@ class Price_Table extends Base {
 		$this->end_controls_section();
             
             
-
+                /**
+                 * Register Controls of Button
+                 * will come from our Trait Button Helper
+                 * 
+                 * @since 1.0.3.2
+                 * @date 7.3.2021
+                 */
+                $this->button_register_controls();
     }
     
     
@@ -1784,19 +1598,8 @@ class Price_Table extends Base {
 			$fraction = $price[1];
 		}
                
-                $this->add_render_attribute( 'button_text', 'class', [
-			'ua-price-table__button',
-			'ua-button',
-			'ua-size-' . $settings['button_size'],
-		] );
                 
-                if ( ! empty( $settings['link']['url'] ) ) {
-			$this->add_link_attributes( 'button_text', $settings['link'] );
-		}
-
-		if ( ! empty( $settings['button_hover_animation'] ) ) {
-			$this->add_render_attribute( 'button_text', 'class', 'ua-animation-' . $settings['button_hover_animation'] );
-		}
+                
                 
                 $this->add_render_attribute( 'heading', 'class', 'ua-price-table__heading' );
 		$this->add_render_attribute( 'sub_heading', 'class', 'ua-price-table__subheading' );
@@ -1808,7 +1611,7 @@ class Price_Table extends Base {
 		$this->add_inline_editing_attributes( 'sub_heading', 'none' );
 		$this->add_inline_editing_attributes( 'period', 'none' );
 		$this->add_inline_editing_attributes( 'footer_additional_info' );
-		$this->add_inline_editing_attributes( 'button_text' );
+		
 		$this->add_inline_editing_attributes( 'ribbon_title' );
                 
                 $period_position = $settings['period_position'];
@@ -1924,16 +1727,8 @@ class Price_Table extends Base {
                             $this->button_render();
                         ?>
                     
-                        <?php if ( ! empty( $settings['button_text'] ) || ! empty( $settings['footer_additional_info'] ) ) : ?>
-                                <div class="ua-price-table__footer">
-                                        <?php if ( ! empty( $settings['button_text'] ) ) : ?>
-                                                <a <?php echo $this->get_render_attribute_string( 'button_text' ); ?>><?php echo $settings['button_text']; ?></a>
-                                        <?php endif; ?>
-
-                                        <?php if ( ! empty( $settings['footer_additional_info'] ) ) : ?>
-                                                <div <?php echo $this->get_render_attribute_string( 'footer_additional_info' ); ?>><?php echo $settings['footer_additional_info']; ?></div>
-                                        <?php endif; ?>
-                                </div>
+                        <?php if ( ! empty( $settings['footer_additional_info'] ) ) : ?>
+                                <div <?php echo $this->get_render_attribute_string( 'footer_additional_info' ); ?>><?php echo $settings['footer_additional_info']; ?></div>
                         <?php endif; ?>
                 </div>
 
