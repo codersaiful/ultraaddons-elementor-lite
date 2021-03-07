@@ -66,23 +66,6 @@ span.ua-price-table__period.ua-typo-excluded {
 .ultraaddons-featured-item-ribbon-top.ultraaddons-featured-item-ribbon-left .ua-price-table__ribbon{left: 0;top: 0;}
 .ultraaddons-featured-item-ribbon-top.ultraaddons-featured-item-ribbon-right .ua-price-table__ribbon{right: 0;top: 0;}
 
-.ua-element-price-table .ua-button.ua-size-xs {
-    padding: 4px 18px 4px 18px;
-}
-.ua-element-price-table .ua-button.ua-size-sm {
-    padding: 10px 25px;
-}
-.ua-element-price-table .ua-button.ua-size-md {
-    padding: 15px 40px;
-}
-.ua-element-price-table .ua-button.ua-size-lg {
-    padding: 15px 46px;
-    font-size: 22px;
-}
-.ua-element-price-table .ua-button.ua-size-xl {
-    padding: 18px 75px;
-    font-size: 30px;
-}
 
 .ua-price-table__features-list:before {
     content: "";
@@ -112,6 +95,10 @@ span.currency-inner-wrapper span.ua-price-table__currency_sep {
 }
 .elementor-align-right ul.ua-price-table__features-list:before{
     margin-right: 0 !important;
+}
+
+.ua-price-table .btn-wrapper .ua-button {
+    margin: 30px 30px 30px 30px;
 }
 
 /* Dark Theme */

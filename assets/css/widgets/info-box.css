@@ -37,6 +37,12 @@
     line-height: 1.6;
 }
 
+.ua-element-info-box .elementor-widget-container {
+    padding: 50px;
+    border: 1px solid #BACCD7;
+}
+
+
 @media (min-width: 768px) {
     .ua-element-info-box.elementor-vertical-align-top .mc-info-box-wrapper {
     -webkit-box-align: start;
