@@ -98,7 +98,7 @@ span.currency-inner-wrapper span.ua-price-table__currency_sep {
 }
 
 .ua-price-table .btn-wrapper .ua-button {
-    margin: 30px 30px 30px 30px;
+    margin: 30px auto;
 }
 
 /* Dark Theme */

@@ -88,6 +88,34 @@ div.ua-element .elementor-widget-container .btn-wrapper a.ua-button {
     text-decoration: none;
 }
 
+/*.ua-element .btn-wrapper .ua-button.elementor-button {
+    display: inline-block;
+    color: #fff;
+    text-align: center;
+    background-color: transparent;
+    border: 2px solid transparent;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.ua-element .btn-wrapper .ua-button.elementor-button:hover {
+    color: #0fc392;
+    border-color: #0fc392;
+    background-color: transparent;
+}*/
+.ua-element .btn-wrapper .ua-button {
+    font-weight: 600;
+    color: #21272c;
+    border-color: #21272c;
+    background-color: transparent;
+}
+
+.ua-element .btn-wrapper .ua-button:hover {
+    color: #ffffff;
+    border-color: #0fc392;
+    background-color: #0fc392;
+}
+
 div.ua-element.ua-align-left .btn-wrapper{text-align: left;}
 div.ua-element.ua-align-right .btn-wrapper{text-align: right;}
 div.ua-element.ua-align-center .btn-wrapper{text-align: center;}
