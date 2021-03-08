@@ -30,7 +30,8 @@ class Price_Table extends Base {
      * @access protected
      */
     protected function _register_controls() {
-        
+            
+        $this->btn_align = 'center';
         
         
                 $this->start_controls_section(
