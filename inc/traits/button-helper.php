@@ -13,6 +13,12 @@ use Elementor\Utils;
 
 trait Button_Helper{
     
+    public $button_color = '';
+    public $button_text_color = '';
+    public $button_hover_color = '';
+    public $button_text_hover_color = '';
+
+
     public function button_render() {
             $settings = $this->get_settings_for_display();
 
