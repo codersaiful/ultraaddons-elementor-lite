@@ -60,7 +60,7 @@ class Icons_Manager{
             'prefix'    => 'uicon-',
             'ver'       => ULTRA_ADDONS_VERSION,
             'fetchJson' => ULTRA_ADDONS_ASSETS . 'icons/ultraaddons/icon-list.js',//http://wp.cm/wp-content/plugins/elementor/assets/lib/font-awesome/js/regular.js
-            'nativ'     => false,
+            'native'     => false,
         ];
         return $tabs;
     }
