@@ -9,6 +9,7 @@ use Elementor\Group_Control_Typography;
 use Elementor\Icons_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Background;
+use Elementor\Group_Control_Box_Shadow;
 use Elementor\Utils;
 
 trait Button_Helper{
@@ -264,6 +265,24 @@ trait Button_Helper{
                     ]
             );
             
+//            $this->add_group_control(
+//                    Group_Control_Border::get_type(),
+//                    [
+//                            'name' => 'btn_border',
+//                            'label' => __( 'Box Shadow', 'ultraaddons' ),
+//                            'selector' => '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button',
+//                    ]
+//            );
+            
+            $this->add_group_control(
+                    Group_Control_Box_Shadow::get_type(),
+                    [
+                            'name' => 'btn_box_shadow',
+                            'label' => __( 'Box Shadow', 'ultraaddons' ),
+                            'selector' => '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button',
+                    ]
+            );
+            
             $this->end_controls_tab();
             
             $this->start_controls_tab(
@@ -375,7 +394,24 @@ trait Button_Helper{
                     ]
             );
 
-                       
+//            $this->add_group_control(
+//                    Group_Control_Border::get_type(),
+//                    [
+//                            'name' => 'btn_border_hover_hello',
+//                            'label' => __( 'Box Shadow', 'ultraaddons' ),
+//                            'selector' => '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:hover',
+//                    ]
+//            );
+
+           $this->add_group_control(
+                    Group_Control_Box_Shadow::get_type(),
+                    [
+                            'name' => 'btn_hover_box_shadow',
+                            'label' => __( 'Box Shadow', 'ultraaddons' ),
+                            'selector' => '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:hover',
+                    ]
+            );
+                  
 
             $this->end_controls_tab();
 
@@ -387,6 +423,7 @@ trait Button_Helper{
                             'label' => __( 'Button Class', 'ultraaddons' ),
                             'type' => Controls_Manager::TEXT,
                             'default' => '',
+                            'separator'=>'before',
                     ]
             );  
             
