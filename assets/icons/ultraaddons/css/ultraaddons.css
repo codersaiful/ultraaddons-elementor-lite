@@ -31,7 +31,7 @@
 }
 */
  
- [class^="uicon-"]:before, [class*=" uicon-"]:before {
+i.uicon,[class^="uicon"],[class^="uicon-"], [class*=" uicon-"] {
     font-family: "UltraAddons Icons";
     display: inline-block;
     font-size: inherit;
