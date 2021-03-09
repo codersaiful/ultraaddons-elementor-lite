@@ -265,6 +265,27 @@ class Advance_Heading extends Base{
                 ]
         );
         
+        $this->add_responsive_control(
+                'avd_line_length',
+                [
+                        'label' => __( 'Line Length', 'medilac' ),
+                        'type' => Controls_Manager::SLIDER,
+                        'default' => [
+                                'size' => 100,
+                        ],
+                        'range' => [
+                                'px' => [
+                                        'min' => 0,
+                                        'max' => 500,
+                                ],
+                        ],
+                        'selectors' => [
+                                '{{WRAPPER}} .advance-heading-wrapper span:after' => 'width: {{SIZE}}{{UNIT}};right: -{{SIZE}}{{UNIT}};',
+                        ],
+                ]
+        );
+        
+        
         
         
         $this->end_controls_section();
