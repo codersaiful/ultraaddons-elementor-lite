@@ -40,6 +40,8 @@ class Info_Box extends Base {
      */
     protected function _register_controls() {
 
+        $this->btn_border_color = '#e2ebf1';
+        
             $this->start_controls_section(
                     'section_sliders',
                     [
@@ -286,8 +288,8 @@ class Info_Box extends Base {
                                     ],
                             ],
                             'selectors' => [
-                                    '{{WRAPPER}} .mc-info-box-icon' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-                                    '(mobile){{WRAPPER}} .mc-info-box-icon' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                                    '{{WRAPPER}} .ua-info-box-icon' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                                    '(mobile){{WRAPPER}} .ua-info-box-icon' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                             ],
                     ]
             );
@@ -429,10 +431,10 @@ class Info_Box extends Base {
                                     ],
                             ],
                             'selectors' => [
-                                    '{{WRAPPER}}.elementor-position-right:hover .mc-info-box-icon' => 'margin-left: {{SIZE}}{{UNIT}};',
-                                    '{{WRAPPER}}.elementor-position-left:hover .mc-info-box-icon' => 'margin-right: {{SIZE}}{{UNIT}};',
-                                    '{{WRAPPER}}.elementor-position-top:hover .mc-info-box-icon' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-                                    '(mobile){{WRAPPER}}:hover .mc-info-box-icon' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                                    '{{WRAPPER}}.elementor-position-right:hover .ua-info-box-icon' => 'margin-left: {{SIZE}}{{UNIT}};',
+                                    '{{WRAPPER}}.elementor-position-left:hover .ua-info-box-icon' => 'margin-right: {{SIZE}}{{UNIT}};',
+                                    '{{WRAPPER}}.elementor-position-top:hover .ua-info-box-icon' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                                    '(mobile){{WRAPPER}}:hover .ua-info-box-icon' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                             ],
                     ]
             );
@@ -593,8 +595,8 @@ class Info_Box extends Base {
                             'type' => Controls_Manager::COLOR,
                             'default' => '#21272c',
                             'selectors' => [
-                                    '{{WRAPPER}} .mc-info-box-content .elementor-icon-box-title' => 'color: {{VALUE}};',
-                                    '{{WRAPPER}} .mc-info-box-content .elementor-icon-box-title a' => 'color: {{VALUE}};',
+                                    '{{WRAPPER}} .ua-info-box-content .elementor-icon-box-title' => 'color: {{VALUE}};',
+                                    '{{WRAPPER}} .ua-info-box-content .elementor-icon-box-title a' => 'color: {{VALUE}};',
                             ],
                             'global' => [
                                     'default' => Global_Colors::COLOR_PRIMARY,
@@ -606,7 +608,7 @@ class Info_Box extends Base {
                     Group_Control_Typography::get_type(),
                     [
                             'name' => 'title_typography',
-                            'selector' => '{{WRAPPER}} .mc-info-box-content .elementor-icon-box-title, {{WRAPPER}} .mc-info-box-content .elementor-icon-box-title a',
+                            'selector' => '{{WRAPPER}} .ua-info-box-content .elementor-icon-box-title, {{WRAPPER}} .ua-info-box-content .elementor-icon-box-title a',
                             'global' => [
                                     'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
                             ],
@@ -630,7 +632,7 @@ class Info_Box extends Base {
                             'type' => Controls_Manager::COLOR,
                             'default' => '',
                             'selectors' => [
-                                    '{{WRAPPER}} .mc-info-box-content .elementor-icon-box-description' => 'color: {{VALUE}};',
+                                    '{{WRAPPER}} .ua-info-box-content .elementor-icon-box-description' => 'color: {{VALUE}};',
                             ],
                             'global' => [
                                     'default' => Global_Colors::COLOR_TEXT,
@@ -642,7 +644,7 @@ class Info_Box extends Base {
                     Group_Control_Typography::get_type(),
                     [
                             'name' => 'description_typography',
-                            'selector' => '{{WRAPPER}} .mc-info-box-content .elementor-icon-box-description',
+                            'selector' => '{{WRAPPER}} .ua-info-box-content .elementor-icon-box-description',
                             'global' => [
                                     'default' => Global_Typography::TYPOGRAPHY_TEXT,
                             ],
@@ -699,7 +701,7 @@ class Info_Box extends Base {
         $svg        = !empty( $settings['add_icon']['value']['url'] ) && is_string( $settings['add_icon']['value']['url'] ) ? $settings['add_icon']['value']['url'] : false;
 
         if ( $has_icon || 'image' == $icon_style ) : ?>
-        <div class="mc-info-box-icon">
+        <div class="ua-info-box-icon">
             <?php if( $has_icon ) : ?>
             <<?php echo implode( ' ', [ $icon_tag, $icon_attributes ] ); ?>>
             <?php
@@ -737,9 +739,9 @@ class Info_Box extends Base {
             
         
     ?>
-    <div class="mc-info-box-wrapper <?php echo esc_attr( 'elementor-animation-' . $settings['hover_animation'] ); ?>">
+    <div class="ua-info-box-wrapper <?php echo esc_attr( 'elementor-animation-' . $settings['hover_animation'] ); ?>">
         <?php $this->get_image_icon(); ?>
-        <div class="mc-info-box-content">
+        <div class="ua-info-box-content">
             <<?php echo esc_attr( $settings['title_size'] ); ?> class="elementor-icon-box-title">
                     <<?php echo implode( ' ', [ $icon_tag ] ); ?><?php echo $this->get_render_attribute_string( 'title_text' ); ?>><?php echo $settings['title_text']; ?></<?php echo $icon_tag; ?>>
             </<?php echo esc_attr( $settings['title_size'] ); ?>>
