@@ -25,6 +25,38 @@ function ultraaddons_help_url( $class_name, $object = false ){
     return ULTRA_ADDONS_WIDGET_HELP_ULR . $class_name;
 }
 
+if( ! function_exists( 'ultraaddons_is_cf7_activated' ) ){
+    /**
+    * Check if contact form 7 is activated
+    *
+    * @return bool
+    */
+   function ultraaddons_is_cf7_activated() {
+           return class_exists( '\WPCF7' );
+   }
+}
+
+if( ! function_exists( 'ultraaddons_do_shortcode' ) ){
+    /**
+     * Call a shortcode function by tag name.
+     *
+     * @since  1.0.0
+     *
+     * @param string $tag     The shortcode whose function to call.
+     * @param array  $atts    The attributes to pass to the shortcode function. Optional.
+     * @param array  $content The shortcode's content. Default is null (none).
+     *
+     * @return string|bool False on failure, the result of the shortcode on success.
+     */
+    function ultraaddons_do_shortcode( $tag, array $atts = array(), $content = null ) {
+            global $shortcode_tags;
+            if ( ! isset( $shortcode_tags[ $tag ] ) ) {
+                    return false;
+            }
+            return call_user_func( $shortcode_tags[ $tag ], $atts, $content, $tag );
+    }
+}
+
 /**
  * Get Elementor instance
  * 

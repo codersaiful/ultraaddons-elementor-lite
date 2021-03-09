@@ -134,6 +134,17 @@ $widgetsArray = [
     ],
     
     
+    
+    'Contact_Form7' => [
+            'name'  => __( 'Contact Form 7', 'ultraaddons' ),
+            'is_free'   => true,
+            'icon'      => 'uicon-contact-form-7',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
+    
 ];
 
 return apply_filters( 'ultraaddons/widgets/array', $widgetsArray );
