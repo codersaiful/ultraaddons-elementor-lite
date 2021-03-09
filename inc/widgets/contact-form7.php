@@ -103,6 +103,10 @@ class Contact_Form7 extends Base{
                                                 'title' => __( 'Right', 'medilac' ),
                                                 'icon' => 'eicon-text-align-right',
                                         ],
+                                        'full' => [
+                                                'title' => __( 'Full Width', 'medilac' ),
+                                                'icon' => 'eicon-text-align-justify',
+                                        ],
                                 ],
                                 'prefix_class' => 'elementor-align-',
                                 'default' => 'left',
@@ -177,6 +181,9 @@ class Contact_Form7 extends Base{
                                         '{{WRAPPER}} form.ultraaddons-cf7-form input:not([type="submit"])' => 'color: {{VALUE}};',
                                         '{{WRAPPER}} form.ultraaddons-cf7-form select' => 'color: {{VALUE}};',
                                         '{{WRAPPER}} form.ultraaddons-cf7-form textarea' => 'color: {{VALUE}};',
+                                        '{{WRAPPER}} form.ultraaddons-cf7-form input::placeholder' => 'color: {{VALUE}}; opacity: 1;', /* Firefox */
+                                        '{{WRAPPER}} form.ultraaddons-cf7-form input:-ms-input-placeholder' => 'color: {{VALUE}};', /* Internet Explorer 10-11 */
+                                        '{{WRAPPER}} form.ultraaddons-cf7-form input::-ms-input-placeholder' => 'color: {{VALUE}};', /* Microsoft Edge */
                                 ],
                         ]
                 );
