@@ -6,12 +6,6 @@
     margin: 22px 0;
 }
 
-.ua-list-items li {
-    margin: 0 0 18px;
-    position: relative;
-    width: 100%;
-}
-
 .ua-list-items li i {
     color: #0FC392;
     font-size: 18px;
@@ -194,4 +188,15 @@ div.ua-list-temp-default .ua-list-items li i {
 .elementor-element.ua-list-temp-temp-3 .ua-list-items li .list-item-inside{
     padding: 15px;
     margin: 18px 14px 23px 13px;
+}
+
+@media (min-width: 37.5em){
+    .ua-list-items li {
+        width: 48%;
+    }
+}
+@media (min-width: 62em){
+    .ua-list-items li {
+        width: 30.33%;
+    }
 }

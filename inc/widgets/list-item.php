@@ -284,13 +284,14 @@ class List_Item extends Base{
                     'label'         => esc_html__( 'Column', 'ultraaddons' ),
                     'type'          => Controls_Manager::SELECT,
                     'options' => [
-                            '100%'     => __( 'One Column', 'ultraaddons' ),
+                            '100%'    => __( 'One Column', 'ultraaddons' ),
                             '48%'     => __( 'Two Column', 'ultraaddons' ),
-                            '30.33%'     => __( 'Three Column', 'ultraaddons' ),
+                            '30.33%'  => __( 'Three Column', 'ultraaddons' ),
                             '23%'     => __( 'Four Column', 'ultraaddons' ),
                     ],
-                    'default' => '100%',
-                    'prefix_class' => 'ua-list-',
+                    'desktop_default' => '30.33%',
+                    'tablet_default' => '48%',
+                    'mobile_default' => '100%',
                     'selectors' => [
                                         '{{WRAPPER}} .ua-list-items li' => 'width: {{VALUE}};',
                                 ],
