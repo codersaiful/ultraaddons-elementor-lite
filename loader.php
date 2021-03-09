@@ -136,6 +136,11 @@ class Loader {
         \UltraAddons\Core\Extensions_Manager::init();
         \UltraAddons\Core\Header_Footer::init();
         \UltraAddons\Core\Icons_Manager::init();
+        
+        /**
+         * Library Manage
+         */
+        \UltraAddons\Library\Library_Manager::init();
     }
 
     /**

@@ -9,10 +9,22 @@ use Elementor\Group_Control_Typography;
 use Elementor\Icons_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Background;
+use Elementor\Group_Control_Box_Shadow;
 use Elementor\Utils;
 
 trait Button_Helper{
     
+    public $btn_color = '#ffffff';
+    public $btn_text_color = '#21272c';
+    public $btn_hover_color = '#13c392';
+    public $btn_text_hover_color = '#ffffff';
+    
+    public $btn_border_color = '#21272c';
+    public $btn_border_hover_color = '#0fc392';
+    
+    public $btn_align = 'left';
+
+
     public function button_render() {
             $settings = $this->get_settings_for_display();
 
@@ -129,7 +141,7 @@ trait Button_Helper{
                                     ],
                             ],
                             'prefix_class' => 'ua-align-',
-                            'default' => 'left',
+                            'default' => $this->btn_align,//'left',
                     ]
             );
         
@@ -162,7 +174,7 @@ trait Button_Helper{
                             'type' => Controls_Manager::COLOR,
                             'default' => '#21272c',
                             'selectors' => [
-                                    '{{WRAPPER}} .elementor-button' => 'fill: {{VALUE}}; color: {{VALUE}};',
+                                    '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button' => 'fill: {{VALUE}}; color: {{VALUE}};',
                             ],
                     ]
             );
@@ -204,7 +216,7 @@ trait Button_Helper{
                             ],
                             'default' => 'solid',
                             'selectors' => [
-                                    '{{SELECTOR}} .elementor-button' => 'border-style: {{VALUE}};',
+                                    '{{SELECTOR}} .btn-wrapper .ua-button.elementor-button' => 'border-style: {{VALUE}};',
                             ],
                     ]
             );
@@ -212,11 +224,12 @@ trait Button_Helper{
             $this->add_control(
                     'btn_border_color',
                     [
-                            'label' => __( 'Color', 'ultraaddons' ),
+                            'label' => __( 'Border Color', 'ultraaddons' ),
                             'type' => Controls_Manager::COLOR,
-                            'default' => '#21272C',
+                            'default' => $this->btn_border_color,
+//                            'default' => '#21272C',
                             'selectors' => [
-                                    '{{WRAPPER}} .elementor-button' => 'border-color: {{VALUE}};',
+                                    '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button' => 'border-color: {{VALUE}};',
                             ],
                     ]
             );
@@ -235,7 +248,7 @@ trait Button_Helper{
                                     'unit' => 'px',
                             ],
                             'selectors' => [
-                                    '{{WRAPPER}} .elementor-button' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                    '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                             ],
                     ]
             );
@@ -247,8 +260,26 @@ trait Button_Helper{
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => [ 'px', '%' ],
                             'selectors' => [
-                                    '{{WRAPPER}} .elementor-button, {{WRAPPER}} .elementor-button:hover, {{WRAPPER}} .elementor-button:focus' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                    '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button, {{WRAPPER}} .btn-wrapper .ua-button.elementor-button:hover, {{WRAPPER}} .btn-wrapper .ua-button.elementor-button:focus' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                             ],
+                    ]
+            );
+            
+//            $this->add_group_control(
+//                    Group_Control_Border::get_type(),
+//                    [
+//                            'name' => 'btn_border',
+//                            'label' => __( 'Box Shadow', 'ultraaddons' ),
+//                            'selector' => '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button',
+//                    ]
+//            );
+            
+            $this->add_group_control(
+                    Group_Control_Box_Shadow::get_type(),
+                    [
+                            'name' => 'btn_box_shadow',
+                            'label' => __( 'Box Shadow', 'ultraaddons' ),
+                            'selector' => '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button',
                     ]
             );
             
@@ -266,10 +297,10 @@ trait Button_Helper{
                     [
                             'label' => __( 'Text Color', 'ultraaddons' ),
                             'type' => Controls_Manager::COLOR,
-                            'default' => '#FFF',
+                            'default' =>  $this->btn_text_hover_color,// '#FFF',
                             'selectors' => [
-                                    '{{WRAPPER}} .elementor-button:hover, {{WRAPPER}} .elementor-button:focus' => 'color: {{VALUE}};',
-                                    '{{WRAPPER}} .elementor-button:hover svg, {{WRAPPER}} .elementor-button:focus svg' => 'fill: {{VALUE}};',
+                                    '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:hover, {{WRAPPER}} .btn-wrapper .ua-button.elementor-button:focus' => 'color: {{VALUE}};',
+                                    '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:hover svg, {{WRAPPER}} .btn-wrapper .ua-button.elementor-button:focus svg' => 'fill: {{VALUE}};',
                             ],
                     ]
             );
@@ -311,12 +342,24 @@ trait Button_Helper{
                             ],
                             'default' => 'solid',
                             'selectors' => [
-                                    '{{WRAPPER}} .elementor-button:hover' => 'border-style: {{VALUE}};',
-                                    '{{WRAPPER}} .elementor-button:focus' => 'border-style: {{VALUE}};',
+                                    '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:hover' => 'border-style: {{VALUE}};',
+                                    '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:focus' => 'border-style: {{VALUE}};',
                             ],
                             'separator' => 'before',
                     ]
             );
+            $this->add_control(
+                    'btn_hover_border_color',
+                    [
+                            'label' => __( 'Border Color', 'ultraaddons' ),
+                            'type' => Controls_Manager::COLOR,
+                            'default' => $this->btn_border_hover_color,
+                            'selectors' => [
+                                    '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:hover' => 'border-color: {{VALUE}};',//{{WRAPPER}} .elementor-button
+                                    '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:focus' => 'border-color: {{VALUE}};',
+                            ],
+                    ]
+            ); 
             
             $this->add_control(
                     'btn_hover_border_width',
@@ -332,8 +375,8 @@ trait Button_Helper{
                                     'unit' => 'px',
                             ],
                             'selectors' => [
-                                    '{{WRAPPER}} .elementor-button:hover' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                                    '{{WRAPPER}} .elementor-button:focus' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                    '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:hover' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                    '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:focus' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                             ],
                     ]
             );
@@ -345,24 +388,30 @@ trait Button_Helper{
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => [ 'px', '%' ],
                             'selectors' => [
-                                    '{{WRAPPER}} .elementor-button:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                                    '{{WRAPPER}} .elementor-button:focus' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                    '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                    '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:focus' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                             ],
                     ]
             );
 
-            $this->add_control(
-                    'btn_hover_border_color',
+//            $this->add_group_control(
+//                    Group_Control_Border::get_type(),
+//                    [
+//                            'name' => 'btn_border_hover_hello',
+//                            'label' => __( 'Box Shadow', 'ultraaddons' ),
+//                            'selector' => '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:hover',
+//                    ]
+//            );
+
+           $this->add_group_control(
+                    Group_Control_Box_Shadow::get_type(),
                     [
-                            'label' => __( 'Border Color', 'ultraaddons' ),
-                            'type' => Controls_Manager::COLOR,
-                            'default' => '#0FC392',
-                            'selectors' => [
-                                    '{{WRAPPER}} .elementor-button:hover' => 'border-color: {{VALUE}};',
-                                    '{{WRAPPER}} .elementor-button:focus' => 'border-color: {{VALUE}};',
-                            ],
+                            'name' => 'btn_hover_box_shadow',
+                            'label' => __( 'Box Shadow', 'ultraaddons' ),
+                            'selector' => '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:hover',
                     ]
-            );            
+            );
+                  
 
             $this->end_controls_tab();
 
@@ -374,6 +423,7 @@ trait Button_Helper{
                             'label' => __( 'Button Class', 'ultraaddons' ),
                             'type' => Controls_Manager::TEXT,
                             'default' => '',
+                            'separator'=>'before',
                     ]
             );  
             
