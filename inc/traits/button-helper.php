@@ -142,9 +142,9 @@ trait Button_Helper{
                             ],
                             'prefix_class' => 'ua-btn-align-',
                             'selectors' => [
-                                    '(desktop){{SELECTOR}} .btn-wrapper' => 'text-align: {{VALUE}};',
-                                    '(tablet){{SELECTOR}} .btn-wrapper' => 'text-align: {{VALUE}};',
-                                    '(mobile){{SELECTOR}} .btn-wrapper' => 'text-align: {{VALUE}};width:100%;',
+                                    '(desktop){{WRAPPER}} .btn-wrapper' => 'text-align: {{VALUE}};',
+                                    '(tablet){{WRAPPER}} .btn-wrapper' => 'text-align: {{VALUE}};',
+                                    '(mobile){{WRAPPER}} .btn-wrapper' => 'text-align: {{VALUE}};width:100%;',
                             ],
                             'default' => $this->btn_align,//'left',
                     ]
