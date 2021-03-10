@@ -8,8 +8,8 @@
     text-align: right;
 }
 
-.advance-heading-wrapper span {
-    display: inline-block;
+.advance-heading-wrapper span.sub-heading-wrapper {
+    display: block;
     font-size: 18px;
     color: #0fc392;
     color: var(--medilac-primary);
@@ -18,65 +18,19 @@
     text-transform: capitalize;
     font-weight: 500;
     position: relative;
-    margin: 0 0 8px;
-    padding: 0 10px 0 0;
 }
-.advance-heading-wrapper.center span{padding: 0 10px;}
-.advance-heading-wrapper.right span{padding: 0 0 0 10px;}
-.advance-heading-wrapper.center span {
-    padding: 0 76px;
-}
+/*.advance-heading-wrapper.center span.sub-heading-wrapper{padding: 0 10px;}
+.advance-heading-wrapper.right span.sub-heading-wrapper{padding: 0 0 0 10px;}*/
 
-.advance-heading-wrapper.center span {
-    position: relative;
-}
 
-.advance-heading-wrapper span:after {
-    position: absolute;
-    top: 50%;
-    right: -100px;
-    content: "";
-    background: #0fc392;
-    background: var(--medilac-primary);
-    width: 100px;
-    height: 2px;
-    transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-}
-
-.advance-heading-wrapper.center span:after {
+.advance-heading-wrapper.center span.sub-heading-wrapper:after {
     right: 0;
 }
 
-.advance-heading-wrapper.center span:after {
-    width: 70px;
-}
-.advance-heading-wrapper.right span:after {
+.advance-heading-wrapper.left span.sub-heading-wrapper:before,
+.advance-heading-wrapper.right span.sub-heading-wrapper:after {
     width: 0;
     display: none;
-}
-
-/*Before*/
-.advance-heading-wrapper.center span:before {
-    left: 0;
-}
-
-.advance-heading-wrapper.right span:before,
-.advance-heading-wrapper.center span:before {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    content: "";
-    background: #0fc392;
-    background: var(--medilac-primary);
-    width: 70px;
-    height: 2px;
-    transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-}
-.advance-heading-wrapper.right span:before {
-    left: unset;
-    right: 100%;
 }
 
 .advance-heading-wrapper .heading-tag {
@@ -88,3 +42,22 @@
     margin: 0 0 25px;
 }
 
+.advance-heading-wrapper span.sub-heading-wrapper:before,
+.advance-heading-wrapper span.sub-heading-wrapper:after {
+    content: "";
+    display: inline-block;
+    position: relative;
+    width: 100px;
+    vertical-align: middle;
+}
+.advance-heading-wrapper.center span.sub-heading-wrapper span.spb {
+    margin: 0 20px;
+}
+.advance-heading-wrapper.left span.sub-heading-wrapper span.spb {
+    margin-right: 20px;
+    margin-left: 0 !important;
+}
+.advance-heading-wrapper.right span.sub-heading-wrapper span.spb {
+    margin-right: 0 !important;
+    margin-left: 20px;
+}

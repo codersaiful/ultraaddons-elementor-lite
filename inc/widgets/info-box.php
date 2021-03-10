@@ -28,21 +28,8 @@ class Info_Box extends Base {
             return [ 'ultraaddons', 'info', 'service', 'box' ];
     }
     
-    
-
-    /**
-     * Register widget controls.
-     *
-     * Adds different input fields to allow the user to change and customize the widget settings.
-     *
-     * @since 1.0.0
-     * @access protected
-     */
-    protected function _register_controls() {
-
-        $this->btn_border_color = '#e2ebf1';
-        
-            $this->start_controls_section(
+    protected function content_infobox(){
+        $this->start_controls_section(
                     'section_sliders',
                     [
                             'label' => __( 'Info Box', 'ultraaddons' ),
@@ -212,9 +199,10 @@ class Info_Box extends Base {
             
             $this->end_controls_section();
             
-            $this->button_register_controls();
-            
-            $this->start_controls_section(
+    }
+
+    protected function style_infobox(){
+        $this->start_controls_section(
                     'section_style_icon',
                     [
                             'label' => __( 'Icon', 'ultraaddons' ),
@@ -530,130 +518,275 @@ class Info_Box extends Base {
             
 
             $this->end_controls_section();
+    }
 
-            $this->start_controls_section(
-                    'section_style_content',
-                    [
-                            'label' => __( 'Content', 'ultraaddons' ),
-                            'tab'   => Controls_Manager::TAB_STYLE,
-                    ]
-            );
+    protected function style_content(){
+        $this->start_controls_section(
+                'section_style_content',
+                [
+                        'label' => __( 'Content', 'ultraaddons' ),
+                        'tab'   => Controls_Manager::TAB_STYLE,
+                ]
+        );
 
-            $this->add_control(
-                    'content_vertical_alignment',
-                    [
-                            'label' => __( 'Vertical Alignment', 'ultraaddons' ),
-                            'type' => Controls_Manager::SELECT,
-                            'options' => [
-                                    'top' => __( 'Top', 'ultraaddons' ),
-                                    'middle' => __( 'Middle', 'ultraaddons' ),
-                                    'bottom' => __( 'Bottom', 'ultraaddons' ),
-                            ],
-                            'default' => 'top',
-                            'prefix_class' => 'elementor-vertical-align-',
-                    ]
-            );
+        $this->start_controls_tabs( 'content_tabs' );
+
+        $this->start_controls_tab(
+                'style_content_normal',
+                [
+                        'label' => __( 'Normal', 'ultraaddons' ),
+                ]
+        );
+        
+        
+        
+        
+        
+        $this->add_control(
+                'heading_title',
+                [
+                        'label' => __( 'Title', 'ultraaddons' ),
+                        'type' => Controls_Manager::HEADING,
+                        'separator' => 'before',
+                ]
+        );
+
+        $this->add_responsive_control(
+                'title_bottom_space',
+                [
+                        'label' => __( 'Spacing', 'ultraaddons' ),
+                        'type' => Controls_Manager::SLIDER,
+                        'range' => [
+                                'px' => [
+                                        'min' => 0,
+                                        'max' => 100,
+                                ],
+                        ],
+                        'selectors' => [
+                                '{{WRAPPER}} .elementor-icon-box-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                        ],
+                ]
+        );
+
+        $this->add_control(
+                'title_color',
+                [
+                        'label' => __( 'Color', 'ultraaddons' ),
+                        'type' => Controls_Manager::COLOR,
+                        'default' => '#21272c',
+                        'selectors' => [
+                                '{{WRAPPER}} .ua-info-box-content .elementor-icon-box-title' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .ua-info-box-content .elementor-icon-box-title a' => 'color: {{VALUE}};',
+                        ],
+                        'global' => [
+                                'default' => Global_Colors::COLOR_PRIMARY,
+                        ],
+                ]
+        );
+
+        $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                        'name' => 'title_typography',
+                        'selector' => '{{WRAPPER}} .ua-info-box-content .elementor-icon-box-title, {{WRAPPER}} .ua-info-box-content .elementor-icon-box-title a',
+                        'global' => [
+                                'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                        ],
+
+                ]
+        );
+
+        $this->add_control(
+                'heading_description',
+                [
+                        'label' => __( 'Description', 'ultraaddons' ),
+                        'type' => Controls_Manager::HEADING,
+                        'separator' => 'before',
+                ]
+        );
+
+        $this->add_control(
+                'description_color',
+                [
+                        'label' => __( 'Color', 'ultraaddons' ),
+                        'type' => Controls_Manager::COLOR,
+                        'default' => '',
+                        'selectors' => [
+                                '{{WRAPPER}} .ua-info-box-content .elementor-icon-box-description' => 'color: {{VALUE}};',
+                        ],
+                        'global' => [
+                                'default' => Global_Colors::COLOR_TEXT,
+                        ],
+                ]
+        );
+
+        $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                        'name' => 'description_typography',
+                        'selector' => '{{WRAPPER}} .ua-info-box-content .elementor-icon-box-description',
+                        'global' => [
+                                'default' => Global_Typography::TYPOGRAPHY_TEXT,
+                        ],
+                ]
+        );
+
+        $this->end_controls_tab();
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        $this->start_controls_tab(
+                'style_content_normal_hover',
+                [
+                        'label' => __( 'Hover', 'ultraaddons' ),
+                ]
+        );
+        
+        
+        
+        
+        
+        $this->add_control(
+                'heading_title_hover',
+                [
+                        'label' => __( 'Title', 'ultraaddons' ),
+                        'type' => Controls_Manager::HEADING,
+                        'separator' => 'before',
+                ]
+        );
+
+        $this->add_responsive_control(
+                'title_bottom_space_hover',
+                [
+                        'label' => __( 'Spacing', 'ultraaddons' ),
+                        'type' => Controls_Manager::SLIDER,
+                        'range' => [
+                                'px' => [
+                                        'min' => 0,
+                                        'max' => 100,
+                                ],
+                        ],
+                        'selectors' => [
+                                '{{WRAPPER}}:hover .elementor-icon-box-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                        ],
+                ]
+        );
+
+        $this->add_control(
+                'title_color_hover',
+                [
+                        'label' => __( 'Color', 'ultraaddons' ),
+                        'type' => Controls_Manager::COLOR,
+//                        'default' => '#21272c',
+                        'selectors' => [
+                                '{{WRAPPER}}:hover .ua-info-box-content .elementor-icon-box-title' => 'color: {{VALUE}};',
+                                '{{WRAPPER}}:hover .ua-info-box-content .elementor-icon-box-title a' => 'color: {{VALUE}};',
+                        ],
+                        'global' => [
+                                'default' => Global_Colors::COLOR_PRIMARY,
+                        ],
+                ]
+        );
+
+        $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                        'name' => 'title_typography_hover',
+                        'selector' => '{{WRAPPER}} .ua-info-box-content .elementor-icon-box-title, {{WRAPPER}} .ua-info-box-content .elementor-icon-box-title a',
+                        'global' => [
+                                'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                        ],
+
+                ]
+        );
+
+        $this->add_control(
+                'heading_description_hover',
+                [
+                        'label' => __( 'Description', 'ultraaddons' ),
+                        'type' => Controls_Manager::HEADING,
+                        'separator' => 'before',
+                ]
+        );
+
+        $this->add_control(
+                'description_color_hover',
+                [
+                        'label' => __( 'Color', 'ultraaddons' ),
+                        'type' => Controls_Manager::COLOR,
+                        'default' => '',
+                        'selectors' => [
+                                '{{WRAPPER}}:hover .ua-info-box-content .elementor-icon-box-description' => 'color: {{VALUE}};',
+                        ],
+                        'global' => [
+                                'default' => Global_Colors::COLOR_TEXT,
+                        ],
+                ]
+        );
+
+        $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                        'name' => 'description_typography_hover',
+                        'selector' => '{{WRAPPER}}:hover .ua-info-box-content .elementor-icon-box-description',
+                        'global' => [
+                                'default' => Global_Typography::TYPOGRAPHY_TEXT,
+                        ],
+                ]
+        );
+
+        $this->end_controls_tab();
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        $this->end_controls_tabs();
+
+        $this->end_controls_section();
+
+    }
+
+        /**
+     * Register widget controls.
+     *
+     * Adds different input fields to allow the user to change and customize the widget settings.
+     *
+     * @since 1.0.0
+     * @access protected
+     */
+    protected function _register_controls() {
+
+        $this->btn_border_color = '#e2ebf1';
+        
+         $this->content_infobox();
+        
+        $this->button_register_controls();
+        
+        $this->style_infobox();
+        
+        $this->style_content();
             
-            $this->add_control(
-                    'hover_animation',
-                    [
-                            'label' => __( 'Hover Animation', 'ultraaddons' ),
-                            'type' => Controls_Manager::HOVER_ANIMATION,
-                    ]
-            );
-
-            $this->add_control(
-                    'heading_title',
-                    [
-                            'label' => __( 'Title', 'ultraaddons' ),
-                            'type' => Controls_Manager::HEADING,
-                            'separator' => 'before',
-                    ]
-            );
-
-            $this->add_responsive_control(
-                    'title_bottom_space',
-                    [
-                            'label' => __( 'Spacing', 'ultraaddons' ),
-                            'type' => Controls_Manager::SLIDER,
-                            'range' => [
-                                    'px' => [
-                                            'min' => 0,
-                                            'max' => 100,
-                                    ],
-                            ],
-                            'selectors' => [
-                                    '{{WRAPPER}} .elementor-icon-box-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-                            ],
-                    ]
-            );
-
-            $this->add_control(
-                    'title_color',
-                    [
-                            'label' => __( 'Color', 'ultraaddons' ),
-                            'type' => Controls_Manager::COLOR,
-                            'default' => '#21272c',
-                            'selectors' => [
-                                    '{{WRAPPER}} .ua-info-box-content .elementor-icon-box-title' => 'color: {{VALUE}};',
-                                    '{{WRAPPER}} .ua-info-box-content .elementor-icon-box-title a' => 'color: {{VALUE}};',
-                            ],
-                            'global' => [
-                                    'default' => Global_Colors::COLOR_PRIMARY,
-                            ],
-                    ]
-            );
-
-            $this->add_group_control(
-                    Group_Control_Typography::get_type(),
-                    [
-                            'name' => 'title_typography',
-                            'selector' => '{{WRAPPER}} .ua-info-box-content .elementor-icon-box-title, {{WRAPPER}} .ua-info-box-content .elementor-icon-box-title a',
-                            'global' => [
-                                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
-                            ],
-                            
-                    ]
-            );
-
-            $this->add_control(
-                    'heading_description',
-                    [
-                            'label' => __( 'Description', 'ultraaddons' ),
-                            'type' => Controls_Manager::HEADING,
-                            'separator' => 'before',
-                    ]
-            );
-
-            $this->add_control(
-                    'description_color',
-                    [
-                            'label' => __( 'Color', 'ultraaddons' ),
-                            'type' => Controls_Manager::COLOR,
-                            'default' => '',
-                            'selectors' => [
-                                    '{{WRAPPER}} .ua-info-box-content .elementor-icon-box-description' => 'color: {{VALUE}};',
-                            ],
-                            'global' => [
-                                    'default' => Global_Colors::COLOR_TEXT,
-                            ],
-                    ]
-            );
-
-            $this->add_group_control(
-                    Group_Control_Typography::get_type(),
-                    [
-                            'name' => 'description_typography',
-                            'selector' => '{{WRAPPER}} .ua-info-box-content .elementor-icon-box-description',
-                            'global' => [
-                                    'default' => Global_Typography::TYPOGRAPHY_TEXT,
-                            ],
-                    ]
-            );
-            
             
 
-            $this->end_controls_section();
             
             
             
@@ -739,7 +872,7 @@ class Info_Box extends Base {
             
         
     ?>
-    <div class="ua-info-box-wrapper <?php echo esc_attr( 'elementor-animation-' . $settings['hover_animation'] ); ?>">
+    <div class="ua-info-box-wrapper">
         <?php $this->get_image_icon(); ?>
         <div class="ua-info-box-content">
             <<?php echo esc_attr( $settings['title_size'] ); ?> class="elementor-icon-box-title">

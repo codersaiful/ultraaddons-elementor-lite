@@ -223,7 +223,6 @@ final class UltraAddons {
                     include_once ULTRA_ADDONS_DIR . 'admin/admin-handle.php';
                 }
                 
-                //var_dump(ultraaddons_elementor());
                 
                 
                 //Elementor Widget and script Loader

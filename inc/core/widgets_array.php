@@ -143,6 +143,14 @@ $widgetsArray = [
                 __( 'Basic', 'ultraaddons' ),
             ],
     ],
+    'Icon_Box' => [
+            'name'  => __( 'Icon Box', 'ultraaddons' ),
+            'is_free'   => true,
+            'icon'      => 'uicon-icon-box',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
     
     
 ];

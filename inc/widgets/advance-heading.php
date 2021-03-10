@@ -81,6 +81,7 @@ class Advance_Heading extends Base{
         //$this->add_inline_editing_attributes( 'avd_heading', 'basic' );
         $this->add_inline_editing_attributes( 'avd_heading', 'none' );
         $this->add_render_attribute( 'avd_heading', 'class', 'heading-tag' );
+        $this->add_render_attribute( 'avd_sub_heading', 'class', 'sub-heading-wrapper' );
 
         $this->add_inline_editing_attributes( 'avd_sub_heading', 'none' );
         
@@ -93,7 +94,7 @@ class Advance_Heading extends Base{
         <div class="advance-heading-wrapper <?php echo esc_attr( $alignment ); ?>" >
             <?php if( ! empty( $settings['avd_sub_heading'] ) ){ ?>
             <span <?php echo $this->get_render_attribute_string( 'avd_sub_heading' ); ?>>
-                <?php echo wp_kses_post( $settings['avd_sub_heading'] ); ?>
+                <span class="spb"><?php echo wp_kses_post( $settings['avd_sub_heading'] ); ?></span>
             </span>
             <?php
             }
@@ -199,8 +200,8 @@ class Advance_Heading extends Base{
                     'value' => Scheme_Color::COLOR_1,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .advance-heading-wrapper span' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .advance-heading-wrapper span:after,{{WRAPPER}} .advance-heading-wrapper span:before' => 'background-color: {{VALUE}}',
+                    '{{WRAPPER}} .advance-heading-wrapper span.sub-heading-wrapper' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .advance-heading-wrapper span.sub-heading-wrapper:after,{{WRAPPER}} .advance-heading-wrapper span.sub-heading-wrapper:before' => 'background-color: {{VALUE}}',
                 ],
                 'default'   => '#0fc392',
             ]
@@ -224,9 +225,9 @@ class Advance_Heading extends Base{
         
         
         $this->add_responsive_control(
-                'avd_head_space',
+                'avd_head_v_space',
                 [
-                        'label' => __( 'Spacing', 'ultraaddons' ),
+                        'label' => __( 'Vertical Spacing', 'ultraaddons' ),
                         'type' => Controls_Manager::SLIDER,
                         'default' => [
                                 'size' => 0,
@@ -239,6 +240,26 @@ class Advance_Heading extends Base{
                         ],
                         'selectors' => [
                                 '{{WRAPPER}} .advance-heading-wrapper .heading-tag' => 'padding-top: {{SIZE}}{{UNIT}};',
+                        ],
+                ]
+        );
+        
+        $this->add_responsive_control(
+                'avd_head_h_space',
+                [
+                        'label' => __( 'Horizontal Spacing', 'ultraaddons' ),
+                        'type' => Controls_Manager::SLIDER,
+                        'default' => [
+                                'size' => 20,
+                        ],
+                        'range' => [
+                                'px' => [
+                                        'min' => 0,
+                                        'max' => 100,
+                                ],
+                        ],
+                        'selectors' => [
+                                '{{WRAPPER}} .advance-heading-wrapper span.sub-heading-wrapper span.spb' => 'margin-left: {{SIZE}}{{UNIT}}; margin-right: {{SIZE}}{{UNIT}};',
                         ],
                 ]
         );
@@ -260,7 +281,7 @@ class Advance_Heading extends Base{
                                 ],
                         ],
                         'selectors' => [
-                                '{{WRAPPER}} .advance-heading-wrapper.right span:before,{{WRAPPER}} .advance-heading-wrapper.center span:before,{{WRAPPER}} .advance-heading-wrapper span:after' => 'height: {{SIZE}}{{UNIT}};',
+                                '{{WRAPPER}} .advance-heading-wrapper.right span:before,{{WRAPPER}} .advance-heading-wrapper.center span:before,{{WRAPPER}} .advance-heading-wrapper span.sub-heading-wrapper:after' => 'height: {{SIZE}}{{UNIT}};',
                         ],
                 ]
         );
@@ -270,17 +291,22 @@ class Advance_Heading extends Base{
                 [
                         'label' => __( 'Line Length', 'ultraaddons' ),
                         'type' => Controls_Manager::SLIDER,
+                        'size_units' => [ 'px', '%' ],
                         'default' => [
-                                'size' => 100,
+                                'unit' => '%'
                         ],
                         'range' => [
                                 'px' => [
                                         'min' => 0,
                                         'max' => 500,
                                 ],
+                                '%' => [
+                                        'min' => 0,
+                                        'max' => 100,
+                                ],
                         ],
                         'selectors' => [
-                                '{{WRAPPER}} .advance-heading-wrapper span:after' => 'width: {{SIZE}}{{UNIT}};right: -{{SIZE}}{{UNIT}};',
+                                '{{WRAPPER}} .advance-heading-wrapper span.sub-heading-wrapper:after, {{WRAPPER}} .advance-heading-wrapper span.sub-heading-wrapper:before' => 'width: {{SIZE}}{{UNIT}};',
                         ],
                 ]
         );
@@ -324,7 +350,7 @@ class Advance_Heading extends Base{
                 [
                         'name' => 'subhead_typography',
                         'label' => 'Sub Heading Typography',
-                        'selector' => '{{WRAPPER}} .advance-heading-wrapper span',
+                        'selector' => '{{WRAPPER}} .advance-heading-wrapper span.sub-heading-wrapper',
                         'global' => [
                                 'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
                         ],

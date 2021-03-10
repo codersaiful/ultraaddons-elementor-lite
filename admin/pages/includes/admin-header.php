@@ -30,7 +30,11 @@ $full_logo_image    = apply_filters( 'ultraaddons/admin/header_logo', $full_logo
                     $sub_menus = UltraAddons\Admin\Admin_Handle::get_submenu();
                     $current_page = isset( $_GET['page'] ) ? $_GET['page'] : false;
                     foreach( $sub_menus as $sub_menu ){
-
+                        if( $sub_menu['menu_slug'] == 'ultraaddons-help-n-others' ){
+                            continue;
+                        }
+                        
+                        
                         $menu_title = $sub_menu['menu_title'];
                         $menu_slug = $sub_menu['menu_slug'];
                         $active_class = $current_page == $menu_slug ? 'ua-current-menu' : '';

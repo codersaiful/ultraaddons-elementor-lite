@@ -30,10 +30,13 @@ trait Button_Helper{
 
             $has_button_link = ! empty( $settings['btn_link']['url'] );
             
-            if( $has_button_link ) {
-                $this->add_link_attributes( 'btn_link', $settings['btn_link'] );
-                $this->add_render_attribute( 'btn_link', 'class', 'elementor-button-link' );
+            if( ! $has_button_link ) {
+                return;
             }
+            
+            $this->add_link_attributes( 'btn_link', $settings['btn_link'] );
+            $this->add_render_attribute( 'btn_link', 'class', 'elementor-button-link' );
+
             
             
             $btn_class = ! empty( $settings['btn_class'] ) ? $settings['btn_class'] : '';
@@ -140,7 +143,12 @@ trait Button_Helper{
                                             'icon' => 'eicon-text-align-justify',
                                     ],
                             ],
-                            'prefix_class' => 'ua-align-',
+                            'prefix_class' => 'ua-btn-align-',
+                            'selectors' => [
+                                    '(desktop){{WRAPPER}} .btn-wrapper' => 'text-align: {{VALUE}};',
+                                    '(tablet){{WRAPPER}} .btn-wrapper' => 'text-align: {{VALUE}};',
+                                    '(mobile){{WRAPPER}} .btn-wrapper' => 'text-align: {{VALUE}};width:100%;',
+                            ],
                             'default' => $this->btn_align,//'left',
                     ]
             );
@@ -561,6 +569,25 @@ trait Button_Helper{
                 ]
         );
 
+        if( $this->get_name() == 'ultraaddons-button' ){
+                $this->add_responsive_control(
+                    'btn_inline',
+                    [
+                            'label' => __( 'Display Inline', 'ultraaddons' ),
+                            'type' => Controls_Manager::SWITCHER,
+                            'label_on' => __( 'On', 'ultraaddons' ),
+                            'label_off' => __( 'Off', 'ultraaddons' ),
+                            'return_value' => 'auto',
+                            'tablet_default' => '100%',
+                            'mobile_default' => '100%',
+                            'selectors' => [
+                                    '{{WRAPPER}}' => 'width: {{VALUE}};',
+                            ],
+                            
+                    ]
+            );
+        }
+        
 
         $this->end_controls_section();
     }
