@@ -474,3 +474,7 @@ label.ua-option-item i.ua-option-icon.uicon-ultraaddons:before{
     font-size: 70%;
     font-weight: 100;
 }
+
+body.wp-admin pre.xdebug-var-dump {
+    margin-left: 200px;
+}
