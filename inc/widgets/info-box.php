@@ -872,7 +872,7 @@ class Info_Box extends Base {
             
         
     ?>
-    <div class="ua-info-box-wrapper <?php echo esc_attr( 'elementor-animation-' . $settings['hover_animation'] ); ?>">
+    <div class="ua-info-box-wrapper">
         <?php $this->get_image_icon(); ?>
         <div class="ua-info-box-content">
             <<?php echo esc_attr( $settings['title_size'] ); ?> class="elementor-icon-box-title">
