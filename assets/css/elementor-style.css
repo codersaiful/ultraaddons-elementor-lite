@@ -121,3 +121,9 @@ i.ultraaddons[class^="uicon-"]:before, i.ultraaddons[class*=" uicon-"]:before{
 #elementor-panel-category-ultraaddons .elementor-panel-heading {
     /*background: #e6e9ec1f;*/
 }
+/*********************************
+* ELEMENTOR SCREEN AND HELPER
+***********************************/
+i.elementor-icons-manager__tab__item__icon.uicon {
+    font-size: 25px;
+}
