@@ -464,3 +464,13 @@ label.ua-option-item i.ua-option-icon.uicon-ultraaddons:before{
 @-moz-keyframes ua-spin { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes ua-spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes ua-spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+
+/*************************
+* Other 
+**************************/
+.ua-content-info.ua-shortcode-content h3>small {
+    color: #b3adad;
+    font-size: 70%;
+    font-weight: 100;
+}

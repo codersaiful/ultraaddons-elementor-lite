@@ -141,6 +141,16 @@ class Loader {
          * Library Manage
          */
         \UltraAddons\Library\Library_Manager::init();
+        
+        /**
+         * Shortcode for Template
+         * Sample shortcode is: [UltraAddons_Template id='123']
+         * here, 123 is: POST_ID of template.
+         * Even any POST ID will be work, If installed Elementor and UltraAddons
+         * 
+         * @since 1.0.3.4
+         */
+        \UltraAddons\WP\Shortcode::init();
     }
 
     /**
