@@ -1,0 +1,81 @@
+{
+    "timestamp": 1561218720,
+    "upgrade_notice": {
+        "version": "2.0.0",
+        "message": "",
+        "update_link": ""
+    },
+    "library": {
+        "types_data": {
+            "block": {
+                "categories": [
+                    "404 page",
+                    "about",
+                    "archive",
+                    "call to action",
+                    "clients",
+                    "contact",
+                    "faq",
+                    "features",
+                    "footer",
+                    "header",
+                    "hero",
+                    "portfolio",
+                    "pricing",
+                    "product archive",
+                    "services",
+                    "single page",
+                    "single post",
+                    "single product",
+                    "stats",
+                    "subscribe",
+                    "team",
+                    "testimonials"
+                ]
+            },
+            "popup": {
+                "categories": [
+                    "bottom bar",
+                    "classic",
+                    "fly-in",
+                    "full screen",
+                    "hello bar",
+                    "slide-in"
+                ]
+            }
+        },
+        "categories": "[\"404 page\",\"about\",\"archive\",\"call to action\",\"clients\",\"contact\",\"faq\",\"features\",\"footer\",\"header\",\"hero\",\"portfolio\",\"pricing\",\"product archive\",\"services\",\"single page\",\"single post\",\"single product\",\"stats\",\"subscribe\",\"team\",\"testimonials\"]",
+        "templates": [
+            {
+                "id": "2",
+                "title": "Hero 1",
+                "thumbnail": "https://library.elementor.com/wp-content/uploads/2018/03/heroo_black_4.png",
+                "tmpl_created": "1520443695",
+                "author": "Elementor",
+                "url": "https://library.elementor.com/blocks/hero-1/?utm_source=library&utm_medium=wp-dash&utm_campaign=preview",
+                "type": "block",
+                "subtype": "hero",
+                "tags": "[\"hero\"]",
+                "menu_order": "0",
+                "popularity_index": "0",
+                "trend_index": "0",
+                "has_page_settings": "0"
+            },
+            {
+                "id": "1",
+                "title": "Hero UI Kit",
+                "thumbnail": "https://library.elementor.com/wp-content/uploads/2016/09/library-ui-kit-cover.png",
+                "tmpl_created": "1475067229",
+                "author": "Elementor",
+                "url": "https://library.elementor.com/hero-ui-kit/?utm_source=library&utm_medium=wp-dash&utm_campaign=preview",
+                "type": "page",
+                "subtype": "page",
+                "tags": "[]",
+                "menu_order": "0",
+                "popularity_index": "0",
+                "trend_index": "0",
+                "has_page_settings": "0"
+            }
+        ]
+    }
+}
