@@ -225,9 +225,9 @@ class Advance_Heading extends Base{
         
         
         $this->add_responsive_control(
-                'avd_head_h_space',
+                'avd_head_v_space',
                 [
-                        'label' => __( 'Horizontal Spacing', 'ultraaddons' ),
+                        'label' => __( 'Vertical Spacing', 'ultraaddons' ),
                         'type' => Controls_Manager::SLIDER,
                         'default' => [
                                 'size' => 0,
@@ -245,12 +245,12 @@ class Advance_Heading extends Base{
         );
         
         $this->add_responsive_control(
-                'avd_head_v_space',
+                'avd_head_h_space',
                 [
-                        'label' => __( 'Vertical Spacing', 'ultraaddons' ),
+                        'label' => __( 'Horizontal Spacing', 'ultraaddons' ),
                         'type' => Controls_Manager::SLIDER,
                         'default' => [
-                                'size' => 0,
+                                'size' => 20,
                         ],
                         'range' => [
                                 'px' => [
@@ -293,7 +293,6 @@ class Advance_Heading extends Base{
                         'type' => Controls_Manager::SLIDER,
                         'size_units' => [ 'px', '%' ],
                         'default' => [
-                                'size' => 30,
                                 'unit' => '%'
                         ],
                         'range' => [
