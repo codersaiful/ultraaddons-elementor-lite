@@ -777,19 +777,17 @@ class Info_Box extends Base {
 
         $this->btn_border_color = '#e2ebf1';
         
-         $this->content_infobox();
-        
-        $this->button_register_controls();
+        $this->content_infobox();
         
         $this->style_infobox();
         
         $this->style_content();
             
-            
-
-            
-            
-            
+        /**
+         * Button Control Load using Trait
+         * from Button Helper Trait
+         */
+        $this->button_register_controls();
 
     }
     
