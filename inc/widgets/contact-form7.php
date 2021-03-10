@@ -20,7 +20,7 @@ class Contact_Form7 extends Base{
                 $this->start_controls_section(
                         '_section_cf7',
                         [
-                                'label' => ultraaddons_is_cf7_activated() ? __( 'Contact Form 7', 'medilac' ) : __( 'Missing Notice', 'medilac' ),
+                                'label' => ultraaddons_is_cf7_activated() ? __( 'Contact Form 7', 'ultraaddons' ) : __( 'Missing Notice', 'ultraaddons' ),
                                 'tab' => Controls_Manager::TAB_CONTENT,
                         ]
                 );
@@ -31,10 +31,10 @@ class Contact_Form7 extends Base{
                         [
                             'type' => Controls_Manager::RAW_HTML,
                             'raw' => sprintf(
-                                __( 'Hello %2$s, looks like %1$s is missing in your site. Please click on the link below and install/activate %1$s. Make sure to refresh this page after installation or activation.', 'medilac' ),
+                                __( 'Hello %2$s, looks like %1$s is missing in your site. Please click on the link below and install/activate %1$s. Make sure to refresh this page after installation or activation.', 'ultraaddons' ),
                                 '<a href="'.esc_url( admin_url( 'plugin-install.php?s=Contact+Form+7&tab=search&type=term' ) )
                                 .'" target="_blank" rel="noopener">Contact Form 7</a>',
-                                medilac_get_current_user_display_name()
+                                ultraaddons_get_current_user_display_name()
                             ),
                             'content_classes' => 'elementor-panel-alert elementor-panel-alert-danger',
                         ]
@@ -55,20 +55,20 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                     'form_id',
                     [
-                        'label' => __( 'Select Your Form', 'medilac' ),
+                        'label' => __( 'Select Your Form', 'ultraaddons' ),
                         'type' => Controls_Manager::SELECT,
                         'label_block' => true,
-                        'options' => medilac_get_cf7_forms(),
+                        'options' => ultraaddons_get_cf7_forms(),
                     ]
                 );
 
                 $this->add_control(
                     'html_class',
                     [
-                        'label' => __( 'HTML Class', 'medilac' ),
+                        'label' => __( 'HTML Class', 'ultraaddons' ),
                         'type' => Controls_Manager::TEXT,
                         'label_block' => true,
-                        'description' => __( 'Add CSS custom class to the form.', 'medilac' ),
+                        'description' => __( 'Add CSS custom class to the form.', 'ultraaddons' ),
                     ]
                 );
 
@@ -80,7 +80,7 @@ class Contact_Form7 extends Base{
                 $this->start_controls_section(
                         '_section_cf7_style_general',
                         [
-                                'label' => __( 'General', 'medilac' ),
+                                'label' => __( 'General', 'ultraaddons' ),
                                 'tab'   => Controls_Manager::TAB_STYLE,
                         ]
                 );
@@ -88,23 +88,23 @@ class Contact_Form7 extends Base{
                 $this->add_responsive_control(
                         '_cf7_align',
                         [
-                                'label' => __( 'Alignment', 'medilac' ),
+                                'label' => __( 'Alignment', 'ultraaddons' ),
                                 'type' => Controls_Manager::CHOOSE,
                                 'options' => [
                                         'left'    => [
-                                                'title' => __( 'Left', 'medilac' ),
+                                                'title' => __( 'Left', 'ultraaddons' ),
                                                 'icon' => 'eicon-text-align-left',
                                         ],
                                         'center' => [
-                                                'title' => __( 'Center', 'medilac' ),
+                                                'title' => __( 'Center', 'ultraaddons' ),
                                                 'icon' => 'eicon-text-align-center',
                                         ],
                                         'right' => [
-                                                'title' => __( 'Right', 'medilac' ),
+                                                'title' => __( 'Right', 'ultraaddons' ),
                                                 'icon' => 'eicon-text-align-right',
                                         ],
                                         'full' => [
-                                                'title' => __( 'Full Width', 'medilac' ),
+                                                'title' => __( 'Full Width', 'ultraaddons' ),
                                                 'icon' => 'eicon-text-align-justify',
                                         ],
                                 ],
@@ -116,7 +116,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         'color',
                         [
-                                'label' => __( 'Color', 'medilac' ),
+                                'label' => __( 'Color', 'ultraaddons' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#5c6b79',
                                 'selectors' => [
@@ -146,7 +146,7 @@ class Contact_Form7 extends Base{
                 $this->start_controls_section(
                         '_section_cf7_style_input',
                         [
-                                'label' => __( 'Input Fields', 'medilac' ),
+                                'label' => __( 'Input Fields', 'ultraaddons' ),
                                 'tab'   => Controls_Manager::TAB_STYLE,
                         ]
                 );
@@ -154,7 +154,7 @@ class Contact_Form7 extends Base{
                 $this->add_responsive_control(
                         '_cf7_input_border',
                         [   
-                                'label' => __( 'Border', 'medilac' ),
+                                'label' => __( 'Border', 'ultraaddons' ),
                                 'type' => Controls_Manager::DIMENSIONS,
                                 'size_units' => [ 'px' ],
                                 'default' => [
@@ -174,7 +174,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         '_cf7_input_text_color',
                         [   
-                                'label' => __( 'Text Color', 'medilac' ),
+                                'label' => __( 'Text Color', 'ultraaddons' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#5C6B79',
                                 'selectors' => [
@@ -191,7 +191,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         '_cf7_input_border_color',
                         [   
-                                'label' => __( 'Border Color', 'medilac' ),
+                                'label' => __( 'Border Color', 'ultraaddons' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#EEF1F4',
                                 'selectors' => [
@@ -205,7 +205,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         '_cf7_input_bg_color',
                         [   
-                                'label' => __( 'Background Color', 'medilac' ),
+                                'label' => __( 'Background Color', 'ultraaddons' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#F4F9FC',
                                 'selectors' => [
@@ -219,7 +219,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         '_cf7_textarea_height',
                         [   
-                                'label' => __( 'Text Area Height', 'medilac' ),
+                                'label' => __( 'Text Area Height', 'ultraaddons' ),
                                 'type' => Controls_Manager::SLIDER,
                                 'size_units' => [ 'px' ],
 				'range' => [
@@ -247,7 +247,7 @@ class Contact_Form7 extends Base{
                 $this->start_controls_section(
                         '_section_cf7_style_button',
                         [
-                                'label' => __( 'Button', 'medilac' ),
+                                'label' => __( 'Button', 'ultraaddons' ),
                                 'tab'   => Controls_Manager::TAB_STYLE,
                         ]
                 );
@@ -257,14 +257,14 @@ class Contact_Form7 extends Base{
                 $this->start_controls_tab(
                         'tab_button_normal',
                         [
-                                'label' => __( 'Normal', 'medilac' ),
+                                'label' => __( 'Normal', 'ultraaddons' ),
                         ]
                 );
                 
                 $this->add_responsive_control(
                         '_cf7_button_border',
                         [   
-                                'label' => __( 'Border', 'medilac' ),
+                                'label' => __( 'Border', 'ultraaddons' ),
                                 'type' => Controls_Manager::DIMENSIONS,
                                 'size_units' => [ 'px' ],
                                 'default' => [
@@ -282,7 +282,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         '_cf7_button_text_color',
                         [   
-                                'label' => __( 'Text Color', 'medilac' ),
+                                'label' => __( 'Text Color', 'ultraaddons' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#FFF',
                                 'selectors' => [
@@ -294,7 +294,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         '_cf7_button_border_color',
                         [   
-                                'label' => __( 'Border Color', 'medilac' ),
+                                'label' => __( 'Border Color', 'ultraaddons' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#0fc392',
                                 'selectors' => [
@@ -306,7 +306,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         '_cf7_button_bg_color',
                         [   
-                                'label' => __( 'Background Color', 'medilac' ),
+                                'label' => __( 'Background Color', 'ultraaddons' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#0fc392',
                                 'selectors' => [
@@ -320,7 +320,7 @@ class Contact_Form7 extends Base{
                 $this->start_controls_tab(
                         'tab_button_hover',
                         [
-                                'label' => __( 'Hover', 'medilac' ),
+                                'label' => __( 'Hover', 'ultraaddons' ),
                         ]
                 );
                 
@@ -328,7 +328,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         '_cf7_button_text_color_hover',
                         [   
-                                'label' => __( 'Text Color', 'medilac' ),
+                                'label' => __( 'Text Color', 'ultraaddons' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#0fc392',
                                 'selectors' => [
@@ -340,7 +340,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         '_cf7_button_border_color_hover',
                         [   
-                                'label' => __( 'Border Color', 'medilac' ),
+                                'label' => __( 'Border Color', 'ultraaddons' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#0fc392',
                                 'selectors' => [
@@ -352,7 +352,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         '_cf7_button_bg_color_hover',
                         [   
-                                'label' => __( 'Background Color', 'medilac' ),
+                                'label' => __( 'Background Color', 'ultraaddons' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => 'transparent',
                                 'selectors' => [
@@ -380,7 +380,7 @@ class Contact_Form7 extends Base{
                 $this->add_responsive_control(
                         '_cf7_button_padding',
                         [   
-                                'label' => __( 'Padding', 'medilac' ),
+                                'label' => __( 'Padding', 'ultraaddons' ),
                                 'type' => Controls_Manager::DIMENSIONS,
                                 'size_units' => [ 'px' ],
                                 'default' => [
@@ -404,7 +404,7 @@ class Contact_Form7 extends Base{
                 $this->start_controls_section(
                         '_section_cf7_style_other',
                         [
-                                'label' => __( 'Others', 'medilac' ),
+                                'label' => __( 'Others', 'ultraaddons' ),
                                 'tab'   => Controls_Manager::TAB_STYLE,
                         ]
                 );
@@ -412,7 +412,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         '_cf7_required_text_color',
                         [   
-                                'label' => __( 'Required Text Color', 'medilac' ),
+                                'label' => __( 'Required Text Color', 'ultraaddons' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#dc3232',
                                 'selectors' => [
@@ -424,7 +424,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         '_cf7_success_text_color',
                         [   
-                                'label' => __( 'Response Text Color', 'medilac' ),
+                                'label' => __( 'Response Text Color', 'ultraaddons' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#00a0d2',
                                 'selectors' => [
@@ -436,7 +436,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         '_cf7_error_text_color',
                         [   
-                                'label' => __( 'Error Text Border Color', 'medilac' ),
+                                'label' => __( 'Error Text Border Color', 'ultraaddons' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#ffb900',
                                 'selectors' => [
