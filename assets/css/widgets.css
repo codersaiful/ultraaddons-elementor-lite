@@ -116,10 +116,10 @@ div.ua-element .elementor-widget-container .btn-wrapper a.ua-button {
     background-color: #0fc392;
 }
 
-div.ua-element.ua-btn-align-left .btn-wrapper{text-align: left;}
+/*div.ua-element.ua-btn-align-left .btn-wrapper{text-align: left;}
 div.ua-element.ua-btn-align-right .btn-wrapper{text-align: right;}
 div.ua-element.ua-btn-align-center .btn-wrapper{text-align: center;}
-div.ua-element.ua-btn-align-justify .btn-wrapper{text-align: justify;}
+div.ua-element.ua-btn-align-justify .btn-wrapper{text-align: justify;}*/
 div.ua-element.ua-btn-align-justify .btn-wrapper a.ua-button{width: 100%;}
 
 .ua-btn-inline-yes.ua-element.ua-element-button{width: auto !important;}
