@@ -85,8 +85,8 @@ class Info_Box extends Base {
                             'type' => Controls_Manager::ICONS,
                             'fa4compatibility' => 'icon',
                             'default' => [
-                                    'value' => 'fas fa-star',
-                                    'library' => 'fa-solid',
+                                    'value' => 'uicon uicon-ultraaddons',
+                                    'library' => 'ultraaddons',
                             ],
                             'condition' => [
                                     'icon_style' => 'icon',
@@ -807,7 +807,7 @@ class Info_Box extends Base {
 
         if ( ! isset( $settings['add_icon'] ) && ! Icons_Manager::is_migration_allowed() ) {
                 // add old default
-                $settings['add_icon'] = 'fa fa-star';
+                $settings['add_icon'] = 'uicon uicon-ultraaddons';
         }
 
         $has_icon = ! empty( $settings['add_icon'] );
@@ -867,7 +867,7 @@ class Info_Box extends Base {
             $this->add_inline_editing_attributes( 'title_text', 'none' );
             $this->add_inline_editing_attributes( 'description_text' );
             
-            
+        
         
     ?>
     <div class="ua-info-box-wrapper">
