@@ -36,6 +36,47 @@ if( ! function_exists( 'ultraaddons_is_cf7_activated' ) ){
    }
 }
 
+if( !function_exists( 'ultraaddons_get_cf7_forms' ) ){   
+    /**
+     * Get a list of all CF7 forms
+     *
+     * @return array
+     */
+    function ultraaddons_get_cf7_forms() {
+            $forms = [];
+
+            if ( ultraaddons_is_cf7_activated() ) {
+                    $_forms = get_posts( [
+                            'post_type'      => 'wpcf7_contact_form',
+                            'post_status'    => 'publish',
+                            'posts_per_page' => -1,
+                            'orderby'        => 'title',
+                            'order'          => 'ASC',
+                    ] );
+
+                    if ( ! empty( $_forms ) ) {
+                            $forms = wp_list_pluck( $_forms, 'post_title', 'ID' );
+                    }
+            }
+
+            return $forms;
+    }
+}
+
+if( !function_exists( 'ultraaddons_get_current_user_display_name' ) ){
+    /**
+     * Get user name
+     * @return type
+     */
+    function ultraaddons_get_current_user_display_name() {
+            $user = wp_get_current_user();
+            $name = 'user';
+            if ( $user->exists() && $user->display_name ) {
+                    $name = $user->display_name;
+            }
+            return $name;
+    }
+}
 if( ! function_exists( 'ultraaddons_do_shortcode' ) ){
     /**
      * Call a shortcode function by tag name.
