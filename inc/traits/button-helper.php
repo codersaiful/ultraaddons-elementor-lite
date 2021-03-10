@@ -30,10 +30,13 @@ trait Button_Helper{
 
             $has_button_link = ! empty( $settings['btn_link']['url'] );
             
-            if( $has_button_link ) {
-                $this->add_link_attributes( 'btn_link', $settings['btn_link'] );
-                $this->add_render_attribute( 'btn_link', 'class', 'elementor-button-link' );
+            if( ! $has_button_link ) {
+                return;
             }
+            
+            $this->add_link_attributes( 'btn_link', $settings['btn_link'] );
+            $this->add_render_attribute( 'btn_link', 'class', 'elementor-button-link' );
+
             
             
             $btn_class = ! empty( $settings['btn_class'] ) ? $settings['btn_class'] : '';
