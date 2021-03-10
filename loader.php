@@ -42,8 +42,23 @@ class Loader {
 
     public function __construct() {
         
-        //Header Footer Feature is Including Here.
-        add_action( 'init', [ $this, 'core_load_on_init' ] );
+        /**
+         * Call on Plugin Init, Mean: When UltraAddons Plugin will load
+         * 
+         * All Object Calling here,
+         * Which is Mandetory on Plugin Load 
+         * 
+         * *********************************
+         * Actually first it was called by init action like following:
+         * add_action( 'init', [ $this, 'core_load_on_init' ] );
+         * 
+         * Finally we removed it and called directly
+         * *********************************** 
+         * 
+         * @since 1.0.3.4
+         */
+        $this->core_load_on_init();
+        
         /**
          * Widget has come from Plugin/ultraaddons-elementor-lite/inc/core/widgets_array.php file
          * Controll by Widgets_Manager Object/Class
@@ -126,6 +141,11 @@ class Loader {
     
     /**
      * Core Class/Object init call Here.
+     * 
+     * ************************
+     * All Class/Object Method will call Here
+     * Which will Coll without any Action Actually
+     * ************************
      * 
      * In Future, we can handle it by any Function
      * and based on Condition Wise.
