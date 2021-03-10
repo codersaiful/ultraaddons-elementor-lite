@@ -140,7 +140,7 @@ trait Button_Helper{
                                             'icon' => 'eicon-text-align-justify',
                                     ],
                             ],
-                            'prefix_class' => 'ua-align-',
+                            'prefix_class' => 'ua-btn-align-',
                             'default' => $this->btn_align,//'left',
                     ]
             );
