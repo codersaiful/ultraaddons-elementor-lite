@@ -200,6 +200,17 @@ class Admin_Handle{
             ],
             
             
+            [
+                'parent_slug'   => self::$menu_slug,//$parent_slug,
+                'page_title'    =>  __( 'Help & Others', 'ultraaddons' ),
+                'menu_title'    =>  __( 'Help & Others', 'ultraaddons' ),
+                'capability'    => self::$capability,
+                'menu_slug'     => 'ultraaddons-help-n-others',
+                'function'      => [__CLASS__, 'help_n_others_page'],
+                'position'      =>  9991,
+            ],
+            
+            
         ];
         
         self::$sub_menu = apply_filters( 'ultraaddons/admin/sub_menu', self::$sub_menu );
@@ -264,6 +275,14 @@ class Admin_Handle{
         include_once self::$header_file;
         
         include ULTRA_ADDONS_DIR . 'admin/pages/settings.php';
+        
+        include_once self::$footer_file;
+    }
+    
+    public static function help_n_others_page() {
+        include_once self::$header_file;
+        
+        include ULTRA_ADDONS_DIR . 'admin/pages/help-others.php';
         
         include_once self::$footer_file;
     }
