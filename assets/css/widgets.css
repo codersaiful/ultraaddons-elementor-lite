@@ -122,6 +122,8 @@ div.ua-element.ua-btn-align-center .btn-wrapper{text-align: center;}
 div.ua-element.ua-btn-align-justify .btn-wrapper{text-align: justify;}
 div.ua-element.ua-btn-align-justify .btn-wrapper a.ua-button{width: 100%;}
 
+.ua-btn-inline-yes.ua-element.ua-element-button{width: auto !important;}
+
 /*******************************
 * Transition
 ********************************/

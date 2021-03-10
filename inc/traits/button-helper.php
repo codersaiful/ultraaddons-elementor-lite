@@ -561,6 +561,21 @@ trait Button_Helper{
                 ]
         );
 
+        if( $this->get_name() == 'ultraaddons-button' ){
+                $this->add_control(
+                    'btn_inline',
+                    [
+                            'label' => __( 'Display Inline', 'ultraaddons' ),
+                            'type' => Controls_Manager::SWITCHER,
+                            'label_on' => __( 'On', 'ultraaddons' ),
+                            'label_off' => __( 'Off', 'ultraaddons' ),
+                            'return_value' => 'yes',
+                            'default' => '',
+                            'prefix_class' => 'ua-btn-inline-'
+                    ]
+            );
+        }
+        
 
         $this->end_controls_section();
     }
