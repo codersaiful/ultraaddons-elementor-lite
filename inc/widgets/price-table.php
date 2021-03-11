@@ -1352,18 +1352,18 @@ class Price_Table extends Base {
 		);
 		
                 $this->add_responsive_control(
-			'item_width',
+			'icon_gap',
 			[
-				'label' => __( 'Width', 'ultraaddons' ),
+				'label' => __( 'Icon Gap', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
-					'%' => [
-						'min' => 25,
+					'px' => [
+						'min' => 0,
 						'max' => 100,
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .ua-price-table__feature-inner' => 'margin-left: calc((100% - {{SIZE}}%)/2); margin-right: calc((100% - {{SIZE}}%)/2)',
+					'{{WRAPPER}} .ua-price-table__feature-inner>i' => 'margin-right: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
