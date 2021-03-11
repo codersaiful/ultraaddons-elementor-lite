@@ -55,12 +55,12 @@ Elementor page/section show in Sidebar area. using WordPress widget.
 
 **Demo**
 
-- [**Slider**](https://ultraaddons.com/slider/) – Powerful Slider.
-- [**Advance Heading**](https://ultraaddons.com/advance-heading/) – Advance Heading.
-- [**Button**](https://ultraaddons.com/button/) – Advance Powerful Button.
-- [**Count Down timer**](https://ultraaddons.com/count-down-timer/) – Count Down timer.
-- [**Info Box**](https://ultraaddons.com/info-box/) – Info Box for making different type service, info, content items group box.
-- [**Advance List Item**](https://ultraaddons.com/advance-list/) – Advance List Item for making different type service, info, content items group box.
+- [**Slider**](https://ultraaddons.com/widgets/slider/) – Powerful Slider.
+- [**Advance Heading**](https://ultraaddons.com/widgets/advance-heading/) – Advance Heading.
+- [**Button**](https://ultraaddons.com/widgets/button/) – Advance Powerful Button.
+- [**Count Down timer**](https://ultraaddons.com/widgets/count-down-timer/) – Count Down timer.
+- [**Info Box**](https://ultraaddons.com/widgets/info-box/) – Info Box for making different type service, info, content items group box.
+- [**Advance List Item**](https://ultraaddons.com/widgets/advance-list/) – Advance List Item for making different type service, info, content items group box.
 - [**Coming Soon --More Demo**](https://ultraaddons.com/) – We are working for our plugin. You can check from our Plugin's Site.
 
 **Github Contribute**
