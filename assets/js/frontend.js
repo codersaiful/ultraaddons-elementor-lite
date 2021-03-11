@@ -63,6 +63,8 @@
                                     autoplayTimeout: this.getElementSettings('autoplayTimeout'),
                                     nav: false,
                                     margin: 20,
+                                    animateOut: 'slideOutDown',
+                                    animateIn: 'flipInX',
                                     
                             };
 
@@ -105,6 +107,7 @@
                     },
 
                     run: function() {
+                        console.log(this.getReadySettings());
                         this.elements.$container.owlCarousel(this.getReadySettings());
                     }
             });
