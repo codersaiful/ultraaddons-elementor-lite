@@ -447,7 +447,11 @@ class Price_Table extends Base {
                                         'right' => [
                                                 'title' => __( 'Right', 'ultraaddons' ),
                                                 'icon' => 'eicon-text-align-right',
-                                        ]
+                                        ],
+                                        'justify' => [
+                                                'title' => __( 'Justified', 'ultraaddons' ),
+                                                'icon' => 'eicon-text-align-justify',
+                                        ],
                                 ],
                                 'prefix_class' => 'elementor%s-align-',
                                 'default' => 'center',
@@ -1277,6 +1281,17 @@ class Price_Table extends Base {
 				'separator' => 'before',
 				'selectors' => [
 					'{{WRAPPER}} .ua-price-table__features-list' => 'color: {{VALUE}}',
+				],
+			]
+		);
+                $this->add_control(
+			'features_list_icon_color',
+			[
+				'label' => __( 'Icon Color', 'ultraaddons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .ua-price-table__features-list i' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .ua-price-table__features-list svg' => 'fill: {{VALUE}}',
 				],
 			]
 		);

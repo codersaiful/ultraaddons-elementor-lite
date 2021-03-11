@@ -119,7 +119,7 @@ trait Button_Helper{
                             'tab' => Controls_Manager::TAB_STYLE,
                     ]
             );
-            
+            if( $this->get_name() == 'ultraaddons-button' ){
             $this->add_responsive_control(
                     'btn_align',
                     [
@@ -147,7 +147,7 @@ trait Button_Helper{
                             'default' => $this->btn_align,//'left',
                     ]
             );
-        
+            }
             $this->add_group_control(
                     Group_Control_Typography::get_type(),
                     [
