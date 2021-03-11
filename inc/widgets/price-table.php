@@ -92,10 +92,11 @@ class Price_Table extends Base {
                         'ua_icon_choose',
                         [
                                 'label'     => __( 'Icon', 'ultraaddons' ),
-                                'type'      => Controls_Manager::ICONS,
-                                'default'   => [
-                                        'value' => 'fas fa-star',
-                                        'library' => 'solid',
+                                'type' => Controls_Manager::ICONS,
+                                'fa4compatibility' => 'icon',
+                                'default' => [
+                                    'value' => 'uicon uicon-ultraaddons',
+                                    'library' => 'ultraaddons',
                                 ],
                                 'condition' => [
                                         'ua_icon_select' => 'icon',
