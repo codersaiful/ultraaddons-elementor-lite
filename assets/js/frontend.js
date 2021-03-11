@@ -63,11 +63,13 @@
                                     autoplayTimeout: this.getElementSettings('autoplayTimeout'),
                                     nav: false,
                                     margin: 20,
-//                                    animateOut: 'animate__flipOutY',
-                                    animateIn: 'animate__lightSpeedInRight',
+//                                    animateOut: '', //animate__flipOutY
+                                    animateIn: 'animate__lightSpeedInRight',//this.getElementSettings('animateIn'),//animate__lightSpeedInRight
                                     
                             };
 
+//                            settings.animateOut = this.getElementSettings('animateOut');
+//                            settings.animateIn = this.getElementSettings('animateIn');
                             switch (this.getElementSettings('navigation')) {
                                     case 'arrow':
                                             settings.nav = true;

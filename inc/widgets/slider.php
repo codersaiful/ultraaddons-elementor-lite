@@ -756,6 +756,31 @@ class Slider extends Base{
                         ]
                 );
 
+                
+//                $animation_options = [
+//                    '' => __( 'None', 'ultraaddons' ),
+//                    'animate__bounce' => __( 'animate__bounce', 'ultraaddons' ),
+//                    'animate__flash' => __( 'animate__flash', 'ultraaddons' ),
+//                    'animate__pulse' => __( 'animate__pulse', 'ultraaddons' ),
+//                    'animate__rubberBand' => __( 'animate__rubberBand', 'ultraaddons' ),
+//                    'animate__shakeX' => __( 'animate__shakeX', 'ultraaddons' ),
+//                    'animate__shakeY' => __( 'animate__shakeY', 'ultraaddons' ),
+//                    'animate__lightSpeedInRight' => __( 'animate__lightSpeedInRight', 'ultraaddons' ),
+//                ];
+//                
+//                $this->add_control(
+//                        'animateIn',
+//                        [
+//                                'label' => __( 'External In Animation', 'ultraaddons' ),
+////                                'description' => esc_html__( 'Not mandatory, But you can apply. Generate from Animate.style', 'ultraaddons' ),
+//                                'type' => Controls_Manager::SELECT,
+//                                'options' => $animation_options,
+//                                'default' => '',
+//                                'frontend_available' => true,
+////                                'style_transfer' => true,
+//                        ]
+//                );
+//                
                 $this->end_controls_section();
         }
         
