@@ -21,6 +21,7 @@ class Library_Manager{
                 
                 \Elementor\Plugin::instance()->templates_manager->unregister_source( 'remote' );
                 \Elementor\Plugin::instance()->templates_manager->register_source( 'Library_Source' );
+                //var_dump(\Elementor\Plugin::instance()->templates_manager->_registered_sources);//$_registered_sources
                 
         }
 }
