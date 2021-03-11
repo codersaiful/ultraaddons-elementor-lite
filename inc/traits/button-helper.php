@@ -143,12 +143,7 @@ trait Button_Helper{
                                             'icon' => 'eicon-text-align-justify',
                                     ],
                             ],
-                            'prefix_class' => 'ua-btn-align-',
-                            'selectors' => [
-                                    '(desktop){{WRAPPER}} .btn-wrapper' => 'text-align: {{VALUE}};',
-                                    '(tablet){{WRAPPER}} .btn-wrapper' => 'text-align: {{VALUE}};',
-                                    '(mobile){{WRAPPER}} .btn-wrapper' => 'text-align: {{VALUE}};width:100%;',
-                            ],
+                            'prefix_class' => 'elementor%s-align-',
                             'default' => $this->btn_align,//'left',
                     ]
             );
