@@ -7,7 +7,7 @@ Author URI: https://ultraaddons.com/
 Tags: addons, elementor addons, ultraaddons, page builder, page builder addons, Editor, Web Page Builder
 Contributors: codersaiful, codeastrology, ultraaddons
 Requires at least: 5.0.0
-Tested up to: 5.6.1
+Tested up to: 5.7.0
 Requires PHP: 5.6
 Stable tag: trunk
 License: GPL3+
@@ -71,6 +71,10 @@ To change theme's default Header or Footer, Even add additional content to Heade
 *Step 1:* First create a template from `Dashboard->Elementor Template->Add new` and create template as page. 
 *Step 2:* go to `Dashboard->UltraAddons->Header Footer` and choose your Template from Elementor template as header. 
 
+**Shortcode `[UltraAddons_Template id='template_id']`**
+UltraAddons provide a shortcode `[UltraAddons_Template id='123']`. Here 123 is a POST_ID. Use any Elementor page/Template's POST_ID as id. Use Anywhere.
+Suppose: you want to show any Elementor Item/Widget/Template in widget, or in any WordPress post or in Guttenberg block. Just use this shortcode.
+
 == Frequently Asked Questions ==
 
 = Does this plugin support any theme? =
@@ -105,6 +109,13 @@ Yes, there are lot of filter and action hook available here. You can customize f
 
 
 == Change log ==
+
+= 1.0.3 =
+
+* [Added]: Icon Box Elementor Widget Added.
+* [Added]: Shortcode for Elementor Widget/Template.
+* [Fixed]: Slider Issue Fixed.
+* [Fixed]: Bug Fixed.
 
 = 1.0.2 =
 
