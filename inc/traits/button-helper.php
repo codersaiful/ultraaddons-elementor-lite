@@ -119,7 +119,7 @@ trait Button_Helper{
                             'tab' => Controls_Manager::TAB_STYLE,
                     ]
             );
-            
+            if( $this->get_name() == 'ultraaddons-button' ){
             $this->add_responsive_control(
                     'btn_align',
                     [
@@ -143,16 +143,11 @@ trait Button_Helper{
                                             'icon' => 'eicon-text-align-justify',
                                     ],
                             ],
-                            'prefix_class' => 'ua-btn-align-',
-                            'selectors' => [
-                                    '(desktop){{WRAPPER}} .btn-wrapper' => 'text-align: {{VALUE}};',
-                                    '(tablet){{WRAPPER}} .btn-wrapper' => 'text-align: {{VALUE}};',
-                                    '(mobile){{WRAPPER}} .btn-wrapper' => 'text-align: {{VALUE}};width:100%;',
-                            ],
+                            'prefix_class' => 'elementor%s-align-',
                             'default' => $this->btn_align,//'left',
                     ]
             );
-        
+            }
             $this->add_group_control(
                     Group_Control_Typography::get_type(),
                     [

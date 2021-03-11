@@ -92,10 +92,11 @@ class Price_Table extends Base {
                         'ua_icon_choose',
                         [
                                 'label'     => __( 'Icon', 'ultraaddons' ),
-                                'type'      => Controls_Manager::ICONS,
-                                'default'   => [
-                                        'value' => 'fas fa-star',
-                                        'library' => 'solid',
+                                'type' => Controls_Manager::ICONS,
+                                'fa4compatibility' => 'icon',
+                                'default' => [
+                                    'value' => 'uicon uicon-ultraaddons',
+                                    'library' => 'ultraaddons',
                                 ],
                                 'condition' => [
                                         'ua_icon_select' => 'icon',
@@ -447,7 +448,11 @@ class Price_Table extends Base {
                                         'right' => [
                                                 'title' => __( 'Right', 'ultraaddons' ),
                                                 'icon' => 'eicon-text-align-right',
-                                        ]
+                                        ],
+                                        'justify' => [
+                                                'title' => __( 'Justified', 'ultraaddons' ),
+                                                'icon' => 'eicon-text-align-justify',
+                                        ],
                                 ],
                                 'prefix_class' => 'elementor%s-align-',
                                 'default' => 'center',
@@ -1280,6 +1285,17 @@ class Price_Table extends Base {
 				],
 			]
 		);
+                $this->add_control(
+			'features_list_icon_color',
+			[
+				'label' => __( 'Icon Color', 'ultraaddons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .ua-price-table__features-list i' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .ua-price-table__features-list svg' => 'fill: {{VALUE}}',
+				],
+			]
+		);
 
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
@@ -1337,18 +1353,18 @@ class Price_Table extends Base {
 		);
 		
                 $this->add_responsive_control(
-			'item_width',
+			'icon_gap',
 			[
-				'label' => __( 'Width', 'ultraaddons' ),
+				'label' => __( 'Icon Gap', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
-					'%' => [
-						'min' => 25,
+					'px' => [
+						'min' => 0,
 						'max' => 100,
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .ua-price-table__feature-inner' => 'margin-left: calc((100% - {{SIZE}}%)/2); margin-right: calc((100% - {{SIZE}}%)/2)',
+					'{{WRAPPER}} .ua-price-table__feature-inner>i' => 'margin-right: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);

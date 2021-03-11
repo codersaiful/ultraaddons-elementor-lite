@@ -63,8 +63,8 @@
                                     autoplayTimeout: this.getElementSettings('autoplayTimeout'),
                                     nav: false,
                                     margin: 20,
-                                    animateOut: 'slideOutDown',
-                                    animateIn: 'flipInX',
+//                                    animateOut: 'animate__flipOutY',
+                                    animateIn: 'animate__lightSpeedInRight',
                                     
                             };
 
