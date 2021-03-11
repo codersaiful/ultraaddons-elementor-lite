@@ -137,7 +137,7 @@ class Cart extends Base{
                                 do_action( 'ultraaddons_minicart_top' );
                                 
 				$instance = array(
-					//'title' => esc_html( 'My Cart', 'medilac' ),
+					//'title' => esc_html( 'My Cart', 'ultraaddons' ),
 					'title' => $title,
 				);
                                 $instance = apply_filters( 'ultraaddons_minicart_args', $instance );
@@ -272,7 +272,7 @@ class Cart extends Base{
         $this->add_responsive_control(
                 'item_box_space',
                 [
-                        'label' => __( 'Item Box Spacing', 'medilac' ),
+                        'label' => __( 'Item Box Spacing', 'ultraaddons' ),
                         'type' => Controls_Manager::SLIDER,
                         'default' => [
                                 'size' => 30,
@@ -293,7 +293,7 @@ class Cart extends Base{
         $this->add_responsive_control(
                 'item_box_width',
                 [
-                        'label' => __( 'Item Box Width', 'medilac' ),
+                        'label' => __( 'Item Box Width', 'ultraaddons' ),
                         'type' => Controls_Manager::SLIDER,
                         'default' => [
                                 'size' => 400,

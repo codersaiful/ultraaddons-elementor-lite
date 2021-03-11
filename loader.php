@@ -303,6 +303,37 @@ class Loader {
         }
        $ULTRAADDONS_DATA = apply_filters( 'ultraaddons_localize_data', $ULTRAADDONS_DATA );
        wp_localize_script( $frontend_js_name, 'ULTRAADDONS_DATA', $ULTRAADDONS_DATA );
+       
+       
+        
+        //Naming of Args for owlCarousel
+        $name           = 'owlCarousel';
+        $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/owl.carousel.min.js';
+        $dependency     =  ['jquery'];//['jquery'];
+        $version        = ULTRA_ADDONS_VERSION;
+        $in_footer  = true;
+        
+        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $name );
+        
+        //Naming of Barfiller
+        $name           = 'barfiller';
+        $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/barfiller.js';
+        $dependency     =  ['jquery'];//['jquery'];
+        $version        = ULTRA_ADDONS_VERSION;
+        $in_footer  = true;
+        
+        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $name );
+        wp_enqueue_style('barfiller', ULTRA_ADDONS_ASSETS . 'vendor/css/barfiller.css' );
+        
+        //Animate CSS Load
+        wp_enqueue_style('animate', ULTRA_ADDONS_ASSETS . 'vendor/css/animate.min.css' );
+        
+        //CSS file for Slider Script Owl Carousel Slider
+        wp_enqueue_style('owlCarousel', ULTRA_ADDONS_ASSETS . 'vendor/css/owl.carousel.css' );
+        wp_enqueue_style('owlCarousel-theme', ULTRA_ADDONS_ASSETS . 'vendor/css/owl/owl.theme.default.css' );
+
     }
     
     /**
