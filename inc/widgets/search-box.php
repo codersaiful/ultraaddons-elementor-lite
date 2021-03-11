@@ -90,7 +90,7 @@ class Search_Box extends Base{
                                 do_action( 'ultraaddons_minicart_top' );
                                 
 				$instance = array(
-					//'title' => esc_html( 'My Cart', 'medilac' ),
+					//'title' => esc_html( 'My Cart', 'ultraaddons' ),
 					'title' => $title,
 				);
                                 $instance = apply_filters( 'ultraaddons_minicart_args', $instance );
