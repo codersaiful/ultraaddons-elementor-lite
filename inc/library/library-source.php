@@ -24,12 +24,12 @@ class Library_Source extends Source{
     /**
      * New library option key.
      */
-    const LIBRARY_OPTION_KEY = 'custom_remote_info_library';
+    const LIBRARY_OPTION_KEY = 'ua_library_data';
 
     /**
      * Timestamp cache key to trigger library sync.
      */
-    const TIMESTAMP_CACHE_KEY = 'custom_remote_update_timestamp';
+    const TIMESTAMP_CACHE_KEY = 'ua_library_timestamp';
 
     /**
      * API info URL.
@@ -67,7 +67,7 @@ class Library_Source extends Source{
      * @return string The remote template ID.
      */
     public function get_id() {
-            return 'remote';
+            return 'ultraaddons-library';
     }
 
     /**
@@ -80,7 +80,7 @@ class Library_Source extends Source{
      * @return string The remote template title.
      */
     public function get_title() {
-            return __( 'Remote', 'custom-elementor-source' );
+            return __( 'UltraAddons Library', 'ultraaddons' );
     }
 
     /**
@@ -93,6 +93,8 @@ class Library_Source extends Source{
      */
     public function register_data() {}
 
+    
+    
     /**
      * Get remote templates.
      *
@@ -118,6 +120,20 @@ class Library_Source extends Source{
             return $templates;
     }
 
+    public function get_tags() {
+            $library_data = self::get_library_data();
+
+            return ( ! empty( $library_data['tags'] ) ? $library_data['tags'] : [] );
+    }
+
+    public function get_type_tags() {
+            $library_data = self::get_library_data();
+
+            return ( ! empty( $library_data['type_tags'] ) ? $library_data['type_tags'] : [] );
+    }
+
+    
+    
     /**
      * Get templates data.
      *
