@@ -3,9 +3,11 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    margin: 22px 0;
 }
-
+.ua-element.ua-element-list-item ul.ua-list-items {
+    padding-left: 0;
+    padding-right: 0;
+}
 .ua-list-items li i {
     color: #0FC392;
     font-size: 18px;
@@ -58,7 +60,6 @@
     justify-content: space-between;
     align-items: stretch;
     flex-wrap: wrap;
-    margin: 22px 0;
 }
 
 .ua-list-items li {
@@ -90,7 +91,7 @@ div.ua-list-temp-default .ua-list-items li i {
     color: #21272c;
     display: inline-block;
     line-height: 1.6;
-    padding-left: 23px;
+    padding-left: 25px;
     margin: 0;
 }
 

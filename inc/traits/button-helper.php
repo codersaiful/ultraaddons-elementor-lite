@@ -155,7 +155,7 @@ trait Button_Helper{
                             'label' => 'Typography',
                             'selector' => '{{WRAPPER}} .elementor-button',
                             'global' => [
-                                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                                    'default' => Global_Typography::TYPOGRAPHY_TEXT,
                             ],
 
                     ]

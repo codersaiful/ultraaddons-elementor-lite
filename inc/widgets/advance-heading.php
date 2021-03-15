@@ -41,18 +41,6 @@ class Advance_Heading extends Base{
      */
     protected function _register_controls() {
         
-        // Advance Heading Style
-        //$this->register_general_style();
-        // Register pricing style
-        //$this->register_general_controls();
-        // General Settings
-        //$this->register_heading_align_style();
-        // Register Sub Heading
-        //$this->register_sub_heading_style_controls();
-        // Heading Style
-        //$this->register_heading_style_controls();
-        
-        
         //For General Section
         $this->content_general_controls();
 
@@ -293,7 +281,8 @@ class Advance_Heading extends Base{
                         'type' => Controls_Manager::SLIDER,
                         'size_units' => [ 'px', '%' ],
                         'default' => [
-                                'unit' => '%'
+                                'unit' => 'px',
+                                'size' => 100,
                         ],
                         'range' => [
                                 'px' => [
@@ -494,91 +483,6 @@ class Advance_Heading extends Base{
         $this->end_controls_section();
     }
 
-    /**
-     * Register Sub Heading
-     * 
-     * @access protected
-     * 
-     * @since 1.0.0
-     */
-    protected function register_sub_heading_style_controls(){
-	    $this->start_controls_section(
-	            'advance_sub_heading_style_setting',
-                [
-                    'label'    => __( 'Sub Heading', 'ultraaddons' ),
-                    'tab'      => Controls_Manager::TAB_STYLE,
-                    'show_label' => false,
-                ]
-        );
-        $this->add_control(
-            'sub_heading_color',
-            [
-                'label'     => __( 'Color', 'ultraaddons' ),
-                'type'      => Controls_Manager::COLOR,
-                'scheme'    => [
-                    'type'  => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .content-title .ultraaddons-sub-heading.elementor-inline-editing, .section-title.v1.ultraaddons-advance-heading span' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-        $this->add_control(
-            'sub_border_heading_color',
-            [
-                'label'     => __( 'After Border Color', 'ultraaddons' ),
-                'type'      => Controls_Manager::COLOR,
-                'scheme'    => [
-                    'type'  => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .content-title .ultraaddons-sub-heading.elementor-inline-editing:after, .section-title.v1.ultraaddons-advance-heading span:before, .section-title.v1.ultraaddons-advance-heading span:after' => 'background: {{VALUE}}',
-                ],
-            ]
-        );
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name'     => 'sub_heading_typography',
-                'selector' => '{{WRAPPER}} .content-title .ultraaddons-sub-heading.elementor-inline-editing, .section-title.v1.ultraaddons-advance-heading span',
-                'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
-            ]
-        );
-        $this->add_responsive_control(
-            'sub_header_padding',
-            [
-                'label'      => __( 'Padding', 'ultraaddons' ),
-                'type'       => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', '%', 'em' ],
-                'selectors'  => [
-                    '{{WRAPPER}} .content-title .ultraaddons-sub-heading.elementor-inline-editing, .section-title.v1.ultraaddons-advance-heading span' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->add_responsive_control(
-            'sub_header_margin',
-            [
-                'label'      => __( 'Margin', 'ultraaddons' ),
-                'type'       => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', '%', 'em' ],
-                'selectors'  => [
-                    '{{WRAPPER}} .content-title .ultraaddons-sub-heading.elementor-inline-editing, .section-title.v1.ultraaddons-advance-heading span' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name' => 'sub_heading_border',
-                'label' => __( 'Border', 'ultraaddons' ),
-                'selector' => '{{WRAPPER}} .content-title .ultraaddons-sub-heading.elementor-inline-editing, .section-title.v1.ultraaddons-advance-heading span',
-            ]
-        );
-        $this->end_controls_section();
-    }
-   
 
     /**
      * Register heading style

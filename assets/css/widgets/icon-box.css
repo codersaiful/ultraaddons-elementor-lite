@@ -39,10 +39,12 @@
 
 .ua-element-icon-box .elementor-widget-container {
     padding: 50px;
-    border: 1px solid #BACCD7;
+    /* border: 1px solid #BACCD7; */
     background: white;
 }
-
+.ua-element-icon-box .elementor-widget-container:hover {
+    box-shadow: 0px 5px 25px 0 rgb(159 160 185 / 25%);
+}
 
 @media (min-width: 768px) {
     .ua-element-icon-box.elementor-vertical-align-top .ua-info-box-wrapper {
