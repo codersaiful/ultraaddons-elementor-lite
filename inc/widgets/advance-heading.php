@@ -230,7 +230,7 @@ class Advance_Heading extends Base{
                         'label' => __( 'Vertical Spacing', 'ultraaddons' ),
                         'type' => Controls_Manager::SLIDER,
                         'default' => [
-                                'size' => 0,
+                                'size' => 15,
                         ],
                         'range' => [
                                 'px' => [
@@ -250,7 +250,7 @@ class Advance_Heading extends Base{
                         'label' => __( 'Horizontal Spacing', 'ultraaddons' ),
                         'type' => Controls_Manager::SLIDER,
                         'default' => [
-                                'size' => 20,
+                                'size' => 10,
                         ],
                         'range' => [
                                 'px' => [
