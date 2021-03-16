@@ -129,18 +129,20 @@ class Slider extends Base{
                              style="background-image: url(<?php echo esc_url( $image ); ?>);"
                              <?php } ?>
                              >
-                            <div class="ultraaddons-slider-container">
-                                <div class="row">
-                                    <div class="ua-slide-content-wrap">
-                                        <div class="ua-hero-text">
-                                            <h1><?php echo wp_kses_post( $title ); ?></h1>
-                                            <p class="para"><?php echo wp_kses_post( $content ); ?></p>
-                                            <div class="hero-btn">
-                                                <a <?php echo $this->get_render_attribute_string( $repeater_key . '.button' ); ?>><?php echo esc_html( $button ); ?></a>
+                            <div class="ultraaddons-slider-container-wrapper">
+                                <div class="ultraaddons-slider-container">
+                                    <div class="row">
+                                        <div class="ua-slide-content-wrap">
+                                            <div class="ua-hero-text">
+                                                <h1><?php echo wp_kses_post( $title ); ?></h1>
+                                                <p class="para"><?php echo wp_kses_post( $content ); ?></p>
+                                                <div class="hero-btn">
+                                                    <a <?php echo $this->get_render_attribute_string( $repeater_key . '.button' ); ?>><?php echo esc_html( $button ); ?></a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>    
                             </div>
                         </div>
                         
@@ -591,7 +593,28 @@ class Slider extends Base{
                 
                 $this->end_controls_tabs();
                 
-                
+                $this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+                                'label' => __( 'Background Overlay', 'ultraaddons' ),
+				'name' => 'slider_background_overlay',
+				'types' => [ 'classic', 'gradient' ],
+//				'selector' => '{{WRAPPER}} div.elementor-element',
+				'selector' => '{{WRAPPER}} .ua-slider-item .ultraaddons-slider-container-wrapper',
+                                'separator' => 'before',
+				'fields_options' => [
+					'background' => [
+						'frontend_available' => true,
+					],
+					'color' => [
+						'dynamic' => [],
+					],
+					'color_b' => [
+						'dynamic' => [],
+					],
+				],
+			]
+		);
                 
        
                 $this->end_controls_section();

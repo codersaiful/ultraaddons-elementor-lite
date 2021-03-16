@@ -117,6 +117,15 @@ class Extensions_Manager{
                     ],
             ],
 
+            'Background_Overlay' => [
+                    'name'  => __( 'Background Overlay', 'ultraaddons' ),
+                    'is_free'   => true,
+                    'icon'      => 'eicon-background',
+                    'cat'       => [
+                        __( 'Basic', 'ultraaddons' ),
+                    ],
+            ],
+
             'Ultra_Effect' => [
                     'name'  => __( 'Ultra Effect', 'ultraaddons' ),
                     'is_free'   => false,
