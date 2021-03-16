@@ -7,6 +7,7 @@
 .ua-element.ua-element-list-item ul.ua-list-items {
     padding-left: 0;
     padding-right: 0;
+    margin-bottom: 0;
 }
 .ua-list-items li i {
     color: #0FC392;
