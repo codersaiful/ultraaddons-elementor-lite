@@ -27,7 +27,7 @@ class Hover_Effect {
 
 		
 		$element->start_controls_section(
-			'_section_hover_animation',
+			'_ua_section_hover_animation',
 			[
 				'label' => __( 'Hover Effect', 'ultraaddons' ) . ultraaddons_icon_markup(),
 				'tab'   => $tabs,

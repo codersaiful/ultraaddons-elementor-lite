@@ -25,7 +25,7 @@ class Wrapper_Link {
 
 		
 		$element->start_controls_section(
-			'_section_wrapper_link',
+			'_ua_section_wrapper_link',
 			[
 				'label' => __( 'Wrapper Link', 'ultraaddons' ) . ultraaddons_icon_markup(),
 				'tab'   => $tabs,
@@ -33,7 +33,7 @@ class Wrapper_Link {
 		);
 
 		$element->add_control(
-			'element_link',
+			'_ua_element_link',
 			[
 				'label'       => __( 'Desired URL', 'ultraaddons' ),
 				'type'        => Controls_Manager::URL,
@@ -59,13 +59,13 @@ class Wrapper_Link {
          * @param Element_Base $element
          */
 	public static function before_section_render( Element_Base $element ) {
-		$link_settings = $element->get_settings_for_display( 'element_link' );
+		$link_settings = $element->get_settings_for_display( '_ua_element_link' );
 
 		if ( $link_settings && ! empty( $link_settings['url'] ) ) {
 			$element->add_render_attribute(
 				'_wrapper',
 				[
-					'data-element_link' => json_encode( $link_settings ),
+					'data-_ua_element_link' => json_encode( $link_settings ),
 					'style' => 'cursor: pointer',
 					'class' => 'ua-wrapper-link'
 				]

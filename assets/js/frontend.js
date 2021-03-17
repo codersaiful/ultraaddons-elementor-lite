@@ -185,7 +185,7 @@
            
            // Wrapper Link
            $('.ua-wrapper-link').each(function() {
-                    var link = $(this).data('element_link');
+                    var link = $(this).data('_ua_element_link');
                     $(this).on('click', function() {
                         if (link.is_external) {
                                 window.open(link.url);

@@ -4,6 +4,7 @@ namespace UltraAddons\Extension;
 use UltraAddons\Controls\Handle_Controls;
 use Elementor\Controls_Manager;
 use Elementor\Element_Base;
+use Elementor\Group_Control_Background;
 
 defined('ABSPATH') || die();
 
@@ -35,7 +36,7 @@ class Background_Overlay {
 		);
                 
                 $element->add_control(
-                        'on_off',
+                        '_ua_overlay_bg_on_off',
                         [
                                 'label' => __( 'Overlay Background', 'ultraaddons' ),
                                 'description' => __( 'Description will come here.', 'ultraaddons' ),
@@ -50,7 +51,7 @@ class Background_Overlay {
                 $element->add_group_control(
 			Group_Control_Background::get_type(),
 			[
-				'name' => 'container_background',
+				'name' => '_ua_container_background',
 				'types' => [ 'classic', 'gradient' ],
 //				'selector' => '{{WRAPPER}} div.elementor-element',
 				'selector' => '{{WRAPPER}} .ua-background-overlay',
@@ -66,6 +67,9 @@ class Background_Overlay {
 						'dynamic' => [],
 					],
 				],
+                                'condition' => [
+                                    '_ua_overlay_bg_on_off' => 'yes',
+                                ],
 			]
 		);
             
@@ -87,9 +91,9 @@ class Background_Overlay {
          */
 	public static function before_section_render( Element_Base $element ) {
 		$settings = $element->get_settings_for_display();
-                $on_off = $settings['on_off'];
+                $_ua_overlay_bg_on_off = $settings['_ua_overlay_bg_on_off'];
 
-                if ( empty( $on_off ) ) {
+                if ( empty( $_ua_overlay_bg_on_off ) ) {
                     return false;
                 }
 
@@ -106,4 +110,4 @@ class Background_Overlay {
 	}
 }
 
-Transform::init();
+Background_Overlay::init();
