@@ -15,10 +15,14 @@ class Background_Overlay {
 		add_action( 'elementor/element/section/section_advanced/after_section_end', [ __CLASS__, 'add_controls_section' ], 1 );
 		add_action( 'elementor/element/common/_section_style/after_section_end', [ __CLASS__, 'add_controls_section' ], 1 );
 
-                add_action( 'elementor/frontend/before_render', [ __CLASS__, 'before_section_render' ], 1 );
+                add_action( 'elementor/frontend/after_render', [ __CLASS__, 'before_section_render' ], 1 );
 	}
 
 	public static function add_controls_section( Element_Base $element) {
+//            /$overlay_selector
+            $overlay_selector = '.ua_column_background_overlay.ua_overlay_id_' . $element->get_id();
+            $overlay_selector = '.ua_column_background_overlay';
+            
 		$tabs = Controls_Manager::TAB_STYLE;
 //                $tabs = Controls_Manager::TAB_CONTENT;
                 
@@ -54,7 +58,8 @@ class Background_Overlay {
 				'name' => '_ua_container_background',
 				'types' => [ 'classic', 'gradient' ],
 //				'selector' => '{{WRAPPER}} div.elementor-element',
-				'selector' => '{{WRAPPER}} .ua-background-overlay',
+//				'selector' => '{{WRAPPER}} .ua_column_background_overlay',
+				'selector' => $overlay_selector,
                                 'separator' => 'before',
 				'fields_options' => [
 					'background' => [
@@ -74,6 +79,76 @@ class Background_Overlay {
 		);
             
                 
+                
+                /**
+                 * 
+
+                $this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'background_overlay',
+				'selector' => '{{WRAPPER}} > .elementor-element-populated >  .elementor-background-overlay',
+			]
+		);
+
+		$this->add_control(
+			'background_overlay_opacity',
+			[
+				'label' => __( 'Opacity', 'elementor' ),
+				'type' => Controls_Manager::SLIDER,
+				'default' => [
+					'size' => .5,
+				],
+				'range' => [
+					'px' => [
+						'max' => 1,
+						'step' => 0.01,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} > .elementor-element-populated >  .elementor-background-overlay' => 'opacity: {{SIZE}};',
+				],
+				'condition' => [
+					'background_overlay_background' => [ 'classic', 'gradient' ],
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Css_Filter::get_type(),
+			[
+				'name' => 'css_filters',
+				'selector' => '{{WRAPPER}} > .elementor-element-populated >  .elementor-background-overlay',
+			]
+		);
+
+		$this->add_control(
+			'overlay_blend_mode',
+			[
+				'label' => __( 'Blend Mode', 'elementor' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'' => __( 'Normal', 'elementor' ),
+					'multiply' => 'Multiply',
+					'screen' => 'Screen',
+					'overlay' => 'Overlay',
+					'darken' => 'Darken',
+					'lighten' => 'Lighten',
+					'color-dodge' => 'Color Dodge',
+					'saturation' => 'Saturation',
+					'color' => 'Color',
+					'luminosity' => 'Luminosity',
+				],
+				'selectors' => [
+					'{{WRAPPER}} > .elementor-element-populated > .elementor-background-overlay' => 'mix-blend-mode: {{VALUE}}',
+				],
+			]
+		);
+
+
+
+                 * 
+                 */
 
 		$element->end_controls_section();
                 
@@ -97,6 +172,7 @@ class Background_Overlay {
                     return false;
                 }
 
+                echo '<div class="ua_column_background_overlay ua_overlay_id_' . $element->get_id() . '">Overlay</div>';
                 /**
                  * Adding Class where already Transform Selected
                  */
