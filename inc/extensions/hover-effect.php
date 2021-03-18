@@ -56,4 +56,5 @@ class Hover_Effect {
 	}
 }
 
-Hover_Effect::init();
+//No need to call, we have called automatically to initit method from extenstion manager file.
+//Hover_Effect::init();

@@ -74,4 +74,5 @@ class Wrapper_Link {
 	}
 }
 
-Wrapper_Link::init();
+//No need to call, we have called automatically to initit method from extenstion manager file.
+//Wrapper_Link::init();

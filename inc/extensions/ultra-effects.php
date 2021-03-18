@@ -1194,4 +1194,5 @@ class Ultra_Effects {
         }
 }
 
-Ultra_Effects::init();
+//No need to call, we have called automatically to initit method from extenstion manager file.
+//Ultra_Effects::init();

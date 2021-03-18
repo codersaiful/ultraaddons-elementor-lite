@@ -185,5 +185,5 @@ class Background_Overlay {
                 );
 	}
 }
-
-Background_Overlay::init();
+//No need to call, we have called automatically to initit method from extenstion manager file.
+//Background_Overlay::init();

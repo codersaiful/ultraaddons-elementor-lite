@@ -181,4 +181,5 @@ class Transform {
 	}
 }
 
-Transform::init();
+//No need to call, we have called automatically to initit method from extenstion manager file.
+//Transform::init();
