@@ -267,7 +267,7 @@ class Info_Box extends Base {
                             'label' => __( 'Spacing', 'ultraaddons' ),
                             'type' => Controls_Manager::SLIDER,
                             'default' => [
-                                    'size' => 15,
+                                    'size' => 40,
                             ],
                             'range' => [
                                     'px' => [
@@ -405,13 +405,11 @@ class Info_Box extends Base {
             );
             
             $this->add_responsive_control(
-                    'hover_icon_space',
+                    'icon_space_hover',
                     [
                             'label' => __( 'Spacing', 'ultraaddons' ),
                             'type' => Controls_Manager::SLIDER,
-//                            'default' => [
-//                                    'size' => 15,
-//                            ],
+
                             'range' => [
                                     'px' => [
                                             'min' => 0,
@@ -419,9 +417,7 @@ class Info_Box extends Base {
                                     ],
                             ],
                             'selectors' => [
-                                    '{{WRAPPER}}.elementor-position-right:hover .ua-info-box-icon' => 'margin-left: {{SIZE}}{{UNIT}};',
-                                    '{{WRAPPER}}.elementor-position-left:hover .ua-info-box-icon' => 'margin-right: {{SIZE}}{{UNIT}};',
-                                    '{{WRAPPER}}.elementor-position-top:hover .ua-info-box-icon' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                                    '{{WRAPPER}}:hover .ua-info-box-icon' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                                     '(mobile){{WRAPPER}}:hover .ua-info-box-icon' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                             ],
                     ]
@@ -604,6 +600,24 @@ class Info_Box extends Base {
                         'separator' => 'before',
                 ]
         );
+        
+        $this->add_responsive_control(
+                'description_bottom_space',
+                [
+                        'label' => __( 'Spacing', 'ultraaddons' ),
+                        'type' => Controls_Manager::SLIDER,
+                        'range' => [
+                                'px' => [
+                                        'min' => 0,
+                                        'max' => 100,
+                                ],
+                        ],
+                        'selectors' => [
+                                '{{WRAPPER}} .elementor-icon-box-description' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                        ],
+                ]
+        );
+
 
         $this->add_control(
                 'description_color',
@@ -718,6 +732,23 @@ class Info_Box extends Base {
                 ]
         );
 
+        $this->add_responsive_control(
+                'description_bottom_space_hover',
+                [
+                        'label' => __( 'Spacing', 'ultraaddons' ),
+                        'type' => Controls_Manager::SLIDER,
+                        'range' => [
+                                'px' => [
+                                        'min' => 0,
+                                        'max' => 100,
+                                ],
+                        ],
+                        'selectors' => [
+                                '{{WRAPPER}}:hover .elementor-icon-box-description' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                        ],
+                ]
+        );
+        
         $this->add_control(
                 'description_color_hover',
                 [
