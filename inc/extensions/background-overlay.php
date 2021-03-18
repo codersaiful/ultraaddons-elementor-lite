@@ -12,25 +12,43 @@ class Background_Overlay {
 
 	public static function init() {
 		add_action( 'elementor/element/column/section_advanced/after_section_end', [ __CLASS__, 'add_controls_section' ], 1 );
-		add_action( 'elementor/element/section/section_advanced/after_section_end', [ __CLASS__, 'add_controls_section' ], 1 );
+//		add_action( 'elementor/element/section/section_advanced/after_section_end', [ __CLASS__, 'add_controls_section' ], 1 );
 		add_action( 'elementor/element/common/_section_style/after_section_end', [ __CLASS__, 'add_controls_section' ], 1 );
 
                 add_action( 'elementor/frontend/after_render', [ __CLASS__, 'before_section_render' ], 1 );
+//                add_action( 'elementor/frontend/before_render', [ __CLASS__, 'before_section_render' ], 1 );
+                
+//                $element_type = 'widget';
+//                $render_method = 'render_' . $element_type;
+//
+//                if( ! method_exists( __CLASS__, $render_method ) ){
+//                    return;
+//                }
+//                add_action( "elementor/frontend/{$element_type}/after_render", [__CLASS__,$render_method] );
 	}
 
-	public static function add_controls_section( Element_Base $element) {
-//            /$overlay_selector
-            $overlay_selector = '.ua_column_background_overlay.ua_overlay_id_' . $element->get_id();
-            $overlay_selector = '.ua_column_background_overlay';
+        public static function render_widget( Element_Base $element ){
+            $settings = $element->get_settings_for_display();
+                $_ua_overlay_bg_on_off = $settings['_ua_overlay_bg_on_off'];
+
+                if ( empty( $_ua_overlay_bg_on_off ) ) {
+                    return false;
+                }
+                echo '<h2 class="saiful_islam_render_effect">HHHHHHHHHHHHHHHHHHHHELLLLLLLOOOOOOOOOOOOO</h2>';
+        }
+
+        public static function add_controls_section( Element_Base $element ) {
             
 		$tabs = Controls_Manager::TAB_STYLE;
 //                $tabs = Controls_Manager::TAB_CONTENT;
-                
-		if ( 'section' === $element->get_name() || 'column' === $element->get_name() ) {
+                $selector = "{{WRAPPER}} .elementor-widget-container>*";
+		if ( 'column' === $element->get_name() ) { //'section' === $element->get_name() || 
 			$tabs = Controls_Manager::TAB_LAYOUT;
+                        $selector = "{{WRAPPER}}";
 		}
 
-		
+                $element_type = $element->get_type();
+		           
 		$element->start_controls_section(
 			'_ua_background_overlay',
 			[
@@ -57,21 +75,8 @@ class Background_Overlay {
 			[
 				'name' => '_ua_container_background',
 				'types' => [ 'classic', 'gradient' ],
-//				'selector' => '{{WRAPPER}} div.elementor-element',
-//				'selector' => '{{WRAPPER}} .ua_column_background_overlay',
-				'selector' => $overlay_selector,
+				'selector' => $selector,
                                 'separator' => 'before',
-				'fields_options' => [
-					'background' => [
-						'frontend_available' => true,
-					],
-					'color' => [
-						'dynamic' => [],
-					],
-					'color_b' => [
-						'dynamic' => [],
-					],
-				],
                                 'condition' => [
                                     '_ua_overlay_bg_on_off' => 'yes',
                                 ],
@@ -166,13 +171,13 @@ class Background_Overlay {
          */
 	public static function before_section_render( Element_Base $element ) {
 		$settings = $element->get_settings_for_display();
+                return;
                 $_ua_overlay_bg_on_off = $settings['_ua_overlay_bg_on_off'];
 
                 if ( empty( $_ua_overlay_bg_on_off ) ) {
                     return false;
                 }
 
-                echo '<div class="ua_column_background_overlay ua_overlay_id_' . $element->get_id() . '">Overlay</div>';
                 /**
                  * Adding Class where already Transform Selected
                  */
