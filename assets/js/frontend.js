@@ -63,8 +63,8 @@
                                     autoplayTimeout: this.getElementSettings('autoplayTimeout'),
                                     nav: false,
                                     margin: 20,
-//                                    animateOut: '', //animate__flipOutY
-                                    animateIn: 'animate__lightSpeedInRight',//this.getElementSettings('animateIn'),//animate__lightSpeedInRight
+                                    animateOut: '',//animate__lightSpeedInRight //animate__flipOutY
+                                    animateIn: '',//animate__lightSpeedInRight//this.getElementSettings('animateIn'),//animate__lightSpeedInRight
                                     
                             };
 
