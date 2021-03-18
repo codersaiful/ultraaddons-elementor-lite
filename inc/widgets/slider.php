@@ -13,6 +13,7 @@ use Elementor\Scheme_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Background;
+use Elementor\Group_Control_Css_Filter;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -65,6 +66,9 @@ class Slider extends Base{
             //For Design Section Style Tab
             $this->style_general_controls();
             $this->slider_controls();
+            
+            //For Design Section Style Tab
+            $this->style_background_control();
 
         }
     
@@ -593,36 +597,86 @@ class Slider extends Base{
                 
                 $this->end_controls_tabs();
                 
-                $this->add_group_control(
-			Group_Control_Background::get_type(),
-			[
-                                'label' => __( 'Background Overlay', 'ultraaddons' ),
-				'name' => 'slider_background_overlay',
-				'types' => [ 'classic', 'gradient' ],
-//				'selector' => '{{WRAPPER}} div.elementor-element',
-				'selector' => '{{WRAPPER}} .ua-slider-item .ultraaddons-slider-container-wrapper',
-                                'separator' => 'before',
-				'fields_options' => [
-					'background' => [
-						'frontend_available' => true,
-					],
-					'color' => [
-						'dynamic' => [],
-					],
-					'color_b' => [
-						'dynamic' => [],
-					],
-				],
-			]
-		);
-                
-       
                 $this->end_controls_section();
                 
                 
         }
         
-        /**
+        protected function style_background_control(){
+            $this->start_controls_section(
+                    'slider-background-effect',
+                    [
+                        'label'     => esc_html__( 'Background Effect', 'ultraaddons' ),
+                    ]
+                );
+
+           
+//                $this->add_group_control(
+//			Group_Control_Background::get_type(),
+//			[
+//                                'label' => __( 'Background Overlay', 'ultraaddons' ),
+//				'name' => 'slider_background_overlay',
+//				'types' => [ 'classic', 'gradient' ],
+////				'selector' => '{{WRAPPER}} div.elementor-element',
+//				'selector' => '{{WRAPPER}} .ua-slider-item .ultraaddons-slider-container-wrapper',
+//                                'separator' => 'before',
+////				'fields_options' => [
+////					'background' => [
+////						'frontend_available' => true,
+////					],
+////					'color' => [
+////						'dynamic' => [],
+////					],
+////					'color_b' => [
+////						'dynamic' => [],
+////					],
+////				],
+//			]
+//		);
+//                
+                $this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'background_overlay',
+				'selector' => '{{WRAPPER}} .ua-slider-item .ultraaddons-slider-container-wrapper',
+			]
+		);
+
+		$this->add_control(
+			'background_overlay_opacity',
+			[
+				'label' => __( 'Opacity', 'elementor' ),
+				'type' => Controls_Manager::SLIDER,
+				'default' => [
+					'size' => .5,
+				],
+				'range' => [
+					'px' => [
+						'max' => 1,
+						'step' => 0.01,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .ua-slider-item .ultraaddons-slider-container-wrapper' => 'opacity: {{SIZE}};',
+				],
+				
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Css_Filter::get_type(),
+			[
+				'name' => 'css_filters',
+                                'label' => __( 'CSS Filter', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-slider-item',
+			]
+		);
+                 
+            
+            $this->end_controls_section();
+        }
+
+                /**
          * 
          * @since 1.0.0.15
          */
