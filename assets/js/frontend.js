@@ -140,6 +140,15 @@
                     }
             );
             
+        
+//            //for new Elemenment to Each Widget and column
+//            EF.hooks.addAction(
+//                    'frontend/element_ready/widget',
+//                    function ($scope) {
+//                        $scope.find('.elementor-widget-container').prepend('<div class="ua-widget-background-overlay">Widget</div>');
+//                    }
+//            );
+            
             // Cart Update in Editor Screen
             EF.hooks.addAction(
                     'frontend/element_ready/ultraaddons-product-table.default',

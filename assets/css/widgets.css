@@ -1,17 +1,15 @@
-h2.saiful_islam_render_effect {
-    position: absolute;
-    position: absolute;
-    background: red;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-}
-
 /*****************************
 * Elementor Background Overlay
 ******************************/
-.ua_column_background_overlay{position: absolute;height: 100%;width: 100%;}
+.elementor .elementor-element.ua-background-overlay-yes .elementor-widget-container>*{position: relative;}
+.elementor .elementor-element.ua-background-overlay-yes .elementor-widget-container:before{
+    content: "";
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute !important;
+}
 
 /*****************************
 * Comon Transition for All Element
