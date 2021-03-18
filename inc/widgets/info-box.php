@@ -122,6 +122,7 @@ class Info_Box extends Base {
                             'prefix_class' => 'elementor-view-',
                             'condition' => [
                                     'icon_style' => 'icon',
+//                                    'add_icon[library]!' => 'svg',
                             ],
                     ]
             );
@@ -240,6 +241,8 @@ class Info_Box extends Base {
                             'default' => '#0FC392',
                             'selectors' => [
                                     '{{WRAPPER}}.elementor-view-stacked .elementor-icon' => 'background-color: {{VALUE}};',
+                                    '{{WRAPPER}}.elementor-view-stacked .infobox-svg' => 'color: {{VALUE}};',
+                                    '{{WRAPPER}}.elementor-view-framed .infobox-svg' => 'color: {{VALUE}};',
                                     '{{WRAPPER}}.elementor-view-framed .elementor-icon, {{WRAPPER}}.elementor-view-default .elementor-icon' => 'fill: {{VALUE}}; color: {{VALUE}}; border-color: {{VALUE}};',
                             ],
                     ]
@@ -257,6 +260,8 @@ class Info_Box extends Base {
                             'selectors' => [
                                     '{{WRAPPER}}.elementor-view-framed .elementor-icon' => 'background-color: {{VALUE}};',
                                     '{{WRAPPER}}.elementor-view-stacked .elementor-icon' => 'fill: {{VALUE}}; color: {{VALUE}};',
+                                    '{{WRAPPER}}.elementor-view-framed .infobox-svg' => 'background-color: {{VALUE}};',
+                                    '{{WRAPPER}}.elementor-view-stacked .infobox-svg' => 'background-color: {{VALUE}};',
                             ],
                     ]
             );
@@ -298,6 +303,7 @@ class Info_Box extends Base {
                             ],
                             'selectors' => [
                                     '{{WRAPPER}} .elementor-icon' => 'font-size: {{SIZE}}{{UNIT}};',
+                                    '{{WRAPPER}} .infobox-svg' => 'width: {{SIZE}}{{UNIT}};',
                             ],
                     ]
             );
@@ -309,6 +315,7 @@ class Info_Box extends Base {
                             'type' => Controls_Manager::SLIDER,
                             'selectors' => [
                                     '{{WRAPPER}} .elementor-icon' => 'padding: {{SIZE}}{{UNIT}};',
+                                    '{{WRAPPER}} .ua-info-box-icon.svg' => 'padding: {{SIZE}}{{UNIT}};',
                             ],
                             'range' => [
                                     'em' => [
@@ -861,26 +868,30 @@ class Info_Box extends Base {
         $add_image  = isset( $settings['add_image']['url'] ) ? $settings['add_image']['url'] : '';
         $add_icon   = !empty( $settings['add_icon']['value'] ) && is_string( $settings['add_icon']['value'] ) ? $settings['add_icon']['value'] : false;
         $svg        = !empty( $settings['add_icon']['value']['url'] ) && is_string( $settings['add_icon']['value']['url'] ) ? $settings['add_icon']['value']['url'] : false;
-
-        if ( $has_icon || 'image' == $icon_style ) : ?>
-        <div class="ua-info-box-icon">
-            <?php if( $has_icon ) : ?>
-            <<?php echo implode( ' ', [ $icon_tag, $icon_attributes ] ); ?>>
-            <?php
-            if ( $is_new || $migrated ) {
-                    Icons_Manager::render_icon( $add_icon, [ 'aria-hidden' => 'true' ] );
-            } elseif ( ! empty( $settings['add_icon'] ) ) {
-                    ?><i <?php echo $this->get_render_attribute_string( 'i' ); ?>></i><?php
-            }
-            ?>
-            </<?php echo $icon_tag; ?>>
-            <?php elseif( $svg ) : ?>
-                <img class="infobox-image" src="<?php echo esc_url( $svg );?>" alt="" />
-            <?php elseif( 'image' == $icon_style ) : ?>
-                <img class="infobox-image" src="<?php echo esc_url( $add_image );?>" alt="" />
-            <?php endif; ?>
+        $this->add_render_attribute( 'icon_wrapper', 'class', 'ua-info-box-icon');
+        if($svg){
+            $this->add_render_attribute( 'icon_wrapper', 'class', 'svg');
+        }
+        //var_dump($settings['add_icon'] );
+        if ( $has_icon || 'image' == $icon_style ) { ?>
+        <div <?php echo $this->get_render_attribute_string( 'icon_wrapper' ); ?>>
+            <?php if( 'icon' == $icon_style && !$svg ) { ?>
+                <<?php echo implode( ' ', [ $icon_tag, $icon_attributes ] ); ?>>
+                    <?php
+                    if ( $is_new || $migrated ) {
+                            Icons_Manager::render_icon( $add_icon, [ 'aria-hidden' => 'true' ] );
+                    } elseif ( ! empty( $settings['add_icon'] ) ) {?>
+                            <i <?php echo $this->get_render_attribute_string( 'i' ); ?>></i>
+                    <?php } ?>
+                </<?php echo $icon_tag; ?>>
+            <?php } elseif( $svg ) { ?>
+                    <img class="infobox-svg" src="<?php echo esc_url( $svg );?>" alt="" />
+            <?php } elseif( 'image' == $icon_style ) { ?>
+                    <img class="infobox-image" src="<?php echo esc_url( $add_image );?>" alt="" />
+            <?php } ?>
         </div>
-        <?php endif;
+        <?php 
+        }
     }
 
     /**

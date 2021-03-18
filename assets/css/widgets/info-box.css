@@ -1,7 +1,9 @@
 .ultraaddons_info_box > .elementor-widget-container {
     background: #fff;
 }
-
+.ua-info-box-icon img.infobox-svg{
+    width: 100px;
+}
 
 .ua-element-info-box .elementor-widget-container .info-title {
     color: #21272c;
