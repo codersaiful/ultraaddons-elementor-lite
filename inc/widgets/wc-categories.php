@@ -48,6 +48,20 @@ class WC_Categories extends Base{
                 return [ 'jquery' ];
         }
         
+        /**
+         * Whether the reload preview is required or not.
+         *
+         * Used to determine whether the reload preview is required.
+         *
+         * @since 1.0.0
+         * @access public
+         *
+         * @return bool Whether the reload preview is required.
+         */
+        public function is_reload_preview_required() {
+                return true;
+        }
+
         
         /**
          * Register oEmbed widget controls.
