@@ -4,7 +4,9 @@ namespace UltraAddons\Classes;
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
- * Getting Elementor Template List
+ * Getting template list 
+ * which we will create
+ * on post type header_footer
  * 
  * @since 1.0.1.0
  */
@@ -18,7 +20,7 @@ class Template_List {
     public function get_templates() {
 
         $args = array(
-            'post_type'     =>  'elementor_library',
+            'post_type'     =>  'header_footer',
             'post_status'   =>  'publish'
         );
         $query = get_posts( $args );
