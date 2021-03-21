@@ -171,6 +171,20 @@ class Loader {
          * @since 1.0.3.4
          */
         \UltraAddons\WP\Shortcode::init();
+        
+        /**
+         * Header Footer Post Manage
+         * 
+         * ********************************
+         * What we did here:
+         * ********************************
+         * * It will show a new menu under UltraAddons menu
+         * * Create Custom Post Type register header_footer
+         * * Change template for single post when header footer on single.php
+         * 
+         * @since 1.0.4.0
+         */
+        \UltraAddons\WP\Header_Footer_Post::init();
     }
 
     /**
