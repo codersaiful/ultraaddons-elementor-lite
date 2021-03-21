@@ -28,7 +28,7 @@
 <?php wp_body_open(); ?>
 
     <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'ultraaddons' ); ?></a>
-<div id="page" class="hfeed site header-footer-fullwidth">
+<div id="page" class="hfeed site header-footer-fullwidth ultraaddons-page">
 <?php
     if ( have_posts() ) : while ( have_posts() ) : the_post();
         the_content();
