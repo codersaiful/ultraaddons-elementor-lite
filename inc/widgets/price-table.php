@@ -1639,6 +1639,139 @@ class Price_Table extends Base {
                 
                 
                 ?>
+        <section class="pricing-area bg-zircon section-padding">
+    <div class="medilac-home-container">
+      <div class="row">
+        <div class="section-title v1">
+          <span>Pricing Plan</span>
+          <h3>Choose Your Best Plan</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="pricing-box-wrap">
+          <div class="pricing-box-item" style="">
+            <div class="pricing-icon">
+              <div class="pricing-bg">
+                <svg fill="#0fc392" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100%" height="100%"></rect>
+              </svg>
+              <div class="pricing-bg-text"><div>$<span>33</span><br>Per Month </div></div>
+              </div>
+              <!-- <p>Cardiology</p> -->
+            </div>
+            <div class="price-tag">
+              <p>Basic Plan</p>
+            </div>
+            <ul class="pricing-feature-list">
+              <li>
+                <p><i class="fas fa-check"></i> &nbsp;Regular Health check-ups</p>
+              </li>
+              <li>
+                <p><i class="fas fa-check"></i> &nbsp;weekly blood test</p>
+              </li>
+              <li>
+                <p><i class="fas fa-check"></i> &nbsp;200 test &amp; treatments</p>
+              </li>
+              <li>
+                <p><i class="fas fa-check"></i> &nbsp;Medical consultation</p>
+              </li>
+            </ul>
+            <a href="#" class="btn v8">Get started now</a>
+          </div>
+          <div class="pricing-box-item featured" style="">
+            <span class="ribbon">Popular</span>
+            <div class="pricing-icon">
+              <div class="pricing-bg">
+                <svg fill="#0fc392" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100%" height="100%"></rect>
+              </svg>
+              <div class="pricing-bg-text"><div>$<span>56</span><br>Per Month </div></div>
+              </div>
+              <!-- <p>Body checkuo</p> -->
+            </div>
+            <div class="price-tag">
+              <p>Standard Plan</p>
+            </div>
+            <ul class="pricing-feature-list">
+              <li>
+                <p><i class="fas fa-check"></i> &nbsp;Regular Health check-ups</p>
+              </li>
+              <li>
+                <p><i class="fas fa-check"></i> &nbsp;weekly blood test</p>
+              </li>
+              <li>
+                <p><i class="fas fa-check"></i> &nbsp;200 test &amp; treatments</p>
+              </li>
+              <li>
+                <p><i class="fas fa-check"></i> &nbsp;Medical consultation</p>
+              </li>
+              <li>
+                <p><i class="fas fa-check"></i> &nbsp;Labrotary service</p>
+              </li>
+            </ul>
+            <a href="#" class="btn v8">Get started now</a>
+          </div>
+          <div class="pricing-box-item" style="">
+            <div class="pricing-icon">
+              <div class="pricing-bg">
+                <svg fill="#0fc392" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100%" height="100%"></rect>
+              </svg>
+              <div class="pricing-bg-text"><div>$<span>86</span><br>Per Month </div></div>
+              </div>
+              <!-- <p>Blood test</p> -->
+            </div>
+            <div class="price-tag">
+              <p>Premium Plan</p>
+            </div>
+            <ul class="pricing-feature-list">
+              <li>
+                <p><i class="fas fa-check"></i> &nbsp;Regular Health check-ups</p>
+              </li>
+              <li>
+                <p><i class="fas fa-check"></i> &nbsp;weekly blood test</p>
+              </li>
+              <li>
+                <p><i class="fas fa-check"></i> &nbsp;200 test &amp; treatments</p>
+              </li>
+              <li>
+                <p><i class="fas fa-check"></i> &nbsp;Medical consultation</p>
+              </li>
+            </ul>
+            <a href="#" class="btn v8">Get started now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+        
+        
+        
+        <?php return; ?>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
                 <div class="ua-price-table">
                         <?php if ( $settings['heading'] || $settings['sub_heading'] ) { ?>
 				<div class="ua-price-table__header">
