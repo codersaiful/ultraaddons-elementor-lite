@@ -1384,7 +1384,16 @@ class Price_Table extends Base {
 			]
 		);
 
-		$this->add_control(
+                $this->start_controls_tabs('feature_tabs');
+                
+                $this->start_controls_tab(
+                    'feature_tab_normal', 
+                    [
+                        'label' => __( 'Normal', 'ultraaddons' ),
+                    ]
+                );
+                
+                $this->add_control(
 			'features_list_color',
 			[
 				'label' => __( 'Color', 'ultraaddons' ),
@@ -1393,7 +1402,6 @@ class Price_Table extends Base {
 					'type' => Schemes\Color::get_type(),
 					'value' => Schemes\Color::COLOR_3,
 				],
-				'separator' => 'before',
 				'selectors' => [
 					'{{WRAPPER}} .ua-price-table__features-list' => 'color: {{VALUE}}',
 				],
@@ -1410,6 +1418,50 @@ class Price_Table extends Base {
 				],
 			]
 		);
+                
+                $this->end_controls_tab();
+                
+                $this->start_controls_tab(
+                    'feature_tab_hover', 
+                    [
+                        'label' => __( 'Hover', 'ultraaddons' ),
+                    ]
+                );
+                
+                $this->add_control(
+			'features_list_color_hover',
+			[
+				'label' => __( 'Color', 'ultraaddons' ),
+				'type' => Controls_Manager::COLOR,
+//				'scheme' => [
+//					'type' => Schemes\Color::get_type(),
+//					'value' => Schemes\Color::COLOR_3,
+//				],
+				
+				'selectors' => [
+					'{{WRAPPER}}:hover .ua-price-table__features-list' => 'color: {{VALUE}}',
+				],
+			]
+		);
+                $this->add_control(
+			'features_list_icon_color_hover',
+			[
+				'label' => __( 'Icon Color', 'ultraaddons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}}:hover .ua-price-table__features-list i' => 'color: {{VALUE}}',
+					'{{WRAPPER}}:hover .ua-price-table__features-list svg' => 'fill: {{VALUE}}',
+				],
+			]
+		);
+                
+                
+                
+                $this->end_controls_tab();
+                $this->end_controls_tabs();
+                
+                
+		
 
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
