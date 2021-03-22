@@ -7,13 +7,25 @@ ul.ua-price-table__features-list {
     margin: 0;
 }
 .ua-price-table__price_inner {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     font-size: 46px;
     font-weight: 700;
     font-family: "Roboto",sans-serif;
     color: #0FC392;
+}
+.ua-price-table__price {
+    /*background: firebrick;*/
+    height: 150px;
+    width: 150px;
+    margin: 0 auto;
+    border-radius: 50%;
+    padding: 43px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 .ua-price-table__original-price {
     text-decoration: line-through;
