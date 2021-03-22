@@ -338,4 +338,10 @@ function ultraaddons_elementor_activation(){
      */
     $role = get_role( 'administrator' );
     $role->add_cap( ULTRA_ADDONS_CAPABILITY );
+    
+    $cpt_support = get_option( 'elementor_cpt_support', [ 'page', 'post' ] );
+    if( is_array($cpt_support) ){
+        $cpt_support['header_footer'] = 'header_footer';
+        update_option( 'elementor_cpt_support', $cpt_support);
+    }
 }
