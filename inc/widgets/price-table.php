@@ -503,58 +503,6 @@ class Price_Table extends Base {
                         ]
                 );
                 
-                $this->add_responsive_control(
-			'widget_padding',
-			[
-				'label' => __( 'Padding', 'ultraaddons' ),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%', 'em' ],
-                                'default' => [
-                                        'top' => 50,
-                                        'left' => 30,
-                                        'right' => 30,
-                                        'bottom' => 50,
-                                        'unit' => 'px',
-                                ],
-				'selectors' => [
-					'{{WRAPPER}} .elementor-widget-container' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-
-                $this->add_group_control(
-			Group_Control_Background::get_type(),
-			[
-				'name' => 'background',
-				'label' => __( 'Background', 'ultraaddons' ),
-				'types' => [ 'classic', 'gradient' ],
-				'selector' => '{{WRAPPER}} .elementor-widget-container',
-			]
-		);
-                
-                $this->add_responsive_control(
-			'widget_border_color',
-			[
-				'label' => __( 'Border Color', 'ultraaddons' ),
-				'type' => Controls_Manager::COLOR,
-                                'default' => '#E2EBF1',
-				'selectors' => [
-					'{{WRAPPER}} .elementor-widget-container' => 'border-color: {{VALUE}};',
-				],
-			]
-		);
-                $this->add_responsive_control(
-			'widget_border_hover_color',
-			[
-				'label' => __( 'Border Hover Color', 'ultraaddons' ),
-				'type' => Controls_Manager::COLOR,
-                                'default' => '#0FC393',
-				'selectors' => [
-					'{{WRAPPER}} .elementor-widget-container:hover' => 'border-color: {{VALUE}};',
-					//'{{WRAPPER}}.ultraaddons-featured-item .elementor-widget-container' => 'border-color: {{VALUE}};',
-				],
-			]
-		);
                 
                 $this->add_control(
 			'section_divider',
@@ -828,7 +776,17 @@ class Price_Table extends Base {
 			]
 		);
                 
-		$this->add_control(
+		
+                $this->start_controls_tabs('price_tabs');
+                
+                $this->start_controls_tab(
+                'price_tab_normal', 
+                [
+                    'label' => __( 'Normal', 'ultraaddons' ),
+                ]
+                );
+                
+                $this->add_control(
 			'pricing_element_bg_color',
 			[
 				'label' => __( 'Background Color', 'ultraaddons' ),
@@ -854,12 +812,12 @@ class Price_Table extends Base {
 		$this->add_control(
 			'price_color',
 			[
-				'label' => __( 'Color', 'ultraaddons' ),
+				'label' => __( 'Text Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ua-price-table__currency, {{WRAPPER}} .ua-price-table__integer-part, {{WRAPPER}} .ua-price-table__fractional-part, {{WRAPPER}} .ua-price-table__currency_sep' => 'color: {{VALUE}}',
 				],
-				'separator' => 'before',
+//				'separator' => 'before',
 			]
 		);
 
@@ -872,6 +830,113 @@ class Price_Table extends Base {
 			]
 		);
                 
+                 $this->add_control(
+			'price_box_size',
+			[
+				'label' => __( 'Price Box Size', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min' => 50,
+						'max' => 500,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .ua-price-table__price' => 'height: {{SIZE}}{{UNIT}};width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+                 
+                 
+                
+                $this->end_controls_tab();
+                
+                $this->start_controls_tab('price_tab_hover', 
+                        [
+                            'label' => __( 'Hover', 'ultraaddons' ),
+                        ]
+                );
+                
+                
+                $this->add_control(
+			'pricing_element_bg_color_hover',
+			[
+				'label' => __( 'Background Color', 'ultraaddons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}}:hover .ua-price-table__price' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'pricing_element_padding_hover',
+			[
+				'label' => __( 'Padding', 'ultraaddons' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}}:hover .ua-price-table__price' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'price_color_hover',
+			[
+				'label' => __( 'Text Color', 'ultraaddons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}}:hover .ua-price-table__currency, {{WRAPPER}} .ua-price-table__integer-part, {{WRAPPER}} .ua-price-table__fractional-part, {{WRAPPER}} .ua-price-table__currency_sep' => 'color: {{VALUE}}',
+				],
+//				'separator' => 'before',
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'price_typography_hover',
+				'selector' => '{{WRAPPER}}:hover .ua-price-table__price_inner',
+				'scheme' => Schemes\Typography::TYPOGRAPHY_1,
+			]
+		);
+                
+                 $this->add_control(
+			'price_box_size_hover',
+			[
+				'label' => __( 'Price Box Size', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min' => 50,
+						'max' => 500,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}}:hover .ua-price-table__price' => 'height: {{SIZE}}{{UNIT}};width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+                 
+                 
+                
+                
+                $this->end_controls_tab();
+                
+                
+                $this->end_controls_tabs();
+                
+                //Group_Control_Border
+                $this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'price_box_border',
+				'selector' => '{{WRAPPER}} .ua-price-table__price',
+			]
+		);
+                
+                
                 $this->add_control(
 			'price_addional_control',
 			[
@@ -882,6 +947,8 @@ class Price_Table extends Base {
 				'default' => '',
 			]
 		);
+                
+               
                 
                 $this->add_control(
 			'price_int_size',

@@ -16,9 +16,7 @@ ul.ua-price-table__features-list {
     color: #0FC392;
 }
 .ua-price-table__price {
-    /*background: firebrick;*/
-    height: 150px;
-    width: 150px;
+
     margin: 0 auto;
     border-radius: 50%;
     padding: 43px 0;
@@ -26,6 +24,7 @@ ul.ua-price-table__features-list {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    transition: .3s all;
 }
 .ua-price-table__original-price {
     text-decoration: line-through;
@@ -108,151 +107,10 @@ span.currency-inner-wrapper span.ua-price-table__currency_sep {
 .elementor-align-right ul.ua-price-table__features-list:before{
     margin-right: 0 !important;
 }
-
 .ua-price-table .btn-wrapper .ua-button {
     margin: 30px auto;
 }
-
-/* Dark Theme */
-.pricing-table-temp-2 .elementor-widget-container {
-    background-color: #272727;
-}
-.pricing-table-temp-2 .ua-price-table__heading,
-.pricing-table-temp-2 span.ua-price-table__period.ua-typo-excluded,
-.pricing-table-temp-2 .ua-price-table__features-list li,
-.pricing-table-temp-2 .ua-price-table__button,
-.pricing-table-temp-2 .ua-pricing-table-icon {
-    color: #efefef;
-}
-.ua-element.ua-element-price-table .ua-button{text-decoration: none;}
-/* .elementor-align-left .ua-price-table__feature-inner,.elementor-align-right .ua-price-table__feature-inner{
-    display: flex;
-    column-gap: 10px;
-    align-items: center;
-}
-.elementor-align-right .ua-price-table__feature-inner{
-    flex-direction:row-reverse;
-}
- */
- 
- 
- 
- 
- 
- 
- 
- 
- /***********************
- * TEMPLATE TWO
- *************************/
- 
- 
-.ua-element-price-table .pricing-bg {
-    position: relative;
-    margin: 0 auto;
-    overflow: hidden;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-}
-
-.ua-element-price-table .pricing-bg svg {
-    height: 100%;
-    width: 100%;
-    transition: 0.3s;
-}
-
-.ua-element-price-table .pricing-bg-text {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    margin: auto;
-    color: #fff;
-    font-family: Roboto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    line-height: 1.2;
-}
-
-.ua-element-price-table .pricing-bg-text span {
-    font-size: 46px;
-    font-weight: bold;
-}
-
-.ua-element-price-table .price-tag {
-    font-size: 24px;
-    font-weight: bold;
-    font-family: Roboto;
-    color: #021429;
-    border-bottom: none;
-    padding: 0;
-}
-
-.medilac-home .pricing-box-item,
-.ua-element-price-table .pricing-box-item {
-position: relative;
-overflow: hidden;
-}
-
-.medilac-home .pricing-box-item span.ribbon,
-.ua-element-price-table .pricing-box-item span.ribbon {
-color: #fff;
-position: absolute;
-top: 26px;
-right: -38px;
-width: 150px;
-background-color: #0fc392;
-transform: rotate(45deg);
-transform-origin: center;
-}
-
-.ua-element-price-table .pricing-box-item .btn.v8 {
-    border-color: #0fc392;
-}
-
-.ua-element-price-table .pricing-box-item:hover .btn.v8 {
-    background-color: #0fc392;
-    color: #fff;
-}
-
-.ua-element-price-table .pricing-box-item {
-    background-size: cover;
-}
-
-.ua-element-price-table .pricing-box-item:hover {
-    background: url(../images/price_bg.jpg) no-repeat;
-    border: 2px solid #E2EBF1;
-}
-
-.ua-element-price-table .pricing-box-item:hover .pricing-bg svg {
-    fill: #fff;
-}
-
-.ua-element-price-table .pricing-box-item:hover .pricing-bg-text {
-    color: #021429;
-}
-
-.ua-element-price-table .pricing-box-item .price-tag p {
-    transition: 0.3s;
-}
-
-.ua-element-price-table .pricing-box-item:hover .price-tag p {
-    color: #fff;
-}
-
-.ua-element-price-table .pricing-box-item .pricing-feature-list li p {
-    transition: 0.3s;
-}
-
-.ua-element-price-table .pricing-box-item .pricing-feature-list li p i {
-    color: #0fc391;
-}
-
-.ua-element-price-table .pricing-box-item:hover .pricing-feature-list li p {
-    color: #fff;
+.ua-element-price-table .elementor-widget-container{
+    border:1px solid #E2EBF1;
+    padding: 50px 30px;
 }
