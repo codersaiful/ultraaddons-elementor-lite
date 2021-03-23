@@ -111,6 +111,7 @@ span.currency-inner-wrapper span.ua-price-table__currency_sep {
     margin: 30px auto;
 }
 .ua-element-price-table .elementor-widget-container{
-    border:1px solid #E2EBF1;
+    /*border:1px solid #E2EBF1;*/
     padding: 50px 30px;
+    background: #f7fcff;
 }
