@@ -175,10 +175,12 @@
 
 .navigation-arrow-position-center .ua-slider-wrapper .owl-nav {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     position: absolute;
-    width: 100%;
+    width: 96%;
     top: 47%;
+    text-align: center;
+    margin-left: 2%;
 }
 .navigation-arrow-position-center .ua-slider-wrapper .owl-nav button {
     border-radius: 50%;
