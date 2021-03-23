@@ -18,7 +18,7 @@ use Elementor\Group_Control_Css_Filter;
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Slider extends Base{
-    
+        use \UltraAddons\Traits\Animate_Style;
         
         /**
          * Find by search
@@ -906,7 +906,7 @@ class Slider extends Base{
                     'sssssssss' => __( 'sssssssss', 'ultraaddons' ),
 
                 ];
-                
+                $animation_options = $this->get_animations();
                 $this->add_control(
                         'external_animation',
                         [
