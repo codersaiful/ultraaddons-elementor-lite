@@ -819,6 +819,32 @@ class Slider extends Base{
                                 'prefix_class' => 'navigation-arrow-position-',
                         ]
                 );
+                $this->add_control(
+                        'next_prev_spacing',
+                        [
+                                'label' => __( 'Navigation Button Spacing', 'elementor' ),
+                                'type' => Controls_Manager::SLIDER,
+                                'default' => [
+                                        'size' => 50,
+                                ],
+                                'range' => [
+                                        'px' => [
+                                                'min' => 1,
+                                                'max' => 250,
+                                                'step' => 1,
+                                        ],
+                                ],
+                                'condition' => [
+                                        'navigation_arrow_position' => ['top-right','top-left','bottom-right','bottom-left'],
+                                        //'navigation_type' => ['arrow'],
+                                ],
+                                'selectors' => [
+                                        '{{WRAPPER}}.navigation-arrow-position-bottom-right .ua-slider-wrapper .owl-nav,{{WRAPPER}}.navigation-arrow-position-bottom-left .ua-slider-wrapper .owl-nav' => 'bottom: -{{SIZE}}{{UNIT}};',
+                                        '{{WRAPPER}}.navigation-arrow-position-top-left .ua-slider-wrapper .owl-nav,{{WRAPPER}}.navigation-arrow-position-top-right .ua-slider-wrapper .owl-nav' => 'top: -{{SIZE}}{{UNIT}};',
+                                ],
+
+                        ]
+                );
                 
                 $this->add_control(
                         'navigation_number_position',
