@@ -912,7 +912,7 @@ class Slider extends Base{
                         [
                                 'label' => __( 'External Animation', 'ultraaddons' ),
 //                                'description' => esc_html__( 'Not mandatory, But you can apply. Generate from Animate.style', 'ultraaddons' ),
-                                'type' => Controls_Manager::SELECT,
+                                'type' => Controls_Manager::SELECT2,
                                 'options' => $animation_options,
                                 'default' => '',
                                 'frontend_available' => true,
