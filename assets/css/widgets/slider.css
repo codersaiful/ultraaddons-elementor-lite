@@ -46,12 +46,19 @@
 
 .ua-slider-wrapper.ua-number-slider-wrapper .owl-dots{
     display: inline-block;
-    left: 30px;
     bottom: auto;
     top: 34%;
     width: 50px;
     position: absolute;
     /* transform: translate(11px, -150%); */
+}
+.navigation-number-position-left .ua-slider-wrapper.ua-number-slider-wrapper .owl-dots{
+    right: initial;
+    left: 30px;
+}
+.navigation-number-position-right .ua-slider-wrapper.ua-number-slider-wrapper .owl-dots{
+    right: 30px;
+    left: initial;
 }
 
 .ua-slider-wrapper.ua-number-slider-wrapper .owl-dots button.owl-dot{
@@ -130,11 +137,41 @@
     outline: none;
 }
 
-.navigation-arrow-position-top .ua-slider-wrapper .owl-nav {
+.ua-slider-wrapper .owl-nav {
+    display: flex;
+    column-gap: 15px;
+}
+
+.ua-slider-wrapper .owl-nav button {
+    padding: 10px 17px;
+}
+
+.ua-slider-wrapper .owl-nav button.owl-prev {
+    background: black;
+    border-color: black;
+}
+
+.navigation-arrow-position-top-right .ua-slider-wrapper .owl-nav {
     position: absolute;
     top: -50px;
     right: 0px;
 }
+.navigation-arrow-position-top-left .ua-slider-wrapper .owl-nav {
+    position: absolute;
+    top: -50px;
+    left: 0px;
+}
+.navigation-arrow-position-bottom-right .ua-slider-wrapper .owl-nav {
+    position: absolute;
+    bottom: -50px;
+    right: 0px;
+}
+.navigation-arrow-position-bottom-left .ua-slider-wrapper .owl-nav {
+    position: absolute;
+    bottom: -50px;
+    left: 0px;
+}
+
 
 .navigation-arrow-position-center .ua-slider-wrapper .owl-nav {
     display: flex;

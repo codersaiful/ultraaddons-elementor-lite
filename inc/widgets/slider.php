@@ -67,8 +67,13 @@ class Slider extends Base{
             $this->style_general_controls();
             $this->slider_controls();
             
-            //For Design Section Style Tab
+            //For Typically Background Effect
             $this->style_background_control();
+            
+            //Control Number Pagination
+            $this->style_number_pagination();
+            $this->style_next_prev_pagination();
+            $this->style_bullet_pagination();
 
         }
     
@@ -800,15 +805,36 @@ class Slider extends Base{
                                 'label' => __( 'Arrow Position', 'ultraaddons' ),
                                 'type' => Controls_Manager::SELECT,
                                 'options' => [
-                                        'top'      => __( 'Top', 'ultraaddons' ),
+                                        'top-right'      => __( 'Top Right', 'ultraaddons' ),
+                                        'top-left'      => __( 'Top Left', 'ultraaddons' ),
                                         'center'    => __( 'Center', 'ultraaddons' ),
-                                        'bottom'    => __( 'Bottom', 'ultraaddons' ),
+                                        'bottom-right'    => __( 'Bottom Right', 'ultraaddons' ),
+                                        'bottom-left'    => __( 'Bottom Left', 'ultraaddons' ),
                                 ],
                                 'condition' => [
-                                        'navigation' => ['arrow', 'both'],
+                                        'navigation' => ['arrow','both'],
+                                        //'navigation_type' => ['arrow'],
                                 ],
                                 'default' => 'center',
                                 'prefix_class' => 'navigation-arrow-position-',
+                        ]
+                );
+                
+                $this->add_control(
+                        'navigation_number_position',
+                        [
+                                'label' => __( 'Number Position', 'ultraaddons' ),
+                                'type' => Controls_Manager::SELECT,
+                                'options' => [
+                                        'left'      => __( 'Left', 'ultraaddons' ),
+                                        'right'    => __( 'Right', 'ultraaddons' ),
+                                ],
+                                'condition' => [
+                                        'navigation' => ['dots','both'],
+                                        'navigation_type' => 'number',
+                                ],
+                                'default' => 'left',
+                                'prefix_class' => 'navigation-number-position-',
                         ]
                 );
 
@@ -834,78 +860,7 @@ class Slider extends Base{
                 );
 
                 
-                $animation_options = [
-                    '' => __( 'None', 'ultraaddons' ),
-                    //Attention Seeker
-                    'animate__bounce' => __( 'bounce', 'ultraaddons' ),
-                    'animate__flash' => __( 'flash', 'ultraaddons' ),
-                    'animate__pulse' => __( 'pulse', 'ultraaddons' ),
-                    'animate__rubberBand' => __( 'rubberBand', 'ultraaddons' ),
-                    'animate__shakeX' => __( 'shakeX', 'ultraaddons' ),
-                    'animate__shakeY' => __( 'shakeY', 'ultraaddons' ),
-                    'animate__headShake' => __( 'headShake', 'ultraaddons' ),
-                    'animate__swing' => __( 'swing', 'ultraaddons' ),
-                    'animate__tada' => __( 'tada', 'ultraaddons' ),
-                    'animate__wobble' => __( 'wobble', 'ultraaddons' ),
-                    'animate__jello' => __( 'jello', 'ultraaddons' ),
-                    'animate__heartBeat' => __( 'heartBeat', 'ultraaddons' ),
-                    //Back Entrances
-                    'animate__backInDown' => __( 'backInDown', 'ultraaddons' ),
-                    'animate__backInLeft' => __( 'backInLeft', 'ultraaddons' ),
-                    'animate__backInRight' => __( 'backInRight', 'ultraaddons' ),
-                    'animate__backInUp' => __( 'backInUp', 'ultraaddons' ),
-                    //Back Exist
-                    'animate__backOutDown' => __( 'backOutDown', 'ultraaddons' ),
-                    'animate__bounceInDown' => __( 'bounceInDown', 'ultraaddons' ),
-                    'animate__bounceInLeft' => __( 'bounceInLeft', 'ultraaddons' ),
-                    'animate__bounceInRight' => __( 'bounceInRight', 'ultraaddons' ),
-                    'animate__bounceInUp' => __( 'bounceInUp', 'ultraaddons' ),
-                    //Bouncing Entrances
-                    'animate__bounceIn' => __( 'bounceIn', 'ultraaddons' ),
-                    'animate__bounceInDown' => __( 'bounceInDown', 'ultraaddons' ),
-                    'animate__bounceInLeft' => __( 'bounceInLeft', 'ultraaddons' ),
-                    'animate__bounceInRight' => __( 'bounceInRight', 'ultraaddons' ),
-                    'animate__bounceInUp' => __( 'bounceInUp', 'ultraaddons' ),
-                    //Bouncing Exist
-                    'animate__bounceOut' => __( 'bounceOut', 'ultraaddons' ),
-                    'animate__bounceOutDown' => __( 'bounceOutDown', 'ultraaddons' ),
-                    'animate__bounceOutLeft' => __( 'bounceOutLeft', 'ultraaddons' ),
-                    'animate__bounceOutRight' => __( 'bounceOutRight', 'ultraaddons' ),
-                    'animate__bounceOutUp' => __( 'bounceOutUp', 'ultraaddons' ),
-                    //Fading Entrances
-                    'animate__fadeIn' => __( 'fadeIn', 'ultraaddons' ),
-                    'animate__fadeInDown' => __( 'fadeInDown', 'ultraaddons' ),
-                    'animate__fadeInDownBig' => __( 'fadeInDownBig', 'ultraaddons' ),
-                    'animate__fadeInLeft' => __( 'fadeInLeft', 'ultraaddons' ),
-                    'animate__fadeInLeftBig' => __( 'fadeInLeftBig', 'ultraaddons' ),
-                    'animate__fadeInRight' => __( 'fadeInRight', 'ultraaddons' ),
-                    'animate__fadeInRightBig' => __( 'fadeInRightBig', 'ultraaddons' ),
-                    'animate__fadeInUp' => __( 'fadeInUp', 'ultraaddons' ),
-                    'animate__fadeInUpBig' => __( 'fadeInUpBig', 'ultraaddons' ),
-                    'animate__fadeInTopLeft' => __( 'fadeInTopLeft', 'ultraaddons' ),
-                    'animate__fadeInTopRight' => __( 'fadeInTopRight', 'ultraaddons' ),
-                    'animate__fadeInBottomLeft' => __( 'fadeInBottomLeft', 'ultraaddons' ),
-                    'animate__fadeInBottomRight' => __( 'fadeInBottomRight', 'ultraaddons' ),
-                    //Fading Exist
-                    'animate__fadeOut' => __( 'fadeOut', 'ultraaddons' ),
-                    'animate__fadeOutDown' => __( 'fadeOutDown', 'ultraaddons' ),
-                    'animate__fadeOutDownBig' => __( 'fadeOutDownBig', 'ultraaddons' ),
-                    'animate__fadeOutLeft' => __( 'fadeOutLeft', 'ultraaddons' ),
-                    'animate__fadeOutLeftBig' => __( 'fadeOutLeftBig', 'ultraaddons' ),
-                    'animate__fadeOutRight' => __( 'fadeOutRight', 'ultraaddons' ),
-                    'animate__fadeOutRightBig' => __( 'fadeOutRightBig', 'ultraaddons' ),
-                    'animate__fadeOutUp' => __( 'fadeOutUp', 'ultraaddons' ),
-                    'animate__fadeOutUpBig' => __( 'fadeOutUpBig', 'ultraaddons' ),
-                    'animate__fadeOutTopLeft' => __( 'fadeOutTopLeft', 'ultraaddons' ),
-                    'animate__fadeOutTopRight' => __( 'fadeOutTopRight', 'ultraaddons' ),
-                    'animate__fadeOutBottomLeft' => __( 'fadeOutBottomLeft', 'ultraaddons' ),
-                    'animate__fadeOutBottomRight' => __( 'fadeOutBottomRight', 'ultraaddons' ),
-                    
-                    //Flippers
-                    'sssssssss' => __( 'sssssssss', 'ultraaddons' ),
-                    'sssssssss' => __( 'sssssssss', 'ultraaddons' ),
-
-                ];
+                
                 $animation_options = $this->get_animations();
                 $this->add_control(
                         'external_animation',
@@ -923,6 +878,39 @@ class Slider extends Base{
                 $this->end_controls_section();
         }
         
+        protected function style_number_pagination(){
+            $this->start_controls_section(
+                    'slider-number-pagination',
+                    [
+                        'label'     => esc_html__( 'Pagination Number', 'ultraaddons' ),
+                    ]
+                );
+            
+            $this->end_controls_section();
+        }
         
-    
+        //style_next_prev_pagination
+        protected function style_next_prev_pagination(){
+            $this->start_controls_section(
+                    'slider-next-prev-pagination',
+                    [
+                        'label'     => esc_html__( 'Pagination Next Prev', 'ultraaddons' ),
+                    ]
+                );
+            
+            $this->end_controls_section();
+        }
+        
+        //sstyle for bullet
+        protected function style_bullet_pagination(){
+            $this->start_controls_section(
+                    'slider-bullet-pagination',
+                    [
+                        'label'     => esc_html__( 'Pagination Next Prev', 'ultraaddons' ),
+                    ]
+                );
+            
+            $this->end_controls_section();
+        }
+        
 }
