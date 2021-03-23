@@ -648,7 +648,7 @@ class Slider extends Base{
 				'label' => __( 'Opacity', 'elementor' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
-					'size' => .5,
+					'size' => 1,
 				],
 				'range' => [
 					'px' => [
@@ -834,30 +834,92 @@ class Slider extends Base{
                 );
 
                 
-//                $animation_options = [
-//                    '' => __( 'None', 'ultraaddons' ),
-//                    'animate__bounce' => __( 'animate__bounce', 'ultraaddons' ),
-//                    'animate__flash' => __( 'animate__flash', 'ultraaddons' ),
-//                    'animate__pulse' => __( 'animate__pulse', 'ultraaddons' ),
-//                    'animate__rubberBand' => __( 'animate__rubberBand', 'ultraaddons' ),
-//                    'animate__shakeX' => __( 'animate__shakeX', 'ultraaddons' ),
-//                    'animate__shakeY' => __( 'animate__shakeY', 'ultraaddons' ),
-//                    'animate__lightSpeedInRight' => __( 'animate__lightSpeedInRight', 'ultraaddons' ),
-//                ];
-//                
-//                $this->add_control(
-//                        'animateIn',
-//                        [
-//                                'label' => __( 'External In Animation', 'ultraaddons' ),
-////                                'description' => esc_html__( 'Not mandatory, But you can apply. Generate from Animate.style', 'ultraaddons' ),
-//                                'type' => Controls_Manager::SELECT,
-//                                'options' => $animation_options,
-//                                'default' => '',
-//                                'frontend_available' => true,
-////                                'style_transfer' => true,
-//                        ]
-//                );
-//                
+                $animation_options = [
+                    '' => __( 'None', 'ultraaddons' ),
+                    //Attention Seeker
+                    'animate__bounce' => __( 'bounce', 'ultraaddons' ),
+                    'animate__flash' => __( 'flash', 'ultraaddons' ),
+                    'animate__pulse' => __( 'pulse', 'ultraaddons' ),
+                    'animate__rubberBand' => __( 'rubberBand', 'ultraaddons' ),
+                    'animate__shakeX' => __( 'shakeX', 'ultraaddons' ),
+                    'animate__shakeY' => __( 'shakeY', 'ultraaddons' ),
+                    'animate__headShake' => __( 'headShake', 'ultraaddons' ),
+                    'animate__swing' => __( 'swing', 'ultraaddons' ),
+                    'animate__tada' => __( 'tada', 'ultraaddons' ),
+                    'animate__wobble' => __( 'wobble', 'ultraaddons' ),
+                    'animate__jello' => __( 'jello', 'ultraaddons' ),
+                    'animate__heartBeat' => __( 'heartBeat', 'ultraaddons' ),
+                    //Back Entrances
+                    'animate__backInDown' => __( 'backInDown', 'ultraaddons' ),
+                    'animate__backInLeft' => __( 'backInLeft', 'ultraaddons' ),
+                    'animate__backInRight' => __( 'backInRight', 'ultraaddons' ),
+                    'animate__backInUp' => __( 'backInUp', 'ultraaddons' ),
+                    //Back Exist
+                    'animate__backOutDown' => __( 'backOutDown', 'ultraaddons' ),
+                    'animate__bounceInDown' => __( 'bounceInDown', 'ultraaddons' ),
+                    'animate__bounceInLeft' => __( 'bounceInLeft', 'ultraaddons' ),
+                    'animate__bounceInRight' => __( 'bounceInRight', 'ultraaddons' ),
+                    'animate__bounceInUp' => __( 'bounceInUp', 'ultraaddons' ),
+                    //Bouncing Entrances
+                    'animate__bounceIn' => __( 'bounceIn', 'ultraaddons' ),
+                    'animate__bounceInDown' => __( 'bounceInDown', 'ultraaddons' ),
+                    'animate__bounceInLeft' => __( 'bounceInLeft', 'ultraaddons' ),
+                    'animate__bounceInRight' => __( 'bounceInRight', 'ultraaddons' ),
+                    'animate__bounceInUp' => __( 'bounceInUp', 'ultraaddons' ),
+                    //Bouncing Exist
+                    'animate__bounceOut' => __( 'bounceOut', 'ultraaddons' ),
+                    'animate__bounceOutDown' => __( 'bounceOutDown', 'ultraaddons' ),
+                    'animate__bounceOutLeft' => __( 'bounceOutLeft', 'ultraaddons' ),
+                    'animate__bounceOutRight' => __( 'bounceOutRight', 'ultraaddons' ),
+                    'animate__bounceOutUp' => __( 'bounceOutUp', 'ultraaddons' ),
+                    //Fading Entrances
+                    'animate__fadeIn' => __( 'fadeIn', 'ultraaddons' ),
+                    'animate__fadeInDown' => __( 'fadeInDown', 'ultraaddons' ),
+                    'animate__fadeInDownBig' => __( 'fadeInDownBig', 'ultraaddons' ),
+                    'animate__fadeInLeft' => __( 'fadeInLeft', 'ultraaddons' ),
+                    'animate__fadeInLeftBig' => __( 'fadeInLeftBig', 'ultraaddons' ),
+                    'animate__fadeInRight' => __( 'fadeInRight', 'ultraaddons' ),
+                    'animate__fadeInRightBig' => __( 'fadeInRightBig', 'ultraaddons' ),
+                    'animate__fadeInUp' => __( 'fadeInUp', 'ultraaddons' ),
+                    'animate__fadeInUpBig' => __( 'fadeInUpBig', 'ultraaddons' ),
+                    'animate__fadeInTopLeft' => __( 'fadeInTopLeft', 'ultraaddons' ),
+                    'animate__fadeInTopRight' => __( 'fadeInTopRight', 'ultraaddons' ),
+                    'animate__fadeInBottomLeft' => __( 'fadeInBottomLeft', 'ultraaddons' ),
+                    'animate__fadeInBottomRight' => __( 'fadeInBottomRight', 'ultraaddons' ),
+                    //Fading Exist
+                    'animate__fadeOut' => __( 'fadeOut', 'ultraaddons' ),
+                    'animate__fadeOutDown' => __( 'fadeOutDown', 'ultraaddons' ),
+                    'animate__fadeOutDownBig' => __( 'fadeOutDownBig', 'ultraaddons' ),
+                    'animate__fadeOutLeft' => __( 'fadeOutLeft', 'ultraaddons' ),
+                    'animate__fadeOutLeftBig' => __( 'fadeOutLeftBig', 'ultraaddons' ),
+                    'animate__fadeOutRight' => __( 'fadeOutRight', 'ultraaddons' ),
+                    'animate__fadeOutRightBig' => __( 'fadeOutRightBig', 'ultraaddons' ),
+                    'animate__fadeOutUp' => __( 'fadeOutUp', 'ultraaddons' ),
+                    'animate__fadeOutUpBig' => __( 'fadeOutUpBig', 'ultraaddons' ),
+                    'animate__fadeOutTopLeft' => __( 'fadeOutTopLeft', 'ultraaddons' ),
+                    'animate__fadeOutTopRight' => __( 'fadeOutTopRight', 'ultraaddons' ),
+                    'animate__fadeOutBottomLeft' => __( 'fadeOutBottomLeft', 'ultraaddons' ),
+                    'animate__fadeOutBottomRight' => __( 'fadeOutBottomRight', 'ultraaddons' ),
+                    
+                    //Flippers
+                    'sssssssss' => __( 'sssssssss', 'ultraaddons' ),
+                    'sssssssss' => __( 'sssssssss', 'ultraaddons' ),
+
+                ];
+                
+                $this->add_control(
+                        'external_animation',
+                        [
+                                'label' => __( 'External Animation', 'ultraaddons' ),
+//                                'description' => esc_html__( 'Not mandatory, But you can apply. Generate from Animate.style', 'ultraaddons' ),
+                                'type' => Controls_Manager::SELECT,
+                                'options' => $animation_options,
+                                'default' => '',
+                                'frontend_available' => true,
+//                                'style_transfer' => true,
+                        ]
+                );
+                
                 $this->end_controls_section();
         }
         

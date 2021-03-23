@@ -55,6 +55,7 @@
                     },
 
                     getReadySettings: function() {
+                            var external_animation = this.getElementSettings('external_animation');
                             var settings = {
                                     autoplay: !! this.getElementSettings('autoplay'),
                                     autoplayHoverPause: !! this.getElementSettings('pause_on_hover'),
@@ -63,8 +64,9 @@
                                     autoplayTimeout: this.getElementSettings('autoplayTimeout'),
                                     nav: false,
                                     margin: 20,
-                                    animateOut: '',//animate__lightSpeedInRight //animate__flipOutY
-                                    animateIn: '',//animate__lightSpeedInRight//this.getElementSettings('animateIn'),//animate__lightSpeedInRight
+                                    //#f7fcff
+                                    animateOut: external_animation,//animate__lightSpeedInRight //animate__flipOutY
+                                    animateIn: external_animation,//animate__lightSpeedInRight//this.getElementSettings('animateIn'),//animate__lightSpeedInRight
                                     
                             };
 
