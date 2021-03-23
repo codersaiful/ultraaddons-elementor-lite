@@ -71,9 +71,9 @@ class Slider extends Base{
             $this->style_background_control();
             
             //Control Number Pagination
-            $this->style_number_pagination();
-            $this->style_next_prev_pagination();
-            $this->style_bullet_pagination();
+            //$this->style_number_pagination();
+            //$this->style_next_prev_pagination();
+            //$this->style_bullet_pagination();
 
         }
     
@@ -883,6 +883,7 @@ class Slider extends Base{
                     'slider-number-pagination',
                     [
                         'label'     => esc_html__( 'Pagination Number', 'ultraaddons' ),
+                        'tab' => Controls_Manager::TAB_STYLE,
                     ]
                 );
             
@@ -895,6 +896,7 @@ class Slider extends Base{
                     'slider-next-prev-pagination',
                     [
                         'label'     => esc_html__( 'Pagination Next Prev', 'ultraaddons' ),
+                        'tab' => Controls_Manager::TAB_STYLE,
                     ]
                 );
             
@@ -907,6 +909,7 @@ class Slider extends Base{
                     'slider-bullet-pagination',
                     [
                         'label'     => esc_html__( 'Pagination Next Prev', 'ultraaddons' ),
+                        'tab' => Controls_Manager::TAB_STYLE,
                     ]
                 );
             
