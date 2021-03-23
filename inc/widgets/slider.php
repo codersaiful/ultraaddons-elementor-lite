@@ -602,6 +602,41 @@ class Slider extends Base{
                 
                 $this->end_controls_tabs();
                 
+                $this->add_control(
+			'pagination_options',
+			[
+				'label' => __( 'Pagination', 'ultraaddons' ),
+				'type' => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+                
+                $this->add_control(
+                        'navigation_icon_color',
+                        [
+                                'label' => __( 'Navigation Icon Color', 'medilac' ),
+                                'type' => Controls_Manager::COLOR,
+        //                        'default' => '#0FC392',
+                                'selectors' => [
+                                        '{{WRAPPER}} .ua-slider-wrapper .owl-dots button.owl-dot' => 'background-color: {{VALUE}}',
+                                        '{{WRAPPER}} .ua-slider-wrapper .owl-dots button.owl-dot.active' => 'border-color: {{VALUE}}; background-color: #FFF',
+                                        '{{WRAPPER}} .ua-slider-wrapper button.owl-prev' => 'color: {{VALUE}}',
+                                        '{{WRAPPER}} .ua-slider-wrapper button.owl-next' => 'color: {{VALUE}}'
+                                ],
+                        ]
+                );
+
+                $this->add_control(
+                        'navigation_bg_color',
+                        [
+                                'label' => __( 'Navigation BG Color', 'medilac' ),
+                                'type' => Controls_Manager::COLOR,
+                                'selectors' => [
+                                        '{{WRAPPER}} .ua-slider-wrapper .owl-nav button.owl-next' => 'background-color: {{VALUE}};border-color: {{VALUE}};',
+                                ],
+                        ]
+                );
+                
                 $this->end_controls_section();
                 
                 
