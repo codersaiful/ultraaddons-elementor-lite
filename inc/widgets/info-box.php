@@ -238,7 +238,7 @@ class Info_Box extends Base {
                             'global' => [
                                     'default' => Global_Colors::COLOR_PRIMARY,
                             ],
-                            'default' => '#0FC392',
+                            'default' => '#fff',
                             'selectors' => [
                                     '{{WRAPPER}}.elementor-view-stacked .elementor-icon' => 'fill: {{VALUE}}; color: {{VALUE}};',
                                     '{{WRAPPER}}.elementor-view-framed .elementor-icon, {{WRAPPER}}.elementor-view-default .elementor-icon' => 'fill: {{VALUE}}; color: {{VALUE}}; border-color: {{VALUE}};',
@@ -251,7 +251,7 @@ class Info_Box extends Base {
                     [
                             'label' => __( 'Background Color', 'ultraaddons' ),
                             'type' => Controls_Manager::COLOR,
-                            'default' => '#fff',
+                            'default' => '#0FC392',
                             'condition' => [
                                     'view!' => 'default',
                             ],
@@ -836,6 +836,7 @@ class Info_Box extends Base {
     public function get_image_icon(){
         $settings   = $this->get_settings_for_display();
         $this->add_render_attribute( 'icon', 'class', [ 'elementor-icon' ] );
+        $this->add_render_attribute( 'icon_wrapper', 'class', 'ua-info-box-icon' );
 
         $icon_tag = 'span';
 
