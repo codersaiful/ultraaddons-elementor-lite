@@ -26,8 +26,8 @@
     font-weight: 600;
     color: #21272c;
     display: inline-block;
-    line-height: 1.6;
-    padding-left: 23px;
+    line-height: 1;
+    padding-left: 25px;
     margin: 0;
 }
 
@@ -75,25 +75,14 @@
     font-size: 18px;
     margin: 0 5px 0 0;
     position: absolute;
-    top: 6px;
+    top: 3px;
     left:0;
     font-size: 16px;
     color:#0FC393;
 }
 
 div.ua-list-temp-default .ua-list-items li i {
-    padding: 0 1px;
     border-radius: 2px;
-}
-.ua-list-items li h4 {
-    font-size: 18px;
-    font-family: "Roboto",sans-serif;
-    font-weight: 600;
-    color: #21272c;
-    display: inline-block;
-    line-height: 1.6;
-    padding-left: 25px;
-    margin: 0;
 }
 
 .ua-list-items li span{

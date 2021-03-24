@@ -41,7 +41,7 @@
     color: var(--medilac-deep-dark);
     font-weight: 800;
     line-height: 1.217;
-    margin: 0 0 25px;
+    margin: 0;
 }
 
 .advance-heading-wrapper span.sub-heading-wrapper:before,
