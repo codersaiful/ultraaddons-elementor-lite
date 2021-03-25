@@ -195,6 +195,7 @@ class Slider extends Base{
                                         'default' => __( 'Default', 'ultraaddons' ),
                                     ],
                                     'default' => 'default',
+                                    //'prefix_class' => 'slider-type-'
                             ]
                     );
                 
@@ -449,18 +450,39 @@ class Slider extends Base{
                                 'type' => Controls_Manager::DIMENSIONS,
                                 'size_units' => [ 'px', '%' ],
                                 'default'   => [
-                                        'left'=> 0,
-                                        'right'=> 0,
+                                        'left'=> 50,
+                                        'right'=> 50,
                                         'top' => 180,
                                         'bottom' => 180,
                                         'unit' => 'px',
                                 ],
                                 'selectors' => [
-                                        '{{WRAPPER}} .ua-slide-content-wrap' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                        '{{WRAPPER}} .ua-slider-wrapper .owl-stage-outer' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                                 ],
                                 
                         ]
                 );
+                $this->add_responsive_control(
+                        'slider_item_margin',
+                        [
+                                'label' => __( 'Margin', 'ultraaddons' ),
+                                'type' => Controls_Manager::DIMENSIONS,
+                                'size_units' => [ 'px', '%' ],
+//                                'default'   => [
+//                                        'left'=> 50,
+//                                        'right'=> 50,
+//                                        'top' => 180,
+//                                        'bottom' => 180,
+//                                        'unit' => 'px',
+//                                ],
+                                'selectors' => [
+                                        '{{WRAPPER}} .ua-slider-wrapper .owl-stage-outer' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                ],
+                                
+                        ]
+                );
+                
+                
                 $this->add_control(
 			'title_options',
 			[
