@@ -442,6 +442,25 @@ class Slider extends Base{
                         ]
                 );
                 
+                $this->add_responsive_control(
+                        'slider_item_padding',
+                        [
+                                'label' => __( 'Padding', 'ultraaddons' ),
+                                'type' => Controls_Manager::DIMENSIONS,
+                                'size_units' => [ 'px', '%' ],
+                                'default'   => [
+                                        'left'=> 0,
+                                        'right'=> 0,
+                                        'top' => 180,
+                                        'bottom' => 180,
+                                        'unit' => 'px',
+                                ],
+                                'selectors' => [
+                                        '{{WRAPPER}} .ua-slide-content-wrap' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                ],
+                                
+                        ]
+                );
                 $this->add_control(
 			'title_options',
 			[
@@ -618,8 +637,8 @@ class Slider extends Base{
                                 'type' => Controls_Manager::COLOR,
         //                        'default' => '#0FC392',
                                 'selectors' => [
-                                        '{{WRAPPER}} .ua-slider-wrapper .owl-dots button.owl-dot' => 'background-color: {{VALUE}}',
-                                        '{{WRAPPER}} .ua-slider-wrapper .owl-dots button.owl-dot.active' => 'border-color: {{VALUE}}; background-color: #FFF',
+//                                        '{{WRAPPER}} .ua-slider-wrapper .owl-dots button.owl-dot' => 'background-color: {{VALUE}}',
+//                                        '{{WRAPPER}} .ua-slider-wrapper .owl-dots button.owl-dot.active' => 'border-color: {{VALUE}}; background-color: #FFF',
                                         '{{WRAPPER}} .ua-slider-wrapper button.owl-prev' => 'color: {{VALUE}}',
                                         '{{WRAPPER}} .ua-slider-wrapper button.owl-next' => 'color: {{VALUE}}'
                                 ],
@@ -632,8 +651,40 @@ class Slider extends Base{
                                 'label' => __( 'Navigation BG Color', 'medilac' ),
                                 'type' => Controls_Manager::COLOR,
                                 'selectors' => [
+                                        '{{WRAPPER}}.navigation-arrow-position-center .ua-slider-wrapper .owl-nav button' => 'background-color: {{VALUE}};border-color: {{VALUE}};',
                                         '{{WRAPPER}} .ua-slider-wrapper .owl-nav button.owl-next' => 'background-color: {{VALUE}};border-color: {{VALUE}};',
                                 ],
+                        ]
+                );
+                
+                
+                $this->add_control(
+                        'dot_icon_color',
+                        [
+                                'label' => __( 'Dots Icon Color', 'medilac' ),
+                                'type' => Controls_Manager::COLOR,
+                                'default' => '#717171',
+                                'selectors' => [
+                                        '{{WRAPPER}} .ua-slider-main-wrapper .owl-dots button.owl-dot' => 'background-color: {{VALUE}}',
+//                                        '{{WRAPPER}} .ua-slider-wrapper .owl-dots button.owl-dot.active' => 'border-color: {{VALUE}}; background-color: #FFF',
+                                ],
+                        ]
+                );
+
+                $this->add_control(
+                        'dots_bg_color',
+                        [
+                                'label' => __( 'Active Dots Color', 'medilac' ),
+                                'type' => Controls_Manager::COLOR,
+                                'selectors' => [
+                                        '{{WRAPPER}} .ua-slider-main-wrapper .owl-dots button.owl-dot.active,
+{{WRAPPER}} .ua-slider-main-wrapper .owl-dots button.owl-dot:active,
+{{WRAPPER}} .ua-slider-main-wrapper .owl-dots button.owl-dot:focus,
+{{WRAPPER}} .ua-slider-main-wrapper .owl-dots button.owl-dot:hover' => 'background-color: {{VALUE}};',
+                                        '{{WRAPPER}} .ua-slider-main-wrapper .owl-dots button.owl-dot:hover:before,
+{{WRAPPER}} .ua-slider-main-wrapper .owl-dots button.owl-dot.active:before' => 'border-color: {{VALUE}};',
+                                ],
+                                'default' => '#0FC392',
                         ]
                 );
                 
