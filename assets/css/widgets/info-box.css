@@ -13,10 +13,8 @@
 }
 .ua-info-box-icon {
     display: inline-flex;
-/*    width: 62px;
-    height: 62px;*/
     text-align: center;
-    margin: 0 0 25px;
+    margin: 0 0 40px;
     justify-content: center;
     flex-wrap: wrap;
     align-items: center;
@@ -25,6 +23,7 @@
     font-weight: 700;
     line-height: 1.6;
     font-size: 24px;
+    margin-bottom: 30px;
 }
 
 .ua-info-box-content .elementor-icon-box-description {
@@ -33,11 +32,10 @@
     font-family: var(--ultraaddons-font-primary);
     color: #5C6B79;
     line-height: 1.6;
+    margin-bottom: 40px;
 }
-
 .ua-element-info-box .elementor-widget-container {
-    padding: 55px;
-    /* border: 1px solid #BACCD7; */
+    padding: 50px;
     background: white;
 }
 .ua-element-info-box .elementor-widget-container {
