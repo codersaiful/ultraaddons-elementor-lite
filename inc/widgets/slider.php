@@ -88,9 +88,12 @@ class Slider extends Base{
         protected function render() {
 
                 $settings = $this->get_settings_for_display();
-        
+        //
                 $this->add_render_attribute( 'wrapper', [
-                        'class' => 'ua-slider-wrapper',
+                        'class' => [
+                            'ua-slider-wrapper',
+                            'nav-type-' . $settings['navigation_type'],
+                        ],
                 ] );
 
 
@@ -446,16 +449,16 @@ class Slider extends Base{
                 $this->add_responsive_control(
                         'slider_item_padding',
                         [
-                                'label' => __( 'Padding', 'ultraaddons' ),
+                                'label' => __( 'Slider Area Padding', 'ultraaddons' ),
                                 'type' => Controls_Manager::DIMENSIONS,
                                 'size_units' => [ 'px', '%' ],
-                                'default'   => [
-                                        'left'=> 50,
-                                        'right'=> 50,
-                                        'top' => 180,
-                                        'bottom' => 180,
-                                        'unit' => 'px',
-                                ],
+//                                'default'   => [
+//                                        'left'=> 50,
+//                                        'right'=> 50,
+//                                        'top' => 180,
+//                                        'bottom' => 180,
+//                                        'unit' => 'px',
+//                                ],
                                 'selectors' => [
                                         '{{WRAPPER}} .ua-slider-wrapper .owl-stage-outer' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                                 ],
@@ -465,7 +468,7 @@ class Slider extends Base{
                 $this->add_responsive_control(
                         'slider_item_margin',
                         [
-                                'label' => __( 'Margin', 'ultraaddons' ),
+                                'label' => __( 'Slider Area Margin', 'ultraaddons' ),
                                 'type' => Controls_Manager::DIMENSIONS,
                                 'size_units' => [ 'px', '%' ],
 //                                'default'   => [
@@ -687,7 +690,7 @@ class Slider extends Base{
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#717171',
                                 'selectors' => [
-                                        '{{WRAPPER}} .ua-slider-main-wrapper .owl-dots button.owl-dot' => 'background-color: {{VALUE}}',
+                                        '{{WRAPPER}} .ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot' => 'background-color: {{VALUE}}',
 //                                        '{{WRAPPER}} .ua-slider-wrapper .owl-dots button.owl-dot.active' => 'border-color: {{VALUE}}; background-color: #FFF',
                                 ],
                         ]
@@ -699,12 +702,12 @@ class Slider extends Base{
                                 'label' => __( 'Active Dots Color', 'medilac' ),
                                 'type' => Controls_Manager::COLOR,
                                 'selectors' => [
-                                        '{{WRAPPER}} .ua-slider-main-wrapper .owl-dots button.owl-dot.active,
-{{WRAPPER}} .ua-slider-main-wrapper .owl-dots button.owl-dot:active,
-{{WRAPPER}} .ua-slider-main-wrapper .owl-dots button.owl-dot:focus,
-{{WRAPPER}} .ua-slider-main-wrapper .owl-dots button.owl-dot:hover' => 'background-color: {{VALUE}};',
-                                        '{{WRAPPER}} .ua-slider-main-wrapper .owl-dots button.owl-dot:hover:before,
-{{WRAPPER}} .ua-slider-main-wrapper .owl-dots button.owl-dot.active:before' => 'border-color: {{VALUE}};',
+                                        '{{WRAPPER}} .ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot.active,
+{{WRAPPER}} .ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot:active,
+{{WRAPPER}} .ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot:focus,
+{{WRAPPER}} .ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot:hover' => 'background-color: {{VALUE}};',
+                                        '{{WRAPPER}} .ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot:hover:before,
+{{WRAPPER}} .ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot.active:before' => 'border-color: {{VALUE}};',
                                 ],
                                 'default' => '#0FC392',
                         ]

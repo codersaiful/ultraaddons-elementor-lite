@@ -217,7 +217,7 @@
      */
     function add_number_inside_bullets(){
         var dots = document.querySelectorAll(".ua-number-slider-wrapper .owl-dots .owl-dot");
-        
+        //$('.ua-number-slider-wrapper .owl-dots').addClass('nav-type-number');
         let i=1;
         dots.forEach((elem)=>{
             var text = i;

@@ -214,7 +214,7 @@
 
 .ua-slider-main-wrapper button.owl-dot {}
 
-.ua-slider-main-wrapper .owl-dots button.owl-dot {
+.ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot {
     background: #717171;
     height: 10px;
     width: 10px;
@@ -224,15 +224,15 @@
     border-width: 0;
     transition: .3s all;
 }
-.ua-slider-main-wrapper .owl-dots button.owl-dot.active,
-.ua-slider-main-wrapper .owl-dots button.owl-dot:active,
-.ua-slider-main-wrapper .owl-dots button.owl-dot:focus,
-.ua-slider-main-wrapper .owl-dots button.owl-dot:hover{
+.ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot.active,
+.ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot:active,
+.ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot:focus,
+.ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot:hover{
     border-width: 0;
     outline-width: 0;
     background: red;
 }
-.ua-slider-main-wrapper .owl-dots button.owl-dot:before {
+.ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot:before {
     content: "";
     background: transparent;
     height: 20px;
@@ -242,11 +242,11 @@
     left: -5px;
     /*transition: .3s all;*/
 }
-.ua-slider-main-wrapper .owl-dots button.owl-dot:hover:before,
-.ua-slider-main-wrapper .owl-dots button.owl-dot.active:before {
+.ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot:hover:before,
+.ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot.active:before {
     border: 2px solid red;
 }
-.ua-slider-main-wrapper .owl-dots button.owl-dot.active{
+.ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot.active{
     
 }
 .ua-slider-main-wrapper button.owl-dot {}
