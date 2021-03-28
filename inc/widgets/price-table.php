@@ -1748,9 +1748,8 @@ class Price_Table extends Base {
                     <?php if( $this->ua_icon_select ) { ?>
                     <div class="ua-price-table__header_icon">
                             <?php
-
                             if( 'image' == $this->ua_icon_select ){ ?>
-                            <img class="ua-pricing-table-image" src="<?php echo esc_url( $ua_image_upload );?>" alt="<?php esc_attr__( 'Pricing Image', 'ultraaddons' ); ?>">
+                            <img class="ua-pricing-table-image" src="<?php echo esc_url( $this->ua_image_upload );?>" alt="<?php esc_attr__( 'Pricing Image', 'ultraaddons' ); ?>">
                             <?php }elseif( $this->ua_icon_choose ){ ?>
                                 <i class="ua-pricing-table-icon <?php echo esc_attr( $this->ua_icon_choose ); ?>"></i>        
                             <?php }elseif( $this->svg ){ ?>
@@ -1785,7 +1784,7 @@ class Price_Table extends Base {
                 // header icon
                 $this->ua_icon_select     = isset( $settings['ua_icon_select'] ) ? $settings['ua_icon_select'] : 'icon';
                 $this->ua_icon_choose     = !empty( $settings['ua_icon_choose']['value'] ) && is_string( $settings['ua_icon_choose']['value'] ) ? $settings['ua_icon_choose']['value'] : false;
-                $ua_image_upload    = isset( $settings['ua_image_upload']['url'] ) ? $settings['ua_image_upload']['url'] : '';
+                $this->ua_image_upload    = isset( $settings['ua_image_upload']['url'] ) ? $settings['ua_image_upload']['url'] : '';
                 $this->svg                = !empty( $settings['ua_icon_choose']['value']['url'] ) && is_string( $settings['ua_icon_choose']['value']['url'] ) ? $settings['ua_icon_choose']['value']['url'] : false;
                 $price_top = ! empty( $settings['price_top'] ) && $settings['price_top'] == 'yes'? true : false;
                 
