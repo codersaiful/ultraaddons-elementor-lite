@@ -70,8 +70,9 @@ class Advance_Heading extends Base{
         $this->add_inline_editing_attributes( 'avd_heading', 'none' );
         $this->add_render_attribute( 'avd_heading', 'class', 'heading-tag' );
         $this->add_render_attribute( 'avd_sub_heading', 'class', 'sub-heading-wrapper' );
+        $this->add_render_attribute( 'avd_sub_heading_spb', 'class', 'spb' );
 
-        $this->add_inline_editing_attributes( 'avd_sub_heading', 'none' );
+        $this->add_inline_editing_attributes( 'avd_sub_heading_spb', 'none' );
         
         if( ! isset( $settings['avd_heading'] ) || ! isset( $settings['avd_sub_heading'] ) ){
             return;
@@ -82,7 +83,7 @@ class Advance_Heading extends Base{
         <div class="advance-heading-wrapper <?php echo esc_attr( $alignment ); ?>" >
             <?php if( ! empty( $settings['avd_sub_heading'] ) ){ ?>
             <span <?php echo $this->get_render_attribute_string( 'avd_sub_heading' ); ?>>
-                <span class="spb"><?php echo wp_kses_post( $settings['avd_sub_heading'] ); ?></span>
+                <span <?php echo $this->get_render_attribute_string( 'avd_sub_heading_spb' ); ?>><?php echo wp_kses_post( $settings['avd_sub_heading'] ); ?></span>
             </span>
             <?php
             }
