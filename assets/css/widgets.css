@@ -142,7 +142,7 @@ div.ua-element .elementor-widget-container .btn-wrapper a.ua-button {
     background-color: transparent;
 }
 
-.ua-element .btn-wrapper .ua-button:hover,
+.ua-element:hover .btn-wrapper .ua-button,
 .ua-element .btn-wrapper .ua-button:focus,
 .ua-element .btn-wrapper .ua-button:active
 {
