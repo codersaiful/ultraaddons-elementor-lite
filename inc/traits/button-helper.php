@@ -23,7 +23,7 @@ trait Button_Helper{
     public $btn_border_hover_color = '#0fc392';
     
     public $btn_align = 'left';
-
+    
 
     public function button_render() {
             $settings = $this->get_settings_for_display();
@@ -263,7 +263,7 @@ trait Button_Helper{
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => [ 'px', '%' ],
                             'selectors' => [
-                                    '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button, {{WRAPPER}} .btn-wrapper .ua-button.elementor-button:hover, {{WRAPPER}} .btn-wrapper .ua-button.elementor-button:focus' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                    '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                             ],
                     ]
             );
@@ -315,7 +315,7 @@ trait Button_Helper{
 			[
 				'name' => 'btn_background_hover_color',
 				'types' => [ 'classic', 'gradient' ],
-				'selector' => '{{WRAPPER}} .btn-wrapper .ua-button:hover',
+				'selector' => '{{WRAPPER}} .btn-wrapper .ua-button:hover,{{WRAPPER}} .btn-wrapper .ua-button:focus,{{WRAPPER}} .btn-wrapper .ua-button:active',
                                 'separator' => 'before',
 				'fields_options' => [
 					'background' => [
@@ -393,6 +393,7 @@ trait Button_Helper{
                             'selectors' => [
                                     '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                                     '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:focus' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                    '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:active' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                             ],
                     ]
             );
