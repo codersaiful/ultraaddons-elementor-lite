@@ -130,19 +130,23 @@ span.currency-inner-wrapper span.ua-price-table__currency_sep {
     width: 200px;
 }
 .ua-angle-ribbon-yes.ua-ribbon-top.ua-ribbon-left .ua-price-table__ribbon{
-    top: -56px;
-    left: 24px;
+    top: -54px;
+    left: 27px;
+    transform: rotateZ(225deg);
 }
 .ua-angle-ribbon-yes.ua-ribbon-bottom.ua-ribbon-left .ua-price-table__ribbon{
-    bottom: 0px;
-    left: 0px;
+    bottom: -51px;
+    left: 28px;
+    transform: rotateZ(-45deg);
 }
 .ua-angle-ribbon-yes.ua-ribbon-top.ua-ribbon-right .ua-price-table__ribbon{
-    top: 0px;
-    right: 0px;
+    top: -48px;
+    right: 25px;
+    transform: rotateZ(320deg);
 }
 .ua-angle-ribbon-yes.ua-ribbon-bottom.ua-ribbon-right .ua-price-table__ribbon{
-    bottom: 0px;
-    right: 0px;
+    bottom: -49px;
+    right: 26px;
+    transform: rotateZ(225deg);
 }
 
