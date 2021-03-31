@@ -1582,7 +1582,7 @@ class Price_Table extends Base {
                                         'unit' => 'px',
                                 ],
 				'selectors' => [
-					'{{WRAPPER}} .ua-price-table__features-list li' => 'margin: {{SIZE}}{{UNIT}} 0;',
+					'{{WRAPPER}} .ua-price-table__features-list li' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
