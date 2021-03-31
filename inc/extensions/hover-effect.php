@@ -27,7 +27,7 @@ class Hover_Effect {
 
 		
 		$element->start_controls_section(
-			'_section_hover_animation',
+			'_ua_section_hover_animation',
 			[
 				'label' => __( 'Hover Effect', 'ultraaddons' ) . ultraaddons_icon_markup(),
 				'tab'   => $tabs,
@@ -56,4 +56,5 @@ class Hover_Effect {
 	}
 }
 
-Hover_Effect::init();
+//No need to call, we have called automatically to initit method from extenstion manager file.
+//Hover_Effect::init();

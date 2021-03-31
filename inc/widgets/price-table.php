@@ -34,6 +34,34 @@ class Price_Table extends Base {
         $this->btn_align = 'center';
         
         
+
+		$this->content_header_controls();
+		$this->content_pricing_controls();
+		$this->content_feature_controls();
+		$this->content_footer_controls();
+		
+                /**
+                 * All Style Control has transferred to
+                 * protected method
+                 * 
+                 * @since 1.0.4.1
+                 */
+		$this->style_general_controls();
+		$this->style_header_controls();
+		$this->style_pricing_controls();
+		$this->style_feature_controls();
+		$this->style_footer_controls();
+            
+                /**
+                 * Register Controls of Button
+                 * will come from our Trait Button Helper
+                 * 
+                 * @since 1.0.3.2
+                 * @date 7.3.2021
+                 */
+                $this->button_register_controls();
+    }
+    protected function content_header_controls(){
                 $this->start_controls_section(
 			'section_header',
 			[
@@ -114,10 +142,11 @@ class Price_Table extends Base {
                                 ]
                         ]
                 );
-
+                
 		$this->end_controls_section();
-
-		$this->start_controls_section(
+    }
+    protected function content_pricing_controls(){
+                $this->start_controls_section(
 			'section_pricing',
 			[
 				'label' => __( 'Pricing', 'ultraaddons' ),
@@ -238,9 +267,20 @@ class Price_Table extends Base {
 			]
 		);
 
+                $this->add_control(
+                    'price_top',
+                    [
+                            'label' => __( 'Price in Top', 'ultraaddons' ),
+                            'type' => Controls_Manager::SWITCHER,
+                            'label_on' => __( 'On', 'ultraaddons' ),
+                            'label_off' => __( 'Off', 'ultraaddons' ),
+                            'return_value' => 'yes',    
+                    ]
+                );
 		$this->end_controls_section();
-
-		$this->start_controls_section(
+    }
+    protected function content_feature_controls(){
+                $this->start_controls_section(
 			'section_features',
 			[
 				'label' => __( 'Features', 'ultraaddons' ),
@@ -309,8 +349,9 @@ class Price_Table extends Base {
 		);
 
 		$this->end_controls_section();
-
-		$this->start_controls_section(
+    }
+    protected function content_footer_controls(){
+                $this->start_controls_section(
 			'section_footer',
 			[
 				'label' => __( 'Footer', 'ultraaddons' ),
@@ -377,7 +418,7 @@ class Price_Table extends Base {
 				'condition' => [
 					'show_ribbon' => 'yes',
 				],
-                                'prefix_class' => 'ultraaddons-featured-item ultraaddons-featured-item-ribbon-',
+                                'prefix_class' => 'ultraaddons-featured-item ua-ribbon-',
                                 
                                 'default' => 'left',
 			]
@@ -400,14 +441,29 @@ class Price_Table extends Base {
 				'condition' => [
 					'show_ribbon' => 'yes',
 				],
-                                'prefix_class' => 'ultraaddons-featured-item ultraaddons-featured-item-ribbon-',
+                                'prefix_class' => 'ultraaddons-featured-item ua-ribbon-',
                                 
                                 'default' => 'top',
 			]
 		);
+                
+                $this->add_control(
+                        'ribbon_angle_45',
+                        [
+                                'label' => __( 'Angle Ribbon', 'ultraaddons' ),
+                                'type' => Controls_Manager::SWITCHER,
+                                'label_on' => __( 'On', 'ultraaddons' ),
+                                'label_off' => __( 'Off', 'ultraaddons' ),
+                                'return_value' => 'yes',
+                                'prefix_class'  => 'ua-angle-ribbon-'
 
+                        ]
+                );
+                
 		$this->end_controls_section();
                 
+    }
+    protected function style_general_controls(){
                 $this->start_controls_section(
 			'section_header_general_style',
 			[
@@ -460,58 +516,6 @@ class Price_Table extends Base {
                         ]
                 );
                 
-                $this->add_responsive_control(
-			'widget_padding',
-			[
-				'label' => __( 'Padding', 'ultraaddons' ),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%', 'em' ],
-                                'default' => [
-                                        'top' => 50,
-                                        'left' => 30,
-                                        'right' => 30,
-                                        'bottom' => 50,
-                                        'unit' => 'px',
-                                ],
-				'selectors' => [
-					'{{WRAPPER}} .elementor-widget-container' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-
-                $this->add_group_control(
-			Group_Control_Background::get_type(),
-			[
-				'name' => 'background',
-				'label' => __( 'Background', 'ultraaddons' ),
-				'types' => [ 'classic', 'gradient' ],
-				'selector' => '{{WRAPPER}} .elementor-widget-container',
-			]
-		);
-                
-                $this->add_responsive_control(
-			'widget_border_color',
-			[
-				'label' => __( 'Border Color', 'ultraaddons' ),
-				'type' => Controls_Manager::COLOR,
-                                'default' => '#E2EBF1',
-				'selectors' => [
-					'{{WRAPPER}} .elementor-widget-container' => 'border-color: {{VALUE}};',
-				],
-			]
-		);
-                $this->add_responsive_control(
-			'widget_border_hover_color',
-			[
-				'label' => __( 'Border Hover Color', 'ultraaddons' ),
-				'type' => Controls_Manager::COLOR,
-                                'default' => '#0FC393',
-				'selectors' => [
-					'{{WRAPPER}} .elementor-widget-container:hover' => 'border-color: {{VALUE}};',
-					//'{{WRAPPER}}.ultraaddons-featured-item .elementor-widget-container' => 'border-color: {{VALUE}};',
-				],
-			]
-		);
                 
                 $this->add_control(
 			'section_divider',
@@ -637,8 +641,9 @@ class Price_Table extends Base {
                 
                 
                 $this->end_controls_section();
-
-		$this->start_controls_section(
+    }
+    protected function style_header_controls(){
+                $this->start_controls_section(
 			'section_header_style',
 			[
 				'label' => __( 'Header', 'ultraaddons' ),
@@ -647,6 +652,15 @@ class Price_Table extends Base {
 			]
 		);
 
+                $this->start_controls_tabs('header_tabs');
+                
+                $this->start_controls_tab(
+                'header_tab_normal', 
+                [
+                    'label' => __( 'Normal', 'ultraaddons' ),
+                ]
+                );
+                
 		$this->add_control(
 			'header_bg_color',
 			[
@@ -770,10 +784,59 @@ class Price_Table extends Base {
 				],
 			]
 		);
+                
+                $this->end_controls_tab();
+                
+                $this->start_controls_tab(
+                'header_tab_hover', 
+                [
+                    'label' => __( 'Hover', 'ultraaddons' ),
+                ]
+                );
+                
+                $this->add_control(
+			'header_bg_color_hover',
+			[
+				'label' => __( 'Background Color', 'ultraaddons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}}:hover .ua-price-table__header' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+                
+                $this->add_control(
+			'heading_color_hover',
+			[
+				'label' => __( 'Title Color', 'ultraaddons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}}:hover .ua-price-table__heading' => 'color: {{VALUE}}',
+				],
+			]
+		);
+                
+                $this->add_control(
+			'sub_heading_color_hover',
+			[
+				'label' => __( 'Subtitle Color', 'ultraaddons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}}:hover .ua-price-table__subheading' => 'color: {{VALUE}}',
+				],
+			]
+		);
+                
+                $this->end_controls_tab();
+                
+                $this->end_controls_tabs();
+                
 
 		$this->end_controls_section();
-
-		$this->start_controls_section(
+                
+    }
+    protected function style_pricing_controls(){
+                $this->start_controls_section(
 			'section_pricing_element_style',
 			[
 				'label' => __( 'Pricing', 'ultraaddons' ),
@@ -782,7 +845,17 @@ class Price_Table extends Base {
 			]
 		);
                 
-		$this->add_control(
+		
+                $this->start_controls_tabs('price_tabs');
+                
+                $this->start_controls_tab(
+                'price_tab_normal', 
+                [
+                    'label' => __( 'Normal', 'ultraaddons' ),
+                ]
+                );
+                
+                $this->add_control(
 			'pricing_element_bg_color',
 			[
 				'label' => __( 'Background Color', 'ultraaddons' ),
@@ -808,12 +881,12 @@ class Price_Table extends Base {
 		$this->add_control(
 			'price_color',
 			[
-				'label' => __( 'Color', 'ultraaddons' ),
+				'label' => __( 'Text Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ua-price-table__currency, {{WRAPPER}} .ua-price-table__integer-part, {{WRAPPER}} .ua-price-table__fractional-part, {{WRAPPER}} .ua-price-table__currency_sep' => 'color: {{VALUE}}',
 				],
-				'separator' => 'before',
+//				'separator' => 'before',
 			]
 		);
 
@@ -826,6 +899,113 @@ class Price_Table extends Base {
 			]
 		);
                 
+                 $this->add_control(
+			'price_box_size',
+			[
+				'label' => __( 'Price Box Size', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min' => 50,
+						'max' => 500,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .ua-price-table__price' => 'height: {{SIZE}}{{UNIT}};width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+                 
+                 
+                
+                $this->end_controls_tab();
+                
+                $this->start_controls_tab('price_tab_hover', 
+                        [
+                            'label' => __( 'Hover', 'ultraaddons' ),
+                        ]
+                );
+                
+                
+                $this->add_control(
+			'pricing_element_bg_color_hover',
+			[
+				'label' => __( 'Background Color', 'ultraaddons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}}:hover .ua-price-table__price' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'pricing_element_padding_hover',
+			[
+				'label' => __( 'Padding', 'ultraaddons' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}}:hover .ua-price-table__price' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'price_color_hover',
+			[
+				'label' => __( 'Text Color', 'ultraaddons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}}:hover .ua-price-table__currency, {{WRAPPER}}:hover .ua-price-table__integer-part, {{WRAPPER}}:hover .ua-price-table__fractional-part, {{WRAPPER}}:hover .ua-price-table__currency_sep, {{WRAPPER}}:hover .ua-price-table__period' => 'color: {{VALUE}}',
+				],
+//				'separator' => 'before',
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'price_typography_hover',
+				'selector' => '{{WRAPPER}}:hover .ua-price-table__price_inner',
+				'scheme' => Schemes\Typography::TYPOGRAPHY_1,
+			]
+		);
+                
+                 $this->add_control(
+			'price_box_size_hover',
+			[
+				'label' => __( 'Price Box Size', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min' => 50,
+						'max' => 500,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}}:hover .ua-price-table__price' => 'height: {{SIZE}}{{UNIT}};width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+                 
+                 
+                
+                
+                $this->end_controls_tab();
+                
+                
+                $this->end_controls_tabs();
+                
+                //Group_Control_Border
+                $this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'price_box_border',
+				'selector' => '{{WRAPPER}} .ua-price-table__price',
+			]
+		);
+                
+                
                 $this->add_control(
 			'price_addional_control',
 			[
@@ -836,6 +1016,8 @@ class Price_Table extends Base {
 				'default' => '',
 			]
 		);
+                
+               
                 
                 $this->add_control(
 			'price_int_size',
@@ -1231,8 +1413,9 @@ class Price_Table extends Base {
 		);
 
 		$this->end_controls_section();
-
-		$this->start_controls_section(
+    }
+    protected function style_feature_controls(){
+                $this->start_controls_section(
 			'section_features_list_style',
 			[
 				'label' => __( 'Features', 'ultraaddons' ),
@@ -1270,7 +1453,16 @@ class Price_Table extends Base {
 			]
 		);
 
-		$this->add_control(
+                $this->start_controls_tabs('feature_tabs');
+                
+                $this->start_controls_tab(
+                    'feature_tab_normal', 
+                    [
+                        'label' => __( 'Normal', 'ultraaddons' ),
+                    ]
+                );
+                
+                $this->add_control(
 			'features_list_color',
 			[
 				'label' => __( 'Color', 'ultraaddons' ),
@@ -1279,7 +1471,6 @@ class Price_Table extends Base {
 					'type' => Schemes\Color::get_type(),
 					'value' => Schemes\Color::COLOR_3,
 				],
-				'separator' => 'before',
 				'selectors' => [
 					'{{WRAPPER}} .ua-price-table__features-list' => 'color: {{VALUE}}',
 				],
@@ -1296,6 +1487,50 @@ class Price_Table extends Base {
 				],
 			]
 		);
+                
+                $this->end_controls_tab();
+                
+                $this->start_controls_tab(
+                    'feature_tab_hover', 
+                    [
+                        'label' => __( 'Hover', 'ultraaddons' ),
+                    ]
+                );
+                
+                $this->add_control(
+			'features_list_color_hover',
+			[
+				'label' => __( 'Color', 'ultraaddons' ),
+				'type' => Controls_Manager::COLOR,
+//				'scheme' => [
+//					'type' => Schemes\Color::get_type(),
+//					'value' => Schemes\Color::COLOR_3,
+//				],
+				
+				'selectors' => [
+					'{{WRAPPER}}:hover .ua-price-table__features-list' => 'color: {{VALUE}}',
+				],
+			]
+		);
+                $this->add_control(
+			'features_list_icon_color_hover',
+			[
+				'label' => __( 'Icon Color', 'ultraaddons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}}:hover .ua-price-table__features-list i' => 'color: {{VALUE}}',
+					'{{WRAPPER}}:hover .ua-price-table__features-list svg' => 'fill: {{VALUE}}',
+				],
+			]
+		);
+                
+                
+                
+                $this->end_controls_tab();
+                $this->end_controls_tabs();
+                
+                
+		
 
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
@@ -1371,7 +1606,11 @@ class Price_Table extends Base {
 
 		$this->end_controls_section();
 
-		$this->start_controls_section(
+		
+    }
+
+        protected function style_footer_controls(){
+        $this->start_controls_section(
 			'section_footer_style',
 			[
 				'label' => __( 'Footer', 'ultraaddons' ),
@@ -1533,20 +1772,12 @@ class Price_Table extends Base {
 
 		$this->end_controls_section();
             
-            
-                /**
-                 * Register Controls of Button
-                 * will come from our Trait Button Helper
-                 * 
-                 * @since 1.0.3.2
-                 * @date 7.3.2021
-                 */
-                $this->button_register_controls();
     }
-    
-    
-    
-        private function render_currency_symbol( $symbol, $location ) {
+
+
+
+
+    private function render_currency_symbol( $symbol, $location ) {
 		$currency_position = $this->get_settings( 'currency_position' );
 		$location_setting = ! empty( $currency_position ) ? $currency_position : 'before';
 		if ( ! empty( $symbol ) && $location === $location_setting ) {
@@ -1579,7 +1810,36 @@ class Price_Table extends Base {
 	}
 
 
-    /**
+        protected function get_price_table_header(){
+            $settings   = $this->get_settings_for_display();
+            ?>
+            <div class="ua-price-table__header">
+                    <?php if( $this->ua_icon_select ) { ?>
+                    <div class="ua-price-table__header_icon">
+                            <?php
+                            if( 'image' == $this->ua_icon_select ){ ?>
+                            <img class="ua-pricing-table-image" src="<?php echo esc_url( $this->ua_image_upload );?>" alt="<?php esc_attr__( 'Pricing Image', 'ultraaddons' ); ?>">
+                            <?php }elseif( $this->ua_icon_choose ){ ?>
+                                <i class="ua-pricing-table-icon <?php echo esc_attr( $this->ua_icon_choose ); ?>"></i>        
+                            <?php }elseif( $this->svg ){ ?>
+                                <img class="ua-pricing-table-image ua-pricing-table-svg-image" src="<?php echo esc_url( $this->svg );?>" alt="<?php esc_attr__( 'Pricing Image', 'ultraaddons' ); ?>">
+                            <?php } ?>
+                    </div>
+                    <?php } ?>
+
+                    <?php if ( ! empty( $settings['heading'] ) ) : ?>
+                            <<?php echo $this->heading_tag . ' ' . $this->get_render_attribute_string( 'heading' ); ?>><?php echo $settings['heading'] . '</' . $this->heading_tag; ?>>
+                    <?php endif; ?>
+
+                    <?php if ( ! empty( $settings['sub_heading'] ) ) : ?>
+                            <span <?php echo $this->get_render_attribute_string( 'sub_heading' ); ?>><?php echo $settings['sub_heading']; ?></span>
+                    <?php endif; ?>
+
+            </div>    
+            <?php
+        }
+
+        /**
      * Render oEmbed widget output on the frontend.
      *
      * Written in PHP and used to generate the final HTML.
@@ -1591,10 +1851,11 @@ class Price_Table extends Base {
                 $settings   = $this->get_settings_for_display();
                 
                 // header icon
-                $ua_icon_select     = isset( $settings['ua_icon_select'] ) ? $settings['ua_icon_select'] : 'icon';
-                $ua_icon_choose     = !empty( $settings['ua_icon_choose']['value'] ) && is_string( $settings['ua_icon_choose']['value'] ) ? $settings['ua_icon_choose']['value'] : false;
-                $ua_image_upload    = isset( $settings['ua_image_upload']['url'] ) ? $settings['ua_image_upload']['url'] : '';
-                $svg                = !empty( $settings['ua_icon_choose']['value']['url'] ) && is_string( $settings['ua_icon_choose']['value']['url'] ) ? $settings['ua_icon_choose']['value']['url'] : false;
+                $this->ua_icon_select     = isset( $settings['ua_icon_select'] ) ? $settings['ua_icon_select'] : 'icon';
+                $this->ua_icon_choose     = !empty( $settings['ua_icon_choose']['value'] ) && is_string( $settings['ua_icon_choose']['value'] ) ? $settings['ua_icon_choose']['value'] : false;
+                $this->ua_image_upload    = isset( $settings['ua_image_upload']['url'] ) ? $settings['ua_image_upload']['url'] : '';
+                $this->svg                = !empty( $settings['ua_icon_choose']['value']['url'] ) && is_string( $settings['ua_icon_choose']['value']['url'] ) ? $settings['ua_icon_choose']['value']['url'] : false;
+                $price_top = ! empty( $settings['price_top'] ) && $settings['price_top'] == 'yes'? true : false;
                 
                 $symbol = '';
 
@@ -1633,40 +1894,21 @@ class Price_Table extends Base {
                 
                 $period_position = $settings['period_position'];
 		$period_element = '<span ' . $this->get_render_attribute_string( 'period' ) . '>' . $settings['period'] . '</span>';
-		$heading_tag = $settings['heading_tag'];
+		$this->heading_tag = $settings['heading_tag'];
 
 		$migration_allowed = Icons_Manager::is_migration_allowed();
                 
                 
                 ?>
                 <div class="ua-price-table">
-                        <?php if ( $settings['heading'] || $settings['sub_heading'] ) { ?>
-				<div class="ua-price-table__header">
-                                        <?php if( $ua_icon_select ) { ?>
-                                        <div class="ua-price-table__header_icon">
-                                                <?php
-                                                
-                                                if( 'image' == $ua_icon_select ){ ?>
-                                                <img class="ua-pricing-table-image" src="<?php echo esc_url( $ua_image_upload );?>" alt="<?php esc_attr__( 'Pricing Image', 'ultraaddons' ); ?>">
-                                                <?php }elseif( $ua_icon_choose ){ ?>
-                                                    <i class="ua-pricing-table-icon <?php echo esc_attr( $ua_icon_choose ); ?>"></i>        
-                                                <?php }elseif( $svg ){ ?>
-                                                    <img class="ua-pricing-table-image ua-pricing-table-svg-image" src="<?php echo esc_url( $svg );?>" alt="<?php esc_attr__( 'Pricing Image', 'ultraaddons' ); ?>">
-                                                <?php } ?>
-                                        </div>
-                                        <?php } ?>
-                                    
-                                        <?php if ( ! empty( $settings['heading'] ) ) : ?>
-						<<?php echo $heading_tag . ' ' . $this->get_render_attribute_string( 'heading' ); ?>><?php echo $settings['heading'] . '</' . $heading_tag; ?>>
-					<?php endif; ?>
-
-					<?php if ( ! empty( $settings['sub_heading'] ) ) : ?>
-						<span <?php echo $this->get_render_attribute_string( 'sub_heading' ); ?>><?php echo $settings['sub_heading']; ?></span>
-					<?php endif; ?>
-					
-				</div>
+                        
+			<?php 
+                        if( ! $price_top ){
+                        $this->get_price_table_header(); 
+                        }
+                        ?>	
                     
-                        <?php } ?>
+                        
                         
                         <div class="ua-price-table__price">
                             <div class="ua-price-table__price_inner">
@@ -1701,7 +1943,12 @@ class Price_Table extends Base {
                                 </div>
                             <?php endif; ?>
                         </div>
-                        <?php if ( ! empty( $settings['features_list'] ) ) : ?>
+                        <?php
+                            if( $price_top ){
+                                $this->get_price_table_header(); 
+                            }
+                        
+                            if ( ! empty( $settings['features_list'] ) ) : ?>
                                 <ul class="ua-price-table__features-list">
                                         <?php
                                         foreach ( $settings['features_list'] as $index => $item ) :

@@ -55,6 +55,7 @@
                     },
 
                     getReadySettings: function() {
+                            var external_animation = this.getElementSettings('external_animation');
                             var settings = {
                                     autoplay: !! this.getElementSettings('autoplay'),
                                     autoplayHoverPause: !! this.getElementSettings('pause_on_hover'),
@@ -63,11 +64,14 @@
                                     autoplayTimeout: this.getElementSettings('autoplayTimeout'),
                                     nav: false,
                                     margin: 20,
-//                                    animateOut: 'animate__flipOutY',
-                                    animateIn: 'animate__lightSpeedInRight',
+                                    //#f7fcff
+                                    animateOut: external_animation,//animate__lightSpeedInRight //animate__flipOutY
+                                    animateIn: external_animation,//animate__lightSpeedInRight//this.getElementSettings('animateIn'),//animate__lightSpeedInRight
                                     
                             };
 
+//                            settings.animateOut = this.getElementSettings('animateOut');
+//                            settings.animateIn = this.getElementSettings('animateIn');
                             switch (this.getElementSettings('navigation')) {
                                     case 'arrow':
                                             settings.nav = true;
@@ -91,12 +95,12 @@
                             settings.responsive={};
                             settings.responsive[EF.config.breakpoints.xs] = {
                                     items: (this.getElementSettings('slides_to_show_mobile') || this.getElementSettings('slides_to_show_tablet')) || settings.items,
-                                    nav:true
+                                    nav:false
                                 };
                             
                             settings.responsive[EF.config.breakpoints.md] = {
                                     items: (this.getElementSettings('slides_to_show_tablet') || settings.items),
-                                    nav:true
+//                                    nav:true
                                 };
                             
                             settings.responsive[EF.config.breakpoints.lg] = {
@@ -137,6 +141,15 @@
                         trigger_cart_update();
                     }
             );
+            
+        
+//            //for new Elemenment to Each Widget and column
+//            EF.hooks.addAction(
+//                    'frontend/element_ready/widget',
+//                    function ($scope) {
+//                        $scope.find('.elementor-widget-container').prepend('<div class="ua-widget-background-overlay">Widget</div>');
+//                    }
+//            );
             
             // Cart Update in Editor Screen
             EF.hooks.addAction(
@@ -183,7 +196,7 @@
            
            // Wrapper Link
            $('.ua-wrapper-link').each(function() {
-                    var link = $(this).data('element_link');
+                    var link = $(this).data('_ua_element_link');
                     $(this).on('click', function() {
                         if (link.is_external) {
                                 window.open(link.url);
@@ -204,7 +217,7 @@
      */
     function add_number_inside_bullets(){
         var dots = document.querySelectorAll(".ua-number-slider-wrapper .owl-dots .owl-dot");
-        
+        //$('.ua-number-slider-wrapper .owl-dots').addClass('nav-type-number');
         let i=1;
         dots.forEach((elem)=>{
             var text = i;

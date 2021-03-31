@@ -1,3 +1,33 @@
+/*****************************
+* Elementor Background Overlay
+******************************/
+.elementor .elementor-element.ua-background-overlay-yes .elementor-widget-container>*{position: relative;}
+.elementor .elementor-element.ua-background-overlay-yes .elementor-widget-container:before{
+    content: "";
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute !important;
+}
+
+/*****************************
+* Comon Transition for All Element
+******************************/
+.ua-info-box-wrapper .ua-info-box-icon,
+.ua-info-box-wrapper .ua-info-box-content,
+.ua-info-box-wrapper .elementor-icon-box-title,
+.ua-info-box-wrapper .elementor-icon-box-description,
+
+.ua-icon-box-wrapper .ua-icon-box-icon,
+.ua-icon-box-wrapper .ua-icon-box-content,
+.ua-icon-box-wrapper .elementor-icon-box-title,
+.ua-icon-box-wrapper .elementor-icon-box-description,
+
+.ssss .ssssss
+{transition: .3s all;}
+
+
 /*
 * Style for Header
 * and for Footer
@@ -86,6 +116,7 @@ body:not(.elementor-page) .ultraaddons-container{
 }
 div.ua-element .elementor-widget-container .btn-wrapper a.ua-button {
     text-decoration: none;
+    border-radius: 0;
 }
 
 /*.ua-element .btn-wrapper .ua-button.elementor-button {
@@ -105,12 +136,16 @@ div.ua-element .elementor-widget-container .btn-wrapper a.ua-button {
 }*/
 .ua-element .btn-wrapper .ua-button {
     font-weight: 600;
+    font-family: 'Roboto';
     color: #21272c;
     border-color: #21272c;
     background-color: transparent;
 }
 
-.ua-element .btn-wrapper .ua-button:hover {
+.ua-element:hover .btn-wrapper .ua-button,
+.ua-element .btn-wrapper .ua-button:focus,
+.ua-element .btn-wrapper .ua-button:active
+{
     color: #ffffff;
     border-color: #0fc392;
     background-color: #0fc392;

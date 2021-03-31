@@ -7,13 +7,25 @@ ul.ua-price-table__features-list {
     margin: 0;
 }
 .ua-price-table__price_inner {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     font-size: 46px;
     font-weight: 700;
     font-family: "Roboto",sans-serif;
     color: #0FC392;
+    line-height: 0.7;
+}
+.ua-price-table__price {
+
+    margin: 0 auto;
+    border-radius: 50%;
+    padding: 43px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    transition: .3s all;
 }
 .ua-price-table__original-price {
     text-decoration: line-through;
@@ -61,10 +73,10 @@ span.ua-price-table__period.ua-typo-excluded {
     text-align: center;
     padding: 8px 0;
 }
-.ultraaddons-featured-item-ribbon-bottom.ultraaddons-featured-item-ribbon-left .ua-price-table__ribbon{left: 0;bottom: 0;}
-.ultraaddons-featured-item-ribbon-bottom.ultraaddons-featured-item-ribbon-right .ua-price-table__ribbon{right: 0;bottom: 0;}
-.ultraaddons-featured-item-ribbon-top.ultraaddons-featured-item-ribbon-left .ua-price-table__ribbon{left: 0;top: 0;}
-.ultraaddons-featured-item-ribbon-top.ultraaddons-featured-item-ribbon-right .ua-price-table__ribbon{right: 0;top: 0;}
+.ua-ribbon-bottom.ua-ribbon-left .ua-price-table__ribbon{left: 0;bottom: 0;}
+.ua-ribbon-bottom.ua-ribbon-right .ua-price-table__ribbon{right: 0;bottom: 0;}
+.ua-ribbon-top.ua-ribbon-left .ua-price-table__ribbon{left: 0;top: 0;}
+.ua-ribbon-top.ua-ribbon-right .ua-price-table__ribbon{right: 0;top: 0;}
 
 
 .ua-price-table__features-list:before {
@@ -96,29 +108,45 @@ span.currency-inner-wrapper span.ua-price-table__currency_sep {
 .elementor-align-right ul.ua-price-table__features-list:before{
     margin-right: 0 !important;
 }
-
 .ua-price-table .btn-wrapper .ua-button {
     margin: 30px auto;
 }
+.ua-element-price-table .elementor-widget-container{
+    /*border:1px solid #E2EBF1;*/
+    padding: 50px 30px;
+    background: #f7fcff;
+    position: relative;
+    overflow: hidden;
+}
+.ua-angle-ribbon-yes .ua-price-table__ribbon{
+    height: 200px;
+    transform: rotateZ(225deg);
+    top: initial;
+    right: initial;
+    bottom: initial;
+    left: initial;
+}
+.ua-angle-ribbon-yes .ua-price-table__ribbon .ua-price-table__ribbon-inner{
+    width: 200px;
+}
+.ua-angle-ribbon-yes.ua-ribbon-top.ua-ribbon-left .ua-price-table__ribbon{
+    top: -54px;
+    left: 27px;
+    transform: rotateZ(225deg);
+}
+.ua-angle-ribbon-yes.ua-ribbon-bottom.ua-ribbon-left .ua-price-table__ribbon{
+    bottom: -51px;
+    left: 28px;
+    transform: rotateZ(-45deg);
+}
+.ua-angle-ribbon-yes.ua-ribbon-top.ua-ribbon-right .ua-price-table__ribbon{
+    top: -48px;
+    right: 25px;
+    transform: rotateZ(320deg);
+}
+.ua-angle-ribbon-yes.ua-ribbon-bottom.ua-ribbon-right .ua-price-table__ribbon{
+    bottom: -49px;
+    right: 26px;
+    transform: rotateZ(225deg);
+}
 
-/* Dark Theme */
-.pricing-table-temp-2 .elementor-widget-container {
-    background-color: #272727;
-}
-.pricing-table-temp-2 .ua-price-table__heading,
-.pricing-table-temp-2 span.ua-price-table__period.ua-typo-excluded,
-.pricing-table-temp-2 .ua-price-table__features-list li,
-.pricing-table-temp-2 .ua-price-table__button,
-.pricing-table-temp-2 .ua-pricing-table-icon {
-    color: #efefef;
-}
-.ua-element.ua-element-price-table .ua-button{text-decoration: none;}
-/* .elementor-align-left .ua-price-table__feature-inner,.elementor-align-right .ua-price-table__feature-inner{
-    display: flex;
-    column-gap: 10px;
-    align-items: center;
-}
-.elementor-align-right .ua-price-table__feature-inner{
-    flex-direction:row-reverse;
-}
- */

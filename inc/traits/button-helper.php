@@ -23,7 +23,7 @@ trait Button_Helper{
     public $btn_border_hover_color = '#0fc392';
     
     public $btn_align = 'left';
-
+    
 
     public function button_render() {
             $settings = $this->get_settings_for_display();
@@ -155,7 +155,7 @@ trait Button_Helper{
                             'label' => 'Typography',
                             'selector' => '{{WRAPPER}} .elementor-button',
                             'global' => [
-                                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                                    'default' => Global_Typography::TYPOGRAPHY_TEXT,
                             ],
 
                     ]
@@ -263,7 +263,7 @@ trait Button_Helper{
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => [ 'px', '%' ],
                             'selectors' => [
-                                    '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button, {{WRAPPER}} .btn-wrapper .ua-button.elementor-button:hover, {{WRAPPER}} .btn-wrapper .ua-button.elementor-button:focus' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                    '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                             ],
                     ]
             );
@@ -302,8 +302,8 @@ trait Button_Helper{
                             'type' => Controls_Manager::COLOR,
                             'default' =>  $this->btn_text_hover_color,// '#FFF',
                             'selectors' => [
-                                    '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:hover, {{WRAPPER}} .btn-wrapper .ua-button.elementor-button:focus' => 'color: {{VALUE}};',
-                                    '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:hover svg, {{WRAPPER}} .btn-wrapper .ua-button.elementor-button:focus svg' => 'fill: {{VALUE}};',
+                                    '{{WRAPPER}}:hover .btn-wrapper .ua-button.elementor-button, {{WRAPPER}} .btn-wrapper .ua-button.elementor-button:focus' => 'color: {{VALUE}};',
+                                    '{{WRAPPER}}:hover .btn-wrapper .ua-button.elementor-button svg, {{WRAPPER}} .btn-wrapper .ua-button.elementor-button:focus svg' => 'fill: {{VALUE}};',
                             ],
                     ]
             );
@@ -315,7 +315,7 @@ trait Button_Helper{
 			[
 				'name' => 'btn_background_hover_color',
 				'types' => [ 'classic', 'gradient' ],
-				'selector' => '{{WRAPPER}} .btn-wrapper .ua-button:hover',
+				'selector' => '{{WRAPPER}}:hover .btn-wrapper .ua-button,{{WRAPPER}} .btn-wrapper .ua-button:focus,{{WRAPPER}} .btn-wrapper .ua-button:active',
                                 'separator' => 'before',
 				'fields_options' => [
 					'background' => [
@@ -345,7 +345,7 @@ trait Button_Helper{
                             ],
                             'default' => 'solid',
                             'selectors' => [
-                                    '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:hover' => 'border-style: {{VALUE}};',
+                                    '{{WRAPPER}}:hover .btn-wrapper .ua-button.elementor-button' => 'border-style: {{VALUE}};',
                                     '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:focus' => 'border-style: {{VALUE}};',
                             ],
                             'separator' => 'before',
@@ -358,7 +358,7 @@ trait Button_Helper{
                             'type' => Controls_Manager::COLOR,
                             'default' => $this->btn_border_hover_color,
                             'selectors' => [
-                                    '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:hover' => 'border-color: {{VALUE}};',//{{WRAPPER}} .elementor-button
+                                    '{{WRAPPER}}:hover .btn-wrapper .ua-button.elementor-button' => 'border-color: {{VALUE}};',//{{WRAPPER}} .elementor-button
                                     '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:focus' => 'border-color: {{VALUE}};',
                             ],
                     ]
@@ -378,7 +378,7 @@ trait Button_Helper{
                                     'unit' => 'px',
                             ],
                             'selectors' => [
-                                    '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:hover' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                    '{{WRAPPER}}:hover .btn-wrapper .ua-button.elementor-button' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                                     '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:focus' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                             ],
                     ]
@@ -391,8 +391,9 @@ trait Button_Helper{
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => [ 'px', '%' ],
                             'selectors' => [
-                                    '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                    '{{WRAPPER}}:hover .btn-wrapper .ua-button.elementor-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                                     '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:focus' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                    '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:active' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                             ],
                     ]
             );
@@ -402,7 +403,7 @@ trait Button_Helper{
 //                    [
 //                            'name' => 'btn_border_hover_hello',
 //                            'label' => __( 'Box Shadow', 'ultraaddons' ),
-//                            'selector' => '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:hover',
+//                            'selector' => '{{WRAPPER}}:hover .btn-wrapper .ua-button.elementor-button',
 //                    ]
 //            );
 
@@ -411,7 +412,7 @@ trait Button_Helper{
                     [
                             'name' => 'btn_hover_box_shadow',
                             'label' => __( 'Box Shadow', 'ultraaddons' ),
-                            'selector' => '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button:hover',
+                            'selector' => '{{WRAPPER}}:hover .btn-wrapper .ua-button.elementor-button',
                     ]
             );
                   

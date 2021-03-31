@@ -34,7 +34,7 @@ class Transform {
 		);
                 
                 $element->add_control(
-                        'on_off',
+                        '_ua_transform_on_off',
                         [
                                 'label' => __( 'Transform', 'ultraaddons' ),
                                 'description' => __( 'Cart Item will stay exanded always.', 'ultraaddons' ),
@@ -76,20 +76,20 @@ class Transform {
                 $element->start_controls_tabs( 'transition_tabs',
                             [
                                     'condition' => [
-                                            'on_off' => 'yes',
+                                            '_ua_transform_on_off' => 'yes',
                                     ],
                             ]
                         );
 
 		$element->start_controls_tab(
-			'tab_normal',
+			'_ua_transform_tab_normal',
 			[
 				'label' => __( 'Normal', 'ultraaddons' ),
 			]
 		);
                 
                 $element->add_control(
-			'rotation_heading',
+			'_ua_transform_rotation_heading',
 			[
 				'label' => __( 'Rotation', 'ultraaddons' ),
                                 'type' => Controls_Manager::HEADING,
@@ -107,7 +107,7 @@ class Transform {
                  * Hover Tab
                  */
                 $element->start_controls_tab(
-			'tab_hover',
+			'_ua_transform_tab_hover',
 			[
 				'label' => __( 'Hover', 'ultraaddons' ),
 			]
@@ -141,14 +141,14 @@ class Transform {
          */
 	public static function before_section_render( Element_Base $element ) {
 		$settings = $element->get_settings_for_display();
-                $on_off = $settings['on_off'];
+                $_ua_transform_on_off = $settings['_ua_transform_on_off'];
 
-                if ( empty( $on_off ) ) {
+                if ( empty( $_ua_transform_on_off ) ) {
                     return false;
                 }
                 
                 $data_transform = [
-                    'on_off' => $on_off,
+                    '_ua_transform_on_off' => $_ua_transform_on_off,
                     'transforms' => [
                         'rotate'      => $settings['rotate'],
                         'rotateX'      => $settings['rotateX'],
@@ -181,4 +181,5 @@ class Transform {
 	}
 }
 
-Transform::init();
+//No need to call, we have called automatically to initit method from extenstion manager file.
+//Transform::init();

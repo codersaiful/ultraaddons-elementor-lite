@@ -122,6 +122,7 @@ class Info_Box extends Base {
                             'prefix_class' => 'elementor-view-',
                             'condition' => [
                                     'icon_style' => 'icon',
+//                                    'add_icon[library]!' => 'svg',
                             ],
                     ]
             );
@@ -237,9 +238,9 @@ class Info_Box extends Base {
                             'global' => [
                                     'default' => Global_Colors::COLOR_PRIMARY,
                             ],
-                            'default' => '#0FC392',
+                            'default' => '#fff',
                             'selectors' => [
-                                    '{{WRAPPER}}.elementor-view-stacked .elementor-icon' => 'background-color: {{VALUE}};',
+                                    '{{WRAPPER}}.elementor-view-stacked .elementor-icon' => 'fill: {{VALUE}}; color: {{VALUE}};',
                                     '{{WRAPPER}}.elementor-view-framed .elementor-icon, {{WRAPPER}}.elementor-view-default .elementor-icon' => 'fill: {{VALUE}}; color: {{VALUE}}; border-color: {{VALUE}};',
                             ],
                     ]
@@ -250,13 +251,13 @@ class Info_Box extends Base {
                     [
                             'label' => __( 'Background Color', 'ultraaddons' ),
                             'type' => Controls_Manager::COLOR,
-                            'default' => '#fff',
+                            'default' => '#0FC392',
                             'condition' => [
                                     'view!' => 'default',
                             ],
                             'selectors' => [
                                     '{{WRAPPER}}.elementor-view-framed .elementor-icon' => 'background-color: {{VALUE}};',
-                                    '{{WRAPPER}}.elementor-view-stacked .elementor-icon' => 'fill: {{VALUE}}; color: {{VALUE}};',
+                                    '{{WRAPPER}}.elementor-view-stacked .elementor-icon' => 'background-color: {{VALUE}};',
                             ],
                     ]
             );
@@ -267,7 +268,7 @@ class Info_Box extends Base {
                             'label' => __( 'Spacing', 'ultraaddons' ),
                             'type' => Controls_Manager::SLIDER,
                             'default' => [
-                                    'size' => 15,
+                                    'size' => 40,
                             ],
                             'range' => [
                                     'px' => [
@@ -298,6 +299,7 @@ class Info_Box extends Base {
                             ],
                             'selectors' => [
                                     '{{WRAPPER}} .elementor-icon' => 'font-size: {{SIZE}}{{UNIT}};',
+                                    '{{WRAPPER}} .infobox-svg' => 'width: {{SIZE}}{{UNIT}};',
                             ],
                     ]
             );
@@ -309,6 +311,7 @@ class Info_Box extends Base {
                             'type' => Controls_Manager::SLIDER,
                             'selectors' => [
                                     '{{WRAPPER}} .elementor-icon' => 'padding: {{SIZE}}{{UNIT}};',
+                                    '{{WRAPPER}} .ua-info-box-icon.svg' => 'padding: {{SIZE}}{{UNIT}};',
                             ],
                             'range' => [
                                     'em' => [
@@ -405,13 +408,11 @@ class Info_Box extends Base {
             );
             
             $this->add_responsive_control(
-                    'hover_icon_space',
+                    'icon_space_hover',
                     [
                             'label' => __( 'Spacing', 'ultraaddons' ),
                             'type' => Controls_Manager::SLIDER,
-//                            'default' => [
-//                                    'size' => 15,
-//                            ],
+
                             'range' => [
                                     'px' => [
                                             'min' => 0,
@@ -419,9 +420,7 @@ class Info_Box extends Base {
                                     ],
                             ],
                             'selectors' => [
-                                    '{{WRAPPER}}.elementor-position-right:hover .ua-info-box-icon' => 'margin-left: {{SIZE}}{{UNIT}};',
-                                    '{{WRAPPER}}.elementor-position-left:hover .ua-info-box-icon' => 'margin-right: {{SIZE}}{{UNIT}};',
-                                    '{{WRAPPER}}.elementor-position-top:hover .ua-info-box-icon' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                                    '{{WRAPPER}}:hover .ua-info-box-icon' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                                     '(mobile){{WRAPPER}}:hover .ua-info-box-icon' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                             ],
                     ]
@@ -604,6 +603,24 @@ class Info_Box extends Base {
                         'separator' => 'before',
                 ]
         );
+        
+        $this->add_responsive_control(
+                'description_bottom_space',
+                [
+                        'label' => __( 'Spacing', 'ultraaddons' ),
+                        'type' => Controls_Manager::SLIDER,
+                        'range' => [
+                                'px' => [
+                                        'min' => 0,
+                                        'max' => 100,
+                                ],
+                        ],
+                        'selectors' => [
+                                '{{WRAPPER}} .elementor-icon-box-description' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                        ],
+                ]
+        );
+
 
         $this->add_control(
                 'description_color',
@@ -718,6 +735,23 @@ class Info_Box extends Base {
                 ]
         );
 
+        $this->add_responsive_control(
+                'description_bottom_space_hover',
+                [
+                        'label' => __( 'Spacing', 'ultraaddons' ),
+                        'type' => Controls_Manager::SLIDER,
+                        'range' => [
+                                'px' => [
+                                        'min' => 0,
+                                        'max' => 100,
+                                ],
+                        ],
+                        'selectors' => [
+                                '{{WRAPPER}}:hover .elementor-icon-box-description' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                        ],
+                ]
+        );
+        
         $this->add_control(
                 'description_color_hover',
                 [
@@ -802,6 +836,7 @@ class Info_Box extends Base {
     public function get_image_icon(){
         $settings   = $this->get_settings_for_display();
         $this->add_render_attribute( 'icon', 'class', [ 'elementor-icon' ] );
+        $this->add_render_attribute( 'icon_wrapper', 'class', 'ua-info-box-icon' );
 
         $icon_tag = 'span';
 
@@ -813,9 +848,17 @@ class Info_Box extends Base {
         $has_icon = ! empty( $settings['add_icon'] );
 
         if ( $has_icon ) {
+            if( is_string( $settings['add_icon']['value'] ) ){
                 $this->add_render_attribute( 'i', 'class', $settings['add_icon'] );
+            }
+                
                 $this->add_render_attribute( 'i', 'aria-hidden', 'true' );
         }
+        $svg_library_bool = false;
+        if($settings['add_icon']['library'] == 'svg'){
+            $svg_library_bool = true;
+        }
+        
 
         $icon_attributes = $this->get_render_attribute_string( 'icon' );
 
@@ -831,25 +874,23 @@ class Info_Box extends Base {
         $add_icon   = !empty( $settings['add_icon']['value'] ) && is_string( $settings['add_icon']['value'] ) ? $settings['add_icon']['value'] : false;
         $svg        = !empty( $settings['add_icon']['value']['url'] ) && is_string( $settings['add_icon']['value']['url'] ) ? $settings['add_icon']['value']['url'] : false;
 
-        if ( $has_icon || 'image' == $icon_style ) : ?>
-        <div class="ua-info-box-icon">
-            <?php if( $has_icon ) : ?>
-            <<?php echo implode( ' ', [ $icon_tag, $icon_attributes ] ); ?>>
-            <?php
-            if ( $is_new || $migrated ) {
-                    Icons_Manager::render_icon( $add_icon, [ 'aria-hidden' => 'true' ] );
-            } elseif ( ! empty( $settings['add_icon'] ) ) {
-                    ?><i <?php echo $this->get_render_attribute_string( 'i' ); ?>></i><?php
-            }
-            ?>
-            </<?php echo $icon_tag; ?>>
-            <?php elseif( $svg ) : ?>
-                <img class="infobox-image" src="<?php echo esc_url( $svg );?>" alt="" />
-            <?php elseif( 'image' == $icon_style ) : ?>
-                <img class="infobox-image" src="<?php echo esc_url( $add_image );?>" alt="" />
-            <?php endif; ?>
+        if ( $has_icon || 'image' == $icon_style ) { ?>
+        <div <?php echo $this->get_render_attribute_string( 'icon_wrapper' ); ?>>
+            <?php if( 'icon' == $icon_style ) { ?>
+                <<?php echo implode( ' ', [ $icon_tag, $icon_attributes ] ); ?>>
+                    <?php
+                    if ( $is_new || $svg_library_bool ) {
+                            Icons_Manager::render_icon( $settings['add_icon'], [ 'aria-hidden' => 'true' ] );
+                    } elseif ( ! empty( $settings['add_icon'] ) ) {?>
+                            <i <?php echo $this->get_render_attribute_string( 'i' ); ?>></i>
+                    <?php } ?>
+                </<?php echo $icon_tag; ?>>
+            <?php } elseif( 'image' == $icon_style ) { ?>
+                    <img class="infobox-image" src="<?php echo esc_url( $add_image );?>" alt="" />
+            <?php } ?>
         </div>
-        <?php endif;
+        <?php 
+        }
     }
 
     /**

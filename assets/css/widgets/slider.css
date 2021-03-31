@@ -2,6 +2,10 @@
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
+    /*background-color: #f1f1f1;*/
+    /*height: 100vh;*/
+}
+.slider-type-template .ua-slider-item{
     background-color: #f1f1f1;
     height: 100vh;
 }
@@ -11,11 +15,21 @@
     justify-content: flex-start;
     align-items: center;
     position: relative;
-    height: 100%;
+    /*height: 100%;*/
     width: 100%;
+    padding: 180px 55px;
+}
+.slider-type-template .ua-slide-content-wrap{
+    height: 100%;
+}
+.ultraaddons-slider-container-wrapper{
+    /*height: 100%;*/
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 .ua-slider-item .ultraaddons-slider-container {
-    height: 100vh;
+    /*height: 100vh;*/
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -40,12 +54,19 @@
 
 .ua-slider-wrapper.ua-number-slider-wrapper .owl-dots{
     display: inline-block;
-    left: 30px;
     bottom: auto;
     top: 34%;
     width: 50px;
     position: absolute;
     /* transform: translate(11px, -150%); */
+}
+.navigation-number-position-left .ua-slider-wrapper.ua-number-slider-wrapper .owl-dots{
+    right: initial;
+    left: 30px;
+}
+.navigation-number-position-right .ua-slider-wrapper.ua-number-slider-wrapper .owl-dots{
+    right: 30px;
+    left: initial;
 }
 
 .ua-slider-wrapper.ua-number-slider-wrapper .owl-dots button.owl-dot{
@@ -124,18 +145,50 @@
     outline: none;
 }
 
-.navigation-arrow-position-top .ua-slider-wrapper .owl-nav {
+.ua-slider-wrapper .owl-nav {
+    display: flex;
+    column-gap: 15px;
+}
+
+.ua-slider-wrapper .owl-nav button {
+    padding: 10px 17px;
+}
+
+.ua-slider-wrapper .owl-nav button.owl-prev {
+    background: black;
+    border-color: black;
+}
+
+.navigation-arrow-position-top-right .ua-slider-wrapper .owl-nav {
     position: absolute;
     top: -50px;
     right: 0px;
 }
+.navigation-arrow-position-top-left .ua-slider-wrapper .owl-nav {
+    position: absolute;
+    top: -50px;
+    left: 0px;
+}
+.navigation-arrow-position-bottom-right .ua-slider-wrapper .owl-nav {
+    position: absolute;
+    bottom: -50px;
+    right: 0px;
+}
+.navigation-arrow-position-bottom-left .ua-slider-wrapper .owl-nav {
+    position: absolute;
+    bottom: -50px;
+    left: 0px;
+}
+
 
 .navigation-arrow-position-center .ua-slider-wrapper .owl-nav {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     position: absolute;
-    width: 100%;
+    width: 96%;
     top: 47%;
+    text-align: center;
+    margin-left: 2%;
 }
 .navigation-arrow-position-center .ua-slider-wrapper .owl-nav button {
     border-radius: 50%;
@@ -154,6 +207,49 @@
   margin-right: auto;
   margin-left: auto;
 }
+
+.ua-slider-main-wrapper .owl-dots {
+    text-align: center;
+}
+
+.ua-slider-main-wrapper button.owl-dot {}
+
+.ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot {
+    background: #717171;
+    height: 10px;
+    width: 10px;
+    margin: 0 9px;
+    padding: 0;
+    position: relative;
+    border-width: 0;
+    transition: .3s all;
+}
+.ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot.active,
+.ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot:active,
+.ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot:focus,
+.ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot:hover{
+    border-width: 0;
+    outline-width: 0;
+    background: red;
+}
+.ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot:before {
+    content: "";
+    background: transparent;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    /*transition: .3s all;*/
+}
+.ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot:hover:before,
+.ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot.active:before {
+    border: 2px solid red;
+}
+.ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot.active{
+    
+}
+.ua-slider-main-wrapper button.owl-dot {}
 
 @media (min-width:576px) {
     .ultraaddons-slider-container{

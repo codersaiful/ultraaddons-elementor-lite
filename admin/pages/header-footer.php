@@ -27,7 +27,7 @@ $templates = $template_obj->get_templates();
 
 
 
-$add_new_elementor_template = admin_url( 'edit.php?post_type=elementor_library#add_new' );
+$add_new_elementor_template = admin_url( 'post-new.php?post_type=header_footer' );
 ?>
 
 <div class="ultraaddons-section ua-option-wrapper">

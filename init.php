@@ -3,7 +3,7 @@
  * Plugin Name: Addons - UltraAddons Elementor Lite
  * Plugin URI: https://ultraaddons.com/
  * Description: Elementor Addons Plugin. Build your desired page just few click. Easy to use and useable for any theme and plugin. Available many filter.
- * Version: 1.0.3
+ * Version: 1.0.4
  * Author: codersaiful
  * Author URI: https://profiles.wordpress.org/codersaiful/#content-plugins
  * License: GPL3+
@@ -43,7 +43,7 @@
 
 defined( 'ABSPATH' ) || die();
 
-define( 'ULTRA_ADDONS_VERSION', '1.0.3.5' );
+define( 'ULTRA_ADDONS_VERSION', '1.0.4.1' );
 define( 'ULTRA_ADDONS__FILE__', __FILE__ );
 define( 'ULTRA_ADDONS_BASE_NAME', plugin_basename( __FILE__ ) );
 define( 'ULTRA_ADDONS_DIR', plugin_dir_path( ULTRA_ADDONS__FILE__ ) );
@@ -338,4 +338,10 @@ function ultraaddons_elementor_activation(){
      */
     $role = get_role( 'administrator' );
     $role->add_cap( ULTRA_ADDONS_CAPABILITY );
+    
+    $cpt_support = get_option( 'elementor_cpt_support', [ 'page', 'post' ] );
+    if( is_array($cpt_support) ){
+        $cpt_support['header_footer'] = 'header_footer';
+        update_option( 'elementor_cpt_support', $cpt_support);
+    }
 }
