@@ -946,12 +946,13 @@ class Slider extends Base{
                                         ],
                                 ],
                                 'condition' => [
-                                        'navigation_arrow_position' => ['top-right','top-left','bottom-right','bottom-left'],
+                                        'navigation_arrow_position' => ['center', 'top-right','top-left','bottom-right','bottom-left'],
                                         //'navigation_type' => ['arrow'],
                                 ],
                                 'selectors' => [
                                         '{{WRAPPER}}.navigation-arrow-position-bottom-right .ua-slider-wrapper .owl-nav,{{WRAPPER}}.navigation-arrow-position-bottom-left .ua-slider-wrapper .owl-nav' => 'bottom: -{{SIZE}}{{UNIT}};',
                                         '{{WRAPPER}}.navigation-arrow-position-top-left .ua-slider-wrapper .owl-nav,{{WRAPPER}}.navigation-arrow-position-top-right .ua-slider-wrapper .owl-nav' => 'top: -{{SIZE}}{{UNIT}};',
+                                        '{{WRAPPER}}.navigation-arrow-position-center .ua-slider-wrapper .owl-nav' => 'top: {{SIZE}}%;',
                                 ],
 
                         ]
@@ -962,7 +963,7 @@ class Slider extends Base{
                         [
                                 'label' => __( 'Navigation Spacing', 'elementor' ),
                                 'type' => Controls_Manager::SLIDER,
-                                'size_units' => [ 'px' ],
+//                                'size_units' => [ 'px' ],
                                 'default' => [
 //                                        'unit' => '%',
                                         'size' => 96,
