@@ -95,12 +95,12 @@
                             settings.responsive={};
                             settings.responsive[EF.config.breakpoints.xs] = {
                                     items: (this.getElementSettings('slides_to_show_mobile') || this.getElementSettings('slides_to_show_tablet')) || settings.items,
-                                    nav:true
+                                    nav:false
                                 };
                             
                             settings.responsive[EF.config.breakpoints.md] = {
                                     items: (this.getElementSettings('slides_to_show_tablet') || settings.items),
-                                    nav:true
+//                                    nav:true
                                 };
                             
                             settings.responsive[EF.config.breakpoints.lg] = {
