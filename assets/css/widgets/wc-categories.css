@@ -5,8 +5,7 @@
 }
 .ua-element-wc-categories ul.products li.product {
     border-style: solid;
-    border-width: 1px 1px 1px 1px;
-    /*padding: 20px;*/
+    border-width: 0px 0px 1px 0px;
     margin: 0;
     width: auto;
     border-color: #e2ebf1;
