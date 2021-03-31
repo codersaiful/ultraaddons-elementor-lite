@@ -418,7 +418,7 @@ class Price_Table extends Base {
 				'condition' => [
 					'show_ribbon' => 'yes',
 				],
-                                'prefix_class' => 'ultraaddons-featured-item ultraaddons-featured-item-ribbon-',
+                                'prefix_class' => 'ultraaddons-featured-item ua-ribbon-',
                                 
                                 'default' => 'left',
 			]
@@ -441,12 +441,25 @@ class Price_Table extends Base {
 				'condition' => [
 					'show_ribbon' => 'yes',
 				],
-                                'prefix_class' => 'ultraaddons-featured-item ultraaddons-featured-item-ribbon-',
+                                'prefix_class' => 'ultraaddons-featured-item ua-ribbon-',
                                 
                                 'default' => 'top',
 			]
 		);
+                
+                $this->add_control(
+                        'ribbon_angle_45',
+                        [
+                                'label' => __( 'Angle Ribbon', 'ultraaddons' ),
+                                'type' => Controls_Manager::SWITCHER,
+                                'label_on' => __( 'On', 'ultraaddons' ),
+                                'label_off' => __( 'Off', 'ultraaddons' ),
+                                'return_value' => 'yes',
+                                'prefix_class'  => 'ua-angle-ribbon-'
 
+                        ]
+                );
+                
 		$this->end_controls_section();
                 
     }
