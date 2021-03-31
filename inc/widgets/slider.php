@@ -958,6 +958,35 @@ class Slider extends Base{
                 );
                 
                 $this->add_control(
+                        'next_prev_center_spacing',
+                        [
+                                'label' => __( 'Navigation Spacing', 'elementor' ),
+                                'type' => Controls_Manager::SLIDER,
+                                'size_units' => [ 'px' ],
+                                'default' => [
+//                                        'unit' => '%',
+                                        'size' => 96,
+                                ],
+                                'range' => [
+                                        'px' => [
+                                                'min' => 1,
+                                                'max' => 100,
+                                                'step' => 1,
+                                        ],
+                                ],
+                                'condition' => [
+                                        'navigation_arrow_position' => ['center'],
+
+                                ],
+                                'selectors' => [
+//                                        '{{WRAPPER}}.navigation-arrow-position-center .ua-slider-wrapper .owl-nav' => 'width: {{SIZE}}{{UNIT}};',
+                                        '{{WRAPPER}}.navigation-arrow-position-center .ua-slider-wrapper .owl-nav' => 'width: {{SIZE}}%;margin-left: calc((100% - {{SIZE}}%)/2);',
+                                ],
+
+                        ]
+                );
+                
+                $this->add_control(
                         'navigation_number_position',
                         [
                                 'label' => __( 'Number Position', 'ultraaddons' ),
