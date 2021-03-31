@@ -639,6 +639,15 @@ class Price_Table extends Base {
 			]
 		);
 
+                $this->start_controls_tabs('header_tabs');
+                
+                $this->start_controls_tab(
+                'header_tab_normal', 
+                [
+                    'label' => __( 'Normal', 'ultraaddons' ),
+                ]
+                );
+                
 		$this->add_control(
 			'header_bg_color',
 			[
@@ -762,6 +771,53 @@ class Price_Table extends Base {
 				],
 			]
 		);
+                
+                $this->end_controls_tab();
+                
+                $this->start_controls_tab(
+                'header_tab_hover', 
+                [
+                    'label' => __( 'Hover', 'ultraaddons' ),
+                ]
+                );
+                
+                $this->add_control(
+			'header_bg_color_hover',
+			[
+				'label' => __( 'Background Color', 'ultraaddons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}}:hover .ua-price-table__header' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+                
+                $this->add_control(
+			'heading_color_hover',
+			[
+				'label' => __( 'Title Color', 'ultraaddons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}}:hover .ua-price-table__heading' => 'color: {{VALUE}}',
+				],
+			]
+		);
+                
+                $this->add_control(
+			'sub_heading_color_hover',
+			[
+				'label' => __( 'Subtitle Color', 'ultraaddons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}}:hover .ua-price-table__subheading' => 'color: {{VALUE}}',
+				],
+			]
+		);
+                
+                $this->end_controls_tab();
+                
+                $this->end_controls_tabs();
+                
 
 		$this->end_controls_section();
                 
@@ -887,7 +943,7 @@ class Price_Table extends Base {
 				'label' => __( 'Text Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}}:hover .ua-price-table__currency, {{WRAPPER}} .ua-price-table__integer-part, {{WRAPPER}} .ua-price-table__fractional-part, {{WRAPPER}} .ua-price-table__currency_sep' => 'color: {{VALUE}}',
+					'{{WRAPPER}}:hover .ua-price-table__currency, {{WRAPPER}}:hover .ua-price-table__integer-part, {{WRAPPER}}:hover .ua-price-table__fractional-part, {{WRAPPER}}:hover .ua-price-table__currency_sep, {{WRAPPER}}:hover .ua-price-table__period' => 'color: {{VALUE}}',
 				],
 //				'separator' => 'before',
 			]
