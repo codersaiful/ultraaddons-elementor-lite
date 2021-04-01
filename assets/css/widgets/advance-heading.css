@@ -9,7 +9,7 @@
 }
 
 .advance-heading-wrapper span.sub-heading-wrapper {
-    font-family: 'Roboto';
+    font-family: 'Roboto', sans-serif;
     display: block;
     font-size: 18px;
     color: #0fc392;
@@ -35,7 +35,7 @@
 }
 
 .advance-heading-wrapper .heading-tag {
-    font-family: 'Roboto';
+    font-family: 'Roboto', sans-serif;
     font-size: 46px;
     color: #021429;
     color: var(--medilac-deep-dark);

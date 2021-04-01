@@ -181,6 +181,12 @@ div.ua-list-temp-default .ua-list-items li i {
     margin: 18px 14px 23px 13px;
 }
 
+.ua-list-item-wrapper .list-item-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 28px;
+}
 @media (min-width: 37.5em){
     .ua-list-items li {
         width: 48%;

@@ -104,7 +104,7 @@ body:not(.elementor-page) .ultraaddons-container{
     padding: 10px 15px;
 }
 .btn-wrapper .ua-button.btn-size-md {
-    padding: 15px 25px;
+    padding: 17px 25px;
 }
 .btn-wrapper .ua-button.btn-size-lg {
     padding: 15px 30px;
@@ -136,7 +136,7 @@ div.ua-element .elementor-widget-container .btn-wrapper a.ua-button {
 }*/
 .ua-element .btn-wrapper .ua-button {
     font-weight: 600;
-    font-family: 'Roboto';
+    font-family: 'Roboto', sans-serif;
     color: #21272c;
     border-color: #21272c;
     background-color: transparent;
