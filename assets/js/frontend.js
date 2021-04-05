@@ -286,7 +286,7 @@
     
     
     /*     Magnific Popup js
-     -------------------------------------*/
+     -------------------------------------*
     $('.video_btn').magnificPopup({
         type: 'iframe',
         mainClass: 'mfp-fade',
@@ -322,5 +322,6 @@
         }
         // other options
     });
+    //*************************************/
         
 } (jQuery, window));
