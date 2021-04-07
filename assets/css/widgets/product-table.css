@@ -71,10 +71,10 @@
 }
 
 .ua-element-product-table .wpt_product_table_wrapper .qib-button.qib-button-wrapper{
-    max-width: 95px;
+    max-width: 100px;
     height: 50px;
     position: relative;
-    margin: 0 15px 0 0;
+    margin: 0;
     background: #f4f9fc;
 }
 
@@ -105,7 +105,7 @@
 
 .ua-element-product-table .wpt_product_table_wrapper .qib-button.qib-button-wrapper  .quantity input.input-text.qty.text{
     height: 52px;
-    width: 100%;
+    min-width: 100px;
     background-color: #f4f9fc;
     padding: 20px 26px 15px 20px;
     text-align: left;
