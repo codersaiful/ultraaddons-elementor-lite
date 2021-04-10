@@ -216,8 +216,10 @@
      * @returns {undefined}
      */
     function add_number_inside_bullets(){
-        var dots = document.querySelectorAll(".ua-number-slider-wrapper .owl-dots .owl-dot");
-        //$('.ua-number-slider-wrapper .owl-dots').addClass('nav-type-number');
+        var selector = ".ua-number-slider-wrapper .owl-dots .owl-dot";
+        var selector_dots = ".ua-number-slider-wrapper .owl-dots";
+        var dots = document.querySelectorAll(selector);
+        $(selector_dots).addClass('nav-type-number');
         let i=1;
         dots.forEach((elem)=>{
             var text = i;
