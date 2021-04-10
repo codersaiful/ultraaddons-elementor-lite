@@ -72,6 +72,11 @@ form.ultraaddons-cf7-form .row > div{
 form.ultraaddons-cf7-form input[type="submit"]{
     font-family: 'Roboto', sans-serif;
 }
+form.ultraaddons-cf7-form input.wpcf7-form-control.wpcf7-submit {
+    padding: 16px 25px;
+    font-size: 16px;
+    line-height: 1.2;
+}
 @media screen and (min-width: 768px){
     form.ultraaddons-cf7-form .row > div
     {

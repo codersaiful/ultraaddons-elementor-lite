@@ -104,7 +104,9 @@ body:not(.elementor-page) .ultraaddons-container{
     padding: 10px 15px;
 }
 .btn-wrapper .ua-button.btn-size-md {
-    padding: 17px 25px;
+    padding: 16px 25px;
+    font-size: 16px;
+    line-height: 1.2;
 }
 .btn-wrapper .ua-button.btn-size-lg {
     padding: 15px 30px;
