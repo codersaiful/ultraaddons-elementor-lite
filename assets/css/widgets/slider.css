@@ -16,7 +16,7 @@
     align-items: center;
     position: relative;
     /*height: 100%;*/
-    width: 75%;
+    width: 100%;
     padding: 180px 0;
 }
 .elementor-align-right.ua-element-slider .ua-slide-content-wrap {
@@ -273,6 +273,10 @@
     .ultraaddons-slider-container{
         max-width: 960px
     }
+    
+
+}
+@media (min-width:1025px) {
     .ua-slider-wrapper .ua-hero-text {
         width: 53%;
     }
@@ -292,6 +296,9 @@
     .ua-slider-item .ua-slide-content-wrap .ua-hero-text h1 {
         font-size: 54px;
     }
+    .ua-slider-wrapper .ua-hero-text {
+        width: 75%;
+    }
 }
 @media (max-width:767px) {
     .ua-slide-content-wrap {
@@ -299,5 +306,8 @@
     }
     .ua-slider-item .ua-slide-content-wrap .ua-hero-text h1 {
         font-size: 44px;
+    }
+    .ua-slider-wrapper .ua-hero-text {
+        width: 95%;
     }
 }

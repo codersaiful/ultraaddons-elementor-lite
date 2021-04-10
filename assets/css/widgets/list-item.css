@@ -80,6 +80,9 @@
     font-size: 16px;
     color:#0FC393;
 }
+.ua-list-temp-default .ua-list-items li i {
+    top: 6px;
+}
 
 div.ua-list-temp-default .ua-list-items li i {
     border-radius: 2px;
