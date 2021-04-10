@@ -447,7 +447,29 @@ class Slider extends Base{
                 );
                 
                 $this->add_responsive_control(
-                        'slider_item_padding',
+			'slider-height',
+			[
+				'label' => __( 'Height', 'elementor' ),
+				'type' => Controls_Manager::SLIDER,
+//				'default' => [
+//					'size' => 1,
+//				],
+				'range' => [
+					'px' => [
+						'max' => 1000,
+                                                'min'   => 300,
+						'step' => 1,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .ua-slider-item .ultraaddons-slider-container' => 'height: {{SIZE}}{{UNIT}};',
+				],
+				
+			]
+		);
+                
+                $this->add_responsive_control(
+                        'slider_wrapper_padding',
                         [
                                 'label' => __( 'Slider Area Padding', 'ultraaddons' ),
                                 'type' => Controls_Manager::DIMENSIONS,
@@ -466,7 +488,7 @@ class Slider extends Base{
                         ]
                 );
                 $this->add_responsive_control(
-                        'slider_item_margin',
+                        'slider_wrapper_margin',
                         [
                                 'label' => __( 'Slider Area Margin', 'ultraaddons' ),
                                 'type' => Controls_Manager::DIMENSIONS,
@@ -480,6 +502,47 @@ class Slider extends Base{
 //                                ],
                                 'selectors' => [
                                         '{{WRAPPER}} .ua-slider-wrapper .owl-stage-outer' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                ],
+                                
+                        ]
+                );
+                
+                
+                
+                $this->add_responsive_control(
+                        'slider_item_padding',
+                        [
+                                'label' => __( 'Slider Inner Padding', 'ultraaddons' ),
+                                'type' => Controls_Manager::DIMENSIONS,
+                                'size_units' => [ 'px', '%' ],
+//                                'default'   => [
+//                                        'left'=> 50,
+//                                        'right'=> 50,
+//                                        'top' => 180,
+//                                        'bottom' => 180,
+//                                        'unit' => 'px',
+//                                ],
+                                'selectors' => [
+                                        '{{WRAPPER}} .ua-slider-item .ultraaddons-slider-container' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                ],
+                                
+                        ]
+                );
+                $this->add_responsive_control(
+                        'slider_item_margin',
+                        [
+                                'label' => __( 'Slider Inner Margin', 'ultraaddons' ),
+                                'type' => Controls_Manager::DIMENSIONS,
+                                'size_units' => [ 'px', '%' ],
+//                                'default'   => [
+//                                        'left'=> 50,
+//                                        'right'=> 50,
+//                                        'top' => 180,
+//                                        'bottom' => 180,
+//                                        'unit' => 'px',
+//                                ],
+                                'selectors' => [
+                                        '{{WRAPPER}} .ua-slider-item .ultraaddons-slider-container' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                                 ],
                                 
                         ]
