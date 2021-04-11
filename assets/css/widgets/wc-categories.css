@@ -63,3 +63,10 @@
 .ua-element-wc-categories ul.products li.product img {
     margin: 0 auto;
 }
+article.post .ua-element-wc-categories ul,
+article.post .ua-element-wc-categories ol,
+article.page .ua-element-wc-categories ul,
+article.page .ua-element-wc-categories ol {
+    padding-left: 0;
+    padding-right: 0;
+}
