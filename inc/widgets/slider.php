@@ -210,7 +210,8 @@ class Slider extends Base{
                  */
                 $args = array(
                     'post_type'     =>  'elementor_library',
-                    'post_status'   =>  'publish'
+                    'post_status'   =>  'publish',
+                    'posts_per_page' => -1,
                 );
                 $query = get_posts( $args );
                 $template_choices = array();
