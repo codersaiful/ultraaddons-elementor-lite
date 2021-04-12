@@ -19,6 +19,9 @@ table.wp-list-table.widefat.plugins tr[data-slug='ultraaddons-elementor-lite'] t
     animation-fill-mode: none;
     animation-play-state: running;
 }
+.elementor-element.elementor-element-edit-mode.elementor-element--toggle-edit-tools.elementor-widget.elementor-widget-ultraaddons-wc-categories.ua-element.ua-element-wc-categories{
+    
+}
 /*.ultraaddons-color-heading:hover,*/
 p.ultraaddons-info:hover,
 table.wp-list-table.widefat.plugins tr[data-slug='ultraaddons-elementor-lite']:hover td.plugin-title.column-primary strong,
