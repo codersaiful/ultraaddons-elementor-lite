@@ -130,6 +130,21 @@
                             });
                     }
             );
+    
+    
+//                //Elementor Open Editor https://code.elementor.com/js-hooks/#panelopen_editorelementType 
+//                //console.log(elementor);
+//                elementor.hooks.addAction('panel/open_editor/widget', function (panel, model, view) {
+//                    console.log(panel, model, view);
+//                    var $element = view.$el.find('.elementor-selector');
+//
+//                    if ($element.length) {
+//                        $element.click(function () {
+//                            alert('Some Message');
+//                        });
+//                    }
+//                });
+            
             
 //            // WC Categories still working
 //            EF.hooks.addAction(
