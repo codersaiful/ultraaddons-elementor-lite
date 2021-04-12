@@ -310,6 +310,7 @@
     .ua-slider-wrapper .ua-hero-text {
         width: 95%;
     }
+    .elementor-widget-medilac_teambox .elementor-widget-container{
+        /*border-color:#0000000a;*/
+    }
 }
-
-.elementor-element.ua-element.ua-element-slider .ua-slider-item section.elementor-section.elementor-top-section.elementor-section-height-default .elementor-column{overflow: hidden;}
