@@ -311,3 +311,5 @@
         width: 95%;
     }
 }
+
+.elementor-element.ua-element.ua-element-slider .ua-slider-item section.elementor-section.elementor-top-section.elementor-section-height-default .elementor-column{overflow: hidden;}
