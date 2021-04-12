@@ -1,6 +1,8 @@
 i.ultraaddons[class^="uicon-"]:before, i.ultraaddons[class*=" uicon-"]:before{
     font-size: 102%;
 }
+.elementor-widget-container .elementor-widget-container h2{} 
+.elementor-widget-container .elementor-widget-container p{}
 /*.elementor-edit-area {
     width: 100%;
 }*/

@@ -111,7 +111,7 @@
                     },
 
                     run: function() {
-                        console.log(this.getReadySettings());
+                        //console.log(this.getReadySettings());
                         this.elements.$container.owlCarousel(this.getReadySettings());
                     }
             });
@@ -130,6 +130,25 @@
                             });
                     }
             );
+            
+//            // WC Categories still working
+//            EF.hooks.addAction(
+//                    'frontend/element_ready/ultraaddons-wc-categories.default',
+//                    function ($scope) {
+//                        
+//                        var content = $scope.find('.products .product-category .product').text();
+//                        console.log(content);
+//                        if( content === "" || content === " " ){
+//                            $scope.addClass('ua-need-apply-change');
+//                            var title = 'WooCommerce Product Category Area';
+//                            var default_message = 'Need update change.'
+//                            
+//                            var display_message = '<h2>' + title + '</h2>';
+//                            display_message += '<p>' + default_message + '</p>';
+//                            //$scope.find('.elementor-widget-container>*').html( display_message );
+//                        }
+//                    }
+//            );
             
             EF.hooks.addAction( 'frontend/element_ready/ultraaddons-slider.default', add_number_inside_bullets);
            
