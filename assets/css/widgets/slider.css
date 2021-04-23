@@ -131,17 +131,19 @@
     line-height: 1.2;
     text-align: center;
     background-color: #0fc392;
-    background-color: var(--ultraaddons-primary);
+    background-color: var(--medilac-primary);
     padding: 16px 32px;
     border: 2px solid transparent;
     -webkit-transition: 0.3s;
     transition: 0.3s;
+    font-family: 'Roboto', sans-serif;
+    font-family: var(--medilac-font-secondary);
 }
 .ua-slider-wrapper .slider-button:hover {
     color: #0fc392;
-    color: var(--ultraaddons-primary);
+    color: var(--medilac-primary);
     border-color: #0fc392;
-    border-color: var(--ultraaddons-primary);
+    border-color: var(--medilac-primary);
     background-color: transparent;
 }
 
