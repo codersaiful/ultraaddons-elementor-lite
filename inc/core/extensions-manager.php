@@ -39,6 +39,7 @@ class Extensions_Manager{
 
             $file_name = strtolower( str_replace( '_', '-', $ex_name_key ) );
             $file = ULTRA_ADDONS_DIR . "inc/extensions/{$file_name}.php";
+            $file = realpath( $file );
             if( ! in_array( $ex_name_key, $disable_keys ) && is_readable( $file ) ){
                 include_once $file;
                 $class_name = '\UltraAddons\Extension\\' . $ex_name_key;

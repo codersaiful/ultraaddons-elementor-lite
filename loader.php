@@ -208,8 +208,8 @@ class Loader {
 
 
             $file = ULTRA_ADDONS_DIR . 'inc/widgets/'. strtolower( $name ) . '.php';
-
-            if( file_exists( $file ) ){
+            $file = realpath( $file );
+            if( is_readable( $file ) ){
                 include_once $file;
             }else{
                 $error = esc_html__( "The file ( %s ) of [%s] Class is not founded.", 'ultraaddons' );

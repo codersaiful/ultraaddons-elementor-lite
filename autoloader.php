@@ -47,7 +47,6 @@ class Autoloader {
      */
     private static function autoload( $class ) {
         
-        //var_dump( strpos('abc','babcocdeabcd') ,__NAMESPACE__, $class);
         if (0 !== strpos( $class, __NAMESPACE__ ) ) {
             return;
         }
@@ -62,9 +61,11 @@ class Autoloader {
         $full_class_name = strtolower(preg_replace('/\\\/', DIRECTORY_SEPARATOR, $class));
 
         
-        $file = ULTRA_ADDONS_DIR . 'inc/' . $filename . '.php'; //plugin_dir_path(__DIR__)
-        if ( file_exists( $file ) ) {
-            require_once $file;
+        $filename = ULTRA_ADDONS_DIR . 'inc/' . $filename . '.php';
+        $filename = realpath( $filename );
+
+        if ( is_readable( $filename ) ) {
+            require_once $filename;
         }
 
     }
