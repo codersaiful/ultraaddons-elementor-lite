@@ -49,7 +49,7 @@ table.wp-list-table.widefat.plugins tr[data-slug='ultraaddons-elementor-lite']:h
 }
 /*********** UltraAddons Style - In Plugin List | End Here ****************/
 /*****UltraAddons Menu item in Dashboard********/
-#adminmenu li.menu-top a.wp-has-submenu.wp-not-current-submenu.menu-top.toplevel_page_ultraaddons-elementor-light.menu-top-last {
+#adminmenu li.menu-top a.wp-has-submenu.wp-not-current-submenu.menu-top.toplevel_page_ultraaddons-elementor-lite.menu-top-last {
     background: linear-gradient( 0deg, #673ab740, #0000002e);
     background: -webkit-linear-gradient( 0deg, #673ab740, #0000002e);
 /*    border-top: 1px solid #ffffff29;
@@ -76,10 +76,10 @@ table.wp-list-table.widefat.plugins tr[data-slug='ultraaddons-elementor-lite']:h
 /*****UltraAddons Menu item in Dashboard | END********/
 
 /****************** Menu Text in Dashboard **********************/
-li#toplevel_page_ultraaddons-elementor-light .wp-menu-image img {
+li#toplevel_page_ultraaddons-elementor-lite .wp-menu-image img {
     max-width: 20px;
 }
-li#toplevel_page_ultraaddons-elementor-light.current .wp-menu-image img {
+li#toplevel_page_ultraaddons-elementor-lite.current .wp-menu-image img {
     opacity: 1;
 }
 
