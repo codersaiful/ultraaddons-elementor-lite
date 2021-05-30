@@ -42,7 +42,7 @@ class Icons_Manager{
             'displayPrefix'=> 'uicon',
             'prefix'    => 'uicon-',
             'ver'       => ULTRA_ADDONS_VERSION,
-            'fetchJson' => ULTRA_ADDONS_ASSETS . 'icons/ultraaddons/icon-list.js',//http://wp.cm/wp-content/plugins/elementor/assets/lib/font-awesome/js/regular.js
+            'fetchJson' => ULTRA_ADDONS_ASSETS . 'icons/ultraaddons/icon-list.js',
             'native'     => false,
         ];
         return $tabs;
