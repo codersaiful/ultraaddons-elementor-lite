@@ -29,23 +29,6 @@ class Icons_Manager{
      * 
      * we have created our icon
      * Taking help from Elementor Already used Array. 
-     * Sample::
-     * **********************************
-     * 'fa-regular' => 
-    array (size=10)
-      'name' => string 'fa-regular' (length=10)
-      'label' => string 'Font Awesome - Regular' (length=22)
-      'url' => string 'http://wp.cm/wp-content/plugins/elementor/assets/lib/font-awesome/css/regular.min.css' (length=85)
-      'enqueue' => 
-        array (size=1)
-          0 => string 'http://wp.cm/wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.min.css' (length=89)
-      'prefix' => string 'fa-' (length=3)
-      'displayPrefix' => string 'far' (length=3)
-      'labelIcon' => string 'fab fa-font-awesome-alt' (length=23)
-      'ver' => string '5.15.1' (length=6)
-      'fetchJson' => string 'http://wp.cm/wp-content/plugins/elementor/assets/lib/font-awesome/js/regular.js' (length=79)
-      'native' => boolean true
-     * **********************************
      */
     public static function additional_tab( $tabs ) {
         $tabs['ultraaddons'] = [
