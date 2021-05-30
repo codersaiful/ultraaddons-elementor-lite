@@ -28,7 +28,7 @@ $full_logo_image    = apply_filters( 'ultraaddons/admin/header_logo', $full_logo
                     <ul class="ua-submenu">
                     <?php
                     $sub_menus = UltraAddons\Admin\Admin_Handle::get_submenu();
-                    $current_page = isset( $_GET['page'] ) ? $_GET['page'] : false;
+                    $current_page = isset( $_GET['page'] ) ? sanitize_text_field( $_GET['page'] ) : false;
                     foreach( $sub_menus as $sub_menu ){
                         if( $sub_menu['menu_slug'] == 'ultraaddons-help-n-others' ){
                             continue;
