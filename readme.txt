@@ -1,15 +1,14 @@
 === UltraAddons Elementor Lite (Header & Footer Builder, Menu Builder, Cart Icon, Shortcode) ===
 
 Plugin Name: UltraAddons Elementor Lite
-Version: 1.0.4
 Author: codersaiful
 Author URI: https://ultraaddons.com/
 Tags: addons, elementor addons, ultraaddons, page builder, page builder addons, Editor, Web Page Builder
 Contributors: codersaiful, codeastrology, ultraaddons
 Requires at least: 5.0.0
-Tested up to: 5.7.0
+Tested up to: 5.7.2
 Requires PHP: 5.6
-Stable tag: trunk
+Stable tag: 1.0.5
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl.html
 

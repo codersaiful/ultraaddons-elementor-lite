@@ -1,0 +1,93 @@
+/*   Counter  CSS
+-------------------------------------------*/
+/* Counter Section Style One */
+
+.ua-counter-box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: wrap;
+    /*background-color: #0FC393;*/
+    position: relative;
+}
+
+.ua-counter-item {
+    width: 50%;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.ua-counter-icon span {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    display: inline-block;
+    position: relative;
+    margin: 0 0 15px;
+    box-sizing: content-box;
+}
+
+.ua-counter-icon span img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.ua-counter-icon span i{
+    font-size: 36px;
+    line-height: 25px;
+    padding: 28px 21px;
+    color: #0fc392;
+}
+.ua-counter-text .ua-counter-pluss,
+.ua-counter-text .ua-counter-value {
+    font-size: 46px;
+    line-height: 1;
+    margin: 0;
+    color: #fff;
+    font-weight: 700;
+    display: inline-block;
+    position: relative;
+}
+
+.ua-counter-text p {
+    font-size: 16px;
+    margin: 0;
+    color: #fff;
+    line-height: 38px;
+}
+
+/*.ua-counter-box:before {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    content: "";
+    background: #57D5B3;
+    width: 100%;
+    height: 1px;
+}
+
+.ua-counter-box:after {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    content: "";
+    background: #57D5B3;
+    width: 1px;
+    height: 100%;
+}*/
+
+/*.ua-counter-text h6:after {
+    position: absolute;
+    top: -4px;
+    right: -33px;
+    content: "+";
+    font-size: 50px;
+    font-weight: 600;
+}*/
+@media (max-width: 767px) {
+    .ultraaddons-counter-container .ua-counter-wrapper .ua-counter-item {
+        width: 100%;
+    }
+}

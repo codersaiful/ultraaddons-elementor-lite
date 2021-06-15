@@ -69,6 +69,18 @@ form.ultraaddons-cf7-form .row > div{
 .ua-element-contact-form7.elementor-align-full form.ultraaddons-cf7-form input[type="submit"] {
     width: 100%;
 }
+form.ultraaddons-cf7-form input[type="submit"]{
+    font-family: 'Roboto', sans-serif;
+}
+form.ultraaddons-cf7-form input.wpcf7-form-control.wpcf7-submit {
+    padding: 16px 45px;
+    font-size: 16px;
+    line-height: 1.2;
+    width: 100%;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    font-family: var(--medilac-font-secondary);
+}
 @media screen and (min-width: 768px){
     form.ultraaddons-cf7-form .row > div
     {

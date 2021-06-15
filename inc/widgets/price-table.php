@@ -455,7 +455,10 @@ class Price_Table extends Base {
                                 'label_on' => __( 'On', 'ultraaddons' ),
                                 'label_off' => __( 'Off', 'ultraaddons' ),
                                 'return_value' => 'yes',
-                                'prefix_class'  => 'ua-angle-ribbon-'
+                                'prefix_class'  => 'ua-angle-ribbon-',
+                                'condition' => [
+					'show_ribbon' => 'yes',
+				],
 
                         ]
                 );
@@ -1578,11 +1581,11 @@ class Price_Table extends Base {
 					],
 				],
                                 'default' => [
-                                        'size' => 5,
+                                        'size' => 20,
                                         'unit' => 'px',
                                 ],
 				'selectors' => [
-					'{{WRAPPER}} .ua-price-table__features-list li' => 'margin: {{SIZE}}{{UNIT}} 0;',
+					'{{WRAPPER}} .ua-price-table__features-list li' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);

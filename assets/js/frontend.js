@@ -111,7 +111,7 @@
                     },
 
                     run: function() {
-                        console.log(this.getReadySettings());
+                        //console.log(this.getReadySettings());
                         this.elements.$container.owlCarousel(this.getReadySettings());
                     }
             });
@@ -130,6 +130,40 @@
                             });
                     }
             );
+    
+    
+//                //Elementor Open Editor https://code.elementor.com/js-hooks/#panelopen_editorelementType 
+//                //console.log(elementor);
+//                elementor.hooks.addAction('panel/open_editor/widget', function (panel, model, view) {
+//                    console.log(panel, model, view);
+//                    var $element = view.$el.find('.elementor-selector');
+//
+//                    if ($element.length) {
+//                        $element.click(function () {
+//                            alert('Some Message');
+//                        });
+//                    }
+//                });
+            
+            
+//            // WC Categories still working
+//            EF.hooks.addAction(
+//                    'frontend/element_ready/ultraaddons-wc-categories.default',
+//                    function ($scope) {
+//                        
+//                        var content = $scope.find('.products .product-category .product').text();
+//                        console.log(content);
+//                        if( content === "" || content === " " ){
+//                            $scope.addClass('ua-need-apply-change');
+//                            var title = 'WooCommerce Product Category Area';
+//                            var default_message = 'Need update change.'
+//                            
+//                            var display_message = '<h2>' + title + '</h2>';
+//                            display_message += '<p>' + default_message + '</p>';
+//                            //$scope.find('.elementor-widget-container>*').html( display_message );
+//                        }
+//                    }
+//            );
             
             EF.hooks.addAction( 'frontend/element_ready/ultraaddons-slider.default', add_number_inside_bullets);
            
@@ -216,8 +250,10 @@
      * @returns {undefined}
      */
     function add_number_inside_bullets(){
-        var dots = document.querySelectorAll(".ua-number-slider-wrapper .owl-dots .owl-dot");
-        //$('.ua-number-slider-wrapper .owl-dots').addClass('nav-type-number');
+        var selector = ".ua-number-slider-wrapper .owl-dots .owl-dot";
+        var selector_dots = ".ua-number-slider-wrapper .owl-dots";
+        var dots = document.querySelectorAll(selector);
+        $(selector_dots).addClass('nav-type-number');
         let i=1;
         dots.forEach((elem)=>{
             var text = i;
@@ -283,4 +319,45 @@
                 }
             });
     }
+    
+    
+    /*     Magnific Popup js
+     -------------------------------------*
+    $('.video_btn').magnificPopup({
+        type: 'iframe',
+        mainClass: 'mfp-fade',
+        preloader: true,
+    });
+
+    //Magnific popup video
+     $('.play-btn').magnificPopup({
+        type: 'iframe',
+        iframe: {
+            markup: '<div class="mfp-iframe-scaler">' +
+                '<div class="mfp-close"></div>' +
+                '<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>' +
+                '</div>',
+
+            patterns: {
+                youtube: {
+                    index: 'youtube.com/',
+                    id: 'v=',
+                    src: 'https://www.youtube.com/embed/%id%?autoplay=1'
+                },
+                vimeo: {
+                    index: 'vimeo.com/',
+                    id: '/',
+                    src: 'https://player.vimeo.com/video/%id%?autoplay=1'
+                },
+                gmaps: {
+                    index: 'https://maps.google.',
+                    src: '%id%&output=embed'
+                }
+            },
+            srcAction: 'iframe_src',
+        }
+        // other options
+    });
+    //*************************************/
+        
 } (jQuery, window));

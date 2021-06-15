@@ -17,3 +17,6 @@
 * Slider with Pre-build Template of Elementor
 
 Elementor Addons Plugin. Build your desired page just few click. Easy to use and useable for any theme and plugin. Available many filter.
+
+## Widgets List
+* Counter

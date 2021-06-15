@@ -45,7 +45,7 @@ class Header_Footer_Post{
      * @since 1.0.4.0
      */
     public static function add_submenu() {
-        $parent_slug = 'ultraaddons-elementor-light';
+        $parent_slug = 'ultraaddons-elementor-lite';
         $page_title = $menu_title = esc_html__( 'Header & Footer Templates', 'medilac' );
         $capability = ULTRA_ADDONS_CAPABILITY;//'edit_themes';
         $menu_slug = admin_url( 'edit.php?post_type=header_footer' );

@@ -30,7 +30,7 @@ class WC_Categories extends Base{
          * @return string keywords
          */
         public function get_keywords() {
-            return [ 'ultraaddons', 'product', 'category', 'categories', 'slider' ];
+            return [ 'ultraaddons', 'product', 'category', 'categories', 'wc', 'woocommerce', 'taxonomy' ];
         }
         
         /**
@@ -465,11 +465,10 @@ class WC_Categories extends Base{
          * @access protected
          */
         protected function render() {
-
-//                $settings = $this->get_settings_for_display();
-        echo do_shortcode( $this->get_shortcode() );
-                
+            echo do_shortcode( $this->get_shortcode() );
+        }
         
+        protected function _content_template() {
         }
         
         public function render_plain_content() {

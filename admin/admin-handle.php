@@ -18,7 +18,7 @@ class Admin_Handle{
     
     public static $sub_menu = array();
     public static $capability = ULTRA_ADDONS_CAPABILITY;
-    public static $menu_slug = 'ultraaddons-elementor-light';
+    public static $menu_slug = 'ultraaddons-elementor-lite';
     public static $header_file = ULTRA_ADDONS_DIR . 'admin/pages/includes/admin-header.php';
     public static $footer_file = ULTRA_ADDONS_DIR . 'admin/pages/includes/admin-footer.php';
 
@@ -72,7 +72,7 @@ class Admin_Handle{
      * @return Array
      */
     public static function add_action_links( $links ) {
-        $ultraaddons_links[] = '<a href="' . admin_url( 'admin.php?page=ultraaddons-elementor-light' ) . '" title="' . esc_attr__( 'Welcome to UltraAddons', 'ultraaddons' ) . '" target="_blank">' . esc_html__( 'Welcome','ultraaddons' ).'</a>';
+        $ultraaddons_links[] = '<a href="' . admin_url( 'admin.php?page=ultraaddons-elementor-lite' ) . '" title="' . esc_attr__( 'Welcome to UltraAddons', 'ultraaddons' ) . '" target="_blank">' . esc_html__( 'Welcome','ultraaddons' ).'</a>';
         $ultraaddons_links[] = '<a href="https://codeastrology.com/support/" title="' . esc_attr__( 'CodeAstrology Support', 'ultraaddons' ) . '" target="_blank">'.esc_html__( 'Support','ultraaddons' ).'</a>';
         $ultraaddons_links[] = '<a href="https://github.com/codersaiful/ultraaddons-elementor-lite" title="' . esc_attr__( 'Github Repo Link', 'ultraaddons' ) . '" target="_blank">'.esc_html__( 'Github Repository','ultraaddons' ).'</a>';
         return array_merge( $ultraaddons_links, $links );
@@ -101,7 +101,7 @@ class Admin_Handle{
             'page_title'    => __( 'UltraAddons Elementor Addons', 'ultraaddons' ),
             'menu_title'    => __( 'UltraAddons', 'ultraaddons' ),
             'capability'    => self::$capability,
-            'menu_slug'    => self::$menu_slug,//'ultraaddons-elementor-light',
+            'menu_slug'    => self::$menu_slug,//'ultraaddons-elementor-lite',
             'function'    => [ __CLASS__, 'widgets_page' ],
             //'function'    => [ __CLASS__, 'root_page' ], //When Welcome Page will Active, then it will active
             'icon_url'    => $icon_url,
@@ -165,7 +165,7 @@ class Admin_Handle{
                 'menu_title'    =>  __( 'Widgets', 'ultraaddons' ),
                 'capability'    => self::$capability,
 //                'menu_slug'     => 'ultraaddons-widgets', //When Welcome Page will Active, then it will active
-                'menu_slug'     => 'ultraaddons-elementor-light',
+                'menu_slug'     => 'ultraaddons-elementor-lite',
                 'function'      => [__CLASS__, 'widgets_page'],
                 'position'      =>  1,
             ],

@@ -80,6 +80,9 @@
     font-size: 16px;
     color:#0FC393;
 }
+.ua-list-temp-default .ua-list-items li i {
+    top: 6px;
+}
 
 div.ua-list-temp-default .ua-list-items li i {
     border-radius: 2px;
@@ -131,7 +134,7 @@ div.ua-list-temp-default .ua-list-items li i {
     padding: 12px 12px 12px 14px;
 }
 .elementor-element.ua-list-temp-temp-3 .ua-list-items li i{
-    font-size: 40px;
+    font-size: 30px;
     padding: 9px 12px;
     margin-top: 5px;
 }
@@ -181,6 +184,12 @@ div.ua-list-temp-default .ua-list-items li i {
     margin: 18px 14px 23px 13px;
 }
 
+.ua-list-item-wrapper .list-item-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 28px;
+}
 @media (min-width: 37.5em){
     .ua-list-items li {
         width: 48%;
