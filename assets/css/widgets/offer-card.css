@@ -1,0 +1,106 @@
+/*   Offer  Section CSS
+-------------------------------------------*/
+.ultraaddons_offer_card .elementor-widget-container {
+    background: transparent;
+    padding: 50px;
+}
+
+.ultraaddons_offer_card .ua-offer-inner {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ultraaddons_offer_card .ua-offer-texts {
+    z-index: 2;
+}
+.ultraaddons_offer_card .ua-offer-texts p {
+    margin: 0;
+    line-height: 1em;
+}
+.ultraaddons_offer_card .ua-offer-texts p.offer-subheading {
+    color: #f00;
+    font-size: 20px;
+}
+.ultraaddons_offer_card .ua-offer-texts p.offer-heading {
+    font-size: 36px;
+    font-weight: 600;
+    font-family: Roboto;
+    color: #021429;
+    line-height: 48px;
+    margin: 0 0 20px;
+}
+.ultraaddons_offer_card .ua-offer-texts .offer-btn {
+    padding: 11px 22px;
+    font-size: 16px;
+    line-height: 26px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.ultraaddons_offer_card.elementor-align-right .ua-offer-inner {
+    flex-direction: row-reverse;
+}
+.ultraaddons_offer_card.elementor-align-center .ua-offer-inner {
+    flex-direction: column-reverse;
+}
+.ultraaddons_offer_card .ua-offer-img {
+    display: flex;
+    z-index: 1;
+}
+
+.ultraaddons_offer_card.image-location--middle .ua-offer-img {
+    align-items: center;
+}
+.ultraaddons_offer_card.image-location--top .ua-offer-img {
+    align-items: flex-start;
+}
+.ultraaddons_offer_card.image-location--bottom .ua-offer-img,
+.card-orientation--portrait .ua-offer-inner .ua-offer-img {
+    align-items: flex-end;
+}
+.card-orientation--portrait .ua-offer-inner {
+    flex-direction: column;
+}
+.card-orientation--landscape .ua-offer-inner {
+    flex-direction: row;
+}
+/*
+image-location--bottom image-location--tablet-middle image-location--mobile-middle
+*/
+@media (max-width: 1024px){
+    .card-orientation--tablet-portrait .ua-offer-inner  {
+        flex-direction: column;
+    }
+    .card-orientation--tablet-landscape .ua-offer-inner  {
+        flex-direction: row;
+    }
+    .ultraaddons_offer_card.image-location--tablet-top .ua-offer-img {
+        align-items: flex-start;
+    }
+    .ultraaddons_offer_card.image-location--tablet-middle .ua-offer-img {
+        align-items: center;
+    }
+    .ultraaddons_offer_card.image-location--tablet-bottom .ua-offer-img {
+        align-items: flex-end;
+    }
+}
+
+@media only screen and (max-width: 767px){
+    .card-orientation--mobile-portrait .ua-offer-inner  {
+        flex-direction: column;
+    }
+    .card-orientation--mobile-landscape .ua-offer-inner  {
+        flex-direction: row;
+    }
+    .ultraaddons_offer_card.image-location--mobile-top .ua-offer-img {
+        align-items: flex-start;
+    }
+    .ultraaddons_offer_card.image-location--mobile-middle .ua-offer-img {
+        align-items: center;
+    }
+    .ultraaddons_offer_card.image-location--mobile-bottom .ua-offer-img {
+        align-items: flex-end;
+    }
+    .ultraaddons_offer_card .ua-offer-img {
+        justify-content: flex-end;
+    }
+}

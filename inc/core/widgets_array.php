@@ -200,6 +200,15 @@ $widgetsArray = [
             ],
     ],
     
+    'Offer_Card' => [
+            'name'  => __( 'Offer Card', 'ultraaddons' ),
+            'is_free'   => true,
+            'icon'      => 'uicon-ultraaddons',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
 ];
 
 return apply_filters( 'ultraaddons/widgets/array', $widgetsArray );
