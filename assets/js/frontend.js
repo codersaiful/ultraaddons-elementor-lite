@@ -131,6 +131,22 @@
                     }
             );
     
+            //Testimonial Slider
+            console.dir("ultraaddons",SliderBase);
+            console.dir(SliderBase);
+            EF.hooks.addAction(
+                    'frontend/element_ready/ultraaddons-testimonial-slider.default.default',
+                    function ($scope) {
+                            EF.elementsHandler.addHandler(SliderBase, {
+                                    $element: $scope,
+                                    selectors: {
+                                            container: '.ua-testimonial-slider-wrapper',
+                                    },
+                                    autoplay: true,
+                            });
+                    }
+            );
+    
     
 //                //Elementor Open Editor https://code.elementor.com/js-hooks/#panelopen_editorelementType 
 //                //console.log(elementor);
