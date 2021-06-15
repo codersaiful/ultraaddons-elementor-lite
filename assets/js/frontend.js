@@ -131,10 +131,13 @@
                     }
             );
     
+            //Testimonial Slider
+            console.dir("ultraaddons",SliderBase);
+            console.dir(SliderBase);
             EF.hooks.addAction(
-                    'frontend/element_ready/ultraaddons_testimonial_slider.default',
+                    'frontend/element_ready/ultraaddons-testimonial-slider.default.default',
                     function ($scope) {
-                            elementorFrontend.elementsHandler.addHandler(SliderBase, {
+                            EF.elementsHandler.addHandler(SliderBase, {
                                     $element: $scope,
                                     selectors: {
                                             container: '.ua-testimonial-slider-wrapper',
