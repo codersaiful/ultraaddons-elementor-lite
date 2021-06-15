@@ -17,9 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class Gallery_Box extends Base{
         
     /**
-     * Get your widget name
+     * Get your widget by keywords
      *
-     * Retrieve oEmbed widget title.
      *
      * @since 1.0.0
      * @access public
