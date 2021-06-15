@@ -165,7 +165,7 @@ $widgetsArray = [
     'Counter' => [
             'name'  => __( 'Counter Box', 'ultraaddons' ),
             'is_free'   => true,
-            'icon'      => 'uicon-ultraaddons',
+            'icon'      => 'uicon-counter',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
