@@ -359,5 +359,15 @@
         // other options
     });
     //*************************************/
+                    
+                    
+   $('.ua-counter-text').appear(function () {
+        var element = $(this);
+        var timeSet = setTimeout(function () {
+            if (element.hasClass('ua-counter-text')) {
+                element.find('.ua-counter-value').countTo();
+            }
+        });
+    });
         
 } (jQuery, window));
