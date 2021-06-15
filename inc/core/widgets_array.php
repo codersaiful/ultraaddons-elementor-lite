@@ -161,6 +161,16 @@ $widgetsArray = [
     ],
     
     
+    //New Added Widgets
+    'Counter' => [
+            'name'  => __( 'Counter Box', 'ultraaddons' ),
+            'is_free'   => true,
+            'icon'      => 'uicon-ultraaddons',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
 ];
 
 return apply_filters( 'ultraaddons/widgets/array', $widgetsArray );
