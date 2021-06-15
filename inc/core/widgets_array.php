@@ -162,6 +162,16 @@ $widgetsArray = [
     ],
     
     
+    'Testimonial_Slider' => [
+            'name'  => __( 'Testimonial Slider', 'ultraaddons' ),
+            'is_free'   => true,
+            'icon'      => 'uicon-ultraaddons',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
+    
     'WC_Categories' => [
             'name'  => __( 'Product Categories', 'ultraaddons' ),
             'is_free'   => true,
