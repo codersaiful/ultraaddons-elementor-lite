@@ -339,6 +339,31 @@ class Loader {
         
         wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
         wp_enqueue_script( $name );
+        
+        
+        //Naming Args For jQuery.Apear
+        $name           = 'appear';
+        $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/jquery.appear.js';
+        $dependency     =  ['jquery'];//['jquery'];
+        $version        = ULTRA_ADDONS_VERSION;
+        $in_footer  = false;
+        
+        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $name );
+        
+        
+        //Naming Args For jQuery.Apear
+        $name           = 'jquery-count-to';
+        $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/jquery-count-to.js';
+        $dependency     =  ['jquery'];//['jquery'];
+        $version        = ULTRA_ADDONS_VERSION;
+        $in_footer  = false;
+        
+        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $name );
+        
+        
+        //Third-party CSS file Load
         wp_enqueue_style('barfiller', ULTRA_ADDONS_ASSETS . 'vendor/css/barfiller.css' );
         
         //Animate CSS Load
