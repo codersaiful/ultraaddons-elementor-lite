@@ -172,6 +172,26 @@ $widgetsArray = [
     ],
     
     
+    'Testimonial_Box' => [
+            'name'  => __( 'Testimonial Box', 'ultraaddons' ),
+            'is_free'   => true,
+            'icon'      => 'eicon-testimonial',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
+    
+    'Team_Box' => [
+            'name'  => __( 'Team Box', 'ultraaddons' ),
+            'is_free'   => true,
+            'icon'      => 'eicon-user-circle-o',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
+    
     'WC_Categories' => [
             'name'  => __( 'Product Categories', 'ultraaddons' ),
             'is_free'   => true,

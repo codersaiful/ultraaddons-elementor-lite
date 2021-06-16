@@ -1,0 +1,177 @@
+.team-box-default .ua-single-team-wrapper {
+    display: block;
+    width: 100%;
+}
+.ua-element-team-box .elementor-widget-container {
+    border: 2px solid #EAEDF7;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+}
+.team-box-default.ua-element-team-box .elementor-widget-container {
+    padding: 42px 0;
+}
+.ua-element-team-box .elementor-widget-container ul, .ua-element-team-box .elementor-widget-container li{list-style: none;}
+.ua-element-team-box .elementor-widget-container:hover {
+    border-color: #0FC392;
+}
+
+.team-box-default .team-box-profile-avatar {
+    position: relative;
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    margin: 0 auto 36px;
+    overflow: hidden;
+    background: #13c392;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.ua-single-team-wrapper .team-box-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 42px;
+}
+.team-box-default .ua-single-team-wrapper .team-box-item .team-box-profile-avatar img {
+    display: none;
+    width: 100%;
+}
+.team-box-default .team-box-social-link {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 85%;
+    height: 85%;
+    background: rgba(0, 0, 0, 0.5);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+}
+.team-box-default .no-profile-image .team-box-social-link,
+.ua-element-team-box .elementor-widget-container:hover .team-box-social-link {
+    visibility: visible;
+    opacity: 1;
+}
+.team-box-default .team-box-social-link ul {
+    display: flex;
+    justify-content: center;
+    z-index: 9;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    white-space: nowrap;
+}
+.team-box-default .team-box-social-link li {
+    margin: 0 15px;
+}
+.team-box-default .team-box-social-link li a {
+    color: #fff;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+}
+.team-box-info h2 {
+    font-size: 24px;
+    color: #21272C;
+    line-height: 1.3;
+    font-weight: 600;
+    margin: 0;
+}
+.team-box-default .team-box-info span {
+    font-family: "Work Sans", sans-serif;
+    color: #5C6B79;
+    display: block;
+    line-height: 1.2;
+}
+.team-box-default .ua-temp2-profile-image{display: none;}
+.ua-single-team-wrapper .team-box-btn a {
+    display: inline-block;
+    width: 46px;
+    height: 46px;
+    background: #0FC392;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    line-height: 44px;
+    transition: .5s background-color;
+}
+.ua-single-team-wrapper .team-box-item:hover .team-box-btn a {
+    color: #0FC392;
+    outline: 2px solid #0FC392;
+    background: white;
+}
+.team-box-temp-2 .team-box-social-link {
+    margin-top: -30px;
+    display: flex;
+    align-items: center;
+}
+.team-box-temp-2 .team-box-social-link i {
+    background-color: #ff7d00;
+    z-index: 4;
+    transition: 0.3s;
+    position: relative;
+    height: 44px;
+    width: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 20px;
+}
+.team-box-temp-2 .team-box-social-link ul {
+    padding: 0 30px;
+    margin: 0;
+    transition: 0.7s;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+.team-box-temp-2 .team-box-social-link.active ul {
+    justify-content: space-between;
+}
+.team-box-temp-2 .team-box-social-link ul li {
+    width: 44px;
+    text-align: center;
+    border-radius: 50%;
+    display: none;
+    transition: 0.7s;
+    cursor: pointer;
+}
+.team-box-temp-2 .team-box-social-link ul li.handle,
+.team-box-temp-2 .team-box-social-link.active li {
+    display: inline-block;
+}
+.team-box-temp-2 .team-box-social-link.active li.handle.rotated i {
+    color: #fff;
+    background-color: #0fc391;
+    transform: rotate(225deg);
+}
+.team-box-temp-2 .team-box-info {
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-top: none;
+}
+
+.team-box-temp-2 .team-box-profile-avatar {
+    border: 1px solid #ddd;
+    border-bottom: none;
+}
+.team-box-temp-2 .team-box-profile-avatar {
+    background-image: none !important;
+}
+.team-box-temp-2 .team-box-profile-avatar img {
+    width: 100%;
+}
+.team-box-temp-2 .team-box-social-link a {
+    text-decoration: none;
+}
