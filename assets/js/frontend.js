@@ -135,7 +135,7 @@
             console.dir("ultraaddons",SliderBase);
             console.dir(SliderBase);
             EF.hooks.addAction(
-                    'frontend/element_ready/ultraaddons-testimonial-slider.default.default',
+                    'frontend/element_ready/ultraaddons-testimonial-slider.default',
                     function ($scope) {
                             EF.elementsHandler.addHandler(SliderBase, {
                                     $element: $scope,

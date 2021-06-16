@@ -85,7 +85,7 @@
 Slider CSS
 */
 .ua-testimonial-slider-wrapper .owl-stage-outer {
-    /*overflow: hidden;*/
+    overflow: hidden;
 }
 .elementor-element.elementor-widget-ultraaddons_testimonial_slider .elementor-widget-container {
     overflow: hidden;
