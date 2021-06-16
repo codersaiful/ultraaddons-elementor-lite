@@ -255,6 +255,26 @@
                         }
                     });
             });
+            
+            
+            /**
+             * Skillbar
+             * using barfiller
+             * 
+             * @since 1.0.5
+             * taken from medilac-core
+             */
+            var skillBar = function( $scope, $ ){
+
+                    var items = $scope.find('.ua-skill-wrapper');
+                    $(items).each(function(a, b){
+                        let color = $(b).attr('aria-color');
+                        let id = $(b).attr('aria-id');
+                        let parentID = $(b).closest('.ua-element-skill-bar').data('id');
+                        $('#bar-' + parentID + '-' + id + '-' + (a+1)).barfiller({ barColor: color });
+                    });
+            }
+            EF.hooks.addAction( 'frontend/element_ready/ultraaddons-skill-bar.default', skillBar );
     });
     
     /**
