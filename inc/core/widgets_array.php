@@ -219,6 +219,15 @@ $widgetsArray = [
             ],
     ],
     
+    'Recent_Blog' => [
+            'name'  => __( 'Recent Blog', 'ultraaddons' ),
+            'is_free'   => true,
+            'icon'      => 'uicon-ultraaddons',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
 ];
 
 return apply_filters( 'ultraaddons/widgets/array', $widgetsArray );
