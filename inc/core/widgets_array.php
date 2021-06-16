@@ -248,6 +248,15 @@ $widgetsArray = [
             ],
     ],
     
+    'Skill_Bar' => [
+            'name'  => __( 'Skill Bar', 'ultraaddons' ),
+            'is_free'   => true,
+            'icon'      => 'uicon-skillbar',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
 ];
 
 return apply_filters( 'ultraaddons/widgets/array', $widgetsArray );
