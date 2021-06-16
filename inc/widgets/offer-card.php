@@ -24,7 +24,7 @@ class Offer_Card extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'product', 'card', 'product card', 'product board', 'buy' ];
+        return [ 'ultraaddons', 'offer', 'card', 'product card', 'product board', 'buy' ];
     }
    
     /**
@@ -542,7 +542,7 @@ class Offer_Card extends Base{
      */
     protected function style_typography_controls() {
         $this->start_controls_section(
-            'mc_avd_heading_typography',
+            'ua_avd_heading_typography',
             [
                 'label'     => esc_html__( 'Typography', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
