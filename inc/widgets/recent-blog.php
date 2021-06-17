@@ -99,7 +99,15 @@ class Recent_Blog extends Base{
 
                 $thumbnail = ULTRA_ADDONS_URL . 'assets/images/no-image.png';
                 if( has_post_thumbnail() ){
-                    $thumbnail = get_the_post_thumbnail_url( null, 'ultraaddons-thumbnail' );
+                    /**
+                     * Compatible with Astha Theme
+                     * 
+                     * @link https://wordpress.org/themes/astha/ Our Default Theme
+                     * 
+                     * @since 1.0.5
+                     * @author Saiful Islam
+                     */
+                    $thumbnail = get_the_post_thumbnail_url( null, 'astha-thumbnail' );
                 }
 
 
