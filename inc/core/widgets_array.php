@@ -175,7 +175,7 @@ $widgetsArray = [
     'Testimonial_Box' => [
             'name'  => __( 'Testimonial Box', 'ultraaddons' ),
             'is_free'   => true,
-            'icon'      => 'eicon-testimonial',
+            'icon'      => 'uicon-testimonial',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
@@ -185,7 +185,7 @@ $widgetsArray = [
     'Team_Box' => [
             'name'  => __( 'Team Box', 'ultraaddons' ),
             'is_free'   => true,
-            'icon'      => 'eicon-person',
+            'icon'      => 'uicon-team-box',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
