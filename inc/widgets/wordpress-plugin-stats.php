@@ -55,7 +55,7 @@ class WordPress_Plugin_Stats extends Base{
     protected function render() {
         $settings           = $this->get_settings_for_display();
         $time_out = 10;
-        $plugin_slug = 'ultraaddons-elementor-lite';
+        $plugin_slug = 'ultraaddons-elementor-lite'; //woo-product-table
         $stats_url = 'https://api.wordpress.org/stats/plugin/1.0/?slug=' . $plugin_slug;
         $info_url = 'http://api.wordpress.org/plugins/info/1.0/' . $plugin_slug . '.json';
         $download_url = 'https://api.wordpress.org/stats/plugin/1.0/downloads.php?slug=' . $plugin_slug;
