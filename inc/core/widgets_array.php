@@ -165,7 +165,7 @@ $widgetsArray = [
     'Testimonial_Slider' => [
             'name'  => __( 'Testimonial Slider', 'ultraaddons' ),
             'is_free'   => true,
-            'icon'      => 'uicon-ultraaddons',
+            'icon'      => 'eicon-testimonial-carousel',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
@@ -185,7 +185,7 @@ $widgetsArray = [
     'Team_Box' => [
             'name'  => __( 'Team Box', 'ultraaddons' ),
             'is_free'   => true,
-            'icon'      => 'eicon-user-circle-o',
+            'icon'      => 'eicon-person',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
@@ -215,7 +215,7 @@ $widgetsArray = [
     'Gallery_Box' => [
             'name'  => __( 'Gallery Box', 'ultraaddons' ),
             'is_free'   => true,
-            'icon'      => 'uicon-ultraaddons',
+            'icon'      => 'eicon-gallery-justified',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
@@ -224,7 +224,7 @@ $widgetsArray = [
     'Info_Boards' => [
             'name'  => __( 'Info Boards', 'ultraaddons' ),
             'is_free'   => true,
-            'icon'      => 'uicon-ultraaddons',
+            'icon'      => 'eicon-form-horizontal',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
@@ -233,7 +233,7 @@ $widgetsArray = [
     'Offer_Card' => [
             'name'  => __( 'Offer Card', 'ultraaddons' ),
             'is_free'   => true,
-            'icon'      => 'uicon-ultraaddons',
+            'icon'      => 'eicon-form-horizontal',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
@@ -242,7 +242,7 @@ $widgetsArray = [
     'Recent_Blog' => [
             'name'  => __( 'Recent Blog', 'ultraaddons' ),
             'is_free'   => true,
-            'icon'      => 'uicon-ultraaddons',
+            'icon'      => 'uicon-blog-list',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
