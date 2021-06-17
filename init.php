@@ -14,9 +14,9 @@
  * Requires at least:    4.0.0
  * Tested up to:         5.7.2
  * WC requires at least: 3.0.0
- * WC tested up to: 	 5.3.0
- * Elementor tested up to: 3.2.4
- * Elementor Pro tested up to: 5.10.0
+ * WC tested up to: 	 5.4.1
+ * Elementor tested up to: 3.2.5
+ * Elementor Pro tested up to: 5.11.0
  *
  * @package UltraAddons
  * @category Addons
