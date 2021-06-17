@@ -151,6 +151,47 @@ $widgetsArray = [
                 __( 'Basic', 'ultraaddons' ),
             ],
     ],
+    
+    'WC_Products' => [
+            'name'  => __( 'WooCommerce Products', 'ultraaddons' ),
+            'is_free'   => true,
+            'icon'      => 'uicon-product',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
+    
+    'Testimonial_Slider' => [
+            'name'  => __( 'Testimonial Slider', 'ultraaddons' ),
+            'is_free'   => true,
+            'icon'      => 'eicon-testimonial-carousel',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
+    
+    'Testimonial_Box' => [
+            'name'  => __( 'Testimonial Box', 'ultraaddons' ),
+            'is_free'   => true,
+            'icon'      => 'uicon-testimonial',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
+    
+    'Team_Box' => [
+            'name'  => __( 'Team Box', 'ultraaddons' ),
+            'is_free'   => true,
+            'icon'      => 'uicon-team-box',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
+    
     'WC_Categories' => [
             'name'  => __( 'Product Categories', 'ultraaddons' ),
             'is_free'   => true,
@@ -165,7 +206,52 @@ $widgetsArray = [
     'Counter' => [
             'name'  => __( 'Counter Box', 'ultraaddons' ),
             'is_free'   => true,
-            'icon'      => 'uicon-ultraaddons',
+            'icon'      => 'uicon-counter',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
+    'Gallery_Box' => [
+            'name'  => __( 'Gallery Box', 'ultraaddons' ),
+            'is_free'   => true,
+            'icon'      => 'eicon-gallery-justified',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
+    'Info_Boards' => [
+            'name'  => __( 'Info Boards', 'ultraaddons' ),
+            'is_free'   => true,
+            'icon'      => 'eicon-form-horizontal',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
+    'Offer_Card' => [
+            'name'  => __( 'Offer Card', 'ultraaddons' ),
+            'is_free'   => true,
+            'icon'      => 'eicon-form-horizontal',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
+    'Recent_Blog' => [
+            'name'  => __( 'Recent Blog', 'ultraaddons' ),
+            'is_free'   => true,
+            'icon'      => 'uicon-blog-list',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
+    'Skill_Bar' => [
+            'name'  => __( 'Skill Bar', 'ultraaddons' ),
+            'is_free'   => true,
+            'icon'      => 'uicon-skillbar',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],

@@ -1,0 +1,117 @@
+/* Service Section style three */
+
+.ua-gallery-box-wrapper .gallery-area {
+    padding-bottom: 0;
+}
+
+.ua-gallery-box-wrapper .ua-gallery-item {
+    color: #fff;
+    width: auto;
+    overflow: hidden;
+}
+
+.ua-gallery-box-wrapper .ua-gallery-item:nth-child(4) {
+    width: auto;
+}
+
+.ua-gallery-box-wrapper .ua-gallery-item img {
+    display: block;
+    width: 100%;
+}
+.ua-gallery-info-title {
+    text-align: left;
+}
+.ua-gallery-item-info {
+    position: absolute;
+    bottom: 30px;
+    width: calc(100% - 60px);
+    background: #fff;
+    left: 0px;
+    margin: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+}
+.ua-gallery-style-1 .ua-gallery-box-wrapper .ua-gallery-item-info {
+    bottom: -20px;
+    margin: 0;
+    width: 100%;
+    background: linear-gradient(0deg, rgba(0,0,0,0.8379726890756303) 0%, rgba(0,0,0,0.2861519607843137) 65%, rgba(0,212,255,0) 100%);
+    padding-top: 50px;
+}
+.ua-gallery-box-wrapper .ua-gallery-info-title span {
+    font-family: Work Sans;
+    font-weight: 100;
+    padding-bottom: 15px;
+    font-size: 16px;
+}
+.ua-gallery-style-1 .ua-gallery-box-wrapper .ua-gallery-info-title span {
+    color: #fff;
+}
+
+.ua-gallery-style-2 .ua-gallery-box-wrapper .ua-gallery-info-title span {
+    color: #0FC392;
+    font-weight: 500;
+}
+.ua-gallery-info-title p {
+    font-size: 24px;
+    font-family: "Roboto",sans-serif;
+    font-weight: 500;
+    margin: 0;
+}
+
+.ua-gallery-style-2 .ua-gallery-info-title p {
+    color: #5c6b79;
+}
+
+.ua-gallery-box-wrapper .ua-gallery-info-link a {
+    display: inline-block;
+    border: 2px solid #FFF;
+    line-height: 1;
+    padding: 10px 11px;
+    text-align: center;
+    color: #fff;
+    border-radius: 50%;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+}
+
+.ua-gallery-style-2 .ua-gallery-box-wrapper .ua-gallery-info-link a {
+    border-color: #0FC392;
+    color: #0FC392;
+    border-radius: 0;
+}
+
+.ua-gallery-box-wrapper .ua-gallery-item .ua-gallery-info-link a:hover {
+    background-color: #0FC392;
+    color: #FFF;
+}
+
+.ua-gallery-style-1 .ua-gallery-box-wrapper .ua-gallery-item:hover .ua-gallery-item-info {
+    bottom: 0;
+}
+.ua-gallery-item:hover .ua-gallery-item-info {
+    visibility: visible;
+    opacity: 1;
+}
+.ua-gallery-box-wrapper .ua-gallery-item {
+    height: 250px;
+    background-position: center center;
+    background-size: cover;
+    transition: 0.3s all;
+}
+.elementor-widget-container .ua-gallery-box-wrapper:hover .ua-gallery-item {
+    background-position: top left;
+}
+.ua-gallery-style-1 .ua-gallery-box-wrapper .ua-gallery-item .ua-gallery-info-link a:hover {
+     background-color: transparent; 
+}
+.ua-gallery-box-wrapper {
+    overflow: hidden;
+    position: relative;
+}

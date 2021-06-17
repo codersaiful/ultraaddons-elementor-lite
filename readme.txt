@@ -74,6 +74,12 @@ To change theme's default Header or Footer, Even add additional content to Heade
 UltraAddons provide a shortcode `[UltraAddons_Template id='123']`. Here 123 is a POST_ID. Use any Elementor page/Template's POST_ID as id. Use Anywhere.
 Suppose: you want to show any Elementor Item/Widget/Template in widget, or in any WordPress post or in Guttenberg block. Just use this shortcode.
 
+*Credits*
+* Owl Carousel v2.3.4 - https://github.com/OwlCarousel2/OwlCarousel2 https://github.com/OwlCarousel2/OwlCarousel2/blob/master/LICENSE
+* jQuery countTo - https://github.com/mhuggins/jquery-countTo
+* jQuery.Appear.js - https://github.com/morr/jquery.appear
+* jQuery.barfiller.js - https://github.com/9bitStudios/barfiller
+
 == Frequently Asked Questions ==
 
 = Does this plugin support any theme? =

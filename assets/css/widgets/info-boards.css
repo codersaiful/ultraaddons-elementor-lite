@@ -1,0 +1,87 @@
+.info-board-wrap {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+.info-board {
+    width: 100%;
+    padding: 50px 45px;
+    min-height: 300px;
+}
+.info-board-title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.info-board-title h4 {
+    font-size: 22px;
+    line-height: 30px;
+    font-weight: 500;
+    margin: 0 0 0 15px;
+    text-transform: capitalize;
+}
+.info-board-content {
+    margin: 25px 0 0;
+}
+.info-board-content li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+.ultraaddons-btn,
+.ultraaddons-btn-link {
+    display: block;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0;
+    line-height: 32px;
+    text-transform: capitalize;
+}
+article.post .info-board-content ol,
+article.page .info-board-content ol,
+article.post .info-board-content ul,
+article.page .info-board-content ul {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 1.5em;
+}
+.info-board-content ul p,
+.info-board-content ol p {
+    margin: 0;
+}
+
+.info-board h4,
+.info-board p,
+.info-board h6,
+.info-board span,
+.info-board a {
+    color: #fff;
+}
+
+
+
+
+
+
+
+/* need to remove */
+.bg-black {
+    background-color: #021429;
+}
+.bg-green {
+    background-color: #0FC392;
+}
+
+@media (min-width: 37.5em){
+    .info-board {
+        width: 50%;
+    }
+}
+
+@media (min-width: 62em){
+    .info-board {
+        width: 33.33%;
+    }
+}

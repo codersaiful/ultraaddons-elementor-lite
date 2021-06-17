@@ -131,6 +131,22 @@
                     }
             );
     
+            //Testimonial Slider
+            console.dir("ultraaddons",SliderBase);
+            console.dir(SliderBase);
+            EF.hooks.addAction(
+                    'frontend/element_ready/ultraaddons-testimonial-slider.default',
+                    function ($scope) {
+                            EF.elementsHandler.addHandler(SliderBase, {
+                                    $element: $scope,
+                                    selectors: {
+                                            container: '.ua-testimonial-slider-wrapper',
+                                    },
+                                    autoplay: true,
+                            });
+                    }
+            );
+    
     
 //                //Elementor Open Editor https://code.elementor.com/js-hooks/#panelopen_editorelementType 
 //                //console.log(elementor);
@@ -239,6 +255,26 @@
                         }
                     });
             });
+            
+            
+            /**
+             * Skillbar
+             * using barfiller
+             * 
+             * @since 1.0.5
+             * taken from medilac-core
+             */
+            var skillBar = function( $scope, $ ){
+
+                    var items = $scope.find('.ua-skill-wrapper');
+                    $(items).each(function(a, b){
+                        let color = $(b).attr('aria-color');
+                        let id = $(b).attr('aria-id');
+                        let parentID = $(b).closest('.ua-element-skill-bar').data('id');
+                        $('#bar-' + parentID + '-' + id + '-' + (a+1)).barfiller({ barColor: color });
+                    });
+            }
+            EF.hooks.addAction( 'frontend/element_ready/ultraaddons-skill-bar.default', skillBar );
     });
     
     /**
@@ -359,5 +395,15 @@
         // other options
     });
     //*************************************/
+                    
+                    
+   $('.ua-counter-text').appear(function () {
+        var element = $(this);
+        var timeSet = setTimeout(function () {
+            if (element.hasClass('ua-counter-text')) {
+                element.find('.ua-counter-value').countTo();
+            }
+        });
+    });
         
 } (jQuery, window));
