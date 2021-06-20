@@ -257,6 +257,16 @@ $widgetsArray = [
             ],
     ],
     
+    
+    'WordPress_Plugin_Stats' => [
+            'name'  => __( 'WordPress Plugin Stats', 'ultraaddons' ),
+            'is_free'   => true,
+            'icon'      => 'uicon-skillbar',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
 ];
 
 return apply_filters( 'ultraaddons/widgets/array', $widgetsArray );

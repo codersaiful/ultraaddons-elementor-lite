@@ -105,6 +105,11 @@ class WC_Products extends Base{
      * @access protected
      */
     protected function render() {
+        
+        //Intrigate with WooCommerce
+        if( ! class_exists( 'WooCommerce' ) ){
+            echo "<p style='color: #d00;font-size: 22px;'>" . esc_html__( "WooCommerce is not Activated", 'ultraaddons' ) . "</p>";
+        }
 
         $settings = $this->get_settings_for_display();
 

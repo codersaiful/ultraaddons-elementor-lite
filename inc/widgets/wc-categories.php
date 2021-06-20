@@ -135,7 +135,8 @@ class WC_Categories extends Base{
 		);
 
 		$categories = get_terms( 'product_cat' );
-
+                
+                $categories = is_array( $categories ) && count( $categories ) > 0 ? $categories : array();
 		$options = [];
 		foreach ( $categories as $category ) {
 			$options[ $category->term_id ] = $category->name;
@@ -465,6 +466,9 @@ class WC_Categories extends Base{
          * @access protected
          */
         protected function render() {
+            if( ! class_exists( 'WooCommerce' ) ){
+                echo "<p style='color: #d00;font-size: 22px;'>" . esc_html__( "WooCommerce is not Activated", 'ultraaddons' ) . "</p>";
+            }
             echo do_shortcode( $this->get_shortcode() );
         }
         
