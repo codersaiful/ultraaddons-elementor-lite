@@ -62,6 +62,7 @@ class WordPress_Plugin_Stats extends Base{
         $time_out = 10;
         $plugin_slug = 'ultraaddons-elementor-lite'; //woo-product-table
         $stats_url = 'https://api.wordpress.org/stats/plugin/1.0/?slug=' . $plugin_slug;
+        $active_status = 'https://api.wordpress.org/stats/plugin/1.0/active-installs.php?slug=' . $plugin_slug . '&limit=728';
         $info_url = 'http://api.wordpress.org/plugins/info/1.0/' . $plugin_slug . '.json';
         $download_url = 'https://api.wordpress.org/stats/plugin/1.0/downloads.php?slug=' . $plugin_slug;
 //        $remote = wp_remote_get( $download_url, array(
@@ -72,6 +73,26 @@ class WordPress_Plugin_Stats extends Base{
 //            );
 //            var_dump($remote);
         
+        $str = file_get_contents( $active_status );
+        $json_active_stats = json_decode($str, true); // decode the JSON into an associative array
+        // var_dump($json_active_stats);
+        $total = 0;
+        $pattern = "/[\+]/";
+        foreach( $json_active_stats as $each){
+           
+            $number = preg_replace($pattern,'', $each);
+            if($number > 70){
+                $number = ceil($number / 100) * 100;
+            }else{
+                $number = ceil($number / 10) * 10;
+            }
+            
+            $total += $number;
+            var_dump($number);
+        }
+        var_dump($total);
+        return;
+
         $str = file_get_contents( $stats_url );
         $json_status = json_decode($str, true); // decode the JSON into an associative array
         var_dump($json_status);
