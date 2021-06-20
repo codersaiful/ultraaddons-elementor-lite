@@ -53,6 +53,11 @@ class WordPress_Plugin_Stats extends Base{
      * @access protected
      */
     protected function render() {
+        /**
+         * Active Installation:
+         * https://api.wordpress.org/stats/plugin/1.0/active-installs.php?slug={PLUGINSLUG}&limit=728
+         */
+        
         $settings           = $this->get_settings_for_display();
         $time_out = 10;
         $plugin_slug = 'ultraaddons-elementor-lite'; //woo-product-table
@@ -67,9 +72,18 @@ class WordPress_Plugin_Stats extends Base{
 //            );
 //            var_dump($remote);
         
+        $str = file_get_contents( $stats_url );
+        $json_status = json_decode($str, true); // decode the JSON into an associative array
+        var_dump($json_status);
+        
+        
+        $str = file_get_contents( $download_url );
+        $json_download = json_decode($str, true); // decode the JSON into an associative array
+        var_dump($json_download);
+        
         $str = file_get_contents( $info_url );
-        $json = json_decode($str, true); // decode the JSON into an associative array
-        var_dump($json);
+        $json_info = $json = json_decode($str, true); // decode the JSON into an associative array
+        var_dump($json_info);
         
         $transient_name = 'ua_wp_plugin_stats';
         $get_transient_json = get_transient( $transient_name );
