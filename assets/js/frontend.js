@@ -132,8 +132,6 @@
             );
     
             //Testimonial Slider
-            console.dir("ultraaddons",SliderBase);
-            console.dir(SliderBase);
             EF.hooks.addAction(
                     'frontend/element_ready/ultraaddons-testimonial-slider.default',
                     function ($scope) {
