@@ -59,12 +59,12 @@ class WordPress_Plugin_Stats extends Base{
          */
         
         $settings           = $this->get_settings_for_display();
-        $time_out = 10;
-        $plugin_slug = 'ultraaddons-elementor-lite'; //woo-product-table
-        $stats_url = 'https://api.wordpress.org/stats/plugin/1.0/?slug=' . $plugin_slug;
-        $active_status = 'https://api.wordpress.org/stats/plugin/1.0/active-installs.php?slug=' . $plugin_slug . '&limit=728';
-        $info_url = 'http://api.wordpress.org/plugins/info/1.0/' . $plugin_slug . '.json';
-        $download_url = 'https://api.wordpress.org/stats/plugin/1.0/downloads.php?slug=' . $plugin_slug;
+
+//        $plugin_slug = 'woo-product-table'; //woo-product-table //ultraaddons-elementor-lite
+//        $stats_url = 'https://api.wordpress.org/stats/plugin/1.0/?slug=' . $plugin_slug;
+//        $active_status = 'https://api.wordpress.org/stats/plugin/1.0/active-installs.php?slug=' . $plugin_slug . '&limit=728';
+//        $info_url = 'http://api.wordpress.org/plugins/info/1.0/' . $plugin_slug . '.json';
+//        $download_url = 'https://api.wordpress.org/stats/plugin/1.0/downloads.php?slug=' . $plugin_slug;
 //        $remote = wp_remote_get( $download_url, array(
 //                'timeout' => $time_out,//10,
 //                'headers' => array(
@@ -73,50 +73,56 @@ class WordPress_Plugin_Stats extends Base{
 //            );
 //            var_dump($remote);
         
-        $str = file_get_contents( $active_status );
-        $json_active_stats = json_decode($str, true); // decode the JSON into an associative array
-        // var_dump($json_active_stats);
-        $total = 0;
-        $pattern = "/[\+]/";
-        foreach( $json_active_stats as $each){
-           
-            $number = preg_replace($pattern,'', $each);
-            if($number > 70){
-                $number = ceil($number / 100) * 100;
-            }else{
-                $number = ceil($number / 10) * 10;
-            }
-            
-            $total += $number;
-            var_dump($number);
-        }
-        var_dump($total);
-        return;
 
-        $str = file_get_contents( $stats_url );
-        $json_status = json_decode($str, true); // decode the JSON into an associative array
-        var_dump($json_status);
         
         
-        $str = file_get_contents( $download_url );
-        $json_download = json_decode($str, true); // decode the JSON into an associative array
-        var_dump($json_download);
-        
-        $str = file_get_contents( $info_url );
-        $json_info = $json = json_decode($str, true); // decode the JSON into an associative array
-        var_dump($json_info);
-        
-        $transient_name = 'ua_wp_plugin_stats';
-        $get_transient_json = get_transient( $transient_name );
-        var_dump($get_transient_json);
-        if( ! $get_transient_json ){
-            $transient = set_transient( $transient_name, $json, 45);
+        $plugin_slug = 'wc-quantity-plus-minus-button'; 
+        //Transient name with plugin's slug, so that, if a user if change plugin, than data will be update/change
+        $transient_name = 'ua_stats-' . $plugin_slug;
+        $transient = get_transient( $transient_name );
+
+        if( ! $transient ){
+            var_dump('ddkld');
+            //woo-product-table //ultraaddons-elementor-lite
+            $info_url = "https://api.wordpress.org/plugins/info/1.0/{$plugin_slug}.json?fields=banners,icons,active_installs";
+            $str = file_get_contents( $info_url, false );
+            $transient = json_decode($str, true); // decode the JSON into an associative array
+            $expire = apply_filters( 'ultraaddons_wp_plugin_stats_expire', 21600 ); 
+            set_transient( $transient_name, $transient, $expire );
         }
         
+        $downloaded = ! empty( $transient['downloaded'] ) ? $transient['downloaded'] : false;
+        $downloaded_label = "Download";
         
+        $active_installs = ! empty( $transient['active_installs'] ) ? $transient['active_installs'] : false;
+        $active_installs_label = "Active Install";
+        $version = ! empty( $transient['version'] ) ? $transient['version'] : false;
+        $rating = ! empty( $transient['rating'] ) ? $transient['rating'] : 100;
+        
+        $final_rating = ( $rating / 100 ) * 5;
+        $final_rating_label = 'Rating';
         
         ?>
-<h2>Plugin Stats</h2>    
+<div class="wp-plugins-stats-wrapper">
+    <div class="wp-plugin-stats">
+        <div class="plugin-stats plugin-stats-downloaded">
+            <span class="download-number"><?php echo esc_html( $downloaded ); ?><b>+</b></span>
+            <span class="download-label"><?php echo esc_html( $downloaded_label ); ?></span>
+        </div>
+        
+        <div class="plugin-stats plugin-stats-active-install">
+            <span class="active-number"><?php echo esc_html( $active_installs ); ?><b>+</b></span>
+            <span class="active-label"><?php echo esc_html( $active_installs_label ); ?></span>
+        </div>
+        
+        <div class="plugin-stats plugin-stats-rating">
+            <span class="rating-number"><?php echo esc_html( $final_rating ); ?></span>
+            <span class="rating-label"><?php echo esc_html( $final_rating_label ); ?></span>
+        </div>
+        
+        
+    </div>
+</div>
         <?php
     }
     
