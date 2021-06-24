@@ -20,6 +20,7 @@ class Library_Manager{
      * @package UltraAddons
      */
     public static function init(){
+        //ultraaddons_elementor();
         add_action( 'elementor/init', [__CLASS__, 'register_source'], 15 );
         add_action( 'elementor/editor/footer', [__CLASS__, 'render_panel_html'] );
     }
