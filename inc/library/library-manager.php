@@ -1,6 +1,8 @@
 <?php
 namespace UltraAddons\Library;
 
+use Elementor\Plugin;
+
 defined('ABSPATH') || die();
 
 class Library_Manager{
@@ -35,8 +37,8 @@ class Library_Manager{
                unset( $this->_registered_sources[ $id ] );
        };
 
-       $unregister_source->call( \Elementor\Plugin::instance()->templates_manager, 'remote');
-       \Elementor\Plugin::instance()->templates_manager->register_source( 'UltraAddons\Library\Library_Source' );
+       $unregister_source->call( Plugin::instance()->templates_manager, 'remote');
+       Plugin::instance()->templates_manager->register_source( 'UltraAddons\Library\Library_Source' );
     }
     
     
@@ -61,15 +63,15 @@ class Library_Manager{
 //               unset( $this->_registered_sources[ $id ] );
 //       };
 //
-//       $unregister_source->call( \Elementor\Plugin::instance()->templates_manager, 'remote');
-//       \Elementor\Plugin::instance()->templates_manager->register_source( 'UltraAddons\Library\Library_Source' );
+//       $unregister_source->call( Plugin::instance()->templates_manager, 'remote');
+//       Plugin::instance()->templates_manager->register_source( 'UltraAddons\Library\Library_Source' );
 //}, 15 );
 
 class Library_Manager_Backup{
     
     public static function init(){
         
-//        \Elementor\Plugin::instance()->templates_manager->register_source( '\UltraAddons\Library\Library_Source' );
+//        Plugin::instance()->templates_manager->register_source( '\UltraAddons\Library\Library_Source' );
         
         
 //        var_dump(get_option('ua_library_data'));
@@ -85,18 +87,18 @@ class Library_Manager_Backup{
     }
     
     public static function testing() {
-        \Elementor\Plugin::instance()->templates_manager->unregister_source('remote');
-//        var_dump(\Elementor\Plugin::instance()->templates_manager->get_registered_sources());
+        Plugin::instance()->templates_manager->unregister_source('remote');
+//        var_dump(Plugin::instance()->templates_manager->get_registered_sources());
 //        var_dump(Library_Source::get_library_data());
 //        var_dump(Library_Source::$api_info_url);
 //        var_dump(Library_Source::get_library_data(true));
 
                 
-//                \Elementor\Plugin::instance()->templates_manager->unregister_source( 'remote' );
-                \Elementor\Plugin::instance()->templates_manager->register_source( '\UltraAddons\Library\Library_Source' );
-//                var_dump(\Elementor\Plugin::instance()->templates_manager->get_registered_sources());
-//                \Elementor\Plugin::instance()->templates_manager->register_source( '\UltraAddons\Library' );
-                //var_dump(\Elementor\Plugin::instance()->templates_manager->_registered_sources);//$_registered_sources
+//                Plugin::instance()->templates_manager->unregister_source( 'remote' );
+                Plugin::instance()->templates_manager->register_source( '\UltraAddons\Library\Library_Source' );
+//                var_dump(Plugin::instance()->templates_manager->get_registered_sources());
+//                Plugin::instance()->templates_manager->register_source( '\UltraAddons\Library' );
+                //var_dump(Plugin::instance()->templates_manager->_registered_sources);//$_registered_sources
                 
         }
 }
