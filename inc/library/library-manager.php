@@ -41,7 +41,7 @@ class Library_Manager{
 //       var_dump($hell['remote']);
        
        //Unregister Default/existing Template of remote
-       //$unregister_source->call( Plugin::instance()->templates_manager, 'remote');
+       $unregister_source->call( Plugin::instance()->templates_manager, 'remote');
        Plugin::instance()->templates_manager->register_source( 'UltraAddons\Library\Library_Source' );
     }
     
