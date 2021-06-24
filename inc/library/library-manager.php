@@ -47,7 +47,7 @@ class Library_Manager{
     }
     
     public static function render_panel_html(){
-        //include __DIR__ . '/templates.php';
+        include_once __DIR__ . '/templates.php';
     }
     
 }
