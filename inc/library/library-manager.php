@@ -6,7 +6,8 @@ use Elementor\Plugin;
 defined('ABSPATH') || die();
 
 class Library_Manager{
-    
+    private static $library_assets = ULTRA_ADDONS_URL . 'inc/library/assets/';
+
     /**
      * Initializing Library Manager
      * Steps:
@@ -21,10 +22,120 @@ class Library_Manager{
      */
     public static function init(){
         //ultraaddons_elementor();
-        add_action( 'elementor/init', [__CLASS__, 'register_source'], 15 );
-        add_action( 'elementor/editor/footer', [__CLASS__, 'render_panel_html'] );
+        #add_action( 'elementor/init', [__CLASS__, 'register_source'], 15 );
+        #add_action( 'elementor/editor/footer', [__CLASS__, 'render_panel_html'] );
+        
+        //var_dump(self::$library_assets);
+        /** 
+         * Enqueue
+         */
+        
+        // enqueue editor js for elementor.
+        add_action( 'elementor/editor/before_enqueue_scripts', [ __CLASS__, 'editor_scripts' ], 1);
+
+        // print views and tab variables on footer.
+        add_action( 'elementor/editor/footer', [ __CLASS__, 'admin_inline_js' ] );
+        add_action( 'elementor/editor/footer', [ __CLASS__, 'print_views' ] );
+        
+        // enqueue editor css.
+        add_action( 'elementor/editor/after_enqueue_styles', [ __CLASS__, 'editor_styles' ] );
+
+        // enqueue modal's preview css.
+        add_action( 'elementor/preview/enqueue_styles', [ __CLASS__, 'preview_styles' ] );
+
     }
     
+    public static function editor_scripts(){
+        wp_enqueue_script( 
+			'ultraaddons-library-editor-script', 
+			self::$library_assets . 'js/editor.js', 
+			array('jquery', 'underscore', 'backbone-marionette'), 
+			ULTRA_ADDONS_VERSION,
+			true
+		);
+    }
+    public static function admin_inline_js(){
+        ?>
+		<script type="text/javascript" >
+
+		var ElementsKitLibreryData = {
+			"libraryButton": "Elements Button",
+			"modalRegions": {
+				"modalHeader": ".dialog-header",
+				"modalContent": ".dialog-message"
+			},
+			"license": {
+				"activated": true,
+				"link": ""
+			},
+			"tabs": {
+				"elementskit_page": {
+					"title": "Ready Pages",
+					"data": [],
+					"sources": ["elementskit-theme", "elementskit-api"],
+					"settings": {
+						"show_title": true,
+						"show_keywords": true
+					}
+				},
+				"elementskit_header": {
+					"title": "Headers",
+					"data": [],
+					"sources": ["elementskit-theme", "elementskit-api"],
+					"settings": {
+						"show_title": false,
+						"show_keywords": true
+					}
+				},
+				"elementskit_footer": {
+					"title": "Footers",
+					"data": [],
+					"sources": ["elementskit-theme", "elementskit-api"],
+					"settings": {
+						"show_title": false,
+						"show_keywords": true
+					}
+				},
+				"elementskit_section": {
+					"title": "Sections",
+					"data": [],
+					"sources": ["elementskit-theme", "elementskit-api"],
+					"settings": {
+						"show_title": false,
+						"show_keywords": true
+					}
+				},
+				"elementskit_widget": {
+					"title": "Widget Presets",
+					"data": [],
+					"sources": ["elementskit-theme", "elementskit-api"],
+					"settings": {
+						"show_title": false,
+						"show_keywords": true
+					}
+				},
+				// "local": {
+				// 	"title": "My Library",
+				// 	"data": [],
+				// 	"sources": ["elementskit-local"],
+				// 	"settings": []
+				// }
+			},
+			"defaultTab": "elementskit_page"
+		};
+
+		</script> <?php
+    }
+    public static function print_views(){
+        
+    }
+    public static function editor_styles(){
+        wp_enqueue_style( 'elementskit-library-editor-style', self::$library_assets . 'css/editor.css', array(), ULTRA_ADDONS_VERSION);
+    }
+    public static function preview_styles(){
+        wp_enqueue_style( 'elementskit-library-preview-style', self::$library_assets . 'css/preview.css', array(), ULTRA_ADDONS_VERSION );
+    }
+
     /**
      * Register Source
      * and adding our Template at existing Template
