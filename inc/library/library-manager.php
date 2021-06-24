@@ -5,6 +5,68 @@ defined('ABSPATH') || die();
 
 class Library_Manager{
     
+    /**
+     * Initializing Library Manager
+     * Steps:
+     * register sourche
+     * 
+     * 
+     * **********************
+     * Actually we added it at the begining of plugin
+     * but working after 1.0.7.1
+     * 
+     * @package UltraAddons
+     */
+    public static function init(){
+        add_action( 'elementor/init', [__CLASS__, 'register_source'], 15 );
+    }
+    
+    /**
+     * Register Source
+     * and adding our Template at existing Template
+     * 
+     * @since 1.0.7.1
+     * @date 24.6.2021 (d.m.y)
+     * @author Saiful Islam<codersaiful@gmail.com>
+     */
+    public static function register_source(){
+        // Unregister source with closure binding, thank Steve.
+       $unregister_source = function($id) {
+               unset( $this->_registered_sources[ $id ] );
+       };
+
+       $unregister_source->call( \Elementor\Plugin::instance()->templates_manager, 'remote');
+       \Elementor\Plugin::instance()->templates_manager->register_source( 'UltraAddons\Library\Library_Source' );
+    }
+    
+    
+}
+
+
+
+
+
+
+/**
+ * All Backup Code for now, 
+ * I will remove bottom all code
+ * very asap
+ * 
+ */
+//$dddd = new UltraAddons\Library\Library_Source();
+//
+//add_action( 'elementor/init', function() {
+//       // Unregister source with closure binding, thank Steve.
+//       $unregister_source = function($id) {
+//               unset( $this->_registered_sources[ $id ] );
+//       };
+//
+//       $unregister_source->call( \Elementor\Plugin::instance()->templates_manager, 'remote');
+//       \Elementor\Plugin::instance()->templates_manager->register_source( 'UltraAddons\Library\Library_Source' );
+//}, 15 );
+
+class Library_Manager_Backup{
+    
     public static function init(){
         
 //        \Elementor\Plugin::instance()->templates_manager->register_source( '\UltraAddons\Library\Library_Source' );
