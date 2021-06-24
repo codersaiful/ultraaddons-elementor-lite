@@ -21,6 +21,7 @@ class Library_Manager{
      */
     public static function init(){
         add_action( 'elementor/init', [__CLASS__, 'register_source'], 15 );
+        add_action( 'elementor/editor/footer', [__CLASS__, 'render_panel_html'] );
     }
     
     /**
@@ -45,6 +46,9 @@ class Library_Manager{
        Plugin::instance()->templates_manager->register_source( 'UltraAddons\Library\Library_Source' );
     }
     
+    public static function render_panel_html(){
+        //include __DIR__ . '/templates.php';
+    }
     
 }
 
