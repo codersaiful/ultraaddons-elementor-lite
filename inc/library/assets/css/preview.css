@@ -1,21 +1,26 @@
 .add-elementskit-template {
 	border-radius: 5px;
-	padding: 0;
 	height: 40px;
 	/* width: 40px; */
 	margin-left: 5px;
 	color: #fff;
 	border: none;
-	background-color: #e91e63;
+	background-color: #8bc34a;
 	line-height: 40px;
 	padding-left: 2px;
 	cursor: pointer;
-	min-width: 135px;
+	/* min-width: 135px; */
+	font-family: Arial,Helvetica,sans-serif;
+	display: flex;
+	align-items: center;
+	padding-left: 10px;
+	justify-content: space-around;
+	padding-right: 10px;
 }
 
 .add-elementskit-template.ekit-wid-con:before {content: '\e800';font-family: "UltraAddons Icons";font-size: 25px;}
 
-.add-elementskit-template.ekit-wid-con:after {content: "Library";padding: 0 10px;}
+.add-elementskit-template.ekit-wid-con:after {content: "Library";padding-left: 10px;padding-right: 2px;}
 
 
 .elementor-add-new-section {
