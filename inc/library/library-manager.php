@@ -12,7 +12,7 @@ class Library_Manager {
 	public static function init() {
             
 		add_action( 'elementor/editor/footer', [ __CLASS__, 'print_template_views' ] );
-		//add_action( 'elementor/ajax/register_actions', [ __CLASS__, 'register_ajax_actions' ] );
+		add_action( 'elementor/ajax/register_actions', [ __CLASS__, 'register_ajax_actions' ] );
                 
                 // Enqueue editor scripts
 		add_action( 'elementor/editor/after_enqueue_scripts', [ __CLASS__, 'enqueue_assets' ] );
@@ -57,6 +57,27 @@ class Library_Manager {
 			],
 			ULTRA_ADDONS_VERSION,
 			true
+		);
+                
+                $localize_data = [
+			'placeholder_widgets' => [],
+			'hasPro'                  => false,
+			'editor_nonce'            => wp_create_nonce( 'ha_editor_nonce' ),
+			'dark_stylesheet_url'     => ULTRA_ADDONS_TEMPLATE_ASSETS . 'css/editor-dark.min.css',
+			'i18n' => [
+				'promotionDialogHeader'     => esc_html__( '%s Widget', 'happy-elementor-addons' ),
+				'promotionDialogMessage'    => esc_html__( 'Use %s widget with other exclusive pro widgets and 100% unique features to extend your toolbox and build sites faster and better.', 'happy-elementor-addons' ),
+				'templatesEmptyTitle'       => esc_html__( 'No Templates Found', 'happy-elementor-addons' ),
+				'templatesEmptyMessage'     => esc_html__( 'Try different category or sync for new templates.', 'happy-elementor-addons' ),
+				'templatesNoResultsTitle'   => esc_html__( 'No Results Found', 'happy-elementor-addons' ),
+				'templatesNoResultsMessage' => esc_html__( 'Please make sure your search is spelled correctly or try a different words.', 'happy-elementor-addons' ),
+			],
+		];
+                
+                wp_localize_script(
+			'ultraaddons-library-editor',
+			'HappyAddonsEditor',
+			$localize_data
 		);
 	}
 
