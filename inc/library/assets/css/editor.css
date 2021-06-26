@@ -1,0 +1,90 @@
+.elementor-panel .ha-element--promotion > .elementor-element > .eicon-lock {
+	right: auto; 
+	left: 5px;
+}
+
+.elementor-panel #elementor-panel-category-happy_addons_category .elementor-element:hover .icon,
+.elementor-panel #elementor-panel-category-happy_addons_category .elementor-element:hover .title,
+.elementor-panel #elementor-panel-category-happy_addons_category .elementor-element:focus .icon,
+.elementor-panel #elementor-panel-category-happy_addons_category .elementor-element:focus .title,
+.elementor-panel #elementor-panel-category-happy_addons_pro_category .elementor-element:hover .icon,
+.elementor-panel #elementor-panel-category-happy_addons_pro_category .elementor-element:hover .title,
+.elementor-panel #elementor-panel-category-happy_addons_pro_category .elementor-element:focus .icon,
+.elementor-panel #elementor-panel-category-happy_addons_pro_category .elementor-element:focus .title,
+.elementor-panel #elementor-panel-category-happy_addons_pro_category .is-ha-widget:hover .icon,
+.elementor-panel #elementor-panel-category-happy_addons_pro_category .is-ha-widget:hover .title,
+.elementor-panel #elementor-panel-category-happy_addons_pro_category .is-ha-widget:focus .icon,
+.elementor-panel #elementor-panel-category-happy_addons_pro_category .is-ha-widget:focus .title {
+	background-image: -webkit-linear-gradient(315deg, #e2498a 25%, #562dd4 100%);
+	background-image:         linear-gradient(135deg, #e2498a 25%, #562dd4 100%);
+	-webkit-background-clip: text;
+
+	-webkit-text-fill-color: transparent;
+}
+
+.elementor-panel .ha-section-icon {
+	background-image: -webkit-linear-gradient(315deg, #e2498a 25%, #562dd4 100%);
+	background-image:         linear-gradient(135deg, #e2498a 25%, #562dd4 100%);
+	-webkit-background-clip: text;
+
+	-webkit-text-fill-color: transparent;
+}
+
+.elementor-panel .elementor-element .icon {
+	position: relative; 
+	-webkit-transition: all .2s;
+	        transition: all .2s;
+}
+.elementor-panel .elementor-element .icon .hm:after {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	content: "\ead0";
+	font-size: 15px;
+	opacity: .3;
+}
+
+.elementor-panel .elementor-element:hover .icon .hm:after,
+.elementor-panel .elementor-element:focus .icon .hm:after {
+	opacity: 1;
+}
+
+.elementor-panel .elementor-element:hover .icon .hm:after,
+.elementor-panel .elementor-element:focus .icon .hm:after {
+	background-image: -webkit-linear-gradient(315deg, #e2498a 25%, #562dd4 100%);
+	background-image:         linear-gradient(135deg, #e2498a 25%, #562dd4 100%);
+	-webkit-background-clip: text;
+
+	-webkit-text-fill-color: transparent;
+}
+
+.elementor-panel .elementor-control-_section_happy_effects .elementor-panel-heading-toggle,
+.elementor-panel .elementor-control-_section_happy_effects .elementor-panel-heading-title {
+	color: #e2498a;
+}
+
+.elementor-control-ha_floating_fx_translate_toggle + .elementor-controls-popover .elementor-control-type-slider--handles-range .elementor-slider .noUi-handle-lower:after,
+.elementor-control-ha_floating_fx_rotate_toggle + .elementor-controls-popover .elementor-control-type-slider--handles-range .elementor-slider .noUi-handle-lower:after,
+.elementor-control-ha_floating_fx_scale_toggle + .elementor-controls-popover .elementor-control-type-slider--handles-range .elementor-slider .noUi-handle-lower:after {
+	left: -5px;
+	box-shadow: -2px 2px 3px 0 rgba(0, 0, 0, .1);
+}
+
+.elementor-control-ha_floating_fx_translate_toggle + .elementor-controls-popover .elementor-control-type-slider--handles-range .elementor-slider .noUi-handle-upper:after,
+.elementor-control-ha_floating_fx_rotate_toggle + .elementor-controls-popover .elementor-control-type-slider--handles-range .elementor-slider .noUi-handle-upper:after,
+.elementor-control-ha_floating_fx_scale_toggle + .elementor-controls-popover .elementor-control-type-slider--handles-range .elementor-slider .noUi-handle-upper:after {
+	left: 5px;
+	box-shadow: 2px -2px 3px 0 rgba(0, 0, 0, .1);
+}
+
+.elementor-control-ha_floating_fx_translate_toggle + .elementor-controls-popover .elementor-control-type-slider--handles-range .elementor-slider .noUi-handle-upper .noUi-tooltip,
+.elementor-control-ha_floating_fx_rotate_toggle + .elementor-controls-popover .elementor-control-type-slider--handles-range .elementor-slider .noUi-handle-upper .noUi-tooltip,
+.elementor-control-ha_floating_fx_scale_toggle + .elementor-controls-popover .elementor-control-type-slider--handles-range .elementor-slider .noUi-handle-upper .noUi-tooltip {
+	top: auto;
+	bottom: calc(100% + 5px); 
+	left: 100%;
+}
+
+.elementor-button.ha-btn--promotion:not([disabled]) {
+	background-color: #e04d8b !important;
+}

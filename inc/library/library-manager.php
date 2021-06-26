@@ -1,5 +1,5 @@
 <?php
-namespace Happy_Addons\Elementor;
+namespace UltraAddons\Library;
 
 use Elementor\Core\Common\Modules\Ajax\Module as Ajax;
 
@@ -10,32 +10,52 @@ class Library_Manager {
 	protected static $source = null;
 
 	public static function init() {
+            
 		add_action( 'elementor/editor/footer', [ __CLASS__, 'print_template_views' ] );
-		add_action( 'elementor/ajax/register_actions', [ __CLASS__, 'register_ajax_actions' ] );
+		//add_action( 'elementor/ajax/register_actions', [ __CLASS__, 'register_ajax_actions' ] );
+                
+                // Enqueue editor scripts
+		add_action( 'elementor/editor/after_enqueue_scripts', [ __CLASS__, 'enqueue_assets' ] );
 	}
 
 	public static function print_template_views() {
-		include_once HAPPY_ADDONS_DIR_PATH . 'templates/template-library/templates.php';
+		include_once __DIR__ . '/templates.php';
 	}
 
 	public static function enqueue_assets() {
-		wp_enqueue_style(
-			'happy-addons-templates-library',
-			HAPPY_ADDONS_ASSETS . 'admin/css/template-library.min.css',
-			[
-				'elementor-editor',
-			],
-			HAPPY_ADDONS_VERSION
+                wp_enqueue_style(
+			'ultraaddons-library-editor',
+			ULTRA_ADDONS_TEMPLATE_ASSETS . 'css/editor.min.css',
+			null,
+			ULTRA_ADDONS_VERSION
 		);
 
 		wp_enqueue_script(
-			'happy-addons-templates-library',
-			HAPPY_ADDONS_ASSETS . 'admin/js/template-library.min.js',
+			'ultraaddons-library-editor',
+			ULTRA_ADDONS_TEMPLATE_ASSETS . 'js/editor.min.js',
+			['elementor-editor', 'jquery'],
+			ULTRA_ADDONS_VERSION,
+			true
+		);
+
+            
+		wp_enqueue_style(
+			'ultraaddons-library-template',
+			ULTRA_ADDONS_TEMPLATE_ASSETS . 'css/template-library.min.css',
 			[
-				'happy-elementor-addons-editor',
+				'elementor-editor',
+			],
+			ULTRA_ADDONS_VERSION
+		);
+
+		wp_enqueue_script(
+			'ultraaddons-library-template',
+			ULTRA_ADDONS_TEMPLATE_ASSETS . 'js/template-library.min.js',
+			[
+				'ultraaddons-library-editor',
 				'jquery-hover-intent',
 			],
-			HAPPY_ADDONS_VERSION,
+			ULTRA_ADDONS_VERSION,
 			true
 		);
 	}
@@ -128,5 +148,3 @@ class Library_Manager {
 		];
 	}
 }
-
-Library_Manager::init();

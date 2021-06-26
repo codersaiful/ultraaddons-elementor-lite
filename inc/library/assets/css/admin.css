@@ -1,0 +1,57 @@
+#wp-admin-bar-happy-addons > .ab-item > img {
+	margin-top: -4px; 
+	width: 18px;
+	height: 18px;
+	vertical-align: text-bottom;
+}
+
+#wp-admin-bar-happy-addons .ab-item .dashicons {
+	position: relative; 
+	top: 7px;
+	display: inline-block;
+	font-weight: normal;
+	font-style: normal;
+	font-variant: normal;
+	font-size: inherit;
+	font-family: dashicons;
+	line-height: 1;
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: auto;
+}
+
+#wp-admin-bar-happy-addons .ab-item .dashicons-update-alt:before {
+	content: "\f113";
+}
+
+#wp-admin-bar-happy-addons .ha-clear-cache--done .ab-item > i {
+	color: #46b450;
+}
+
+#wp-admin-bar-happy-addons .ha-clear-cache--init .ab-item > i {
+	-webkit-animation: ha-inifinite-rotate .5s infinite linear;
+	        animation: ha-inifinite-rotate .5s infinite linear;
+}
+
+@-webkit-keyframes ha-inifinite-rotate {
+	from {
+		-webkit-transform: rotate(0deg);
+		        transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(359deg);
+		        transform: rotate(359deg);
+	}
+}
+
+@keyframes ha-inifinite-rotate {
+	from {
+		-webkit-transform: rotate(0deg);
+		        transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(359deg);
+		        transform: rotate(359deg);
+	}
+}
