@@ -1,0 +1,25 @@
+.elementor-add-new-section .elementor-add-ha-button {
+    background-color: #5636d1;
+    margin-left: 5px;
+    font-size: 18px;
+    vertical-align: bottom;
+}
+
+.add-elementskit-template {
+	border-radius: 5px;
+	padding: 0;
+	height: 40px;
+	/* width: 40px; */
+	margin-left: 5px;
+	color: #fff;
+	border: none;
+	background-color: #e91e63;
+	line-height: 40px;
+	padding-left: 2px;
+	cursor: pointer;
+	min-width: 135px;
+}
+
+.add-elementskit-template.ekit-wid-con:before {content: '\e800';font-family: "UltraAddons Icons";font-size: 25px;}
+
+.add-elementskit-template.ekit-wid-con:after {content: "Library";padding: 0 10px;}

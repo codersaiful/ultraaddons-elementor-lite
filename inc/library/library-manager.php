@@ -16,13 +16,25 @@ class Library_Manager {
                 
                 // Enqueue editor scripts
 		add_action( 'elementor/editor/after_enqueue_scripts', [ __CLASS__, 'enqueue_assets' ] );
+                
+                // enqueue modal's preview css.
+        add_action( 'elementor/preview/enqueue_styles', [ __CLASS__, 'preview_styles' ] );
 	}
 
 	public static function print_template_views() {
 		include_once __DIR__ . '/templates.php';
 	}
 
+        public static function preview_styles() {
+            wp_enqueue_style(
+			'ultraaddons-libr-templt',
+			ULTRA_ADDONS_TEMPLATE_ASSETS . 'css/custom.css',
+			null,
+			ULTRA_ADDONS_VERSION
+		);
+        }
 	public static function enqueue_assets() {
+                
                 wp_enqueue_style(
 			'ultraaddons-library-editor',
 			ULTRA_ADDONS_TEMPLATE_ASSETS . 'css/editor.min.css',
