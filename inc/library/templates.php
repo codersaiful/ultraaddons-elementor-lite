@@ -8,7 +8,7 @@ defined( 'ABSPATH' ) || exit;
 ?>
 <script type="text/template" id="tmpl-haTemplateLibrary__header-logo">
     <span class="haTemplateLibrary__logo-wrap">
-		<i class="ua ua-ultraaddons"></i>
+		<i class="uicon-ultraaddons"></i>
 	</span>
     <span class="haTemplateLibrary__logo-title">{{{ title }}}</span>
 </script>
