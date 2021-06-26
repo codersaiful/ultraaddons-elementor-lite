@@ -27,6 +27,7 @@ class Library_Source extends Source_Base {
 
 	/**
 	 * Template data api url
+         * //https://templates.happyaddons.com/wp-json/ha/v1/templates/1365
 	 */
 	const API_TEMPLATE_DATA_URL = 'https://templates.happyaddons.com/wp-json/ha/v1/templates/';
 
@@ -175,13 +176,13 @@ class Library_Source extends Source_Base {
 
 		$body = [
 			'home_url' => trailingslashit( home_url() ),
-			'version' => HAPPY_ADDONS_VERSION,
+			'version' => ULTRA_ADDONS_VERSION,
 		];
 
-		if ( ha_has_pro() ) {
-			$body['has_pro'] = 1;
-			$body['pro_version'] = HAPPY_ADDONS_PRO_VERSION;
-		}
+//		if ( ha_has_pro() ) {
+//			$body['has_pro'] = 1;
+//			$body['pro_version'] = HAPPY_ADDONS_PRO_VERSION;
+//		}
 
 		$response = wp_remote_get(
 			self::API_TEMPLATE_DATA_URL . $template_id,
@@ -214,7 +215,7 @@ class Library_Source extends Source_Base {
 		$data['content'] = $this->process_export_import_content( $data['content'], 'on_import' );
 
 		$post_id = $args['editor_post_id'];
-		$document = ha_elementor()->documents->get( $post_id );
+		$document = ultraaddons_elementor()->documents->get( $post_id );
 
 		if ( $document ) {
 			$data['content'] = $document->get_elements_raw_data( $data['content'], true );

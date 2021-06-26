@@ -119,7 +119,7 @@ class Library_Manager {
 					throw new \Exception( __( 'Post not found.', 'happy-elementor-addons' ) );
 				}
 
-				ha_elementor()->db->switch_to_post( $editor_post_id );
+				ultraaddons_elementor()->db->switch_to_post( $editor_post_id );
 			}
 
 			$result = self::get_library_data( $data );
@@ -139,7 +139,7 @@ class Library_Manager {
 					throw new \Exception( __( 'Post not found', 'happy-elementor-addons' ) );
 				}
 
-				ha_elementor()->db->switch_to_post( $editor_post_id );
+				ultraaddons_elementor()->db->switch_to_post( $editor_post_id );
 			}
 
 			if ( empty( $data['template_id'] ) ) {
