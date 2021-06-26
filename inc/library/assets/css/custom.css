@@ -1,9 +1,16 @@
 .elementor-add-new-section .elementor-add-ha-button {
-    background-color: #5636d1;
+    background-color: #8bc34a;
     margin-left: 5px;
-    font-size: 18px;
+    font-size: 27px;
     vertical-align: bottom;
+    font-family: Arial,Helvetica,sans-serif;
+    display: inline-flex;
+    width: unset;
+    border-radius: 12px;
+    padding: 0 12px;
 }
+
+.elementor-add-new-section .elementor-add-ha-button:after {content: "Library";padding-left: 6px;padding-right: 0;font-size: 17px;/* color: #1f231b; */text-transform: capitalize;}
 
 /*.add-elementskit-template {
 	border-radius: 5px;
