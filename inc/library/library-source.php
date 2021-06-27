@@ -16,20 +16,21 @@ class Library_Source extends Source_Base {
 	/**
 	 * Template library data cache
 	 */
-	const LIBRARY_CACHE_KEY = 'ha_library_cache'; //-ddddd
+	const LIBRARY_CACHE_KEY = 'ha_library_cache-hs'; //-ddddd
 
 	/**
 	 * Template info api url
 	 *
 	 * Updated api to v2 in version 2.15.0
 	 */
-	const API_TEMPLATES_INFO_URL = 'https://templates.happyaddons.com/wp-json/ha/v2/templates-info';
-//        const API_TEMPLATES_INFO_URL = 'http://cleania.cm/wp-json/library/v2/templates';
+//	const API_TEMPLATES_INFO_URL = 'https://templates.happyaddons.com/wp-json/ha/v2/templates-info';
+        const API_TEMPLATES_INFO_URL = 'http://cleania.cm/wp-json/library/v2/templates';
 	/**
 	 * Template data api url
          * //https://templates.happyaddons.com/wp-json/ha/v1/templates/1365
 	 */
-	const API_TEMPLATE_DATA_URL = 'https://templates.happyaddons.com/wp-json/ha/v1/templates/';
+//	const API_TEMPLATE_DATA_URL = 'https://templates.happyaddons.com/wp-json/ha/v1/templates/';
+	const API_TEMPLATE_DATA_URL = 'http://cleania.cm/wp-json/library/v2/templates/';
 
 	public function get_id() {
 		return 'happy-library';
