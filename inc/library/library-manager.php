@@ -22,7 +22,7 @@ class Library_Manager {
 	}
 
 	public static function print_template_views() {
-		include_once __DIR__ . '/templates.php';
+		include_once __DIR__ . '/templates/template.php';
 	}
 
         public static function preview_styles() {
