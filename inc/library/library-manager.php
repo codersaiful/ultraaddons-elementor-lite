@@ -77,6 +77,7 @@ class Library_Manager {
 			'editor_nonce'            => wp_create_nonce( 'ha_editor_nonce' ),
 			'dark_stylesheet_url'     => ULTRA_ADDONS_TEMPLATE_ASSETS . 'css/editor-dark.min.css',
 			'i18n' => [
+				'iconTitlePreviewPage'      => esc_html__( 'Library', 'ultraaddons' ),
 				'promotionDialogHeader'     => esc_html__( '%s Widget', 'ultraaddons' ),
 				'promotionDialogMessage'    => esc_html__( 'Use %s widget with other exclusive pro widgets and 100% unique features to extend your toolbox and build sites faster and better.', 'ultraaddons' ),
 				'templatesEmptyTitle'       => esc_html__( 'No Templates Found', 'ultraaddons' ),
