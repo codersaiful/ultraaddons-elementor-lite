@@ -89,7 +89,7 @@ class Library_Manager {
                 
                 wp_localize_script(
 			'ultraaddons-library-editor',
-			'HappyAddonsEditor',
+			'ULTRAADDONS_DATA_EDITOR',
 			$localize_data
 		);
 	}
