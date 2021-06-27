@@ -6,71 +6,71 @@
 defined( 'ABSPATH' ) || exit;
 
 ?>
-<script type="text/template" id="tmpl-haTemplateLibrary__header-logo">
-    <span class="haTemplateLibrary__logo-wrap">
+<script type="text/template" id="tmpl-UltraTempLibrary__header-logo">
+    <span class="UltraTempLibrary__logo-wrap">
 		<i class="uicon-ultraaddons"></i>
 	</span>
-    <span class="haTemplateLibrary__logo-title">{{{ title }}}</span>
+    <span class="UltraTempLibrary__logo-title">{{{ title }}}</span>
 </script>
 
-<script type="text/template" id="tmpl-haTemplateLibrary__header-back">
+<script type="text/template" id="tmpl-UltraTempLibrary__header-back">
 	<i class="eicon-" aria-hidden="true"></i>
 	<span><?php echo __( 'Back to Library', 'ultraaddons' ); ?></span>
 </script>
 
-<script type="text/template" id="tmpl-haTemplateLibrary__header-menu">
+<script type="text/template" id="tmpl-UltraTempLibrary__header-menu">
 	<# _.each( tabs, function( args, tab ) { var activeClass = args.active ? 'elementor-active' : ''; #>
 		<div class="elementor-component-tab elementor-template-library-menu-item {{activeClass}}" data-tab="{{{ tab }}}">{{{ args.title }}}</div>
 	<# } ); #>
 </script>
 
-<script type="text/template" id="tmpl-haTemplateLibrary__header-menu-responsive">
-	<div class="elementor-component-tab haTemplateLibrary__responsive-menu-item elementor-active" data-tab="desktop">
+<script type="text/template" id="tmpl-UltraTempLibrary__header-menu-responsive">
+	<div class="elementor-component-tab UltraTempLibrary__responsive-menu-item elementor-active" data-tab="desktop">
 		<i class="eicon-device-desktop" aria-hidden="true" title="<?php esc_attr_e( 'Desktop view', 'ultraaddons' ); ?>"></i>
 		<span class="elementor-screen-only"><?php esc_html_e( 'Desktop view', 'ultraaddons' ); ?></span>
 	</div>
-	<div class="elementor-component-tab haTemplateLibrary__responsive-menu-item" data-tab="tab">
+	<div class="elementor-component-tab UltraTempLibrary__responsive-menu-item" data-tab="tab">
 		<i class="eicon-device-tablet" aria-hidden="true" title="<?php esc_attr_e( 'Tab view', 'ultraaddons' ); ?>"></i>
 		<span class="elementor-screen-only"><?php esc_html_e( 'Tab view', 'ultraaddons' ); ?></span>
 	</div>
-	<div class="elementor-component-tab haTemplateLibrary__responsive-menu-item" data-tab="mobile">
+	<div class="elementor-component-tab UltraTempLibrary__responsive-menu-item" data-tab="mobile">
 		<i class="eicon-device-mobile" aria-hidden="true" title="<?php esc_attr_e( 'Mobile view', 'ultraaddons' ); ?>"></i>
 		<span class="elementor-screen-only"><?php esc_html_e( 'Mobile view', 'ultraaddons' ); ?></span>
 	</div>
 </script>
 
-<script type="text/template" id="tmpl-haTemplateLibrary__header-actions">
-	<div id="haTemplateLibrary__header-sync" class="elementor-templates-modal__header__item">
+<script type="text/template" id="tmpl-UltraTempLibrary__header-actions">
+	<div id="UltraTempLibrary__header-sync" class="elementor-templates-modal__header__item">
 		<i class="eicon-sync" aria-hidden="true" title="<?php esc_attr_e( 'Sync Library', 'ultraaddons' ); ?>"></i>
 		<span class="elementor-screen-only"><?php esc_html_e( 'Sync Library', 'ultraaddons' ); ?></span>
 	</div>
 </script>
 
-<script type="text/template" id="tmpl-haTemplateLibrary__preview">
+<script type="text/template" id="tmpl-UltraTempLibrary__preview">
     <iframe></iframe>
 </script>
 
-<script type="text/template" id="tmpl-haTemplateLibrary__header-insert">
+<script type="text/template" id="tmpl-UltraTempLibrary__header-insert">
 	<div id="elementor-template-library-header-preview-insert-wrapper" class="elementor-templates-modal__header__item">
 		{{{ ha.library.getModal().getTemplateActionButton( obj ) }}}
 	</div>
 </script>
 
-<script type="text/template" id="tmpl-haTemplateLibrary__insert-button">
-	<a class="elementor-template-library-template-action elementor-button haTemplateLibrary__insert-button">
+<script type="text/template" id="tmpl-UltraTempLibrary__insert-button">
+	<a class="elementor-template-library-template-action elementor-button UltraTempLibrary__insert-button">
 		<i class="eicon-file-download" aria-hidden="true"></i>
 		<span class="elementor-button-title"><?php esc_html_e( 'Insert', 'ultraaddons' ); ?></span>
 	</a>
 </script>
 
-<script type="text/template" id="tmpl-haTemplateLibrary__pro-button">
-	<a class="elementor-template-library-template-action elementor-button haTemplateLibrary__pro-button" href="https://happyaddons.com/pricing/" target="_blank">
+<script type="text/template" id="tmpl-UltraTempLibrary__pro-button">
+	<a class="elementor-template-library-template-action elementor-button UltraTempLibrary__pro-button" href="https://happyaddons.com/pricing/" target="_blank">
 		<i class="eicon-external-link-square" aria-hidden="true"></i>
 		<span class="elementor-button-title"><?php esc_html_e( 'Get Pro', 'ultraaddons' ); ?></span>
 	</a>
 </script>
 
-<script type="text/template" id="tmpl-haTemplateLibrary__loading">
+<script type="text/template" id="tmpl-UltraTempLibrary__loading">
 	<div class="elementor-loader-wrapper">
 		<div class="elementor-loader">
 			<div class="elementor-loader-boxes">
@@ -84,16 +84,16 @@ defined( 'ABSPATH' ) || exit;
 	</div>
 </script>
 
-<script type="text/template" id="tmpl-haTemplateLibrary__templates">
-	<div id="haTemplateLibrary__toolbar">
-		<div id="haTemplateLibrary__toolbar-filter" class="haTemplateLibrary__toolbar-filter">
+<script type="text/template" id="tmpl-UltraTempLibrary__templates">
+	<div id="UltraTempLibrary__toolbar">
+		<div id="UltraTempLibrary__toolbar-filter" class="UltraTempLibrary__toolbar-filter">
 			<# if (ha.library.getTypeTags()) { var selectedTag = ha.library.getFilter( 'tags' ); #>
 				<# if ( selectedTag ) { #>
-				<span class="haTemplateLibrary__filter-btn">{{{ ha.library.getTags()[selectedTag] }}} <i class="eicon-caret-right"></i></span>
+				<span class="UltraTempLibrary__filter-btn">{{{ ha.library.getTags()[selectedTag] }}} <i class="eicon-caret-right"></i></span>
 				<# } else { #>
-				<span class="haTemplateLibrary__filter-btn"><?php esc_html_e( 'Filter', 'ultraaddons' ); ?> <i class="eicon-caret-right"></i></span>
+				<span class="UltraTempLibrary__filter-btn"><?php esc_html_e( 'Filter', 'ultraaddons' ); ?> <i class="eicon-caret-right"></i></span>
 				<# } #>
-				<ul id="haTemplateLibrary__filter-tags" class="haTemplateLibrary__filter-tags">
+				<ul id="UltraTempLibrary__filter-tags" class="UltraTempLibrary__filter-tags">
 					<li data-tag="">All</li>
 					<# _.each(ha.library.getTypeTags(), function(slug) {
 						var selected = selectedTag === slug ? 'active' : '';
@@ -103,39 +103,39 @@ defined( 'ABSPATH' ) || exit;
 				</ul>
 			<# } #>
 		</div>
-		<div id="haTemplateLibrary__toolbar-counter"></div>
-		<div id="haTemplateLibrary__toolbar-search">
-			<label for="haTemplateLibrary__search" class="elementor-screen-only"><?php esc_html_e( 'Search Templates:', 'ultraaddons' ); ?></label>
-			<input id="haTemplateLibrary__search" placeholder="<?php esc_attr_e( 'Search', 'ultraaddons' ); ?>">
+		<div id="UltraTempLibrary__toolbar-counter"></div>
+		<div id="UltraTempLibrary__toolbar-search">
+			<label for="UltraTempLibrary__search" class="elementor-screen-only"><?php esc_html_e( 'Search Templates:', 'ultraaddons' ); ?></label>
+			<input id="UltraTempLibrary__search" placeholder="<?php esc_attr_e( 'Search', 'ultraaddons' ); ?>">
 			<i class="eicon-search"></i>
 		</div>
 	</div>
 
-	<div class="haTemplateLibrary__templates-window">
-		<div id="haTemplateLibrary__templates-list"></div>
+	<div class="UltraTempLibrary__templates-window">
+		<div id="UltraTempLibrary__templates-list"></div>
 	</div>
 </script>
 
-<script type="text/template" id="tmpl-haTemplateLibrary__template">
-	<div class="haTemplateLibrary__template-body" id="haTemplate-{{ template_id }}">
-		<div class="haTemplateLibrary__template-preview">
+<script type="text/template" id="tmpl-UltraTempLibrary__template">
+	<div class="UltraTempLibrary__template-body" id="haTemplate-{{ template_id }}">
+		<div class="UltraTempLibrary__template-preview">
 			<i class="eicon-zoom-in-bold" aria-hidden="true"></i>
 		</div>
-		<img class="haTemplateLibrary__template-thumbnail" src="{{ thumbnail }}">
+		<img class="UltraTempLibrary__template-thumbnail" src="{{ thumbnail }}">
 		<# if ( obj.isPro ) { #>
-		<span class="haTemplateLibrary__template-badge"><?php esc_html_e( 'Pro', 'ultraaddons' ); ?></span>
+		<span class="UltraTempLibrary__template-badge"><?php esc_html_e( 'Pro', 'ultraaddons' ); ?></span>
 		<# } #>
 	</div>
-	<div class="haTemplateLibrary__template-footer">
+	<div class="UltraTempLibrary__template-footer">
 		{{{ ha.library.getModal().getTemplateActionButton( obj ) }}}
-		<a href="#" class="elementor-button haTemplateLibrary__preview-button">
+		<a href="#" class="elementor-button UltraTempLibrary__preview-button">
 			<i class="eicon-device-desktop" aria-hidden="true"></i>
 			<?php esc_html_e( 'Preview', 'ultraaddons' ); ?>
 		</a>
 	</div>
 </script>
 
-<script type="text/template" id="tmpl-haTemplateLibrary__empty">
+<script type="text/template" id="tmpl-UltraTempLibrary__empty">
 	<div class="elementor-template-library-blank-icon">
 		<img src="<?php echo ELEMENTOR_ASSETS_URL . 'images/no-search-results.svg'; ?>" class="elementor-template-library-no-results" />
 	</div>

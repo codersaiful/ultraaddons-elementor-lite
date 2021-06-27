@@ -1,4 +1,4 @@
-.haTemplateLibrary__preview{
+.UltraTempLibrary__preview{
     overflow:hidden;
     margin:auto;
     width:100%;
@@ -6,14 +6,14 @@
     -webkit-transition:width .2s,height .2s;
     transition:width .2s,height .2s
 }
-.haTemplateLibrary__preview>iframe{
+.UltraTempLibrary__preview>iframe{
     width:150%;
     height:150%;
     -webkit-transform:scale(.666) translateX(-25%) translateY(-25%);
     -ms-transform:scale(.666) translateX(-25%) translateY(-25%);
     transform:scale(.666) translateX(-25%) translateY(-25%)
 }
-.haTemplateLibrary__logo-wrap{
+.UltraTempLibrary__logo-wrap{
     display:inline-block;
     margin-right:10px;
     width:30px;
@@ -24,28 +24,28 @@
     text-align:center;
     line-height:30px;
 }
-.haTemplateLibrary__logo-wrap>i{
+.UltraTempLibrary__logo-wrap>i{
     position:relative;
     top:1px
 }
-.haTemplateLibrary__logo-title{
+.UltraTempLibrary__logo-title{
     padding-top:2px
 }
-.haTemplateLibrary__responsive-menu-item{
+.UltraTempLibrary__responsive-menu-item{
     display:inline-block;
     padding:15px 0;
     width:40px;
     cursor:pointer
 }
-.haTemplateLibrary__responsive-menu-item.elementor-active{
+.UltraTempLibrary__responsive-menu-item.elementor-active{
     border-bottom: 3px solid #13c392;
     background-image:-webkit-linear-gradient(top,#f1f3f5,#fff);
     background-image:linear-gradient(to bottom,#f1f3f5,#fff);
 }
-.haTemplateLibrary__header-menu .elementor-template-library-menu-item.elementor-active{
+.UltraTempLibrary__header-menu .elementor-template-library-menu-item.elementor-active{
     border-bottom-color: #13c392;
 }
-#haTemplateLibrary__toolbar{
+#UltraTempLibrary__toolbar{
     display:-webkit-box;
     display:-webkit-flex;
     display:-ms-flexbox;
@@ -59,11 +59,11 @@
     -webkit-justify-content:space-between;
     justify-content:space-between
 }
-#haTemplateLibrary__toolbar-filter,#haTemplateLibrary__toolbar-search{
+#UltraTempLibrary__toolbar-filter,#UltraTempLibrary__toolbar-search{
     position:relative;
     width:200px
 }
-#haTemplateLibrary__toolbar-search i,.haTemplateLibrary__filter-btn i{
+#UltraTempLibrary__toolbar-search i,.UltraTempLibrary__filter-btn i{
     position:absolute;
     top:50%;
     right:0;
@@ -71,25 +71,25 @@
     -ms-transform:translateY(-50%);
     transform:translateY(-50%)
 }
-.haTemplateLibrary__filter-btn{
+.UltraTempLibrary__filter-btn{
     display:block;
     text-align:left;
     text-transform:uppercase;
     cursor:pointer
 }
-#haTemplateLibrary__toolbar-counter{
+#UltraTempLibrary__toolbar-counter{
     font-size:12px
 }
-#haTemplateLibrary__search{
+#UltraTempLibrary__search{
     border:none
 }
-#haTemplateLibrary__search,.haTemplateLibrary__filter-btn{
+#UltraTempLibrary__search,.UltraTempLibrary__filter-btn{
     padding:8px 15px 8px 0;
     border-bottom:1px solid #d5dadf;
     border-radius:0;
     font-size:12px
 }
-#haTemplateLibrary__filter-tags{
+#UltraTempLibrary__filter-tags{
     position:absolute;
     top:100%;
     left:0;
@@ -102,7 +102,7 @@
     background-color:#fff;
     box-shadow:0 4px 8px rgba(0,0,0,.05)
 }
-#haTemplateLibrary__filter-tags>li{
+#UltraTempLibrary__filter-tags>li{
     float:left;
     padding:10px;
     width:calc(100%/4);
@@ -110,10 +110,10 @@
     text-transform:capitalize;
     cursor:pointer
 }
-#haTemplateLibrary__filter-tags>li.active,#haTemplateLibrary__filter-tags>li:hover{
+#UltraTempLibrary__filter-tags>li.active,#UltraTempLibrary__filter-tags>li:hover{
     color:#e8357c
 }
-#haTemplateLibrary__filter-tags:before{
+#UltraTempLibrary__filter-tags:before{
     position:absolute;
     bottom:100%;
     left:0;
@@ -125,16 +125,16 @@
     content:" ";
     pointer-events:none
 }
-#haTemplateLibrary__templates{
+#UltraTempLibrary__templates{
     height:calc(100% + 30px)
 }
-.haTemplateLibrary__templates-window{
+.UltraTempLibrary__templates-window{
     position:relative;
     overflow-y:auto;
     margin:10px -15px 0;
     height:calc(100% - 45px)
 }
-#haTemplateLibrary__templates-list{
+#UltraTempLibrary__templates-list{
     display:-webkit-box;
     display:-webkit-flex;
     display:-ms-flexbox;
@@ -147,7 +147,7 @@
     -ms-flex-wrap:wrap;
     flex-wrap:wrap
 }
-.haTemplateLibrary__template{
+.UltraTempLibrary__template{
     position:relative;
     overflow:hidden;
     margin:15px;
@@ -155,16 +155,16 @@
     background-color:#fff;
     box-shadow:0 1px 20px 0 rgba(0,0,0,.07)
 }
-.haTemplateLibrary__templates--section .haTemplateLibrary__template{
+.UltraTempLibrary__templates--section .UltraTempLibrary__template{
     width:calc(33.333% - 30px)
 }
-.haTemplateLibrary__templates--page .haTemplateLibrary__template{
+.UltraTempLibrary__templates--page .UltraTempLibrary__template{
     width: calc(25% - 30px);
 }
-.haTemplateLibrary__template-body{
+.UltraTempLibrary__template-body{
     position:relative;
 }
-.haTemplateLibrary__template-preview{
+.UltraTempLibrary__template-preview{
     position:absolute;
     top:0;
     left:0;
@@ -176,7 +176,7 @@
     -webkit-transition:opacity .5s;
     transition:opacity .5s;
 }
-.haTemplateLibrary__template-preview i{
+.UltraTempLibrary__template-preview i{
     position:absolute;
     top:50%;
     left:50%;
@@ -186,7 +186,7 @@
     -ms-transform:translate(-50%,-50%);
     transform:translate(-50%,-50%)
 }
-.haTemplateLibrary__template-badge{
+.UltraTempLibrary__template-badge{
     position:absolute;
     top:10px;
     right:10px;
@@ -198,14 +198,14 @@
     letter-spacing: 1px;
     font-size:10px;
 }
-.haTemplateLibrary__template:hover .haTemplateLibrary__template-preview{
+.UltraTempLibrary__template:hover .UltraTempLibrary__template-preview{
     opacity:1
 }
-.haTemplateLibrary__template-thumbnail{
+.UltraTempLibrary__template-thumbnail{
     display:block;
     width:100%
 }
-.haTemplateLibrary__template-footer{
+.UltraTempLibrary__template-footer{
     position:absolute;
     bottom:0;
     left:0;
@@ -233,43 +233,43 @@
     -ms-transform:translateY(100%);
     transform:translateY(100%)
 }
-.haTemplateLibrary__template:hover .haTemplateLibrary__template-footer{
+.UltraTempLibrary__template:hover .UltraTempLibrary__template-footer{
     -webkit-transform:translateY(0);
     -ms-transform:translateY(0);
     transform:translateY(0)
 }
-.haTemplateLibrary__template .haTemplateLibrary__pro-button{
+.UltraTempLibrary__template .UltraTempLibrary__pro-button{
     color:#e8357c
 }
-.haTemplateLibrary__template .haTemplateLibrary__pro-button:focus,.haTemplateLibrary__template .haTemplateLibrary__pro-button:hover{
+.UltraTempLibrary__template .UltraTempLibrary__pro-button:focus,.UltraTempLibrary__template .UltraTempLibrary__pro-button:hover{
     color:#ed639a
 }
-.haTemplateLibrary__template .haTemplateLibrary__insert-button{
+.UltraTempLibrary__template .UltraTempLibrary__insert-button{
     color: #13c392;
     letter-spacing: 1px;
 }
-.haTemplateLibrary__template .haTemplateLibrary__insert-button:focus,.haTemplateLibrary__template .haTemplateLibrary__insert-button:hover{
+.UltraTempLibrary__template .UltraTempLibrary__insert-button:focus,.UltraTempLibrary__template .UltraTempLibrary__insert-button:hover{
     color:#7857dd
 }
-.haTemplateLibrary__template .haTemplateLibrary__preview-button{
+.UltraTempLibrary__template .UltraTempLibrary__preview-button{
     color:#495157
 }
-.haTemplateLibrary__template .haTemplateLibrary__preview-button:focus,.haTemplateLibrary__template .haTemplateLibrary__preview-button:hover{
+.UltraTempLibrary__template .UltraTempLibrary__preview-button:focus,.UltraTempLibrary__template .UltraTempLibrary__preview-button:hover{
     color:#606b73
 }
-#elementor-template-library-header-preview .haTemplateLibrary__pro-button{
+#elementor-template-library-header-preview .UltraTempLibrary__pro-button{
     background-color:#e8357c;
     color:#fff;
 }
-#elementor-template-library-header-preview .haTemplateLibrary__pro-button:focus,#elementor-template-library-header-preview .haTemplateLibrary__pro-button:hover{
+#elementor-template-library-header-preview .UltraTempLibrary__pro-button:focus,#elementor-template-library-header-preview .UltraTempLibrary__pro-button:hover{
     background-color:#ed639a;
     color:#fff
 }
-#elementor-template-library-header-preview .haTemplateLibrary__insert-button{
+#elementor-template-library-header-preview .UltraTempLibrary__insert-button{
     background-color:#562dd4;
     color:#fff
 }
-#elementor-template-library-header-preview .haTemplateLibrary__insert-button:focus,#elementor-template-library-header-preview .haTemplateLibrary__insert-button:hover{
+#elementor-template-library-header-preview .UltraTempLibrary__insert-button:focus,#elementor-template-library-header-preview .UltraTempLibrary__insert-button:hover{
     background-color:#7857dd;
     color:#fff
 }
