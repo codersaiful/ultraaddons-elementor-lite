@@ -66,8 +66,8 @@ class Loader {
          * In that file, The Array's Each Item array formate like bellow:
          * ******************************
          * 'Button'=> [
-            'name'  => __( 'Button', 'ultraaddons' ),
-            ],
+         *   'name'  => __( 'Button', 'ultraaddons' ),
+         *   ],
          * ******************************
          * 
          * ### To that Array ####
@@ -300,23 +300,23 @@ class Loader {
         wp_enqueue_script( $frontend_js_name );     
         
         $ajax_url = admin_url( 'admin-ajax.php' );
-       $version = ULTRA_ADDONS_VERSION;
-       $ULTRAADDONS_DATA = array( 
-           'plugin_name'        => 'UltraAddons',
-           'plugin_type'        => ultraaddons_plugin_version(),
-           'version'            => $version,
-           'active_widgets'     => $this->widgetsArray,
-           'widgets'            => Widgets_Manager::widgets(),
-           'ajaxurl'            => $ajax_url,
-           'ajax_url'           => $ajax_url,
-           'site_url'           => site_url(),
-           );
-        if( class_exists( '\WooCommerce' ) ){
-            $ULTRAADDONS_DATA['checkout_url'] = wc_get_checkout_url();
-            $ULTRAADDONS_DATA['cart_url'] = wc_get_cart_url();
-        }
-       $ULTRAADDONS_DATA = apply_filters( 'ultraaddons_localize_data', $ULTRAADDONS_DATA );
-       wp_localize_script( $frontend_js_name, 'ULTRAADDONS_DATA', $ULTRAADDONS_DATA );
+        $version = ULTRA_ADDONS_VERSION;
+        $ULTRAADDONS_DATA = array( 
+            'plugin_name'        => 'UltraAddons',
+            'plugin_type'        => ultraaddons_plugin_version(),
+            'version'            => $version,
+            'active_widgets'     => $this->widgetsArray,
+            'widgets'            => Widgets_Manager::widgets(),
+            'ajaxurl'            => $ajax_url,
+            'ajax_url'           => $ajax_url,
+            'site_url'           => site_url(),
+            );
+            if( class_exists( '\WooCommerce' ) ){
+                $ULTRAADDONS_DATA['checkout_url'] = wc_get_checkout_url();
+                $ULTRAADDONS_DATA['cart_url'] = wc_get_cart_url();
+            }
+        $ULTRAADDONS_DATA = apply_filters( 'ultraaddons_localize_data', $ULTRAADDONS_DATA );
+        wp_localize_script( $frontend_js_name, 'ULTRAADDONS_DATA', $ULTRAADDONS_DATA );
        
        
         

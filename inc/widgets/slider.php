@@ -125,10 +125,14 @@ class Slider extends Base{
                             $link = true;
                         }
                         
-                        $slide_template = $slide['slide_template'];
-                        //var_dump($slide_template);
-                        if( ! empty( $slide_template ) && is_numeric( $slide_template ) ){
-                            (int) $select_post_id = $slide_template;
+                        $slug = $slide['slide_template'];
+
+                        if( ! empty( $slug ) ){
+                             
+                            $queried_post = get_page_by_path($slug, OBJECT, 'elementor_library');
+
+                            (int) $select_post_id = $queried_post->ID;
+                            
                             if ( \Elementor\Plugin::instance()->db->is_built_with_elementor( $select_post_id ) ) {
                                 echo wp_kses_post( '<div class="ua-slider-item">' );
                                 echo \Elementor\Plugin::instance()->frontend->get_builder_content_for_display( $select_post_id );
@@ -219,8 +223,10 @@ class Slider extends Base{
                 //If found post, then itarate
                 if( is_array( $query ) && count( $query ) > 0 ){
                     foreach( $query as $q_post ){
+                        //var_dump($q_post->post_name);
                         $id = (int) $q_post->ID;
-                        $template_choices[$id] = $q_post->post_title;
+                        $slug = $q_post->post_name;
+                        $template_choices[$slug] = $q_post->post_title; //$id
                     }
                     
                     
