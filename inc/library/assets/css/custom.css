@@ -1,55 +1,18 @@
 .elementor-add-new-section .elementor-add-ha-button {
-    background-color: #8bc34a;
+    background-color: #13c392;
     margin-left: 5px;
     font-size: 27px;
     vertical-align: bottom;
     font-family: Arial,Helvetica,sans-serif;
     display: inline-flex;
     width: unset;
-    border-radius: 12px;
-    padding: 0 12px;
+    border-radius: 4px;
+    padding: 0 8px;
 }
 
-.elementor-add-new-section .elementor-add-ha-button:after {content: "Library";padding-left: 6px;padding-right: 0;font-size: 17px;/* color: #1f231b; */text-transform: capitalize;}
-
-/*.add-elementskit-template {
-	border-radius: 5px;
-	height: 40px;
-	 width: 40px; 
-	margin-left: 5px;
-	color: #fff;
-	border: none;
-	background-color: #8bc34a;
-	line-height: 40px;
-	padding-left: 2px;
-	cursor: pointer;
-	 min-width: 135px; 
-	font-family: Arial,Helvetica,sans-serif;
-	display: flex;
-	align-items: center;
-	padding-left: 10px;
-	justify-content: space-around;
-	padding-right: 10px;
+.elementor-add-new-section .elementor-add-ha-button:after {
+    content: "Library";
+    padding-left: 6px;
+    padding-right: 0;font-size: 17px;
+    text-transform: capitalize;
 }
-
-.add-elementskit-template.ekit-wid-con:before {content: '\e800';font-family: "UltraAddons Icons";font-size: 25px;}
-
-.add-elementskit-template.ekit-wid-con:after {content: "Library";padding-left: 10px;padding-right: 2px;}
-
-
-.elementor-add-new-section {
-	display: inline-flex;
-	position: relative;
-	padding-bottom: 30px
-}
-
-.add-elementskit-template {
-	order: 4
-}
-
-.elementor-add-section-drag-title {
-	bottom: 0;
-	width: 100%;
-	position: absolute;
-	left: 0
-}*/
