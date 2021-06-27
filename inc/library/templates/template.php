@@ -142,7 +142,7 @@ defined( 'ABSPATH' ) || exit;
 	<div class="elementor-template-library-blank-title"></div>
 	<div class="elementor-template-library-blank-message"></div>
 	<div class="elementor-template-library-blank-footer">
-		<?php esc_html_e( 'Want to learn more about the Happy Library?', 'ultraaddons' ); ?>
-		<a class="elementor-template-library-blank-footer-link" href="https://happyaddons.com/docs/happy-addons-for-elementor/happy-features/happy-templates/" target="_blank"><?php echo __( 'Click here', 'ultraaddons' ); ?></a>
+		<?php esc_html_e( 'Learn more about UltraAddons Template Library.', 'ultraaddons' ); ?>
+		<a class="elementor-template-library-blank-footer-link" href="https://ultraaddons.com/template-library" target="_blank"><?php echo __( 'Click here', 'ultraaddons' ); ?></a>
 	</div>
 </script>
