@@ -1,5 +1,5 @@
 .haTemplateLibrary__logo-wrap {
-	background-color: #e8357c;
+	background-color: #13c392;
 }
 
 #haTemplateLibrary__filter-tags {
@@ -15,7 +15,7 @@
 }
 
 .haTemplateLibrary__responsive-menu-item.elementor-active {
-	border-bottom-color: #e8357c; 
+	border-bottom-color: #13c392; 
 	background-image: -webkit-linear-gradient(top, #26292c, #34383c);
 	background-image:         linear-gradient(to bottom, #26292c, #34383c);
 }
