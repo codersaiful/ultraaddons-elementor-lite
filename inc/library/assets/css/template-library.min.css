@@ -19,10 +19,10 @@
     width:30px;
     height:30px;
     border-radius:100%;
-    background-color:#562dd4;
+    background-color: #13c392;
     color:#fff;
     text-align:center;
-    line-height:30px
+    line-height:30px;
 }
 .haTemplateLibrary__logo-wrap>i{
     position:relative;
@@ -38,12 +38,12 @@
     cursor:pointer
 }
 .haTemplateLibrary__responsive-menu-item.elementor-active{
-    border-bottom:3px solid #562dd4;
+    border-bottom: 3px solid #13c392;
     background-image:-webkit-linear-gradient(top,#f1f3f5,#fff);
-    background-image:linear-gradient(to bottom,#f1f3f5,#fff)
+    background-image:linear-gradient(to bottom,#f1f3f5,#fff);
 }
 .haTemplateLibrary__header-menu .elementor-template-library-menu-item.elementor-active{
-    border-bottom-color:#562dd4
+    border-bottom-color: #13c392;
 }
 #haTemplateLibrary__toolbar{
     display:-webkit-box;
@@ -159,10 +159,10 @@
     width:calc(33.333% - 30px)
 }
 .haTemplateLibrary__templates--page .haTemplateLibrary__template{
-    width:calc(25% - 30px)
+    width: calc(25% - 30px);
 }
 .haTemplateLibrary__template-body{
-    position:relative
+    position:relative;
 }
 .haTemplateLibrary__template-preview{
     position:absolute;
@@ -174,7 +174,7 @@
     opacity:0;
     cursor:pointer;
     -webkit-transition:opacity .5s;
-    transition:opacity .5s
+    transition:opacity .5s;
 }
 .haTemplateLibrary__template-preview i{
     position:absolute;
@@ -193,11 +193,10 @@
     display:inline-block;
     padding:2px 4px;
     border-radius:2px;
-    background-color:#e8357c;
-    color:#fff;
-    text-transform:uppercase;
-    letter-spacing:.5px;
-    font-size:10px
+    background-color: #e91e63;
+    color: #ffffff;
+    letter-spacing: 1px;
+    font-size:10px;
 }
 .haTemplateLibrary__template:hover .haTemplateLibrary__template-preview{
     opacity:1
@@ -246,7 +245,8 @@
     color:#ed639a
 }
 .haTemplateLibrary__template .haTemplateLibrary__insert-button{
-    color:#562dd4
+    color: #13c392;
+    letter-spacing: 1px;
 }
 .haTemplateLibrary__template .haTemplateLibrary__insert-button:focus,.haTemplateLibrary__template .haTemplateLibrary__insert-button:hover{
     color:#7857dd
@@ -259,7 +259,7 @@
 }
 #elementor-template-library-header-preview .haTemplateLibrary__pro-button{
     background-color:#e8357c;
-    color:#fff
+    color:#fff;
 }
 #elementor-template-library-header-preview .haTemplateLibrary__pro-button:focus,#elementor-template-library-header-preview .haTemplateLibrary__pro-button:hover{
     background-color:#ed639a;
