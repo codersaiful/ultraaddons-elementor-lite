@@ -52,7 +52,7 @@ defined( 'ABSPATH' ) || exit;
 
 <script type="text/template" id="tmpl-UltraTempLibrary__header-insert">
 	<div id="elementor-template-library-header-preview-insert-wrapper" class="elementor-templates-modal__header__item">
-		{{{ ha.library.getModal().getTemplateActionButton( obj ) }}}
+		{{{ ultraaddons.library.getModal().getTemplateActionButton( obj ) }}}
 	</div>
 </script>
 
@@ -87,18 +87,18 @@ defined( 'ABSPATH' ) || exit;
 <script type="text/template" id="tmpl-UltraTempLibrary__templates">
 	<div id="UltraTempLibrary__toolbar">
 		<div id="UltraTempLibrary__toolbar-filter" class="UltraTempLibrary__toolbar-filter">
-			<# if (ha.library.getTypeTags()) { var selectedTag = ha.library.getFilter( 'tags' ); #>
+			<# if (ultraaddons.library.getTypeTags()) { var selectedTag = ultraaddons.library.getFilter( 'tags' ); #>
 				<# if ( selectedTag ) { #>
-				<span class="UltraTempLibrary__filter-btn">{{{ ha.library.getTags()[selectedTag] }}} <i class="eicon-caret-right"></i></span>
+				<span class="UltraTempLibrary__filter-btn">{{{ ultraaddons.library.getTags()[selectedTag] }}} <i class="eicon-caret-right"></i></span>
 				<# } else { #>
 				<span class="UltraTempLibrary__filter-btn"><?php esc_html_e( 'Filter', 'ultraaddons' ); ?> <i class="eicon-caret-right"></i></span>
 				<# } #>
 				<ul id="UltraTempLibrary__filter-tags" class="UltraTempLibrary__filter-tags">
 					<li data-tag="">All</li>
-					<# _.each(ha.library.getTypeTags(), function(slug) {
+					<# _.each(ultraaddons.library.getTypeTags(), function(slug) {
 						var selected = selectedTag === slug ? 'active' : '';
 						#>
-						<li data-tag="{{ slug }}" class="{{ selected }}">{{{ ha.library.getTags()[slug] }}}</li>
+						<li data-tag="{{ slug }}" class="{{ selected }}">{{{ ultraaddons.library.getTags()[slug] }}}</li>
 					<# } ); #>
 				</ul>
 			<# } #>
@@ -127,7 +127,7 @@ defined( 'ABSPATH' ) || exit;
 		<# } #>
 	</div>
 	<div class="UltraTempLibrary__template-footer">
-		{{{ ha.library.getModal().getTemplateActionButton( obj ) }}}
+		{{{ ultraaddons.library.getModal().getTemplateActionButton( obj ) }}}
 		<a href="#" class="elementor-button UltraTempLibrary__preview-button">
 			<i class="eicon-device-desktop" aria-hidden="true"></i>
 			<?php esc_html_e( 'Preview', 'ultraaddons' ); ?>
