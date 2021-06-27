@@ -16,7 +16,7 @@ class Library_Source extends Source_Base {
 	/**
 	 * Template library data cache
 	 */
-	const LIBRARY_CACHE_KEY = 'ha_library_cache-hello'; //-ddddd
+	const LIBRARY_CACHE_KEY = 'ultraaddons_library_cache'; //-ddddd
 
 	/**
 	 * Template info api url
