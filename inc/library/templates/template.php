@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || exit;
 
 <script type="text/template" id="tmpl-haTemplateLibrary__header-back">
 	<i class="eicon-" aria-hidden="true"></i>
-	<span><?php echo __( 'Back to Library', 'happy-elementor-addons' ); ?></span>
+	<span><?php echo __( 'Back to Library', 'ultraaddons' ); ?></span>
 </script>
 
 <script type="text/template" id="tmpl-haTemplateLibrary__header-menu">
@@ -26,23 +26,23 @@ defined( 'ABSPATH' ) || exit;
 
 <script type="text/template" id="tmpl-haTemplateLibrary__header-menu-responsive">
 	<div class="elementor-component-tab haTemplateLibrary__responsive-menu-item elementor-active" data-tab="desktop">
-		<i class="eicon-device-desktop" aria-hidden="true" title="<?php esc_attr_e( 'Desktop view', 'happy-elementor-addons' ); ?>"></i>
-		<span class="elementor-screen-only"><?php esc_html_e( 'Desktop view', 'happy-elementor-addons' ); ?></span>
+		<i class="eicon-device-desktop" aria-hidden="true" title="<?php esc_attr_e( 'Desktop view', 'ultraaddons' ); ?>"></i>
+		<span class="elementor-screen-only"><?php esc_html_e( 'Desktop view', 'ultraaddons' ); ?></span>
 	</div>
 	<div class="elementor-component-tab haTemplateLibrary__responsive-menu-item" data-tab="tab">
-		<i class="eicon-device-tablet" aria-hidden="true" title="<?php esc_attr_e( 'Tab view', 'happy-elementor-addons' ); ?>"></i>
-		<span class="elementor-screen-only"><?php esc_html_e( 'Tab view', 'happy-elementor-addons' ); ?></span>
+		<i class="eicon-device-tablet" aria-hidden="true" title="<?php esc_attr_e( 'Tab view', 'ultraaddons' ); ?>"></i>
+		<span class="elementor-screen-only"><?php esc_html_e( 'Tab view', 'ultraaddons' ); ?></span>
 	</div>
 	<div class="elementor-component-tab haTemplateLibrary__responsive-menu-item" data-tab="mobile">
-		<i class="eicon-device-mobile" aria-hidden="true" title="<?php esc_attr_e( 'Mobile view', 'happy-elementor-addons' ); ?>"></i>
-		<span class="elementor-screen-only"><?php esc_html_e( 'Mobile view', 'happy-elementor-addons' ); ?></span>
+		<i class="eicon-device-mobile" aria-hidden="true" title="<?php esc_attr_e( 'Mobile view', 'ultraaddons' ); ?>"></i>
+		<span class="elementor-screen-only"><?php esc_html_e( 'Mobile view', 'ultraaddons' ); ?></span>
 	</div>
 </script>
 
 <script type="text/template" id="tmpl-haTemplateLibrary__header-actions">
 	<div id="haTemplateLibrary__header-sync" class="elementor-templates-modal__header__item">
-		<i class="eicon-sync" aria-hidden="true" title="<?php esc_attr_e( 'Sync Library', 'happy-elementor-addons' ); ?>"></i>
-		<span class="elementor-screen-only"><?php esc_html_e( 'Sync Library', 'happy-elementor-addons' ); ?></span>
+		<i class="eicon-sync" aria-hidden="true" title="<?php esc_attr_e( 'Sync Library', 'ultraaddons' ); ?>"></i>
+		<span class="elementor-screen-only"><?php esc_html_e( 'Sync Library', 'ultraaddons' ); ?></span>
 	</div>
 </script>
 
@@ -59,14 +59,14 @@ defined( 'ABSPATH' ) || exit;
 <script type="text/template" id="tmpl-haTemplateLibrary__insert-button">
 	<a class="elementor-template-library-template-action elementor-button haTemplateLibrary__insert-button">
 		<i class="eicon-file-download" aria-hidden="true"></i>
-		<span class="elementor-button-title"><?php esc_html_e( 'Insert', 'happy-elementor-addons' ); ?></span>
+		<span class="elementor-button-title"><?php esc_html_e( 'Insert', 'ultraaddons' ); ?></span>
 	</a>
 </script>
 
 <script type="text/template" id="tmpl-haTemplateLibrary__pro-button">
 	<a class="elementor-template-library-template-action elementor-button haTemplateLibrary__pro-button" href="https://happyaddons.com/pricing/" target="_blank">
 		<i class="eicon-external-link-square" aria-hidden="true"></i>
-		<span class="elementor-button-title"><?php esc_html_e( 'Get Pro', 'happy-elementor-addons' ); ?></span>
+		<span class="elementor-button-title"><?php esc_html_e( 'Get Pro', 'ultraaddons' ); ?></span>
 	</a>
 </script>
 
@@ -80,7 +80,7 @@ defined( 'ABSPATH' ) || exit;
 				<div class="elementor-loader-box"></div>
 			</div>
 		</div>
-		<div class="elementor-loading-title"><?php esc_html_e( 'Loading', 'happy-elementor-addons' ); ?></div>
+		<div class="elementor-loading-title"><?php esc_html_e( 'Loading', 'ultraaddons' ); ?></div>
 	</div>
 </script>
 
@@ -91,7 +91,7 @@ defined( 'ABSPATH' ) || exit;
 				<# if ( selectedTag ) { #>
 				<span class="haTemplateLibrary__filter-btn">{{{ ha.library.getTags()[selectedTag] }}} <i class="eicon-caret-right"></i></span>
 				<# } else { #>
-				<span class="haTemplateLibrary__filter-btn"><?php esc_html_e( 'Filter', 'happy-elementor-addons' ); ?> <i class="eicon-caret-right"></i></span>
+				<span class="haTemplateLibrary__filter-btn"><?php esc_html_e( 'Filter', 'ultraaddons' ); ?> <i class="eicon-caret-right"></i></span>
 				<# } #>
 				<ul id="haTemplateLibrary__filter-tags" class="haTemplateLibrary__filter-tags">
 					<li data-tag="">All</li>
@@ -105,8 +105,8 @@ defined( 'ABSPATH' ) || exit;
 		</div>
 		<div id="haTemplateLibrary__toolbar-counter"></div>
 		<div id="haTemplateLibrary__toolbar-search">
-			<label for="haTemplateLibrary__search" class="elementor-screen-only"><?php esc_html_e( 'Search Templates:', 'happy-elementor-addons' ); ?></label>
-			<input id="haTemplateLibrary__search" placeholder="<?php esc_attr_e( 'Search', 'happy-elementor-addons' ); ?>">
+			<label for="haTemplateLibrary__search" class="elementor-screen-only"><?php esc_html_e( 'Search Templates:', 'ultraaddons' ); ?></label>
+			<input id="haTemplateLibrary__search" placeholder="<?php esc_attr_e( 'Search', 'ultraaddons' ); ?>">
 			<i class="eicon-search"></i>
 		</div>
 	</div>
@@ -123,14 +123,14 @@ defined( 'ABSPATH' ) || exit;
 		</div>
 		<img class="haTemplateLibrary__template-thumbnail" src="{{ thumbnail }}">
 		<# if ( obj.isPro ) { #>
-		<span class="haTemplateLibrary__template-badge"><?php esc_html_e( 'Pro', 'happy-elementor-addons' ); ?></span>
+		<span class="haTemplateLibrary__template-badge"><?php esc_html_e( 'Pro', 'ultraaddons' ); ?></span>
 		<# } #>
 	</div>
 	<div class="haTemplateLibrary__template-footer">
 		{{{ ha.library.getModal().getTemplateActionButton( obj ) }}}
 		<a href="#" class="elementor-button haTemplateLibrary__preview-button">
 			<i class="eicon-device-desktop" aria-hidden="true"></i>
-			<?php esc_html_e( 'Preview', 'happy-elementor-addons' ); ?>
+			<?php esc_html_e( 'Preview', 'ultraaddons' ); ?>
 		</a>
 	</div>
 </script>
@@ -142,7 +142,7 @@ defined( 'ABSPATH' ) || exit;
 	<div class="elementor-template-library-blank-title"></div>
 	<div class="elementor-template-library-blank-message"></div>
 	<div class="elementor-template-library-blank-footer">
-		<?php esc_html_e( 'Want to learn more about the Happy Library?', 'happy-elementor-addons' ); ?>
-		<a class="elementor-template-library-blank-footer-link" href="https://happyaddons.com/docs/happy-addons-for-elementor/happy-features/happy-templates/" target="_blank"><?php echo __( 'Click here', 'happy-elementor-addons' ); ?></a>
+		<?php esc_html_e( 'Want to learn more about the Happy Library?', 'ultraaddons' ); ?>
+		<a class="elementor-template-library-blank-footer-link" href="https://happyaddons.com/docs/happy-addons-for-elementor/happy-features/happy-templates/" target="_blank"><?php echo __( 'Click here', 'ultraaddons' ); ?></a>
 	</div>
 </script>

@@ -36,7 +36,7 @@ class Library_Source extends Source_Base {
 	}
 
 	public function get_title() {
-		return __( 'Happy Library', 'happy-elementor-addons' );
+		return __( 'Happy Library', 'ultraaddons' );
 	}
 
 	public function register_data() {}
@@ -208,7 +208,7 @@ class Library_Source extends Source_Base {
 		$data = json_decode( $data, true );
 
 		if ( empty( $data ) || empty( $data['content'] ) ) {
-			throw new \Exception( __( 'Template does not have any content', 'happy-elementor-addons' ) );
+			throw new \Exception( __( 'Template does not have any content', 'ultraaddons' ) );
 		}
 
 		$data['content'] = $this->replace_elements_ids( $data['content'] );

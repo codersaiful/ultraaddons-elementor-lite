@@ -77,12 +77,12 @@ class Library_Manager {
 			'editor_nonce'            => wp_create_nonce( 'ha_editor_nonce' ),
 			'dark_stylesheet_url'     => ULTRA_ADDONS_TEMPLATE_ASSETS . 'css/editor-dark.min.css',
 			'i18n' => [
-				'promotionDialogHeader'     => esc_html__( '%s Widget', 'happy-elementor-addons' ),
-				'promotionDialogMessage'    => esc_html__( 'Use %s widget with other exclusive pro widgets and 100% unique features to extend your toolbox and build sites faster and better.', 'happy-elementor-addons' ),
-				'templatesEmptyTitle'       => esc_html__( 'No Templates Found', 'happy-elementor-addons' ),
-				'templatesEmptyMessage'     => esc_html__( 'Try different category or sync for new templates.', 'happy-elementor-addons' ),
-				'templatesNoResultsTitle'   => esc_html__( 'No Results Found', 'happy-elementor-addons' ),
-				'templatesNoResultsMessage' => esc_html__( 'Please make sure your search is spelled correctly or try a different words.', 'happy-elementor-addons' ),
+				'promotionDialogHeader'     => esc_html__( '%s Widget', 'ultraaddons' ),
+				'promotionDialogMessage'    => esc_html__( 'Use %s widget with other exclusive pro widgets and 100% unique features to extend your toolbox and build sites faster and better.', 'ultraaddons' ),
+				'templatesEmptyTitle'       => esc_html__( 'No Templates Found', 'ultraaddons' ),
+				'templatesEmptyMessage'     => esc_html__( 'Try different category or sync for new templates.', 'ultraaddons' ),
+				'templatesNoResultsTitle'   => esc_html__( 'No Results Found', 'ultraaddons' ),
+				'templatesNoResultsMessage' => esc_html__( 'Please make sure your search is spelled correctly or try a different words.', 'ultraaddons' ),
 			],
 		];
                 
@@ -116,7 +116,7 @@ class Library_Manager {
 				$editor_post_id = absint( $data['editor_post_id'] );
 
 				if ( ! get_post( $editor_post_id ) ) {
-					throw new \Exception( __( 'Post not found.', 'happy-elementor-addons' ) );
+					throw new \Exception( __( 'Post not found.', 'ultraaddons' ) );
 				}
 
 				ultraaddons_elementor()->db->switch_to_post( $editor_post_id );
@@ -136,14 +136,14 @@ class Library_Manager {
 				$editor_post_id = absint( $data['editor_post_id'] );
 
 				if ( ! get_post( $editor_post_id ) ) {
-					throw new \Exception( __( 'Post not found', 'happy-elementor-addons' ) );
+					throw new \Exception( __( 'Post not found', 'ultraaddons' ) );
 				}
 
 				ultraaddons_elementor()->db->switch_to_post( $editor_post_id );
 			}
 
 			if ( empty( $data['template_id'] ) ) {
-				throw new \Exception( __( 'Template id missing', 'happy-elementor-addons' ) );
+				throw new \Exception( __( 'Template id missing', 'ultraaddons' ) );
 			}
 
 			$result = self::get_template_data( $data );
