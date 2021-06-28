@@ -35,7 +35,7 @@ class Library_Source extends Source_Base {
 	 */
 //	const API_TEMPLATE_DATA_URL = 'https://templates.happyaddons.com/wp-json/ha/v1/templates/';
 //	const API_TEMPLATE_DATA_URL = 'http://cleania.cm/wp-json/library/v2/templates/';
-	const API_TEMPLATE_DATA_URL = 'https://library.ultraaddons.com/wp-json/library/v2/templates/';
+	const API_TEMPLATE_DATA_URL = 'https://library.ultraaddons.com/wp-json/library/v2/template/';
 
 	public function get_id() {
 		return 'happy-library';
