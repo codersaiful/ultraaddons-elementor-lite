@@ -2,7 +2,7 @@
 namespace UltraAddons\Widget;
 
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Utils;
 use Elementor\Group_Control_Typography;
 use Elementor\Scheme_Typography;
@@ -414,8 +414,8 @@ class Team_Box extends Base{
                 'label'     => __( 'Title Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
                 'scheme'    => [
-                    'type'  => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
+                    'type'  => Color::get_type(),
+                    'value' => Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .ua-single-team-wrapper .team-box-title' => 'color: {{VALUE}}',
@@ -430,8 +430,8 @@ class Team_Box extends Base{
                 'label'     => __( 'Designation Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
                 'scheme'    => [
-                    'type'  => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
+                    'type'  => Color::get_type(),
+                    'value' => Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .ua-single-team-wrapper .team-box-designation' => 'color: {{VALUE}}',

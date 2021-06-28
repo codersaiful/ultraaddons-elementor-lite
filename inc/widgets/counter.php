@@ -2,7 +2,7 @@
 namespace UltraAddons\Widget;
 
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
 use Elementor\Scheme_Typography;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
@@ -460,8 +460,8 @@ class Counter extends Base{
                 'label'     => __( 'Counter Background', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
                 'scheme'    => [
-                    'type'  => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
+                    'type'  => Color::get_type(),
+                    'value' => Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .ua-counter-wrapper .ua-counter-box' => 'background-color: {{VALUE}}',
@@ -477,8 +477,8 @@ class Counter extends Base{
                 'label'     => __( 'Counter Text Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
                 'scheme'    => [
-                    'type'  => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
+                    'type'  => Color::get_type(),
+                    'value' => Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .ua-counter-wrapper .ua-counter-box .ua-counter-text .ua-counter-value, {{WRAPPER}} .ua-counter-wrapper .ua-counter-box .ua-counter-text .ua-counter-pluss, {{WRAPPER}} .ua-counter-wrapper .ua-counter-box .ua-counter-text .me-counter-label' => 'color: {{VALUE}}',
@@ -494,8 +494,8 @@ class Counter extends Base{
                 'label'     => __( 'Icon Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
                 'scheme'    => [
-                    'type'  => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
+                    'type'  => Color::get_type(),
+                    'value' => Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .ua-counter-wrapper .ua-counter-box .ua-counter-icon span i' => 'color: {{VALUE}}',

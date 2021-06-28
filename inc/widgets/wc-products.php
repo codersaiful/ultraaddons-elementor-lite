@@ -2,7 +2,7 @@
 namespace UltraAddons\Widget;
 
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
 use Elementor\Scheme_Typography;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
@@ -294,8 +294,8 @@ class WC_Products extends Base{
                 'label'     => __( 'Primary Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
                 'scheme'    => [
-                    'type'  => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
+                    'type'  => Color::get_type(),
+                    'value' => Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} ul.products li.product:hover a .woocommerce-loop-product__title,{{WRAPPER}} ul.products li.product a span.price' => 'color: {{VALUE}}',
@@ -311,8 +311,8 @@ class WC_Products extends Base{
                 'label'     => __( 'Section Title Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
                 'scheme'    => [
-                    'type'  => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
+                    'type'  => Color::get_type(),
+                    'value' => Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} h2.ua-product-section-title' => 'color: {{VALUE}}',

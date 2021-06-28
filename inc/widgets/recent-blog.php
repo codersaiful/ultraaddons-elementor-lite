@@ -2,7 +2,7 @@
 namespace UltraAddons\Widget;
 
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
 use Elementor\Scheme_Typography;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
@@ -602,8 +602,8 @@ class Recent_Blog extends Base{
                 'label'     => __( 'Title Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
                 'scheme'    => [
-                    'type'  => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
+                    'type'  => Color::get_type(),
+                    'value' => Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .recent-blog-info h2.ua-recent-blog-title' => 'color: {{VALUE}}',
@@ -621,8 +621,8 @@ class Recent_Blog extends Base{
                 'label'     => __( 'Excerpt Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
                 'scheme'    => [
-                    'type'  => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
+                    'type'  => Color::get_type(),
+                    'value' => Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .recent-blog-info .para.ua-rb-ecerpt' => 'color: {{VALUE}}',
@@ -640,8 +640,8 @@ class Recent_Blog extends Base{
                 'label'     => __( 'Meta Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
                 'scheme'    => [
-                    'type'  => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
+                    'type'  => Color::get_type(),
+                    'value' => Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} span.recent-blog-author, {{WRAPPER}} span.published-date' => 'color: {{VALUE}}',
@@ -659,8 +659,8 @@ class Recent_Blog extends Base{
                 'label'     => __( 'Meta Icon Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
                 'scheme'    => [
-                    'type'  => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
+                    'type'  => Color::get_type(),
+                    'value' => Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .recent-blog-meta span i' => 'color: {{VALUE}}',
@@ -678,8 +678,8 @@ class Recent_Blog extends Base{
                 'label'     => __( 'Read More Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
                 'scheme'    => [
-                    'type'  => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
+                    'type'  => Color::get_type(),
+                    'value' => Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .recent-blog-info .read-more' => 'color: {{VALUE}}',
@@ -696,8 +696,8 @@ class Recent_Blog extends Base{
                 'label'     => __( 'Read More Hover Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
                 'scheme'    => [
-                    'type'  => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
+                    'type'  => Color::get_type(),
+                    'value' => Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .recent-blog-item:hover .recent-blog-info .read-more' => 'color: {{VALUE}}',
@@ -732,8 +732,8 @@ class Recent_Blog extends Base{
                 'label'     => __( 'Date Background', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
                 'scheme'    => [
-                    'type'  => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
+                    'type'  => Color::get_type(),
+                    'value' => Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .recent-blog-item-wrap .recent-blog-img a.recent-blog-date' => 'background-color: {{VALUE}}',
