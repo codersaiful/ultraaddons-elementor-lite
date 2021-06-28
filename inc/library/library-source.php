@@ -23,26 +23,25 @@ class Library_Source extends Source_Base {
 	 *
 	 * Updated api to v2 in version 2.15.0
          * 
-         * based: https://library.ultraaddons.com/
+         * base site: https://library.ultraaddons.com/
          * 
 	 */
-//	const API_TEMPLATES_INFO_URL = 'https://templates.happyaddons.com/wp-json/ha/v2/templates-info';
-//        const API_TEMPLATES_INFO_URL = 'http://cleania.cm/wp-json/library/v2/templates';
         const API_TEMPLATES_INFO_URL = 'https://library.ultraaddons.com/wp-json/library/v2/templates';
-	/**
-	 * Template data api url
-         * //https://templates.happyaddons.com/wp-json/ha/v1/templates/1365
-	 */
-//	const API_TEMPLATE_DATA_URL = 'https://templates.happyaddons.com/wp-json/ha/v1/templates/';
-//	const API_TEMPLATE_DATA_URL = 'http://cleania.cm/wp-json/library/v2/templates/';
+
+        /**
+         * Get Sinle Template info
+         * 
+         * Example Link:
+         * https://library.ultraaddons.com/wp-json/library/v2/template/[template_id]
+         */
 	const API_TEMPLATE_DATA_URL = 'https://library.ultraaddons.com/wp-json/library/v2/template/';
 
 	public function get_id() {
-		return 'happy-library';
+		return 'ultraaddons-library';
 	}
 
 	public function get_title() {
-		return __( 'Happy Library', 'ultraaddons' );
+		return __( 'UltraAddons Library', 'ultraaddons' );
 	}
 
 	public function register_data() {}
