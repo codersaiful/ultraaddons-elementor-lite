@@ -8,8 +8,9 @@ defined('ABSPATH') || die();
 class Library_Manager {
 
 	protected static $source = null;
+        const ULTRA_ADDONS_TEMPLATE_ASSETS = ULTRA_ADDONS_URL . 'inc/library/assets/';
 
-	public static function init() {
+        public static function init() {
             
 		add_action( 'elementor/editor/footer', [ __CLASS__, 'print_template_views' ] );
 		add_action( 'elementor/ajax/register_actions', [ __CLASS__, 'register_ajax_actions' ] );
@@ -28,7 +29,7 @@ class Library_Manager {
         public static function preview_styles() {
             wp_enqueue_style(
 			'ultraaddons-libr-templt',
-			ULTRA_ADDONS_TEMPLATE_ASSETS . 'css/custom.css',
+			self::ULTRA_ADDONS_TEMPLATE_ASSETS . 'css/custom.css',
 			null,
 			ULTRA_ADDONS_VERSION
 		);
@@ -37,14 +38,14 @@ class Library_Manager {
                 
                 wp_enqueue_style(
 			'ultraaddons-library-editor',
-			ULTRA_ADDONS_TEMPLATE_ASSETS . 'css/editor.min.css',
+			self::ULTRA_ADDONS_TEMPLATE_ASSETS . 'css/editor.min.css',
 			null,
 			ULTRA_ADDONS_VERSION
 		);
 
 		wp_enqueue_script(
 			'ultraaddons-library-editor',
-			ULTRA_ADDONS_TEMPLATE_ASSETS . 'js/editor.min.js',
+			self::ULTRA_ADDONS_TEMPLATE_ASSETS . 'js/editor.min.js',
 			['elementor-editor', 'jquery'],
 			ULTRA_ADDONS_VERSION,
 			true
@@ -53,7 +54,7 @@ class Library_Manager {
             
 		wp_enqueue_style(
 			'ultraaddons-library-template',
-			ULTRA_ADDONS_TEMPLATE_ASSETS . 'css/template-library.min.css',
+			self::ULTRA_ADDONS_TEMPLATE_ASSETS . 'css/template-library.min.css',
 			[
 				'elementor-editor',
 			],
@@ -62,7 +63,7 @@ class Library_Manager {
 
 		wp_enqueue_script(
 			'ultraaddons-library-template',
-			ULTRA_ADDONS_TEMPLATE_ASSETS . 'js/template-library.min.js',
+			self::ULTRA_ADDONS_TEMPLATE_ASSETS . 'js/template-library.min.js',
 			[
 				'ultraaddons-library-editor',
 				'jquery-hover-intent',
@@ -75,7 +76,7 @@ class Library_Manager {
 			'placeholder_widgets' => [],
 			'hasPro'                  => false,
 			'editor_nonce'            => wp_create_nonce( 'ha_editor_nonce' ),
-			'dark_stylesheet_url'     => ULTRA_ADDONS_TEMPLATE_ASSETS . 'css/editor-dark.min.css',
+			'dark_stylesheet_url'     => self::ULTRA_ADDONS_TEMPLATE_ASSETS . 'css/editor-dark.min.css',
 			'i18n' => [
 				'iconTitlePreviewPage'      => esc_html__( 'Library', 'ultraaddons' ),
 				'promotionDialogHeader'     => esc_html__( '%s Widget', 'ultraaddons' ),
