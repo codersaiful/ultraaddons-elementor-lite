@@ -12,6 +12,19 @@ class Library_Manager {
 
         public static function init() {
             
+                /**
+                 * Onlye Developer Perpose
+                 * For Developer, Unregister curent cache
+                 * 
+                 * 
+                 * 
+                 *****************************************
+                 * IF WANT TO DESTROY CACHE, JUST ENABLE BOTTOM ACTION. 
+                 * just write a slash at the end of bottom start
+                 ******************************************
+                update_option( 'ultraaddons_library_cache', false );
+                //**************************************************/
+                
 		add_action( 'elementor/editor/footer', [ __CLASS__, 'print_template_views' ] );
 		add_action( 'elementor/ajax/register_actions', [ __CLASS__, 'register_ajax_actions' ] );
                 
