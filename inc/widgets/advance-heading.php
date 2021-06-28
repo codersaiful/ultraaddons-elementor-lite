@@ -5,7 +5,7 @@ use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
@@ -520,7 +520,7 @@ class Advance_Heading extends Base{
             [
                 'name'     => 'heading_tag_typography',
                 'selector' => '{{WRAPPER}} .pricing-box-item .pricing-icon .ultraaddons-price-table-heading, .section-title.v1.ultraaddons-advance-heading h3.ultraaddons-heading',
-                'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+                'scheme'   => Typography::TYPOGRAPHY_1,
             ]
         );
         $this->add_responsive_control(
