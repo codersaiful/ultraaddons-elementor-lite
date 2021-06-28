@@ -2,8 +2,8 @@
 /**
  * Library api class
  *
- * @package HappyAddons
- * @author HappyMonster
+ * @package UltraAddons
+ * @author Saiful Islam<codersaiful@gmail.com>
  */
 namespace UltraAddons\Library;
 
