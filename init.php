@@ -60,7 +60,7 @@ define( 'ULTRA_ADDONS_MINIMUM_PHP_VERSION', '5.4' );
 $ultraaddons_capability = apply_filters( 'ultraaddons_capability', 'manage_ultraaddons' );
 define( 'ULTRA_ADDONS_CAPABILITY', $ultraaddons_capability );
 
-define( 'ULTRA_ADDONS_TEMPLATE_ASSETS', ULTRA_ADDONS_URL . 'inc/library/assets/' );
+
 
 /**
  * Main ULTRA_ADDONS Addons Class
