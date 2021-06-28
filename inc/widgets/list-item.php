@@ -3,9 +3,9 @@ namespace UltraAddons\Widget;
 
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
@@ -170,8 +170,8 @@ class List_Item extends Base{
                 'label'     => __( 'Icon Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
                 'scheme'    => [
-                    'type'  => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
+                    'type'  => Color::get_type(),
+                    'value' => Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .ua-list-item-wrapper .ua-list-items {{CURRENT_ITEM}} i' => 'color: {{VALUE}}',
@@ -187,8 +187,8 @@ class List_Item extends Base{
                 'label'     => __( 'Icon Background', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
                 'scheme'    => [
-                    'type'  => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
+                    'type'  => Color::get_type(),
+                    'value' => Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .ua-list-item-wrapper .ua-list-items {{CURRENT_ITEM}} i,.elementor-element.ua-list-temp-temp-2 .ua-list-items {{CURRENT_ITEM}}::after' => 'background-color: {{VALUE}}',
@@ -204,8 +204,8 @@ class List_Item extends Base{
                 'label'     => __( 'Item Background', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
                 'scheme'    => [
-                    'type'  => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
+                    'type'  => Color::get_type(),
+                    'value' => Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .ua-list-item-wrapper .ua-list-items {{CURRENT_ITEM}}' => 'background-color: {{VALUE}}',
@@ -306,8 +306,8 @@ class List_Item extends Base{
                 'label'     => __( 'Title Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
                 'scheme'    => [
-                    'type'  => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
+                    'type'  => Color::get_type(),
+                    'value' => Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .ua-list-item-wrapper .ua-list-items li .list-item-title' => 'color: {{VALUE}}',
@@ -322,8 +322,8 @@ class List_Item extends Base{
                 'label'     => __( 'Description Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
                 'scheme'    => [
-                    'type'  => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
+                    'type'  => Color::get_type(),
+                    'value' => Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .ua-list-item-wrapper .ua-list-items li .list-item-description' => 'color: {{VALUE}}',

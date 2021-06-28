@@ -45,7 +45,7 @@
 
 defined( 'ABSPATH' ) || die();
 
-define( 'ULTRA_ADDONS_VERSION', '1.0.7.6' );
+define( 'ULTRA_ADDONS_VERSION', '1.0.7.12' );
 define( 'ULTRA_ADDONS__FILE__', __FILE__ );
 define( 'ULTRA_ADDONS_BASE_NAME', plugin_basename( __FILE__ ) );
 define( 'ULTRA_ADDONS_DIR', plugin_dir_path( ULTRA_ADDONS__FILE__ ) );
@@ -60,7 +60,7 @@ define( 'ULTRA_ADDONS_MINIMUM_PHP_VERSION', '5.4' );
 $ultraaddons_capability = apply_filters( 'ultraaddons_capability', 'manage_ultraaddons' );
 define( 'ULTRA_ADDONS_CAPABILITY', $ultraaddons_capability );
 
-define( 'ULTRA_ADDONS_TEMPLATE_ASSETS', ULTRA_ADDONS_URL . 'inc/library/assets/' );
+
 
 /**
  * Main ULTRA_ADDONS Addons Class

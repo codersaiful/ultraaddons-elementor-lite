@@ -6,6 +6,13 @@
     -webkit-transition:width .2s,height .2s;
     transition:width .2s,height .2s
 }
+a.elementor-template-library-blank-footer-link {
+    color: #13c392;
+}
+a.elementor-template-library-blank-footer-link:hover {
+    color: #ff5722;
+}
+
 .UltraTempLibrary__preview>iframe{
     width:150%;
     height:150%;
@@ -249,7 +256,7 @@
     letter-spacing: 1px;
 }
 .UltraTempLibrary__template .UltraTempLibrary__insert-button:focus,.UltraTempLibrary__template .UltraTempLibrary__insert-button:hover{
-    color:#7857dd
+    color: #ff5722;
 }
 .UltraTempLibrary__template .UltraTempLibrary__preview-button{
     color:#495157
@@ -266,8 +273,8 @@
     color:#fff
 }
 #elementor-template-library-header-preview .UltraTempLibrary__insert-button{
-    background-color:#562dd4;
-    color:#fff
+    background-color: #13c392;
+    color:#fff;
 }
 #elementor-template-library-header-preview .UltraTempLibrary__insert-button:focus,#elementor-template-library-header-preview .UltraTempLibrary__insert-button:hover{
     background-color:#7857dd;

@@ -2,9 +2,9 @@
 namespace UltraAddons\Widget;
 
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
@@ -734,8 +734,8 @@ class Offer_Card extends Base{
                 'label'     => __( 'Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
                 'scheme'    => [
-                    'type'  => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
+                    'type'  => Color::get_type(),
+                    'value' => Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .content-title .ultraaddons-sub-heading.elementor-inline-editing, .section-title.v1.ultraaddons-advance-heading span' => 'color: {{VALUE}}',
@@ -748,8 +748,8 @@ class Offer_Card extends Base{
                 'label'     => __( 'After Border Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
                 'scheme'    => [
-                    'type'  => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
+                    'type'  => Color::get_type(),
+                    'value' => Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .content-title .ultraaddons-sub-heading.elementor-inline-editing:after, .section-title.v1.ultraaddons-advance-heading span:before, .section-title.v1.ultraaddons-advance-heading span:after' => 'background: {{VALUE}}',
@@ -761,7 +761,7 @@ class Offer_Card extends Base{
             [
                 'name'     => 'sub_heading_typography',
                 'selector' => '{{WRAPPER}} .content-title .ultraaddons-sub-heading.elementor-inline-editing, .section-title.v1.ultraaddons-advance-heading span',
-                'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+                'scheme'   => Typography::TYPOGRAPHY_1,
             ]
         );
         $this->add_responsive_control(
@@ -820,8 +820,8 @@ class Offer_Card extends Base{
                 'label'     => __( 'Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
                 'scheme'    => [
-                    'type'  => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
+                    'type'  => Color::get_type(),
+                    'value' => Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .content-title span.ultraaddons-sub-heading, .section-title.v1.ultraaddons-advance-heading h3.ultraaddons-heading' => 'color: {{VALUE}}',
@@ -833,7 +833,7 @@ class Offer_Card extends Base{
             [
                 'name'     => 'heading_tag_typography',
                 'selector' => '{{WRAPPER}} .pricing-box-item .pricing-icon .ultraaddons-price-table-heading, .section-title.v1.ultraaddons-advance-heading h3.ultraaddons-heading',
-                'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+                'scheme'   => Typography::TYPOGRAPHY_1,
             ]
         );
         $this->add_responsive_control(

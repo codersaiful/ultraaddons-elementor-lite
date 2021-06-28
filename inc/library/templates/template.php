@@ -64,7 +64,7 @@ defined( 'ABSPATH' ) || exit;
 </script>
 
 <script type="text/template" id="tmpl-UltraTempLibrary__pro-button">
-	<a class="elementor-template-library-template-action elementor-button UltraTempLibrary__pro-button" href="https://happyaddons.com/pricing/" target="_blank">
+	<a class="elementor-template-library-template-action elementor-button UltraTempLibrary__pro-button" href="https://ultraaddons.com/pricing/" target="_blank">
 		<i class="eicon-external-link-square" aria-hidden="true"></i>
 		<span class="elementor-button-title"><?php esc_html_e( 'Get Pro', 'ultraaddons' ); ?></span>
 	</a>
