@@ -57,6 +57,8 @@ define( 'ULTRA_ADDONS_WIDGET_HELP_ULR', trailingslashit( 'https://ultraaddons.co
 define( 'ULTRA_ADDONS_MINIMUM_ELEMENTOR_VERSION', '2.5.0' );
 define( 'ULTRA_ADDONS_MINIMUM_PHP_VERSION', '5.4' );
 
+define( 'ULTRA_ADDONS_PRO_VERSION', '1.0.0' );
+
 $ultraaddons_capability = apply_filters( 'ultraaddons_capability', 'manage_ultraaddons' );
 define( 'ULTRA_ADDONS_CAPABILITY', $ultraaddons_capability );
 
