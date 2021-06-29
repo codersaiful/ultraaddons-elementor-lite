@@ -184,7 +184,7 @@ class Library_Source extends Source_Base {
 			'version' => ULTRA_ADDONS_VERSION,
 		];
 
-//		if ( ha_has_pro() ) {
+//		if ( ua_has_pro() ) {
 //			$body['has_pro'] = 1;
 //			$body['pro_version'] = HAPPY_ADDONS_PRO_VERSION;
 //		}
