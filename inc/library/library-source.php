@@ -104,6 +104,7 @@ class Library_Source extends Source_Base {
 			'tags'        => $template_data['tags'],
 			'isPro'       => $template_data['is_pro'],
 			'url'         => $template_data['url'],
+			'extra'       => $template_data['extra'],
 		];
 	}
 
