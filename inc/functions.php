@@ -113,8 +113,24 @@ function ultraaddons_elementor() {
 	return \Elementor\Plugin::instance();
 }
 
+/**
+ * Get Boolean for Pro
+ * 
+ * @return bool True|False
+ */
+function ultraaddons_is_pro(){
+    return defined( 'ULTRA_ADDONS_PRO_VERSION' );
+}
+
+/**
+ * Get Plugin's Version name.
+ * For Premium, it will return pro,
+ * and for free, it will return free
+ * 
+ * @return string free|pro
+ */
 function ultraaddons_plugin_version(){
-    return 'free';
+    return ultraaddons_is_pro() ? 'pro' :'free';
 }
 
 /**
