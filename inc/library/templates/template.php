@@ -122,19 +122,19 @@ defined( 'ABSPATH' ) || exit;
 			<i class="eicon-zoom-in-bold" aria-hidden="true"></i>
 		</div>
 		<img class="UltraTempLibrary__template-thumbnail" src="{{ thumbnail }}">
-                    <# console.log(ULTRAADDONS_DATA_EDITOR.hasPro); #>
+                    
 		<# if ( obj.isPro ) { #>
-		<span class="UltraTempLibrary__template-badge hasPro{{obj.isPro}}"><?php esc_html_e( 'Pro', 'ultraaddons' ); ?></span>
+                <span class="UltraTempLibrary__template-badge hasPro_<?php echo esc_attr( ultraaddons_plugin_version() ); ?>"><?php esc_html_e( 'Pro', 'ultraaddons' ); ?></span>
 		<# } #>
 	</div>
-	<div class="UltraTempLibrary__template-stats">
+	<div class="UltraTempLibrary__template-stats" <?php echo esc_html__( 'Status automatically updates on a daily basis.', 'ultraaddons' ); ?>>
 		<span class="UltraTempLibrary-stats views" title="Views">
                     <i class="eicon-preview-thin" aria-hidden="true"></i>
-                    <i class="ultra-temp-stats-number">215</i>    
+                    <i class="ultra-temp-stats-number">{{extra.views}}</i>    
                 </span>
 		<span class="UltraTempLibrary-stats download" title="Downloads">
                     <i class="eicon-library-download" aria-hidden="true"></i>
-                    <i class="ultra-temp-stats-number">4215</i>
+                    <i class="ultra-temp-stats-number">{{extra.download}}</i>
                 </span>
 	</div>
 	<div class="UltraTempLibrary__template-footer">
