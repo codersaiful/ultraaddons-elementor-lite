@@ -185,25 +185,31 @@ a.elementor-template-library-blank-footer-link:hover {
 }
 .UltraTempLibrary__template-preview i{
     position:absolute;
-    top:50%;
+    top: 40%;
     left:50%;
     color:#d5dadf;
     font-size:20px;
     -webkit-transform:translate(-50%,-50%);
     -ms-transform:translate(-50%,-50%);
-    transform:translate(-50%,-50%)
+    transform:translate(-50%,-50%);
 }
 .UltraTempLibrary__template-badge{
     position:absolute;
     top:10px;
     right:10px;
     display:inline-block;
-    padding:2px 4px;
+    padding: 2px 5px;
     border-radius:2px;
     background-color: #e91e63;
     color: #ffffff;
     letter-spacing: 1px;
-    font-size:10px;
+    font-size: 11px;
+    box-shadow: 0 2px 5px #0000002b;
+}
+span.UltraTempLibrary__template-badge.hasProtrue {
+    background-color: #8bc34a;
+    box-shadow: 0 2px 5px #0000001f;
+    font-size: 10px;
 }
 .UltraTempLibrary__template:hover .UltraTempLibrary__template-preview{
     opacity:1
@@ -212,7 +218,7 @@ a.elementor-template-library-blank-footer-link:hover {
     display:block;
     width:100%
 }
-.UltraTempLibrary__template-footer{
+.UltraTempLibrary__template-footer,.UltraTempLibrary__template-stats{
     position:absolute;
     bottom:0;
     left:0;
@@ -240,11 +246,34 @@ a.elementor-template-library-blank-footer-link:hover {
     -ms-transform:translateY(100%);
     transform:translateY(100%)
 }
+
 .UltraTempLibrary__template:hover .UltraTempLibrary__template-footer{
     -webkit-transform:translateY(0);
     -ms-transform:translateY(0);
     transform:translateY(0)
 }
+/*.UltraTempLibrary__template:hover, */
+.UltraTempLibrary__template-stats{
+    -webkit-transform:translateY(-150%);
+    -ms-transform:translateY(-150%);
+    transform:translateY(-150%);
+    opacity: 0;
+}
+.UltraTempLibrary__template:hover .UltraTempLibrary__template-stats{
+    background-color: #00000021;
+    color: white;
+    opacity: 1;
+    -webkit-transform:translateY(-100%);
+    -ms-transform:translateY(-100%);
+    transform:translateY(-100%);
+    /* padding: 5px 10px; */
+    font-size: 10px;
+    /* bottom: unset; */
+    /* top: 0; */
+    height: 28px;
+}
+.ultra-temp-stats-number{padding: 0 10px;}
+
 .UltraTempLibrary__template .UltraTempLibrary__pro-button{
     color:#e8357c
 }
