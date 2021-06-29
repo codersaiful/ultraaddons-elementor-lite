@@ -126,6 +126,9 @@ defined( 'ABSPATH' ) || exit;
 		<# if ( obj.isPro ) { #>
                 <span class="UltraTempLibrary__template-badge hasPro_<?php echo esc_attr( ultraaddons_plugin_version() ); ?>"><?php esc_html_e( 'Pro', 'ultraaddons' ); ?></span>
 		<# } #>
+		<# if ( extra.message ) { #>
+                <span title="{{ extra.message }}" class="UltraTempLibrary__template-alert"><i class="eicon-alert"></i></span>
+		<# } #>
 	</div>
 	<div class="UltraTempLibrary__template-stats" <?php echo esc_html__( 'Status automatically updates on a daily basis.', 'ultraaddons' ); ?>>
 		<span class="UltraTempLibrary-stats views" title="Views">

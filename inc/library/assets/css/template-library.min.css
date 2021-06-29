@@ -206,6 +206,21 @@ a.elementor-template-library-blank-footer-link:hover {
     font-size: 11px;
     box-shadow: 0 2px 5px #0000002b;
 }
+.UltraTempLibrary__template-alert {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: inline-block;
+    padding: 2px 5px;
+    border-radius: 2px;
+    background-color: #ff9800;
+    color: #ffffff;
+    letter-spacing: 1px;
+    font-size: 10px;
+    box-shadow: 0 2px 5px #0000002b;
+    cursor: help;
+}
+
 span.UltraTempLibrary__template-badge.hasPro_pro {
     background-color: #8bc34a;
     box-shadow: 0 2px 5px #0000001f;
