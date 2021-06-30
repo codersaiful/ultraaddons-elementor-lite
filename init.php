@@ -90,7 +90,7 @@ final class UltraAddons {
 	 *
 	 * @var string The plugin version.
 	 */
-	const VERSION = '1.0.0';
+	const VERSION = ULTRA_ADDONS_VERSION;
 
 	/**
 	 * Minimum Elementor Version
