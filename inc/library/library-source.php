@@ -163,7 +163,7 @@ class Library_Source extends Source_Base {
 	/**
 	 * Get remote template.
 	 *
-	 * Retrieve a single remote template from Elementor.com servers.
+	 * Retrieve a single remote template from UltraAddons.com servers.
 	 *
 	 * @param int $template_id The template ID.
 	 *
@@ -185,10 +185,10 @@ class Library_Source extends Source_Base {
 			'version' => ULTRA_ADDONS_VERSION,
 		];
 
-//		if ( ua_has_pro() ) {
-//			$body['has_pro'] = 1;
-//			$body['pro_version'] = HAPPY_ADDONS_PRO_VERSION;
-//		}
+		if ( ultraaddons_is_pro() ) {
+			$body['has_pro'] = 1;
+			$body['pro_version'] = ULTRA_ADDONS_PRO_VERSION;
+		}
 
 		$response = wp_remote_get(
 			self::API_TEMPLATE_DATA_URL . $template_id,
