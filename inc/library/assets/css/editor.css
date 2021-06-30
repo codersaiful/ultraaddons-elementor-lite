@@ -3,18 +3,18 @@
 	left: 5px;
 }
 
-.elementor-panel #elementor-panel-category-happy_addons_category .elementor-element:hover .icon,
-.elementor-panel #elementor-panel-category-happy_addons_category .elementor-element:hover .title,
-.elementor-panel #elementor-panel-category-happy_addons_category .elementor-element:focus .icon,
-.elementor-panel #elementor-panel-category-happy_addons_category .elementor-element:focus .title,
-.elementor-panel #elementor-panel-category-happy_addons_pro_category .elementor-element:hover .icon,
-.elementor-panel #elementor-panel-category-happy_addons_pro_category .elementor-element:hover .title,
-.elementor-panel #elementor-panel-category-happy_addons_pro_category .elementor-element:focus .icon,
-.elementor-panel #elementor-panel-category-happy_addons_pro_category .elementor-element:focus .title,
-.elementor-panel #elementor-panel-category-happy_addons_pro_category .is-ua-widget:hover .icon,
-.elementor-panel #elementor-panel-category-happy_addons_pro_category .is-ua-widget:hover .title,
-.elementor-panel #elementor-panel-category-happy_addons_pro_category .is-ua-widget:focus .icon,
-.elementor-panel #elementor-panel-category-happy_addons_pro_category .is-ua-widget:focus .title {
+.elementor-panel #elementor-panel-category-ua_addons_category .elementor-element:hover .icon,
+.elementor-panel #elementor-panel-category-ua_addons_category .elementor-element:hover .title,
+.elementor-panel #elementor-panel-category-ua_addons_category .elementor-element:focus .icon,
+.elementor-panel #elementor-panel-category-ua_addons_category .elementor-element:focus .title,
+.elementor-panel #elementor-panel-category-ua_addons_pro_category .elementor-element:hover .icon,
+.elementor-panel #elementor-panel-category-ua_addons_pro_category .elementor-element:hover .title,
+.elementor-panel #elementor-panel-category-ua_addons_pro_category .elementor-element:focus .icon,
+.elementor-panel #elementor-panel-category-ua_addons_pro_category .elementor-element:focus .title,
+.elementor-panel #elementor-panel-category-ua_addons_pro_category .is-ua-widget:hover .icon,
+.elementor-panel #elementor-panel-category-ua_addons_pro_category .is-ua-widget:hover .title,
+.elementor-panel #elementor-panel-category-ua_addons_pro_category .is-ua-widget:focus .icon,
+.elementor-panel #elementor-panel-category-ua_addons_pro_category .is-ua-widget:focus .title {
 	background-image: -webkit-linear-gradient(315deg, #e2498a 25%, #562dd4 100%);
 	background-image:         linear-gradient(135deg, #e2498a 25%, #562dd4 100%);
 	-webkit-background-clip: text;
