@@ -117,17 +117,32 @@ defined( 'ABSPATH' ) || exit;
 </script>
 
 <script type="text/template" id="tmpl-UltraTempLibrary__template">
-	<div class="UltraTempLibrary__template-body" id="haTemplate-{{ template_id }}">
+	<div class="UltraTempLibrary__template-body" id="uaTemplate-{{ template_id }}">
 		<div class="UltraTempLibrary__template-preview">
 			<i class="eicon-zoom-in-bold" aria-hidden="true"></i>
 		</div>
 		<img class="UltraTempLibrary__template-thumbnail" src="{{ thumbnail }}">
+                    
 		<# if ( obj.isPro ) { #>
-		<span class="UltraTempLibrary__template-badge"><?php esc_html_e( 'Pro', 'ultraaddons' ); ?></span>
+                <span class="UltraTempLibrary__template-badge hasPro_<?php echo esc_attr( ultraaddons_plugin_version() ); ?>"><?php esc_html_e( 'Pro', 'ultraaddons' ); ?></span>
 		<# } #>
+		<# if ( extra.message ) { #>
+                <span title="{{ extra.message }}" class="UltraTempLibrary__template-alert"><i class="eicon-alert"></i></span>
+		<# } #>
+	</div>
+	<div class="UltraTempLibrary__template-stats" <?php echo esc_html__( 'Status automatically updates on a daily basis.', 'ultraaddons' ); ?>>
+		<span class="UltraTempLibrary-stats views" title="Views">
+                    <i class="eicon-preview-thin" aria-hidden="true"></i>
+                    <i class="ultra-temp-stats-number">{{extra.views}}</i>    
+                </span>
+		<span class="UltraTempLibrary-stats download" title="Downloads">
+                    <i class="eicon-library-download" aria-hidden="true"></i>
+                    <i class="ultra-temp-stats-number">{{extra.download}}</i>
+                </span>
 	</div>
 	<div class="UltraTempLibrary__template-footer">
 		{{{ ultraaddons.library.getModal().getTemplateActionButton( obj ) }}}
+                <span class="UltraTempLibrary-footer-title">{{{ title }}}</span>
 		<a href="#" class="elementor-button UltraTempLibrary__preview-button">
 			<i class="eicon-device-desktop" aria-hidden="true"></i>
 			<?php esc_html_e( 'Preview', 'ultraaddons' ); ?>

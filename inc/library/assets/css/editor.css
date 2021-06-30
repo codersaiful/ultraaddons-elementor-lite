@@ -63,23 +63,23 @@
 	color: #e2498a;
 }
 
-.elementor-control-ha_floating_fx_translate_toggle + .elementor-controls-popover .elementor-control-type-slider--handles-range .elementor-slider .noUi-handle-lower:after,
-.elementor-control-ha_floating_fx_rotate_toggle + .elementor-controls-popover .elementor-control-type-slider--handles-range .elementor-slider .noUi-handle-lower:after,
-.elementor-control-ha_floating_fx_scale_toggle + .elementor-controls-popover .elementor-control-type-slider--handles-range .elementor-slider .noUi-handle-lower:after {
+.elementor-control-ua_floating_fx_translate_toggle + .elementor-controls-popover .elementor-control-type-slider--handles-range .elementor-slider .noUi-handle-lower:after,
+.elementor-control-ua_floating_fx_rotate_toggle + .elementor-controls-popover .elementor-control-type-slider--handles-range .elementor-slider .noUi-handle-lower:after,
+.elementor-control-ua_floating_fx_scale_toggle + .elementor-controls-popover .elementor-control-type-slider--handles-range .elementor-slider .noUi-handle-lower:after {
 	left: -5px;
 	box-shadow: -2px 2px 3px 0 rgba(0, 0, 0, .1);
 }
 
-.elementor-control-ha_floating_fx_translate_toggle + .elementor-controls-popover .elementor-control-type-slider--handles-range .elementor-slider .noUi-handle-upper:after,
-.elementor-control-ha_floating_fx_rotate_toggle + .elementor-controls-popover .elementor-control-type-slider--handles-range .elementor-slider .noUi-handle-upper:after,
-.elementor-control-ha_floating_fx_scale_toggle + .elementor-controls-popover .elementor-control-type-slider--handles-range .elementor-slider .noUi-handle-upper:after {
+.elementor-control-ua_floating_fx_translate_toggle + .elementor-controls-popover .elementor-control-type-slider--handles-range .elementor-slider .noUi-handle-upper:after,
+.elementor-control-ua_floating_fx_rotate_toggle + .elementor-controls-popover .elementor-control-type-slider--handles-range .elementor-slider .noUi-handle-upper:after,
+.elementor-control-ua_floating_fx_scale_toggle + .elementor-controls-popover .elementor-control-type-slider--handles-range .elementor-slider .noUi-handle-upper:after {
 	left: 5px;
 	box-shadow: 2px -2px 3px 0 rgba(0, 0, 0, .1);
 }
 
-.elementor-control-ha_floating_fx_translate_toggle + .elementor-controls-popover .elementor-control-type-slider--handles-range .elementor-slider .noUi-handle-upper .noUi-tooltip,
-.elementor-control-ha_floating_fx_rotate_toggle + .elementor-controls-popover .elementor-control-type-slider--handles-range .elementor-slider .noUi-handle-upper .noUi-tooltip,
-.elementor-control-ha_floating_fx_scale_toggle + .elementor-controls-popover .elementor-control-type-slider--handles-range .elementor-slider .noUi-handle-upper .noUi-tooltip {
+.elementor-control-ua_floating_fx_translate_toggle + .elementor-controls-popover .elementor-control-type-slider--handles-range .elementor-slider .noUi-handle-upper .noUi-tooltip,
+.elementor-control-ua_floating_fx_rotate_toggle + .elementor-controls-popover .elementor-control-type-slider--handles-range .elementor-slider .noUi-handle-upper .noUi-tooltip,
+.elementor-control-ua_floating_fx_scale_toggle + .elementor-controls-popover .elementor-control-type-slider--handles-range .elementor-slider .noUi-handle-upper .noUi-tooltip {
 	top: auto;
 	bottom: calc(100% + 5px); 
 	left: 100%;

@@ -47,19 +47,19 @@ class Library_Source extends Source_Base {
 	public function register_data() {}
 
 	public function save_item( $template_data ) {
-		return new \WP_Error( 'invalid_request', 'Cannot save template to a happpy library' );
+		return new \WP_Error( 'invalid_request', 'Cannot save template to a UltraAddons library' );
 	}
 
 	public function update_item( $new_data ) {
-		return new \WP_Error( 'invalid_request', 'Cannot update template to a happpy library' );
+		return new \WP_Error( 'invalid_request', 'Cannot update template to a UltraAddons library' );
 	}
 
 	public function delete_template( $template_id ) {
-		return new \WP_Error( 'invalid_request', 'Cannot delete template from a happpy library' );
+		return new \WP_Error( 'invalid_request', 'Cannot delete template from a UltraAddons library' );
 	}
 
 	public function export_template( $template_id ) {
-		return new \WP_Error( 'invalid_request', 'Cannot export template from a happpy library' );
+		return new \WP_Error( 'invalid_request', 'Cannot export template from a UltraAddons library' );
 	}
 
 	public function get_items( $args = [] ) {
@@ -104,6 +104,7 @@ class Library_Source extends Source_Base {
 			'tags'        => $template_data['tags'],
 			'isPro'       => $template_data['is_pro'],
 			'url'         => $template_data['url'],
+			'extra'       => $template_data['extra'],
 		];
 	}
 
@@ -184,7 +185,7 @@ class Library_Source extends Source_Base {
 			'version' => ULTRA_ADDONS_VERSION,
 		];
 
-//		if ( ha_has_pro() ) {
+//		if ( ua_has_pro() ) {
 //			$body['has_pro'] = 1;
 //			$body['pro_version'] = HAPPY_ADDONS_PRO_VERSION;
 //		}

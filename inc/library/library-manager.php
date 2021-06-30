@@ -87,8 +87,8 @@ class Library_Manager {
                 
                 $localize_data = [
 			'placeholder_widgets' => [],
-			'hasPro'                  => false,
-			'editor_nonce'            => wp_create_nonce( 'ha_editor_nonce' ),
+			'hasPro'                  => ultraaddons_is_pro(),
+			'editor_nonce'            => wp_create_nonce( 'ua_editor_nonce' ),
 			'dark_stylesheet_url'     => self::ULTRA_ADDONS_TEMPLATE_ASSETS . 'css/editor-dark.min.css',
 			'i18n' => [
 				'iconTitlePreviewPage'      => esc_html__( 'Library', 'ultraaddons' ),
@@ -122,7 +122,7 @@ class Library_Manager {
 	}
 
 	public static function register_ajax_actions( Ajax $ajax ) {
-		$ajax->register_ajax_action( 'get_ha_library_data', function( $data ) {
+		$ajax->register_ajax_action( 'get_ua_library_data', function( $data ) {
 			if ( ! current_user_can( 'edit_posts' ) ) {
 				throw new \Exception( 'Access Denied' );
 			}
@@ -142,7 +142,7 @@ class Library_Manager {
 			return $result;
 		} );
 
-		$ajax->register_ajax_action( 'get_ha_template_data', function( $data ) {
+		$ajax->register_ajax_action( 'get_ua_template_data', function( $data ) {
 			if ( ! current_user_can( 'edit_posts' ) ) {
 				throw new \Exception( 'Access Denied' );
 			}
