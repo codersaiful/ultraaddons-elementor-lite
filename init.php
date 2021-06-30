@@ -230,6 +230,16 @@ final class UltraAddons {
 			return;
 		}
 
+                
+                /**
+                 * SDK Integration
+                 * Actually added first time @since 1.0.5.1
+                 * 
+                 * @since 1.0.7.15
+                 */
+                include_once ULTRA_ADDONS_DIR . 'inc/sdk/integration.php';
+                
+                
                 if( is_admin() ){
                     
                     include_once ULTRA_ADDONS_DIR . 'admin/admin-handle.php';
