@@ -46,5 +46,5 @@ if ( ! function_exists( 'ultraaddons_fs' ) ) {
 
 
 if( ultraaddons_fs()->is_plan( 'professional' ) ){
-    include_once __DIR__ . 'pro.php';
+    include_once __DIR__ . '/pro.php';
 }
