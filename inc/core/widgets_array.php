@@ -194,7 +194,7 @@ $widgetsArray = [
     
     'WC_Categories' => [
             'name'  => __( 'Product Categories', 'ultraaddons' ),
-            'is_free'   => true,
+            'is_free'   => false,
             'icon'      => 'uicon-icon-box',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -223,7 +223,7 @@ $widgetsArray = [
     
     'Info_Boards' => [
             'name'  => __( 'Info Boards', 'ultraaddons' ),
-            'is_free'   => true,
+            'is_free'   => false,
             'icon'      => 'eicon-form-horizontal',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -260,7 +260,7 @@ $widgetsArray = [
     
     'WordPress_Plugin_Stats' => [
             'name'  => __( 'WordPress Plugin Stats', 'ultraaddons' ),
-            'is_free'   => true,
+            'is_free'   => false,
             'icon'      => 'uicon-skillbar',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
