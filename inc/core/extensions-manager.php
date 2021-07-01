@@ -4,6 +4,10 @@ namespace UltraAddons\Core;
 /**
  * Extension of UltraAddons Manager
  * 
+ * ************************************
+ * extension manager is completed and but not completed to show placeholder
+ * *************************************
+ * 
  * Controlling All of our Extension
  * 
  * @since 1.0.0.4
@@ -63,8 +67,18 @@ class Extensions_Manager{
                     $class_name::init();
                 }
             }
-            \UltraAddons\Extensions\Placeholder_Extension::init( "Saiful Islam" );
+//            elseif( $is_pro && ! ultraaddons_is_pro() ){
+//                $extension_name = $extension['name'];
+//                
+//                //\UltraAddons\Extensions\Placeholder_Extension::init( $extension_name );
+//                \UltraAddons\Extensions\Placeholder_Extension::init( $extension_name );
+//            }
         }
+//        \UltraAddons\Extensions\Placeholder_Extension::init( 'Wrapper Link' );
+//        \UltraAddons\Extensions\Placeholder_Extension::init( 'CSS Transform' );
+//        \UltraAddons\Extensions\Placeholder_Extension::init( 'Animation Effect' );
+//        \UltraAddons\Extensions\Placeholder_Extension::init( 'Ultra Effect' );
+//        \UltraAddons\Extensions\Placeholder_Extension::init( 'Transform' );
     }
     
     /**
