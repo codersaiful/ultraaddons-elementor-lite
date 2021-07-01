@@ -1,5 +1,5 @@
 <?php
-namespace UltraAddons\Extension;
+namespace UltraAddons\Extensions;
 
 use UltraAddons\Controls\Handle_Controls;
 use Elementor\Controls_Manager;
