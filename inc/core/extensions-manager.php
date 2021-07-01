@@ -40,14 +40,30 @@ class Extensions_Manager{
             $file_name = strtolower( str_replace( '_', '-', $ex_name_key ) );
             $file = ULTRA_ADDONS_DIR . "inc/extensions/{$file_name}.php";
             $file = realpath( $file );
-            if( ! in_array( $ex_name_key, $disable_keys ) && is_readable( $file ) ){
+            
+            //Check pro Extension
+            $is_pro = isset( $extension['is_pro'] ) ? $extension['is_pro'] : false;
+
+            /**
+             * If Extension in Disable list, 
+             * then Extension will not activate
+             * 
+             * @since 1.0.1 based on enable disable list
+             * 
+             * and If Extension is pro and not 
+             * actimated UltraAddons pro,
+             * then Extension will not activated.
+             * 
+             * @since 1.0.7 based on pree pro version.
+             */
+            if( ! in_array( $ex_name_key, $disable_keys ) && is_readable( $file ) && ( ! $is_pro || ultraaddons_is_pro() ) ){
                 include_once $file;
-                $class_name = '\UltraAddons\Extension\\' . $ex_name_key;
+                $class_name = '\UltraAddons\Extensions\\' . $ex_name_key;
                 if( method_exists( $class_name, 'init' ) ){
                     $class_name::init();
                 }
             }
-
+            \UltraAddons\Extensions\Placeholder_Extension::init( "Saiful Islam" );
         }
     }
     
@@ -107,7 +123,7 @@ class Extensions_Manager{
              */
             'Transform' => [
                     'name'  => __( 'CSS Transform', 'ultraaddons' ),
-                    'is_pro'   => false,
+                    'is_pro'   => true,
                     'icon'      => 'eicon-heading',
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),
