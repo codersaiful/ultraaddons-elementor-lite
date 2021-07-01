@@ -43,3 +43,8 @@ if ( ! function_exists( 'ultraaddons_fs' ) ) {
     // Signal that SDK was initiated.
     do_action( 'ultraaddons_fs_loaded' );
 }
+
+
+if( ultraaddons_fs()->is_plan( 'professional' ) ){
+    include_once __DIR__ . 'pro.php';
+}
