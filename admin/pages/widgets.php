@@ -17,7 +17,7 @@ if( $updated ){
 $items = Widgets_Manager::widgets();
 $items['More'] = [
             'name'      => __( 'More Widget Comming Soon ....', 'ultraaddons' ),
-            'is_free'   => false,
+            'is_pro'   => true,
             'icon'      => 'uicon-ultraaddons',//eicon-global-colors
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -43,7 +43,7 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
                             $name = isset( $item['name'] ) ? $item['name'] : false;
                             $icon = isset( $item['icon'] ) ? $item['icon'] : false;
                             $cat = isset( $item['cat'] ) && is_array( $item['cat'] ) ? $item['cat'] : [];
-                            $free_pro = isset( $item['is_free'] ) && $item['is_free'] ? 'free' : 'pro';
+                            $free_pro = isset( $item['is_pro'] ) && $item['is_pro'] ? 'pro' : 'free';
                             
                             $checkbox = in_array( $class_name, $disable_items ) ? 'checked' : '';
                             $enbl_disbl_class = in_array( $class_name, $disable_items ) ? 'disabled' : 'enabled';

@@ -34,7 +34,7 @@ $disable_item = Extensions_Manager::disableExtensionKeys();
                             $name = isset( $item['name'] ) ? $item['name'] : false;
                             $icon = isset( $item['icon'] ) ? $item['icon'] : false;
                             $cat = isset( $item['cat'] ) && is_array( $item['cat'] ) ? $item['cat'] : [];
-                            $free_pro = isset( $item['is_free'] ) && $item['is_free'] ? 'free' : 'pro';
+                            $free_pro = isset( $item['is_pro'] ) && $item['is_pro'] ? 'pro' : 'free';
                             
                             $checkbox = in_array( $class_name, $disable_item ) ? 'checked' : '';
                             $enbl_disbl_class = in_array( $class_name, $disable_item ) ? 'disabled' : 'enabled';

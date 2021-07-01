@@ -80,7 +80,7 @@ class Extensions_Manager{
         return [
             'Wrapper_Link'=> [
                     'name'      => __( 'Wrapper Link', 'ultraaddons' ),
-                    'is_free'   => true,
+                    'is_pro'   => false,
                     'icon'      => 'uicon-button',
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),
@@ -90,7 +90,7 @@ class Extensions_Manager{
 
             'Hover_Effect' => [
                     'name'  => __( 'Hover Effect', 'ultraaddons' ),
-                    'is_free'   => true,
+                    'is_pro'   => false,
                     'icon'      => 'uicon-hover',
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),
@@ -107,7 +107,7 @@ class Extensions_Manager{
              */
             'Transform' => [
                     'name'  => __( 'CSS Transform', 'ultraaddons' ),
-                    'is_free'   => true,
+                    'is_pro'   => false,
                     'icon'      => 'eicon-heading',
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),
@@ -117,7 +117,7 @@ class Extensions_Manager{
 
             'Animation_Effect' => [
                     'name'  => __( 'Animation Effect', 'ultraaddons' ),
-                    'is_free'   => false,
+                    'is_pro'   => true,
                     'icon'      => 'eicon-code-highlight',
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),
@@ -126,7 +126,7 @@ class Extensions_Manager{
 
             'Background_Overlay' => [
                     'name'  => __( 'Background Overlay', 'ultraaddons' ),
-                    'is_free'   => true,
+                    'is_pro'   => false,
                     'icon'      => 'eicon-background',
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),
@@ -135,7 +135,7 @@ class Extensions_Manager{
 
             'Ultra_Effect' => [
                     'name'  => __( 'Ultra Effect', 'ultraaddons' ),
-                    'is_free'   => false,
+                    'is_pro'   => true,
                     'icon'      => 'eicon-spinner',
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),
