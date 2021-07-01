@@ -23,23 +23,23 @@ class Placeholder_Extension {
     
     public static function add_controls_section( Element_Base $element) {
             $tabs = Controls_Manager::TAB_CONTENT;
-
-            if ( 'section' === $element->get_name() || 'column' === $element->get_name() ) {
+            $element_get_name = $element->get_name();
+            if ( 'section' === $element_get_name || 'column' === $element_get_name ) {
                     $tabs = Controls_Manager::TAB_LAYOUT;
             }
 
-            $slug = preg_replace('/(\s+)/', '-', self::$name);
-            
+            $slug = preg_replace('/(\s+)/', '-', self::$name) . rand(87, 4545);
+            $label = self::$name . ' Pro '; 
             $element->start_controls_section(
-                    '_ua_section_' . $slug,
+                    '_ua_' . $element_get_name . '_' . $slug,
                     [
-                            'label' => self::$name . ultraaddons_icon_markup(),
+                            'label' => $label . ultraaddons_icon_markup(),
                             'tab'   => $tabs,
                     ]
             );
 
             $element->add_control(
-                    'ua_ex_control_' . $slug,
+                    'ua_' . $element_get_name . '_control_' . $slug,
                     [
                             'label' => __( 'Important Note', 'ultraaddons' ),
                             'type' => Controls_Manager::RAW_HTML,
