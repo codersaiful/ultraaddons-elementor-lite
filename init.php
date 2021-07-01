@@ -40,7 +40,6 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  * 
- * @fs_premium_only /inc/sdk/pro.php, /inc/sdk/premium/
  * 
  */
 
