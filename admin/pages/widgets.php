@@ -45,12 +45,32 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
                             $cat = isset( $item['cat'] ) && is_array( $item['cat'] ) ? $item['cat'] : [];
                             $free_pro = isset( $item['is_pro'] ) && $item['is_pro'] ? 'pro' : 'free';
                             
+                            /**
+                             * On or OFF feature will stay or not
+                             * it will depend on this class
+                             * and
+                             * we customized this class based on
+                             * pro available or not.
+                             * 
+                             * zodi pr thake tahole sob e on or off kora zabe.
+                             * r jodi na thake, tahole sudhu free guloi onOff kora zabe.
+                             * 
+                             * eta ber korar jonno ami
+                             * prothome check korechi, see free naki pro
+                             * jodi free hoy to sob somoy change able.
+                             * r jodi pr hoy, tobe pr thaklei changeable hobe.
+                             * 
+                             * @since 1.0.7.17
+                             */
+                            $item_oo_option = isset( $item['is_pro'] ) && $item['is_pro'] && ! ultraaddons_is_pro()  ? 'item_on_off_disable' : 'item_on_off_enable';
+                            
                             $checkbox = in_array( $class_name, $disable_items ) ? 'checked' : '';
                             $enbl_disbl_class = in_array( $class_name, $disable_items ) ? 'disabled' : 'enabled';
                             $checkbox_id = 'checkbox_' . $class_name;
                             $html_class = [];
                             //$html_class[] = $name;
                             $html_class[] = $enbl_disbl_class;
+                            $html_class[] = $item_oo_option;
                             //$html_class[] = $icon;
                             $html_class[] = $free_pro;
                             $html_class[] = $class_name;

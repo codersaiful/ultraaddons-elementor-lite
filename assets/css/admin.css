@@ -273,7 +273,8 @@ span.ua-option-version-type{
 span.ua-option-version-type.ua-option-version-type-pro {
     background: #e91e63;
 }
-.ua-option-item.disabled.free span.ua-option-version-type.ua-option-version-type-free{
+.item_on_off_enable.ua-option-item.disabled span.ua-option-version-type.ua-option-version-type-pro,
+.ua-option-item.disabled span.ua-option-version-type.ua-option-version-type-free{
     background: #bfbfbf;
 }
 span.ua-option-version-type.ua-option-version-type-free {
@@ -284,7 +285,12 @@ h2.ua-item-name {
     margin: 20px auto;
     font-size: 25px;
 }
-.ua-option-item-wrappper .ua-option-item.pro {
+.item_on_off_enable span.ua-option-version-type.ua-option-version-type-pro {
+    background: #607d8b;
+    border-bottom: 1px solid black;
+    color: white;
+}
+.ua-option-item-wrappper .ua-option-item.item_on_off_disable {
     opacity: .65;
     background: #e6e6e6;
 }
