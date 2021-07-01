@@ -29,9 +29,7 @@ if ( ! function_exists( 'ultraaddons_fs' ) ) {
                     'slug'           => 'ultraaddons-elementor-lite',
                     'first-path'     => 'admin.php?page=ultraaddons-elementor-lite',
                 ),
-                // Set the SDK to work in a sandbox mode (for development & testing).
-                // IMPORTANT: MAKE SURE TO REMOVE SECRET KEY BEFORE DEPLOYMENT.
-                'secret_key'          => 'sk_bzh9R;h!:E~CHe<>2:2)wFXU+RykK',
+
             ) );
         }
 
