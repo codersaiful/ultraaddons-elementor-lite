@@ -13,7 +13,7 @@ $widgetsArray = [
     
     'Button'=> [
             'name'      => __( 'Button', 'ultraaddons' ),
-            'is_free'   => true,
+            'is_pro'   => false,
             'icon'      => 'uicon-button',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -23,7 +23,7 @@ $widgetsArray = [
     
     'Advance_Heading' => [
             'name'  => __( 'Advance Heading', 'ultraaddons' ),
-            'is_free'   => true,
+            'is_pro'   => false,
             'icon'      => 'uicon-header',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -32,7 +32,7 @@ $widgetsArray = [
     
     'Info_Box' => [
             'name'  => __( 'Info Box', 'ultraaddons' ),
-            'is_free'   => true,
+            'is_pro'   => false,
             'icon'      => 'uicon-icon-box',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -41,7 +41,7 @@ $widgetsArray = [
     
     'List_Item' => [
             'name'  => __( 'Advance List', 'ultraaddons' ),
-            'is_free'   => true,
+            'is_pro'   => false,
             'icon'      => 'uicon-list',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -50,7 +50,7 @@ $widgetsArray = [
     
     'Count_Down_Timer' => [
             'name'  => __( 'Count Down Timer', 'ultraaddons' ),
-            'is_free'   => true,
+            'is_pro'   => false,
             'icon'      => 'uicon-clock',//eicon-countdown
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -59,7 +59,7 @@ $widgetsArray = [
     
     'Slider' => [
             'name'  => __( 'Ultra Slider', 'ultraaddons' ),
-            'is_free'   => true,
+            'is_pro'   => false,
             'icon'      => 'uicon-slider',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -68,7 +68,7 @@ $widgetsArray = [
     
     'Cart' => [
             'name'  => __( 'WC Mini Cart', 'ultraaddons' ),
-            'is_free'   => true,
+            'is_pro'   => false,
             'icon'      => 'uicon-cart',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -77,7 +77,7 @@ $widgetsArray = [
     
     'Menu' => [
             'name'  => __( 'Navigation', 'ultraaddons' ),
-            'is_free'   => true,
+            'is_pro'   => false,
             'icon'      => 'eicon-nav-menu',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -86,7 +86,7 @@ $widgetsArray = [
     
     'Search' => [
             'name'  => __( 'Search Box', 'ultraaddons' ),
-            'is_free'   => true,
+            'is_pro'   => false,
             'icon'      => 'eicon-nav-menu',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -96,7 +96,7 @@ $widgetsArray = [
     
     'Price_Table' => [
             'name'  => __( 'Pricing Table', 'ultraaddons' ),
-            'is_free'   => true,
+            'is_pro'   => false,
             'icon'      => 'uicon-pricing-table',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -105,7 +105,7 @@ $widgetsArray = [
     
     'Product_Table' => [
             'name'  => __( 'Product Table', 'ultraaddons' ),
-            'is_free'   => true,
+            'is_pro'   => false,
             'icon'      => 'uicon-product-table',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -114,7 +114,7 @@ $widgetsArray = [
     
     'Animated_Header' => [
             'name'  => __( 'Animated Header', 'ultraaddons' ),
-            'is_free'   => false,
+            'is_pro'   => true,
             'icon'      => 'uicon-animated-header',
             'cat'       => [
                 __( 'Modern', 'ultraaddons' ),
@@ -125,7 +125,7 @@ $widgetsArray = [
     
     'Product_Slider' => [
             'name'  => __( 'Product Slider', 'ultraaddons' ),
-            'is_free'   => false,
+            'is_pro'   => true,
             'icon'      => 'uicon-product-slider',
             'cat'       => [
                 __( 'WooCommerce', 'ultraaddons' ),
@@ -137,7 +137,7 @@ $widgetsArray = [
     
     'Contact_Form7' => [
             'name'  => __( 'Contact Form 7', 'ultraaddons' ),
-            'is_free'   => true,
+            'is_pro'   => false,
             'icon'      => 'uicon-contact-form-7',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -145,7 +145,7 @@ $widgetsArray = [
     ],
     'Icon_Box' => [
             'name'  => __( 'Icon Box', 'ultraaddons' ),
-            'is_free'   => true,
+            'is_pro'   => false,
             'icon'      => 'uicon-icon-box',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -154,7 +154,7 @@ $widgetsArray = [
     
     'WC_Products' => [
             'name'  => __( 'WooCommerce Products', 'ultraaddons' ),
-            'is_free'   => true,
+            'is_pro'   => false,
             'icon'      => 'uicon-product',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -164,7 +164,7 @@ $widgetsArray = [
     
     'Testimonial_Slider' => [
             'name'  => __( 'Testimonial Slider', 'ultraaddons' ),
-            'is_free'   => true,
+            'is_pro'   => false,
             'icon'      => 'eicon-testimonial-carousel',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -174,7 +174,7 @@ $widgetsArray = [
     
     'Testimonial_Box' => [
             'name'  => __( 'Testimonial Box', 'ultraaddons' ),
-            'is_free'   => true,
+            'is_pro'   => false,
             'icon'      => 'uicon-testimonial',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -184,7 +184,7 @@ $widgetsArray = [
     
     'Team_Box' => [
             'name'  => __( 'Team Box', 'ultraaddons' ),
-            'is_free'   => true,
+            'is_pro'   => false,
             'icon'      => 'uicon-team-box',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -194,7 +194,7 @@ $widgetsArray = [
     
     'WC_Categories' => [
             'name'  => __( 'Product Categories', 'ultraaddons' ),
-            'is_free'   => true,
+            'is_pro'   => true,
             'icon'      => 'uicon-icon-box',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -205,7 +205,7 @@ $widgetsArray = [
     //New Added Widgets
     'Counter' => [
             'name'  => __( 'Counter Box', 'ultraaddons' ),
-            'is_free'   => true,
+            'is_pro'   => false,
             'icon'      => 'uicon-counter',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -214,7 +214,7 @@ $widgetsArray = [
     
     'Gallery_Box' => [
             'name'  => __( 'Gallery Box', 'ultraaddons' ),
-            'is_free'   => true,
+            'is_pro'   => false,
             'icon'      => 'eicon-gallery-justified',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -223,7 +223,7 @@ $widgetsArray = [
     
     'Info_Boards' => [
             'name'  => __( 'Info Boards', 'ultraaddons' ),
-            'is_free'   => true,
+            'is_pro'   => true,
             'icon'      => 'eicon-form-horizontal',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -232,7 +232,7 @@ $widgetsArray = [
     
     'Offer_Card' => [
             'name'  => __( 'Offer Card', 'ultraaddons' ),
-            'is_free'   => true,
+            'is_pro'   => false,
             'icon'      => 'eicon-form-horizontal',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -241,7 +241,7 @@ $widgetsArray = [
     
     'Recent_Blog' => [
             'name'  => __( 'Recent Blog', 'ultraaddons' ),
-            'is_free'   => true,
+            'is_pro'   => false,
             'icon'      => 'uicon-blog-list',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -250,7 +250,7 @@ $widgetsArray = [
     
     'Skill_Bar' => [
             'name'  => __( 'Skill Bar', 'ultraaddons' ),
-            'is_free'   => true,
+            'is_pro'   => false,
             'icon'      => 'uicon-skillbar',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -260,7 +260,7 @@ $widgetsArray = [
     
     'WordPress_Plugin_Stats' => [
             'name'  => __( 'WordPress Plugin Stats', 'ultraaddons' ),
-            'is_free'   => true,
+            'is_pro'   => true,
             'icon'      => 'uicon-skillbar',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),

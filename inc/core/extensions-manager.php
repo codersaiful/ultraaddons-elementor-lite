@@ -4,6 +4,10 @@ namespace UltraAddons\Core;
 /**
  * Extension of UltraAddons Manager
  * 
+ * ************************************
+ * extension manager is completed and but not completed to show placeholder
+ * *************************************
+ * 
  * Controlling All of our Extension
  * 
  * @since 1.0.0.4
@@ -40,15 +44,41 @@ class Extensions_Manager{
             $file_name = strtolower( str_replace( '_', '-', $ex_name_key ) );
             $file = ULTRA_ADDONS_DIR . "inc/extensions/{$file_name}.php";
             $file = realpath( $file );
-            if( ! in_array( $ex_name_key, $disable_keys ) && is_readable( $file ) ){
+            
+            //Check pro Extension
+            $is_pro = isset( $extension['is_pro'] ) ? $extension['is_pro'] : false;
+
+            /**
+             * If Extension in Disable list, 
+             * then Extension will not activate
+             * 
+             * @since 1.0.1 based on enable disable list
+             * 
+             * and If Extension is pro and not 
+             * actimated UltraAddons pro,
+             * then Extension will not activated.
+             * 
+             * @since 1.0.7 based on pree pro version.
+             */
+            if( ! in_array( $ex_name_key, $disable_keys ) && is_readable( $file ) && ( ! $is_pro || ultraaddons_is_pro() ) ){
                 include_once $file;
-                $class_name = '\UltraAddons\Extension\\' . $ex_name_key;
+                $class_name = '\UltraAddons\Extensions\\' . $ex_name_key;
                 if( method_exists( $class_name, 'init' ) ){
                     $class_name::init();
                 }
             }
-
+//            elseif( $is_pro && ! ultraaddons_is_pro() ){
+//                $extension_name = $extension['name'];
+//                
+//                //\UltraAddons\Extensions\Placeholder_Extension::init( $extension_name );
+//                \UltraAddons\Extensions\Placeholder_Extension::init( $extension_name );
+//            }
         }
+//        \UltraAddons\Extensions\Placeholder_Extension::init( 'Wrapper Link' );
+//        \UltraAddons\Extensions\Placeholder_Extension::init( 'CSS Transform' );
+//        \UltraAddons\Extensions\Placeholder_Extension::init( 'Animation Effect' );
+//        \UltraAddons\Extensions\Placeholder_Extension::init( 'Ultra Effect' );
+//        \UltraAddons\Extensions\Placeholder_Extension::init( 'Transform' );
     }
     
     /**
@@ -80,7 +110,7 @@ class Extensions_Manager{
         return [
             'Wrapper_Link'=> [
                     'name'      => __( 'Wrapper Link', 'ultraaddons' ),
-                    'is_free'   => true,
+                    'is_pro'   => false,
                     'icon'      => 'uicon-button',
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),
@@ -90,7 +120,7 @@ class Extensions_Manager{
 
             'Hover_Effect' => [
                     'name'  => __( 'Hover Effect', 'ultraaddons' ),
-                    'is_free'   => true,
+                    'is_pro'   => false,
                     'icon'      => 'uicon-hover',
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),
@@ -107,7 +137,7 @@ class Extensions_Manager{
              */
             'Transform' => [
                     'name'  => __( 'CSS Transform', 'ultraaddons' ),
-                    'is_free'   => true,
+                    'is_pro'   => true,
                     'icon'      => 'eicon-heading',
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),
@@ -117,7 +147,7 @@ class Extensions_Manager{
 
             'Animation_Effect' => [
                     'name'  => __( 'Animation Effect', 'ultraaddons' ),
-                    'is_free'   => false,
+                    'is_pro'   => true,
                     'icon'      => 'eicon-code-highlight',
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),
@@ -126,7 +156,7 @@ class Extensions_Manager{
 
             'Background_Overlay' => [
                     'name'  => __( 'Background Overlay', 'ultraaddons' ),
-                    'is_free'   => true,
+                    'is_pro'   => false,
                     'icon'      => 'eicon-background',
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),
@@ -135,7 +165,7 @@ class Extensions_Manager{
 
             'Ultra_Effect' => [
                     'name'  => __( 'Ultra Effect', 'ultraaddons' ),
-                    'is_free'   => false,
+                    'is_pro'   => true,
                     'icon'      => 'eicon-spinner',
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),

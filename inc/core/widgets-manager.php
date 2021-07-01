@@ -78,9 +78,18 @@ class Widgets_Manager{
     }
     
     /**
+     * 
      * getting Array of Active Widget
+     * 
      * Based on Disabled array's keys.
+     * Based on Pro/Free Version.
+     * 
+     * If Activate pro and and not in disble list,
+     * Then user will get that widget in FrontEnd
+     * 
      * Such: [ 'Button','Advance_Heading' ];
+     * 
+     * ** Based on free/pro version - has done at v1.0.7.17
      * 
      * @since 1.0.0.5
      * @access public
@@ -88,13 +97,15 @@ class Widgets_Manager{
      * @return Array
      */
     public static function activeWidgets(){
-        $active_widget = [];
-        foreach( self::widgets() as $widget_key => $widgets ){
-            if( ! in_array( $widget_key, self::disableWidgetKeys() ) ){
-               $active_widget[$widget_key] = $widgets; 
+        $widgets = self::widgets();
+        $active_widgets = [];
+        foreach( $widgets as $widget_key => $widget ){
+            $is_pro = isset( $widget['is_pro'] ) ? $widget['is_pro'] : false;
+            if( ! in_array( $widget_key, self::disableWidgetKeys() ) && ( ! $is_pro || ultraaddons_is_pro() ) ){
+               $active_widgets[$widget_key] = $widget; 
             }
         }
-        return apply_filters( 'ultraaddons/widgets/active', $active_widget );//$active_widget;
+        return apply_filters( 'ultraaddons/widgets/active', $active_widgets );//$active_widgets;
     }
 
     /**
