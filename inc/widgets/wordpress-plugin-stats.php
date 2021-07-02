@@ -61,10 +61,11 @@ class WordPress_Plugin_Stats extends Base{
         
         $settings           = $this->get_settings_for_display();
 
-        var_dump($settings['plugin_slug']);
-        $slug = 'ultraaddons-elementor-lite';
         
-        $plugin_slug = 'wc-quantity-plus-minus-button'; 
+        $slug = $settings['plugin_slug'];
+        $plugin_name = $settings['plugin_name'];
+        
+        $plugin_slug = ! empty( $slug ) ? $slug : 'ultraaddons-elementor-lite'; 
         //Transient name with plugin's slug, so that, if a user if change plugin, than data will be update/change
         $transient_name = 'ua_stats-' . $plugin_slug;
         $transient = get_transient( $transient_name );
@@ -77,6 +78,9 @@ class WordPress_Plugin_Stats extends Base{
             $expire = apply_filters( 'ultraaddons_wp_plugin_stats_expire', 21600 ); 
             set_transient( $transient_name, $transient, $expire );
         }
+        
+        //Name 
+        $plugin_name = ! empty( $plugin_name ) ? $plugin_name : $transient['name'];
         
         $downloaded = ! empty( $transient['downloaded'] ) ? $transient['downloaded'] : false;
         $downloaded_label = "Download";
@@ -91,6 +95,9 @@ class WordPress_Plugin_Stats extends Base{
         
         ?>
 <div class="wp-plugins-stats-wrapper">
+    <div class="wp-plugin-name">
+        <?php echo esc_html( $plugin_name ); ?>
+    </div>
     <div class="wp-plugin-stats">
         <div class="plugin-stats plugin-stats-downloaded">
             <span class="download-number"><?php echo esc_html( $downloaded ); ?><b>+</b></span>
