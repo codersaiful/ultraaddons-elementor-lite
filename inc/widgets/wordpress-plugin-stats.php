@@ -40,7 +40,8 @@ class WordPress_Plugin_Stats extends Base{
      * @access protected
      */
     protected function _register_controls() {
-        
+        //For General Section
+        $this->content_general_controls();
                
     }
     
@@ -60,21 +61,8 @@ class WordPress_Plugin_Stats extends Base{
         
         $settings           = $this->get_settings_for_display();
 
-//        $plugin_slug = 'woo-product-table'; //woo-product-table //ultraaddons-elementor-lite
-//        $stats_url = 'https://api.wordpress.org/stats/plugin/1.0/?slug=' . $plugin_slug;
-//        $active_status = 'https://api.wordpress.org/stats/plugin/1.0/active-installs.php?slug=' . $plugin_slug . '&limit=728';
-//        $info_url = 'http://api.wordpress.org/plugins/info/1.0/' . $plugin_slug . '.json';
-//        $download_url = 'https://api.wordpress.org/stats/plugin/1.0/downloads.php?slug=' . $plugin_slug;
-//        $remote = wp_remote_get( $download_url, array(
-//                'timeout' => $time_out,//10,
-//                'headers' => array(
-//                        'Accept' => 'application/json'
-//                ) )
-//            );
-//            var_dump($remote);
-        
-
-        
+        var_dump($settings['plugin_slug']);
+        $slug = 'ultraaddons-elementor-lite';
         
         $plugin_slug = 'wc-quantity-plus-minus-button'; 
         //Transient name with plugin's slug, so that, if a user if change plugin, than data will be update/change
@@ -82,7 +70,6 @@ class WordPress_Plugin_Stats extends Base{
         $transient = get_transient( $transient_name );
 
         if( ! $transient ){
-            var_dump('ddkld');
             //woo-product-table //ultraaddons-elementor-lite
             $info_url = "https://api.wordpress.org/plugins/info/1.0/{$plugin_slug}.json?fields=banners,icons,active_installs";
             $str = file_get_contents( $info_url, false );
@@ -126,5 +113,49 @@ class WordPress_Plugin_Stats extends Base{
         <?php
     }
     
+    /**
+     * General Section
+     * such:
+     * plugin Slug,
+     * Plugin Name (Optional)
+     * 
+     * @since 1.0.7.19
+     */
+    protected function content_general_controls() {
+        $this->start_controls_section(
+            'general',
+            [
+                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+        
+        $this->add_control(
+            'plugin_slug',
+                [
+                    'label'         => esc_html__( 'Heading', 'ultraaddons' ),
+                    'type'          => Controls_Manager::TEXT,
+                    'placeholder'   => __( 'Your plugin slug. eg: ultraaddons-elementor-lite', 'ultraaddons' ),
+                    'default'       => 'ultraaddons-elementor-lite',
+                    'description'   => 'Only input WordPress.org plugin slug, not full url of plugin.',
+                    'label_block'   => TRUE,
+                    'dynamic'       => ['active' => true],
+                ]
+        );
+        
+        $this->add_control(
+            'plugin_name',
+                [
+                    'label'         => esc_html__( 'Plugin Name (optional)', 'ultraaddons' ),
+                    'type'          => Controls_Manager::TEXT,
+                    'placeholder'   => __( 'Plugin display name. eg: UltraAddons Elementor Lite', 'ultraaddons' ),
+                    'default'       => '',
+                    'label_block'   => TRUE,
+                    'dynamic'       => ['active' => true],
+                ]
+        );
+        
+        $this->end_controls_section();
+    }
 
 }
