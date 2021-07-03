@@ -48,7 +48,7 @@ class Placeholder_Extension {
                     [
                             'label' => __( 'Important Note', 'ultraaddons' ),
                             'type' => Controls_Manager::RAW_HTML,
-                            'raw' => __( 'A very important message to show in the panel.', 'ultraaddons' ),
+                            'raw' => __( 'Premium Extension.', 'ultraaddons' ),
                             
                     ]
             );
