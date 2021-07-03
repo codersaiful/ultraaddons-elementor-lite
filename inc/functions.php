@@ -119,6 +119,7 @@ function ultraaddons_elementor() {
  * @return bool True|False
  */
 function ultraaddons_is_pro(){
+//    return false; //Only for Development Perspose.
     return defined( 'ULTRA_ADDONS_PRO_VERSION' );
 }
 
