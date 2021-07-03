@@ -43,6 +43,14 @@ class WordPress_Plugin_Stats extends Base{
         //For General Section
         $this->content_general_controls();
                
+        //For Design Section Style Tab
+        $this->style_design_controls();
+        
+        
+        //Typography
+        $this->style_typography_controls();
+        
+        
     }
     
     /**
@@ -82,36 +90,36 @@ class WordPress_Plugin_Stats extends Base{
         //Name 
         $plugin_name = ! empty( $plugin_name ) ? $plugin_name : $transient['name'];
         
-        $downloaded = ! empty( $transient['downloaded'] ) ? $transient['downloaded'] : false;
-        $downloaded_label = "Download";
+        $downloaded = ! empty( $transient['downloaded'] ) ? $transient['downloaded'] : 0;
+        $downloaded_label = ! empty( $settings['download_text'] ) ? $settings['download_text'] : "Download";
         
-        $active_installs = ! empty( $transient['active_installs'] ) ? $transient['active_installs'] : false;
-        $active_installs_label = "Active Install";
+        $active_installs = ! empty( $transient['active_installs'] ) ? $transient['active_installs'] : 0;
+        $active_installs_label = ! empty( $settings['active_install_text'] ) ? $settings['active_install_text'] : "Active Install";
         $version = ! empty( $transient['version'] ) ? $transient['version'] : false;
         $rating = ! empty( $transient['rating'] ) ? $transient['rating'] : 100;
         
         $final_rating = ( $rating / 100 ) * 5;
-        $final_rating_label = 'Rating';
+        $final_rating_label = ! empty( $settings['rating_text'] ) ? $settings['rating_text'] : 'Rating';
         
         ?>
 <div class="wp-plugins-stats-wrapper">
     <div class="wp-plugin-name">
-        <?php echo esc_html( $plugin_name ); ?>
+        <h3 class="wp-plugin-name-heading"><?php echo esc_html( $plugin_name ); ?></h3>
     </div>
     <div class="wp-plugin-stats">
         <div class="plugin-stats plugin-stats-downloaded">
-            <span class="download-number"><?php echo esc_html( $downloaded ); ?><b>+</b></span>
-            <span class="download-label"><?php echo esc_html( $downloaded_label ); ?></span>
+            <span class="download-number number-text"><?php echo esc_html( $downloaded ); ?><b>+</b></span>
+            <span class="download-label label-text"><?php echo esc_html( $downloaded_label ); ?></span>
         </div>
         
         <div class="plugin-stats plugin-stats-active-install">
-            <span class="active-number"><?php echo esc_html( $active_installs ); ?><b>+</b></span>
-            <span class="active-label"><?php echo esc_html( $active_installs_label ); ?></span>
+            <span class="active-number number-text"><?php echo esc_html( $active_installs ); ?><b>+</b></span>
+            <span class="active-label label-text"><?php echo esc_html( $active_installs_label ); ?></span>
         </div>
         
         <div class="plugin-stats plugin-stats-rating">
-            <span class="rating-number"><?php echo esc_html( $final_rating ); ?></span>
-            <span class="rating-label"><?php echo esc_html( $final_rating_label ); ?></span>
+            <span class="rating-number number-text"><?php echo esc_html( $final_rating ); ?></span>
+            <span class="rating-label label-text"><?php echo esc_html( $final_rating_label ); ?></span>
         </div>
         
         
@@ -159,10 +167,187 @@ class WordPress_Plugin_Stats extends Base{
                     'default'       => '',
                     'label_block'   => TRUE,
                     'dynamic'       => ['active' => true],
+                    'separator'     => 'before',
                 ]
         );
+        
+        $this->add_control(
+            'download_text',
+                [
+                    'label'         => esc_html__( 'Download Text (optional)', 'ultraaddons' ),
+                    'type'          => Controls_Manager::TEXT,  
+                    'default'       => 'Download',
+                    'dynamic'       => ['active' => true],
+                ]
+        );
+        
+        $this->add_control(
+            'active_install_text',
+                [
+                    'label'         => esc_html__( 'Active Install Text (optional)', 'ultraaddons' ),
+                    'type'          => Controls_Manager::TEXT,  
+                    'default'       => 'Active Install',
+                    'dynamic'       => ['active' => true],
+                ]
+        );
+        $this->add_control(
+            'rating_text',
+                [
+                    'label'         => esc_html__( 'Rating Text (optional)', 'ultraaddons' ),
+                    'type'          => Controls_Manager::TEXT,  
+                    'default'       => 'Rating',
+                    'dynamic'       => ['active' => true],
+                ]
+        );
+        
         
         $this->end_controls_section();
     }
 
+    /**
+     * Alignment Section for Style Tab
+     * 
+     * @since 1.0.0.9
+     */
+    protected function style_design_controls() {
+        $this->start_controls_section(
+            'style',
+            [
+                'label'     => esc_html__( 'Design', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        
+        
+        
+        $this->add_control(
+            'heading_color',
+            [
+                'label'     => __( 'Color', 'ultraaddons' ),
+                'type'      => Controls_Manager::COLOR,
+                'scheme'    => [
+                    'type'  => Color::get_type(),
+                    'value' => Color::COLOR_1,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .wp-plugin-name-heading' => 'color: {{VALUE}}',
+                ],
+                'default'   => '#0fc392',
+            ]
+        );
+        
+        $this->add_control(
+            'label_text_color',
+            [
+                'label'     => __( 'Label Text Color', 'ultraaddons' ),
+                'type'      => Controls_Manager::COLOR,
+                'scheme'    => [
+                    'type'  => Color::get_type(),
+                    'value' => Color::COLOR_1,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .wp-plugin-stats .label-text' => 'color: {{VALUE}}',
+                ],
+                'default'   => '#021429',
+            ]
+        );
+        
+        $this->add_control(
+            'number_text_color',
+            [
+                'label'     => __( 'Number Text Color', 'ultraaddons' ),
+                'type'      => Controls_Manager::COLOR,
+                'scheme'    => [
+                    'type'  => Color::get_type(),
+                    'value' => Color::COLOR_1,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .wp-plugin-stats .number-text' => 'color: {{VALUE}}',
+                ],
+                'default'   => '#FF7474',
+            ]
+        );
+        
+        $this->add_responsive_control(
+                'heading_spacing',
+                [
+                        'label' => __( 'Heading Spacing', 'ultraaddons' ),
+                        'type' => Controls_Manager::SLIDER,
+                        'default' => [
+                                'size' => 10,
+                        ],
+                        'range' => [
+                                'px' => [
+                                        'min' => 0,
+                                        'max' => 100,
+                                ],
+                        ],
+                        'selectors' => [
+                                '{{WRAPPER}} .wp-plugin-name' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                        ],
+                ]
+        );
+
+        $this->end_controls_section();
+    }
+    
+    /**
+     * Typography Section for Style Tab
+     * 
+     * @since 1.0.0.9
+     */
+    protected function style_typography_controls() {
+        $this->start_controls_section(
+            'typography',
+            [
+                'label'     => esc_html__( 'Typography', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        
+        
+        $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                        'name' => 'title_typography',
+                        'label' => 'Heading Typography',
+                        'selector' => '{{WRAPPER}} .wp-plugin-name-heading',
+                        'global' => [
+                                'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                        ],
+
+                ]
+        );
+        
+        $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                        'name' => 'label_typography',
+                        'label' => 'Label Typography',
+                        'selector' => '{{WRAPPER}} .wp-plugin-stats .label-text',
+                        'global' => [
+                                'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                        ],
+
+                ]
+        );
+        
+        
+        $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                        'name' => 'number_typography',
+                        'label' => 'Number Typography',
+                        'selector' => '{{WRAPPER}} .wp-plugin-stats .number-text',
+                        'global' => [
+                                'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                        ],
+
+                ]
+        );
+        
+        
+        $this->end_controls_section();
+    }
+    
 }
