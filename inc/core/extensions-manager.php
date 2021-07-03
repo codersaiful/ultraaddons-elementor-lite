@@ -1,6 +1,9 @@
 <?php
 namespace UltraAddons\Core;
 
+use UltraAddons\Extensions\Placeholder_Extension as Placeholder_Extension;
+use Elementor\Controls_Manager;
+
 /**
  * Extension of UltraAddons Manager
  * 
@@ -66,19 +69,11 @@ class Extensions_Manager{
                 if( method_exists( $class_name, 'init' ) ){
                     $class_name::init();
                 }
+            }elseif( $is_pro && ! ultraaddons_is_pro() ){
+                new Placeholder_Extension( $extension );
             }
-//            elseif( $is_pro && ! ultraaddons_is_pro() ){
-//                $extension_name = $extension['name'];
-//                
-//                //\UltraAddons\Extensions\Placeholder_Extension::init( $extension_name );
-//                \UltraAddons\Extensions\Placeholder_Extension::init( $extension_name );
-//            }
         }
-//        \UltraAddons\Extensions\Placeholder_Extension::init( 'Wrapper Link' );
-//        \UltraAddons\Extensions\Placeholder_Extension::init( 'CSS Transform' );
-//        \UltraAddons\Extensions\Placeholder_Extension::init( 'Animation Effect' );
-//        \UltraAddons\Extensions\Placeholder_Extension::init( 'Ultra Effect' );
-//        \UltraAddons\Extensions\Placeholder_Extension::init( 'Transform' );
+        
     }
     
     /**
@@ -142,6 +137,7 @@ class Extensions_Manager{
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),
                     ],
+                    'tab' => Controls_Manager::TAB_STYLE, //This is only for PlaceHolder Extension. showing message on free user
             ],
             
 
@@ -152,6 +148,7 @@ class Extensions_Manager{
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),
                     ],
+                    'tab' => Controls_Manager::TAB_STYLE,  //This is only for PlaceHolder Extension. showing message on free user
             ],
 
             'Background_Overlay' => [
