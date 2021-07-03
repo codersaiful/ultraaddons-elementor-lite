@@ -132,3 +132,14 @@ i.ultraaddons[class^="uicon-"]:before, i.ultraaddons[class*=" uicon-"]:before{
 i.elementor-icons-manager__tab__item__icon.uicon {
     font-size: 25px;
 }
+
+sup.ultaaddons-pro-badge,
+i.ultaaddons-pro-badge {
+    background: #e91e63ad;
+    color: white;
+    font-size: 10px;
+    text-transform: lowercase;
+    padding: 0 3px 2px 3px;
+    font-weight: 300;
+    border-radius: 8px;
+}
