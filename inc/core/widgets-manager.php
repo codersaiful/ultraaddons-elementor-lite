@@ -64,7 +64,7 @@ class Widgets_Manager{
         /**
          * File of Widgets Array
          */
-        $file = ULTRA_ADDONS_DIR . 'inc/core/widgets_array.php';
+        $file = ULTRA_ADDONS_DIR . 'inc/core/list/widgets-array.php';
         
         if( ! is_file( $file ) ){
             return [];
