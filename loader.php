@@ -80,7 +80,7 @@ class Loader {
          * Actually we will handle also it from database.
          * 
          * Previous Code of WidgetArray is:
-         * $widgetsArray = include ULTRA_ADDONS_DIR . 'inc/core/widgets_array.php';
+         * $widgetsArray = include ULTRA_ADDONS_DIR . 'inc/core/list/widgets-array.php';
          */
        
         $widgetsArray = Widgets_Manager::activeWidgets();
