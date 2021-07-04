@@ -248,4 +248,4 @@ add_filter( 'woocommerce_add_to_cart_fragments', 'ultraaddons_woocommerce_cart_l
 /**
  * Finally I will creat field my custom code, currently using CMB2
  */
-include_once __DIR__ . '/wp/custom-field.php';
+//include_once __DIR__ . '/wp/custom-field.php';
