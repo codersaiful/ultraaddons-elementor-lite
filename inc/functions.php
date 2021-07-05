@@ -119,6 +119,7 @@ function ultraaddons_elementor() {
  * @return bool True|False
  */
 function ultraaddons_is_pro(){
+//    return false; //Only for Development Perspose.
     return defined( 'ULTRA_ADDONS_PRO_VERSION' );
 }
 
@@ -243,3 +244,8 @@ if ( ! function_exists( 'ultraaddons_woocommerce_cart_link_fragment' ) ) {
 	}
 }
 add_filter( 'woocommerce_add_to_cart_fragments', 'ultraaddons_woocommerce_cart_link_fragment' );
+
+/**
+ * Finally I will creat field my custom code, currently using CMB2
+ */
+//include_once __DIR__ . '/wp/custom-field.php';

@@ -260,7 +260,7 @@ $widgetsArray = [
     
     'WordPress_Plugin_Stats' => [
             'name'  => __( 'WordPress Plugin Stats', 'ultraaddons' ),
-            'is_pro'   => true,
+            'is_pro'   => false,
             'icon'      => 'uicon-skillbar',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
