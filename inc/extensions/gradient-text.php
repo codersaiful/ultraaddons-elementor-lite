@@ -123,7 +123,7 @@ class Gradient_Text {
                 $element->start_controls_tab(
                         '_ua_gradient_hover',
                         [
-                                'label' => __( 'Normal', 'ultraaddons' ),
+                                'label' => __( 'Hover', 'ultraaddons' ),
                         ]
                 );
 
