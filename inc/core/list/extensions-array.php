@@ -78,6 +78,15 @@ $extensionsArray = [
                     ],
             ],
 
+            'Gradient_Text' => [
+                    'name'  => __( 'Gradient Text', 'ultraaddons' ),
+                    'is_pro'   => false,
+                    'icon'      => 'eicon-global-colors',
+                    'cat'       => [
+                        __( 'Basic', 'ultraaddons' ),
+                    ],
+            ],
+
 //         Need more Customizer and to be update   
 //            'ultra-effects'=> [
 //                    'name'  => __( 'Ultra Effect', 'ultraaddons' ),
