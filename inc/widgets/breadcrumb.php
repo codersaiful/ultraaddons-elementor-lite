@@ -16,6 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Breadcrumb extends Base{
     
+    private $home;
+    
     /**
      * Get your widget name
      *
@@ -57,7 +59,8 @@ class Breadcrumb extends Base{
      */
     protected function render() {
         $settings           = $this->get_settings_for_display();
-
+        $this->home = ! empty( $settings['home_title'] ) ? $settings['home_title'] : esc_html( 'Home', 'ultraaddons' );
+        $this->separator = ! empty( $settings['separator_sign'] ) ? $settings['separator_sign'] : '/';
         ?>
         <div class="ua-breadcrumb-wrapper" >
             <div class="breadcrumb-menu ultraaddons-breadcrumb-menu">
@@ -84,11 +87,22 @@ class Breadcrumb extends Base{
         );
         
         $this->add_control(
-            'post_id',
+            'home_title',
                 [
-                    'label'         => esc_html__( 'Post ID (Optional)', 'ultraaddons' ),
-                    'type'          => Controls_Manager::NUMBER,
-                    'default'       => false,
+                    'label'         => esc_html__( 'Home menu Text (Optional)', 'ultraaddons' ),
+                    'type'          => Controls_Manager::TEXT,
+                    'default'       => esc_html( 'Home', 'ultraaddons' ),
+                    'label_block'   => TRUE,
+                    'dynamic'       => ['active' => true],
+                ]
+        );
+        
+        $this->add_control(
+            'separator_sign',
+                [
+                    'label'         => esc_html__( 'Separator (Optional)', 'ultraaddons' ),
+                    'type'          => Controls_Manager::TEXT,
+                    'default'       => '/',
                     'label_block'   => TRUE,
                     'dynamic'       => ['active' => true],
                 ]
@@ -120,7 +134,7 @@ class Breadcrumb extends Base{
         );
         
         $this->add_control(
-            'heading_color',
+            'link_color',
             [
                 'label'     => __( 'Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
@@ -131,7 +145,21 @@ class Breadcrumb extends Base{
                 'selectors' => [
                     '{{WRAPPER}} .ua-breadcrumb-wrapper a' => 'color: {{VALUE}}',
                 ],
-                'default'   => '#0fc392',
+            ]
+        );
+        
+        $this->add_control(
+            'link_color_hover',
+            [
+                'label'     => __( 'Hover Color', 'ultraaddons' ),
+                'type'      => Controls_Manager::COLOR,
+                'scheme'    => [
+                    'type'  => Color::get_type(),
+                    'value' => Color::COLOR_1,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .ua-breadcrumb-wrapper a:' => 'color: {{VALUE}}',
+                ],
             ]
         );
 
@@ -140,8 +168,8 @@ class Breadcrumb extends Base{
                 Group_Control_Typography::get_type(),
                 [
                         'name' => 'title_typography',
-                        'label' => 'Heading Typography',
-                        'selector' => '{{WRAPPER}} .ua-breadcrumb-wrapper a',
+                        'label' => 'Breadcrumb Typography',
+                        'selector' => '{{WRAPPER}} .ua-breadcrumb-wrapper ul,{{WRAPPER}} .ua-breadcrumb-wrapper li,{{WRAPPER}} .ua-breadcrumb-wrapper li a',
                         'global' => [
                                 'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
                         ],
@@ -154,7 +182,13 @@ class Breadcrumb extends Base{
     
     
     private function breadcrumb() {
-    $separator = apply_filters( 'ultraaddons_breadcrumb_separator', '' );
+            
+            
+        $settings           = $this->get_settings_for_display();
+        $this->home = ! empty( $settings['home_title'] ) ? $settings['home_title'] : esc_html( 'Home', 'ultraaddons' );
+        $this->separator = ! empty( $settings['separator_sign'] ) ? $settings['separator_sign'] : '/';
+
+    $separator = $this->separator;
     $wooBreadCumb = apply_filters( 'ultraaddons_wc_breadcrumb', true );
     
     /**
@@ -166,7 +200,9 @@ class Breadcrumb extends Base{
     if( $wooBreadCumb && function_exists( 'woocommerce_breadcrumb' ) ){
         $args = array(
             'delimiter' => '<span>&nbsp;' . $separator . '&nbsp;</span>',
+            'home'      => $this->home_title,
         );
+        
         $args = apply_filters( 'ultraaddons_wc_breadcrumb_args', $args );
         woocommerce_breadcrumb( $args );
         return true;
@@ -183,9 +219,9 @@ class Breadcrumb extends Base{
 
     $defaults = array(
         'seperator'   =>  $separator,//'&#187;',
-        'id'          =>  'astha-breadcrumb',
-        'classes'     =>  'astha-breadcrumb',
-        'home_title'  =>  esc_html__( 'Home', 'astha' )
+        'id'          =>  'ultraaddons-breadcrumb',
+        'classes'     =>  'ultraaddons-breadcrumb',
+        'home_title'  => $this->home,
     );
     
     $sep = '';
