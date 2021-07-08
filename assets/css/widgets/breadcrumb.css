@@ -1,5 +1,6 @@
 ul#ultraaddons-breadcrumb {
     list-style: none;
+    padding: 0;
 }
 
 ul#ultraaddons-breadcrumb ul li {
