@@ -97,7 +97,6 @@ class WordPress_Plugin_Stats extends Base{
         $active_installs_label = ! empty( $settings['active_install_text'] ) ? $settings['active_install_text'] : "Active Install";
         $version = ! empty( $transient['version'] ) ? $transient['version'] : false;
         $rating = ! empty( $transient['rating'] ) ? $transient['rating'] : 100;
-        
         $final_rating = ( $rating / 100 ) * 5;
         $final_rating_label = ! empty( $settings['rating_text'] ) ? $settings['rating_text'] : 'Rating';
         
@@ -118,7 +117,12 @@ class WordPress_Plugin_Stats extends Base{
         </div>
         
         <div class="plugin-stats plugin-stats-rating">
-            <span class="rating-number number-text"><?php echo esc_html( $final_rating ); ?></span>
+            <div class="rating-number number-text">
+				<div class="star-rating" title="Rated <?php echo esc_html( $final_rating ); ?> out of 5">
+					<span style="width:<?php echo esc_attr( ( $final_rating * 100 ) / 5 ); ?>%">
+					<strong class="rating"><?php echo esc_html( $final_rating ); ?></strong> out of <span>5</span> based on <span class="rating"><?php echo esc_html( $transient['rating'] );?></span> customer ratings </span>
+				</div>
+            </div>
             <span class="rating-label label-text"><?php echo esc_html( $final_rating_label ); ?></span>
         </div>
         
@@ -248,7 +252,8 @@ class WordPress_Plugin_Stats extends Base{
                 'selectors' => [
                     '{{WRAPPER}} .wp-plugin-stats .label-text' => 'color: {{VALUE}}',
                 ],
-                'default'   => '#021429',
+                'default'   => '#8D93A3;
+',
             ]
         );
         
@@ -264,7 +269,7 @@ class WordPress_Plugin_Stats extends Base{
                 'selectors' => [
                     '{{WRAPPER}} .wp-plugin-stats .number-text' => 'color: {{VALUE}}',
                 ],
-                'default'   => '#FF7474',
+                'default'   => '#5956E9',
             ]
         );
         
