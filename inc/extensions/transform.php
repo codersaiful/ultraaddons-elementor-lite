@@ -150,9 +150,9 @@ class Transform {
                 $data_transform = [
                     '_ua_transform_on_off' => $_ua_transform_on_off,
                     'transforms' => [
-                        'rotate'      => $settings['rotate'],
-                        'rotateX'      => $settings['rotateX'],
-                        'rotateY'      => $settings['rotateY'],
+                        'rotate'      => $settings['_ua_transform_rotate'],
+                        'rotateX'      => $settings['_ua_transform_rotateX'],
+                        'rotateY'      => $settings['_ua_transform_rotateY'],
                     ],
                     
                 ];
