@@ -267,6 +267,24 @@ $widgetsArray = [
             ],
     ],
     
+    'Post_Title' => [
+            'name'  => __( 'Post Title / Page Title', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'uicon-skillbar',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
+    'Breadcrumb' => [
+            'name'  => __( 'Breadcrumb', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'uicon-skillbar',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
 ];
 
 return apply_filters( 'ultraaddons/widgets/array', $widgetsArray );

@@ -73,7 +73,7 @@ class Transform {
 
                 
                 
-                $element->start_controls_tabs( 'transition_tabs',
+                $element->start_controls_tabs( '_transition_tabs',
                             [
                                     'condition' => [
                                             '_ua_transform_on_off' => 'yes',
@@ -96,9 +96,9 @@ class Transform {
                                 'separator'   => 'after', 
 			]
 		);
-                $element->add_control( 'rotate', $rotate_args );
-                $element->add_control( 'rotateX', $rotateX_args );
-                $element->add_control( 'rotateY', $rotateY_args );
+                $element->add_control( '_ua_transform_rotate', $rotate_args );
+                $element->add_control( '_ua_transform_rotateX', $rotateX_args );
+                $element->add_control( '_ua_transform_rotateY', $rotateY_args );
 
                 $element->end_controls_tab(); //End of Normal Tab
                 
@@ -113,9 +113,9 @@ class Transform {
 			]
 		);
                 
-                $element->add_control( 'rotate_hover', Handle_Controls::convert_hover( $rotate_args ) );
-                $element->add_control( 'rotateX_hover', Handle_Controls::convert_hover( $rotateX_args ) );
-                $element->add_control( 'rotateY_hover', Handle_Controls::convert_hover( $rotateY_args ) );
+                $element->add_control( '_ua_transform_rotate_hover', Handle_Controls::convert_hover( $rotate_args ) );
+                $element->add_control( '_ua_transform_rotateX_hover', Handle_Controls::convert_hover( $rotateX_args ) );
+                $element->add_control( '_ua_transform_rotateY_hover', Handle_Controls::convert_hover( $rotateY_args ) );
                 
                 $element->end_controls_tab(); //End of Hover Tab
                 

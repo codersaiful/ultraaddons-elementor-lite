@@ -1,1 +1,63 @@
+.ua-element-wordpress-plugin-stats .wp-plugin-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0px 10px 40px rgb(200 207 215 / 30%);
+}
+.ua-element-wordpress-plugin-stats .wp-plugin-stats:before {
+    content: "";
+    display: block;
+    background: #FFEDF0;
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    bottom: 0;
+    border-radius: 0 0 15px 15px;
+}
+.ua-element-wordpress-plugin-stats .wp-plugin-stats .plugin-stats {
+    padding: 50px 25px;
+	display: flex;
+    flex-direction: column;
+	align-items: center;
+}
+.ua-element-wordpress-plugin-stats .wp-plugin-stats .plugin-stats.plugin-stats-downloaded {
+	padding-left: 50px;
+}
+.ua-element-wordpress-plugin-stats .wp-plugin-stats .plugin-stats.plugin-stats-rating {
+	padding-right: 50px;
+}
+.ua-element-wordpress-plugin-stats .wp-plugin-stats .number-text {
+	font-family: Inter;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 30px;
+	line-height: 36px;
+}
+.ua-element-wordpress-plugin-stats .wp-plugin-stats .label-text {
+	font-family: Inter;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 22px;
+	text-align: center;
+}
+.ua-element-wordpress-plugin-stats .wp-plugin-stats .star-rating {
+    overflow: hidden;
+    position: relative;
+    height: 36px;
+    line-height: 1.618;
+    width: 5.3em;
+    font-family: star;
+    font-weight: 400;
+    font-size: 23px;
+}
+@media (min-width: 768px){
+	.ua-element-wordpress-plugin-stats .wp-plugin-stats {
+		flex-direction: row;
+		justify-content: space-around;
+		flex-wrap: wrap;
+	}
+}
 
