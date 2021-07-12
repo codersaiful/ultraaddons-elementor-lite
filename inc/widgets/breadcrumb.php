@@ -200,7 +200,7 @@ class Breadcrumb extends Base{
     if( $wooBreadCumb && function_exists( 'woocommerce_breadcrumb' ) ){
         $args = array(
             'delimiter' => '<span>&nbsp;' . $separator . '&nbsp;</span>',
-            'home'      => $this->home_title,
+            'home'      => $this->home,
         );
         
         $args = apply_filters( 'ultraaddons_wc_breadcrumb_args', $args );
