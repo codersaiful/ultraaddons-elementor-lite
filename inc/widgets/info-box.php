@@ -197,6 +197,58 @@ class Info_Box extends Base {
             );
             
             
+            $this->add_control(
+                    'wrapper_link_switch',
+                    [
+                            'label' => __( 'Wrapper Link Switch', 'ultraaddons' ),
+                            'type' => Controls_Manager::SWITCHER,
+                            'label_on' => __( 'Yes', 'ultraaddons' ),
+                            'label_off' => __( 'No', 'ultraaddons' ),
+                            'return_value' => 'yes',
+                    ]
+            );
+            
+            $this->add_control(
+                    'wrapper_link',
+                    [
+                            'label' => __( 'Wrapper Link', 'ultraaddons' ),
+                            'type' => Controls_Manager::URL,
+                            'dynamic' => [
+                                    'active' => true,
+                            ],
+                            'placeholder' => __( 'https://your-link.com', 'ultraaddons' ),
+                            'default' => [
+                                    'url' => '#',
+                            ],
+                        'condition' => [
+                            'wrapper_link_switch' => 'yes',
+                        ],
+                    ]
+            );
+            
+            $this->add_responsive_control(
+                    'wrapper_link_padding',
+                    [
+                            'label' => __( 'Padding', 'ultraaddons' ),
+                            'type' => Controls_Manager::DIMENSIONS,
+                            'description' => __( 'For setting wrapper link padding, Please set zero padding for main box from Advance Tab.', 'ultraaddons' ),
+                            'size_units' => [ 'px', '%' ],
+                            'default'   => [
+                                    'top' => 50,
+                                    'left' => 50,
+                                    'right' => 50,
+                                    'bottom' => 50,
+                                    'unit' => 'px',
+                            ],
+                            'selectors' => [
+                                    '{{WRAPPER}} .elementor-widget-container a.ua-info-box-wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+//                                    '{{WRAPPER}} .elementor-widget-container' => 'padding: 0px 0px 0px 0px !important;',
+                            ],
+                            'condition' => [
+                                'wrapper_link_switch' => 'yes',
+                            ],
+                    ]
+            );
             
             $this->end_controls_section();
             
@@ -904,14 +956,26 @@ class Info_Box extends Base {
     protected function render() {
             $settings = $this->get_settings_for_display();
             $icon_tag = 'span';
+            $this->add_render_attribute( 'wrapper-tag', 'class', 'ua-info-box-wrapper' );
             $this->add_render_attribute( 'description_text', 'class', 'elementor-icon-box-description' );
             $this->add_inline_editing_attributes( 'title_text', 'none' );
             $this->add_inline_editing_attributes( 'description_text' );
             
         
+        $wrapper_link_switch = !empty( $settings['wrapper_link_switch'] ) ? true : false;
+        $button_show = true;
+        $wrapper_tag = 'div';
+        
+        if( $wrapper_link_switch & ! empty( $settings['btn_link']['url'] ) ){
+            $wrapper_tag = 'a';
+            $this->add_link_attributes( 'wrapper-tag', $settings['wrapper_link'] );
+            $button_show = false;
+           
+
+        }
         
     ?>
-    <div class="ua-info-box-wrapper">
+    <<?php echo $wrapper_tag; ?> <?php echo $this->get_render_attribute_string( 'wrapper-tag' ); ?>>
         <?php $this->get_image_icon(); ?>
         <div class="ua-info-box-content">
             <<?php echo esc_attr( $settings['title_size'] ); ?> class="elementor-icon-box-title">
@@ -921,13 +985,15 @@ class Info_Box extends Base {
             <p <?php echo $this->get_render_attribute_string( 'description_text' ); ?>><?php echo $settings['description_text']; ?></p>
             <?php endif; ?>
         </div>
-        <?php $this->button_render(); ?>
-    </div>
+        <?php 
+        if( $button_show ){
+            $this->button_render();
+        }
+        
+        ?>
+    </<?php echo $wrapper_tag; ?>>
     <?php
         
     }
-    
-//    protected function _content_template() {
-    
-//    }
+
 }
