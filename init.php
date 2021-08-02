@@ -234,7 +234,7 @@ final class UltraAddons {
                  * 
                  * @since 1.0.7.15
                  */
-                include_once ULTRA_ADDONS_DIR . 'inc/sdk/integration.php';
+                //include_once ULTRA_ADDONS_DIR . 'inc/sdk/integration.php'; //Integration has removed
                 
                 
                 if( is_admin() ){
