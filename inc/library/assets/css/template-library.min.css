@@ -166,7 +166,21 @@ a.elementor-template-library-blank-footer-link:hover {
     width:calc(33.333% - 30px)
 }
 .UltraTempLibrary__templates--page .UltraTempLibrary__template{
-    width: calc(25% - 30px);
+    width: calc(20% - 30px);
+    max-height: 375px;
+}
+
+.UltraTempLibrary__template span.UltraTempLibrary-footer-title {
+    font-size: 11px;
+    position: absolute;
+    color: white;
+    top: -43px;
+    left: 0;
+    text-align: center;
+    width: 100%;
+}
+.UltraTempLibrary__template:hover span.UltraTempLibrary-footer-title {
+    
 }
 .UltraTempLibrary__template-body{
     position:relative;
