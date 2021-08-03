@@ -58,7 +58,7 @@ class Autoloader {
                 )
         );
         
-        $full_class_name = strtolower(preg_replace('/\\\/', DIRECTORY_SEPARATOR, $class));
+        $full_class_name = strtolower( preg_replace('/\\\/', DIRECTORY_SEPARATOR, $class ) );
 
         
         $filepath = ULTRA_ADDONS_DIR . 'inc/' . $filename . '.php';
