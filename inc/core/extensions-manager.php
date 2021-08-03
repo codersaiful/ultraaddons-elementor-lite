@@ -50,7 +50,12 @@ class Extensions_Manager{
             
             //Check pro Extension
             $is_pro = isset( $extension['is_pro'] ) ? $extension['is_pro'] : false;
-
+            
+            if( $is_pro ){
+                $file = ULTRA_ADDONS_PRO_DIR . "inc/extensions/{$file_name}.php";
+                $file = realpath( $file );
+            }
+            
             /**
              * If Extension in Disable list, 
              * then Extension will not activate
