@@ -44,18 +44,18 @@ class Extensions_Manager{
         
         foreach( self::get_list() as $ex_name_key => $extension ){
 
-            $file_name = strtolower( str_replace( '_', '-', $ex_name_key ) );
-            $file = ULTRA_ADDONS_DIR . "inc/extensions/{$file_name}.php";
-            $file = realpath( $file );
-            
+//            $file_name = strtolower( str_replace( '_', '-', $ex_name_key ) );
+//            $file = ULTRA_ADDONS_DIR . "inc/extensions/{$file_name}.php";
+//            $file = realpath( $file );
+//            
             //Check pro Extension
             $is_pro = isset( $extension['is_pro'] ) ? $extension['is_pro'] : false;
             
-            if( $is_pro ){
-                $file = ULTRA_ADDONS_PRO_DIR . "inc/extensions/{$file_name}.php";
-                $file = realpath( $file );
-            }
-            
+//            if( $is_pro && defined( 'ULTRA_ADDONS_PRO_DIR' ) ){
+//                $file = ULTRA_ADDONS_PRO_DIR . "inc/extensions/{$file_name}.php";
+//                $file = realpath( $file );
+//            }
+//            
             /**
              * If Extension in Disable list, 
              * then Extension will not activate
@@ -68,8 +68,8 @@ class Extensions_Manager{
              * 
              * @since 1.0.7 based on pree pro version.
              */
-            if( ! in_array( $ex_name_key, $disable_keys ) && is_readable( $file ) && ( ! $is_pro || ultraaddons_is_pro() ) ){
-                include_once $file;
+            if( ! in_array( $ex_name_key, $disable_keys ) && ( ! $is_pro || ultraaddons_is_pro() ) ){
+                //include_once $file;
                 $class_name = '\UltraAddons\Extensions\\' . $ex_name_key;
                 if( method_exists( $class_name, 'init' ) ){
                     $class_name::init();
