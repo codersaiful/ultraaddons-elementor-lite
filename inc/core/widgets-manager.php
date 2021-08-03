@@ -78,6 +78,20 @@ class Widgets_Manager{
     }
     
     /**
+     * Getting Single Widget args Details
+     * of Widget Array list
+     * 
+     * @param type $widgetKey
+     * @return boolean
+     */
+    public static function getWidget( $widgetKey = false ){
+        if( ! $widgetKey ) return false;
+        
+        $widgets = self::widgets();
+        return isset( $widgets[$widgetKey] ) ? $widgets[$widgetKey] : false;
+    }
+
+    /**
      * 
      * getting Array of Active Widget
      * 
@@ -97,6 +111,7 @@ class Widgets_Manager{
      * @return Array
      */
     public static function activeWidgets(){
+        //var_dump(Widgets_Manager::getWidget('Advance_Heading'));
         $widgets = self::widgets();
         $active_widgets = [];
         foreach( $widgets as $widget_key => $widget ){
