@@ -133,6 +133,10 @@ Yes, there are lot of filter and action hook available here. You can customize f
 
 == Change log ==
 
+= 1.0.7 =
+
+ * Bug Fixed
+
 = 1.0.3 =
 
 * [Added]: Icon Box Elementor Widget Added.
