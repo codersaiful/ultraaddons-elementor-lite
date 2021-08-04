@@ -207,16 +207,25 @@ class Loader {
             $class_name =  '\UltraAddons\Widget\\' . ucwords( $class_name, '_' );
 
 
-            $file = ULTRA_ADDONS_DIR . 'inc/widgets/'. strtolower( $name ) . '.php';
-            $file = realpath( $file );
-            if( is_readable( $file ) ){
-                include_once $file;
-            }else{
-                $error = esc_html__( "The file ( %s ) of [%s] Class is not founded.", 'ultraaddons' );
-                $this->errors[$widget_key] = $error;
-                //printf( $error, $file, $name );
-            }
-            
+            /**
+             * We will register widget using auto loader
+             * 
+             * so bellow code is no need
+             * 
+             * ****************************
+             * widgets -> widget | because: in name space, available widget, not widgets
+             * ****************************
+             */
+//            $file = ULTRA_ADDONS_DIR . 'inc/widgets/'. strtolower( $name ) . '.php';
+//            $file = realpath( $file );
+//            if( is_readable( $file ) ){
+//                include_once $file;
+//            }else{
+//                $error = esc_html__( "The file ( %s ) of [%s] Class is not founded.", 'ultraaddons' );
+//                $this->errors[$widget_key] = $error;
+//                //printf( $error, $file, $name );
+//            }
+
             if( $class_name && class_exists( $class_name ) ){
                 ultraaddons_elementor()->widgets_manager->register_widget_type( new $class_name() );
             }
@@ -407,6 +416,7 @@ class Loader {
     public function widget_enqueue() {
         
         foreach( $this->widgetsArray as $widget_key => $widget ){
+
             $name = $widget_key;//isset( $widget['name'] ) ? $widget['name'] : '';
 
             $name = str_replace('_','-', $name);
@@ -416,16 +426,27 @@ class Loader {
             $deps = ['ultraaddons-widgets-style'];
             $ver  = ULTRA_ADDONS_VERSION;
             $media= 'all';
+            
             /**
              * CSS file load based on Element/Widget
              * 
              * we will load CSS file,
-             * If only Available JS file
              * 
              * @since 1.0.0.12
+             * 
+             * Integration with pro
+             * @since 1.0.7.27
              */
-            $src = ULTRA_ADDONS_ASSETS . 'css/widgets/' . strtolower( $name ) . '.css';
-            $css_file_dir = ULTRA_ADDONS_DIR . 'assets/css/widgets/' . strtolower( $name ) . '.css';
+            
+            if( defined( 'ULTRA_ADDONS_PRO_ASSETS' ) && isset( $widget['is_pro'] ) && $widget['is_pro'] ){
+              
+                $src = ULTRA_ADDONS_PRO_ASSETS . 'css/widgets/' . strtolower( $name ) . '.css';
+                $css_file_dir = ULTRA_ADDONS_PRO_DIR . 'assets/css/widgets/' . strtolower( $name ) . '.css';
+
+            }else{
+                $src = ULTRA_ADDONS_ASSETS . 'css/widgets/' . strtolower( $name ) . '.css';
+                $css_file_dir = ULTRA_ADDONS_DIR . 'assets/css/widgets/' . strtolower( $name ) . '.css';
+            }
             
             if( is_file( $css_file_dir ) ){
                  wp_register_style( $handle, $src, $deps, $ver, $media );

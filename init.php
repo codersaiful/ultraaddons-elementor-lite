@@ -46,7 +46,7 @@
 
 defined( 'ABSPATH' ) || die();
 
-define( 'ULTRA_ADDONS_VERSION', '1.0.7.26' );
+define( 'ULTRA_ADDONS_VERSION', '1.0.7.28' );
 define( 'ULTRA_ADDONS__FILE__', __FILE__ );
 define( 'ULTRA_ADDONS_BASE_NAME', plugin_basename( __FILE__ ) );
 define( 'ULTRA_ADDONS_DIR', plugin_dir_path( ULTRA_ADDONS__FILE__ ) );
@@ -234,7 +234,7 @@ final class UltraAddons {
                  * 
                  * @since 1.0.7.15
                  */
-                include_once ULTRA_ADDONS_DIR . 'inc/sdk/integration.php';
+                //include_once ULTRA_ADDONS_DIR . 'inc/sdk/integration.php'; //Integration has removed
                 
                 
                 if( is_admin() ){

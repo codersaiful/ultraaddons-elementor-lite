@@ -114,6 +114,15 @@ function ultraaddons_elementor() {
 }
 
 /**
+ * Getting Widgets Array with full args
+ * 
+ * @return Array list of Widgets
+ */
+function ultraaddons_get_widgets(){
+    return \UltraAddons\Core\Widgets_Manager::widgets();
+}
+
+/**
  * Get Boolean for Pro
  * 
  * @return bool True|False

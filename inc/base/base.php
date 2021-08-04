@@ -119,7 +119,21 @@ class Base extends Widget_Base{
      */
     public function get_categories() {
         
-        $default = [ 'ultraaddons' ];
+        /**
+         * Default Category based on 
+         * free or pro
+         * 
+         * We created pro group in pro version
+         * we added and register category pro in pro version.
+         * 
+         * @since 1.0.7.27
+         */
+        if( $this->is_pro() ){
+            $default = [ 'ultraaddons-pro' ];
+        }else{
+            $default = [ 'ultraaddons' ];
+        }
+        
         /**
          * Filter for Change Category for All for any specific 
          * 
@@ -152,7 +166,7 @@ class Base extends Widget_Base{
         if( empty( $widget_category ) || ! is_array( $widget_category ) ){
             $widget_category = $default;
         }
-        
+
         return $widget_category; //Here was Static 'ultraaddons'
     }
 
@@ -220,5 +234,28 @@ class Base extends Widget_Base{
     protected function get_pure_name(){
         $name = str_replace( __NAMESPACE__, '', $this->get_class_name() );
         return ltrim( $name, '\\' );
+    }
+    
+    /**
+     * Getting Current/Selected widget Args
+     * Details
+     * based on widget kew from
+     * Widgets array file
+     * 
+     * @since 1.0.7.27
+     */
+    protected function get_widget_args(){
+        $widgetKey = $this->get_pure_name();
+        return Widgets_Manager::getWidget( $widgetKey );
+    }
+    
+    /**
+     * Getting free or pro info from here
+     * 
+     * @return Boolean
+     */
+    protected function is_pro(){
+        $args = $this->get_widget_args();
+        return isset( $args['is_pro'] ) ? $args['is_pro'] : false;
     }
 }
