@@ -80,8 +80,17 @@ $extensionsArray = [
 
             'Gradient_Text' => [
                     'name'  => __( 'Gradient Text', 'ultraaddons' ),
-                    'is_pro'   => true,
+                    'is_pro'   => false,
                     'icon'      => 'eicon-global-colors',
+                    'cat'       => [
+                        __( 'Basic', 'ultraaddons' ),
+                    ],
+            ],
+    
+            'Preset' => [
+                    'name'  => __( 'Preset Settings', 'ultraaddons' ),
+                    'is_pro'   => true,
+                    'icon'      => 'eicon-click',
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),
                     ],
