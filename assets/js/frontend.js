@@ -273,6 +273,17 @@
                     });
             }
             EF.hooks.addAction( 'frontend/element_ready/ultraaddons-skill-bar.default', skillBar );
+            
+            //Alert
+            EF.hooks.addAction(
+                    'frontend/element_ready/ultraaddons-alert.default',
+                    function ($scope) {
+                        var $item = $scope.find('.ua_alert_close');
+                        $($item).on("click", function(){
+                            $(this).parents(".ua_alert_box").hide();
+                        });
+                    }
+            );
     });
     
     /**
@@ -404,9 +415,16 @@
         });
     });
 
-    var $item = $('.ua_alert_close');
-    $($item).on("click", function(){
-        $(this).parents(".ua_alert_box").hide();
-    });
+   
         
+        
+        /**
+         var widgetsMap = {
+                'ultraaddons-alert.default': Alert,
+            };
+    
+            widgetsMap.forEach(function(){
+                EF.hooks.addAction();
+            });
+         */
 } (jQuery, window));
