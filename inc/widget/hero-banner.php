@@ -8,7 +8,7 @@ use \Elementor\Group_Control_Typography;
 use \Elementor\Group_Control_Background;
 use \Elementor\Utils;
 use \Elementor\Core\Schemes;
-use \Elementor\Widget_Base;
+use \ELEMENTOR\Icons_Manager;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -32,7 +32,7 @@ class Hero_Banner extends Base{
     protected function get_control_id( $control_id ) {
         return $control_id;
     }
-
+   
     final public function get_banner_settings( $control_key ) {
         $control_id = $this->get_control_id( $control_key );
         return $this->get_settings( $control_id );
@@ -69,19 +69,574 @@ class Hero_Banner extends Base{
     protected function render() {
         $settings           = $this->get_settings_for_display();
         
+        $skin  = !empty( $settings['ua_skin'] ) ? $this->get_banner_settings('ua_skin') : '_skin_1';
         
+        switch ($skin) {
+            case '_skin_1':
+                 $this->layout_one();
+                break;
+            case '_skin_2':
+                 $this->layout_two();
+                break;
+            case '_skin_3':
+                 $this->layout_three();
+                break;
+            case '_skin_4':
+                 $this->layout_four();
+                break;
+            case '_skin_5':
+                $this->layout_five();
+                break;
+            case '_skin_6':
+                $this->layout_six();
+                break;
+            case '_skin_7':
+                $this->layout_seven();
+                break;
+            case '_skin_8':
+                $this->layout_eight();
+                break;
+            case '_skin_9':
+                $this->layout_nine();
+                break;
+            case '_skin_10':
+                $this->layout_ten();
+                break;
+            default:
+                $this->layout_one();
+                break;
+        } 
+        
+//        var_dump($ua_skin);
+//        var_dump($settings['ua_skin']);
+//        var_dump($settings);
     }
+    
+    
+    //Layout One
+    protected function layout_one(){
+        $settings = $this->get_settings_for_display();
+        $has_image = ! empty( $this->get_banner_settings('ua_images_show') );
+        $has_title_text = ! empty( $this->get_banner_settings('ua_title') );
+        $description_text = $this->get_banner_settings('ua_description_text');
+        $ua_title_size =  $this->get_banner_settings('ua_title_size');
+        $has_button_active = ! empty( $this->get_banner_settings('ua_button_show') );
+        $ua_button_text = ! empty( $this->get_banner_settings('ua_button_text') );
+        $ua_button2_text = ! empty( $this->get_banner_settings('ua_button2_text') );
+
+
+        $revers = $this->get_banner_settings('ua_revers');
+        $row_revers = '';
+        if($revers =='yes'){
+            $row_revers = 'dl-row-revers';
+        }
+        $button2_icon = $this->get_banner_settings('_dl_banner2_icon');
+        ?>
+         <div class="dl_banner_section dl_banner_section_style_01">
+            <div class="dl_container">
+                <div class="dl_row dl_align_items_center <?php echo esc_attr($row_revers); ?>">
+                    <div class="dl_col_lg_7"> 
+                        <div class="dl_banner_content dl_banner_content">
+                            <?php if ( $has_title_text ) : ?> 
+                            <<?php echo $ua_title_size; ?> class="dl_banner_title">
+                                <?php echo esc_html( $this->get_banner_settings('ua_title') ); ?>
+                            </<?php echo $ua_title_size; ?>>
+                            <?php endif; ?>
+                            <p class="dl_banner_desc"><?php echo wp_kses_post( $this->get_banner_settings('ua_description_text') ); ?></p>
+                            <?php if($has_button_active): ?>
+                                <?php if($ua_button_text): ?>  
+                                    <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="dl_cu_btn btn_3"><?php echo $this->get_banner_settings('ua_button_text'); ?></a>
+                                <?php endif; ?>
+                                <?php if($ua_button2_text): ?>  
+                                    <a href="<?php echo esc_url($this->get_banner_settings('_dl_banner2_link')['url']); ?>" class="dl_video_popup_area dl_cu_btn btn_4"> 
+                                        <?php Icons_Manager::render_icon( $this->get_banner_settings('_dl_banner2_icon') ); ?>
+                                        <?php echo wp_kses_post($this->get_banner_settings('ua_button2_text')); ?>
+                                    </a>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <?php if ( $has_image ) : ?>
+                    <div class="dl_banner_img">
+                     <?php  if ( ! empty( $this->get_banner_settings('ua_images_feature')['url'] ) ) {  ?>
+                        <img src="<?php echo esc_url($this->get_banner_settings('ua_images_feature')['url']); ?>" alt="#" class="dl_img_res">
+                     <?php } ?>
+                    </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+            </div> 
+    <?php }
+
+    //Layout Two
+    protected function layout_two(){
+        $settings = $this->get_settings_for_display();
+        $has_image = ! empty( $this->get_banner_settings('ua_images_show') );
+        $has_title_text = ! empty( $this->get_banner_settings('ua_title') );
+        $description_text = $this->get_banner_settings('ua_description_text');
+        $ua_title_size =  $this->get_banner_settings('ua_title_size');
+        $has_button_active = ! empty( $this->get_banner_settings('ua_button_show') );
+        $ua_button_text = ! empty( $this->get_banner_settings('ua_button_text') );
+        $ua_button2_text = ! empty( $this->get_banner_settings('ua_button2_text') );
+        $revers = $this->get_banner_settings('ua_revers');
+
+        $row_revers = '';
+        if($revers =='yes'){
+            $row_revers = 'dl-row-revers';
+        }
+
+        ?>
+         
+         <!-- banner part -->
+        <div class="dl_banner_section dl_banner_section_style_02 dl_banner_overlay">
+            <div class="dl_container">
+                <div class="dl_row dl_align_items_center dl_justify_content_between <?php echo esc_attr($row_revers); ?>">
+                    <div class="dl_col_lg_7"> 
+                        <div class="dl_banner_content dl_banner_content_style_01">
+                            <?php if ( $has_title_text ) : ?> 
+                                <<?php echo $ua_title_size; ?> class="dl_banner_title">
+                                    <?php echo esc_html( $this->get_banner_settings('ua_title') ); ?>
+                                </<?php echo $ua_title_size; ?>>
+                            <?php endif; ?>
+                            
+                            <?php if($has_button_active): ?>
+                                
+                                <p class="dl_banner_desc"><?php echo wp_kses_post( $this->get_banner_settings('ua_description_text') ); ?></p>
+                                <?php if($ua_button_text): ?>
+                                <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="dl_cu_btn btn_3"><?php echo $this->get_banner_settings('ua_button_text'); ?></a>
+                                <?php endif; ?>
+                                <?php if($ua_button2_text): ?> 
+                                <a href="<?php echo esc_url($this->get_banner_settings('_dl_banner2_link')['url']); ?>" class="dl_video_popup_area dl_cu_btn btn_4"> 
+                                <?php Icons_Manager::render_icon( $this->get_banner_settings('_dl_banner2_icon') ); ?>
+                                <?php echo wp_kses_post($this->get_banner_settings('ua_button2_text')); ?>
+                                </a>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <?php if ( $has_image ) : ?>
+                    <div class="dl_col_lg_4">
+                        <div class="dl_banner_img dl_img_round_shape">
+                            <?php  if ( ! empty( $this->get_banner_settings('ua_images_feature')['url'] ) ) {  ?>
+                                <img src="<?php echo esc_url($this->get_banner_settings('ua_images_feature')['url']); ?>" alt="#" class="dl_img_res">
+                            <?php } ?>
+                        </div>
+                    </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+        <!-- banner part end -->
+    <?php }
+
+    //Layout Three
+    protected function layout_three(){
+        $settings = $this->get_settings_for_display();
+        $has_image = ! empty( $this->get_banner_settings('ua_images_show') );
+        $has_title_text = ! empty( $this->get_banner_settings('ua_title') );
+        $description_text = $this->get_banner_settings('ua_description_text');
+        $ua_title_size =  $this->get_banner_settings('ua_title_size');
+        $has_button_active = ! empty( $this->get_banner_settings('ua_button_show') );
+        $ua_button_text = ! empty( $this->get_banner_settings('ua_button_text') );
+        $ua_button2_text = ! empty( $this->get_banner_settings('ua_button2_text') );
+
+
+        $revers = $this->get_banner_settings('ua_revers');
+        $row_revers = '';
+        if($revers =='yes'){
+            $row_revers = 'dl-row-revers';
+        }
+        ?>
+         <!-- banner part -->
+        <div class="dl_banner_section dl_banner_section_style_03 dl_banner_overlay dl_mt_80">
+        <div class="dl_container">
+            <div class="dl_row dl_align_items_center dl_justify_content_between <?php echo esc_attr($row_revers); ?>">
+                <div class="dl_col_lg_7"> 
+                    <div class="dl_banner_content dl_banner_content_style_02">
+                            <?php if ( $has_title_text ) : ?> 
+                                <<?php echo $ua_title_size; ?> class="dl_banner_title">
+                                    <?php echo esc_html( $this->get_banner_settings('ua_title') ); ?>
+                                </<?php echo $ua_title_size; ?>>
+                            <?php endif; ?>
+                            <p class="dl_banner_desc"><?php echo wp_kses_post( $this->get_banner_settings('ua_description_text') ); ?></p>
+
+                            <?php if($has_button_active): ?>
+                                <?php if($ua_button_text): ?>
+                                <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="dl_cu_btn btn_3"><?php echo $this->get_banner_settings('ua_button_text'); ?></a>
+                                <?php endif; ?>
+                                <?php if($ua_button2_text): ?> 
+                                <a href="<?php echo esc_url($this->get_banner_settings('_dl_banner2_link')['url']); ?>" class="dl_video_popup_area dl_cu_btn btn_4"> 
+                                <?php Icons_Manager::render_icon( $this->get_banner_settings('_dl_banner2_icon') ); ?>
+                                <?php echo wp_kses_post($this->get_banner_settings('ua_button2_text')); ?>
+                                </a>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <?php if ( $has_image ) : ?>
+                    <div class="dl_col_lg_4">
+                        <div class="dl_banner_img dl_img_round_shape">
+                            <?php  if ( ! empty( $this->get_banner_settings('ua_images_feature')['url'] ) ) {  ?>
+                                <img src="<?php echo esc_url($this->get_banner_settings('ua_images_feature')['url']); ?>" alt="#" class="dl_img_res">
+                            <?php } ?>
+                        </div>
+                    </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    <?php }
+
+ //Layout One
+    protected function layout_four(){
+        $settings = $this->get_settings_for_display();
+        $has_image = ! empty( $this->get_banner_settings('ua_images_show') );
+        $has_title_text = ! empty( $this->get_banner_settings('ua_title') );
+        $description_text = $this->get_banner_settings('ua_description_text');
+        $ua_title_size =  $this->get_banner_settings('ua_title_size');
+        $has_button_active = ! empty( $this->get_banner_settings('ua_button_show') );
+        $ua_button_text = ! empty( $this->get_banner_settings('ua_button_text') );
+        $ua_button2_text = ! empty( $this->get_banner_settings('ua_button2_text') );
+
+
+        $revers = $this->get_banner_settings('ua_revers');
+        $row_revers = '';
+        if($revers =='yes'){
+            $row_revers = 'dl-row-revers';
+        }   
+        ?>
+         <!-- banner part -->
+        <div class="dl_banner_section dl_banner_section_style_03 dl_banner_overlay dl_mt_80">
+            <div class="dl_container">
+                <div class="dl_row dl_align_items_center dl_justify_content_between <?php echo esc_attr($row_revers); ?>">
+                    <div class="dl_col_xl_7 dl_col_md_6"> 
+                            <div class="dl_banner_content dl_banner_content_style_03">
+                                <?php if ( $has_title_text ) : ?> 
+                                    <<?php echo $ua_title_size; ?> class="dl_banner_title">
+                                        <?php echo esc_html( $this->get_banner_settings('ua_title') ); ?>
+                                    </<?php echo $ua_title_size; ?>>
+                                <?php endif; ?>
+                                <p class="dl_banner_desc"><?php echo wp_kses_post( $this->get_banner_settings('ua_description_text') ); ?></p>
+                                
+                                <?php if($has_button_active): ?>
+                                    <?php if($ua_button_text): ?>
+                                    <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="dl_cu_btn btn_3"><?php echo $this->get_banner_settings('ua_button_text'); ?></a>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <?php if ( $has_image ) : ?>
+                            <div class="dl_col_xl_5 dl_col_md_6">
+                                <div class="dl_banner_img">
+                                    <?php  if ( ! empty( $this->get_banner_settings('ua_images_feature')['url'] ) ) {  ?>
+                                        <img src="<?php echo esc_url($this->get_banner_settings('ua_images_feature')['url']); ?>" alt="#" class="dl_img_res">
+                                    <?php } ?>
+                                </div>
+                        </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+    <?php }
+   
+ //Layout One
+ protected function layout_five(){
+    $settings = $this->get_settings_for_display();
+    $has_image = ! empty( $this->get_banner_settings('ua_images_show') );
+    $has_title_text = ! empty( $this->get_banner_settings('ua_title') );
+    $description_text = $this->get_banner_settings('ua_description_text');
+    $ua_title_size =  $this->get_banner_settings('ua_title_size');
+    $has_button_active = ! empty( $this->get_banner_settings('ua_button_show') );
+    $ua_button_text = ! empty( $this->get_banner_settings('ua_button_text') );
+    $ua_button2_text = ! empty( $this->get_banner_settings('ua_button2_text') );
+
+
+    $revers = $this->get_banner_settings('ua_revers');
+    $row_revers = '';
+    if($revers =='yes'){
+        $row_revers = 'dl-row-revers';
+    }
+    ?>
+     <!-- banner part -->
+     <div class="dl_banner_section dl_banner_section_style_04">
+        <div class="dl_container">
+            <div class="dl_row dl_align_items_center <?php echo esc_attr($row_revers); ?>">
+                <div class="dl_col_lg_6"> 
+                    <div class="dl_banner_content dl_banner_content_style_04">
+                    <?php if ( $has_title_text ) : ?>   
+                        <<?php echo $ua_title_size; ?> class="dl_banner_title">
+                                <?php echo esc_html( $this->get_banner_settings('ua_title') ); ?>
+                            </<?php echo $ua_title_size; ?>>
+                        <?php endif; ?>
+                        <p class="dl_banner_desc"><?php echo wp_kses_post( $this->get_banner_settings('ua_description_text') ); ?></p>
+                        <?php if($has_button_active): ?>
+                            <?php if($ua_button_text): ?>
+                                <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="dl_cu_btn btn_3"><?php echo $this->get_banner_settings('ua_button_text'); ?></a>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    </div>
+                </div>
+                <?php if ( $has_image ) : ?>
+                <div class="dl_banner_img">
+                    <?php  if ( ! empty( $this->get_banner_settings('ua_images_feature')['url'] ) ) {  ?>
+                        <img src="<?php echo esc_url($this->get_banner_settings('ua_images_feature')['url']); ?>" alt="#" class="dl_img_res">
+                    <?php } ?>
+                </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+<?php }
+
+
+protected function layout_six(){
+    $settings = $this->get_settings_for_display();
+    $has_image = ! empty( $this->get_banner_settings('ua_images_show') );
+    $has_title_text = ! empty( $this->get_banner_settings('ua_title') );
+    $description_text = $this->get_banner_settings('ua_description_text');
+    $ua_title_size =  $this->get_banner_settings('ua_title_size');
+    $has_button_active = ! empty( $this->get_banner_settings('ua_button_show') );
+    $ua_button_text = ! empty( $this->get_banner_settings('ua_button_text') );
+    $ua_button2_text = ! empty( $this->get_banner_settings('ua_button2_text') );
+
+    $revers = $this->get_banner_settings('ua_revers');
+    $row_revers = '';
+    if($revers =='yes'){
+        $row_revers = 'dl-row-revers';
+    }
+    ?>
+     <!-- banner part -->
+     <div class="dl_banner_section dl_banner_section_style_08 dl_mt_80">
+        <div class="dl_container">
+            <div class="dl_row dl_align_items_center <?php echo esc_attr($row_revers); ?>">
+                <div class="dl_col_xl_5 dl_col_md_4"> 
+                    <?php if ( $has_image ) : ?>
+                        <div class="dl_banner_img_wrapper">
+                        <?php  if ( ! empty( $this->get_banner_settings('ua_images_feature')['url'] ) ) {  ?>
+                            <img src="<?php echo esc_url($this->get_banner_settings('ua_images_feature')['url']); ?>" alt="#" class="dl_img_res">
+                        <?php } ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+                <div class="dl_col_xl_7 dl_col_md_8"> 
+                    <div class="dl_banner_content dl_banner_content_style_07">
+                        <?php if ( $has_title_text ) : ?>
+                            <<?php echo $ua_title_size; ?> class="dl_banner_title">
+                                <?php echo esc_html( $this->get_banner_settings('ua_title') ); ?>
+                            </<?php echo $ua_title_size; ?>>
+                        <?php endif; ?>
+                        <form action="#" class="dl_banner_subscribe_form">
+                            <input type="email" name="dl_email" id="dl_email1" placeholder="Type your e-mail">
+                            <i class="fas fa-envelope dl_mail_icon"></i>
+                            <?php if($ua_button_text): ?>
+                                <button type="submit" class="dl_cu_btn"><?php echo $this->get_banner_settings('ua_button_text'); ?></button>
+                            <?php endif; ?>
+                        </form> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>                        
+<?php }
+
+protected function layout_seven(){
+    $settings = $this->get_settings_for_display();
+    $has_image = ! empty( $this->get_banner_settings('ua_images_show') );
+    $has_title_text = ! empty( $this->get_banner_settings('ua_title') );
+    $description_text = $this->get_banner_settings('ua_description_text');
+    $ua_title_size =  $this->get_banner_settings('ua_title_size');
+    $has_button_active = ! empty( $this->get_banner_settings('ua_button_show') );
+    $ua_button_text = ! empty( $this->get_banner_settings('ua_button_text') );
+    $ua_button2_text = ! empty( $this->get_banner_settings('ua_button2_text') );
+
+    $revers = $this->get_banner_settings('ua_revers');
+    $row_revers = '';
+    if($revers =='yes'){
+        $row_revers = 'dl-row-revers';
+    }
+
+    ?>
+     <!-- banner part -->
+    <div class="dl_banner_section dl_banner_section_style_06 dl_mt_80">
+        <div class="dl_container">
+            <div class="dl_row dl_align_items_center <?php echo esc_attr($row_revers); ?>">
+                <div class="dl_col_lg_6"> 
+                    <div class="dl_banner_content dl_banner_content_style_06">
+                        <?php if ( $has_title_text ) : ?>
+                            <<?php echo $ua_title_size; ?> class="dl_banner_title">
+                                <?php echo esc_html( $this->get_banner_settings('ua_title') ); ?>
+                            </<?php echo $ua_title_size; ?>>
+                        <?php endif; ?>
+                        <p class="dl_banner_desc"><?php echo wp_kses_post( $this->get_banner_settings('ua_description_text') ); ?></p>
+                        <?php if($has_button_active): ?>
+                            <?php if($ua_button_text): ?>
+                            <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="dl_cu_btn btn_3"><?php echo $this->get_banner_settings('ua_button_text'); ?></a>
+                            <?php endif; ?>
+                            <?php if($ua_button2_text): ?>
+                            <a href="<?php echo esc_url($this->get_banner_settings('_dl_banner2_link')['url']); ?>" class="dl_video_popup_area dl_cu_btn btn_1"> 
+                            <?php Icons_Manager::render_icon( $this->get_banner_settings('_dl_banner2_icon') ); ?>
+                            <?php echo wp_kses_post($this->get_banner_settings('ua_button2_text')); ?>
+                            </a>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    </div>
+                </div>
+                <?php if ( $has_image ) : ?>
+                <div class="dl_main_banner_img">
+                <?php  if ( ! empty( $this->get_banner_settings('ua_images_feature')['url'] ) ) {  ?>
+                    <img src="<?php echo esc_url($this->get_banner_settings('ua_images_feature')['url']); ?>" alt="#" class="dl_img_res">
+                <?php } ?>
+                </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>  
+<?php }
+
+protected function layout_eight(){
+    $settings = $this->get_settings_for_display();
+    $has_image = ! empty( $this->get_banner_settings('ua_images_show') );
+    $has_title_text = ! empty( $this->get_banner_settings('ua_title') );
+    $description_text = $this->get_banner_settings('ua_description_text');
+    $ua_title_size =  $this->get_banner_settings('ua_title_size');
+    $has_button_active = ! empty( $this->get_banner_settings('ua_button_show') );
+    $ua_button_text = ! empty( $this->get_banner_settings('ua_button_text') );
+    $ua_button2_text = ! empty( $this->get_banner_settings('ua_button2_text') );
+
+
+    $revers = $this->get_banner_settings('ua_revers');
+    $row_revers = '';
+    if($revers =='yes'){
+        $row_revers = 'dl-row-revers';
+    }
+    ?>
+     <!-- banner part -->
+     <div class="dl_banner_section dl_banner_section_style_05 dl_mt_80">
+        <div class="dl_container">
+            <div class="dl_row dl_align_items_center">
+                <div class="dl_col_lg_12"> 
+                    <div class="dl_banner_content dl_banner_content_style_05">
+                        <?php if ( $has_title_text ) : ?>
+                            <<?php echo $ua_title_size; ?> class="dl_banner_title">
+                                <?php echo esc_html( $this->get_banner_settings('ua_title') ); ?>
+                            </<?php echo $ua_title_size; ?>>
+                        <?php endif; ?>
+                        <p class="dl_banner_desc"><?php echo wp_kses_post( $this->get_banner_settings('ua_description_text') ); ?></p>
+                    </div>
+                </div>
+                <?php if ( $has_image ) : ?>
+                <div class="dl_main_banner_img">
+                <?php  if ( ! empty( $this->get_banner_settings('ua_images_feature')['url'] ) ) {  ?>
+                    <img src="<?php echo esc_url($this->get_banner_settings('ua_images_feature')['url']); ?>" alt="#" class="dl_img_res">
+                <?php } ?>
+                </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+<?php }
+
+protected function layout_nine(){
+    $settings = $this->get_settings_for_display();
+    $has_image = ! empty( $this->get_banner_settings('ua_images_show') );
+    $has_title_text = ! empty( $this->get_banner_settings('ua_title') );
+    $description_text = $this->get_banner_settings('ua_description_text');
+    $ua_title_size =  $this->get_banner_settings('ua_title_size');
+    $has_button_active = ! empty( $this->get_banner_settings('ua_button_show') );
+    $ua_button_text = ! empty( $this->get_banner_settings('ua_button_text') );
+    $ua_button2_text = ! empty( $this->get_banner_settings('ua_button2_text') );
+
+    $revers = $this->get_banner_settings('ua_revers');
+    $row_revers = '';
+    if($revers =='yes'){
+        $row_revers = 'dl-row-revers';
+    }
+    ?>
+     <!-- banner part -->
+    <div class="dl_banner_section dl_banner_section_style_02 dl_banner_overlay dl_overlay_opacity">
+        <div class="dl_container">
+            <div class="dl_row dl_align_items_center dl_justify_content_center">
+                <div class="dl_col_lg_12"> 
+                    <div class="dl_banner_content dl_banner_content_style_09 dl_text_center">
+                        <?php if ( $has_title_text ) : ?>
+                            <<?php echo $ua_title_size; ?> class="dl_banner_title">
+                                <?php echo wp_kses_post( $this->get_banner_settings('ua_title') ); ?>
+                            </<?php echo $ua_title_size; ?>>
+                        <?php endif; ?>
+                        <p class="dl_banner_desc"><?php echo wp_kses_post( $this->get_banner_settings('ua_description_text') ); ?></p>
+                        <?php if($has_button_active): ?>
+                            <?php if($ua_button_text): ?>
+                                <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="dl_cu_btn btn_2"><?php echo $this->get_banner_settings('ua_button_text'); ?></a>
+                            <?php endif;  ?>
+                        <?php endif;  ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php }
+
+protected function layout_ten(){
+    $settings = $this->get_settings_for_display();
+    $has_image = ! empty( $this->get_banner_settings('ua_images_show') );
+    $has_title_text = ! empty( $this->get_banner_settings('ua_title') );
+    $description_text = $this->get_banner_settings('ua_description_text');
+    $ua_title_size =  $this->get_banner_settings('ua_title_size');
+    $has_button_active = ! empty( $this->get_banner_settings('ua_button_show') );
+    $ua_button_text = ! empty( $this->get_banner_settings('ua_button_text') );
+    $ua_button2_text = ! empty( $this->get_banner_settings('ua_button2_text') );
+
+    $revers = $this->get_banner_settings('ua_revers');
+    $row_revers = '';
+    if($revers =='yes'){
+        $row_revers = 'dl-row-revers';
+    }
+    ?>
+     <!-- banner part -->    
+    <div class="dl_banner_section dl_banner_section_style_09">
+        <div class="dl_container">
+            <div class="dl_row dl_align_items_center">
+                <div class="dl_col_lg_6"> 
+                    <div class="dl_banner_content dl_banner_content_style_10">
+                    <?php if ( $has_title_text ) : ?>
+                            <<?php echo $ua_title_size; ?> class="dl_banner_title">
+                                <?php echo wp_kses_post( $this->get_banner_settings('ua_title') ); ?>
+                            </<?php echo $ua_title_size; ?>>
+                        <?php endif; ?>
+                        <p class="dl_banner_desc"><?php echo wp_kses_post( $this->get_banner_settings('ua_description_text') ); ?></p>
+                        <?php if($has_button_active): ?>
+                            <?php if($ua_button_text): ?>
+                                <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="dl_cu_btn btn_3"><?php echo $this->get_banner_settings('ua_button_text'); ?></a>
+                            <?php endif;  ?>
+                        <?php endif;  ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+
+        <?php if ( $has_image ) : ?>
+            <div class="dl_main_banner_img">
+            <?php  if ( ! empty( $this->get_banner_settings('ua_images_feature')['url'] ) ) {  ?>
+                <img src="<?php echo esc_url($this->get_banner_settings('ua_images_feature')['url']); ?>" alt="#" class="dl_img_res">
+            <?php } ?>
+            </div>
+        <?php endif; ?>
+    </div>
+
+<?php }
+    
     
       //Preset
    public function preset_controls() {
 		$this->start_controls_section(
-			'_dl_banner_preset_section',
+			'ua_preset_section',
 			[
 				'label' => __( 'Preset', 'ultraaddons' ),
 			]
         );
         $this->add_control(
-			'_dl_banner_skin',
+			'ua_skin',
 			[
 				'label' => esc_html__( 'Design Format', 'ultraaddons' ),
 				'type' => Controls_Manager::SELECT,
@@ -102,12 +657,12 @@ class Hero_Banner extends Base{
 			]
 		);
 		$this->add_control(
-			'_dl_banner_revers',
+			'ua_revers',
 			[
 				'label' => __( 'Banner Reverse', 'ultraaddons' ),
 				'type' => Controls_Manager::SWITCHER,
 				'condition' => [
-					$this->get_control_id( '_dl_banner_skin' ) => ['_skin_1', '_skin_2', '_skin_3' ,'_skin_4','_skin_5', '_skin_6','_skin_7'],
+					$this->get_control_id( 'ua_skin' ) => ['_skin_1', '_skin_2', '_skin_3' ,'_skin_4','_skin_5', '_skin_6','_skin_7'],
                 ],
 				'label_on' => __( 'Yes', 'ultraaddons' ),
 				'label_off' => __( 'NO', 'ultraaddons' ),
@@ -122,14 +677,14 @@ class Hero_Banner extends Base{
 	//Content
    public function content_controls(){
 		$this->start_controls_section(
-			'_dl_banner_content_section',
+			'ua_content_section',
 			[
 				'label' => __( 'Content', 'ultraaddons' ),
 			]
 		);
 
 		$this->add_control(
-			'_dl_banner_title',
+			'ua_title',
 			[
 				'label' => __( 'Title', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
@@ -141,7 +696,7 @@ class Hero_Banner extends Base{
 		
         
         $this->add_control(
-            '_dl_banner_title_size',
+            'ua_title_size',
             [
                 'label' => __( 'Title HTML Tag', 'ultraaddons' ),
                 'type' => Controls_Manager::CHOOSE,
@@ -183,7 +738,7 @@ class Hero_Banner extends Base{
         );
 		
 		$this->add_control(
-			'_dl_banner_description_text',
+			'ua_description_text',
 			[
 				'label' => 'Description',
 				'type' => Controls_Manager::TEXTAREA,
@@ -196,7 +751,7 @@ class Hero_Banner extends Base{
         
         
         $this->add_control(
-            '_dl_banner_images_show',
+            'ua_images_show',
             [
                 'label' => esc_html__('Enable Images', 'ultraaddons'),
                 'type' => Controls_Manager::SWITCHER,
@@ -207,7 +762,7 @@ class Hero_Banner extends Base{
         );
 
         $this->add_control(
-            '_dl_banner_images_feature', [
+            'ua_images_feature', [
                 'label'      => __('Feature Image', 'ultraaddons'),
                 'type'       => \Elementor\Controls_Manager::MEDIA,
                 'default'    => [
@@ -215,7 +770,7 @@ class Hero_Banner extends Base{
                 ],
                 'show_label' => true,
                 'condition' => [
-					$this->get_control_id('_dl_banner_images_show') => ['yes'],
+					$this->get_control_id('ua_images_show') => ['yes'],
                 ]
             ]
         );
@@ -224,14 +779,14 @@ class Hero_Banner extends Base{
          //Content
          
         $this->start_controls_section(
-            '_dl_banner_button_section',
+            'ua_button_section',
             [
                 'label' => __( 'Banner Button', 'ultraaddons' ),
             ]
         );
 
         $this->add_control(
-            '_dl_banner_button_show',
+            'ua_button_show',
             [
                 'label' => esc_html__('Enable Button', 'ultraaddons'),
                 'type' => Controls_Manager::SWITCHER,
@@ -241,7 +796,7 @@ class Hero_Banner extends Base{
             ]
         );
 		$this->add_control(
-			'_dl_banner_button_text',
+			'ua_button_text',
 			[
 				'label' => __( 'Button', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
@@ -249,12 +804,12 @@ class Hero_Banner extends Base{
 				'placeholder' => __( 'Enter your text', 'ultraaddons' ),
 				'label_block' => true,
                 'condition' => [
-                    $this->get_control_id( '_dl_banner_button_show' ) => [ 'yes' ],
+                    $this->get_control_id( 'ua_button_show' ) => [ 'yes' ],
                 ],
 			]
 		);
 		$this->add_control(
-			'_dl_banner_button_link',
+			'ua_button_link',
 			[
 				'label' => __( 'Button Link', 'ultraaddons' ),
 				'type' => Controls_Manager::URL,
@@ -263,14 +818,14 @@ class Hero_Banner extends Base{
                     'url' => '#'
                 ],
                 'condition' => [
-                    $this->get_control_id( '_dl_banner_button_show' ) => [ 'yes' ],
+                    $this->get_control_id( 'ua_button_show' ) => [ 'yes' ],
                 ],
 			]
 		);
 		
         
         $this->add_control(
-			'_dl_banner_button2_text',
+			'ua_button2_text',
 			[
 				'label' => __( 'Button Two', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
@@ -278,8 +833,8 @@ class Hero_Banner extends Base{
 				'placeholder' => __( 'Enter your text', 'ultraaddons' ),
 				'label_block' => true,
                 'condition' => [
-					$this->get_control_id( '_dl_banner_button_show' ) => [ 'yes' ],
-					$this->get_control_id( '_dl_banner_skin' ) => ['_skin_1', '_skin_2', '_skin_3' ,'_skin_7'],
+					$this->get_control_id( 'ua_button_show' ) => [ 'yes' ],
+					$this->get_control_id( 'ua_skin' ) => ['_skin_1', '_skin_2', '_skin_3' ,'_skin_7'],
                 ],
 			]
 		);
@@ -293,8 +848,8 @@ class Hero_Banner extends Base{
                     'url' => '#'
                 ],
                 'condition' => [
-					$this->get_control_id( '_dl_banner_button_show' ) => [ 'yes' ],
-					$this->get_control_id( '_dl_banner_skin' ) => ['_skin_1', '_skin_2', '_skin_3' ,'_skin_7'],
+					$this->get_control_id( 'ua_button_show' ) => [ 'yes' ],
+					$this->get_control_id( 'ua_skin' ) => ['_skin_1', '_skin_2', '_skin_3' ,'_skin_7'],
                 ],
 			]
 		);
@@ -318,7 +873,7 @@ class Hero_Banner extends Base{
 	//General
 	public function general_style_controls(){
 		$this->start_controls_section(
-            '_dl_banner_style_general',
+            'ua_style_general',
             [
                 'label' => esc_html__('General', 'ultraaddons'),
                 'tab' => Controls_Manager::TAB_STYLE,
@@ -328,7 +883,7 @@ class Hero_Banner extends Base{
 		$this->add_group_control(
             Group_Control_Background::get_type(),
             [
-                'name' => 'banner_background',
+                'name' => 'bn_background',
                 'label' => esc_html__('Background Color', 'ultraaddons'),
                 'types' => [ 'classic', 'gradient', 'video' ],
                 'selector' => '{{WRAPPER}} .dl_banner_section_style_01, {{WRAPPER}} .dl_banner_section_style_02, {{WRAPPER}} .dl_banner_section_style_09',
@@ -341,7 +896,7 @@ class Hero_Banner extends Base{
 	//Banner Images Setting
 	public function images_style_controls(){
 		$this->start_controls_section(
-            '_dl_banner_style_images',
+            'ua_style_images',
             [
                 'label' => esc_html__('Images', 'ultraaddons'),
                 'tab' => Controls_Manager::TAB_STYLE,
@@ -457,7 +1012,7 @@ class Hero_Banner extends Base{
 	//banner Title Style
 	public function title_style_controls() {
 		$this->start_controls_section(
-            '_dl_banner_title_style_settings',
+            'ua_title_style_settings',
             [
                 'label' => esc_html__('Title', 'ultraaddons'),
                 'tab' => Controls_Manager::TAB_STYLE,
@@ -466,12 +1021,12 @@ class Hero_Banner extends Base{
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name' => '_dl_banner_title_typography',
+                'name' => 'ua_title_typography',
                 'selector' => '{{WRAPPER}} .dl_banner_content .dl_banner_title',
             ]
         );
         $this->add_control(
-            '_dl_banner_text_color',
+            'ua_text_color',
             [
                 'label' => esc_html__('Text Color', 'ultraaddons'),
                 'type' => Controls_Manager::COLOR,
@@ -483,7 +1038,7 @@ class Hero_Banner extends Base{
 		);
 		
 		$this->add_responsive_control(
-			'_dl_banner_title_bottom_space',
+			'ua_title_bottom_space',
 			[
 				'label' => __( 'Spacing', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
@@ -505,7 +1060,7 @@ class Hero_Banner extends Base{
 	//Content Style
 	public function content_style_controls(){
 		$this->start_controls_section(
-            '_dl_banner_content_style_settings',
+            'ua_content_style_settings',
             [
                 'label' => esc_html__('Content', 'ultraaddons'),
                 'tab' => Controls_Manager::TAB_STYLE,
@@ -515,12 +1070,12 @@ class Hero_Banner extends Base{
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name' => '_dl_banner_content_typography',
+                'name' => 'ua_content_typography',
                 'selector' => '{{WRAPPER}} .dl_banner_content .dl_banner_desc',
             ]
         );
         $this->add_control(
-            '_dl_banner_content_color',
+            'ua_content_color',
             [
                 'label' => esc_html__('Text Color', 'ultraaddons'),
                 'type' => Controls_Manager::COLOR,
@@ -531,7 +1086,7 @@ class Hero_Banner extends Base{
             ]
 		);
 		$this->add_responsive_control(
-			'_dl_banner_content_bottom_space',
+			'ua_content_bottom_space',
 			[
 				'label' => __( 'Spacing', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
@@ -565,7 +1120,7 @@ class Hero_Banner extends Base{
     //Button Style
 	public function button_style_controls(){
 		$this->start_controls_section(
-            '_dl_banner_button_style_settings',
+            'ua_button_style_settings',
             [
                 'label' => esc_html__('Button One', 'ultraaddons'),
                 'tab' => Controls_Manager::TAB_STYLE,
@@ -721,11 +1276,11 @@ class Hero_Banner extends Base{
      //Button Two Style
      public function button2_style_controls(){
 		$this->start_controls_section(
-            '_dl_banner_button2_style_settings',
+            'ua_button2_style_settings',
             [
 				'label' => esc_html__('Button Two', 'ultraaddons'),
 				'condition' => [
-					$this->get_control_id('_dl_banner_skin') => ['_skin_1', '_skin_2', '_skin_3' ,'_skin_7'],
+					$this->get_control_id('ua_skin') => ['_skin_1', '_skin_2', '_skin_3' ,'_skin_7'],
 				],
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
