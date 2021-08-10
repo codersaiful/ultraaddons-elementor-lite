@@ -258,3 +258,22 @@ add_filter( 'woocommerce_add_to_cart_fragments', 'ultraaddons_woocommerce_cart_l
  * Finally I will creat field my custom code, currently using CMB2
  */
 //include_once __DIR__ . '/wp/custom-field.php';
+
+function ultraaddons_title_tag( $title_tag ){
+    $title_tag_array = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6','div', 'span', 'p' );
+    if( in_array( $title_tag, $title_tag_array ) ) {
+        return $title_tag;
+    } else {
+        return 'h4';
+    }
+}
+
+function ultraaddons_parse_text_editor( $content ) {  
+    $content = shortcode_unautop( $content );
+    $content = do_shortcode( $content );
+    $content = wptexturize( $content );
+    if ( $GLOBALS['wp_embed'] instanceof \WP_Embed ) {
+        $content = $GLOBALS['wp_embed']->autoembed( $content );
+    }
+    return $content;
+}
