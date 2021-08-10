@@ -296,7 +296,7 @@ $widgetsArray = [
     
     'Timeline' => [
             'name'  => __( 'Timeline', 'ultraaddons' ),
-            'is_pro'   => true,
+            'is_pro'   => false,
             'icon'      => 'eicon-time-line',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
