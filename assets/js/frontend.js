@@ -274,16 +274,52 @@
             }
             EF.hooks.addAction( 'frontend/element_ready/ultraaddons-skill-bar.default', skillBar );
             
-            //Alert
-            EF.hooks.addAction(
-                    'frontend/element_ready/ultraaddons-alert.default',
-                    function ($scope) {
-                        var $item = $scope.find('.ua_alert_close');
-                        $($item).on("click", function(){
-                            $(this).parents(".ua_alert_box").hide();
-                        });
-                    }
-            );
+//            //Alert
+//            EF.hooks.addAction(
+//                    'frontend/element_ready/ultraaddons-alert.default',
+//                    function ($scope) {
+//                        var $item = $scope.find('.ua_alert_close');
+//                        $($item).on("click", function(){
+//                            $(this).parents(".ua_alert_box").hide();
+//                        });
+//                    }
+//            );
+            
+            let UltraAddonsMap = {
+                //Alert
+                Alert:function($scope){
+                    var $item = $scope.find('.ua_alert_close');
+                    $($item).on("click", function(){
+                        $(this).parents(".ua_alert_box").hide();
+                    });
+                },
+                
+                //Addd new all - one by one with comma
+                
+                
+            };
+            
+            let elementReadyMap = {
+                'ultraaddons-alert.default': UltraAddonsMap.Alert,
+            };
+    
+            $.each( elementReadyMap, function( elementKey, elementReadyMap ) {
+                    EF.hooks.addAction( 'frontend/element_ready/' + elementKey, elementReadyMap );
+            });
+            
+            
+            
+            /**
+         var widgetsMap = {
+                'ultraaddons-alert.default': Alert,
+            };
+            //$.each( fnHanlders, function( widgetName, handlerFn ) {
+			elementorFrontend.hooks.addAction( 'frontend/element_ready/' + widgetName, handlerFn );
+		});
+            widgetsMap.forEach(function(){
+                EF.hooks.addAction();
+            });
+         */
     });
     
     /**
@@ -418,13 +454,5 @@
    
         
         
-        /**
-         var widgetsMap = {
-                'ultraaddons-alert.default': Alert,
-            };
-    
-            widgetsMap.forEach(function(){
-                EF.hooks.addAction();
-            });
-         */
+        
 } (jQuery, window));
