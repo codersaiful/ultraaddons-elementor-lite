@@ -19,12 +19,18 @@ class Preset {
 		add_action( 'elementor/element/section/section_advanced/after_section_end', [ __CLASS__, 'add_controls_section' ], 1 );
 		add_action( 'elementor/element/common/_section_style/after_section_end', [ __CLASS__, 'add_controls_section' ], 1 );
 
+                
+                //Debug Perpose
+                add_action( 'elementor/frontend/before_render', [ __CLASS__, 'before_section_render' ], 1 );
+                //add_action( 'elementor/frontend/after_render', [ __CLASS__, 'before_section_render' ], 1 );
 	}
 
         
 
         public static function add_controls_section( Element_Base $element) {
-		$tabs = Controls_Manager::TAB_STYLE;
+                //if( 'common' !== $element->get_name() ) return false; //Only for Common, mean: only for widget //var_dump($element);
+            
+		$tabs = Controls_Manager::TAB_CONTENT;
                 
 		if ( 'section' === $element->get_name() || 'column' === $element->get_name() ) {
 			$tabs = Controls_Manager::TAB_LAYOUT;
@@ -67,6 +73,18 @@ class Preset {
                 
 	}
         
+        /**
+         * Adding data attribute on selected Elementor or Section and 
+         * Do Transition.
+         * For now, I will try only Rotation
+         * Using CSS
+         * 
+         * @param Element_Base $element
+         */
+	public static function before_section_render( Element_Base $element ) {
+		$settings = $element->get_settings_for_display();
+                
+        }
         
 
 }
