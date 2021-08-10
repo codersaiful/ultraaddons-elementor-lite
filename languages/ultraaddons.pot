@@ -1,0 +1,3473 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Addons - UltraAddons Elementor Lite\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-04 07:48+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.5.3; wp-5.7.2\n"
+"X-Domain: ultraaddons"
+
+#. 1: Plugin name 2: Elementor
+#: init.php:269
+#, php-format
+msgid "\"%1$s\" requires \"%2$s\" to be installed and activated."
+msgstr ""
+
+#. 1: Plugin name 2: Elementor 3: Required Elementor version
+#. 1: Plugin name 2: PHP 3: Required PHP version
+#: init.php:293 init.php:318
+#, php-format
+msgid "\"%1$s\" requires \"%2$s\" version %3$s or greater."
+msgstr ""
+
+#: inc/library/library-manager.php:95
+#, php-format
+msgid "%s Widget"
+msgstr ""
+
+#: inc/widget/price-table.php:266
+msgid "/mon"
+msgstr ""
+
+#: inc/widget/slider.php:1084 inc/widget/testimonial-slider.php:925
+msgid "1 Slide"
+msgstr ""
+
+#: inc/widget/slider.php:1085 inc/widget/testimonial-slider.php:926
+msgid "2 Slides"
+msgstr ""
+
+#: inc/widget/slider.php:1086 inc/widget/testimonial-slider.php:927
+msgid "3 Slides"
+msgstr ""
+
+#: inc/widget/slider.php:1087 inc/widget/testimonial-slider.php:928
+msgid "4 Slides"
+msgstr ""
+
+#: inc/widget/slider.php:1088 inc/widget/testimonial-slider.php:929
+msgid "5 Slides"
+msgstr ""
+
+#: inc/widget/team-box.php:546
+msgid "500px"
+msgstr ""
+
+#: inc/widget/slider.php:1089 inc/widget/testimonial-slider.php:930
+msgid "6 Slides"
+msgstr ""
+
+#: inc/widget/info-boards-deleted.php:229
+#: inc/widget/info-boards-deleted.php:244
+msgid ""
+"<p>Lorem ipsum dolor sit amet consect adipisicing a sed do eusmod tempor "
+"incididunt ut labore.</p>"
+msgstr ""
+
+#. %s Nav menu URL
+#: inc/widget/menu.php:352
+#, php-format
+msgid ""
+"<strong>There are no menus in your site.</strong><br>Go to the <a "
+"href=\"%s\" target=\"_blank\">Menus screen</a> to create one."
+msgstr ""
+
+#: inc/widget/info-boards-deleted.php:214
+msgid ""
+"<ul><li><p>Fri-Sat</p><p>8AM - 10PM</p></li><li><p>Mon-Tue</p> <p>8AM - "
+"10PM</p></li><li><p>Thu-Sun</p> <p>8AM - 10PM</p></li></ul>"
+msgstr ""
+
+#: inc/widget/advance-heading.php:133 inc/widget/advance-heading.php:134
+msgid "About Heading"
+msgstr ""
+
+#: inc/widget/wordpress-plugin-stats.php:191
+msgid "Active Install Text (optional)"
+msgstr ""
+
+#: inc/widget/contact-form7.php:71
+msgid "Add CSS custom class to the form."
+msgstr ""
+
+#: inc/wp/header-footer-post.php:65
+msgid "Add new"
+msgstr ""
+
+#: inc/wp/header-footer-post.php:66
+msgid "Add new Header & Footer"
+msgstr ""
+
+#: inc/widget/team-box.php:310
+msgid "Add your email address"
+msgstr ""
+
+#: inc/widget/team-box.php:293
+msgid "Add your profile link"
+msgstr ""
+
+#: inc/widget/price-table.php:365 inc/widget/price-table.php:1658
+msgid "Additional Info"
+msgstr ""
+
+#: loader.php:490
+msgid "Addons - UltraAddons"
+msgstr ""
+
+#. Name of the plugin
+msgid "Addons - UltraAddons Elementor Lite"
+msgstr ""
+
+#: admin/pages/main.php:30 inc/core/list/widgets-array.php:25
+msgid "Advance Heading"
+msgstr ""
+
+#: admin/pages/main.php:36 inc/core/list/widgets-array.php:43
+msgid "Advance List"
+msgstr ""
+
+#: inc/traits/button-helper.php:499 inc/widget/price-table.php:1077
+#: inc/widget/price-table.php:1143
+msgid "After"
+msgstr ""
+
+#: inc/widget/offer-card.php:748
+msgid "After Border Color"
+msgstr ""
+
+#: inc/traits/button-helper.php:126 inc/widget/advance-heading.php:461
+#: inc/widget/cart.php:177 inc/widget/cart.php:647
+#: inc/widget/contact-form7.php:91 inc/widget/counter.php:382
+#: inc/widget/info-box.php:42 inc/widget/offer-card.php:229
+#: inc/widget/offer-card.php:689 inc/widget/price-table.php:496
+#: inc/widget/price-table.php:1550 inc/widget/slider.php:433
+#: inc/widget/testimonial-box.php:258 inc/widget/testimonial-slider.php:283
+#: inc/widget/wc-categories.php:298
+msgid "Alignment"
+msgstr ""
+
+#: inc/wp/header-footer-post.php:64
+msgid "All Header & Footer"
+msgstr ""
+
+#: inc/widget/menu.php:409
+msgid "All submenu will display in two line"
+msgstr ""
+
+#: inc/widget/price-table.php:453
+msgid "Angle Ribbon"
+msgstr ""
+
+#: inc/core/list/widgets-array.php:116
+msgid "Animated Header"
+msgstr ""
+
+#: inc/extensions/hover-effect.php:40
+msgid "Animation"
+msgstr ""
+
+#: inc/core/list/extensions-array.php:54
+msgid "Animation Effect"
+msgstr ""
+
+#: admin/pages/main.php:65
+msgid "Any Content"
+msgstr ""
+
+#: inc/widget/team-box.php:547
+msgid "Apple"
+msgstr ""
+
+#: inc/widget/slider.php:958 inc/widget/testimonial-slider.php:827
+msgid "Arrow"
+msgstr ""
+
+#: inc/widget/testimonial-slider.php:829
+msgid "Arrow & Dots"
+msgstr ""
+
+#: inc/widget/slider.php:960
+msgid "Arrow & Dots/Number"
+msgstr ""
+
+#: inc/widget/slider.php:986 inc/widget/testimonial-slider.php:843
+msgid "Arrow Position"
+msgstr ""
+
+#: inc/widget/wc-categories.php:221
+msgid "ASC"
+msgstr ""
+
+#: inc/widget/slider.php:940 inc/widget/testimonial-slider.php:809
+msgid "Autoplay Delay"
+msgstr ""
+
+#: inc/widget/slider.php:946 inc/widget/testimonial-slider.php:815
+msgid "Autoplay delay in milliseconds"
+msgstr ""
+
+#: inc/widget/slider.php:909 inc/widget/testimonial-slider.php:778
+msgid "Autoplay Speed"
+msgstr ""
+
+#: inc/widget/slider.php:915 inc/widget/testimonial-slider.php:784
+msgid "Autoplay speed in milliseconds"
+msgstr ""
+
+#: inc/widget/slider.php:880 inc/widget/testimonial-slider.php:749
+msgid "Autoplay?"
+msgstr ""
+
+#: admin/pages/main.php:9
+msgid "Available Widgets and Features"
+msgstr ""
+
+#: inc/widget/testimonial-box.php:502 inc/widget/testimonial-slider.php:676
+msgid "Avatar"
+msgstr ""
+
+#: inc/library/templates/template.php:18
+msgid "Back to Library"
+msgstr ""
+
+#: inc/widget/cart.php:337 inc/widget/cart.php:396
+#: inc/widget/count-down-timer.php:398 inc/widget/menu.php:299
+#: inc/widget/offer-card.php:434 inc/widget/offer-card.php:494
+#: inc/widget/product-table.php:334 inc/widget/product-table.php:1220
+msgid "Background"
+msgstr ""
+
+#: inc/widget/contact-form7.php:208 inc/widget/contact-form7.php:309
+#: inc/widget/contact-form7.php:355 inc/widget/info-boards-deleted.php:113
+#: inc/widget/info-box.php:304 inc/widget/info-box.php:449
+#: inc/widget/price-table.php:670 inc/widget/price-table.php:803
+#: inc/widget/price-table.php:864 inc/widget/price-table.php:936
+#: inc/widget/price-table.php:1433 inc/widget/price-table.php:1628
+#: inc/widget/price-table.php:1736 inc/widget/product-table.php:271
+#: inc/widget/product-table.php:700 inc/widget/product-table.php:773
+#: inc/widget/product-table.php:922 inc/widget/product-table.php:1067
+#: inc/widget/product-table.php:1113 inc/widget/skill-bar.php:221
+#: inc/widget/skill-bar.php:342 inc/widget/slider.php:662
+#: inc/widget/slider.php:705 inc/widget/testimonial-slider.php:321
+#: inc/widget/testimonial-slider.php:425
+msgid "Background Color"
+msgstr ""
+
+#: inc/widget/slider.php:795
+msgid "Background Effect"
+msgstr ""
+
+#: inc/widget/slider.php:264
+msgid "Background Image"
+msgstr ""
+
+#: inc/extensions/background-overlay.php:35
+#: inc/core/list/extensions-array.php:64
+msgid "Background Overlay"
+msgstr ""
+
+#: inc/widget/product-table.php:797
+msgid "Background Striped Color"
+msgstr ""
+
+#: inc/traits/animate-style.php:44
+msgid "backInDown"
+msgstr ""
+
+#: inc/traits/animate-style.php:45
+msgid "backInLeft"
+msgstr ""
+
+#: inc/traits/animate-style.php:46
+msgid "backInRight"
+msgstr ""
+
+#: inc/traits/animate-style.php:47
+msgid "backInUp"
+msgstr ""
+
+#: inc/traits/animate-style.php:49
+msgid "backOutDown"
+msgstr ""
+
+#: admin/pages/settings.php:45 admin/pages/widgets.php:23
+#: inc/core/list/extensions-array.php:20 inc/core/list/extensions-array.php:30
+#: inc/core/list/extensions-array.php:47 inc/core/list/extensions-array.php:58
+#: inc/core/list/extensions-array.php:68 inc/core/list/extensions-array.php:77
+#: inc/core/list/extensions-array.php:86 inc/core/list/widgets-array.php:19
+#: inc/core/list/widgets-array.php:29 inc/core/list/widgets-array.php:38
+#: inc/core/list/widgets-array.php:47 inc/core/list/widgets-array.php:56
+#: inc/core/list/widgets-array.php:65 inc/core/list/widgets-array.php:74
+#: inc/core/list/widgets-array.php:83 inc/core/list/widgets-array.php:92
+#: inc/core/list/widgets-array.php:102 inc/core/list/widgets-array.php:111
+#: inc/core/list/widgets-array.php:143 inc/core/list/widgets-array.php:151
+#: inc/core/list/widgets-array.php:160 inc/core/list/widgets-array.php:170
+#: inc/core/list/widgets-array.php:180 inc/core/list/widgets-array.php:190
+#: inc/core/list/widgets-array.php:200 inc/core/list/widgets-array.php:211
+#: inc/core/list/widgets-array.php:220 inc/core/list/widgets-array.php:229
+#: inc/core/list/widgets-array.php:238 inc/core/list/widgets-array.php:247
+#: inc/core/list/widgets-array.php:256 inc/core/list/widgets-array.php:266
+#: inc/core/list/widgets-array.php:275 inc/core/list/widgets-array.php:284
+msgid "Basic"
+msgstr ""
+
+#: inc/widget/price-table.php:77
+msgid "Basic Package"
+msgstr ""
+
+#: inc/traits/button-helper.php:498 inc/widget/price-table.php:1073
+#: inc/widget/price-table.php:1139
+msgid "Before"
+msgstr ""
+
+#: inc/widget/team-box.php:548
+msgid "Behance"
+msgstr ""
+
+#: inc/widget/price-table.php:1359
+msgid "Below"
+msgstr ""
+
+#: inc/widget/price-table.php:1360
+msgid "Beside"
+msgstr ""
+
+#: inc/widget/team-box.php:549
+msgid "BitBucket"
+msgstr ""
+
+#: inc/widget/advance-heading.php:552 inc/widget/contact-form7.php:157
+#: inc/widget/contact-form7.php:267 inc/widget/count-down-timer.php:432
+#: inc/widget/offer-card.php:446 inc/widget/offer-card.php:506
+#: inc/widget/offer-card.php:793 inc/widget/offer-card.php:865
+#: inc/widget/product-table.php:1082 inc/widget/product-table.php:1128
+#: inc/widget/search.php:131 inc/widget/search.php:188
+#: inc/widget/testimonial-box.php:511 inc/widget/testimonial-slider.php:354
+#: inc/widget/testimonial-slider.php:450 inc/widget/testimonial-slider.php:685
+msgid "Border"
+msgstr ""
+
+#: inc/traits/button-helper.php:230 inc/traits/button-helper.php:357
+#: inc/widget/contact-form7.php:194 inc/widget/contact-form7.php:297
+#: inc/widget/contact-form7.php:343 inc/widget/product-table.php:283
+#: inc/widget/product-table.php:812
+msgid "Border Color"
+msgstr ""
+
+#: inc/traits/button-helper.php:210 inc/traits/button-helper.php:337
+msgctxt "Border Control"
+msgid "Border Type"
+msgstr ""
+
+#: inc/traits/button-helper.php:218 inc/traits/button-helper.php:344
+msgctxt "Border Control"
+msgid "Dashed"
+msgstr ""
+
+#: inc/traits/button-helper.php:217 inc/traits/button-helper.php:343
+msgctxt "Border Control"
+msgid "Dotted"
+msgstr ""
+
+#: inc/traits/button-helper.php:216 inc/traits/button-helper.php:342
+msgctxt "Border Control"
+msgid "Double"
+msgstr ""
+
+#: inc/traits/button-helper.php:215 inc/traits/button-helper.php:341
+msgctxt "Border Control"
+msgid "Solid"
+msgstr ""
+
+#: inc/traits/button-helper.php:262 inc/traits/button-helper.php:390
+#: inc/widget/info-box.php:412 inc/widget/info-box.php:553
+#: inc/widget/offer-card.php:454 inc/widget/offer-card.php:514
+#: inc/widget/search.php:140 inc/widget/search.php:197
+#: inc/widget/skill-bar.php:365 inc/widget/wc-categories.php:341
+msgid "Border Radius"
+msgstr ""
+
+#: inc/traits/button-helper.php:243 inc/traits/button-helper.php:370
+#: inc/widget/info-box.php:398 inc/widget/info-box.php:539
+msgid "Border Width"
+msgstr ""
+
+#: inc/widget/offer-card.php:368 inc/widget/price-table.php:437
+#: inc/widget/price-table.php:1165 inc/widget/price-table.php:1290
+#: inc/widget/price-table.php:1384
+msgid "Bottom"
+msgstr ""
+
+#: inc/widget/slider.php:993 inc/widget/testimonial-slider.php:850
+msgid "Bottom Left"
+msgstr ""
+
+#: inc/widget/slider.php:992 inc/widget/testimonial-slider.php:849
+msgid "Bottom Right"
+msgstr ""
+
+#: inc/traits/animate-style.php:31
+msgid "bounce"
+msgstr ""
+
+#: inc/traits/animate-style.php:55
+msgid "bounceIn"
+msgstr ""
+
+#: inc/traits/animate-style.php:50 inc/traits/animate-style.php:56
+msgid "bounceInDown"
+msgstr ""
+
+#: inc/traits/animate-style.php:51 inc/traits/animate-style.php:57
+msgid "bounceInLeft"
+msgstr ""
+
+#: inc/traits/animate-style.php:52 inc/traits/animate-style.php:58
+msgid "bounceInRight"
+msgstr ""
+
+#: inc/traits/animate-style.php:53 inc/traits/animate-style.php:59
+msgid "bounceInUp"
+msgstr ""
+
+#: inc/traits/animate-style.php:61
+msgid "bounceOut"
+msgstr ""
+
+#: inc/traits/animate-style.php:62
+msgid "bounceOutDown"
+msgstr ""
+
+#: inc/traits/animate-style.php:63
+msgid "bounceOutLeft"
+msgstr ""
+
+#: inc/traits/animate-style.php:64
+msgid "bounceOutRight"
+msgstr ""
+
+#: inc/traits/animate-style.php:65
+msgid "bounceOutUp"
+msgstr ""
+
+#: admin/pages/header-footer.php:143
+msgid "Box"
+msgstr ""
+
+#: inc/widget/count-down-timer.php:354
+msgid "Box Gap"
+msgstr ""
+
+#: inc/widget/gallery-box.php:273
+msgid "Box Height"
+msgstr ""
+
+#: inc/traits/button-helper.php:284 inc/traits/button-helper.php:414
+#: inc/widget/count-down-timer.php:441 inc/widget/offer-card.php:467
+#: inc/widget/offer-card.php:527 inc/widget/search.php:155
+#: inc/widget/search.php:212
+msgid "Box Shadow"
+msgstr ""
+
+#: inc/widget/count-down-timer.php:328
+msgid "Box Size"
+msgstr ""
+
+#: inc/core/list/widgets-array.php:280
+msgid "Breadcrumb"
+msgstr ""
+
+#: inc/widget/team-box.php:234
+msgid "Business Man"
+msgstr ""
+
+#: admin/pages/main.php:42 inc/traits/button-helper.php:118
+#: inc/traits/button-helper.php:446 inc/widget/contact-form7.php:250
+#: inc/widget/offer-card.php:180 inc/widget/offer-card.php:395
+#: inc/widget/product-table.php:1010 inc/widget/slider.php:622
+#: inc/core/list/widgets-array.php:15
+msgid "Button"
+msgstr ""
+
+#: inc/widget/search.php:118
+msgid "Button Background"
+msgstr ""
+
+#: inc/traits/button-helper.php:427
+msgid "Button Class"
+msgstr ""
+
+#: inc/widget/search.php:175
+msgid "Button Hover Background"
+msgstr ""
+
+#: inc/traits/button-helper.php:452
+msgid "Button Text"
+msgstr ""
+
+#: inc/widget/info-boards-deleted.php:157
+msgid "Button/Label"
+msgstr ""
+
+#: inc/widget/wc-categories.php:130
+msgid "By Parent"
+msgstr ""
+
+#: inc/widget/product-table.php:378
+msgid "Cart Contents"
+msgstr ""
+
+#: inc/widget/product-table.php:346
+msgid "Cart Header"
+msgstr ""
+
+#: inc/widget/cart.php:203 inc/widget/cart.php:375
+msgid "Cart Icon"
+msgstr ""
+
+#: inc/extensions/transform.php:40 inc/widget/cart.php:244
+msgid "Cart Item will stay exanded always."
+msgstr ""
+
+#: inc/widget/cart.php:218
+msgid "Cart Label"
+msgstr ""
+
+#: inc/widget/cart.php:231
+msgid "Cart Title"
+msgstr ""
+
+#: inc/widget/product-table.php:420
+msgid "Cart Total"
+msgstr ""
+
+#: inc/widget/recent-blog.php:348 inc/widget/wc-categories.php:148
+msgid "Categories"
+msgstr ""
+
+#: inc/widget/wc-categories.php:106
+msgid "Categories Count"
+msgstr ""
+
+#: inc/widget/product-table.php:295 inc/widget/product-table.php:824
+msgid "Cell Padding"
+msgstr ""
+
+#: inc/traits/button-helper.php:134 inc/widget/advance-heading.php:168
+#: inc/widget/advance-heading.php:469 inc/widget/breadcrumb.php:122
+#: inc/widget/cart.php:185 inc/widget/cart.php:655
+#: inc/widget/contact-form7.php:99 inc/widget/counter.php:390
+#: inc/widget/info-box.php:50 inc/widget/offer-card.php:237
+#: inc/widget/offer-card.php:697 inc/widget/post-title.php:112
+#: inc/widget/price-table.php:504 inc/widget/price-table.php:1558
+#: inc/widget/slider.php:441 inc/widget/slider.php:991
+#: inc/widget/testimonial-box.php:266 inc/widget/testimonial-slider.php:291
+#: inc/widget/wc-categories.php:306
+msgid "Center"
+msgstr ""
+
+#: inc/wp/custom-field.php:55
+msgid "Choose Template"
+msgstr ""
+
+#: inc/widget/count-down-timer.php:302 inc/widget/info-box.php:136
+msgid "Circle"
+msgstr ""
+
+#: inc/widget/recent-blog.php:384
+msgid "Classic"
+msgstr ""
+
+#: inc/widget/info-boards-deleted.php:230
+#: inc/widget/info-boards-deleted.php:245 inc/widget/offer-card.php:192
+#: inc/widget/offer-card.php:193 inc/widget/slider.php:369
+#: inc/widget/slider.php:378 inc/widget/slider.php:387
+msgid "Click Here"
+msgstr ""
+
+#: inc/traits/button-helper.php:457 inc/traits/button-helper.php:458
+#: inc/widget/slider.php:320 inc/widget/slider.php:321
+#: inc/library/templates/template.php:161
+msgid "Click here"
+msgstr ""
+
+#: admin/admin-handle.php:76
+msgid "CodeAstrology Support"
+msgstr ""
+
+#: inc/widget/team-box.php:550
+msgid "CodePen"
+msgstr ""
+
+#. Author of the plugin
+msgid "codersaiful"
+msgstr ""
+
+#: inc/widget/wc-products-deleted.php:225
+msgid "Col"
+msgstr ""
+
+#: inc/widget/advance-heading.php:185 inc/widget/advance-heading.php:507
+#: inc/widget/breadcrumb.php:139 inc/widget/cart.php:384
+#: inc/widget/cart.php:672 inc/widget/contact-form7.php:119
+#: inc/widget/info-boards-deleted.php:123 inc/widget/info-box.php:625
+#: inc/widget/info-box.php:680 inc/widget/info-box.php:756
+#: inc/widget/info-box.php:810 inc/widget/offer-card.php:264
+#: inc/widget/offer-card.php:310 inc/widget/offer-card.php:423
+#: inc/widget/offer-card.php:483 inc/widget/offer-card.php:734
+#: inc/widget/offer-card.php:820 inc/widget/post-title.php:129
+#: inc/widget/price-table.php:557 inc/widget/price-table.php:702
+#: inc/widget/price-table.php:734 inc/widget/price-table.php:783
+#: inc/widget/price-table.php:1221 inc/widget/price-table.php:1325
+#: inc/widget/price-table.php:1471 inc/widget/price-table.php:1506
+#: inc/widget/price-table.php:1670 inc/widget/product-table.php:259
+#: inc/widget/product-table.php:559 inc/widget/product-table.php:588
+#: inc/widget/product-table.php:687 inc/widget/product-table.php:905
+#: inc/widget/product-table.php:1053 inc/widget/product-table.php:1099
+#: inc/widget/product-table.php:1205 inc/widget/skill-bar.php:198
+#: inc/widget/skill-bar.php:207 inc/widget/slider.php:580
+#: inc/widget/slider.php:610 inc/widget/slider.php:650
+#: inc/widget/slider.php:693 inc/widget/testimonial-box.php:400
+#: inc/widget/testimonial-box.php:440 inc/widget/testimonial-box.php:480
+#: inc/widget/testimonial-slider.php:574 inc/widget/testimonial-slider.php:614
+#: inc/widget/testimonial-slider.php:654 inc/widget/wc-categories.php:377
+#: inc/widget/wc-categories.php:411 inc/widget/wordpress-plugin-stats.php:230
+msgid "Color"
+msgstr ""
+
+#: inc/widget/counter.php:452
+msgid "Colors"
+msgstr ""
+
+#: inc/widget/counter.php:408 inc/widget/info-boards-deleted.php:271
+#: inc/widget/list-item.php:284
+msgid "Column"
+msgstr ""
+
+#: inc/widget/wc-categories.php:94
+msgid "Columns"
+msgstr ""
+
+#: inc/widget/wc-categories.php:258
+msgid "Columns Gap"
+msgstr ""
+
+#: inc/widget/contact-form7.php:23 inc/core/list/widgets-array.php:139
+msgid "Contact Form 7"
+msgstr ""
+
+#: admin/pages/header-footer.php:141
+msgid "Container Size"
+msgstr ""
+
+#: inc/widget/advance-heading.php:396 inc/widget/info-boards-deleted.php:149
+#: inc/widget/info-box.php:578 inc/widget/offer-card.php:624
+#: inc/widget/slider.php:298
+msgid "Content"
+msgstr ""
+
+#: inc/widget/team-box.php:448
+msgid "Content Margin"
+msgstr ""
+
+#: inc/widget/team-box.php:488
+msgid "Content Padding"
+msgstr ""
+
+#: inc/widget/recent-blog.php:825
+msgid "Content Typography"
+msgstr ""
+
+#: inc/widget/wc-categories.php:209 inc/widget/wc-categories.php:402
+msgid "Count"
+msgstr ""
+
+#: admin/pages/main.php:25 inc/core/list/widgets-array.php:52
+msgid "Count Down Timer"
+msgstr ""
+
+#: inc/widget/counter.php:260 inc/widget/counter.php:460
+msgid "Counter Background"
+msgstr ""
+
+#: inc/core/list/widgets-array.php:207
+msgid "Counter Box"
+msgstr ""
+
+#: inc/widget/counter.php:275 inc/widget/counter.php:477
+msgid "Counter Text Color"
+msgstr ""
+
+#: inc/widget/slider.php:856
+msgid "CSS Filter"
+msgstr ""
+
+#: inc/core/list/extensions-array.php:43
+msgid "CSS Transform"
+msgstr ""
+
+#: inc/widget/price-table.php:212
+msgid "Currency Format"
+msgstr ""
+
+#: inc/widget/price-table.php:1187
+msgid "Currency Space"
+msgstr ""
+
+#: inc/widget/price-table.php:225
+msgid "Currency Style"
+msgstr ""
+
+#: inc/widget/price-table.php:159 inc/widget/price-table.php:1099
+msgid "Currency Symbol"
+msgstr ""
+
+#: inc/widget/price-table.php:165
+msgctxt "Currency Symbol"
+msgid "Baht"
+msgstr ""
+
+#: inc/widget/price-table.php:163
+msgctxt "Currency Symbol"
+msgid "Dollar"
+msgstr ""
+
+#: inc/widget/price-table.php:164
+msgctxt "Currency Symbol"
+msgid "Euro"
+msgstr ""
+
+#: inc/widget/price-table.php:166
+msgctxt "Currency Symbol"
+msgid "Franc"
+msgstr ""
+
+#: inc/widget/price-table.php:167
+msgctxt "Currency Symbol"
+msgid "Guilder"
+msgstr ""
+
+#: inc/widget/price-table.php:168
+msgctxt "Currency Symbol"
+msgid "Krona"
+msgstr ""
+
+#: inc/widget/price-table.php:169
+msgctxt "Currency Symbol"
+msgid "Lira"
+msgstr ""
+
+#: inc/widget/price-table.php:170
+msgctxt "Currency Symbol"
+msgid "Peseta"
+msgstr ""
+
+#: inc/widget/price-table.php:171
+msgctxt "Currency Symbol"
+msgid "Peso"
+msgstr ""
+
+#: inc/widget/price-table.php:172
+msgctxt "Currency Symbol"
+msgid "Pound Sterling"
+msgstr ""
+
+#: inc/widget/price-table.php:173
+msgctxt "Currency Symbol"
+msgid "Real"
+msgstr ""
+
+#: inc/widget/price-table.php:174
+msgctxt "Currency Symbol"
+msgid "Ruble"
+msgstr ""
+
+#: inc/widget/price-table.php:175
+msgctxt "Currency Symbol"
+msgid "Rupee"
+msgstr ""
+
+#: inc/widget/price-table.php:176
+msgctxt "Currency Symbol"
+msgid "Rupee (Indian)"
+msgstr ""
+
+#: inc/widget/price-table.php:177
+msgctxt "Currency Symbol"
+msgid "Shekel"
+msgstr ""
+
+#: inc/widget/price-table.php:179
+msgctxt "Currency Symbol"
+msgid "Won"
+msgstr ""
+
+#: inc/widget/price-table.php:178
+msgctxt "Currency Symbol"
+msgid "Yen/Yuan"
+msgstr ""
+
+#: inc/widget/wc-categories.php:131
+msgid "Current Subcategories"
+msgstr ""
+
+#: inc/widget/price-table.php:180
+msgid "Custom"
+msgstr ""
+
+#: admin/admin-handle.php:184
+msgid "Custom Header Footer"
+msgstr ""
+
+#: inc/widget/price-table.php:189
+msgid "Custom Symbol"
+msgstr ""
+
+#: inc/widget/counter.php:249
+msgid "Customize Colors?"
+msgstr ""
+
+#: inc/widget/price-table.php:542
+msgid "Dashed"
+msgstr ""
+
+#: inc/widget/recent-blog.php:515
+msgid "Date"
+msgstr ""
+
+#: inc/widget/recent-blog.php:732
+msgid "Date Background"
+msgstr ""
+
+#: inc/widget/recent-blog.php:717
+msgid "Date Text Color"
+msgstr ""
+
+#: inc/widget/recent-blog.php:749
+msgid "Date Text Padding"
+msgstr ""
+
+#: inc/widget/recent-blog.php:841
+msgid "Date Typography"
+msgstr ""
+
+#: inc/widget/count-down-timer.php:192
+msgid "Day"
+msgstr ""
+
+#: inc/widget/count-down-timer.php:197
+msgid "Days"
+msgstr ""
+
+#: inc/widget/count-down-timer.php:287 inc/widget/info-box.php:117
+#: inc/widget/list-item.php:272 inc/widget/menu.php:366
+#: inc/widget/slider.php:202 inc/widget/team-box.php:188
+msgid "Default"
+msgstr ""
+
+#: inc/widget/search.php:250
+msgid "Default Search"
+msgstr ""
+
+#: inc/wp/custom-field.php:56
+msgid "Default widget is Free, If you want convert as Premium, Set Pro"
+msgstr ""
+
+#: inc/widget/team-box.php:551
+msgid "Delicious"
+msgstr ""
+
+#: inc/widget/wc-categories.php:222
+msgid "DESC"
+msgstr ""
+
+#: inc/widget/info-box.php:653 inc/widget/info-box.php:784
+#: inc/widget/list-item.php:161 inc/widget/price-table.php:84
+#: inc/widget/wc-categories.php:208
+msgid "Description"
+msgstr ""
+
+#: inc/widget/list-item.php:322
+msgid "Description Color"
+msgstr ""
+
+#: inc/widget/list-item.php:163 inc/widget/list-item.php:227
+#: inc/widget/list-item.php:233 inc/widget/list-item.php:239
+msgid "Description of List Item"
+msgstr ""
+
+#: inc/extensions/background-overlay.php:44
+msgid "Description will come here."
+msgstr ""
+
+#: inc/widget/advance-heading.php:152 inc/widget/count-down-timer.php:386
+#: inc/widget/counter.php:374 inc/widget/gallery-box.php:220
+#: inc/widget/list-item.php:261 inc/widget/recent-blog.php:592
+#: inc/widget/team-box.php:390 inc/widget/wc-products-deleted.php:284
+#: inc/widget/wordpress-plugin-stats.php:220
+msgid "Design"
+msgstr ""
+
+#: inc/widget/product-table.php:877
+msgid "Design Column"
+msgstr ""
+
+#: inc/widget/team-box.php:231 inc/widget/testimonial-slider.php:596
+msgid "Designation"
+msgstr ""
+
+#: inc/widget/team-box.php:430
+msgid "Designation Color"
+msgstr ""
+
+#: inc/extensions/wrapper-link.php:38
+msgid "Desired URL"
+msgstr ""
+
+#: inc/library/templates/template.php:29 inc/library/templates/template.php:30
+msgid "Desktop view"
+msgstr ""
+
+#: inc/widget/team-box.php:552
+msgid "DeviantArt"
+msgstr ""
+
+#: inc/widget/team-box.php:553
+msgid "Digg"
+msgstr ""
+
+#: inc/traits/button-helper.php:572
+msgid "Display Inline"
+msgstr ""
+
+#: inc/widget/skill-bar.php:310
+msgid "Display Percentage"
+msgstr ""
+
+#: inc/widget/price-table.php:526
+msgid "Divider"
+msgstr ""
+
+#: inc/widget/info-boards-deleted.php:243
+msgid "Doctor Timetable"
+msgstr ""
+
+#: inc/widget/slider.php:973 inc/widget/testimonial-slider.php:828
+msgid "Dots"
+msgstr ""
+
+#: inc/widget/slider.php:959
+msgid "Dots/Number"
+msgstr ""
+
+#: inc/widget/price-table.php:541
+msgid "Dotted"
+msgstr ""
+
+#: inc/widget/price-table.php:540
+msgid "Double"
+msgstr ""
+
+#: inc/widget/wordpress-plugin-stats.php:181
+msgid "Download Text (optional)"
+msgstr ""
+
+#: inc/widget/team-box.php:554
+msgid "Dribbble"
+msgstr ""
+
+#: inc/wp/header-footer-post.php:67
+msgid "Edit Header & Footer"
+msgstr ""
+
+#: inc/widget/count-down-timer.php:194
+msgid "eg: Days"
+msgstr ""
+
+#: inc/widget/count-down-timer.php:207
+msgid "eg: Hours"
+msgstr ""
+
+#: inc/widget/count-down-timer.php:220
+msgid "eg: Minutes"
+msgstr ""
+
+#: inc/widget/count-down-timer.php:233
+msgid "eg: Seconds"
+msgstr ""
+
+#: init.php:271 init.php:295
+msgid "Elementor"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"Elementor Addons Plugin. Build your desired page just few click. Easy to use "
+"and useable for any theme and plugin. Available many filter."
+msgstr ""
+
+#: inc/widget/slider.php:201
+msgid "Elementor Template"
+msgstr ""
+
+#: inc/widget/team-box.php:555
+msgid "Email"
+msgstr ""
+
+#: inc/widget/team-box.php:309
+msgid "Email Address"
+msgstr ""
+
+#: inc/widget/info-boards-deleted.php:228
+msgid "Emergency Cases"
+msgstr ""
+
+#: inc/widget/count-down-timer.php:264
+msgid "End Date"
+msgstr ""
+
+#: inc/widget/slider.php:303
+msgid "Enter your content..."
+msgstr ""
+
+#: inc/widget/info-box.php:192
+msgid "Enter your description"
+msgstr ""
+
+#: inc/widget/info-box.php:158 inc/widget/skill-bar.php:174
+#: inc/widget/slider.php:286
+msgid "Enter your title"
+msgstr ""
+
+#: inc/widget/contact-form7.php:439
+msgid "Error Text Border Color"
+msgstr ""
+
+#: inc/widget/recent-blog.php:450
+msgid "Excerpt"
+msgstr ""
+
+#: inc/widget/recent-blog.php:621
+msgid "Excerpt Color"
+msgstr ""
+
+#: inc/widget/recent-blog.php:470
+msgid "Excerpt Limit"
+msgstr ""
+
+#: inc/widget/cart.php:243
+msgid "Expand Always"
+msgstr ""
+
+#: admin/pages/extensions.php:23
+msgid "Extension"
+msgstr ""
+
+#: admin/admin-handle.php:176
+msgid "Extensions"
+msgstr ""
+
+#: inc/widget/slider.php:1105
+msgid "External Animation"
+msgstr ""
+
+#: inc/traits/button-helper.php:596
+msgid "Extra Large"
+msgstr ""
+
+#: inc/traits/button-helper.php:592
+msgid "Extra Small"
+msgstr ""
+
+#: inc/widget/team-box.php:556
+msgid "Facebook"
+msgstr ""
+
+#: inc/traits/animate-style.php:67
+msgid "fadeIn"
+msgstr ""
+
+#: inc/traits/animate-style.php:78
+msgid "fadeInBottomLeft"
+msgstr ""
+
+#: inc/traits/animate-style.php:79
+msgid "fadeInBottomRight"
+msgstr ""
+
+#: inc/traits/animate-style.php:68
+msgid "fadeInDown"
+msgstr ""
+
+#: inc/traits/animate-style.php:69
+msgid "fadeInDownBig"
+msgstr ""
+
+#: inc/traits/animate-style.php:70
+msgid "fadeInLeft"
+msgstr ""
+
+#: inc/traits/animate-style.php:71
+msgid "fadeInLeftBig"
+msgstr ""
+
+#: inc/traits/animate-style.php:72
+msgid "fadeInRight"
+msgstr ""
+
+#: inc/traits/animate-style.php:73
+msgid "fadeInRightBig"
+msgstr ""
+
+#: inc/traits/animate-style.php:76
+msgid "fadeInTopLeft"
+msgstr ""
+
+#: inc/traits/animate-style.php:77
+msgid "fadeInTopRight"
+msgstr ""
+
+#: inc/traits/animate-style.php:74
+msgid "fadeInUp"
+msgstr ""
+
+#: inc/traits/animate-style.php:75
+msgid "fadeInUpBig"
+msgstr ""
+
+#: inc/traits/animate-style.php:81
+msgid "fadeOut"
+msgstr ""
+
+#: inc/traits/animate-style.php:92
+msgid "fadeOutBottomLeft"
+msgstr ""
+
+#: inc/traits/animate-style.php:93
+msgid "fadeOutBottomRight"
+msgstr ""
+
+#: inc/traits/animate-style.php:82
+msgid "fadeOutDown"
+msgstr ""
+
+#: inc/traits/animate-style.php:83
+msgid "fadeOutDownBig"
+msgstr ""
+
+#: inc/traits/animate-style.php:84
+msgid "fadeOutLeft"
+msgstr ""
+
+#: inc/traits/animate-style.php:85
+msgid "fadeOutLeftBig"
+msgstr ""
+
+#: inc/traits/animate-style.php:86
+msgid "fadeOutRight"
+msgstr ""
+
+#: inc/traits/animate-style.php:87
+msgid "fadeOutRightBig"
+msgstr ""
+
+#: inc/traits/animate-style.php:90
+msgid "fadeOutTopLeft"
+msgstr ""
+
+#: inc/traits/animate-style.php:91
+msgid "fadeOutTopRight"
+msgstr ""
+
+#: inc/traits/animate-style.php:88
+msgid "fadeOutUp"
+msgstr ""
+
+#: inc/traits/animate-style.php:89
+msgid "fadeOutUpBig"
+msgstr ""
+
+#: inc/wp/header-footer-post.php:75
+msgid "Featured image for this Header & Footer"
+msgstr ""
+
+#: inc/widget/price-table.php:286 inc/widget/price-table.php:1424
+msgid "Features"
+msgstr ""
+
+#: inc/library/templates/template.php:94
+msgid "Filter"
+msgstr ""
+
+#: inc/wp/header-footer-post.php:82
+msgid "Filter Header & Footer list"
+msgstr ""
+
+#: inc/traits/animate-style.php:32
+msgid "flash"
+msgstr ""
+
+#: inc/widget/team-box.php:557
+msgid "Flicker"
+msgstr ""
+
+#: inc/traits/animate-style.php:96
+msgid "flip"
+msgstr ""
+
+#: inc/traits/animate-style.php:97
+msgid "flipInX"
+msgstr ""
+
+#: inc/traits/animate-style.php:98
+msgid "flipInY"
+msgstr ""
+
+#: inc/traits/animate-style.php:99
+msgid "flipOutX"
+msgstr ""
+
+#: admin/pages/header-footer.php:144
+msgid "Flued"
+msgstr ""
+
+#: inc/widget/gallery-box.php:93
+msgid "Follow Me"
+msgstr ""
+
+#: inc/widget/product-table.php:1235
+msgid "Font Size"
+msgstr ""
+
+#: inc/widget/price-table.php:357 inc/widget/price-table.php:1619
+msgid "Footer"
+msgstr ""
+
+#: inc/widget/product-table.php:1156
+msgid "Footer Cart"
+msgstr ""
+
+#: inc/widget/info-box.php:234
+msgid ""
+"For setting wrapper link padding, Please set zero padding for main box from "
+"Advance Tab."
+msgstr ""
+
+#: inc/widget/counter.php:414 inc/widget/info-boards-deleted.php:277
+#: inc/widget/list-item.php:290
+msgid "Four Column"
+msgstr ""
+
+#: inc/widget/team-box.php:558
+msgid "FourSquare"
+msgstr ""
+
+#: inc/widget/price-table.php:1068
+msgid "Fraction Position"
+msgstr ""
+
+#: inc/widget/count-down-timer.php:289 inc/widget/info-box.php:119
+msgid "Framed"
+msgstr ""
+
+#: admin/pages/extensions.php:79 admin/pages/widgets.php:85
+msgid "Free"
+msgstr ""
+
+#: inc/widget/contact-form7.php:107
+msgid "Full Width"
+msgstr ""
+
+#: inc/widget/menu.php:367
+msgid "Full Width Flex"
+msgstr ""
+
+#: inc/core/list/widgets-array.php:216
+msgid "Gallery Box"
+msgstr ""
+
+#: inc/widget/gallery-box.php:164
+msgid "Gallery Image Title"
+msgstr ""
+
+#: inc/widget/price-table.php:624
+msgid "Gap"
+msgstr ""
+
+#: admin/pages/settings.php:46 inc/widget/advance-heading.php:111
+#: inc/widget/advance-heading.php:366 inc/widget/breadcrumb.php:84
+#: inc/widget/cart.php:170 inc/widget/cart.php:328
+#: inc/widget/contact-form7.php:83 inc/widget/count-down-timer.php:255
+#: inc/widget/counter.php:187 inc/widget/gallery-box.php:125
+#: inc/widget/info-boards-deleted.php:263 inc/widget/list-item.php:126
+#: inc/widget/menu.php:290 inc/widget/menu.php:326
+#: inc/widget/offer-card.php:120 inc/widget/offer-card.php:221
+#: inc/widget/offer-card.php:594 inc/widget/post-title.php:85
+#: inc/widget/price-table.php:473 inc/widget/product-table.php:219
+#: inc/widget/recent-blog.php:413 inc/widget/search.php:93
+#: inc/widget/search.php:238 inc/widget/slider.php:187
+#: inc/widget/slider.php:425 inc/widget/testimonial-box.php:181
+#: inc/widget/testimonial-box.php:250 inc/widget/testimonial-slider.php:155
+#: inc/widget/testimonial-slider.php:275
+#: inc/widget/wordpress-plugin-stats.php:147
+msgid "General"
+msgstr ""
+
+#: inc/widget/menu.php:408
+msgid "General Mega Menu"
+msgstr ""
+
+#: inc/widget/advance-heading.php:431 inc/widget/offer-card.php:659
+msgid "General Settings"
+msgstr ""
+
+#: inc/library/templates/template.php:69
+msgid "Get Pro"
+msgstr ""
+
+#: inc/widget/team-box.php:559
+msgid "Github"
+msgstr ""
+
+#. %s Nav menu URL
+#: inc/widget/menu.php:343
+#, php-format
+msgid ""
+"Go to the <a href=\"%s\" target=\"_blank\">Menus screen</a> to manage your "
+"menus."
+msgstr ""
+
+#: inc/widget/gallery-box.php:232
+msgid "Gradient"
+msgstr ""
+
+#: inc/extensions/gradient-text-deleted.php:58
+#: inc/core/list/extensions-array.php:82
+msgid "Gradient Text"
+msgstr ""
+
+#: inc/extensions/gradient-text-deleted.php:68
+msgid "Gradient Text enable or disable option."
+msgstr ""
+
+#: inc/widget/cart.php:639 inc/widget/price-table.php:68
+#: inc/widget/price-table.php:652
+msgid "Header"
+msgstr ""
+
+#: admin/pages/header-footer.php:36 inc/wp/header-footer-post.php:61
+#: inc/wp/header-footer-post.php:62 inc/wp/header-footer-post.php:63
+#: inc/wp/header-footer-post.php:86 inc/wp/header-footer-post.php:96
+msgid "Header & Footer"
+msgstr ""
+
+#: inc/wp/header-footer-post.php:79
+msgid "Header & Footer archives"
+msgstr ""
+
+#: inc/wp/header-footer-post.php:85
+msgid "Header & Footer attributes"
+msgstr ""
+
+#: inc/wp/header-footer-post.php:84
+msgid "Header & Footer list"
+msgstr ""
+
+#: inc/wp/header-footer-post.php:83
+msgid "Header & Footer list navigation"
+msgstr ""
+
+#: inc/wp/header-footer-post.php:87
+msgid "Header & Footer published"
+msgstr ""
+
+#: inc/wp/header-footer-post.php:88
+msgid "Header & Footer published privately."
+msgstr ""
+
+#: inc/wp/header-footer-post.php:89
+msgid "Header & Footer reverted to draft."
+msgstr ""
+
+#: inc/wp/header-footer-post.php:90
+msgid "Header & Footer scheduled"
+msgstr ""
+
+#: inc/wp/header-footer-post.php:91
+msgid "Header & Footer updated."
+msgstr ""
+
+#: inc/widget/product-table.php:355
+msgid "Header Background"
+msgstr ""
+
+#: admin/admin-handle.php:185
+msgid "Header Footer"
+msgstr ""
+
+#: inc/widget/product-table.php:367
+msgid "Header Price Text Color"
+msgstr ""
+
+#: inc/widget/advance-heading.php:119 inc/widget/advance-heading.php:160
+#: inc/widget/advance-heading.php:411 inc/widget/advance-heading.php:499
+#: inc/widget/breadcrumb.php:114 inc/widget/gallery-box.php:162
+#: inc/widget/offer-card.php:143 inc/widget/offer-card.php:639
+#: inc/widget/offer-card.php:812 inc/widget/post-title.php:104
+#: inc/widget/wordpress-plugin-stats.php:155
+msgid "Heading"
+msgstr ""
+
+#: inc/widget/wordpress-plugin-stats.php:279
+msgid "Heading Spacing"
+msgstr ""
+
+#: inc/widget/advance-heading.php:372 inc/widget/offer-card.php:600
+msgid "Heading Style"
+msgstr ""
+
+#: inc/widget/price-table.php:93
+msgid "Heading Tag"
+msgstr ""
+
+#: inc/widget/advance-heading.php:202
+msgid "Heading Text Color"
+msgstr ""
+
+#: inc/traits/animate-style.php:37
+msgid "headShake"
+msgstr ""
+
+#: inc/traits/animate-style.php:42
+msgid "heartBeat"
+msgstr ""
+
+#: inc/widget/skill-bar.php:353
+msgid "Height"
+msgstr ""
+
+#: inc/widget/contact-form7.php:34
+#, php-format
+msgid ""
+"Hello %2$s, looks like %1$s is missing in your site. Please click on the "
+"link below and install/activate %1$s. Make sure to refresh this page after "
+"installation or activation."
+msgstr ""
+
+#: admin/admin-handle.php:205 admin/admin-handle.php:206
+msgid "Help & Others"
+msgstr ""
+
+#: inc/widget/cart.php:261 inc/widget/cart.php:616
+#: inc/widget/count-down-timer.php:319 inc/widget/price-table.php:1018
+#: inc/widget/product-table.php:1166 inc/widget/recent-blog.php:438
+#: inc/widget/recent-blog.php:458 inc/widget/recent-blog.php:500
+#: inc/widget/recent-blog.php:524 inc/widget/recent-blog.php:546
+#: inc/widget/skill-bar.php:313 inc/widget/team-box.php:369
+msgid "Hide"
+msgstr ""
+
+#: inc/widget/cart.php:614
+msgid "Hide Count Item"
+msgstr ""
+
+#: inc/widget/wc-categories.php:177
+msgid "Hide Empty"
+msgstr ""
+
+#: inc/widget/wc-categories.php:188
+msgid "Hide Product Count"
+msgstr ""
+
+#: inc/widget/offer-card.php:154
+msgid "Highlighted Title"
+msgstr ""
+
+#: inc/traits/animate-style.php:122
+msgid "hinge"
+msgstr ""
+
+#: inc/widget/breadcrumb.php:92
+msgid "Home menu Text (Optional)"
+msgstr ""
+
+#: inc/widget/product-table.php:1267
+msgid "Horizontal Orientation"
+msgstr ""
+
+#: inc/widget/advance-heading.php:239
+msgid "Horizontal Spacing"
+msgstr ""
+
+#: inc/widget/offer-card.php:156
+msgid "Hot Offer"
+msgstr ""
+
+#: inc/widget/count-down-timer.php:205
+msgid "Hour"
+msgstr ""
+
+#: inc/widget/count-down-timer.php:210
+msgid "Hours"
+msgstr ""
+
+#: inc/widget/team-box.php:560
+msgid "Houzz"
+msgstr ""
+
+#: inc/extensions/gradient-text-deleted.php:126
+#: inc/extensions/transform.php:112 inc/traits/button-helper.php:294
+#: inc/widget/contact-form7.php:323 inc/widget/info-box.php:429
+#: inc/widget/info-box.php:719 inc/widget/offer-card.php:476
+#: inc/widget/price-table.php:796 inc/widget/price-table.php:928
+#: inc/widget/price-table.php:1499 inc/widget/product-table.php:1092
+#: inc/widget/search.php:169 inc/widget/slider.php:676
+#: inc/widget/testimonial-box.php:310 inc/widget/testimonial-slider.php:418
+msgid "Hover"
+msgstr ""
+
+#: admin/pages/main.php:64
+msgid "Hover Animation"
+msgstr ""
+
+#: inc/widget/breadcrumb.php:154
+msgid "Hover Color"
+msgstr ""
+
+#: inc/extensions/hover-effect.php:32 inc/core/list/extensions-array.php:26
+msgid "Hover Effect"
+msgstr ""
+
+#: inc/widget/contact-form7.php:68
+msgid "HTML Class"
+msgstr ""
+
+#: inc/widget/offer-card.php:202
+msgid "https://example.com"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://profiles.wordpress.org/codersaiful/#content-plugins"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://ultraaddons.com/"
+msgstr ""
+
+#: inc/traits/button-helper.php:471 inc/widget/gallery-box.php:186
+#: inc/widget/info-boards-deleted.php:172 inc/widget/info-box.php:219
+#: inc/widget/slider.php:336 inc/widget/team-box.php:250
+msgid "https://your-link.com"
+msgstr ""
+
+#: inc/traits/button-helper.php:481 inc/widget/counter.php:203
+#: inc/widget/gallery-box.php:199 inc/widget/info-boards-deleted.php:133
+#: inc/widget/info-box.php:73 inc/widget/info-box.php:84
+#: inc/widget/info-box.php:261 inc/widget/list-item.php:142
+#: inc/widget/price-table.php:112 inc/widget/price-table.php:122
+#: inc/widget/price-table.php:309 inc/widget/price-table.php:754
+msgid "Icon"
+msgstr ""
+
+#: inc/widget/list-item.php:187
+msgid "Icon Background"
+msgstr ""
+
+#: inc/widget/counter.php:303 inc/widget/counter.php:511
+msgid "Icon Background Color"
+msgstr ""
+
+#: inc/core/list/widgets-array.php:147
+msgid "Icon Box"
+msgstr ""
+
+#: inc/widget/counter.php:289 inc/widget/counter.php:494
+#: inc/widget/gallery-box.php:260 inc/widget/info-box.php:288
+#: inc/widget/info-box.php:436 inc/widget/list-item.php:170
+#: inc/widget/price-table.php:319 inc/widget/price-table.php:1485
+#: inc/widget/price-table.php:1521 inc/widget/team-box.php:328
+msgid "Icon Color"
+msgstr ""
+
+#: inc/widget/price-table.php:1596
+msgid "Icon Gap"
+msgstr ""
+
+#: inc/traits/button-helper.php:494
+msgid "Icon Position"
+msgstr ""
+
+#: inc/widget/info-boards-deleted.php:287 inc/widget/price-table.php:763
+#: inc/widget/recent-blog.php:888
+msgid "Icon Size"
+msgstr ""
+
+#: inc/traits/button-helper.php:510
+msgid "Icon Spacing"
+msgstr ""
+
+#: inc/widget/info-box.php:74 inc/widget/offer-card.php:348
+#: inc/widget/price-table.php:113 inc/widget/wc-categories.php:324
+msgid "Image"
+msgstr ""
+
+#: inc/extensions/placeholder-extension.php:49
+msgid "Important Note"
+msgstr ""
+
+#: admin/pages/main.php:8
+msgid ""
+"In elementor Page Builder, you will get a Category name [Addons - "
+"UltraAddons]. Choose your Widget."
+msgstr ""
+
+#: inc/widget/slider.php:927 inc/widget/testimonial-slider.php:796
+msgid "Infinite Loop?"
+msgstr ""
+
+#: inc/widget/info-boards-deleted.php:100 inc/core/list/widgets-array.php:225
+msgid "Info Boards"
+msgstr ""
+
+#: admin/pages/main.php:49 inc/widget/info-box.php:35
+#: inc/core/list/widgets-array.php:34
+msgid "Info Box"
+msgstr ""
+
+#: inc/widget/info-box.php:157
+msgid "Info Box Title"
+msgstr ""
+
+#: inc/widget/team-box.php:177
+msgid "Information"
+msgstr ""
+
+#: inc/widget/contact-form7.php:149
+msgid "Input Fields"
+msgstr ""
+
+#: inc/library/templates/template.php:62
+msgid "Insert"
+msgstr ""
+
+#: inc/wp/header-footer-post.php:80
+msgid "Insert into Header & Footer"
+msgstr ""
+
+#: inc/widget/team-box.php:561
+msgid "Instagram"
+msgstr ""
+
+#. number of items in the mini cart.
+#: inc/functions.php:224
+msgid "item"
+msgid_plural "items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/widget/counter.php:323
+msgid "Item #1"
+msgstr ""
+
+#: inc/widget/counter.php:331
+msgid "Item #2"
+msgstr ""
+
+#: inc/widget/counter.php:339 inc/widget/counter.php:347
+msgid "Item #3"
+msgstr ""
+
+#: inc/widget/list-item.php:204
+msgid "Item Background"
+msgstr ""
+
+#: inc/widget/cart.php:275
+msgid "Item Box Spacing"
+msgstr ""
+
+#: inc/widget/cart.php:296
+msgid "Item Box Width"
+msgstr ""
+
+#: inc/widget/price-table.php:1575
+msgid "Item Gap"
+msgstr ""
+
+#: inc/traits/animate-style.php:123
+msgid "jackInTheBox"
+msgstr ""
+
+#: inc/traits/animate-style.php:41
+msgid "jello"
+msgstr ""
+
+#: inc/widget/testimonial-box.php:192 inc/widget/testimonial-slider.php:166
+#: inc/widget/testimonial-slider.php:239 inc/widget/testimonial-slider.php:248
+msgid "Jonny Robartson"
+msgstr ""
+
+#: inc/widget/team-box.php:562
+msgid "JS Fiddle"
+msgstr ""
+
+#: inc/traits/button-helper.php:142 inc/widget/info-box.php:58
+#: inc/widget/price-table.php:512
+msgid "Justified"
+msgstr ""
+
+#: inc/widget/cart.php:435 inc/widget/cart.php:443
+#: inc/widget/count-down-timer.php:183 inc/widget/counter.php:212
+msgid "Label"
+msgstr ""
+
+#: inc/widget/cart.php:462
+msgid "Label Background Color"
+msgstr ""
+
+#: inc/widget/cart.php:451 inc/widget/count-down-timer.php:420
+msgid "Label Color"
+msgstr ""
+
+#: inc/widget/cart.php:482
+msgid "Label Padding"
+msgstr ""
+
+#: inc/widget/wordpress-plugin-stats.php:246
+msgid "Label Text Color"
+msgstr ""
+
+#: inc/widget/offer-card.php:132
+msgid "Landscape"
+msgstr ""
+
+#: inc/traits/button-helper.php:595
+msgid "Large"
+msgstr ""
+
+#: inc/widget/recent-blog.php:371 inc/widget/recent-blog.php:380
+#: inc/widget/wc-categories.php:86
+msgid "Layout"
+msgstr ""
+
+#: inc/library/templates/template.php:160
+msgid "Learn more about UltraAddons Template Library."
+msgstr ""
+
+#: inc/traits/button-helper.php:130 inc/widget/advance-heading.php:164
+#: inc/widget/advance-heading.php:465 inc/widget/breadcrumb.php:118
+#: inc/widget/cart.php:181 inc/widget/cart.php:651
+#: inc/widget/contact-form7.php:95 inc/widget/counter.php:386
+#: inc/widget/info-box.php:46 inc/widget/offer-card.php:233
+#: inc/widget/offer-card.php:693 inc/widget/post-title.php:108
+#: inc/widget/price-table.php:410 inc/widget/price-table.php:500
+#: inc/widget/price-table.php:1554 inc/widget/product-table.php:1271
+#: inc/widget/product-table.php:1356 inc/widget/slider.php:437
+#: inc/widget/slider.php:1066 inc/widget/testimonial-box.php:262
+#: inc/widget/testimonial-slider.php:287 inc/widget/wc-categories.php:302
+msgid "Left"
+msgstr ""
+
+#: inc/library/library-manager.php:94
+msgid "Library"
+msgstr ""
+
+#: inc/traits/animate-style.php:103
+msgid "lightSpeedInLeft"
+msgstr ""
+
+#: inc/traits/animate-style.php:102
+msgid "lightSpeedInRight"
+msgstr ""
+
+#: inc/traits/animate-style.php:105
+msgid "lightSpeedOutLeft"
+msgstr ""
+
+#: inc/traits/animate-style.php:104
+msgid "lightSpeedOutRight"
+msgstr ""
+
+#: inc/widget/wc-products-deleted.php:205
+msgid "Limit"
+msgstr ""
+
+#: inc/widget/advance-heading.php:281
+msgid "Line Length"
+msgstr ""
+
+#: inc/widget/advance-heading.php:261
+msgid "Line Width"
+msgstr ""
+
+#: inc/traits/button-helper.php:466 inc/widget/gallery-box.php:184
+#: inc/widget/info-boards-deleted.php:167 inc/widget/offer-card.php:200
+#: inc/widget/slider.php:331 inc/widget/team-box.php:245
+msgid "Link"
+msgstr ""
+
+#: inc/widget/team-box.php:563
+msgid "LinkedIn"
+msgstr ""
+
+#: inc/widget/product-table.php:571
+msgid "Links"
+msgstr ""
+
+#: inc/widget/list-item.php:153 inc/widget/price-table.php:297
+msgid "List Item"
+msgstr ""
+
+#: inc/widget/list-item.php:226 inc/widget/price-table.php:335
+msgid "List Item #1"
+msgstr ""
+
+#: inc/widget/list-item.php:232 inc/widget/price-table.php:339
+msgid "List Item #2"
+msgstr ""
+
+#: inc/widget/list-item.php:238 inc/widget/price-table.php:343
+msgid "List Item #3"
+msgstr ""
+
+#: inc/library/templates/template.php:83
+msgid "Loading"
+msgstr ""
+
+#: inc/widget/testimonial-box.php:214 inc/widget/testimonial-slider.php:188
+#: inc/widget/testimonial-slider.php:223 inc/widget/testimonial-slider.php:232
+#: inc/widget/testimonial-slider.php:241 inc/widget/testimonial-slider.php:250
+msgid ""
+"Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor "
+"incdidunt ut labore et dolore magna do aliqua quis ipsum suspendisse ces "
+"gravida. Risus commodo viverra maecenas."
+msgstr ""
+
+#: inc/widget/info-box.php:191
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, "
+"luctus nec ullamcorper mattis, pulvinar dapibus leo."
+msgstr ""
+
+#: inc/widget/advance-heading.php:121 inc/widget/advance-heading.php:122
+msgid "Lorem Ipsum is simply dummy text"
+msgstr ""
+
+#: inc/widget/slider.php:304
+msgid ""
+"Lorem Ipsum is simply dumy text of the printing & typesetting industry Lorem "
+"Ipsum has been the industry's standard dummy text ever since the 1975, when "
+"an unknown printer."
+msgstr ""
+
+#: inc/widget/wc-categories.php:129
+msgid "Manual Selection"
+msgstr ""
+
+#: inc/traits/button-helper.php:558 inc/widget/advance-heading.php:450
+#: inc/widget/advance-heading.php:540 inc/widget/list-item.php:355
+#: inc/widget/offer-card.php:288 inc/widget/offer-card.php:334
+#: inc/widget/offer-card.php:381 inc/widget/offer-card.php:403
+#: inc/widget/offer-card.php:678 inc/widget/offer-card.php:781
+#: inc/widget/offer-card.php:853 inc/widget/price-table.php:1406
+#: inc/widget/price-table.php:1700 inc/widget/wc-products-deleted.php:327
+msgid "Margin"
+msgstr ""
+
+#: inc/traits/button-helper.php:594 inc/widget/team-box.php:564
+msgid "Medium"
+msgstr ""
+
+#: inc/widget/menu.php:368
+msgid "Mega"
+msgstr ""
+
+#: inc/widget/menu.php:336
+msgid "Menu"
+msgstr ""
+
+#: inc/widget/menu.php:379
+msgid "Menu Icon"
+msgstr ""
+
+#: inc/widget/menu.php:396
+msgid "Menu Text"
+msgstr ""
+
+#: inc/widget/recent-blog.php:640
+msgid "Meta Color"
+msgstr ""
+
+#: inc/widget/recent-blog.php:659
+msgid "Meta Icon Color"
+msgstr ""
+
+#: inc/widget/recent-blog.php:537
+msgid "Meta Info"
+msgstr ""
+
+#: inc/widget/recent-blog.php:857
+msgid "Meta Typography"
+msgstr ""
+
+#: inc/widget/offer-card.php:364 inc/widget/price-table.php:1161
+#: inc/widget/price-table.php:1286 inc/widget/price-table.php:1380
+msgid "Middle"
+msgstr ""
+
+#: inc/widget/product-table.php:326
+msgid "Mini Cart"
+msgstr ""
+
+#: inc/widget/count-down-timer.php:218
+msgid "Minute"
+msgstr ""
+
+#: inc/widget/count-down-timer.php:223
+msgid "Minutes"
+msgstr ""
+
+#: inc/widget/contact-form7.php:23
+msgid "Missing Notice"
+msgstr ""
+
+#: inc/library/templates/template.php:37 inc/library/templates/template.php:38
+msgid "Mobile view"
+msgstr ""
+
+#: inc/widget/recent-blog.php:388 inc/core/list/widgets-array.php:120
+msgid "Modern"
+msgstr ""
+
+#: admin/pages/widgets.php:19
+msgid "More Widget Comming Soon ...."
+msgstr ""
+
+#: inc/widget/team-box.php:219
+msgid "Mr. Name"
+msgstr ""
+
+#: inc/widget/testimonial-slider.php:230
+msgid "Mukul Robartson"
+msgstr ""
+
+#: inc/widget/skill-bar.php:175
+msgid "My Skill"
+msgstr ""
+
+#: inc/widget/skill-bar.php:271
+msgid "My Skill #1"
+msgstr ""
+
+#: inc/widget/skill-bar.php:279
+msgid "My Skill #2"
+msgstr ""
+
+#: inc/widget/skill-bar.php:287
+msgid "My Skill #3"
+msgstr ""
+
+#: inc/widget/skill-bar.php:295
+msgid "My Skill #4"
+msgstr ""
+
+#: admin/pages/main.php:14 inc/widget/team-box.php:216
+#: inc/widget/wc-categories.php:206
+msgid "Name"
+msgstr ""
+
+#: inc/widget/slider.php:954 inc/widget/testimonial-slider.php:823
+#: inc/core/list/widgets-array.php:79
+msgid "Navigation"
+msgstr ""
+
+#: inc/widget/testimonial-slider.php:536
+msgid "Navigation BG Color"
+msgstr ""
+
+#: inc/widget/testimonial-slider.php:521
+msgid "Navigation Icon Color"
+msgstr ""
+
+#: inc/widget/slider.php:970
+msgid "Navigation Type"
+msgstr ""
+
+#: inc/wp/header-footer-post.php:68
+msgid "New Header & Footer"
+msgstr ""
+
+#: inc/widget/counter.php:252 inc/widget/info-box.php:206
+#: inc/widget/product-table.php:512 inc/widget/product-table.php:788
+#: inc/widget/slider.php:883 inc/widget/slider.php:896
+#: inc/widget/slider.php:930 inc/widget/testimonial-slider.php:752
+#: inc/widget/testimonial-slider.php:765 inc/widget/testimonial-slider.php:799
+msgid "No"
+msgstr ""
+
+#: inc/wp/header-footer-post.php:72
+msgid "No Header & Footer found"
+msgstr ""
+
+#: inc/wp/header-footer-post.php:73
+msgid "No Header & Footer found in trash"
+msgstr ""
+
+#: inc/library/library-manager.php:99
+msgid "No Results Found"
+msgstr ""
+
+#: inc/library/library-manager.php:97
+msgid "No Templates Found"
+msgstr ""
+
+#: admin/pages/header-footer.php:50 admin/pages/header-footer.php:72
+#: inc/traits/animate-style.php:29 inc/traits/button-helper.php:214
+#: inc/traits/button-helper.php:340 inc/widget/price-table.php:162
+#: inc/widget/slider.php:957 inc/widget/testimonial-slider.php:826
+msgid "None"
+msgstr ""
+
+#: inc/extensions/gradient-text-deleted.php:108 inc/extensions/transform.php:87
+#: inc/traits/button-helper.php:169 inc/widget/contact-form7.php:260
+#: inc/widget/info-box.php:281 inc/widget/info-box.php:588
+#: inc/widget/menu.php:302 inc/widget/offer-card.php:416
+#: inc/widget/price-table.php:663 inc/widget/price-table.php:857
+#: inc/widget/price-table.php:1464 inc/widget/product-table.php:1046
+#: inc/widget/search.php:112 inc/widget/slider.php:633
+#: inc/widget/testimonial-box.php:285 inc/widget/testimonial-slider.php:314
+msgid "Normal"
+msgstr ""
+
+#: inc/wp/custom-field.php:45
+msgid "Not for Template"
+msgstr ""
+
+#: inc/widget/slider.php:974
+msgid "Number"
+msgstr ""
+
+#: inc/widget/counter.php:231
+msgid "Number From"
+msgstr ""
+
+#: inc/widget/slider.php:1063
+msgid "Number Position"
+msgstr ""
+
+#: inc/widget/wordpress-plugin-stats.php:263
+msgid "Number Text Color"
+msgstr ""
+
+#: inc/extensions/background-overlay.php:47
+#: inc/extensions/gradient-text-deleted.php:71 inc/extensions/transform.php:43
+#: inc/traits/button-helper.php:575 inc/widget/cart.php:247
+#: inc/widget/menu.php:412 inc/widget/price-table.php:241
+#: inc/widget/price-table.php:276 inc/widget/price-table.php:456
+msgid "Off"
+msgstr ""
+
+#: inc/core/list/widgets-array.php:234
+msgid "Offer Card"
+msgstr ""
+
+#: inc/widget/product-table.php:1289 inc/widget/product-table.php:1320
+#: inc/widget/product-table.php:1374 inc/widget/product-table.php:1405
+msgid "Offset"
+msgstr ""
+
+#: inc/extensions/background-overlay.php:46
+#: inc/extensions/gradient-text-deleted.php:70 inc/extensions/transform.php:42
+#: inc/traits/button-helper.php:574 inc/widget/cart.php:246
+#: inc/widget/menu.php:411 inc/widget/price-table.php:240
+#: inc/widget/price-table.php:275 inc/widget/price-table.php:455
+msgid "On"
+msgstr ""
+
+#: inc/widget/counter.php:411 inc/widget/info-boards-deleted.php:274
+#: inc/widget/list-item.php:287
+msgid "One Column"
+msgstr ""
+
+#: inc/widget/cart.php:258
+msgid "Only for Admin Screen. When user want to apply design on Cart items."
+msgstr ""
+
+#: inc/widget/wc-categories.php:160
+msgid "Only Top Level"
+msgstr ""
+
+#: admin/pages/settings.php:44
+msgid "Only UltraAddons"
+msgstr ""
+
+#: inc/widget/info-boards-deleted.php:213
+msgid "Opening Hours"
+msgstr ""
+
+#: inc/widget/wc-categories.php:217
+msgid "Order"
+msgstr ""
+
+#: inc/widget/wc-categories.php:202
+msgid "Order By"
+msgstr ""
+
+#: inc/widget/offer-card.php:128
+msgid "Orientation"
+msgstr ""
+
+#: inc/widget/contact-form7.php:407 inc/widget/product-table.php:743
+msgid "Others"
+msgstr ""
+
+#: inc/widget/advance-heading.php:404 inc/widget/offer-card.php:632
+msgid "Our Services"
+msgstr ""
+
+#: inc/extensions/background-overlay.php:43
+msgid "Overlay Background"
+msgstr ""
+
+#: inc/traits/button-helper.php:545 inc/widget/advance-heading.php:439
+#: inc/widget/advance-heading.php:529 inc/widget/cart.php:348
+#: inc/widget/cart.php:409 inc/widget/contact-form7.php:383
+#: inc/widget/counter.php:426 inc/widget/info-box.php:232
+#: inc/widget/info-box.php:362 inc/widget/info-box.php:504
+#: inc/widget/list-item.php:339 inc/widget/offer-card.php:667
+#: inc/widget/offer-card.php:770 inc/widget/offer-card.php:842
+#: inc/widget/price-table.php:681 inc/widget/price-table.php:875
+#: inc/widget/price-table.php:947 inc/widget/price-table.php:1445
+#: inc/widget/price-table.php:1639 inc/widget/product-table.php:713
+#: inc/widget/product-table.php:1026 inc/widget/testimonial-slider.php:334
+#: inc/widget/testimonial-slider.php:437 inc/widget/wc-categories.php:353
+msgid "Padding"
+msgstr ""
+
+#: inc/widget/slider.php:722
+msgid "Pagination"
+msgstr ""
+
+#: inc/widget/slider.php:1135 inc/widget/slider.php:1148
+msgid "Pagination Next Prev"
+msgstr ""
+
+#: inc/widget/slider.php:1122
+msgid "Pagination Number"
+msgstr ""
+
+#: inc/widget/wc-categories.php:164
+msgid "Parent"
+msgstr ""
+
+#: inc/wp/header-footer-post.php:74 inc/wp/header-footer-post.php:92
+msgid "Parent Header & Footer:"
+msgstr ""
+
+#: inc/widget/slider.php:893 inc/widget/testimonial-slider.php:762
+msgid "Pause on Hover"
+msgstr ""
+
+#: inc/widget/skill-bar.php:183
+msgid "Percentage"
+msgstr ""
+
+#: inc/widget/price-table.php:264 inc/widget/price-table.php:1313
+msgid "Period"
+msgstr ""
+
+#: inc/widget/gallery-box.php:148 inc/widget/offer-card.php:166
+#: inc/widget/team-box.php:199 inc/widget/testimonial-box.php:225
+#: inc/widget/testimonial-slider.php:199
+msgid "Photo"
+msgstr ""
+
+#: init.php:320
+msgid "PHP"
+msgstr ""
+
+#: inc/widget/team-box.php:565
+msgid "Pinterest"
+msgstr ""
+
+#: inc/library/library-manager.php:100
+msgid ""
+"Please make sure your search is spelled correctly or try a different words."
+msgstr ""
+
+#: inc/widget/wordpress-plugin-stats.php:170
+msgid "Plugin display name. eg: UltraAddons Elementor Lite"
+msgstr ""
+
+#: inc/widget/wordpress-plugin-stats.php:168
+msgid "Plugin Name (optional)"
+msgstr ""
+
+#: inc/widget/price-table.php:396
+msgid "Popular"
+msgstr ""
+
+#: inc/widget/offer-card.php:131
+msgid "Portrait"
+msgstr ""
+
+#: inc/widget/price-table.php:1134 inc/widget/price-table.php:1355
+#: inc/widget/testimonial-box.php:422
+msgid "Position"
+msgstr ""
+
+#: inc/widget/price-table.php:406
+msgid "Position X"
+msgstr ""
+
+#: inc/widget/price-table.php:429
+msgid "Position Y"
+msgstr ""
+
+#: inc/widget/testimonial-box.php:201 inc/widget/testimonial-slider.php:175
+msgid "Position/Designation"
+msgstr ""
+
+#: inc/widget/post-title.php:93
+msgid "Post ID (Optional)"
+msgstr ""
+
+#: inc/library/library-manager.php:154
+msgid "Post not found"
+msgstr ""
+
+#: inc/library/library-manager.php:134
+msgid "Post not found."
+msgstr ""
+
+#: inc/core/list/widgets-array.php:271
+msgid "Post Title / Page Title"
+msgstr ""
+
+#: inc/widget/recent-blog.php:325
+msgid "Posts Count"
+msgstr ""
+
+#: inc/extensions/placeholder-extension.php:51
+msgid "Premium Extension."
+msgstr ""
+
+#: inc/library/templates/template.php:148
+msgid "Preview"
+msgstr ""
+
+#: inc/widget/cart.php:499 inc/widget/price-table.php:200
+#: inc/widget/product-table.php:600
+msgid "Price"
+msgstr ""
+
+#: inc/widget/price-table.php:1048
+msgid "Price After Fraction"
+msgstr ""
+
+#: inc/widget/cart.php:519
+msgid "Price Background Color"
+msgstr ""
+
+#: inc/widget/price-table.php:1028
+msgid "Price Before Fraction"
+msgstr ""
+
+#: inc/widget/price-table.php:908 inc/widget/price-table.php:980
+msgid "Price Box Size"
+msgstr ""
+
+#: inc/widget/cart.php:508
+msgid "Price Color"
+msgstr ""
+
+#: inc/widget/price-table.php:273
+msgid "Price in Top"
+msgstr ""
+
+#: inc/widget/cart.php:540
+msgid "Price Padding"
+msgstr ""
+
+#: inc/widget/price-table.php:152 inc/widget/price-table.php:845
+msgid "Pricing"
+msgstr ""
+
+#: inc/widget/price-table.php:1824 inc/widget/price-table.php:1828
+msgid "Pricing Image"
+msgstr ""
+
+#: inc/core/list/widgets-array.php:98
+msgid "Pricing Table"
+msgstr ""
+
+#: inc/widget/team-box.php:399 inc/widget/wc-products-deleted.php:294
+msgid "Primary Color"
+msgstr ""
+
+#: inc/widget/menu.php:398 inc/widget/menu.php:399
+msgid "Primary Menu"
+msgstr ""
+
+#: admin/pages/extensions.php:79 admin/pages/widgets.php:85
+#: inc/core/list/widgets-array.php:121 inc/core/list/widgets-array.php:132
+#: inc/library/templates/template.php:127
+msgid "Pro"
+msgstr ""
+
+#: inc/widget/counter.php:214
+msgid "Product"
+msgstr ""
+
+#: inc/widget/offer-card.php:145
+msgid "Product Biggest Offer"
+msgstr ""
+
+#: inc/core/list/widgets-array.php:196
+msgid "Product Categories"
+msgstr ""
+
+#: inc/widget/team-box.php:566
+msgid "Product Hunt"
+msgstr ""
+
+#: inc/core/list/widgets-array.php:127
+msgid "Product Slider"
+msgstr ""
+
+#: inc/core/list/widgets-array.php:107
+msgid "Product Table"
+msgstr ""
+
+#: inc/widget/product-table.php:543 inc/wp/custom-field.php:47
+msgid "Product Title"
+msgstr ""
+
+#: inc/widget/wc-categories.php:232
+msgid "Products"
+msgstr ""
+
+#: inc/widget/team-box.php:464
+msgid "Profile Box Size"
+msgstr ""
+
+#: inc/widget/team-box.php:292
+msgid "Profile Link"
+msgstr ""
+
+#: inc/widget/team-box.php:280
+msgid "Profile Name"
+msgstr ""
+
+#: inc/widget/skill-bar.php:161 inc/widget/skill-bar.php:334
+msgid "Progress Bar"
+msgstr ""
+
+#: inc/widget/skill-bar.php:266
+msgid "Progress Bars"
+msgstr ""
+
+#: inc/traits/animate-style.php:33
+msgid "pulse"
+msgstr ""
+
+#: inc/widget/cart.php:557 inc/widget/product-table.php:678
+msgid "Quantity"
+msgstr ""
+
+#: inc/widget/cart.php:577
+msgid "Quantity Background Color"
+msgstr ""
+
+#: inc/widget/cart.php:566
+msgid "Quantity Color"
+msgstr ""
+
+#: inc/widget/cart.php:597
+msgid "Quantity Padding"
+msgstr ""
+
+#: inc/widget/product-table.php:409
+msgid "Quantity X Price Color"
+msgstr ""
+
+#: inc/widget/recent-blog.php:317 inc/widget/wc-categories.php:117
+#: inc/widget/wc-products-deleted.php:185
+msgid "Query"
+msgstr ""
+
+#: inc/widget/testimonial-box.php:212 inc/widget/testimonial-box.php:462
+#: inc/widget/testimonial-slider.php:186 inc/widget/testimonial-slider.php:636
+msgid "Quote"
+msgstr ""
+
+#: inc/widget/testimonial-box.php:294 inc/widget/testimonial-box.php:317
+#: inc/widget/testimonial-slider.php:391 inc/widget/testimonial-slider.php:484
+msgid "Quote Icon Color"
+msgstr ""
+
+#: inc/widget/testimonial-box.php:344 inc/widget/testimonial-slider.php:364
+#: inc/widget/testimonial-slider.php:460
+msgid "Quote Icon Size"
+msgstr ""
+
+#: inc/extensions/background-overlay.php:137
+msgid "Radius"
+msgstr ""
+
+#: inc/wp/custom-field.php:48
+msgid "Rating"
+msgstr ""
+
+#: inc/widget/wordpress-plugin-stats.php:200
+msgid "Rating Text (optional)"
+msgstr ""
+
+#: inc/widget/recent-blog.php:423
+msgid "Read More"
+msgstr ""
+
+#: inc/widget/recent-blog.php:678
+msgid "Read More Color"
+msgstr ""
+
+#: inc/widget/recent-blog.php:696
+msgid "Read More Hover Color"
+msgstr ""
+
+#: inc/widget/recent-blog.php:421
+msgid "Read More text"
+msgstr ""
+
+#: inc/widget/recent-blog.php:873
+msgid "Read More Typography"
+msgstr ""
+
+#: inc/core/list/widgets-array.php:243
+msgid "Recent Blog"
+msgstr ""
+
+#: inc/widget/wc-products-deleted.php:196
+msgid "Recent Products"
+msgstr ""
+
+#: inc/widget/recent-blog.php:516
+msgid "Recommends for Classic Layout."
+msgstr ""
+
+#: inc/widget/recent-blog.php:538
+msgid "Recommends for Modern Layout."
+msgstr ""
+
+#: inc/widget/team-box.php:567
+msgid "Reddit"
+msgstr ""
+
+#: inc/widget/product-table.php:642
+msgid "Regular Price"
+msgstr ""
+
+#: inc/wp/header-footer-post.php:77
+msgid "Remove featured image for this Header & Footer"
+msgstr ""
+
+#: inc/widget/contact-form7.php:415
+msgid "Required Text Color"
+msgstr ""
+
+#: inc/widget/contact-form7.php:427
+msgid "Response Text Color"
+msgstr ""
+
+#: inc/widget/price-table.php:377 inc/widget/price-table.php:1724
+msgid "Ribbon"
+msgstr ""
+
+#: inc/traits/button-helper.php:138 inc/widget/advance-heading.php:172
+#: inc/widget/advance-heading.php:473 inc/widget/breadcrumb.php:126
+#: inc/widget/cart.php:189 inc/widget/cart.php:659
+#: inc/widget/contact-form7.php:103 inc/widget/counter.php:394
+#: inc/widget/info-box.php:54 inc/widget/offer-card.php:241
+#: inc/widget/offer-card.php:701 inc/widget/post-title.php:116
+#: inc/widget/price-table.php:414 inc/widget/price-table.php:508
+#: inc/widget/price-table.php:1562 inc/widget/slider.php:445
+#: inc/widget/slider.php:1067 inc/widget/testimonial-box.php:270
+#: inc/widget/testimonial-slider.php:295 inc/widget/wc-categories.php:310
+msgid "Right"
+msgstr ""
+
+#: inc/traits/animate-style.php:124
+msgid "rollIn"
+msgstr ""
+
+#: inc/traits/animate-style.php:125
+msgid "rollOut"
+msgstr ""
+
+#: inc/widget/info-box.php:383 inc/widget/info-box.php:524
+msgid "Rotate"
+msgstr ""
+
+#: inc/traits/animate-style.php:108
+msgid "rotateIn"
+msgstr ""
+
+#: inc/traits/animate-style.php:109
+msgid "rotateInDownLeft"
+msgstr ""
+
+#: inc/traits/animate-style.php:110
+msgid "rotateInDownRight"
+msgstr ""
+
+#: inc/traits/animate-style.php:111
+msgid "rotateInUpLeft"
+msgstr ""
+
+#: inc/traits/animate-style.php:112
+msgid "rotateInUpRight"
+msgstr ""
+
+#: inc/traits/animate-style.php:115
+msgid "rotateOut"
+msgstr ""
+
+#: inc/traits/animate-style.php:116
+msgid "rotateOutDownLeft"
+msgstr ""
+
+#: inc/traits/animate-style.php:117
+msgid "rotateOutDownRight"
+msgstr ""
+
+#: inc/traits/animate-style.php:118
+msgid "rotateOutUpLeft"
+msgstr ""
+
+#: inc/traits/animate-style.php:119
+msgid "rotateOutUpRight"
+msgstr ""
+
+#: inc/extensions/transform.php:53 inc/extensions/transform.php:94
+msgid "Rotation"
+msgstr ""
+
+#: inc/widget/wc-categories.php:278
+msgid "Rows Gap"
+msgstr ""
+
+#: inc/traits/animate-style.php:34
+msgid "rubberBand"
+msgstr ""
+
+#: inc/widget/testimonial-slider.php:221
+msgid "Saiful Islam"
+msgstr ""
+
+#: inc/widget/price-table.php:238
+msgid "Sale"
+msgstr ""
+
+#: inc/wp/custom-field.php:46
+msgid "Sale badge"
+msgstr ""
+
+#: inc/widget/price-table.php:249 inc/widget/price-table.php:1208
+#: inc/widget/product-table.php:612
+msgid "Sale Price"
+msgstr ""
+
+#: admin/pages/extensions.php:91 admin/pages/header-footer.php:164
+#: admin/pages/settings.php:61 admin/pages/widgets.php:97
+msgid "Save Change"
+msgstr ""
+
+#: inc/widget/product-table.php:851
+msgid "Scrollbar Color"
+msgstr ""
+
+#: inc/library/templates/template.php:109
+msgid "Search"
+msgstr ""
+
+#: inc/widget/product-table.php:468
+msgid "Search & Filter Box"
+msgstr ""
+
+#: inc/core/list/widgets-array.php:88
+msgid "Search Box"
+msgstr ""
+
+#: inc/wp/header-footer-post.php:71
+msgid "Search Header & Footer"
+msgstr ""
+
+#: inc/library/templates/template.php:108
+msgid "Search Templates:"
+msgstr ""
+
+#: inc/widget/count-down-timer.php:231
+msgid "Second"
+msgstr ""
+
+#: inc/widget/count-down-timer.php:236
+msgid "Seconds"
+msgstr ""
+
+#: inc/widget/wc-products-deleted.php:194
+msgid "Sectioin Title"
+msgstr ""
+
+#: admin/pages/main.php:58
+msgid "Section Effect"
+msgstr ""
+
+#: inc/widget/wc-products-deleted.php:311
+msgid "Section Title Color"
+msgstr ""
+
+#: inc/widget/product-table.php:894
+msgid "Select a Column"
+msgstr ""
+
+#: inc/widget/wc-products-deleted.php:246
+msgid "Select category"
+msgstr ""
+
+#: admin/pages/header-footer.php:70
+msgid "Select Footer"
+msgstr ""
+
+#: admin/pages/header-footer.php:48
+msgid "Select Header"
+msgstr ""
+
+#: inc/widget/info-box.php:70
+msgid "Select Icon Or Image"
+msgstr ""
+
+#: inc/widget/price-table.php:109
+msgid "Select Icon/Image"
+msgstr ""
+
+#: inc/widget/info-box.php:100 inc/widget/price-table.php:138
+msgid "Select Image"
+msgstr ""
+
+#: inc/widget/contact-form7.php:58
+msgid "Select Your Form"
+msgstr ""
+
+#: inc/widget/breadcrumb.php:103
+msgid "Separator (Optional)"
+msgstr ""
+
+#: inc/wp/header-footer-post.php:76
+msgid "Set featured image for this Header & Footer"
+msgstr ""
+
+#: admin/admin-handle.php:195 admin/pages/help-others.php:28
+#: admin/pages/settings.php:28
+msgid "Settings"
+msgstr ""
+
+#: admin/admin-handle.php:194
+msgid "Settings for UltraAddons"
+msgstr ""
+
+#: inc/traits/animate-style.php:35
+msgid "shakeX"
+msgstr ""
+
+#: inc/traits/animate-style.php:36
+msgid "shakeY"
+msgstr ""
+
+#: inc/widget/count-down-timer.php:299 inc/widget/info-box.php:133
+msgid "Shape"
+msgstr ""
+
+#: inc/widget/cart.php:223
+msgid "Shopping Cart"
+msgstr ""
+
+#: inc/wp/custom-field.php:49
+msgid "Short Description"
+msgstr ""
+
+#: admin/pages/help-others.php:44
+msgid "Shortcode"
+msgstr ""
+
+#: inc/widget/cart.php:260 inc/widget/cart.php:617
+#: inc/widget/count-down-timer.php:318 inc/widget/price-table.php:384
+#: inc/widget/price-table.php:1017 inc/widget/product-table.php:1167
+#: inc/widget/recent-blog.php:434 inc/widget/recent-blog.php:454
+#: inc/widget/recent-blog.php:496 inc/widget/recent-blog.php:520
+#: inc/widget/recent-blog.php:542 inc/widget/skill-bar.php:312
+#: inc/widget/team-box.php:368
+msgid "Show"
+msgstr ""
+
+#: inc/widget/price-table.php:1015
+msgid "Show Additional Controls?"
+msgstr ""
+
+#: inc/widget/wc-categories.php:128
+msgid "Show All"
+msgstr ""
+
+#: inc/widget/cart.php:257
+msgid "Show Hover"
+msgstr ""
+
+#: inc/widget/product-table.php:1164
+msgid "Show or Hide"
+msgstr ""
+
+#: inc/widget/team-box.php:366
+msgid "Show Profiles"
+msgstr ""
+
+#: inc/widget/count-down-timer.php:316
+msgid "Show Separator?"
+msgstr ""
+
+#: inc/widget/product-table.php:509
+msgid "Show Title"
+msgstr ""
+
+#: inc/wp/custom-field.php:50 inc/wp/custom-field.php:51
+#: inc/wp/custom-field.php:52
+msgid "Signle"
+msgstr ""
+
+#: inc/traits/button-helper.php:531 inc/widget/info-box.php:341
+#: inc/widget/info-box.php:484 inc/widget/price-table.php:1111
+#: inc/widget/product-table.php:1179 inc/widget/testimonial-box.php:521
+#: inc/widget/testimonial-slider.php:710
+msgid "Size"
+msgstr ""
+
+#: inc/core/list/widgets-array.php:252
+msgid "Skill Bar"
+msgstr ""
+
+#: template/header-footer-elementor.php:30
+msgid "Skip to content"
+msgstr ""
+
+#: inc/widget/slider.php:367
+msgid "Slide One"
+msgstr ""
+
+#: inc/widget/team-box.php:568
+msgid "Slide Share"
+msgstr ""
+
+#: inc/widget/slider.php:385
+msgid "Slide Three"
+msgstr ""
+
+#: inc/widget/slider.php:376
+msgid "Slide Two Text"
+msgstr ""
+
+#: inc/widget/slider.php:198
+msgid "Slide Type"
+msgstr ""
+
+#: inc/traits/animate-style.php:142
+msgid "slideInDown"
+msgstr ""
+
+#: inc/traits/animate-style.php:143
+msgid "slideInLeft"
+msgstr ""
+
+#: inc/traits/animate-style.php:144
+msgid "slideInRight"
+msgstr ""
+
+#: inc/traits/animate-style.php:145
+msgid "slideInUp"
+msgstr ""
+
+#: inc/traits/animate-style.php:148
+msgid "slideOutDown"
+msgstr ""
+
+#: inc/traits/animate-style.php:149
+msgid "slideOutLeft"
+msgstr ""
+
+#: inc/traits/animate-style.php:150 inc/traits/animate-style.php:151
+msgid "slideOutRight"
+msgstr ""
+
+#: admin/pages/main.php:19
+msgid "Slider"
+msgstr ""
+
+#: inc/widget/slider.php:500
+msgid "Slider Area Margin"
+msgstr ""
+
+#: inc/widget/slider.php:481
+msgid "Slider Area Padding"
+msgstr ""
+
+#: inc/widget/slider.php:541
+msgid "Slider Inner Margin"
+msgstr ""
+
+#: inc/widget/slider.php:522
+msgid "Slider Inner Padding"
+msgstr ""
+
+#: inc/widget/slider.php:873 inc/widget/testimonial-slider.php:742
+msgid "Slider Settings"
+msgstr ""
+
+#: inc/widget/slider.php:287
+msgid "Slider Title Text"
+msgstr ""
+
+#: inc/widget/slider.php:361
+msgid "Slides"
+msgstr ""
+
+#: inc/widget/slider.php:1081 inc/widget/testimonial-slider.php:922
+msgid "Slides To Show"
+msgstr ""
+
+#: inc/widget/wc-categories.php:207
+msgid "Slug"
+msgstr ""
+
+#: inc/traits/button-helper.php:593
+msgid "Small"
+msgstr ""
+
+#: inc/widget/team-box.php:569
+msgid "Snapchat"
+msgstr ""
+
+#: inc/widget/team-box.php:270
+msgid "Social"
+msgstr ""
+
+#: inc/widget/price-table.php:539
+msgid "Solid"
+msgstr ""
+
+#: inc/widget/team-box.php:570
+msgid "SoundCloud"
+msgstr ""
+
+#: inc/widget/wc-categories.php:125
+msgid "Source"
+msgstr ""
+
+#: inc/widget/price-table.php:1253
+msgid "Space"
+msgstr ""
+
+#: inc/widget/info-box.php:320 inc/widget/info-box.php:465
+#: inc/widget/info-box.php:608 inc/widget/info-box.php:662
+#: inc/widget/info-box.php:739 inc/widget/info-box.php:793
+#: inc/widget/recent-blog.php:765
+msgid "Spacing"
+msgstr ""
+
+#: inc/widget/counter.php:240
+msgid "Speed (ms)"
+msgstr ""
+
+#: inc/widget/team-box.php:571
+msgid "Spotify"
+msgstr ""
+
+#: inc/widget/count-down-timer.php:303 inc/widget/info-box.php:137
+msgid "Square"
+msgstr ""
+
+#: inc/widget/count-down-timer.php:288 inc/widget/info-box.php:118
+msgid "Stacked"
+msgstr ""
+
+#: inc/widget/team-box.php:572
+msgid "StackOverflow"
+msgstr ""
+
+#: inc/library/templates/template.php:133
+msgid "Status automatically updates on a daily basis."
+msgstr ""
+
+#: inc/widget/product-table.php:785
+msgid "Striped Table"
+msgstr ""
+
+#: inc/widget/price-table.php:536
+msgid "Style"
+msgstr ""
+
+#: inc/widget/advance-heading.php:376 inc/widget/offer-card.php:604
+msgid "Style 01"
+msgstr ""
+
+#: inc/widget/advance-heading.php:377 inc/widget/offer-card.php:605
+msgid "Style 02"
+msgstr ""
+
+#: inc/widget/gallery-box.php:137 inc/widget/price-table.php:228
+msgid "Style 1"
+msgstr ""
+
+#: inc/widget/gallery-box.php:138 inc/widget/price-table.php:229
+msgid "Style 2"
+msgstr ""
+
+#: inc/widget/advance-heading.php:131 inc/widget/advance-heading.php:402
+#: inc/widget/offer-card.php:630 inc/widget/offer-card.php:726
+msgid "Sub Heading"
+msgstr ""
+
+#: inc/widget/menu.php:363
+msgid "Sub Menu Type"
+msgstr ""
+
+#: inc/widget/gallery-box.php:173 inc/widget/gallery-box.php:175
+#: inc/widget/offer-card.php:302 inc/widget/price-table.php:725
+msgid "Sub Title"
+msgstr ""
+
+#: inc/widget/gallery-box.php:250
+msgid "Sub Title Color"
+msgstr ""
+
+#: inc/widget/slider.php:592
+msgid "Sub-Title"
+msgstr ""
+
+#: inc/widget/price-table.php:825
+msgid "Subtitle Color"
+msgstr ""
+
+#: inc/widget/info-boards-deleted.php:215
+msgid "Sunday Closed"
+msgstr ""
+
+#: admin/admin-handle.php:76
+msgid "Support"
+msgstr ""
+
+#: inc/traits/animate-style.php:38
+msgid "swing"
+msgstr ""
+
+#: inc/extensions/gradient-text-deleted.php:67
+msgid "Switch"
+msgstr ""
+
+#: inc/library/templates/template.php:44 inc/library/templates/template.php:45
+msgid "Sync Library"
+msgstr ""
+
+#: inc/library/templates/template.php:33 inc/library/templates/template.php:34
+msgid "Tab view"
+msgstr ""
+
+#: inc/widget/product-table.php:535
+msgid "Table Body"
+msgstr ""
+
+#: inc/widget/product-table.php:240
+msgid "Table Head"
+msgstr ""
+
+#: inc/traits/animate-style.php:39
+msgid "tada"
+msgstr ""
+
+#: inc/core/list/widgets-array.php:186
+msgid "Team Box"
+msgstr ""
+
+#: inc/widget/gallery-box.php:133 inc/widget/list-item.php:269
+#: inc/widget/team-box.php:185
+msgid "Template"
+msgstr ""
+
+#: inc/widget/menu.php:303
+msgid "Template 2"
+msgstr ""
+
+#: inc/widget/menu.php:304
+msgid "Template 3"
+msgstr ""
+
+#: inc/widget/slider.php:236
+msgid "Template as Slide"
+msgstr ""
+
+#: inc/library/library-source.php:217
+msgid "Template does not have any content"
+msgstr ""
+
+#: inc/library/library-manager.php:161
+msgid "Template id missing"
+msgstr ""
+
+#: inc/widget/slider.php:248
+msgid "Template Not founded"
+msgstr ""
+
+#: inc/widget/list-item.php:274
+msgid "Template Three"
+msgstr ""
+
+#: inc/widget/list-item.php:273 inc/widget/team-box.php:189
+msgid "Template Two"
+msgstr ""
+
+#: inc/core/list/widgets-array.php:176
+msgid "Testimonial Box"
+msgstr ""
+
+#: inc/core/list/widgets-array.php:166
+msgid "Testimonial Slider"
+msgstr ""
+
+#: inc/widget/offer-card.php:190 inc/widget/price-table.php:295
+#: inc/widget/slider.php:315
+msgid "Text"
+msgstr ""
+
+#: inc/widget/contact-form7.php:222
+msgid "Text Area Height"
+msgstr ""
+
+#: inc/traits/button-helper.php:176 inc/traits/button-helper.php:301
+#: inc/widget/contact-form7.php:177 inc/widget/contact-form7.php:285
+#: inc/widget/contact-form7.php:331 inc/widget/price-table.php:887
+#: inc/widget/price-table.php:959 inc/widget/price-table.php:1749
+#: inc/widget/product-table.php:496 inc/widget/product-table.php:627
+#: inc/widget/product-table.php:657 inc/widget/product-table.php:760
+#: inc/widget/skill-bar.php:232 inc/widget/skill-bar.php:241
+#: inc/widget/skill-bar.php:396 inc/widget/skill-bar.php:438
+msgid "Text Color"
+msgstr ""
+
+#: inc/widget/skill-bar.php:380
+msgid "Text Style"
+msgstr ""
+
+#: inc/widget/wc-categories.php:241
+msgid ""
+"The style of this widget is often affected by your theme and plugins. If you "
+"experience any such issue, try to switch to a basic theme and deactivate "
+"related plugins."
+msgstr ""
+
+#: admin/pages/header-footer.php:159
+msgid "There is no Template founded in Elementor Library"
+msgstr ""
+
+#: inc/widget/slider.php:368 inc/widget/slider.php:377
+#: inc/widget/slider.php:386
+msgid "This is Sample Content ..."
+msgstr ""
+
+#: inc/wp/header-footer-post.php:98
+msgid "This post is for Medilac Header and Footer"
+msgstr ""
+
+#: inc/widget/counter.php:413 inc/widget/info-boards-deleted.php:276
+#: inc/widget/list-item.php:289
+msgid "Three Column"
+msgstr ""
+
+#: inc/widget/recent-blog.php:492
+msgid "Thumbnail Image and Date will be hidden."
+msgstr ""
+
+#: inc/widget/recent-blog.php:491
+msgid "Thumbs"
+msgstr ""
+
+#: inc/widget/count-down-timer.php:409
+msgid "Time Text Color"
+msgstr ""
+
+#: inc/widget/count-down-timer.php:276
+msgid "Timer Controls"
+msgstr ""
+
+#: inc/widget/info-boards-deleted.php:141 inc/widget/info-box.php:599
+#: inc/widget/info-box.php:730 inc/widget/list-item.php:151
+#: inc/widget/offer-card.php:256 inc/widget/price-table.php:75
+#: inc/widget/price-table.php:394 inc/widget/price-table.php:693
+#: inc/widget/recent-blog.php:430 inc/widget/skill-bar.php:169
+#: inc/widget/slider.php:281 inc/widget/slider.php:562
+#: inc/widget/testimonial-box.php:190 inc/widget/testimonial-box.php:382
+#: inc/widget/testimonial-slider.php:164 inc/widget/testimonial-slider.php:556
+#: inc/widget/wc-categories.php:368
+msgid "Title"
+msgstr ""
+
+#: inc/widget/info-box.php:152
+msgid "Title & Description"
+msgstr ""
+
+#: inc/widget/gallery-box.php:240 inc/widget/list-item.php:306
+#: inc/widget/price-table.php:814 inc/widget/product-table.php:398
+#: inc/widget/recent-blog.php:602 inc/widget/team-box.php:414
+msgid "Title Color"
+msgstr ""
+
+#: inc/widget/info-box.php:166
+msgid "Title HTML Tag"
+msgstr ""
+
+#: inc/widget/recent-blog.php:809
+msgid "Title Typography"
+msgstr ""
+
+#: inc/widget/offer-card.php:360 inc/widget/price-table.php:433
+#: inc/widget/price-table.php:1157 inc/widget/price-table.php:1282
+#: inc/widget/price-table.php:1376
+msgid "Top"
+msgstr ""
+
+#: inc/widget/slider.php:990 inc/widget/testimonial-slider.php:847
+msgid "Top Left"
+msgstr ""
+
+#: inc/widget/slider.php:989 inc/widget/testimonial-slider.php:846
+msgid "Top Right"
+msgstr ""
+
+#: inc/widget/product-table.php:440
+msgid "Total Price Label Color"
+msgstr ""
+
+#: inc/widget/product-table.php:451
+msgid "Total Price Text Color"
+msgstr ""
+
+#: inc/extensions/transform.php:31 inc/extensions/transform.php:39
+msgid "Transform"
+msgstr ""
+
+#: inc/widget/team-box.php:573
+msgid "TripAdvisor"
+msgstr ""
+
+#: inc/library/library-manager.php:98
+msgid "Try different category or sync for new templates."
+msgstr ""
+
+#: inc/widget/team-box.php:574
+msgid "Tumblr"
+msgstr ""
+
+#: inc/widget/team-box.php:575
+msgid "Twitch"
+msgstr ""
+
+#: inc/widget/team-box.php:576
+msgid "Twitter"
+msgstr ""
+
+#: inc/widget/counter.php:412 inc/widget/info-boards-deleted.php:275
+#: inc/widget/list-item.php:288
+msgid "Two Column"
+msgstr ""
+
+#: admin/pages/main.php:15 inc/widget/search.php:247
+msgid "Type"
+msgstr ""
+
+#: inc/widget/team-box.php:235
+msgid "Type Member Designation"
+msgstr ""
+
+#: inc/widget/team-box.php:220
+msgid "Type Member Name"
+msgstr ""
+
+#: inc/widget/advance-heading.php:319 inc/widget/count-down-timer.php:458
+#: inc/widget/counter.php:534 inc/widget/gallery-box.php:301
+#: inc/widget/list-item.php:380 inc/widget/offer-card.php:547
+#: inc/widget/recent-blog.php:800 inc/widget/slider.php:572
+#: inc/widget/slider.php:602 inc/widget/slider.php:641
+#: inc/widget/slider.php:684 inc/widget/team-box.php:514
+#: inc/widget/wc-products-deleted.php:352
+#: inc/widget/wordpress-plugin-stats.php:308
+msgid "Typography"
+msgstr ""
+
+#: inc/widget/testimonial-box.php:203 inc/widget/testimonial-slider.php:177
+#: inc/widget/testimonial-slider.php:231 inc/widget/testimonial-slider.php:240
+#: inc/widget/testimonial-slider.php:249
+msgid "UI/UX Designer"
+msgstr ""
+
+#: inc/core/list/extensions-array.php:73
+msgid "Ultra Effect"
+msgstr ""
+
+#: inc/extensions/ultra-effects.php:19
+msgid "Ultra Effects"
+msgstr ""
+
+#: inc/core/list/widgets-array.php:61
+msgid "Ultra Slider"
+msgstr ""
+
+#: admin/admin-handle.php:102 admin/pages/includes/admin-header.php:11
+msgid "UltraAddons"
+msgstr ""
+
+#: admin/admin-handle.php:101
+msgid "UltraAddons Elementor Addons"
+msgstr ""
+
+#: init.php:270 init.php:294 init.php:319
+msgid "UltraAddons Elementor Lite"
+msgstr ""
+
+#: admin/admin-handle.php:175
+msgid "UltraAddons Extensions"
+msgstr ""
+
+#: inc/library/library-source.php:44
+msgid "UltraAddons Library"
+msgstr ""
+
+#: inc/wp/custom-field.php:35
+msgid "UltraAddons Template"
+msgstr ""
+
+#: admin/admin-handle.php:164
+msgid "UltraAddons Widgets"
+msgstr ""
+
+#: inc/wp/header-footer-post.php:81
+msgid "Upload to this Header & Footer"
+msgstr ""
+
+#: inc/widget/counter.php:222
+msgid "Upto Number"
+msgstr ""
+
+#: inc/library/library-manager.php:96
+#, php-format
+msgid ""
+"Use %s widget with other exclusive pro widgets and 100% unique features to "
+"extend your toolbox and build sites faster and better."
+msgstr ""
+
+#: inc/wp/header-footer-post.php:78
+msgid "Use as featured image for this Header & Footer"
+msgstr ""
+
+#: inc/widget/product-table.php:1352
+msgid "Vertical Orientation"
+msgstr ""
+
+#: inc/widget/offer-card.php:356 inc/widget/price-table.php:1153
+#: inc/widget/price-table.php:1278 inc/widget/price-table.php:1372
+msgid "Vertical Position"
+msgstr ""
+
+#: inc/widget/advance-heading.php:219
+msgid "Vertical Spacing"
+msgstr ""
+
+#: inc/widget/count-down-timer.php:284 inc/widget/info-box.php:114
+msgid "View"
+msgstr ""
+
+#: inc/wp/header-footer-post.php:69 inc/wp/header-footer-post.php:70
+msgid "View Header & Footer"
+msgstr ""
+
+#: inc/functions.php:220
+msgid "View your shopping cart"
+msgstr ""
+
+#: inc/widget/team-box.php:577
+msgid "Vimeo"
+msgstr ""
+
+#: inc/widget/team-box.php:578
+msgid "VK"
+msgstr ""
+
+#: inc/core/list/widgets-array.php:70
+msgid "WC Mini Cart"
+msgstr ""
+
+#: inc/widget/advance-heading.php:414 inc/widget/offer-card.php:642
+msgid "We Provide Best Services sFor Your Health"
+msgstr ""
+
+#: inc/widget/testimonial-slider.php:222
+msgid "Web Developer"
+msgstr ""
+
+#: inc/widget/team-box.php:579
+msgid "Website"
+msgstr ""
+
+#: inc/widget/price-table.php:576
+msgid "Weight"
+msgstr ""
+
+#: admin/admin-handle.php:75
+msgid "Welcome"
+msgstr ""
+
+#: admin/admin-handle.php:75
+msgid "Welcome to UltraAddons"
+msgstr ""
+
+#: inc/widget/team-box.php:580
+msgid "WhatsApp"
+msgstr ""
+
+#: admin/pages/main.php:20 admin/pages/main.php:26 admin/pages/main.php:31
+#: admin/pages/main.php:37 admin/pages/main.php:43 admin/pages/main.php:50
+msgid "Widget"
+msgstr ""
+
+#: admin/pages/settings.php:42
+msgid "Widget Showing in"
+msgstr ""
+
+#: admin/admin-handle.php:165 admin/pages/widgets.php:32
+msgid "Widgets"
+msgstr ""
+
+#: inc/widget/price-table.php:600
+msgid "Width"
+msgstr ""
+
+#: inc/traits/animate-style.php:40
+msgid "wobble"
+msgstr ""
+
+#: inc/widget/cart.php:86 inc/widget/search-box.php:62
+msgid "WooComemrce is not activated."
+msgstr ""
+
+#: inc/core/list/widgets-array.php:131
+msgid "WooCommerce"
+msgstr ""
+
+#: inc/widget/wc-categories.php:470 inc/widget/wc-products-deleted.php:111
+msgid "WooCommerce is not Activated"
+msgstr ""
+
+#: inc/widget/search.php:251
+msgid "WooCommerce Product Search"
+msgstr ""
+
+#: inc/core/list/widgets-array.php:156
+msgid "WooCommerce Products"
+msgstr ""
+
+#: inc/widget/team-box.php:581
+msgid "WordPress"
+msgstr ""
+
+#: inc/core/list/widgets-array.php:262
+msgid "WordPress Plugin Stats"
+msgstr ""
+
+#: inc/widget/search.php:102
+msgid "Wrapper Border"
+msgstr ""
+
+#: admin/pages/main.php:57 inc/extensions/wrapper-link.php:30
+#: inc/widget/info-box.php:214 inc/core/list/extensions-array.php:16
+msgid "Wrapper Link"
+msgstr ""
+
+#: inc/widget/info-box.php:203
+msgid "Wrapper Link Switch"
+msgstr ""
+
+#: inc/widget/team-box.php:582
+msgid "Xing"
+msgstr ""
+
+#: inc/widget/team-box.php:583
+msgid "Yelp"
+msgstr ""
+
+#: inc/widget/counter.php:251 inc/widget/info-box.php:205
+#: inc/widget/product-table.php:511 inc/widget/product-table.php:787
+#: inc/widget/slider.php:882 inc/widget/slider.php:895
+#: inc/widget/slider.php:929 inc/widget/testimonial-slider.php:751
+#: inc/widget/testimonial-slider.php:764 inc/widget/testimonial-slider.php:798
+msgid "Yes"
+msgstr ""
+
+#: inc/widget/wordpress-plugin-stats.php:157
+msgid "Your plugin slug. eg: ultraaddons-elementor-lite"
+msgstr ""
+
+#: inc/widget/team-box.php:584
+msgid "YouTube"
+msgstr ""
+
+#: inc/traits/animate-style.php:128
+msgid "zoomIn"
+msgstr ""
+
+#: inc/traits/animate-style.php:129
+msgid "zoomInDown"
+msgstr ""
+
+#: inc/traits/animate-style.php:130
+msgid "zoomInLeft"
+msgstr ""
+
+#: inc/traits/animate-style.php:131
+msgid "zoomInRight"
+msgstr ""
+
+#: inc/traits/animate-style.php:132
+msgid "zoomInUp"
+msgstr ""
+
+#: inc/traits/animate-style.php:135
+msgid "zoomOut"
+msgstr ""
+
+#: inc/traits/animate-style.php:136
+msgid "zoomOutDown"
+msgstr ""
+
+#: inc/traits/animate-style.php:137
+msgid "zoomOutLeft"
+msgstr ""
+
+#: inc/traits/animate-style.php:138
+msgid "zoomOutRight"
+msgstr ""
+
+#: inc/traits/animate-style.php:139
+msgid "zoomOutUp"
+msgstr ""
