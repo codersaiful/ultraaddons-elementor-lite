@@ -1025,7 +1025,7 @@ class Timeline extends Base{
 						'label' => __( 'Box Background', 'ultraaddons' ),
 					],
 				],
-	            'types' => [ 'gradient' ],
+	            'types' => [ 'classic', 'gradient' ],
 	            'selector' =>
 	             	'{{WRAPPER}} .ultraaddons-timeline-section .ultraaddons-timeline-inner-wraper .ultraaddons-timeline-content-inner, {{WRAPPER}} .ultraaddons-timeline-section .ultraaddons-timeline-inner-wraper .ultraaddons-timeline-content-inner:before',
                 'condition' => [
@@ -1124,7 +1124,7 @@ class Timeline extends Base{
 						'label' => __( 'Icon Background', 'ultraaddons' ),
 					],
 				],
-	            'types' => [ 'gradient' ],
+	            'types' => [ 'classic', 'gradient' ],
 	            'selector' =>
 	             	'{{WRAPPER}} .ultraaddons-timeline-section .ultraaddons-timeline-inner-wraper .ultraaddons-timeline-counter',
 	            'condition' => [
@@ -1875,7 +1875,7 @@ class Timeline extends Base{
             Group_Control_Background::get_type(),
             [
                 'name' => '_ua_timeline_nav_normal_color_bg',
-                'types' => [ 'gradient' ],
+                'types' => [ 'classic', 'gradient' ],
                 'fields_options' => [
 					'background' => [
 						'label' => __( 'Background Color', 'ultraaddons' ),
@@ -1892,7 +1892,7 @@ class Timeline extends Base{
             Group_Control_Background::get_type(),
             [
                 'name' => '_ua_timeline_nav_normal_color_bg_dots',
-                'types' => [ 'gradient' ],
+                'types' => [ 'classic', 'gradient' ],
                 'fields_options' => [
 					'background' => [
 						'label' => __( 'Background Color', 'ultraaddons' ),
@@ -1944,7 +1944,7 @@ class Timeline extends Base{
             Group_Control_Background::get_type(),
             [
                 'name' => '_ua_timeline_nav_hover_color_bg_dots',
-                'types' => [ 'gradient' ],
+                'types' => [ 'classic', 'gradient' ],
                 'fields_options' => [
 					'background' => [
 						'label' => __( 'Active Color', 'ultraaddons' ),
@@ -1979,7 +1979,7 @@ class Timeline extends Base{
             Group_Control_Background::get_type(),
             [
                 'name' => '_ua_timeline_nav_hover_color_bg',
-                'types' => [ 'gradient' ],
+                'types' => [ 'classic', 'gradient' ],
                 'fields_options' => [
                     'background' => [
                         'label' => __( 'Background Color', 'ultraaddons' ),
