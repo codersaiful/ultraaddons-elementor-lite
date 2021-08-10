@@ -285,6 +285,15 @@ $widgetsArray = [
             ],
     ],
     
+    'Alert' => [
+            'name'  => __( 'Alert', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'uicon-skillbar',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
 ];
 
 return apply_filters( 'ultraaddons/widgets/array', $widgetsArray );

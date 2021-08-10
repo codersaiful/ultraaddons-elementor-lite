@@ -403,5 +403,10 @@
             }
         });
     });
+
+    var $item = $('.ua_alert_close');
+    $($item).on("click", function(){
+        $(this).parents(".ua_alert_box").hide();
+    });
         
 } (jQuery, window));
