@@ -278,7 +278,7 @@ span.ua-option-version-type.ua-option-version-type-pro {
     background: #bfbfbf;
 }
 span.ua-option-version-type.ua-option-version-type-free {
-    background: #4caf50;
+    background: #bfbfbf0d;/*#4caf50*/
 }
 h2.ua-item-name {
     padding: 0;
