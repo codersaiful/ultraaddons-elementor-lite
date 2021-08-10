@@ -288,7 +288,7 @@ $widgetsArray = [
     'Alert' => [
             'name'  => __( 'Alert', 'ultraaddons' ),
             'is_pro'   => false,
-            'icon'      => 'uicon-skillbar',
+            'icon'      => 'eicon-alert',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
