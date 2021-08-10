@@ -82,7 +82,11 @@ class Preset {
          * @param Element_Base $element
          */
 	public static function before_section_render( Element_Base $element ) {
+            var_dump($element->get_class_name());
 		$settings = $element->get_settings_for_display();
+                //var_dump($settings);
+                $settings = array_filter( $settings );
+                //var_dump(array_filter($settings));
                 
         }
         
