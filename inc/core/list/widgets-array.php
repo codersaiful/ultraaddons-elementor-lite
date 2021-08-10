@@ -134,6 +134,15 @@ $widgetsArray = [
     ],
     
     
+    //New Added
+    'Hero_Banner' => [
+            'name'  => __( 'Hero Banner', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-call-to-action',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
     
     'Contact_Form7' => [
             'name'  => __( 'Contact Form 7', 'ultraaddons' ),
