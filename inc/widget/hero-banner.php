@@ -1,15 +1,14 @@
 <?php
 namespace UltraAddons\Widget;
 
-use Elementor\Controls_Manager;
-use Elementor\Core\Schemes\Color;
-use Elementor\Group_Control_Typography;
-use Elementor\Core\Schemes\Typography;
-use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
-use Elementor\Group_Control_Border;
-use Elementor\Group_Control_Box_Shadow;
-use Elementor\Group_Control_Background;
-
+use \Elementor\Controls_Manager;
+use \Elementor\Group_Control_Border;
+use \Elementor\Group_Control_Box_Shadow;
+use \Elementor\Group_Control_Typography;
+use \Elementor\Group_Control_Background;
+use \Elementor\Utils;
+use \Elementor\Core\Schemes;
+use \Elementor\Widget_Base;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -29,6 +28,15 @@ class Hero_Banner extends Base{
         return [ 'ultraaddons', 'hero', 'header', 'banner', 'call to action', 'c2a' ];
     }
     
+    // Get Control ID
+    protected function get_control_id( $control_id ) {
+        return $control_id;
+    }
+
+    final public function get_banner_settings( $control_key ) {
+        $control_id = $this->get_control_id( $control_key );
+        return $this->get_settings( $control_id );
+    }
     
     /**
      * Register oEmbed widget controls.
@@ -47,7 +55,6 @@ class Hero_Banner extends Base{
         $this->content_style_controls();
         $this->button_style_controls();
         $this->button2_style_controls();
-        do_action('dl_widget/section/style/custom_css', $this);
        
     }
     
@@ -342,7 +349,7 @@ class Hero_Banner extends Base{
         );
 
 		$this->add_responsive_control(
-            '_banner_image_space_first',
+            'image_space_first',
             [
                 'label' => __( 'Spacing', 'ultraaddons' ),
                 'type' => Controls_Manager::SLIDER,
@@ -365,7 +372,7 @@ class Hero_Banner extends Base{
         );
 
         $this->add_responsive_control(
-            '_banner_image_size_width_first',
+            'image_size_width_first',
             [
                 'label'      => __('Width', 'ultraaddons'),
                 'type'       => Controls_Manager::SLIDER,
@@ -399,7 +406,7 @@ class Hero_Banner extends Base{
             ]
         );
         $this->add_responsive_control(
-            '_banner_image_size_height_first',
+            'image_size_height_first',
             [
                 'label'      => __('Height', 'ultraaddons'),
                 'type'       => Controls_Manager::SLIDER,
@@ -432,7 +439,7 @@ class Hero_Banner extends Base{
             ]
         );
         $this->add_responsive_control(
-            '_banner_image_padding_first',
+            'image_padding_first',
             [
                 'label' => esc_html__('Padding', 'ultraaddons'),
                 'type' => Controls_Manager::DIMENSIONS,
@@ -541,7 +548,7 @@ class Hero_Banner extends Base{
 		);
 
 		$this->add_responsive_control(
-            '_banner_content_padding_first',
+            'content_padding_first',
             [
                 'label' => esc_html__('Content Padding', 'ultraaddons'),
                 'type' => Controls_Manager::DIMENSIONS,
@@ -565,7 +572,7 @@ class Hero_Banner extends Base{
             ]
         );
         
-        $this->start_controls_tabs( '_banner_button_effects' );
+        $this->start_controls_tabs( 'button_effects' );
 
 		$this->start_controls_tab( '_button_normal',
 			[
@@ -574,7 +581,7 @@ class Hero_Banner extends Base{
 		);
 
 		$this->add_control(
-			'_banner_button_color',
+			'button_color',
 			[
 				'label' => __( 'Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
@@ -588,7 +595,7 @@ class Hero_Banner extends Base{
 		);
 
 		$this->add_control(
-			'_banner_button_bg_color',
+			'button_bg_color',
 			[
 				'label' => __( 'Background Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
@@ -603,12 +610,12 @@ class Hero_Banner extends Base{
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-				'name' => '_banner_button_typography',
+				'name' => 'button_typography',
 				'selector' => '{{WRAPPER}} .dl_banner_content .btn_3',
 			]
 		);
 		$this->add_control(
-			'_banner_btn_border_radius',
+			'btn_border_radius',
 			[
 				'label' => __( 'Border Radius', 'ultraaddons' ),
 				'type' => Controls_Manager::DIMENSIONS,
@@ -621,7 +628,7 @@ class Hero_Banner extends Base{
 			]
 		);
 		$this->add_control(
-			'_banner_button_transition',
+			'button_transition',
 			[
 				'label' => __( 'Transition Duration', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
@@ -648,7 +655,7 @@ class Hero_Banner extends Base{
 		);
 
 		$this->add_control(
-			'_banner_button_hover_color',
+			'button_hover_color',
 			[
 				'label' => __( 'Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
@@ -661,7 +668,7 @@ class Hero_Banner extends Base{
 			]
 		);
 		$this->add_control(
-			'_banner_button_hover_bg_color',
+			'button_hover_bg_color',
 			[
 				'label' => __( 'Background Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
@@ -672,7 +679,7 @@ class Hero_Banner extends Base{
 			]
 		);
 		$this->add_control(
-			'_banner_hover_border_radius',
+			'hover_border_radius',
 			[
 				'label' => __( 'Border Radius', 'ultraaddons' ),
 				'type' => Controls_Manager::DIMENSIONS,
@@ -684,7 +691,7 @@ class Hero_Banner extends Base{
 			]
 		);
 		$this->add_control(
-			'_banner_button_hover_transition',
+			'button_hover_transition',
 			[
 				'label' => __( 'Transition Duration', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
@@ -724,7 +731,7 @@ class Hero_Banner extends Base{
             ]
         );
         
-        $this->start_controls_tabs( '_banner_button2_effects' );
+        $this->start_controls_tabs( 'button2_effects' );
 
 		$this->start_controls_tab( '_button2_normal',
 			[
@@ -733,7 +740,7 @@ class Hero_Banner extends Base{
 		);
 		
 		$this->add_control(
-			'_banner_button2_color',
+			'button2_color',
 			[
 				'label' => __( 'Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
@@ -746,7 +753,7 @@ class Hero_Banner extends Base{
 		);
 
 		$this->add_control(
-			'_banner_button2_bg_color',
+			'button2_bg_color',
 			[
 				'label' => __( 'Background Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
@@ -760,13 +767,13 @@ class Hero_Banner extends Base{
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-				'name' => '_banner_button2_typography',
+				'name' => 'button2_typography',
 				'selector' => '{{WRAPPER}} .dl_banner_content .btn_4, {{WRAPPER}} .dl_cu_btn.btn_1',
 				
 			]
 		);
 		$this->add_control(
-			'_banner_btn2_border_radius',
+			'btn2_border_radius',
 			[
 				'label' => __( 'Border Radius', 'ultraaddons' ),
 				'type' => Controls_Manager::DIMENSIONS,
@@ -778,7 +785,7 @@ class Hero_Banner extends Base{
 			]
 		);
 		$this->add_control(
-			'_banner_button2_transition',
+			'button2_transition',
 			[
 				'label' => __( 'Transition Duration', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
@@ -806,7 +813,7 @@ class Hero_Banner extends Base{
 		);
 
 		$this->add_control(
-			'_banner_button2_hover_color',
+			'button2_hover_color',
 			[
 				'label' => __( 'Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
@@ -818,7 +825,7 @@ class Hero_Banner extends Base{
 			]
 		);
 		$this->add_control(
-			'_banner_button2_hover_bg_color',
+			'button2_hover_bg_color',
 			[
 				'label' => __( 'Background Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
@@ -830,7 +837,7 @@ class Hero_Banner extends Base{
 			]
 		);
 		$this->add_control(
-			'_banner_button2_hover_border_radius',
+			'button2_hover_border_radius',
 			[
 				'label' => __( 'Border Radius', 'ultraaddons' ),
 				'type' => Controls_Manager::DIMENSIONS,
@@ -841,7 +848,7 @@ class Hero_Banner extends Base{
 			]
 		);
 		$this->add_control(
-			'_banner_button2_hover_transition',
+			'button2_hover_transition',
 			[
 				'label' => __( 'Transition Duration', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
