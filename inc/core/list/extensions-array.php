@@ -69,14 +69,14 @@ $extensionsArray = [
                     ],
             ],
 
-            'Ultra_Effect' => [
-                    'name'  => __( 'Ultra Effect', 'ultraaddons' ),
-                    'is_pro'   => true,
-                    'icon'      => 'eicon-spinner',
-                    'cat'       => [
-                        __( 'Basic', 'ultraaddons' ),
-                    ],
-            ],
+//            'Ultra_Effect' => [
+//                    'name'  => __( 'Ultra Effect', 'ultraaddons' ),
+//                    'is_pro'   => true,
+//                    'icon'      => 'eicon-spinner',
+//                    'cat'       => [
+//                        __( 'Basic', 'ultraaddons' ),
+//                    ],
+//            ],
 
             'Gradient_Text' => [
                     'name'  => __( 'Gradient Text', 'ultraaddons' ),
