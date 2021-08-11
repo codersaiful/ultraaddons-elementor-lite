@@ -41,7 +41,7 @@ $extensionsArray = [
              */
             'Transform' => [
                     'name'  => __( 'CSS Transform', 'ultraaddons' ),
-                    'is_pro'   => true,
+                    'is_pro'   => false,
                     'icon'      => 'eicon-heading',
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),
