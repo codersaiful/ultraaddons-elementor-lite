@@ -92,6 +92,17 @@ li#toplevel_page_ultraaddons-elementor-lite.current .wp-menu-image img {
 }*/
 /****************** Menu Text in Dashboard | END **********************/
 
+li#toplevel_page_ultraaddons-elementor-lite ul.wp-submenu.wp-submenu-wrap li:last-child a {
+    color: #ff5722;
+    font-weight: bold;
+}
+
+li#toplevel_page_ultraaddons-elementor-lite ul.wp-submenu.wp-submenu-wrap li:last-child:hover {
+    background: #310303;
+}
+li#toplevel_page_ultraaddons-elementor-lite ul.wp-submenu.wp-submenu-wrap li:last-child {
+    background: #1d1717;
+}
 
 
 
