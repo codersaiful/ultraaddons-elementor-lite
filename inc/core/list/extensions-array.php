@@ -95,6 +95,15 @@ $extensionsArray = [
                         __( 'Basic', 'ultraaddons' ),
                     ],
             ],
+            
+            'Floating_Effects' => [
+                    'name'  => __( 'Floating Effects', 'ultraaddons' ),
+                    'is_pro'   => false,
+                    'icon'      => 'eicon-click',
+                    'cat'       => [
+                        __( 'Basic', 'ultraaddons' ),
+                    ],
+            ],
 
 //         Need more Customizer and to be update   
 //            'ultra-effects'=> [
