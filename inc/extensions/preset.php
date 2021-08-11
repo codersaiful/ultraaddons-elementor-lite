@@ -43,7 +43,7 @@ class Preset {
 				'tab'   => $tabs,
 			]
 		);
-
+                
                 
                 $element->add_control(
                         '_ua_preset_name',
@@ -82,7 +82,11 @@ class Preset {
          * @param Element_Base $element
          */
 	public static function before_section_render( Element_Base $element ) {
+            
 		$settings = $element->get_settings_for_display();
+                //var_dump($settings);
+                $settings = array_filter( $settings );
+                //var_dump(array_filter($settings));
                 
         }
         
