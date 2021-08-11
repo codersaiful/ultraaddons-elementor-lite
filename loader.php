@@ -108,8 +108,6 @@ class Loader {
 
         //Add Style for Widgets
         add_action( 'elementor/frontend/after_enqueue_styles', [ $this, 'widget_enqueue' ] );
-        add_action( 'elementor/frontend/after_enqueue_styles', [ $this, 'enqueue_inline_scripts' ] );
-        add_action( 'elementor/preview/enqueue_scripts', [ $this, 'enqueue_inline_scripts' ] );
         add_action( 'wp_enqueue_scripts', [ $this, 'wp_enqueue_scripts' ] );
         
         /**
@@ -130,20 +128,7 @@ class Loader {
         
     }
 
-    public static function enqueue_inline_scripts() {
-        $css = '';
-		$common_css = ULTRA_ADDONS_DIR . 'assets/css/common.min.css';
-
-		
-        if ( is_readable( $common_css ) ) {
-            $css .= file_get_contents( $common_css );
-        };
-        wp_add_inline_style(
-            'elementor-frontend',
-            $css
-        );
-		
-	}
+    
 
     /**
      * Included Base Class for our All Widgets
