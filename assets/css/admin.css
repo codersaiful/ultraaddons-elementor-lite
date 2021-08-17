@@ -1,8 +1,10 @@
 
 /*********** UltraAddons Style - In Plugin List ****************/
-/*.ultraaddons-color-heading,*/
+/*.ultraaddons-color-heading,addons-ultraaddons-elementor-pro*/
 p.ultraaddons-info,
+table.wp-list-table.widefat.plugins tr[data-slug='addons-ultraaddons-elementor'] td.plugin-title.column-primary strong,
 table.wp-list-table.widefat.plugins tr[data-slug='ultraaddons-elementor-lite'] td.plugin-title.column-primary strong,
+table.wp-list-table.widefat.plugins tr[data-slug='addons-ultraaddons-elementor-pro'] td.plugin-title.column-primary strong,
 #elementor-panel-category-addons-ultraaddons .elementor-panel-category-title{
     color: #db3157;
     background: linear-gradient(to right, #532d70 0%, #db3157 45%);
@@ -24,7 +26,9 @@ table.wp-list-table.widefat.plugins tr[data-slug='ultraaddons-elementor-lite'] t
 }
 /*.ultraaddons-color-heading:hover,*/
 p.ultraaddons-info:hover,
+table.wp-list-table.widefat.plugins tr[data-slug='addons-ultraaddons-elementor']:hover td.plugin-title.column-primary strong,
 table.wp-list-table.widefat.plugins tr[data-slug='ultraaddons-elementor-lite']:hover td.plugin-title.column-primary strong,
+table.wp-list-table.widefat.plugins tr[data-slug='addons-ultraaddons-elementor-pro']:hover td.plugin-title.column-primary strong,
 #elementor-panel-category-addons-ultraaddons:hover .elementor-panel-category-title {
     background: linear-gradient(to right, #ff0039 0%,#411365 45%);
     background: -webkit-linear-gradient(to right, #ff0039 0%,#411365 100%, #ff0039 68%);
