@@ -12,6 +12,7 @@ use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Background;
 use Elementor\Repeater;
 use Elementor\Utils;
+use Elementor\Icons_Manager;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
@@ -62,6 +63,145 @@ class Image_Accordion extends Base{
      */
     protected function render() {
         $settings = $this->get_settings_for_display();
+        extract($settings);
+        // var_dump($ua_img_accordion_items);
+        // var_dump($settings);
+
+        ?>
+        <div class="ua-widget-container">
+            <div class="ua-image-accordion ultraaddons-image-accordion-wrapper">
+                <?php foreach ( $ua_img_accordion_items as $key => $item ) : ?>
+                    <input type="radio" name="ua_id_<?php echo esc_attr($this->get_id()); ?>" id="ua_id_<?php echo esc_attr($this->get_id()) .'_'. $key; ?>" class="ultraaddons-single-image-accordion--input" <?php echo esc_attr( $item['ua_img_accordion_active'] == 'yes' ? 'checked' : '' ); ?> hidden>
+                    <label for="ua_id_<?php echo esc_attr($this->get_id()) .'_'. $key; ?>" class="ultraaddons-single-image-accordion ua-image-accordion-item" style="background-image: url(<?php echo esc_url($item['ua_img_accordion_bg']['url']); ?>)">
+                        <span class="ultraaddons-accordion-content">
+                        <?php if($item['ua_img_accordion_enable_pupup'] == 'yes' || $item['ua_img_accordion_enable_project_link'] == 'yes') {
+
+                            if (!empty($item['ua_img_accordion_project_link']['url'])) {
+
+                                $this->add_render_attribute('projectlink', 'href', $item['ua_img_accordion_project_link']['url']);
+
+                                if ($item['ua_img_accordion_project_link']['is_external']) {
+                                    $this->add_render_attribute('projectlink', 'target', '_blank');
+                                }
+
+                                if (!empty($item['ua_img_accordion_project_link']['nofollow'])) {
+                                    $this->add_render_attribute('projectlink', 'rel', 'nofollow');
+                                }
+                            }
+
+                            ?>
+                            <span class="ultraaddons-icon-wrapper ua-image-accordion-actions">
+                            <?php if($item['ua_img_accordion_enable_pupup'] == 'yes') { ?>
+                                    <a href="<?php echo esc_url($item['ua_img_accordion_bg']['url']); ?>" class="icon-outline circle" data-elementor-open-lightbox="yes">
+                                    <?php
+
+                                        $migrated = isset( $item['__fa4_migrated']['ua_img_accordion_pup_up_icons'] );
+                                        // Check if its a new widget without previously selected icon using the old Icon control
+                                        $is_new = empty( $item['ua_img_accordion_pup_up_icon'] );
+                                        if ( $is_new || $migrated ) {
+
+                                            // new icon
+                                            Icons_Manager::render_icon( $item['ua_img_accordion_pup_up_icons'], [ 'aria-hidden' => 'true'] );
+                                        } else {
+                                            ?>
+                                            <i class="<?php echo esc_attr($item['ua_img_accordion_pup_up_icon']); ?>" aria-hidden="true"></i>
+                                            <?php
+                                        }
+                                    ?>
+                                    </a>
+                            <?php } ?>
+                            <?php if($item['ua_img_accordion_enable_project_link'] == 'yes') {
+                                    if ( ! empty( $item['ua_img_accordion_project_link']['url'] ) ) {
+                                        $this->add_link_attributes( 'button-2' . $key, $item['ua_img_accordion_project_link'] );
+                                    }
+                                ?>
+                                    <a <?php echo $this->get_render_attribute_string( 'button-2' . $key ); ?> class="icon-outline circle">
+                                    <?php
+                                        $migrated = isset( $item['__fa4_migrated']['ua_img_accordion_project_link_icons'] );
+                                        // Check if its a new widget without previously selected icon using the old Icon control
+                                        $is_new = empty( $item['ua_img_accordion_project_link_icon'] );
+                                        if ( $is_new || $migrated ) {
+
+                                            // new icon
+                                            Icons_Manager::render_icon( $item['ua_img_accordion_project_link_icons'], [ 'aria-hidden' => 'true'] );
+                                        } else {
+                                            ?>
+                                            <i class="<?php echo esc_attr($item['ua_img_accordion_project_link_icon']); ?>" aria-hidden="true"></i>
+                                            <?php
+                                        }
+                                    ?>
+                                    </a>
+                                <?php } ?>
+                            </span>
+                            <?php } ?>
+                            <span class="ultraaddons-accordion-title-wrapper">
+                                <span class="ultraaddons-accordion-title <?php echo esc_attr($item['ua_img_accordion_title_icons'] != '') ? 'icon-title' : ''?>">
+                                <?php if($item['ua_img_accordion_enable_icon']  == 'yes'): ?>
+                                <?php if($item['ua_img_accordion_title_icon_position'] == 'left'): ?>
+                                    <!-- same-1 -->
+                                    <?php
+
+                                        $migrated = isset( $item['__fa4_migrated']['ua_img_accordion_title_icons'] );
+                                        // Check if its a new widget without previously selected icon using the old Icon control
+                                        $is_new = empty( $item['ua_img_accordion_title_icon'] );
+                                        if ( $is_new || $migrated ) {
+
+                                            // new icon
+                                            Icons_Manager::render_icon( $item['ua_img_accordion_title_icons'], [ 'aria-hidden' => 'true'] );
+                                        } else {
+                                            ?>
+                                            <i class="<?php echo esc_attr($item['ua_img_accordion_title_icon']); ?>" aria-hidden="true"></i>
+                                            <?php
+                                        }
+                                    ?>
+                                <?php endif; ?>
+                                <?php endif; ?>
+
+                                <?php echo esc_html($item['ua_img_accordion_title']); ?>
+
+                                <?php if($item['ua_img_accordion_enable_icon']  == 'yes'): ?>
+                                <?php if($item['ua_img_accordion_title_icon_position'] == 'right'): ?>
+                                    <!-- same-1 -->
+                                    <?php
+
+                                        $migrated = isset( $item['__fa4_migrated']['ua_img_accordion_title_icons'] );
+                                        // Check if its a new widget without previously selected icon using the old Icon control
+                                        $is_new = empty( $item['ua_img_accordion_title_icon'] );
+                                        if ( $is_new || $migrated ) {
+
+                                            // new icon
+                                            Icons_Manager::render_icon( $item['ua_img_accordion_title_icons'], [ 'aria-hidden' => 'true'] );
+                                        } else {
+                                            ?>
+                                            <i class="<?php echo esc_attr($item['ua_img_accordion_title_icon']); ?>" aria-hidden="true"></i>
+                                            <?php
+                                        }
+                                    ?>
+                                <?php endif; ?>
+                                <?php endif; ?>
+                                </span>
+                            </span>
+                            <?php if($item['ua_img_accordion_enable_button'] == 'yes'):
+                            
+                                if ( ! empty( $item['ua_img_accordion_button_url']['url'] ) ) {
+                                    $this->add_link_attributes( 'button-' . $key, $item['ua_img_accordion_button_url'] );
+                                }    
+                            ?>
+                                <span class="ultraaddons-btn-wrapper">
+                                    <a class="ua-image-accordion--btn ultraaddons-btn whitespace--normal" <?php echo $this->get_render_attribute_string( 'button-' . $key ); ?>>
+                                        <?php echo esc_html($item['ua_img_accordion_button_label']);?>
+                                    </a>
+                                </span>
+                            <?php endif; ?>
+                        </span>
+                    </label>
+
+
+                <?php endforeach; ?>
+
+            </div>
+        </div>
+        <?php
     }
 
     /**
@@ -209,12 +349,12 @@ class Image_Accordion extends Base{
             $repeater->add_control(
                 'ua_img_accordion_pup_up_icons',
                 [
-                    'label'             => esc_html__('Pupup Icon', 'ultraaddons' ),
+                    'label'             => esc_html__('Popup Icon', 'ultraaddons' ),
                     'type'              => Controls_Manager::ICONS,
                     'fa4compatibility'  => 'ua_img_accordion_pup_up_icon',
                     'default'           => [
-                        'value'     => 'icon icon-plus',
-                        'library'   => 'ekiticons'
+                        'value'     => 'fas fa-plus',
+                        'library'   => 'fa-solid'
                     ],
                     'label_block'       => true,
                     'condition'         => [
@@ -254,8 +394,8 @@ class Image_Accordion extends Base{
                     'type'              => Controls_Manager::ICONS,
                     'fa4compatibility'  => 'ua_img_accordion_project_link_icon',
                     'default'           => [
-                        'value'     => 'icon icon icon-link',
-                        'library'   => 'ekiticons'
+                        'value'     => 'fas fa-link',
+                        'library'   => 'fa-solid'
                     ],
                     'label_block'       => true,
                     'condition'         => [
@@ -291,7 +431,7 @@ class Image_Accordion extends Base{
                         'vertical'      => esc_html__('Vertical', 'ultraaddons' ),
                     ],
                     'default'       => 'horizontal',
-                    'prefix_class'  => 'ekit-image-accordion%s-',
+                    'prefix_class'  => 'ua-image-accordion%s-',
                 ]
             );
 
@@ -305,7 +445,7 @@ class Image_Accordion extends Base{
                         'hover' => esc_html__('Hover', 'ultraaddons' ),
                     ],
                     'default'       => 'click',
-                    'prefix_class'  => 'ekit-image-accordion-',
+                    'prefix_class'  => 'ua-image-accordion-',
                 ]
             );
 
@@ -344,8 +484,8 @@ class Image_Accordion extends Base{
                     'size' => 460,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-single-image-accordion' => 'min-height: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .elementskit-image-accordion-wraper' => 'height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .ultraaddons-single-image-accordion' => 'min-height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .ultraaddons-image-accordion-wrapper' => 'height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -363,8 +503,8 @@ class Image_Accordion extends Base{
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-image-accordion-wraper .elementskit-single-image-accordion' => 'margin-left: {{SIZE}}{{UNIT}}; margin-right: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .elementskit-image-accordion-wraper' => 'margin-left: -{{SIZE}}{{UNIT}}; margin-right: -{{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .ultraaddons-image-accordion-wrapper .ultraaddons-single-image-accordion' => 'margin-left: {{SIZE}}{{UNIT}}; margin-right: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .ultraaddons-image-accordion-wrapper' => 'margin-left: -{{SIZE}}{{UNIT}}; margin-right: -{{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -382,7 +522,7 @@ class Image_Accordion extends Base{
             array(
                 'name'     => 'ua_img_accordion_bg_active_color',
                 'default' => '',
-                'selector' => '{{WRAPPER}} .elementskit-single-image-accordion:before',
+                'selector' => '{{WRAPPER}} .ultraaddons-single-image-accordion:before',
 
             )
         );
@@ -394,7 +534,7 @@ class Image_Accordion extends Base{
                 'size_units' => [ 'px', 'em', '%' ],
                 'separator' => 'before',
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-image-accordion-wraper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .ultraaddons-image-accordion-wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -406,7 +546,7 @@ class Image_Accordion extends Base{
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em', '%' ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-image-accordion-wraper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .ultraaddons-image-accordion-wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -415,7 +555,7 @@ class Image_Accordion extends Base{
             [
                 'name' => 'ua_img_accordion_border_group',
                 'label' => esc_html__( 'Border', 'ultraaddons' ),
-                'selector' => '{{WRAPPER}} .elementskit-image-accordion-wraper',
+                'selector' => '{{WRAPPER}} .ultraaddons-image-accordion-wrapper',
             ]
         );
 
@@ -430,7 +570,7 @@ class Image_Accordion extends Base{
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-image-accordion-wraper' => 'border-radius: {{SIZE}}px;',
+                    '{{WRAPPER}} .ultraaddons-image-accordion-wrapper' => 'border-radius: {{SIZE}}px;',
                 ],
             ]
         );
@@ -438,7 +578,7 @@ class Image_Accordion extends Base{
             Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'ua_img_accordion_shadow',
-                'selector' => '{{WRAPPER}} .elementskit-image-accordion-wraper',
+                'selector' => '{{WRAPPER}} .ultraaddons-image-accordion-wrapper',
             ]
         );
 
@@ -471,7 +611,7 @@ class Image_Accordion extends Base{
 					'unit' => 'px',
 				],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-single-image-accordion .elementskit-accordion-title-wraper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .ultraaddons-single-image-accordion .ultraaddons-accordion-title-wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -482,7 +622,7 @@ class Image_Accordion extends Base{
                 'label' => esc_html_x( 'Title Icon Spacing', 'Border Control', 'ultraaddons' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-single-image-accordion .elementskit-accordion-title-wraper .icon-title > i, {{WRAPPER}} .elementskit-single-image-accordion .elementskit-accordion-title-wraper .icon-title > svg' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .ultraaddons-single-image-accordion .ultraaddons-accordion-title-wrapper .icon-title > i, {{WRAPPER}} .ultraaddons-single-image-accordion .ultraaddons-accordion-title-wrapper .icon-title > svg' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -494,8 +634,8 @@ class Image_Accordion extends Base{
                 'type' => Controls_Manager::COLOR,
                 'default' => '#fff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-image-accordion-wraper .elementskit-accordion-title-wraper .elementskit-accordion-title ' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .elementskit-image-accordion-wraper .elementskit-accordion-title-wraper .elementskit-accordion-title svg path' => 'stroke: {{VALUE}}; fill: {{VALUE}};',
+                    '{{WRAPPER}} .ultraaddons-image-accordion-wrapper .ultraaddons-accordion-title-wrapper .ultraaddons-accordion-title ' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .ultraaddons-image-accordion-wrapper .ultraaddons-accordion-title-wrapper .ultraaddons-accordion-title svg path' => 'stroke: {{VALUE}}; fill: {{VALUE}};',
                 ],
 			]
         );
@@ -518,8 +658,8 @@ class Image_Accordion extends Base{
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-image-accordion-wraper .elementskit-accordion-title-wraper .elementskit-accordion-title i' => 'font-size: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .elementskit-image-accordion-wraper .elementskit-accordion-title-wraper .elementskit-accordion-title svg' => 'max-width: {{SIZE}}{{UNIT}}; height: auto',
+                    '{{WRAPPER}} .ultraaddons-image-accordion-wrapper .ultraaddons-accordion-title-wrapper .ultraaddons-accordion-title i' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .ultraaddons-image-accordion-wrapper .ultraaddons-accordion-title-wrapper .ultraaddons-accordion-title svg' => 'max-width: {{SIZE}}{{UNIT}}; height: auto',
                 ],
             ]
         );
@@ -528,7 +668,7 @@ class Image_Accordion extends Base{
             Group_Control_Typography::get_type(),
             [
                 'name' => 'ua_img_accordion_title_typography_group',
-                'selector' => '{{WRAPPER}} .elementskit-image-accordion-wraper .elementskit-accordion-title-wraper .elementskit-accordion-title',
+                'selector' => '{{WRAPPER}} .ultraaddons-image-accordion-wrapper .ultraaddons-accordion-title-wrapper .ultraaddons-accordion-title',
             ]
         );
 
@@ -569,7 +709,7 @@ class Image_Accordion extends Base{
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-single-image-accordion .elementskit-accordion-content' => 'text-align: {{VALUE}};'
+                    '{{WRAPPER}} .ultraaddons-single-image-accordion .ultraaddons-accordion-content' => 'text-align: {{VALUE}};'
                 ],
                 'default' => 'center',
             ]
@@ -582,7 +722,7 @@ class Image_Accordion extends Base{
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em', '%' ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-single-image-accordion .elementskit-accordion-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .ultraaddons-single-image-accordion .ultraaddons-accordion-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -609,7 +749,7 @@ class Image_Accordion extends Base{
                 ],
                 'default' => 'center',
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-image-accordion-wraper .elementskit-single-image-accordion' => 'align-items: {{VALUE}}',
+                    '{{WRAPPER}} .ultraaddons-image-accordion-wrapper .ultraaddons-single-image-accordion' => 'align-items: {{VALUE}}',
                 ],
             ]
         );
@@ -645,7 +785,7 @@ class Image_Accordion extends Base{
                     'isLinked' => true,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-accordion-content .elementskit-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .ultraaddons-accordion-content .ultraaddons-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -655,7 +795,7 @@ class Image_Accordion extends Base{
             [
                 'name' => 'ua_img_accordion_btn_typography',
                 'label' =>esc_html__( 'Typography', 'ultraaddons' ),
-                'selector' => '{{WRAPPER}} .elementskit-accordion-content .elementskit-btn',
+                'selector' => '{{WRAPPER}} .ultraaddons-accordion-content .ultraaddons-btn',
             ]
         );
 
@@ -675,7 +815,7 @@ class Image_Accordion extends Base{
                 'type' => Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-accordion-content .elementskit-btn' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .ultraaddons-accordion-content .ultraaddons-btn' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -684,7 +824,7 @@ class Image_Accordion extends Base{
             array(
                 'name' => 'ua_img_accordion_btn_bg_color_group',
 				'label' => esc_html__( 'Background', 'ultraaddons' ),
-                'selector' => '{{WRAPPER}} .elementskit-accordion-content .elementskit-btn',
+                'selector' => '{{WRAPPER}} .ultraaddons-accordion-content .ultraaddons-btn',
 				'fields_options' => [
                     'background' => [
 						'color' => [
@@ -712,7 +852,7 @@ class Image_Accordion extends Base{
             [
                 'name' => 'ua_img_accordion_btn_border_group',
                 'label' => esc_html__( 'Border', 'ultraaddons' ),
-                'selector' => '{{WRAPPER}} .elementskit-accordion-content .elementskit-btn',
+                'selector' => '{{WRAPPER}} .ultraaddons-accordion-content .ultraaddons-btn',
 				'fields_options' => [
                     'border' => [
                         'default' => 'solid',
@@ -741,7 +881,7 @@ class Image_Accordion extends Base{
                 'size_units' => [ 'px', '%' ],
 				'default' => ['top' => '5', 'bottom' => '5', 'left' => '5', 'right' => '5', 'unit' => 'px'],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-accordion-content .elementskit-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .ultraaddons-accordion-content .ultraaddons-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -762,7 +902,7 @@ class Image_Accordion extends Base{
                 'type' => Controls_Manager::COLOR,
                 'default' => '#fff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-accordion-content .elementskit-btn:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .ultraaddons-accordion-content .ultraaddons-btn:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -772,7 +912,7 @@ class Image_Accordion extends Base{
             array(
                 'name'     => 'ua_img_accordion_btn_bg_hover_color_group',
                 'default' => '',
-                'selector' => '{{WRAPPER}} .elementskit-accordion-content .elementskit-btn:hover',
+                'selector' => '{{WRAPPER}} .ultraaddons-accordion-content .ultraaddons-btn:hover',
             )
         );
 
@@ -790,7 +930,7 @@ class Image_Accordion extends Base{
             [
                 'name' => 'ua_img_accordion_btn_border_hover_group',
                 'label' => esc_html__( 'Border', 'ultraaddons' ),
-                'selector' => '{{WRAPPER}} .elementskit-accordion-content .elementskit-btn:hover',
+                'selector' => '{{WRAPPER}} .ultraaddons-accordion-content .ultraaddons-btn:hover',
             ]
         );
 
@@ -801,7 +941,7 @@ class Image_Accordion extends Base{
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-accordion-content .elementskit-btn:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .ultraaddons-accordion-content .ultraaddons-btn:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -834,7 +974,7 @@ class Image_Accordion extends Base{
                 'label'     => esc_html__( 'Width', 'ultraaddons' ),
                 'type'      => Controls_Manager::SLIDER,
                 'selectors' => [
-                    '{{WRAPPER}} .ekit-image-accordion-actions > a' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .ua-image-accordion-actions > a' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ]
             ]
         );
@@ -851,7 +991,7 @@ class Image_Accordion extends Base{
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-single-image-accordion .elementskit-icon-wraper > a:not(:last-child)' => 'margin-right: {{SIZE}}px',
+                    '{{WRAPPER}} .ultraaddons-single-image-accordion .ultraaddons-icon-wrapper > a:not(:last-child)' => 'margin-right: {{SIZE}}px',
                 ],
             ]
         );
@@ -862,7 +1002,7 @@ class Image_Accordion extends Base{
                 'label' => esc_html_x( 'Icon Container Spacing', 'Border Control', 'ultraaddons' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-single-image-accordion .elementskit-icon-wraper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .ultraaddons-single-image-accordion .ultraaddons-icon-wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -874,7 +1014,7 @@ class Image_Accordion extends Base{
                 'type'          => Controls_Manager::NUMBER,
                 'placeholder'   => '1',
                 'selectors'     => [
-                    '{{WRAPPER}} .ekit-image-accordion-actions > a' => 'border-width: {{VALUE}}px;',
+                    '{{WRAPPER}} .ua-image-accordion-actions > a' => 'border-width: {{VALUE}}px;',
                 ],
             ]
         );
@@ -894,8 +1034,8 @@ class Image_Accordion extends Base{
                 'label' => esc_html__( 'Popup Icon Color', 'ultraaddons' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-icon-wraper a:first-child' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .elementskit-icon-wraper a:first-child svg path' => 'fill: {{VALUE}};',
+                    '{{WRAPPER}} .ultraaddons-icon-wrapper a:first-child' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .ultraaddons-icon-wrapper a:first-child svg path' => 'fill: {{VALUE}};',
                 ],
             ]
         );
@@ -906,8 +1046,8 @@ class Image_Accordion extends Base{
                 'label' => esc_html__( 'Link Icon Color', 'ultraaddons' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-icon-wraper a:last-child' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .elementskit-icon-wraper a:last-child svg path'   => 'fill: {{VALUE}};',
+                    '{{WRAPPER}} .ultraaddons-icon-wrapper a:last-child' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .ultraaddons-icon-wrapper a:last-child svg path'   => 'fill: {{VALUE}};',
                 ],
             ]
         );
@@ -918,7 +1058,7 @@ class Image_Accordion extends Base{
                 'label'     => esc_html__( 'Background Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ekit-image-accordion-actions > a' => 'background-color: {{VALUE}}; border-color: {{VALUE}};',
+                    '{{WRAPPER}} .ua-image-accordion-actions > a' => 'background-color: {{VALUE}}; border-color: {{VALUE}};',
                 ],
             ]
         );
@@ -938,8 +1078,8 @@ class Image_Accordion extends Base{
                 'label' => esc_html__( 'Popup Icon color', 'ultraaddons' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-icon-wraper a:first-child:hover' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .elementskit-icon-wraper a:first-child:hover svg path'   => 'fill: {{VALUE}};',
+                    '{{WRAPPER}} .ultraaddons-icon-wrapper a:first-child:hover' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .ultraaddons-icon-wrapper a:first-child:hover svg path'   => 'fill: {{VALUE}};',
                 ],
             ]
         );
@@ -950,8 +1090,8 @@ class Image_Accordion extends Base{
                 'label' => esc_html__( 'Link Icon color', 'ultraaddons' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-icon-wraper a:last-child:hover' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .elementskit-icon-wraper a:last-child:hover svg path'   => 'fill: {{VALUE}};',
+                    '{{WRAPPER}} .ultraaddons-icon-wrapper a:last-child:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .ultraaddons-icon-wrapper a:last-child:hover svg path'   => 'fill: {{VALUE}};',
                 ],
             ]
         );
@@ -962,7 +1102,7 @@ class Image_Accordion extends Base{
                 'label'     => esc_html__( 'Background Color (Hover)', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ekit-image-accordion-actions > a:hover' => 'background-color: {{VALUE}}; border-color: {{VALUE}};',
+                    '{{WRAPPER}} .ua-image-accordion-actions > a:hover' => 'background-color: {{VALUE}}; border-color: {{VALUE}};',
                 ],
             ]
         );
