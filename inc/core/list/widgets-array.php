@@ -315,7 +315,16 @@ $widgetsArray = [
     'Image_Accordion' => [
             'name'  => __( 'Image Accordion', 'ultraaddons' ),
             'is_pro'   => false,
-            'icon'      => 'eicon-time-line',
+            'icon'      => 'eicon-accordion',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
+    'Product_Accordion' => [
+            'name'  => __( 'Product Accordion', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-accordion',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
