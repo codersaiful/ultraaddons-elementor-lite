@@ -86,16 +86,18 @@ class Product_Accordion extends Base{
                         $add_to_cart_url = home_url( $wp->request ) . '/?add-to-cart='. $item['ua_product_id'] .'&quantity=1';
                         // var_dump($add_to_cart_url);
                         $src_url = wp_get_attachment_url( $attachment_id );
-                        if ( $src_url ) {
+                        if( isset( $item['ua_img_accordion_bg_enable'] ) && $item['ua_img_accordion_bg_enable'] == 'yes' ){
+                            $bg_link = $item['ua_img_accordion_bg']['url'];
+                        }elseif ( $src_url ) {
                             $bg_link = $src_url;
                         }else{
-                            $bg_link = $item['ua_img_accordion_bg']['url'];
+                            $bg_link = $item['ua_img_accordion_bg_empty_id']['url'];
                         }
                     }else{
                         if( isset( $item['ua_img_accordion_title'] ) && ! empty( $item['ua_img_accordion_title'] ) ){
                             $product_title = $item['ua_img_accordion_title'];
                         }
-                        $bg_link = $item['ua_img_accordion_bg']['url'];
+                        $bg_link = $item['ua_img_accordion_bg_empty_id']['url'];
                     }
                     ?>
                     <input type="radio" name="ua_id_<?php echo esc_attr($this->get_id()); ?>" id="ua_id_<?php echo esc_attr($this->get_id()) .'_'. $key; ?>" class="ultraaddons-single-product-accordion--input" <?php echo esc_attr( $item['ua_img_accordion_active'] == 'yes' ? 'checked' : '' ); ?> hidden>
@@ -217,10 +219,11 @@ class Product_Accordion extends Base{
                             </span>
                             <?php endif; ?>
 
-                            <?php 
-                            // var_dump($item['ua_img_accordion_button_url']);
+                            <?php
                             if($item['ua_img_accordion_enable_button'] == 'yes'):
-                                if( ! empty( $add_to_cart_url ) ){
+                                if ( ! empty( $item['ua_img_accordion_button_url']['url'] ) ) {
+                                    $this->add_link_attributes( 'button-' . $key, $item['ua_img_accordion_button_url'] );
+                                }elseif( ! empty( $add_to_cart_url ) ){
                                     $custom_attributes = array(
                                         'url' => $add_to_cart_url,
                                         'is_external' => '',
@@ -228,8 +231,6 @@ class Product_Accordion extends Base{
                                         'custom_attributes' =>'',
                                     );
                                     $this->add_link_attributes( 'button-' . $key, $custom_attributes );
-                                }elseif ( ! empty( $item['ua_img_accordion_button_url']['url'] ) ) {
-                                    $this->add_link_attributes( 'button-' . $key, $item['ua_img_accordion_button_url'] );
                                 }
                             ?>
                                 <span class="ultraaddons-btn-wrapper">
@@ -279,21 +280,6 @@ class Product_Accordion extends Base{
                 ]
             );
 
-            // $repeater->add_control(
-            //     'ua_product_id',
-            //     [
-            //         'label' => __( 'Product', 'ultraaddons' ),
-            //         'type' => Module::QUERY_CONTROL_ID,
-            //         'options' => [],
-            //         'label_block' => true,
-            //         'autocomplete' => [
-            //             'object' => Module::QUERY_OBJECT_POST,
-            //             'query' => [
-            //                 'post_type' => [ 'product' ],
-            //             ],
-            //         ],
-            //     ]
-            // );
             $repeater->add_control(
                 'ua_product_id',
                 [
@@ -304,14 +290,45 @@ class Product_Accordion extends Base{
             );
 
             $repeater->add_control(
+                'ua_img_accordion_bg_enable',
+                [
+                    'label'         => esc_html__( 'Enable Custom Background', 'ultraaddons' ),
+                    'type'          => Controls_Manager::SWITCHER,
+                    'label_on'      => esc_html__( 'Yes', 'ultraaddons' ),
+                    'label_off'     => esc_html__( 'No', 'ultraaddons' ),
+                    'return_value'  => 'yes',
+                    'default'       => '',
+                ]
+            );
+
+            $repeater->add_control(
                 'ua_img_accordion_bg',
                 [
                     'label'     => esc_html__( 'Background Image', 'ultraaddons' ),
                     'type'      => Controls_Manager::MEDIA,
                     'default'   => [
-                        'url' => Utils::get_placeholder_image_src(),
+                        'url'   => Utils::get_placeholder_image_src(),
                         'id'    => -1
                     ],
+                    'condition' => [
+                        'ua_img_accordion_bg_enable' => 'yes',
+                        'ua_product_id!' => '',
+                    ]
+                ]
+            );
+            $repeater->add_control(
+                'ua_img_accordion_bg_empty_id',
+                [
+                    'label'     => esc_html__( 'Background Image', 'ultraaddons' ),
+                    'type'      => Controls_Manager::MEDIA,
+                    'default'   => [
+                        'url'   => Utils::get_placeholder_image_src(),
+                        'id'    => -1
+                    ],
+                    'condition' => [
+                        'ua_img_accordion_bg_enable' => '',
+                        'ua_product_id' => '',
+                    ]
                 ]
             );
 
@@ -417,7 +434,6 @@ class Product_Accordion extends Base{
                     'type'      => Controls_Manager::URL,
                     'condition' => [
                         'ua_img_accordion_enable_button' => 'yes',
-                        'ua_product_id' => '',
                     ],
                 ]
             );
