@@ -4,7 +4,7 @@
  * Plugin URI: https://ultraaddons.com/
  * Description: Elementor Addons Plugin. Build your desired page just few click. Easy to use and useable for any theme and plugin. Available many filter.
  * Version: 1.0.9
- * Author: codersaiful
+ * Author: CodeAstrology
  * Author URI: https://profiles.wordpress.org/codersaiful/#content-plugins
  * License: GPL3+
  * License URI: http://www.gnu.org/licenses/gpl.html
@@ -12,9 +12,9 @@
  * Domain Path: /languages/
  * 
  * Requires at least:    4.0.0
- * Tested up to:         5.7.2
+ * Tested up to:         5.8
  * WC requires at least: 3.0.0
- * WC tested up to: 	 5.4.1
+ * WC tested up to: 	 5.6.2
  * Elementor tested up to: 3.4.0
  * Elementor Pro tested up to: 5.11.0
  *
