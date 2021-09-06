@@ -159,9 +159,9 @@ class Accordion extends Base{
                     <div class="ua_accordion_item ua_accordion_style_08 ua-accordion-wrapper">
                         <div <?php echo $this->get_render_attribute_string( $tab_title_setting_key ); ?>>
                             <?php if ( $has_title_text ) : ?>
-                                <<?php echo esc_html( droit_title_tag( $item['_ua_accordions_title_size'] ) ); ?> class="ua_accordion_title ua-accordions-title">
+                                <<?php echo esc_html( ultraaddons_title_tag( $item['_ua_accordions_title_size'] ) ); ?> class="ua_accordion_title ua-accordions-title">
                                     <?php echo do_shortcode($item['_ua_accordions_title']); ?>
-                                </<?php echo esc_html( droit_title_tag( $item['_ua_accordions_title_size'] ) ); ?>>
+                                </<?php echo esc_html( ultraaddons_title_tag( $item['_ua_accordions_title_size'] ) ); ?>>
                             <?php endif; ?>
                             <div class="ua-icon">
                                 <?php 
@@ -205,13 +205,13 @@ class Accordion extends Base{
                                 <div class="ua_accordion_inner_content">
                                     <?php if ( $has_description_text ) : ?>
                                     <p class="ua_desc">
-                                        <?php echo do_shortcode($item['_ua_accordions_description_text']); ?>
+                                        <?php echo do_shortcode( $item['_ua_accordions_description_text'] ); ?>
                                     </p>
                                     <?php endif; ?>
                                     
                                     <?php if ( 'yes' == $item['_ua_accordions_button_show'] ) : ?>
                                         <a <?php echo $link_attributes; ?> class="ua_cu_btn btn_2 ua-accordion-button">
-                                            <?php echo droit_addons_kses($item['_ua_accordions_button_text']); ?>
+                                            <?php echo ultraaddons_addons_kses( $item['_ua_accordions_button_text'] ); ?>
                                         </a>
                                     <?php endif; ?>
                                 </div>
@@ -450,7 +450,7 @@ class Accordion extends Base{
                 'label'      => __('Image','ultraaddons'),
                 'type'       => Controls_Manager::MEDIA,
                 'default'    => [
-                    'url' => droit_placeholder_image_src(),
+                    'url' => Utils::get_placeholder_image_src(),
                 ],
                 'show_label' => false,
                 'condition' => [
