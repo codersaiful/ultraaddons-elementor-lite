@@ -42,6 +42,7 @@
 } (jQuery, window));
 
 /*
+//To take help/idea from elementor. we have kept this part of comment.
   (0, _createClass2.default)(_default, [{
     key: "addCustomCss",
     value: function addCustomCss(css, context) {
