@@ -79,10 +79,10 @@ class Custom_CSS {
 			return;
 		}
 
-		$this->add_controls_section( __Class__, $element );
+		self::add_controls_section( __Class__, $element );
 	}
 
-    public function add_controls_section( $element ) {
+    public static function add_controls_section( $element ) {
 
         $old_section = Plugin::elementor()->controls_manager->get_control_from_stack( $element->get_unique_name(), 'section_custom_css_pro' );
 
