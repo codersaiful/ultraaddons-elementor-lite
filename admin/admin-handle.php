@@ -149,13 +149,17 @@ class Admin_Handle{
             add_submenu_page($parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function, $position);
         }
         
-        /**
-         * Get pro link added 
-         * Here
-         * 
-         * @since 1.0.8.0
-         */
-        add_submenu_page( 'ultraaddons-elementor-lite', esc_html__( 'GET PRO', 'ultraaddons' ),  __( 'GET PRO', 'ultraaddons' ), self::$capability, 'https://codecanyon.net/item/ultraaddons-elementor-lite-pro/33337985?ref=CodeAstrology&utm_source=UltraAddons_Installed_Plugin',null,null );
+        if( ! did_action( 'ultraaddons_pro_init' ) ){
+            /**
+             * Get pro link added 
+             * Here
+             * 
+             * @since 1.0.8.0
+             */
+            add_submenu_page( 'ultraaddons-elementor-lite', esc_html__( 'GET PRO', 'ultraaddons' ),  __( 'GET PRO', 'ultraaddons' ), self::$capability, 'https://codecanyon.net/item/ultraaddons-elementor-lite-pro/33337985?ref=CodeAstrology&utm_source=UltraAddons_Installed_Plugin',null,null );
+
+        }
+        
     }
     
     /**

@@ -277,3 +277,64 @@ function ultraaddons_parse_text_editor( $content ) {
     }
     return $content;
 }
+
+function ultraaddons_allowed_html_tags( $level = 'basic' ) {
+    $allowed_html = [
+        'b' => [],
+        'i' => [],
+        'u' => [],
+        'em' => [],
+        'br' => [],
+        'img' => [
+            'src' => [],
+            'alt' => [],
+            'height' => [],
+            'width' => [],
+        ],
+        'abbr' => [
+            'title' => [],
+        ],
+        'span' => [
+            'class' => [],
+        ],
+        'strong' => [],
+    ];
+
+    if ( $level === 'advanced' ) {
+        $advanced = [
+            'acronym' => [
+                'title' => [],
+            ],
+            'q' => [
+                'cite' => [],
+            ],
+            'img' => [
+                'src' => [],
+                'alt' => [],
+                'height' => [],
+                'width' => [],
+            ],
+            
+            'time' => [
+                'datetime' => [],
+            ],
+            'cite' => [
+                'title' => [],
+            ],
+            'a' => [
+                'href' => [],
+                'title' => [],
+                'class' => [],
+                'id' => [],
+            ],
+        ];
+
+        $allowed_html = array_merge( $allowed_html, $advanced);
+    }
+
+    return $allowed_html;
+}
+
+function ultraaddons_addons_kses( $string = '', $level = 'basic' ) {
+    return wp_kses( $string, ultraaddons_allowed_html_tags( $level ) );
+}

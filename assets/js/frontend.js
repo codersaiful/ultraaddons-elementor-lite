@@ -144,6 +144,27 @@
                             });
                     }
             );
+
+            EF.hooks.addAction(
+                'frontend/element_ready/ultraaddons-accordion.default',
+                function($scope, $) {
+           
+                    var t = $scope.find(".ua-accordion-wrapper"),
+                        h = $scope.find(".ua_accordion_item_title"),
+                        r = $scope.data("type"),
+                        s = 400;
+                        h.each(function () {
+                            $(this).hasClass("ua-active-default") && ($(this).addClass("ua-open ua-active"), $(this).next().slideDown(s));
+                        }),
+                        h.click(function (e) {
+                            e.preventDefault();
+                            var $this = $(this);
+                            // $this.closest('.ua-accordion-wrapper').toggleClass('ua-active-wrapper'),
+                            $this.hasClass("ua-open") ? ($this.removeClass("ua-open ua-active"), $this.next().slideUp(s)) : ($this.parent().parent().find(h).removeClass("ua-open ua-active"), 
+                            $this.parent().parent().find(".ua_accordion_panel").slideUp(s), 
+                            $this.toggleClass("ua-open ua-active"), $this.next().slideToggle(s))
+                        });
+                });
     
     
 //                //Elementor Open Editor https://code.elementor.com/js-hooks/#panelopen_editorelementType 

@@ -11,8 +11,31 @@ class Transform {
 
 	public static function init() {
 		add_action( 'elementor/element/common/_section_style/after_section_end', [ __CLASS__, 'add_controls_section' ], 1 );
+                
+                /**
+                 * CSS Transform /
+                 * Inline Script
+                 */
+                add_action( 'elementor/frontend/after_enqueue_styles', [ __CLASS__, 'enqueue_inline_scripts' ] );
+                add_action( 'elementor/preview/enqueue_scripts', [ __CLASS__, 'enqueue_inline_scripts' ] );
 	}
 
+        public static function enqueue_inline_scripts() {
+            $css = '';
+                    $common_css = ULTRA_ADDONS_DIR . 'assets/css/common.min.css';
+
+
+            if ( is_readable( $common_css ) ) {
+                $css .= file_get_contents( $common_css );
+            };
+            wp_add_inline_style(
+                'elementor-frontend',
+                $css
+            );
+
+        }
+        
+        
 	public static function add_controls_section( Element_Base $element) {
 		$tabs = Controls_Manager::TAB_STYLE;
 

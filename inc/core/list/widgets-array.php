@@ -312,6 +312,33 @@ $widgetsArray = [
             ],
     ],
     
+    'Image_Accordion' => [
+            'name'  => __( 'Image Accordion', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-accordion',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
+    'Product_Accordion' => [
+            'name'  => __( 'Product Accordion', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-accordion',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
+    'Accordion' => [
+            'name'  => __( 'Accordion', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-accordion',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
 ];
 
 return apply_filters( 'ultraaddons/widgets/array', $widgetsArray );
