@@ -19,9 +19,8 @@ class Custom_CSS {
 
         add_action( 'elementor/element/after_section_end', [ __CLASS__, 'register_controls' ], 10, 2 );
         add_action( 'elementor/element/parse_css', [ __CLASS__, 'add_post_css' ], 10, 2 );
-		add_action( 'elementor/css-file/post/parse', [ __CLASS__, 'add_page_settings_css' ] );
+	add_action( 'elementor/css-file/post/parse', [ __CLASS__, 'add_page_settings_css' ] );
 
-        add_filter( 'elementor_pro/editor/localize_settings', [ __CLASS__, 'localize_settings' ] );
     }
 
     /**
@@ -91,21 +90,22 @@ class Custom_CSS {
 
         $old_section = self::elementor()->controls_manager->get_control_from_stack( $element->get_unique_name(), 'section_custom_css_pro' );
 
-		self::elementor()->controls_manager->remove_control_from_stack( $element->get_unique_name(), [ 'section_custom_css_pro', 'custom_css_pro' ] );
+	self::elementor()->controls_manager->remove_control_from_stack( $element->get_unique_name(), [ 'section_custom_css_pro', 'custom_css_pro' ] );
 
+        $tabs = Controls_Manager::TAB_STYLE;
 
         $element->start_controls_section(
 			'ua_section_custom_css',
 			[
-				'label' => __( 'Custom CSS UA', 'elementor-pro' ),
-				'tab' => $old_section['tab'],
+				'label' => __( 'Custom CSS', 'ultraaddons' ) . ultraaddons_icon_markup(),
+				'tab' => $tabs,//$old_section['tab'],
 			]
 		);
 
 		$element->add_control(
 			'ua_custom_css_title',
 			[
-				'raw' => __( 'Add your own custom CSS here', 'elementor-pro' ),
+				'raw' => __( 'Add your own custom CSS here', 'ultraaddons' ),
 				'type' => Controls_Manager::RAW_HTML,
 			]
 		);
@@ -114,7 +114,7 @@ class Custom_CSS {
 			'ua_custom_css',
 			[
 				'type' => Controls_Manager::CODE,
-				'label' => __( 'Custom CSS', 'elementor-pro' ),
+				'label' => __( 'Custom CSS', 'ultraaddons' ),
 				'language' => 'css',
 				'render_type' => 'ui',
 				'show_label' => false,
@@ -125,7 +125,7 @@ class Custom_CSS {
 		$element->add_control(
 			'ua_custom_css_description',
 			[
-				'raw' => __( 'Use "selector" to target wrapper element. Examples:<br>selector {color: red;} // For main element<br>selector .child-element {margin: 10px;} // For child element<br>.my-class {text-align: center;} // Or use any custom selector', 'elementor-pro' ),
+				'raw' => __( 'Use "selector" to target wrapper element. Examples:<br>selector {color: red;} // For main element<br>selector .child-element {margin: 10px;} // For child element<br>.my-class {text-align: center;} // Or use any custom selector', 'ultraaddons' ),
 				'type' => Controls_Manager::RAW_HTML,
 				'content_classes' => 'elementor-descriptor',
 			]
@@ -136,7 +136,7 @@ class Custom_CSS {
     }
 
     public static function localize_settings( array $settings ) {
-		$settings['i18n']['custom_css'] = __( 'Custom CSS', 'elementor-pro' );
+		$settings['i18n']['custom_css'] = __( 'Custom CSS', 'ultraaddons' );
 
 		return $settings;
 	}
