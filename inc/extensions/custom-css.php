@@ -5,12 +5,16 @@ use Elementor\Controls_Manager;
 use Elementor\Element_Base;
 use Elementor\Controls_Stack;
 use Elementor\Core\DynamicTags\Dynamic_CSS;
-use ElementorPro\Base\Module_Base;
-use ElementorPro\Plugin;
+use Elementor\Plugin;
 
 defined('ABSPATH') || die();
 
 class Custom_CSS {
+
+    public static function elementor() {
+		return \Elementor\Plugin::$instance;
+	}
+    
     public static function init() {
 
         add_action( 'elementor/element/after_section_end', [ __CLASS__, 'register_controls' ], 10, 2 );
@@ -24,18 +28,18 @@ class Custom_CSS {
 	 * @param $post_css Post
 	 * @param $element  Element_Base
 	 */
-	public function add_post_css( $post_css, $element ) {
+	public static function add_post_css( $post_css, $element ) {
 		if ( $post_css instanceof Dynamic_CSS ) {
 			return;
 		}
 
 		$element_settings = $element->get_settings();
 
-		if ( empty( $element_settings['custom_css'] ) ) {
+		if ( empty( $element_settings['ua_custom_css'] ) ) {
 			return;
 		}
 
-		$css = trim( $element_settings['custom_css'] );
+		$css = trim( $element_settings['ua_custom_css'] );
 
 		if ( empty( $css ) ) {
 			return;
@@ -51,9 +55,9 @@ class Custom_CSS {
     /**
 	 * @param $post_css Post
 	 */
-	public function add_page_settings_css( $post_css ) {
-		$document = Plugin::elementor()->documents->get( $post_css->get_post_id() );
-		$custom_css = $document->get_settings( 'custom_css' );
+	public static function add_page_settings_css( $post_css ) {
+		$document = self::elementor()->documents->get( $post_css->get_post_id() );
+		$custom_css = $document->get_settings( 'ua_custom_css' );
 
 		$custom_css = trim( $custom_css );
 
@@ -79,26 +83,26 @@ class Custom_CSS {
 			return;
 		}
 
-		$this->add_controls_section( __Class__, $element );
+		self::add_controls_section( $element );
 	}
 
-    public function add_controls_section( $element ) {
+    public static function add_controls_section( $element ) {
 
-        $old_section = Plugin::elementor()->controls_manager->get_control_from_stack( $element->get_unique_name(), 'section_custom_css_pro' );
+        $old_section = self::elementor()->controls_manager->get_control_from_stack( $element->get_unique_name(), 'section_custom_css_pro' );
 
-		Plugin::elementor()->controls_manager->remove_control_from_stack( $element->get_unique_name(), [ 'section_custom_css_pro', 'custom_css_pro' ] );
+		self::elementor()->controls_manager->remove_control_from_stack( $element->get_unique_name(), [ 'section_custom_css_pro', 'custom_css_pro' ] );
 
 
         $element->start_controls_section(
-			'section_custom_css',
+			'ua_section_custom_css',
 			[
-				'label' => __( 'Custom CSS', 'elementor-pro' ),
+				'label' => __( 'Custom CSS UA', 'elementor-pro' ),
 				'tab' => $old_section['tab'],
 			]
 		);
 
 		$element->add_control(
-			'custom_css_title',
+			'ua_custom_css_title',
 			[
 				'raw' => __( 'Add your own custom CSS here', 'elementor-pro' ),
 				'type' => Controls_Manager::RAW_HTML,
@@ -106,7 +110,7 @@ class Custom_CSS {
 		);
 
 		$element->add_control(
-			'custom_css',
+			'ua_custom_css',
 			[
 				'type' => Controls_Manager::CODE,
 				'label' => __( 'Custom CSS', 'elementor-pro' ),
@@ -118,7 +122,7 @@ class Custom_CSS {
 		);
 
 		$element->add_control(
-			'custom_css_description',
+			'ua_custom_css_description',
 			[
 				'raw' => __( 'Use "selector" to target wrapper element. Examples:<br>selector {color: red;} // For main element<br>selector .child-element {margin: 10px;} // For child element<br>.my-class {text-align: center;} // Or use any custom selector', 'elementor-pro' ),
 				'type' => Controls_Manager::RAW_HTML,
@@ -130,7 +134,7 @@ class Custom_CSS {
 
     }
 
-    public function localize_settings( array $settings ) {
+    public static function localize_settings( array $settings ) {
 		$settings['i18n']['custom_css'] = __( 'Custom CSS', 'elementor-pro' );
 
 		return $settings;
