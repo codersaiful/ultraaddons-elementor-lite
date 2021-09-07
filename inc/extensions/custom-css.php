@@ -84,6 +84,7 @@ class Custom_CSS {
 		}
 
 		self::add_controls_section( $element );
+
 	}
 
     public static function add_controls_section( $element ) {
