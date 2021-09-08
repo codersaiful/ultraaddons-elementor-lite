@@ -339,6 +339,15 @@ $widgetsArray = [
             ],
     ],
     
+    'Drop_Caps' => [
+            'name'  => __( 'Drop Caps', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-accordion',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
 ];
 
 return apply_filters( 'ultraaddons/widgets/array', $widgetsArray );
