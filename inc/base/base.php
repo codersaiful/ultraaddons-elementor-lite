@@ -35,6 +35,92 @@ defined( 'ABSPATH' ) || die();
  * @todo Remove return [ 'basic' ]; from get_catogories method.
  */
 class Base extends Widget_Base{
+    
+    /**
+     * Mainly called for register Style
+     * Added at V1.0.9.1 at: 8 Sept, 2021
+     * By: Saiful Islam
+     * 
+     * @since 1.0.9.1
+     * @author Saiful Islam<codersaiful@gmail.com>
+     * 
+     * @param Array $data Construction param
+     * @param Array $args Construction param
+     */
+//    public function __construct($data = [], $args = null) {
+//        parent::__construct($data, $args);
+//       
+//        $name = $this->get_pure_name();
+//        $name = str_replace('_','-', $name);
+//        $name = strtolower( $name );
+//        $handle = 'ultraaddons-' . $name;
+//        $handle = $this->get_css_handle();
+//
+//        $deps = ['ultraaddons-widgets-style'];
+//        $ver  = ULTRA_ADDONS_VERSION;
+//        $media= 'all';
+//
+//        $src = ULTRA_ADDONS_ASSETS . 'css/widgets/' . strtolower( $name ) . '.css';
+//
+//        $css_file_dir = ULTRA_ADDONS_DIR . 'assets/css/widgets/' . strtolower( $name ) . '.css';
+//
+//
+//        $pass_css = false; 
+//        if( defined( 'ULTRA_ADDONS_PRO_ASSETS' ) && isset( $widget['is_pro'] ) && $widget['is_pro'] ){
+//
+//            $src_pro = ULTRA_ADDONS_PRO_ASSETS . 'css/widgets/' . strtolower( $name ) . '.css';
+//            $css_file_dir_pro = ULTRA_ADDONS_PRO_DIR . 'assets/css/widgets/' . strtolower( $name ) . '.css';
+//
+//            if( is_file( $css_file_dir_pro ) ){
+//                //Direct pass as we founded it in Pro folder
+//                $pass_css = true;
+//                $src = $src_pro;
+//                $css_file_dir = $css_file_dir_pro;
+//            }
+//        }
+//
+//        if( $pass_css || is_file( $css_file_dir ) ){ //$pass_css - If true, we will not check again file exist
+//             wp_register_style( $handle, $src, $deps, $ver, $media );
+//        }
+//    }
+    
+    /**
+     * Method Override.
+     * Used Elementor's defined method.
+     * 
+     * @since 1.0.9.1
+     * @author Saiful Islam<codersaiful@gmail.com>
+     * 
+     * @return Array return as Array
+     */
+//    public function get_style_depends() {
+//        $name = $this->get_pure_name();
+//        $name = str_replace('_','-', $name);
+//        $name = strtolower( $name );
+//        $handle = 'ultraaddons-' . $name;
+//        $handle = $this->get_css_handle();
+//        return [$handle];
+//    }
+
+    /**
+     * Custom Made Method
+     * Basically to catch handle name from class name.
+     * 
+     * Our defined handle name has come from Class name
+     * 
+     * @since 1.0.9.1
+     * @author Saiful Islam<codersaiful@gmail.com>
+     * 
+     * @return String
+     */
+//    protected function get_css_handle(){
+//        $name = $this->get_pure_name();
+//        $name = str_replace('_','-', $name);
+//        $name = strtolower( $name );
+//        $handle = 'ultraaddons-' . $name;
+//        return $handle;
+//    }
+
 
     /**
      * Get widget name. Actually I will not re-declare widget name from main Widget
