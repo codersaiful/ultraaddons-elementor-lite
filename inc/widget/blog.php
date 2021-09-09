@@ -1945,7 +1945,6 @@ protected function get_grid_layout_four_options( array $settings ) {
         $metro_layout_count = count( $metro_layout );
         $metro_item_count   = 0;
         $count              = $query_posts->post_count;
-        var_dump($metro_layout, $count);
         ?>
 
             <div <?php $this->print_render_attribute_string( 'wrapper' ); ?>>
@@ -1957,7 +1956,6 @@ protected function get_grid_layout_four_options( array $settings ) {
 
                         $this->current_permalink = get_permalink();
                         $classes = "grid-item";
-                        var_dump($metro_item_count);
                         $size   = $metro_layout[ $metro_item_count ];
 
                         $ratio  = explode( ':', $size );
