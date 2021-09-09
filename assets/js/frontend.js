@@ -18,6 +18,36 @@
             var EF = elementorFrontend,
                 EM = elementorModules;
             
+            var ModuleBase = elementorModules.frontend.handlers.Base;
+            var CusttomCSS;
+
+
+            CusttomCSS = ModuleBase.extend({
+                bindEvents: function(){
+                    this.run();
+                },
+                onElementChange:function(){
+                    this.run();
+                },
+                getDefaultSettings:function(){
+                    return {
+                        target: this.$element
+                    }
+                },
+                getCss:function(){
+                    return this.getElementSettings('ua_custom_css');
+                },
+                run:function(){
+                    var cssRules = this.getCss();
+                    $('<style>' + cssRules + '</style>').appendTo('head');
+                }
+            });
+
+            EF.hooks.addAction( 'frontend/element_ready/widget', function( $scope ) {
+                EF.elementsHandler.addHandler( CusttomCSS, { $element: $scope });
+            });
+            
+            
             /**
              * Default Slider is Carousel Slider for UltraAddons.
              * 

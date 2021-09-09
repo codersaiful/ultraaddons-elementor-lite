@@ -119,6 +119,7 @@ class Custom_CSS {
 				'render_type' => 'ui',
 				'show_label' => false,
 				'separator' => 'none',
+                                'frontend_available' => true,
 			]
 		);
 
