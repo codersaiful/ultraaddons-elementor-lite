@@ -246,6 +246,33 @@ class Admin_Handle{
     }
     
     /**
+     * Generated sub menu.
+     * Use for Dashbard -> UltraAddons -> Menu Tab
+     * Primarily we have removed welcome menu and help and others menu from tab.
+     * 
+     * @return Array Generated Array where unwanted submenu will not here
+     * 
+     * @by Saiful Islam
+     * @date 9.9.2021
+     */
+    public static function get_submenu_for_header(){
+        $header_submenu = self::get_submenu();
+        $removed_menu = array(
+            'ultraaddons-help-n-others',
+            'ultraaddons-elementor-lite'
+        );
+        $removed_menu = apply_filters( 'ultraaddons/admin/sub_menu/remove', $removed_menu, __CLASS__ );
+        if( ! is_array( $removed_menu ) ) return $header_submenu;
+        
+        //$removed_menu already checked. array or not
+        foreach( $removed_menu as $r_menu ){
+            $searched_key = array_search( $r_menu, $header_submenu );
+            unset( $header_submenu[$searched_key] );
+        }
+        return $header_submenu;
+    }
+
+        /**
      * Opening Welcome Page for User.
      */
     public static function welcome_page() {
