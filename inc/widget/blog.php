@@ -20,6 +20,59 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 class Blog extends Base{
     
+    public function __construct($data = [], $args = null) {
+        parent::__construct($data, $args);
+       
+        //For Blog Widget
+        $name           = 'imagesloaded.pkgd.min';
+        $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/imagesloaded.pkgd.min.js';
+        $dependency     =  ['jquery','elementor-frontend'];
+        $version        = ULTRA_ADDONS_VERSION;
+        $in_footer  = true;
+
+        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $name );
+        
+        //For Blog Widget
+        $name           = 'isotope.pkgd.min';
+        $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/isotope.pkgd.min.js';
+        $dependency     =  ['jquery','elementor-frontend'];
+        $version        = ULTRA_ADDONS_VERSION;
+        $in_footer  = true;
+
+        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $name );
+        
+        //For Blog Widget
+        $name           = 'packery-mode.pkgd.min';
+        $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/packery-mode.pkgd.min.js';
+        $dependency     =  ['jquery','elementor-frontend'];
+        $version        = ULTRA_ADDONS_VERSION;
+        $in_footer  = true;
+
+        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $name );
+        
+        
+        
+        //Naming of Args for Masonary
+        //For Blog Widget
+        $name           = 'masonry_grid';
+        $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/masonry_grid.js';
+        $dependency     =  ['jquery','elementor-frontend'];
+        $version        = ULTRA_ADDONS_VERSION;
+        $in_footer  = true;
+
+        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $name );
+        
+    }
+    
+    public function get_style_depends() {
+        return ['imagesloaded.pkgd.min','packery-mode.pkgd.min','isotope.pkgd.min', 'masonry_grid'];
+    }
+    
+    
     /**
      * Get your widget name
      *
