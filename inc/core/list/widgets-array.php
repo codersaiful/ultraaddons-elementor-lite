@@ -241,7 +241,7 @@ $widgetsArray = [
     
     'Offer_Card' => [
             'name'  => __( 'Offer Card', 'ultraaddons' ),
-            'is_pro'   => false,
+            'is_pro'   => true,
             'icon'      => 'eicon-form-horizontal',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -287,7 +287,7 @@ $widgetsArray = [
     
     'Breadcrumb' => [
             'name'  => __( 'Breadcrumb', 'ultraaddons' ),
-            'is_pro'   => false,
+            'is_pro'   => true,
             'icon'      => 'uicon-skillbar',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -305,7 +305,7 @@ $widgetsArray = [
     
     'Timeline' => [
             'name'  => __( 'Timeline', 'ultraaddons' ),
-            'is_pro'   => false,
+            'is_pro'   => true,
             'icon'      => 'eicon-time-line',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -314,7 +314,7 @@ $widgetsArray = [
     
     'Image_Accordion' => [
             'name'  => __( 'Image Accordion', 'ultraaddons' ),
-            'is_pro'   => false,
+            'is_pro'   => true,
             'icon'      => 'eicon-accordion',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -323,7 +323,7 @@ $widgetsArray = [
     
     'Product_Accordion' => [
             'name'  => __( 'Product Accordion', 'ultraaddons' ),
-            'is_pro'   => false,
+            'is_pro'   => true,
             'icon'      => 'eicon-accordion',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -332,6 +332,15 @@ $widgetsArray = [
     
     'Accordion' => [
             'name'  => __( 'Accordion', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-accordion',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
+    'Drop_Caps' => [
+            'name'  => __( 'Drop Caps', 'ultraaddons' ),
             'is_pro'   => false,
             'icon'      => 'eicon-accordion',
             'cat'       => [

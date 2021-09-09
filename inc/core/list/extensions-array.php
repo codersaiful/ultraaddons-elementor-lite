@@ -104,6 +104,14 @@ $extensionsArray = [
                         __( 'Basic', 'ultraaddons' ),
                     ],
             ],
+            'Custom_CSS' => [
+                    'name'  => __( 'Custom CSS', 'ultraaddons' ),
+                    'is_pro'   => false,
+                    'icon'      => 'eicon-click',
+                    'cat'       => [
+                        __( 'Basic', 'ultraaddons' ),
+                    ],
+            ],
 
 //         Need more Customizer and to be update   
 //            'ultra-effects'=> [

@@ -1,0 +1,19 @@
+.ua-element-drop-caps .ua-dropcap-cotnent {
+    margin-bottom: 0;
+  }
+  .ua-element-drop-caps .ua-dropcap-cotnent:first-child::first-letter {
+    color: rgb(23, 0, 153);
+    float: left;
+    font-size: 75px;
+    line-height: 60px;
+    padding-top: 4px;
+    padding-right: 8px;
+    padding-left: 3px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+  .ua-dropcap-wraper > ol,
+  .ua-dropcap-wraper > ul {
+    padding-left: 28px;
+  }

@@ -103,13 +103,13 @@ class Admin_Handle{
             'menu_title'    => __( 'UltraAddons', 'ultraaddons' ),
             'capability'    => self::$capability,
             'menu_slug'    => self::$menu_slug,//'ultraaddons-elementor-lite',
-            'function'    => [ __CLASS__, 'widgets_page' ],
+            'function'    => [ __CLASS__, 'welcome_page' ],
             //'function'    => [ __CLASS__, 'root_page' ], //When Welcome Page will Active, then it will active
             'icon_url'    => $icon_url,
             'position'    => 45,
         ];
         
-        $menu = apply_filters( 'ultraaddons/admon/menu', $menu );
+        $menu = apply_filters( 'ultraaddons/admin/menu', $menu );
         
         $page_title = isset( $menu['page_title'] ) ? $menu['page_title'] : false;
         $menu_title = isset( $menu['menu_title'] ) ? $menu['menu_title'] : false;
@@ -174,11 +174,21 @@ class Admin_Handle{
         self::$sub_menu = [
             [
                 'parent_slug'   => self::$menu_slug,//$parent_slug,
+                'page_title'    =>  __( 'UltraAddons Elementor Addons', 'ultraaddons' ),
+                'menu_title'    =>  __( 'Welcome', 'ultraaddons' ),
+                'capability'    => self::$capability,
+                'menu_slug'     => 'ultraaddons-elementor-lite',
+                'function'      => [__CLASS__, 'welcome_page'],
+                'position'      =>  1,
+            ],
+            
+            [
+                'parent_slug'   => self::$menu_slug,//$parent_slug,
                 'page_title'    =>  __( 'UltraAddons Widgets', 'ultraaddons' ),
                 'menu_title'    =>  __( 'Widgets', 'ultraaddons' ),
                 'capability'    => self::$capability,
-//                'menu_slug'     => 'ultraaddons-widgets', //When Welcome Page will Active, then it will active
-                'menu_slug'     => 'ultraaddons-elementor-lite',
+                'menu_slug'     => 'ultraaddons-widgets', //When Welcome Page will Active, then it will active
+                //'menu_slug'     => 'ultraaddons-elementor-lite',
                 'function'      => [__CLASS__, 'widgets_page'],
                 'position'      =>  1,
             ],
@@ -238,10 +248,10 @@ class Admin_Handle{
     /**
      * Opening Welcome Page for User.
      */
-    public static function root_page() {
+    public static function welcome_page() {
         include_once self::$header_file;
         
-        include ULTRA_ADDONS_DIR . 'admin/pages/main.php';
+        include ULTRA_ADDONS_DIR . 'admin/pages/welcome_page.php';
         
         include_once self::$footer_file;
     }

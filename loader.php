@@ -429,6 +429,9 @@ class Loader {
             $ver  = ULTRA_ADDONS_VERSION;
             $media= 'all';
             
+            $src = ULTRA_ADDONS_ASSETS . 'css/widgets/' . strtolower( $name ) . '.css';
+            $css_file_dir = ULTRA_ADDONS_DIR . 'assets/css/widgets/' . strtolower( $name ) . '.css';
+            
             /**
              * CSS file load based on Element/Widget
              * 
@@ -439,18 +442,21 @@ class Loader {
              * Integration with pro
              * @since 1.0.7.27
              */
-            
+            $pass_css = false; //Actually if found CSS file in Pro folder, we will direct pass
             if( defined( 'ULTRA_ADDONS_PRO_ASSETS' ) && isset( $widget['is_pro'] ) && $widget['is_pro'] ){
               
-                $src = ULTRA_ADDONS_PRO_ASSETS . 'css/widgets/' . strtolower( $name ) . '.css';
-                $css_file_dir = ULTRA_ADDONS_PRO_DIR . 'assets/css/widgets/' . strtolower( $name ) . '.css';
+                $src_pro = ULTRA_ADDONS_PRO_ASSETS . 'css/widgets/' . strtolower( $name ) . '.css';
+                $css_file_dir_pro = ULTRA_ADDONS_PRO_DIR . 'assets/css/widgets/' . strtolower( $name ) . '.css';
 
-            }else{
-                $src = ULTRA_ADDONS_ASSETS . 'css/widgets/' . strtolower( $name ) . '.css';
-                $css_file_dir = ULTRA_ADDONS_DIR . 'assets/css/widgets/' . strtolower( $name ) . '.css';
+                if( is_file( $css_file_dir_pro ) ){
+                    //Direct pass as we founded it in Pro folder
+                    $pass_css = true;
+                    $src = $src_pro;
+                    $css_file_dir = $css_file_dir_pro;
+                }
             }
-            
-            if( is_file( $css_file_dir ) ){
+
+            if( $pass_css || is_file( $css_file_dir ) ){ //$pass_css - If true, we will not check again file exist
                  wp_register_style( $handle, $src, $deps, $ver, $media );
                  wp_enqueue_style( $handle );
             }
