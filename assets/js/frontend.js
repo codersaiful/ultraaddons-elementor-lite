@@ -165,6 +165,14 @@
                             $this.toggleClass("ua-open ua-active"), $this.next().slideToggle(s))
                         });
                 });
+
+            EF.hooks.addAction(
+                'frontend/element_ready/ultraaddons-blog.default',
+                function($scope, $) {
+           
+                    var $selector = $scope.find('.ua_addons_grid_wrapper');
+                    $selector.uaAddonsGridLayout();
+                });
     
     
 //                //Elementor Open Editor https://code.elementor.com/js-hooks/#panelopen_editorelementType 
