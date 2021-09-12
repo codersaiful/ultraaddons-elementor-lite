@@ -314,15 +314,16 @@
             });
             
             
-            /**
-             * Skillbar
-             * using barfiller
-             * 
-             * @since 1.0.5
-             * taken from medilac-core
-             */
-            var skillBar = function( $scope, $ ){
-
+            
+            let UltraAddonsMap = {
+                /**
+                 * Skillbar
+                 * using barfiller
+                 * 
+                 * @since 1.0.5
+                 * taken from medilac-core
+                 */
+                skillBar:function( $scope, $ ){
                     var items = $scope.find('.ua-skill-wrapper');
                     $(items).each(function(a, b){
                         let color = $(b).attr('aria-color');
@@ -330,21 +331,7 @@
                         let parentID = $(b).closest('.ua-element-skill-bar').data('id');
                         $('#bar-' + parentID + '-' + id + '-' + (a+1)).barfiller({ barColor: color });
                     });
-            }
-            EF.hooks.addAction( 'frontend/element_ready/ultraaddons-skill-bar.default', skillBar );
-            
-//            //Alert
-//            EF.hooks.addAction(
-//                    'frontend/element_ready/ultraaddons-alert.default',
-//                    function ($scope) {
-//                        var $item = $scope.find('.ua_alert_close');
-//                        $($item).on("click", function(){
-//                            $(this).parents(".ua_alert_box").hide();
-//                        });
-//                    }
-//            );
-            
-            let UltraAddonsMap = {
+                },
                 //Alert
                 Alert:function($scope){
                     var $item = $scope.find('.ua_alert_close');
@@ -406,26 +393,15 @@
             
             let elementReadyMap = {
                 'ultraaddons-alert.default'     : UltraAddonsMap.Alert,
-                'ultraaddons-timeline.default'  : UltraAddonsMap.UA_Owl_Carousel
+                'ultraaddons-timeline.default'  : UltraAddonsMap.UA_Owl_Carousel,
+                'ultraaddons-skill-bar.default'  : UltraAddonsMap.skillBar,
             };
     
             $.each( elementReadyMap, function( elementKey, elementReadyMap ) {
                     EF.hooks.addAction( 'frontend/element_ready/' + elementKey, elementReadyMap );
             });
             
-            
-            
-            /**
-         var widgetsMap = {
-                'ultraaddons-alert.default': Alert,
-            };
-            //$.each( fnHanlders, function( widgetName, handlerFn ) {
-			elementorFrontend.hooks.addAction( 'frontend/element_ready/' + widgetName, handlerFn );
-		});
-            widgetsMap.forEach(function(){
-                EF.hooks.addAction();
-            });
-         */
+
     });
     
     /**
