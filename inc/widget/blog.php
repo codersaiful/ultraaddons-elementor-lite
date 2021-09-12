@@ -89,7 +89,7 @@ class Blog extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'blog', 'post' ];
+        return [ 'ultraaddons','post masonry', 'advance blog', 'blog', 'post' ];
     }
 
     /**
