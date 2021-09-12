@@ -344,26 +344,7 @@ class Loader {
         //barfiller JS has transferred to widget/skillbar.php 
         
         
-        //Naming Args For jQuery.Apear
-        $name           = 'appear';
-        $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/jquery.appear.js';
-        $dependency     =  ['jquery'];//['jquery'];
-        $version        = ULTRA_ADDONS_VERSION;
-        $in_footer  = false;
-        
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );
-        
-        
-        //Naming Args For jQuery.Apear
-        $name           = 'jquery-count-to';
-        $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/jquery-count-to.js';
-        $dependency     =  ['jquery'];//['jquery'];
-        $version        = ULTRA_ADDONS_VERSION;
-        $in_footer  = false;
-        
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );
+       //apear and count-to js has transerred to widget/counter.php
         
         
         //barfiller css has transferred to widget/skillbar.php
