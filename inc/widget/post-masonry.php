@@ -1897,14 +1897,16 @@ protected function get_grid_layout_four_options( array $settings ) {
                 break;
         }
         ?>
-<!--        <script>
+        <script>
             jQuery(".ua_addons_grid_wrapper").each(function () {
                 var ua_addons_grid_wrapper = jQuery('.ua_addons_grid_wrapper');
                 if (ua_addons_grid_wrapper.length) {
-                    jQuery(this).uaAddonsGridLayout();
+                    if(typeof jQuery(this) == 'object' && typeof jQuery(this).uaAddonsGridLayout == 'function'){
+                        jQuery(this).uaAddonsGridLayout();
+                    }
                 }
             });
-        </script>   -->
+        </script>   
         <?php
     }
 
