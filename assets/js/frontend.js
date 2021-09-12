@@ -197,11 +197,15 @@
                 });
 
             EF.hooks.addAction(
-                'frontend/element_ready/ultraaddons-blog.default',
+                'frontend/element_ready/ultraaddons-post-masonry.default',
                 function($scope, $) {
            
                     var $selector = $scope.find('.ua_addons_grid_wrapper');
-                    $selector.uaAddonsGridLayout();
+
+                    if( typeof $selector == 'object' && typeof $selector.uaAddonsGridLayout == 'function' ){
+                        $selector.uaAddonsGridLayout();
+                    }
+                    
                 });
     
     
@@ -304,7 +308,8 @@
            // Wrapper Link
            $('.ua-wrapper-link').each(function() {
                     var link = $(this).data('_ua_element_link');
-                    $(this).on('click', function() {
+                    $(this).on('click', function(saiful) {
+                        console.log();
                         if (link.is_external) {
                                 window.open(link.url);
                         } else {
