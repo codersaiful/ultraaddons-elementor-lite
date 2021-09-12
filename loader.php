@@ -363,7 +363,7 @@ class Loader {
         $in_footer  = false;
         
         wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        //wp_enqueue_script( $name );
+        wp_enqueue_script( $name );
         
         
         //barfiller css has transferred to widget/skillbar.php
