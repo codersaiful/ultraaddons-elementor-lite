@@ -68,7 +68,12 @@ class Blog extends Base{
         
     }
     
-    public function get_style_depends() {
+    /**
+     * Script for Blog Widget
+     * 
+     * @return type
+     */
+    public function get_script_depends() {
         return ['imagesloaded.pkgd.min','packery-mode.pkgd.min','isotope.pkgd.min', 'masonry_grid'];
     }
     
