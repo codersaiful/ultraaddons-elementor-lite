@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Counter extends Base{
     
-    /**
+        /**
          * mainly to call specific depends
          * we have called this __construct() method
          * 
