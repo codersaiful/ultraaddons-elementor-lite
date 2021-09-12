@@ -349,9 +349,9 @@ $widgetsArray = [
     ],
     
     'Blog' => [
-            'name'  => __( 'Blog', 'ultraaddons' ),
-            'is_pro'   => false,
-            'icon'      => 'eicon-accordion',
+            'name'  => __( 'Advance Post Masonry', 'ultraaddons' ),
+            'is_pro'   => true,
+            'icon'      => 'eicon-posts-masonry',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
