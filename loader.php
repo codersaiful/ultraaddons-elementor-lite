@@ -341,15 +341,7 @@ class Loader {
         wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
         wp_enqueue_script( $name );
         
-        //Naming of Barfiller
-        $name           = 'barfiller';
-        $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/barfiller.js';
-        $dependency     =  ['jquery'];//['jquery'];
-        $version        = ULTRA_ADDONS_VERSION;
-        $in_footer  = true;
-        
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );
+        //barfiller JS has transferred to widget/skillbar.php 
         
         
         //Naming Args For jQuery.Apear
@@ -374,8 +366,7 @@ class Loader {
         //wp_enqueue_script( $name );
         
         
-        //Third-party CSS file Load
-        wp_enqueue_style('barfiller', ULTRA_ADDONS_ASSETS . 'vendor/css/barfiller.css' );
+        //barfiller css has transferred to widget/skillbar.php
         
         //Animate CSS Load
         wp_enqueue_style('animate', ULTRA_ADDONS_ASSETS . 'vendor/css/animate.min.css' );
