@@ -305,20 +305,38 @@
            
            */
            
-           // Wrapper Link
+           
+//            EF.hooks.addAction( 'frontend/element_ready/widget', function( $scope ) {
+//                EF.elementsHandler.addHandler( CusttomCSS, { $element: $scope });
+//            });
+            // Wrapper Link
            $('.ua-wrapper-link').each(function() {
                     var link = $(this).data('_ua_element_link');
-                    $(this).on('click', function(saiful) {
-                        console.log();
+                    $(this).on('click', function(e) {
+                        //console.log($(this),e.target.tagName);
+                        let tag = e.target.tagName;
+                        
+                        if( tag === 'STRONG' || tag === 'B' || tag === 'SPAN' || tag === 'A' || tag === 'BUTTON' || tag === 'INPUT' ){
+                            return;
+                        }
+
                         if (link.is_external) {
                                 window.open(link.url);
                         } else {
                                 location.href = link.url;
                         }
+                        
                     });
             });
-            
-            
+
+
+//            EF.hooks.addAction(
+//                'frontend/element_ready/widgett',
+//                function($scope, $) {
+//                    var link = $(this).data('_ua_element_link');
+//                    
+//                    
+//                });
             
             let UltraAddonsMap = {
                 /**
