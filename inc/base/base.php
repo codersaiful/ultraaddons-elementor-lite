@@ -312,12 +312,12 @@ class Base extends Widget_Base{
      * & Removed Slash from the Right
      * 
      * @since 1.0.0
-     * @access protected
+     * @access public
      * @author Saiful Islam
      * 
      * @return String name of Class
      */
-    protected function get_pure_name(){
+    public function get_pure_name(){
         $name = str_replace( __NAMESPACE__, '', $this->get_class_name() );
         return ltrim( $name, '\\' );
     }
