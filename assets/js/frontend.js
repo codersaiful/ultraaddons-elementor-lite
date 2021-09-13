@@ -18,6 +18,36 @@
             var EF = elementorFrontend,
                 EM = elementorModules;
             
+            var ModuleBase = elementorModules.frontend.handlers.Base;
+            var CusttomCSS;
+
+
+            CusttomCSS = ModuleBase.extend({
+                bindEvents: function(){
+                    this.run();
+                },
+                onElementChange:function(){
+                    this.run();
+                },
+                getDefaultSettings:function(){
+                    return {
+                        target: this.$element
+                    }
+                },
+                getCss:function(){
+                    return this.getElementSettings('ua_custom_css');
+                },
+                run:function(){
+                    var cssRules = this.getCss();
+                    $('<style>' + cssRules + '</style>').appendTo('head');
+                }
+            });
+
+            EF.hooks.addAction( 'frontend/element_ready/widget', function( $scope ) {
+                EF.elementsHandler.addHandler( CusttomCSS, { $element: $scope });
+            });
+            
+            
             /**
              * Default Slider is Carousel Slider for UltraAddons.
              * 
@@ -165,6 +195,18 @@
                             $this.toggleClass("ua-open ua-active"), $this.next().slideToggle(s))
                         });
                 });
+
+            EF.hooks.addAction(
+                'frontend/element_ready/ultraaddons-post-masonry.default',
+                function($scope, $) {
+           
+                    var $selector = $scope.find('.ua_addons_grid_wrapper');
+
+                    if( typeof $selector == 'object' && typeof $selector.uaAddonsGridLayout == 'function' ){
+                        $selector.uaAddonsGridLayout();
+                    }
+                    
+                });
     
     
 //                //Elementor Open Editor https://code.elementor.com/js-hooks/#panelopen_editorelementType 
@@ -263,28 +305,48 @@
            
            */
            
-           // Wrapper Link
+           
+//            EF.hooks.addAction( 'frontend/element_ready/widget', function( $scope ) {
+//                EF.elementsHandler.addHandler( CusttomCSS, { $element: $scope });
+//            });
+            // Wrapper Link
            $('.ua-wrapper-link').each(function() {
                     var link = $(this).data('_ua_element_link');
-                    $(this).on('click', function() {
+                    $(this).on('click', function(e) {
+                        //console.log($(this),e.target.tagName);
+                        let tag = e.target.tagName;
+                        
+                        if( tag === 'STRONG' || tag === 'B' || tag === 'SPAN' || tag === 'A' || tag === 'BUTTON' || tag === 'INPUT' ){
+                            return;
+                        }
+
                         if (link.is_external) {
                                 window.open(link.url);
                         } else {
                                 location.href = link.url;
                         }
+                        
                     });
             });
-            
-            
-            /**
-             * Skillbar
-             * using barfiller
-             * 
-             * @since 1.0.5
-             * taken from medilac-core
-             */
-            var skillBar = function( $scope, $ ){
 
+
+//            EF.hooks.addAction(
+//                'frontend/element_ready/widgett',
+//                function($scope, $) {
+//                    var link = $(this).data('_ua_element_link');
+//                    
+//                    
+//                });
+            
+            let UltraAddonsMap = {
+                /**
+                 * Skillbar
+                 * using barfiller
+                 * 
+                 * @since 1.0.5
+                 * taken from medilac-core
+                 */
+                skillBar:function( $scope, $ ){
                     var items = $scope.find('.ua-skill-wrapper');
                     $(items).each(function(a, b){
                         let color = $(b).attr('aria-color');
@@ -292,22 +354,8 @@
                         let parentID = $(b).closest('.ua-element-skill-bar').data('id');
                         $('#bar-' + parentID + '-' + id + '-' + (a+1)).barfiller({ barColor: color });
                     });
-            }
-            EF.hooks.addAction( 'frontend/element_ready/ultraaddons-skill-bar.default', skillBar );
-            
-//            //Alert
-//            EF.hooks.addAction(
-//                    'frontend/element_ready/ultraaddons-alert.default',
-//                    function ($scope) {
-//                        var $item = $scope.find('.ua_alert_close');
-//                        $($item).on("click", function(){
-//                            $(this).parents(".ua_alert_box").hide();
-//                        });
-//                    }
-//            );
-            
-            let UltraAddonsMap = {
-                //Alert
+                },
+                //Alert 
                 Alert:function($scope){
                     var $item = $scope.find('.ua_alert_close');
                     $($item).on("click", function(){
@@ -361,6 +409,19 @@
                     
                 },
                 
+                //Counter
+                Counter:function($scope){
+                    var $item = $scope.find('.ua-counter-text');
+                    $($item).appear(function () {
+                        var element = $(this);
+                        var timeSet = setTimeout(function () {
+                            if (element.hasClass('ua-counter-text')) {
+                                element.find('.ua-counter-value').countTo();
+                            }
+                        });
+                    });
+                },
+                
                 //Addd new all - one by one with comma
                 
                 
@@ -368,28 +429,26 @@
             
             let elementReadyMap = {
                 'ultraaddons-alert.default'     : UltraAddonsMap.Alert,
-                'ultraaddons-timeline.default'  : UltraAddonsMap.UA_Owl_Carousel
+                'ultraaddons-timeline.default'  : UltraAddonsMap.UA_Owl_Carousel,
+                'ultraaddons-skill-bar.default'  : UltraAddonsMap.skillBar,
+                'ultraaddons-counter.default'  : UltraAddonsMap.Counter,
             };
     
             $.each( elementReadyMap, function( elementKey, elementReadyMap ) {
                     EF.hooks.addAction( 'frontend/element_ready/' + elementKey, elementReadyMap );
             });
             
-            
-            
-            /**
-         var widgetsMap = {
-                'ultraaddons-alert.default': Alert,
-            };
-            //$.each( fnHanlders, function( widgetName, handlerFn ) {
-			elementorFrontend.hooks.addAction( 'frontend/element_ready/' + widgetName, handlerFn );
-		});
-            widgetsMap.forEach(function(){
-                EF.hooks.addAction();
-            });
-         */
+
     });
-    
+                   
+//   $('.ua-counter-text').appear(function () {
+//        var element = $(this);
+//        var timeSet = setTimeout(function () {
+//            if (element.hasClass('ua-counter-text')) {
+//                element.find('.ua-counter-value').countTo();
+//            }
+//        });
+//    });
     /**
      * Created Outside of init/Elementtor
      * Imean: elementor/frontend/init
@@ -509,15 +568,7 @@
     });
     //*************************************/
                     
-                    
-   $('.ua-counter-text').appear(function () {
-        var element = $(this);
-        var timeSet = setTimeout(function () {
-            if (element.hasClass('ua-counter-text')) {
-                element.find('.ua-counter-value').countTo();
-            }
-        });
-    });
+   
 
    
         

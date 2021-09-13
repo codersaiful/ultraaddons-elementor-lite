@@ -348,6 +348,15 @@ $widgetsArray = [
             ],
     ],
     
+    'Post_Masonry' => [
+            'name'  => __( 'Advance Post Masonry', 'ultraaddons' ),
+            'is_pro'   => true,
+            'icon'      => 'eicon-posts-masonry',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
 ];
 
 return apply_filters( 'ultraaddons/widgets/array', $widgetsArray );

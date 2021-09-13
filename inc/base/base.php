@@ -244,7 +244,7 @@ class Base extends Widget_Base{
          * 
          * @since 1.0.2.1
          */
-        if( Settings::get_widget_category() && is_array( $widget_category ) ){
+        if( Settings::get_widget_category() && is_array( $widget_category ) && ! $this->is_pro() ){
             array_push( $widget_category, Settings::get_widget_category() );
         }
 
@@ -312,12 +312,12 @@ class Base extends Widget_Base{
      * & Removed Slash from the Right
      * 
      * @since 1.0.0
-     * @access protected
+     * @access public
      * @author Saiful Islam
      * 
      * @return String name of Class
      */
-    protected function get_pure_name(){
+    public function get_pure_name(){
         $name = str_replace( __NAMESPACE__, '', $this->get_class_name() );
         return ltrim( $name, '\\' );
     }
@@ -340,7 +340,7 @@ class Base extends Widget_Base{
      * 
      * @return Boolean
      */
-    protected function is_pro(){
+    public function is_pro(){
         $args = $this->get_widget_args();
         return isset( $args['is_pro'] ) ? $args['is_pro'] : false;
     }

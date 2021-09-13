@@ -16,6 +16,59 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Counter extends Base{
     
+        /**
+         * mainly to call specific depends
+         * we have called this __construct() method
+         * 
+         * @param Array $data
+         * @param Array $args
+         * 
+         * @by Saiful Islam
+         */
+        public function __construct($data = [], $args = null) {
+            parent::__construct($data, $args);
+
+             //Naming Args For jQuery.Apear
+            $name           = 'appear';
+            $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/jquery.appear.js';
+            $dependency     =  ['jquery'];//['jquery'];
+            $version        = ULTRA_ADDONS_VERSION;
+            $in_footer  = false;
+
+            wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
+            wp_enqueue_script( $name );
+
+
+            //Naming Args For jQuery.Apear
+            $name           = 'jquery-count-to';
+            $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/jquery-count-to.js';
+            $dependency     =  ['jquery'];//['jquery'];
+            $version        = ULTRA_ADDONS_VERSION;
+            $in_footer  = false;
+
+            wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
+            wp_enqueue_script( $name );
+
+        }
+
+        
+
+        /**
+         * Retrieve the list of scripts the skill bar widget depended on.
+         *
+         * Used to set scripts dependencies required to run the widget.
+         *
+         * @since 1.0.9.2
+         * @access public
+         *
+         * @return array Widget scripts dependencies.
+         * @by Saiful
+         */
+        public function get_script_depends() {
+                return [ 'jquery','appear','jquery-count-to' ];
+        }
+    
+    
     /**
      * Get your widget name
      *

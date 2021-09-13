@@ -9,11 +9,15 @@ defined( 'ABSPATH' ) || die();
  */
 $form_datas = filter_input_array(INPUT_POST);
 
-do_action( 'ultraaddons_save_data', $form_datas, 'settings' );
+$form_datas = apply_filters( 'ultraaddons/admin/setting/save_data', $form_datas, 'settings' );
 
-$key = Settings::$key;
+$key = Settings::$key; //'ultraaddons_settings'
 
 if( $form_datas && $key ){
+    /**
+     * Action hook for when save data
+     */
+    do_action( 'ultraaddons/admin/setting/on_save', $form_datas, $key );
     update_option( $key, $form_datas );
 }
 $current_data = Settings::get_data();
@@ -35,7 +39,14 @@ $category_slug = Settings::get_widget_category();
                     <div class="ua-form-wrappper">
                     
                         
-                    
+                    <?php
+                    /**
+                     * Action hook for setting
+                     * 
+                     * @since 1.0.9.2
+                     */
+                    do_action( 'ultraaddons/admin/setting/form/top' );
+                    ?>
 
 
                     <div class="ultraaddons-field-container field-container-category">
@@ -54,6 +65,14 @@ $category_slug = Settings::get_widget_category();
                         </div>
                     </div>
 
+                    <?php
+                    /**
+                     * Action hook for setting
+                     * 
+                     * @since 1.0.9.2
+                     */
+                    do_action( 'ultraaddons/admin/setting/form/bottom' );
+                    ?>
                      
 
                     </div> <!-- /.ua-form-wrappper -->
