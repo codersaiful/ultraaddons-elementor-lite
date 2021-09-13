@@ -578,7 +578,7 @@ section.ua-section.pr6 .full-width.info-box {
     padding-left: 50%;
     background-position: center left;
 }
-section.ua-section .info-box a.ua-button {
+section.ua-section a.ua-button {
     background: #6B52FD;
     padding: 16px 25px;
     color: #fff;
@@ -657,7 +657,24 @@ section.faq .faq-details ul li .answer {
     font-size: 16px;
 }
 
+/* Video Section */
+section.ua-section.pr4.video .inner-wrapper {
+    display: block;
+}
+section.ua-section.pr4.video .title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
 
+section.ua-section.video .video-gallery {
+    display: flex;
+    column-gap: 20px;
+}
+section.ua-section.video .video-gallery .video-tutorial iframe {
+    width: 100%;
+    border-radius: 5px;
+}
 
 
 

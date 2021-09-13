@@ -90,6 +90,31 @@ defined( 'ABSPATH' ) || die();
             </div>
         </section>
 
+        <section class="ua-section pr4 video">
+            <div class="inner-wrapper">
+                <div class="title-wrapper">
+                    <h3 class="big"><?php echo esc_html__( 'Video Tutorials', 'ultraaddons' ); ?></h3>
+                    <div class="button-wrapper">
+                        <a href="#" class="ua-button button"><?php echo esc_html__( 'Our Video Playlist', 'ultraaddons' ); ?></a>
+                    </div>
+                </div>
+                <div class="video-gallery">
+                    <div class="video-tutorial">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/9hoFP0dgRx0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <h4 class="video-title"><?php echo esc_html__( 'React Native Profile Screen | React Native Profile UI', 'ultraaddons' ); ?></h4> 
+                    </div>
+                    <div class="video-tutorial">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/9hoFP0dgRx0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <h4 class="video-title"><?php echo esc_html__( 'React Native Profile Screen | React Native Profile UI', 'ultraaddons' ); ?></h4> 
+                    </div>
+                    <div class="video-tutorial">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/9hoFP0dgRx0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <h4 class="video-title"><?php echo esc_html__( 'React Native Profile Screen | React Native Profile UI', 'ultraaddons' ); ?></h4> 
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="ua-section pr6">
             <div class="inner-wrapper">
                 <div class="full-width info-box" style="background-image: url(<?php echo esc_url( ULTRA_ADDONS_ASSETS . 'images/svg/Illustration-2.svg' ); ?>);">
