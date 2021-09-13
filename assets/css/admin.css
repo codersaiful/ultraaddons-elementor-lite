@@ -519,6 +519,29 @@ section.welcome-banner p.greetings {
     font-size: 20px;
 }
 
+section.ua-section {
+    display: flex;
+    max-width: 1170px;
+    margin: 130px auto;
+    column-gap: 30px;
+}
+
+section.ua-section.pr1 .info-box {
+    display: flex;
+    padding: 50px;
+    box-shadow: 0px 10px 25px rgba(198, 203, 220, 0.3);
+    border-radius: 10px;
+    column-gap: 30px;
+}
+
+section.ua-section.pr1 .info-box .icon {
+    min-width: 50px;
+}
+
+section.ua-section.pr1 .info-box .info h3 {
+    margin: 0;
+}
+
 
 
 
