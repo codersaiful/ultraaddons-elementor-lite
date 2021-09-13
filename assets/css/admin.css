@@ -461,7 +461,9 @@ body.wp-admin pre.xdebug-var-dump {
 }
 
 /* Welcome page design - starts here */
-
+.ultraaddons-dashboard-area{
+    font-family: 'Urbanist', sans-serif;
+}
 .ultraaddons-dashboard-area .ua-branding {
     width: 311px;
 }
@@ -487,7 +489,6 @@ body.wp-admin pre.xdebug-var-dump {
     font-size: 18px;
     line-height: 21.6px;
     text-decoration: none;
-    font-family: 'Urbanist', sans-serif;
     font-weight: 600;
     background: #F0EFF3;
     color: #140C33;
@@ -514,7 +515,6 @@ section.welcome-banner img.logo {
 section.welcome-banner p.greetings {
     text-align: center;
     color: #fff;
-    font-family: 'Urbanist', sans-serif;
     font-weight: 600;
     font-size: 20px;
 }
@@ -547,24 +547,40 @@ section.ua-section.pr1 .info-box .icon-wrapper img.icon {
 
 section.ua-section.pr1 .info-box .info h3 {
     margin: 0;
-    font-family: 'Urbanist', sans-serif;
     font-size: 24px;
     font-weight: 700;
     color: #140C33;
 }
 
-section.ua-section.pr1 .info-box .info p {
+section.ua-section .info-box h3.big {
+    font-size: 42px;
+    font-weight: 700;
+    margin: 0;
+}
+
+section.ua-section .info-box p {
     color: #726E82;
-    font-family: 'Urbanist', sans-serif;
     font-size: 16px;
     font-weight: 500;
     margin: 25px 0;
 }
 
-section.ua-section.pr1 .info-box .info a.ua-button {
+section.ua-section .full-width.info-box {
+    background-repeat: no-repeat;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+section.ua-section.pr2 .full-width.info-box {
+    padding-right: 50%;
+    background-position: center right;
+}
+section.ua-section.pr6 .full-width.info-box {
+    padding-left: 50%;
+    background-position: center left;
+}
+section.ua-section .info-box a.ua-button {
     background: #6B52FD;
     padding: 16px 25px;
-    font-family: 'Urbanist', sans-serif;
     color: #fff;
     font-size: 16px;
     font-weight: 600;

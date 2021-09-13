@@ -34,76 +34,24 @@ defined( 'ABSPATH' ) || die();
         </section>
 
         <section class="ua-section pr2">
-            <div class="full-width info-box">
+            <div class="full-width info-box" style="background-image: url(<?php echo esc_url( ULTRA_ADDONS_ASSETS . 'images/svg/Illustration-1.svg' ); ?>);">
                 <h3 class="big"><?php echo esc_html__( 'Missing Any Features?', 'ultraaddons' ); ?></h3>
                 <p><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></p>
                 <a href="#" class="ua-button button"><?php echo esc_html__( 'Request For Features', 'ultraaddons' ); ?></a>
             </div>
         </section>
 
+        <section class="ua-section pr3 faq">
+
+        </section>
+
+        <section class="ua-section pr6">
+            <div class="full-width info-box" style="background-image: url(<?php echo esc_url( ULTRA_ADDONS_ASSETS . 'images/svg/Illustration-2.svg' ); ?>);">
+                <h3 class="big"><?php echo esc_html__( 'Are you like our Product?', 'ultraaddons' ); ?></h3>
+                <p><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></p>
+                <a href="#" class="ua-button button"><?php echo esc_html__( 'Rating us', 'ultraaddons' ); ?></a>
+            </div>
+        </section>
+
     </div>
         
-        <p class="ultraaddons-info"><?php esc_html_e('In elementor Page Builder, you will get a Category name [Addons - UltraAddons]. Choose your Widget.', 'ultraaddons'); ?></p>
-        <h3><?php esc_html_e('Available Widgets and Features', 'ultraaddons'); ?></h3>
-
-        <table class="system-status-table">
-            <tbody>
-                <tr>
-                    <td><?php esc_html_e('Name', 'ultraaddons'); ?></td>
-                    <td><?php esc_html_e('Type', 'ultraaddons'); ?></td>
-                </tr>
-
-                <tr>
-                    <td><?php esc_html_e('Slider', 'ultraaddons'); ?></td>
-                    <td><?php esc_html_e('Widget', 'ultraaddons'); ?></td>
-                </tr>
-
-                
-                <tr>
-                    <td><?php esc_html_e('Count Down Timer', 'ultraaddons'); ?></td>
-                    <td><?php esc_html_e('Widget', 'ultraaddons'); ?></td>
-                </tr>
-                
-                <tr>
-                    <td><?php esc_html_e('Advance Heading', 'ultraaddons'); ?></td>
-                    <td><?php esc_html_e('Widget', 'ultraaddons'); ?></td>
-                </tr>
-
-                
-                <tr>
-                    <td><?php esc_html_e('Advance List', 'ultraaddons'); ?></td>
-                    <td><?php esc_html_e('Widget', 'ultraaddons'); ?></td>
-                </tr>
-
-                
-                <tr>
-                    <td><?php esc_html_e('Button', 'ultraaddons'); ?></td>
-                    <td><?php esc_html_e('Widget', 'ultraaddons'); ?></td>
-                </tr>
-
-                
-                
-                <tr>
-                    <td><?php esc_html_e('Info Box', 'ultraaddons'); ?></td>
-                    <td><?php esc_html_e('Widget', 'ultraaddons'); ?></td>
-                </tr>
-
-                
-                
-                
-                <tr>
-                    <td><?php esc_html_e('Wrapper Link', 'ultraaddons'); ?></td>
-                    <td><?php esc_html_e('Section Effect', 'ultraaddons'); ?></td>
-                </tr>
-
-                
-                
-                <tr>
-                    <td><?php esc_html_e('Hover Animation', 'ultraaddons'); ?></td>
-                    <td><?php esc_html_e('Any Content', 'ultraaddons'); ?></td>
-                </tr>
-
-                
-                
-            </tbody>
-        </table>
