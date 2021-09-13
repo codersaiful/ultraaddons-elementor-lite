@@ -35,6 +35,9 @@ class Admin_Handle{
         add_filter('plugin_action_links_' . ULTRA_ADDONS_BASE_NAME, [ __CLASS__, 'add_action_links' ] );
         
         add_action( 'admin_menu', [ __CLASS__, 'admin_menu' ] );
+        
+        //Admin Footer Text/ Requesting for Review @since 1.0.9.2 @by Saiful
+        add_filter( 'admin_footer_text', [ __CLASS__, 'admin_footer_text' ], PHP_INT_MAX );
     }
     
     /**
@@ -336,6 +339,30 @@ class Admin_Handle{
         
         include_once self::$footer_file;
     }
+    
+    
+    /**
+     * Display Footer Text
+     * We are saying here for REview request
+     */
+    public static function admin_footer_text() {
+        $current_screen = get_current_screen();
+        
+        $is_ultraaddons = ( $current_screen && false !== strpos( $current_screen->id, 'ultraaddons' ) );
+
+        if ( $is_ultraaddons ) {
+                $footer_text = sprintf(
+                        /* translators: 1: Elementor, 2: Link to plugin review */
+                        __( 'Enjoyed %1$s? Please leave us a %2$s rating. We really appreciate your support!', 'ultraaddons' ),
+                        '<strong>' . esc_html__( 'UltraAddons', 'ultraaddons' ) . '</strong>',
+                        '<a href="https://wordpress.org/support/plugin/ultraaddons-elementor-lite/reviews/#new-post" target="_blank">&#9733;&#9733;&#9733;&#9733;&#9733;</a>'
+                );
+        }
+
+        return $footer_text;
+    }
+    
+    
     
     
 }
