@@ -81,4 +81,46 @@ class Settings {
         }
         return;
     }
+    
+    /**
+     * Setting data for Pro widget
+     * It's alias of get_widget_category()
+     * 
+     * @return type
+     */
+    public static function get_pro_widget_category() {
+
+        $data = self::get_data();
+        if( isset( $data['widget_pro_in'] ) && ! empty( $data['widget_pro_in'] ) ){
+            return $data['widget_pro_in'];
+        }
+        return;
+    }
+    
+    /**
+     * Getting single data from database
+     * Getting data from save data.
+     * 
+     * we have used get_options() for this method
+     * 
+     * @param String $keyword for empty or null, return will null
+     * @return String|Array|Null
+     * 
+     * @since 1.0.1.4
+     * @by Saiful
+     */
+    public static function get_single_data( $keyword = false ){
+        if( ! $keyword || ! is_string( $keyword ) || empty( $keyword ) ){
+            return;
+        }
+        
+        $data = self::get_data();
+        if( isset( $data[$keyword] ) && ! empty( $data[$keyword] ) ){
+            return $data[$keyword];
+        }
+        return;
+        
+    }
+    
+    
 }
