@@ -519,7 +519,7 @@ section.welcome-banner p.greetings {
     font-size: 20px;
 }
 
-section.ua-section {
+section.ua-section .inner-wrapper {
     display: flex;
     max-width: 1170px;
     margin: 130px auto;
@@ -552,7 +552,7 @@ section.ua-section.pr1 .info-box .info h3 {
     color: #140C33;
 }
 
-section.ua-section .info-box h3.big {
+section.ua-section h3.big {
     font-size: 42px;
     font-weight: 700;
     margin: 0;
@@ -586,6 +586,79 @@ section.ua-section .info-box a.ua-button {
     font-weight: 600;
     line-height: 1;
 }
+
+section.ua-section.pr3.faq {
+    background: #F8F9FC;
+    padding: 10px;
+}
+section.ua-section.pr3.faq .faq-nav {
+    min-width: 200px;
+    text-align: right;
+    top: 70px;
+    position: relative;
+}
+
+section.ua-section.faq .inner-wrapper {
+    column-gap: 100px;
+}
+section.faq ul {
+    list-style: none;
+}
+
+section.faq .faq-nav ul li {
+    border-right: 2px solid #D2D7E8;
+    margin: 0;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+section.faq .faq-nav ul li.active {
+    border-color: #6B52FD;
+    color: #6B52FD;
+}
+section.faq .faq-details ul li {
+    background: #fff;
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 0px 8px 25px rgb(198 203 220 / 25%);
+    margin-bottom: 20px;
+}
+section.faq .faq-details h4 {
+    margin: 0;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    color: #140C33;
+    font-size: 20px;
+    font-weight: 600;
+    padding-left: 60px;
+    padding-top: 20px;
+}
+
+section.faq .faq-details ul li:before {
+    content: "";
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url(../images/angle-down.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    top: 22px;
+    left: 20px;
+}
+
+section.faq .faq-details ul li .answer {
+    padding: 0 20px 20px 60px;
+    color: #726E82;
+    line-height: 26px;
+    font-size: 16px;
+}
+
+
+
 
 
 
