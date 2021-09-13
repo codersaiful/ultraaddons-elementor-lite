@@ -355,7 +355,7 @@
                         $('#bar-' + parentID + '-' + id + '-' + (a+1)).barfiller({ barColor: color });
                     });
                 },
-                //Alert
+                //Alert 
                 Alert:function($scope){
                     var $item = $scope.find('.ua_alert_close');
                     $($item).on("click", function(){
@@ -409,6 +409,19 @@
                     
                 },
                 
+                //Counter
+                Counter:function($scope){
+                    var $item = $scope.find('.ua-counter-text');
+                    $($item).appear(function () {
+                        var element = $(this);
+                        var timeSet = setTimeout(function () {
+                            if (element.hasClass('ua-counter-text')) {
+                                element.find('.ua-counter-value').countTo();
+                            }
+                        });
+                    });
+                },
+                
                 //Addd new all - one by one with comma
                 
                 
@@ -418,6 +431,7 @@
                 'ultraaddons-alert.default'     : UltraAddonsMap.Alert,
                 'ultraaddons-timeline.default'  : UltraAddonsMap.UA_Owl_Carousel,
                 'ultraaddons-skill-bar.default'  : UltraAddonsMap.skillBar,
+                'ultraaddons-counter.default'  : UltraAddonsMap.Counter,
             };
     
             $.each( elementReadyMap, function( elementKey, elementReadyMap ) {
@@ -426,7 +440,15 @@
             
 
     });
-    
+                   
+//   $('.ua-counter-text').appear(function () {
+//        var element = $(this);
+//        var timeSet = setTimeout(function () {
+//            if (element.hasClass('ua-counter-text')) {
+//                element.find('.ua-counter-value').countTo();
+//            }
+//        });
+//    });
     /**
      * Created Outside of init/Elementtor
      * Imean: elementor/frontend/init
@@ -546,15 +568,7 @@
     });
     //*************************************/
                     
-                    
-   $('.ua-counter-text').appear(function () {
-        var element = $(this);
-        var timeSet = setTimeout(function () {
-            if (element.hasClass('ua-counter-text')) {
-                element.find('.ua-counter-value').countTo();
-            }
-        });
-    });
+   
 
    
         
