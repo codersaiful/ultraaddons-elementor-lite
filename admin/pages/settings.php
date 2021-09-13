@@ -35,7 +35,14 @@ $category_slug = Settings::get_widget_category();
                     <div class="ua-form-wrappper">
                     
                         
-                    
+                    <?php
+                    /**
+                     * Action hook for setting
+                     * 
+                     * @since 1.0.9.2
+                     */
+                    do_action( 'ultraaddons/admin/setting/form/top' );
+                    ?>
 
 
                     <div class="ultraaddons-field-container field-container-category">
@@ -54,6 +61,14 @@ $category_slug = Settings::get_widget_category();
                         </div>
                     </div>
 
+                    <?php
+                    /**
+                     * Action hook for setting
+                     * 
+                     * @since 1.0.9.2
+                     */
+                    do_action( 'ultraaddons/admin/setting/form/bottom' );
+                    ?>
                      
 
                     </div> <!-- /.ua-form-wrappper -->
