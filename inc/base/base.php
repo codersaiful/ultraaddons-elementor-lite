@@ -244,7 +244,7 @@ class Base extends Widget_Base{
          * 
          * @since 1.0.2.1
          */
-        if( Settings::get_widget_category() && is_array( $widget_category ) ){
+        if( Settings::get_widget_category() && is_array( $widget_category ) && ! $this->is_pro() ){
             array_push( $widget_category, Settings::get_widget_category() );
         }
 
@@ -340,7 +340,7 @@ class Base extends Widget_Base{
      * 
      * @return Boolean
      */
-    protected function is_pro(){
+    public function is_pro(){
         $args = $this->get_widget_args();
         return isset( $args['is_pro'] ) ? $args['is_pro'] : false;
     }
