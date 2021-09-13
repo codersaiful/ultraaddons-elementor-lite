@@ -104,7 +104,7 @@ li#toplevel_page_ultraaddons-elementor-lite.current .wp-menu-image img {
 /***** Menu Page Start*******/
 .ultraaddons-license-details, .ultraaddons-dashboard-area {
     background: #fff;
-    padding: 10px 30px 50px;
+    padding: 10px 0;
     border-radius: 3px;
     margin-top: 20px;
     color: #000;
@@ -162,6 +162,8 @@ p.ultraaddons-info {
     display: flex;
     align-items: center;
     margin-bottom: 60px;
+    flex-direction: column;
+    padding: 10px 20px;
 }
 
 .ua-header-menu {
@@ -409,9 +411,6 @@ h4.ua-hf-radio-label-title {
     padding-left: 15px;
 }
 
-.ua-hf-type-radio {
-}
-
 .ua-radion-type {
     background: #ddd0;
     padding: 20px;
@@ -464,9 +463,11 @@ body.wp-admin pre.xdebug-var-dump {
 .ultraaddons-dashboard-area{
     font-family: 'Urbanist', sans-serif;
 }
+
 .ultraaddons-dashboard-area .ua-branding {
-    width: 311px;
+    width: 100%;
 }
+
 .ultraaddons-dashboard-area ul.ua-submenu {
     display: flex;
     float: right;
@@ -503,13 +504,20 @@ body.wp-admin pre.xdebug-var-dump {
     border-top-color: #4531BC;
 }
 
-section.welcome-banner {background-repeat: no-repeat;background-size: cover;background-position: center center;position: relative;display: block;padding: 100px 0 50px 0;}
+section.welcome-banner {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    display: block;
+    padding: 50px 20px;
+}
 
 section.welcome-banner img.logo {
     max-width: 500px;
     width: 100%;
     display: block;
-    margin: 108px auto;
+    margin: 50px auto;
 }
 
 section.welcome-banner p.greetings {
@@ -521,14 +529,16 @@ section.welcome-banner p.greetings {
 
 section.ua-section .inner-wrapper {
     display: flex;
+    flex-wrap: wrap;
     max-width: 1170px;
-    margin: 130px auto;
+    margin: 60px auto;
     column-gap: 30px;
 }
 
 section.ua-section.pr1 .info-box {
     display: flex;
-    padding: 50px;
+    flex-direction: column;
+    padding: 20px;
     box-shadow: 0px 10px 25px rgb(198 203 220 / 30%);
     border-radius: 10px;
     column-gap: 40px;
@@ -556,6 +566,11 @@ section.ua-section h3.big {
     font-size: 42px;
     font-weight: 700;
     margin: 0;
+    line-height: 1.2;
+    text-align: center;
+}
+section.ua-section.faq .faq-details h3.big {
+    display: none;
 }
 
 section.ua-section .info-box p {
@@ -566,18 +581,13 @@ section.ua-section .info-box p {
 }
 
 section.ua-section .full-width.info-box {
+    background-position: center bottom;
+    background-size: contain;
     background-repeat: no-repeat;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding: 20px;
+    padding-bottom: 250px;
 }
-section.ua-section.pr2 .full-width.info-box {
-    padding-right: 50%;
-    background-position: center right;
-}
-section.ua-section.pr6 .full-width.info-box {
-    padding-left: 50%;
-    background-position: center left;
-}
+
 section.ua-section .ua-button {
     background: #6B52FD;
     padding: 16px 25px;
@@ -713,7 +723,70 @@ section.ua-section.pr5.newsletter h3.big {
     opacity: 1;
 }
 
-
+@media screen and (min-width: 768px) {
+    .ultraaddons-dashboard-area .ua-branding {
+        width: 311px;
+    }
+    section.ua-section.pr1 .info-box {
+        flex-direction: row;
+        column-gap: 20px;
+    }
+    section.ua-section .full-width.info-box {
+        background-size: 40%;
+        background-repeat: no-repeat;
+        padding: 50px;
+    }
+    section.ua-section.pr2 .full-width.info-box {
+        background-position: center right;
+        padding-right: 50%;
+    }
+    section.ua-section.pr6 .full-width.info-box {
+        background-position: center left;
+        padding-left: 50%;
+    }
+}
+@media screen and (min-width: 992px) {
+    .ultraaddons-license-details, .ultraaddons-dashboard-area {
+        padding: 10px 30px 50px;
+    }
+    section.ua-section.pr1 .info-box {
+        padding: 20px;
+        column-gap: 20px;
+    }
+    section.ua-section .inner-wrapper{
+        flex-wrap: nowrap;
+    }
+    section.ua-section.faq .faq-details h3.big {
+        display: block;
+    }
+    section.ua-section.pr3.faq .faq-nav h3.big {
+        display: none;
+    }
+    section.ua-section h3.big {
+        text-align: left;
+    }
+    
+    
+}
+@media screen and (min-width: 1200px) {
+    .ua-admin-header-wrapper {
+        flex-direction: row;
+        padding: 0;
+    }
+    section.welcome-banner {
+        padding: 100px 0 50px 0;
+    }
+    section.welcome-banner img.logo {
+        margin: 108px auto;
+    }
+    section.ua-section .inner-wrapper {
+        margin: 130px auto;
+    }
+    section.ua-section.pr1 .info-box {
+        padding: 50px;
+        column-gap: 40px;
+    }
+}
 
 
 

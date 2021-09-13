@@ -48,6 +48,7 @@ defined( 'ABSPATH' ) || die();
         <section class="ua-section pr3 faq">
             <div class="inner-wrapper">
                 <div class="faq-nav">
+                    <h3 class="big"><?php echo esc_html__( 'Frequently Asked Questions', 'ultraaddons' ); ?></h3>
                     <ul>
                         <li class="active" data-target="installation"><?php echo esc_html__( 'Installation', 'ultraaddons' ); ?></li>
                         <li data-target="docs"><?php echo esc_html__( 'Documentation', 'ultraaddons' ); ?></li>
