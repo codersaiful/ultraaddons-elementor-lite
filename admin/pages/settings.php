@@ -9,9 +9,9 @@ defined( 'ABSPATH' ) || die();
  */
 $form_datas = filter_input_array(INPUT_POST);
 
-do_action( 'ultraaddons_save_data', $form_datas, 'settings' );
+$form_datas = apply_filters( 'ultraaddons/admin/setting/on_save', $form_datas, 'settings' );
 
-$key = Settings::$key;
+$key = Settings::$key; //'ultraaddons_settings'
 
 if( $form_datas && $key ){
     update_option( $key, $form_datas );
