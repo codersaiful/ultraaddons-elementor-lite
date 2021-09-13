@@ -115,7 +115,21 @@ defined( 'ABSPATH' ) || die();
             </div>
         </section>
 
-        <section class="ua-section pr6">
+        <section class="ua-section pr5 newsletter">
+            <div class="inner-wrapper">
+                <div class="full-width" style="background-image: url(<?php echo esc_url( ULTRA_ADDONS_ASSETS . 'images/newsletter-bg.png' ); ?>);">
+                    <h3 class="big"><?php echo esc_html__( 'Subscribe Newsletter', 'ultraaddons' ); ?></h3>
+                    <p><?php echo esc_html__( 'To get updated news, current offers, deals and tips please subscribe
+to our newsletter.', 'ultraaddons' ); ?></p>
+                    <div class="mc4-form">
+                        <?php include_once 'includes/mailchimp-subscribe-form.php'; ?>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="ua-section pr6 rating">
             <div class="inner-wrapper">
                 <div class="full-width info-box" style="background-image: url(<?php echo esc_url( ULTRA_ADDONS_ASSETS . 'images/svg/Illustration-2.svg' ); ?>);">
                     <h3 class="big"><?php echo esc_html__( 'Are you like our Product?', 'ultraaddons' ); ?></h3>
