@@ -36,7 +36,7 @@ class Admin_Handle{
         
         add_action( 'admin_menu', [ __CLASS__, 'admin_menu' ] );
         
-        //Admin Footer Text/ Requesting for Review
+        //Admin Footer Text/ Requesting for Review @since 1.0.9.2 @by Saiful
         add_filter( 'admin_footer_text', [ __CLASS__, 'admin_footer_text' ], PHP_INT_MAX );
     }
     
