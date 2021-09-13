@@ -529,17 +529,46 @@ section.ua-section {
 section.ua-section.pr1 .info-box {
     display: flex;
     padding: 50px;
-    box-shadow: 0px 10px 25px rgba(198, 203, 220, 0.3);
+    box-shadow: 0px 10px 25px rgb(198 203 220 / 30%);
     border-radius: 10px;
-    column-gap: 30px;
+    column-gap: 40px;
 }
 
-section.ua-section.pr1 .info-box .icon {
-    min-width: 50px;
+section.ua-section.pr1 .info-box .icon-wrapper {
+    min-width: 60px;
+}
+
+section.ua-section.pr1 .info-box .icon-wrapper img.icon {
+    padding: 18px;
+    background: #472af208;
+    width: 24px;
+    border-radius: 8%;
 }
 
 section.ua-section.pr1 .info-box .info h3 {
     margin: 0;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #140C33;
+}
+
+section.ua-section.pr1 .info-box .info p {
+    color: #726E82;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 25px 0;
+}
+
+section.ua-section.pr1 .info-box .info a.ua-button {
+    background: #6B52FD;
+    padding: 16px 25px;
+    font-family: 'Urbanist', sans-serif;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1;
 }
 
 
