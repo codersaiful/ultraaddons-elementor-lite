@@ -596,6 +596,9 @@ section.ua-section .ua-button {
     font-weight: 600;
     line-height: 1;
 }
+section.ua-section .btn-wrapper {
+    text-align: center;
+}
 section.ua-section .ua-button.white {
     background: #fff;
     color: #D64289;
@@ -609,21 +612,18 @@ section.ua-section.pr3.faq {
     padding: 10px;
 }
 section.ua-section.pr3.faq .faq-nav {
+    width: 100%;
     min-width: 200px;
-    text-align: right;
-    top: 70px;
+    text-align: center;
     position: relative;
 }
 
-section.ua-section.faq .inner-wrapper {
-    column-gap: 100px;
-}
 section.faq ul {
     list-style: none;
 }
 
 section.faq .faq-nav ul li {
-    border-right: 2px solid #D2D7E8;
+    border-bottom: 2px solid #D2D7E8;
     margin: 0;
     padding: 10px 15px;
     font-size: 16px;
@@ -642,7 +642,13 @@ section.faq .faq-details ul li {
     box-shadow: 0px 8px 25px rgb(198 203 220 / 25%);
     margin-bottom: 20px;
 }
+
 section.faq .faq-details h4 {
+    cursor: pointer;
+}
+
+section.faq .faq-details h4 {
+    position: relative;
     margin: 0;
     border-bottom: 1px solid #ddd;
     padding-bottom: 20px;
@@ -650,11 +656,13 @@ section.faq .faq-details h4 {
     color: #140C33;
     font-size: 20px;
     font-weight: 600;
-    padding-left: 60px;
+    padding-left: 40px;
     padding-top: 20px;
+    line-height: 1.2;
+    z-index: 2;
 }
 
-section.faq .faq-details ul li:before {
+section.faq .faq-details ul li h4:before {
     content: "";
     display: block;
     width: 16px;
@@ -663,15 +671,25 @@ section.faq .faq-details ul li:before {
     background-repeat: no-repeat;
     background-position: center center;
     position: absolute;
-    top: 22px;
-    left: 20px;
+    top: calc(50% - 7px);
+    left: 10px;
+    z-index: 1;
+    transform: rotate(-90deg);
+    transition: all 0.3s;
+}
+section.faq .faq-details ul li.active h4:before {
+    transform: rotate(0deg);
 }
 
 section.faq .faq-details ul li .answer {
-    padding: 0 20px 20px 60px;
+    padding: 0 20px 20px 40px;
     color: #726E82;
     line-height: 26px;
     font-size: 16px;
+    display: none;
+}
+section.faq .faq-details ul li.active .answer {
+    display: block;
 }
 
 /* Video Section */
@@ -744,6 +762,16 @@ section.ua-section.pr5.newsletter h3.big {
         background-position: center left;
         padding-left: 50%;
     }
+    section.ua-section .btn-wrapper {
+        text-align: left;
+    }
+    section.faq .faq-details ul li:before {
+        left: 20px;
+    }
+    section.faq .faq-details h4,
+    section.faq .faq-details ul li .answer {
+        padding-left: 60px;
+    }
 }
 @media screen and (min-width: 992px) {
     .ultraaddons-license-details, .ultraaddons-dashboard-area {
@@ -765,6 +793,24 @@ section.ua-section.pr5.newsletter h3.big {
     section.ua-section h3.big {
         text-align: left;
     }
+    section.ua-section.pr3.faq .faq-nav {
+        text-align: right;
+        top: 70px;
+    }
+    section.faq .faq-nav ul li {
+        border: 0;
+        border-right: 2px solid #D2D7E8;
+        margin: 0;
+        padding: 10px 15px;
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        cursor: pointer;
+    }
+    section.ua-section.pr3.faq .faq-nav {
+        max-width: 250px;
+    }
+    
     
     
 }
@@ -785,6 +831,15 @@ section.ua-section.pr5.newsletter h3.big {
     section.ua-section.pr1 .info-box {
         padding: 50px;
         column-gap: 40px;
+    }
+    section.ua-section.faq .inner-wrapper {
+        column-gap: 100px;
+    }
+}
+
+@media screen and (min-width: 767px) and (max-width: 991px){
+    section.faq .faq-nav ul li {
+        display: inline-block;
     }
 }
 

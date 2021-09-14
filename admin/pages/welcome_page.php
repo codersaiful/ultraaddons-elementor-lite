@@ -18,7 +18,9 @@ defined( 'ABSPATH' ) || die();
                     <div class="info">
                         <h3><?php echo esc_html__( 'User Guidelines', 'ultraaddons' ); ?></h3>
                         <p><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></p>
-                        <a href="#" class="ua-button button"><?php echo esc_html__( 'Documentation', 'ultraaddons' ); ?></a>
+                        <div class="btn-wrapper">
+                            <a href="#" class="ua-button button"><?php echo esc_html__( 'Documentation', 'ultraaddons' ); ?></a>
+                        </div>
                     </div>
                 </div>
                 <div class="info-box">
@@ -28,7 +30,9 @@ defined( 'ABSPATH' ) || die();
                     <div class="info">
                         <h3><?php echo esc_html__( 'Do you have any query?', 'ultraaddons' ); ?></h3>
                         <p><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></p>
-                        <a href="#" class="ua-button button"><?php echo esc_html__( 'Contact Support', 'ultraaddons' ); ?></a>
+                        <div class="btn-wrapper">
+                            <a href="#" class="ua-button button"><?php echo esc_html__( 'Contact Support', 'ultraaddons' ); ?></a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -40,7 +44,9 @@ defined( 'ABSPATH' ) || die();
                 <div class="full-width info-box" style="background-image: url(<?php echo esc_url( ULTRA_ADDONS_ASSETS . 'images/svg/Illustration-1.svg' ); ?>);">
                     <h3 class="big"><?php echo esc_html__( 'Missing Any Features?', 'ultraaddons' ); ?></h3>
                     <p><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></p>
-                    <a href="#" class="ua-button button"><?php echo esc_html__( 'Request For Features', 'ultraaddons' ); ?></a>
+                    <div class="btn-wrapper">
+                        <a href="#" class="ua-button button"><?php echo esc_html__( 'Request For Features', 'ultraaddons' ); ?></a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -60,7 +66,7 @@ defined( 'ABSPATH' ) || die();
                     <h3 class="big"><?php echo esc_html__( 'Frequently Asked Questions', 'ultraaddons' ); ?></h3>
                     <div id="installation" class="faq-inner-box">
                         <ul>
-                            <li class="faq-item" id="installation-item-1">
+                            <li class="faq-item active" id="installation-item-1">
                                 <h4><?php echo esc_html__( 'Is there any support policy available for user?', 'ultraaddons' ); ?></h4>
                                 <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
                             </li>
@@ -135,7 +141,9 @@ to our newsletter.', 'ultraaddons' ); ?></p>
                 <div class="full-width info-box" style="background-image: url(<?php echo esc_url( ULTRA_ADDONS_ASSETS . 'images/svg/Illustration-2.svg' ); ?>);">
                     <h3 class="big"><?php echo esc_html__( 'Are you like our Product?', 'ultraaddons' ); ?></h3>
                     <p><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></p>
-                    <a href="#" class="ua-button button"><?php echo esc_html__( 'Rating us', 'ultraaddons' ); ?></a>
+                    <div class="btn-wrapper">
+                        <a href="#" class="ua-button button"><?php echo esc_html__( 'Rating us', 'ultraaddons' ); ?></a>    
+                    </div>
                 </div>
             </div>
         </section>
