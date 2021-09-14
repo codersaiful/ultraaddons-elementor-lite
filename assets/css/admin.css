@@ -688,23 +688,29 @@ section.faq .faq-details ul li .answer {
     font-size: 16px;
     display: none;
 }
-section.faq .faq-details ul li.active .answer {
+section.ua-section.pr4.video .inner-wrapper {
     display: block;
+    padding: 20px;
 }
 
 /* Video Section */
 section.ua-section.pr4.video .inner-wrapper {
     display: block;
 }
+
 section.ua-section.pr4.video .title-wrapper {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin-bottom: 50px;
+    flex-wrap: wrap;
+    row-gap: 32px;
 }
 
 section.ua-section.video .video-gallery {
     display: flex;
     column-gap: 20px;
+    row-gap: 50px;
+    flex-wrap: wrap;
 }
 section.ua-section.video .video-gallery .video-tutorial iframe {
     width: 100%;
@@ -730,7 +736,7 @@ section.ua-section.pr5.newsletter h3.big {
     color: #fff;
 }
 .mc4-form input#mce-EMAIL {
-    padding: 10px 20px;
+    padding: 8px 20px;
     border-radius: 6px;
 }
 .mc4-form::placeholder,
@@ -772,6 +778,14 @@ section.ua-section.pr5.newsletter h3.big {
     section.faq .faq-details ul li .answer {
         padding-left: 60px;
     }
+    section.ua-section.pr4.video .title-wrapper {
+        flex-wrap: nowrap;
+        row-gap: 32px;
+        justify-content: space-between;
+    }
+    section.ua-section.video .video-gallery {
+        flex-wrap: nowrap;
+    }
 }
 @media screen and (min-width: 992px) {
     .ultraaddons-license-details, .ultraaddons-dashboard-area {
@@ -810,7 +824,9 @@ section.ua-section.pr5.newsletter h3.big {
     section.ua-section.pr3.faq .faq-nav {
         max-width: 250px;
     }
-    
+    section.ua-section.pr4.video .inner-wrapper {
+        padding: 0;
+    }
     
     
 }
