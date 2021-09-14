@@ -634,7 +634,7 @@ section.faq .faq-nav ul li.active {
     border-color: #6B52FD;
     color: #6B52FD;
 }
-section.faq .faq-details ul li {
+section.faq .faq-details ul > li {
     background: #fff;
     position: relative;
     border-radius: 5px;
@@ -651,7 +651,6 @@ section.faq .faq-details h4 {
     margin: 0;
     border-bottom: 1px solid #ddd;
     padding-bottom: 20px;
-    margin-bottom: 20px;
     color: #140C33;
     font-size: 20px;
     font-weight: 600;
@@ -659,6 +658,9 @@ section.faq .faq-details h4 {
     padding-top: 20px;
     line-height: 1.2;
     z-index: 2;
+}
+section.faq .faq-details li.active h4{
+    margin-bottom: 20px;
 }
 
 section.faq .faq-details ul li h4:before {
@@ -681,18 +683,41 @@ section.faq .faq-details ul li.active h4:before {
 }
 
 section.faq .faq-details ul li .answer {
-    padding: 0 20px 20px 40px;
+    padding: 0 20px 0 40px;
     color: #726E82;
     line-height: 26px;
     font-size: 16px;
-    display: none;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
 }
+section.faq .faq-details ul li.active .answer{
+    padding-bottom: 20px;
+    height: auto;
+    opacity: 1;
+}
+
+section.faq .faq-details .faq-inner-box {
+    overflow: hidden;
+    position: absolute;
+    height: 0;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier();
+}
+section.faq .faq-details .faq-inner-box.active {
+    position: relative;
+    height: auto;
+    opacity: 1;
+}
+
 section.ua-section.pr4.video .inner-wrapper {
     display: block;
     padding: 20px;
 }
 
 /* Video Section */
+section.faq .faq-details ul li.active .answer,
 section.ua-section.pr4.video .inner-wrapper {
     display: block;
 }
@@ -789,6 +814,11 @@ section.ua-section.pr5.newsletter h3.big {
         padding: 100px 20px;
     }
 }
+@media screen and (min-width: 783px) {
+    .mc4-form input#mce-EMAIL {
+        padding: 10px 20px;
+    }
+}
 @media screen and (min-width: 992px) {
     .ultraaddons-license-details, .ultraaddons-dashboard-area {
         padding: 10px 30px 50px;
@@ -808,6 +838,9 @@ section.ua-section.pr5.newsletter h3.big {
     }
     section.ua-section h3.big {
         text-align: left;
+    }
+    section.ua-section.newsletter h3.big {
+        text-align: center;
     }
     section.ua-section.pr3.faq .faq-nav {
         text-align: right;

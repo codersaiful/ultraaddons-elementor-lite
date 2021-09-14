@@ -64,34 +64,101 @@ defined( 'ABSPATH' ) || die();
                 </div>
                 <div class="faq-details">
                     <h3 class="big"><?php echo esc_html__( 'Frequently Asked Questions', 'ultraaddons' ); ?></h3>
-                    <div id="installation" class="faq-inner-box">
+                    <div id="installation" class="faq-inner-box active">
+                        <h3>Installation</h3>
                         <ul>
                             <li class="faq-item active" id="installation-item-1">
-                                <h4><?php echo esc_html__( 'Is there any support policy available for user?', 'ultraaddons' ); ?></h4>
-                                <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
+                                <h4><?php echo esc_html__( 'Where is my plugin purchase code?', 'ultraaddons' ); ?></h4>
+                                <div class="answer">
+                                    <p>You can find a license key inside your account on CodeCanyon.</p>
+                                    <ol>
+                                        <li>Make sure that you logged in to your account.</li>
+                                        <li>Visit your Downloads section, find the plugin, that you want to get a license key for, and click the button Download, then License Certificate.</li>
+                                        <li>Find the Item Purchase Code in the text document and paste it into the form inside the plugin.</li>
+                                    </ol>
+
+                                </div>
                             </li>
                             <li class="faq-item" id="installation-item-2">
-                                <h4><?php echo esc_html__( 'Is there any support policy available for user?', 'ultraaddons' ); ?></h4>
-                                <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
+                                <h4>How to install Woo Product Table Pro Plugin?</h4>
+                                <div class="answer">
+                                    <p>You can create a beautiful and user friendly product table very easily. Our product table provides many more features like drag and drop elements, Sorting table data, advance search option. Also have responsive layout, pagination and third party plugin supports. You can easily change table design as you want.</p>
+                                </div>
                             </li>
                             <li class="faq-item" id="installation-item-3">
-                                <h4><?php echo esc_html__( 'Is there any support policy available for user?', 'ultraaddons' ); ?></h4>
-                                <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
+                                <h4>How to create WooCommerce Product Table?</h4>
+                                <div class="answer">
+                                    <p>Install Woo Product Table<br>To get help on how to install Woo Product Table read this. <br>Click on Add New to create a new product table<br>From WordPress admin area go to PRODUCT TABLE > Add New to create a new Product Table.</p>
+                                </div>
                             </li>
                             <li class="faq-item" id="installation-item-4">
-                                <h4><?php echo esc_html__( 'Is there any support policy available for user?', 'ultraaddons' ); ?></h4>
+                                <h4><?php echo esc_html__( 'Is there any support policy available for user4?', 'ultraaddons' ); ?></h4>
                                 <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
                             </li>
                         </ul>
                     </div>
                     <div id="docs" class="faq-inner-box">
-
+                        <h3>Documentation</h3>
+                        <ul>
+                            <li class="faq-item active" id="installation-item-1">
+                                <h4><?php echo esc_html__( 'Is there any support policy available for user1?', 'ultraaddons' ); ?></h4>
+                                <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
+                            </li>
+                            <li class="faq-item" id="installation-item-2">
+                                <h4><?php echo esc_html__( 'Is there any support policy available for user2?', 'ultraaddons' ); ?></h4>
+                                <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
+                            </li>
+                            <li class="faq-item" id="installation-item-3">
+                                <h4><?php echo esc_html__( 'Is there any support policy available for user3?', 'ultraaddons' ); ?></h4>
+                                <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
+                            </li>
+                            <li class="faq-item" id="installation-item-4">
+                                <h4><?php echo esc_html__( 'Is there any support policy available for user4?', 'ultraaddons' ); ?></h4>
+                                <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
+                            </li>
+                        </ul>
                     </div>
                     <div id="support-policy" class="faq-inner-box">
-
+                        <h3>Support Policy</h3>
+                        <ul>
+                            <li class="faq-item active" id="installation-item-1">
+                                <h4><?php echo esc_html__( 'Is there any support policy available for user1?', 'ultraaddons' ); ?></h4>
+                                <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
+                            </li>
+                            <li class="faq-item" id="installation-item-2">
+                                <h4><?php echo esc_html__( 'Is there any support policy available for user2?', 'ultraaddons' ); ?></h4>
+                                <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
+                            </li>
+                            <li class="faq-item" id="installation-item-3">
+                                <h4><?php echo esc_html__( 'Is there any support policy available for user3?', 'ultraaddons' ); ?></h4>
+                                <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
+                            </li>
+                            <li class="faq-item" id="installation-item-4">
+                                <h4><?php echo esc_html__( 'Is there any support policy available for user4?', 'ultraaddons' ); ?></h4>
+                                <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
+                            </li>
+                        </ul>
                     </div>
                     <div id="guideline" class="faq-inner-box">
-
+                        <h3>Guidelines</h3>
+                        <ul>
+                            <li class="faq-item active" id="installation-item-1">
+                                <h4><?php echo esc_html__( 'Is there any support policy available for user1?', 'ultraaddons' ); ?></h4>
+                                <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
+                            </li>
+                            <li class="faq-item" id="installation-item-2">
+                                <h4><?php echo esc_html__( 'Is there any support policy available for user2?', 'ultraaddons' ); ?></h4>
+                                <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
+                            </li>
+                            <li class="faq-item" id="installation-item-3">
+                                <h4><?php echo esc_html__( 'Is there any support policy available for user3?', 'ultraaddons' ); ?></h4>
+                                <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
+                            </li>
+                            <li class="faq-item" id="installation-item-4">
+                                <h4><?php echo esc_html__( 'Is there any support policy available for user4?', 'ultraaddons' ); ?></h4>
+                                <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
