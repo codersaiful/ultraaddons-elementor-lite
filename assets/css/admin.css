@@ -604,7 +604,7 @@ section.ua-section .ua-button.white {
     color: #D64289;
     outline: none;
     border-color: #fff;
-    border-radius: 6px;
+    border-radius: 4px;
 }
 
 section.ua-section.pr3.faq {
@@ -761,8 +761,22 @@ section.ua-section.pr5.newsletter h3.big {
     color: #fff;
 }
 .mc4-form input#mce-EMAIL {
-    padding: 8px 20px;
-    border-radius: 6px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    background: transparent;
+    border: 1px solid white;
+}
+.mc4-form input#mce-EMAIL::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+.mc4-form input#mce-EMAIL:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+}
+
+.mc4-form input#mce-EMAIL::-ms-input-placeholder { /* Microsoft Edge */
+  color: white;
 }
 .mc4-form::placeholder,
 .mc4-form::-moz-placeholder,
@@ -821,6 +835,8 @@ section.ua-section.pr5.newsletter h3.big {
 @media screen and (min-width: 783px) {
     .mc4-form input#mce-EMAIL {
         padding: 10px 20px;
+        width: 300px;
+        margin-right: 5px;
     }
 }
 @media screen and (min-width: 992px) {
