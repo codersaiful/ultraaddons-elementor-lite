@@ -813,6 +813,9 @@ section.ua-section.pr5.newsletter h3.big {
     section.ua-section.pr5.newsletter .full-width {
         padding: 100px 20px;
     }
+    section.faq .faq-details ul li h4:before {
+        left: 20px;
+    }
 }
 @media screen and (min-width: 783px) {
     .mc4-form input#mce-EMAIL {
@@ -916,10 +919,12 @@ section.ua-section.pr5.newsletter h3.big {
     }
 }
 
+@media (orientation: landscape) and (max-width: 767px) {
 
-
-
-
-
-
+    section.ua-section.pr2 .full-width.info-box,
+    section.ua-section.pr6 .full-width.info-box{
+        background-image: none !important;
+        padding-bottom: 20px;
+    }
+}
 /* Welcome page design - ends here */
