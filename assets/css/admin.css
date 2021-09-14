@@ -160,7 +160,6 @@ p.ultraaddons-info {
 
 .ua-admin-header-wrapper {
     display: flex;
-    align-items: center;
     margin-bottom: 60px;
     flex-direction: column;
     padding: 10px 20px;
@@ -728,7 +727,7 @@ section.ua-section.pr5.newsletter .full-width {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    padding: 100px;
+    padding: 50px 20px;
     text-align: center;
     color: #fff;
 }
@@ -786,6 +785,9 @@ section.ua-section.pr5.newsletter h3.big {
     section.ua-section.video .video-gallery {
         flex-wrap: nowrap;
     }
+    section.ua-section.pr5.newsletter .full-width {
+        padding: 100px 20px;
+    }
 }
 @media screen and (min-width: 992px) {
     .ultraaddons-license-details, .ultraaddons-dashboard-area {
@@ -827,6 +829,9 @@ section.ua-section.pr5.newsletter h3.big {
     section.ua-section.pr4.video .inner-wrapper {
         padding: 0;
     }
+    section.ua-section.pr5.newsletter .full-width {
+        padding: 100px;
+    }
     
     
 }
@@ -856,6 +861,25 @@ section.ua-section.pr5.newsletter h3.big {
 @media screen and (min-width: 767px) and (max-width: 991px){
     section.faq .faq-nav ul li {
         display: inline-block;
+    }
+    .ultraaddons-dashboard-area ul.ua-submenu {
+        float: none;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .ua-admin-header-wrapper{
+        align-items: center;
+    }
+}
+@media screen and (max-width: 767px) {
+    .mc4-form input#mce-EMAIL {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    section.ua-section .ua-button.white {
+        width: 100%;
     }
 }
 
