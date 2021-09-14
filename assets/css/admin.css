@@ -163,6 +163,7 @@ p.ultraaddons-info {
     margin-bottom: 60px;
     flex-direction: column;
     padding: 10px 20px;
+    margin-top: 25px;
 }
 
 .ua-header-menu {
@@ -878,6 +879,7 @@ section.ua-section.pr5.newsletter h3.big {
     }
     section.welcome-banner {
         padding: 100px 0 50px 0;
+        border-radius: 10px;
     }
     section.welcome-banner img.logo {
         margin: 108px auto;
@@ -907,6 +909,14 @@ section.ua-section.pr5.newsletter h3.big {
 @media screen and (max-width: 991px) {
     .ua-admin-header-wrapper{
         align-items: center;
+    }
+    
+    /*Menu Hide from Mobile*/
+    .ua-header-menu {
+        display: none;
+    }
+    .ua-admin-header-wrapper {
+        margin-bottom: 30px;
     }
 }
 @media screen and (max-width: 767px) {
