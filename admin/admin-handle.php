@@ -345,25 +345,21 @@ class Admin_Handle{
      * Display Footer Text
      * We are saying here for REview request
      */
-    public static function admin_footer_text() {
+    public static function admin_footer_text( $text ) {
         $current_screen = get_current_screen();
-        
         $is_ultraaddons = ( $current_screen && false !== strpos( $current_screen->id, 'ultraaddons' ) );
 
         if ( $is_ultraaddons ) {
-                $footer_text = sprintf(
-                        /* translators: 1: Elementor, 2: Link to plugin review */
-                        __( 'Enjoyed %1$s? Please leave us a %2$s rating. We really appreciate your support!', 'ultraaddons' ),
-                        '<strong>' . esc_html__( 'UltraAddons', 'ultraaddons' ) . '</strong>',
-                        '<a href="https://wordpress.org/support/plugin/ultraaddons-elementor-lite/reviews/#new-post" target="_blank">&#9733;&#9733;&#9733;&#9733;&#9733;</a>'
-                );
+            $footer_text = sprintf(
+                    /* translators: 1: Elementor, 2: Link to plugin review */
+                    __( 'Enjoyed %1$s? Please leave us a %2$s rating. We really appreciate your support!', 'ultraaddons' ),
+                    '<strong>' . esc_html__( 'UltraAddons', 'ultraaddons' ) . '</strong>',
+                    '<a href="https://wordpress.org/support/plugin/ultraaddons-elementor-lite/reviews/#new-post" target="_blank">&#9733;&#9733;&#9733;&#9733;&#9733;</a>'
+            );
+            return $footer_text;
         }
-
-        return $footer_text;
+        return $text;
     }
-    
-    
-    
     
 }
 Admin_Handle::init();
