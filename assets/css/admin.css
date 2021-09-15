@@ -460,6 +460,11 @@ body.wp-admin pre.xdebug-var-dump {
 }
 
 /* Welcome page design - starts here */
+.ua-admin-header-wrapper .ua-branding img {
+    max-width: 311px;
+    display: block;
+}
+
 .ultraaddons-dashboard-area{
     font-family: 'Urbanist', sans-serif;
 }
@@ -816,7 +821,9 @@ section.ua-section.pr6 .full-width.info-box img {
 
 @media screen and (min-width: 768px) {
     .ultraaddons-dashboard-area .ua-branding {
-        width: 311px;
+        max-width: 311px;
+        display: flex;
+        align-items: center;
     }
     section.ua-section.pr1 .info-box {
         flex-direction: row;
@@ -983,6 +990,9 @@ section.ua-section.pr6 .full-width.info-box img {
 }
 
 @media screen and (max-width: 767px) {
+    .ua-admin-header-wrapper .ua-branding img {
+        margin: 0 auto;
+    }
     .mc4-form input#mce-EMAIL {
         width: 100%;
         margin-bottom: 10px;
