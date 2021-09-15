@@ -760,12 +760,6 @@ section.ua-section.pr4.video .title-wrapper {
     row-gap: 32px;
 }
 
-section.ua-section.video .video-gallery {
-    display: flex;
-    column-gap: 20px;
-    row-gap: 50px;
-    flex-wrap: wrap;
-}
 section.ua-section.video .video-gallery .video-tutorial iframe {
     width: 100%;
     border-radius: 5px;
@@ -819,6 +813,24 @@ section.ua-section.pr6 .full-width.info-box img {
     margin-top: 50px;
 }
 
+section.ua-section.video .video-gallery .owl-dots>button {
+    background: #6c52fd !important;
+    width: 10px;
+    height: 10px;
+    margin: 5px;
+    border-radius: 2px;
+    opacity: 0.4;
+}
+section.ua-section.video .video-gallery .owl-dots > button.active{
+    opacity: 1;
+}
+
+section.ua-section.video .video-gallery .owl-dots {
+    text-align: center !important;
+    display: block !important;
+    width: 100%;
+}
+
 @media screen and (min-width: 768px) {
     .ultraaddons-dashboard-area .ua-branding {
         max-width: 311px;
@@ -857,9 +869,7 @@ section.ua-section.pr6 .full-width.info-box img {
         justify-content: space-between;
         flex-direction: row;
     }
-    section.ua-section.video .video-gallery {
-        flex-wrap: nowrap;
-    }
+
     section.ua-section.pr5.newsletter .full-width {
         padding: 100px 20px;
     }
@@ -1005,6 +1015,12 @@ section.ua-section.pr6 .full-width.info-box img {
         background-image: none !important;
         padding-bottom: 20px;
     }
+    section.ua-section.video .video-gallery .owl-dots>button {
+        width: 20px;
+        height: 5px;
+        margin: 0 10px;
+    }
+    
 }
 
 @media (orientation: landscape) and (max-width: 767px) {
