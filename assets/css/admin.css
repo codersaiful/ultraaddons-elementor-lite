@@ -534,9 +534,15 @@ section.ua-section .inner-wrapper {
     flex-wrap: wrap;
     max-width: 1170px;
     margin: 60px auto;
+    column-gap: 30px;
     row-gap: 50px;
 }
-
+section.ua-section.pr3.faq .inner-wrapper {
+    row-gap: 20px;
+}
+section.ua-section.pr2 .inner-wrapper {
+    margin-top: 0;
+}
 section.ua-section.pr1 .info-box {
     display: flex;
     flex-direction: column;
@@ -548,6 +554,7 @@ section.ua-section.pr1 .info-box {
 
 section.ua-section.pr1 .info-box .icon-wrapper {
     min-width: 60px;
+    margin-bottom: 30px;
 }
 
 section.ua-section.pr1 .info-box .icon-wrapper img.icon {
@@ -610,6 +617,7 @@ section.ua-section .ua-button.white {
 
 section.ua-section.pr3.faq {
     background: #F8F9FC;
+    padding: 10px 0;
 
 }
 
@@ -621,6 +629,7 @@ section.ua-section.pr3.faq .faq-nav {
     min-width: 200px;
     text-align: center;
     position: relative;
+    padding: 0 20px;
 }
 section.ua-section.pr3.faq .faq-details {
     width: 100%;
@@ -630,17 +639,18 @@ section.faq ul {
     list-style: none;
 }
 section.faq .faq-details ul {
-    padding: 0 20px 0 30px;
+    padding: 0 20px;
 }
 
 section.faq .faq-nav ul li {
-    border-bottom: 2px solid #D2D7E8;
+    border-bottom: 1px solid #D2D7E8;
     margin: 0;
-    padding: 10px 15px;
+    padding: 15px 0;
     font-size: 16px;
     font-weight: 600;
     letter-spacing: 1px;
     cursor: pointer;
+    text-align: left;
 }
 section.faq .faq-nav ul li.active {
     border-color: #6B52FD;
@@ -661,7 +671,6 @@ section.faq .faq-details h4 {
 section.faq .faq-details h4 {
     position: relative;
     margin: 0;
-    border-bottom: 1px solid #ddd;
     padding-bottom: 20px;
     color: #140C33;
     font-size: 20px;
@@ -670,6 +679,9 @@ section.faq .faq-details h4 {
     padding-top: 20px;
     line-height: 1.2;
     z-index: 2;
+}
+section.faq .faq-details ul li.active h4 {
+    border-bottom: 1px solid #ddd;
 }
 section.faq .faq-details li.active h4{
     margin-bottom: 20px;
@@ -739,6 +751,7 @@ section.ua-section.pr4.video .title-wrapper {
     justify-content: center;
     margin-bottom: 50px;
     flex-wrap: wrap;
+    flex-direction: column;
     row-gap: 32px;
 }
 
@@ -774,6 +787,7 @@ section.ua-section.pr5.newsletter .full-width {
 }
 section.ua-section.pr5.newsletter h3.big {
     color: #fff;
+    text-align: center;
 }
 .mc4-form input#mce-EMAIL {
     padding: 10px 20px;
@@ -797,7 +811,7 @@ section.ua-section.pr5.newsletter h3.big {
 
 section.ua-section.pr2 .full-width.info-box img,
 section.ua-section.pr6 .full-width.info-box img {
-    margin-top: 25px;
+    margin-top: 50px;
 }
 
 @media screen and (min-width: 768px) {
@@ -834,6 +848,7 @@ section.ua-section.pr6 .full-width.info-box img {
         flex-wrap: nowrap;
         row-gap: 32px;
         justify-content: space-between;
+        flex-direction: row;
     }
     section.ua-section.video .video-gallery {
         flex-wrap: nowrap;
@@ -869,6 +884,8 @@ section.ua-section.pr6 .full-width.info-box img {
     }
     section.ua-section.faq .faq-details h3.big {
         display: block;
+        padding: 0 20px;
+        margin-bottom: 20px;
     }
     section.ua-section.pr3.faq .faq-nav h3.big {
         display: none;
@@ -892,6 +909,7 @@ section.ua-section.pr6 .full-width.info-box img {
         font-weight: 600;
         letter-spacing: 1px;
         cursor: pointer;
+        text-align: right;
     }
     section.ua-section.pr3.faq .faq-nav {
         max-width: 150px;
@@ -901,6 +919,14 @@ section.ua-section.pr6 .full-width.info-box img {
     }
     section.ua-section.pr5.newsletter .full-width {
         padding: 100px;
+    }
+    section.ua-section.pr1,
+    section.ua-section.pr3.faq .faq-nav {
+        padding: 0;
+    }
+    section.welcome-banner,
+    section.ua-section.pr5.newsletter .full-width {
+        border-radius: 10px;
     }
     
     
@@ -912,7 +938,6 @@ section.ua-section.pr6 .full-width.info-box img {
     }
     section.welcome-banner {
         padding: 100px 0 50px 0;
-        border-radius: 10px;
     }
     section.welcome-banner img.logo {
         margin: 108px auto;
@@ -935,6 +960,7 @@ section.ua-section.pr6 .full-width.info-box img {
 @media screen and (min-width: 767px) and (max-width: 991px){
     section.faq .faq-nav ul li {
         display: inline-block;
+        padding: 15px;
     }
     .ultraaddons-dashboard-area ul.ua-submenu {
         float: none;
