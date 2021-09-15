@@ -842,7 +842,7 @@ section.ua-section.video .video-gallery .owl-dots {
         column-gap: 20px;
     }
     section.ua-section .full-width.info-box {
-        background-size: 40%;
+        background-size: contain;
         background-repeat: no-repeat;
     }
     section.ua-section.pr2 .full-width.info-box {
