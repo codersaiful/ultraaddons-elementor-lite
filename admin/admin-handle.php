@@ -55,7 +55,7 @@ class Admin_Handle{
         wp_register_style( $handle, $src, $deps, $ver, $media );
         wp_enqueue_style( $handle );
         
-        // Owl Corousel added for welcome screen only
+        // Owl Corousel added for welcome screen only @by Mukul
         $handle = 'owl-corousel-style';
         $src = ULTRA_ADDONS_ASSETS . 'vendor/css/owl/owl.carousel.min.css';
         $deps = [];
@@ -64,7 +64,8 @@ class Admin_Handle{
         
         wp_register_style( $handle, $src, $deps, $ver, $media );
         wp_enqueue_style( $handle );
-        
+
+         // Owl Corousel added for welcome screen only @by Mukul
         $handle = 'owl-corousel-script';
         $src = ULTRA_ADDONS_ASSETS . 'vendor/js/owl.carousel.min.js';
         $deps = ['jquery'];
@@ -74,6 +75,7 @@ class Admin_Handle{
         wp_register_script($handle, $src, $deps, $ver, $in_footer);
         wp_enqueue_script($handle);
 
+        //Our main admin script
         $handle = 'ultraaddons-admin-script';
         $src = ULTRA_ADDONS_ASSETS . 'js/admin.js';
         $deps = ['jquery'];
