@@ -86,15 +86,15 @@ $extensionsArray = [
                         __( 'Basic', 'ultraaddons' ),
                     ],
             ],
-    
-            'Preset' => [
-                    'name'  => __( 'Preset Settings', 'ultraaddons' ),
-                    'is_pro'   => true,
-                    'icon'      => 'eicon-click',
-                    'cat'       => [
-                        __( 'Basic', 'ultraaddons' ),
-                    ],
-            ],
+//              //Preset currently disabled. unable to solved. @Saiful
+//            'Preset' => [
+//                    'name'  => __( 'Preset Settings', 'ultraaddons' ),
+//                    'is_pro'   => true,
+//                    'icon'      => 'eicon-click',
+//                    'cat'       => [
+//                        __( 'Basic', 'ultraaddons' ),
+//                    ],
+//            ],
             
             'Floating_Effects' => [
                     'name'  => __( 'Floating Effects', 'ultraaddons' ),
