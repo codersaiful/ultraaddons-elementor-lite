@@ -69,40 +69,27 @@
           });
           $( event.target ).parent().addClass( 'active' );
       });
+
+      $(".video-gallery").owlCarousel({
+        responsiveClass:true,
+		margin:10,
+        responsive:{
+            0:{
+                items:1,
+            },
+            768:{
+                items:2,
+            },
+            992:{
+                items:3,
+                loop:false
+            }
+        }
+      });
       
   });
 
 } (jQuery, window));
 
-/*
-//To take help/idea from elementor. we have kept this part of comment.
-  (0, _createClass2.default)(_default, [{
-    key: "addCustomCss",
-    value: function addCustomCss(css, context) {
-      if (!context) {
-        return;
-      }
 
-      var model = context.model,
-          customCSS = model.get('settings').get('custom_css');
-      var selector = '.elementor-element.elementor-element-' + model.get('id');
-
-      if ('document' === model.get('elType')) {
-        selector = elementor.config.document.settings.cssWrapperSelector;
-      }
-
-      if (customCSS) {
-        css += customCSS.replace(/selector/g, selector);
-      }
-
-      return css;
-    }
-  }, {
-    key: "onElementorInit",
-    value: function onElementorInit() {
-      elementor.hooks.addFilter('editor/style/styleText', this.addCustomCss);
-      elementor.on('navigator:init', this.onNavigatorInit.bind(this));
-    }
-  }
-  */
 

@@ -169,7 +169,7 @@ defined( 'ABSPATH' ) || die();
                         <a href="#" class="ua-button button"><?php echo esc_html__( 'Our Video Playlist', 'ultraaddons' ); ?></a>
                     </div>
                 </div>
-                <div class="video-gallery">
+                <div class="video-gallery owl-carousel">
                     <div class="video-tutorial">
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/9hoFP0dgRx0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         <h4 class="video-title"><?php echo esc_html__( 'React Native Profile Screen | React Native Profile UI', 'ultraaddons' ); ?></h4> 
