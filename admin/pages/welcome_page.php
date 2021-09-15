@@ -19,7 +19,7 @@ defined( 'ABSPATH' ) || die();
                         <h3><?php echo esc_html__( 'User Guidelines', 'ultraaddons' ); ?></h3>
                         <p><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></p>
                         <div class="btn-wrapper">
-                            <a href="#" class="ua-button button"><?php echo esc_html__( 'Documentation', 'ultraaddons' ); ?></a>
+                            <a href="https://ultraaddons.com/docs/" target="_blank" class="ua-button button"><?php echo esc_html__( 'Documentation', 'ultraaddons' ); ?></a>
                         </div>
                     </div>
                 </div>
@@ -31,7 +31,7 @@ defined( 'ABSPATH' ) || die();
                         <h3><?php echo esc_html__( 'Do you have any query?', 'ultraaddons' ); ?></h3>
                         <p><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></p>
                         <div class="btn-wrapper">
-                            <a href="#" class="ua-button button"><?php echo esc_html__( 'Contact Support', 'ultraaddons' ); ?></a>
+                            <a href="https://codeastrology.com/contact-us/" target="_blank" class="ua-button button"><?php echo esc_html__( 'Contact Support', 'ultraaddons' ); ?></a>
                         </div>
                     </div>
                 </div>
@@ -45,7 +45,7 @@ defined( 'ABSPATH' ) || die();
                     <h3 class="big"><?php echo esc_html__( 'Missing Any Features?', 'ultraaddons' ); ?></h3>
                     <p><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></p>
                     <div class="btn-wrapper">
-                        <a href="#" class="ua-button button"><?php echo esc_html__( 'Request For Features', 'ultraaddons' ); ?></a>
+                        <a href="https://github.com/codersaiful/ultraaddons-elementor-lite/discussions/new" class="ua-button button" target="_blank"><?php echo esc_html__( 'Request For Features', 'ultraaddons' ); ?></a>
                     </div>
                     <img src="<?php echo esc_url( ULTRA_ADDONS_ASSETS . 'images/svg/Illustration-1.svg' ); ?>" alt="">
                 </div>
@@ -218,7 +218,7 @@ to our newsletter.', 'ultraaddons' ); ?></p>
                     <h3 class="big"><?php echo esc_html__( 'Are you like our Product?', 'ultraaddons' ); ?></h3>
                     <p><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></p>
                     <div class="btn-wrapper">
-                        <a href="#" class="ua-button button"><?php echo esc_html__( 'Rating us', 'ultraaddons' ); ?></a>    
+                        <a href="https://wordpress.org/support/plugin/ultraaddons-elementor-lite/reviews/#new-post" class="ua-button button" target="_blank"><?php echo esc_html__( 'Rating us', 'ultraaddons' ); ?></a>    
                     </div>
                     <img src="<?php echo esc_url( ULTRA_ADDONS_ASSETS . 'images/svg/Illustration-2.svg' ); ?>" alt="">
                 </div>
