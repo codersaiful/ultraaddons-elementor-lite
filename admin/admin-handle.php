@@ -55,6 +55,27 @@ class Admin_Handle{
         wp_register_style( $handle, $src, $deps, $ver, $media );
         wp_enqueue_style( $handle );
         
+        // Owl Corousel added for welcome screen only @by Mukul
+        $handle = 'owl-corousel-style';
+        $src = ULTRA_ADDONS_ASSETS . 'vendor/css/owl/owl.carousel.min.css';
+        $deps = [];
+        $ver = ULTRA_ADDONS_VERSION;
+        $media = 'all';
+        
+        wp_register_style( $handle, $src, $deps, $ver, $media );
+        wp_enqueue_style( $handle );
+
+         // Owl Corousel added for welcome screen only @by Mukul
+        $handle = 'owl-corousel-script';
+        $src = ULTRA_ADDONS_ASSETS . 'vendor/js/owl.carousel.min.js';
+        $deps = ['jquery'];
+        $ver = ULTRA_ADDONS_VERSION;
+        $in_footer = true;
+        
+        wp_register_script($handle, $src, $deps, $ver, $in_footer);
+        wp_enqueue_script($handle);
+
+        //Our main admin script
         $handle = 'ultraaddons-admin-script';
         $src = ULTRA_ADDONS_ASSETS . 'js/admin.js';
         $deps = ['jquery'];
@@ -345,25 +366,21 @@ class Admin_Handle{
      * Display Footer Text
      * We are saying here for REview request
      */
-    public static function admin_footer_text() {
+    public static function admin_footer_text( $text ) {
         $current_screen = get_current_screen();
-        
         $is_ultraaddons = ( $current_screen && false !== strpos( $current_screen->id, 'ultraaddons' ) );
 
         if ( $is_ultraaddons ) {
-                $footer_text = sprintf(
-                        /* translators: 1: Elementor, 2: Link to plugin review */
-                        __( 'Enjoyed %1$s? Please leave us a %2$s rating. We really appreciate your support!', 'ultraaddons' ),
-                        '<strong>' . esc_html__( 'UltraAddons', 'ultraaddons' ) . '</strong>',
-                        '<a href="https://wordpress.org/support/plugin/ultraaddons-elementor-lite/reviews/#new-post" target="_blank">&#9733;&#9733;&#9733;&#9733;&#9733;</a>'
-                );
+            $footer_text = sprintf(
+                    /* translators: 1: Elementor, 2: Link to plugin review */
+                    __( 'Enjoyed %1$s? Please leave us a %2$s rating. We really appreciate your support!', 'ultraaddons' ),
+                    '<strong>' . esc_html__( 'UltraAddons', 'ultraaddons' ) . '</strong>',
+                    '<a href="https://wordpress.org/support/plugin/ultraaddons-elementor-lite/reviews/#new-post" target="_blank">&#9733;&#9733;&#9733;&#9733;&#9733;</a>'
+            );
+            return $footer_text;
         }
-
-        return $footer_text;
+        return $text;
     }
-    
-    
-    
     
 }
 Admin_Handle::init();

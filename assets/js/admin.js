@@ -31,7 +31,7 @@
         function hf_container_size_update(){
             
             var hf_container_size = $('.ua-hf-type-radio:checked').val();
-            console.log(hf_container_size);
+            // console.log(hf_container_size);
             if(typeof hf_container_size !== 'undefined' && hf_container_size === 'php'){
                 $('.field-container-size').fadeIn();
             }else{
@@ -39,36 +39,57 @@
             }
         }
     });
+
+
+    $(document).ready(function(){
+      'use strict';
+      var topic = '.ua-admin-welcome-content-area section.faq .faq-nav ul li';
+      $('body').on('click', topic, function( event ){
+
+        var target = $(this).data('target');
+        var targetBlock = $( '#' + target ).closest('.faq-details').children();
+        $(this).closest( 'ul' ).children().each(function( key, value ){
+            $( value ).removeClass( 'active' );
+        });
+        $(this).addClass( 'active' );
+        
+        // Topic change
+        $(targetBlock).each(function( key, value ){
+            $(value).removeClass('active');
+        });
+        $( '#' + target ).addClass('active');
+
+        
+      });
+      $( '.faq-details .faq-inner-box li.faq-item' ).click( function ( event ) {
+          console.log(event.target);
+          let targetFaq = $( event.target ).closest( 'ul' ).children();
+          $( targetFaq ).each(function( key, value ){
+              $( value ).removeClass( 'active' );
+          });
+          $( event.target ).parent().addClass( 'active' );
+      });
+
+      $(".video-gallery").owlCarousel({
+        responsiveClass:true,
+		margin:20,
+        responsive:{
+            0:{
+                items:1,
+            },
+            768:{
+                items:2,
+            },
+            992:{
+                items:3,
+                loop:false
+            }
+        }
+      });
+      
+  });
+
 } (jQuery, window));
 
-/*
-//To take help/idea from elementor. we have kept this part of comment.
-  (0, _createClass2.default)(_default, [{
-    key: "addCustomCss",
-    value: function addCustomCss(css, context) {
-      if (!context) {
-        return;
-      }
 
-      var model = context.model,
-          customCSS = model.get('settings').get('custom_css');
-      var selector = '.elementor-element.elementor-element-' + model.get('id');
 
-      if ('document' === model.get('elType')) {
-        selector = elementor.config.document.settings.cssWrapperSelector;
-      }
-
-      if (customCSS) {
-        css += customCSS.replace(/selector/g, selector);
-      }
-
-      return css;
-    }
-  }, {
-    key: "onElementorInit",
-    value: function onElementorInit() {
-      elementor.hooks.addFilter('editor/style/styleText', this.addCustomCss);
-      elementor.on('navigator:init', this.onNavigatorInit.bind(this));
-    }
-  }
-  */
