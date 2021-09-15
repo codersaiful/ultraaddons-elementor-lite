@@ -47,6 +47,7 @@ defined( 'ABSPATH' ) || die();
                     <div class="btn-wrapper">
                         <a href="#" class="ua-button button"><?php echo esc_html__( 'Request For Features', 'ultraaddons' ); ?></a>
                     </div>
+                    <img src="<?php echo esc_url( ULTRA_ADDONS_ASSETS . 'images/svg/Illustration-1.svg' ); ?>" alt="">
                 </div>
             </div>
         </section>
@@ -65,7 +66,6 @@ defined( 'ABSPATH' ) || die();
                 <div class="faq-details">
                     <h3 class="big"><?php echo esc_html__( 'Frequently Asked Questions', 'ultraaddons' ); ?></h3>
                     <div id="installation" class="faq-inner-box active">
-                        <h3>Installation</h3>
                         <ul>
                             <li class="faq-item active" id="installation-item-1">
                                 <h4><?php echo esc_html__( 'Where is my plugin purchase code?', 'ultraaddons' ); ?></h4>
@@ -98,7 +98,6 @@ defined( 'ABSPATH' ) || die();
                         </ul>
                     </div>
                     <div id="docs" class="faq-inner-box">
-                        <h3>Documentation</h3>
                         <ul>
                             <li class="faq-item active" id="installation-item-1">
                                 <h4><?php echo esc_html__( 'Is there any support policy available for user1?', 'ultraaddons' ); ?></h4>
@@ -119,7 +118,6 @@ defined( 'ABSPATH' ) || die();
                         </ul>
                     </div>
                     <div id="support-policy" class="faq-inner-box">
-                        <h3>Support Policy</h3>
                         <ul>
                             <li class="faq-item active" id="installation-item-1">
                                 <h4><?php echo esc_html__( 'Is there any support policy available for user1?', 'ultraaddons' ); ?></h4>
@@ -140,7 +138,6 @@ defined( 'ABSPATH' ) || die();
                         </ul>
                     </div>
                     <div id="guideline" class="faq-inner-box">
-                        <h3>Guidelines</h3>
                         <ul>
                             <li class="faq-item active" id="installation-item-1">
                                 <h4><?php echo esc_html__( 'Is there any support policy available for user1?', 'ultraaddons' ); ?></h4>
@@ -211,6 +208,7 @@ to our newsletter.', 'ultraaddons' ); ?></p>
                     <div class="btn-wrapper">
                         <a href="#" class="ua-button button"><?php echo esc_html__( 'Rating us', 'ultraaddons' ); ?></a>    
                     </div>
+                    <img src="<?php echo esc_url( ULTRA_ADDONS_ASSETS . 'images/svg/Illustration-2.svg' ); ?>" alt="">
                 </div>
             </div>
         </section>
