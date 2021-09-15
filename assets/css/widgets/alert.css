@@ -1,0 +1,85 @@
+.ua_alert_box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+.ua_alert_box.ua_alert_box_style_01 {
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 22px 40px;
+}
+.ua_alert_box.ua_alert_box_style_01 .ua_alert_close {
+    font-size: 18px;
+    background-color: transparent;
+    border: 0 solid transparent;
+    cursor: pointer;
+}
+.ua_alert_box.ua_alert_box_style_01 .ua_alert_desc {
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+}
+.ua_alert_box.ua_alert_box_style_01 .ua_alert_desc i {
+    margin-right: 18px;
+    font-size: 24px;
+}
+.ua_alert_box.ua_default_alert {
+    border: 1px solid #d7caf5;
+    background-color: #f5f1fd;
+    color: #8d62e3;
+}
+.ua_alert_box.ua_default_alert .ua_alert_close,
+.ua_alert_box.ua_default_alert .ua_alert_desc {
+    color: #8d62e3;
+}
+.ua_alert_box.ua_notice_alert {
+    border: 1px solid #e9e6f5;
+    background-color: #f9f8fc;
+    color: #677294;
+}
+.ua_alert_box.ua_notice_alert .ua_alert_close,
+.ua_alert_box.ua_notice_alert .ua_alert_desc {
+    color: #677294;
+}
+.ua_alert_box.ua_notice_alert .ua_alert_box_icon {
+    border: 1px solid #e9e6f5;
+    background-color: #f9f8fc;
+    color: #677294;
+}
+.ua_alert_box.ua_info_alert {
+    border: 1px solid #aee9f3;
+    background-color: #ebfcff;
+    color: #67d2e5;
+}
+.ua_alert_box.ua_info_alert .ua_alert_close,
+.ua_alert_box.ua_info_alert .ua_alert_desc {
+    color: #67d2e5;
+}
+.ua_alert_box.ua_error_alert {
+    border: 1px solid #f4bdbd;
+    background-color: #ffebeb;
+    color: #eb4a4a;
+}
+.ua_alert_box.ua_error_alert .ua_alert_close,
+.ua_alert_box.ua_error_alert .ua_alert_desc {
+    color: #eb4a4a;
+}
+.ua_alert_box.ua_success_alert {
+    border: 1px solid #b0efac;
+    background-color: #ecffeb;
+    color: #4acc43;
+}
+.ua_alert_box.ua_success_alert .ua_alert_close,
+.ua_alert_box.ua_success_alert .ua_alert_desc {
+    color: #4acc43;
+}
+.ua_alert_box.ua_warning_alert {
+    border: 1px solid #edd796;
+    background-color: #fffaeb;
+    color: #ebb512;
+}
+.ua_alert_box.ua_warning_alert .ua_alert_close,
+.ua_alert_box.ua_warning_alert .ua_alert_desc {
+    color: #ebb512;
+}

@@ -10,13 +10,32 @@ defined('ABSPATH') || die();
 class Transform {
 
 	public static function init() {
-		add_action( 'elementor/element/column/section_advanced/after_section_end', [ __CLASS__, 'add_controls_section' ], 1 );
-		add_action( 'elementor/element/section/section_advanced/after_section_end', [ __CLASS__, 'add_controls_section' ], 1 );
 		add_action( 'elementor/element/common/_section_style/after_section_end', [ __CLASS__, 'add_controls_section' ], 1 );
-
-                add_action( 'elementor/frontend/before_render', [ __CLASS__, 'before_section_render' ], 1 );
+                
+                /**
+                 * CSS Transform /
+                 * Inline Script
+                 */
+                add_action( 'elementor/frontend/after_enqueue_styles', [ __CLASS__, 'enqueue_inline_scripts' ] );
+                add_action( 'elementor/preview/enqueue_scripts', [ __CLASS__, 'enqueue_inline_scripts' ] );
 	}
 
+        public static function enqueue_inline_scripts() {
+            $css = '';
+                    $common_css = ULTRA_ADDONS_DIR . 'assets/css/common.min.css';
+
+
+            if ( is_readable( $common_css ) ) {
+                $css .= file_get_contents( $common_css );
+            };
+            wp_add_inline_style(
+                'elementor-frontend',
+                $css
+            );
+
+        }
+        
+        
 	public static function add_controls_section( Element_Base $element) {
 		$tabs = Controls_Manager::TAB_STYLE;
 
@@ -26,103 +45,732 @@ class Transform {
 
 		
 		$element->start_controls_section(
-			'_ua_transform',
+			'_ua_section_css_transform',
 			[
-				'label' => __( 'Transform', 'ultraaddons' ) . ultraaddons_icon_markup(),
-				'tab'   => $tabs,
+					'label' => __( 'CSS Transform', 'ultraaddons' ) . ultraaddons_icon_markup(),
+					'tab'   => $tabs,
+			]
+		);
+
+		$element->add_control(
+			'ua_transform_fx',
+			[
+				'label' => __( 'Enable', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'return_value' => 'yes',
+				'prefix_class' => 'ua-css-transform-',
 			]
 		);
                 
-                $element->add_control(
-                        '_ua_transform_on_off',
-                        [
-                                'label' => __( 'Transform', 'ultraaddons' ),
-                                'description' => __( 'Cart Item will stay exanded always.', 'ultraaddons' ),
-                                'type' => Controls_Manager::SWITCHER,
-                                'label_on' => __( 'On', 'ultraaddons' ),
-                                'label_off' => __( 'Off', 'ultraaddons' ),
-                                'return_value' => 'yes',
-                                'default' => '',
-                                'selectors' => [
-					'{{WRAPPER}} .elementor-widget-container' => 'transition: 1s all;',
+		$element->start_controls_tabs(
+			'_tabs_ua_transform',
+			[
+				'condition' => [
+					'ua_transform_fx' => 'yes',
 				],
-                        ]
-                );
-                
-                $rotate_args = [
-				'label' => __( 'Rotation', 'ultraaddons' ),
-				'type' => Controls_Manager::SLIDER,
-				'default' => [
-					'size' => '',
-					'unit' => 'deg',
-				],
-				'range' => [
-					'deg' => [
-						'min' => -360,
-						'max' => 360,
-					],
-				],
-                                
-				'selectors' => [
-					'{{WRAPPER}} .elementor-widget-container' => 'transform:rotate({{SIZE}}{{UNIT}});',
-				],
-			];
-                
-                $rotateX_args = Handle_Controls::replace_selector_value( $rotate_args, 'rotate', 'rotateX' );
-                $rotateY_args = Handle_Controls::replace_selector_value( $rotate_args, 'rotate', 'rotateY' );
-
-                
-                
-                $element->start_controls_tabs( 'transition_tabs',
-                            [
-                                    'condition' => [
-                                            '_ua_transform_on_off' => 'yes',
-                                    ],
-                            ]
-                        );
+			]
+		);
 
 		$element->start_controls_tab(
-			'_ua_transform_tab_normal',
+			'_tabs_ua_transform_normal',
 			[
 				'label' => __( 'Normal', 'ultraaddons' ),
+				'condition' => [
+					'ua_transform_fx' => 'yes',
+				],
 			]
 		);
-                
-                $element->add_control(
-			'_ua_transform_rotation_heading',
-			[
-				'label' => __( 'Rotation', 'ultraaddons' ),
-                                'type' => Controls_Manager::HEADING,
-                                'separator'   => 'after', 
-			]
-		);
-                $element->add_control( 'rotate', $rotate_args );
-                $element->add_control( 'rotateX', $rotateX_args );
-                $element->add_control( 'rotateY', $rotateY_args );
 
-                $element->end_controls_tab(); //End of Normal Tab
-                
-                
-                /**
-                 * Hover Tab
-                 */
-                $element->start_controls_tab(
-			'_ua_transform_tab_hover',
+		$element->add_control(
+			'ua_transform_fx_translate_toggle',
 			[
-				'label' => __( 'Hover', 'ultraaddons' ),
+				'label' => __( 'Translate', 'ultraaddons' ),
+				'type' => Controls_Manager::POPOVER_TOGGLE,
+				'return_value' => 'yes',
+				'condition' => [
+					'ua_transform_fx' => 'yes',
+				],
 			]
 		);
-                
-                $element->add_control( 'rotate_hover', Handle_Controls::convert_hover( $rotate_args ) );
-                $element->add_control( 'rotateX_hover', Handle_Controls::convert_hover( $rotateX_args ) );
-                $element->add_control( 'rotateY_hover', Handle_Controls::convert_hover( $rotateY_args ) );
-                
-                $element->end_controls_tab(); //End of Hover Tab
-                
-                
-                
-                
-                $element->end_controls_tabs(); //End of Tab System
+
+		$element->start_popover();
+
+		$element->add_responsive_control(
+			'ua_transform_fx_translate_x',
+			[
+				'label' => __( 'Translate X', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => ['px'],
+				'range' => [
+					'px' => [
+						'min' => -1000,
+						'max' => 1000,
+					]
+				],
+				'condition' => [
+					'ua_transform_fx_translate_toggle' => 'yes',
+					'ua_transform_fx' => 'yes',
+				],
+				'selectors' => [
+					'{{WRAPPER}}' => '--ua-tfx-translate-x: {{SIZE}}px;'
+				],
+			]
+		);
+
+		$element->add_responsive_control(
+			'ua_transform_fx_translate_y',
+			[
+				'label' => __( 'Translate Y', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => ['px'],
+				'range' => [
+					'px' => [
+						'min' => -1000,
+						'max' => 1000,
+					]
+				],
+				'condition' => [
+					'ua_transform_fx_translate_toggle' => 'yes',
+					'ua_transform_fx' => 'yes',
+				],
+				'selectors' => [
+					'{{WRAPPER}}' => '--ua-tfx-translate-y: {{SIZE}}px;'
+				],
+			]
+		);
+
+		$element->end_popover();
+
+		$element->add_control(
+			'ua_transform_fx_rotate_toggle',
+			[
+				'label' => __( 'Rotate', 'ultraaddons' ),
+				'type' => Controls_Manager::POPOVER_TOGGLE,
+				'condition' => [
+					'ua_transform_fx' => 'yes',
+				],
+			]
+		);
+
+		$element->start_popover();
+
+		$element->add_control(
+			'ua_transform_fx_rotate_mode',
+			[
+				'label' => __( 'Mode', 'ultraaddons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'compact' => [
+						'title' => __( 'Compact', 'ultraaddons' ),
+						'icon' => 'eicon-plus-circle',
+					],
+					'loose' => [
+						'title' => __( 'Loose', 'ultraaddons' ),
+						'icon' => 'eicon-minus-circle',
+					],
+				],
+				'default' => 'loose',
+				'toggle' => false
+			]
+		);
+
+		$element->add_control(
+			'ua_transform_fx_rotate_hr',
+			[
+				'type' => Controls_Manager::DIVIDER,
+			]
+		);
+
+		$element->add_responsive_control(
+			'ua_transform_fx_rotate_x',
+			[
+				'label' => __( 'Rotate X', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => ['px'],
+				'range' => [
+					'px' => [
+						'min' => -180,
+						'max' => 180,
+					]
+				],
+				'condition' => [
+					'ua_transform_fx_rotate_toggle' => 'yes',
+					'ua_transform_fx' => 'yes',
+					'ua_transform_fx_rotate_mode' => 'loose'
+				],
+				'selectors' => [
+					'{{WRAPPER}}' => '--ua-tfx-rotate-x: {{SIZE}}deg;'
+				],
+			]
+		);
+
+		$element->add_responsive_control(
+			'ua_transform_fx_rotate_y',
+			[
+				'label' => __( 'Rotate Y', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => ['px'],
+				'range' => [
+					'px' => [
+						'min' => -180,
+						'max' => 180,
+					]
+				],
+				'condition' => [
+					'ua_transform_fx_rotate_toggle' => 'yes',
+					'ua_transform_fx' => 'yes',
+					'ua_transform_fx_rotate_mode' => 'loose'
+				],
+				'selectors' => [
+					'{{WRAPPER}}' => '--ua-tfx-rotate-y: {{SIZE}}deg;'
+				],
+			]
+		);
+
+		$element->add_responsive_control(
+			'ua_transform_fx_rotate_z',
+			[
+				'label' => __( 'Rotate (Z)', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => ['px'],
+				'range' => [
+					'px' => [
+						'min' => -180,
+						'max' => 180,
+					]
+				],
+				'condition' => [
+					'ua_transform_fx_rotate_toggle' => 'yes',
+					'ua_transform_fx' => 'yes',
+				],
+				'selectors' => [
+					'{{WRAPPER}}' => '--ua-tfx-rotate-z: {{SIZE}}deg;'
+				],
+			]
+		);
+
+		$element->end_popover();
+
+		$element->add_control(
+			'ua_transform_fx_scale_toggle',
+			[
+				'label' => __( 'Scale', 'ultraaddons' ),
+				'type' => Controls_Manager::POPOVER_TOGGLE,
+				'return_value' => 'yes',
+				'condition' => [
+					'ua_transform_fx' => 'yes',
+				],
+			]
+		);
+
+		$element->start_popover();
+
+		$element->add_control(
+			'ua_transform_fx_scale_mode',
+			[
+				'label' => __( 'Mode', 'ultraaddons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'compact' => [
+						'title' => __( 'Compact', 'ultraaddons' ),
+						'icon' => 'eicon-plus-circle',
+					],
+					'loose' => [
+						'title' => __( 'Loose', 'ultraaddons' ),
+						'icon' => 'eicon-minus-circle',
+					],
+				],
+				'default' => 'loose',
+				'toggle' => false
+			]
+		);
+
+		$element->add_control(
+			'ua_transform_fx_scale_hr',
+			[
+				'type' => Controls_Manager::DIVIDER,
+			]
+		);
+
+		$element->add_responsive_control(
+			'ua_transform_fx_scale_x',
+			[
+				'label' => __( 'Scale (X)', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => ['px'],
+				'default' => [
+					'size' => 1
+				],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 5,
+						'step' => .1
+					]
+				],
+				'condition' => [
+					'ua_transform_fx_scale_toggle' => 'yes',
+					'ua_transform_fx' => 'yes',
+				],
+				'selectors' => [
+					'{{WRAPPER}}' => '--ua-tfx-scale-x: {{SIZE}}; --ua-tfx-scale-y: {{SIZE}};'
+				],
+			]
+		);
+
+		$element->add_responsive_control(
+			'ua_transform_fx_scale_y',
+			[
+				'label' => __( 'Scale Y', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => ['px'],
+				'default' => [
+					'size' => 1
+				],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 5,
+						'step' => .1
+					]
+				],
+				'condition' => [
+					'ua_transform_fx_scale_toggle' => 'yes',
+					'ua_transform_fx' => 'yes',
+					'ua_transform_fx_scale_mode' => 'loose',
+				],
+				'selectors' => [
+					'{{WRAPPER}}' => '--ua-tfx-scale-y: {{SIZE}};'
+				],
+			]
+		);
+
+		$element->end_popover();
+
+		$element->add_control(
+			'ua_transform_fx_skew_toggle',
+			[
+				'label' => __( 'Skew', 'ultraaddons' ),
+				'type' => Controls_Manager::POPOVER_TOGGLE,
+				'return_value' => 'yes',
+				'condition' => [
+					'ua_transform_fx' => 'yes',
+				],
+			]
+		);
+
+		$element->start_popover();
+
+		$element->add_responsive_control(
+			'ua_transform_fx_skew_x',
+			[
+				'label' => __( 'Skew X', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => ['deg'],
+				'range' => [
+					'px' => [
+						'min' => -180,
+						'max' => 180,
+					]
+				],
+				'condition' => [
+					'ua_transform_fx_skew_toggle' => 'yes',
+					'ua_transform_fx' => 'yes',
+				],
+				'selectors' => [
+					'{{WRAPPER}}' => '--ua-tfx-skew-x: {{SIZE}}deg;'
+				],
+			]
+		);
+
+		$element->add_responsive_control(
+			'ua_transform_fx_skew_y',
+			[
+				'label' => __( 'Skew Y', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => ['deg'],
+				'range' => [
+					'px' => [
+						'min' => -180,
+						'max' => 180,
+					]
+				],
+				'condition' => [
+					'ua_transform_fx_skew_toggle' => 'yes',
+					'ua_transform_fx' => 'yes',
+				],
+				'selectors' => [
+					'{{WRAPPER}}' => '--ua-tfx-skew-y: {{SIZE}}deg;'
+				],
+			]
+		);
+
+		$element->end_popover();
+
+		$element->end_controls_tab();
+
+		$element->start_controls_tab(
+            '_tabs_ua_transform_hover',
+            [
+				'label' => __( 'Hover', 'ultraaddons' ),
+				'condition' => [
+					'ua_transform_fx' => 'yes',
+				],
+            ]
+		);
+
+		$element->add_control(
+			'ua_transform_fx_translate_toggle_hover',
+			[
+				'label' => __( 'Translate', 'ultraaddons' ),
+				'type' => Controls_Manager::POPOVER_TOGGLE,
+				'return_value' => 'yes',
+				'condition' => [
+					'ua_transform_fx' => 'yes',
+				],
+			]
+		);
+
+		$element->start_popover();
+
+		$element->add_responsive_control(
+			'ua_transform_fx_translate_x_hover',
+			[
+				'label' => __( 'Translate X', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => ['px'],
+				'range' => [
+					'px' => [
+						'min' => -1000,
+						'max' => 1000,
+					]
+				],
+				'condition' => [
+					'ua_transform_fx_translate_toggle_hover' => 'yes',
+					'ua_transform_fx' => 'yes',
+				],
+				'selectors' => [
+					'{{WRAPPER}}' => '--ua-tfx-translate-x-hover: {{SIZE}}px;'
+				],
+			]
+		);
+
+		$element->add_responsive_control(
+			'ua_transform_fx_translate_y_hover',
+			[
+				'label' => __( 'Translate Y', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => ['px'],
+				'range' => [
+					'px' => [
+						'min' => -1000,
+						'max' => 1000,
+					]
+				],
+				'condition' => [
+					'ua_transform_fx_translate_toggle_hover' => 'yes',
+					'ua_transform_fx' => 'yes',
+				],
+				'selectors' => [
+					'{{WRAPPER}}' => '--ua-tfx-translate-y-hover: {{SIZE}}px;'
+				],
+			]
+		);
+
+		$element->end_popover();
+
+		$element->add_control(
+			'ua_transform_fx_rotate_toggle_hover',
+			[
+				'label' => __( 'Rotate', 'ultraaddons' ),
+				'type' => Controls_Manager::POPOVER_TOGGLE,
+				'condition' => [
+					'ua_transform_fx' => 'yes',
+				],
+			]
+		);
+
+		$element->start_popover();
+
+		$element->add_control(
+			'ua_transform_fx_rotate_mode_hover',
+			[
+				'label' => __( 'Mode', 'ultraaddons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'compact' => [
+						'title' => __( 'Compact', 'ultraaddons' ),
+						'icon' => 'eicon-plus-circle',
+					],
+					'loose' => [
+						'title' => __( 'Loose', 'ultraaddons' ),
+						'icon' => 'eicon-minus-circle',
+					],
+				],
+				'default' => 'loose',
+				'toggle' => false
+			]
+		);
+
+		$element->add_control(
+			'ua_transform_fx_rotate_hr_hover',
+			[
+				'type' => Controls_Manager::DIVIDER,
+			]
+		);
+
+		$element->add_responsive_control(
+			'ua_transform_fx_rotate_x_hover',
+			[
+				'label' => __( 'Rotate X', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => ['px'],
+				'range' => [
+					'px' => [
+						'min' => -180,
+						'max' => 180,
+					]
+				],
+				'condition' => [
+					'ua_transform_fx_rotate_toggle_hover' => 'yes',
+					'ua_transform_fx' => 'yes',
+					'ua_transform_fx_rotate_mode_hover' => 'loose'
+				],
+				'selectors' => [
+					'{{WRAPPER}}' => '--ua-tfx-rotate-x-hover: {{SIZE}}deg;'
+				],
+			]
+		);
+
+		$element->add_responsive_control(
+			'ua_transform_fx_rotate_y_hover',
+			[
+				'label' => __( 'Rotate Y', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => ['px'],
+				'range' => [
+					'px' => [
+						'min' => -180,
+						'max' => 180,
+					]
+				],
+				'condition' => [
+					'ua_transform_fx_rotate_toggle_hover' => 'yes',
+					'ua_transform_fx' => 'yes',
+					'ua_transform_fx_rotate_mode_hover' => 'loose'
+				],
+				'selectors' => [
+					'{{WRAPPER}}' => '--ua-tfx-rotate-y-hover: {{SIZE}}deg;'
+				],
+			]
+		);
+
+		$element->add_responsive_control(
+			'ua_transform_fx_rotate_z_hover',
+			[
+				'label' => __( 'Rotate (Z)', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => ['px'],
+				'range' => [
+					'px' => [
+						'min' => -180,
+						'max' => 180,
+					]
+				],
+				'condition' => [
+					'ua_transform_fx_rotate_toggle_hover' => 'yes',
+					'ua_transform_fx' => 'yes',
+				],
+				'selectors' => [
+					'{{WRAPPER}}' => '--ua-tfx-rotate-z-hover: {{SIZE}}deg;'
+				],
+			]
+		);
+
+		$element->end_popover();
+
+		$element->add_control(
+			'ua_transform_fx_scale_toggle_hover',
+			[
+				'label' => __( 'Scale', 'ultraaddons' ),
+				'type' => Controls_Manager::POPOVER_TOGGLE,
+				'return_value' => 'yes',
+				'condition' => [
+					'ua_transform_fx' => 'yes',
+				],
+			]
+		);
+
+		$element->start_popover();
+
+		$element->add_control(
+			'ua_transform_fx_scale_mode_hover',
+			[
+				'label' => __( 'Mode', 'ultraaddons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'compact' => [
+						'title' => __( 'Compact', 'ultraaddons' ),
+						'icon' => 'eicon-plus-circle',
+					],
+					'loose' => [
+						'title' => __( 'Loose', 'ultraaddons' ),
+						'icon' => 'eicon-minus-circle',
+					],
+				],
+				'default' => 'loose',
+				'toggle' => false
+			]
+		);
+
+		$element->add_control(
+			'ua_transform_fx_scale_hr_hover',
+			[
+				'type' => Controls_Manager::DIVIDER,
+			]
+		);
+
+		$element->add_responsive_control(
+			'ua_transform_fx_scale_x_hover',
+			[
+				'label' => __( 'Scale (X)', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => ['px'],
+				'default' => [
+					'size' => 1
+				],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 5,
+						'step' => .1
+					]
+				],
+				'condition' => [
+					'ua_transform_fx_scale_toggle_hover' => 'yes',
+					'ua_transform_fx' => 'yes',
+				],
+				'selectors' => [
+					'{{WRAPPER}}' => '--ua-tfx-scale-x-hover: {{SIZE}}; --ua-tfx-scale-y-hover: {{SIZE}};'
+				],
+			]
+		);
+
+		$element->add_responsive_control(
+			'ua_transform_fx_scale_y_hover',
+			[
+				'label' => __( 'Scale Y', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => ['px'],
+				'default' => [
+					'size' => 1
+				],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 5,
+						'step' => .1
+					]
+				],
+				'condition' => [
+					'ua_transform_fx_scale_toggle_hover' => 'yes',
+					'ua_transform_fx' => 'yes',
+					'ua_transform_fx_scale_mode_hover' => 'loose',
+				],
+				'selectors' => [
+					'{{WRAPPER}}' => '--ua-tfx-scale-y-hover: {{SIZE}};'
+				],
+			]
+		);
+
+		$element->end_popover();
+
+		$element->add_control(
+			'ua_transform_fx_skew_toggle_hover',
+			[
+				'label' => __( 'Skew', 'ultraaddons' ),
+				'type' => Controls_Manager::POPOVER_TOGGLE,
+				'return_value' => 'yes',
+				'condition' => [
+					'ua_transform_fx' => 'yes',
+				],
+			]
+		);
+
+		$element->start_popover();
+
+		$element->add_responsive_control(
+			'ua_transform_fx_skew_x_hover',
+			[
+				'label' => __( 'Skew X', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => ['deg'],
+				'range' => [
+					'px' => [
+						'min' => -180,
+						'max' => 180,
+					]
+				],
+				'condition' => [
+					'ua_transform_fx_skew_toggle_hover' => 'yes',
+					'ua_transform_fx' => 'yes',
+				],
+				'selectors' => [
+					'{{WRAPPER}}' => '--ua-tfx-skew-x-hover: {{SIZE}}deg;'
+				],
+			]
+		);
+
+		$element->add_responsive_control(
+			'ua_transform_fx_skew_y_hover',
+			[
+				'label' => __( 'Skew Y', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => ['deg'],
+				'range' => [
+					'px' => [
+						'min' => -180,
+						'max' => 180,
+					]
+				],
+				'condition' => [
+					'ua_transform_fx_skew_toggle_hover' => 'yes',
+					'ua_transform_fx' => 'yes',
+				],
+				'selectors' => [
+					'{{WRAPPER}}' => '--ua-tfx-skew-y-hover: {{SIZE}}deg;'
+				],
+			]
+		);
+
+		$element->end_popover();
+
+		$element->add_control(
+			'ua_transform_fx_transition_duration',
+			[
+				'label' => __( 'Transition Duration', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'separator' => 'before',
+				'size_units' => ['px'],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 3,
+						'step' => .1,
+					]
+				],
+				'condition' => [
+					'ua_transform_fx' => 'yes',
+				],
+				'selectors' => [
+					'{{WRAPPER}}' => '--ua-tfx-transition-duration: {{SIZE}}s;'
+				],
+			]
+		);
+
+		$element->end_controls_tab();
+
+		$element->end_controls_tabs();
 		
 
 		$element->end_controls_section();
@@ -131,54 +779,6 @@ class Transform {
 	}
 
 
-        /**
-         * Adding data attribute on selected Elementor or Section and 
-         * Do Transition.
-         * For now, I will try only Rotation
-         * Using CSS
-         * 
-         * @param Element_Base $element
-         */
-	public static function before_section_render( Element_Base $element ) {
-		$settings = $element->get_settings_for_display();
-                $_ua_transform_on_off = $settings['_ua_transform_on_off'];
-
-                if ( empty( $_ua_transform_on_off ) ) {
-                    return false;
-                }
-                
-                $data_transform = [
-                    '_ua_transform_on_off' => $_ua_transform_on_off,
-                    'transforms' => [
-                        'rotate'      => $settings['rotate'],
-                        'rotateX'      => $settings['rotateX'],
-                        'rotateY'      => $settings['rotateY'],
-                    ],
-                    
-                ];
-                
-                /**
-                 * Convert data_transform transform
-                 */
-                foreach( $data_transform['transforms'] as $transform_key => $transform_value ){
-                    $target_setngs_key = $transform_key . '_hover';
-                    $data_transform['transforms_hover'][$transform_key] = isset( $settings[$target_setngs_key] ) ? $settings[$target_setngs_key] : false;
-                }
-
-                
-
-
-                /**
-                 * Adding Class where already Transform Selected
-                 */
-                $element->add_render_attribute(
-                        '_wrapper',
-                        [
-                                'data-transform' => json_encode( $data_transform ),
-                                'class' => 'ua-transformed'
-                        ]
-                );
-	}
 }
 
 //No need to call, we have called automatically to initit method from extenstion manager file.

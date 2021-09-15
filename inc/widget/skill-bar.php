@@ -13,6 +13,46 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class Skill_Bar extends Base{
     
         /**
+         * mainly to call specific depends
+         * we have called this __construct() method
+         * 
+         * @param Array $data
+         * @param Array $args
+         * 
+         * @by Saiful Islam
+         */
+        public function __construct($data = [], $args = null) {
+            parent::__construct($data, $args);
+
+            //Naming of Barfiller
+            $name           = 'barfiller';
+            $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/barfiller.js';
+            $dependency     =  ['jquery'];//['jquery'];
+            $version        = ULTRA_ADDONS_VERSION;
+            $in_footer  = true;
+
+            wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
+            wp_enqueue_script( $name );
+
+            //Third-party CSS file Load
+            wp_register_style( 'barfiller', ULTRA_ADDONS_ASSETS . 'vendor/css/barfiller.css' );
+            wp_enqueue_style('barfiller' );
+
+        }
+
+        /**
+         * By Saiful Islam
+         * depend css for this widget
+         * 
+         * @return Array
+         */
+        public function get_style_depends() {
+            return ['barfiller'];
+        }
+
+        
+
+        /**
          * Get your widget by keywords
          *
          * @since 1.0.0
@@ -36,7 +76,7 @@ class Skill_Bar extends Base{
          * @by Saiful
          */
         public function get_script_depends() {
-                return [ 'jquery' ];
+                return [ 'jquery','barfiller' ];
         }
 
         /**

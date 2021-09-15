@@ -134,6 +134,15 @@ $widgetsArray = [
     ],
     
     
+    //New Added
+    'Hero_Banner' => [
+            'name'  => __( 'Hero Banner', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-call-to-action',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
     
     'Contact_Form7' => [
             'name'  => __( 'Contact Form 7', 'ultraaddons' ),
@@ -232,7 +241,7 @@ $widgetsArray = [
     
     'Offer_Card' => [
             'name'  => __( 'Offer Card', 'ultraaddons' ),
-            'is_pro'   => false,
+            'is_pro'   => true,
             'icon'      => 'eicon-form-horizontal',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -262,6 +271,87 @@ $widgetsArray = [
             'name'  => __( 'WordPress Plugin Stats', 'ultraaddons' ),
             'is_pro'   => false,
             'icon'      => 'uicon-skillbar',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
+    'Post_Title' => [
+            'name'  => __( 'Post Title / Page Title', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'uicon-skillbar',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
+    'Breadcrumb' => [
+            'name'  => __( 'Breadcrumb', 'ultraaddons' ),
+            'is_pro'   => true,
+            'icon'      => 'uicon-skillbar',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
+    'Alert' => [
+            'name'  => __( 'Alert', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-alert',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
+    'Timeline' => [
+            'name'  => __( 'Timeline', 'ultraaddons' ),
+            'is_pro'   => true,
+            'icon'      => 'eicon-time-line',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
+    'Image_Accordion' => [
+            'name'  => __( 'Image Accordion', 'ultraaddons' ),
+            'is_pro'   => true,
+            'icon'      => 'eicon-accordion',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
+    'Product_Accordion' => [
+            'name'  => __( 'Product Accordion', 'ultraaddons' ),
+            'is_pro'   => true,
+            'icon'      => 'eicon-accordion',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
+    'Accordion' => [
+            'name'  => __( 'Accordion', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-accordion',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
+    'Drop_Caps' => [
+            'name'  => __( 'Drop Caps', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-accordion',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+    
+    'Post_Masonry' => [
+            'name'  => __( 'Advance Post Masonry', 'ultraaddons' ),
+            'is_pro'   => true,
+            'icon'      => 'eicon-posts-masonry',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],

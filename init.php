@@ -3,8 +3,8 @@
  * Plugin Name: Addons - UltraAddons Elementor Lite
  * Plugin URI: https://ultraaddons.com/
  * Description: Elementor Addons Plugin. Build your desired page just few click. Easy to use and useable for any theme and plugin. Available many filter.
- * Version: 1.0.7
- * Author: codersaiful
+ * Version: 1.0.9
+ * Author: CodeAstrology
  * Author URI: https://profiles.wordpress.org/codersaiful/#content-plugins
  * License: GPL3+
  * License URI: http://www.gnu.org/licenses/gpl.html
@@ -12,10 +12,10 @@
  * Domain Path: /languages/
  * 
  * Requires at least:    4.0.0
- * Tested up to:         5.7.2
+ * Tested up to:         5.8.1
  * WC requires at least: 3.0.0
- * WC tested up to: 	 5.4.1
- * Elementor tested up to: 3.2.5
+ * WC tested up to: 	 5.6.2
+ * Elementor tested up to: 3.4.3
  * Elementor Pro tested up to: 5.11.0
  *
  * @package UltraAddons
@@ -46,7 +46,7 @@
 
 defined( 'ABSPATH' ) || die();
 
-define( 'ULTRA_ADDONS_VERSION', '1.0.7.22' );
+define( 'ULTRA_ADDONS_VERSION', '1.0.9.3' );
 define( 'ULTRA_ADDONS__FILE__', __FILE__ );
 define( 'ULTRA_ADDONS_BASE_NAME', plugin_basename( __FILE__ ) );
 define( 'ULTRA_ADDONS_DIR', plugin_dir_path( ULTRA_ADDONS__FILE__ ) );
@@ -234,7 +234,7 @@ final class UltraAddons {
                  * 
                  * @since 1.0.7.15
                  */
-                include_once ULTRA_ADDONS_DIR . 'inc/sdk/integration.php';
+                //include_once ULTRA_ADDONS_DIR . 'inc/sdk/integration.php'; //Integration has removed
                 
                 
                 if( is_admin() ){

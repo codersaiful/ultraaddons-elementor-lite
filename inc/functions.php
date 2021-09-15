@@ -114,6 +114,15 @@ function ultraaddons_elementor() {
 }
 
 /**
+ * Getting Widgets Array with full args
+ * 
+ * @return Array list of Widgets
+ */
+function ultraaddons_get_widgets(){
+    return \UltraAddons\Core\Widgets_Manager::widgets();
+}
+
+/**
  * Get Boolean for Pro
  * 
  * @return bool True|False
@@ -249,3 +258,243 @@ add_filter( 'woocommerce_add_to_cart_fragments', 'ultraaddons_woocommerce_cart_l
  * Finally I will creat field my custom code, currently using CMB2
  */
 //include_once __DIR__ . '/wp/custom-field.php';
+
+function ultraaddons_title_tag( $title_tag ){
+    $title_tag_array = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6','div', 'span', 'p' );
+    if( in_array( $title_tag, $title_tag_array ) ) {
+        return $title_tag;
+    } else {
+        return 'h4';
+    }
+}
+
+function ultraaddons_parse_text_editor( $content ) {  
+    $content = shortcode_unautop( $content );
+    $content = do_shortcode( $content );
+    $content = wptexturize( $content );
+    if ( $GLOBALS['wp_embed'] instanceof \WP_Embed ) {
+        $content = $GLOBALS['wp_embed']->autoembed( $content );
+    }
+    return $content;
+}
+
+function ultraaddons_allowed_html_tags( $level = 'basic' ) {
+    $allowed_html = [
+        'b' => [],
+        'i' => [],
+        'u' => [],
+        'em' => [],
+        'br' => [],
+        'img' => [
+            'src' => [],
+            'alt' => [],
+            'height' => [],
+            'width' => [],
+        ],
+        'abbr' => [
+            'title' => [],
+        ],
+        'span' => [
+            'class' => [],
+        ],
+        'strong' => [],
+    ];
+
+    if ( $level === 'advanced' ) {
+        $advanced = [
+            'acronym' => [
+                'title' => [],
+            ],
+            'q' => [
+                'cite' => [],
+            ],
+            'img' => [
+                'src' => [],
+                'alt' => [],
+                'height' => [],
+                'width' => [],
+            ],
+            
+            'time' => [
+                'datetime' => [],
+            ],
+            'cite' => [
+                'title' => [],
+            ],
+            'a' => [
+                'href' => [],
+                'title' => [],
+                'class' => [],
+                'id' => [],
+            ],
+        ];
+
+        $allowed_html = array_merge( $allowed_html, $advanced);
+    }
+
+    return $allowed_html;
+}
+
+function ultraaddons_addons_kses( $string = '', $level = 'basic' ) {
+    return wp_kses( $string, ultraaddons_allowed_html_tags( $level ) );
+}
+
+/**
+ * Returns all registered post types
+ */
+function ultraaddons_get_post_types($args = [], $array_diff_key = []){
+    $post_type_args = [
+        'public' => true,
+        'show_in_nav_menus' => true
+    ];
+
+    if (!empty($args['post_type'])) {
+        $post_type_args['name'] = $args['post_type'];
+        unset($args['post_type']);
+    }
+
+    $post_type_args = wp_parse_args($post_type_args, $args);
+    $_post_types = get_post_types($post_type_args, 'objects');
+
+    $post_types = array(
+        'by_id'    => __('Manual Selection', 'ultraaddons'),
+        'category' => __('Category', 'ultraaddons'),
+    );
+
+    foreach ($_post_types as $post_type => $object) {
+        $post_types[$post_type] = $object->label;
+    }
+    if( !empty( $array_diff_key ) ){
+        $post_types = array_diff_key( $post_types, $array_diff_key );
+    }
+    return $post_types;
+}
+
+function ultraaddons_get_grid_metro_size() {
+    return [
+        '1:1'   => esc_html__( 'Width 1 - Height 1', 'ultraaddon' ),
+        '1:2'   => esc_html__( 'Width 1 - Height 2', 'ultraaddon' ),
+        '1:0.7' => esc_html__( 'Width 1 - Height 70%', 'ultraaddon' ),
+        '1:1.3' => esc_html__( 'Width 1 - Height 130%', 'ultraaddon' ),
+        '2:1'   => esc_html__( 'Width 2 - Height 1', 'ultraaddon' ),
+        '2:2'   => esc_html__( 'Width 2 - Height 2', 'ultraaddon' ),
+    ];
+}
+
+function ultraaddons_get_the_post_thumbnail( $args = array() ) {
+    if ( ! empty( $args['post_id'] ) ) {
+        $args['id'] = get_post_thumbnail_id( $args['post_id'] );
+    } else {
+        $args['id'] = get_post_thumbnail_id( get_the_ID() );
+    }
+    return ultraaddons_get_attachment_by_id( $args );
+}
+
+function ultraaddons_get_attachment_by_id( $args = array() ) {
+    $defaults = array(
+        'id'     => '',
+        'size'   => 'full',
+        'width'  => '',
+        'height' => '',
+        'crop'   => true,
+    );
+    $args = wp_parse_args( $args, $defaults );
+    $image_full = ultraaddons_get_the_post_thumbnail( $args['id'] );
+    if ( $image_full === false ) {
+        return false;
+    }
+    $url           = $image_full['src'];
+    $cropped_image = ultraaddons_get_image_cropped_url( $url, $args );
+    if ( $cropped_image[0] === '' ) {
+        return '';
+    }
+    $image_attributes = array(
+        'src' => $cropped_image[0],
+        'alt' => $image_full['alt'],
+    );
+
+    if ( isset( $cropped_image[1] ) ) {
+        $image_attributes['width'] = $cropped_image[1];
+    }
+
+    $image = ultraaddons_build_img_tag( $image_attributes );
+
+    // Wrap img with caption tags.
+    if ( isset( $args['caption_enable'] ) && $args['caption_enable'] === true && $image_full['caption'] !== '' ) {
+        $before = '<figure>';
+        $after  = '<figcaption class="wp-caption-text gallery-caption">' . $image_full['caption'] . '</figcaption></figure>';
+        $image = $before . $image . $after;
+    }
+
+    return $image;
+}
+
+function ultraaddons_build_img_tag( $attributes = array() ) {
+    if ( empty( $attributes['src'] ) ) {
+        return '';
+    }
+    $attributes_str = '';
+    if ( ! empty( $attributes ) ) {
+        foreach ( $attributes as $attribute => $value ) {
+            $attributes_str .= ' ' . $attribute . '="' . esc_attr( $value ) . '"';
+        }
+    }
+    $image = '<img ' . $attributes_str . ' />';
+    return $image;
+}
+
+function ultraaddons_get_image_cropped_url( $url, $args = array() ) {
+    extract( $args );
+    if ( $url === false ) {
+        return array( 0 => '' );
+    }
+
+    if ( $size === 'full' ) {
+        return array( 0 => $url );
+    }
+
+    if ( $size !== 'custom' && ! preg_match( '/(\d+)x(\d+)/', $size ) ) {
+        $attachment_url = wp_get_attachment_image_url( $args['id'], $size );
+
+        if ( ! $attachment_url ) {
+            return array( 0 => $url );
+        } else {
+            return array( 0 => $attachment_url );
+        }
+    }
+
+    if ( $size !== 'custom' ) {
+        $_sizes = explode( 'x', $size );
+        $width  = $_sizes[0];
+        $height = $_sizes[1];
+    } else {
+        if ( $width === '' ) {
+            $width = 9999;
+        }
+
+        if ( $height === '' ) {
+            $height = 9999;
+        }
+    }
+
+    $width  = (int) $width;
+    $height = (int) $height;
+
+    if ( $width === 9999 || $height === 9999 ) {
+        $crop = false;
+    }
+
+    if ( $width !== '' && $height !== '' && function_exists( 'aq_resize' ) ) {
+        $crop_image = aq_resize( $url, $width, $height, $crop, false );         
+
+        if ( is_array( $crop_image ) && $crop_image[0] !== '' ) {
+            return $crop_image;
+        }
+    }
+
+    return array( 0 => $url );
+}
+
+function ultraaddons_image_placeholder( $width, $height ) {
+    echo '<img src="' . ULTRA_ADDONS_ASSETS . 'images/no-image.png" width="'.$width.'" height="'.$width.'" alt="' . esc_attr__( 'Thumbnail', 'droit-elementor-addons' ) . '"/>';
+}

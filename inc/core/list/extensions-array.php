@@ -41,7 +41,7 @@ $extensionsArray = [
              */
             'Transform' => [
                     'name'  => __( 'CSS Transform', 'ultraaddons' ),
-                    'is_pro'   => true,
+                    'is_pro'   => false,
                     'icon'      => 'eicon-heading',
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),
@@ -69,10 +69,45 @@ $extensionsArray = [
                     ],
             ],
 
-            'Ultra_Effect' => [
-                    'name'  => __( 'Ultra Effect', 'ultraaddons' ),
+//            'Ultra_Effect' => [
+//                    'name'  => __( 'Ultra Effect', 'ultraaddons' ),
+//                    'is_pro'   => true,
+//                    'icon'      => 'eicon-spinner',
+//                    'cat'       => [
+//                        __( 'Basic', 'ultraaddons' ),
+//                    ],
+//            ],
+
+            'Gradient_Text' => [
+                    'name'  => __( 'Gradient Text', 'ultraaddons' ),
+                    'is_pro'   => false,
+                    'icon'      => 'eicon-global-colors',
+                    'cat'       => [
+                        __( 'Basic', 'ultraaddons' ),
+                    ],
+            ],
+    
+            'Preset' => [
+                    'name'  => __( 'Preset Settings', 'ultraaddons' ),
                     'is_pro'   => true,
-                    'icon'      => 'eicon-spinner',
+                    'icon'      => 'eicon-click',
+                    'cat'       => [
+                        __( 'Basic', 'ultraaddons' ),
+                    ],
+            ],
+            
+            'Floating_Effects' => [
+                    'name'  => __( 'Floating Effects', 'ultraaddons' ),
+                    'is_pro'   => false,
+                    'icon'      => 'eicon-click',
+                    'cat'       => [
+                        __( 'Basic', 'ultraaddons' ),
+                    ],
+            ],
+            'Custom_CSS' => [
+                    'name'  => __( 'Custom CSS', 'ultraaddons' ),
+                    'is_pro'   => false,
+                    'icon'      => 'eicon-click',
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),
                     ],

@@ -35,7 +35,7 @@ class Hover_Effect {
 		);
 
 		$element->add_control(
-                        'ex_hover_animation',
+                        '_ua_hover_animation',
                         [
                                 'label' => __( 'Animation', 'ultraaddons' ),
                                 'type' => Controls_Manager::HOVER_ANIMATION,

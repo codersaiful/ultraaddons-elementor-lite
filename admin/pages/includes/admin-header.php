@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || die();
  */
 $header_title       = esc_html__( 'UltraAddons', 'ultraaddons' );
 $header_title       = apply_filters( 'ultraaddons/admin/header_title', $header_title );
-$full_logo_image    = ULTRA_ADDONS_ASSETS . 'images/svg/full-color-logo.svg';
+$full_logo_image    = ULTRA_ADDONS_ASSETS . 'images/ultraaddons-logo-new.png';
 $full_logo_image    = apply_filters( 'ultraaddons/admin/header_logo', $full_logo_image );
 ?>
 <div class="wrap about-wrap ultraaddons-wrap ultraaddons-admin-wrapper ua-version-<?php echo esc_attr( ultraaddons_plugin_version() ); ?>">
@@ -18,16 +18,19 @@ $full_logo_image    = apply_filters( 'ultraaddons/admin/header_logo', $full_logo
         <?php echo wp_kses_post( $header_title ); ?>
         <smal class="ultraaddons-version-in-title">v<?php echo esc_html( ULTRA_ADDONS_VERSION ); ?></smal>
     </h1>
-    
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
         <div class="ultraaddons-dashboard-area">
             <div class="ua-admin-header-wrapper">
                 <div class="ua-branding">
-                    <img src="<?php echo esc_attr( $full_logo_image ); ?>" style="height: 176px;width: auto;">
+                    <img src="<?php echo esc_attr( $full_logo_image ); ?>">
                 </div>
                 <div class="ua-header-menu">
                     <ul class="ua-submenu">
                     <?php
-                    $sub_menus = UltraAddons\Admin\Admin_Handle::get_submenu();
+                    $sub_menus = UltraAddons\Admin\Admin_Handle::get_submenu_for_header();
+
                     $current_page = isset( $_GET['page'] ) ? sanitize_text_field( $_GET['page'] ) : false;
                     foreach( $sub_menus as $sub_menu ){
                         if( $sub_menu['menu_slug'] == 'ultraaddons-help-n-others' ){
@@ -50,6 +53,7 @@ $full_logo_image    = apply_filters( 'ultraaddons/admin/header_logo', $full_logo
                     </ul>
                 </div>
             </div>
+
         
 <?php 
 

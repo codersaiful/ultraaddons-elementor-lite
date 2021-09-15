@@ -128,6 +128,8 @@ class Loader {
         
     }
 
+    
+
     /**
      * Included Base Class for our All Widgets
      * will include button common file here
@@ -207,16 +209,25 @@ class Loader {
             $class_name =  '\UltraAddons\Widget\\' . ucwords( $class_name, '_' );
 
 
-            $file = ULTRA_ADDONS_DIR . 'inc/widgets/'. strtolower( $name ) . '.php';
-            $file = realpath( $file );
-            if( is_readable( $file ) ){
-                include_once $file;
-            }else{
-                $error = esc_html__( "The file ( %s ) of [%s] Class is not founded.", 'ultraaddons' );
-                $this->errors[$widget_key] = $error;
-                //printf( $error, $file, $name );
-            }
-            
+            /**
+             * We will register widget using auto loader
+             * 
+             * so bellow code is no need
+             * 
+             * ****************************
+             * widgets -> widget | because: in name space, available widget, not widgets
+             * ****************************
+             */
+//            $file = ULTRA_ADDONS_DIR . 'inc/widgets/'. strtolower( $name ) . '.php';
+//            $file = realpath( $file );
+//            if( is_readable( $file ) ){
+//                include_once $file;
+//            }else{
+//                $error = esc_html__( "The file ( %s ) of [%s] Class is not founded.", 'ultraaddons' );
+//                $this->errors[$widget_key] = $error;
+//                //printf( $error, $file, $name );
+//            }
+
             if( $class_name && class_exists( $class_name ) ){
                 ultraaddons_elementor()->widgets_manager->register_widget_type( new $class_name() );
             }
@@ -318,60 +329,21 @@ class Loader {
         $ULTRAADDONS_DATA = apply_filters( 'ultraaddons_localize_data', $ULTRAADDONS_DATA );
         wp_localize_script( $frontend_js_name, 'ULTRAADDONS_DATA', $ULTRAADDONS_DATA );
        
-       
+
+        //owlCarousel JS has transferred to widget/testimonial-slider.php and slider.php
         
-        //Naming of Args for owlCarousel
-        $name           = 'owlCarousel';
-        $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/owl.carousel.min.js';
-        $dependency     =  ['jquery'];//['jquery'];
-        $version        = ULTRA_ADDONS_VERSION;
-        $in_footer  = true;
-        
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );
-        
-        //Naming of Barfiller
-        $name           = 'barfiller';
-        $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/barfiller.js';
-        $dependency     =  ['jquery'];//['jquery'];
-        $version        = ULTRA_ADDONS_VERSION;
-        $in_footer  = true;
-        
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );
+        //barfiller JS has transferred to widget/skillbar.php 
         
         
-        //Naming Args For jQuery.Apear
-        $name           = 'appear';
-        $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/jquery.appear.js';
-        $dependency     =  ['jquery'];//['jquery'];
-        $version        = ULTRA_ADDONS_VERSION;
-        $in_footer  = false;
-        
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );
+       //apear and count-to js has transerred to widget/counter.php
         
         
-        //Naming Args For jQuery.Apear
-        $name           = 'jquery-count-to';
-        $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/jquery-count-to.js';
-        $dependency     =  ['jquery'];//['jquery'];
-        $version        = ULTRA_ADDONS_VERSION;
-        $in_footer  = false;
-        
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );
-        
-        
-        //Third-party CSS file Load
-        wp_enqueue_style('barfiller', ULTRA_ADDONS_ASSETS . 'vendor/css/barfiller.css' );
+        //barfiller css has transferred to widget/skillbar.php
         
         //Animate CSS Load
         wp_enqueue_style('animate', ULTRA_ADDONS_ASSETS . 'vendor/css/animate.min.css' );
         
-        //CSS file for Slider Script Owl Carousel Slider
-        wp_enqueue_style('owlCarousel', ULTRA_ADDONS_ASSETS . 'vendor/css/owl.carousel.css' );
-        wp_enqueue_style('owlCarousel-theme', ULTRA_ADDONS_ASSETS . 'vendor/css/owl/owl.theme.default.css' );
+        //owlCarousel CSS has transferred to widget/testimonial-slider.php and slider.php
 
     }
     
@@ -407,6 +379,7 @@ class Loader {
     public function widget_enqueue() {
         
         foreach( $this->widgetsArray as $widget_key => $widget ){
+
             $name = $widget_key;//isset( $widget['name'] ) ? $widget['name'] : '';
 
             $name = str_replace('_','-', $name);
@@ -416,18 +389,35 @@ class Loader {
             $deps = ['ultraaddons-widgets-style'];
             $ver  = ULTRA_ADDONS_VERSION;
             $media= 'all';
+            
+            $src = ULTRA_ADDONS_ASSETS . 'css/widgets/' . strtolower( $name ) . '.css';
+            $css_file_dir = ULTRA_ADDONS_DIR . 'assets/css/widgets/' . strtolower( $name ) . '.css';
+            
             /**
              * CSS file load based on Element/Widget
              * 
              * we will load CSS file,
-             * If only Available JS file
              * 
              * @since 1.0.0.12
+             * 
+             * Integration with pro
+             * @since 1.0.7.27
              */
-            $src = ULTRA_ADDONS_ASSETS . 'css/widgets/' . strtolower( $name ) . '.css';
-            $css_file_dir = ULTRA_ADDONS_DIR . 'assets/css/widgets/' . strtolower( $name ) . '.css';
-            
-            if( is_file( $css_file_dir ) ){
+            $pass_css = false; //Actually if found CSS file in Pro folder, we will direct pass
+            if( defined( 'ULTRA_ADDONS_PRO_ASSETS' ) && isset( $widget['is_pro'] ) && $widget['is_pro'] ){
+              
+                $src_pro = ULTRA_ADDONS_PRO_ASSETS . 'css/widgets/' . strtolower( $name ) . '.css';
+                $css_file_dir_pro = ULTRA_ADDONS_PRO_DIR . 'assets/css/widgets/' . strtolower( $name ) . '.css';
+
+                if( is_file( $css_file_dir_pro ) ){
+                    //Direct pass as we founded it in Pro folder
+                    $pass_css = true;
+                    $src = $src_pro;
+                    $css_file_dir = $css_file_dir_pro;
+                }
+            }
+
+            if( $pass_css || is_file( $css_file_dir ) ){ //$pass_css - If true, we will not check again file exist
                  wp_register_style( $handle, $src, $deps, $ver, $media );
                  wp_enqueue_style( $handle );
             }

@@ -58,14 +58,37 @@ class Autoloader {
                 )
         );
         
-        $full_class_name = strtolower(preg_replace('/\\\/', DIRECTORY_SEPARATOR, $class));
+        $full_class_name = strtolower( preg_replace('/\\\/', DIRECTORY_SEPARATOR, $class ) );
 
         
-        $filename = ULTRA_ADDONS_DIR . 'inc/' . $filename . '.php';
-        $filename = realpath( $filename );
+        $filepath = ULTRA_ADDONS_DIR . 'inc/' . $filename . '.php';
+        $filepath = realpath( $filepath );
 
-        if ( is_readable( $filename ) ) {
-            require_once $filename;
+        if ( is_readable( $filepath ) ) {
+            require_once $filepath;
+            return;
+        }
+        
+        /**
+         * Pro file Integration 
+         * 
+         * ************************
+         * First we will find in free version
+         * then it will search in pro version
+         * 
+         * amd we will try to open each file using auto loader
+         * ************************
+         * 
+         * @since 1.0.27
+         */
+        if( ! defined( 'ULTRA_ADDONS_PRO_DIR' ) ) return;
+        
+        $filepath = ULTRA_ADDONS_PRO_DIR . 'inc/' . $filename . '.php';
+        $filepath = realpath( $filepath );
+
+        if ( is_readable( $filepath ) ) {
+            require_once $filepath;
+            return;
         }
 
     }

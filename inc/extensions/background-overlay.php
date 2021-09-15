@@ -19,11 +19,11 @@ class Background_Overlay {
 
         public static function add_controls_section( Element_Base $element ) {
             
-		$tabs = Controls_Manager::TAB_STYLE;
+		$tabs = Controls_Manager::TAB_ADVANCED;
 //                $tabs = Controls_Manager::TAB_CONTENT;
                 $selector = "{{WRAPPER}}.ua-background-overlay-yes .elementor-widget-container:before";
 		if ( 'column' === $element->get_name() ) { //'section' === $element->get_name() || 
-			$tabs = Controls_Manager::TAB_LAYOUT;
+			//$tabs = Controls_Manager::TAB_LAYOUT;
                         $selector = "{{WRAPPER}}.ua-background-overlay-yes:before";
 		}
 

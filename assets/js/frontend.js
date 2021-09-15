@@ -18,6 +18,36 @@
             var EF = elementorFrontend,
                 EM = elementorModules;
             
+            var ModuleBase = elementorModules.frontend.handlers.Base;
+            var CusttomCSS;
+
+
+            CusttomCSS = ModuleBase.extend({
+                bindEvents: function(){
+                    this.run();
+                },
+                onElementChange:function(){
+                    this.run();
+                },
+                getDefaultSettings:function(){
+                    return {
+                        target: this.$element
+                    }
+                },
+                getCss:function(){
+                    return this.getElementSettings('ua_custom_css');
+                },
+                run:function(){
+                    var cssRules = this.getCss();
+                    $('<style>' + cssRules + '</style>').appendTo('head');
+                }
+            });
+
+            EF.hooks.addAction( 'frontend/element_ready/widget', function( $scope ) {
+                EF.elementsHandler.addHandler( CusttomCSS, { $element: $scope });
+            });
+            
+            
             /**
              * Default Slider is Carousel Slider for UltraAddons.
              * 
@@ -144,6 +174,39 @@
                             });
                     }
             );
+
+            EF.hooks.addAction(
+                'frontend/element_ready/ultraaddons-accordion.default',
+                function($scope, $) {
+           
+                    var t = $scope.find(".ua-accordion-wrapper"),
+                        h = $scope.find(".ua_accordion_item_title"),
+                        r = $scope.data("type"),
+                        s = 400;
+                        h.each(function () {
+                            $(this).hasClass("ua-active-default") && ($(this).addClass("ua-open ua-active"), $(this).next().slideDown(s));
+                        }),
+                        h.click(function (e) {
+                            e.preventDefault();
+                            var $this = $(this);
+                            // $this.closest('.ua-accordion-wrapper').toggleClass('ua-active-wrapper'),
+                            $this.hasClass("ua-open") ? ($this.removeClass("ua-open ua-active"), $this.next().slideUp(s)) : ($this.parent().parent().find(h).removeClass("ua-open ua-active"), 
+                            $this.parent().parent().find(".ua_accordion_panel").slideUp(s), 
+                            $this.toggleClass("ua-open ua-active"), $this.next().slideToggle(s))
+                        });
+                });
+
+            EF.hooks.addAction(
+                'frontend/element_ready/ultraaddons-post-masonry.default',
+                function($scope, $) {
+           
+                    var $selector = $scope.find('.ua_addons_grid_wrapper');
+
+                    if( typeof $selector == 'object' && typeof $selector.uaAddonsGridLayout == 'function' ){
+                        $selector.uaAddonsGridLayout();
+                    }
+                    
+                });
     
     
 //                //Elementor Open Editor https://code.elementor.com/js-hooks/#panelopen_editorelementType 
@@ -242,28 +305,48 @@
            
            */
            
-           // Wrapper Link
+           
+//            EF.hooks.addAction( 'frontend/element_ready/widget', function( $scope ) {
+//                EF.elementsHandler.addHandler( CusttomCSS, { $element: $scope });
+//            });
+            // Wrapper Link
            $('.ua-wrapper-link').each(function() {
                     var link = $(this).data('_ua_element_link');
-                    $(this).on('click', function() {
+                    $(this).on('click', function(e) {
+                        //console.log($(this),e.target.tagName);
+                        let tag = e.target.tagName;
+                        
+                        if( tag === 'STRONG' || tag === 'B' || tag === 'SPAN' || tag === 'A' || tag === 'BUTTON' || tag === 'INPUT' ){
+                            return;
+                        }
+
                         if (link.is_external) {
                                 window.open(link.url);
                         } else {
                                 location.href = link.url;
                         }
+                        
                     });
             });
-            
-            
-            /**
-             * Skillbar
-             * using barfiller
-             * 
-             * @since 1.0.5
-             * taken from medilac-core
-             */
-            var skillBar = function( $scope, $ ){
 
+
+//            EF.hooks.addAction(
+//                'frontend/element_ready/widgett',
+//                function($scope, $) {
+//                    var link = $(this).data('_ua_element_link');
+//                    
+//                    
+//                });
+            
+            let UltraAddonsMap = {
+                /**
+                 * Skillbar
+                 * using barfiller
+                 * 
+                 * @since 1.0.5
+                 * taken from medilac-core
+                 */
+                skillBar:function( $scope, $ ){
                     var items = $scope.find('.ua-skill-wrapper');
                     $(items).each(function(a, b){
                         let color = $(b).attr('aria-color');
@@ -271,10 +354,101 @@
                         let parentID = $(b).closest('.ua-element-skill-bar').data('id');
                         $('#bar-' + parentID + '-' + id + '-' + (a+1)).barfiller({ barColor: color });
                     });
-            }
-            EF.hooks.addAction( 'frontend/element_ready/ultraaddons-skill-bar.default', skillBar );
-    });
+                },
+                //Alert 
+                Alert:function($scope){
+                    var $item = $scope.find('.ua_alert_close');
+                    $($item).on("click", function(){
+                        $(this).parents(".ua_alert_box").hide();
+                    });
+                },
+
+                //Owl Carousel
+                UA_Owl_Carousel: function($scope) {
+                    var $owlContainer = $scope.find('.ua_timeline_inner'),
+                        controls = null,
+                        show_slider_dots = true,
+                        show_slider_arrow = true,
+                        autoplay = true,
+                        slider_speed = 2000,
+                        slider_loop = true,
+                        slider_space = 60,
+                        slider_item = 3,
+                        slider_drag = false,
+                        slider_center = false,
+                        next_icon = 'fas fa-angle-right',
+                        prev_icon = 'fas fa-angle-left';
+
+                    if ($owlContainer.attr('data-controls')) {
+                        var controls = JSON.parse($owlContainer.attr('data-controls'));
+                        show_slider_dots = controls.show_slider == "yes" ? controls.slider_pagi_type == 'dot' ? true : false : false;
+                        show_slider_arrow = controls.show_slider == "yes" ? controls.slider_pagi_type == 'arrow' ? true : false : false;
+                        autoplay = controls.slide_autoplay == "yes" ? true : false;
+                        slider_speed = controls.slider_speed;
+                        slider_loop = controls.slider_loop == "yes" ? true : false;
+                        slider_space = controls.slider_space;
+                        slider_item = controls.slider_item;
+                        slider_center = controls.slider_center == "yes" ? true : false;  
+                        slider_drag = controls.slider_drag == "yes" ? true : false;  
+                        next_icon = controls.next_icon.library == 'svg' ? "<img src='"+controls.next_icon.value.url+"'>" : "<i class='"+controls.next_icon.value+"'></i>" ;  
+                        prev_icon = controls.prev_icon.library == 'svg' ? "<img src='"+controls.prev_icon.value.url+"'>" : "<i class='"+controls.prev_icon.value+"'></i>";  
+                    }
+
+                $owlContainer.owlCarousel({
+                        items: slider_item,
+                        loop: slider_loop,
+                        margin: slider_space,
+                        smartSpeed: slider_speed,
+                        dots: show_slider_dots,
+                        nav: show_slider_arrow,
+                        navText: [prev_icon, next_icon],
+                        autoplay: autoplay,
+                        mouseDrag: slider_drag,
+                        center: slider_center,
+                    });
+                    
+                },
+                
+                //Counter
+                Counter:function($scope){
+                    var $item = $scope.find('.ua-counter-text');
+                    $($item).appear(function () {
+                        var element = $(this);
+                        var timeSet = setTimeout(function () {
+                            if (element.hasClass('ua-counter-text')) {
+                                element.find('.ua-counter-value').countTo();
+                            }
+                        });
+                    });
+                },
+                
+                //Addd new all - one by one with comma
+                
+                
+            };
+            
+            let elementReadyMap = {
+                'ultraaddons-alert.default'     : UltraAddonsMap.Alert,
+                'ultraaddons-timeline.default'  : UltraAddonsMap.UA_Owl_Carousel,
+                'ultraaddons-skill-bar.default'  : UltraAddonsMap.skillBar,
+                'ultraaddons-counter.default'  : UltraAddonsMap.Counter,
+            };
     
+            $.each( elementReadyMap, function( elementKey, elementReadyMap ) {
+                    EF.hooks.addAction( 'frontend/element_ready/' + elementKey, elementReadyMap );
+            });
+            
+
+    });
+                   
+//   $('.ua-counter-text').appear(function () {
+//        var element = $(this);
+//        var timeSet = setTimeout(function () {
+//            if (element.hasClass('ua-counter-text')) {
+//                element.find('.ua-counter-value').countTo();
+//            }
+//        });
+//    });
     /**
      * Created Outside of init/Elementtor
      * Imean: elementor/frontend/init
@@ -394,14 +568,10 @@
     });
     //*************************************/
                     
-                    
-   $('.ua-counter-text').appear(function () {
-        var element = $(this);
-        var timeSet = setTimeout(function () {
-            if (element.hasClass('ua-counter-text')) {
-                element.find('.ua-counter-value').countTo();
-            }
-        });
-    });
+   
+
+   
+        
+        
         
 } (jQuery, window));

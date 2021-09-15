@@ -1,8 +1,10 @@
 
 /*********** UltraAddons Style - In Plugin List ****************/
-/*.ultraaddons-color-heading,*/
+/*.ultraaddons-color-heading,addons-ultraaddons-elementor-pro*/
 p.ultraaddons-info,
+table.wp-list-table.widefat.plugins tr[data-slug='addons-ultraaddons-elementor'] td.plugin-title.column-primary strong,
 table.wp-list-table.widefat.plugins tr[data-slug='ultraaddons-elementor-lite'] td.plugin-title.column-primary strong,
+table.wp-list-table.widefat.plugins tr[data-slug='addons-ultraaddons-elementor-pro'] td.plugin-title.column-primary strong,
 #elementor-panel-category-addons-ultraaddons .elementor-panel-category-title{
     color: #db3157;
     background: linear-gradient(to right, #532d70 0%, #db3157 45%);
@@ -24,7 +26,9 @@ table.wp-list-table.widefat.plugins tr[data-slug='ultraaddons-elementor-lite'] t
 }
 /*.ultraaddons-color-heading:hover,*/
 p.ultraaddons-info:hover,
+table.wp-list-table.widefat.plugins tr[data-slug='addons-ultraaddons-elementor']:hover td.plugin-title.column-primary strong,
 table.wp-list-table.widefat.plugins tr[data-slug='ultraaddons-elementor-lite']:hover td.plugin-title.column-primary strong,
+table.wp-list-table.widefat.plugins tr[data-slug='addons-ultraaddons-elementor-pro']:hover td.plugin-title.column-primary strong,
 #elementor-panel-category-addons-ultraaddons:hover .elementor-panel-category-title {
     background: linear-gradient(to right, #ff0039 0%,#411365 45%);
     background: -webkit-linear-gradient(to right, #ff0039 0%,#411365 100%, #ff0039 68%);
@@ -100,7 +104,7 @@ li#toplevel_page_ultraaddons-elementor-lite.current .wp-menu-image img {
 /***** Menu Page Start*******/
 .ultraaddons-license-details, .ultraaddons-dashboard-area {
     background: #fff;
-    padding: 10px 30px 50px;
+    padding: 10px 0;
     border-radius: 3px;
     margin-top: 20px;
     color: #000;
@@ -156,45 +160,15 @@ p.ultraaddons-info {
 
 .ua-admin-header-wrapper {
     display: flex;
-    align-items: center;
+    margin-bottom: 60px;
+    flex-direction: column;
+    padding: 10px 20px;
+    margin-top: 25px;
 }
 
 .ua-header-menu {
     display: block;
     width: 100%;
-}
-
-ul.ua-submenu {
-    display: flex;
-    float: right;
-    flex-wrap: wrap;
-    column-gap: 1px;
-}
-
-ul.ua-submenu li {
-    font-size: 22px;
-    /* box-shadow: 0 5px 40px 0 rgb(10 10 25 / 22%); */
-    font-weight: 100;
-}
-
-ul.ua-submenu li a {
-    color: white;
-    padding: 15px 30px;
-    display: block;
-    /*border-bottom: 6px solid #07001526;*/
-    border-top-right-radius: 12px;
-    border-bottom-left-radius: 7px;
-    background: linear-gradient(160deg, #7934d5, #fb3bd2);
-    /* background: #7439e5; */
-    /*background: #ac21f2;*/
-    border-bottom: 6px solid rgb(90, 42, 183);
-    background: rgb(116, 57, 229);
-    text-decoration: none;
-}
-ul.ua-submenu li.ua-current-menu a {
-    background: #4caf50;
-    border-color: #409844;
-    color: white;
 }
 
 /***** Menu Page End*******/
@@ -278,7 +252,7 @@ span.ua-option-version-type.ua-option-version-type-pro {
     background: #bfbfbf;
 }
 span.ua-option-version-type.ua-option-version-type-free {
-    background: #4caf50;
+    background: #bfbfbf0d;/*#4caf50*/
 }
 h2.ua-item-name {
     padding: 0;
@@ -437,9 +411,6 @@ h4.ua-hf-radio-label-title {
     padding-left: 15px;
 }
 
-.ua-hf-type-radio {
-}
-
 .ua-radion-type {
     background: #ddd0;
     padding: 20px;
@@ -487,3 +458,577 @@ label.ua-option-item i.ua-option-icon.uicon-ultraaddons:before{
 body.wp-admin pre.xdebug-var-dump {
     margin-left: 200px;
 }
+
+/* Welcome page design - starts here */
+.ua-admin-header-wrapper .ua-branding img {
+    max-width: 311px;
+    display: block;
+}
+
+.ultraaddons-dashboard-area{
+    font-family: 'Urbanist', sans-serif;
+}
+
+.ultraaddons-dashboard-area .ua-branding {
+    width: 100%;
+}
+
+.ultraaddons-dashboard-area ul.ua-submenu {
+    display: flex;
+    float: right;
+    flex-wrap: wrap;
+    column-gap: 1px;
+}
+
+.ultraaddons-dashboard-area ul.ua-submenu li {
+    font-size: 22px;
+    font-weight: 100;
+    margin: 0;
+}
+.ultraaddons-dashboard-area ul.ua-submenu li:not(:last-child) {
+    margin-right: 5px;
+}
+
+.ultraaddons-dashboard-area ul.ua-submenu li a {
+    padding: 17px 22px;
+    display: block;
+    font-size: 18px;
+    line-height: 21.6px;
+    text-decoration: none;
+    font-weight: 600;
+    background: #F0EFF3;
+    color: #140C33;
+    border-top: 3px solid #D1CFD9;
+    border-radius: 4px;
+
+}
+
+.ultraaddons-dashboard-area ul.ua-submenu li a:hover,
+.ultraaddons-dashboard-area ul.ua-submenu li a:focus ,
+.ultraaddons-dashboard-area ul.ua-submenu li.ua-current-menu a {
+    background: #6B52FD;
+    color: #fff;
+    border-top-color: #4531BC;
+}
+
+section.welcome-banner {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    display: block;
+    padding: 50px 20px;
+}
+
+section.welcome-banner img.logo {
+    max-width: 500px;
+    width: 100%;
+    display: block;
+    margin: 50px auto;
+}
+
+section.welcome-banner p.greetings {
+    text-align: center;
+    color: #fff;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+section.ua-section .inner-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1170px;
+    margin: 60px auto;
+    column-gap: 30px;
+    row-gap: 50px;
+}
+section.ua-section.pr3.faq .inner-wrapper {
+    row-gap: 20px;
+}
+section.ua-section.pr2 .inner-wrapper {
+    margin-top: 0;
+}
+section.ua-section.pr1 .info-box {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0px 10px 25px rgb(198 203 220 / 30%);
+    border-radius: 10px;
+    column-gap: 40px;
+}
+
+section.ua-section.pr1 .info-box .icon-wrapper {
+    min-width: 60px;
+    margin-bottom: 30px;
+}
+
+section.ua-section.pr1 .info-box .icon-wrapper img.icon {
+    padding: 18px;
+    background: #472af208;
+    width: 24px;
+    border-radius: 8%;
+}
+
+section.ua-section.pr1 .info-box .info h3 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #140C33;
+}
+
+section.ua-section h3.big {
+    font-size: 42px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+    text-align: left;
+}
+section.ua-section.faq .faq-details h3.big {
+    display: none;
+}
+
+section.ua-section .info-box p {
+    color: #726E82;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 25px 0;
+}
+
+section.ua-section .full-width.info-box {
+    background-position: center bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 20px;
+}
+
+section.ua-section .ua-button {
+    background: #6B52FD;
+    padding: 16px 25px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1;
+}
+section.ua-section .btn-wrapper {
+    text-align: left;
+}
+section.ua-section .ua-button.white {
+    background: #fff;
+    color: #D64289;
+    outline: none;
+    border-color: #fff;
+    border-radius: 4px;
+}
+
+section.ua-section.pr3.faq {
+    background: #F8F9FC;
+    padding: 10px 0;
+
+}
+
+section.ua-section.pr1 {
+    padding: 20px;
+}
+section.ua-section.pr3.faq .faq-nav {
+    width: 100%;
+    min-width: 200px;
+    text-align: center;
+    position: relative;
+    padding: 0 20px;
+}
+section.ua-section.pr3.faq .faq-details {
+    width: 100%;
+}
+
+section.faq ul {
+    list-style: none;
+}
+section.faq .faq-details ul {
+    padding: 0 20px;
+}
+
+section.faq .faq-nav ul li {
+    border-bottom: 1px solid #D2D7E8;
+    margin: 0;
+    padding: 15px 0;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-align: left;
+}
+section.faq .faq-nav ul li.active {
+    border-color: #6B52FD;
+    color: #6B52FD;
+}
+section.faq .faq-details ul > li {
+    background: #fff;
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 0px 8px 25px rgb(198 203 220 / 25%);
+    margin-bottom: 20px;
+}
+
+section.faq .faq-details h4 {
+    cursor: pointer;
+}
+
+section.faq .faq-details h4 {
+    position: relative;
+    margin: 0;
+    padding-bottom: 20px;
+    color: #140C33;
+    font-size: 20px;
+    font-weight: 600;
+    padding-left: 40px;
+    padding-top: 20px;
+    line-height: 1.2;
+    z-index: 2;
+}
+section.faq .faq-details ul li.active h4 {
+    border-bottom: 1px solid #ddd;
+}
+section.faq .faq-details li.active h4{
+    margin-bottom: 20px;
+}
+
+section.faq .faq-details ul li h4:before {
+    content: "";
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url(../images/angle-down.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    top: calc(50% - 7px);
+    left: 10px;
+    z-index: 1;
+    transform: rotate(-90deg);
+    transition: all 0.3s;
+}
+section.faq .faq-details ul li.active h4:before {
+    transform: rotate(0deg);
+}
+
+section.faq .faq-details ul li .answer {
+    padding: 0 20px 0 40px;
+    color: #726E82;
+    line-height: 26px;
+    font-size: 16px;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+section.faq .faq-details ul li.active .answer{
+    padding-bottom: 20px;
+    height: auto;
+    opacity: 1;
+}
+
+section.faq .faq-details .faq-inner-box {
+    overflow: hidden;
+    position: absolute;
+    height: 0;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier();
+}
+section.faq .faq-details .faq-inner-box.active {
+    position: relative;
+    height: auto;
+    opacity: 1;
+}
+
+section.ua-section.pr4.video .inner-wrapper {
+    display: block;
+    padding: 20px;
+}
+
+/* Video Section */
+section.faq .faq-details ul li.active .answer,
+section.ua-section.pr4.video .inner-wrapper {
+    display: block;
+}
+
+section.ua-section.pr4.video .title-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    row-gap: 32px;
+}
+
+section.ua-section.video .video-gallery .video-tutorial iframe {
+    width: 100%;
+    border-radius: 5px;
+}
+
+section.ua-section.video .video-gallery .video-tutorial {
+    width: 100%;
+}
+
+/* Newsletter */
+.mc4-form {
+    margin-top: 50px;
+}
+section.ua-section.pr5.newsletter .inner-wrapper {
+    display: block;
+}
+section.ua-section.pr5.newsletter .full-width {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    padding: 50px 20px;
+    text-align: center;
+    color: #fff;
+}
+section.ua-section.pr5.newsletter h3.big {
+    color: #fff;
+    text-align: center;
+}
+.mc4-form input#mce-EMAIL {
+    padding: 10px 20px;
+    border-radius: 4px;
+    color: white;
+    background: transparent;
+    border: 1px solid white;
+}
+.mc4-form input#mce-EMAIL::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+.mc4-form input#mce-EMAIL:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+}
+
+.mc4-form input#mce-EMAIL::-ms-input-placeholder { /* Microsoft Edge */
+  color: white;
+}
+
+section.ua-section.pr2 .full-width.info-box img,
+section.ua-section.pr6 .full-width.info-box img {
+    margin-top: 50px;
+}
+
+section.ua-section.video .video-gallery .owl-dots>button {
+    background: #6c52fd !important;
+    width: 10px;
+    height: 10px;
+    margin: 5px;
+    border-radius: 2px;
+    opacity: 0.4;
+}
+section.ua-section.video .video-gallery .owl-dots > button.active{
+    opacity: 1;
+}
+
+section.ua-section.video .video-gallery .owl-dots {
+    text-align: center !important;
+    display: block !important;
+    width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .ultraaddons-dashboard-area .ua-branding {
+        max-width: 311px;
+        display: flex;
+        align-items: center;
+    }
+    section.ua-section.pr1 .info-box {
+        flex-direction: row;
+        column-gap: 20px;
+    }
+    section.ua-section .full-width.info-box {
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    section.ua-section.pr2 .full-width.info-box {
+        background-position: center right;
+        padding-right: 50%;
+    }
+    section.ua-section.pr6 .full-width.info-box {
+        background-position: center left;
+        padding-left: 50%;
+    }
+    section.ua-section .btn-wrapper {
+        text-align: left;
+    }
+    section.faq .faq-details ul li:before {
+        left: 20px;
+    }
+    section.faq .faq-details h4,
+    section.faq .faq-details ul li .answer {
+        padding-left: 60px;
+    }
+    section.ua-section.pr4.video .title-wrapper {
+        flex-wrap: nowrap;
+        row-gap: 32px;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+
+    section.ua-section.pr5.newsletter .full-width {
+        padding: 100px 20px;
+    }
+    section.faq .faq-details ul li h4:before {
+        left: 20px;
+    }
+    section.ua-section.pr2 .full-width.info-box img,
+    section.ua-section.pr6 .full-width.info-box img {
+        display: none;
+    }
+}
+@media screen and (min-width: 783px) {
+    .mc4-form input#mce-EMAIL {
+        padding: 10px 20px;
+        width: 300px;
+        margin-right: 5px;
+    }
+}
+@media screen and (min-width: 992px) {
+    .ultraaddons-license-details, .ultraaddons-dashboard-area {
+        padding: 10px 30px 50px;
+    }
+    section.ua-section.pr1 .info-box {
+        padding: 20px;
+        column-gap: 20px;
+    }
+    section.ua-section .inner-wrapper{
+        flex-wrap: nowrap;
+    }
+    section.ua-section.faq .faq-details h3.big {
+        display: block;
+        padding: 0 20px;
+        margin-bottom: 20px;
+    }
+    section.ua-section.pr3.faq .faq-nav h3.big {
+        display: none;
+    }
+    section.ua-section h3.big {
+        text-align: left;
+    }
+    section.ua-section.newsletter h3.big {
+        text-align: center;
+    }
+    section.ua-section.pr3.faq .faq-nav {
+        text-align: right;
+        top: 70px;
+    }
+    section.faq .faq-nav ul li {
+        border: 0;
+        border-right: 2px solid #D2D7E8;
+        margin: 0;
+        padding: 10px 15px;
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        cursor: pointer;
+        text-align: right;
+    }
+    section.ua-section.pr3.faq .faq-nav {
+        max-width: 150px;
+    }
+    section.ua-section.pr4.video .inner-wrapper {
+        padding: 0;
+    }
+    section.ua-section.pr5.newsletter .full-width {
+        padding: 100px;
+    }
+    section.ua-section.pr1,
+    section.ua-section.pr3.faq .faq-nav {
+        padding: 0;
+    }
+    section.welcome-banner,
+    section.ua-section.pr5.newsletter .full-width {
+        border-radius: 10px;
+    }
+    
+    
+}
+@media screen and (min-width: 1200px) {
+    .ua-admin-header-wrapper {
+        flex-direction: row;
+        padding: 0;
+    }
+    section.welcome-banner {
+        padding: 100px 0 50px 0;
+    }
+    section.welcome-banner img.logo {
+        margin: 108px auto;
+    }
+    section.ua-section .inner-wrapper {
+        margin: 130px auto;
+    }
+    section.ua-section.pr1 .info-box {
+        padding: 50px;
+        column-gap: 40px;
+    }
+    section.ua-section.faq .inner-wrapper {
+        column-gap: 100px;
+    }
+    section.ua-section.pr3.faq .faq-nav {
+        max-width: 250px;
+    }
+}
+
+@media screen and (min-width: 767px) and (max-width: 991px){
+    section.faq .faq-nav ul li {
+        display: inline-block;
+        padding: 15px;
+    }
+    .ultraaddons-dashboard-area ul.ua-submenu {
+        float: none;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .ua-admin-header-wrapper{
+        align-items: center;
+    }
+    
+    /*Menu Hide from Mobile*/
+    .ua-header-menu {
+        display: none;
+    }
+    .ua-admin-header-wrapper {
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .ua-admin-header-wrapper .ua-branding img {
+        margin: 0 auto;
+    }
+    .mc4-form input#mce-EMAIL {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    section.ua-section .ua-button.white {
+        width: 100%;
+    }
+    section.ua-section.pr2 .full-width.info-box,
+    section.ua-section.pr6 .full-width.info-box{
+        background-image: none !important;
+        padding-bottom: 20px;
+    }
+    section.ua-section.video .video-gallery .owl-dots>button {
+        width: 20px;
+        height: 5px;
+        margin: 0 10px;
+    }
+    
+}
+
+@media (orientation: landscape) and (max-width: 767px) {
+
+    /* section.ua-section.pr2 .full-width.info-box,
+    section.ua-section.pr6 .full-width.info-box{
+        background-image: none !important;
+        padding-bottom: 20px;
+    } */
+}
+/* Welcome page design - ends here */

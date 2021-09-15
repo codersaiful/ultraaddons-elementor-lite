@@ -46,7 +46,9 @@
 }
 
 
-
+a.ua-info-box-wrapper {
+    display: block;
+}
 @media (min-width: 768px) {
     .ua-element-info-box.elementor-vertical-align-top .ua-info-box-wrapper {
     -webkit-box-align: start;
