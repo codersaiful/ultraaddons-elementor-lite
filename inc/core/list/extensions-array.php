@@ -24,7 +24,7 @@ $extensionsArray = [
 
             'Hover_Effect' => [
                     'name'  => __( 'Hover Effect', 'ultraaddons' ),
-                    'is_pro'   => false,
+                    'is_pro'   => true,
                     'icon'      => 'uicon-hover',
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),
@@ -41,7 +41,7 @@ $extensionsArray = [
              */
             'Transform' => [
                     'name'  => __( 'CSS Transform', 'ultraaddons' ),
-                    'is_pro'   => false,
+                    'is_pro'   => true,
                     'icon'      => 'eicon-heading',
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),
@@ -80,7 +80,7 @@ $extensionsArray = [
 
             'Gradient_Text' => [
                     'name'  => __( 'Gradient Text', 'ultraaddons' ),
-                    'is_pro'   => false,
+                    'is_pro'   => true,
                     'icon'      => 'eicon-global-colors',
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),

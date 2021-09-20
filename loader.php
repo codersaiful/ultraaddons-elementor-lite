@@ -456,7 +456,19 @@ class Loader {
     public function add_categories( $elements_manager ) {
         $elements_manager->add_category('ultraaddons', 
                 [
-                    'title'     => __( 'Addons - UltraAddons', 'ultraaddons' ), 
+                    'title'     => esc_html__( 'UltraAddons', 'ultraaddons' ), 
+                    'icon'      => 'uicon-ultraaddons'
+                ]
+        );
+        
+        /**
+         * Adding Pro Category in This free version.
+         * 
+         * @since 1.0.9.3
+         */
+        $elements_manager->add_category('ultraaddons-pro', 
+                [
+                    'title'     => esc_html__( 'UltraAddons Pro', 'ultraaddons' ), 
                     'icon'      => 'uicon-ultraaddons'
                 ]
         );
