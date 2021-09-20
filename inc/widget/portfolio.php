@@ -96,23 +96,19 @@ class Portfolio extends Base {
 	}
 
     public function query_posts() {
-
+        $settings = $this->get_settings_for_display();
 
         $args = array(
-            'posts_per_page' => $this->get_settings( 'posts_per_page' ),
+            'posts_per_page' => isset( $settings['_ua_posts_per_page'] ) ? $settings['_ua_posts_per_page'] : 3,
             'post_status'   => 'publish',
-            'post_type' => 'post',
-            'orderby'   => 'menu_order',
-            'order' => 'asc',
-            'ignore_sticky_posts' => true,
+            'post_type' => isset( $settings['_ua_post_type'] ) ? $settings['_ua_post_type'] : 'post',
+            'orderby'   => isset( $settings['_ua_order_by'] ) ? $settings['_ua_order_by'] : 'date',
+            'order' => isset( $settings['_ua_order'] ) ? $settings['_ua_order'] : 'asc',
+            'ignore_sticky_posts' => isset( $settings['_ua_ignore_sticky_posts'] ) && $settings['_ua_ignore_sticky_posts'] == 'yes' ? true : false,
             'post__not_in' => '',
             'author__in' => ''
         );
 		$this->_query = new WP_Query( $args );
-
-		/** @var Module_Query $elementor_query */
-		// $elementor_query = Module_Query::instance();
-		// $this->_query = $elementor_query->get_query( $this, 'posts', $query_args, [] );
 	}
 
     protected function render_post() {
@@ -120,7 +116,6 @@ class Portfolio extends Base {
 		$this->render_thumbnail();
 		$this->render_overlay_header();
 		$this->render_title();
-		// $this->render_categories_names();
 		$this->render_overlay_footer();
 		$this->render_post_footer();
 	}
@@ -224,15 +219,6 @@ class Portfolio extends Base {
 			]
 		);
 
-		$this->add_control(
-			'posts_per_page',
-			[
-				'label' => __( 'Posts Per Page', 'ultraaddons' ),
-				'type' => Controls_Manager::NUMBER,
-				'default' => 6,
-			]
-		);
-
 		$this->add_group_control(
 			Group_Control_Image_Size::get_type(),
 			[
@@ -328,16 +314,69 @@ class Portfolio extends Base {
 			]
 		);
 
-		$this->add_group_control(
-			'related-query',
-			[
-				'name' => 'posts',
-				'presets' => [ 'full' ],
-				'exclude' => [
-					'posts_per_page', //use the one from Layout section
-				],
-			]
-		);
+        $this->add_control(
+            '_ua_post_type',
+            [
+                'label' => __( 'Source', 'ultraaddons' ),
+                'type' => Controls_Manager::SELECT,
+                'options' => ultraaddons_get_post_types( [],[ 'elementor_library', 'attachment' ] ),
+                'default' => 'post',
+            ]
+        );
+
+        $this->add_control(
+            '_ua_posts_per_page', [
+                'label'       => esc_html__('Posts Per Page', 'ultraaddons'),
+                'type'        => Controls_Manager::NUMBER,
+                'placeholder' => esc_html__('Enter Number', 'ultraaddons'),
+                'default'     => '3',
+            ]
+        );
+
+        $this->add_control(
+            '_ua_order_by',
+            [
+                'label'   => __('Order By', 'ultraaddons'),
+                'type'    => Controls_Manager::SELECT,
+                'default' => 'date',
+                'options' => [
+                    'modified'   => __('Modified', 'ultraaddons'),
+                    'date'       => __('Date', 'ultraaddons'),
+                    'rand'       => __('Rand', 'ultraaddons'),
+                    'ID'         => __('ID', 'ultraaddons'),
+                    'title'      => __('Title', 'ultraaddons'),
+                    'author'     => __('Author', 'ultraaddons'),
+                    'name'       => __('Name', 'ultraaddons'),
+                    'parent'     => __('Parent', 'ultraaddons'),
+                    'menu_order' => __('Menu Order', 'ultraaddons'),
+                ],
+                'separator' => 'before',
+            ]
+        );
+        $this->add_control(
+            '_ua_order',
+            [
+                'label'   => __('Order', 'ultraaddons'),
+                'type'    => Controls_Manager::SELECT,
+                'default' => 'asc',
+                'options' => [
+                    'asc'  => __('Ascending Order', 'ultraaddons'),
+                    'desc' => __('Descending Order', 'ultraaddons'),
+                ],
+            ]
+        );
+        $this->add_control(
+            '_ua_ignore_sticky_posts', 
+            [
+                'label' => __( 'Ignore Sticky Posts', 'ultraaddons' ),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => 'yes',
+                'condition' => [
+                    '_ua_post_type!' => ['page', 'by_id', 'category'],
+                ],
+                'description' => __( 'Sticky-posts ordering is visible on frontend only', 'ultraaddons' ),
+            ]
+        );
 
 		$this->end_controls_section();
 
