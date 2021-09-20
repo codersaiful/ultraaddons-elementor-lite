@@ -202,7 +202,7 @@ class Loader {
 
         foreach( $this->widgetsArray as $widget_key => $widget ){
             $name = $widget_key;//isset( $widget['name'] ) ? $widget['name'] : '';
-
+            
             $name = str_replace('_','-', $name);
             
             $class_name = str_replace( '-','_', $name );
@@ -230,7 +230,11 @@ class Loader {
 
             if( $class_name && class_exists( $class_name ) ){
                 ultraaddons_elementor()->widgets_manager->register_widget_type( new $class_name() );
+            }elseif( isset( $widget['is_pro'] ) && $widget['is_pro'] ){
+                var_dump($widget);
             }
+            
+            
             
         }
         
