@@ -122,6 +122,27 @@ class Widgets_Manager{
         }
         return apply_filters( 'ultraaddons/widgets/active', $active_widgets );//$active_widgets;
     }
+    
+    /**
+     * Get Pro Widget from whole Widget List
+     * 
+     * @since 1.0.9.3
+     * 
+     * @return Array|Null
+     */
+    public static function get_pro_widgets(){
+        
+        $widgets = self::widgets();
+        $pro_widgets = [];
+        foreach( $widgets as $widget_key => $widget ){
+            $is_pro = isset( $widget['is_pro'] ) ? $widget['is_pro'] : false;
+            if( $is_pro ){
+               $pro_widgets[$widget_key] = $widget; 
+            }
+        }
+        return apply_filters( 'ultraaddons/widgets/pro', $pro_widgets );//$pro_widgets;
+    }
+    
 
     /**
      * Getting Disabled Widgets
