@@ -1,17 +1,11 @@
 <?php
 namespace UltraAddons\Widget;
 
-use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Modules\DynamicTags\Module as TagsModule;
-use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
 use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
-use Elementor\Group_Control_Border;
-use Elementor\Group_Control_Box_Shadow;
-use Elementor\Group_Control_Background;
-use \ELEMENTOR\Icons_Manager;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -43,10 +37,8 @@ class Animated_Headline extends Base{
      */
     protected function _register_controls() {
         
-        //For General Section
         $this->ua_content_general_controls();
         $this->ua_style_controls();
-
        
     }
     
@@ -55,11 +47,11 @@ class Animated_Headline extends Base{
      *
      * Written in PHP and used to generate the final HTML.
      *
-     * @since 1.0.0
+     * @since 1.0.9
      * @access protected
      */
     protected function render() {
-        $settings               = $this->get_settings_for_display();
+        $settings = $this->get_settings_for_display();
 
         $tag = ultraaddons_validate_html_tag( $settings['tag'] );//Utils::validate_html_tag( $settings['tag'] );
         
@@ -114,7 +106,7 @@ class Animated_Headline extends Base{
 	 *
 	 * Written as a Backbone JavaScript template and used to generate the live preview.
 	 *
-	 * @since 2.9.0
+	 * @since 1.0.9
 	 * @access protected
 	 */
 	protected function content_template() {
