@@ -335,6 +335,29 @@ function ultraaddons_allowed_html_tags( $level = 'basic' ) {
     return $allowed_html;
 }
 
+function ultraaddons_validate_html_tag( $tag ) {
+    static $allowed_html_wrapper_tags = [
+        'article',
+        'aside',
+        'div',
+        'footer',
+        'h1',
+        'h2',
+        'h3',
+        'h4',
+        'h5',
+        'h6',
+        'header',
+        'main',
+        'nav',
+        'p',
+        'section',
+        'span',
+    ];
+
+    return in_array( strtolower( $tag ), $allowed_html_wrapper_tags ) ? $tag : 'div';
+}
+
 function ultraaddons_addons_kses( $string = '', $level = 'basic' ) {
     return wp_kses( $string, ultraaddons_allowed_html_tags( $level ) );
 }
