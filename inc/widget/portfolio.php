@@ -229,20 +229,20 @@ class Portfolio extends Base {
 			]
 		);
 
-		$this->add_control(
-			'masonry',
-			[
-				'label' => __( 'Masonry', 'ultraaddons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_off' => __( 'Off', 'ultraaddons' ),
-				'label_on' => __( 'On', 'ultraaddons' ),
-				'condition' => [
-					'columns!' => '1',
-				],
-				'render_type' => 'ui',
-				'frontend_available' => true,
-			]
-		);
+		// $this->add_control(
+		// 	'masonry',
+		// 	[
+		// 		'label' => __( 'Masonry', 'ultraaddons' ),
+		// 		'type' => Controls_Manager::SWITCHER,
+		// 		'label_off' => __( 'Off', 'ultraaddons' ),
+		// 		'label_on' => __( 'On', 'ultraaddons' ),
+		// 		'condition' => [
+		// 			'columns!' => '1',
+		// 		],
+		// 		'render_type' => 'ui',
+		// 		'frontend_available' => true,
+		// 	]
+		// );
 
 		$this->add_control(
 			'item_ratio',
@@ -262,9 +262,6 @@ class Portfolio extends Base {
 				'selectors' => [
 					'{{WRAPPER}} .elementor-post__thumbnail__link' => 'padding-bottom: calc( {{SIZE}} * 100% )',
 					'{{WRAPPER}}:after' => 'content: "{{SIZE}}"; position: absolute; color: transparent;',
-				],
-				'condition' => [
-					'masonry' => '',
 				],
 				'frontend_available' => true,
 			]
