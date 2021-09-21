@@ -230,15 +230,28 @@ class Loader {
 
             if( $class_name && class_exists( $class_name ) ){
                 ultraaddons_elementor()->widgets_manager->register_widget_type( new $class_name() );
-            }elseif( isset( $widget['is_pro'] ) && $widget['is_pro'] ){
-                var_dump($widget);
             }
             
             
             
         }
         
-      
+        return;
+        //Check UltraAddons pro installed or not
+        if( ultraaddons_is_pro() ) return;
+        
+        /**
+         * Loading Pro widget list in Widget Category
+         * in Editor Screen
+         * When Our Pro Version is not installed.
+         * 
+         * @since 1.0.9.3
+         */
+        $pro_widgets = Widgets_Manager::get_pro_widgets();
+        foreach( $pro_widgets as $widgt_key => $widgt ){
+            $my_p = new \UltraAddons\Base\Placeholder( $widgt_key, $widgt );
+            ultraaddons_elementor()->widgets_manager->register_widget_type( $my_p );
+        }
 
     }
 
@@ -465,12 +478,15 @@ class Loader {
                 ]
         );
         
+        return;
+        //Check UltraAddons pro installed or not
+        if( ultraaddons_is_pro() ) return;
         /**
          * Adding Pro Category in This free version.
          * 
          * @since 1.0.9.3
          */
-        $elements_manager->add_category('ultraaddons-pro', 
+        $elements_manager->add_category('ultraaddons-pro-placeholder', 
                 [
                     'title'     => esc_html__( 'UltraAddons Pro', 'ultraaddons' ), 
                     'icon'      => 'uicon-ultraaddons'
