@@ -236,7 +236,7 @@ class Loader {
             
         }
         
-      
+        return;
         //Check UltraAddons pro installed or not
         if( ultraaddons_is_pro() ) return;
         
@@ -478,6 +478,7 @@ class Loader {
                 ]
         );
         
+        return;
         //Check UltraAddons pro installed or not
         if( ultraaddons_is_pro() ) return;
         /**
