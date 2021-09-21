@@ -42,5 +42,28 @@ class Placeholder extends Widget_Base{
         return [ 'ultraaddons-pro-placeholder' ];
     }
     
+    public function render_backup(){
+        //Use Posts widget and dozens more pro features to extend your toolbox and build sites faster and better.
+        ?>
+            
+<div class="ua-pro-widger-placeholder ua-placeholder-<?php echo esc_attr( $this->name ); ?>">
+    <div class="ua-inner-placeholder">
+        <h3><?php echo esc_html( $this->title ); ?></h3>
+        
+        <div class="ua-plac-content">
+            <p><?php
+            echo sprintf( esc_html__( 'Use %s widget and dozens more pro features to extend your toolbox and build sites faster and better.', 'ultraaddons' ), $this->title );
+            ?></p>
+            <p>
+                <a href="<?php echo esc_url( ultraaddons_help_url( $this->name ) ); ?>" class="button button-readmore">
+                    <?php echo esc_html__( 'Read More', 'ultraaddons' ); ?>
+                </a>
+            </p>
+        </div>
+    </div>
+</div> 
+        <?php
+    }
+    
 }
 
