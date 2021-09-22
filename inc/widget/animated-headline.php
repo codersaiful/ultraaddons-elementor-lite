@@ -177,12 +177,12 @@ class Animated_Headline extends Base{
         $this->add_control(
 			'headline_style',
 			[
-				'label' => __( 'Style', 'elementor-pro' ),
+				'label' => __( 'Style', 'ultraaddons' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'highlight',
 				'options' => [
-					'highlight' => __( 'Highlighted', 'elementor-pro' ),
-					'rotate' => __( 'Rotating', 'elementor-pro' ),
+					'highlight' => __( 'Highlighted', 'ultraaddons' ),
+					'rotate' => __( 'Rotating', 'ultraaddons' ),
 				],
 				'prefix_class' => 'elementor-headline--style-',
 				'render_type' => 'template',
@@ -193,7 +193,7 @@ class Animated_Headline extends Base{
         $this->add_control(
 			'animation_type',
 			[
-				'label' => __( 'Animation', 'elementor-pro' ),
+				'label' => __( 'Animation', 'ultraaddons' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'typing' => 'Typing',
@@ -217,18 +217,18 @@ class Animated_Headline extends Base{
         $this->add_control(
 			'marker',
 			[
-				'label' => __( 'Shape', 'elementor-pro' ),
+				'label' => __( 'Shape', 'ultraaddons' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'circle',
 				'options' => [
-					'circle' => _x( 'Circle', 'Shapes', 'elementor-pro' ),
-					'curly' => _x( 'Curly', 'Shapes', 'elementor-pro' ),
-					'underline' => _x( 'Underline', 'Shapes', 'elementor-pro' ),
-					'double' => _x( 'Double', 'Shapes', 'elementor-pro' ),
-					'double_underline' => _x( 'Double Underline', 'Shapes', 'elementor-pro' ),
-					'underline_zigzag' => _x( 'Underline Zigzag', 'Shapes', 'elementor-pro' ),
-					'diagonal' => _x( 'Diagonal', 'Shapes', 'elementor-pro' ),
-					'strikethrough' => _x( 'Strikethrough', 'Shapes', 'elementor-pro' ),
+					'circle' => _x( 'Circle', 'Shapes', 'ultraaddons' ),
+					'curly' => _x( 'Curly', 'Shapes', 'ultraaddons' ),
+					'underline' => _x( 'Underline', 'Shapes', 'ultraaddons' ),
+					'double' => _x( 'Double', 'Shapes', 'ultraaddons' ),
+					'double_underline' => _x( 'Double Underline', 'Shapes', 'ultraaddons' ),
+					'underline_zigzag' => _x( 'Underline Zigzag', 'Shapes', 'ultraaddons' ),
+					'diagonal' => _x( 'Diagonal', 'Shapes', 'ultraaddons' ),
+					'strikethrough' => _x( 'Strikethrough', 'Shapes', 'ultraaddons' ),
 					'x' => 'X',
 				],
 				'render_type' => 'template',
@@ -242,7 +242,7 @@ class Animated_Headline extends Base{
         $this->add_control(
 			'before_text',
 			[
-				'label' => __( 'Before Text', 'elementor-pro' ),
+				'label' => __( 'Before Text', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
 				'dynamic' => [
 					'active' => true,
@@ -250,8 +250,8 @@ class Animated_Headline extends Base{
 						TagsModule::TEXT_CATEGORY,
 					],
 				],
-				'default' => __( 'This page is', 'elementor-pro' ),
-				'placeholder' => __( 'Enter your headline', 'elementor-pro' ),
+				'default' => __( 'This page is', 'ultraaddons' ),
+				'placeholder' => __( 'Enter your headline', 'ultraaddons' ),
 				'label_block' => true,
 				'separator' => 'before',
 			]
@@ -260,7 +260,7 @@ class Animated_Headline extends Base{
         $this->add_control(
 			'highlighted_text',
 			[
-				'label' => __( 'Highlighted Text', 'elementor-pro' ),
+				'label' => __( 'Highlighted Text', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
 				'dynamic' => [
 					'active' => true,
@@ -268,7 +268,7 @@ class Animated_Headline extends Base{
 						TagsModule::TEXT_CATEGORY,
 					],
 				],
-				'default' => __( 'Amazing', 'elementor-pro' ),
+				'default' => __( 'Amazing', 'ultraaddons' ),
 				'label_block' => true,
 				'condition' => [
 					'headline_style' => 'highlight',
@@ -281,9 +281,9 @@ class Animated_Headline extends Base{
 		$this->add_control(
 			'rotating_text',
 			[
-				'label' => __( 'Rotating Text', 'elementor-pro' ),
+				'label' => __( 'Rotating Text', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXTAREA,
-				'placeholder' => __( 'Enter each word in a separate line', 'elementor-pro' ),
+				'placeholder' => __( 'Enter each word in a separate line', 'ultraaddons' ),
 				'separator' => 'none',
 				'default' => "Better\nBigger\nFaster",
 				'dynamic' => [
@@ -302,7 +302,7 @@ class Animated_Headline extends Base{
 		$this->add_control(
 			'after_text',
 			[
-				'label' => __( 'After Text', 'elementor-pro' ),
+				'label' => __( 'After Text', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
 				'dynamic' => [
 					'active' => true,
@@ -310,7 +310,7 @@ class Animated_Headline extends Base{
 						TagsModule::TEXT_CATEGORY,
 					],
 				],
-				'placeholder' => __( 'Enter your headline', 'elementor-pro' ),
+				'placeholder' => __( 'Enter your headline', 'ultraaddons' ),
 				'label_block' => true,
 				'separator' => 'none',
 			]
@@ -319,7 +319,7 @@ class Animated_Headline extends Base{
 		$this->add_control(
 			'loop',
 			[
-				'label' => __( 'Infinite Loop', 'elementor-pro' ),
+				'label' => __( 'Infinite Loop', 'ultraaddons' ),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 				'render_type' => 'template',
@@ -334,7 +334,7 @@ class Animated_Headline extends Base{
 		$this->add_control(
 			'highlight_animation_duration',
 			[
-				'label' => __( 'Duration', 'elementor-pro' ) . ' (ms)',
+				'label' => __( 'Duration', 'ultraaddons' ) . ' (ms)',
 				'type' => Controls_Manager::NUMBER,
 				'default' => 1200,
 				'render_type' => 'template',
@@ -351,7 +351,7 @@ class Animated_Headline extends Base{
 		$this->add_control(
 			'highlight_iteration_delay',
 			[
-				'label' => __( 'Delay', 'elementor-pro' ) . ' (ms)',
+				'label' => __( 'Delay', 'ultraaddons' ) . ' (ms)',
 				'type' => Controls_Manager::NUMBER,
 				'default' => 8000,
 				'render_type' => 'template',
@@ -366,7 +366,7 @@ class Animated_Headline extends Base{
 		$this->add_control(
 			'rotate_iteration_delay',
 			[
-				'label' => __( 'Duration', 'elementor-pro' ) . ' (ms)',
+				'label' => __( 'Duration', 'ultraaddons' ) . ' (ms)',
 				'type' => Controls_Manager::NUMBER,
 				'default' => 2500,
 				'render_type' => 'template',
@@ -380,7 +380,7 @@ class Animated_Headline extends Base{
 		$this->add_control(
 			'link',
 			[
-				'label' => __( 'Link', 'elementor-pro' ),
+				'label' => __( 'Link', 'ultraaddons' ),
 				'type' => Controls_Manager::URL,
 				'dynamic' => [
 					'active' => true,
@@ -392,19 +392,19 @@ class Animated_Headline extends Base{
 		$this->add_responsive_control(
 			'alignment',
 			[
-				'label' => __( 'Alignment', 'elementor-pro' ),
+				'label' => __( 'Alignment', 'ultraaddons' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => __( 'Left', 'elementor-pro' ),
+						'title' => __( 'Left', 'ultraaddons' ),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => __( 'Center', 'elementor-pro' ),
+						'title' => __( 'Center', 'ultraaddons' ),
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => __( 'Right', 'elementor-pro' ),
+						'title' => __( 'Right', 'ultraaddons' ),
 						'icon' => 'eicon-text-align-right',
 					],
 				],
@@ -418,7 +418,7 @@ class Animated_Headline extends Base{
 		$this->add_control(
 			'tag',
 			[
-				'label' => __( 'HTML Tag', 'elementor-pro' ),
+				'label' => __( 'HTML Tag', 'ultraaddons' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'h1' => 'H1',
@@ -442,7 +442,7 @@ class Animated_Headline extends Base{
         $this->start_controls_section(
 			'section_style_marker',
 			[
-				'label' => __( 'Shape', 'elementor-pro' ),
+				'label' => __( 'Shape', 'ultraaddons' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'condition' => [
 					'headline_style' => 'highlight',
@@ -453,7 +453,7 @@ class Animated_Headline extends Base{
 		$this->add_control(
 			'marker_color',
 			[
-				'label' => __( 'Color', 'elementor-pro' ),
+				'label' => __( 'Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
 				'global' => [
 					'default' => Global_Colors::COLOR_ACCENT,
@@ -467,7 +467,7 @@ class Animated_Headline extends Base{
 		$this->add_control(
 			'stroke_width',
 			[
-				'label' => __( 'Width', 'elementor-pro' ),
+				'label' => __( 'Width', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -484,7 +484,7 @@ class Animated_Headline extends Base{
 		$this->add_control(
 			'above_content',
 			[
-				'label' => __( 'Bring to Front', 'elementor-pro' ),
+				'label' => __( 'Bring to Front', 'ultraaddons' ),
 				'type' => Controls_Manager::SWITCHER,
 				'selectors' => [
 					'{{WRAPPER}} .elementor-headline-dynamic-wrapper svg' => 'z-index: 2',
@@ -496,7 +496,7 @@ class Animated_Headline extends Base{
 		$this->add_control(
 			'rounded_edges',
 			[
-				'label' => __( 'Rounded Edges', 'elementor-pro' ),
+				'label' => __( 'Rounded Edges', 'ultraaddons' ),
 				'type' => Controls_Manager::SWITCHER,
 				'selectors' => [
 					'{{WRAPPER}} .elementor-headline-dynamic-wrapper path' => 'stroke-linecap: round; stroke-linejoin: round',
@@ -509,7 +509,7 @@ class Animated_Headline extends Base{
 		$this->start_controls_section(
 			'section_style_text',
 			[
-				'label' => __( 'Headline', 'elementor-pro' ),
+				'label' => __( 'Headline', 'ultraaddons' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -517,7 +517,7 @@ class Animated_Headline extends Base{
 		$this->add_control(
 			'title_color',
 			[
-				'label' => __( 'Text Color', 'elementor-pro' ),
+				'label' => __( 'Text Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
 				'global' => [
 					'default' => Global_Colors::COLOR_SECONDARY,
@@ -543,7 +543,7 @@ class Animated_Headline extends Base{
 			'heading_words_style',
 			[
 				'type' => Controls_Manager::HEADING,
-				'label' => __( 'Animated Text', 'elementor-pro' ),
+				'label' => __( 'Animated Text', 'ultraaddons' ),
 				'separator' => 'before',
 			]
 		);
@@ -551,7 +551,7 @@ class Animated_Headline extends Base{
 		$this->add_control(
 			'words_color',
 			[
-				'label' => __( 'Text Color', 'elementor-pro' ),
+				'label' => __( 'Text Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
 				'global' => [
 					'default' => Global_Colors::COLOR_SECONDARY,
@@ -578,7 +578,7 @@ class Animated_Headline extends Base{
 			'typing_animation_highlight_colors',
 			[
 				'type' => Controls_Manager::HEADING,
-				'label' => __( 'Selected Text', 'elementor-pro' ),
+				'label' => __( 'Selected Text', 'ultraaddons' ),
 				'separator' => 'before',
 				'condition' => [
 					'headline_style' => 'rotate',
@@ -590,7 +590,7 @@ class Animated_Headline extends Base{
 		$this->add_control(
 			'highlighted_text_background_color',
 			[
-				'label' => __( 'Selection Color', 'elementor-pro' ),
+				'label' => __( 'Selection Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}}' => '--typing-selected-bg-color: {{VALUE}}',
@@ -605,7 +605,7 @@ class Animated_Headline extends Base{
 		$this->add_control(
 			'highlighted_text_color',
 			[
-				'label' => __( 'Text Color', 'elementor-pro' ),
+				'label' => __( 'Text Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}}' => '--typing-selected-color: {{VALUE}}',
