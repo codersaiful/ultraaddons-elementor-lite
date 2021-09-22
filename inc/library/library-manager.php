@@ -87,7 +87,7 @@ class Library_Manager {
 		);
                 
                 $localize_data = [
-			'placeholder_widgets' => Widgets_Manager::get_pro_widgets(),
+			'placeholder_widgets' => Widgets_Manager::proWidgets(),
 			'hasPro'                  => ultraaddons_is_pro(),
 			'editor_nonce'            => wp_create_nonce( 'ua_editor_nonce' ),
 			'dark_stylesheet_url'     => self::ULTRA_ADDONS_TEMPLATE_ASSETS . 'css/editor-dark.min.css',
