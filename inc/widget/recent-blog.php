@@ -289,7 +289,7 @@ class Recent_Blog extends Base{
         wp_reset_postdata();
     }
     
-    protected function _content_template() {
+    protected function content_template() {
         /*
         ?>
         <#

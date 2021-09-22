@@ -179,8 +179,7 @@ class Testimonial_Slider extends Base{
         
     }
     
-    protected function _content_template() {
-    }
+    protected function content_template() {}
     
     /**
      * General Section for Content Controls
