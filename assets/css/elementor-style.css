@@ -133,15 +133,14 @@ i.elementor-icons-manager__tab__item__icon.uicon {
     font-size: 25px;
 }
 
-sup.ultaaddons-pro-badge,
-i.ultaaddons-pro-badge {
-    background: #e91e63ad;
-    color: white;
-    font-size: 10px;
+sup.ultaaddons-pro-badge, i.ultaaddons-pro-badge {
+    background: #9cadb9;
+    color: #495258;
+    font-size: 9px;
     text-transform: lowercase;
     padding: 0 3px 2px 3px;
     font-weight: 300;
-    border-radius: 8px;
+    border-radius: 4px;
 }
 /*******************************
 * Gradient Text Extention
@@ -176,7 +175,21 @@ i.ultaaddons-pro-badge {
     -webkit-text-fill-color: transparent;
 }
 
-
+div#elementor-panel-category-ultraaddons-pro-placeholder .elementor-element-wrapper .elementor-element{
+  cursor: pointer;
+}
+div#elementor-panel-category-ultraaddons-pro-placeholder .elementor-element-wrapper .elementor-element .icon i.ultraaddons.ua-pro:after {
+    background: transparent;
+    font-family: 'eicons';
+    content: '\e96f';/*lock icon*/
+    content: '\e893';/*pro badge icon*/
+    right: 6px;
+    height: 25px;
+    width: 23px;
+    font-size: 13px;
+    top: 5px;
+    color: #25252547;
+}
 /*style for preset*/
 .elementor-control.elementor-control-_ua_preset_settings_title .elementor-control-content {
     background: transparent;

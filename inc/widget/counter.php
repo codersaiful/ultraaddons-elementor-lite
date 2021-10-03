@@ -212,7 +212,7 @@ class Counter extends Base{
         
     }
     
-    protected function _content_template() {
+    protected function content_template() {
         /*
         ?>
         <#

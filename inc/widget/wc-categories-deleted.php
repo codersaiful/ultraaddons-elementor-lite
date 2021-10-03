@@ -472,7 +472,7 @@ class WC_Categories extends Base{
             echo do_shortcode( $this->get_shortcode() );
         }
         
-        protected function _content_template() {
+        protected function content_template() {
         }
         
         public function render_plain_content() {

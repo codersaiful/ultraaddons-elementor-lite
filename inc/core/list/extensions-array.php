@@ -24,7 +24,7 @@ $extensionsArray = [
 
             'Hover_Effect' => [
                     'name'  => __( 'Hover Effect', 'ultraaddons' ),
-                    'is_pro'   => false,
+                    'is_pro'   => true,
                     'icon'      => 'uicon-hover',
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),
@@ -41,7 +41,7 @@ $extensionsArray = [
              */
             'Transform' => [
                     'name'  => __( 'CSS Transform', 'ultraaddons' ),
-                    'is_pro'   => false,
+                    'is_pro'   => true,
                     'icon'      => 'eicon-heading',
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),
@@ -80,21 +80,21 @@ $extensionsArray = [
 
             'Gradient_Text' => [
                     'name'  => __( 'Gradient Text', 'ultraaddons' ),
-                    'is_pro'   => false,
+                    'is_pro'   => true,
                     'icon'      => 'eicon-global-colors',
                     'cat'       => [
                         __( 'Basic', 'ultraaddons' ),
                     ],
             ],
-    
-            'Preset' => [
-                    'name'  => __( 'Preset Settings', 'ultraaddons' ),
-                    'is_pro'   => true,
-                    'icon'      => 'eicon-click',
-                    'cat'       => [
-                        __( 'Basic', 'ultraaddons' ),
-                    ],
-            ],
+//              //Preset currently disabled. unable to solved. @Saiful
+//            'Preset' => [
+//                    'name'  => __( 'Preset Settings', 'ultraaddons' ),
+//                    'is_pro'   => true,
+//                    'icon'      => 'eicon-click',
+//                    'cat'       => [
+//                        __( 'Basic', 'ultraaddons' ),
+//                    ],
+//            ],
             
             'Floating_Effects' => [
                     'name'  => __( 'Floating Effects', 'ultraaddons' ),
@@ -104,14 +104,14 @@ $extensionsArray = [
                         __( 'Basic', 'ultraaddons' ),
                     ],
             ],
-            'Custom_CSS' => [
-                    'name'  => __( 'Custom CSS', 'ultraaddons' ),
-                    'is_pro'   => false,
-                    'icon'      => 'eicon-click',
-                    'cat'       => [
-                        __( 'Basic', 'ultraaddons' ),
-                    ],
-            ],
+            // 'Custom_CSS' => [
+            //         'name'  => __( 'Custom CSS', 'ultraaddons' ),
+            //         'is_pro'   => false,
+            //         'icon'      => 'eicon-click',
+            //         'cat'       => [
+            //             __( 'Basic', 'ultraaddons' ),
+            //         ],
+            // ],
 
 //         Need more Customizer and to be update   
 //            'ultra-effects'=> [

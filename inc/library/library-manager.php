@@ -2,6 +2,7 @@
 namespace UltraAddons\Library;
 
 use Elementor\Core\Common\Modules\Ajax\Module as Ajax;
+use UltraAddons\Core\Widgets_Manager;
 
 defined('ABSPATH') || die();
 
@@ -86,8 +87,9 @@ class Library_Manager {
 		);
                 
                 $localize_data = [
-			'placeholder_widgets' => [],
+			'placeholder_widgets' => Widgets_Manager::proWidgets(),
 			'hasPro'                  => ultraaddons_is_pro(),
+                        'HELP_ULR'                => ULTRA_ADDONS_WIDGET_HELP_ULR,
 			'editor_nonce'            => wp_create_nonce( 'ua_editor_nonce' ),
 			'dark_stylesheet_url'     => self::ULTRA_ADDONS_TEMPLATE_ASSETS . 'css/editor-dark.min.css',
 			'i18n' => [

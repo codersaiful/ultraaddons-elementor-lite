@@ -184,9 +184,7 @@ class Skill_Bar extends Base{
 	 * @since 2.9.0
 	 * @access protected
 	 */
-	protected function content_template() {
-		
-        }
+	protected function content_template() {}
     
         /**
          * General Section for Content Controls
