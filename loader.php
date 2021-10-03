@@ -236,22 +236,7 @@ class Loader {
             
         }
         
-        return;
-        //Check UltraAddons pro installed or not
-        if( ultraaddons_is_pro() ) return;
         
-        /**
-         * Loading Pro widget list in Widget Category
-         * in Editor Screen
-         * When Our Pro Version is not installed.
-         * 
-         * @since 1.0.9.3
-         */
-        $pro_widgets = Widgets_Manager::get_pro_widgets();
-        foreach( $pro_widgets as $widgt_key => $widgt ){
-            $my_p = new \UltraAddons\Base\Placeholder( $widgt_key, $widgt );
-            ultraaddons_elementor()->widgets_manager->register_widget_type( $my_p );
-        }
 
     }
 
