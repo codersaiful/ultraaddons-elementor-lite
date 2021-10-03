@@ -368,7 +368,7 @@ $widgetsArray = [
 
     'Animated_Headline' => [
             'name'  => __( 'Animated Headline', 'ultraaddons' ),
-            'is_pro'   => false,
+            'is_pro'   => true,
             'icon'      => 'eicon-posts-masonry',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
