@@ -463,20 +463,7 @@ class Loader {
                 ]
         );
         
-        return;
-        //Check UltraAddons pro installed or not
-        if( ultraaddons_is_pro() ) return;
-        /**
-         * Adding Pro Category in This free version.
-         * 
-         * @since 1.0.9.3
-         */
-        $elements_manager->add_category('ultraaddons-pro-placeholder', 
-                [
-                    'title'     => esc_html__( 'UltraAddons Pro', 'ultraaddons' ), 
-                    'icon'      => 'uicon-ultraaddons'
-                ]
-        );
+        
     }
 
 
