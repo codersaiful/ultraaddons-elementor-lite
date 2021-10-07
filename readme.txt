@@ -133,6 +133,19 @@ Yes, there are lot of filter and action hook available here. You can customize f
 
 == Change log ==
 
+= 1.0.9 =
+
+* [Added]: Portfolio Widget (pro)
+* [Added]: Animated Headline Widget (pro)
+* [Added]: Drop Cap Widget (free)
+* [Added]: Product Accordion Widget (pro)
+* [Added]: Image Accordion Widget (pro)
+* [Added]: Timeline (pro)
+* [Added]: Floating Effect Extension (free)
+* [Added]: Custom CSS Extension (free)
+* [Fixed]: Custom css issue fixed
+* [Fixed]: Pro widget list showing issue fixed
+
 = 1.0.7 =
 
  * Bug Fixed
