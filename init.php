@@ -11,11 +11,11 @@
  * Text Domain: ultraaddons
  * Domain Path: /languages/
  * 
- * Requires at least:    4.0.0
+ * Requires at least:    5.0.0
  * Tested up to:         5.8.1
  * WC requires at least: 3.0.0
- * WC tested up to: 	 5.6.2
- * Elementor tested up to: 3.4.3
+ * WC tested up to: 	 5.7.1
+ * Elementor tested up to: 3.4.4
  * Elementor Pro tested up to: 5.11.0
  *
  * @package UltraAddons

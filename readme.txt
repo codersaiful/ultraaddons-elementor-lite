@@ -6,9 +6,9 @@ Author URI: https://ultraaddons.com/
 Tags: addons, elementor addons, ultraaddons, page builder, page builder addons, Editor, Web Page Builder
 Contributors: codersaiful, codeastrology, ultraaddons
 Requires at least: 5.0.0
-Tested up to: 5.7.2
+Tested up to: 5.8.1
 Requires PHP: 5.6
-Stable tag: 1.0.7
+Stable tag: 1.0.9
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl.html
 
