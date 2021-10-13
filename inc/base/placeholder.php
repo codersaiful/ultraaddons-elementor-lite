@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * Has removed this class's functionality
+ * 
+ * @deprecated since version 1.0.9.4
+ * 
+ */
 namespace UltraAddons\Base;
 
 use Elementor\Widget_Base;
@@ -13,6 +20,10 @@ use Elementor\Widget_Base;
  * 
  * @since 1.0.9.3
  * @by Saiful Islam
+ * 
+ * Has removed this class's functionality
+ * 
+ * @deprecated since version 1.0.9.4
  */
 class Placeholder extends Widget_Base{
     public $name;

@@ -6,9 +6,9 @@ Author URI: https://ultraaddons.com/
 Tags: addons, elementor addons, ultraaddons, page builder, page builder addons, Editor, Web Page Builder
 Contributors: codersaiful, codeastrology, ultraaddons
 Requires at least: 5.0.0
-Tested up to: 5.7.2
+Tested up to: 5.8.1
 Requires PHP: 5.6
-Stable tag: 1.0.7
+Stable tag: 1.0.9
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -132,6 +132,19 @@ Yes, there are lot of filter and action hook available here. You can customize f
 
 
 == Change log ==
+
+= 1.0.9 =
+
+* [Added]: Portfolio Widget (pro)
+* [Added]: Animated Headline Widget (pro)
+* [Added]: Drop Cap Widget (free)
+* [Added]: Product Accordion Widget (pro)
+* [Added]: Image Accordion Widget (pro)
+* [Added]: Timeline (pro)
+* [Added]: Floating Effect Extension (free)
+* [Added]: Custom CSS Extension (free)
+* [Fixed]: Custom css issue fixed
+* [Fixed]: Pro widget list showing issue fixed
 
 = 1.0.7 =
 
