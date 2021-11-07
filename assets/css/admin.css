@@ -1032,3 +1032,16 @@ section.ua-section.video .video-gallery .owl-dots {
     } */
 }
 /* Welcome page design - ends here */
+div.ultraaddons-notice-error-elementor {
+    background: #e5e5e5;
+    color: #607d8b;
+}
+
+div.ultraaddons-notice-error-elementor>p {
+    font-size: 22px;
+}
+
+div.ultraaddons-notice-error-elementor>p>strong {
+    color: #9c27b0;
+    font-weight: bold;
+}

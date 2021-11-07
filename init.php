@@ -206,8 +206,7 @@ final class UltraAddons {
             
                 //Including Function File. It will stay at the Top of the File
                 include_once ULTRA_ADDONS_DIR . 'inc/functions.php';
-                
-                add_action('admin_enqueue_scripts', [$this,'admin_style']);
+
                 
 		// Check if Elementor installed and activated
 		if ( ! did_action( 'elementor/loaded' ) ) {
@@ -266,12 +265,13 @@ final class UltraAddons {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor */
-			esc_html__( '"%1$s" requires "%2$s" to be installed and activated.', 'ultraaddons' ),
+			esc_html__( '%1$s requires %2$s to be installed and activated.%3$s', 'ultraaddons' ),
 			'<strong>' . esc_html__( 'UltraAddons Elementor Lite', 'ultraaddons' ) . '</strong>',
-			'<strong>' . esc_html__( 'Elementor', 'ultraaddons' ) . '</strong>'
+			'<strong><a href="https://wordpress.org/plugins/elementor/" target="_blank">' . esc_html__( 'Elementor', 'ultraaddons' ) . '</a></strong>',
+			'<style>div.ultraaddons-notice-error-elementor{background:#e5e5e5;color:#607d8b}div.ultraaddons-notice-error-elementor>p{font-size:22px}div.ultraaddons-notice-error-elementor>p>strong{color:#9c27b0;font-weight:700}</style>'
 		);
 
-		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message );
+		printf( '<div class="notice notice-error ultraaddons-notice-error-elementor"><p>%1$s</p></div>', $message );
 
 	}
 
@@ -324,10 +324,6 @@ final class UltraAddons {
 		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message );
 
 	}
-
-        public function admin_style() {
-            
-        }
         
 }
 
