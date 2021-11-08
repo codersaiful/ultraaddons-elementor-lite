@@ -7,6 +7,9 @@ use UltraAddons\WP\Custom_Fonts_Taxonomy;
 defined('ABSPATH') || die();
 
 /**
+ * ******************
+ * EXTENSION
+ * ******************
  * it's Actually a Extension 
  * But it will handle based on our Extension list.
  * It will be enable always. If a user want to do it
@@ -21,7 +24,7 @@ class Custom_Fonts{
 
 
     public static $fonts = null;
-    public static $font_group_key = 'ultraaddons-font-group';
+    public static $font_group_key;
     
     /**
      * Initializing method
@@ -34,6 +37,7 @@ class Custom_Fonts{
      * @author Saiful
      */
     public static function init() {
+        self::$font_group_key = self::get_font_group();
         add_filter( 'elementor/fonts/groups', array( __CLASS__, 'font_group' ) );
         add_filter( 'elementor/fonts/additional_fonts', array( __CLASS__, 'additional_fonts' ) );
 
@@ -41,7 +45,7 @@ class Custom_Fonts{
     }
 
     public static function font_group( $font_groups ){
-        $font_group_key = self::get_font_group();
+        $font_group_key = self::$font_group_key;
         $new_group[$font_group_key] = __( 'Custom Fonts - UltraAddons', 'ultraaddons' );
         $font_groups                   = $new_group + $font_groups;
         return $font_groups;

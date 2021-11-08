@@ -2,7 +2,14 @@
 namespace UltraAddons\WP;
 
 /**
- * I will create a taxonomy for Font handle 
+ * ******************
+ * TAXONOMY CUSTOM FONTS
+ * ******************
+ * Our Plane here: * 
+ * * I will create a taxonomy for Font handle 
+ * * Add Custom Field for Font variation Actually
+ * 
+ * 
  * 
  * @since 1.1.0.2
  */
@@ -29,6 +36,9 @@ class Custom_Fonts_Taxonomy{
         add_action( 'init', array( $this, 'register_taxonomy' ) );
     }
 	
+	/**
+	 * Return Instance of Custom_Fonts_Taxonomy
+	 */
     public static function init() {
         
         if ( ! isset( self::$instance ) ) {
