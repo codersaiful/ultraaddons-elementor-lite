@@ -1048,14 +1048,17 @@ div.ultraaddons-notice-error-elementor>p>strong {
 
 /* UltraAddons Dashboar Menu Control Start */
 li#toplevel_page_ultraaddons-elementor-lite.wp-has-submenu.wp-has-current-submenu.wp-menu-open ul.wp-submenu.wp-submenu-wrap {
-    background: #4e0058 !important;
+    background: #3d3956 !important;
 }
 
 li#toplevel_page_ultraaddons-elementor-lite.wp-has-submenu.wp-has-current-submenu.wp-menu-open>a {
-    background: #c12990 !important;
+    background: #892c91 !important;
 }
 
 li#toplevel_page_ultraaddons-elementor-lite.wp-has-submenu.wp-has-current-submenu.wp-menu-open ul.wp-submenu.wp-submenu-wrap li>a:hover {
     color: white !important;
+}
+li#toplevel_page_ultraaddons-elementor-lite.wp-has-submenu.wp-has-current-submenu.wp-menu-open ul li.current a {
+    background: #00000011;
 }
 /* UltraAddons Dashboar Menu Control End */
