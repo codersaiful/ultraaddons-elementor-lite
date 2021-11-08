@@ -12,6 +12,14 @@ class Custom_Fonts_Taxonomy{
     
     public static $slug = 'ultraaddons-custom-fonts';
 
+	/**
+	 * Fonts
+	 *
+	 * @since  1.0.0
+	 * @var (string) $fonts
+	 */
+	public static $fonts = null;
+
     /**
      * Constructor for Custom Fonts Taxonomy
      * 
@@ -30,6 +38,10 @@ class Custom_Fonts_Taxonomy{
         return self::$instance;
 
     }
+
+	public static function get_term_name(){
+		return self::$slug;
+	}
 
     public function register_taxonomy(){
         
@@ -67,6 +79,33 @@ class Custom_Fonts_Taxonomy{
 				apply_filters( 'ultraaddons_taxonomy_args_custom_fonts', $args )
 			);
     }
+
+	/**
+		 * Get fonts
+		 *
+		 * @since 1.0.0
+		 * @return array $fonts fonts array of fonts.
+		 */
+		public static function get_fonts() {
+
+			if ( is_null( self::$fonts ) ) {
+				self::$fonts = array();
+
+				$terms = get_terms(
+					'bsf_custom_fonts',
+					array(
+						'hide_empty' => false,
+					)
+				);
+				//var_dump($terms);
+				if ( ! empty( $terms ) ) {
+					foreach ( $terms as $term ) {
+						self::$fonts[ $term->name ] = 'saiful';//self::get_font_links( $term->term_id );
+					}
+				}
+			}
+			return self::$fonts;
+		}
 
     
 

@@ -204,6 +204,7 @@ class Loader {
          * @since 1.1.0.2
          */
         \UltraAddons\Core\Custom_Fonts_Admin::init();
+        
     }
 
     /**

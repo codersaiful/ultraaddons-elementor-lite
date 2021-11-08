@@ -23,6 +23,8 @@ class Custom_Fonts_Admin {
     
 
     public static function init() {
+        $fonts = \UltraAddons\WP\Custom_Fonts_Taxonomy::get_fonts();
+        //var_dump($fonts);
         //Taxonomy of Custom Fonts will handle from UltraAddons\WP\Custom_Fonts_Taxonomy
         \UltraAddons\WP\Custom_Fonts_Taxonomy::init();
     }
