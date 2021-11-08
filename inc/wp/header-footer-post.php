@@ -5,7 +5,9 @@ class Header_Footer_Post{
     
     public static function init() {
         add_action( 'init', [ __CLASS__, 'register_post' ],99 );
-        add_action( 'admin_menu', [ __CLASS__, 'add_submenu' ] );
+
+		//Now menu is handaling from admin-handle.php file
+        //add_action( 'admin_menu', [ __CLASS__, 'add_submenu' ] );
         add_filter( 'template_include', [ __CLASS__, 'template_include' ] );
     }
     

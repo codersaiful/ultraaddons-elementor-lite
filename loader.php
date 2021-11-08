@@ -187,6 +187,23 @@ class Loader {
          * @since 1.0.4.0
          */
         \UltraAddons\WP\Header_Footer_Post::init();
+
+        /**
+         * Custom Fonts Include/Change/Handle 
+         * 
+         * ***********************
+         * What we did here [Plan]
+         * ***********************
+         * 
+         * register term for font
+         * font upload feature
+         * with font variant
+         * 
+         * We will take title as Font Name
+         * 
+         * @since 1.1.0.2
+         */
+        \UltraAddons\Core\Custom_Fonts_Admin::init();
     }
 
     /**

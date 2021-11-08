@@ -233,7 +233,27 @@ class Admin_Handle{
                 'capability'    => self::$capability,
                 'menu_slug'     => 'ultraaddons-header-footer',
                 'function'      => [__CLASS__, 'header_footer_page'],
-                'position'      =>  2,
+                'position'      =>  3,
+            ],
+            
+            [
+                'parent_slug'   => self::$menu_slug,//$parent_slug,
+                'page_title'    =>  __( 'Custom Header Footer Template', 'ultraaddons' ),
+                'menu_title'    =>  __( 'Header Footer Template', 'ultraaddons' ),
+                'capability'    => self::$capability,
+                'menu_slug'     => 'edit.php?post_type=header_footer',
+                // 'function'      => [__CLASS__, 'header_footer_page'],
+                // 'position'      =>  2,
+            ],
+            
+            [
+                'parent_slug'   => self::$menu_slug,//$parent_slug,
+                'page_title'    =>  __( 'Custom Fonts', 'ultraaddons' ),
+                'menu_title'    =>  __( 'Custom Fonts', 'ultraaddons' ),
+                'capability'    => self::$capability,
+                'menu_slug'     => 'edit-tags.php?taxonomy=ultraaddons-custom-fonts',
+                // 'function'      => [__CLASS__, 'header_footer_page'],
+                // 'position'      =>  2,
             ],
             
             [
