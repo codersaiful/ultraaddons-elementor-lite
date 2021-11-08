@@ -80,10 +80,10 @@ table.wp-list-table.widefat.plugins tr[data-slug='addons-ultraaddons-elementor-p
 /*****UltraAddons Menu item in Dashboard | END********/
 
 /****************** Menu Text in Dashboard **********************/
-li#toplevel_page_ultraaddons-elementor-lite .wp-menu-image img {
+li#toplevel_page_ultraaddons-elementor-lite.wp-has-submenu.wp-has-current-submenu.wp-menu-open .wp-menu-image img {
     max-width: 20px;
 }
-li#toplevel_page_ultraaddons-elementor-lite.current .wp-menu-image img {
+li#toplevel_page_ultraaddons-elementor-lite.wp-has-submenu.wp-has-current-submenu.wp-menu-open.current .wp-menu-image img {
     opacity: 1;
 }
 
@@ -1045,3 +1045,17 @@ div.ultraaddons-notice-error-elementor>p>strong {
     color: #9c27b0;
     font-weight: bold;
 }
+
+/* UltraAddons Dashboar Menu Control Start */
+li#toplevel_page_ultraaddons-elementor-lite.wp-has-submenu.wp-has-current-submenu.wp-menu-open ul.wp-submenu.wp-submenu-wrap {
+    background: #4e0058 !important;
+}
+
+li#toplevel_page_ultraaddons-elementor-lite.wp-has-submenu.wp-has-current-submenu.wp-menu-open>a {
+    background: #c12990 !important;
+}
+
+li#toplevel_page_ultraaddons-elementor-lite.wp-has-submenu.wp-has-current-submenu.wp-menu-open ul.wp-submenu.wp-submenu-wrap li>a:hover {
+    color: white !important;
+}
+/* UltraAddons Dashboar Menu Control End */

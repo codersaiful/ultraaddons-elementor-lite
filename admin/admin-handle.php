@@ -38,6 +38,16 @@ class Admin_Handle{
         
         //Admin Footer Text/ Requesting for Review @since 1.0.9.2 @by Saiful
         add_filter( 'admin_footer_text', [ __CLASS__, 'admin_footer_text' ], PHP_INT_MAX );
+
+        /**
+         * Actually handle Custom Fonts Taxonomy
+         * when activate as submenu
+         * 
+         * We can handle all other sub menu when it will select as sub menu
+         * 
+         * @since 1.1.0.2
+         */
+        add_action( 'parent_file', [ __CLASS__, 'keep_menu_open' ], 100 );
     }
     
     /**
@@ -400,6 +410,15 @@ class Admin_Handle{
             return $footer_text;
         }
         return $text;
+    }
+ 
+    public static function keep_menu_open( $parent_file ){
+        global $current_screen;
+        
+        if( $current_screen->taxonomy == 'ultraaddons-custom-fonts' ) return 'ultraaddons-elementor-lite';
+        
+        //Return to default
+        return $parent_file;
     }
     
 }
