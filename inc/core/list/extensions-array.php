@@ -120,14 +120,14 @@ $extensionsArray = [
              * 
              * @since 1.1.0.1
              */
-            'Custom_Fonts' => [
-                    'name'  => __( 'Custom Fonts', 'ultraaddons' ),
-                    'is_pro'   => false,
-                    'icon'      => 'eicon-font',
-                    'cat'       => [
-                        __( 'Basic', 'ultraaddons' ),
-                    ],
-            ],
+            // 'Custom_Fonts' => [
+            //         'name'  => __( 'Custom Fonts', 'ultraaddons' ),
+            //         'is_pro'   => false,
+            //         'icon'      => 'eicon-font',
+            //         'cat'       => [
+            //             __( 'Basic', 'ultraaddons' ),
+            //         ],
+            // ],
 
 
 //         Need more Customizer and to be update   
