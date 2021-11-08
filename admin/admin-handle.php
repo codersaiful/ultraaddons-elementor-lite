@@ -134,7 +134,7 @@ class Admin_Handle{
         $icon_url = ULTRA_ADDONS_ASSETS . 'images/white.png';
         $menu = [
             'page_title'    => __( 'UltraAddons Elementor Addons', 'ultraaddons' ),
-            'menu_title'    => __( 'UltraAddons', 'ultraaddons' ),
+            'menu_title'    => __( 'Ultra Addons', 'ultraaddons' ),
             'capability'    => self::$capability,
             'menu_slug'    => self::$menu_slug,//'ultraaddons-elementor-lite',
             'function'    => [ __CLASS__, 'welcome_page' ],
@@ -414,7 +414,7 @@ class Admin_Handle{
  
     public static function keep_menu_open( $parent_file ){
         global $current_screen;
-        
+
         if( $current_screen->taxonomy == 'ultraaddons-custom-fonts' ) return 'ultraaddons-elementor-lite';
         
         //Return to default

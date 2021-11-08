@@ -1061,4 +1061,24 @@ li#toplevel_page_ultraaddons-elementor-lite.wp-has-submenu.wp-has-current-submen
 li#toplevel_page_ultraaddons-elementor-lite.wp-has-submenu.wp-has-current-submenu.wp-menu-open ul li.current a {
     background: #00000011;
 }
+
+
+
+/* li#toplevel_page_ultraaddons-elementor-lite {} */
+
+/* li#toplevel_page_ultraaddons-elementor-lite a.wp-has-submenu {} */
+
+/* li#toplevel_page_ultraaddons-elementor-lite a.wp-has-submenu .wp-menu-image.dashicons-before {} */
+
+li#toplevel_page_ultraaddons-elementor-lite a.wp-has-submenu .wp-menu-image img {
+    padding: 8px !important;
+    animation-name: ultraaddons-dash-rotate;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@keyframes ultraaddons-dash-rotate{
+    from{ transform: rotate(-360deg); }
+    to{ transform: rotate(360deg); }
+}
 /* UltraAddons Dashboar Menu Control End */
