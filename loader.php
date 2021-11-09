@@ -201,9 +201,16 @@ class Loader {
          * 
          * We will take title as Font Name
          * 
+         * ******************************
+         * //\UltraAddons\WP\Custom_Fonts_Taxonomy::init();
+         * it was called here, but currently we called it inside 
+         * \UltraAddons\Core\Custom_Fonts_Admin::init();
+         * 
+         * updated calling @Version 1.1.0.4
+         * ******************************************
+         * 
          * @since 1.1.0.2
          */
-        //\UltraAddons\WP\Custom_Fonts_Taxonomy::init();
         \UltraAddons\Core\Custom_Fonts_Admin::init();
         
     }
