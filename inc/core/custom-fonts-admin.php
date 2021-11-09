@@ -14,10 +14,10 @@ defined( 'ABSPATH' ) || die();
  * @author Saiful
  * @since 1.0.1.0
  */
-class Custom_Fonts_Admin {
+class Custom_Fonts_Admin extends Custom_Fonts_Taxonomy {
     
 
-    public static $meta_key;
+    //public static $meta_key; Already declreared in parent Class/Object
 
     /**
      * Elementor keep font with font group.
@@ -36,14 +36,14 @@ class Custom_Fonts_Admin {
     
 
     public static function init() {
-        self::$font_group_key = self::get_font_group();
-        self::$meta_key = self::get_meta_key();
+        self::$font_group_key = self::$slug;//self::get_font_group();
+        
         /**
          * Add Taxonomy for Custom Field
          * AND
          * Adding custom field to Taxonomy
          */
-        \UltraAddons\WP\Custom_Fonts_Taxonomy::init();
+        parent::init(); //\UltraAddons\WP\Custom_Fonts_Taxonomy::init();
 
 
         /**
@@ -136,11 +136,7 @@ class Custom_Fonts_Admin {
     }
 
     public static function get_font_group(){
-        return Custom_Fonts_Taxonomy::get_term_name();
-    }
-    
-    public static function get_meta_key(){
-        return Custom_Fonts_Taxonomy::get_meta_key();
+        return self::get_term_name();
     }
     
 }

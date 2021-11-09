@@ -203,6 +203,7 @@ class Loader {
          * 
          * @since 1.1.0.2
          */
+        //\UltraAddons\WP\Custom_Fonts_Taxonomy::init();
         \UltraAddons\Core\Custom_Fonts_Admin::init();
         
     }

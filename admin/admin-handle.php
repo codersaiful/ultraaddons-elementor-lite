@@ -47,7 +47,10 @@ class Admin_Handle{
          * 
          * @since 1.1.0.2
          */
-        add_action( 'parent_file', [ __CLASS__, 'keep_menu_open' ], 100 );
+        add_filter( 'parent_file', [ __CLASS__, 'keep_menu_open' ], 100 );
+        add_filter( 'submenu_file', [ __CLASS__, 'keep_submenu_open' ], 100, 2 );
+
+
     }
     
     /**
@@ -412,14 +415,43 @@ class Admin_Handle{
         return $text;
     }
  
+    /**
+     * Keep select UltraAddons menu option,
+     * when select any submenu of UltraAddons menu
+     * 
+     * Actually it was not working by default, when choosing header-footer submenu and for custom fonts submenu
+     * we did it with condition for choosing and keep open main menu
+     * 
+     * @since 1.1.0.3
+     */
     public static function keep_menu_open( $parent_file ){
         global $current_screen;
-
-        if( $current_screen->taxonomy == 'ultraaddons-custom-fonts' ) return 'ultraaddons-elementor-lite';
+        //var_dump($current_screen);
+        if( $current_screen->post_type  == 'header_footer' ) return self::$menu_slug;//'ultraaddons-elementor-lite'; 
+        if( $current_screen->taxonomy == 'ultraaddons-custom-fonts' ) return self::$menu_slug;//'ultraaddons-elementor-lite';
         
         //Return to default
         return $parent_file;
     }
+
+    /**
+     * Keep select Header footer template submenu,
+     * when adding new templatte
+     * 
+     * @since 1.1.0.4
+     */
+    public static function keep_submenu_open( $submenu_file, $parent_file ){
+
+        if( $parent_file !== self::$menu_slug ) return $submenu_file; //Return to default
+
+        global $current_screen;
+
+        if( $current_screen->post_type  == 'header_footer' ) return 'edit.php?post_type=header_footer';
+
+        //Return to default
+        return $submenu_file;
+    }
+    
     
 }
 Admin_Handle::init();

@@ -1071,7 +1071,7 @@ li#toplevel_page_ultraaddons-elementor-lite.wp-has-submenu.wp-has-current-submen
 /* li#toplevel_page_ultraaddons-elementor-lite a.wp-has-submenu .wp-menu-image.dashicons-before {} */
 
 li#toplevel_page_ultraaddons-elementor-lite a.wp-has-submenu .wp-menu-image img {
-    padding: 8px !important;
+    padding: 7px !important;
     animation-name: ultraaddons-dash-rotate;
     animation-duration: 5s;
     animation-iteration-count: infinite;
