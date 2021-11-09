@@ -17,6 +17,7 @@ class Custom_Fonts_Taxonomy{
 
     private static $instance = null;
     
+    public static $meta_key = 'ua_fonts';
     public static $slug = 'ultraaddons-custom-fonts';
 
 	/**
@@ -52,6 +53,11 @@ class Custom_Fonts_Taxonomy{
 	public static function get_term_name(){
 		return self::$slug;
 	}
+	
+	public static function get_meta_key(){
+		return self::$meta_key;
+	}
+
 
     public function register_taxonomy(){
         
