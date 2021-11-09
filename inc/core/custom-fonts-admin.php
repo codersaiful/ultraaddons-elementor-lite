@@ -37,7 +37,7 @@ class Custom_Fonts_Admin extends Custom_Fonts_Taxonomy {
 
     public static function init() {
         self::$font_group_key = self::$slug;//self::get_font_group();
-        
+
         /**
          * Add Taxonomy for Custom Field
          * AND
@@ -135,6 +135,18 @@ class Custom_Fonts_Admin extends Custom_Fonts_Taxonomy {
         return $columns;
     }
 
+
+    /**
+     * In parent class,
+     * method was get_term_name
+     * and property was self::$slug;
+     * 
+     * but here need $font_group
+     * 
+     * and we set it in __construct
+     * 
+     * @since 1.1.0.3
+     */
     public static function get_font_group(){
         return self::get_term_name();
     }
