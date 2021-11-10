@@ -75,32 +75,6 @@ class Custom_Fonts{
         return Fonts::get_term_name();
     }
     
-    /**
-     * Get fonts
-     *
-     * @since 1.0.0
-     * @return array $fonts fonts array of fonts.
-     */
-    public static function get_fonts() {
-
-        if ( is_null( self::$fonts ) ) {
-
-            self::$fonts = array();
-            $args = array(
-                'hide_empty' => false
-            );
-            $term_name = self::get_font_group();
-            $terms = get_terms( $term_name, $args );
-
-            if ( ! empty( $terms ) ) {
-                foreach ( $terms as $term ) {
-                    self::$fonts[ $term->name ] = $term_name;
-                }
-            }
-
-        }
-        return self::$fonts;
-    }
-
+    
     
 }
