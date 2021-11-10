@@ -96,33 +96,5 @@ class Custom_Fonts_Taxonomy{
 			);
     }
 
-	/**
-		 * Get fonts
-		 *
-		 * @since 1.0.0
-		 * @return array $fonts fonts array of fonts.
-		 */
-		public static function get_fonts() {
-
-			if ( is_null( self::$fonts ) ) {
-				self::$fonts = array();
-
-				$terms = get_terms(
-					'bsf_custom_fonts',
-					array(
-						'hide_empty' => false,
-					)
-				);
-				//var_dump($terms);
-				if ( ! empty( $terms ) ) {
-					foreach ( $terms as $term ) {
-						self::$fonts[ $term->name ] = 'saiful';//self::get_font_links( $term->term_id );
-					}
-				}
-			}
-			return self::$fonts;
-		}
-
-    
 
 }

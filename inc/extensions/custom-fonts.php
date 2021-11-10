@@ -2,7 +2,8 @@
 namespace UltraAddons\Extensions;
 
 use Elementor\Controls_Manager;
-use UltraAddons\WP\Custom_Fonts_Taxonomy;
+//use UltraAddons\WP\Custom_Fonts_Taxonomy;
+use UltraAddons\Core\Custom_Fonts_Handle as Fonts;
 
 defined('ABSPATH') || die();
 
@@ -59,7 +60,7 @@ class Custom_Fonts{
     
     public static function additional_fonts( $fonts ){
         
-        $ua_fonts = self::get_fonts();
+        $ua_fonts = Fonts::get_fonts();
         
         if( empty( $ua_fonts ) ) return $fonts;
         
@@ -71,7 +72,7 @@ class Custom_Fonts{
     }
 
     public static function get_font_group(){
-        return Custom_Fonts_Taxonomy::get_term_name();
+        return Fonts::get_term_name();
     }
     
     /**
