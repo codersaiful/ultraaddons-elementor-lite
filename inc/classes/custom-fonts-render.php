@@ -10,6 +10,7 @@ class Custom_Fonts_Render {
    
     public static function init(){
         add_action( 'wp_head', [__CLASS__,'render_style'] );
+        add_action( 'elementor/editor/before_enqueue_scripts', [__CLASS__,'render_style'] );
     }
 
     public static function render_style(){
