@@ -69,9 +69,10 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
     public static function field_on_taxomoy(){
         
         ?>
+        <style>.form-field.term-description-wrap,.form-field.term-slug-wrap{display: none !important;}</style>
         <div class="form-field">
-            <label for="table_id"><?php echo esc_html__( 'Product Table' ); ?></label>
-            <input name="ua_fonts[saiful]" type="text">
+            <label for="font-fallback"><?php echo esc_html__( 'Font Fallback' ); ?></label>
+            <input name="ua_fonts[fallback]" type="text" id="font-fallback">
             <p></p>
         </div> 
         <?php
@@ -83,6 +84,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
         $saiful = isset( $data['saiful'] ) ? $data['saiful'] : '';
         
         ?>
+        <style>.form-field.term-description-wrap,.form-field.term-slug-wrap{display: none !important;}</style>
         <tr class="form-field">
             <th>
                 <label for="table_id"><?php echo esc_html__( 'Product Table' ); ?></label>
