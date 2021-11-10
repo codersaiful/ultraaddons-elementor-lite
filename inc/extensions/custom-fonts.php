@@ -41,6 +41,12 @@ class Custom_Fonts{
         add_filter( 'elementor/fonts/groups', array( __CLASS__, 'font_group' ) );
         add_filter( 'elementor/fonts/additional_fonts', array( __CLASS__, 'additional_fonts' ) );
 
+
+        /**
+         * Render All selected Custom field here.
+         */
+        \UltraAddons\Classes\Custom_Fonts_Render::init();
+
         
     }
 

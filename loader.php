@@ -204,14 +204,14 @@ class Loader {
          * ******************************
          * //\UltraAddons\WP\Custom_Fonts_Taxonomy::init();
          * it was called here, but currently we called it inside 
-         * \UltraAddons\Core\Custom_Fonts_Admin::init();
+         * \UltraAddons\Core\Custom_Fonts_Handle::init();
          * 
          * updated calling @Version 1.1.0.4
          * ******************************************
          * 
          * @since 1.1.0.2
          */
-        \UltraAddons\Core\Custom_Fonts_Admin::init();
+        \UltraAddons\Core\Custom_Fonts_Handle::init();
         
     }
 

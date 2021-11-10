@@ -6,7 +6,7 @@ use UltraAddons\WP\Custom_Fonts_Taxonomy;
 defined( 'ABSPATH' ) || die();
 
 /**
- * Control of Custom_Fonts_Admin
+ * Control of Custom_Fonts_Handle
  * To show Custom Header which is made by elementor Page Builder
  * 
  * We will handle Custom Fonts from register term 
@@ -14,7 +14,7 @@ defined( 'ABSPATH' ) || die();
  * @author Saiful
  * @since 1.0.1.0
  */
-class Custom_Fonts_Admin extends Custom_Fonts_Taxonomy {
+class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
     
 
     //public static $meta_key; Already declreared in parent Class/Object
@@ -153,4 +153,4 @@ class Custom_Fonts_Admin extends Custom_Fonts_Taxonomy {
     
 }
 
-//Custom_Fonts_Admin::init();
+//Custom_Fonts_Handle::init();
