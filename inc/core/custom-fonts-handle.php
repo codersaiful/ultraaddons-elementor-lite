@@ -70,32 +70,123 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
         
         ?>
         <style>.form-field.term-description-wrap,.form-field.term-slug-wrap{display: none !important;}</style>
+        
         <div class="form-field">
             <label for="font-fallback"><?php echo esc_html__( 'Font Fallback' ); ?></label>
             <input name="ua_fonts[fallback]" type="text" id="font-fallback">
             <p></p>
         </div> 
+
+        <div class="form-field">
+            <label for="font-display"><?php echo esc_html__( 'Font Display' ); ?></label>
+            <?php self::render_font_dsplay(); ?>
+            <p></p>
+        </div> 
+
+
+
         <?php
     }
     public static function edit_term_fields($tag,  $taxonomy){
 
         $meta_key = self::$meta_key;
         $data = get_term_meta($tag->term_id,$meta_key, true);
-        $saiful = isset( $data['saiful'] ) ? $data['saiful'] : '';
+        var_dump($data);
+        
+        $font_fallback = isset( $data['fallback'] ) ? $data['fallback'] : '';
+        $font_display = isset( $data['display'] ) ? $data['display'] : '';
+
         
         ?>
         <style>.form-field.term-description-wrap,.form-field.term-slug-wrap{display: none !important;}</style>
         <tr class="form-field">
             <th>
-                <label for="table_id"><?php echo esc_html__( 'Product Table' ); ?></label>
+            <label for="font-fallback"><?php echo esc_html__( 'Font Fallback' ); ?></label>
             </th>
             <td>
-                <input name="ua_fonts[saiful]" type="text" value="<?php echo $saiful; ?>">
+                <label for="font-fallback"><?php echo esc_html__( 'Font Fallback' ); ?></label>
+                <input name="ua_fonts[fallback]" type="text" id="font-fallback" value="<?php echo esc_attr( $font_fallback ); ?>">
+            </td>
+        </tr>
+
+
+        <tr class="form-field">
+            <th>
+                <label for="font-display"><?php echo esc_html__( 'Font Display' ); ?></label>
+            </th>
+            <td>
+                <?php self::render_font_dsplay( $font_display ); ?>
                 <p></p>
             </td>
         </tr>
+
+
         <?php
     }
+
+
+
+    /**
+     * Render selectt and option tag markup for font display
+     *
+     * @param String $current_value
+     * @return void
+     */
+    public static function render_font_dsplay( $current_value = null ){
+        
+        $options = $default = array(
+            'auto'     => 'auto',
+            'block'    => 'block',
+            'swap'     => 'swap',
+            'fallback' => 'fallback',
+            'optional' => 'optional',
+        );
+        $options = apply_filters( 'ultraaddons/custom_fonts/fon_display', $options );
+
+        $options = wp_parse_args( $options, $default );
+
+        self::rennder_select( $options, $current_value, 'ua_fonts[display]', 'font-display' );
+        //self::rennder_select( $options, null, 'ua_fonts[fallback]', 'font-display' );
+
+    }
+
+    /**
+     * Render select and option tag, based on a array<br>
+     * ARRAY SHOULD BE LIKE BELLOW:
+     * array(
+            'auto'     => 'auto',
+            'block'    => 'block',
+            'swap'     => 'swap',
+            'fallback' => 'fallback',
+            'optional' => 'optional',
+        )
+     *
+     * @param array $options array of options.
+     * @param String $checked Default or selected option_value
+     * @param String $name form's filed name, which need to save data on database
+     * @param String $tag_id its tag's id attribute
+     * @return void
+     */
+    public static function rennder_select( $options, $current_value = null, $name=null,  $tag_id=null ){
+
+        if( ! is_array( $options ) ) return"";
+
+        ?>
+        <select id="<?php echo esc_attr( $tag_id ); ?>" name="<?php echo esc_attr( $name ); ?>">
+        <?php
+        
+        foreach($options as $option_key => $option_value){
+            $checked = $current_value == $option_key ? 'selected' : '';
+            ?>
+            <option value="<?php echo esc_attr( $option_key ); ?>" <?php echo esc_attr( $checked ); ?>><?php echo esc_html( $option_value ); ?></option>
+            <?php
+        }
+
+        ?>
+        </select>
+        <?php 
+    }
+
 
     /**
      * To Create new term on font taxonomy
