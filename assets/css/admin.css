@@ -1082,3 +1082,13 @@ li#toplevel_page_ultraaddons-elementor-lite a.wp-has-submenu .wp-menu-image img 
     to{ transform: rotate(360deg); }
 }
 /* UltraAddons Dashboar Menu Control End */
+
+/* style for Custom font start */
+.font-variation-wrapper {
+    background: #fff;
+    padding: 5px 15px;
+    margin: 10px 0 20px 0;
+    border: 1px solid #ededed;
+    box-shadow: 0 10px 30px #0000000d;
+}
+/* style for Custom font end */

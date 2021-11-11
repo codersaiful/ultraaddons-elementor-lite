@@ -83,6 +83,17 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
             <p></p>
         </div> 
 
+        <div class="font-variation-wrapper">
+
+            <div class="form-field">
+                <label for="font-weight"><?php echo esc_html__( 'Font Weight' ); ?></label><br>
+                <?php self::render_font_weight(); ?>
+                <p></p>
+            </div> 
+
+        </div>
+        
+
 
 
         <?php
@@ -95,6 +106,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
         
         $font_fallback = isset( $data['fallback'] ) ? $data['fallback'] : '';
         $font_display = isset( $data['display'] ) ? $data['display'] : '';
+        $font_weight = isset( $data['weight'] ) ? $data['weight'] : '';
 
         
         ?>
@@ -104,7 +116,6 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
             <label for="font-fallback"><?php echo esc_html__( 'Font Fallback' ); ?></label>
             </th>
             <td>
-                <label for="font-fallback"><?php echo esc_html__( 'Font Fallback' ); ?></label>
                 <input name="ua_fonts[fallback]" type="text" id="font-fallback" value="<?php echo esc_attr( $font_fallback ); ?>">
             </td>
         </tr>
@@ -117,6 +128,24 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
             <td>
                 <?php self::render_font_dsplay( $font_display ); ?>
                 <p></p>
+            </td>
+        </tr>
+        <tr class="form-field">
+            <th>
+                
+            </th>
+            <td>
+                
+                <div class="font-variation-wrapper">
+
+                <div class="form-field">
+                    <label for="font-weight"><?php echo esc_html__( 'Font Weight' ); ?></label><br>
+                    <?php self::render_font_weight( $font_weight ); ?>
+                    <p></p>
+                </div> 
+
+                </div>
+
             </td>
         </tr>
 
@@ -141,7 +170,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
             'fallback' => 'fallback',
             'optional' => 'optional',
         );
-        $options = apply_filters( 'ultraaddons/custom_fonts/fon_display', $options );
+        $options = apply_filters( 'ultraaddons/custom_fonts/font_display', $options );
 
         $options = wp_parse_args( $options, $default );
 
@@ -149,6 +178,46 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
         //self::rennder_select( $options, null, 'ua_fonts[fallback]', 'font-display' );
 
     }
+    
+    /**
+     * Render selectt and option tag markup for font weight
+     * 
+     * Options:
+     *  <option value="100">Thin 100</option>
+        <option value="200" selected="selected">Extra-Light 200</option>
+        <option value="300">Light 300</option>
+        <option value="400">Normal 400</option>
+        <option value="500">Medium 500</option>
+        <option value="600">Semi-Bold 600</option>
+        <option value="700">Bold 700</option>
+        <option value="800">Extra-Bold 800</option>
+        <option value="900">Ultra-Bold 900</option>
+     *
+     * @param String $current_value
+     * @return void
+     */
+    public static function render_font_weight( $current_value = null ){
+        
+        $options = $default = array(
+            '100'     => 'Thin 100',
+            '200'     => 'Extra-Light 200',
+            '300'     => 'Light 300',
+            '400'     => 'Normal 400',
+            '500'     => 'Medium 500',
+            '600'     => 'Semi-Bold 600',
+            '700'     => 'Bold 700',
+            '800'     => 'Extra-Bold 800',
+            '900'     => 'Ultra-Bold 900',
+        );
+        $options = apply_filters( 'ultraaddons/custom_fonts/font_display', $options );
+
+        $options = wp_parse_args( $options, $default );
+
+        self::rennder_select( $options, $current_value, 'ua_fonts[weight]', 'font-weight' );
+        //self::rennder_select( $options, null, 'ua_fonts[fallback]', 'font-display' );
+
+    }
+
 
     /**
      * Render select and option tag, based on a array<br>
