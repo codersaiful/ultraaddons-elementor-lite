@@ -90,6 +90,19 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
                 <?php self::render_font_weight(); ?>
                 <p></p>
             </div> 
+            
+            <div class="fonts-upload-wrapper form-feld">
+                <label><?php echo esc_html__( 'Font File Upload' ); ?></label><br>
+                <div class="form-file-field form-feld">
+                    
+                    <input name="ua_fonts[format][]" type="text" class="font-upload-format">
+                    <input name="ua_fonts[url][]" type="text" class="font-upload-url">
+                    
+                </div> 
+
+            </div>
+            
+
 
         </div>
         
@@ -211,7 +224,17 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
         );
         $options = apply_filters( 'ultraaddons/custom_fonts/font_display', $options );
 
-        $options = wp_parse_args( $options, $default );
+        /**
+         * Actually when I passed data over wp_parse_args() 
+         * Array is changing as numeric array
+         * but we need associative array
+         * 
+         * So I removed wp_parse_args validation.
+         */
+        //$options = wp_parse_args( $options, $default );
+
+        //As I removed wp_parse_args() I checked it over if statement
+        $options = is_array( $options ) ? $options : array();
 
         self::rennder_select( $options, $current_value, 'ua_fonts[weight]', 'font-weight' );
         //self::rennder_select( $options, null, 'ua_fonts[fallback]', 'font-display' );
