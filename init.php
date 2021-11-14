@@ -12,7 +12,7 @@
  * Domain Path: /languages/
  * 
  * Requires at least:    4.0.0
- * Tested up to:         5.8.1
+ * Tested up to:         5.8.2
  * WC requires at least: 3.0.0
  * WC tested up to: 	 5.7.1
  * Elementor tested up to: 3.4.4
@@ -46,7 +46,7 @@
 
 defined( 'ABSPATH' ) || die();
 
-define( 'ULTRA_ADDONS_VERSION', '1.1.0.2' );
+define( 'ULTRA_ADDONS_VERSION', '1.1.0.6' );
 define( 'ULTRA_ADDONS__FILE__', __FILE__ );
 define( 'ULTRA_ADDONS_BASE_NAME', plugin_basename( __FILE__ ) );
 define( 'ULTRA_ADDONS_DIR', plugin_dir_path( ULTRA_ADDONS__FILE__ ) );
