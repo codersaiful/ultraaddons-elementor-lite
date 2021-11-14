@@ -123,7 +123,7 @@
             var attachment = fonts_uploader.state().get('selection').first().toJSON();
 
             //console.log(fonts_uploader.state().get('selection'));
-            console.log(attachment.subtype);
+
             var url = attachment.url;
             fontUrlField.val(url).change();
         });
@@ -142,7 +142,7 @@
         if( url == '' ){
             return;
         }
-        console.log(url);
+        
         var fontsWrapperFieldArea = $(this).closest('.form-file-field');
         var fontFormatField = fontsWrapperFieldArea.find('.font-upload-format');
 
