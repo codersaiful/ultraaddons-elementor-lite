@@ -80,10 +80,10 @@ table.wp-list-table.widefat.plugins tr[data-slug='addons-ultraaddons-elementor-p
 /*****UltraAddons Menu item in Dashboard | END********/
 
 /****************** Menu Text in Dashboard **********************/
-li#toplevel_page_ultraaddons-elementor-lite .wp-menu-image img {
+li#toplevel_page_ultraaddons-elementor-lite.wp-has-submenu.wp-has-current-submenu.wp-menu-open .wp-menu-image img {
     max-width: 20px;
 }
-li#toplevel_page_ultraaddons-elementor-lite.current .wp-menu-image img {
+li#toplevel_page_ultraaddons-elementor-lite.wp-has-submenu.wp-has-current-submenu.wp-menu-open.current .wp-menu-image img {
     opacity: 1;
 }
 
@@ -1032,3 +1032,68 @@ section.ua-section.video .video-gallery .owl-dots {
     } */
 }
 /* Welcome page design - ends here */
+div.ultraaddons-notice-error-elementor {
+    background: #e5e5e5;
+    color: #607d8b;
+}
+
+div.ultraaddons-notice-error-elementor>p {
+    font-size: 22px;
+}
+
+div.ultraaddons-notice-error-elementor>p>strong {
+    color: #9c27b0;
+    font-weight: bold;
+}
+
+/* UltraAddons Dashboar Menu Control Start */
+li#toplevel_page_ultraaddons-elementor-lite.wp-has-submenu.wp-has-current-submenu.wp-menu-open ul.wp-submenu.wp-submenu-wrap {
+    background: #3d3956 !important;
+}
+
+li#toplevel_page_ultraaddons-elementor-lite.wp-has-submenu.wp-has-current-submenu.wp-menu-open>a {
+    background: #892c91 !important;
+}
+
+li#toplevel_page_ultraaddons-elementor-lite.wp-has-submenu.wp-has-current-submenu.wp-menu-open ul.wp-submenu.wp-submenu-wrap li>a:hover {
+    color: white !important;
+}
+li#toplevel_page_ultraaddons-elementor-lite.wp-has-submenu.wp-has-current-submenu.wp-menu-open ul li.current a {
+    background: #00000011;
+}
+
+
+
+/* li#toplevel_page_ultraaddons-elementor-lite {} */
+
+/* li#toplevel_page_ultraaddons-elementor-lite a.wp-has-submenu {} */
+
+/* li#toplevel_page_ultraaddons-elementor-lite a.wp-has-submenu .wp-menu-image.dashicons-before {} */
+
+li#toplevel_page_ultraaddons-elementor-lite a.wp-has-submenu .wp-menu-image img {
+    padding: 7px !important;
+    animation-name: ultraaddons-dash-rotate;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@keyframes ultraaddons-dash-rotate{
+    from{ transform: rotate(-360deg); }
+    to{ transform: rotate(360deg); }
+}
+/* UltraAddons Dashboar Menu Control End */
+
+/* style for Custom font start */
+.font-variation-wrapper {
+    background: #fff;
+    padding: 5px 15px;
+    margin: 10px 0 20px 0;
+    border: 1px solid #ededed;
+    box-shadow: 0 10px 30px #0000000d;
+}
+a.ultraaddons-font-upload-button.ua-button.button {margin-top: 10px;}
+
+.form-file-field.form-field {
+    text-align: right;
+}
+/* style for Custom font end */

@@ -1,5 +1,8 @@
 <?php
 
+use UltraAddons\Extensions\Custom_Fonts as Ex_Fonts; //Ex - Extensions
+use UltraAddons\Core\Custom_Fonts_Handle as Fonts;
+
 defined( 'ABSPATH' ) || die();
 
 /**
@@ -520,4 +523,15 @@ function ultraaddons_get_image_cropped_url( $url, $args = array() ) {
 
 function ultraaddons_image_placeholder( $width, $height ) {
     echo '<img src="' . ULTRA_ADDONS_ASSETS . 'images/no-image.png" width="'.$width.'" height="'.$width.'" alt="' . esc_attr__( 'Thumbnail', 'droit-elementor-addons' ) . '"/>';
+}
+
+/**
+ * Get UltraAddons selected fonts
+ * 
+ * Font selected from: Dashabord->UltraAddons->Custom Ex_Fonts Menu
+ * 
+ * @since 1.1.0.5
+ */
+function ultraaddons_get_fonts(){
+    return Fonts::get_fonts();;
 }

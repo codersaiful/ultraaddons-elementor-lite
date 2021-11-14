@@ -33,7 +33,7 @@ $full_logo_image    = apply_filters( 'ultraaddons/admin/header_logo', $full_logo
 
                     $current_page = isset( $_GET['page'] ) ? sanitize_text_field( $_GET['page'] ) : false;
                     foreach( $sub_menus as $sub_menu ){
-                        if( $sub_menu['menu_slug'] == 'ultraaddons-help-n-others' ){
+                        if( ! isset( $sub_menu['position'] ) || $sub_menu['menu_slug'] == 'ultraaddons-help-n-others' ){
                             continue;
                         }
                         

@@ -12,7 +12,7 @@
  * Domain Path: /languages/
  * 
  * Requires at least:    4.0.0
- * Tested up to:         5.8.1
+ * Tested up to:         5.8.2
  * WC requires at least: 3.0.0
  * WC tested up to: 	 5.7.1
  * Elementor tested up to: 3.4.4
@@ -46,7 +46,7 @@
 
 defined( 'ABSPATH' ) || die();
 
-define( 'ULTRA_ADDONS_VERSION', '1.1.0.0' );
+define( 'ULTRA_ADDONS_VERSION', '1.1.0.6' );
 define( 'ULTRA_ADDONS__FILE__', __FILE__ );
 define( 'ULTRA_ADDONS_BASE_NAME', plugin_basename( __FILE__ ) );
 define( 'ULTRA_ADDONS_DIR', plugin_dir_path( ULTRA_ADDONS__FILE__ ) );
@@ -206,8 +206,7 @@ final class UltraAddons {
             
                 //Including Function File. It will stay at the Top of the File
                 include_once ULTRA_ADDONS_DIR . 'inc/functions.php';
-                
-                add_action('admin_enqueue_scripts', [$this,'admin_style']);
+
                 
 		// Check if Elementor installed and activated
 		if ( ! did_action( 'elementor/loaded' ) ) {
@@ -266,12 +265,13 @@ final class UltraAddons {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor */
-			esc_html__( '"%1$s" requires "%2$s" to be installed and activated.', 'ultraaddons' ),
+			esc_html__( '%1$s requires %2$s to be installed and activated.%3$s', 'ultraaddons' ),
 			'<strong>' . esc_html__( 'UltraAddons Elementor Lite', 'ultraaddons' ) . '</strong>',
-			'<strong>' . esc_html__( 'Elementor', 'ultraaddons' ) . '</strong>'
+			'<strong><a href="https://wordpress.org/plugins/elementor/" target="_blank">' . esc_html__( 'Elementor', 'ultraaddons' ) . '</a></strong>',
+			'<style>div.ultraaddons-notice-error-elementor{background:#e5e5e5;color:#607d8b}div.ultraaddons-notice-error-elementor>p{font-size:22px}div.ultraaddons-notice-error-elementor>p>strong{color:#9c27b0;font-weight:700}</style>'
 		);
 
-		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message );
+		printf( '<div class="notice notice-error ultraaddons-notice-error-elementor"><p>%1$s</p></div>', $message );
 
 	}
 
@@ -296,7 +296,7 @@ final class UltraAddons {
 			 self::MINIMUM_ELEMENTOR_VERSION
 		);
 
-		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message );
+		printf( '<div class="notice notice-error"><p>%1$s</p></div>', $message );
 
 	}
 
@@ -324,10 +324,6 @@ final class UltraAddons {
 		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message );
 
 	}
-
-        public function admin_style() {
-            
-        }
         
 }
 

@@ -38,6 +38,19 @@ class Admin_Handle{
         
         //Admin Footer Text/ Requesting for Review @since 1.0.9.2 @by Saiful
         add_filter( 'admin_footer_text', [ __CLASS__, 'admin_footer_text' ], PHP_INT_MAX );
+
+        /**
+         * Actually handle Custom Fonts Taxonomy
+         * when activate as submenu
+         * 
+         * We can handle all other sub menu when it will select as sub menu
+         * 
+         * @since 1.1.0.2
+         */
+        add_filter( 'parent_file', [ __CLASS__, 'keep_menu_open' ], 100 );
+        add_filter( 'submenu_file', [ __CLASS__, 'keep_submenu_open' ], 100, 2 );
+
+
     }
     
     /**
@@ -124,7 +137,7 @@ class Admin_Handle{
         $icon_url = ULTRA_ADDONS_ASSETS . 'images/white.png';
         $menu = [
             'page_title'    => __( 'UltraAddons Elementor Addons', 'ultraaddons' ),
-            'menu_title'    => __( 'UltraAddons', 'ultraaddons' ),
+            'menu_title'    => __( 'Ultra Addons', 'ultraaddons' ),
             'capability'    => self::$capability,
             'menu_slug'    => self::$menu_slug,//'ultraaddons-elementor-lite',
             'function'    => [ __CLASS__, 'welcome_page' ],
@@ -233,7 +246,27 @@ class Admin_Handle{
                 'capability'    => self::$capability,
                 'menu_slug'     => 'ultraaddons-header-footer',
                 'function'      => [__CLASS__, 'header_footer_page'],
-                'position'      =>  2,
+                'position'      =>  3,
+            ],
+            
+            [
+                'parent_slug'   => self::$menu_slug,//$parent_slug,
+                'page_title'    =>  __( 'Custom Header Footer Template', 'ultraaddons' ),
+                'menu_title'    =>  __( 'Header Footer Template', 'ultraaddons' ),
+                'capability'    => self::$capability,
+                'menu_slug'     => 'edit.php?post_type=header_footer',
+                // 'function'      => [__CLASS__, 'header_footer_page'],
+                // 'position'      =>  2,
+            ],
+            
+            [
+                'parent_slug'   => self::$menu_slug,//$parent_slug,
+                'page_title'    =>  __( 'Custom Fonts', 'ultraaddons' ),
+                'menu_title'    =>  __( 'Custom Fonts', 'ultraaddons' ),
+                'capability'    => self::$capability,
+                'menu_slug'     => 'edit-tags.php?taxonomy=ultraaddons-custom-fonts',
+                // 'function'      => [__CLASS__, 'header_footer_page'],
+                // 'position'      =>  2,
             ],
             
             [
@@ -381,6 +414,44 @@ class Admin_Handle{
         }
         return $text;
     }
+ 
+    /**
+     * Keep select UltraAddons menu option,
+     * when select any submenu of UltraAddons menu
+     * 
+     * Actually it was not working by default, when choosing header-footer submenu and for custom fonts submenu
+     * we did it with condition for choosing and keep open main menu
+     * 
+     * @since 1.1.0.3
+     */
+    public static function keep_menu_open( $parent_file ){
+        global $current_screen;
+        //var_dump($current_screen);
+        if( $current_screen->post_type  == 'header_footer' ) return self::$menu_slug;//'ultraaddons-elementor-lite'; 
+        if( $current_screen->taxonomy == 'ultraaddons-custom-fonts' ) return self::$menu_slug;//'ultraaddons-elementor-lite';
+        
+        //Return to default
+        return $parent_file;
+    }
+
+    /**
+     * Keep select Header footer template submenu,
+     * when adding new templatte
+     * 
+     * @since 1.1.0.4
+     */
+    public static function keep_submenu_open( $submenu_file, $parent_file ){
+
+        if( $parent_file !== self::$menu_slug ) return $submenu_file; //Return to default
+
+        global $current_screen;
+
+        if( $current_screen->post_type  == 'header_footer' ) return 'edit.php?post_type=header_footer';
+
+        //Return to default
+        return $submenu_file;
+    }
+    
     
 }
 Admin_Handle::init();
