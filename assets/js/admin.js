@@ -86,7 +86,69 @@
             }
         }
       });
-      
+
+
+
+      /**
+       * Custom Fonts Area
+       * 
+       * @since 1.1.0.5
+       */
+      $(document.body).on('click','.ultraaddons-font-upload-button',function(e){
+        e.preventDefault();
+        var button = $(this);
+        var fontType = $(this).data('font-type');
+        if( !fontType ){
+            fontType = 'woff2';
+        }
+
+        var fontsWrapperFieldArea = $(this).closest('.form-file-field');
+        var fontUrlField = fontsWrapperFieldArea.find('.font-upload-url');
+        //console.log(wp);
+        
+        var fonts_uploader = wp.media.frames.file_frame = wp.media({
+            title: "Fonts Uploader",
+            button:{
+                text: "Select Fonts"
+            },
+            library: {
+                //type: 'application/x-font-woff2,application/x-font-ttf'
+                //type: 'application/x-font-' + fontType,
+                type: 'application/x-font-woff2,application/x-font-woff,application/x-font-ttf,application/x-font-eot,application/x-font-otf'
+            },
+            multiple: true
+        });
+
+        fonts_uploader.on('select',function(){
+            var attachment = fonts_uploader.state().get('selection').first().toJSON();
+
+            //console.log(fonts_uploader.state().get('selection'));
+            console.log(attachment.subtype);
+            var url = attachment.url;
+            fontUrlField.val(url).change();
+        });
+        
+
+        fonts_uploader.open();
+        //console.log(fonts_uploader);
+
+      });
+
+      //var ext = fileName.substr(fileName.lastIndexOf('.') + 1);
+      $(document.body).on('change','.font-upload-url',function(){
+        var urlBox = $(this);
+        var url = urlBox.val();
+        url = url.replace(/\s+/, "");
+        if( url == '' ){
+            return;
+        }
+        console.log(url);
+        var fontsWrapperFieldArea = $(this).closest('.form-file-field');
+        var fontFormatField = fontsWrapperFieldArea.find('.font-upload-format');
+
+        var ext = url.substr(url.lastIndexOf('.') + 1);
+        fontFormatField.val(ext);
+      });
   });
 
 } (jQuery, window));

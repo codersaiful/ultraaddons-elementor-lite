@@ -83,43 +83,24 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
             <p></p>
         </div> 
 
-        <div class="font-variation-wrapper">
-
-            <div class="form-field">
-                <label for="font-weight"><?php echo esc_html__( 'Font Weight' ); ?></label><br>
-                <?php self::render_font_weight(); ?>
-                <p></p>
-            </div> 
-            
-            <div class="fonts-upload-wrapper form-feld">
-                <label><?php echo esc_html__( 'Font File Upload' ); ?></label><br>
-                <div class="form-file-field form-feld">
-                    
-                    <input name="ua_fonts[format][]" type="text" class="font-upload-format">
-                    <input name="ua_fonts[url][]" type="text" class="font-upload-url">
-                    
-                </div> 
-
-            </div>
-            
-
-
-        </div>
-        
-
-
-
-        <?php
+        <?php 
+        /**
+         * Render font variations markup from a method
+         * 
+         * @since 1.1.0.5
+         * 
+         */
+        self::render_fonts_variant(); 
     }
     public static function edit_term_fields($tag,  $taxonomy){
 
         $meta_key = self::$meta_key;
         $data = get_term_meta($tag->term_id,$meta_key, true);
-        var_dump($data);
+        //var_dump($data);
         
         $font_fallback = isset( $data['fallback'] ) ? $data['fallback'] : '';
         $font_display = isset( $data['display'] ) ? $data['display'] : '';
-        $font_weight = isset( $data['weight'] ) ? $data['weight'] : '';
+        
 
         
         ?>
@@ -149,15 +130,15 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
             </th>
             <td>
                 
-                <div class="font-variation-wrapper">
-
-                <div class="form-field">
-                    <label for="font-weight"><?php echo esc_html__( 'Font Weight' ); ?></label><br>
-                    <?php self::render_font_weight( $font_weight ); ?>
-                    <p></p>
-                </div> 
-
-                </div>
+                <?php
+                /**
+                 * Render font variations markup from a method
+                 * 
+                 * @since 1.1.0.5
+                 * 
+                 */
+                self::render_fonts_variant( $data ); 
+                ?>
 
             </td>
         </tr>
@@ -167,6 +148,51 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
     }
 
 
+    public static function render_fonts_variant( $meta_data = array() ){
+        $font_weight = isset( $meta_data['weight'] ) ? $meta_data['weight'] : 400;
+
+        $urls = isset( $meta_data['url'] ) ? $meta_data['url'] : array('');
+
+        ?>
+
+        <div class="font-variation-wrapper">
+
+            <div class="form-field">
+                <label for="font-weight"><?php echo esc_html__( 'Font Weight' ); ?></label><br>
+                <?php self::render_font_weight( $font_weight ); ?>
+                <p></p>
+            </div> 
+            
+            <div class="fonts-upload-wrapper form-field">
+                <label><?php echo esc_html__( 'Font File Upload' ); ?></label><br>
+
+                <?php
+                foreach( $urls as $key=>$url ){
+                    $format = isset( $meta_data['format'][$key] ) ? $meta_data['format'][$key] : '';
+                ?>
+                <div class="form-file-field form-field">
+                    
+                    <input name="ua_fonts[format][]" type="hidden" class="font-upload-format" value="<?php echo esc_attr( $format ); ?>">
+                    <input name="ua_fonts[url][]" type="text" value="<?php echo esc_attr( $url ); ?>" class="font-upload-url">
+                    <a href="#" class="ultraaddons-font-upload-button ua-button button">Upload Font</a>
+                </div> 
+                <?php    
+                }
+                
+                ?>
+                
+
+            </div>
+            
+
+
+        </div>
+        
+
+
+
+        <?php
+    }
 
     /**
      * Render selectt and option tag markup for font display

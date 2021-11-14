@@ -6,13 +6,44 @@ use UltraAddons\Core\Custom_Fonts_Handle as Fonts;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+/**
+ * Custom Font Rendoer for Fronend, Backend(Dashboard) and Elementor Editor Screen
+ * 
+ * *****************************
+ * CUSTOM FONTS
+ * ******************************
+ * * Front End
+ * * Backend (Dashboard)
+ * * Elementor Editor Screen
+ * 
+ * ******************************
+ * 
+ * @since 1.1.0.5
+ */
 class Custom_Fonts_Render {
    
+    /**
+     * Initializing Font render here.
+     * In this part, we rendered font to frontend head, backend head and elementor edit screen
+     * 
+     * @since 1.1.0.5
+     *
+     * @return void
+     */
     public static function init(){
         add_action( 'wp_head', [__CLASS__,'render_style'] );
         add_action( 'elementor/editor/before_enqueue_scripts', [__CLASS__,'render_style'] );
     }
 
+    /**
+     * Generate full style tag, style tag markup
+     * 
+     * Based on selected font, which we have sellected/included in our Fonts Taxonomy
+     * 
+     * @since 1.0.0.5
+     *
+     * @return void
+     */
     public static function render_style(){
         $fonts = Fonts::get_fonts();
         if( empty( $fonts ) ) return;
@@ -27,6 +58,14 @@ class Custom_Fonts_Render {
         echo $style_code;
     }
 
+    /**
+     * Generate @fontface based on Font details array
+     * 
+     * We are getting help from method font_args_by_name()
+     *
+     * @param String $font_name
+     * @return void
+     */
     public static function fontface_by_name( $font_name ){
         
         $args = self::font_args_by_name($font_name);
@@ -43,6 +82,8 @@ class Custom_Fonts_Render {
     }
 
     /**
+     * Here will return one font's data
+     * 
      * Getting details array of Font name
      * based on Font name
      * 
@@ -55,20 +96,41 @@ class Custom_Fonts_Render {
         if( ! $term ) return false;
         $term_id = $term->term_id;
 
-        $font_extras = get_term_meta($term_id,Fonts::$meta_key,true);
+        $font_datas = get_term_meta($term_id,Fonts::$meta_key,true);
+        //$font_datas['family'] = $term->name;
+        
+        //Check and confirmation, If empty url or not found font_datas
+        if( empty( $font_datas ) || empty($font_datas['url']) ) return false;
 
-        if( empty( $font_extras ) ) return false;
+        $urls = $font_datas['url'];
+
+        //Confirm that, there is minimum 1 element/item available.
+        if( empty( end($urls) ) ) return false;
+
+        $formats = $font_datas['format'];
+
+        //Assaigning a new array to return new array.
         $font_details = array();
-        $fallback = 'Sans-serif';
-        $url = 'http://localhost/wordpress_theme/wp-content/uploads/2021/11/Montserrat-SemiBold.otf';
-        $format = 'woff2';
+        $fallback = ! empty( $font_datas['fallback'] ) ? $font_datas['fallback'] : false;
+        $display = ! empty( $font_datas['display'] ) ? $font_datas['display'] : false;
+        $weight = ! empty( $font_datas['weight'] ) ? $font_datas['weight'] : false;
+        
 
         $font_details['font-family'] = '"' . $term->name . '"';
-        $font_details['font-weight'] = 200;
-        $font_details['font-display'] = 'auto';
+        $font_details['font-weight'] = $weight;
+        $font_details['font-display'] = $display;
         $font_details['font-fallback'] = $fallback;
-        $font_details['src'] = "url($url) format('$format')";
 
-        return $font_details;
+        $font_src = "";
+        foreach( $urls as $key => $url ){
+            $format = $formats[$key];
+            $font_src .= "url($url) format('$format'),";
+        }
+        $font_src = rtrim( $font_src, ',' );
+        $font_details['src'] = $font_src;
+
+
+        //Filter $font_details to removed empty item
+        return array_filter( $font_details );
     }
 }

@@ -1091,4 +1091,9 @@ li#toplevel_page_ultraaddons-elementor-lite a.wp-has-submenu .wp-menu-image img 
     border: 1px solid #ededed;
     box-shadow: 0 10px 30px #0000000d;
 }
+a.ultraaddons-font-upload-button.ua-button.button {margin-top: 10px;}
+
+.form-file-field.form-field {
+    text-align: right;
+}
 /* style for Custom font end */
