@@ -375,8 +375,8 @@ $widgetsArray = [
             ],
     ],
     
-    'Hello_World' => [
-            'name'  => __( 'Hello World Widget', 'ultraaddons' ),
+    'Flip_Box_3d' => [
+            'name'  => __( '3d Flip Box', 'ultraaddons' ),
             'is_pro'   => false,
             'icon'      => 'eicon-posts-masonry',
             'cat'       => [
