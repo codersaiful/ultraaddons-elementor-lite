@@ -375,6 +375,16 @@ $widgetsArray = [
             ],
     ],
     
+    'Hello_World' => [
+            'name'  => __( 'Hello World Widget', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-posts-masonry',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+
+    
 ];
 
 return apply_filters( 'ultraaddons/widgets/array', $widgetsArray );
