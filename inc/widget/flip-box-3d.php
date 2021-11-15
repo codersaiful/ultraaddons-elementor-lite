@@ -39,18 +39,10 @@ class Flip_box_3d extends Base{
      * @access protected
      */
     protected function _register_controls() {
-        
-
         //For Content Section
         $this->content_general_controls();
-
-       
         //For Design Section Style Tab
         $this->style_design_controls();
-        
-        //For Typography Section Style Tab
-        //$this->style_typography_controls();
-
     }
 	protected function content_general_controls() {
 		$placeholder_image = ULTRA_ADDONS_URL . 'assets/images/user.png';
@@ -131,7 +123,6 @@ class Flip_box_3d extends Base{
             ]
         );
         
-        
         $this->add_control(
 			'flipbox_bg_default', [
 				'label' => __( 'Default Background', 'ultraaddons' ),
@@ -173,9 +164,9 @@ class Flip_box_3d extends Base{
 	}
 
     protected function render() {
-		$settings = $this->get_settings_for_display();
-		$front_image = $settings['front_image'];
-		$back_image = $settings['back_image'];
+		$settings 		= $this->get_settings_for_display();
+		$front_image 	= $settings['front_image'];
+		$back_image 	= $settings['back_image'];
 	?>
 		<div class="flip-container">
 		  <div class="flipper">
