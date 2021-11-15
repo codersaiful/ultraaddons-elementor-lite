@@ -43,6 +43,8 @@ class Flip_box_3d extends Base{
         $this->content_general_controls();
         //For Design Section Style Tab
         $this->style_design_controls();
+		//For Typography Style Tab
+        $this->style_typography_controls();
     }
 	protected function content_general_controls() {
 		$placeholder_image = ULTRA_ADDONS_URL . 'assets/images/user.png';
@@ -81,16 +83,27 @@ class Flip_box_3d extends Base{
 
 			]
         );
-			$this->add_control(
+		$this->add_control(
 			'_ua_flipbox_front_title',
 			[
 				'label' => __( 'Front Title', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Flip Front', 'ultraaddons' ),
+				'default' => __( 'Jhone Doe', 'ultraaddons' ),
 				'placeholder' => __( 'Enter your title', 'ultraaddons' ),
 				'label_block' => true,
 			]
 		);
+	/* 	$this->add_control(
+			'_ua_flipbox_front_sub_title',
+			[
+				'label' => __( 'Front Sub Title', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __( 'Developer', 'ultraaddons' ),
+				'placeholder' => __( 'Enter your title', 'ultraaddons' ),
+				'label_block' => true,
+			]
+		); */
+		
 		$this->add_control(
 			'_ua_flipbox_back_title',
 			[
@@ -118,20 +131,20 @@ class Flip_box_3d extends Base{
         $this->start_controls_section(
             'flipbox_style',
             [
-                'label'     => esc_html__( 'Background', 'ultraaddons' ),
+                'label'     => esc_html__( 'Color', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
         
-        $this->add_control(
-			'flipbox_bg_default', [
-				'label' => __( 'Default Background', 'ultraaddons' ),
+      $this->add_control(
+			'flipbox_bg_front', [
+				'label' => __( 'Front Background', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .default-state' => 'background: {{VALUE}};',
+						'{{WRAPPER}} .front' => 'background-color: {{VALUE}};',
 				],
 			]
-        );  
+        ); 
 		$this->add_control(
 			'flipbox_bg_back', [
 				'label' => __( 'Back Background', 'ultraaddons' ),
@@ -160,6 +173,46 @@ class Flip_box_3d extends Base{
 				],
 			]
         );
+		
+		$this->end_controls_section();
+	}
+	protected function style_typography_controls() {
+        $this->start_controls_section(
+            'flipbox_typo_style',
+            [
+                'label'     => esc_html__( 'Typography', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'front_title_typography',
+					'label' => 'Front Title Typography',
+					'selector' => '{{WRAPPER}} .name',
+
+			]
+        );
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'back_title_typography',
+					'label' => 'Back Title Typography',
+					'selector' => '{{WRAPPER}} .back-title',
+
+			]
+        );
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'content_typography',
+					'label' => 'Content Typography',
+					'selector' => '{{WRAPPER}} .back p',
+
+			]
+        );
+		
 		$this->end_controls_section();
 	}
 
@@ -170,11 +223,16 @@ class Flip_box_3d extends Base{
 	?>
 		<div class="flip-container">
 		  <div class="flipper">
+			<?php if( !empty( $front_image ) ): ?>
 			<div class="front" style="background-image:url(<?php echo esc_url($front_image['url']);?>)">
-			  <span class="name"><?php echo esc_html($settings['_ua_flipbox_front_title']); ?></span>
+			 <?php endif;?>
+			 <span class="name"><?php echo esc_html($settings['_ua_flipbox_front_title']); ?></span>
+			  <!--span class="sub-title"><?php //echo esc_html($settings['_ua_flipbox_front_sub_title']); ?></span-->
 			</div>
 			<div class="back">
+			<?php if( !empty( $back_image ) ): ?>
 			  <div class="back-logo" style="background-image:url(<?php echo esc_url($back_image['url']);?>)"></div>
+			<?php endif;?>
 			  <div class="back-title"><?php echo esc_html($settings['_ua_flipbox_back_title']); ?></div>
 			  <p><?php echo esc_html($settings['_ua_flipbox_content']); ?></p>
 			</div>
