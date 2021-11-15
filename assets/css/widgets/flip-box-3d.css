@@ -87,6 +87,8 @@
 	width: 160px;
 	height: 117px;
 	background: url(http://davidwalsh.name/demo/logo.png) 0 0 no-repeat;
+		background-position: center;
+    background-size: cover;
 }
 
 .back-title {

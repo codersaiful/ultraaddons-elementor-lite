@@ -183,7 +183,7 @@ class Flip_box_3d extends Base{
 			  <span class="name"><?php echo esc_html($settings['_ua_flipbox_front_title']); ?></span>
 			</div>
 			<div class="back">
-			  <div class="back-logo" style="background-image:url(<?php echo esc_url($front_image['url']);?>)"></div>
+			  <div class="back-logo" style="background-image:url(<?php echo esc_url($back_image['url']);?>)"></div>
 			  <div class="back-title"><?php echo esc_html($settings['_ua_flipbox_back_title']); ?></div>
 			  <p><?php echo esc_html($settings['_ua_flipbox_content']); ?></p>
 			</div>
