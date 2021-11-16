@@ -181,7 +181,7 @@ class Admin_Handle{
             $menu_slug = isset( $menu['menu_slug'] ) ? $menu['menu_slug'] : false;
             $function = isset( $menu['function'] ) ? $menu['function'] : false;
             $icon_url = isset( $menu['icon_url'] ) ? $menu['icon_url'] : false;
-            $position = isset( $menu['position'] ) ? $menu['position'] : false;
+            $position = isset( $menu['position'] ) ? $menu['position'] : 100; //Actually $position param should be Number, can't be bool(false/true)
 
             add_submenu_page($parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function, $position);
         }
