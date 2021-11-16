@@ -27,13 +27,13 @@
   opacity: 1;
   transform: rotateY(0deg);
 }
-.ua-flip.ua-flip-vertical > .back {
+.ua-flip.flip-vertical > .back {
   transform: rotateX(-180deg);
 }
-.ua-flip.ua-flip-vertical:hover > .front {
+.ua-flip.flip-vertical:hover > .front {
   transform: rotateX(180deg);
 }
-.ua-flip.ua-flip-vertical:hover > .back {
+.ua-flip.flip-vertical:hover > .back {
   transform: rotateX(0deg);
 }
 

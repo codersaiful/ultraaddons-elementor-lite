@@ -89,17 +89,13 @@ class Flip_Box extends Base{
 		$this->add_control(
 			'icon_type',
 			[
-				'label'       => esc_html__( 'Back Media', 'ultraaddons' ),
+				'label'       => esc_html__( 'Back Image Background', 'ultraaddons' ),
 				'type'        => Controls_Manager::CHOOSE,
 				'label_block' => false,
 				'options'     => [
 					'none' => [
 						'title' => esc_html__( 'None', 'ultraaddons' ),
 						'icon'  => 'fa fa-ban',
-					],
-					'_ua_back_icon' => [
-						'title' => esc_html__( 'Icon', 'ultraaddons' ),
-						'icon'  => 'fa fa-cog',
 					],
 					'back_image' => [
 						'title' => esc_html__( 'Image', 'ultraaddons' ),
@@ -126,20 +122,6 @@ class Flip_Box extends Base{
 
 			]
         );
-		$this->add_control(
-			'_ua_back_icon',
-			[
-				'label' => esc_html__( 'Back Icon', 'ultraaddons' ),
-				'type' => Controls_Manager::ICONS,
-				'default' => [
-					'value' => 'fas fa-star',
-					'library' => 'fa-solid',
-				],
-				'condition' => [
-					'icon_type' => '_ua_back_icon',
-				],
-			]
-		);
 		$this->add_control(
 			'_ua_icon_size',
 			[
@@ -181,14 +163,6 @@ class Flip_Box extends Base{
 				],
 			]
         ); 
-		/* $this->add_group_control(
-			Group_Control_Image_Size::get_type(),
-			[
-				'name'      => 'image',
-				'default'   => 'full',
-				'separator' => 'none',
-			]
-		); */
 		$this->add_control(
 			'_ua_flipbox_front_title',
 			[
@@ -200,16 +174,6 @@ class Flip_Box extends Base{
 				'separator' =>'before'
 			]
 		);
-	/* 	$this->add_control(
-			'_ua_flipbox_front_sub_title',
-			[
-				'label' => __( 'Front Sub Title', 'ultraaddons' ),
-				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Developer', 'ultraaddons' ),
-				'placeholder' => __( 'Enter your title', 'ultraaddons' ),
-				'label_block' => true,
-			]
-		); */
 		
 		$this->add_control(
 			'_ua_flipbox_back_title',
@@ -231,7 +195,41 @@ class Flip_Box extends Base{
 				'label_block' => true,
 			]
 		);
+			$this->add_control(
+			'_ua_front_title_tag',
+			[
+				'label' => esc_html__( 'Select Front Title Tag', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'h1' => 'H1',
+					'h2' => 'H2',
+					'h3' => 'H3',
+					'h4' => 'H4',
+					'h5' => 'H5',
+					'h6' => 'H6',
+					'div' => 'div',
+				],
+				'default' => 'h2',
+			]
+		);
 		
+		$this->add_control(
+			'_ua_back_title_tag',
+			[
+				'label' => esc_html__( 'Select Back Title Tag', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'h1' => 'H1',
+					'h2' => 'H2',
+					'h3' => 'H3',
+					'h4' => 'H4',
+					'h5' => 'H5',
+					'h6' => 'H6',
+					'div' => 'div',
+				],
+				'default' => 'h2',
+			]
+		);
 	$this->end_controls_section();
 	}
 	protected function style_design_controls() {
@@ -383,10 +381,16 @@ class Flip_Box extends Base{
 	
 	<div class="ua-flip flip-<?php echo $settings['_ua_flipbox_animation_type']; ?>">
 		<div class="front" style="background-image:url(<?php echo esc_url($front_image['url']);?>)">
-		   <h1 class="front-title"><?php echo esc_html($settings['_ua_flipbox_front_title']); ?></hi>
+		   <?php
+		   echo '<' . $settings['_ua_front_title_tag'] . ' class="front-title">' . esc_html($settings['_ua_flipbox_front_title']) . 
+				'</' . $settings['_ua_front_title_tag'] . '>';
+		   ?>
 		</div>
-		<div class="back">
-		   <h2 class="back-title"><?php echo esc_html($settings['_ua_flipbox_back_title']); ?></h2>
+		<div class="back" style="background-image:url(<?php echo esc_url($back_image['url']);?>)">
+		   <?php
+		   echo '<' . $settings['_ua_back_title_tag'] . ' class="back-title">' . esc_html($settings['_ua_flipbox_back_title']) . 
+				'</' . $settings['_ua_back_title_tag'] . '>';
+		   ?>
 		   <p><?php echo esc_html($settings['_ua_flipbox_content']); ?></p>
 		</div>
 	</div>
