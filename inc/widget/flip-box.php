@@ -33,7 +33,7 @@ class Flip_Box extends Base{
     }
 	
 	 /**
-     * Register oEmbed widget controls.
+     * Register widget controls.
      *
      * Adds different input fields to allow the user to change and customize the widget settings.
      *
@@ -63,7 +63,7 @@ class Flip_Box extends Base{
 		$this->add_control(
 			'_ua_flipbox_animation_type',
 			[
-				'label' => __( 'Animation Style', 'ultraaddons' ),
+				'label' => __( 'Flip Style', 'ultraaddons' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'default' => 'horizontal',
 				'options' => [
@@ -168,7 +168,7 @@ class Flip_Box extends Base{
 			[
 				'label' => __( 'Front Title', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Jhone Doe', 'ultraaddons' ),
+				'default' => __( 'Flip Front Title', 'ultraaddons' ),
 				'placeholder' => __( 'Enter your title', 'ultraaddons' ),
 				'label_block' => true,
 				'separator' =>'before'
@@ -195,7 +195,7 @@ class Flip_Box extends Base{
 				'label_block' => true,
 			]
 		);
-			$this->add_control(
+		$this->add_control(
 			'_ua_front_title_tag',
 			[
 				'label' => esc_html__( 'Select Front Title Tag', 'ultraaddons' ),
@@ -269,6 +269,7 @@ class Flip_Box extends Base{
 				'selectors' => [
 						'{{WRAPPER}} .back' => 'background: {{VALUE}};',
 				],
+				'separator'=>'before'
 			]
         );
 		
@@ -283,7 +284,7 @@ class Flip_Box extends Base{
 			]
         );
 		$this->add_control(
-			'flipbox_content_back', [
+			'_ua_flipbox_content_color', [
 				'label' => __( 'Content Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
@@ -303,6 +304,37 @@ class Flip_Box extends Base{
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
+		
+		$this->add_responsive_control(
+			'_ua_text_alignment',
+			[
+				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-right',
+					],
+					'justify' => [
+						'title' => esc_html__( 'justify', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-justify',
+					],
+				],
+				'default' => 'left',
+				'selectors' => [
+					'{{WRAPPER}} .front' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .back' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
 		
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
@@ -342,6 +374,7 @@ class Flip_Box extends Base{
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
+		
 		$this->add_responsive_control(
 			'_ua_box_radius',
 			[
