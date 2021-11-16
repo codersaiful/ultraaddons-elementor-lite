@@ -158,15 +158,18 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
             ),
         );
 
-        if( isset( $data['variants'] ) && isset( $data['variants'][0]['weight'] ) && ! empty( $data['variants'] ) ){
+
+        if( isset( $data['variants'] )  && ! empty( $data['variants'] ) ){
             $variants = $data['variants'];
         }
 
+        
         $count = count( $variants );
         echo '<div class="all-variant-group-wrapper" data-count="'. $count .'">';
         $variant_key = 0;
         foreach( $variants as $variant ){
 
+            
             $name_prefix = "ua_fonts[variants][$variant_key]";
 
             $font_weight = isset( $variant['weight'] ) ? $variant['weight'] : 400;
