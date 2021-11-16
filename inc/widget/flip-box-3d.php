@@ -27,7 +27,7 @@ class Flip_box_3d extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'flipbox', '3d', 'flip', 'box' ];
+        return [ 'ultraaddons', 'ua', 'flipbox', '3d', 'flip', 'box' ];
     }
 	
 	 /**
