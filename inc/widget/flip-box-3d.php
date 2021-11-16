@@ -10,6 +10,8 @@ use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Background;
+use Elementor\Group_Control_Image_Size;
+use Elementor\Icons_Manager;
 
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -48,6 +50,7 @@ class Flip_box_3d extends Base{
     }
 	protected function content_general_controls() {
 		$placeholder_image = ULTRA_ADDONS_URL . 'assets/images/user.png';
+		
         $this->start_controls_section(
             'general_content',
             [
@@ -55,8 +58,9 @@ class Flip_box_3d extends Base{
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
+		
 		 $this->add_control(
-			'front_image',
+			'_ua_front_image',
 			[
 				'label' => __( 'Front Image', 'ultraaddons' ),
 				'type' => Controls_Manager::MEDIA,
@@ -69,13 +73,39 @@ class Flip_box_3d extends Base{
 
 			]
         );
+		$this->add_control(
+			'icon_type',
+			[
+				'label'       => esc_html__( 'Media Type', 'ultraaddons' ),
+				'type'        => Controls_Manager::CHOOSE,
+				'label_block' => false,
+				'options'     => [
+					'none' => [
+						'title' => esc_html__( 'None', 'ultraaddons' ),
+						'icon'  => 'fa fa-ban',
+					],
+					'_ua_back_icon' => [
+						'title' => esc_html__( 'Icon', 'ultraaddons' ),
+						'icon'  => 'fa fa-cog',
+					],
+					'back_image' => [
+						'title' => esc_html__( 'Image', 'ultraaddons' ),
+						'icon'  => 'fas fa-images',
+					],
+				],
+				'default'     => 'icon',
+			]
+		);
 		 $this->add_control(
-			'back_image',
+			'_ua_back_image',
 			[
 				'label' => __( 'Back Image', 'ultraaddons' ),
 				'type' => Controls_Manager::MEDIA,
 				'default' => [
 						'url' => $placeholder_image,//Utils::get_placeholder_image_src(),
+				],
+				'condition' => [
+					'icon_type' => 'back_image',
 				],
 				'dynamic' => [
 						'active' => true,
@@ -83,6 +113,54 @@ class Flip_box_3d extends Base{
 
 			]
         );
+		$this->add_control(
+			'_ua_back_icon',
+			[
+				'label' => esc_html__( 'Back Icon', 'ultraaddons' ),
+				'type' => Controls_Manager::ICONS,
+				'default' => [
+					'value' => 'fas fa-star',
+					'library' => 'fa-solid',
+				],
+				'condition' => [
+					'icon_type' => '_ua_back_icon',
+				],
+			]
+		);
+		$this->add_control(
+			'_ua_icon_size',
+			[
+				'label' => __( 'Icon Size', 'plugin-domain' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em' ],
+				'range' => [
+					'px' => [
+						'min' => 10,
+						'max' => 500,
+						'step' => 5,
+					],
+					'em' => [
+						'min' => 0,
+						'max' => 200,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 50,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .back i' => 'font-size: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Image_Size::get_type(),
+			[
+				'name'      => 'image',
+				'default'   => 'full',
+				'separator' => 'none',
+			]
+		);
 		$this->add_control(
 			'_ua_flipbox_front_title',
 			[
@@ -218,8 +296,8 @@ class Flip_box_3d extends Base{
 
     protected function render() {
 		$settings 		= $this->get_settings_for_display();
-		$front_image 	= $settings['front_image'];
-		$back_image 	= $settings['back_image'];
+		$front_image 	= $settings['_ua_front_image'];
+		$back_image 	= $settings['_ua_back_image'];
 	?>
 		<div class="flip-container">
 		  <div class="flipper">
@@ -233,6 +311,11 @@ class Flip_box_3d extends Base{
 			<?php if( !empty( $back_image ) ): ?>
 			  <div class="back-logo" style="background-image:url(<?php echo esc_url($back_image['url']);?>)"></div>
 			<?php endif;?>
+			<?php if ( '_ua_back_icon' == $settings['icon_type'] ): ?>
+				<div class="back-logo">
+				<?php Icons_Manager::render_icon( $settings['_ua_back_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+				</div>
+			<?php endif; ?>
 			  <div class="back-title"><?php echo esc_html($settings['_ua_flipbox_back_title']); ?></div>
 			  <p><?php echo esc_html($settings['_ua_flipbox_content']); ?></p>
 			</div>
