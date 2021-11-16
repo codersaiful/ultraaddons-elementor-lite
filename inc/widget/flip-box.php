@@ -246,7 +246,7 @@ class Flip_Box extends Base{
 				'label' => __( 'Front Background', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .front' => 'background-color: {{VALUE}};',
+						'{{WRAPPER}} .ua-flip .front' => 'background-color: {{VALUE}};',
 				],
 			]
         );
@@ -256,7 +256,7 @@ class Flip_Box extends Base{
 				'label' => __( 'Front Title Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .front-title' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .ua-flip .front-title' => 'color: {{VALUE}};',
 				],
 				'default'=>'#ffffff'
 			]
@@ -267,7 +267,7 @@ class Flip_Box extends Base{
 				'label' => __( 'Back Background', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .back' => 'background: {{VALUE}};',
+						'{{WRAPPER}} .ua-flip .back' => 'background: {{VALUE}};',
 				],
 				'separator'=>'before'
 			]
@@ -278,7 +278,7 @@ class Flip_Box extends Base{
 				'label' => __( 'Back Title Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .back-title' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .ua-flip .back-title' => 'color: {{VALUE}};',
 				],
 				'default'=>'#ffffff'
 			]
@@ -288,7 +288,7 @@ class Flip_Box extends Base{
 				'label' => __( 'Content Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .back p' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .ua-flip .back p' => 'color: {{VALUE}};',
 				],
 				'separator'=>'before'
 			]
@@ -330,8 +330,8 @@ class Flip_Box extends Base{
 				],
 				'default' => 'left',
 				'selectors' => [
-					'{{WRAPPER}} .front' => 'text-align: {{VALUE}};',
-					'{{WRAPPER}} .back' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .ua-flip .front' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .ua-flip .back' => 'text-align: {{VALUE}};',
 				],
 			]
 		);
@@ -341,7 +341,7 @@ class Flip_Box extends Base{
 			[
 					'name' => 'front_title_typography',
 					'label' => 'Front Title Typography',
-					'selector' => '{{WRAPPER}} .front-title',
+					'selector' => '{{WRAPPER}} .ua-flip .front-title',
 
 			]
         );
@@ -350,7 +350,7 @@ class Flip_Box extends Base{
 			[
 					'name' => 'back_title_typography',
 					'label' => 'Back Title Typography',
-					'selector' => '{{WRAPPER}} .back-title',
+					'selector' => '{{WRAPPER}} .ua-flip .back-title',
 
 			]
         );
@@ -359,7 +359,7 @@ class Flip_Box extends Base{
 			[
 					'name' => 'content_typography',
 					'label' => 'Content Typography',
-					'selector' => '{{WRAPPER}} .back p',
+					'selector' => '{{WRAPPER}} .ua-flip .back p',
 
 			]
         );
@@ -388,7 +388,7 @@ class Flip_Box extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .front, .back' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ua-flip .front, .ua-flip .back' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -397,8 +397,8 @@ class Flip_Box extends Base{
 			[
 				'name' => 'box_shadow',
 				'label' => __( 'Box Shadow', 'ultraaddons' ),
-				'selector' => '{{WRAPPER}} .front,',
-				'selector' => '{{WRAPPER}} .back',
+				'selector' => '{{WRAPPER}} .ua-flip .front,',
+				'selector' => '{{WRAPPER}} .ua-flip .back',
 			]
 		);
 		
