@@ -60,7 +60,18 @@ class Flip_box_3d extends Base{
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
-		
+		$this->add_control(
+			'_ua_flipbox_animation_type',
+			[
+				'label' => __( 'Animation Style', 'ultraaddons' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => 'horizontal',
+				'options' => [
+					'horizontal' => __( 'Horizontal', 'ultraaddons' ),
+					'vertical'  => __( 'Vertical', 'ultraaddons' ),
+				],
+			]
+		);
 		 $this->add_control(
 			'_ua_front_image',
 			[
@@ -247,20 +258,11 @@ class Flip_box_3d extends Base{
 				'label' => __( 'Front Title Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .name' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .front-title' => 'color: {{VALUE}};',
 				],
 			]
         );
-		$this->add_control(
-			'_ua_flipbox_title_bg', [
-				'label' => __( 'Front Title Background', 'ultraaddons' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-						'{{WRAPPER}} .front .name' => 'background-color: {{VALUE}};',
-				],
-				'separator' =>'after'
-			]
-        );
+	
 		$this->add_control(
 			'flipbox_bg_back', [
 				'label' => __( 'Back Background', 'ultraaddons' ),
@@ -307,7 +309,7 @@ class Flip_box_3d extends Base{
 			[
 					'name' => 'front_title_typography',
 					'label' => 'Front Title Typography',
-					'selector' => '{{WRAPPER}} .name',
+					'selector' => '{{WRAPPER}} .front-title',
 
 			]
         );
@@ -376,27 +378,15 @@ class Flip_box_3d extends Base{
 		$front_image 	= $settings['_ua_front_image'];
 		$back_image 	= $settings['_ua_back_image'];
 	?>
-		<div class="flip-container">
-		  <div class="flipper">
-			<?php if( !empty( $front_image ) ): ?>
-			<div class="front" style="background-image:url(<?php echo esc_url($front_image['url']);?>)">
-			 <?php endif;?>
-			 <span class="name"><?php echo esc_html($settings['_ua_flipbox_front_title']); ?></span>
-			  <!--span class="sub-title"><?php //echo esc_html($settings['_ua_flipbox_front_sub_title']); ?></span-->
-			</div>
-			<div class="back">
-			<?php if( !empty( $back_image ) ): ?>
-			  <div class="back-logo" style="background-image:url(<?php echo esc_url($back_image['url']);?>)"></div>
-			<?php endif;?>
-			<?php if ( '_ua_back_icon' == $settings['icon_type'] ): ?>
-				<div class="back-logo">
-				<?php Icons_Manager::render_icon( $settings['_ua_back_icon'], [ 'aria-hidden' => 'true' ] ); ?>
-				</div>
-			<?php endif; ?>
-			  <div class="back-title"><?php echo esc_html($settings['_ua_flipbox_back_title']); ?></div>
-			  <p><?php echo esc_html($settings['_ua_flipbox_content']); ?></p>
-			</div>
-		  </div>
+	
+	<div class="flip flip-<?php echo $settings['_ua_flipbox_animation_type']; ?>">
+		<div class="front" style="background-image:url(<?php echo esc_url($front_image['url']);?>)">
+		   <h1 class="front-title"><?php echo esc_html($settings['_ua_flipbox_front_title']); ?></hi>
 		</div>
+		<div class="back">
+		   <h2 class="back-title"><?php echo esc_html($settings['_ua_flipbox_back_title']); ?></h2>
+		   <p><?php echo esc_html($settings['_ua_flipbox_content']); ?></p>
+		</div>
+	</div>
 <?php }
 }
