@@ -47,6 +47,8 @@ class Flip_box_3d extends Base{
         $this->style_design_controls();
 		//For Typography Style Tab
         $this->style_typography_controls();
+		//For Box Style Tab
+        $this->style_box_controls();
     }
 	protected function content_general_controls() {
 		$placeholder_image = ULTRA_ADDONS_URL . 'assets/images/user.png';
@@ -76,7 +78,7 @@ class Flip_box_3d extends Base{
 		$this->add_control(
 			'icon_type',
 			[
-				'label'       => esc_html__( 'Media Type', 'ultraaddons' ),
+				'label'       => esc_html__( 'Back Media', 'ultraaddons' ),
 				'type'        => Controls_Manager::CHOOSE,
 				'label_block' => false,
 				'options'     => [
@@ -148,19 +150,34 @@ class Flip_box_3d extends Base{
 					'unit' => 'px',
 					'size' => 50,
 				],
+				'condition' => [
+					'icon_type' => '_ua_back_icon',
+				],
 				'selectors' => [
 					'{{WRAPPER}} .back i' => 'font-size: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
-		$this->add_group_control(
+		$this->add_control(
+			'_ua_icon_color', [
+				'label' => __( 'Icon Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .back i' => 'color: {{VALUE}};',
+				],
+				'condition' => [
+					'icon_type' => '_ua_back_icon',
+				],
+			]
+        ); 
+		/* $this->add_group_control(
 			Group_Control_Image_Size::get_type(),
 			[
 				'name'      => 'image',
 				'default'   => 'full',
 				'separator' => 'none',
 			]
-		);
+		); */
 		$this->add_control(
 			'_ua_flipbox_front_title',
 			[
@@ -169,6 +186,7 @@ class Flip_box_3d extends Base{
 				'default' => __( 'Jhone Doe', 'ultraaddons' ),
 				'placeholder' => __( 'Enter your title', 'ultraaddons' ),
 				'label_block' => true,
+				'separator' =>'before'
 			]
 		);
 	/* 	$this->add_control(
@@ -222,7 +240,27 @@ class Flip_box_3d extends Base{
 						'{{WRAPPER}} .front' => 'background-color: {{VALUE}};',
 				],
 			]
-        ); 
+        );
+		
+		$this->add_control(
+			'_ua_front_title_color', [
+				'label' => __( 'Front Title Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .name' => 'color: {{VALUE}};',
+				],
+			]
+        );
+		$this->add_control(
+			'_ua_flipbox_title_bg', [
+				'label' => __( 'Front Title Background', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .front .name' => 'background-color: {{VALUE}};',
+				],
+				'separator' =>'after'
+			]
+        );
 		$this->add_control(
 			'flipbox_bg_back', [
 				'label' => __( 'Back Background', 'ultraaddons' ),
@@ -235,7 +273,7 @@ class Flip_box_3d extends Base{
 		
 		$this->add_control(
 			'flipbox_title_back', [
-				'label' => __( 'Title Color', 'ultraaddons' ),
+				'label' => __( 'Back Title Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .back-title' => 'color: {{VALUE}};',
@@ -249,6 +287,7 @@ class Flip_box_3d extends Base{
 				'selectors' => [
 						'{{WRAPPER}} .back p' => 'color: {{VALUE}};',
 				],
+				'separator'=>'before'
 			]
         );
 		
@@ -290,6 +329,44 @@ class Flip_box_3d extends Base{
 
 			]
         );
+		
+		$this->end_controls_section();
+	}
+	protected function style_box_controls() {
+        $this->start_controls_section(
+            '_ua_flipbox_box_style',
+            [
+                'label'     => esc_html__( 'Box Style', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->add_responsive_control(
+			'_ua_box_radius',
+			[
+				'label'       => esc_html__( 'Box Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .flip-container, .front, .back' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'box_shadow',
+				'label' => __( 'Box Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .front,',
+				'selector' => '{{WRAPPER}} .back',
+			]
+		);
+		
 		
 		$this->end_controls_section();
 	}

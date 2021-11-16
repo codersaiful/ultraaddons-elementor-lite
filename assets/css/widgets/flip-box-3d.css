@@ -64,14 +64,13 @@
 	color: #f8f8f8;
 	padding: 5px 10px;
 	border-radius: 5px;
-	bottom: 5%;
+	top: 50%;
 	transform: translate(-50%,-50%);
 	left: 50%;
 	position: absolute;
-	text-shadow: 0.1em 0.1em 0.05em #333;
 	-moz-transform: rotate(-20deg);
 	-o-transform: rotate(-20deg);
-	width:auto
+	width:auto;
 }
 
 .back-logo {
