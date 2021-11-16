@@ -375,8 +375,8 @@ $widgetsArray = [
             ],
     ],
     
-    'Flip_Box_3d' => [
-            'name'  => __( '3d Flip Box', 'ultraaddons' ),
+    'Flip_Box' => [
+            'name'  => __( 'Flip Box', 'ultraaddons' ),
             'is_pro'   => false,
             'icon'      => 'eicon-flip-box',
             'cat'       => [

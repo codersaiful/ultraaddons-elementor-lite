@@ -16,7 +16,7 @@ use Elementor\Icons_Manager;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Flip_box_3d extends Base{
+class Flip_Box extends Base{
 
     /**
      * Get your widget name
@@ -51,7 +51,7 @@ class Flip_box_3d extends Base{
         $this->style_box_controls();
     }
 	protected function content_general_controls() {
-		$placeholder_image = ULTRA_ADDONS_URL . 'assets/images/user.png';
+		$placeholder_image = ULTRA_ADDONS_URL . 'assets/images/flip-thum.jpg';
 		
         $this->start_controls_section(
             'general_content',
@@ -236,7 +236,7 @@ class Flip_box_3d extends Base{
 	}
 	protected function style_design_controls() {
         $this->start_controls_section(
-            'flipbox_style',
+            '_ua_flipbox_style',
             [
                 'label'     => esc_html__( 'Color', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
@@ -244,7 +244,7 @@ class Flip_box_3d extends Base{
         );
         
       $this->add_control(
-			'flipbox_bg_front', [
+			'_ua_flipbox_bg_front', [
 				'label' => __( 'Front Background', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
@@ -260,11 +260,12 @@ class Flip_box_3d extends Base{
 				'selectors' => [
 						'{{WRAPPER}} .front-title' => 'color: {{VALUE}};',
 				],
+				'default'=>'#ffffff'
 			]
         );
 	
 		$this->add_control(
-			'flipbox_bg_back', [
+			'_ua_flipbox_bg_back', [
 				'label' => __( 'Back Background', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
@@ -274,12 +275,13 @@ class Flip_box_3d extends Base{
         );
 		
 		$this->add_control(
-			'flipbox_title_back', [
+			'_ua_flipbox_title_back', [
 				'label' => __( 'Back Title Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .back-title' => 'color: {{VALUE}};',
 				],
+				'default'=>'#ffffff'
 			]
         );
 		$this->add_control(
@@ -355,7 +357,7 @@ class Flip_box_3d extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .flip-container, .front, .back' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .front, .back' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -379,7 +381,7 @@ class Flip_box_3d extends Base{
 		$back_image 	= $settings['_ua_back_image'];
 	?>
 	
-	<div class="flip flip-<?php echo $settings['_ua_flipbox_animation_type']; ?>">
+	<div class="ua-flip flip-<?php echo $settings['_ua_flipbox_animation_type']; ?>">
 		<div class="front" style="background-image:url(<?php echo esc_url($front_image['url']);?>)">
 		   <h1 class="front-title"><?php echo esc_html($settings['_ua_flipbox_front_title']); ?></hi>
 		</div>
