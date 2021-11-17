@@ -348,10 +348,13 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
      * @since 1.1.0.3
      */
     public static function save_term_fields( $term_id ){
-        
+        $term = get_term_by('term_id',$term_id,self::$font_group_key);
+        $font_name = $term->name;
+        $trangient_name = "ua_font_trangient_" . $font_name;
         if( isset( $_POST[self::$meta_key] ) && is_array( $_POST[self::$meta_key] ) ){
             $meta_value = $_POST[self::$meta_key];
             update_term_meta( $term_id, self::$meta_key, $meta_value );
+            set_transient( $trangient_name, $fonts_args );
         }
     }
 

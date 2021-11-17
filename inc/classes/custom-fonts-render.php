@@ -64,6 +64,9 @@ class Custom_Fonts_Render {
      * 
      * We are getting help from method font_args_by_name()
      * and this method will return like bellow array
+     * 
+     * CAN BE NEED: $term = get_term_by('name',$name,Fonts::$font_group_key);
+     * 
 array (size=3)
   0 => 
     array (size=4)
@@ -82,14 +85,20 @@ array (size=3)
      * @return String with details font face.
      */
     public static function fontface_by_name( $font_name ){
+        $trangient_name = "ua_font_trangient_" . $font_name;
+        $fonts_args = get_transient( $trangient_name );
         
-        $fonts_args = self::font_args_by_name($font_name);
-        
+        if( ! $fonts_args ){
+            $fonts_args = self::font_args_by_name( $font_name );
+            if( empty( $fonts_args ) ) return;
+            
+            set_transient( $trangient_name, $fonts_args );
+        }
+
         if( empty( $fonts_args ) ) return;
 
         $fontface = "";
         foreach( $fonts_args as $args ){
-
             $fontface .= self::fontface_each_by_args( $args ) . "\n";
         }
 
@@ -166,8 +175,9 @@ array (size=3)
 
             $font_src = "";
             foreach( $urls as $key => $url ){
+                
                 $format = $formats[$key];
-                $font_src .= "url($url) format('$format'),";
+                $font_src .= ! empty( $url ) ? "url($url) format('$format')," : '';
             }
             $font_src = rtrim( $font_src, ',' );
             $font_details['src'] = $font_src;
