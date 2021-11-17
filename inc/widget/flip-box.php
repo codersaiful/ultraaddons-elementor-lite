@@ -16,6 +16,18 @@ use Elementor\Icons_Manager;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+/**
+ * Flip Box Widget
+ * Do something awesome for Service Page
+ * 
+ * Credit: https://codepen.io/Aoyue/pen/pLJqgE
+ * 
+ * 
+ * @since 1.1.0.7
+ * @package UltraAddons
+ * @author Saiful islam <codersaiful@gmail.com>
+ * @author Rafiul <apnar@email.ekhane>
+ */
 class Flip_Box extends Base{
 
     /**
