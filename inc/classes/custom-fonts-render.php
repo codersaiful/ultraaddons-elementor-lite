@@ -90,6 +90,8 @@ array (size=3)
         
         if( ! $fonts_args ){
             $fonts_args = self::font_args_by_name( $font_name );
+            if( empty( $fonts_args ) ) return;
+            
             set_transient( $trangient_name, $fonts_args );
         }
 
