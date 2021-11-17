@@ -178,7 +178,8 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
 
             ?>
 
-            <div class="font-variation-wrapper">
+            
+            <div class="font-variation-wrapper" data-variant_key="<?php echo esc_attr( $variant_key ); ?>">
                 <span class="ua-close-variant"><i><?php echo esc_html__( 'Delete Variant', 'ultraaddons' ); ?> </i>&#9986;</span>
                 <div class="form-field">
                     <label for="font-weight-<?php echo esc_attr( $variant_key ); ?>"><?php echo esc_html__( 'Font Weight' ); ?></label>
@@ -187,16 +188,17 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
                 </div> 
                 
                 <div class="fonts-upload-wrapper form-field">
-                    <label for="font-url-<?php echo esc_attr( $variant_key ); ?>"><?php echo esc_html__( 'Font File Upload' ); ?></label>
-
+                    <label><?php echo esc_html__( 'Font File Upload' ); ?> <span class="font-upload-add-font-button">+ add new font file</span></label>
+                    
+                    <div class="fonts-upload-wrapper-inside">
                     <?php
                     foreach( $urls as $key=>$url ){
                         $format = isset( $variant['format'][$key] ) ? $variant['format'][$key] : '';
                     ?>
-                    <div class="form-file-field form-field">
+                    <div class="form-file-field font-file-each-wrapper">
                         
                         <input name="<?php echo esc_attr( $name_prefix ); ?>[format][]" type="hidden" class="font-upload-format" value="<?php echo esc_attr( $format ); ?>">
-                        <input name="<?php echo esc_attr( $name_prefix ); ?>[url][]" type="text" value="<?php echo esc_attr( $url ); ?>" class="font-upload-url" id="font-url-<?php echo esc_attr( $variant_key ); ?>">
+                        <input name="<?php echo esc_attr( $name_prefix ); ?>[url][]" type="text" value="<?php echo esc_attr( $url ); ?>" class="font-upload-url" id="font-url-<?php echo esc_attr( $variant_key ); ?>" placeholder="<?php echo esc_attr( 'Font file URL...','ultraaddons' ); ?>">
                         <a href="#" class="ultraaddons-font-upload-button ua-button button">Upload Font</a>
                     </div> 
 
@@ -204,6 +206,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
                     }
                     
                     ?>
+                    </div>
                     <p class="ua-field-notice"><?php echo esc_html__( 'Upload your webfonts. Supported font type/format: woff2,woff,ttf etc so on.' ); ?></p>
 
                 </div>
@@ -216,6 +219,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
         }
         
         echo '</div>';
+        echo '<span class="ua-add-new-variant" id="ua-add-new-variant">+ Add new variant</span>';
     }
 
     /**
