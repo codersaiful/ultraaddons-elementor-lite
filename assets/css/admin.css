@@ -1166,7 +1166,7 @@ span.ua-add-new-variant {
     color: #607d8b;
     background: white;
     display: block;
-    padding: 10px;
+    padding: 10px 10px 12px 10px;
     cursor: pointer;
     box-shadow: 0 10px 30px #0000000d;
     /* transition: 1s all; */
