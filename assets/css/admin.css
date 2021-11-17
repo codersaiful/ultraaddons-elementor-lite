@@ -1093,7 +1093,22 @@ li#toplevel_page_ultraaddons-elementor-lite a.wp-has-submenu .wp-menu-image img 
 }
 a.ultraaddons-font-upload-button.ua-button.button {margin-top: 10px;}
 
-.form-file-field.form-field {
-    /* text-align: right; */
+.font-variation-wrapper span.ua-close-variant {
+    position: absolute;
+    right: 0;
+    background: #a7a7a7;
+    top: 0;
+    padding: 5px 10px 5px 10px;
+    color: white;
+    cursor: pointer;
 }
+.font-variation-wrapper span.ua-close-variant i{display: none;padding-right: 10px;transition: 1s all;}
+.font-variation-wrapper span.ua-close-variant:hover i{display: inline-block;}
+.font-variation-wrapper span.ua-close-variant:hover {
+    background:#d70000;
+}
+.all-variant-group-wrapper .font-variation-wrapper {
+    position: relative;
+}
+
 /* style for Custom font end */

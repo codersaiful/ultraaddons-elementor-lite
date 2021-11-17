@@ -179,15 +179,15 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
             ?>
 
             <div class="font-variation-wrapper">
-
+                <span class="ua-close-variant"><i><?php echo esc_html__( 'Delete Variant', 'ultraaddons' ); ?> </i>&#9986;</span>
                 <div class="form-field">
-                    <label for="font-weight"><?php echo esc_html__( 'Font Weight' ); ?></label><br>
-                    <?php self::render_font_weight( $font_weight, $name_prefix . '[weight]' ); ?>
-                    <p></p>
+                    <label for="font-weight-<?php echo esc_attr( $variant_key ); ?>"><?php echo esc_html__( 'Font Weight' ); ?></label>
+                    <?php self::render_font_weight( $font_weight, $name_prefix . '[weight]', 'font-weight-' . $variant_key ); ?>
+                    <p class="ua-field-notice"><?php echo esc_html__( 'Font weight for this variant.' ); ?></p>
                 </div> 
                 
                 <div class="fonts-upload-wrapper form-field">
-                    <label><?php echo esc_html__( 'Font File Upload' ); ?></label><br>
+                    <label for="font-url-<?php echo esc_attr( $variant_key ); ?>"><?php echo esc_html__( 'Font File Upload' ); ?></label>
 
                     <?php
                     foreach( $urls as $key=>$url ){
@@ -196,14 +196,15 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
                     <div class="form-file-field form-field">
                         
                         <input name="<?php echo esc_attr( $name_prefix ); ?>[format][]" type="hidden" class="font-upload-format" value="<?php echo esc_attr( $format ); ?>">
-                        <input name="<?php echo esc_attr( $name_prefix ); ?>[url][]" type="text" value="<?php echo esc_attr( $url ); ?>" class="font-upload-url">
+                        <input name="<?php echo esc_attr( $name_prefix ); ?>[url][]" type="text" value="<?php echo esc_attr( $url ); ?>" class="font-upload-url" id="font-url-<?php echo esc_attr( $variant_key ); ?>">
                         <a href="#" class="ultraaddons-font-upload-button ua-button button">Upload Font</a>
                     </div> 
+
                     <?php    
                     }
                     
                     ?>
-                    
+                    <p class="ua-field-notice"><?php echo esc_html__( 'Upload your webfonts. Supported font type/format: woff2,woff,ttf etc so on.' ); ?></p>
 
                 </div>
 
@@ -255,10 +256,12 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
         <option value="800">Extra-Bold 800</option>
         <option value="900">Ultra-Bold 900</option>
      *
+     * @param Srging $name  Actually field name, need for form submission
+     * @param String $tag_id_selector id selector attribute, Need for label tag
      * @param String $current_value
      * @return void
      */
-    public static function render_font_weight( $current_value = null, $name = 'ua_fonts[variants][0][weight]'  ){
+    public static function render_font_weight( $current_value = null, $name = 'ua_fonts[variants][0][weight]', $tag_id_selector  ){
         
         $options = $default = array(
             '100'     => 'Thin 100',
@@ -285,7 +288,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
         //As I removed wp_parse_args() I checked it over if statement
         $options = is_array( $options ) ? $options : array();
 
-        self::rennder_select( $options, $current_value, $name, 'font-weight' );
+        self::rennder_select( $options, $current_value, $name, $tag_id_selector );
         //self::rennder_select( $options, $current_value, 'ua_fonts[weight]', 'font-weight' );
         //self::rennder_select( $options, null, 'ua_fonts[fallback]', 'font-display' );
 
