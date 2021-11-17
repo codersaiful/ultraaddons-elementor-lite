@@ -435,20 +435,19 @@ class Flip_Box extends Base{
 				'front_image',
 				[
 					'style' => 'background-image:url('. esc_url($front_image['url']) .')',
-					'class' => 'front',
 				]
 			);
 		}
 	?>
 	
 	<div class="ua-flip flip-<?php echo $settings['_ua_flipbox_animation_type']; ?>">
-		<div <?php echo $this->get_render_attribute_string( 'front_image' );?>>
+		<div class="front" <?php echo $this->get_render_attribute_string( 'front_image' );?>>
 		   <?php
 		   echo '<' . $settings['_ua_front_title_tag'] . ' class="front-title">' . esc_html($settings['_ua_flipbox_front_title']) . 
 				'</' . $settings['_ua_front_title_tag'] . '>';
 		   ?>
 		</div>
-		<div <?php echo $this->get_render_attribute_string( 'back_image' );?>>
+		<div class="back" <?php echo $this->get_render_attribute_string( 'back_image' );?>>
 		   <?php
 		   echo '<' . $settings['_ua_back_title_tag'] . ' class="back-title">' . esc_html($settings['_ua_flipbox_back_title']) . 
 				'</' . $settings['_ua_back_title_tag'] . '>';
