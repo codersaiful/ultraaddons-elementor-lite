@@ -391,6 +391,14 @@ $widgetsArray = [
                 __( 'Basic', 'ultraaddons' ),
             ],
     ],
+	'Step_Flow' => [
+            'name'  => __( 'Step Flow', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-navigation-horizontal',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
 
     
 ];
