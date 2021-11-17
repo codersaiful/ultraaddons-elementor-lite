@@ -102,6 +102,32 @@
             fontFormatField.val(ext);
         });
 
+        /**
+         * Deleting any variant
+         * using close button of variant
+         * 
+         * @since 1.1.0.7
+         * @author Saiful<codersaiful@gmail.com>
+         */
+        $(document.body).on('click','.ua-close-variant',function(){
+            var wrapper = $(this).closest('.font-variation-wrapper');
+
+            var count = $('.all-variant-group-wrapper .font-variation-wrapper').length;
+
+            if(count == 1){
+                alert("Sorry, Unable to delete all Variant.");
+                return false;
+            }
+
+            var permission = confirm( "Are you sure?" );
+            if(permission){
+                $('.all-variant-group-wrapper').attr('data-count',count-1);
+                wrapper.remove();
+            }
+
+        });
+
+
     });
 
 
