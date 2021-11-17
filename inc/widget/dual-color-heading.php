@@ -97,7 +97,7 @@ class Dual_Color_Heading extends Base{
 
 				'label'    => esc_html__( 'Before Text', 'ultraaddons' ),
 				'type'     => Controls_Manager::TEXT,
-				'selector' => '{{WRAPPER}} .tb-heading-text',
+				'selector' => '{{WRAPPER}} .ua-heading-text',
 				'dynamic'  => [
 					'active' => true,
 				],
@@ -109,7 +109,7 @@ class Dual_Color_Heading extends Base{
 			[
 				'label'    => esc_html__( 'Highlighted Text', 'ultraaddons' ),
 				'type'     => Controls_Manager::TEXT,
-				'selector' => '{{WRAPPER}} .tb-highlight-text',
+				'selector' => '{{WRAPPER}} .ua-highlight-text',
 				'dynamic'  => [
 					'active' => true,
 				],
@@ -124,7 +124,7 @@ class Dual_Color_Heading extends Base{
 				'dynamic'  => [
 					'active' => true,
 				],
-				'selector' => '{{WRAPPER}} .tb-dual-heading-text',
+				'selector' => '{{WRAPPER}} .ua-dual-heading-text',
 			]
 		);
 		$this->add_control(
@@ -187,7 +187,7 @@ class Dual_Color_Heading extends Base{
 				'label_off'    => esc_html__( 'Inline', 'ultraaddons' ),
 				'return_value' => 'yes',
 				'default'      => 'no',
-				'prefix_class' => 'tb-stack-desktop-',
+				'prefix_class' => 'ua-stack-desktop-',
 			]
 		);
 		$this->add_control(
@@ -203,9 +203,37 @@ class Dual_Color_Heading extends Base{
 					'mobile' => esc_html__( 'For Mobile Only', 'ultraaddons' ),
 				],
 				'condition'    => [
-					'heading_layout!' => 'yes',
+					'_ua_heading_layout!' => 'yes',
 				],
-				'prefix_class' => 'tb-heading-stack-',
+				'prefix_class' => 'ua-heading-stack-',
+			]
+		);
+		$this->add_responsive_control(
+			'_ua_heading_margin',
+			[
+				'label'      => esc_html__( 'Spacing Between Headings', 'ultraaddons' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'range'      => [
+					'px' => [
+						'min' => 0,
+						'max' => 200,
+					],
+				],
+				'default'    => [
+					'size' => '10',
+					'unit' => 'px',
+				],
+				'selectors'  => [
+					'{{WRAPPER}} .ua-before-heading' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .ua-after-heading'  => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}.ua-stack-desktop-yes .ua-before-heading' => 'margin-bottom: {{SIZE}}{{UNIT}}; margin-right: 0px; display: inline-block;',
+					'{{WRAPPER}}.ua-stack-desktop-yes .ua-after-heading' => 'margin-top: {{SIZE}}{{UNIT}}; margin-left: 0px; display: inline-block;',
+					'(tablet){{WRAPPER}}.ua-heading-stack-tablet .ua-before-heading ' => 'margin-bottom: {{SIZE}}{{UNIT}}; margin-right: 0px; display: inline-block;',
+					'(tablet){{WRAPPER}}.ua-heading-stack-tablet .ua-after-heading ' => 'margin-top: {{SIZE}}{{UNIT}}; margin-left: 0px; display: inline-block;',
+					'(mobile){{WRAPPER}}.ua-heading-stack-mobile .ua-before-heading ' => 'margin-bottom: {{SIZE}}{{UNIT}}; margin-right: 0px; display: inline-block;',
+					'(mobile){{WRAPPER}}.ua-heading-stack-mobile .ua-after-heading ' => 'margin-top: {{SIZE}}{{UNIT}}; margin-left: 0px; display: inline-block;',
+				],
 			]
 		);
 		
@@ -238,8 +266,8 @@ class Dual_Color_Heading extends Base{
 					<?php endif; ?>>
 				<?php } ?>
 						<span class="ua-before-heading"><span class="ua-dual-heading-text ua-first-text">
-						<?php echo $this->get_settings_for_display( '_ua_dual_before_heading_text'); ?></span></span><span class="tb-adv-heading-stack"><span class="ua-dual-heading-text ua-highlight-text">
-						<?php echo $this->get_settings_for_display( '_ua_dual_second_heading_text'); ?></span></span><?php if ( ! empty( $settings['after_heading_text'] ) ) { ?><span class="tb-after-heading"><span class="tb-dual-heading-text tb-third-text"><?php echo $this->get_settings_for_display( 'after_heading_text'); ?></span></span><?php } ?>
+						<?php echo $this->get_settings_for_display( '_ua_dual_before_heading_text'); ?></span></span><span class="ua-adv-heading-stack"><span class="ua-dual-heading-text ua-highlight-text">
+						<?php echo $this->get_settings_for_display( '_ua_dual_second_heading_text'); ?></span></span><?php if ( ! empty( $settings['after_heading_text'] ) ) { ?><span class="ua-after-heading"><span class="ua-dual-heading-text ua-third-text"><?php echo $this->get_settings_for_display( 'after_heading_text'); ?></span></span><?php } ?>
 				<?php if ( ! empty( $settings['_ua_dual_heading_link']['url'] ) ) { ?>
 					</a>
 				<?php } ?>
