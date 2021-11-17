@@ -413,7 +413,6 @@ class Flip_Box extends Base{
 			]
 		);
 		
-		
 		$this->end_controls_section();
 	}
 

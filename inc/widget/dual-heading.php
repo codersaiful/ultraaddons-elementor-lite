@@ -1,0 +1,195 @@
+<?php 
+namespace UltraAddons\Widget;
+
+use Elementor\Widget_Base;
+use Elementor\Controls_Manager;
+use Elementor\Core\Schemes\Color;
+use Elementor\Group_Control_Typography;
+use Elementor\Core\Schemes\Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+use Elementor\Group_Control_Border;
+use Elementor\Group_Control_Box_Shadow;
+use Elementor\Group_Control_Background;
+use Elementor\Group_Control_Image_Size;
+use Elementor\Icons_Manager;
+
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
+/**
+ * Dual Color Heading Widget
+ * Do something awesome with flipbox elements
+ * 
+ * Credit: https://codepen.io/Aoyue/pen/pLJqgE
+ * 
+ * 
+ * @since 1.1.0.7
+ * @package UltraAddons
+ * @author Saiful islam <codersaiful@gmail.com>
+ * @author Rafiul <bmrafiul.alam@gmail.com>
+ */
+class Dual_Color_Heading extends Base{
+
+    /**
+     * Get your widget name
+     *
+     * Retrieve oEmbed widget title.
+     *
+     * @since 1.0.0
+     * @access public
+     *
+     * @return string keywords
+     */
+    public function get_keywords() {
+        return [ 'ultraaddons', 'ua', 'heading', 'dual', 'header', 'title' ];
+    }
+	
+	 /**
+     * Register widget controls.
+     *
+     * Adds different input fields to allow the user to change and customize the widget settings.
+     *
+     * @since 1.0.0
+     * @access protected
+     */
+    protected function _register_controls() {
+        //For Content Section
+        $this->dual_heading_content_controls();
+        //For Design Section Style Tab
+        //$this->style_design_controls();
+		//For Typography Style Tab
+        //$this->style_typography_controls();
+		//For Box Style Tab
+        //$this->style_box_controls();
+    }
+	protected function dual_heading_content_controls() {
+		
+		
+        $this->start_controls_section(
+            '_ua_dual_heading_content',
+            [
+                'label'     => esc_html__( 'Content', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+		$this->add_control(
+			'_ua_dual_tag_selection',
+			[
+				'label'   => esc_html__( 'Select Tag', 'ultraaddons' ),
+				'type'    => Controls_Manager::SELECT,
+				'options' => [
+					'h1'   => esc_html__( 'H1', 'ultraaddons' ),
+					'h2'   => esc_html__( 'H2', 'ultraaddons' ),
+					'h3'   => esc_html__( 'H3', 'ultraaddons' ),
+					'h4'   => esc_html__( 'H4', 'ultraaddons' ),
+					'h5'   => esc_html__( 'H5', 'ultraaddons' ),
+					'h6'   => esc_html__( 'H6', 'ultraaddons' ),
+					'div'  => esc_html__( 'div', 'ultraaddons' ),
+					'span' => esc_html__( 'span', 'ultraaddons' ),
+					'p'    => esc_html__( 'p', 'ultraaddons' ),
+				],
+				'default' => 'h3',
+			]
+		);
+		$this->add_control(
+			'_ua_dual_before_heading_text',
+			[
+
+				'label'    => esc_html__( 'Before Text', 'ultraaddons' ),
+				'type'     => Controls_Manager::TEXT,
+				'selector' => '{{WRAPPER}} .tb-heading-text',
+				'dynamic'  => [
+					'active' => true,
+				],
+				'default'  => esc_html__( 'I love', 'ultraaddons' ),
+			]
+		);
+		$this->add_control(
+			'_ua_dual_second_heading_text',
+			[
+				'label'    => esc_html__( 'Highlighted Text', 'ultraaddons' ),
+				'type'     => Controls_Manager::TEXT,
+				'selector' => '{{WRAPPER}} .tb-highlight-text',
+				'dynamic'  => [
+					'active' => true,
+				],
+				'default'  => esc_html__( 'this website', 'ultraaddons' ),
+			]
+		);
+		$this->add_control(
+			'_ua_dual_after_heading_text',
+			[
+				'label'    => esc_html__( 'After Text', 'ultraaddons' ),
+				'type'     => Controls_Manager::TEXT,
+				'dynamic'  => [
+					'active' => true,
+				],
+				'selector' => '{{WRAPPER}} .tb-dual-heading-text',
+			]
+		);
+		$this->add_control(
+			'_ua_dual_heading_link',
+			[
+				'label'       => esc_html__( 'Link', 'ultraaddons' ),
+				'type'        => Controls_Manager::URL,
+				'placeholder' => esc_html__( 'https://your-link.com', 'ultraaddons' ),
+				'dynamic'     => [
+					'active' => true,
+				],
+				'default'     => [
+					'url' => '',
+				],
+			]
+		);
+		$this->end_controls_section();
+	}
+	/* protected function style_typography_controls() {
+        $this->start_controls_section(
+            'flipbox_typo_style',
+            [
+                'label'     => esc_html__( 'Typography', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		
+		
+		
+		$this->end_controls_section();
+	}
+	protected function style_box_controls() {
+        $this->start_controls_section(
+            '_ua_flipbox_box_style',
+            [
+                'label'     => esc_html__( 'Box Style', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		
+		$this->end_controls_section();
+	} */
+
+   protected function render() {
+		$settings = $this->get_settings_for_display();
+		?>
+		<div class="ua-module-content ua-dual-color-heading">
+			<<?php echo $settings['_ua_dual_tag_selection']; ?>>
+				<?php if ( ! empty( $settings['_ua_dual_heading_link']['url'] ) ) { ?>
+					<a href="<?php echo esc_url( $settings['_ua_dual_heading_link']['url'] ); ?>"
+					<?php if ( 'on' == $settings['_ua_dual_heading_link']['is_external'] ): ?>
+						target="_blank"
+					<?php endif; ?>
+					<?php if ( 'on' == $settings['_ua_dual_heading_link']['nofollow'] ): ?>
+						rel="nofollow"
+					<?php endif; ?>>
+				<?php } ?>
+						<span class="ua-before-heading"><span class="ua-dual-heading-text ua-first-text">
+						<?php echo $this->get_settings_for_display( '_ua_dual_before_heading_text'); ?></span></span><span class="tb-adv-heading-stack"><span class="ua-dual-heading-text ua-highlight-text">
+						<?php echo $this->get_settings_for_display( '_ua_dual_second_heading_text'); ?></span></span><?php if ( ! empty( $settings['after_heading_text'] ) ) { ?><span class="tb-after-heading"><span class="tb-dual-heading-text tb-third-text"><?php echo $this->get_settings_for_display( 'after_heading_text'); ?></span></span><?php } ?>
+				<?php if ( ! empty( $settings['_ua_dual_heading_link']['url'] ) ) { ?>
+					</a>
+				<?php } ?>
+			</<?php echo $settings['_ua_dual_tag_selection']; ?>>
+		</div>
+		<?php
+	}
+}

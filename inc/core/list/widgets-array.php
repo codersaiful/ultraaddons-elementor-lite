@@ -383,6 +383,14 @@ $widgetsArray = [
                 __( 'Basic', 'ultraaddons' ),
             ],
     ],
+	'Dual_Color_Heading' => [
+            'name'  => __( 'Dual Color Heading', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-heading',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
 
     
 ];
