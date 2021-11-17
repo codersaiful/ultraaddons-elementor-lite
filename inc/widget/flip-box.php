@@ -107,11 +107,11 @@ class Flip_Box extends Base{
 				'options'     => [
 					'none' => [
 						'title' => esc_html__( 'None', 'ultraaddons' ),
-						'icon'  => 'fa fa-ban',
+						'icon'  => 'eicon-ban',
 					],
 					'back_image' => [
 						'title' => esc_html__( 'Image', 'ultraaddons' ),
-						'icon'  => 'fas fa-images',
+						'icon'  => 'eicon-image-rollover',
 					],
 				],
 				'default'     => 'icon',
@@ -426,7 +426,7 @@ class Flip_Box extends Base{
 			$this->add_render_attribute(
 				'back_image',
 				[
-					'style' => 'background-image:url('. $back_image['url'] .')',
+					'style' => 'background-image:url('. esc_url($back_image['url']) .')',
 					'class' => 'back',
 				]
 			);
@@ -435,7 +435,7 @@ class Flip_Box extends Base{
 			$this->add_render_attribute(
 				'front_image',
 				[
-					'style' => 'background-image:url('. $front_image['url'] .')',
+					'style' => 'background-image:url('. esc_url($front_image['url']) .')',
 					'class' => 'front',
 				]
 			);
