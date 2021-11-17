@@ -63,7 +63,7 @@ class Flip_Box extends Base{
         $this->style_box_controls();
     }
 	protected function content_general_controls() {
-		$placeholder_image = ULTRA_ADDONS_URL . 'assets/images/flip-thum.jpg';
+		$placeholder_image = ULTRA_ADDONS_URL . 'assets/images/flip-thumb.jpg';
 		
         $this->start_controls_section(
             'general_content',
@@ -409,8 +409,7 @@ class Flip_Box extends Base{
 			[
 				'name' => 'box_shadow',
 				'label' => __( 'Box Shadow', 'ultraaddons' ),
-				'selector' => '{{WRAPPER}} .ua-flip .front',
-				'selector' => '{{WRAPPER}} .ua-flip .back',
+				'selector' => '{{WRAPPER}} .ua-flip .front, .ua-flip .back',
 			]
 		);
 		
