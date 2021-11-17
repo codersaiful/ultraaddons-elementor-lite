@@ -421,16 +421,35 @@ class Flip_Box extends Base{
 		$settings 		= $this->get_settings_for_display();
 		$front_image 	= $settings['_ua_front_image'];
 		$back_image 	= $settings['_ua_back_image'];
+		
+		if ( ! empty( $back_image['url'] ) ) {
+			$this->add_render_attribute(
+				'back_image',
+				[
+					'style' => 'background-image:url('. $back_image['url'] .')',
+					'class' => 'back',
+				]
+			);
+		}
+		if ( ! empty( $front_image['url'] ) ) {
+			$this->add_render_attribute(
+				'front_image',
+				[
+					'style' => 'background-image:url('. $front_image['url'] .')',
+					'class' => 'front',
+				]
+			);
+		}
 	?>
 	
 	<div class="ua-flip flip-<?php echo $settings['_ua_flipbox_animation_type']; ?>">
-		<div class="front" style="background-image:url(<?php echo esc_url($front_image['url']);?>)">
+		<div <?php echo $this->get_render_attribute_string( 'front_image' );?>>
 		   <?php
 		   echo '<' . $settings['_ua_front_title_tag'] . ' class="front-title">' . esc_html($settings['_ua_flipbox_front_title']) . 
 				'</' . $settings['_ua_front_title_tag'] . '>';
 		   ?>
 		</div>
-		<div class="back" style="background-image:url(<?php echo esc_url($back_image['url']);?>)">
+		<div <?php echo $this->get_render_attribute_string( 'back_image' );?>>
 		   <?php
 		   echo '<' . $settings['_ua_back_title_tag'] . ' class="back-title">' . esc_html($settings['_ua_flipbox_back_title']) . 
 				'</' . $settings['_ua_back_title_tag'] . '>';
