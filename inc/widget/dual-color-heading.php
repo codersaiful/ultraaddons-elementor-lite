@@ -9,6 +9,7 @@ use Elementor\Core\Schemes\Typography;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
+use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Icons_Manager;
@@ -19,10 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * Dual Color Heading Widget
  * Do something awesome with heading elements
- * 
- * Credit:
- * 
- * 
+ *  
  * @since 1.1.0.7
  * @package UltraAddons
  * @author Saiful islam <codersaiful@gmail.com>
@@ -58,9 +56,7 @@ class Dual_Color_Heading extends Base{
         //For Design Section Style Tab
         $this->dual_color_heading_style_controls();
 		//For Typography Style Tab
-        //$this->style_typography_controls();
-		//For Box Style Tab
-        //$this->style_box_controls();
+        $this->heading_style_controls();
     }
 	protected function dual_heading_content_controls() {
 		
@@ -91,6 +87,7 @@ class Dual_Color_Heading extends Base{
 				'default' => 'h3',
 			]
 		);
+		
 		$this->add_control(
 			'_ua_dual_before_heading_text',
 			[
@@ -160,15 +157,15 @@ class Dual_Color_Heading extends Base{
 				'options'   => [
 					'left'   => [
 						'title' => esc_html__( 'Left', 'ultraaddons' ),
-						'icon'  => 'fa fa-align-left',
+						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
 						'title' => esc_html__( 'Center', 'ultraaddons' ),
-						'icon'  => 'fa fa-align-center',
+						'icon'  => 'eicon-text-align-center',
 					],
 					'right'  => [
 						'title' => esc_html__( 'Right', 'ultraaddons' ),
-						'icon'  => 'fa fa-align-right',
+						'icon'  => 'eicon-text-align-right',
 					],
 				],
 				'default'   => 'left',
@@ -239,14 +236,74 @@ class Dual_Color_Heading extends Base{
 		
 		$this->end_controls_section();
 	}
-	protected function style_box_controls() {
+	protected function heading_style_controls() {
         $this->start_controls_section(
-            '_ua_flipbox_box_style',
-            [
-                'label'     => esc_html__( 'Box Style', 'ultraaddons' ),
-                'tab'       => Controls_Manager::TAB_STYLE,
-            ]
-        );
+			'heading_style_fields',
+			[
+				'label' => esc_html__( 'Heading Style', 'ultraaddons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->start_controls_tabs( 'tabs_heading' );
+
+		$this->start_controls_tab(
+			'tab_heading',
+			[
+				'label' => esc_html__( 'Normal', 'ultraaddons' ),
+			]
+		);
+
+		$this->add_control(
+			'first_heading_color',
+			[
+				'label'     => esc_html__( 'Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#032e42',
+				'selectors' => [
+					'{{WRAPPER}} .ua-dual-heading-text' => 'color: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name'     => 'before_heading_text_typography',
+				'selector' => '{{WRAPPER}} .ua-dual-heading-text',
+			]
+		);
+		
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'tab_highlight',
+			[
+				'label' => esc_html__( 'Highlight', 'ultraaddons' ),
+			]
+		);
+
+		$this->add_control(
+			'second_heading_color',
+			[
+				'label'     => esc_html__( 'Highlight Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#d83030',
+				'selectors' => [
+					'{{WRAPPER}} .ua-dual-heading-text.ua-highlight-text' => 'color: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name'     => 'second_heading_text_typography',
+				'selector' => '{{WRAPPER}} .ua-dual-heading-text.ua-highlight-text',
+			]
+		);
+		
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
 		
 		$this->end_controls_section();
 	}
@@ -264,13 +321,27 @@ class Dual_Color_Heading extends Base{
 					<?php if ( 'on' == $settings['_ua_dual_heading_link']['nofollow'] ): ?>
 						rel="nofollow"
 					<?php endif; ?>>
-				<?php } ?>
-						<span class="ua-before-heading"><span class="ua-dual-heading-text ua-first-text">
-						<?php echo $this->get_settings_for_display( '_ua_dual_before_heading_text'); ?></span></span><span class="ua-adv-heading-stack"><span class="ua-dual-heading-text ua-highlight-text">
-						<?php echo $this->get_settings_for_display( '_ua_dual_second_heading_text'); ?></span></span><?php if ( ! empty( $settings['after_heading_text'] ) ) { ?><span class="ua-after-heading"><span class="ua-dual-heading-text ua-third-text"><?php echo $this->get_settings_for_display( 'after_heading_text'); ?></span></span><?php } ?>
-				<?php if ( ! empty( $settings['_ua_dual_heading_link']['url'] ) ) { ?>
-					</a>
-				<?php } ?>
+					<?php } ?>
+				<span class="ua-before-heading">
+					<span class="ua-dual-heading-text ua-first-text">
+					<?php echo $settings['_ua_dual_before_heading_text']; ?>
+					</span>
+				</span>
+				<span class="ua-adv-heading-stack">
+					<span class="ua-dual-heading-text ua-highlight-text">
+					<?php echo $settings['_ua_dual_second_heading_text']; ?>
+					</span>
+				</span>
+				<?php if ( ! empty( $settings['_ua_dual_after_heading_text'] ) ): ?>
+				<span class="ua-after-heading">
+					<span class="ua-dual-heading-text ua-third-text">
+					<?php echo $settings['_ua_dual_after_heading_text']; ?>
+					</span>
+				</span>
+				<?php endif; ?>
+				<?php if ( ! empty( $settings['_ua_dual_heading_link']['url'] ) ): ?>
+				</a>
+				<?php endif ?>
 			</<?php echo $settings['_ua_dual_tag_selection']; ?>>
 		</div>
 		<?php
