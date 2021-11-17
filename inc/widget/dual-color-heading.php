@@ -18,9 +18,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
  * Dual Color Heading Widget
- * Do something awesome with flipbox elements
+ * Do something awesome with heading elements
  * 
- * Credit: https://codepen.io/Aoyue/pen/pLJqgE
+ * Credit:
  * 
  * 
  * @since 1.1.0.7
@@ -56,7 +56,7 @@ class Dual_Color_Heading extends Base{
         //For Content Section
         $this->dual_heading_content_controls();
         //For Design Section Style Tab
-        //$this->style_design_controls();
+        $this->dual_color_heading_style_controls();
 		//For Typography Style Tab
         //$this->style_typography_controls();
 		//For Box Style Tab
@@ -143,16 +143,71 @@ class Dual_Color_Heading extends Base{
 		);
 		$this->end_controls_section();
 	}
-	/* protected function style_typography_controls() {
+	 protected function dual_color_heading_style_controls() {
         $this->start_controls_section(
-            'flipbox_typo_style',
+            '_ua_dual_color_heading_style',
             [
-                'label'     => esc_html__( 'Typography', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
 		
+		$this->add_responsive_control(
+			'dual_color_alignment',
+			[
+				'label'     => esc_html__( 'Alignment', 'ultraaddons' ),
+				'type'      => Controls_Manager::CHOOSE,
+				'options'   => [
+					'left'   => [
+						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'icon'  => 'fa fa-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'ultraaddons' ),
+						'icon'  => 'fa fa-align-center',
+					],
+					'right'  => [
+						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'icon'  => 'fa fa-align-right',
+					],
+				],
+				'default'   => 'left',
+				'selectors' => [
+					'{{WRAPPER}} .ua-dual-color-heading' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
 		
+		$this->add_control(
+			'_ua_heading_layout',
+			[
+				'label'        => esc_html__( 'Layout', 'ultraaddons' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => esc_html__( 'Stack', 'ultraaddons' ),
+				'label_off'    => esc_html__( 'Inline', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default'      => 'no',
+				'prefix_class' => 'tb-stack-desktop-',
+			]
+		);
+		$this->add_control(
+			'_ua_heading_stack_on',
+			[
+				'label'        => esc_html__( 'Responsive Support', 'ultraaddons' ),
+				'description'  => esc_html__( 'Choose on what breakpoint the heading will stack.', 'ultraaddons' ),
+				'type'         => Controls_Manager::SELECT,
+				'default'      => 'none',
+				'options'      => [
+					'none'   => esc_html__( 'No', 'ultraaddons' ),
+					'tablet' => esc_html__( 'For Tablet & Mobile', 'ultraaddons' ),
+					'mobile' => esc_html__( 'For Mobile Only', 'ultraaddons' ),
+				],
+				'condition'    => [
+					'heading_layout!' => 'yes',
+				],
+				'prefix_class' => 'tb-heading-stack-',
+			]
+		);
 		
 		$this->end_controls_section();
 	}
@@ -166,7 +221,7 @@ class Dual_Color_Heading extends Base{
         );
 		
 		$this->end_controls_section();
-	} */
+	}
 
    protected function render() {
 		$settings = $this->get_settings_for_display();
