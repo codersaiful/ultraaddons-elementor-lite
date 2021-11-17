@@ -127,6 +127,71 @@
 
         });
 
+       
+        $(document.body).on('click','#ua-add-new-variant',function(){
+
+            var wrapper = $('.all-variant-group-wrapper');
+            var count = wrapper.find('.font-variation-wrapper').length;
+            var variant_key = count + 5;
+            var html = `
+                <div class="font-variation-wrapper" data-variant_key="`+ variant_key +`">
+                    <span class="ua-close-variant"><i>Delete Variant </i>✂</span>
+                    <div class="form-field">
+                        <label for="font-weight-`+ variant_key +`">Font Weight</label>
+                                <select id="font-weight-`+ variant_key +`" name="ua_fonts[variants][`+ variant_key +`][weight]">
+                        <option value="100">Thin 100</option>
+                            <option value="200">Extra-Light 200</option>
+                            <option value="300">Light 300</option>
+                            <option value="400" selected="">Normal 400</option>
+                            <option value="500">Medium 500</option>
+                            <option value="600">Semi-Bold 600</option>
+                            <option value="700">Bold 700</option>
+                            <option value="800">Extra-Bold 800</option>
+                            <option value="900">Ultra-Bold 900</option>
+                        </select>
+                                <p class="ua-field-notice">Font weight for this variant.</p>
+                    </div> 
+                    
+                    <div class="fonts-upload-wrapper form-field">
+                        <label>Font File Upload <span class="font-upload-add-font-button">+add new font file</span></label>
+                        
+                        <div class="fonts-upload-wrapper-inside">
+                                            <div class="form-file-field font-file-each-wrapper">
+                            
+                            <input name="ua_fonts[variants][`+ variant_key +`][format][]" type="hidden" class="font-upload-format" value="">
+                            <input name="ua_fonts[variants][`+ variant_key +`][url][]" type="text" value="" class="font-upload-url" id="font-url-0" placeholder="Font file URL...">
+                            <a href="#" class="ultraaddons-font-upload-button ua-button button">Upload Font</a>
+                        </div> 
+
+                                            </div>
+                        <p class="ua-field-notice">Upload your webfonts. Supported font type/format: woff2,woff,ttf etc so on.</p>
+
+                    </div>
+
+                </div>
+                `; 
+                wrapper.append(html).attr('data-count',count+1);
+
+
+        });
+
+        /**
+         * Adding new font file field
+         * 
+         * @since 1.1.0.7
+         */
+        $(document.body).on('click','span.font-upload-add-font-button',function(){
+            var wrapper = $(this).closest('.font-variation-wrapper');
+            var count = wrapper.data('variant_key');
+
+            var html = '<div class="form-file-field font-file-each-wrapper">';     
+            html += '<input name="ua_fonts[variants][' + count + '][format][]" type="hidden" class="font-upload-format" value="">';
+            html += '<input name="ua_fonts[variants][' + count + '][url][]" type="text" value="" class="font-upload-url" id="font-url-' + count + '">';
+            html += '<a href="#" class="ultraaddons-font-upload-button ua-button button">Upload Font</a>';
+            html += '</div>';
+
+            wrapper.find('.fonts-upload-wrapper-inside').append(html);
+        });
 
     });
 

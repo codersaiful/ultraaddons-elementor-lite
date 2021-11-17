@@ -1091,7 +1091,7 @@ li#toplevel_page_ultraaddons-elementor-lite a.wp-has-submenu .wp-menu-image img 
     border: 1px solid #ededed;
     box-shadow: 0 10px 30px #0000000d;
 }
-a.ultraaddons-font-upload-button.ua-button.button {margin-top: 10px;}
+/* a.ultraaddons-font-upload-button.ua-button.button {margin-top: 10px;} */
 
 .font-variation-wrapper span.ua-close-variant {
     position: absolute;
@@ -1110,5 +1110,72 @@ a.ultraaddons-font-upload-button.ua-button.button {margin-top: 10px;}
 .all-variant-group-wrapper .font-variation-wrapper {
     position: relative;
 }
+.form-file-field.font-file-each-wrapper {
+    background: gainsboro;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    margin-bottom: 10px;
+}
+.form-file-field.font-file-each-wrapper .font-upload-url {
+    border: 1px solid #ddd;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-right: 0;
+    border-right: 0 none;
+}
+a.ultraaddons-font-upload-button.ua-button.button {
+    border: 1px solid #ddd;
+    background: #f0f0f1;
+    color: black;
+    width: 96px;
+    border-left: 0 none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+span.font-upload-add-font-button {
+    float: right;
+    cursor: pointer;
+    color: #2271b0;
+    font-weight: 500;
+}
+span.font-upload-add-font-button:hover {
+    color: #2d8ddb;
+}
+.fonts-upload-wrapper.form-field>label {
+    margin-bottom: 15px;
+    display: block;
+}
+#edittag .font-variation-wrapper {
+    padding: 15px;
+}
 
+#edittag .font-variation-wrapper label {
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+#edittag .font-variation-wrapper p.ua-field-notice {
+    color: #9b9b9b;
+    margin-bottom: 10px;
+}
+span.ua-add-new-variant {
+    font-size: 20px;
+    color: #607d8b;
+    background: white;
+    display: block;
+    padding: 10px;
+    cursor: pointer;
+    box-shadow: 0 10px 30px #0000000d;
+    /* transition: 1s all; */
+    margin-bottom: 20px;
+}
+span.ua-add-new-variant:hover {
+    color: white;
+    background: #892c912e;
+    box-shadow: 0 10px 30px #0000000d;
+
+}
 /* style for Custom font end */
