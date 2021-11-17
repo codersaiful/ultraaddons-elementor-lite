@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
  * Flip Box Widget
- * Do something awesome for Service Page
+ * Do something awesome with flipbox elements
  * 
  * Credit: https://codepen.io/Aoyue/pen/pLJqgE
  * 
@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * @since 1.1.0.7
  * @package UltraAddons
  * @author Saiful islam <codersaiful@gmail.com>
- * @author Rafiul <apnar@email.ekhane>
+ * @author Rafiul <bmrafiul.alam@gmail.com>
  */
 class Flip_Box extends Base{
 
@@ -63,7 +63,7 @@ class Flip_Box extends Base{
         $this->style_box_controls();
     }
 	protected function content_general_controls() {
-		$placeholder_image = ULTRA_ADDONS_URL . 'assets/images/flip-thum.jpg';
+		$placeholder_image = ULTRA_ADDONS_URL . 'assets/images/flip-thumb.jpg';
 		
         $this->start_controls_section(
             'general_content',
@@ -409,8 +409,7 @@ class Flip_Box extends Base{
 			[
 				'name' => 'box_shadow',
 				'label' => __( 'Box Shadow', 'ultraaddons' ),
-				'selector' => '{{WRAPPER}} .ua-flip .front,',
-				'selector' => '{{WRAPPER}} .ua-flip .back',
+				'selector' => '{{WRAPPER}} .ua-flip .front, .ua-flip .back',
 			]
 		);
 		
