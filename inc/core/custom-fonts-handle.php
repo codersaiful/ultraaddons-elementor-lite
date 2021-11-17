@@ -193,6 +193,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
                     <div class="fonts-upload-wrapper-inside">
                     <?php
                     foreach( $urls as $key=>$url ){
+                        if( empty( $url ) ) continue;
                         $format = isset( $variant['format'][$key] ) ? $variant['format'][$key] : '';
                     ?>
                     <div class="form-file-field font-file-each-wrapper">
