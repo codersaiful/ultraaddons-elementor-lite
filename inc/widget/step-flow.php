@@ -53,9 +53,9 @@ class Step_Flow extends Base{
         //For Content Section
         $this->content_controls();
         //For Design Section Style Tab
-        //$this->style_design_controls();
+        $this->step_flow_style_controls();
 		//For Typography Style Tab
-        //$this->style_typography_controls();
+        $this->icon_style_controls();
 		//For Box Style Tab
         //$this->style_box_controls();
     }
@@ -109,39 +109,176 @@ class Step_Flow extends Base{
 				'label_block' => true,
 			]
 		);
+		$this->add_control(
+			'_ua_step_flow_direction',
+			[
+				'label' => __( 'Direction Arrow', 'ultraaddons' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => __( 'Show', 'ultraaddons' ),
+				'label_off' => __( 'Hide', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+		$this->add_responsive_control(
+			'_ua_step_flow_text_alignment',
+			[
+				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'center',
+				'selectors' => [
+					'{{WRAPPER}} .ua-container' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
 		
 	$this->end_controls_section();
 	}
-	protected function style_design_controls() {
+	protected function icon_style_controls() {
       $this->start_controls_section(
             '_ua_step_style',
             [
-                'label'     => esc_html__( 'Color', 'ultraaddons' ),
+                'label'     => esc_html__( 'Icon Box', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
-        
-      
+		$this->add_control(
+			'_ua_step_flow_icon_color', [
+				'label' => __( 'Icon Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-steps-icon i' => 'color: {{VALUE}};',
+				],
+			]
+        );
+      $this->add_responsive_control(
+			'_ua_icon_box_radius',
+			[
+				'label'       => esc_html__( 'Box Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-steps-icon' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		
+		$this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => '_ua_icon_box_shadow',
+				'label' => __( 'Box Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-steps-icon',
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => '_ua_step_flow_icon',
+				'label' => __( 'Background', 'ultraaddons' ),
+				'types' => [ 'classic', 'gradient' ],
+				'selector' => '{{WRAPPER}} .ua-steps-icon',
+			]
+		);
+		
 		
 		$this->end_controls_section();
 	}
-	protected function style_typography_controls() {
+	protected function step_flow_style_controls() {
         $this->start_controls_section(
-            'step_flow_',
+            'step_flow_content_style',
             [
-                'label'     => esc_html__( 'Typography', 'ultraaddons' ),
+                'label'     => esc_html__( 'Content', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
+		$this->add_responsive_control(
+			'_ua_step_flow_title_margin',
+			[
+				'label'       => esc_html__( 'Title Margin', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px'],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-steps-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_control(
+			'_ua_step_flow_title_color', [
+				'label' => __( 'Title Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-steps-title' => 'color: {{VALUE}};',
+				],
+			]
+        );
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => '_ua_step_flow_title_typo',
+					'label' => 'Title Typography',
+					'selector' => '{{WRAPPER}} .ua-steps-title',
+					'separator'=>'after'
+			],
+        );
+		$this->add_control(
+			'_ua_step_flow_content_color', [
+				'label' => __( 'Description Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-step-description' => 'color: {{VALUE}};',
+				],
+				'separator'=>'before'
+			]
+        );
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => '_ua_step_flow_content_typo',
+					'label' => 'Description Typography',
+					'selector' => '{{WRAPPER}} .ua-step-description',
+			],
+			
+        );
+		  
 		$this->end_controls_section();
 	}
 
     protected function render() {
-		$settings 		= $this->get_settings_for_display();
+		$settings 	= $this->get_settings_for_display();
+		$direction 	= $settings['_ua_step_flow_direction'];
 	?>
 	<div class="ua-container">
 		<div class="ua-steps-icon">
-			<span class="ua-step-arrow"></span>
+			<?php if('yes'=== $direction):  ?>
+				<span class="ua-step-arrow"></span>
+			<?php endif;?>
 			<?php \Elementor\Icons_Manager::render_icon( $settings['_ua_step_flow_icon'], [ 'aria-hidden' => 'true' ] ); ?>
 			<span class="ua-steps-label"><?php echo $settings['_ua_step_flow_badge']; ?></span>
 		</div>
