@@ -268,7 +268,7 @@ class Step_Flow extends Base{
 			]
 		);
 		$this->add_control(
-			'_ua_step_flow_icon_size',
+			'_ua_step_flow_icon_size_s',
 			[
 				'label' => __( 'Icon Size', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
@@ -295,7 +295,7 @@ class Step_Flow extends Base{
 			]
 		);
 		$this->add_control(
-			'_ua_step_flow_icon_color', [
+			'_ua_step_flow_icon_color_s', [
 				'label' => __( 'Icon Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
@@ -405,21 +405,6 @@ class Step_Flow extends Base{
 				],
 			]
         );
-		$this->add_control(
-			'border_style',
-			[
-				'label' => __( 'Border Style', 'plugin-domain' ),
-				'type' => \Elementor\Controls_Manager::SELECT,
-				'default' => 'solid',
-				'options' => [
-					'solid'  => __( 'Solid', 'plugin-domain' ),
-					'dashed' => __( 'Dashed', 'plugin-domain' ),
-					'dotted' => __( 'Dotted', 'plugin-domain' ),
-					'double' => __( 'Double', 'plugin-domain' ),
-					'none' => __( 'None', 'plugin-domain' ),
-				],
-			]
-		);
 
 		$this->end_controls_section();
 	}
