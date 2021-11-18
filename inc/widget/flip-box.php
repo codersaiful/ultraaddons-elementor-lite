@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
  * Flip Box Widget
- * Do something awesome with flipbox elements
+ * FlipBox is a cool user interface for web. Interactive way with before and after effects.
  * 
  * Credit: https://codepen.io/Aoyue/pen/pLJqgE
  * 
