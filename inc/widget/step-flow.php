@@ -54,10 +54,12 @@ class Step_Flow extends Base{
         $this->content_controls();
         //For Design Section Style Tab
         $this->step_flow_style_controls();
-		//For Typography Style Tab
+		//For Icon Style Tab
         $this->step_flow_icon_style_controls();
-		//For Box Style Tab
+		//For Badge Style Tab
         $this->step_flow_badge_style_controls();
+		//For direction Arrow Tab
+        $this->step_flow_direction_style();
     }
 	protected function content_controls() {
 		
@@ -120,6 +122,17 @@ class Step_Flow extends Base{
 				'default' => 'yes',
 			]
 		);
+		$this->add_control(
+			'_ua_step_flow_badge_switch',
+			[
+				'label' => __( 'Badge', 'ultraaddons' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => __( 'Show', 'ultraaddons' ),
+				'label_off' => __( 'Hide', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
 		$this->add_responsive_control(
 			'_ua_step_flow_text_alignment',
 			[
@@ -141,7 +154,7 @@ class Step_Flow extends Base{
 				],
 				'default' => 'center',
 				'selectors' => [
-					'{{WRAPPER}} .ua-container' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .ua-step-flow-wrap' => 'text-align: {{VALUE}};',
 				],
 			]
 		);
@@ -376,22 +389,48 @@ class Step_Flow extends Base{
 		
 		$this->end_controls_section();
 	}
+	protected function step_flow_direction_style() {
+      $this->start_controls_section(
+            '_ua_step_flow_direction_style',
+            [
+                'label'     => esc_html__( 'Direction Style', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->add_control(
+			'_ua_step_flow_direction_color', [
+				'label' => __( 'Direction Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .ua-step-arrow, .ua-step-arrow:after' => 'border-top: 1px solid {{VALUE}};',
+					'{{WRAPPER}} .ua-step-arrow:after' => 'border-right: 1px solid {{VALUE}};',
+				],
+			]
+        );
+		
+		$this->end_controls_section();
+	}
 	
    protected function render() {
 		$settings 	= $this->get_settings_for_display();
 		$direction 	= $settings['_ua_step_flow_direction'];
+		$badge 		= $settings['_ua_step_flow_badge_switch'];
 	?>
-	<div class="ua-container">
+	<div class="ua-step-flow-wrap">
 		<div class="ua-steps-icon">
 			<?php if('yes'=== $direction):  ?>
 				<span class="ua-step-arrow"></span>
 			<?php endif;?>
 			<?php \Elementor\Icons_Manager::render_icon( $settings['_ua_step_flow_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+			<?php if('yes'===$badge ): ?>
 			<span class="ua-steps-label">
 				<?php echo $settings['_ua_step_flow_badge']; ?>
 			</span>
+			<?php endif;?>
 		</div>
-		<h2 class="ua-steps-title"><?php echo $settings['_ua_step_flow_title']; ?></h2>
+		<h2 class="ua-steps-title">
+			<?php echo $settings['_ua_step_flow_title']; ?>
+		</h2>
 		<p class="ua-step-description">
 			<?php echo $settings['_ua_step_flow_content']; ?>
 		</p>
