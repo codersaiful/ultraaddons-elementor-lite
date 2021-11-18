@@ -202,7 +202,7 @@ class Step_Flow extends Base{
 					'label' => 'Title Typography',
 					'selector' => '{{WRAPPER}} .ua-steps-title',
 					'separator'=>'after'
-			],
+			]
         );
 		$this->add_control(
 			'_ua_step_flow_content_color', [
@@ -220,8 +220,7 @@ class Step_Flow extends Base{
 					'name' => '_ua_step_flow_content_typo',
 					'label' => 'Description Typography',
 					'selector' => '{{WRAPPER}} .ua-step-description',
-			],
-			
+			]
         );
 		  
 		$this->end_controls_section();
@@ -349,8 +348,7 @@ class Step_Flow extends Base{
 					'name' => '_ua_step_flow_step_typo',
 					'label' => 'Step Typography',
 					'selector' => '{{WRAPPER}} .ua-steps-label',
-			],
-			
+			]
         );
 		$this->add_group_control(
 			\Elementor\Group_Control_Box_Shadow::get_type(),
@@ -407,7 +405,22 @@ class Step_Flow extends Base{
 				],
 			]
         );
-		
+		$this->add_control(
+			'border_style',
+			[
+				'label' => __( 'Border Style', 'plugin-domain' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => 'solid',
+				'options' => [
+					'solid'  => __( 'Solid', 'plugin-domain' ),
+					'dashed' => __( 'Dashed', 'plugin-domain' ),
+					'dotted' => __( 'Dotted', 'plugin-domain' ),
+					'double' => __( 'Double', 'plugin-domain' ),
+					'none' => __( 'None', 'plugin-domain' ),
+				],
+			]
+		);
+
 		$this->end_controls_section();
 	}
 	
