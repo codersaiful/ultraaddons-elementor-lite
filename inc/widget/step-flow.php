@@ -51,7 +51,7 @@ class Step_Flow extends Base{
      */
     protected function _register_controls() {
         //For Content Section
-        //$this->content_general_controls();
+        $this->content_controls();
         //For Design Section Style Tab
         //$this->style_design_controls();
 		//For Typography Style Tab
@@ -59,16 +59,56 @@ class Step_Flow extends Base{
 		//For Box Style Tab
         //$this->style_box_controls();
     }
-	protected function content_general_controls() {
-		$placeholder_image = ULTRA_ADDONS_URL . 'assets/images/flip-thumb.jpg';
+	protected function content_controls() {
 		
         $this->start_controls_section(
-            'general_content',
+            '_ua_step_flow_content_tab',
             [
                 'label'     => esc_html__( 'Content', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
+		$this->add_control(
+			'_ua_step_flow_badge',
+			[
+				'label' => __( 'Badge', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __( '1', 'ultraaddons' ),
+				'label_block' => false,
+			]
+		);
+		$this->add_control(
+			'_ua_step_flow_icon',
+			[
+				'label' => __( 'Icon', 'ultraaddons' ),
+				'type' => \Elementor\Controls_Manager::ICONS,
+				'default' => [
+					'value' => 'fas fa-star',
+					'library' => 'solid',
+				],
+			]
+		);
+		$this->add_control(
+			'_ua_step_flow_title',
+			[
+				'label' => __( 'Title', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __( 'Step Flow Title', 'ultraaddons' ),
+				'placeholder' => __( 'Enter your title', 'ultraaddons' ),
+				'label_block' => true,
+			]
+		);
+		
+		$this->add_control(
+			'_ua_step_flow_content',
+			[
+				'label' => __( 'Content', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXTAREA,
+				'default' => __( 'The quickest & easiest service provider. Loem Ipsum doler sit amit.', 'ultraaddons' ),
+				'placeholder' => __( 'Enter your title', 'ultraaddons' ),
+				'label_block' => true,
+			]
+		);
 		
 	$this->end_controls_section();
 	}
@@ -102,12 +142,12 @@ class Step_Flow extends Base{
 	<div class="ua-container">
 		<div class="ua-steps-icon">
 			<span class="ua-step-arrow"></span>
-			<i aria-hidden="true" class="fa fa-user"></i>
-			<span class="ua-steps-label">1</span>
+			<?php \Elementor\Icons_Manager::render_icon( $settings['_ua_step_flow_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+			<span class="ua-steps-label"><?php echo $settings['_ua_step_flow_badge']; ?></span>
 		</div>
-		<h2 class="ua-steps-title">Start Marketing</h2>
+		<h2 class="ua-steps-title"><?php echo $settings['_ua_step_flow_title']; ?></h2>
 		<p class="ua-step-description">
-			Consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur.
+			<?php echo $settings['_ua_step_flow_content']; ?>
 		</p>
 	</div>
 <?php }

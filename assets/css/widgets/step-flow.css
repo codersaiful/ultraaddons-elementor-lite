@@ -5,7 +5,7 @@
     padding: 40px;
     border-radius:50%;
     background-color: #e9ecf0;
-    color: #8056ee;
+    color: #13c392;
     text-align: center;
     font-size: 46px;
 }
@@ -32,7 +32,7 @@
     max-width: 200%;
     border: 3px solid #fff;
     border-radius: 20px;
-    background-color: #8056ee;
+    background-color: #13c392;
     color: #fff;
     text-overflow: ellipsis;
     white-space: nowrap;
