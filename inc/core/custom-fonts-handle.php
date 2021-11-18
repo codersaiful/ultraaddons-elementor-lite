@@ -210,7 +210,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
                     
                     ?>
                     </div>
-                    <p class="ua-field-notice"><?php echo esc_html__( 'Upload your webfonts. Supported font type/format: woff2,woff,ttf etc so on.' ); ?></p>
+                    <p class="ua-field-notice"><?php echo esc_html__( 'Upload your webfonts. Supported font type/format: [woff2,woff,ttf and otf].' ); ?></p>
 
                 </div>
 
