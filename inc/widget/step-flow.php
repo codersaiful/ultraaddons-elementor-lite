@@ -17,11 +17,8 @@ use Elementor\Icons_Manager;
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
- * Flip Box Widget
- * Do something awesome with flipbox elements
- * 
- * Credit: https://codepen.io/Aoyue/pen/pLJqgE
- * 
+ * Step Flow Widget
+ * Create excellent step by step visual diagram and instructions using this smart widget.
  * 
  * @since 1.1.0.7
  * @package UltraAddons
