@@ -237,7 +237,7 @@ class Flip_Box extends Base{
 					'h4' => 'H4',
 					'h5' => 'H5',
 					'h6' => 'H6',
-					'div' => 'div',
+					'div'=>	'div',
 				],
 				'default' => 'h2',
 			]

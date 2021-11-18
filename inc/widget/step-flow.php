@@ -99,6 +99,16 @@ class Step_Flow extends Base{
     protected function render() {
 		$settings 		= $this->get_settings_for_display();
 	?>
-	<h2>Step Flow Coming soon!</h2>
+	<div class="ua-container">
+		<div class="ua-steps-icon">
+			<span class="ua-step-arrow"></span>
+			<i aria-hidden="true" class="fa fa-user"></i>
+			<span class="ua-steps-label">1</span>
+		</div>
+		<h2 class="ua-steps-title">Start Marketing</h2>
+		<p class="ua-step-description">
+			Consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur.
+		</p>
+	</div>
 <?php }
 }

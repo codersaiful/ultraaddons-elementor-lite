@@ -1,0 +1,69 @@
+.ua-steps-icon {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2rem;
+    padding: 40px;
+    border-radius:50%;
+    background-color: #e9ecf0;
+    color: #8056ee;
+    text-align: center;
+    font-size: 46px;
+}
+.ua-steps-icon i, .ua-steps-icon svg {
+    position: relative;
+    display: block;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+.ua-step-description{
+    margin: 0;
+    color: #616161;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+}
+.ua-steps-icon .ua-steps-label {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    overflow: hidden;
+    padding: 8px 10px;
+    max-width: 200%;
+    border: 3px solid #fff;
+    border-radius: 20px;
+    background-color: #8056ee;
+    color: #fff;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+    line-height: 1;
+}
+.ua-step-arrow {
+    left: calc(100% + 20px);
+    -webkit-transform: rotate(var(--ua-stepflow-direction-angle,0));
+    -ms-transform: rotate(var(--ua-stepflow-direction-angle,0));
+    transform: rotate(var(--ua-stepflow-direction-angle,0));
+    -webkit-transform-origin: var(--ua-stepflow-direction-origin-x) center;
+    -ms-transform-origin: var(--ua-stepflow-direction-origin-x) center;
+    transform-origin: var(--ua-stepflow-direction-origin-x) center;
+    top: 49%;
+    width: 100px;
+}
+.ua-step-arrow, .ua-step-arrow:after {
+    position: absolute;
+    display: inline-block;
+    border-top: 1px solid #ddd;
+}
+.ua-step-arrow:after {
+    top: -2px;
+    right: 5px;
+    width: 12px;
+    height: 12px;
+    border-right: 1px solid #ddd;
+    color: #ddd;
+    content: "";
+    -webkit-transform: rotate(45deg) translateY(-50%);
+    -ms-transform: rotate(45deg) translateY(-50%);
+    transform: rotate(45deg) translateY(-50%);
+}
