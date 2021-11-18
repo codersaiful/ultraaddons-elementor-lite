@@ -67,3 +67,6 @@
     -ms-transform: rotate(45deg) translateY(-50%);
     transform: rotate(45deg) translateY(-50%);
 }
+.ua-steps-title {
+    margin-bottom: 15px;
+}

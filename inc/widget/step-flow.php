@@ -55,9 +55,9 @@ class Step_Flow extends Base{
         //For Design Section Style Tab
         $this->step_flow_style_controls();
 		//For Typography Style Tab
-        $this->icon_style_controls();
+        $this->step_flow_icon_style_controls();
 		//For Box Style Tab
-        //$this->style_box_controls();
+        $this->step_flow_badge_style_controls();
     }
 	protected function content_controls() {
 		
@@ -148,67 +148,11 @@ class Step_Flow extends Base{
 		
 	$this->end_controls_section();
 	}
-	protected function icon_style_controls() {
-      $this->start_controls_section(
-            '_ua_step_style',
-            [
-                'label'     => esc_html__( 'Icon Box', 'ultraaddons' ),
-                'tab'       => Controls_Manager::TAB_STYLE,
-            ]
-        );
-		$this->add_control(
-			'_ua_step_flow_icon_color', [
-				'label' => __( 'Icon Color', 'ultraaddons' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-						'{{WRAPPER}} .ua-steps-icon i' => 'color: {{VALUE}};',
-				],
-			]
-        );
-      $this->add_responsive_control(
-			'_ua_icon_box_radius',
-			[
-				'label'       => esc_html__( 'Box Radius', 'ultraaddons' ),
-				'type'        => Controls_Manager::DIMENSIONS,
-				'size_units'  => [ 'px', '%' ],
-				'placeholder' => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'selectors'   => [
-					'{{WRAPPER}} .ua-steps-icon' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-		
-		$this->add_group_control(
-			\Elementor\Group_Control_Box_Shadow::get_type(),
-			[
-				'name' => '_ua_icon_box_shadow',
-				'label' => __( 'Box Shadow', 'ultraaddons' ),
-				'selector' => '{{WRAPPER}} .ua-steps-icon',
-			]
-		);
-		$this->add_group_control(
-			\Elementor\Group_Control_Background::get_type(),
-			[
-				'name' => '_ua_step_flow_icon',
-				'label' => __( 'Background', 'ultraaddons' ),
-				'types' => [ 'classic', 'gradient' ],
-				'selector' => '{{WRAPPER}} .ua-steps-icon',
-			]
-		);
-		
-		
-		$this->end_controls_section();
-	}
 	protected function step_flow_style_controls() {
         $this->start_controls_section(
             'step_flow_content_style',
             [
-                'label'     => esc_html__( 'Content', 'ultraaddons' ),
+                'label'     => esc_html__( 'Content Style', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -269,8 +213,171 @@ class Step_Flow extends Base{
 		  
 		$this->end_controls_section();
 	}
-
-    protected function render() {
+	protected function step_flow_icon_style_controls() {
+      $this->start_controls_section(
+            '_ua_step_flow_iconbox_style',
+            [
+                'label'     => esc_html__( 'Icon Box Style', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		
+      $this->add_responsive_control(
+			'_ua_icon_box_radius',
+			[
+				'label'       => esc_html__( 'Box Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-steps-icon' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => '_ua_step_flow_border',
+				'label' => __( 'Border', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-steps-icon',
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => '_ua_icon_box_shadow',
+				'label' => __( 'Box Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-steps-icon',
+			]
+		);
+		$this->add_control(
+			'_ua_step_flow_icon_size',
+			[
+				'label' => __( 'Icon Size', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em' ],
+				'range' => [
+					'px' => [
+						'min' => 10,
+						'max' => 200,
+						'step' => 5,
+					],
+					'em' => [
+						'min' => 1,
+						'max' => 20,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 50,
+				],
+				
+				'selectors' => [
+					'{{WRAPPER}} .ua-steps-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_control(
+			'_ua_step_flow_icon_color', [
+				'label' => __( 'Icon Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-steps-icon i' => 'color: {{VALUE}};',
+				],
+			]
+        );
+		$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => '_ua_step_flow_icon',
+				'label' => __( 'Background', 'ultraaddons' ),
+				'types' => [ 'classic', 'gradient' ],
+				'selector' => '{{WRAPPER}} .ua-steps-icon',
+				'separator' => 'before'
+			]
+		);
+		
+		$this->end_controls_section();
+	}
+	protected function step_flow_badge_style_controls() {
+      $this->start_controls_section(
+            '_ua_step_flow_badge_style',
+            [
+                'label'     => esc_html__( 'Badge Style', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->add_control(
+			'_ua_step_flow_badge_bg', [
+				'label' => __( 'Badge Background', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-steps-label' => 'background-color: {{VALUE}};',
+				],
+			]
+        );
+		$this->add_control(
+			'_ua_step_flow_badge_step', [
+				'label' => __( 'Step Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-steps-label' => 'color: {{VALUE}};',
+				],
+			]
+        );
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => '_ua_step_flow_step_typo',
+					'label' => 'Step Typography',
+					'selector' => '{{WRAPPER}} .ua-steps-label',
+			],
+			
+        );
+		$this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => '_ua_badge_shadow',
+				'label' => __( 'Badge Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-steps-label',
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => '_ua_step_flow_badge_border',
+				'label' => __( 'Border', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-steps-label',
+			]
+		);
+		$this->add_responsive_control(
+			'_ua_badge_radius',
+			[
+				'label'       => esc_html__( 'Badge Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-steps-label' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+      
+		
+		$this->end_controls_section();
+	}
+	
+   protected function render() {
 		$settings 	= $this->get_settings_for_display();
 		$direction 	= $settings['_ua_step_flow_direction'];
 	?>
@@ -280,7 +387,9 @@ class Step_Flow extends Base{
 				<span class="ua-step-arrow"></span>
 			<?php endif;?>
 			<?php \Elementor\Icons_Manager::render_icon( $settings['_ua_step_flow_icon'], [ 'aria-hidden' => 'true' ] ); ?>
-			<span class="ua-steps-label"><?php echo $settings['_ua_step_flow_badge']; ?></span>
+			<span class="ua-steps-label">
+				<?php echo $settings['_ua_step_flow_badge']; ?>
+			</span>
 		</div>
 		<h2 class="ua-steps-title"><?php echo $settings['_ua_step_flow_title']; ?></h2>
 		<p class="ua-step-description">

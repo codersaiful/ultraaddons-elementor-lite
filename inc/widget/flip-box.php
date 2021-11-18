@@ -137,7 +137,7 @@ class Flip_Box extends Base{
 		$this->add_control(
 			'_ua_icon_size',
 			[
-				'label' => __( 'Icon Size', 'plugin-domain' ),
+				'label' => __( 'Icon Size', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', 'em' ],
 				'range' => [
