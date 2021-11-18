@@ -65,7 +65,7 @@
                 library: {
                     //type: 'application/x-font-woff2,application/x-font-ttf'
                     //type: 'application/x-font-' + fontType,
-                    type: 'application/x-font-woff2,application/x-font-woff,application/x-font-ttf,application/x-font-eot,application/x-font-otf'
+                    type: 'application/x-font-woff2,application/x-font-woff,application/x-font-ttf,application/x-font-otf' //application/x-font-eot, //eot has removed
                 },
                 multiple: true
             });
@@ -88,19 +88,28 @@
          * @since 1.1.0.6
          */
         $(document.body).on('change','.font-upload-url',function(){
-            var urlBox = $(this);
+            var thisObject = $(this);
+            var urlBox = thisObject;
             var url = urlBox.val();
             url = url.replace(/\s+/, "");
             if( url == '' ){
                 return;
             }
             
-            var fontsWrapperFieldArea = $(this).closest('.form-file-field');
+            var fontsWrapperFieldArea = thisObject.closest('.form-file-field');
             var fontFormatField = fontsWrapperFieldArea.find('.font-upload-format');
 
             var ext = url.substr(url.lastIndexOf('.') + 1);
+            console.log(ext);
+            if('ttf' == ext){
+                ext = 'TrueType';
+            }else if('otf' == ext){
+                ext = 'OpenType';
+            }
+            console.log(ext);
             fontFormatField.val(ext);
         });
+
 
         /**
          * Deleting any variant
