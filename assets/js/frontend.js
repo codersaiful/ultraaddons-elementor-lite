@@ -738,6 +738,42 @@
                         });
                     });
                 },
+
+
+                /**
+                 * BMR Code Start Here
+                 */
+                
+                //News Ticker
+                NewsTicker:function($scope){
+                    var items = $scope.find('.ua-news-ticker');
+                    $(items).each(function(index,element){
+                        if( 'function' ===  typeof $(this).breakingNews ){ //Check if found function breakingNews()
+                            $(this).breakingNews();
+                        }
+                    });
+                },
+
+                /**
+                 * //Just as backup, I(Saiful) kept this following code, You should not kept it.
+                 jQuery(window).on('elementor/frontend/init', function(){
+                    elementorFrontend.hooks.addAction('frontend/element_ready/ultraaddons-news-ticker.default', function ($scope, $) {
+                        $scope.find('.ua-news-ticker').breakingNews();
+                    });
+                });
+                 * 
+                 */
+
+
+                //Another Widget Name
+
+
+                /**
+                 * BMR Code Start Here
+                 * 
+                 */
+
+
                 
                 //Addd new all - one by one with comma
                 
@@ -749,6 +785,11 @@
                 'ultraaddons-timeline.default'  : UltraAddonsMap.UA_Owl_Carousel,
                 'ultraaddons-skill-bar.default'  : UltraAddonsMap.skillBar,
                 'ultraaddons-counter.default'  : UltraAddonsMap.Counter,
+
+                //BM Rafiul Script Start Here
+                'ultraaddons-news-ticker.default'  : UltraAddonsMap.NewsTicker, 
+                //BM Rafiul Script End Here
+                
             };
     
             $.each( elementReadyMap, function( elementKey, elementReadyMap ) {
@@ -884,12 +925,5 @@
         // other options
     });
     //*************************************/
-                    
-  //By B M Rafiul Alam
-  jQuery(window).on('elementor/frontend/init', function(){
-		elementorFrontend.hooks.addAction('frontend/element_ready/ultraaddons-news-ticker.default', function ($scope, $) {
-			$scope.find('.ua-news-ticker').breakingNews();
-		});
-	});
-  
+
 } (jQuery, window));
