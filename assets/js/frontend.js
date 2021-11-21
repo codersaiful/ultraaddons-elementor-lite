@@ -744,8 +744,27 @@
                  * BMR Code Start Here
                  */
                 
-                
-                
+                //News Ticker
+                NewsTicker:function($scope){
+						var $TickerData =  $('[data-settings]');
+						if ($TickerData.length) {
+						$TickerData.each(function(index, el){
+						var $Options 	= $(this).data('settings'); 	
+						var play		= $Options.play == "yes" ? true : false;;
+						var directon 	= $Options.directon;
+						var stopOnHover = $Options.stopOnHover== "yes" ? true : false;;
+						var themeColor 	= $Options.themeColor;
+						
+						//console.log($Options);
+						$('.ua-news-ticker-wrap').breakingNews({
+							play: play,
+							directon: directon,
+							stopOnHover: stopOnHover,
+							themeColor:themeColor
+						});
+					});
+				}
+                },
             };
             
             let elementReadyMap = {
@@ -755,7 +774,7 @@
                 'ultraaddons-counter.default'  : UltraAddonsMap.Counter,
 
                 //BM Rafiul Script Start Here
-                //'ultraaddons-news-ticker.default'  : UltraAddonsMap.NewsTicker, 
+                'ultraaddons-news-ticker.default'  : UltraAddonsMap.NewsTicker, 
                 //BM Rafiul Script End Here
                 
             };

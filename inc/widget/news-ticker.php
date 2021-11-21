@@ -253,31 +253,3 @@ class News_Ticker extends Base{
 	</div>
 <?php }
 }
-
-add_action( 'wp_footer', function() {
-	if ( ! defined( 'ELEMENTOR_VERSION' ) ) {
-		return;
-	}
-	?>
-	<script>
-	jQuery(window).on('elementor/frontend/init', function () {
-		elementorFrontend.hooks.addAction( 'frontend/element_ready/ultraaddons-news-ticker.default', function($scope,view ) {
-			if ( $scope.find( '.ua-element-news-ticker' ) ){
-					var $data =  jQuery('[data-settings]');
-						if ($data.length) {
-						$data.each(function(index, el){
-						var $Options = jQuery(this).data('settings'); 	
-						  
-						console.log($Options);
-						jQuery('.ua-news-ticker-wrap').breakingNews({
-							effect: 'typography'
-						});
-					});
-				}
-				
-			}
-		} );
-	});
-	</script>
-	<?php
-} );
