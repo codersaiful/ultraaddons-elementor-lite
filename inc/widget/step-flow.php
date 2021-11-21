@@ -416,7 +416,7 @@ class Step_Flow extends Base{
 	?>
 	<div class="ua-step-flow-wrap">
 		<div class="ua-steps-icon">
-			<?php if('yes'=== $direction):  ?>
+			<?php if('yes'===$direction):  ?>
 				<span class="ua-step-arrow"></span>
 			<?php endif;?>
 			<?php \Elementor\Icons_Manager::render_icon( $settings['_ua_step_flow_icon'], [ 'aria-hidden' => 'true' ] ); ?>

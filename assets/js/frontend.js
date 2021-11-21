@@ -885,10 +885,11 @@
     });
     //*************************************/
                     
-   
-
-   
-        
-        
-        
+  //By B M Rafiul Alam
+  jQuery(window).on('elementor/frontend/init', function(){
+		elementorFrontend.hooks.addAction('frontend/element_ready/ultraaddons-news-ticker.default', function ($scope, $) {
+			$scope.find('.ua-news-ticker').breakingNews();
+		});
+	});
+  
 } (jQuery, window));

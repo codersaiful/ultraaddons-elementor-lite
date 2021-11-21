@@ -399,6 +399,14 @@ $widgetsArray = [
                 __( 'Basic', 'ultraaddons' ),
             ],
     ],
+	'News_Ticker' => [
+            'name'  => __( 'News Ticker', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-chevron-double-left',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
 
     
 ];
