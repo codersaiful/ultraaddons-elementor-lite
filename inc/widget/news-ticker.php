@@ -182,6 +182,12 @@ class News_Ticker extends Base{
         );
         $this->end_controls_section();
     }
+
+	/**
+	 * Here should comment actually\
+	 * 
+	 * It's actually content control part
+	 */
 	protected function ticker_content_controls() {
 		
         $this->start_controls_section(
