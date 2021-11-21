@@ -759,40 +759,17 @@
                         autoplay = controls.autoplay == "yes" ? true : false;
                         autoplay_speed = controls.autoplay_speed;
                         speed = controls.speed;
-
                     }
 
-                    if( 'function' ===  typeof item.breakingNews ){ //Check if found function breakingNews()
+                    if( 'function' ===  typeof item.breakingNews ){
+						//Check if found function breakingNews()
                         item.breakingNews({
                             autoplay: autoplay,
                             autoplay_speed: autoplay_speed,
                             speed: speed,
                         });
                     }
-                },
-
-                /**
-                 * //Just as backup, I(Saiful) kept this following code, You should not kept it.
-                 jQuery(window).on('elementor/frontend/init', function(){
-                    elementorFrontend.hooks.addAction('frontend/element_ready/ultraaddons-news-ticker.default', function ($scope, $) {
-                        $scope.find('.ua-news-ticker').breakingNews();
-                    });
-                });
-                 * 
-                 */
-
-
-                //Another Widget Name
-
-
-                /**
-                 * BMR Code Start Here
-                 * 
-                 */
-
-
-                
-                //Addd new all - one by one with comma
+                }, 
                 
                 
             };

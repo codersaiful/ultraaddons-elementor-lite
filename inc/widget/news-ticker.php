@@ -118,47 +118,50 @@ class News_Ticker extends Base{
         );
 
         $this->add_control(
-                'autoplay',
-                [
-                        'label' => __( 'Autoplay?', 'ultraaddons' ),
-                        'type' => Controls_Manager::SWITCHER,
-                        'label_on' => __( 'Yes', 'ultraaddons' ),
-                        'label_off' => __( 'No', 'ultraaddons' ),
-                        'default' => 'yes',
-                        'return_value' => 'yes',
-                        'frontend_available' => true,
-                ]
-        );
+			'direction',
+			[
+				'label' => __( 'Direction', 'ultraaddons' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => 'rtl',
+				'frontend_available' => true,
+				'options' => [
+					'rtl'  => __( 'RTL', 'ultraaddons' ),
+					'ltr' => __( 'LTR', 'ultraaddons' ),
+				],
+			]
+		);
+		$this->add_control(
+			'play',
+			[
+				'label' => __( 'Play', 'ultraaddons' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'true',
+				'default' => 'true',
+				'frontend_available' => true,
+			]
+		);	
+		$this->add_control(
+			'stopOnHover',
+			[
+				'label' => __( 'Stop on Hover', 'ultraaddons' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'true',
+				'default' => 'true,
+				'frontend_available' => true,
+			]
+		);
 
-
-        $this->add_control(
-                'autoplay_speed',
-                [
-                        'label' => __( 'Autoplay Speed', 'ultraaddons' ),
-                        'type' => Controls_Manager::NUMBER,
-                        'min' => 100,
-                        'step' => 100,
-                        'max' => 10000,
-                        'default' => 3000,
-                        'description' => __( 'Speed in milliseconds', 'ultraaddons' ),
-                        'condition' => [
-                                'autoplay' => 'yes',
-                        ],
-                        'frontend_available' => true,
-                ]
-        );
-        $this->add_control(
-                'speed',
-                [
-                        'label' => __( 'Speed', 'ultraaddons' ),
-                        'type' => Controls_Manager::NUMBER,
-                        'min' => 100,
-                        'step' => 100,
-                        'max' => 10000,
-                        'default' => 3000,
-                        'description' => __( 'Speed in milliseconds', 'ultraaddons' ),
-                        'frontend_available' => true,
-                ]
+       $this->add_control(
+			'themeColor', [
+				'label' => __( 'Theme Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'=>'#333',
+				'frontend_available' => true,
+			]
         );
         $this->end_controls_section();
     }
