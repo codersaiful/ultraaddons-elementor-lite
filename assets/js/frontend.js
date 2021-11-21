@@ -738,6 +738,59 @@
                         });
                     });
                 },
+
+
+                /**
+                 * BMR Code Start Here
+                 */
+                
+                //News Ticker
+                NewsTicker:function($scope){
+                    var item = $scope.find('.ua-news-ticker'),
+                    controls = null,
+                    autoplay = true,
+                    autoplay_speed = 1000,
+                    speed = 2000,
+                    lastVar = false;
+
+                    if (item.attr('data-controls')) {
+                        var controls = JSON.parse(item.attr('data-controls'));
+
+                        autoplay = controls.autoplay == "yes" ? true : false;
+                        autoplay_speed = controls.autoplay_speed;
+                        speed = controls.speed;
+
+                    }
+
+                    if( 'function' ===  typeof item.breakingNews ){ //Check if found function breakingNews()
+                        item.breakingNews({
+                            autoplay: autoplay,
+                            autoplay_speed: autoplay_speed,
+                            speed: speed,
+                        });
+                    }
+                },
+
+                /**
+                 * //Just as backup, I(Saiful) kept this following code, You should not kept it.
+                 jQuery(window).on('elementor/frontend/init', function(){
+                    elementorFrontend.hooks.addAction('frontend/element_ready/ultraaddons-news-ticker.default', function ($scope, $) {
+                        $scope.find('.ua-news-ticker').breakingNews();
+                    });
+                });
+                 * 
+                 */
+
+
+                //Another Widget Name
+
+
+                /**
+                 * BMR Code Start Here
+                 * 
+                 */
+
+
                 
                 //Addd new all - one by one with comma
                 
@@ -749,6 +802,11 @@
                 'ultraaddons-timeline.default'  : UltraAddonsMap.UA_Owl_Carousel,
                 'ultraaddons-skill-bar.default'  : UltraAddonsMap.skillBar,
                 'ultraaddons-counter.default'  : UltraAddonsMap.Counter,
+
+                //BM Rafiul Script Start Here
+                'ultraaddons-news-ticker.default'  : UltraAddonsMap.NewsTicker, 
+                //BM Rafiul Script End Here
+                
             };
     
             $.each( elementReadyMap, function( elementKey, elementReadyMap ) {
@@ -884,12 +942,5 @@
         // other options
     });
     //*************************************/
-                    
-  //By B M Rafiul Alam
-  jQuery(window).on('elementor/frontend/init', function(){
-		elementorFrontend.hooks.addAction('frontend/element_ready/ultraaddons-news-ticker.default', function ($scope, $) {
-			$scope.find('.ua-news-ticker').breakingNews();
-		});
-	});
-  
+
 } (jQuery, window));
