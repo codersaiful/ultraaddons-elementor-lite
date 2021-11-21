@@ -164,6 +164,7 @@ $widgetsArray = [
     'WC_Products' => [
             'name'  => __( 'WooCommerce Products', 'ultraaddons' ),
             'is_pro'   => false,
+            'is_wc'     => true,
             'icon'      => 'uicon-product',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
