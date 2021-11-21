@@ -160,6 +160,7 @@ class News_Ticker extends Base{
                         'frontend_available' => true,
                 ]
         );
+        $this->end_controls_section();
     }
 	protected function ticker_content_controls() {
 		
