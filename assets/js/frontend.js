@@ -754,13 +754,15 @@
 						var directon 	= $Options.directon;
 						var stopOnHover = $Options.stopOnHover== "yes" ? true : false;;
 						var themeColor 	= $Options.themeColor;
+						var effect 		= $Options.effect;
 						
 						//console.log($Options);
 						$('.ua-news-ticker-wrap').breakingNews({
 							play: play,
 							directon: directon,
 							stopOnHover: stopOnHover,
-							themeColor:themeColor
+							themeColor:themeColor,
+							effect:effect,
 						});
 					});
 				}
@@ -770,8 +772,8 @@
             let elementReadyMap = {
                 'ultraaddons-alert.default'     : UltraAddonsMap.Alert,
                 'ultraaddons-timeline.default'  : UltraAddonsMap.UA_Owl_Carousel,
-                'ultraaddons-skill-bar.default'  : UltraAddonsMap.skillBar,
-                'ultraaddons-counter.default'  : UltraAddonsMap.Counter,
+                'ultraaddons-skill-bar.default' : UltraAddonsMap.skillBar,
+                'ultraaddons-counter.default'  	: UltraAddonsMap.Counter,
 
                 //BM Rafiul Script Start Here
                 'ultraaddons-news-ticker.default'  : UltraAddonsMap.NewsTicker, 

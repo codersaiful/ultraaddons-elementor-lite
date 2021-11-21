@@ -129,6 +129,23 @@ class News_Ticker extends Base{
 					'ltr' => __( 'LTR', 'ultraaddons' ),
 				],
 			]
+		);   
+		$this->add_control(
+			'effect',
+			[
+				'label' => __( 'Effects', 'ultraaddons' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => 'fade',
+				'frontend_available' => true,
+				'options' => [
+					'fade'  => __( 'Fade', 'ultraaddons' ),
+					'slide-down' => __( 'Slide Down', 'ultraaddons' ),
+					'slide-up' => __( 'Slide Up', 'ultraaddons' ),
+					'slide-right' => __( 'Slide Right', 'ultraaddons' ),
+					'slide-left' => __( 'Slide Left', 'ultraaddons' ),
+					'typography' => __( 'Typography', 'ultraaddons' ),
+				],
+			]
 		);
 		$this->add_control(
 			'play',
