@@ -98,6 +98,68 @@ class News_Ticker extends Base{
         $this->ticker_content_controls();
         //For Design Section Style Tab
    
+        //For Setting Control
+        $this->settings_controls();
+    }
+
+    /**
+     * Retrive setting for news tricker control
+     * 
+     * @author Saiful <codersaiful@gmail.com>
+     *
+     * @return void
+     */
+    protected function settings_controls(){
+        $this->start_controls_section(
+            'ticker_settings',
+            [
+                'label'     => esc_html__( 'Control Settings', 'ultraaddons' ),
+            ]
+        );
+
+        $this->add_control(
+                'autoplay',
+                [
+                        'label' => __( 'Autoplay?', 'ultraaddons' ),
+                        'type' => Controls_Manager::SWITCHER,
+                        'label_on' => __( 'Yes', 'ultraaddons' ),
+                        'label_off' => __( 'No', 'ultraaddons' ),
+                        'default' => 'yes',
+                        'return_value' => 'yes',
+                        'frontend_available' => true,
+                ]
+        );
+
+
+        $this->add_control(
+                'autoplay_speed',
+                [
+                        'label' => __( 'Autoplay Speed', 'ultraaddons' ),
+                        'type' => Controls_Manager::NUMBER,
+                        'min' => 100,
+                        'step' => 100,
+                        'max' => 10000,
+                        'default' => 3000,
+                        'description' => __( 'Speed in milliseconds', 'ultraaddons' ),
+                        'condition' => [
+                                'autoplay' => 'yes',
+                        ],
+                        'frontend_available' => true,
+                ]
+        );
+        $this->add_control(
+                'speed',
+                [
+                        'label' => __( 'Speed', 'ultraaddons' ),
+                        'type' => Controls_Manager::NUMBER,
+                        'min' => 100,
+                        'step' => 100,
+                        'max' => 10000,
+                        'default' => 3000,
+                        'description' => __( 'Speed in milliseconds', 'ultraaddons' ),
+                        'frontend_available' => true,
+                ]
+        );
     }
 	protected function ticker_content_controls() {
 		
