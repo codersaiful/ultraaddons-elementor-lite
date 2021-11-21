@@ -95,11 +95,11 @@ class News_Ticker extends Base{
      */
     protected function _register_controls() {
         //For Content Section
-        //$this->content_controls();
+        $this->ticker_content_controls();
         //For Design Section Style Tab
    
     }
-	protected function content_controls() {
+	protected function ticker_content_controls() {
 		
         $this->start_controls_section(
 		
@@ -109,7 +109,42 @@ class News_Ticker extends Base{
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
-		
+		$this->add_control(
+			'ticker_label', [
+				'label' => __( 'Label', 'ultraaddons' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => __( 'News' , 'ultraaddons' ),
+				'label_block' => true,
+			]
+		);
+		$repeater = new \Elementor\Repeater();
+
+		$repeater->add_control(
+			'news_title', [
+				'label' => __( 'Title', 'ultraaddons' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => __( 'List Title' , 'ultraaddons' ),
+				'label_block' => true,
+			]
+		);
+		$this->add_control(
+			'ticker_list',
+			[
+				'label' => __( 'Repeater List', 'ultraaddons' ),
+				'type' => \Elementor\Controls_Manager::REPEATER,
+				'fields' => $repeater->get_controls(),
+				'default' => [
+					[
+						'news_title' => __( 'Lorem Ipsum Doler #1', 'ultraaddons' ),
+					],
+					[
+						'news_title' => __( 'Lorem Ipsum Doler #2', 'ultraaddons' ),
+					],
+				],
+				'title_field' => '{{{ news_title }}}',
+			]
+		);
+
 		
 	$this->end_controls_section();
 	}
@@ -132,17 +167,17 @@ class News_Ticker extends Base{
 		$settings 	= $this->get_settings_for_display();
 	?>
 	<div class="ua-news-ticker">
-	  <div class="bn-label">Ticker Label</div>
+	  <div class="bn-label"><?php echo $settings['ticker_label']; ?></div>
 	  <div class="bn-news">
-		<ul>
-		  <li><a href="#">1.1. Breaking NEWS 1</a></li>
-		  <li><a href="#">1.2. Breaking NEWS 2</a></li>
-		  <li><a href="#">1.3. Breaking NEWS 3</a></li>
-		  <li><a href="#">1.4. Breaking NEWS 4</a></li>
-		  <li><a href="#">1.5. Breaking NEWS 5</a></li>
-		  <li><a href="#">1.6. Breaking NEWS 6</a></li>
-		  <li><a href="#">1.7. Breaking NEWS 7</a></li>
-		</ul>
+		<?php
+			if ( $settings['ticker_list'] ) {
+			echo '<ul>';
+			foreach (  $settings['ticker_list'] as $item ) {
+				echo '<li class="elementor-repeater-item-' . $item['_id'] . '"><a href="#">'.$item['news_title'].'</a></li>';
+			}
+			echo '</ul>';
+		}
+		?>
 	  </div>
 	  <div class="bn-controls">
 		<button><span class="bn-arrow bn-prev"></span></button>
