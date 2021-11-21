@@ -123,14 +123,14 @@ class News_Ticker extends Base{
 			'news_title', [
 				'label' => __( 'Title', 'ultraaddons' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => __( 'List Title' , 'ultraaddons' ),
+				'default' => __( 'News Title' , 'ultraaddons' ),
 				'label_block' => true,
 			]
 		);
 		$this->add_control(
 			'ticker_list',
 			[
-				'label' => __( 'Repeater List', 'ultraaddons' ),
+				'label' => __( 'News Ticker List', 'ultraaddons' ),
 				'type' => \Elementor\Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 				'default' => [
