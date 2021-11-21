@@ -254,18 +254,20 @@ class News_Ticker extends Base{
 	
    protected function render() {
 		$settings 	= $this->get_settings_for_display();
+		//var_dump($settings['ticker_list']);
 	?>
 	<div class="ua-news-ticker-wrap">
 	  <div class="bn-label"><?php echo $settings['ticker_label']; ?></div>
 	  <div class="bn-news">
 		<?php
-			if ( $settings['ticker_list'] ) {
-			echo '<ul>';
-			foreach (  $settings['ticker_list'] as $item ) {
-				echo '<li class="elementor-repeater-item-' . $item['_id'] . '"><a href="#">'.$item['news_title'].'</a></li>';
+		
+			if ( isset( $settings['ticker_list'] ) ) {
+				echo '<ul>';
+				foreach (  $settings['ticker_list'] as $item ) {
+					echo '<li class="news-tricker-element elementor-repeater-item-' . $item['_id'] . '"><a href="#">'.$item['news_title'].'</a></li>';
+				}
+				echo '</ul>';
 			}
-			echo '</ul>';
-		}
 		?>
 	  </div>
 	  <div class="bn-controls">
