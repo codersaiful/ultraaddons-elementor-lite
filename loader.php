@@ -489,6 +489,13 @@ class Loader {
                 ]
         );
         
+        $elements_manager->add_category('ultraaddons-wc', 
+                [
+                    'title'     => esc_html__( 'Ultra WooCommerce', 'ultraaddons' ), 
+                    'icon'      => 'uicon-ultraaddons'
+                ]
+        );
+        
         
     }
 

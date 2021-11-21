@@ -214,12 +214,19 @@ class Base extends Widget_Base{
          * 
          * @since 1.0.7.27
          */
-        if( $this->is_pro() ){
+        if( $this->is_wc() ){
+            $default = [ 'ultraaddons-wc' ];
+        }else if( $this->is_pro() ){
             $default = [ 'ultraaddons-pro' ];
         }else{
             $default = [ 'ultraaddons' ];
         }
         
+
+
+        //var_dump($this->get_pure_name(),$this->get_widget_args());
+
+
         /**
          * Filter for Change Category for All for any specific 
          * 
@@ -344,4 +351,16 @@ class Base extends Widget_Base{
         $args = $this->get_widget_args();
         return isset( $args['is_pro'] ) ? $args['is_pro'] : false;
     }
+    
+    /**
+     * Getting bool if is WooCommerce Widget
+     * 
+     * @since 1.1.0.7
+     * @return Boolean
+     */
+    public function is_wc(){
+        $args = $this->get_widget_args();
+        return isset( $args['is_wc'] ) ? $args['is_wc'] : false;
+    }
+
 }
