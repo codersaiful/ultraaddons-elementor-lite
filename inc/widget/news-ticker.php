@@ -137,8 +137,8 @@ class News_Ticker extends Base{
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label_on' => __( 'Yes', 'ultraaddons' ),
 				'label_off' => __( 'No', 'ultraaddons' ),
-				'return_value' => 'true',
-				'default' => 'true',
+				'return_value' => 'yes',
+				'default' => 'yes',
 				'frontend_available' => true,
 			]
 		);	
@@ -149,8 +149,8 @@ class News_Ticker extends Base{
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label_on' => __( 'Yes', 'ultraaddons' ),
 				'label_off' => __( 'No', 'ultraaddons' ),
-				'return_value' => 'true',
-				'default' => 'true,
+				'return_value' => 'yes',
+				'default' => 'yes',
 				'frontend_available' => true,
 			]
 		);
@@ -232,7 +232,7 @@ class News_Ticker extends Base{
    protected function render() {
 		$settings 	= $this->get_settings_for_display();
 	?>
-	<div class="ua-news-ticker">
+	<div class="ua-news-ticker-wrap">
 	  <div class="bn-label"><?php echo $settings['ticker_label']; ?></div>
 	  <div class="bn-news">
 		<?php
@@ -253,3 +253,31 @@ class News_Ticker extends Base{
 	</div>
 <?php }
 }
+
+add_action( 'wp_footer', function() {
+	if ( ! defined( 'ELEMENTOR_VERSION' ) ) {
+		return;
+	}
+	?>
+	<script>
+	jQuery(window).on('elementor/frontend/init', function () {
+		elementorFrontend.hooks.addAction( 'frontend/element_ready/ultraaddons-news-ticker.default', function($scope,view ) {
+			if ( $scope.find( '.ua-element-news-ticker' ) ){
+					var $data =  jQuery('[data-settings]');
+						if ($data.length) {
+						$data.each(function(index, el){
+						var $Options = jQuery(this).data('settings'); 	
+						  
+						console.log($Options);
+						jQuery('.ua-news-ticker-wrap').breakingNews({
+							effect: 'typography'
+						});
+					});
+				}
+				
+			}
+		} );
+	});
+	</script>
+	<?php
+} );
