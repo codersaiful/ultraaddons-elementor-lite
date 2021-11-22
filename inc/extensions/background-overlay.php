@@ -39,8 +39,8 @@ class Background_Overlay {
 		$element->add_control(
 				'_ua_overlay_bg_on_off',
 				[
-						'label' => __( 'Overlay Background', 'ultraaddons' ),
-						'description' => __( 'Description will come here.', 'ultraaddons' ),
+						'label' => __( 'Switch', 'ultraaddons' ),
+						'description' => __( 'Custom background overlay for any element, any column, any item.', 'ultraaddons' ),
 						'type' => Controls_Manager::SWITCHER,
 						'label_on' => __( 'On', 'ultraaddons' ),
 						'label_off' => __( 'Off', 'ultraaddons' ),
