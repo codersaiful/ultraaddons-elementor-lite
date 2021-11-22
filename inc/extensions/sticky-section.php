@@ -70,14 +70,15 @@ class Sticky_Section{
                     'default' => '',
                     'prefix_class' => 'ua-sticky-',
                     'selectors' => [
-                        '{{WRAPPER}}.ua-sticky-yes' => 'position: sticky;width: 100%;z-index: 999;',
+                        '{{WRAPPER}}.ua-sticky-yes' => 'position: sticky;width: 100%;',
                     ],
             ]
         );
         $element->add_responsive_control(
-            '_ua_sticky_scroll_top',
+            '_ua_sticky_margin_top',
             [
-                'label' => esc_html__('Scroll Top', 'ultraaddons'),
+                'label' => esc_html__('Margin/Space Top', 'ultraaddons'),
+                'description' => __( 'Margin top / White space from top.', 'ultraaddons' ),
                 'type' => Controls_Manager::SLIDER,
                 'default' => [
                     'size' => 0,
@@ -93,6 +94,33 @@ class Sticky_Section{
                 ],
                 'selectors' => [
                     '{{WRAPPER}}.ua-sticky-yes' => 'top: {{SIZE}}{{UNIT}};',
+                ],
+                'condition' => [
+                    '_ua_sticky_section_switch' => 'yes'
+                ]
+            ]
+        );
+
+        $element->add_control(
+            '_ua_sticky_z_index',
+            [
+                'label' => esc_html__('Z-Index', 'ultraaddons'),
+                'description' => __( 'Indicate Layer postion for your Sticky section.', 'ultraaddons' ),
+                'type' => Controls_Manager::SLIDER,
+                'default' => [
+                    'size' => 1000,
+                    //'unit' => 'px',
+                ],
+                //'size_units' => ['px','%'],
+                'range' => [
+                    'px' => [
+                        'min' => 1000,
+                        'max' => 1100,
+                        'step' => 1,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}}.ua-sticky-yes' => 'z-index: {{SIZE}};',
                 ],
                 'condition' => [
                     '_ua_sticky_section_switch' => 'yes'
