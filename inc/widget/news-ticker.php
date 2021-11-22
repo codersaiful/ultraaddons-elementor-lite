@@ -99,7 +99,10 @@ class News_Ticker extends Base{
         //For Design Section Style Tab
    
         //For Setting Control
-        $this->settings_controls();
+        $this->ticker_settings_controls();
+		
+		//For Style Control
+        $this->ticker_style_controls();
     }
 
     /**
@@ -109,7 +112,7 @@ class News_Ticker extends Base{
      *
      * @return void
      */
-    protected function settings_controls(){
+    protected function ticker_settings_controls(){
         $this->start_controls_section(
             'ticker_settings',
             [
@@ -172,14 +175,6 @@ class News_Ticker extends Base{
 			]
 		);
 
-       $this->add_control(
-			'themeColor', [
-				'label' => __( 'Theme Color', 'ultraaddons' ),
-				'type'      => Controls_Manager::COLOR,
-				'default'=>'#333',
-				'frontend_available' => true,
-			]
-        );
         $this->end_controls_section();
     }
 
@@ -237,7 +232,7 @@ class News_Ticker extends Base{
 		
 	$this->end_controls_section();
 	}
-	protected function news_ticker_style_controls() {
+	protected function ticker_style_controls() {
 		
         $this->start_controls_section(
             '_ua_news_ticker_content_style',
@@ -246,7 +241,16 @@ class News_Ticker extends Base{
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
-		
+		$this->add_control(
+			'_ua_label_bg', [
+				'label' => __( 'Label Background', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'=>'#333',
+				'selectors' => [
+						'{{WRAPPER}} .bn-label' => 'background-color: {{VALUE}};',
+				],
+			]
+        );
 		
 		$this->end_controls_section();
 	}

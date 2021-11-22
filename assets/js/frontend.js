@@ -766,14 +766,14 @@
                 //News Ticker
                 NewsTicker:function($scope){
 						var $TickerData =  $('[data-settings]');
-						if ($TickerData.length) {
+						if ($TickerData.attr('data-settings')) {
 						$TickerData.each(function(index, el){
-						var $Options 	= $(this).data('settings'); 	
-						var play		= $Options.play == "yes" ? true : false;;
-						var directon 	= $Options.directon;
-						var stopOnHover = $Options.stopOnHover== "yes" ? true : false;;
-						var themeColor 	= $Options.themeColor;
-						var effect 		= $Options.effect;
+						var $Options 	= $(this).data('settings'), 	
+						play			= $Options.play == "yes" ? true : false,
+						directon 		= $Options.directon,
+						stopOnHover 	= $Options.stopOnHover== "yes" ? true : false,
+						themeColor 		= $Options.themeColor,
+						effect 			= $Options.effect;
 						
 						//console.log($Options);
 						$('.ua-news-ticker-wrap').breakingNews({
@@ -783,6 +783,10 @@
 							themeColor:themeColor,
 							effect:effect,
 						});
+					});
+				}else{
+					$('.ua-news-ticker-wrap').breakingNews({
+						play: true,
 					});
 				}
                 },
@@ -799,7 +803,8 @@
                 //BM Rafiul Script End Here
                 
             };
-    
+			
+			
             $.each( elementReadyMap, function( elementKey, elementReadyMap ) {
                     EF.hooks.addAction( 'frontend/element_ready/' + elementKey, elementReadyMap );
             });
