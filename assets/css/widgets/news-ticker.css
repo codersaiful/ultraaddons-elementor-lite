@@ -1,0 +1,19 @@
+.ua-news-ticker-wrap{
+	display: block;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+.ua-news-ticker-wrap.bn-fixed-top{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+.ua-news-ticker-wrap.bn-fixed-bottom{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
