@@ -773,7 +773,11 @@
 						directon 		= $Options.directon,
 						stopOnHover 	= $Options.stopOnHover== "yes" ? true : false,
 						themeColor 		= $Options.themeColor,
-						effect 			= $Options.effect;
+						effect 			= $Options.effect,
+						delayTimer 		= $Options.delayTimer,
+						position 		= $Options.position,
+						scrollSpeed 	= $Options.scrollSpeed,
+						zIndex 			= $Options.zIndex;
 						
 						//console.log($Options);
 						$('.ua-news-ticker-wrap').breakingNews({
@@ -782,12 +786,14 @@
 							stopOnHover: stopOnHover,
 							themeColor:themeColor,
 							effect:effect,
+							delayTimer:delayTimer,
+							position:position,
+							scrollSpeed:scrollSpeed,
+							zIndex:zIndex,
 						});
 					});
 				}else{
-					$('.ua-news-ticker-wrap').breakingNews({
-						play: true,
-					});
+					$('.ua-news-ticker-wrap').breakingNews();
 				}
                 },
             };

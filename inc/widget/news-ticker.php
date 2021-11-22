@@ -103,6 +103,8 @@ class News_Ticker extends Base{
 		
 		//For Style Control
         $this->ticker_style_controls();
+		//For Btn Control
+        $this->ticker_btn_style_controls();
     }
 
     /**
@@ -132,15 +134,52 @@ class News_Ticker extends Base{
 					'ltr' => __( 'LTR', 'ultraaddons' ),
 				],
 			]
-		);   
+		);
+		$this->add_control(
+			'delayTimer',
+			[
+				'label' => __( 'Delay Timer', 'ultraaddons' ),
+				'type' => \Elementor\Controls_Manager::NUMBER,
+				'min' => 2000,
+				'max' => 6000,
+				'step' => 100,
+				'default' => 4000,
+				'frontend_available' => true,
+			]
+		);
+		$this->add_control(
+			'scrollSpeed',
+			[
+				'label' => __( 'Scroll Speed', 'ultraaddons' ),
+				'type' => \Elementor\Controls_Manager::NUMBER,
+				'min' => 2,
+				'max' => 20,
+				'step' => 2,
+				'default' => 2,
+				'frontend_available' => true,
+			]
+		);
+		$this->add_control(
+			'zIndex',
+			[
+				'label' => __( 'ZIndex', 'ultraaddons' ),
+				'type' => \Elementor\Controls_Manager::NUMBER,
+				'min' => 99999,
+				'max' => 999999,
+				'step' => 1000,
+				'default' => 99999,
+				'frontend_available' => true,
+			]
+		);
 		$this->add_control(
 			'effect',
 			[
 				'label' => __( 'Effects', 'ultraaddons' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
-				'default' => 'fade',
+				'default' => 'scroll',
 				'frontend_available' => true,
 				'options' => [
+					'scroll'  => __( 'Scroll', 'ultraaddons' ),
 					'fade'  => __( 'Fade', 'ultraaddons' ),
 					'slide-down' => __( 'Slide Down', 'ultraaddons' ),
 					'slide-up' => __( 'Slide Up', 'ultraaddons' ),
@@ -172,6 +211,20 @@ class News_Ticker extends Base{
 				'return_value' => 'yes',
 				'default' => 'yes',
 				'frontend_available' => true,
+			]
+		);
+		$this->add_control(
+			'position',
+			[
+				'label' => __( 'Position', 'ultraaddons' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => 'auto',
+				'frontend_available' => true,
+				'options' => [
+					'auto'  => __( 'Default', 'ultraaddons' ),
+					'fixed-top' => __( 'Top', 'ultraaddons' ),
+					'fixed-bottom' => __( 'Bottom', 'ultraaddons' ),
+				],
 			]
 		);
 
@@ -242,7 +295,7 @@ class News_Ticker extends Base{
             ]
         );
 		$this->add_control(
-			'_ua_label_bg', [
+			'_ua_ticker_label_bg', [
 				'label' => __( 'Label Background', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'=>'#333',
@@ -251,6 +304,69 @@ class News_Ticker extends Base{
 				],
 			]
         );
+		$this->add_control(
+			'_ua_ticker_border_color', [
+				'label' => __( 'Border Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'=>'#333',
+				'selectors' => [
+						'{{WRAPPER}} .ua-news-ticker-wrap' => 'border: 1px solid {{VALUE}};',
+				],
+			]
+        );
+		
+		$this->add_control(
+			'_ua_ticker_bg_color', [
+				'label' => __( 'Background Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'=>'#fff',
+				'selectors' => [
+						'{{WRAPPER}} .ua-news-ticker-wrap' => 'background-color: {{VALUE}};',
+				],
+			]
+        );
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'ticker_label_typography',
+					'label' => 'Label Typography',
+					'selector' => '{{WRAPPER}} .bn-label',
+
+			]
+        );
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'ticker_typography',
+					'label' => 'Ticker Typography',
+					'selector' => '{{WRAPPER}} .bn-news ul li',
+
+			]
+        );
+		
+		$this->end_controls_section();
+	}
+	protected function ticker_btn_style_controls() {
+		
+        $this->start_controls_section(
+            '_ua_ticker_btn_style',
+            [
+                'label'     => esc_html__( 'Action Button Style', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->add_control(
+			'_ua_ticker_btn_bg', [
+				'label' => __( 'Control Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'=>'#333',
+				'selectors' => [
+						'{{WRAPPER}} .bn-arrow:after, .bn-pause:after, .bn-pause:before' => 'border-color: {{VALUE}};',
+						'{{WRAPPER}} .bn-pause:after, .bn-pause:before' => 'background-color: {{VALUE}};',
+				],
+			]
+        );
+		
 		
 		$this->end_controls_section();
 	}
@@ -258,7 +374,6 @@ class News_Ticker extends Base{
 	
    protected function render() {
 		$settings 	= $this->get_settings_for_display();
-		//var_dump($settings['ticker_list']);
 	?>
 	<div class="ua-news-ticker-wrap">
 	  <div class="bn-label"><?php echo $settings['ticker_label']; ?></div>
