@@ -122,19 +122,7 @@ class News_Ticker extends Base{
             ]
         );
 
-        $this->add_control(
-			'direction',
-			[
-				'label' => __( 'Direction', 'ultraaddons' ),
-				'type' => \Elementor\Controls_Manager::SELECT,
-				'default' => 'rtl',
-				'frontend_available' => true,
-				'options' => [
-					'rtl'  => __( 'RTL', 'ultraaddons' ),
-					'ltr' => __( 'LTR', 'ultraaddons' ),
-				],
-			]
-		);
+        
 		$this->add_control(
 			'delayTimer',
 			[
@@ -171,24 +159,7 @@ class News_Ticker extends Base{
 				'frontend_available' => true,
 			]
 		);
-		$this->add_control(
-			'effect',
-			[
-				'label' => __( 'Effects', 'ultraaddons' ),
-				'type' => \Elementor\Controls_Manager::SELECT,
-				'default' => 'scroll',
-				'frontend_available' => true,
-				'options' => [
-					'scroll'  => __( 'Scroll', 'ultraaddons' ),
-					'fade'  => __( 'Fade', 'ultraaddons' ),
-					'slide-down' => __( 'Slide Down', 'ultraaddons' ),
-					'slide-up' => __( 'Slide Up', 'ultraaddons' ),
-					'slide-right' => __( 'Slide Right', 'ultraaddons' ),
-					'slide-left' => __( 'Slide Left', 'ultraaddons' ),
-					'typography' => __( 'Typography', 'ultraaddons' ),
-				],
-			]
-		);
+		
 		$this->add_control(
 			'play',
 			[
@@ -214,6 +185,17 @@ class News_Ticker extends Base{
 			]
 		);
 		$this->add_control(
+			'show_controls',
+			[
+				'label' => __( 'Action Button', 'ultraaddons' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+		$this->add_control(
 			'position',
 			[
 				'label' => __( 'Position', 'ultraaddons' ),
@@ -228,16 +210,37 @@ class News_Ticker extends Base{
 			]
 		);
 		$this->add_control(
-			'show_controls',
+			'effect',
 			[
-				'label' => __( 'Action Button', 'ultraaddons' ),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
-				'return_value' => 'yes',
-				'default' => 'yes',
+				'label' => __( 'Effects', 'ultraaddons' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => 'scroll',
+				'frontend_available' => true,
+				'options' => [
+					'scroll'  => __( 'Scroll', 'ultraaddons' ),
+					'fade'  => __( 'Fade', 'ultraaddons' ),
+					'slide-down' => __( 'Slide Down', 'ultraaddons' ),
+					'slide-up' => __( 'Slide Up', 'ultraaddons' ),
+					'slide-right' => __( 'Slide Right', 'ultraaddons' ),
+					'slide-left' => __( 'Slide Left', 'ultraaddons' ),
+					'typography' => __( 'Typography', 'ultraaddons' ),
+				],
 			]
 		);
+		$this->add_control(
+			'direction',
+			[
+				'label' => __( 'Direction', 'ultraaddons' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => 'rtl',
+				'frontend_available' => true,
+				'options' => [
+					'rtl'  => __( 'RTL', 'ultraaddons' ),
+					'ltr' => __( 'LTR', 'ultraaddons' ),
+				],
+			]
+		);
+		
 
         $this->end_controls_section();
     }
@@ -269,8 +272,8 @@ class News_Ticker extends Base{
 
 		$repeater->add_control(
 			'news_title', [
-				'label' => __( 'Title', 'ultraaddons' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
+				'label' => __( 'Text', 'ultraaddons' ),
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
 				'default' => __( 'Lorem Ipsum simply dummy text of the printing and typesetting industry' , 'ultraaddons' ),
 				'label_block' => true,
 			]

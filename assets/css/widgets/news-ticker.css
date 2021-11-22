@@ -17,3 +17,9 @@
   right: 0;
   bottom: 0;
 }
+.bn-effect-scroll .bn-news ul li {
+    margin: 0;
+}
+.bn-controls button {
+    padding: 0;
+}

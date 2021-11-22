@@ -764,7 +764,8 @@
                  */
                 
                 //News Ticker
-                NewsTicker:function($scope){
+				
+               /*  NewsTicker:function($scope){
 						var $TickerData =  $('[data-settings]');
 						if ($TickerData.attr('data-settings')) {
 						$TickerData.each(function(index, el){
@@ -795,7 +796,7 @@
 				}else{
 					$('.ua-news-ticker-wrap').breakingNews();
 				}
-                },
+                }, */
             };
             
             let elementReadyMap = {
@@ -805,7 +806,7 @@
                 'ultraaddons-counter.default'  	: UltraAddonsMap.Counter,
 
                 //BM Rafiul Script Start Here
-                'ultraaddons-news-ticker.default'  : UltraAddonsMap.NewsTicker, 
+                //'ultraaddons-news-ticker.default'  : UltraAddonsMap.NewsTicker, 
                 //BM Rafiul Script End Here
                 
             };
@@ -944,5 +945,40 @@
         // other options
     });
     //*************************************/
+	var NewsTicker = function( $scope, $ ) {
+			var $TickerData =  $('[data-settings]');
+				if ($TickerData.attr('data-settings')) {
+				$TickerData.each(function(index, el){
+				var $Options 	= $(this).data('settings'), 	
+				play			= $Options.play == "yes" ? true : false,
+				directon 		= $Options.directon,
+				stopOnHover 	= $Options.stopOnHover== "yes" ? true : false,
+				themeColor 		= $Options.themeColor,
+				effect 			= $Options.effect,
+				delayTimer 		= $Options.delayTimer,
+				position 		= $Options.position,
+				scrollSpeed 	= $Options.scrollSpeed,
+				zIndex 			= $Options.zIndex;
+				
+				console.log($Options);
+				$('.ua-news-ticker-wrap').breakingNews({
+					play: play,
+					directon: directon,
+					stopOnHover: stopOnHover,
+					themeColor:themeColor,
+					effect:effect,
+					delayTimer:delayTimer,
+					position:position,
+					scrollSpeed:scrollSpeed,
+					zIndex:zIndex,
+				});
+			});
+		}else{
+			$('.ua-news-ticker-wrap').breakingNews();
+		}
+	};
+	$( window ).on( 'elementor/frontend/init', function() {
+		elementorFrontend.hooks.addAction( 'frontend/element_ready/ultraaddons-news-ticker.default', NewsTicker );
+	} );
 
 } (jQuery, window));
