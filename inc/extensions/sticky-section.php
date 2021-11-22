@@ -62,7 +62,7 @@ class Sticky_Section{
             '_ua_sticky_section_switch',
             [
                     'label' => __( 'Switch', 'ultraaddons' ),
-                    'description' => __( 'Sticky Section for any section.', 'ultraaddons' ),
+                    'description' => __( 'Enable Sticky Section for any section.', 'ultraaddons' ),
                     'type' => Controls_Manager::SWITCHER,
                     'label_on' => __( 'On', 'ultraaddons' ),
                     'label_off' => __( 'Off', 'ultraaddons' ),
