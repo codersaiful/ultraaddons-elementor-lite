@@ -37,14 +37,33 @@
                 getCss:function(){
                     return this.getElementSettings('ua_custom_css');
                 },
+                
+                getId:function(){
+                    return this.$element.data('id');
+                },
+
                 run:function(){
                     var cssRules = this.getCss();
-                    $('<style>' + cssRules + '</style>').appendTo('head');
+                    var element_id = this.getId();
+                    if(cssRules){
+                        $('<style id="ua-custom-css-'+element_id+'" >' + cssRules + '</style>').appendTo('head');
+                    }else{
+                        $('#ua-custom-css-' + element_id).remove();
+                    }
+                    
                 }
             });
 
             EF.hooks.addAction( 'frontend/element_ready/widget', function( $scope ) {
-                EF.elementsHandler.addHandler( CusttomCSS, { $element: $scope });
+                var $item = $scope.find('div').closest('.custom-css-applied-yes');
+                var len = $item.length;
+                var element_id = $item.data('id');
+                
+                if(len){
+                    EF.elementsHandler.addHandler( CusttomCSS, { $element: $scope,id: element_id});
+                }else{
+                    $('#ua-custom-css-' + element_id).remove();
+                }
             });
             
             
