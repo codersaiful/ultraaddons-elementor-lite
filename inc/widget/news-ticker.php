@@ -227,6 +227,17 @@ class News_Ticker extends Base{
 				],
 			]
 		);
+		$this->add_control(
+			'show_controls',
+			[
+				'label' => __( 'Action Button', 'ultraaddons' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
 
         $this->end_controls_section();
     }
@@ -260,10 +271,25 @@ class News_Ticker extends Base{
 			'news_title', [
 				'label' => __( 'Title', 'ultraaddons' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => __( 'News Title' , 'ultraaddons' ),
+				'default' => __( 'Lorem Ipsum simply dummy text of the printing and typesetting industry' , 'ultraaddons' ),
 				'label_block' => true,
 			]
 		);
+		$repeater->add_control(
+			'news_link',
+			[
+				'label' => __( 'Link', 'ultraaddons' ),
+				'type' => \Elementor\Controls_Manager::URL,
+				'placeholder' => __( 'https://your-link.com', 'ultraaddons' ),
+				'show_external' => true,
+				'default' => [
+					'url' => '#',
+					'is_external' => true,
+					'nofollow' => true,
+				],
+			]
+		);
+		
 		$this->add_control(
 			'ticker_list',
 			[
@@ -272,10 +298,10 @@ class News_Ticker extends Base{
 				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
-						'news_title' => __( 'Lorem Ipsum Doler #1', 'ultraaddons' ),
+						'news_title' => __( 'Lorem Ipsum simply dummy text of the printing and typesetting industry', 'ultraaddons' ),
 					],
 					[
-						'news_title' => __( 'Lorem Ipsum Doler #2', 'ultraaddons' ),
+						'news_title' => __( 'Lorem Ipsum simply dummy text of the printing and typesetting industry', 'ultraaddons' ),
 					],
 				],
 				'title_field' => '{{{ news_title }}}',
@@ -295,6 +321,17 @@ class News_Ticker extends Base{
             ]
         );
 		$this->add_control(
+			'_ua_ticker_text_color', [
+				'label' => __( 'Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'=>'#333',
+				'selectors' => [
+						'{{WRAPPER}} .ua-news-ticker-wrap ul li a' => 'color: {{VALUE}};',
+				],
+				'separator'=> 'after'
+			]
+        ); 
+		$this->add_control(
 			'_ua_ticker_label_bg', [
 				'label' => __( 'Label Background', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
@@ -304,6 +341,17 @@ class News_Ticker extends Base{
 				],
 			]
         );
+		$this->add_control(
+			'_ua_ticker_label_color', [
+				'label' => __( 'Label Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'=>'#fff',
+				'selectors' => [
+						'{{WRAPPER}} .bn-label' => 'color: {{VALUE}};',
+				],
+				'separator'=> 'after'
+			]
+        ); 
 		$this->add_control(
 			'_ua_ticker_border_color', [
 				'label' => __( 'Border Color', 'ultraaddons' ),
@@ -323,6 +371,7 @@ class News_Ticker extends Base{
 				'selectors' => [
 						'{{WRAPPER}} .ua-news-ticker-wrap' => 'background-color: {{VALUE}};',
 				],
+				'separator'=> 'after'
 			]
         );
 		$this->add_group_control(
@@ -383,17 +432,24 @@ class News_Ticker extends Base{
 			if ( isset( $settings['ticker_list'] ) ) {
 				echo '<ul>';
 				foreach (  $settings['ticker_list'] as $item ) {
-					echo '<li class="news-tricker-element elementor-repeater-item-' . $item['_id'] . '"><a href="#">'.$item['news_title'].'</a></li>';
+					$target 	= $item['news_link']['is_external'] ? ' target="_blank"' : '';
+					$nofollow 	= $item['news_link']['nofollow'] ? ' rel="nofollow"' : '';
+					$url		= $item['news_link']['url'];
+					echo '<li class="news-tricker-element elementor-repeater-item-' . $item['_id'] . '">
+					<a href="' . $url. '"' . $target . $nofollow . '>'.$item['news_title'].'</a>
+					</li>';
 				}
 				echo '</ul>';
 			}
 		?>
 	  </div>
+	  <?php if('yes'=== $settings['show_controls']): ?>
 	  <div class="bn-controls">
 		<button><span class="bn-arrow bn-prev"></span></button>
 		<button><span class="bn-action"></span></button>
 		<button><span class="bn-arrow bn-next"></span></button>
 	  </div>
+	  <?php endif;?>
 	</div>
 <?php }
 }
