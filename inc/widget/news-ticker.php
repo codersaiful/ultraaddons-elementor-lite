@@ -102,7 +102,7 @@ class News_Ticker extends Base{
         $this->ticker_settings_controls();
 		
 		//For Style Control
-        $this->news_ticker_style_controls();
+        $this->ticker_style_controls();
     }
 
     /**
@@ -232,7 +232,7 @@ class News_Ticker extends Base{
 		
 	$this->end_controls_section();
 	}
-	protected function news_ticker_style_controls() {
+	protected function ticker_style_controls() {
 		
         $this->start_controls_section(
             '_ua_news_ticker_content_style',
