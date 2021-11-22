@@ -130,10 +130,14 @@ $extensionsArray = [
             ],
 
 
-//         Need more Customizer and to be update   
-//            'ultra-effects'=> [
-//                    'name'  => __( 'Ultra Effect', 'ultraaddons' ),
-//            ],
+            'Sticky_Section' => [
+                'name'  => __( 'Sticky Section on Scroll', 'ultraaddons' ),
+                'is_pro'   => false,
+                'icon'      => 'eicon-scroll',
+                'cat'       => [
+                    __( 'Basic', 'ultraaddons' ),
+                ],
+            ],
             
         ];
 

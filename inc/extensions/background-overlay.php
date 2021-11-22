@@ -92,12 +92,10 @@ class Background_Overlay {
 					$selector => 'opacity: {{SIZE}};',
 //					'{{WRAPPER}} > .elementor-element-populated >  .elementor-background-overlay' => 'opacity: {{SIZE}};',
 				],
-                                'condition' => [
-                                    '_ua_overlay_bg_on_off' => 'yes',
-                                ],
-//				'condition' => [
-//					'background_overlay_background' => [ 'classic', 'gradient' ],
-//				],
+				'condition' => [
+					'_ua_overlay_bg_on_off' => 'yes',
+				],
+
 			]
 		);
 
