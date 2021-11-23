@@ -590,13 +590,6 @@
             );
             
         
-//            //for new Elemenment to Each Widget and column
-//            EF.hooks.addAction(
-//                    'frontend/element_ready/widget',
-//                    function ($scope) {
-//                        $scope.find('.elementor-widget-container').prepend('<div class="ua-widget-background-overlay">Widget</div>');
-//                    }
-//            );
             
             // Cart Update in Editor Screen
             EF.hooks.addAction(
@@ -608,43 +601,8 @@
                     }
             );
             
-           /*
-           
-                var fnHanlders = {
-			'ha-image-compare.default'      : HandleImageCompare,
-			'ha-number.default'             : NumberHandler,
-			'ha-skills.default'             : SkillHandler,
-			'ha-fun-factor.default'         : FunFactor,
-			'ha-bar-chart.default'          : BarChart,
-			'ha-twitter-feed.default'       : TwitterFeed,
-			'ha-threesixty-rotation.default': Threesixty_Rotation,
-			'ha-data-table.default'         : DataTable,
-			'widget'                        : BackgroundOverlay,
-		};
 
-		$.each( fnHanlders, function( widgetName, handlerFn ) {
-			elementorFrontend.hooks.addAction( 'frontend/element_ready/' + widgetName, handlerFn );
-		});
-
-		var classHandlers = {
-			'ha-image-grid.default'       : ImageGrid,
-			'ha-justified-gallery.default': JustifiedGrid,
-			'ha-news-ticker.default'      : NewsTicker,
-			'ha-post-tab.default'         : PostTab
-		};
-
-		$.each( classHandlers, function( widgetName, handlerClass ) {
-			elementorFrontend.hooks.addAction( 'frontend/element_ready/' + widgetName, function( $scope ) {
-				elementorFrontend.elementsHandler.addHandler( handlerClass, { $element: $scope });
-			});
-		});
            
-           */
-           
-           
-//            EF.hooks.addAction( 'frontend/element_ready/widget', function( $scope ) {
-//                EF.elementsHandler.addHandler( CusttomCSS, { $element: $scope });
-//            });
             // Wrapper Link
            $('.ua-wrapper-link').each(function() {
                     var link = $(this).data('_ua_element_link');
@@ -666,13 +624,7 @@
             });
 
 
-//            EF.hooks.addAction(
-//                'frontend/element_ready/widgett',
-//                function($scope, $) {
-//                    var link = $(this).data('_ua_element_link');
-//                    
-//                    
-//                });
+
             
             let UltraAddonsMap = {
                 /**
@@ -764,10 +716,9 @@
                  */
                 
                 //News Ticker
-				
-               /*  NewsTicker:function($scope){
-						var $TickerData =  $('[data-settings]');
-						if ($TickerData.attr('data-settings')) {
+				NewsTicker:function($scope){
+					var $TickerData =  $('[data-settings]');
+					if ($TickerData.attr('data-settings')) {
 						$TickerData.each(function(index, el){
 						var $Options 	= $(this).data('settings'), 	
 						play			= $Options.play == "yes" ? true : false,
@@ -796,12 +747,12 @@
 				}else{
 					$('.ua-news-ticker-wrap').breakingNews();
 				}
-                }, */
+                }, 
             };
             
             let elementReadyMap = {
                 'ultraaddons-alert.default'     : UltraAddonsMap.Alert,
-                'ultraaddons-timeline.default'  : UltraAddonsMap.UA_Owl_Carousel,
+                //'ultraaddons-timeline.default'  : UltraAddonsMap.UA_Owl_Carousel, //It has removed actually
                 'ultraaddons-skill-bar.default' : UltraAddonsMap.skillBar,
                 'ultraaddons-counter.default'  	: UltraAddonsMap.Counter,
 
@@ -819,14 +770,7 @@
 
     });
                    
-//   $('.ua-counter-text').appear(function () {
-//        var element = $(this);
-//        var timeSet = setTimeout(function () {
-//            if (element.hasClass('ua-counter-text')) {
-//                element.find('.ua-counter-value').countTo();
-//            }
-//        });
-//    });
+
     /**
      * Created Outside of init/Elementtor
      * Imean: elementor/frontend/init
@@ -907,78 +851,5 @@
     }
     
     
-    /*     Magnific Popup js
-     -------------------------------------*
-    $('.video_btn').magnificPopup({
-        type: 'iframe',
-        mainClass: 'mfp-fade',
-        preloader: true,
-    });
-
-    //Magnific popup video
-     $('.play-btn').magnificPopup({
-        type: 'iframe',
-        iframe: {
-            markup: '<div class="mfp-iframe-scaler">' +
-                '<div class="mfp-close"></div>' +
-                '<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>' +
-                '</div>',
-
-            patterns: {
-                youtube: {
-                    index: 'youtube.com/',
-                    id: 'v=',
-                    src: 'https://www.youtube.com/embed/%id%?autoplay=1'
-                },
-                vimeo: {
-                    index: 'vimeo.com/',
-                    id: '/',
-                    src: 'https://player.vimeo.com/video/%id%?autoplay=1'
-                },
-                gmaps: {
-                    index: 'https://maps.google.',
-                    src: '%id%&output=embed'
-                }
-            },
-            srcAction: 'iframe_src',
-        }
-        // other options
-    });
-    //*************************************/
-	var NewsTicker = function( $scope, $ ) {
-			var $TickerData =  $('[data-settings]');
-				if ($TickerData.attr('data-settings')) {
-				$TickerData.each(function(index, el){
-				var $Options 	= $(this).data('settings'), 	
-				play			= $Options.play == "yes" ? true : false,
-				directon 		= $Options.directon,
-				stopOnHover 	= $Options.stopOnHover== "yes" ? true : false,
-				themeColor 		= $Options.themeColor,
-				effect 			= $Options.effect,
-				delayTimer 		= $Options.delayTimer,
-				position 		= $Options.position,
-				scrollSpeed 	= $Options.scrollSpeed,
-				zIndex 			= $Options.zIndex;
-				
-				console.log($Options);
-				$('.ua-news-ticker-wrap').breakingNews({
-					play: play,
-					directon: directon,
-					stopOnHover: stopOnHover,
-					themeColor:themeColor,
-					effect:effect,
-					delayTimer:delayTimer,
-					position:position,
-					scrollSpeed:scrollSpeed,
-					zIndex:zIndex,
-				});
-			});
-		}else{
-			$('.ua-news-ticker-wrap').breakingNews();
-		}
-	};
-	$( window ).on( 'elementor/frontend/init', function() {
-		elementorFrontend.hooks.addAction( 'frontend/element_ready/ultraaddons-news-ticker.default', NewsTicker );
-	} );
 
 } (jQuery, window));
