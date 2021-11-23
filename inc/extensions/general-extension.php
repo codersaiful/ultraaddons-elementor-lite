@@ -99,9 +99,9 @@ class General_Extension{
                     'return_value' => 'yes',
                     'default' => '',
                     'prefix_class' => 'ua-paralax-',
-                    'selectors' => [
-                        '{{WRAPPER}}.ua-sticky-yes' => 'position: sticky;width: 100%;',
-                    ],
+                    // 'selectors' => [
+                    //     '{{WRAPPER}}.ua-sticky-yes' => 'position: sticky;width: 100%;',
+                    // ],
             ]
         );
 
