@@ -130,7 +130,21 @@ class Card extends Base{
 				'type' => Controls_Manager::TEXT,
 				'default' => __( 'View Profile.', 'ultraaddons' ),
 				'label_block' => true,
-				'separator' =>'after'
+			]
+		);
+			$this->add_control(
+			'_ua_card_button_link',
+			[
+				'label' => __( 'Link', 'ultraaddons' ),
+				'type' => Controls_Manager::URL,
+				'placeholder' => __( 'https://your-link.com', 'ultraaddons' ),
+				'show_external' => true,
+				'separator' =>'after',
+				'default' => [
+					'url' => '#',
+					'is_external' => true,
+					'nofollow' => true,
+				],
 			]
 		);
 		$this->add_control(
@@ -191,16 +205,21 @@ class Card extends Base{
 	
 	
    protected function render() {
-		$settings =	$this->get_settings_for_display();
-		//print_r($settings['_ua_card_image']);
+		$settings 	= $this->get_settings_for_display();
+		$target 	= $settings['_ua_card_button_link']['is_external'] ? ' target="_blank"' : '';;
+		$nofollow 	= $settings['_ua_card_button_link']['nofollow'] ? ' rel="nofollow"' : '';
+		$url		= $settings['_ua_card_button_link']['url'];
+		
 	?>
 	<div class="ua-card-content">
 	  <div class="ua-card">
 		<div class="ua-card-header">
 		  <div class="ua-card-avatar-content">
-			<a class="ua-card-avatar-link" href="#">
-			  <img class="avatar" src="<?php echo $settings['_ua_card_image']['url']?>"/>
-			</a>
+		  <?php 
+			echo '<a href="' . $url. '"' . $target . $nofollow . ' >
+			  <img  class="avatar" src="' . $settings['_ua_card_image']['url'] .'"/>
+			</a>';
+			?>
 		  </div>
 		  <?php
 		   echo '<' . $settings['_ua_card_title_tag'] . ' class="ua-card-title">' . esc_html($settings['_ua_card_title']) . 
@@ -215,9 +234,11 @@ class Card extends Base{
 		  <p class="ua-card-text"><?php echo $settings['_ua_card_content']; ?></p>
 		</div>
 		<div class="ua-card-footer">
-		  <a href="#" class="ua-button">
-			<?php echo $settings['_ua_card_button'];?>
-		  </a>
+		<?php 
+			echo '<a href="' . $url. '"' . $target . $nofollow . ' class="ua-button">
+			 ' .  $settings['_ua_card_button'] . '
+			</a>';
+		?>
 		</div>
 	  </div>
 	</div>
