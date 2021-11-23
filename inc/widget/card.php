@@ -54,11 +54,10 @@ class Card extends Base{
         $this->card_content_controls(); 
 		 //For Design Section Style Tab
 		$this->card_content_style(); 
+		//For Box Style Tab
+		$this->card_box_style();
 		//For button Style Tab
-		$this->card_button_style();
-       
-   
-        
+		$this->card_button_style();   
     }
 	/**
 	 * Here should comment actually
@@ -284,6 +283,15 @@ class Card extends Base{
             ]
         );
 		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'card_btn_typography',
+					'label' => 'Button Typography',
+					'selector' => '{{WRAPPER}} .ua-card-button',
+					'separator'=>'after'
+			]
+        );
+		$this->add_group_control(
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'btn_background',
@@ -302,6 +310,34 @@ class Card extends Base{
 				'separator'=>'after'
 			]
         );
+		
+	 $this->end_controls_section();
+    }
+	 protected function card_box_style(){
+       $this->start_controls_section(
+            '_ua_card_box_style',
+            [
+                'label'     => esc_html__( 'Box Style', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'box_background',
+				'label' => __( 'Box Background', 'ultraaddons' ),
+				'types' => [ 'classic', 'gradient'],
+				'selector' => '{{WRAPPER}} .ua-card',
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'card_box_shadow',
+				'label' => __( 'Box Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-card',
+			]
+		);
 		
 	 $this->end_controls_section();
     }
