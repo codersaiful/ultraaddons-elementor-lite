@@ -190,7 +190,6 @@
                 },
                 getReadySettings: function(){
                     var settings = this.getElementSettings();
-                    console.log(settings);
                     var $readySettings = {
                         delayTimer: settings.delayTimer,
                         play: !! settings.play, //Actually for Yes, or Switch value
