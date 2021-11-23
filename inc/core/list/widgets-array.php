@@ -375,7 +375,23 @@ $widgetsArray = [
                 __( 'Basic', 'ultraaddons' ),
             ],
     ],
+
+
+    /**
+     * Only for Developer, Development Perpose
+     * 
+     * @author Saiful Islam <codersaiful@gmail.com>
+     */
+    'Developer_Test' => [
+        'name'  => __( 'Developer Test', 'ultraaddons' ),
+        'is_pro'   => true,
+        'icon'      => 'uicon-ultraaddons',
+        'cat'       => [
+            __( 'Basic', 'ultraaddons' ),
+        ],
+    ],
     
+    //@author Rafiul <codersaiful@gmail.com>
     'Flip_Box' => [
             'name'  => __( 'Flip Box', 'ultraaddons' ),
             'is_pro'   => false,
