@@ -384,7 +384,7 @@ $widgetsArray = [
      */
     'Developer_Test' => [
         'name'  => __( 'Developer Test', 'ultraaddons' ),
-        'is_pro'   => true,
+        'is_pro'   => false,
         'icon'      => 'uicon-ultraaddons',
         'cat'       => [
             __( 'Basic', 'ultraaddons' ),
