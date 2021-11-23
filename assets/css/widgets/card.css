@@ -1,4 +1,5 @@
 .ua-card-content {
+ color:#fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -90,7 +91,7 @@
   color: #f8f8fc;
 }
 
-.ua-card button {
+.ua-card .ua-button {
   display: inline-block;
   font-weight: 700;
   font-size: 0.875rem;

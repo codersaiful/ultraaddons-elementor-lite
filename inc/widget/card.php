@@ -51,7 +51,7 @@ class Card extends Base{
      */
     protected function _register_controls() {
         //For Content Section
-        $this->ticker_content_controls();
+        $this->card_content_controls();
         //For Design Section Style Tab
    
         //For Setting Control
@@ -67,7 +67,7 @@ class Card extends Base{
 	 * 
 	 * It's actually content control part
 	 */
-	protected function ticker_content_controls() {
+	protected function card_content_controls() {
 		
         $this->start_controls_section(
 		
@@ -78,7 +78,109 @@ class Card extends Base{
             ]
         );
 		
-		
+			 $this->add_control(
+			'_ua_card_image',
+			[
+				'label' => __( 'Card Image', 'ultraaddons' ),
+				'type' => Controls_Manager::MEDIA,
+				/* 'default' => [
+						'url' => $placeholder_image,//Utils::get_placeholder_image_src(),
+				], */
+				'dynamic' => [
+						'active' => true,
+				],
+
+			]
+        );
+		$this->add_control(
+			'_ua_card_title',
+			[
+				'label' => __( 'Card Title', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __( 'Card Title', 'ultraaddons' ),
+				'placeholder' => __( 'Enter your title', 'ultraaddons' ),
+				'label_block' => true,
+			]
+		);
+		$this->add_control(
+			'_ua_card_sub_title',
+			[
+				'label' => __( 'Card Sub Title', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __( 'Card Sub Title', 'ultraaddons' ),
+				'placeholder' => __( 'Enter your title', 'ultraaddons' ),
+				'label_block' => true,
+			]
+		);
+		$this->add_control(
+			'_ua_card_content',
+			[
+				'label' => __( 'Card Content', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXTAREA,
+				'default' => __( 'Minim dolor in amet nulla laboris enim dolore consequat proident fugiat culpa eiusmod.', 'ultraaddons' ),
+				'placeholder' => __( 'Enter Content', 'ultraaddons' ),
+				'label_block' => true,
+				'separator' =>'after'
+			]
+		);
+		$this->add_control(
+			'_ua_card_button',
+			[
+				'label' => __( 'Button Text', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __( 'View Profile.', 'ultraaddons' ),
+				'label_block' => true,
+			]
+		);
+			$this->add_control(
+			'_ua_card_button_link',
+			[
+				'label' => __( 'Link', 'ultraaddons' ),
+				'type' => Controls_Manager::URL,
+				'placeholder' => __( 'https://your-link.com', 'ultraaddons' ),
+				'show_external' => true,
+				'separator' =>'after',
+				'default' => [
+					'url' => '#',
+					'is_external' => true,
+					'nofollow' => true,
+				],
+			]
+		);
+		$this->add_control(
+			'_ua_card_title_tag',
+			[
+				'label' => esc_html__( 'Select Title Tag', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'h1' => 'H1',
+					'h2' => 'H2',
+					'h3' => 'H3',
+					'h4' => 'H4',
+					'h5' => 'H5',
+					'h6' => 'H6',
+					'div'=>	'div',
+				],
+				'default' => 'h2',
+			]
+		);
+		$this->add_control(
+			'_ua_card_sub_title_tag',
+			[
+				'label' => esc_html__( 'Select Sub Title Tag', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'h1' => 'H1',
+					'h2' => 'H2',
+					'h3' => 'H3',
+					'h4' => 'H4',
+					'h5' => 'H5',
+					'h6' => 'H6',
+					'div'=>	'div',
+				],
+				'default' => 'h5',
+			]
+		);
 	$this->end_controls_section();
 	}
     /**
@@ -103,22 +205,40 @@ class Card extends Base{
 	
 	
    protected function render() {
-		$settings 				=	$this->get_settings_for_display();
+		$settings 	= $this->get_settings_for_display();
+		$target 	= $settings['_ua_card_button_link']['is_external'] ? ' target="_blank"' : '';;
+		$nofollow 	= $settings['_ua_card_button_link']['nofollow'] ? ' rel="nofollow"' : '';
+		$url		= $settings['_ua_card_button_link']['url'];
+		
 	?>
 	<div class="ua-card-content">
 	  <div class="ua-card">
 		<div class="ua-card-header">
 		  <div class="ua-card-avatar-content">
-		  <a class="ua-card-avatar-link" href="#"><img class="avatar" src="https://randomuser.me/api/portraits/women/47.jpg"/></a></div>
-		  <div class="ua-card-title">Natalia Brown</div>
-		  <div class="ua-card-subtitle">Telephone operator</div>
+		  <?php 
+			echo '<a href="' . $url. '"' . $target . $nofollow . ' >
+			  <img  class="avatar" src="' . $settings['_ua_card_image']['url'] .'"/>
+			</a>';
+			?>
+		  </div>
+		  <?php
+		   echo '<' . $settings['_ua_card_title_tag'] . ' class="ua-card-title">' . esc_html($settings['_ua_card_title']) . 
+				'</' . $settings['_ua_card_title_tag'] . '>';
+		   ?>
+		<?php
+		   echo '<' . $settings['_ua_card_sub_title_tag'] . ' class="ua-card-subtitle">' . esc_html($settings['_ua_card_title']) . 
+				'</' . $settings['_ua_card_sub_title_tag'] . '>';
+		   ?>
 		</div>
 		<div class="ua-card-body">
-		  <div class="ua-card-heading">New card design</div>
-		  <p class="ua-card-text">Minim dolor in amet nulla laboris enim dolore consequat proident fugiat culpa eiusmod.</p>
+		  <p class="ua-card-text"><?php echo $settings['_ua_card_content']; ?></p>
 		</div>
 		<div class="ua-card-footer">
-		  <button>View profile</button>
+		<?php 
+			echo '<a href="' . $url. '"' . $target . $nofollow . ' class="ua-button">
+			 ' .  $settings['_ua_card_button'] . '
+			</a>';
+		?>
 		</div>
 	  </div>
 	</div>
