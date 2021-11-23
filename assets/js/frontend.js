@@ -716,8 +716,10 @@
                  */
                 
                 //News Ticker
-				NewsTicker:function($scope){
+				/* NewsTicker:function($scope){
+					
 					var $TickerData =  $('[data-settings]');
+					console.log($TickerData);
 					if ($TickerData.attr('data-settings')) {
 						$TickerData.each(function(index, el){
 						var $Options 	= $(this).data('settings'), 	
@@ -731,7 +733,7 @@
 						scrollSpeed 	= $Options.scrollSpeed,
 						zIndex 			= $Options.zIndex;
 						
-						//console.log($Options);
+						console.log($Options);
 						$('.ua-news-ticker-wrap').breakingNews({
 							play: play,
 							directon: directon,
@@ -747,7 +749,7 @@
 				}else{
 					$('.ua-news-ticker-wrap').breakingNews();
 				}
-                }, 
+               },  */
             };
             
             let elementReadyMap = {
@@ -850,6 +852,16 @@
             });
     }
     
-    
+	  $( window ).on( 'elementor/frontend/init', function() {
+		elementorFrontend.hooks.addAction( 'frontend/element_ready/ultraaddons-news-ticker.default', function($scope, $){
+			var $Ticker =  $('[data-ticker]');
+			$Ticker.length && $Ticker.each(function(e, n) {
+				var $Ticker = $(this).data("ticker");
+				$(this).breakingNews(
+				 $Ticker
+				);
+			});
+		});
+	 } );
 
 } (jQuery, window));

@@ -426,8 +426,26 @@ class News_Ticker extends Base{
 	
    protected function render() {
 		$settings 	= $this->get_settings_for_display();
+		$options 		= (object) null;
+		$options->play 			=	$settings['play']=='yes'? true:false;
+		$options->direction 	=	$settings['direction'];
+		$options->stopOnHover 	=	$settings['stopOnHover']=='yes'? true:false;;
+		$options->effect 		=	$settings['effect'];
+		$options->delayTimer 	=	$settings['delayTimer'];
+		$options->position 		=	$settings['position'];
+		$options->scrollSpeed 	=	$settings['scrollSpeed'];
+		$options->zIndex 		=	$settings['zIndex'];
+		
+		$TickerSettings = json_encode($options);
+
+		$this->add_render_attribute(
+			'data-ticker',
+			[
+				'data-ticker' => $TickerSettings,
+			]
+		);
 	?>
-	<div class="ua-news-ticker-wrap">
+	<div class="ua-news-ticker-wrap" <?php echo $this->get_render_attribute_string( 'data-ticker' );?>>
 	  <div class="bn-label"><?php echo $settings['ticker_label']; ?></div>
 	  <div class="bn-news">
 		<?php
