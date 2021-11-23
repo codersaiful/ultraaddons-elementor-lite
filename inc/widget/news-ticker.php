@@ -127,7 +127,7 @@ class News_Ticker extends Base{
 			'delayTimer',
 			[
 				'label' => __( 'Delay Timer', 'ultraaddons' ),
-				'type' => \Elementor\Controls_Manager::NUMBER,
+				'type' => Controls_Manager::NUMBER,
 				'min' => 2000,
 				'max' => 6000,
 				'step' => 100,
@@ -139,7 +139,7 @@ class News_Ticker extends Base{
 			'scrollSpeed',
 			[
 				'label' => __( 'Scroll Speed', 'ultraaddons' ),
-				'type' => \Elementor\Controls_Manager::NUMBER,
+				'type' => Controls_Manager::NUMBER,
 				'min' => 2,
 				'max' => 20,
 				'step' => 2,
@@ -151,7 +151,7 @@ class News_Ticker extends Base{
 			'zIndex',
 			[
 				'label' => __( 'ZIndex', 'ultraaddons' ),
-				'type' => \Elementor\Controls_Manager::NUMBER,
+				'type' => Controls_Manager::NUMBER,
 				'min' => 99999,
 				'max' => 999999,
 				'step' => 1000,
@@ -164,7 +164,7 @@ class News_Ticker extends Base{
 			'play',
 			[
 				'label' => __( 'Play', 'ultraaddons' ),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'type' => Controls_Manager::SWITCHER,
 				'label_on' => __( 'Yes', 'ultraaddons' ),
 				'label_off' => __( 'No', 'ultraaddons' ),
 				'return_value' => 'yes',
@@ -176,7 +176,7 @@ class News_Ticker extends Base{
 			'stopOnHover',
 			[
 				'label' => __( 'Stop on Hover', 'ultraaddons' ),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'type' => Controls_Manager::SWITCHER,
 				'label_on' => __( 'Yes', 'ultraaddons' ),
 				'label_off' => __( 'No', 'ultraaddons' ),
 				'return_value' => 'yes',
@@ -188,7 +188,7 @@ class News_Ticker extends Base{
 			'show_controls',
 			[
 				'label' => __( 'Action Button', 'ultraaddons' ),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'type' => Controls_Manager::SWITCHER,
 				'label_on' => __( 'Yes', 'ultraaddons' ),
 				'label_off' => __( 'No', 'ultraaddons' ),
 				'return_value' => 'yes',
@@ -199,7 +199,7 @@ class News_Ticker extends Base{
 			'position',
 			[
 				'label' => __( 'Position', 'ultraaddons' ),
-				'type' => \Elementor\Controls_Manager::SELECT,
+				'type' => Controls_Manager::SELECT,
 				'default' => 'auto',
 				'frontend_available' => true,
 				'options' => [
@@ -213,7 +213,7 @@ class News_Ticker extends Base{
 			'effect',
 			[
 				'label' => __( 'Effects', 'ultraaddons' ),
-				'type' => \Elementor\Controls_Manager::SELECT,
+				'type' => Controls_Manager::SELECT,
 				'default' => 'scroll',
 				'frontend_available' => true,
 				'options' => [
@@ -231,8 +231,8 @@ class News_Ticker extends Base{
 			'direction',
 			[
 				'label' => __( 'Direction', 'ultraaddons' ),
-				'type' => \Elementor\Controls_Manager::SELECT,
-				'default' => 'rtl',
+				'type' => Controls_Manager::SELECT,
+				'default' => 'ltr',
 				'frontend_available' => true,
 				'options' => [
 					'rtl'  => __( 'RTL', 'ultraaddons' ),
@@ -263,7 +263,7 @@ class News_Ticker extends Base{
 		$this->add_control(
 			'ticker_label', [
 				'label' => __( 'Label', 'ultraaddons' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
+				'type' => Controls_Manager::TEXT,
 				'default' => __( 'News' , 'ultraaddons' ),
 				'label_block' => true,
 			]
@@ -273,7 +273,7 @@ class News_Ticker extends Base{
 		$repeater->add_control(
 			'news_title', [
 				'label' => __( 'Text', 'ultraaddons' ),
-				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'type' => Controls_Manager::TEXTAREA,
 				'default' => __( 'Lorem Ipsum simply dummy text of the printing and typesetting industry' , 'ultraaddons' ),
 				'label_block' => true,
 			]
@@ -282,7 +282,7 @@ class News_Ticker extends Base{
 			'news_link',
 			[
 				'label' => __( 'Link', 'ultraaddons' ),
-				'type' => \Elementor\Controls_Manager::URL,
+				'type' => Controls_Manager::URL,
 				'placeholder' => __( 'https://your-link.com', 'ultraaddons' ),
 				'show_external' => true,
 				'default' => [
@@ -297,14 +297,14 @@ class News_Ticker extends Base{
 			'ticker_list',
 			[
 				'label' => __( 'News Ticker List', 'ultraaddons' ),
-				'type' => \Elementor\Controls_Manager::REPEATER,
+				'type' => Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
 						'news_title' => __( 'Lorem Ipsum simply dummy text of the printing and typesetting industry', 'ultraaddons' ),
 					],
 					[
-						'news_title' => __( 'Lorem Ipsum simply dummy text of the printing and typesetting industry', 'ultraaddons' ),
+						'news_title' => __( 'When an unknown printer took a galley of type and scrambled it to make a type specimen book', 'ultraaddons' ),
 					],
 				],
 				'title_field' => '{{{ news_title }}}',
