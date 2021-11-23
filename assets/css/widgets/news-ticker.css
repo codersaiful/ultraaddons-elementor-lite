@@ -24,3 +24,7 @@
 .bn-controls button {
     padding: 0;
 }
+.ua-element.ua-element-news-ticker .ua-news-ticker-wrap .bn-controls button {
+  border-left: solid 1px #0000000f;
+  background-color: #0000000f;
+}
