@@ -425,8 +425,8 @@ class News_Ticker extends Base{
 	
 	
    protected function render() {
-		$settings 	= $this->get_settings_for_display();
-		$options 		= (object) null;
+		$settings 				=	$this->get_settings_for_display();
+		$options 				=	(object) null;
 		$options->play 			=	$settings['play']=='yes'? true:false;
 		$options->direction 	=	$settings['direction'];
 		$options->stopOnHover 	=	$settings['stopOnHover']=='yes'? true:false;;
@@ -436,12 +436,12 @@ class News_Ticker extends Base{
 		$options->scrollSpeed 	=	$settings['scrollSpeed'];
 		$options->zIndex 		=	$settings['zIndex'];
 		
-		$TickerSettings = json_encode($options);
+		$tickerSettings = json_encode($options);
 
 		$this->add_render_attribute(
 			'data-ticker',
 			[
-				'data-ticker' => $TickerSettings,
+				'data-ticker' => $tickerSettings,
 			]
 		);
 	?>

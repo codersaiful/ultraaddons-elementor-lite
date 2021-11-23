@@ -808,8 +808,8 @@
     }
 	
      /**
-	 * BM Rafiul Alam Code Start Here
-	 */
+		* BM Rafiul Alam Code Start Here
+	 **/
 	//News Ticker
 	  $( window ).on( 'elementor/frontend/init', function() {
 		elementorFrontend.hooks.addAction( 'frontend/element_ready/ultraaddons-news-ticker.default', function($scope, $){
@@ -823,7 +823,7 @@
 		});
 	 } );
 	 /**
-	 * BM Rafiul Alam Code End Here
-	 */
+		* BM Rafiul Alam Code End Here
+	 **/
 
 } (jQuery, window));
