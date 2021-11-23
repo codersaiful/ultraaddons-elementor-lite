@@ -854,11 +854,11 @@
     
 	  $( window ).on( 'elementor/frontend/init', function() {
 		elementorFrontend.hooks.addAction( 'frontend/element_ready/ultraaddons-news-ticker.default', function($scope, $){
-			var $Ticker =  $('[data-ticker]');
-			$Ticker.length && $Ticker.each(function(e, n) {
-				var $Ticker = $(this).data("ticker");
+			var $ticker =  $('[data-ticker]');
+			$ticker.length && $ticker.each(function(e, n) {
+				var $ticker = $(this).data("ticker");
 				$(this).breakingNews(
-				 $Ticker
+				 $ticker
 				);
 			});
 		});

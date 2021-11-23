@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * News Ticker Widget
  * Create excellent step by step visual diagram and instructions using this smart widget.
- * 
+ * Credit: https://www.jqueryscript.net/animation/breaking-news-ticker.html
  * @since 1.1.0.7
  * @package UltraAddons
  * @author Saiful islam <codersaiful@gmail.com>
@@ -30,7 +30,7 @@ class News_Ticker extends Base{
 	  public function __construct($data = [], $args = null) {
         parent::__construct($data, $args);
 
-        //Naming of Args for owlCarousel
+        //Naming of Args for News Ticker
         $name           = 'NewsTicker';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/breaking-news-ticker.min.js';
         $dependency     =  ['jquery'];//['jquery'];
@@ -41,7 +41,7 @@ class News_Ticker extends Base{
         wp_enqueue_script( $name );
 
 
-        //CSS file for Slider Script Owl Carousel Slider
+        //CSS file News Ticker
         wp_register_style('NewsTicker', ULTRA_ADDONS_ASSETS . 'vendor/css/breaking-news-ticker.css' );
         wp_enqueue_style('NewsTicker' );
 
