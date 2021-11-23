@@ -180,6 +180,51 @@
                     }
             );
     
+
+            var Developer_Test_Object = EM.frontend.handlers.Base.extend({
+                onInit: function(){
+                    this.run();
+                },
+                onChange: function(){
+                    this.run();
+                },
+                getReadySettings: function(){
+                    var settings = this.getElementSettings();
+                    console.log(settings);
+                    var $readySettings = {
+                        delayTimer: settings.delayTimer,
+                        play: !! settings.play, //Actually for Yes, or Switch value
+                    };
+
+                    return $readySettings;
+                },
+
+                run: function(){
+                    var item = this.$element.find('.developer_test_element h2 span');
+                    var delayTimer = this.getReadySettings().delayTimer;
+                    item.html(delayTimer);
+                    //console.log(this.getReadySettings());
+                    //console.log(this.getReadySettings(),this.getElementSettings());
+                    //console.log(delayTimer);
+                }
+            });
+
+            // Developer_Test
+            EF.hooks.addAction(
+                'frontend/element_ready/ultraaddons-developer-test.default',
+                function ($scope) {
+                        
+                        EF.elementsHandler.addHandler(Developer_Test_Object, {
+                                $element: $scope,
+                                selectors: {
+                                        container: '.developer_test_element',
+                                },
+                                autoplay: true,
+                                
+                        });
+                }
+        );
+
             //Testimonial Slider
             EF.hooks.addAction(
                     'frontend/element_ready/ultraaddons-testimonial-slider.default',
@@ -651,52 +696,6 @@
                     });
                 },
 
-                //Owl Carousel
-                UA_Owl_Carousel: function($scope) {
-                    var $owlContainer = $scope.find('.ua_timeline_inner'),
-                        controls = null,
-                        show_slider_dots = true,
-                        show_slider_arrow = true,
-                        autoplay = true,
-                        slider_speed = 2000,
-                        slider_loop = true,
-                        slider_space = 60,
-                        slider_item = 3,
-                        slider_drag = false,
-                        slider_center = false,
-                        next_icon = 'fas fa-angle-right',
-                        prev_icon = 'fas fa-angle-left';
-
-                    if ($owlContainer.attr('data-controls')) {
-                        var controls = JSON.parse($owlContainer.attr('data-controls'));
-                        show_slider_dots = controls.show_slider == "yes" ? controls.slider_pagi_type == 'dot' ? true : false : false;
-                        show_slider_arrow = controls.show_slider == "yes" ? controls.slider_pagi_type == 'arrow' ? true : false : false;
-                        autoplay = controls.slide_autoplay == "yes" ? true : false;
-                        slider_speed = controls.slider_speed;
-                        slider_loop = controls.slider_loop == "yes" ? true : false;
-                        slider_space = controls.slider_space;
-                        slider_item = controls.slider_item;
-                        slider_center = controls.slider_center == "yes" ? true : false;  
-                        slider_drag = controls.slider_drag == "yes" ? true : false;  
-                        next_icon = controls.next_icon.library == 'svg' ? "<img src='"+controls.next_icon.value.url+"'>" : "<i class='"+controls.next_icon.value+"'></i>" ;  
-                        prev_icon = controls.prev_icon.library == 'svg' ? "<img src='"+controls.prev_icon.value.url+"'>" : "<i class='"+controls.prev_icon.value+"'></i>";  
-                    }
-
-                $owlContainer.owlCarousel({
-                        items: slider_item,
-                        loop: slider_loop,
-                        margin: slider_space,
-                        smartSpeed: slider_speed,
-                        dots: show_slider_dots,
-                        nav: show_slider_arrow,
-                        navText: [prev_icon, next_icon],
-                        autoplay: autoplay,
-                        mouseDrag: slider_drag,
-                        center: slider_center,
-                    });
-                    
-                },
-                
                 //Counter
                 Counter:function($scope){
                     var $item = $scope.find('.ua-counter-text');

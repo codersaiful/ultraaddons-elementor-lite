@@ -57,7 +57,14 @@ class Developer_Test extends Base{
 
     protected function render(){
         $settings 				=	(array) $this->get_settings_for_display();
-        var_dump($settings);
+		?>
+		<div class="developer_test_element">
+			<h2>Developer_Test (Only for View) <span></span></h2>
+		</div>
+		
+		<?php
+
+        //var_dump($settings);
     }
 
 
