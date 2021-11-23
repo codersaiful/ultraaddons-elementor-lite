@@ -60,26 +60,73 @@ class Custom_Fonts_Render {
     }
 
     /**
-     * Generate @fontface based on Font details array
+     * Generate multiple @fontface based on Font details array
      * 
      * We are getting help from method font_args_by_name()
+     * and this method will return like bellow array
+     * 
+     * CAN BE NEED: $term = get_term_by('name',$name,Fonts::$font_group_key);
+     * 
+array (size=3)
+  0 => 
+    array (size=4)
+      'font-family' => string '"Arial"' (length=7)
+      'font-weight' => string '400' (length=3)
+      'font-display' => string 'auto' (length=4)
+      'src' => string 'url(mylink/FONT-Thin.woff2) format('woff2'),url(mylink/FONT-SemiBold.woff2) format('woff2')' (length=207)
+  1 => 
+    array (size=4)
+      'font-family' => string '"Arial"' (length=7)
+      'font-weight' => string '500' (length=3)
+      'font-display' => string 'auto' (length=4)
+      'src' => string 'url(mylink/FONT-ThicccAF.ttf) format('ttf')' (length=101)
      *
      * @param String $font_name
-     * @return void
+     * @return String with details font face.
      */
     public static function fontface_by_name( $font_name ){
+        $trangient_name = "ua_font_trangient_" . $font_name;
+        $fonts_args = get_transient( $trangient_name );
         
-        $args = self::font_args_by_name($font_name);
-        if( empty( $args ) ) return;
+        if( ! $fonts_args ){
+            $fonts_args = self::font_args_by_name( $font_name );
+            if( empty( $fonts_args ) ) return;
+            
+            set_transient( $trangient_name, $fonts_args );
+        }
 
+        if( empty( $fonts_args ) ) return;
+
+        $fontface = "";
+        foreach( $fonts_args as $args ){
+            $fontface .= self::fontface_each_by_args( $args ) . "\n";
+        }
+
+        return $fontface;
+        
+    }
+
+    /**
+     * Generate individual font face from each args. Each args like bellow:
+  1 => 
+    array (size=4)
+      'font-family' => string '"Arial"' (length=7)
+      'font-weight' => string '500' (length=3)
+      'font-display' => string 'auto' (length=4)
+      'src' => string 'url(mylink/FONT-ThicccAF.ttf) format('ttf')' (length=101)
+     *
+     * @param Array $args
+     * @return String
+     */
+    protected static function fontface_each_by_args( $args ){
         $property = '';
         foreach( $args as $property_name => $property_value ){
-            $property .= "$property_name: $property_value;";
+            $property .= "$property_name: $property_value;"; //\n
         }
 
         if( empty( $property ) ) return;
 
-        return "@font-face {" . $property . "}";;
+        return "@font-face {" . $property . "}";
     }
 
     /**
@@ -94,44 +141,52 @@ class Custom_Fonts_Render {
      */
     public static function font_args_by_name( $name ){
         $term = get_term_by('name',$name,Fonts::$font_group_key);
+        
         if( ! $term ) return false;
         $term_id = $term->term_id;
-
-        $font_datas = get_term_meta($term_id,Fonts::$meta_key,true);
-        //$font_datas['family'] = $term->name;
         
-        //Check and confirmation, If empty url or not found font_datas
-        if( empty( $font_datas ) || empty($font_datas['url']) ) return false;
+        $font_datas = get_term_meta( $term_id,Fonts::$meta_key,true );
+    
+        if( ! isset($font_datas['variants']) ) return false;
 
-        $urls = $font_datas['url'];
-
-        //Confirm that, there is minimum 1 element/item available.
-        if( empty( end($urls) ) ) return false;
-
-        $formats = $font_datas['format'];
-
-        //Assaigning a new array to return new array.
-        $font_details = array();
+        /***
+         * Fallback and Display and font name will be use for all variant
+         */
         $fallback = ! empty( $font_datas['fallback'] ) ? $font_datas['fallback'] : false;
         $display = ! empty( $font_datas['display'] ) ? $font_datas['display'] : false;
-        $weight = ! empty( $font_datas['weight'] ) ? $font_datas['weight'] : false;
-        
 
-        $font_details['font-family'] = '"' . $term->name . '"';
-        $font_details['font-weight'] = $weight;
-        $font_details['font-display'] = $display;
-        $font_details['font-fallback'] = $fallback;
+        $variants = $font_datas['variants'];
 
-        $font_src = "";
-        foreach( $urls as $key => $url ){
-            $format = $formats[$key];
-            $font_src .= "url($url) format('$format'),";
+        $final_fonts = array();
+        foreach( $variants as $variant_key => $variant ){
+            $urls = $variant['url'];
+            if( empty( end($urls) ) ) continue;
+            
+            $weight = ! empty( $variant['weight'] ) ? $variant['weight'] : false;
+
+            //will use for fornt src
+            $formats = $variant['format'];
+
+            $font_details = array();
+            $font_details['font-family'] = '"' . $term->name . '"';
+            $font_details['font-weight'] = $weight;
+            $font_details['font-display'] = $display;
+            $font_details['font-fallback'] = $fallback;
+
+            $font_src = "";
+            foreach( $urls as $key => $url ){
+                
+                $format = $formats[$key];
+                $font_src .= ! empty( $url ) ? "url($url) format('$format')," : '';
+            }
+            $font_src = rtrim( $font_src, ',' );
+            $font_details['src'] = $font_src;
+
+            //Now Assigning in $final_fonts
+            $final_fonts[] = array_filter( $font_details );
         }
-        $font_src = rtrim( $font_src, ',' );
-        $font_details['src'] = $font_src;
+        
+        return $final_fonts;
 
-
-        //Filter $font_details to removed empty item
-        return array_filter( $font_details );
     }
 }

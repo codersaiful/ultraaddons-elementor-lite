@@ -1,0 +1,7 @@
+.ua-highlight-text{
+	color:red
+}
+
+.ua-stack-desktop-yes .ua-adv-heading-stack, .ua-stack-mobile-yes .ua-adv-heading-stack, .ua-stack-tablet-yes .ua-adv-heading-stack {
+    display: block;
+}

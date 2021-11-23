@@ -37,14 +37,33 @@
                 getCss:function(){
                     return this.getElementSettings('ua_custom_css');
                 },
+                
+                getId:function(){
+                    return this.$element.data('id');
+                },
+
                 run:function(){
                     var cssRules = this.getCss();
-                    $('<style>' + cssRules + '</style>').appendTo('head');
+                    var element_id = this.getId();
+                    if(cssRules){
+                        $('<style id="ua-custom-css-'+element_id+'" >' + cssRules + '</style>').appendTo('head');
+                    }else{
+                        $('#ua-custom-css-' + element_id).remove();
+                    }
+                    
                 }
             });
 
             EF.hooks.addAction( 'frontend/element_ready/widget', function( $scope ) {
-                EF.elementsHandler.addHandler( CusttomCSS, { $element: $scope });
+                var $item = $scope.find('div').closest('.custom-css-applied-yes');
+                var len = $item.length;
+                var element_id = $item.data('id');
+                
+                if(len){
+                    EF.elementsHandler.addHandler( CusttomCSS, { $element: $scope,id: element_id});
+                }else{
+                    $('#ua-custom-css-' + element_id).remove();
+                }
             });
             
             
@@ -738,19 +757,61 @@
                         });
                     });
                 },
+
+
+                /**
+                 * BMR Code Start Here
+                 */
                 
-                //Addd new all - one by one with comma
-                
-                
+                //News Ticker
+				
+               /*  NewsTicker:function($scope){
+						var $TickerData =  $('[data-settings]');
+						if ($TickerData.attr('data-settings')) {
+						$TickerData.each(function(index, el){
+						var $Options 	= $(this).data('settings'), 	
+						play			= $Options.play == "yes" ? true : false,
+						directon 		= $Options.directon,
+						stopOnHover 	= $Options.stopOnHover== "yes" ? true : false,
+						themeColor 		= $Options.themeColor,
+						effect 			= $Options.effect,
+						delayTimer 		= $Options.delayTimer,
+						position 		= $Options.position,
+						scrollSpeed 	= $Options.scrollSpeed,
+						zIndex 			= $Options.zIndex;
+						
+						//console.log($Options);
+						$('.ua-news-ticker-wrap').breakingNews({
+							play: play,
+							directon: directon,
+							stopOnHover: stopOnHover,
+							themeColor:themeColor,
+							effect:effect,
+							delayTimer:delayTimer,
+							position:position,
+							scrollSpeed:scrollSpeed,
+							zIndex:zIndex,
+						});
+					});
+				}else{
+					$('.ua-news-ticker-wrap').breakingNews();
+				}
+                }, */
             };
             
             let elementReadyMap = {
                 'ultraaddons-alert.default'     : UltraAddonsMap.Alert,
                 'ultraaddons-timeline.default'  : UltraAddonsMap.UA_Owl_Carousel,
-                'ultraaddons-skill-bar.default'  : UltraAddonsMap.skillBar,
-                'ultraaddons-counter.default'  : UltraAddonsMap.Counter,
+                'ultraaddons-skill-bar.default' : UltraAddonsMap.skillBar,
+                'ultraaddons-counter.default'  	: UltraAddonsMap.Counter,
+
+                //BM Rafiul Script Start Here
+                //'ultraaddons-news-ticker.default'  : UltraAddonsMap.NewsTicker, 
+                //BM Rafiul Script End Here
+                
             };
-    
+			
+			
             $.each( elementReadyMap, function( elementKey, elementReadyMap ) {
                     EF.hooks.addAction( 'frontend/element_ready/' + elementKey, elementReadyMap );
             });
@@ -884,11 +945,40 @@
         // other options
     });
     //*************************************/
-                    
-   
+	var NewsTicker = function( $scope, $ ) {
+			var $TickerData =  $('[data-settings]');
+				if ($TickerData.attr('data-settings')) {
+				$TickerData.each(function(index, el){
+				var $Options 	= $(this).data('settings'), 	
+				play			= $Options.play == "yes" ? true : false,
+				directon 		= $Options.directon,
+				stopOnHover 	= $Options.stopOnHover== "yes" ? true : false,
+				themeColor 		= $Options.themeColor,
+				effect 			= $Options.effect,
+				delayTimer 		= $Options.delayTimer,
+				position 		= $Options.position,
+				scrollSpeed 	= $Options.scrollSpeed,
+				zIndex 			= $Options.zIndex;
+				
+				console.log($Options);
+				$('.ua-news-ticker-wrap').breakingNews({
+					play: play,
+					directon: directon,
+					stopOnHover: stopOnHover,
+					themeColor:themeColor,
+					effect:effect,
+					delayTimer:delayTimer,
+					position:position,
+					scrollSpeed:scrollSpeed,
+					zIndex:zIndex,
+				});
+			});
+		}else{
+			$('.ua-news-ticker-wrap').breakingNews();
+		}
+	};
+	$( window ).on( 'elementor/frontend/init', function() {
+		elementorFrontend.hooks.addAction( 'frontend/element_ready/ultraaddons-news-ticker.default', NewsTicker );
+	} );
 
-   
-        
-        
-        
 } (jQuery, window));

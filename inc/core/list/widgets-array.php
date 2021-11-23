@@ -164,6 +164,7 @@ $widgetsArray = [
     'WC_Products' => [
             'name'  => __( 'WooCommerce Products', 'ultraaddons' ),
             'is_pro'   => false,
+            'is_wc'     => true,
             'icon'      => 'uicon-product',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -375,10 +376,34 @@ $widgetsArray = [
             ],
     ],
     
-    'Flip_Box_3d' => [
-            'name'  => __( '3d Flip Box', 'ultraaddons' ),
+    'Flip_Box' => [
+            'name'  => __( 'Flip Box', 'ultraaddons' ),
             'is_pro'   => false,
-            'icon'      => 'eicon-posts-masonry',
+            'icon'      => 'eicon-flip-box',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+	'Dual_Color_Heading' => [
+            'name'  => __( 'Dual Color Heading', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-heading',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+	'Step_Flow' => [
+            'name'  => __( 'Step Flow', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-navigation-horizontal',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+	'News_Ticker' => [
+            'name'  => __( 'News Ticker', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-chevron-double-left',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],

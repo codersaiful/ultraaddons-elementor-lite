@@ -153,6 +153,10 @@ sup.ultaaddons-pro-badge, i.ultaaddons-pro-badge {
     -webkit-text-fill-color: transparent;
 }*/
 
+#elementor-panel-category-ultraaddons-wc .elementor-panel-category-title {
+    font-weight: bold;
+}
+
 .elementor-element.ua-gradient-text-switch-yes .elementor-heading-title,
 .elementor-element.ua-gradient-text-switch-yes .elementor-widget-text-editor,
 .elementor-element.ua-gradient-text-switch-yes p,

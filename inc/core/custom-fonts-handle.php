@@ -178,32 +178,39 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
 
             ?>
 
-            <div class="font-variation-wrapper">
-
+            
+            <div class="font-variation-wrapper" data-variant_key="<?php echo esc_attr( $variant_key ); ?>">
+                <span class="ua-close-variant"><i><?php echo esc_html__( 'Delete Variant', 'ultraaddons' ); ?> </i>&#9986;</span>
                 <div class="form-field">
-                    <label for="font-weight"><?php echo esc_html__( 'Font Weight' ); ?></label><br>
-                    <?php self::render_font_weight( $font_weight, $name_prefix . '[weight]' ); ?>
-                    <p></p>
+                    <label for="font-weight-<?php echo esc_attr( $variant_key ); ?>"><?php echo esc_html__( 'Font Weight' ); ?></label>
+                    <?php self::render_font_weight( $font_weight, $name_prefix . '[weight]', 'font-weight-' . $variant_key ); ?>
+                    <p class="ua-field-notice"><?php echo esc_html__( 'Font weight for this variant.' ); ?></p>
                 </div> 
                 
                 <div class="fonts-upload-wrapper form-field">
-                    <label><?php echo esc_html__( 'Font File Upload' ); ?></label><br>
-
+                    <label><?php echo esc_html__( 'Font File Upload' ); ?> <span class="font-upload-add-font-button">+ add new font file</span></label>
+                    
+                    <div class="fonts-upload-wrapper-inside">
                     <?php
+                    $url_serial = 0;
                     foreach( $urls as $key=>$url ){
+                        if( empty( $url ) && $url_serial ) continue;
                         $format = isset( $variant['format'][$key] ) ? $variant['format'][$key] : '';
+                        $url_serial++;
                     ?>
-                    <div class="form-file-field form-field">
+                    <div class="form-file-field font-file-each-wrapper">
                         
                         <input name="<?php echo esc_attr( $name_prefix ); ?>[format][]" type="hidden" class="font-upload-format" value="<?php echo esc_attr( $format ); ?>">
-                        <input name="<?php echo esc_attr( $name_prefix ); ?>[url][]" type="text" value="<?php echo esc_attr( $url ); ?>" class="font-upload-url">
+                        <input name="<?php echo esc_attr( $name_prefix ); ?>[url][]" type="text" value="<?php echo esc_attr( $url ); ?>" class="font-upload-url" id="font-url-<?php echo esc_attr( $variant_key ); ?>" placeholder="<?php echo esc_attr( 'Font file URL...','ultraaddons' ); ?>">
                         <a href="#" class="ultraaddons-font-upload-button ua-button button">Upload Font</a>
                     </div> 
+
                     <?php    
                     }
                     
                     ?>
-                    
+                    </div>
+                    <p class="ua-field-notice"><?php echo esc_html__( 'Upload your webfonts. Supported font type/format: [woff2,woff,ttf and otf].' ); ?></p>
 
                 </div>
 
@@ -215,6 +222,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
         }
         
         echo '</div>';
+        echo '<span class="ua-add-new-variant" id="ua-add-new-variant">+ Add new variant</span>';
     }
 
     /**
@@ -255,10 +263,12 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
         <option value="800">Extra-Bold 800</option>
         <option value="900">Ultra-Bold 900</option>
      *
+     * @param Srging $name  Actually field name, need for form submission
+     * @param String $tag_id_selector id selector attribute, Need for label tag
      * @param String $current_value
      * @return void
      */
-    public static function render_font_weight( $current_value = null, $name = 'ua_fonts[variants][0][weight]'  ){
+    public static function render_font_weight( $current_value = null, $name = 'ua_fonts[variants][0][weight]', $tag_id_selector  ){
         
         $options = $default = array(
             '100'     => 'Thin 100',
@@ -285,7 +295,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
         //As I removed wp_parse_args() I checked it over if statement
         $options = is_array( $options ) ? $options : array();
 
-        self::rennder_select( $options, $current_value, $name, 'font-weight' );
+        self::rennder_select( $options, $current_value, $name, $tag_id_selector );
         //self::rennder_select( $options, $current_value, 'ua_fonts[weight]', 'font-weight' );
         //self::rennder_select( $options, null, 'ua_fonts[fallback]', 'font-display' );
 
@@ -341,10 +351,13 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
      * @since 1.1.0.3
      */
     public static function save_term_fields( $term_id ){
-        
+        $term = get_term_by('term_id',$term_id,self::$font_group_key);
+        $font_name = $term->name;
+        $trangient_name = "ua_font_trangient_" . $font_name;
         if( isset( $_POST[self::$meta_key] ) && is_array( $_POST[self::$meta_key] ) ){
             $meta_value = $_POST[self::$meta_key];
             update_term_meta( $term_id, self::$meta_key, $meta_value );
+            set_transient( $trangient_name, $fonts_args );
         }
     }
 
