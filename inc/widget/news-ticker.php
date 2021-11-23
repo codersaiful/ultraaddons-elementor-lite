@@ -426,26 +426,8 @@ class News_Ticker extends Base{
 	
    protected function render() {
 		$settings 				=	$this->get_settings_for_display();
-		$options 				=	(object) null;
-		$options->play 			=	$settings['play']=='yes'? true:false;
-		$options->direction 	=	$settings['direction'];
-		$options->stopOnHover 	=	$settings['stopOnHover']=='yes'? true:false;;
-		$options->effect 		=	$settings['effect'];
-		$options->delayTimer 	=	$settings['delayTimer'];
-		$options->position 		=	$settings['position'];
-		$options->scrollSpeed 	=	$settings['scrollSpeed'];
-		$options->zIndex 		=	$settings['zIndex'];
-		
-		$tickerSettings = json_encode($options);
-
-		$this->add_render_attribute(
-			'data-ticker',
-			[
-				'data-ticker' => $tickerSettings,
-			]
-		);
 	?>
-	<div class="ua-news-ticker-wrap" <?php echo $this->get_render_attribute_string( 'data-ticker' );?>>
+	<div class="ua-news-ticker-wrap">
 	  <div class="bn-label"><?php echo $settings['ticker_label']; ?></div>
 	  <div class="bn-news">
 		<?php
@@ -456,9 +438,12 @@ class News_Ticker extends Base{
 					$target 	= $item['news_link']['is_external'] ? ' target="_blank"' : '';
 					$nofollow 	= $item['news_link']['nofollow'] ? ' rel="nofollow"' : '';
 					$url		= $item['news_link']['url'];
-					echo '<li class="news-tricker-element elementor-repeater-item-' . $item['_id'] . '">
-					<a href="' . $url. '"' . $target . $nofollow . '>'.$item['news_title'].'</a>
-					</li>';
+					echo '<li class="news-tricker-element elementor-repeater-item-' . $item['_id'] . '">';
+					if( ! empty( $url ) ){
+						echo '<a href="' . $url. '"' . $target . $nofollow . '>'.$item['news_title'].'</a>';
+					}
+					
+					echo '</li>';
 				}
 				echo '</ul>';
 			}

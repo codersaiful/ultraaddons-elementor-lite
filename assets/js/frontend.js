@@ -181,6 +181,21 @@
             );
     
 
+            //Testimonial Slider
+            EF.hooks.addAction(
+                'frontend/element_ready/ultraaddons-testimonial-slider.default',
+                function ($scope) {
+                        EF.elementsHandler.addHandler(SliderBase, {
+                                $element: $scope,
+                                selectors: {
+                                        container: '.ua-testimonial-slider-wrapper',
+                                },
+                                autoplay: true,
+                        });
+                }
+            );
+
+            //Start Here for Developer_Test_Object
             var Developer_Test_Object = EM.frontend.handlers.Base.extend({
                 onInit: function(){
                     this.run();
@@ -222,21 +237,9 @@
                                 
                         });
                 }
-        );
-
-            //Testimonial Slider
-            EF.hooks.addAction(
-                    'frontend/element_ready/ultraaddons-testimonial-slider.default',
-                    function ($scope) {
-                            EF.elementsHandler.addHandler(SliderBase, {
-                                    $element: $scope,
-                                    selectors: {
-                                            container: '.ua-testimonial-slider-wrapper',
-                                    },
-                                    autoplay: true,
-                            });
-                    }
             );
+
+            
             
             //Animated Headline
             var AnimatedHeadline = EM.frontend.handlers.Base.extend({
@@ -723,6 +726,57 @@
             });
             
 
+
+            /**
+             * News Ticker Finalized Here
+             * 
+             * Actually most of the part of this Widget has done by Numan but
+             * JS part had developed by(Me) Saiful Islam
+             * 
+             * @author Saiful Islam<codersaiful@gmail.com>
+             * @since 1.1.0.8
+             */
+            var News_Ticker = EM.frontend.handlers.Base.extend({
+                onInit: function(){
+                    this.run();
+                },
+                onChange: function(){
+                    this.run();
+                },
+                getReadySettings: function(){
+                    var settings = this.getElementSettings();
+                    var generated_settings = {
+                        play: !! settings.play, //Actually for Yes, or Switch value
+                        stopOnHover: !! settings.stopOnHover, //Actually for Yes, or Switch value
+                    };
+
+                    return Object.assign(settings,generated_settings);
+                },
+
+                run: function(){
+                    var targetElement = this.$element.find('.ua-news-ticker-wrap');
+                    targetElement.breakingNews( this.getReadySettings() );
+                }
+            });
+
+            // News_Ticker Hooked Here
+            EF.hooks.addAction(
+                'frontend/element_ready/ultraaddons-news-ticker.default',
+                function ($scope) {
+                        
+                        EF.elementsHandler.addHandler(News_Ticker, {
+                                $element: $scope,
+                                selectors: {
+                                        container: '.developer_test_element',
+                                },
+                                play: true,
+                                
+                        });
+                }
+            );
+
+
+
     });
                    
 
@@ -808,18 +862,18 @@
      /**
 		* BM Rafiul Alam Code Start Here
 	 **/
-	//News Ticker
-	  $( window ).on( 'elementor/frontend/init', function() {
-		elementorFrontend.hooks.addAction( 'frontend/element_ready/ultraaddons-news-ticker.default', function($scope, $){
-			var $ticker =  $('[data-ticker]');
-			$ticker.length && $ticker.each(function(e, n) {
-				var $ticker = $(this).data("ticker");
-				$(this).breakingNews(
-				 $ticker
-				);
-			});
-		});
-	 } );
+	// //News Ticker
+	//   $( window ).on( 'elementor/frontend/init', function() {
+	// 	elementorFrontend.hooks.addAction( 'frontend/element_ready/ultraaddons-news-ticker.default', function($scope, $){
+	// 		var $ticker =  $('[data-ticker]');
+	// 		$ticker.length && $ticker.each(function(e, n) {
+	// 			var $ticker = $(this).data("ticker");
+	// 			$(this).breakingNews(
+	// 			 $ticker
+	// 			);
+	// 		});
+	// 	});
+	//  } );
 	 /**
 		* BM Rafiul Alam Code End Here
 	 **/
