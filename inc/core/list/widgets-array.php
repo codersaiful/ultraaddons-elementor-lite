@@ -408,6 +408,14 @@ $widgetsArray = [
                 __( 'Basic', 'ultraaddons' ),
             ],
     ],
+	'Card' => [
+            'name'  => __( 'Card', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-single-post',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
 
     
 ];

@@ -1,0 +1,113 @@
+.ua-card-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 3rem;
+}
+
+.ua-card {
+  display: flex;
+  background-color: #0c0b1e;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  flex-direction: column;
+  width: 100%;
+  padding: 2rem;
+}
+
+.ua-card-header, .ua-card-body, .ua-card-footer {
+  text-align: center;
+}
+
+.ua-card-body {
+  padding: 1rem 0;
+}
+
+.ua-card-footer {
+  padding-bottom: 0;
+}
+
+.ua-card-footer {
+  padding-top: 0;
+}
+
+.ua-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.ua-card-avatar-content {
+  margin-bottom: 1rem;
+}
+
+.ua-card-avatar-link {
+  display: inline-flex;
+  border-radius: 50%;
+  position: relative;
+  background: linear-gradient(to right, #00F5A0, #00D9F5);
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+}
+
+.ua-card-avatar {
+  display: inline-block;
+  border-radius: 50%;
+  border: 5px solid #0c0b1e;
+  position: relative;
+  height: 100px;
+  width: 100px;
+}
+
+.ua-card-card-title {
+  font-weight: 500;
+  font-size: 1.8rem;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.ua-card-card-subtitle {
+  color: #f8f8fc;
+}
+
+.ua-card-card-heading {
+  background: linear-gradient(to right, #00F5A0, #00D9F5);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  font-size: 2.5rem;
+  font-weight: 900;
+  font-family: "Roboto", sans-serif;
+}
+
+.ua-card-card-text {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #f8f8fc;
+}
+
+.ua-card button {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.875rem;
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  border: 0;
+  border-radius: 50rem;
+  background: linear-gradient(to right, #00F5A0, #00D9F5);
+  padding: 1rem 2rem;
+}
