@@ -710,46 +710,6 @@
                     });
                 },
 
-
-                /**
-                 * BMR Code Start Here
-                 */
-                
-                //News Ticker
-				/* NewsTicker:function($scope){
-					
-					var $TickerData =  $('[data-settings]');
-					console.log($TickerData);
-					if ($TickerData.attr('data-settings')) {
-						$TickerData.each(function(index, el){
-						var $Options 	= $(this).data('settings'), 	
-						play			= $Options.play == "yes" ? true : false,
-						directon 		= $Options.directon,
-						stopOnHover 	= $Options.stopOnHover== "yes" ? true : false,
-						themeColor 		= $Options.themeColor,
-						effect 			= $Options.effect,
-						delayTimer 		= $Options.delayTimer,
-						position 		= $Options.position,
-						scrollSpeed 	= $Options.scrollSpeed,
-						zIndex 			= $Options.zIndex;
-						
-						console.log($Options);
-						$('.ua-news-ticker-wrap').breakingNews({
-							play: play,
-							directon: directon,
-							stopOnHover: stopOnHover,
-							themeColor:themeColor,
-							effect:effect,
-							delayTimer:delayTimer,
-							position:position,
-							scrollSpeed:scrollSpeed,
-							zIndex:zIndex,
-						});
-					});
-				}else{
-					$('.ua-news-ticker-wrap').breakingNews();
-				}
-               },  */
             };
             
             let elementReadyMap = {
@@ -757,11 +717,6 @@
                 //'ultraaddons-timeline.default'  : UltraAddonsMap.UA_Owl_Carousel, //It has removed actually
                 'ultraaddons-skill-bar.default' : UltraAddonsMap.skillBar,
                 'ultraaddons-counter.default'  	: UltraAddonsMap.Counter,
-
-                //BM Rafiul Script Start Here
-                //'ultraaddons-news-ticker.default'  : UltraAddonsMap.NewsTicker, 
-                //BM Rafiul Script End Here
-                
             };
 			
 			
@@ -851,7 +806,11 @@
                 }
             });
     }
-    
+	
+     /**
+	 * BM Rafiul Alam Code Start Here
+	 */
+	//News Ticker
 	  $( window ).on( 'elementor/frontend/init', function() {
 		elementorFrontend.hooks.addAction( 'frontend/element_ready/ultraaddons-news-ticker.default', function($scope, $){
 			var $ticker =  $('[data-ticker]');
@@ -863,5 +822,8 @@
 			});
 		});
 	 } );
+	 /**
+	 * BM Rafiul Alam Code End Here
+	 */
 
 } (jQuery, window));
