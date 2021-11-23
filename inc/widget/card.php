@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * Card Widget
  * Create Incredibly powerful widget to demonstrate your products, articles, news, creative posts using a beautiful combination of texts, links, badge and image. 
 
- * @since 1.1.0.7
+ * @since 1.1.0.8
  * @package UltraAddons
  * @author Saiful islam <codersaiful@gmail.com>
  * @author Rafiul <bmrafiul.alam@gmail.com>
@@ -51,16 +51,14 @@ class Card extends Base{
      */
     protected function _register_controls() {
         //For Content Section
-        $this->card_content_controls();
-        //For Design Section Style Tab
+        $this->card_content_controls(); 
+		 //For Design Section Style Tab
+		$this->card_content_style(); 
+		//For button Style Tab
+		$this->card_button_style();
+       
    
-        //For Setting Control
-        //$this->ticker_settings_controls();
-		
-		//For Style Control
-        //$this->ticker_style_controls();
-		//For Btn Control
-        //$this->ticker_btn_style_controls();
+        
     }
 	/**
 	 * Here should comment actually
@@ -184,24 +182,130 @@ class Card extends Base{
 	$this->end_controls_section();
 	}
     /**
-     * Retrive setting for news tricker control
+     * Retrive setting for card control
      * 
      * @author Saiful <codersaiful@gmail.com>
      *
      * @return void
      */
-    protected function ticker_settings_controls(){
-        $this->start_controls_section(
+    protected function card_content_style(){
+       $this->start_controls_section(
             '_ua_card_style',
             [
                 'label'     => esc_html__( 'Card Style', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
+		$this->add_responsive_control(
+			'_ua_box_radius',
+			[
+				'label'       => esc_html__( 'Image Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ '%', 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'separator'=>'after',
+				'selectors'   => [
+					'{{WRAPPER}} .ua-card-avatar' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'card_title_typography',
+					'label' => 'Title Typography',
+					'selector' => '{{WRAPPER}} .ua-card-title',
 
+			]
+        );
+		$this->add_control(
+			'_ua_card_title_color', [
+				'label' => __( 'Title Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-card-title' => 'color: {{VALUE}};',
+				],
+				'separator'=>'after'
+			]
+        );
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'card_sub_title_typography',
+					'label' => 'Sub Title Typography',
+					'selector' => '{{WRAPPER}} .ua-card-sub-title',
+
+			]
+        );
+		$this->add_control(
+			'_ua_card_sub_title_color', [
+				'label' => __( 'Sub Title Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-card-sub-title' => 'color: {{VALUE}};',
+				],
+				'separator'=>'after'
+			]
+        );
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'card_content_typography',
+					'label' => 'Content Typography',
+					'selector' => '{{WRAPPER}} .ua-card-text',
+
+			]
+        );
+		$this->add_control(
+			'_ua_card_content_color', [
+				'label' => __( 'Content Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-card-text' => 'color: {{VALUE}};',
+				],
+				'separator'=>'after'
+			]
+        );
 
         $this->end_controls_section();
     }
-
+	
+	 protected function card_button_style(){
+       $this->start_controls_section(
+            '_ua_card_button_style',
+            [
+                'label'     => esc_html__( 'Button Style', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'btn_background',
+				'label' => __( 'Button Background', 'ultraaddons' ),
+				'types' => [ 'classic', 'gradient'],
+				'selector' => '{{WRAPPER}} .ua-card-button',
+			]
+		);
+		$this->add_control(
+			'_ua_btn_text_color', [
+				'label' => __( 'Button Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-card-button' => 'color: {{VALUE}};',
+				],
+				'separator'=>'after'
+			]
+        );
+		
+	 $this->end_controls_section();
+    }
+	
 	
 	
    protected function render() {
@@ -217,7 +321,7 @@ class Card extends Base{
 		  <div class="ua-card-avatar-content">
 		  <?php 
 			echo '<a href="' . $url. '"' . $target . $nofollow . ' >
-			  <img  class="avatar" src="' . $settings['_ua_card_image']['url'] .'"/>
+			  <img  class="ua-card-avatar" src="' . $settings['_ua_card_image']['url'] .'"/>
 			</a>';
 			?>
 		  </div>
@@ -226,7 +330,7 @@ class Card extends Base{
 				'</' . $settings['_ua_card_title_tag'] . '>';
 		   ?>
 		<?php
-		   echo '<' . $settings['_ua_card_sub_title_tag'] . ' class="ua-card-subtitle">' . esc_html($settings['_ua_card_title']) . 
+		   echo '<' . $settings['_ua_card_sub_title_tag'] . ' class="ua-card-sub-title">' . esc_html($settings['_ua_card_title']) . 
 				'</' . $settings['_ua_card_sub_title_tag'] . '>';
 		   ?>
 		</div>
@@ -235,7 +339,7 @@ class Card extends Base{
 		</div>
 		<div class="ua-card-footer">
 		<?php 
-			echo '<a href="' . $url. '"' . $target . $nofollow . ' class="ua-button">
+			echo '<a href="' . $url. '"' . $target . $nofollow . ' class="ua-card-button">
 			 ' .  $settings['_ua_card_button'] . '
 			</a>';
 		?>
