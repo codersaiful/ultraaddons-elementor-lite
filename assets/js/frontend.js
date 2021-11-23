@@ -7,6 +7,7 @@
             return this.data( dataAttr );
     };
 
+    $.Scrollax();
     /**
      * For Deleveloper Only
      */
