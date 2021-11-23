@@ -767,7 +767,7 @@
                         EF.elementsHandler.addHandler(News_Ticker, {
                                 $element: $scope,
                                 selectors: {
-                                        container: '.developer_test_element',
+                                        container: '.ua-news-ticker-wrap',
                                 },
                                 play: true,
                                 
