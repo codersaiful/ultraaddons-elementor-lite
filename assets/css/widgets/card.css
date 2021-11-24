@@ -1,5 +1,5 @@
 .ua-card-content {
- color:#fff;
+ color:#040911;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,15 +9,16 @@
 
 .ua-card {
   display: flex;
-  background-color: #0c0b1e;
+  background-color: #fff;
   border-radius: 1.5rem;
   overflow: hidden;
   flex-direction: column;
   width: 100%;
+  border: 1px solid #ddd;
 }
 
 .ua-card-body {
-  padding: 1rem 0;
+  padding: 1rem 1.5rem 3rem 1.5rem;
 }
 
 .ua-card-footer {
@@ -44,13 +45,13 @@
 
 .ua-card-title {
   font-weight: 500;
-  font-size: 1.8rem;
-  color: white;
+  font-size: 3rem;
+  color: #040911;
   margin: 0.8rem 0 .8rem 0;
 }
 
 .ua-card-card-subtitle {
-  color: #f8f8fc;
+  color: #a4a4b1;
 }
 
 .ua-card-card-heading {
@@ -63,16 +64,16 @@
   font-family: "Roboto", sans-serif;
 }
 
-.ua-card-card-text {
-  font-size: 1.1rem;
+.ua-card-text {
+  font-size: 1.6rem;
   line-height: 1.5;
-  color: #f8f8fc;
+  color: #a4a4b1;
+  margin-top: 15px;
 }
 .ua-card .ua-card-button {
   display: inline-block;
   font-weight: 700;
-  font-size: 0.875rem;
-  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 0.05rem;
   color: #000;
@@ -81,12 +82,12 @@
   vertical-align: middle;
   cursor: pointer;
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   border: 0;
   border-radius: 50rem;
-  background: linear-gradient(to right, #00F5A0, #00D9F5);
+  background: linear-gradient(to right, #0056f5, #24bdd1);
   padding: 1rem 2rem;
 }
 .card-row {
