@@ -33,7 +33,6 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-bottom: 1rem;
 }
 
 .ua-card-avatar-link {
@@ -101,4 +100,7 @@
   flex-direction: column;
   flex-basis: 100%;
   flex: 1;
+}
+.card-col-order{
+  order: 1;
 }
