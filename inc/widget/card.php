@@ -355,29 +355,33 @@ class Card extends Base{
 	  <div class="ua-card">
 		<div class="ua-card-header">
 		  <div class="ua-card-avatar-content">
-		  <?php 
-			echo '<a href="' . $url. '"' . $target . $nofollow . ' >
-			  <img  class="ua-card-avatar" src="' . $settings['_ua_card_image']['url'] .'"/>
-			</a>';
+			<?php 
+			if(!empty($url)){
+				echo '<a href="' . $url. '"' . $target . $nofollow . ' class="ua-card-avatar-link">
+				<img  class="ua-card-avatar" src="' . $settings['_ua_card_image']['url'] .'"/>
+				</a>';
+			}
 			?>
 		  </div>
-		  <?php
-		   echo '<' . $settings['_ua_card_title_tag'] . ' class="ua-card-title">' . esc_html($settings['_ua_card_title']) . 
+			<?php
+			echo '<' . $settings['_ua_card_title_tag'] . ' class="ua-card-title">' . esc_html($settings['_ua_card_title']) . 
 				'</' . $settings['_ua_card_title_tag'] . '>';
-		   ?>
-		<?php
-		   echo '<' . $settings['_ua_card_sub_title_tag'] . ' class="ua-card-sub-title">' . esc_html($settings['_ua_card_title']) . 
-				'</' . $settings['_ua_card_sub_title_tag'] . '>';
-		   ?>
+			?>
+			<?php
+			   echo '<' . $settings['_ua_card_sub_title_tag'] . ' class="ua-card-sub-title">' . esc_html($settings['_ua_card_title']) . 
+					'</' . $settings['_ua_card_sub_title_tag'] . '>';
+			?>
 		</div>
 		<div class="ua-card-body">
 		  <p class="ua-card-text"><?php echo $settings['_ua_card_content']; ?></p>
 		</div>
 		<div class="ua-card-footer">
 		<?php 
-			echo '<a href="' . $url. '"' . $target . $nofollow . ' class="ua-card-button">
-			 ' .  $settings['_ua_card_button'] . '
-			</a>';
+			if(!empty($url)){
+				echo '<a href="' . $url. '"' . $target . $nofollow . ' class="ua-card-button">
+				 ' .  $settings['_ua_card_button'] . '
+				</a>';
+			}
 		?>
 		</div>
 	  </div>

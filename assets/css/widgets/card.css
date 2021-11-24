@@ -46,13 +46,9 @@
 
 .ua-card-avatar-link {
   display: inline-flex;
-  border-radius: 50%;
   position: relative;
-  background: linear-gradient(to right, #00F5A0, #00D9F5);
   align-items: center;
   justify-content: center;
-  width: 120px;
-  height: 120px;
 }
 
 .ua-card-avatar {
@@ -60,15 +56,13 @@
   border-radius: 50%;
   border: 5px solid #0c0b1e;
   position: relative;
-  height: 100px;
-  width: 100px;
 }
 
-.ua-card-card-title {
+.ua-card-title {
   font-weight: 500;
   font-size: 1.8rem;
   color: white;
-  margin-bottom: 0.5rem;
+  margin: 0.8rem 0 .8rem 0;
 }
 
 .ua-card-card-subtitle {
@@ -90,7 +84,6 @@
   line-height: 1.5;
   color: #f8f8fc;
 }
-
 .ua-card .ua-card-button {
   display: inline-block;
   font-weight: 700;
