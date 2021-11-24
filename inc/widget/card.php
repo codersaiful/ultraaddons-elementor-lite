@@ -155,35 +155,7 @@ class Card extends Base{
 				'default' => 'yes',
 			]
 		);
-		$this->add_responsive_control(
-			'_ua_card_text_alignment',
-			[
-				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
-				'type' => Controls_Manager::CHOOSE,
-				'options' => [
-					'left' => [
-						'title' => esc_html__( 'Left', 'ultraaddons' ),
-						'icon' => 'eicon-text-align-left',
-					],
-					'center' => [
-						'title' => esc_html__( 'Center', 'ultraaddons' ),
-						'icon' => 'eicon-text-align-center',
-					],
-					'right' => [
-						'title' => esc_html__( 'Right', 'ultraaddons' ),
-						'icon' => 'eicon-text-align-right',
-					],
-					'justify' => [
-						'title' => esc_html__( 'justify', 'ultraaddons' ),
-						'icon' => 'eicon-text-align-justify',
-					],
-				],
-				'default' => 'center',
-				'selectors' => [
-					'{{WRAPPER}} .ua-card-body ' => 'text-align: {{VALUE}};',
-				],
-			]
-		);
+		
 		$this->add_control(
 			'_ua_card_title_tag',
 			[
@@ -244,9 +216,44 @@ class Card extends Base{
 					'bottom' => '',
 					'left'   => '',
 				],
-				'separator'=>'after',
 				'selectors'   => [
 					'{{WRAPPER}} .ua-card-avatar' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'_ua_card_image_margin',
+			[
+				'label'       => esc_html__( 'Image Margin', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ '%', 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'separator' =>'after',
+				'selectors'   => [
+					'{{WRAPPER}} .ua-card-avatar' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'_ua_card_image_padding',
+			[
+				'label'       => esc_html__( 'Image Padding', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ '%', 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'separator' =>'after',
+				'selectors'   => [
+					'{{WRAPPER}} .ua-card-avatar' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -342,6 +349,52 @@ class Card extends Base{
 				'separator'=>'after'
 			]
         );
+		$this->add_responsive_control(
+			'_ua_card_content_padding',
+			[
+				'label'       => esc_html__( 'Content Padding', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ '%', 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-card-body' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'_ua_card_text_alignment',
+			[
+				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-right',
+					],
+					'justify' => [
+						'title' => esc_html__( 'justify', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-justify',
+					],
+				],
+				'default' => 'center',
+				'selectors' => [
+					'{{WRAPPER}} .ua-card-body ' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
 		
         $this->end_controls_section();
     }

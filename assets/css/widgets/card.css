@@ -14,11 +14,6 @@
   overflow: hidden;
   flex-direction: column;
   width: 100%;
-  padding: 2rem;
-}
-
-.ua-card-header, .ua-card-body, .ua-card-footer {
-  text-align: center;
 }
 
 .ua-card-body {
