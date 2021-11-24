@@ -60,7 +60,7 @@ class Card extends Base{
 		$this->card_button_style();   
     }
 	/**
-	 * Here should comment actually
+	 * Widget controls Method
 	 * 
 	 * It's actually content control part
 	 */
@@ -75,7 +75,7 @@ class Card extends Base{
             ]
         );
 		
-			 $this->add_control(
+		$this->add_control(
 			'_ua_card_image',
 			[
 				'label' => __( 'Card Image', 'ultraaddons' ),
@@ -129,7 +129,7 @@ class Card extends Base{
 				'label_block' => true,
 			]
 		);
-			$this->add_control(
+		$this->add_control(
 			'_ua_card_button_link',
 			[
 				'label' => __( 'Link', 'ultraaddons' ),
@@ -180,13 +180,9 @@ class Card extends Base{
 		);
 	$this->end_controls_section();
 	}
-    /**
-     * Retrive setting for card control
-     * 
-     * @author Saiful <codersaiful@gmail.com>
-     *
-     * @return void
-     */
+  /**
+   * Content Style Method
+   */
     protected function card_content_style(){
        $this->start_controls_section(
             '_ua_card_style',
@@ -196,7 +192,7 @@ class Card extends Base{
             ]
         );
 		$this->add_responsive_control(
-			'_ua_box_radius',
+			'_ua_image_radius',
 			[
 				'label'       => esc_html__( 'Image Radius', 'ultraaddons' ),
 				'type'        => Controls_Manager::DIMENSIONS,
@@ -273,7 +269,9 @@ class Card extends Base{
 
         $this->end_controls_section();
     }
-	
+	/**
+	 * Button style Method
+	 */
 	 protected function card_button_style(){
        $this->start_controls_section(
             '_ua_card_button_style',
@@ -302,17 +300,18 @@ class Card extends Base{
 		);
 		$this->add_control(
 			'_ua_btn_text_color', [
-				'label' => __( 'Button Color', 'ultraaddons' ),
+				'label' => __( 'Button Text Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-card-button' => 'color: {{VALUE}};',
 				],
-				'separator'=>'after'
+				'separator'=>'before'
 			]
         );
 		
 	 $this->end_controls_section();
     }
+	
 	 protected function card_box_style(){
        $this->start_controls_section(
             '_ua_card_box_style',
@@ -330,6 +329,24 @@ class Card extends Base{
 				'selector' => '{{WRAPPER}} .ua-card',
 			]
 		);
+		$this->add_responsive_control(
+			'_ua_box_radius',
+			[
+				'label'       => esc_html__( 'Image Box Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ '%', 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'separator'=>'before',
+				'selectors'   => [
+					'{{WRAPPER}} .ua-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 		$this->add_group_control(
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
@@ -342,7 +359,13 @@ class Card extends Base{
 	 $this->end_controls_section();
     }
 	
-	
+	/**
+     * Retrive setting for card control
+     * 
+     * @author BM Rafiul Alam <bmrafiul.alam@gmail.com>
+     *
+     * @return void
+     */
 	
    protected function render() {
 		$settings 	= $this->get_settings_for_display();
