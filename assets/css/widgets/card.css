@@ -33,14 +33,11 @@
   padding-top: 0;
 }
 
-.ua-card-header {
+.ua-card-avatar-content{
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-}
-
-.ua-card-avatar-content {
   margin-bottom: 1rem;
 }
 
@@ -49,13 +46,6 @@
   position: relative;
   align-items: center;
   justify-content: center;
-}
-
-.ua-card-avatar {
-  display: inline-block;
-  border-radius: 50%;
-  border: 5px solid #0c0b1e;
-  position: relative;
 }
 
 .ua-card-title {
@@ -104,4 +94,16 @@
   border-radius: 50rem;
   background: linear-gradient(to right, #00F5A0, #00D9F5);
   padding: 1rem 2rem;
+}
+.card-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.card-col {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
 }

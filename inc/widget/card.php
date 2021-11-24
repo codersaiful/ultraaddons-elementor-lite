@@ -145,6 +145,46 @@ class Card extends Base{
 			]
 		);
 		$this->add_control(
+			'_ua_card_direction',
+			[
+				'label' => __( 'Direction', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Row', 'ultraaddons' ),
+				'label_off' => __( 'Col', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+		$this->add_responsive_control(
+			'_ua_card_text_alignment',
+			[
+				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-right',
+					],
+					'justify' => [
+						'title' => esc_html__( 'justify', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-justify',
+					],
+				],
+				'default' => 'center',
+				'selectors' => [
+					'{{WRAPPER}} .ua-card-body ' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_control(
 			'_ua_card_title_tag',
 			[
 				'label' => esc_html__( 'Select Title Tag', 'ultraaddons' ),
@@ -178,6 +218,7 @@ class Card extends Base{
 				'default' => 'h5',
 			]
 		);
+
 	$this->end_controls_section();
 	}
   /**
@@ -301,7 +342,7 @@ class Card extends Base{
 				'separator'=>'after'
 			]
         );
-
+		
         $this->end_controls_section();
     }
 	/**
@@ -442,7 +483,7 @@ class Card extends Base{
 	/**
      * Retrive setting for card control
      * 
-     * @author BM Rafiul Alam <bmrafiul.alam@gmail.com>
+     * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
      *
      * @return void
      */
@@ -452,12 +493,18 @@ class Card extends Base{
 		$target 	= $settings['_ua_card_button_link']['is_external'] ? ' target="_blank"' : '';;
 		$nofollow 	= $settings['_ua_card_button_link']['nofollow'] ? ' rel="nofollow"' : '';
 		$url		= $settings['_ua_card_button_link']['url'];
+		$col='';
+		$row='';
+		if ( 'yes'==$settings['_ua_card_direction'] ) {
+			$col='card-col';
+			$row='card-row';
+
+		}
 		
 	?>
 	<div class="ua-card-content">
-	  <div class="ua-card">
-		<div class="ua-card-header">
-		  <div class="ua-card-avatar-content">
+		<div class="ua-card <?php echo $row; ?>">
+			<div class="ua-card-avatar-content <?php echo $col; ?>">
 			<?php 
 			if(!empty($url)){
 				echo '<a href="' . $url. '"' . $target . $nofollow . ' class="ua-card-avatar-link">
@@ -465,29 +512,28 @@ class Card extends Base{
 				</a>';
 			}
 			?>
-		  </div>
-			<?php
-			echo '<' . $settings['_ua_card_title_tag'] . ' class="ua-card-title">' . esc_html($settings['_ua_card_title']) . 
-				'</' . $settings['_ua_card_title_tag'] . '>';
-			?>
-			<?php
-			   echo '<' . $settings['_ua_card_sub_title_tag'] . ' class="ua-card-sub-title">' . esc_html($settings['_ua_card_sub_title']) . 
-					'</' . $settings['_ua_card_sub_title_tag'] . '>';
-			?>
+			</div>
+			<div class="ua-card-body <?php echo $col; ?>">
+				<?php
+				echo '<' . $settings['_ua_card_title_tag'] . ' class="ua-card-title">' . esc_html($settings['_ua_card_title']) . 
+					'</' . $settings['_ua_card_title_tag'] . '>';
+				?>
+				<?php
+				echo '<' . $settings['_ua_card_sub_title_tag'] . ' class="ua-card-sub-title">' . esc_html($settings['_ua_card_sub_title']) . 
+						'</' . $settings['_ua_card_sub_title_tag'] . '>';
+				?>
+				<p class="ua-card-text"><?php echo $settings['_ua_card_content']; ?></p>
+				<div class="ua-card-footer">
+					<?php 
+						if(!empty($url)){
+							echo '<a href="' . $url. '"' . $target . $nofollow . ' class="ua-card-button">
+							' .  $settings['_ua_card_button'] . '
+							</a>';
+						}
+					?>
+				</div>
+			</div>
 		</div>
-		<div class="ua-card-body">
-		  <p class="ua-card-text"><?php echo $settings['_ua_card_content']; ?></p>
-		</div>
-		<div class="ua-card-footer">
-		<?php 
-			if(!empty($url)){
-				echo '<a href="' . $url. '"' . $target . $nofollow . ' class="ua-card-button">
-				 ' .  $settings['_ua_card_button'] . '
-				</a>';
-			}
-		?>
-		</div>
-	  </div>
 	</div>
 <?php }
 }
