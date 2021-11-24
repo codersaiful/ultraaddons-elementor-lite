@@ -155,6 +155,39 @@ class Card extends Base{
 				'default' => 'yes',
 			]
 		);
+		$this->add_control(
+			'_ua_card_order',
+			[
+				'label' => __( 'Column Order', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Left', 'ultraaddons' ),
+				'label_off' => __( 'Right', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+	/* 	$this->add_responsive_control(
+			'_ua_card_text_alignment',
+			[
+				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				
+				],
+				'default' => 'center',
+				'selectors' => [
+					'{{WRAPPER}} .ua-card-body ' => 'text-align: {{VALUE}};',
+				],
+			]
+		); */
 		
 		$this->add_control(
 			'_ua_card_title_tag',
@@ -543,7 +576,7 @@ class Card extends Base{
 	
    protected function render() {
 		$settings 	= $this->get_settings_for_display();
-		$target 	= $settings['_ua_card_button_link']['is_external'] ? ' target="_blank"' : '';;
+		$target 	= $settings['_ua_card_button_link']['is_external'] ? ' target="_blank"' : '';
 		$nofollow 	= $settings['_ua_card_button_link']['nofollow'] ? ' rel="nofollow"' : '';
 		$url		= $settings['_ua_card_button_link']['url'];
 		$col='';
@@ -551,13 +584,16 @@ class Card extends Base{
 		if ( 'yes'==$settings['_ua_card_direction'] ) {
 			$col='card-col';
 			$row='card-row';
-
+		}
+		$colOrder='';
+		if ( 'yes'==$settings['_ua_card_order'] ) {
+			$colOrder='card-col-order';
 		}
 		
 	?>
 	<div class="ua-card-content">
 		<div class="ua-card <?php echo $row; ?>">
-			<div class="ua-card-avatar-content <?php echo $col; ?>">
+			<div class="ua-card-avatar-content <?php echo $col; ?> <?php echo $colOrder; ?>">
 			<?php 
 			if(!empty($url)){
 				echo '<a href="' . $url. '"' . $target . $nofollow . ' class="ua-card-avatar-link">
