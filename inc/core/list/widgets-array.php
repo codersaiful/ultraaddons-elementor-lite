@@ -375,7 +375,23 @@ $widgetsArray = [
                 __( 'Basic', 'ultraaddons' ),
             ],
     ],
+
+
+    /**
+     * Only for Developer, Development Perpose
+     * 
+     * @author Saiful Islam <codersaiful@gmail.com>
+     */
+    'Developer_Test' => [
+        'name'  => __( 'Developer Test', 'ultraaddons' ),
+        'is_pro'   => false,
+        'icon'      => 'uicon-ultraaddons',
+        'cat'       => [
+            __( 'Basic', 'ultraaddons' ),
+        ],
+    ],
     
+    //@author Rafiul <codersaiful@gmail.com>
     'Flip_Box' => [
             'name'  => __( 'Flip Box', 'ultraaddons' ),
             'is_pro'   => false,
@@ -402,8 +418,16 @@ $widgetsArray = [
     ],
 	'News_Ticker' => [
             'name'  => __( 'News Ticker', 'ultraaddons' ),
-            'is_pro'   => false,
+            'is_pro'   => true,
             'icon'      => 'eicon-chevron-double-left',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+	'Card' => [
+            'name'  => __( 'Card', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-single-post',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],

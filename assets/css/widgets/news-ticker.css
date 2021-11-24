@@ -17,9 +17,14 @@
   right: 0;
   bottom: 0;
 }
-.bn-effect-scroll .bn-news ul li {
+
+.ua-news-ticker-wrap ul li {
     margin: 0;
 }
 .bn-controls button {
     padding: 0;
+}
+.ua-element.ua-element-news-ticker .ua-news-ticker-wrap .bn-controls button {
+  border-left: solid 1px #0000000f;
+  background-color: #0000000f;
 }

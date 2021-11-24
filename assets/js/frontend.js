@@ -180,19 +180,66 @@
                     }
             );
     
+
             //Testimonial Slider
             EF.hooks.addAction(
-                    'frontend/element_ready/ultraaddons-testimonial-slider.default',
-                    function ($scope) {
-                            EF.elementsHandler.addHandler(SliderBase, {
-                                    $element: $scope,
-                                    selectors: {
-                                            container: '.ua-testimonial-slider-wrapper',
-                                    },
-                                    autoplay: true,
-                            });
-                    }
+                'frontend/element_ready/ultraaddons-testimonial-slider.default',
+                function ($scope) {
+                        EF.elementsHandler.addHandler(SliderBase, {
+                                $element: $scope,
+                                selectors: {
+                                        container: '.ua-testimonial-slider-wrapper',
+                                },
+                                autoplay: true,
+                        });
+                }
             );
+
+            //Start Here for Developer_Test_Object
+            var Developer_Test_Object = EM.frontend.handlers.Base.extend({
+                onInit: function(){
+                    this.run();
+                },
+                onChange: function(){
+                    this.run();
+                },
+                getReadySettings: function(){
+                    var settings = this.getElementSettings();
+                    var $readySettings = {
+                        delayTimer: settings.delayTimer,
+                        play: !! settings.play, //Actually for Yes, or Switch value
+                    };
+
+                    return $readySettings;
+                },
+
+                run: function(){
+                    var item = this.$element.find('.developer_test_element h2 span');
+                    var delayTimer = this.getReadySettings().delayTimer;
+                    item.html(delayTimer);
+                    //console.log(this.getReadySettings());
+                    //console.log(this.getReadySettings(),this.getElementSettings());
+                    //console.log(delayTimer);
+                }
+            });
+
+            // Developer_Test
+            EF.hooks.addAction(
+                'frontend/element_ready/ultraaddons-developer-test.default',
+                function ($scope) {
+                        
+                        EF.elementsHandler.addHandler(Developer_Test_Object, {
+                                $element: $scope,
+                                selectors: {
+                                        container: '.developer_test_element',
+                                },
+                                autoplay: true,
+                                
+                        });
+                }
+            );
+
+            
             
             //Animated Headline
             var AnimatedHeadline = EM.frontend.handlers.Base.extend({
@@ -590,13 +637,6 @@
             );
             
         
-//            //for new Elemenment to Each Widget and column
-//            EF.hooks.addAction(
-//                    'frontend/element_ready/widget',
-//                    function ($scope) {
-//                        $scope.find('.elementor-widget-container').prepend('<div class="ua-widget-background-overlay">Widget</div>');
-//                    }
-//            );
             
             // Cart Update in Editor Screen
             EF.hooks.addAction(
@@ -608,43 +648,8 @@
                     }
             );
             
-           /*
-           
-                var fnHanlders = {
-			'ha-image-compare.default'      : HandleImageCompare,
-			'ha-number.default'             : NumberHandler,
-			'ha-skills.default'             : SkillHandler,
-			'ha-fun-factor.default'         : FunFactor,
-			'ha-bar-chart.default'          : BarChart,
-			'ha-twitter-feed.default'       : TwitterFeed,
-			'ha-threesixty-rotation.default': Threesixty_Rotation,
-			'ha-data-table.default'         : DataTable,
-			'widget'                        : BackgroundOverlay,
-		};
 
-		$.each( fnHanlders, function( widgetName, handlerFn ) {
-			elementorFrontend.hooks.addAction( 'frontend/element_ready/' + widgetName, handlerFn );
-		});
-
-		var classHandlers = {
-			'ha-image-grid.default'       : ImageGrid,
-			'ha-justified-gallery.default': JustifiedGrid,
-			'ha-news-ticker.default'      : NewsTicker,
-			'ha-post-tab.default'         : PostTab
-		};
-
-		$.each( classHandlers, function( widgetName, handlerClass ) {
-			elementorFrontend.hooks.addAction( 'frontend/element_ready/' + widgetName, function( $scope ) {
-				elementorFrontend.elementsHandler.addHandler( handlerClass, { $element: $scope });
-			});
-		});
            
-           */
-           
-           
-//            EF.hooks.addAction( 'frontend/element_ready/widget', function( $scope ) {
-//                EF.elementsHandler.addHandler( CusttomCSS, { $element: $scope });
-//            });
             // Wrapper Link
            $('.ua-wrapper-link').each(function() {
                     var link = $(this).data('_ua_element_link');
@@ -666,13 +671,7 @@
             });
 
 
-//            EF.hooks.addAction(
-//                'frontend/element_ready/widgett',
-//                function($scope, $) {
-//                    var link = $(this).data('_ua_element_link');
-//                    
-//                    
-//                });
+
             
             let UltraAddonsMap = {
                 /**
@@ -699,52 +698,6 @@
                     });
                 },
 
-                //Owl Carousel
-                UA_Owl_Carousel: function($scope) {
-                    var $owlContainer = $scope.find('.ua_timeline_inner'),
-                        controls = null,
-                        show_slider_dots = true,
-                        show_slider_arrow = true,
-                        autoplay = true,
-                        slider_speed = 2000,
-                        slider_loop = true,
-                        slider_space = 60,
-                        slider_item = 3,
-                        slider_drag = false,
-                        slider_center = false,
-                        next_icon = 'fas fa-angle-right',
-                        prev_icon = 'fas fa-angle-left';
-
-                    if ($owlContainer.attr('data-controls')) {
-                        var controls = JSON.parse($owlContainer.attr('data-controls'));
-                        show_slider_dots = controls.show_slider == "yes" ? controls.slider_pagi_type == 'dot' ? true : false : false;
-                        show_slider_arrow = controls.show_slider == "yes" ? controls.slider_pagi_type == 'arrow' ? true : false : false;
-                        autoplay = controls.slide_autoplay == "yes" ? true : false;
-                        slider_speed = controls.slider_speed;
-                        slider_loop = controls.slider_loop == "yes" ? true : false;
-                        slider_space = controls.slider_space;
-                        slider_item = controls.slider_item;
-                        slider_center = controls.slider_center == "yes" ? true : false;  
-                        slider_drag = controls.slider_drag == "yes" ? true : false;  
-                        next_icon = controls.next_icon.library == 'svg' ? "<img src='"+controls.next_icon.value.url+"'>" : "<i class='"+controls.next_icon.value+"'></i>" ;  
-                        prev_icon = controls.prev_icon.library == 'svg' ? "<img src='"+controls.prev_icon.value.url+"'>" : "<i class='"+controls.prev_icon.value+"'></i>";  
-                    }
-
-                $owlContainer.owlCarousel({
-                        items: slider_item,
-                        loop: slider_loop,
-                        margin: slider_space,
-                        smartSpeed: slider_speed,
-                        dots: show_slider_dots,
-                        nav: show_slider_arrow,
-                        navText: [prev_icon, next_icon],
-                        autoplay: autoplay,
-                        mouseDrag: slider_drag,
-                        center: slider_center,
-                    });
-                    
-                },
-                
                 //Counter
                 Counter:function($scope){
                     var $item = $scope.find('.ua-counter-text');
@@ -758,57 +711,13 @@
                     });
                 },
 
-
-                /**
-                 * BMR Code Start Here
-                 */
-                
-                //News Ticker
-				
-               /*  NewsTicker:function($scope){
-						var $TickerData =  $('[data-settings]');
-						if ($TickerData.attr('data-settings')) {
-						$TickerData.each(function(index, el){
-						var $Options 	= $(this).data('settings'), 	
-						play			= $Options.play == "yes" ? true : false,
-						directon 		= $Options.directon,
-						stopOnHover 	= $Options.stopOnHover== "yes" ? true : false,
-						themeColor 		= $Options.themeColor,
-						effect 			= $Options.effect,
-						delayTimer 		= $Options.delayTimer,
-						position 		= $Options.position,
-						scrollSpeed 	= $Options.scrollSpeed,
-						zIndex 			= $Options.zIndex;
-						
-						//console.log($Options);
-						$('.ua-news-ticker-wrap').breakingNews({
-							play: play,
-							directon: directon,
-							stopOnHover: stopOnHover,
-							themeColor:themeColor,
-							effect:effect,
-							delayTimer:delayTimer,
-							position:position,
-							scrollSpeed:scrollSpeed,
-							zIndex:zIndex,
-						});
-					});
-				}else{
-					$('.ua-news-ticker-wrap').breakingNews();
-				}
-                }, */
             };
             
             let elementReadyMap = {
                 'ultraaddons-alert.default'     : UltraAddonsMap.Alert,
-                'ultraaddons-timeline.default'  : UltraAddonsMap.UA_Owl_Carousel,
+                //'ultraaddons-timeline.default'  : UltraAddonsMap.UA_Owl_Carousel, //It has removed actually
                 'ultraaddons-skill-bar.default' : UltraAddonsMap.skillBar,
                 'ultraaddons-counter.default'  	: UltraAddonsMap.Counter,
-
-                //BM Rafiul Script Start Here
-                //'ultraaddons-news-ticker.default'  : UltraAddonsMap.NewsTicker, 
-                //BM Rafiul Script End Here
-                
             };
 			
 			
@@ -817,16 +726,60 @@
             });
             
 
+
+            /**
+             * News Ticker Finalized Here
+             * 
+             * Actually most of the part of this Widget has done by Numan but
+             * JS part had developed by(Me) Saiful Islam
+             * 
+             * @author Saiful Islam<codersaiful@gmail.com>
+             * @since 1.1.0.8
+             */
+            var News_Ticker = EM.frontend.handlers.Base.extend({
+                onInit: function(){
+                    this.run();
+                },
+                onChange: function(){
+                    this.run();
+                },
+                getReadySettings: function(){
+                    var settings = this.getElementSettings();
+                    var generated_settings = {
+                        play: !! settings.play, //Actually for Yes, or Switch value
+                        stopOnHover: !! settings.stopOnHover, //Actually for Yes, or Switch value
+                    };
+
+                    return Object.assign(settings,generated_settings);
+                },
+
+                run: function(){
+                    var targetElement = this.$element.find('.ua-news-ticker-wrap');
+                    targetElement.breakingNews( this.getReadySettings() );
+                }
+            });
+
+            // News_Ticker Hooked Here
+            EF.hooks.addAction(
+                'frontend/element_ready/ultraaddons-news-ticker.default',
+                function ($scope) {
+                        
+                        EF.elementsHandler.addHandler(News_Ticker, {
+                                $element: $scope,
+                                selectors: {
+                                        container: '.ua-news-ticker-wrap',
+                                },
+                                play: true,
+                                
+                        });
+                }
+            );
+
+
+
     });
                    
-//   $('.ua-counter-text').appear(function () {
-//        var element = $(this);
-//        var timeSet = setTimeout(function () {
-//            if (element.hasClass('ua-counter-text')) {
-//                element.find('.ua-counter-value').countTo();
-//            }
-//        });
-//    });
+
     /**
      * Created Outside of init/Elementtor
      * Imean: elementor/frontend/init
@@ -905,80 +858,24 @@
                 }
             });
     }
-    
-    
-    /*     Magnific Popup js
-     -------------------------------------*
-    $('.video_btn').magnificPopup({
-        type: 'iframe',
-        mainClass: 'mfp-fade',
-        preloader: true,
-    });
-
-    //Magnific popup video
-     $('.play-btn').magnificPopup({
-        type: 'iframe',
-        iframe: {
-            markup: '<div class="mfp-iframe-scaler">' +
-                '<div class="mfp-close"></div>' +
-                '<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>' +
-                '</div>',
-
-            patterns: {
-                youtube: {
-                    index: 'youtube.com/',
-                    id: 'v=',
-                    src: 'https://www.youtube.com/embed/%id%?autoplay=1'
-                },
-                vimeo: {
-                    index: 'vimeo.com/',
-                    id: '/',
-                    src: 'https://player.vimeo.com/video/%id%?autoplay=1'
-                },
-                gmaps: {
-                    index: 'https://maps.google.',
-                    src: '%id%&output=embed'
-                }
-            },
-            srcAction: 'iframe_src',
-        }
-        // other options
-    });
-    //*************************************/
-	var NewsTicker = function( $scope, $ ) {
-			var $TickerData =  $('[data-settings]');
-				if ($TickerData.attr('data-settings')) {
-				$TickerData.each(function(index, el){
-				var $Options 	= $(this).data('settings'), 	
-				play			= $Options.play == "yes" ? true : false,
-				directon 		= $Options.directon,
-				stopOnHover 	= $Options.stopOnHover== "yes" ? true : false,
-				themeColor 		= $Options.themeColor,
-				effect 			= $Options.effect,
-				delayTimer 		= $Options.delayTimer,
-				position 		= $Options.position,
-				scrollSpeed 	= $Options.scrollSpeed,
-				zIndex 			= $Options.zIndex;
-				
-				console.log($Options);
-				$('.ua-news-ticker-wrap').breakingNews({
-					play: play,
-					directon: directon,
-					stopOnHover: stopOnHover,
-					themeColor:themeColor,
-					effect:effect,
-					delayTimer:delayTimer,
-					position:position,
-					scrollSpeed:scrollSpeed,
-					zIndex:zIndex,
-				});
-			});
-		}else{
-			$('.ua-news-ticker-wrap').breakingNews();
-		}
-	};
-	$( window ).on( 'elementor/frontend/init', function() {
-		elementorFrontend.hooks.addAction( 'frontend/element_ready/ultraaddons-news-ticker.default', NewsTicker );
-	} );
+	
+     /**
+		* BM Rafiul Alam Code Start Here
+	 **/
+	// //News Ticker
+	//   $( window ).on( 'elementor/frontend/init', function() {
+	// 	elementorFrontend.hooks.addAction( 'frontend/element_ready/ultraaddons-news-ticker.default', function($scope, $){
+	// 		var $ticker =  $('[data-ticker]');
+	// 		$ticker.length && $ticker.each(function(e, n) {
+	// 			var $ticker = $(this).data("ticker");
+	// 			$(this).breakingNews(
+	// 			 $ticker
+	// 			);
+	// 		});
+	// 	});
+	//  } );
+	 /**
+		* BM Rafiul Alam Code End Here
+	 **/
 
 } (jQuery, window));

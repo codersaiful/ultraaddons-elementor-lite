@@ -138,6 +138,24 @@ $extensionsArray = [
                     __( 'Basic', 'ultraaddons' ),
                 ],
             ],
+
+            /**
+             * General Extension is a Comment Extension
+             * is a group of features
+             * 
+             * @since 1.1.0.8
+             * @author Saiful islam <codersaiful@gmail.com>
+             */
+            'General_Extension' => [
+                'name'  => __( 'General Extension', 'ultraaddons' ),
+                'is_pro'   => true,
+                'icon'      => 'uicon-ultraaddons',
+                'cat'       => [
+                    __( 'Basic', 'ultraaddons' ),
+                ],
+            ],
+
+
             
         ];
 
