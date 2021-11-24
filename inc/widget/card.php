@@ -280,6 +280,18 @@ class Card extends Base{
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
+		$this->start_controls_tabs(
+			'style_tabs'
+		);
+		/**
+		 * Normal tab
+		 */
+		$this->start_controls_tab(
+			'style_normal_tab',
+			[
+				'label' => __( 'Normal', 'ultraaddons' ),
+			]
+		);
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
@@ -308,10 +320,43 @@ class Card extends Base{
 				'separator'=>'before'
 			]
         );
+		$this->end_controls_tab();
+		/**
+		 * Hover tab
+		 */
+		$this->start_controls_tab(
+			'style_hover_tab',
+			[
+				'label' => __( 'Hover', 'ultraaddons' ),
+			]
+		);
+		$this->add_control(
+			'_ua_btn_text_hover_color', [
+				'label' => __( 'Button Text Hover Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-card-button:hover' => 'color: {{VALUE}};',
+				],
+				'separator'=>'before'
+			]
+        );
+		$this->add_control(
+			'_ua_btn_bg_hover_color', [
+				'label' => __( 'Button Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-card-button:hover' => 'background: {{VALUE}};',
+				],
+				'separator'=>'before'
+			]
+        );
+		$this->end_controls_tabs();
 		
 	 $this->end_controls_section();
     }
-	
+	/**
+	 * Card Box style Method
+	 */
 	 protected function card_box_style(){
        $this->start_controls_section(
             '_ua_card_box_style',
