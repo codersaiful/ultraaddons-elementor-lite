@@ -155,39 +155,49 @@ class Card extends Base{
 				'default' => 'yes',
 			]
 		);
-		$this->add_control(
+		
+		$this->add_responsive_control(
 			'_ua_card_order',
 			[
-				'label' => __( 'Column Order', 'ultraaddons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Left', 'ultraaddons' ),
-				'label_off' => __( 'Right', 'ultraaddons' ),
-				'return_value' => 'yes',
-				'default' => 'yes',
-			]
-		);
-	/* 	$this->add_responsive_control(
-			'_ua_card_text_alignment',
-			[
-				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
+				'label' => esc_html__( 'Column Order', 'ultraaddons' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
 						'title' => esc_html__( 'Left', 'ultraaddons' ),
-						'icon' => 'eicon-text-align-left',
+						'icon' => 'eicon-arrow-left',
 					],
 					'right' => [
 						'title' => esc_html__( 'Right', 'ultraaddons' ),
-						'icon' => 'eicon-text-align-right',
+						'icon' => 'eicon-arrow-right',
 					],
 				
 				],
-				'default' => 'center',
-				'selectors' => [
-					'{{WRAPPER}} .ua-card-body ' => 'text-align: {{VALUE}};',
-				],
+				'default' => 'left',
 			]
-		); */
+		);
+			$this->add_responsive_control(
+			'_ua_card_justify_content',
+			[
+				'label' => esc_html__( 'Justify Content', 'ultraaddons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'start' => [
+						'title' => esc_html__( 'Top', 'ultraaddons' ),
+						'icon' => 'eicon-v-align-top',
+					],
+					'center' => [
+						'title' => esc_html__( 'Middle', 'ultraaddons' ),
+						'icon' => 'eicon-v-align-middle',
+					],
+					'end' => [
+						'title' => esc_html__( 'Bottom', 'ultraaddons' ),
+						'icon' => 'eicon-v-align-bottom',
+					],
+				
+				],
+				'default' => 'left',
+			]
+		); 
 		
 		$this->add_control(
 			'_ua_card_title_tag',
@@ -586,14 +596,32 @@ class Card extends Base{
 			$row='card-row';
 		}
 		$colOrder='';
-		if ( 'yes'==$settings['_ua_card_order'] ) {
+		if ( 'right'== $settings['_ua_card_order'] ) {
 			$colOrder='card-col-order';
 		}
+		$justifyContent ='';
+		if($settings['_ua_card_justify_content']){
+			$justifyContent= 'card-justify-content-' . $settings['_ua_card_justify_content'];
+		}
+
+		$this->add_render_attribute(
+			'card_avatar_class',
+			[
+				'class' => 'ua-card-avatar-content ' . $col . ' ' . $colOrder ,
+			]
+		);
+
+		$this->add_render_attribute(
+			'card_body_class',
+			[
+				'class' => 'ua-card-body ' . $col . ' ' . $justifyContent ,
+			]
+		);
 		
 	?>
 	<div class="ua-card-content">
 		<div class="ua-card <?php echo $row; ?>">
-			<div class="ua-card-avatar-content <?php echo $col; ?> <?php echo $colOrder; ?>">
+			<div <?php echo $this->get_render_attribute_string( 'card_avatar_class' );?>>
 			<?php 
 			if(!empty($url)){
 				echo '<a href="' . $url. '"' . $target . $nofollow . ' class="ua-card-avatar-link">
@@ -602,7 +630,7 @@ class Card extends Base{
 			}
 			?>
 			</div>
-			<div class="ua-card-body <?php echo $col; ?>">
+			<div <?php echo $this->get_render_attribute_string( 'card_body_class' );?>>
 				<?php
 				echo '<' . $settings['_ua_card_title_tag'] . ' class="ua-card-title">' . esc_html($settings['_ua_card_title']) . 
 					'</' . $settings['_ua_card_title_tag'] . '>';

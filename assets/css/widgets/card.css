@@ -104,3 +104,12 @@
 .card-col-order{
   order: 1;
 }
+.card-justify-content-start{
+  justify-content: start;
+}
+.card-justify-content-end{
+  justify-content:end;
+}
+.card-justify-content-center{
+  justify-content:center;
+}
