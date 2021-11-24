@@ -225,9 +225,26 @@ class Card extends Base{
 				'selectors' => [
 						'{{WRAPPER}} .ua-card-title' => 'color: {{VALUE}};',
 				],
-				'separator'=>'after'
 			]
         );
+		$this->add_responsive_control(
+			'_ua_card_title_margin',
+			[
+				'label'       => esc_html__( 'Title Margin', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ '%', 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'separator' =>'after',
+				'selectors'   => [
+					'{{WRAPPER}} .ua-card-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
@@ -244,9 +261,26 @@ class Card extends Base{
 				'selectors' => [
 						'{{WRAPPER}} .ua-card-sub-title' => 'color: {{VALUE}};',
 				],
-				'separator'=>'after'
 			]
         );
+		$this->add_responsive_control(
+			'_ua_card_sub_title_margin',
+			[
+				'label'       => esc_html__( 'Sub Title Margin', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ '%', 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'separator' =>'after',
+				'selectors'   => [
+					'{{WRAPPER}} .ua-card-sub-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
@@ -256,6 +290,7 @@ class Card extends Base{
 
 			]
         );
+
 		$this->add_control(
 			'_ua_card_content_color', [
 				'label' => __( 'Content Color', 'ultraaddons' ),
@@ -436,7 +471,7 @@ class Card extends Base{
 				'</' . $settings['_ua_card_title_tag'] . '>';
 			?>
 			<?php
-			   echo '<' . $settings['_ua_card_sub_title_tag'] . ' class="ua-card-sub-title">' . esc_html($settings['_ua_card_title']) . 
+			   echo '<' . $settings['_ua_card_sub_title_tag'] . ' class="ua-card-sub-title">' . esc_html($settings['_ua_card_sub_title']) . 
 					'</' . $settings['_ua_card_sub_title_tag'] . '>';
 			?>
 		</div>
