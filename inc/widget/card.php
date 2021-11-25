@@ -52,12 +52,15 @@ class Card extends Base{
     protected function _register_controls() {
         //For Content Section
         $this->card_content_controls(); 
+		//For Content Settings Tab
+		$this->card_content_settings();   
 		 //For Design Section Style Tab
 		$this->card_content_style(); 
 		//For Box Style Tab
 		$this->card_box_style();
 		//For button Style Tab
 		$this->card_button_style();   
+		
     }
 	/**
 	 * Widget controls Method
@@ -65,7 +68,7 @@ class Card extends Base{
 	 * It's actually content control part
 	 */
 	protected function card_content_controls() {
-		
+		$placeholder_image = ULTRA_ADDONS_URL . 'assets/images/card.jpg';
         $this->start_controls_section(
 		
             '_ua_card_content_tab',
@@ -80,9 +83,9 @@ class Card extends Base{
 			[
 				'label' => __( 'Card Image', 'ultraaddons' ),
 				'type' => Controls_Manager::MEDIA,
-				/* 'default' => [
+				 'default' => [
 						'url' => $placeholder_image,//Utils::get_placeholder_image_src(),
-				], */
+				], 
 				'dynamic' => [
 						'active' => true,
 				],
@@ -94,7 +97,7 @@ class Card extends Base{
 			[
 				'label' => __( 'Card Title', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Card Title', 'ultraaddons' ),
+				'default' => __( 'Jhone Doe', 'ultraaddons' ),
 				'placeholder' => __( 'Enter your title', 'ultraaddons' ),
 				'label_block' => true,
 			]
@@ -104,7 +107,7 @@ class Card extends Base{
 			[
 				'label' => __( 'Card Sub Title', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Card Sub Title', 'ultraaddons' ),
+				'default' => __( 'WordPress Developer', 'ultraaddons' ),
 				'placeholder' => __( 'Enter your title', 'ultraaddons' ),
 				'label_block' => true,
 			]
@@ -144,6 +147,19 @@ class Card extends Base{
 				],
 			]
 		);
+		$this->end_controls_section();
+	}
+	/**
+	 * Content settings Tab
+	 */
+	protected function card_content_settings() {
+		$this->start_controls_section(
+		'_ua_card_content_settings_tab',
+            [
+                'label'     => esc_html__( 'Content Settings', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_CONTENT,
+            ]
+        );
 		$this->add_control(
 			'_ua_card_direction',
 			[
@@ -152,7 +168,7 @@ class Card extends Base{
 				'label_on' => __( 'Row', 'ultraaddons' ),
 				'label_off' => __( 'Col', 'ultraaddons' ),
 				'return_value' => 'yes',
-				'default' => 'yes',
+				'default' => 'no',
 			]
 		);
 		
@@ -175,7 +191,7 @@ class Card extends Base{
 				'default' => 'left',
 			]
 		);
-			$this->add_responsive_control(
+		$this->add_responsive_control(
 			'_ua_card_justify_content',
 			[
 				'label' => esc_html__( 'Justify Content', 'ultraaddons' ),
@@ -197,7 +213,36 @@ class Card extends Base{
 				],
 				'default' => 'left',
 			]
-		); 
+		);
+		$this->add_responsive_control(
+			'_ua_card_text_alignment',
+			[
+				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-right',
+					],
+					'justify' => [
+						'title' => esc_html__( 'justify', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-justify',
+					],
+				],
+				'default' => 'center',
+				'selectors' => [
+					'{{WRAPPER}} .ua-card-body ' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
 		
 		$this->add_control(
 			'_ua_card_title_tag',
@@ -230,7 +275,7 @@ class Card extends Base{
 					'h6' => 'H6',
 					'div'=>	'div',
 				],
-				'default' => 'h5',
+				'default' => 'div',
 			]
 		);
 
@@ -406,35 +451,6 @@ class Card extends Base{
 				],
 				'selectors'   => [
 					'{{WRAPPER}} .ua-card-body' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-		$this->add_responsive_control(
-			'_ua_card_text_alignment',
-			[
-				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
-				'type' => Controls_Manager::CHOOSE,
-				'options' => [
-					'left' => [
-						'title' => esc_html__( 'Left', 'ultraaddons' ),
-						'icon' => 'eicon-text-align-left',
-					],
-					'center' => [
-						'title' => esc_html__( 'Center', 'ultraaddons' ),
-						'icon' => 'eicon-text-align-center',
-					],
-					'right' => [
-						'title' => esc_html__( 'Right', 'ultraaddons' ),
-						'icon' => 'eicon-text-align-right',
-					],
-					'justify' => [
-						'title' => esc_html__( 'justify', 'ultraaddons' ),
-						'icon' => 'eicon-text-align-justify',
-					],
-				],
-				'default' => 'center',
-				'selectors' => [
-					'{{WRAPPER}} .ua-card-body ' => 'text-align: {{VALUE}};',
 				],
 			]
 		);
