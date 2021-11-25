@@ -432,6 +432,14 @@ $widgetsArray = [
                 __( 'Basic', 'ultraaddons' ),
             ],
     ],
+	'Skill_Chart' => [
+            'name'  => __( 'Skil Chart', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-site-identity',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
 
     
 ];

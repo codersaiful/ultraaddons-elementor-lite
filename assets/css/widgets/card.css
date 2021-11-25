@@ -9,12 +9,13 @@
 
 .ua-card {
   display: flex;
-  background-color: #fff;
+  background-color: #020a1b;
   border-radius: 1.5rem;
   overflow: hidden;
   flex-direction: column;
   width: 100%;
   border: 1px solid #ddd;
+  color: #fff;
 }
 
 .ua-card-body {
@@ -41,13 +42,15 @@
   position: relative;
   align-items: center;
   justify-content: center;
+  color: #fff;
 }
 
 .ua-card-title {
   font-weight: 500;
-  font-size: 3rem;
-  color: #040911;
+  font-size: 4rem;
+  color: #ffffff;
   margin: 0.8rem 0 .8rem 0;
+  letter-spacing:3px;
 }
 
 .ua-card-card-subtitle {
@@ -72,11 +75,11 @@
 }
 .ua-card .ua-card-button {
   display: inline-block;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 0.05rem;
-  color: #000;
+  color: #fff;
   text-align: center;
   text-decoration: none;
   vertical-align: middle;
@@ -113,4 +116,9 @@
 }
 .card-justify-content-center{
   justify-content:center;
+}
+.ua-card-sub-title {
+    color: #5394D7;
+    letter-spacing: 3px;
+    font-weight: 300;
 }

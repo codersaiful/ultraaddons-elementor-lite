@@ -745,11 +745,11 @@
                 },
                 getReadySettings: function(){
                     var settings = this.getElementSettings();
+					
                     var generated_settings = {
                         play: !! settings.play, //Actually for Yes, or Switch value
                         stopOnHover: !! settings.stopOnHover, //Actually for Yes, or Switch value
                     };
-
                     return Object.assign(settings,generated_settings);
                 },
 
@@ -774,8 +774,46 @@
                         });
                 }
             );
+			
+			 /**
+             * Skill Chart
+             * 
+             * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
+             * @since 1.1.0.8
+             */
+			var Skill_Chart = EM.frontend.handlers.Base.extend({
+                onInit: function(){
+                    this.run();
+                },
+                onChange: function(){
+                    this.run();
+                },
+                getReadySettings: function(){
+                    var settings = this.getElementSettings();
+                    return Object.assign(settings);
+                },
 
+                run: function(){
+                    var targetElement = this.$element.find('.ua-skill-chart');
+                    targetElement.easyPieChart( this.getReadySettings() );
+                }
+            });
 
+            // Skill_Chart Hooked Here
+            EF.hooks.addAction(
+                'frontend/element_ready/ultraaddons-skill-chart.default',
+                function ($scope) {
+                        
+                        EF.elementsHandler.addHandler(Skill_Chart, {
+                                $element: $scope,
+                                selectors: {
+                                      container: '.ua-skill-chart',
+                                },
+                                scaleColor: "#ecf0f1",
+                        });
+                }
+            );
+		
 
     });
                    

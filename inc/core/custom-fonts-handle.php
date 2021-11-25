@@ -268,7 +268,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
      * @param String $current_value
      * @return void
      */
-    public static function render_font_weight( $current_value = null, $name = 'ua_fonts[variants][0][weight]', $tag_id_selector  ){
+    public static function render_font_weight( $current_value = null, $name = 'ua_fonts[variants][0][weight]', $tag_id_selector = '' ){
         
         $options = $default = array(
             '100'     => 'Thin 100',
