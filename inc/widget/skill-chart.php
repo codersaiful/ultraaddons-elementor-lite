@@ -73,7 +73,9 @@ class Skill_Chart extends Base{
         //For Content
         $this->skill_chart_content();
 		 //For Control Section
-        $this->Skill_Chart_settings();
+        $this->Skill_Chart_settings(); 
+		//For Style Section
+        $this->skill_chart_style();
     }
 	protected function skill_chart_content(){
         $this->start_controls_section(
@@ -177,6 +179,30 @@ class Skill_Chart extends Base{
 		);
 		$this->end_controls_section();
 	}
+	protected function skill_chart_style() {
+		
+        $this->start_controls_section(
+            '_ua_skill_chart_style',
+            [
+                'label'     => esc_html__( 'Content', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->add_control(
+			'_ua_skill_chart_text', [
+				'label' => __( 'Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'=>'#333',
+				'selectors' => [
+						'{{WRAPPER}} .ua-skill-chart' => 'color: {{VALUE}};'
+				],
+			]
+        );
+		
+		
+		$this->end_controls_section();
+	}
+	
 
     protected function render() {
         $settings 				=	$this->get_settings_for_display();
