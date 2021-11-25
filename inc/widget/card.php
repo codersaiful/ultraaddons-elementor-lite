@@ -189,6 +189,9 @@ class Card extends Base{
 				
 				],
 				'default' => 'left',
+				'condition' => array(
+					'_ua_card_direction' => 'yes',
+				),
 			]
 		);
 		$this->add_responsive_control(
@@ -212,6 +215,9 @@ class Card extends Base{
 				
 				],
 				'default' => 'left',
+				'condition' => array(
+					'_ua_card_direction' => 'yes',
+				),
 			]
 		);
 		$this->add_responsive_control(
