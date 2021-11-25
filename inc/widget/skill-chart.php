@@ -14,6 +14,16 @@ use Elementor\Group_Control_Background;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+/**
+ * Skill Chart Widget
+ * Create excellent Skill chart by this widget. 
+ * Credit: https://github.com/rendro/easy-pie-chart
+ * @since 1.1.0.8
+ * @package UltraAddons
+ * @author Saiful islam <codersaiful@gmail.com>
+ * @author Rafiul <bmrafiul.alam@gmail.com>
+ */
+
 class Skill_Chart extends Base{
 	
 	public function __construct($data = [], $args = null) {
@@ -46,7 +56,6 @@ class Skill_Chart extends Base{
 		return [ 'jquery','SkillChart' ];
     }
 
-
     /**
      * Get your widget name
      *
@@ -61,10 +70,28 @@ class Skill_Chart extends Base{
         return [ 'ultraaddons', 'heading', 'skill', 'chart','pie chart' ];
     }
 	 protected function _register_controls() {
-        //For Control Section
+        //For Content
+        $this->skill_chart_content();
+		 //For Control Section
         $this->Skill_Chart_settings();
     }
-	
+	protected function skill_chart_content(){
+        $this->start_controls_section(
+            'skill_chart_content',
+            [
+                'label'     => esc_html__( 'Content', 'ultraaddons' ),
+            ]
+        );
+        $this->add_control(
+			'_ua_skill_title', [
+				'label' => __( 'Skill Name', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __( 'WordPress' , 'ultraaddons' ),
+				'label_block' => true,
+			]
+		);
+        $this->end_controls_section();
+    }
 	protected function Skill_Chart_settings(){
 		$this->start_controls_section(
             'skill_pie_settings',
@@ -79,10 +106,10 @@ class Skill_Chart extends Base{
 			[
 				'label' => __( 'Line Width', 'ultraaddons' ),
 				'type' => Controls_Manager::NUMBER,
-				'min' => 20,
+				'min' => 2,
 				'max' => 50,
-				'step' => 10,
-				'default' => 20,
+				'step' => 2,
+				'default' =>2,
 				'frontend_available' => true,
 			]
 		);
@@ -92,7 +119,7 @@ class Skill_Chart extends Base{
 				'label' => __( 'Size', 'ultraaddons' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 100,
-				'max' => 200,
+				'max' => 500,
 				'step' => 10,
 				'default' => 160,
 				'frontend_available' => true,
@@ -110,10 +137,50 @@ class Skill_Chart extends Base{
 				'frontend_available' => true,
 			]
 		);
+		$this->add_control(
+			'scaleColor', [
+				'label' => __( 'Scale Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'=>'#ddd',
+				'frontend_available' => true,
+			]
+        );
+		$this->add_control(
+			'barColor', [
+				'label' => __( 'Bar Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'=>'#27CCC0',
+				'frontend_available' => true,
+			]
+        );
+		$this->add_control(
+			'trackColor', [
+				'label' => __( 'Bar Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'=>'#ddd',
+				'frontend_available' => true,
+			]
+        );
+        $this->add_control(
+			'lineCap',
+			[
+				'label' => __( 'Line Cap', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'round',
+				'frontend_available' => true,
+				'options' => [
+					'round'  => __( 'Round', 'ultraaddons' ),
+					'butt' => __( 'Butt', 'ultraaddons' ),
+					'square' => __( 'Square', 'ultraaddons' ),
+				],
+			]
+		);
 		$this->end_controls_section();
 	}
 
-    protected function render() {?>
-	 <div class="ua-skill-chart" data-percent="80">HTML5</div>
+    protected function render() {
+        $settings 				=	$this->get_settings_for_display();
+        ?>
+	 <div class="ua-skill-chart" data-percent="80"><?php echo $settings['_ua_skill_title'];?></div>
 	<?php }
 }
