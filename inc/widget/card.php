@@ -189,6 +189,9 @@ class Card extends Base{
 				
 				],
 				'default' => 'left',
+				'condition' => array(
+					'_ua_card_direction' => 'yes',
+				),
 			]
 		);
 		$this->add_responsive_control(
@@ -212,6 +215,9 @@ class Card extends Base{
 				
 				],
 				'default' => 'left',
+				'condition' => array(
+					'_ua_card_direction' => 'yes',
+				),
 			]
 		);
 		$this->add_responsive_control(
@@ -288,7 +294,7 @@ class Card extends Base{
        $this->start_controls_section(
             '_ua_card_style',
             [
-                'label'     => esc_html__( 'Card Style', 'ultraaddons' ),
+                'label'     => esc_html__( 'Card', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -339,7 +345,6 @@ class Card extends Base{
 					'bottom' => '',
 					'left'   => '',
 				],
-				'separator' =>'after',
 				'selectors'   => [
 					'{{WRAPPER}} .ua-card-avatar' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -464,7 +469,7 @@ class Card extends Base{
        $this->start_controls_section(
             '_ua_card_button_style',
             [
-                'label'     => esc_html__( 'Button Style', 'ultraaddons' ),
+                'label'     => esc_html__( 'Button', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -549,7 +554,7 @@ class Card extends Base{
        $this->start_controls_section(
             '_ua_card_box_style',
             [
-                'label'     => esc_html__( 'Box Style', 'ultraaddons' ),
+                'label'     => esc_html__( 'Box', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -585,6 +590,14 @@ class Card extends Base{
 			[
 				'name' => 'card_box_shadow',
 				'label' => __( 'Box Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-card',
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => '_ua_box_border',
+				'label' => __( 'Border', 'plugin-domain' ),
 				'selector' => '{{WRAPPER}} .ua-card',
 			]
 		);
