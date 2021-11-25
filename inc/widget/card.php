@@ -288,7 +288,7 @@ class Card extends Base{
        $this->start_controls_section(
             '_ua_card_style',
             [
-                'label'     => esc_html__( 'Card Style', 'ultraaddons' ),
+                'label'     => esc_html__( 'Card', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -464,7 +464,7 @@ class Card extends Base{
        $this->start_controls_section(
             '_ua_card_button_style',
             [
-                'label'     => esc_html__( 'Button Style', 'ultraaddons' ),
+                'label'     => esc_html__( 'Button', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -549,7 +549,7 @@ class Card extends Base{
        $this->start_controls_section(
             '_ua_card_box_style',
             [
-                'label'     => esc_html__( 'Box Style', 'ultraaddons' ),
+                'label'     => esc_html__( 'Box', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
