@@ -68,7 +68,7 @@ class Card extends Base{
 	 * It's actually content control part
 	 */
 	protected function card_content_controls() {
-		$placeholder_image = ULTRA_ADDONS_URL . 'assets/images/card.jpg';
+		$placeholder_image = ULTRA_ADDONS_URL . 'assets/images/card.png';
         $this->start_controls_section(
 		
             '_ua_card_content_tab',
@@ -128,7 +128,7 @@ class Card extends Base{
 			[
 				'label' => __( 'Button Text', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'View Profile.', 'ultraaddons' ),
+				'default' => __( 'View Profile', 'ultraaddons' ),
 				'label_block' => true,
 			]
 		);
@@ -312,6 +312,32 @@ class Card extends Base{
 				],
 				'selectors'   => [
 					'{{WRAPPER}} .ua-card-avatar' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_control(
+			'_ua_card_image_height',
+			[
+				'label' => __( 'Height', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'range' => [
+					'px' => [
+						'min' => 50,
+						'max' => 500,
+						'step' => 5,
+					],
+					'%' => [
+						'min' => 10,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => '%',
+					'size' => 100,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .ua-card-avatar' => 'height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -515,7 +541,7 @@ class Card extends Base{
         );
 		$this->end_controls_tab();
 		/**
-		 * Hover tab
+		 * Button Hover tab
 		 */
 		$this->start_controls_tab(
 			'style_hover_tab',
