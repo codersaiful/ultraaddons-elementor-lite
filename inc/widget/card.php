@@ -345,7 +345,6 @@ class Card extends Base{
 					'bottom' => '',
 					'left'   => '',
 				],
-				'separator' =>'after',
 				'selectors'   => [
 					'{{WRAPPER}} .ua-card-avatar' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -591,6 +590,14 @@ class Card extends Base{
 			[
 				'name' => 'card_box_shadow',
 				'label' => __( 'Box Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-card',
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => '_ua_box_border',
+				'label' => __( 'Border', 'plugin-domain' ),
 				'selector' => '{{WRAPPER}} .ua-card',
 			]
 		);
