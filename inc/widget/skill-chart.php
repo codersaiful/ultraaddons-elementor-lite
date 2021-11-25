@@ -148,7 +148,7 @@ class Skill_Chart extends Base{
 				'label' => __( 'Animate', 'ultraaddons' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 100,
-				'max' => 3500,
+				'max' => 5000,
 				'step' => 100,
 				'default' => 1200,
 				'frontend_available' => true,
