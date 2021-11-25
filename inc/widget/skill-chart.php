@@ -92,6 +92,17 @@ class Skill_Chart extends Base{
 				'label_block' => true,
 			]
 		);
+		$this->add_control(
+			'_ua_data_percent',
+			[
+				'label' => __( 'Skill Percent', 'ultraaddons' ),
+				'type' => Controls_Manager::NUMBER,
+				'min' => 0,
+				'max' => 100,
+				'step' => 5,
+				'default' =>80,
+			]
+		);
         $this->end_controls_section();
     }
 	protected function Skill_Chart_settings(){
@@ -147,6 +158,18 @@ class Skill_Chart extends Base{
 				'frontend_available' => true,
 			]
         );
+		/* $this->add_control(
+			'scaleLength',
+			[
+				'label' => __( 'Scale Length', 'ultraaddons' ),
+				'type' => Controls_Manager::NUMBER,
+				'min' => 1,
+				'max' => 5,
+				'step' => 1,
+				'default' => 5,
+				'frontend_available' => true,
+			]
+		); */
 		$this->add_control(
 			'barColor', [
 				'label' => __( 'Bar Color', 'ultraaddons' ),
@@ -188,9 +211,18 @@ class Skill_Chart extends Base{
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'skill_name_typography',
+					'label' => 'Skill Typography',
+					'selector' => '{{WRAPPER}} .ua-skill-chart',
+
+			]
+        );
 		$this->add_control(
 			'_ua_skill_chart_text', [
-				'label' => __( 'Text Color', 'ultraaddons' ),
+				'label' => __( 'Skill Text Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'=>'#333',
 				'selectors' => [
@@ -199,14 +231,15 @@ class Skill_Chart extends Base{
 			]
         );
 		
-		
 		$this->end_controls_section();
 	}
 	
 
     protected function render() {
-        $settings 				=	$this->get_settings_for_display();
+        $settings =	$this->get_settings_for_display();
         ?>
-	 <div class="ua-skill-chart" data-percent="80"><?php echo $settings['_ua_skill_title'];?></div>
+	 <div class="ua-skill-chart" data-percent="<?php echo $settings['_ua_data_percent']; ?>">
+		<?php echo $settings['_ua_skill_title'];?>
+	 </div>
 	<?php }
 }
