@@ -7,9 +7,6 @@ use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
 use Elementor\Core\Schemes\Typography;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
-use Elementor\Group_Control_Border;
-use Elementor\Group_Control_Box_Shadow;
-use Elementor\Group_Control_Background;
 
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -77,6 +74,10 @@ class Skill_Chart extends Base{
 		//For Style Section
         $this->skill_chart_style();
     }
+
+	/**
+	 * Frontend text and values.
+	 */
 	protected function skill_chart_content(){
         $this->start_controls_section(
             'skill_chart_content',
@@ -105,6 +106,9 @@ class Skill_Chart extends Base{
 		);
         $this->end_controls_section();
     }
+	/**
+	 * Chart JS Options values set here.
+	 */
 	protected function Skill_Chart_settings(){
 		$this->start_controls_section(
             'skill_pie_settings',
@@ -158,18 +162,7 @@ class Skill_Chart extends Base{
 				'frontend_available' => true,
 			]
         );
-		/* $this->add_control(
-			'scaleLength',
-			[
-				'label' => __( 'Scale Length', 'ultraaddons' ),
-				'type' => Controls_Manager::NUMBER,
-				'min' => 1,
-				'max' => 5,
-				'step' => 1,
-				'default' => 5,
-				'frontend_available' => true,
-			]
-		); */
+		
 		$this->add_control(
 			'barColor', [
 				'label' => __( 'Bar Color', 'ultraaddons' ),
@@ -234,7 +227,9 @@ class Skill_Chart extends Base{
 		$this->end_controls_section();
 	}
 	
-
+	/**
+	 * Render Methods
+	 */
     protected function render() {
         $settings =	$this->get_settings_for_display();
         ?>

@@ -790,13 +790,6 @@
                 },
                 getReadySettings: function(){
                     var settings = this.getElementSettings();
-					console.log(settings);
-					
-                  /*   var generated_settings = {
-                        lineWidth: !! settings.lineWidth, //Actually for Yes, or Switch value
-                        size: !! settings.lineWidth, //Actually for Yes, or Switch value
-                    }; */
-					
                     return Object.assign(settings);
                 },
 
