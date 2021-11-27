@@ -145,7 +145,7 @@ class Skill_Chart extends Base{
 		$this->add_control(
 			'animate',
 			[
-				'label' => __( 'Animate', 'ultraaddons' ),
+				'label' => __( 'Animation Speed', 'ultraaddons' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 100,
 				'max' => 5000,
