@@ -138,7 +138,7 @@ class Work_Hour extends Base{
 		$this->add_control(
 			'_ua_wh_day_format',
 			[
-				'label' => __( 'Day Format', 'ultraaddons' ),
+				'label' => __( '24 Hours Format', 'ultraaddons' ),
 				'type' => Controls_Manager::SWITCHER,
 				'label_on' => __( 'Yes', 'ultraaddons' ),
 				'label_off' => __( 'No', 'ultraaddons' ),
@@ -189,10 +189,13 @@ class Work_Hour extends Base{
 			<?php
 			if($item['_ua_wh_closed']!='yes'){?>
 				<span class="ua-work-timing">
-				<?php 
-				$start_time = $item['_ua_wh_start_time'];
-				$end_time = $item['_ua_wh_end_time'];
-				echo $start_time ."-" .  $end_time;
+				<?php
+				$start_time 	= strtotime($item['_ua_wh_start_time']);
+				$end_time 		= strtotime($item['_ua_wh_end_time']);
+				$time_format 	= ($settings['_ua_wh_day_format']=='yes')
+				? date("H:iA", $start_time) . " - " .  date("H:iA", $end_time) 
+				: date("h:iA", $start_time) . " - " .  date("h:iA", $end_time);
+				echo $time_format;
 				?>
 				</span>
 			<?php }else{?>
