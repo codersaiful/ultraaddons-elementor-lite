@@ -93,7 +93,7 @@ class Work_Hour extends Base{
 						'_ua_wh_day' => __( 'Tuesday', 'ultraaddons' ),
 					],
 				],
-				'title_field' => '{{{ _ua_wh_list }}}',
+				'title_field' => '{{{ _ua_wh_day }}}',
 			]
 		);
 		
@@ -109,8 +109,6 @@ class Work_Hour extends Base{
                 'label'     => esc_html__( 'Control Settings', 'ultraaddons' ),
             ]
         );
-
-        
 		
 		$this->add_control(
 			'scaleColor', [
@@ -121,21 +119,6 @@ class Work_Hour extends Base{
 			]
         );
 		
-		
-        $this->add_control(
-			'lineCap',
-			[
-				'label' => __( 'Line Cap', 'ultraaddons' ),
-				'type' => Controls_Manager::SELECT,
-				'default' => 'round',
-				'frontend_available' => true,
-				'options' => [
-					'round'  => __( 'Round', 'ultraaddons' ),
-					'butt' => __( 'Butt', 'ultraaddons' ),
-					'square' => __( 'Square', 'ultraaddons' ),
-				],
-			]
-		);
 		$this->end_controls_section();
 	}
 	
