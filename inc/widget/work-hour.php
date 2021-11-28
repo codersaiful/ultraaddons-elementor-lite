@@ -68,17 +68,56 @@ class Work_Hour extends Base{
 				'label' => __( 'Day', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => __( 'Monday' , 'ultraaddons' ),
-				'label_block' => true,
+				'label_block' => false,
 			]
 		);
 		$repeater->add_control(
-			'_ua_wh_time', [
-				'label' => __( 'Time', 'ultraaddons' ),
+			'_ua_wh_start_time', [
+				'label' => __( 'Start Time', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( '08:00 - 19:00' , 'ultraaddons' ),
-				'label_block' => true,
+				'default' => __( '08:00' , 'ultraaddons' ),
+				'label_block' => false,
 			]
 		);
+		$repeater->add_control(
+			'_ua_wh_end_time', [
+				'label' => __( 'End Time', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __( '19:00' , 'ultraaddons' ),
+				'label_block' => false,
+			]
+		);
+		$repeater->add_control(
+			'_ua_wh_closed',
+			[
+				'label' => __( 'Closed?', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		);
+		$repeater->add_control(
+			'_ua_wh_bg_color', [
+				'label' => __( 'Background Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'=>'#ddd',
+				'selectors' => [
+						'{{WRAPPER}} {{CURRENT_ITEM}}.ua-work-hours-row' => 'background: {{VALUE}};',
+				],
+			]
+        );
+		$repeater->add_control(
+			'_ua_wh_text_color', [
+				'label' => __( 'Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'=>'#333',
+				'selectors' => [
+						'{{WRAPPER}} {{CURRENT_ITEM}}.ua-work-hours-row' => 'color: {{VALUE}};',
+				],
+			]
+        );
 		$this->add_control(
 			'_ua_wh_list',
 			[
@@ -96,7 +135,17 @@ class Work_Hour extends Base{
 				'title_field' => '{{{ _ua_wh_day }}}',
 			]
 		);
-		
+		$this->add_control(
+			'_ua_wh_day_format',
+			[
+				'label' => __( 'Day Format', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		);
         $this->end_controls_section();
     }
 	/**
@@ -129,14 +178,33 @@ class Work_Hour extends Base{
 	$settings =	$this->get_settings_for_display();
 	?>
 	 <div class="ua-work-hours">
-		<div class="ua-work-hours-row">
+	 <?php
+	 if ( isset( $settings['_ua_wh_list'] ) ) :
+		 foreach (  $settings['_ua_wh_list'] as $item ) :
+		?>
+		<div class="ua-work-hours-row elementor-repeater-item-<?php echo $item['_id'];?>">
 			<span class="ua-work-day">
-				Monday - Friday 
+			<?php echo $item['_ua_wh_day'];?>
 			</span>
-			<span class="ua-work-timing">
-				09:00 AM - 06:00 PM 
+			<?php
+			if($item['_ua_wh_closed']!='yes'){?>
+				<span class="ua-work-timing">
+				<?php 
+				$start_time = $item['_ua_wh_start_time'];
+				$end_time = $item['_ua_wh_end_time'];
+				echo $start_time ."-" .  $end_time;
+				?>
+				</span>
+			<?php }else{?>
+			<span class="ua-work-timing close">
+			<?php echo $item['_ua_wh_closed']? 'Closed': '' ; ?>
 			</span>
+			<?php } ?>
 		</div>
+	<?php 
+	endforeach;
+	endif;
+	?>
 	</div>
 	<?php }
 }
