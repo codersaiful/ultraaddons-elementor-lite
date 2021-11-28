@@ -391,7 +391,7 @@ $widgetsArray = [
         ],
     ],
     
-    //@author Rafiul <codersaiful@gmail.com>
+    //@author B M Rafiul Alam Rafiul <bmrafiul.alam@gmail.com>
     'Flip_Box' => [
             'name'  => __( 'Flip Box', 'ultraaddons' ),
             'is_pro'   => false,
@@ -436,6 +436,14 @@ $widgetsArray = [
             'name'  => __( 'Skil Chart', 'ultraaddons' ),
             'is_pro'   => false,
             'icon'      => 'eicon-site-identity',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
+	'Work_Hour' => [
+            'name'  => __( 'Work Hour', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-clock-o',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],

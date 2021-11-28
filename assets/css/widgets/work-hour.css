@@ -1,0 +1,11 @@
+.ua-work-hours .ua-work-day, 
+.ua-work-hours .ua-work-timing {
+    float: left;
+    width: 50%;
+}
+.ua-work-hours .ua-work-hours-row:not(:last-child) {
+    margin-bottom: 10px;
+    border-bottom-style: solid;
+    border-bottom-color: #e5e5e5;
+    border-bottom-width: 1px;
+}
