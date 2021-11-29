@@ -454,6 +454,7 @@ class Work_Hour extends Base{
 					'name' => 'row_background',
 					'label' => __( 'Row Background', 'ultraaddons' ),
 					'types' => [ 'classic', 'gradient'],
+					'exclude' => [ 'image' ],
 					'selector' => '{{WRAPPER}} .ua-work-hours-row',
 				]
 			);
@@ -474,6 +475,7 @@ class Work_Hour extends Base{
 				'name' => 'row_background_hover',
 				'label' => __( 'Row Background', 'ultraaddons' ),
 				'types' => [ 'classic', 'gradient'],
+				'exclude' => [ 'image' ],
 				'selector' => '{{WRAPPER}} .ua-work-hours-row:hover',
 			]
 		);
@@ -508,9 +510,19 @@ class Work_Hour extends Base{
 					'name' => 'odd_row_background',
 					'label' => __( 'Row Background', 'ultraaddons' ),
 					'types' => [ 'classic', 'gradient'],
+					'exclude' => [ 'image' ],
 					'selector' => '{{WRAPPER}} .ua-work-hours-row.odd-row',
 				]
 			);
+			$this->add_control(
+			'_ua_row_odd_text_color', [
+				'label' => __( 'Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-work-hours-row.odd-row' => 'color: {{VALUE}};',
+				],
+			]
+        );
 		
 		$this->end_controls_tab();
 		/**
