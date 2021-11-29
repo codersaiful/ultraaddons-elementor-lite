@@ -9,6 +9,7 @@ use Elementor\Core\Schemes\Typography;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Border;
+use Elementor\Group_Control_Background;
 
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -45,6 +46,8 @@ class Work_Hour extends Base{
         $this->work_hour_style(); 
 		//For Box Section
         $this->work_hour_box();
+		//For Box Section
+        $this->work_hour_row();
     }
 
 	/**
@@ -329,6 +332,15 @@ class Work_Hour extends Base{
 			]
         );
 		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'wh_highlight_row_typography',
+					'label' => 'Highlight Typography',
+					'selector' => '{{WRAPPER}} .ua-work-hours-row.highlight',
+
+			]
+        );
+		$this->add_group_control(
 			Group_Control_Border::get_type(),
 			[
 				'name' => '_ua_wh_row_border',
@@ -412,6 +424,126 @@ class Work_Hour extends Base{
 		
 		$this->end_controls_section();
 	}
+	/**
+	 * Style.
+	 */
+	protected function work_hour_row(){
+		$this->start_controls_section(
+            'wh_row_style',
+            [
+                'label'     => esc_html__( 'Row', 'ultraaddons' ),
+				'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->start_controls_tabs(
+			'style_tabs'
+		);
+		/**
+		 * Normal tab
+		 */
+		$this->start_controls_tab(
+			'style_normal_tab',
+			[
+				'label' => __( 'Normal', 'ultraaddons' ),
+			]
+		);
+		
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+				[
+					'name' => 'row_background',
+					'label' => __( 'Row Background', 'ultraaddons' ),
+					'types' => [ 'classic', 'gradient'],
+					'selector' => '{{WRAPPER}} .ua-work-hours-row',
+				]
+			);
+		
+		$this->end_controls_tab();
+		/**
+		 * Button Hover tab
+		 */
+		$this->start_controls_tab(
+			'style_hover_tab',
+			[
+				'label' => __( 'Hover', 'ultraaddons' ),
+			]
+		);
+		$this->add_group_control(
+		Group_Control_Background::get_type(),
+			[
+				'name' => 'row_background_hover',
+				'label' => __( 'Row Background', 'ultraaddons' ),
+				'types' => [ 'classic', 'gradient'],
+				'selector' => '{{WRAPPER}} .ua-work-hours-row:hover',
+			]
+		);
+		$this->add_control(
+			'_ua_row_hover_text_color', [
+				'label' => __( 'Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-work-hours-row:hover' => 'color: {{VALUE}};',
+				],
+			]
+        );
+		$this->end_controls_tabs();
+		
+		/*Odd-Even Row*/
+		$this->start_controls_tabs(
+			'odd_even_tabs'
+		);
+		/**
+		 * Odd tab
+		 */
+		$this->start_controls_tab(
+			'style_odd_tab',
+			[
+				'label' => __( 'Odd', 'ultraaddons' ),
+			]
+		);
+		
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+				[
+					'name' => 'odd_row_background',
+					'label' => __( 'Row Background', 'ultraaddons' ),
+					'types' => [ 'classic', 'gradient'],
+					'selector' => '{{WRAPPER}} .ua-work-hours-row.odd-row',
+				]
+			);
+		
+		$this->end_controls_tab();
+		/**
+		 * Even tab
+		 */
+		$this->start_controls_tab(
+			'style_even_tab',
+			[
+				'label' => __( 'Even', 'ultraaddons' ),
+			]
+		);
+		$this->add_group_control(
+		Group_Control_Background::get_type(),
+			[
+				'name' => 'even_row_background',
+				'label' => __( 'Even Row Background', 'ultraaddons' ),
+				'types' => [ 'classic', 'gradient'],
+				'selector' => '{{WRAPPER}} .ua-work-hours-row.even-row',
+			]
+		);
+		$this->add_control(
+			'_ua_row_even_text_color', [
+				'label' => __( 'Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-work-hours-row.even-row' => 'color: {{VALUE}};',
+				],
+			]
+        );
+		$this->end_controls_tabs();
+		
+		$this->end_controls_section();
+	}
 	
 	/**
 	 * Render Methods
@@ -424,10 +556,14 @@ class Work_Hour extends Base{
 		 <span class="ua-work-hour-sub-title"><?php echo $settings['_ua_wh_sub_title']; ?></span>
 	 <?php
 	 if ( isset( $settings['_ua_wh_list'] ) ) :
+		$count = 0;
 		 foreach (  $settings['_ua_wh_list'] as $item ) :
-		 $dayHighlight = $item['_ua_wh_day_highlight'];
+		 $dayHighlight 	= ($item['_ua_wh_day_highlight']=='yes') ? 'highlight' : '';
+		 $count 		= $count+1;
+		 $rowNumber 	= ($count % 2 == 0) ? 'even-row' : 'odd-row';
+		 $row_class 	= $rowNumber . ' '. $dayHighlight;
 		?>
-		<div class="ua-work-hours-row elementor-repeater-item-<?php echo $item['_id']; ?> ">
+		<div class="ua-work-hours-row elementor-repeater-item-<?php echo $item['_id']; ?> <?php echo $row_class;?>">
 			<span class="ua-work-day">
 			<?php echo $item['_ua_wh_day'];?>
 			</span>
