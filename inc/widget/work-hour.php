@@ -8,6 +8,7 @@ use Elementor\Group_Control_Typography;
 use Elementor\Core\Schemes\Typography;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Box_Shadow;
+use Elementor\Group_Control_Border;
 
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -110,6 +111,17 @@ class Work_Hour extends Base{
 			]
 		);
 		$repeater->add_control(
+			'_ua_wh_day_highlight',
+			[
+				'label' => __( 'Highlight?', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		);
+		$repeater->add_control(
 			'_ua_wh_bg_color', [
 				'label' => __( 'Background Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
@@ -202,6 +214,7 @@ class Work_Hour extends Base{
 					'selector' => '{{WRAPPER}} .ua-work-hour-title',
 			]
         );
+		
 		$this->add_control(
 			'wh_title_color', [
 				'label' => __( 'Title Color', 'ultraaddons' ),
@@ -210,10 +223,57 @@ class Work_Hour extends Base{
 				'selectors' => [
 					'{{WRAPPER}} .ua-work-hour-title' => 'color: {{VALUE}};',
 				],
-				'separator' => 'after'
 			]
         );
-			$this->add_group_control(
+		$this->add_responsive_control(
+			'_ua_wh_title_margin',
+			[
+				'label'       => esc_html__( 'Title Margin', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-work-hour-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'separator' => 'after'
+			]
+		);
+		$this->add_responsive_control(
+			'_ua_wh_title_alignment',
+			[
+				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-right',
+					],
+					'justify' => [
+						'title' => esc_html__( 'justify', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-justify',
+					],
+				],
+				'default' => 'left',
+				'selectors' => [
+					'{{WRAPPER}} .ua-work-hour-title, .ua-work-hour-sub-title' => 'text-align: {{VALUE}};',
+		
+				],
+			]
+		);
+		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
 					'name' => 'wh_sub_title_typography',
@@ -229,9 +289,26 @@ class Work_Hour extends Base{
 				'selectors' => [
 					'{{WRAPPER}} .ua-work-hour-sub-title' => 'color: {{VALUE}};',
 				],
-				'separator' => 'after'
 			]
         );
+		$this->add_responsive_control(
+			'_ua_wh_sub_title_margin',
+			[
+				'label'       => esc_html__( 'Sub Title Margin', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-work-hour-sub-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'separator' => 'after'
+			]
+		);
 		$this->add_control(
 			'wh_content_color', [
 				'label' => __( 'Content Color', 'ultraaddons' ),
@@ -251,6 +328,32 @@ class Work_Hour extends Base{
 
 			]
         );
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => '_ua_wh_row_border',
+				'label' => __( 'Row Border', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-work-hours-row',
+			]
+		);
+		$this->add_responsive_control(
+			'_ua_wh_row_margin',
+			[
+				'label'       => esc_html__( 'Row Margin', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-work-hours-row' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'separator' => 'after'
+			]
+		);
 		$this->end_controls_section();
 	}
 	/**
@@ -322,8 +425,9 @@ class Work_Hour extends Base{
 	 <?php
 	 if ( isset( $settings['_ua_wh_list'] ) ) :
 		 foreach (  $settings['_ua_wh_list'] as $item ) :
+		 $dayHighlight = $item['_ua_wh_day_highlight'];
 		?>
-		<div class="ua-work-hours-row elementor-repeater-item-<?php echo $item['_id'];?>">
+		<div class="ua-work-hours-row elementor-repeater-item-<?php echo $item['_id']; ?> ">
 			<span class="ua-work-day">
 			<?php echo $item['_ua_wh_day'];?>
 			</span>
@@ -343,7 +447,7 @@ class Work_Hour extends Base{
 				?>
 			</span>
 			<?php }else{?>
-			<span class="ua-work-timing close">
+			<span class="ua-work-timing closed">
 			<?php echo $item['_ua_wh_closed']? 'Closed': '' ; ?>
 			</span>
 			<?php } ?>

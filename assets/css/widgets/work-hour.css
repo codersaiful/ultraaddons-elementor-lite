@@ -1,7 +1,6 @@
 .ua-work-hours{
 	padding:10px
 }
-
 .ua-work-hours .ua-work-hours-row{
 	display:flex
 }
@@ -24,5 +23,5 @@
 }
 .ua-work-hour-sub-title{
 	margin:0 0 10px 0;
-	display:inline-block
+	display:block
 }
