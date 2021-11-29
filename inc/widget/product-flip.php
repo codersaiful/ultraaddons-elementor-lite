@@ -154,7 +154,7 @@ class Product_Flip extends Base{
             ]
         );
 		$this->add_control(
-			'_ua_flipbox_animation_type',
+			'_ua_product_flip_animation_type',
 			[
 				'label' => __( 'Flip Style', 'ultraaddons' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
@@ -219,7 +219,7 @@ class Product_Flip extends Base{
 	}
 	protected function style_design_controls() {
         $this->start_controls_section(
-            '_ua_flipbox_style',
+            '_ua_product_flip_style',
             [
                 'label'     => esc_html__( 'Color', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
@@ -227,7 +227,7 @@ class Product_Flip extends Base{
         );
         
       $this->add_control(
-			'_ua_flipbox_bg_front', [
+			'_ua_product_flip_bg_front', [
 				'label' => __( 'Front Background', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
@@ -248,7 +248,7 @@ class Product_Flip extends Base{
         );
 	
 		$this->add_control(
-			'_ua_flipbox_bg_back', [
+			'_ua_product_flip_bg_back', [
 				'label' => __( 'Back Background', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
@@ -259,7 +259,7 @@ class Product_Flip extends Base{
         );
 		
 		$this->add_control(
-			'_ua_flipbox_title_back', [
+			'_ua_product_flip_title_back', [
 				'label' => __( 'Back Title Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
@@ -269,11 +269,21 @@ class Product_Flip extends Base{
 			]
         );
 		$this->add_control(
-			'_ua_flipbox_content_color', [
+			'_ua_product_flip_content_color', [
 				'label' => __( 'Content Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-product-flip .back p' => 'color: {{VALUE}};',
+				],
+				'separator'=>'before'
+			]
+        );
+		$this->add_control(
+			'_ua_product_flip_price_color', [
+				'label' => __( 'Price Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-product-flip .ua-product-price' => 'color: {{VALUE}};',
 				],
 				'separator'=>'before'
 			]
@@ -348,12 +358,21 @@ class Product_Flip extends Base{
 
 			]
         );
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'price_typography',
+					'label' => 'Price Typography',
+					'selector' => '{{WRAPPER}} .ua-product-flip .ua-product-price',
+
+			]
+        );
 		
 		$this->end_controls_section();
 	}
 	protected function style_box_controls() {
         $this->start_controls_section(
-            '_ua_flipbox_box_style',
+            '_ua_product_flip_box_style',
             [
                 'label'     => esc_html__( 'Box Style', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
@@ -378,7 +397,7 @@ class Product_Flip extends Base{
 			]
 		);
 		$this->add_group_control(
-			\Elementor\Group_Control_Box_Shadow::get_type(),
+			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'box_shadow',
 				'label' => __( 'Box Shadow', 'ultraaddons' ),
@@ -396,10 +415,10 @@ class Product_Flip extends Base{
 	<div class="ua-row">
 	<?php
         $args = array(
-            'post_type' 		=> 'product',
-            'posts_per_page' 	=> $settings['_ua_post_per_page'],
-			'order'				=> $settings['_ua_product_order'],
-			'orderby'			=> $settings['_ua_product_orderby'],
+            'post_type' 	=> 'product',
+            'posts_per_page'=> $settings['_ua_post_per_page'],
+			'order'			=> $settings['_ua_product_order'],
+			'orderby'		=> $settings['_ua_product_orderby'],
             );
         $loop = new \WP_Query( $args );
         if ( $loop->have_posts() ) {
@@ -409,13 +428,15 @@ class Product_Flip extends Base{
 				$image_url = wp_get_attachment_image_url( $image_id, 'full' );
 				$description = $loop->post->post_excerpt;
     ?>
-	<div class="ua-product-flip ua-col-<?php echo $col;?> flip-<?php echo $settings['_ua_flipbox_animation_type']; ?>">
+	<div class="ua-product-flip ua-col-<?php echo $col;?> flip-<?php echo $settings['_ua_product_flip_animation_type']; ?>">
 		<div class="front" style="background:url(<?php echo esc_url($image_url);?>)">
 		   <?php
 		   echo '<' . $settings['_ua_front_title_tag'] . ' class="front-title">' . $loop->post->post_title . 
 				'</' . $settings['_ua_front_title_tag'] . '>';
 		   ?>
-		   <span><?php echo $product->get_price_html();?> </span>
+		   <span class="ua-product-price">
+			<?php echo $product->get_price_html();?> 
+		   </span>
 		</div>
 		<div class="back">
 		   <?php

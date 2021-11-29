@@ -64,6 +64,18 @@
   line-height: 160%;
   color: #999;
 }
+.ua-product-flip .front-title{
+	position:relative
+}
+.ua-product-flip .front-title:after {
+	content:"";
+	position:absolute;
+	bottom:-10px;
+	width: 100%;
+	height:1px;
+	background: rgb(255 255 255 / 52%);
+	left:0;
+	}
 .ua-product-flip .back-title, 
 .ua-product-flip .front-title  {
     margin-bottom: 20px;
@@ -79,6 +91,10 @@
 	left: 0;
 	top: 0;
 	z-index: -1;
+}
+.ua-product-flip .front .mark, .ua-product-flip .front ins {
+    background:transparent;
+    text-decoration: none;
 }
 .ua-row{
   display: -ms-flexbox;
