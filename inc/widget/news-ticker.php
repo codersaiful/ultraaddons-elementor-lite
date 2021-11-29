@@ -418,8 +418,6 @@ class News_Ticker extends Base{
 				],
 			]
         );
-		
-		
 		$this->end_controls_section();
 	}
 	
