@@ -68,6 +68,8 @@ class Product_Flip extends Base{
      * @access protected
      */
     protected function _register_controls() {
+		//For Query Tab
+        $this->query_controls();
        //For Content Section
         $this->content_general_controls();
         //For Design Section Style Tab
@@ -76,9 +78,73 @@ class Product_Flip extends Base{
         $this->style_typography_controls();
 		//For Box Style Tab
         $this->style_box_controls();
+	
     }
+	protected function query_controls() {
+		
+        $this->start_controls_section(
+            'query_content',
+            [
+                'label'     => esc_html__( 'Query Settings', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+		$this->add_control(
+			'_ua_text_truncate',
+			[
+				'label' => __( 'Description Truncate', 'ultraaddons' ),
+				'type' => \Elementor\Controls_Manager::NUMBER,
+				'min' => 5,
+				'max' => 300,
+				'step' => 5,
+				'default' => 10,
+			]
+		);
+		$this->add_control(
+			'_ua_post_per_page',
+			[
+				'label' => __( 'Show Products', 'ultraaddons' ),
+				'type' => \Elementor\Controls_Manager::NUMBER,
+				'min' => 5,
+				'max' => 300,
+				'step' => 1,
+				'default' => 8,
+			]
+		);
+		$this->add_control(
+			'_ua_product_order',
+			[
+				'label' => esc_html__( 'Order', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'asc' => 'Asc',
+					'desc' => 'Desc',
+				],
+				'default' => 'desc',
+			]
+		);
+		$this->add_control(
+			'_ua_product_orderby',
+			[
+				'label' => esc_html__( 'Orderby', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'none' => 'None',
+					'id' => 'ID',
+					'name' => 'Name',
+					'type' => 'Type',
+					'rand' => 'Random',
+					'date' => 'Date',
+					'modified' => 'Modified',
+				],
+				'default' => 'date',
+			]
+		);
+		 
+		
+	$this->end_controls_section();
+	}
 	protected function content_general_controls() {
-		$placeholder_image = ULTRA_ADDONS_URL . 'assets/images/flip-thumb.jpg';
 		
         $this->start_controls_section(
             'general_content',
@@ -111,28 +177,6 @@ class Product_Flip extends Base{
 					'4' => '4 Column',
 				],
 				'default' => '3',
-			]
-		);
-		$this->add_control(
-			'_ua_text_truncate',
-			[
-				'label' => __( 'Text Truncate', 'ultraaddons' ),
-				'type' => \Elementor\Controls_Manager::NUMBER,
-				'min' => 5,
-				'max' => 300,
-				'step' => 5,
-				'default' => 10,
-			]
-		);
-		$this->add_control(
-			'_ua_post_per_page',
-			[
-				'label' => __( 'Show Product', 'ultraaddons' ),
-				'type' => \Elementor\Controls_Manager::NUMBER,
-				'min' => 5,
-				'max' => 300,
-				'step' => 1,
-				'default' => 8,
 			]
 		);
 		 
@@ -352,8 +396,10 @@ class Product_Flip extends Base{
 	<div class="ua-row">
 	<?php
         $args = array(
-            'post_type' => 'product',
-            'posts_per_page' => $settings['_ua_post_per_page']
+            'post_type' 		=> 'product',
+            'posts_per_page' 	=> $settings['_ua_post_per_page'],
+			'order'				=> $settings['_ua_product_order'],
+			'orderby'			=> $settings['_ua_product_orderby'],
             );
         $loop = new \WP_Query( $args );
         if ( $loop->have_posts() ) {
