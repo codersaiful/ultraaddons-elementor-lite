@@ -44,7 +44,7 @@ class Product_Flip extends Base{
         return [ 'ultraaddons', 'ua', 'flipbox', 'product', 'flip', 'box' ];
     }
 	
-	function word_shortener($text, $words=10, $sp='...'){
+	public function word_shortener($text, $words=10, $sp='...'){
 		  $all = explode(' ', $text);
 		  $str = '';
 		  $count = 1;
@@ -423,7 +423,7 @@ class Product_Flip extends Base{
 
 		//Intrigate with WooCommerce
         if( ! class_exists( 'WooCommerce' ) ){
-            echo "<p style='color: #d00;font-size: 22px;'>" . esc_html__( "WooCommerce is not Activated", 'ultraaddons' ) . "</p>";
+            echo "<div class='ua-alert'>" . esc_html__( "WooCommerce is not Activated.", 'ultraaddons' ) . "</div>";
 			return;
         }
 
@@ -452,9 +452,10 @@ class Product_Flip extends Base{
         $loop = new \WP_Query( $args );
         if ( $loop->have_posts() ) {
             while ( $loop->have_posts() ) : $loop->the_post();
-                $product   = wc_get_product( $loop->post->ID );
-				$image_id  = $product->get_image_id();
-				$image_url = wp_get_attachment_image_url( $image_id, 'full' );
+				$id 		= $loop->post->ID;
+                $product   	= wc_get_product( $id );
+				$image_id  	= $product->get_image_id();
+				$image_url 	= wp_get_attachment_image_url( $image_id, 'full' );
 				$description = $loop->post->post_excerpt;
     ?>
 	<div class="ua-product-flip ua-col-<?php echo $col;?> flip-<?php echo $settings['_ua_product_flip_animation_type']; ?>">
@@ -473,12 +474,17 @@ class Product_Flip extends Base{
 				'</' . $settings['_ua_back_title_tag'] . '>';
 		   ?>
 		   <p><?php echo $this->word_shortener($description, $settings['_ua_text_truncate']);?></p>
+		   <div class="ua-cart">
+				<a href="<?php echo get_site_url();?>?add-to-cart=<?php echo esc_attr($id); ?>" class="add-card button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo esc_attr($id); ?>" data-product_sku="" aria-label="Add '<?php echo get_the_title(); ?>' to your cart" rel="nofollow">
+					<i class="uicon uicon-cart"></i><span> <?php echo esc_html__( 'Add to Cart', 'ultraaddons');?></span>
+				</a>
+			</div>
 		</div>
 	</div>
 	<?php
 	 endwhile;
 	} else {
-		echo __( 'No products found' );
+		 echo "<div class='ua-alert'>" . esc_html__( "No products found!", 'ultraaddons' ) . "</div>";
 	}
 	wp_reset_postdata();
 	?>
