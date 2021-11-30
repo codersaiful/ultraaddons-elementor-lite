@@ -70,7 +70,7 @@
 
 .ua-product-flip>.front p,
 .ua-product-flip>.back p {
-	font-size: 1.6rem;
+	font-size: 1.1rem;
 	line-height: 160%;
 	color: #999;
 }
@@ -173,4 +173,6 @@ padding: 15px;
 	color: #fff;
 	outline: 0;
 	}
-	.ua-cart a > span{ font-weight: 400; margin-left:5px}
+.ua-cart a > span{ 
+	font-weight: 400; margin-left:5px
+}
