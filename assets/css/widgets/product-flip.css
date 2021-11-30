@@ -154,6 +154,16 @@
 	flex: 0 0 25%;
 	max-width: 25%;
 }
+@media(max-width:460px){
+.ua-col-1,
+.ua-col-2,
+.ua-col-3,
+.ua-col-4 {
+	-ms-flex: 0 0 100%;
+	flex: 0 0 100%;
+	max-width: 100%;
+}
+}
 .ua-alert {
 	padding: 15px;
     background-color: #f44336;
