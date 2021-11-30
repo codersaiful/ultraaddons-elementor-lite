@@ -421,18 +421,27 @@ class Product_Flip extends Base{
 			]
 		);
 		$this->add_control(
+			'important_note',
+			[
+				'type' => \Elementor\Controls_Manager::RAW_HTML,
+				'raw' => __( 'This option is only for live design purposes. Please turn it off after the backside design is finished.', 'ultraaddons' ),
+				'content_classes' => 'ua-alert',
+				'separator' => 'before',
+				'condition' => ['_ua_back_view'=>'yes']
+			]
+		);
+		$this->add_control(
 			'_ua_back_view',
 			[
 				'label' => __( 'View Back', 'ultraaddons' ),
 				'type' => Controls_Manager::SWITCHER,
 				'label_on' => __( 'Show', 'ultraaddons' ),
 				'label_off' => __( 'Hide', 'ultraaddons' ),
-				'description' => __('This option is only for design purposes. Please turn it off after the backside design is finished.', 'ultraaddons'),
 				'return_value' => 'yes',
 				'default' => 'no',
-				'separator' => 'before'
 			]
 		);
+		
 		$this->end_controls_section();
 	}
 
