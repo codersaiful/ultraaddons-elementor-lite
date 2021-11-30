@@ -545,18 +545,22 @@ class Product_Flip extends Base{
         }
 
 		$settings 		= $this->get_settings_for_display();
+
 		$col = $settings['_ua_col'];
 	?>
 	<div class="ua-row">
 	<?php
-		print_r($settings['_ua_query_post_in']);
+		
         $args = array(
             'post_type' 	=> 'product',
             'posts_per_page'=> $settings['_ua_post_per_page'],
 			'order'			=> $settings['_ua_product_order'],
 			'orderby'		=> $settings['_ua_product_orderby'],
-			'post__in' 		=> $settings['_ua_query_post_in'] ? array($settings['_ua_query_post_in']): array()
             );
+		if(! empty( $settings['_ua_query_post_in'] )){
+			$post_ids = explode(',',$settings['_ua_query_post_in']);
+			$args['post__in'] = $post_ids;
+		}
 
 		if( ! empty( $settings['cat_ids'] ) ){
 			$args['tax_query'] = array(
