@@ -172,6 +172,10 @@ padding: 15px;
 	background-color: #2271b1;
 	color: #fff;
 	outline: 0;
+	transition:.5s
+	}
+	.woocommerce .ua-cart .ua-cart-btn:hover{
+	transition:.7s
 	}
 .ua-cart a > span{ 
 	font-weight: 400; margin-left:5px
@@ -183,7 +187,7 @@ span.ua-onsale {
     font-weight: 700;
     position: absolute;
     text-align: center;
-    line-height: 3.236;
+	padding: 2px;
     top: 0;
     left: 0;
     margin: 0;

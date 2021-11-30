@@ -420,6 +420,19 @@ class Product_Flip extends Base{
 				],
 			]
 		);
+		$this->add_control(
+			'_ua_back_view',
+			[
+				'label' => __( 'View Back', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Show', 'ultraaddons' ),
+				'label_off' => __( 'Hide', 'ultraaddons' ),
+				'description' => __('This option is only for design purposes. Please turn it off after the backside design is finished.', 'ultraaddons'),
+				'return_value' => 'yes',
+				'default' => 'no',
+				'separator' => 'before'
+			]
+		);
 		$this->end_controls_section();
 	}
 
@@ -561,7 +574,6 @@ class Product_Flip extends Base{
             ]
         );
 		
-		
 		$this->add_control(
 			'_ua_sale_flash_bg', [
 				'label' => __( 'Flash Background', 'ultraaddons' ),
@@ -589,9 +601,59 @@ class Product_Flip extends Base{
 					'name' => 'flash_typography',
 					'label' => 'Flash Typography',
 					'selector' => '{{WRAPPER}} .ua-onsale',
-
 			]
         );
+		$this->add_responsive_control(
+			'_ua_flash_margin',
+			[
+				'label'       => esc_html__( 'Flash Margin', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-onsale' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'_ua_flash_padding',
+			[
+				'label'       => esc_html__( 'Flash Padding', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-onsale' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'_ua_flash_radius',
+			[
+				'label'       => esc_html__( 'Flash Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-onsale' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 		
 		$this->end_controls_section();
 	}
@@ -602,10 +664,9 @@ class Product_Flip extends Base{
             echo "<div class='ua-alert'>" . esc_html__( "WooCommerce is not Activated.", 'ultraaddons' ) . "</div>";
 			return;
         }
-
-		$settings 		= $this->get_settings_for_display();
-
-		$col = $settings['_ua_col'];
+		$settings 	= $this->get_settings_for_display();
+		$col 		= $settings['_ua_col'];
+		$back_view 	= ($settings['_ua_back_view'] =='yes') ? 'style="opacity:1; transform:rotateY(-20deg)" ' :'';
 	?>
 	<div class="ua-row">
 	<?php
@@ -658,7 +719,7 @@ class Product_Flip extends Base{
 			<?php echo $product->get_price_html();?> 
 		   </span>
 		</div>
-		<div class="back">
+		<div class="back" <?php echo $back_view; ?>>
 		   <?php
 		   echo '<' . $settings['_ua_back_title_tag'] . ' class="back-title">' . $loop->post->post_title . 
 				'</' . $settings['_ua_back_title_tag'] . '>';
