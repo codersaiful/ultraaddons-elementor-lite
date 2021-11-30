@@ -72,13 +72,14 @@ class Product_Flip extends Base{
         $this->query_controls();
        //For Content Section
         $this->content_general_controls();
-        //For Design Section Style Tab
-        $this->style_design_controls();
-		//For Typography Style Tab
-        $this->style_typography_controls();
+		//For front style Tab
+        $this->front_controls();
+		//For back Style Tab
+        $this->back_controls();
 		//For Box Style Tab
         $this->style_box_controls();
-	
+		//For cart btn Tab
+        $this->cart_btn_controls();
     }
 	protected function query_controls() {
 		
@@ -92,7 +93,7 @@ class Product_Flip extends Base{
 		$this->add_control(
 			'_ua_text_truncate',
 			[
-				'label' => __( 'Description Truncate', 'ultraaddons' ),
+				'label' => __( 'Description Length', 'ultraaddons' ),
 				'type' => \Elementor\Controls_Manager::NUMBER,
 				'min' => 5,
 				'max' => 300,
@@ -164,10 +165,40 @@ class Product_Flip extends Base{
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
+		$this->add_responsive_control(
+			'_ua_text_alignment',
+			[
+				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-right',
+					],
+					'justify' => [
+						'title' => esc_html__( 'justify', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-justify',
+					],
+				],
+				'default' => 'left',
+				'selectors' => [
+					'{{WRAPPER}} .ua-product-flip .front' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .ua-product-flip .back' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
 		$this->add_control(
 			'_ua_product_flip_animation_type',
 			[
-				'label' => __( 'Flip Style', 'ultraaddons' ),
+				'label' => __( 'Animation Style', 'ultraaddons' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'default' => 'horizontal',
 				'options' => [
@@ -228,16 +259,19 @@ class Product_Flip extends Base{
 		);
 	$this->end_controls_section();
 	}
-	protected function style_design_controls() {
+		/**
+	 * Front Style Controls
+	 */
+	protected function front_controls() {
+		
         $this->start_controls_section(
-            '_ua_product_flip_style',
+            'front_style',
             [
-                'label'     => esc_html__( 'Color', 'ultraaddons' ),
+                'label'     => esc_html__( 'Front', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
-        
-      $this->add_control(
+		 $this->add_control(
 			'_ua_product_flip_bg_front', [
 				'label' => __( 'Front Background', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
@@ -257,38 +291,6 @@ class Product_Flip extends Base{
 				'default'=>'#ffffff'
 			]
         );
-	
-		$this->add_control(
-			'_ua_product_flip_bg_back', [
-				'label' => __( 'Back Background', 'ultraaddons' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-						'{{WRAPPER}} .ua-product-flip .back' => 'background: {{VALUE}};',
-				],
-				'separator'=>'before'
-			]
-        );
-		
-		$this->add_control(
-			'_ua_product_flip_title_back', [
-				'label' => __( 'Back Title Color', 'ultraaddons' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-						'{{WRAPPER}} .ua-product-flip .back-title' => 'color: {{VALUE}};',
-				],
-				'default'=>'#ffffff'
-			]
-        );
-		$this->add_control(
-			'_ua_product_flip_content_color', [
-				'label' => __( 'Content Color', 'ultraaddons' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-						'{{WRAPPER}} .ua-product-flip .back p' => 'color: {{VALUE}};',
-				],
-				'separator'=>'before'
-			]
-        );
 		$this->add_control(
 			'_ua_product_flip_price_color', [
 				'label' => __( 'Price Color', 'ultraaddons' ),
@@ -296,76 +298,14 @@ class Product_Flip extends Base{
 				'selectors' => [
 						'{{WRAPPER}} .ua-product-flip .ua-product-price' => 'color: {{VALUE}};',
 				],
-				'separator'=>'before'
 			]
         );
-		
-		$this->end_controls_section();
-	}
-	protected function style_typography_controls() {
-        $this->start_controls_section(
-            'flipbox_typo_style',
-            [
-                'label'     => esc_html__( 'Typography', 'ultraaddons' ),
-                'tab'       => Controls_Manager::TAB_STYLE,
-            ]
-        );
-		
-		$this->add_responsive_control(
-			'_ua_text_alignment',
-			[
-				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
-				'type' => Controls_Manager::CHOOSE,
-				'options' => [
-					'left' => [
-						'title' => esc_html__( 'Left', 'ultraaddons' ),
-						'icon' => 'eicon-text-align-left',
-					],
-					'center' => [
-						'title' => esc_html__( 'Center', 'ultraaddons' ),
-						'icon' => 'eicon-text-align-center',
-					],
-					'right' => [
-						'title' => esc_html__( 'Right', 'ultraaddons' ),
-						'icon' => 'eicon-text-align-right',
-					],
-					'justify' => [
-						'title' => esc_html__( 'justify', 'ultraaddons' ),
-						'icon' => 'eicon-text-align-justify',
-					],
-				],
-				'default' => 'left',
-				'selectors' => [
-					'{{WRAPPER}} .ua-product-flip .front' => 'text-align: {{VALUE}};',
-					'{{WRAPPER}} .ua-product-flip .back' => 'text-align: {{VALUE}};',
-				],
-			]
-		);
-		
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
 					'name' => 'front_title_typography',
 					'label' => 'Front Title Typography',
 					'selector' => '{{WRAPPER}} .ua-product-flip .front-title',
-
-			]
-        );
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-					'name' => 'back_title_typography',
-					'label' => 'Back Title Typography',
-					'selector' => '{{WRAPPER}} .ua-product-flip .back-title',
-
-			]
-        );
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-					'name' => 'content_typography',
-					'label' => 'Content Typography',
-					'selector' => '{{WRAPPER}} .ua-product-flip .back p',
 
 			]
         );
@@ -381,6 +321,69 @@ class Product_Flip extends Base{
 		
 		$this->end_controls_section();
 	}
+	/**
+	 * Back Style Controls
+	 */
+	protected function back_controls() {
+		
+        $this->start_controls_section(
+            'back_style',
+            [
+                'label'     => esc_html__( 'Back', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->add_control(
+			'_ua_product_flip_bg_back', [
+				'label' => __( 'Back Background', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-product-flip .back' => 'background: {{VALUE}};',
+				]
+			]
+        );
+		
+		$this->add_control(
+			'_ua_product_flip_title_back', [
+				'label' => __( 'Back Title Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-product-flip .back-title' => 'color: {{VALUE}};',
+				],
+				'default'=>'#ffffff'
+			]
+        );
+		$this->add_control(
+			'_ua_product_flip_content_color', [
+				'label' => __( 'Description Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-product-flip .back p' => 'color: {{VALUE}};',
+				]
+			]
+        );
+	
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'back_title_typography',
+					'label' => 'Back Title Typography',
+					'selector' => '{{WRAPPER}} .ua-product-flip .back-title',
+
+			]
+        );
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'content_typography',
+					'label' => 'Description Typography',
+					'selector' => '{{WRAPPER}} .ua-product-flip .back p',
+
+			]
+			);
+		$this->end_controls_section();
+	}
+
 	protected function style_box_controls() {
         $this->start_controls_section(
             '_ua_product_flip_box_style',
@@ -418,7 +421,52 @@ class Product_Flip extends Base{
 		
 		$this->end_controls_section();
 	}
-
+	/**
+	 * Button Style.
+	 */
+	protected function cart_btn_controls(){
+		$this->start_controls_section(
+            'cart_btn_style',
+            [
+                'label'     => esc_html__( 'Cart Button', 'ultraaddons' ),
+				'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->start_controls_tabs(
+			'cart_btn_normal_tabs'
+		);
+		/**
+		 * Normal tab
+		 */
+		$this->start_controls_tab(
+			'style_normal_tab',
+			[
+				'label' => __( 'Normal', 'ultraaddons' ),
+			]
+		);
+		
+		
+		
+		$this->end_controls_tab();
+		/**
+		 * Button Hover tab
+		 */
+		$this->start_controls_tab(
+			'cart_btn_hover_tabs',
+			[
+				'label' => __( 'Hover', 'ultraaddons' ),
+			]
+		);
+	
+	
+		$this->end_controls_tabs();
+		
+		
+		$this->end_controls_tab();
+		
+		
+		$this->end_controls_section();
+	}
     protected function render() {
 
 		//Intrigate with WooCommerce
@@ -475,7 +523,7 @@ class Product_Flip extends Base{
 		   ?>
 		   <p><?php echo $this->word_shortener($description, $settings['_ua_text_truncate']);?></p>
 		   <div class="ua-cart">
-				<a href="<?php echo get_site_url();?>?add-to-cart=<?php echo esc_attr($id); ?>" class="add-card button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo esc_attr($id); ?>" data-product_sku="" aria-label="Add '<?php echo get_the_title(); ?>' to your cart" rel="nofollow">
+				<a href="?add-to-cart=<?php echo esc_attr($id); ?>" class="ua-cart-btn add-card button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo esc_attr($id); ?>" data-product_sku="" aria-label="Add '<?php echo get_the_title(); ?>' to your cart" rel="nofollow">
 					<i class="uicon uicon-cart"></i><span> <?php echo esc_html__( 'Add to Cart', 'ultraaddons');?></span>
 				</a>
 			</div>

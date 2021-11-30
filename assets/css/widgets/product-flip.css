@@ -161,16 +161,16 @@ padding: 15px;
     font-size: 15px;
     width: 100%;
 }
-.ua-cart a{
+.woocommerce .ua-cart .ua-cart-btn{
 	font-size: 16px;
 	font-weight: 400;
 	border-radius: 3px;
 	padding-top: 13px;
-	padding-right: 35px;
+	padding-right: 25px;
 	padding-bottom: 15px;
-	padding-left: 35px;
+	padding-left: 25px;
 	background-color: #2271b1;
 	color: #fff;
 	outline: 0;
 	}
-	.ua-cart a span{ font-weight: 400;}
+	.ua-cart a > span{ font-weight: 400; margin-left:5px}
