@@ -94,7 +94,7 @@ class Product_Flip extends Base{
 			'_ua_text_truncate',
 			[
 				'label' => __( 'Description Length', 'ultraaddons' ),
-				'type' => \Elementor\Controls_Manager::NUMBER,
+				'type' => Controls_Manager::NUMBER,
 				'min' => 5,
 				'max' => 300,
 				'step' => 5,
@@ -105,7 +105,7 @@ class Product_Flip extends Base{
 			'_ua_post_per_page',
 			[
 				'label' => __( 'Show Products', 'ultraaddons' ),
-				'type' => \Elementor\Controls_Manager::NUMBER,
+				'type' => Controls_Manager::NUMBER,
 				'min' => 5,
 				'max' => 300,
 				'step' => 1,
@@ -151,6 +151,16 @@ class Product_Flip extends Base{
                 'multiple' => 'true'
             ]
         );
+		$this->add_control(
+			'_ua_query_post_in',
+			[
+				'label' => __( 'Product by specific IDs', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXTAREA,
+				'placeholder' => __( '1,2,3,4,20,33', 'ultraaddons' ),
+				'description' => __('Add multiple ids by comma separated.'),
+				'label_block' => true,
+			]
+		);
 		 
 		
 		$this->end_controls_section();
@@ -199,7 +209,7 @@ class Product_Flip extends Base{
 			'_ua_product_flip_animation_type',
 			[
 				'label' => __( 'Animation Style', 'ultraaddons' ),
-				'type' => \Elementor\Controls_Manager::SELECT,
+				'type' => Controls_Manager::SELECT,
 				'default' => 'horizontal',
 				'options' => [
 					'horizontal' => __( 'Horizontal', 'ultraaddons' ),
@@ -539,11 +549,13 @@ class Product_Flip extends Base{
 	?>
 	<div class="ua-row">
 	<?php
+		print_r($settings['_ua_query_post_in']);
         $args = array(
             'post_type' 	=> 'product',
             'posts_per_page'=> $settings['_ua_post_per_page'],
 			'order'			=> $settings['_ua_product_order'],
 			'orderby'		=> $settings['_ua_product_orderby'],
+			'post__in' 		=> $settings['_ua_query_post_in'] ? array($settings['_ua_query_post_in']): array()
             );
 
 		if( ! empty( $settings['cat_ids'] ) ){
