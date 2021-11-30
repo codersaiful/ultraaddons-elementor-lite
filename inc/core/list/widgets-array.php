@@ -448,7 +448,14 @@ $widgetsArray = [
                 __( 'Basic', 'ultraaddons' ),
             ],
     ],
-
+	'Product_Flip' => [
+            'name'  => __( 'Product Flip', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-clock-o',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
     
 ];
 
