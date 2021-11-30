@@ -140,10 +140,21 @@ class Product_Flip extends Base{
 				'default' => 'date',
 			]
 		);
+
+		$this->add_control(
+            'cat_ids',
+            [
+                'label' => esc_html__( 'Select category', 'ultraaddons' ),
+                'type' => Controls_Manager::SELECT2,
+                'options' => $this->product_cat_options(),
+                'multiple' => 'true'
+            ]
+        );
 		 
 		
-	$this->end_controls_section();
+		$this->end_controls_section();
 	}
+
 	protected function content_general_controls() {
 		
         $this->start_controls_section(
@@ -409,6 +420,13 @@ class Product_Flip extends Base{
 	}
 
     protected function render() {
+
+		//Intrigate with WooCommerce
+        if( ! class_exists( 'WooCommerce' ) ){
+            echo "<p style='color: #d00;font-size: 22px;'>" . esc_html__( "WooCommerce is not Activated", 'ultraaddons' ) . "</p>";
+			return;
+        }
+
 		$settings 		= $this->get_settings_for_display();
 		$col = $settings['_ua_col'];
 	?>
@@ -420,6 +438,17 @@ class Product_Flip extends Base{
 			'order'			=> $settings['_ua_product_order'],
 			'orderby'		=> $settings['_ua_product_orderby'],
             );
+
+		if( ! empty( $settings['cat_ids'] ) ){
+			$args['tax_query'] = array(
+				array(
+					'taxonomy'  => 'product_cat',
+					'field'     => 'id', 
+					'terms'     => $settings['cat_ids'],
+				)
+			);
+		}	
+		
         $loop = new \WP_Query( $args );
         if ( $loop->have_posts() ) {
             while ( $loop->have_posts() ) : $loop->the_post();
@@ -455,4 +484,29 @@ class Product_Flip extends Base{
 	?>
 	</div>
 <?php }
+
+	/**
+     * Getting Category list of WooCommerce product
+     * 
+     *
+     * @return void
+     */
+    public function product_cat_options() {
+        $taxonomy = 'product_cat';
+        $query_args = array(
+            'orderby'       => 'ID',
+            'order'         => 'DESC',
+            'hide_empty'    => false,
+            'taxonomy'      => $taxonomy
+        );
+
+        $categories = get_categories( $query_args );
+        $options = array();
+        if(is_array($categories) && count($categories) > 0){
+            foreach ($categories as $cat){
+                $options[$cat->term_id] = $cat->name;
+            }
+            return $options;
+        }
+    }
 }
