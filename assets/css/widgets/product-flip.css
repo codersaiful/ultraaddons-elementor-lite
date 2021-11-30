@@ -176,3 +176,19 @@ padding: 15px;
 .ua-cart a > span{ 
 	font-weight: 400; margin-left:5px
 }
+span.ua-onsale {
+    min-height: 2em;
+    min-width: 4em;
+    font-size: 1em;
+    font-weight: 700;
+    position: absolute;
+    text-align: center;
+    line-height: 3.236;
+    top: 0;
+    left: 0;
+    margin: 0;
+    background-color: #77a464;
+    color: #fff;
+    font-size: .857em;
+    z-index: 9;
+}

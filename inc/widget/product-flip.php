@@ -80,6 +80,8 @@ class Product_Flip extends Base{
         $this->style_box_controls();
 		//For cart btn Tab
         $this->cart_btn_controls();
+		//For sale flash Tab
+        $this->sale_flash_controls();
     }
 	protected function query_controls() {
 		
@@ -106,7 +108,7 @@ class Product_Flip extends Base{
 			[
 				'label' => __( 'Show Products', 'ultraaddons' ),
 				'type' => Controls_Manager::NUMBER,
-				'min' => 5,
+				'min' => 1,
 				'max' => 300,
 				'step' => 1,
 				'default' => 6,
@@ -154,7 +156,17 @@ class Product_Flip extends Base{
 		$this->add_control(
 			'_ua_query_post_in',
 			[
-				'label' => __( 'Product by specific IDs', 'ultraaddons' ),
+				'label' => __( 'Product by included IDs', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXTAREA,
+				'placeholder' => __( '1,2,3,4,20,33', 'ultraaddons' ),
+				'description' => __('Add multiple ids by comma separated.'),
+				'label_block' => true,
+			]
+		);
+		$this->add_control(
+			'_ua_query_post_not_in',
+			[
+				'label' => __( 'Product by excluded IDs', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'placeholder' => __( '1,2,3,4,20,33', 'ultraaddons' ),
 				'description' => __('Add multiple ids by comma separated.'),
@@ -536,6 +548,53 @@ class Product_Flip extends Base{
 		
 		$this->end_controls_section();
 	}
+	/**
+	 * Sale Flash Style Controls
+	 */
+	protected function sale_flash_controls() {
+		
+        $this->start_controls_section(
+            'sale_flash_style',
+            [
+                'label'     => esc_html__( 'Sale Flash', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		
+		
+		$this->add_control(
+			'_ua_sale_flash_bg', [
+				'label' => __( 'Flash Background', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-onsale' => 'background-color: {{VALUE}};',
+				],
+				'default'=>'#111'
+			]
+        );
+		$this->add_control(
+			'_ua_flash_color', [
+				'label' => __( 'Flash Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-onsale' => 'color: {{VALUE}};',
+				],
+				'default'=>'#fff',
+			]
+        );
+		
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'flash_typography',
+					'label' => 'Flash Typography',
+					'selector' => '{{WRAPPER}} .ua-onsale',
+
+			]
+        );
+		
+		$this->end_controls_section();
+	}
     protected function render() {
 
 		//Intrigate with WooCommerce
@@ -558,8 +617,12 @@ class Product_Flip extends Base{
 			'orderby'		=> $settings['_ua_product_orderby'],
             );
 		if(! empty( $settings['_ua_query_post_in'] )){
-			$post_ids = explode(',',$settings['_ua_query_post_in']);
-			$args['post__in'] = $post_ids;
+			$include_ids = explode(',',$settings['_ua_query_post_in']);
+			$args['post__in'] = $include_ids;
+		}
+		if(! empty( $settings['_ua_query_post_not_in'] )){
+			$exclude_ids = explode(',',$settings['_ua_query_post_not_in']);
+			$args['post__not_in'] = $exclude_ids;
 		}
 
 		if( ! empty( $settings['cat_ids'] ) ){
@@ -583,6 +646,10 @@ class Product_Flip extends Base{
     ?>
 	<div class="ua-product-flip ua-col-<?php echo $col;?> flip-<?php echo $settings['_ua_product_flip_animation_type']; ?>">
 		<div class="front" style="background:url(<?php echo esc_url($image_url);?>)">
+		<?php if ( $product->is_on_sale() ) : 
+		echo apply_filters( 'woocommerce_sale_flash', '<span class="ua-onsale">' . esc_html__( 'Sale!', 'ultraaddons' ) . '</span>', $product );
+		endif;
+		?>
 		   <?php
 		   echo '<' . $settings['_ua_front_title_tag'] . ' class="front-title">' . $loop->post->post_title . 
 				'</' . $settings['_ua_front_title_tag'] . '>';
