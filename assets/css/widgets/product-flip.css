@@ -155,14 +155,14 @@
 	max-width: 25%;
 }
 @media(max-width:460px){
-.ua-col-1,
-.ua-col-2,
-.ua-col-3,
-.ua-col-4 {
-	-ms-flex: 0 0 100%;
-	flex: 0 0 100%;
-	max-width: 100%;
-}
+	.ua-col-1,
+	.ua-col-2,
+	.ua-col-3,
+	.ua-col-4 {
+		-ms-flex: 0 0 100%;
+		flex: 0 0 100%;
+		max-width: 100%;
+	}
 }
 .ua-alert {
 	padding: 15px;
@@ -183,10 +183,10 @@
 	color: #fff;
 	outline: 0;
 	transition:.5s
-	}
-	.woocommerce .ua-cart .ua-cart-btn:hover{
+}
+.woocommerce .ua-cart .ua-cart-btn:hover{
 	transition:.7s
-	}
+}
 .ua-cart a > span{ 
 	font-weight: 400; margin-left:5px
 }

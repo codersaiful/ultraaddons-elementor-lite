@@ -28,3 +28,11 @@
   border-left: solid 1px #0000000f;
   background-color: #0000000f;
 }
+
+.bn-news u li a:before{
+  content:"";
+  height:10px;
+  width:10px;
+  background-color:#333;
+  position:absolute;
+}
