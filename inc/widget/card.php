@@ -318,22 +318,18 @@ class Card extends Base{
 		$this->add_control(
 			'_ua_card_image_height',
 			[
-				'label' => __( 'Height', 'ultraaddons' ),
+				'label' => __( 'Image Height', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', '%' ],
+				'size_units' => [ 'px'],
 				'range' => [
 					'px' => [
 						'min' => 50,
 						'max' => 500,
 						'step' => 5,
 					],
-					'%' => [
-						'min' => 10,
-						'max' => 100,
-					],
 				],
 				'default' => [
-					'unit' => '%',
+					'unit' => 'px',
 					'size' => 100,
 				],
 				'selectors' => [
@@ -539,6 +535,23 @@ class Card extends Base{
 				'separator'=>'before'
 			]
         );
+		$this->add_responsive_control(
+			'_ua_card_btn_radius',
+			[
+				'label'       => esc_html__( 'Button Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-card-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+				],
+			]
+		);
 		$this->end_controls_tab();
 		/**
 		 * Button Hover tab
@@ -561,7 +574,7 @@ class Card extends Base{
         );
 		$this->add_control(
 			'_ua_btn_bg_hover_color', [
-				'label' => __( 'Button Text Color', 'ultraaddons' ),
+				'label' => __( 'Button Background', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-card-button:hover' => 'background: {{VALUE}};',
@@ -596,7 +609,7 @@ class Card extends Base{
 		$this->add_responsive_control(
 			'_ua_box_radius',
 			[
-				'label'       => esc_html__( 'Image Box Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Box Radius', 'ultraaddons' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -612,7 +625,7 @@ class Card extends Base{
 			]
 		);
 		$this->add_group_control(
-			\Elementor\Group_Control_Box_Shadow::get_type(),
+			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'card_box_shadow',
 				'label' => __( 'Box Shadow', 'ultraaddons' ),
