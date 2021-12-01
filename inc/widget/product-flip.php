@@ -114,6 +114,19 @@ class Product_Flip extends Base{
 				'default' => 6,
 			]
 		);
+		
+		$this->add_control(
+			'_ua_post_page_number',
+			[
+				'label' => __( 'Page Number', 'ultraaddons' ),
+				'type' => Controls_Manager::NUMBER,
+				'min' => 1,
+				//'max' => 300,
+				'step' => 1,
+				'default' => 1,
+			]
+		);
+
 		$this->add_control(
 			'_ua_product_order',
 			[
@@ -696,6 +709,7 @@ class Product_Flip extends Base{
         $args = array(
             'post_type' 	=> 'product',
             'posts_per_page'=> $settings['_ua_post_per_page'],
+            'paged'=> ! empty( $settings['_ua_post_page_number'] ) ? $settings['_ua_post_page_number'] : 1,
 			'order'			=> $settings['_ua_product_order'],
 			'orderby'		=> $settings['_ua_product_orderby'],
             );
@@ -729,8 +743,6 @@ class Product_Flip extends Base{
 			);
 		}	
 
-
-		
         $loop = new \WP_Query( $args );
         if ( $loop->have_posts() ) {
             while ( $loop->have_posts() ) : $loop->the_post();
