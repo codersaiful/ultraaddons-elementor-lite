@@ -200,3 +200,10 @@ div#elementor-panel-category-ultraaddons-pro-placeholder .elementor-element-wrap
     background-image: linear-gradient( 231deg,#ffffff 21%,#dedede 60%);
     border-bottom: 1px solid #b4bfc7;
 }
+.ua-alert {
+	padding: 15px;
+    background-color: #f44336;
+    color: white;
+    font-size: 14px;
+    width: 100%;
+}

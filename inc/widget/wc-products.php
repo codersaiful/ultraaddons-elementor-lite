@@ -253,6 +253,12 @@ class WC_Products extends Base{
         $this->end_controls_section();
     }
     
+    /**
+     * Getting Category list of WooCommerce product
+     * 
+     *
+     * @return void
+     */
     public function product_cat_options() {
         $taxonomy = 'product_cat';
         $query_args = array(
