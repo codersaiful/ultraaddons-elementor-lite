@@ -318,22 +318,18 @@ class Card extends Base{
 		$this->add_control(
 			'_ua_card_image_height',
 			[
-				'label' => __( 'Height', 'ultraaddons' ),
+				'label' => __( 'Image Height', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', '%' ],
+				'size_units' => [ 'px'],
 				'range' => [
 					'px' => [
 						'min' => 50,
 						'max' => 500,
 						'step' => 5,
 					],
-					'%' => [
-						'min' => 10,
-						'max' => 100,
-					],
 				],
 				'default' => [
-					'unit' => '%',
+					'unit' => 'px',
 					'size' => 100,
 				],
 				'selectors' => [

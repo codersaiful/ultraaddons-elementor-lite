@@ -301,10 +301,10 @@ class News_Ticker extends Base{
 				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
-						'news_title' => __( 'Lorem Ipsum simply dummy text of the printing and typesetting industry', 'ultraaddons' ),
+						'news_title' => __( '- Lorem Ipsum simply dummy text of the printing and typesetting industry', 'ultraaddons' ),
 					],
 					[
-						'news_title' => __( 'When an unknown printer took a galley of type and scrambled it to make a type specimen book', 'ultraaddons' ),
+						'news_title' => __( '- When an unknown printer took a galley of type and scrambled it to make a type specimen book', 'ultraaddons' ),
 					],
 				],
 				'title_field' => '{{{ news_title }}}',
@@ -439,8 +439,8 @@ class News_Ticker extends Base{
 				'type'      => Controls_Manager::COLOR,
 				'default'=>'#333',
 				'selectors' => [
-						'{{WRAPPER}} .bn-arrow:after, .bn-pause:after, .bn-pause:before' => 'border-color: {{VALUE}};',
-						'{{WRAPPER}} .bn-pause:after, .bn-pause:before' => 'background-color: {{VALUE}};',
+						'{{WRAPPER}} .bn-arrow:after, .bn-pause:after, .bn-pause:before' => 'border-color: {{VALUE}} !important;',
+						'{{WRAPPER}} .bn-pause:after, .bn-pause:before' => 'background-color: {{VALUE}} !important;',
 				],
 			]
         );
