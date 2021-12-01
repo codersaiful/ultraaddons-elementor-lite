@@ -149,10 +149,23 @@ class Product_Flip extends Base{
             [
                 'label' => esc_html__( 'Select category', 'ultraaddons' ),
                 'type' => Controls_Manager::SELECT2,
-                'options' => $this->product_cat_options(),
+                'options' => $this->product_tax_options(),
                 'multiple' => 'true'
             ]
         );
+
+		
+		$this->add_control(
+            'tag_ids',
+            [
+                'label' => esc_html__( 'Select Tag', 'ultraaddons' ),
+                'type' => Controls_Manager::SELECT2,
+                'options' => $this->product_tax_options( 'product_tag' ),
+                'multiple' => 'true'
+            ]
+        );
+
+
 		$this->add_control(
 			'_ua_query_post_in',
 			[
@@ -704,6 +717,19 @@ class Product_Flip extends Base{
 				)
 			);
 		}	
+
+		
+		if( ! empty( $settings['tag_ids'] ) ){
+			$args['tax_query'] = array(
+				array(
+					'taxonomy'  => 'product_tag',
+					'field'     => 'id', 
+					'terms'     => $settings['tag_ids'],
+				)
+			);
+		}	
+
+
 		
         $loop = new \WP_Query( $args );
         if ( $loop->have_posts() ) {
@@ -735,9 +761,21 @@ class Product_Flip extends Base{
 		   ?>
 		   <p><?php echo $this->word_shortener($description, $settings['_ua_text_truncate']);?></p>
 		   <div class="ua-cart">
-				<a href="?add-to-cart=<?php echo esc_attr($id); ?>" class="ua-cart-btn add-card button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo esc_attr($id); ?>" data-product_sku="" aria-label="Add '<?php echo get_the_title(); ?>' to your cart" rel="nofollow">
-					<i class="uicon uicon-cart"></i><span> <?php echo esc_html__( 'Add to Cart', 'ultraaddons');?></span>
-				</a>
+			   <?php 
+			   
+			   woocommerce_template_loop_add_to_cart();
+			   
+
+			   /**
+				* For after Add to cart button on cart page.
+				* 
+				* @hook ultraaddons/widget/product_flip/after_cart
+				* 
+				* @author Saiful Islam <codersaiful@gmail.com>
+				* @since 1.1.0.8
+				*/
+			   do_action( 'ultraaddons/widget/product_flip/after_cart' );
+			   ?>
 			</div>
 		</div>
 	</div>
@@ -757,8 +795,7 @@ class Product_Flip extends Base{
      *
      * @return void
      */
-    public function product_cat_options() {
-        $taxonomy = 'product_cat';
+    public function product_tax_options( $taxonomy = 'product_cat' ) {
         $query_args = array(
             'orderby'       => 'ID',
             'order'         => 'DESC',
