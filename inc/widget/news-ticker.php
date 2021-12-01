@@ -366,6 +366,32 @@ class News_Ticker extends Base{
 			]
         );
 		
+		$this->add_responsive_control(
+			'_ua_ticker_border_radius',
+			[
+				'label'       => esc_html__( 'Box Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-news-ticker-wrap' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'ticker_box_shadow',
+				'label' => __( 'Box Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-news-ticker-wrap',
+			]
+		);
+		
 		$this->add_control(
 			'_ua_ticker_bg_color', [
 				'label' => __( 'Background Color', 'ultraaddons' ),
@@ -416,6 +442,16 @@ class News_Ticker extends Base{
 						'{{WRAPPER}} .bn-arrow:after, .bn-pause:after, .bn-pause:before' => 'border-color: {{VALUE}};',
 						'{{WRAPPER}} .bn-pause:after, .bn-pause:before' => 'background-color: {{VALUE}};',
 				],
+			]
+        );
+		$this->add_control(
+			'_ua_ticker_ctrl_bg', [
+				'label' => __( 'Control Background', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'=>'#eaeaea',
+				'selectors' => [
+						'{{WRAPPER}} .bn-controls button' => 'background-color: {{VALUE}};',
+					],
 			]
         );
 		$this->end_controls_section();
