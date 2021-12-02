@@ -759,19 +759,23 @@ class Product_Flip extends Base{
 		echo apply_filters( 'woocommerce_sale_flash', '<span class="ua-onsale">' . esc_html__( 'Sale!', 'ultraaddons' ) . '</span>', $product );
 		endif;
 		?>
-		   <?php
-		   echo '<' . $settings['_ua_front_title_tag'] . ' class="front-title">' . $loop->post->post_title . 
-				'</' . $settings['_ua_front_title_tag'] . '>';
-		   ?>
+			<a href="<?php echo get_the_permalink(); ?>">
+				<?php
+				echo '<' . $settings['_ua_front_title_tag'] . ' class="front-title">' . $loop->post->post_title . 
+						'</' . $settings['_ua_front_title_tag'] . '>';
+				?>
+			</a>
 		   <span class="ua-product-price">
 			<?php echo $product->get_price_html();?> 
 		   </span>
 		</div>
 		<div class="back" <?php echo $back_view; ?>>
+		<a href="<?php echo get_the_permalink(); ?>">
 		   <?php
 		   echo '<' . $settings['_ua_back_title_tag'] . ' class="back-title">' . $loop->post->post_title . 
 				'</' . $settings['_ua_back_title_tag'] . '>';
 		   ?>
+		</a>
 		   <p><?php echo $this->word_shortener($description, $settings['_ua_text_truncate']);?></p>
 		   <div class="ua-cart">
 			   <?php 
