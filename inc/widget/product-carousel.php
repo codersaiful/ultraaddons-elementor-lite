@@ -94,13 +94,15 @@ class Product_Carousel extends Base{
      * @access protected
      */
     protected function _register_controls() {
-
-        //For General Section
-        $this->content_general_controls();
         //For Query Tab
         $this->query_controls();
+        //For General Section
+        $this->content_general_controls();
+         //For Navigation Tab
+        $this->nav_controls();
         //For General Style Tab
         $this->style_general_controls();
+       
     }
 
     protected function query_controls() {
@@ -223,6 +225,60 @@ class Product_Carousel extends Base{
 		
 		$this->end_controls_section();
 	}
+   
+    /**
+     * Navigation Section 
+     */
+     protected function nav_controls() {
+		
+        $this->start_controls_section(
+            'nav_settings',
+            [
+                'label'     => esc_html__( 'Navigation Settings', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+		$this->add_control(
+			'_slider_navigation',
+			[
+				'label' => esc_html__( 'Navigation', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'slider-nav-chevron' => 'Chevron',
+					'slider-nav-arrow' => 'Arrow',
+					'slider-nav-caret' => 'Caret',
+					'slider-nav-caretfill' => 'Caret filled',
+					'slider-nav-round' => 'Round with arrow',
+					'slider-nav-square' => 'Square with chevron',
+				],
+				'default' => '3',
+			]
+		);
+        $this->add_control(
+			'_slider_nav_dark',
+			[
+				'label' => __( 'Dark', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+        $this->add_control(
+			'_slider_nav_small',
+			[
+				'label' => __( 'Small', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+
+	$this->end_controls_section();
+	}
 
     
     /**
@@ -268,6 +324,39 @@ class Product_Carousel extends Base{
 			]
 		);
          $this->add_control(
+			'_slider_auto_play',
+			[
+				'label' => __( 'Auto Play', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+        $this->add_control(
+			'_slider_speed',
+			[
+				'label' => __( 'Auto Play Interval', 'ultraaddons' ),
+				'type' => Controls_Manager::NUMBER,
+				'min' => 1500,
+				'max' => 6000,
+				'step' => 10,
+				'default' => 2500,
+			]
+		);
+        $this->add_control(
+			'_slider_pause',
+			[
+				'label' => __( 'Pause on Hover', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+         $this->add_control(
 			'_slider_reveal',
 			[
 				'label' => __( 'Reveal', 'ultraaddons' ),
@@ -278,45 +367,6 @@ class Product_Carousel extends Base{
 				'default' => 'yes',
 			]
 		);
-         $this->add_control(
-			'_slider_navigation',
-			[
-				'label' => esc_html__( 'Navigation', 'ultraaddons' ),
-				'type' => Controls_Manager::SELECT,
-				'options' => [
-					'slider-nav-chevron' => 'Chevron',
-					'slider-nav-arrow' => 'Arrow',
-					'slider-nav-caret' => 'Caret',
-					'slider-nav-caretfill' => 'Caret filled',
-					'slider-nav-round' => 'Round with arrow',
-					'slider-nav-square' => 'Square with chevron',
-				],
-				'default' => '3',
-			]
-		);
-        $this->add_control(
-			'_slider_nav_dark',
-			[
-				'label' => __( 'Dark', 'ultraaddons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
-				'return_value' => 'yes',
-				'default' => 'yes',
-			]
-		);
-        $this->add_control(
-			'_slider_nav_small',
-			[
-				'label' => __( 'Small', 'ultraaddons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
-				'return_value' => 'yes',
-				'default' => 'yes',
-			]
-		);
-
 		
 	$this->end_controls_section();
 	}
@@ -337,7 +387,7 @@ class Product_Carousel extends Base{
         $this->add_control(
 			'_ua_front_title_tag',
 			[
-				'label' => esc_html__( 'Select Front Title Tag', 'ultraaddons' ),
+				'label' => esc_html__( 'Select Title Tag', 'ultraaddons' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'h1' => 'H1',
@@ -351,10 +401,17 @@ class Product_Carousel extends Base{
 				'default' => 'h2',
 			]
 		);
+        $this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'box_shadow',
+				'label' => __( 'Box Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .slider-container .ua-card',
+			]
+		);
 		
-        
-       
     $this->end_controls_tab();
+    $this->end_controls_section();
        
     }
     
@@ -379,17 +436,20 @@ class Product_Carousel extends Base{
     $navigation = $settings['_slider_navigation'] ? $settings['_slider_navigation'] : '';
     $dark       = $settings['_slider_nav_dark'] ? ' slider-nav-dark' : '';
     $small      = $settings['_slider_nav_small'] ? ' slider-nav-sm' : '';
+    $autoPlay   = $settings['_slider_auto_play'] ? ' slider-nav-autoplay' : '';
+    $pause      = $settings['_slider_pause'] ? ' slider-nav-autopause' : '';
     
     $this->add_render_attribute(
 		'slider_options',
 		[
-			'class' => 'swiffy-slider'. $to_show . $gap . $reveal . " " . $navigation . $dark . $small,
+			'class' => 'swiffy-slider'. $to_show . $gap . $reveal . " " . $navigation . $dark . $small . $autoPlay ,
+            'data-slider-nav-autoplay-interval'=> $settings['_slider_speed']
 		]
 	);
     ?>
 
 <div <?php echo $this->get_render_attribute_string( 'slider_options' ); ?>>
-    <ul class="slider-container py-4" id="slider2">
+    <ul class="slider-container" id="slider2">
         <?php
 		
         $args = array(
@@ -451,7 +511,7 @@ class Product_Carousel extends Base{
                     <div class="ua-flex-grow-1">
                         <a href="<?php echo get_the_permalink(); ?>">
                             <?php
-                            echo '<' . $settings['_ua_front_title_tag'] . ' class="front-title">' . $loop->post->post_title . 
+                            echo '<' . $settings['_ua_front_title_tag'] . ' class="ua-product-title">' . $loop->post->post_title . 
                                     '</' . $settings['_ua_front_title_tag'] . '>';
                             ?>
                         </a>
