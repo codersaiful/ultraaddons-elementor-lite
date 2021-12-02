@@ -12,6 +12,7 @@ use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Icons_Manager;
+use Elementor\Plugin;
 
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -701,7 +702,7 @@ class Product_Flip extends Base{
         }
 		$settings 	= $this->get_settings_for_display();
 		$col 		= $settings['_ua_col'];
-		$back_view 	= ($settings['_ua_back_view'] =='yes') ? 'style="opacity:1; transform:rotateY(-20deg)" ' :'';
+		$back_view 	= ( $settings['_ua_back_view'] =='yes' && Plugin::$instance->editor->is_edit_mode() ) ? 'style="opacity:1; transform:rotateY(-20deg)" ' :'';
 	?>
 	<div class="ua-row">
 	<?php
