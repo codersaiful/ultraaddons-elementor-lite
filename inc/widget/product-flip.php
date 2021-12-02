@@ -214,36 +214,7 @@ class Product_Flip extends Base{
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
-		$this->add_responsive_control(
-			'_ua_text_alignment',
-			[
-				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
-				'type' => Controls_Manager::CHOOSE,
-				'options' => [
-					'left' => [
-						'title' => esc_html__( 'Left', 'ultraaddons' ),
-						'icon' => 'eicon-text-align-left',
-					],
-					'center' => [
-						'title' => esc_html__( 'Center', 'ultraaddons' ),
-						'icon' => 'eicon-text-align-center',
-					],
-					'right' => [
-						'title' => esc_html__( 'Right', 'ultraaddons' ),
-						'icon' => 'eicon-text-align-right',
-					],
-					'justify' => [
-						'title' => esc_html__( 'justify', 'ultraaddons' ),
-						'icon' => 'eicon-text-align-justify',
-					],
-				],
-				'default' => 'left',
-				'selectors' => [
-					'{{WRAPPER}} .ua-product-flip .front' => 'text-align: {{VALUE}};',
-					'{{WRAPPER}} .ua-product-flip .back' => 'text-align: {{VALUE}};',
-				],
-			]
-		);
+		
 		$this->add_control(
 			'_ua_product_flip_animation_type',
 			[
@@ -382,6 +353,33 @@ class Product_Flip extends Base{
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
+		$this->add_responsive_control(
+			'_ua_text_alignment',
+			[
+				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'start' => [
+						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'end' => [
+						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-right',
+					]
+				],
+				'default' => 'center',
+				'selectors' => [
+					'{{WRAPPER}} .ua-product-flip .front' => 'align-items: {{VALUE}};',
+					'{{WRAPPER}} .ua-product-flip .back' => 'align-items: {{VALUE}};',
+					'{{WRAPPER}} .ua-product-flip .back' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
 		$this->add_control(
 			'_ua_product_flip_bg_back', [
 				'label' => __( 'Back Background', 'ultraaddons' ),
@@ -408,7 +406,8 @@ class Product_Flip extends Base{
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-product-flip .back p' => 'color: {{VALUE}};',
-				]
+				],
+				'separator' => 'after'
 			]
         );
 	
@@ -537,7 +536,7 @@ class Product_Flip extends Base{
 				'label' => __( 'Button Background', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} a.ua-cart-btn' => 'background: {{VALUE}};',
+						'{{WRAPPER}} .ua-cart a.button' => 'background: {{VALUE}};',
 				]
 			]
         );
@@ -546,7 +545,7 @@ class Product_Flip extends Base{
 				'label' => __( 'Button Text Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} a.ua-cart-btn, i.uicon.uicon-cart' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .ua-cart a.button, i.uicon.uicon-cart' => 'color: {{VALUE}};',
 				]
 			]
         );
@@ -556,9 +555,43 @@ class Product_Flip extends Base{
 			[
 					'name' => 'cart_btn_typography',
 					'label' => 'Button Typography',
-					'selector' => '{{WRAPPER}} a.ua-cart-btn',
+					'selector' => '{{WRAPPER}} .ua-cart a.button',
 			]
         );
+		$this->add_responsive_control(
+			'_cart_btn_radius',
+			[
+				'label'       => esc_html__( 'Button Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-cart a.button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'_cart_btn_padding',
+			[
+				'label'       => esc_html__( 'Button Padding', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-cart a.button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 		
 		$this->end_controls_tab();
 		/**
@@ -575,7 +608,7 @@ class Product_Flip extends Base{
 				'label' => __( 'Button Background', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} a.ua-cart-btn:hover' => 'background: {{VALUE}};',
+						'{{WRAPPER}} .ua-cart a.button:hover' => 'background: {{VALUE}};',
 				]
 			]
         );
@@ -584,7 +617,7 @@ class Product_Flip extends Base{
 				'label' => __( 'Button Text Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} a.ua-cart-btn:hover, a.ua-cart-btn:hover i.uicon.uicon-cart' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .ua-cart a.button:hover, .ua-cart a.button:hover' => 'color: {{VALUE}};',
 				]
 			]
         );

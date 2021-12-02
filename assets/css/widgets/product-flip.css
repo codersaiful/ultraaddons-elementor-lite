@@ -73,6 +73,7 @@
 	font-size: 1.1rem;
 	line-height: 160%;
 	color: #999;
+	margin-bottom: 30px;
 }
 
 .ua-product-flip .front-title {
@@ -171,7 +172,7 @@
     font-size: 15px;
     width: 100%;
 }
-.woocommerce .ua-cart .ua-cart-btn{
+.ua-cart a.button{
 	font-size: 16px;
 	font-weight: 400;
 	border-radius: 3px;
@@ -184,7 +185,7 @@
 	outline: 0;
 	transition:.5s
 }
-.woocommerce .ua-cart .ua-cart-btn:hover{
+.woocommerce .ua-cart > a.button:hover{
 	transition:.7s
 }
 .ua-cart a > span{ 
