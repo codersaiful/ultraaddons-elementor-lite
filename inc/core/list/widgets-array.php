@@ -456,6 +456,14 @@ $widgetsArray = [
                 __( 'Basic', 'ultraaddons' ),
             ],
     ],
+    'Product_Carousel' => [
+            'name'  => __( 'Product Carousel', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-clock-o',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
     
 ];
 
