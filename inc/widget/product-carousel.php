@@ -267,6 +267,56 @@ class Product_Carousel extends Base{
 				'default' => 'yes',
 			]
 		);
+         $this->add_control(
+			'_slider_reveal',
+			[
+				'label' => __( 'Reveal', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+         $this->add_control(
+			'_slider_navigation',
+			[
+				'label' => esc_html__( 'Navigation', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'slider-nav-chevron' => 'Chevron',
+					'slider-nav-arrow' => 'Arrow',
+					'slider-nav-caret' => 'Caret',
+					'slider-nav-caretfill' => 'Caret filled',
+					'slider-nav-round' => 'Round with arrow',
+					'slider-nav-square' => 'Square with chevron',
+				],
+				'default' => '3',
+			]
+		);
+        $this->add_control(
+			'_slider_nav_dark',
+			[
+				'label' => __( 'Dark', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+        $this->add_control(
+			'_slider_nav_small',
+			[
+				'label' => __( 'Small', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+
 		
 	$this->end_controls_section();
 	}
@@ -324,12 +374,16 @@ class Product_Carousel extends Base{
     }
     $settings   = $this->get_settings_for_display();
     $gap        = ($settings['_slider_gap']=='yes') ? '' : ' slider-item-nogap';
-    $to_show    = $settings['_slider_to_show'] ? ' slider-item-show'. $settings['_slider_to_show'] : ''  ;
+    $reveal     = ($settings['_slider_reveal']=='yes') ? ' slider-item-reveal' : '';
+    $to_show    = $settings['_slider_to_show'] ? ' slider-item-show'. $settings['_slider_to_show'] : '';
+    $navigation = $settings['_slider_navigation'] ? $settings['_slider_navigation'] : '';
+    $dark       = $settings['_slider_nav_dark'] ? ' slider-nav-dark' : '';
+    $small      = $settings['_slider_nav_small'] ? ' slider-nav-sm' : '';
     
     $this->add_render_attribute(
 		'slider_options',
 		[
-			'class' => 'swiffy-slider '. $to_show . $gap ,
+			'class' => 'swiffy-slider'. $to_show . $gap . $reveal . " " . $navigation . $dark . $small,
 		]
 	);
     ?>
