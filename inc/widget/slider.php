@@ -1,7 +1,7 @@
 <?php
 namespace UltraAddons\Widget;
 
-use Elementor\Widget_Base;
+use Elementor\Plugin;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
@@ -179,9 +179,9 @@ class Slider extends Base{
 
                             (int) $select_post_id = $queried_post->ID;
                             
-                            if ( \Elementor\Plugin::instance()->db->is_built_with_elementor( $select_post_id ) ) {
+                            if( Plugin::$instance->documents->get( $select_post_id )->is_built_with_elementor() ){
                                 echo wp_kses_post( '<div class="ua-slider-item">' );
-                                echo \Elementor\Plugin::instance()->frontend->get_builder_content_for_display( $select_post_id );
+                                echo Plugin::instance()->frontend->get_builder_content_for_display( $select_post_id );
                                 echo wp_kses_post( '</div>' );
                             }
                         }else{
