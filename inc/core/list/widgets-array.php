@@ -467,7 +467,7 @@ $widgetsArray = [
     'Image_Hover_3D' => [
             'name'  => __( '3D Image Hover', 'ultraaddons' ),
             'is_pro'   => false,
-            'icon'      => 'eicon-clock-o',
+            'icon'      => 'eicon-photo-library',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
