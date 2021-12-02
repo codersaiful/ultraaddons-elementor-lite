@@ -68,10 +68,9 @@
 	border-radius: 10px;
 }
 
-.ua-product-flip>.front p,
-.ua-product-flip>.back p {
+.ua-product-flip>.front .ua-desc,
+.ua-product-flip>.back .ua-desc{
 	font-size: 1.1rem;
-	line-height: 160%;
 	color: #999;
 	margin-bottom: 30px;
 }

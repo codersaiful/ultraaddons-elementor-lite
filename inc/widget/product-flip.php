@@ -375,8 +375,8 @@ class Product_Flip extends Base{
 				'default' => 'center',
 				'selectors' => [
 					'{{WRAPPER}} .ua-product-flip .front' => 'align-items: {{VALUE}};',
-					'{{WRAPPER}} .ua-product-flip .back' => 'align-items: {{VALUE}};',
-					'{{WRAPPER}} .ua-product-flip .back' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .ua-product-flip .back' => 'align-items: {{VALUE}}; text-align: {{VALUE}};',
+					
 				],
 			]
 		);
@@ -405,7 +405,7 @@ class Product_Flip extends Base{
 				'label' => __( 'Description Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .ua-product-flip .back p' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .ua-product-flip .back .ua-desc' => 'color: {{VALUE}};',
 				],
 				'separator' => 'after'
 			]
@@ -425,7 +425,7 @@ class Product_Flip extends Base{
 			[
 					'name' => 'content_typography',
 					'label' => 'Description Typography',
-					'selector' => '{{WRAPPER}} .ua-product-flip .back p',
+					'selector' => '{{WRAPPER}} .ua-product-flip .back .ua-desc',
 
 			]
 		);
@@ -442,7 +442,7 @@ class Product_Flip extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .ua-product-flip .back p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ua-product-flip .back .ua-desc' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -809,7 +809,7 @@ class Product_Flip extends Base{
 				'</' . $settings['_ua_back_title_tag'] . '>';
 		   ?>
 		</a>
-		   <p><?php echo $this->word_shortener($description, $settings['_ua_text_truncate']);?></p>
+		   <div class="ua-desc"><?php echo $this->word_shortener($description, $settings['_ua_text_truncate']);?></div>
 		   <div class="ua-cart">
 			   <?php 
 			   
