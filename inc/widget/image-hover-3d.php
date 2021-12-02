@@ -25,7 +25,7 @@ class Image_Hover_3D extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'counter', 'count', 'number', 'countdown'];
+        return [ 'ultraaddons', '3d', 'image', 'magic', 'slide'];
     }
     
     
