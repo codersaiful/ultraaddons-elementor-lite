@@ -71,7 +71,7 @@
     display: flex;
     padding: 20px;
     align-items: flex-end;
-    box-sizing: border-ua-3dimage-box;
+    box-sizing: border-box;
   }
   .ua-3d-image-hover-wrapper .ua-3dimage-box .ua-3dimage-content h2 {
     color: #fff;
