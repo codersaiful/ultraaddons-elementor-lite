@@ -14,6 +14,19 @@ use Elementor\Repeater;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+/**
+ * Product Carousel
+ * Product Carousel is a cool interactive product slider. It's work for WooCommerce Product carousel.
+ * 
+ * Credit: https://github.com/dynamicweb/swiffy-slider
+ * 
+ * 
+ * @since 1.1.0.8
+ * @package UltraAddons
+ * @author Saiful islam <codersaiful@gmail.com>
+ * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
+ */
+
 class Product_Carousel extends Base{
     
     /**
@@ -28,7 +41,7 @@ class Product_Carousel extends Base{
     public function __construct($data = [], $args = null) {
         parent::__construct($data, $args);
 
-        //Naming of Args for owlCarousel
+        //Naming of Args for swiffySlider
         $name           = 'swiffySlider';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/swiffy-slider.min.js';
         $dependency     =  ['jquery'];//['jquery'];
@@ -102,6 +115,14 @@ class Product_Carousel extends Base{
         $this->nav_controls();
         //For General Style Tab
         $this->style_general_controls();
+		//For Content Style Tab
+        $this->style_content_controls();
+
+		//For Box Style Tab
+        $this->style_box_controls();
+		
+		//For Navigation Style Tab
+        $this->style_navi_controls();
        
     }
 
@@ -137,18 +158,6 @@ class Product_Carousel extends Base{
 			]
 		);
 		
-		$this->add_control(
-			'_ua_post_page_number',
-			[
-				'label' => __( 'Page Number', 'ultraaddons' ),
-				'type' => Controls_Manager::NUMBER,
-				'min' => 1,
-				//'max' => 300,
-				'step' => 1,
-				'default' => 1,
-			]
-		);
-
 		$this->add_control(
 			'_ua_product_order',
 			[
@@ -221,8 +230,7 @@ class Product_Carousel extends Base{
 				'label_block' => true,
 			]
 		);
-		 
-		
+	
 		$this->end_controls_section();
 	}
    
@@ -265,10 +273,43 @@ class Product_Carousel extends Base{
 				'default' => 'yes',
 			]
 		);
+		$this->add_control(
+			'_slider_nav_visible',
+			[
+				'label' => __( 'Always Visible', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+		$this->add_control(
+			'_slider_nav_outside',
+			[
+				'label' => __( 'Nav Outside', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		);
         $this->add_control(
 			'_slider_nav_small',
 			[
 				'label' => __( 'Small', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+		$this->add_control(
+			'_slider_indicator',
+			[
+				'label' => __( 'Dots Pagination', 'ultraaddons' ),
 				'type' => Controls_Manager::SWITCHER,
 				'label_on' => __( 'Yes', 'ultraaddons' ),
 				'label_off' => __( 'No', 'ultraaddons' ),
@@ -401,7 +442,91 @@ class Product_Carousel extends Base{
 				'default' => 'h2',
 			]
 		);
-        $this->add_group_control(
+        
+		
+    $this->end_controls_tab();
+    $this->end_controls_section();
+       
+    }
+	//Content Style Tab
+	protected function style_content_controls() {
+        $this->start_controls_section(
+            'style_content',
+            [
+                'label'     => esc_html__( 'Content', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+       	$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'tilte_typography',
+					'label' => 'Title Typography',
+					'selector' => '{{WRAPPER}} .ua-product-title',
+			]
+        );
+		$this->add_control(
+			'_title_color', [
+				'label' => __( 'Title Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-product-title' => 'color: {{VALUE}};',
+				],
+				'separator'=> 'after'
+			]
+        );
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'cat_typography',
+					'label' => 'Category Typography',
+					'selector' => '{{WRAPPER}} .ua-card-text',
+			]
+        );
+		$this->add_control(
+			'_cat_color', [
+				'label' => __( 'Category Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-card-text' => 'color: {{VALUE}};',
+				],
+				'separator'=> 'after'
+			]
+        );
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'price_typography',
+					'label' => 'Price Typography',
+					'selector' => '{{WRAPPER}} .ua-pc-price',
+			]
+        );
+		$this->add_control(
+			'_price_color', [
+				'label' => __( 'Price Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-pc-price' => 'color: {{VALUE}};',
+				],
+				'separator'=> 'after'
+			]
+        );
+		
+    $this->end_controls_tab();
+    $this->end_controls_section();
+	
+    }
+
+	//Box Style Tab
+	protected function style_box_controls() {
+        $this->start_controls_section(
+            'style_box',
+            [
+                'label'     => esc_html__( 'Box', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+      $this->add_group_control(
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'box_shadow',
@@ -409,10 +534,59 @@ class Product_Carousel extends Base{
 				'selector' => '{{WRAPPER}} .slider-container .ua-card',
 			]
 		);
+		$this->add_responsive_control(
+			'_box_radius',
+			[
+				'label'       => esc_html__( 'Box Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .slider-container .ua-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		
 		
     $this->end_controls_tab();
     $this->end_controls_section();
-       
+
+    }
+	//Navigation Style Tab
+	protected function style_navi_controls() {
+        $this->start_controls_section(
+            'style_navi',
+            [
+                'label'     => esc_html__( 'Navigation', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+     
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'nav_shadow',
+				'label' => __( 'Nav Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .slider-nav-dark.slider-nav-round .slider-nav::before, .slider-nav-dark.slider-nav-square .slider-nav::before',
+			]
+		);
+		$this->add_control(
+			'_nav_bg', [
+				'label' => __( 'Nav Background', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .slider-nav-dark.slider-nav-round .slider-nav::before, .slider-nav-dark.slider-nav-square .slider-nav::before' => 'background: {{VALUE}};',
+				],
+			]
+        );
+    $this->end_controls_tab();
+    $this->end_controls_section();
+
     }
     
      /**
@@ -438,24 +612,26 @@ class Product_Carousel extends Base{
     $small      = $settings['_slider_nav_small'] ? ' slider-nav-sm' : '';
     $autoPlay   = $settings['_slider_auto_play'] ? ' slider-nav-autoplay' : '';
     $pause      = $settings['_slider_pause'] ? ' slider-nav-autopause' : '';
+    $indicator  = $settings['_slider_indicator'] ? ' slider-indicators' : '';
+    $nav_visible  = $settings['_slider_nav_visible'] ? ' slider-nav-visible' : '';
+    $nav_outside  = $settings['_slider_nav_outside'] ? ' slider-nav-outside' : '';
     
     $this->add_render_attribute(
 		'slider_options',
 		[
-			'class' => 'swiffy-slider'. $to_show . $gap . $reveal . " " . $navigation . $dark . $small . $autoPlay ,
+			'class' => 'swiffy-slider'. $to_show . $gap . $reveal . " " . $navigation . $dark . $small . $autoPlay . $indicator . $nav_visible .$nav_outside,
             'data-slider-nav-autoplay-interval'=> $settings['_slider_speed']
 		]
 	);
     ?>
 
 <div <?php echo $this->get_render_attribute_string( 'slider_options' ); ?>>
-    <ul class="slider-container" id="slider2">
+    <ul class="slider-container">
         <?php
 		
         $args = array(
             'post_type' 	=> 'product',
             'posts_per_page'=> $settings['_ua_post_per_page'],
-            'paged'=> ! empty( $settings['_ua_post_page_number'] ) ? $settings['_ua_post_page_number'] : 1,
 			'order'			=> $settings['_ua_product_order'],
 			'orderby'		=> $settings['_ua_product_orderby'],
             );
@@ -476,8 +652,7 @@ class Product_Carousel extends Base{
 					'terms'     => $settings['cat_ids'],
 				)
 			);
-		}	
-
+		}
 		
 		if( ! empty( $settings['tag_ids'] ) ){
 			$args['tax_query'] = array(
@@ -525,7 +700,7 @@ class Product_Carousel extends Base{
                             ?>
                         </p>
                     </div>
-                    <div class="ua-px-md-2"><?php echo $product->get_price_html();?> </div>
+                    <div class="ua-px-md-2 ua-pc-price"><?php echo $product->get_price_html();?> </div>
                 </div>
             </div>
         </li>

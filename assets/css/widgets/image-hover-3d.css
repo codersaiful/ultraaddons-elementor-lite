@@ -22,14 +22,18 @@
   .ua-3d-image-hover-wrapper:hover .ua-3dimage-box {
     transform: rotateY(25deg);
   }
+  .ua-3d-image-edit-mode .ua-3dimage-box:first-child ~ .ua-3dimage-box,
   .ua-3d-image-hover-wrapper .ua-3dimage-box:hover ~ .ua-3dimage-box {
     transform: rotateY(-25deg);
   }
+  .ua-3d-image-edit-mode .ua-3dimage-box:first-child,
   .ua-3d-image-hover-wrapper .ua-3dimage-box:hover {
     transform: rotateY(0deg) scale(1.25);
     z-index: 1;
     box-shadow: 0 25px 40px rgba(0,0,0,0.5);
+    background: transparent;
   }
+
   .ua-3d-image-hover-wrapper .ua-3dimage-box .ua-3dimage-imgbx {
     position: absolute;
     top: 0;
@@ -50,6 +54,7 @@
     transition: 0.5s;
     mix-blend-mode: multiply;
   }
+  .ua-3d-image-edit-mode .ua-3dimage-box:first-child .ua-3dimage-imgbx:before,
   .ua-3d-image-hover-wrapper .ua-3dimage-box:hover .ua-3dimage-imgbx:before {
     opacity: 1;
   }
@@ -82,6 +87,7 @@
     transform: translateY(200px);
     transition-delay: 0.3s;
   }
+  .ua-3d-image-edit-mode .ua-3dimage-box:first-child .ua-3dimage-content h2,
   .ua-3d-image-hover-wrapper .ua-3dimage-box:hover .ua-3dimage-content h2 {
     transform: translateY(0px);
   }
@@ -92,6 +98,7 @@
     transform: translateY(200px);
     transition-delay: 0.4s;
   }
+  .ua-3d-image-edit-mode .ua-3dimage-box:first-child .ua-3dimage-content p,
   .ua-3d-image-hover-wrapper .ua-3dimage-box:hover .ua-3dimage-content p {
     transform: translateY(0px);
   }
