@@ -722,8 +722,11 @@ class Product_Carousel extends Base{
 				'label' => 'Cart Typography',
 				'name' => 'cart_typography',
 				'selector' => '{{WRAPPER}} .ua-thumbnail .cart-links a.add-card span',
-				'font_size' => [ 'default' => [ 'unit' => 'px', 'size' => 14 ] ]
-
+				'font_size' => [ 
+					'default' => [ 
+					'unit' => 'px', 
+					'size' => 14 ]
+					]
 			]
 		);
 		$this->add_control(
