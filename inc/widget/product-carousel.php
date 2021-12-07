@@ -14,6 +14,19 @@ use Elementor\Repeater;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+/**
+ * Product Carousel
+ * Product Carousel is a cool interactive product slider. It's work for WooCommerce Product carousel.
+ * 
+ * Credit: https://github.com/dynamicweb/swiffy-slider
+ * 
+ * 
+ * @since 1.1.0.8
+ * @package UltraAddons
+ * @author Saiful islam <codersaiful@gmail.com>
+ * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
+ */
+
 class Product_Carousel extends Base{
     
     /**
@@ -28,7 +41,7 @@ class Product_Carousel extends Base{
     public function __construct($data = [], $args = null) {
         parent::__construct($data, $args);
 
-        //Naming of Args for owlCarousel
+        //Naming of Args for swiffySlider
         $name           = 'swiffySlider';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/swiffy-slider.min.js';
         $dependency     =  ['jquery'];//['jquery'];
@@ -107,6 +120,9 @@ class Product_Carousel extends Base{
 
 		//For Box Style Tab
         $this->style_box_controls();
+		
+		//For Navigation Style Tab
+        $this->style_navi_controls();
        
     }
 
@@ -257,10 +273,43 @@ class Product_Carousel extends Base{
 				'default' => 'yes',
 			]
 		);
+		$this->add_control(
+			'_slider_nav_visible',
+			[
+				'label' => __( 'Always Visible', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+		$this->add_control(
+			'_slider_nav_outside',
+			[
+				'label' => __( 'Nav Outside', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		);
         $this->add_control(
 			'_slider_nav_small',
 			[
 				'label' => __( 'Small', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+		$this->add_control(
+			'_slider_indicator',
+			[
+				'label' => __( 'Dots Pagination', 'ultraaddons' ),
 				'type' => Controls_Manager::SWITCHER,
 				'label_on' => __( 'Yes', 'ultraaddons' ),
 				'label_off' => __( 'No', 'ultraaddons' ),
@@ -468,7 +517,7 @@ class Product_Carousel extends Base{
 	
     }
 
-	//Content Style Tab
+	//Box Style Tab
 	protected function style_box_controls() {
         $this->start_controls_section(
             'style_box',
@@ -503,10 +552,41 @@ class Product_Carousel extends Base{
 			]
 		);
 		
+		
     $this->end_controls_tab();
     $this->end_controls_section();
-	
-       
+
+    }
+	//Navigation Style Tab
+	protected function style_navi_controls() {
+        $this->start_controls_section(
+            'style_navi',
+            [
+                'label'     => esc_html__( 'Navigation', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+     
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'nav_shadow',
+				'label' => __( 'Nav Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .slider-nav-dark.slider-nav-round .slider-nav::before, .slider-nav-dark.slider-nav-square .slider-nav::before',
+			]
+		);
+		$this->add_control(
+			'_nav_bg', [
+				'label' => __( 'Nav Background', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .slider-nav-dark.slider-nav-round .slider-nav::before, .slider-nav-dark.slider-nav-square .slider-nav::before' => 'background: {{VALUE}};',
+				],
+			]
+        );
+    $this->end_controls_tab();
+    $this->end_controls_section();
+
     }
     
      /**
@@ -532,18 +612,21 @@ class Product_Carousel extends Base{
     $small      = $settings['_slider_nav_small'] ? ' slider-nav-sm' : '';
     $autoPlay   = $settings['_slider_auto_play'] ? ' slider-nav-autoplay' : '';
     $pause      = $settings['_slider_pause'] ? ' slider-nav-autopause' : '';
+    $indicator  = $settings['_slider_indicator'] ? ' slider-indicators' : '';
+    $nav_visible  = $settings['_slider_nav_visible'] ? ' slider-nav-visible' : '';
+    $nav_outside  = $settings['_slider_nav_outside'] ? ' slider-nav-outside' : '';
     
     $this->add_render_attribute(
 		'slider_options',
 		[
-			'class' => 'swiffy-slider'. $to_show . $gap . $reveal . " " . $navigation . $dark . $small . $autoPlay ,
+			'class' => 'swiffy-slider'. $to_show . $gap . $reveal . " " . $navigation . $dark . $small . $autoPlay . $indicator . $nav_visible .$nav_outside,
             'data-slider-nav-autoplay-interval'=> $settings['_slider_speed']
 		]
 	);
     ?>
 
 <div <?php echo $this->get_render_attribute_string( 'slider_options' ); ?>>
-    <ul class="slider-container" id="slider2">
+    <ul class="slider-container">
         <?php
 		
         $args = array(
