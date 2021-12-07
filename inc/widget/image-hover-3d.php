@@ -10,6 +10,7 @@ use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Background;
 use Elementor\Repeater;
 use Elementor\Utils;
+use Elementor\Plugin;
 
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -66,11 +67,12 @@ class Image_Hover_3D extends Base{
         
         $settings           = $this->get_settings_for_display();
         
+        $back_view 	= ( $settings['back_view'] =='yes' && Plugin::$instance->editor->is_edit_mode() ) ? 'edit-mode' : 'front-view';
 
         if(empty($settings['images'])) return;
 
         ?>
-        <div class="ua-3d-image-hover-wrapper">
+        <div class="ua-3d-image-hover-wrapper ua-3d-image-<?php echo esc_attr( $back_view ); ?>">
             <?php
             foreach($settings['images'] as $image){
             ?>
@@ -253,6 +255,28 @@ class Image_Hover_3D extends Base{
                     ],
             ]
         );
+
+        $this->add_control(
+			'important_note',
+			[
+				'type' => \Elementor\Controls_Manager::RAW_HTML,
+				'raw' => __( 'This option is only for live design purposes.', 'ultraaddons' ),
+				'content_classes' => 'ua-alert',
+				'separator' => 'before',
+				'condition' => ['back_view'=>'yes']
+			]
+		);
+        $this->add_control(
+			'back_view',
+			[
+				'label' => __( 'View Back', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Show', 'ultraaddons' ),
+				'label_off' => __( 'Hide', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		);
 
 
         $this->end_controls_section();
