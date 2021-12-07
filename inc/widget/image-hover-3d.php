@@ -10,6 +10,7 @@ use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Background;
 use Elementor\Repeater;
 use Elementor\Utils;
+use Elementor\Plugin;
 
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -46,6 +47,9 @@ class Image_Hover_3D extends Base{
         $this->style_basic();
         $this->style_hover_box();
         
+
+        //For Typography Section Style Tab
+        $this->style_typography();
     
        
     }
@@ -63,11 +67,12 @@ class Image_Hover_3D extends Base{
         
         $settings           = $this->get_settings_for_display();
         
+        $back_view 	= ( $settings['back_view'] =='yes' && Plugin::$instance->editor->is_edit_mode() ) ? 'edit-mode' : 'front-view';
 
         if(empty($settings['images'])) return;
 
         ?>
-        <div class="ua-3d-image-hover-wrapper">
+        <div class="ua-3d-image-hover-wrapper ua-3d-image-<?php echo esc_attr( $back_view ); ?>">
             <?php
             foreach($settings['images'] as $image){
             ?>
@@ -251,6 +256,28 @@ class Image_Hover_3D extends Base{
             ]
         );
 
+        $this->add_control(
+			'important_note',
+			[
+				'type' => \Elementor\Controls_Manager::RAW_HTML,
+				'raw' => __( 'This option is only for live design purposes.', 'ultraaddons' ),
+				'content_classes' => 'ua-alert',
+				'separator' => 'before',
+				'condition' => ['back_view'=>'yes']
+			]
+		);
+        $this->add_control(
+			'back_view',
+			[
+				'label' => __( 'View Back', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Show', 'ultraaddons' ),
+				'label_off' => __( 'Hide', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		);
+
 
         $this->end_controls_section();
     }
@@ -287,6 +314,51 @@ class Image_Hover_3D extends Base{
 			]
 		);
 
+        $this->end_controls_section();
+    }
+
+    /**
+     * Typography Section for Style Tab
+     * 
+     * @since 1.1.0.8
+     */
+    protected function style_typography() {
+        $this->start_controls_section(
+            'typography',
+            [
+                'label'     => esc_html__( 'Typography', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        
+        
+        $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                        'name' => 'title_typography',
+                        'label' => 'Heading',
+                        'selector' => '{{WRAPPER}} .ua-3dimage-content h2',
+                        'global' => [
+                                'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                        ],
+
+                ]
+        );
+        
+        $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                        'name' => 'subhead_typography',
+                        'label' => 'Paragraph',
+                        'selector' => '{{WRAPPER}} .ua-3dimage-content p',
+                        'global' => [
+                                'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                        ],
+
+                ]
+        );
+        
+        
         $this->end_controls_section();
     }
     
