@@ -46,12 +46,11 @@ class Product_Carousel extends Base{
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/swiffy-slider.min.js';
         $dependency     =  ['jquery'];//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
-        $in_footer  = true;
+        $in_footer  	= true;
 
         wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
         wp_enqueue_script( $name );
-
-
+		
         //CSS file for Slider Script Owl Carousel Slider
         wp_register_style('swiffySlider', ULTRA_ADDONS_ASSETS . 'vendor/css/swiffy-slider.min.css' );
         wp_enqueue_style('swiffySlider' );
@@ -117,12 +116,14 @@ class Product_Carousel extends Base{
         $this->style_general_controls();
 		//For Content Style Tab
         $this->style_content_controls();
-
 		//For Box Style Tab
         $this->style_box_controls();
-		
 		//For Navigation Style Tab
         $this->style_navi_controls();
+        //For sale flash Tab
+        $this->pc_sale_flash_controls();
+        //For cart Tab
+        $this->cart_style_controls();
        
     }
 
@@ -252,6 +253,7 @@ class Product_Carousel extends Base{
 				'label' => esc_html__( 'Navigation', 'ultraaddons' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
+					'none' => 'None',
 					'slider-nav-chevron' => 'Chevron',
 					'slider-nav-arrow' => 'Arrow',
 					'slider-nav-caret' => 'Caret',
@@ -295,6 +297,17 @@ class Product_Carousel extends Base{
 				'default' => 'no',
 			]
 		);
+		/* $this->add_control(
+			'_slider_mouse_drag',
+			[
+				'label' => __( 'Mouse Drag', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		); */
         $this->add_control(
 			'_slider_nav_small',
 			[
@@ -309,12 +322,12 @@ class Product_Carousel extends Base{
 		$this->add_control(
 			'_slider_indicator',
 			[
-				'label' => __( 'Dots Pagination', 'ultraaddons' ),
+				'label' => __( 'Indicators', 'ultraaddons' ),
 				'type' => Controls_Manager::SWITCHER,
 				'label_on' => __( 'Yes', 'ultraaddons' ),
 				'label_off' => __( 'No', 'ultraaddons' ),
 				'return_value' => 'yes',
-				'default' => 'yes',
+				'default' => 'no',
 			]
 		);
 
@@ -551,6 +564,14 @@ class Product_Carousel extends Base{
 				],
 			]
 		);
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'box_border',
+				'label' => __( 'Border', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .slider-container .ua-card',
+			]
+		);
 		
 		
     $this->end_controls_tab();
@@ -588,6 +609,207 @@ class Product_Carousel extends Base{
     $this->end_controls_section();
 
     }
+	/**
+	 * Sale Flash Style Controls
+	 */
+	protected function pc_sale_flash_controls() {
+		
+        $this->start_controls_section(
+            'sale_flash_style',
+            [
+                'label'     => esc_html__( 'Sale Flash', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		
+		$this->add_control(
+			'_ua_sale_flash_bg', [
+				'label' => __( 'Flash Background', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-onsale' => 'background-color: {{VALUE}};',
+				],
+				'default'=>'#111'
+			]
+        );
+		$this->add_control(
+			'_ua_flash_color', [
+				'label' => __( 'Flash Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-onsale' => 'color: {{VALUE}};',
+				],
+				'default'=>'#fff',
+			]
+        );
+		
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'flash_typography',
+					'label' => 'Flash Typography',
+					'selector' => '{{WRAPPER}} .ua-onsale',
+			]
+        );
+		$this->add_responsive_control(
+			'_ua_flash_margin',
+			[
+				'label'       => esc_html__( 'Flash Margin', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-onsale' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'_ua_flash_padding',
+			[
+				'label'       => esc_html__( 'Flash Padding', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-onsale' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'_ua_flash_radius',
+			[
+				'label'       => esc_html__( 'Flash Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-onsale' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		
+		$this->end_controls_section();
+	}
+	/**
+	 * Cart Controls style
+	 */
+	protected function cart_style_controls(){
+		$this->start_controls_section(
+			'pc_cart_style',
+			[
+				'label' => __( 'Cart', 'ultraaddons' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'label' => 'Cart Typography',
+				'name' => 'cart_typography',
+				'selector' => '{{WRAPPER}} .ua-thumbnail .cart-links a.add-card span',
+				'font_size' => [ 'default' => [ 'unit' => 'px', 'size' => 14 ] ]
+
+			]
+		);
+		$this->add_control(
+			'aep_blog_readmore_spacing',
+			[
+				'label' => __( 'Content Spacing', 'ultraaddons' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'selectors' => [
+					'{{WRAPPER}} .ua-thumbnail .cart-links' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow:hidden',
+				],
+			]
+		);
+        $this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'label' => 'Box Shadow',
+				'name' => 'carts_box_shadow',
+				'selector' => '{{WRAPPER}} .ua-thumbnail .cart-links .add-card',
+			]
+		);
+		$this->start_controls_tabs( 'tabs_button_style' );
+
+		$this->start_controls_tab(
+			'tab_button_normal',
+			[
+				'label' => __( 'Normal', 'ultraaddons' ),
+			]
+		);
+		
+		$this->add_control(
+			'aep_cart_color',
+			[
+				'label' => __( 'Text Color', 'ultraaddons' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#333',
+				'selectors' => [
+					'{{WRAPPER}} .ua-thumbnail .cart-links a, .ua-thumbnail .cart-links a i ' => 'color: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_control(
+			'aep_cart_bg_color', [
+				'label' => __( 'Cart Background', 'ultraaddons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .ua-thumbnail .cart-links a' => 'background: {{VALUE}};',
+				],
+				'default' => '#fff',
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'aep_cart_border',
+				'placeholder' => '1px',
+				'default' => '1px',
+				'selector' => '{{WRAPPER}} .ua-thumbnail .cart-links a',
+				'separator' => 'before',
+			]
+		);
+		$this->end_controls_tab();
+		
+		$this->start_controls_tab(
+			'tab_button_hover',
+			[
+				'label' => __( 'Hover', 'ultraaddons' ),
+			]
+		);
+		$this->add_control(
+			'hover_color',
+			[
+				'label' => __( 'Text Color', 'ultraaddons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .ua-thumbnail .cart-links a:hover' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+				
+		$this->end_controls_tab();
+		
+		$this->end_controls_section();
+
+	}
     
      /**
      * Render oEmbed widget output on the frontend.
@@ -603,23 +825,24 @@ class Product_Carousel extends Base{
         echo "<div class='ua-alert'>" . esc_html__( "WooCommerce is not Activated.", 'ultraaddons' ) . "</div>";
         return;
     }
-    $settings   = $this->get_settings_for_display();
-    $gap        = ($settings['_slider_gap']=='yes') ? '' : ' slider-item-nogap';
-    $reveal     = ($settings['_slider_reveal']=='yes') ? ' slider-item-reveal' : '';
-    $to_show    = $settings['_slider_to_show'] ? ' slider-item-show'. $settings['_slider_to_show'] : '';
-    $navigation = $settings['_slider_navigation'] ? $settings['_slider_navigation'] : '';
-    $dark       = $settings['_slider_nav_dark'] ? ' slider-nav-dark' : '';
-    $small      = $settings['_slider_nav_small'] ? ' slider-nav-sm' : '';
-    $autoPlay   = $settings['_slider_auto_play'] ? ' slider-nav-autoplay' : '';
-    $pause      = $settings['_slider_pause'] ? ' slider-nav-autopause' : '';
-    $indicator  = $settings['_slider_indicator'] ? ' slider-indicators' : '';
-    $nav_visible  = $settings['_slider_nav_visible'] ? ' slider-nav-visible' : '';
-    $nav_outside  = $settings['_slider_nav_outside'] ? ' slider-nav-outside' : '';
+    $settings   	= $this->get_settings_for_display();
+    $gap        	= ($settings['_slider_gap']=='yes') ? '' : ' slider-item-nogap';
+    $reveal     	= ($settings['_slider_reveal']=='yes') ? ' slider-item-reveal' : '';
+    $to_show    	= $settings['_slider_to_show'] ? ' slider-item-show'. $settings['_slider_to_show'] : '';
+    $navigation 	= $settings['_slider_navigation'] ? $settings['_slider_navigation'] : '';
+    $dark       	= $settings['_slider_nav_dark'] ? ' slider-nav-dark' : '';
+    $small      	= $settings['_slider_nav_small'] ? ' slider-nav-sm' : '';
+    $autoPlay   	= $settings['_slider_auto_play'] ? ' slider-nav-autoplay' : '';
+    $pause      	= $settings['_slider_pause'] ? ' slider-nav-autopause' : '';
+    $indicator 		= ($settings['_slider_indicator']!='no') ? ' slider-indicators' : '';
+    $nav_visible  	= ($settings['_slider_nav_visible']=='yes') ? ' slider-nav-visible' : '';
+    $nav_outside  	= ($settings['_slider_nav_outside']=='yes') ? ' slider-nav-outside' : '';
+   //$mouse_drag  	= ($settings['_slider_mouse_drag']=='yes') ? ' slider-nav-mousedrag' : '';
     
     $this->add_render_attribute(
 		'slider_options',
 		[
-			'class' => 'swiffy-slider'. $to_show . $gap . $reveal . " " . $navigation . $dark . $small . $autoPlay . $indicator . $nav_visible .$nav_outside,
+			'class' => 'swiffy-slider'. $to_show . $gap . $reveal . " " . $navigation . $dark . $small . $autoPlay . $indicator . $nav_visible . $nav_outside ,
             'data-slider-nav-autoplay-interval'=> $settings['_slider_speed']
 		]
 	);
@@ -680,7 +903,18 @@ class Product_Carousel extends Base{
         <li>
             <div class="ua-card shadow ua-h-100">
                 <div class="ua-thumbnail">
+					<?php if ( $product->is_on_sale() ) : 
+					echo apply_filters( 'woocommerce_sale_flash', '<span class="ua-onsale">' 
+					. esc_html__( 'Sale!', 'ultraaddons' ) . '</span>', $product );
+					endif;
+					?>
+					<div class="cart-links">
+						<a href="?add-to-cart=<?php echo esc_attr($id); ?>"  class="add-card button add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo esc_attr($id); ?>"  aria-label="Add '<?php echo get_the_title(); ?>' to your cart" rel="nofollow">
+						<i class="fa fa-shopping-cart"></i><span>ADD TO CART</span>
+					</a>
+					</div>
                     <?php echo woocommerce_get_product_thumbnail('woocommerce_full_size');?>
+			
                 </div>
                 <div class="ua-card-body ua-d-flex ua-flex-column ua-flex-md-row">
                     <div class="ua-flex-grow-1">
@@ -700,9 +934,10 @@ class Product_Carousel extends Base{
                             ?>
                         </p>
                     </div>
-                    <div class="ua-px-md-2 ua-pc-price"><?php echo $product->get_price_html();?> </div>
+                    <div class="ua-px-md-2 ua-pc-price">
+						<?php echo $product->get_price_html();?> 
+					</div>
                 </div>
-            </div>
         </li>
         <?php
 	 endwhile;
@@ -712,8 +947,14 @@ class Product_Carousel extends Base{
 	wp_reset_postdata();
 	?>
     </ul>
+	<?php
+	if( $navigation !='none'):
+	?>
     <button type="button" class="slider-nav" aria-label="Go to previous"></button>
     <button type="button" class="slider-nav slider-nav-next" aria-label="Go to next"></button>
+	<?php endif;?>
+
+	
 </div>
 <?php
         
