@@ -102,6 +102,11 @@ class Product_Carousel extends Base{
         $this->nav_controls();
         //For General Style Tab
         $this->style_general_controls();
+		//For Content Style Tab
+        $this->style_content_controls();
+
+		//For Box Style Tab
+        $this->style_box_controls();
        
     }
 
@@ -137,18 +142,6 @@ class Product_Carousel extends Base{
 			]
 		);
 		
-		$this->add_control(
-			'_ua_post_page_number',
-			[
-				'label' => __( 'Page Number', 'ultraaddons' ),
-				'type' => Controls_Manager::NUMBER,
-				'min' => 1,
-				//'max' => 300,
-				'step' => 1,
-				'default' => 1,
-			]
-		);
-
 		$this->add_control(
 			'_ua_product_order',
 			[
@@ -221,8 +214,7 @@ class Product_Carousel extends Base{
 				'label_block' => true,
 			]
 		);
-		 
-		
+	
 		$this->end_controls_section();
 	}
    
@@ -401,7 +393,91 @@ class Product_Carousel extends Base{
 				'default' => 'h2',
 			]
 		);
-        $this->add_group_control(
+        
+		
+    $this->end_controls_tab();
+    $this->end_controls_section();
+       
+    }
+	//Content Style Tab
+	protected function style_content_controls() {
+        $this->start_controls_section(
+            'style_content',
+            [
+                'label'     => esc_html__( 'Content', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+       	$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'tilte_typography',
+					'label' => 'Title Typography',
+					'selector' => '{{WRAPPER}} .ua-product-title',
+			]
+        );
+		$this->add_control(
+			'_title_color', [
+				'label' => __( 'Title Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-product-title' => 'color: {{VALUE}};',
+				],
+				'separator'=> 'after'
+			]
+        );
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'cat_typography',
+					'label' => 'Category Typography',
+					'selector' => '{{WRAPPER}} .ua-card-text',
+			]
+        );
+		$this->add_control(
+			'_cat_color', [
+				'label' => __( 'Category Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-card-text' => 'color: {{VALUE}};',
+				],
+				'separator'=> 'after'
+			]
+        );
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'price_typography',
+					'label' => 'Price Typography',
+					'selector' => '{{WRAPPER}} .ua-pc-price',
+			]
+        );
+		$this->add_control(
+			'_price_color', [
+				'label' => __( 'Price Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-pc-price' => 'color: {{VALUE}};',
+				],
+				'separator'=> 'after'
+			]
+        );
+		
+    $this->end_controls_tab();
+    $this->end_controls_section();
+	
+    }
+
+	//Content Style Tab
+	protected function style_box_controls() {
+        $this->start_controls_section(
+            'style_box',
+            [
+                'label'     => esc_html__( 'Box', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+      $this->add_group_control(
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'box_shadow',
@@ -409,9 +485,27 @@ class Product_Carousel extends Base{
 				'selector' => '{{WRAPPER}} .slider-container .ua-card',
 			]
 		);
+		$this->add_responsive_control(
+			'_box_radius',
+			[
+				'label'       => esc_html__( 'Box Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .slider-container .ua-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 		
     $this->end_controls_tab();
     $this->end_controls_section();
+	
        
     }
     
@@ -455,7 +549,6 @@ class Product_Carousel extends Base{
         $args = array(
             'post_type' 	=> 'product',
             'posts_per_page'=> $settings['_ua_post_per_page'],
-            'paged'=> ! empty( $settings['_ua_post_page_number'] ) ? $settings['_ua_post_page_number'] : 1,
 			'order'			=> $settings['_ua_product_order'],
 			'orderby'		=> $settings['_ua_product_orderby'],
             );
@@ -476,8 +569,7 @@ class Product_Carousel extends Base{
 					'terms'     => $settings['cat_ids'],
 				)
 			);
-		}	
-
+		}
 		
 		if( ! empty( $settings['tag_ids'] ) ){
 			$args['tax_query'] = array(
@@ -525,7 +617,7 @@ class Product_Carousel extends Base{
                             ?>
                         </p>
                     </div>
-                    <div class="ua-px-md-2"><?php echo $product->get_price_html();?> </div>
+                    <div class="ua-px-md-2 ua-pc-price"><?php echo $product->get_price_html();?> </div>
                 </div>
             </div>
         </li>
