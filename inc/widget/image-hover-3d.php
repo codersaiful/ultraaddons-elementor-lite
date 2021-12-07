@@ -43,6 +43,9 @@ class Image_Hover_3D extends Base{
         //For General Section
         $this->content_general_controls();
 
+        $this->style_basic();
+        $this->style_hover_box();
+        
     
        
     }
@@ -70,7 +73,9 @@ class Image_Hover_3D extends Base{
             ?>
             <div class="ua-3dimage-box 3dimage-box-<?php echo $image['_id']; ?>">
                 <div class="ua-3dimage-imgbx">
+                    <?php if( ! empty( $image['image']['url'] ) ){ ?>
                     <img src="<?php echo esc_url( $image['image']['url'] ); ?>">
+                    <?php } ?>
                 </div>
                 <div class="ua-3dimage-content">
                     <div class="ua-3dimage-content-inside">
@@ -150,7 +155,7 @@ class Image_Hover_3D extends Base{
         $this->add_control(
                 'images',
                 [
-                    'label' => __( 'Images', 'ultraaddons' ),
+                    'label' => __( 'Image and content', 'ultraaddons' ),
                     'type' => Controls_Manager::REPEATER,
                     'fields' => $repeater->get_controls(),
                     'default' => [
@@ -190,5 +195,99 @@ class Image_Hover_3D extends Base{
             $this->end_controls_section();
     }
     
+
+    protected function style_basic(){
+        $this->start_controls_section(
+            'basic',
+            [
+                'label' => __( 'Basic Box', 'ultraaddons' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'basic_height',
+            [
+                    'label' => __( 'Box Height', 'ultraaddons' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px' ],
+                    'range' => [
+                            'px' => [
+                                    'min' => 100,
+                                    'max' => 500,
+                                    'step' => 1,
+                            ],
+                    ],
+                    'default' => [
+                            'unit' => 'px',
+                            'size' => 275,
+                    ],
+                    'selectors' => [
+                            '{{WRAPPER}} .ua-3d-image-hover-wrapper .ua-3dimage-box' => 'height: {{SIZE}}{{UNIT}};',
+                    ],
+            ]
+        );
+    
+        $this->add_control(
+            'basic_width',
+            [
+                    'label' => __( 'Box Width', 'ultraaddons' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px' ],
+                    'range' => [
+                            'px' => [
+                                    'min' => 100,
+                                    'max' => 500,
+                                    'step' => 1,
+                            ],
+                    ],
+                    'default' => [
+                            'unit' => 'px',
+                            'size' => 275,
+                    ],
+                    'selectors' => [
+                            '{{WRAPPER}} .ua-3d-image-hover-wrapper .ua-3dimage-box' => 'width: {{SIZE}}{{UNIT}};',
+                    ],
+            ]
+        );
+
+
+        $this->end_controls_section();
+    }
+
+    protected function style_hover_box(){
+        $this->start_controls_section(
+            'hover_box',
+            [
+                'label' => __( 'Hover Box', 'ultraaddons' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+
+        $this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'box_background',
+                'title'=> 'Testing Title',
+				'types' => [ 'classic', 'gradient', 'video', 'slideshow' ],
+				'selector' => '{{WRAPPER}} .ua-3dimage-box .ua-3dimage-imgbx:before',
+                'separator' => 'before',
+				'fields_options' => [
+					'background' => [
+						'frontend_available' => true,
+					],
+					'color' => [
+						'dynamic' => [],
+					],
+					'color_b' => [
+						'dynamic' => [],
+					],
+				],
+			]
+		);
+
+        $this->end_controls_section();
+    }
     
 }
