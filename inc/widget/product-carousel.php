@@ -51,8 +51,13 @@ class Product_Carousel extends Base{
         wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
         wp_enqueue_script( $name );
 		
-        //CSS file for Slider Script Owl Carousel Slider
-        wp_register_style('swiffySlider', ULTRA_ADDONS_ASSETS . 'vendor/css/swiffy-slider.min.css' );
+        //CSS file for dependency
+		$name           = 'swiffySlider';
+        $css_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/css/swiffy-slider.min.css';
+        $dependency     =  [];//kaj ta ses hoyni. pore abar try korte hobe.
+        $version        = ULTRA_ADDONS_VERSION;
+        $media  	= 'all';
+        wp_register_style('swiffySlider', $css_file_url,$dependency,$version, $media ); //product-carousel
         wp_enqueue_style('swiffySlider' );
 
     }
