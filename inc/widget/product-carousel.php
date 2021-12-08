@@ -163,6 +163,17 @@ class Product_Carousel extends Base{
 				'default' => 6,
 			]
 		);
+		$this->add_control(
+			'_ua_post_page_number',
+			[
+				'label' => __( 'Page Number', 'ultraaddons' ),
+				'type' => Controls_Manager::NUMBER,
+				'min' => 1,
+				//'max' => 300,
+				'step' => 1,
+				'default' => 1,
+			]
+		);
 		
 		$this->add_control(
 			'_ua_product_order',
@@ -266,7 +277,7 @@ class Product_Carousel extends Base{
 					'slider-nav-round' => 'Round with arrow',
 					'slider-nav-square' => 'Square with chevron',
 				],
-				'default' => '3',
+				'default' => 'slider-nav-square',
 			]
 		);
         $this->add_control(
@@ -811,8 +822,7 @@ class Product_Carousel extends Base{
 				],
 			]
 		);
-
-				
+	
 		$this->end_controls_tab();
 		
 		$this->end_controls_section();
@@ -850,7 +860,7 @@ class Product_Carousel extends Base{
     $this->add_render_attribute(
 		'slider_options',
 		[
-			'class' => 'swiffy-slider'. $to_show . $gap . $reveal . " " . $navigation . $dark . $small . $autoPlay . $indicator . $nav_visible . $nav_outside ,
+			'class' => 'swiffy-slider'. $to_show . $gap . $reveal . " " . $navigation . $dark . $small . $autoPlay . $indicator . $nav_visible . $nav_outside . $pause ,
             'data-slider-nav-autoplay-interval'=> $settings['_slider_speed']
 		]
 	);
@@ -863,6 +873,7 @@ class Product_Carousel extends Base{
         $args = array(
             'post_type' 	=> 'product',
             'posts_per_page'=> $settings['_ua_post_per_page'],
+			'paged'=> ! empty( $settings['_ua_post_page_number'] ) ? $settings['_ua_post_page_number'] : 1,
 			'order'			=> $settings['_ua_product_order'],
 			'orderby'		=> $settings['_ua_product_orderby'],
             );
@@ -898,16 +909,16 @@ class Product_Carousel extends Base{
         $loop = new \WP_Query( $args );
         if ( $loop->have_posts() ) {
             while ( $loop->have_posts() ) : $loop->the_post();
-				$id 		= $loop->post->ID;
-                $product   	= wc_get_product( $id );
-				$image_id  	= $product->get_image_id();
-				$image_url 	= wp_get_attachment_image_url( $image_id, 'full' );
+				$id 		 = $loop->post->ID;
+                $product   	 = wc_get_product( $id );
+				$image_id  	 = $product->get_image_id();
+				$image_url 	 = wp_get_attachment_image_url( $image_id, 'full' );
 				$description = $loop->post->post_excerpt;
-                $category = get_the_category( $id );
+                $category 	 = get_the_category( $id );
                 if(!empty($category)){
                     echo $category[0]->cat_name;
                 }
-    ?>
+				?>
         <li>
             <div class="ua-card shadow ua-h-100">
                 <div class="ua-thumbnail">
@@ -918,7 +929,12 @@ class Product_Carousel extends Base{
 					?>
 					<div class="cart-links">
 						<a href="?add-to-cart=<?php echo esc_attr($id); ?>"  class="add-card button add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo esc_attr($id); ?>"  aria-label="Add '<?php echo get_the_title(); ?>' to your cart" rel="nofollow">
-						<i class="fa fa-shopping-cart"></i><span>ADD TO CART</span>
+						<i class="fa fa-shopping-cart"></i>
+						<span>
+							<?php echo esc_html__(
+							'ADD TO CART', 'ultraaddons'); 
+							?>
+						</span>
 					</a>
 					</div>
                     <?php echo woocommerce_get_product_thumbnail('woocommerce_full_size');?>
