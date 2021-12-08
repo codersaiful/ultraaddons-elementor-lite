@@ -13,6 +13,16 @@ use Elementor\Group_Control_Background;
 
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+/**
+ * Post Timeline
+ * Post Timeline is a cool interactive post timeline.
+ * 
+ * 
+ * @since 1.1.0.8
+ * @package UltraAddons
+ * @author Saiful islam <codersaiful@gmail.com>
+ * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
+ */
 
 class Post_Timeline extends Base{
     
@@ -57,7 +67,7 @@ class Post_Timeline extends Base{
     protected function render() {
         $settings  = $this->get_settings_for_display();
         ?>
-        <div id="timeline">
+        <div class="ua-post-timeline">
         <ul>
         <?php
         $args = array(  
@@ -76,7 +86,7 @@ class Post_Timeline extends Base{
                         <?php echo get_the_post_thumbnail( $loop->ID, 'medium' ); ?>
                     </div>
                     <div class="txt">
-                        <p><?php echo get_the_date(); ?></p>
+                        <time><?php echo get_the_date(); ?></time>
                         <h3><?php the_title(); ?></h3>
                         <p>
                             <?php echo $this->excerpt(10);?>
@@ -88,7 +98,7 @@ class Post_Timeline extends Base{
             </li>
             <?php 
             endif;
-              endwhile;
+            endwhile;
              wp_reset_postdata();
             ?>
         </ul>
