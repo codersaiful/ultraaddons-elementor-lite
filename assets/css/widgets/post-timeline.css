@@ -1,0 +1,245 @@
+@-webkit-keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
+}
+#timeline {
+  padding: 50px 50px 200px;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+#timeline h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  font-weight: 500;
+}
+#timeline ul {
+  padding: 0;
+  margin: 50px 0;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  list-style: none;
+}
+#timeline ul::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background-color: #ffcc00;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-60%);
+}
+@media (max-width: 768px) {
+  #timeline ul::before {
+    display: none;
+  }
+}
+#timeline ul::after {
+  content: "";
+  width: 0px;
+  height: 100%;
+  border: 1px dashed #ffcc00;
+  position: absolute;
+  top: 0;
+  right: 50%;
+  display: none;
+  z-index: 1;
+}
+@media (max-width: 768px) {
+  #timeline ul::after {
+    display: block;
+  }
+}
+#timeline ul li {
+  position: relative;
+  flex-basis: 50%;
+  padding-bottom: 30px;
+  z-index: 2;
+}
+@media (max-width: 768px) {
+  #timeline ul li {
+    flex-basis: 100%;
+    padding-bottom: 40px;
+  }
+}
+#timeline ul li:nth-child(odd) {
+  padding-right: 80px;
+}
+@media (max-width: 768px) {
+  #timeline ul li:nth-child(odd) {
+    padding-right: 0px;
+  }
+}
+#timeline ul li:nth-child(odd)::after {
+  content: "";
+  width: 0px;
+  height: 100%;
+  border: 1px dashed #ffcc00;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}
+@media (max-width: 768px) {
+  #timeline ul li:nth-child(odd)::after {
+    display: none;
+  }
+}
+#timeline ul li:nth-child(odd) .pic::after {
+  right: -5px;
+}
+@media (max-width: 768px) {
+  #timeline ul li:nth-child(odd) .pic::after {
+    right: 50%;
+    top: auto;
+    bottom: 12px;
+    transform: translate(5px, 0);
+  }
+}
+#timeline ul li:nth-child(odd) .line {
+  right: 0;
+}
+#timeline ul li:nth-child(even) {
+  padding-left: 80px;
+  transform: translateY(50%);
+}
+@media (max-width: 768px) {
+  #timeline ul li:nth-child(even) {
+    padding-left: 0px;
+    transform: translateY(0);
+  }
+}
+#timeline ul li:nth-child(even) .pic::after {
+  left: -7px;
+}
+@media (max-width: 768px) {
+  #timeline ul li:nth-child(even) .pic::after {
+    left: 50%;
+    top: auto;
+    bottom: 12px;
+    transform: translate(-7px, 0);
+  }
+}
+#timeline ul li:nth-child(even) .line {
+  left: 0;
+}
+#timeline ul li:last-child::after {
+  height: 50%;
+}
+@media (max-width: 768px) {
+  #timeline ul li:last-child .pic::after {
+    bottom: 0;
+  }
+}
+#timeline ul li a {
+  display: block;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #fff;
+  opacity: 0;
+  -webkit-animation: fadeIn linear 0.5s 1s forwards;
+  animation: fadeIn linear 0.5s 1s forwards;
+  border: 1px solid #ddd;
+}
+@media (max-width: 768px) {
+  #timeline ul li a {
+    display: flex;
+  }
+  #timeline ul li a .pic {
+    margin-right: 20px;
+    flex-basis: 50%;
+    padding-bottom: 0;
+  }
+  #timeline ul li a .txt {
+    flex-basis: 50%;
+    padding-bottom: 0;
+    overflow-wrap: break-word;
+  }
+}
+@media (max-width: 480px) {
+  #timeline ul li a .pic {
+    flex-basis: 70%;
+  }
+  #timeline ul li a .txt {
+    flex-basis: 30%;
+    align-self: flex-end;
+  }
+  #timeline ul li a .txt h3 {
+    text-align: right;
+    font-size: 1.6rem;
+  }
+  #timeline ul li a .txt p {
+    display: none;
+  }
+}
+#timeline ul li a:hover .pic img {
+  transform: scale(1.2);
+}
+#timeline ul li .pic {
+  padding-bottom: 10px;
+  overflow: hidden;
+}
+#timeline ul li .pic::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background-color: #ffcc00;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#timeline ul li .pic img {
+  transition: transform 0.5s;
+}
+#timeline ul li .txt {
+  color: #333;
+}
+#timeline ul li .txt h3 {
+  font-size: 2rem;
+}
+#timeline ul li .txt p {
+  font-size: 1.6rem;
+}
+#timeline ul li .line {
+  width: 100%;
+  height: 0;
+  border: 1px dashed #ffcc00;
+  position: absolute;
+  top: 50%;
+  z-index: -1;
+  opacity: 0;
+  -webkit-animation: fadeIn linear 0.5s 1s forwards;
+          animation: fadeIn linear 0.5s 1s forwards;
+}
+#timeline button {
+  display: block;
+  margin: 20% auto 0;
+  padding: 10px 40px;
+  color: #ffcc00;
+  font-weight: 900;
+  background-color: #fff;
+  border: 1px solid #ffcc00;
+  border-radius: 30px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.5s, color 1s;
+}
+@media (max-width: 768px) {
+  #timeline button {
+    margin: 10% auto 0;
+  }
+}
+#timeline button:hover {
+  background-color: #ffcc00;
+  color: #fff;
+}

@@ -472,9 +472,16 @@ $widgetsArray = [
                 __( 'Basic', 'ultraaddons' ),
             ],
     ],
+    'Post_Timeline' => [
+            'name'  => __( 'Post Timeline', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-time-line',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
 
-    
-    
+
 ];
 
 return apply_filters( 'ultraaddons/widgets/array', $widgetsArray );
