@@ -67,7 +67,7 @@ class Post_Timeline extends Base{
     protected function render() {
         $settings  = $this->get_settings_for_display();
         ?>
-        <div class="ua-post-timeline">
+    <div class="ua-post-timeline">
         <ul>
         <?php
         $args = array(  
@@ -81,7 +81,7 @@ class Post_Timeline extends Base{
             if ( has_post_thumbnail() ):
             ?>
              <li>
-                <a href="javascript:;" style="animation-delay:0.5s;">
+                <a href="javascript:;">
                     <div class="pic">
                         <?php echo get_the_post_thumbnail( $loop->ID, 'medium' ); ?>
                     </div>
@@ -93,8 +93,7 @@ class Post_Timeline extends Base{
                         </p>
                     </div>
                 </a>
-                <div class="line" style="animation-delay:0.5s;">
-                </div>
+                <div class="line"></div>
             </li>
             <?php 
             endif;
@@ -107,7 +106,6 @@ class Post_Timeline extends Base{
         
     }
     
-        
     /**
      * General Section for Content Controls
      * 
