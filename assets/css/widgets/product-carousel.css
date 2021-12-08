@@ -125,7 +125,7 @@ span.ua-onsale {
     display: inline-block;
 }
 .ua-thumbnail .cart-links a.add-card span {
-    font-size: 12px;
+    font-size: 11px !important;
     font-weight: bold;
     text-transform: uppercase;
     position: absolute;
@@ -144,6 +144,16 @@ span.ua-onsale {
     width: 148px;
     padding: 8px 18px 0;
     text-align: left;
+}
+.slider-nav::before {
+    padding: 0.6rem;
+    width: 4rem;
+    height: 4rem;
+}
+.slider-nav-round .slider-nav::after, .slider-nav-square .slider-nav::after {
+    width: 4rem;
+    height: 4rem;
+    margin: 0.5rem;
 }
 @media (min-width: 768px){
     .ua-pl-md-2, .ua-px-md-2 {
