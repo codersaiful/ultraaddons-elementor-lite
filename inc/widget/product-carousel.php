@@ -54,7 +54,7 @@ class Product_Carousel extends Base{
         //CSS file for dependency
 		$name           = 'swiffySlider';
         $css_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/css/swiffy-slider.min.css';
-        $dependency     =  ['ultraaddons-widgets-style'];//['jquery'];
+        $dependency     =  [];//kaj ta ses hoyni. pore abar try korte hobe.
         $version        = ULTRA_ADDONS_VERSION;
         $media  	= 'all';
         wp_register_style('swiffySlider', $css_file_url,$dependency,$version, $media ); //product-carousel
