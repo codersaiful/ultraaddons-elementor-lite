@@ -9,9 +9,7 @@
   }
 }
 .ua-post-timeline {
-  padding: 50px 50px 200px;
   width: 100%;
-  max-width: 960px;
   margin: 0 auto;
 }
 .ua-post-timeline h1 {
@@ -149,6 +147,7 @@
   -webkit-animation: fadeIn linear 0.5s 1s forwards;
   animation: fadeIn linear 0.5s 1s forwards;
   border: 1px solid #ddd;
+  overflow: hidden;
 }
 @media (max-width: 768px) {
   .ua-post-timeline ul li a {
@@ -167,14 +166,15 @@
 }
 @media (max-width: 480px) {
   .ua-post-timeline ul li a .ua-pt-thumbnail {
-    flex-basis: 70%;
+    flex-basis: 60%;
   }
   .ua-post-timeline ul li a .ua-pt-txt {
-    flex-basis: 30%;
+    flex-basis: 40%;
     align-self: flex-end;
+    text-align: left;
   }
   .ua-post-timeline ul li a .ua-pt-txt h3 {
-    text-align: right;
+    text-align: left;
     font-size: 1.6rem;
   }
   .ua-post-timeline ul li a .ua-pt-txt p {

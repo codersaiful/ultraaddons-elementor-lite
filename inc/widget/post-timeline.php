@@ -156,7 +156,7 @@ class Post_Timeline extends Base{
 			]
 		);
 
-	/* 	$this->add_control(
+		/* $this->add_control(
             'cat_ids',
             [
                 'label' => esc_html__( 'Select category', 'ultraaddons' ),
@@ -175,7 +175,7 @@ class Post_Timeline extends Base{
                 'options' => $this->product_tax_options( 'product_tag' ),
                 'multiple' => 'true'
             ]
-        ); */
+        );  */
 
 
 		$this->add_control(
@@ -198,92 +198,29 @@ class Post_Timeline extends Base{
 				'label_block' => true,
 			]
 		);
+        $this->add_control(
+			'date_format',
+			[
+				'label' => __('Date Format', 'ultraaddons'),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'd M Y'     => date("d M Y"),
+					'm.d.y'     => date("m.d.y"),
+					'j, n, Y'   => date("j, n, Y"),
+					'Ymd'       => date("Ymd"),
+					'D M j, Y'  => date("D M j, Y"),
+					'F j, Y'    => date("F j, Y"),
+					'j M, Y'    => date("j M, Y"),
+					'Y-m-d'     => date("Y-m-d"),
+					'Y/m/d'     => date("Y/m/d"),
+				],
+				'default' => 'd M Y',
+			]
+		);
 	
 		$this->end_controls_section();
 	}
     
-    /**
-     * Render oEmbed widget output on the frontend.
-     *
-     * Written in PHP and used to generate the final HTML.
-     *
-     * @since 1.0.0
-     * @access protected
-     */
-    protected function render() {
-        $settings   = $this->get_settings_for_display();
-        $lenght     = $settings['_ua_text_truncate'];
-        ?>
-    <div class="ua-post-timeline">
-        <ul>
-        <?php
-        $args = array(
-            'post_type' 	=> $settings['_ua_post_type'],
-            'posts_per_page'=> $settings['_ua_post_per_page'],
-			'paged'=> ! empty( $settings['_ua_post_page_number'] ) ? $settings['_ua_post_page_number'] : 1,
-			'order'			=> $settings['_ua_product_order'],
-			'orderby'		=> $settings['_ua_product_orderby'],
-            );
-		if(! empty( $settings['_ua_query_post_in'] )){
-			$include_ids = explode(',',$settings['_ua_query_post_in']);
-			$args['post__in'] = $include_ids;
-		}
-		if(! empty( $settings['_ua_query_post_not_in'] )){
-			$exclude_ids = explode(',',$settings['_ua_query_post_not_in']);
-			$args['post__not_in'] = $exclude_ids;
-		}
-
-	/* 	if( ! empty( $settings['cat_ids'] ) ){
-			$args['tax_query'] = array(
-				array(
-					'taxonomy'  => 'product_cat',
-					'field'     => 'id', 
-					'terms'     => $settings['cat_ids'],
-				)
-			);
-		}
-		
-		if( ! empty( $settings['tag_ids'] ) ){
-			$args['tax_query'] = array(
-				array(
-					'taxonomy'  => 'product_tag',
-					'field'     => 'id', 
-					'terms'     => $settings['tag_ids'],
-				)
-			);
-		} */
-         $loop = new \WP_Query( $args ); 
-            while ( $loop->have_posts() ) : $loop->the_post();
-            if ( has_post_thumbnail() ):
-            ?>
-            <li>
-                <a href="<?php echo get_the_permalink(); ?>">
-                    <div class="ua-pt-thumbnail">
-                        <?php echo get_the_post_thumbnail( $loop->ID, 'large' ); ?>
-                    </div>
-                    <div class="ua-pt-txt">
-                        <time><?php echo get_the_date(); ?></time>
-                        <h3 class="ua-post-title">
-                            <?php $title = get_the_title();?>
-                             <?php echo $this->title_shortener($title, $settings['_ua_title_truncate']);?>
-                        </h3>
-                        <p>
-                            <?php echo $this->excerpt($lenght);?>
-                        </p>
-                    </div>
-                </a>
-                <div class="ua-pt-line"></div>
-            </li>
-            <?php 
-            endif;
-            endwhile;
-             wp_reset_postdata();
-            ?>
-        </ul>
-    </div>
-    <?php
-        
-    }
 
     /**
      * General Style
@@ -458,6 +395,23 @@ class Post_Timeline extends Base{
 				],
 			]
 		);
+         $this->add_responsive_control(
+			'_ua_box_padding',
+			[
+				'label'       => esc_html__( 'Box Padding', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-post-timeline ul li a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 		$this->add_group_control(
 			Group_Control_Box_Shadow::get_type(),
 			[
@@ -517,6 +471,7 @@ class Post_Timeline extends Base{
      *
      * @return void
      */
+   
     public function product_tax_options( $taxonomy = 'product_cat' ) {
         $query_args = array(
             'orderby'       => 'ID',
@@ -563,6 +518,91 @@ class Post_Timeline extends Base{
 		  }
 		  return $str . (count($all) <= $words ? '' : $sp);
 	}
+
+    /**
+     * Render oEmbed widget output on the frontend.
+     *
+     * Written in PHP and used to generate the final HTML.
+     *
+     * @since 1.0.0
+     * @access protected
+     */
+    protected function render() {
+        $settings       = $this->get_settings_for_display();
+        $lenght         = $settings['_ua_text_truncate'];
+        $date_format    = $settings['date_format'];
+
+        ?>
+    <div class="ua-post-timeline">
+        <ul>
+        <?php
+        $args = array(
+            'post_type' 	=> $settings['_ua_post_type'],
+            'posts_per_page'=> $settings['_ua_post_per_page'],
+			'paged'=> ! empty( $settings['_ua_post_page_number'] ) ? $settings['_ua_post_page_number'] : 1,
+			'order'			=> $settings['_ua_product_order'],
+			'orderby'		=> $settings['_ua_product_orderby'],
+            );
+		if(! empty( $settings['_ua_query_post_in'] )){
+			$include_ids = explode(',',$settings['_ua_query_post_in']);
+			$args['post__in'] = $include_ids;
+		}
+		if(! empty( $settings['_ua_query_post_not_in'] )){
+			$exclude_ids = explode(',',$settings['_ua_query_post_not_in']);
+			$args['post__not_in'] = $exclude_ids;
+		}
+
+	 	if( ! empty( $settings['cat_ids'] ) ){
+			$args['tax_query'] = array(
+				array(
+					'taxonomy'  => 'product_cat',
+					'field'     => 'id', 
+					'terms'     => $settings['cat_ids'],
+				)
+			);
+		}
+		
+		if( ! empty( $settings['tag_ids'] ) ){
+			$args['tax_query'] = array(
+				array(
+					'taxonomy'  => 'product_tag',
+					'field'     => 'id', 
+					'terms'     => $settings['tag_ids'],
+				)
+			);
+		} 
+         $loop = new \WP_Query( $args ); 
+            while ( $loop->have_posts() ) : $loop->the_post();
+            if ( has_post_thumbnail() ):
+            ?>
+            <li>
+                <a href="<?php echo get_the_permalink(); ?>">
+                    <div class="ua-pt-thumbnail">
+                        <?php echo get_the_post_thumbnail( $loop->ID, 'large' ); ?>
+                    </div>
+                    <div class="ua-pt-txt">
+                        <time><?php echo get_the_date($date_format); ?></time>
+                        <h3 class="ua-post-title">
+                            <?php $title = get_the_title();?>
+                             <?php echo $this->title_shortener($title, $settings['_ua_title_truncate']);?>
+                        </h3>
+                        <p>
+                            <?php echo $this->excerpt($lenght);?>
+                        </p>
+                    </div>
+                </a>
+                <div class="ua-pt-line"></div>
+            </li>
+            <?php 
+            endif;
+            endwhile;
+             wp_reset_postdata();
+            ?>
+        </ul>
+    </div>
+    <?php
+        
+    }
 //end class
 }
 
