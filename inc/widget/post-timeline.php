@@ -81,11 +81,11 @@ class Post_Timeline extends Base{
             if ( has_post_thumbnail() ):
             ?>
              <li>
-                <a href="javascript:;">
-                    <div class="pic">
+                <a href="<?php get_the_permalink(); ?>">
+                    <div class="ua-pt-thumbnail">
                         <?php echo get_the_post_thumbnail( $loop->ID, 'medium' ); ?>
                     </div>
-                    <div class="txt">
+                    <div class="ua-pt-txt">
                         <time><?php echo get_the_date(); ?></time>
                         <h3><?php the_title(); ?></h3>
                         <p>
@@ -93,7 +93,7 @@ class Post_Timeline extends Base{
                         </p>
                     </div>
                 </a>
-                <div class="line"></div>
+                <div class="ua-pt-line"></div>
             </li>
             <?php 
             endif;
