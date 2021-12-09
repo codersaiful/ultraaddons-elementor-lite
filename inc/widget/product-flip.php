@@ -45,20 +45,6 @@ class Product_Flip extends Base{
         return [ 'ultraaddons', 'ua', 'flipbox', 'product', 'flip', 'box' ];
     }
 	
-	public function word_shortener($text, $words=10, $sp='...'){
-		  $all = explode(' ', $text);
-		  $str = '';
-		  $count = 1;
-
-		  foreach($all as $key){
-			$str .= $key . ($count >= $words ? '' : ' ');
-			$count++;
-			if($count > $words){
-			  break;
-			}
-		  }
-		  return $str . (count($all) <= $words ? '' : $sp);
-	}
 	
 	 /**
      * Register widget controls.
@@ -861,5 +847,23 @@ class Product_Flip extends Base{
             }
             return $options;
         }
-    }
+		}
+	/**
+	 * SHorter Description
+	 */
+	public function word_shortener($text, $words=10, $sp='...'){
+		  $all = explode(' ', $text);
+		  $str = '';
+		  $count = 1;
+
+		  foreach($all as $key){
+			$str .= $key . ($count >= $words ? '' : ' ');
+			$count++;
+			if($count > $words){
+			  break;
+			}
+		  }
+		  return $str . (count($all) <= $words ? '' : $sp);
+	}
+//End of Class
 }

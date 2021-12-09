@@ -50,12 +50,16 @@ class Post_Timeline extends Base{
      * @access protected
      */
     protected function _register_controls() {
-         //Query Controls
+        //Query Controls
         $this->query_controls();
         //Style Controls
         $this->style_controls();
+        //Box Style
+        $this->box_style();
+        //Line Style
+        $this->line_style();
     }
-
+   
     /**
      * Query Controls
     */
@@ -75,6 +79,17 @@ class Post_Timeline extends Base{
 				'type' => Controls_Manager::SELECT,
 				'options' => $this->get_post_type(),
 				'default' => 'post',
+			]
+		);
+        $this->add_control(
+			'_ua_title_truncate',
+			[
+				'label' => __( 'Title Length', 'ultraaddons' ),
+				'type' => Controls_Manager::NUMBER,
+				'min' => 1,
+				'max' => 300,
+				'step' => 1,
+				'default' => 5,
 			]
 		);
 		$this->add_control(
@@ -141,7 +156,7 @@ class Post_Timeline extends Base{
 			]
 		);
 
-		$this->add_control(
+	/* 	$this->add_control(
             'cat_ids',
             [
                 'label' => esc_html__( 'Select category', 'ultraaddons' ),
@@ -160,7 +175,7 @@ class Post_Timeline extends Base{
                 'options' => $this->product_tax_options( 'product_tag' ),
                 'multiple' => 'true'
             ]
-        );
+        ); */
 
 
 		$this->add_control(
@@ -218,7 +233,7 @@ class Post_Timeline extends Base{
 			$args['post__not_in'] = $exclude_ids;
 		}
 
-		if( ! empty( $settings['cat_ids'] ) ){
+	/* 	if( ! empty( $settings['cat_ids'] ) ){
 			$args['tax_query'] = array(
 				array(
 					'taxonomy'  => 'product_cat',
@@ -236,7 +251,7 @@ class Post_Timeline extends Base{
 					'terms'     => $settings['tag_ids'],
 				)
 			);
-		}
+		} */
          $loop = new \WP_Query( $args ); 
             while ( $loop->have_posts() ) : $loop->the_post();
             if ( has_post_thumbnail() ):
@@ -249,7 +264,8 @@ class Post_Timeline extends Base{
                     <div class="ua-pt-txt">
                         <time><?php echo get_the_date(); ?></time>
                         <h3 class="ua-post-title">
-                            <?php the_title(); ?>
+                            <?php $title = get_the_title();?>
+                             <?php echo $this->title_shortener($title, $settings['_ua_title_truncate']);?>
                         </h3>
                         <p>
                             <?php echo $this->excerpt($lenght);?>
@@ -269,7 +285,9 @@ class Post_Timeline extends Base{
         
     }
 
-
+    /**
+     * General Style
+     */
     protected function style_controls() {
         $this->start_controls_section(
             'style_tab',
@@ -319,9 +337,26 @@ class Post_Timeline extends Base{
 				'selectors' => [
 						'{{WRAPPER}} .ua-post-title' => 'color: {{VALUE}};',
 				],
-				'separator'=> 'after'
 			]
         );
+        $this->add_responsive_control(
+			'_ua_title_margin',
+			[
+				'label'       => esc_html__( 'Title Margin', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-post-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+                'separator'=> 'after'
+			]
+		);
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
@@ -331,15 +366,32 @@ class Post_Timeline extends Base{
 			]
         );
 		$this->add_control(
-			'_cat_color', [
+			'_date_color', [
 				'label' => __( 'Date Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-pt-txt time' => 'color: {{VALUE}};',
 				],
-				'separator'=> 'after'
 			]
         );
+        $this->add_responsive_control(
+			'_ua_time_margin',
+			[
+				'label'       => esc_html__( 'Date Margin', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-pt-txt time' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+                'separator'=> 'after'
+			]
+		);
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
@@ -349,18 +401,109 @@ class Post_Timeline extends Base{
 			]
         );
 		$this->add_control(
-			'_price_color', [
+			'_content_color', [
 				'label' => __( 'Content Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-pt-txt p' => 'color: {{VALUE}};',
 				],
-				'separator'=> 'after'
 			]
         );
+        $this->add_responsive_control(
+			'_ua_content_margin',
+			[
+				'label'       => esc_html__( 'Content Margin', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-pt-txt p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 		
     $this->end_controls_tab();
     $this->end_controls_section();
+    }
+    /**
+     * Box Style
+     */
+    protected function box_style() {
+        $this->start_controls_section(
+            'box_style_tab',
+            [
+                'label'     => esc_html__( 'Box', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_responsive_control(
+			'_ua_box_radius',
+			[
+				'label'       => esc_html__( 'Box Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-post-timeline ul li a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'box_shadow',
+				'label' => __( 'Box Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-post-timeline ul li a',
+			]
+		);
+
+    $this->end_controls_tab();
+    $this->end_controls_section();
+
+    }
+    /**
+     * Line  Style
+    */
+    protected function line_style() {
+        $this->start_controls_section(
+            'line_style_tab',
+            [
+                'label'     => esc_html__( 'Line', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'h_line_border',
+				'label' => __( 'Horizontal Line', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-post-timeline ul li .ua-pt-line, .ua-post-timeline ul li:nth-child(odd)::after',
+			]
+		);
+      
+        $this->add_control(
+			'_line_btn_bg', [
+				'label' => __( 'Node Background', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-post-timeline ul li .ua-pt-thumbnail::after, .ua-post-timeline ul::before' => 'background-color: {{VALUE}};',
+				],
+			]
+        );
+
+    $this->end_controls_tab();
+    $this->end_controls_section();
+
     }
     
     protected function excerpt($limit) {
@@ -403,7 +546,24 @@ class Post_Timeline extends Base{
         }
         return $posts;
     }
+    /**
+	 * SHorter Description
+	 */
+	public function title_shortener($text, $words=10, $sp='...'){
+		  $all = explode(' ', $text);
+		  $str = '';
+		  $count = 1;
 
-}//end class
+		  foreach($all as $key){
+			$str .= $key . ($count >= $words ? '' : ' ');
+			$count++;
+			if($count > $words){
+			  break;
+			}
+		  }
+		  return $str . (count($all) <= $words ? '' : $sp);
+	}
+//end class
+}
 
 
