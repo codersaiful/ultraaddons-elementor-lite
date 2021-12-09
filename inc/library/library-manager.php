@@ -86,7 +86,7 @@ class Library_Manager {
 			true
 		);
                 
-                $localize_data = [
+        $localize_data = [
 			'placeholder_widgets' => Widgets_Manager::proWidgets(),
 			'hasPro'                  => ultraaddons_is_pro(),
                         'HELP_ULR'                => ULTRA_ADDONS_WIDGET_HELP_ULR,
