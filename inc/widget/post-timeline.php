@@ -50,11 +50,139 @@ class Post_Timeline extends Base{
      * @access protected
      */
     protected function _register_controls() {
-        //For General Section
-        $this->content_general_controls();
+        //Style Controls
         $this->style_controls();
+        //Query Controls
+        $this->query_controls();
 
     }
+    protected function query_controls() {
+		
+        $this->start_controls_section(
+            'query_content',
+            [
+                'label'     => esc_html__( 'Query Settings', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+        $this->add_control(
+			'_ua_post_type',
+			[
+				'label' => esc_html__( 'Post Type', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => $this->get_post_type(),
+				'default' => 'post',
+			]
+		);
+		$this->add_control(
+			'_ua_text_truncate',
+			[
+				'label' => __( 'Description Length', 'ultraaddons' ),
+				'type' => Controls_Manager::NUMBER,
+				'min' => 5,
+				'max' => 300,
+				'step' => 5,
+				'default' => 10,
+			]
+		);
+		$this->add_control(
+			'_ua_post_per_page',
+			[
+				'label' => __( 'Show Products', 'ultraaddons' ),
+				'type' => Controls_Manager::NUMBER,
+				'min' => 1,
+				'max' => 300,
+				'step' => 1,
+				'default' => 6,
+			]
+		);
+		$this->add_control(
+			'_ua_post_page_number',
+			[
+				'label' => __( 'Page Number', 'ultraaddons' ),
+				'type' => Controls_Manager::NUMBER,
+				'min' => 1,
+				//'max' => 300,
+				'step' => 1,
+				'default' => 1,
+			]
+		);
+		
+		$this->add_control(
+			'_ua_product_order',
+			[
+				'label' => esc_html__( 'Order', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'asc' => 'Asc',
+					'desc' => 'Desc',
+				],
+				'default' => 'desc',
+			]
+		);
+		$this->add_control(
+			'_ua_product_orderby',
+			[
+				'label' => esc_html__( 'Orderby', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'none' => 'None',
+					'id' => 'ID',
+					'name' => 'Name',
+					'type' => 'Type',
+					'rand' => 'Random',
+					'date' => 'Date',
+					'modified' => 'Modified',
+				],
+				'default' => 'date',
+			]
+		);
+
+		$this->add_control(
+            'cat_ids',
+            [
+                'label' => esc_html__( 'Select category', 'ultraaddons' ),
+                'type' => Controls_Manager::SELECT2,
+                'options' => $this->product_tax_options(),
+                'multiple' => 'true'
+            ]
+        );
+
+		
+		$this->add_control(
+            'tag_ids',
+            [
+                'label' => esc_html__( 'Select Tag', 'ultraaddons' ),
+                'type' => Controls_Manager::SELECT2,
+                'options' => $this->product_tax_options( 'product_tag' ),
+                'multiple' => 'true'
+            ]
+        );
+
+
+		$this->add_control(
+			'_ua_query_post_in',
+			[
+				'label' => __( 'Product by included IDs', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXTAREA,
+				'placeholder' => __( '1,2,3,4,20,33', 'ultraaddons' ),
+				'description' => __('Add multiple ids by comma separated.'),
+				'label_block' => true,
+			]
+		);
+		$this->add_control(
+			'_ua_query_post_not_in',
+			[
+				'label' => __( 'Product by excluded IDs', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXTAREA,
+				'placeholder' => __( '1,2,3,4,20,33', 'ultraaddons' ),
+				'description' => __('Add multiple ids by comma separated.'),
+				'label_block' => true,
+			]
+		);
+	
+		$this->end_controls_section();
+	}
     
     /**
      * Render oEmbed widget output on the frontend.
@@ -65,31 +193,62 @@ class Post_Timeline extends Base{
      * @access protected
      */
     protected function render() {
-        $settings  = $this->get_settings_for_display();
+        $settings   = $this->get_settings_for_display();
+        $lenght     = $settings['_ua_text_truncate'];
         ?>
     <div class="ua-post-timeline">
         <ul>
         <?php
-        $args = array(  
-            'post_type' => 'post',
-            'post_status' => 'publish',
-            'posts_per_page' => 2,
-            'order' => 'ASC', 
-        );
+        $args = array(
+            'post_type' 	=> $settings['_ua_post_type'],
+            'posts_per_page'=> $settings['_ua_post_per_page'],
+			'paged'=> ! empty( $settings['_ua_post_page_number'] ) ? $settings['_ua_post_page_number'] : 1,
+			'order'			=> $settings['_ua_product_order'],
+			'orderby'		=> $settings['_ua_product_orderby'],
+            );
+		if(! empty( $settings['_ua_query_post_in'] )){
+			$include_ids = explode(',',$settings['_ua_query_post_in']);
+			$args['post__in'] = $include_ids;
+		}
+		if(! empty( $settings['_ua_query_post_not_in'] )){
+			$exclude_ids = explode(',',$settings['_ua_query_post_not_in']);
+			$args['post__not_in'] = $exclude_ids;
+		}
+
+		if( ! empty( $settings['cat_ids'] ) ){
+			$args['tax_query'] = array(
+				array(
+					'taxonomy'  => 'product_cat',
+					'field'     => 'id', 
+					'terms'     => $settings['cat_ids'],
+				)
+			);
+		}
+		
+		if( ! empty( $settings['tag_ids'] ) ){
+			$args['tax_query'] = array(
+				array(
+					'taxonomy'  => 'product_tag',
+					'field'     => 'id', 
+					'terms'     => $settings['tag_ids'],
+				)
+			);
+		}
          $loop = new \WP_Query( $args ); 
             while ( $loop->have_posts() ) : $loop->the_post();
             if ( has_post_thumbnail() ):
             ?>
-             <li>
+            <li>
                 <a href="<?php get_the_permalink(); ?>">
                     <div class="ua-pt-thumbnail">
-                        <?php echo get_the_post_thumbnail( $loop->ID, 'medium' ); ?>
+                        <?php echo get_the_post_thumbnail( $loop->ID, 'large' ); ?>
                     </div>
                     <div class="ua-pt-txt">
                         <time><?php echo get_the_date(); ?></time>
                         <h3><?php the_title(); ?></h3>
                         <p>
-                            <?php echo $this->excerpt(10);?>
+                            <?php echo $this->excerpt($lenght);?>
+                            
                         </p>
                     </div>
                 </a>
@@ -105,23 +264,7 @@ class Post_Timeline extends Base{
     <?php
         
     }
-    
-    /**
-     * General Section for Content Controls
-     * 
-     * @since 1.0.0.9
-     */
-    protected function content_general_controls() {
-        $this->start_controls_section(
-            'general_content',
-            [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
-                'tab'       => Controls_Manager::TAB_CONTENT,
-            ]
-        );
-        
-        $this->end_controls_section();
-    }
+
 
     protected function style_controls() {
         $this->start_controls_section(
@@ -139,6 +282,43 @@ class Post_Timeline extends Base{
         $content = wp_strip_all_tags(get_the_content() , true );
         echo wp_trim_words($content, $limit);
     }
-    
-    
-}
+
+     /**
+     * Getting Category list of WooCommerce product
+     * 
+     *
+     * @return void
+     */
+    public function product_tax_options( $taxonomy = 'product_cat' ) {
+        $query_args = array(
+            'orderby'       => 'ID',
+            'order'         => 'DESC',
+            'hide_empty'    => false,
+            'taxonomy'      => $taxonomy
+        );
+
+        $categories = get_categories( $query_args );
+        $options = array();
+        if(is_array($categories) && count($categories) > 0){
+            foreach ($categories as $cat){
+                $options[$cat->term_id] = $cat->name;
+            }
+            return $options;
+        }
+    }
+    /**
+     * Get Post Type
+     */
+    protected function get_post_type(){
+        
+        $post_types = get_post_types([], 'objects');
+        $posts = array();
+        foreach ($post_types as $post_type) {
+            $posts[$post_type->name] = $post_type->labels->singular_name;
+        }
+        return $posts;
+    }
+
+}//end class
+
+

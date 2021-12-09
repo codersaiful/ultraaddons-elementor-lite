@@ -807,7 +807,9 @@ class Product_Flip extends Base{
 				'</' . $settings['_ua_back_title_tag'] . '>';
 		   ?>
 		</a>
-		   <div class="ua-desc"><?php echo $this->word_shortener($description, $settings['_ua_text_truncate']);?></div>
+		   	<div class="ua-desc">
+			   <?php echo $this->word_shortener($description, $settings['_ua_text_truncate']);?>
+			</div>
 		   <div class="ua-cart">
 			   <?php 
 			   
