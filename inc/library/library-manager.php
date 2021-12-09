@@ -86,10 +86,10 @@ class Library_Manager {
 			true
 		);
                 
-                $localize_data = [
+        $localize_data = [
 			'placeholder_widgets' => Widgets_Manager::proWidgets(),
 			'hasPro'                  => ultraaddons_is_pro(),
-                        'HELP_ULR'                => ULTRA_ADDONS_WIDGET_HELP_ULR,
+            'HELP_ULR'                => ULTRA_ADDONS_WIDGET_HELP_ULR,
 			'editor_nonce'            => wp_create_nonce( 'ua_editor_nonce' ),
 			'dark_stylesheet_url'     => self::ULTRA_ADDONS_TEMPLATE_ASSETS . 'css/editor-dark.min.css',
 			'i18n' => [
@@ -103,7 +103,7 @@ class Library_Manager {
 			],
 		];
                 
-                wp_localize_script(
+        wp_localize_script(
 			'ultraaddons-library-editor',
 			'ULTRAADDONS_DATA_EDITOR',
 			$localize_data
