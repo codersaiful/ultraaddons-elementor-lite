@@ -156,12 +156,12 @@ class Post_Timeline extends Base{
 			]
 		);
 
-		/* $this->add_control(
+		 /* $this->add_control(
             'cat_ids',
             [
                 'label' => esc_html__( 'Select category', 'ultraaddons' ),
                 'type' => Controls_Manager::SELECT2,
-                'options' => $this->product_tax_options(),
+                'options' => $this->get_taxanomy(),
                 'multiple' => 'true'
             ]
         );
@@ -528,9 +528,12 @@ class Post_Timeline extends Base{
      * @access protected
      */
     protected function render() {
+    
         $settings       = $this->get_settings_for_display();
         $lenght         = $settings['_ua_text_truncate'];
         $date_format    = $settings['date_format'];
+        $post_type      = $settings['_ua_post_type'];
+        $GLOBALS['post_type'] = $post_type;
 
         ?>
     <div class="ua-post-timeline">
@@ -588,6 +591,7 @@ class Post_Timeline extends Base{
                         </h3>
                         <p>
                             <?php echo $this->excerpt($lenght);?>
+                            
                         </p>
                     </div>
                 </a>
