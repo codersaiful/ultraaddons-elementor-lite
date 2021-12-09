@@ -50,12 +50,15 @@ class Post_Timeline extends Base{
      * @access protected
      */
     protected function _register_controls() {
+         //Query Controls
+        $this->query_controls();
         //Style Controls
         $this->style_controls();
-        //Query Controls
-        $this->query_controls();
-
     }
+
+    /**
+     * Query Controls
+    */
     protected function query_controls() {
 		
         $this->start_controls_section(
@@ -88,7 +91,7 @@ class Post_Timeline extends Base{
 		$this->add_control(
 			'_ua_post_per_page',
 			[
-				'label' => __( 'Show Products', 'ultraaddons' ),
+				'label' => __( 'Show Item', 'ultraaddons' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 1,
 				'max' => 300,
@@ -239,16 +242,17 @@ class Post_Timeline extends Base{
             if ( has_post_thumbnail() ):
             ?>
             <li>
-                <a href="<?php get_the_permalink(); ?>">
+                <a href="<?php echo get_the_permalink(); ?>">
                     <div class="ua-pt-thumbnail">
                         <?php echo get_the_post_thumbnail( $loop->ID, 'large' ); ?>
                     </div>
                     <div class="ua-pt-txt">
                         <time><?php echo get_the_date(); ?></time>
-                        <h3><?php the_title(); ?></h3>
+                        <h3 class="ua-post-title">
+                            <?php the_title(); ?>
+                        </h3>
                         <p>
                             <?php echo $this->excerpt($lenght);?>
-                            
                         </p>
                     </div>
                 </a>
@@ -274,8 +278,89 @@ class Post_Timeline extends Base{
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
-        
-        $this->end_controls_section();
+        $this->add_responsive_control(
+			'_ua_text_alignment',
+			[
+				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'start' => [
+						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'end' => [
+						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-right',
+					]
+				],
+				'default' => 'center',
+				'selectors' => [
+					'{{WRAPPER}} .ua-post-timeline' => 'text-align: {{VALUE}};',
+				],
+                'separator'=> 'after'
+			]
+		);
+       	$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'tilte_typography',
+					'label' => 'Title Typography',
+					'selector' => '{{WRAPPER}} .ua-post-title',
+			]
+        );
+		$this->add_control(
+			'_title_color', [
+				'label' => __( 'Title Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-post-title' => 'color: {{VALUE}};',
+				],
+				'separator'=> 'after'
+			]
+        );
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'date_typography',
+					'label' => 'Date Typography',
+					'selector' => '{{WRAPPER}} .ua-pt-txt time',
+			]
+        );
+		$this->add_control(
+			'_cat_color', [
+				'label' => __( 'Date Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-pt-txt time' => 'color: {{VALUE}};',
+				],
+				'separator'=> 'after'
+			]
+        );
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'content_typography',
+					'label' => 'Content Typography',
+					'selector' => '{{WRAPPER}} .ua-pt-txt p',
+			]
+        );
+		$this->add_control(
+			'_price_color', [
+				'label' => __( 'Content Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-pt-txt p' => 'color: {{VALUE}};',
+				],
+				'separator'=> 'after'
+			]
+        );
+		
+    $this->end_controls_tab();
+    $this->end_controls_section();
     }
     
     protected function excerpt($limit) {
@@ -308,7 +393,7 @@ class Post_Timeline extends Base{
     }
     /**
      * Get Post Type
-     */
+    */
     protected function get_post_type(){
         
         $post_types = get_post_types([], 'objects');
