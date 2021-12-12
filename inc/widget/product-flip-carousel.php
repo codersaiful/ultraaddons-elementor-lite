@@ -122,7 +122,6 @@ class Product_Flip_Carousel extends Base{
         <div class="p-flip-item" data-item="item11"><h1>Item 11</h1><span>(last)</span><div class="fi-trophy"></div></div>
 
         <?php
-        
     }
     
         
