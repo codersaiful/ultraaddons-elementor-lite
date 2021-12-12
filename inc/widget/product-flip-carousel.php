@@ -109,17 +109,17 @@ class Product_Flip_Carousel extends Base{
     protected function render() {
         $settings           = $this->get_settings_for_display();
         ?>
-        <div class="p-flip-item" title="item1"><h1>Item 1</h1><span>$123</span><div class="fi-graph-pie"></div></div>
-        <div class="p-flip-item" title="item2"><h1>Item 2</h1><span>$980</span><div class="fi-asl"></div></div>
-        <div class="p-flip-item" title="item3"><h1>Item 3</h1><span>$67</span><div class="fi-asterisk"></div></div>
-        <div class="p-flip-item" title="item4"><h1>Item 4</h1><span>$13</span><div class="fi-blind"></div></div>
-        <div class="p-flip-item" title="item5"><h1>Item 5</h1><span>$134</span><div class="fi-burst-new"></div></div>
-        <div class="p-flip-item" title="item6"><h1>Item 6</h1><span>$456</span><div class="fi-calendar"></div></div>
-        <div class="p-flip-item" title="item7"><h1>Item 7</h1><span>$99</span><div class="fi-comment-quotes"></div></div>
-        <div class="p-flip-item" title="item8"><h1>Item 8</h1><span>$92</span><div class="fi-die-five"></div></div>
-        <div class="p-flip-item" title="item9"><h1>Item 9</h1><span>$3</span><div class="fi-dislike"></div></div>
-        <div class="p-flip-item" title="item10"><h1>Item 10</h1><span>$12</span><div class="fi-foot"></div></div>
-        <div class="p-flip-item" title="item11"><h1>Item 11</h1><span>(last)</span><div class="fi-trophy"></div></div>
+        <div class="p-flip-item" data-item="item1"><h1>Item 1</h1><span>$123</span><div class="fi-graph-pie"></div></div>
+        <div class="p-flip-item" data-item="item2"><h1>Item 2</h1><span>$980</span><div class="fi-asl"></div></div>
+        <div class="p-flip-item" data-item="item3"><h1>Item 3</h1><span>$67</span><div class="fi-asterisk"></div></div>
+        <div class="p-flip-item" data-item="item4"><h1>Item 4</h1><span>$13</span><div class="fi-blind"></div></div>
+        <div class="p-flip-item" data-item="item5"><h1>Item 5</h1><span>$134</span><div class="fi-burst-new"></div></div>
+        <div class="p-flip-item" data-item="item6"><h1>Item 6</h1><span>$456</span><div class="fi-calendar"></div></div>
+        <div class="p-flip-item" data-item="item7"><h1>Item 7</h1><span>$99</span><div class="fi-comment-quotes"></div></div>
+        <div class="p-flip-item" data-item="item8"><h1>Item 8</h1><span>$92</span><div class="fi-die-five"></div></div>
+        <div class="p-flip-item" data-item="item9"><h1>Item 9</h1><span>$3</span><div class="fi-dislike"></div></div>
+        <div class="p-flip-item" data-item="item10"><h1>Item 10</h1><span>$12</span><div class="fi-foot"></div></div>
+        <div class="p-flip-item" data-item="item11"><h1>Item 11</h1><span>(last)</span><div class="fi-trophy"></div></div>
 
         <?php
         
