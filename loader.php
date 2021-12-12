@@ -108,7 +108,8 @@ class Loader {
 
         //Add Style for Widgets
         add_action( 'elementor/frontend/after_enqueue_styles', [ $this, 'widget_enqueue' ] );
-        add_action( 'wp_enqueue_scripts', [ $this, 'wp_enqueue_scripts' ] );
+        add_action( 'wp_enqueue_scripts', [ $this, 'wp_enqueue_style' ] );
+        add_action( 'wp_enqueue_scripts', [ $this, 'wp_enqueue_scripts' ], 999 );
         
         /**
          * For Admin and FrontEnd Enqueue 
@@ -297,35 +298,15 @@ class Loader {
     }
 
     /**
-     * Elementor Widget Related 
-     * All script will stay here
-     * 
-     * Actually First time, we though, All Element Widget's js Code will stay for different file
-     * with same name of Widget 
-     * and inside Widget folder of js folder
-     * 
-     * But finally we decided to keep one file only
-     * and which name will be frontend.js
-     * 
-     * Here Added Files:
-     * - screen-style common css
-     * - frontend js
-     * - widget css 
-     * 
+     * Our frontend js file loaded here
+     * It was both actually and we changed it later
+     * How here loading only js file
      * 
      * @since 1.0.0.0
      * @by Saiful
      * @date Fri 15.1.2021 at Home
      */
     public function wp_enqueue_scripts(){
-        
-        /**
-         * Common CSS file for all Widgets
-         * 
-         * @since 1.0.0.0
-         */
-        wp_register_style( 'ultraaddons-widgets-style', ULTRA_ADDONS_ASSETS . 'css/widgets.css' );
-        wp_enqueue_style( 'ultraaddons-widgets-style' );
         
         
         //Naming of Args
@@ -357,21 +338,28 @@ class Loader {
         $ULTRAADDONS_DATA = apply_filters( 'ultraaddons_localize_data', $ULTRAADDONS_DATA );
         wp_localize_script( $frontend_js_name, 'ULTRAADDONS_DATA', $ULTRAADDONS_DATA );
        
+    }
 
-        //owlCarousel JS has transferred to widget/testimonial-slider.php and slider.php
+    /**
+     * Only Common Style file loaded here
+     * Actually we changed it since 1.1.0.8
+     * 
+     * @since 1.1.0.8
+     *
+     * @return void
+     */
+    public function wp_enqueue_style(){
         
-        //barfiller JS has transferred to widget/skillbar.php 
-        
-        
-       //apear and count-to js has transerred to widget/counter.php
-        
-        
-        //barfiller css has transferred to widget/skillbar.php
-        
+        /**
+         * Common CSS file for all Widgets
+         * 
+         * @since 1.0.0.0
+         */
+        wp_register_style( 'ultraaddons-widgets-style', ULTRA_ADDONS_ASSETS . 'css/widgets.css' );
+        wp_enqueue_style( 'ultraaddons-widgets-style' );
+                
         //Animate CSS Load
         wp_enqueue_style('animate', ULTRA_ADDONS_ASSETS . 'vendor/css/animate.min.css' );
-        
-        //owlCarousel CSS has transferred to widget/testimonial-slider.php and slider.php
 
     }
     
