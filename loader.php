@@ -109,7 +109,7 @@ class Loader {
         //Add Style for Widgets
         add_action( 'elementor/frontend/after_enqueue_styles', [ $this, 'widget_enqueue' ] );
         add_action( 'wp_enqueue_scripts', [ $this, 'wp_enqueue_style' ] );
-        add_action( 'wp_enqueue_scripts', [ $this, 'wp_enqueue_scripts' ], 999 );
+        add_action( 'wp_enqueue_scripts', [ $this, 'wp_enqueue_scripts' ], PHP_INT_MAX );
         
         /**
          * For Admin and FrontEnd Enqueue 

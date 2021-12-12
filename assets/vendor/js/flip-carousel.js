@@ -5,7 +5,8 @@
 // copyright(c) 2012-2014 Ethan Herr
 // http://herrmedia.com
 // MIT License
-
+(function ($) {
+  'use strict';
 $.fn.flipcarousel = function (options) {
   //default options
   var ops = $.extend(
@@ -260,3 +261,4 @@ $.fn.flipcarousel = function (options) {
   this.pageCount = pages.length;
   return this;
 };
+})(jQuery);
