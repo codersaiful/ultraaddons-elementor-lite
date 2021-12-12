@@ -773,7 +773,46 @@
                                 
                         });
                 }
-            );
+        );
+        
+      /**
+       * Prduct Flip Carousel Called here
+       *
+       * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
+       * @since 1.1.0.8
+       */
+      /* var Product_Flip_Carousel = EM.frontend.handlers.Base.extend({
+        onInit: function () {
+          this.run();
+        },
+        onChange: function () {
+          this.run();
+        },
+        getReadySettings: function () {
+          var settings = this.getElementSettings();
+
+          var generated_settings = {
+            pagination: false,
+            loader: true,
+          };
+          return Object.assign(settings, generated_settings);
+        },
+
+        run: function () {
+          var targetElement = this.$element.find(".p-flip-item");
+          targetElement.flipcarousel(this.getReadySettings());
+        },
+      });
+      // Prduct Flip Carousel Hooked Here
+      EF.hooks.addAction(
+        "frontend/element_ready/ultraaddons-product-flip-carousel.default",
+        function ($scope) {
+          EF.elementsHandler.addHandler(Product_Flip_Carousel, {
+            $element: $scope,
+          });
+        }
+      );  */
+
 			
 			 /**
              * Skill Chart
@@ -896,34 +935,7 @@
                 }
             });
     }
-	/**
-   * Prduct Flip Carousel Called here
-   *
-   * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
-   * @since 1.1.0.8
-   */
-  var Product_Flip_Carousel = EM.frontend.handlers.Base.extend({
-    onInit: function () {
-      this.run();
-    },
-    onChange: function () {
-      this.run();
-    },
-    getReadySettings: function () {
-      var settings = this.getElementSettings();
-
-      var generated_settings = {
-        pagination: false, 
-        loader: true,
-      };
-      return Object.assign(settings, generated_settings);
-    },
-
-    run: function () {
-      var targetElement = this.$element.find(".p-flip-item");
-      targetElement.flipcarousel(this.getReadySettings());
-    },
-  });
+	
      /**
 		* BM Rafiul Alam Code Start Here
 	 **/

@@ -266,7 +266,9 @@
 	height: 113px;
 	border-radius: 60px;
 }
-
+.p-flip-item{
+	background: #7796E7;
+}
 .p-flip-item[data-item="item1"]{ background-color:#7796E7;}
 .p-flip-item[data-item="item2"]{ background-color:#D68D53;}
 .p-flip-item[data-item="item3"]{ background-color:#C7D108;}

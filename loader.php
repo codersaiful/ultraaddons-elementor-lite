@@ -109,7 +109,7 @@ class Loader {
         //Add Style for Widgets
         add_action( 'elementor/frontend/after_enqueue_styles', [ $this, 'widget_enqueue' ] );
         add_action( 'wp_enqueue_scripts', [ $this, 'wp_enqueue_style' ] );
-        add_action( 'wp_enqueue_scripts', [ $this, 'wp_enqueue_scripts' ], PHP_INT_MAX );
+        add_action( 'wp_enqueue_scripts', [ $this, 'wp_enqueue_scripts' ] );
         
         /**
          * For Admin and FrontEnd Enqueue 
@@ -310,13 +310,13 @@ class Loader {
         
         
         //Naming of Args
-        $frontend_js_name           = 'ultraaddons-elementor-frontend';
+        $frontend_js_name  = 'ultraaddons-elementor-frontend';
         $js_file_url    = apply_filters( 'ultraaddons_elementor_frontend', ULTRA_ADDONS_ASSETS . 'js/frontend.js' );
         $dependency     =  apply_filters( 'ultraaddons_elementor_frontend_dependency', ['jquery'] );//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  = true;
         
-        wp_register_script( $frontend_js_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_register_script( $frontend_js_name, $js_file_url,  array('flipCarousel'), '', true );
         wp_enqueue_script( $frontend_js_name );     
         
         $ajax_url = admin_url( 'admin-ajax.php' );
