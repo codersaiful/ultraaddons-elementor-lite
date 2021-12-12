@@ -495,6 +495,9 @@ class Post_Timeline extends Base{
     protected function get_post_type(){
         
         $post_types = get_post_types([], 'objects');
+       // $post_types = get_post_types( array( 'public' => true, '_builtin' => true ), 'names', 'and' );
+        unset( $post_types['page'] );
+       
         $posts = array();
         foreach ($post_types as $post_type) {
             $posts[$post_type->name] = $post_type->labels->singular_name;
@@ -533,7 +536,7 @@ class Post_Timeline extends Base{
         $lenght         = $settings['_ua_text_truncate'];
         $date_format    = $settings['date_format'];
         $post_type      = $settings['_ua_post_type'];
-        $GLOBALS['post_type'] = $post_type;
+        //$GLOBALS['post_type'] = $post_type;
 
         ?>
     <div class="ua-post-timeline">
@@ -597,7 +600,7 @@ class Post_Timeline extends Base{
                 </a>
                 <div class="ua-pt-line"></div>
             </li>
-            <?php 
+            <?php
             endif;
             endwhile;
              wp_reset_postdata();

@@ -480,6 +480,14 @@ $widgetsArray = [
                 __( 'Basic', 'ultraaddons' ),
             ],
     ],
+    'Product_Flip_Carousel' => [
+            'name'  => __( 'Product Flip Carousel', 'ultraaddons' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-time-line',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
 
 
 ];
