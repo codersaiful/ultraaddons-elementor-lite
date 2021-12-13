@@ -929,7 +929,7 @@ class Product_Carousel extends Base{
 					?>
 					<div class="cart-links">
 						<a href="?add-to-cart=<?php echo esc_attr($id); ?>"  class="add-card button add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo esc_attr($id); ?>"  aria-label="Add '<?php echo get_the_title(); ?>' to your cart" rel="nofollow">
-							<i class="fa fa-shopping-cart"></i>
+							<i class="uicon uicon-cart"></i>
 							<span>
 								<?php echo esc_html__('ADD TO CART', 'ultraaddons'); ?>
 							</span>

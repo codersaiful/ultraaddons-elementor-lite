@@ -207,3 +207,13 @@ div#elementor-panel-category-ultraaddons-pro-placeholder .elementor-element-wrap
     font-size: 14px;
     width: 100%;
 }
+.ua-inner-text {
+    padding: 15px 0;
+    width: 100%;
+    color: #495157;
+    font-weight: 700;
+    font-size: 13px !important;
+    BORDER-BOTTOM: 1PX SOLID #DDD;
+    border-top: 1px solid #ddd;
+    font-weight: bold !important;
+}

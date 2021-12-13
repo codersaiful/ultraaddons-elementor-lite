@@ -116,6 +116,8 @@ class Product_Flip_Carousel extends Base{
         $this->cart_btn_controls();
 		//For sale flash Tab
         $this->sale_flash_controls();
+		//For Navigation Style
+        $this->style_navigation();
     }
 	 
     /**
@@ -292,9 +294,73 @@ class Product_Flip_Carousel extends Base{
 			]
 		);
 		$this->add_control(
+			'indicator_part',
+			[
+				'type' => Controls_Manager::RAW_HTML,
+				'raw' => __( '<h2 class="ua-inner-text">Indicators Settings</h2>', 'ultraaddons' ),
+			]
+		);
+		$this->add_control(
+			'_slider_indicator_shape',
+			[
+				'label' => esc_html__( 'Indicator Shape ', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'default' => 'Default',
+					'slider-indicators-round' => 'Round',
+					'slider-indicators-square' => 'Square'
+				],
+				'default' => 'default',
+			]
+		);
+		$this->add_control(
 			'_slider_indicator',
 			[
 				'label' => __( 'Indicators', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		);
+		$this->add_control(
+			'_slider_indicator_outside',
+			[
+				'label' => __( 'Indicators Outside', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		);
+		$this->add_control(
+			'_slider_indicator_highlight',
+			[
+				'label' => __( 'Indicators Highlight', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		);
+		$this->add_control(
+			'_slider_indicator_dark',
+			[
+				'label' => __( 'Indicators Dark', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		);
+		$this->add_control(
+			'_slider_indicator_visible_sm',
+			[
+				'label' => __( 'Visible on Small Devices', 'ultraaddons' ),
 				'type' => Controls_Manager::SWITCHER,
 				'label_on' => __( 'Yes', 'ultraaddons' ),
 				'label_off' => __( 'No', 'ultraaddons' ),
@@ -504,10 +570,10 @@ class Product_Flip_Carousel extends Base{
         );
 		 $this->add_control(
 			'_ua_product_flip_bg_front', [
-				'label' => __( 'Front Background', 'ultraaddons' ),
+				'label' => __( 'Front Overlay', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .ua-product-flip .front:after' => 'background-color: {{VALUE}};',
+						'{{WRAPPER}} .ua-product-flip .front:before' => 'background-color: {{VALUE}};',
 				],
 			]
         );
@@ -681,6 +747,9 @@ class Product_Flip_Carousel extends Base{
 		
 		$this->end_controls_section();
 	}
+	/**
+	 * Box Style
+	 */
 
 	protected function style_box_controls() {
         $this->start_controls_section(
@@ -935,7 +1004,46 @@ class Product_Flip_Carousel extends Base{
 		
 		$this->end_controls_section();
 	}
-    
+    //Navigation Style Tab
+	protected function style_navigation() {
+        $this->start_controls_section(
+            'style_navi',
+            [
+                'label'     => esc_html__( 'Navigation', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+     
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'nav_shadow',
+				'label' => __( 'Nav Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .slider-nav-dark.slider-nav-round .slider-nav::before, .slider-nav-dark.slider-nav-square .slider-nav::before',
+			]
+		);
+		$this->add_control(
+			'_nav_bg', [
+				'label' => __( 'Nav Background', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .slider-nav-dark.slider-nav-round .slider-nav::before, .slider-nav-dark.slider-nav-square .slider-nav::before' => 'background: {{VALUE}} !important;',
+				],
+			]
+        );
+		$this->add_control(
+			'_indicator_bg', [
+				'label' => __( 'Indicator Background', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .slider-indicators>*' => 'background-color: {{VALUE}}; filter:none',
+				],
+			]
+        );
+    $this->end_controls_tab();
+    $this->end_controls_section();
+
+    }
     /**
      * Render oEmbed widget output on the frontend.
      *
@@ -951,23 +1059,28 @@ class Product_Flip_Carousel extends Base{
             echo "<div class='ua-alert'>" . esc_html__( "WooCommerce is not Activated.", 'ultraaddons' ) . "</div>";
 			return;
         }
-		$gap        	= ($settings['_slider_gap']=='yes') ? '' : ' slider-item-nogap';
-		$reveal     	= ($settings['_slider_reveal']=='yes') ? ' slider-item-reveal' : '';
-		$to_show    	= $settings['_slider_to_show'] ? ' slider-item-show'. $settings['_slider_to_show'] : '';
-		$navigation 	= $settings['_slider_navigation'] ? $settings['_slider_navigation'] : '';
-		$dark       	= $settings['_slider_nav_dark'] ? ' slider-nav-dark' : '';
-		$small      	= $settings['_slider_nav_small'] ? ' slider-nav-sm' : '';
-		$autoPlay   	= $settings['_slider_auto_play'] ? ' slider-nav-autoplay' : '';
-		$pause      	= $settings['_slider_pause'] ? ' slider-nav-autopause' : '';
-		$indicator 		= ($settings['_slider_indicator']!='no') ? ' slider-indicators' : '';
-		$nav_visible  	= ($settings['_slider_nav_visible']=='yes') ? ' slider-nav-visible' : '';
-		$nav_outside  	= ($settings['_slider_nav_outside']=='yes') ? ' slider-nav-outside' : '';
+		$gap        		= ($settings['_slider_gap']=='yes') ? '' : ' slider-item-nogap';
+		$reveal     		= ($settings['_slider_reveal']=='yes') ? ' slider-item-reveal' : '';
+		$to_show    		= $settings['_slider_to_show'] ? ' slider-item-show'. $settings['_slider_to_show'] : '';
+		$navigation 		= $settings['_slider_navigation'] ? $settings['_slider_navigation'] : '';
+		$dark       		= $settings['_slider_nav_dark'] ? ' slider-nav-dark' : '';
+		$small      		= $settings['_slider_nav_small'] ? ' slider-nav-sm' : '';
+		$autoPlay   		= $settings['_slider_auto_play'] ? ' slider-nav-autoplay' : '';
+		$pause      		= $settings['_slider_pause'] ? ' slider-nav-autopause' : '';
+		$indicator_outside 	= ($settings['_slider_indicator_outside']!='no') ? ' slider-indicators-outside' : '';
+		$indicator_highlight = ($settings['_slider_indicator_highlight']!='no') ? ' slider-indicators-highlight' : '';
+		$indicator_visible_sm = ($settings['_slider_indicator_visible_sm']!='no') ? ' slider-indicators-sm' : '';
+		$indicator_dark 	= ($settings['_slider_indicator_dark']!='no') ? ' slider-indicators-dark' : '';
+		$indicator_shape 	= $settings['_slider_indicator_shape'] ? $settings['_slider_indicator_shape'] : '';
+		$nav_visible  		= ($settings['_slider_nav_visible']=='yes') ? ' slider-nav-visible' : '';
+		$nav_outside  		= ($settings['_slider_nav_outside']=='yes') ? ' slider-nav-outside' : '';
 	   //$mouse_drag  	= ($settings['_slider_mouse_drag']=='yes') ? ' slider-nav-mousedrag' : '';
 		
 		$this->add_render_attribute(
 			'slider_options',
 			[
-				'class' => 'ua-pc swiffy-slider'. $to_show . $gap . $reveal . " " . $navigation . $dark . $small . $autoPlay . $indicator . $nav_visible . $nav_outside . $pause ,
+				'class' => 'ua-pc swiffy-slider'. $to_show . $gap . $reveal . " " . $navigation . $dark . $small . $autoPlay  
+				. $nav_visible . $nav_outside . $pause . $indicator_outside . $indicator_highlight . $indicator_visible_sm . " ". $indicator_shape . $indicator_dark  ,
 				'data-slider-nav-autoplay-interval'=> $settings['_slider_speed']
 			]
 		);
@@ -1015,12 +1128,16 @@ class Product_Flip_Carousel extends Base{
 
         $loop = new \WP_Query( $args );
         if ( $loop->have_posts() ) {
+			$count=0;
+			$number=array();
             while ( $loop->have_posts() ) : $loop->the_post();
 				$id 		= $loop->post->ID;
                 $product   	= wc_get_product( $id );
 				$image_id  	= $product->get_image_id();
 				$image_url 	= wp_get_attachment_image_url( $image_id, 'full' );
 				$description = $loop->post->post_excerpt;
+				$count		= $count+1;
+				$number[]	=$count;
             ?>
         <li>
 			<div class="ua-product-flip flip-<?php echo $settings['_ua_product_flip_animation_type']; ?>">
@@ -1075,10 +1192,30 @@ class Product_Flip_Carousel extends Base{
         </li>
     </ul>
 
-	<?php if( $navigation !='none'):?>
+	<?php
+	if( $navigation !='none'):?>
 		<button type="button" class="slider-nav" aria-label="Go to previous"></button>
 		<button type="button" class="slider-nav slider-nav-next" aria-label="Go to next"></button>
 	<?php endif;?>
+
+	<?php
+	if('yes'== $settings['_slider_indicator']){
+	?>
+	<ul class="slider-indicators">
+		<?php 
+		foreach($number as $numbers){
+			if($numbers==1){ 
+				echo '<li class="active"></li>';
+			}
+			else{
+				echo '<li></li>';
+			}
+		}
+		?>
+	</ul>
+	<?php
+	}
+	?>
 
 </div>
  <?php
