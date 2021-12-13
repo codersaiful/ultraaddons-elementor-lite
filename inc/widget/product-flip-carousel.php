@@ -10,7 +10,7 @@ use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Background;
-
+use Elementor\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -1085,7 +1085,7 @@ class Product_Flip_Carousel extends Base{
 			]
 		);
 		$back_view 	= ( $settings['_ua_back_view'] =='yes' && Plugin::$instance->editor->is_edit_mode() ) ? 'style="opacity:1; transform:rotateY(-20deg)" ' :'';
-    ?>
+	?>
 <div <?php echo $this->get_render_attribute_string( 'slider_options' ); ?>>
     <ul class="slider-container">
         <?php
