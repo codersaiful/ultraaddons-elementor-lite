@@ -767,10 +767,10 @@ class Product_Flip_Carousel extends Base{
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
+					'top'    => '0',
+					'right'  => '0',
+					'bottom' => '0',
+					'left'   => '0',
 				],
 				'selectors'   => [
 					'{{WRAPPER}} .ua-product-flip .front, .ua-product-flip .back, .ua-product-flip .front:before' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -1263,4 +1263,4 @@ class Product_Flip_Carousel extends Base{
 	}    
     
     
-}
+}//End Class
