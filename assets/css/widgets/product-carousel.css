@@ -155,6 +155,10 @@ span.ua-onsale {
     height: 4rem;
     margin: 0.5rem;
 }
+.ua-pc button.slider-nav{
+    background-color: transparent;
+    outline: none;
+}
 @media (min-width: 768px){
     .ua-pl-md-2, .ua-px-md-2 {
         padding-left: 0.5rem!important;

@@ -860,7 +860,7 @@ class Product_Carousel extends Base{
     $this->add_render_attribute(
 		'slider_options',
 		[
-			'class' => 'swiffy-slider'. $to_show . $gap . $reveal . " " . $navigation . $dark . $small . $autoPlay . $indicator . $nav_visible . $nav_outside . $pause ,
+			'class' => 'ua-pc swiffy-slider'. $to_show . $gap . $reveal . " " . $navigation . $dark . $small . $autoPlay . $indicator . $nav_visible . $nav_outside . $pause ,
             'data-slider-nav-autoplay-interval'=> $settings['_slider_speed']
 		]
 	);

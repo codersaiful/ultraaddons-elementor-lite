@@ -100,6 +100,10 @@ class Product_Flip_Carousel extends Base{
     protected function _register_controls() {
 		//For Query Tab
         $this->query_controls();
+       //For Carousel Controls
+        $this->carousel_settings();
+       //For Nav Controls
+        $this->nav_controls();
        //For Content Section
         $this->content_general_controls();
 		//For front style Tab
@@ -113,6 +117,198 @@ class Product_Flip_Carousel extends Base{
 		//For sale flash Tab
         $this->sale_flash_controls();
     }
+	 
+    /**
+     * Carousel Settings Controls
+     * 
+     * @since 1.1.0.8
+     */
+	protected function carousel_settings() {
+		
+        $this->start_controls_section(
+            'carousel_controls',
+            [
+                'label'     => esc_html__( 'Slider Options', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+		 $this->add_control(
+			'_slider_to_show',
+			[
+				'label' => esc_html__( 'Slider to Show', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'1' => 'One',
+					'2' => 'Two',
+					'3' => 'Three',
+					'4' => 'Four',
+					'5' => 'Five',
+					'6' => 'Six',
+				],
+				'default' => '3',
+			]
+		);
+        $this->add_control(
+			'_slider_gap',
+			[
+				'label' => __( 'Gap', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+         $this->add_control(
+			'_slider_auto_play',
+			[
+				'label' => __( 'Auto Play', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+        $this->add_control(
+			'_slider_speed',
+			[
+				'label' => __( 'Auto Play Interval', 'ultraaddons' ),
+				'type' => Controls_Manager::NUMBER,
+				'min' => 1500,
+				'max' => 6000,
+				'step' => 10,
+				'default' => 2500,
+			]
+		);
+        $this->add_control(
+			'_slider_pause',
+			[
+				'label' => __( 'Pause on Hover', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+         $this->add_control(
+			'_slider_reveal',
+			[
+				'label' => __( 'Reveal', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+		
+	$this->end_controls_section();
+	}
+	/**
+     * Navigation Section 
+     */
+	protected function nav_controls() {
+		
+        $this->start_controls_section(
+            'nav_settings',
+            [
+                'label'     => esc_html__( 'Navigation Settings', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+		$this->add_control(
+			'_slider_navigation',
+			[
+				'label' => esc_html__( 'Navigation', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'none' => 'None',
+					'slider-nav-chevron' => 'Chevron',
+					'slider-nav-arrow' => 'Arrow',
+					'slider-nav-caret' => 'Caret',
+					'slider-nav-caretfill' => 'Caret filled',
+					'slider-nav-round' => 'Round with arrow',
+					'slider-nav-square' => 'Square with chevron',
+				],
+				'default' => 'slider-nav-square',
+			]
+		);
+        $this->add_control(
+			'_slider_nav_dark',
+			[
+				'label' => __( 'Dark', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+		$this->add_control(
+			'_slider_nav_visible',
+			[
+				'label' => __( 'Always Visible', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+		$this->add_control(
+			'_slider_nav_outside',
+			[
+				'label' => __( 'Nav Outside', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		);
+		/* $this->add_control(
+			'_slider_mouse_drag',
+			[
+				'label' => __( 'Mouse Drag', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		); */
+        $this->add_control(
+			'_slider_nav_small',
+			[
+				'label' => __( 'Small', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+		$this->add_control(
+			'_slider_indicator',
+			[
+				'label' => __( 'Indicators', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		);
+
+	$this->end_controls_section();
+	}
+
+	/**
+	 * Query Settings
+	 */
 	protected function query_controls() {
 		
         $this->start_controls_section(
@@ -755,10 +951,29 @@ class Product_Flip_Carousel extends Base{
             echo "<div class='ua-alert'>" . esc_html__( "WooCommerce is not Activated.", 'ultraaddons' ) . "</div>";
 			return;
         }
-		$col 		= $settings['_ua_col'];
+		$gap        	= ($settings['_slider_gap']=='yes') ? '' : ' slider-item-nogap';
+		$reveal     	= ($settings['_slider_reveal']=='yes') ? ' slider-item-reveal' : '';
+		$to_show    	= $settings['_slider_to_show'] ? ' slider-item-show'. $settings['_slider_to_show'] : '';
+		$navigation 	= $settings['_slider_navigation'] ? $settings['_slider_navigation'] : '';
+		$dark       	= $settings['_slider_nav_dark'] ? ' slider-nav-dark' : '';
+		$small      	= $settings['_slider_nav_small'] ? ' slider-nav-sm' : '';
+		$autoPlay   	= $settings['_slider_auto_play'] ? ' slider-nav-autoplay' : '';
+		$pause      	= $settings['_slider_pause'] ? ' slider-nav-autopause' : '';
+		$indicator 		= ($settings['_slider_indicator']!='no') ? ' slider-indicators' : '';
+		$nav_visible  	= ($settings['_slider_nav_visible']=='yes') ? ' slider-nav-visible' : '';
+		$nav_outside  	= ($settings['_slider_nav_outside']=='yes') ? ' slider-nav-outside' : '';
+	   //$mouse_drag  	= ($settings['_slider_mouse_drag']=='yes') ? ' slider-nav-mousedrag' : '';
+		
+		$this->add_render_attribute(
+			'slider_options',
+			[
+				'class' => 'ua-pc swiffy-slider'. $to_show . $gap . $reveal . " " . $navigation . $dark . $small . $autoPlay . $indicator . $nav_visible . $nav_outside . $pause ,
+				'data-slider-nav-autoplay-interval'=> $settings['_slider_speed']
+			]
+		);
 		$back_view 	= ( $settings['_ua_back_view'] =='yes' && Plugin::$instance->editor->is_edit_mode() ) ? 'style="opacity:1; transform:rotateY(-20deg)" ' :'';
     ?>
-<div class="swiffy-slider slider-item-show3 slider-nav-square slider-nav-autoplay slider-nav-animation-scale slider-nav-autopause">
+<div <?php echo $this->get_render_attribute_string( 'slider_options' ); ?>>
     <ul class="slider-container">
         <?php
         $args = array(
@@ -808,75 +1023,66 @@ class Product_Flip_Carousel extends Base{
 				$description = $loop->post->post_excerpt;
             ?>
         <li>
-            <div class="ua-product-flip">
-                <div class="front" style="background:url(<?php echo esc_url($image_url);?>)">
-                <?php if ( $product->is_on_sale() ) : 
-                echo apply_filters( 'woocommerce_sale_flash', '<span class="ua-onsale">' . esc_html__( 'Sale!', 'ultraaddons' ) . '</span>', $product );
-                endif;
-                ?>
-                    <a href="<?php echo get_the_permalink(); ?>">
-                        <?php
-                        echo '<' . $settings['_ua_front_title_tag'] . ' class="front-title">' . $loop->post->post_title . 
-                                '</' . $settings['_ua_front_title_tag'] . '>';
-                        ?>
-                    </a>
-                <span class="ua-product-price">
-                    <?php echo $product->get_price_html();?> 
-                </span>
-                </div>
-                <div class="back" <?php echo $back_view; ?>>
-                <a href="<?php echo get_the_permalink(); ?>">
-                <?php
-                echo '<' . $settings['_ua_back_title_tag'] . ' class="back-title">' . $loop->post->post_title . 
-                        '</' . $settings['_ua_back_title_tag'] . '>';
-                ?>
-                </a>
-                    <div class="ua-desc">
-                    <?php echo $this->word_shortener($description, $settings['_ua_text_truncate']);?>
-                    </div>
-                <div class="ua-cart">
-                    <?php 
-                    
-                    woocommerce_template_loop_add_to_cart();
-                    
-
-                    /**
-                        * For after Add to cart button on cart page.
-                        * 
-                        * @hook ultraaddons/widget/product_flip/after_cart
-                        * 
-                        * @author Saiful Islam <codersaiful@gmail.com>
-                        * @since 1.1.0.8
-                        */
-                    do_action( 'ultraaddons/widget/product_flip/after_cart' );
-                    ?>
-                    </div>
-                </div>
-            </div>
-            <?php
-            endwhile;
-            } else {
-                echo "<div class='ua-alert'>" . esc_html__( "No products found!", 'ultraaddons' ) . "</div>";
-            }
-            wp_reset_postdata();
-            ?>
-            </div>
-        </li>    
-        
+			<div class="ua-product-flip flip-<?php echo $settings['_ua_product_flip_animation_type']; ?>">
+				<div class="front" style="background:url(<?php echo esc_url($image_url);?>)">
+					<?php if ( $product->is_on_sale() ) : 
+					echo apply_filters( 'woocommerce_sale_flash', '<span class="ua-onsale">' . esc_html__( 'Sale!', 'ultraaddons' ) . '</span>', $product );
+					endif;
+					?>
+					<a href="<?php echo get_the_permalink(); ?>">
+						<?php
+						echo '<' . $settings['_ua_front_title_tag'] . ' class="front-title">' . $loop->post->post_title . 
+								'</' . $settings['_ua_front_title_tag'] . '>';
+						?>
+					</a>
+					<span class="ua-product-price">
+						<?php echo $product->get_price_html();?> 
+					</span>
+				</div>
+				<div class="back" <?php echo $back_view; ?>>
+					<a href="<?php echo get_the_permalink(); ?>">
+						<?php
+						echo '<' . $settings['_ua_back_title_tag'] . ' class="back-title">' . $loop->post->post_title . 
+								'</' . $settings['_ua_back_title_tag'] . '>';
+						?>
+					</a>
+					<div class="ua-desc">
+						<?php echo $this->word_shortener($description, $settings['_ua_text_truncate']);?>
+					</div>
+					<div class="ua-cart">
+						<?php 
+						
+						woocommerce_template_loop_add_to_cart();
+						/**
+							* For after Add to cart button on cart page.
+							* 
+							* @hook ultraaddons/widget/product_flip/after_cart
+							* 
+							* @author Saiful Islam <codersaiful@gmail.com>
+							* @since 1.1.0.8
+							*/
+						do_action( 'ultraaddons/widget/product_flip/after_cart' );
+						?>
+					</div>
+				</div>
+				<?php
+				endwhile;
+				} else {
+					echo "<div class='ua-alert'>" . esc_html__( "No products found!", 'ultraaddons' ) . "</div>";
+				}
+				wp_reset_postdata();
+				?>
+        </li>
     </ul>
 
-    <button type="button" class="slider-nav"></button>
-    <button type="button" class="slider-nav slider-nav-next"></button>
+	<?php if( $navigation !='none'):?>
+		<button type="button" class="slider-nav" aria-label="Go to previous"></button>
+		<button type="button" class="slider-nav slider-nav-next" aria-label="Go to next"></button>
+	<?php endif;?>
 
-    <div class="slider-indicators">
-        <button class="active"></button>
-        <button></button>
-        <button></button>
-    </div>
 </div>
-
-        <?php
-    }
+ <?php
+}
     
     /**
      * Getting Category list of WooCommerce product
@@ -918,7 +1124,6 @@ class Product_Flip_Carousel extends Base{
 		  }
 		  return $str . (count($all) <= $words ? '' : $sp);
 	}    
-    
     
     
 }
