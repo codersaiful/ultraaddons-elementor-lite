@@ -310,14 +310,14 @@ class Loader {
         
         
         //Naming of Args
-        $frontend_js_name  = 'ultraaddons-elementor-frontend';
+        $frontend_js_name           = 'ultraaddons-elementor-frontend';
         $js_file_url    = apply_filters( 'ultraaddons_elementor_frontend', ULTRA_ADDONS_ASSETS . 'js/frontend.js' );
         $dependency     =  apply_filters( 'ultraaddons_elementor_frontend_dependency', ['jquery'] );//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  = true;
         
-        wp_register_script( $frontend_js_name, $js_file_url,  array('flipCarousel'), '', true );
-        wp_enqueue_script( $frontend_js_name );     
+        wp_register_script( $frontend_js_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $frontend_js_name );      
         
         $ajax_url = admin_url( 'admin-ajax.php' );
         $version = ULTRA_ADDONS_VERSION;

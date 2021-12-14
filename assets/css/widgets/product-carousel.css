@@ -112,7 +112,6 @@ span.ua-onsale {
     line-height: 18px;
     padding-top: 9px;
     overflow: hidden;
-    color: #000;
     position: relative;
     -webkit-box-shadow: 1px 0 32px rgba(0, 0, 0, 0.2);
     box-shadow: 1px 0 32px rgba(0, 0, 0, 0.2);
@@ -120,6 +119,7 @@ span.ua-onsale {
     -o-transition: all 0.4s ease;
     transition: all 0.4s ease;
     text-align: center;
+    margin:0 5px;
 }
 .ua-thumbnail .cart-links .add-card i {
     display: inline-block;

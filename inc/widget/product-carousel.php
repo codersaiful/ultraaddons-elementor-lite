@@ -118,8 +118,6 @@ class Product_Carousel extends Base{
         $this->content_general_controls();
          //For Navigation Tab
         $this->nav_controls();
-        //For General Style Tab
-        $this->style_general_controls();
 		//For Content Style Tab
         $this->style_content_controls();
 		//For Box Style Tab
@@ -555,42 +553,7 @@ protected function animation_controls() {
 $this->end_controls_section();
 }
     
-    /**
-     *  Section for Style Tab
-     * 
-     * @since 1.0.0.9
-     */
-    protected function style_general_controls() {
-        $this->start_controls_section(
-            'style_general',
-            [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
-                'tab'       => Controls_Manager::TAB_STYLE,
-            ]
-        );
-        $this->add_control(
-			'_ua_front_title_tag',
-			[
-				'label' => esc_html__( 'Select Title Tag', 'ultraaddons' ),
-				'type' => Controls_Manager::SELECT,
-				'options' => [
-					'h1' => 'H1',
-					'h2' => 'H2',
-					'h3' => 'H3',
-					'h4' => 'H4',
-					'h5' => 'H5',
-					'h6' => 'H6',
-					'div' => 'div',
-				],
-				'default' => 'h2',
-			]
-		);
-        
-		
-    $this->end_controls_tab();
-    $this->end_controls_section();
-       
-    }
+ 
 	//Content Style Tab
 	protected function style_content_controls() {
         $this->start_controls_section(
@@ -654,6 +617,23 @@ $this->end_controls_section();
 				'separator'=> 'after'
 			]
         );
+		$this->add_control(
+			'_ua_front_title_tag',
+			[
+				'label' => esc_html__( 'Select Title Tag', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'h1' => 'H1',
+					'h2' => 'H2',
+					'h3' => 'H3',
+					'h4' => 'H4',
+					'h5' => 'H5',
+					'h6' => 'H6',
+					'div' => 'div',
+				],
+				'default' => 'h2',
+			]
+		);
 		
     $this->end_controls_tab();
     $this->end_controls_section();
