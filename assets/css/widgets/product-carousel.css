@@ -161,7 +161,7 @@ span.ua-onsale {
 }
 .ua-card a.added_to_cart.wc-forward {
     font-size: 12px;
-    color: yellowgreen;
+    color: yellowgreen !important;
 }
 @media (min-width: 768px){
     .ua-pl-md-2, .ua-px-md-2 {
