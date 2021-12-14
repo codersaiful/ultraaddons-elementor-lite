@@ -501,7 +501,7 @@ class Product_Flip_Carousel extends Base{
         $this->start_controls_section(
             'general_content',
             [
-                'label'     => esc_html__( 'Settings', 'ultraaddons' ),
+                'label'     => esc_html__( 'General Settings', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
