@@ -10,6 +10,7 @@ use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Background;
 use Elementor\Repeater;
+use Elementor\Plugin;
 
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -38,12 +39,12 @@ class Product_Carousel extends Base{
      * 
      * @by Saiful Islam
      */
-    public function __construct($data = [], $args = null) {
+	public function __construct($data = [], $args = null) {
         parent::__construct($data, $args);
 
         //Naming of Args for swiffySlider
         $name           = 'swiffySlider';
-        $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/swiffy-slider.min.js';
+        $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/swiffy-slider/dist/js/swiffy-slider.min.js';
         $dependency     =  ['jquery'];//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  	= true;
@@ -53,7 +54,7 @@ class Product_Carousel extends Base{
 		
         //CSS file for dependency
 		$name           = 'swiffySlider';
-        $css_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/css/swiffy-slider.min.css';
+        $css_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/swiffy-slider/dist/css/swiffy-slider.min.css';
         $dependency     =  [];//kaj ta ses hoyni. pore abar try korte hobe.
         $version        = ULTRA_ADDONS_VERSION;
         $media  	= 'all';
@@ -129,6 +130,8 @@ class Product_Carousel extends Base{
         $this->pc_sale_flash_controls();
         //For cart Tab
         $this->cart_style_controls();
+        //For Animation Tab
+        $this->animation_controls();
        
     }
 
@@ -396,7 +399,7 @@ class Product_Carousel extends Base{
 				'label_on' => __( 'Yes', 'ultraaddons' ),
 				'label_off' => __( 'No', 'ultraaddons' ),
 				'return_value' => 'yes',
-				'default' => 'no',
+				'default' => 'yes',
 			]
 		);
 		$this->add_control(
@@ -415,11 +418,11 @@ class Product_Carousel extends Base{
 	}
 
     
-    /**
-     * General Section for Content Controls
-     * 
-     * @since 1.0.0.9
-     */
+/**
+ * General Section for Content Controls
+ * 
+ * @since 1.0.0.9
+ */
   protected function content_general_controls() {
 		
         $this->start_controls_section(
@@ -504,6 +507,53 @@ class Product_Carousel extends Base{
 		
 	$this->end_controls_section();
 	}
+	/**
+ * General Section for Content Controls
+ * 
+ * @since 1.0.0.9
+ */
+protected function animation_controls() {
+		
+	$this->start_controls_section(
+		'animation_controls',
+		[
+			'label'     => esc_html__( 'Animation Options', 'ultraaddons' ),
+			'tab'       => Controls_Manager::TAB_CONTENT,
+		]
+	);
+
+	$this->add_control(
+		'_slider_animation_enabled',
+		[
+			'label' => __( 'Enable Animation', 'ultraaddons' ),
+			'type' => Controls_Manager::SWITCHER,
+			'label_on' => __( 'Yes', 'ultraaddons' ),
+			'label_off' => __( 'No', 'ultraaddons' ),
+			'return_value' => 'yes',
+			'default' => 'no',
+		]
+	);
+	$this->add_control(
+		'_slider_anim_type',
+		[
+			'label' => esc_html__( 'Select Title Tag', 'ultraaddons' ),
+			'type' => Controls_Manager::SELECT,
+			'options' => [
+				'none' => 'None',
+				'slider-nav-animation-appear' => 'Apear Animation',
+				'slider-nav-animation-fadein' => 'Fade in Animation',
+				'slider-nav-animation-scale' => 'Scale Animation',
+				'slider-nav-animation-scaleup' => 'Scale Up Animation',
+				'slider-nav-animation-slideup' => 'Slide Up Animation',
+				'slider-nav-animation-turn' => 'Turn Aanimation',
+			],
+			'condition' => [ '_slider_animation_enabled' => 'yes' ],
+			'default' => 'None',
+		]
+	);
+
+$this->end_controls_section();
+}
     
     /**
      *  Section for Style Tab
@@ -928,20 +978,30 @@ class Product_Carousel extends Base{
 	$indicator_outside 	= ($settings['_slider_indicator_outside']!='no') ? ' slider-indicators-outside' : '';
 	$indicator_highlight = ($settings['_slider_indicator_highlight']!='no') ? ' slider-indicators-highlight' : '';
 	$indicator_visible_sm = ($settings['_slider_indicator_visible_sm']!='no') ? ' slider-indicators-sm' : '';
-	$indicator_dark 	= ($settings['_slider_indicator_dark']!='no') ? ' slider-indicators-dark' : '';
-	$indicator_shape 	= $settings['_slider_indicator_shape'] ? $settings['_slider_indicator_shape'] : '';
-    $nav_visible  	= ($settings['_slider_nav_visible']=='yes') ? ' slider-nav-visible' : '';
-    $nav_outside  	= ($settings['_slider_nav_outside']=='yes') ? ' slider-nav-outside' : '';
+	$indicator_dark 	= ($settings['_slider_indicator_dark']=='yes') ? ' slider-indicators-dark' : '';
+	$indicator_shape 	= $settings['_slider_indicator_shape'] =='default' ? '' : $settings['_slider_indicator_shape'];
+    $nav_visible  		= ($settings['_slider_nav_visible']=='yes') ? ' slider-nav-visible' : '';
+    $nav_outside  		= ($settings['_slider_nav_outside']=='yes') ? ' slider-nav-outside' : '';
+   	$enable_animation  	= ($settings['_slider_animation_enabled']=='yes') ? ' slider-nav-animation' : '';
+   	$animation_type  	= $settings['_slider_anim_type'] ? $settings['_slider_anim_type']  : '';
    //$mouse_drag  	= ($settings['_slider_mouse_drag']=='yes') ? ' slider-nav-mousedrag' : '';
     
    $this->add_render_attribute(
 	'slider_options',
 	[
 		'class' => 'ua-pc swiffy-slider'. $to_show . $gap . $reveal . " " . $navigation . $dark . $small . $autoPlay  
-		. $nav_visible . $nav_outside . $pause . $indicator_outside . $indicator_highlight . $indicator_visible_sm . " ". $indicator_shape . $indicator_dark  ,
+		. $nav_visible . $nav_outside . $pause . $indicator_outside . $indicator_highlight . $indicator_visible_sm .
+		 " ". $indicator_shape . $indicator_dark . $enable_animation . " " . $animation_type,
 		'data-slider-nav-autoplay-interval'=> $settings['_slider_speed']
 	]
 );
+?>
+<?php
+if( Plugin::$instance->editor->is_edit_mode()){
+	echo '<script>
+		swiffyslider.init();
+	</script>';
+}
 ?>
 
 <div <?php echo $this->get_render_attribute_string( 'slider_options' ); ?>>
