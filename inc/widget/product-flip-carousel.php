@@ -46,7 +46,7 @@ class Product_Flip_Carousel extends Base{
         $media  	= 'all';
         wp_register_style('swiffySlider', $css_file_url,$dependency,$version, $media ); //product-carousel
         wp_enqueue_style('swiffySlider' );
-
+		$this->add_view_icon();
     }
 
     /**
@@ -1335,7 +1335,20 @@ $this->end_controls_section();
 			}
 		  }
 		  return $str . (count($all) <= $words ? '' : $sp);
-	}    
+	}
+
+	/**
+	 * Alter WooCommerce View Cart Text
+	**/ 
+	public function add_view_icon(){
+		add_filter( 'gettext', function( $translated_text ) {
+			if ( 'View cart' === $translated_text ) {
+				$translated_text = '&#x2714;';
+			}
+			return $translated_text;
+		} );
+
+	}
     
     
 }//End Class
