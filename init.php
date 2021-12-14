@@ -187,25 +187,27 @@ final class UltraAddons {
 	 * @access public
 	 */
 	public function init() {
-                /**
-                 * Mainly for check UltraAddons Installed or now.
-                 * 
-                 * If any user want to make a theme by our plugin,
-                 * He/she can check our plugin activation statys
-                 * by did_action( 'ultraaddons_init' )
-                 */
-                do_action( 'ultraaddons_init' );
-                /**
-                 * Auto Loader
-                 * finally activated and running now.
-                 * 
-                 * @since 1.0.1.0
-                 */
-                 include_once ULTRA_ADDONS_DIR . 'autoloader.php';
-            
-            
-                //Including Function File. It will stay at the Top of the File
-                include_once ULTRA_ADDONS_DIR . 'inc/functions.php';
+
+		/**
+		 * Mainly for check UltraAddons Installed or now.
+		 * 
+		 * If any user want to make a theme by our plugin,
+		 * He/she can check our plugin activation statys
+		 * by did_action( 'ultraaddons_init' )
+		 */
+		do_action( 'ultraaddons_init' );
+
+		/**
+		 * Auto Loader
+		 * finally activated and running now.
+		 * 
+		 * @since 1.0.1.0
+		 */
+		include_once ULTRA_ADDONS_DIR . 'autoloader.php';
+	
+	
+		//Including Function File. It will stay at the Top of the File
+		include_once ULTRA_ADDONS_DIR . 'inc/functions.php';
 
                 
 		// Check if Elementor installed and activated
@@ -227,25 +229,34 @@ final class UltraAddons {
 		}
 
                 
-                /**
-                 * SDK Integration
-                 * Actually added first time @since 1.0.5.1
-                 * 
-                 * @since 1.0.7.15
-                 */
-                //include_once ULTRA_ADDONS_DIR . 'inc/sdk/integration.php'; //Integration has removed
-                
-                
-                if( is_admin() ){
-                    
-                    include_once ULTRA_ADDONS_DIR . 'admin/admin-handle.php';
-                }
-                
-                
-                
-                //Elementor Widget and script Loader
-                include_once ULTRA_ADDONS_DIR . 'loader.php';
-                
+		/**
+		 * SDK Integration
+		 * Actually added first time @since 1.0.5.1
+		 * 
+		 * @since 1.0.7.15
+		 */
+		//include_once ULTRA_ADDONS_DIR . 'inc/sdk/integration.php'; //Integration has removed
+		
+		
+		if( is_admin() ){
+			
+			include_once ULTRA_ADDONS_DIR . 'admin/admin-handle.php';
+		}
+		
+		
+		
+		//Elementor Widget and script Loader
+		include_once ULTRA_ADDONS_DIR . 'loader.php';
+        
+		/**
+		 * Checking UltraAddons Elementor Loaded or not
+		 * We added it after 1.1.0.8
+		 * and add this hook after Full load UltraAddons
+		 * 
+		 * @since 1.1.0.8
+		 * @author Saiful Islam <codersaiful@gmail.com>
+		 */
+		do_action( 'ultraaddons_loaded' );
                 
 
 	}
