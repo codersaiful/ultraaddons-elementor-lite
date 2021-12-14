@@ -507,7 +507,7 @@ class Product_Carousel extends Base{
 		
 	$this->end_controls_section();
 	}
-	/**
+/**
  * General Section for Content Controls
  * 
  * @since 1.0.0.9
@@ -536,7 +536,7 @@ protected function animation_controls() {
 	$this->add_control(
 		'_slider_anim_type',
 		[
-			'label' => esc_html__( 'Select Title Tag', 'ultraaddons' ),
+			'label' => esc_html__( 'Select Animation', 'ultraaddons' ),
 			'type' => Controls_Manager::SELECT,
 			'options' => [
 				'none' => 'None',
@@ -961,29 +961,44 @@ $this->end_controls_section();
      * @access protected
      */
     protected function render() {
-    //Intrigate with WooCommerce
+	$settings   	= $this->get_settings_for_display();	
+    //Get Intrigate with WooCommerce
     if( ! class_exists( 'WooCommerce' ) ){
         echo "<div class='ua-alert'>" . esc_html__( "WooCommerce is not Activated.", 'ultraaddons' ) . "</div>";
         return;
     }
-    $settings   	= $this->get_settings_for_display();
-    $gap        	= ($settings['_slider_gap']=='yes') ? '' : ' slider-item-nogap';
-    $reveal     	= ($settings['_slider_reveal']=='yes') ? ' slider-item-reveal' : '';
-    $to_show    	= $settings['_slider_to_show'] ? ' slider-item-show'. $settings['_slider_to_show'] : '';
-    $navigation 	= $settings['_slider_navigation'] ? $settings['_slider_navigation'] : '';
-    $dark       	= $settings['_slider_nav_dark'] ? ' slider-nav-dark' : '';
-    $small      	= $settings['_slider_nav_small'] ? ' slider-nav-sm' : '';
-    $autoPlay   	= $settings['_slider_auto_play'] ? ' slider-nav-autoplay' : '';
-    $pause      	= $settings['_slider_pause'] ? ' slider-nav-autopause' : '';
+	/**
+	 * Get General Settings
+	 */
+	$gap        		= ($settings['_slider_gap']=='yes') ? '' : ' slider-item-nogap';
+	$reveal     		= ($settings['_slider_reveal']=='yes') ? ' slider-item-reveal' : '';
+	$to_show    		= $settings['_slider_to_show'] ? ' slider-item-show'. $settings['_slider_to_show'] : '';
+	$autoPlay   		= $settings['_slider_auto_play'] ? ' slider-nav-autoplay' : '';
+	$pause      		= $settings['_slider_pause'] ? ' slider-nav-autopause' : '';
+	
+	/**
+	 * Get Navigation Settings
+	 */
+	$navigation 		= $settings['_slider_navigation'] ? $settings['_slider_navigation'] : '';
+	$nav_visible  		= ($settings['_slider_nav_visible']=='yes') ? ' slider-nav-visible' : '';
+	$nav_outside  		= ($settings['_slider_nav_outside']=='yes') ? ' slider-nav-outside' : '';
+	$dark       		= $settings['_slider_nav_dark'] ? ' slider-nav-dark' : '';
+	$small      		= $settings['_slider_nav_small'] ? ' slider-nav-sm' : '';
+
+	/**
+	 * Get Indicators Settings
+	 */
 	$indicator_outside 	= ($settings['_slider_indicator_outside']!='no') ? ' slider-indicators-outside' : '';
 	$indicator_highlight = ($settings['_slider_indicator_highlight']!='no') ? ' slider-indicators-highlight' : '';
 	$indicator_visible_sm = ($settings['_slider_indicator_visible_sm']!='no') ? ' slider-indicators-sm' : '';
-	$indicator_dark 	= ($settings['_slider_indicator_dark']=='yes') ? ' slider-indicators-dark' : '';
-	$indicator_shape 	= $settings['_slider_indicator_shape'] =='default' ? '' : $settings['_slider_indicator_shape'];
-    $nav_visible  		= ($settings['_slider_nav_visible']=='yes') ? ' slider-nav-visible' : '';
-    $nav_outside  		= ($settings['_slider_nav_outside']=='yes') ? ' slider-nav-outside' : '';
-   	$enable_animation  	= ($settings['_slider_animation_enabled']=='yes') ? ' slider-nav-animation' : '';
-   	$animation_type  	= $settings['_slider_anim_type'] ? $settings['_slider_anim_type']  : '';
+	$indicator_dark 	= ($settings['_slider_indicator_dark']!='no') ? ' slider-indicators-dark' : '';
+	$indicator_shape 	= $settings['_slider_indicator_shape'] ? $settings['_slider_indicator_shape'] : '';
+
+	/**
+	 * Get Animation Settings
+	 */
+	$enable_animation  	= ($settings['_slider_animation_enabled']=='yes') ? ' slider-nav-animation' : '';
+	$animation_type  	=( $settings['_slider_anim_type'] == 'default') ?  '' : $settings['_slider_anim_type'];
    //$mouse_drag  	= ($settings['_slider_mouse_drag']=='yes') ? ' slider-nav-mousedrag' : '';
     
    $this->add_render_attribute(

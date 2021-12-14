@@ -118,6 +118,8 @@ class Product_Flip_Carousel extends Base{
         $this->sale_flash_controls();
 		//For Navigation Style
         $this->style_navigation();
+		//For Animation Tab
+        $this->animation_controls();
     }
 	 
     /**
@@ -556,6 +558,53 @@ class Product_Flip_Carousel extends Base{
 		);
 	$this->end_controls_section();
 	}
+	/**
+ * General Section for Content Controls
+ * 
+ * @since 1.0.0.9
+ */
+protected function animation_controls() {
+		
+	$this->start_controls_section(
+		'animation_controls',
+		[
+			'label'     => esc_html__( 'Animation Options', 'ultraaddons' ),
+			'tab'       => Controls_Manager::TAB_CONTENT,
+		]
+	);
+
+	$this->add_control(
+		'_slider_animation_enabled',
+		[
+			'label' => __( 'Enable Animation', 'ultraaddons' ),
+			'type' => Controls_Manager::SWITCHER,
+			'label_on' => __( 'Yes', 'ultraaddons' ),
+			'label_off' => __( 'No', 'ultraaddons' ),
+			'return_value' => 'yes',
+			'default' => 'no',
+		]
+	);
+	$this->add_control(
+		'_slider_anim_type',
+		[
+			'label' => esc_html__( 'Select Animation', 'ultraaddons' ),
+			'type' => Controls_Manager::SELECT,
+			'options' => [
+				'none' => 'None',
+				'slider-nav-animation-appear' => 'Apear Animation',
+				'slider-nav-animation-fadein' => 'Fade in Animation',
+				'slider-nav-animation-scale' => 'Scale Animation',
+				'slider-nav-animation-scaleup' => 'Scale Up Animation',
+				'slider-nav-animation-slideup' => 'Slide Up Animation',
+				'slider-nav-animation-turn' => 'Turn Aanimation',
+			],
+			'condition' => [ '_slider_animation_enabled' => 'yes' ],
+			'default' => 'None',
+		]
+	);
+
+$this->end_controls_section();
+}
 	/**
 	 * Front Style Controls
 	 */
@@ -1059,32 +1108,58 @@ class Product_Flip_Carousel extends Base{
             echo "<div class='ua-alert'>" . esc_html__( "WooCommerce is not Activated.", 'ultraaddons' ) . "</div>";
 			return;
         }
+		/**
+		 * Get General Settings
+		 */
 		$gap        		= ($settings['_slider_gap']=='yes') ? '' : ' slider-item-nogap';
 		$reveal     		= ($settings['_slider_reveal']=='yes') ? ' slider-item-reveal' : '';
 		$to_show    		= $settings['_slider_to_show'] ? ' slider-item-show'. $settings['_slider_to_show'] : '';
-		$navigation 		= $settings['_slider_navigation'] ? $settings['_slider_navigation'] : '';
-		$dark       		= $settings['_slider_nav_dark'] ? ' slider-nav-dark' : '';
-		$small      		= $settings['_slider_nav_small'] ? ' slider-nav-sm' : '';
 		$autoPlay   		= $settings['_slider_auto_play'] ? ' slider-nav-autoplay' : '';
 		$pause      		= $settings['_slider_pause'] ? ' slider-nav-autopause' : '';
+		
+		/**
+		 * Get Navigation Settings
+		 */
+		$navigation 		= $settings['_slider_navigation'] ? $settings['_slider_navigation'] : '';
+		$nav_visible  		= ($settings['_slider_nav_visible']=='yes') ? ' slider-nav-visible' : '';
+		$nav_outside  		= ($settings['_slider_nav_outside']=='yes') ? ' slider-nav-outside' : '';
+		$dark       		= $settings['_slider_nav_dark'] ? ' slider-nav-dark' : '';
+		$small      		= $settings['_slider_nav_small'] ? ' slider-nav-sm' : '';
+	
+		/**
+		 * Get Indicators Settings
+		 */
 		$indicator_outside 	= ($settings['_slider_indicator_outside']!='no') ? ' slider-indicators-outside' : '';
 		$indicator_highlight = ($settings['_slider_indicator_highlight']!='no') ? ' slider-indicators-highlight' : '';
 		$indicator_visible_sm = ($settings['_slider_indicator_visible_sm']!='no') ? ' slider-indicators-sm' : '';
 		$indicator_dark 	= ($settings['_slider_indicator_dark']!='no') ? ' slider-indicators-dark' : '';
 		$indicator_shape 	= $settings['_slider_indicator_shape'] ? $settings['_slider_indicator_shape'] : '';
-		$nav_visible  		= ($settings['_slider_nav_visible']=='yes') ? ' slider-nav-visible' : '';
-		$nav_outside  		= ($settings['_slider_nav_outside']=='yes') ? ' slider-nav-outside' : '';
+	
+		/**
+		 * Get Animation Settings
+		 */
+		$enable_animation  	= ($settings['_slider_animation_enabled']=='yes') ? ' slider-nav-animation' : '';
+		$animation_type  	=( $settings['_slider_anim_type'] == 'default') ?  '' : $settings['_slider_anim_type'];
 	   //$mouse_drag  	= ($settings['_slider_mouse_drag']=='yes') ? ' slider-nav-mousedrag' : '';
 		
-		$this->add_render_attribute(
-			'slider_options',
-			[
-				'class' => 'ua-pc swiffy-slider'. $to_show . $gap . $reveal . " " . $navigation . $dark . $small . $autoPlay  
-				. $nav_visible . $nav_outside . $pause . $indicator_outside . $indicator_highlight . $indicator_visible_sm . " ". $indicator_shape . $indicator_dark  ,
-				'data-slider-nav-autoplay-interval'=> $settings['_slider_speed']
-			]
-		);
+		
+	   $this->add_render_attribute(
+		'slider_options',
+		[
+			'class' => 'ua-pc swiffy-slider'. $to_show . $gap . $reveal . " " . $navigation . $dark . $small . $autoPlay  
+			. $nav_visible . $nav_outside . $pause . $indicator_outside . $indicator_highlight . $indicator_visible_sm .
+			 " ". $indicator_shape . $indicator_dark . $enable_animation . " " . $animation_type,
+			'data-slider-nav-autoplay-interval'=> $settings['_slider_speed']
+		]
+	);
 		$back_view 	= ( $settings['_ua_back_view'] =='yes' && Plugin::$instance->editor->is_edit_mode() ) ? 'style="opacity:1; transform:rotateY(-20deg)" ' :'';
+	?>
+	<?php
+	if( Plugin::$instance->editor->is_edit_mode()){
+		echo '<script>
+			swiffyslider.init();
+		</script>';
+	}
 	?>
 <div <?php echo $this->get_render_attribute_string( 'slider_options' ); ?>>
     <ul class="slider-container">
