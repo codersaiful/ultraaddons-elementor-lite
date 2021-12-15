@@ -890,10 +890,11 @@
                 function ($scope) {
                     if ( $scope.find( '.ua-ml' ) ){
                     var anim_data = $scope[0].dataset.settings;
-                    if(anim_data!=0){
+                    
+                    if(anim_data){
                      var obj = JSON.parse(anim_data);
                     }
-                    if(obj.length !=0 && obj.anim_type==1){
+                    if(typeof(obj)!= "undefined" && obj.anim_type==1){
                         var textWrapper = document.querySelector('.ml1 .letters');
                         textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
                         anime.timeline({loop: true})
@@ -921,7 +922,7 @@
                         delay: 1000
                         });
                 }
-                if(obj.length !=0 && obj.anim_type==2){
+                if(typeof(obj)!= "undefined" && obj.anim_type==2){
                     var textWrapper = document.querySelector('.ml2');
                     textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
@@ -942,7 +943,7 @@
                         delay: 1000
                     });
                 }
-                if(obj.length !=0 &&  obj.anim_type==3){
+                if(typeof(obj)!= "undefined" &&  obj.anim_type==3){
                    // Wrap every letter in a span
                     var textWrapper = document.querySelector('.ml3');
                     textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
@@ -963,7 +964,7 @@
                     });
                 }
                 
-                if(obj.length !=0 && obj.anim_type==4){
+                if(typeof(obj)!= "undefined" && obj.anim_type==4){
                     var ml4 = {};
                     ml4.opacityIn = [0,1];
                     ml4.scaleIn = [0.2, 1];
@@ -1016,7 +1017,7 @@
                         delay: 500
                       });
                 }
-                if(obj.length !=0 &&  obj.anim_type==5){
+                if(typeof(obj)!= "undefined"&&  obj.anim_type==5){
                     anime.timeline({loop: true})
                     .add({
                       targets: '.ml5 .line',
@@ -1058,7 +1059,7 @@
                       delay: 1000
                     });
                   }
-                if(obj.length !=0 &&  obj.anim_type==6){
+                if(typeof(obj)!= "undefined"&&  obj.anim_type==6){
                     // Wrap every letter in a span
                       var textWrapper = document.querySelector('.ml6 .letters');
                       textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
@@ -1078,9 +1079,31 @@
                           delay: 1000
                       });
                 }
+                if(typeof(obj)!= "undefined" &&  obj.anim_type==7){
+                    var textWrapper = document.querySelector('.ml7 .letters');
+                    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+                    anime.timeline({loop: true})
+                    .add({
+                        targets: '.ml7 .letter',
+                        translateY: ["1.1em", 0],
+                        translateX: ["0.55em", 0],
+                        translateZ: 0,
+                        rotateZ: [180, 0],
+                        duration: 750,
+                        easing: "easeOutExpo",
+                        delay: (el, i) => 50 * i
+                    }).add({
+                        targets: '.ml7',
+                        opacity: 0,
+                        duration: 1000,
+                        easing: "easeOutExpo",
+                        delay: 1000
+                    });
+                }
             }
-            }
-        );
+        }
+    );
 		
 
     });// Init wrap up

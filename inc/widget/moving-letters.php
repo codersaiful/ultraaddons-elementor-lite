@@ -9,10 +9,22 @@ use Elementor\Core\Schemes\Typography;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
+use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Background;
+use Elementor\Plugin;
 
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
+/**
+ * Moving Letters
+ * Create excellentmoving letters using this smart widget.
+ * Credit: https://github.com/juliangarnier/anime
+ * @since 1.1.0.8
+ * @package UltraAddons
+ * @author Saiful islam <codersaiful@gmail.com>
+ * @author B M Rafiul <bmrafiul.alam@gmail.com>
+ */
 
 class Moving_Letters extends Base{
      /**
@@ -37,7 +49,6 @@ class Moving_Letters extends Base{
         wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
         wp_enqueue_script( $name );
 		
-
     }
 
     /**
@@ -80,9 +91,10 @@ class Moving_Letters extends Base{
      * @access protected
      */
     protected function _register_controls() {
-        
         //For General Section
         $this->content_general_controls();
+         //Style Controls
+        $this->style_controls();
     }
 
         
@@ -113,7 +125,87 @@ class Moving_Letters extends Base{
 					'4' => __( 'Style-4', 'ultraaddons' ),
 					'5' => __( 'Style-5', 'ultraaddons' ),
 					'6' => __( 'Style-6', 'ultraaddons' ),
+					'7' => __( 'Style-7', 'ultraaddons' ),
 				],
+			]
+		);
+        $this->add_control(
+			'anime_title', [
+				'label' => __( 'Text', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __( 'Ultra Addons' , 'ultraaddons' ),
+				'label_block' => true,
+			]
+		);
+        
+        $this->end_controls_section();
+    }
+
+    /**
+     * General Section for Content Controls
+     * 
+     * @since 1.0.0.9
+     */
+    protected function style_controls() {
+        $this->start_controls_section(
+            'general_style',
+            [
+                'label'     => esc_html__( 'Style', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_control(
+            'text_alignment',
+                [
+                    'label'         => esc_html__( 'Alignment', 'ultraaddons' ),
+                    'type'          => Controls_Manager::CHOOSE,
+                    'options' => [
+                            'left' => [
+                                    'title' => __( 'Left', 'ultraaddons' ),
+                                    'icon' => 'fa fa-align-left',
+                            ],
+                            'center' => [
+                                    'title' => __( 'Center', 'ultraaddons' ),
+                                    'icon' => 'fa fa-align-center',
+                            ],
+                            'right' => [
+                                    'title' => __( 'Right', 'ultraaddons' ),
+                                    'icon' => 'fa fa-align-right',
+                            ],
+                    ],
+                    'default' => 'left',
+                    'toggle' => true,
+                    'selectors' => [
+                        '{{WRAPPER}} .ua-ml' => 'text-align: {{VALUE}}',
+                    ],
+                ]
+        );        
+        $this->add_control(
+			'_text_color', [
+				'label' => __( 'Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'=>'#333',
+				'selectors' => [
+						'{{WRAPPER}} .ua-ml' => 'color: {{VALUE}};',
+				],
+				'separator'=> 'after'
+			]
+        ); 
+        $this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'text_typography',
+					'label' => 'Typography',
+					'selector' => '{{WRAPPER}} .ua-ml',
+
+			]
+        );
+        $this->add_group_control(
+			Group_Control_Text_Shadow::get_type(),
+			[
+				'name' => 'text_shadow',
+				'label' => __( 'Text Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-ml',
 			]
 		);
         
@@ -133,20 +225,29 @@ class Moving_Letters extends Base{
         $anim_type = $settings['anim_type'];
         ?>
         <?php
+            if( Plugin::$instance->editor->is_edit_mode()){
+                echo '<script>
+                anime({
+                    targets: ".ua-ml",
+                  });
+                </script>';
+            }
+        ?>
+        <?php
         if($anim_type==1){
         echo' <h1 class="ua-ml ml1">
                 <span class="text-wrapper">
                     <span class="line line1"></span>
-                    <span class="letters">THURSDAY</span>
+                    <span class="letters"> ' . $settings["anime_title"] . ' </span>
                     <span class="line line2"></span>
                 </span>
             </h1>';
         }
         if($anim_type==2){
-            echo '<h1 class="ua-ml ml2">Sunny mornings</h1>';
+            echo '<h1 class="ua-ml ml2">' . $settings["anime_title"] . '</h1>';
         }
         if($anim_type==3){
-            echo '<h1 class="ua-ml ml3">Great Thinkers</h1>';
+            echo '<h1 class="ua-ml ml3">' . $settings["anime_title"] . '</h1>';
          }
         if($anim_type==4){
         echo '<h1 class="ua-ml ml4">
@@ -156,7 +257,7 @@ class Moving_Letters extends Base{
           </h1>';
          }
         if($anim_type==5){
-        echo '<h1 class="ml5">
+        echo '<h1 class="ua-ml ml5">
             <span class="text-wrapper">
               <span class="line line1"></span>
               <span class="letters letters-left">Signal</span>
@@ -168,11 +269,18 @@ class Moving_Letters extends Base{
           ';
          }
         if($anim_type==6){
-        echo '<h1 class="ml6">
+        echo '<h1 class="ua-ml ml6">
             <span class="text-wrapper">
-              <span class="letters">Beautiful Questions</span>
+              <span class="letters">' . $settings["anime_title"] . '</span>
             </span>
           </h1>';
+         }
+        if($anim_type==7){
+        echo '<h1 class="ua-ml ml7">
+                <span class="text-wrapper">
+                <span class="letters">' . $settings["anime_title"] . '</span>
+                </span>
+            </h1>';
          }
 
         
