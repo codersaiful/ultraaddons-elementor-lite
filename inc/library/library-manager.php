@@ -3,6 +3,7 @@ namespace UltraAddons\Library;
 
 use Elementor\Core\Common\Modules\Ajax\Module as Ajax;
 use UltraAddons\Core\Widgets_Manager;
+use UltraAddons\Library\Demo_Manager\Theme_Demo;
 
 defined('ABSPATH') || die();
 
@@ -21,9 +22,9 @@ class Library_Manager {
         const ULTRA_ADDONS_TEMPLATE_ASSETS = ULTRA_ADDONS_URL . 'inc/library/assets/';
 
         public static function init() {
-
 				//Just Test Perpose
-				
+				$theme_demo = Theme_Demo::get_demo_args();
+				//var_dump($theme_demo);
             
                 /**
                  * Onlye Developer Perpose

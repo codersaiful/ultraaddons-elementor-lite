@@ -9,7 +9,7 @@ class Theme_Demo{
 
 
     public static function init():void{
-        var_dump(self::get_demo_args());
+        // var_dump(self::get_demo_args());
     }
 
     /**
