@@ -488,6 +488,14 @@ $widgetsArray = [
                 __( 'Basic', 'ultraaddons' ),
             ],
     ],
+    'Moving_Letters' => [
+        'name'  => __( 'Moving Letters', 'ultraaddons' ),
+        'is_pro'   => false,
+        'icon'      => 'eicon-t-letter',
+        'cat'       => [
+            __( 'Basic', 'ultraaddons' ),
+        ],
+]
 
 
 ];

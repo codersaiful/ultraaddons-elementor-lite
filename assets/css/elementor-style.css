@@ -134,8 +134,8 @@ i.elementor-icons-manager__tab__item__icon.uicon {
 }
 
 sup.ultaaddons-pro-badge, i.ultaaddons-pro-badge {
-    background: #9cadb9;
-    color: #495258;
+    background: #93003c;
+    color: #ffffff;
     font-size: 9px;
     text-transform: lowercase;
     padding: 0 3px 2px 3px;
@@ -206,4 +206,14 @@ div#elementor-panel-category-ultraaddons-pro-placeholder .elementor-element-wrap
     color: white;
     font-size: 14px;
     width: 100%;
+}
+.ua-inner-text {
+    padding: 15px 0;
+    width: 100%;
+    color: #495157;
+    font-weight: 700;
+    font-size: 13px !important;
+    BORDER-BOTTOM: 1PX SOLID #DDD;
+    border-top: 1px solid #ddd;
+    font-weight: bold !important;
 }

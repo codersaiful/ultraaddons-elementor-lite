@@ -277,12 +277,12 @@ class Product_Flip extends Base{
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
-		 $this->add_control(
+		$this->add_control(
 			'_ua_product_flip_bg_front', [
-				'label' => __( 'Front Background', 'ultraaddons' ),
+				'label' => __( 'Front Overlay', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .ua-product-flip .front:after' => 'background-color: {{VALUE}};',
+						'{{WRAPPER}} .ua-product-flip .front:before' => 'background-color: {{VALUE}};',
 				],
 			]
         );
