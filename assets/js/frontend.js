@@ -852,9 +852,63 @@
                         });
                 }
             );
+            
+            /**
+             *Moving Letters Finalized Here
+             * 
+             * Actually most of the part of this Widget has done by Numan but
+             * JS part had developed by(Me) Saiful Islam
+             * 
+             * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
+             * @since 1.1.0.8
+             */
+             var Moving_Letters = EM.frontend.handlers.Base.extend({
+                onInit: function(){
+                    this.run();
+                },
+                onChange: function(){
+                    this.run();
+                },
+                getReadySettings: function(){
+                    var settings = this.getElementSettings();
+					
+                    var generated_settings = {
+                        play: !! settings.play, //Actually for Yes, or Switch value
+                        stopOnHover: !! settings.stopOnHover, //Actually for Yes, or Switch value
+                    };
+                    return Object.assign(settings,generated_settings);
+                },
+
+                run: function(){
+                    var targetElement = this.$element.find('.ua-news-ticker-wrap');
+                    targetElement.breakingNews( this.getReadySettings() );
+                }
+            });
+
+            // News_Ticker Hooked Here
+            EF.hooks.addAction(
+                'frontend/element_ready/ultraaddons-moving-letters.default',
+                function ($scope) {
+                    var textWrapper = document.querySelector('.ml10 .letters');
+                    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+                    anime.timeline({loop: true})
+                    .add({
+                      targets: '.ml10 .letter',
+                      rotateY: [-90, 0],
+                      duration: 1300,
+                      delay: (el, i) => 45 * i
+                    }).add({
+                      targets: '.ml10',
+                      opacity: 0,
+                      duration: 1000,
+                      easing: "easeOutExpo",
+                      delay: 1000
+                    });
+                }
+        );
 		
 
-    });
+    });// Init wrap up
                    
 
     /**

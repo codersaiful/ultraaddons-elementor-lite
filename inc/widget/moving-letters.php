@@ -114,7 +114,12 @@ class Moving_Letters extends Base{
     protected function render() {
         $settings = $this->get_settings_for_display();
         ?>
-        <h1 class="ml2">Sunny mornings</h1>
+       <h1 class="ml10">
+        <span class="text-wrapper">
+            <span class="letters">Domino Dreams</span>
+        </span>
+        </h1>
+
         <?php
         
     }
