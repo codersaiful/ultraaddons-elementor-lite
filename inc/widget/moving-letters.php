@@ -327,14 +327,14 @@ class Moving_Letters extends Base{
             </h1>';
          }
         if($anim_type==10){
-        echo '<h1 class="ml10">
+        echo '<h1 class="ua-ml ml10">
                 <span class="text-wrapper">
                 <span class="letters">' . $settings["anime_title"] . '</span>
                 </span>
             </h1>';
          }
         if($anim_type==11){
-        echo '<h1 class="ml11">
+        echo '<h1 class="ua-ml ml11">
                 <span class="text-wrapper">
                 <span class="line line1"></span>
                 <span class="letters">' . $settings["anime_title"] . '</span>
@@ -342,13 +342,13 @@ class Moving_Letters extends Base{
             </h1>';
          }
         if($anim_type==12){
-        echo '<h1 class="ml12">' . $settings["anime_title"] . '</h1>';
+        echo '<h1 class="ua-ml ml12">' . $settings["anime_title"] . '</h1>';
          }
         if($anim_type==13){
-        echo '<h1 class="ml13">' . $settings["anime_title"] . '</h1>';
+        echo '<h1 class="ua-ml ml13">' . $settings["anime_title"] . '</h1>';
          }
         if($anim_type==14){
-        echo '<h1 class="ml14">
+        echo '<h1 class="ua-ml ml14">
                 <span class="text-wrapper">
                 <span class="letters">' . $settings["anime_title"] . '</span>
                 <span class="line"></span>
