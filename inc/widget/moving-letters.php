@@ -99,6 +99,23 @@ class Moving_Letters extends Base{
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
+        $this->add_control(
+			'anim_type',
+			[
+				'label' => __( 'Animation Type', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => '1',
+				'frontend_available' => true,
+				'options' => [
+					'1' => __( 'Style-1', 'ultraaddons' ),
+					'2' => __( 'Style-2', 'ultraaddons' ),
+					'3' => __( 'Style-3', 'ultraaddons' ),
+					'4' => __( 'Style-4', 'ultraaddons' ),
+					'5' => __( 'Style-5', 'ultraaddons' ),
+					'6' => __( 'Style-6', 'ultraaddons' ),
+				],
+			]
+		);
         
         $this->end_controls_section();
     }
@@ -113,14 +130,51 @@ class Moving_Letters extends Base{
      */
     protected function render() {
         $settings = $this->get_settings_for_display();
+        $anim_type = $settings['anim_type'];
         ?>
-       <h1 class="ml10">
-        <span class="text-wrapper">
-            <span class="letters">Domino Dreams</span>
-        </span>
-        </h1>
-
         <?php
+        if($anim_type==1){
+        echo' <h1 class="ua-ml ml1">
+                <span class="text-wrapper">
+                    <span class="line line1"></span>
+                    <span class="letters">THURSDAY</span>
+                    <span class="line line2"></span>
+                </span>
+            </h1>';
+        }
+        if($anim_type==2){
+            echo '<h1 class="ua-ml ml2">Sunny mornings</h1>';
+        }
+        if($anim_type==3){
+            echo '<h1 class="ua-ml ml3">Great Thinkers</h1>';
+         }
+        if($anim_type==4){
+        echo '<h1 class="ua-ml ml4">
+            <span class="letters letters-1">Ready</span>
+            <span class="letters letters-2">Set</span>
+            <span class="letters letters-3">Go!</span>
+          </h1>';
+         }
+        if($anim_type==5){
+        echo '<h1 class="ml5">
+            <span class="text-wrapper">
+              <span class="line line1"></span>
+              <span class="letters letters-left">Signal</span>
+              <span class="letters ampersand">&amp;</span>
+              <span class="letters letters-right">Noise</span>
+              <span class="line line2"></span>
+            </span>
+          </h1>
+          ';
+         }
+        if($anim_type==6){
+        echo '<h1 class="ml6">
+            <span class="text-wrapper">
+              <span class="letters">Beautiful Questions</span>
+            </span>
+          </h1>';
+         }
+
         
     }
     

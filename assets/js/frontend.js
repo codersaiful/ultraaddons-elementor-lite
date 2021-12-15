@@ -854,7 +854,7 @@
             );
             
             /**
-             *Moving Letters Finalized Here
+             * Moving Letters Finalized Here
              * 
              * Actually most of the part of this Widget has done by Numan but
              * JS part had developed by(Me) Saiful Islam
@@ -862,7 +862,7 @@
              * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
              * @since 1.1.0.8
              */
-             var Moving_Letters = EM.frontend.handlers.Base.extend({
+            /*  var Moving_Letters = EM.frontend.handlers.Base.extend({
                 onInit: function(){
                     this.run();
                 },
@@ -873,38 +873,213 @@
                     var settings = this.getElementSettings();
 					
                     var generated_settings = {
-                        play: !! settings.play, //Actually for Yes, or Switch value
-                        stopOnHover: !! settings.stopOnHover, //Actually for Yes, or Switch value
+                        loop: true,
                     };
                     return Object.assign(settings,generated_settings);
                 },
 
                 run: function(){
-                    var targetElement = this.$element.find('.ua-news-ticker-wrap');
-                    targetElement.breakingNews( this.getReadySettings() );
+                    var targetElement = this.$element.find('.ml3');
+                    targetElement.anime.timeline( this.getReadySettings() );
                 }
-            });
+            }); */
 
-            // News_Ticker Hooked Here
+            // Moving_Letters Hooked Here
             EF.hooks.addAction(
                 'frontend/element_ready/ultraaddons-moving-letters.default',
                 function ($scope) {
-                    var textWrapper = document.querySelector('.ml10 .letters');
+                    if ( $scope.find( '.ua-ml' ) ){
+                    var anim_data = $scope[0].dataset.settings;
+                    if(anim_data!=0){
+                     var obj = JSON.parse(anim_data);
+                    }
+                    if(obj.length !=0 && obj.anim_type==1){
+                        var textWrapper = document.querySelector('.ml1 .letters');
+                        textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+                        anime.timeline({loop: true})
+                        .add({
+                        targets: '.ml1 .letter',
+                        scale: [0.3,1],
+                        opacity: [0,1],
+                        translateZ: 0,
+                        easing: "easeOutExpo",
+                        duration: 600,
+                        delay: (el, i) => 70 * (i+1)
+                        }).add({
+                        targets: '.ml1 .line',
+                        scaleX: [0,1],
+                        opacity: [0.5,1],
+                        easing: "easeOutExpo",
+                        duration: 700,
+                        offset: '-=875',
+                        delay: (el, i, l) => 80 * (l - i)
+                        }).add({
+                        targets: '.ml1',
+                        opacity: 0,
+                        duration: 1000,
+                        easing: "easeOutExpo",
+                        delay: 1000
+                        });
+                }
+                if(obj.length !=0 && obj.anim_type==2){
+                    var textWrapper = document.querySelector('.ml2');
                     textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
                     anime.timeline({loop: true})
                     .add({
-                      targets: '.ml10 .letter',
-                      rotateY: [-90, 0],
-                      duration: 1300,
-                      delay: (el, i) => 45 * i
+                        targets: '.ml2 .letter',
+                        scale: [4,1],
+                        opacity: [0,1],
+                        translateZ: 0,
+                        easing: "easeOutExpo",
+                        duration: 950,
+                        delay: (el, i) => 70*i
                     }).add({
-                      targets: '.ml10',
+                        targets: '.ml2',
+                        opacity: 0,
+                        duration: 1000,
+                        easing: "easeOutExpo",
+                        delay: 1000
+                    });
+                }
+                if(obj.length !=0 &&  obj.anim_type==3){
+                   // Wrap every letter in a span
+                    var textWrapper = document.querySelector('.ml3');
+                    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+                    anime.timeline({loop: true})
+                    .add({
+                        targets: '.ml3 .letter',
+                        opacity: [0,1],
+                        easing: "easeInOutQuad",
+                        duration: 2250,
+                        delay: (el, i) => 150 * (i+1)
+                    }).add({
+                        targets: '.ml3',
+                        opacity: 0,
+                        duration: 1000,
+                        easing: "easeOutExpo",
+                        delay: 1000
+                    });
+                }
+                
+                if(obj.length !=0 && obj.anim_type==4){
+                    var ml4 = {};
+                    ml4.opacityIn = [0,1];
+                    ml4.scaleIn = [0.2, 1];
+                    ml4.scaleOut = 3;
+                    ml4.durationIn = 800;
+                    ml4.durationOut = 600;
+                    ml4.delay = 500;
+                    
+                    anime.timeline({loop: true})
+                      .add({
+                        targets: '.ml4 .letters-1',
+                        opacity: ml4.opacityIn,
+                        scale: ml4.scaleIn,
+                        duration: ml4.durationIn
+                      }).add({
+                        targets: '.ml4 .letters-1',
+                        opacity: 0,
+                        scale: ml4.scaleOut,
+                        duration: ml4.durationOut,
+                        easing: "easeInExpo",
+                        delay: ml4.delay
+                      }).add({
+                        targets: '.ml4 .letters-2',
+                        opacity: ml4.opacityIn,
+                        scale: ml4.scaleIn,
+                        duration: ml4.durationIn
+                      }).add({
+                        targets: '.ml4 .letters-2',
+                        opacity: 0,
+                        scale: ml4.scaleOut,
+                        duration: ml4.durationOut,
+                        easing: "easeInExpo",
+                        delay: ml4.delay
+                      }).add({
+                        targets: '.ml4 .letters-3',
+                        opacity: ml4.opacityIn,
+                        scale: ml4.scaleIn,
+                        duration: ml4.durationIn
+                      }).add({
+                        targets: '.ml4 .letters-3',
+                        opacity: 0,
+                        scale: ml4.scaleOut,
+                        duration: ml4.durationOut,
+                        easing: "easeInExpo",
+                        delay: ml4.delay
+                      }).add({
+                        targets: '.ml4',
+                        opacity: 0,
+                        duration: 500,
+                        delay: 500
+                      });
+                }
+                if(obj.length !=0 &&  obj.anim_type==5){
+                    anime.timeline({loop: true})
+                    .add({
+                      targets: '.ml5 .line',
+                      opacity: [0.5,1],
+                      scaleX: [0, 1],
+                      easing: "easeInOutExpo",
+                      duration: 700
+                    }).add({
+                      targets: '.ml5 .line',
+                      duration: 600,
+                      easing: "easeOutExpo",
+                      translateY: (el, i) => (-0.625 + 0.625*2*i) + "em"
+                    }).add({
+                      targets: '.ml5 .ampersand',
+                      opacity: [0,1],
+                      scaleY: [0.5, 1],
+                      easing: "easeOutExpo",
+                      duration: 600,
+                      offset: '-=600'
+                    }).add({
+                      targets: '.ml5 .letters-left',
+                      opacity: [0,1],
+                      translateX: ["0.5em", 0],
+                      easing: "easeOutExpo",
+                      duration: 600,
+                      offset: '-=300'
+                    }).add({
+                      targets: '.ml5 .letters-right',
+                      opacity: [0,1],
+                      translateX: ["-0.5em", 0],
+                      easing: "easeOutExpo",
+                      duration: 600,
+                      offset: '-=600'
+                    }).add({
+                      targets: '.ml5',
                       opacity: 0,
                       duration: 1000,
                       easing: "easeOutExpo",
                       delay: 1000
                     });
+                  }
+                if(obj.length !=0 &&  obj.anim_type==6){
+                    // Wrap every letter in a span
+                      var textWrapper = document.querySelector('.ml6 .letters');
+                      textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+  
+                      anime.timeline({loop: true})
+                      .add({
+                          targets: '.ml6 .letter',
+                          translateY: ["1.1em", 0],
+                          translateZ: 0,
+                          duration: 750,
+                          delay: (el, i) => 50 * i
+                      }).add({
+                          targets: '.ml6',
+                          opacity: 0,
+                          duration: 1000,
+                          easing: "easeOutExpo",
+                          delay: 1000
+                      });
                 }
+            }
+            }
         );
 		
 
