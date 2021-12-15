@@ -129,6 +129,11 @@ class Moving_Letters extends Base{
 					'8' => __( 'Style-8', 'ultraaddons' ),
 					'9' => __( 'Style-9', 'ultraaddons' ),
 					'10' => __( 'Style-10', 'ultraaddons' ),
+					'11' => __( 'Style-11', 'ultraaddons' ),
+					'12' => __( 'Style-12', 'ultraaddons' ),
+					'13' => __( 'Style-13', 'ultraaddons' ),
+					'14' => __( 'Style-14', 'ultraaddons' ),
+					'15' => __( 'Style-15', 'ultraaddons' ),
 				],
 			]
 		);
@@ -306,8 +311,8 @@ class Moving_Letters extends Base{
         if($anim_type==8){
         echo '<h1 class="ua-ml ml8">
                 <span class="letters-container">
-                <span class="letters letters-left">Hi</span>
-                <span class="letters bang">!</span>
+                <span class="letters letters-left">' . $settings["anime_title_2"] . '</span>
+                <span class="letters bang">'. $settings["anime_title_3"] . '</span>
                 </span>
                 <span class="circle circle-white"></span>
                 <span class="circle circle-dark"></span>
@@ -325,6 +330,28 @@ class Moving_Letters extends Base{
         echo '<h1 class="ml10">
                 <span class="text-wrapper">
                 <span class="letters">' . $settings["anime_title"] . '</span>
+                </span>
+            </h1>';
+         }
+        if($anim_type==11){
+        echo '<h1 class="ml11">
+                <span class="text-wrapper">
+                <span class="line line1"></span>
+                <span class="letters">' . $settings["anime_title"] . '</span>
+                </span>
+            </h1>';
+         }
+        if($anim_type==12){
+        echo '<h1 class="ml12">' . $settings["anime_title"] . '</h1>';
+         }
+        if($anim_type==13){
+        echo '<h1 class="ml13">' . $settings["anime_title"] . '</h1>';
+         }
+        if($anim_type==14){
+        echo '<h1 class="ml14">
+                <span class="text-wrapper">
+                <span class="letters">' . $settings["anime_title"] . '</span>
+                <span class="line"></span>
                 </span>
             </h1>';
          }
