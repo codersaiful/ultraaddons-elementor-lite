@@ -85,7 +85,9 @@ class Library_Manager {
 			ULTRA_ADDONS_VERSION,
 			true
 		);
-                
+        
+		//$additional_library = apply_filters( 'eldm_library_basic_data', $additional_library );
+		//'additional_library' => $additional_library,
         $localize_data = [
 			'placeholder_widgets' => Widgets_Manager::proWidgets(),
 			'hasPro'                  => ultraaddons_is_pro(),
