@@ -6,12 +6,24 @@ use UltraAddons\Core\Widgets_Manager;
 
 defined('ABSPATH') || die();
 
+/**
+ * UltraAddons Library Manager
+ * Handle Full Library From Here
+ * 
+ * Actually We will handle Library Using Elementor Default Library Handler
+ * 
+ * @since 1.0.0
+ * @author Saiful Islam <codersaiful@gmail.com>
+ */
 class Library_Manager {
 
 	protected static $source = null;
         const ULTRA_ADDONS_TEMPLATE_ASSETS = ULTRA_ADDONS_URL . 'inc/library/assets/';
 
         public static function init() {
+
+				//Just Test Perpose
+				
             
                 /**
                  * Onlye Developer Perpose
@@ -85,7 +97,23 @@ class Library_Manager {
 			ULTRA_ADDONS_VERSION,
 			true
 		);
-                
+        
+		$additional_library = [
+			'status' => false,
+			'button' => [
+				'text'	=> esc_html__( "Theme Demo", 'ultraaddons' ),
+				'icon'	=> 'uicon-ultraaddons',
+			],
+			'tabs' => [
+				'section' => esc_html__( "Blog", 'ultraaddons' ),
+				'page' => esc_html__( "Page", 'ultraaddons' ),
+				'landing' => esc_html__( "Landing", 'ultraaddons' ),
+			],
+
+		]; 
+
+		$additional_library = apply_filters( 'eldm_library_basic_data', $additional_library );
+		
         $localize_data = [
 			'placeholder_widgets' => Widgets_Manager::proWidgets(),
 			'hasPro'                  => ultraaddons_is_pro(),
@@ -101,6 +129,7 @@ class Library_Manager {
 				'templatesNoResultsTitle'   => esc_html__( 'No Results Found', 'ultraaddons' ),
 				'templatesNoResultsMessage' => esc_html__( 'Please make sure your search is spelled correctly or try a different words.', 'ultraaddons' ),
 			],
+			'additional_library' => $additional_library,
 		];
                 
         wp_localize_script(
