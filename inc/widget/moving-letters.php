@@ -126,6 +126,9 @@ class Moving_Letters extends Base{
 					'5' => __( 'Style-5', 'ultraaddons' ),
 					'6' => __( 'Style-6', 'ultraaddons' ),
 					'7' => __( 'Style-7', 'ultraaddons' ),
+					'8' => __( 'Style-8', 'ultraaddons' ),
+					'9' => __( 'Style-9', 'ultraaddons' ),
+					'10' => __( 'Style-10', 'ultraaddons' ),
 				],
 			]
 		);
@@ -135,6 +138,23 @@ class Moving_Letters extends Base{
 				'type' => Controls_Manager::TEXT,
 				'default' => __( 'Ultra Addons' , 'ultraaddons' ),
 				'label_block' => true,
+                'condition' =>['anim_type!'=>'8']
+			]
+		);
+        $this->add_control(
+			'anime_title_2', [
+				'label' => __( 'Text', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __( 'UA' , 'ultraaddons' ),
+                'condition' =>['anim_type'=>'8']
+			]
+		);
+        $this->add_control(
+			'anime_title_3', [
+				'label' => __( 'Text', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __( '!' , 'ultraaddons' ),
+                'condition' =>['anim_type'=>'8']
 			]
 		);
         
@@ -229,6 +249,7 @@ class Moving_Letters extends Base{
                 echo '<script>
                 anime({
                     targets: ".ua-ml",
+                    loop:true
                   });
                 </script>';
             }
@@ -277,6 +298,31 @@ class Moving_Letters extends Base{
          }
         if($anim_type==7){
         echo '<h1 class="ua-ml ml7">
+                <span class="text-wrapper">
+                <span class="letters">' . $settings["anime_title"] . '</span>
+                </span>
+            </h1>';
+         }
+        if($anim_type==8){
+        echo '<h1 class="ua-ml ml8">
+                <span class="letters-container">
+                <span class="letters letters-left">Hi</span>
+                <span class="letters bang">!</span>
+                </span>
+                <span class="circle circle-white"></span>
+                <span class="circle circle-dark"></span>
+                <span class="circle circle-container"><span class="circle circle-dark-dashed"></span></span>
+            </h1>';
+         }
+        if($anim_type==9){
+        echo '<h1 class="ua-ml ml9">
+                <span class="text-wrapper">
+                <span class="letters">' . $settings["anime_title"] . '</span>
+                </span>
+            </h1>';
+         }
+        if($anim_type==10){
+        echo '<h1 class="ml10">
                 <span class="text-wrapper">
                 <span class="letters">' . $settings["anime_title"] . '</span>
                 </span>
