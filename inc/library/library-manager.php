@@ -6,6 +6,15 @@ use UltraAddons\Core\Widgets_Manager;
 
 defined('ABSPATH') || die();
 
+/**
+ * UltraAddons Library Manager
+ * Handle Full Library From Here
+ * 
+ * Actually We will handle Library Using Elementor Default Library Handler
+ * 
+ * @since 1.0.0
+ * @author Saiful Islam <codersaiful@gmail.com>
+ */
 class Library_Manager {
 
 	protected static $source = null;
