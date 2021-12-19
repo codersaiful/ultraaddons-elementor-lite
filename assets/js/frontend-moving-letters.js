@@ -1,11 +1,8 @@
 ;(function ($, w) {
     'use strict';
     
-    var $window = $(w);
+var $window = $(w);
 
-    $.fn.ultraDataAttr = function( dataAttr ) {
-            return this.data( dataAttr );
-    };
 $window.on( 'elementor/frontend/init', function() {
         
     var cx_settings;
