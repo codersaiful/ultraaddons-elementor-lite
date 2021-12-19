@@ -165,6 +165,7 @@ class Loader {
          */
         \UltraAddons\Library\Library_Manager::init();
         
+        
         /**
          * Shortcode for Template
          * Sample shortcode is: [UltraAddons_Template id='123']

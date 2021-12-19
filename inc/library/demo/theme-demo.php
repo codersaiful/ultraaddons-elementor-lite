@@ -70,6 +70,7 @@ class Theme_Demo{
 }
 
     public static function print_template_views() {
+        // echo '<saiful>saiful</saiful>';
 		include_once __DIR__ . '/templates/theme-template.php';
 	}
 
