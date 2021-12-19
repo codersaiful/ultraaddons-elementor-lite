@@ -163,8 +163,8 @@ class Loader {
         /**
          * Library Manage
          */
-        \UltraAddons\Library\Library_Manager::init();
-        \UltraAddons\Library\Demo_Manager\Theme_Demo::init();
+        // \UltraAddons\Library\Library_Manager::init();
+        \UltraAddons\Library\Demo\Library_Manager::init();
         
         /**
          * Shortcode for Template

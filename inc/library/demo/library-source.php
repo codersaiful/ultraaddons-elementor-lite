@@ -5,7 +5,7 @@
  * @package UltraAddons
  * @author Saiful Islam<codersaiful@gmail.com>
  */
-namespace UltraAddons\Library;
+namespace UltraAddons\Library\Demo;
 
 use Elementor\TemplateLibrary\Source_Base;
 
