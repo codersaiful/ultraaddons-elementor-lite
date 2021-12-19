@@ -879,10 +879,42 @@
             EF.hooks.addAction(
                 'frontend/element_ready/ultraaddons-moving-letters.default',
                 function ($scope) {
+                    console.log($scope.data);
                 if ( $scope.find( '.ua-ml' ) ){
                 var anim_data = $scope[0].dataset.settings;
                 if(anim_data){
                     var obj = JSON.parse(anim_data);
+                    console.log(obj);
+                }
+                if(typeof(obj)!= "undefined" && obj.anim_type==1){
+                    // Wrap every letter in a span
+                    var textWrapper = document.querySelector('.ml1 .letters');
+                    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+                    anime.timeline({loop: true})
+                    .add({
+                        targets: '.ml1 .letter',
+                        scale: [0.3,1],
+                        opacity: [0,1],
+                        translateZ: 0,
+                        easing: "easeOutExpo",
+                        duration: 600,
+                        delay: (el, i) => 70 * (i+1)
+                    }).add({
+                        targets: '.ml1 .line',
+                        scaleX: [0,1],
+                        opacity: [0.5,1],
+                        easing: "easeOutExpo",
+                        duration: 700,
+                        offset: '-=875',
+                        delay: (el, i, l) => 80 * (l - i)
+                    }).add({
+                        targets: '.ml1',
+                        opacity: 0,
+                        duration: 1000,
+                        easing: "easeOutExpo",
+                        delay: 1000
+                    });
                 }
                 if(typeof(obj)!= "undefined" && obj.anim_type==2){
                     var textWrapper = document.querySelector('.ml2');
@@ -1262,11 +1294,10 @@
                 }
             }
         }
-    );
-		
+    );    
 
     });// Init wrap up
-                   
+   
 
     /**
      * Created Outside of init/Elementtor
