@@ -23,7 +23,7 @@ class Library_Manager {
 
         public static function init() {
 				//Just Test Perpose
-				$theme_demo = Theme_Demo::get_demo_args();
+				//$theme_demo = Theme_Demo::get_demo_args();
 				//var_dump($theme_demo);
             
                 /**
@@ -53,17 +53,18 @@ class Library_Manager {
 		include_once __DIR__ . '/templates/template.php';
 	}
 
-        public static function preview_styles() {
+    public static function preview_styles() {
             wp_enqueue_style(
 			'ultraaddons-libr-templt',
 			self::ULTRA_ADDONS_TEMPLATE_ASSETS . 'css/custom.css',
 			null,
 			ULTRA_ADDONS_VERSION
 		);
-        }
+    }
+
 	public static function enqueue_assets() {
                 
-                wp_enqueue_style(
+        wp_enqueue_style(
 			'ultraaddons-library-editor',
 			self::ULTRA_ADDONS_TEMPLATE_ASSETS . 'css/editor.min.css',
 			null,
