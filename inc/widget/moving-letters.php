@@ -198,13 +198,13 @@ class Moving_Letters extends Base{
                                     'icon' => 'fa fa-align-right',
                             ],
                     ],
-                    'default' => 'left',
+                    'default' => 'center',
                     'toggle' => true,
                     'selectors' => [
                         '{{WRAPPER}} .ua-ml' => 'text-align: {{VALUE}}',
                     ],
                 ]
-        );        
+        );   
         $this->add_control(
 			'_text_color', [
 				'label' => __( 'Text Color', 'ultraaddons' ),
@@ -233,6 +233,39 @@ class Moving_Letters extends Base{
 				'selector' => '{{WRAPPER}} .ua-ml',
 			]
 		);
+        $this->add_control(
+			'_line_height',
+			[
+				'label' => __( 'Line Height', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px'],
+				'range' => [
+					'px' => [
+						'min' => 1,
+						'max' => 10,
+						'step' => 1,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 3,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .line' => 'height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_control(
+			'_line_color', [
+				'label' => __( 'Line Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'=>'#333',
+				'selectors' => [
+						'{{WRAPPER}} .line' => 'background-color: {{VALUE}};',
+				],
+				'separator'=> 'after'
+			]
+        ); 
         
         $this->end_controls_section();
     }

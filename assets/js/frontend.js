@@ -834,6 +834,7 @@
 
                 run: function(){
                     var targetElement = this.$element.find('.ua-skill-chart');
+                   
                     targetElement.easyPieChart( this.getReadySettings() );
                 }
             });
@@ -862,30 +863,16 @@
              * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
              * @since 1.1.0.8
              */
-             var Moving_Letters = EM.frontend.handlers.Base.extend({
-                onInit: function(){
-                    this.run();
-                },
-                onChange: function(){
-                    this.run();
-                },
-                run: function(){
-                    var targetElement = this.$element.find('.ua-ml');
-                    targetElement.anime({loop:true});
-                }
-            });
 
             // Moving_Letters Hooked Here
             EF.hooks.addAction(
                 'frontend/element_ready/ultraaddons-moving-letters.default',
                 function ($scope) {
-                    console.log($scope.data);
-                if ( $scope.find( '.ua-ml' ) ){
-                var anim_data = $scope[0].dataset.settings;
-                if(anim_data){
-                    var obj = JSON.parse(anim_data);
-                    console.log(obj);
-                }
+                    if ( $scope.find( '.ua-ml' ) ){
+                     var anim_data = $scope[0].dataset.settings;
+                    if(anim_data){
+                        var obj = JSON.parse(anim_data);
+                    }
                 if(typeof(obj)!= "undefined" && obj.anim_type==1){
                     // Wrap every letter in a span
                     var textWrapper = document.querySelector('.ml1 .letters');
@@ -1292,10 +1279,9 @@
                         delay: 1000
                     });
                 }
+                
             }
-        }
-    );    
-
+        });
     });// Init wrap up
    
 
