@@ -22,6 +22,9 @@ class Library_Manager {
         const ULTRA_ADDONS_TEMPLATE_ASSETS = ULTRA_ADDONS_URL . 'inc/library/assets/';
 
         public static function init() {
+
+				//Theme_Demo::init();
+
 				//Just Test Perpose
 				//$theme_demo = Theme_Demo::get_demo_args();
 				//var_dump($theme_demo);
