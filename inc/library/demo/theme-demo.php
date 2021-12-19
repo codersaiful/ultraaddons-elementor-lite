@@ -2,6 +2,7 @@
 namespace UltraAddons\Library\Demo;
 
 use UltraAddons\Library\Library_Source;
+use Elementor\Plugin;
 
 defined('ABSPATH') || die();
 
@@ -10,7 +11,10 @@ class Theme_Demo{
     public $theme_demo_args;
 
     public function load(){
-        var_dump($this->get_demo_args());
+        //var_dump(self::$get_demo_args());
+
+        //var_dump($this->get_demo_info());
+        //use Elementor\Plugin;
         Library_Manager::init();
     }
     
@@ -25,9 +29,13 @@ class Theme_Demo{
      *
      * @return array
      */
-    public function get_demo_args():array
+    public function get_demo_info():array
     {
-        $this->theme_demo_args = [
+        if( ! is_null( $this->theme_demo_args ) ) return $this->theme_demo_args;
+
+
+
+        $default_args = [
             'button' => [
                 'text'	=> esc_html__( "Theme Demo", 'ultraaddons' ),
                 'icon'	=> 'uicon-ultraaddons',
@@ -39,6 +47,14 @@ class Theme_Demo{
             ],
 
         ];
-        return apply_filters( 'eldm_theme_demo_args', $this->theme_demo_args );
+        $this->theme_demo_args = apply_filters( 'eldm_theme_demo_args', $default_args );
+        return $this->theme_demo_args;
     }
+
+    public function set_demo_info( array $args ){
+        if( ! is_array( $args ) ) return;
+        $this->theme_demo_args = $args;
+        return $this;
+    }
+
 }
