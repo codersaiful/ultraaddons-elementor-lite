@@ -492,7 +492,7 @@ $window.on( 'elementor/frontend/init', function() {
     /**
      * Moving Letters Finalized Here
      * 
-     * Actually most of the part of this Widget has done by Numan but
+     * Actually most of the part of this Widget has done by B M Rafiul Alam but
      * JS part had developed by(Me) Saiful Islam
      * 
      * @author Saiful Islam <codersaiful@gmail.com>

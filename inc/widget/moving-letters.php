@@ -128,64 +128,48 @@ class Moving_Letters extends Base{
 				'default' => '1',
 				'frontend_available' => true,
 				'options' => [
-					'1' => __( 'Style-1', 'ultraaddons' ),
-					'2' => __( 'Style-2', 'ultraaddons' ),
-					'3' => __( 'Style-3', 'ultraaddons' ),
-					'4' => __( 'Style-4', 'ultraaddons' ),
-					'5' => __( 'Style-5', 'ultraaddons' ),
-					'6' => __( 'Style-6', 'ultraaddons' ),
-					'7' => __( 'Style-7', 'ultraaddons' ),
-					'8' => __( 'Style-8', 'ultraaddons' ),
-					'9' => __( 'Style-9', 'ultraaddons' ),
-					'10' => __( 'Style-10', 'ultraaddons' ),
-					'11' => __( 'Style-11', 'ultraaddons' ),
-					'12' => __( 'Style-12', 'ultraaddons' ),
-					'13' => __( 'Style-13', 'ultraaddons' ),
-					'14' => __( 'Style-14', 'ultraaddons' ),
-					'15' => __( 'Style-15', 'ultraaddons' ),
-					'16' => __( 'Style-16', 'ultraaddons' ),
+					'1' => __( 'Animation-1', 'ultraaddons' ),
+					'2' => __( 'Animation-2', 'ultraaddons' ),
+					'3' => __( 'Animation-3', 'ultraaddons' ),
+					'4' => __( 'Animation-4', 'ultraaddons' ),
+					'5' => __( 'Animation-5', 'ultraaddons' ),
+					'6' => __( 'Animation-6', 'ultraaddons' ),
+					'7' => __( 'Animation-7', 'ultraaddons' ),
+					'8' => __( 'Animation-8', 'ultraaddons' ),
+					'9' => __( 'Animation-9', 'ultraaddons' ),
+					'10' => __( 'Animation-10', 'ultraaddons' ),
+					'11' => __( 'Animation-11', 'ultraaddons' ),
+					'12' => __( 'Animation-12', 'ultraaddons' ),
+					'13' => __( 'Animation-13', 'ultraaddons' ),
+					'14' => __( 'Animation-14', 'ultraaddons' ),
+					'15' => __( 'Animation-15', 'ultraaddons' ),
+					'16' => __( 'Animation-16', 'ultraaddons' ),
 				],
 			]
 		);
         $this->add_control(
-			'anime_title', [
+			'anime_title_1', [
 				'label' => __( 'Text', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => __( 'Ultra Addons' , 'ultraaddons' ),
 				'label_block' => true,
-                'condition' =>['anim_type!'=>'8']
 			]
 		);
+
         $this->add_control(
 			'anime_title_2', [
-				'label' => __( 'Text 1', 'ultraaddons' ),
+				'label' => __( 'Text 2', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'UA' , 'ultraaddons' ),
-                'condition' =>['anim_type'=>'8']
+				'default' => __( '!' , 'ultraaddons' ),
+                'condition' =>['anim_type' => ['4', '5','8','15']]
 			]
 		);
         $this->add_control(
 			'anime_title_3', [
-				'label' => __( 'Text 2', 'ultraaddons' ),
-				'type' => Controls_Manager::TEXT,
-				'default' => __( '!' , 'ultraaddons' ),
-                'condition' =>['anim_type'=>'8']
-			]
-		);
-        $this->add_control(
-			'anime_title_4', [
-				'label' => __( 'Text 1', 'ultraaddons' ),
+				'label' => __( 'Text 3', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => __( 'Ultra' , 'ultraaddons' ),
-                'condition' =>['anim_type'=>'15']
-			]
-		);
-        $this->add_control(
-			'anime_title_5', [
-				'label' => __( 'Text 2', 'ultraaddons' ),
-				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Addons' , 'ultraaddons' ),
-                'condition' =>['anim_type'=>'15']
+                'condition' =>['anim_type' => ['4', '5']]
 			]
 		);
         
@@ -213,15 +197,15 @@ class Moving_Letters extends Base{
                     'options' => [
                             'left' => [
                                     'title' => __( 'Left', 'ultraaddons' ),
-                                    'icon' => 'fa fa-align-left',
+                                    'icon' => 'eicon-text-align-left',
                             ],
                             'center' => [
                                     'title' => __( 'Center', 'ultraaddons' ),
-                                    'icon' => 'fa fa-align-center',
+                                    'icon' => 'eicon-text-align-center',
                             ],
                             'right' => [
                                     'title' => __( 'Right', 'ultraaddons' ),
-                                    'icon' => 'fa fa-align-right',
+                                    'icon' => 'eicon-text-align-right',
                             ],
                     ],
                     'default' => 'center',
@@ -315,25 +299,25 @@ class Moving_Letters extends Base{
         echo' <h1 class="ua-ml ml1">
                 <span class="text-wrapper">
                     <span class="line line1"></span>
-                    <span class="letters"> ' . $settings["anime_title"] . ' </span>
+                    <span class="letters"> ' . $settings["anime_title_1"] . ' </span>
                     <span class="line line2"></span>
                 </span>
             </h1>';
         }
 
         if($anim_type==2){
-            echo '<h1 class="ua-ml ml2">' . $settings["anime_title"] . '</h1>';
+            echo '<h1 class="ua-ml ml2">' . $settings["anime_title_1"] . '</h1>';
         }
 
         if($anim_type==3){
-            echo '<h1 class="ua-ml ml3">' . $settings["anime_title"] . '</h1>';
+            echo '<h1 class="ua-ml ml3">' . $settings["anime_title_1"] . '</h1>';
          }
 
         if($anim_type==4){
         echo '<h1 class="ua-ml ml4">
-            <span class="letters letters-1">Ready</span>
-            <span class="letters letters-2">Set</span>
-            <span class="letters letters-3">Go!</span>
+            <span class="letters letters-1"> '. $settings["anime_title_1"] .'</span>
+            <span class="letters letters-2"> '. $settings["anime_title_2"] .'</span>
+            <span class="letters letters-3"> '. $settings["anime_title_3"] .'</span>
           </h1>';
          }
 
@@ -341,9 +325,9 @@ class Moving_Letters extends Base{
         echo '<h1 class="ua-ml ml5">
             <span class="text-wrapper">
               <span class="line line1"></span>
-              <span class="letters letters-left">Signal</span>
-              <span class="letters ampersand">&amp;</span>
-              <span class="letters letters-right">Noise</span>
+              <span class="letters letters-left">' . $settings["anime_title_1"] .'</span>
+              <span class="letters ampersand">' . $settings["anime_title_2"] . '</span>
+              <span class="letters letters-right">' . $settings["anime_title_3"] .'</span>
               <span class="line line2"></span>
             </span>
           </h1>
@@ -353,7 +337,7 @@ class Moving_Letters extends Base{
         if($anim_type==6){
         echo '<h1 class="ua-ml ml6">
             <span class="text-wrapper">
-              <span class="letters">' . $settings["anime_title"] . '</span>
+              <span class="letters">' . $settings["anime_title_1"] . '</span>
             </span>
           </h1>';
          }
@@ -361,7 +345,7 @@ class Moving_Letters extends Base{
         if($anim_type==7){
         echo '<h1 class="ua-ml ml7">
                 <span class="text-wrapper">
-                <span class="letters">' . $settings["anime_title"] . '</span>
+                <span class="letters">' . $settings["anime_title_1"] . '</span>
                 </span>
             </h1>';
          }
@@ -369,8 +353,8 @@ class Moving_Letters extends Base{
         if($anim_type==8){
         echo '<h1 class="ua-ml ml8">
                 <span class="letters-container">
-                <span class="letters letters-left">' . $settings["anime_title_2"] . '</span>
-                <span class="letters bang">'. $settings["anime_title_3"] . '</span>
+                <span class="letters letters-left">' . $settings["anime_title_1"] . '</span>
+                <span class="letters bang">'. $settings["anime_title_2"] . '</span>
                 </span>
                 <span class="circle circle-white"></span>
                 <span class="circle circle-dark"></span>
@@ -381,7 +365,7 @@ class Moving_Letters extends Base{
         if($anim_type==9){
         echo '<h1 class="ua-ml ml9">
                 <span class="text-wrapper">
-                <span class="letters">' . $settings["anime_title"] . '</span>
+                <span class="letters">' . $settings["anime_title_1"] . '</span>
                 </span>
             </h1>';
         }
@@ -389,7 +373,7 @@ class Moving_Letters extends Base{
         if($anim_type==10){
         echo '<h1 class="ua-ml ml10">
                 <span class="text-wrapper">
-                <span class="letters">' . $settings["anime_title"] . '</span>
+                <span class="letters">' . $settings["anime_title_1"] . '</span>
                 </span>
             </h1>';
         }
@@ -398,23 +382,23 @@ class Moving_Letters extends Base{
         echo '<h1 class="ua-ml ml11">
                 <span class="text-wrapper">
                 <span class="line line1"></span>
-                <span class="letters">' . $settings["anime_title"] . '</span>
+                <span class="letters">' . $settings["anime_title_1"] . '</span>
                 </span>
             </h1>';
          }
 
         if($anim_type==12){
-        echo '<h1 class="ua-ml ml12">' . $settings["anime_title"] . '</h1>';
+        echo '<h1 class="ua-ml ml12">' . $settings["anime_title_1"] . '</h1>';
         }
 
         if($anim_type==13){
-        echo '<h1 class="ua-ml ml13">' . $settings["anime_title"] . '</h1>';
+        echo '<h1 class="ua-ml ml13">' . $settings["anime_title_1"] . '</h1>';
         }
 
         if($anim_type==14){
         echo '<h1 class="ua-ml ml14">
                 <span class="text-wrapper">
-                <span class="letters">' . $settings["anime_title"] . '</span>
+                <span class="letters">' . $settings["anime_title_1"] . '</span>
                 <span class="line"></span>
                 </span>
             </h1>';
@@ -422,13 +406,13 @@ class Moving_Letters extends Base{
 
         if($anim_type==15){
         echo '<h1 class="ml15">
-                <span class="word">' . $settings["anime_title_4"] . '</span>
-                <span class="word">' . $settings["anime_title_5"] . '</span>
+                <span class="word">' . $settings["anime_title_1"] . '</span>
+                <span class="word">' . $settings["anime_title_2"] . '</span>
             </h1>';
          }
 
         if($anim_type==16){
-            echo '<h1 class="ml16">' . $settings["anime_title"] . '</h1>';
+            echo '<h1 class="ml16">' . $settings["anime_title_1"] . '</h1>';
         }
 
     }
