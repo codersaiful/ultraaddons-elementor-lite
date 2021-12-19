@@ -13,7 +13,7 @@ class Theme_Demo{
     public function load(){
         //var_dump(self::$get_demo_args());
 
-        //var_dump($this->get_demo_info());
+        var_dump($this->get_demo_info());
         //use Elementor\Plugin;
         Library_Manager::init();
     }
@@ -51,10 +51,21 @@ class Theme_Demo{
         return $this->theme_demo_args;
     }
 
-    public function set_demo_info( array $args ){
-        if( ! is_array( $args ) ) return;
+    public function set_demo_info( array $args ):object 
+    {
+        if( ! is_array( $args ) ) return null;
         $this->theme_demo_args = $args;
         return $this;
     }
+
+    
+    public function setRootSite( string $root_site_url ):object 
+    {
+        if( empty( $root_site_url ) || ! is_string( $root_site_url ) ) return null;
+        $this->theme_demo_args['root_site'] = $root_site_url;
+        return $this;
+    }
+
+
 
 }
