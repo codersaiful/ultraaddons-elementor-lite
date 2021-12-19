@@ -23,8 +23,14 @@ $window.on( 'elementor/frontend/init', function() {
         run: function(){
 
             var $scope = this.$element;
-            var settings = this.getElementSettings(); //Get Data on Editor mode
-            var anim_data = $scope[0].dataset.settings; //Get Data on frontend mode
+            /**
+             * get data on editor mode
+             */
+            var settings = this.getElementSettings(); 
+            /**
+             * get data on frontend mode
+             */
+            var anim_data = $scope[0].dataset.settings;
                 if(anim_data){
                     var obj = JSON.parse(anim_data);
                 }
