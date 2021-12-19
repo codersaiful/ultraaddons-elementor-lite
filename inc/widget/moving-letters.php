@@ -42,12 +42,21 @@ class Moving_Letters extends Base{
         //Naming of Args for anime
         $name           = 'anime';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/anime/lib/anime.min.js';
-        $dependency     =  ['jquery'];//['jquery'];
+        $dependency     =  [];//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  	= true;
 
         wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
         wp_enqueue_script( $name );
+
+        $ml_name        = 'frontend-moving-letters';
+        $ml_js_file_url    = ULTRA_ADDONS_ASSETS . 'js/frontend-moving-letters.js';
+        $ml_dependency     =  [];//['jquery'];
+        $ml_version        = ULTRA_ADDONS_VERSION;
+        $ml_in_footer  	= true;
+
+        wp_register_script( $ml_name , $ml_js_file_url, $ml_dependency, $ml_version, $ml_in_footer );
+        wp_enqueue_script( $ml_name );
 		
     }
 
@@ -63,7 +72,7 @@ class Moving_Letters extends Base{
      * @by Saiful
      */
     public function get_script_depends() {
-            return [ 'jquery','anime' ];
+            return [ 'anime' ,'frontend-moving-letters' ];
     }
     
     
@@ -78,7 +87,7 @@ class Moving_Letters extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'anime', 'moving', 'letters' ];
+        return [ 'ultraaddons', 'ua','animation', 'animate', 'dynamic', 'text', 'heading', 'anime', 'moving', 'letters' ];
     }
     
     
