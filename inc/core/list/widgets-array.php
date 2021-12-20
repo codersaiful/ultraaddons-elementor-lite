@@ -495,6 +495,14 @@ $widgetsArray = [
         'cat'       => [
             __( 'Basic', 'ultraaddons' ),
         ],
+    ],
+    'Product_Grid' => [
+        'name'  => __( 'Product Grid', 'ultraaddons' ),
+        'is_pro'   => false,
+        'icon'      => 'eicon-product-images',
+        'cat'       => [
+            __( 'Basic', 'ultraaddons' ),
+        ],
 ]
 
 
