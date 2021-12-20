@@ -37,7 +37,7 @@ class Demo_Library_Manager {
 			* IF WANT TO DESTROY CACHE, JUST ENABLE BOTTOM ACTION. 
 			* just write a slash at the end of bottom start
 			******************************************
-		update_option( 'ultraaddons_library_cache', false );
+		update_option( 'eldm_library_cache', false );
 		//**************************************************/
                 
 		add_action( 'elementor/editor/footer', [ __CLASS__, 'print_template_views' ] );
@@ -108,23 +108,24 @@ class Demo_Library_Manager {
 			// 'hasPro'                  => ultraaddons_is_pro(),
             // 'HELP_ULR'                => ULTRA_ADDONS_WIDGET_HELP_ULR,
 
-			'icon' => self::$theme_demo['button']['icon'],
-			'editor_nonce'            => wp_create_nonce( 'ua_editor_nonce' ),
-			'dark_stylesheet_url'     => self::TEMPLATE_ASSETS . 'css/editor-dark.min.css',
+			'icon' 						=> self::$theme_demo['button']['icon'],
+			'library_title' 			=> self::$theme_demo['library_title'],
+			'editor_nonce'            	=> wp_create_nonce( 'eldm_editor_nonce' ),
+			'dark_stylesheet_url'     	=> self::TEMPLATE_ASSETS . 'css/editor-dark.min.css',
 			'i18n' => [
-				'iconTitlePreviewPage'      => self::$theme_demo['button']['text'],//esc_html__( 'Demo', 'ultraaddons' ),
-				'promotionDialogHeader'     => esc_html__( '%s Widget', 'ultraaddons' ),
-				'promotionDialogMessage'    => esc_html__( 'Use %s widget with other exclusive pro widgets and 100% unique features to extend your toolbox and build sites faster and better.', 'ultraaddons' ),
-				'templatesEmptyTitle'       => esc_html__( 'No Templates Found', 'ultraaddons' ),
-				'templatesEmptyMessage'     => esc_html__( 'Try different category or sync for new templates.', 'ultraaddons' ),
-				'templatesNoResultsTitle'   => esc_html__( 'No Results Found', 'ultraaddons' ),
-				'templatesNoResultsMessage' => esc_html__( 'Please make sure your search is spelled correctly or try a different words.', 'ultraaddons' ),
+				'iconDemoTitlePreviewPage'      => self::$theme_demo['button']['text'],//esc_html__( 'Demo', 'ultraaddons' ),
+				'promotionDemoDialogHeader'     => esc_html__( '%s Widget', 'ultraaddons' ),
+				'promotionDemoDialogMessage'    => esc_html__( 'Use %s widget with other exclusive pro widgets and 100% unique features to extend your toolbox and build sites faster and better.', 'ultraaddons' ),
+				'demoEmptyTitle'       => esc_html__( 'No Templates Found', 'ultraaddons' ),
+				'demoEmptyMessage'     => esc_html__( 'Try different category or sync for new templates.', 'ultraaddons' ),
+				'demoNoResultsTitle'   => esc_html__( 'No Results Found', 'ultraaddons' ),
+				'demoNoResultsMessage' => esc_html__( 'Please make sure your search is spelled correctly or try a different words.', 'ultraaddons' ),
 			],
 		];
         
         wp_localize_script(
 			'eldm-library-editor',
-			'ULTRAADDONS_DATA_EDITOR',
+			'ELDM_DATA_EDITOR',
 			$localize_data
 		);
 	}

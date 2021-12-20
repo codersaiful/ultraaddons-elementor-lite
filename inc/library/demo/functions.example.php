@@ -22,13 +22,15 @@ if( class_exists( '\UltraAddons\Library\Demo\Theme_Demo' ) ){
 		'root_site' => 'http://localhost/wordpress_theme/',
 		'button' => [
 			'text'	=> esc_html__( "My Demo", 'ultraaddons' ),
-			'icon'	=> 'uicon-ultraaddons',
+			'icon'	=> 'eicon-instagram-likes',
 		],
 		'tabs' => [
 			'section' => esc_html__( "Blocks", 'ultraaddons' ),
 			'page' => esc_html__( "Pages", 'ultraaddons' ),
 			'landing' => esc_html__( "Landing", 'ultraaddons' ),
 		],
+		'library_icon'      => 'eicon-gallery-grid',
+        'library_title'     => esc_html__( "THEME DEMOS", 'ultraaddons' ),
 		'back_button_text' => esc_html__( 'Back to All', 'ultraaddons' ),
 		'lern_more_message' => esc_html__( 'Learn more about our Theme Template.', 'ultraaddons' ),
 		'page_templates' => 'https://ultraaddons.com//',
@@ -51,8 +53,11 @@ if( class_exists( '\UltraAddons\Library\Demo\Theme_Demo' ) ){
 
 
 	// var_dump($demo_manager);
-
-	\UltraAddons\Library\Demo\Theme_Demo::set_demo_info($args);
-	\UltraAddons\Library\Demo\Theme_Demo::load();
+	$demo = new \UltraAddons\Library\Demo\Theme_Demo;
+	$demo->set_demo_info( $args );
+	// $demo->setRootSite( 'http://localhost/wordpress_theme/' );
+	$demo->load();
+	// \UltraAddons\Library\Demo\Theme_Demo::set_demo_info($args);
+	// \UltraAddons\Library\Demo\Theme_Demo::load();
 
 }

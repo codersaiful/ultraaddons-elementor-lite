@@ -16,7 +16,7 @@ class Demo_Library_Source extends Source_Base {
 	/**
 	 * Template library data cache
 	 */
-	const LIBRARY_CACHE_KEY = 'ultraaddons_library_cache';
+	const LIBRARY_CACHE_KEY = 'eldm_library_cache';
 
 	/**
 	 * Template info api url

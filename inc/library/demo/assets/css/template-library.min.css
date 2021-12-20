@@ -7,7 +7,7 @@
     transition:width .2s,height .2s
 }
 a.elementor-template-library-blank-footer-link {
-    color: #13c392;
+    color: #673ab7;
 }
 a.elementor-template-library-blank-footer-link:hover {
     color: #ff5722;
@@ -26,7 +26,7 @@ a.elementor-template-library-blank-footer-link:hover {
     width:30px;
     height:30px;
     border-radius:100%;
-    background-color: #13c392;
+    background-color: #673ab7;
     color:#fff;
     text-align:center;
     line-height:30px;
@@ -45,12 +45,12 @@ a.elementor-template-library-blank-footer-link:hover {
     cursor:pointer
 }
 .EldmTempDemo__responsive-menu-item.elementor-active{
-    border-bottom: 3px solid #13c392;
+    border-bottom: 3px solid #673ab7;
     background-image:-webkit-linear-gradient(top,#f1f3f5,#fff);
     background-image:linear-gradient(to bottom,#f1f3f5,#fff);
 }
 .EldmTempDemo__header-menu .elementor-template-library-menu-item.elementor-active{
-    border-bottom-color: #13c392;
+    border-bottom-color: #673ab7;
 }
 #EldmTempDemo__toolbar{
     display:-webkit-box;
@@ -310,7 +310,7 @@ span.EldmTempDemo__template-badge.hasPro_pro {
     color:#ed639a
 }
 .EldmTempDemo__template .EldmTempDemo__insert-button{
-    color: #13c392;
+    color: #673ab7;
     letter-spacing: 1px;
 }
 .EldmTempDemo__template .EldmTempDemo__insert-button:focus,.EldmTempDemo__template .EldmTempDemo__insert-button:hover{
@@ -331,7 +331,7 @@ span.EldmTempDemo__template-badge.hasPro_pro {
     color:#fff
 }
 #elementor-template-library-header-preview .EldmTempDemo__insert-button{
-    background-color: #13c392;
+    background-color: #673ab7;
     color:#fff;
 }
 #elementor-template-library-header-preview .EldmTempDemo__insert-button:focus,#elementor-template-library-header-preview .EldmTempDemo__insert-button:hover{
