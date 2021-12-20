@@ -54,18 +54,24 @@
     position: relative;
     box-shadow: 0 2px 7px #dfdfdf;
     margin-bottom: 20px;
+    overflow: hidden;
 }
 
-.ua-badge {
-    position: absolute;
-    left: 0;
-    top: 20px;
-    text-transform: uppercase;
-    font-size: 13px;
+.ua-badge span.ua-onsale {
+    min-height: 2em;
+    min-width: 4em;
+    font-size: 1em;
     font-weight: 700;
-    background: red;
+    position: absolute;
+    text-align: center;
+    padding: 2px;
+    top: 0;
+    left: 0;
+    margin: 0;
+    background-color: #77a464;
     color: #fff;
-    padding: 3px 10px;
+    font-size: .857em;
+    z-index: 9;
 }
 
 .ua-product-tumb {
@@ -153,3 +159,18 @@
 .ua-product-links a:hover {
     color: #fbb72c;
 }
+.page-numbers {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 0 2px 0 0;
+    border: 1px solid #e4e4e4;
+    line-height: 1;
+    text-decoration: none;
+    border-radius: 2px;
+    font-weight: 500;
+    color: #111;
+  }
+  .page-numbers.current,
+  a.page-numbers:hover {
+    background: #f9f9f9;
+  }

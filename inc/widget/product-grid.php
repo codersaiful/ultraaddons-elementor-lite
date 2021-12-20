@@ -247,7 +247,6 @@ class Product_Grid extends Base{
             ]
         );
 	
-		
 		$this->add_control(
 			'_ua_title_color', [
 				'label' => __( 'Title Color', 'ultraaddons' ),
@@ -272,7 +271,7 @@ class Product_Grid extends Base{
 				'label' => __( 'Price Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .ua-product-flip .ua-product-price' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .pg .ua-product-price' => 'color: {{VALUE}};',
 				],
                 'separator' =>'before'
 			]
@@ -318,11 +317,11 @@ class Product_Grid extends Base{
 		);
 	
 		$this->add_control(
-			'_ua_product_flip_content_color', [
+			'_ua_content_color', [
 				'label' => __( 'Description Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .ua-product-flip .back .ua-desc' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .pg .ua-product-details p' => 'color: {{VALUE}};',
 				],
 				'separator' => 'before'
 			]
@@ -334,7 +333,7 @@ class Product_Grid extends Base{
 			[
 					'name' => 'content_typography',
 					'label' => 'Description Typography',
-					'selector' => '{{WRAPPER}} .ua-product-flip .back .ua-desc',
+					'selector' => '{{WRAPPER}} .pg .ua-product-details p',
 
 			]
 		);
@@ -351,7 +350,7 @@ class Product_Grid extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .ua-product-flip .back .ua-desc' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .pg .ua-product-details p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -382,7 +381,7 @@ class Product_Grid extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .ua-product-flip .front, .ua-product-flip .back, .ua-product-flip .front:before' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .pg .ua-product-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -391,7 +390,7 @@ class Product_Grid extends Base{
 			[
 				'name' => 'box_shadow',
 				'label' => __( 'Box Shadow', 'ultraaddons' ),
-				'selector' => '{{WRAPPER}} .ua-product-flip .front, .ua-product-flip .back',
+				'selector' => '{{WRAPPER}} .pg .ua-product-card',
 			]
 		);
 		
@@ -420,21 +419,13 @@ class Product_Grid extends Base{
 				'label' => __( 'Normal', 'ultraaddons' ),
 			]
 		);
-		$this->add_control(
-			'_ua_cart_btn_bg', [
-				'label' => __( 'Button Background', 'ultraaddons' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-						'{{WRAPPER}} .ua-cart a.button' => 'background: {{VALUE}};',
-				]
-			]
-        );
+	
 		$this->add_control(
 			'_ua_cart_btn_color', [
 				'label' => __( 'Button Text Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .ua-cart a.button, i.uicon.uicon-cart' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .ua-product-links .add-card' => 'color: {{VALUE}};',
 				]
 			]
         );
@@ -444,26 +435,10 @@ class Product_Grid extends Base{
 			[
 					'name' => 'cart_btn_typography',
 					'label' => 'Button Typography',
-					'selector' => '{{WRAPPER}} .ua-cart a.button',
+					'selector' => '{{WRAPPER}} .ua-product-links .add-card',
 			]
         );
-		$this->add_responsive_control(
-			'_cart_btn_radius',
-			[
-				'label'       => esc_html__( 'Button Radius', 'ultraaddons' ),
-				'type'        => Controls_Manager::DIMENSIONS,
-				'size_units'  => [ 'px', '%' ],
-				'placeholder' => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'selectors'   => [
-					'{{WRAPPER}} .ua-cart a.button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
+	
 		$this->add_responsive_control(
 			'_cart_btn_padding',
 			[
@@ -477,7 +452,7 @@ class Product_Grid extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .ua-cart a.button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ua-product-bottom-details' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -493,20 +468,11 @@ class Product_Grid extends Base{
 			]
 		);
 		$this->add_control(
-			'_ua_cart_btn_hover_bg', [
-				'label' => __( 'Button Background', 'ultraaddons' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-						'{{WRAPPER}} .ua-cart a.button:hover' => 'background: {{VALUE}};',
-				]
-			]
-        );
-		$this->add_control(
 			'_ua_cart_btn_hover_color', [
 				'label' => __( 'Button Text Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .ua-cart a.button:hover, .ua-cart a.button:hover' => 'color: {{VALUE}};',
+						'{{WRAPPER}}  .ua-product-links .add-card:hover' => 'color: {{VALUE}};',
 				]
 			]
         );
@@ -535,7 +501,7 @@ class Product_Grid extends Base{
 				'label' => __( 'Flash Background', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .ua-onsale' => 'background-color: {{VALUE}};',
+						'{{WRAPPER}} .ua-badge .ua-onsale' => 'background-color: {{VALUE}};',
 				],
 				'default'=>'#111'
 			]
@@ -545,7 +511,7 @@ class Product_Grid extends Base{
 				'label' => __( 'Flash Text Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .ua-onsale' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .ua-badge .ua-onsale' => 'color: {{VALUE}};',
 				],
 				'default'=>'#fff',
 			]
@@ -556,7 +522,7 @@ class Product_Grid extends Base{
 			[
 					'name' => 'flash_typography',
 					'label' => 'Flash Typography',
-					'selector' => '{{WRAPPER}} .ua-onsale',
+					'selector' => '{{WRAPPER}} .ua-badge .ua-onsale',
 			]
         );
 		$this->add_responsive_control(
@@ -572,7 +538,7 @@ class Product_Grid extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .ua-onsale' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ua-badge .ua-onsale' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -589,7 +555,7 @@ class Product_Grid extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .ua-onsale' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ua-badge .ua-onsale' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -606,7 +572,7 @@ class Product_Grid extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .ua-onsale' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ua-badge .ua-onsale' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -625,11 +591,11 @@ class Product_Grid extends Base{
 	?>
 	<div class="ua-row pg">
 	<?php
-		
+		$paged = (get_query_var('paged')) ? get_query_var('paged') : $settings['_ua_post_page_number'] ;
         $args = array(
             'post_type' 	=> 'product',
             'posts_per_page'=> $settings['_ua_post_per_page'],
-            'paged'=> ! empty( $settings['_ua_post_page_number'] ) ? $settings['_ua_post_page_number'] : 1,
+            'paged'         => $paged,
 			'order'			=> $settings['_ua_product_order'],
 			'orderby'		=> $settings['_ua_product_orderby'],
             );
@@ -719,11 +685,33 @@ class Product_Grid extends Base{
     </div>
 	<?php
 	 endwhile;
+     ?>
+     <div class="ua-col-1">
+        <?php
+        $total_pages = $loop->max_num_pages;
+
+        if ($total_pages > 1){
+    
+            $current_page = max(1, get_query_var('paged'));
+    
+            echo paginate_links(array(
+                'base' => get_pagenum_link(1) . '%_%',
+                'format' => '/page/%#%',
+                'current' => $current_page,
+                'total' => $total_pages,
+                'prev_text'    => __('« Prev'),
+                'next_text'    => __('Next »'),
+            ));
+        }
+        ?>
+    </div> 
+     <?php
 	} else {
 		 echo "<div class='ua-alert'>" . esc_html__( "No products found!", 'ultraaddons' ) . "</div>";
 	}
 	wp_reset_postdata();
-	?>
+    ?>
+    
 	</div>
 <?php }
 
@@ -767,5 +755,25 @@ class Product_Grid extends Base{
 		  }
 		  return $str . (count($all) <= $words ? '' : $sp);
 	}
+
+   public function woocommerce_pagination() {
+        if ( ! wc_get_loop_prop( 'is_paginated' ) || ! woocommerce_products_will_display() ) {
+            return;
+        }
+    
+        $args = array(
+            'total'   => wc_get_loop_prop( 'total_pages' ),
+            'current' => wc_get_loop_prop( 'current_page' ),
+            'base'    => esc_url_raw( add_query_arg( 'product-page', '%#%', false ) ),
+            'format'  => '?product-page=%#%',
+        );
+    
+        if ( ! wc_get_loop_prop( 'is_shortcode' ) ) {
+            $args['format'] = '';
+            $args['base']   = esc_url_raw( str_replace( 999999999, '%#%', remove_query_arg( 'add-to-cart', get_pagenum_link( 999999999, false ) ) ) );
+        }
+    
+        wc_get_template( 'loop/pagination.php', $args );
+    }
 //End of Class
 }
