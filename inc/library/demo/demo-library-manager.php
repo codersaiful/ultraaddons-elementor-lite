@@ -124,7 +124,7 @@ class Demo_Library_Manager {
         
         wp_localize_script(
 			'eldm-library-editor',
-			'ULTRAADDONS_DATA_EDITOR',
+			'ELDM_DATA_EDITOR',
 			$localize_data
 		);
 	}
