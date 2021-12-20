@@ -37,7 +37,7 @@ class Demo_Library_Manager {
 			* IF WANT TO DESTROY CACHE, JUST ENABLE BOTTOM ACTION. 
 			* just write a slash at the end of bottom start
 			******************************************
-		update_option( 'ultraaddons_library_cache', false );
+		update_option( 'eldm_library_cache', false );
 		//**************************************************/
                 
 		add_action( 'elementor/editor/footer', [ __CLASS__, 'print_template_views' ] );
