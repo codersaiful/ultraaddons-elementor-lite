@@ -7,13 +7,19 @@ use Elementor\Plugin;
 defined('ABSPATH') || die();
 
 class Theme_Demo{
+
+    public $permalink_prefix = 'library';
+    public $templates_permalink = 'wp-json/%s/v2/templates';
+    public $template_permalink = 'wp-json/%s/v2/template/';
+    private $default_root_site = 'https://library.ultraaddons.com/';
+    public $root_site;
     
     public $theme_demo_args;
 
     public function load(){
         //var_dump(self::$get_demo_args());
 
-        var_dump($this->get_demo_info());
+        //var_dump($this->get_demo_info());
         //use Elementor\Plugin;
         Library_Manager::init();
     }
@@ -31,11 +37,15 @@ class Theme_Demo{
      */
     public function get_demo_info():array
     {
-        if( ! is_null( $this->theme_demo_args ) ) return $this->theme_demo_args;
+        
+        if( ! is_array( $this->theme_demo_args ) ){
+            $this->theme_demo_args = [];
+        } 
 
 
 
         $default_args = [
+            'root_site' => $this->default_root_site,
             'button' => [
                 'text'	=> esc_html__( "Theme Demo", 'ultraaddons' ),
                 'icon'	=> 'uicon-ultraaddons',
@@ -47,7 +57,18 @@ class Theme_Demo{
             ],
 
         ];
-        $this->theme_demo_args = apply_filters( 'eldm_theme_demo_args', $default_args );
+        $merrged_args = wp_parse_args( $this->theme_demo_args, $default_args );
+
+        //Fixing root_site
+        if( empty( $merrged_args['root_site'] ) ){
+            $merrged_args['root_site'] = $this->default_root_site;
+        }
+        $this->root_site = $merrged_args['root_site'];
+        $merrged_args['permalink'] = $this->permalink_prefix;
+        $merrged_args['templates'] = $this->root_site . sprintf( $this->templates_permalink, $this->permalink_prefix );
+        $merrged_args['template'] = $this->root_site . sprintf( $this->template_permalink, $this->permalink_prefix );
+
+        $this->theme_demo_args = apply_filters( 'eldm_theme_demo_args', $merrged_args );
         return $this->theme_demo_args;
     }
 
