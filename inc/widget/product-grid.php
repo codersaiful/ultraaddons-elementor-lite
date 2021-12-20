@@ -57,16 +57,14 @@ class Product_Grid extends Base{
     protected function _register_controls() {
 		//For Query Tab
         $this->query_controls();
-       //For Content Section
-        $this->content_general_controls();
 		//For front style Tab
-        $this->front_controls();
+        $this->general_controls();
 		//For Box Style Tab
         $this->style_box_controls();
 		//For cart btn Tab
         $this->cart_btn_controls();
 		//For sale flash Tab
-        $this->sale_flash_controls();
+        $this->pagination_controls();
     }
 	protected function query_controls() {
 		
@@ -189,17 +187,20 @@ class Product_Grid extends Base{
 		$this->end_controls_section();
 	}
 
-	protected function content_general_controls() {
+
+	/**
+	 * Front Style Controls
+	 */
+	protected function general_controls() {
 		
         $this->start_controls_section(
-            'general_content',
+            'general_style',
             [
-                'label'     => esc_html__( 'Settings', 'ultraaddons' ),
-                'tab'       => Controls_Manager::TAB_CONTENT,
+                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
-		
-		$this->add_control(
+        $this->add_control(
 			'_ua_col',
 			[
 				'label' => esc_html__( 'Column', 'ultraaddons' ),
@@ -229,23 +230,9 @@ class Product_Grid extends Base{
 					'div' => 'div',
 				],
 				'default' => 'h2',
+                'separator' => 'after'
 			]
 		);
-		
-	$this->end_controls_section();
-	}
-	/**
-	 * Front Style Controls
-	 */
-	protected function front_controls() {
-		
-        $this->start_controls_section(
-            'front_style',
-            [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
-                'tab'       => Controls_Manager::TAB_STYLE,
-            ]
-        );
 	
 		$this->add_control(
 			'_ua_title_color', [
@@ -579,6 +566,200 @@ class Product_Grid extends Base{
 		
 		$this->end_controls_section();
 	}
+    /**
+	 * Pagination Style Controls
+	 */
+	protected function pagination_controls() {
+		
+        $this->start_controls_section(
+            'pagination_style',
+            [
+                'label'     => esc_html__( 'Pagination', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->start_controls_tabs(
+			'pagi_normal_tabs'
+		);
+		/**
+		 * Normal tab
+		 */
+		$this->start_controls_tab(
+			'pagi_normal_tab',
+			[
+				'label' => __( 'Normal', 'ultraaddons' ),
+			]
+		);
+		$this->add_control(
+			'_ua_pagi_bg', [
+				'label' => __( 'Background', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-pagination .page-numbers' => 'background-color: {{VALUE}};',
+				],
+				'default'=>'#fff'
+			]
+        );
+
+		$this->add_control(
+			'_ua_pagi_color', [
+				'label' => __( 'Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-pagination .page-numbers' => 'color: {{VALUE}};',
+				],
+				'default'=>'#111',
+			]
+        );
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'border',
+				'label' => esc_html__( 'Border', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-pagination .page-numbers',
+			]
+		);
+        $this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'pagi_shadow',
+				'label' => __( 'Box Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-pagination .page-numbers',
+			]
+		);
+		$this->add_responsive_control(
+			'_ua_pagi_margin',
+			[
+				'label'       => esc_html__( 'Margin', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-pagination' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'_ua_pagi_number_margin',
+			[
+				'label'       => esc_html__( 'Number Margin', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-pagination .page-numbers' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'_ua_pagi_padding',
+			[
+				'label'       => esc_html__( 'Padding', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-pagination .page-numbers' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'_ua_pagi_radius',
+			[
+				'label'       => esc_html__( 'Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-pagination .page-numbers' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->end_controls_tab();
+		/**
+		 * Button Hover tab
+		 */
+		$this->start_controls_tab(
+			'pagi_btn_hover_tabs',
+			[
+				'label' => __( 'Hover', 'ultraaddons' ),
+			]
+		);
+
+        $this->add_control(
+			'_ua_pagi_hover_bg', [
+				'label' => __( 'Background Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-pagination a.page-numbers:hover' => 'background: {{VALUE}};',
+				]
+			]
+        );
+	
+		$this->add_control(
+			'_ua_pagi_hover_color', [
+				'label' => __( 'Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-pagination a.page-numbers:hover' => 'color: {{VALUE}};',
+				]
+			]
+        );
+		$this->end_controls_tab();
+
+        $this->start_controls_tab(
+			'style_active_tab',
+			[
+				'label' => esc_html__( 'Active', 'plugin-name' ),
+			]
+		);
+        $this->add_control(
+			'_ua_pagi_active_bg', [
+				'label' => __( 'Background Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}}  .ua-pagination .page-numbers.current' => 'background: {{VALUE}};',
+				]
+			]
+        );
+	
+		$this->add_control(
+			'_ua_pagi_active_color', [
+				'label' => __( 'Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}}  .ua-pagination .page-numbers.current' => 'color: {{VALUE}};',
+				]
+			]
+        );
+
+		$this->end_controls_tab();
+
+        $this->end_controls_tabs();
+		
+		$this->end_controls_section();
+	}
     protected function render() {
 
 		//Intrigate with WooCommerce
@@ -686,7 +867,7 @@ class Product_Grid extends Base{
 	<?php
 	 endwhile;
      ?>
-     <div class="ua-col-1">
+     <nav class="ua-pagination ua-col-1">
         <?php
         $total_pages = $loop->max_num_pages;
 
@@ -704,7 +885,7 @@ class Product_Grid extends Base{
             ));
         }
         ?>
-    </div> 
+    </nav> 
      <?php
 	} else {
 		 echo "<div class='ua-alert'>" . esc_html__( "No products found!", 'ultraaddons' ) . "</div>";
