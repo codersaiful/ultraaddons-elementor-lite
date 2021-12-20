@@ -1,9 +1,20 @@
 <?php
 /**
  * Template library templates
+ * 
+ * 'back_button_text' => esc_html__( 'Back to Library', 'ultraaddons' ),
+            'lern_more_message' => esc_html__( 'Learn more about UltraAddons Template Library.', 'ultraaddons' ),
+            'page_template' => 'https://ultraaddons.com/page-templates/',
  */
+use UltraAddons\Library\Demo\Theme_Demo;
 
 defined( 'ABSPATH' ) || exit;
+
+$theme_info = Theme_Demo::get_demo_info();
+
+$back_button_text = $theme_info['back_button_text'] ?? __( 'Back to Library', 'ultraaddons' );
+$page_templates = $theme_info['page_templates'] ?? 'https://ultraaddons.com/page-templates/';
+$lern_more_message = $theme_info['lern_more_message'] ?? __( 'Learn more about UltraAddons Template Library.', 'ultraaddons' );
 
 ?>
 <script type="text/template" id="tmpl-UltraTempLibrary__header-logo">
@@ -15,7 +26,7 @@ defined( 'ABSPATH' ) || exit;
 
 <script type="text/template" id="tmpl-UltraTempLibrary__header-back">
 	<i class="eicon-" aria-hidden="true"></i>
-	<span><?php echo __( 'Back to Library', 'ultraaddons' ); ?></span>
+	<span><?php echo esc_html( $back_button_text ); ?></span>
 </script>
 
 <script type="text/template" id="tmpl-UltraTempLibrary__header-menu">
@@ -157,7 +168,7 @@ defined( 'ABSPATH' ) || exit;
 	<div class="elementor-template-library-blank-title"></div>
 	<div class="elementor-template-library-blank-message"></div>
 	<div class="elementor-template-library-blank-footer">
-		<?php esc_html_e( 'Learn more about UltraAddons Template Library.', 'ultraaddons' ); ?>
-		<a class="elementor-template-library-blank-footer-link" href="https://ultraaddons.com/template-library" target="_blank"><?php echo __( 'Click here', 'ultraaddons' ); ?></a>
+		<?php echo esc_html( $lern_more_message ); ?>
+		<a class="elementor-template-library-blank-footer-link" href="<?php echo esc_url( $page_templates ); ?>" target="_blank"><?php echo __( 'Click here', 'ultraaddons' ); ?></a>
 	</div>
 </script>

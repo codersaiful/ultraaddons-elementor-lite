@@ -8,18 +8,47 @@ defined('ABSPATH') || die();
 
 class Theme_Demo{
 
-    public $permalink_prefix = 'library';
-    public $templates_permalink = 'wp-json/%s/v2/templates';
-    public $template_permalink = 'wp-json/%s/v2/template/';
-    private $default_root_site = 'https://library.ultraaddons.com/';
-    public $root_site;
+    public static $permalink_prefix = 'library';
+    public static $templates_permalink = 'wp-json/%s/v2/templates';
+    public static $template_permalink = 'wp-json/%s/v2/template/';
+    private static $default_root_site = 'https://library.ultraaddons.com/';
+    public static $root_site;
     
-    public $theme_demo_args;
+    public static $theme_demo_args;
 
-    public function load(){
+    /**
+	 * Instance for Main Class
+	 * Called from actiovation instance
+	 *
+	 * @var Object
+	 */
+    public static $_instance;
+
+    /**
+	 * Instance
+	 *
+	 * Ensures only one instance of the class is loaded or can be loaded.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @access public
+	 * @static
+	 *
+	 * @return UltraElementor An instance of the class.
+	 */
+	public static function instance() {
+
+		if ( is_null( self::$_instance ) ) {
+			self::$_instance = new self();
+		}
+		return self::$_instance;
+
+	}
+
+    public static function load(){
         //var_dump(self::$get_demo_args());
 
-        // var_dump($this->get_demo_info());
+        // var_dump(self::$get_demo_info());
         //use Elementor\Plugin;
         Demo_Library_Manager::init();
     }
@@ -32,17 +61,17 @@ class Theme_Demo{
      *
      * @return array
      */
-    public function get_demo_info():array
+    public static function get_demo_info():array
     {
         
-        if( ! is_array( $this->theme_demo_args ) ){
-            $this->theme_demo_args = [];
+        if( ! is_array( self::$theme_demo_args ) ){
+            self::$theme_demo_args = [];
         } 
 
 
 
         $default_args = [
-            'root_site' => $this->default_root_site,
+            'root_site' => self::$default_root_site,
             'button' => [
                 'text'	=> esc_html__( "Theme Demo", 'ultraaddons' ),
                 'icon'	=> 'uicon-ultraaddons',
@@ -52,36 +81,39 @@ class Theme_Demo{
                 'page' => esc_html__( "Pages", 'ultraaddons' ),
                 'landing' => esc_html__( "Landing", 'ultraaddons' ),
             ],
+            'back_button_text' => esc_html__( 'Back to Library', 'ultraaddons' ),
+            'lern_more_message' => esc_html__( 'Learn more about UltraAddons Template Library.', 'ultraaddons' ),
+            'page_templates' => 'https://ultraaddons.com/page-templates/',
 
         ];
-        $merrged_args = wp_parse_args( $this->theme_demo_args, $default_args );
+        $merrged_args = wp_parse_args( self::$theme_demo_args, $default_args );
 
         //Fixing root_site
         if( empty( $merrged_args['root_site'] ) ){
-            $merrged_args['root_site'] = $this->default_root_site;
+            $merrged_args['root_site'] = self::$default_root_site;
         }
-        $this->root_site = $merrged_args['root_site'];
-        $merrged_args['permalink'] = $this->permalink_prefix;
-        $merrged_args['templates'] = $this->root_site . sprintf( $this->templates_permalink, $this->permalink_prefix );
-        $merrged_args['template'] = $this->root_site . sprintf( $this->template_permalink, $this->permalink_prefix );
+        self::$root_site = $merrged_args['root_site'];
+        $merrged_args['permalink'] = self::$permalink_prefix;
+        $merrged_args['templates'] = self::$root_site . sprintf( self::$templates_permalink, self::$permalink_prefix );
+        $merrged_args['template'] = self::$root_site . sprintf( self::$template_permalink, self::$permalink_prefix );
 
-        $this->theme_demo_args = apply_filters( 'eldm_theme_demo_args', $merrged_args );
-        return $this->theme_demo_args;
+        self::$theme_demo_args = apply_filters( 'eldm_theme_demo_args', $merrged_args );
+        return self::$theme_demo_args;
     }
 
-    public function set_demo_info( array $args ):object 
+    public static function set_demo_info( array $args ) 
     {
         if( ! is_array( $args ) ) return null;
-        $this->theme_demo_args = $args;
-        return $this;
+        self::$theme_demo_args = $args;
+        return self::$_instance;
     }
 
     
-    public function setRootSite( string $root_site_url ):object 
+    public static function setRootSite( string $root_site_url ):object 
     {
         if( empty( $root_site_url ) || ! is_string( $root_site_url ) ) return null;
-        $this->theme_demo_args['root_site'] = $root_site_url;
-        return $this;
+        self::$theme_demo_args['root_site'] = $root_site_url;
+        return self::$_instance;
     }
 
 

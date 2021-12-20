@@ -41,8 +41,8 @@ class Demo_Library_Source extends Source_Base {
 
 	public function __construct()
 	{
-		$demo = new Theme_Demo;
-		self::$theme_demo = $demo->get_demo_info();
+		//$demo = new Theme_Demo;
+		self::$theme_demo = Theme_Demo::get_demo_info();
 		
 	}
 	public function get_id() {
