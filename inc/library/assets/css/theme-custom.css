@@ -1,0 +1,17 @@
+.elementor-add-new-section .elementor-add-uaTheme-button {
+    background-color: #13c392;
+    margin-left: 5px;
+    font-size: 27px;
+    vertical-align: bottom;
+    font-family: Arial,Helvetica,sans-serif;
+    display: inline-flex;
+    width: unset;
+    border-radius: 4px;
+    padding: 0 8px;
+}
+
+.elementor-add-new-section .elementor-add-uaTheme-button-text {
+    padding-left: 6px;
+    padding-right: 0;font-size: 17px;
+    text-transform: capitalize;
+}

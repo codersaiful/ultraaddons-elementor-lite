@@ -1,0 +1,21 @@
+.UltraTempLibrary__logo-wrap {
+	background-color: #13c392;
+}
+
+#UltraTempLibrary__filter-tags {
+	background-color: #26292c;
+}
+#UltraTempLibrary__filter-tags:before {
+	border-bottom-color: #26292c;
+}
+
+.UltraTempLibrary__template,
+.UltraTempLibrary__template-footer {
+	background-color: #f5f5f5;
+}
+
+.UltraTempLibrary__responsive-menu-item.elementor-active {
+	border-bottom-color: #13c392; 
+	background-image: -webkit-linear-gradient(top, #26292c, #34383c);
+	background-image:         linear-gradient(to bottom, #26292c, #34383c);
+}

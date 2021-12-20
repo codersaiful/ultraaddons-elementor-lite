@@ -22,7 +22,7 @@
   left: 0;
   height: 3px;
   width: 100%;
-  background-color: #fff;
+  background-color: #111;
   transform-origin: 0 0;
 }
 
@@ -326,6 +326,31 @@
 }
 
 .ml14 .letter {
+  display: inline-block;
+  line-height: 1em;
+}
+.ml15 {
+  font-weight: 800;
+  font-size: 3.8em;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+}
+
+.ml15 .word {
+  display: inline-block;
+  line-height: 1em;
+}
+.ml16 {
+  color: #402d2d;
+  padding: 40px 0;
+  font-weight: 800;
+  font-size: 2em;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  overflow: hidden;
+}
+
+.ml16 .letter {
   display: inline-block;
   line-height: 1em;
 }
