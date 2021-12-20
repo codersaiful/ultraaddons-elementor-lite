@@ -163,7 +163,7 @@ class Loader {
         /**
          * Library Manage
          */
-        // \UltraAddons\Library\Library_Manager::init();
+        \UltraAddons\Library\Library_Manager::init();
         
         
         /**
