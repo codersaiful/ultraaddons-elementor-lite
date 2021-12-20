@@ -19,15 +19,12 @@ class Theme_Demo{
     public function load(){
         //var_dump(self::$get_demo_args());
 
-        //var_dump($this->get_demo_info());
+        // var_dump($this->get_demo_info());
         //use Elementor\Plugin;
         Demo_Library_Manager::init();
     }
     
-    public static function init(){
-        
-        //Demo_Library_Manager::init();
-    }
+
 
     
     /**

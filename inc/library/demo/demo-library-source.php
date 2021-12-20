@@ -36,6 +36,15 @@ class Demo_Library_Source extends Source_Base {
          */
 	const API_TEMPLATE_DATA_URL = 'http://localhost/wordpress_theme/wp-json/library/v2/template/';
 
+	private static $theme_demo;
+
+
+	public function __construct()
+	{
+		$demo = new Theme_Demo;
+		self::$theme_demo = $demo->get_demo_info();
+		
+	}
 	public function get_id() {
 		return 'eldm-library';
 	}
@@ -120,7 +129,7 @@ class Demo_Library_Source extends Source_Base {
 		if ( $force_update || false === $data ) {
 			$timeout = ( $force_update ) ? 25 : 8;
 
-			$response = wp_remote_get( self::API_TEMPLATES_INFO_URL, [
+			$response = wp_remote_get( self::$theme_demo['templates'], [
 				'timeout' => $timeout,
 			] );
 
@@ -191,7 +200,7 @@ class Demo_Library_Source extends Source_Base {
 		}
 
 		$response = wp_remote_get(
-			self::API_TEMPLATE_DATA_URL . $template_id,
+			self::$theme_demo['template'] . $template_id,
 			[
 				'body' => $body,
 				'timeout' => 25
