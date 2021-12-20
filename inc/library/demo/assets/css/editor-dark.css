@@ -1,5 +1,5 @@
 .EldmTempDemo__logo-wrap {
-	background-color: #13c392;
+	background-color: #673ab7;
 }
 
 #EldmTempDemo__filter-tags {
@@ -15,7 +15,7 @@
 }
 
 .EldmTempDemo__responsive-menu-item.elementor-active {
-	border-bottom-color: #13c392; 
+	border-bottom-color: #673ab7; 
 	background-image: -webkit-linear-gradient(top, #26292c, #34383c);
 	background-image:         linear-gradient(to bottom, #26292c, #34383c);
 }
