@@ -81,6 +81,8 @@ class Theme_Demo{
                 'page' => esc_html__( "Pages", 'ultraaddons' ),
                 'landing' => esc_html__( "Landing", 'ultraaddons' ),
             ],
+            'library_icon'      => 'eicon-gallery-grid',
+            'library_title'     => esc_html__( "THEME DEMOS", 'ultraaddons' ),
             'back_button_text' => esc_html__( 'Back to Library', 'ultraaddons' ),
             'lern_more_message' => esc_html__( 'Learn more about UltraAddons Template Library.', 'ultraaddons' ),
             'page_templates' => 'https://ultraaddons.com/page-templates/',

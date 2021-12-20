@@ -13,13 +13,14 @@ defined( 'ABSPATH' ) || exit;
 $theme_info = Theme_Demo::get_demo_info();
 
 $back_button_text = $theme_info['back_button_text'] ?? __( 'Back to Library', 'ultraaddons' );
+$library_icon = $theme_info['library_icon'] ?? 'uicon-ultraaddons';
 $page_templates = $theme_info['page_templates'] ?? 'https://ultraaddons.com/page-templates/';
 $lern_more_message = $theme_info['lern_more_message'] ?? __( 'Learn more about UltraAddons Template Library.', 'ultraaddons' );
 
 ?>
 <script type="text/template" id="tmpl-EldmTempDemo__header-logo">
     <span class="EldmTempDemo__logo-wrap">
-		<i class="uicon-ultraaddons"></i>
+		<i class="<?php echo esc_attr( $library_icon ); ?>"></i>
 	</span>
     <span class="EldmTempDemo__logo-title">{{{ title }}}</span>
 </script>
