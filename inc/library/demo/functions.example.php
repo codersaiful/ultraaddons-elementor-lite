@@ -17,9 +17,9 @@ if( class_exists( 'ELDM_Elementor_Demo_Manager' ) ){
 
 //http://wptheme.cm/wp-json/demo/v2/templates
 if( class_exists( '\UltraAddons\Library\Demo\Theme_Demo' ) ){
-	$demo_manager = new \UltraAddons\Library\Demo\Theme_Demo;
+	//$demo_manager = new \UltraAddons\Library\Demo\Theme_Demo;
 	$args = [
-		'root_site' => 'http://wptheme.cm/',
+		'root_site' => 'http://localhost/wordpress_theme/',
 		'button' => [
 			'text'	=> esc_html__( "My Demo", 'ultraaddons' ),
 			'icon'	=> 'uicon-ultraaddons',
@@ -29,6 +29,9 @@ if( class_exists( '\UltraAddons\Library\Demo\Theme_Demo' ) ){
 			'page' => esc_html__( "Pages", 'ultraaddons' ),
 			'landing' => esc_html__( "Landing", 'ultraaddons' ),
 		],
+		'back_button_text' => esc_html__( 'Back to All', 'ultraaddons' ),
+		'lern_more_message' => esc_html__( 'Learn more about our Theme Template.', 'ultraaddons' ),
+		'page_templates' => 'https://ultraaddons.com//',
 	];
 
 	/************************
@@ -41,11 +44,15 @@ if( class_exists( '\UltraAddons\Library\Demo\Theme_Demo' ) ){
 	/**
 	 * Short Way
 	 * 
-	 */
-	$demo_manager->setRootSite( 'http://wptheme.cm/' );
-
-	$demo_manager->load();
+	 ************************************
+	$demo_manager->setRootSite( 'http://localhost/wordpress_theme/' );
+	//********************************/
+	//$demo_manager->load();
 
 
 	// var_dump($demo_manager);
+
+	\UltraAddons\Library\Demo\Theme_Demo::set_demo_info($args);
+	\UltraAddons\Library\Demo\Theme_Demo::load();
+
 }
