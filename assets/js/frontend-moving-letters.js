@@ -23,14 +23,19 @@ $window.on( 'elementor/frontend/init', function() {
         run: function(){
 
             var $scope = this.$element;
-            var targetElement = this.$element.find('.ua-ml');
-           
-            
+            /**
+             * get data on editor mode
+             */
+            var settings = this.getElementSettings(); 
+            /**
+             * get data on frontend mode
+             */
             var anim_data = $scope[0].dataset.settings;
-                    if(anim_data){
-                        var obj = JSON.parse(anim_data);
-                    }
-                if(typeof(obj)!= "undefined" && obj.anim_type==1){
+                if(anim_data){
+                    var obj = JSON.parse(anim_data);
+                }
+
+                if(typeof(obj)!= "undefined" && obj.anim_type==1 || settings.anim_type==1){
                     // Wrap every letter in a span
                     var textWrapper = document.querySelector('.ml1 .letters');
                     textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
@@ -61,7 +66,7 @@ $window.on( 'elementor/frontend/init', function() {
                     });
                 }
 
-                if(typeof(obj)!= "undefined" && obj.anim_type==2){
+                if(typeof(obj)!= "undefined" && obj.anim_type==2 || settings.anim_type==2){
                     var textWrapper = document.querySelector('.ml2');
                     textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
@@ -82,7 +87,8 @@ $window.on( 'elementor/frontend/init', function() {
                         delay: 1000
                     });
                 }
-                if(typeof(obj)!= "undefined" &&  obj.anim_type==3){
+
+                if(typeof(obj)!= "undefined" &&  obj.anim_type==3 || settings.anim_type==3){
                 // Wrap every letter in a span
                     var textWrapper = document.querySelector('.ml3');
                     textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
@@ -103,7 +109,7 @@ $window.on( 'elementor/frontend/init', function() {
                     });
                 }
                 
-                if(typeof(obj)!= "undefined" && obj.anim_type==4){
+                if(typeof(obj)!= "undefined" && obj.anim_type==4 || settings.anim_type==4){
                     var ml4 = {};
                     ml4.opacityIn = [0,1];
                     ml4.scaleIn = [0.2, 1];
@@ -156,7 +162,8 @@ $window.on( 'elementor/frontend/init', function() {
                         delay: 500
                     });
                 }
-                if(typeof(obj)!= "undefined"&&  obj.anim_type==5){
+
+                if(typeof(obj)!= "undefined"&&  obj.anim_type==5 || settings.anim_type==5){
                     anime.timeline({loop: true})
                     .add({
                     targets: '.ml5 .line',
@@ -198,7 +205,8 @@ $window.on( 'elementor/frontend/init', function() {
                     delay: 1000
                     });
                 }
-                if(typeof(obj)!= "undefined"&&  obj.anim_type==6){
+
+                if(typeof(obj)!= "undefined"&&  obj.anim_type==6 || settings.anim_type==6){
                     // Wrap every letter in a span
                     var textWrapper = document.querySelector('.ml6 .letters');
                     textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
@@ -218,7 +226,8 @@ $window.on( 'elementor/frontend/init', function() {
                         delay: 1000
                     });
                 }
-                if(typeof(obj)!= "undefined" &&  obj.anim_type==7){
+
+                if(typeof(obj)!= "undefined" &&  obj.anim_type==7 || settings.anim_type==7){
                     var textWrapper = document.querySelector('.ml7 .letters');
                     textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
@@ -240,7 +249,8 @@ $window.on( 'elementor/frontend/init', function() {
                         delay: 1000
                     });
                 }
-                if(typeof(obj)!= "undefined" &&  obj.anim_type==8){
+                
+                if(typeof(obj)!= "undefined" &&  obj.anim_type==8 || settings.anim_type==8){
                     anime.timeline({loop: true})
                         .add({
                             targets: '.ml8 .circle-white',
@@ -288,7 +298,8 @@ $window.on( 'elementor/frontend/init', function() {
                         loop: true
                         });
                 }
-                if(typeof(obj)!= "undefined" &&  obj.anim_type==9){
+
+                if(typeof(obj)!= "undefined" &&  obj.anim_type==9 || settings.anim_type==9){
                     // Wrap every letter in a span
                     var textWrapper = document.querySelector('.ml9 .letters');
                     textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
@@ -308,7 +319,8 @@ $window.on( 'elementor/frontend/init', function() {
                         delay: 1000
                     });
                 }
-                if(typeof(obj)!= "undefined" &&  obj.anim_type==10){
+
+                if(typeof(obj)!= "undefined" &&  obj.anim_type==10 || settings.anim_type==10){
                 // Wrap every letter in a span
                     var textWrapper = document.querySelector('.ml10 .letters');
                     textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
@@ -327,7 +339,8 @@ $window.on( 'elementor/frontend/init', function() {
                         delay: 1000
                     });
                 }
-                if(typeof(obj)!= "undefined" &&  obj.anim_type==11){
+
+                if(typeof(obj)!= "undefined" &&  obj.anim_type==11 || settings.anim_type==11){
                 // Wrap every letter in a span
                     var textWrapper = document.querySelector('.ml11 .letters');
                     textWrapper.innerHTML = textWrapper.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>");
@@ -361,7 +374,8 @@ $window.on( 'elementor/frontend/init', function() {
                         delay: 1000
                     });
                 }
-                if(typeof(obj)!= "undefined" &&  obj.anim_type==12){
+
+                if(typeof(obj)!= "undefined" &&  obj.anim_type==12 || settings.anim_type==12){
                 // Wrap every letter in a span
                     var textWrapper = document.querySelector('.ml12');
                     textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
@@ -384,7 +398,8 @@ $window.on( 'elementor/frontend/init', function() {
                         delay: (el, i) => 100 + 30 * i
                     });
                 }
-                if(typeof(obj)!= "undefined" &&  obj.anim_type==13){
+
+                if(typeof(obj)!= "undefined" &&  obj.anim_type==13 || settings.anim_type==13){
                 // Wrap every letter in a span
                     var textWrapper = document.querySelector('.ml13');
                     textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
@@ -407,7 +422,8 @@ $window.on( 'elementor/frontend/init', function() {
                         delay: (el, i) => 100 + 30 * i
                     });
                 }
-                if(typeof(obj)!= "undefined" &&  obj.anim_type==14){
+                
+                if(typeof(obj)!= "undefined" &&  obj.anim_type==14 || settings.anim_type==14){
                     // Wrap every letter in a span
                     var textWrapper = document.querySelector('.ml14 .letters');
                     textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
@@ -437,13 +453,52 @@ $window.on( 'elementor/frontend/init', function() {
                         delay: 1000
                     });
                 }
+
+                if(typeof(obj)!= "undefined" &&  obj.anim_type==15 || settings.anim_type==15){
+                    anime.timeline({loop: true})
+                    .add({
+                        targets: '.ml15 .word',
+                        scale: [14,1],
+                        opacity: [0,1],
+                        easing: "easeOutCirc",
+                        duration: 800,
+                        delay: (el, i) => 800 * i
+                    }).add({
+                        targets: '.ml15',
+                        opacity: 0,
+                        duration: 1000,
+                        easing: "easeOutExpo",
+                        delay: 1000
+                    });
+                }
+
+                if(typeof(obj)!= "undefined" &&  obj.anim_type==16 || settings.anim_type==16){
+                  // Wrap every letter in a span
+                    var textWrapper = document.querySelector('.ml16');
+                    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+                    anime.timeline({loop: true})
+                    .add({
+                        targets: '.ml16 .letter',
+                        translateY: [-100,0],
+                        easing: "easeOutExpo",
+                        duration: 1400,
+                        delay: (el, i) => 30 * i
+                    }).add({
+                        targets: '.ml16',
+                        opacity: 0,
+                        duration: 1000,
+                        easing: "easeOutExpo",
+                        delay: 1000
+                    });
+                }
         }
     });
 
     /**
      * Moving Letters Finalized Here
      * 
-     * Actually most of the part of this Widget has done by Numan but
+     * Actually most of the part of this Widget has done by B M Rafiul Alam but
      * JS part had developed by(Me) Saiful Islam
      * 
      * @author Saiful Islam <codersaiful@gmail.com>
@@ -455,21 +510,12 @@ $window.on( 'elementor/frontend/init', function() {
     EF.hooks.addAction(
         'frontend/element_ready/ultraaddons-moving-letters.default',
         function ($scope) {
-                
                 EF.elementsHandler.addHandler(Moving_Letters, {
                         $element: $scope,
-                        selectors: {
-                              container: '.ua-skill-chart',
-                        },
-                        scaleColor: "#ecf0f1",
                 });
         }
     );
-
-
-
-
-            
+           
 
 });
 
