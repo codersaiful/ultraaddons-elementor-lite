@@ -5,18 +5,18 @@
  * @package UltraAddons
  * @author Saiful Islam<codersaiful@gmail.com>
  */
-namespace UltraAddons\Library;
+namespace UltraAddons\Library\Demo;
 
 use Elementor\TemplateLibrary\Source_Base;
 
 defined( 'ABSPATH' ) || die();
 
-class Library_Source extends Source_Base {
+class Demo_Library_Source extends Source_Base {
 
 	/**
 	 * Template library data cache
 	 */
-	const LIBRARY_CACHE_KEY = 'ultraaddons_library_cache';
+	const LIBRARY_CACHE_KEY = 'eldm_library_cache';
 
 	/**
 	 * Template info api url
@@ -26,7 +26,7 @@ class Library_Source extends Source_Base {
          * base site: https://library.ultraaddons.com/
          * 
 	 */
-        const API_TEMPLATES_INFO_URL = 'https://library.ultraaddons.com/wp-json/library/v2/templates';
+        const API_TEMPLATES_INFO_URL = 'http://localhost/wordpress_theme/wp-json/library/v2/templates';
 
         /**
          * Get Sinle Template info
@@ -34,10 +34,19 @@ class Library_Source extends Source_Base {
          * Example Link:
          * https://library.ultraaddons.com/wp-json/library/v2/template/[template_id]
          */
-	const API_TEMPLATE_DATA_URL = 'https://library.ultraaddons.com/wp-json/library/v2/template/';
+	const API_TEMPLATE_DATA_URL = 'http://localhost/wordpress_theme/wp-json/library/v2/template/';
 
+	private static $theme_demo;
+
+
+	public function __construct()
+	{
+		//$demo = new Theme_Demo;
+		self::$theme_demo = Theme_Demo::get_demo_info();
+		
+	}
 	public function get_id() {
-		return 'ultraaddons-library';
+		return 'eldm-library';
 	}
 
 	public function get_title() {
@@ -120,7 +129,7 @@ class Library_Source extends Source_Base {
 		if ( $force_update || false === $data ) {
 			$timeout = ( $force_update ) ? 25 : 8;
 
-			$response = wp_remote_get( self::API_TEMPLATES_INFO_URL, [
+			$response = wp_remote_get( self::$theme_demo['templates'], [
 				'timeout' => $timeout,
 			] );
 
@@ -191,7 +200,7 @@ class Library_Source extends Source_Base {
 		}
 
 		$response = wp_remote_get(
-			self::API_TEMPLATE_DATA_URL . $template_id,
+			self::$theme_demo['template'] . $template_id,
 			[
 				'body' => $body,
 				'timeout' => 25
