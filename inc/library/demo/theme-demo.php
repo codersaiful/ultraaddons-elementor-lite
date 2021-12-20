@@ -1,38 +1,77 @@
 <?php 
-namespace UltraAddons\Library\Demo_Manager;
+namespace UltraAddons\Library\Demo;
 
-use UltraAddons\Library\Library_Source;
+use UltraAddons\Library\Demo_Library_Source;
+use Elementor\Plugin;
 
 defined('ABSPATH') || die();
 
 class Theme_Demo{
-    const TEMPLATE_ASSETS = ULTRA_ADDONS_URL . 'inc/library/assets/';
+
+    public static $permalink_prefix = 'library';
+    public static $templates_permalink = 'wp-json/%s/v2/templates';
+    public static $template_permalink = 'wp-json/%s/v2/template/';
+    private static $default_root_site = 'https://library.ultraaddons.com/';
+    public static $root_site;
     
     public static $theme_demo_args;
 
+    /**
+	 * Instance for Main Class
+	 * Called from actiovation instance
+	 *
+	 * @var Object
+	 */
+    public static $_instance;
 
-    public static function init():void{
-        // var_dump(new Theme_Demo);
-        // var_dump(self::get_demo_args());
+    /**
+	 * Instance
+	 *
+	 * Ensures only one instance of the class is loaded or can be loaded.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @access public
+	 * @static
+	 *
+	 * @return UltraElementor An instance of the class.
+	 */
+	public static function instance() {
 
-        add_action( 'elementor/editor/footer', [ __CLASS__, 'print_template_views' ] );
+		if ( is_null( self::$_instance ) ) {
+			self::$_instance = new self();
+		}
+		return self::$_instance;
 
+	}
 
-        // Additional Enequeue assets
-		add_action( 'elementor/editor/after_enqueue_scripts', [ __CLASS__, 'enqueue_assets' ] );
+    public static function load(){
+        //var_dump(self::$get_demo_args());
 
-        // Button Style enque
-        add_action( 'elementor/preview/enqueue_styles', [ __CLASS__, 'button_styles' ] );
+        // var_dump(self::$get_demo_info());
+        //use Elementor\Plugin;
+        Demo_Library_Manager::init();
     }
+    
 
+
+    
     /**
      * Based on this method, We will handle
      *
      * @return array
      */
-    public static function get_demo_args():array
+    public static function get_demo_info():array
     {
-        self::$theme_demo_args = [
+        
+        if( ! is_array( self::$theme_demo_args ) ){
+            self::$theme_demo_args = [];
+        } 
+
+
+
+        $default_args = [
+            'root_site' => self::$default_root_site,
             'button' => [
                 'text'	=> esc_html__( "Theme Demo", 'ultraaddons' ),
                 'icon'	=> 'uicon-ultraaddons',
@@ -42,36 +81,41 @@ class Theme_Demo{
                 'page' => esc_html__( "Pages", 'ultraaddons' ),
                 'landing' => esc_html__( "Landing", 'ultraaddons' ),
             ],
-    
+            'back_button_text' => esc_html__( 'Back to Library', 'ultraaddons' ),
+            'lern_more_message' => esc_html__( 'Learn more about UltraAddons Template Library.', 'ultraaddons' ),
+            'page_templates' => 'https://ultraaddons.com/page-templates/',
+
         ];
-        return apply_filters( 'eldm_theme_demo_args', self::$theme_demo_args );
+        $merrged_args = wp_parse_args( self::$theme_demo_args, $default_args );
+
+        //Fixing root_site
+        if( empty( $merrged_args['root_site'] ) ){
+            $merrged_args['root_site'] = self::$default_root_site;
+        }
+        self::$root_site = $merrged_args['root_site'];
+        $merrged_args['permalink'] = self::$permalink_prefix;
+        $merrged_args['templates'] = self::$root_site . sprintf( self::$templates_permalink, self::$permalink_prefix );
+        $merrged_args['template'] = self::$root_site . sprintf( self::$template_permalink, self::$permalink_prefix );
+
+        self::$theme_demo_args = apply_filters( 'eldm_theme_demo_args', $merrged_args );
+        return self::$theme_demo_args;
+    }
+
+    public static function set_demo_info( array $args ) 
+    {
+        if( ! is_array( $args ) ) return null;
+        self::$theme_demo_args = $args;
+        return self::$_instance;
+    }
+
+    
+    public static function setRootSite( string $root_site_url ) 
+    {
+        if( empty( $root_site_url ) || ! is_string( $root_site_url ) ) return null;
+        self::$theme_demo_args['root_site'] = $root_site_url;
+        return self::$_instance;
     }
 
 
-
-    
-    public static function enqueue_assets() {
-		wp_enqueue_style(
-			'ultraaddons-library-template',
-			self::TEMPLATE_ASSETS . 'css/theme-template-library.min.css',
-			[
-				'elementor-editor',
-			],
-			ULTRA_ADDONS_VERSION
-		);
-	}
-    public static function button_styles() {
-        wp_enqueue_style(
-        'ultraaddons-theme-demo-templt',
-        self::TEMPLATE_ASSETS . 'css/custom.css',
-        null,
-        ULTRA_ADDONS_VERSION
-    );
-}
-
-    public static function print_template_views() {
-        // echo '<saiful>saiful</saiful>';
-		include_once __DIR__ . '/templates/theme-template.php';
-	}
 
 }
