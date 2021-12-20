@@ -11,7 +11,7 @@ use Elementor\TemplateLibrary\Source_Base;
 
 defined( 'ABSPATH' ) || die();
 
-class Library_Source extends Source_Base {
+class Demo_Library_Source extends Source_Base {
 
 	/**
 	 * Template library data cache
@@ -26,7 +26,7 @@ class Library_Source extends Source_Base {
          * base site: https://library.ultraaddons.com/
          * 
 	 */
-        const API_TEMPLATES_INFO_URL = 'http://localhost/wordpress_theme/wp-json/demo/v2/templates';
+        const API_TEMPLATES_INFO_URL = 'http://localhost/wordpress_theme/wp-json/library/v2/templates';
 
         /**
          * Get Sinle Template info
@@ -34,10 +34,10 @@ class Library_Source extends Source_Base {
          * Example Link:
          * https://library.ultraaddons.com/wp-json/library/v2/template/[template_id]
          */
-	const API_TEMPLATE_DATA_URL = 'http://localhost/wordpress_theme/wp-json/demo/v2/template/';
+	const API_TEMPLATE_DATA_URL = 'http://localhost/wordpress_theme/wp-json/library/v2/template/';
 
 	public function get_id() {
-		return 'ultraaddons-library';
+		return 'eldm-library';
 	}
 
 	public function get_title() {

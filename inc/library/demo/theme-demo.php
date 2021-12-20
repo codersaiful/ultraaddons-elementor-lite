@@ -1,7 +1,7 @@
 <?php 
 namespace UltraAddons\Library\Demo;
 
-use UltraAddons\Library\Library_Source;
+use UltraAddons\Library\Demo_Library_Source;
 use Elementor\Plugin;
 
 defined('ABSPATH') || die();
@@ -21,12 +21,12 @@ class Theme_Demo{
 
         //var_dump($this->get_demo_info());
         //use Elementor\Plugin;
-        Library_Manager::init();
+        Demo_Library_Manager::init();
     }
     
     public static function init(){
         
-        //Library_Manager::init();
+        //Demo_Library_Manager::init();
     }
 
     

@@ -3,7 +3,8 @@ namespace UltraAddons\Library\Demo;
 
 use Elementor\Core\Common\Modules\Ajax\Module as Ajax;
 use UltraAddons\Core\Widgets_Manager;
-use UltraAddons\Library\Demo_Manager\Theme_Demo;
+use UltraAddons\Library\Demo\Theme_Demo as DemoTheme_Demo;
+use UltraAddons\Library\Demo\Theme_Demo;
 
 defined('ABSPATH') || die();
 
@@ -16,13 +17,15 @@ defined('ABSPATH') || die();
  * @since 1.0.0
  * @author Saiful Islam <codersaiful@gmail.com>
  */
-class Library_Manager {
+class Demo_Library_Manager {
 
 	protected static $source = null;
-        const TEMPLATE_ASSETS = ULTRA_ADDONS_URL . 'inc/library/demo/assets/';
+    const TEMPLATE_ASSETS = ULTRA_ADDONS_URL . 'inc/library/demo/assets/';
+	private static $theme_demo;
 
         public static function init() {
-            
+				$demo = new Theme_Demo;
+				self::$theme_demo = $demo->get_demo_info();
                 /**
                  * Onlye Developer Perpose
                  * For Developer, Unregister curent cache
@@ -53,7 +56,7 @@ class Library_Manager {
 
     public static function preview_styles() {
             wp_enqueue_style(
-			'ultraaddons-libr-templt',
+			'eldm-libr-templt',
 			self::TEMPLATE_ASSETS . 'css/custom.css',
 			null,
 			ULTRA_ADDONS_VERSION
@@ -63,14 +66,14 @@ class Library_Manager {
 	public static function enqueue_assets() {
                 
         wp_enqueue_style(
-			'ultraaddons-library-editor',
+			'eldm-library-editor',
 			self::TEMPLATE_ASSETS . 'css/editor.min.css',
 			null,
 			ULTRA_ADDONS_VERSION
 		);
 
 		wp_enqueue_script(
-			'ultraaddons-library-editor',
+			'eldm-library-editor',
 			self::TEMPLATE_ASSETS . 'js/editor.min.js',
 			['elementor-editor', 'jquery'],
 			ULTRA_ADDONS_VERSION,
@@ -79,7 +82,7 @@ class Library_Manager {
 
             
 		wp_enqueue_style(
-			'ultraaddons-library-template',
+			'eldm-library-template',
 			self::TEMPLATE_ASSETS . 'css/template-library.min.css',
 			[
 				'elementor-editor',
@@ -88,40 +91,25 @@ class Library_Manager {
 		);
 
 		wp_enqueue_script(
-			'ultraaddons-library-template',
+			'eldm-library-template',
 			self::TEMPLATE_ASSETS . 'js/template-library.min.js',
 			[
-				'ultraaddons-library-editor',
+				'eldm-library-editor',
 				'jquery-hover-intent',
 			],
 			ULTRA_ADDONS_VERSION,
 			true
 		);
         
-		$additional_library = [
-			'status' => false,
-			'button' => [
-				'text'	=> esc_html__( "Theme Demo", 'ultraaddons' ),
-				'icon'	=> 'uicon-ultraaddons',
-			],
-			'tabs' => [
-				'section' => esc_html__( "Blog", 'ultraaddons' ),
-				'page' => esc_html__( "Page", 'ultraaddons' ),
-				'landing' => esc_html__( "Landing", 'ultraaddons' ),
-			],
-
-		]; 
-
-		$additional_library = apply_filters( 'eldm_library_basic_data', $additional_library );
 		
         $localize_data = [
-			'placeholder_widgets' => Widgets_Manager::proWidgets(),
-			'hasPro'                  => ultraaddons_is_pro(),
-            'HELP_ULR'                => ULTRA_ADDONS_WIDGET_HELP_ULR,
+			// 'placeholder_widgets' => Widgets_Manager::proWidgets(),
+			// 'hasPro'                  => ultraaddons_is_pro(),
+            // 'HELP_ULR'                => ULTRA_ADDONS_WIDGET_HELP_ULR,
 			'editor_nonce'            => wp_create_nonce( 'ua_editor_nonce' ),
 			'dark_stylesheet_url'     => self::TEMPLATE_ASSETS . 'css/editor-dark.min.css',
 			'i18n' => [
-				'iconTitlePreviewPage'      => esc_html__( 'Library', 'ultraaddons' ),
+				'iconTitlePreviewPage'      => self::$theme_demo['button']['text'],//esc_html__( 'Demo', 'ultraaddons' ),
 				'promotionDialogHeader'     => esc_html__( '%s Widget', 'ultraaddons' ),
 				'promotionDialogMessage'    => esc_html__( 'Use %s widget with other exclusive pro widgets and 100% unique features to extend your toolbox and build sites faster and better.', 'ultraaddons' ),
 				'templatesEmptyTitle'       => esc_html__( 'No Templates Found', 'ultraaddons' ),
@@ -129,11 +117,10 @@ class Library_Manager {
 				'templatesNoResultsTitle'   => esc_html__( 'No Results Found', 'ultraaddons' ),
 				'templatesNoResultsMessage' => esc_html__( 'Please make sure your search is spelled correctly or try a different words.', 'ultraaddons' ),
 			],
-			'additional_library' => $additional_library,
 		];
                 
         wp_localize_script(
-			'ultraaddons-library-editor',
+			'eldm-library-editor',
 			'ULTRAADDONS_DATA_EDITOR',
 			$localize_data
 		);
@@ -142,11 +129,11 @@ class Library_Manager {
 	/**
 	 * Undocumented function
 	 *
-	 * @return Library_Source
+	 * @return Demo_Library_Source
 	 */
 	public static function get_source() {
 		if ( is_null( self::$source ) ) {
-			self::$source = new Library_Source();
+			self::$source = new Demo_Library_Source();
 		}
 
 		return self::$source;
@@ -217,7 +204,7 @@ class Library_Manager {
 		$source = self::get_source();
 
 		if ( ! empty( $args['sync'] ) ) {
-			Library_Source::get_library_data( true );
+			Demo_Library_Source::get_library_data( true );
 		}
 
 		return [
