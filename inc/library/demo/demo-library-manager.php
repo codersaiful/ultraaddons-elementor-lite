@@ -26,6 +26,7 @@ class Demo_Library_Manager {
         public static function init() {
 
 		self::$theme_demo = Theme_Demo::get_demo_info();
+		self::$theme_demo['button']['icon'] = self::$theme_demo['button']['icon'] ?? 'uicon-ultraaddons';
 		/**
 		 * Onlye Developer Perpose
 		 * For Developer, Unregister curent cache
@@ -106,6 +107,8 @@ class Demo_Library_Manager {
 			// 'placeholder_widgets' => Widgets_Manager::proWidgets(),
 			// 'hasPro'                  => ultraaddons_is_pro(),
             // 'HELP_ULR'                => ULTRA_ADDONS_WIDGET_HELP_ULR,
+
+			'icon' => self::$theme_demo['button']['icon'],
 			'editor_nonce'            => wp_create_nonce( 'ua_editor_nonce' ),
 			'dark_stylesheet_url'     => self::TEMPLATE_ASSETS . 'css/editor-dark.min.css',
 			'i18n' => [
@@ -118,7 +121,7 @@ class Demo_Library_Manager {
 				'templatesNoResultsMessage' => esc_html__( 'Please make sure your search is spelled correctly or try a different words.', 'ultraaddons' ),
 			],
 		];
-                
+        
         wp_localize_script(
 			'eldm-library-editor',
 			'ULTRAADDONS_DATA_EDITOR',

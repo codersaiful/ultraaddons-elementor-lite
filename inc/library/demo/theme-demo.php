@@ -109,7 +109,7 @@ class Theme_Demo{
     }
 
     
-    public static function setRootSite( string $root_site_url ):object 
+    public static function setRootSite( string $root_site_url ) 
     {
         if( empty( $root_site_url ) || ! is_string( $root_site_url ) ) return null;
         self::$theme_demo_args['root_site'] = $root_site_url;
