@@ -1,4 +1,4 @@
-.ua-card-content {
+.ua-c.ua-card-content {
   color:#040911;
    display: flex;
    justify-content: center;
@@ -7,7 +7,7 @@
    margin-bottom: 3rem;
  }
  
- .ua-card {
+ .ua-c .ua-card {
    display: flex;
    background-color: #020a1b;
    border-radius: 1.5rem;
@@ -17,26 +17,26 @@
    border: 1px solid #ddd;
  }
  
- .ua-card-body {
+ .ua-c .ua-card-body {
    padding: 1rem 1.5rem 3rem 1.5rem;
  }
  
- .ua-card-footer {
+ .ua-c .ua-card-footer {
    padding-bottom: 0;
  }
  
- .ua-card-footer {
+ .ua-c .ua-card-footer {
    padding-top: 0;
  }
  
- .ua-card-avatar-content{
+ .ua-c .ua-card-avatar-content{
    display: flex;
    align-items: center;
    justify-content: center;
    flex-direction: column;
  }
  
- .ua-card-avatar-link {
+ .ua-c .ua-card-avatar-link {
    display: inline-flex;
    position: relative;
    align-items: center;
@@ -44,19 +44,19 @@
    color: #fff;
  }
  
- .ua-card-title {
+ .ua-c .ua-card-title {
    font-weight: 500;
-   font-size: 26px;
+   font-size: 28px;
    color: #ffffff;
    margin: 0.8rem 0 .8rem 0;
    letter-spacing:3px;
  }
  
- .ua-card-card-subtitle {
+ .ua-c .ua-card-card-subtitle {
    color: #a4a4b1;
  }
  
- .ua-card-card-heading {
+ .ua-c .ua-card-card-heading {
    background: linear-gradient(to right, #00F5A0, #00D9F5);
    -webkit-background-clip: text;
            background-clip: text;
@@ -66,13 +66,13 @@
    font-family: "Roboto", sans-serif;
  }
  
- .ua-card-text {
+ .ua-c .ua-card-text {
    font-size: 16px;
    line-height: 1.5;
    color: #a4a4b1;
    margin-top: 15px;
  }
- .ua-card .ua-card-button {
+ .ua-c .ua-card .ua-card-button {
    display: inline-block;
    font-weight: 500;
    font-size: 14px;
@@ -90,15 +90,15 @@
    border: 0;
    border-radius: 50rem;
    background: linear-gradient(to right, #0056f5, #24bdd1);
-   padding: 1rem 2rem;
+   padding: .6rem 2rem;
  }
- .card-row {
+ .ua-c .card-row {
    display: flex;
    flex-direction: row;
    flex-wrap: wrap;
    width: 100%;
  }
- .card-col {
+ .ua-c .card-col {
    display: flex;
    flex-direction: column;
    flex-basis: 100%;
@@ -107,16 +107,16 @@
  .card-col-order{
    order: 1;
  }
- .card-justify-content-start{
+ .ua-c .card-justify-content-start{
    justify-content: start;
  }
- .card-justify-content-end{
+ .ua-c .card-justify-content-end{
    justify-content:end;
  }
- .card-justify-content-center{
+ .ua-c .card-justify-content-center{
    justify-content:center;
  }
- .ua-card-sub-title {
+ .ua-c .ua-card-sub-title {
      color: #5394D7;
      letter-spacing: 3px;
      font-weight: 300;
