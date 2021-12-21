@@ -23,6 +23,7 @@ if( class_exists( '\UltraAddons\Library\Demo\Theme_Demo' ) ){
 		'button' => [
 			'text'	=> esc_html__( "Theme Demo", 'ultraaddons' ),
 			'icon'	=> 'eicon-instagram-likes',
+			'position'=> 99
 		],
 		'tabs' => [
 			'section' => esc_html__( "Blocks", 'ultraaddons' ),

@@ -99,7 +99,8 @@ $lern_more_message = $theme_info['lern_more_message'] ?? __( 'Learn more about U
 <script type="text/template" id="tmpl-EldmTempDemo__templates">
 	<div id="EldmTempDemo__toolbar">
 		<div id="EldmTempDemo__toolbar-filter" class="EldmTempDemo__toolbar-filter">
-			<# if (ultra_theme_demo.library.getTypeTags()) { var selectedTag = ultra_theme_demo.library.getFilter( 'tags' ); #>
+			<# 
+			if (ultra_theme_demo.library.getTypeTags()) { var selectedTag = ultra_theme_demo.library.getFilter( 'tags' ); #>
 				<# if ( selectedTag ) { #>
 				<span class="EldmTempDemo__filter-btn">{{{ ultra_theme_demo.library.getTags()[selectedTag] }}} <i class="eicon-caret-right"></i></span>
 				<# } else { #>
