@@ -100,7 +100,6 @@ $lern_more_message = $theme_info['lern_more_message'] ?? __( 'Learn more about U
 	<div id="EldmTempDemo__toolbar">
 		<div id="EldmTempDemo__toolbar-filter" class="EldmTempDemo__toolbar-filter">
 			<# 
-			console.log(ultra_theme_demo);
 			if (ultra_theme_demo.library.getTypeTags()) { var selectedTag = ultra_theme_demo.library.getFilter( 'tags' ); #>
 				<# if ( selectedTag ) { #>
 				<span class="EldmTempDemo__filter-btn">{{{ ultra_theme_demo.library.getTags()[selectedTag] }}} <i class="eicon-caret-right"></i></span>
