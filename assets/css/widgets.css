@@ -297,6 +297,7 @@ Pagination
     margin: 6px 6px 6px 6px;
     color: #080808;
     border: 1px solid #ddd;
+    padding: 10px 15px;
   }
   .ua-pagination .page-numbers.current,
   a.page-numbers:hover {
