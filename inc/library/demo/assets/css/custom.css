@@ -1,13 +1,13 @@
 .elementor-add-new-section .elementor-add-elm-button {
     background-color: #3f51b5;
     margin-left: 5px;
-    font-size: 27px;
+    font-size: 18px;
     vertical-align: bottom;
     font-family: Arial,Helvetica,sans-serif;
     display: inline-flex;
     width: unset;
     /* border-radius: 4px; */
-    padding: 0 8px;
+    padding: 11px;
 }
 
 .elementor-add-new-section .elementor-add-elm-button-text {
@@ -15,4 +15,13 @@
     padding-right: 0;
     font-size: 0;
     text-transform: capitalize;
+}
+
+.elementor-add-new-section span.elementor-add-ua-button-text {
+    font-size: 0px !important;
+    padding-left: unset !important;
+}
+.elementor-add-new-section .elementor-add-section-area-button.elementor-add-ua-button {
+    border-radius: 15px 0px 15px 0px;
+    background-color: #9e9e9e;
 }

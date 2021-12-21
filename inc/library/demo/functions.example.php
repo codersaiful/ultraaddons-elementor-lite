@@ -21,8 +21,9 @@ if( class_exists( '\UltraAddons\Library\Demo\Theme_Demo' ) ){
 	$args = [
 		'root_site' => 'http://localhost/wordpress_theme/',
 		'button' => [
-			'text'	=> esc_html__( "My Demo", 'ultraaddons' ),
+			'text'	=> esc_html__( "Theme Demo", 'ultraaddons' ),
 			'icon'	=> 'eicon-instagram-likes',
+			'position'=> 99
 		],
 		'tabs' => [
 			'section' => esc_html__( "Blocks", 'ultraaddons' ),

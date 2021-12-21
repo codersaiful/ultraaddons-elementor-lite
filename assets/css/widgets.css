@@ -280,18 +280,33 @@ Alert
 /*
 Pagination
 */
-.page-numbers {
-    display: inline-block;
+.ua-pagination{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ua-pagination .page-numbers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    line-height: 1em;
+    min-width: 30px;
+    border-radius: 20px;
+    margin: 6px 6px 6px 6px;
+    color: #080808;
+    border: 1px solid #ddd;
     padding: 10px 15px;
-    margin: 0 2px 0 0;
-    border: 1px solid #e4e4e4;
-    line-height: 1;
-    text-decoration: none;
-    border-radius: 2px;
-    font-weight: 500;
-    color: #111;
   }
-  .page-numbers.current,
+  .ua-pagination .page-numbers.current,
   a.page-numbers:hover {
-    background: #f9f9f9;
+    background: #000000;
+    color: #fff;
+    border: 1px solid #5c5c5c;
+  }
+  .ua-pagination .page-numbers.current, 
+  .ua-pagination a.page-numbers:hover {
+      background: #f9f9f9;
+      color: #333;
   }

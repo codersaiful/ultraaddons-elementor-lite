@@ -1,7 +1,7 @@
-.ua-h-100 {
+.ua-pc .ua-h-100 {
     height: 100%!important;
 }
-.ua-card {
+.ua-pc .ua-card {
     position: relative;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -18,59 +18,59 @@
     border-radius: 0.25rem;
     color:#111
 }
-.ua-card-text{
+.ua-pc .ua-card-text{
     font-size: 14px;
     color:#333
 }
-.ua-pb-4, .ua-py-4 {
+.ua-pc .ua-pb-4, .ua-pc .ua-py-4 {
     padding-bottom: 1.5rem!important;
 }
-.ua-flex-column {
+.ua-pc .ua-flex-column {
     -webkit-box-orient: vertical!important;
     -webkit-box-direction: normal!important;
     -ms-flex-direction: column!important;
     flex-direction: column!important;
 }
-.ua-d-flex {
+.ua-pc .ua-d-flex {
     display: -webkit-box!important;
     display: -ms-flexbox!important;
     display: flex!important;
 }
-.ua-card-body {
+.ua-pc .ua-card-body {
     -webkit-box-flex: 1;
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
     padding: 1.25rem;
 }
-.ua-flex-md-row {
+.ua-pc .ua-flex-md-row {
     -webkit-box-orient: horizontal!important;
     -webkit-box-direction: normal!important;
     -ms-flex-direction: row!important;
     flex-direction: row!important;
 }
-.ua-flex-grow-1 {
+.ua-pc .ua-flex-grow-1 {
     flex-grow: 1!important;
 }
-button.slider-nav {
+.ua-pc button.slider-nav {
     background:transparent;
     height:100%;
     padding:0;
     margin:0;
     outline: none;
 }
-.ua-card-body a > h2{
+.ua-pc .ua-card-body a > h2{
 color:#111;
 font-size: 20px;
 }
-ul.slider-container {
+.ua-pc ul.slider-container {
     padding: 10px 0;
 }
-.ua-thumbnail {
+.ua-pc .ua-thumbnail {
     position: relative !important;
     width: 100%;
     display: block;
 }
-span.ua-onsale {
+.ua-pc span.ua-onsale {
     min-height: 2em;
     min-width: 4em;
     font-size: 1em;
@@ -86,7 +86,7 @@ span.ua-onsale {
     font-size: .857em;
     z-index: 9;
 }
-.ua-thumbnail .cart-links{
+.ua-pc .ua-thumbnail .cart-links{
     width: 100%;
 	position: absolute;
 	right: 0;
@@ -95,14 +95,16 @@ span.ua-onsale {
 	padding-right: 15px;
 	text-align: right;
 }
-.ua-thumbnail .cart-links a.add-cart span:hover {
+.ua-pc .ua-thumbnail .cart-links a.add-cart span:hover {
 	color:#333
 }
-.ua-thumbnail .cart-links a.add-card, .added_to_cart.wc-forward {
+.ua-pc .ua-thumbnail .cart-links a.add-card, 
+.ua-pc .added_to_cart.wc-forward {
     padding-top: 8px;
     font-weight: 500;
 }
-.ua-thumbnail .cart-links .add-card, .added_to_cart.wc-forward {
+.ua-pc .ua-thumbnail .cart-links .add-card, 
+.ua-pc .added_to_cart.wc-forward {
     display: inline-table;
     width: 36px;
     height: 36px;
@@ -121,10 +123,10 @@ span.ua-onsale {
     text-align: center;
     margin:0 5px;
 }
-.ua-thumbnail .cart-links .add-card i {
+.ua-pc .ua-thumbnail .cart-links .add-card i {
     display: inline-block;
 }
-.ua-thumbnail .cart-links a.add-card span {
+.ua-pc .ua-thumbnail .cart-links a.add-card span {
     font-size: 11px !important;
     font-weight: bold;
     text-transform: uppercase;
@@ -133,29 +135,28 @@ span.ua-onsale {
     top: 20px;
     opacity: 0;
 }
-.ua-thumbnail .cart-links a.add-card:hover span {
+.ua-pc .ua-thumbnail .cart-links a.add-card:hover span {
 	opacity: 1;
 	top: 10px;
 	-webkit-transition: all 0.4s ease 0.3s;
 	-o-transition: all 0.4s ease 0.3s;
 	transition: all 0.4s ease 0.3s;
 }
-.ua-thumbnail .cart-links a.add-card:hover {
+.ua-pc .ua-thumbnail .cart-links a.add-card:hover {
     width: 148px;
     padding: 8px 18px 0;
     text-align: left;
 }
-.slider-nav::before {
+.ua-pc .slider-nav::before {
     padding: 0.6rem;
-    width: 4rem;
-    height: 4rem;
 }
-.slider-nav-round .slider-nav::after, .slider-nav-square .slider-nav::after {
+.ua-pc .slider-nav-round .slider-nav::after, 
+.ua-pc .slider-nav-square .slider-nav::after {
     width: 4rem;
     height: 4rem;
     margin: 0.5rem;
 }
-.ua-pc button.slider-nav{
+.ua-pc .ua-pc button.slider-nav{
     background-color: transparent;
     outline: none;
 }
@@ -203,19 +204,18 @@ span.ua-onsale {
       transform: scale3d(1, 1, 1);
     }
   }
-.ua-card a.added_to_cart.wc-forward {
+  .ua-pc .ua-card a.added_to_cart.wc-forward {
     font-size: 12px;
     color: yellowgreen !important;
     margin-left: 5px;
     animation:bounceIn 1s;
 }
 
- 
 @media (min-width: 768px){
-    .ua-pl-md-2, .ua-px-md-2 {
+    .ua-pc .ua-pl-md-2, .ua-px-md-2 {
         padding-left: 0.5rem!important;
     }
-    .ua-px-md-2 {
+    .ua-pc .ua-px-md-2 {
         padding-right: 0.5rem!important;
         padding-left: 0.5rem!important;
     }

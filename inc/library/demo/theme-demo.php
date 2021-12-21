@@ -75,6 +75,7 @@ class Theme_Demo{
             'button' => [
                 'text'	=> esc_html__( "Theme Demo", 'ultraaddons' ),
                 'icon'	=> 'uicon-ultraaddons',
+                'position' => 999,
             ],
             'tabs' => [
                 'section' => esc_html__( "Blocks", 'ultraaddons' ),
@@ -100,6 +101,8 @@ class Theme_Demo{
         $merrged_args['template'] = self::$root_site . sprintf( self::$template_permalink, self::$permalink_prefix );
 
         self::$theme_demo_args = apply_filters( 'eldm_theme_demo_args', $merrged_args );
+
+
         return self::$theme_demo_args;
     }
 

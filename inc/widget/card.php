@@ -151,7 +151,7 @@ class Card extends Base{
 	}
 	/**
 	 * Content settings Tab
-	 */
+	*/
 	protected function card_content_settings() {
 		$this->start_controls_section(
 		'_ua_card_content_settings_tab',
@@ -330,7 +330,7 @@ class Card extends Base{
 				],
 				'default' => [
 					'unit' => 'px',
-					'size' => 100,
+					'size' => 200,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .ua-card-avatar' => 'height: {{SIZE}}{{UNIT}};',
@@ -692,7 +692,7 @@ class Card extends Base{
 		$this->add_render_attribute(
 			'card_avatar_class',
 			[
-				'class' => 'ua-card-avatar-content ' . $col . ' ' . $colOrder ,
+				'class' => 'ua-card-avatar-content ' . $col . ' ' . $colOrder . ' ' . $justifyContent ,
 			]
 		);
 
@@ -704,7 +704,7 @@ class Card extends Base{
 		);
 		
 	?>
-	<div class="ua-card-content">
+	<div class="ua-c ua-card-content">
 		<div class="ua-card <?php echo $row; ?>">
 			<div <?php echo $this->get_render_attribute_string( 'card_avatar_class' );?>>
 			<?php 

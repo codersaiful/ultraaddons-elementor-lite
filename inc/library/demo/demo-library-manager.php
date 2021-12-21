@@ -27,6 +27,11 @@ class Demo_Library_Manager {
 
 		self::$theme_demo = Theme_Demo::get_demo_info();
 		self::$theme_demo['button']['icon'] = self::$theme_demo['button']['icon'] ?? 'uicon-ultraaddons';
+		self::$theme_demo['button']['position'] = self::$theme_demo['button']['position'] ?? 999;
+		$priority = self::$theme_demo['button']['position'];
+		if( ! is_numeric( $priority ) ){
+			$priority = 999;
+		}
 		/**
 		 * Onlye Developer Perpose
 		 * For Developer, Unregister curent cache
@@ -43,10 +48,10 @@ class Demo_Library_Manager {
 		add_action( 'elementor/editor/footer', [ __CLASS__, 'print_template_views' ] );
 		add_action( 'elementor/ajax/register_actions', [ __CLASS__, 'register_ajax_actions' ] );
                 
-                // Enqueue editor scripts
-		add_action( 'elementor/editor/after_enqueue_scripts', [ __CLASS__, 'enqueue_assets' ] );
+        // Enqueue editor scripts
+		add_action( 'elementor/editor/after_enqueue_scripts', [ __CLASS__, 'enqueue_assets' ], $priority );
                 
-                // enqueue modal's preview css.
+        // enqueue load button style
         add_action( 'elementor/preview/enqueue_styles', [ __CLASS__, 'preview_styles' ] );
 	}
 
@@ -144,7 +149,7 @@ class Demo_Library_Manager {
 	}
 
 	public static function register_ajax_actions( Ajax $ajax ) {
-		$ajax->register_ajax_action( 'get_ua_library_data', function( $data ) {
+		$ajax->register_ajax_action( 'get_eldm_library_data', function( $data ) {
 			if ( ! current_user_can( 'edit_posts' ) ) {
 				throw new \Exception( 'Access Denied' );
 			}

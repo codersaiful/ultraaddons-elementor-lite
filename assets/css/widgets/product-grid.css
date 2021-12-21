@@ -108,3 +108,37 @@
 .ua-product-links a:hover {
     color: #fbb72c;
 }
+
+.pg .flex-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .pg .flex-col {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+    flex: 0 0 50%;
+    max-width: 50%
+  }
+  .flex-col-order{
+    order: 1;
+  }
+  .pg .flex-justify-content-start{
+    justify-content: start;
+  }
+  .pg .flex-justify-content-end{
+    justify-content:end;
+  }
+  .pg .flex-justify-content-center{
+    justify-content:center;
+  }
+  .ua-product-tumb.flex-col img {
+    height: 100%;
+    object-fit:cover
+}
+.pg .ua-product-title {
+    font-size:22px
+}
