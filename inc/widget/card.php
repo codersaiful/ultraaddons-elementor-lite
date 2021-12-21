@@ -330,7 +330,7 @@ class Card extends Base{
 				],
 				'default' => [
 					'unit' => 'px',
-					'size' => 100,
+					'size' => 200,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .ua-card-avatar' => 'height: {{SIZE}}{{UNIT}};',
@@ -704,7 +704,7 @@ class Card extends Base{
 		);
 		
 	?>
-	<div class="ua-card-content">
+	<div class="ua-c ua-card-content">
 		<div class="ua-card <?php echo $row; ?>">
 			<div <?php echo $this->get_render_attribute_string( 'card_avatar_class' );?>>
 			<?php 

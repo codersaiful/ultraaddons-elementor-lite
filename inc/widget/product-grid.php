@@ -64,6 +64,8 @@ class Product_Grid extends Base{
 		//For cart btn Tab
         $this->cart_btn_controls();
 		//For sale flash Tab
+        $this->sale_flash_controls();
+		//For Pagination Tab
         $this->pagination_controls();
     }
 	protected function query_controls() {
@@ -252,6 +254,23 @@ class Product_Grid extends Base{
 					'selector' => '{{WRAPPER}} .pg .ua-product-title',
 			]
         );
+        $this->add_responsive_control(
+			'_ua_title_margin',
+			[
+				'label'       => esc_html__( 'Title Margin', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .pg .ua-product-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 
 		$this->add_control(
 			'_ua_product_price_color', [
@@ -342,19 +361,49 @@ class Product_Grid extends Base{
 			]
 		);
 	
+		$this->add_control(
+			'_ua_cat_color', [
+				'label' => __( 'Category Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .pg .product-catagory' => 'color: {{VALUE}};',
+				],
+				'separator' => 'before'
+			]
+        );
+	
+		
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'cat_typography',
+					'label' => 'Category Typography',
+					'selector' => '{{WRAPPER}} .pg .product-catagory',
+			]
+		);
+		
 		
 		$this->end_controls_section();
 	}
 
 	protected function style_box_controls() {
         $this->start_controls_section(
-            '_ua_product_flip_box_style',
+            '_ua_product_box_style',
             [
                 'label'     => esc_html__( 'Box', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
-		
+		$this->add_control(
+			'_ua_box_bg', [
+				'label' => __( 'Box Background', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+                'default'   => '#fff',
+				'selectors' => [
+						'{{WRAPPER}} .pg .ua-product-card' => 'background: {{VALUE}};',
+				]
+			]
+        );
 		$this->add_responsive_control(
 			'_ua_box_radius',
 			[
@@ -378,6 +427,23 @@ class Product_Grid extends Base{
 				'name' => 'box_shadow',
 				'label' => __( 'Box Shadow', 'ultraaddons' ),
 				'selector' => '{{WRAPPER}} .pg .ua-product-card',
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'box_border',
+				'label' => esc_html__( 'Border', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .pg .ua-product-card',
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'footer_line_border',
+				'label' => esc_html__( 'Footer Border', 'ultraaddons' ),
+				'show_label'=>true,
+				'selector' => '{{WRAPPER}} .pg .ua-product-bottom-details',
 			]
 		);
 		
@@ -613,7 +679,7 @@ class Product_Grid extends Base{
         );
 
 		$this->add_group_control(
-			\Elementor\Group_Control_Border::get_type(),
+			Group_Control_Border::get_type(),
 			[
 				'name' => 'border',
 				'label' => esc_html__( 'Border', 'ultraaddons' ),
