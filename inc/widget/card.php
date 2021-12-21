@@ -151,7 +151,7 @@ class Card extends Base{
 	}
 	/**
 	 * Content settings Tab
-	 */
+	*/
 	protected function card_content_settings() {
 		$this->start_controls_section(
 		'_ua_card_content_settings_tab',
@@ -692,7 +692,7 @@ class Card extends Base{
 		$this->add_render_attribute(
 			'card_avatar_class',
 			[
-				'class' => 'ua-card-avatar-content ' . $col . ' ' . $colOrder ,
+				'class' => 'ua-card-avatar-content ' . $col . ' ' . $colOrder . ' ' . $justifyContent ,
 			]
 		);
 
