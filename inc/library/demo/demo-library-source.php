@@ -19,29 +19,22 @@ class Demo_Library_Source extends Source_Base {
 	const LIBRARY_CACHE_KEY = 'eldm_library_cache';
 
 	/**
-	 * Template info api url
+	 * Getting Theme's demo site's information.
+	 * I will store data to this property
+	 * on construct
+	 * 
+	 * Using Theme_Demo Object.
+	 * 
+	 * @author Saiful Islam <codersaiful@gmail.com>
 	 *
-	 * Updated api to v2 in version 2.15.0
-         * 
-         * base site: https://library.ultraaddons.com/
-         * 
+	 * @var Array
 	 */
-        const API_TEMPLATES_INFO_URL = 'http://localhost/wordpress_theme/wp-json/library/v2/templates';
-
-        /**
-         * Get Sinle Template info
-         * 
-         * Example Link:
-         * https://library.ultraaddons.com/wp-json/library/v2/template/[template_id]
-         */
-	const API_TEMPLATE_DATA_URL = 'http://localhost/wordpress_theme/wp-json/library/v2/template/';
-
 	private static $theme_demo;
 
 
 	public function __construct()
 	{
-		//$demo = new Theme_Demo;
+		
 		self::$theme_demo = Theme_Demo::get_demo_info();
 		
 	}
@@ -50,7 +43,7 @@ class Demo_Library_Source extends Source_Base {
 	}
 
 	public function get_title() {
-		return __( 'UltraAddons Library', 'ultraaddons' );
+		return __( 'Theme Demo Library', 'ultraaddons' );
 	}
 
 	public function register_data() {}

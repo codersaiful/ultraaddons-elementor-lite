@@ -64,7 +64,7 @@ $lern_more_message = $theme_info['lern_more_message'] ?? __( 'Learn more about U
 
 <script type="text/template" id="tmpl-EldmTempDemo__header-insert">
 	<div id="elementor-template-library-header-preview-insert-wrapper" class="elementor-templates-modal__header__item">
-		{{{ ultraaddons.library.getModal().getTemplateActionButton( obj ) }}}
+		{{{ ultra_theme_demo.library.getModal().getTemplateActionButton( obj ) }}}
 	</div>
 </script>
 
@@ -76,7 +76,7 @@ $lern_more_message = $theme_info['lern_more_message'] ?? __( 'Learn more about U
 </script>
 
 <script type="text/template" id="tmpl-EldmTempDemo__pro-button">
-	<a class="elementor-template-library-template-action elementor-button EldmTempDemo__pro-button" href="https://ultraaddons.com/pricing/" target="_blank">
+	<a class="elementor-template-library-template-action elementor-button EldmTempDemo__pro-button" href="https://ultra_theme_demo.com/pricing/" target="_blank">
 		<i class="eicon-external-link-square" aria-hidden="true"></i>
 		<span class="elementor-button-title"><?php esc_html_e( 'Get Pro', 'ultraaddons' ); ?></span>
 	</a>
@@ -99,18 +99,18 @@ $lern_more_message = $theme_info['lern_more_message'] ?? __( 'Learn more about U
 <script type="text/template" id="tmpl-EldmTempDemo__templates">
 	<div id="EldmTempDemo__toolbar">
 		<div id="EldmTempDemo__toolbar-filter" class="EldmTempDemo__toolbar-filter">
-			<# if (ultraaddons.library.getTypeTags()) { var selectedTag = ultraaddons.library.getFilter( 'tags' ); #>
+			<# if (ultra_theme_demo.library.getTypeTags()) { var selectedTag = ultra_theme_demo.library.getFilter( 'tags' ); #>
 				<# if ( selectedTag ) { #>
-				<span class="EldmTempDemo__filter-btn">{{{ ultraaddons.library.getTags()[selectedTag] }}} <i class="eicon-caret-right"></i></span>
+				<span class="EldmTempDemo__filter-btn">{{{ ultra_theme_demo.library.getTags()[selectedTag] }}} <i class="eicon-caret-right"></i></span>
 				<# } else { #>
 				<span class="EldmTempDemo__filter-btn"><?php esc_html_e( 'Filter', 'ultraaddons' ); ?> <i class="eicon-caret-right"></i></span>
 				<# } #>
 				<ul id="EldmTempDemo__filter-tags" class="EldmTempDemo__filter-tags">
 					<li data-tag="">All</li>
-					<# _.each(ultraaddons.library.getTypeTags(), function(slug) {
+					<# _.each(ultra_theme_demo.library.getTypeTags(), function(slug) {
 						var selected = selectedTag === slug ? 'active' : '';
 						#>
-						<li data-tag="{{ slug }}" class="{{ selected }}">{{{ ultraaddons.library.getTags()[slug] }}}</li>
+						<li data-tag="{{ slug }}" class="{{ selected }}">{{{ ultra_theme_demo.library.getTags()[slug] }}}</li>
 					<# } ); #>
 				</ul>
 			<# } #>
@@ -153,7 +153,7 @@ $lern_more_message = $theme_info['lern_more_message'] ?? __( 'Learn more about U
                 </span>
 	</div>
 	<div class="EldmTempDemo__template-footer">
-		{{{ ultraaddons.library.getModal().getTemplateActionButton( obj ) }}}
+		{{{ ultra_theme_demo.library.getModal().getTemplateActionButton( obj ) }}}
                 <span class="EldmTempDemo-footer-title">{{{ title }}}</span>
 		<a href="#" class="elementor-button EldmTempDemo__preview-button">
 			<i class="eicon-device-desktop" aria-hidden="true"></i>
