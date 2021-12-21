@@ -120,6 +120,8 @@
     flex-direction: column;
     flex-basis: 100%;
     flex: 1;
+    flex: 0 0 50%;
+    max-width: 50%
   }
   .flex-col-order{
     order: 1;
@@ -134,6 +136,6 @@
     justify-content:center;
   }
   .ua-product-tumb.flex-col img {
-    height:300px;
+    height: 100%;
     object-fit:cover
 }

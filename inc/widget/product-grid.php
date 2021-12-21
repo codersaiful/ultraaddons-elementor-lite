@@ -59,6 +59,8 @@ class Product_Grid extends Base{
         $this->query_controls();
 		//For front style Tab
         $this->general_controls();
+		//For col Tab
+		$this->card_col_settings();
 		//For Box Style Tab
         $this->style_box_controls();
 		//For cart btn Tab
@@ -67,8 +69,6 @@ class Product_Grid extends Base{
         $this->sale_flash_controls();
 		//For Pagination Tab
         $this->pagination_controls();
-		//For col Tab
-        $this->card_col_settings();
     }
 	protected function query_controls() {
 		
@@ -197,10 +197,25 @@ class Product_Grid extends Base{
 		$this->start_controls_section(
 		'_ua_card_content_settings_tab',
             [
-                'label'     => esc_html__( 'Content Settings', 'ultraaddons' ),
-                'tab'       => Controls_Manager::TAB_CONTENT,
+                'label'     => esc_html__( 'Grid Settings', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
+		$this->add_control(
+			'_ua_col',
+			[
+				'label' => esc_html__( 'Column', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'1' => '1 Column',
+					'2' => '2 Column',
+					'3' => '3 Column',
+					'4' => '4 Column',
+				],
+				'default' => '3',
+			]
+		);
+		 
 		$this->add_control(
 			'_ua_card_direction',
 			[
@@ -261,35 +276,7 @@ class Product_Grid extends Base{
 				),
 			]
 		);
-		$this->add_responsive_control(
-			'_ua_card_text_alignment',
-			[
-				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
-				'type' => Controls_Manager::CHOOSE,
-				'options' => [
-					'left' => [
-						'title' => esc_html__( 'Left', 'ultraaddons' ),
-						'icon' => 'eicon-text-align-left',
-					],
-					'center' => [
-						'title' => esc_html__( 'Center', 'ultraaddons' ),
-						'icon' => 'eicon-text-align-center',
-					],
-					'right' => [
-						'title' => esc_html__( 'Right', 'ultraaddons' ),
-						'icon' => 'eicon-text-align-right',
-					],
-					'justify' => [
-						'title' => esc_html__( 'justify', 'ultraaddons' ),
-						'icon' => 'eicon-text-align-justify',
-					],
-				],
-				'default' => 'center',
-				'selectors' => [
-					'{{WRAPPER}} .ua-card-body ' => 'text-align: {{VALUE}};',
-				],
-			]
-		);
+
 		
 	$this->end_controls_section();
 	}
@@ -307,39 +294,6 @@ class Product_Grid extends Base{
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
-        $this->add_control(
-			'_ua_col',
-			[
-				'label' => esc_html__( 'Column', 'ultraaddons' ),
-				'type' => Controls_Manager::SELECT,
-				'options' => [
-					'1' => '1 Column',
-					'2' => '2 Column',
-					'3' => '3 Column',
-					'4' => '4 Column',
-				],
-				'default' => '3',
-			]
-		);
-		 
-		$this->add_control(
-			'_ua_front_title_tag',
-			[
-				'label' => esc_html__( 'Select Title Tag', 'ultraaddons' ),
-				'type' => Controls_Manager::SELECT,
-				'options' => [
-					'h1' => 'H1',
-					'h2' => 'H2',
-					'h3' => 'H3',
-					'h4' => 'H4',
-					'h5' => 'H5',
-					'h6' => 'H6',
-					'div' => 'div',
-				],
-				'default' => 'h2',
-                'separator' => 'after'
-			]
-		);
 	
 		$this->add_control(
 			'_ua_title_color', [
@@ -397,35 +351,6 @@ class Product_Grid extends Base{
 
 			]
         );
-		
-	
-		$this->add_responsive_control(
-			'_ua_text_alignment',
-			[
-				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
-				'type' => Controls_Manager::CHOOSE,
-				'options' => [
-					'start' => [
-						'title' => esc_html__( 'Left', 'ultraaddons' ),
-						'icon' => 'eicon-text-align-left',
-					],
-					'center' => [
-						'title' => esc_html__( 'Center', 'ultraaddons' ),
-						'icon' => 'eicon-text-align-center',
-					],
-					'end' => [
-						'title' => esc_html__( 'Right', 'ultraaddons' ),
-						'icon' => 'eicon-text-align-right',
-					]
-				],
-				'default' => 'center',
-				'selectors' => [
-					'{{WRAPPER}} .ua-product-flip .front' => 'align-items: {{VALUE}};',
-					'{{WRAPPER}} .ua-product-flip .back' => 'align-items: {{VALUE}}; text-align: {{VALUE}};',
-					
-				],
-			]
-		);
 	
 		$this->add_control(
 			'_ua_content_color', [
@@ -464,6 +389,23 @@ class Product_Grid extends Base{
 				],
 			]
 		);
+		$this->add_responsive_control(
+			'_ua_box_padding',
+			[
+				'label'       => esc_html__( 'Description Padding', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', 'em' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .pg .ua-product-details' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 	
 		$this->add_control(
 			'_ua_cat_color', [
@@ -483,6 +425,53 @@ class Product_Grid extends Base{
 					'name' => 'cat_typography',
 					'label' => 'Category Typography',
 					'selector' => '{{WRAPPER}} .pg .product-catagory',
+			]
+		);
+		$this->add_control(
+			'_ua_front_title_tag',
+			[
+				'label' => esc_html__( 'Select Title Tag', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'h1' => 'H1',
+					'h2' => 'H2',
+					'h3' => 'H3',
+					'h4' => 'H4',
+					'h5' => 'H5',
+					'h6' => 'H6',
+					'div' => 'div',
+				],
+				'default' => 'h2',
+                'separator' => 'before'
+			]
+		);
+		$this->add_responsive_control(
+			'_ua_card_text_alignment',
+			[
+				'label' => esc_html__( 'Text Alignment', 'ultraaddons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-right',
+					],
+					'justify' => [
+						'title' => esc_html__( 'justify', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-justify',
+					],
+				],
+				'default' => 'left',
+				'selectors' => [
+					'{{WRAPPER}} .product-text-wrap ' => 'text-align: {{VALUE}};',
+				],
 			]
 		);
 		
@@ -524,6 +513,7 @@ class Product_Grid extends Base{
 				],
 			]
 		);
+		
 		$this->add_group_control(
 			Group_Control_Box_Shadow::get_type(),
 			[
@@ -1030,31 +1020,37 @@ class Product_Grid extends Base{
                 <?php echo woocommerce_get_product_thumbnail('woocommerce_full_size');?>
             </div>
             <div <?php echo $this->get_render_attribute_string( 'ua_product_details' );?>>
-                <span class="product-catagory">
-                    <?php 
-                    foreach( wp_get_post_terms( get_the_id(), 'product_cat' ) as $term ){
-                    if( $term ){
-                            echo $term->name; // product category name
-                        }
-                    }
-                    ?>
-                    </span>
-                    <a href="<?php echo get_the_permalink(); ?>">
-                    <?php
-                        echo '<' . $settings['_ua_front_title_tag'] . ' class="ua-product-title">' 
-                            . $loop->post->post_title . 
-                            '</' . $settings['_ua_front_title_tag'] . '>';
-                        ?>
-                    </a>
-                <p> <?php echo $this->word_shortener($description, $settings['_ua_text_truncate']);?></p>
+				<div class="product-text-wrap">
+					<span class="product-catagory">
+						<?php 
+						foreach( wp_get_post_terms( get_the_id(), 'product_cat' ) as $term ){
+						if( $term ){
+								echo $term->name; // product category name
+							}
+						}
+						?>
+						</span>
+						<a href="<?php echo get_the_permalink(); ?>">
+						<?php
+							echo '<' . $settings['_ua_front_title_tag'] . ' class="ua-product-title">' 
+								. $loop->post->post_title . 
+								'</' . $settings['_ua_front_title_tag'] . '>';
+							?>
+						</a>
+					<p> <?php echo $this->word_shortener($description, $settings['_ua_text_truncate']);?></p>
+				</div>
                 <div class="ua-product-bottom-details">
                     <div class="ua-product-price"><?php echo $product->get_price_html();?> </div>
                     <div class="ua-product-links">
                         <a href="?add-to-cart=<?php echo esc_attr($id); ?>"  class="add-card button add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo esc_attr($id); ?>"  aria-label="Add '<?php echo get_the_title(); ?>' to your cart" rel="nofollow">
                             <i class="uicon uicon-cart"></i>
-                            <span>
-                                <?php echo esc_html__('ADD TO CART', 'ultraaddons'); ?>
-                            </span>
+							<?php
+							if ( 'yes'!=$settings['_ua_card_direction'] ):
+							?>
+								<span>
+									<?php echo esc_html__('ADD TO CART', 'ultraaddons'); ?>
+								</span>
+							<?php endif; ?>
                         </a>
                     </div>
                 </div>
