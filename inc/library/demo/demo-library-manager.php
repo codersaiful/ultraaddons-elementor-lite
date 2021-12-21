@@ -27,6 +27,11 @@ class Demo_Library_Manager {
 
 		self::$theme_demo = Theme_Demo::get_demo_info();
 		self::$theme_demo['button']['icon'] = self::$theme_demo['button']['icon'] ?? 'uicon-ultraaddons';
+		self::$theme_demo['button']['position'] = self::$theme_demo['button']['position'] ?? 999;
+		$priority = self::$theme_demo['button']['position'];
+		if( ! is_numeric( $priority ) ){
+			$priority = 999;
+		}
 		/**
 		 * Onlye Developer Perpose
 		 * For Developer, Unregister curent cache
@@ -44,7 +49,7 @@ class Demo_Library_Manager {
 		add_action( 'elementor/ajax/register_actions', [ __CLASS__, 'register_ajax_actions' ] );
                 
         // Enqueue editor scripts
-		add_action( 'elementor/editor/after_enqueue_scripts', [ __CLASS__, 'enqueue_assets' ], 111 );
+		add_action( 'elementor/editor/after_enqueue_scripts', [ __CLASS__, 'enqueue_assets' ], $priority );
                 
         // enqueue load button style
         add_action( 'elementor/preview/enqueue_styles', [ __CLASS__, 'preview_styles' ] );
