@@ -302,7 +302,7 @@ class Product_Grid extends Base{
 				'selectors' => [
 						'{{WRAPPER}} .pg .ua-product-title' => 'color: {{VALUE}};',
 				],
-				'default'=>'#ffffff'
+				'default'=>'#111'
 			]
         );
         $this->add_group_control(
