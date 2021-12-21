@@ -1,13 +1,13 @@
 .elementor-add-new-section .elementor-add-elm-button {
     background-color: #3f51b5;
     margin-left: 5px;
-    font-size: 27px;
+    font-size: 18px;
     vertical-align: bottom;
     font-family: Arial,Helvetica,sans-serif;
     display: inline-flex;
     width: unset;
     /* border-radius: 4px; */
-    padding: 0 8px;
+    padding: 11px;
 }
 
 .elementor-add-new-section .elementor-add-elm-button-text {
