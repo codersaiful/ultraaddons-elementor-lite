@@ -507,7 +507,7 @@ $widgetsArray = [
     'Portfolio_Gallery' => [
         'name'  => __( 'Portfolio Gallery', 'ultraaddons' ),
         'is_pro'   => false,
-        'icon'      => 'eicon-product-images',
+        'icon'      => 'eicon-posts-masonry',
         'cat'       => [
             __( 'Basic', 'ultraaddons' ),
         ],

@@ -15,6 +15,20 @@ use Elementor\Group_Control_Background;
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Portfolio_Gallery extends Base{
+     /**
+     * @var string
+     *
+     * Set post type params
+     */
+    private $type               = 'portfolio';
+    private $slug               = 'portfolios';
+    private $name               = 'Portfolio';
+    private $singular_name      = 'Portfolio';
+
+    public function __construct() {
+        // Register the post type
+        add_action('init', array($this, 'custom_post_register'));
+    }
     
     /**
      * Get your widget name
@@ -43,7 +57,6 @@ class Portfolio_Gallery extends Base{
         
         //For General Section
         $this->content_general_controls();
-
        
     }
          
@@ -77,7 +90,7 @@ class Portfolio_Gallery extends Base{
     protected function render() {
         $settings           = $this->get_settings_for_display();
         ?>
-        <section class="portfolio-gallery">
+<section class="portfolio-gallery">
   <ul>
     <li class="list active" data-filter="all">All</li>
     <li class="list" data-filter="photoshop">Photoshop</li>
@@ -133,9 +146,50 @@ class Portfolio_Gallery extends Base{
   </div>
 </section>
 
-        <?php
+ <?php
         
     }
-     
+
+  /**
+     * Register post type
+     */
+    public function custom_post_register() {
+        $labels = array(
+            'name'                  => $this->name,
+            'singular_name'         => $this->singular_name,
+            'add_new'               => 'Add New',
+            'add_new_item'          => 'Add New '   . $this->singular_name,
+            'edit_item'             => 'Edit '      . $this->singular_name,
+            'new_item'              => 'New '       . $this->singular_name,
+            'all_items'             => 'All '       . $this->name,
+            'view_item'             => 'View '      . $this->name,
+            'search_items'          => 'Search '    . $this->name,
+            'not_found'             => 'No '        . strtolower($this->name) . ' found',
+            'not_found_in_trash'    => 'No '        . strtolower($this->name) . ' found in Trash',
+            'parent_item_colon'     => '',
+            'menu_name'             => $this->name
+        );
+ 
+        $args = array(
+            'labels'                => $labels,
+            'public'                => true,
+            'publicly_queryable'    => true,
+            'show_ui'               => true,
+            'show_in_menu'          => true,
+            'query_var'             => true,
+            'rewrite'               => array( 'slug' => $this->slug ),
+            'capability_type'       => 'post',
+            'has_archive'           => true,
+            'hierarchical'          => true,
+            'menu_position'         => 8,
+            'supports'              => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail'),
+            'yarpp_support'         => true
+        );
+ 
+        register_post_type( $this->type, $args );
+    }
+   
+ 
+   
     
-}
+}//End Class
