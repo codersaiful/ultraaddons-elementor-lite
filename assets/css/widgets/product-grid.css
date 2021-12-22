@@ -58,7 +58,7 @@
 }
 
 .ua-product-details h4 a:hover {
-    color: #fbb72c;
+    color: #c36;
 }
 
 .ua-product-details p {
@@ -80,8 +80,8 @@
 }
 
 .ua-product-price {
-    font-size: 18px;
-    color: #fbb72c;
+    font-size: 17px;
+    color: #c36;
     font-weight: 600;
 }
 
@@ -106,7 +106,7 @@
 }
 
 .ua-product-links a:hover {
-    color: #fbb72c;
+    color: #c36;
 }
 
 .pg .flex-row {

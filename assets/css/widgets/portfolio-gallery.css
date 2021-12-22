@@ -1,0 +1,37 @@
+.portfolio-gallery {
+    padding: 20px;
+    width: 1280px;
+    margin: 40px auto;
+  }
+  .portfolio-gallery ul {
+    display: flex;
+    margin-bottom: 10px;  
+  }
+  .portfolio-gallery ul li {
+    list-style: none;
+    background: #eee;
+    padding: 8px 20px;
+    margin: 5px;
+    letter-spacing: 1px;
+    cursor: pointer;
+  }
+  .portfolio-gallery ul li.active {
+    background: #03a9f4;
+    color: #fff;
+  }
+  .portfolio-gallery .product {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .portfolio-gallery .product .itemsbox {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    margin: 5px;    
+  }
+  .portfolio-gallery .product .itemsbox img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+  }

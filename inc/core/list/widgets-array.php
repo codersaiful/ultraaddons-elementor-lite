@@ -503,6 +503,14 @@ $widgetsArray = [
         'cat'       => [
             __( 'Basic', 'ultraaddons' ),
         ],
+    ],
+    'Portfolio_Gallery' => [
+        'name'  => __( 'Portfolio Gallery', 'ultraaddons' ),
+        'is_pro'   => false,
+        'icon'      => 'eicon-product-images',
+        'cat'       => [
+            __( 'Basic', 'ultraaddons' ),
+        ],
 ]
 
 

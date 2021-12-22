@@ -411,6 +411,7 @@ class Product_Grid extends Base{
 			'_ua_cat_color', [
 				'label' => __( 'Category Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
+				'default'	=> '#a1a1a1',
 				'selectors' => [
 						'{{WRAPPER}} .pg .product-catagory' => 'color: {{VALUE}};',
 				],
