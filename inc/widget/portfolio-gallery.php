@@ -46,6 +46,8 @@ class Portfolio_Gallery extends Base{
 		$this->card_col_settings();
 		//For Box Style Tab
         $this->style_box_controls();
+		//For Filter btn Tab
+        $this->filter_btn_controls();
 		//For cart btn Tab
         $this->cart_btn_controls();
 		//For sale flash Tab
@@ -526,6 +528,174 @@ class Portfolio_Gallery extends Base{
 		
 		$this->end_controls_section();
 	}
+
+	/**
+	 * Filter Button Style.
+	 */
+	protected function filter_btn_controls(){
+		$this->start_controls_section(
+            'filter_btn_style',
+            [
+                'label'     => esc_html__( 'Filter Button', 'ultraaddons' ),
+				'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->start_controls_tabs(
+			'filter_btn_normal_tabs'
+		);
+		/**
+		 * Normal tab
+		 */
+		$this->start_controls_tab(
+			'filter_normal_tab',
+			[
+				'label' => __( 'Normal', 'ultraaddons' ),
+			]
+		);
+		$this->add_control(
+			'_ua_filter_btn_bg', [
+				'label' => __( 'Button Background Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .pf ul li:not' => 'background-color: {{VALUE}};',
+				]
+			]
+        );
+		$this->add_control(
+			'_ua_filter_btn_color', [
+				'label' => __( 'Button Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .pf ul li' => 'color: {{VALUE}};',
+				]
+			]
+        );
+	
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'filter_btn_typography',
+					'label' => 'Button Typography',
+					'selector' => '{{WRAPPER}} .pf ul li',
+			]
+        );
+	
+		$this->add_responsive_control(
+			'_filter_btn_padding',
+			[
+				'label'       => esc_html__( 'Button Padding', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px','em' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .pf ul li' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'_filter_btn_margin',
+			[
+				'label'       => esc_html__( 'Button Margin', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px','em' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .pf ul li' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'_filter_btn_radius',
+			[
+				'label'       => esc_html__( 'Button Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .pf ul li' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		
+		$this->end_controls_tab();
+		/**
+		 * Button Hover tab
+		 */
+		$this->start_controls_tab(
+			'filter_btn_hover_tabs',
+			[
+				'label' => __( 'Hover', 'ultraaddons' ),
+			]
+		);
+		$this->add_control(
+			'_ua_filter_btn_hover_bg', [
+				'label' => __( 'Background Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .pf ul li:hover' => 'background-color: {{VALUE}};',
+				]
+			]
+        );
+		$this->add_control(
+			'_ua_filter_btn_hover_color', [
+				'label' => __( 'Button Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}}  .pf ul li:hover' => 'color: {{VALUE}};',
+				]
+			]
+        );
+		$this->end_controls_tab();
+		/**
+		 * Button Active tab
+		 */
+		$this->start_controls_tab(
+			'filter_btn_active_tabs',
+			[
+				'label' => __( 'Active', 'ultraaddons' ),
+			]
+		);
+		$this->add_control(
+			'_ua_filter_btn_active_bg', [
+				'label' => __( 'Background Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .pf ul li.active' => 'background-color: {{VALUE}};',
+				]
+			]
+        );
+		$this->add_control(
+			'_ua_filter_btn_active_color', [
+				'label' => __( 'Button Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}}  .pf ul li.active' => 'color: {{VALUE}};',
+				]
+			]
+        );
+		
+	
+		$this->end_controls_tabs();
+		
+		$this->end_controls_tab();
+		
+		$this->end_controls_section();
+	}
 	/**
 	 * Button Style.
 	 */
@@ -919,47 +1089,85 @@ class Portfolio_Gallery extends Base{
             echo "<div class='ua-alert'>" . esc_html__( "WooCommerce is not Activated.", 'ultraaddons' ) . "</div>";
 			return;
         }
-        $settings           = $this->get_settings_for_display();
+        $settings   = $this->get_settings_for_display();
 		$col 		= $settings['_ua_col'];
+		$flex_col	='';
+		$flex_row	='';
+		if ( 'yes'==$settings['_ua_card_direction'] ) {
+			$flex_col='flex-col';
+			$flex_row='flex-row';
+		}
+		$colOrder='';
+		if ( 'right'== $settings['_ua_card_order'] ) {
+			$colOrder='card-col-order';
+		}
+		$justifyContent ='';
+		if($settings['_ua_card_justify_content']){
+			$justifyContent= 'flex-justify-content-' . $settings['_ua_card_justify_content'];
+		}
 
-        $this->add_render_attribute(
+		$this->add_render_attribute(
 			'thumb_class',
 			[
-				'class' => 'ua-product-tumb '  ,
+				'class' => 'ua-product-tumb ' . $flex_col . ' ' . $colOrder . ' ' . $justifyContent  ,
 			]
 		);
 
 		$this->add_render_attribute(
 			'ua_product_details',
 			[
-				'class' => 'ua-product-details ' ,
+				'class' => 'ua-product-details ' . $flex_col . ' ' . $justifyContent ,
 			]
 		);
     ?>
 <section class="portfolio-filter">
 	<div class="ua-row pf">
 		<div class="ua-col-1">
-			<ul>
-				<li class="list active" data-filter="all">All</li>
-				<?php
-				$args = array(
-					'orderby'       => 'ID',
-					'order'         => 'DESC',
-					'hide_empty'    => true,
-					'taxonomy'      => 'product_cat'
-				);
-				//Filter List by category 
-				$categories = get_categories( $args );
-				if(is_array($categories) && count($categories) > 0):
-					foreach ($categories as $cat):?>
-					<li class="list" data-filter="<?php echo  $cat->name;?>">
-						<?php echo  $cat->name;?>
+			<?php
+			if(empty($settings['cat_ids'])):?>
+				<ul class="pf-filter-btn">
+					<li class="list active" data-filter="all">All</li>
+					<?php
+					$args = array(
+						'orderby'       => 'ID',
+						'order'         => 'DESC',
+						'hide_empty'    => true,
+						'taxonomy'      => 'product_cat'
+					);
+					//Filter List by category 
+					$categories = get_categories( $args );
+					if(is_array($categories) && count($categories) > 0):
+						foreach ($categories as $cat):?>
+						<li class="list" data-filter="<?php echo  $cat->name;?>">
+							<?php echo  $cat->name;?>
+						</li>  
+					<?php
+						endforeach;
+					endif;
+					?>
+				</ul>
+			<?php 
+			else:
+			?>
+			<ul class="pf-filter-btn">
+					<li class="list active" data-filter="all">All</li>
+					<?php
+					$cat = $settings['cat_ids'];
+					foreach($cat as $cats){
+						//print_r($cats);
+					}
+					
+					?>
+					<li class="list" data-filter="">
+						
 					</li>  
-				<?php
-					endforeach;
-				endif;
-				?>
-			</ul>
+					<?php
+					
+					?>
+				</ul>
+			<?php
+			endif;
+			?>
 		</div>
     	<?php
 
@@ -1018,7 +1226,7 @@ class Portfolio_Gallery extends Base{
 				}
 				?>
 				<div class="ua-col-<?php echo $col;?> itemsbox <?php echo $cat;?>">
-					<div class="ua-product-card">
+					<div class="ua-product-card <?php echo $flex_row; ?>">
 						<?php if ( $product->is_on_sale() ) : ?>
 						<div class="ua-badge">
 							<?php
@@ -1070,6 +1278,28 @@ class Portfolio_Gallery extends Base{
     else:
 		 echo "<div class='ua-alert'>" . esc_html__( "No products found!", 'ultraaddons' ) . "</div>";
 	endif;
+	?>
+	 <nav class="ua-pagination ua-col-1">
+        <?php
+        $total_pages = $loop->max_num_pages;
+
+        if ($total_pages > 1){
+    
+            $current_page = max(1, get_query_var('paged'));
+    
+            echo paginate_links(array(
+                'base' => get_pagenum_link(1) . '%_%',
+                'format' => '/page/%#%',
+                'current' => $current_page,
+                'total' => $total_pages,
+                'prev_text'    => __('« Prev'),
+                'next_text'    => __('Next »'),
+            ));
+        }
+        ?>
+    </nav> 
+
+	<?php
 	wp_reset_postdata();
     ?>
 	</div>
@@ -1077,9 +1307,8 @@ class Portfolio_Gallery extends Base{
 
  <?php
 }
-/**
+	/**
      * Getting Category list of WooCommerce product
-     * 
      *
      * @return void
      */
@@ -1099,9 +1328,9 @@ class Portfolio_Gallery extends Base{
             }
             return $options;
         }
-		}
+	}
 	/**
-	 * SHorter Description
+	 * Shorter Description
 	 */
 	public function word_shortener($text, $words=10, $sp='...'){
 		  $all = explode(' ', $text);
