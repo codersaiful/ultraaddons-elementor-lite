@@ -283,7 +283,7 @@ class Portfolio_Gallery extends Base{
 				'label' => __( 'Title Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .pg .ua-product-title' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .pf .ua-product-title' => 'color: {{VALUE}};',
 				],
 				'default'=>'#111'
 			]
@@ -293,7 +293,7 @@ class Portfolio_Gallery extends Base{
 			[
 					'name' => 'product_title_typography',
 					'label' => 'Title Typography',
-					'selector' => '{{WRAPPER}} .pg .ua-product-title',
+					'selector' => '{{WRAPPER}} .pf .ua-product-title',
 			]
         );
         $this->add_responsive_control(
@@ -309,7 +309,7 @@ class Portfolio_Gallery extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .pg .ua-product-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .pf .ua-product-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -319,7 +319,7 @@ class Portfolio_Gallery extends Base{
 				'label' => __( 'Price Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .pg .ua-product-price' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .pf .ua-product-price' => 'color: {{VALUE}};',
 				],
                 'separator' =>'before'
 			]
@@ -330,7 +330,7 @@ class Portfolio_Gallery extends Base{
 			[
 					'name' => 'price_typography',
 					'label' => 'Price Typography',
-					'selector' => '{{WRAPPER}} .pg .ua-product-price',
+					'selector' => '{{WRAPPER}} .pf .ua-product-price',
 
 			]
         );
@@ -340,7 +340,7 @@ class Portfolio_Gallery extends Base{
 				'label' => __( 'Description Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .pg .ua-product-details p' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .pf .ua-product-details p' => 'color: {{VALUE}};',
 				],
 				'separator' => 'before'
 			]
@@ -352,7 +352,7 @@ class Portfolio_Gallery extends Base{
 			[
 					'name' => 'content_typography',
 					'label' => 'Description Typography',
-					'selector' => '{{WRAPPER}} .pg .ua-product-details p',
+					'selector' => '{{WRAPPER}} .pf .ua-product-details p',
 			]
 		);
 		$this->add_responsive_control(
@@ -368,7 +368,7 @@ class Portfolio_Gallery extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .pg .ua-product-details p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .pf .ua-product-details p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -385,7 +385,7 @@ class Portfolio_Gallery extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .pg .ua-product-details' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .pf .ua-product-details' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -396,7 +396,7 @@ class Portfolio_Gallery extends Base{
 				'type'      => Controls_Manager::COLOR,
 				'default'	=> '#a1a1a1',
 				'selectors' => [
-						'{{WRAPPER}} .pg .product-catagory' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .pf .product-catagory' => 'color: {{VALUE}};',
 				],
 				'separator' => 'before'
 			]
@@ -408,7 +408,7 @@ class Portfolio_Gallery extends Base{
 			[
 					'name' => 'cat_typography',
 					'label' => 'Category Typography',
-					'selector' => '{{WRAPPER}} .pg .product-catagory',
+					'selector' => '{{WRAPPER}} .pf .product-catagory',
 			]
 		);
 		$this->add_control(
@@ -476,7 +476,7 @@ class Portfolio_Gallery extends Base{
 				'type'      => Controls_Manager::COLOR,
                 'default'   => '#fff',
 				'selectors' => [
-						'{{WRAPPER}} .pg .ua-product-card' => 'background: {{VALUE}};',
+						'{{WRAPPER}} .pf .ua-product-card' => 'background: {{VALUE}};',
 				]
 			]
         );
@@ -493,7 +493,7 @@ class Portfolio_Gallery extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .pg .ua-product-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .pf .ua-product-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -503,7 +503,7 @@ class Portfolio_Gallery extends Base{
 			[
 				'name' => 'box_shadow',
 				'label' => __( 'Box Shadow', 'ultraaddons' ),
-				'selector' => '{{WRAPPER}} .pg .ua-product-card',
+				'selector' => '{{WRAPPER}} .pf .ua-product-card',
 			]
 		);
 		$this->add_group_control(
@@ -511,7 +511,7 @@ class Portfolio_Gallery extends Base{
 			[
 				'name' => 'box_border',
 				'label' => esc_html__( 'Border', 'ultraaddons' ),
-				'selector' => '{{WRAPPER}} .pg .ua-product-card',
+				'selector' => '{{WRAPPER}} .pf .ua-product-card',
 			]
 		);
 		$this->add_group_control(
@@ -520,7 +520,7 @@ class Portfolio_Gallery extends Base{
 				'name' => 'footer_line_border',
 				'label' => esc_html__( 'Footer Border', 'ultraaddons' ),
 				'show_label'=>true,
-				'selector' => '{{WRAPPER}} .pg .ua-product-bottom-details',
+				'selector' => '{{WRAPPER}} .pf .ua-product-bottom-details',
 			]
 		);
 		
@@ -936,8 +936,8 @@ class Portfolio_Gallery extends Base{
 			]
 		);
     ?>
-<section class="portfolio-gallery">
-	<div class="ua-row">
+<section class="portfolio-filter">
+	<div class="ua-row pf">
 		<div class="ua-col-1">
 			<ul>
 				<li class="list active" data-filter="all">All</li>
@@ -952,15 +952,17 @@ class Portfolio_Gallery extends Base{
 				$categories = get_categories( $args );
 				if(is_array($categories) && count($categories) > 0):
 					foreach ($categories as $cat):?>
-						<li class="list" data-filter="<?php echo  $cat->name;?>"><?php echo  $cat->name;?></li>  
+					<li class="list" data-filter="<?php echo  $cat->name;?>">
+						<?php echo  $cat->name;?>
+					</li>  
 				<?php
 					endforeach;
 				endif;
 				?>
-			
 			</ul>
 		</div>
     	<?php
+
 		$paged = (get_query_var('paged')) ? get_query_var('paged') : $settings['_ua_post_page_number'] ;
         $args = array(
             'post_type' 	=> 'product',
@@ -1008,66 +1010,67 @@ class Portfolio_Gallery extends Base{
 				$description    = $loop->post->post_excerpt;
                 
                 //Get Category list for fliter
-				foreach( wp_get_post_terms( get_the_id(), 'product_cat' ) as $term ):
-                    if( $term ):?>
-                        <div class="ua-col-<?php echo $col;?> itemsbox <?php echo $term->name;?>">
-                            <div class="ua-product-card">
-                                <?php if ( $product->is_on_sale() ) : ?>
-                                <div class="ua-badge">
-                                    <?php
-                                    echo apply_filters( 'woocommerce_sale_flash', '<span class="ua-onsale">' 
-                                    . esc_html__( 'Sale!', 'ultraaddons' ) . '</span>', $product );
-                                    ?>
-                                </div>
-                                <?php endif; ?>
-                                
-                                <div <?php echo $this->get_render_attribute_string( 'thumb_class' );?>>
-                                    <?php echo woocommerce_get_product_thumbnail('woocommerce_full_size');?>
-                                </div>
-                                <div <?php echo $this->get_render_attribute_string( 'ua_product_details' );?>>
-                                    <div class="product-text-wrap">
-                                        <span class="product-catagory">
-                                            <?php 
-                                            foreach( wp_get_post_terms( get_the_id(), 'product_cat' ) as $term ){
-                                            if( $term ){
-                                                    echo $term->name; // product category name
-                                                }
-                                            }
-                                            ?>
-                                            </span>
-                                            <a href="<?php echo get_the_permalink(); ?>">
-                                            <?php
-                                                echo '<' . $settings['_ua_front_title_tag'] . ' class="ua-product-title">' 
-                                                    . $loop->post->post_title . 
-                                                    '</' . $settings['_ua_front_title_tag'] . '>';
-                                                ?>
-                                            </a>
-                                        <p> <?php echo $this->word_shortener($description, $settings['_ua_text_truncate']);?></p>
-                                    </div>
-                                    <div class="ua-product-bottom-details">
-                                        <div class="ua-product-price"><?php echo $product->get_price_html();?> </div>
-                                        <div class="ua-product-links">
-                                            <a href="?add-to-cart=<?php echo esc_attr($id); ?>"  class="add-card button add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo esc_attr($id); ?>"  aria-label="Add '<?php echo get_the_title(); ?>' to your cart" rel="nofollow">
-                                                <i class="uicon uicon-cart"></i>
-                                                <span>
-                                                    <?php echo esc_html__('ADD TO CART', 'ultraaddons'); ?>
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    <?php
-                    endif;
-                endforeach;
-                ?>
+				$cat="";
+				foreach( wp_get_post_terms( get_the_id(), 'product_cat' ) as $term ){
+				if( $term ){
+					$cat = $term->name; // product category name
+					}
+				}
+				?>
+				<div class="ua-col-<?php echo $col;?> itemsbox <?php echo $cat;?>">
+					<div class="ua-product-card">
+						<?php if ( $product->is_on_sale() ) : ?>
+						<div class="ua-badge">
+							<?php
+							echo apply_filters( 'woocommerce_sale_flash', '<span class="ua-onsale">' 
+							. esc_html__( 'Sale!', 'ultraaddons' ) . '</span>', $product );
+							?>
+						</div>
+						<?php endif; ?>
+						
+						<div <?php echo $this->get_render_attribute_string( 'thumb_class' );?>>
+							<?php echo woocommerce_get_product_thumbnail('woocommerce_full_size');?>
+						</div>
+						<div <?php echo $this->get_render_attribute_string( 'ua_product_details' );?>>
+							<div class="product-text-wrap">
+								<span class="product-catagory">
+									<?php 
+									foreach( wp_get_post_terms( get_the_id(), 'product_cat' ) as $term ){
+									if( $term ){
+											echo $term->name; // product category name
+										}
+									}
+									?>
+									</span>
+									<a href="<?php echo get_the_permalink(); ?>">
+									<?php
+										echo '<' . $settings['_ua_front_title_tag'] . ' class="ua-product-title">' 
+											. $loop->post->post_title . 
+											'</' . $settings['_ua_front_title_tag'] . '>';
+										?>
+									</a>
+								<p> <?php echo $this->word_shortener($description, $settings['_ua_text_truncate']);?></p>
+							</div>
+							<div class="ua-product-bottom-details">
+								<div class="ua-product-price"><?php echo $product->get_price_html();?> </div>
+								<div class="ua-product-links">
+									<a href="?add-to-cart=<?php echo esc_attr($id); ?>"  class="add-card button add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo esc_attr($id); ?>"  aria-label="Add '<?php echo get_the_title(); ?>' to your cart" rel="nofollow">
+										<i class="uicon uicon-cart"></i>
+										<span>
+											<?php echo esc_html__('ADD TO CART', 'ultraaddons'); ?>
+										</span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
         <?php
 	    endwhile;
     else:
 		 echo "<div class='ua-alert'>" . esc_html__( "No products found!", 'ultraaddons' ) . "</div>";
 	endif;
-	    wp_reset_postdata();
+	wp_reset_postdata();
     ?>
 	</div>
 </section>
