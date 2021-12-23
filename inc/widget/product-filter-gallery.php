@@ -558,7 +558,7 @@ class Product_Filter_Gallery extends Base{
 				'label' => __( 'Button Background Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .pf ul li:not' => 'background-color: {{VALUE}};',
+						'{{WRAPPER}} .pf ul li' => 'background-color: {{VALUE}};',
 				]
 			]
         );
