@@ -125,7 +125,7 @@ class Product_Filter_Gallery extends Base{
 					'date' => 'Date',
 					'modified' => 'Modified',
 				],
-				'default' => 'date',
+				'default' => 'random',
 			]
 		);
 
