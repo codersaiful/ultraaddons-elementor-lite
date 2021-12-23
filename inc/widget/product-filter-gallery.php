@@ -172,7 +172,7 @@ class Product_Filter_Gallery extends Base{
 				'label_block' => true,
 			]
 		);
-		 
+		
 		
 		$this->end_controls_section();
 	}
@@ -280,7 +280,15 @@ class Product_Filter_Gallery extends Base{
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
-
+		$this->add_control(
+			'_ua_all_btn_txt',
+			[
+				'label' => __( 'Button Text', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __( 'All', 'ultraaddons' ),
+				'label_block' => false,
+			]
+		);
 		$this->add_control(
 			'_ua_title_color', [
 				'label' => __( 'Title Color', 'ultraaddons' ),
@@ -1127,7 +1135,7 @@ class Product_Filter_Gallery extends Base{
 			<?php
 			if(empty($settings['cat_ids'])):?>
 				<ul class="pf-filter-btn">
-					<li class="list active" data-filter="all">All</li>
+					<li class="list active" data-filter="all"><?php echo $settings['_ua_all_btn_txt'];?></li>
 					<?php
 					$args = array(
 						'orderby'       => 'ID',
@@ -1151,7 +1159,7 @@ class Product_Filter_Gallery extends Base{
 			else:
 			?>
 			<ul class="pf-filter-btn">
-				<li class="list active" data-filter="all">All</li>
+				<li class="list active" data-filter="all"><?php echo $settings['_ua_all_btn_txt'];?></li>
 				<?php
 				//If Selected manual from frontend
 				$selected_cat = $settings['cat_ids'];

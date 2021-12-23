@@ -10,6 +10,8 @@ use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Background;
+use Elementor\Icons_Manager;
+
 
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -86,7 +88,7 @@ class Button extends Base{
 			[
 				'label' => __( 'Button Text', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Button', 'ultraaddons' ),
+				'default' => __( 'Ultra Addons', 'ultraaddons' ),
 				'label_block' => true,
 			]
 		);
@@ -119,12 +121,43 @@ class Button extends Base{
 					'hvr-shutter-out-vertical'=> 'Shutter out Vertical',
 					'hvr-shutter-in-horizontal'=> 'Shutter In Horizontal',
                     'hvr-shutter-out-horizontal'=> 'Shutter Out Horizontal', 
-					'ua-effect'=> 'UA Effect',
-					'ua-effect-2'=> 'UA Effect 2',
+                    'hvr-float'=> 'Float',  
+                    'hvr-sink'=> 'Sink', 
+                    'hvr-buzz'=> 'Buzz', 
 				],
-				'default' => 'ua-effect',
+				'default' => 'hvr-fade',
 			]
 		);
+        $this->add_control(
+			'selected_icon',
+			[
+				'label' => esc_html__( 'Icon', 'elementor' ),
+				'type' => Controls_Manager::ICONS,
+				'fa4compatibility' => 'icon',
+				'skin' => 'inline',
+				'label_block' => false,
+			]
+		);
+        $this->add_responsive_control(
+			'_icon_position',
+			[
+				'label' => esc_html__( 'Icon Position', 'ultraaddons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'icon' => 'eicon-arrow-left',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'icon' => 'eicon-arrow-right',
+					],
+				
+				],
+				'default' => 'left',
+			]
+		);
+
         $this->add_control(
 			'_ua_button_link',
 			[
@@ -177,6 +210,33 @@ class Button extends Base{
 				],
 			]
 		);
+        $this->add_control(
+			'icon_size',
+			[
+				'label' => esc_html__( 'Size', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 5,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 50,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .ua-btn i' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .ua-btn svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
         $this->start_controls_tabs(
 			'style_tabs'
 		);
@@ -198,10 +258,11 @@ class Button extends Base{
         );
         $this->add_control(
 			'_btn_text_color', [
-				'label' => __( 'Button Color', 'ultraaddons' ),
+				'label' => __( 'Button Text Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-btn' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .ua-btn svg' => 'fill: {{VALUE}};',
 				],
 			]
         );
@@ -296,13 +357,18 @@ class Button extends Base{
         ?>
         <div class="ua-btn-wrap ua-d-flex">
             <a <?php echo $this->get_render_attribute_string( '_ua_button_link' ); ?> <?php echo $this->get_render_attribute_string( 'button_class' );?>>
-                <?php echo $settings['_ua_button'];?>
+            <?php if('left'==$settings['_icon_position']):?>
+             <?php Icons_Manager::render_icon( $settings['selected_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+            <?php endif;?>
+            <?php echo $settings['_ua_button'];?>
+            <?php if('right'==$settings['_icon_position']):?>
+             <?php Icons_Manager::render_icon( $settings['selected_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+            <?php endif;?>
             </a>
         </div>
         <?php
         
     }
-    
     
     
 }
