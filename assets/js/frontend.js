@@ -817,7 +817,7 @@
             
             //Portfolio Gallery
             EF.hooks.addAction(
-                'frontend/element_ready/ultraaddons-portfolio-gallery.default',
+                'frontend/element_ready/ultraaddons-product-filter-gallery.default',
                 function ($scope) {
                     $('.list').click(function(){
                         const value = $(this).attr('data-filter');
