@@ -135,12 +135,13 @@ class Portfolio_Gallery extends Base{
                 'label' => esc_html__( 'Select category', 'ultraaddons' ),
                 'type' => Controls_Manager::SELECT2,
                 'options' => $this->product_tax_options(),
-                'multiple' => 'true'
+                'multiple' => 'true',
+				'description'=> "Select order by 'Random' for the best match when you selected the category by manually."
             ]
         );
 
 		
-		$this->add_control(
+	/* 	$this->add_control(
             'tag_ids',
             [
                 'label' => esc_html__( 'Select Tag', 'ultraaddons' ),
@@ -148,7 +149,7 @@ class Portfolio_Gallery extends Base{
                 'options' => $this->product_tax_options( 'product_tag' ),
                 'multiple' => 'true'
             ]
-        );
+        ); */
 
 
 		$this->add_control(
@@ -1150,21 +1151,18 @@ class Portfolio_Gallery extends Base{
 			else:
 			?>
 			<ul class="pf-filter-btn">
-					<li class="list active" data-filter="all">All</li>
-					<?php
-					$cat = $settings['cat_ids'];
-					foreach($cat as $cats){
-						//print_r($cats);
-					}
-					
-					?>
-					<li class="list" data-filter="">
-						
-					</li>  
-					<?php
-					
-					?>
-				</ul>
+				<li class="list active" data-filter="all">All</li>
+				<?php
+				//If Selected manual from frontend
+				$selected_cat = $settings['cat_ids'];
+				foreach($selected_cat as $selected_cats):?>
+					<li class="list" data-filter="<?php echo get_the_category_by_ID( $selected_cats );?>">
+						<?php echo get_the_category_by_ID( $selected_cats );?>
+					</li> 
+				<?php
+				endforeach;
+				?>
+			</ul>
 			<?php
 			endif;
 			?>
@@ -1178,11 +1176,12 @@ class Portfolio_Gallery extends Base{
             'paged'         => $paged,
 			'order'			=> $settings['_ua_product_order'],
 			'orderby'		=> $settings['_ua_product_orderby'],
-            );
+        );
 		if(! empty( $settings['_ua_query_post_in'] )){
 			$include_ids = explode(',',$settings['_ua_query_post_in']);
 			$args['post__in'] = $include_ids;
 		}
+
 		if(! empty( $settings['_ua_query_post_not_in'] )){
 			$exclude_ids = explode(',',$settings['_ua_query_post_not_in']);
 			$args['post__not_in'] = $exclude_ids;
@@ -1198,7 +1197,7 @@ class Portfolio_Gallery extends Base{
 			);
 		}	
 
-		if( ! empty( $settings['tag_ids'] ) ){
+	/* 	if( ! empty( $settings['tag_ids'] ) ){
 			$args['tax_query'] = array(
 				array(
 					'taxonomy'  => 'product_tag',
@@ -1206,7 +1205,7 @@ class Portfolio_Gallery extends Base{
 					'terms'     => $settings['tag_ids'],
 				)
 			);
-		}	
+		} */	
         
         $loop = new \WP_Query( $args );
         if ( $loop->have_posts() ):
@@ -1264,9 +1263,13 @@ class Portfolio_Gallery extends Base{
 								<div class="ua-product-links">
 									<a href="?add-to-cart=<?php echo esc_attr($id); ?>"  class="add-card button add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo esc_attr($id); ?>"  aria-label="Add '<?php echo get_the_title(); ?>' to your cart" rel="nofollow">
 										<i class="uicon uicon-cart"></i>
-										<span>
-											<?php echo esc_html__('ADD TO CART', 'ultraaddons'); ?>
-										</span>
+										<?php
+										if ( 'yes'!=$settings['_ua_card_direction'] ):
+										?>
+											<span>
+												<?php echo esc_html__('ADD TO CART', 'ultraaddons'); ?>
+											</span>
+										<?php endif; ?>
 									</a>
 								</div>
 							</div>
@@ -1284,9 +1287,7 @@ class Portfolio_Gallery extends Base{
         $total_pages = $loop->max_num_pages;
 
         if ($total_pages > 1){
-    
             $current_page = max(1, get_query_var('paged'));
-    
             echo paginate_links(array(
                 'base' => get_pagenum_link(1) . '%_%',
                 'format' => '/page/%#%',

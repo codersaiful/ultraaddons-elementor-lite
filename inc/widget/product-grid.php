@@ -1061,6 +1061,9 @@ class Product_Grid extends Base{
 	<?php
 	 endwhile;
      ?>
+	 /**
+	 Pagination
+	*/
      <nav class="ua-pagination ua-col-1">
         <?php
         $total_pages = $loop->max_num_pages;
@@ -1114,7 +1117,7 @@ class Product_Grid extends Base{
         }
 		}
 	/**
-	 * SHorter Description
+	 * Shorter Description
 	 */
 	public function word_shortener($text, $words=10, $sp='...'){
 		  $all = explode(' ', $text);
@@ -1130,7 +1133,7 @@ class Product_Grid extends Base{
 		  }
 		  return $str . (count($all) <= $words ? '' : $sp);
 	}
-
+	//Added by Saiful Vai is it working..?
    public function woocommerce_pagination() {
         if ( ! wc_get_loop_prop( 'is_paginated' ) || ! woocommerce_products_will_display() ) {
             return;
