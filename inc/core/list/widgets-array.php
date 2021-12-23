@@ -451,7 +451,7 @@ $widgetsArray = [
 	'Product_Flip' => [
             'name'  => __( 'Product Flip', 'ultraaddons' ),
             'is_pro'   => false,
-            'icon'      => 'eicon-clock-o',
+            'icon'      => 'eicon-flip-box',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
@@ -459,7 +459,7 @@ $widgetsArray = [
     'Product_Carousel' => [
             'name'  => __( 'Product Carousel', 'ultraaddons' ),
             'is_pro'   => false,
-            'icon'      => 'eicon-clock-o',
+            'icon'      => 'eicon-products',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
@@ -483,7 +483,7 @@ $widgetsArray = [
     'Product_Flip_Carousel' => [
             'name'  => __( 'Product Flip Carousel', 'ultraaddons' ),
             'is_pro'   => false,
-            'icon'      => 'eicon-time-line',
+            'icon'      => 'eicon-products',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
