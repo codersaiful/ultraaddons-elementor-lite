@@ -11,8 +11,8 @@
 
 $widgetsArray = [
     
-    'Button'=> [
-            'name'      => __( 'Button', 'ultraaddons' ),
+    'Simple_Button'=> [
+            'name'      => __( 'Simple Button', 'ultraaddons' ),
             'is_pro'   => false,
             'icon'      => 'uicon-button',
             'cat'       => [
@@ -511,7 +511,15 @@ $widgetsArray = [
         'cat'       => [
             __( 'Basic', 'ultraaddons' ),
         ],
-]
+    ],
+    'Button'=> [
+        'name'      => __( 'Button', 'ultraaddons' ),
+        'is_pro'   => false,
+        'icon'      => 'uicon-button',
+        'cat'       => [
+            __( 'Basic', 'ultraaddons' ),
+        ],
+],
 
 
 ];
