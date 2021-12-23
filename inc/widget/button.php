@@ -237,6 +237,56 @@ class Button extends Base{
 				],
 			]
 		);
+        $this->add_control(
+			'icon_space',
+			[
+				'label' => esc_html__( 'Icon Space', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+						'step' => 5,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 5,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .ua-btn i' => 'margin-right: {{SIZE}}{{UNIT}};',
+				],
+                'condition' => array(
+					'_icon_position' => 'left',
+				),
+			]
+		);
+        $this->add_control(
+			'icon_space_right',
+			[
+				'label' => esc_html__( 'Icon Space', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+						'step' => 5,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 5,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .ua-btn i' => 'margin-left: {{SIZE}}{{UNIT}};',
+				],
+                'condition' => array(
+					'_icon_position' => 'right',
+				),
+			]
+		);
         $this->start_controls_tabs(
 			'style_tabs'
 		);
