@@ -14,7 +14,7 @@ use Elementor\Group_Control_Background;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Portfolio_Gallery extends Base{
+class Product_Filter_Gallery extends Base{
      /**
      * @var string
      *

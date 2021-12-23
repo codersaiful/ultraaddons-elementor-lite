@@ -504,8 +504,8 @@ $widgetsArray = [
             __( 'Basic', 'ultraaddons' ),
         ],
     ],
-    'Portfolio_Gallery' => [
-        'name'  => __( 'Portfolio Gallery', 'ultraaddons' ),
+    'Product_Filter_Gallery' => [
+        'name'  => __( 'Product Filter Gallery', 'ultraaddons' ),
         'is_pro'   => false,
         'icon'      => 'eicon-posts-masonry',
         'cat'       => [
