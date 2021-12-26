@@ -324,6 +324,7 @@ Pagination
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow: hidden;
+    text-decoration: none;
 }
 
 .ua-btn-wrap .ua-effect:before {
@@ -340,18 +341,4 @@ Pagination
 .ua-btn svg {
     width:1.5em;
     height:1em
-}
-.ua-effect-1 .ua-btn:before {
-    position: absolute;
-    content: "";
-    height: 100%;
-    width: 0;
-    background: #fff;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: all .3s ease;
-}
-.ua-effect-2 .ua-btn:hover {
-    letter-spacing: 3px;
 }
