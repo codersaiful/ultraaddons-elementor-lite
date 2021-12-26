@@ -415,7 +415,7 @@ class Button extends Base{
             ]
         );
         ?>
-        <div class="ua-btn-wrap ua-d-flex <?php echo $ua_set_effect?>">
+        <div class="ua-btn-wrap ua-d-flex">
             <a <?php echo $this->get_render_attribute_string( '_ua_button_link' ); ?> <?php echo $this->get_render_attribute_string( 'button_class' );?>>
             <?php if('left'==$settings['_icon_position']):?>
              <?php Icons_Manager::render_icon( $settings['selected_icon'], [ 'aria-hidden' => 'true' ] ); ?>
