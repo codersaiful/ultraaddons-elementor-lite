@@ -229,7 +229,7 @@ class Button extends Base{
 				],
 				'default' => [
 					'unit' => 'px',
-					'size' => 50,
+					'size' => '',
 				],
 				'selectors' => [
 					'{{WRAPPER}} .ua-btn i' => 'font-size: {{SIZE}}{{UNIT}};',
@@ -312,7 +312,6 @@ class Button extends Base{
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-btn' => 'color: {{VALUE}};',
-						'{{WRAPPER}} .ua-btn svg' => 'fill: {{VALUE}};',
 				],
 			]
         );
@@ -380,6 +379,16 @@ class Button extends Base{
 				],
 			]
         );
+		$this->add_control(
+			'_btn_text_hover_color', [
+				'label' => __( 'Button Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-btn:hover' => 'color: {{VALUE}};',
+				],
+				'default' =>'#fff'
+			]
+        );
         $this->end_controls_tab();
         $this->end_controls_tabs();
         $this->end_controls_section();
@@ -395,6 +404,7 @@ class Button extends Base{
      */
     protected function render() {
         $settings   = $this->get_settings_for_display();
+	
         if ( ! empty( $settings['_ua_button_link']['url'] ) ) {
 			$this->add_link_attributes( '_ua_button_link', $settings['_ua_button_link'] );
 		}
@@ -405,7 +415,7 @@ class Button extends Base{
             ]
         );
         ?>
-        <div class="ua-btn-wrap ua-d-flex">
+        <div class="ua-btn-wrap ua-d-flex <?php echo $ua_set_effect?>">
             <a <?php echo $this->get_render_attribute_string( '_ua_button_link' ); ?> <?php echo $this->get_render_attribute_string( 'button_class' );?>>
             <?php if('left'==$settings['_icon_position']):?>
              <?php Icons_Manager::render_icon( $settings['selected_icon'], [ 'aria-hidden' => 'true' ] ); ?>
