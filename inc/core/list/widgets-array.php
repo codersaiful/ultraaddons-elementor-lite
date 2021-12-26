@@ -519,7 +519,15 @@ $widgetsArray = [
         'cat'       => [
             __( 'Basic', 'ultraaddons' ),
         ],
-],
+    ],
+    'Product_Tabs'=> [
+        'name'      => __( 'Product Tabs', 'ultraaddons' ),
+        'is_pro'   => false,
+        'icon'      => 'eicon-product-images',
+        'cat'       => [
+            __( 'Basic', 'ultraaddons' ),
+        ],
+    ],
 
 
 ];
