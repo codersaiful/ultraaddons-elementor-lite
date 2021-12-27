@@ -161,7 +161,7 @@ class Product_Tabs extends Base{
 					'date' => 'Date',
 					'modified' => 'Modified',
 				],
-				'default' => 'date',
+				'default' => 'rand',
 			]
 		);
 
@@ -321,7 +321,7 @@ class Product_Tabs extends Base{
 				'label' => __( 'Title Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .pg .ua-product-title' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .pgf .title-product a' => 'color: {{VALUE}};',
 				],
 				'default'=>'#111'
 			]
@@ -331,7 +331,7 @@ class Product_Tabs extends Base{
 			[
 					'name' => 'product_title_typography',
 					'label' => 'Title Typography',
-					'selector' => '{{WRAPPER}} .pg .ua-product-title',
+					'selector' => '{{WRAPPER}} .pgf .title-product a',
 			]
         );
         $this->add_responsive_control(
@@ -347,7 +347,7 @@ class Product_Tabs extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .pg .ua-product-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .pgf .title-product a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -357,7 +357,7 @@ class Product_Tabs extends Base{
 				'label' => __( 'Price Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .pg .ua-product-price' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .pgf .price' => 'color: {{VALUE}};',
 				],
                 'separator' =>'before'
 			]
@@ -368,7 +368,7 @@ class Product_Tabs extends Base{
 			[
 					'name' => 'price_typography',
 					'label' => 'Price Typography',
-					'selector' => '{{WRAPPER}} .pg .ua-product-price',
+					'selector' => '{{WRAPPER}} .pgf .price',
 
 			]
         );
@@ -378,7 +378,7 @@ class Product_Tabs extends Base{
 				'label' => __( 'Description Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .pg .ua-product-details p' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .pgf .description-prod p' => 'color: {{VALUE}};',
 				],
 				'separator' => 'before'
 			]
@@ -390,7 +390,7 @@ class Product_Tabs extends Base{
 			[
 					'name' => 'content_typography',
 					'label' => 'Description Typography',
-					'selector' => '{{WRAPPER}} .pg .ua-product-details p',
+					'selector' => '{{WRAPPER}} .pgf .description-prod p',
 			]
 		);
 		$this->add_responsive_control(
@@ -406,7 +406,7 @@ class Product_Tabs extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .pg .ua-product-details p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .pgf .description-prod p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -423,7 +423,7 @@ class Product_Tabs extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .pg .ua-product-details' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .pgf .description-prod' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -434,7 +434,7 @@ class Product_Tabs extends Base{
 				'type'      => Controls_Manager::COLOR,
 				'default'	=> '#a1a1a1',
 				'selectors' => [
-						'{{WRAPPER}} .pg .product-catagory' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .pgf .category > span' => 'color: {{VALUE}};',
 				],
 				'separator' => 'before'
 			]
@@ -446,7 +446,7 @@ class Product_Tabs extends Base{
 			[
 					'name' => 'cat_typography',
 					'label' => 'Category Typography',
-					'selector' => '{{WRAPPER}} .pg .product-catagory',
+					'selector' => '{{WRAPPER}} .pgf .category > span',
 			]
 		);
 		$this->add_control(
@@ -492,7 +492,7 @@ class Product_Tabs extends Base{
 				],
 				'default' => 'left',
 				'selectors' => [
-					'{{WRAPPER}} .product-text-wrap ' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .ua-cp-text ' => 'text-align: {{VALUE}};',
 				],
 			]
 		);
@@ -514,7 +514,7 @@ class Product_Tabs extends Base{
 				'type'      => Controls_Manager::COLOR,
                 'default'   => '#fff',
 				'selectors' => [
-						'{{WRAPPER}} .pg .ua-product-card' => 'background: {{VALUE}};',
+						'{{WRAPPER}} .pgf .ua-cp-product' => 'background: {{VALUE}};',
 				]
 			]
         );
@@ -531,7 +531,7 @@ class Product_Tabs extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .pg .ua-product-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .pgf .ua-cp-product' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -541,7 +541,7 @@ class Product_Tabs extends Base{
 			[
 				'name' => 'box_shadow',
 				'label' => __( 'Box Shadow', 'ultraaddons' ),
-				'selector' => '{{WRAPPER}} .pg .ua-product-card',
+				'selector' => '{{WRAPPER}} .pgf .ua-cp-product',
 			]
 		);
 		$this->add_group_control(
@@ -549,7 +549,7 @@ class Product_Tabs extends Base{
 			[
 				'name' => 'box_border',
 				'label' => esc_html__( 'Border', 'ultraaddons' ),
-				'selector' => '{{WRAPPER}} .pg .ua-product-card',
+				'selector' => '{{WRAPPER}} .pgf .ua-cp-product',
 			]
 		);
 		$this->add_group_control(
@@ -558,7 +558,7 @@ class Product_Tabs extends Base{
 				'name' => 'footer_line_border',
 				'label' => esc_html__( 'Footer Border', 'ultraaddons' ),
 				'show_label'=>true,
-				'selector' => '{{WRAPPER}} .pg .ua-product-bottom-details',
+				'selector' => '{{WRAPPER}} .pgf .card-footer',
 			]
 		);
 		
@@ -593,7 +593,7 @@ class Product_Tabs extends Base{
 				'label' => __( 'Button Text Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .ua-product-links .add-card' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .pgf .add-card' => 'color: {{VALUE}};',
 				]
 			]
         );
@@ -603,7 +603,7 @@ class Product_Tabs extends Base{
 			[
 					'name' => 'cart_btn_typography',
 					'label' => 'Button Typography',
-					'selector' => '{{WRAPPER}} .ua-product-links .add-card',
+					'selector' => '{{WRAPPER}}  .pgf .add-card',
 			]
         );
 	
@@ -620,7 +620,7 @@ class Product_Tabs extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .ua-product-bottom-details' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .pgf .card-footer' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -640,7 +640,7 @@ class Product_Tabs extends Base{
 				'label' => __( 'Button Text Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}}  .ua-product-links .add-card:hover' => 'color: {{VALUE}};',
+						'{{WRAPPER}}  .pgf .add-card:hover' => 'color: {{VALUE}};',
 				]
 			]
         );
@@ -1031,7 +1031,7 @@ class Product_Tabs extends Base{
 			</div>
 		</div>
 
-		<div class="ua-row projects">
+		<div class="pgf ua-row projects">
 		<?php
 			$paged = (get_query_var('paged')) ? get_query_var('paged') : $settings['_ua_post_page_number'] ;
 			$args = array(
@@ -1076,10 +1076,10 @@ class Product_Tabs extends Base{
 					}
 				}
 		?>
-	
 		<div class="ua-col-<?php echo $col;?> items <?php echo implode(" ",$data);?>">
-			<div class="ua-product-card <?php echo $flex_row; ?>">
-				<?php if ( $product->is_on_sale() ) : ?>
+		<div class="ua-cp-product">
+          <div class="ua-cp-img">
+		  <?php if ( $product->is_on_sale() ) : ?>
 				<div class="ua-badge">
 					<?php
 					echo apply_filters( 'woocommerce_sale_flash', '<span class="ua-onsale">' 
@@ -1087,48 +1087,50 @@ class Product_Tabs extends Base{
 					?>
 				</div>
 				<?php endif; ?>
-				
-				<div <?php echo $this->get_render_attribute_string( 'thumb_class' );?>>
-					<?php echo woocommerce_get_product_thumbnail('woocommerce_full_size');?>
-				</div>
-				<div <?php echo $this->get_render_attribute_string( 'ua_product_details' );?>>
-					<div class="product-text-wrap">
-						<span class="product-catagory">
-							<?php
-							foreach( wp_get_post_terms( get_the_id(), 'product_cat' ) as $term ){
-								if( $term ){
-									echo $cat= $term->name . " ."; // product category name
-								}
-							}
-							?>
-							</span>
-							<a href="<?php echo get_the_permalink(); ?>">
-							<?php
-								echo '<' . $settings['_ua_front_title_tag'] . ' class="ua-product-title">' 
-									. $loop->post->post_title . 
-									'</' . $settings['_ua_front_title_tag'] . '>';
-								?>
-							</a>
-						<p> <?php echo $this->word_shortener($description, $settings['_ua_text_truncate']);?></p>
-					</div>
-					<div class="ua-product-bottom-details">
-						<div class="ua-product-price"><?php echo $product->get_price_html();?> </div>
-						<div class="ua-product-links">
-							<a href="?add-to-cart=<?php echo esc_attr($id); ?>"  class="add-card button add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo esc_attr($id); ?>"  aria-label="Add '<?php echo get_the_title(); ?>' to your cart" rel="nofollow">
-								<i class="uicon uicon-cart"></i>
-								<?php
-								if ( 'yes'!=$settings['_ua_card_direction'] ):
-								?>
-									<span>
-										<?php echo esc_html__('ADD TO CART', 'ultraaddons'); ?>
-									</span>
-								<?php endif; ?>
-							</a>
-						</div>
-					</div>
-				</div>
+				<?php echo woocommerce_get_product_thumbnail('woocommerce_full_size');?>
 			</div>
-		</div>
+          <div class="ua-cp-text">
+            <div class="category">
+              <span>
+				  <?php
+					foreach( wp_get_post_terms( get_the_id(), 'product_cat' ) as $term ){
+						if( $term ){
+						 $cat= $term->name ; // product category name
+						}
+					}
+					echo $cat;
+					?>
+				</span>
+            </div>
+            <div class="title-product">
+			<a href="<?php echo get_the_permalink(); ?>">
+			<?php
+				echo '<' . $settings['_ua_front_title_tag'] . ' class="ua-product-title">' 
+					. $loop->post->post_title . 
+					'</' . $settings['_ua_front_title_tag'] . '>';
+				?>
+			</a>
+            </div>
+            <div class="description-prod">
+              <p><?php echo $this->word_shortener($description, $settings['_ua_text_truncate']);?></p>
+            </div>
+            <div class="card-footer">
+              <div class="wcf-left"><span class="price"><?php echo $product->get_price_html();?> </span></div>
+              <div class="wcf-right">	
+					<a href="?add-to-cart=<?php echo esc_attr($id); ?>"  class="buy-btn add-card button add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo esc_attr($id); ?>"  aria-label="Add '<?php echo get_the_title(); ?>' to your cart" rel="nofollow">
+						<i class="uicon uicon-cart"></i>
+						<?php
+						if ( 'yes'!=$settings['_ua_card_direction'] ):
+						?>
+						<?php endif; ?>
+					</a>
+				</div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+		
 		<?php
 		endwhile;
 		?>
