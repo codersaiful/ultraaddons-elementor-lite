@@ -18,13 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Product_Tabs extends Base{
     
-    public function get_script_depends() {
-		$scripts = array( 'owl-carousel', 'isotope-pkgd', 'jquery-hoverIntent' );
-		if ( ( isset( $_REQUEST['action'] ) && 'elementor' == $_REQUEST['action'] ) || isset( $_REQUEST['elementor-preview'] ) ) {
-			$scripts[] = 'molla-elementor-widgets-js';
-		}
-		return $scripts;
-	}
+
 	public function __construct($data = [], $args = null) {
         parent::__construct($data, $args);
 
@@ -39,8 +33,8 @@ class Product_Tabs extends Base{
         wp_enqueue_script( $name );
 
 		//Naming of Args 
-        $name           = 'hoverIntent';
-        $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/hoverIntent/js/jquery.hoverIntent.min.js';
+        $name           = 'product';
+        $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/product.js';
         $dependency     =  ['jquery'];//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  	= true;
@@ -991,7 +985,7 @@ class Product_Tabs extends Base{
 					<?php
 					if(empty($settings['cat_ids'])):?>
 						<ul class="pf-filter-btn">
-							<li class="list active" data-filter="*">All</li>
+							<li class="list active" data-filter="*"><a href="#">All</a></li>
 							<?php
 							$args = array(
 								'orderby'       => 'ID',
@@ -1005,7 +999,7 @@ class Product_Tabs extends Base{
 								foreach ($categories as $cat):
 								$id = $cat->term_id;
 								?>
-								<li class="list" data-filter=".<?php echo  $cat->slug;?>">
+								<li class="list" data-cat="<?php echo  $cat->slug;?>" data-filter=".<?php echo  $cat->slug;?>">
 									<a href="<?php echo esc_url( get_term_link( $id, 'product_cat' ) );?>"> <?php echo  $cat->name;?></a>
 								</li>  
 							<?php
@@ -1017,12 +1011,12 @@ class Product_Tabs extends Base{
 					else:
 					?>
 					<ul class="pf-filter-btn">
-						<li class="list active" data-filter="*">All</li>
+						<li class="list active" data-filter="*"><a href="#">All</a></li>
 						<?php
 						//If Selected manual from frontend
 						$selected_cat = $settings['cat_ids'];
 						foreach($selected_cat as $selected_cats):?>
-							<li class="list"  data-filter=".<?php echo get_the_category_by_ID( $selected_cats );?>">
+							<li class="list"  data-filter=".<?php echo strtolower(get_the_category_by_ID( $selected_cats ));?>">
 							<a href="#">
 								<?php echo get_the_category_by_ID( $selected_cats );?>
 							</a>
@@ -1065,16 +1059,6 @@ class Product_Tabs extends Base{
 					)
 				);
 			}	
-	
-			if( ! empty( $settings['tag_ids'] ) ){
-				$args['tax_query'] = array(
-					array(
-						'taxonomy'  => 'product_tag',
-						'field'     => 'id', 
-						'terms'     => $settings['tag_ids'],
-					)
-				);
-			}	
 			
 			$loop = new \WP_Query( $args );
 			if ( $loop->have_posts() ) {
@@ -1085,15 +1069,15 @@ class Product_Tabs extends Base{
 					$image_url 	= wp_get_attachment_image_url( $image_id, 'full' );
 					$description = $loop->post->post_excerpt;
 					//Get Category list for fliter
-				$cat="";
+				$data = array();
 				foreach( wp_get_post_terms( get_the_id(), 'product_cat' ) as $term ){
-				if( $term ){
-					$cat = $term->slug; // product category name
+					if( $term ){
+						$data[] = $term->slug; // product category name
 					}
 				}
 		?>
 	
-		<div class="ua-col-<?php echo $col;?> items <?php echo $cat;?>">
+		<div class="ua-col-<?php echo $col;?> items <?php echo implode(" ",$data);?>">
 			<div class="ua-product-card <?php echo $flex_row; ?>">
 				<?php if ( $product->is_on_sale() ) : ?>
 				<div class="ua-badge">
@@ -1110,10 +1094,10 @@ class Product_Tabs extends Base{
 				<div <?php echo $this->get_render_attribute_string( 'ua_product_details' );?>>
 					<div class="product-text-wrap">
 						<span class="product-catagory">
-							<?php 
+							<?php
 							foreach( wp_get_post_terms( get_the_id(), 'product_cat' ) as $term ){
-							if( $term ){
-									echo $term->name; // product category name
+								if( $term ){
+									echo $cat= $term->name . " ."; // product category name
 								}
 							}
 							?>
@@ -1153,10 +1137,30 @@ class Product_Tabs extends Base{
 		} else {
 			 echo "<div class='ua-alert'>" . esc_html__( "No products found!", 'ultraaddons' ) . "</div>";
 		}
+		?>
+
+		<?php
 		wp_reset_postdata();
 		?>
 		
 	</div>
+	<nav class="ua-pagination ua-col-1">
+			<?php
+			$total_pages = $loop->max_num_pages;
+
+			if ($total_pages > 1){
+				$current_page = max(1, get_query_var('paged'));
+				echo paginate_links(array(
+					'base' => get_pagenum_link(1) . '%_%',
+					'format' => '/page/%#%',
+					'current' => $current_page,
+					'total' => $total_pages,
+					'prev_text'    => __('« Prev'),
+					'next_text'    => __('Next »'),
+				));
+			}
+			?>
+		</nav> 
 	<?php }
 	
 		/**
@@ -1198,26 +1202,6 @@ class Product_Tabs extends Base{
 				}
 			  }
 			  return $str . (count($all) <= $words ? '' : $sp);
-		}
-		//Added by Saiful Vai is it working..?
-	   public function woocommerce_pagination() {
-			if ( ! wc_get_loop_prop( 'is_paginated' ) || ! woocommerce_products_will_display() ) {
-				return;
-			}
-		
-			$args = array(
-				'total'   => wc_get_loop_prop( 'total_pages' ),
-				'current' => wc_get_loop_prop( 'current_page' ),
-				'base'    => esc_url_raw( add_query_arg( 'product-page', '%#%', false ) ),
-				'format'  => '?product-page=%#%',
-			);
-		
-			if ( ! wc_get_loop_prop( 'is_shortcode' ) ) {
-				$args['format'] = '';
-				$args['base']   = esc_url_raw( str_replace( 999999999, '%#%', remove_query_arg( 'add-to-cart', get_pagenum_link( 999999999, false ) ) ) );
-			}
-		
-			wc_get_template( 'loop/pagination.php', $args );
 		}
     
 }

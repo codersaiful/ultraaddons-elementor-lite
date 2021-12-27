@@ -836,36 +836,6 @@
                 }
             );
 
-              //Product Filter
-              EF.hooks.addAction(
-                'frontend/element_ready/ultraaddons-product-tabs.default',
-                function ($scope) {
-                
-                /**isotope js*/
-                    var $projects = $('.projects');
-
-                    $projects.isotope({
-                        itemSelector: '.items',
-                        layoutMode: 'fitRows'
-                    });
-
-                    $('.pf-filter-btn > li').on('click', function(e){
-                            console.log('gg');
-                        e.preventDefault();
-
-                        var filter = $(this).attr('data-filter');
-
-                        $('.pf-filter-btn > li').removeClass('active');
-                        $(this).addClass('active');
-
-                        $projects.isotope({filter: filter});
-
-                    });
-
-                  
-                }
-            );
-            
             
     });// Init wrapup
    
