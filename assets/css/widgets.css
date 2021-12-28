@@ -280,6 +280,9 @@ Alert
     font-size: 15px;
     width: 100%;
 }
+.ua-btn{
+    text-decoration: none;
+}
 /*
 Pagination
 */

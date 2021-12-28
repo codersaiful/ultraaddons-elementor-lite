@@ -176,6 +176,7 @@ a.buy-btn:hover , a.buy-btn:active, a.buy-btn:focus{
   padding:12px 30px;
   border-radius:27px;
   margin: 0 5px;
+  text-decoration: none;
 }
 .ua-btn:hover, .ua-btn:focus, .ua-btn:active{
   text-decoration:none;
