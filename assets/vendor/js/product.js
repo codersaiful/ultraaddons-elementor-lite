@@ -17,29 +17,37 @@ EF.hooks.addAction(
 	'frontend/element_ready/ultraaddons-product-tabs.default',
 	function ($scope) {
 	
-	/**isotope js*/
-		var $projects = $('.projects');
-
-		$projects.isotope({
-			itemSelector: '.items',
-			layoutMode: 'fitRows'
-		});
-
+	
 		$('.pf-filter-btn > li').on('click', function(e){
 			e.preventDefault();
-			var $data = $(this).data('cat');
-			console.log($data );
-		/* 	$.ajax({
-				type: "post",
-				dataType: "json",
-				url: ULTRAADDONS_DATA.ajax_url,
+			
+	
+		/* var $data = $(this).data('cat'),
+			 $count = $(this).data('count');	
+			 
+			 $.ajax({
+				type: 'POST',
+				url: '/projects/wp-admin/admin-ajax.php',
+				dataType: 'html',
 				data: {
-					action:$data
+				  action: 'my_category',
+				  category:  $data,
+				  count:$count,
 				},
-				success: function(data){
-					console.log(data);
+				success: function(res) {
+				  //console.log(res);
+				  $('.projects').html(res);
 				}
-			}); */
+			  }); */
+
+			/**isotope js*/
+				var $projects = $('.projects');
+
+				$projects.isotope({
+					itemSelector: '.items',
+					layoutMode: 'fitRows'
+				});
+
 			var filter = $(this).attr('data-filter');
 
 			$('.pf-filter-btn > li').removeClass('active');
@@ -48,8 +56,6 @@ EF.hooks.addAction(
 			$projects.isotope({filter: filter});
 
 		});
-
-	  
 	}
 );
 

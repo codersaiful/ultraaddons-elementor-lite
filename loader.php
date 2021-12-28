@@ -126,6 +126,8 @@ class Loader {
         
         //Mainly UltraAddons Icons font need to load in Elementor Screen.
         add_action('elementor/editor/before_enqueue_scripts', [ $this, 'icon_enqueue_scripts' ]);
+
+        
         
     }
 

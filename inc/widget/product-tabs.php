@@ -21,7 +21,7 @@ class Product_Tabs extends Base{
 
 	public function __construct($data = [], $args = null) {
         parent::__construct($data, $args);
-
+		
         //Naming of Args 
         $name           = 'isotop';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/isotope.pkgd.min.js';
@@ -90,6 +90,8 @@ class Product_Tabs extends Base{
         $this->sale_flash_controls();
 		//For Pagination Tab
         $this->pagination_controls();
+		//For Filter button Tab
+        $this->filter_btn_controls();
     }
 	protected function query_controls() {
 		
@@ -449,6 +451,48 @@ class Product_Tabs extends Base{
 					'selector' => '{{WRAPPER}} .pgf .category > span',
 			]
 		);
+		$this->add_responsive_control(
+			'_ua_cat_padding',
+			[
+				'label'       => esc_html__( 'Category Padding', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', 'em' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .pgf .ua-category span' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'_ua_cat_radius',
+			[
+				'label'       => esc_html__( 'Category Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', 'em' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .pgf .ua-category span' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'cat_shadow',
+				'label' => __( 'Category Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .pgf .ua-category span',
+			]
+		);
 		$this->add_control(
 			'_ua_front_title_tag',
 			[
@@ -558,7 +602,7 @@ class Product_Tabs extends Base{
 				'name' => 'footer_line_border',
 				'label' => esc_html__( 'Footer Border', 'ultraaddons' ),
 				'show_label'=>true,
-				'selector' => '{{WRAPPER}} .pgf .card-footer',
+				'selector' => '{{WRAPPER}} .pgf .ua-card-footer',
 			]
 		);
 		
@@ -620,7 +664,7 @@ class Product_Tabs extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .pgf .card-footer' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .pgf .ua-card-footer' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -941,6 +985,173 @@ class Product_Tabs extends Base{
 		
 		$this->end_controls_section();
 	}
+	/**
+	 * Filter Button Style.
+	 */
+	protected function filter_btn_controls(){
+		$this->start_controls_section(
+            'filter_btn_style',
+            [
+                'label'     => esc_html__( 'Filter Button', 'ultraaddons' ),
+				'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->start_controls_tabs(
+			'filter_btn_normal_tabs'
+		);
+		/**
+		 * Normal tab
+		 */
+		$this->start_controls_tab(
+			'filter_normal_tab',
+			[
+				'label' => __( 'Normal', 'ultraaddons' ),
+			]
+		);
+		$this->add_control(
+			'_ua_filter_btn_bg', [
+				'label' => __( 'Button Background Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .pf-filter-btn li a' => 'background-color: {{VALUE}};',
+				]
+			]
+        );
+		$this->add_control(
+			'_ua_filter_btn_color', [
+				'label' => __( 'Button Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .pf-filter-btn li a' => 'color: {{VALUE}};',
+				]
+			]
+        );
+	
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'filter_btn_typography',
+					'label' => 'Button Typography',
+					'selector' => '{{WRAPPER}} .pf-filter-btn li a',
+			]
+        );
+	
+		$this->add_responsive_control(
+			'_filter_btn_padding',
+			[
+				'label'       => esc_html__( 'Button Padding', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px','em' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .pf-filter-btn li a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'_filter_btn_margin',
+			[
+				'label'       => esc_html__( 'Button Margin', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px','em' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .pf-filter-btn li a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'_filter_btn_radius',
+			[
+				'label'       => esc_html__( 'Button Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .pf-filter-btn li a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		
+		$this->end_controls_tab();
+		/**
+		 * Button Hover tab
+		 */
+		$this->start_controls_tab(
+			'filter_btn_hover_tabs',
+			[
+				'label' => __( 'Hover', 'ultraaddons' ),
+			]
+		);
+		$this->add_control(
+			'_ua_filter_btn_hover_bg', [
+				'label' => __( 'Background Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .pf-filter-btn li a:hover' => 'background-color: {{VALUE}};',
+				]
+			]
+        );
+		$this->add_control(
+			'_ua_filter_btn_hover_color', [
+				'label' => __( 'Button Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}}  .pf-filter-btn li a:hover' => 'color: {{VALUE}};',
+				]
+			]
+        );
+		$this->end_controls_tab();
+		/**
+		 * Button Active tab
+		 */
+		$this->start_controls_tab(
+			'filter_btn_active_tabs',
+			[
+				'label' => __( 'Active', 'ultraaddons' ),
+			]
+		);
+		$this->add_control(
+			'_ua_filter_btn_active_bg', [
+				'label' => __( 'Background Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .pf-filter-btn li.active a' => 'background-color: {{VALUE}};',
+				]
+			]
+        );
+		$this->add_control(
+			'_ua_filter_btn_active_color', [
+				'label' => __( 'Button Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}}  .pf-filter-btn li.active a' => 'color: {{VALUE}};',
+				]
+			]
+        );
+		
+	
+		$this->end_controls_tabs();
+		
+		$this->end_controls_tab();
+		
+		$this->end_controls_section();
+	}
 
 	protected function render() {
 		
@@ -1000,7 +1211,7 @@ class Product_Tabs extends Base{
 								$id = $cat->term_id;
 								?>
 								<li class="list" data-cat="<?php echo  $cat->slug;?>" data-filter=".<?php echo  $cat->slug;?>">
-									<a href="<?php echo esc_url( get_term_link( $id, 'product_cat' ) );?>"> <?php echo  $cat->name;?></a>
+									<a href="<?php echo esc_url( get_term_link( $id, 'product_cat' ) );?>"> <?php echo  $cat->name;?> (<?php echo $cat->count; ?>)</a>
 								</li>  
 							<?php
 								endforeach;
@@ -1034,13 +1245,19 @@ class Product_Tabs extends Base{
 		<div class="pgf ua-row projects">
 		<?php
 			$paged = (get_query_var('paged')) ? get_query_var('paged') : $settings['_ua_post_page_number'] ;
+			$all_categories = get_categories( $args );
+			$cat_ids = array();
+
+			foreach ($all_categories as $cat){
+				array_push($cat_ids, $cat->term_id);
+			}
+			//print_r($cat_ids);
 			$args = array(
 				'post_type' 	=> 'product',
 				'posts_per_page'=> $settings['_ua_post_per_page'],
-				'paged'         => $paged,
 				'order'			=> $settings['_ua_product_order'],
 				'orderby'		=> $settings['_ua_product_orderby'],
-				);
+			);
 			if(! empty( $settings['_ua_query_post_in'] )){
 				$include_ids = explode(',',$settings['_ua_query_post_in']);
 				$args['post__in'] = $include_ids;
@@ -1050,15 +1267,14 @@ class Product_Tabs extends Base{
 				$args['post__not_in'] = $exclude_ids;
 			}
 	
-			if( ! empty( $settings['cat_ids'] ) ){
-				$args['tax_query'] = array(
-					array(
-						'taxonomy'  => 'product_cat',
-						'field'     => 'id', 
-						'terms'     => $settings['cat_ids'],
-					)
-				);
-			}	
+			$args['tax_query'] = array(
+				array(
+					'taxonomy'  => 'product_cat',
+					'field'     => 'id', 
+					'terms'     => (!empty($settings['cat_ids'])) ?  $settings['cat_ids'] : $cat_ids,
+				)
+			);
+			
 			
 			$loop = new \WP_Query( $args );
 			if ( $loop->have_posts() ) {
@@ -1076,7 +1292,7 @@ class Product_Tabs extends Base{
 					}
 				}
 		?>
-		<div class="ua-col-<?php echo $col;?> items <?php echo implode(" ",$data);?>">
+		<div class="ua-col-<?php echo $col;?> items <?php echo implode(" ", $data);?>">
 		<div class="ua-cp-product">
           <div class="ua-cp-img">
 		  <?php if ( $product->is_on_sale() ) : ?>
@@ -1090,12 +1306,12 @@ class Product_Tabs extends Base{
 				<?php echo woocommerce_get_product_thumbnail('woocommerce_full_size');?>
 			</div>
           <div class="ua-cp-text">
-            <div class="category">
+            <div class="ua-category">
               <span>
 				  <?php
 					foreach( wp_get_post_terms( get_the_id(), 'product_cat' ) as $term ){
 						if( $term ){
-						 $cat= $term->name ; // product category name
+						 $cat= $term->name; // product category name
 						}
 					}
 					echo $cat;
@@ -1105,18 +1321,18 @@ class Product_Tabs extends Base{
             <div class="title-product">
 			<a href="<?php echo get_the_permalink(); ?>">
 			<?php
-				echo '<' . $settings['_ua_front_title_tag'] . ' class="ua-product-title">' 
-					. $loop->post->post_title . 
-					'</' . $settings['_ua_front_title_tag'] . '>';
-				?>
+			echo '<' . $settings['_ua_front_title_tag'] . ' class="ua-product-title">' 
+				. $loop->post->post_title . 
+				'</' . $settings['_ua_front_title_tag'] . '>';
+			?>
 			</a>
             </div>
             <div class="description-prod">
               <p><?php echo $this->word_shortener($description, $settings['_ua_text_truncate']);?></p>
             </div>
-            <div class="card-footer">
-              <div class="wcf-left"><span class="price"><?php echo $product->get_price_html();?> </span></div>
-              <div class="wcf-right">	
+            <div class="ua-card-footer">
+              <div class="ua-left"><span class="price"><?php echo $product->get_price_html();?> </span></div>
+              <div class="ua-right">	
 					<a href="?add-to-cart=<?php echo esc_attr($id); ?>"  class="buy-btn add-card button add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo esc_attr($id); ?>"  aria-label="Add '<?php echo get_the_title(); ?>' to your cart" rel="nofollow">
 						<i class="uicon uicon-cart"></i>
 						<?php
@@ -1189,5 +1405,5 @@ class Product_Tabs extends Base{
 			  }
 			  return $str . (count($all) <= $words ? '' : $sp);
 		}
-    
+		
 }
