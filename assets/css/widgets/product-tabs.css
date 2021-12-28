@@ -165,7 +165,7 @@ a.buy-btn:hover , a.buy-btn:active, a.buy-btn:focus{
   color: #fff;
   text-decoration:none;
 }
-.ua-btn{
+.pgf .ua-btn{
   display:inline-block;
   color:#212121;
   text-align:center;
@@ -178,7 +178,7 @@ a.buy-btn:hover , a.buy-btn:active, a.buy-btn:focus{
   margin: 0 5px;
   text-decoration: none;
 }
-.ua-btn:hover, .ua-btn:focus, .ua-btn:active{
+.pgf  .ua-btn:hover, .pgf  .ua-btn:focus, .pgf  .ua-btn:active{
   text-decoration:none;
   color:#fff;
 }  
