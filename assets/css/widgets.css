@@ -280,7 +280,7 @@ Alert
     font-size: 15px;
     width: 100%;
 }
-.ua-btn{
+.ua-btn-wrap > .ua-btn{
     text-decoration: none;
 }
 /*
@@ -316,7 +316,7 @@ Pagination
       background: #f9f9f9;
       color: #333;
   }
-   .ua-btn{
+   .ua-btn-wrap a.ua-btn, .elementor-widget-ultraaddons-button .ua-btn-wrap a.ua-btn{
     margin: 0.4em;
     padding: 1em;
     cursor: pointer;
