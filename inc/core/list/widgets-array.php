@@ -504,14 +504,14 @@ $widgetsArray = [
             __( 'Basic', 'ultraaddons' ),
         ],
     ],
-    'Product_Filter_Gallery' => [
+/*     'Product_Filter_Gallery' => [
         'name'  => __( 'Product Filter Gallery', 'ultraaddons' ),
         'is_pro'   => false,
         'icon'      => 'eicon-posts-masonry',
         'cat'       => [
             __( 'Basic', 'ultraaddons' ),
         ],
-    ],
+    ], */
     'Button'=> [
         'name'      => __( 'Button', 'ultraaddons' ),
         'is_pro'   => false,
@@ -524,6 +524,14 @@ $widgetsArray = [
         'name'      => __( 'Product Tabs', 'ultraaddons' ),
         'is_pro'   => false,
         'icon'      => 'eicon-product-images',
+        'cat'       => [
+            __( 'Basic', 'ultraaddons' ),
+        ],
+    ],
+    'Hotspot'=> [
+        'name'      => __( 'Hotspot', 'ultraaddons' ),
+        'is_pro'   => false,
+        'icon'      => 'eicon-image-hotspot',
         'cat'       => [
             __( 'Basic', 'ultraaddons' ),
         ],
