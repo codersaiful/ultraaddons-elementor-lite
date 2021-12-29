@@ -299,20 +299,23 @@ class Hotspot extends Base{
      */
     protected function render() {
         $settings = $this->get_settings_for_display();
-        
-        ?>
+		?>
+	
         <div class="ua-hotspot--wrapper">
              <img  class="ua-hotspots--figure" src="<?php echo  $settings['_hotspot_image']['url'];?>"/>
             <?php 
             if ( $settings['list'] ) {
                 $count=0;
                 foreach (  $settings['list'] as $item ) {
-                    $count=$count+1;
-                    if ( ! empty( $item['website_link']['url'] ) ) {
-                        $this->add_link_attributes( 'website_link', $item['website_link'] );
-                    }
+                    $count		= $count+1;
+					//print_r($item['website_link']);
+
+                     $url		= (!empty( $item['website_link']['url'] )) ? $item['website_link']['url']  : '#';
+					 $external 	= ( $item['website_link']['is_external']=='on') ? 'target="_blank"' : '';
+					 $nofollow 	= ( $item['website_link']['nofollow']=='on') ? 'rel="nofollow"' :'';
+
             ?>
-            <a <?php echo $this->get_render_attribute_string( 'website_link' ); ?> class="ua-hotspot elementor-repeater-item-<?php echo $item['_id']; ?> ua-hotspot--<?php echo  $count;?>" href="#">
+            <a href="<?php echo $url; ?>" <?php echo $external;?> <?php echo $nofollow;?> class="ua-hotspot elementor-repeater-item-<?php echo $item['_id']; ?> ua-hotspot--<?php echo  $count;?>" href="#">
                 <span class="ua-hotspot--title">
                     <?php echo  $item['list_title'];?>
                 </span>
