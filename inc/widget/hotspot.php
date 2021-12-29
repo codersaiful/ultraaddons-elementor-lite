@@ -42,6 +42,8 @@ class Hotspot extends Base{
     protected function _register_controls() {
         //For General Section
         $this->content_general_controls();
+         //For Style Section
+         $this->style_controls();
     }
     
         
@@ -105,7 +107,7 @@ class Hotspot extends Base{
 					'size' => '',
 				],
 				'selectors' => [
-					'{{WRAPPER}} {{CURRENT_ITEM}}.hotspot' => 'top: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} {{CURRENT_ITEM}}.ua-hotspot' => 'top: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -131,10 +133,31 @@ class Hotspot extends Base{
 					'size' => '',
 				],
 				'selectors' => [
-					'{{WRAPPER}} {{CURRENT_ITEM}}.hotspot' => 'right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} {{CURRENT_ITEM}}.ua-hotspot' => 'right: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
+        $repeater->add_control(
+			'_hotspot_color', [
+				'label' => __( 'Hotspot Background', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} {{CURRENT_ITEM}} .ua-hotspot--cta' => 'background: {{VALUE}};',
+				],
+				'default'=>'#E90C03'
+			]
+        );
+        $repeater->add_control(
+			'_hotspot_title_bg', [
+				'label' => __( 'Hotspot Title Background', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} {{CURRENT_ITEM}} .hotspot--title' => 'background: {{VALUE}};',
+						'{{WRAPPER}} {{CURRENT_ITEM}} .hotspot--title::after' => ' border-color: transparent transparent transparent {{VALUE}};',
+				],
+				'default'=>'#E90C03'
+			]
+        );
         $this->add_control(
 			'list',
 			[
@@ -144,20 +167,58 @@ class Hotspot extends Base{
 				'default' => [
 					[
 						'list_title' => esc_html__( 'iPhone', 'ultraaddons' ),
-						'list_content' => esc_html__( 'Item content. Click the edit button to change this text.', 'ultraaddons' ),
 					],
 					[
 						'list_title' => esc_html__( 'Mackbook', 'ultraaddons' ),
-						'list_content' => esc_html__( 'Item content. Click the edit button to change this text.', 'ultraaddons' ),
 					],
                     [
 						'list_title' => esc_html__( 'iWatch', 'ultraaddons' ),
-						'list_content' => esc_html__( 'Item content. Click the edit button to change this text.', 'ultraaddons' ),
 					],
 				],
 				'title_field' => '{{{ list_title }}}',
 			]
 		);
+        
+        $this->end_controls_section();
+    }
+    /**
+     * Style
+     */
+    protected function style_controls() {
+        $this->start_controls_section(
+            'style_content',
+            [
+                'label'     => esc_html__( 'Style', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+       
+        $this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => '_title_typography',
+					'label' => 'Title Typography',
+					'selector' => '{{WRAPPER}} .ua-hotspot--title',
+			]
+        );
+        $this->add_responsive_control(
+			'_ua_title_radius',
+			[
+				'label'       => esc_html__( 'Title Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-hotspot--title' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
         $this->end_controls_section();
     }
     
@@ -170,19 +231,21 @@ class Hotspot extends Base{
      * @access protected
      */
     protected function render() {
-        $settings           = $this->get_settings_for_display();
+        $settings = $this->get_settings_for_display();
         ?>
-        <section class="hotspots--wrapper">
-             <img  class="hotspots--figure" src="<?php echo  $settings['_hotspot_image']['url'];?>"/>
+        <section class="ua-hotspot--wrapper">
+             <img  class="ua-hotspots--figure" src="<?php echo  $settings['_hotspot_image']['url'];?>"/>
             <?php 
             if ( $settings['list'] ) {
                 $count=0;
                 foreach (  $settings['list'] as $item ) {
                     $count=$count+1;
             ?>
-            <a class="hotspot elementor-repeater-item-<?php echo $item['_id']; ?> hotspot--<?php echo  $count;?>" href="#">
-                <span class="hotspot--title"><?php echo  $item['list_title'];?></span>
-                <span class="hotspot--cta"></span>
+            <a class="ua-hotspot elementor-repeater-item-<?php echo $item['_id']; ?> ua-hotspot--<?php echo  $count;?>" href="#">
+                <span class="ua-hotspot--title">
+                    <?php echo  $item['list_title'];?>
+                </span>
+                <span class="ua-hotspot--cta"></span>
             </a>
             <?php 
             }
