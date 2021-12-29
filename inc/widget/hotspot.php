@@ -308,7 +308,7 @@ class Hotspot extends Base{
                 $count=0;
                 foreach (  $settings['list'] as $item ) {
                     $count=$count+1;
-                    if ( ! empty( $settings['website_link']['url'] ) ) {
+                    if ( ! empty( $item['website_link']['url'] ) ) {
                         $this->add_link_attributes( 'website_link', $item['website_link'] );
                     }
             ?>
