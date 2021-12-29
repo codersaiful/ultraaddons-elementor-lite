@@ -152,3 +152,35 @@
   border-style: solid;
   border-color: transparent transparent transparent #E90C03;
 }
+@keyframes btnIconRipple {
+  0% {
+    border-width: 4px;
+            transform: scale(1);
+  }
+  80% {
+    border-width: 1px;
+            transform: scale(1.35);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.ua-hotspot--cta:before {
+  content: '';
+    display: inline-block;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    bottom: -2px;
+    right: -2px;
+    border-radius: inherit;
+    -webkit-animation: btnIconRipple 2s cubic-bezier(0.23, 1, 0.32, 1) both infinite;
+    animation: btnIconRipple 2s cubic-bezier(0.23, 1, 0.32, 1) both infinite;
+    border: 1px solid;
+    border-color: #E90C03;
+}
+.ua-hotspot--wrapper .ua-hotspot{
+  text-decoration: none;
+  outline: none;
+}

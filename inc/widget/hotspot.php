@@ -86,6 +86,21 @@ class Hotspot extends Base{
 			]
 		);
         $repeater->add_control(
+			'website_link',
+			[
+				'label' => esc_html__( 'Link', 'plugin-name' ),
+				'type' => \Elementor\Controls_Manager::URL,
+				'placeholder' => esc_html__( 'https://your-link.com', 'ultraaddons' ),
+				'default' => [
+					'url' => '',
+					'is_external' => true,
+					'nofollow' => true,
+					'custom_attributes' => '',
+				],
+                'separator' => 'after'
+			]
+		);
+        $repeater->add_control(
 			'top',
 			[
 				'label' => esc_html__( 'Top Positions', 'ultraaddons' ),
@@ -135,27 +150,39 @@ class Hotspot extends Base{
 				'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}}.ua-hotspot' => 'right: {{SIZE}}{{UNIT}};',
 				],
+                'separator' => 'after'
 			]
 		);
         $repeater->add_control(
 			'_hotspot_color', [
-				'label' => __( 'Hotspot Background', 'ultraaddons' ),
+				'label' => __( 'Spot Background', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} {{CURRENT_ITEM}} .ua-hotspot--cta' => 'background: {{VALUE}};',
+                        '{{WRAPPER}} {{CURRENT_ITEM}} .ua-hotspot--cta:before' => ' border-color:{{VALUE}};',
 				],
 				'default'=>'#E90C03'
 			]
         );
         $repeater->add_control(
 			'_hotspot_title_bg', [
-				'label' => __( 'Hotspot Title Background', 'ultraaddons' ),
+				'label' => __( 'Spot Title Background', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} {{CURRENT_ITEM}} .hotspot--title' => 'background: {{VALUE}};',
-						'{{WRAPPER}} {{CURRENT_ITEM}} .hotspot--title::after' => ' border-color: transparent transparent transparent {{VALUE}};',
+						'{{WRAPPER}} {{CURRENT_ITEM}} .ua-hotspot--title' => 'background: {{VALUE}};',
+						'{{WRAPPER}} {{CURRENT_ITEM}} .ua-hotspot--title::after' => ' border-color: transparent transparent transparent {{VALUE}};',
 				],
 				'default'=>'#E90C03'
+			]
+        );
+        $repeater->add_control(
+			'_hotspot_title_text_color', [
+				'label' => __( 'Title Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} {{CURRENT_ITEM}} .ua-hotspot--title' => 'color: {{VALUE}};',
+				],
+				'default'=>'#fff'
 			]
         );
         $this->add_control(
@@ -218,6 +245,46 @@ class Hotspot extends Base{
 				],
 			]
 		);
+        $this->add_responsive_control(
+			'_ua_spot_radius',
+			[
+				'label'       => esc_html__( 'Spot Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-hotspot--cta' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_control(
+			'size',
+			[
+				'label' => esc_html__( 'Spot Size', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 5,
+					],
+				],
+				'default' => [
+					'size' => '35',
+				],
+				'selectors' => [
+					'{{WRAPPER}} {{CURRENT_ITEM}} .ua-hotspot--cta' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}',
+				],
+			]
+		);
+
+       
 
         $this->end_controls_section();
     }
@@ -232,16 +299,20 @@ class Hotspot extends Base{
      */
     protected function render() {
         $settings = $this->get_settings_for_display();
+        
         ?>
-        <section class="ua-hotspot--wrapper">
+        <div class="ua-hotspot--wrapper">
              <img  class="ua-hotspots--figure" src="<?php echo  $settings['_hotspot_image']['url'];?>"/>
             <?php 
             if ( $settings['list'] ) {
                 $count=0;
                 foreach (  $settings['list'] as $item ) {
                     $count=$count+1;
+                    if ( ! empty( $settings['website_link']['url'] ) ) {
+                        $this->add_link_attributes( 'website_link', $item['website_link'] );
+                    }
             ?>
-            <a class="ua-hotspot elementor-repeater-item-<?php echo $item['_id']; ?> ua-hotspot--<?php echo  $count;?>" href="#">
+            <a <?php echo $this->get_render_attribute_string( 'website_link' ); ?> class="ua-hotspot elementor-repeater-item-<?php echo $item['_id']; ?> ua-hotspot--<?php echo  $count;?>" href="#">
                 <span class="ua-hotspot--title">
                     <?php echo  $item['list_title'];?>
                 </span>
@@ -250,7 +321,7 @@ class Hotspot extends Base{
             <?php 
             }
         } ?>
-        </section>
+        </div>
         <?php
         
     }
