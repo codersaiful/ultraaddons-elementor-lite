@@ -40,11 +40,8 @@ class Hotspot extends Base{
      * @access protected
      */
     protected function _register_controls() {
-        
         //For General Section
         $this->content_general_controls();
-
-       
     }
     
         
@@ -54,6 +51,7 @@ class Hotspot extends Base{
      * @since 1.0.0.9
      */
     protected function content_general_controls() {
+        $placeholder_image = ULTRA_ADDONS_URL . 'assets/images/hotspot.jpg';
         $this->start_controls_section(
             'general_content',
             [
@@ -61,7 +59,20 @@ class Hotspot extends Base{
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
-        
+        $this->add_control(
+			'_hotspot_image',
+			[
+				'label' => __( 'Hotspot Image', 'ultraaddons' ),
+				'type' => Controls_Manager::MEDIA,
+				 'default' => [
+						'url' => $placeholder_image,//Utils::get_placeholder_image_src(),
+				], 
+				'dynamic' => [
+						'active' => true,
+				],
+
+			]
+        );
         $repeater = new \Elementor\Repeater();
 
 		$repeater->add_control(
@@ -72,6 +83,58 @@ class Hotspot extends Base{
 				'label_block' => true,
 			]
 		);
+        $repeater->add_control(
+			'top',
+			[
+				'label' => esc_html__( 'Top Positions', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 5,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => '%',
+					'size' => '',
+				],
+				'selectors' => [
+					'{{WRAPPER}} {{CURRENT_ITEM}}.hotspot' => 'top: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+        $repeater->add_control(
+			'left',
+			[
+				'label' => esc_html__( 'Left Positions', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 5,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => '%',
+					'size' => '',
+				],
+				'selectors' => [
+					'{{WRAPPER}} {{CURRENT_ITEM}}.hotspot' => 'right: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
         $this->add_control(
 			'list',
 			[
@@ -80,15 +143,15 @@ class Hotspot extends Base{
 				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
-						'list_title' => esc_html__( 'Title #1', 'ultraaddons' ),
+						'list_title' => esc_html__( 'iPhone', 'ultraaddons' ),
 						'list_content' => esc_html__( 'Item content. Click the edit button to change this text.', 'ultraaddons' ),
 					],
 					[
-						'list_title' => esc_html__( 'Title #2', 'ultraaddons' ),
+						'list_title' => esc_html__( 'Mackbook', 'ultraaddons' ),
 						'list_content' => esc_html__( 'Item content. Click the edit button to change this text.', 'ultraaddons' ),
 					],
                     [
-						'list_title' => esc_html__( 'Title #3', 'ultraaddons' ),
+						'list_title' => esc_html__( 'iWatch', 'ultraaddons' ),
 						'list_content' => esc_html__( 'Item content. Click the edit button to change this text.', 'ultraaddons' ),
 					],
 				],
@@ -110,14 +173,14 @@ class Hotspot extends Base{
         $settings           = $this->get_settings_for_display();
         ?>
         <section class="hotspots--wrapper">
-            <img src="https://images.unsplash.com/photo-1494698853255-d0fa521abc6c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2600&q=80" alt="black Macbook near black iPhone 7 Plus and black Apple Watch" class="hotspots--figure">
+             <img  class="hotspots--figure" src="<?php echo  $settings['_hotspot_image']['url'];?>"/>
             <?php 
             if ( $settings['list'] ) {
                 $count=0;
                 foreach (  $settings['list'] as $item ) {
                     $count=$count+1;
             ?>
-            <a class="hotspot hotspot--<?php echo  $count;?>" href="#">
+            <a class="hotspot elementor-repeater-item-<?php echo $item['_id']; ?> hotspot--<?php echo  $count;?>" href="#">
                 <span class="hotspot--title"><?php echo  $item['list_title'];?></span>
                 <span class="hotspot--cta"></span>
             </a>
