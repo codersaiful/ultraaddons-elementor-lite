@@ -42,3 +42,6 @@
       top:auto;
       left: auto;
   }
+  .ua-row .ua-cat-box a{
+    text-decoration:none
+  }
