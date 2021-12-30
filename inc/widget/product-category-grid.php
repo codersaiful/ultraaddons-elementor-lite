@@ -137,6 +137,14 @@ class Product_Category_Grid extends Base{
 				],
 			]
 		);
+        $this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'box_shadow',
+				'label' => __( 'Box Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-cat-box',
+			]
+		);
 
         $this->add_control(
 			'col_gap',
@@ -295,6 +303,14 @@ class Product_Category_Grid extends Base{
 				],
 			]
         );
+        $this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'cat_shadow',
+				'label' => __( 'Category Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-cat-box .cat-name',
+			]
+		);
         $this->add_control(
 			'_ua_cat_bottom',
 			[
