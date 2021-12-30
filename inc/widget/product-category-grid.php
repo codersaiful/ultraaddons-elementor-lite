@@ -199,6 +199,9 @@ class Product_Category_Grid extends Base{
 				'selectors' => [
 					'{{WRAPPER}} .ua-cat-box .cat-name' => 'top: {{SIZE}}{{UNIT}};',
 				],
+                'condition' => [
+                    '_ua_cat_bottom!' => 'yes',
+                ]
 			]
 		);
         $this->add_control(
@@ -225,6 +228,9 @@ class Product_Category_Grid extends Base{
 				'selectors' => [
 					'{{WRAPPER}} .ua-cat-box .cat-name' => 'left: {{SIZE}}{{UNIT}};',
 				],
+                'condition' => [
+                    '_ua_cat_bottom!' => 'yes',
+                ],
                 'separator' => 'after'
 			]
 		);
