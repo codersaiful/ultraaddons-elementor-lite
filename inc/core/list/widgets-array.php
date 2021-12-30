@@ -536,6 +536,14 @@ $widgetsArray = [
             __( 'Basic', 'ultraaddons' ),
         ],
     ],
+    'Product_Category_Grid'=> [
+        'name'      => __( 'Product Category Grid', 'ultraaddons' ),
+        'is_pro'   => false,
+        'icon'      => 'eicon-product-images',
+        'cat'       => [
+            __( 'Basic', 'ultraaddons' ),
+        ],
+    ],
 
 
 ];
