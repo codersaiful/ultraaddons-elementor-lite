@@ -544,6 +544,14 @@ $widgetsArray = [
             __( 'Basic', 'ultraaddons' ),
         ],
     ],
+    'Hero_Slider'=> [
+        'name'      => __( 'Hero Slider', 'ultraaddons' ),
+        'is_pro'   => false,
+        'icon'      => 'uicon-slider',
+        'cat'       => [
+            __( 'Basic', 'ultraaddons' ),
+        ],
+    ],
 
 
 ];

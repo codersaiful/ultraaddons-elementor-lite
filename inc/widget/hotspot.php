@@ -302,35 +302,35 @@ class Hotspot extends Base{
 		?>
 	
         <div class="ua-hotspot--wrapper">
-             <img  class="ua-hotspots--figure" src="<?php echo  $settings['_hotspot_image']['url'];?>"/>
+             <img  class="ua-hotspots--figure" src="<?php echo esc_url($settings['_hotspot_image']['url']);?>"/>
             <?php 
             if ( $settings['list'] ) {
                 $count=0;
                 foreach (  $settings['list'] as $item ) {
                     $count		= $count+1;
                      $url		= (!empty( $item['website_link']['url'] )) ? $item['website_link']['url']  : '';
-					 $external 	= ( $item['website_link']['is_external']=='on') ? 'target="_blank"' : '';
+					 $is_external 	= ( $item['website_link']['is_external']=='on') ? 'target="_blank"' : '';
 					 $nofollow 	= ( $item['website_link']['nofollow']=='on') ? 'rel="nofollow"' :'';
-
             ?>
 			<?php
-			if(!empty($url)){
+			if(!empty($url)):
 			?>
-            <a href="<?php echo $url; ?>" <?php echo $external;?> <?php echo $nofollow;?> class="ua-hotspot elementor-repeater-item-<?php echo $item['_id']; ?> ua-hotspot--<?php echo  $count;?>">
+            <a href="<?php echo esc_url($url); ?>" <?php echo esc_attr($is_external);?> <?php echo esc_attr($nofollow);?> class="ua-hotspot elementor-repeater-item-<?php echo $item['_id']; ?> ua-hotspot--<?php echo  $count;?>">
                 <span class="ua-hotspot--title">
-                    <?php echo  $item['list_title'];?>
+                    <?php echo $item['list_title'];?>
                 </span>
                 <span class="ua-hotspot--cta"></span>
             </a>
             <?php 
-			}else{?>
-				<div class="ua-hotspot elementor-repeater-item-<?php echo $item['_id']; ?> ua-hotspot--<?php echo  $count;?>">
+			else:?>
+				<div class="ua-hotspot elementor-repeater-item-<?php echo $item['_id']; ?> ua-hotspot--<?php echo $count;?>">
 					<span class="ua-hotspot--title">
-						<?php echo  $item['list_title'];?>
+						<?php echo $item['list_title'];?>
 					</span>
 					<span class="ua-hotspot--cta"></span>
 				</div>
-			<?php }
+			<?php 
+			endif;
             }
         } ?>
         </div>

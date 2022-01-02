@@ -814,6 +814,7 @@
                         });
                 }
             );
+
             
             //Portfolio Gallery
             EF.hooks.addAction(
@@ -832,6 +833,28 @@
                     //add active class on selected item
                     $('.list').click(function(){
                       $(this).addClass('active').siblings().removeClass('active');    
+                    })
+                }
+            );
+
+
+             //Portfolio Gallery
+             EF.hooks.addAction(
+                'frontend/element_ready/ultraaddons-hero-slider.default',
+                function ($scope) {
+                    var mySwiper = new Swiper('.ua-hero', {
+                        loop: true,
+                        spaceBetween: 50,
+                        speed: 1000,
+                        effect: 'fade',
+                        navigation: {
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        },
+                        autoplay: {
+                            delay: 5000,
+                            disableOnInteraction: false,
+                        }
                     })
                 }
             );

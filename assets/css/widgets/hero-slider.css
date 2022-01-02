@@ -1,0 +1,78 @@
+
+.ua-hero .swiper-slide {
+    min-height: 600px;
+    text-align: center;
+}
+
+.ua-hero .ua-slider-container {
+    padding: 100px;
+}
+
+.ua-hero .ua-slider-sub-title {
+    font-size: 30px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 9.2px;
+    color: #ffffff;
+}
+
+.ua-hero .ua-slider-title {
+    font-size: 70px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: -1.03px;
+    color: #ffffff;
+    padding: 50px 0px;
+    opacity: 1;
+}
+
+.ua-hero .slider-buttton {
+    font-weight: 600;
+    letter-spacing: 1.29px;
+    border: solid 1px #ffffff;
+    padding: 10px 20px;
+    color: #ffffff;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+.ua-hero .slide-1 {
+    background: url("http://demo2.joomshaper.com/2019/indigo/images/2019/06/10/slider-02.jpg");
+    background-size: cover;
+}
+
+.ua-hero .slide-2 {
+    background: url("http://demo2.joomshaper.com/2019/indigo/images/2019/06/10/slider-03.jpg");
+    background-size: cover;
+}
+
+
+
+
+.ua-hero .slider-buttton {
+    display: inline-block;
+}
+
+.ua-hero .swiper-slide-active .slider-sub-title {
+    animation: rollIn 1s;
+}
+
+.ua-hero .swiper-slide-active .slider-title {
+    animation: fadeInUp 1.5s;
+}
+.ua-hero .swiper-slide-active.slide-2 .slider-title {
+    animation: fadeInRight 1.5s;
+}
+.ua-hero .swiper-slide-active.slide-3 .slider-title {
+    animation: fadeInLeft 1.5s;
+}
+
+
+.ua-hero .swiper-slide-active .slider-buttton {
+    animation: zoomIn 2s;
+}
+
