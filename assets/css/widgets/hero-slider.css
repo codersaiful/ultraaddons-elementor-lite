@@ -1,16 +1,18 @@
-
-.ua-hero .swiper-slide {
-    min-height: 600px;
+.ua-hero{
+    position: relative;
+}
+.swiper-slide {
+    min-height: 500px;
     text-align: center;
 }
 
-.ua-hero .ua-slider-container {
+.ua-slider-container {
     padding: 100px;
 }
 
-.ua-hero .ua-slider-sub-title {
-    font-size: 30px;
-    font-weight: 600;
+.ua-slider-sub-title {
+    font-size: 18px;
+    font-weight: 400;
     font-style: normal;
     font-stretch: normal;
     line-height: normal;
@@ -18,8 +20,8 @@
     color: #ffffff;
 }
 
-.ua-hero .ua-slider-title {
-    font-size: 70px;
+.ua-slider-title {
+    font-size: 40px;
     font-weight: bold;
     font-style: normal;
     font-stretch: normal;
@@ -30,49 +32,40 @@
     opacity: 1;
 }
 
-.ua-hero .slider-buttton {
-    font-weight: 600;
+.ua-slider-container .ua-slider-buttton {
+    font-weight: 400;
     letter-spacing: 1.29px;
     border: solid 1px #ffffff;
     padding: 10px 20px;
     color: #ffffff;
-    font-size: 30px;
+    font-size: 21px;
     text-decoration: none;
 }
 
-.ua-hero .slide-1 {
-    background: url("http://demo2.joomshaper.com/2019/indigo/images/2019/06/10/slider-02.jpg");
-    background-size: cover;
-}
-
-.ua-hero .slide-2 {
-    background: url("http://demo2.joomshaper.com/2019/indigo/images/2019/06/10/slider-03.jpg");
-    background-size: cover;
-}
-
-
-
-
-.ua-hero .slider-buttton {
+.ua-slider-buttton {
     display: inline-block;
 }
 
-.ua-hero .swiper-slide-active .slider-sub-title {
+.swiper-slide-active .ua-slider-sub-title {
     animation: rollIn 1s;
 }
 
-.ua-hero .swiper-slide-active .slider-title {
+.swiper-slide-active .ua-slider-title {
     animation: fadeInUp 1.5s;
 }
-.ua-hero .swiper-slide-active.slide-2 .slider-title {
+.swiper-slide-active.slide-1 .ua-slider-title {
     animation: fadeInRight 1.5s;
 }
-.ua-hero .swiper-slide-active.slide-3 .slider-title {
+.swiper-slide-active.slide-2 .ua-slider-title {
     animation: fadeInLeft 1.5s;
 }
 
-
-.ua-hero .swiper-slide-active .slider-buttton {
+.swiper-slide-active .ua-slider-buttton {
     animation: zoomIn 2s;
 }
-
+.ua-image {
+    background-size: cover !important;
+}
+.swiper-wrapper{
+    overflow: hidden;
+}

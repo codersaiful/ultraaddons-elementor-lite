@@ -106,7 +106,61 @@ class Hero_Slider extends Base{
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
-        
+        $repeater = new \Elementor\Repeater();
+
+		$repeater->add_control(
+			'list_title', [
+				'label' => esc_html__( 'Title', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => esc_html__( 'List Title' , 'ultraaddons' ),
+				'label_block' => true,
+			]
+		);
+        $repeater->add_control(
+			'list_content', [
+				'label' => esc_html__( 'Content', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => esc_html__( 'Lorem ipsum dolor sit amet consectetur adipisicing elit.' , 'ultraaddons' ),
+				'label_block' => true,
+			]
+		);
+        $repeater->add_control(
+			'image',
+			[
+				'label' => esc_html__( 'Choose Image', 'ultraaddons' ),
+				'type' => Controls_Manager::MEDIA,
+				'default' => [
+					
+				],
+			]
+		);
+        $repeater->add_control(
+			'list_btn', [
+				'label' => esc_html__( 'Button Text', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => esc_html__( 'Read More' , 'ultraaddons' ),
+				'label_block' => true,
+			]
+		);
+        $this->add_control(
+			'list',
+			[
+				'label' => esc_html__( 'Repeater List', 'ultraaddons' ),
+				'type' => Controls_Manager::REPEATER,
+				'fields' => $repeater->get_controls(),
+				'default' => [
+					[
+						'list_title' => esc_html__( 'iPhone', 'ultraaddons' ),
+					],
+					[
+						'list_title' => esc_html__( 'Mackbook', 'ultraaddons' ),
+					],
+
+				],
+				'title_field' => '{{{ list_title }}}',
+			]
+		);
+
         
         $this->end_controls_section();
     }
@@ -122,28 +176,34 @@ class Hero_Slider extends Base{
     protected function render() {
         $settings           = $this->get_settings_for_display();
         ?>
-    <div class="ua-hero">
+   <!-- Slider main container -->
+   <div class="ua-hero">
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
             <!-- Slides -->
-            <div class="swiper-slide slide-1">
+            <?php 
+            if ( $settings['list'] ) {
+                $count=0;
+                foreach (  $settings['list'] as $item ) {
+                    $count = $count+1;
+
+
+            ?>
+            <div class="swiper-slide slide-<?php echo $count;?>">
+                <div class="ua-image" style="background: url(<?php echo $item['image']['url'] ;?>)">
                     <div class="ua-slider-container">
-                        <h4 class="ua-slider-sub-title">Learn To Face Difficulty</h4>
+                        <h4 class="ua-slider-sub-title">
+                            <?php echo $item['list_title'];?>
+                        </h4>
                         <div class="animated-area">
-                                <h1 class="ua-slider-title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
-                                <a href="#" class="slider-buttton">Start Projects</a>
+                                <h1 class="ua-slider-title"><?php echo $item['list_content'];?></h1>
+                                <a href="#" class="ua-slider-buttton"><?php echo $item['list_btn'];?></a>
                         </div>
                     </div>
+                </div>
             </div>
-            <div class="swiper-slide slide-2">
-                    <div class="ua-slider-container">
-                        <h4 class="ua-slider-sub-title">Learn To Face Difficulty</h4>
-                        <div class="animated-area">
-                                <h1 class="ua-slider-title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
-                                <a href="#" class="slider-buttton">Start Projects</a>
-                        </div>
-                    </div>
-            </div>
+            <?php }
+        }?>
         </div>
         <!-- If we need navigation buttons -->
         <div class="swiper-button-prev"></div>
