@@ -93,8 +93,8 @@ class Hotspot extends Base{
 				'placeholder' => esc_html__( 'https://your-link.com', 'ultraaddons' ),
 				'default' => [
 					'url' => '',
-					'is_external' => true,
-					'nofollow' => true,
+					'is_external' => false,
+					'nofollow' => false,
 					'custom_attributes' => '',
 				],
                 'separator' => 'after'
@@ -308,20 +308,29 @@ class Hotspot extends Base{
                 $count=0;
                 foreach (  $settings['list'] as $item ) {
                     $count		= $count+1;
-					//print_r($item['website_link']);
-
-                     $url		= (!empty( $item['website_link']['url'] )) ? $item['website_link']['url']  : '#';
+                     $url		= (!empty( $item['website_link']['url'] )) ? $item['website_link']['url']  : '';
 					 $external 	= ( $item['website_link']['is_external']=='on') ? 'target="_blank"' : '';
 					 $nofollow 	= ( $item['website_link']['nofollow']=='on') ? 'rel="nofollow"' :'';
 
             ?>
-            <a href="<?php echo $url; ?>" <?php echo $external;?> <?php echo $nofollow;?> class="ua-hotspot elementor-repeater-item-<?php echo $item['_id']; ?> ua-hotspot--<?php echo  $count;?>" href="#">
+			<?php
+			if(!empty($url)){
+			?>
+            <a href="<?php echo $url; ?>" <?php echo $external;?> <?php echo $nofollow;?> class="ua-hotspot elementor-repeater-item-<?php echo $item['_id']; ?> ua-hotspot--<?php echo  $count;?>">
                 <span class="ua-hotspot--title">
                     <?php echo  $item['list_title'];?>
                 </span>
                 <span class="ua-hotspot--cta"></span>
             </a>
             <?php 
+			}else{?>
+				<div class="ua-hotspot elementor-repeater-item-<?php echo $item['_id']; ?> ua-hotspot--<?php echo  $count;?>">
+					<span class="ua-hotspot--title">
+						<?php echo  $item['list_title'];?>
+					</span>
+					<span class="ua-hotspot--cta"></span>
+				</div>
+			<?php }
             }
         } ?>
         </div>
