@@ -1,0 +1,178 @@
+.portfolio-filter {
+  /* margin: 40px auto; */
+}
+.portfolio-filter ul {
+  display: flex;
+  margin-bottom: 30px;
+}
+.portfolio-filter ul li {
+  list-style: none;
+  background: #eee;
+  padding: 8px 20px;
+  margin: 0 5px 0 0px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+.portfolio-filter ul li.active {
+  background: #03a9f4;
+  color: #fff;
+}
+.portfolio-filter .product {
+  display: flex;
+  flex-wrap: wrap;
+}
+.portfolio-filter .product .itemsbox {
+  position: relative;
+  width: 300px;
+  margin: 5px;
+}
+.portfolio-filter .product .itemsbox img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+}
+
+.pf .ua-product-card {
+  position: relative;
+  box-shadow: 0 2px 7px #dfdfdf;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.pf .ua-badge span.ua-onsale {
+  min-height: 2em;
+  min-width: 4em;
+  font-size: 1em;
+  font-weight: 700;
+  position: absolute;
+  text-align: center;
+  padding: 2px;
+  top: 0;
+  left: 0;
+  margin: 0;
+  background-color: #77a464;
+  color: #fff;
+  font-size: .857em;
+  z-index: 9;
+}
+
+.pf .ua-product-tumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pf .ua-product-tumb img {
+   max-width: 100%; 
+   max-height: 100%;
+}
+
+.pf .ua-product-details {
+  padding: 30px;
+}
+
+.pf .ua-product-catagory {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #ccc;
+  margin-bottom: 18px;
+}
+
+.pf .ua-product-details h4 a {
+  font-weight: 500;
+  display: block;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  color: #363636;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.pf .ua-product-details h4 a:hover {
+  color: #c36;
+}
+
+.pf .ua-product-details p {
+  font-size: 15px;
+  line-height: 22px;
+  margin-bottom: 18px;
+  color: #999;
+}
+
+.pf .ua-product-bottom-details {
+  overflow: hidden;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+.pf .ua-product-bottom-details div {
+  float: left;
+  width: 50%;
+}
+
+.pf .ua-product-price {
+  font-size: 17px;
+  color: #c36;
+  font-weight: 600;
+}
+
+.pf .ua-product-price small {
+  font-size: 80%;
+  font-weight: 400;
+  text-decoration: line-through;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.pf .ua-product-links {
+  text-align: right;
+}
+
+.pf .ua-product-links a {
+  display: inline-block;
+  margin-left: 5px;
+  color: #e1e1e1;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+.pf .ua-product-links a:hover {
+  color: #c36;
+}
+
+.pf .flex-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.pf .flex-col {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+  flex: 0 0 50%;
+  max-width: 50%
+}
+.flex-col-order{
+  order: 1;
+}
+.pf .flex-justify-content-start{
+  justify-content: start;
+}
+.pf .flex-justify-content-end{
+  justify-content:end;
+}
+.pf .flex-justify-content-center{
+  justify-content:center;
+}
+.ua-product-tumb.flex-col img {
+  height: 100%;
+  object-fit:cover
+}
+.pf .ua-product-title {
+  font-size:22px
+}

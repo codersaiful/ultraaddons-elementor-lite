@@ -14,7 +14,7 @@ use Elementor\Group_Control_Background;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Post_Title extends Base{
+class ready extends Base{
     
     /**
      * Get your widget name

@@ -1,0 +1,47 @@
+
+  /*boxes*/
+  .ua-cat-box {
+    position: relative;
+    color: white;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    height: 100%;
+  }
+  .ua-cat-box .cat-image img {
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease;
+  }
+  .ua-cat-box .cat-image {
+    box-shadow: 0 5px 20px -5px rgb(0 0 0 / 10%);
+  }
+  .ua-cat-box:hover .cat-image {
+    box-shadow: 0 10px 30px rgb(0 0 0 / 20%);
+  }
+  .ua-cat-box:hover .cat-image img {
+    transform: scale(1.03);
+    transition: transform 0.5s ease;
+  }
+  .ua-cat-box .cat-name {
+    background: rgba(255, 255, 255, 0.9);
+    transition: all 0.075s ease-out;
+    color: rgba(51, 51, 51, 1);
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 13px;
+    padding: 8px 12px;
+    font-weight: bold;
+    position:absolute;
+    top:50%;
+    left:50%;
+  }
+
+  .cat-name.reset{
+      position:static;
+      top:auto;
+      left: auto;
+  }
+  .ua-row .ua-cat-box a{
+    text-decoration:none
+  }

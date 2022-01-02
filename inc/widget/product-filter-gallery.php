@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace UltraAddons\Widget;
 
 use Elementor\Widget_Base;
@@ -10,27 +10,18 @@ use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Background;
-use Elementor\Group_Control_Image_Size;
-use Elementor\Icons_Manager;
-use Elementor\Plugin;
 
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-/**
- * Flip Box Widget
- * FlipBox is a cool user interface for web. Interactive way with before and after effects.
- * 
- * Credit: https://codepen.io/Aoyue/pen/pLJqgE
- * 
- * 
- * @since 1.1.0.7
- * @package UltraAddons
- * @author Saiful islam <codersaiful@gmail.com>
- * @author Rafiul <bmrafiul.alam@gmail.com>
- */
-class Product_Grid extends Base{
+class Product_Filter_Gallery extends Base{
+     /**
+     * @var string
+     *
+     * Set post type params
+     */
 
+    
     /**
      * Get your widget name
      *
@@ -42,18 +33,10 @@ class Product_Grid extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua', 'products', 'product', 'grid', 'woo','wc' ];
+        return [ 'ultraaddons','ua', 'portfolio', 'photo', 'gallery','filter' ];
     }
-	
-	
-	 /**
-     * Register widget controls.
-     *
-     * Adds different input fields to allow the user to change and customize the widget settings.
-     *
-     * @since 1.0.0
-     * @access protected
-     */
+    
+    
     protected function _register_controls() {
 		//For Query Tab
         $this->query_controls();
@@ -63,6 +46,8 @@ class Product_Grid extends Base{
 		$this->card_col_settings();
 		//For Box Style Tab
         $this->style_box_controls();
+		//For Filter btn Tab
+        $this->filter_btn_controls();
 		//For cart btn Tab
         $this->cart_btn_controls();
 		//For sale flash Tab
@@ -140,7 +125,7 @@ class Product_Grid extends Base{
 					'date' => 'Date',
 					'modified' => 'Modified',
 				],
-				'default' => 'date',
+				'default' => 'random',
 			]
 		);
 
@@ -150,12 +135,13 @@ class Product_Grid extends Base{
                 'label' => esc_html__( 'Select category', 'ultraaddons' ),
                 'type' => Controls_Manager::SELECT2,
                 'options' => $this->product_tax_options(),
-                'multiple' => 'true'
+                'multiple' => 'true',
+				'description'=> "Select order by 'Random' for the best match when you selected the category by manually."
             ]
         );
 
 		
-		$this->add_control(
+	/* 	$this->add_control(
             'tag_ids',
             [
                 'label' => esc_html__( 'Select Tag', 'ultraaddons' ),
@@ -163,7 +149,7 @@ class Product_Grid extends Base{
                 'options' => $this->product_tax_options( 'product_tag' ),
                 'multiple' => 'true'
             ]
-        );
+        ); */
 
 
 		$this->add_control(
@@ -186,7 +172,7 @@ class Product_Grid extends Base{
 				'label_block' => true,
 			]
 		);
-		 
+		
 		
 		$this->end_controls_section();
 	}
@@ -294,13 +280,21 @@ class Product_Grid extends Base{
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
-	
+		$this->add_control(
+			'_ua_all_btn_txt',
+			[
+				'label' => __( 'Button Text', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __( 'All', 'ultraaddons' ),
+				'label_block' => false,
+			]
+		);
 		$this->add_control(
 			'_ua_title_color', [
 				'label' => __( 'Title Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .pg .ua-product-title' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .pf .ua-product-title' => 'color: {{VALUE}};',
 				],
 				'default'=>'#111'
 			]
@@ -310,7 +304,7 @@ class Product_Grid extends Base{
 			[
 					'name' => 'product_title_typography',
 					'label' => 'Title Typography',
-					'selector' => '{{WRAPPER}} .pg .ua-product-title',
+					'selector' => '{{WRAPPER}} .pf .ua-product-title',
 			]
         );
         $this->add_responsive_control(
@@ -326,7 +320,7 @@ class Product_Grid extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .pg .ua-product-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .pf .ua-product-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -336,7 +330,7 @@ class Product_Grid extends Base{
 				'label' => __( 'Price Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .pg .ua-product-price' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .pf .ua-product-price' => 'color: {{VALUE}};',
 				],
                 'separator' =>'before'
 			]
@@ -347,7 +341,7 @@ class Product_Grid extends Base{
 			[
 					'name' => 'price_typography',
 					'label' => 'Price Typography',
-					'selector' => '{{WRAPPER}} .pg .ua-product-price',
+					'selector' => '{{WRAPPER}} .pf .ua-product-price',
 
 			]
         );
@@ -357,7 +351,7 @@ class Product_Grid extends Base{
 				'label' => __( 'Description Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .pg .ua-product-details p' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .pf .ua-product-details p' => 'color: {{VALUE}};',
 				],
 				'separator' => 'before'
 			]
@@ -369,7 +363,7 @@ class Product_Grid extends Base{
 			[
 					'name' => 'content_typography',
 					'label' => 'Description Typography',
-					'selector' => '{{WRAPPER}} .pg .ua-product-details p',
+					'selector' => '{{WRAPPER}} .pf .ua-product-details p',
 			]
 		);
 		$this->add_responsive_control(
@@ -385,7 +379,7 @@ class Product_Grid extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .pg .ua-product-details p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .pf .ua-product-details p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -402,7 +396,7 @@ class Product_Grid extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .pg .ua-product-details' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .pf .ua-product-details' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -413,7 +407,7 @@ class Product_Grid extends Base{
 				'type'      => Controls_Manager::COLOR,
 				'default'	=> '#a1a1a1',
 				'selectors' => [
-						'{{WRAPPER}} .pg .product-catagory' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .pf .product-catagory' => 'color: {{VALUE}};',
 				],
 				'separator' => 'before'
 			]
@@ -425,7 +419,7 @@ class Product_Grid extends Base{
 			[
 					'name' => 'cat_typography',
 					'label' => 'Category Typography',
-					'selector' => '{{WRAPPER}} .pg .product-catagory',
+					'selector' => '{{WRAPPER}} .pf .product-catagory',
 			]
 		);
 		$this->add_control(
@@ -493,7 +487,7 @@ class Product_Grid extends Base{
 				'type'      => Controls_Manager::COLOR,
                 'default'   => '#fff',
 				'selectors' => [
-						'{{WRAPPER}} .pg .ua-product-card' => 'background: {{VALUE}};',
+						'{{WRAPPER}} .pf .ua-product-card' => 'background: {{VALUE}};',
 				]
 			]
         );
@@ -510,7 +504,7 @@ class Product_Grid extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .pg .ua-product-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .pf .ua-product-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -520,7 +514,7 @@ class Product_Grid extends Base{
 			[
 				'name' => 'box_shadow',
 				'label' => __( 'Box Shadow', 'ultraaddons' ),
-				'selector' => '{{WRAPPER}} .pg .ua-product-card',
+				'selector' => '{{WRAPPER}} .pf .ua-product-card',
 			]
 		);
 		$this->add_group_control(
@@ -528,7 +522,7 @@ class Product_Grid extends Base{
 			[
 				'name' => 'box_border',
 				'label' => esc_html__( 'Border', 'ultraaddons' ),
-				'selector' => '{{WRAPPER}} .pg .ua-product-card',
+				'selector' => '{{WRAPPER}} .pf .ua-product-card',
 			]
 		);
 		$this->add_group_control(
@@ -537,9 +531,177 @@ class Product_Grid extends Base{
 				'name' => 'footer_line_border',
 				'label' => esc_html__( 'Footer Border', 'ultraaddons' ),
 				'show_label'=>true,
-				'selector' => '{{WRAPPER}} .pg .ua-product-bottom-details',
+				'selector' => '{{WRAPPER}} .pf .ua-product-bottom-details',
 			]
 		);
+		
+		$this->end_controls_section();
+	}
+
+	/**
+	 * Filter Button Style.
+	 */
+	protected function filter_btn_controls(){
+		$this->start_controls_section(
+            'filter_btn_style',
+            [
+                'label'     => esc_html__( 'Filter Button', 'ultraaddons' ),
+				'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->start_controls_tabs(
+			'filter_btn_normal_tabs'
+		);
+		/**
+		 * Normal tab
+		 */
+		$this->start_controls_tab(
+			'filter_normal_tab',
+			[
+				'label' => __( 'Normal', 'ultraaddons' ),
+			]
+		);
+		$this->add_control(
+			'_ua_filter_btn_bg', [
+				'label' => __( 'Button Background Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .pf ul li' => 'background-color: {{VALUE}};',
+				]
+			]
+        );
+		$this->add_control(
+			'_ua_filter_btn_color', [
+				'label' => __( 'Button Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .pf ul li' => 'color: {{VALUE}};',
+				]
+			]
+        );
+	
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'filter_btn_typography',
+					'label' => 'Button Typography',
+					'selector' => '{{WRAPPER}} .pf ul li',
+			]
+        );
+	
+		$this->add_responsive_control(
+			'_filter_btn_padding',
+			[
+				'label'       => esc_html__( 'Button Padding', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px','em' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .pf ul li' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'_filter_btn_margin',
+			[
+				'label'       => esc_html__( 'Button Margin', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px','em' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .pf ul li' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'_filter_btn_radius',
+			[
+				'label'       => esc_html__( 'Button Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .pf ul li' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		
+		$this->end_controls_tab();
+		/**
+		 * Button Hover tab
+		 */
+		$this->start_controls_tab(
+			'filter_btn_hover_tabs',
+			[
+				'label' => __( 'Hover', 'ultraaddons' ),
+			]
+		);
+		$this->add_control(
+			'_ua_filter_btn_hover_bg', [
+				'label' => __( 'Background Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .pf ul li:hover' => 'background-color: {{VALUE}};',
+				]
+			]
+        );
+		$this->add_control(
+			'_ua_filter_btn_hover_color', [
+				'label' => __( 'Button Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}}  .pf ul li:hover' => 'color: {{VALUE}};',
+				]
+			]
+        );
+		$this->end_controls_tab();
+		/**
+		 * Button Active tab
+		 */
+		$this->start_controls_tab(
+			'filter_btn_active_tabs',
+			[
+				'label' => __( 'Active', 'ultraaddons' ),
+			]
+		);
+		$this->add_control(
+			'_ua_filter_btn_active_bg', [
+				'label' => __( 'Background Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .pf ul li.active' => 'background-color: {{VALUE}};',
+				]
+			]
+        );
+		$this->add_control(
+			'_ua_filter_btn_active_color', [
+				'label' => __( 'Button Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}}  .pf ul li.active' => 'color: {{VALUE}};',
+				]
+			]
+        );
+		
+	
+		$this->end_controls_tabs();
+		
+		$this->end_controls_tab();
 		
 		$this->end_controls_section();
 	}
@@ -920,17 +1082,26 @@ class Product_Grid extends Base{
 		
 		$this->end_controls_section();
 	}
+    
+    
+    /**
+     * Render oEmbed widget output on the frontend.
+     *
+     * Written in PHP and used to generate the final HTML.
+     *
+     * @since 1.0.0
+     * @access protected
+     */
     protected function render() {
-
-		//Intrigate with WooCommerce
+        //Intrigate with WooCommerce
         if( ! class_exists( 'WooCommerce' ) ){
             echo "<div class='ua-alert'>" . esc_html__( "WooCommerce is not Activated.", 'ultraaddons' ) . "</div>";
 			return;
         }
-		$settings 	= $this->get_settings_for_display();
+        $settings   = $this->get_settings_for_display();
 		$col 		= $settings['_ua_col'];
-		$flex_col='';
-		$flex_row='';
+		$flex_col	='';
+		$flex_row	='';
 		if ( 'yes'==$settings['_ua_card_direction'] ) {
 			$flex_col='flex-col';
 			$flex_row='flex-row';
@@ -957,9 +1128,54 @@ class Product_Grid extends Base{
 				'class' => 'ua-product-details ' . $flex_col . ' ' . $justifyContent ,
 			]
 		);
-	?>
-	<div class="ua-row pg">
-	<?php
+    ?>
+<section class="portfolio-filter">
+	<div class="ua-row pf">
+		<div class="ua-col-1">
+			<?php
+			if(empty($settings['cat_ids'])):?>
+				<ul class="pf-filter-btn">
+					<li class="list active" data-filter="all"><?php echo $settings['_ua_all_btn_txt'];?></li>
+					<?php
+					$args = array(
+						'orderby'       => 'ID',
+						'order'         => 'DESC',
+						'hide_empty'    => true,
+						'taxonomy'      => 'product_cat'
+					);
+					//Filter List by category 
+					$categories = get_categories( $args );
+					if(is_array($categories) && count($categories) > 0):
+						foreach ($categories as $cat):?>
+						<li class="list" data-filter="<?php echo  $cat->name;?>">
+							<?php echo  $cat->name;?>
+						</li>  
+					<?php
+						endforeach;
+					endif;
+					?>
+				</ul>
+			<?php 
+			else:
+			?>
+			<ul class="pf-filter-btn">
+				<li class="list active" data-filter="all"><?php echo $settings['_ua_all_btn_txt'];?></li>
+				<?php
+				//If Selected manual from frontend
+				$selected_cat = $settings['cat_ids'];
+				foreach($selected_cat as $selected_cats):?>
+					<li class="list" data-filter="<?php echo get_the_category_by_ID( $selected_cats );?>">
+						<?php echo get_the_category_by_ID( $selected_cats );?>
+					</li> 
+				<?php
+				endforeach;
+				?>
+			</ul>
+			<?php
+			endif;
+			?>
+		</div>
+    	<?php
 		$paged = (get_query_var('paged')) ? get_query_var('paged') : $settings['_ua_post_page_number'] ;
         $args = array(
             'post_type' 	=> 'product',
@@ -967,11 +1183,12 @@ class Product_Grid extends Base{
             'paged'         => $paged,
 			'order'			=> $settings['_ua_product_order'],
 			'orderby'		=> $settings['_ua_product_orderby'],
-            );
+        );
 		if(! empty( $settings['_ua_query_post_in'] )){
 			$include_ids = explode(',',$settings['_ua_query_post_in']);
 			$args['post__in'] = $include_ids;
 		}
+
 		if(! empty( $settings['_ua_query_post_not_in'] )){
 			$exclude_ids = explode(',',$settings['_ua_query_post_not_in']);
 			$args['post__not_in'] = $exclude_ids;
@@ -987,7 +1204,7 @@ class Product_Grid extends Base{
 			);
 		}	
 
-		if( ! empty( $settings['tag_ids'] ) ){
+	/* 	if( ! empty( $settings['tag_ids'] ) ){
 			$args['tax_query'] = array(
 				array(
 					'taxonomy'  => 'product_tag',
@@ -995,83 +1212,89 @@ class Product_Grid extends Base{
 					'terms'     => $settings['tag_ids'],
 				)
 			);
-		}	
-
+		} */	
+        
         $loop = new \WP_Query( $args );
-        if ( $loop->have_posts() ) {
+        if ( $loop->have_posts() ):
             while ( $loop->have_posts() ) : $loop->the_post();
-				$id 		= $loop->post->ID;
-                $product   	= wc_get_product( $id );
-				$image_id  	= $product->get_image_id();
-				$image_url 	= wp_get_attachment_image_url( $image_id, 'full' );
-				$description = $loop->post->post_excerpt;
-    ?>
-    <div class="ua-col-<?php echo $col;?>">
-        <div class="ua-product-card <?php echo $flex_row; ?>">
-            <?php if ( $product->is_on_sale() ) : ?>
-            <div class="ua-badge">
-                <?php
-                echo apply_filters( 'woocommerce_sale_flash', '<span class="ua-onsale">' 
-                . esc_html__( 'Sale!', 'ultraaddons' ) . '</span>', $product );
-                ?>
-            </div>
-            <?php endif; ?>
-            
-            <div <?php echo $this->get_render_attribute_string( 'thumb_class' );?>>
-                <?php echo woocommerce_get_product_thumbnail('woocommerce_full_size');?>
-            </div>
-            <div <?php echo $this->get_render_attribute_string( 'ua_product_details' );?>>
-				<div class="product-text-wrap">
-					<span class="product-catagory">
-						<?php 
-						foreach( wp_get_post_terms( get_the_id(), 'product_cat' ) as $term ){
-						if( $term ){
-								echo $term->name; // product category name
-							}
-						}
-						?>
-						</span>
-						<a href="<?php echo get_the_permalink(); ?>">
-						<?php
-							echo '<' . $settings['_ua_front_title_tag'] . ' class="ua-product-title">' 
-								. $loop->post->post_title . 
-								'</' . $settings['_ua_front_title_tag'] . '>';
-							?>
-						</a>
-					<p> <?php echo $this->word_shortener($description, $settings['_ua_text_truncate']);?></p>
-				</div>
-                <div class="ua-product-bottom-details">
-                    <div class="ua-product-price"><?php echo $product->get_price_html();?> </div>
-                    <div class="ua-product-links">
-                        <a href="?add-to-cart=<?php echo esc_attr($id); ?>"  class="add-card button add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo esc_attr($id); ?>"  aria-label="Add '<?php echo get_the_title(); ?>' to your cart" rel="nofollow">
-                            <i class="uicon uicon-cart"></i>
+				$id 		    = $loop->post->ID;
+                $product   	    = wc_get_product( $id );
+				$image_id  	    = $product->get_image_id();
+				$image_url 	    = wp_get_attachment_image_url( $image_id, 'full' );
+				$description    = $loop->post->post_excerpt;
+                
+                //Get Category list for fliter
+				$cat="";
+				foreach( wp_get_post_terms( get_the_id(), 'product_cat' ) as $term ){
+				if( $term ){
+					$cat = $term->name; // product category name
+					}
+				}
+				?>
+				<div class="ua-col-<?php echo $col;?> itemsbox <?php echo $cat;?>">
+					<div class="ua-product-card <?php echo $flex_row; ?>">
+						<?php if ( $product->is_on_sale() ) : ?>
+						<div class="ua-badge">
 							<?php
-							if ( 'yes'!=$settings['_ua_card_direction'] ):
+							echo apply_filters( 'woocommerce_sale_flash', '<span class="ua-onsale">' 
+							. esc_html__( 'Sale!', 'ultraaddons' ) . '</span>', $product );
 							?>
-								<span>
-									<?php echo esc_html__('ADD TO CART', 'ultraaddons'); ?>
-								</span>
-							<?php endif; ?>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-	<?php
-	 endwhile;
-     ?>
-	 /**
-	 Pagination
-	*/
-     <nav class="ua-pagination ua-col-1">
+						</div>
+						<?php endif; ?>
+						
+						<div <?php echo $this->get_render_attribute_string( 'thumb_class' );?>>
+							<?php echo woocommerce_get_product_thumbnail('woocommerce_full_size');?>
+						</div>
+						<div <?php echo $this->get_render_attribute_string( 'ua_product_details' );?>>
+							<div class="product-text-wrap">
+								<span class="product-catagory">
+									<?php 
+									foreach( wp_get_post_terms( get_the_id(), 'product_cat' ) as $term ){
+									if( $term ){
+											echo $term->name; // product category name
+										}
+									}
+									?>
+									</span>
+									<a href="<?php echo get_the_permalink(); ?>">
+									<?php
+										echo '<' . $settings['_ua_front_title_tag'] . ' class="ua-product-title">' 
+											. $loop->post->post_title . 
+											'</' . $settings['_ua_front_title_tag'] . '>';
+										?>
+									</a>
+								<p> <?php echo $this->word_shortener($description, $settings['_ua_text_truncate']);?></p>
+							</div>
+							<div class="ua-product-bottom-details">
+								<div class="ua-product-price"><?php echo $product->get_price_html();?> </div>
+								<div class="ua-product-links">
+									<a href="?add-to-cart=<?php echo esc_attr($id); ?>"  class="add-card button add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo esc_attr($id); ?>"  aria-label="Add '<?php echo get_the_title(); ?>' to your cart" rel="nofollow">
+										<i class="uicon uicon-cart"></i>
+										<?php
+										if ( 'yes'!=$settings['_ua_card_direction'] ):
+										?>
+											<span>
+												<?php echo esc_html__('ADD TO CART', 'ultraaddons'); ?>
+											</span>
+										<?php endif; ?>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+        <?php
+	    endwhile;
+    else:
+		 echo "<div class='ua-alert'>" . esc_html__( "No products found!", 'ultraaddons' ) . "</div>";
+	endif;
+	?>
+	 <nav class="ua-pagination ua-col-1">
         <?php
         $total_pages = $loop->max_num_pages;
 
         if ($total_pages > 1){
-    
             $current_page = max(1, get_query_var('paged'));
-    
             echo paginate_links(array(
                 'base' => get_pagenum_link(1) . '%_%',
                 'format' => '/page/%#%',
@@ -1083,19 +1306,17 @@ class Product_Grid extends Base{
         }
         ?>
     </nav> 
-     <?php
-	} else {
-		 echo "<div class='ua-alert'>" . esc_html__( "No products found!", 'ultraaddons' ) . "</div>";
-	}
+
+	<?php
 	wp_reset_postdata();
     ?>
-    
 	</div>
-<?php }
+</section>
 
+ <?php
+}
 	/**
      * Getting Category list of WooCommerce product
-     * 
      *
      * @return void
      */
@@ -1115,7 +1336,7 @@ class Product_Grid extends Base{
             }
             return $options;
         }
-		}
+	}
 	/**
 	 * Shorter Description
 	 */
@@ -1133,25 +1354,6 @@ class Product_Grid extends Base{
 		  }
 		  return $str . (count($all) <= $words ? '' : $sp);
 	}
-	//Added by Saiful Vai is it working..?
-   public function woocommerce_pagination() {
-        if ( ! wc_get_loop_prop( 'is_paginated' ) || ! woocommerce_products_will_display() ) {
-            return;
-        }
+
     
-        $args = array(
-            'total'   => wc_get_loop_prop( 'total_pages' ),
-            'current' => wc_get_loop_prop( 'current_page' ),
-            'base'    => esc_url_raw( add_query_arg( 'product-page', '%#%', false ) ),
-            'format'  => '?product-page=%#%',
-        );
-    
-        if ( ! wc_get_loop_prop( 'is_shortcode' ) ) {
-            $args['format'] = '';
-            $args['base']   = esc_url_raw( str_replace( 999999999, '%#%', remove_query_arg( 'add-to-cart', get_pagenum_link( 999999999, false ) ) ) );
-        }
-    
-        wc_get_template( 'loop/pagination.php', $args );
-    }
-//End of Class
-}
+}//End Class

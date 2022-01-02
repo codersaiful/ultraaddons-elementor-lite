@@ -1,0 +1,211 @@
+.pf-filter-btn {
+  display: flex;
+  flex-wrap: wrap;
+  /* margin-bottom: 3rem; */
+  font-weight: 400;
+  line-height: 1.5;
+  font-size: 1.6rem;
+  letter-spacing: -.01em;
+  text-transform: uppercase;
+  border-bottom: 1px solid transparent;
+  list-style: none;
+  padding: 0;
+}
+.nav .nav-item+.nav-item {
+  margin-left: 1.5rem;
+}
+
+.pf-filter-btn a {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+}
+
+.ua-cp-product{
+  background:#fff;
+  padding:15px;
+  border-radius:6px;
+  box-shadow: 0px -11px 11px -5px rgb(0 0 0 / 50%);
+  position:relative;
+  margin:20px auto;
+}
+.ua-cp-img{
+  position:absolute;
+  top:5px;
+  left:50%;
+  transform:translate(-50%);
+  -webkit-transform:translate(-50%);
+  -ms-transform:translate(-50%);
+  -moz-transform:translate(-50%);
+  -o-transform:translate(-50%);
+  -khtml-transform:translate(-50%);
+  width: 100%;
+  padding: 15px;
+  transition: all 0.2s ease-in-out;
+}
+.ua-cp-img img{
+  width:100%;
+  transition: all 0.2s ease-in-out;
+  border-radius:6px;
+}
+.ua-cp-product:hover .ua-cp-img{
+  /* top: -20px; */
+}
+.ua-cp-product:hover .ua-cp-img img{
+  /* box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); */
+}
+.ua-cp-text{
+  padding-top: 100%;
+}
+.ua-cp-text .ua-category{
+  text-align:center;
+  font-size:12px;
+  font-weight:bold;
+  padding:5px;
+  margin-bottom:45px;
+  position:relative;
+  transition: all 0.2s ease-in-out;
+}
+.ua-cp-text .ua-category > *{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  -moz-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  -o-transform: translate(-50%,-50%);
+  -khtml-transform: translate(-50%,-50%);
+    
+}
+.ua-cp-text .ua-category > span{
+  padding: 12px 30px;
+  border: 1px solid #313131;
+  background:#212121;
+  color:#fff;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  border-radius:27px;
+  transition: all 0.05s ease-in-out;
+  
+}
+.ua-cp-product:hover .ua-cp-text .ua-category > span{
+  border-color:#ddd;
+  box-shadow: none;
+  padding: 11px 28px;
+}
+.ua-cp-product:hover .ua-cp-text .ua-category{
+  margin-top: 0px;
+}
+.ua-cp-text .title-product{
+  text-align:center;
+}
+.ua-cp-text .title-product h3{
+  font-size:20px;
+  font-weight:bold;
+  margin:15px auto;
+  overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  width:100%;
+}
+.ua-cp-text .description-prod p{
+  margin:0;
+}
+/* Truncate */
+.ua-cp-text .description-prod {
+  text-align:center;
+  width: 100%;
+  height:62px;
+  overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  margin-bottom:15px;
+}
+.ua-card-footer{
+  padding: 25px 0 5px;
+  border-top: 1px solid #ddd;
+}
+.ua-card-footer:after, .card-footer:before{
+  content:'';
+  display:table;
+}
+.ua-card-footer:after{
+  clear:both;
+}
+
+.ua-card-footer .ua-left{
+  float:left;
+  
+}
+
+.ua-card-footer .ua-right{
+  float:right;
+}
+
+.price{
+  font-size:18px;
+  font-weight:bold;
+}
+
+a.buy-btn{
+  display:block;
+  color:#212121;
+  text-align:center;
+  font-size: 18px;
+  width:35px;
+  height:35px;
+  line-height:35px;
+  border-radius:50%;
+  border: 1px solid #b1b1b1;
+  transition: all 0.2s ease-in-out;
+}
+a.buy-btn:hover , a.buy-btn:active, a.buy-btn:focus{
+  border-color: #1b1c1c;
+  background: #000000;
+  color: #fff;
+  text-decoration:none;
+}
+.pgf .ua-btn{
+  display:inline-block;
+  color:#212121;
+  text-align:center;
+  font-size: 18px;
+  transition: all 0.2s ease-in-out;
+  border-color: #FF9800;
+  background: #FF9800;
+  padding:12px 30px;
+  border-radius:27px;
+  margin: 0 5px;
+  text-decoration: none;
+}
+.pgf  .ua-btn:hover, .pgf  .ua-btn:focus, .pgf  .ua-btn:active{
+  text-decoration:none;
+  color:#fff;
+}  
+.pf-filter-btn li.list {
+  margin-right: 5px;
+}
+@media screen and (max-width: 991px) {
+  .ua-cp-product{
+    margin:40px auto;
+  }
+  .ua-cp-product .ua-cp-img{
+  top:-40px;
+  }
+  .ua-cp-product .ua-cp-img img{
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  }
+    .ua-cp-product .ua-cp-text .ua-category > span{
+    border-color:#ddd;
+    box-shadow: none;
+    padding: 11px 28px;
+  }
+  .ua-cp-product .ua-cp-text .ua-category{
+    margin-top: 0px;
+  }
+  a.buy-btn{
+    border-color: #FF9800;
+    background: #FF9800;
+    color: #fff;
+  }
+}

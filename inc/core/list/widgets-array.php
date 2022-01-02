@@ -11,8 +11,8 @@
 
 $widgetsArray = [
     
-    'Button'=> [
-            'name'      => __( 'Button', 'ultraaddons' ),
+    'Simple_Button'=> [
+            'name'      => __( 'Simple Button', 'ultraaddons' ),
             'is_pro'   => false,
             'icon'      => 'uicon-button',
             'cat'       => [
@@ -451,7 +451,7 @@ $widgetsArray = [
 	'Product_Flip' => [
             'name'  => __( 'Product Flip', 'ultraaddons' ),
             'is_pro'   => false,
-            'icon'      => 'eicon-clock-o',
+            'icon'      => 'eicon-flip-box',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
@@ -459,7 +459,7 @@ $widgetsArray = [
     'Product_Carousel' => [
             'name'  => __( 'Product Carousel', 'ultraaddons' ),
             'is_pro'   => false,
-            'icon'      => 'eicon-clock-o',
+            'icon'      => 'eicon-products',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
@@ -483,7 +483,7 @@ $widgetsArray = [
     'Product_Flip_Carousel' => [
             'name'  => __( 'Product Flip Carousel', 'ultraaddons' ),
             'is_pro'   => false,
-            'icon'      => 'eicon-time-line',
+            'icon'      => 'eicon-products',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
             ],
@@ -503,7 +503,47 @@ $widgetsArray = [
         'cat'       => [
             __( 'Basic', 'ultraaddons' ),
         ],
-]
+    ],
+/*     'Product_Filter_Gallery' => [
+        'name'  => __( 'Product Filter Gallery', 'ultraaddons' ),
+        'is_pro'   => false,
+        'icon'      => 'eicon-posts-masonry',
+        'cat'       => [
+            __( 'Basic', 'ultraaddons' ),
+        ],
+    ], */
+    'Button'=> [
+        'name'      => __( 'Button', 'ultraaddons' ),
+        'is_pro'   => false,
+        'icon'      => 'uicon-button',
+        'cat'       => [
+            __( 'Basic', 'ultraaddons' ),
+        ],
+    ],
+    'Product_Tabs'=> [
+        'name'      => __( 'Product Tabs', 'ultraaddons' ),
+        'is_pro'   => false,
+        'icon'      => 'eicon-product-images',
+        'cat'       => [
+            __( 'Basic', 'ultraaddons' ),
+        ],
+    ],
+    'Hotspot'=> [
+        'name'      => __( 'Hotspot', 'ultraaddons' ),
+        'is_pro'   => false,
+        'icon'      => 'eicon-image-hotspot',
+        'cat'       => [
+            __( 'Basic', 'ultraaddons' ),
+        ],
+    ],
+    'Product_Category_Grid'=> [
+        'name'      => __( 'Product Category Grid', 'ultraaddons' ),
+        'is_pro'   => false,
+        'icon'      => 'eicon-product-images',
+        'cat'       => [
+            __( 'Basic', 'ultraaddons' ),
+        ],
+    ],
 
 
 ];

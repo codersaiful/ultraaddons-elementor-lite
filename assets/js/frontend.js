@@ -774,46 +774,7 @@
                         });
                 }
         );
-        
-      /**
-       * Prduct Flip Carousel Called here
-       *
-       * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
-       * @since 1.1.0.8
-       */
-      /* var Product_Flip_Carousel = EM.frontend.handlers.Base.extend({
-        onInit: function () {
-          this.run();
-        },
-        onChange: function () {
-          this.run();
-        },
-        getReadySettings: function () {
-          var settings = this.getElementSettings();
-
-          var generated_settings = {
-            pagination: false,
-            loader: true,
-          };
-          return Object.assign(settings, generated_settings);
-        },
-
-        run: function () {
-          var targetElement = this.$element.find(".p-flip-item");
-          targetElement.flipcarousel(this.getReadySettings());
-        },
-      });
-      // Prduct Flip Carousel Hooked Here
-      EF.hooks.addAction(
-        "frontend/element_ready/ultraaddons-product-flip-carousel.default",
-        function ($scope) {
-          EF.elementsHandler.addHandler(Product_Flip_Carousel, {
-            $element: $scope,
-          });
-        }
-      );  */
-
-			
+        	
 			 /**
              * Skill Chart
              * 
@@ -854,8 +815,29 @@
                 }
             );
             
+            //Portfolio Gallery
+            EF.hooks.addAction(
+                'frontend/element_ready/ultraaddons-product-filter-gallery.default',
+                function ($scope) {
+                    $('.list').click(function(){
+                        const value = $(this).attr('data-filter');
+                        if (value == 'all'){
+                          $('.itemsbox').show('1000');
+                        }
+                        else {
+                          $('.itemsbox').not('.'+value).hide('1000');
+                          $('.itemsbox').filter('.'+value).show('1000');
+                        }
+                      })
+                    //add active class on selected item
+                    $('.list').click(function(){
+                      $(this).addClass('active').siblings().removeClass('active');    
+                    })
+                }
+            );
+
             
-    });// Init wrap up
+    });// Init wrapup
    
 
     /**
@@ -912,7 +894,7 @@
                 },
                 success: function(response){
 
-//                                    setFragmentsRefresh( response );
+//                   setFragmentsRefresh( response );
                     if(typeof minicart_type !== 'undefined'){
                         var cart_hash = response.cart_hash;
                         var fragments = response.fragments;
@@ -936,24 +918,5 @@
                 }
             });
     }
-	
-     /**
-		* BM Rafiul Alam Code Start Here
-	 **/
-	// //News Ticker
-	//   $( window ).on( 'elementor/frontend/init', function() {
-	// 	elementorFrontend.hooks.addAction( 'frontend/element_ready/ultraaddons-news-ticker.default', function($scope, $){
-	// 		var $ticker =  $('[data-ticker]');
-	// 		$ticker.length && $ticker.each(function(e, n) {
-	// 			var $ticker = $(this).data("ticker");
-	// 			$(this).breakingNews(
-	// 			 $ticker
-	// 			);
-	// 		});
-	// 	});
-	//  } );
-	 /**
-		* BM Rafiul Alam Code End Here
-	 **/
 
 } (jQuery, window));

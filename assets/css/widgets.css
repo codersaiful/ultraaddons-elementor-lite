@@ -204,6 +204,9 @@ div.ua-element.ua-btn-align-justify .btn-wrapper a.ua-button{width: 100%;}
 /*
 Column Grid System
 */
+.ua-d-flex{
+    display:flex;
+}
 .ua-row {
 	display: -ms-flexbox;
 	display: flex;
@@ -277,6 +280,9 @@ Alert
     font-size: 15px;
     width: 100%;
 }
+.ua-btn-wrap > .ua-btn{
+    text-decoration: none;
+}
 /*
 Pagination
 */
@@ -310,3 +316,35 @@ Pagination
       background: #f9f9f9;
       color: #333;
   }
+   .ua-btn-wrap a.ua-btn, .elementor-widget-ultraaddons-button .ua-btn-wrap a.ua-btn{
+    margin: 0.4em;
+    padding: 1em;
+    cursor: pointer;
+    background: #e1e1e1;
+    text-decoration: none;
+    color: #666;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.ua-btn-wrap .ua-effect:before {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 0;
+    background: #fff;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .3s ease;
+}
+.ua-btn svg {
+    width:1.5em;
+    height:1em
+}
+.mb-20{
+    margin-bottom: 20px;
+}
