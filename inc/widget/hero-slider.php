@@ -10,6 +10,7 @@ use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Background;
+use Elementor\Plugin;
 
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -29,6 +30,14 @@ class Hero_Slider extends Base{
         wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
         wp_enqueue_script( $name );
 
+        $ml_name          = 'frontend-hero-slider';
+        $ml_js_file_url   = ULTRA_ADDONS_ASSETS . 'js/frontend-hero-slider.js';
+        $ml_dependency    =  [];//['jquery'];
+        $ml_version       = ULTRA_ADDONS_VERSION;
+        $ml_in_footer  	  = true;
+
+        wp_register_script( $ml_name , $ml_js_file_url, $ml_dependency, $ml_version, $ml_in_footer );
+        wp_enqueue_script( $ml_name );
 
         //CSS file swiper
         wp_register_style('swiper', ULTRA_ADDONS_ASSETS . 'vendor/swiper/css/swiper.min.css' );
@@ -57,7 +66,7 @@ class Hero_Slider extends Base{
      * @by Saiful
      */
     public function get_script_depends() {
-		return [ 'jquery','swiper' ];
+		return [ 'jquery','swiper','frontend-hero-slider' ];
     }
 
     
@@ -85,13 +94,153 @@ class Hero_Slider extends Base{
      * @access protected
      */
     protected function _register_controls() {
-        
         //For General Section
         $this->content_general_controls();
-
-       
+        $this->slider_settings_controls();
     }
+/* loop: true,
+    spaceBetween: 50,
+    speed: 1000,
+    effect: 'fade',
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+    } */
     
+    protected function slider_settings_controls(){
+        $this->start_controls_section(
+            'slider_settings',
+            [
+                'label'     => esc_html__( 'Slider Settings', 'ultraaddons' ),
+            ]
+        );
+
+        
+		$this->add_control(
+			'loop',
+			[
+				'label' => __( 'Loop', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+				'frontend_available' => true,
+			]
+		);	
+		$this->add_control(
+			'spaceBetween',
+			[
+				'label' => __( 'Space Between', 'ultraaddons' ),
+				'type' => Controls_Manager::NUMBER,
+				'min' => 0,
+				'max' => 100,
+				'step' => 2,
+				'default' => 50,
+				'frontend_available' => true,
+			]
+		);
+		$this->add_control(
+			'speed',
+			[
+				'label' => __( 'Speed', 'ultraaddons' ),
+				'type' => Controls_Manager::NUMBER,
+				'min' => 500,
+				'max' => 3000,
+				'step' => 500,
+				'default' => 1000,
+				'frontend_available' => true,
+			]
+		);
+        $this->add_control(
+			'delay',
+			[
+				'label' => __( 'Delay', 'ultraaddons' ),
+				'type' => Controls_Manager::NUMBER,
+				'min' => 1000,
+				'max' => 7000,
+				'step' => 1000,
+				'default' => 5000,
+				'frontend_available' => true,
+			]
+		);
+	
+		$this->add_control(
+			'show_nav',
+			[
+				'label' => __( 'Nav Button', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+
+        $this->add_control(
+			'stopOnHover',
+			[
+				'label' => __( 'Stop On Hover', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+                'frontend_available' => true,
+			]
+		);
+		
+		$this->add_control(
+			'effect',
+			[
+				'label' => __( 'Effects', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'fade',
+				'frontend_available' => true,
+				'options' => [
+					'fade'  => __( 'Fade', 'ultraaddons' ),
+					'flip' => __( 'Flip', 'ultraaddons' ),
+					'cube' => __( 'Cube', 'ultraaddons' ),
+					'cards' => __( 'Cards', 'ultraaddons' ),
+				],
+			]
+		);
+        $this->add_control(
+			'slidesPerView',
+			[
+				'label' => __( 'Slides View', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => '1',
+				'frontend_available' => true,
+				'options' => [
+					'1'  => __( 'One', 'ultraaddons' ),
+					'2' => __( 'Two', 'ultraaddons' ),
+					'3' => __( 'Three', 'ultraaddons' ),
+					'4' => __( 'Four', 'ultraaddons' ),
+				],
+			]
+		);
+		$this->add_control(
+			'direction',
+			[
+				'label' => __( 'Direction', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'vertical',
+				'frontend_available' => true,
+				'options' => [
+					'vertical'  => __( 'Vertical', 'ultraaddons' ),
+					'horizontal' => __( 'Horizontal', 'ultraaddons' ),
+				],
+			]
+		);
+		
+
+        $this->end_controls_section();
+    }
         
     /**
      * General Section for Content Controls
@@ -119,7 +268,7 @@ class Hero_Slider extends Base{
         $repeater->add_control(
 			'list_content', [
 				'label' => esc_html__( 'Content', 'ultraaddons' ),
-				'type' => Controls_Manager::TEXT,
+				'type' => Controls_Manager::TEXTAREA,
 				'default' => esc_html__( 'Lorem ipsum dolor sit amet consectetur adipisicing elit.' , 'ultraaddons' ),
 				'label_block' => true,
 			]
@@ -186,8 +335,6 @@ class Hero_Slider extends Base{
                 $count=0;
                 foreach (  $settings['list'] as $item ) {
                     $count = $count+1;
-
-
             ?>
             <div class="swiper-slide slide-<?php echo $count;?>">
                 <div class="ua-image" style="background: url(<?php echo $item['image']['url'] ;?>)">
@@ -203,11 +350,15 @@ class Hero_Slider extends Base{
                 </div>
             </div>
             <?php }
-        }?>
+        }
+        ?>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
         </div>
         <!-- If we need navigation buttons -->
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
+    
     </div>
         <?php
         
