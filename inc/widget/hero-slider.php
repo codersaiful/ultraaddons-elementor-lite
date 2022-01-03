@@ -97,19 +97,9 @@ class Hero_Slider extends Base{
         //For General Section
         $this->content_general_controls();
         $this->slider_settings_controls();
+        $this->slider_general_style();
+        $this->slider_btn_style();
     }
-/* loop: true,
-    spaceBetween: 50,
-    speed: 1000,
-    effect: 'fade',
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-    } */
     
     protected function slider_settings_controls(){
         $this->start_controls_section(
@@ -119,7 +109,6 @@ class Hero_Slider extends Base{
             ]
         );
 
-        
 		$this->add_control(
 			'loop',
 			[
@@ -266,6 +255,22 @@ class Hero_Slider extends Base{
                 'frontend_available' => true,
 			]
 		);
+        //'bullets' | 'fraction' | 'progressbar' | 'custom'
+        $this->add_control(
+			'pagination_type',
+			[
+				'label' => __( 'Slides View', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'bullets',
+				'frontend_available' => true,
+				'options' => [
+					'bullets'  => __( 'Bullets', 'ultraaddons' ),
+					'fraction' => __( 'Fraction', 'ultraaddons' ),
+					'progressbar' => __( 'Pprogressbar', 'ultraaddons' ),
+					'custom' => __( 'Custom', 'ultraaddons' ),
+				],
+			]
+		);
 
         $this->end_controls_section();
     }
@@ -341,7 +346,205 @@ class Hero_Slider extends Base{
         
         $this->end_controls_section();
     }
-
+     /**
+     * General Section for Content Controls
+     * 
+     * @since 1.0.0.9
+     */
+    protected function slider_general_style() {
+        $this->start_controls_section(
+            'general_style',
+            [
+                'label'     => esc_html__( 'General Style', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_responsive_control(
+			'_slider_text_alignment',
+			[
+				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'start' => [
+						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'end' => [
+						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-right',
+					]
+				],
+				'default' => 'center',
+				'selectors' => [
+					'{{WRAPPER}} .ua-slider-container' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+        $this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+                'name' => 'slider_title_typo',
+                'label' => 'Title Typography',
+                'selector' => '{{WRAPPER}} .ua-slider-title',
+			]
+        );
+        $this->add_control(
+			'slider_title', [
+				'label' => __( 'Title Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-slider-title' => 'color: {{VALUE}};',
+				],
+                'separator'=> 'after',
+				'default'=>'#E90C03'
+			]
+        );
+        $this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+                'name' => 'slider_small_title_typo',
+                'label' => 'Small Title Typography',
+                'selector' => '{{WRAPPER}} .ua-slider-sub-title',
+			]
+        );
+        $this->add_control(
+			'slider_small_title', [
+				'label' => __( 'Small Title Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-slider-sub-title' => 'color: {{VALUE}};',
+				],
+                'separator'=> 'after',
+				'default'=>'#fff'
+			]
+        );
+        
+        $this->end_controls_section();
+    }
+    /**
+	 * Button Style.
+	 */
+	protected function slider_btn_style(){
+		$this->start_controls_section(
+            'slide_btn_style',
+            [
+                'label'     => esc_html__( 'Slider Button', 'ultraaddons' ),
+				'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->start_controls_tabs(
+			'slide_btn_normal_tabs'
+		);
+		/**
+		 * Normal tab
+		 */
+		$this->start_controls_tab(
+			'style_normal_tab',
+			[
+				'label' => __( 'Normal', 'ultraaddons' ),
+			]
+		);
+		$this->add_control(
+			'_ua_slide_btn_bg', [
+				'label' => __( 'Button Background', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-slider-buttton' => 'background: {{VALUE}};',
+				]
+			]
+        );
+		$this->add_control(
+			'_ua_slide_btn_color', [
+				'label' => __( 'Button Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-slider-buttton, i.uicon.uicon-cart' => 'color: {{VALUE}};',
+				]
+			]
+        );
+	
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'slide_btn_typography',
+					'label' => 'Button Typography',
+					'selector' => '{{WRAPPER}} .ua-slider-buttton',
+			]
+        );
+		$this->add_responsive_control(
+			'_slide_btn_radius',
+			[
+				'label'       => esc_html__( 'Button Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-slider-buttton' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'_slide_btn_padding',
+			[
+				'label'       => esc_html__( 'Button Padding', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-slider-buttton' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		
+		$this->end_controls_tab();
+		/**
+		 * Button Hover tab
+		 */
+		$this->start_controls_tab(
+			'slide_btn_hover_tabs',
+			[
+				'label' => __( 'Hover', 'ultraaddons' ),
+			]
+		);
+		$this->add_control(
+			'_ua_slide_btn_hover_bg', [
+				'label' => __( 'Button Background', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-slider-buttton:hover' => 'background: {{VALUE}};',
+				]
+			]
+        );
+		$this->add_control(
+			'_ua_slide_btn_hover_color', [
+				'label' => __( 'Button Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-slider-buttton:hover, .ua-slider-buttton:hover' => 'color: {{VALUE}};',
+				]
+			]
+        );
+	
+		$this->end_controls_tabs();
+		
+		$this->end_controls_tab();
+		
+		$this->end_controls_section();
+	}
      /**
      * Render oEmbed widget output on the frontend.
      *
@@ -381,13 +584,13 @@ class Hero_Slider extends Base{
         }
         ?>
         </div>
-         <!-- Add Pagination -->
+
          <?php if( 'yes'== $settings['pagination'] ):?>
             <div class="swiper-pagination"></div>
          <?php endif;?>
          <?php if( 'yes'== $settings['navigation'] ):?>
-            <div class="swiper-button-prev swiper-button-white"></div>
-            <div class="swiper-button-next swiper-button-white"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         <?php endif;?>
     
     </div>

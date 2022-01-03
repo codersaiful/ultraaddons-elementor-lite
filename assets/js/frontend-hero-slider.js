@@ -10,7 +10,7 @@ $window.on( 'elementor/frontend/init', function() {
     
     var ModuleBase = elementorModules.frontend.handlers.Base;
 
-    var Moving_Letters = EM.frontend.handlers.Base.extend({
+    var Hero_Slider = EM.frontend.handlers.Base.extend({
         onInit: function(){
             this.run();
         },
@@ -29,12 +29,13 @@ $window.on( 'elementor/frontend/init', function() {
                 if($settings ){
                     var $swiper = new Swiper('.ua-hero', {
                         //parameters
-                        loop: ($settings.loop =='yes') ? true : false,
-                        speed:$settings.speed,
-                        effect:$settings.effect,
-                        direction:$settings.direction,
-                        slidesPerView:$settings.slidesPerView,
+                        //loop: ($settings.loop =='yes') ? true : false,
+                        speed: $settings.speed,
+                        effect: $settings.effect,
+                        direction: $settings.direction,
+                        slidesPerView: parseInt($settings.slidesPerView),
                         parallax: ($settings.parallax =='yes') ? true : false,
+                        freeMode: true,
 
                         autoplay: {
                             delay: $settings.delay,
@@ -44,10 +45,11 @@ $window.on( 'elementor/frontend/init', function() {
                             nextEl: '.swiper-button-next',
                             prevEl: '.swiper-button-prev',
                         },
-                        
+
                         pagination: {
                             el: '.swiper-pagination',
-                            type: 'bullets',
+                            type: $settings.pagination_type,
+                            clickable:true,
                           },
                       });
                       
@@ -79,7 +81,7 @@ $window.on( 'elementor/frontend/init', function() {
     EF.hooks.addAction(
         'frontend/element_ready/ultraaddons-hero-slider.default',
         function ($scope) {
-                EF.elementsHandler.addHandler(Moving_Letters, {
+                EF.elementsHandler.addHandler(Hero_Slider, {
                         $element: $scope,
                 });
         }
