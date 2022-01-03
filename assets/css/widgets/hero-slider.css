@@ -69,3 +69,16 @@
 .swiper-wrapper{
     overflow: hidden;
 }
+
+
+.ua-hero .swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #22950d;
+}
+.ua-hero .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    border-radius: 100%;
+    background: #fff;
+}

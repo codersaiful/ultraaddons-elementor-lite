@@ -35,14 +35,20 @@ $window.on( 'elementor/frontend/init', function() {
                         direction:$settings.direction,
                         slidesPerView:$settings.slidesPerView,
                         parallax: ($settings.parallax =='yes') ? true : false,
+
                         autoplay: {
                             delay: $settings.delay,
                           },
+
                           navigation: {
                             nextEl: '.swiper-button-next',
                             prevEl: '.swiper-button-prev',
                         },
-                        pagination: '.ua-hero .swiper-pagination',
+                        
+                        pagination: {
+                            el: '.swiper-pagination',
+                            type: 'bullets',
+                          },
                       });
                       
                 if($settings.stopOnHover=='yes'){

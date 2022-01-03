@@ -25,19 +25,19 @@ class Hero_Slider extends Base{
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/swiper/js/swiper.min.js';
         $dependency     =  ['jquery'];//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
-        $in_footer  = true;
+        $in_footer      = true;
 
         wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
         wp_enqueue_script( $name );
 
-        $ml_name          = 'frontend-hero-slider';
-        $ml_js_file_url   = ULTRA_ADDONS_ASSETS . 'js/frontend-hero-slider.js';
-        $ml_dependency    =  [];//['jquery'];
-        $ml_version       = ULTRA_ADDONS_VERSION;
-        $ml_in_footer  	  = true;
+        $name          = 'frontend-hero-slider';
+        $js_file_url   = ULTRA_ADDONS_ASSETS . 'js/frontend-hero-slider.js';
+        $dependency    =  [];//['jquery'];
+        $version       = ULTRA_ADDONS_VERSION;
+        $in_footer  	  = true;
 
-        wp_register_script( $ml_name , $ml_js_file_url, $ml_dependency, $ml_version, $ml_in_footer );
-        wp_enqueue_script( $ml_name );
+        wp_register_script( $name , $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $name );
 
         //CSS file swiper
         wp_register_style('swiper', ULTRA_ADDONS_ASSETS . 'vendor/swiper/css/swiper.min.css' );
@@ -132,18 +132,7 @@ class Hero_Slider extends Base{
 				'frontend_available' => true,
 			]
 		);	
-		$this->add_control(
-			'spaceBetween',
-			[
-				'label' => __( 'Space Between', 'ultraaddons' ),
-				'type' => Controls_Manager::NUMBER,
-				'min' => 0,
-				'max' => 100,
-				'step' => 2,
-				'default' => 50,
-				'frontend_available' => true,
-			]
-		);
+		
 		$this->add_control(
 			'speed',
 			[
@@ -214,14 +203,30 @@ class Hero_Slider extends Base{
 			[
 				'label' => __( 'Slides View', 'ultraaddons' ),
 				'type' => Controls_Manager::SELECT,
-				'default' => '1',
+				'default' => 'default',
 				'frontend_available' => true,
 				'options' => [
+                    'default'  => __( 'Default', 'ultraaddons' ),
 					'1'  => __( 'One', 'ultraaddons' ),
 					'2' => __( 'Two', 'ultraaddons' ),
 					'3' => __( 'Three', 'ultraaddons' ),
 					'4' => __( 'Four', 'ultraaddons' ),
 				],
+			]
+		);
+        $this->add_control(
+			'spaceBetween',
+			[
+				'label' => __( 'Space Between', 'ultraaddons' ),
+				'type' => Controls_Manager::NUMBER,
+				'min' => 0,
+				'max' => 100,
+				'step' => 2,
+				'default' => 50,
+				'frontend_available' => true,
+                'condition' => [
+                    'slidesPerView!' => 'default',
+                ],
 			]
 		);
 		$this->add_control(
@@ -237,7 +242,30 @@ class Hero_Slider extends Base{
 				],
 			]
 		);
-		
+        $this->add_control(
+			'navigation',
+			[
+				'label' => __( 'Navigation', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+                'frontend_available' => true,
+			]
+		);
+        $this->add_control(
+			'pagination',
+			[
+				'label' => __( 'Pagination', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+                'frontend_available' => true,
+			]
+		);
 
         $this->end_controls_section();
     }
@@ -352,12 +380,15 @@ class Hero_Slider extends Base{
             <?php }
         }
         ?>
-            <!-- Add Pagination -->
-            <div class="swiper-pagination"></div>
         </div>
-        <!-- If we need navigation buttons -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
+         <!-- Add Pagination -->
+         <?php if( 'yes'== $settings['pagination'] ):?>
+            <div class="swiper-pagination"></div>
+         <?php endif;?>
+         <?php if( 'yes'== $settings['navigation'] ):?>
+            <div class="swiper-button-prev swiper-button-white"></div>
+            <div class="swiper-button-next swiper-button-white"></div>
+        <?php endif;?>
     
     </div>
         <?php
