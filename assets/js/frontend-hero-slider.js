@@ -26,8 +26,8 @@ $window.on( 'elementor/frontend/init', function() {
             var $settings = this.getElementSettings();
             console.log($settings);
 
-                if($settings ){
-                    var $swiper = new Swiper('.ua-hero', {
+               /*  if($settings ){
+                    var $swiper = new Swiper('.mySwiper', {
                         //parameters
                         //loop: ($settings.loop =='yes') ? true : false,
                         speed: $settings.speed,
@@ -36,11 +36,10 @@ $window.on( 'elementor/frontend/init', function() {
                         slidesPerView: parseInt($settings.slidesPerView),
                         parallax: ($settings.parallax =='yes') ? true : false,
                         freeMode: true,
-
                         autoplay: {
                             delay: $settings.delay,
                           },
-
+                          
                           navigation: {
                             nextEl: '.swiper-button-next',
                             prevEl: '.swiper-button-prev',
@@ -51,6 +50,10 @@ $window.on( 'elementor/frontend/init', function() {
                             type: $settings.pagination_type,
                             clickable:true,
                           },
+                          slidesPerView: 4,
+                            grid: {
+                            rows: 2,
+                            },
                       });
                       
                 if($settings.stopOnHover=='yes'){
@@ -62,7 +65,31 @@ $window.on( 'elementor/frontend/init', function() {
                         $swiper.autoplay.start();
                     });
                 }
-            }
+            } */
+
+            var swiper = new Swiper(".ua-hero", {
+                slidesPerView: $settings.slidesPerView!='auto' ? parseInt($settings.slidesPerView) : 'auto',
+                spaceBetween: $settings.spaceBetween,
+                effect: $settings.effect,
+                speed: $settings.speed,
+                loop:$settings.loop=='yes' ? true : false,
+                rewind:true,
+                //direction:$settings.direction,
+                autoplay: {
+                    delay: $settings.delay,
+                  },
+
+                pagination: {
+                  el: ".swiper-pagination",
+                  type:$settings.pagination_type,
+                  clickable: true,
+                },
+
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+              });
         }
     });
 
