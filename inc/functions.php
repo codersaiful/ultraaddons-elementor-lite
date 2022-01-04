@@ -533,6 +533,7 @@ function ultraaddons_image_placeholder( $width, $height ) {
  * @since 1.1.0.5
  */
 function ultraaddons_get_fonts(){
+<<<<<<< HEAD
     return Fonts::get_fonts();;
 }
 
@@ -573,4 +574,28 @@ function ultraaddons_button_hover(){
         'hvr-sink'=> 'Sink', 
         'hvr-buzz'=> 'Buzz', 
     );
+=======
+    return Fonts::get_fonts();
+}
+
+/**
+ * Special Funcation for enable Theme demo
+ * Only for Theme User
+ * will not use to any where in our plugin.
+ * 
+ * *******************************
+ * INSTRUCTION
+ * *******************************
+ * Obviously check by function_exists() in your theme's functions.php file.
+ * Example file Available in Elementor Demo Manager plugin
+ * @details 
+ * 
+ * @author Saiful Islam <codersaiful@gmail.com>
+ * @since 1.1.0.9
+ *
+ * @return object
+ */
+function ultraaddons_theme_demo(){
+    return new \UltraAddons\Base\Theme_Demo;
+>>>>>>> dd7a35cebcbf798b012307dfc01ce83bb9086283
 }
