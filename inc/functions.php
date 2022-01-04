@@ -533,5 +533,26 @@ function ultraaddons_image_placeholder( $width, $height ) {
  * @since 1.1.0.5
  */
 function ultraaddons_get_fonts(){
-    return Fonts::get_fonts();;
+    return Fonts::get_fonts();
+}
+
+/**
+ * Special Funcation for enable Theme demo
+ * Only for Theme User
+ * will not use to any where in our plugin.
+ * 
+ * *******************************
+ * INSTRUCTION
+ * *******************************
+ * Obviously check by function_exists() in your theme's functions.php file.
+ * Example file Available in Elementor Demo Manager plugin
+ * @details 
+ * 
+ * @author Saiful Islam <codersaiful@gmail.com>
+ * @since 1.1.0.9
+ *
+ * @return void
+ */
+function ultraaddons_theme_demo(){
+    return new \UltraAddons\Base\Theme_Demo;
 }
