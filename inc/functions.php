@@ -551,7 +551,7 @@ function ultraaddons_get_fonts(){
  * @author Saiful Islam <codersaiful@gmail.com>
  * @since 1.1.0.9
  *
- * @return void
+ * @return object
  */
 function ultraaddons_theme_demo(){
     return new \UltraAddons\Base\Theme_Demo;
