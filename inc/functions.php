@@ -537,43 +537,7 @@ function ultraaddons_get_fonts(){
     return Fonts::get_fonts();;
 }
 
-/**
- * UltraAddons Button Hover
- * 
- * Added by B M Rafiul Alam
- * 
- * @since 1.1.0.9
- */
 
-function ultraaddons_button_hover(){
-    return  array(
-        'hvr-fade' => 'Fade',
-        'hvr-back-pulse' => 'Back Pulse',
-        'hvr-sweep-to-right' => 'Sweep To Right',
-        'hvr-sweep-to-left' => 'Sweep To Left',
-        'hvr-sweep-to-bottom' => 'Sweep To Bottom',
-        'hvr-sweep-to-top' => 'Sweep To Top',
-        'hvr-sweep-to-top'=>	'Sweep To Top',
-        'hvr-bounce-to-top'=>	'Bounce To Top',
-        'hvr-bounce-to-right'=>	'Bounce To Right',
-        'hvr-bounce-to-left'=>	'Bounce To Left',
-        'hvr-bounce-to-bottom'=> 'Bounce To Bottom',
-        'hvr-shadow'=> 'Shadow',
-        'hvr-grow-shadow'=> 'Grow Shadow',
-        'hvr-float-shadow'=> 'Float Shadow',
-        'hvr-ripple-out'=> 'Ripple Out',
-        'hvr-underline-from-center'=> 'Underline From Center',
-        'hvr-overline-from-left'=> 'Overline From Left',
-        'hvr-rectangle-in'=> 'Rectangle In',
-        'hvr-rectangle-out'=> 'Rectangle Out',
-        'hvr-shutter-in-vertical'=> 'Shutter In Vertical',
-        'hvr-shutter-out-vertical'=> 'Shutter out Vertical',
-        'hvr-shutter-in-horizontal'=> 'Shutter In Horizontal',
-        'hvr-shutter-out-horizontal'=> 'Shutter Out Horizontal', 
-        'hvr-float'=> 'Float',  
-        'hvr-sink'=> 'Sink', 
-        'hvr-buzz'=> 'Buzz', 
-    );
 =======
     return Fonts::get_fonts();
 }
