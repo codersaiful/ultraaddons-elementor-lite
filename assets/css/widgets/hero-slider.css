@@ -55,7 +55,7 @@
     line-height: normal;
     letter-spacing: -1.03px;
     color: #ffffff;
-    padding: 50px 0px;
+    /* padding: 50px 0px; */
     opacity: 1;
 }
 
@@ -108,12 +108,21 @@
     height: 8px;
     display: inline-block;
     border-radius: 100%;
-    background: #fff;
+    background: #0b1220;
 }
 
 .ua-slider-buttton{
     overflow: hidden;
 }
 .animated-area{
-    padding: 0 100px
+    padding: 0 100px;
+}
+.swiper-button-next, .swiper-container-rtl .swiper-button-prev, 
+.swiper-button-prev, .swiper-container-rtl .swiper-button-next{
+    background-image:none;
+}
+
+.swiper-button-prev, .swiper-rtl .swiper-button-next, 
+.swiper-button-next, .swiper-rtl .swiper-button-prev{
+    color:#fff !important
 }

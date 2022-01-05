@@ -539,8 +539,7 @@ function ultraaddons_get_fonts(){
 /**
  * UltraAddons Button Hover
  * 
- * Added by B M Rafiul Alam
- * 
+ * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
  * @since 1.1.0.9
  */
 
@@ -573,9 +572,48 @@ function ultraaddons_button_hover(){
         'hvr-sink'=> 'Sink', 
         'hvr-buzz'=> 'Buzz', 
     );
-    return Fonts::get_fonts();
 }
 
+/**
+ * UltraAddons Animation
+ * 
+ * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
+ * @since 1.1.0.9
+ */
+
+function ultraaddons_animation(){
+    return  array(
+        'fadeIn' => 'fadeIn',
+        'fadeInDown' => 'fadeInDown',
+        'fadeInLeft' => 'fadeInLeft',
+        'fadeInRight' => 'fadeInRight',
+        'fadeInUp' => 'fadeInUp',
+        
+        'bounce'        => 'bounce',
+        'bounceIn'      => 'bounceIn',
+
+        'bounceInDown'  => 'bounceInDown',
+        'bounceInLeft'  => 'bounceInLeft',
+        'bounceInRight' => 'bounceInRight',
+        'bounceInUp'    => 'bounceInUp',
+
+        'flip'          => 'flip',
+        'flipInX'       =>  'flipInX',
+        'flipInY'       =>  'flipInY',
+
+        'backInDown'    => 'backInDown',
+        'backInLeft'    => 'backInLeft',
+        'backInRight'   => 'backInRight',
+        'backInUp'      => 'backInUp',
+
+        'rotateIn'          => 'rotateIn',
+        'rotateInDownLeft'  => 'rotateInDownLeft',
+       'rotateInDownRight'  => 'rotateInDownRight',
+        'rotateInUpLeft'    => 'rotateInUpLeft',
+       'rotateInUpRight'    => 'rotateInUpRight',
+
+    );
+}
 /**
  * Special Funcation for enable Theme demo
  * Only for Theme User

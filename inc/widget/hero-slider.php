@@ -171,16 +171,12 @@ class Hero_Slider extends Base{
 				'default' => 'fade',
 				'frontend_available' => true,
 				'options' => [
-					'slide'  => __( 'Slide', 'ultraaddons' ),
 					'fade'  => __( 'Fade', 'ultraaddons' ),
 					'flip' => __( 'Flip', 'ultraaddons' ),
-					'cube' => __( 'Cube', 'ultraaddons' ),
-					'cards' => __( 'Cards', 'ultraaddons' ),
-					'coverflow' => __( 'Coverflow', 'ultraaddons' ),
 				],
 			]
 		);
-        $this->add_control(
+       /*  $this->add_control(
 			'slidesPerView',
 			[
 				'label' => __( 'Slides View', 'ultraaddons' ),
@@ -195,8 +191,8 @@ class Hero_Slider extends Base{
 					'4' => __( 'Four', 'ultraaddons' ),
 				],
 			]
-		);
-        $this->add_control(
+		); */
+       /*  $this->add_control(
 			'spaceBetween',
 			[
 				'label' => __( 'Space Between', 'ultraaddons' ),
@@ -210,8 +206,8 @@ class Hero_Slider extends Base{
                     'slidesPerView!' => 'default',
                 ],
 			]
-		);
-		$this->add_control(
+		); */
+		/* $this->add_control(
 			'direction',
 			[
 				'label' => __( 'Direction', 'ultraaddons' ),
@@ -223,7 +219,7 @@ class Hero_Slider extends Base{
 					'horizontal' => __( 'Horizontal', 'ultraaddons' ),
 				],
 			]
-		);
+		); */
         $this->add_control(
 			'navigation',
 			[
@@ -286,9 +282,9 @@ class Hero_Slider extends Base{
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'image',
-				'label' => esc_html__( 'Background', 'ultraaddons' ),
+				'label' => esc_html__( 'Slider Background', 'ultraaddons' ),
 				'types' => [ 'classic' ],
-				'selector' => '{{WRAPPER}} {{CURRENT_ITEM}}.ua-image',
+				'selector' => '{{WRAPPER}} {{CURRENT_ITEM}}.swiper-slide',
 			]
 		);
 
@@ -306,19 +302,9 @@ class Hero_Slider extends Base{
 				'type' => Controls_Manager::TEXTAREA,
 				'default' => esc_html__( 'Lorem ipsum dolor sit amet consectetur adipisicing elit.' , 'ultraaddons' ),
 				'label_block' => true,
+				'separator' => 'after'
 			]
 		);
-       /*  $repeater->add_control(
-			'image',
-			[
-				'label' => esc_html__( 'Choose Image', 'ultraaddons' ),
-				'type' => Controls_Manager::MEDIA,
-				'default' => [
-					'url' => Utils::get_placeholder_image_src(),
-				],
-			]
-		); */
-		
 
         $repeater->add_control(
 			'list_btn', [
@@ -326,7 +312,44 @@ class Hero_Slider extends Base{
 				'type' => Controls_Manager::TEXT,
 				'default' => esc_html__( 'Read More' , 'ultraaddons' ),
 				'label_block' => true,
-				'separator' => 'before'
+				'separator' => 'after'
+			]
+		);
+		
+		$repeater->add_control(
+			'_top_title_animation',
+			[
+				'label' => esc_html__( 'Top Title Animation', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => ultraaddons_animation(),
+				'default' => 'fadeInDown',
+				'selectors' => [
+					'{{WRAPPER}} .swiper-slide-active {{CURRENT_ITEM}}.ua-slider-sub-title' => 'animation: {{VALUE}} 1s;'
+				],
+			]
+		);
+		$repeater->add_control(
+			'_title_animation',
+			[
+				'label' => esc_html__( 'Title Animation', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => ultraaddons_animation(),
+				'default' => 'fadeInLeft',
+				'selectors' => [
+					'{{WRAPPER}} .swiper-slide-active {{CURRENT_ITEM}}.ua-slider-title' => 'animation: {{VALUE}} 1.5s;'
+				],
+			]
+		);
+		$repeater->add_control(
+			'_button_animation',
+			[
+				'label' => esc_html__( 'Button Animation', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => ultraaddons_animation(),
+				'default' => 'fadeInUp',
+				'selectors' => [
+					'{{WRAPPER}} .swiper-slide-active {{CURRENT_ITEM}}.ua-slider-buttton' => 'animation: {{VALUE}} 2s;'
+				],
 			]
 		);
         $this->add_control(
@@ -392,7 +415,7 @@ class Hero_Slider extends Base{
 		$this->add_control(
 			'slider_height',
 			[
-				'label' => esc_html__( 'Spot Size', 'ultraaddons' ),
+				'label' => esc_html__( 'Slider Height', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px','vh' ],
 				'range' => [
@@ -413,25 +436,10 @@ class Hero_Slider extends Base{
 				'selectors' => [
 					'{{WRAPPER}} .ua-slider-container' => 'height: {{SIZE}}{{UNIT}};',
 				],
+				'separator'=> 'after',
 			]
 		);
-		$this->add_responsive_control(
-			'_content_padding',
-			[
-				'label'       => esc_html__( 'Button Padding', 'ultraaddons' ),
-				'type'        => Controls_Manager::DIMENSIONS,
-				'size_units'  => [ 'px', '%' ],
-				'placeholder' => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'selectors'   => [
-					'{{WRAPPER}} .animated-area' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
+		
         $this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
@@ -447,16 +455,37 @@ class Hero_Slider extends Base{
 				'selectors' => [
 						'{{WRAPPER}} .ua-slider-title' => 'color: {{VALUE}};',
 				],
-                'separator'=> 'after',
 				'default'=>'#0b1220'
 			]
         );
-        $this->add_group_control(
+       
+		$this->add_responsive_control(
+			'_slide_title_margin',
+			[
+				'label'       => esc_html__( 'Title Margin', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'default' => [
+					'top'    => '30',
+					'right'  => '0',
+					'bottom' => '40',
+					'left'   => '0',
+					'unit' => 'px',
+				],
+				
+				'selectors'   => [
+					'{{WRAPPER}} .ua-slider-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'separator'=> 'after',
+			]
+		);
+		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
                 'name' => 'slider_small_title_typo',
                 'label' => 'Small Title Typography',
                 'selector' => '{{WRAPPER}} .ua-slider-sub-title',
+				'separator'=> 'before',
 			]
         );
         $this->add_control(
@@ -470,6 +499,24 @@ class Hero_Slider extends Base{
 				'default'=>'#144368'
 			]
         );
+
+		$this->add_responsive_control(
+			'_content_padding',
+			[
+				'label'       => esc_html__( 'Content Padding', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .animated-area' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
         
         $this->end_controls_section();
     }
@@ -681,9 +728,57 @@ class Hero_Slider extends Base{
 				]
 			]
         );
+		$this->add_control(
+			'slider_progress_fill_color', [
+				'label' => __( 'Progress Fill Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-hero .swiper-pagination-progressbar .swiper-pagination-progressbar-fill' => 'background: {{VALUE}};',
+				],
+				'condition' => [
+					'pagination_type' => 'progressbar'
+				],
+			
+			]
+        );
+		$this->add_control(
+			'slider_progress_color', [
+				'label' => __( 'Progress Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-hero .swiper-pagination-progressbar' => 'background: {{VALUE}};',
+				],
+				'condition' => [
+					'pagination_type' => 'progressbar'
+				],
+			]
+        );
+		$this->add_control(
+			'slider_fraction_color', [
+				'label' => __( 'Fraction Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-hero .swiper-pagination-fraction' => 'color: {{VALUE}};',
+				],
+				'condition' => [
+					'pagination_type' => 'fraction'
+				],
+			]
+        );
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+                'name' => 'fraction_typo',
+                'label' => 'Title Typography',
+                'selector' => '{{WRAPPER}} .ua-hero .swiper-pagination-fraction',
+				'condition' => [
+					'pagination_type' => 'fraction'
+				],
+			]
+			
+        );
 		
 
-        
         $this->end_controls_section();
     }
      /**
@@ -707,16 +802,15 @@ class Hero_Slider extends Base{
                 foreach (  $settings['list'] as $item ) {
                     $count = $count+1;
             ?>
-            <div class="swiper-slide slide-<?php echo $count;?>">
-                <div class="ua-image elementor-repeater-item-<?php echo $item['_id']; ?>">
+            <div class="swiper-slide slide-<?php echo $count;?> elementor-repeater-item-<?php echo $item['_id']; ?>">
+                <div class="ua-image">
                     <div class="ua-slider-container">
                         <div class="animated-area">
-							<h4 class="ua-slider-sub-title">
+							<h4 class="ua-slider-sub-title elementor-repeater-item-<?php echo $item['_id']; ?>">
 								<?php echo $item['list_title'];?>
 							</h4>
-							<h1 class="ua-slider-title"><?php echo $item['list_content'];?></h1>
-							<a href="#" class="ua-slider-buttton <?php echo $settings['_ua_btn_animation'];?>"><?php echo $item['list_btn'];?></a>
-							
+							<h1 class="ua-slider-title elementor-repeater-item-<?php echo $item['_id']; ?>"><?php echo $item['list_content'];?></h1>
+							<a href="#" class="ua-slider-buttton elementor-repeater-item-<?php echo $item['_id']; ?> <?php echo $settings['_ua_btn_animation'];?>"><?php echo $item['list_btn'];?></a>
                         </div>
                     </div>
                 </div>
