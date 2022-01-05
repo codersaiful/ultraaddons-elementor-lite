@@ -306,7 +306,7 @@ class Hotspot extends Base{
             if ( $settings['list'] ) {
                 $count=0;
                 foreach (  $settings['list'] as $item ) {
-                    $count		= $count+1;
+                     $count		= $count+1;
                      $url		= (!empty( $item['website_link']['url'] )) ? $item['website_link']['url']  : '';
 					 $is_external 	= ( $item['website_link']['is_external']=='on') ? 'target="_blank"' : '';
 					 $nofollow 	= ( $item['website_link']['nofollow']=='on') ? 'rel="nofollow"' :'';

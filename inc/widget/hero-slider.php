@@ -312,6 +312,20 @@ class Hero_Slider extends Base{
 				'type' => Controls_Manager::TEXT,
 				'default' => esc_html__( 'Read More' , 'ultraaddons' ),
 				'label_block' => true,
+			]
+		);
+		$repeater->add_control(
+			'action_btn_link',
+			[
+				'label' => esc_html__( 'Button Link', 'ultraaddons' ),
+				'type' => Controls_Manager::URL,
+				'placeholder' => esc_html__( 'https://your-link.com', 'ultraaddonse' ),
+				'default' => [
+					'url' => '',
+					'is_external' => true,
+					'nofollow' => true,
+					'custom_attributes' => '',
+				],
 				'separator' => 'after'
 			]
 		);
@@ -813,6 +827,9 @@ class Hero_Slider extends Base{
                 $count=0;
                 foreach (  $settings['list'] as $item ) {
                     $count = $count+1;
+					$url		= (!empty( $item['action_btn_link']['url'] )) ? $item['action_btn_link']['url']  : '';
+					$is_external 	= ( $item['action_btn_link']['is_external']=='on') ? 'target="_blank"' : '';
+					$nofollow 	= ( $item['action_btn_link']['nofollow']=='on') ? 'rel="nofollow"' :'';
             ?>
             <div class="swiper-slide slide-<?php echo $count;?> elementor-repeater-item-<?php echo $item['_id']; ?>">
                 <div class="ua-image">
@@ -822,7 +839,7 @@ class Hero_Slider extends Base{
 								<?php echo $item['list_title'];?>
 							</h4>
 							<h1 class="ua-slider-title elementor-repeater-item-<?php echo $item['_id']; ?>"><?php echo $item['list_content'];?></h1>
-							<a href="#" class="ua-slider-buttton elementor-repeater-item-<?php echo $item['_id']; ?> <?php echo $settings['_ua_btn_animation'];?>"><?php echo $item['list_btn'];?></a>
+							<a href="<?php echo esc_url($url); ?>" <?php echo esc_attr($is_external);?> <?php echo esc_attr($nofollow);?> class="ua-slider-buttton elementor-repeater-item-<?php echo $item['_id']; ?> <?php echo $settings['_ua_btn_animation'];?>"><?php echo $item['list_btn'];?></a>
                         </div>
                     </div>
                 </div>

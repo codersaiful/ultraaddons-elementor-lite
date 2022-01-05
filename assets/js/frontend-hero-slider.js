@@ -33,8 +33,7 @@ $window.on( 'elementor/frontend/init', function() {
                 rewind:true,
                 autoplay: {
                     delay: $settings.delay,
-                  },
-
+                },
                 pagination: {
                   el: ".swiper-pagination",
                   type:$settings.pagination_type,
@@ -69,8 +68,6 @@ $window.on( 'elementor/frontend/init', function() {
                 });
         }
     );
-           
-
 });
 
 } (jQuery, window));
