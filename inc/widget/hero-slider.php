@@ -674,6 +674,9 @@ class Hero_Slider extends Base{
 				'selectors'   => [
 					'{{WRAPPER}} .ua-hero .swiper-pagination-bullet' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
+				'condition' => [
+					'pagination_type' => 'bullets'
+				],
 			]
 		);
 		$this->add_control(
@@ -694,6 +697,9 @@ class Hero_Slider extends Base{
 				],
 				'selectors' => [
 					'{{WRAPPER}} .ua-hero .swiper-pagination-bullet' => 'height: {{SIZE}}{{UNIT}};',
+				],
+				'condition' => [
+					'pagination_type' => 'bullets'
 				],
 			]
 		);
@@ -716,6 +722,9 @@ class Hero_Slider extends Base{
 				'selectors' => [
 					'{{WRAPPER}} .ua-hero .swiper-pagination-bullet' => 'width: {{SIZE}}{{UNIT}};',
 				],
+				'condition' => [
+					'pagination_type' => 'bullets'
+				],
 			]
 		);
 
@@ -725,7 +734,10 @@ class Hero_Slider extends Base{
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-hero .swiper-pagination-bullet' => 'background: {{VALUE}};',
-				]
+				],
+				'condition' => [
+					'pagination_type' => 'bullets'
+				],
 			]
         );
 		$this->add_control(
@@ -769,7 +781,7 @@ class Hero_Slider extends Base{
 			Group_Control_Typography::get_type(),
 			[
                 'name' => 'fraction_typo',
-                'label' => 'Title Typography',
+                'label' => 'Fraction Typography',
                 'selector' => '{{WRAPPER}} .ua-hero .swiper-pagination-fraction',
 				'condition' => [
 					'pagination_type' => 'fraction'
