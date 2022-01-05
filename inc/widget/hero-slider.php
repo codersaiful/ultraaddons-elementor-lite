@@ -818,7 +818,7 @@ class Hero_Slider extends Base{
     protected function render() {
         $settings = $this->get_settings_for_display();
         ?>
-   <div class="ua-hero">
+   	<div class="ua-hero">
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
             <!-- Slides -->
@@ -826,10 +826,10 @@ class Hero_Slider extends Base{
             if ( $settings['list'] ) {
                 $count=0;
                 foreach (  $settings['list'] as $item ) {
-                    $count = $count+1;
-					$url		= (!empty( $item['action_btn_link']['url'] )) ? $item['action_btn_link']['url']  : '';
-					$is_external 	= ( $item['action_btn_link']['is_external']=='on') ? 'target="_blank"' : '';
-					$nofollow 	= ( $item['action_btn_link']['nofollow']=='on') ? 'rel="nofollow"' :'';
+                    $count 			= $count+1;
+					$url			= (!empty( $item['action_btn_link']['url'] )) ? $item['action_btn_link']['url']  : '';
+					$is_external	= ( $item['action_btn_link']['is_external']=='on') ? 'target="_blank"' : '';
+					$nofollow		= ( $item['action_btn_link']['nofollow']=='on') ? 'rel="nofollow"' :'';
             ?>
             <div class="swiper-slide slide-<?php echo $count;?> elementor-repeater-item-<?php echo $item['_id']; ?>">
                 <div class="ua-image">

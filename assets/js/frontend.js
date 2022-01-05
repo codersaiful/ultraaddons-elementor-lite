@@ -836,9 +836,77 @@
                     })
                 }
             );
+            /**
+     * Chart Initialize Here
+     * 
+     * Actually most of the part of this Widget has done by B M Rafiul Alam but
+     * JS part had developed by(Me) Saiful Islam
+     * 
+     * @author Saiful Islam <codersaiful@gmail.com>
+     * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
+     * @since 1.1.0.8
+     */
+     
+    var Ua_Chart = EM.frontend.handlers.Base.extend({
+        onInit: function(){
+            this.run();
+        },
+        onChange: function(){
+            this.run();
+        },
+        run: function(){
+
+            var $scope = this.$element;
+            console.log($scope);
+            /**
+             * get data on editor mode
+             */
+            var $settings = this.getElementSettings();
+
+            const labels = [
+              'January',
+              'February',
+              'March',
+              'April',
+              'May',
+              'June',
+            ];
+          
+            const data = {
+              labels: labels,
+              datasets: [{
+                label: 'My First dataset',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [0, 10, 5, 2, 20, 30, 45],
+              }]
+            };
+            const config = {
+                type: 'line',
+                data: data,
+                options: {}
+            };
+          
+            const myChart = new Chart(
+                document.getElementById('myChart'),
+                config
+              );
+            
+        }
+    });
+
+     
+    EF.hooks.addAction(
+        'frontend/element_ready/ultraaddons-bar-chart.default',
+        function ($scope) {
+                EF.elementsHandler.addHandler(Ua_Chart, {
+                        $element: $scope,
+                });
+        }
+    );
 
             
-    });// Init wrapup
+    });// Init hook wrapup
    
 
     /**
@@ -919,5 +987,7 @@
                 }
             });
     }
+
+    
 
 } (jQuery, window));

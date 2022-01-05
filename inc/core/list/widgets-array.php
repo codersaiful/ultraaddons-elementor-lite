@@ -552,6 +552,14 @@ $widgetsArray = [
             __( 'Basic', 'ultraaddons' ),
         ],
     ],
+    'Bar_Chart'=> [
+        'name'      => __( 'Bar Chart', 'ultraaddons' ),
+        'is_pro'   => false,
+        'icon'      => 'uicon-slider',
+        'cat'       => [
+            __( 'Chart', 'ultraaddons' ),
+        ],
+    ],
 
 
 ];
