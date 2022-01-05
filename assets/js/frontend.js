@@ -814,6 +814,7 @@
                         });
                 }
             );
+
             
             //Portfolio Gallery
             EF.hooks.addAction(

@@ -6,6 +6,18 @@ use Elementor\Plugin;
 
 defined('ABSPATH') || die();
 
+/**
+ * Theme Demo Controler Root Class
+ * We will not actually use this Class directly
+ * 
+ * Actually I have added and extended class
+ * inside base folder of UltraAddons Plugin
+ * 
+ * @since 1.1.0.9
+ * @author Saiful Islam <codersaiful@gmail.com>
+ * 
+ * @package UltraAddons
+ */
 class Theme_Demo{
 
     public static $permalink_prefix = 'library';
@@ -45,11 +57,15 @@ class Theme_Demo{
 
 	}
 
+    /**
+     * Loading Library Manager from Theme Demo Control part 
+     * Library Manager
+     * 
+     * 
+     *
+     * @return void
+     */
     public static function load(){
-        //var_dump(self::$get_demo_args());
-
-        // var_dump(self::$get_demo_info());
-        //use Elementor\Plugin;
         Demo_Library_Manager::init();
     }
     
@@ -106,6 +122,13 @@ class Theme_Demo{
         return self::$theme_demo_args;
     }
 
+    /**
+     * To set demo details infor
+     * we can use this method
+     *
+     * @param array $args
+     * @return object
+     */
     public static function set_demo_info( array $args ) 
     {
         if( ! is_array( $args ) ) return null;
@@ -113,7 +136,13 @@ class Theme_Demo{
         return self::$_instance;
     }
 
-    
+    /**
+     * To set Root site for your theme
+     * 
+     *
+     * @param string $root_site_url
+     * @return object
+     */
     public static function setRootSite( string $root_site_url ) 
     {
         if( empty( $root_site_url ) || ! is_string( $root_site_url ) ) return null;

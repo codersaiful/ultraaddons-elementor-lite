@@ -535,3 +535,102 @@ function ultraaddons_image_placeholder( $width, $height ) {
 function ultraaddons_get_fonts(){
     return Fonts::get_fonts();;
 }
+
+/**
+ * UltraAddons Button Hover
+ * 
+ * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
+ * @since 1.1.0.9
+ */
+
+function ultraaddons_button_hover(){
+    return  array(
+        'hvr-fade' => 'Fade',
+        'hvr-back-pulse' => 'Back Pulse',
+        'hvr-sweep-to-right' => 'Sweep To Right',
+        'hvr-sweep-to-left' => 'Sweep To Left',
+        'hvr-sweep-to-bottom' => 'Sweep To Bottom',
+        'hvr-sweep-to-top' => 'Sweep To Top',
+        'hvr-sweep-to-top'=>	'Sweep To Top',
+        'hvr-bounce-to-top'=>	'Bounce To Top',
+        'hvr-bounce-to-right'=>	'Bounce To Right',
+        'hvr-bounce-to-left'=>	'Bounce To Left',
+        'hvr-bounce-to-bottom'=> 'Bounce To Bottom',
+        'hvr-shadow'=> 'Shadow',
+        'hvr-grow-shadow'=> 'Grow Shadow',
+        'hvr-float-shadow'=> 'Float Shadow',
+        'hvr-ripple-out'=> 'Ripple Out',
+        'hvr-underline-from-center'=> 'Underline From Center',
+        'hvr-overline-from-left'=> 'Overline From Left',
+        'hvr-rectangle-in'=> 'Rectangle In',
+        'hvr-rectangle-out'=> 'Rectangle Out',
+        'hvr-shutter-in-vertical'=> 'Shutter In Vertical',
+        'hvr-shutter-out-vertical'=> 'Shutter out Vertical',
+        'hvr-shutter-in-horizontal'=> 'Shutter In Horizontal',
+        'hvr-shutter-out-horizontal'=> 'Shutter Out Horizontal', 
+        'hvr-float'=> 'Float',  
+        'hvr-sink'=> 'Sink', 
+        'hvr-buzz'=> 'Buzz', 
+    );
+}
+
+/**
+ * UltraAddons Animation
+ * 
+ * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
+ * @since 1.1.0.9
+ */
+
+function ultraaddons_animation(){
+    return  array(
+        'fadeIn' => 'fadeIn',
+        'fadeInDown' => 'fadeInDown',
+        'fadeInLeft' => 'fadeInLeft',
+        'fadeInRight' => 'fadeInRight',
+        'fadeInUp' => 'fadeInUp',
+        
+        'bounce'        => 'bounce',
+        'bounceIn'      => 'bounceIn',
+
+        'bounceInDown'  => 'bounceInDown',
+        'bounceInLeft'  => 'bounceInLeft',
+        'bounceInRight' => 'bounceInRight',
+        'bounceInUp'    => 'bounceInUp',
+
+        'flip'          => 'flip',
+        'flipInX'       =>  'flipInX',
+        'flipInY'       =>  'flipInY',
+
+        'backInDown'    => 'backInDown',
+        'backInLeft'    => 'backInLeft',
+        'backInRight'   => 'backInRight',
+        'backInUp'      => 'backInUp',
+
+        'rotateIn'          => 'rotateIn',
+        'rotateInDownLeft'  => 'rotateInDownLeft',
+       'rotateInDownRight'  => 'rotateInDownRight',
+        'rotateInUpLeft'    => 'rotateInUpLeft',
+       'rotateInUpRight'    => 'rotateInUpRight',
+
+    );
+}
+/**
+ * Special Funcation for enable Theme demo
+ * Only for Theme User
+ * will not use to any where in our plugin.
+ * 
+ * *******************************
+ * INSTRUCTION
+ * *******************************
+ * Obviously check by function_exists() in your theme's functions.php file.
+ * Example file Available in Elementor Demo Manager plugin
+ * @details 
+ * 
+ * @author Saiful Islam <codersaiful@gmail.com>
+ * @since 1.1.0.9
+ *
+ * @return object
+ */
+function ultraaddons_theme_demo(){
+    return new \UltraAddons\Base\Theme_Demo;
+}

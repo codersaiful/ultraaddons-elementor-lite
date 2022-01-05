@@ -53,7 +53,7 @@ $widgetsArray = [
             'is_pro'   => false,
             'icon'      => 'uicon-clock',//eicon-countdown
             'cat'       => [
-                __( 'Basic', 'ultraaddons' ),
+                __( 'General', 'ultraaddons' ),
             ],
     ],
     
@@ -62,7 +62,7 @@ $widgetsArray = [
             'is_pro'   => false,
             'icon'      => 'uicon-slider',
             'cat'       => [
-                __( 'Basic', 'ultraaddons' ),
+                __( 'General', 'ultraaddons' ),
             ],
     ],
     
@@ -71,7 +71,7 @@ $widgetsArray = [
             'is_pro'   => false,
             'icon'      => 'uicon-cart',
             'cat'       => [
-                __( 'Basic', 'ultraaddons' ),
+                __( 'WooCommerce', 'ultraaddons' ),
             ],
     ],
     
@@ -80,7 +80,7 @@ $widgetsArray = [
             'is_pro'   => false,
             'icon'      => 'eicon-nav-menu',
             'cat'       => [
-                __( 'Basic', 'ultraaddons' ),
+                __( 'Header_Footer', 'ultraaddons' ),
             ],
     ],
     
@@ -89,7 +89,7 @@ $widgetsArray = [
             'is_pro'   => false,
             'icon'      => 'eicon-nav-menu',
             'cat'       => [
-                __( 'Basic', 'ultraaddons' ),
+                __( 'Header_Footer', 'ultraaddons' ),
             ],
     ],
     
@@ -108,7 +108,7 @@ $widgetsArray = [
             'is_pro'   => false,
             'icon'      => 'uicon-product-table',
             'cat'       => [
-                __( 'Basic', 'ultraaddons' ),
+                __( 'WooCommerce', 'ultraaddons' ),
             ],
     ],
     
@@ -117,7 +117,7 @@ $widgetsArray = [
             'is_pro'   => true,
             'icon'      => 'uicon-animated-header',
             'cat'       => [
-                __( 'Modern', 'ultraaddons' ),
+                __( 'General', 'ultraaddons' ),
                 __( 'Pro', 'ultraaddons' ),
             ],
     ],
@@ -149,7 +149,7 @@ $widgetsArray = [
             'is_pro'   => false,
             'icon'      => 'uicon-contact-form-7',
             'cat'       => [
-                __( 'Basic', 'ultraaddons' ),
+                __( 'Contact_Form', 'ultraaddons' ),
             ],
     ],
     'Icon_Box' => [
@@ -167,7 +167,7 @@ $widgetsArray = [
             'is_wc'     => true,
             'icon'      => 'uicon-product',
             'cat'       => [
-                __( 'Basic', 'ultraaddons' ),
+                __( 'WooCommerce', 'ultraaddons' ),
             ],
     ],
     
@@ -207,7 +207,7 @@ $widgetsArray = [
             'is_pro'   => true,
             'icon'      => 'uicon-icon-box',
             'cat'       => [
-                __( 'Basic', 'ultraaddons' ),
+                __( 'WooCommerce', 'ultraaddons' ),
             ],
     ],
     
@@ -245,7 +245,7 @@ $widgetsArray = [
             'is_pro'   => true,
             'icon'      => 'eicon-form-horizontal',
             'cat'       => [
-                __( 'Basic', 'ultraaddons' ),
+                __( 'General', 'ultraaddons' ),
             ],
     ],
     
@@ -273,7 +273,7 @@ $widgetsArray = [
             'is_pro'   => false,
             'icon'      => 'uicon-skillbar',
             'cat'       => [
-                __( 'Basic', 'ultraaddons' ),
+                __( 'Helper', 'ultraaddons' ),
             ],
     ],
     
@@ -282,7 +282,7 @@ $widgetsArray = [
             'is_pro'   => false,
             'icon'      => 'uicon-skillbar',
             'cat'       => [
-                __( 'Basic', 'ultraaddons' ),
+                __( 'WP_Basic', 'ultraaddons' ),
             ],
     ],
     
@@ -291,7 +291,7 @@ $widgetsArray = [
             'is_pro'   => true,
             'icon'      => 'uicon-skillbar',
             'cat'       => [
-                __( 'Basic', 'ultraaddons' ),
+                __( 'Header_Footer', 'ultraaddons' ),
             ],
     ],
     
@@ -309,7 +309,7 @@ $widgetsArray = [
             'is_pro'   => true,
             'icon'      => 'eicon-time-line',
             'cat'       => [
-                __( 'Basic', 'ultraaddons' ),
+                __( 'General', 'ultraaddons' ),
             ],
     ],
     
@@ -318,7 +318,7 @@ $widgetsArray = [
             'is_pro'   => true,
             'icon'      => 'eicon-accordion',
             'cat'       => [
-                __( 'Basic', 'ultraaddons' ),
+                __( 'General', 'ultraaddons' ),
             ],
     ],
     
@@ -354,7 +354,7 @@ $widgetsArray = [
             'is_pro'   => true,
             'icon'      => 'eicon-posts-masonry',
             'cat'       => [
-                __( 'Basic', 'ultraaddons' ),
+                __( 'Advance', 'ultraaddons' ),
             ],
     ],
     
@@ -372,7 +372,7 @@ $widgetsArray = [
             'is_pro'   => true,
             'icon'      => 'eicon-posts-masonry',
             'cat'       => [
-                __( 'Basic', 'ultraaddons' ),
+                __( 'Advance', 'ultraaddons' ),
             ],
     ],
 
@@ -485,7 +485,7 @@ $widgetsArray = [
             'is_pro'   => false,
             'icon'      => 'eicon-products',
             'cat'       => [
-                __( 'Basic', 'ultraaddons' ),
+                __( 'WooCommerce', 'ultraaddons' ),
             ],
     ],
     'Moving_Letters' => [
@@ -493,7 +493,7 @@ $widgetsArray = [
         'is_pro'   => false,
         'icon'      => 'eicon-t-letter',
         'cat'       => [
-            __( 'Basic', 'ultraaddons' ),
+            __( 'Advance', 'ultraaddons' ),
         ],
     ],
     'Product_Grid' => [
@@ -501,7 +501,7 @@ $widgetsArray = [
         'is_pro'   => false,
         'icon'      => 'eicon-product-images',
         'cat'       => [
-            __( 'Basic', 'ultraaddons' ),
+            __( 'WooCommerce', 'ultraaddons' ),
         ],
     ],
 /*     'Product_Filter_Gallery' => [
@@ -525,7 +525,7 @@ $widgetsArray = [
         'is_pro'   => false,
         'icon'      => 'eicon-product-images',
         'cat'       => [
-            __( 'Basic', 'ultraaddons' ),
+            __( 'WooCommerce', 'ultraaddons' ),
         ],
     ],
     'Hotspot'=> [
@@ -533,13 +533,21 @@ $widgetsArray = [
         'is_pro'   => false,
         'icon'      => 'eicon-image-hotspot',
         'cat'       => [
-            __( 'Basic', 'ultraaddons' ),
+            __( 'Advance', 'ultraaddons' ),
         ],
     ],
     'Product_Category_Grid'=> [
         'name'      => __( 'Product Category Grid', 'ultraaddons' ),
         'is_pro'   => false,
         'icon'      => 'eicon-product-images',
+        'cat'       => [
+            __( 'WooCommerce', 'ultraaddons' ),
+        ],
+    ],
+    'Hero_Slider'=> [
+        'name'      => __( 'Hero Slider', 'ultraaddons' ),
+        'is_pro'   => false,
+        'icon'      => 'uicon-slider',
         'cat'       => [
             __( 'Basic', 'ultraaddons' ),
         ],
