@@ -501,7 +501,7 @@ $widgetsArray = [
         'is_pro'   => false,
         'icon'      => 'eicon-product-images',
         'cat'       => [
-            __( 'Woocommerce', 'ultraaddons' ),
+            __( 'WooCommerce', 'ultraaddons' ),
         ],
     ],
 /*     'Product_Filter_Gallery' => [
