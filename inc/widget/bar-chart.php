@@ -70,10 +70,8 @@ class Bar_Chart extends Base{
      * @access protected
      */
     protected function _register_controls() {
-        
         //For General Section
         $this->content_general_controls();
-
        
     }
     
@@ -91,6 +89,50 @@ class Bar_Chart extends Base{
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
+        $this->add_control(
+			'label',
+			[
+				'label' => __( 'Label', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __( 'Ultra Addons', 'ultraaddons' ),
+				'label_block' => true,
+                'frontend_available' => true,
+			]
+		);
+        $repeater = new \Elementor\Repeater();
+
+		$repeater->add_control(
+			'labels', [
+				'label' => esc_html__( 'Labels', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => esc_html__( 'January' , 'ultraaddons' ),
+				'label_block' => true,
+			]
+		);
+      
+   
+       
+        $this->add_control(
+			'list',
+			[
+				'label' => esc_html__( 'Repeater List', 'ultraaddons' ),
+				'type' => Controls_Manager::REPEATER,
+				'fields' => $repeater->get_controls(),
+                'frontend_available' => true,
+				'default' => [
+					[
+						'labels' => esc_html__( 'January', 'ultraaddons' ),
+					],
+					[
+						'labels' => esc_html__( 'Februay', 'ultraaddons' ),
+					],
+                    [
+						'labels' => esc_html__( 'March', 'ultraaddons' ),
+					],
+				],
+				'title_field' => '{{{ labels }}}',
+			]
+		);
         
         
         $this->end_controls_section();
@@ -106,6 +148,7 @@ class Bar_Chart extends Base{
      */
     protected function render() {
         $settings           = $this->get_settings_for_display();
+        print_r($settings['list']);
         ?>
         <div>
             <canvas id="myChart"></canvas>

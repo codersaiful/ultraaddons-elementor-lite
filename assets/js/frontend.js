@@ -847,7 +847,7 @@
      * @since 1.1.0.8
      */
      
-    var Ua_Chart = EM.frontend.handlers.Base.extend({
+    var UA_Chart = EM.frontend.handlers.Base.extend({
         onInit: function(){
             this.run();
         },
@@ -857,11 +857,12 @@
         run: function(){
 
             var $scope = this.$element;
-            console.log($scope);
+           
             /**
              * get data on editor mode
              */
             var $settings = this.getElementSettings();
+            console.log($settings);
 
             const labels = [
               'January',
@@ -875,7 +876,7 @@
             const data = {
               labels: labels,
               datasets: [{
-                label: 'My First dataset',
+                label: $settings.label,
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
                 data: [0, 10, 5, 2, 20, 30, 45],
@@ -899,7 +900,7 @@
     EF.hooks.addAction(
         'frontend/element_ready/ultraaddons-bar-chart.default',
         function ($scope) {
-                EF.elementsHandler.addHandler(Ua_Chart, {
+                EF.elementsHandler.addHandler(UA_Chart, {
                         $element: $scope,
                 });
         }
