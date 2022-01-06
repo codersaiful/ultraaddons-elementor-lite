@@ -72,7 +72,7 @@ class Bar_Chart extends Base{
     protected function _register_controls() {
         //For General Section
         $this->content_general_controls();
-       
+        $this->chart_style();
     }
     
         
@@ -90,11 +90,21 @@ class Bar_Chart extends Base{
             ]
         );
         $this->add_control(
-			'label',
+			'legend_label',
 			[
-				'label' => __( 'Label', 'ultraaddons' ),
+				'label' => __( 'Legend Label', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => __( 'Ultra Addons', 'ultraaddons' ),
+				'label_block' => true,
+                'frontend_available' => true,
+			]
+		);
+        $this->add_control(
+			'chart_title',
+			[
+				'label' => __( 'Chart Title', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __( 'Ultra Addons Chart Title', 'ultraaddons' ),
 				'label_block' => true,
                 'frontend_available' => true,
 			]
@@ -158,14 +168,17 @@ class Bar_Chart extends Base{
 					[
 						'labels' => esc_html__( 'January', 'ultraaddons' ),
 						'data' => esc_html__( '10', 'ultraaddons' ),
+                        'backgroundColor' => '#37AEFF'
 					],
 					[
 						'labels' => esc_html__( 'Februay', 'ultraaddons' ),
                         'data' => esc_html__( '15', 'ultraaddons' ),
+                        'backgroundColor' => '#C60233'
 					],
                     [
 						'labels' => esc_html__( 'March', 'ultraaddons' ),
                         'data' => esc_html__( '20', 'ultraaddons' ),
+                        'backgroundColor' => '#EFF600'
 					],
 				],
 				'title_field' => '{{{ labels }}}',
@@ -173,6 +186,50 @@ class Bar_Chart extends Base{
 		);
         
         
+        $this->end_controls_section();
+    }
+
+    protected function chart_style() {
+        $this->start_controls_section(
+            'chart_style',
+            [
+                'label'     => esc_html__( 'Chart Style', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_control(
+			'x_ticks_color', [
+				'label' => __( 'X Axis Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+                'default'   =>'#ddd',
+                'frontend_available' => true,
+			]
+        );
+        $this->add_control(
+			'y_ticks_color', [
+				'label' => __( 'Y Axis Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+                'default'   =>'#ddd',
+                'frontend_available' => true,
+			]
+        );
+        $this->add_control(
+			'y_grid_color', [
+				'label' => __( 'Y Grid Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+                'default'   =>'#ddd',
+                'frontend_available' => true,
+			]
+        );
+        $this->add_control(
+			'legend_color', [
+				'label' => __( 'Legend Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+                'default'   =>'#ddd',
+                'frontend_available' => true,
+			]
+        );
+       
         $this->end_controls_section();
     }
 

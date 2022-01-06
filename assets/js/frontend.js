@@ -836,7 +836,7 @@
                     })
                 }
             );
-            /**
+     /**
      * Chart Initialize Here
      * 
      * Actually most of the part of this Widget has done by B M Rafiul Alam but
@@ -863,42 +863,74 @@
              */
             var $settings = this.getElementSettings();
             var $id = $scope[0].dataset.id;
-            console.log($id );
-            
-                const $data    = $settings.list;
+           //Get Data List
+            const $data    = $settings.list;
 
-                let dLen       = $data.length;
-                let $chartData = [],
-                 $labels = [],
-                 $backgroundColor = [];
+            let dLen       = $data.length;
+            let $chartData = [],
+                $labels = [],
+                $backgroundColor = [];
 
-                for (let i = 0; i < dLen; i++) {
-                   let $d = $data[i];
-                   $chartData.push($d.data);
-                   $labels.push($d.labels);
-                   $backgroundColor.push($d.backgroundColor);
-                }
-                 
+            for (let i = 0; i < dLen; i++) {
+                let $d = $data[i];
+                $chartData.push($d.data);
+                $labels.push($d.labels);
+                $backgroundColor.push($d.backgroundColor);
+            }
+             //Datasets    
             const labels =  $labels;
-            const data = {
+            const barChartData = {
               labels: labels,
               datasets: [{
-                label: $settings.label,
+                label: $settings.legend_label,
                 backgroundColor: $backgroundColor,
                 borderColor:  $settings.borderColor,
                 data: $chartData,
               }]
             };
+
+            //Config Data
             const config = {
                 type:'bar',
-                data: data,
+                data: barChartData,
                 options: {
-                    
-                }
+                    responsive: true,
+                    plugins: {
+                      title: {
+                        display: true,
+                        text: $settings.chart_title
+                      },
+                      legend: {
+                        display: true,
+                        labels: {
+                            color: $settings.legend_color
+                        }
+                    }
+                    },
+                    scales: {
+                      x: {
+                        ticks: {
+                          color: $settings.x_ticks_color,
+                        }
+                      },
+                      y: {
+                        ticks: {
+                            color: $settings.y_ticks_color,
+                        }
+                      },
+                      y: {
+                        grid: {
+                          drawBorder: false,
+                          color:$settings.y_grid_color,
+                        },
+                      }
+
+                    }
+                  },
             };
-          
-            const uaChart = new Chart(
-                document.getElementById('uaChart-' + $id),
+            //Initialize
+            var ctx = document.getElementById('uaChart-' + $id);
+            const uaChart = new Chart(ctx,
                 config
             );
             
