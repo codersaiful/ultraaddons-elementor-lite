@@ -862,36 +862,45 @@
              * get data on editor mode
              */
             var $settings = this.getElementSettings();
-            console.log($settings);
+            var $id = $scope[0].dataset.id;
+            console.log($id );
+            
+                const $data    = $settings.list;
 
-            const labels = [
-              'January',
-              'February',
-              'March',
-              'April',
-              'May',
-              'June',
-            ];
-          
+                let dLen       = $data.length;
+                let $chartData = [],
+                 $labels = [],
+                 $backgroundColor = [];
+
+                for (let i = 0; i < dLen; i++) {
+                   let $d = $data[i];
+                   $chartData.push($d.data);
+                   $labels.push($d.labels);
+                   $backgroundColor.push($d.backgroundColor);
+                }
+                 
+            const labels =  $labels;
             const data = {
               labels: labels,
               datasets: [{
                 label: $settings.label,
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [0, 10, 5, 2, 20, 30, 45],
+                backgroundColor: $backgroundColor,
+                borderColor:  $settings.borderColor,
+                data: $chartData,
               }]
             };
             const config = {
-                type: 'line',
+                type:'bar',
                 data: data,
-                options: {}
+                options: {
+                    
+                }
             };
           
-            const myChart = new Chart(
-                document.getElementById('myChart'),
+            const uaChart = new Chart(
+                document.getElementById('uaChart-' + $id),
                 config
-              );
+            );
             
         }
     });
@@ -900,9 +909,9 @@
     EF.hooks.addAction(
         'frontend/element_ready/ultraaddons-bar-chart.default',
         function ($scope) {
-                EF.elementsHandler.addHandler(UA_Chart, {
-                        $element: $scope,
-                });
+            EF.elementsHandler.addHandler(UA_Chart, {
+                    $element: $scope,
+            });
         }
     );
 

@@ -99,6 +99,30 @@ class Bar_Chart extends Base{
                 'frontend_available' => true,
 			]
 		);
+      /*   $this->add_control(
+			'type',
+			[
+				'label' => __( 'Chart Type', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'line',
+				'frontend_available' => true,
+				'options' => [
+					'line' => __( 'Line', 'ultraaddons' ),
+					'bar' => __( 'Bar', 'ultraaddons' ),
+					'radar' => __( 'Radar', 'ultraaddons' ),
+					'doughnut' => __( 'Doughnut', 'ultraaddons' ),
+					'pie' => __( 'Pie', 'ultraaddons' ),
+					'polarArea' => __( 'PolarArea', 'ultraaddons' ),
+				],
+			]
+		); */
+        $this->add_control(
+			'borderColor', [
+				'label' => __( 'Border Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+                'frontend_available' => true,
+			]
+        );
         $repeater = new \Elementor\Repeater();
 
 		$repeater->add_control(
@@ -109,9 +133,20 @@ class Bar_Chart extends Base{
 				'label_block' => true,
 			]
 		);
-      
-   
-       
+        $repeater->add_control(
+			'data', [
+				'label' => esc_html__( 'Data', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => esc_html__( '10' , 'ultraaddons' ),
+				'label_block' => true,
+			]
+		);
+        $repeater->add_control(
+			'backgroundColor', [
+				'label' => __( 'Background Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+			]
+        );
         $this->add_control(
 			'list',
 			[
@@ -122,12 +157,15 @@ class Bar_Chart extends Base{
 				'default' => [
 					[
 						'labels' => esc_html__( 'January', 'ultraaddons' ),
+						'data' => esc_html__( '10', 'ultraaddons' ),
 					],
 					[
 						'labels' => esc_html__( 'Februay', 'ultraaddons' ),
+                        'data' => esc_html__( '15', 'ultraaddons' ),
 					],
                     [
 						'labels' => esc_html__( 'March', 'ultraaddons' ),
+                        'data' => esc_html__( '20', 'ultraaddons' ),
 					],
 				],
 				'title_field' => '{{{ labels }}}',
@@ -147,11 +185,11 @@ class Bar_Chart extends Base{
      * @access protected
      */
     protected function render() {
-        $settings           = $this->get_settings_for_display();
-        print_r($settings['list']);
+        $settings = $this->get_settings_for_display();
+        $id= $this->get_id();
         ?>
-        <div>
-            <canvas id="myChart"></canvas>
+        <div class="ua-chart-container">
+            <canvas id="uaChart-<?php echo $id;?>"></canvas>
         </div>
         <?php
         
