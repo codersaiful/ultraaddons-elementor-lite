@@ -560,6 +560,15 @@ $widgetsArray = [
             __( 'Chart', 'ultraaddons' ),
         ],
     ],
+    'Line_Chart'=> [
+        'name'      => __( 'Line Chart', 'ultraaddons' ),
+        'is_pro'   => false,
+        'icon'      => 'uicon-slider',
+        'cat'       => [
+            __( 'Chart', 'ultraaddons' ),
+        ],
+    ],
+
 
 
 ];

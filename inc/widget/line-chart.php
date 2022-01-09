@@ -14,7 +14,7 @@ use Elementor\Group_Control_Background;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Bar_Chart extends Base{
+class Line_Chart extends Base{
     
     public function __construct($data = [], $args = null) {
         parent::__construct($data, $args);
@@ -119,30 +119,6 @@ class Bar_Chart extends Base{
                 'frontend_available' => true,
 			]
 		);
-      /*   $this->add_control(
-			'type',
-			[
-				'label' => __( 'Chart Type', 'ultraaddons' ),
-				'type' => Controls_Manager::SELECT,
-				'default' => 'line',
-				'frontend_available' => true,
-				'options' => [
-					'line' => __( 'Line', 'ultraaddons' ),
-					'bar' => __( 'Bar', 'ultraaddons' ),
-					'radar' => __( 'Radar', 'ultraaddons' ),
-					'doughnut' => __( 'Doughnut', 'ultraaddons' ),
-					'pie' => __( 'Pie', 'ultraaddons' ),
-					'polarArea' => __( 'PolarArea', 'ultraaddons' ),
-				],
-			]
-		); */
-        $this->add_control(
-			'borderColor', [
-				'label' => __( 'Border Color', 'ultraaddons' ),
-				'type'      => Controls_Manager::COLOR,
-                'frontend_available' => true,
-			]
-        );
         $repeater = new \Elementor\Repeater();
 
 		$repeater->add_control(
@@ -163,14 +139,14 @@ class Bar_Chart extends Base{
 		);
         $repeater->add_control(
 			'backgroundColor', [
-				'label' => __( 'Background Color', 'ultraaddons' ),
+				'label' => __( 'Node Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 			]
         );
         $this->add_control(
 			'list',
 			[
-				'label' => esc_html__( 'Repeater List', 'ultraaddons' ),
+				'label' => esc_html__( 'Data List', 'ultraaddons' ),
 				'type' => Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
                 'frontend_available' => true,
@@ -206,6 +182,50 @@ class Bar_Chart extends Base{
                 'label'     => esc_html__( 'Chart Style', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
+        );
+        $this->add_control(
+			'borderColor', [
+				'label' => __( 'Line Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+                'frontend_available' => true,
+			]
+        );
+        $this->add_control(
+			'fill_color',
+			[
+				'label' => __( 'Fill Color', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+                'frontend_available' => true,
+                'description'       => 'Note: Default Fill Color comes from the first node color. '
+			]
+		);
+        $this->add_control(
+            'borderWidth',
+                [
+                    'label' => esc_html__( 'Border Width', 'ultraaddons' ),
+                    'type' => Controls_Manager::NUMBER,
+                    'min' => 1,
+                    'max' => 20,
+                    'step' => 1,
+                    'default' => 3,
+                    'frontend_available' => true,
+                ]
+        );
+        $this->add_control(
+            'pointBorderWidth',
+                [
+                    'label' => esc_html__( 'Point Border Width', 'ultraaddons' ),
+                    'type' => Controls_Manager::NUMBER,
+                    'min' => 1,
+                    'max' => 20,
+                    'step' => 1,
+                    'default' => 3,
+                    'frontend_available' => true,
+                ]
         );
         $this->add_control(
 			'x_ticks_color', [
