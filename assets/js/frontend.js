@@ -877,7 +877,7 @@
                 $labels.push($d.labels);
                 $backgroundColor.push($d.backgroundColor);
             }
-             //Datasets    
+            //Datasets    
             const labels =  $labels;
             const barChartData = {
               labels: labels,
@@ -902,6 +902,8 @@
                       },
                       legend: {
                         display: true,
+                        position: $settings.legend_position,
+                        align: 'middle',
                         labels: {
                             color: $settings.legend_color
                         }

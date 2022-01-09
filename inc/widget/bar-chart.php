@@ -73,9 +73,9 @@ class Bar_Chart extends Base{
         //For General Section
         $this->content_general_controls();
         $this->chart_style();
+        $this->legend_style();
     }
-    
-        
+      
     /**
      * General Section for Content Controls
      * 
@@ -199,7 +199,7 @@ class Bar_Chart extends Base{
         );
         $this->add_control(
 			'x_ticks_color', [
-				'label' => __( 'X Axis Color', 'ultraaddons' ),
+				'label' => __( 'X Axis Label Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
                 'default'   =>'#ddd',
                 'frontend_available' => true,
@@ -207,7 +207,7 @@ class Bar_Chart extends Base{
         );
         $this->add_control(
 			'y_ticks_color', [
-				'label' => __( 'Y Axis Color', 'ultraaddons' ),
+				'label' => __( 'Y Axis Label Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
                 'default'   =>'#ddd',
                 'frontend_available' => true,
@@ -217,9 +217,20 @@ class Bar_Chart extends Base{
 			'y_grid_color', [
 				'label' => __( 'Y Grid Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
-                'default'   =>'#ddd',
+                'default'   =>'#444242',
                 'frontend_available' => true,
 			]
+        );
+       
+        $this->end_controls_section();
+    }
+    protected function legend_style() {
+        $this->start_controls_section(
+            'legend_style',
+            [
+                'label'     => esc_html__( 'Legend Style', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
         );
         $this->add_control(
 			'legend_color', [
@@ -229,6 +240,33 @@ class Bar_Chart extends Base{
                 'frontend_available' => true,
 			]
         );
+        $this->add_responsive_control(
+			'legend_position',
+			[
+				'label' => esc_html__( 'Legend Position', 'ultraaddons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'top' => [
+						'title' => esc_html__( 'Top', 'ultraaddons' ),
+						'icon' => 'eicon-v-align-top',
+					],
+                    'right' => [
+						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'icon' => 'eicon-h-align-right',
+					],
+                    'bottom' => [
+						'title' => esc_html__( 'Bottom', 'ultraaddons' ),
+						'icon' => 'eicon-v-align-bottom',
+					],
+					'left' => [
+						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'icon' => 'eicon-h-align-left',
+					],
+				],
+				'default' => 'center',
+                'frontend_available' => true
+			]
+		);
        
         $this->end_controls_section();
     }
@@ -246,10 +284,9 @@ class Bar_Chart extends Base{
         $id= $this->get_id();
         ?>
         <div class="ua-chart-container">
-            <canvas id="uaChart-<?php echo $id;?>"></canvas>
+            <canvas id="uaChart-<?php echo esc_attr($id);?>"></canvas>
         </div>
         <?php
-        
     }
     
     
