@@ -84,6 +84,7 @@ class Bar_Chart extends Base{
         $this->content_general_controls();
         $this->chart_style();
         $this->legend_style();
+        $this->box_style();
     }
       
     /**
@@ -119,23 +120,7 @@ class Bar_Chart extends Base{
                 'frontend_available' => true,
 			]
 		);
-      /*   $this->add_control(
-			'type',
-			[
-				'label' => __( 'Chart Type', 'ultraaddons' ),
-				'type' => Controls_Manager::SELECT,
-				'default' => 'line',
-				'frontend_available' => true,
-				'options' => [
-					'line' => __( 'Line', 'ultraaddons' ),
-					'bar' => __( 'Bar', 'ultraaddons' ),
-					'radar' => __( 'Radar', 'ultraaddons' ),
-					'doughnut' => __( 'Doughnut', 'ultraaddons' ),
-					'pie' => __( 'Pie', 'ultraaddons' ),
-					'polarArea' => __( 'PolarArea', 'ultraaddons' ),
-				],
-			]
-		); */
+    
         $this->add_control(
 			'borderColor', [
 				'label' => __( 'Border Color', 'ultraaddons' ),
@@ -277,6 +262,48 @@ class Bar_Chart extends Base{
                 'frontend_available' => true
 			]
 		);
+       
+        $this->end_controls_section();
+    }
+
+    protected function box_style() {
+        $this->start_controls_section(
+            'box_style',
+            [
+                'label'     => esc_html__( 'Box Style', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_control(
+			'box_bg', [
+				'label' => __( 'Box Background', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+                'default'   =>'#fff',
+                'selectors' => [
+					'{{WRAPPER}} .ua-chart-container' => 'background: {{VALUE}};',
+				],
+			]
+        );
+
+        $this->add_responsive_control(
+            'box_padding',
+            [
+                    'label' => __( 'Padding', 'ultraaddons' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px' ],
+                    'default'   => [
+                            'top' => 15,
+                            'left' => 15,
+                            'right' => 15,
+                            'bottom' => 15,
+                            'unit' => 'px',
+                    ],
+                    'selectors' => [
+                            '{{WRAPPER}} .ua-chart-container' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+            ]
+        );
+     
        
         $this->end_controls_section();
     }
