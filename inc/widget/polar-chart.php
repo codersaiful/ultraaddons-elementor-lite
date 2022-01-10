@@ -14,7 +14,7 @@ use Elementor\Group_Control_Background;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Bar_Chart extends Base{
+class Polar_Chart extends Base{
     
     public function __construct($data = [], $args = null) {
         parent::__construct($data, $args);
@@ -120,14 +120,6 @@ class Bar_Chart extends Base{
                 'frontend_available' => true,
 			]
 		);
-    
-        $this->add_control(
-			'borderColor', [
-				'label' => __( 'Border Color', 'ultraaddons' ),
-				'type'      => Controls_Manager::COLOR,
-                'frontend_available' => true,
-			]
-        );
         $repeater = new \Elementor\Repeater();
 
 		$repeater->add_control(
@@ -148,14 +140,14 @@ class Bar_Chart extends Base{
 		);
         $repeater->add_control(
 			'backgroundColor', [
-				'label' => __( 'Background Color', 'ultraaddons' ),
+				'label' => __( 'Node Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 			]
         );
         $this->add_control(
 			'list',
 			[
-				'label' => esc_html__( 'Repeater List', 'ultraaddons' ),
+				'label' => esc_html__( 'Data List', 'ultraaddons' ),
 				'type' => Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
                 'frontend_available' => true,
@@ -167,7 +159,7 @@ class Bar_Chart extends Base{
 					],
 					[
 						'labels' => esc_html__( 'Februay', 'ultraaddons' ),
-                        'data' => esc_html__( '15', 'ultraaddons' ),
+                        'data' => esc_html__( '14', 'ultraaddons' ),
                         'backgroundColor' => '#C60233'
 					],
                     [
@@ -175,11 +167,15 @@ class Bar_Chart extends Base{
                         'data' => esc_html__( '20', 'ultraaddons' ),
                         'backgroundColor' => '#EFF600'
 					],
+                    [
+						'labels' => esc_html__( 'March', 'ultraaddons' ),
+                        'data' => esc_html__( '17', 'ultraaddons' ),
+                        'backgroundColor' => '#1AAA09'
+					],
 				],
 				'title_field' => '{{{ labels }}}',
 			]
 		);
-        
         
         $this->end_controls_section();
     }
@@ -191,6 +187,30 @@ class Bar_Chart extends Base{
                 'label'     => esc_html__( 'Chart Style', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
+        );
+        $this->add_control(
+            'borderWidth',
+                [
+                    'label' => esc_html__( 'Border Width', 'ultraaddons' ),
+                    'type' => Controls_Manager::NUMBER,
+                    'min' => 1,
+                    'max' => 20,
+                    'step' => 1,
+                    'default' => 3,
+                    'frontend_available' => true,
+                ]
+        );
+        $this->add_control(
+            'pointBorderWidth',
+                [
+                    'label' => esc_html__( 'Point Border Width', 'ultraaddons' ),
+                    'type' => Controls_Manager::NUMBER,
+                    'min' => 1,
+                    'max' => 20,
+                    'step' => 1,
+                    'default' => 3,
+                    'frontend_available' => true,
+                ]
         );
         $this->add_control(
 			'x_ticks_color', [

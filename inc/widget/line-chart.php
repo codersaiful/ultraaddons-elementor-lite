@@ -133,7 +133,7 @@ class Line_Chart extends Base{
         $repeater->add_control(
 			'data', [
 				'label' => esc_html__( 'Data', 'ultraaddons' ),
-				'type' => Controls_Manager::TEXT,
+				'type' => Controls_Manager::NUMBER,
 				'default' => esc_html__( '10' , 'ultraaddons' ),
 				'label_block' => true,
 			]
@@ -159,13 +159,18 @@ class Line_Chart extends Base{
 					],
 					[
 						'labels' => esc_html__( 'Februay', 'ultraaddons' ),
-                        'data' => esc_html__( '15', 'ultraaddons' ),
+                        'data' => esc_html__( '14', 'ultraaddons' ),
                         'backgroundColor' => '#C60233'
 					],
                     [
 						'labels' => esc_html__( 'March', 'ultraaddons' ),
                         'data' => esc_html__( '20', 'ultraaddons' ),
                         'backgroundColor' => '#EFF600'
+					],
+                    [
+						'labels' => esc_html__( 'March', 'ultraaddons' ),
+                        'data' => esc_html__( '17', 'ultraaddons' ),
+                        'backgroundColor' => '#1AAA09'
 					],
 				],
 				'title_field' => '{{{ labels }}}',
@@ -188,6 +193,7 @@ class Line_Chart extends Base{
 				'label' => __( 'Line Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
                 'frontend_available' => true,
+                'default'           => '#959595'
 			]
         );
         $this->add_control(
@@ -198,7 +204,7 @@ class Line_Chart extends Base{
 				'label_on' => __( 'Yes', 'ultraaddons' ),
 				'label_off' => __( 'No', 'ultraaddons' ),
 				'return_value' => 'yes',
-				'default' => 'yes',
+				'default' => 'no',
                 'frontend_available' => true,
                 'description'       => 'Note: Default Fill Color comes from the first node color. '
 			]

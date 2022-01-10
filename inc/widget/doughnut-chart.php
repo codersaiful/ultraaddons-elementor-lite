@@ -14,7 +14,7 @@ use Elementor\Group_Control_Background;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Bar_Chart extends Base{
+class Doughnut_Chart extends Base{
     
     public function __construct($data = [], $args = null) {
         parent::__construct($data, $args);
@@ -67,7 +67,7 @@ class Bar_Chart extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua', 'chart', 'bar', 'Pie' ];
+        return [ 'ultraaddons', 'ua', 'chart', 'doughnut', 'pie' ];
     }
     
     
@@ -121,13 +121,6 @@ class Bar_Chart extends Base{
 			]
 		);
     
-        $this->add_control(
-			'borderColor', [
-				'label' => __( 'Border Color', 'ultraaddons' ),
-				'type'      => Controls_Manager::COLOR,
-                'frontend_available' => true,
-			]
-        );
         $repeater = new \Elementor\Repeater();
 
 		$repeater->add_control(
@@ -163,17 +156,17 @@ class Bar_Chart extends Base{
 					[
 						'labels' => esc_html__( 'January', 'ultraaddons' ),
 						'data' => esc_html__( '10', 'ultraaddons' ),
-                        'backgroundColor' => '#37AEFF'
+                        'backgroundColor' => '#138FE4'
 					],
 					[
 						'labels' => esc_html__( 'Februay', 'ultraaddons' ),
                         'data' => esc_html__( '15', 'ultraaddons' ),
-                        'backgroundColor' => '#C60233'
+                        'backgroundColor' => '#50C602'
 					],
                     [
 						'labels' => esc_html__( 'March', 'ultraaddons' ),
                         'data' => esc_html__( '20', 'ultraaddons' ),
-                        'backgroundColor' => '#EFF600'
+                        'backgroundColor' => '#CCE71E'
 					],
 				],
 				'title_field' => '{{{ labels }}}',
@@ -212,7 +205,7 @@ class Bar_Chart extends Base{
 			'y_grid_color', [
 				'label' => __( 'Y Grid Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
-                'default'   =>'#444242',
+                'default'   =>'#DEDEDE',
                 'frontend_available' => true,
 			]
         );

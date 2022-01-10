@@ -14,7 +14,7 @@ use Elementor\Group_Control_Background;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Bar_Chart extends Base{
+class Pie_Chart extends Base{
     
     public function __construct($data = [], $args = null) {
         parent::__construct($data, $args);
@@ -121,13 +121,6 @@ class Bar_Chart extends Base{
 			]
 		);
     
-        $this->add_control(
-			'borderColor', [
-				'label' => __( 'Border Color', 'ultraaddons' ),
-				'type'      => Controls_Manager::COLOR,
-                'frontend_available' => true,
-			]
-        );
         $repeater = new \Elementor\Repeater();
 
 		$repeater->add_control(
@@ -212,7 +205,7 @@ class Bar_Chart extends Base{
 			'y_grid_color', [
 				'label' => __( 'Y Grid Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
-                'default'   =>'#444242',
+                'default'   =>'#DEDEDE',
                 'frontend_available' => true,
 			]
         );
