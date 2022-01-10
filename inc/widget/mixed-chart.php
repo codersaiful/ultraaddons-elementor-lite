@@ -132,8 +132,8 @@ class Mixed_Chart extends Base{
 			]
 		);
         $repeater->add_control(
-			'data', [
-				'label' => esc_html__( 'Data', 'ultraaddons' ),
+			'bar_data', [
+				'label' => esc_html__( 'Bar Chart Data', 'ultraaddons' ),
 				'type' => Controls_Manager::NUMBER,
 				'default' => esc_html__( '10' , 'ultraaddons' ),
 				'label_block' => true,
@@ -143,10 +143,20 @@ class Mixed_Chart extends Base{
 			'backgroundColor', [
 				'label' => __( 'Background Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
+                'separator' =>'after'
 			]
         );
+        $repeater->add_control(
+			'line_data', [
+				'label' => esc_html__( 'Line Chart Data', 'ultraaddons' ),
+				'type' => Controls_Manager::NUMBER,
+				'default' => esc_html__( '10' , 'ultraaddons' ),
+				'label_block' => true,
+			]
+		);
+       
         $this->add_control(
-			'bar_data_list',
+			'data_list',
 			[
 				'label' => esc_html__( 'Bar Chart Data', 'ultraaddons' ),
 				'type' => Controls_Manager::REPEATER,
@@ -155,53 +165,27 @@ class Mixed_Chart extends Base{
 				'default' => [
 					[
 						'labels' => esc_html__( 'January', 'ultraaddons' ),
-						'data' => esc_html__( '10', 'ultraaddons' ),
-                        'backgroundColor' => '#138FE4'
+						'bar_data' => esc_html__( '10', 'ultraaddons' ),
+                        'backgroundColor' => '#138FE4',
+                        'line_data' => esc_html__( '12', 'ultraaddons' ),
 					],
 					[
 						'labels' => esc_html__( 'Februay', 'ultraaddons' ),
-                        'data' => esc_html__( '15', 'ultraaddons' ),
-                        'backgroundColor' => '#50C602'
+                        'bar_data' => esc_html__( '12', 'ultraaddons' ),
+                        'backgroundColor' => '#50C602',
+                        'line_data' => esc_html__( '14', 'ultraaddons' ),
 					],
                     [
-						'labels' => esc_html__( 'March', 'ultraaddons' ),
-                        'data' => esc_html__( '20', 'ultraaddons' ),
-                        'backgroundColor' => '#CCE71E'
+					    'labels' => esc_html__( 'March', 'ultraaddons' ),
+                        'bar_data' => esc_html__( '20', 'ultraaddons' ),
+                        'backgroundColor' => '#CCE71E',
+                        'line_data' => esc_html__( '22', 'ultraaddons' ),
 					],
 				],
 				'title_field' => '{{{ labels }}}',
 			]
 		);
 
-        $this->add_control(
-			'line_data_list',
-			[
-				'label' => esc_html__( 'Line Chart Data', 'ultraaddons' ),
-				'type' => Controls_Manager::REPEATER,
-				'fields' => $repeater->get_controls(),
-                'frontend_available' => true,
-				'default' => [
-					[
-						'labels' => esc_html__( 'January', 'ultraaddons' ),
-						'data' => esc_html__( '10', 'ultraaddons' ),
-                        'backgroundColor' => '#138FE4'
-					],
-					[
-						'labels' => esc_html__( 'Februay', 'ultraaddons' ),
-                        'data' => esc_html__( '15', 'ultraaddons' ),
-                        'backgroundColor' => '#50C602'
-					],
-                    [
-						'labels' => esc_html__( 'March', 'ultraaddons' ),
-                        'data' => esc_html__( '20', 'ultraaddons' ),
-                        'backgroundColor' => '#CCE71E'
-					],
-				],
-				'title_field' => '{{{ labels }}}',
-			]
-		);
-        
-        
         $this->end_controls_section();
     }
 
@@ -218,7 +202,54 @@ class Mixed_Chart extends Base{
 				'label' => __( 'Line Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
                 'frontend_available' => true,
-                'default'           => '#959595'
+                'default'           => '#959595',
+			]
+        );
+        $this->add_control(
+            'borderWidth',
+                [
+                    'label' => esc_html__( 'Line Width', 'ultraaddons' ),
+                    'type' => Controls_Manager::NUMBER,
+                    'min' => 1,
+                    'max' => 20,
+                    'step' => 1,
+                    'default' => 3,
+                    'frontend_available' => true,
+                ]
+        );
+        $this->add_control(
+            'pointBorderWidth',
+                [
+                    'label' => esc_html__( 'Line Point Width', 'ultraaddons' ),
+                    'type' => Controls_Manager::NUMBER,
+                    'min' => 1,
+                    'max' => 20,
+                    'step' => 1,
+                    'default' => 3,
+                    'frontend_available' => true,
+                    'separator' => 'after'
+                ]
+        );
+        $this->add_control(
+			'fill_color',
+			[
+				'label' => __( 'Fill Color', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+                'frontend_available' => true,
+                'description'       => 'Note: Fill Color only for line chart. '
+			]
+		);
+        $this->add_control(
+			'fill_color_bg', [
+				'label' => __( 'Fill Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+                'default'   =>'#ddd',
+                'frontend_available' => true,
+                'condition'=>['fill_color'=>'yes'],
 			]
         );
         $this->add_control(
@@ -227,6 +258,7 @@ class Mixed_Chart extends Base{
 				'type'      => Controls_Manager::COLOR,
                 'default'   =>'#ddd',
                 'frontend_available' => true,
+                'separator'         => 'before'
 			]
         );
         $this->add_control(
@@ -235,6 +267,15 @@ class Mixed_Chart extends Base{
 				'type'      => Controls_Manager::COLOR,
                 'default'   =>'#ddd',
                 'frontend_available' => true,
+			]
+        );
+        $this->add_control(
+			'x_grid_color', [
+				'label' => __( 'X Grid Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+                'default'   =>'#DEDEDE',
+                'frontend_available' => true,
+                'separator'         => 'before'
 			]
         );
         $this->add_control(

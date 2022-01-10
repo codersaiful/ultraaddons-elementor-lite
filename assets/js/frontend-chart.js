@@ -22,7 +22,7 @@ $window.on( 'elementor/frontend/init', function() {
     *  @author B M Rafiul Alam
     *****************************************/
 
-      var UA_Chart = EM.frontend.handlers.Base.extend({
+      var Bar_Chart = EM.frontend.handlers.Base.extend({
         onInit: function(){
             this.run();
         },
@@ -116,7 +116,7 @@ $window.on( 'elementor/frontend/init', function() {
     EF.hooks.addAction(
         'frontend/element_ready/ultraaddons-bar-chart.default',
         function ($scope) {
-            EF.elementsHandler.addHandler(UA_Chart, {
+            EF.elementsHandler.addHandler(Bar_Chart, {
                     $element: $scope,
             });
         }
@@ -224,7 +224,6 @@ $window.on( 'elementor/frontend/init', function() {
         }
     });
 
-     
     EF.hooks.addAction(
         'frontend/element_ready/ultraaddons-line-chart.default',
         function ($scope) {
@@ -234,7 +233,6 @@ $window.on( 'elementor/frontend/init', function() {
         }
     );
 
-  
     /*****************************************
     * Pie Chart Options and initialization js
     *  @author B M Rafiul Alam
@@ -566,28 +564,31 @@ $window.on( 'elementor/frontend/init', function() {
 
         var $scope = this.$element;
        
-        /**
-         * get data on editor mode
-         */
-        var $settings  = this.getElementSettings();
-        var $id        = $scope[0].dataset.id;
-       //Get Data List
-        const $barDataList    = $settings.bar_data_list;
-        const $lineDataList    = $settings.line_data_list;
+          /**
+             * get data on editor mode
+          */
+         var $settings = this.getElementSettings();
+         var $id = $scope[0].dataset.id;
+        //Get Data List
+         const $data    = $settings.data_list;
+         console.log($data);
 
-        let $dLen       = $barDataList.length;
-        let $chartData = [],
-            $labels    = [],
-            $backgroundColor = [];
+         let dLen       = $data.length;
+         let $barChartData = [],
+            $linechartData = [],
+             $labels = [],
+             $backgroundColor = [];
 
-        for (let i = 0; i < $dLen; i++) {
-            let $d = $barDataList[i];
-            $chartData.push($d.data);
-            $labels.push($d.labels);
-            $backgroundColor.push($d.backgroundColor);
-        }
-        //Datasets    
-        const labels =  $labels;
+         for (let i = 0; i < dLen; i++) {
+             let $d = $data[i];
+             $barChartData.push($d.bar_data);
+             $linechartData.push($d.line_data);
+             $labels.push($d.labels);
+             $backgroundColor.push($d.backgroundColor);
+         }
+         //Datasets    
+         const labels =  $labels;
+
         //Config Data
         const config = {
           type: "bar",
@@ -600,26 +601,67 @@ $window.on( 'elementor/frontend/init', function() {
                 borderColor:$settings.borderColor,
                 borderWidth: 1,
                 label:$settings.legend_label,
-                data: $chartData,
+                data: $barChartData,
                 hoverOffset: 4
               },
               {
                 type: "line",
                 label:$settings.legend_label,
-                data: $chartData,
+                data: $linechartData,
+                backgroundColor: $settings.fill_color_bg ? $settings.fill_color_bg  : $backgroundColor,
                 borderColor:$settings.borderColor,
                 lineTension: 0,
-                hoverOffset: 4
+                hoverOffset: 4,
+                fill: ($settings.fill_color=='yes') ? true : false,
+                pointBorderWidth:$settings.pointBorderWidth,
+                borderWidth:$settings.borderWidth,
               }
             ]
-          }
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              title: {
+                display: true,
+                text: $settings.chart_title
+              },
+              legend: {
+                    display: true,
+                    position: $settings.legend_position,
+                    align: 'middle',
+                    labels: {
+                        color: $settings.legend_color
+                    }
+                }
+            },
+            scales: {
+              x: {
+                ticks: {
+                  color: $settings.x_ticks_color,
+                },
+                grid: {
+                  drawBorder: false,
+                  color:$settings.x_grid_color,
+                },
+              },
+              y: {
+                ticks: {
+                    color: $settings.y_ticks_color,
+                },
+                grid: {
+                  drawBorder: false,
+                  color:$settings.y_grid_color,
+                },
+              }
+
+            }
+        },
         };
         //Initialize
         var ctx = document.getElementById('uaChart-' + $id);
         const uaChart = new Chart(ctx,
             config
         );
-        
         
     }
 });
