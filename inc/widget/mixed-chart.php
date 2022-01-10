@@ -101,11 +101,21 @@ class Mixed_Chart extends Base{
             ]
         );
         $this->add_control(
-			'legend_label',
+			'bar_legend_label',
 			[
-				'label' => __( 'Legend Label', 'ultraaddons' ),
+				'label' => __( 'Bar Chart Legend Label', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => __( 'Ultra Addons', 'ultraaddons' ),
+				'label_block' => true,
+                'frontend_available' => true,
+			]
+		);
+        $this->add_control(
+			'line_legend_label',
+			[
+				'label' => __( 'Line Chart Legend Label', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __( 'Woo Product Table', 'ultraaddons' ),
 				'label_block' => true,
                 'frontend_available' => true,
 			]

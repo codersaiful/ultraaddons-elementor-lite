@@ -600,13 +600,13 @@ $window.on( 'elementor/frontend/init', function() {
                 backgroundColor: $backgroundColor,
                 borderColor:$settings.borderColor,
                 borderWidth: 1,
-                label:$settings.legend_label,
+                label:$settings.bar_legend_label,
                 data: $barChartData,
                 hoverOffset: 4
               },
               {
                 type: "line",
-                label:$settings.legend_label,
+                label:$settings.line_legend_label,
                 data: $linechartData,
                 backgroundColor: $settings.fill_color_bg ? $settings.fill_color_bg  : $backgroundColor,
                 borderColor:$settings.borderColor,
