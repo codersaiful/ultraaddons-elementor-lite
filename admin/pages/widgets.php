@@ -31,6 +31,33 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
         <div class="ua-header">
             <h1 class="ua-page-title"><?php echo esc_html__( 'Widgets', 'ultraaddons' ); ?></h1>
         </div>
+
+        <div class="category-list">
+            <ul class="widget-free-pro-list">
+                <li class="wid-cat-wise-target" data-target="free"><?php echo esc_html__( "Free", "ultraaddons" ); ?></li>
+                <li class="wid-cat-wise-target" data-target="pro"><?php echo esc_html__( "Premium", "ultraaddons" ); ?></li>
+                <li class="wid-cat-wise-target active" data-target="all"><?php echo esc_html__( "All", "ultraaddons" ); ?></li>
+            </ul>
+            <ul class="widget-cat-list" >
+            <?php
+            $temp_widgets = $items;
+            $wid_cats = [];
+            foreach( $temp_widgets as $temp_wid_key => $temp_wdget ){
+                $cat = $temp_wdget['cat'][0] ?? 'no-cat';
+                $c_name = str_replace( '_', ' ', $cat );
+                $wid_cats[$cat] =  $c_name;
+            }
+            foreach( $wid_cats as $wid_cat_key => $wid_cat ){
+            ?>
+                <li class="wid-cat-wise-target" data-target="<?php echo esc_attr( $wid_cat_key ); ?>" ><?php echo $wid_cat; ?></li>
+            <?php
+            }
+            
+            ?>
+            </ul>
+
+        </div>
+        
         
         <div class="ua-sectioon-content">
             <div class="ua-content-inside">
