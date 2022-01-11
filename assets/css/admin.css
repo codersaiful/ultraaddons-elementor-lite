@@ -269,6 +269,34 @@ h2.ua-item-name {
     background: #e6e6e6;
 }
 
+.category-list ul {
+    list-style: none;
+    display: inline-block;
+    border: 1px solid #ddddddb8;
+    padding: 5px;
+    margin: 0;
+    background: white;
+}
+
+.category-list ul>li {
+    display: inline-block;
+    background: #ececed;
+    padding: 10px;
+    margin: 0;
+    color: black;
+    cursor: pointer;
+    transition: .3s all;
+}
+
+.category-list ul.widget-free-pro-list {
+    margin-right: 15px;
+}
+
+.category-list ul>li:hover,.category-list ul>li.active {
+    background: #cd288f;
+    color: white;
+}
+
 /* for More */
 .ua-option-item-wrappper label.ua-option-item.More {
     background: #ffffff !important;
