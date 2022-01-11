@@ -634,3 +634,18 @@ function ultraaddons_animation(){
 function ultraaddons_theme_demo(){
     return new \UltraAddons\Base\Theme_Demo;
 }
+
+/**
+ * For navigation menu widget need to change submenu class name 
+ * 
+ * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
+ * @since 1.1.0.9
+ *
+ * @return object
+ */
+function ultraaddons_submenu_class($menu) {    
+    $menu = preg_replace('/ class="sub-menu"/','/ class="subnav" /', $menu);        
+    return $menu;
+}
+
+add_filter('wp_nav_menu','ultraaddons_submenu_class');
