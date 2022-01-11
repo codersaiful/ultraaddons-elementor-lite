@@ -610,7 +610,7 @@ $window.on( 'elementor/frontend/init', function() {
                 data: $linechartData,
                 backgroundColor: $settings.fill_color_bg ? $settings.fill_color_bg  : $backgroundColor,
                 borderColor:$settings.borderColor,
-                lineTension: 0,
+                lineTension:0.5,
                 hoverOffset: 4,
                 fill: ($settings.fill_color=='yes') ? true : false,
                 pointBorderWidth:$settings.pointBorderWidth,

@@ -600,6 +600,14 @@ $widgetsArray = [
             __( 'Chart', 'ultraaddons' ),
         ],
     ],
+    'Navigation_Menu'=> [
+        'name'      => __( 'Navigation Menu', 'ultraaddons' ),
+        'is_pro'   => false,
+        'icon'      => 'eicon-menu-bar',
+        'cat'       => [
+            __( 'Basic', 'ultraaddons' ),
+        ],
+    ],
 
 
 

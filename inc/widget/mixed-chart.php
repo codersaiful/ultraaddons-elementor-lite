@@ -100,6 +100,17 @@ class Mixed_Chart extends Base{
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
+        
+        $this->add_control(
+			'chart_title',
+			[
+				'label' => __( 'Chart Title', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __( 'Ultra Addons Chart Title', 'ultraaddons' ),
+				'label_block' => true,
+                'frontend_available' => true,
+			]
+		);
         $this->add_control(
 			'bar_legend_label',
 			[
@@ -120,17 +131,7 @@ class Mixed_Chart extends Base{
                 'frontend_available' => true,
 			]
 		);
-        $this->add_control(
-			'chart_title',
-			[
-				'label' => __( 'Chart Title', 'ultraaddons' ),
-				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Ultra Addons Chart Title', 'ultraaddons' ),
-				'label_block' => true,
-                'frontend_available' => true,
-			]
-		);
-    
+       
         $repeater = new \Elementor\Repeater();
 
 		$repeater->add_control(
