@@ -836,9 +836,10 @@
                     })
                 }
             );
+    
 
             
-    });// Init wrapup
+    });// Init hook wrapup
    
 
     /**
@@ -919,5 +920,7 @@
                 }
             });
     }
+
+    
 
 } (jQuery, window));
