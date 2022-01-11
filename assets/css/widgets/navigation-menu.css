@@ -1,0 +1,13 @@
+.menu-item-has-children{
+  position: relative;
+}
+.menu-item-has-children:after{
+  content:"-";
+  position:absolute;
+  right: 0;
+}
+.menu-main-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}

@@ -644,7 +644,7 @@ function ultraaddons_theme_demo(){
  * @return object
  */
 function ultraaddons_submenu_class($menu) {    
-    $menu = preg_replace('/ class="sub-menu"/','/ class="subnav" /', $menu);        
+    $menu = preg_replace('/ class="sub-menu"/','/ class="sub-menu subnav" /', $menu);        
     return $menu;
 }
 

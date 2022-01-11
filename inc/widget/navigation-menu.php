@@ -10,6 +10,7 @@ use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Background;
+use Elementor\Plugin;
 
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -79,6 +80,7 @@ class Navigation_Menu extends Base{
         
         //For General Section
         $this->content_general_controls();
+        $this->layout_controls();
     }
         
     /**
@@ -90,7 +92,7 @@ class Navigation_Menu extends Base{
         $this->start_controls_section(
             'general_content',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'Menu', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -121,6 +123,49 @@ class Navigation_Menu extends Base{
         $this->end_controls_section();
     }
 
+protected function layout_controls() {  
+    $this->start_controls_section(
+        'section_layout',
+        [
+            'label' => __( 'Layout', 'ultraaddons' ),
+        ]
+    );
+
+
+    $this->add_control(
+        'navmenu_align',
+        [
+            'label'        => __( 'Alignment', 'ultraaddons' ),
+            'type'         => Controls_Manager::CHOOSE,
+            'options'      => [
+                'left'    => [
+                    'title' => __( 'Left', 'ultraaddons' ),
+                    'icon'  => 'eicon-h-align-left',
+                ],
+                'center'  => [
+                    'title' => __( 'Center', 'ultraaddons' ),
+                    'icon'  => 'eicon-h-align-center',
+                ],
+                'right'   => [
+                    'title' => __( 'Right', 'ultraaddons' ),
+                    'icon'  => 'eicon-h-align-right',
+                ],
+                'justify' => [
+                    'title' => __( 'Justify', 'ultraaddons' ),
+                    'icon'  => 'eicon-h-align-stretch',
+                ],
+            ],
+            'default'      => 'left',
+            'selectors' => [
+                '{{WRAPPER}} .menu-main-container' => 'justify-content: {{VALUE}};',
+            ],
+        ]
+    );
+
+
+$this->end_controls_section();
+}
+
      /**
      * Render oEmbed widget output on the frontend.
      *
@@ -132,20 +177,24 @@ class Navigation_Menu extends Base{
     protected function render() {
         $settings    = $this->get_settings_for_display();
         $get_menu_id = $settings['menu'];
+
+        if(Plugin::$instance->editor->is_edit_mode()){
+            echo '<script>
+                new Navbar("ul.nav");
+            </script>';
+        }
+      
         ?>
         <nav class="navbar" data-function="navbar" data-breakpoint="768" data-toggle-siblings="true" data-delay="500" aria-label="Main">
             <button class="navbar-toggle" aria-haspopup="true" aria-expanded="false" <?php esc_attr_e( 'Toggle navigation','ultraaddons' ); ?>> <!-- your responsive toggle button comes here -->
             <i class="menu-icon eicon-menu-bar" aria-hidden="true"></i>
             </button>
-            <div> <!-- this wrapper contains the menu and other contents -->
-            <?php
+            <div class="ua-menu-wrap"> <!-- this wrapper contains the menu and other contents -->
+                <?php
 				if ( $get_menu_id ) :
 					wp_nav_menu( array(
                         'menu'              => $get_menu_id,
 						'depth'             => 3,
-						'container'         => 'div',
-						'container_class'   => 'collapse navbar-collapse justify-content-center',
-						'container_id'      => 'navbar-collapse',
 						'menu_class'        => 'nav',
 						'items_wrap'		=> '<ul class="nav" data-function="navbar">%3$s</ul>',
 					) );
