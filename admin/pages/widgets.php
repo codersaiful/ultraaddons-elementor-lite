@@ -47,9 +47,12 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
                 $c_name = str_replace( '_', ' ', $cat );
                 $wid_cats[$cat] =  $c_name;
             }
+            $wid_cats['all'] = esc_html__( 'All', 'ultraaddons' );
+
             foreach( $wid_cats as $wid_cat_key => $wid_cat ){
+                $active_class = $wid_cat_key == 'all' ? 'active' : '';
             ?>
-                <li class="wid-cat-wise-target" data-target="<?php echo esc_attr( $wid_cat_key ); ?>" ><?php echo $wid_cat; ?></li>
+                <li class="wid-cat-wise-target <?php echo esc_attr( $active_class ); ?>" data-target="<?php echo esc_attr( $wid_cat_key ); ?>" ><?php echo $wid_cat; ?></li>
             <?php
             }
             
