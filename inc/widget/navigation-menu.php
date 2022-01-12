@@ -77,12 +77,12 @@ class Navigation_Menu extends Base{
      * @access protected
      */
     protected function _register_controls() {
-        
         //For General Section
         $this->content_general_controls();
         $this->layout_controls();
         $this->nav_style();
         $this->drop_down_style();
+        $this->navbar_toggle_style();
     }
         
     /**
@@ -187,7 +187,7 @@ protected function layout_controls() {
                 'none'     => __( 'Default', 'ultraaddons' ),
                 'slide_up' => __( 'Slide Up', 'ultraaddons' ),
             ],
-            'prefix_class' => 'hfe-submenu-animation-',
+            'prefix_class' => '',
         ]
     );
     $this->add_control(
@@ -372,6 +372,85 @@ protected function drop_down_style() {
             ],
         ]
     );
+    $this->add_group_control(
+        Group_Control_Border::get_type(),
+        [
+            'name' => 'nav_sub_menu_border',
+            'label' => __( 'Border', 'ultraaddons' ),
+            'selector' => '{{WRAPPER}}  .navbar.open-mobile .nav li',
+        ]
+    );
+    $this->end_controls_section();
+}
+
+protected function navbar_toggle_style() {
+
+    $this->start_controls_section(
+        'toggle_style',
+        [
+            'label'     => esc_html__( 'Navbar Toggle', 'ultraaddons' ),
+            'tab'       => Controls_Manager::TAB_STYLE,
+        ]
+    );
+    $this->add_control(
+        'nav_toggle_align',
+        [
+            'label'        => __( 'Alignment', 'ultraaddons' ),
+            'type'         => Controls_Manager::CHOOSE,
+            'options'      => [
+                'left'    => [
+                    'title' => __( 'Left', 'ultraaddons' ),
+                    'icon'  => 'eicon-h-align-left',
+                ],
+                'center'  => [
+                    'title' => __( 'Center', 'ultraaddons' ),
+                    'icon'  => 'eicon-h-align-center',
+                ],
+                'right'   => [
+                    'title' => __( 'Right', 'ultraaddons' ),
+                    'icon'  => 'eicon-h-align-right',
+                ]
+            ],
+            'default'      => 'left',
+            'selectors' => [
+                '{{WRAPPER}} .ua.navbar' => 'justify-content: {{VALUE}};',
+            ],
+        ]
+    );
+    $this->add_control(
+        'nav_toggle_bg',
+        [
+            'label'     => __( 'Button Background', 'ultraaddons' ),
+            'type'      => Controls_Manager::COLOR,
+            'default'   => '#444',
+            'selectors' => [
+                '{{WRAPPER}} .navbar-toggle' => 'background: {{VALUE}}',
+            ],
+        ]
+    );
+    $this->add_control(
+        'nav_toggle_menu_bg',
+        [
+            'label'     => __( 'Dropdown Background', 'ultraaddons' ),
+            'type'      => Controls_Manager::COLOR,
+            'default'   => '#fff',
+            'selectors' => [
+                '{{WRAPPER}} .ua.navbar.open-mobile .nav' => 'background: {{VALUE}}',
+                '{{WRAPPER}} .ua.navbar.open-mobile .nav li ul.subnav' => 'background: {{VALUE}}',
+            ],
+        ]
+    );
+    $this->add_control(
+        'nav_toggle_menu_color',
+        [
+            'label'     => __( 'Dropdown Text Color', 'ultraaddons' ),
+            'type'      => Controls_Manager::COLOR,
+            'default'   => '#fff',
+            'selectors' => [
+                '{{WRAPPER}} .navbar.open-mobile .nav li a' => 'color: {{VALUE}}',
+            ],
+        ]
+    );
     $this->end_controls_section();
 }
 
@@ -399,7 +478,7 @@ protected function drop_down_style() {
                   });
                 }
                 jQuery(".navbar-toggle").on("click", function () {
-                    jQuery(".ua.navbar").addClass("open-mobile");
+                    jQuery(".ua.navbar").toggleClass("open-mobile");
                   });
             </script>';
         }

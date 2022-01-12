@@ -27,6 +27,7 @@
 button.navbar-toggle {
   background: #111;
   padding: 5px 7px;
+  margin: 0;
 }
 @media( max-width:450px) {
   .ua.navbar ul {
@@ -46,7 +47,9 @@ button.navbar-toggle {
 .open.open-position .sub-menu.subnav{
   display: block;
 }
-
+.menu-icon, .parent-icon {
+  color: #333;
+}
 
 /* Hover Animation */
 .ua.navbar .nav > li.open > span, .ua.navbar .nav > li.open > a, 
