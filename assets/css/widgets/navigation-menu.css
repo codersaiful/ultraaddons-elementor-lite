@@ -1,13 +1,26 @@
 .menu-item-has-children{
   position: relative;
 }
-.menu-item-has-children:after{
-  content:"-";
-  position:absolute;
-  right: 0;
-}
-.menu-main-container {
+
+.ua-navigation-container {
   display: flex;
   align-items: center;
   width: 100%;
+}
+.icon-plus .menu-item-has-children:after, 
+.icon-arrow-big .menu-item-has-children:after,
+.icon-arrow-small .menu-item-has-children:after{
+  font-family: "fontello";
+  position:absolute;
+  right: 0;
+}
+.icon-plus .menu-item-has-children:after{
+  content:'\0800';
+}
+
+.icon-arrow-big .menu-item-has-children:after{
+  content:"\0806";
+}
+.icon-arrow-small .menu-item-has-children:after{
+  content:"\080A";
 }

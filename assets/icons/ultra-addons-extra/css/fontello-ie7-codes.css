@@ -1,0 +1,17 @@
+
+.ua-icon-plus { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0800;&nbsp;'); }
+.ua-icon-basket-1 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0801;&nbsp;'); }
+.ua-icon-basket-2 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0802;&nbsp;'); }
+.ua-icon-basket-3 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0803;&nbsp;'); }
+.ua-icon-up-open-big { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0804;&nbsp;'); }
+.ua-icon-left-open-big { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0805;&nbsp;'); }
+.ua-icon-down-open-big { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0806;&nbsp;'); }
+.ua-icon-up-open-mini { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0807;&nbsp;'); }
+.ua-icon-right-open-mini { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0808;&nbsp;'); }
+.ua-icon-left-open-mini { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0809;&nbsp;'); }
+.ua-icon-down-open-mini { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x080a;&nbsp;'); }
+.ua-icon-chart-pie { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x080b;&nbsp;'); }
+.ua-icon-chart-line { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x080c;&nbsp;'); }
+.ua-icon-chart-bar { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x080d;&nbsp;'); }
+.ua-icon-chart-bar-outline { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x080e;&nbsp;'); }
+.ua-icon-right-open-big { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe800;&nbsp;'); }

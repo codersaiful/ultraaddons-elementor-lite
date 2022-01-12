@@ -81,6 +81,8 @@ class Navigation_Menu extends Base{
         //For General Section
         $this->content_general_controls();
         $this->layout_controls();
+        $this->nav_style();
+        $this->drop_down_style();
     }
         
     /**
@@ -121,7 +123,7 @@ class Navigation_Menu extends Base{
     }
         
         $this->end_controls_section();
-    }
+}
 
 protected function layout_controls() {  
     $this->start_controls_section(
@@ -157,14 +159,148 @@ protected function layout_controls() {
             ],
             'default'      => 'left',
             'selectors' => [
-                '{{WRAPPER}} .menu-main-container' => 'justify-content: {{VALUE}};',
+                '{{WRAPPER}} .ua-navigation-container' => 'justify-content: {{VALUE}};',
+            ],
+        ]
+    );
+    $this->add_control(
+        'submenu_icon',
+        [
+            'label'        => __( 'Submenu Icon', 'ultraaddons' ),
+            'type'         => Controls_Manager::SELECT,
+            'default'      => 'arrow_small',
+            'options'      => [
+                'arrow-small'   => __( 'Arrows Small', 'ultraaddons' ),
+                'arrow-big'   => __( 'Arrows BIg', 'ultraaddons' ),
+                'plus'    => __( 'Plus Sign', 'ultraaddons' ),
             ],
         ]
     );
 
+    $this->add_control(
+        'submenu_animation',
+        [
+            'label'        => __( 'Submenu Animation', 'ultraaddons' ),
+            'type'         => Controls_Manager::SELECT,
+            'default'      => 'none',
+            'options'      => [
+                'none'     => __( 'Default', 'ultraaddons' ),
+                'slide_up' => __( 'Slide Up', 'ultraaddons' ),
+            ],
+            'prefix_class' => 'hfe-submenu-animation-',
+        ]
+    );
 
 $this->end_controls_section();
+
 }
+
+protected function nav_style() {
+    $this->start_controls_section(
+        'nav_style',
+        [
+            'label'     => esc_html__( 'Style', 'ultraaddons' ),
+            'tab'       => Controls_Manager::TAB_STYLE,
+        ]
+    );
+    $this->add_control(
+        'nav_bg_color',
+        [
+            'label'     => __( 'Background Color', 'ultraaddons' ),
+            'type'      => Controls_Manager::COLOR,
+            'default'   => '#FFFFFF',
+            'selectors' => [
+                '{{WRAPPER}} .ua.navbar ul' => 'background-color: {{VALUE}}',
+            ],
+        ]
+    );
+    
+    $this->add_responsive_control(
+        'nav_padding',
+        [
+            'label'       => esc_html__( 'Navigation Padding', 'ultraaddons' ),
+            'type'        => Controls_Manager::DIMENSIONS,
+            'size_units'  => [ 'px', '%' ],
+            'placeholder' => [
+                'top'    => '',
+                'right'  => '',
+                'bottom' => '',
+                'left'   => '',
+            ],
+            'selectors'   => [
+                '{{WRAPPER}} .ua.navbar ul' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
+    );
+    $this->add_group_control(
+        Group_Control_Typography::get_type(),
+        [
+            'name'     => 'nav_typography',
+            'label'    => __( 'Typography', 'ultraaddons' ),
+            'global'   => [
+                'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+            ],
+            'selector' => '{{WRAPPER}} .ua.navbar ul li a',
+        ]
+    );
+
+    $this->add_control(
+        'nav_color',
+        [
+            'label'     => __( 'Nav Color', 'ultraaddons' ),
+            'type'      => Controls_Manager::COLOR,
+            'default'   => '#111',
+            'selectors' => [
+                '{{WRAPPER}} .ua.navbar ul li a' => 'color: {{VALUE}}',
+            ],
+        ]
+    );
+   
+    $this->end_controls_section();
+}
+
+protected function drop_down_style() {
+
+    $this->start_controls_section(
+        'dropdown_style',
+        [
+            'label'     => esc_html__( 'Dropdown', 'ultraaddons' ),
+            'tab'       => Controls_Manager::TAB_STYLE,
+        ]
+    );
+    
+    $this->add_responsive_control(
+        'dropdown_padding',
+        [
+            'label'       => esc_html__( 'Navigation Padding', 'ultraaddons' ),
+            'type'        => Controls_Manager::DIMENSIONS,
+            'size_units'  => [ 'px', '%' ],
+            'placeholder' => [
+                'top'    => '',
+                'right'  => '',
+                'bottom' => '',
+                'left'   => '',
+            ],
+            'selectors'   => [
+                '{{WRAPPER}} .ua.navbar .subnav li a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
+    );
+
+    $this->add_control(
+        'nav_sub_menu_bg',
+        [
+            'label'     => __( 'Sub Menu Background', 'ultraaddons' ),
+            'type'      => Controls_Manager::COLOR,
+            'default'   => '#444',
+            'selectors' => [
+                '{{WRAPPER}} .ua.navbar .subnav' => 'background: {{VALUE}}',
+            ],
+        ]
+    );
+    $this->end_controls_section();
+}
+
 
      /**
      * Render oEmbed widget output on the frontend.
@@ -183,19 +319,27 @@ $this->end_controls_section();
                 new Navbar("ul.nav");
             </script>';
         }
+        $this->add_render_attribute(
+            'ua-nav-menu',
+            'class',
+            [
+                'ua-menu-wrap icon-' . $settings['submenu_icon'],
+            ]
+        );
       
         ?>
-        <nav class="navbar" data-function="navbar" data-breakpoint="768" data-toggle-siblings="true" data-delay="500" aria-label="Main">
+        <nav class="ua navbar" data-function="navbar" data-breakpoint="768" data-toggle-siblings="true" data-delay="500" aria-label="Main">
             <button class="navbar-toggle" aria-haspopup="true" aria-expanded="false" <?php esc_attr_e( 'Toggle navigation','ultraaddons' ); ?>> <!-- your responsive toggle button comes here -->
             <i class="menu-icon eicon-menu-bar" aria-hidden="true"></i>
             </button>
-            <div class="ua-menu-wrap"> <!-- this wrapper contains the menu and other contents -->
+            <div <?php echo $this->get_render_attribute_string( 'ua-nav-menu' ); ?>> <!-- this wrapper contains the menu and other contents -->
                 <?php
 				if ( $get_menu_id ) :
 					wp_nav_menu( array(
                         'menu'              => $get_menu_id,
 						'depth'             => 3,
 						'menu_class'        => 'nav',
+                        'container_class'   => 'ua-navigation-container',
 						'items_wrap'		=> '<ul class="nav" data-function="navbar">%3$s</ul>',
 					) );
 			    endif; 
