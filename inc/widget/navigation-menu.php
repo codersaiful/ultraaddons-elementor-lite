@@ -391,6 +391,16 @@ protected function drop_down_style() {
         if(Plugin::$instance->editor->is_edit_mode()){
             echo '<script>
                 new Navbar("ul.nav");
+                var $openClass = "open open-position";
+                var $hasChildren = "menu-item-has-children";
+                if ($hasChildren.length > 0) {
+                  jQuery(".navbar").on("click", "." + $hasChildren, function () {
+                    jQuery(this).toggleClass($openClass);
+                  });
+                }
+                jQuery(".navbar-toggle").on("click", function () {
+                    jQuery(".ua.navbar").addClass("open-mobile");
+                  });
             </script>';
         }
         $this->add_render_attribute(
@@ -405,10 +415,10 @@ protected function drop_down_style() {
       
         ?>
         <nav class="ua navbar" data-function="navbar" data-breakpoint="<?php echo esc_attr($breakpoint);?>" data-toggle-siblings="true" data-delay="500" aria-label="Main">
-            <button class="navbar-toggle" aria-haspopup="true" aria-expanded="false" <?php esc_attr_e( 'Toggle navigation','ultraaddons' ); ?>> <!-- your responsive toggle button comes here -->
+            <button class="navbar-toggle" aria-haspopup="true" aria-expanded="false" <?php esc_attr_e( 'Toggle navigation','ultraaddons' ); ?>>
             <i class="menu-icon eicon-menu-bar" aria-hidden="true"></i>
             </button>
-            <div <?php echo $this->get_render_attribute_string( 'ua-nav-menu' ); ?>> <!-- this wrapper contains the menu and other contents -->
+            <div <?php echo $this->get_render_attribute_string( 'ua-nav-menu' ); ?>>
                 <?php
 				if ( $get_menu_id ) :
 					wp_nav_menu( array(
@@ -427,7 +437,6 @@ protected function drop_down_style() {
     }
     //Get Menu List
     private function get_menus() {
-
         $menus      = wp_get_nav_menus();
         $options    = [];
         foreach ( $menus as $menu ) {
