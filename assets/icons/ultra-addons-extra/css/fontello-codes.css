@@ -15,3 +15,9 @@
 .ua-icon-chart-bar:before { content: '\080d'; } /* 'ࠍ' */
 .ua-icon-chart-bar-outline:before { content: '\080e'; } /* 'ࠎ' */
 .ua-icon-right-open-big:before { content: '\e800'; } /* '' */
+.ua-icon-align-justify:before { content: '\e801'; } /* '' */
+.ua-icon-align-right:before { content: '\e802'; } /* '' */
+.ua-icon-align-left:before { content: '\e803'; } /* '' */
+.ua-icon-menu-1:before { content: '\e804'; } /* '' */
+.ua-icon-menu-2:before { content: '\e805'; } /* '' */
+.ua-icon-menu:before { content: '\f008'; } /* '' */

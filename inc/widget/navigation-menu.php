@@ -260,7 +260,7 @@ protected function nav_style() {
     $this->add_control(
         'nav_color',
         [
-            'label'     => __( 'Nav Color', 'ultraaddons' ),
+            'label'     => __( 'Link Text Color', 'ultraaddons' ),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#111',
             'selectors' => [
@@ -268,6 +268,67 @@ protected function nav_style() {
             ],
         ]
     );
+
+    $this->start_controls_tabs(
+        'style_tabs'
+    );
+    //Normal Tab
+    $this->start_controls_tab(
+        'btn_normal_tab',
+        [
+            'label' => esc_html__( 'Normal', 'ultraaddons' ),
+        ]
+    );
+    $this->add_control(
+        'nav_hover',
+        [
+            'label'     => __( 'Link Hover Effect', 'ultraaddons' ),
+            'type'      => Controls_Manager::SELECT,
+            'default'   => 'none',
+            'options'   => [
+                'none'        => __( 'None', 'ultraaddons' ),
+                'stroke'   => __( 'Stroke', 'ultraaddons' ),
+                'fill'    => __( 'Fill', 'ultraaddons' ),
+                'circle' => __( 'Circle', 'ultraaddons' ),
+                'shift'      => __( 'Shif', 'ultraaddons' ),
+                'text'        => __( 'Text', 'ultraaddons' ),
+            ],
+        ]
+    );
+    $this->add_control(
+        'nav_hover_effect_color',
+        [
+            'label'     => __( 'Hover Effect Color', 'ultraaddons' ),
+            'type'      => Controls_Manager::COLOR,
+            'default'   => '#111',
+            'selectors' => [
+                '{{WRAPPER}} .stroke .nav li a:after, .fill .nav li a:after, .shift .nav li a:after' => 'background: {{VALUE}} !important',
+            ],
+        ]
+    );
+    $this->end_controls_tab();
+
+    //Hover Tab
+    $this->start_controls_tab(
+        'btn_hover_tab',
+        [
+            'label' => esc_html__( 'Hover', 'ultraaddonse' ),
+        ]
+    );
+    $this->add_control(
+        'nav_hover_color',
+        [
+            'label'     => __( 'Hover Color', 'ultraaddons' ),
+            'type'      => Controls_Manager::COLOR,
+            'default'   => '#111',
+            'selectors' => [
+                '{{WRAPPER}} .ua.navbar ul li a:hover' => 'color: {{VALUE}}',
+            ],
+        ]
+    );
+
+    $this->end_controls_tab();
+    $this->end_controls_tabs();
    
     $this->end_controls_section();
 }
@@ -336,9 +397,10 @@ protected function drop_down_style() {
             'ua-nav-menu',
             'class',
             [
-                'ua-menu-wrap icon-' . $settings['submenu_icon'],
+                'ua-menu-wrap icon-' . $settings['submenu_icon'] .' '. $settings['nav_hover'],
             ]
         );
+    
         $breakpoint = ($settings['breakpoint']!='none') ? $settings['breakpoint'] : '' ;
       
         ?>
