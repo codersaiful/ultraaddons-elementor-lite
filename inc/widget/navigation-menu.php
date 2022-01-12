@@ -190,6 +190,19 @@ protected function layout_controls() {
             'prefix_class' => 'hfe-submenu-animation-',
         ]
     );
+    $this->add_control(
+        'breakpoint',
+        [
+            'label'        => __( 'Breakpoint', 'ultraaddons' ),
+            'type'         => Controls_Manager::SELECT,
+            'default'      => 'mobile',
+            'options'      => [
+                '768' => __( 'Mobile (768px >)', 'ultraaddons' ),
+                '1025' => __( 'Tablet (1025px >)', 'ultraaddons' ),
+                'none'   => __( 'None', 'ultraaddons' ),
+            ],
+        ]
+    );
 
 $this->end_controls_section();
 
@@ -228,7 +241,7 @@ protected function nav_style() {
                 'left'   => '',
             ],
             'selectors'   => [
-                '{{WRAPPER}} .ua.navbar ul' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .ua.navbar ul li a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]
     );
@@ -326,9 +339,10 @@ protected function drop_down_style() {
                 'ua-menu-wrap icon-' . $settings['submenu_icon'],
             ]
         );
+        $breakpoint = ($settings['breakpoint']!='none') ? $settings['breakpoint'] : '' ;
       
         ?>
-        <nav class="ua navbar" data-function="navbar" data-breakpoint="768" data-toggle-siblings="true" data-delay="500" aria-label="Main">
+        <nav class="ua navbar" data-function="navbar" data-breakpoint="<?php echo esc_attr($breakpoint);?>" data-toggle-siblings="true" data-delay="500" aria-label="Main">
             <button class="navbar-toggle" aria-haspopup="true" aria-expanded="false" <?php esc_attr_e( 'Toggle navigation','ultraaddons' ); ?>> <!-- your responsive toggle button comes here -->
             <i class="menu-icon eicon-menu-bar" aria-hidden="true"></i>
             </button>

@@ -13,6 +13,17 @@
     console.log(ULTRAADDONS_DATA);
     
     $window.on( 'elementor/frontend/init', function() {
+
+
+        //Navigation Menu Dropdown issues
+        var $openClass = "open open-position";
+        var $hasChildren = "menu-item-has-children";
+        
+        if ($hasChildren.length > 0) {
+          jQuery(".navbar").on("click", "." + $hasChildren, function () {
+            jQuery(this).toggleClass($openClass);
+          });
+        }
         
             var cx_settings;
             var EF = elementorFrontend,

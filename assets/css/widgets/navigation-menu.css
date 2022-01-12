@@ -1,4 +1,4 @@
-.menu-item-has-children{
+.menu-item-has-children a{
   position: relative;
 }
 
@@ -7,20 +7,42 @@
   align-items: center;
   width: 100%;
 }
-.icon-plus .menu-item-has-children:after, 
-.icon-arrow-big .menu-item-has-children:after,
-.icon-arrow-small .menu-item-has-children:after{
+.icon-plus .menu-item-has-children > a:after, 
+.icon-arrow-big .menu-item-has-children > a:after,
+.icon-arrow-small .menu-item-has-children > a:after{
   font-family: "fontello";
   position:absolute;
-  right: 0;
+  right: 15%;
 }
-.icon-plus .menu-item-has-children:after{
+.icon-plus .menu-item-has-children > a:after{
   content:'\0800';
 }
 
-.icon-arrow-big .menu-item-has-children:after{
+.icon-arrow-big .menu-item-has-children > a:after{
   content:"\0806";
 }
-.icon-arrow-small .menu-item-has-children:after{
+.icon-arrow-small .menu-item-has-children > a:after{
   content:"\080A";
+}
+button.navbar-toggle {
+  background: #111;
+  padding: 5px 7px;
+}
+@media( max-width:450px) {
+  .ua.navbar ul {
+    background-color: #0E0D0D;
+    width: 100%;
+  }
+  .nav li > a {
+    width: 100%;
+  }
+  .icon-plus .menu-item-has-children > a:after, 
+  .icon-arrow-big .menu-item-has-children > a:after, 
+  .icon-arrow-small .menu-item-has-children > a:after {
+      right:6%;
+  }
+}
+
+.open.open-position .sub-menu.subnav{
+  display: block;
 }
