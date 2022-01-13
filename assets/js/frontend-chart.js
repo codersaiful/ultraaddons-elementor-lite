@@ -675,81 +675,107 @@ EF.hooks.addAction(
     }
 );
 
-/*****************************************
+
+  /*****************************************
     * Radar Chart Options and initialization js
     *  @author B M Rafiul Alam
     *****************************************/
 
- var Radar_chart = EM.frontend.handlers.Base.extend({
-  onInit: function(){
-      this.run();
-  },
-  onChange: function(){
-      this.run();
-  },
-  run: function(){
-
-      var $scope = this.$element;
-     
+   var R_chart = EM.frontend.handlers.Base.extend({
+    onInit: function(){
+        this.run();
+    },
+    onChange: function(){
+        this.run();
+    },
+    run: function(){
+       var $scope = this.$element;
         /**
            * get data on editor mode
         */
-       var $settings = this.getElementSettings();
-       var $id = $scope[0].dataset.id;
-      //Get Data List
-       const $data    = $settings.data_list;
-       console.log($settings);
-
-     /*   let dLen       = $data.length;
-       let $barChartData = [],
-          $linechartData = [],
-           $labels = [],
-           $backgroundColor = [];
-
-       for (let i = 0; i < dLen; i++) {
-           let $d = $data[i];
-           $barChartData.push($d.bar_data);
-           $linechartData.push($d.line_data);
-           $labels.push($d.labels);
-           $backgroundColor.push($d.backgroundColor);
-           const labels =  $labels;
-       } */
-       //Datasets    
+         var $settings = this.getElementSettings();
+         var $id = $scope[0].dataset.id;
+        //Get Data List
+         const $data    = $settings.data_list;
+         console.log($settings);
        
+       let dLen     = $data.length;
+         let $data_1 = [],
+            $data_2 = [],
+             $labels = [],
+             $backgroundColor = [];
+  
+         for (let i = 0; i < dLen; i++) {
+             let $d = $data[i];
+             $data_1.push($d.data_1);
+             $data_2.push($d.data_2);
+             $labels.push($d.labels);
+             $backgroundColor.push($d.backgroundColor);
+         }
+         const labels =  $labels;
 
-      //Config Data
-      var marksData = {
-        labels: ["English", "Maths", "Physics", "Chemistry", "Biology", "History"],
-        datasets: [{
-          label: "Student A",
-          backgroundColor: "rgba(200,0,0,0.2)",
-          data: [65, 75, 70, 80, 60, 80]
-        }, {
-          label: "Student B",
-          backgroundColor: "rgba(0,0,200,0.2)",
-          data: [54, 65, 60, 70, 70, 75]
-        }]
-      };
-      var ctx = document.getElementById('uaChart-' + $id);
-      var radarChart = new Chart(ctx, {
-        type: 'radar',
-        data: marksData
-      });
+        //Config Data
+        const config = {
+          type: "radar",
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                backgroundColor: $backgroundColor,
+                borderColor:$settings.borderColor,
+                label:$settings.bar_legend_label,
+                data: $data_1,
+              },
+              {
+                label:$settings.line_legend_label,
+                data: $data_2,
+                backgroundColor: $settings.fill_color_bg ? $settings.fill_color_bg  : $backgroundColor,
+                borderColor:$settings.borderColor,
+        
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              title: {
+                display: true,
+                text: $settings.chart_title
+              },
+              legend: {
+                    display: true,
+                    position: $settings.legend_position,
+                    align: 'middle',
+                    labels: {
+                        color: $settings.legend_color
+                    }
+                }
+            },
+            scales: {
+         
 
-      
-  }
+            }
+        },
+        };
+        //Initialize
+        var ctx = document.getElementById('uaChart-' + $id);
+        const uaChart = new Chart(ctx,
+            config
+        );
+        
+    }
 });
 
 EF.hooks.addAction(
-  'frontend/element_ready/ultraaddons-radar-chart.default',
-  function ($scope) {
-      EF.elementsHandler.addHandler(Radar_chart, {
-          $element: $scope,
-      });
-     
-  }
+    'frontend/element_ready/ultraaddons-radar-chart.default',
+    function ($scope) {
+        EF.elementsHandler.addHandler(R_chart, {
+            $element: $scope,
+        });
+       
+    }
 );
-  
+
 
 }); //end elementor/frontend/init 
 

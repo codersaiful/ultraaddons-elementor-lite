@@ -603,7 +603,7 @@ $widgetsArray = [
     'Radar_Chart'=> [
         'name'      => __( 'Radar Chart', 'ultraaddons' ),
         'is_pro'   => false,
-        'icon'      => 'ua-icon-chart-bar-outline',
+        'icon'      => 'ua-icon-radar-chart',
         'cat'       => [
             __( 'Chart', 'ultraaddons' ),
         ],
