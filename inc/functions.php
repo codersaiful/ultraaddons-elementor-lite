@@ -583,29 +583,24 @@ function ultraaddons_button_hover(){
 
 function ultraaddons_animation(){
     return  array(
-        'fadeIn' => 'fadeIn',
-        'fadeInDown' => 'fadeInDown',
-        'fadeInLeft' => 'fadeInLeft',
-        'fadeInRight' => 'fadeInRight',
-        'fadeInUp' => 'fadeInUp',
-        
-        'bounce'        => 'bounce',
-        'bounceIn'      => 'bounceIn',
-
-        'bounceInDown'  => 'bounceInDown',
-        'bounceInLeft'  => 'bounceInLeft',
-        'bounceInRight' => 'bounceInRight',
-        'bounceInUp'    => 'bounceInUp',
-
-        'flip'          => 'flip',
-        'flipInX'       =>  'flipInX',
-        'flipInY'       =>  'flipInY',
-
-        'backInDown'    => 'backInDown',
-        'backInLeft'    => 'backInLeft',
-        'backInRight'   => 'backInRight',
-        'backInUp'      => 'backInUp',
-
+        'fadeIn'            => 'fadeIn',
+        'fadeInDown'        => 'fadeInDown',
+        'fadeInLeft'        => 'fadeInLeft',
+        'fadeInRight'       => 'fadeInRight',
+        'fadeInUp'          => 'fadeInUp',
+        'bounce'            => 'bounce',
+        'bounceIn'          => 'bounceIn',
+        'bounceInDown'      => 'bounceInDown',
+        'bounceInLeft'      => 'bounceInLeft',
+        'bounceInRight'     => 'bounceInRight',
+        'bounceInUp'        => 'bounceInUp',
+        'flip'              => 'flip',
+        'flipInX'           => 'flipInX',
+        'flipInY'           => 'flipInY',
+        'backInDown'        => 'backInDown',
+        'backInLeft'        => 'backInLeft',
+        'backInRight'       => 'backInRight',
+        'backInUp'          => 'backInUp',
         'rotateIn'          => 'rotateIn',
         'rotateInDownLeft'  => 'rotateInDownLeft',
        'rotateInDownRight'  => 'rotateInDownRight',
@@ -634,3 +629,18 @@ function ultraaddons_animation(){
 function ultraaddons_theme_demo(){
     return new \UltraAddons\Base\Theme_Demo;
 }
+
+/**
+ * For navigation menu widget need to change submenu class name 
+ * 
+ * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
+ * @since 1.1.0.9
+ *
+ * @return object
+ */
+function ultraaddons_submenu_class($menu) {    
+    $menu = preg_replace('/ class="sub-menu"/','/ class="subnav sub-menu" /', $menu);        
+    return $menu;
+}
+
+add_filter('wp_nav_menu','ultraaddons_submenu_class');

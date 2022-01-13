@@ -364,6 +364,10 @@ class Loader {
         //Animate CSS Load
         wp_enqueue_style('animate', ULTRA_ADDONS_ASSETS . 'vendor/css/animate.min.css' );
 
+        //extra Icon
+        wp_register_style( 'ultraaddons-extra-icons-style', ULTRA_ADDONS_ASSETS . 'icons/ultra-addons-extra/css/fontello.css' );
+        wp_enqueue_style( 'ultraaddons-extra-icons-style' );
+
     }
     
     /**

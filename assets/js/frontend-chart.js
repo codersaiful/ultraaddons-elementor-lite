@@ -4,10 +4,9 @@
 var $window = $(w);
 
 $window.on( 'elementor/frontend/init', function() {
-    
     var EF = elementorFrontend,
         EM = elementorModules;
-    
+
      /**
      * All Chart widget Initialize Here
      * 
@@ -672,6 +671,7 @@ EF.hooks.addAction(
         EF.elementsHandler.addHandler(Mixed_chart, {
             $element: $scope,
         });
+       
     }
 );
   

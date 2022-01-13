@@ -413,3 +413,6 @@ ul.subnav > li:hover > span {
     transform: translate(0);
   }
 }
+.navbar{
+  background: transparent;
+}
