@@ -555,7 +555,7 @@ $widgetsArray = [
     'Bar_Chart'=> [
         'name'      => __( 'Bar Chart', 'ultraaddons' ),
         'is_pro'   => false,
-        'icon'      => 'uicon-slider',
+        'icon'      => 'ua-icon-chart-bar',
         'cat'       => [
             __( 'Chart', 'ultraaddons' ),
         ],
@@ -563,7 +563,7 @@ $widgetsArray = [
     'Line_Chart'=> [
         'name'      => __( 'Line Chart', 'ultraaddons' ),
         'is_pro'   => false,
-        'icon'      => 'uicon-slider',
+        'icon'      => 'ua-icon-chart-line',
         'cat'       => [
             __( 'Chart', 'ultraaddons' ),
         ],
@@ -571,7 +571,7 @@ $widgetsArray = [
     'Pie_Chart'=> [
         'name'      => __( 'Pie Chart', 'ultraaddons' ),
         'is_pro'   => false,
-        'icon'      => 'uicon-slider',
+        'icon'      => 'ua-icon-chart-pie',
         'cat'       => [
             __( 'Chart', 'ultraaddons' ),
         ],
@@ -579,7 +579,7 @@ $widgetsArray = [
     'Doughnut_Chart'=> [
         'name'      => __( 'Doughnut Chart', 'ultraaddons' ),
         'is_pro'   => false,
-        'icon'      => 'uicon-slider',
+        'icon'      => 'ua-icon-doughnut-bold',
         'cat'       => [
             __( 'Chart', 'ultraaddons' ),
         ],
@@ -587,7 +587,7 @@ $widgetsArray = [
     'Polar_Chart'=> [
         'name'      => __( 'Polar Chart', 'ultraaddons' ),
         'is_pro'   => false,
-        'icon'      => 'uicon-slider',
+        'icon'      => 'ua-icon-lifebuoy',
         'cat'       => [
             __( 'Chart', 'ultraaddons' ),
         ],
@@ -595,7 +595,7 @@ $widgetsArray = [
     'Mixed_Chart'=> [
         'name'      => __( 'Mixed Chart', 'ultraaddons' ),
         'is_pro'   => false,
-        'icon'      => 'uicon-slider',
+        'icon'      => 'ua-icon-chart-bar-outline',
         'cat'       => [
             __( 'Chart', 'ultraaddons' ),
         ],
@@ -608,8 +608,6 @@ $widgetsArray = [
             __( 'Basic', 'ultraaddons' ),
         ],
     ],
-
-
 
 ];
 

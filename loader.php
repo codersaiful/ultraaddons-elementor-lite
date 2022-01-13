@@ -108,9 +108,9 @@ class Loader {
 
         //Add Style for Widgets
         add_action( 'elementor/frontend/after_enqueue_styles', [ $this, 'widget_enqueue' ] );
-        add_action( 'wp_enqueue_scripts', [ $this, 'wp_enqueue_style' ] );
+        add_action( 'wp_enqueue_scripts', [ $this, 'wp_enqueue_style' ] );   
         add_action( 'wp_enqueue_scripts', [ $this, 'wp_enqueue_scripts' ] );
-        
+    
         /**
          * For Admin and FrontEnd Enqueue 
          * 
@@ -126,6 +126,16 @@ class Loader {
         
         //Mainly UltraAddons Icons font need to load in Elementor Screen.
         add_action('elementor/editor/before_enqueue_scripts', [ $this, 'icon_enqueue_scripts' ]);
+
+
+         /**
+         * Add For Extra Icon 
+         * @since 1.1.0.9
+         * 
+         * @author B M Rafiul Alam
+        */
+         add_action( 'wp_enqueue_scripts', [ $this, 'extra_icon_elementor_widget' ] ); 
+         add_action('elementor/editor/before_enqueue_scripts', [ $this, 'extra_icon_elementor_screen_style' ]);
 
         
         
@@ -363,11 +373,6 @@ class Loader {
                 
         //Animate CSS Load
         wp_enqueue_style('animate', ULTRA_ADDONS_ASSETS . 'vendor/css/animate.min.css' );
-
-        //extra Icon
-        wp_register_style( 'ultraaddons-extra-icons-style', ULTRA_ADDONS_ASSETS . 'icons/ultra-addons-extra/css/fontello.css' );
-        wp_enqueue_style( 'ultraaddons-extra-icons-style' );
-
     }
     
     /**
@@ -393,6 +398,25 @@ class Loader {
          */
         wp_register_style( 'ultraaddons-screen-style', ULTRA_ADDONS_ASSETS . 'css/elementor-style.css' );
         wp_enqueue_style( 'ultraaddons-screen-style' );
+    }
+
+     /**
+     * Style for Elementor Extra Icons 
+     * 
+     * @access public
+     * 
+     * @since 1.0.0.9
+     * @return void Adding Elementor Screen Style File
+     * @author B M Rafiul Alam
+     */
+    public function extra_icon_elementor_widget() {
+        //extra Icon
+        wp_register_style( 'ultraaddons-extra-icons-style', ULTRA_ADDONS_ASSETS . 'icons/ultra-addons-extra/css/fontello.css' );
+        wp_enqueue_style( 'ultraaddons-extra-icons-style' );
+    
+    }
+    public function extra_icon_elementor_screen_style() {
+        $this->extra_icon_elementor_widget();
     }
     /**
      * Enqueue CSS file based on Widgets Class
