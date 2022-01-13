@@ -674,6 +674,81 @@ EF.hooks.addAction(
        
     }
 );
+
+/*****************************************
+    * Radar Chart Options and initialization js
+    *  @author B M Rafiul Alam
+    *****************************************/
+
+ var Radar_chart = EM.frontend.handlers.Base.extend({
+  onInit: function(){
+      this.run();
+  },
+  onChange: function(){
+      this.run();
+  },
+  run: function(){
+
+      var $scope = this.$element;
+     
+        /**
+           * get data on editor mode
+        */
+       var $settings = this.getElementSettings();
+       var $id = $scope[0].dataset.id;
+      //Get Data List
+       const $data    = $settings.data_list;
+       console.log($settings);
+
+     /*   let dLen       = $data.length;
+       let $barChartData = [],
+          $linechartData = [],
+           $labels = [],
+           $backgroundColor = [];
+
+       for (let i = 0; i < dLen; i++) {
+           let $d = $data[i];
+           $barChartData.push($d.bar_data);
+           $linechartData.push($d.line_data);
+           $labels.push($d.labels);
+           $backgroundColor.push($d.backgroundColor);
+           const labels =  $labels;
+       } */
+       //Datasets    
+       
+
+      //Config Data
+      var marksData = {
+        labels: ["English", "Maths", "Physics", "Chemistry", "Biology", "History"],
+        datasets: [{
+          label: "Student A",
+          backgroundColor: "rgba(200,0,0,0.2)",
+          data: [65, 75, 70, 80, 60, 80]
+        }, {
+          label: "Student B",
+          backgroundColor: "rgba(0,0,200,0.2)",
+          data: [54, 65, 60, 70, 70, 75]
+        }]
+      };
+      var ctx = document.getElementById('uaChart-' + $id);
+      var radarChart = new Chart(ctx, {
+        type: 'radar',
+        data: marksData
+      });
+
+      
+  }
+});
+
+EF.hooks.addAction(
+  'frontend/element_ready/ultraaddons-radar-chart.default',
+  function ($scope) {
+      EF.elementsHandler.addHandler(Radar_chart, {
+          $element: $scope,
+      });
+     
+  }
+);
   
 
 }); //end elementor/frontend/init 

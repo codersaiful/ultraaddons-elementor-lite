@@ -600,6 +600,14 @@ $widgetsArray = [
             __( 'Chart', 'ultraaddons' ),
         ],
     ],
+    'Radar_Chart'=> [
+        'name'      => __( 'Radar Chart', 'ultraaddons' ),
+        'is_pro'   => false,
+        'icon'      => 'ua-icon-chart-bar-outline',
+        'cat'       => [
+            __( 'Chart', 'ultraaddons' ),
+        ],
+    ],
     'Navigation_Menu'=> [
         'name'      => __( 'Navigation Menu', 'ultraaddons' ),
         'is_pro'   => false,
