@@ -131,7 +131,7 @@ class Radar_Chart extends Base{
                 'frontend_available' => true,
 			]
 		);
-       
+        
         $repeater = new \Elementor\Repeater();
 
 		$repeater->add_control(
@@ -230,92 +230,38 @@ class Radar_Chart extends Base{
             ]
         );
         $this->add_control(
-			'borderColor', [
-				'label' => __( 'Line Color', 'ultraaddons' ),
+			'title_color', [
+				'label' => __( 'Title Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+                'frontend_available' => true,
+                'default'           => '#959595',
+                'separator' => 'after'
+			]
+        );
+        $this->add_control(
+			'pointLabels', [
+				'label' => __( 'Point Labels Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
                 'frontend_available' => true,
                 'default'           => '#959595',
 			]
         );
         $this->add_control(
-            'borderWidth',
-                [
-                    'label' => esc_html__( 'Line Width', 'ultraaddons' ),
-                    'type' => Controls_Manager::NUMBER,
-                    'min' => 1,
-                    'max' => 20,
-                    'step' => 1,
-                    'default' => 3,
-                    'frontend_available' => true,
-                ]
-        );
-        $this->add_control(
-            'pointBorderWidth',
-                [
-                    'label' => esc_html__( 'Line Point Width', 'ultraaddons' ),
-                    'type' => Controls_Manager::NUMBER,
-                    'min' => 1,
-                    'max' => 20,
-                    'step' => 1,
-                    'default' => 3,
-                    'frontend_available' => true,
-                    'separator' => 'after'
-                ]
-        );
-        $this->add_control(
-			'fill_color',
-			[
-				'label' => __( 'Fill Color', 'ultraaddons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
-				'return_value' => 'yes',
-				'default' => 'no',
-                'frontend_available' => true,
-                'description'       => 'Note: Fill Color only for line chart. '
-			]
-		);
-        $this->add_control(
-			'fill_color_bg', [
-				'label' => __( 'Fill Color', 'ultraaddons' ),
-				'type'      => Controls_Manager::COLOR,
-                'default'   =>'#ddd',
-                'frontend_available' => true,
-                'condition'=>['fill_color'=>'yes'],
-			]
-        );
-        $this->add_control(
-			'x_ticks_color', [
-				'label' => __( 'X Axis Label Color', 'ultraaddons' ),
-				'type'      => Controls_Manager::COLOR,
-                'default'   =>'#ddd',
-                'frontend_available' => true,
-                'separator'         => 'before'
-			]
-        );
-        $this->add_control(
-			'y_ticks_color', [
-				'label' => __( 'Y Axis Label Color', 'ultraaddons' ),
-				'type'      => Controls_Manager::COLOR,
-                'default'   =>'#ddd',
-                'frontend_available' => true,
-			]
-        );
-        $this->add_control(
-			'x_grid_color', [
-				'label' => __( 'X Grid Color', 'ultraaddons' ),
+			'grid_color', [
+				'label' => __( 'Grid Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
                 'default'   =>'#DEDEDE',
                 'frontend_available' => true,
-                'separator'         => 'before'
+                'separator' => 'before'
 			]
         );
         $this->add_control(
-			'y_grid_color', [
-				'label' => __( 'Y Grid Color', 'ultraaddons' ),
+			'angle_color', [
+				'label' => __( 'Angle Lines Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
                 'default'   =>'#DEDEDE',
                 'frontend_available' => true,
+                'separator' => 'before'
 			]
         );
        
@@ -331,7 +277,7 @@ class Radar_Chart extends Base{
         );
         $this->add_control(
 			'legend_color', [
-				'label' => __( 'Legend Color', 'ultraaddons' ),
+				'label' => __( 'Legend Text Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
                 'default'   =>'#ddd',
                 'frontend_available' => true,
@@ -364,7 +310,18 @@ class Radar_Chart extends Base{
                 'frontend_available' => true
 			]
 		);
-       
+        $this->add_control(
+			'show_legend',
+			[
+				'label' => __( 'Show Legend', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+                'frontend_available' => true,
+			]
+		);
         $this->end_controls_section();
     }
 

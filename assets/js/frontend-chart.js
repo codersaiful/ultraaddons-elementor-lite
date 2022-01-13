@@ -721,29 +721,43 @@ EF.hooks.addAction(
             labels: labels,
             datasets: [
               {
-                backgroundColor: $backgroundColor,
-                borderColor:$settings.borderColor,
-                label:$settings.bar_legend_label,
-                data: $data_1,
+              data: $data_1,
+              backgroundColor: $backgroundColor,
+              borderColor:$settings.backgroundColor,
+              label:$settings.bar_legend_label,
               },
               {
-                label:$settings.line_legend_label,
                 data: $data_2,
-                backgroundColor: $settings.fill_color_bg ? $settings.fill_color_bg  : $backgroundColor,
-                borderColor:$settings.borderColor,
+                label:$settings.line_legend_label,
+                borderColor:$settings.backgroundColor,
+                backgroundColor: $backgroundColor,
         
               }
             ]
           },
           options: {
             responsive: true,
+            scales: {
+              r: {
+                  pointLabels:{
+                      color: $settings.pointLabels,
+                  },
+                  grid:{
+                    color:$settings.grid_color
+                  },
+                  angleLines:{
+                    color:$settings.angle_color
+                  }
+              },
+            },
             plugins: {
               title: {
                 display: true,
-                text: $settings.chart_title
+                text: $settings.chart_title,
+                color:$settings.title_color
               },
               legend: {
-                    display: true,
+                    display: ($settings.show_legend=='yes') ? true : false,
                     position: $settings.legend_position,
                     align: 'middle',
                     labels: {
@@ -751,10 +765,7 @@ EF.hooks.addAction(
                     }
                 }
             },
-            scales: {
-         
-
-            }
+       
         },
         };
         //Initialize
