@@ -255,7 +255,18 @@ class Pie_Chart extends Base{
                 'frontend_available' => true
 			]
 		);
-       
+        $this->add_control(
+			'display_legend',
+			[
+				'label' => esc_html__( 'Legend Display', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'ultraaddons' ),
+				'label_off' => esc_html__( 'Hide', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+                'frontend_available' => true,
+			]
+		);
         $this->end_controls_section();
     }
 

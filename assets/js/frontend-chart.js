@@ -68,6 +68,7 @@ $window.on( 'elementor/frontend/init', function() {
                 type:'bar',
                 data: barChartData,
                 options: {
+                  indexAxis: ($settings.indexAxis=='yes') ? 'y' : 'x',
                     responsive: true,
                     plugins: {
                       title: {
@@ -75,7 +76,7 @@ $window.on( 'elementor/frontend/init', function() {
                         text: $settings.chart_title
                       },
                       legend: {
-                            display: true,
+                            display: ($settings.display_legend=='yes') ? true : false,
                             position: $settings.legend_position,
                             align: 'middle',
                             labels: {
@@ -96,7 +97,7 @@ $window.on( 'elementor/frontend/init', function() {
                         grid: {
                           drawBorder: false,
                           color:$settings.y_grid_color,
-                        },
+                        }
                       }
 
                     }
@@ -187,7 +188,7 @@ $window.on( 'elementor/frontend/init', function() {
                         text: $settings.chart_title
                       },
                       legend: {
-                            display: true,
+                            display: ($settings.display_legend=='yes') ? true : false,
                             position: $settings.legend_position,
                             align: 'middle',
                             labels: {
@@ -292,7 +293,7 @@ $window.on( 'elementor/frontend/init', function() {
                         text: $settings.chart_title
                       },
                       legend: {
-                            display: true,
+                            display: ($settings.display_legend=='yes') ? true : false,
                             position: $settings.legend_position,
                             align: 'middle',
                             labels: {
@@ -397,7 +398,7 @@ $window.on( 'elementor/frontend/init', function() {
                         text: $settings.chart_title
                       },
                       legend: {
-                            display: true,
+                            display: ($settings.display_legend=='yes') ? true : false,
                             position: $settings.legend_position,
                             align: 'middle',
                             labels: {
@@ -502,7 +503,7 @@ $window.on( 'elementor/frontend/init', function() {
                       text: $settings.chart_title
                     },
                     legend: {
-                          display: true,
+                          display: ($settings.display_legend=='yes') ? true : false,
                           position: $settings.legend_position,
                           align: 'middle',
                           labels: {
@@ -625,7 +626,7 @@ $window.on( 'elementor/frontend/init', function() {
                 text: $settings.chart_title
               },
               legend: {
-                    display: true,
+                    display: ($settings.display_legend=='yes') ? true : false,
                     position: $settings.legend_position,
                     align: 'middle',
                     labels: {
@@ -757,7 +758,7 @@ EF.hooks.addAction(
                 color:$settings.title_color
               },
               legend: {
-                    display: ($settings.show_legend=='yes') ? true : false,
+                    display: ($settings.display_legend=='yes') ? true : false,
                     position: $settings.legend_position,
                     align: 'middle',
                     labels: {

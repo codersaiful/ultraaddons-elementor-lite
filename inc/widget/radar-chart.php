@@ -311,12 +311,12 @@ class Radar_Chart extends Base{
 			]
 		);
         $this->add_control(
-			'show_legend',
+			'display_legend',
 			[
-				'label' => __( 'Show Legend', 'ultraaddons' ),
+				'label' => esc_html__( 'Legend Display', 'ultraaddons' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => esc_html__( 'Show', 'ultraaddons' ),
+				'label_off' => esc_html__( 'Hide', 'ultraaddons' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
                 'frontend_available' => true,
