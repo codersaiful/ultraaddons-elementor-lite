@@ -384,7 +384,4 @@ class Radar_Chart extends Base{
     }
     
     
-    
-    
-    
 }

@@ -67,6 +67,15 @@ ul.subnav.sub-menu {
 .nav li a:before {
   transition: all .5s;
 }
+.ua.navbar .nav li>a {
+  padding: 15px 18px;
+}
+.ua.navbar li{
+  margin: 0;
+}
+.ua .menu-item-has-children > a:after {
+  content: "";
+}
 /*text*/
 .text .nav li a:hover{
   transform: scale(1.1);
@@ -173,8 +182,6 @@ ul.subnav.sub-menu {
   visibility: visible;
   height: 100%;
 }
-
-
 
 /* Keyframes */
 @keyframes fill {

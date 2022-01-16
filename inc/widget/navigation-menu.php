@@ -535,10 +535,9 @@ protected function navbar_toggle_style() {
             ]
         );
     
-        //$breakpoint = ($settings['breakpoint']!='none') ? $settings['breakpoint'] : '' ;
        
         ?>
-        <nav class="ua navbar" data-function="navbar" data-breakpoint="<?php echo esc_attr($breakpoint);?>" data-toggle-siblings="true" data-delay="500" aria-label="Main">
+        <nav class="ua navbar" data-function="navbar" data-breakpoint="768" data-toggle-siblings="true" data-delay="500" aria-label="Main">
             <button class="navbar-toggle" aria-haspopup="true" aria-expanded="false" <?php esc_attr_e( 'Toggle navigation','ultraaddons' ); ?>>
             <?php \Elementor\Icons_Manager::render_icon( $settings['toggle_icon'], [ 'aria-hidden' => 'true' ] ); ?>
             </button>
