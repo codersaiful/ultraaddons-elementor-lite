@@ -492,8 +492,7 @@ class Contact_Form7 extends Base{
                         echo ultraaddons_do_shortcode( 'contact-form-7', [
                             'id' => $settings['form_id'],
                             'html_class' => 'ultraaddons-cf7-form ' . sanitize_html_class( $settings['html_class'] ),
-                                    ] );
+                        ] );
                 }
         }
 }
-

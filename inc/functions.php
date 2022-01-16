@@ -644,3 +644,28 @@ function ultraaddons_submenu_class($menu) {
 }
 
 add_filter('wp_nav_menu','ultraaddons_submenu_class');
+
+/**
+ * Formidable
+ * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
+ * @since 1.1.0.9
+ */
+
+
+if ( ! function_exists( 'ultraaddons_get_formidable_forms' ) ) {
+
+    function ultraaddons_get_formidable_forms(){
+  
+        $query   = array();
+        $where   = apply_filters( 'frm_forms_dropdown', $query, 'form' );
+        $forms   = FrmForm::get_published_forms( $where, 999, 'exclude' );
+        $options = array( '' => '' );
+
+        foreach ( $forms as $form ) {
+            $form_title           = '' === $form->name ? __( '(no title)', 'formidable' ) : FrmAppHelper::truncate( $form->name, 50 );
+            $options[ $form->id ] = esc_html( $form_title );
+        }
+        return $options;
+
+  }
+}

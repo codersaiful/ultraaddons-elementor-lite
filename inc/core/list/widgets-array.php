@@ -616,6 +616,14 @@ $widgetsArray = [
             __( 'Basic', 'ultraaddons' ),
         ],
     ],
+    'Formidable_Form'=> [
+        'name'      => __( 'Formidable Form', 'ultraaddons' ),
+        'is_pro'   => false,
+        'icon'      => 'eicon-menu-bar',
+        'cat'       => [
+            __( 'Basic', 'ultraaddons' ),
+        ],
+    ],
 
 ];
 
