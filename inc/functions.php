@@ -646,7 +646,7 @@ function ultraaddons_submenu_class($menu) {
 add_filter('wp_nav_menu','ultraaddons_submenu_class');
 
 /**
- * Formidable
+ * Get Formidable Forms data
  * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
  * @since 1.1.0.9
  */
@@ -661,7 +661,7 @@ if( class_exists( 'FrmForm' ) ){
             $options = array( '' => '' );
 
             foreach ( $forms as $form ) {
-                $form_title           = '' === $form->name ? __( '(no title)', 'formidable' ) : FrmAppHelper::truncate( $form->name, 50 );
+                $form_title           = '' === $form->name ? __( '(no title)', 'ultraaddons' ) : FrmAppHelper::truncate( $form->name, 50 );
                 $options[ $form->id ] = esc_html( $form_title );
             }
             return $options;
