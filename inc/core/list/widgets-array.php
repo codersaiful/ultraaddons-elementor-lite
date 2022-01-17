@@ -619,7 +619,7 @@ $widgetsArray = [
     'Formidable_Form'=> [
         'name'      => __( 'Formidable Form', 'ultraaddons' ),
         'is_pro'   => false,
-        'icon'      => 'eicon-menu-bar',
+        'icon'      => 'ua-icon-formidable',
         'cat'       => [
             __( 'Basic', 'ultraaddons' ),
         ],

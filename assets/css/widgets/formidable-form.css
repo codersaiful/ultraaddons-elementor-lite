@@ -1,0 +1,8 @@
+.ua-form.formidable.btn_block .frm_button_submit{
+    display: block;
+    width: 100%;
+    box-shadow: unset;
+}
+.ua-form .frm_style_formidable-style.with_frm_style .frm_submit button{
+    box-shadow: unset;
+}
