@@ -149,7 +149,7 @@ $widgetsArray = [
             'is_pro'   => false,
             'icon'      => 'uicon-contact-form-7',
             'cat'       => [
-                __( 'Contact_Form', 'ultraaddons' ),
+                __( 'Forms', 'ultraaddons' ),
             ],
     ],
     'Icon_Box' => [
@@ -621,7 +621,7 @@ $widgetsArray = [
         'is_pro'   => false,
         'icon'      => 'ua-icon-formidable',
         'cat'       => [
-            __( 'Basic', 'ultraaddons' ),
+            __( 'Forms', 'ultraaddons' ),
         ],
     ],
 
