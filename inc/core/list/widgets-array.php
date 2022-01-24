@@ -624,6 +624,14 @@ $widgetsArray = [
             __( 'Basic', 'ultraaddons' ),
         ],
     ],
+    'WP_Form'=> [
+        'name'      => __( 'WP Form', 'ultraaddons' ),
+        'is_pro'   => false,
+        'icon'      => 'ua-icon-formidable',
+        'cat'       => [
+            __( 'Basic', 'ultraaddons' ),
+        ],
+    ],
 
 ];
 

@@ -84,7 +84,20 @@ class Contact_Form7 extends Base{
                                 'tab'   => Controls_Manager::TAB_STYLE,
                         ]
                 );
-
+                $this->add_control(
+			'_cf7_form_style',
+			[
+				'label' => esc_html__( 'Form Style', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT2,
+				'multiple' => false,
+                                'default'  => 'style-default',
+				'options' => [
+					'style-default' => __( 'Default', 'ultraaddons' ),
+					'style-1'  => __( 'Style 1', 'ultraaddons' ),
+					'style-2'  => __( 'Style 2', 'ultraaddons' ),
+				],
+			]
+		);
                 $this->add_responsive_control(
                         '_cf7_align',
                         [
@@ -199,6 +212,22 @@ class Contact_Form7 extends Base{
                                         '{{WRAPPER}} form.ultraaddons-cf7-form select' => 'border-color: {{VALUE}};',
                                         '{{WRAPPER}} form.ultraaddons-cf7-form textarea' => 'border-color: {{VALUE}};',
                                 ],
+                                'separator'=>'after'
+                        ]
+                );
+                $this->add_control(
+                        '_cf7_input_border_focus_color',
+                        [   
+                                'label' => __( 'Border Focus Color', 'ultraaddons' ),
+                                'type' => Controls_Manager::COLOR,
+                                'default' => '#EEF1F4',
+                                'selectors' => [
+                                        '{{WRAPPER}} form.ultraaddons-cf7-form select:focue' => 'border-color: {{VALUE}};',
+                                        '{{WRAPPER}} form.ultraaddons-cf7-form textarea:focus' => 'border-color: {{VALUE}};',
+                                        '{{WRAPPER}} form.ultraaddons-cf7-form input[type="text"]:focus' => 'border-color: {{VALUE}};',
+                                        '{{WRAPPER}} form.ultraaddons-cf7-form input[type="email"]:focus' => 'border-color: {{VALUE}};',
+                                ],
+                                'separator'=>'after'
                         ]
                 );
 
@@ -207,7 +236,7 @@ class Contact_Form7 extends Base{
                         [   
                                 'label' => __( 'Background Color', 'ultraaddons' ),
                                 'type' => Controls_Manager::COLOR,
-                                'default' => '#F4F9FC',
+                                'default' => '',
                                 'selectors' => [
                                         '{{WRAPPER}} form.ultraaddons-cf7-form input:not([type="submit"])' => 'background-color: {{VALUE}};',
                                         '{{WRAPPER}} form.ultraaddons-cf7-form select' => 'background-color: {{VALUE}};',
@@ -314,6 +343,27 @@ class Contact_Form7 extends Base{
                                 ],
                         ]
                 );
+                $this->add_responsive_control(
+                        'cf7_button_width',
+                        [
+                                'label' => __( 'Width', 'ultraaddons' ),
+                                'type' => Controls_Manager::SLIDER,
+                              'size_units' => [ '%','px', 'em',  ],
+                              'range' => [
+                                      'px' => [
+                                              'min' => 10,
+                                              'max' => 1200,
+                                      ],
+                                      'em' => [
+                                              'min' => 1,
+                                              'max' => 80,
+                                      ],
+                              ],
+                              'selectors' => [
+                                      '{{WRAPPER}} input.wpcf7-submit' => 'width: {{SIZE}}{{UNIT}};',
+                              ],
+                        ]
+                );  
 
                 $this->end_controls_tab();
 
@@ -491,7 +541,7 @@ class Contact_Form7 extends Base{
                 if ( ! empty( $settings['form_id'] ) ) {
                         echo ultraaddons_do_shortcode( 'contact-form-7', [
                             'id' => $settings['form_id'],
-                            'html_class' => 'ultraaddons-cf7-form ' . sanitize_html_class( $settings['html_class'] ),
+                            'html_class' => 'ultraaddons-cf7-form ' . sanitize_html_class( $settings['html_class'] . $settings['_cf7_form_style'] ),
                         ] );
                 }
         }

@@ -631,7 +631,7 @@ function ultraaddons_theme_demo(){
 }
 
 /**
- * For navigation menu widget need to change submenu class name 
+ * For navigation menu widget replace submenu class name 
  * 
  * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
  * @since 1.1.0.9
@@ -668,3 +668,28 @@ if( class_exists( 'FrmForm' ) ){
 
     }
 }
+
+
+/**
+ * Get WPForms data
+ * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
+ * @since 1.1.0.9
+ */
+if( class_exists( 'wpforms' ) ){
+    function ultraaddons_get_wpform(){
+    $args = array('post_type' => 'wpforms', 'posts_per_page' => -1);
+
+        $formlist=[];
+        
+        if( $post = get_posts($args)){
+            foreach ( $post as $posts ) {
+                (int)$formlist[$posts->ID] = $posts->post_title;
+            }
+        }
+        else{
+            (int)$formlist['0'] = esc_html__('No wpforms found', 'aep');
+        }
+    return $formlist;
+    }
+}
+  
