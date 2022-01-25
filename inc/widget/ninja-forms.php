@@ -9,7 +9,7 @@ use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class WP_Form extends Base{
+class Ninja_Forms extends Base{
        
         public function get_keywords() {
                 return [ 'ultraaddons', 'appointment', 'contact', 'quote', 'form', 'schedule', 'formidable', 'contact form', ];
@@ -26,7 +26,7 @@ class WP_Form extends Base{
         
         protected function _register_controls() {
                 $this->register_content_controls();
-                if( class_exists( 'wpforms' ) ){
+                if( class_exists( 'Ninja_Forms' ) ){
                         $this->general_style();
                         $this->input_style();
                         $this->button_style();
@@ -42,13 +42,13 @@ class WP_Form extends Base{
                                 'tab' => Controls_Manager::TAB_CONTENT,
                         ]
                 );
-                if( class_exists( 'wpforms' ) ){
+                if( class_exists( 'Ninja_Forms' ) ){
                         $this->add_control(
                                 'form_id',
                                 array(
                                 'label'   => __( 'Form', 'ultraaddons' ),
                                 'type'    => Controls_Manager::SELECT2,
-                                'options' => ultraaddons_get_wpform(),
+                                'options' => ultraaddons_get_ninja_form_list(),
                                 )
                         );
                         $this->add_basic_switcher_control( 'title', __( 'Show Form Title', 'ultraaddons' ) );
@@ -250,9 +250,10 @@ class WP_Form extends Base{
                 $this->end_controls_section();
         }
         protected function input_style(){
-            foreach( ultraaddons_get_wpform() as $key=>$val){
+           foreach( ultraaddons_get_ninja_form_list() as $key=>$val){
                 $key = $key;
             }
+           
                 
                 $this->start_controls_section(
                         'input_style',
@@ -533,43 +534,25 @@ class WP_Form extends Base{
          * @access protected
          */
         protected function render() {
-                if( ! class_exists( 'wpforms' ) )
+                if( ! class_exists( 'Ninja_Forms' ) )
                 return;
+
                 $settings    = $this->get_settings_for_display();
 
                 $form_id     = isset( $settings['form_id'] ) ? absint( $settings['form_id'] ) : 0;
-                $btn_block    = ($settings['btn_block'] =='yes' ) ? 'btn_block' : '';
-
-                foreach( ultraaddons_get_wpform() as $key=>$val){ 
-                    $id     =  $key;
-                    $title  =  $val;
-                }
+                $btn_block   = ($settings['btn_block'] =='yes' ) ? 'btn_block' : '';
 
         $this->add_render_attribute(
-			'ua_wpform_class',
-			[
-				'class' => 'ua-form wpform ' . $btn_block,
-			]
-		);
+                'ua_ninjaforms_class',
+                [
+                        'class' => 'ua-form ninjaforms ' . $btn_block,
+                ]
+	        );
         ?>
-        <div <?php echo $this->get_render_attribute_string( 'ua_wpform_class' );?>>
-            <?php 
-                if('yes' === $settings['title']){
-                    echo '<' . $settings['title_tag'] . ' class="ua-wp-form-title">' .  $title. 
-                            '</' . $settings['title_tag'] . '>';
-                }
-            ?>
-            <p>
-            <?php 
-                if('yes' === $settings['description']){
-                $post = get_post( $id );
-                echo $excerpt = ( $post->post_excerpt ) ? $post->post_excerpt : $post->post_content;
-                }
-            ?>
-            </p>
+        <div <?php echo $this->get_render_attribute_string( 'ua_ninjaforms_class' );?>>
             <?php
                 echo do_shortcode(
-                    '[wpforms id="'. $form_id .'" ]'
+                    '[ninja_form id="'. $form_id .'" ]'
                 );
             ?>
         </div>
