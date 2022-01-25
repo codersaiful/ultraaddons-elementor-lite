@@ -649,6 +649,7 @@ add_filter('wp_nav_menu','ultraaddons_submenu_class');
  * Get Formidable Forms data
  * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
  * @since 1.1.0.9
+ * @return array
  */
 
 if( class_exists( 'FrmForm' ) ){
@@ -674,22 +675,53 @@ if( class_exists( 'FrmForm' ) ){
  * Get WPForms data
  * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
  * @since 1.1.0.9
+ * @return array
  */
-if( class_exists( 'wpforms' ) ){
-    function ultraaddons_get_wpform(){
-    $args = array('post_type' => 'wpforms', 'posts_per_page' => -1);
+if( class_exists( 'WPForms\WPForms' ) ){
+    function ultraaddons_get_wpform_list(){
+    $args = array(
+        'post_type' => 'wpforms', 
+        'posts_per_page' => -1
+    );
 
         $formlist=[];
         
         if( $post = get_posts($args)){
+            $formlist[0] = esc_html__('Select WPforms', 'ultraaddons');
             foreach ( $post as $posts ) {
                 (int)$formlist[$posts->ID] = $posts->post_title;
             }
         }
         else{
-            (int)$formlist['0'] = esc_html__('No wpforms found', 'aep');
+            (int)$formlist['0'] = esc_html__('No wpforms found!', 'ultraaddons');
         }
     return $formlist;
     }
 }
   
+/**
+ * Get NinjaForms data
+ * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
+ * @since 1.1.0.9
+ * @return array
+ */
+ function ultraaddons_get_ninja_form_list(){
+        $options = array();
+
+        if (class_exists('Ninja_Forms')) {
+            $contact_forms = Ninja_Forms()->form()->get_forms();
+
+            if (!empty($contact_forms) && !is_wp_error($contact_forms)) {
+
+                $options[0] = esc_html__('Select Ninja Form', 'ultraaddons');
+
+                foreach ($contact_forms as $form) {
+                    $options[$form->get_id()] = $form->get_setting('title');
+                }
+            }
+        } else {
+            $options[0] = esc_html__('No form found. Create a Form First', 'ultraaddons');
+        }
+
+        return $options;
+    }
