@@ -631,7 +631,7 @@ function ultraaddons_theme_demo(){
 }
 
 /**
- * For navigation menu widget need to change submenu class name 
+ * For navigation menu widget replace submenu class name 
  * 
  * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
  * @since 1.1.0.9
@@ -644,3 +644,52 @@ function ultraaddons_submenu_class($menu) {
 }
 
 add_filter('wp_nav_menu','ultraaddons_submenu_class');
+
+/**
+ * Get Formidable Forms data
+ * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
+ * @since 1.1.0.9
+ */
+
+if( class_exists( 'FrmForm' ) ){
+
+    function ultraaddons_get_formidable_forms(){
+    
+            $query   = array();
+            $where   = apply_filters( 'frm_forms_dropdown', $query, 'form' );
+            $forms   = FrmForm::get_published_forms( $where, 999, 'exclude' );
+            $options = array( '' => '' );
+
+            foreach ( $forms as $form ) {
+                $form_title           = '' === $form->name ? __( '(no title)', 'ultraaddons' ) : FrmAppHelper::truncate( $form->name, 50 );
+                $options[ $form->id ] = esc_html( $form_title );
+            }
+            return $options;
+
+    }
+}
+
+
+/**
+ * Get WPForms data
+ * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
+ * @since 1.1.0.9
+ */
+if( class_exists( 'wpforms' ) ){
+    function ultraaddons_get_wpform(){
+    $args = array('post_type' => 'wpforms', 'posts_per_page' => -1);
+
+        $formlist=[];
+        
+        if( $post = get_posts($args)){
+            foreach ( $post as $posts ) {
+                (int)$formlist[$posts->ID] = $posts->post_title;
+            }
+        }
+        else{
+            (int)$formlist['0'] = esc_html__('No wpforms found', 'aep');
+        }
+    return $formlist;
+    }
+}
+  

@@ -198,6 +198,7 @@ class Bar_Chart extends Base{
 				'type'      => Controls_Manager::COLOR,
                 'default'   =>'#ddd',
                 'frontend_available' => true,
+                'separator'         => 'after'
 			]
         );
         $this->add_control(
@@ -206,6 +207,7 @@ class Bar_Chart extends Base{
 				'type'      => Controls_Manager::COLOR,
                 'default'   =>'#ddd',
                 'frontend_available' => true,
+                'separator'         => 'after'
 			]
         );
         $this->add_control(
@@ -214,8 +216,22 @@ class Bar_Chart extends Base{
 				'type'      => Controls_Manager::COLOR,
                 'default'   =>'#444242',
                 'frontend_available' => true,
+                'separator'         => 'after'
 			]
         );
+        $this->add_control(
+			'indexAxis',
+			[
+				'label' => esc_html__( 'Change Axis', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Vr', 'ultraaddons' ),
+				'label_off' => esc_html__( 'Hr', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+                'frontend_available' => true,
+			]
+		);
+        
        
         $this->end_controls_section();
     }
@@ -262,6 +278,19 @@ class Bar_Chart extends Base{
                 'frontend_available' => true
 			]
 		);
+        $this->add_control(
+			'display_legend',
+			[
+				'label' => esc_html__( 'Legend Display', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'ultraaddons' ),
+				'label_off' => esc_html__( 'Hide', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+                'frontend_available' => true,
+			]
+		);
+        
        
         $this->end_controls_section();
     }

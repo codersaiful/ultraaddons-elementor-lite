@@ -81,7 +81,43 @@ form.ultraaddons-cf7-form input.wpcf7-form-control.wpcf7-submit {
     font-family: 'Roboto', sans-serif;
     font-family: var(--medilac-font-secondary);
 }
-@media screen and (min-width: 768px){
+/*
+form Style
+*/
+.ultraaddons-cf7-form.style-1 input[type="text"]:focus, 
+.ultraaddons-cf7-form.style-1 input[type="email"]:focus, 
+.ultraaddons-cf7-form.style-1 textarea:focus, 
+.ultraaddons-cf7-form.style-1 input[type="date"]:focus{ 
+	outline:none;
+	border-bottom:1px solid #333
+}
+.ultraaddons-cf7-form.style-1 input[type="text"], 
+.ultraaddons-cf7-form.style-1 input[type="email"], 
+.ultraaddons-cf7-form.style-1 input[type="date"],
+.ultraaddons-cf7-form.style-1 textarea{ 
+	border:none;
+	border-bottom:1px solid #ddd;
+	border-radius:0;
+}
+
+.ultraaddons-cf7-form.style-2 input[type="text"], 
+.ultraaddons-cf7-form.style-2 input[type="email"], 
+.ultraaddons-cf7-form.style-2 input[type="date"],
+.ultraaddons-cf7-form.style-2 textarea{ 
+	border:none;
+	border-bottom: 1px dashed #83A4C5;
+	border-radius:0
+}
+.ultraaddons-cf7-form.style-2 input[type="text"]:focus, 
+.ultraaddons-cf7-form.style-2 input[type="email"]:focus, 
+.ultraaddons-cf7-form.style-2 input[type="date"]:focus,
+.ultraaddons-cf7-form.style-2 textarea:focus{ 
+	outline:none;
+	border-bottom:1px dashed #333;
+	border-radius:0
+}
+
+/* @media screen and (min-width: 768px){
     form.ultraaddons-cf7-form .row > div
     {
         padding: 10px;
@@ -105,4 +141,4 @@ form.ultraaddons-cf7-form input.wpcf7-form-control.wpcf7-submit {
         min-width: 120px;
         width: auto;
     }
-}
+} */

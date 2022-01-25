@@ -14,7 +14,7 @@ use Elementor\Group_Control_Background;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Line_Chart extends Base{
+class Radar_Chart extends Base{
     
     public function __construct($data = [], $args = null) {
         parent::__construct($data, $args);
@@ -67,7 +67,7 @@ class Line_Chart extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua', 'chart', 'bar', 'Pie' ];
+        return [ 'ultraaddons', 'ua', 'radar', 'mix','mixed', 'bar','line' ];
     }
     
     
@@ -100,16 +100,7 @@ class Line_Chart extends Base{
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
-        $this->add_control(
-			'legend_label',
-			[
-				'label' => __( 'Legend Label', 'ultraaddons' ),
-				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Ultra Addons', 'ultraaddons' ),
-				'label_block' => true,
-                'frontend_available' => true,
-			]
-		);
+        
         $this->add_control(
 			'chart_title',
 			[
@@ -120,6 +111,27 @@ class Line_Chart extends Base{
                 'frontend_available' => true,
 			]
 		);
+        $this->add_control(
+			'bar_legend_label',
+			[
+				'label' => __( 'Data #1 Legend Label', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __( 'Ultra Addons', 'ultraaddons' ),
+				'label_block' => true,
+                'frontend_available' => true,
+			]
+		);
+        $this->add_control(
+			'line_legend_label',
+			[
+				'label' => __( 'Line Chart Legend Label', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __( 'Woo Product Table', 'ultraaddons' ),
+				'label_block' => true,
+                'frontend_available' => true,
+			]
+		);
+        
         $repeater = new \Elementor\Repeater();
 
 		$repeater->add_control(
@@ -131,8 +143,8 @@ class Line_Chart extends Base{
 			]
 		);
         $repeater->add_control(
-			'data', [
-				'label' => esc_html__( 'Data', 'ultraaddons' ),
+			'data_1', [
+				'label' => esc_html__( 'Data #1', 'ultraaddons' ),
 				'type' => Controls_Manager::NUMBER,
 				'default' => esc_html__( '10' , 'ultraaddons' ),
 				'label_block' => true,
@@ -140,43 +152,72 @@ class Line_Chart extends Base{
 		);
         $repeater->add_control(
 			'backgroundColor', [
-				'label' => __( 'Node Color', 'ultraaddons' ),
+				'label' => __( 'Background Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
+                'separator' =>'after'
 			]
         );
+        $repeater->add_control(
+			'data_2', [
+				'label' => esc_html__( 'Data #2', 'ultraaddons' ),
+				'type' => Controls_Manager::NUMBER,
+				'default' => esc_html__( '10' , 'ultraaddons' ),
+				'label_block' => true,
+			]
+		);
+       
         $this->add_control(
-			'list',
+			'data_list',
 			[
-				'label' => esc_html__( 'Data List', 'ultraaddons' ),
+				'label' => esc_html__( 'Chart Data', 'ultraaddons' ),
 				'type' => Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
                 'frontend_available' => true,
+                //   data: [65, 59, 90, 81, 56, 55, 40],
+                // data:   [28, 48, 40, 19, 96, 27, 100],
 				'default' => [
 					[
 						'labels' => esc_html__( 'January', 'ultraaddons' ),
-						'data' => esc_html__( '10', 'ultraaddons' ),
-                        'backgroundColor' => '#37AEFF'
+						'data_1' => esc_html__( '65', 'ultraaddons' ),
+                        'backgroundColor' => '#138FE440',
+                        'data_2' => esc_html__( '28', 'ultraaddons' ),
 					],
 					[
 						'labels' => esc_html__( 'Februay', 'ultraaddons' ),
-                        'data' => esc_html__( '14', 'ultraaddons' ),
-                        'backgroundColor' => '#C60233'
+                        'data_1' => esc_html__( '59', 'ultraaddons' ),
+                        'backgroundColor' => '#54D300CC',
+                        'data_2' => esc_html__( '48', 'ultraaddons' ),
 					],
                     [
-						'labels' => esc_html__( 'March', 'ultraaddons' ),
-                        'data' => esc_html__( '20', 'ultraaddons' ),
-                        'backgroundColor' => '#EFF600'
+					    'labels' => esc_html__( 'March', 'ultraaddons' ),
+                        'data_1' => esc_html__( '90', 'ultraaddons' ),
+                        'data_2' => esc_html__( '40', 'ultraaddons' ),
 					],
                     [
-						'labels' => esc_html__( 'March', 'ultraaddons' ),
-                        'data' => esc_html__( '17', 'ultraaddons' ),
-                        'backgroundColor' => '#1AAA09'
+					    'labels' => esc_html__( 'April', 'ultraaddons' ),
+                        'data_1' => esc_html__( '81', 'ultraaddons' ),
+                        'data_2' => esc_html__( '19', 'ultraaddons' ),
+					],
+                    [
+					    'labels' => esc_html__( 'May', 'ultraaddons' ),
+                        'data_1' => esc_html__( '56', 'ultraaddons' ),
+                        'data_2' => esc_html__( '96', 'ultraaddons' ),
+					],
+                    [
+					    'labels' => esc_html__( 'June', 'ultraaddons' ),
+                        'data_1' => esc_html__( '55', 'ultraaddons' ),
+                        'data_2' => esc_html__( '27', 'ultraaddons' ),
+					],
+                    [
+					    'labels' => esc_html__( 'July', 'ultraaddons' ),
+                        'data_1' => esc_html__( '40', 'ultraaddons' ),
+                        'data_2' => esc_html__( '100', 'ultraaddons' ),
 					],
 				],
 				'title_field' => '{{{ labels }}}',
 			]
 		);
-        
+
         $this->end_controls_section();
     }
 
@@ -189,72 +230,38 @@ class Line_Chart extends Base{
             ]
         );
         $this->add_control(
-			'borderColor', [
-				'label' => __( 'Line Color', 'ultraaddons' ),
+			'title_color', [
+				'label' => __( 'Title Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
                 'frontend_available' => true,
-                'default'           => '#959595'
+                'default'           => '#959595',
+                'separator' => 'after'
 			]
         );
         $this->add_control(
-			'fill_color',
-			[
-				'label' => __( 'Fill Color', 'ultraaddons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
-				'return_value' => 'yes',
-				'default' => 'no',
-                'frontend_available' => true,
-                'description'       => 'Note: Default Fill Color comes from the first node color. '
-			]
-		);
-        $this->add_control(
-            'borderWidth',
-                [
-                    'label' => esc_html__( 'Border Width', 'ultraaddons' ),
-                    'type' => Controls_Manager::NUMBER,
-                    'min' => 1,
-                    'max' => 20,
-                    'step' => 1,
-                    'default' => 3,
-                    'frontend_available' => true,
-                ]
-        );
-        $this->add_control(
-            'pointBorderWidth',
-                [
-                    'label' => esc_html__( 'Point Border Width', 'ultraaddons' ),
-                    'type' => Controls_Manager::NUMBER,
-                    'min' => 1,
-                    'max' => 20,
-                    'step' => 1,
-                    'default' => 3,
-                    'frontend_available' => true,
-                ]
-        );
-        $this->add_control(
-			'x_ticks_color', [
-				'label' => __( 'X Axis Label Color', 'ultraaddons' ),
+			'pointLabels', [
+				'label' => __( 'Point Labels Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
-                'default'   =>'#ddd',
                 'frontend_available' => true,
+                'default'           => '#959595',
 			]
         );
         $this->add_control(
-			'y_ticks_color', [
-				'label' => __( 'Y Axis Label Color', 'ultraaddons' ),
+			'grid_color', [
+				'label' => __( 'Grid Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
-                'default'   =>'#ddd',
+                'default'   =>'#DEDEDE',
                 'frontend_available' => true,
+                'separator' => 'before'
 			]
         );
         $this->add_control(
-			'y_grid_color', [
-				'label' => __( 'Y Grid Color', 'ultraaddons' ),
+			'angle_color', [
+				'label' => __( 'Angle Lines Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
-                'default'   =>'#444242',
+                'default'   =>'#DEDEDE',
                 'frontend_available' => true,
+                'separator' => 'before'
 			]
         );
        
@@ -270,7 +277,7 @@ class Line_Chart extends Base{
         );
         $this->add_control(
 			'legend_color', [
-				'label' => __( 'Legend Color', 'ultraaddons' ),
+				'label' => __( 'Legend Text Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
                 'default'   =>'#ddd',
                 'frontend_available' => true,
@@ -315,7 +322,6 @@ class Line_Chart extends Base{
                 'frontend_available' => true,
 			]
 		);
-       
         $this->end_controls_section();
     }
 
@@ -356,8 +362,6 @@ class Line_Chart extends Base{
                     ],
             ]
         );
-     
-       
         $this->end_controls_section();
     }
 
@@ -378,9 +382,6 @@ class Line_Chart extends Base{
         </div>
         <?php
     }
-    
-    
-    
     
     
 }

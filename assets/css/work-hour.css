@@ -1,0 +1,27 @@
+.ua-work-hours{
+	padding:10px
+}
+.ua-work-hours .ua-work-hours-row{
+	display:flex
+}
+.ua-work-hours .ua-work-day, 
+.ua-work-hours .ua-work-timing {
+    float: left;
+    width: 50%;
+}
+.ua-work-hours .ua-work-hours-row:not(:last-child) {
+    margin-bottom: 10px;
+    border-bottom-style: solid;
+    border-bottom-color: #e5e5e5;
+    border-bottom-width: 1px;
+}
+.ua-work-hours .ua-work-hours-row {
+    padding: 10px 10px 10px 30px
+}
+.ua-work-hour-title{
+	margin:0 0 10px 0
+}
+.ua-work-hour-sub-title{
+	margin:0 0 10px 0;
+	display:block
+}

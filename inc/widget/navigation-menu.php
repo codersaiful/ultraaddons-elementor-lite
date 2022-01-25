@@ -168,7 +168,7 @@ protected function layout_controls() {
         [
             'label'        => __( 'Submenu Icon', 'ultraaddons' ),
             'type'         => Controls_Manager::SELECT,
-            'default'      => 'arrow_small',
+            'default'      => 'arrow-small',
             'options'      => [
                 'arrow-small'   => __( 'Arrows Small', 'ultraaddons' ),
                 'arrow-big'   => __( 'Arrows BIg', 'ultraaddons' ),
@@ -190,7 +190,7 @@ protected function layout_controls() {
             'prefix_class' => '',
         ]
     );
-    $this->add_control(
+   /*  $this->add_control(
         'breakpoint',
         [
             'label'        => __( 'Breakpoint', 'ultraaddons' ),
@@ -202,7 +202,7 @@ protected function layout_controls() {
                 'none'   => __( 'None', 'ultraaddons' ),
             ],
         ]
-    );
+    ); */
 
 $this->end_controls_section();
 
@@ -212,7 +212,7 @@ protected function nav_style() {
     $this->start_controls_section(
         'nav_style',
         [
-            'label'     => esc_html__( 'Style', 'ultraaddons' ),
+            'label'     => esc_html__( 'General Style', 'ultraaddons' ),
             'tab'       => Controls_Manager::TAB_STYLE,
         ]
     );
@@ -366,7 +366,7 @@ protected function drop_down_style() {
         [
             'label'     => __( 'Sub Menu Background', 'ultraaddons' ),
             'type'      => Controls_Manager::COLOR,
-            'default'   => '#444',
+            'default'   => '#F9F9F9',
             'selectors' => [
                 '{{WRAPPER}} .ua.navbar .subnav' => 'background: {{VALUE}}',
             ],
@@ -422,7 +422,7 @@ protected function navbar_toggle_style() {
         [
             'label'     => __( 'Button Background', 'ultraaddons' ),
             'type'      => Controls_Manager::COLOR,
-            'default'   => '#444',
+            'default'   => '#fff',
             'selectors' => [
                 '{{WRAPPER}} .navbar-toggle' => 'background: {{VALUE}}',
             ],
@@ -445,9 +445,54 @@ protected function navbar_toggle_style() {
         [
             'label'     => __( 'Dropdown Text Color', 'ultraaddons' ),
             'type'      => Controls_Manager::COLOR,
-            'default'   => '#fff',
+            'default'   => '#222',
             'selectors' => [
                 '{{WRAPPER}} .navbar.open-mobile .nav li a' => 'color: {{VALUE}}',
+            ],
+        ]
+    );
+    $this->add_control(
+        'toggle_icon',
+        [
+            'label' => esc_html__( 'Icon', 'ultraaddons' ),
+            'type' => Controls_Manager::ICONS,
+            'default' => [
+                'value' => 'fas fa-bars',
+                'library' => 'solid',
+            ],
+            'separator' => 'before'
+        ]
+    );
+    $this->add_control(
+        'nav_toggle_icon_color',
+        [
+            'label'     => __( 'Icon Color', 'ultraaddons' ),
+            'type'      => Controls_Manager::COLOR,
+            'default'   => '#222',
+            'selectors' => [
+                '{{WRAPPER}} .navbar-toggle i' => 'color: {{VALUE}}',
+            ],
+        ]
+    );
+    $this->add_control(
+        'toggle_icon_size',
+        [
+            'label' => esc_html__( 'Icon Size', 'ultraaddons' ),
+            'type' => Controls_Manager::SLIDER,
+            'size_units' => [ 'px' ],
+            'range' => [
+                'px' => [
+                    'min' => 10,
+                    'max' => 200,
+                    'step' => 1,
+                ],
+            ],
+            'default' => [
+                'unit' => 'px',
+                'size' => 25,
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .navbar-toggle i' => 'font-size: {{SIZE}}{{UNIT}};',
             ],
         ]
     );
@@ -490,12 +535,11 @@ protected function navbar_toggle_style() {
             ]
         );
     
-        $breakpoint = ($settings['breakpoint']!='none') ? $settings['breakpoint'] : '' ;
-      
+       
         ?>
-        <nav class="ua navbar" data-function="navbar" data-breakpoint="<?php echo esc_attr($breakpoint);?>" data-toggle-siblings="true" data-delay="500" aria-label="Main">
+        <nav class="ua navbar" data-function="navbar" data-breakpoint="768" data-toggle-siblings="true" data-delay="500" aria-label="Main">
             <button class="navbar-toggle" aria-haspopup="true" aria-expanded="false" <?php esc_attr_e( 'Toggle navigation','ultraaddons' ); ?>>
-            <i class="menu-icon eicon-menu-bar" aria-hidden="true"></i>
+            <?php \Elementor\Icons_Manager::render_icon( $settings['toggle_icon'], [ 'aria-hidden' => 'true' ] ); ?>
             </button>
             <div <?php echo $this->get_render_attribute_string( 'ua-nav-menu' ); ?>>
                 <?php

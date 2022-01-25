@@ -68,6 +68,7 @@ $window.on( 'elementor/frontend/init', function() {
                 type:'bar',
                 data: barChartData,
                 options: {
+                  indexAxis: ($settings.indexAxis=='yes') ? 'y' : 'x',
                     responsive: true,
                     plugins: {
                       title: {
@@ -75,7 +76,7 @@ $window.on( 'elementor/frontend/init', function() {
                         text: $settings.chart_title
                       },
                       legend: {
-                            display: true,
+                            display: ($settings.display_legend=='yes') ? true : false,
                             position: $settings.legend_position,
                             align: 'middle',
                             labels: {
@@ -96,7 +97,7 @@ $window.on( 'elementor/frontend/init', function() {
                         grid: {
                           drawBorder: false,
                           color:$settings.y_grid_color,
-                        },
+                        }
                       }
 
                     }
@@ -187,7 +188,7 @@ $window.on( 'elementor/frontend/init', function() {
                         text: $settings.chart_title
                       },
                       legend: {
-                            display: true,
+                            display: ($settings.display_legend=='yes') ? true : false,
                             position: $settings.legend_position,
                             align: 'middle',
                             labels: {
@@ -292,7 +293,7 @@ $window.on( 'elementor/frontend/init', function() {
                         text: $settings.chart_title
                       },
                       legend: {
-                            display: true,
+                            display: ($settings.display_legend=='yes') ? true : false,
                             position: $settings.legend_position,
                             align: 'middle',
                             labels: {
@@ -397,7 +398,7 @@ $window.on( 'elementor/frontend/init', function() {
                         text: $settings.chart_title
                       },
                       legend: {
-                            display: true,
+                            display: ($settings.display_legend=='yes') ? true : false,
                             position: $settings.legend_position,
                             align: 'middle',
                             labels: {
@@ -502,7 +503,7 @@ $window.on( 'elementor/frontend/init', function() {
                       text: $settings.chart_title
                     },
                     legend: {
-                          display: true,
+                          display: ($settings.display_legend=='yes') ? true : false,
                           position: $settings.legend_position,
                           align: 'middle',
                           labels: {
@@ -625,7 +626,7 @@ $window.on( 'elementor/frontend/init', function() {
                 text: $settings.chart_title
               },
               legend: {
-                    display: true,
+                    display: ($settings.display_legend=='yes') ? true : false,
                     position: $settings.legend_position,
                     align: 'middle',
                     labels: {
@@ -674,7 +675,119 @@ EF.hooks.addAction(
        
     }
 );
+
+
+  /*****************************************
+    * Radar Chart Options and initialization js
+    *  @author B M Rafiul Alam
+    *****************************************/
+
+   var R_chart = EM.frontend.handlers.Base.extend({
+    onInit: function(){
+        this.run();
+    },
+    onChange: function(){
+        this.run();
+    },
+    run: function(){
+       var $scope = this.$element;
+        /**
+           * get data on editor mode
+        */
+         var $settings = this.getElementSettings();
+         var $id = $scope[0].dataset.id;
+        //Get Data List
+         const $data    = $settings.data_list;
+         console.log($settings);
+       
+       let dLen     = $data.length;
+         let $data_1 = [],
+            $data_2 = [],
+             $labels = [],
+             $backgroundColor = [];
   
+         for (let i = 0; i < dLen; i++) {
+             let $d = $data[i];
+             $data_1.push($d.data_1);
+             $data_2.push($d.data_2);
+             $labels.push($d.labels);
+             $backgroundColor.push($d.backgroundColor);
+         }
+         const labels =  $labels;
+
+        //Config Data
+        const config = {
+          type: "radar",
+          data: {
+            labels: labels,
+            datasets: [
+              {
+              data: $data_1,
+              backgroundColor: $backgroundColor,
+              borderColor:$settings.backgroundColor,
+              label:$settings.bar_legend_label,
+              },
+              {
+                data: $data_2,
+                label:$settings.line_legend_label,
+                borderColor:$settings.backgroundColor,
+                backgroundColor: $backgroundColor,
+        
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              r: {
+                  pointLabels:{
+                      color: $settings.pointLabels,
+                  },
+                  grid:{
+                    color:$settings.grid_color
+                  },
+                  angleLines:{
+                    color:$settings.angle_color
+                  }
+              },
+            },
+            plugins: {
+              title: {
+                display: true,
+                text: $settings.chart_title,
+                color:$settings.title_color
+              },
+              legend: {
+                    display: ($settings.display_legend=='yes') ? true : false,
+                    position: $settings.legend_position,
+                    align: 'middle',
+                    labels: {
+                        color: $settings.legend_color
+                    }
+                }
+            },
+       
+        },
+        };
+        //Initialize
+        var ctx = document.getElementById('uaChart-' + $id);
+        const uaChart = new Chart(ctx,
+            config
+        );
+        
+    }
+});
+
+EF.hooks.addAction(
+    'frontend/element_ready/ultraaddons-radar-chart.default',
+    function ($scope) {
+        EF.elementsHandler.addHandler(R_chart, {
+            $element: $scope,
+        });
+       
+    }
+);
+
 
 }); //end elementor/frontend/init 
 

@@ -12,7 +12,7 @@
 .icon-arrow-small .menu-item-has-children > a:before{
   font-family: "fontello";
   position:absolute;
-  right: 15%;
+  right: 0;
 }
 .icon-plus .menu-item-has-children > a:before{
   content:'\0800';
@@ -50,19 +50,39 @@ button.navbar-toggle {
 .menu-icon, .parent-icon {
   color: #333;
 }
-
+ul.subnav.sub-menu {
+  padding: 0;
+}
+.navbar-toggle i{
+  color:#333;
+  font-size: 26px;
+}
 /* Hover Animation */
 .ua.navbar .nav > li.open > span, .ua.navbar .nav > li.open > a, 
 .ua.navbar .nav > li:hover > span, .ua.navbar .nav > li:hover > a {
   background:transparent;
 }
-
 .nav li a,
 .nav li a:after,
 .nav li a:before {
   transition: all .5s;
 }
-
+.ua.navbar .nav li>a {
+  padding: 15px 18px;
+}
+.ua.navbar li{
+  margin: 0;
+}
+.ua .menu-item-has-children > a:after {
+  content: "";
+}
+/*text*/
+.text .nav li a:hover{
+  transform: scale(1.1);
+}
+.text .subnav{
+  overflow: hidden;
+}
 /* stroke */
 .stroke .nav li a,
 .fill .nav li a {
@@ -162,8 +182,6 @@ button.navbar-toggle {
   visibility: visible;
   height: 100%;
 }
-
-
 
 /* Keyframes */
 @keyframes fill {
