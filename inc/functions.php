@@ -725,3 +725,28 @@ if( class_exists( 'WPForms\WPForms' ) ){
 
         return $options;
     }
+
+/**
+ * Get Caldera Forms
+ * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
+ * @since 1.1.0.9
+ * @return array
+ */
+function ultraaddons_get_caldera_form_list(){
+    $options = array();
+
+    if (class_exists('Caldera_Forms')) {
+        $contact_forms = \Caldera_Forms_Forms::get_forms(true, true);
+
+        if (!empty($contact_forms) && !is_wp_error($contact_forms)) {
+            $options[0] = esc_html__('Select Caldera Form', 'ultraaddons');
+            foreach ($contact_forms as $form) {
+                $options[$form['ID']] = $form['name'];
+            }
+        }
+    } else {
+        $options[0] = esc_html__('Create a Form First', 'ultraaddons');
+    }
+
+    return $options;
+}

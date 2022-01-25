@@ -57,7 +57,7 @@ class WP_Forms extends Base{
                         $this->add_control(
                             'title_tag',
                             [
-                                'label' => esc_html__( 'Select Back Title Tag', 'ultraaddons' ),
+                                'label' => esc_html__( 'Select Title Tag', 'ultraaddons' ),
                                 'type' => Controls_Manager::SELECT,
                                 'options' => [
                                     'h1' => 'H1',

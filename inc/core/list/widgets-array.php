@@ -640,6 +640,14 @@ $widgetsArray = [
             __( 'Basic', 'ultraaddons' ),
         ],
     ],
+    'Caldera_Forms'=> [
+        'name'      => __( 'Caldera Forms', 'ultraaddons' ),
+        'is_pro'   => false,
+        'icon'      => 'eicon-facebook-comments',
+        'cat'       => [
+            __( 'Basic', 'ultraaddons' ),
+        ],
+    ],
 
 ];
 
