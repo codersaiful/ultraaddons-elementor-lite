@@ -687,6 +687,7 @@ if( class_exists( 'WPForms\WPForms' ) ){
         $formlist=[];
         
         if( $post = get_posts($args)){
+            $formlist[0] = esc_html__('Select WPforms', 'ultraaddons');
             foreach ( $post as $posts ) {
                 (int)$formlist[$posts->ID] = $posts->post_title;
             }

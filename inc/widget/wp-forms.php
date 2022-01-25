@@ -49,6 +49,7 @@ class WP_Forms extends Base{
                                 'label'   => __( 'Form', 'ultraaddons' ),
                                 'type'    => Controls_Manager::SELECT2,
                                 'options' => ultraaddons_get_wpform_list(),
+                                'default' =>0
                                 )
                         );
                         $this->add_basic_switcher_control( 'title', __( 'Show Form Title', 'ultraaddons' ) );

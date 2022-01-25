@@ -47,9 +47,11 @@ class Ninja_Forms extends Base{
                                 'form_id',
                                 array(
                                 'label'   => __( 'Form', 'ultraaddons' ),
-                                'type'    => Controls_Manager::SELECT2,
+                                'type'    => Controls_Manager::SELECT,
                                 'options' => ultraaddons_get_ninja_form_list(),
+                                'default' => '0',
                                 )
+
                         );
                         $this->add_basic_switcher_control( 'title', __( 'Show Form Title', 'ultraaddons' ) );
                        
@@ -534,8 +536,10 @@ class Ninja_Forms extends Base{
          * @access protected
          */
         protected function render() {
-                if( ! class_exists( 'Ninja_Forms' ) )
-                return;
+                
+                if (!class_exists('Ninja_Forms')) {
+                        return;
+                    }
 
                 $settings    = $this->get_settings_for_display();
 

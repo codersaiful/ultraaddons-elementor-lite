@@ -625,9 +625,9 @@ $widgetsArray = [
         ],
     ],
     'WP_Forms'=> [
-        'name'      => __( 'WP Form', 'ultraaddons' ),
+        'name'      => __( 'WPForms', 'ultraaddons' ),
         'is_pro'   => false,
-        'icon'      => 'ua-icon-formidable',
+        'icon'      => 'eicon-menu-toggle',
         'cat'       => [
             __( 'Basic', 'ultraaddons' ),
         ],
@@ -635,7 +635,7 @@ $widgetsArray = [
     'Ninja_Forms'=> [
         'name'      => __( 'Ninja Forms', 'ultraaddons' ),
         'is_pro'   => false,
-        'icon'      => 'ua-icon-formidable',
+        'icon'      => 'eicon-facebook-comments',
         'cat'       => [
             __( 'Basic', 'ultraaddons' ),
         ],
