@@ -5,7 +5,9 @@ namespace UltraAddons\Widget;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
+use Elementor\Group_Control_Box_Shadow;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+use Elementor\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -238,11 +240,6 @@ class Caldera_Forms extends Base{
                 $this->end_controls_section();
         }
         protected function input_style(){
-           foreach( ultraaddons_get_wpform_list() as $key=>$val){
-                $key = $key;
-            }
-           
-                
                 $this->start_controls_section(
                         'input_style',
                         [
@@ -272,8 +269,24 @@ class Caldera_Forms extends Base{
 				],
 			]
 		);
+        $this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'input_border',
+				'label' => esc_html__( 'Border', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-form.caldera-forms .form-control',
+			]
+		);
+        $this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'input_shadow',
+				'label' => esc_html__( 'Input Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-form.caldera-forms .form-control',
+			]
+		);
 		$this->add_group_control(
-			Group_Control_Typography::get_type(),
+		Group_Control_Typography::get_type(),
 			[
 				'name' => 'input_typography',
 				'selector' => '{{WRAPPER}} .ua-form.caldera-forms .form-control',
@@ -480,5 +493,37 @@ class Caldera_Forms extends Base{
             ?>
         </div>
         <?php
+        if(Plugin::$instance->editor->is_edit_mode() ){
+            echo '<style>
+            .elementor-element.elementor-widget-empty{
+                background-color: transparent;
+            }
+            .eicon-facebook-comments:before{
+                content:none
+            }
+            .caldera-grid .row {
+                margin-left: -7.5px;
+                margin-right: -7.5px;
+                max-width: 100%;
+            }
+            .caldera-grid .col-sm-4 {
+                width: 33.33333333%;
+            }
+            .caldera-grid .col-sm-12 {
+                width: 100%;
+            }
+            .layout-grid .col-xs-4 {
+                width: 33.33333333333333%;
+            }
+            .caldera-grid .col-sm-1, .caldera-grid .col-sm-10, .caldera-grid .col-sm-11, .caldera-grid .col-sm-12, .caldera-grid .col-sm-2, .caldera-grid .col-sm-3, .caldera-grid .col-sm-4, .caldera-grid .col-sm-5, .caldera-grid .col-sm-6, .caldera-grid .col-sm-7, .caldera-grid .col-sm-8, .caldera-grid .col-sm-9 {
+                float: left;
+            }
+            .caldera-grid .col-lg-1, .caldera-grid .col-lg-10, .caldera-grid .col-lg-11, .caldera-grid .col-lg-12, .caldera-grid .col-lg-2, .caldera-grid .col-lg-3, .caldera-grid .col-lg-4, .caldera-grid .col-lg-5, .caldera-grid .col-lg-6, .caldera-grid .col-lg-7, .caldera-grid .col-lg-8, .caldera-grid .col-lg-9, .caldera-grid .col-md-1, .caldera-grid .col-md-10, .caldera-grid .col-md-11, .caldera-grid .col-md-12, .caldera-grid .col-md-2, .caldera-grid .col-md-3, .caldera-grid .col-md-4, .caldera-grid .col-md-5, .caldera-grid .col-md-6, .caldera-grid .col-md-7, .caldera-grid .col-md-8, .caldera-grid .col-md-9, .caldera-grid .col-sm-1, .caldera-grid .col-sm-10, .caldera-grid .col-sm-11, .caldera-grid .col-sm-12, .caldera-grid .col-sm-2, .caldera-grid .col-sm-3, .caldera-grid .col-sm-4, .caldera-grid .col-sm-5, .caldera-grid .col-sm-6, .caldera-grid .col-sm-7, .caldera-grid .col-sm-8, .caldera-grid .col-sm-9, .caldera-grid .col-xs-1, .caldera-grid .col-xs-10, .caldera-grid .col-xs-11, .caldera-grid .col-xs-12, .caldera-grid .col-xs-2, .caldera-grid .col-xs-3, .caldera-grid .col-xs-4, .caldera-grid .col-xs-5, .caldera-grid .col-xs-6, .caldera-grid .col-xs-7, .caldera-grid .col-xs-8, .caldera-grid .col-xs-9 {
+                position: relative;
+                padding-left: 7.5px;
+                padding-right: 7.5px;
+            }
+            </style>';
+        }
         }
 }

@@ -543,7 +543,7 @@ class Ninja_Forms extends Base{
 
                 $settings    = $this->get_settings_for_display();
 
-               echo $form_id     =  $settings['form_id'];
+               $form_id     =  $settings['form_id'];
                 $btn_block   = ($settings['btn_block'] =='yes' ) ? 'btn_block' : '';
 
         $this->add_render_attribute(

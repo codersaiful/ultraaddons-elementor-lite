@@ -891,7 +891,7 @@ class Product_Grid extends Base{
         $this->start_controls_tab(
 			'style_active_tab',
 			[
-				'label' => esc_html__( 'Active', 'plugin-name' ),
+				'label' => esc_html__( 'Active', 'ultraaddonse' ),
 			]
 		);
         $this->add_control(
