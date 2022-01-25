@@ -66,6 +66,9 @@ class Custom_Fonts{
      * Supporting all font file 
      * inside wp using filter
      * 
+     * If not able to upload your font file, use following constant
+     * define('ALLOW_UNFILTERED_UPLOADS', true);
+     * 
      * ********************************
      * application/x-font-woff2,application/x-font-woff,application/x-font-ttf,application/x-font-otf'
      * ********************************
