@@ -49,6 +49,8 @@ class Custom_Fonts{
          * 
          * @since 1.1.0.9
          * @author Saiful Islam <codersaiful@gmail.com>
+         * 
+         * @date 25/1/2022
          */
         add_filter('upload_mimes', [__CLASS__, 'custom_upload_mimes']);
 
