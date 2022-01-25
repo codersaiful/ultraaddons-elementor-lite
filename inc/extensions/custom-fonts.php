@@ -44,11 +44,45 @@ class Custom_Fonts{
 
 
         /**
+         * To added Font file upload and support from 
+         * here, I have added wp builtin filter
+         * 
+         * @since 1.1.0.9
+         * @author Saiful Islam <codersaiful@gmail.com>
+         * 
+         * @date 25/1/2022
+         */
+        add_filter('upload_mimes', [__CLASS__, 'custom_upload_mimes']);
+
+        /**
          * Render All selected Custom field here.
          */
         \UltraAddons\Classes\Custom_Fonts_Render::init();
 
         
+    }
+
+    /**
+     * Supporting all font file 
+     * inside wp using filter
+     * 
+     * ********************************
+     * application/x-font-woff2,application/x-font-woff,application/x-font-ttf,application/x-font-otf'
+     * ********************************
+     * 
+     * @author Saiful Islam <codersaiful@gmail.com>
+     * @since 1.1.0.9
+     *
+     * @param Array $existing_mimes
+     * @return Array
+     */
+    public static function custom_upload_mimes ( $existing_mimes ) {
+
+        $existing_mimes['ttf'] = 'application/x-font-ttf';
+        $existing_mimes['woff'] = 'application/x-font-woff';
+        $existing_mimes['woff2'] = 'application/x-font-woff2';
+        $existing_mimes['otf'] = 'application/x-font-otf';
+        return $existing_mimes;
     }
 
     public static function font_group( $font_groups ){
