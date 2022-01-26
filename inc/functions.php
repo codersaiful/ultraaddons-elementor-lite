@@ -646,9 +646,10 @@ function ultraaddons_submenu_class($menu) {
 add_filter('wp_nav_menu','ultraaddons_submenu_class');
 
 /**
- * Get Formidable Forms data
+ * Get Formidable Forms List
  * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
  * @since 1.1.0.9
+ * @return array
  */
 
 if( class_exists( 'FrmForm' ) ){
@@ -671,25 +672,110 @@ if( class_exists( 'FrmForm' ) ){
 
 
 /**
- * Get WPForms data
+ * Get WPForms List
  * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
  * @since 1.1.0.9
+ * @return array
  */
-if( class_exists( 'wpforms' ) ){
-    function ultraaddons_get_wpform(){
-    $args = array('post_type' => 'wpforms', 'posts_per_page' => -1);
+if( class_exists( 'WPForms\WPForms' ) ){
+    function ultraaddons_get_wpform_list(){
+    $args = array(
+        'post_type' => 'wpforms', 
+        'posts_per_page' => -1
+    );
 
         $formlist=[];
         
         if( $post = get_posts($args)){
+            $formlist[0] = esc_html__('Select WPforms', 'ultraaddons');
             foreach ( $post as $posts ) {
                 (int)$formlist[$posts->ID] = $posts->post_title;
             }
         }
         else{
-            (int)$formlist['0'] = esc_html__('No wpforms found', 'aep');
+            (int)$formlist['0'] = esc_html__('No wpforms found!', 'ultraaddons');
         }
     return $formlist;
     }
 }
   
+/**
+ * Get NinjaForms List
+ * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
+ * @since 1.1.0.9
+ * @return array
+ */
+ function ultraaddons_get_ninja_form_list(){
+        $options = array();
+
+        if (class_exists('Ninja_Forms')) {
+            $contact_forms = Ninja_Forms()->form()->get_forms();
+
+            if (!empty($contact_forms) && !is_wp_error($contact_forms)) {
+
+                $options[0] = esc_html__('Select Ninja Form', 'ultraaddons');
+
+                foreach ($contact_forms as $form) {
+                    $options[$form->get_id()] = $form->get_setting('title');
+                }
+            }
+        } else {
+            $options[0] = esc_html__('No form found. Create a Form First', 'ultraaddons');
+        }
+
+        return $options;
+    }
+
+/**
+ * Get Caldera Forms List
+ * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
+ * @since 1.1.0.9
+ * @return array
+ */
+function ultraaddons_get_caldera_form_list(){
+    $options = array();
+
+    if (class_exists('Caldera_Forms')) {
+        $contact_forms = \Caldera_Forms_Forms::get_forms(true, true);
+
+        if (!empty($contact_forms) && !is_wp_error($contact_forms)) {
+            $options[0] = esc_html__('Select Caldera Form', 'ultraaddons');
+            foreach ($contact_forms as $form) {
+                $options[$form['ID']] = $form['name'];
+            }
+        }
+    } else {
+        $options[0] = esc_html__('Create a Form First', 'ultraaddons');
+    }
+
+    return $options;
+}
+
+
+/**
+ * Get WeForms List
+ * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
+ * @since 1.1.0.9
+ * @return array
+ */
+
+function ultraaddons_get_weform_list(){
+
+    $weforms_list = get_posts(array(
+        'post_type' => 'wpuf_contact_form',
+        'posts_per_page' => -1
+    ));
+
+    $options = array();
+
+    if (!empty($weforms_list) && !is_wp_error($weforms_list)) {
+        $options[0] = esc_html__('Select weForm', 'ultraaddons');
+        foreach ($weforms_list as $form_list) {
+            $options[$form_list->ID] = $form_list->post_title;
+        }
+    } else {
+        $options[0] = esc_html__('Create a Form First', 'ultraaddons');
+    }
+
+    return $options;
+}

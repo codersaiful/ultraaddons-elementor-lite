@@ -348,3 +348,35 @@ Pagination
 .mb-20{
     margin-bottom: 20px;
 }
+/*we form frontend*/
+ul.wpuf-form {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+}
+ul.wpuf-form li .wpuf-fields .wpuf-name-field-wrap.format-first-last .wpuf-name-field-first-name {
+    float: left;
+    width: 48%;
+}
+ul.wpuf-form.form-label-above li.field-size-large .wpuf-fields {
+    display: block;
+    float: none;
+    width: 100%;
+}
+ul.wpuf-form .wpuf-el {
+    position: relative;
+}
+ul.wpuf-form li {
+    margin-left: 0;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+#form-preview-stage.wpuf-style ul.wpuf-form .wpuf-fields textarea, .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields textarea {
+    padding-left: 3px;
+    width: 100%;
+}
+ul.wpuf-form li .wpuf-fields .wpuf-name-field-wrap.format-first-last .wpuf-name-field-last-name {
+    float: right;
+    width: 48%;
+}

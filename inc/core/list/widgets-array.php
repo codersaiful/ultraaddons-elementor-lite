@@ -624,10 +624,34 @@ $widgetsArray = [
             __( 'Forms', 'ultraaddons' ),
         ],
     ],
-    'WP_Form'=> [
-        'name'      => __( 'WP Form', 'ultraaddons' ),
+    'WP_Forms'=> [
+        'name'      => __( 'WPForms', 'ultraaddons' ),
         'is_pro'   => false,
-        'icon'      => 'ua-icon-formidable',
+        'icon'      => 'eicon-menu-toggle',
+        'cat'       => [
+            __( 'Basic', 'ultraaddons' ),
+        ],
+    ],
+    'Ninja_Forms'=> [
+        'name'      => __( 'Ninja Forms', 'ultraaddons' ),
+        'is_pro'   => false,
+        'icon'      => 'eicon-facebook-comments',
+        'cat'       => [
+            __( 'Basic', 'ultraaddons' ),
+        ],
+    ],
+    'Caldera_Forms'=> [
+        'name'      => __( 'Caldera Forms', 'ultraaddons' ),
+        'is_pro'   => false,
+        'icon'      => 'eicon-facebook-comments',
+        'cat'       => [
+            __( 'Basic', 'ultraaddons' ),
+        ],
+    ],
+    'We_Forms'=> [
+        'name'      => __( 'WeForms', 'ultraaddons' ),
+        'is_pro'   => false,
+        'icon'      => 'eicon-facebook-comments',
         'cat'       => [
             __( 'Basic', 'ultraaddons' ),
         ],
