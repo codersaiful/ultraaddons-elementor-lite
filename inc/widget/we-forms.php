@@ -79,32 +79,7 @@ class We_Forms extends Base{
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
-                $this->add_control(
-                        'align',
-                            [
-                                'label'         => esc_html__( 'Align', 'ultraaddons' ),
-                                'type'          => Controls_Manager::CHOOSE,
-                                'options' => [
-                                        'left' => [
-                                                'title' => __( 'Left', 'ultraaddons' ),
-                                                'icon' => 'fa fa-align-left',
-                                        ],
-                                        'center' => [
-                                                'title' => __( 'Center', 'ultraaddons' ),
-                                                'icon' => 'fa fa-align-center',
-                                        ],
-                                        'right' => [
-                                                'title' => __( 'Right', 'ultraaddons' ),
-                                                'icon' => 'fa fa-align-right',
-                                        ],
-                                ],
-                                'default' => 'left',
-                                'selectors' => [
-                                        '{{WRAPPER}} .ua-form .ua-wp-form-title, .ua-wpform-description' => 'text-align:{{VALUE}};',
-                                ],
-                               
-                            ]
-                );
+           
                     
                 $this->add_group_control(
                         Group_Control_Typography::get_type(),
@@ -287,34 +262,6 @@ class We_Forms extends Base{
                         ]
                     );
             
-                    $this->add_responsive_control(
-                        'us_weform_alignment',
-                        [
-                            'label' => esc_html__('Form Alignment', 'ultraaddons'),
-                            'type' => Controls_Manager::CHOOSE,
-                            'label_block' => true,
-                            'options' => [
-                                'default' => [
-                                    'title' => __('Default', 'ultraaddons'),
-                                    'icon' => 'fa fa-ban',
-                                ],
-                                'left' => [
-                                    'title' => esc_html__('Left', 'ultraaddons'),
-                                    'icon' => 'eicon-text-align-left',
-                                ],
-                                'center' => [
-                                    'title' => esc_html__('Center', 'ultraaddons'),
-                                    'icon' => 'eicon-text-align-center',
-                                ],
-                                'right' => [
-                                    'title' => esc_html__('Right', 'ultraaddons'),
-                                    'icon' => 'eicon-text-align-right',
-                                ],
-                            ],
-                            'default' => 'default',
-                            'prefix_class' => '.ua-weforms',
-                        ]
-                    );
             
                     $this->add_responsive_control(
                         'us_weform_width',
