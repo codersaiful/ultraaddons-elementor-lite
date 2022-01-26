@@ -648,6 +648,14 @@ $widgetsArray = [
             __( 'Basic', 'ultraaddons' ),
         ],
     ],
+    'We_Forms'=> [
+        'name'      => __( 'WeForms', 'ultraaddons' ),
+        'is_pro'   => false,
+        'icon'      => 'eicon-facebook-comments',
+        'cat'       => [
+            __( 'Basic', 'ultraaddons' ),
+        ],
+    ],
 
 ];
 
