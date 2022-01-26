@@ -319,7 +319,7 @@ class WP_Forms extends Base{
                 $this->start_controls_section(
                         'from_style',
                         [
-                                'label' =>  __( 'Title &  Description Style', 'ultraaddons' ) ,
+                                'label' =>  __( 'Title &  Description', 'ultraaddons' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
