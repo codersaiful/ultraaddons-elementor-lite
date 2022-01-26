@@ -31,6 +31,7 @@ class WP_Forms extends Base{
                         $this->general_style();
                         $this->label_style();
                         $this->input_style();
+                        $this->placeholder_style();
                         $this->button_style();
                         $this->error_style();
                 }
@@ -456,20 +457,22 @@ class WP_Forms extends Base{
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
 					'{{WRAPPER}} 
-                    #wpforms-form-'. $key .' input[type="text"], 
-                    #wpforms-form-'. $key .' input[type=email], 
-                    #wpforms-form-'. $key .' input[type="number"], 
-                    #wpforms-form-'. $key .' input[type="range"], 
-                    #wpforms-form-'. $key .' input[type="password"],
-                    #wpforms-form-'. $key .' input[type="search"], 
-                    #wpforms-form-'. $key .' input[type="tel"], 
-                    #wpforms-form-'. $key .' input[type="url"],
-                    #wpforms-form-'. $key .' input[type="time"], 
-                    #wpforms-form-'. $key .' input[type="week"], 
-                    #wpforms-form-'. $key .' input[type="datetime"], 
-                    #wpforms-form-'. $key .' input[type="date"],  
-                    #wpforms-form-'. $key .' textarea' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
+                                        #wpforms-form-'. $key .' input[type="text"], 
+                                        #wpforms-form-'. $key .' input[type=email], 
+                                        #wpforms-form-'. $key .' input[type="number"], 
+                                        #wpforms-form-'. $key .' input[type="range"], 
+                                        #wpforms-form-'. $key .' input[type="password"],
+                                        #wpforms-form-'. $key .' input[type="search"], 
+                                        #wpforms-form-'. $key .' input[type="tel"], 
+                                        #wpforms-form-'. $key .' input[type="url"],
+                                        #wpforms-form-'. $key .' input[type="time"], 
+                                        #wpforms-form-'. $key .' input[type="week"], 
+                                        #wpforms-form-'. $key .' input[type="datetime"], 
+                                        #wpforms-form-'. $key .' input[type="date"], 
+                                        #wpforms-form-'. $key .' select,
+                                        #wpforms-form-'. $key .' .choices__inner,
+                                        #wpforms-form-'. $key .' textarea' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                ],
 			]
 		);
                 $this->add_control(
@@ -480,18 +483,45 @@ class WP_Forms extends Base{
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} #wpforms-form-'. $key .' input[type="text"], 
-                    #wpforms-form-'. $key .' input[type=email], 
-                    #wpforms-form-'. $key .' input[type="number"], 
-                    #wpforms-form-'. $key .' input[type="range"], 
-                    #wpforms-form-'. $key .' input[type="password"],
-                    #wpforms-form-'. $key .' input[type="search"], 
-                    #wpforms-form-'. $key .' input[type="tel"], 
-                    #wpforms-form-'. $key .' input[type="url"],
-                    #wpforms-form-'. $key .' input[type="time"], 
-                    #wpforms-form-'. $key .' input[type="week"], 
-                    #wpforms-form-'. $key .' input[type="datetime"], 
-                    #wpforms-form-'. $key .' input[type="date"],  
-                    #wpforms-form-'. $key .' textarea' => 'background-color: {{VALUE}};',
+                                        #wpforms-form-'. $key .' input[type=email], 
+                                        #wpforms-form-'. $key .' input[type="number"], 
+                                        #wpforms-form-'. $key .' input[type="range"], 
+                                        #wpforms-form-'. $key .' input[type="password"],
+                                        #wpforms-form-'. $key .' input[type="search"], 
+                                        #wpforms-form-'. $key .' input[type="tel"], 
+                                        #wpforms-form-'. $key .' input[type="url"],
+                                        #wpforms-form-'. $key .' input[type="time"], 
+                                        #wpforms-form-'. $key .' input[type="week"], 
+                                        #wpforms-form-'. $key .' input[type="datetime"], 
+                                        #wpforms-form-'. $key .' input[type="date"],
+                                        #wpforms-form-'. $key .' select,
+                                        #wpforms-form-'. $key .' .choices__inner,
+                                        #wpforms-form-'. $key .' textarea' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+                $this->add_control(
+			'input_text_color',
+			[
+				'label' => __( 'Text Color', 'ultraaddons' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} #wpforms-form-'. $key .' input[type="text"], 
+                                        #wpforms-form-'. $key .' input[type=email], 
+                                        #wpforms-form-'. $key .' input[type="number"], 
+                                        #wpforms-form-'. $key .' input[type="range"], 
+                                        #wpforms-form-'. $key .' input[type="password"],
+                                        #wpforms-form-'. $key .' input[type="search"], 
+                                        #wpforms-form-'. $key .' input[type="tel"], 
+                                        #wpforms-form-'. $key .' input[type="url"],
+                                        #wpforms-form-'. $key .' input[type="time"], 
+                                        #wpforms-form-'. $key .' input[type="week"], 
+                                        #wpforms-form-'. $key .' input[type="datetime"], 
+                                        #wpforms-form-'. $key .' input[type="date"],
+                                        #wpforms-form-'. $key .' select,
+                                        #wpforms-form-'. $key .' .choices__inner,
+                                        #wpforms-form-'. $key .' textarea' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -500,19 +530,21 @@ class WP_Forms extends Base{
 			[
 				'name' => 'input_typography',
 				'selector' => '{{WRAPPER}} 
-                #wpforms-form-'. $key .' input[type="text"], 
-                #wpforms-form-'. $key .' input[type=email], 
-                #wpforms-form-'. $key .' input[type="number"], 
-                #wpforms-form-'. $key .' input[type="range"], 
-                #wpforms-form-'. $key .' input[type="password"],
-                #wpforms-form-'. $key .' input[type="search"], 
-                #wpforms-form-'. $key .' input[type="tel"], 
-                #wpforms-form-'. $key .' input[type="url"],
-                #wpforms-form-'. $key .' input[type="time"], 
-                #wpforms-form-'. $key .' input[type="week"], 
-                #wpforms-form-'. $key .' input[type="datetime"], 
-                #wpforms-form-'. $key .' input[type="date"],  
-                #wpforms-form-'. $key .' textarea',
+                                #wpforms-form-'. $key .' input[type="text"], 
+                                #wpforms-form-'. $key .' input[type=email], 
+                                #wpforms-form-'. $key .' input[type="number"], 
+                                #wpforms-form-'. $key .' input[type="range"], 
+                                #wpforms-form-'. $key .' input[type="password"],
+                                #wpforms-form-'. $key .' input[type="search"], 
+                                #wpforms-form-'. $key .' input[type="tel"], 
+                                #wpforms-form-'. $key .' input[type="url"],
+                                #wpforms-form-'. $key .' input[type="time"], 
+                                #wpforms-form-'. $key .' input[type="week"], 
+                                #wpforms-form-'. $key .' input[type="datetime"], 
+                                #wpforms-form-'. $key .' input[type="date"],  
+                                #wpforms-form-'. $key .' textarea,
+                                #wpforms-form-'. $key .' .choices__inner,
+                                #wpforms-form-'. $key .' select',
 			]
 		);
 		$this->add_control(
@@ -533,17 +565,18 @@ class WP_Forms extends Base{
 				],
 				'selectors' => [
 					'{{WRAPPER}} #wpforms-form-'. $key .' input[type="text"],
-                    #wpforms-form-'. $key .' input[type=email], 
-                    #wpforms-form-'. $key .' input[type="number"], 
-                    #wpforms-form-'. $key .' input[type="range"], 
-                    #wpforms-form-'. $key .' input[type="password"],
-                    #wpforms-form-'. $key .' input[type="search"], 
-                    #wpforms-form-'. $key .' input[type="tel"], 
-                    #wpforms-form-'. $key .' input[type="url"],
-                    #wpforms-form-'. $key .' input[type="time"], 
-                    #wpforms-form-'. $key .' input[type="week"], 
-                    #wpforms-form-'. $key .' input[type="datetime"], 
-                    #wpforms-form-'. $key .' input[type="date"]' => 'height: {{SIZE}}{{UNIT}};',
+                                        #wpforms-form-'. $key .' input[type=email], 
+                                        #wpforms-form-'. $key .' input[type="number"], 
+                                        #wpforms-form-'. $key .' input[type="range"], 
+                                        #wpforms-form-'. $key .' input[type="password"],
+                                        #wpforms-form-'. $key .' input[type="search"], 
+                                        #wpforms-form-'. $key .' input[type="tel"], 
+                                        #wpforms-form-'. $key .' input[type="url"],
+                                        #wpforms-form-'. $key .' input[type="time"], 
+                                        #wpforms-form-'. $key .' input[type="week"], 
+                                        #wpforms-form-'. $key .' input[type="datetime"], 
+                                        #wpforms-form-'. $key .' input[type="date"], 
+                                        #wpforms-form-'. $key .' select' => 'height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -694,7 +727,7 @@ class WP_Forms extends Base{
                 $this->start_controls_section(
                         'error_style_section',
                         [
-                                'label' =>  __( 'Error Style', 'ultraaddons' ) ,
+                                'label' =>  __( 'Errors', 'ultraaddons' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
                                 'condition'             => [
                                         'error_messages' => 'show',
@@ -750,6 +783,36 @@ class WP_Forms extends Base{
                 ]
             );
     
+         $this->end_controls_section();
+        }
+
+        //Placeholder Style Tabs
+        protected function placeholder_style(){
+                $this->start_controls_section(
+                        'placeholder_section',
+                        [
+                                'label' =>  __( 'Placeholder', 'ultraaddons' ) ,
+                                'tab' => Controls_Manager::TAB_STYLE,
+                        ]
+                );
+                $this->add_control(
+                        'placeholder_color',
+                                [
+                                'label' => esc_html__('Placeholder Color', 'ultraaddons'),
+                                'type' => Controls_Manager::COLOR,
+                                'selectors' => [
+                                        '{{WRAPPER}} input::placeholder, textarea::placeholder, select::placeholder' => 'color: {{VALUE}};',
+                                ],
+                                ]
+                        );
+                        $this->add_group_control(
+                                Group_Control_Typography::get_type(),
+                                [
+                                    'name'                  => 'placeholder_typography',
+                                    'label'                 => __('Typography', 'ultraaddons'),
+                                    'selector'              => '{{WRAPPER}} input::placeholder, textarea::placeholder, select::placeholder',
+                                ]
+                            );
                
          $this->end_controls_section();
         }
