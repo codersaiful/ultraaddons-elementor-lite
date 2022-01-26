@@ -6,6 +6,7 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+use Elementor\Group_Control_Box_Shadow;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -28,8 +29,10 @@ class WP_Forms extends Base{
                 $this->register_content_controls();
                 if( class_exists( 'WPForms\WPForms' ) ){
                         $this->general_style();
+                        $this->label_style();
                         $this->input_style();
                         $this->button_style();
+                        $this->error_style();
                 }
         }
 
@@ -52,7 +55,17 @@ class WP_Forms extends Base{
                                 'default' =>0
                                 )
                         );
-                        $this->add_basic_switcher_control( 'title', __( 'Show Form Title', 'ultraaddons' ) );
+                        $this->add_control(
+                                'title',
+                                [
+                                        'label' => esc_html__( 'Show Form Title', 'ultraaddons' ),
+                                        'type' => Controls_Manager::SWITCHER,
+                                        'label_on' => esc_html__( 'Show', 'ultraaddons' ),
+                                        'label_off' => esc_html__( 'Hide', 'ultraaddons' ),
+                                        'return_value' => 'yes',
+                                        'default' => 'yes',
+                                ]
+                        );
                        
                         $this->add_control(
                             'title_tag',
@@ -74,7 +87,17 @@ class WP_Forms extends Base{
                                 ],
                             ]
                         );
-                        $this->add_basic_switcher_control( 'description', __( 'Show Form Description', 'ultraaddons' ) );
+                        $this->add_control(
+                                'description',
+                                [
+                                        'label' => esc_html__( 'Show Form Description', 'ultraaddons' ),
+                                        'type' => Controls_Manager::SWITCHER,
+                                        'label_on' => esc_html__( 'Show', 'your-plugin' ),
+                                        'label_off' => esc_html__( 'Hide', 'your-plugin' ),
+                                        'return_value' => 'yes',
+                                        'default' => 'yes',
+                                ]
+                        );
                 }else{
                         $this->add_control(
                                 'form_error',[
@@ -87,14 +110,216 @@ class WP_Forms extends Base{
                 }
 
                 $this->end_controls_section();
+
+                $this->start_controls_section(
+                        'section_errors',
+                        [
+                            'label'                 => __('Errors', 'ultraaddons'),
+                        ]
+                    );
+        
+                    $this->add_control(
+                        'error_messages',
+                        [
+                            'label'                 => __('Error Messages', 'ultraaddons'),
+                            'type'                  => Controls_Manager::SELECT,
+                            'default'               => 'show',
+                            'options'               => [
+                                'show'          => __('Show', 'ultraaddons'),
+                                'hide'          => __('Hide', 'ultraaddons'),
+                            ],
+                            'selectors_dictionary'  => [
+                                'show'          => 'block',
+                                'hide'          => 'none',
+                            ],
+                            'selectors'             => [
+                                '{{WRAPPER}} .ua-form.wpform label.wpforms-error' => 'display: {{VALUE}} !important;',
+                            ],
+                        ]
+                    );
+        
+                    $this->end_controls_section();
         }
 
+        protected function label_style(){
+                
+                $this->start_controls_section(
+                        'label_style',
+                        [
+                                'label' =>  __( 'Label & Sub Label Style', 'ultraaddons' ) ,
+                                'tab' => Controls_Manager::TAB_STYLE,
+                        ]
+                );
+                $this->add_group_control(
+                        Group_Control_Typography::get_type(),
+                        [
+                                'name' => 'label_typography',
+                                'label' => 'Label Typography',
+                                'global' => [
+                                        'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                                ],
+                                'selector' => '{{WRAPPER}} .ua-form .wpforms-field-label',
+        
+                        ]
+                );
+                $this->add_control(
+                        'label_color',
+                        [
+                                'label' => __( 'Form Label Color', 'ultraaddons' ),
+                                'type' => Controls_Manager::COLOR,
+                                'selectors' => [
+                                        '{{WRAPPER}} .ua-form .wpforms-field-label' => 'color: {{VALUE}};',
+                                ],
+                        ]
+                );
+                $this->add_responsive_control(
+			'label_margin',
+			[
+				'label'       => esc_html__( 'Label Margin', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-form .wpforms-field-label' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+                                'separator'=>'after',
+			]
+		);
+                $this->add_group_control(
+                        Group_Control_Typography::get_type(),
+                        [
+                                'name' => 'sub_label_typography',
+                                'label' => 'Sub Label Typography',
+                                'global' => [
+                                        'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                                ],
+                                'selector' => '{{WRAPPER}} .ua-form .wpforms-field-sublabel',
+                        ]
+                );
+                $this->add_control(
+                        'sub_label_color',
+                        [
+                                'label' => __( 'Sub Label Color', 'ultraaddons' ),
+                                'type' => Controls_Manager::COLOR,
+                                'separator'=>'after',
+                                'selectors' => [
+                                        '{{WRAPPER}} .ua-form .wpforms-field-sublabel' => 'color: {{VALUE}};',
+                                       
+                                ],
+                        ]
+                );
+                $this->end_controls_section();
+        }
         protected function general_style(){
+                $this->start_controls_section(
+                        'container_style',
+                        [
+                            'label'                 => __('Form Container Style', 'ultraaddons'),
+                            'tab'                   => Controls_Manager::TAB_STYLE,
+                        ]
+                    );
+                
+                    $this->add_control(
+                        'ua_contact_form_background',
+                        [
+                            'label' => esc_html__('Form Background Color', 'ultraaddons'),
+                            'type' => Controls_Manager::COLOR,
+                            'selectors' => [
+                                '{{WRAPPER}} .ua-form.wpform' => 'background: {{VALUE}};',
+                            ],
+                        ]
+                    );
+                
+                    $this->add_responsive_control(
+                        'ua_contact_form_max_width',
+                        [
+                            'label' => esc_html__('Form Max Width', 'ultraaddons'),
+                            'type' => Controls_Manager::SLIDER,
+                            'size_units' => ['px', 'em', '%'],
+                            'range' => [
+                                'px' => [
+                                    'min' => 10,
+                                    'max' => 1500,
+                                ],
+                                'em' => [
+                                    'min' => 1,
+                                    'max' => 80,
+                                ],
+                            ],
+                            'selectors' => [
+                                '{{WRAPPER}} .ua-form.wpform' => 'max-width: {{SIZE}}{{UNIT}};',
+                            ],
+                        ]
+                    );
+                
+                
+                    $this->add_responsive_control(
+                        'ua_contact_form_margin',
+                        [
+                            'label' => esc_html__('Form Margin', 'ultraaddons'),
+                            'type' => Controls_Manager::DIMENSIONS,
+                            'size_units' => ['px', 'em', '%'],
+                            'selectors' => [
+                                '{{WRAPPER}} .ua-form.wpform' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                            ],
+                        ]
+                    );
+                
+                    $this->add_responsive_control(
+                        'ua_contact_form_padding',
+                        [
+                            'label' => esc_html__('Form Padding', 'ultraaddons'),
+                            'type' => Controls_Manager::DIMENSIONS,
+                            'size_units' => ['px', 'em', '%'],
+                            'selectors' => [
+                                '{{WRAPPER}} .ua-form.wpform' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                            ],
+                        ]
+                    );
+                
+                
+                    $this->add_control(
+                        'ua_contact_form_border_radius',
+                        [
+                            'label' => esc_html__('Border Radius', 'ultraaddons'),
+                            'type' => Controls_Manager::DIMENSIONS,
+                            'separator' => 'before',
+                            'size_units' => ['px'],
+                            'selectors' => [
+                                '{{WRAPPER}} .ua-form.wpform' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                            ],
+                        ]
+                    );
+                
+                
+                    $this->add_group_control(
+                        Group_Control_Border::get_type(),
+                        [
+                            'name' => 'ua_contact_form_border',
+                            'selector' => '{{WRAPPER}} .ua-form.wpform',
+                        ]
+                    );
+                
+                
+                    $this->add_group_control(
+                        Group_Control_Box_Shadow::get_type(),
+                        [
+                            'name' => 'ua_contact_form_box_shadow',
+                            'selector' => '{{WRAPPER}} .ua-form.wpform',
+                        ]
+                    );
+                
+                    $this->end_controls_section();
                 
                 $this->start_controls_section(
                         'from_style',
                         [
-                                'label' =>  __( 'General Style', 'ultraaddons' ) ,
+                                'label' =>  __( 'Title &  Description Style', 'ultraaddons' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
@@ -142,7 +367,6 @@ class WP_Forms extends Base{
                         [
                                 'label' => __( 'Title Color', 'ultraaddons' ),
                                 'type' => Controls_Manager::COLOR,
-                                'default' => '#333',
                                 'selectors' => [
                                         '{{WRAPPER}} .ua-form .ua-wp-form-title' => 'color: {{VALUE}};',
                                 ],
@@ -208,73 +432,7 @@ class WP_Forms extends Base{
                                 'separator'=>'after',
 			]
 		);
-                $this->add_group_control(
-                        Group_Control_Typography::get_type(),
-                        [
-                                'name' => 'label_typography',
-                                'label' => 'Label Typography',
-                                'global' => [
-                                        'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
-                                ],
-                                'selector' => '{{WRAPPER}} .ua-form .wpforms-field-label',
-        
-                        ]
-                );
-                $this->add_control(
-                        'label_color',
-                        [
-                                'label' => __( 'Form Label Color', 'ultraaddons' ),
-                                'type' => Controls_Manager::COLOR,
-                                'default' => '#333',
-                                'selectors' => [
-                                        '{{WRAPPER}} .ua-form .wpforms-field-label' => 'color: {{VALUE}};',
-                                ],
-                        ]
-                );
-                $this->add_responsive_control(
-			'label_margin',
-			[
-				'label'       => esc_html__( 'Label Margin', 'ultraaddons' ),
-				'type'        => Controls_Manager::DIMENSIONS,
-				'size_units'  => [ 'px', '%' ],
-				'placeholder' => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'selectors'   => [
-					'{{WRAPPER}} .ua-form .wpforms-field-label' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-                                'separator'=>'after',
-			]
-		);
-                $this->add_group_control(
-                        Group_Control_Typography::get_type(),
-                        [
-                                'name' => 'sub_label_typography',
-                                'label' => 'Sub Label Typography',
-                                'global' => [
-                                        'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
-                                ],
-                                'selector' => '{{WRAPPER}} .ua-form .wpforms-field-sublabel',
-                        ]
-                );
-                $this->add_control(
-                        'sub_label_color',
-                        [
-                                'label' => __( 'Sub Label Color', 'ultraaddons' ),
-                                'type' => Controls_Manager::COLOR,
-                                'default' => '#333',
-                                'separator'=>'after',
-                                'selectors' => [
-                                        '{{WRAPPER}} .ua-form .wpforms-field-sublabel' => 'color: {{VALUE}};',
-                                       
-                                ],
-                        ]
-                );
-
-
+               
                 $this->end_controls_section();
         }
         protected function input_style(){
@@ -286,7 +444,7 @@ class WP_Forms extends Base{
                 $this->start_controls_section(
                         'input_style',
                         [
-                                'label' =>  __( 'Input Style', 'ultraaddons' ) ,
+                                'label' =>  __( 'Input & Textarea Style', 'ultraaddons' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
@@ -419,7 +577,7 @@ class WP_Forms extends Base{
                 $this->start_controls_section(
                         'button_style',
                         [
-                                'label' =>  __( 'Button Style', 'ultraaddons' ) ,
+                                'label' =>  __( 'Submit Button Style', 'ultraaddons' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
@@ -531,15 +689,69 @@ class WP_Forms extends Base{
 
                 $this->end_controls_section();
         }
-
-        private function add_basic_switcher_control( $key, $title ) {
-                $this->add_control(
-                        $key,
-                        array(
-                                'label' => $title,
-                                'type'  => Controls_Manager::SWITCHER,
-                        )
+        //Error Style Tabs
+        protected function error_style(){
+                $this->start_controls_section(
+                        'error_style_section',
+                        [
+                                'label' =>  __( 'Error Style', 'ultraaddons' ) ,
+                                'tab' => Controls_Manager::TAB_STYLE,
+                                'condition'             => [
+                                        'error_messages' => 'show',
+                                ],
+                        ]
                 );
+    
+            $this->add_control(
+                'error_message_text_color',
+                [
+                    'label'                 => __('Text Color', 'ultraaddons'),
+                    'type'                  => Controls_Manager::COLOR,
+                    'default'               => '',
+                    'selectors'             => [
+                        '{{WRAPPER}} .ua-form.wpform label.wpforms-error' => 'color: {{VALUE}}',
+                    ],
+                    'condition'             => [
+                        'error_messages' => 'show',
+                    ],
+                ]
+            );
+    
+            $this->add_control(
+                'error_field_input_border_color',
+                [
+                    'label'                 => __('Error Field Input Border Color', 'ultraaddons'),
+                    'type'                  => Controls_Manager::COLOR,
+                    'default'               => '',
+                    'selectors'             => [
+                        '{{WRAPPER}} .ua-form.wpform input.wpforms-error, {{WRAPPER}} .ua-wpforms textarea.wpforms-error' => 'border-color: {{VALUE}}',
+                    ],
+                    'condition'             => [
+                        'error_messages' => 'show',
+                    ],
+                ]
+            );
+    
+            $this->add_control(
+                'error_field_input_border_width',
+                [
+                    'label'                 => __('Error Field Input Border Width', 'ultraaddons'),
+                    'type'                  => Controls_Manager::NUMBER,
+                    'default'               => 1,
+                    'min'                   => 1,
+                    'max'                   => 10,
+                    'step'                  => 1,
+                    'selectors'             => [
+                        '{{WRAPPER}} .ua-form.wpform input.wpforms-error, {{WRAPPER}} .ua-wpforms textarea.wpforms-error' => 'border-width: {{VALUE}}px',
+                    ],
+                    'condition'             => [
+                        'error_messages' => 'show',
+                    ],
+                ]
+            );
+    
+               
+         $this->end_controls_section();
         }
         /**
          * Render widget output on the frontend.

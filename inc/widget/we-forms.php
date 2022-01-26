@@ -695,6 +695,8 @@ class We_Forms extends Base{
                     $this->end_controls_section();
         }
 
+       
+
         /**
          * Render widget output on the frontend.
          *
