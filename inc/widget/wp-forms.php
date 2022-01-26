@@ -146,7 +146,7 @@ class WP_Forms extends Base{
                 $this->start_controls_section(
                         'label_style',
                         [
-                                'label' =>  __( 'Label & Sub Label Style', 'ultraaddons' ) ,
+                                'label' =>  __( 'Label & Sub Label', 'ultraaddons' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
@@ -219,7 +219,7 @@ class WP_Forms extends Base{
                 $this->start_controls_section(
                         'container_style',
                         [
-                            'label'                 => __('Form Container Style', 'ultraaddons'),
+                            'label'                 => __('Form Container', 'ultraaddons'),
                             'tab'                   => Controls_Manager::TAB_STYLE,
                         ]
                     );
@@ -444,7 +444,7 @@ class WP_Forms extends Base{
                 $this->start_controls_section(
                         'input_style',
                         [
-                                'label' =>  __( 'Input & Textarea Style', 'ultraaddons' ) ,
+                                'label' =>  __( 'Input & Textarea', 'ultraaddons' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
@@ -577,7 +577,7 @@ class WP_Forms extends Base{
                 $this->start_controls_section(
                         'button_style',
                         [
-                                'label' =>  __( 'Submit Button Style', 'ultraaddons' ) ,
+                                'label' =>  __( 'Submit Button', 'ultraaddons' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
