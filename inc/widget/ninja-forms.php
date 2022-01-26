@@ -12,9 +12,23 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class Ninja_Forms extends Base{
        
         public function get_keywords() {
-                return [ 'ultraaddons', 'appointment', 'contact', 'quote', 'form', 'schedule', 'formidable', 'contact form', ];
+                return [ 'ultraaddons', 'ua', 'contact', 'quote', 'form', 'form', 'ninja', ];
         }
 
+        /**
+         * Whether the reload preview is required or not.
+         *
+         * Used to determine whether the reload preview is required.
+         *
+         * @since 1.0.0
+         * @access public
+         *
+         * @return bool Whether the reload preview is required.
+         */
+        public function is_reload_preview_required() {
+                return true;
+        }
+        
          /**
          * Register oEmbed widget controls.
          *
