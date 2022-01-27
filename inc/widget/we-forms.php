@@ -98,30 +98,29 @@ class We_Forms extends Base{
                         [
                                 'label' => __( 'Title Color', 'ultraaddons' ),
                                 'type' => Controls_Manager::COLOR,
-                                'default' => '#333',
                                 'selectors' => [
                                         '{{WRAPPER}} .ua-form .ua-wp-form-title' => 'color: {{VALUE}};',
                                 ],
                         ]
                 );
                 $this->add_responsive_control(
-			'title_margin',
-			[
-				'label'       => esc_html__( 'Title Margin', 'ultraaddons' ),
-				'type'        => Controls_Manager::DIMENSIONS,
-				'size_units'  => [ 'px', '%' ],
-				'placeholder' => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'selectors'   => [
-					'{{WRAPPER}} .ua-form .ua-wp-form-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-                                'separator'=>'after',
-			]
-		);
+                    'title_margin',
+                    [
+                        'label'       => esc_html__( 'Title Margin', 'ultraaddons' ),
+                        'type'        => Controls_Manager::DIMENSIONS,
+                        'size_units'  => [ 'px', '%' ],
+                        'placeholder' => [
+                            'top'    => '',
+                            'right'  => '',
+                            'bottom' => '',
+                            'left'   => '',
+                        ],
+                        'selectors'   => [
+                            '{{WRAPPER}} .ua-form .ua-wp-form-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                                        'separator'=>'after',
+                    ]
+                );
                 $this->add_group_control(
                         Group_Control_Typography::get_type(),
                         [
@@ -140,7 +139,6 @@ class We_Forms extends Base{
                         [
                                 'label' => __( 'Deccription Color', 'ultraaddons' ),
                                 'type' => Controls_Manager::COLOR,
-                                'default' => '#333',
                                 'selectors' => [
                                         '{{WRAPPER}} .ua-form .frm_description p' => 'color: {{VALUE}};',
                                 ],
