@@ -340,7 +340,7 @@ class WP_Forms extends Base{
                                         ],
                                         'right' => [
                                                 'title' => __( 'Right', 'ultraaddons' ),
-                                                'icon' => 'eicon-text-align-righ',
+                                                'icon' => 'eicon-text-align-right',
                                         ],
                                 ],
                                 'default' => 'left',

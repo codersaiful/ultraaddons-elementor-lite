@@ -198,12 +198,12 @@ class Formidable_Form extends Base{
                                         ],
                                         'right' => [
                                                 'title' => __( 'Right', 'ultraaddons' ),
-                                                'icon' => 'eicon-text-align-righ',
+                                                'icon' => 'eicon-text-align-right',
                                         ],
                                 ],
                                 'default' => 'left',
                                 'selectors' => [
-                                        '{{WRAPPER}} .ua-form .frm_form_title, .ua-form .frm_description p' => 'text-align:{{VALUE}};',
+                                        '{{WRAPPER}} .ua-form .frm_form_title, .ua-form .frm_description p' => 'text-align:{{VALUE}} !important;',
                                 ],
                                
                             ]
@@ -217,7 +217,6 @@ class Formidable_Form extends Base{
                                 'global' => [
                                         'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
                                 ],
-        
                         ]
                 );
                 $this->add_control(
