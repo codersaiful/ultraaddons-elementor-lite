@@ -208,6 +208,7 @@ class Formidable_Form extends Base{
                                
                             ]
                 );
+                
                 $this->add_group_control(
                         Group_Control_Typography::get_type(),
                         [
