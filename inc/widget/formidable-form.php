@@ -182,6 +182,32 @@ class Formidable_Form extends Base{
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
+                $this->add_control(
+                        'title_text_align',
+                            [
+                                'label'         => esc_html__( 'Align', 'ultraaddons' ),
+                                'type'          => Controls_Manager::CHOOSE,
+                                'options' => [
+                                        'left' => [
+                                                'title' => __( 'Left', 'ultraaddons' ),
+                                                'icon' => 'fa fa-align-left',
+                                        ],
+                                        'center' => [
+                                                'title' => __( 'Center', 'ultraaddons' ),
+                                                'icon' => 'fa fa-align-center',
+                                        ],
+                                        'right' => [
+                                                'title' => __( 'Right', 'ultraaddons' ),
+                                                'icon' => 'fa fa-align-right',
+                                        ],
+                                ],
+                                'default' => 'left',
+                                'selectors' => [
+                                        '{{WRAPPER}} .ua-form .frm_form_title, .ua-form .frm_description p' => 'text-align:{{VALUE}};',
+                                ],
+                               
+                            ]
+                    );
                 $this->add_group_control(
                         Group_Control_Typography::get_type(),
                         [
