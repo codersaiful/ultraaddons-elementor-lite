@@ -380,3 +380,6 @@ ul.wpuf-form li .wpuf-fields .wpuf-name-field-wrap.format-first-last .wpuf-name-
     float: right;
     width: 48%;
 }
+.ua-form.ninjaforms .nf-form-content{
+    margin: 0;
+}

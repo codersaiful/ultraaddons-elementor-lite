@@ -687,7 +687,7 @@ class WP_Forms extends Base{
          $this->end_controls_section();
         }
 
-        //Placeholder Style Tabs
+        //Container Style Tabs
         protected function container_style(){
 
                 $this->start_controls_section(

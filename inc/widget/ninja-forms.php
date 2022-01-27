@@ -6,29 +6,17 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+use Elementor\Group_Control_Box_Shadow;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Ninja_Forms extends Base{
        
         public function get_keywords() {
-                return [ 'ultraaddons', 'ua', 'contact', 'quote', 'form', 'form', 'ninja', ];
+                return [ 'ultraaddons', 'ua', 'contact', 'quote', 'forms', 'form', 'ninja', ];
         }
 
-        /**
-         * Whether the reload preview is required or not.
-         *
-         * Used to determine whether the reload preview is required.
-         *
-         * @since 1.0.0
-         * @access public
-         *
-         * @return bool Whether the reload preview is required.
-         */
-        public function is_reload_preview_required() {
-                return true;
-        }
-        
+       
          /**
          * Register oEmbed widget controls.
          *
@@ -41,9 +29,13 @@ class Ninja_Forms extends Base{
         protected function _register_controls() {
                 $this->register_content_controls();
                 if( class_exists( 'Ninja_Forms' ) ){
-                        $this->general_style();
+                        $this->title_style();
                         $this->input_style();
+                        $this->label_style();
                         $this->button_style();
+                        $this->error_style();
+                        $this->placeholder_style();
+                        $this->container_style();
                 }
         }
 
@@ -67,29 +59,6 @@ class Ninja_Forms extends Base{
                                 )
 
                         );
-                        $this->add_basic_switcher_control( 'title', __( 'Show Form Title', 'ultraaddons' ) );
-                       
-                        $this->add_control(
-                            'title_tag',
-                            [
-                                'label' => esc_html__( 'Select Back Title Tag', 'ultraaddons' ),
-                                'type' => Controls_Manager::SELECT,
-                                'options' => [
-                                    'h1' => 'H1',
-                                    'h2' => 'H2',
-                                    'h3' => 'H3',
-                                    'h4' => 'H4',
-                                    'h5' => 'H5',
-                                    'h6' => 'H6',
-                                    'div'=>	'div',
-                                ],
-                                'default' => 'h2',
-                                'condition' => [
-                                    'title' => 'yes'
-                                ],
-                            ]
-                        );
-                        $this->add_basic_switcher_control( 'description', __( 'Show Form Description', 'ultraaddons' ) );
                 }else{
                         $this->add_control(
                                 'form_error',[
@@ -104,12 +73,12 @@ class Ninja_Forms extends Base{
                 $this->end_controls_section();
         }
 
-        protected function general_style(){
+        protected function title_style(){
                 
                 $this->start_controls_section(
                         'from_style',
                         [
-                                'label' =>  __( 'General Style', 'ultraaddons' ) ,
+                                'label' =>  __( 'Title & Description', 'ultraaddons' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
@@ -118,7 +87,7 @@ class Ninja_Forms extends Base{
                         [
                                 'name' => 'title_typography',
                                 'label' => 'Title Typography',
-                                'selector' => '{{WRAPPER}} .ua-form .ua-wp-form-title',
+                                'selector' => '{{WRAPPER}} .ua-ninja-form .nf-form-title',
                                 'global' => [
                                         'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
                                 ],
@@ -132,7 +101,7 @@ class Ninja_Forms extends Base{
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#333',
                                 'selectors' => [
-                                        '{{WRAPPER}} .ua-form .ua-wp-form-title' => 'color: {{VALUE}};',
+                                        '{{WRAPPER}} .ua-ninja-form .nf-form-title' => 'color: {{VALUE}};',
                                 ],
                         ]
                 );
@@ -149,7 +118,7 @@ class Ninja_Forms extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .ua-form .ua-wp-form-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ua-ninja-form .nf-form-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
                                 'separator'=>'after',
 			]
@@ -159,7 +128,7 @@ class Ninja_Forms extends Base{
                         [
                                 'name' => 'desc_typography',
                                 'label' => 'Description Typography',
-                                'selector' => '{{WRAPPER}} .ua-form .frm_description p',
+                                'selector' => '{{WRAPPER}} .ua-ninja-form .nf-before-form-content',
                                 'global' => [
                                         'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
                                 ],
@@ -174,7 +143,7 @@ class Ninja_Forms extends Base{
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#333',
                                 'selectors' => [
-                                        '{{WRAPPER}} .ua-form .frm_description p' => 'color: {{VALUE}};',
+                                        '{{WRAPPER}} .ua-ninja-form .nf-before-form-content' => 'color: {{VALUE}};',
                                 ],
                         ]
                 );
@@ -191,11 +160,156 @@ class Ninja_Forms extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .ua-form .frm_description p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ua-ninja-form .nf-before-form-content' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
                                 'separator'=>'after',
 			]
 		);
+
+                $this->end_controls_section();
+        }
+        protected function input_style(){
+                $this->start_controls_section(
+                        'input_style',
+                        [
+                                'label' =>  __( 'Input & Textarea', 'ultraaddons' ) ,
+                                'tab' => Controls_Manager::TAB_STYLE,
+                        ]
+                );
+                $this->add_control(
+            'input_radius',
+            [
+                'label' => __( 'Border Radius', 'ultraaddons' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selectors' => [
+                        '{{WRAPPER}} 
+                        .ua-ninja-form .nf-form-content  input[type="text"],
+                        .ua-ninja-form .nf-form-content input[type="email"], 
+                        .ua-ninja-form .nf-form-content input[type="number"], 
+                        .ua-ninja-form .nf-form-content input[type="range"], 
+                        .ua-ninja-form .nf-form-content input[type="password"],
+                        .ua-ninja-form .nf-form-content input[type="search"], 
+                        .ua-ninja-form .nf-form-content input[type="tel"], 
+                        .ua-ninja-form .nf-form-content input[type="url"],
+                        .ua-ninja-form .nf-form-content input[type="time"], 
+                        .ua-ninja-form .nf-form-content input[type="week"], 
+                        .ua-ninja-form .nf-form-content input[type="datetime"], 
+                        .ua-ninja-form .nf-form-content input[type="date"],  
+                        .ua-ninja-form .nf-form-content textarea' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+            );
+                $this->add_control(
+            'input_bg_color',
+            [
+                        'label' => __( 'Background Color', 'ultraaddons' ),
+                        'type' => Controls_Manager::COLOR,
+                        'default' => '',
+                        'selectors' => [
+                                '{{WRAPPER}}
+                                .ua-ninja-form .nf-form-content input[type="text"],
+                                .ua-ninja-form .nf-form-content input[type="email"], 
+                                .ua-ninja-form .nf-form-content input[type="number"], 
+                                .ua-ninja-form .nf-form-content input[type="range"], 
+                                .ua-ninja-form .nf-form-content input[type="password"],
+                                .ua-ninja-form .nf-form-content input[type="search"], 
+                                .ua-ninja-form .nf-form-content input[type="tel"], 
+                                .ua-ninja-form .nf-form-content input[type="url"],
+                                .ua-ninja-form .nf-form-content input[type="time"], 
+                                .ua-ninja-form .nf-form-content input[type="week"], 
+                                .ua-ninja-form .nf-form-content input[type="datetime"], 
+                                .ua-ninja-form .nf-form-content input[type="date"],  
+                                .ua-ninja-form .nf-form-content textarea' => 'background-color: {{VALUE}};',
+                ],
+            ]
+            );
+            $this->add_group_control(
+            Group_Control_Typography::get_type(),
+                        [
+                        'name' => 'input_typography',
+                        'selector' => '{{WRAPPER}} 
+                        .ua-ninja-form .nf-form-content input[type="text"],
+                        .ua-ninja-form .nf-form-content input[type=email], 
+                        .ua-ninja-form .nf-form-content input[type="number"], 
+                        .ua-ninja-form .nf-form-content input[type="range"], 
+                        .ua-ninja-form .nf-form-content input[type="password"],
+                        .ua-ninja-form .nf-form-content input[type="search"], 
+                        .ua-ninja-form .nf-form-content input[type="tel"], 
+                        .ua-ninja-form .nf-form-content input[type="url"],
+                        .ua-ninja-form .nf-form-content input[type="time"], 
+                        .ua-ninja-form .nf-form-content input[type="week"], 
+                        .ua-ninja-form .nf-form-content input[type="datetime"], 
+                        .ua-ninja-form .nf-form-content input[type="date"],  
+                        .ua-ninja-form .nf-form-content textarea',
+            ]
+            );
+            $this->add_control(
+            'text_height',
+            [
+                'label' => esc_html__( 'Input Text Height', 'ultraaddons' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range' => [
+                    'px' => [
+                        'min' => 20,
+                        'max' => 100,
+                        'step' => 5,
+                    ],
+                ],
+                'default' => [
+                    'size' => 40,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} 
+                    .ua-ninja-form .nf-form-content input[type="text"],
+                    .ua-ninja-form .nf-form-content input[type=email], 
+                    .ua-ninja-form .nf-form-content input[type="number"], 
+                    .ua-ninja-form .nf-form-content input[type="range"], 
+                    .ua-ninja-form .nf-form-content input[type="password"],
+                    .ua-ninja-form .nf-form-content input[type="search"], 
+                    .ua-ninja-form .nf-form-content input[type="tel"], 
+                    .ua-ninja-form .nf-form-content input[type="url"],
+                    .ua-ninja-form .nf-form-content input[type="time"], 
+                    .ua-ninja-form .nf-form-content input[type="week"], 
+                    .ua-ninja-form .nf-form-content input[type="datetime"], 
+                    .ua-ninja-form .nf-form-content input[type="date"]' => 'height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+            );
+            
+            $this->add_control(
+            'textarea_height',
+            [
+                'label' => esc_html__( 'Textarea Height', 'ultraaddons' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range' => [
+                    'px' => [
+                        'min' => 150,
+                        'max' => 500,
+                        'step' => 10,
+                    ],
+                ],
+                'default' => [
+                    'size' => 150,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .ua-weforms textarea' => 'height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+            );
+                $this->end_controls_section();
+            }
+
+        protected function label_style(){
+                $this->start_controls_section(
+                        'label_style',
+                        [
+                                'label' =>  __( 'Label', 'ultraaddons' ) ,
+                                'tab' => Controls_Manager::TAB_STYLE,
+                        ]
+                );
                 $this->add_group_control(
                         Group_Control_Typography::get_type(),
                         [
@@ -204,7 +318,7 @@ class Ninja_Forms extends Base{
                                 'global' => [
                                         'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
                                 ],
-                                'selector' => '{{WRAPPER}} .ua-form .wpforms-field-label',
+                                'selector' => '{{WRAPPER}} .ua-ninja-form .nf-field-label',
         
                         ]
                 );
@@ -215,7 +329,7 @@ class Ninja_Forms extends Base{
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#333',
                                 'selectors' => [
-                                        '{{WRAPPER}} .ua-form .wpforms-field-label' => 'color: {{VALUE}};',
+                                        '{{WRAPPER}} .ua-ninja-form .nf-field-label' => 'color: {{VALUE}};',
                                 ],
                         ]
                 );
@@ -232,306 +346,338 @@ class Ninja_Forms extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .ua-form .wpforms-field-label' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ua-ninja-form .nf-field-label' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
                                 'separator'=>'after',
-			]
-		);
-                $this->add_group_control(
-                        Group_Control_Typography::get_type(),
-                        [
-                                'name' => 'sub_label_typography',
-                                'label' => 'Sub Label Typography',
-                                'global' => [
-                                        'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
-                                ],
-                                'selector' => '{{WRAPPER}} .ua-form .wpforms-field-sublabel',
-                        ]
-                );
-                $this->add_control(
-                        'sub_label_color',
-                        [
-                                'label' => __( 'Sub Label Color', 'ultraaddons' ),
-                                'type' => Controls_Manager::COLOR,
-                                'default' => '#333',
-                                'separator'=>'after',
-                                'selectors' => [
-                                        '{{WRAPPER}} .ua-form .wpforms-field-sublabel' => 'color: {{VALUE}};',
-                                       
-                                ],
-                        ]
-                );
-
-
-                $this->end_controls_section();
-        }
-        protected function input_style(){
-           foreach( ultraaddons_get_ninja_form_list() as $key=>$val){
-                $key = $key;
-            }
-           
-                
-                $this->start_controls_section(
-                        'input_style',
-                        [
-                                'label' =>  __( 'Input Style', 'ultraaddons' ) ,
-                                'tab' => Controls_Manager::TAB_STYLE,
-                        ]
-                );
-                $this->add_control(
-			'input_radius',
-			[
-				'label' => __( 'Border Radius', 'ultraaddons' ),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%' ],
-				'selectors' => [
-					'{{WRAPPER}} 
-                    #wpforms-form-'. $key .' input[type="text"], 
-                    #wpforms-form-'. $key .' input[type=email], 
-                    #wpforms-form-'. $key .' input[type="number"], 
-                    #wpforms-form-'. $key .' input[type="range"], 
-                    #wpforms-form-'. $key .' input[type="password"],
-                    #wpforms-form-'. $key .' input[type="search"], 
-                    #wpforms-form-'. $key .' input[type="tel"], 
-                    #wpforms-form-'. $key .' input[type="url"],
-                    #wpforms-form-'. $key .' input[type="time"], 
-                    #wpforms-form-'. $key .' input[type="week"], 
-                    #wpforms-form-'. $key .' input[type="datetime"], 
-                    #wpforms-form-'. $key .' input[type="date"],  
-                    #wpforms-form-'. $key .' textarea' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-                $this->add_control(
-			'input_bg_color',
-			[
-				'label' => __( 'Background Color', 'ultraaddons' ),
-				'type' => Controls_Manager::COLOR,
-				'default' => '',
-				'selectors' => [
-					'{{WRAPPER}} #wpforms-form-'. $key .' input[type="text"], 
-                    #wpforms-form-'. $key .' input[type=email], 
-                    #wpforms-form-'. $key .' input[type="number"], 
-                    #wpforms-form-'. $key .' input[type="range"], 
-                    #wpforms-form-'. $key .' input[type="password"],
-                    #wpforms-form-'. $key .' input[type="search"], 
-                    #wpforms-form-'. $key .' input[type="tel"], 
-                    #wpforms-form-'. $key .' input[type="url"],
-                    #wpforms-form-'. $key .' input[type="time"], 
-                    #wpforms-form-'. $key .' input[type="week"], 
-                    #wpforms-form-'. $key .' input[type="datetime"], 
-                    #wpforms-form-'. $key .' input[type="date"],  
-                    #wpforms-form-'. $key .' textarea' => 'background-color: {{VALUE}};',
-				],
-			]
-		);
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'input_typography',
-				'selector' => '{{WRAPPER}} 
-                #wpforms-form-'. $key .' input[type="text"], 
-                #wpforms-form-'. $key .' input[type=email], 
-                #wpforms-form-'. $key .' input[type="number"], 
-                #wpforms-form-'. $key .' input[type="range"], 
-                #wpforms-form-'. $key .' input[type="password"],
-                #wpforms-form-'. $key .' input[type="search"], 
-                #wpforms-form-'. $key .' input[type="tel"], 
-                #wpforms-form-'. $key .' input[type="url"],
-                #wpforms-form-'. $key .' input[type="time"], 
-                #wpforms-form-'. $key .' input[type="week"], 
-                #wpforms-form-'. $key .' input[type="datetime"], 
-                #wpforms-form-'. $key .' input[type="date"],  
-                #wpforms-form-'. $key .' textarea',
-			]
-		);
-		$this->add_control(
-			'text_height',
-			[
-				'label' => esc_html__( 'Input Text Height', 'ultraaddons' ),
-				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px' ],
-				'range' => [
-					'px' => [
-						'min' => 20,
-						'max' => 100,
-						'step' => 5,
-					],
-				],
-				'default' => [
-					'size' => 40,
-				],
-				'selectors' => [
-					'{{WRAPPER}} #wpforms-form-'. $key .' input[type="text"],
-                    #wpforms-form-'. $key .' input[type=email], 
-                    #wpforms-form-'. $key .' input[type="number"], 
-                    #wpforms-form-'. $key .' input[type="range"], 
-                    #wpforms-form-'. $key .' input[type="password"],
-                    #wpforms-form-'. $key .' input[type="search"], 
-                    #wpforms-form-'. $key .' input[type="tel"], 
-                    #wpforms-form-'. $key .' input[type="url"],
-                    #wpforms-form-'. $key .' input[type="time"], 
-                    #wpforms-form-'. $key .' input[type="week"], 
-                    #wpforms-form-'. $key .' input[type="datetime"], 
-                    #wpforms-form-'. $key .' input[type="date"]' => 'height: {{SIZE}}{{UNIT}};',
-				],
-			]
-		);
-
-                $this->add_control(
-			'textarea_height',
-			[
-				'label' => esc_html__( 'Textarea Height', 'ultraaddons' ),
-				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px' ],
-				'range' => [
-					'px' => [
-						'min' => 150,
-						'max' => 500,
-						'step' => 10,
-					],
-				],
-				'default' => [
-					'size' => 150,
-				],
-				'selectors' => [
-					'{{WRAPPER}} #wpforms-form-'. $key .' textarea' => 'height: {{SIZE}}{{UNIT}};',
-				],
 			]
 		);
                 $this->end_controls_section();
         }
 
-        protected function button_style(){
-                
+        protected function error_style(){
                 $this->start_controls_section(
-                        'button_style',
-                        [
-                                'label' =>  __( 'Button Style', 'ultraaddons' ) ,
-                                'tab' => Controls_Manager::TAB_STYLE,
-                        ]
+                    'section_error_style',
+                    [
+                        'label' => __('Errors', 'ultraaddons'),
+                        'tab' => Controls_Manager::TAB_STYLE,
+                    ]
                 );
             
                 $this->add_control(
-			'btn_block',
-			[
-				'label' => esc_html__( 'Button Block', 'ultraaddons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Block', 'ultraaddons' ),
-				'label_off' => esc_html__( 'Inline', 'ultraaddons' ),
-				'return_value' => 'yes',
-				'default' => 'no',
-			]
-		);
-
-                $this->start_controls_tabs(
-			'style_tabs'
-		);
-                //Normal Tab
-                $this->start_controls_tab(
-                        'btn_normal_tab',
-                        [
-                                'label' => esc_html__( 'Normal', 'ultraaddons' ),
-                        ]
+                    'error_messages_heading',
+                    [
+                        'label' => __('Error Messages', 'ultraaddons'),
+                        'type' => Controls_Manager::HEADING,
+                    ]
+                );
+            
+                $this->add_control(
+                    'error_message_text_color',
+                    [
+                        'label' => __('Text Color', 'ultraaddons'),
+                        'type' => Controls_Manager::COLOR,
+                        'default' => '',
+                        'selectors' => [
+                            '{{WRAPPER}} .ua-ninja-form .nf-error-wrap .nf-error-required-error' => 'color: {{VALUE}}',
+                        ],
+                    ]
+                );
+            
+                $this->add_control(
+                    'validation_errors_heading',
+                    [
+                        'label' => __('Validation Errors', 'ultraaddons'),
+                        'type' => Controls_Manager::HEADING,
+                        'separator' => 'before',
+                    ]
+                );
+            
+                $this->add_control(
+                    'validation_error_description_color',
+                    [
+                        'label' => __('Error Description Color', 'ultraaddons'),
+                        'type' => Controls_Manager::COLOR,
+                        'default' => '',
+                        'selectors' => [
+                            '{{WRAPPER}} .ua-ninja-form .nf-form-errors .nf-error-field-errors' => 'color: {{VALUE}}',
+                        ],
+                    ]
                 );
                 $this->add_control(
-                        '_btn_bg_color', [
-                                'label' => __( 'Button Background', 'ultraaddons' ),
-                                'type'      => Controls_Manager::COLOR,
-                                'selectors' => [
-                                        '{{WRAPPER}} .ua-form .wpforms-submit' => 'background-color: {{VALUE}};',
-                                ],
-                        ]
+                    'validation_error_text_color',
+                    [
+                        'label' => __('Error Text Color', 'ultraaddons'),
+                        'type' => Controls_Manager::COLOR,
+                        'default' => '',
+                        'selectors' => [
+                            '{{WRAPPER}} .ua-ninja-form .nf-error .nf-error-msg' => 'color: {{VALUE}}',
+                        ],
+                    ]
                 );
+            
                 $this->add_control(
-                        '_btn_text_color', [
-                                'label' => __( 'Button Text Color', 'ultraaddons' ),
-                                'type'      => Controls_Manager::COLOR,
-                                'selectors' => [
-                                                '{{WRAPPER}} .ua-form .wpforms-submit' => 'color: {{VALUE}};',
-                                ],
-                        ]
+                    'validation_error_field_input_border_color',
+                    [
+                        'label' => __('Error Border Color', 'ultraaddons'),
+                        'type' => Controls_Manager::COLOR,
+                        'default' => '',
+                        'selectors' => [
+                            '{{WRAPPER}} .ua-ninja-form .nf-error .ninja-forms-field, .ua-ninja-form .nf-error.field-wrap .nf-field-element:after' => 'border-color: {{VALUE}} !important',
+                            '{{WRAPPER}} .ua-ninja-form .nf-error.field-wrap .nf-field-element:after' => 'background: {{VALUE}} !important',
+                        ],
+                    ]
                 );
-        
-                $this->add_group_control(
-                        Group_Control_Typography::get_type(),
-                        [
-                                        'name' => 'btn_typography',
-                                        'label' => 'Button Typography',
-                                        'selector' => '{{WRAPPER}} .ua-form .wpforms-submit',
-
-                        ]
-                );
-                $this->add_responsive_control(
-                        '_btn_padding',
-                        [
-                                'label'       => esc_html__( 'Button Padding', 'ultraaddons' ),
-                                'type'        => Controls_Manager::DIMENSIONS,
-                                'size_units'  => [ '%', 'px' ],
-                                'placeholder' => [
-                                        'top'    => '',
-                                        'right'  => '',
-                                        'bottom' => '',
-                                        'left'   => '',
-                                ],
-                                'selectors'   => [
-                                        '{{WRAPPER}} .ua-form .wpforms-submit' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                                ],
-                        ]
-                        );
-                $this->add_responsive_control(
-                        '_btn_radius',
-                        [
-                                'label'       => esc_html__( 'Button Radius', 'ultraaddons' ),
-                                'type'        => Controls_Manager::DIMENSIONS,
-                                'size_units'  => [ '%', 'px' ],
-                                'placeholder' => [
-                                        'top'    => '',
-                                        'right'  => '',
-                                        'bottom' => '',
-                                        'left'   => '',
-                                ],
-                                'separator' =>'after',
-                                'selectors'   => [
-                                        '{{WRAPPER}} .ua-form .wpforms-submit' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                                ],
-                        ]
-                        );
-
-                $this->end_controls_tab();
-
-                //Hover Tab
-                $this->start_controls_tab(
-                        'btn_hover_tab',
-                        [
-                                'label' => esc_html__( 'Hover', 'ultraaddonse' ),
-                        ]
-                );
-                $this->add_control(
-                        '_btn_bg_hover_bg', [
-                                'label' => __( 'Hover Background', 'ultraaddons' ),
-                                'type'      => Controls_Manager::COLOR,
-                                'selectors' => [
-                                        '{{WRAPPER}} .ua-form .wpforms-submit:hover' => 'background: {{VALUE}};',
-                                ],
-                        ]
-                );
-                $this->add_control(
-                        '_btn_text_hover_color', [
-                                'label' => __( 'Button Text Color', 'ultraaddons' ),
-                                'type'      => Controls_Manager::COLOR,
-                                'selectors' => [
-                                        '{{WRAPPER}} .ua-form .wpforms-submit:hover' => 'color: {{VALUE}};',
-                                ],
-                                'default' =>'#333'
-                        ]
-                );
-                $this->end_controls_tab();
-                $this->end_controls_tabs();
-
+            
                 $this->end_controls_section();
         }
+        protected function placeholder_style(){
+                $this->start_controls_section(
+                        'placeholder_section',
+                        [
+                                'label' =>  __( 'Placeholder', 'ultraaddons' ) ,
+                                'tab' => Controls_Manager::TAB_STYLE,
+                        ]
+                );
+                $this->add_control(
+                        'placeholder_color',
+                                [
+                                'label' => esc_html__('Placeholder Color', 'ultraaddons'),
+                                'type' => Controls_Manager::COLOR,
+                                'selectors' => [
+                                        '{{WRAPPER}} .ua-ninja-form input::placeholder, .ua-ninja-form textarea::placeholder, .ua-ninja-form select::placeholder' => 'color: {{VALUE}};',
+                                ],
+                                ]
+                        );
+                        $this->add_group_control(
+                                Group_Control_Typography::get_type(),
+                                [
+                                    'name'                  => 'placeholder_typography',
+                                    'label'                 => __('Typography', 'ultraaddons'),
+                                    'selector'              => '{{WRAPPER}} .ua-ninja-form input::placeholder, .ua-ninja-form textarea::placeholder, .ua-ninja-form select::placeholder',
+                                ]
+                            );
+               
+         $this->end_controls_section();
+        }
+        protected function container_style(){
 
+                $this->start_controls_section(
+                        'container_style',
+                        [
+                            'label'                 => __('Form Container', 'ultraaddons'),
+                            'tab'                   => Controls_Manager::TAB_STYLE,
+                        ]
+                    );
+                
+                    $this->add_control(
+                        'ua_contact_form_background',
+                        [
+                            'label' => esc_html__('Form Background Color', 'ultraaddons'),
+                            'type' => Controls_Manager::COLOR,
+                            'selectors' => [
+                                '{{WRAPPER}} .ua-ninja-form' => 'background: {{VALUE}};',
+                            ],
+                        ]
+                    );
+                
+                    $this->add_responsive_control(
+                        'ua_contact_form_max_width',
+                        [
+                            'label' => esc_html__('Form Max Width', 'ultraaddons'),
+                            'type' => Controls_Manager::SLIDER,
+                            'size_units' => ['px', 'em', '%'],
+                            'range' => [
+                                'px' => [
+                                    'min' => 10,
+                                    'max' => 1500,
+                                ],
+                                'em' => [
+                                    'min' => 1,
+                                    'max' => 80,
+                                ],
+                            ],
+                            'selectors' => [
+                                '{{WRAPPER}} .ua-ninja-form' => 'max-width: {{SIZE}}{{UNIT}};',
+                            ],
+                        ]
+                    );
+                
+                
+                    $this->add_responsive_control(
+                        'ua_contact_form_margin',
+                        [
+                            'label' => esc_html__('Form Margin', 'ultraaddons'),
+                            'type' => Controls_Manager::DIMENSIONS,
+                            'size_units' => ['px', 'em', '%'],
+                            'selectors' => [
+                                '{{WRAPPER}} .ua-ninja-form' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                            ],
+                        ]
+                    );
+                
+                    $this->add_responsive_control(
+                        'ua_contact_form_padding',
+                        [
+                            'label' => esc_html__('Form Padding', 'ultraaddons'),
+                            'type' => Controls_Manager::DIMENSIONS,
+                            'size_units' => ['px', 'em', '%'],
+                            'selectors' => [
+                                '{{WRAPPER}} .ua-ninja-form' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                            ],
+                        ]
+                    );
+                
+                
+                    $this->add_control(
+                        'ua_contact_form_border_radius',
+                        [
+                            'label' => esc_html__('Border Radius', 'ultraaddons'),
+                            'type' => Controls_Manager::DIMENSIONS,
+                            'separator' => 'before',
+                            'size_units' => ['px'],
+                            'selectors' => [
+                                '{{WRAPPER}} .ua-ninja-form' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                            ],
+                        ]
+                    );
+                
+                
+                    $this->add_group_control(
+                        Group_Control_Border::get_type(),
+                        [
+                            'name' => 'ua_contact_form_border',
+                            'selector' => '{{WRAPPER}} .ua-ninja-form',
+                        ]
+                    );
+                
+                
+                    $this->add_group_control(
+                        Group_Control_Box_Shadow::get_type(),
+                        [
+                            'name' => 'ua_contact_form_box_shadow',
+                            'selector' => '{{WRAPPER}} .ua-ninja-form',
+                        ]
+                    );
+                
+                    $this->end_controls_section();
+                }
+                protected function button_style(){
+                
+                        $this->start_controls_section(
+                                'button_style',
+                                [
+                                        'label' =>  __( 'Submit Button', 'ultraaddons' ) ,
+                                        'tab' => Controls_Manager::TAB_STYLE,
+                                ]
+                        );
+                    
+                        $this->start_controls_tabs(
+                    'style_tabs'
+                    );
+                        //Normal Tab
+                        $this->start_controls_tab(
+                                'btn_normal_tab',
+                                [
+                                        'label' => esc_html__( 'Normal', 'ultraaddons' ),
+                                ]
+                        );
+                        $this->add_control(
+                                '_btn_bg_color', [
+                                        'label' => __( 'Button Background', 'ultraaddons' ),
+                                        'type'      => Controls_Manager::COLOR,
+                                        'selectors' => [
+                                                '{{WRAPPER}} .ua-ninja-form .submit-container input[type="button"]' => 'background-color: {{VALUE}};',
+                                        ],
+                                ]
+                        );
+                        $this->add_control(
+                                '_btn_text_color', [
+                                        'label' => __( 'Button Text Color', 'ultraaddons' ),
+                                        'type'      => Controls_Manager::COLOR,
+                                        'selectors' => [
+                                                        '{{WRAPPER}} .ua-ninja-form .submit-container input[type="button"]' => 'color: {{VALUE}};',
+                                        ],
+                                ]
+                        );
+                    
+                        $this->add_group_control(
+                                Group_Control_Typography::get_type(),
+                                [
+                                                'name' => 'btn_typography',
+                                                'label' => 'Button Typography',
+                                                'selector' => '{{WRAPPER}} .ua-ninja-form .submit-container input[type="button"]',
+                    
+                                ]
+                        );
+                        $this->add_responsive_control(
+                                '_btn_padding',
+                                [
+                                        'label'       => esc_html__( 'Button Padding', 'ultraaddons' ),
+                                        'type'        => Controls_Manager::DIMENSIONS,
+                                        'size_units'  => [ '%', 'px' ],
+                                        'placeholder' => [
+                                                'top'    => '',
+                                                'right'  => '',
+                                                'bottom' => '',
+                                                'left'   => '',
+                                        ],
+                                        'selectors'   => [
+                                                '{{WRAPPER}} .ua-ninja-form .submit-container input[type="button"]' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                        ],
+                                ]
+                                );
+                        $this->add_responsive_control(
+                                '_btn_radius',
+                                [
+                                        'label'       => esc_html__( 'Button Radius', 'ultraaddons' ),
+                                        'type'        => Controls_Manager::DIMENSIONS,
+                                        'size_units'  => [ '%', 'px' ],
+                                        'placeholder' => [
+                                                'top'    => '',
+                                                'right'  => '',
+                                                'bottom' => '',
+                                                'left'   => '',
+                                        ],
+                                        'separator' =>'after',
+                                        'selectors'   => [
+                                                '{{WRAPPER}} .ua-ninja-form .submit-container input[type="button"]' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                        ],
+                                ]
+                                );
+                    
+                        $this->end_controls_tab();
+                    
+                        //Hover Tab
+                        $this->start_controls_tab(
+                                'btn_hover_tab',
+                                [
+                                        'label' => esc_html__( 'Hover', 'ultraaddonse' ),
+                                ]
+                        );
+                        $this->add_control(
+                                '_btn_bg_hover_bg', [
+                                        'label' => __( 'Hover Background', 'ultraaddons' ),
+                                        'type'      => Controls_Manager::COLOR,
+                                        'selectors' => [
+                                                '{{WRAPPER}} .ua-ninja-form .submit-container input[type="button"]:hover' => 'background: {{VALUE}};',
+                                        ],
+                                ]
+                        );
+                        $this->add_control(
+                                '_btn_text_hover_color', [
+                                        'label' => __( 'Button Text Color', 'ultraaddons' ),
+                                        'type'      => Controls_Manager::COLOR,
+                                        'selectors' => [
+                                                '{{WRAPPER}} .ua-ninja-form .submit-container input[type="button"]:hover' => 'color: {{VALUE}};',
+                                        ],
+                                        'default' =>'#333'
+                                ]
+                        );
+                        $this->end_controls_tab();
+                        $this->end_controls_tabs();
+                    
+                        $this->end_controls_section();
+                    }
         private function add_basic_switcher_control( $key, $title ) {
                 $this->add_control(
                         $key,
@@ -554,18 +700,16 @@ class Ninja_Forms extends Base{
                 if (!class_exists('Ninja_Forms')) {
                         return;
                     }
-
                 $settings    = $this->get_settings_for_display();
+                $form_id     =  $settings['form_id'];
 
-               $form_id     =  $settings['form_id'];
-                $btn_block   = ($settings['btn_block'] =='yes' ) ? 'btn_block' : '';
-
-        $this->add_render_attribute(
-                'ua_ninjaforms_class',
-                [
-                        'class' => 'ua-form ninjaforms',
+        $this->add_render_attribute('ua_ninjaforms_class',[
+                        'class' => 'ua-ninja-form',
                 ]
-	        );
+	);
+        ?>
+        <?php
+        if(!empty( $form_id )):
         ?>
         <div <?php echo $this->get_render_attribute_string( 'ua_ninjaforms_class' );?>>
             <?php
@@ -574,6 +718,9 @@ class Ninja_Forms extends Base{
                 );
             ?>
         </div>
-        <?php
+        <?php 
+        else:
+         echo "<div class='ua-alert'>" . esc_html__( "Please select Ninja Forms.", 'ultraaddons' ) . "</div>";
+        endif;
         }
 }

@@ -637,10 +637,12 @@ class Formidable_Form extends Base{
                 $minimize    = isset( $settings['minimize'] ) && 'yes' === $settings['minimize'];
                 $btn_block    = ($settings['btn_block'] =='yes' ) ? 'btn_block' : '';
 
+                $alert_class = (!empty($form_id)) ? '' : 'ua-alert';
+
                 $this->add_render_attribute(
 			'ua_form_class',
 			[
-				'class' => 'ua-form formidable ' . $btn_block,
+				'class' => 'ua-form formidable ' . $btn_block . $alert_class,
 			]
 		);
         ?>
