@@ -332,15 +332,15 @@ class WP_Forms extends Base{
                                 'options' => [
                                         'left' => [
                                                 'title' => __( 'Left', 'ultraaddons' ),
-                                                'icon' => 'fa fa-align-left',
+                                                'icon' => 'eicon-text-align-left',
                                         ],
                                         'center' => [
                                                 'title' => __( 'Center', 'ultraaddons' ),
-                                                'icon' => 'fa fa-align-center',
+                                                'icon' => 'eicon-text-align-center',
                                         ],
                                         'right' => [
                                                 'title' => __( 'Right', 'ultraaddons' ),
-                                                'icon' => 'fa fa-align-right',
+                                                'icon' => 'eicon-text-align-righ',
                                         ],
                                 ],
                                 'default' => 'left',

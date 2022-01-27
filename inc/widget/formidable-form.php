@@ -190,15 +190,15 @@ class Formidable_Form extends Base{
                                 'options' => [
                                         'left' => [
                                                 'title' => __( 'Left', 'ultraaddons' ),
-                                                'icon' => 'fa fa-align-left',
+                                                'icon' => 'eicon-text-align-left',
                                         ],
                                         'center' => [
                                                 'title' => __( 'Center', 'ultraaddons' ),
-                                                'icon' => 'fa fa-align-center',
+                                                'icon' => 'eicon-text-align-center',
                                         ],
                                         'right' => [
                                                 'title' => __( 'Right', 'ultraaddons' ),
-                                                'icon' => 'fa fa-align-right',
+                                                'icon' => 'eicon-text-align-righ',
                                         ],
                                 ],
                                 'default' => 'left',
@@ -207,7 +207,7 @@ class Formidable_Form extends Base{
                                 ],
                                
                             ]
-                    );
+                );
                 $this->add_group_control(
                         Group_Control_Typography::get_type(),
                         [
