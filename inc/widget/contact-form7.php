@@ -808,8 +808,6 @@ class Contact_Form7 extends Base{
                 $this->register_content_controls();
                 
                 $this->register_general_style_controls();
-
-                $this->container_style();
                 
                 $this->register_input_style_controls();
 
@@ -818,6 +816,8 @@ class Contact_Form7 extends Base{
                 $this->register_button_style_controls();
                 
                 $this->register_other_style_controls();
+
+                $this->container_style();
 
         }
 
@@ -856,12 +856,14 @@ class Contact_Form7 extends Base{
             ?>
             </p>
                 <?php
-                if ( ! empty( $settings['form_id'] ) ) {
+                if ( ! empty( $settings['form_id'] ) ):
                         echo ultraaddons_do_shortcode( 'contact-form-7', [
                             'id' => $settings['form_id'],
                             'html_class' => 'ultraaddons-cf7-form ' . sanitize_html_class( $settings['html_class'] . $settings['_cf7_form_style'] ),
                         ] );
-                }
+                else:
+                 echo "<div class='ua-alert'>" . esc_html__( "Please select Contact form 7.", 'ultraaddons' ) . "</div>";
+                endif;
                 ?>
         </div>
         <?php

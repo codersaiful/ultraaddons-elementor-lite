@@ -34,6 +34,7 @@ class WP_Forms extends Base{
                         $this->placeholder_style();
                         $this->button_style();
                         $this->error_style();
+                        $this->container_style();
                 }
         }
 
@@ -217,106 +218,6 @@ class WP_Forms extends Base{
                 $this->end_controls_section();
         }
         protected function general_style(){
-                $this->start_controls_section(
-                        'container_style',
-                        [
-                            'label'                 => __('Form Container', 'ultraaddons'),
-                            'tab'                   => Controls_Manager::TAB_STYLE,
-                        ]
-                    );
-                
-                    $this->add_control(
-                        'ua_contact_form_background',
-                        [
-                            'label' => esc_html__('Form Background Color', 'ultraaddons'),
-                            'type' => Controls_Manager::COLOR,
-                            'selectors' => [
-                                '{{WRAPPER}} .ua-form.wpform' => 'background: {{VALUE}};',
-                            ],
-                        ]
-                    );
-                
-                    $this->add_responsive_control(
-                        'ua_contact_form_max_width',
-                        [
-                            'label' => esc_html__('Form Max Width', 'ultraaddons'),
-                            'type' => Controls_Manager::SLIDER,
-                            'size_units' => ['px', 'em', '%'],
-                            'range' => [
-                                'px' => [
-                                    'min' => 10,
-                                    'max' => 1500,
-                                ],
-                                'em' => [
-                                    'min' => 1,
-                                    'max' => 80,
-                                ],
-                            ],
-                            'selectors' => [
-                                '{{WRAPPER}} .ua-form.wpform' => 'max-width: {{SIZE}}{{UNIT}};',
-                            ],
-                        ]
-                    );
-                
-                
-                    $this->add_responsive_control(
-                        'ua_contact_form_margin',
-                        [
-                            'label' => esc_html__('Form Margin', 'ultraaddons'),
-                            'type' => Controls_Manager::DIMENSIONS,
-                            'size_units' => ['px', 'em', '%'],
-                            'selectors' => [
-                                '{{WRAPPER}} .ua-form.wpform' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                            ],
-                        ]
-                    );
-                
-                    $this->add_responsive_control(
-                        'ua_contact_form_padding',
-                        [
-                            'label' => esc_html__('Form Padding', 'ultraaddons'),
-                            'type' => Controls_Manager::DIMENSIONS,
-                            'size_units' => ['px', 'em', '%'],
-                            'selectors' => [
-                                '{{WRAPPER}} .ua-form.wpform' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                            ],
-                        ]
-                    );
-                
-                
-                    $this->add_control(
-                        'ua_contact_form_border_radius',
-                        [
-                            'label' => esc_html__('Border Radius', 'ultraaddons'),
-                            'type' => Controls_Manager::DIMENSIONS,
-                            'separator' => 'before',
-                            'size_units' => ['px'],
-                            'selectors' => [
-                                '{{WRAPPER}} .ua-form.wpform' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                            ],
-                        ]
-                    );
-                
-                
-                    $this->add_group_control(
-                        Group_Control_Border::get_type(),
-                        [
-                            'name' => 'ua_contact_form_border',
-                            'selector' => '{{WRAPPER}} .ua-form.wpform',
-                        ]
-                    );
-                
-                
-                    $this->add_group_control(
-                        Group_Control_Box_Shadow::get_type(),
-                        [
-                            'name' => 'ua_contact_form_box_shadow',
-                            'selector' => '{{WRAPPER}} .ua-form.wpform',
-                        ]
-                    );
-                
-                    $this->end_controls_section();
-                
                 $this->start_controls_section(
                         'from_style',
                         [
@@ -787,6 +688,109 @@ class WP_Forms extends Base{
         }
 
         //Placeholder Style Tabs
+        protected function container_style(){
+
+                $this->start_controls_section(
+                        'container_style',
+                        [
+                            'label'                 => __('Form Container', 'ultraaddons'),
+                            'tab'                   => Controls_Manager::TAB_STYLE,
+                        ]
+                    );
+                
+                    $this->add_control(
+                        'ua_contact_form_background',
+                        [
+                            'label' => esc_html__('Form Background Color', 'ultraaddons'),
+                            'type' => Controls_Manager::COLOR,
+                            'selectors' => [
+                                '{{WRAPPER}} .ua-form.wpform' => 'background: {{VALUE}};',
+                            ],
+                        ]
+                    );
+                
+                    $this->add_responsive_control(
+                        'ua_contact_form_max_width',
+                        [
+                            'label' => esc_html__('Form Max Width', 'ultraaddons'),
+                            'type' => Controls_Manager::SLIDER,
+                            'size_units' => ['px', 'em', '%'],
+                            'range' => [
+                                'px' => [
+                                    'min' => 10,
+                                    'max' => 1500,
+                                ],
+                                'em' => [
+                                    'min' => 1,
+                                    'max' => 80,
+                                ],
+                            ],
+                            'selectors' => [
+                                '{{WRAPPER}} .ua-form.wpform' => 'max-width: {{SIZE}}{{UNIT}};',
+                            ],
+                        ]
+                    );
+                
+                
+                    $this->add_responsive_control(
+                        'ua_contact_form_margin',
+                        [
+                            'label' => esc_html__('Form Margin', 'ultraaddons'),
+                            'type' => Controls_Manager::DIMENSIONS,
+                            'size_units' => ['px', 'em', '%'],
+                            'selectors' => [
+                                '{{WRAPPER}} .ua-form.wpform' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                            ],
+                        ]
+                    );
+                
+                    $this->add_responsive_control(
+                        'ua_contact_form_padding',
+                        [
+                            'label' => esc_html__('Form Padding', 'ultraaddons'),
+                            'type' => Controls_Manager::DIMENSIONS,
+                            'size_units' => ['px', 'em', '%'],
+                            'selectors' => [
+                                '{{WRAPPER}} .ua-form.wpform' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                            ],
+                        ]
+                    );
+                
+                
+                    $this->add_control(
+                        'ua_contact_form_border_radius',
+                        [
+                            'label' => esc_html__('Border Radius', 'ultraaddons'),
+                            'type' => Controls_Manager::DIMENSIONS,
+                            'separator' => 'before',
+                            'size_units' => ['px'],
+                            'selectors' => [
+                                '{{WRAPPER}} .ua-form.wpform' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                            ],
+                        ]
+                    );
+                
+                
+                    $this->add_group_control(
+                        Group_Control_Border::get_type(),
+                        [
+                            'name' => 'ua_contact_form_border',
+                            'selector' => '{{WRAPPER}} .ua-form.wpform',
+                        ]
+                    );
+                
+                
+                    $this->add_group_control(
+                        Group_Control_Box_Shadow::get_type(),
+                        [
+                            'name' => 'ua_contact_form_box_shadow',
+                            'selector' => '{{WRAPPER}} .ua-form.wpform',
+                        ]
+                    );
+                
+                    $this->end_controls_section();
+        }
+        
         protected function placeholder_style(){
                 $this->start_controls_section(
                         'placeholder_section',
@@ -841,6 +845,9 @@ class WP_Forms extends Base{
                 ['class' => 'ua-form wpform']
         );
         ?>
+        <?php
+        if(!empty( $form_id )):
+        ?>
         <div <?php echo $this->get_render_attribute_string( 'ua_wpform_class' );?>>
             <?php 
                 if('yes' === $settings['title']){
@@ -862,6 +869,12 @@ class WP_Forms extends Base{
                 );
             ?>
         </div>
+
+        <?php 
+        else:
+         echo "<div class='ua-alert'>" . esc_html__( "Please select WPForms.", 'ultraaddons' ) . "</div>";
+        endif;
+        ?>
         <?php
         }
 }

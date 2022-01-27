@@ -30,10 +30,10 @@ class We_Forms extends Base{
                 $this->register_content_controls();
                 if( class_exists( 'WeForms' ) ){
                         $this->general_style();
-                        $this->container_style();
                         $this->form_label_style();
                         $this->input_style();
                         $this->button_style();
+                        $this->container_style();
                 }
         }
 
@@ -717,7 +717,7 @@ class We_Forms extends Base{
         );
         ?>
         <?php 
-        if (!empty($form_id)) {
+        if (!empty($form_id)):
         ?>
         <div <?php echo $this->get_render_attribute_string( 'ua_weforms_class' );?>>
                 <?php
@@ -726,7 +726,9 @@ class We_Forms extends Base{
                 );
                 ?>
         </div>
-        <?php
-        }
+        <?php 
+        else:
+         echo "<div class='ua-alert'>" . esc_html__( "Please select weForms.", 'ultraaddons' ) . "</div>";
+        endif;
         }
 }

@@ -29,9 +29,11 @@ class Caldera_Forms extends Base{
         protected function _register_controls() {
                 $this->register_content_controls();
                 if( class_exists( 'Caldera_Forms' ) ){
-                        $this->general_style();
+                        $this->title_style();
                         $this->input_style();
+                        $this->label_style();
                         $this->button_style();
+                        $this->container_style();
                 }
         }
 
@@ -67,13 +69,115 @@ class Caldera_Forms extends Base{
 
                 $this->end_controls_section();
         }
-
-        protected function general_style(){
+        
+  protected function container_style(){
+        $this->start_controls_section(
+                'container_style',
+                [
+                    'label'                 => __('Form Container', 'ultraaddons'),
+                    'tab'                   => Controls_Manager::TAB_STYLE,
+                ]
+            );
+        
+            $this->add_control(
+                'ua_contact_form_background',
+                [
+                    'label' => esc_html__('Form Background Color', 'ultraaddons'),
+                    'type' => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .ua-form.caldera-forms' => 'background: {{VALUE}};',
+                    ],
+                ]
+            );
+        
+            $this->add_responsive_control(
+                'ua_contact_form_max_width',
+                [
+                    'label' => esc_html__('Form Max Width', 'ultraaddons'),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => ['px', 'em', '%'],
+                    'range' => [
+                        'px' => [
+                            'min' => 10,
+                            'max' => 1500,
+                        ],
+                        'em' => [
+                            'min' => 1,
+                            'max' => 80,
+                        ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .ua-form.caldera-forms' => 'max-width: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+            );
+        
+        
+            $this->add_responsive_control(
+                'ua_contact_form_margin',
+                [
+                    'label' => esc_html__('Form Margin', 'ultraaddons'),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => ['px', 'em', '%'],
+                    'selectors' => [
+                        '{{WRAPPER}} .ua-form.caldera-forms' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+        
+            $this->add_responsive_control(
+                'ua_contact_form_padding',
+                [
+                    'label' => esc_html__('Form Padding', 'ultraaddons'),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => ['px', 'em', '%'],
+                    'selectors' => [
+                        '{{WRAPPER}} .ua-form.caldera-forms' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+        
+        
+            $this->add_control(
+                'ua_contact_form_border_radius',
+                [
+                    'label' => esc_html__('Border Radius', 'ultraaddons'),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'separator' => 'before',
+                    'size_units' => ['px'],
+                    'selectors' => [
+                        '{{WRAPPER}} .ua-form.caldera-forms' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+        
+        
+            $this->add_group_control(
+                Group_Control_Border::get_type(),
+                [
+                    'name' => 'ua_contact_form_border',
+                    'selector' => '{{WRAPPER}} .ua-form.caldera-forms',
+                ]
+            );
+        
+        
+            $this->add_group_control(
+                Group_Control_Box_Shadow::get_type(),
+                [
+                    'name' => 'ua_contact_form_box_shadow',
+                    'selector' => '{{WRAPPER}} .ua-form.caldera-forms',
+                ]
+            );
+        
+       
+        $this->end_controls_section();
+    }
+        protected function title_style(){
                 
                 $this->start_controls_section(
                         'from_style',
                         [
-                                'label' =>  __( 'General Style', 'ultraaddons' ) ,
+                                'label' =>  __( 'Title & Description', 'ultraaddons' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
@@ -193,6 +297,17 @@ class Caldera_Forms extends Base{
                                 'separator'=>'after',
 			]
 		);
+               
+                $this->end_controls_section();
+        }
+        protected function label_style(){
+                $this->start_controls_section(
+                        'label_style',
+                        [
+                                'label' =>  __( 'Label', 'ultraaddons' ) ,
+                                'tab' => Controls_Manager::TAB_STYLE,
+                        ]
+                );
                 $this->add_group_control(
                         Group_Control_Typography::get_type(),
                         [
@@ -217,33 +332,31 @@ class Caldera_Forms extends Base{
                         ]
                 );
             $this->add_responsive_control(
-			'label_margin',
+		'label_margin',
 			[
-				'label'       => esc_html__( 'Label Margin', 'ultraaddons' ),
-				'type'        => Controls_Manager::DIMENSIONS,
-				'size_units'  => [ 'px', '%' ],
-				'placeholder' => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'selectors'   => [
-					'{{WRAPPER}} .ua-form.caldera-forms .caldera-grid label' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
+                        'label'       => esc_html__( 'Label Margin', 'ultraaddons' ),
+                        'type'        => Controls_Manager::DIMENSIONS,
+                        'size_units'  => [ 'px', '%' ],
+                        'placeholder' => [
+                                'top'    => '',
+                                'right'  => '',
+                                'bottom' => '',
+                                'left'   => '',
+                        ],
+                        'selectors'   => [
+                                '{{WRAPPER}} .ua-form.caldera-forms .caldera-grid label' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
                 'separator'=>'after',
-			]
+		]
 		);
-               
-
-
                 $this->end_controls_section();
         }
+
         protected function input_style(){
                 $this->start_controls_section(
                         'input_style',
                         [
-                                'label' =>  __( 'Input Style', 'ultraaddons' ) ,
+                                'label' =>  __( 'Input & Textarea', 'ultraaddons' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
@@ -343,7 +456,7 @@ class Caldera_Forms extends Base{
                 $this->start_controls_section(
                         'button_style',
                         [
-                                'label' =>  __( 'Button Style', 'ultraaddons' ) ,
+                                'label' =>  __( 'Submit Button', 'ultraaddons' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
@@ -367,6 +480,13 @@ class Caldera_Forms extends Base{
                                 ],
                         ]
                 );
+                $this->add_group_control(
+                        Group_Control_Border::get_type(),
+                        [
+                            'name' => 'ua_btn_border',
+                            'selector' => '{{WRAPPER}} .ua-form.caldera-forms .btn',
+                        ]
+                    );
                 $this->add_control(
                         '_btn_text_color', [
                                 'label' => __( 'Button Text Color', 'ultraaddons' ),
@@ -485,6 +605,9 @@ class Caldera_Forms extends Base{
                 ['class' => 'ua-form caldera-forms' ]
         );
         ?>
+        <?php 
+        if(!empty($form_id)):
+        ?>
         <div <?php echo $this->get_render_attribute_string( 'ua_caldera_forms_class' );?>>
             <?php
                 echo do_shortcode(
@@ -492,6 +615,11 @@ class Caldera_Forms extends Base{
                 );
             ?>
         </div>
+        <?php
+         else:
+                echo "<div class='ua-alert'>" . esc_html__( "Please select Caldera Forms.", 'ultraaddons' ) . "</div>";
+               endif;
+        ?>
         <?php
         if(Plugin::$instance->editor->is_edit_mode() ){
             echo '<style>
