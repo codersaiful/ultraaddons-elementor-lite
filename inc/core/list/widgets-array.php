@@ -629,7 +629,7 @@ $widgetsArray = [
         'is_pro'   => false,
         'icon'      => 'ua-icon-wpforms',
         'cat'       => [
-            __( 'Basic', 'ultraaddons' ),
+            __( 'Forms', 'ultraaddons' ),
         ],
     ],
     'Ninja_Forms'=> [
@@ -637,7 +637,7 @@ $widgetsArray = [
         'is_pro'   => false,
         'icon'      => 'ua-icon-ninja',
         'cat'       => [
-            __( 'Basic', 'ultraaddons' ),
+            __( 'Forms', 'ultraaddons' ),
         ],
     ],
     'Caldera_Forms'=> [
@@ -645,7 +645,7 @@ $widgetsArray = [
         'is_pro'   => false,
         'icon'      => 'ua-icon-caldera',
         'cat'       => [
-            __( 'Basic', 'ultraaddons' ),
+            __( 'Forms', 'ultraaddons' ),
         ],
     ],
     'We_Forms'=> [
@@ -653,7 +653,7 @@ $widgetsArray = [
         'is_pro'   => false,
         'icon'      => 'ua-icon-weforms',
         'cat'       => [
-            __( 'Basic', 'ultraaddons' ),
+            __( 'Forms', 'ultraaddons' ),
         ],
     ],
 
