@@ -60,7 +60,7 @@ class Caldera_Forms extends Base{
                         $this->add_control(
                                 'form_error',[
                                     'type'            => Controls_Manager::RAW_HTML,
-                                    'raw'             => sprintf( __( '<strong>Please install or activate WPForms.</strong><br>Go to the <a href="%s" target="_blank" style="color:#93003c">Plugin page</a> to actions.', 'ultraaddons' ), admin_url( 'plugin-install.php?s=wpforms&tab=search&type=term' ) ),
+                                    'raw'             => sprintf( __( '<strong>Please install or activate WPForms.</strong><br>Go to the <a href="%s" target="_blank" style="color:#93003c">Plugin page</a> to actions.', 'ultraaddons' ), admin_url( 'plugin-install.php?s=caldera%20forms&tab=search&type=term' ) ),
                                     'separator'       => 'after',
                                     'content_classes' => 'elementor-panel-alert elementor-panel-alert-warning',
                                 ]
