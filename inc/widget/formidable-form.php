@@ -6,6 +6,7 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+use Elementor\Group_Control_Box_Shadow;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -27,9 +28,12 @@ class Formidable_Form extends Base{
         protected function _register_controls() {
                 $this->register_content_controls();
                 if( class_exists( 'FrmForm' ) ){
-                        $this->general_style();
+                        $this->container_style();
+                        $this->title_style();
+                        $this->label_style();
                         $this->input_style();
                         $this->button_style();
+                        $this->placeholder_style();
                 }
         }
 
@@ -67,16 +71,144 @@ class Formidable_Form extends Base{
 
                 $this->end_controls_section();
         }
-
-        protected function general_style(){
+        protected function container_style(){
+                $this->start_controls_section(
+                        'container_style',
+                        [
+                            'label'                 => __('Form Container', 'ultraaddons'),
+                            'tab'                   => Controls_Manager::TAB_STYLE,
+                        ]
+                    );
+                
+                    $this->add_control(
+                        'ua_contact_form_background',
+                        [
+                            'label' => esc_html__('Form Background Color', 'ultraaddons'),
+                            'type' => Controls_Manager::COLOR,
+                            'selectors' => [
+                                '{{WRAPPER}} .ua-form.formidable' => 'background: {{VALUE}};',
+                            ],
+                        ]
+                    );
+                
+                    $this->add_responsive_control(
+                        'ua_contact_form_max_width',
+                        [
+                            'label' => esc_html__('Form Max Width', 'ultraaddons'),
+                            'type' => Controls_Manager::SLIDER,
+                            'size_units' => ['px', 'em', '%'],
+                            'range' => [
+                                'px' => [
+                                    'min' => 10,
+                                    'max' => 1500,
+                                ],
+                                'em' => [
+                                    'min' => 1,
+                                    'max' => 80,
+                                ],
+                            ],
+                            'selectors' => [
+                                '{{WRAPPER}} .ua-form.formidable' => 'max-width: {{SIZE}}{{UNIT}};',
+                            ],
+                        ]
+                    );
+                
+                
+                    $this->add_responsive_control(
+                        'ua_contact_form_margin',
+                        [
+                            'label' => esc_html__('Form Margin', 'ultraaddons'),
+                            'type' => Controls_Manager::DIMENSIONS,
+                            'size_units' => ['px', 'em', '%'],
+                            'selectors' => [
+                                '{{WRAPPER}} .ua-form.formidable' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                            ],
+                        ]
+                    );
+                
+                    $this->add_responsive_control(
+                        'ua_contact_form_padding',
+                        [
+                            'label' => esc_html__('Form Padding', 'ultraaddons'),
+                            'type' => Controls_Manager::DIMENSIONS,
+                            'size_units' => ['px', 'em', '%'],
+                            'selectors' => [
+                                '{{WRAPPER}} .ua-form.formidable' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                            ],
+                        ]
+                    );
+                
+                
+                    $this->add_control(
+                        'ua_contact_form_border_radius',
+                        [
+                            'label' => esc_html__('Border Radius', 'ultraaddons'),
+                            'type' => Controls_Manager::DIMENSIONS,
+                            'separator' => 'before',
+                            'size_units' => ['px'],
+                            'selectors' => [
+                                '{{WRAPPER}} .ua-form.formidable' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                            ],
+                        ]
+                    );
+                
+                
+                    $this->add_group_control(
+                        Group_Control_Border::get_type(),
+                        [
+                            'name' => 'ua_contact_form_border',
+                            'selector' => '{{WRAPPER}} .ua-form.formidable',
+                        ]
+                    );
+                
+                
+                    $this->add_group_control(
+                        Group_Control_Box_Shadow::get_type(),
+                        [
+                            'name' => 'ua_contact_form_box_shadow',
+                            'selector' => '{{WRAPPER}} .ua-form.formidable',
+                        ]
+                    );
+                
+               
+                $this->end_controls_section();
+        }
+        protected function title_style(){
                 
                 $this->start_controls_section(
                         'from_style',
                         [
-                                'label' =>  __( 'General Style', 'ultraaddons' ) ,
+                                'label' =>  __( 'Title & Description', 'ultraaddons' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
+                $this->add_control(
+                        'title_text_align',
+                            [
+                                'label'         => esc_html__( 'Align', 'ultraaddons' ),
+                                'type'          => Controls_Manager::CHOOSE,
+                                'options' => [
+                                        'left' => [
+                                                'title' => __( 'Left', 'ultraaddons' ),
+                                                'icon' => 'eicon-text-align-left',
+                                        ],
+                                        'center' => [
+                                                'title' => __( 'Center', 'ultraaddons' ),
+                                                'icon' => 'eicon-text-align-center',
+                                        ],
+                                        'right' => [
+                                                'title' => __( 'Right', 'ultraaddons' ),
+                                                'icon' => 'eicon-text-align-right',
+                                        ],
+                                ],
+                                'default' => 'left',
+                                'selectors' => [
+                                        '{{WRAPPER}} .ua-form .frm_form_title, .ua-form .frm_description p' => 'text-align:{{VALUE}} !important;',
+                                ],
+                               
+                            ]
+                );
+                
                 $this->add_group_control(
                         Group_Control_Typography::get_type(),
                         [
@@ -86,7 +218,6 @@ class Formidable_Form extends Base{
                                 'global' => [
                                         'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
                                 ],
-        
                         ]
                 );
                 $this->add_control(
@@ -94,7 +225,6 @@ class Formidable_Form extends Base{
                         [
                                 'label' => __( 'Title Color', 'ultraaddons' ),
                                 'type' => Controls_Manager::COLOR,
-                                'default' => '#333',
                                 'selectors' => [
                                         '{{WRAPPER}} .ua-form .frm_form_title' => 'color: {{VALUE}};',
                                 ],
@@ -136,7 +266,6 @@ class Formidable_Form extends Base{
                         [
                                 'label' => __( 'Deccription Color', 'ultraaddons' ),
                                 'type' => Controls_Manager::COLOR,
-                                'default' => '#333',
                                 'selectors' => [
                                         '{{WRAPPER}} .ua-form .frm_description p' => 'color: {{VALUE}};',
                                 ],
@@ -160,6 +289,19 @@ class Formidable_Form extends Base{
                                 'separator'=>'after',
 			]
 		);
+               
+
+                $this->end_controls_section();
+        }
+        protected function label_style(){
+                
+                $this->start_controls_section(
+                        'label_style',
+                        [
+                                'label' =>  __( 'Label & Sub Label', 'ultraaddons' ) ,
+                                'tab' => Controls_Manager::TAB_STYLE,
+                        ]
+                );
                 $this->add_group_control(
                         Group_Control_Typography::get_type(),
                         [
@@ -177,7 +319,6 @@ class Formidable_Form extends Base{
                         [
                                 'label' => __( 'Form Label Color', 'ultraaddons' ),
                                 'type' => Controls_Manager::COLOR,
-                                'default' => '#333',
                                 'selectors' => [
                                         '{{WRAPPER}} .ua-form .frm_fields_container label' => 'color: {{VALUE}};',
                                 ],
@@ -217,7 +358,6 @@ class Formidable_Form extends Base{
                         [
                                 'label' => __( 'Sub Label Color', 'ultraaddons' ),
                                 'type' => Controls_Manager::COLOR,
-                                'default' => '#333',
                                 'separator'=>'after',
                                 'selectors' => [
                                         '{{WRAPPER}} .ua-form .frm_description' => 'color: {{VALUE}};',
@@ -225,16 +365,14 @@ class Formidable_Form extends Base{
                                 ],
                         ]
                 );
-
-
                 $this->end_controls_section();
-        }
+        }              
         protected function input_style(){
                 
                 $this->start_controls_section(
                         'input_style',
                         [
-                                'label' =>  __( 'Input Style', 'ultraaddons' ) ,
+                                'label' =>  __( 'Input & Textarea', 'ultraaddons' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
@@ -318,11 +456,10 @@ class Formidable_Form extends Base{
                 $this->start_controls_section(
                         'button_style',
                         [
-                                'label' =>  __( 'Button Style', 'ultraaddons' ) ,
+                                'label' =>  __( 'Submit Button', 'ultraaddons' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
-            
                 $this->add_control(
 			'btn_block',
 			[
@@ -334,7 +471,6 @@ class Formidable_Form extends Base{
 				'default' => 'no',
 			]
 		);
-
                 $this->start_controls_tabs(
 			'style_tabs'
 		);
@@ -408,7 +544,6 @@ class Formidable_Form extends Base{
                                 ],
                         ]
                         );
-
                 $this->end_controls_tab();
 
                 //Hover Tab
@@ -423,7 +558,7 @@ class Formidable_Form extends Base{
                                 'label' => __( 'Hover Background', 'ultraaddons' ),
                                 'type'      => Controls_Manager::COLOR,
                                 'selectors' => [
-                                        '{{WRAPPER}} .ua-form .frm_style_formidable-style.with_frm_style .frm_submit button:hover' => 'background: {{VALUE}};',
+                                        '{{WRAPPER}} .ua-form .frm_fields_container .frm_button_submit:hover' => 'background: {{VALUE}};',
                                 ],
                         ]
                 );
@@ -432,9 +567,9 @@ class Formidable_Form extends Base{
                                 'label' => __( 'Button Text Color', 'ultraaddons' ),
                                 'type'      => Controls_Manager::COLOR,
                                 'selectors' => [
-                                        '{{WRAPPER}} .ua-form .frm_style_formidable-style.with_frm_style .frm_submit button:hover' => 'color: {{VALUE}};',
+                                        '{{WRAPPER}} .ua-form .frm_fields_container .frm_button_submit:hover' => 'color: {{VALUE}};',
                                 ],
-                                'default' =>'#fff'
+                                'default' =>'#333'
                         ]
                 );
                 $this->end_controls_tab();
@@ -442,6 +577,36 @@ class Formidable_Form extends Base{
 
                 $this->end_controls_section();
         }
+         //Placeholder Style Tabs
+         protected function placeholder_style(){
+                $this->start_controls_section(
+                        'placeholder_section',
+                        [
+                                'label' =>  __( 'Placeholder', 'ultraaddons' ) ,
+                                'tab' => Controls_Manager::TAB_STYLE,
+                        ]
+                );
+                $this->add_control(
+                        'placeholder_color',
+                                [
+                                'label' => esc_html__('Placeholder Color', 'ultraaddons'),
+                                'type' => Controls_Manager::COLOR,
+                                'selectors' => [
+                                        '{{WRAPPER}} .frm_forms input::placeholder, textarea::placeholder, select::placeholder' => 'color: {{VALUE}};',
+                                ],
+                                ]
+                        );
+                        $this->add_group_control(
+                                Group_Control_Typography::get_type(),
+                                [
+                                    'name'                  => 'placeholder_typography',
+                                    'label'                 => __('Typography', 'ultraaddons'),
+                                    'selector'              => '{{WRAPPER}} .frm_forms input::placeholder, textarea::placeholder, select::placeholder',
+                                ]
+                            );
+               
+            $this->end_controls_section();
+            }
 
         private function add_basic_switcher_control( $key, $title ) {
                 $this->add_control(
@@ -472,10 +637,12 @@ class Formidable_Form extends Base{
                 $minimize    = isset( $settings['minimize'] ) && 'yes' === $settings['minimize'];
                 $btn_block    = ($settings['btn_block'] =='yes' ) ? 'btn_block' : '';
 
+                $alert_class = (!empty($form_id)) ? '' : 'ua-alert';
+
                 $this->add_render_attribute(
 			'ua_form_class',
 			[
-				'class' => 'ua-form formidable ' . $btn_block,
+				'class' => 'ua-form formidable ' . $btn_block . $alert_class,
 			]
 		);
         ?>

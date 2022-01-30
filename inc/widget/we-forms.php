@@ -30,10 +30,10 @@ class We_Forms extends Base{
                 $this->register_content_controls();
                 if( class_exists( 'WeForms' ) ){
                         $this->general_style();
-                        $this->container_style();
                         $this->form_label_style();
                         $this->input_style();
                         $this->button_style();
+                        $this->container_style();
                 }
         }
 
@@ -75,36 +75,11 @@ class We_Forms extends Base{
                 $this->start_controls_section(
                         'from_style',
                         [
-                                'label' =>  __( 'General Style', 'ultraaddons' ) ,
+                                'label' =>  __( 'Title & Description', 'ultraaddons' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
-                $this->add_control(
-                        'align',
-                            [
-                                'label'         => esc_html__( 'Align', 'ultraaddons' ),
-                                'type'          => Controls_Manager::CHOOSE,
-                                'options' => [
-                                        'left' => [
-                                                'title' => __( 'Left', 'ultraaddons' ),
-                                                'icon' => 'fa fa-align-left',
-                                        ],
-                                        'center' => [
-                                                'title' => __( 'Center', 'ultraaddons' ),
-                                                'icon' => 'fa fa-align-center',
-                                        ],
-                                        'right' => [
-                                                'title' => __( 'Right', 'ultraaddons' ),
-                                                'icon' => 'fa fa-align-right',
-                                        ],
-                                ],
-                                'default' => 'left',
-                                'selectors' => [
-                                        '{{WRAPPER}} .ua-form .ua-wp-form-title, .ua-wpform-description' => 'text-align:{{VALUE}};',
-                                ],
-                               
-                            ]
-                );
+           
                     
                 $this->add_group_control(
                         Group_Control_Typography::get_type(),
@@ -123,30 +98,29 @@ class We_Forms extends Base{
                         [
                                 'label' => __( 'Title Color', 'ultraaddons' ),
                                 'type' => Controls_Manager::COLOR,
-                                'default' => '#333',
                                 'selectors' => [
                                         '{{WRAPPER}} .ua-form .ua-wp-form-title' => 'color: {{VALUE}};',
                                 ],
                         ]
                 );
                 $this->add_responsive_control(
-			'title_margin',
-			[
-				'label'       => esc_html__( 'Title Margin', 'ultraaddons' ),
-				'type'        => Controls_Manager::DIMENSIONS,
-				'size_units'  => [ 'px', '%' ],
-				'placeholder' => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'selectors'   => [
-					'{{WRAPPER}} .ua-form .ua-wp-form-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-                                'separator'=>'after',
-			]
-		);
+                    'title_margin',
+                    [
+                        'label'       => esc_html__( 'Title Margin', 'ultraaddons' ),
+                        'type'        => Controls_Manager::DIMENSIONS,
+                        'size_units'  => [ 'px', '%' ],
+                        'placeholder' => [
+                            'top'    => '',
+                            'right'  => '',
+                            'bottom' => '',
+                            'left'   => '',
+                        ],
+                        'selectors'   => [
+                            '{{WRAPPER}} .ua-form .ua-wp-form-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                                        'separator'=>'after',
+                    ]
+                );
                 $this->add_group_control(
                         Group_Control_Typography::get_type(),
                         [
@@ -165,7 +139,6 @@ class We_Forms extends Base{
                         [
                                 'label' => __( 'Deccription Color', 'ultraaddons' ),
                                 'type' => Controls_Manager::COLOR,
-                                'default' => '#333',
                                 'selectors' => [
                                         '{{WRAPPER}} .ua-form .frm_description p' => 'color: {{VALUE}};',
                                 ],
@@ -186,7 +159,7 @@ class We_Forms extends Base{
 				'selectors'   => [
 					'{{WRAPPER}} .ua-form .frm_description p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
-                                'separator'=>'after',
+                    'separator'=>'after',
 			]
 		);
 
@@ -196,7 +169,7 @@ class We_Forms extends Base{
                 $this->start_controls_section(
                         'ua_form_label_styles',
                         [
-                            'label' => esc_html__('Form Label Styles', 'ultraaddons'),
+                            'label' => esc_html__('Form Label', 'ultraaddons'),
                             'tab' => Controls_Manager::TAB_STYLE,
                         ]
                     );
@@ -224,23 +197,23 @@ class We_Forms extends Base{
                         ]
                 );
                 $this->add_responsive_control(
-			'label_margin',
-			[
-				'label'       => esc_html__( 'Label Margin', 'ultraaddons' ),
-				'type'        => Controls_Manager::DIMENSIONS,
-				'size_units'  => [ 'px', '%' ],
-				'placeholder' => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'selectors'   => [
-					'{{WRAPPER}} .ua-weforms .wpuf-label label' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-                                'separator'=>'after',
-			]
-		);
+                    'label_margin',
+                    [
+                        'label'       => esc_html__( 'Label Margin', 'ultraaddons' ),
+                        'type'        => Controls_Manager::DIMENSIONS,
+                        'size_units'  => [ 'px', '%' ],
+                        'placeholder' => [
+                            'top'    => '',
+                            'right'  => '',
+                            'bottom' => '',
+                            'left'   => '',
+                        ],
+                        'selectors'   => [
+                            '{{WRAPPER}} .ua-weforms .wpuf-label label' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                                        'separator'=>'after',
+                    ]
+                );
                 $this->add_group_control(
                         Group_Control_Typography::get_type(),
                         [
@@ -271,7 +244,7 @@ class We_Forms extends Base{
                 $this->start_controls_section(
                         'us_section_weform_styles',
                         [
-                            'label' => esc_html__('Form Container Styles', 'ultraaddons'),
+                            'label' => esc_html__('Form Container', 'ultraaddons'),
                             'tab' => Controls_Manager::TAB_STYLE,
                         ]
                     );
@@ -287,34 +260,6 @@ class We_Forms extends Base{
                         ]
                     );
             
-                    $this->add_responsive_control(
-                        'us_weform_alignment',
-                        [
-                            'label' => esc_html__('Form Alignment', 'ultraaddons'),
-                            'type' => Controls_Manager::CHOOSE,
-                            'label_block' => true,
-                            'options' => [
-                                'default' => [
-                                    'title' => __('Default', 'ultraaddons'),
-                                    'icon' => 'fa fa-ban',
-                                ],
-                                'left' => [
-                                    'title' => esc_html__('Left', 'ultraaddons'),
-                                    'icon' => 'eicon-text-align-left',
-                                ],
-                                'center' => [
-                                    'title' => esc_html__('Center', 'ultraaddons'),
-                                    'icon' => 'eicon-text-align-center',
-                                ],
-                                'right' => [
-                                    'title' => esc_html__('Right', 'ultraaddons'),
-                                    'icon' => 'eicon-text-align-right',
-                                ],
-                            ],
-                            'default' => 'default',
-                            'prefix_class' => '.ua-weforms',
-                        ]
-                    );
             
                     $this->add_responsive_control(
                         'us_weform_width',
@@ -419,7 +364,7 @@ class We_Forms extends Base{
                 $this->start_controls_section(
                         'input_style',
                         [
-                                'label' =>  __( 'Input Style', 'ultraaddons' ) ,
+                                'label' =>  __( 'Input & Textarea', 'ultraaddons' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
@@ -430,20 +375,20 @@ class We_Forms extends Base{
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
-                                        '{{WRAPPER}} 
-                                        .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type="text"],
-                                        .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type="email"], 
-                                        .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type="number"], 
-                                        .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type="range"], 
-                                        .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type="password"],
-                                        .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type="search"], 
-                                        .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type="tel"], 
-                                        .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type="url"],
-                                        .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type="time"], 
-                                        .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type="week"], 
-                                        .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type="datetime"], 
-                                        .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type="date"],  
-                                        .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields textarea' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} 
+                        .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type="text"],
+                        .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type="email"], 
+                        .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type="number"], 
+                        .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type="range"], 
+                        .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type="password"],
+                        .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type="search"], 
+                        .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type="tel"], 
+                        .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type="url"],
+                        .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type="time"], 
+                        .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type="week"], 
+                        .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type="datetime"], 
+                        .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type="date"],  
+                        .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields textarea' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -509,23 +454,23 @@ class We_Forms extends Base{
 				],
 				'selectors' => [
 					'{{WRAPPER}} 
-                                        .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form input[type="text"],
-                                       .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form input[type=email], 
-                                       .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form input[type="number"], 
-                                       .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form input[type="range"], 
-                                       .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form input[type="password"],
-                                       .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form input[type="search"], 
-                                       .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form input[type="tel"], 
-                                       .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form input[type="url"],
-                                       .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form input[type="time"], 
-                                       .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form input[type="week"], 
-                                       .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form input[type="datetime"], 
-                                       .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form input[type="date"]' => 'height: {{SIZE}}{{UNIT}};',
+                    .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form input[type="text"],
+                    .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form input[type=email], 
+                    .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form input[type="number"], 
+                    .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form input[type="range"], 
+                    .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form input[type="password"],
+                    .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form input[type="search"], 
+                    .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form input[type="tel"], 
+                    .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form input[type="url"],
+                    .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form input[type="time"], 
+                    .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form input[type="week"], 
+                    .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form input[type="datetime"], 
+                    .ua-weforms .wpuf-form-add.wpuf-style ul.wpuf-form input[type="date"]' => 'height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
 
-                $this->add_control(
+        $this->add_control(
 			'textarea_height',
 			[
 				'label' => esc_html__( 'Textarea Height', 'ultraaddons' ),
@@ -554,7 +499,7 @@ class We_Forms extends Base{
                 $this->start_controls_section(
                         'ua_section_weform_submit_button_styles',
                         [
-                            'label' => esc_html__('Submit Button Styles', 'ultraaddons'),
+                            'label' => esc_html__('Submit Button', 'ultraaddons'),
                             'tab' => Controls_Manager::TAB_STYLE,
                         ]
                     );
@@ -748,6 +693,8 @@ class We_Forms extends Base{
                     $this->end_controls_section();
         }
 
+       
+
         /**
          * Render widget output on the frontend.
          *
@@ -770,7 +717,7 @@ class We_Forms extends Base{
         );
         ?>
         <?php 
-        if (!empty($form_id)) {
+        if (!empty($form_id)):
         ?>
         <div <?php echo $this->get_render_attribute_string( 'ua_weforms_class' );?>>
                 <?php
@@ -779,7 +726,9 @@ class We_Forms extends Base{
                 );
                 ?>
         </div>
-        <?php
-        }
+        <?php 
+        else:
+         echo "<div class='ua-alert'>" . esc_html__( "Please select weForms.", 'ultraaddons' ) . "</div>";
+        endif;
         }
 }
