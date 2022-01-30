@@ -26,7 +26,7 @@ class Search extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'search', 'find' ];
+        return [ 'ultraaddons', 'ua', 'search', 'find' ];
     }
     
     

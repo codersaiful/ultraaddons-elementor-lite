@@ -28,7 +28,7 @@ class Cart extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'cart', 'wc', 'woocommerce', 'minicart', 'mini cart' ];
+        return [ 'ultraaddons','ua', 'cart', 'wc', 'woocommerce', 'minicart', 'mini cart' ];
     }
     
     

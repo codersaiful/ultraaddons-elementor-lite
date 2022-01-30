@@ -32,7 +32,7 @@ class Portfolio extends Base {
      * @return type array
      */
     public function get_keywords() {
-            return [ 'ultraaddons', 'info', 'service', 'box' ];
+            return [ 'ultraaddons','ua', 'info', 'service', 'box' ];
     }
     
     

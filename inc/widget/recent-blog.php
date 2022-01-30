@@ -24,7 +24,7 @@ class Recent_Blog extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'blog', 'recent', 'recent blog', 'recent content' ];
+        return [ 'ultraaddons', 'ua', 'blog', 'recent', 'recent blog', 'recent content' ];
     }
         
     /**

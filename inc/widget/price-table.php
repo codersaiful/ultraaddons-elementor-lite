@@ -17,7 +17,7 @@ class Price_Table extends Base {
     use \UltraAddons\Traits\Button_Helper;
     
     public function get_keywords() {
-            return [ 'ultraaddons', 'pricing', 'table', 'price', 'list', 'compare' ];
+            return [ 'ultraaddons','ua', 'pricing', 'table', 'price', 'list', 'compare' ];
     }
     
     

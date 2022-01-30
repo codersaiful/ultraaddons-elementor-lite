@@ -30,7 +30,7 @@ class Product_Accordion extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'product', 'accordion' ];
+        return [ 'ultraaddons','ua', 'product', 'accordion' ];
     }
 
     /**
@@ -896,17 +896,17 @@ class Product_Accordion extends Base{
                 'label' =>esc_html__( 'Alignment', 'ultraaddons' ),
                 'type' => Controls_Manager::CHOOSE,
                 'options' => [
-                    'left'    => [
-                        'title' =>esc_html__( 'Left', 'ultraaddons' ),
-                        'icon' => 'fa fa-align-left',
+                    'left' => [
+                            'title' => __( 'Left', 'ultraaddons' ),
+                            'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
-                        'title' =>esc_html__( 'Center', 'ultraaddons' ),
-                        'icon' => 'fa fa-align-center',
+                            'title' => __( 'Center', 'ultraaddons' ),
+                            'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
-                        'title' =>esc_html__( 'Right', 'ultraaddons' ),
-                        'icon' => 'fa fa-align-right',
+                            'title' => __( 'Right', 'ultraaddons' ),
+                            'icon' => 'eicon-text-align-right',
                     ],
                 ],
                 'selectors' => [

@@ -67,7 +67,7 @@ class Radar_Chart extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua', 'radar', 'mix','mixed', 'bar','line' ];
+        return [ 'ultraaddons', 'ua', 'radar', 'mix','mixed', 'bar','line', 'graph' ];
     }
     
     

@@ -64,7 +64,7 @@ class Skill_Chart extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'heading', 'skill', 'chart','pie chart' ];
+        return [ 'ultraaddons', 'ua', 'heading', 'skill', 'chart','pie chart','graph' ];
     }
 	 protected function _register_controls() {
         //For Content

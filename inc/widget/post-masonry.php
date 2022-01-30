@@ -89,7 +89,7 @@ class Post_Masonry extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons','post masonry', 'advance blog', 'blog', 'post' ];
+        return [ 'ultraaddons','ua','post masonry', 'advance blog', 'blog', 'post' ];
     }
 
     /**

@@ -64,7 +64,7 @@ class Navigation_Menu extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'nav', 'menu', 'navigation' ];
+        return [ 'ultraaddons','ua', 'nav', 'menu', 'navigation' ];
     }
     
     

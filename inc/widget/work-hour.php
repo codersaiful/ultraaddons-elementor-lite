@@ -37,7 +37,7 @@ class Work_Hour extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'work', 'hour', 'business'];
+        return [ 'ultraaddons', 'ua', 'work', 'hour', 'business'];
     }
 	 protected function _register_controls() {
         //For Content

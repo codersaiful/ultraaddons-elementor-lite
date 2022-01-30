@@ -25,7 +25,7 @@ class Hero_Banner extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'hero', 'header', 'banner', 'call to action', 'c2a' ];
+        return [ 'ultraaddons','ua', 'hero', 'header', 'banner', 'call to action', 'c2a' ];
     }
     
     // Get Control ID

@@ -85,7 +85,7 @@ class Product_Flip_Carousel extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'flip', 'product', 'carousel' ];
+        return [ 'ultraaddons', 'ua', 'flip', 'product', 'carousel' ];
     }
     
     

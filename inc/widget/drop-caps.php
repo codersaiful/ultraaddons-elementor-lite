@@ -30,7 +30,7 @@ class Drop_Caps extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'drop', 'caps' ];
+        return [ 'ultraaddons','ua', 'drop', 'caps' ];
     }
 
     /**

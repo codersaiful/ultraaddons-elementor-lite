@@ -30,7 +30,7 @@ class WC_Categories extends Base{
          * @return string keywords
          */
         public function get_keywords() {
-            return [ 'ultraaddons', 'product', 'category', 'categories', 'wc', 'woocommerce', 'taxonomy' ];
+            return [ 'ultraaddons', 'ua'.'product', 'category', 'categories', 'wc', 'woocommerce', 'taxonomy' ];
         }
         
         /**

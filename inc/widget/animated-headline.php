@@ -23,7 +23,7 @@ class Animated_Headline extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'headline', 'heading', 'animation', 'title', 'text' ];
+        return [ 'ultraaddons','ua', 'headline', 'heading', 'animation', 'title', 'text' ];
     }
     
     

@@ -512,7 +512,7 @@ class We_Forms extends Base{
                             'options' => [
                                 'default' => [
                                     'title' => __('Default', 'ultraaddons'),
-                                    'icon' => 'fa fa-ban',
+                                    'icon' => ' eicon-ban',
                                 ],
                                 'left' => [
                                     'title' => esc_html__('Left', 'ultraaddons'),

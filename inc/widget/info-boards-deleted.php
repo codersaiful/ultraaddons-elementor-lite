@@ -19,7 +19,7 @@ class Info_Boards extends Base {
          * @return string keywords
          */
         public function get_keywords() {
-                return [ 'ultraaddons', 'info', 'box', 'boards', 'banner', 'notification' ];
+                return [ 'ultraaddons','ua', 'info', 'box', 'boards', 'banner', 'notification' ];
         }
 
         /**
@@ -324,4 +324,3 @@ class Info_Boards extends Base {
                 
         }
 }
-

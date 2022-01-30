@@ -28,7 +28,7 @@ class Product_Table extends Base{
          * @return string keywords
          */
         public function get_keywords() {
-            return [ 'ultraaddons', 'table', 'woo', 'product', 'wpt table', 'wc', 'tbl' ]; //'ultraaddons eicon-table'
+            return [ 'ultraaddons', 'ua','table', 'woo', 'product', 'wpt table', 'wc', 'tbl' ]; //'ultraaddons eicon-table'
         }
 
         /**

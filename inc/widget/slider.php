@@ -90,7 +90,7 @@ class Slider extends Base{
          * @return string keywords
          */
         public function get_keywords() {
-            return [ 'ultraaddons', 'slider' ];
+            return [ 'ultraaddons', 'slider','ua','carousel', 'slide' ];
         }
         
         
@@ -481,15 +481,15 @@ class Slider extends Base{
                                 'options' => [
                                         'left' => [
                                                 'title' => __( 'Left', 'ultraaddons' ),
-                                                'icon' => 'fa fa-align-left',
+                                                'icon' => 'eicon-text-align-left',
                                         ],
                                         'center' => [
                                                 'title' => __( 'Center', 'ultraaddons' ),
-                                                'icon' => 'fa fa-align-center',
+                                                'icon' => 'eicon-text-align-center',
                                         ],
                                         'right' => [
                                                 'title' => __( 'Right', 'ultraaddons' ),
-                                                'icon' => 'fa fa-align-right',
+                                                'icon' => 'eicon-text-align-right',
                                         ],
                                 ],
                                 'default' => 'center',

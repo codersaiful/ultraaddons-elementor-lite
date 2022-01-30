@@ -27,7 +27,7 @@ class Post_Title extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'post', 'page title', 'title' ];
+        return [ 'ultraaddons','ua', 'post', 'page title', 'title' ];
     }
     
     
@@ -93,7 +93,7 @@ class Post_Title extends Base{
                     'label'         => esc_html__( 'Post ID (Optional)', 'ultraaddons' ),
                     'type'          => Controls_Manager::NUMBER,
                     'default'       => false,
-                    'label_block'   => TRUE,
+                    'label_block'   => false,
                     'dynamic'       => ['active' => true],
                 ]
         );
@@ -104,18 +104,18 @@ class Post_Title extends Base{
                     'label'         => esc_html__( 'Heading', 'ultraaddons' ),
                     'type'          => Controls_Manager::CHOOSE,
                     'options' => [
-                            'left' => [
-                                    'title' => __( 'Left', 'ultraaddons' ),
-                                    'icon' => 'fa fa-align-left',
-                            ],
-                            'center' => [
-                                    'title' => __( 'Center', 'ultraaddons' ),
-                                    'icon' => 'fa fa-align-center',
-                            ],
-                            'right' => [
-                                    'title' => __( 'Right', 'ultraaddons' ),
-                                    'icon' => 'fa fa-align-right',
-                            ],
+                        'left' => [
+                                'title' => __( 'Left', 'ultraaddons' ),
+                                'icon' => 'eicon-text-align-left',
+                        ],
+                        'center' => [
+                                'title' => __( 'Center', 'ultraaddons' ),
+                                'icon' => 'eicon-text-align-center',
+                        ],
+                        'right' => [
+                                'title' => __( 'Right', 'ultraaddons' ),
+                                'icon' => 'eicon-text-align-right',
+                        ],
                     ],
                     'default' => 'left',
                     'toggle' => true,

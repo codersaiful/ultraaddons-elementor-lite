@@ -99,7 +99,7 @@ class Product_Carousel extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'product', 'slider', 'carousel' ];
+        return [ 'ultraaddons','ua', 'product', 'slider', 'carousel' ];
     }
     
     

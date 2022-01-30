@@ -37,7 +37,7 @@ class Post_Timeline extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'post', 'timeline', 'time','line' ];
+        return [ 'ultraaddons','ua', 'post', 'timeline', 'time','line' ];
     }
     
     

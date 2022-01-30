@@ -82,7 +82,7 @@ class Hero_Slider extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons','ua', 'slider', 'hero', 'carousel' ];
+        return [ 'ultraaddons','ua', 'slider', 'hero', 'carousel','banner' ];
     }
     
     

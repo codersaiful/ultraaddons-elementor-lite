@@ -417,5 +417,4 @@ class Moving_Letters extends Base{
 
     }
     
-    
 }

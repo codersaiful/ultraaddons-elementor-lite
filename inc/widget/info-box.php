@@ -25,7 +25,7 @@ class Info_Box extends Base {
      * @return type
      */
     public function get_keywords() {
-            return [ 'ultraaddons', 'info', 'service', 'box' ];
+            return [ 'ultraaddons', 'ua','info', 'service', 'box' ];
     }
     
     protected function content_infobox(){
