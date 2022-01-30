@@ -643,7 +643,7 @@ $widgetsArray = [
     'Caldera_Forms'=> [
         'name'      => __( 'Caldera Forms', 'ultraaddons' ),
         'is_pro'   => false,
-        'icon'      => 'eicon-facebook-comments',
+        'icon'      => 'ua-icon-caldera',
         'cat'       => [
             __( 'Basic', 'ultraaddons' ),
         ],
