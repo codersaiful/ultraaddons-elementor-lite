@@ -579,7 +579,7 @@ $widgetsArray = [
     'Doughnut_Chart'=> [
         'name'      => __( 'Doughnut Chart', 'ultraaddons' ),
         'is_pro'   => false,
-        'icon'      => 'ua-icon-doughnut-bold',
+        'icon'      => 'ua-icon-doughnut-lite',
         'cat'       => [
             __( 'Chart', 'ultraaddons' ),
         ],
@@ -595,7 +595,7 @@ $widgetsArray = [
     'Mixed_Chart'=> [
         'name'      => __( 'Mixed Chart', 'ultraaddons' ),
         'is_pro'   => false,
-        'icon'      => 'ua-icon-chart-bar-outline',
+        'icon'      => 'ua-icon-bar-chart',
         'cat'       => [
             __( 'Chart', 'ultraaddons' ),
         ],
@@ -603,7 +603,7 @@ $widgetsArray = [
     'Radar_Chart'=> [
         'name'      => __( 'Radar Chart', 'ultraaddons' ),
         'is_pro'   => false,
-        'icon'      => 'ua-icon-radar-chart',
+        'icon'      => 'ua-icon-radar',
         'cat'       => [
             __( 'Chart', 'ultraaddons' ),
         ],
