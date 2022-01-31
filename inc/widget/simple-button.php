@@ -16,7 +16,7 @@ class Simple_Button extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'button', 'btn', 'bt', 'recent content' ];
+        return [ 'ultraaddons', 'ua', 'button', 'btn', 'bt', 'recent content' ];
     }
     
     

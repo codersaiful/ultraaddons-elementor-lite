@@ -27,7 +27,7 @@ class Hotspot extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'post', 'page title', 'title' ];
+        return [ 'ultraaddons','ua', 'hot', 'spot', 'mark','product' ];
     }
     
     

@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class Contact_Form7 extends Base{
     
         public function get_keywords() {
-                return [ 'ultraaddons', 'appointment', 'contact', 'quote', 'form', 'schedule', 'cf7', 'contact form', ];
+                return [ 'ultraaddons','ua', 'appointment', 'contact', 'quote', 'forms', 'schedule', 'cf7', 'contact form', ];
         }
     
         protected function register_content_controls(){

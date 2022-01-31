@@ -28,7 +28,7 @@ class Timeline extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'timeline', 'progress', 'time', 'line' ];
+        return [ 'ultraaddons', 'ua', 'timeline', 'progress', 'time', 'line' ];
     }
     
     

@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class WP_Forms extends Base{
        
         public function get_keywords() {
-                return [ 'ultraaddons', 'appointment', 'contact', 'quote', 'form', 'schedule', 'formidable', 'contact form', ];
+                return [ 'ultraaddons', 'ua', 'appointment', 'contact', 'quote', 'form', 'schedule', 'formidable', 'contact form', ];
         }
 
          /**

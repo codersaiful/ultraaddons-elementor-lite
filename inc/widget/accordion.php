@@ -30,7 +30,7 @@ class Accordion extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'toggle', 'accordion' ];
+        return [ 'ultraaddons', 'ua', 'toggle', 'accordion' ];
     }
 
     /**
@@ -76,7 +76,6 @@ class Accordion extends Base{
                 break;
         }
         ?>
-
         <?php
     }
 

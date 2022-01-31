@@ -27,7 +27,7 @@ class Menu extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'menu', 'nav', 'navbar', 'menubar','navigation' ];
+        return [ 'ultraaddons', 'ua','menu', 'nav', 'navbar', 'menubar','navigation' ];
     }
     
     /**

@@ -27,7 +27,7 @@ class WordPress_Plugin_Stats extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'stats', 'wp', 'plugin', 'wordpress' ];
+        return [ 'ultraaddons', 'ua', 'stats', 'wp', 'plugin', 'wordpress' ];
     }
     
     

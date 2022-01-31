@@ -28,7 +28,7 @@ class Count_Down_Timer extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'timer', 'count', 'down', 'countdown', 'count down timer', 'count timer','clock','watch' ];
+        return [ 'ultraaddons', 'ua','timer', 'count', 'down', 'countdown', 'count down timer', 'count timer','clock','watch' ];
     }
     
     
@@ -387,10 +387,6 @@ class Count_Down_Timer extends Base{
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
-        
-        
-        
-        
         
         $this->add_control(
             'bg_color',

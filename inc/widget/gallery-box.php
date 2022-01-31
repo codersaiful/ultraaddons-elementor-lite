@@ -26,7 +26,7 @@ class Gallery_Box extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'product', 'gallery', 'image', 'gallery image' ];
+        return [ 'ultraaddons','ua', 'product', 'gallery', 'image', 'gallery image' ];
     }
     
     

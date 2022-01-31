@@ -28,7 +28,7 @@ class Testimonial_Box extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'testimonial', 'review', 'feedback', 'user', 'rating' ];
+        return [ 'ultraaddons', 'ua', 'testimonial', 'review', 'feedback', 'user', 'rating' ];
     }
     
     /**
@@ -256,19 +256,19 @@ class Testimonial_Box extends Base{
                 'text_align',
                 [
                         'label' => __( 'Alignment', 'ultraaddons' ),
-                        'type' => \Elementor\Controls_Manager::CHOOSE,
+                        'type' => Controls_Manager::CHOOSE,
                         'options' => [
                                 'left' => [
                                         'title' => __( 'Left', 'ultraaddons' ),
-                                        'icon' => 'fa fa-align-left',
+                                        'icon' => 'eicon-text-align-left',
                                 ],
                                 'center' => [
                                         'title' => __( 'Center', 'ultraaddons' ),
-                                        'icon' => 'fa fa-align-center',
+                                        'icon' => 'eicon-text-align-center',
                                 ],
                                 'right' => [
                                         'title' => __( 'Right', 'ultraaddons' ),
-                                        'icon' => 'fa fa-align-right',
+                                        'icon' => 'eicon-text-align-right',
                                 ],
                         ],
                         'default' => 'center',

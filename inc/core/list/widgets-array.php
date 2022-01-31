@@ -49,7 +49,7 @@ $widgetsArray = [
     ],
     
     'Count_Down_Timer' => [
-            'name'  => __( 'Count Down Timer', 'ultraaddons' ),
+            'name'  => __( 'Countdown Timer', 'ultraaddons' ),
             'is_pro'   => false,
             'icon'      => 'uicon-clock',//eicon-countdown
             'cat'       => [
@@ -114,7 +114,7 @@ $widgetsArray = [
     
     'Animated_Header' => [
             'name'  => __( 'Animated Header', 'ultraaddons' ),
-            'is_pro'   => true,
+            'is_pro'   => false,
             'icon'      => 'uicon-animated-header',
             'cat'       => [
                 __( 'General', 'ultraaddons' ),
@@ -125,7 +125,7 @@ $widgetsArray = [
     
     'Product_Slider' => [
             'name'  => __( 'Product Slider', 'ultraaddons' ),
-            'is_pro'   => true,
+            'is_pro'   => false,
             'icon'      => 'uicon-product-slider',
             'cat'       => [
                 __( 'WooCommerce', 'ultraaddons' ),
@@ -164,7 +164,7 @@ $widgetsArray = [
     'WC_Products' => [
             'name'  => __( 'WooCommerce Products', 'ultraaddons' ),
             'is_pro'   => false,
-            'is_wc'     => true,
+            'is_wc'     => false,
             'icon'      => 'uicon-product',
             'cat'       => [
                 __( 'WooCommerce', 'ultraaddons' ),
@@ -204,7 +204,7 @@ $widgetsArray = [
     
     'WC_Categories' => [
             'name'  => __( 'Product Categories', 'ultraaddons' ),
-            'is_pro'   => true,
+            'is_pro'   => false,
             'icon'      => 'uicon-icon-box',
             'cat'       => [
                 __( 'WooCommerce', 'ultraaddons' ),
@@ -233,7 +233,7 @@ $widgetsArray = [
     
     'Info_Boards' => [
             'name'  => __( 'Info Boards', 'ultraaddons' ),
-            'is_pro'   => true,
+            'is_pro'   => false,
             'icon'      => 'eicon-form-horizontal',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -242,7 +242,7 @@ $widgetsArray = [
     
     'Offer_Card' => [
             'name'  => __( 'Offer Card', 'ultraaddons' ),
-            'is_pro'   => true,
+            'is_pro'   => false,
             'icon'      => 'eicon-form-horizontal',
             'cat'       => [
                 __( 'General', 'ultraaddons' ),
@@ -288,7 +288,7 @@ $widgetsArray = [
     
     'Breadcrumb' => [
             'name'  => __( 'Breadcrumb', 'ultraaddons' ),
-            'is_pro'   => true,
+            'is_pro'   => false,
             'icon'      => 'uicon-skillbar',
             'cat'       => [
                 __( 'Header_Footer', 'ultraaddons' ),
@@ -306,7 +306,7 @@ $widgetsArray = [
     
     'Timeline' => [
             'name'  => __( 'Timeline', 'ultraaddons' ),
-            'is_pro'   => true,
+            'is_pro'   => false,
             'icon'      => 'eicon-time-line',
             'cat'       => [
                 __( 'General', 'ultraaddons' ),
@@ -315,7 +315,7 @@ $widgetsArray = [
     
     'Image_Accordion' => [
             'name'  => __( 'Image Accordion', 'ultraaddons' ),
-            'is_pro'   => true,
+            'is_pro'   => false,
             'icon'      => 'eicon-accordion',
             'cat'       => [
                 __( 'General', 'ultraaddons' ),
@@ -324,7 +324,7 @@ $widgetsArray = [
     
     'Product_Accordion' => [
             'name'  => __( 'Product Accordion', 'ultraaddons' ),
-            'is_pro'   => true,
+            'is_pro'   => false,
             'icon'      => 'eicon-accordion',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -351,7 +351,7 @@ $widgetsArray = [
     
     'Post_Masonry' => [
             'name'  => __( 'Advance Post Masonry', 'ultraaddons' ),
-            'is_pro'   => true,
+            'is_pro'   => false,
             'icon'      => 'eicon-posts-masonry',
             'cat'       => [
                 __( 'Advance', 'ultraaddons' ),
@@ -369,7 +369,7 @@ $widgetsArray = [
 
     'Animated_Headline' => [
             'name'  => __( 'Animated Headline', 'ultraaddons' ),
-            'is_pro'   => true,
+            'is_pro'   => false,
             'icon'      => 'eicon-posts-masonry',
             'cat'       => [
                 __( 'Advance', 'ultraaddons' ),
@@ -418,7 +418,7 @@ $widgetsArray = [
     ],
 	'News_Ticker' => [
             'name'  => __( 'News Ticker', 'ultraaddons' ),
-            'is_pro'   => true,
+            'is_pro'   => false,
             'icon'      => 'eicon-chevron-double-left',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -627,33 +627,33 @@ $widgetsArray = [
     'WP_Forms'=> [
         'name'      => __( 'WPForms', 'ultraaddons' ),
         'is_pro'   => false,
-        'icon'      => 'eicon-menu-toggle',
+        'icon'      => 'ua-icon-wpforms',
         'cat'       => [
-            __( 'Basic', 'ultraaddons' ),
+            __( 'Forms', 'ultraaddons' ),
         ],
     ],
     'Ninja_Forms'=> [
         'name'      => __( 'Ninja Forms', 'ultraaddons' ),
         'is_pro'   => false,
-        'icon'      => 'eicon-facebook-comments',
+        'icon'      => 'ua-icon-ninja',
         'cat'       => [
-            __( 'Basic', 'ultraaddons' ),
+            __( 'Forms', 'ultraaddons' ),
         ],
     ],
     'Caldera_Forms'=> [
         'name'      => __( 'Caldera Forms', 'ultraaddons' ),
         'is_pro'   => false,
-        'icon'      => 'eicon-facebook-comments',
+        'icon'      => 'ua-icon-caldera',
         'cat'       => [
-            __( 'Basic', 'ultraaddons' ),
+            __( 'Forms', 'ultraaddons' ),
         ],
     ],
     'We_Forms'=> [
         'name'      => __( 'WeForms', 'ultraaddons' ),
         'is_pro'   => false,
-        'icon'      => 'eicon-facebook-comments',
+        'icon'      => 'ua-icon-weforms',
         'cat'       => [
-            __( 'Basic', 'ultraaddons' ),
+            __( 'Forms', 'ultraaddons' ),
         ],
     ],
 

@@ -67,7 +67,7 @@ class Polar_Chart extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua', 'chart', 'bar', 'Pie' ];
+        return [ 'ultraaddons', 'ua', 'chart', 'bar', 'Pie','graph' ];
     }
     
     

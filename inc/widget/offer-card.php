@@ -24,7 +24,7 @@ class Offer_Card extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'offer', 'card', 'product card', 'product board', 'buy' ];
+        return [ 'ultraaddons', 'ua','offer', 'card', 'product card', 'product board', 'buy' ];
     }
    
     /**
@@ -229,18 +229,18 @@ class Offer_Card extends Base{
                     'label'         => esc_html__( 'Alignment', 'ultraaddons' ),
                     'type'          => Controls_Manager::CHOOSE,
                     'options' => [
-                            'left' => [
-                                    'title' => __( 'Left', 'ultraaddons' ),
-                                    'icon' => 'fa fa-align-left',
-                            ],
-                            'center' => [
-                                    'title' => __( 'Center', 'ultraaddons' ),
-                                    'icon' => 'fa fa-align-center',
-                            ],
-                            'right' => [
-                                    'title' => __( 'Right', 'ultraaddons' ),
-                                    'icon' => 'fa fa-align-right',
-                            ],
+                        'left' => [
+                                'title' => __( 'Left', 'ultraaddons' ),
+                                'icon' => 'eicon-text-align-left',
+                        ],
+                        'center' => [
+                                'title' => __( 'Center', 'ultraaddons' ),
+                                'icon' => 'eicon-text-align-center',
+                        ],
+                        'right' => [
+                                'title' => __( 'Right', 'ultraaddons' ),
+                                'icon' => 'eicon-text-align-right',
+                        ],
                     ],
                     'prefix_class' => 'elementor-align-',
                     'default' => 'left',
@@ -690,18 +690,18 @@ class Offer_Card extends Base{
                 'type' => Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
-                        'title' => __( 'Left', 'ultraaddons' ),
-                        'icon' => 'fa fa-align-left',
+                            'title' => __( 'Left', 'ultraaddons' ),
+                            'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
-                        'title' => __( 'Center', 'ultraaddons' ),
-                        'icon' => 'fa fa-align-center',
+                            'title' => __( 'Center', 'ultraaddons' ),
+                            'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
-                        'title' => __( 'Right', 'ultraaddons' ),
-                        'icon' => 'fa fa-align-right',
+                            'title' => __( 'Right', 'ultraaddons' ),
+                            'icon' => 'eicon-text-align-right',
                     ],
-                ],
+                 ],
                 'selectors' => [
                     '{{WRAPPER}} .content-title.ultraaddons-advance-heading, .section-title.v1.ultraaddons-advance-heading' => 'text-align: {{VALUE}}',
                 ],

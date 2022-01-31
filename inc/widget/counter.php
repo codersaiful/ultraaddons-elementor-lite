@@ -80,7 +80,7 @@ class Counter extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'counter', 'count', 'number', 'countdown'];
+        return [ 'ultraaddons','ua' ,'counter', 'count', 'number', 'countdown'];
     }
     
     /**
@@ -436,16 +436,16 @@ class Counter extends Base{
                 'type' => Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
-                        'title' => esc_html__( 'Left', 'ultraaddons' ),
-                        'icon' => 'fa fa-align-left',
+                            'title' => __( 'Left', 'ultraaddons' ),
+                            'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
-                        'title' => esc_html__( 'Center', 'ultraaddons' ),
-                        'icon' => 'fa fa-align-center',
+                            'title' => __( 'Center', 'ultraaddons' ),
+                            'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
-                        'title' => esc_html__( 'Right', 'ultraaddons' ),
-                        'icon' => 'fa fa-align-right',
+                            'title' => __( 'Right', 'ultraaddons' ),
+                            'icon' => 'eicon-text-align-right',
                     ],
                 ],
                 'default'       => 'center',

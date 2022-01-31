@@ -28,7 +28,7 @@ class Alert extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'alert', 'notice', 'info' ];
+        return [ 'ultraaddons', 'ua', 'alert', 'notice', 'info' ];
     }
     
     

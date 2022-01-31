@@ -61,7 +61,7 @@ class Skill_Bar extends Base{
          * @return string keywords
          */
         public function get_keywords() {
-            return [ 'ultraaddons', 'skill bar', 'progress bar' ];
+            return [ 'ultraaddons', 'ua', 'skill bar', 'progress bar', 'skill' ];
         }
 
         /**

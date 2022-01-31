@@ -27,7 +27,7 @@ class WC_Products extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'wc', 'product', 'woocommerce', 'items', 'price' ];
+        return [ 'ultraaddons', 'ua', 'wc', 'product', 'woocommerce', 'items', 'price' ];
     }
         
     /**
