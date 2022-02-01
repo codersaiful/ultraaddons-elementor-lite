@@ -24,68 +24,47 @@
   font-style: normal;
   font-weight: normal;
   speak: never;
-
   display: inline-block;
   text-decoration: inherit;
-  width: 1em;
-  margin-right: .2em;
   text-align: center;
-  /* opacity: .8; */
-
-  /* For safety - reset parent styles, that can break glyph codes*/
   font-variant: normal;
   text-transform: none;
-
-  /* fix buttons height, for twitter bootstrap */
-  line-height: 1em;
-
-  /* Animation center compensation - margins should be symmetric */
-  /* remove if not needed */
-  margin-left: .2em;
-
-  /* you can be more comfortable with increased icons size */
-  /* font-size: 120%; */
-
-  /* Font smoothing. That was taken from TWBS */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  /* Uncomment for 3D effect */
-  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
-.ua-icon-plus:before { content: '\0800'; } /* 'ࠀ' */
-.ua-icon-basket-1:before { content: '\0801'; } /* 'ࠁ' */
-.ua-icon-basket-2:before { content: '\0802'; } /* 'ࠂ' */
-.ua-icon-basket-3:before { content: '\0803'; } /* 'ࠃ' */
-.ua-icon-up-open-big:before { content: '\0804'; } /* 'ࠄ' */
-.ua-icon-left-open-big:before { content: '\0805'; } /* 'ࠅ' */
-.ua-icon-down-open-big:before { content: '\0806'; } /* 'ࠆ' */
-.ua-icon-up-open-mini:before { content: '\0807'; } /* 'ࠇ' */
-.ua-icon-right-open-mini:before { content: '\0808'; } /* 'ࠈ' */
-.ua-icon-left-open-mini:before { content: '\0809'; } /* 'ࠉ' */
-.ua-icon-down-open-mini:before { content: '\080a'; } /* 'ࠊ' */
-.ua-icon-chart-pie:before { content: '\080b'; } /* 'ࠋ' */
-.ua-icon-chart-line:before { content: '\080c'; } /* 'ࠌ' */
-.ua-icon-chart-bar:before { content: '\080d'; } /* 'ࠍ' */
-.ua-icon-chart-bar-outline:before { content: '\080e'; } /* 'ࠎ' */
-.ua-icon-right-open-big:before { content: '\e800'; } /* '' */
-.ua-icon-align-justify:before { content: '\e801'; } /* '' */
-.ua-icon-align-right:before { content: '\e802'; } /* '' */
-.ua-icon-align-left:before { content: '\e803'; } /* '' */
-.ua-icon-menu-1:before { content: '\e804'; } /* '' */
-.ua-icon-menu-2:before { content: '\e805'; } /* '' */
-.ua-icon-lifebuoy:before { content: '\e806'; } /* '' */
-.ua-icon-chart-pie-outline:before { content: '\e807'; } /* '' */
-.ua-icon-chart-bar-1:before { content: '\e808'; } /* '' */
-.ua-icon-ninja:before { content: '\e809'; } /* '' */
-.ua-icon-doughnut-lite:before { content: '\e80a'; } /* '' */
-.ua-icon-weforms:before { content: '\e80b'; } /* '' */
-.ua-icon-formidable:before { content: '\e80c'; } /* '' */
-.ua-icon-caldera:before { content: '\e80d'; } /* '' */
-.ua-icon-radar:before { content: '\e80e'; } /* '' */
-.ua-icon-bar-chart:before { content: '\e80f'; } /* '' */
-.ua-icon-menu:before { content: '\f008'; } /* '' */
-.ua-icon-chart-area:before { content: '\f1fe'; } /* '' */
-.ua-icon-chart-line-1:before { content: '\f201'; } /* '' */
-.ua-icon-wpforms:before { content: '\f298'; } /* '' */
+.ua-icon-plus:before { content: '\0800'; } /* 'à €' */
+.ua-icon-basket-1:before { content: '\0801'; } /* 'à ' */
+.ua-icon-basket-2:before { content: '\0802'; } /* 'à ‚' */
+.ua-icon-basket-3:before { content: '\0803'; } /* 'à ƒ' */
+.ua-icon-up-open-big:before { content: '\0804'; } /* 'à „' */
+.ua-icon-left-open-big:before { content: '\0805'; } /* 'à …' */
+.ua-icon-down-open-big:before { content: '\0806'; } /* 'à †' */
+.ua-icon-up-open-mini:before { content: '\0807'; } /* 'à ‡' */
+.ua-icon-right-open-mini:before { content: '\0808'; } /* 'à ˆ' */
+.ua-icon-left-open-mini:before { content: '\0809'; } /* 'à ‰' */
+.ua-icon-down-open-mini:before { content: '\080a'; } /* 'à Š' */
+.ua-icon-chart-pie:before { content: '\080b'; } /* 'à ‹' */
+.ua-icon-chart-line:before { content: '\080c'; } /* 'à Œ' */
+.ua-icon-chart-bar:before { content: '\080d'; } /* 'à ' */
+.ua-icon-chart-bar-outline:before { content: '\080e'; } /* 'à Ž' */
+.ua-icon-right-open-big:before { content: '\e800'; } /* 'î €' */
+.ua-icon-align-justify:before { content: '\e801'; } /* 'î ' */
+.ua-icon-align-right:before { content: '\e802'; } /* 'î ‚' */
+.ua-icon-align-left:before { content: '\e803'; } /* 'î ƒ' */
+.ua-icon-menu-1:before { content: '\e804'; } /* 'î „' */
+.ua-icon-menu-2:before { content: '\e805'; } /* 'î …' */
+.ua-icon-lifebuoy:before { content: '\e806'; } /* 'î †' */
+.ua-icon-chart-pie-outline:before { content: '\e807'; } /* 'î ‡' */
+.ua-icon-chart-bar-1:before { content: '\e808'; } /* 'î ˆ' */
+.ua-icon-ninja:before { content: '\e809'; } /* 'î ‰' */
+.ua-icon-doughnut-lite:before { content: '\e80a'; } /* 'î Š' */
+.ua-icon-weforms:before { content: '\e80b'; } /* 'î ‹' */
+.ua-icon-formidable:before { content: '\e80c'; } /* 'î Œ' */
+.ua-icon-caldera:before { content: '\e80d'; } /* 'î ' */
+.ua-icon-radar:before { content: '\e80e'; } /* 'î Ž' */
+.ua-icon-bar-chart:before { content: '\e80f'; } /* 'î ' */
+.ua-icon-menu:before { content: '\f008'; } /* 'ï€ˆ' */
+.ua-icon-chart-area:before { content: '\f1fe'; } /* 'ï‡¾' */
+.ua-icon-chart-line-1:before { content: '\f201'; } /* 'ïˆ' */
+.ua-icon-wpforms:before { content: '\f298'; } /* 'ïŠ˜' */

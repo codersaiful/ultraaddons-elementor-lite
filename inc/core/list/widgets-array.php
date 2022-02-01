@@ -382,14 +382,14 @@ $widgetsArray = [
      * 
      * @author Saiful Islam <codersaiful@gmail.com>
      */
-    'Developer_Test' => [
+    /* 'Developer_Test' => [
         'name'  => __( 'Developer Test', 'ultraaddons' ),
         'is_pro'   => false,
         'icon'      => 'uicon-ultraaddons',
         'cat'       => [
             __( 'Basic', 'ultraaddons' ),
         ],
-    ],
+    ], */
     
     //@author B M Rafiul Alam Rafiul <bmrafiul.alam@gmail.com>
     'Flip_Box' => [
@@ -576,14 +576,6 @@ $widgetsArray = [
             __( 'Chart', 'ultraaddons' ),
         ],
     ],
-    'Doughnut_Chart'=> [
-        'name'      => __( 'Doughnut Chart', 'ultraaddons' ),
-        'is_pro'   => false,
-        'icon'      => 'ua-icon-doughnut-lite',
-        'cat'       => [
-            __( 'Chart', 'ultraaddons' ),
-        ],
-    ],
     'Polar_Chart'=> [
         'name'      => __( 'Polar Chart', 'ultraaddons' ),
         'is_pro'   => false,
@@ -592,6 +584,15 @@ $widgetsArray = [
             __( 'Chart', 'ultraaddons' ),
         ],
     ],
+    'Doughnut_Chart'=> [
+        'name'      => __( 'Doughnut Chart', 'ultraaddons' ),
+        'is_pro'   => false,
+        'icon'      => 'ua-icon-doughnut-lite',
+        'cat'       => [
+            __( 'Chart', 'ultraaddons' ),
+        ],
+    ],
+  
     'Mixed_Chart'=> [
         'name'      => __( 'Mixed Chart', 'ultraaddons' ),
         'is_pro'   => false,
