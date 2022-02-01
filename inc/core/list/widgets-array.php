@@ -382,14 +382,14 @@ $widgetsArray = [
      * 
      * @author Saiful Islam <codersaiful@gmail.com>
      */
-    'Developer_Test' => [
+    /* 'Developer_Test' => [
         'name'  => __( 'Developer Test', 'ultraaddons' ),
         'is_pro'   => false,
         'icon'      => 'uicon-ultraaddons',
         'cat'       => [
             __( 'Basic', 'ultraaddons' ),
         ],
-    ],
+    ], */
     
     //@author B M Rafiul Alam Rafiul <bmrafiul.alam@gmail.com>
     'Flip_Box' => [
