@@ -291,7 +291,7 @@ class Button extends Base{
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'box_shadow',
-				'label' => esc_html__( 'Box Shadow', 'ultraaddons' ),
+				'label' => esc_html__( 'Button Shadow', 'ultraaddons' ),
 				'selector' => '{{WRAPPER}} .ua-btn',
 			]
 		);
