@@ -177,7 +177,7 @@ class Button extends Base{
 						'icon' => 'eicon-text-align-right',
 					],
 				],
-				'default' => 'center',
+				'default' => 'start',
 				'selectors' => [
 					'{{WRAPPER}} .ua-btn-wrap' => 'justify-content: {{VALUE}};',
 				],
