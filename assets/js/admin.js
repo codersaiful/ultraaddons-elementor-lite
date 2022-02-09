@@ -1,6 +1,5 @@
 ;(function ($, w) {
     'use strict';
-    
     var $window = $(w);
 
     $($window).ready(function(){
@@ -258,11 +257,34 @@
             }
         }
       });
-
-
-
       
   });
+
+    /**
+     * Script for Widget Filter on Dashboard
+     * @author BM Rafiul Alam
+     * @since 1.1.0.10
+     */
+    $('[data-category]').show();
+    $('.widget-cat-list li').on('click', function(){
+       var $this = $(this).data('target');
+       if($this=='all'){
+        $('[data-category]').fadeIn();
+       }else{
+        $('[data-category]').hide();
+        $('[data-category="'+$this+'"]').fadeIn();
+       }
+    });
+
+    $('.widget-free-pro-list li').on('click', function(){
+        var $this = $(this).data('target');
+        if($this=='all'){
+         $('[data-type]').fadeIn();
+        }else{
+         $('[data-type]').hide();
+         $('[data-type="'+$this+'"]').fadeIn();
+        }
+     });
 
 } (jQuery, window));
 
