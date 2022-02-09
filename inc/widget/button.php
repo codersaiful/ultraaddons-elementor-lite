@@ -177,7 +177,7 @@ class Button extends Base{
 						'icon' => 'eicon-text-align-right',
 					],
 				],
-				'default' => 'center',
+				'default' => 'start',
 				'selectors' => [
 					'{{WRAPPER}} .ua-btn-wrap' => 'justify-content: {{VALUE}};',
 				],
@@ -287,6 +287,14 @@ class Button extends Base{
 				'selector' => '{{WRAPPER}} .ua-btn',
 			]
 		);
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'box_shadow',
+				'label' => esc_html__( 'Button Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-btn',
+			]
+		);
         $this->add_control(
 			'_btn_text_color', [
 				'label' => __( 'Button Text Color', 'ultraaddons' ),
@@ -356,7 +364,7 @@ class Button extends Base{
 				'label' => __( 'Hover Background', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .ua-btn:before' => 'background: {{VALUE}};',
+						'{{WRAPPER}} .ua-btn:before, .ua-btn:hover' => 'background: {{VALUE}};',
 				],
 			]
         );
