@@ -269,20 +269,20 @@
     $('.widget-cat-list li').on('click', function(){
        var $this = $(this).data('target');
        if($this=='all'){
-        $('[data-category]').show();
+        $('[data-category]').fadeIn();
        }else{
         $('[data-category]').hide();
-        $('[data-category="'+$this+'"]').show();
+        $('[data-category="'+$this+'"]').fadeIn();
        }
     });
 
     $('.widget-free-pro-list li').on('click', function(){
         var $this = $(this).data('target');
         if($this=='all'){
-         $('[data-type]').show();
+         $('[data-type]').fadeIn();
         }else{
          $('[data-type]').hide();
-         $('[data-type="'+$this+'"]').show();
+         $('[data-type="'+$this+'"]').fadeIn();
         }
      });
 
