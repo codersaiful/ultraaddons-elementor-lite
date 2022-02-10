@@ -1,6 +1,7 @@
 ul#ultraaddons-breadcrumb {
     list-style: none;
-    padding: 0;
+    /* padding: 0; */
+    display: inline-block;
 }
 
 ul#ultraaddons-breadcrumb ul li {
@@ -11,5 +12,3 @@ ul#ultraaddons-breadcrumb li {
     display: inline;
     padding: 8px 10px;
 }
-
-ul#ultraaddons-breadcrumb li.item {}
