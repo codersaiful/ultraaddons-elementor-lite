@@ -217,3 +217,14 @@ div#elementor-panel-category-ultraaddons-pro-placeholder .elementor-element-wrap
     border-top: 1px solid #ddd;
     font-weight: bold !important;
 }
+
+/**************************
+* CONDITIONAL CONTENT
+***************************/
+section.elementor-element.elementor-element-edit-mode.elementor-section.ua-conditional-content-on{
+    background-color: red !important;
+}
+section.elementor-element.elementor-element-edit-mode.elementor-section.ua-conditional-content-on::before{
+    content: "Restricted";
+    
+}
