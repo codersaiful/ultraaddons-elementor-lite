@@ -4,6 +4,7 @@ namespace UltraAddons\Extensions;
 
 use Elementor\Controls_Manager;
 use Elementor\Element_Base;
+use Elementor\Plugin;
 
 
 defined('ABSPATH') || die();
@@ -32,30 +33,35 @@ class Conditional_Content
     public static function init() 
     {
 		
-		add_action( 'elementor/element/column/section_advanced/after_section_end', [ __CLASS__, 'add_controls_section' ], 1 );
+		// add_action( 'elementor/element/column/section_advanced/after_section_end', [ __CLASS__, 'add_controls_section' ], 1 );
 		add_action( 'elementor/element/section/section_advanced/after_section_end', [ __CLASS__, 'add_controls_section' ], 1 );
-		add_action( 'elementor/element/common/_section_style/after_section_end', [ __CLASS__, 'add_controls_section' ], 1 );
+		// add_action( 'elementor/element/common/_section_style/after_section_end', [ __CLASS__, 'add_controls_section' ], 1 );
 
-		// add_action( 'elementor/frontend/before_render', [ __CLASS__, 'before_render' ], 1 );
-		add_filter( 'elementor/element/get_child_type', [ __CLASS__, 'get_child_type' ], 10, 2 );
+		//add_action( 'elementor/frontend/before_render', [ __CLASS__, 'before_render' ], 1 );
+		// add_filter( 'elementor/element/get_child_type', [ __CLASS__, 'get_child_type' ], 10, 3 );
+		add_filter('elementor/frontend/section/should_render', [ __CLASS__, 'should_render' ], 99, 2);
 	}
 
-	public static function get_child_type( Element_Base $child_type, $element_data )
+	public static function should_render( $should_render, Element_Base $element )
 	{
-		if( ! isset( $element_data['settings']['_ua_condc_switch'] ) ) return $child_type;
+		if( 'section' !== $element->get_name() ) return $should_render;
 
-		$switch = $element_data['settings']['_ua_condc_switch'];
+		if( Plugin::$instance->editor->is_edit_mode() ) return $should_render;
 
-		if( $switch !== 'on' ) return $child_type;
+
 		
-		$settings = $element_data['settings'];
-
+		$settings = $element->get_settings_for_display();
+		
+		$switch = $settings['_ua_condc_switch'] ?? '';
+		
+		if( $switch !== 'on' ) return $should_render;
+		
 
         $visibility = $settings['_ua_condc_visibility'] ?? '';
         $conds_post_ID = $settings['_ua_condc_post_ID'] ?? '';
         $conds_user_role = $settings['_ua_condc_user_role'] ?? '';
 
-		if( empty( $conds_post_ID ) && empty( $conds_user_role ) ) return $child_type;
+		if( empty( $conds_post_ID ) && empty( $conds_user_role ) ) return $should_render;
 
 		$c_post_ID = get_the_ID();
 		$c_user_ID = get_current_user_id();
@@ -65,19 +71,21 @@ class Conditional_Content
 
 		// Get all the user roles as an array.
 		$user_roles = $user->roles;
-
-		if( $visibility == 'hide' ){
-
-
+		$g_child_type = $should_render;
+		if( $visibility == 'show' ){
+			if($c_post_ID == $conds_post_ID || in_array( $conds_user_role, $user_roles )){
+				$g_child_type =  false;
+			}
+			$g_child_type =  $should_render;
 			
-			return false;
-		}else if( $visibility == 'show' ){
-
-			
-			return $child_type;
+		}else if( $visibility == 'hide' ){
+			if($c_post_ID == $conds_post_ID || in_array( $conds_user_role, $user_roles )){
+				$g_child_type =  $should_render;
+			}
+			$g_child_type =  false;
 		}
-
-		return $child_type;
+		
+		return $g_child_type;
 	}
 
     /**
@@ -242,14 +250,21 @@ class Conditional_Content
     public static function before_render( Element_Base $element )
     {
 		
-        $switch = $element->get_settings_for_display( '_ua_condc_switch' );
-		if( $switch !== 'on' ){
-			return;
-		}
+        if( 'section' !== $element->get_name() ) return;
+
+		$settings = $element->get_settings_for_display();
+		$switch = $settings['_ua_condc_switch'] ?? '';
+
+		if( $switch !== 'on' ) return;
+		
 		
 
-        $visibility = $element->get_settings_for_display( '_ua_condc_visibility' );
-        $conds = $element->get_settings_for_display( '_ua_condc_options' );
+
+        $visibility = $settings['_ua_condc_visibility'] ?? '';
+        $conds_post_ID = $settings['_ua_condc_post_ID'] ?? '';
+        $conds_user_role = $settings['_ua_condc_user_role'] ?? '';
+
+		if( empty( $conds_post_ID ) && empty( $conds_user_role ) ) return;
 
 		$c_post_ID = get_the_ID();
 		$c_user_ID = get_current_user_id();
@@ -259,11 +274,33 @@ class Conditional_Content
 
 		// Get all the user roles as an array.
 		$user_roles = $user->roles;
+		$display_type = 'hidden_content';
 
-		// var_dump($user_roles);
+		if( $visibility == 'show' ){
+			if($c_post_ID == $conds_post_ID || in_array( $conds_user_role, $user_roles )){
+				$display_type = 'hidden_content';
+			}
+			$display_type =  'display_content';
+			
+		}else if( $visibility == 'hide' ){
+			if($c_post_ID == $conds_post_ID || in_array( $conds_user_role, $user_roles )){
+				$display_type =  'display_content';
+			}
+			$display_type = 'hidden_content';
+		}
+		
+		$style = "";
+		if( $display_type == 'hidden_content' ){
+			$style = "display: none !important";
+		}
 
-
-
+		$element->add_render_attribute(
+			'_wrapper',
+			[
+				'style' => $style,//'cursor: pointer',
+				'class' => 'ua-conditional-content ua-condition-' . $display_type
+			]
+		);
 
         
     }
