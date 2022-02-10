@@ -224,7 +224,7 @@ $widgetsArray = [
     
     'Gallery_Box' => [
             'name'  => __( 'Gallery Box', 'ultraaddons' ),
-            'is_pro'   => false,
+            'is_pro'   => true,
             'icon'      => 'eicon-gallery-justified',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -233,7 +233,7 @@ $widgetsArray = [
     
     'Info_Boards' => [
             'name'  => __( 'Info Boards', 'ultraaddons' ),
-            'is_pro'   => false,
+            'is_pro'   => true,
             'icon'      => 'eicon-form-horizontal',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -578,7 +578,7 @@ $widgetsArray = [
     ],
     'Polar_Chart'=> [
         'name'      => __( 'Polar Chart', 'ultraaddons' ),
-        'is_pro'   => false,
+        'is_pro'   => true,
         'icon'      => 'ua-icon-lifebuoy',
         'cat'       => [
             __( 'Chart', 'ultraaddons' ),
@@ -586,7 +586,7 @@ $widgetsArray = [
     ],
     'Doughnut_Chart'=> [
         'name'      => __( 'Doughnut Chart', 'ultraaddons' ),
-        'is_pro'   => false,
+        'is_pro'   => true,
         'icon'      => 'ua-icon-doughnut-lite',
         'cat'       => [
             __( 'Chart', 'ultraaddons' ),
@@ -595,7 +595,7 @@ $widgetsArray = [
   
     'Mixed_Chart'=> [
         'name'      => __( 'Mixed Chart', 'ultraaddons' ),
-        'is_pro'   => false,
+        'is_pro'   => true,
         'icon'      => 'ua-icon-bar-chart',
         'cat'       => [
             __( 'Chart', 'ultraaddons' ),
@@ -603,7 +603,7 @@ $widgetsArray = [
     ],
     'Radar_Chart'=> [
         'name'      => __( 'Radar Chart', 'ultraaddons' ),
-        'is_pro'   => false,
+        'is_pro'   => true,
         'icon'      => 'ua-icon-radar',
         'cat'       => [
             __( 'Chart', 'ultraaddons' ),
@@ -619,7 +619,7 @@ $widgetsArray = [
     ],
     'Formidable_Form'=> [
         'name'      => __( 'Formidable Form', 'ultraaddons' ),
-        'is_pro'   => false,
+        'is_pro'   => true,
         'icon'      => 'ua-icon-formidable',
         'cat'       => [
             __( 'Forms', 'ultraaddons' ),

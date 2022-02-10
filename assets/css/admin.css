@@ -198,7 +198,7 @@ h1.ua-page-title {
     margin-top: 8px;*/
 }
 .ua-option-item:hover i.ua-option-icon {
-    border: 1px solid #b5b3b3;
+    /* border: 1px solid #b5b3b3; */
     color: #000000;
     /* border-radius: 5px; */
     background: transparent;
@@ -1205,5 +1205,11 @@ span.ua-add-new-variant:hover {
     background: #892c912e;
     box-shadow: 0 10px 30px #0000000d;
 
+}
+.d-none{
+    display: none !important;
+}
+.d-block{
+    display: block !important;
 }
 /* style for Custom font end */

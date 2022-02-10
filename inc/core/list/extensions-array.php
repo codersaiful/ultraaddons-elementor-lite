@@ -156,6 +156,21 @@ $extensionsArray = [
             ],
 
 
+            /**
+             * Target is that for this extension:
+             * User will be able to set condition for any content or section. 
+             */
+            'Conditional_Content' => [
+                'name'  => __( 'Conditional Content', 'ultraaddons' ),
+                'is_pro'   => true,
+                'icon'      => 'uicon-ultraaddons',
+                'cat'       => [
+                    __( 'Basic', 'ultraaddons' ),
+                ],
+                'tab' => Controls_Manager::TAB_ADVANCED,
+            ],
+
+
             
         ];
 
