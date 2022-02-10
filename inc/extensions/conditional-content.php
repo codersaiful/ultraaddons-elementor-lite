@@ -121,6 +121,7 @@ class Conditional_Content
 				'label_off' => esc_html__( 'Off', 'ultraaddons' ),
 				'return_value' => 'on',
 				'default' => 'off',
+				'prefix_class'=> 'ua-conditional-content-'
 			]
 		);
 
