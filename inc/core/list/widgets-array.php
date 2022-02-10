@@ -224,7 +224,7 @@ $widgetsArray = [
     
     'Gallery_Box' => [
             'name'  => __( 'Gallery Box', 'ultraaddons' ),
-            'is_pro'   => false,
+            'is_pro'   => true,
             'icon'      => 'eicon-gallery-justified',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
@@ -233,7 +233,7 @@ $widgetsArray = [
     
     'Info_Boards' => [
             'name'  => __( 'Info Boards', 'ultraaddons' ),
-            'is_pro'   => false,
+            'is_pro'   => true,
             'icon'      => 'eicon-form-horizontal',
             'cat'       => [
                 __( 'Basic', 'ultraaddons' ),
