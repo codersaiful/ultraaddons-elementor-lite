@@ -31,11 +31,53 @@ class Conditional_Content
      */
     public static function init() 
     {
+		
 		add_action( 'elementor/element/column/section_advanced/after_section_end', [ __CLASS__, 'add_controls_section' ], 1 );
 		add_action( 'elementor/element/section/section_advanced/after_section_end', [ __CLASS__, 'add_controls_section' ], 1 );
 		add_action( 'elementor/element/common/_section_style/after_section_end', [ __CLASS__, 'add_controls_section' ], 1 );
 
-		add_action( 'elementor/frontend/before_render', [ __CLASS__, 'before_render' ], 1 );
+		// add_action( 'elementor/frontend/before_render', [ __CLASS__, 'before_render' ], 1 );
+		add_filter( 'elementor/element/get_child_type', [ __CLASS__, 'get_child_type' ], 10, 2 );
+	}
+
+	public static function get_child_type( Element_Base $child_type, $element_data )
+	{
+		if( ! isset( $element_data['settings']['_ua_condc_switch'] ) ) return $child_type;
+
+		$switch = $element_data['settings']['_ua_condc_switch'];
+
+		if( $switch !== 'on' ) return $child_type;
+		
+		$settings = $element_data['settings'];
+
+
+        $visibility = $settings['_ua_condc_visibility'] ?? '';
+        $conds_post_ID = $settings['_ua_condc_post_ID'] ?? '';
+        $conds_user_role = $settings['_ua_condc_user_role'] ?? '';
+
+		if( empty( $conds_post_ID ) && empty( $conds_user_role ) ) return $child_type;
+
+		$c_post_ID = get_the_ID();
+		$c_user_ID = get_current_user_id();
+
+		// Get the user object.
+		$user = get_userdata( $c_user_ID );
+
+		// Get all the user roles as an array.
+		$user_roles = $user->roles;
+
+		if( $visibility == 'hide' ){
+
+
+			
+			return false;
+		}else if( $visibility == 'show' ){
+
+			
+			return $child_type;
+		}
+
+		return $child_type;
 	}
 
     /**
@@ -78,8 +120,9 @@ class Conditional_Content
 			'_ua_condc_visibility',
 			[
 				'label' => esc_html__( 'Content/Section Visibility', 'plugin-name' ),
-				'type' => \Elementor\Controls_Manager::SELECT,
-				'default' => 'show',
+				'type' => Controls_Manager::SELECT,
+				'default' => 'hide',
+				'label_block' => true,
 				'options' => [
 					'show'  => esc_html__( 'Visiable', 'plugin-name' ),
 					'hide' => esc_html__( 'Hidden', 'plugin-name' ),
@@ -90,7 +133,36 @@ class Conditional_Content
 			]
 		);
 
-		$repeater = new \Elementor\Repeater();
+		$element->add_control(
+			'_ua_condc_post_ID',
+			[
+				'label' => __( 'Post ID','ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => '',
+				'placeholder' => __( 'Enter your POST ID (Optional)','ultraaddons' ),
+				'label_block' => true,
+				'condition' => [
+                    '_ua_condc_switch'  => ['on'],
+                ],
+			]
+		);
+
+		$element->add_control(
+			'_ua_condc_user_role',
+			[
+				'label' => __( 'User Role','ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => '',
+				'placeholder' => __( 'Enter your User ID (Optional)','ultraaddons' ),
+				'label_block' => true,
+				'condition' => [
+                    '_ua_condc_switch'  => ['on'],
+                ],
+			]
+		);
+
+		/*************************************
+		 $repeater = new \Elementor\Repeater();
 
 		$repeater->add_control(
 			'_ua_condc_post_ID',
@@ -150,6 +222,7 @@ class Conditional_Content
             ]
         );
 
+		 //************************************/
         
 		
 		$element->add_control(
@@ -180,6 +253,17 @@ class Conditional_Content
 
 		$c_post_ID = get_the_ID();
 		$c_user_ID = get_current_user_id();
+
+		// Get the user object.
+		$user = get_userdata( $c_user_ID );
+
+		// Get all the user roles as an array.
+		$user_roles = $user->roles;
+
+		// var_dump($user_roles);
+
+
+
 
         
     }
