@@ -291,9 +291,14 @@
             $('[data-type="'+$getType+'"]').show();
        }
        if($getType=="free"){
-        $('[data-type="free"]').show();
-        $('[data-type="pro"]').hide();
+            $('[data-type="free"]').show();
+            $('[data-type="pro"]').hide();
        }
+       if($getType=="pro" && $getCategory){
+            console.log("Type: " + $getType + " " +  $getCategory);
+            $('[data-type="free"]').hide();
+           
+        }
        if($this=="all"){
             $('[data-category]').show();
         }
