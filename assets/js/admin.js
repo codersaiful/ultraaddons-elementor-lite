@@ -273,26 +273,58 @@
 
    let options = localStorage.getItem("options");
 
-   localStorage.removeItem('options');
+//    localStorage.removeItem('options');
   if( ! options ){
     let defaultOptions = {
-        list: 'all',
-        category: 'all'
+        list: 'free-pro-all',
+        category: 'category-all'
     };
     localStorage.setItem("options", JSON.stringify( defaultOptions ));
 
     options = localStorage.getItem("options");
   }
 
-  $(body).on('click','h1.ua-page-title',function(){
+  $(document.body).on('click','h1.ua-page-title',function(){
     setClassWrapper();
   });
+
+  $('.widget-free-pro-list li').on('click', function(){
+    options = localStorage.getItem("options");
+    options = JSON.parse(options);
+    options.list = $(this).data('target');
+
+    localStorage.setItem("options", JSON.stringify( options ));
+
+    setClassWrapper();
+  });
+
+  $('.widget-cat-list li').on('click', function(){
+    options = localStorage.getItem("options");
+    options = JSON.parse(options);
+    options.category = $(this).data('target');
+
+    localStorage.setItem("options", JSON.stringify( options ));
+
+    setClassWrapper();
+  });
+
+  
+
+  setClassWrapper();
   function setClassWrapper(){
     options = localStorage.getItem("options");
     options = JSON.parse(options);
-    console.log(options);
-
     
+    let free_pro = options.list;
+    let category = options.category;
+
+    let wrapperSection = $('div.ua-sectioon-content');
+    wrapperSection.attr('free_pro', free_pro);
+    wrapperSection.attr('category', category);
+
+    $('.category-list ul li').removeClass('active');
+    $('.category-list ul li[data-target=' + free_pro + ']').addClass('active');
+    $('.category-list ul li[data-target=' + category + ']').addClass('active');
   }
 
 
