@@ -76,6 +76,8 @@ class Conditional_Content
 		$user_roles = $user->roles;
 		$g_child_type = $should_render;
 		
+		$user_roles = is_array( $user_roles ) ? $user_roles : array();
+
 		if( $visibility == 'hide' ){
 			$g_child_type =  $c_post_ID == $conds_post_ID || in_array( $conds_user_role, $user_roles ) ? false : $should_render;
 		}else if( $visibility == 'show' ){
