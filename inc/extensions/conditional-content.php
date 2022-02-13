@@ -44,6 +44,7 @@ class Conditional_Content
 
 	public static function should_render( $should_render, Element_Base $element )
 	{
+		
 		if( 'section' !== $element->get_name() ) return $should_render;
 
 		if( Plugin::$instance->editor->is_edit_mode() ) return $should_render;
@@ -56,13 +57,15 @@ class Conditional_Content
 		
 		if( $switch !== 'on' ) return $should_render;
 		
-
+		//var_dump($settings['_ua_condc_visibility']);
         $visibility = $settings['_ua_condc_visibility'] ?? '';
         $conds_post_ID = $settings['_ua_condc_post_ID'] ?? '';
         $conds_user_role = $settings['_ua_condc_user_role'] ?? '';
+		$conds_post_ID = (int) $conds_post_ID;
 
+		
 		if( empty( $conds_post_ID ) && empty( $conds_user_role ) ) return $should_render;
-
+		
 		$c_post_ID = get_the_ID();
 		$c_user_ID = get_current_user_id();
 
@@ -72,19 +75,13 @@ class Conditional_Content
 		// Get all the user roles as an array.
 		$user_roles = $user->roles;
 		$g_child_type = $should_render;
-		if( $visibility == 'show' ){
-			if($c_post_ID == $conds_post_ID || in_array( $conds_user_role, $user_roles )){
-				$g_child_type =  false;
-			}
-			$g_child_type =  $should_render;
-			
-		}else if( $visibility == 'hide' ){
-			if($c_post_ID == $conds_post_ID || in_array( $conds_user_role, $user_roles )){
-				$g_child_type =  $should_render;
-			}
-			$g_child_type =  false;
-		}
 		
+		if( $visibility == 'hide' ){
+			$g_child_type =  $c_post_ID == $conds_post_ID || in_array( $conds_user_role, $user_roles ) ? false : $should_render;
+		}else if( $visibility == 'show' ){
+			$g_child_type = $c_post_ID == $conds_post_ID || in_array( $conds_user_role, $user_roles ) ? $should_render : false;
+			
+		}
 		return $g_child_type;
 	}
 
@@ -133,8 +130,8 @@ class Conditional_Content
 				'default' => 'hide',
 				'label_block' => true,
 				'options' => [
-					'show'  => esc_html__( 'Visiable', 'plugin-name' ),
-					'hide' => esc_html__( 'Hidden', 'plugin-name' ),
+					'show'  => esc_html__( 'Show', 'plugin-name' ),
+					'hide' => esc_html__( 'Hide', 'plugin-name' ),
 				],
 				'condition' => [
                     '_ua_condc_switch'  => ['on'],
