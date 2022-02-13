@@ -36,7 +36,7 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
             <ul class="widget-free-pro-list">
                 <li class="wid-cat-wise-target" data-target="free"><?php echo esc_html__( "Free", "ultraaddons" ); ?></li>
                 <li class="wid-cat-wise-target" data-target="pro"><?php echo esc_html__( "Premium", "ultraaddons" ); ?></li>
-                <li class="wid-cat-wise-target active" data-target="all"><?php echo esc_html__( "All", "ultraaddons" ); ?></li>
+                <li class="wid-cat-wise-target active" data-target="free-pro-all"><?php echo esc_html__( "All", "ultraaddons" ); ?></li>
             </ul>
             <ul class="widget-cat-list" >
             <?php
@@ -47,7 +47,7 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
                 $c_name = str_replace( '_', ' ', $cat );
                 $wid_cats[$cat] =  $c_name;
             }
-            $wid_cats['all'] = esc_html__( 'All', 'ultraaddons' );
+            $wid_cats['category-all'] = esc_html__( 'All', 'ultraaddons' );
 
             foreach( $wid_cats as $wid_cat_key => $wid_cat ){
                 $active_class = $wid_cat_key == 'all' ? 'active' : '';
