@@ -38,7 +38,7 @@ class Card extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua', 'Card', 'profile', 'info box' ];
+        return [ 'ultraaddons', 'ua', 'card', 'profile', 'info box' ];
     }
 	
 	 /**
@@ -708,10 +708,8 @@ class Card extends Base{
 		<div class="ua-card <?php echo $row; ?>">
 			<div <?php echo $this->get_render_attribute_string( 'card_avatar_class' );?>>
 			<?php 
-			if(!empty($url)){
-				echo '<a href="' . $url. '"' . $target . $nofollow . ' class="ua-card-avatar-link">
-				<img  class="ua-card-avatar" src="' . $settings['_ua_card_image']['url'] .'"/>
-				</a>';
+			if(!empty($settings['_ua_card_image']['url'])){
+				echo '<img  class="ua-card-avatar" src="' . $settings['_ua_card_image']['url'] .'">';
 			}
 			?>
 			</div>
