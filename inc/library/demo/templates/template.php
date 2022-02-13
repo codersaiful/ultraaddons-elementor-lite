@@ -4,7 +4,7 @@
  * 
  * 'back_button_text' => esc_html__( 'Back to Library', 'ultraaddons' ),
             'lern_more_message' => esc_html__( 'Learn more about UltraAddons Template Library.', 'ultraaddons' ),
-            'page_template' => 'https://ultraaddons.com/page-templates/',
+            'page_template' => 'https://ultraaddons.com/templates/',
  */
 use UltraAddons\Library\Demo\Theme_Demo;
 
@@ -14,7 +14,7 @@ $theme_info = Theme_Demo::get_demo_info();
 
 $back_button_text = $theme_info['back_button_text'] ?? __( 'Back to Library', 'ultraaddons' );
 $library_icon = $theme_info['library_icon'] ?? 'uicon-ultraaddons';
-$page_templates = $theme_info['page_templates'] ?? 'https://ultraaddons.com/page-templates/';
+$page_templates = $theme_info['page_templates'] ?? 'https://ultraaddons.com/templates/';
 $lern_more_message = $theme_info['lern_more_message'] ?? __( 'Learn more about UltraAddons Template Library.', 'ultraaddons' );
 
 ?>
