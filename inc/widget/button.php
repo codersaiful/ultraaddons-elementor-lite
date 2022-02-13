@@ -186,7 +186,7 @@ class Button extends Base{
         $this->add_control(
 			'icon_size',
 			[
-				'label' => esc_html__( 'Size', 'ultraaddons' ),
+				'label' => esc_html__( 'Icon Size', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%' ],
 				'range' => [
@@ -202,7 +202,7 @@ class Button extends Base{
 				],
 				'default' => [
 					'unit' => 'px',
-					'size' => '',
+					'size' => '16',
 				],
 				'selectors' => [
 					'{{WRAPPER}} .ua-btn i' => 'font-size: {{SIZE}}{{UNIT}};',

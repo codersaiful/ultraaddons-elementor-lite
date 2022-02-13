@@ -45,6 +45,7 @@ class Breadcrumb extends Base{
         
         //For General Section
         $this->content_general_controls();
+        $this->wrapper_controls();
 
        
     }
@@ -63,7 +64,7 @@ class Breadcrumb extends Base{
         $this->separator = ! empty( $settings['separator_sign'] ) ? $settings['separator_sign'] : '/';
         ?>
         <div class="ua-breadcrumb-wrapper" >
-            <div class="breadcrumb-menu ultraaddons-breadcrumb-menu">
+            <div class="ua-breadcrumb-menu ultraaddons-breadcrumb-menu">
                 <?php $this->breadcrumb(); ?>
             </div>
         </div>    
@@ -77,6 +78,71 @@ class Breadcrumb extends Base{
      * 
      * @since 1.0.0.9
      */
+    protected function wrapper_controls() {
+        $this->start_controls_section(
+            'wraper_style',
+            [
+                'label'     => esc_html__( 'Box', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+        
+        $this->add_control(
+            'wraper_bg',
+            [
+                'label'     => __( 'Background', 'ultraaddons' ),
+                'type'      => Controls_Manager::COLOR,
+                'scheme'    => [
+                    'type'  => Color::get_type(),
+                    'value' => Color::COLOR_1,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .ultraaddons-breadcrumb' => 'background-color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'border',
+				'label' => esc_html__( 'Border', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ultraaddons-breadcrumb',
+			]
+		);
+        $this->add_control(
+			'wrap_padding',
+			[
+				'label' => esc_html__( 'Padding', 'ultraaddons' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .ultraaddons-breadcrumb' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_control(
+			'border_radius',
+			[
+				'label' => esc_html__( 'Border radius', 'ultraaddons' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .ultraaddons-breadcrumb' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'box_shadow',
+				'label' => esc_html__( 'Box Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ultraaddons-breadcrumb',
+			]
+		);
+
+        
+        $this->end_controls_section();
+    }
     protected function content_general_controls() {
         $this->start_controls_section(
             'general_content',
@@ -111,7 +177,7 @@ class Breadcrumb extends Base{
         $this->add_control(
             'heading_alignment',
                 [
-                    'label'         => esc_html__( 'Heading', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Align', 'ultraaddons' ),
                     'type'          => Controls_Manager::CHOOSE,
                     'options' => [
                         'left' => [
@@ -136,7 +202,7 @@ class Breadcrumb extends Base{
         $this->add_control(
             'link_color',
             [
-                'label'     => __( 'Color', 'ultraaddons' ),
+                'label'     => __( 'Menu Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
                 'scheme'    => [
                     'type'  => Color::get_type(),
@@ -144,6 +210,34 @@ class Breadcrumb extends Base{
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .ua-breadcrumb-wrapper a' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'current_item',
+            [
+                'label'     => __( 'Current Menu Color', 'ultraaddons' ),
+                'type'      => Controls_Manager::COLOR,
+                'scheme'    => [
+                    'type'  => Color::get_type(),
+                    'value' => Color::COLOR_1,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .item-current.item' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'separator_color',
+            [
+                'label'     => __( 'Separator Color', 'ultraaddons' ),
+                'type'      => Controls_Manager::COLOR,
+                'scheme'    => [
+                    'type'  => Color::get_type(),
+                    'value' => Color::COLOR_1,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .seperator' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -158,12 +252,11 @@ class Breadcrumb extends Base{
                     'value' => Color::COLOR_1,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .ua-breadcrumb-wrapper a:' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .ua-breadcrumb-wrapper .item a:hover' => 'color: {{VALUE}}',
                 ],
             ]
         );
 
-        
         $this->add_group_control(
                 Group_Control_Typography::get_type(),
                 [
@@ -182,9 +275,7 @@ class Breadcrumb extends Base{
     
     
     private function breadcrumb() {
-            
-            
-        $settings           = $this->get_settings_for_display();
+        $settings = $this->get_settings_for_display();
         $this->home = ! empty( $settings['home_title'] ) ? $settings['home_title'] : esc_html( 'Home', 'ultraaddons' );
         $this->separator = ! empty( $settings['separator_sign'] ) ? $settings['separator_sign'] : '/';
 
