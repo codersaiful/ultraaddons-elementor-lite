@@ -284,9 +284,7 @@
     options = localStorage.getItem("options");
   }
 
-  $(document.body).on('click','h1.ua-page-title',function(){
-    setClassWrapper();
-  });
+
 
   $('.widget-free-pro-list li').on('click', function(){
     options = localStorage.getItem("options");
@@ -318,9 +316,8 @@
     let free_pro = options.list;
     let category = options.category;
 
-    let wrapperSection = $('div.ua-sectioon-content');
 
-    let allSelector = 'div.ua-sectioon-content .ua-option-item';
+    let allSelector = 'div.ua-widgets-page div.ua-sectioon-content .ua-option-item';
     $(allSelector).fadeOut('fast');
 
     
