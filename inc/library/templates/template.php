@@ -158,6 +158,6 @@ defined( 'ABSPATH' ) || exit;
 	<div class="elementor-template-library-blank-message"></div>
 	<div class="elementor-template-library-blank-footer">
 		<?php esc_html_e( 'Learn more about UltraAddons Template Library.', 'ultraaddons' ); ?>
-		<a class="elementor-template-library-blank-footer-link" href="https://ultraaddons.com/template-library" target="_blank"><?php echo __( 'Click here', 'ultraaddons' ); ?></a>
+		<a class="elementor-template-library-blank-footer-link" href="https://ultraaddons.com/templates/" target="_blank"><?php echo __( 'Click here', 'ultraaddons' ); ?></a>
 	</div>
 </script>
