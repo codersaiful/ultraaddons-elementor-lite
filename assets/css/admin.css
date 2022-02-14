@@ -1213,3 +1213,8 @@ span.ua-add-new-variant:hover {
     display: block !important;
 }
 /* style for Custom font end */
+
+
+/* div.ua-sectioon-content .ua-option-item{display: none;}
+div.ua-sectioon-content[category='category-all'] .ua-option-item{display: block;}
+div.ua-sectioon-content[free_pro='free-pro-all'] .ua-option-item{display: block;} */

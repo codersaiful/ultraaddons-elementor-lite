@@ -15,14 +15,14 @@ if( $updated ){
 
 
 $items = Widgets_Manager::widgets();
-$items['More'] = [
-            'name'      => __( 'More Widget Comming Soon ....', 'ultraaddons' ),
-            'is_pro'   => true,
-            'icon'      => 'uicon-ultraaddons',//eicon-global-colors
-            'cat'       => [
-                __( 'Basic', 'ultraaddons' ),
-            ],
-    ];
+// $items['More'] = [
+//             'name'      => __( 'More Widget Comming Soon ....', 'ultraaddons' ),
+//             'is_pro'   => true,
+//             'icon'      => 'uicon-ultraaddons',//eicon-global-colors
+//             'cat'       => [
+//                 __( 'Basic', 'ultraaddons' ),
+//             ],
+//     ];
 $disable_items = Widgets_Manager::disableWidgetKeys();
 ?>
 
@@ -36,7 +36,7 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
             <ul class="widget-free-pro-list">
                 <li class="wid-cat-wise-target" data-target="free"><?php echo esc_html__( "Free", "ultraaddons" ); ?></li>
                 <li class="wid-cat-wise-target" data-target="pro"><?php echo esc_html__( "Premium", "ultraaddons" ); ?></li>
-                <li class="wid-cat-wise-target active" data-target="all"><?php echo esc_html__( "All", "ultraaddons" ); ?></li>
+                <li class="wid-cat-wise-target active" data-target="free-pro-all"><?php echo esc_html__( "All", "ultraaddons" ); ?></li>
             </ul>
             <ul class="widget-cat-list" >
             <?php
@@ -47,7 +47,7 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
                 $c_name = str_replace( '_', ' ', $cat );
                 $wid_cats[$cat] =  $c_name;
             }
-            $wid_cats['all'] = esc_html__( 'All', 'ultraaddons' );
+            $wid_cats['category-all'] = esc_html__( 'All', 'ultraaddons' );
 
             foreach( $wid_cats as $wid_cat_key => $wid_cat ){
                 $active_class = $wid_cat_key == 'all' ? 'active' : '';
@@ -110,7 +110,7 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
                              data-object_name="<?php echo esc_attr( $class_name ); ?>"
                              data-category="<?php echo esc_attr( implode( ',', $cat ) ); ?>"
                              data-type="<?php echo esc_attr( $free_pro ); ?>"
-                             class="ua-option-item <?php echo esc_attr( implode( " ", $html_class ) ); ?>">
+                             class="ua-option-item <?php echo esc_attr( implode( " ", $html_class ) ); ?> <?php echo esc_attr( implode( ',', $cat ) ); ?>">
                             <div class="ua-option-item-inside">
                                 <span class="ua-option-version-type ua-option-version-type-<?php echo esc_attr( $free_pro ); ?>"><?php echo $free_pro == 'pro' ? esc_html__( 'Pro', 'ultraaddons' ) : esc_html__( 'Free', 'ultraaddons' ); ?></span>
                                 <i class="ua-option-icon <?php echo esc_attr( $icon ); ?>"></i>

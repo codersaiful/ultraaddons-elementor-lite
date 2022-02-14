@@ -260,78 +260,93 @@
       
   });
 
-    /**
-     * Script for Widget List Filter on Dashboard
-     * @author BM Rafiul Alam
-     * @since 1.1.0.10
-     */
-   
-    $('[data-category]').show();
-    localStorage.removeItem('category');
-    localStorage.removeItem('type');
-    //Pro-Free 
-    $('.widget-free-pro-list li').on('click', function(){
-        $('.widget-free-pro-list li').removeClass('active');
-        $(this).addClass('active');
 
-        var $this= $(this).data('target');
-        localStorage.setItem('type', $this);
+  /**
+   * Widget filter
+   * Here was noman's code
+   * I(Saiful) removed that code
+   * need to recode
+   * 
+   * @author Saiful
+   * @Since 1.1.0.10
+   */
 
-        var $getCategory    = localStorage.getItem('category');
-        var $getType        = localStorage.getItem('type');
+   let options = localStorage.getItem("options");
 
-        if($getCategory ){
-            $('[data-category]').hide();
-            $('[data-category="'+$getCategory+'"]').show();
-            console.log("Category:  " + $getCategory);
-        }
-        if($getType=="pro" ){
-            console.log("Type: " + $getType);
-            $('[data-type="free"]').hide();
-            $('[data-type="'+$getType+'"]').show();
-       }
-       if($getType=="free"){
-            $('[data-type="free"]').show();
-            $('[data-type="pro"]').hide();
-       }
-       if($getType=="pro" && $getCategory){
-            console.log("Type: " + $getType + " " +  $getCategory);
-            $('[data-type="free"]').hide();
-           
-        }
-       if($this=="all"){
-            $('[data-category]').show();
-        }
-        
-     });
+//    localStorage.removeItem('options');
+  if( ! options ){
+    let defaultOptions = {
+        list: 'free-pro-all',
+        category: 'category-all'
+    };
+    localStorage.setItem("options", JSON.stringify( defaultOptions ));
 
-     //Category
-     $('.widget-cat-list li').on('click', function(){
-        $('.widget-cat-list li').removeClass('active');
-        $(this).addClass('active');
-        var $this= $(this).data('target');
-        localStorage.setItem('category', $this);
-        var $getCategory    = localStorage.getItem('category');
-        var $getType        = localStorage.getItem('type');
+    options = localStorage.getItem("options");
+  }
 
-        if($getCategory ){
-            $('[data-category]').hide();
-            $('[data-category="'+$getCategory+'"]').show();
-            console.log("Category:  " + $getCategory);
-        }
-        if($getType=="pro" ){
-            console.log("Type: " + $getType);
-            $('[data-type="free"]').hide();
-            $('[data-type="'+$getType+'"]').show();
-       }
-       if($getType=="free"){
-           console.log("Type: " + $getType + " Category:  " + $getCategory);
-       }
-       if($this=="all"){
-        $('[data-category]').show();
+  $(document.body).on('click','h1.ua-page-title',function(){
+    setClassWrapper();
+  });
+
+  $('.widget-free-pro-list li').on('click', function(){
+    options = localStorage.getItem("options");
+    options = JSON.parse(options);
+    options.list = $(this).data('target');
+
+    localStorage.setItem("options", JSON.stringify( options ));
+
+    setClassWrapper();
+  });
+
+  $('.widget-cat-list li').on('click', function(){
+    options = localStorage.getItem("options");
+    options = JSON.parse(options);
+    options.category = $(this).data('target');
+
+    localStorage.setItem("options", JSON.stringify( options ));
+
+    setClassWrapper();
+  });
+
+  
+
+  setClassWrapper();
+  function setClassWrapper(){
+    options = localStorage.getItem("options");
+    options = JSON.parse(options);
+    
+    let free_pro = options.list;
+    let category = options.category;
+
+    let wrapperSection = $('div.ua-sectioon-content');
+
+    let allSelector = 'div.ua-sectioon-content .ua-option-item';
+    $(allSelector).fadeOut('fast');
+
+    
+
+    $('.category-list ul li').removeClass('active');
+    $('.category-list ul li[data-target=' + free_pro + ']').addClass('active');
+    $('.category-list ul li[data-target=' + category + ']').addClass('active');
+
+
+    let fremum_class = '.' + free_pro;
+    let category_class = '.' + category;
+    if( free_pro === 'free-pro-all' ){
+        fremum_class = '';
     }
+    
+    if( category === 'category-all' ){
+        category_class = '';
+    }
+    let targetSelector = allSelector + fremum_class + category_class;
+    console.log(targetSelector);
+    $(targetSelector).fadeIn('medium');
 
-    });
+  }
+
+
+  
 
 } (jQuery, window));
 

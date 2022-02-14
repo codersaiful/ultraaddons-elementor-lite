@@ -102,7 +102,7 @@ class Theme_Demo{
             'library_title'     => esc_html__( "THEME DEMOS", 'ultraaddons' ),
             'back_button_text' => esc_html__( 'Back to Library', 'ultraaddons' ),
             'lern_more_message' => esc_html__( 'Learn more about UltraAddons Template Library.', 'ultraaddons' ),
-            'page_templates' => 'https://ultraaddons.com/page-templates/',
+            'page_templates' => 'https://ultraaddons.com/templates/',
 
         ];
         $merrged_args = wp_parse_args( self::$theme_demo_args, $default_args );
