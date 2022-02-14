@@ -116,7 +116,7 @@ html.remodal-is-locked {
 /* Default theme styles of the overlay */
 
 .remodal-overlay {
-  background: rgba(43, 46, 56, 0.9);
+  background: rgb(48 55 76 / 67%);
 }
 
 .remodal-overlay.remodal-is-opening,
@@ -410,4 +410,7 @@ html.remodal-is-locked {
 
 .lt-ie9 .remodal {
   width: 700px;
+}
+.remodal-confirm:hover{
+  color:#fff
 }

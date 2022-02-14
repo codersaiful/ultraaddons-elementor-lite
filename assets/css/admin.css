@@ -1,415 +1,1260 @@
-/*
- *  Remodal - v1.1.1
- *  Responsive, lightweight, fast, synchronized with CSS animations, fully customizable modal window plugin with declarative configuration and hash tracking.
- *  http://vodkabears.github.io/remodal/
- *
- *  Made by Ilya Makarov
- *  Under MIT License
- */
 
-/* ==========================================================================
-   Remodal's necessary styles
-   ========================================================================== */
+/*********** UltraAddons Style - In Plugin List ****************/
+/*.ultraaddons-color-heading,addons-ultraaddons-elementor-pro*/
+p.ultraaddons-info,
+table.wp-list-table.widefat.plugins tr[data-slug='addons-ultraaddons-elementor'] td.plugin-title.column-primary strong,
+table.wp-list-table.widefat.plugins tr[data-slug='ultraaddons-elementor-lite'] td.plugin-title.column-primary strong,
+table.wp-list-table.widefat.plugins tr[data-slug='addons-ultraaddons-elementor-pro'] td.plugin-title.column-primary strong,
+#elementor-panel-category-addons-ultraaddons .elementor-panel-category-title{
+    color: #db3157;
+    background: linear-gradient(to right, #532d70 0%, #db3157 45%);
+    background: -webkit-linear-gradient(to right, #532d70 4%, #db3157 58%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /*transition: 10s all;*/
+    animation-name: ultraaddons-background-animation !important;
+    animation-duration: 2.5s; 
+    animation-timing-function: ease-out; 
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-fill-mode: none;
+    animation-play-state: running;
+}
+.elementor-element.elementor-element-edit-mode.elementor-element--toggle-edit-tools.elementor-widget.elementor-widget-ultraaddons-wc-categories.ua-element.ua-element-wc-categories{
+    
+}
+/*.ultraaddons-color-heading:hover,*/
+p.ultraaddons-info:hover,
+table.wp-list-table.widefat.plugins tr[data-slug='addons-ultraaddons-elementor']:hover td.plugin-title.column-primary strong,
+table.wp-list-table.widefat.plugins tr[data-slug='ultraaddons-elementor-lite']:hover td.plugin-title.column-primary strong,
+table.wp-list-table.widefat.plugins tr[data-slug='addons-ultraaddons-elementor-pro']:hover td.plugin-title.column-primary strong,
+#elementor-panel-category-addons-ultraaddons:hover .elementor-panel-category-title {
+    background: linear-gradient(to right, #ff0039 0%,#411365 45%);
+    background: -webkit-linear-gradient(to right, #ff0039 0%,#411365 100%, #ff0039 68%);
+    /*#411365*/
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+@keyframes ultraaddons-background-animation {
+  0% {
+    background: linear-gradient(to right, #532d70 0%, #db3157 45%);
+    background: -webkit-linear-gradient(to right, #532d70 4%, #db3157 58%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+  }
+  100% {
+    background: linear-gradient(to right, #532d70 40%, #db3157 95%);
+    background: -webkit-linear-gradient(to right, #532d70 40%, #db3157 87%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+/*********** UltraAddons Style - In Plugin List | End Here ****************/
+/*****UltraAddons Menu item in Dashboard********/
+#adminmenu li.menu-top a.wp-has-submenu.wp-not-current-submenu.menu-top.toplevel_page_ultraaddons-elementor-lite.menu-top-last {
+    background: linear-gradient( 0deg, #673ab740, #0000002e);
+    background: -webkit-linear-gradient( 0deg, #673ab740, #0000002e);
+/*    border-top: 1px solid #ffffff29;
+    border-bottom: 1px solid black;*/
+/*    animation-name: ultraaddons-menu-bg-animation !important;
+    animation-duration: 1.05s; 
+    animation-timing-function: ease-out; 
+    animation-delay: 0;
+    animation-direction: forwards;
+    animation-iteration-count: infinite;
+    animation-fill-mode: none;
+    animation-play-state: running;*/
+}
+/*@keyframes ultraaddons-menu-bg-animation {
+  0% {
+        background: linear-gradient( 0deg, #673ab740, #e91e6391);
+        background: -webkit-linear-gradient( 0deg, #673ab740, #e91e6391);
+  }
+  100% {
+        background: linear-gradient( 360deg, #673ab740, #e91e6391);
+        background: -webkit-linear-gradient( 360deg, #673ab740, #e91e6391);
+  }
+}*/
+/*****UltraAddons Menu item in Dashboard | END********/
 
-/* Hide scroll bar */
+/****************** Menu Text in Dashboard **********************/
+li#toplevel_page_ultraaddons-elementor-lite.wp-has-submenu.wp-has-current-submenu.wp-menu-open .wp-menu-image img {
+    max-width: 20px;
+}
+li#toplevel_page_ultraaddons-elementor-lite.wp-has-submenu.wp-has-current-submenu.wp-menu-open.current .wp-menu-image img {
+    opacity: 1;
+}
 
-html.remodal-is-locked {
+/*#adminmenu a.toplevel_page_ultraaddons-elementor{
+    background: linear-gradient(to right, #ff0039 41%,#9822f4 100%)
+    background: -webkit-linear-gradient(to right, #ff0039 0%,#411365 100%, #9822f4 68%);
+    #411365
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}*/
+/****************** Menu Text in Dashboard | END **********************/
+
+
+
+
+
+
+/***** Menu Page Start*******/
+.ultraaddons-license-details, .ultraaddons-dashboard-area {
+    background: #f1f4fa;
+    padding: 10px 0;
+    border-radius: 3px;
+    margin-top: 20px;
+    color: #000;
+    webkit-box-shadow: 0 5px 40px 0 rgba(10, 10, 25, .1);
+    -moz-box-shadow: 0 5px 40px 0 rgba(10, 10, 25, .1);
+    /* box-shadow: 0 2px 5px 0 rgb(10 5 10 / 5%); */
     overflow: hidden;
-  
-    -ms-touch-action: none;
-    touch-action: none;
-  }
-  
-  /* Anti FOUC */
-  
-  .remodal,
-  [data-remodal-id] {
-    display: none;
-  }
-  
-  /* Necessary styles of the overlay */
-  
-  .remodal-overlay {
-    position: fixed;
-    z-index: 9999;
-    top: -5000px;
-    right: -5000px;
-    bottom: -5000px;
-    left: -5000px;
-  
-    display: none;
-  }
-  
-  /* Necessary styles of the wrapper */
-  
-  .remodal-wrapper {
-    position: fixed;
-    z-index: 10000;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-  
-    display: none;
-    overflow: auto;
-  
-    text-align: center;
-  
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  .remodal-wrapper:after {
-    display: inline-block;
-  
-    height: 100%;
-    margin-left: -0.05em;
-  
-    content: "";
-  }
-  
-  /* Fix iPad, iPhone glitches */
-  
-  .remodal-overlay,
-  .remodal-wrapper {
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-  }
-  
-  /* Necessary styles of the modal dialog */
-  
-  .remodal {
-    position: relative;
-  
-    outline: none;
-  
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-  }
-  
-  .remodal-is-initialized {
-    /* Disable Anti-FOUC */
-    display: inline-block;
-  }
-  
-  /*
-   *  Remodal - v1.1.1
-   *  Responsive, lightweight, fast, synchronized with CSS animations, fully customizable modal window plugin with declarative configuration and hash tracking.
-   *  http://vodkabears.github.io/remodal/
-   *
-   *  Made by Ilya Makarov
-   *  Under MIT License
-   */
-  
-  /* ==========================================================================
-     Remodal's default mobile first theme
-     ========================================================================== */
-  
-  /* Default theme styles for the background */
-  
-  .remodal-bg.remodal-is-opening,
-  .remodal-bg.remodal-is-opened {
-    -webkit-filter: blur(3px);
-    filter: blur(3px);
-  }
-  
-  /* Default theme styles of the overlay */
-  
-  .remodal-overlay {
-    background: rgba(43, 46, 56, 0.9);
-  }
-  
-  .remodal-overlay.remodal-is-opening,
-  .remodal-overlay.remodal-is-closing {
-    -webkit-animation-duration: 0.3s;
-    animation-duration: 0.3s;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-  }
-  
-  .remodal-overlay.remodal-is-opening {
-    -webkit-animation-name: remodal-overlay-opening-keyframes;
-    animation-name: remodal-overlay-opening-keyframes;
-  }
-  
-  .remodal-overlay.remodal-is-closing {
-    -webkit-animation-name: remodal-overlay-closing-keyframes;
-    animation-name: remodal-overlay-closing-keyframes;
-  }
-  
-  /* Default theme styles of the wrapper */
-  
-  .remodal-wrapper {
-    padding: 10px 10px 0;
-  }
-  
-  /* Default theme styles of the modal dialog */
-  
-  .remodal {
-    box-sizing: border-box;
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 35px;
-  
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  
-    color: #2b2e38;
-    background: #fff;
-  }
-  
-  .remodal.remodal-is-opening,
-  .remodal.remodal-is-closing {
-    -webkit-animation-duration: 0.3s;
-    animation-duration: 0.3s;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-  }
-  
-  .remodal.remodal-is-opening {
-    -webkit-animation-name: remodal-opening-keyframes;
-    animation-name: remodal-opening-keyframes;
-  }
-  
-  .remodal.remodal-is-closing {
-    -webkit-animation-name: remodal-closing-keyframes;
-    animation-name: remodal-closing-keyframes;
-  }
-  
-  /* Vertical align of the modal dialog */
-  
-  .remodal,
-  .remodal-wrapper:after {
-    vertical-align: middle;
-  }
-  
-  /* Close button */
-  
-  .remodal-close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: block;
-    overflow: visible;
-    width: 35px;
-    height: 35px;
-    margin: 0;
-    padding: 0;
-    cursor: pointer;
-    -webkit-transition: color 0.2s;
-    transition: color 0.2s;
-    text-decoration: none;
-    color: #95979c;
-    border: 0;
-    outline: 0;
+}
+.ultraaddons-admin-wrapper {
     background: transparent;
-  }
-  
-  .remodal-close:hover,
-  .remodal-close:focus {
-    color: #2b2e38;
-  }
-  
-  .remodal-close:before {
-    font-family: Arial, "Helvetica CY", "Nimbus Sans L", sans-serif !important;
-    font-size: 25px;
-    line-height: 35px;
-  
-    position: absolute;
-    top: 0;
-    left: 0;
-  
-    display: block;
-  
-    width: 35px;
-  
-    content: "\00d7";
-    text-align: center;
-  }
-  
-  /* Dialog buttons */
-  
-  .remodal-confirm,
-  .remodal-cancel {
-    font: inherit;
-  
-    display: inline-block;
-    overflow: visible;
-  
-    min-width: 110px;
-    margin: 0;
-    padding: 12px 0;
-  
-    cursor: pointer;
-    -webkit-transition: background 0.2s;
-    transition: background 0.2s;
-    text-align: center;
-    vertical-align: middle;
-    text-decoration: none;
-  
-    border: 0;
-    outline: 0;
-  }
-  
-  .remodal-confirm {
-    color: #fff;
-    background: #7320e4;
-  }
-  
-  .remodal-confirm:hover,
-  .remodal-confirm:focus {
-    background: #0c51b9;
-    color: #fff;
-  }
-  
-  .remodal-cancel {
-    color: #fff;
-    background: #e57373;
-  }
-  
-  .remodal-cancel:hover,
-  .remodal-cancel:focus {
-    background: #ef5350;
-  }
-  
-  /* Remove inner padding and border in Firefox 4+ for the button tag. */
-  
-  .remodal-confirm::-moz-focus-inner,
-  .remodal-cancel::-moz-focus-inner,
-  .remodal-close::-moz-focus-inner {
     padding: 0;
-  
-    border: 0;
-  }
-  
-  /* Keyframes
-     ========================================================================== */
-  
-  @-webkit-keyframes remodal-opening-keyframes {
-    from {
-      -webkit-transform: scale(1.05);
-      transform: scale(1.05);
-  
-      opacity: 0;
+    border-radius: 0;
+    margin-top: 0;
+    color: #000;
+    max-width: 100%;
+}
+
+.about-wrap h3 {
+    margin: 1.25em 0 .6em;
+    font-size: 1.4em;
+    line-height: 1.5;
+}
+.system-status-table {
+    width: 100%;
+}
+.system-status-table tr td {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+h1.ultraaddons-color-heading {
+    font-weight: 400;
+    color: #691fe1;
+    color: #ffffff;
+    text-shadow: 2px 4px 7px #5050503d;
+    /* text-shadow: -5px 1px 0px #e0e0e0; */
+    /* background: linear-gradient(45deg, #d422fc, #2b1ed1); */
+    display: inline-block;
+    /* padding: 20px; */
+    /* -webkit-background-clip: text; */
+    /* -webkit-text-fill-color: transparent; */
+}
+smal.ultraaddons-version-in-title {
+    font-weight: 100;
+    color: #ffffff;
+    font-size: 50%;
+    background: #5656567a;
+    /* background: linear-gradient(212deg, #0000004f, #a9a9a9); */
+    padding: 0 9px 3px 9px;
+    border-radius: 3px;
+}
+p.ultraaddons-info {
+    font-size: 22px;
+}
+
+.ua-admin-header-wrapper {
+    /* display: flex; */
+    margin-bottom: 60px;
+    flex-direction: column;
+    padding: 10px 20px;
+    /* margin-top: 25px; */
+}
+
+.ua-header-menu {
+    display: block;
+    width: 100%;
+}
+
+/***** Menu Page End*******/
+
+/*********For Widget | Extenstion Menu List | Start *********/
+h1.ua-page-title {
+    font-size: 2em;
+    color: #673ab7;
+}
+
+.ua-header {
+    margin: 45px 0;
+    border-bottom: 1px solid #dddddd38;
+    padding-bottom: 15px;
+}
+.ua-option-item i.ua-option-icon {
+    font-size: 24px;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 4px;
+    color: #7320e4;
+    /* border: 1px solid #efefef; */
+    /* background: #ffffff05; */
+    height: 30px;
+    width: 30px;
+    /*    margin-bottom: 8px;
+    margin-top: 8px;*/
+}
+.ua-option-item:hover i.ua-option-icon {
+    /* border: 1px solid #b5b3b3; */
+    color: #673ab7;
+    /* border-radius: 5px; */
+    background: transparent;
+}
+.ua-option-item-wrappper {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 30px;
+    row-gap: 30px;
+    align-items: stretch;
+    margin: 45px 0;
+}
+
+.ua-option-item-wrappper .ua-option-item {
+    width: 276px;
+    position: relative;
+    overflow: hidden;
+    /* box-shadow: 0 5px 40px 0 rgb(10 10 25 / 10%); */
+    padding: 10px 10px;
+    text-align: center;
+    cursor: pointer;
+    background:white;
+    box-shadow: 0px 1px 1px rgb(51 62 119 / 12%);
+    border-radius: 5px;
+}
+.ua-option-item-wrappper .ua-option-item.free:hover {
+    box-shadow: 0 4px 20px 0 rgb(10 10 0 / 22%);
+    /*box-shadow: 0 5px 40px 0 rgb(10 10 25 / 10%);*/
+}
+
+.ua-option-item {
+}
+
+.ua-option-item-inside {
+    width: 100%;
+}
+span.ua-option-version-type{
+    position: absolute;
+    transform: rotate(311deg);
+    color: white;
+    width: 110px;
+    text-align: center;
+    top: -40px;
+    left: -63px;
+    height: 20px;
+    padding-top: 52px;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+span.ua-option-version-type.ua-option-version-type-pro {
+    background: #7320e4;
+}
+.item_on_off_enable.ua-option-item.disabled span.ua-option-version-type.ua-option-version-type-pro,
+.ua-option-item.disabled span.ua-option-version-type.ua-option-version-type-free{
+    background: #4caf50;
+}
+span.ua-option-version-type.ua-option-version-type-free {
+    background: #bfbfbf0d;/*#4caf50*/
+}
+h2.ua-item-name {
+    padding: 0;
+    margin: 10px auto;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+}
+.item_on_off_enable span.ua-option-version-type.ua-option-version-type-pro {
+    background: #607d8b;
+    border-bottom: 1px solid black;
+    color: white;
+}
+.ua-option-item-wrappper .ua-option-item.item_on_off_disable {
+    background: #ffffff;
+}
+
+.category-list ul {
+    list-style: none;
+    display: inline-block;
+    /* border: 1px solid #ddddddb8; */
+    padding: 0px;
+    margin: 0;
+    background: #f1f4fa;
+}
+
+.category-list ul>li {
+    display: inline-block;
+    background: #ffffff;
+    padding: 12px;
+    margin: 1px;
+    color: black;
+    cursor: pointer;
+    transition: .3s all;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+}
+
+.category-list ul.widget-free-pro-list {
+    margin-right: 20px;
+}
+
+.category-list ul>li:hover,.category-list ul>li.active {
+    background: #7320e4;
+    color: white;
+}
+
+/* for More */
+.ua-option-item-wrappper label.ua-option-item.More {
+    background: #ffffff !important;
+    opacity: 1 !important;
+/*    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;*/
+}
+
+.ua-option-item-wrappper label.ua-option-item.More .ua-designed-checkbox {
+    /*background: #f06c99;*/
+}
+
+.ua-option-item-wrappper label.ua-option-item.More span.ua-option-version-type.ua-option-version-type-pro {
+    background: #ff9800;
+    font-size: 0;
+}
+
+.ua-option-item-wrappper label.ua-option-item.More h2.ua-item-name {font-style: italic;font-weight: bold;}
+.ua-option-item-wrappper label.ua-option-item.More .ua-designed-checkbox:before{
+    animation-name: ultraaddons-animated-on-off;
+    animation-duration: .4s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+@keyframes ultraaddons-animated-on-off {
+  from {left: 12px;background-color: black;}
+  to {left: 35px;}
+}
+/*.ua-option-item-wrappper label.ua-option-item.More .ua-option-item-inside {
+    display: flex;
+    align-items: center;
+}*/
+/* for More End*/
+
+
+
+/**##### Checkbox ######**/
+.ua-designed-checkbox {
+    display: block;
+    height: 20px;
+    background: #7320e4;
+    width: 40px;
+    margin: auto;
+    border-radius: 16px;
+    position: relative;
+}
+.ua-designed-checkbox:before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    background: #ffffff;
+    z-index: 55;
+    position: absolute;
+    border-radius: 50%;
+    top: 4px;
+    left: 23px;
+    transition: .4s all;
+}
+.ua-checkbox-hidden:checked + .ua-designed-checkbox{
+    background: #eeeeee;
+}
+.ua-version-free .ua-option-item.pro .ua-designed-checkbox{
+    background: #d8dce9;
+    border: 1px solid #d8dce9;
+}
+.ua-checkbox-hidden:checked + .ua-designed-checkbox:before{
+    background: #ffffff;
+    left: 8px;
+}
+input.ua-checkbox-hidden {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+/**##### Checkbox | END ######**/
+
+/**##### Submit Button ######**/
+
+.ultraaddons-wrap button.ua-primary {
+    background: #7320e4;
+    border-color: #673ab7;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: none;
+    font-size: 1.2em;
+    padding: 3px 20px;
+    letter-spacing: 1.2px;
+}
+.ultraaddons-wrap button.ua-primary.ua-no-update,
+.ultraaddons-wrap button.ua-primary.ua-no-update:hover{
+    background: #e1e1e1;
+    border-color: #eeeeee;
+}
+.ultraaddons-wrap button.ua-primary:hover {
+    background: #360f7a;
+    border-color: #360f7a;
+}
+.ultraaddons-wrap button.ua-primary:hover,
+.ultraaddons-wrap button.ua-primary:focus,
+.ultraaddons-wrap button.ua-primary:active{
+    outline: 0 none !important;
+    box-shadow: none !important;
+}
+
+
+/*********For Widget Menu List | END *********/
+
+/**** Header Footer Form ****/
+
+.ua-form-wrappper {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 30px;
+    row-gap: 30px;
+    align-items: stretch;
+    margin: 45px 0;
+}
+.ultraaddons-field-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.ultraaddons-field-container label {
+    padding: 0 0 15px 0;
+    font-size: 1.2em;
+    display: block;
+}
+
+.ultraaddons-field-container select.ultraddons-select,
+.ultraaddons-field-container select,.ultraaddons-field-container input[type=text] {
+    width: 100%;
+    max-width: 25rem;
+}
+.ua-radio-top {
+    display: block;
+}
+
+h4.ua-hf-radio-label-title {
+    display: inline;
+    padding-left: 15px;
+}
+
+.ua-radion-type {
+    background: #ddd0;
+    padding: 20px;
+    border: 1px solid #dddddd5c;
+}
+
+.ua-radio-message {
+    font-style: italic;
+    margin: 15px 15px 15px 40px;
+}
+.ua-form-message {
+    color: #afafaf;
+}
+.ua-hf-type-radio:checked + h4.ua-hf-radio-label-title {
+    color: #4caf50;
+    font-weight: bold;
+}
+
+input.ua-hf-type-radio[type=radio]:checked::before {
+    background-color: #4caf50;
+}
+.field-container-size{display: none;}
+/**** Header Footer Form | END****/
+
+label.ua-option-item i.ua-option-icon.uicon-ultraaddons:before{
+    -webkit-animation:ua-spin 2s linear infinite;
+    -moz-animation:ua-spin 2s linear infinite;
+    animation:ua-spin 2s linear infinite;
+}
+
+@-moz-keyframes ua-spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes ua-spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes ua-spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+
+/*************************
+* Other 
+**************************/
+.ua-content-info.ua-shortcode-content h3>small {
+    color: #b3adad;
+    font-size: 70%;
+    font-weight: 100;
+}
+
+body.wp-admin pre.xdebug-var-dump {
+    margin-left: 200px;
+}
+
+/* Welcome page design - starts here */
+.ua-admin-header-wrapper .ua-branding img {
+    max-width: 311px;
+    display: block;
+}
+
+
+.ultraaddons-dashboard-area .ua-branding {
+    width: 100%;
+}
+
+.ultraaddons-dashboard-area ul.ua-submenu {
+    display: flex;
+    float: right;
+    flex-wrap: wrap;
+    column-gap: 1px;
+}
+
+.ultraaddons-dashboard-area ul.ua-submenu li {
+    font-size: 22px;
+    font-weight: 100;
+    margin: 0;
+}
+.ultraaddons-dashboard-area ul.ua-submenu li:not(:last-child) {
+    /* margin-right: 5px; */
+}
+
+.ultraaddons-dashboard-area ul.ua-submenu li a {
+    padding: 17px 22px;
+    display: block;
+    font-size: 18px;
+    line-height: 21.6px;
+    text-decoration: none;
+    font-weight: 500;
+    background: #ffffff;
+    color: #140C33;
+    font-family: 'Roboto', sans-serif;
+}
+
+.ultraaddons-dashboard-area ul.ua-submenu li a:hover,
+.ultraaddons-dashboard-area ul.ua-submenu li a:focus ,
+.ultraaddons-dashboard-area ul.ua-submenu li.ua-current-menu a {
+    background: #7320e4;
+    color: #fff;
+    border: none;
+}
+
+section.welcome-banner {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    display: block;
+    padding: 50px 20px;
+}
+
+section.welcome-banner img.logo {
+    max-width: 500px;
+    width: 100%;
+    display: block;
+    margin: 50px auto;
+}
+
+section.welcome-banner p.greetings {
+    text-align: center;
+    color: #fff;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+section.ua-section .inner-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1170px;
+    margin: 60px auto;
+    column-gap: 30px;
+    row-gap: 50px;
+}
+section.ua-section.pr3.faq .inner-wrapper {
+    row-gap: 20px;
+}
+section.ua-section.pr2 .inner-wrapper {
+    margin-top: 0;
+}
+section.ua-section.pr1 .info-box {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0px 10px 25px rgb(198 203 220 / 30%);
+    border-radius: 10px;
+    column-gap: 40px;
+}
+
+section.ua-section.pr1 .info-box .icon-wrapper {
+    min-width: 60px;
+    margin-bottom: 30px;
+}
+
+section.ua-section.pr1 .info-box .icon-wrapper img.icon {
+    padding: 18px;
+    background: #472af208;
+    width: 24px;
+    border-radius: 8%;
+}
+
+section.ua-section.pr1 .info-box .info h3 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #140C33;
+}
+
+section.ua-section h3.big {
+    font-size: 42px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+    text-align: left;
+}
+section.ua-section.faq .faq-details h3.big {
+    display: none;
+}
+
+section.ua-section .info-box p {
+    color: #726E82;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 25px 0;
+}
+
+section.ua-section .full-width.info-box {
+    background-position: center bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 20px;
+}
+
+section.ua-section .ua-button {
+    background: #6B52FD;
+    padding: 16px 25px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1;
+}
+section.ua-section .btn-wrapper {
+    text-align: left;
+}
+section.ua-section .ua-button.white {
+    background: #fff;
+    color: #D64289;
+    outline: none;
+    border-color: #fff;
+    border-radius: 4px;
+}
+
+section.ua-section.pr3.faq {
+    background: #F8F9FC;
+    padding: 10px 0;
+
+}
+
+section.ua-section.pr1 {
+    padding: 20px;
+}
+section.ua-section.pr3.faq .faq-nav {
+    width: 100%;
+    min-width: 200px;
+    text-align: center;
+    position: relative;
+    padding: 0 20px;
+}
+section.ua-section.pr3.faq .faq-details {
+    width: 100%;
+}
+
+section.faq ul {
+    list-style: none;
+}
+section.faq .faq-details ul {
+    padding: 0 20px;
+}
+
+section.faq .faq-nav ul li {
+    border-bottom: 1px solid #D2D7E8;
+    margin: 0;
+    padding: 15px 0;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-align: left;
+}
+section.faq .faq-nav ul li.active {
+    border-color: #6B52FD;
+    color: #6B52FD;
+}
+section.faq .faq-details ul > li {
+    background: #fff;
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 0px 8px 25px rgb(198 203 220 / 25%);
+    margin-bottom: 20px;
+}
+
+section.faq .faq-details h4 {
+    cursor: pointer;
+}
+
+section.faq .faq-details h4 {
+    position: relative;
+    margin: 0;
+    padding-bottom: 20px;
+    color: #140C33;
+    font-size: 20px;
+    font-weight: 600;
+    padding-left: 40px;
+    padding-top: 20px;
+    line-height: 1.2;
+    z-index: 2;
+}
+section.faq .faq-details ul li.active h4 {
+    border-bottom: 1px solid #ddd;
+}
+section.faq .faq-details li.active h4{
+    margin-bottom: 20px;
+}
+
+section.faq .faq-details ul li h4:before {
+    content: "";
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url(../images/angle-down.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    top: calc(50% - 7px);
+    left: 10px;
+    z-index: 1;
+    transform: rotate(-90deg);
+    transition: all 0.3s;
+}
+section.faq .faq-details ul li.active h4:before {
+    transform: rotate(0deg);
+}
+
+section.faq .faq-details ul li .answer {
+    padding: 0 20px 0 40px;
+    color: #726E82;
+    line-height: 26px;
+    font-size: 16px;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+section.faq .faq-details ul li.active .answer{
+    padding-bottom: 20px;
+    height: auto;
+    opacity: 1;
+}
+
+section.faq .faq-details .faq-inner-box {
+    overflow: hidden;
+    position: absolute;
+    height: 0;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier();
+}
+section.faq .faq-details .faq-inner-box.active {
+    position: relative;
+    height: auto;
+    opacity: 1;
+}
+
+section.ua-section.pr4.video .inner-wrapper {
+    display: block;
+    padding: 20px;
+}
+
+/* Video Section */
+section.faq .faq-details ul li.active .answer,
+section.ua-section.pr4.video .inner-wrapper {
+    display: block;
+}
+
+section.ua-section.pr4.video .title-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    row-gap: 32px;
+}
+
+section.ua-section.video .video-gallery .video-tutorial iframe {
+    width: 100%;
+    border-radius: 5px;
+}
+
+section.ua-section.video .video-gallery .video-tutorial {
+    width: 100%;
+}
+
+/* Newsletter */
+.mc4-form {
+    margin-top: 50px;
+}
+section.ua-section.pr5.newsletter .inner-wrapper {
+    display: block;
+}
+section.ua-section.pr5.newsletter .full-width {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    padding: 50px 20px;
+    text-align: center;
+    color: #fff;
+}
+section.ua-section.pr5.newsletter h3.big {
+    color: #fff;
+    text-align: center;
+}
+.mc4-form input#mce-EMAIL {
+    padding: 10px 20px;
+    border-radius: 4px;
+    color: white;
+    background: transparent;
+    border: 1px solid white;
+}
+.mc4-form input#mce-EMAIL::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+.mc4-form input#mce-EMAIL:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+}
+
+.mc4-form input#mce-EMAIL::-ms-input-placeholder { /* Microsoft Edge */
+  color: white;
+}
+
+section.ua-section.pr2 .full-width.info-box img,
+section.ua-section.pr6 .full-width.info-box img {
+    margin-top: 50px;
+}
+
+section.ua-section.video .video-gallery .owl-dots>button {
+    background: #6c52fd !important;
+    width: 10px;
+    height: 10px;
+    margin: 5px;
+    border-radius: 2px;
+    opacity: 0.4;
+}
+section.ua-section.video .video-gallery .owl-dots > button.active{
+    opacity: 1;
+}
+
+section.ua-section.video .video-gallery .owl-dots {
+    text-align: center !important;
+    display: block !important;
+    width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .ultraaddons-dashboard-area .ua-branding {
+        max-width: 311px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: right;
+        align-items: revert;
+        color: #7320e4;
+        font-size: 13px;
+        letter-spacing: 3px;
     }
-    to {
-      -webkit-transform: none;
-      transform: none;
-  
-      opacity: 1;
-  
-      -webkit-filter: blur(0);
-      filter: blur(0);
+    section.ua-section.pr1 .info-box {
+        flex-direction: row;
+        column-gap: 20px;
     }
-  }
-  
-  @keyframes remodal-opening-keyframes {
-    from {
-      -webkit-transform: scale(1.05);
-      transform: scale(1.05);
-  
-      opacity: 0;
+    section.ua-section .full-width.info-box {
+        background-size: contain;
+        background-repeat: no-repeat;
     }
-    to {
-      -webkit-transform: none;
-      transform: none;
-  
-      opacity: 1;
-  
-      -webkit-filter: blur(0);
-      filter: blur(0);
+    section.ua-section.pr2 .full-width.info-box {
+        background-position: center right;
+        padding-right: 50%;
     }
-  }
-  
-  @-webkit-keyframes remodal-closing-keyframes {
-    from {
-      -webkit-transform: scale(1);
-      transform: scale(1);
-  
-      opacity: 1;
+    section.ua-section.pr6 .full-width.info-box {
+        background-position: center left;
+        padding-left: 50%;
     }
-    to {
-      -webkit-transform: scale(0.95);
-      transform: scale(0.95);
-  
-      opacity: 0;
-  
-      -webkit-filter: blur(0);
-      filter: blur(0);
+    section.ua-section .btn-wrapper {
+        text-align: left;
     }
-  }
-  
-  @keyframes remodal-closing-keyframes {
-    from {
-      -webkit-transform: scale(1);
-      transform: scale(1);
-  
-      opacity: 1;
+    section.faq .faq-details ul li:before {
+        left: 20px;
     }
-    to {
-      -webkit-transform: scale(0.95);
-      transform: scale(0.95);
-  
-      opacity: 0;
-  
-      -webkit-filter: blur(0);
-      filter: blur(0);
+    section.faq .faq-details h4,
+    section.faq .faq-details ul li .answer {
+        padding-left: 60px;
     }
-  }
-  
-  @-webkit-keyframes remodal-overlay-opening-keyframes {
-    from {
-      opacity: 0;
+    section.ua-section.pr4.video .title-wrapper {
+        flex-wrap: nowrap;
+        row-gap: 32px;
+        justify-content: space-between;
+        flex-direction: row;
     }
-    to {
-      opacity: 1;
+
+    section.ua-section.pr5.newsletter .full-width {
+        padding: 100px 20px;
     }
-  }
-  
-  @keyframes remodal-overlay-opening-keyframes {
-    from {
-      opacity: 0;
+    section.faq .faq-details ul li h4:before {
+        left: 20px;
     }
-    to {
-      opacity: 1;
+    section.ua-section.pr2 .full-width.info-box img,
+    section.ua-section.pr6 .full-width.info-box img {
+        display: none;
     }
-  }
-  
-  @-webkit-keyframes remodal-overlay-closing-keyframes {
-    from {
-      opacity: 1;
+}
+@media screen and (min-width: 783px) {
+    .mc4-form input#mce-EMAIL {
+        padding: 10px 20px;
+        width: 300px;
+        margin-right: 5px;
     }
-    to {
-      opacity: 0;
+}
+@media screen and (min-width: 992px) {
+    .ultraaddons-license-details, .ultraaddons-dashboard-area {
+        padding: 10px 30px 50px;
     }
-  }
-  
-  @keyframes remodal-overlay-closing-keyframes {
-    from {
-      opacity: 1;
+    section.ua-section.pr1 .info-box {
+        padding: 20px;
+        column-gap: 20px;
     }
-    to {
-      opacity: 0;
+    section.ua-section .inner-wrapper{
+        flex-wrap: nowrap;
     }
-  }
-  
-  /* Media queries
-     ========================================================================== */
-  
-  @media only screen and (min-width: 641px) {
-    .remodal {
-      max-width: 500px;
+    section.ua-section.faq .faq-details h3.big {
+        display: block;
+        padding: 0 20px;
+        margin-bottom: 20px;
     }
-  }
-  
-  /* IE8
-     ========================================================================== */
-  
-  .lt-ie9 .remodal-overlay {
-    background: #2b2e38;
-  }
-  
-  .lt-ie9 .remodal {
-    width: 700px;
-  }
-  
+    section.ua-section.pr3.faq .faq-nav h3.big {
+        display: none;
+    }
+    section.ua-section h3.big {
+        text-align: left;
+    }
+    section.ua-section.newsletter h3.big {
+        text-align: center;
+    }
+    section.ua-section.pr3.faq .faq-nav {
+        text-align: right;
+        top: 70px;
+    }
+    section.faq .faq-nav ul li {
+        border: 0;
+        border-right: 2px solid #D2D7E8;
+        margin: 0;
+        padding: 10px 15px;
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        cursor: pointer;
+        text-align: right;
+    }
+    section.ua-section.pr3.faq .faq-nav {
+        max-width: 150px;
+    }
+    section.ua-section.pr4.video .inner-wrapper {
+        padding: 0;
+    }
+    section.ua-section.pr5.newsletter .full-width {
+        padding: 100px;
+    }
+    section.ua-section.pr1,
+    section.ua-section.pr3.faq .faq-nav {
+        padding: 0;
+    }
+    section.welcome-banner,
+    section.ua-section.pr5.newsletter .full-width {
+        border-radius: 10px;
+    }
+    
+    
+}
+@media screen and (min-width: 1200px) {
+    .ua-admin-header-wrapper {
+        flex-direction: row;
+        padding: 0;
+    }
+    section.welcome-banner {
+        padding: 100px 0 50px 0;
+    }
+    section.welcome-banner img.logo {
+        margin: 108px auto;
+    }
+    section.ua-section .inner-wrapper {
+        margin: 130px auto;
+    }
+    section.ua-section.pr1 .info-box {
+        padding: 50px;
+        column-gap: 40px;
+    }
+    section.ua-section.faq .inner-wrapper {
+        column-gap: 100px;
+    }
+    section.ua-section.pr3.faq .faq-nav {
+        max-width: 250px;
+    }
+}
+
+@media screen and (min-width: 767px) and (max-width: 991px){
+    section.faq .faq-nav ul li {
+        display: inline-block;
+        padding: 15px;
+    }
+    .ultraaddons-dashboard-area ul.ua-submenu {
+        float: none;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .ua-admin-header-wrapper{
+        align-items: center;
+    }
+    
+    /*Menu Hide from Mobile*/
+    .ua-header-menu {
+        display: none;
+    }
+    .ua-admin-header-wrapper {
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .ua-admin-header-wrapper .ua-branding img {
+        margin: 0;
+    }
+    .mc4-form input#mce-EMAIL {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    section.ua-section .ua-button.white {
+        width: 100%;
+    }
+    section.ua-section.pr2 .full-width.info-box,
+    section.ua-section.pr6 .full-width.info-box{
+        background-image: none !important;
+        padding-bottom: 20px;
+    }
+    section.ua-section.video .video-gallery .owl-dots>button {
+        width: 20px;
+        height: 5px;
+        margin: 0 10px;
+    }
+    
+}
+
+@media (orientation: landscape) and (max-width: 767px) {
+
+    /* section.ua-section.pr2 .full-width.info-box,
+    section.ua-section.pr6 .full-width.info-box{
+        background-image: none !important;
+        padding-bottom: 20px;
+    } */
+}
+/* Welcome page design - ends here */
+div.ultraaddons-notice-error-elementor {
+    background: #e5e5e5;
+    color: #607d8b;
+}
+
+div.ultraaddons-notice-error-elementor>p {
+    font-size: 22px;
+}
+
+div.ultraaddons-notice-error-elementor>p>strong {
+    color: #9c27b0;
+    font-weight: bold;
+}
+
+/* UltraAddons Dashboar Menu Control Start */
+li#toplevel_page_ultraaddons-elementor-lite.wp-has-submenu.wp-has-current-submenu.wp-menu-open ul.wp-submenu.wp-submenu-wrap {
+    background: #3d3956 !important;
+}
+
+li#toplevel_page_ultraaddons-elementor-lite.wp-has-submenu.wp-has-current-submenu.wp-menu-open>a {
+    background: #892c91 !important;
+}
+
+li#toplevel_page_ultraaddons-elementor-lite.wp-has-submenu.wp-has-current-submenu.wp-menu-open ul.wp-submenu.wp-submenu-wrap li>a:hover {
+    color: white !important;
+}
+li#toplevel_page_ultraaddons-elementor-lite.wp-has-submenu.wp-has-current-submenu.wp-menu-open ul li.current a {
+    background: #00000011;
+}
+
+
+
+/* li#toplevel_page_ultraaddons-elementor-lite {} */
+
+/* li#toplevel_page_ultraaddons-elementor-lite a.wp-has-submenu {} */
+
+/* li#toplevel_page_ultraaddons-elementor-lite a.wp-has-submenu .wp-menu-image.dashicons-before {} */
+
+li#toplevel_page_ultraaddons-elementor-lite a.wp-has-submenu .wp-menu-image img {
+    padding: 7px !important;
+    animation-name: ultraaddons-dash-rotate;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@keyframes ultraaddons-dash-rotate{
+    from{ transform: rotate(-360deg); }
+    to{ transform: rotate(360deg); }
+}
+/* UltraAddons Dashboar Menu Control End */
+
+/* style for Custom font start */
+.font-variation-wrapper {
+    background: #fff;
+    padding: 5px 15px;
+    margin: 10px 0 20px 0;
+    border: 1px solid #ededed;
+    box-shadow: 0 10px 30px #0000000d;
+}
+/* a.ultraaddons-font-upload-button.ua-button.button {margin-top: 10px;} */
+
+.font-variation-wrapper span.ua-close-variant {
+    position: absolute;
+    right: 0;
+    background: #a7a7a7;
+    top: 0;
+    padding: 5px 10px 5px 10px;
+    color: white;
+    cursor: pointer;
+}
+.font-variation-wrapper span.ua-close-variant i{display: none;padding-right: 10px;transition: 1s all;}
+.font-variation-wrapper span.ua-close-variant:hover i{display: inline-block;}
+.font-variation-wrapper span.ua-close-variant:hover {
+    background:#d70000;
+}
+.all-variant-group-wrapper .font-variation-wrapper {
+    position: relative;
+}
+.form-file-field.font-file-each-wrapper {
+    background: gainsboro;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    margin-bottom: 10px;
+}
+.form-file-field.font-file-each-wrapper .font-upload-url {
+    border: 1px solid #ddd;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-right: 0;
+    border-right: 0 none;
+}
+a.ultraaddons-font-upload-button.ua-button.button {
+    border: 1px solid #ddd;
+    background: #f0f0f1;
+    color: black;
+    width: 96px;
+    border-left: 0 none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+span.font-upload-add-font-button {
+    float: right;
+    cursor: pointer;
+    color: #2271b0;
+    font-weight: 500;
+}
+span.font-upload-add-font-button:hover {
+    color: #2d8ddb;
+}
+.fonts-upload-wrapper.form-field>label {
+    margin-bottom: 15px;
+    display: block;
+}
+#edittag .font-variation-wrapper {
+    padding: 15px;
+}
+
+#edittag .font-variation-wrapper label {
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+#edittag .font-variation-wrapper p.ua-field-notice {
+    color: #9b9b9b;
+    margin-bottom: 10px;
+}
+span.ua-add-new-variant {
+    font-size: 20px;
+    color: #607d8b;
+    background: white;
+    display: block;
+    padding: 10px 10px 12px 10px;
+    cursor: pointer;
+    box-shadow: 0 10px 30px #0000000d;
+    /* transition: 1s all; */
+    margin-bottom: 20px;
+}
+span.ua-add-new-variant:hover {
+    color: white;
+    background: #892c912e;
+    box-shadow: 0 10px 30px #0000000d;
+
+}
+.d-none{
+    display: none !important;
+}
+.d-block{
+    display: block !important;
+}
+/* style for Custom font end */
+
+
+/* div.ua-sectioon-content .ua-option-item{display: none;}
+div.ua-sectioon-content[category='category-all'] .ua-option-item{display: block;}
+div.ua-sectioon-content[free_pro='free-pro-all'] .ua-option-item{display: block;} */
+.ua-option-item-inside{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ua-branding img{
+    width: auto;
+}
+.ultraaddons-version-in-title {
+    justify-content: right;
+    align-items: flex-end;
+    display: flex;
+}
+@media(max-width:460px){
+    .ua-option-item-wrappper {
+        column-gap: 30px;
+        row-gap: 10px;
+    }
+    .ua-option-item-wrappper .ua-option-item, .ultraaddons-wrap button.ua-primary {
+        width: 100%;
+    }
+    .ultraaddons-version-in-title {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        color: #7320e4;
+        letter-spacing: 2px;
+    }
+}
