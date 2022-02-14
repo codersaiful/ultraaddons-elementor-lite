@@ -341,9 +341,19 @@
     $(targetSelector).fadeIn('medium');
 
   }
+/**
+   * Alert for Pro Widget 
+   * @author B M Rafiul Alam
+   * @Since 1.1.0.11
+   */
+ var inst = $('[data-remodal-id=modal]').remodal();
+ $('.pro .ua-option-checkbox').click(function(e){
+    e.preventDefault();
+    inst.open();
 
-
+});
   
+
   
 
 } (jQuery, window));

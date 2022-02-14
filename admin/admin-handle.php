@@ -88,6 +88,26 @@ class Admin_Handle{
         wp_register_script($handle, $src, $deps, $ver, $in_footer);
         wp_enqueue_script($handle);
 
+         // Remodal added for widget popup
+         $handle = 'remodal-style';
+         $src = ULTRA_ADDONS_ASSETS . 'vendor/remodal/css/remodal.css';
+         $deps = [];
+         $ver = ULTRA_ADDONS_VERSION;
+         $media = 'all';
+         
+         wp_register_style( $handle, $src, $deps, $ver, $media );
+         wp_enqueue_style( $handle );
+
+          // Remodal added for widget popup
+          $handle = 'remodal-script';
+          $src = ULTRA_ADDONS_ASSETS . 'vendor/remodal/js/remodal.min.js';
+          $deps = ['jquery'];
+          $ver = ULTRA_ADDONS_VERSION;
+          $in_footer = true;
+          
+          wp_register_script($handle, $src, $deps, $ver, $in_footer);
+          wp_enqueue_script($handle);
+
         //Our main admin script
         $handle = 'ultraaddons-admin-script';
         $src = ULTRA_ADDONS_ASSETS . 'js/admin.js';

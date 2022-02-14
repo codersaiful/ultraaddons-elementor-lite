@@ -132,31 +132,21 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
         </div>
     </div>
 </div>
-
+<?php
 /**
 * Modal for pro widget
 * @aurhor B M Rafiul Alam
 * Email: bmrafiul.alam@gmail.com
 * @since 1.1.0.10
 */
-<div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
-    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-      <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
-        <header class="modal__header">
-          <h2 class="modal__title" id="modal-1-title">
-            Micromodal
-          </h2>
-          <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
-        </header>
-        <main class="modal__content" id="modal-1-content">
-          <p>
-            Try hitting the <code>tab</code> key and notice how the focus stays within the modal itself. Also, <code>esc</code> to close modal.
-          </p>
-        </main>
-        <footer class="modal__footer">
-          <button class="modal__btn modal__btn-primary">Continue</button>
-          <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
-        </footer>
-      </div>
-    </div>
-  </div>
+?>
+<div class="remodal" data-remodal-id="modal">
+  <button data-remodal-action="close" class="remodal-close"></button>
+  <img class="popup-image" src=" <?php echo ULTRA_ADDONS_ASSETS . 'images/popup-pro.png'; ?>">
+  <h1>Go Pro</h1>
+  <p>
+    Unlock 30+ amazing widgets to build awesome websites.
+  </p>
+  <br>
+  <a href="https://codecanyon.net/cart/configure_before_adding/33337985?license=regular&ref=CodeAstrology&size=source&support=bundle_6month" target="_blank" class="remodal-confirm">Upgrade Now</a>
+</div>
