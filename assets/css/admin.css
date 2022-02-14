@@ -214,7 +214,7 @@ h1.ua-page-title {
 }
 
 .ua-option-item-wrappper .ua-option-item {
-    width: 275px;
+    width: 276px;
     position: relative;
     overflow: hidden;
     /* box-shadow: 0 5px 40px 0 rgb(10 10 25 / 10%); */
@@ -254,7 +254,7 @@ span.ua-option-version-type.ua-option-version-type-pro {
 }
 .item_on_off_enable.ua-option-item.disabled span.ua-option-version-type.ua-option-version-type-pro,
 .ua-option-item.disabled span.ua-option-version-type.ua-option-version-type-free{
-    background: #6aaf1b;
+    background: #4caf50;
 }
 span.ua-option-version-type.ua-option-version-type-free {
     background: #bfbfbf0d;/*#4caf50*/
