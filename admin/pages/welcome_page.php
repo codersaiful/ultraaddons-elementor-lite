@@ -19,7 +19,7 @@ defined( 'ABSPATH' ) || die();
                         <h3><?php echo esc_html__( 'User Guidelines', 'ultraaddons' ); ?></h3>
                         <p><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></p>
                         <div class="btn-wrapper">
-                            <a href="https://ultraaddons.com/docs/" target="_blank" class="ua-button button"><?php echo esc_html__( 'Documentation', 'ultraaddons' ); ?></a>
+                            <a href="https://ultraaddons.com/widget/" target="_blank" class="ua-button button"><?php echo esc_html__( 'Documentation', 'ultraaddons' ); ?></a>
                         </div>
                     </div>
                 </div>

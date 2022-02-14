@@ -42,37 +42,37 @@ Use our pre-made section and templates to create your site very quickly with stu
 
 ***Demo***
 
-- [**Slider**](https://ultraaddons.com/widgets/slider/) – Powerful Slider.
-- [**Advance Heading**](https://ultraaddons.com/widgets/advance_heading/) – Advance Heading.
-- [**Button**](https://ultraaddons.com/widgets/button/) – Advance Powerful Button.
-- [**Counter**](https://ultraaddons.com/widgets/counter/) – Awesome animated counter widget.
-- [**Count Down Timer**](https://ultraaddons.com/widgets/count_down_timer/) – Count Down Timer.
-- [**Info Box**](https://ultraaddons.com/widgets/info_box/) – Info Box for making different type service, info, content items group box.
-- [**Advance List Item**](https://ultraaddons.com/widgets/advance_list/) – Advance List Item for making different type service, info, content items group box.
-- [**Navigation Menu**](https://ultraaddons.com/widgets/Menu/) – Create your custom navigation menu.
-- [**Search**](https://ultraaddons.com/widgets/Search/) – Show search widget anywhere in your elementor page.
-- [**Price Table**](https://ultraaddons.com/widgets/price_table/) – Show custom price table.
-- [**Icon Box**](https://ultraaddons.com/widgets/icon_box/) – Show Icon Box.
-- [**Testimonial Slider**](https://ultraaddons.com/widgets/testimonial_slider/) – Show users feedback in beautiful animated way.
-- [**Testimonial Box**](https://ultraaddons.com/widgets/testimonial_box/) – Show users feedback in beautiful way.
-- [**Team Box**](https://ultraaddons.com/widgets/team_box/) – Display your team members in a beautiful way.
-- [**Gallery Box**](https://ultraaddons.com/widgets/gallery_box/) – Display your images in a beautiful way.
-- [**Recent Blog**](https://ultraaddons.com/widgets/recent_blog/) – Display your blog posts in a beautiful way.
-- [**Skill Bar**](https://ultraaddons.com/widgets/skill_bar/) – Display your skills in a dynamic way.
-- [**Contact Form 7**](https://ultraaddons.com/widgets/contact_form7/) – Show your contact form 7 forms with lots of customization options.
+- [**Slider**](https://ultraaddons.com/widget/slider/) – Powerful Slider.
+- [**Advance Heading**](https://ultraaddons.com/widget/advance_heading/) – Advance Heading.
+- [**Button**](https://ultraaddons.com/widget/button/) – Advance Powerful Button.
+- [**Counter**](https://ultraaddons.com/widget/counter/) – Awesome animated counter widget.
+- [**Count Down Timer**](https://ultraaddons.com/widget/count_down_timer/) – Count Down Timer.
+- [**Info Box**](https://ultraaddons.com/widget/info_box/) – Info Box for making different type service, info, content items group box.
+- [**Advance List Item**](https://ultraaddons.com/widget/advance_list/) – Advance List Item for making different type service, info, content items group box.
+- [**Navigation Menu**](https://ultraaddons.com/widget/Menu/) – Create your custom navigation menu.
+- [**Search**](https://ultraaddons.com/widget/Search/) – Show search widget anywhere in your elementor page.
+- [**Price Table**](https://ultraaddons.com/widget/price_table/) – Show custom price table.
+- [**Icon Box**](https://ultraaddons.com/widget/icon_box/) – Show Icon Box.
+- [**Testimonial Slider**](https://ultraaddons.com/widget/testimonial_slider/) – Show users feedback in beautiful animated way.
+- [**Testimonial Box**](https://ultraaddons.com/widget/testimonial_box/) – Show users feedback in beautiful way.
+- [**Team Box**](https://ultraaddons.com/widget/team_box/) – Display your team members in a beautiful way.
+- [**Gallery Box**](https://ultraaddons.com/widget/gallery_box/) – Display your images in a beautiful way.
+- [**Recent Blog**](https://ultraaddons.com/widget/recent_blog/) – Display your blog posts in a beautiful way.
+- [**Skill Bar**](https://ultraaddons.com/widget/skill_bar/) – Display your skills in a dynamic way.
+- [**Contact Form 7**](https://ultraaddons.com/widget/contact_form7/) – Show your contact form 7 forms with lots of customization options.
 
 ***WooCommerce***
-- [**Mini Cart**](https://ultraaddons.com/widgets/cart/) – Use the mini cart widget to boost your conversion rate.
-- [**Product Table**](https://ultraaddons.com/widgets/product_table/) – Use our product table widget to show your store products in a new way.
-- [**WooCommerce Products**](https://ultraaddons.com/widgets/wc_products/) – Display your store products in list or grid view using our elementor widget.
-- [**Offer Card**](https://ultraaddons.com/widgets/offer_card/) – Represent your products in a creative way.
+- [**Mini Cart**](https://ultraaddons.com/widget/cart/) – Use the mini cart widget to boost your conversion rate.
+- [**Product Table**](https://ultraaddons.com/widget/product_table/) – Use our product table widget to show your store products in a new way.
+- [**WooCommerce Products**](https://ultraaddons.com/widget/wc_products/) – Display your store products in list or grid view using our elementor widget.
+- [**Offer Card**](https://ultraaddons.com/widget/offer_card/) – Represent your products in a creative way.
 
 ***Pro Version also available***
-- [**WooCommerce Categories**](https://ultraaddons.com/widgets/wc_categories/) – List your store categories in awesome way.
-- [**Animated Header**](https://ultraaddons.com/widgets/animated_header/) – Animated heading.
-- [**Product Slider**](https://ultraaddons.com/widgets/product_slider/) – Product Slider
-- [**Info Boards**](https://ultraaddons.com/widgets/info_boards/) – Info Boards
-- [**WordPress Plugin Stats**](https://ultraaddons.com/widgets/wordpress_plugin_stats/) – Show any WordPress plugins stats in anywhere in your site.
+- [**WooCommerce Categories**](https://ultraaddons.com/widget/wc_categories/) – List your store categories in awesome way.
+- [**Animated Header**](https://ultraaddons.com/widget/animated_header/) – Animated heading.
+- [**Product Slider**](https://ultraaddons.com/widget/product_slider/) – Product Slider
+- [**Info Boards**](https://ultraaddons.com/widget/info_boards/) – Info Boards
+- [**WordPress Plugin Stats**](https://ultraaddons.com/widget/wordpress_plugin_stats/) – Show any WordPress plugins stats in anywhere in your site.
 
 ***FREE and PRO EXTENSIONS are also available***
 - [**Wrapper Link**](https://ultraaddons.com/extensions/wrapper-link/) - Using this wrapper link extension you can link any elements.
