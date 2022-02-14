@@ -17,7 +17,7 @@ $items = Extensions_Manager::get_list();
 $disable_item = Extensions_Manager::disableExtensionKeys();
 ?>
 
-<div class="ultraaddons-section ua-option-wrapper">
+<div class="ultraaddons-section ua-option-wrapper ua-extensions-page">
     <div class="ua-section-inside">
         <div class="ua-header">
             <h1 class="ua-page-title"><?php echo esc_html__( 'Extension', 'ultraaddons' ); ?></h1>
