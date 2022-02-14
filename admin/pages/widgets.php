@@ -15,14 +15,14 @@ if( $updated ){
 
 
 $items = Widgets_Manager::widgets();
-$items['More'] = [
-            'name'      => __( 'More Widget Comming Soon ....', 'ultraaddons' ),
-            'is_pro'   => true,
-            'icon'      => 'uicon-ultraaddons',//eicon-global-colors
-            'cat'       => [
-                __( 'Basic', 'ultraaddons' ),
-            ],
-    ];
+// $items['More'] = [
+//             'name'      => __( 'More Widget Comming Soon ....', 'ultraaddons' ),
+//             'is_pro'   => true,
+//             'icon'      => 'uicon-ultraaddons',//eicon-global-colors
+//             'cat'       => [
+//                 __( 'Basic', 'ultraaddons' ),
+//             ],
+//     ];
 $disable_items = Widgets_Manager::disableWidgetKeys();
 ?>
 
@@ -110,7 +110,7 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
                              data-object_name="<?php echo esc_attr( $class_name ); ?>"
                              data-category="<?php echo esc_attr( implode( ',', $cat ) ); ?>"
                              data-type="<?php echo esc_attr( $free_pro ); ?>"
-                             class="ua-option-item <?php echo esc_attr( implode( " ", $html_class ) ); ?>">
+                             class="ua-option-item <?php echo esc_attr( implode( " ", $html_class ) ); ?> <?php echo esc_attr( implode( ',', $cat ) ); ?>">
                             <div class="ua-option-item-inside">
                                 <span class="ua-option-version-type ua-option-version-type-<?php echo esc_attr( $free_pro ); ?>"><?php echo $free_pro == 'pro' ? esc_html__( 'Pro', 'ultraaddons' ) : esc_html__( 'Free', 'ultraaddons' ); ?></span>
                                 <i class="ua-option-icon <?php echo esc_attr( $icon ); ?>"></i>

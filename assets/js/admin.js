@@ -319,12 +319,30 @@
     let category = options.category;
 
     let wrapperSection = $('div.ua-sectioon-content');
-    wrapperSection.attr('free_pro', free_pro);
-    wrapperSection.attr('category', category);
+
+    let allSelector = 'div.ua-sectioon-content .ua-option-item';
+    $(allSelector).fadeOut('fast');
+
+    
 
     $('.category-list ul li').removeClass('active');
     $('.category-list ul li[data-target=' + free_pro + ']').addClass('active');
     $('.category-list ul li[data-target=' + category + ']').addClass('active');
+
+
+    let fremum_class = '.' + free_pro;
+    let category_class = '.' + category;
+    if( free_pro === 'free-pro-all' ){
+        fremum_class = '';
+    }
+    
+    if( category === 'category-all' ){
+        category_class = '';
+    }
+    let targetSelector = allSelector + fremum_class + category_class;
+    console.log(targetSelector);
+    $(targetSelector).fadeIn('medium');
+
   }
 
 
