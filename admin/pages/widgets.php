@@ -29,7 +29,7 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
 <div class="ultraaddons-section ua-option-wrapper ua-widgets-page">
     <div class="ua-section-inside">
         <div class="ua-header">
-            <h1 class="ua-page-title"><?php echo esc_html__( 'Widgets', 'ultraaddons' ); ?></h1>
+            <h1 class="ua-page-title"><?php echo esc_html__( 'Widgets List', 'ultraaddons' ); ?></h1>
         </div>
 
         <div class="category-list">
