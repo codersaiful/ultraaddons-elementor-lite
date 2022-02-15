@@ -31,7 +31,7 @@ defined( 'ABSPATH' ) || die();
                         <h3><?php echo esc_html__( 'Do you have any query?', 'ultraaddons' ); ?></h3>
                         <p><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></p>
                         <div class="btn-wrapper">
-                            <a href="https://codeastrology.com/contact-us/" target="_blank" class="ua-button button"><?php echo esc_html__( 'Contact Support', 'ultraaddons' ); ?></a>
+                            <a href="https://codeastrology.com/our-support/" target="_blank" class="ua-button button"><?php echo esc_html__( 'Contact Support', 'ultraaddons' ); ?></a>
                         </div>
                     </div>
                 </div>
