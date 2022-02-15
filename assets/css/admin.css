@@ -1258,3 +1258,10 @@ div.ua-sectioon-content[free_pro='free-pro-all'] .ua-option-item{display: block;
         letter-spacing: 2px;
     }
 }
+.ultraaddons-dashboard-area.ultraaddons-elementor-addons, .ultraaddons-dashboard-area.custom-header-footer{
+    background-color: #fff;
+}
+.ua-admin-welcome-content-area {
+    display: block;
+    margin-top: 80px;
+}
