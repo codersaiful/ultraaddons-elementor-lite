@@ -28,7 +28,7 @@ $page_class         = strtolower(str_replace(' ', '-', $get_page_name ));
             <div class="ua-admin-header-wrapper">
                 <div class="ua-branding">
                     <img src="<?php echo esc_attr( $full_logo_image ); ?>">
-                    <div class="ultraaddons-version-in-title">Version<?php echo esc_html( ULTRA_ADDONS_VERSION ); ?></div>
+                    <div class="ultraaddons-version-in-title">Version <strong><?php echo esc_html( ULTRA_ADDONS_VERSION ); ?></strong></div>
                 </div>
                 <!-- <h1 class="ultraaddons-color-heading">
                     <?php //echo wp_kses_post( $header_title ); ?>

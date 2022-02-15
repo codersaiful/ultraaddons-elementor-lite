@@ -526,7 +526,7 @@ body.wp-admin pre.xdebug-var-dump {
 }
 
 .ultraaddons-dashboard-area ul.ua-submenu li a {
-    padding: 17px 22px;
+    padding: 15px 22px;
     display: block;
     font-size: 18px;
     line-height: 21.6px;
@@ -873,7 +873,7 @@ section.ua-section.video .video-gallery .owl-dots {
         flex-direction: column;
         justify-content: right;
         align-items: revert;
-        color: #7320e4;
+        /* color: #7320e4; */
         font-size: 13px;
         letter-spacing: 3px;
     }
@@ -1268,4 +1268,18 @@ div.ua-sectioon-content[free_pro='free-pro-all'] .ua-option-item{display: block;
 .ua-admin-welcome-content-area {
     display: block;
     margin-top: 80px;
+}
+.ultraaddons-version-in-title strong {
+    color: #7320e4;
+    font-family: cursive;
+    letter-spacing: normal;
+    margin-left: 5px;
+}
+.ultraaddons-dashboard-area.ultraaddons-elementor-addons .ua-submenu li, 
+.ultraaddons-dashboard-area.custom-header-footer .ua-submenu li, 
+.ultraaddons-dashboard-area.settings-for-ultraaddons .ua-submenu li, 
+.ultraaddons-dashboard-area.fonts .ua-submenu li{
+    background:#fff;
+    border:1px solid #7320e4;
+    margin-right: 5px;
 }
