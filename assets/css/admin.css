@@ -1258,7 +1258,10 @@ div.ua-sectioon-content[free_pro='free-pro-all'] .ua-option-item{display: block;
         letter-spacing: 2px;
     }
 }
-.ultraaddons-dashboard-area.ultraaddons-elementor-addons, .ultraaddons-dashboard-area.custom-header-footer{
+.ultraaddons-dashboard-area.ultraaddons-elementor-addons, 
+.ultraaddons-dashboard-area.custom-header-footer, 
+.ultraaddons-dashboard-area.settings-for-ultraaddons, 
+.ultraaddons-dashboard-area.fonts{
     background-color: #fff;
 }
 .ua-admin-welcome-content-area {
