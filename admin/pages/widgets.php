@@ -148,5 +148,5 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
     Unlock 30+ amazing widgets to build awesome websites.
   </p>
   <br>
-  <a href="https://codecanyon.net/cart/configure_before_adding/33337985?license=regular&ref=CodeAstrology&size=source&support=bundle_6month" target="_blank" class="remodal-confirm">Upgrade Now</a>
+  <a href="https://ultraaddons.com/pricing/" target="_blank" class="remodal-confirm">Upgrade Now</a>
 </div>

@@ -130,7 +130,7 @@ class Admin_Handle{
      */
     public static function add_action_links( $links ) {
         $ultraaddons_links[] = '<a href="' . admin_url( 'admin.php?page=ultraaddons-elementor-lite' ) . '" title="' . esc_attr__( 'Welcome to UltraAddons', 'ultraaddons' ) . '" target="_blank">' . esc_html__( 'Welcome','ultraaddons' ).'</a>';
-        $ultraaddons_links[] = '<a href="https://codecanyon.net/item/ultraaddons-elementor-lite-pro/33337985?ref=CodeAstrology&utm_source=UltraAddons_Installed_Plugin" title="' . esc_attr__( 'GET PRO', 'ultraaddons' ) . '" target="_blank">' . esc_html__( 'GET PRO','ultraaddons' ).'</a>';
+        $ultraaddons_links[] = '<a href="https://ultraaddons.com/pricing/" title="' . esc_attr__( 'GET PRO', 'ultraaddons' ) . '" target="_blank">' . esc_html__( 'GET PRO','ultraaddons' ).'</a>';
         $ultraaddons_links[] = '<a href="https://codeastrology.com/support/" title="' . esc_attr__( 'CodeAstrology Support', 'ultraaddons' ) . '" target="_blank">'.esc_html__( 'Support','ultraaddons' ).'</a>';
         //$ultraaddons_links[] = '<a href="https://github.com/codersaiful/ultraaddons-elementor-lite" title="' . esc_attr__( 'Github Repo Link', 'ultraaddons' ) . '" target="_blank">'.esc_html__( 'Github Repository','ultraaddons' ).'</a>';
         return array_merge( $ultraaddons_links, $links );
