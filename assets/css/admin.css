@@ -255,7 +255,7 @@ span.ua-option-version-type.ua-option-version-type-pro {
 }
 .item_on_off_enable.ua-option-item.disabled span.ua-option-version-type.ua-option-version-type-pro,
 .ua-option-item.disabled span.ua-option-version-type.ua-option-version-type-free{
-    background: #4caf50;
+    background: #00000024;
 }
 span.ua-option-version-type.ua-option-version-type-free {
     background: #bfbfbf0d;/*#4caf50*/
