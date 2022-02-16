@@ -258,7 +258,7 @@ span.ua-option-version-type.ua-option-version-type-pro {
     background: #00000024;
 }
 span.ua-option-version-type.ua-option-version-type-free {
-    background: #bfbfbf0d;/*#4caf50*/
+    background: transparent;
 }
 h2.ua-item-name {
     padding: 0;
@@ -268,8 +268,7 @@ h2.ua-item-name {
     font-family: 'Roboto', sans-serif;
 }
 .item_on_off_enable span.ua-option-version-type.ua-option-version-type-pro {
-    background: #607d8b;
-    border-bottom: 1px solid black;
+
     color: white;
 }
 .ua-option-item-wrappper .ua-option-item.item_on_off_disable {
