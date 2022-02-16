@@ -1283,3 +1283,7 @@ div.ua-sectioon-content[free_pro='free-pro-all'] .ua-option-item{display: block;
     border:1px solid #7320e4;
     margin-right: 5px;
 }
+
+.about-wrap .notice, .about-wrap div.error, .about-wrap div.updated {
+    display: block!important;
+}
