@@ -93,7 +93,6 @@ $widgetsArray = [
             ],
     ],
     
-    
     'Price_Table' => [
             'name'  => __( 'Pricing Table', 'ultraaddons' ),
             'is_pro'   => false,
