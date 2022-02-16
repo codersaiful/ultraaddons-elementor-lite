@@ -98,7 +98,7 @@ $disable_item = Extensions_Manager::disableExtensionKeys();
 </div>
 <?php
 /**
-* Modal for pro widget
+* Modal for pro Extension
 * @aurhor B M Rafiul Alam
 * Email: bmrafiul.alam@gmail.com
 * @since 1.1.0.10
@@ -109,7 +109,7 @@ $disable_item = Extensions_Manager::disableExtensionKeys();
   <img class="popup-image" src=" <?php echo ULTRA_ADDONS_ASSETS . 'images/popup-pro.png'; ?>">
   <h1>Go Pro</h1>
   <p>
-    Unlock 30+ amazing widgets to build awesome websites.
+    Unlock 4+ amazing extension to build awesome websites.
   </p>
   <br>
   <a href="https://ultraaddons.com/pricing/" target="_blank" class="remodal-confirm">Upgrade Now</a>
