@@ -259,6 +259,7 @@ html.remodal-is-locked {
 .remodal-confirm:hover,
 .remodal-confirm:focus {
   background: #0c51b9;
+  color:#fff
 }
 
 .remodal-cancel {
