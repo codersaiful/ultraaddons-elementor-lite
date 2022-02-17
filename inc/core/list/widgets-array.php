@@ -70,7 +70,7 @@ $widgetsArray = [
             'is_pro'   => false,
             'icon'      => 'uicon-slider',
             'cat'       => [
-                __( 'General', 'ultraaddons' ),
+                __( 'Slider', 'ultraaddons' ),
             ],
     ],
     
@@ -184,7 +184,7 @@ $widgetsArray = [
             'is_pro'   => false,
             'icon'      => 'eicon-testimonial-carousel',
             'cat'       => [
-                __( 'General', 'ultraaddons' ),
+                __( 'Slider', 'ultraaddons' ),
             ],
     ],
     
