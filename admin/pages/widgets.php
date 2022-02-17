@@ -29,7 +29,7 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
 <div class="ultraaddons-section ua-option-wrapper ua-widgets-page">
     <div class="ua-section-inside">
         <div class="ua-header">
-            <h1 class="ua-page-title"><?php echo esc_html__( 'Widgets', 'ultraaddons' ); ?></h1>
+            <h1 class="ua-page-title"><?php echo esc_html__( 'Widgets List', 'ultraaddons' ); ?></h1>
         </div>
 
         <div class="category-list">
@@ -131,4 +131,22 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
             </div>
         </div>
     </div>
+</div>
+<?php
+/**
+* Modal for pro widget
+* @aurhor B M Rafiul Alam
+* Email: bmrafiul.alam@gmail.com
+* @since 1.1.0.10
+*/
+?>
+<div class="remodal" data-remodal-id="modal">
+  <button data-remodal-action="close" class="remodal-close"></button>
+  <img class="popup-image" src=" <?php echo ULTRA_ADDONS_ASSETS . 'images/popup-pro.png'; ?>">
+  <h1>Go Pro</h1>
+  <p>
+    Unlock 30+ amazing widgets to build awesome websites.
+  </p>
+  <br>
+  <a href="https://ultraaddons.com/pricing/" target="_blank" class="remodal-confirm">Upgrade Now</a>
 </div>

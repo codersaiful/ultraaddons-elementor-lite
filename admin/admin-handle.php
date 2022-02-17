@@ -88,6 +88,26 @@ class Admin_Handle{
         wp_register_script($handle, $src, $deps, $ver, $in_footer);
         wp_enqueue_script($handle);
 
+         // Remodal added for widget popup
+         $handle = 'remodal-style';
+         $src = ULTRA_ADDONS_ASSETS . 'vendor/remodal/css/remodal.css';
+         $deps = [];
+         $ver = ULTRA_ADDONS_VERSION;
+         $media = 'all';
+         
+         wp_register_style( $handle, $src, $deps, $ver, $media );
+         wp_enqueue_style( $handle );
+
+          // Remodal added for widget popup
+          $handle = 'remodal-script';
+          $src = ULTRA_ADDONS_ASSETS . 'vendor/remodal/js/remodal.min.js';
+          $deps = ['jquery'];
+          $ver = ULTRA_ADDONS_VERSION;
+          $in_footer = true;
+          
+          wp_register_script($handle, $src, $deps, $ver, $in_footer);
+          wp_enqueue_script($handle);
+
         //Our main admin script
         $handle = 'ultraaddons-admin-script';
         $src = ULTRA_ADDONS_ASSETS . 'js/admin.js';
@@ -110,7 +130,7 @@ class Admin_Handle{
      */
     public static function add_action_links( $links ) {
         $ultraaddons_links[] = '<a href="' . admin_url( 'admin.php?page=ultraaddons-elementor-lite' ) . '" title="' . esc_attr__( 'Welcome to UltraAddons', 'ultraaddons' ) . '" target="_blank">' . esc_html__( 'Welcome','ultraaddons' ).'</a>';
-        $ultraaddons_links[] = '<a href="https://codecanyon.net/item/ultraaddons-elementor-lite-pro/33337985?ref=CodeAstrology&utm_source=UltraAddons_Installed_Plugin" title="' . esc_attr__( 'GET PRO', 'ultraaddons' ) . '" target="_blank">' . esc_html__( 'GET PRO','ultraaddons' ).'</a>';
+        $ultraaddons_links[] = '<a href="https://ultraaddons.com/pricing/" title="' . esc_attr__( 'GET PRO', 'ultraaddons' ) . '" target="_blank">' . esc_html__( 'GET PRO','ultraaddons' ).'</a>';
         $ultraaddons_links[] = '<a href="https://codeastrology.com/support/" title="' . esc_attr__( 'CodeAstrology Support', 'ultraaddons' ) . '" target="_blank">'.esc_html__( 'Support','ultraaddons' ).'</a>';
         //$ultraaddons_links[] = '<a href="https://github.com/codersaiful/ultraaddons-elementor-lite" title="' . esc_attr__( 'Github Repo Link', 'ultraaddons' ) . '" target="_blank">'.esc_html__( 'Github Repository','ultraaddons' ).'</a>';
         return array_merge( $ultraaddons_links, $links );

@@ -17,9 +17,9 @@ defined( 'ABSPATH' ) || die();
                     </div>
                     <div class="info">
                         <h3><?php echo esc_html__( 'User Guidelines', 'ultraaddons' ); ?></h3>
-                        <p><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></p>
+                        <p><?php echo esc_html__( 'Our documentation page represents all of our products documentation in a single page. From this page select your product documentation for getting help.', 'ultraaddons' ); ?></p>
                         <div class="btn-wrapper">
-                            <a href="https://ultraaddons.com/docs/" target="_blank" class="ua-button button"><?php echo esc_html__( 'Documentation', 'ultraaddons' ); ?></a>
+                            <a href="https://ultraaddons.com/widget/" target="_blank" class="ua-button button"><?php echo esc_html__( 'Documentation', 'ultraaddons' ); ?></a>
                         </div>
                     </div>
                 </div>
@@ -29,9 +29,9 @@ defined( 'ABSPATH' ) || die();
                     </div>
                     <div class="info">
                         <h3><?php echo esc_html__( 'Do you have any query?', 'ultraaddons' ); ?></h3>
-                        <p><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></p>
+                        <p><?php echo esc_html__( 'You can chat with our support agent by clicking the chat icon which appears on the right bottom of every page.', 'ultraaddons' ); ?></p>
                         <div class="btn-wrapper">
-                            <a href="https://codeastrology.com/contact-us/" target="_blank" class="ua-button button"><?php echo esc_html__( 'Contact Support', 'ultraaddons' ); ?></a>
+                            <a href="https://codeastrology.com/supports/" target="_blank" class="ua-button button"><?php echo esc_html__( 'Contact Support', 'ultraaddons' ); ?></a>
                         </div>
                     </div>
                 </div>
@@ -43,7 +43,7 @@ defined( 'ABSPATH' ) || die();
             <div class="inner-wrapper">
                 <div class="full-width info-box" style="background-image: url(<?php echo esc_url( ULTRA_ADDONS_ASSETS . 'images/svg/Illustration-1.svg' ); ?>);">
                     <h3 class="big"><?php echo esc_html__( 'Missing Any Features?', 'ultraaddons' ); ?></h3>
-                    <p><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></p>
+                    <p><?php echo esc_html__( 'Feel free contact us. If you need any new features on UltraAddons.', 'ultraaddons' ); ?></p>
                     <div class="btn-wrapper">
                         <a href="https://github.com/codersaiful/ultraaddons-elementor-lite/discussions/new" class="ua-button button" target="_blank"><?php echo esc_html__( 'Request For Features', 'ultraaddons' ); ?></a>
                     </div>
@@ -59,8 +59,6 @@ defined( 'ABSPATH' ) || die();
                     <ul>
                         <li class="active" data-target="installation"><?php echo esc_html__( 'Installation', 'ultraaddons' ); ?></li>
                         <li data-target="docs"><?php echo esc_html__( 'Documentation', 'ultraaddons' ); ?></li>
-                        <li data-target="support-policy"><?php echo esc_html__( 'Support Policy', 'ultraaddons' ); ?></li>
-                        <li data-target="guideline"><?php echo esc_html__( 'User Guideline', 'ultraaddons' ); ?></li>
                     </ul>
                 </div>
                 <div class="faq-details">
@@ -80,80 +78,32 @@ defined( 'ABSPATH' ) || die();
                                 </div>
                             </li>
                             <li class="faq-item" id="installation-item-2">
-                                <h4>How to install Woo Product Table Pro Plugin?</h4>
+                                <h4>Can I use this plugin for my Theme?</h4>
                                 <div class="answer">
-                                    <p>You can create a beautiful and user friendly product table very easily. Our product table provides many more features like drag and drop elements, Sorting table data, advance search option. Also have responsive layout, pagination and third party plugin supports. You can easily change table design as you want.</p>
+                                    <p>Yes.</p>
                                 </div>
                             </li>
                             <li class="faq-item" id="installation-item-3">
-                                <h4>How to create WooCommerce Product Table?</h4>
+                                <h4>Does this plugin support any theme?</h4>
                                 <div class="answer">
-                                    <p>Install Woo Product Table<br>To get help on how to install Woo Product Table read this. <br>Click on Add New to create a new product table<br>From WordPress admin area go to PRODUCT TABLE > Add New to create a new Product Table.</p>
+                                    <p>Yes.</p>
                                 </div>
                             </li>
-                            <li class="faq-item" id="installation-item-4">
-                                <h4><?php echo esc_html__( 'Is there any support policy available for user4?', 'ultraaddons' ); ?></h4>
-                                <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
+                            <li class="faq-item" id="installation-item-5">
+                                <h4><?php echo esc_html__( 'Does this plugin support customization by Filter or Action Hook?', 'ultraaddons' ); ?></h4>
+                                <div class="answer"><?php echo esc_html__( 'Yes, there are lot of filter and action hook available here. You can customize for your site even for your premium theme or plugin.', 'ultraaddons' ); ?></div>
                             </li>
                         </ul>
                     </div>
                     <div id="docs" class="faq-inner-box">
                         <ul>
                             <li class="faq-item active" id="installation-item-1">
-                                <h4><?php echo esc_html__( 'Is there any support policy available for user1?', 'ultraaddons' ); ?></h4>
-                                <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
+                                <h4><?php echo esc_html__( 'Is there any support policy available for user?', 'ultraaddons' ); ?></h4>
+                                <div class="answer">Yes. Please check out the link: <a href="https://codeastrology.com/support-policy/">Support</a></div>
                             </li>
                             <li class="faq-item" id="installation-item-2">
-                                <h4><?php echo esc_html__( 'Is there any support policy available for user2?', 'ultraaddons' ); ?></h4>
-                                <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
-                            </li>
-                            <li class="faq-item" id="installation-item-3">
-                                <h4><?php echo esc_html__( 'Is there any support policy available for user3?', 'ultraaddons' ); ?></h4>
-                                <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
-                            </li>
-                            <li class="faq-item" id="installation-item-4">
-                                <h4><?php echo esc_html__( 'Is there any support policy available for user4?', 'ultraaddons' ); ?></h4>
-                                <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div id="support-policy" class="faq-inner-box">
-                        <ul>
-                            <li class="faq-item active" id="installation-item-1">
-                                <h4><?php echo esc_html__( 'Is there any support policy available for user1?', 'ultraaddons' ); ?></h4>
-                                <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
-                            </li>
-                            <li class="faq-item" id="installation-item-2">
-                                <h4><?php echo esc_html__( 'Is there any support policy available for user2?', 'ultraaddons' ); ?></h4>
-                                <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
-                            </li>
-                            <li class="faq-item" id="installation-item-3">
-                                <h4><?php echo esc_html__( 'Is there any support policy available for user3?', 'ultraaddons' ); ?></h4>
-                                <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
-                            </li>
-                            <li class="faq-item" id="installation-item-4">
-                                <h4><?php echo esc_html__( 'Is there any support policy available for user4?', 'ultraaddons' ); ?></h4>
-                                <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div id="guideline" class="faq-inner-box">
-                        <ul>
-                            <li class="faq-item active" id="installation-item-1">
-                                <h4><?php echo esc_html__( 'Is there any support policy available for user1?', 'ultraaddons' ); ?></h4>
-                                <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
-                            </li>
-                            <li class="faq-item" id="installation-item-2">
-                                <h4><?php echo esc_html__( 'Is there any support policy available for user2?', 'ultraaddons' ); ?></h4>
-                                <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
-                            </li>
-                            <li class="faq-item" id="installation-item-3">
-                                <h4><?php echo esc_html__( 'Is there any support policy available for user3?', 'ultraaddons' ); ?></h4>
-                                <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
-                            </li>
-                            <li class="faq-item" id="installation-item-4">
-                                <h4><?php echo esc_html__( 'Is there any support policy available for user4?', 'ultraaddons' ); ?></h4>
-                                <div class="answer"><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></div>
+                                <h4><?php echo esc_html__( 'What is the Requirements?', 'ultraaddons' ); ?></h4>
+                                <div class="answer"><?php echo esc_html__( 'UltraAddons Elementor Pro is an extension for Elementor Page Builder. To install you need UltraAddons Elementor Lite version. Check out this documentation to know how to install UltraAddons Elementor Pro.', 'ultraaddons' ); ?></div>
                             </li>
                         </ul>
                     </div>
@@ -171,29 +121,18 @@ defined( 'ABSPATH' ) || die();
                 </div>
                 <div class="video-gallery owl-carousel">
                     <div class="video-tutorial">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/9hoFP0dgRx0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <h4 class="video-title"><?php echo esc_html__( 'React Native Profile Screen | React Native Profile UI', 'ultraaddons' ); ?></h4> 
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/JDjANJzWKTA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <h4 class="video-title"><?php echo esc_html__( 'Ultra Addons - #1 Best Elementor addons WordPress plugin Unlimited Template and Free for all', 'ultraaddons' ); ?></h4> 
                     </div>
                     <div class="video-tutorial">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/9hoFP0dgRx0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <h4 class="video-title"><?php echo esc_html__( 'React Native Profile Screen | React Native Profile UI', 'ultraaddons' ); ?></h4> 
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/n_ea3devnlg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <h4 class="video-title"><?php echo esc_html__( 'CodeAstrology', 'ultraaddons' ); ?></h4> 
                     </div>
                     <div class="video-tutorial">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/9hoFP0dgRx0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <h4 class="video-title"><?php echo esc_html__( 'React Native Profile Screen | React Native Profile UI', 'ultraaddons' ); ?></h4> 
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/jJ8U7h2Q8HU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <h4 class="video-title"><?php echo esc_html__( 'Code Astrology Latest Products for WordPress, Elementor, WooCommerce etc.', 'ultraaddons' ); ?></h4> 
                     </div>
-                    <div class="video-tutorial">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/9hoFP0dgRx0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <h4 class="video-title"><?php echo esc_html__( 'React Native Profile Screen | React Native Profile UI', 'ultraaddons' ); ?></h4> 
-                    </div>
-                    <div class="video-tutorial">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/9hoFP0dgRx0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <h4 class="video-title"><?php echo esc_html__( 'React Native Profile Screen | React Native Profile UI', 'ultraaddons' ); ?></h4> 
-                    </div>
-                    <div class="video-tutorial">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/9hoFP0dgRx0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <h4 class="video-title"><?php echo esc_html__( 'React Native Profile Screen | React Native Profile UI', 'ultraaddons' ); ?></h4> 
-                    </div>
+                    
                 </div>
             </div>
         </section>
@@ -216,9 +155,9 @@ to our newsletter.', 'ultraaddons' ); ?></p>
             <div class="inner-wrapper">
                 <div class="full-width info-box" style="background-image: url(<?php echo esc_url( ULTRA_ADDONS_ASSETS . 'images/svg/Illustration-2.svg' ); ?>);">
                     <h3 class="big"><?php echo esc_html__( 'Are you like our Product?', 'ultraaddons' ); ?></h3>
-                    <p><?php echo esc_html__( 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words', 'ultraaddons' ); ?></p>
+                    <p><?php echo esc_html__( ' Thanks for your recent visit to our plugin. We want to provide the best experience possible! To help us, please take a moment to leave your feedback. Thank you', 'ultraaddons' ); ?></p>
                     <div class="btn-wrapper">
-                        <a href="https://wordpress.org/support/plugin/ultraaddons-elementor-lite/reviews/#new-post" class="ua-button button" target="_blank"><?php echo esc_html__( 'Rating us', 'ultraaddons' ); ?></a>    
+                        <a href="https://wordpress.org/support/plugin/ultraaddons-elementor-lite/reviews/?filter=5" class="ua-button button" target="_blank"><?php echo esc_html__( 'Rating us', 'ultraaddons' ); ?></a>    
                     </div>
                     <img src="<?php echo esc_url( ULTRA_ADDONS_ASSETS . 'images/svg/Illustration-2.svg' ); ?>" alt="">
                 </div>

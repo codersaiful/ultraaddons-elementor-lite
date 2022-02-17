@@ -285,7 +285,6 @@
   }
 
 
-
   $('.widget-free-pro-list li').on('click', function(){
     options = localStorage.getItem("options");
     options = JSON.parse(options);
@@ -340,8 +339,19 @@
     console.log(targetSelector);
     $(targetSelector).fadeIn('medium');
 
-  }
-
+    }
+    
+/**
+   * Alert for Pro Widget 
+   * @author B M Rafiul Alam
+   * @Since 1.1.0.11
+*/
+ var inst = $('[data-remodal-id=modal]').remodal();
+ $('.ua-version-free .pro').click(function(e){
+    e.preventDefault();
+    inst.open();
+});
+  
 
   
 
