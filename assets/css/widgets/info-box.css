@@ -63,3 +63,26 @@ a.ua-info-box-wrapper {
         -ms-flex-align: end;
             align-items: flex-end; }
 }
+.ua-info-box-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.count-text {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.count-left{
+    left: 0;
+}
+.count-right{
+    right: 0;
+}
+.count-bottom{
+    bottom: 0;
+}
+.count-top{
+    top: 0;
+}

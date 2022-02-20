@@ -15,6 +15,7 @@ use Elementor\Group_Control_Typography;
 use Elementor\Icons_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Utils;
+use Elementor\Group_Control_Box_Shadow;
 
 
 class Info_Box extends Base {
@@ -159,7 +160,15 @@ class Info_Box extends Base {
                             'label_block' => true,
                     ]
             );
-            
+            $this->add_control(
+                    'count_text',
+                    [
+                            'label' => __( 'Count Text', 'ultraaddons' ),
+                            'type' => Controls_Manager::TEXT,
+                            'default' => __( '01/', 'ultraaddons' ),
+                            'label_block' => true,
+                    ]
+            );
             $this->add_control(
                     'title_size',
                     [
@@ -226,29 +235,7 @@ class Info_Box extends Base {
                     ]
             );
             
-            $this->add_responsive_control(
-                    'wrapper_link_padding',
-                    [
-                            'label' => __( 'Padding', 'ultraaddons' ),
-                            'type' => Controls_Manager::DIMENSIONS,
-                            'description' => __( 'For setting wrapper link padding, Please set zero padding for main box from Advance Tab.', 'ultraaddons' ),
-                            'size_units' => [ 'px', '%' ],
-                            'default'   => [
-                                    'top' => 50,
-                                    'left' => 50,
-                                    'right' => 50,
-                                    'bottom' => 50,
-                                    'unit' => 'px',
-                            ],
-                            'selectors' => [
-                                    '{{WRAPPER}} .elementor-widget-container a.ua-info-box-wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-//                                    '{{WRAPPER}} .elementor-widget-container' => 'padding: 0px 0px 0px 0px !important;',
-                            ],
-                            'condition' => [
-                                'wrapper_link_switch' => 'yes',
-                            ],
-                    ]
-            );
+            
             
             $this->end_controls_section();
             
@@ -591,8 +578,6 @@ class Info_Box extends Base {
         
         
         
-        
-        
         $this->add_control(
                 'heading_title',
                 [
@@ -699,17 +684,7 @@ class Info_Box extends Base {
                         ],
                 ]
         );
-
         $this->end_controls_tab();
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         
         
@@ -719,9 +694,6 @@ class Info_Box extends Base {
                         'label' => __( 'Hover', 'ultraaddons' ),
                 ]
         );
-        
-        
-        
         
         
         $this->add_control(
@@ -833,24 +805,202 @@ class Info_Box extends Base {
         $this->end_controls_tab();
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         $this->end_controls_tabs();
 
         $this->end_controls_section();
 
     }
+    /**
+     * @author B M Rafiul Alam
+     * email: bmrafiul.alam@gamil.com
+     */
+ protected function style_box(){
 
+                $this->start_controls_section(
+                        'box_section',
+                        [
+                                'label' => esc_html__( 'Box', 'ultraaddons' ),
+                                'tab' => Controls_Manager::TAB_STYLE,
+                        ]
+                );
+               $this->add_responsive_control(
+                    'wrapper_link_padding',
+                    [
+                            'label' => __( 'Padding', 'ultraaddons' ),
+                            'type' => Controls_Manager::DIMENSIONS,
+                            'description' => __( 'For setting wrapper link padding, Please set zero padding for main box from Advance Tab.', 'ultraaddons' ),
+                            'size_units' => [ 'px', '%' ],
+                            'default'   => [
+                                    'top' => 30,
+                                    'left' => 15,
+                                    'right' => 15,
+                                    'bottom' => 30,
+                                    'unit' => 'px',
+                            ],
+                            'selectors' => [
+                                    '{{WRAPPER}} .elementor-widget-container' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                            ],
+                    ]
+            );
+             $this->add_responsive_control(
+                    'wrapper_border_radius',
+                    [
+                            'label' => __( 'Radius', 'ultraaddons' ),
+                            'type' => Controls_Manager::DIMENSIONS,
+                            'size_units' => [ 'px', '%' ],
+                            'selectors' => [
+                                    '{{WRAPPER}} .elementor-widget-container' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                            ],
+                    ]
+            );
+       
+       
+        $this->add_group_control(
+                Group_Control_Box_Shadow::get_type(),
+                [
+                        'name' => 'box_shadow',
+                        'label' => esc_html__( 'Box Shadow', 'ultraaddons' ),
+                        'selector' => '{{WRAPPER}} .elementor-widget-container',
+                ]
+        );
+
+
+                $this->end_controls_section();
+        }
+    protected function style_count(){
+
+        $this->start_controls_section(
+                'counter_section',
+                [
+                        'label' => esc_html__( 'Counter', 'ultraaddons' ),
+                        'tab' => Controls_Manager::TAB_STYLE,
+                ]
+        );
+
+        $this->add_control(
+                'count_alignment',
+                [
+                        'type' => Controls_Manager::CHOOSE,
+                        'label' => esc_html__( 'Horizontal Position', 'ultraaddons' ),
+                        'options' => [
+                                'left' => [
+                                        'title' => esc_html__( 'Left', 'ultraaddons' ),
+                                        'icon' => 'eicon-arrow-left',
+                                ],
+                                'right' => [
+                                        'title' => esc_html__( 'Right', 'ultraaddons' ),
+                                        'icon' => 'eicon-arrow-right',
+                                ],
+                        ],
+                        'default' => 'right',
+                        
+                ]
+	);
+         $this->add_control(
+                'count_position',
+                [
+                        'type' => Controls_Manager::CHOOSE,
+                        'label' => esc_html__( 'Vertical Position', 'ultraaddons' ),
+                        'options' => [
+                                'top' => [
+                                        'title' => esc_html__( 'Top', 'ultraaddons' ),
+                                        'icon' => 'eicon-arrow-up',
+                                ],
+                                'bottom' => [
+                                        'title' => esc_html__( 'Bottom', 'ultraaddons' ),
+                                        'icon' => 'eicon-arrow-down',
+                                ],
+                               
+                        ],
+                        'toggle' => true,
+                        'default' => 'top',
+                ]
+	);
+        $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                        'name' => 'counter_typography',
+                        'selector' => '{{WRAPPER}} .count-text',
+                ]
+        );
+        $this->add_control(
+                'counter_color',
+                [
+                        'label' => __( 'Text Color', 'ultraaddons' ),
+                        'type' => Controls_Manager::COLOR,
+                        'default' => '#222',
+                        'selectors' => [
+                                '{{WRAPPER}} .count-text' => 'color: {{VALUE}};',
+                        ],
+                ]
+        );
+        $this->add_control(
+                'counter_bg',
+                [
+                        'label' => __( 'Background Color', 'ultraaddons' ),
+                        'type' => Controls_Manager::COLOR,
+                        'default' => '#ddd',
+                        'selectors' => [
+                                '{{WRAPPER}} .count-text' => 'background-color: {{VALUE}};',
+                        ],
+                ]
+        );
+        $this->add_control(
+                'count_radius',
+                [
+                        'label' => __( 'Border Radius', 'ultraaddons' ),
+                        'type' => Controls_Manager::DIMENSIONS,
+                        'size_units' => [ 'px', '%' ],
+                        'selectors' => [
+                                '{{WRAPPER}} .count-text' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                ]
+        );
+        
+         $this->add_control(
+                'count_padding',
+                [
+                        'label' => __( 'Padding', 'ultraaddons' ),
+                        'type' => Controls_Manager::DIMENSIONS,
+                        'size_units' => [ 'px', '%' ],
+                        'selectors' => [
+                                '{{WRAPPER}} .count-text' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                ]
+        );
+        $this->add_responsive_control(
+                'counter_size',
+                [
+                        'label' => __( 'Size', 'ultraaddons' ),
+                        'type' => Controls_Manager::SLIDER,
+                        'default' => [
+                                'size' => 40,
+                        ],
+                        'range' => [
+                                'px' => [
+                                        'min' => 40,
+                                        'max' => 100,
+                                ],
+                        ],
+                        'selectors' => [
+                                '{{WRAPPER}} .count-text' => 'height:{{SIZE}}{{UNIT}}; width:{{SIZE}}{{UNIT}};', 
+                        ],
+                ]
+        );
+       
+        $this->add_group_control(
+                Group_Control_Box_Shadow::get_type(),
+                [
+                        'name' => 'count_shadow',
+                        'label' => esc_html__( 'Box Shadow', 'ultraaddons' ),
+                        'selector' => '{{WRAPPER}} .count-text',
+                ]
+        );
+
+        $this->end_controls_section();
+            
+
+    }
         /**
      * Register widget controls.
      *
@@ -875,7 +1025,11 @@ class Info_Box extends Base {
          */
         $this->button_register_controls();
 
+        $this->style_box();
+
+        $this->style_count();
     }
+    
     
     
     /**
@@ -940,6 +1094,7 @@ class Info_Box extends Base {
             <?php } elseif( 'image' == $icon_style ) { ?>
                     <img class="infobox-image" src="<?php echo esc_url( $add_image );?>" alt="" />
             <?php } ?>
+             <div class="count-text count-<?php echo $settings['count_alignment'];?> count-<?php echo $settings['count_position'];?> "><?php echo $settings['count_text']; ?></div>
         </div>
         <?php 
         }
