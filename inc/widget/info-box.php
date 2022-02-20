@@ -235,29 +235,7 @@ class Info_Box extends Base {
                     ]
             );
             
-            $this->add_responsive_control(
-                    'wrapper_link_padding',
-                    [
-                            'label' => __( 'Padding', 'ultraaddons' ),
-                            'type' => Controls_Manager::DIMENSIONS,
-                            'description' => __( 'For setting wrapper link padding, Please set zero padding for main box from Advance Tab.', 'ultraaddons' ),
-                            'size_units' => [ 'px', '%' ],
-                            'default'   => [
-                                    'top' => 50,
-                                    'left' => 50,
-                                    'right' => 50,
-                                    'bottom' => 50,
-                                    'unit' => 'px',
-                            ],
-                            'selectors' => [
-                                    '{{WRAPPER}} .elementor-widget-container a.ua-info-box-wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-//                                    '{{WRAPPER}} .elementor-widget-container' => 'padding: 0px 0px 0px 0px !important;',
-                            ],
-                            'condition' => [
-                                'wrapper_link_switch' => 'yes',
-                            ],
-                    ]
-            );
+            
             
             $this->end_controls_section();
             
@@ -706,18 +684,6 @@ class Info_Box extends Base {
                         ],
                 ]
         );
-         $this->add_control(
-                'content_padding',
-                [
-                        'label' => __( 'Box Padding', 'ultraaddons' ),
-                        'type' => Controls_Manager::DIMENSIONS,
-                        'size_units' => [ 'px', '%' ],
-                        'separator' =>'before',
-                        'selectors' => [
-                                '{{WRAPPER}} .elementor-widget-container' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                        ],
-                ]
-        );
         $this->end_controls_tab();
         
         
@@ -728,9 +694,6 @@ class Info_Box extends Base {
                         'label' => __( 'Hover', 'ultraaddons' ),
                 ]
         );
-        
-        
-        
         
         
         $this->add_control(
@@ -851,6 +814,59 @@ class Info_Box extends Base {
      * @author B M Rafiul Alam
      * email: bmrafiul.alam@gamil.com
      */
+ protected function style_box(){
+
+                $this->start_controls_section(
+                        'box_section',
+                        [
+                                'label' => esc_html__( 'Box', 'ultraaddons' ),
+                                'tab' => Controls_Manager::TAB_STYLE,
+                        ]
+                );
+               $this->add_responsive_control(
+                    'wrapper_link_padding',
+                    [
+                            'label' => __( 'Padding', 'ultraaddons' ),
+                            'type' => Controls_Manager::DIMENSIONS,
+                            'description' => __( 'For setting wrapper link padding, Please set zero padding for main box from Advance Tab.', 'ultraaddons' ),
+                            'size_units' => [ 'px', '%' ],
+                            'default'   => [
+                                    'top' => 30,
+                                    'left' => 15,
+                                    'right' => 15,
+                                    'bottom' => 30,
+                                    'unit' => 'px',
+                            ],
+                            'selectors' => [
+                                    '{{WRAPPER}} .elementor-widget-container' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                            ],
+                    ]
+            );
+             $this->add_responsive_control(
+                    'wrapper_border_radius',
+                    [
+                            'label' => __( 'Radius', 'ultraaddons' ),
+                            'type' => Controls_Manager::DIMENSIONS,
+                            'size_units' => [ 'px', '%' ],
+                            'selectors' => [
+                                    '{{WRAPPER}} .elementor-widget-container' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                            ],
+                    ]
+            );
+       
+       
+        $this->add_group_control(
+                Group_Control_Box_Shadow::get_type(),
+                [
+                        'name' => 'box_shadow',
+                        'label' => esc_html__( 'Box Shadow', 'ultraaddons' ),
+                        'selector' => '{{WRAPPER}} .elementor-widget-container',
+                ]
+        );
+
+
+                $this->end_controls_section();
+        }
     protected function style_count(){
 
         $this->start_controls_section(
@@ -877,6 +893,7 @@ class Info_Box extends Base {
                                 ],
                         ],
                         'default' => 'right',
+                        
                 ]
 	);
          $this->add_control(
@@ -895,7 +912,8 @@ class Info_Box extends Base {
                                 ],
                                
                         ],
-                        'default' => 'right',
+                        'toggle' => true,
+                        'default' => 'top',
                 ]
 	);
         $this->add_group_control(
@@ -916,7 +934,17 @@ class Info_Box extends Base {
                         ],
                 ]
         );
-            
+        $this->add_control(
+                'counter_bg',
+                [
+                        'label' => __( 'Background Color', 'ultraaddons' ),
+                        'type' => Controls_Manager::COLOR,
+                        'default' => '#ddd',
+                        'selectors' => [
+                                '{{WRAPPER}} .count-text' => 'background-color: {{VALUE}};',
+                        ],
+                ]
+        );
         $this->add_control(
                 'count_radius',
                 [
@@ -959,17 +987,7 @@ class Info_Box extends Base {
                         ],
                 ]
         );
-        $this->add_control(
-                'counter_bg',
-                [
-                        'label' => __( 'Background Color', 'ultraaddons' ),
-                        'type' => Controls_Manager::COLOR,
-                        'default' => '#ddd',
-                        'selectors' => [
-                                '{{WRAPPER}} .count-text' => 'background-color: {{VALUE}};',
-                        ],
-                ]
-        );
+       
         $this->add_group_control(
                 Group_Control_Box_Shadow::get_type(),
                 [
@@ -1006,6 +1024,8 @@ class Info_Box extends Base {
          * from Button Helper Trait
          */
         $this->button_register_controls();
+
+        $this->style_box();
 
         $this->style_count();
     }
