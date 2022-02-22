@@ -26,7 +26,7 @@ class Info_Box extends Base {
      * @return type
      */
     public function get_keywords() {
-            return [ 'ultraaddons', 'ua','info', 'service', 'box' ];
+            return [ 'ultraaddons', 'ua','info', 'service', 'box','icon' ];
     }
     
     protected function content_infobox(){
@@ -812,7 +812,8 @@ class Info_Box extends Base {
     }
     /**
      * @author B M Rafiul Alam
-     * email: bmrafiul.alam@gamil.com
+     * email: bmrafiul.alam@gamil.
+     * @since 1.1.0.11
      */
  protected function style_box(){
 

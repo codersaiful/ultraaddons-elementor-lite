@@ -658,6 +658,15 @@ $widgetsArray = [
         ],
     ],
 
+    'Advance_Pricing_Table'=> [
+        'name'      => __( 'Advnce Pricing Table', 'ultraaddons' ),
+        'is_pro'   => true,
+        'icon'      => 'eicon-price-table',
+        'cat'       => [
+            __( 'General', 'ultraaddons' ),
+        ],
+    ],
+
 ];
 
 return apply_filters( 'ultraaddons/widgets/array', $widgetsArray );
