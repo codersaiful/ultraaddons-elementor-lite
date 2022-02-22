@@ -155,40 +155,7 @@ class Advance_Pricing_Table extends Base{
 						<a class="button sign-up"
 							href="https://orders.gigenetcloud.com/order.php?quick=79,30,1024,730">Sign Up</a>
 					</div>
-					<div class="plan popular ua-col-3">
-						<div class="price">
-							<span class="dollar">$</span>
-							<span class="amount" data-dollar-amount="56.88">56.88</span>
-							<span class="slash">/</span>
-							<span class="month">mo</span>
-						</div>
-						<ul>
-							<li>40GB<span>SSD Disk</span></li>
-							<li>2GB<span>Memory</span></li>
-							<li>1 Core<span>vCPU</span></li>
-							<li>1333GB/mo<span>Transfer</span></li>
-						</ul>
-						<a class="button sign-up"
-							href="https://orders.gigenetcloud.com/order.php?quick=79,40,2048,730">Sign Up</a>
-					</div>
-					<div class="plan ua-col-3">
-						<div class="price">
-							<span class="dollar">$</span>
-							<span class="amount" data-dollar-amount="202.81">202.81</span>
-							<span class="slash">/</span>
-							<span class="month">mo</span>
-						</div>
-						<ul>
-							<li>80GB<span>SSD Disk</span></li>
-							<li>8GB<span>Memory</span></li>
-							<li>4 Cores<span>vCPU</span></li>
-							<li>5333GB/mo<span>Transfer</span></li>
-						</ul>
-						<a class="button sign-up"
-							href="https://orders.gigenetcloud.com/order.php?quick=79,80,8192,730">Sign Up</a>
-					</div>
 				</div>
-
 			</div>
 		</div>
 	</div>
@@ -199,40 +166,6 @@ class Advance_Pricing_Table extends Base{
 		<div id="pricing-chart-wrap">
 			<div class="pricing-chart">
 				<div id="smaller-plans" class="ua-row">
-					<div class="plan ua-col-3">
-						<div class="price">
-							<span class="dollar">$</span>
-							<span class="amount" data-dollar-amount="25.49">25.49</span>
-							<span class="slash">/</span>
-							<span class="month">mo</span>
-						</div>
-						<ul>
-							<li>30GB<span>SSD Disk</span></li>
-							<li>1GB<span>Memory</span></li>
-							<li>1 Core<span>vCPU</span></li>
-							<li>667GB/mo<span>Transfer</span></li>
-						</ul>
-						<a class="button sign-up"
-							href="https://orders.gigenetcloud.com/order.php?quick=79,30,1024,730">Sign
-							Up</a>
-					</div>
-					<div class="plan popular ua-col-3">
-						<div class="price">
-							<span class="dollar">$</span>
-							<span class="amount" data-dollar-amount="100.88">100.88</span>
-							<span class="slash">/</span>
-							<span class="month">mo</span>
-						</div>
-						<ul>
-							<li>40GB<span>SSD Disk</span></li>
-							<li>2GB<span>Memory</span></li>
-							<li>1 Core<span>vCPU</span></li>
-							<li>1333GB/mo<span>Transfer</span></li>
-						</ul>
-						<a class="button sign-up"
-							href="https://orders.gigenetcloud.com/order.php?quick=79,40,2048,730">Sign
-							Up</a>
-					</div>
 					<div class="plan ua-col-3">
 						<div class="price">
 							<span class="dollar">$</span>
@@ -251,11 +184,8 @@ class Advance_Pricing_Table extends Base{
 							Up</a>
 					</div>
 				</div>
-
 			</div>
 		</div>
-	</div>
-
 	</div>
 </section>
 
