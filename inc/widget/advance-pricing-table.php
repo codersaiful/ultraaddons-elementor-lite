@@ -135,7 +135,7 @@ class Advance_Pricing_Table extends Base{
 	</div>
 
 	<div id="monthly" class="wrapper-full">
-		<p class="bandwidth">Pricing in USD. Excludes any applicable tax.</p>
+		<p class="desc">Pricing in USD. Excludes any applicable tax.</p>
 		<div id="pricing-chart-wrap">
 			<div class="pricing-chart">
 				<div id="smaller-plans" class="ua-row">
@@ -162,7 +162,6 @@ class Advance_Pricing_Table extends Base{
 							<span class="slash">/</span>
 							<span class="month">mo</span>
 						</div>
-						<p class="pop-plan">Most Popular Plan</p>
 						<ul>
 							<li>40GB<span>SSD Disk</span></li>
 							<li>2GB<span>Memory</span></li>
@@ -196,7 +195,7 @@ class Advance_Pricing_Table extends Base{
 
 	<!--SECOND PART-->
 	<div id="hourly" class="wrapper-full hide">
-		<p class="bandwidth">Pricing in USD. Excludes any applicable tax.</p>
+		<p class="desc">Pricing in USD. Excludes any applicable tax.</p>
 		<div id="pricing-chart-wrap">
 			<div class="pricing-chart">
 				<div id="smaller-plans" class="ua-row">
@@ -224,7 +223,6 @@ class Advance_Pricing_Table extends Base{
 							<span class="slash">/</span>
 							<span class="month">mo</span>
 						</div>
-						<p class="pop-plan">Most Popular Plan</p>
 						<ul>
 							<li>40GB<span>SSD Disk</span></li>
 							<li>2GB<span>Memory</span></li>

@@ -62,17 +62,7 @@
   width: 100%;
   text-align: center;
 }
-.pricing-columns .wrapper-full {
-  /* position: relative; */
-  /* width: 1170px; */
-  /* margin: 0 auto; */
-}
-.pricing-columns ,
-.pricing-columns-both  {
-  /* margin-top: 100px; */
-  /* float: left; */
-  /* position: relative; */
-}
+
 .pricing-columns  #smaller-plans,
 .pricing-columns-both  #smaller-plans {
   display: block;
@@ -86,7 +76,7 @@
   padding: 14px;
   border-right: 1px solid #e1e1e1;
   border-bottom: 1px solid #e1e1e1;
-  /* width: 207px; */
+  height: 100%;
 }
 .pricing-columns  .plan:first-child,
 .pricing-columns-both  .plan:first-child {
@@ -204,12 +194,10 @@
 .pricing-columns-both  .popular {
   /* width: 274px; */
   position: relative;
-  top: -30px;
   background-color: white;
-  /* margin-left: -2px; */
-  /* right: 0; */
   border-left: 1px solid #e1e1e1;
   border-right: 1px solid #e1e1e1;
+  height: 100%;
 }
 .pricing-columns  .popular:before,
 .pricing-columns-both  .popular:before {
@@ -223,28 +211,13 @@
   border: none;
   color: #ffffff;
 }
-.pricing-columns  .popular .price .amount,
-.pricing-columns-both  .popular .price .amount {
-  font-size: 60px;
-}
-.bandwidth {
-  display: block;
-  color: #9e9e9e;
-  font-size: 16px;
-  position: absolute;
-  right: 0;
-  bottom: -90px;
-}
 .pricing-columns  .popular p.pop-plan,
 .pricing-columns-both  .popular p.pop-plan {
   color: #454545;
   font-size: 16px;
   margin-bottom: 45px;
 }
-.pricing-columns  .popular .price,
-.pricing-columns-both  .popular .price {
-  margin-bottom: 0px;
-}
+
 .pricing-columns  .plan a.sign-up:hover,
 .pricing-columns-both  .plan a.sign-up:hover {
   border: 0;
@@ -255,5 +228,8 @@
   display: none;
 }
 .toggle-wrap {
-    margin-bottom: 70px;
+    margin-bottom: 30px;
+}
+.desc{
+  margin-bottom: 20px;
 }
