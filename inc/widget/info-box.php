@@ -165,7 +165,6 @@ class Info_Box extends Base {
                     [
                             'label' => __( 'Count Text', 'ultraaddons' ),
                             'type' => Controls_Manager::TEXT,
-                            'default' => __( '01/', 'ultraaddons' ),
                             'label_block' => true,
                     ]
             );
@@ -1095,7 +1094,11 @@ class Info_Box extends Base {
             <?php } elseif( 'image' == $icon_style ) { ?>
                     <img class="infobox-image" src="<?php echo esc_url( $add_image );?>" alt="" />
             <?php } ?>
-             <div class="count-text count-<?php echo $settings['count_alignment'];?> count-<?php echo $settings['count_position'];?> "><?php echo $settings['count_text']; ?></div>
+            <?php if(!empty($settings['count_text'])): ?>
+                <div class="count-text count-<?php echo $settings['count_alignment'];?> count-<?php echo $settings['count_position'];?> ">
+                        <?php echo $settings['count_text']; ?>
+                </div>
+             <?php endif;?>
         </div>
         <?php 
         }

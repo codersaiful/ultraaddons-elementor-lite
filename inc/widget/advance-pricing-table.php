@@ -91,6 +91,11 @@ class Advance_Pricing_Table extends Base{
         
         //For General Section
         $this->content_general_controls();
+        $this->general_style();
+        $this->toggle_style();
+        $this->icon_style();
+        $this->box_style();
+        $this->button_style();
     }
     
         
@@ -141,7 +146,17 @@ class Advance_Pricing_Table extends Base{
 				'label_block' => false,
 			]
 		);
-
+		$repeater->add_control(
+			'icon',
+			[
+				'label' => esc_html__( 'Icon', 'ultraaddons' ),
+				'type' => Controls_Manager::ICONS,
+				'default' => [
+					'value' => 'fas fa-star',
+					'library' => 'solid',
+				],
+			]
+		);
 		$repeater->add_control(
 			'list_curreny', [
 				'label' => esc_html__( 'Currency Symbol', 'ultraaddons' ),
@@ -226,7 +241,17 @@ class Advance_Pricing_Table extends Base{
 				'label_block' => false,
 			]
 		);
-
+		$repeater_b->add_control(
+			'icon',
+			[
+				'label' => esc_html__( 'Icon', 'ultraaddons' ),
+				'type' => Controls_Manager::ICONS,
+				'default' => [
+					'value' => 'fas fa-star',
+					'library' => 'solid',
+				],
+			]
+		);
 		$repeater_b->add_control(
 			'list_curreny', [
 				'label' => esc_html__( 'Currency Symbol', 'ultraaddons' ),
@@ -304,6 +329,425 @@ class Advance_Pricing_Table extends Base{
         $this->end_controls_section();
     }
 
+	protected function general_style() {
+        $this->start_controls_section(
+            'general_style',
+            [
+                'label'     => esc_html__( 'General Style', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->add_responsive_control(
+			'_alignment',
+			[
+				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'start' => [
+						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'end' => [
+						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'left',
+				'selectors' => [
+					'{{WRAPPER}} .plan' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+	
+		$this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+				'label'     => esc_html__( 'Description Typography', 'ultraaddons' ),
+                'name' => 'desc_typography',
+                'selector' => '{{WRAPPER}} .desc',
+            ]
+        );
+		$this->add_control(
+			'desc_color', [
+				'label' => __( 'Description Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .desc' => 'color: {{VALUE}};',
+				],
+				'default'=>'#B62347',
+				'separator' => 'after',
+			]
+        );
+	
+		$this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+				'label'     => esc_html__( 'Title Typography', 'ultraaddons' ),
+                'name' => 'title_typography',
+                'selector' => '{{WRAPPER}} .plan-title',
+            ]
+        );
+		$this->add_control(
+			'title_color', [
+				'label' => __( 'Title Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .plan-title' => 'color: {{VALUE}};',
+				],
+				'separator' => 'after',
+				'default'=>'#111'
+			]
+        );
+
+		$this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+				'label'     => esc_html__( 'Price Typography', 'ultraaddons' ),
+                'name' => 'amount_typography',
+                'selector' => '{{WRAPPER}} .amount',
+            ]
+        );
+		$this->add_control(
+			'amount_color', [
+				'label' => __( 'Price Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .amount' => 'color: {{VALUE}};',
+				],
+				'separator' => 'after',
+				'default'=>'#111'
+			]
+        );
+		$this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+				'label'     => esc_html__( 'Currency Typography', 'ultraaddons' ),
+                'name' => 'currency_typography',
+                'selector' => '{{WRAPPER}} .dollar',
+            ]
+        );
+		$this->add_control(
+			'currency_color', [
+				'label' => __( 'Currency Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .dollar' => 'color: {{VALUE}};',
+				],
+				'separator' => 'after',
+				'default'=>'#111'
+			]
+        );
+		$this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+				'label'     => esc_html__( 'Month Typography', 'ultraaddons' ),
+                'name' => 'month_typography',
+                'selector' => '{{WRAPPER}} .month',
+            ]
+        );
+		$this->add_control(
+			'month_color', [
+				'label' => __( 'Month Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .month' => 'color: {{VALUE}};',
+				],
+				'separaor' => 'after',
+				'default'=>'#111'
+			]
+        );
+        $this->end_controls_section();
+    }
+	protected function icon_style() {
+        $this->start_controls_section(
+            'icon_style',
+            [
+                'label'     => esc_html__( 'Icon', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->add_control(
+			'icon_color', [
+				'label' => __( 'Icon Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .pricing-icon-wrapper i' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .pricing-icon-wrapper svg' => 'fill: {{VALUE}};',
+				],
+				'default'=>'#B62347'
+			]
+        );
+		$this->add_control(
+			'icon_size',
+			[
+				'label' => esc_html__( 'Size', 'ultraaddons' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'range' => [
+					'px' => [
+						'min' => 14,
+						'max' => 1000,
+						'step' => 5,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 20,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .pricing-icon-wrapper i' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .pricing-icon-wrapper svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+	
+        $this->end_controls_section();
+    }
+	/**
+	 *  Box style Method
+	 */
+	 protected function box_style(){
+       $this->start_controls_section(
+            '_ua_card_box_style',
+            [
+                'label'     => esc_html__( 'Box', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'box_background',
+				'label' => __( 'Box Background', 'ultraaddons' ),
+				'types' => [ 'classic', 'gradient'],
+				'selector' => '{{WRAPPER}} .plan',
+			]
+		);
+		$this->add_responsive_control(
+			'_ua_box_radius',
+			[
+				'label'       => esc_html__( 'Box Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ '%', 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'separator'=>'before',
+				'selectors'   => [
+					'{{WRAPPER}} .plan' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'_ua_box_padding',
+			[
+				'label'       => esc_html__( 'Box Padding', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ '%', 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'separator'=>'before',
+				'selectors'   => [
+					'{{WRAPPER}} .plan' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'card_box_shadow',
+				'label' => __( 'Box Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .plan',
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => '_ua_box_border',
+				'label' => __( 'Border', 'plugin-domain' ),
+				'selector' => '{{WRAPPER}} .plan',
+			]
+		);
+		
+	 $this->end_controls_section();
+    }
+
+	protected function toggle_style() {
+        $this->start_controls_section(
+            'toggle_style',
+            [
+                'label'     => esc_html__( 'Toggle', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->add_control(
+			'toggle_color', [
+				'label' => __( 'Toggle Background', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .toggle' => 'background: {{VALUE}};',
+				],
+				'default'=>'#B62347'
+			]
+        );
+		$this->add_control(
+			'toggle_text_color', [
+				'label' => __( 'Toggle Active Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .toggler.toggler--is-active' => 'color: {{VALUE}};',
+				],
+				'default'=>'#B62347'
+			]
+        );
+		$this->add_control(
+			'toggle_deactive_text_color', [
+				'label' => __( 'Toggle De-active Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .toggler' => 'color: {{VALUE}};',
+				],
+				'default'=>'#ccc'
+			]
+        );
+        $this->end_controls_section();
+    }
+	/**
+	 * Button style Method
+	 */
+	 protected function button_style(){
+       $this->start_controls_section(
+            '_ua_card_button_style',
+            [
+                'label'     => esc_html__( 'Button', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->start_controls_tabs(
+			'style_tabs'
+		);
+		/**
+		 * Normal tab
+		 */
+		$this->start_controls_tab(
+			'style_normal_tab',
+			[
+				'label' => __( 'Normal', 'ultraaddons' ),
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'card_btn_typography',
+					'label' => 'Button Typography',
+					'selector' => '{{WRAPPER}} .ua-sign-up',
+					'separator'=>'after'
+			]
+        );
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'btn_background',
+				'label' => __( 'Button Background', 'ultraaddons' ),
+				'types' => [ 'classic', 'gradient'],
+				'selector' => '{{WRAPPER}} .ua-sign-up',
+			]
+		);
+		$this->add_control(
+			'_ua_btn_text_color', [
+				'label' => __( 'Button Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-sign-up' => 'color: {{VALUE}};',
+				],
+				'separator'=>'before'
+			]
+        );
+		$this->add_responsive_control(
+			'_ua_card_btn_radius',
+			[
+				'label'       => esc_html__( 'Button Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-sign-up' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'_ua_card_btn_padding',
+			[
+				'label'       => esc_html__( 'Button Padding', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-sign-up' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+				],
+			]
+		);
+		$this->end_controls_tab();
+		/**
+		 * Button Hover tab
+		 */
+		$this->start_controls_tab(
+			'style_hover_tab',
+			[
+				'label' => __( 'Hover', 'ultraaddons' ),
+			]
+		);
+		$this->add_control(
+			'_ua_btn_text_hover_color', [
+				'label' => __( 'Button Text Hover Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-sign-up:hover' => 'color: {{VALUE}};',
+				],
+				'separator'=>'before'
+			]
+        );
+		$this->add_control(
+			'_ua_btn_bg_hover_color', [
+				'label' => __( 'Button Background', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-sign-up:hover' => 'background: {{VALUE}};',
+				],
+				'separator'=>'before'
+			]
+        );
+		$this->end_controls_tabs();
+		
+	 $this->end_controls_section();
+    }
+
      /**
      * Render oEmbed widget output on the frontend.
      *
@@ -332,6 +776,7 @@ class Advance_Pricing_Table extends Base{
 	<p class="desc">
 		<?php echo $settings['price_desc']; ?>
 	</p>
+	<!--Part A-->
 	<div id="monthly" class="wrapper-full">
 		<div id="pricing-chart-wrap">
 			<div class="pricing-chart">
@@ -345,7 +790,10 @@ class Advance_Pricing_Table extends Base{
 							$nofollow 	= ( $item['website_link']['nofollow']=='on') ? 'rel="nofollow"' :'';
 					?>
 					<div class="plan ua-col-3">
-						<h2 class="price-title"><?php echo $item['list_title'];?></h2>
+						<div class="pricing-icon-wrapper">
+							<?php \Elementor\Icons_Manager::render_icon( $item['icon'], [ 'aria-hidden' => 'true' ] ); ?>
+						</div>
+						<h2 class="plan-title"><?php echo $item['list_title'];?></h2>
 						<div class="price">
 							<span class="dollar"><?php echo $item['list_curreny'];?></span>
 							<span class="amount"><?php echo $item['list_price'];?></span>
@@ -353,7 +801,7 @@ class Advance_Pricing_Table extends Base{
 							<span class="month"><?php echo $item['list_period'];?></span>
 						</div>
 						<?php echo $item['list_feature'];?>
-						<a class="button sign-up" href="<?php echo esc_url($url); ?>" <?php echo esc_attr($is_external);?> <?php echo esc_attr($nofollow);?>>
+						<a class="ua-button ua-sign-up" href="<?php echo esc_url($url); ?>" <?php echo esc_attr($is_external);?> <?php echo esc_attr($nofollow);?>>
 							<?php echo $item['list_button'];?>
 						</a>
 					</div>
@@ -364,7 +812,7 @@ class Advance_Pricing_Table extends Base{
 		</div>
 	</div>
 
-	<!--SECOND PART-->
+	<!-- PART B-->
 	<div id="hourly" class="wrapper-full hide">
 		<div id="pricing-chart-wrap">
 			<div class="pricing-chart">
@@ -378,7 +826,10 @@ class Advance_Pricing_Table extends Base{
 							$nofollow 	= ( $item['website_link']['nofollow']=='on') ? 'rel="nofollow"' :'';
 					?>
 					<div class="plan ua-col-3">
-						<h2 class="price-title"><?php echo $item['list_title'];?></h2>
+						<div class="pricing-icon-wrapper">
+							<?php \Elementor\Icons_Manager::render_icon( $item['icon'], [ 'aria-hidden' => 'true' ] ); ?>
+						</div>
+						<h2 class="plan-title"><?php echo $item['list_title'];?></h2>
 						<div class="price">
 							<span class="dollar"><?php echo $item['list_curreny'];?></span>
 							<span class="amount"><?php echo $item['list_price'];?></span>

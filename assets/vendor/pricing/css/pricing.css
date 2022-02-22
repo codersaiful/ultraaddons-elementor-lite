@@ -17,8 +17,8 @@
 }
 .toggle {
   position: relative;
-  width: 80px;
-  height: 35px;
+  width: 70px;
+  height: 30px;
   border-radius: 100px;
   background-color: #9D1726;
   overflow: hidden;
@@ -84,7 +84,7 @@
 }
 .pricing-columns  .plan:before,
 .pricing-columns-both  .plan:before {
-  content: "";
+  /* content: ""; */
   position: absolute;
   height: 5px;
   left: -1px;
@@ -123,14 +123,13 @@
 }
 .pricing-columns  .plan ul,
 .pricing-columns-both  .plan ul {
-  padding: 0 18px;
+  padding: 0;
   margin-bottom: 40px;
 }
 .pricing-columns  .plan ul li,
 .pricing-columns-both  .plan ul li {
   font-weight: 600;
   font-size: 15px;
-  text-align: left;
   margin-bottom: 20px;
 }
 .pricing-columns  .plan ul li span,
@@ -141,8 +140,8 @@
   font-weight: 400;
   font-size: 14px;
 }
-.pricing-columns  .plan a.sign-up,
-.pricing-columns-both  .plan a.sign-up {
+.pricing-columns  .plan a.ua-sign-up,
+.pricing-columns-both  .plan a.ua-sign-up {
   width: 100%;
   padding: 13px;
   background-color: white;
@@ -167,7 +166,7 @@
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
-.pricing-section .sign-up {
+.pricing-section .ua-sign-up {
   padding: 17px 50px;
   text-transform: uppercase;
   background-color: #93cc76;
@@ -205,8 +204,8 @@
   background-color: #9D1726;
   height: 7px;
 }
-.pricing-columns  .popular a.sign-up,
-.pricing-columns-both  .popular a.sign-up {
+.pricing-columns  .popular a.ua-sign-up,
+.pricing-columns-both  .popular a.ua-sign-up {
   background-color: #9D1726;
   border: none;
   color: #ffffff;
@@ -218,8 +217,8 @@
   margin-bottom: 45px;
 }
 
-.pricing-columns  .plan a.sign-up:hover,
-.pricing-columns-both  .plan a.sign-up:hover {
+.pricing-columns  .plan a.ua-sign-up:hover,
+.pricing-columns-both  .plan a.ua-sign-up:hover {
   border: 0;
   color: #fff;
   opacity: 0.8;
