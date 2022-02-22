@@ -108,8 +108,75 @@ class Advance_Pricing_Table extends Base{
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
-        
-        
+        $repeater = new \Elementor\Repeater();
+
+		$repeater->add_control(
+			'list_curreny', [
+				'label' => esc_html__( 'Currency Symbol', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => esc_html__( '$' , 'ultraaddons' ),
+				'label_block' => false,
+			]
+		);
+		$repeater->add_control(
+			'list_price', [
+				'label' => esc_html__( 'Price', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => esc_html__( '33.99' , 'ultraaddons' ),
+				'label_block' => false,
+			]
+		);
+		$repeater->add_control(
+			'list_period', [
+				'label' => esc_html__( 'Period', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => esc_html__( 'Mo' , 'ultraaddons' ),
+				'label_block' => false,
+			]
+		);
+		$repeater->add_control(
+			'website_link',
+			[
+				'label' => esc_html__( 'Link', 'plugin-name' ),
+				'type' => \Elementor\Controls_Manager::URL,
+				'placeholder' => esc_html__( 'https://your-link.com', 'ultraaddons' ),
+				'default' => [
+					'url' => '',
+					'is_external' => false,
+					'nofollow' => false,
+					'custom_attributes' => '',
+				],
+                'separator' => 'after'
+			]
+		);
+		$repeater->add_control(
+			'list_button', [
+				'label' => esc_html__( 'Button Text', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => esc_html__( 'Buy Now' , 'ultraaddons' ),
+				'label_block' => false,
+			]
+		);
+        $this->add_control(
+			'list',
+			[
+				'label' => esc_html__( 'Price List', 'ultraaddons' ),
+				'type' => Controls_Manager::REPEATER,
+				'fields' => $repeater->get_controls(),
+				'default' => [
+					[
+						'list_price' => esc_html__( 'Price', 'ultraaddons' ),
+					],
+					[
+						'list_price' => esc_html__( 'Price', 'ultraaddons' ),
+					],
+                    [
+						'list_price' => esc_html__( 'Price', 'ultraaddons' ),
+					],
+				],
+				'title_field' => '{{{ list_price }}}',
+			]
+		);
         $this->end_controls_section();
     }
 
@@ -139,12 +206,20 @@ class Advance_Pricing_Table extends Base{
 		<div id="pricing-chart-wrap">
 			<div class="pricing-chart">
 				<div id="smaller-plans" class="ua-row">
+					<?php 
+					if ( $settings['list'] ) {
+						$count=0;
+						foreach (  $settings['list'] as $item ) {
+							$url		= (!empty( $item['website_link']['url'] )) ? $item['website_link']['url']  : '';
+							$is_external 	= ( $item['website_link']['is_external']=='on') ? 'target="_blank"' : '';
+							$nofollow 	= ( $item['website_link']['nofollow']=='on') ? 'rel="nofollow"' :'';
+					?>
 					<div class="plan ua-col-3">
 						<div class="price">
-							<span class="dollar">$</span>
-							<span class="amount" data-dollar-amount="35.49">35.49</span>
+							<span class="dollar"><?php echo $item['list_curreny'];?></span>
+							<span class="amount"><?php echo $item['list_price'];?></span>
 							<span class="slash">/</span>
-							<span class="month">mo</span>
+							<span class="month"><?php echo $item['list_period'];?></span>
 						</div>
 						<ul>
 							<li>30GB<span>SSD Disk</span></li>
@@ -152,9 +227,12 @@ class Advance_Pricing_Table extends Base{
 							<li>1 Core<span>vCPU</span></li>
 							<li>667GB/mo<span>Transfer</span></li>
 						</ul>
-						<a class="button sign-up"
-							href="https://orders.gigenetcloud.com/order.php?quick=79,30,1024,730">Sign Up</a>
+						<a class="button sign-up" href="<?php echo esc_url($url); ?>" <?php echo esc_attr($is_external);?> <?php echo esc_attr($nofollow);?>>
+							<?php echo $item['list_button'];?>
+						</a>
 					</div>
+					<?php }
+				}?>
 				</div>
 			</div>
 		</div>
