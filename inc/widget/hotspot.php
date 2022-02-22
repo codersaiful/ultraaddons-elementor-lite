@@ -88,7 +88,7 @@ class Hotspot extends Base{
         $repeater->add_control(
 			'website_link',
 			[
-				'label' => esc_html__( 'Link', 'plugin-name' ),
+				'label' => esc_html__( 'Link', 'ultraaddons' ),
 				'type' => \Elementor\Controls_Manager::URL,
 				'placeholder' => esc_html__( 'https://your-link.com', 'ultraaddons' ),
 				'default' => [
