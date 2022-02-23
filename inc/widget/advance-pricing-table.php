@@ -408,7 +408,29 @@ class Advance_Pricing_Table extends Base{
 				],
 			]
 		);
-	
+		$this->add_control(
+			'column_space',
+			[
+				'label' => esc_html__( 'Column Spacing', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'separator' => 'after',
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 30,
+						'step' => 5,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 15,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .ua-col-3' => 'padding:0px {{SIZE}}{{UNIT}} 0px {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
