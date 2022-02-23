@@ -133,7 +133,7 @@ class Advance_Pricing_Table extends Base{
 				'label' => esc_html__( 'Description', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'label_block' => true,
-				'default'	=> 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium'
+				'default'	=> 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium <br>doloremque laudantium'
 			]
 		);
         $repeater = new \Elementor\Repeater();
@@ -152,7 +152,7 @@ class Advance_Pricing_Table extends Base{
 				'label' => esc_html__( 'Icon', 'ultraaddons' ),
 				'type' => Controls_Manager::ICONS,
 				'default' => [
-					'value' => 'fas fa-star',
+					'value' => 'fas fa fa-business-time',
 					'library' => 'solid',
 				],
 			]
@@ -253,7 +253,7 @@ class Advance_Pricing_Table extends Base{
 				'label' => esc_html__( 'Icon', 'ultraaddons' ),
 				'type' => Controls_Manager::ICONS,
 				'default' => [
-					'value' => 'fas fa-star',
+					'value' => 'far fa fa-check-circle',
 					'library' => 'solid',
 				],
 			]
@@ -355,7 +355,7 @@ class Advance_Pricing_Table extends Base{
 				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
-					'start' => [
+					'left' => [
 						'title' => esc_html__( 'Left', 'ultraaddons' ),
 						'icon' => 'eicon-text-align-left',
 					],
@@ -363,12 +363,12 @@ class Advance_Pricing_Table extends Base{
 						'title' => esc_html__( 'Center', 'ultraaddons' ),
 						'icon' => 'eicon-text-align-center',
 					],
-					'end' => [
+					'right' => [
 						'title' => esc_html__( 'Right', 'ultraaddons' ),
 						'icon' => 'eicon-text-align-right',
 					],
 				],
-				'default' => 'left',
+				'default' => 'center',
 				'selectors' => [
 					'{{WRAPPER}} .plan' => 'text-align: {{VALUE}};',
 				],
@@ -390,7 +390,7 @@ class Advance_Pricing_Table extends Base{
 				'selectors' => [
 						'{{WRAPPER}} .desc' => 'color: {{VALUE}};',
 				],
-				'default'=>'#B62347',
+				'default'=>'',
 			]
         );
 		$this->add_responsive_control(
@@ -427,7 +427,7 @@ class Advance_Pricing_Table extends Base{
 				'selectors' => [
 						'{{WRAPPER}} .plan-title' => 'color: {{VALUE}};',
 				],
-				'default'=>'#111'
+				'default'=>''
 			]
         );
 		$this->add_responsive_control(
@@ -464,7 +464,7 @@ class Advance_Pricing_Table extends Base{
 				'selectors' => [
 						'{{WRAPPER}} .amount' => 'color: {{VALUE}};',
 				],
-				'default'=>'#111'
+				'default'=>''
 			]
         );
 		$this->add_responsive_control(
@@ -501,7 +501,7 @@ class Advance_Pricing_Table extends Base{
 						'{{WRAPPER}} .dollar' => 'color: {{VALUE}};',
 				],
 				'separator' => 'after',
-				'default'=>'#111'
+				'default'=>''
 			]
         );
 		$this->add_group_control(
@@ -520,7 +520,7 @@ class Advance_Pricing_Table extends Base{
 						'{{WRAPPER}} .month' => 'color: {{VALUE}};',
 				],
 				'separaor' => 'after',
-				'default'=>'#111'
+				'default'=>''
 			]
         );
         $this->end_controls_section();
@@ -541,7 +541,7 @@ class Advance_Pricing_Table extends Base{
 						'{{WRAPPER}} .pricing-icon-wrapper i' => 'color: {{VALUE}};',
 						'{{WRAPPER}} .pricing-icon-wrapper svg' => 'fill: {{VALUE}};',
 				],
-				'default'=>'#B62347'
+				'default'=>'#e2498a'
 			]
         );
 		$this->add_control(
@@ -552,7 +552,7 @@ class Advance_Pricing_Table extends Base{
 				'size_units' => [ 'px', '%' ],
 				'range' => [
 					'px' => [
-						'min' => 14,
+						'min' => 15,
 						'max' => 1000,
 						'step' => 5,
 					],
@@ -563,7 +563,7 @@ class Advance_Pricing_Table extends Base{
 				],
 				'default' => [
 					'unit' => 'px',
-					'size' => 20,
+					'size' => 50,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .pricing-icon-wrapper i' => 'font-size: {{SIZE}}{{UNIT}};',
@@ -868,22 +868,25 @@ class Advance_Pricing_Table extends Base{
 							$url		= (!empty( $item['website_link']['url'] )) ? $item['website_link']['url']  : '';
 							$is_external 	= ( $item['website_link']['is_external']=='on') ? 'target="_blank"' : '';
 							$nofollow 	= ( $item['website_link']['nofollow']=='on') ? 'rel="nofollow"' :'';
+							$count=$count+1;
 					?>
-					<div class="plan ua-col-3">
-						<div class="pricing-icon-wrapper">
-							<?php \Elementor\Icons_Manager::render_icon( $item['icon'], [ 'aria-hidden' => 'true' ] ); ?>
+					<div class="ua-col-3">
+						<div class="plan plan-<?php echo $count;?>">
+							<div class="pricing-icon-wrapper">
+								<?php \Elementor\Icons_Manager::render_icon( $item['icon'], [ 'aria-hidden' => 'true' ] ); ?>
+							</div>
+							<h2 class="plan-title"><?php echo $item['list_title'];?></h2>
+							<div class="price">
+								<span class="dollar"><?php echo $item['list_curreny'];?></span>
+								<span class="amount"><?php echo $item['list_price'];?></span>
+								<span class="slash">/</span>
+								<span class="month"><?php echo $item['list_period'];?></span>
+							</div>
+							<?php echo $item['list_feature'];?>
+							<a class="button ua-sign-up" href="<?php echo esc_url($url); ?>" <?php echo esc_attr($is_external);?> <?php echo esc_attr($nofollow);?>>
+								<?php echo $item['list_button'];?>
+							</a>
 						</div>
-						<h2 class="plan-title"><?php echo $item['list_title'];?></h2>
-						<div class="price">
-							<span class="dollar"><?php echo $item['list_curreny'];?></span>
-							<span class="amount"><?php echo $item['list_price'];?></span>
-							<span class="slash">/</span>
-							<span class="month"><?php echo $item['list_period'];?></span>
-						</div>
-						<?php echo $item['list_feature'];?>
-						<a class="ua-button ua-sign-up" href="<?php echo esc_url($url); ?>" <?php echo esc_attr($is_external);?> <?php echo esc_attr($nofollow);?>>
-							<?php echo $item['list_button'];?>
-						</a>
 					</div>
 					<?php }
 				}?>
@@ -896,7 +899,7 @@ class Advance_Pricing_Table extends Base{
 	<div id="hourly" class="wrapper-full hide">
 		<div id="pricing-chart-wrap">
 			<div class="pricing-chart">
-				<div id="smaller-plans" class="ua-row">
+				<div class="ua-row">
 					<?php 
 					if ( $settings['list_b'] ) {
 						$count=0;
@@ -904,29 +907,33 @@ class Advance_Pricing_Table extends Base{
 							$url		= (!empty( $item['website_link']['url'] )) ? $item['website_link']['url']  : '';
 							$is_external 	= ( $item['website_link']['is_external']=='on') ? 'target="_blank"' : '';
 							$nofollow 	= ( $item['website_link']['nofollow']=='on') ? 'rel="nofollow"' :'';
+							$count=$count+1;
 					?>
-					<div class="plan ua-col-3">
-						<div class="pricing-icon-wrapper">
-							<?php \Elementor\Icons_Manager::render_icon( $item['icon'], [ 'aria-hidden' => 'true' ] ); ?>
+					<div class="ua-col-3">
+						<div class="plan plan-<?php echo $count;?>">
+							<div class="pricing-icon-wrapper">
+								<?php \Elementor\Icons_Manager::render_icon( $item['icon'], [ 'aria-hidden' => 'true' ] ); ?>
+							</div>
+							<h2 class="plan-title"><?php echo $item['list_title'];?></h2>
+							<div class="price">
+								<span class="dollar"><?php echo $item['list_curreny'];?></span>
+								<span class="amount"><?php echo $item['list_price'];?></span>
+								<span class="slash">/</span>
+								<span class="month"><?php echo $item['list_period'];?></span>
+							</div>
+							<?php echo $item['list_feature'];?>
+							<a class="button ua-sign-up" href="<?php echo esc_url($url); ?>" <?php echo esc_attr($is_external);?> <?php echo esc_attr($nofollow);?>>
+								<?php echo $item['list_button'];?>
+							</a>
 						</div>
-						<h2 class="plan-title"><?php echo $item['list_title'];?></h2>
-						<div class="price">
-							<span class="dollar"><?php echo $item['list_curreny'];?></span>
-							<span class="amount"><?php echo $item['list_price'];?></span>
-							<span class="slash">/</span>
-							<span class="month"><?php echo $item['list_period'];?></span>
-						</div>
-						<?php echo $item['list_feature'];?>
-						<a class="button sign-up" href="<?php echo esc_url($url); ?>" <?php echo esc_attr($is_external);?> <?php echo esc_attr($nofollow);?>>
-							<?php echo $item['list_button'];?>
-						</a>
 					</div>
 					<?php }
-				}?>
+					}?>
 				</div>
 			</div>
 		</div>
 	</div>
+	
 </section>
 
 <?php
