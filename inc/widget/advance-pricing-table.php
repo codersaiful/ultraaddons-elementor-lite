@@ -184,8 +184,14 @@ class Advance_Pricing_Table extends Base{
 		$repeater->add_control(
 			'list_feature', [
 				'label' => esc_html__( 'Features', 'ultraaddons' ),
-				'type' => Controls_Manager::WYSIWYG,
+				'type' => Controls_Manager::TEXTAREA,
 				'label_block' => true,
+				'default' => '<ul>
+							<li>80GB<span>SSD Disk</span></li>
+							<li>8GB<span>Memory</span></li>
+							<li>4 Cores<span>vCPU</span></li>
+							<li>5333GB/mo<span>Transfer</span></li>
+						</ul>'
 			]
 		);
 		$repeater->add_control(
@@ -214,7 +220,7 @@ class Advance_Pricing_Table extends Base{
         $this->add_control(
 			'list',
 			[
-				'label' => esc_html__( 'Price List B', 'ultraaddons' ),
+				'label' => esc_html__( 'Price List A', 'ultraaddons' ),
 				'type' => Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 				'default' => [
@@ -237,7 +243,7 @@ class Advance_Pricing_Table extends Base{
 			'list_title', [
 				'label' => esc_html__( 'Title', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'Basic' , 'ultraaddons' ),
+				'default' => esc_html__( 'Basic B' , 'ultraaddons' ),
 				'label_block' => false,
 			]
 		);
@@ -264,7 +270,7 @@ class Advance_Pricing_Table extends Base{
 			'list_price', [
 				'label' => esc_html__( 'Price', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( '33.99' , 'ultraaddons' ),
+				'default' => esc_html__( '55.99' , 'ultraaddons' ),
 				'label_block' => false,
 			]
 		);
@@ -279,8 +285,14 @@ class Advance_Pricing_Table extends Base{
 		$repeater_b->add_control(
 			'list_feature', [
 				'label' => esc_html__( 'Features', 'ultraaddons' ),
-				'type' => Controls_Manager::WYSIWYG,
+				'type' => Controls_Manager::TEXTAREA,
 				'label_block' => true,
+				'default' => '<ul>
+							<li>80GB<span>SSD Disk</span></li>
+							<li>8GB<span>Memory</span></li>
+							<li>4 Cores<span>vCPU</span></li>
+							<li>5333GB/mo<span>Transfer</span></li>
+						</ul>'
 			]
 		);
 		$repeater_b->add_control(
@@ -309,7 +321,7 @@ class Advance_Pricing_Table extends Base{
         $this->add_control(
 			'list_b',
 			[
-				'label' => esc_html__( 'Price List A', 'ultraaddons' ),
+				'label' => esc_html__( 'Price List B', 'ultraaddons' ),
 				'type' => Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 				'default' => [
@@ -379,9 +391,26 @@ class Advance_Pricing_Table extends Base{
 						'{{WRAPPER}} .desc' => 'color: {{VALUE}};',
 				],
 				'default'=>'#B62347',
-				'separator' => 'after',
 			]
         );
+		$this->add_responsive_control(
+			'desc_margin',
+			[
+				'label'       => esc_html__( 'Description Margin', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'separator'=>'after',
+				'selectors'   => [
+					'{{WRAPPER}} .desc' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 	
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
@@ -398,10 +427,27 @@ class Advance_Pricing_Table extends Base{
 				'selectors' => [
 						'{{WRAPPER}} .plan-title' => 'color: {{VALUE}};',
 				],
-				'separator' => 'after',
 				'default'=>'#111'
 			]
         );
+		$this->add_responsive_control(
+			'title_margin',
+			[
+				'label'       => esc_html__( 'Title Margin', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'separator'=>'after',
+				'selectors'   => [
+					'{{WRAPPER}} .plan-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
@@ -418,10 +464,27 @@ class Advance_Pricing_Table extends Base{
 				'selectors' => [
 						'{{WRAPPER}} .amount' => 'color: {{VALUE}};',
 				],
-				'separator' => 'after',
 				'default'=>'#111'
 			]
         );
+		$this->add_responsive_control(
+			'price_margin',
+			[
+				'label'       => esc_html__( 'Price Margin', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'separator'=>'after',
+				'selectors'   => [
+					'{{WRAPPER}} .amount' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
@@ -710,6 +773,23 @@ class Advance_Pricing_Table extends Base{
 				],
 				'selectors'   => [
 					'{{WRAPPER}} .ua-sign-up' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'btn_margin',
+			[
+				'label'       => esc_html__( 'Button Margin', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-sign-up' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
 				],
 			]
 		);
