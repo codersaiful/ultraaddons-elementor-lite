@@ -224,3 +224,11 @@ h2.plan-title {
   background:#007bff;
   color: #fff;
 }
+
+.featured-badge {
+    position: absolute;
+    background: #eb0466;
+    padding: 10px;
+    left: 0;
+    color: #fff;
+}

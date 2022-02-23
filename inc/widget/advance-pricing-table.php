@@ -96,6 +96,7 @@ class Advance_Pricing_Table extends Base{
         $this->icon_style();
         $this->box_style();
         $this->button_style();
+        $this->badge_style();
     }
     
         
@@ -217,6 +218,28 @@ class Advance_Pricing_Table extends Base{
 				'label_block' => false,
 			]
 		);
+		$repeater->add_control(
+			'show_badge',
+			[
+				'label' => __( 'Show Badge', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Show', 'ultraaddons' ),
+				'label_off' => __( 'Hide', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		);
+		$repeater->add_control(
+			'badge_text', [
+				'label' => esc_html__( 'Badge Text', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => esc_html__( 'Featured' , 'ultraaddons' ),
+				'label_block' => false,
+				'condition' =>[
+					'show_badge'=>'yes'
+				],
+				]
+		);
         $this->add_control(
 			'list',
 			[
@@ -316,6 +339,17 @@ class Advance_Pricing_Table extends Base{
 				'type' => Controls_Manager::TEXT,
 				'default' => esc_html__( 'Buy Now' , 'ultraaddons' ),
 				'label_block' => false,
+			]
+		);
+		$repeater_b->add_control(
+			'show_badge',
+			[
+				'label' => __( 'Show Badge', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Show', 'ultraaddons' ),
+				'label_off' => __( 'Hide', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'no',
 			]
 		);
         $this->add_control(
@@ -827,6 +861,76 @@ class Advance_Pricing_Table extends Base{
 		
 	 $this->end_controls_section();
     }
+	/**
+	 *  Badge style Method
+	 */
+	 protected function badge_style(){
+       $this->start_controls_section(
+            '_badge_style',
+            [
+                'label'     => esc_html__( 'Badge', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'badge_background',
+				'label' => __( 'Badge Background', 'ultraaddons' ),
+				'types' => [ 'classic', 'gradient'],
+				'selector' => '{{WRAPPER}} .featured-badge',
+				'exclude' => [ 'image' ],
+			]
+		);
+		$this->add_responsive_control(
+			'badge_radius',
+			[
+				'label'       => esc_html__( 'Badge Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ '%', 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'separator'=>'before',
+				'selectors'   => [
+					'{{WRAPPER}} .featured-badge' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'badge_padding',
+			[
+				'label'       => esc_html__( 'Badge Padding', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ '%', 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'separator'=>'before',
+				'selectors'   => [
+					'{{WRAPPER}} .featured-badge' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'badge_shadow',
+				'label' => __( 'Badge Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .featured-badge',
+			]
+		);
+		
+		
+	 $this->end_controls_section();
+    }
+
 
      /**
      * Render oEmbed widget output on the frontend.
@@ -872,6 +976,11 @@ class Advance_Pricing_Table extends Base{
 					?>
 					<div class="ua-col-3">
 						<div class="plan plan-<?php echo $count;?>">
+							<?php if($item['show_badge']=='yes'):?>
+							<div class="featured-badge">
+								<?php echo $item['badge_text'] ;?>
+							</div>
+							<?php endif;?>
 							<div class="pricing-icon-wrapper">
 								<?php \Elementor\Icons_Manager::render_icon( $item['icon'], [ 'aria-hidden' => 'true' ] ); ?>
 							</div>
@@ -911,6 +1020,11 @@ class Advance_Pricing_Table extends Base{
 					?>
 					<div class="ua-col-3">
 						<div class="plan plan-<?php echo $count;?>">
+							<?php if($item['show_badge']=='yes'):?>
+							<div class="featured-badge">
+								<?php echo $item['badge_text'] ;?>
+							</div>
+							<?php endif;?>
 							<div class="pricing-icon-wrapper">
 								<?php \Elementor\Icons_Manager::render_icon( $item['icon'], [ 'aria-hidden' => 'true' ] ); ?>
 							</div>
