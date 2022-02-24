@@ -26,7 +26,7 @@ class Info_Box extends Base {
      * @return type
      */
     public function get_keywords() {
-            return [ 'ultraaddons', 'ua','info', 'service', 'box' ];
+            return [ 'ultraaddons', 'ua','info', 'service', 'box','icon' ];
     }
     
     protected function content_infobox(){
@@ -165,7 +165,6 @@ class Info_Box extends Base {
                     [
                             'label' => __( 'Count Text', 'ultraaddons' ),
                             'type' => Controls_Manager::TEXT,
-                            'default' => __( '01/', 'ultraaddons' ),
                             'label_block' => true,
                     ]
             );
@@ -812,7 +811,8 @@ class Info_Box extends Base {
     }
     /**
      * @author B M Rafiul Alam
-     * email: bmrafiul.alam@gamil.com
+     * email: bmrafiul.alam@gamil.
+     * @since 1.1.0.11
      */
  protected function style_box(){
 
@@ -1094,7 +1094,11 @@ class Info_Box extends Base {
             <?php } elseif( 'image' == $icon_style ) { ?>
                     <img class="infobox-image" src="<?php echo esc_url( $add_image );?>" alt="" />
             <?php } ?>
-             <div class="count-text count-<?php echo $settings['count_alignment'];?> count-<?php echo $settings['count_position'];?> "><?php echo $settings['count_text']; ?></div>
+            <?php if(!empty($settings['count_text'])): ?>
+                <div class="count-text count-<?php echo $settings['count_alignment'];?> count-<?php echo $settings['count_position'];?> ">
+                        <?php echo $settings['count_text']; ?>
+                </div>
+             <?php endif;?>
         </div>
         <?php 
         }

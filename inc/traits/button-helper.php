@@ -267,6 +267,31 @@ trait Button_Helper{
                             ],
                     ]
             );
+              $this->add_responsive_control(
+                'btn_padding',
+                [
+                        'label' => __( 'Padding', 'ultraaddons' ),
+                        'type' => Controls_Manager::DIMENSIONS,
+                        'size_units' => [ 'px', '%' ],
+
+                        'selectors' => [
+                                '{{WRAPPER}} .btn-wrapper .ua-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                ]
+        );
+
+        $this->add_responsive_control(
+                'btn_margin',
+                [
+                        'label' => __( 'Margin', 'ultraaddons' ),
+                        'type' => Controls_Manager::DIMENSIONS,
+                        'size_units' => [ 'px', '%' ],
+
+                        'selectors' => [
+                                '{{WRAPPER}} .btn-wrapper .ua-button' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                ]
+        );
             
 //            $this->add_group_control(
 //                    Group_Control_Border::get_type(),
@@ -539,31 +564,7 @@ trait Button_Helper{
 			]
 		);
 
-        $this->add_responsive_control(
-                'btn_padding',
-                [
-                        'label' => __( 'Padding', 'ultraaddons' ),
-                        'type' => Controls_Manager::DIMENSIONS,
-                        'size_units' => [ 'px', '%' ],
-
-                        'selectors' => [
-                                '{{WRAPPER}} .btn-wrapper .ua-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                        ],
-                ]
-        );
-
-        $this->add_responsive_control(
-                'btn_margin',
-                [
-                        'label' => __( 'Margin', 'ultraaddons' ),
-                        'type' => Controls_Manager::DIMENSIONS,
-                        'size_units' => [ 'px', '%' ],
-
-                        'selectors' => [
-                                '{{WRAPPER}} .btn-wrapper .ua-button' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                        ],
-                ]
-        );
+      
 
         if( $this->get_name() == 'ultraaddons-button' ){
                 $this->add_responsive_control(

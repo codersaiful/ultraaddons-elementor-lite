@@ -40,17 +40,18 @@ class Price_Table extends Base {
 		$this->content_feature_controls();
 		$this->content_footer_controls();
 		
-                /**
-                 * All Style Control has transferred to
-                 * protected method
-                 * 
-                 * @since 1.0.4.1
-                 */
+		/**
+		 * All Style Control has transferred to
+		 * protected method
+		 * 
+		 * @since 1.0.4.1
+		 */
 		$this->style_general_controls();
 		$this->style_header_controls();
 		$this->style_pricing_controls();
 		$this->style_feature_controls();
 		$this->style_footer_controls();
+		$this->style_box();
             
                 /**
                  * Register Controls of Button
@@ -62,7 +63,7 @@ class Price_Table extends Base {
                 $this->button_register_controls();
     }
     protected function content_header_controls(){
-                $this->start_controls_section(
+        $this->start_controls_section(
 			'section_header',
 			[
 				'label' => __( 'Header', 'ultraaddons' ),
@@ -508,19 +509,16 @@ class Price_Table extends Base {
                                                 'title' => __( 'Right', 'ultraaddons' ),
                                                 'icon' => 'eicon-text-align-right',
                                         ],
-                                        'justify' => [
-                                                'title' => __( 'Justified', 'ultraaddons' ),
-                                                'icon' => 'eicon-text-align-justify',
-                                        ],
                                 ],
                                 'prefix_class' => 'elementor%s-align-',
                                 'default' => 'center',
                                 'toggle' => false,
+								
                         ]
                 );
                 
                 
-                $this->add_control(
+            $this->add_control(
 			'section_divider',
 			[
 				'label' => __( 'Divider', 'ultraaddons' ),
@@ -1526,14 +1524,9 @@ class Price_Table extends Base {
 				],
 			]
 		);
-                
-                
-                
-                $this->end_controls_tab();
-                $this->end_controls_tabs();
-                
-                
-		
+
+		$this->end_controls_tab();
+		$this->end_controls_tabs();
 
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
@@ -1541,31 +1534,6 @@ class Price_Table extends Base {
 				'name' => 'features_list_typography',
 				'selector' => '{{WRAPPER}} .ua-price-table__features-list li',
 				'scheme' => Schemes\Typography::TYPOGRAPHY_3,
-			]
-		);
-
-		$this->add_control(
-			'features_list_alignment',
-			[
-				'label' => __( 'Alignment', 'ultraaddons' ),
-				'type' => Controls_Manager::CHOOSE,
-				'options' => [
-					'left' => [
-						'title' => __( 'Left', 'ultraaddons' ),
-						'icon' => 'eicon-text-align-left',
-					],
-					'center' => [
-						'title' => __( 'Center', 'ultraaddons' ),
-						'icon' => 'eicon-text-align-center',
-					],
-					'right' => [
-						'title' => __( 'Right', 'ultraaddons' ),
-						'icon' => 'eicon-text-align-right',
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}} .ua-price-table__features-list' => 'text-align: {{VALUE}}',
-				],
 			]
 		);
 
@@ -1590,7 +1558,7 @@ class Price_Table extends Base {
 			]
 		);
 		
-                $this->add_responsive_control(
+            $this->add_responsive_control(
 			'icon_gap',
 			[
 				'label' => __( 'Icon Gap', 'ultraaddons' ),
@@ -1628,7 +1596,7 @@ class Price_Table extends Base {
 				'label' => __( 'Background Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .ua-price-table__footer' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .ua-price-table-footer' => 'background-color: {{VALUE}}',
 				],
 			]
 		);
@@ -1646,7 +1614,7 @@ class Price_Table extends Base {
                                         'left' => 0,
                                 ],
 				'selectors' => [
-					'{{WRAPPER}} .ua-price-table__footer' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ua-price-table-footer' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1777,8 +1745,51 @@ class Price_Table extends Base {
             
     }
 
-
-
+	 /**
+	 * Adding Box Style
+	 * @author B M Rafiul Alam
+	 * bmrafiul.alam@gmail.com
+	 * @since 1.1.0.11
+	 */
+	 protected function style_box(){
+         $this->start_controls_section(
+			'section_box_style',
+			[
+				'label' => __( 'Box', 'ultraaddons' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+				'show_label' => false,
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'box_background',
+				'label' => __( 'Box Background', 'ultraaddons' ),
+				'types' => [ 'classic', 'gradient'],
+				'selector' => '{{WRAPPER}} .ua-price-table',
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'box_wrap_shadow',
+				'selector' => '{{WRAPPER}} .ua-price-table',
+			]
+		);
+		$this->add_responsive_control(
+			'box_radius',
+			[
+				'label' => __( 'Box Radius', 'ultraaddons' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px'],
+				'selectors' => [
+					'{{WRAPPER}} .ua-price-table' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+	$this->end_controls_section();
+            
+    }
 
     private function render_currency_symbol( $symbol, $location ) {
 		$currency_position = $this->get_settings( 'currency_position' );
@@ -1879,10 +1890,7 @@ class Price_Table extends Base {
 			$fraction = $price[1];
 		}
                
-                
-                
-                
-                $this->add_render_attribute( 'heading', 'class', 'ua-price-table__heading' );
+        $this->add_render_attribute( 'heading', 'class', 'ua-price-table__heading' );
 		$this->add_render_attribute( 'sub_heading', 'class', 'ua-price-table__subheading' );
 		$this->add_render_attribute( 'period', 'class', [ 'ua-price-table__period', 'ua-typo-excluded' ] );
 		$this->add_render_attribute( 'footer_additional_info', 'class', 'ua-price-table__additional_info' );
@@ -1905,14 +1913,12 @@ class Price_Table extends Base {
                 ?>
                 <div class="ua-price-table">
                         
-			<?php 
+						<?php 
                         if( ! $price_top ){
                         $this->get_price_table_header(); 
                         }
-                        ?>	
-                    
-                        
-                        
+                        ?>
+						<div class="content-wrap">
                         <div class="ua-price-table__price">
                             <div class="ua-price-table__price_inner">
                                 <?php if ( 'yes' === $settings['sale'] && ! empty( $settings['original_price'] ) ) : ?>
@@ -1937,14 +1943,15 @@ class Price_Table extends Base {
                                     <?php echo $period_element; ?>
                                     
                                 <?php endif; ?>
+								 <?php if ( ! empty( $settings['period'] ) && 'below' === $period_position ) : ?>
+                                <span class="ua-price-table__period-wrapper">
+                                    <?php echo $period_element; ?>
+								 </span>
+                            <?php endif; ?>
 
                             </div>
                         
-                            <?php if ( ! empty( $settings['period'] ) && 'below' === $period_position ) : ?>
-                                <div class="ua-price-table__period-wrapper">
-                                    <?php echo $period_element; ?>
-                                </div>
-                            <?php endif; ?>
+                           
                         </div>
                         <?php
                             if( $price_top ){
@@ -1989,14 +1996,15 @@ class Price_Table extends Base {
                                         <?php endforeach; ?>
                                 </ul>
                         <?php endif; ?>
-
+						</div>					
                         <?php 
                             $this->button_render();
                         ?>
-                    
+                    <div class="ua-price-table-footer">
                         <?php if ( ! empty( $settings['footer_additional_info'] ) ) : ?>
                                 <div <?php echo $this->get_render_attribute_string( 'footer_additional_info' ); ?>><?php echo $settings['footer_additional_info']; ?></div>
                         <?php endif; ?>
+					</div>
                 </div>
 
                 <?php
