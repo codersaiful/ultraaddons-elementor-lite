@@ -336,6 +336,10 @@ Pagination
     -moz-osx-font-smoothing: grayscale;
     overflow: hidden;
     text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: space-between;
 }
 
 .ua-btn-wrap .ua-effect:before {

@@ -20,7 +20,6 @@ class Price_Table extends Base {
             return [ 'ultraaddons','ua', 'pricing', 'table', 'price', 'list', 'compare' ];
     }
     
-    
     /**
      * Register widget controls.
      *
@@ -52,15 +51,15 @@ class Price_Table extends Base {
 		$this->style_feature_controls();
 		$this->style_footer_controls();
 		$this->style_box();
-            
-                /**
-                 * Register Controls of Button
-                 * will come from our Trait Button Helper
-                 * 
-                 * @since 1.0.3.2
-                 * @date 7.3.2021
-                 */
-                $this->button_register_controls();
+		
+		/**
+		 * Register Controls of Button
+		 * will come from our Trait Button Helper
+		 * 
+		 * @since 1.0.3.2
+		 * @date 7.3.2021
+		 */
+		$this->button_register_controls();
     }
     protected function content_header_controls(){
         $this->start_controls_section(
