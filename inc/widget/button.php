@@ -229,6 +229,7 @@ class Button extends Base{
 				],
 				'selectors' => [
 					'{{WRAPPER}} .ua-btn i' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .ua-btn svg' => 'margin-right: {{SIZE}}{{UNIT}};',
 				],
                 'condition' => array(
 					'_icon_position' => 'left',
