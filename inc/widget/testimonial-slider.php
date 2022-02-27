@@ -786,15 +786,15 @@ class Testimonial_Slider extends Base{
                       ],
                 ]
         );
+       
         $this->add_group_control(
-            Group_Control_Box_Shadow::get_type(),
-            array(
-                'name'     => 'nav_shadow',
-                'selectors' => [
-                '{{WRAPPER}} .ua-testimonial-slider-wrapper button.owl-prev',
-                '{{WRAPPER}} .ua-testimonial-slider-wrapper button.owl-next'
+                Group_Control_Box_Shadow::get_type(),
+                [
+                'name' => 'navigation_shadow',
+                'label' => esc_html__( 'Navigation Shadow', 'plugin-name' ),
+                'selector' => '{{WRAPPER}} .ua-testimonial-slider-wrapper button.owl-prev, .ua-testimonial-slider-wrapper button.owl-next',
+             
                 ]
-            )
         );
         $this->end_controls_section();
     }
