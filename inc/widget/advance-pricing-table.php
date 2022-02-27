@@ -347,7 +347,7 @@ class Advance_Pricing_Table extends Base{
 
 			]
 		);
-		$repeater->add_control(
+		$repeater_b->add_control(
 			'show_discount',
 			[
 				'label' => __( 'Show Discount?', 'ultraaddons' ),
@@ -1170,7 +1170,7 @@ class Advance_Pricing_Table extends Base{
 								?>
 								<span class="dollar"><?php echo $item['list_curreny'];?></span>
 								<span class="amount"><s><?php echo $list_price; ?></s></span>
-								
+
 								<span class="dollar"><?php echo $item['list_curreny'];?></span>
 								<span class="discount-amount"><?php echo $selling_price; ?></span>
 								<?php }else{?>
