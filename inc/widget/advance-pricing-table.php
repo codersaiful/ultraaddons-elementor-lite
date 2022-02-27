@@ -75,7 +75,7 @@ class Advance_Pricing_Table extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua', 'price', 'pricing','table' ];
+        return [ 'ultraaddons', 'ua', 'price', 'pricing','table','advance', 'discount' ];
     }
     
     
@@ -97,6 +97,7 @@ class Advance_Pricing_Table extends Base{
         $this->box_style();
         $this->button_style();
         $this->badge_style();
+        $this->discount_style();
     }
     
         
@@ -172,6 +173,42 @@ class Advance_Pricing_Table extends Base{
 				'type' => Controls_Manager::TEXT,
 				'default' => esc_html__( '33.99' , 'ultraaddons' ),
 				'label_block' => false,
+			]
+		);
+		$repeater->add_control(
+			'is_discount',
+			[
+				'label' => __( 'Discount?', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Show', 'ultraaddons' ),
+				'label_off' => __( 'Hide', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		);
+		$repeater->add_control(
+			'list_discount_price', [
+				'label' => esc_html__( 'Discount Price', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => esc_html__( '25.99' , 'ultraaddons' ),
+				'label_block' => false,
+				'condition' =>[
+					'is_discount'=>'yes'
+				],
+			]
+		);
+		$repeater->add_control(
+			'show_discount',
+			[
+				'label' => __( 'Show Discount?', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Show', 'ultraaddons' ),
+				'label_off' => __( 'Hide', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+				'condition' =>[
+					'is_discount'=>'yes'
+				],
 			]
 		);
 		$repeater->add_control(
@@ -297,6 +334,45 @@ class Advance_Pricing_Table extends Base{
 				'label_block' => false,
 			]
 		);
+		
+		$repeater_b->add_control(
+			'is_discount',
+			[
+				'label' => __( 'Discount?', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Show', 'ultraaddons' ),
+				'label_off' => __( 'Hide', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+
+			]
+		);
+		$repeater_b->add_control(
+			'show_discount',
+			[
+				'label' => __( 'Show Discount?', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Show', 'ultraaddons' ),
+				'label_off' => __( 'Hide', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+				'condition' =>[
+					'is_discount'=>'yes'
+				],
+			]
+		);
+		$repeater_b->add_control(
+			'list_discount_price', [
+				'label' => esc_html__( 'Discount Price', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => esc_html__( '40.99' , 'ultraaddons' ),
+				'label_block' => false,
+				'condition' =>[
+					'is_discount'=>'yes'
+				],
+			]
+		);
+		
 		$repeater_b->add_control(
 			'list_period', [
 				'label' => esc_html__( 'Period', 'ultraaddons' ),
@@ -895,6 +971,14 @@ class Advance_Pricing_Table extends Base{
             ]
         );
 		$this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+				'label'     => esc_html__( 'Badge Typography', 'ultraaddons' ),
+                'name' => 'badge_typography',
+                'selector' => '{{WRAPPER}} .featured-badge',
+            ]
+        );
+		$this->add_group_control(
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'badge_background',
@@ -952,6 +1036,83 @@ class Advance_Pricing_Table extends Base{
 		
 	 $this->end_controls_section();
     }
+	/**
+	 *  Discount style Method
+	 */
+	 protected function discount_style(){
+       $this->start_controls_section(
+            '_discount_style',
+            [
+                'label'     => esc_html__( 'Discount', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+				'label'     => esc_html__( 'Discount Typography', 'ultraaddons' ),
+                'name' => 'discount_typography',
+                'selector' => '{{WRAPPER}} .discount-percent',
+            ]
+        );
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'discount_background',
+				'label' => __( 'Badge Background', 'ultraaddons' ),
+				'types' => [ 'classic', 'gradient'],
+				'selector' => '{{WRAPPER}} .discount-percent',
+				'exclude' => [ 'image' ],
+			]
+		);
+		$this->add_responsive_control(
+			'discount_radius',
+			[
+				'label'       => esc_html__( 'Discount Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ '%', 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'separator'=>'before',
+				'selectors'   => [
+					'{{WRAPPER}} .discount-percent' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'discount_padding',
+			[
+				'label'       => esc_html__( 'Discount Padding', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ '%', 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'separator'=>'before',
+				'selectors'   => [
+					'{{WRAPPER}} .discount-percent' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'discount_shadow',
+				'label' => __( 'Discount Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .discount-percent',
+			]
+		);
+		
+		
+	 $this->end_controls_section();
+    }
 
 
      /**
@@ -995,6 +1156,12 @@ class Advance_Pricing_Table extends Base{
 							$is_external 	= ( $item['website_link']['is_external']=='on') ? 'target="_blank"' : '';
 							$nofollow 	= ( $item['website_link']['nofollow']=='on') ? 'rel="nofollow"' :'';
 							$count=$count+1;
+							//Discount Calculate
+							$list_price 	=  $item['list_price'];
+							$selling_price 	=  $item['list_discount_price'];
+							$discount 		= $list_price - $selling_price;
+							$percent 		= ($discount/$list_price) * 100;
+
 					?>
 					<div class="ua-col-3">
 						<div class="plan plan-<?php echo $count;?>">
@@ -1003,13 +1170,30 @@ class Advance_Pricing_Table extends Base{
 								<?php echo $item['badge_text'] ;?>
 							</div>
 							<?php endif;?>
+							<?php
+							if('yes'=== $item['show_discount']):
+							?>
+							<div class="discount-percent"><?php echo round($percent);?>%</div>
+							<?php endif;?>
+							
 							<div class="pricing-icon-wrapper">
 								<?php \Elementor\Icons_Manager::render_icon( $item['icon'], [ 'aria-hidden' => 'true' ] ); ?>
 							</div>
 							<h2 class="plan-title"><?php echo $item['list_title'];?></h2>
 							<div class="price">
+								<?php
+								if('yes'=== $item['is_discount']){
+								?>
 								<span class="dollar"><?php echo $item['list_curreny'];?></span>
+								<span class="amount"><s><?php echo $list_price; ?></s></span>
+
+								<span class="dollar"><?php echo $item['list_curreny'];?></span>
+								<span class="discount-amount"><?php echo $selling_price; ?></span>
+								<?php }else{?>
+									<span class="dollar"><?php echo $item['list_curreny'];?></span>
 								<span class="amount"><?php echo $item['list_price'];?></span>
+								<?php }?>
+							
 								<span class="slash">/</span>
 								<span class="month"><?php echo $item['list_period'];?></span>
 							</div>
@@ -1039,6 +1223,11 @@ class Advance_Pricing_Table extends Base{
 							$is_external 	= ( $item['website_link']['is_external']=='on') ? 'target="_blank"' : '';
 							$nofollow 	= ( $item['website_link']['nofollow']=='on') ? 'rel="nofollow"' :'';
 							$count=$count+1;
+							//Discount Calculate
+							$list_price 	=  $item['list_price'];
+							$selling_price 	=  $item['list_discount_price'];
+							$discount 		= $list_price - $selling_price;
+							$percent 		= ($discount/$list_price) * 100;
 					?>
 					<div class="ua-col-3">
 						<div class="plan plan-<?php echo $count;?>">
@@ -1047,13 +1236,30 @@ class Advance_Pricing_Table extends Base{
 								<?php echo $item['badge_text'] ;?>
 							</div>
 							<?php endif;?>
+							<?php
+							if('yes'=== $item['show_discount']):
+							?>
+							<div class="discount-percent"><?php echo round($percent);?>%</div>
+							<?php endif;?>
+
 							<div class="pricing-icon-wrapper">
 								<?php \Elementor\Icons_Manager::render_icon( $item['icon'], [ 'aria-hidden' => 'true' ] ); ?>
 							</div>
 							<h2 class="plan-title"><?php echo $item['list_title'];?></h2>
 							<div class="price">
+								<?php
+								if('yes'=== $item['is_discount']){
+								?>
+								<span class="dollar"><?php echo $item['list_curreny'];?></span>
+								<span class="amount"><s><?php echo $list_price; ?></s></span>
+
+								<span class="dollar"><?php echo $item['list_curreny'];?></span>
+								<span class="discount-amount"><?php echo $selling_price; ?></span>
+								<?php }else{?>
 								<span class="dollar"><?php echo $item['list_curreny'];?></span>
 								<span class="amount"><?php echo $item['list_price'];?></span>
+								<?php }?>
+							
 								<span class="slash">/</span>
 								<span class="month"><?php echo $item['list_period'];?></span>
 							</div>
