@@ -1165,13 +1165,16 @@ class Advance_Pricing_Table extends Base{
 							</div>
 							<h2 class="plan-title"><?php echo $item['list_title'];?></h2>
 							<div class="price">
-								<span class="dollar"><?php echo $item['list_curreny'];?></span>
 								<?php
 								if('yes'=== $item['is_discount']){
 								?>
+								<span class="dollar"><?php echo $item['list_curreny'];?></span>
 								<span class="amount"><s><?php echo $list_price; ?></s></span>
+								
+								<span class="dollar"><?php echo $item['list_curreny'];?></span>
 								<span class="discount-amount"><?php echo $selling_price; ?></span>
 								<?php }else{?>
+									<span class="dollar"><?php echo $item['list_curreny'];?></span>
 								<span class="amount"><?php echo $item['list_price'];?></span>
 								<?php }?>
 							
@@ -1231,12 +1234,16 @@ class Advance_Pricing_Table extends Base{
 								<?php
 								if('yes'=== $item['is_discount']){
 								?>
-								<span class="amount"><s><?php echo $list_price ?></s></span>
-								<span class="discount-amount"><?php echo $selling_price;?></span>
+								<span class="dollar"><?php echo $item['list_curreny'];?></span>
+								<span class="amount"><s><?php echo $list_price; ?></s></span>
+
+								<span class="dollar"><?php echo $item['list_curreny'];?></span>
+								<span class="discount-amount"><?php echo $selling_price; ?></span>
 								<?php }else{?>
+								<span class="dollar"><?php echo $item['list_curreny'];?></span>
 								<span class="amount"><?php echo $item['list_price'];?></span>
 								<?php }?>
-								
+							
 								<span class="slash">/</span>
 								<span class="month"><?php echo $item['list_period'];?></span>
 							</div>
