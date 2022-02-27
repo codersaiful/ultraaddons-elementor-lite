@@ -971,6 +971,14 @@ class Advance_Pricing_Table extends Base{
             ]
         );
 		$this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+				'label'     => esc_html__( 'Badge Typography', 'ultraaddons' ),
+                'name' => 'badge_typography',
+                'selector' => '{{WRAPPER}} .featured-badge',
+            ]
+        );
+		$this->add_group_control(
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'badge_background',
@@ -1037,6 +1045,14 @@ class Advance_Pricing_Table extends Base{
             [
                 'label'     => esc_html__( 'Discount', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+				'label'     => esc_html__( 'Discount Typography', 'ultraaddons' ),
+                'name' => 'discount_typography',
+                'selector' => '{{WRAPPER}} .discount-percent',
             ]
         );
 		$this->add_group_control(
