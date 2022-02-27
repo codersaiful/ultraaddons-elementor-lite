@@ -284,6 +284,17 @@ class Card extends Base{
 				'default' => 'div',
 			]
 		);
+		$this->add_control(
+			'_ua_card_overflow',
+			[
+				'label' => __( 'Overflow', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Visible', 'ultraaddons' ),
+				'label_off' => __( 'Hidden', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		);
 
 	$this->end_controls_section();
 	}
@@ -658,6 +669,7 @@ class Card extends Base{
 			]
 		);
 		
+		
 	 $this->end_controls_section();
     }
 	
@@ -674,6 +686,7 @@ class Card extends Base{
 		$target 	= $settings['_ua_card_button_link']['is_external'] ? ' target="_blank"' : '';
 		$nofollow 	= $settings['_ua_card_button_link']['nofollow'] ? ' rel="nofollow"' : '';
 		$url		= $settings['_ua_card_button_link']['url'];
+		$overflow	= ('yes'=== $settings['_ua_card_overflow']) ? 'overflow-visible' : 'overflow-hidden';
 		$col='';
 		$row='';
 		if ( 'yes'==$settings['_ua_card_direction'] ) {
@@ -705,7 +718,7 @@ class Card extends Base{
 		
 	?>
 	<div class="ua-c ua-card-content">
-		<div class="ua-card <?php echo $row; ?>">
+		<div class="ua-card <?php echo $row; ?> <?php echo $overflow;?>">
 			<div <?php echo $this->get_render_attribute_string( 'card_avatar_class' );?>>
 			<?php 
 			if(!empty($settings['_ua_card_image']['url'])){

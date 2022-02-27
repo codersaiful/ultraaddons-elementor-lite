@@ -743,7 +743,7 @@ class Testimonial_Slider extends Base{
                         'label' => __( 'Navigation BG Color', 'ultraaddons' ),
                         'type' => Controls_Manager::COLOR,
                         'selectors' => [
-                                '{{WRAPPER}} .ua-testimonial-main-wrapper .owl-nav button.owl-next' => 'background-color: {{VALUE}};border-color: {{VALUE}};',
+                                '{{WRAPPER}} .ua-testimonial-main-wrapper .owl-nav button.owl-next, .ua-testimonial-main-wrapper .owl-nav button.owl-prev' => 'background-color: {{VALUE}};border-color: {{VALUE}};',
                         ],
                 ]
         );
@@ -785,6 +785,16 @@ class Testimonial_Slider extends Base{
                                 '{{WRAPPER}} .ua-testimonial-slider-wrapper button.owl-next' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                       ],
                 ]
+        );
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            array(
+                'name'     => 'nav_shadow',
+                'selectors' => [
+                '{{WRAPPER}} .ua-testimonial-slider-wrapper button.owl-prev',
+                '{{WRAPPER}} .ua-testimonial-slider-wrapper button.owl-next'
+                ]
+            )
         );
         $this->end_controls_section();
     }
