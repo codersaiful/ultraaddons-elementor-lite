@@ -166,3 +166,11 @@ span.currency-inner-wrapper span.ua-price-table__currency_sep {
 .content-wrap {
     padding: 30px;
 }
+.discount-percent {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #eb0466;
+    padding: 5px;
+    color: #fff;
+}

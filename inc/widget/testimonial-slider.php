@@ -48,12 +48,12 @@ class Testimonial_Slider extends Base{
 
     }
 
-    /**
-     * By Saiful Islam
-     * depend css for this widget
-     * 
-     * @return Array
-     */
+        /**
+         * By Saiful Islam
+         * depend css for this widget
+         * 
+         * @return Array
+         */
     public function get_style_depends() {
         return ['owlCarousel','owlCarousel-theme'];
     }
