@@ -178,6 +178,7 @@ span.currency-inner-wrapper span.ua-price-table__currency_sep {
     align-items: center;
     height: 40px;
     width: 40px;
+    border-radius: 59%;
 }
 .elementor-widget-ultraaddons-advance-pricing-table .elementor-widget-container{min-height: 1px;}
 

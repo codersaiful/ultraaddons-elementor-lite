@@ -111,6 +111,7 @@ class Testimonial_Slider extends Base{
         $this->style_quote_controls();
         $this->style_avatar_controls();
         $this->slider_controls();
+        $this->style_navigation_controls();
 
        
     }
@@ -556,31 +557,7 @@ class Testimonial_Slider extends Base{
         
         
         
-        $this->add_control(
-                'navigation_icon_color',
-                [
-                        'label' => __( 'Navigation Icon Color', 'ultraaddons' ),
-                        'type' => Controls_Manager::COLOR,
-//                        'default' => '#0FC392',
-                        'selectors' => [
-                                '{{WRAPPER}} .ua-testimonial-slider-wrapper .owl-dots button.owl-dot' => 'background-color: {{VALUE}}',
-                                '{{WRAPPER}} .ua-testimonial-slider-wrapper .owl-dots button.owl-dot.active' => 'border-color: {{VALUE}}; background-color: #FFF',
-                                '{{WRAPPER}} .ua-testimonial-slider-wrapper button.owl-prev' => 'color: {{VALUE}}',
-                                '{{WRAPPER}} .ua-testimonial-slider-wrapper button.owl-next' => 'color: {{VALUE}}'
-                        ],
-                ]
-        );
-       
-        $this->add_control(
-                'navigation_bg_color',
-                [
-                        'label' => __( 'Navigation BG Color', 'ultraaddons' ),
-                        'type' => Controls_Manager::COLOR,
-                        'selectors' => [
-                                '{{WRAPPER}} .ua-testimonial-main-wrapper .owl-nav button.owl-next' => 'background-color: {{VALUE}};border-color: {{VALUE}};',
-                        ],
-                ]
-        );
+        
        
         $this->end_controls_section();
     }
@@ -706,6 +683,113 @@ class Testimonial_Slider extends Base{
     }
     
     /**
+     * Section for Navigation
+     * @author B M Rafiul Alam
+     * 
+     * @since 1.1.0.11
+     */
+    protected function style_navigation_controls() {
+        $this->start_controls_section(
+            'nav',
+            [
+                'label'     => esc_html__( 'Navigation', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            array(
+                'name'        => 'nav_border',
+                'label'       => esc_html__( 'Border', 'ultraaddons' ),
+                'fields_options' => [
+			'border' => [
+				'default' => 'solid',
+			],
+			'width' => [
+				'default' => [
+					'top' => '1',
+					'right' => '1',
+					'bottom' => '1',
+					'left' => '1',
+					'isLinked' => false,
+				],
+			],
+			'color' => [
+				'default' => '#1C9792',
+			],
+		],
+                'selector'    => '{{WRAPPER}} .ua-testimonial-slider-wrapper button.owl-prev, {{WRAPPER}} .ua-testimonial-slider-wrapper button.owl-next',
+            )
+        );
+        $this->add_control(
+                'navigation_icon_color',
+                [
+                        'label' => __( 'Navigation Icon Color', 'ultraaddons' ),
+                        'type' => Controls_Manager::COLOR,
+//                        'default' => '#0FC392',
+                        'selectors' => [
+                                '{{WRAPPER}} .ua-testimonial-slider-wrapper .owl-dots button.owl-dot' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .ua-testimonial-slider-wrapper .owl-dots button.owl-dot.active' => 'border-color: {{VALUE}}; background-color: #FFF',
+                                '{{WRAPPER}} .ua-testimonial-slider-wrapper button.owl-prev' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} .ua-testimonial-slider-wrapper button.owl-next' => 'color: {{VALUE}}'
+                        ],
+                ]
+        );
+       
+        $this->add_control(
+                'navigation_bg_color',
+                [
+                        'label' => __( 'Navigation BG Color', 'ultraaddons' ),
+                        'type' => Controls_Manager::COLOR,
+                        'selectors' => [
+                                '{{WRAPPER}} .ua-testimonial-main-wrapper .owl-nav button.owl-next' => 'background-color: {{VALUE}};border-color: {{VALUE}};',
+                        ],
+                ]
+        );
+        
+        $this->add_responsive_control(
+                'nav_radius',
+                [
+                        'label' => __( 'Radius', 'ultraaddons' ),
+                        'type' => Controls_Manager::DIMENSIONS,
+                        'size_units' => [ 'px', '%' ],
+                        'default'   => [
+                                'top' => 50,
+                                'right' => 45,
+                                'bottom' => 50,
+                                'left' => 45,
+                                'unit' => 'px',
+                        ],
+                        'selectors' => [
+                                '{{WRAPPER}} .ua-testimonial-slider-wrapper button.owl-prev' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                '{{WRAPPER}} .ua-testimonial-slider-wrapper button.owl-next' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                      ],
+                ]
+        );
+         $this->add_responsive_control(
+                'nav_padding',
+                [
+                        'label' => __( 'Padding', 'ultraaddons' ),
+                        'type' => Controls_Manager::DIMENSIONS,
+                        'size_units' => [ 'px', '%' ],
+                        'default'   => [
+                                'top' => 50,
+                                'right' => 45,
+                                'bottom' => 50,
+                                'left' => 45,
+                                'unit' => 'px',
+                        ],
+                        'selectors' => [
+                                '{{WRAPPER}} .ua-testimonial-slider-wrapper button.owl-prev' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                '{{WRAPPER}} .ua-testimonial-slider-wrapper button.owl-next' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                      ],
+                ]
+        );
+        $this->end_controls_section();
+    }
+
+     /**
      * Section for Quote in Style Tab
      * 
      * @since 1.0.0.15
@@ -771,6 +855,7 @@ class Testimonial_Slider extends Base{
         
         $this->end_controls_section();
     }
+    
     
     /**
      * 
