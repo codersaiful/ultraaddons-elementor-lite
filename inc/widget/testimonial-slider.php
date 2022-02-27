@@ -754,13 +754,6 @@ class Testimonial_Slider extends Base{
                         'label' => __( 'Radius', 'ultraaddons' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', '%' ],
-                        'default'   => [
-                                'top' => 50,
-                                'right' => 45,
-                                'bottom' => 50,
-                                'left' => 45,
-                                'unit' => 'px',
-                        ],
                         'selectors' => [
                                 '{{WRAPPER}} .ua-testimonial-slider-wrapper button.owl-prev' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                                 '{{WRAPPER}} .ua-testimonial-slider-wrapper button.owl-next' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -773,13 +766,6 @@ class Testimonial_Slider extends Base{
                         'label' => __( 'Padding', 'ultraaddons' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', '%' ],
-                        'default'   => [
-                                'top' => 50,
-                                'right' => 45,
-                                'bottom' => 50,
-                                'left' => 45,
-                                'unit' => 'px',
-                        ],
                         'selectors' => [
                                 '{{WRAPPER}} .ua-testimonial-slider-wrapper button.owl-prev' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                                 '{{WRAPPER}} .ua-testimonial-slider-wrapper button.owl-next' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
