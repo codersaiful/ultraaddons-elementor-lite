@@ -198,7 +198,6 @@ class Bar_Chart extends Base{
 				'type'      => Controls_Manager::COLOR,
                 'default'   =>'#ddd',
                 'frontend_available' => true,
-                'separator'         => 'after'
 			]
         );
         $this->add_control(
@@ -207,7 +206,6 @@ class Bar_Chart extends Base{
 				'type'      => Controls_Manager::COLOR,
                 'default'   =>'#ddd',
                 'frontend_available' => true,
-                'separator'         => 'after'
 			]
         );
         $this->add_control(
