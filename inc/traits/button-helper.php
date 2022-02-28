@@ -148,6 +148,38 @@ trait Button_Helper{
                     ]
             );
             }
+            /**
+             * @author B M Rafiul Alam
+             * bmrafiul.alam@gmail.com
+             * @since 1.1.0.11
+             */
+            if( $this->get_name() == 'ultraaddons-price-table' ){
+            $this->add_responsive_control(
+                    'btn_align',
+                    [
+                            'label' => __( 'Alignment', 'ultraaddons' ),
+                            'type' => Controls_Manager::CHOOSE,
+                            'options' => [
+                                    'left'    => [
+                                            'title' => __( 'Left', 'ultraaddons' ),
+                                            'icon' => 'eicon-text-align-left',
+                                    ],
+                                    'center' => [
+                                            'title' => __( 'Center', 'ultraaddons' ),
+                                            'icon' => 'eicon-text-align-center',
+                                    ],
+                                    'right' => [
+                                            'title' => __( 'Right', 'ultraaddons' ),
+                                            'icon' => 'eicon-text-align-right',
+                                    ],
+                            ],
+                            'default' => 'left',
+                             'selectors' => [
+                                    '{{WRAPPER}} .btn-wrapper' => 'text-align: {{VALUE}};',
+                            ],
+                    ]
+            );
+            }
             $this->add_group_control(
                     Group_Control_Typography::get_type(),
                     [

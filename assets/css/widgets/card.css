@@ -122,3 +122,20 @@
      letter-spacing: 3px;
      font-weight: 300;
  }
+.footer-bottom{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 15px;
+  color: #fff;
+  text-align: left;
+}
+
+.card-price, .card-wish{
+ flex-basis: 50%;
+}
+.card-price{
+  text-align: left;
+}
+.card-wish{
+ text-align: right;
+}

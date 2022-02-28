@@ -1061,9 +1061,7 @@ class Product_Grid extends Base{
 	<?php
 	 endwhile;
      ?>
-	 /**
-	 Pagination
-	*/
+	
      <nav class="ua-pagination ua-col-1">
         <?php
         $total_pages = $loop->max_num_pages;
