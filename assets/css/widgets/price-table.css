@@ -160,3 +160,6 @@ span.currency-inner-wrapper span.ua-price-table__currency_sep {
 .ua-element-price-table .btn-wrapper .ua-button {
     margin: 20px 0px 20px 0px;
 }
+.ua-price-table{
+    padding: 30px;
+}
