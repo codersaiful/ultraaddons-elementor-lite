@@ -59,7 +59,9 @@ class Card extends Base{
 		//For Box Style Tab
 		$this->card_box_style();
 		//For button Style Tab
-		$this->card_button_style();   
+		$this->card_button_style();
+		//For Price Style Tab
+		$this->card_price_style();
 		
     }
 	/**
@@ -305,7 +307,7 @@ class Card extends Base{
        $this->start_controls_section(
             '_ua_card_style',
             [
-                'label'     => esc_html__( 'Card', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -672,6 +674,58 @@ class Card extends Base{
 		
 	 $this->end_controls_section();
     }
+
+	/**
+	 * Card Footer Method
+	 */
+	 protected function card_price_style(){
+       $this->start_controls_section(
+            '_ua_card_price_style',
+            [
+                'label'     => esc_html__( 'Price', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'card_price_typography',
+					'label' => 'Price Typography',
+					'selector' => '{{WRAPPER}} .card-price',
+
+			]
+        );
+		$this->add_control(
+			'_ua_card_price_color', [
+				'label' => __( 'Price Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .card-price' => 'color: {{VALUE}};',
+				],
+			]
+        );
+		$this->add_responsive_control(
+			'_ua_card_price_margin',
+			[
+				'label'       => esc_html__( 'Price Margin', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ '%', 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'separator' =>'after',
+				'selectors'   => [
+					'{{WRAPPER}} .card-price' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		
+	
+	 $this->end_controls_section();
+    }
 	
 	/**
      * Retrive setting for card control
@@ -744,6 +798,10 @@ class Card extends Base{
 							</a>';
 						}
 					?>
+				</div>
+				<div class="footer-bottom">
+					<div class="card-price">$12</div> 
+					<div class="card-wish"><i class="fas fa-heart"></i>12</div>
 				</div>
 			</div>
 		</div>

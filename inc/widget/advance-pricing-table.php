@@ -1033,7 +1033,6 @@ class Advance_Pricing_Table extends Base{
 			]
 		);
 		
-		
 	 $this->end_controls_section();
     }
 	/**

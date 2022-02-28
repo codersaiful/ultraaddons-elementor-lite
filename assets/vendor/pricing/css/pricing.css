@@ -232,3 +232,24 @@ h2.plan-title {
     left: 0;
     color: #fff;
 }
+
+.ua-price-table {
+    overflow: hidden;
+}
+
+.discount-percent {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #eb0466;
+    padding: 5px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 59%;
+}
+.elementor-widget-ultraaddons-advance-pricing-table .elementor-widget-container{min-height: 1px;}
+

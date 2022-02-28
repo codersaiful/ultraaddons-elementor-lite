@@ -1786,6 +1786,17 @@ class Price_Table extends Base {
 				],
 			]
 		);
+		$this->add_responsive_control(
+			'box_padding',
+			[
+				'label' => __( 'Box Padding', 'ultraaddons' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px'],
+				'selectors' => [
+					'{{WRAPPER}} .ua-price-table' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 	$this->end_controls_section();
             
     }
@@ -1907,9 +1918,7 @@ class Price_Table extends Base {
 		$this->heading_tag = $settings['heading_tag'];
 
 		$migration_allowed = Icons_Manager::is_migration_allowed();
-                
-                
-                ?>
+        ?>
                 <div class="ua-price-table">
                         
 						<?php 
@@ -1918,39 +1927,37 @@ class Price_Table extends Base {
                         }
                         ?>
 						<div class="content-wrap">
-                        <div class="ua-price-table__price">
-                            <div class="ua-price-table__price_inner">
-                                <?php if ( 'yes' === $settings['sale'] && ! empty( $settings['original_price'] ) ) : ?>
-                                        <span class="ua-price-table__original-price ua-typo-excluded"><?php echo $symbol . $settings['original_price']; ?></span>
-                                <?php endif; ?>
-                                <?php $this->render_currency_symbol( $symbol, 'before' ); ?>
-                                <?php if ( '' !== $fraction ) : ?>
-                                    <?php if ( $currency_style && $currency_style == '2' ) : ?>
-                                        <span class="currency-inner-wrapper"><span class="ua-price-table__integer-part"><?php echo $intpart; ?></span><span class="ua-price-table__currency_sep"><?php echo $currency_format; ?></span><span class="ua-price-table__fractional-part"><?php echo $fraction; ?></span></span>
-                                    <?php else : ?>
-                                        <span class="ua-price-table__integer-part"><?php echo $intpart; ?></span><span class="ua-price-table__currency_sep"><?php echo $currency_format; ?></span><span class="ua-price-table__fractional-part"><?php echo $fraction; ?></span>
-                                    <?php endif; ?>
-                                <?php else : ?>
-                                            <span class="ua-price-table__integer-part"><?php echo $intpart; ?></span>
+                       		<div class="ua-price-table__price">
+								<div class="ua-price-table__price_inner">
+									<?php if ( 'yes' === $settings['sale'] && ! empty( $settings['original_price'] ) ) : ?>
+											<span class="ua-price-table__original-price ua-typo-excluded"><?php echo $symbol . $settings['original_price']; ?></span>
+									<?php endif; ?>
+									<?php $this->render_currency_symbol( $symbol, 'before' ); ?>
+									<?php if ( '' !== $fraction ) : ?>
+										<?php if ( $currency_style && $currency_style == '2' ) : ?>
+											<span class="currency-inner-wrapper"><span class="ua-price-table__integer-part"><?php echo $intpart; ?></span><span class="ua-price-table__currency_sep"><?php echo $currency_format; ?></span><span class="ua-price-table__fractional-part"><?php echo $fraction; ?></span></span>
+										<?php else : ?>
+											<span class="ua-price-table__integer-part"><?php echo $intpart; ?></span><span class="ua-price-table__currency_sep"><?php echo $currency_format; ?></span><span class="ua-price-table__fractional-part"><?php echo $fraction; ?></span>
+										<?php endif; ?>
+									<?php else : ?>
+											<span class="ua-price-table__integer-part"><?php echo $intpart; ?></span>
 
-                                <?php endif; ?>
+									<?php endif; ?>
 
-                                <?php $this->render_currency_symbol( $symbol, 'after' ); ?>
-                                            
-                                <?php if ( ! empty( $settings['period'] ) && 'beside' === $period_position ) : ?>
-                                    
-                                    <?php echo $period_element; ?>
-                                    
-                                <?php endif; ?>
-								 <?php if ( ! empty( $settings['period'] ) && 'below' === $period_position ) : ?>
-                                <span class="ua-price-table__period-wrapper">
-                                    <?php echo $period_element; ?>
-								 </span>
-                            <?php endif; ?>
+									<?php $this->render_currency_symbol( $symbol, 'after' ); ?>
+												
+									<?php if ( ! empty( $settings['period'] ) && 'beside' === $period_position ) : ?>
+										
+										<?php echo $period_element; ?>
+										
+									<?php endif; ?>
+									<?php if ( ! empty( $settings['period'] ) && 'below' === $period_position ) : ?>
+									<span class="ua-price-table__period-wrapper">
+										<?php echo $period_element; ?>
+									</span>
+								<?php endif; ?>
 
                             </div>
-                        
-                           
                         </div>
                         <?php
                             if( $price_top ){
