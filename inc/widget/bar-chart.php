@@ -96,7 +96,7 @@ class Bar_Chart extends Base{
         $this->start_controls_section(
             'general_content',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'Content', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -155,7 +155,7 @@ class Bar_Chart extends Base{
         $this->add_control(
 			'list',
 			[
-				'label' => esc_html__( 'Repeater List', 'ultraaddons' ),
+				'label' => esc_html__( 'Data List', 'ultraaddons' ),
 				'type' => Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
                 'frontend_available' => true,
@@ -198,7 +198,6 @@ class Bar_Chart extends Base{
 				'type'      => Controls_Manager::COLOR,
                 'default'   =>'#ddd',
                 'frontend_available' => true,
-                'separator'         => 'after'
 			]
         );
         $this->add_control(
@@ -207,7 +206,6 @@ class Bar_Chart extends Base{
 				'type'      => Controls_Manager::COLOR,
                 'default'   =>'#ddd',
                 'frontend_available' => true,
-                'separator'         => 'after'
 			]
         );
         $this->add_control(

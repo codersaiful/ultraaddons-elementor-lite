@@ -2006,11 +2006,11 @@ class Price_Table extends Base {
                         <?php 
                             $this->button_render();
                         ?>
+					<?php if ( ! empty( $settings['footer_additional_info'] ) ) : ?>
                     <div class="ua-price-table-footer">
-                        <?php if ( ! empty( $settings['footer_additional_info'] ) ) : ?>
-                                <div <?php echo $this->get_render_attribute_string( 'footer_additional_info' ); ?>><?php echo $settings['footer_additional_info']; ?></div>
-                        <?php endif; ?>
+                    	<div <?php echo $this->get_render_attribute_string( 'footer_additional_info' ); ?>><?php echo $settings['footer_additional_info']; ?></div>
 					</div>
+					 <?php endif; ?>
                 </div>
 
                 <?php

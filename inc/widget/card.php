@@ -62,6 +62,8 @@ class Card extends Base{
 		$this->card_button_style();
 		//For Price Style Tab
 		$this->card_price_style();
+		//For Wish Style Tab
+		$this->card_wish_style();
 		
     }
 	/**
@@ -146,6 +148,40 @@ class Card extends Base{
 					'url' => '#',
 					'is_external' => true,
 					'nofollow' => true,
+				],
+			]
+		);
+		$this->add_control(
+			'_ua_card_price',
+			[
+				'label' => __( 'Price', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'label_block' => false,
+			]
+		);
+		$this->add_control(
+			'_ua_card_wish_link',
+			[
+				'label' => __( 'Wish Link', 'ultraaddons' ),
+				'type' => Controls_Manager::URL,
+				'placeholder' => __( 'https://your-link.com', 'ultraaddons' ),
+				'show_external' => true,
+				'separator' =>'before',
+				'default' => [
+					'url' => '#',
+					'is_external' => true,
+					'nofollow' => true,
+				],
+			]
+		);
+		$this->add_control(
+			'wish_icon',
+			[
+				'label' => esc_html__( 'Icon', 'ultraaddons' ),
+				'type' => Controls_Manager::ICONS,
+				'default' => [
+					'value' => 'fas fa-heart',
+					'library' => 'solid',
 				],
 			]
 		);
@@ -691,7 +727,7 @@ class Card extends Base{
 			[
 					'name' => 'card_price_typography',
 					'label' => 'Price Typography',
-					'selector' => '{{WRAPPER}} .card-price',
+					'selector' => '{{WRAPPER}} .card-price, .card-wish',
 
 			]
         );
@@ -724,6 +760,110 @@ class Card extends Base{
 		);
 		
 	
+	 $this->end_controls_section();
+    }
+	/**
+	 * Card Wish Method
+	 */
+	 protected function card_wish_style(){
+       $this->start_controls_section(
+            '_ua_card_wish_style',
+            [
+                'label'     => esc_html__( 'Wish', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->add_control(
+			'_ua_card_wish_color', [
+				'label' => __( 'Wish Icon Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .card-wish a' => 'color: {{VALUE}};',
+				],
+			]
+        );
+		$this->add_responsive_control(
+			'_ua_card_wish_margin',
+			[
+				'label'       => esc_html__( 'Wish Margin', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ '%', 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .card-wish' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_control(
+			'_ua_card_wish_icon_size',
+			[
+				'label' => __( 'Icon Size', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px'],
+				'range' => [
+					'px' => [
+						'min' => 10,
+						'max' => 80,
+						'step' => 5,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 20,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .card-wish a' => 'font-size: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'_ua_card_wish_padding',
+			[
+				'label'       => esc_html__( 'Wish Padding', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ '%', 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .card-wish a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'_ua_card_wish_radius',
+			[
+				'label'       => esc_html__( 'Wish Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ '%', 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .card-wish a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_control(
+			'_ua_card_wish_bg', [
+				'label' => __( 'Wish Background Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .card-wish a' => 'background-color: {{VALUE}};',
+				],
+			]
+        );
 	 $this->end_controls_section();
     }
 	
@@ -769,6 +909,9 @@ class Card extends Base{
 				'class' => 'ua-card-body ' . $col . ' ' . $justifyContent ,
 			]
 		);
+		if ( ! empty( $settings['_ua_card_wish_link']['url'] ) ) {
+			$this->add_link_attributes( 'wish_link', $settings['_ua_card_wish_link'] );
+		}
 		
 	?>
 	<div class="ua-c ua-card-content">
@@ -799,10 +942,16 @@ class Card extends Base{
 						}
 					?>
 				</div>
+				<?php  if( !empty($settings['_ua_card_price']) ):?>
 				<div class="footer-bottom">
-					<div class="card-price">$12</div> 
-					<div class="card-wish"><i class="fas fa-heart"></i>12</div>
+					<div class="card-price"><?php echo $settings['_ua_card_price'];?> </div> 
+					<div class="card-wish">
+						<a <?php echo $this->get_render_attribute_string( 'wish_link' ); ?>>
+							<?php \Elementor\Icons_Manager::render_icon( $settings['wish_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+						</a>
+					</div>
 				</div>
+				<?php endif;?>
 			</div>
 		</div>
 	</div>
