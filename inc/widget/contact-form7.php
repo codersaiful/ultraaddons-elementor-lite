@@ -330,6 +330,27 @@ class Contact_Form7 extends Base{
                                 ],
                         ]
                 );
+                $this->add_responsive_control(
+                        '_cf7_input_border_radius',
+                        [   
+                                'label' => __( 'Border Radius', 'ultraaddons' ),
+                                'type' => Controls_Manager::DIMENSIONS,
+                                'size_units' => [ 'px','%' ],
+                                'selectors' => [
+                                        '{{WRAPPER}} form.ultraaddons-cf7-form input:not([type="submit"])' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                        '{{WRAPPER}} form.ultraaddons-cf7-form select' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                        '{{WRAPPER}} form.ultraaddons-cf7-form textarea' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                ],
+                        ]
+                );
+                $this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'input_shadow',
+				'label' => esc_html__( 'Input Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} form.ultraaddons-cf7-form input:not([type="submit"]), form.ultraaddons-cf7-form textarea, form.ultraaddons-cf7-form select',
+			]
+		);
                 $this->add_control(
                         '_cf7_input_text_color',
                         [   
@@ -455,6 +476,32 @@ class Contact_Form7 extends Base{
                                 'label' => __( 'Normal', 'ultraaddons' ),
                         ]
                 );
+                $this->add_control(
+                        'button_align',
+                            [
+                                'label'         => esc_html__( 'Align', 'ultraaddons' ),
+                                'type'          => Controls_Manager::CHOOSE,
+                                'options' => [
+                                        'left' => [
+                                                'title' => __( 'Left', 'ultraaddons' ),
+                                                'icon' => 'eicon-text-align-left',
+                                        ],
+                                        'center' => [
+                                                'title' => __( 'Center', 'ultraaddons' ),
+                                                'icon' => 'eicon-text-align-center',
+                                        ],
+                                        'right' => [
+                                                'title' => __( 'Right', 'ultraaddons' ),
+                                                'icon' => 'eicon-text-align-right',
+                                        ],
+                                ],
+                                'default' => 'left',
+                                'selectors' => [
+                                        '{{WRAPPER}} .wpcf7 p' => 'text-align:{{VALUE}};',
+                                ],
+                               
+                            ]
+                    );
                 
                 $this->add_responsive_control(
                         '_cf7_button_border',
@@ -471,6 +518,17 @@ class Contact_Form7 extends Base{
                                 ],
                                 'selectors' => [
                                         '{{WRAPPER}} form.ultraaddons-cf7-form input[type="submit"]' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                ],
+                        ]
+                );
+                $this->add_responsive_control(
+                        '_cf7_button_border_radius',
+                        [   
+                                'label' => __( 'Border Radius', 'ultraaddons' ),
+                                'type' => Controls_Manager::DIMENSIONS,
+                                'size_units' => [ 'px' ],
+                                'selectors' => [
+                                        '{{WRAPPER}} form.ultraaddons-cf7-form input[type="submit"]' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                                 ],
                         ]
                 );
@@ -529,7 +587,7 @@ class Contact_Form7 extends Base{
                                       '{{WRAPPER}} input.wpcf7-submit' => 'width: {{SIZE}}{{UNIT}};',
                               ],
                         ]
-                );  
+                );
 
                 $this->end_controls_tab();
 

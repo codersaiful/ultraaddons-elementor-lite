@@ -100,21 +100,34 @@ class Bar_Chart extends Base{
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
+        $this->add_control(
+			'show_title',
+			[
+				'label' => esc_html__( 'Custom Title', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'ultraaddons' ),
+				'label_off' => esc_html__( 'Hide', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		);
          $this->add_control(
 			'chart_custom_title',
 			[
-				'label' => __( 'Chart Custom Title', 'ultraaddons' ),
+				'label' => __( 'Custom Title', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Ultra Addons Chart Title', 'ultraaddons' ),
+				'default' => __( 'Ultra Addons', 'ultraaddons' ),
 				'label_block' => true,
-                'frontend_available' => true,
+                'condition'=>[
+                    'show_title'=>'yes',
+                ],
 			]
 		);
         
         $this->add_control(
 			'_ua_chart_title_tag',
 			[
-				'label' => esc_html__( 'Select Chart Title Tag', 'ultraaddons' ),
+				'label' => esc_html__( 'Select Title Tag', 'ultraaddons' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'h1' => 'H1',
@@ -126,6 +139,9 @@ class Bar_Chart extends Base{
 					'div' => 'div',
 				],
 				'default' => 'h2',
+                'condition'=>[
+                    'show_title'=>'yes',
+                ],
 			]
 		);
         $this->add_control(
