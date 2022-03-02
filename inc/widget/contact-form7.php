@@ -488,7 +488,6 @@ class Contact_Form7 extends Base{
                                         ],
                                         'center' => [
                                                 'title' => __( 'Center', 'ultraaddons' ),
-                                                'icon' => 'eicon-text-align-center',
                                         ],
                                         'right' => [
                                                 'title' => __( 'Right', 'ultraaddons' ),
