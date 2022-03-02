@@ -100,6 +100,34 @@ class Bar_Chart extends Base{
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
+         $this->add_control(
+			'chart_custom_title',
+			[
+				'label' => __( 'Chart Custom Title', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __( 'Ultra Addons Chart Title', 'ultraaddons' ),
+				'label_block' => true,
+                'frontend_available' => true,
+			]
+		);
+        
+        $this->add_control(
+			'_ua_chart_title_tag',
+			[
+				'label' => esc_html__( 'Select Chart Title Tag', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'h1' => 'H1',
+					'h2' => 'H2',
+					'h3' => 'H3',
+					'h4' => 'H4',
+					'h5' => 'H5',
+					'h6' => 'H6',
+					'div' => 'div',
+				],
+				'default' => 'h2',
+			]
+		);
         $this->add_control(
 			'legend_label',
 			[
@@ -120,6 +148,16 @@ class Bar_Chart extends Base{
                 'frontend_available' => true,
 			]
 		);
+         $this->add_control(
+			'chart_description',
+			[
+				'label' => __( 'Description', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXTAREA,
+				'label_block' => true,
+                'frontend_available' => true,
+			]
+		);
+        
     
         $this->add_control(
 			'borderColor', [
@@ -348,6 +386,11 @@ class Bar_Chart extends Base{
         $id= $this->get_id();
         ?>
         <div class="ua-chart-container">
+            <?php
+		   echo '<' . $settings['_ua_chart_title_tag'] . ' class="chart-title">' . esc_html($settings['chart_custom_title']) . 
+				'</' . $settings['_ua_chart_title_tag'] . '>';
+		   ?>
+           <p><?php echo $settings['chart_description']; ?></p>
             <canvas id="uaChart-<?php echo esc_attr($id);?>"></canvas>
         </div>
         <?php
