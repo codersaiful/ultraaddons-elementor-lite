@@ -85,6 +85,7 @@ class Line_Chart extends Base{
         $this->chart_style();
         $this->legend_style();
         $this->box_style();
+        $this->title_style();
     }
       
     /**
@@ -96,10 +97,46 @@ class Line_Chart extends Base{
         $this->start_controls_section(
             'general_content',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'Content', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
+          $this->add_control(
+			'show_title',
+			[
+				'label' => esc_html__( 'Custom Title', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'ultraaddons' ),
+				'label_off' => esc_html__( 'Hide', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		);
+         $this->add_control(
+			'chart_custom_title',
+			[
+				'label' => __( 'Custom Title', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __( 'Ultra Addons', 'ultraaddons' ),
+				'label_block' => true,
+                'condition'=>[
+                    'show_title'=>'yes',
+                ],
+			]
+		);
+        
+         $this->add_control(
+			'chart_description',
+			[
+				'label' => __( 'Description', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXTAREA,
+				'label_block' => true,
+                'separator' => 'after',
+                 'condition'=>[
+                    'show_title'=>'yes',
+                ],
+			]
+		);
         $this->add_control(
 			'legend_label',
 			[
@@ -360,6 +397,108 @@ class Line_Chart extends Base{
        
         $this->end_controls_section();
     }
+     //Style for Cusom Title
+    protected function title_style() {
+        $this->start_controls_section(
+            'title_style',
+            [
+                'label'     => esc_html__( 'Title & Description', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+         $this->add_control(
+            'content_align',
+                [
+                    'label'         => esc_html__( 'Align', 'ultraaddons' ),
+                    'type'          => Controls_Manager::CHOOSE,
+                    'options' => [
+                            'left' => [
+                                    'title' => __( 'Left', 'ultraaddons' ),
+                                    'icon' => 'eicon-text-align-left',
+                            ],
+                            'center' => [
+                                    'title' => __( 'Center', 'ultraaddons' ),
+                                    'icon' => 'eicon-text-align-center',
+                            ],
+                            'right' => [
+                                    'title' => __( 'Right', 'ultraaddons' ),
+                                    'icon' => 'eicon-text-align-right',
+                            ],
+                    ],
+                    'default' => 'left',
+                    'selectors' => [
+                            '{{WRAPPER}} .chart-content' => 'text-align:{{VALUE}};',
+                    ],
+                    
+                ]
+        );
+         $this->add_control(
+			'_ua_chart_title_tag',
+			[
+				'label' => esc_html__( 'Select Title Tag', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'h1' => 'H1',
+					'h2' => 'H2',
+					'h3' => 'H3',
+					'h4' => 'H4',
+					'h5' => 'H5',
+					'h6' => 'H6',
+					'div' => 'div',
+				],
+				'default' => 'h2',
+                'condition'=>[
+                    'show_title'=>'yes',
+                ],
+			]
+		);
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'title_typography',
+                'selector' => '{{WRAPPER}} .chart-title',
+            ]
+        );
+        $this->add_control(
+			'chart_title_color', [
+				'label' => __( 'Title Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+					'{{WRAPPER}} .chart-title' => 'color: {{VALUE}};',
+				],
+			]
+        );
+
+        $this->add_responsive_control(
+            'title_padding',
+            [
+                    'label' => __( 'Title Margin', 'ultraaddons' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px' ],
+                    'separator'  => 'after',
+                    'selectors' => [
+                            '{{WRAPPER}} .chart-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+            ]
+        );
+         $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'desc_typography',
+                'selector' => '{{WRAPPER}} .chart-desc',
+            ]
+        );
+        $this->add_control(
+			'chart_desc_color', [
+				'label' => __( 'Description Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+					'{{WRAPPER}} .chart-desc' => 'color: {{VALUE}};',
+				],
+			]
+        );
+        $this->end_controls_section();
+    }
 
     /**
      * Render oEmbed widget output on the frontend.
@@ -374,6 +513,15 @@ class Line_Chart extends Base{
         $id= $this->get_id();
         ?>
         <div class="ua-chart-container">
+             <div class="chart-content">
+                <?php
+                    if('yes'===$settings['show_title']){
+                    echo '<' . $settings['_ua_chart_title_tag'] . ' class="chart-title">' . esc_html($settings['chart_custom_title']) . 
+                            '</' . $settings['_ua_chart_title_tag'] . '>';
+                    }
+                ?>
+                <p class="chart-desc"><?php echo $settings['chart_description']; ?></p>
+           </div>
             <canvas id="uaChart-<?php echo esc_attr($id);?>"></canvas>
         </div>
         <?php
