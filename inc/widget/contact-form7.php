@@ -62,7 +62,20 @@ class Contact_Form7 extends Base{
                         'options' => ultraaddons_get_cf7_forms(),
                     ]
                 );
-
+                $this->add_control(
+			'_cf7_form_style',
+			[
+				'label' => esc_html__( 'Form Style', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT2,
+				'multiple' => false,
+                                'default'  => 'style-default',
+				'options' => [
+					'style-default' => __( 'Default', 'ultraaddons' ),
+					'style-1'  => __( 'Style 1', 'ultraaddons' ),
+					'style-2'  => __( 'Style 2', 'ultraaddons' ),
+				],
+			]
+		);
                 $this->add_control(
                     'html_class',
                     [
@@ -93,6 +106,9 @@ class Contact_Form7 extends Base{
 				'label_off' => esc_html__( 'Hide', 'ultraaddons' ),
 				'return_value' => 'yes',
 				'default' => 'no',
+                                 'condition'=>[
+                                        'show_title'=>'yes',
+                                ],
 			]
 		);
 
@@ -150,23 +166,13 @@ class Contact_Form7 extends Base{
                         [
                                 'label' =>  __( 'Title &  Description', 'ultraaddons' ) ,
                                 'tab'   => Controls_Manager::TAB_STYLE,
+                                  'condition'=>[
+                                        'show_title'=>'yes',
+                                ],
                         ]
                 );
+                
                 $this->add_control(
-			'_cf7_form_style',
-			[
-				'label' => esc_html__( 'Form Style', 'ultraaddons' ),
-				'type' => Controls_Manager::SELECT2,
-				'multiple' => false,
-                                'default'  => 'style-default',
-				'options' => [
-					'style-default' => __( 'Default', 'ultraaddons' ),
-					'style-1'  => __( 'Style 1', 'ultraaddons' ),
-					'style-2'  => __( 'Style 2', 'ultraaddons' ),
-				],
-			]
-		);
-                    $this->add_control(
                         'align',
                             [
                                 'label'         => esc_html__( 'Align', 'ultraaddons' ),
@@ -202,6 +208,9 @@ class Contact_Form7 extends Base{
                                 'global' => [
                                         'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
                                 ],
+                                'condition'=>[
+                                        'show_title'=>'yes'
+                                ],
                     
                         ]
                     );
@@ -212,6 +221,9 @@ class Contact_Form7 extends Base{
                                 'type' => Controls_Manager::COLOR,
                                 'selectors' => [
                                         '{{WRAPPER}} .ua-form .ua-cf7-title' => 'color: {{VALUE}};',
+                                ],
+                                'condition'=>[
+                                        'show_title'=>'yes'
                                 ],
                         ]
                     );
@@ -230,6 +242,9 @@ class Contact_Form7 extends Base{
                          'selectors'   => [
                                 '{{WRAPPER}} .ua-form .ua-cf7-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                         ],
+                        'condition'=>[
+                                        'show_title'=>'yes'
+                                ],
                         'separator'=>'after',
                     ]
                 );
@@ -238,7 +253,10 @@ class Contact_Form7 extends Base{
                         [
                                 'name' => 'cf7_desc_typography',
                                 'label' => 'Description Typography',
-                                'selector' => '{{WRAPPER}} .ua-form .ua-cf7-title',
+                                'selector' => '{{WRAPPER}} .ua-form .ua-cf7-description',
+                                'condition'=>[
+                                        'show_desc'=>'yes'
+                                ],
                         ]
                 );
                     
@@ -249,6 +267,9 @@ class Contact_Form7 extends Base{
                                 'type' => Controls_Manager::COLOR,
                                 'selectors' => [
                                         '{{WRAPPER}} .ua-form .ua-cf7-description' => 'color: {{VALUE}};',
+                                ],
+                                'condition'=>[
+                                        'show_desc'=>'yes'
                                 ],
                         ]
                     );
@@ -264,6 +285,9 @@ class Contact_Form7 extends Base{
                         'bottom' => '',
                         'left'   => '',
                         ],
+                        'condition'=>[
+                                        'show_desc'=>'yes'
+                                ],
                         'selectors'   => [
                                 '{{WRAPPER}} .ua-form .ua-cf7-description' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                         ],
