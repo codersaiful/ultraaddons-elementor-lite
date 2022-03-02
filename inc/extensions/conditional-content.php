@@ -72,8 +72,13 @@ class Conditional_Content
 		// Get the user object.
 		$user = get_userdata( $c_user_ID );
 
+
 		// Get all the user roles as an array.
-		$user_roles = $user->roles;
+		$user_roles = array();
+		if( is_object( $user ) && property_exists( $user, 'roles' ) ){
+			$user_roles = $user->roles;
+		}
+		
 		$g_child_type = $should_render;
 		
 		$user_roles = is_array( $user_roles ) ? $user_roles : array();
