@@ -465,7 +465,8 @@ class Doughnut_Chart extends Base{
         $id= $this->get_id();
         ?>
         <div class="ua-chart-container">
-             <?php
+            <div class="chart-content">
+                <?php
                     if('yes'===$settings['show_title']){
                     echo '<' . $settings['_ua_chart_title_tag'] . ' class="chart-title">' . esc_html($settings['chart_custom_title']) . 
                             '</' . $settings['_ua_chart_title_tag'] . '>';
@@ -473,6 +474,7 @@ class Doughnut_Chart extends Base{
                 ?>
                 <p class="chart-desc"><?php echo $settings['chart_description']; ?></p>
            </div>
+           
             <canvas id="uaChart-<?php echo esc_attr($id);?>"></canvas>
         </div>
         <?php
