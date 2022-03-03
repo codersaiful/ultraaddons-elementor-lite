@@ -205,7 +205,7 @@ class Polar_Chart extends Base{
                         'backgroundColor' => '#EFF600'
 					],
                     [
-						'labels' => esc_html__( 'March', 'ultraaddons' ),
+						'labels' => esc_html__( 'April', 'ultraaddons' ),
                         'data' => esc_html__( '17', 'ultraaddons' ),
                         'backgroundColor' => '#1AAA09'
 					],
