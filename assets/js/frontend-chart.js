@@ -38,7 +38,7 @@ $window.on( 'elementor/frontend/init', function() {
             var $settings = this.getElementSettings();
             var $id = $scope[0].dataset.id;
            //Get Data List
-            const $data    = $settings.list;
+          let $data = $settings.list;
 
             let dLen       = $data.length;
             let $chartData = [],
@@ -52,8 +52,8 @@ $window.on( 'elementor/frontend/init', function() {
                 $backgroundColor.push($d.backgroundColor);
             }
             //Datasets    
-            const labels =  $labels;
-            const barChartData = {
+            let labels =  $labels;
+            let barChartData = {
               labels: labels,
               datasets: [{
                 label: $settings.legend_label,
@@ -64,7 +64,7 @@ $window.on( 'elementor/frontend/init', function() {
             };
 
             //Config Data
-            const config = {
+            let config = {
                 type:'bar',
                 data: barChartData,
                 options: {
@@ -105,9 +105,9 @@ $window.on( 'elementor/frontend/init', function() {
             };
             //Initialize
             var ctx = document.getElementById('uaChart-' + $id);
-            const uaChart = new Chart(ctx,
+            let uaChart = new Chart(ctx,
                 config
-            );
+          );
             
         }
     });
@@ -145,7 +145,7 @@ $window.on( 'elementor/frontend/init', function() {
             var $settings  = this.getElementSettings();
             var $id        = $scope[0].dataset.id;
            //Get Data List
-            const $data    = $settings.list;
+            let $data    = $settings.list;
 
             let dLen       = $data.length;
             let $chartData = [],
@@ -159,9 +159,9 @@ $window.on( 'elementor/frontend/init', function() {
                 $backgroundColor.push($d.backgroundColor);
             }
             //Datasets    
-            const labels =  $labels;
+            let labels =  $labels;
 
-            const lineChartData = {
+            let lineChartData = {
                 labels: labels,
                 datasets: [{
                   label:  $settings.legend_label,
@@ -177,7 +177,7 @@ $window.on( 'elementor/frontend/init', function() {
               };
 
             //Config Data
-            const config = {
+            let config = {
                 type:'line',
                 data: lineChartData,
                 options: {
@@ -217,7 +217,7 @@ $window.on( 'elementor/frontend/init', function() {
             };
             //Initialize
             var ctx = document.getElementById('uaChart-' + $id);
-            const uaChart = new Chart(ctx,
+            let uaChart = new Chart(ctx,
                 config
             );
             
@@ -255,7 +255,7 @@ $window.on( 'elementor/frontend/init', function() {
             var $settings  = this.getElementSettings();
             var $id        = $scope[0].dataset.id;
            //Get Data List
-            const $data    = $settings.list;
+            let $data    = $settings.list;
 
             let dLen       = $data.length;
             let $chartData = [],
@@ -269,9 +269,9 @@ $window.on( 'elementor/frontend/init', function() {
                 $backgroundColor.push($d.backgroundColor);
             }
             //Datasets    
-            const labels =  $labels;
+            let labels =  $labels;
 
-            const pieChartData = {
+            let pieChartData = {
                 labels: labels,
                 datasets: [{
                   label:  $settings.legend_label,
@@ -282,7 +282,7 @@ $window.on( 'elementor/frontend/init', function() {
               };
 
             //Config Data
-            const config = {
+            let config = {
                 type:'pie',
                 data: pieChartData,
                 options: {
@@ -322,7 +322,7 @@ $window.on( 'elementor/frontend/init', function() {
             };
             //Initialize
             var ctx = document.getElementById('uaChart-' + $id);
-            const uaChart = new Chart(ctx,
+            let uaChart = new Chart(ctx,
                 config
             );
             
@@ -360,7 +360,7 @@ $window.on( 'elementor/frontend/init', function() {
             var $settings  = this.getElementSettings();
             var $id        = $scope[0].dataset.id;
            //Get Data List
-            const $data    = $settings.list;
+            let $data    = $settings.list;
 
             let dLen       = $data.length;
             let $chartData = [],
@@ -374,9 +374,9 @@ $window.on( 'elementor/frontend/init', function() {
                 $backgroundColor.push($d.backgroundColor);
             }
             //Datasets    
-            const labels =  $labels;
+            let labels =  $labels;
 
-            const doughnutChartData = {
+            let doughnutChartData = {
                 labels: labels,
                 datasets: [{
                   label:  $settings.legend_label,
@@ -387,7 +387,7 @@ $window.on( 'elementor/frontend/init', function() {
               };
 
             //Config Data
-            const config = {
+            let config = {
                 type:'doughnut',
                 data: doughnutChartData,
                 options: {
@@ -427,7 +427,7 @@ $window.on( 'elementor/frontend/init', function() {
             };
             //Initialize
             var ctx = document.getElementById('uaChart-' + $id);
-            const uaChart = new Chart(ctx,
+            let uaChart = new Chart(ctx,
                 config
             );
             
@@ -465,7 +465,7 @@ $window.on( 'elementor/frontend/init', function() {
           var $settings  = this.getElementSettings();
           var $id        = $scope[0].dataset.id;
          //Get Data List
-          const $data    = $settings.list;
+          let $data    = $settings.list;
 
           let dLen       = $data.length;
           let $chartData = [],
@@ -479,9 +479,9 @@ $window.on( 'elementor/frontend/init', function() {
               $backgroundColor.push($d.backgroundColor);
           }
           //Datasets    
-          const labels =  $labels;
+          let labels =  $labels;
 
-          const polarChartData = {
+          let polarChartData = {
               labels: labels,
               datasets: [{
                 label:  $settings.legend_label,
@@ -492,7 +492,7 @@ $window.on( 'elementor/frontend/init', function() {
             };
 
           //Config Data
-          const config = {
+          let config = {
               type:'polarArea',
               data: polarChartData,
               options: {
@@ -532,7 +532,7 @@ $window.on( 'elementor/frontend/init', function() {
           };
           //Initialize
           var ctx = document.getElementById('uaChart-' + $id);
-          const uaChart = new Chart(ctx,
+          let uaChart = new Chart(ctx,
               config
           );
           
@@ -570,7 +570,7 @@ $window.on( 'elementor/frontend/init', function() {
          var $settings = this.getElementSettings();
          var $id = $scope[0].dataset.id;
         //Get Data List
-         const $data    = $settings.data_list;
+         let $data    = $settings.data_list;
          console.log($data);
 
          let dLen       = $data.length;
@@ -587,10 +587,10 @@ $window.on( 'elementor/frontend/init', function() {
              $backgroundColor.push($d.backgroundColor);
          }
          //Datasets    
-         const labels =  $labels;
+         let labels =  $labels;
 
         //Config Data
-        const config = {
+        let config = {
           type: "bar",
           data: {
             labels: labels,
@@ -659,7 +659,7 @@ $window.on( 'elementor/frontend/init', function() {
         };
         //Initialize
         var ctx = document.getElementById('uaChart-' + $id);
-        const uaChart = new Chart(ctx,
+        let uaChart = new Chart(ctx,
             config
         );
         
@@ -697,7 +697,7 @@ EF.hooks.addAction(
          var $settings = this.getElementSettings();
          var $id = $scope[0].dataset.id;
         //Get Data List
-         const $data    = $settings.data_list;
+         let $data    = $settings.data_list;
          console.log($settings);
        
        let dLen     = $data.length;
@@ -713,10 +713,10 @@ EF.hooks.addAction(
              $labels.push($d.labels);
              $backgroundColor.push($d.backgroundColor);
          }
-         const labels =  $labels;
+         let labels =  $labels;
 
         //Config Data
-        const config = {
+        let config = {
           type: "radar",
           data: {
             labels: labels,
@@ -771,7 +771,7 @@ EF.hooks.addAction(
         };
         //Initialize
         var ctx = document.getElementById('uaChart-' + $id);
-        const uaChart = new Chart(ctx,
+        let uaChart = new Chart(ctx,
             config
         );
         
