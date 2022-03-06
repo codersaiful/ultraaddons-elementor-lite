@@ -318,3 +318,7 @@
         /*border-color:#0000000a;*/
     }
 }
+
+.ua-slider-wrapper.no-line .owl-dots button.owl-dot:after{
+    content:none
+}
