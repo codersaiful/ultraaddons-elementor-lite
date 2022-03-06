@@ -295,7 +295,7 @@ $widgetsArray = [
     
     'Breadcrumb' => [
             'name'  => __( 'Breadcrumb', 'ultraaddons' ),
-            'is_pro'   => true,
+            'is_pro'   => false,
             'icon'      => 'uicon-skillbar',
             'cat'       => [
                 __( 'Header_Footer', 'ultraaddons' ),
