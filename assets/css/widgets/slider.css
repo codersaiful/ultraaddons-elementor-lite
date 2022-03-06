@@ -77,6 +77,7 @@
 }
 
 .ua-slider-wrapper.ua-number-slider-wrapper .owl-dots button.owl-dot{
+    border: none;
     font-size: 22px;
     font-family: "Roboto",sans-serif;
     font-weight: 600;
