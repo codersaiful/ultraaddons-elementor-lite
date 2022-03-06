@@ -405,14 +405,14 @@ class Moving_Letters extends Base{
          }
 
         if($anim_type==15){
-        echo '<h1 class="ml15">
+        echo '<h1 class="ua-ml ml15">
                 <span class="word">' . $settings["anime_title_1"] . '</span>
                 <span class="word">' . $settings["anime_title_2"] . '</span>
             </h1>';
          }
 
         if($anim_type==16){
-            echo '<h1 class="ml16">' . $settings["anime_title_1"] . '</h1>';
+            echo '<h1 class="ua-ml ml16">' . $settings["anime_title_1"] . '</h1>';
         }
 
     }
