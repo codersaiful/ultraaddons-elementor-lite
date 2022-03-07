@@ -8,6 +8,7 @@ use Elementor\Core\Schemes\Typography;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Background;
+use Elementor\Group_Control_Box_Shadow;
 use Elementor\Repeater;
 use Elementor\Utils;
 use Elementor\Plugin;
@@ -39,19 +40,13 @@ class Image_Hover_3D extends Base{
      * @access protected
      */
     protected function _register_controls() {
-        
-
         //For General Section
         $this->content_general_controls();
-
+        $this->style_content();
         $this->style_basic();
         $this->style_hover_box();
-        
-
         //For Typography Section Style Tab
-        $this->style_typography();
-    
-       
+        //$this->style_typography();
     }
     
 
@@ -92,8 +87,6 @@ class Image_Hover_3D extends Base{
             <?php
             }
             ?>
-            
-            
         </div>
         <?php
         
@@ -199,7 +192,90 @@ class Image_Hover_3D extends Base{
             );
             $this->end_controls_section();
     }
-    
+    /**
+     * @author B M Rafiul Alam
+     * @since 1.1.0.11
+     * Adding Content Style
+     */
+    protected function style_content(){
+        $this->start_controls_section(
+            'content',
+            [
+                'label' => __( 'Content', 'ultraaddons' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_responsive_control(
+			'text_alignment',
+			[
+				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'start' => [
+						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'end' => [
+						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-right',
+					]
+				],
+				'default' => 'center',
+				'selectors' => [
+					'{{WRAPPER}} .ua-3dimage-content-inside' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+        $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                        'name' => 'title_typography',
+                        'label' => 'Title',
+                        'selector' => '{{WRAPPER}} .ua-3dimage-content h2',
+                        'global' => [
+                                'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                        ],
+
+                ]
+        );
+        
+        $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                        'name' => 'description_typography',
+                        'label' => 'Description',
+                        'selector' => '{{WRAPPER}} .ua-3dimage-content p',
+                        'global' => [
+                                'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                        ],
+
+                ]
+        );
+        $this->add_control(
+			'title_color', [
+				'label' => __( 'Title Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-3dimage-content h2' => 'color: {{VALUE}};',
+                        
+				],
+			]
+        );
+        $this->add_control(
+			'desc_color', [
+				'label' => __( 'Description Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-3dimage-content p' => 'color: {{VALUE}};',
+				],
+			]
+        );
+        $this->end_controls_section();
+    }
 
     protected function style_basic(){
         $this->start_controls_section(
@@ -255,11 +331,19 @@ class Image_Hover_3D extends Base{
                     ],
             ]
         );
+        $this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'box_shadow',
+				'label' => esc_html__( 'Box Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-3d-image-hover-wrapper .ua-3dimage-box',
+			]
+		);
 
         $this->add_control(
 			'important_note',
 			[
-				'type' => \Elementor\Controls_Manager::RAW_HTML,
+				'type' => Controls_Manager::RAW_HTML,
 				'raw' => __( 'This option is only for live design purposes.', 'ultraaddons' ),
 				'content_classes' => 'ua-alert',
 				'separator' => 'before',
@@ -313,6 +397,14 @@ class Image_Hover_3D extends Base{
 				],
 			]
 		);
+         $this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'hover_box_shadow',
+				'label' => esc_html__( 'Hover Box Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-3d-image-hover-wrapper .ua-3dimage-box:hover',
+			]
+		);
 
         $this->end_controls_section();
     }
@@ -322,7 +414,7 @@ class Image_Hover_3D extends Base{
      * 
      * @since 1.1.0.8
      */
-    protected function style_typography() {
+     /* protected function style_typography() {
         $this->start_controls_section(
             'typography',
             [
@@ -360,6 +452,6 @@ class Image_Hover_3D extends Base{
         
         
         $this->end_controls_section();
-    }
+    } */
     
 }
