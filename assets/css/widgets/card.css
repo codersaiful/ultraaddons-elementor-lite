@@ -139,3 +139,12 @@
 .card-wish{
  text-align: right;
 }
+.content-left .ua-card-avatar-content {
+  align-items: start;
+}
+.content-right .ua-card-avatar-content {
+  align-items: end;
+}
+.content-center .ua-card-avatar-content {
+  align-items: center;
+}

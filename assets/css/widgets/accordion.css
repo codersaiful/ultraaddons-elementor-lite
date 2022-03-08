@@ -78,6 +78,12 @@
     cursor: pointer;
     color: #060a24;
 }
+.icon-right .ua_accordion_item .ua-icon {
+    right: 3px;
+}
+.icon-left .ua_accordion_item .ua-icon {
+    left: -25px;
+}
 .ua_accordion_item_title .ua-accordion-icon-opend {
     display: none;
 }
@@ -131,7 +137,7 @@
     margin-top: 29px;
 }
 .ua_accordion_item.ua_accordion_style_08 {
-    padding: 30px;
+    padding: 20px 20px 20px 40px;
     border: 1px solid #cccccc;
     background-color: #fff;
     margin-bottom: 10px;
