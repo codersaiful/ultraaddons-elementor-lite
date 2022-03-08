@@ -44,11 +44,12 @@ class Accordion extends Base{
     protected function _register_controls() {
 
         // For General Section
-        $this->content_general_contents_controls();
         $this->content_tab_content_controls();
+        $this->content_general_contents_controls();
         $this->style_tab_general_controls();
         $this->style_tab_title_controls();
         $this->style_tab_content_controls();
+        $this->style_icon_style();
         // $this->accordion_action_icon_style_section();
         
     }
@@ -1134,6 +1135,86 @@ class Accordion extends Base{
                 ],
             ]
         );
+        $this->end_controls_section();
+
+    }
+    /**
+     * @author B M Rafiul Alam
+     * @since 1.1.0.11
+     * Icon style section added
+     */
+    protected function style_icon_style(){
+
+        $this->start_controls_section(
+            '_ua_accordions_icon_style',
+            [
+                'label' => esc_html__('Icon', 'ultraaddons'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_control(
+			'icon_align',
+			[
+				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Start', 'ultraaddons' ),
+						'icon' => 'eicon-h-align-left',
+					],
+					'right' => [
+						'title' => esc_html__( 'End', 'ultraaddons' ),
+						'icon' => 'eicon-h-align-right',
+					],
+				],
+				'toggle' => true,
+                 'selectors' => [
+                    '{{WRAPPER}} .ua_accordion_item .ua-icon' => ';',
+                ],
+			]
+		);
+
+		$this->add_control(
+			'icon_color',
+			[
+				'label' => esc_html__( 'Color', 'ultraaddons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .ua-icon i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .ua-icon svg' => 'fill: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'icon_active_color',
+			[
+				'label' => esc_html__( 'Active Color', 'ultraaddons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .ua-active .ua-icon i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .ua-active .ua-icon svg' => 'fill: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'icon_space',
+			[
+				'label' => esc_html__( 'Spacing', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .ultraaddons-accordion-icon.ultraaddons-accordion-icon-left' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .ultraaddons-accordion-icon.ultraaddons-accordion-icon-right' => 'margin-left: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
         $this->end_controls_section();
 
     }
