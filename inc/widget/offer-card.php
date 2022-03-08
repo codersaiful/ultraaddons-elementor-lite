@@ -246,7 +246,33 @@ class Offer_Card extends Base{
                     'default' => 'left',
                     'toggle' => true,
                 ]
-        );        
+        );
+        $this->add_responsive_control(
+                'content_align',
+                [
+                        'label' => __( 'Vertical Position', 'ultraaddons' ),
+                        'type' => Controls_Manager::CHOOSE,
+                        'options' => [
+                                'start' => [
+                                        'title' => __( 'Top', 'ultraaddons' ),
+                                        'icon' => 'eicon-v-align-top',
+                                ],
+                                'center' => [
+                                        'title' => __( 'Middle', 'ultraaddons' ),
+                                        'icon' => 'eicon-v-align-middle',
+                                ],
+                                'end' => [
+                                        'title' => __( 'Bottom', 'ultraaddons' ),
+                                        'icon' => 'eicon-v-align-bottom',
+                                ],
+                        ],
+                        'default' => 'start',
+                        'selectors' => [
+                                '{{WRAPPER}} .ua-offer-inner' => 'align-items: {{VALUE}}',
+                            ],
+                        'toggle' => true,
+                ]
+        );
         
         $this->end_controls_section();
         
@@ -348,31 +374,6 @@ class Offer_Card extends Base{
                 'label'     => esc_html__( 'Image', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
-        );
-        
-        $this->add_responsive_control(
-                'image_align',
-                [
-                        'label' => __( 'Vertical Position', 'ultraaddons' ),
-                        'type' => Controls_Manager::CHOOSE,
-                        'options' => [
-                                'top' => [
-                                        'title' => __( 'Top', 'ultraaddons' ),
-                                        'icon' => 'eicon-v-align-top',
-                                ],
-                                'middle' => [
-                                        'title' => __( 'Middle', 'ultraaddons' ),
-                                        'icon' => 'eicon-v-align-middle',
-                                ],
-                                'bottom' => [
-                                        'title' => __( 'Bottom', 'ultraaddons' ),
-                                        'icon' => 'eicon-v-align-bottom',
-                                ],
-                        ],
-                        'default' => 'middle',
-                        'prefix_class'  => 'image-location-%s-',
-                        'toggle' => true,
-                ]
         );
         
         $this->add_responsive_control(
@@ -709,6 +710,7 @@ class Offer_Card extends Base{
                 'toggle' => true,
             ]
         );
+        
         $this->end_controls_section();
     }
 

@@ -663,6 +663,19 @@ class Card extends Base{
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
+		$this->start_controls_tabs(
+			'box_tabs'
+		);
+		/**
+		 * Normal tab
+		 */
+		$this->start_controls_tab(
+			'box_normal_tab',
+			[
+				'label' => __( 'Normal', 'ultraaddons' ),
+			]
+		);
+		
 		$this->add_group_control(
 			Group_Control_Background::get_type(),
 			[
@@ -702,12 +715,39 @@ class Card extends Base{
 			Group_Control_Border::get_type(),
 			[
 				'name' => '_ua_box_border',
-				'label' => __( 'Border', 'plugin-domain' ),
-				'selector' => '{{WRAPPER}} .ua-card',
+				'label' => __( 'Border', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-c .ua-card',
 			]
 		);
-		
-		
+		$this->end_controls_tab();
+		/**
+		 * Button Hover tab
+		 */
+		$this->start_controls_tab(
+			'box_hover_tab',
+			[
+				'label' => __( 'Hover', 'ultraaddons' ),
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'box_hover_background',
+				'label' => __( 'Box Background', 'ultraaddons' ),
+				'types' => [ 'classic', 'gradient'],
+				'selector' => '{{WRAPPER}} .ua-card:hover',
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'card_box_hover_shadow',
+				'label' => __( 'Box Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-card:hover',
+			]
+		);
+
+		$this->end_controls_tabs();
 	 $this->end_controls_section();
     }
 
