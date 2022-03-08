@@ -12,12 +12,12 @@
     margin: 0 0 10px;
 }
 .ua-info-box-icon {
-    display: inline-flex;
-    text-align: center;
-    margin: 0 0 40px;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-items: center;
+    /* display: inline-flex; */
+    /* text-align: center; */
+    /* margin: 0 0 40px; */
+    /* justify-content: center; */
+    /* flex-wrap: wrap; */
+    /* align-items: center; */
 }
 .ua-info-box-content .elementor-icon-box-title {
     font-weight: 700;

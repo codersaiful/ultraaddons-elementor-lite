@@ -55,13 +55,11 @@ class Info_Box extends Base {
                                             'title' => __( 'Right', 'ultraaddons' ),
                                             'icon' => 'eicon-text-align-right',
                                     ],
-                                    'justify' => [
-                                            'title' => __( 'Justified', 'ultraaddons' ),
-                                            'icon' => 'eicon-text-align-justify',
-                                    ],
                             ],
-                            'prefix_class' => 'elementor-align-',
                             'default' => 'left',
+                            'selectors' => [
+                                    '{{WRAPPER}} .ua-info-box-wrapper' => 'text-align: {{VALUE}};',
+                            ],
                     ]
             );
             
