@@ -54,178 +54,6 @@ class Accordion extends Base{
         
     }
 
-    /**
-     * Render image accordion widget output on the frontend.
-     *
-     * Written in PHP and used to generate the final HTML.
-     *
-     * @since 1.0.0
-     * @access protected
-     */
-    protected function render() {
-        $settings = $this->get_settings_for_display();
-        extract($settings);
-        // var_dump($ua_img_accordion_items);
-        // var_dump($_ua_accordions_skin, $settings);
-        $_ua_accordions_skin  =  !empty( $_ua_accordions_skin ) ? $_ua_accordions_skin : '_skin_1';
-        switch ($_ua_accordions_skin) {
-            case '_skin_1':
-                 $this->_ua_accordions_style_one();
-                break;
-            default:
-                $this->_ua_accordions_style_one();
-                break;
-        }
-        ?>
-        <?php
-    }
-
-    //Layout One
-    protected function _ua_accordions_style_one(){
-        $settings = $this->get_settings_for_display();
-        extract($settings);
-        $migrated = isset( $__fa4_migrated['_ua_accordion_selected_icon'] );
-
-        if (  !empty( $icon ) && ! Icons_Manager::is_migration_allowed() ) {
-        
-            $settings['icon'] = 'fas fa-angle-up';
-            $settings['icon_active'] = 'fas fa-angle-down';
-        }
-
-
-        $is_new = empty( $icon ) && Icons_Manager::is_migration_allowed();
-        $has_icon = ( ! $is_new || ! empty( $_ua_accordion_selected_icon['value'] ) );
-        
-        $this->add_render_attribute(
-            'ua_accordion_wrapper',
-            [
-                'id' => "ua-advance-accordions-{$this->get_id()}",
-                'class' => ['ua-advance-accordions ua_accordion_container', $_ua_accordions_skin ],
-                'data-Accordionid' => $this->get_id(),
-            ]
-        );
-        
-        $has_accordions = ! empty( $_ua_accordions_list );
-        $id_int = substr( $this->get_id_int(), 0, 4 );
-        ?>
-        <?php if ($has_accordions): ?>
-        <div <?php echo $this->get_render_attribute_string('ua_accordion_wrapper'); ?> >
-            <div class="ua_accordion">
-                <?php
-                $i = 1;
-                foreach ( $_ua_accordions_list as $index => $item ) :
-                    
-                    $tab_count = $index + 1;
-
-                    
-                    $has_title_text = ! empty( $item['_ua_accordions_title'] );
-
-                    $has_description_text = ! empty( $item['_ua_accordions_description_text'] );
-
-                    $has_image = ! empty( $item['_ua_accordions_image']['url'] );
-
-                    $tab_title_setting_key = $this->get_repeater_setting_key( '_ua_accordions_title', '_ua_accordions_list', $index );
-
-                    $tab_content_setting_key = $this->get_repeater_setting_key( '_ua_accordions_description_text', '_ua_accordions_list', $index );
-
-                    $icon_tag = '';
-                    if ( ! empty( $item['_ua_accordions_link']['url'] ) ) {
-                        $icon_tag = 'a';
-                        $this->add_link_attributes( '_ua_accordions_link', $item['_ua_accordions_link'] );
-                    }
-                    $link_attributes = $this->get_render_attribute_string( '_ua_accordions_link' );
-
-
-                    $title_active_class = '';
-                    $content_active_class = '';
-
-                    if ($item['_ua_accordions_show_as_default'] == 'yes') {
-                        $title_active_class = 'ua-active-default ua-active';
-                        $content_active_class = 'ua-active-default ua-active';
-                    }
-
-                    $this->add_render_attribute( $tab_title_setting_key, [
-                        'id' => 'accordion-tab-title-' . $id_int . $tab_count,
-                        'class' => [ 'ua_accordion_item_title ua-accordion-title', $title_active_class ],
-                        'data-speed' => 400,
-                    ] );
-
-                    $this->add_render_attribute( $tab_content_setting_key, [
-                        'id' => 'ua-tab-content-' . $id_int . $tab_count,
-                        'class' => [ 'ua_accordion_panel', 'ua-accordion-content-wrapper', $content_active_class ],
-                    ] );
-
-                    ?>
-                    <div class="ua_accordion_item ua_accordion_style_08 ua-accordion-wrapper">
-                        <div <?php echo $this->get_render_attribute_string( $tab_title_setting_key ); ?>>
-                            <?php if ( $has_title_text ) : ?>
-                                <<?php echo esc_html( ultraaddons_title_tag( $item['_ua_accordions_title_size'] ) ); ?> class="ua_accordion_title ua-accordions-title">
-                                    <?php echo do_shortcode($item['_ua_accordions_title']); ?>
-                                </<?php echo esc_html( ultraaddons_title_tag( $item['_ua_accordions_title_size'] ) ); ?>>
-                            <?php endif; ?>
-                            <div class="ua-icon">
-                                <?php 
-                                if ( $_ua_accordions_icon_show === 'yes' ) {
-                                    if( $_ua_accordions_icon_type == 'icon' ){
-                                        if ( $is_new || $migrated ) { ?>
-                                            <span class="ua-accordion_icon" aria-hidden="true">
-                                                <span class="ua-accordion-icon-closed"><?php Icons_Manager::render_icon( $_ua_accordion_selected_icon ); ?></span>
-
-                                                <span class="ua-accordion-icon-opend"><?php Icons_Manager::render_icon( $selected_active_icon ); ?></span>
-                                            </span>
-                                    <?php }
-                                    }elseif( $_ua_accordions_icon_type == 'image' ){ ?>
-                                        <span class="ua-accordion_icon" aria-hidden="true">
-                                            <span class="ua-accordion-icon-closed">
-                                                <img src="<?php echo esc_url( $_ua_accordions_icon_image['url'] ); ?>" alt="closed Icon">
-                                            </span>
-                                            <span class="ua-accordion-icon-opend">
-                                                <img src="<?php echo esc_url( $_ua_accordions_active_image['url'] ); ?>" alt="Opend Icon">
-                                            </span>
-                                        </span>
-
-                                <?php }
-                                    
-                                }
-
-                                ?>
-                            </div>
-                        </div>
-                        <div <?php echo $this->get_render_attribute_string( $tab_content_setting_key ); ?>>
-                            <div class="ua_accordion_inner">
-                                <?php if ( 'yes' == $item['_ua_accordions_image_show'] ) : ?>
-                                    <?php if ( $has_image ): ?>
-                                    <div class="ua_accordion_thumb">
-                                        <a <?php echo $link_attributes; ?> >
-                                        <img src="<?php echo esc_url($item['_ua_accordions_image']['url']); ?>" alt="#" class="ua_img_res">
-                                        </a>
-                                    </div>
-                                    <?php endif; ?>
-                                <?php endif; ?>
-                                <div class="ua_accordion_inner_content">
-                                    <?php if ( $has_description_text ) : ?>
-                                    <p class="ua_desc">
-                                        <?php echo do_shortcode( $item['_ua_accordions_description_text'] ); ?>
-                                    </p>
-                                    <?php endif; ?>
-                                    
-                                    <?php if ( 'yes' == $item['_ua_accordions_button_show'] ) : ?>
-                                        <a <?php echo $link_attributes; ?> class="ua_cu_btn btn_2 ua-accordion-button">
-                                            <?php echo ultraaddons_addons_kses( $item['_ua_accordions_button_text'] ); ?>
-                                        </a>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <?php 
-                    $i++; 
-                endforeach; ?>
-            </div>
-        </div>
-    <?php endif;
-    }
-
     protected function content_general_contents_controls(){
 
         $this->start_controls_section(
@@ -262,7 +90,7 @@ class Accordion extends Base{
         $this->add_control(
             '_ua_accordions_icon_type',
             [   
-                'label' => esc_html__('Icon Type', 'ultraaddons'),
+                'label' => esc_html__('Icon', 'ultraaddons'),
                 'type' => Controls_Manager::CHOOSE,
                 'label_block' => false,
                 'options' => [
@@ -273,10 +101,6 @@ class Accordion extends Base{
                     'icon' => [
                         'title'     => esc_html__('Icon', 'ultraaddons'),
                         'icon'      => 'eicon-star',
-                    ],
-                    'image' => [
-                        'title'     => esc_html__('Image', 'ultraaddons'),
-                        'icon'      => 'eicon-featured-image',
                     ],
                 ],
                 'default'   => 'icon',
@@ -1159,18 +983,16 @@ class Accordion extends Base{
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Start', 'ultraaddons' ),
+						'title' => esc_html__( 'Left', 'ultraaddons' ),
 						'icon' => 'eicon-h-align-left',
 					],
 					'right' => [
-						'title' => esc_html__( 'End', 'ultraaddons' ),
+						'title' => esc_html__( 'Right', 'ultraaddons' ),
 						'icon' => 'eicon-h-align-right',
 					],
 				],
 				'toggle' => true,
-                 'selectors' => [
-                    '{{WRAPPER}} .ua_accordion_item .ua-icon' => ';',
-                ],
+                
 			]
 		);
 
@@ -1210,13 +1032,186 @@ class Accordion extends Base{
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .ultraaddons-accordion-icon.ultraaddons-accordion-icon-left' => 'margin-right: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .ultraaddons-accordion-icon.ultraaddons-accordion-icon-right' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .icon-left .ua-icon' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .icon-right .ua-icon' => 'margin-right: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
         $this->end_controls_section();
 
+    }
+    /**
+     * Render image accordion widget output on the frontend.
+     *
+     * Written in PHP and used to generate the final HTML.
+     *
+     * @since 1.0.0
+     * @access protected
+     */
+    protected function render() {
+        $settings = $this->get_settings_for_display();
+        extract($settings);
+        // var_dump($ua_img_accordion_items);
+        // var_dump($_ua_accordions_skin, $settings);
+        $_ua_accordions_skin  =  !empty( $_ua_accordions_skin ) ? $_ua_accordions_skin : '_skin_1';
+        switch ($_ua_accordions_skin) {
+            case '_skin_1':
+                 $this->_ua_accordions_style_one();
+                break;
+            default:
+                $this->_ua_accordions_style_one();
+                break;
+        }
+        ?>
+        <?php
+    }
+
+    //Layout One
+    protected function _ua_accordions_style_one(){
+        $settings = $this->get_settings_for_display();
+        extract($settings);
+        $migrated       = isset( $__fa4_migrated['_ua_accordion_selected_icon'] );
+        $icon_position  = 'icon-'. $settings['icon_align'];
+
+        if (  !empty( $icon ) && ! Icons_Manager::is_migration_allowed() ) {
+        
+            $settings['icon'] = 'fas fa-angle-up';
+            $settings['icon_active'] = 'fas fa-angle-down';
+        }
+
+
+        $is_new = empty( $icon ) && Icons_Manager::is_migration_allowed();
+        $has_icon = ( ! $is_new || ! empty( $_ua_accordion_selected_icon['value'] ) );
+        
+        $this->add_render_attribute(
+            'ua_accordion_wrapper',
+            [
+                'id' => "ua-advance-accordions-{$this->get_id()}",
+                'class' => ['ua-advance-accordions ua_accordion_container', $_ua_accordions_skin . ' ' . $icon_position] , 
+                'data-Accordionid' => $this->get_id(),
+            ]
+        );
+        
+        $has_accordions = ! empty( $_ua_accordions_list );
+        $id_int = substr( $this->get_id_int(), 0, 4 );
+        ?>
+        <?php if ($has_accordions): ?>
+        <div <?php echo $this->get_render_attribute_string('ua_accordion_wrapper'); ?> >
+            <div class="ua_accordion">
+                <?php
+                $i = 1;
+                foreach ( $_ua_accordions_list as $index => $item ) :
+                    
+                    $tab_count = $index + 1;
+
+                    
+                    $has_title_text = ! empty( $item['_ua_accordions_title'] );
+
+                    $has_description_text = ! empty( $item['_ua_accordions_description_text'] );
+
+                    $has_image = ! empty( $item['_ua_accordions_image']['url'] );
+
+                    $tab_title_setting_key = $this->get_repeater_setting_key( '_ua_accordions_title', '_ua_accordions_list', $index );
+
+                    $tab_content_setting_key = $this->get_repeater_setting_key( '_ua_accordions_description_text', '_ua_accordions_list', $index );
+
+                    $icon_tag = '';
+                    if ( ! empty( $item['_ua_accordions_link']['url'] ) ) {
+                        $icon_tag = 'a';
+                        $this->add_link_attributes( '_ua_accordions_link', $item['_ua_accordions_link'] );
+                    }
+                    $link_attributes = $this->get_render_attribute_string( '_ua_accordions_link' );
+
+
+                    $title_active_class = '';
+                    $content_active_class = '';
+
+                    if ($item['_ua_accordions_show_as_default'] == 'yes') {
+                        $title_active_class = 'ua-active-default ua-active';
+                        $content_active_class = 'ua-active-default ua-active';
+                    }
+
+                    $this->add_render_attribute( $tab_title_setting_key, [
+                        'id' => 'accordion-tab-title-' . $id_int . $tab_count,
+                        'class' => [ 'ua_accordion_item_title ua-accordion-title', $title_active_class ],
+                        'data-speed' => 400,
+                    ] );
+
+                    $this->add_render_attribute( $tab_content_setting_key, [
+                        'id' => 'ua-tab-content-' . $id_int . $tab_count,
+                        'class' => [ 'ua_accordion_panel', 'ua-accordion-content-wrapper', $content_active_class ],
+                    ] );
+
+                    ?>
+                    <div class="ua_accordion_item ua_accordion_style_08 ua-accordion-wrapper">
+                        <div <?php echo $this->get_render_attribute_string( $tab_title_setting_key ); ?>>
+                            <?php if ( $has_title_text ) : ?>
+                                <<?php echo esc_html( ultraaddons_title_tag( $item['_ua_accordions_title_size'] ) ); ?> class="ua_accordion_title ua-accordions-title">
+                                    <?php echo do_shortcode($item['_ua_accordions_title']); ?>
+                                </<?php echo esc_html( ultraaddons_title_tag( $item['_ua_accordions_title_size'] ) ); ?>>
+                            <?php endif; ?>
+                            <div class="ua-icon">
+                                <?php 
+                                if ( $_ua_accordions_icon_show === 'yes' ) {
+                                    if( $_ua_accordions_icon_type == 'icon' ){
+                                        if ( $is_new || $migrated ) { ?>
+                                        
+                                            <span class="ua-accordion_icon" aria-hidden="true">
+                                                <span class="ua-accordion-icon-closed"><?php Icons_Manager::render_icon( $_ua_accordion_selected_icon ); ?></span>
+
+                                                <span class="ua-accordion-icon-opend"><?php Icons_Manager::render_icon( $selected_active_icon ); ?></span>
+                                            </span>
+                                    <?php }
+                                    }elseif( $_ua_accordions_icon_type == 'image' ){ ?>
+                                        <span class="ua-accordion_icon" aria-hidden="true">
+                                            <span class="ua-accordion-icon-closed">
+                                                <img src="<?php echo esc_url( $_ua_accordions_icon_image['url'] ); ?>" alt="closed Icon">
+                                            </span>
+                                            <span class="ua-accordion-icon-opend">
+                                                <img src="<?php echo esc_url( $_ua_accordions_active_image['url'] ); ?>" alt="Opend Icon">
+                                            </span>
+                                        </span>
+
+                                <?php }
+                                    
+                                }
+
+                                ?>
+                            </div>
+                        </div>
+                        <div <?php echo $this->get_render_attribute_string( $tab_content_setting_key ); ?>>
+                            <div class="ua_accordion_inner">
+                                <?php if ( 'yes' == $item['_ua_accordions_image_show'] ) : ?>
+                                    <?php if ( $has_image ): ?>
+                                    <div class="ua_accordion_thumb">
+                                        <a <?php echo $link_attributes; ?> >
+                                        <img src="<?php echo esc_url($item['_ua_accordions_image']['url']); ?>" alt="#" class="ua_img_res">
+                                        </a>
+                                    </div>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                                <div class="ua_accordion_inner_content">
+                                    <?php if ( $has_description_text ) : ?>
+                                    <p class="ua_desc">
+                                        <?php echo do_shortcode( $item['_ua_accordions_description_text'] ); ?>
+                                    </p>
+                                    <?php endif; ?>
+                                    
+                                    <?php if ( 'yes' == $item['_ua_accordions_button_show'] ) : ?>
+                                        <a <?php echo $link_attributes; ?> class="ua_cu_btn btn_2 ua-accordion-button">
+                                            <?php echo ultraaddons_addons_kses( $item['_ua_accordions_button_text'] ); ?>
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php 
+                    $i++; 
+                endforeach; ?>
+            </div>
+        </div>
+    <?php endif;
     }
 
 }

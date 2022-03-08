@@ -124,6 +124,17 @@ class Work_Hour extends Base{
 				'default' => 'no',
 			]
 		);
+		$repeater->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => '_ua_wh_list_shadow',
+				'label' => __( 'Highlight Day', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} {{CURRENT_ITEM}}.ua-work-hours-row',
+				'condition' =>[
+					'_ua_wh_day_highlight' =>'yes'
+				],
+			]
+		);
 		$repeater->add_control(
 			'_ua_wh_bg_color', [
 				'label' => __( 'Background Color', 'ultraaddons' ),
@@ -138,20 +149,13 @@ class Work_Hour extends Base{
 			'_ua_wh_text_color', [
 				'label' => __( 'Text Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
-				'default'=>'#333',
 				'selectors' => [
-						'{{WRAPPER}} {{CURRENT_ITEM}}.ua-work-hours-row' => 'color: {{VALUE}};',
+						'{{WRAPPER}} {{CURRENT_ITEM}}.ua-work-hours-row .ua-work-day' => 'color: {{VALUE}};',
+						'{{WRAPPER}} {{CURRENT_ITEM}}.ua-work-hours-row .ua-work-timing' => 'color: {{VALUE}};',
 				],
 			]
         );
-		$repeater->add_group_control(
-			Group_Control_Box_Shadow::get_type(),
-			[
-				'name' => '_ua_wh_list_shadow',
-				'label' => __( 'Highlight Day', 'ultraaddons' ),
-				'selector' => '{{WRAPPER}} {{CURRENT_ITEM}}.ua-work-hours-row',
-			]
-		);
+		
 		$this->add_control(
 			'_ua_wh_list',
 			[
@@ -337,6 +341,9 @@ class Work_Hour extends Base{
 					'name' => 'wh_highlight_row_typography',
 					'label' => 'Highlight Typography',
 					'selector' => '{{WRAPPER}} .ua-work-hours-row.highlight',
+					'condition' =>[
+					'_ua_wh_day_highlight' =>'yes'
+				],
 
 			]
         );
