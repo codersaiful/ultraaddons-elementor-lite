@@ -453,14 +453,14 @@ class Alert extends Base{
         $this->start_controls_section(
             '_ua_alert_cross_icon_style_settings',
             [
-                'label' => esc_html__('Cross Icon', 'ultraaddons'),
+                'label' => __('Cross Icon', 'ultraaddons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             '_ua_alert_cross_icon_bg_color',
             [
-                'label' => esc_html__('Icon Background Color', 'ultraaddons'),
+                'label' => __('Icon Background Color', 'ultraaddons'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -471,7 +471,7 @@ class Alert extends Base{
         $this->add_control(
             '_ua_alert_cross_icon_color',
             [
-                'label' => esc_html__('Icon Color', 'ultraaddons'),
+                'label' => __('Icon Color', 'ultraaddons'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
