@@ -235,7 +235,7 @@ class Alert extends Base{
 				'type' => Controls_Manager::ICONS,
                 'fa4compatibility' => 'icon',
                 'default' => [
-                    'value' => 'dlicon dlicon-cross',
+                    'value' => 'fas fa fa-times',
                     'library' => 'fa-solid',
                 ],
 			]
@@ -434,6 +434,17 @@ class Alert extends Base{
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
                     '{{WRAPPER}} .ua_alert_box.ua_alert_box_style_01 .ua_alert_desc i' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            '_alert_icon_radius',
+            [
+                'label'      => __('Radius', 'ultraaddons'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .ua_alert_box.ua_alert_box_style_01 .ua_alert_desc i' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
