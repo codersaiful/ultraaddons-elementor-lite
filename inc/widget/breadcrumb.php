@@ -46,8 +46,6 @@ class Breadcrumb extends Base{
         //For General Section
         $this->content_general_controls();
         $this->wrapper_controls();
-
-       
     }
     
     /**
@@ -202,14 +200,10 @@ class Breadcrumb extends Base{
         $this->add_control(
             'link_color',
             [
-                'label'     => __( 'Menu Color', 'ultraaddons' ),
+                'label'     => __( 'Link Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
-                'scheme'    => [
-                    'type'  => Color::get_type(),
-                    'value' => Color::COLOR_1,
-                ],
                 'selectors' => [
-                    '{{WRAPPER}} .ua-breadcrumb-wrapper a' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .ua-breadcrumb-menu nav a, .ultraaddons-breadcrumb .item a' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -218,12 +212,8 @@ class Breadcrumb extends Base{
             [
                 'label'     => __( 'Current Menu Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
-                'scheme'    => [
-                    'type'  => Color::get_type(),
-                    'value' => Color::COLOR_1,
-                ],
                 'selectors' => [
-                    '{{WRAPPER}} .item-current.item' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .ua-breadcrumb-menu nav, ul#ultraaddons-breadcrumb li.item-current' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -232,12 +222,8 @@ class Breadcrumb extends Base{
             [
                 'label'     => __( 'Separator Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
-                'scheme'    => [
-                    'type'  => Color::get_type(),
-                    'value' => Color::COLOR_1,
-                ],
                 'selectors' => [
-                    '{{WRAPPER}} .seperator' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .ua-breadcrumb-menu nav span, .ua-breadcrumb-menu .seperator' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -247,12 +233,8 @@ class Breadcrumb extends Base{
             [
                 'label'     => __( 'Hover Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
-                'scheme'    => [
-                    'type'  => Color::get_type(),
-                    'value' => Color::COLOR_1,
-                ],
                 'selectors' => [
-                    '{{WRAPPER}} .ua-breadcrumb-wrapper .item a:hover' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .ua-breadcrumb-menu nav a:hover, .ultraaddons-breadcrumb li a:hover' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -262,11 +244,7 @@ class Breadcrumb extends Base{
                 [
                         'name' => 'title_typography',
                         'label' => 'Breadcrumb Typography',
-                        'selector' => '{{WRAPPER}} .ua-breadcrumb-wrapper ul,{{WRAPPER}} .ua-breadcrumb-wrapper li,{{WRAPPER}} .ua-breadcrumb-wrapper li a',
-                        'global' => [
-                                'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
-                        ],
-
+                        'selector' => '{{WRAPPER}} .ua-breadcrumb-menu nav, .ultraaddons-breadcrumb',
                 ]
         );
         

@@ -129,7 +129,6 @@ class Skill_Bar extends Base{
                                         $progress_percentage = 100;
                                 }
 
-                                
                                 $this->add_render_attribute( $repeater_setting_key . '.title', [
                                         'class' => 'heading',
                                 ]);
@@ -193,7 +192,7 @@ class Skill_Bar extends Base{
          */
         protected function content_general_controls() {
         
-                $this->start_controls_section(
+            $this->start_controls_section(
                         'section_progress',
 			[
 				'label' => __( 'Progress Bar', 'ultraaddons' ),
@@ -215,7 +214,7 @@ class Skill_Bar extends Base{
 			]
                 );
                 
-                $repeater->add_control(
+            $repeater->add_control(
 			'percent',
 			[
 				'label' => __( 'Percentage', 'ultraaddons' ),
@@ -230,7 +229,7 @@ class Skill_Bar extends Base{
 			]
 		);
                 
-                $repeater->add_control(
+        $repeater->add_control(
 			'more_options_1',
 			[
 				'label' => __( 'Color', 'ultraaddons' ),
@@ -242,11 +241,8 @@ class Skill_Bar extends Base{
                 $repeater->add_control(
 			'repeater_bar_color',
 			[
-				'label' => __( 'Color', 'ultraaddons' ),
+				'label' => __( 'Bar Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
-				'global' => [
-					'default' => Global_Colors::COLOR_PRIMARY,
-				],
 				'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}} .barfiller .fill' => 'background-color: {{VALUE}} !important;',
 				],
@@ -273,16 +269,13 @@ class Skill_Bar extends Base{
 			]
 		);
                 
-                $repeater->add_control(
+        $repeater->add_control(
 			'repeater_title_color',
 			[
 				'label' => __( 'Text Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}} .heading' => 'color: {{VALUE}};',
-				],
-				'global' => [
-					'default' => Global_Colors::COLOR_TEXT,
 				],
 			]
 		);
@@ -292,9 +285,6 @@ class Skill_Bar extends Base{
 			[
 				'name' => 'repeater_typography',
 				'selector' => '{{WRAPPER}} {{CURRENT_ITEM}} .heading',
-				'global' => [
-					'default' => Global_Typography::TYPOGRAPHY_TEXT,
-				],
 			]
 		);
                 
@@ -436,9 +426,6 @@ class Skill_Bar extends Base{
 				'selectors' => [
 					'{{WRAPPER}} .heading' => 'color: {{VALUE}};',
 				],
-				'global' => [
-					'default' => Global_Colors::COLOR_TEXT,
-				],
 			]
 		);
 
@@ -447,9 +434,6 @@ class Skill_Bar extends Base{
 			[
 				'name' => 'typography',
 				'selector' => '{{WRAPPER}} .heading',
-				'global' => [
-					'default' => Global_Typography::TYPOGRAPHY_TEXT,
-				],
 			]
 		);
                 
@@ -478,9 +462,6 @@ class Skill_Bar extends Base{
 				'selectors' => [
 					'{{WRAPPER}} .progress-score' => 'color: {{VALUE}};',
 				],
-				'global' => [
-					'default' => Global_Colors::COLOR_TEXT,
-				],
 			]
 		);
                 
@@ -489,9 +470,6 @@ class Skill_Bar extends Base{
 			[
 				'name' => 'percentage_typography',
 				'selector' => '{{WRAPPER}} .progress-score',
-				'global' => [
-					'default' => Global_Typography::TYPOGRAPHY_TEXT,
-				],
 			]
 		);
 
