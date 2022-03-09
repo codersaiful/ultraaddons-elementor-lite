@@ -28,7 +28,7 @@ class List_Item extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua','list', 'item', 'ul', 'ol', 'list item', 'list-item','item-list' ];
+        return [ 'ultraaddons', 'ua','list', 'item', 'ul', 'ol', 'list item', 'list-item','item-list','advance' ];
     }
     
     /**
@@ -51,6 +51,8 @@ class List_Item extends Base{
         //For Typography Section Style Tab
         $this->style_typography_controls();
 
+        $this->style_box_controls();
+
        
     }
     
@@ -72,7 +74,7 @@ class List_Item extends Base{
 
         ?>
     <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
-        <ul class="ua-list-items">
+        <ul class="ua-list-items nu">
             <?php
             $serial = 1;
             foreach( $items as $key => $item ){
@@ -96,9 +98,7 @@ class List_Item extends Base{
 
                     <?php if( $description ){  ?>
                     <span class="list-item-description"><?php echo wp_kses_post( $description ); ?></span>
-                    <?php } ?>    
-                    
-                    
+                    <?php } ?>
                 </div>
             </li>    
             <?php
@@ -169,14 +169,10 @@ class List_Item extends Base{
             [
                 'label'     => __( 'Icon Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
-                'scheme'    => [
-                    'type'  => Color::get_type(),
-                    'value' => Color::COLOR_1,
-                ],
                 'selectors' => [
                     '{{WRAPPER}} .ua-list-item-wrapper .ua-list-items {{CURRENT_ITEM}} i' => 'color: {{VALUE}}',
                 ],
-                'default'   => '#0fc392',
+                'default'   => '#ffffff',
             ]
         );
         
@@ -186,14 +182,10 @@ class List_Item extends Base{
             [
                 'label'     => __( 'Icon Background', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
-                'scheme'    => [
-                    'type'  => Color::get_type(),
-                    'value' => Color::COLOR_1,
-                ],
                 'selectors' => [
                     '{{WRAPPER}} .ua-list-item-wrapper .ua-list-items {{CURRENT_ITEM}} i,.elementor-element.ua-list-temp-temp-2 .ua-list-items {{CURRENT_ITEM}}::after' => 'background-color: {{VALUE}}',
                 ],
-                'default'   => 'transparent',
+                'default'   => '#003B8F',
                 
             ]
         );
@@ -203,14 +195,10 @@ class List_Item extends Base{
             [
                 'label'     => __( 'Item Background', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
-                'scheme'    => [
-                    'type'  => Color::get_type(),
-                    'value' => Color::COLOR_1,
-                ],
                 'selectors' => [
                     '{{WRAPPER}} .ua-list-item-wrapper .ua-list-items {{CURRENT_ITEM}}' => 'background-color: {{VALUE}}',
                 ],
-                'default'   => 'transparent',
+                'default'   => '#003B8F',
                 
             ]
         );
@@ -258,7 +246,7 @@ class List_Item extends Base{
         $this->start_controls_section(
             'style_general',
             [
-                'label'     => esc_html__( 'Design', 'ultraaddons' ),
+                'label'     => esc_html__( 'Content', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -298,21 +286,15 @@ class List_Item extends Base{
                 ]
         );
         
-        
-        
         $this->add_control(
             'title_color',
             [
                 'label'     => __( 'Title Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
-                'scheme'    => [
-                    'type'  => Color::get_type(),
-                    'value' => Color::COLOR_1,
-                ],
                 'selectors' => [
                     '{{WRAPPER}} .ua-list-item-wrapper .ua-list-items li .list-item-title' => 'color: {{VALUE}}',
                 ],
-                'default'   => '#21272c',
+                'default'   => '#ffffff',
             ]
         );
         
@@ -321,49 +303,50 @@ class List_Item extends Base{
             [
                 'label'     => __( 'Description Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
-                'scheme'    => [
-                    'type'  => Color::get_type(),
-                    'value' => Color::COLOR_1,
-                ],
                 'selectors' => [
                     '{{WRAPPER}} .ua-list-item-wrapper .ua-list-items li .list-item-description' => 'color: {{VALUE}}',
                 ],
-                'default'   => '#5C6B79',
+                'default'   => '#dddddd',
             ]
         );
-        
-                
-        $this->add_responsive_control(
-                'padding',
-                [
-                        'label' => __( 'Padding', 'ultraaddons' ),
-                        'type' => Controls_Manager::DIMENSIONS,
-                        'size_units' => [ 'px', '%' ],
-                        'default'   => [
-                                'size' => 55,
-                                'unit' => 'px',
-                        ],
-                        'selectors' => [
-                                '{{WRAPPER}} .ua-list-items li.list-item .list-item-inside' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                        ],
-                ]
-        );
-        
-        $this->add_responsive_control(
-                'margin',
-                [
-                        'label' => __( 'Margin', 'ultraaddons' ),
-                        'type' => Controls_Manager::DIMENSIONS,
-                        'size_units' => [ 'px', '%' ],
-                        'default'   => [
-                                'size' => 55,
-                                'unit' => 'px',
-                        ],
-                        'selectors' => [
-                                '{{WRAPPER}} .ua-list-items li.list-item' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                        ],
-                ]
-        );
+         $this->add_responsive_control(
+                    'icon_size',
+                    [
+                            'label' => __( 'Icon Size', 'ultraaddons' ),
+                            'type' => Controls_Manager::SLIDER,
+                            'default' => [
+                                    'size' => 20,
+                            ],
+                            'range' => [
+                                    'px' => [
+                                            'min' => 0,
+                                            'max' => 100,
+                                    ],
+                            ],
+                            'selectors' => [
+                                    '{{WRAPPER}} .ua-list-item-wrapper .ua-list-items li i' => 'font-size: {{SIZE}}{{UNIT}};',
+                            ],
+                    ]
+            );
+             $this->add_responsive_control(
+                    'icon_space',
+                    [
+                            'label' => __( 'Icon Space', 'ultraaddons' ),
+                            'type' => Controls_Manager::SLIDER,
+                            'default' => [
+                                    'size' => 5,
+                            ],
+                            'range' => [
+                                    'px' => [
+                                            'min' => 0,
+                                            'max' => 50,
+                                    ],
+                            ],
+                            'selectors' => [
+                                    '{{WRAPPER}} .ua-list-item-wrapper .ua-list-items li i' => 'margin-right: {{SIZE}}{{UNIT}};',
+                            ],
+                    ]
+            );
         
         $this->end_controls_section();
     }
@@ -412,6 +395,81 @@ class List_Item extends Base{
         
         $this->end_controls_section();
     }
+
+     /**
+      * @author B M Rafiul Alam
+     * Typography Section for Style Tab
+     * 
+     * @since 1.1.0.11
+     */
+    protected function style_box_controls() {
+        $this->start_controls_section(
+            'list_style',
+            [
+                'label'     => esc_html__( 'Box', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_responsive_control(
+                'padding',
+                [
+                        'label' => __( 'Padding', 'ultraaddons' ),
+                        'type' => Controls_Manager::DIMENSIONS,
+                        'size_units' => [ 'px', '%' ],
+                        'default'   => [
+                                'size' => 55,
+                                'unit' => 'px',
+                        ],
+                        'selectors' => [
+                                '{{WRAPPER}} .ua-list-items li.list-item .list-item-inside' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                ]
+        );
+        
+        $this->add_responsive_control(
+                'margin',
+                [
+                        'label' => __( 'Margin', 'ultraaddons' ),
+                        'type' => Controls_Manager::DIMENSIONS,
+                        'size_units' => [ 'px', '%' ],
+                        'default'   => [
+                                'size' => 55,
+                                'unit' => 'px',
+                        ],
+                        'selectors' => [
+                                '{{WRAPPER}} .ua-list-items li.list-item' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                ]
+        );
+        $this->add_responsive_control(
+			'list_box_radius',
+			[
+				'label'       => esc_html__( 'Box Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .list-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'box_shadow',
+				'label' => __( 'Box Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .list-item',
+			]
+		);
+        
+        $this->end_controls_section();
+    }
+       
        
     
 }
