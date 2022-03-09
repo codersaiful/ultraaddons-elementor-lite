@@ -322,7 +322,7 @@ class Info_Box extends Base {
             $this->add_responsive_control(
                     'icon_size',
                     [
-                            'label' => __( 'Size', 'ultraaddons' ),
+                            'label' => __( 'Icon Size', 'ultraaddons' ),
                             'type' => Controls_Manager::SLIDER,
                             'range' => [
                                     'px' => [
