@@ -34,3 +34,13 @@ a.ua-info-box-wrapper {
         -ms-flex-align: end;
             align-items: flex-end; }
 }
+.ua-info-box-icon .elementor-icon i, 
+.ua-info-box-icon .elementor-icon svg{
+    width: 1em;
+    height: 1em;
+    position: relative;
+    display: block
+}
+.ua-info-box-icon .elementor-icon {
+    padding: 0.5em;
+}
