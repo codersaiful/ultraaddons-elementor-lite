@@ -103,10 +103,10 @@
 @media (min-width: 768px) {
     .ua_accordion_item .ua_accordion_inner {
         display: flex;
-        align-items: center;
+        /* align-items: center; */
     }
     .ua_accordion_item .ua_accordion_inner .ua_accordion_thumb {
-        flex: 31% 0 0;
+        /* flex: 31% 0 0; */
         display: flex;
     }
 }
