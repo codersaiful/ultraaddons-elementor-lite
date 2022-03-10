@@ -343,7 +343,7 @@ class List_Item extends Base{
                                     ],
                             ],
                             'selectors' => [
-                                    '{{WRAPPER}} .ua-list-item-wrapper .ua-list-items li i' => 'margin-right: {{SIZE}}{{UNIT}};',
+                                    '{{WRAPPER}} .ua-list-item-wrapper .list-item-title ' => 'margin-left: {{SIZE}}{{UNIT}};',
                             ],
                     ]
             );
@@ -372,9 +372,6 @@ class List_Item extends Base{
                         'name' => 'title_typography',
                         'label' => 'Title Typography',
                         'selector' => '{{WRAPPER}} .ua-list-item-wrapper .list-item-title',
-//                        'global' => [
-//                                'default' => Global_Typography::TYPOGRAPHY_ACCENT,
-//                        ],
 
                 ]
         );
@@ -385,9 +382,6 @@ class List_Item extends Base{
                         'name' => 'desc_typography',
                         'label' => 'Description Typography',
                         'selector' => '{{WRAPPER}} .ua-list-item-wrapper span.list-item-description',
-//                        'global' => [
-//                                'default' => Global_Typography::TYPOGRAPHY_ACCENT,
-//                        ],
 
                 ]
         );

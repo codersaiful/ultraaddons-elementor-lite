@@ -102,28 +102,6 @@ div.ua-list-temp-default .ua-list-items li i {
 .elementor-element.ua-list-col-1 .ua-list-items li{
     display: block;
 }
-
-/*.elementor-element.ua-list-col-2 .ua-list-items li{
-    width: 48%;
-}
-.elementor-element.ua-list-col-3 .ua-list-items li{
-    width: 30.3333%;
-}
-.elementor-element.ua-list-col-4 .ua-list-items li{
-    width: 23%;
-}*/
-
-
-.elementor-element.ua-list-temp-default{
-
-}
-.elementor-element.ua-list-temp-temp-2{
-
-}
-.elementor-element.ua-list-temp-temp-2{
-
-}
-
 .elementor-element.ua-list-temp-temp-3 .ua-list-items li i,
 .elementor-element.ua-list-temp-temp-2 .ua-list-items li i {
     width: 58px;
@@ -189,6 +167,9 @@ div.ua-list-temp-default .ua-list-items li i {
     font-size: 18px;
     font-weight: 600;
     line-height: 28px;
+}
+.list-item-inside{
+    padding:10px
 }
 @media (min-width: 37.5em){
     .ua-list-items li {
