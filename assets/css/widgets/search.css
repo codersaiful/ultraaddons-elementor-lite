@@ -67,3 +67,49 @@
 {
     background-color: #0c9e77;
 }
+
+.ua-form-one {
+  color: #555;
+  display: flex;
+  padding: 2px;
+  border: 1px solid currentColor;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+.ua-form-one input[type="search"] {
+  border: none;
+  background: transparent;
+  margin: 0;
+  font-size: 14px;
+  color: inherit;
+  border: 1px solid transparent;
+  border-radius: inherit;
+  height: auto;
+}
+
+.ua-form-one input[type="search"]::placeholder {
+  color: #bbb;
+}
+
+.ua-form-one button[type="submit"] {
+  overflow: hidden;
+  width: 41px;
+  padding: 0;
+  margin: 0;
+  border: 1px solid transparent;
+  border-radius: inherit;
+  cursor: pointer;
+  justify-content: center;
+}
+
+
+.ua-form-one button[type="submit"]:focus,
+.ua-form-one input[type="search"]:focus {
+  outline: none;
+}
+.ua-form-one .ua-form-one-text {
+  padding:0px 10px;
+  border: none;
+}
