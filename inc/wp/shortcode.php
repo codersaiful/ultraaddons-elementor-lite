@@ -24,7 +24,7 @@ class Shortcode{
         }
         
         (int) $select_post_id = $post_id;
-        if ( \Elementor\Plugin::instance()->db->is_built_with_elementor( $select_post_id ) ) {
+        if ( \Elementor\Plugin::instance()->documents->get( $select_post_id ) ) {
             return \Elementor\Plugin::instance()->frontend->get_builder_content_for_display( $select_post_id );
         }
         return;
