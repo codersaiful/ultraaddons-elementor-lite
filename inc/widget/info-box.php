@@ -674,6 +674,17 @@ class Info_Box extends Base {
                         ],
                 ]
         );
+        $this->add_responsive_control(
+                'description_padding',
+                [
+                        'label' => __( 'Padding', 'ultraaddons' ),
+                        'type' => Controls_Manager::DIMENSIONS,
+                        'size_units' => [ 'px'],
+                        'selectors' => [
+                                '{{WRAPPER}} .elementor-icon-box-description' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                ]
+        );
         $this->end_controls_tab();
         
         
@@ -902,6 +913,17 @@ class Info_Box extends Base {
                         'size_units' => [ 'px', '%' ],
                         'selectors' => [
                                 '{{WRAPPER}} .infobox-image' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                ]
+        );
+         $this->add_control(
+                'image_radius',
+                [
+                        'label' => __( 'Image Radius', 'ultraaddons' ),
+                        'type' => Controls_Manager::DIMENSIONS,
+                        'size_units' => [ 'px', '%' ],
+                        'selectors' => [
+                                '{{WRAPPER}} .infobox-image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                         ],
                 ]
         );
