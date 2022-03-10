@@ -74,7 +74,7 @@ class List_Item extends Base{
 
         ?>
     <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
-        <ul class="ua-list-items nu">
+        <ul class="ua-list-items">
             <?php
             $serial = 1;
             foreach( $items as $key => $item ){
@@ -275,7 +275,7 @@ class List_Item extends Base{
                             '100%'    => __( 'One Column', 'ultraaddons' ),
                             '48%'     => __( 'Two Column', 'ultraaddons' ),
                             '30.33%'  => __( 'Three Column', 'ultraaddons' ),
-                            '23%'     => __( 'Four Column', 'ultraaddons' ),
+                            '24.8%'     => __( 'Four Column', 'ultraaddons' ),
                     ],
                     'desktop_default' => '30.33%',
                     'tablet_default' => '48%',
