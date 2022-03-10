@@ -1,6 +1,6 @@
 .ua-list-items {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
     flex-wrap: wrap;
 }
@@ -47,22 +47,6 @@
 }
 
 
-
-.elementor-element.ua-list-temp-default{
-
-}
-.elementor-element.ua-list-temp-temp-2{
-
-}
-
-
-.ua-list-items {
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    flex-wrap: wrap;
-}
-
 .ua-list-items li {
     margin: 0 0 18px;
     position: relative;
@@ -102,6 +86,8 @@ div.ua-list-temp-default .ua-list-items li i {
 .elementor-element.ua-list-col-1 .ua-list-items li{
     display: block;
 }
+
+
 .elementor-element.ua-list-temp-temp-3 .ua-list-items li i,
 .elementor-element.ua-list-temp-temp-2 .ua-list-items li i {
     width: 58px;
@@ -156,6 +142,7 @@ div.ua-list-temp-default .ua-list-items li i {
     min-height: 70px;
     box-sizing: content-box;
     background: #FFFFFF;
+    flex: 1;
 }
 .elementor-element.ua-list-temp-temp-3 .ua-list-items li .list-item-inside{
     padding: 15px;
@@ -167,9 +154,6 @@ div.ua-list-temp-default .ua-list-items li i {
     font-size: 18px;
     font-weight: 600;
     line-height: 28px;
-}
-.list-item-inside{
-    padding:10px
 }
 @media (min-width: 37.5em){
     .ua-list-items li {
