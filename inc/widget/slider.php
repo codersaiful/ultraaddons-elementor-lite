@@ -133,12 +133,14 @@ class Slider extends Base{
          */
         protected function render() {
 
-                $settings = $this->get_settings_for_display();
+                $settings       = $this->get_settings_for_display();
+                $number         = ('yes'!= $settings['display_underline'] )  ? 'no-line' : ""  ;
         //
                 $this->add_render_attribute( 'wrapper', [
                         'class' => [
                             'ua-slider-wrapper',
                             'nav-type-' . $settings['navigation_type'],
+                            $number
                         ],
                 ] );
 
@@ -234,9 +236,6 @@ class Slider extends Base{
 			]
                 );
                 
-                
-                
-        
                 $repeater = new Repeater();
                 $repeater->add_control(
                             'slide_type',
@@ -300,9 +299,6 @@ class Slider extends Base{
                             ]
                     );
                 }
-                
-                
-                
                 
                 $repeater->add_control(
                         'image',
@@ -492,10 +488,9 @@ class Slider extends Base{
                                                 'icon' => 'eicon-text-align-right',
                                         ],
                                 ],
-                                'default' => 'center',
                                 'toggle' => true,
                                 'prefix_class' => 'elementor-align-',
-                                'default' => 'left',
+                                'default' => 'center',
                         ]
                 );
                 
@@ -713,7 +708,38 @@ class Slider extends Base{
 				],
 			]
 		);
-                
+                 $this->add_responsive_control(
+                        'button_padding',
+                        [
+                                'label' => __( 'Button Padding', 'ultraaddons' ),
+                                'type' => Controls_Manager::DIMENSIONS,
+                                'size_units' => [ 'px', '%' ],
+                                'selectors' => [
+                                        '{{WRAPPER}} .ua-slider-wrapper .ua-slider-item .slider-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                ],
+                                
+                        ]
+                );
+                $this->add_responsive_control(
+                        'button_radius',
+                        [
+                                'label' => __( 'Button Radius', 'ultraaddons' ),
+                                'type' => Controls_Manager::DIMENSIONS,
+                                'size_units' => [ 'px', '%' ],
+                                'selectors' => [
+                                        '{{WRAPPER}} .ua-slider-wrapper .ua-slider-item .slider-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                ],
+                                
+                        ]
+                );
+                $this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+                                'name' => 'button_shadow',
+                                'label' => esc_html__( 'Button Shadow', 'ultraaddons' ),
+                                'selector' => '{{WRAPPER}} .ua-slider-wrapper .ua-slider-item .slider-button',
+			]
+		);
                 $this->end_controls_tab();
                 
                 $this->start_controls_tab(
@@ -765,7 +791,7 @@ class Slider extends Base{
                 $this->add_control(
 			'pagination_options',
 			[
-				'label' => __( 'Pagination', 'ultraaddons' ),
+				'label' => __( 'Pagination/Navigation', 'ultraaddons' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -774,14 +800,14 @@ class Slider extends Base{
                 $this->add_control(
                         'navigation_icon_color',
                         [
-                                'label' => __( 'Navigation Icon Color', 'medilac' ),
+                                'label' => __( 'Navigation Icon Color', 'ultraaddons' ),
                                 'type' => Controls_Manager::COLOR,
-        //                        'default' => '#0FC392',
-                                'selectors' => [
-//                                        '{{WRAPPER}} .ua-slider-wrapper .owl-dots button.owl-dot' => 'background-color: {{VALUE}}',
-//                                        '{{WRAPPER}} .ua-slider-wrapper .owl-dots button.owl-dot.active' => 'border-color: {{VALUE}}; background-color: #FFF',
-                                        '{{WRAPPER}} .ua-slider-wrapper button.owl-prev' => 'color: {{VALUE}}',
-                                        '{{WRAPPER}} .ua-slider-wrapper button.owl-next' => 'color: {{VALUE}}'
+                                'condition'=>[
+                                        'navigation'=>['arrow','both']
+                                ],
+                                'selectors' => [   
+                                        '{{WRAPPER}} .ua-slider-wrapper button.owl-prev i' => 'color: {{VALUE}}',
+                                        '{{WRAPPER}} .ua-slider-wrapper button.owl-next i' => 'color: {{VALUE}}'
                                 ],
                         ]
                 );
@@ -789,45 +815,134 @@ class Slider extends Base{
                 $this->add_control(
                         'navigation_bg_color',
                         [
-                                'label' => __( 'Navigation BG Color', 'medilac' ),
+                                'label' => __( 'Navigation BG Color', 'ultraaddons' ),
                                 'type' => Controls_Manager::COLOR,
                                 'selectors' => [
                                         '{{WRAPPER}}.navigation-arrow-position-center .ua-slider-wrapper .owl-nav button' => 'background-color: {{VALUE}};border-color: {{VALUE}};',
                                         '{{WRAPPER}} .ua-slider-wrapper .owl-nav button.owl-next' => 'background-color: {{VALUE}};border-color: {{VALUE}};',
                                 ],
+                                 'condition'=>[
+                                        'navigation'=>['arrow','both']
+                                ],
                         ]
                 );
-                
+                $this->add_responsive_control(
+                        'navigation_radius',
+                        [
+                                'label' => __( 'Navigation Radius', 'ultraaddons' ),
+                                'type' => Controls_Manager::DIMENSIONS,
+                                'size_units' => [ 'px', '%' ],
+                                'selectors' => [
+                                        '{{WRAPPER}} .owl-nav button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                ],
+                                 'condition'=>[
+                                        'navigation'=>'arrow'
+                                ],
+                                
+                        ]
+                );
+                 $this->add_responsive_control(
+                        'navigation_padding',
+                        [
+                                'label' => __( 'Navigation Padding', 'ultraaddons' ),
+                                'type' => Controls_Manager::DIMENSIONS,
+                                'size_units' => [ 'px', '%' ],
+                                'selectors' => [
+                                        '{{WRAPPER}} .owl-nav button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                ],
+                                 'condition'=>[
+                                        'navigation'=>'arrow'
+                                ],
+                                
+                        ]
+                );
+                 $this->add_control(
+			'navigation_size',
+			[
+				'label' => __( 'Navigation Size', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+                                'size_units' => [ 'px'],
+                                'range' => [
+                                        'px' => [
+                                                'min' => 40,
+                                                'max' => 100,
+                                                'step' => 5,
+                                        ],
+				],
+				'default' => [
+					'size' => 50,
+					'unit' => 'px',
+				],
+				 'condition'=>[
+                                        'navigation'=>'arrow'
+                                ],
+                                'selectors' => [
+                                        '{{WRAPPER}} .ua-slider-wrapper .owl-nav button' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}'
+                                ],
+			]
+		);
                 
                 $this->add_control(
                         'dot_icon_color',
                         [
-                                'label' => __( 'Dots Icon Color', 'medilac' ),
+                                'label' => __( 'Dots Icon Color', 'ultraaddons' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#717171',
+                                 'condition'=>[
+                                        'navigation'=>['dots']
+                                ],
                                 'selectors' => [
                                         '{{WRAPPER}} .ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot' => 'background-color: {{VALUE}}',
 //                                        '{{WRAPPER}} .ua-slider-wrapper .owl-dots button.owl-dot.active' => 'border-color: {{VALUE}}; background-color: #FFF',
-                                ],
+                                ]
                         ]
                 );
 
                 $this->add_control(
-                        'dots_bg_color',
+                        'dots_bg_active_color',
                         [
-                                'label' => __( 'Active Dots Color', 'medilac' ),
+                                'label' => __( 'Active Dots/Number Color', 'ultraaddons' ),
                                 'type' => Controls_Manager::COLOR,
                                 'selectors' => [
-                                        '{{WRAPPER}} .ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot.active,
-{{WRAPPER}} .ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot:active,
-{{WRAPPER}} .ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot:focus,
-{{WRAPPER}} .ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot:hover' => 'background-color: {{VALUE}};',
-                                        '{{WRAPPER}} .ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot:hover:before,
-{{WRAPPER}} .ua-slider-main-wrapper .nav-type-dots .owl-dots button.owl-dot.active:before' => 'border-color: {{VALUE}};',
+                                        '{{WRAPPER}} .ua-slider-wrapper.ua-number-slider-wrapper .owl-dots button.owl-dot.active' => 'color: {{VALUE}};',
+                                        '{{WRAPPER}} .ua-slider-wrapper.ua-number-slider-wrapper .owl-dots button.owl-dot.active:after' => 'background: {{VALUE}};',
                                 ],
-                                'default' => '#0FC392',
+                                'default' => '#E60B55',
+                                'condition'=>[
+                                        'navigation'=>'dots'
+                                ],
                         ]
                 );
+                $this->add_control(
+                        'dots_bg_color',
+                        [
+                                'label' => __( 'Dots/Number Color', 'ultraaddons' ),
+                                'type' => Controls_Manager::COLOR,
+                                'selectors' => [
+                                        '{{WRAPPER}} .ua-slider-wrapper.ua-number-slider-wrapper .owl-dots button.owl-dot' => 'color: {{VALUE}};',
+                                        '{{WRAPPER}} .ua-slider-wrapper.ua-number-slider-wrapper .owl-dots button.owl-dot:after' => 'background: {{VALUE}};',
+                                ],
+                                'default' => '#0FC392',
+                                'condition'=>[
+                                        'navigation'=>'dots'
+                                ],
+                        ]
+                );
+                $this->add_control( 
+                       'display_underline',
+                        [
+                                'label' => __( 'Number Underline', 'ultraaddons' ),
+                               'type' => Controls_Manager::SWITCHER,
+                               'label_on' => __( 'Show', 'ultraaddons' ),
+				'label_off' => __( 'Hide', 'ultraaddons' ),
+                               'return_value' => 'yes',
+                                'default' => 'yes',
+                                'condition'=>[
+                                        'navigation' => ['dots','both'],
+                                        'navigation_type' => 'number',
+                                ],
+                        ]
+                 );
                 
                 $this->end_controls_section();
                 
@@ -838,62 +953,22 @@ class Slider extends Base{
             $this->start_controls_section(
                     'slider-background-effect',
                     [
-                        'label'     => esc_html__( 'Background Effect', 'ultraaddons' ),
+                        'label'     => esc_html__( 'Overlay Effect', 'ultraaddons' ),
                     ]
                 );
 
-           
-//                $this->add_group_control(
-//			Group_Control_Background::get_type(),
-//			[
-//                                'label' => __( 'Background Overlay', 'ultraaddons' ),
-//				'name' => 'slider_background_overlay',
-//				'types' => [ 'classic', 'gradient' ],
-////				'selector' => '{{WRAPPER}} div.elementor-element',
-//				'selector' => '{{WRAPPER}} .ua-slider-item .ultraaddons-slider-container-wrapper',
-//                                'separator' => 'before',
-////				'fields_options' => [
-////					'background' => [
-////						'frontend_available' => true,
-////					],
-////					'color' => [
-////						'dynamic' => [],
-////					],
-////					'color_b' => [
-////						'dynamic' => [],
-////					],
-////				],
-//			]
-//		);
-//                
-                $this->add_group_control(
-			Group_Control_Background::get_type(),
+                $this->add_control(
+			'background_overlay',
 			[
-				'name' => 'background_overlay',
-				'selector' => '{{WRAPPER}} .ua-slider-item .ultraaddons-slider-container-wrapper',
+				'label' => __( 'Backgrund Color', 'ultraaddons' ),
+				'type' => Controls_Manager::COLOR,
+                                'default' => '#EEFFF100',
+				'selectors' => [
+					'{{WRAPPER}} .ua-slider-item .ultraaddons-slider-container-wrapper' => 'background-color: {{VALUE}}',
+				],
 			]
 		);
 
-		$this->add_control(
-			'background_overlay_opacity',
-			[
-				'label' => __( 'Opacity', 'elementor' ),
-				'type' => Controls_Manager::SLIDER,
-				'default' => [
-					'size' => 1,
-				],
-				'range' => [
-					'px' => [
-						'max' => 1,
-						'step' => 0.01,
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}} .ua-slider-item .ultraaddons-slider-container-wrapper' => 'opacity: {{SIZE}};',
-				],
-				
-			]
-		);
 
 		$this->add_group_control(
 			Group_Control_Css_Filter::get_type(),
@@ -1049,7 +1124,7 @@ class Slider extends Base{
                 $this->add_control(
                         'next_prev_spacing',
                         [
-                                'label' => __( 'Navigation Button Spacing', 'elementor' ),
+                                'label' => __( 'Navigation Button Spacing', 'ultraaddons' ),
                                 'type' => Controls_Manager::SLIDER,
                                 'default' => [
                                         'size' => 50,
@@ -1061,9 +1136,10 @@ class Slider extends Base{
                                                 'step' => 1,
                                         ],
                                 ],
+                                
                                 'condition' => [
                                         'navigation_arrow_position' => ['center', 'top-right','top-left','bottom-right','bottom-left'],
-                                        //'navigation_type' => ['arrow'],
+                                        'navigation' => ['arrow','both'],
                                 ],
                                 'selectors' => [
                                         '{{WRAPPER}}.navigation-arrow-position-bottom-right .ua-slider-wrapper .owl-nav,{{WRAPPER}}.navigation-arrow-position-bottom-left .ua-slider-wrapper .owl-nav' => 'bottom: -{{SIZE}}{{UNIT}};',

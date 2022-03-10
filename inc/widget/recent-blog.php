@@ -382,11 +382,11 @@ class Recent_Blog extends Base{
                         'options' => [
                                 'classic' => [
                                         'title' => __( 'Classic', 'ultraaddons' ),
-                                        'icon' => 'fa fa-grip-horizontal',
+                                        'icon' => 'fa fas fa-grip-horizontal',
                                 ],
                                 'modern' => [
                                         'title' => __( 'Modern', 'ultraaddons' ),
-                                        'icon' => 'fa fa-th-large',
+                                        'icon' => 'fa fas fa-th-large',
                                 ],
 
                         ],
@@ -776,6 +776,31 @@ class Recent_Blog extends Base{
                         'selectors' => [
                                 '{{WRAPPER}} a.ua-recent-blog-permalink.ua-recent-blog-permalink-title,{{WRAPPER}} .recent-blog-info .para.ua-rb-ecerpt' => 'padding-top: {{SIZE}}{{UNIT}};',
                                 '{{WRAPPER}} .recent-blog-info .read-more' => 'margin-top: {{SIZE}}{{UNIT}};',
+                        ],
+                ]
+        );
+         $this->add_responsive_control(
+                'ua_rc_image_height',
+                [
+                        'label' => __( 'Image Custom Height', 'ultraaddons' ),
+                        'type' => Controls_Manager::SLIDER,
+                        'default' => [
+                                'size' => 0,
+                        ],
+                        'size_units' => [ 'px', '%' ],
+                        'range' => [
+                            'px' => [
+                                'min' => 0,
+                                'max' => 1000,
+                                'step' => 5,
+                            ],
+                            '%' => [
+                                'min' => 0,
+                                'max' => 100,
+                            ],
+                        ],
+                        'selectors' => [
+                                '{{WRAPPER}} .recent-blog-img img' => 'height: {{SIZE}}{{UNIT}};',
                         ],
                 ]
         );

@@ -358,9 +358,28 @@ class Post_Timeline extends Base{
 					'bottom' => '',
 					'left'   => '',
 				],
+				'separator'=> 'after',
 				'selectors'   => [
 					'{{WRAPPER}} .ua-pt-txt p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
+			]
+		);
+		$this->add_responsive_control(
+			'_ua_image_radius',
+			[
+				'label'       => esc_html__( 'Image Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-pt-thumbnail img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+                'separator'=> 'after'
 			]
 		);
 		

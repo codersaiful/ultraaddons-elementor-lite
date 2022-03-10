@@ -152,11 +152,25 @@ class Card extends Base{
 			]
 		);
 		$this->add_control(
+			'show_price',
+			[
+				'label' => esc_html__( 'Show Price & Wish', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'ultraaddons' ),
+				'label_off' => esc_html__( 'Hide', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		);
+		$this->add_control(
 			'_ua_card_price',
 			[
 				'label' => __( 'Price', 'ultraaddons' ),
 				'type' => Controls_Manager::TEXT,
 				'label_block' => false,
+				'condition'=>[
+					'show_price'=>'yes'
+				]
 			]
 		);
 		$this->add_control(
@@ -172,6 +186,9 @@ class Card extends Base{
 					'is_external' => true,
 					'nofollow' => true,
 				],
+				'condition'=>[
+					'show_price'=>'yes'
+				]
 			]
 		);
 		$this->add_control(
@@ -183,6 +200,9 @@ class Card extends Base{
 					'value' => 'fas fa-heart',
 					'library' => 'solid',
 				],
+				'condition'=>[
+					'show_price'=>'yes'
+				]
 			]
 		);
 		$this->end_controls_section();
@@ -275,15 +295,11 @@ class Card extends Base{
 					'right' => [
 						'title' => esc_html__( 'Right', 'ultraaddons' ),
 						'icon' => 'eicon-text-align-right',
-					],
-					'justify' => [
-						'title' => esc_html__( 'justify', 'ultraaddons' ),
-						'icon' => 'eicon-text-align-justify',
-					],
+					]
 				],
 				'default' => 'center',
 				'selectors' => [
-					'{{WRAPPER}} .ua-card-body ' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .ua-card-body' => 'text-align: {{VALUE}};',
 				],
 			]
 		);
@@ -367,7 +383,7 @@ class Card extends Base{
 		$this->add_control(
 			'_ua_card_image_height',
 			[
-				'label' => __( 'Image Height', 'ultraaddons' ),
+				'label' => __( 'Image Size', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px'],
 				'range' => [
@@ -382,7 +398,7 @@ class Card extends Base{
 					'size' => 200,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .ua-card-avatar' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .ua-card-avatar' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -663,6 +679,19 @@ class Card extends Base{
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
+		$this->start_controls_tabs(
+			'box_tabs'
+		);
+		/**
+		 * Normal tab
+		 */
+		$this->start_controls_tab(
+			'box_normal_tab',
+			[
+				'label' => __( 'Normal', 'ultraaddons' ),
+			]
+		);
+		
 		$this->add_group_control(
 			Group_Control_Background::get_type(),
 			[
@@ -702,12 +731,39 @@ class Card extends Base{
 			Group_Control_Border::get_type(),
 			[
 				'name' => '_ua_box_border',
-				'label' => __( 'Border', 'plugin-domain' ),
-				'selector' => '{{WRAPPER}} .ua-card',
+				'label' => __( 'Border', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-c .ua-card',
 			]
 		);
-		
-		
+		$this->end_controls_tab();
+		/**
+		 * Button Hover tab
+		 */
+		$this->start_controls_tab(
+			'box_hover_tab',
+			[
+				'label' => __( 'Hover', 'ultraaddons' ),
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'box_hover_background',
+				'label' => __( 'Box Background', 'ultraaddons' ),
+				'types' => [ 'classic', 'gradient'],
+				'selector' => '{{WRAPPER}} .ua-card:hover',
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'card_box_hover_shadow',
+				'label' => __( 'Box Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-card:hover',
+			]
+		);
+
+		$this->end_controls_tabs();
 	 $this->end_controls_section();
     }
 
@@ -720,6 +776,9 @@ class Card extends Base{
             [
                 'label'     => esc_html__( 'Price', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
+				'condition'=>[
+					'show_price'=>'yes'
+				],
             ]
         );
 		$this->add_group_control(
@@ -771,6 +830,9 @@ class Card extends Base{
             [
                 'label'     => esc_html__( 'Wish', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
+				'condition'=>[
+					'show_price'=>'yes'
+				],
             ]
         );
 		$this->add_control(
@@ -883,6 +945,7 @@ class Card extends Base{
 		$overflow	= ('yes'=== $settings['_ua_card_overflow']) ? 'overflow-visible' : 'overflow-hidden';
 		$col='';
 		$row='';
+		$align = $settings['_ua_card_text_alignment'];
 		if ( 'yes'==$settings['_ua_card_direction'] ) {
 			$col='card-col';
 			$row='card-row';
@@ -906,7 +969,7 @@ class Card extends Base{
 		$this->add_render_attribute(
 			'card_body_class',
 			[
-				'class' => 'ua-card-body ' . $col . ' ' . $justifyContent ,
+				'class' => 'ua-card-body ' . $col . ' ' . $justifyContent,
 			]
 		);
 		if ( ! empty( $settings['_ua_card_wish_link']['url'] ) ) {
@@ -914,7 +977,7 @@ class Card extends Base{
 		}
 		
 	?>
-	<div class="ua-c ua-card-content">
+	<div class="ua-c ua-card-content content-<?php echo $align;?>">
 		<div class="ua-card <?php echo $row; ?> <?php echo $overflow;?>">
 			<div <?php echo $this->get_render_attribute_string( 'card_avatar_class' );?>>
 			<?php 

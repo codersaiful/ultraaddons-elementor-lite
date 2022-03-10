@@ -77,6 +77,7 @@
 }
 
 .ua-slider-wrapper.ua-number-slider-wrapper .owl-dots button.owl-dot{
+    border: none;
     font-size: 22px;
     font-family: "Roboto",sans-serif;
     font-weight: 600;
@@ -202,9 +203,12 @@
     background: transparent;
     border-color: #fff;
     color: #fff;
-    height: 70px;
-    width: 70px;
     outline: none;
+    padding: 20px 30px;
+    line-height: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .ultraaddons-slider-container{
@@ -316,4 +320,14 @@
     .elementor-widget-medilac_teambox .elementor-widget-container{
         /*border-color:#0000000a;*/
     }
+}
+
+.ua-slider-wrapper.no-line .owl-dots button.owl-dot:after{
+    content:none
+}
+.ua-slider-main-wrapper .owl-dots {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    bottom: 0;
 }

@@ -18,6 +18,9 @@
 .ua-work-hours .ua-work-hours-row {
     padding: 10px 10px 10px 30px
 }
+.ua-work-hours .ua-work-hours-row.highlight  .ua-work-day,  .ua-work-hours .ua-work-hours-row.highlight .ua-work-timing {
+    color:crimson
+}
 .ua-work-hour-title{
 	margin:0 0 10px 0
 }

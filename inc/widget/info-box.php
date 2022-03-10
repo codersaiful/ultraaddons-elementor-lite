@@ -55,13 +55,11 @@ class Info_Box extends Base {
                                             'title' => __( 'Right', 'ultraaddons' ),
                                             'icon' => 'eicon-text-align-right',
                                     ],
-                                    'justify' => [
-                                            'title' => __( 'Justified', 'ultraaddons' ),
-                                            'icon' => 'eicon-text-align-justify',
-                                    ],
                             ],
-                            'prefix_class' => 'elementor-align-',
                             'default' => 'left',
+                            'selectors' => [
+                                    '{{WRAPPER}} .ua-info-box-wrapper' => 'text-align: {{VALUE}};',
+                            ],
                     ]
             );
             
@@ -246,15 +244,8 @@ class Info_Box extends Base {
                     [
                             'label' => __( 'Icon', 'ultraaddons' ),
                             'tab'   => Controls_Manager::TAB_STYLE,
-                            'conditions' => [
-                                    'relation' => 'or',
-                                    'terms' => [
-                                            [
-                                                    'name' => 'add_icon[value]',
-                                                    'operator' => '!=',
-                                                    'value' => '',
-                                            ],
-                                    ],
+                           'condition' => [
+                                    'icon_style' => 'icon',
                             ],
                     ]
             );
@@ -324,7 +315,7 @@ class Info_Box extends Base {
             $this->add_responsive_control(
                     'icon_size',
                     [
-                            'label' => __( 'Size', 'ultraaddons' ),
+                            'label' => __( 'Icon Size', 'ultraaddons' ),
                             'type' => Controls_Manager::SLIDER,
                             'range' => [
                                     'px' => [
@@ -683,6 +674,17 @@ class Info_Box extends Base {
                         ],
                 ]
         );
+        $this->add_responsive_control(
+                'description_padding',
+                [
+                        'label' => __( 'Padding', 'ultraaddons' ),
+                        'type' => Controls_Manager::DIMENSIONS,
+                        'size_units' => [ 'px'],
+                        'selectors' => [
+                                '{{WRAPPER}} .elementor-icon-box-description' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                ]
+        );
         $this->end_controls_tab();
         
         
@@ -814,59 +816,121 @@ class Info_Box extends Base {
      * email: bmrafiul.alam@gamil.
      * @since 1.1.0.11
      */
- protected function style_box(){
+        protected function style_box(){
 
-                $this->start_controls_section(
-                        'box_section',
+                        $this->start_controls_section(
+                                'box_section',
+                                [
+                                        'label' => esc_html__( 'Box', 'ultraaddons' ),
+                                        'tab' => Controls_Manager::TAB_STYLE,
+                                ]
+                        );
+                $this->add_responsive_control(
+                        'wrapper_link_padding',
                         [
-                                'label' => esc_html__( 'Box', 'ultraaddons' ),
-                                'tab' => Controls_Manager::TAB_STYLE,
+                                'label' => __( 'Padding', 'ultraaddons' ),
+                                'type' => Controls_Manager::DIMENSIONS,
+                                'description' => __( 'For setting wrapper link padding, Please set zero padding for main box from Advance Tab.', 'ultraaddons' ),
+                                'size_units' => [ 'px', '%' ],
+                                'default'   => [
+                                        'top' => 30,
+                                        'left' => 15,
+                                        'right' => 15,
+                                        'bottom' => 30,
+                                        'unit' => 'px',
+                                ],
+                                'selectors' => [
+                                        '{{WRAPPER}} .elementor-widget-container' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                ],
                         ]
                 );
-               $this->add_responsive_control(
-                    'wrapper_link_padding',
+                $this->add_responsive_control(
+                        'wrapper_border_radius',
+                        [
+                                'label' => __( 'Radius', 'ultraaddons' ),
+                                'type' => Controls_Manager::DIMENSIONS,
+                                'size_units' => [ 'px', '%' ],
+                                'selectors' => [
+                                        '{{WRAPPER}} .elementor-widget-container' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                ],
+                        ]
+                );
+        
+        
+                $this->add_group_control(
+                        Group_Control_Box_Shadow::get_type(),
+                        [
+                                'name' => 'box_shadow',
+                                'label' => esc_html__( 'Box Shadow', 'ultraaddons' ),
+                                'selector' => '{{WRAPPER}} .elementor-widget-container',
+                        ]
+                );
+
+
+                        $this->end_controls_section();
+        }
+         protected function style_image(){
+
+                $this->start_controls_section(
+                        'image_section',
+                        [
+                                'label' => esc_html__( 'Image', 'ultraaddons' ),
+                                'tab' => Controls_Manager::TAB_STYLE,
+                                'condition' => [
+                                    'icon_style' => 'image',
+                                ],
+                        ]
+                );
+                $this->add_responsive_control(
+                    'image_size',
                     [
-                            'label' => __( 'Padding', 'ultraaddons' ),
-                            'type' => Controls_Manager::DIMENSIONS,
-                            'description' => __( 'For setting wrapper link padding, Please set zero padding for main box from Advance Tab.', 'ultraaddons' ),
+                            'label' => __( 'Image Size', 'ultraaddons' ),
+                            'type' => Controls_Manager::SLIDER,
                             'size_units' => [ 'px', '%' ],
-                            'default'   => [
-                                    'top' => 30,
-                                    'left' => 15,
-                                    'right' => 15,
-                                    'bottom' => 30,
-                                    'unit' => 'px',
+                            'default' => [
+                                    'size' => 40,
+                            ],
+                            'range' => [
+                                    'px' => [
+                                            'min' => 0,
+                                            'max' => 1000,
+                                    ],
+                                    '%' => [
+                                            'min' => 0,
+                                            'max' => 100,
+                                    ],
                             ],
                             'selectors' => [
-                                    '{{WRAPPER}} .elementor-widget-container' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                    '{{WRAPPER}} .infobox-image' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                             ],
                     ]
-            );
-             $this->add_responsive_control(
-                    'wrapper_border_radius',
-                    [
-                            'label' => __( 'Radius', 'ultraaddons' ),
-                            'type' => Controls_Manager::DIMENSIONS,
-                            'size_units' => [ 'px', '%' ],
-                            'selectors' => [
-                                    '{{WRAPPER}} .elementor-widget-container' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                            ],
-                    ]
-            );
-       
-       
-        $this->add_group_control(
-                Group_Control_Box_Shadow::get_type(),
+                );
+                $this->add_control(
+                'image_margin',
                 [
-                        'name' => 'box_shadow',
-                        'label' => esc_html__( 'Box Shadow', 'ultraaddons' ),
-                        'selector' => '{{WRAPPER}} .elementor-widget-container',
+                        'label' => __( 'Image Margin', 'ultraaddons' ),
+                        'type' => Controls_Manager::DIMENSIONS,
+                        'size_units' => [ 'px', '%' ],
+                        'selectors' => [
+                                '{{WRAPPER}} .infobox-image' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                ]
+        );
+         $this->add_control(
+                'image_radius',
+                [
+                        'label' => __( 'Image Radius', 'ultraaddons' ),
+                        'type' => Controls_Manager::DIMENSIONS,
+                        'size_units' => [ 'px', '%' ],
+                        'selectors' => [
+                                '{{WRAPPER}} .infobox-image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
                 ]
         );
 
-
                 $this->end_controls_section();
         }
+        
     protected function style_count(){
 
         $this->start_controls_section(
@@ -1016,6 +1080,8 @@ class Info_Box extends Base {
         $this->content_infobox();
         
         $this->style_infobox();
+
+        $this->style_image();
         
         $this->style_content();
             
@@ -1061,7 +1127,8 @@ class Info_Box extends Base {
                 $this->add_render_attribute( 'i', 'aria-hidden', 'true' );
         }
         $svg_library_bool = false;
-        if($settings['add_icon']['library'] == 'svg'){
+        $add_icon= isset($settings['add_icon']['library'] );
+        if($add_icon == 'svg'){
             $svg_library_bool = true;
         }
         

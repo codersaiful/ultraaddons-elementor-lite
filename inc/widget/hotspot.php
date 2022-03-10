@@ -75,6 +75,32 @@ class Hotspot extends Base{
 
 			]
         );
+		$this->add_control(
+			'image_size',
+			[
+				'label' => esc_html__( 'Image Size', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 5,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => '%',
+					'size' => '',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .ua-hotspot--wrapper' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}',
+				],
+			]
+		);
         $repeater = new \Elementor\Repeater();
 
 		$repeater->add_control(

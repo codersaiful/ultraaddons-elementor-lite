@@ -38,7 +38,6 @@ class Counter extends Base{
             wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
             wp_enqueue_script( $name );
 
-
             //Naming Args For jQuery.Apear
             $name           = 'jquery-count-to';
             $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/jquery-count-to.js';
@@ -50,8 +49,6 @@ class Counter extends Base{
             wp_enqueue_script( $name );
 
         }
-
-        
 
         /**
          * Retrieve the list of scripts the skill bar widget depended on.
@@ -123,8 +120,6 @@ class Counter extends Base{
      * @access protected
      */
     protected function _register_controls() {
-        
-
         //For General Section
         $this->content_general_controls();
 
@@ -136,97 +131,10 @@ class Counter extends Base{
         //For Typography Section Style Tab
         $this->style_typography_controls();
 
-       
     }
     
-    /**
-     * Render oEmbed widget output on the frontend.
-     *
-     * Written in PHP and used to generate the final HTML.
-     *
-     * @since 1.0.0
-     * @access protected
-     */
-    protected function render() {
-
-        
-        $settings           = $this->get_settings_for_display();
-
-        $this->add_render_attribute( 'wrapper', 'class', 'ua-counter-wrapper' );
-
-        $items = $settings['counters'];
-        ?>
-    <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
-        
-        <div class="ua-counter-box">
-            <?php
-            $serial = 1;
-            foreach( $items as $key => $item ){
-                //icon label data_to data_from counter_bg_color counter_color speed
-                $_id = !empty( $item['_id'] ) ? $item['_id'] : false;
-                $label = !empty( $item['label'] ) ? $item['label'] : false;
-                $data_to = !empty( $item['data_to'] ) ? $item['data_to'] : 100;
-                $data_from = !empty( $item['data_from'] ) ? $item['data_from'] : 0;
-                $speed = !empty( $item['speed'] ) ? $item['speed'] : 1000;
-                $icon     = !empty( $item['icon']['value'] ) && is_string( $item['icon']['value'] ) ? $item['icon']['value'] : false;
-
-                //.ua-counter-item .ua-counter-item-inside
-            ?>
-            <div class="ua-counter-item list-item-<?php echo esc_attr( $serial ); ?> elementor-repeater-item-<?php echo esc_attr( $_id ); ?>">
-                <div class="ua-counter-item-inside">
-                    <?php if( $icon ){  ?>
-                    <div class="ua-counter-icon">
-                        <span>
-                        <i class="<?php echo esc_attr( $icon ); ?>"></i>
-                        </span>
-                    </div>
-                    <?php } ?> 
-                    <div class="ua-counter-text">
-                        <div class="ua-counter-number-area">
-                            <h6 class="ua-counter-value" 
-                                data-from="<?php echo esc_attr( $data_from ); ?>" 
-                                data-to="<?php echo esc_attr( $data_to ); ?>" 
-                                data-speed="<?php echo esc_attr( $speed ); ?>"
-                                >
-                                <span><?php echo esc_html( $data_to ); ?></span>
-                            </h6>
-                            <span class="ua-counter-pluss">+</span>
-                        </div>
-                        <?php if( $label ){  ?>
-                        <p class="me-counter-label"><?php echo esc_html( $label ); ?></p>
-                        <?php } ?>  
-                    </div>
-                </div>
-            </div>
-            <?php
-                
-                $serial++;
-            }
-            ?>
-
-
-        </div>
-        
-    </div>
-        <?php
-        
-    }
     
-    protected function content_template() {
-        /*
-        ?>
-        <#
-        view.addInlineEditingAttributes( 'avd_heading', 'none' );
-        view.addInlineEditingAttributes( 'avd_sub_heading', 'none' );
-        #>
-        
-        <div class="advance-heading-wrapper">
-            <span {{{ view.getRenderAttributeString( 'avd_sub_heading' ) }}}>{{{ settings.avd_sub_heading }}}</span>
-            <h4 class="heading-tag" {{{ view.getRenderAttributeString( 'avd_heading' ) }}}>{{{ settings.avd_heading }}}</h4>
-        </div>
-        <?php
-        */
-    }
+    
     
     /**
      * General Section for Content Controls
@@ -451,6 +359,7 @@ class Counter extends Base{
                 'default'       => 'center',
                 'selectors'     => [
                     '{{WRAPPER}} .ua-counter-text' => 'text-align: {{value}};',
+                    '{{WRAPPER}} .ua-counter-icon' => 'justify-content: {{value}};',
                 ],
             ]
         );
@@ -596,10 +505,6 @@ class Counter extends Base{
                         'name' => 'int_typography',
                         'label' => 'Number Typography',
                         'selector' => '{{WRAPPER}} .ua-counter-wrapper .ua-counter-value,{{WRAPPER}} .ua-counter-wrapper .ua-counter-pluss',
-//                        'global' => [
-//                                'default' => Global_Typography::TYPOGRAPHY_ACCENT,
-//                        ],
-
                 ]
         );
         
@@ -618,6 +523,79 @@ class Counter extends Base{
         
         
         $this->end_controls_section();
+    }
+
+    /**
+     * Render oEmbed widget output on the frontend.
+     *
+     * Written in PHP and used to generate the final HTML.
+     *
+     * @since 1.0.0
+     * @access protected
+     */
+    protected function render() {
+
+        
+        $settings           = $this->get_settings_for_display();
+
+        $this->add_render_attribute( 'wrapper', 'class', 'ua-counter-wrapper' );
+
+        $items = $settings['counters'];
+        ?>
+    <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
+        
+        <div class="ua-counter-box">
+            <?php
+            $serial = 1;
+            foreach( $items as $key => $item ){
+                //icon label data_to data_from counter_bg_color counter_color speed
+                $_id = !empty( $item['_id'] ) ? $item['_id'] : false;
+                $label = !empty( $item['label'] ) ? $item['label'] : false;
+                $data_to = !empty( $item['data_to'] ) ? $item['data_to'] : 100;
+                $data_from = !empty( $item['data_from'] ) ? $item['data_from'] : 0;
+                $speed = !empty( $item['speed'] ) ? $item['speed'] : 1000;
+                $icon     = !empty( $item['icon']['value'] ) && is_string( $item['icon']['value'] ) ? $item['icon']['value'] : false;
+
+                //.ua-counter-item .ua-counter-item-inside
+            ?>
+            <div class="ua-counter-item list-item-<?php echo esc_attr( $serial ); ?> elementor-repeater-item-<?php echo esc_attr( $_id ); ?>">
+                <div class="ua-counter-item-inside">
+                    <?php if( $icon ){  ?>
+                    <div class="ua-counter-icon icon-<?php echo $settings['title_align']; ?>">
+                        <span>
+                        <i class="<?php echo esc_attr( $icon ); ?>"></i>
+                        </span>
+                    </div>
+                    <?php } ?> 
+                    <div class="ua-counter-text">
+                        <div class="ua-counter-number-area">
+                            <h6 class="ua-counter-value" 
+                                data-from="<?php echo esc_attr( $data_from ); ?>" 
+                                data-to="<?php echo esc_attr( $data_to ); ?>" 
+                                data-speed="<?php echo esc_attr( $speed ); ?>"
+                                >
+                                <span><?php echo esc_html( $data_to ); ?></span>
+                            </h6>
+                            <span class="ua-counter-pluss">+</span>
+                        </div>
+                        <?php if( $label ){  ?>
+                        <p class="me-counter-label"><?php echo esc_html( $label ); ?></p>
+                        <?php } ?>  
+                    </div>
+                </div>
+            </div>
+            <?php
+                
+                $serial++;
+            }
+            ?>
+
+
+        </div>
+        
+    </div>
+        <?php
+        
     }
        
     
