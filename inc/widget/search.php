@@ -10,6 +10,7 @@ use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Background;
+use Elementor\Plugin;
 
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -47,6 +48,8 @@ class Search extends Base{
         //General Control of Style for menu
         $this->content_general_style();
         $this->content_button_style();
+        //Style Section for for two
+        $this->content_form_two_style();
     }
     
     
@@ -64,8 +67,6 @@ class Search extends Base{
                         'label' => __( 'General', 'ultraaddons' ),
                 ]
         );
-        
-        
         
         $this->add_control(
                 'type',
@@ -97,6 +98,9 @@ class Search extends Base{
                     [
                             'label' => __( 'Input', 'ultraaddons' ),
                             'tab' => Controls_Manager::TAB_STYLE,
+                            'condition'=>[
+                                    'type'=>['wp','wc','form_one']
+                            ]
                     ]
             );
             
@@ -213,6 +217,9 @@ class Search extends Base{
                     [
                             'label' => __( 'Button', 'ultraaddons' ),
                             'tab' => Controls_Manager::TAB_STYLE,
+                            'condition'=>[
+                                    'type'=>['wp','wc','form_one']
+                            ]
                     ]
             );
             $this->add_responsive_control(
@@ -325,6 +332,49 @@ class Search extends Base{
 
           $this->end_controls_section();
     }
+    /**
+     * Style form two
+     */
+     protected function content_form_two_style(){
+            $this->start_controls_section(
+                    'form_two_style',
+                    [
+                            'label' => __( 'Input', 'ultraaddons' ),
+                            'tab' => Controls_Manager::TAB_STYLE,
+                            'condition'=>[
+                                    'type'=>'form_two'
+                            ]
+                    ]
+            );
+          $this->add_group_control(
+                    Group_Control_Border::get_type(),
+                    [
+                            'name' => 'input_two_border',
+                            'label' => __( 'Border', 'ultraaddons' ),
+                            'selector' => '{{WRAPPER}} .search-box.ua-form-two',
+                    ]
+            );
+
+            $this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'input_two_typography',
+				'selector' => '{{WRAPPER}} .search-box.ua-form-two input[type=text]',
+			]
+		);
+                 $this->add_control(
+			'input_two_text_color',
+			[
+				'label' => __( 'Input Text Color', 'ultraaddons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .search-box.ua-form-two input[type=text], .search-box.ua-form-two input[type=text]::placeholder' => 'color: {{VALUE}};',
+				],
+			]
+		);
+            
+          $this->end_controls_section();
+    }
         
      
     /**
@@ -343,7 +393,16 @@ class Search extends Base{
         $type            	= $settings['type'];
         $button_position 	= $settings['btn_position'];
         $new_position 		= $button_position;
-       
+
+       $border_type = $settings['input_two_border_border'];
+       $border_width = $settings['input_two_border_width']['left'];
+       $border_color = $settings['input_two_border_color'];
+
+       echo '<style>
+       .search-box.ua-form-two button[type=reset]:before, .search-box.ua-form-two button[type=reset]:after{
+               border-left: ' . $border_type .' ' . $border_width . 'px '. $border_color .';
+       }
+       </style>';
         
         ?>
         <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
@@ -366,6 +425,12 @@ class Search extends Base{
         <?php
 
     }
+
+        protected function content_template() {
+                ?>
+                <?php
+        }
+
     public function search_form_template_one($type){
              global $new_position;
             ?>
@@ -384,7 +449,6 @@ class Search extends Base{
     <?php }
 	
 	public function search_form_template_two($type){
-             global $new_position;
             ?>
 		<form action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" class="search-box <?php echo $type;?>">
 		   <input type="text" name="s" value="<?php the_search_query(); ?>"  class="ua-form-one-text" placeholder=" <?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'ultraaddons' ); ?> "/>

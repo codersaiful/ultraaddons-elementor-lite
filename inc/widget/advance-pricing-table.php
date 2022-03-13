@@ -1172,7 +1172,14 @@ class Advance_Pricing_Table extends Base{
 							<?php
 							if('yes'=== $item['show_discount']):
 							?>
-							<div class="discount-percent"><?php echo round($percent);?>%</div>
+							<div class="discount-percent">
+								<?php
+								if( !empty($percent) ){
+									 echo round($percent);
+								}
+								?>%
+								
+							</div>
 							<?php endif;?>
 							
 							<div class="pricing-icon-wrapper">
@@ -1238,7 +1245,14 @@ class Advance_Pricing_Table extends Base{
 							<?php
 							if('yes'=== $item['show_discount']):
 							?>
-							<div class="discount-percent"><?php echo round($percent);?>%</div>
+							<div class="discount-percent">
+								<?php 
+								if( !empty($percent) ){
+									echo round($percent);
+								}
+								?>%
+								
+							</div>
 							<?php endif;?>
 
 							<div class="pricing-icon-wrapper">
