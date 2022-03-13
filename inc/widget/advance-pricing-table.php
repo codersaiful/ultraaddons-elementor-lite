@@ -1159,7 +1159,9 @@ class Advance_Pricing_Table extends Base{
 							$list_price 	=  $item['list_price'];
 							$selling_price 	=  $item['list_discount_price'];
 							$discount 		= $list_price - $selling_price;
+							if( $list_price != 0 ){
 							$percent 		= ($discount/$list_price) * 100;
+							}
 
 					?>
 					<div class="ua-col-3">
@@ -1233,7 +1235,10 @@ class Advance_Pricing_Table extends Base{
 							$list_price 	=  $item['list_price'];
 							$selling_price 	=  $item['list_discount_price'];
 							$discount 		= $list_price - $selling_price;
-							$percent 		= ($discount/$list_price) * 100;
+
+							if( $list_price != 0 ){
+								$percent 		= ($discount/$list_price) * 100;
+							}
 					?>
 					<div class="ua-col-3">
 						<div class="plan plan-<?php echo $count;?>">
