@@ -75,7 +75,8 @@ class Search extends Base{
                         'options'      => [
                             'wp'        => __( 'Default Search', 'ultraaddons' ),
                             'wc'        => __( 'WooCommerce Product Search', 'ultraaddons' ),
-                            'form-one'    => __( 'Search One', 'ultraaddons' ),
+                            'form_one'    => __( 'Search One', 'ultraaddons' ),
+                            'form_two'    => __( 'Search Two', 'ultraaddons' ),
                         ],
                         'default'      => 'wp',
                         'save_default' => true,
@@ -231,7 +232,7 @@ class Search extends Base{
                         ],
                         'default' => 'right',
                         'condition' => array(
-                                'type' => 'form-one',
+                                'type' => 'form_one',
                         ),
                 ]
 		);
@@ -339,9 +340,9 @@ class Search extends Base{
         $settings = $this->get_settings_for_display();
 
         $this->add_render_attribute( 'wrapper', 'id', 'ultraaddons-search-box-wrapper' );
-        $type            = $settings['type'];
-        $button_position = $settings['btn_position'];
-        $new_position = $button_position;
+        $type            	= $settings['type'];
+        $button_position 	= $settings['btn_position'];
+        $new_position 		= $button_position;
        
         
         ?>
@@ -352,8 +353,10 @@ class Search extends Base{
                     echo get_product_search_form();
                 }elseif( $type === 'wp' ){
                         echo get_search_form();
-                }elseif($type==='form-one'){
-                        echo $this->search_form_template_one();
+                }elseif($type ==='form_one'){
+                        echo $this->search_form_template_one($type ='ua-form-one');
+                }elseif($type ==='form_two'){
+                        echo $this->search_form_template_two($type ='ua-form-two');
                 }
                 ?>
             </div>
@@ -363,10 +366,10 @@ class Search extends Base{
         <?php
 
     }
-    public function search_form_template_one(){
+    public function search_form_template_one($type){
              global $new_position;
             ?>
-        <form action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" class="ua-form-one">
+        <form action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" class="<?php echo $type ?>">
                 <?php 
                 if($new_position==='left'):?>
                 <button type="submit"><i class="fa fa-search"></i></button>
@@ -378,6 +381,15 @@ class Search extends Base{
                 <button type="submit"><i class="fa fa-search"></i></button>
                 <?php endif;?>
         </form>
+    <?php }
+	
+	public function search_form_template_two($type){
+             global $new_position;
+            ?>
+		<form action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" class="search-box <?php echo $type;?>">
+		   <input type="text" name="s" value="<?php the_search_query(); ?>"  class="ua-form-one-text" placeholder=" <?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'ultraaddons' ); ?> "/>
+		  <button type="reset"></button>
+		</form>
     <?php }
     
 }
