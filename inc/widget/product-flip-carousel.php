@@ -887,6 +887,22 @@ $this->end_controls_section();
 					'selector' => '{{WRAPPER}} .ua-cart a.button',
 			]
         );
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'cart_btn_border',
+				'label' => esc_html__( 'Border', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-cart a.button',
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'cart_btn_shadow',
+				'label' => __( 'Nav Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-cart a.button',
+			]
+		);
 		$this->add_responsive_control(
 			'_cart_btn_radius',
 			[
@@ -950,6 +966,22 @@ $this->end_controls_section();
 				]
 			]
         );
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'cart_btn_hover_border',
+				'label' => esc_html__( 'Border', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-cart a.button:hover',
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'cart_btn_hover_shadow',
+				'label' => __( 'Nav Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-cart a.button:hover',
+			]
+		);
 	
 		$this->end_controls_tabs();
 		
