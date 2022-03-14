@@ -296,6 +296,15 @@ class Advance_Pricing_Table extends Base{
 				],
 			]
         );
+		$repeater->add_control(
+			'box_hover_color', [
+				'label' => __( 'Box Hover', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} {{CURRENT_ITEM}}.plan:hover' => 'background-color: {{VALUE}};',
+				],
+			]
+        );
         $this->add_control(
 			'list',
 			[
@@ -693,7 +702,14 @@ class Advance_Pricing_Table extends Base{
 				'default'=>''
 			]
         );
-			
+		$this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+				'label'     => esc_html__( 'Featured Typography', 'ultraaddons' ),
+                'name' => 'featured_typography',
+                'selector' => '{{WRAPPER}} .features-list',
+            ]
+        );
         $this->end_controls_section();
     }
 	protected function icon_style() {
