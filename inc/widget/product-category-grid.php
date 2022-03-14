@@ -344,7 +344,6 @@ class Product_Category_Grid extends Base{
     $settings  = $this->get_settings_for_display();
     $on_bottom = $settings['_ua_cat_bottom'];
     $reset = ($on_bottom == 'yes') ? 'reset' : '';
-    
     ?>
     <div class="ua-row">
     <?php 
@@ -368,14 +367,14 @@ class Product_Category_Grid extends Base{
         foreach ($categories as $cat):
             $thumb_id    = get_term_meta ( $cat->term_id, 'thumbnail_id', true );
             $img_src    = wp_get_attachment_url( $thumb_id );
-            if( $img_src):
+			$img_url = $img_src ? $img_src: wc_placeholder_img_src();
                 if($counter < $limit):
          ?>
         <div class="ua-col ua-col-4 mb-20">
             <div class="ua-cat-box">
                 <a href="<?php echo  get_term_link( $cat->slug, 'product_cat' );?>">
                 <div class="cat-image">
-                    <img src="<?php echo $img_src;?>">
+                    <img src="<?php echo $img_url;?>">
                 </div>
 
                 <div class="cat-name <?php echo $reset;?>">
@@ -389,7 +388,6 @@ class Product_Category_Grid extends Base{
         </div><!--col-->
         <?php
         $counter++;
-                endif;
             endif;
             endforeach;
         endif;
