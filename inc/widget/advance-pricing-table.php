@@ -272,7 +272,6 @@ class Advance_Pricing_Table extends Base{
 				'type' => Controls_Manager::TEXT,
 				'default' => esc_html__( 'Featured' , 'ultraaddons' ),
 				'label_block' => false,
-				'separator' => 'after',
 				'condition' =>[
 					'show_badge'=>'yes'
 				],
@@ -285,6 +284,7 @@ class Advance_Pricing_Table extends Base{
 				'label' => __( 'Box Background', 'ultraaddons' ),
 				'types' => [ 'classic', 'gradient'],
 				'selector' => '{{WRAPPER}} {{CURRENT_ITEM}}.plan',
+				'separator' => 'before',
 			]
 		);
 		$repeater->add_control(
@@ -303,6 +303,24 @@ class Advance_Pricing_Table extends Base{
 				'selectors' => [
 						'{{WRAPPER}} {{CURRENT_ITEM}}.plan:hover' => 'background-color: {{VALUE}};',
 				],
+			]
+        );
+		$repeater->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+				'label'     => esc_html__( 'Title Typography', 'ultraaddons' ),
+                'name' => 'title_typography',
+                'selector' => '{{WRAPPER}} {{CURRENT_ITEM}} .plan-title',
+            ]
+        );
+		$repeater->add_control(
+			'title_color', [
+				'label' => __( 'Title Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} {{CURRENT_ITEM}} .plan-title' => 'color: {{VALUE}};',
+				],
+				'default'=>''
 			]
         );
         $this->add_control(
@@ -464,6 +482,7 @@ class Advance_Pricing_Table extends Base{
 				'label' => __( 'Box Background', 'ultraaddons' ),
 				'types' => [ 'classic', 'gradient'],
 				'selector' => '{{WRAPPER}} {{CURRENT_ITEM}}.plan',
+				'separator' => 'before',
 			]
 		);
 		$repeater_b->add_control(
@@ -473,6 +492,33 @@ class Advance_Pricing_Table extends Base{
 				'selectors' => [
 						'{{WRAPPER}} {{CURRENT_ITEM}} .features-list' => 'color: {{VALUE}};',
 				],
+			]
+        );
+		$repeater_b->add_control(
+			'box_hover_color', [
+				'label' => __( 'Box Hover', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} {{CURRENT_ITEM}}.plan:hover' => 'background-color: {{VALUE}};',
+				],
+			]
+        );
+		$repeater_b->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+				'label'     => esc_html__( 'Title Typography', 'ultraaddons' ),
+                'name' => 'title_typography',
+                'selector' => '{{WRAPPER}} {{CURRENT_ITEM}} .plan-title',
+            ]
+        );
+		$repeater_b->add_control(
+			'title_color', [
+				'label' => __( 'Title Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} {{CURRENT_ITEM}} .plan-title' => 'color: {{VALUE}};',
+				],
+				'default'=>''
 			]
         );
         $this->add_control(
@@ -591,24 +637,7 @@ class Advance_Pricing_Table extends Base{
 			]
 		);
 	
-		$this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-				'label'     => esc_html__( 'Title Typography', 'ultraaddons' ),
-                'name' => 'title_typography',
-                'selector' => '{{WRAPPER}} .plan-title',
-            ]
-        );
-		$this->add_control(
-			'title_color', [
-				'label' => __( 'Title Color', 'ultraaddons' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-						'{{WRAPPER}} .plan-title' => 'color: {{VALUE}};',
-				],
-				'default'=>''
-			]
-        );
+	
 		$this->add_responsive_control(
 			'title_margin',
 			[
