@@ -358,7 +358,7 @@ $widgetsArray = [
     
     'Post_Masonry' => [
             'name'  => __( 'Advance Post Masonry', 'ultraaddons' ),
-            'is_pro'   => true,
+            'is_pro'   => false,
             'icon'      => 'eicon-posts-masonry',
             'cat'       => [
                 __( 'Advance', 'ultraaddons' ),

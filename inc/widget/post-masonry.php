@@ -154,7 +154,7 @@ class Post_Masonry extends Base{
                     '_skin_3' => 'Style 03',
                     '_skin_4' => 'Style 04',
                 ],
-                'default' => '_skin_1'
+                'default' => '_skin_2'
             ]
         );
 
