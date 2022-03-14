@@ -483,6 +483,23 @@ class Product_Flip extends Base{
 				],
 			]
 		);
+			$this->add_responsive_control(
+			'_ua_box_padding',
+			[
+				'label'       => esc_html__( 'Box Padding', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px', '%' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-product-flip>.front, .ua-product-flip>.back' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 		$this->add_group_control(
 			Group_Control_Box_Shadow::get_type(),
 			[
@@ -578,6 +595,22 @@ class Product_Flip extends Base{
 				],
 			]
 		);
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'cart_btn_border',
+				'label' => esc_html__( 'Border', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-cart a.button',
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'cart_btn_shadow',
+				'label' => __( 'Nav Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-cart a.button',
+			]
+		);
 		
 		$this->end_controls_tab();
 		/**
@@ -607,6 +640,22 @@ class Product_Flip extends Base{
 				]
 			]
         );
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'cart_btn_border_hover',
+				'label' => esc_html__( 'Border', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-cart a.button:hover',
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'cart_btn_hover_shadow',
+				'label' => __( 'Nav Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-cart a.button:hover',
+			]
+		);
 	
 		$this->end_controls_tabs();
 		
