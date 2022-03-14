@@ -272,11 +272,30 @@ class Advance_Pricing_Table extends Base{
 				'type' => Controls_Manager::TEXT,
 				'default' => esc_html__( 'Featured' , 'ultraaddons' ),
 				'label_block' => false,
+				'separator' => 'after',
 				'condition' =>[
 					'show_badge'=>'yes'
 				],
 				]
 		);
+		$repeater->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'box_background',
+				'label' => __( 'Box Background', 'ultraaddons' ),
+				'types' => [ 'classic', 'gradient'],
+				'selector' => '{{WRAPPER}} {{CURRENT_ITEM}}.plan',
+			]
+		);
+		$repeater->add_control(
+			'feature_text_color', [
+				'label' => __( 'Feature Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} {{CURRENT_ITEM}} .features-list' => 'color: {{VALUE}};',
+				],
+			]
+        );
         $this->add_control(
 			'list',
 			[
@@ -426,8 +445,27 @@ class Advance_Pricing_Table extends Base{
 				'label_off' => __( 'Hide', 'ultraaddons' ),
 				'return_value' => 'yes',
 				'default' => 'no',
+				'separator' => 'after'
 			]
 		);
+		$repeater_b->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'box_background',
+				'label' => __( 'Box Background', 'ultraaddons' ),
+				'types' => [ 'classic', 'gradient'],
+				'selector' => '{{WRAPPER}} {{CURRENT_ITEM}}.plan',
+			]
+		);
+		$repeater_b->add_control(
+			'feature_text_color', [
+				'label' => __( 'Feature Text Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} {{CURRENT_ITEM}} .features-list' => 'color: {{VALUE}};',
+				],
+			]
+        );
         $this->add_control(
 			'list_b',
 			[
@@ -655,6 +693,7 @@ class Advance_Pricing_Table extends Base{
 				'default'=>''
 			]
         );
+			
         $this->end_controls_section();
     }
 	protected function icon_style() {
@@ -718,15 +757,7 @@ class Advance_Pricing_Table extends Base{
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
-		$this->add_group_control(
-			Group_Control_Background::get_type(),
-			[
-				'name' => 'box_background',
-				'label' => __( 'Box Background', 'ultraaddons' ),
-				'types' => [ 'classic', 'gradient'],
-				'selector' => '{{WRAPPER}} .plan',
-			]
-		);
+		
 		$this->add_responsive_control(
 			'_ua_box_radius',
 			[
@@ -923,6 +954,14 @@ class Advance_Pricing_Table extends Base{
 				'selectors'   => [
 					'{{WRAPPER}} .ua-sign-up' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
 				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'btb_border',
+				'label' => __( 'Border', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-sign-up',
 			]
 		);
 		$this->end_controls_tab();
@@ -1126,24 +1165,24 @@ class Advance_Pricing_Table extends Base{
 	$settings           = $this->get_settings_for_display();
 	if(Plugin::$instance->editor->is_edit_mode()){
 		echo '<script>
-		UAAdvPriceTable();
+		advPricingTable();
 		</script>';
 	}
 	?>
 <section class="pricing-columns pricing-section">
 	<div class="toggle-wrap">
-		<label class="toggler toggler--is-active" id="filt-monthly"><?php echo $settings['toggle_a'] ?></label>
+		<label class="toggler filt-monthly toggler--is-active"><?php echo $settings['toggle_a'] ?></label>
 		<div class="toggle">
-			<input type="checkbox" id="switcher" class="check">
+			<input type="checkbox" class="check switcher">
 			<b class="b switch"></b>
 		</div>
-		<label class="toggler" id="filt-hourly"><?php echo $settings['toggle_b'] ?></label>
+		<label class="toggler filt-hourly"><?php echo $settings['toggle_b'] ?></label>
 	</div>
 	<p class="desc">
 		<?php echo $settings['price_desc']; ?>
 	</p>
 	<!--Part A-->
-	<div id="monthly" class="wrapper-full">
+	<div class="wrapper-full monthly">
 		<div id="pricing-chart-wrap">
 			<div class="pricing-chart">
 				<div id="smaller-plans" class="ua-row">
@@ -1165,7 +1204,7 @@ class Advance_Pricing_Table extends Base{
 
 					?>
 					<div class="ua-col-3">
-						<div class="plan plan-<?php echo $count;?>">
+						<div class="plan plan-<?php echo $count;?> <?php echo 'elementor-repeater-item-' . esc_attr( $item['_id'] ) . ''?>" >
 							<?php if($item['show_badge']=='yes'):?>
 							<div class="featured-badge">
 								<?php echo $item['badge_text'] ;?>
@@ -1205,7 +1244,7 @@ class Advance_Pricing_Table extends Base{
 								<span class="slash">/</span>
 								<span class="month"><?php echo $item['list_period'];?></span>
 							</div>
-							<?php echo $item['list_feature'];?>
+							<div class="features-list"><?php echo $item['list_feature'];?></div>
 							<a class="button ua-sign-up" href="<?php echo esc_url($url); ?>" <?php echo esc_attr($is_external);?> <?php echo esc_attr($nofollow);?>>
 								<?php echo $item['list_button'];?>
 							</a>
@@ -1219,7 +1258,7 @@ class Advance_Pricing_Table extends Base{
 	</div>
 
 	<!-- PART B-->
-	<div id="hourly" class="wrapper-full hide">
+	<div class="wrapper-full hourly hide">
 		<div id="pricing-chart-wrap">
 			<div class="pricing-chart">
 				<div class="ua-row">
@@ -1281,7 +1320,7 @@ class Advance_Pricing_Table extends Base{
 								<span class="slash">/</span>
 								<span class="month"><?php echo $item['list_period'];?></span>
 							</div>
-							<?php echo $item['list_feature'];?>
+							<div class="features-list"><?php echo $item['list_feature'];?></div>
 							<a class="button ua-sign-up" href="<?php echo esc_url($url); ?>" <?php echo esc_attr($is_external);?> <?php echo esc_attr($nofollow);?>>
 								<?php echo $item['list_button'];?>
 							</a>

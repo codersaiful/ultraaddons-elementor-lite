@@ -57,7 +57,7 @@
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 .pricing-section {
-  padding: 110px 0 150px 0;
+  padding: 0;
   float: left;
   width: 100%;
   text-align: center;
@@ -252,4 +252,3 @@ h2.plan-title {
     border-radius: 59%;
 }
 .elementor-widget-ultraaddons-advance-pricing-table .elementor-widget-container{min-height: 1px;}
-
