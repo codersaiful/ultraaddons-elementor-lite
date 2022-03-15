@@ -67,3 +67,120 @@
 {
     background-color: #0c9e77;
 }
+
+.ua-form-one {
+  color: #555;
+  display: flex;
+  padding: 2px;
+  border: 1px solid currentColor;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+.ua-form-one input[type="search"] {
+  border: none;
+  background: transparent;
+  margin: 0;
+  font-size: 14px;
+  color: inherit;
+  border: 1px solid transparent;
+  border-radius: inherit;
+  height: auto;
+}
+
+.ua-form-one input[type="search"]::placeholder {
+  color: #bbb;
+}
+
+.ua-form-one button[type="submit"] {
+  overflow: hidden;
+  width: 41px;
+  padding: 0;
+  margin: 0;
+  border: 1px solid transparent;
+  border-radius: inherit;
+  cursor: pointer;
+  justify-content: center;
+}
+
+
+.ua-form-one button[type="submit"]:focus,
+.ua-form-one input[type="search"]:focus {
+  outline: none;
+}
+.ua-form-one .ua-form-one-text {
+  padding:0px 10px;
+  border: none;
+}
+
+/*Search box 2 */
+.search-box.ua-form-two {
+  border: solid 5px black;
+  display: inline-block;
+  position: relative;
+  border-radius: 50px;
+}
+.search-box.ua-form-two input[type=text] {
+  font-family: Raleway, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  width: 50px;
+  height: 50px;
+  padding: 5px 40px 5px 10px;
+  border: none;
+  box-sizing: border-box;
+  border-radius: 50px;
+  transition: width 800ms cubic-bezier(0.68, -0.55, 0.27, 1.55) 150ms;
+}
+.search-box.ua-form-two input[type=text]:focus {
+  outline: none;
+}
+.search-box.ua-form-two input[type=text]:focus, 
+.search-box input[type=text]:not(:placeholder-shown) {
+  width: 500px;
+  transition: width 800ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+.search-box.ua-form-two input[type=text]:focus + button[type=reset], 
+.search-box.ua-form-two input[type=text]:not(:placeholder-shown) + button[type=reset] {
+  bottom: 13px;
+  right: 10px;
+  transition: bottom 150ms ease-out 800ms, right 150ms ease-out 800ms;
+}
+.search-box.ua-form-two input[type=text]:focus + button[type=reset]:after, 
+.search-box.ua-form-two input[type=text]:not(:placeholder-shown) + button[type=reset]:after {
+  top: 0;
+  right: 10px;
+  opacity: 1;
+  transition: top 150ms ease-out 950ms, right 150ms ease-out 950ms, opacity 150ms ease 950ms;
+}
+.search-box.ua-form-two button[type=reset] {
+  background-color: transparent;
+  width: 25px;
+  height: 25px;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: -13px;
+  right: -15px;
+  transition: bottom 150ms ease-out 150ms, right 150ms ease-out 150ms;
+}
+.search-box.ua-form-two button[type=reset]:before, 
+.search-box.ua-form-two button[type=reset]:after {
+  content: "";
+  height: 25px;
+  border-left: solid 5px black;
+  position: absolute;
+  transform: rotate(-45deg);
+}
+.search-box.ua-form-two button[type=reset]:after {
+  transform: rotate(45deg);
+  opacity: 0;
+  top: -20px;
+  right: -10px;
+  transition: top 150ms ease-out, right 150ms ease-out, opacity 150ms ease-out;
+}

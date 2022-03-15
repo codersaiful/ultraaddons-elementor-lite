@@ -431,7 +431,7 @@ class WC_Categories extends Base{
 
         }
         
-        private function get_shortcode() {
+    private function get_shortcode() {
 		$settings = $this->get_settings();
 
 		$attributes = [
@@ -472,12 +472,9 @@ class WC_Categories extends Base{
             echo do_shortcode( $this->get_shortcode() );
         }
         
-        protected function content_template() {
-        }
-        
-        public function render_plain_content() {
-		echo $this->get_shortcode();
-	}
+		public function render_plain_content() {
+			echo $this->get_shortcode();
+		}
     
         
         

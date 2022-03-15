@@ -210,7 +210,11 @@ font-size: 20px;
     margin-left: 5px;
     animation:bounceIn 1s;
 }
-
+.ua-product-flip .back-title, .ua-product-flip .front-title {
+    margin-bottom: 20px;
+    font-size: 26px;
+    line-height: 28px;
+}
 @media (min-width: 768px){
     .ua-pc .ua-pl-md-2, .ua-px-md-2 {
         padding-left: 0.5rem!important;

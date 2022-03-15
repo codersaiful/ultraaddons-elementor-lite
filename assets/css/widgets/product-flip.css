@@ -48,7 +48,7 @@
 .ua-product-flip {
 	position: relative;
 	display: inline-block;
-	margin-bottom: 1em;
+	margin-bottom: 1.6em;
 	width: 100%;
 }
 
@@ -70,7 +70,7 @@
 
 .ua-product-flip>.front .ua-desc,
 .ua-product-flip>.back .ua-desc{
-	font-size: 1.5rem;
+	font-size: 1.1rem;
 	color: #999;
 	margin-bottom: 30px;
 }
@@ -93,6 +93,7 @@
 .ua-product-flip .front-title {
 	margin-bottom: 20px;
 	font-size: 26px;
+	line-height: 28px;
 }
 
 .ua-product-flip .front:before {

@@ -1,34 +1,40 @@
-function UAAdvPriceTable() {
-	var e = document.getElementById("filt-monthly"),
-		d = document.getElementById("filt-hourly"),
-		t = document.getElementById("switcher"),
-		m = document.getElementById("monthly"),
-		y = document.getElementById("hourly");
+;(function ($, w) {
+'use strict';
+
+function advPricingTable(){
+	var e = $(".filt-monthly"),
+		d = $(".filt-hourly"),
+		t = $(".switcher"),
+		m = $(".monthly"),
+		y = $(".hourly");
+	
 	if (e) {
-		e.addEventListener("click", function () {
+		e.click(function () {
 			t.checked = false;
-			e.classList.add("toggler--is-active");
-			d.classList.remove("toggler--is-active");
-			m.classList.remove("hide");
-			y.classList.add("hide");
+			e.addClass("toggler--is-active");
+			d.removeClass("toggler--is-active");
+			m.removeClass("hide");
+			y.addClass("hide");
 		});
 	}
 	if (d) {
-		d.addEventListener("click", function () {
+		d.click(function ()  {
 			t.checked = true;
-			d.classList.add("toggler--is-active");
-			e.classList.remove("toggler--is-active");
-			m.classList.add("hide");
-			y.classList.remove("hide");
+			d.addClass("toggler--is-active");
+			e.removeClass("toggler--is-active");
+			m.addClass("hide");
+			y.removeClass("hide");
 		});
 	}
 	if (t) {
-		t.addEventListener("click", function () {
-			d.classList.toggle("toggler--is-active");
-			e.classList.toggle("toggler--is-active");
-			m.classList.toggle("hide");
-			y.classList.toggle("hide");
+		t.click(function ()  {
+			d.toggleClass("toggler--is-active");
+			e.toggleClass("toggler--is-active");
+			m.toggleClass("hide");
+			y.toggleClass("hide");
 		})
 	}
-}
-UAAdvPriceTable();
+	}
+
+	advPricingTable();
+} (jQuery, window));
