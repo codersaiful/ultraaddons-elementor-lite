@@ -123,7 +123,7 @@ class Product_Category_Grid extends Base{
         $this->add_responsive_control(
 			'_cat_image_radius',
 			[
-				'label'       => esc_html__( 'Image Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Box Radius', 'ultraaddons' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [

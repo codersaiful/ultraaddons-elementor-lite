@@ -149,6 +149,7 @@ class List_Item extends Base{
                 'title',
                 [
                         'label'     => __( 'Title', 'ultraaddons' ),
+                        'label_block'=> true,	
                         'type'      => Controls_Manager::TEXT,
                         'default'   => __( 'List Item', 'ultraaddons' ),
                 ]
@@ -159,7 +160,7 @@ class List_Item extends Base{
                 'description',
                 [
                         'label'     => __( 'Description', 'ultraaddons' ),
-                        'type'      => Controls_Manager::TEXT,
+                        'type'      => Controls_Manager::TEXTAREA,
                         'default'   => __( 'Description of List Item', 'ultraaddons' ),
                 ]
         );
@@ -296,6 +297,21 @@ class List_Item extends Base{
                 ],
                 'default'   => '#ffffff',
             ]
+        );
+         $this->add_responsive_control(
+                'title_margin',
+                [
+                        'label' => __( 'Title Margin', 'ultraaddons' ),
+                        'type' => Controls_Manager::DIMENSIONS,
+                        'size_units' => [ 'px' ],
+                        'default'   => [
+                                'size' => 10,
+                                'unit' => 'px',
+                        ],
+                        'selectors' => [
+                                '{{WRAPPER}} .list-item-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                ]
         );
         
         $this->add_control(
