@@ -659,7 +659,7 @@ class Product_Grid extends Base{
 				'label' => __( 'Hover Background', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .add-card.button:before, .add-card.button:hover' => 'background: {{VALUE}};',
+						'{{WRAPPER}} .add-card.button:hover' => 'background: {{VALUE}};',
 				],
 			]
         );
