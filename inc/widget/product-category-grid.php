@@ -64,7 +64,7 @@ class Product_Category_Grid extends Base{
 				'min' => 1,
 				'max' => 300,
 				'step' => 1,
-				'default' => 6,
+				'default' => 4,
 			]
 		);
 		

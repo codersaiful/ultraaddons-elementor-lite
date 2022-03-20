@@ -27,14 +27,14 @@ class Formidable_Form extends Base{
         
         protected function _register_controls() {
                 $this->register_content_controls();
-                if( class_exists( 'FrmForm' ) ){
-                        $this->container_style();
-                        $this->title_style();
-                        $this->label_style();
-                        $this->input_style();
-                        $this->button_style();
-                        $this->placeholder_style();
-                }
+
+                $this->container_style();
+                $this->title_style();
+                $this->label_style();
+                $this->input_style();
+                $this->button_style();
+                $this->placeholder_style();
+                
         }
 
         protected function register_content_controls(){
@@ -77,6 +77,9 @@ class Formidable_Form extends Base{
                         [
                             'label'                 => __('Form Container', 'ultraaddons'),
                             'tab'                   => Controls_Manager::TAB_STYLE,
+                            'condition' => [
+                                'form_id!' => '',
+                                ]
                         ]
                     );
                 
@@ -180,6 +183,9 @@ class Formidable_Form extends Base{
                         [
                                 'label' =>  __( 'Title & Description', 'ultraaddons' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
+                                'condition' => [
+                                        'form_id!' => '',
+                                ]
                         ]
                 );
                 $this->add_control(
@@ -300,6 +306,9 @@ class Formidable_Form extends Base{
                         [
                                 'label' =>  __( 'Label & Sub Label', 'ultraaddons' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
+                                'condition' => [
+                                        'form_id!' => '',
+                                ]
                         ]
                 );
                 $this->add_group_control(
@@ -374,6 +383,9 @@ class Formidable_Form extends Base{
                         [
                                 'label' =>  __( 'Input & Textarea', 'ultraaddons' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
+                                'condition' => [
+                                        'form_id!' => '',
+                                ]
                         ]
                 );
                 $this->add_control(
@@ -458,6 +470,9 @@ class Formidable_Form extends Base{
                         [
                                 'label' =>  __( 'Submit Button', 'ultraaddons' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
+                                'condition' => [
+                                        'form_id!' => '',
+                                ]
                         ]
                 );
                 $this->add_control(
@@ -584,6 +599,9 @@ class Formidable_Form extends Base{
                         [
                                 'label' =>  __( 'Placeholder', 'ultraaddons' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
+                                'condition' => [
+                                        'form_id!' => '',
+                                ]
                         ]
                 );
                 $this->add_control(
