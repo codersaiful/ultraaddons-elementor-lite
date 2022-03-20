@@ -401,3 +401,6 @@ ul.wpuf-form li .wpuf-fields .wpuf-name-field-wrap.format-first-last .wpuf-name-
 .overflow-visible{
     overflow: visible !important;
 }
+.nf-form-content {
+    max-width: 100%;
+}

@@ -224,6 +224,48 @@ class Ninja_Forms extends Base{
                 ],
             ]
             );
+             $this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'input_border',
+				'label' => esc_html__( 'Button Border', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} 
+                                .ua-ninja-form .nf-form-content input[type="text"],
+                                .ua-ninja-form .nf-form-content input[type=email], 
+                                .ua-ninja-form .nf-form-content input[type="number"], 
+                                .ua-ninja-form .nf-form-content input[type="range"], 
+                                .ua-ninja-form .nf-form-content input[type="password"],
+                                .ua-ninja-form .nf-form-content input[type="search"], 
+                                .ua-ninja-form .nf-form-content input[type="tel"], 
+                                .ua-ninja-form .nf-form-content input[type="url"],
+                                .ua-ninja-form .nf-form-content input[type="time"], 
+                                .ua-ninja-form .nf-form-content input[type="week"], 
+                                .ua-ninja-form .nf-form-content input[type="datetime"], 
+                                .ua-ninja-form .nf-form-content input[type="date"],  
+                                .ua-ninja-form .nf-form-content textarea',
+			]
+		);
+                $this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'input_shadow',
+				'label' => __( 'Input Shadow', 'ultraaddons' ),
+				'selector' => '
+                        {{WRAPPER}} .ua-ninja-form .nf-form-content input[type="text"],
+                        .ua-ninja-form .nf-form-content input[type=email], 
+                        .ua-ninja-form .nf-form-content input[type="number"], 
+                        .ua-ninja-form .nf-form-content input[type="range"], 
+                        .ua-ninja-form .nf-form-content input[type="password"],
+                        .ua-ninja-form .nf-form-content input[type="search"], 
+                        .ua-ninja-form .nf-form-content input[type="tel"], 
+                        .ua-ninja-form .nf-form-content input[type="url"],
+                        .ua-ninja-form .nf-form-content input[type="time"], 
+                        .ua-ninja-form .nf-form-content input[type="week"], 
+                        .ua-ninja-form .nf-form-content input[type="datetime"], 
+                        .ua-ninja-form .nf-form-content input[type="date"],  
+                        .ua-ninja-form .nf-form-content textarea',
+			]
+		);
             $this->add_group_control(
             Group_Control_Typography::get_type(),
                         [
