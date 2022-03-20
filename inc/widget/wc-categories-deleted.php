@@ -380,7 +380,7 @@ class WC_Categories extends Base{
 					'default' => Global_Colors::COLOR_PRIMARY,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .woocommerce .woocommerce-loop-category__title' => 'color: {{VALUE}}',
+					'{{WRAPPER}} ul.products.products-shop-grid li.product-category.product>a h2.woocommerce-loop-category__title' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -392,7 +392,7 @@ class WC_Categories extends Base{
 				'global'    => [
 					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
 				],
-				'selector' => '{{WRAPPER}} .woocommerce .woocommerce-loop-category__title',
+				'selector' => '{{WRAPPER}} ul.products.products-shop-grid li.product-category.product>a h2.woocommerce-loop-category__title',
 			]
 		);
 

@@ -554,44 +554,67 @@ class Product_Grid extends Base{
 				'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
-		$this->start_controls_tabs(
-			'cart_btn_normal_tabs'
+		
+        $this->start_controls_tabs(
+			'style_tabs'
 		);
-		/**
-		 * Normal tab
-		 */
-		$this->start_controls_tab(
-			'style_normal_tab',
+        //Normal Tab
+        $this->start_controls_tab(
+			'btn_normal_tab',
 			[
-				'label' => __( 'Normal', 'ultraaddons' ),
+				'label' => esc_html__( 'Normal', 'ultraaddons' ),
 			]
 		);
-	
-		$this->add_control(
-			'_ua_cart_btn_color', [
+        $this->add_control(
+			'_btn_bg_color', [
+				'label' => __( 'Button Background', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .add-card.button' => 'background-color: {{VALUE}};',
+				],
+			]
+        );
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => '_btn_border',
+				'label' => esc_html__( 'Button Border', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .add-card.button',
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'btn_shadow',
+				'label' => esc_html__( 'Button Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .add-card.button',
+			]
+		);
+        $this->add_control(
+			'_btn_text_color', [
 				'label' => __( 'Button Text Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .ua-product-links .add-card' => 'color: {{VALUE}};',
-				]
+						'{{WRAPPER}} .add-card.button' => 'color: {{VALUE}};',
+				],
 			]
         );
-	
-		$this->add_group_control(
+       
+        $this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-					'name' => 'cart_btn_typography',
+					'name' => 'btn_typography',
 					'label' => 'Button Typography',
-					'selector' => '{{WRAPPER}} .ua-product-links .add-card',
+					'selector' => '{{WRAPPER}} .add-card.button',
+
 			]
         );
-	
-		$this->add_responsive_control(
-			'_cart_btn_padding',
+        $this->add_responsive_control(
+			'_btn_padding',
 			[
 				'label'       => esc_html__( 'Button Padding', 'ultraaddons' ),
 				'type'        => Controls_Manager::DIMENSIONS,
-				'size_units'  => [ 'px', '%' ],
+				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
 					'top'    => '',
 					'right'  => '',
@@ -599,28 +622,55 @@ class Product_Grid extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .ua-product-bottom-details' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .add-card.button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
-		
-		$this->end_controls_tab();
-		/**
-		 * Button Hover tab
-		 */
-		$this->start_controls_tab(
-			'cart_btn_hover_tabs',
+        $this->add_responsive_control(
+			'_btn_radius',
 			[
-				'label' => __( 'Hover', 'ultraaddons' ),
+				'label'       => esc_html__( 'Button Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ '%', 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'separator' =>'after',
+				'selectors'   => [
+					'{{WRAPPER}} .add-card.button, .add-card.button:before' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
 			]
 		);
+
+        $this->end_controls_tab();
+
+        //Hover Tab
+        $this->start_controls_tab(
+			'btn_hover_tab',
+			[
+				'label' => esc_html__( 'Hover', 'ultraaddonse' ),
+			]
+		);
+        $this->add_control(
+			'_btn_bg_hover_bg', [
+				'label' => __( 'Hover Background', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .add-card.button:hover' => 'background: {{VALUE}};',
+				],
+			]
+        );
 		$this->add_control(
-			'_ua_cart_btn_hover_color', [
+			'_btn_text_hover_color', [
 				'label' => __( 'Button Text Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}}  .ua-product-links .add-card:hover' => 'color: {{VALUE}};',
-				]
+						'{{WRAPPER}} .add-card.button:hover' => 'color: {{VALUE}};',
+				],
+				'default' =>'#fff'
 			]
         );
 	
