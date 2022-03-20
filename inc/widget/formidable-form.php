@@ -410,6 +410,22 @@ class Formidable_Form extends Base{
 				],
 			]
 		);
+                $this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'input_border',
+				'label' => esc_html__( 'Button Border', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-form .frm_fields_container .frm_form_field input, .ua-form .frm_fields_container .frm_form_field textarea',
+			]
+		);
+                $this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'input_shadow',
+				'label' => __( 'Input Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-form .frm_fields_container .frm_form_field input, .ua-form .frm_fields_container .frm_form_field textarea',
+			]
+		);
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
