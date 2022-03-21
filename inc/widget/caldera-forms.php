@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class Caldera_Forms extends Base{
        
         public function get_keywords() {
-                return [ 'ultraaddons', 'appointment', 'contact', 'quote', 'form', 'schedule', 'formidable', 'contact form', ];
+                return [ 'ultraaddons', 'ua', 'appointment', 'contact', 'quote', 'form', 'schedule', 'formidable', 'contact form', ];
         }
 
          /**
@@ -560,6 +560,13 @@ class Caldera_Forms extends Base{
                                 ],
                         ]
                 );
+                  $this->add_group_control(
+                        Group_Control_Border::get_type(),
+                        [
+                            'name' => 'ua_btn_hover_border',
+                            'selector' => '{{WRAPPER}} .ua-form.caldera-forms .btn:hover',
+                        ]
+                    );
                 $this->add_control(
                         '_btn_text_hover_color', [
                                 'label' => __( 'Button Text Color', 'ultraaddons' ),
@@ -643,6 +650,9 @@ class Caldera_Forms extends Base{
             .layout-grid .col-xs-4 {
                 width: 33.33333333333333%;
             }
+            .caldera-grid .col-sm-6 {
+                width: 50%;
+            }
             .caldera-grid .col-sm-1, .caldera-grid .col-sm-10, .caldera-grid .col-sm-11, .caldera-grid .col-sm-12, .caldera-grid .col-sm-2, .caldera-grid .col-sm-3, .caldera-grid .col-sm-4, .caldera-grid .col-sm-5, .caldera-grid .col-sm-6, .caldera-grid .col-sm-7, .caldera-grid .col-sm-8, .caldera-grid .col-sm-9 {
                 float: left;
             }
@@ -651,6 +661,25 @@ class Caldera_Forms extends Base{
                 padding-left: 7.5px;
                 padding-right: 7.5px;
             }
+            .caldera-grid .form-group, .cf-color-picker .form-group {
+                margin-bottom: 15px;
+                }
+                .caldera-grid .form-control {
+                width: 100%;
+                height: 34px;
+                padding: 6px 12px;
+                background-color: #fff;
+                border: 1px solid #ccc;
+                border-radius: 2px;
+                -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+                box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+                }
+                .caldera-grid .form-control, .caldera-grid output {
+                font-size: 14px;
+                line-height: 1.42857143;
+                color: #555;
+                display: block;
+                }
             </style>';
         }
         }
