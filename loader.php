@@ -107,8 +107,8 @@ class Loader {
         add_action( 'elementor/elements/categories_registered', [ $this, 'add_categories' ] );
 
         //Add Style for Widgets
-        add_action( 'elementor/frontend/after_enqueue_styles', [ $this, 'widget_enqueue' ],90 );
-        add_action( 'wp_enqueue_scripts', [ $this, 'wp_enqueue_style' ],99 );   
+        add_action( 'elementor/frontend/after_enqueue_styles', [ $this, 'widget_enqueue' ] );
+        add_action( 'wp_enqueue_scripts', [ $this, 'wp_enqueue_style' ] );   
         add_action( 'wp_enqueue_scripts', [ $this, 'wp_enqueue_scripts' ] );
     
         /**
@@ -374,8 +374,8 @@ class Loader {
          * 
          * @since 1.0.0.0
          */
-        wp_register_style( 'ua-widgets-style', ULTRA_ADDONS_ASSETS . 'css/widgets.css' );
-        wp_enqueue_style( 'ua-widgets-style' );
+        wp_register_style( 'ultraaddons-widgets-style', ULTRA_ADDONS_ASSETS . 'css/widgets.css' );
+        wp_enqueue_style( 'ultraaddons-widgets-style' );
                 
         //Animate CSS Load
         wp_enqueue_style('animate', ULTRA_ADDONS_ASSETS . 'vendor/css/animate.min.css' );

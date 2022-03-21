@@ -571,6 +571,13 @@ class Formidable_Form extends Base{
                                 ],
                         ]
                 );
+                 $this->add_group_control(
+                        Group_Control_Border::get_type(),
+                        [
+                            'name' => '_btn_border',
+                            'selector' => '{{WRAPPER}} .ua-form .frm_fields_container .frm_button_submit',
+                        ]
+                );
                 $this->add_control(
                         '_btn_text_color', [
                                 'label' => __( 'Button Text Color', 'ultraaddons' ),
@@ -641,6 +648,13 @@ class Formidable_Form extends Base{
                                 'selectors' => [
                                         '{{WRAPPER}} .ua-form .frm_fields_container .frm_button_submit:hover' => 'background: {{VALUE}};',
                                 ],
+                        ]
+                );
+                 $this->add_group_control(
+                        Group_Control_Border::get_type(),
+                        [
+                            'name' => '_btn_hover_border',
+                            'selector' => '{{WRAPPER}} .ua-form .frm_fields_container .frm_button_submit:hover',
                         ]
                 );
                 $this->add_control(
