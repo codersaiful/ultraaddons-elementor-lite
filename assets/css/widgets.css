@@ -407,3 +407,13 @@ ul.wpuf-form li .wpuf-fields .wpuf-name-field-wrap.format-first-last .wpuf-name-
 #form-preview-stage.wpuf-style ul.wpuf-form .wpuf-fields input[type=text], .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type=text], #form-preview-stage.wpuf-style ul.wpuf-form .wpuf-fields input[type=password], .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type=password], #form-preview-stage.wpuf-style ul.wpuf-form .wpuf-fields input[type=email], .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type=email], #form-preview-stage.wpuf-style ul.wpuf-form .wpuf-fields input[type=url], .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type=url], #form-preview-stage.wpuf-style ul.wpuf-form .wpuf-fields input[type=number], .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type=number], #form-preview-stage.wpuf-style ul.wpuf-form .wpuf-fields input[type=tel], .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type=tel], #form-preview-stage.wpuf-style ul.wpuf-form .wpuf-fields textarea, .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields textarea{
     width:100%
 }
+#form-preview-stage.wpuf-style ul.wpuf-form .wpuf-submit input[type=submit], .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-submit input[type=submit] {
+    box-shadow: none;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: none;
+}
+/*Caldera Forms Tweak*/
+.intl-tel-input {
+    width: 100%;
+}
