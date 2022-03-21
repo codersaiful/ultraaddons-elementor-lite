@@ -94,8 +94,8 @@ class WP_Forms extends Base{
                                 [
                                         'label' => esc_html__( 'Show Form Description', 'ultraaddons' ),
                                         'type' => Controls_Manager::SWITCHER,
-                                        'label_on' => esc_html__( 'Show', 'your-plugin' ),
-                                        'label_off' => esc_html__( 'Hide', 'your-plugin' ),
+                                        'label_on' => esc_html__( 'Show', 'ultraaddons' ),
+                                        'label_off' => esc_html__( 'Hide', 'ultraaddons' ),
                                         'return_value' => 'yes',
                                         'default' => 'yes',
                                 ]
@@ -297,10 +297,7 @@ class WP_Forms extends Base{
                         [
                                 'name' => 'desc_typography',
                                 'label' => 'Description Typography',
-                                'selector' => '{{WRAPPER}} .ua-form .frm_description p',
-                                'global' => [
-                                        'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
-                                ],
+                                'selector' => '{{WRAPPER}} .ua-form .ua-wpform-description',
         
                         ]
                 );
@@ -312,7 +309,7 @@ class WP_Forms extends Base{
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#333',
                                 'selectors' => [
-                                        '{{WRAPPER}} .ua-form .frm_description p' => 'color: {{VALUE}};',
+                                        '{{WRAPPER}} .ua-form .ua-wpform-description' => 'color: {{VALUE}};',
                                 ],
                         ]
                 );
@@ -329,7 +326,7 @@ class WP_Forms extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .ua-form .frm_description p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ua-form .ua-wpform-description' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
                                 'separator'=>'after',
 			]

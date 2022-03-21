@@ -1,0 +1,53 @@
+.elementor-element.elementor-widget-empty{
+                background-color: transparent;
+            }
+            .eicon-facebook-comments:before{
+                content:none
+            }
+            .caldera-grid .row {
+                margin-left: -7.5px;
+                margin-right: -7.5px;
+                max-width: 100%;
+            }
+            .caldera-grid .col-sm-4 {
+                width: 33.33333333%;
+            }
+            .caldera-grid .col-sm-12 {
+                width: 100%;
+            }
+            .layout-grid .col-xs-4 {
+                width: 33.33333333333333%;
+            }
+            .caldera-grid .col-sm-6 {
+                width: 50%;
+            }
+            .caldera-grid .col-sm-1, .caldera-grid .col-sm-10, .caldera-grid .col-sm-11, .caldera-grid .col-sm-12, .caldera-grid .col-sm-2, .caldera-grid .col-sm-3, .caldera-grid .col-sm-4, .caldera-grid .col-sm-5, .caldera-grid .col-sm-6, .caldera-grid .col-sm-7, .caldera-grid .col-sm-8, .caldera-grid .col-sm-9 {
+                float: left;
+            }
+            .caldera-grid .col-lg-1, .caldera-grid .col-lg-10, .caldera-grid .col-lg-11, .caldera-grid .col-lg-12, .caldera-grid .col-lg-2, .caldera-grid .col-lg-3, .caldera-grid .col-lg-4, .caldera-grid .col-lg-5, .caldera-grid .col-lg-6, .caldera-grid .col-lg-7, .caldera-grid .col-lg-8, .caldera-grid .col-lg-9, .caldera-grid .col-md-1, .caldera-grid .col-md-10, .caldera-grid .col-md-11, .caldera-grid .col-md-12, .caldera-grid .col-md-2, .caldera-grid .col-md-3, .caldera-grid .col-md-4, .caldera-grid .col-md-5, .caldera-grid .col-md-6, .caldera-grid .col-md-7, .caldera-grid .col-md-8, .caldera-grid .col-md-9, .caldera-grid .col-sm-1, .caldera-grid .col-sm-10, .caldera-grid .col-sm-11, .caldera-grid .col-sm-12, .caldera-grid .col-sm-2, .caldera-grid .col-sm-3, .caldera-grid .col-sm-4, .caldera-grid .col-sm-5, .caldera-grid .col-sm-6, .caldera-grid .col-sm-7, .caldera-grid .col-sm-8, .caldera-grid .col-sm-9, .caldera-grid .col-xs-1, .caldera-grid .col-xs-10, .caldera-grid .col-xs-11, .caldera-grid .col-xs-12, .caldera-grid .col-xs-2, .caldera-grid .col-xs-3, .caldera-grid .col-xs-4, .caldera-grid .col-xs-5, .caldera-grid .col-xs-6, .caldera-grid .col-xs-7, .caldera-grid .col-xs-8, .caldera-grid .col-xs-9 {
+                position: relative;
+                padding-left: 7.5px;
+                padding-right: 7.5px;
+            }
+            .caldera-grid .form-group, .cf-color-picker .form-group {
+                margin-bottom: 15px;
+                }
+                .caldera-grid .form-control {
+                width: 100%;
+                height: 34px;
+                padding: 6px 12px;
+                background-color: #fff;
+                border: 1px solid #ccc;
+                border-radius: 2px;
+                -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+                box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+                -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+                -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+                transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+                }
+                .caldera-grid .form-control, .caldera-grid output {
+                font-size: 14px;
+                line-height: 1.42857143;
+                color: #555;
+                display: block;
+                }

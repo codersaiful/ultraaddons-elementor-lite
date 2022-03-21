@@ -6,3 +6,6 @@
 .ua-form .frm_style_formidable-style.with_frm_style .frm_submit button{
     box-shadow: unset;
 }
+.with_frm_style legend + h3, .with_frm_style h3.frm_form_title{
+    margin-bottom: 0;
+}

@@ -395,7 +395,17 @@ class Formidable_Form extends Base{
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
-					'{{WRAPPER}} .ua-form .frm_fields_container .frm_form_field input, .ua-form .frm_fields_container .frm_form_field textarea' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				'{{WRAPPER}} .with_frm_style input[type=text], 
+                                {{WRAPPER}} .with_frm_style input[type=password], 
+                                {{WRAPPER}} .with_frm_style input[type=email], 
+                                {{WRAPPER}} .with_frm_style input[type=number], 
+                                {{WRAPPER}} .with_frm_style input[type=url], 
+                                {{WRAPPER}} .with_frm_style input[type=tel],
+                                {{WRAPPER}} .with_frm_style input[type=file], 
+                                {{WRAPPER}} .with_frm_style input[type=search], 
+                                {{WRAPPER}} .with_frm_style select, 
+                                {{WRAPPER}} .with_frm_style .frm-card-element.StripeElement, 
+                                {{WRAPPER}} .with_frm_style .frm_form_field textarea' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -406,7 +416,17 @@ class Formidable_Form extends Base{
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .ua-form .frm_fields_container .frm_form_field input, .ua-form .frm_fields_container .frm_form_field textarea' => 'background-color: {{VALUE}};',
+				'{{WRAPPER}} .with_frm_style input[type=text], 
+                                {{WRAPPER}} .with_frm_style input[type=password], 
+                                {{WRAPPER}} .with_frm_style input[type=email], 
+                                {{WRAPPER}} .with_frm_style input[type=number], 
+                                {{WRAPPER}} .with_frm_style input[type=url], 
+                                {{WRAPPER}} .with_frm_style input[type=tel],
+                                {{WRAPPER}} .with_frm_style input[type=file], 
+                                {{WRAPPER}} .with_frm_style input[type=search], 
+                                {{WRAPPER}} .with_frm_style select, 
+                                {{WRAPPER}} .with_frm_style .frm-card-element.StripeElement, 
+                                {{WRAPPER}} .with_frm_style .frm_form_field textarea' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -415,7 +435,17 @@ class Formidable_Form extends Base{
 			[
 				'name' => 'input_border',
 				'label' => esc_html__( 'Button Border', 'ultraaddons' ),
-				'selector' => '{{WRAPPER}} .ua-form .frm_fields_container .frm_form_field input, .ua-form .frm_fields_container .frm_form_field textarea',
+				'selector' => '{{WRAPPER}} .with_frm_style input[type=text], 
+                                {{WRAPPER}} .with_frm_style input[type=password], 
+                                {{WRAPPER}} .with_frm_style input[type=email], 
+                                {{WRAPPER}} .with_frm_style input[type=number], 
+                                {{WRAPPER}} .with_frm_style input[type=url], 
+                                {{WRAPPER}} .with_frm_style input[type=tel],
+                                {{WRAPPER}} .with_frm_style input[type=file], 
+                                {{WRAPPER}} .with_frm_style input[type=search], 
+                                {{WRAPPER}} .with_frm_style select, 
+                                {{WRAPPER}} .with_frm_style .frm-card-element.StripeElement, 
+                                {{WRAPPER}} .with_frm_style .frm_form_field textarea',
 			]
 		);
                 $this->add_group_control(
@@ -423,14 +453,34 @@ class Formidable_Form extends Base{
 			[
 				'name' => 'input_shadow',
 				'label' => __( 'Input Shadow', 'ultraaddons' ),
-				'selector' => '{{WRAPPER}} .ua-form .frm_fields_container .frm_form_field input, .ua-form .frm_fields_container .frm_form_field textarea',
+				'selector' => '{{WRAPPER}} .with_frm_style input[type=text], 
+                                {{WRAPPER}} .with_frm_style input[type=password], 
+                                {{WRAPPER}} .with_frm_style input[type=email], 
+                                {{WRAPPER}} .with_frm_style input[type=number], 
+                                {{WRAPPER}} .with_frm_style input[type=url], 
+                                {{WRAPPER}} .with_frm_style input[type=tel],
+                                {{WRAPPER}} .with_frm_style input[type=file], 
+                                {{WRAPPER}} .with_frm_style input[type=search], 
+                                {{WRAPPER}} .with_frm_style select, 
+                                {{WRAPPER}} .with_frm_style .frm-card-element.StripeElement, 
+                                {{WRAPPER}} .with_frm_style .frm_form_field textarea',
 			]
 		);
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'input_typography',
-				'selector' => '{{WRAPPER}} .ua-form .frm_fields_container .frm_form_field input, .ua-form .frm_fields_container .frm_form_field textarea',
+				'selector' => '{{WRAPPER}} .with_frm_style input[type=text], 
+                                {{WRAPPER}} .with_frm_style input[type=password], 
+                                {{WRAPPER}} .with_frm_style input[type=email], 
+                                {{WRAPPER}} .with_frm_style input[type=number], 
+                                {{WRAPPER}} .with_frm_style input[type=url], 
+                                {{WRAPPER}} .with_frm_style input[type=tel],
+                                {{WRAPPER}} .with_frm_style input[type=file], 
+                                {{WRAPPER}} .with_frm_style input[type=search], 
+                                {{WRAPPER}} .with_frm_style select, 
+                                {{WRAPPER}} .with_frm_style .frm-card-element.StripeElement, 
+                                {{WRAPPER}} .with_frm_style .frm_form_field textarea',
 			]
 		);
 		$this->add_control(
@@ -450,7 +500,7 @@ class Formidable_Form extends Base{
 					'size' => 40,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .ua-form .frm_fields_container .frm_form_field input' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .with_frm_style input[type=text], .with_frm_style input[type=password], .with_frm_style input[type=email], .with_frm_style input[type=number], .with_frm_style input[type=url], .with_frm_style input[type=tel], .with_frm_style input[type=file], .with_frm_style input[type=search], .with_frm_style select, .with_frm_style .frm-card-element.StripeElement' => 'height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
