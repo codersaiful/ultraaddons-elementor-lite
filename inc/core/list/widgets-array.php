@@ -130,7 +130,7 @@ $widgetsArray = [
     ],
     
     
-    'Product_Slider' => [
+    /* 'Product_Slider' => [
             'name'  => __( 'Product Slider', 'ultraaddons' ),
             'is_pro'   => true,
             'icon'      => 'uicon-product-slider',
@@ -139,7 +139,7 @@ $widgetsArray = [
                 __( 'Pro', 'ultraaddons' ),
             ],
     ],
-    
+     */
     
     //New Added
     'Hero_Banner' => [
