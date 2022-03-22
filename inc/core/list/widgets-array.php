@@ -74,7 +74,7 @@ $widgetsArray = [
             ],
     ],
     
-    'Cart' => [
+    'WC_Mini_Cart' => [
             'name'  => __( 'WC Mini Cart', 'ultraaddons' ),
             'is_pro'   => false,
             'icon'      => 'uicon-cart',
