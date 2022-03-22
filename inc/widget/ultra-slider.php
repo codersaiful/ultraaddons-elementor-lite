@@ -17,7 +17,7 @@ use Elementor\Group_Control_Css_Filter;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Slider extends Base{
+class Ultra_Slider extends Base{
         use \UltraAddons\Traits\Animate_Style;
         
         

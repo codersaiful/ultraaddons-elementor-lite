@@ -15,7 +15,7 @@ use Elementor\Group_Control_Background;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Menu extends Base{
+class Navigation extends Base{
     
     /**
      * Set your widget name keyword

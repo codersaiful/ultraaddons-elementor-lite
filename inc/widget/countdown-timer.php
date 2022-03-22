@@ -15,7 +15,7 @@ use Elementor\Repeater;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Count_Down_Timer extends Base{
+class Countdown_Timer extends Base{
     
     /**
      * Get your widget name

@@ -14,7 +14,7 @@ use Elementor\Repeater;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Counter extends Base{
+class Counter_Box extends Base{
     
         /**
          * mainly to call specific depends

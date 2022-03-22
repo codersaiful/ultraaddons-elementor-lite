@@ -18,7 +18,7 @@ use Elementor\Icons_Manager;
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 
-class Post_Masonry extends Base{
+class Advance_Post_Masonry extends Base{
     
     public function __construct($data = [], $args = null) {
         parent::__construct($data, $args);

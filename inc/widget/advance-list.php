@@ -15,7 +15,7 @@ use Elementor\Repeater;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class List_Item extends Base{
+class Advance_List extends Base{
     
     /**
      * Get your widget name

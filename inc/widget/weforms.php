@@ -11,7 +11,7 @@ use Elementor\Group_Control_Box_Shadow;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class We_Forms extends Base{
+class WeForms extends Base{
        
         public function get_keywords() {
                 return [ 'ultraaddons','ua', 'appointment', 'contact', 'quote', 'form', 'schedule','we', 'weforms', 'contact form' ];

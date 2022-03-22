@@ -12,7 +12,7 @@ use Elementor\Repeater;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Price_Table extends Base {
+class Pricing_Table extends Base {
     
     use \UltraAddons\Traits\Button_Helper;
     
