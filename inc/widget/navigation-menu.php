@@ -20,7 +20,7 @@ class Navigation_Menu extends Base{
     public function __construct($data = [], $args = null) {
         parent::__construct($data, $args);
 
-        //Naming of Args for Skill Chart
+        //Naming of Args for Navbar
         $name           = 'navbarjs';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/navbar/js/navbar.min.js';
         $dependency     =  ['jquery'];//['jquery'];
@@ -30,7 +30,7 @@ class Navigation_Menu extends Base{
         wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
         wp_enqueue_script( $name );
 
-         //CSS file News Ticker
+         //CSS file Navabr
          wp_register_style('navbarjs', ULTRA_ADDONS_ASSETS . 'vendor/navbar/css/navbar.css' );
          wp_enqueue_style('navbarjs' );
     }

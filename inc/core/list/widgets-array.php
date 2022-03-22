@@ -83,8 +83,8 @@ $widgetsArray = [
             ],
     ],
     
-    'Navigation' => [
-            'name'  => __( 'Navigation', 'ultraaddons' ),
+    'Menu' => [
+            'name'  => __( 'Menu', 'ultraaddons' ),
             'is_pro'   => false,
             'icon'      => 'eicon-nav-menu',
             'cat'       => [
