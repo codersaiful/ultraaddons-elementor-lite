@@ -119,7 +119,7 @@ $widgetsArray = [
             ],
     ],
     
-    'Animated_Header' => [
+    /* 'Animated_Header' => [
             'name'  => __( 'Animated Header', 'ultraaddons' ),
             'is_pro'   => true,
             'icon'      => 'uicon-animated-header',
@@ -130,7 +130,7 @@ $widgetsArray = [
     ],
     
     
-    /* 'Product_Slider' => [
+    'Product_Slider' => [
             'name'  => __( 'Product Slider', 'ultraaddons' ),
             'is_pro'   => true,
             'icon'      => 'uicon-product-slider',
@@ -528,7 +528,7 @@ $widgetsArray = [
             __( 'WooCommerce', 'ultraaddons' ),
         ],
     ],*/
-    
+
     'Hotspot'=> [
         'name'      => __( 'Hotspot', 'ultraaddons' ),
         'is_pro'   => true,
