@@ -518,7 +518,7 @@ $widgetsArray = [
         'cat'       => [
             __( 'General', 'ultraaddons' ),
         ],
-    ], */
+    ], 
     
     'Product_Tabs'=> [
         'name'      => __( 'Product Tabs', 'ultraaddons' ),
@@ -527,7 +527,8 @@ $widgetsArray = [
         'cat'       => [
             __( 'WooCommerce', 'ultraaddons' ),
         ],
-    ],
+    ],*/
+    
     'Hotspot'=> [
         'name'      => __( 'Hotspot', 'ultraaddons' ),
         'is_pro'   => true,
