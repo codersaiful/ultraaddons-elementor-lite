@@ -369,6 +369,14 @@ class Button extends Base{
 				],
 			]
         );
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => '_btn_border',
+				'label' => esc_html__( 'Button Border', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-btn',
+			]
+		);
 		$this->add_control(
 			'_btn_text_hover_color', [
 				'label' => __( 'Button Text Color', 'ultraaddons' ),
