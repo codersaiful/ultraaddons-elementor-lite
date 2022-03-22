@@ -47,7 +47,7 @@ $widgetsArray = [
             ],
     ],
     
-    'List_Item' => [
+    'Advance_List' => [
             'name'  => __( 'Advance List', 'ultraaddons' ),
             'is_pro'   => false,
             'icon'      => 'uicon-list',
@@ -56,7 +56,7 @@ $widgetsArray = [
             ],
     ],
     
-    'Count_Down_Timer' => [
+    'Countdown_Timer' => [
             'name'  => __( 'Countdown Timer', 'ultraaddons' ),
             'is_pro'   => false,
             'icon'      => 'uicon-clock',//eicon-countdown
@@ -65,7 +65,7 @@ $widgetsArray = [
             ],
     ],
     
-    'Slider' => [
+    'Ultra_Slider' => [
             'name'  => __( 'Ultra Slider', 'ultraaddons' ),
             'is_pro'   => false,
             'icon'      => 'uicon-slider',
@@ -83,7 +83,7 @@ $widgetsArray = [
             ],
     ],
     
-    'Menu' => [
+    'Navigation' => [
             'name'  => __( 'Navigation', 'ultraaddons' ),
             'is_pro'   => false,
             'icon'      => 'eicon-nav-menu',
@@ -92,7 +92,7 @@ $widgetsArray = [
             ],
     ],
     
-    'Search' => [
+    'Search_Box' => [
             'name'  => __( 'Search Box', 'ultraaddons' ),
             'is_pro'   => false,
             'icon'      => 'eicon-nav-menu',
@@ -101,7 +101,7 @@ $widgetsArray = [
             ],
     ],
     
-    'Price_Table' => [
+    'Pricing_Table' => [
             'name'  => __( 'Pricing Table', 'ultraaddons' ),
             'is_pro'   => false,
             'icon'      => 'uicon-pricing-table',
@@ -209,7 +209,7 @@ $widgetsArray = [
     ],
     
     
-    'WC_Categories' => [
+    'Product_Categories' => [
             'name'  => __( 'Product Categories', 'ultraaddons' ),
             'is_pro'   => true,
             'icon'      => 'uicon-icon-box',
@@ -220,7 +220,7 @@ $widgetsArray = [
     
     
     //New Added Widgets
-    'Counter' => [
+    'Counter_Box' => [
             'name'  => __( 'Counter Box', 'ultraaddons' ),
             'is_pro'   => false,
             'icon'      => 'uicon-counter',
@@ -356,7 +356,7 @@ $widgetsArray = [
             ],
     ],
     
-    'Post_Masonry' => [
+    'Advance_Post_Masonry' => [
             'name'  => __( 'Advance Post Masonry', 'ultraaddons' ),
             'is_pro'   => false,
             'icon'      => 'eicon-posts-masonry',
@@ -440,7 +440,7 @@ $widgetsArray = [
             ],
     ],
 	'Skill_Chart' => [
-            'name'  => __( 'Skil Chart', 'ultraaddons' ),
+            'name'  => __( 'Skill Chart', 'ultraaddons' ),
             'is_pro'   => false,
             'icon'      => 'eicon-site-identity',
             'cat'       => [
@@ -625,7 +625,7 @@ $widgetsArray = [
             __( 'Forms', 'ultraaddons' ),
         ],
     ],
-    'WP_Forms'=> [
+    'WPForms'=> [
         'name'      => __( 'WPForms', 'ultraaddons' ),
         'is_pro'   => true,
         'icon'      => 'ua-icon-wpforms',
@@ -649,7 +649,7 @@ $widgetsArray = [
             __( 'Forms', 'ultraaddons' ),
         ],
     ],
-    'We_Forms'=> [
+    'WeForms'=> [
         'name'      => __( 'WeForms', 'ultraaddons' ),
         'is_pro'   => false,
         'icon'      => 'ua-icon-weforms',
@@ -659,7 +659,7 @@ $widgetsArray = [
     ],
 
     'Advance_Pricing_Table'=> [
-        'name'      => __( 'Advnce Pricing Table', 'ultraaddons' ),
+        'name'      => __( 'Advance Pricing Table', 'ultraaddons' ),
         'is_pro'   => true,
         'icon'      => 'eicon-price-table',
         'cat'       => [
