@@ -541,6 +541,37 @@ class Formidable_Form extends Base{
                                 ]
                         ]
                 );
+                $this->add_responsive_control(
+                        'submit_btn_alignment',
+                        [
+                            'label' => esc_html__('Button Alignment', 'ultraaddons'),
+                            'type' => Controls_Manager::CHOOSE,
+                            'label_block' => false,
+                            'options' => [
+                                'default' => [
+                                    'title' => __('Default', 'ultraaddons'),
+                                    'icon' => ' eicon-ban',
+                                ],
+                                'left' => [
+                                    'title' => esc_html__('Left', 'ultraaddons'),
+                                    'icon' => 'eicon-text-align-left',
+                                ],
+                                'center' => [
+                                    'title' => esc_html__('Center', 'ultraaddons'),
+                                    'icon' => 'eicon-text-align-center',
+                                ],
+                                'right' => [
+                                    'title' => esc_html__('Right', 'ultraaddons'),
+                                    'icon' => 'eicon-text-align-right',
+                                ],
+                            ],
+                            'default' => 'left',
+                            'selectors' => [
+                                '{{WRAPPER}} .with_frm_style .frm_submit' => 'text-align: {{VALUE}};',
+                            ],
+
+                        ]
+                    );
                 $this->add_control(
 			'btn_block',
 			[
@@ -552,6 +583,7 @@ class Formidable_Form extends Base{
 				'default' => 'no',
 			]
 		);
+
                 $this->start_controls_tabs(
 			'style_tabs'
 		);

@@ -566,6 +566,14 @@ class Hero_Slider extends Base{
 				]
 			]
         );
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => '_btn_border',
+				'label' => esc_html__( 'Button Border', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-slider-buttton',
+			]
+		);
 		$this->add_control(
 			'_ua_slide_btn_color', [
 				'label' => __( 'Button Text Color', 'ultraaddons' ),
@@ -648,6 +656,14 @@ class Hero_Slider extends Base{
 				]
 			]
         );
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => '_btn_hover_border',
+				'label' => esc_html__( 'Button Border', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-slider-buttton:hover',
+			]
+		);
 		$this->add_control(
 			'_ua_slide_btn_hover_color', [
 				'label' => __( 'Button Text Color', 'ultraaddons' ),
@@ -676,7 +692,7 @@ class Hero_Slider extends Base{
 		$this->add_responsive_control(
 			'slider_bullet_radius',
 			[
-				'label'       => esc_html__( 'Button Padding', 'ultraaddons' ),
+				'label'       => esc_html__( 'Bullets Radius', 'ultraaddons' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -696,7 +712,7 @@ class Hero_Slider extends Base{
 		$this->add_control(
 			'slider_bullet_height',
 			[
-				'label' => esc_html__( 'Bullte Height', 'ultraaddons' ),
+				'label' => esc_html__( 'Bullets Height', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'range' => [
@@ -720,7 +736,7 @@ class Hero_Slider extends Base{
 		$this->add_control(
 			'slider_bullet_width',
 			[
-				'label' => esc_html__( 'Bullet Width', 'ultraaddons' ),
+				'label' => esc_html__( 'Bullets Width', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'range' => [
