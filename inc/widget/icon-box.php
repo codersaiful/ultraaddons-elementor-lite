@@ -14,7 +14,7 @@ class Icon_Box extends Info_Box {
     
     
     protected function register_controls() {
-        parent::_register_controls();
+        parent::register_controls();
         
     }
     
