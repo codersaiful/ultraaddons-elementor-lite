@@ -39,7 +39,7 @@ class Work_Hour extends Base{
     public function get_keywords() {
         return [ 'ultraaddons', 'ua', 'work', 'hour', 'business'];
     }
-	 protected function _register_controls() {
+	 protected function register_controls() {
         //For Content
         $this->work_hour_content();
 		 //For Style Section

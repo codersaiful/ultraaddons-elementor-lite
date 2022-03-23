@@ -63,7 +63,7 @@ class Button extends Base{
      * @since 1.0.0
      * @access protected
      */
-    protected function _register_controls() {
+    protected function register_controls() {
         //For General Section
         $this->content_general_controls();
          //For Style
@@ -369,14 +369,7 @@ class Button extends Base{
 				],
 			]
         );
-		$this->add_group_control(
-			Group_Control_Border::get_type(),
-			[
-				'name' => '_btn_border',
-				'label' => esc_html__( 'Button Border', 'ultraaddons' ),
-				'selector' => '{{WRAPPER}} .ua-btn',
-			]
-		);
+
 		$this->add_control(
 			'_btn_text_hover_color', [
 				'label' => __( 'Button Text Color', 'ultraaddons' ),

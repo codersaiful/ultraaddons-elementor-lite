@@ -66,7 +66,7 @@ class Skill_Chart extends Base{
     public function get_keywords() {
         return [ 'ultraaddons', 'ua', 'heading', 'skill', 'chart','pie chart','graph' ];
     }
-	 protected function _register_controls() {
+	 protected function register_controls() {
         //For Content
         $this->skill_chart_content();
 		 //For Control Section

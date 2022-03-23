@@ -39,7 +39,7 @@ class Product_Category_Grid extends Base{
      * @since 1.0.0
      * @access protected
      */
-    protected function _register_controls() {
+    protected function register_controls() {
         //For General Section
         $this->query_controls();
         $this->content_style();

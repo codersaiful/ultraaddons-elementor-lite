@@ -80,7 +80,7 @@ class WC_Products extends Base{
      * @since 1.0.0
      * @access protected
      */
-    protected function _register_controls() {
+    protected function register_controls() {
         
 
         //For General Section

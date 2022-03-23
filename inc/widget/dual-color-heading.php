@@ -50,7 +50,7 @@ class Dual_Color_Heading extends Base{
      * @since 1.0.0
      * @access protected
      */
-    protected function _register_controls() {
+    protected function register_controls() {
         //For Content Section
         $this->dual_heading_content_controls();
         //For Design Section Style Tab

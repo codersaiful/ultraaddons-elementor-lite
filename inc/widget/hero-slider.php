@@ -94,7 +94,7 @@ class Hero_Slider extends Base{
      * @since 1.0.0
      * @access protected
      */
-    protected function _register_controls() {
+    protected function register_controls() {
         //For General Section
         $this->content_general_controls();
         $this->slider_settings_controls();
@@ -569,7 +569,7 @@ class Hero_Slider extends Base{
 		$this->add_group_control(
 			Group_Control_Border::get_type(),
 			[
-				'name' => '_btn_border',
+				'name' => 'slider_btn_border',
 				'label' => esc_html__( 'Button Border', 'ultraaddons' ),
 				'selector' => '{{WRAPPER}} .ua-slider-buttton',
 			]
@@ -659,7 +659,7 @@ class Hero_Slider extends Base{
 		$this->add_group_control(
 			Group_Control_Border::get_type(),
 			[
-				'name' => '_btn_hover_border',
+				'name' => 'slider_btn_hover_border',
 				'label' => esc_html__( 'Button Border', 'ultraaddons' ),
 				'selector' => '{{WRAPPER}} .ua-slider-buttton:hover',
 			]
