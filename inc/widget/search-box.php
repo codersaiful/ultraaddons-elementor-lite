@@ -38,7 +38,7 @@ class Search_Box extends Base{
      * 
      * @author Saiful
      */
-    protected function _register_controls() {
+    protected function register_controls() {
 
     }
     

@@ -884,7 +884,7 @@ class Contact_Form7 extends Base{
          * @since 1.0.0
          * @access protected
          */
-        protected function _register_controls() {
+        protected function register_controls() {
 
                 $this->register_content_controls();
                 

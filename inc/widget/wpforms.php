@@ -25,7 +25,7 @@ class WPForms extends Base{
          * @access protected
          */
         
-        protected function _register_controls() {
+        protected function register_controls() {
                 $this->register_content_controls();
                 if( class_exists( 'WPForms\WPForms' ) ){
                         $this->general_style();

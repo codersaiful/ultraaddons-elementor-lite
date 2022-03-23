@@ -41,7 +41,7 @@ class Drop_Caps extends Base{
      * @since 1.0.0
      * @access protected
      */
-    protected function _register_controls() {
+    protected function register_controls() {
 
         // For General Section
         $this->content_general_contents_controls();

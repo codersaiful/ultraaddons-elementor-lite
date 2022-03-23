@@ -35,7 +35,7 @@ class Animated_Headline extends Base{
      * @since 1.0.0
      * @access protected
      */
-    protected function _register_controls() {
+    protected function register_controls() {
         
         $this->ua_content_general_controls();
         $this->ua_style_controls();
