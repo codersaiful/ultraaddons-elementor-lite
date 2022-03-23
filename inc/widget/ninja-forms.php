@@ -26,7 +26,7 @@ class Ninja_Forms extends Base{
          * @access protected
          */
         
-        protected function _register_controls() {
+        protected function register_controls() {
                 $this->register_content_controls();
                 if( class_exists( 'Ninja_Forms' ) ){
                         $this->title_style();

@@ -55,7 +55,7 @@ class WC_Mini_Cart extends Base{
      * 
      * @author Saiful
      */
-    protected function _register_controls() {
+    protected function register_controls() {
         //For General Section
         $this->content_general_controls();
         

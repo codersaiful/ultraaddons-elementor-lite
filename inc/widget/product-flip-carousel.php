@@ -97,7 +97,7 @@ class Product_Flip_Carousel extends Base{
      * @since 1.0.0
      * @access protected
      */
-    protected function _register_controls() {
+    protected function register_controls() {
 		//For Query Tab
         $this->query_controls();
        //For Carousel Controls

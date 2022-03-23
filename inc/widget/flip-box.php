@@ -52,7 +52,7 @@ class Flip_Box extends Base{
      * @since 1.0.0
      * @access protected
      */
-    protected function _register_controls() {
+    protected function register_controls() {
         //For Content Section
         $this->content_general_controls();
         //For Design Section Style Tab

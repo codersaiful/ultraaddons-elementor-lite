@@ -45,7 +45,7 @@ class Portfolio extends Base {
      * @since 1.0.0
      * @access protected
      */
-    protected function _register_controls() {
+    protected function register_controls() {
 
         /**
          * Button Control Load using Trait

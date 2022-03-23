@@ -37,7 +37,7 @@ class Product_Filter_Gallery extends Base{
     }
     
     
-    protected function _register_controls() {
+    protected function register_controls() {
 		//For Query Tab
         $this->query_controls();
 		//For front style Tab
