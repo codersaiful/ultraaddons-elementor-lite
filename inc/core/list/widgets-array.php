@@ -92,7 +92,7 @@ $widgetsArray = [
             ],
     ],
     
-    'Search_Box' => [
+    'Search' => [
             'name'  => __( 'Search Box', 'ultraaddons' ),
             'is_pro'   => false,
             'icon'      => 'eicon-nav-menu',

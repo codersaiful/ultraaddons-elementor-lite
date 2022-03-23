@@ -52,9 +52,6 @@ class Search extends Base{
         $this->content_form_two_style();
     }
     
-    
-    
-    
     /**
      * General Section for Content Controls
      * 
@@ -395,12 +392,13 @@ class Search extends Base{
         $new_position 		= $button_position;
 
        $border_type = $settings['input_two_border_border'];
-       $border_width = $settings['input_two_border_width']['left'];
+       $get_border_type = (!empty($border_type)) ? $border_type : 0;
+       $border_width = (!empty($settings['input_two_border_width']['left'])) ?  $settings['input_two_border_width']['left'] : 0;
        $border_color = $settings['input_two_border_color'];
 
        echo '<style>
        .search-box.ua-form-two button[type=reset]:before, .search-box.ua-form-two button[type=reset]:after{
-               border-left: ' . $border_type .' ' . $border_width . 'px '. $border_color .';
+               border-left: ' . $get_border_type .' ' . $border_width . 'px '. $border_color .';
        }
        </style>';
         
