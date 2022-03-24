@@ -65,14 +65,14 @@ $widgetsArray = [
             ],
     ],
     
-    'Ultra_Slider' => [
+    /* 'Ultra_Slider' => [
             'name'  => __( 'Ultra Slider', 'ultraaddons' ),
             'is_pro'   => false,
             'icon'      => 'uicon-slider',
             'cat'       => [
                 __( 'Slider', 'ultraaddons' ),
             ],
-    ],
+    ], */
     
     'WC_Mini_Cart' => [
             'name'  => __( 'WC Mini Cart', 'ultraaddons' ),
