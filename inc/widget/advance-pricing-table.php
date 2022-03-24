@@ -1262,7 +1262,7 @@ class Advance_Pricing_Table extends Base{
 							//Discount Calculate
 							$list_price 	=  $item['list_price'];
 							$selling_price 	=  $item['list_discount_price'];
-							$discount 		= $list_price - $selling_price;
+							$discount 	= ((float)$list_price - (float)$selling_price);
 							if( $list_price != 0 ){
 							$percent 		= ($discount/$list_price) * 100;
 							}
@@ -1338,7 +1338,7 @@ class Advance_Pricing_Table extends Base{
 							//Discount Calculate
 							$list_price 	=  $item['list_price'];
 							$selling_price 	=  $item['list_discount_price'];
-							$discount 		= $list_price - $selling_price;
+							$discount 	= ((float)$list_price - (float)$selling_price);
 
 							if( $list_price != 0 ){
 								$percent 		= ($discount/$list_price) * 100;
