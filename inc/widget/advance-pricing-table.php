@@ -1392,7 +1392,7 @@ class Advance_Pricing_Table extends Base{
 									<span class="dollar"><?php echo $currency_symbol;?></span>
 								<span class="amount"><?php echo $item['list_price'];?></span>
 								<?php }?>
-							   <?php if(!empty($item['list_period'])):?>
+							   <?php if( !empty($item['list_period']) ):?>
 								<span class="slash">/</span>
 								<?php endif;?>
 								<span class="month"><?php echo $item['list_period'];?></span>
@@ -1470,7 +1470,7 @@ class Advance_Pricing_Table extends Base{
 								<span class="amount"><?php echo $item['list_price'];?></span>
 								<?php }?>
 							
-								<?php if(!empty($item['list_period'])):?>
+								<?php if( !empty($item['list_period']) ):?>
 								<span class="slash">/</span>
 								<?php endif;?>
 								<span class="month"><?php echo $item['list_period'];?></span>
