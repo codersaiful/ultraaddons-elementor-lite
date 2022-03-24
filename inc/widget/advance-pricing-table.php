@@ -163,6 +163,7 @@ class Advance_Pricing_Table extends Base{
 					'&#8362;' => '&#8362; ' . _x( 'Shekel', 'Currency Symbol', 'ultraaddons' ),
 					'&#165;' => '&#165; ' . _x( 'Yen/Yuan', 'Currency Symbol', 'ultraaddons' ),
 					'&#8361;' => '&#8361; ' . _x( 'Won', 'Currency Symbol', 'ultraaddons' ),
+					'&#8378;' => '&#8378; ' . _x( 'Lira (Turkish)', 'Currency Symbol', 'ultraaddons' ),
 					'custom' => __( 'Custom', 'ultraaddons' ),
 				],
 				'default' => '&#36;',
@@ -1312,6 +1313,8 @@ class Advance_Pricing_Table extends Base{
      */
     protected function render() {
 	$settings           = $this->get_settings_for_display();
+	$currency_symbol = ( $settings['list_curreny'] !='custom') ?  $settings['list_curreny'] : $settings['list_custom_curreny'];
+	
 	if(Plugin::$instance->editor->is_edit_mode() && $settings['is_back']==='yes'){
 		echo '<script>
 		jQuery(".monthly").hide();
@@ -1352,7 +1355,6 @@ class Advance_Pricing_Table extends Base{
 							if( $list_price != 0 ){
 							$percent 		= ($discount/$list_price) * 100;
 							}
-							$currency_symbol = ( $settings['list_curreny'] !='custom') ?  $settings['list_curreny'] : $settings['list_custom_curreny']
 
 					?>
 					<div class="ua-col-3">
@@ -1371,7 +1373,6 @@ class Advance_Pricing_Table extends Base{
 									 echo round($percent);
 								}
 								?>%
-								
 							</div>
 							<?php endif;?>
 							
