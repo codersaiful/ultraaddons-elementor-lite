@@ -129,7 +129,6 @@ $widgetsArray = [
             ],
     ],
     
-    
     'Product_Slider' => [
             'name'  => __( 'Product Slider', 'ultraaddons' ),
             'is_pro'   => true,

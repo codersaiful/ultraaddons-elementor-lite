@@ -323,6 +323,16 @@ class Advance_Pricing_Table extends Base{
 				'default'=>''
 			]
         );
+		$repeater->add_control(
+			'separator_color', [
+				'label' => __( 'Separator Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} {{CURRENT_ITEM}} .slash' => 'color: {{VALUE}};',
+				],
+				'default'=>''
+			]
+        );
         $this->add_control(
 			'list',
 			[
@@ -517,6 +527,16 @@ class Advance_Pricing_Table extends Base{
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} {{CURRENT_ITEM}} .plan-title' => 'color: {{VALUE}};',
+				],
+				'default'=>''
+			]
+        );
+		$repeater_b->add_control(
+			'separator_color', [
+				'label' => __( 'Separator Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} {{CURRENT_ITEM}} .slash' => 'color: {{VALUE}};',
 				],
 				'default'=>''
 			]
