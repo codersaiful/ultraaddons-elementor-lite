@@ -143,8 +143,8 @@ class Advance_Pricing_Table extends Base{
 			[
 				'label' => __( 'Edit Back Part?', 'ultraaddons' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Show', 'ultraaddons' ),
-				'label_off' => __( 'Hide', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
 				'return_value' => 'yes',
 				'default' => 'no',
 			]
