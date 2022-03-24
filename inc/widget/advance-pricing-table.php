@@ -138,6 +138,47 @@ class Advance_Pricing_Table extends Base{
 				'default'	=> 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium <br>doloremque laudantium'
 			]
 		);
+		
+		$this->add_control(
+			'list_curreny',
+			[
+				'label' => __( 'Currency Symbol', 'ultraaddons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'' => __( 'None', 'ultraaddons' ),
+					'&#36;' => '&#36; ' . _x( 'Dollar', 'Currency Symbol', 'ultraaddons' ),
+					'&#128;' => '&#128; ' . _x( 'Euro', 'Currency Symbol', 'ultraaddons' ),
+					'&#3647;' => '&#3647; ' . _x( 'Baht', 'Currency Symbol', 'ultraaddons' ),
+					'&#8355;' => '&#8355; ' . _x( 'Franc', 'Currency Symbol', 'ultraaddons' ),
+					'&fnof;' => '&fnof; ' . _x( 'Guilder', 'Currency Symbol', 'ultraaddons' ),
+					'kr' => 'kr ' . _x( 'Krona', 'Currency Symbol', 'ultraaddons' ),
+					'&#8356;' => '&#8356; ' . _x( 'Lira', 'Currency Symbol', 'ultraaddons' ),
+					'&#8359;' => '&#8359; ' . _x( 'Peseta', 'Currency Symbol', 'ultraaddons' ),
+					'&#8369;' => '&#8369; ' . _x( 'Peso', 'Currency Symbol', 'ultraaddons' ),
+					'&#163;' => '&#163; ' . _x( 'Pound Sterling', 'Currency Symbol', 'ultraaddons' ),
+					'R$' => 'R$ ' . _x( 'Real', 'Currency Symbol', 'ultraaddons' ),
+					'&#8381;' => '&#8381; ' . _x( 'Ruble', 'Currency Symbol', 'ultraaddons' ),
+					'&#8360;' => '&#8360; ' . _x( 'Rupee', 'Currency Symbol', 'ultraaddons' ),
+					'&#8377;' => '&#8377; ' . _x( 'Rupee (Indian)', 'Currency Symbol', 'ultraaddons' ),
+					'&#8362;' => '&#8362; ' . _x( 'Shekel', 'Currency Symbol', 'ultraaddons' ),
+					'&#165;' => '&#165; ' . _x( 'Yen/Yuan', 'Currency Symbol', 'ultraaddons' ),
+					'&#8361;' => '&#8361; ' . _x( 'Won', 'Currency Symbol', 'ultraaddons' ),
+					'custom' => __( 'Custom', 'ultraaddons' ),
+				],
+				'default' => '&#36;',
+			]
+		);
+		$this->add_control(
+			'list_custom_curreny', [
+				'label' => esc_html__( 'Custom Currency', 'ultraaddons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => esc_html__( '$' , 'ultraaddons' ),
+				'label_block' => false,
+				'condition'=>[
+					'list_curreny' =>'custom'
+				]
+			]
+		);
 		$this->add_control(
 			'is_back',
 			[
@@ -147,6 +188,7 @@ class Advance_Pricing_Table extends Base{
 				'label_off' => __( 'No', 'ultraaddons' ),
 				'return_value' => 'yes',
 				'default' => 'no',
+				'separator' => 'before'
 			]
 		);
         $repeater = new \Elementor\Repeater();
@@ -170,14 +212,7 @@ class Advance_Pricing_Table extends Base{
 				],
 			]
 		);
-		$repeater->add_control(
-			'list_curreny', [
-				'label' => esc_html__( 'Currency Symbol', 'ultraaddons' ),
-				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( '$' , 'ultraaddons' ),
-				'label_block' => false,
-			]
-		);
+	
 		$repeater->add_control(
 			'list_price', [
 				'label' => esc_html__( 'Price', 'ultraaddons' ),
@@ -420,14 +455,6 @@ class Advance_Pricing_Table extends Base{
 					'value' => 'far fa fa-check-circle',
 					'library' => 'solid',
 				],
-			]
-		);
-		$repeater_b->add_control(
-			'list_curreny', [
-				'label' => esc_html__( 'Currency Symbol', 'ultraaddons' ),
-				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( '$' , 'ultraaddons' ),
-				'label_block' => false,
 			]
 		);
 		$repeater_b->add_control(
@@ -1325,6 +1352,7 @@ class Advance_Pricing_Table extends Base{
 							if( $list_price != 0 ){
 							$percent 		= ($discount/$list_price) * 100;
 							}
+							$currency_symbol = ( $settings['list_curreny'] !='custom') ?  $settings['list_curreny'] : $settings['list_custom_curreny']
 
 					?>
 					<div class="ua-col-3">
@@ -1355,17 +1383,18 @@ class Advance_Pricing_Table extends Base{
 								<?php
 								if('yes'=== $item['is_discount']){
 								?>
-								<span class="dollar"><?php echo $item['list_curreny'];?></span>
+								<span class="dollar"><?php echo $currency_symbol;?></span>
 								<span class="amount"><s><?php echo $list_price; ?></s></span>
 
-								<span class="dollar"><?php echo $item['list_curreny'];?></span>
+								<span class="dollar"><?php echo $currency_symbol;?></span>
 								<span class="discount-amount"><?php echo $selling_price; ?></span>
 								<?php }else{?>
-									<span class="dollar"><?php echo $item['list_curreny'];?></span>
+									<span class="dollar"><?php echo $currency_symbol;?></span>
 								<span class="amount"><?php echo $item['list_price'];?></span>
 								<?php }?>
-							
+							   <?php if( !empty($item['list_period']) ):?>
 								<span class="slash">/</span>
+								<?php endif;?>
 								<span class="month"><?php echo $item['list_period'];?></span>
 							</div>
 							<div class="features-list"><?php echo $item['list_feature'];?></div>
@@ -1431,17 +1460,19 @@ class Advance_Pricing_Table extends Base{
 								<?php
 								if('yes'=== $item['is_discount']){
 								?>
-								<span class="dollar"><?php echo $item['list_curreny'];?></span>
+								<span class="dollar"><?php echo $currency_symbol;?></span>
 								<span class="amount"><s><?php echo $list_price; ?></s></span>
 
-								<span class="dollar"><?php echo $item['list_curreny'];?></span>
+								<span class="dollar"><?php echo $currency_symbol;?></span>
 								<span class="discount-amount"><?php echo $selling_price; ?></span>
 								<?php }else{?>
-								<span class="dollar"><?php echo $item['list_curreny'];?></span>
+								<span class="dollar"><?php echo $currency_symbol;?></span>
 								<span class="amount"><?php echo $item['list_price'];?></span>
 								<?php }?>
 							
+								<?php if( !empty($item['list_period']) ):?>
 								<span class="slash">/</span>
+								<?php endif;?>
 								<span class="month"><?php echo $item['list_period'];?></span>
 							</div>
 							<div class="features-list"><?php echo $item['list_feature'];?></div>
