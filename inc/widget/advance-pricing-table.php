@@ -138,6 +138,17 @@ class Advance_Pricing_Table extends Base{
 				'default'	=> 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium <br>doloremque laudantium'
 			]
 		);
+		$this->add_control(
+			'is_back',
+			[
+				'label' => __( 'Edit Back Part?', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		);
         $repeater = new \Elementor\Repeater();
 
 		$repeater->add_control(
@@ -284,13 +295,13 @@ class Advance_Pricing_Table extends Base{
 				'label' => __( 'Box Background', 'ultraaddons' ),
 				'types' => [ 'classic', 'gradient'],
 				'selector' => '{{WRAPPER}} {{CURRENT_ITEM}}.plan',
-				'separator' => 'before',
 			]
 		);
 		$repeater->add_control(
 			'feature_text_color', [
 				'label' => __( 'Feature Text Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
+				'separator' => 'before',
 				'selectors' => [
 						'{{WRAPPER}} {{CURRENT_ITEM}} .features-list' => 'color: {{VALUE}};',
 				],
@@ -300,6 +311,7 @@ class Advance_Pricing_Table extends Base{
 			'box_hover_color', [
 				'label' => __( 'Box Hover', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
+				'separator' => 'before',
 				'selectors' => [
 						'{{WRAPPER}} {{CURRENT_ITEM}}.plan:hover' => 'background-color: {{VALUE}};',
 				],
@@ -317,8 +329,54 @@ class Advance_Pricing_Table extends Base{
 			'title_color', [
 				'label' => __( 'Title Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
+				'separator' => 'before',
 				'selectors' => [
 						'{{WRAPPER}} {{CURRENT_ITEM}} .plan-title' => 'color: {{VALUE}};',
+				],
+				'default'=>''
+			]
+        );
+		$repeater->add_control(
+			'amount_color', [
+				'label' => __( 'Price Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'separator' => 'before',
+				'selectors' => [
+						'{{WRAPPER}} {{CURRENT_ITEM}} .amount' => 'color: {{VALUE}};',
+				],
+				'default'=>''
+			]
+        );
+		$repeater->add_control(
+			'month_color', [
+				'label' => __( 'Month Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} {{CURRENT_ITEM}} .month' => 'color: {{VALUE}};',
+				],
+				'separaor' => 'before',
+				'default'=>''
+			]
+        );
+		$repeater->add_control(
+			'separator_color', [
+				'label' => __( 'Separator Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'separator' => 'before',
+				'selectors' => [
+						'{{WRAPPER}} {{CURRENT_ITEM}} .slash' => 'color: {{VALUE}};',
+				],
+				'default'=>''
+			]
+        );
+		$repeater->add_control(
+			'icon_color', [
+				'label' => __( 'Icon Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'separator' => 'before',
+				'selectors' => [
+						'{{WRAPPER}} {{CURRENT_ITEM}} .pricing-icon-wrapper i' => 'color: {{VALUE}};',
+						'{{WRAPPER}} {{CURRENT_ITEM}} .pricing-icon-wrapper svg' => 'fill: {{VALUE}};',
 				],
 				'default'=>''
 			]
@@ -482,13 +540,13 @@ class Advance_Pricing_Table extends Base{
 				'label' => __( 'Box Background', 'ultraaddons' ),
 				'types' => [ 'classic', 'gradient'],
 				'selector' => '{{WRAPPER}} {{CURRENT_ITEM}}.plan',
-				'separator' => 'before',
 			]
 		);
 		$repeater_b->add_control(
 			'feature_text_color', [
 				'label' => __( 'Feature Text Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
+				'separator' => 'before',
 				'selectors' => [
 						'{{WRAPPER}} {{CURRENT_ITEM}} .features-list' => 'color: {{VALUE}};',
 				],
@@ -498,6 +556,7 @@ class Advance_Pricing_Table extends Base{
 			'box_hover_color', [
 				'label' => __( 'Box Hover', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
+				'separator' => 'before',
 				'selectors' => [
 						'{{WRAPPER}} {{CURRENT_ITEM}}.plan:hover' => 'background-color: {{VALUE}};',
 				],
@@ -515,8 +574,53 @@ class Advance_Pricing_Table extends Base{
 			'title_color', [
 				'label' => __( 'Title Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
+				'separator' => 'before',
 				'selectors' => [
 						'{{WRAPPER}} {{CURRENT_ITEM}} .plan-title' => 'color: {{VALUE}};',
+				],
+				'default'=>''
+			]
+        );
+		$repeater_b->add_control(
+			'amount_color', [
+				'label' => __( 'Price Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} {{CURRENT_ITEM}} .amount' => 'color: {{VALUE}};',
+				],
+				'default'=>''
+			]
+        );
+		$repeater_b->add_control(
+			'month_color', [
+				'label' => __( 'Month Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} {{CURRENT_ITEM}} .month' => 'color: {{VALUE}};',
+				],
+				'separaor' => 'before',
+				'default'=>''
+			]
+        );
+		$repeater_b->add_control(
+			'separator_color', [
+				'label' => __( 'Separator Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'separator' => 'before',
+				'selectors' => [
+						'{{WRAPPER}} {{CURRENT_ITEM}} .slash' => 'color: {{VALUE}};',
+				],
+				'default'=>''
+			]
+        );
+		$repeater_b->add_control(
+			'icon_color', [
+				'label' => __( 'Icon Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'separator' => 'before',
+				'selectors' => [
+						'{{WRAPPER}} {{CURRENT_ITEM}} .pricing-icon-wrapper i' => 'color: {{VALUE}};',
+						'{{WRAPPER}} {{CURRENT_ITEM}} .pricing-icon-wrapper svg' => 'fill: {{VALUE}};',
 				],
 				'default'=>''
 			]
@@ -530,12 +634,15 @@ class Advance_Pricing_Table extends Base{
 				'default' => [
 					[
 						'list_title' => esc_html__( 'Basic', 'ultraaddons' ),
+						'list_price' => esc_html__( '50', 'ultraaddons' ),
 					],
 					[
 						'list_title' => esc_html__( 'Advance', 'ultraaddons' ),
+						'list_price' => esc_html__( '70', 'ultraaddons' ),
 					],
                     [
 						'list_title' => esc_html__( 'Premier', 'ultraaddons' ),
+						'list_price' => esc_html__( '100', 'ultraaddons' ),
 					],
 				],
 				'title_field' => '{{{ list_title }}}',
@@ -665,16 +772,7 @@ class Advance_Pricing_Table extends Base{
                 'selector' => '{{WRAPPER}} .amount',
             ]
         );
-		$this->add_control(
-			'amount_color', [
-				'label' => __( 'Price Color', 'ultraaddons' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-						'{{WRAPPER}} .amount' => 'color: {{VALUE}};',
-				],
-				'default'=>''
-			]
-        );
+		
 		$this->add_responsive_control(
 			'price_margin',
 			[
@@ -720,17 +818,7 @@ class Advance_Pricing_Table extends Base{
                 'selector' => '{{WRAPPER}} .month',
             ]
         );
-		$this->add_control(
-			'month_color', [
-				'label' => __( 'Month Color', 'ultraaddons' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-						'{{WRAPPER}} .month' => 'color: {{VALUE}};',
-				],
-				'separaor' => 'after',
-				'default'=>''
-			]
-        );
+	
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
@@ -748,17 +836,6 @@ class Advance_Pricing_Table extends Base{
                 'label'     => esc_html__( 'Icon', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
-        );
-		$this->add_control(
-			'icon_color', [
-				'label' => __( 'Icon Color', 'ultraaddons' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-						'{{WRAPPER}} .pricing-icon-wrapper i' => 'color: {{VALUE}};',
-						'{{WRAPPER}} .pricing-icon-wrapper svg' => 'fill: {{VALUE}};',
-				],
-				'default'=>'#e2498a'
-			]
         );
 		$this->add_control(
 			'icon_size',
@@ -1208,9 +1285,11 @@ class Advance_Pricing_Table extends Base{
      */
     protected function render() {
 	$settings           = $this->get_settings_for_display();
-	if(Plugin::$instance->editor->is_edit_mode()){
+	if(Plugin::$instance->editor->is_edit_mode() && $settings['is_back']==='yes'){
 		echo '<script>
-		advPricingTable();
+		jQuery(".monthly").hide();
+		jQuery(".hourly").removeClass("hide");
+		jQuery(".hourly").show();
 		</script>';
 	}
 	?>
@@ -1242,7 +1321,7 @@ class Advance_Pricing_Table extends Base{
 							//Discount Calculate
 							$list_price 	=  $item['list_price'];
 							$selling_price 	=  $item['list_discount_price'];
-							$discount 		= $list_price - $selling_price;
+							$discount 		= ((float)$list_price - (float)$selling_price);
 							if( $list_price != 0 ){
 							$percent 		= ($discount/$list_price) * 100;
 							}
@@ -1318,14 +1397,14 @@ class Advance_Pricing_Table extends Base{
 							//Discount Calculate
 							$list_price 	=  $item['list_price'];
 							$selling_price 	=  $item['list_discount_price'];
-							$discount 		= $list_price - $selling_price;
+							$discount 		= ((float)$list_price - (float)$selling_price);
 
 							if( $list_price != 0 ){
 								$percent 		= ($discount/$list_price) * 100;
 							}
 					?>
 					<div class="ua-col-3">
-						<div class="plan plan-<?php echo $count;?>">
+						<div class="plan plan-<?php echo $count;?> <?php echo 'elementor-repeater-item-' . esc_attr( $item['_id'] ) . ''?>">
 							<?php if($item['show_badge']=='yes'):?>
 							<div class="featured-badge">
 								<?php echo $item['badge_text'] ;?>
@@ -1382,9 +1461,6 @@ class Advance_Pricing_Table extends Base{
 
 <?php
         
-    }
-    
-    
-    
+    } 
     
 }

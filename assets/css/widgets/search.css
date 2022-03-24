@@ -87,6 +87,7 @@
   border: 1px solid transparent;
   border-radius: inherit;
   height: auto;
+  width: 100%;
 }
 
 .ua-form-one input[type="search"]::placeholder {

@@ -65,14 +65,14 @@ $widgetsArray = [
             ],
     ],
     
-    'Ultra_Slider' => [
+    /* 'Ultra_Slider' => [
             'name'  => __( 'Ultra Slider', 'ultraaddons' ),
             'is_pro'   => false,
             'icon'      => 'uicon-slider',
             'cat'       => [
                 __( 'Slider', 'ultraaddons' ),
             ],
-    ],
+    ], */
     
     'WC_Mini_Cart' => [
             'name'  => __( 'WC Mini Cart', 'ultraaddons' ),
@@ -92,7 +92,7 @@ $widgetsArray = [
             ],
     ],
     
-    'Search_Box' => [
+    'Search' => [
             'name'  => __( 'Search Box', 'ultraaddons' ),
             'is_pro'   => false,
             'icon'      => 'eicon-nav-menu',
@@ -128,7 +128,6 @@ $widgetsArray = [
                 __( 'Pro', 'ultraaddons' ),
             ],
     ],
-    
     
     'Product_Slider' => [
             'name'  => __( 'Product Slider', 'ultraaddons' ),
