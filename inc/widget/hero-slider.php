@@ -375,10 +375,10 @@ class Hero_Slider extends Base{
 				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
-						'list_title' => esc_html__( 'iPhone', 'ultraaddons' ),
+						'list_title' => esc_html__( 'Ultra Addons', 'ultraaddons' ),
 					],
 					[
-						'list_title' => esc_html__( 'Mackbook', 'ultraaddons' ),
+						'list_title' => esc_html__( 'Woo Table', 'ultraaddons' ),
 					],
 
 				],
@@ -563,7 +563,6 @@ class Hero_Slider extends Base{
 	 * Button Style.
 	 */
 	protected function slider_btn_style(){
-		$id = $this->get_id();
 		$this->start_controls_section(
             'slide_btn_style',
             [
@@ -588,7 +587,7 @@ class Hero_Slider extends Base{
 				'label' => __( 'Button Background', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .hero-slider-'.$id .' .ua-slider-container .ua-slider-buttton' => 'background: {{VALUE}};',
+						'{{WRAPPER}} .ua-hero .ua-slider-container .ua-slider-buttton' => 'background: {{VALUE}};',
 				]
 			]
         );
@@ -597,7 +596,7 @@ class Hero_Slider extends Base{
 			[
 				'name' => 'slider_btn_border',
 				'label' => esc_html__( 'Button Border', 'ultraaddons' ),
-				'selector' => '{{WRAPPER}} .hero-slider-'.$id .' .ua-slider-buttton',
+				'selector' => '{{WRAPPER}} .ua-hero .ua-slider-buttton',
 			]
 		);
 		$this->add_control(
@@ -678,7 +677,7 @@ class Hero_Slider extends Base{
 				'label' => __( 'Button Background', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .hero-slider-'.$id .' .ua-slider-container .ua-slider-buttton:before, .ua-slider-container .ua-slider-buttton:hover' => 'background: {{VALUE}};',
+						'{{WRAPPER}} .ua-hero .ua-slider-container .ua-slider-buttton:before, .ua-slider-container .ua-slider-buttton:hover' => 'background: {{VALUE}};',
 				]
 			]
         );
