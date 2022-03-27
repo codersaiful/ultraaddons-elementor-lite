@@ -531,6 +531,30 @@ class Hero_Slider extends Base{
 				],
 			]
 		);
+		$this->add_control(
+			'overlay',
+			[
+				'label' => __( 'Overlay', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+				'separator' => 'before',
+				'frontend_available' => true,
+			]
+		);
+		$this->add_control(
+			'overlay_bg', [
+				'label' => __( 'Overlay Background', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-hero-slider-overlay ' => 'background-color: {{VALUE}};',
+				],
+                'separator'=> 'after',
+				'default'=>'#33333373'
+			]
+        );
         
         $this->end_controls_section();
     }
@@ -859,6 +883,9 @@ class Hero_Slider extends Base{
                         </div>
                     </div>
                 </div>
+				<?php if('yes'===$settings['overlay']):?>
+					<div class="ua-hero-slider-overlay"></div>
+				<?php endif;?>
             </div>
             <?php }
         }

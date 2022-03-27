@@ -641,7 +641,7 @@
            
             // Cart Update in Editor Screen
             EF.hooks.addAction(
-                    'frontend/element_ready/ultraaddons-cart.default',
+                    'frontend/element_ready/ultraaddons-wc-mini-cart.default',
                     function ($scope) {
                         trigger_cart_update();
                     }

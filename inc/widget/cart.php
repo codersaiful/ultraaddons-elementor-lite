@@ -16,7 +16,7 @@ use Elementor\Utils;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class WC_Mini_Cart extends Base{
+class Cart extends Base{
     
     /**
      * Set your widget name keyword
