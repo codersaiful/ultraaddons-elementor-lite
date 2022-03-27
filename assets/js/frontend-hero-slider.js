@@ -20,11 +20,12 @@ $window.on( 'elementor/frontend/init', function() {
         run: function(){
 
             var $scope = this.$element;
+             var $id        = $scope[0].dataset.id;
             /**
              * get data on editor mode
              */
             var $settings = this.getElementSettings();
-            var swiper = new Swiper(".ua-hero", {
+            var swiper = new Swiper('.hero-slider-'+ $id, {
                 //slidesPerView: $settings.slidesPerView!='auto' ? parseInt($settings.slidesPerView) : 'auto',
                //spaceBetween: $settings.spaceBetween,
                 effect: $settings.effect,
