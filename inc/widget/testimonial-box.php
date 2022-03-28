@@ -80,8 +80,6 @@ class Testimonial_Box extends Base{
      * @access protected
      */
     protected function register_controls() {
-        
-
         //For General Section
         $this->content_general_controls();
 
@@ -93,78 +91,13 @@ class Testimonial_Box extends Base{
         $this->style_subtitle_controls();
         $this->style_quote_controls();
         $this->style_avatar_controls();
+        $this->style_box_style();
+        
 
        
     }
     
-    /**
-     * Render oEmbed widget output on the frontend.
-     *
-     * Written in PHP and used to generate the final HTML.
-     *
-     * @since 1.0.0
-     * @access protected
-     */
-    protected function render() {
-
-        $settings = $this->get_settings_for_display();
-
-        $this->add_render_attribute( 'wrapper', 'class', 'ua-testimonial-wrapper' );
-        $this->add_render_attribute( 'item', 'class', 'ua-testimonial' );
-        $this->add_render_attribute( 'title', 'class', 'ua-testimonial-title' );
-        $this->add_render_attribute( 'sub-title', 'class', 'ua-testimonial-subtitle' );
-        $this->add_render_attribute( 'quote', 'class', 'ua-testimonial-quote' );
-        
-        $this->add_inline_editing_attributes( 'title', 'none' );
-        $this->add_inline_editing_attributes( 'sub-title', 'none' );
-        $this->add_inline_editing_attributes( 'quote', 'advanced' );
-
-        $image = !empty( $settings['image']['url'] ) ? $settings['image']['url'] : false;
-        if( empty( $image ) ){
-            $this->add_render_attribute( 'wrapper', 'class', 'no-profile-image' );
-        }
-        ?>
-    <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
-        <div <?php echo $this->get_render_attribute_string( 'item' ); ?>>
-            <div class="client-quote-box">
-                <span class="quote-icon">
-                    <i class="fas fa-quote-left"></i>
-                </span>
-                <?php echo '<p ' . $this->get_render_attribute_string( 'quote' ) . '>' . $settings['quote'] . '</p>'; ?>
-                <div class="client-info">
-                    <div class="user-avatar" 
-                        <?php if( $image ){ ?>
-                            style="background-image: url(<?php echo esc_attr( $image ); ?>);"
-                        <?php } ?> 
-                         ></div>
-                    <div class="user-name">
-                        <?php echo '<p ' . $this->get_render_attribute_string( 'title' ) . '>' . $settings['title'] . '</p>'; ?>
-                        <?php echo '<span ' . $this->get_render_attribute_string( 'sub-title' ) . '>' . $settings['sub-title'] . '</span>'; ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-        <?php
-        
-    }
-    
-    protected function content_template() {
-        /*
-        ?>
-        <#
-        view.addInlineEditingAttributes( 'avd_heading', 'none' );
-        view.addInlineEditingAttributes( 'avd_sub_heading', 'none' );
-        #>
-        
-        <div class="advance-heading-wrapper">
-            <span {{{ view.getRenderAttributeString( 'avd_sub_heading' ) }}}>{{{ settings.avd_sub_heading }}}</span>
-            <h4 class="heading-tag" {{{ view.getRenderAttributeString( 'avd_heading' ) }}}>{{{ settings.avd_heading }}}</h4>
-        </div>
-        <?php
-        */
-    }
+  
     
     /**
      * General Section for Content Controls
@@ -232,7 +165,17 @@ class Testimonial_Box extends Base{
                         ]
                 ]
         );
-        
+        $this->add_control(
+                'quote_icon',
+                [
+                        'label' => esc_html__( 'Quote Icon', 'ultraaddons' ),
+                        'type' => Controls_Manager::ICONS,
+                        'default' => [
+                                'value' => 'fas fa-quote-left',
+                                'library' => 'solid',
+                        ],
+                ]
+        );
                
         
         $this->end_controls_section();
@@ -277,6 +220,24 @@ class Testimonial_Box extends Base{
                         'default' => 'left',
                 ]
         );
+        $this->add_control(
+                'content_position',
+                [
+                        'label' => __( 'Content Position', 'ultraaddons' ),
+                        'type' => Controls_Manager::CHOOSE,
+                        'options' => [
+                                'bottom' => [
+                                        'title' => __( 'Bottom', 'ultraaddons' ),
+                                        'icon' => 'eicon-arrow-down',
+                                ],
+                                'top' => [
+                                        'title' => __( 'Top', 'ultraaddons' ),
+                                        'icon' => 'eicon-arrow-up',
+                                ],
+                        ],
+                        'default' => 'bottom',
+                ]
+        );
         
         
         $this->start_controls_tabs('testimonial-style-tabs');
@@ -295,7 +256,8 @@ class Testimonial_Box extends Base{
                         'type' => Controls_Manager::COLOR,
                         'default' => '#0FC392',
                         'selectors' => [
-                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box span.quote-icon' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box span.quote-icon i' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box span.quote-icon svg' => 'fill: {{VALUE}}',
                         ],
                 ]
         );
@@ -317,26 +279,15 @@ class Testimonial_Box extends Base{
                         'label' => __( 'Quote Icon Color', 'ultraaddons' ),
                         'type' => Controls_Manager::COLOR,
                         'selectors' => [
-                                '{{WRAPPER}}:hover .ua-testimonial-wrapper .client-quote-box span.quote-icon' => 'color: {{VALUE}}',
+                                '{{WRAPPER}}:hover .ua-testimonial-wrapper .client-quote-box span.quote-icon i' => 'color: {{VALUE}}',
+                                '{{WRAPPER}}:hover .ua-testimonial-wrapper .client-quote-box span.quote-icon svg' => 'fill: {{VALUE}}',
                         ],
                 ]
         );
         
         $this->end_controls_tab();
         
-        
-        
-        
-        
-        
-        
-        
         $this->end_controls_tabs();
-        
-        
-        
-        
-        
         
         $this->add_control(
                 'quote-icon-size',
@@ -360,7 +311,8 @@ class Testimonial_Box extends Base{
                                 'size' => 50,
                         ],
                         'selectors' => [
-                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box span.quote-icon' => 'font-size: {{SIZE}}{{UNIT}};',
+                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box span.quote-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
+                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box span.quote-icon svg' => 'width: {{SIZE}}{{UNIT}};',
                         ],
                 ]
         );
@@ -545,6 +497,112 @@ class Testimonial_Box extends Base{
         
         $this->end_controls_section();
     }
+    /**
+     * @author B M Rafiul Alam
+     * @since 1.1.0.12
+     */
+     protected function style_box_style() {
+        $this->start_controls_section(
+            'box_style',
+            [
+                'label'     => esc_html__( 'Box', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+         $this->add_group_control(
+                Group_Control_Background::get_type(),
+                [
+                        'name' => 'box_background',
+                        'label' => esc_html__( 'Background', 'ultraaddons' ),
+                        'types' => [ 'classic', 'gradient' ],
+                        'selector' => '{{WRAPPER}} .ua-testimonial-wrapper',
+                ]
+        );
+         $this->add_responsive_control(
+                        'box_radius',
+                        [
+                                'label'       => esc_html__( 'Box Radius', 'ultraaddons' ),
+                                'type'        => Controls_Manager::DIMENSIONS,
+                                'size_units'  => [ '%', 'px' ],
+                                'placeholder' => [
+                                        'top'    => '',
+                                        'right'  => '',
+                                        'bottom' => '',
+                                        'left'   => '',
+                                ],
+                                'separator' =>'after',
+                                'selectors'   => [
+                                        '{{WRAPPER}} .ua-testimonial-wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                ],
+                        ]
+                );
+                 $this->add_group_control(
+                        Group_Control_Box_Shadow::get_type(),
+                        [
+                            'name' => 'box_shadow',
+                            'selector' => '{{WRAPPER}} .ua-testimonial-wrapper',
+                        ]
+                    );
+                
+        $this->end_controls_section();
+    }
+ 
+
+      /**
+     * Render oEmbed widget output on the frontend.
+     *
+     * Written in PHP and used to generate the final HTML.
+     *
+     * @since 1.0.0
+     * @access protected
+     */
+    protected function render() {
+
+        $settings = $this->get_settings_for_display();
+        $position = $settings['content_position'];
+        $position_class = $position ? 'position-' . $position : '';
+
+        $this->add_render_attribute( 'wrapper', 'class', 'ua-testimonial-wrapper ' .$position_class .'' );
+        $this->add_render_attribute( 'item', 'class', 'ua-testimonial' );
+        $this->add_render_attribute( 'title', 'class', 'ua-testimonial-title' );
+        $this->add_render_attribute( 'sub-title', 'class', 'ua-testimonial-subtitle' );
+        $this->add_render_attribute( 'quote', 'class', 'ua-testimonial-quote' );
+        
+        $this->add_inline_editing_attributes( 'title', 'none' );
+        $this->add_inline_editing_attributes( 'sub-title', 'none' );
+        $this->add_inline_editing_attributes( 'quote', 'advanced' );
+
+        $image = !empty( $settings['image']['url'] ) ? $settings['image']['url'] : false;
+        if( empty( $image ) ){
+            $this->add_render_attribute( 'wrapper', 'class', 'no-profile-image' );
+        }
+        ?>
+    <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
+        <div <?php echo $this->get_render_attribute_string( 'item' ); ?>>
+            <div class="client-quote-box">
+                <?php echo '<p ' . $this->get_render_attribute_string( 'quote' ) . '>' . $settings['quote'] . '</p>'; ?>
+               <span class="quote-icon">
+                    <?php \Elementor\Icons_Manager::render_icon( $settings['quote_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                </span>
+                <div class="client-info">
+                    <div class="user-avatar" 
+                        <?php if( $image ){ ?>
+                            style="background-image: url(<?php echo esc_attr( $image ); ?>);"
+                        <?php } ?> 
+                         ></div>
+                    <div class="user-name">
+                        <?php echo '<p ' . $this->get_render_attribute_string( 'title' ) . '>' . $settings['title'] . '</p>'; ?>
+                        <?php echo '<span ' . $this->get_render_attribute_string( 'sub-title' ) . '>' . $settings['sub-title'] . '</span>'; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+        <?php
+        
+    }
+    
        
     
 }

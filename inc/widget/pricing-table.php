@@ -899,14 +899,14 @@ class Pricing_Table extends Base {
 			]
 		);
                 
-                 $this->add_control(
+        $this->add_control(
 			'price_box_size',
 			[
 				'label' => __( 'Price Box Size', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
-						'min' => 50,
+						'min' => '50',
 						'max' => 500,
 					],
 				],
