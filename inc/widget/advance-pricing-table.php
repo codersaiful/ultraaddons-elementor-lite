@@ -15,6 +15,13 @@ use Elementor\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+/**
+ * Class Description den Noman vai
+ * 
+ * @author Saiful Islam <codersaiful@gmail.com>
+ * @since 1.1.0.12
+ * 
+ */
 class Advance_Pricing_Table extends Base{
 
     public function __construct($data = [], $args = null) {
