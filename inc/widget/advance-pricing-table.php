@@ -1323,22 +1323,11 @@ class Advance_Pricing_Table extends Base{
 	$settings           = $this->get_settings_for_display();
 	$currency_symbol = ( $settings['list_curreny'] !='custom') ?  $settings['list_curreny'] : $settings['list_custom_curreny'];
 	$id= $this->get_id();
-	if(Plugin::$instance->editor->is_edit_mode() && $settings['is_back']==='yes'){
-		echo '<script>
-		jQuery(".monthly").hide();
-		jQuery(".hourly").removeClass("hide");
-		jQuery(".hourly").show();
-		</script>';
-	}
-	if( Plugin::$instance->editor->is_edit_mode() ){
-		echo '<script>
-		advPricingTable();
-		</script>';
-	}
+	
 	?>
 <section class="pricing-columns pricing-section adv-pricing-table-<?php echo $id; ?>">
 	<div class="toggle-wrap">
-		<label class="filt-monthly toggler toggler--is-active"><?php echo $settings['toggle_a'] ?></label>
+		<label class="toggler toggler--is-active"><?php echo $settings['toggle_a'] ?></label>
 		<div class="toggle">
 			<input type="checkbox" class="check switcher">
 			<b class="b switch"></b>
