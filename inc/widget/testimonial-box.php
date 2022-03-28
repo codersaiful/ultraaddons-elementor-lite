@@ -256,8 +256,8 @@ class Testimonial_Box extends Base{
                         'type' => Controls_Manager::COLOR,
                         'default' => '#0FC392',
                         'selectors' => [
-                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box span.quote-icon i' => 'color: {{VALUE}}',
-                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box span.quote-icon svg' => 'fill: {{VALUE}}',
+                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .quote-icon i' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .quote-icon svg' => 'fill: {{VALUE}}',
                         ],
                 ]
         );
@@ -279,8 +279,8 @@ class Testimonial_Box extends Base{
                         'label' => __( 'Quote Icon Color', 'ultraaddons' ),
                         'type' => Controls_Manager::COLOR,
                         'selectors' => [
-                                '{{WRAPPER}}:hover .ua-testimonial-wrapper .client-quote-box span.quote-icon i' => 'color: {{VALUE}}',
-                                '{{WRAPPER}}:hover .ua-testimonial-wrapper .client-quote-box span.quote-icon svg' => 'fill: {{VALUE}}',
+                                '{{WRAPPER}}:hover .ua-testimonial-wrapper .client-quote-box .quote-icon i' => 'color: {{VALUE}}',
+                                '{{WRAPPER}}:hover .ua-testimonial-wrapper .client-quote-box .quote-icon svg' => 'fill: {{VALUE}}',
                         ],
                 ]
         );
@@ -311,8 +311,8 @@ class Testimonial_Box extends Base{
                                 'size' => 50,
                         ],
                         'selectors' => [
-                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box span.quote-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
-                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box span.quote-icon svg' => 'width: {{SIZE}}{{UNIT}};',
+                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .quote-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
+                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .quote-icon svg' => 'width: {{SIZE}}{{UNIT}};',
                         ],
                 ]
         );
@@ -354,6 +354,24 @@ class Testimonial_Box extends Base{
                         'default' => '#5C6B79',
                         'selectors' => [
                                 '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .ua-testimonial-title' => 'color: {{VALUE}}',
+                        ],
+                ]
+        );
+         $this->add_responsive_control(
+                'title_margin',
+                [
+                        'label'       => esc_html__( 'Title Margin', 'ultraaddons' ),
+                        'type'        => Controls_Manager::DIMENSIONS,
+                        'size_units'  => [ '%', 'px' ],
+                        'placeholder' => [
+                                'top'    => '',
+                                'right'  => '',
+                                'bottom' => '',
+                                'left'   => '',
+                        ],
+                        'separator' =>'after',
+                        'selectors'   => [
+                                '{{WRAPPER}} .client-info' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                         ],
                 ]
         );
@@ -560,9 +578,8 @@ class Testimonial_Box extends Base{
 
         $settings = $this->get_settings_for_display();
         $position = $settings['content_position'];
-        $position_class = $position ? 'position-' . $position : '';
 
-        $this->add_render_attribute( 'wrapper', 'class', 'ua-testimonial-wrapper ' .$position_class .'' );
+        $this->add_render_attribute( 'wrapper', 'class', 'ua-testimonial-wrapper' );
         $this->add_render_attribute( 'item', 'class', 'ua-testimonial' );
         $this->add_render_attribute( 'title', 'class', 'ua-testimonial-title' );
         $this->add_render_attribute( 'sub-title', 'class', 'ua-testimonial-subtitle' );
@@ -580,10 +597,7 @@ class Testimonial_Box extends Base{
     <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
         <div <?php echo $this->get_render_attribute_string( 'item' ); ?>>
             <div class="client-quote-box">
-                <?php echo '<p ' . $this->get_render_attribute_string( 'quote' ) . '>' . $settings['quote'] . '</p>'; ?>
-               <span class="quote-icon">
-                    <?php \Elementor\Icons_Manager::render_icon( $settings['quote_icon'], [ 'aria-hidden' => 'true' ] ); ?>
-                </span>
+                 <?php if($position=='top'):?>
                 <div class="client-info">
                     <div class="user-avatar" 
                         <?php if( $image ){ ?>
@@ -595,6 +609,27 @@ class Testimonial_Box extends Base{
                         <?php echo '<span ' . $this->get_render_attribute_string( 'sub-title' ) . '>' . $settings['sub-title'] . '</span>'; ?>
                     </div>
                 </div>
+                <?php endif;?>
+                <div class="quote-icon">
+                        <?php \Elementor\Icons_Manager::render_icon( $settings['quote_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                </div>
+                <p <?php echo $this->get_render_attribute_string( 'quote' );?> >
+                        
+                        <?php echo $settings['quote'];?>
+                </p>
+                <?php if($position=='bottom'):?>
+                <div class="client-info">
+                    <div class="user-avatar" 
+                        <?php if( $image ){ ?>
+                            style="background-image: url(<?php echo esc_attr( $image ); ?>);"
+                        <?php } ?> 
+                         ></div>
+                    <div class="user-name">
+                        <?php echo '<p ' . $this->get_render_attribute_string( 'title' ) . '>' . $settings['title'] . '</p>'; ?>
+                        <?php echo '<span ' . $this->get_render_attribute_string( 'sub-title' ) . '>' . $settings['sub-title'] . '</span>'; ?>
+                    </div>
+                </div>
+                <?php endif;?>
             </div>
         </div>
 

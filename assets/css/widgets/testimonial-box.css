@@ -99,11 +99,3 @@
 .elementor-align-center .ua-testimonial-wrapper .client-info .user-avatar {
     margin: 0 0 18px;
 }
-.client-quote-box {
-    display: flex;
-    flex-direction: column;
-}
-.position-top .client-quote-box {
-    display: flex;
-    flex-direction: column-reverse;
-}
