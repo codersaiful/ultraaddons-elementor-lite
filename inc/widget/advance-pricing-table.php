@@ -1323,6 +1323,13 @@ class Advance_Pricing_Table extends Base{
 	$settings           = $this->get_settings_for_display();
 	$currency_symbol = ( $settings['list_curreny'] !='custom') ?  $settings['list_curreny'] : $settings['list_custom_curreny'];
 	$id= $this->get_id();
+	if(Plugin::$instance->editor->is_edit_mode() && $settings['is_back']==='yes'){
+		echo '<script>
+		jQuery(".monthly").hide();
+		jQuery(".hourly").removeClass("hide");
+		jQuery(".hourly").show();
+		</script>';
+	}
 	
 	?>
 <section class="pricing-columns pricing-section adv-pricing-table-<?php echo $id; ?>">
