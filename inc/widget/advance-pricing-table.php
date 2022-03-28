@@ -12,6 +12,16 @@ use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Background;
 use Elementor\Plugin;
 
+/**
+ * Advance Pricing table
+ * Pricing table with css switch toggle
+ * Credit: https://codepen.io/kijanmaharjan/pen/dMmdej
+ * @since 1.1.0.12
+ * @package UltraAddons
+ * @author Saiful islam <codersaiful@gmail.com>
+ * @author B M Rafiul <bmrafiul.alam@gmail.com>
+ */
+
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -57,9 +67,7 @@ class Advance_Pricing_Table extends Base{
      * @return array Widget scripts dependencies.
      * @by Saiful
      */
-    public function get_style_depends() {
-        return ['adv-pricing'];
-    }
+
     public function get_script_depends() {
 		return [ 'jquery','pricing' ];
     }
@@ -1314,7 +1322,7 @@ class Advance_Pricing_Table extends Base{
     protected function render() {
 	$settings           = $this->get_settings_for_display();
 	$currency_symbol = ( $settings['list_curreny'] !='custom') ?  $settings['list_curreny'] : $settings['list_custom_curreny'];
-	
+	$id= $this->get_id();
 	if(Plugin::$instance->editor->is_edit_mode() && $settings['is_back']==='yes'){
 		echo '<script>
 		jQuery(".monthly").hide();
@@ -1322,15 +1330,20 @@ class Advance_Pricing_Table extends Base{
 		jQuery(".hourly").show();
 		</script>';
 	}
+	if( Plugin::$instance->editor->is_edit_mode() ){
+		echo '<script>
+		advPricingTable();
+		</script>';
+	}
 	?>
-<section class="pricing-columns pricing-section">
+<section class="pricing-columns pricing-section adv-pricing-table-<?php echo $id; ?>">
 	<div class="toggle-wrap">
-		<label class="toggler filt-monthly toggler--is-active"><?php echo $settings['toggle_a'] ?></label>
+		<label class="filt-monthly toggler toggler--is-active"><?php echo $settings['toggle_a'] ?></label>
 		<div class="toggle">
 			<input type="checkbox" class="check switcher">
 			<b class="b switch"></b>
 		</div>
-		<label class="toggler filt-hourly"><?php echo $settings['toggle_b'] ?></label>
+		<label class="filt-hourly toggler"><?php echo $settings['toggle_b'] ?></label>
 	</div>
 	<p class="desc">
 		<?php echo $settings['price_desc']; ?>

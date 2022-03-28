@@ -63,7 +63,11 @@
 .ua-testimonial-wrapper .owl-item  .client-quote-box:hover  span{
     color:#fff;
 }
-
+.ua-testimonial-wrapper{
+  padding:50px;
+  background:#b6dcfe;
+  border:1px solid #ddd
+}
 .ua-testimonial-wrapper .owl-item  .client-quote-box:hover .user-avatar{
     border-color:#2BE1B0;
 }
@@ -95,9 +99,11 @@
 .elementor-align-center .ua-testimonial-wrapper .client-info .user-avatar {
     margin: 0 0 18px;
 }
-
-.ua-element-testimonial-box .elementor-widget-container{
-    background: #F4F9FC;
-    border: 1px solid #E2EBF1;
-    padding: 50px 45px;
+.client-quote-box {
+    display: flex;
+    flex-direction: column;
+}
+.position-top .client-quote-box {
+    display: flex;
+    flex-direction: column-reverse;
 }
