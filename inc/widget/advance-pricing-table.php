@@ -57,9 +57,7 @@ class Advance_Pricing_Table extends Base{
      * @return array Widget scripts dependencies.
      * @by Saiful
      */
-    public function get_style_depends() {
-        return ['adv-pricing'];
-    }
+    
     public function get_script_depends() {
 		return [ 'jquery','pricing' ];
     }
