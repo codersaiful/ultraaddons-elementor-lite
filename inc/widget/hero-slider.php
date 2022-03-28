@@ -101,13 +101,14 @@ class Hero_Slider extends Base{
         $this->slider_general_style();
         $this->slider_btn_style();
         $this->slider_pagination_style();
+        $this->slider_navigation_style();
     }
     
     protected function slider_settings_controls(){
         $this->start_controls_section(
             'slider_settings',
             [
-                'label'     => esc_html__( 'Slider Settings', 'ultraaddons' ),
+                'label'     => esc_html__( 'Slider Settings . ', 'ultraaddons' ),
             ]
         );
 
@@ -374,10 +375,10 @@ class Hero_Slider extends Base{
 				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
-						'list_title' => esc_html__( 'iPhone', 'ultraaddons' ),
+						'list_title' => esc_html__( 'Ultra Addons', 'ultraaddons' ),
 					],
 					[
-						'list_title' => esc_html__( 'Mackbook', 'ultraaddons' ),
+						'list_title' => esc_html__( 'Woo Table', 'ultraaddons' ),
 					],
 
 				],
@@ -531,6 +532,30 @@ class Hero_Slider extends Base{
 				],
 			]
 		);
+		$this->add_control(
+			'overlay',
+			[
+				'label' => __( 'Overlay', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+				'separator' => 'before',
+				'frontend_available' => true,
+			]
+		);
+		$this->add_control(
+			'overlay_bg', [
+				'label' => __( 'Overlay Background', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-hero-slider-overlay ' => 'background-color: {{VALUE}};',
+				],
+                'separator'=> 'after',
+				'default'=>'#33333373'
+			]
+        );
         
         $this->end_controls_section();
     }
@@ -541,7 +566,7 @@ class Hero_Slider extends Base{
 		$this->start_controls_section(
             'slide_btn_style',
             [
-                'label'     => esc_html__( 'Slider Button', 'ultraaddons' ),
+                'label'     => esc_html__( 'Button', 'ultraaddons' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -562,7 +587,7 @@ class Hero_Slider extends Base{
 				'label' => __( 'Button Background', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .ua-slider-buttton' => 'background: {{VALUE}};',
+						'{{WRAPPER}} .ua-hero .ua-slider-container .ua-slider-buttton' => 'background: {{VALUE}};',
 				]
 			]
         );
@@ -571,7 +596,7 @@ class Hero_Slider extends Base{
 			[
 				'name' => 'slider_btn_border',
 				'label' => esc_html__( 'Button Border', 'ultraaddons' ),
-				'selector' => '{{WRAPPER}} .ua-slider-buttton',
+				'selector' => '{{WRAPPER}} .ua-hero .ua-slider-buttton',
 			]
 		);
 		$this->add_control(
@@ -579,7 +604,7 @@ class Hero_Slider extends Base{
 				'label' => __( 'Button Text Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .ua-slider-buttton, i.uicon.uicon-cart' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .ua-slider-container .ua-slider-buttton, i.uicon.uicon-cart' => 'color: {{VALUE}};',
 				]
 			]
         );
@@ -605,8 +630,8 @@ class Hero_Slider extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .ua-slider-buttton' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					'{{WRAPPER}} .ua-slider-buttton:before' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ua-hero .ua-slider-container .ua-slider-buttton' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ua-hero .ua-slider-container .ua-slider-buttton:before' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -623,7 +648,7 @@ class Hero_Slider extends Base{
 					'left'   => '',
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .ua-slider-buttton' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ua-slider-container .ua-slider-buttton' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -652,7 +677,7 @@ class Hero_Slider extends Base{
 				'label' => __( 'Button Background', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .ua-slider-buttton:before' => 'background: {{VALUE}};',
+						'{{WRAPPER}} .ua-hero .ua-slider-container .ua-slider-buttton:before, .ua-slider-container .ua-slider-buttton:hover' => 'background: {{VALUE}};',
 				]
 			]
         );
@@ -661,7 +686,7 @@ class Hero_Slider extends Base{
 			[
 				'name' => 'slider_btn_hover_border',
 				'label' => esc_html__( 'Button Border', 'ultraaddons' ),
-				'selector' => '{{WRAPPER}} .ua-slider-buttton:hover',
+				'selector' => '{{WRAPPER}} .ua-slider-container a.ua-slider-buttton:hover',
 			]
 		);
 		$this->add_control(
@@ -669,7 +694,7 @@ class Hero_Slider extends Base{
 				'label' => __( 'Button Text Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .ua-slider-buttton:hover, .ua-slider-buttton:hover' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .ua-slider-container .ua-slider-buttton' => 'color: {{VALUE}};',
 				]
 			]
         );
@@ -682,6 +707,7 @@ class Hero_Slider extends Base{
 		$this->end_controls_section();
 	}
 	protected function slider_pagination_style() {
+		$id = $this->get_id();
         $this->start_controls_section(
             'pagination_style',
             [
@@ -770,6 +796,7 @@ class Hero_Slider extends Base{
 				],
 			]
         );
+	
 		$this->add_control(
 			'slider_progress_fill_color', [
 				'label' => __( 'Progress Fill Color', 'ultraaddons' ),
@@ -823,6 +850,49 @@ class Hero_Slider extends Base{
 
         $this->end_controls_section();
     }
+	protected function slider_navigation_style() {
+		$id = $this->get_id();
+        $this->start_controls_section(
+            'navigation_style',
+            [
+                'label'     => esc_html__( 'Navigation', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->add_control(
+			'slider_navigation_color', [
+				'label' => __( 'Navigation Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .swiper-button-next:after, .swiper-button-prev:after' => 'color: {{VALUE}};',
+				],
+			]
+        );
+		$this->add_control(
+			'icon_size',
+			[
+				'label' => esc_html__( 'Icon Size', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px'],
+				'range' => [
+					'px' => [
+						'min' => 10,
+						'max' => 200,
+						'step' => 10,
+					],
+				],
+				'default' => [
+					'size' => '44',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .swiper-button-next:after, .swiper-button-prev:after' => 'font-size: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+		
+
+        $this->end_controls_section();
+    }
      /**
      * Render oEmbed widget output on the frontend.
      *
@@ -833,8 +903,9 @@ class Hero_Slider extends Base{
      */
     protected function render() {
         $settings = $this->get_settings_for_display();
+		$id= $this->get_id();
         ?>
-   	<div class="ua-hero">
+   	<div class="ua-hero hero-slider-<?php echo $id;?>">
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
             <!-- Slides -->
@@ -859,6 +930,9 @@ class Hero_Slider extends Base{
                         </div>
                     </div>
                 </div>
+				<?php if('yes'===$settings['overlay']):?>
+					<div class="ua-hero-slider-overlay"></div>
+				<?php endif;?>
             </div>
             <?php }
         }
