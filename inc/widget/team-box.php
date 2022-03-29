@@ -44,86 +44,7 @@ class Team_Box extends Base{
        
     }
     
-    /**
-     * Render oEmbed widget output on the frontend.
-     *
-     * Written in PHP and used to generate the final HTML.
-     *
-     * @since 1.0.0
-     * @access protected
-     */
-    protected function render() {
-        
-        $settings           = $this->get_settings_for_display();
-        
-        $this->add_render_attribute( 'wrapper', 'class', 'ua-single-team-wrapper' );
-        
-        $this->add_inline_editing_attributes( 'title', 'None' );
-        $this->add_render_attribute( 'title', 'class', 'team-box-title' );
-
-        $this->add_inline_editing_attributes( 'designation', 'none' );
-        $this->add_render_attribute( 'designation', 'class', 'team-box-designation' );
-
-        
-       $link = false;
-        if ( ! empty( $settings['link']['url'] ) ) {
-                $this->add_link_attributes( 'button', $settings['link'] );
-                $this->add_render_attribute( 'button', 'class', 'team-box-link' );
-                $link = true;
-        }
-        
-        //Value Assigning
-        $image = !empty( $settings['image']['url'] ) ? $settings['image']['url'] : false;
-
-        if( empty( $image ) ){
-            $this->add_render_attribute( 'wrapper', 'class', 'no-profile-image' );
-        }
-        $title = !empty( $settings['title'] ) ? $settings['title'] : false;
-        $designation = !empty( $settings['designation'] ) ? $settings['designation'] : false;
-        ?>
-    <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
-        <div class="team-box-item">
-            <div class="team-box-profile-avatar"
-                 
-                <?php if( ! empty( $image ) ){ ?>
-                 style="background-image: url(<?php echo esc_attr( $image ); ?>);"
-                <?php } ?> 
-                 >
-                
-                
-                <?php 
-                if( ! empty( $image ) ){ //'temp-2' == $settings['template'] && 
-                ?>
-                <img class="ua-temp2-profile-image" src="<?php echo esc_url( $image ); ?>">    
-                <?php    
-                }
-
-                $this->social_links();
-                ?>
-            </div>  
-            
-            <div class="team-box-info">
-                <div class="team-box-name">
-                    <?php if( $title ){ ?>
-                    <h2 <?php echo $this->get_render_attribute_string( 'title' ); ?>><?php echo esc_html( $title ); ?></h2>
-                    <?php } ?>
-                    
-                    <?php if( $designation ){ ?>
-                    <span <?php echo $this->get_render_attribute_string( 'designation' ); ?>><?php echo esc_html( $designation ); ?></span>
-                    <?php } ?>
-                </div>
-                <?php if( $link ){ ?>
-                <div class="team-box-btn">
-                    <a <?php echo $this->get_render_attribute_string( 'button' ); ?>><i class="fas fa-angle-double-right"></i></a>
-                </div>
-                <?php } ?>
-            </div>
-        </div>
-    </div>
-          
-        <?php
-        
-    }
+    
     
     protected function social_links() {
         $settings           = $this->get_settings_for_display();
@@ -541,7 +462,89 @@ class Team_Box extends Base{
         $this->end_controls_section();
     }
        
-    protected static function get_profile_names() {
+   
+/**
+     * Render oEmbed widget output on the frontend.
+     *
+     * Written in PHP and used to generate the final HTML.
+     *
+     * @since 1.0.0
+     * @access protected
+     */
+    protected function render() {
+        
+        $settings           = $this->get_settings_for_display();
+        
+        $this->add_render_attribute( 'wrapper', 'class', 'ua-single-team-wrapper' );
+        
+        $this->add_inline_editing_attributes( 'title', 'None' );
+        $this->add_render_attribute( 'title', 'class', 'team-box-title' );
+
+        $this->add_inline_editing_attributes( 'designation', 'none' );
+        $this->add_render_attribute( 'designation', 'class', 'team-box-designation' );
+
+        
+       $link = false;
+        if ( ! empty( $settings['link']['url'] ) ) {
+                $this->add_link_attributes( 'button', $settings['link'] );
+                $this->add_render_attribute( 'button', 'class', 'team-box-link' );
+                $link = true;
+        }
+        
+        //Value Assigning
+        $image = !empty( $settings['image']['url'] ) ? $settings['image']['url'] : false;
+
+        if( empty( $image ) ){
+            $this->add_render_attribute( 'wrapper', 'class', 'no-profile-image' );
+        }
+        $title = !empty( $settings['title'] ) ? $settings['title'] : false;
+        $designation = !empty( $settings['designation'] ) ? $settings['designation'] : false;
+        ?>
+    <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
+        <div class="team-box-item">
+            <div class="team-box-profile-avatar"
+                 
+                <?php if( ! empty( $image ) ){ ?>
+                 style="background-image: url(<?php echo esc_attr( $image ); ?>);"
+                <?php } ?> 
+                 >
+                
+                
+                <?php 
+                if( ! empty( $image ) ){ //'temp-2' == $settings['template'] && 
+                ?>
+                <img class="ua-temp2-profile-image" src="<?php echo esc_url( $image ); ?>">    
+                <?php    
+                }
+
+                $this->social_links();
+                ?>
+            </div>  
+            
+            <div class="team-box-info">
+                <div class="team-box-name">
+                    <?php if( $title ){ ?>
+                    <h2 <?php echo $this->get_render_attribute_string( 'title' ); ?>><?php echo esc_html( $title ); ?></h2>
+                    <?php } ?>
+                    
+                    <?php if( $designation ){ ?>
+                    <span <?php echo $this->get_render_attribute_string( 'designation' ); ?>><?php echo esc_html( $designation ); ?></span>
+                    <?php } ?>
+                </div>
+                <?php if( $link ){ ?>
+                <div class="team-box-btn">
+                    <a <?php echo $this->get_render_attribute_string( 'button' ); ?>><i class="fas fa-angle-double-right"></i></a>
+                </div>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+          
+        <?php
+        
+    }
+
+     protected static function get_profile_names() {
         return [
                 '500px'          => __( '500px', 'ultraaddons' ),
                 'apple'          => __( 'Apple', 'ultraaddons' ),
