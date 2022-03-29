@@ -1,6 +1,9 @@
 /*  Testimonial CSS
 -------------------------------------------*/
 /* Testimonial Section Style one */
+.client-quote-box{
+    position: relative;
+}
 .ua-testimonial-wrapper .section-title.v2 {
     width: 60%;
 }

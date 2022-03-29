@@ -686,7 +686,7 @@ class Testimonial_Box extends Base{
                         'selector' => '{{WRAPPER}} .ua-testimonial-wrapper',
                 ]
         );
-         $this->add_responsive_control(
+                $this->add_responsive_control(
                         'box_radius',
                         [
                                 'label'       => esc_html__( 'Box Radius', 'ultraaddons' ),
@@ -698,9 +698,26 @@ class Testimonial_Box extends Base{
                                         'bottom' => '',
                                         'left'   => '',
                                 ],
-                                'separator' =>'after',
                                 'selectors'   => [
                                         '{{WRAPPER}} .ua-testimonial-wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                ],
+                        ]
+                );
+                 $this->add_responsive_control(
+                        'box_padding',
+                        [
+                                'label'       => esc_html__( 'Box Padding', 'ultraaddons' ),
+                                'type'        => Controls_Manager::DIMENSIONS,
+                                'size_units'  => [ '%', 'px' ],
+                                'placeholder' => [
+                                        'top'    => '',
+                                        'right'  => '',
+                                        'bottom' => '',
+                                        'left'   => '',
+                                ],
+                                'separator' =>'after',
+                                'selectors'   => [
+                                        '{{WRAPPER}} .ua-testimonial-wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                                 ],
                         ]
                 );
