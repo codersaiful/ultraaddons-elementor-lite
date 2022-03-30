@@ -105,7 +105,7 @@ class Testimonial_Box extends Base{
      */
     protected function content_general_controls() {
         
-        $placeholder_image = ULTRA_ADDONS_URL . 'assets/images/user.png';
+        $placeholder_image = ULTRA_ADDONS_URL . 'assets/images/team.jpg';
         
         $this->start_controls_section(
             'general_content',
@@ -121,7 +121,7 @@ class Testimonial_Box extends Base{
                 [
                     'label' => __( 'Title', 'ultraaddons' ),
                     'type' => Controls_Manager::TEXT,
-                    'default'       => __( 'Jonny Robartson', 'ultraaddons' ),
+                    'default'       => __( 'John Doe', 'ultraaddons' ),
                     'label_block'   => TRUE,
                     'dynamic'       => ['active' => true],
                 ]
@@ -132,7 +132,7 @@ class Testimonial_Box extends Base{
                 [
                     'label' => __( 'Position/Designation', 'ultraaddons' ),
                     'type' => Controls_Manager::TEXT,
-                    'default'       => __( 'UI/UX Designer', 'ultraaddons' ),
+                    'default'       => __( 'Business Consultant', 'ultraaddons' ),
                     'label_block'   => TRUE,
                     'dynamic'       => ['active' => true],
                 ]
@@ -287,10 +287,10 @@ class Testimonial_Box extends Base{
                 [
                         'label' => __( 'Quote Icon Color', 'ultraaddons' ),
                         'type' => Controls_Manager::COLOR,
-                        'default' => '#C30F6C',
+                        'default' => '#C4C4C4',
                         'selectors' => [
-                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .quote-icon i' => 'color: {{VALUE}}',
-                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .quote-icon svg' => 'fill: {{VALUE}}',
+                                '{{WRAPPER}} .ua-testimonial-box .client-quote-box .quote-icon i' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} .ua-testimonial-box .client-quote-box .quote-icon svg' => 'fill: {{VALUE}}',
                         ],
                 ]
         );
@@ -312,8 +312,8 @@ class Testimonial_Box extends Base{
                         'label' => __( 'Quote Icon Color', 'ultraaddons' ),
                         'type' => Controls_Manager::COLOR,
                         'selectors' => [
-                                '{{WRAPPER}}:hover .ua-testimonial-wrapper .client-quote-box .quote-icon i' => 'color: {{VALUE}}',
-                                '{{WRAPPER}}:hover .ua-testimonial-wrapper .client-quote-box .quote-icon svg' => 'fill: {{VALUE}}',
+                                '{{WRAPPER}}:hover .ua-testimonial-box .client-quote-box .quote-icon i' => 'color: {{VALUE}}',
+                                '{{WRAPPER}}:hover .ua-testimonial-box .client-quote-box .quote-icon svg' => 'fill: {{VALUE}}',
                         ],
                 ]
         );
@@ -344,8 +344,8 @@ class Testimonial_Box extends Base{
                                 'size' => 50,
                         ],
                         'selectors' => [
-                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .quote-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
-                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .quote-icon svg' => 'width: {{SIZE}}{{UNIT}};',
+                                '{{WRAPPER}} .ua-testimonial-box .client-quote-box .quote-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
+                                '{{WRAPPER}} .ua-testimonial-box .client-quote-box .quote-icon svg' => 'width: {{SIZE}}{{UNIT}};',
                         ],
                 ]
         );
@@ -375,7 +375,7 @@ class Testimonial_Box extends Base{
                 [
                         'name' => 'title_typography',
                         'label' => 'Title Typography',
-                        'selector' => '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .ua-testimonial-title',
+                        'selector' => '{{WRAPPER}} .ua-testimonial-box .client-quote-box .ua-testimonial-title',
                 ]
         );
         
@@ -386,7 +386,7 @@ class Testimonial_Box extends Base{
                         'type' => Controls_Manager::COLOR,
                         'default' => '#5C6B79',
                         'selectors' => [
-                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .ua-testimonial-title' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} .ua-testimonial-box .client-quote-box .ua-testimonial-title' => 'color: {{VALUE}}',
                         ],
                 ]
         );
@@ -433,7 +433,7 @@ class Testimonial_Box extends Base{
                 [
                         'name' => 'position_typography',
                         'label' => 'Position Typography',
-                        'selector' => '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .ua-testimonial-subtitle',
+                        'selector' => '{{WRAPPER}} .ua-testimonial-box .client-quote-box .ua-testimonial-subtitle',
                 ]
         );
         
@@ -444,7 +444,7 @@ class Testimonial_Box extends Base{
                         'type' => Controls_Manager::COLOR,
                         'default' => '#5C6B79',
                         'selectors' => [
-                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .ua-testimonial-subtitle' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} .ua-testimonial-box .client-quote-box .ua-testimonial-subtitle' => 'color: {{VALUE}}',
                         ],
                 ]
         );
@@ -462,7 +462,7 @@ class Testimonial_Box extends Base{
                         ],
                         'separator' =>'after',
                         'selectors'   => [
-                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .ua-testimonial-subtitle' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                '{{WRAPPER}} .ua-testimonial-box .client-quote-box .ua-testimonial-subtitle' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                         ],
                 ]
         );
@@ -490,7 +490,7 @@ class Testimonial_Box extends Base{
                 [
                         'name' => 'quote_title_typography',
                         'label' => 'Quote Title Typography',
-                        'selector' => '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .quote-title',
+                        'selector' => '{{WRAPPER}} .ua-testimonial-box .client-quote-box .quote-title',
                 ]
         );
         
@@ -501,7 +501,7 @@ class Testimonial_Box extends Base{
                         'type' => Controls_Manager::COLOR,
                         'default' => '#54595F',
                         'selectors' => [
-                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .quote-title' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} .ua-testimonial-box .client-quote-box .quote-title' => 'color: {{VALUE}}',
                         ],
                 ]
         );
@@ -519,7 +519,7 @@ class Testimonial_Box extends Base{
                         ],
                         'separator' =>'after',
                         'selectors'   => [
-                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .quote-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                '{{WRAPPER}} .ua-testimonial-box .client-quote-box .quote-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                         ],
                 ]
         );
@@ -529,7 +529,7 @@ class Testimonial_Box extends Base{
                 [
                         'name' => 'quote_typography',
                         'label' => 'Quote Typography',
-                        'selector' => '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .ua-testimonial-quote',
+                        'selector' => '{{WRAPPER}} .ua-testimonial-box .client-quote-box .ua-testimonial-quote',
                 ]
         );
         
@@ -540,7 +540,7 @@ class Testimonial_Box extends Base{
                         'type' => Controls_Manager::COLOR,
                         'default' => '#54595F',
                         'selectors' => [
-                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .ua-testimonial-quote' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} .ua-testimonial-box .client-quote-box .ua-testimonial-quote' => 'color: {{VALUE}}',
                         ],
                 ]
         );
@@ -571,7 +571,7 @@ class Testimonial_Box extends Base{
                 'label'       => esc_html__( 'Border', 'ultraaddons' ),
                 'placeholder' => '1px',
                 'default'     => '',
-                'selector'    => '{{WRAPPER}} .ua-testimonial-wrapper .client-info .user-avatar',
+                'selector'    => '{{WRAPPER}} .ua-testimonial-box .client-info .client-avatar img',
             )
         );
         
@@ -593,7 +593,7 @@ class Testimonial_Box extends Base{
                                 'size' => 100,
                         ],
                         'selectors' => [
-                                '{{WRAPPER}} .ua-testimonial-wrapper .client-info .user-avatar' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                                '{{WRAPPER}} .ua-testimonial-box .client-info .client-avatar img' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                         ],
                 ]
         );
@@ -611,7 +611,7 @@ class Testimonial_Box extends Base{
                         ],
                         'separator' =>'after',
                         'selectors'   => [
-                                '{{WRAPPER}} .ua-testimonial-wrapper .client-info .user-avatar' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                '{{WRAPPER}} .ua-testimonial-box .client-info .client-avatar img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                         ],
                 ]
         );
@@ -632,7 +632,7 @@ class Testimonial_Box extends Base{
                 [
                         'label' => __( 'Review Icon Color', 'ultraaddons' ),
                         'type' => Controls_Manager::COLOR,
-                        'default' => '#C30F6C',
+                        'default' => '#FF9900',
                         'selectors' => [
                                 '{{WRAPPER}} .customer-review i' => 'color: {{VALUE}}',
                         ],
@@ -701,19 +701,36 @@ class Testimonial_Box extends Base{
                         'name' => 'box_background',
                         'label' => esc_html__( 'Background', 'ultraaddons' ),
                         'types' => [ 'classic', 'gradient' ],
-                        'selector' => '{{WRAPPER}} .ua-testimonial-wrapper',
+                        'selector' => '{{WRAPPER}} .ua-testimonial-box',
                 ]
         );
-        $this->add_group_control(
+       
+
+            $this->add_group_control(
                 Group_Control_Border::get_type(),
-                array(
-                    'name'        => 'box_border',
-                    'label'       => esc_html__( 'Border', 'ultraaddons' ),
-                    'placeholder' => '1px',
-                    'default'     => '',
-                    'selector'    => '{{WRAPPER}} .ua-testimonial-wrapper',
-                )
-            );
+                [
+                        'name' => 'box_border',
+                        'label' => __( 'Some Border', 'elementor' ),
+                        'fields_options' => [
+                                'border' => [
+                                        'default' => 'solid',
+                                ],
+                                'width' => [
+                                        'default' => [
+                                                'top' => '1',
+                                                'right' => '1',
+                                                'bottom' => '1',
+                                                'left' => '1',
+                                                'isLinked' => false,
+                                        ],
+                                ],
+                                'color' => [
+                                        'default' => '#F0F0F0',
+                                ],
+                        ],
+                        'selector' => '{{WRAPPER}} .ua-testimonial-box',
+                ]
+        );
                 $this->add_responsive_control(
                         'box_radius',
                         [
@@ -727,7 +744,7 @@ class Testimonial_Box extends Base{
                                         'left'   => '0',
                                 ],
                                 'selectors'   => [
-                                        '{{WRAPPER}} .ua-testimonial-wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                        '{{WRAPPER}} .ua-testimonial-box' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                                 ],
                         ]
                 );
@@ -745,7 +762,7 @@ class Testimonial_Box extends Base{
                                 ],
                                 'separator' =>'after',
                                 'selectors'   => [
-                                        '{{WRAPPER}} .ua-testimonial-wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                        '{{WRAPPER}} .ua-testimonial-box' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                                 ],
                         ]
                 );
@@ -753,7 +770,7 @@ class Testimonial_Box extends Base{
                         Group_Control_Box_Shadow::get_type(),
                         [
                             'name' => 'box_shadow',
-                            'selector' => '{{WRAPPER}} .ua-testimonial-wrapper',
+                            'selector' => '{{WRAPPER}} .ua-testimonial-box',
                         ]
                     );
                 
@@ -775,7 +792,7 @@ class Testimonial_Box extends Base{
         $position = $settings['content_position'];
         $quote_title =  $settings['quote_title'];
 
-        $this->add_render_attribute( 'wrapper', 'class', 'ua-testimonial-wrapper' );
+        $this->add_render_attribute( 'wrapper', 'class', 'ua-testimonial-box' );
         $this->add_render_attribute( 'item', 'class', 'ua-testimonial' );
         $this->add_render_attribute( 'title', 'class', 'ua-testimonial-title' );
         $this->add_render_attribute( 'sub-title', 'class', 'ua-testimonial-subtitle' );
@@ -795,11 +812,9 @@ class Testimonial_Box extends Base{
             <div class="client-quote-box">
                  <?php if($position=='top'):?>
                 <div class="client-info">
-                    <div class="user-avatar" 
-                        <?php if( $image ){ ?>
-                            style="background-image: url(<?php echo esc_attr( $image ); ?>);"
-                        <?php } ?> 
-                         ></div>
+                        <div class="client-avatar">
+                                <img src="<?php echo esc_attr( $image ); ?>">
+                        </div>
                     <div class="user-name">
                         <?php echo '<p ' . $this->get_render_attribute_string( 'title' ) . '>' . $settings['title'] . '</p>'; ?>
                         <?php echo '<span ' . $this->get_render_attribute_string( 'sub-title' ) . '>' . $settings['sub-title'] . '</span>'; ?>
@@ -816,12 +831,11 @@ class Testimonial_Box extends Base{
                 <?php endif;?>
                 <?php if($settings['customer_review']=='yes'): ?>
                         <div class="customer-review">
-                                <?php
-                                $r=$settings['rating_number'];
-                                for ($x = 1; $x <= $r; $x++) {?>
-                                <i class="fas fa fa-star checked"></i>
-                                <?php }?>
-                                
+                        <?php
+                        $r=$settings['rating_number'];
+                        for ($x = 1; $x <= $r; $x++) {?>
+                        <i class="fas fa fa-star checked"></i>
+                        <?php }?>
                         </div>
                 <?php endif;?>
                 <p <?php echo $this->get_render_attribute_string( 'quote' );?> >
@@ -829,15 +843,13 @@ class Testimonial_Box extends Base{
                 </p>
                 <?php if($position=='bottom'):?>
                 <div class="client-info">
-                    <div class="user-avatar" 
-                        <?php if( $image ){ ?>
-                            style="background-image: url(<?php echo esc_attr( $image ); ?>);"
-                        <?php } ?> 
-                         ></div>
-                    <div class="user-name">
-                        <?php echo '<p ' . $this->get_render_attribute_string( 'title' ) . '>' . $settings['title'] . '</p>'; ?>
-                        <?php echo '<span ' . $this->get_render_attribute_string( 'sub-title' ) . '>' . $settings['sub-title'] . '</span>'; ?>
-                    </div>
+                        <div class="client-avatar">
+                                <img src="<?php echo esc_attr( $image ); ?>">
+                        </div>
+                        <div class="user-name">
+                                <?php echo '<p ' . $this->get_render_attribute_string( 'title' ) . '>' . $settings['title'] . '</p>'; ?>
+                                <?php echo '<span ' . $this->get_render_attribute_string( 'sub-title' ) . '>' . $settings['sub-title'] . '</span>'; ?>
+                        </div>
                 </div>
                 <?php endif;?>
             </div>

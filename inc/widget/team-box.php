@@ -83,7 +83,7 @@ class Team_Box extends Base{
      */
     protected function content_information_controls(){
         
-        $placeholder_image = ULTRA_ADDONS_URL . 'assets/images/user.png';
+        $placeholder_image = ULTRA_ADDONS_URL . 'assets/images/team-member.jpg';
 
         $this->start_controls_section(
                 '_section_info',
@@ -132,13 +132,26 @@ class Team_Box extends Base{
                         'label' => __( 'Designation', 'ultraaddons' ),
                         'label_block' => true,
                         'type' => Controls_Manager::TEXT,
-                        'default' => __( 'Business Man', 'ultraaddons' ),
+                        'default' => __( 'WordPress Developer', 'ultraaddons' ),
                         'placeholder' => __( 'Type Member Designation', 'ultraaddons' ),
                         'dynamic' => [
                                 'active' => true,
                         ]
                 ]
         );
+        $this->add_control(
+                'description',
+                [
+                        'label' => __( 'Description', 'ultraaddons' ),
+                        'label_block' => true,
+                        'type' => Controls_Manager::TEXTAREA,
+                        'default' => __( 'Id cibo omnium perfecto sed, vel eius rationibus ea. Ea postea ocurreret reformidans eam, vix ea iudico.', 'ultraaddons' ),
+                        'dynamic' => [
+                                'active' => true,
+                        ]
+                ]
+        );
+        
         
         $this->add_control(
                 'link',
@@ -298,20 +311,22 @@ class Team_Box extends Base{
     protected function render() {
         
         $settings           = $this->get_settings_for_display();
+        $image = !empty( $settings['image']['url'] ) ? $settings['image']['url'] : false;
         ?>
         
         <div id="member-container">
                 <div class="member">
-                <img src="https://i5.imgpile.com/i/69743.jpg">
-                <h2>Daniel Murphy</h2>
-                <p class="who">CEO / Founder</p>
-                <p class="member-text">Id cibo omnium perfecto sed, vel eius rationibus ea. Ea postea ocurreret reformidans eam, vix ea iudico.</p>
+                <img src="<?php echo $image;?>">
+                <h2><?php echo $settings['title'];?></h2>
+                <p class="who"><?php echo $settings['designation'];?></p>
+                <p class="member-text"><?php echo $settings['description'];?></p>
                 
                 <div class="soc-icons">
+                <?php 
+                foreach($settings['profiles'] as $profile):
+                ?>
                 <a href="https://twitter.com">&#xf099;</a>
-                <a href="https://linkedin.com">&#xf0e1;</a>
-                <a href="https://github.com/">&#xf09b;</a>
-                <a href="https://plus.google.com">&#xf0d5;</a>
+                <?php endforeach;?>
                 </div>
                 
                 </div>
