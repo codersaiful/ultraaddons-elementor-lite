@@ -10,8 +10,35 @@
     }
     .ua-testimonial-box .client-quote-box .quote-title {
       font-size: 32px;
-      margin: 15px;
+      margin: 15px 0px;
+      color: #54595F;
     }
     .quote-icon{
       margin:15px 0;
+    }
+    .ua-testimonial-box .user-name p {
+      font-size: 27px;
+      font-family:inherit;
+      font-weight: 600;
+      text-transform: capitalize;
+      line-height: 1.2;
+      margin: 0;
+      transition: 0.3s;
+      -webkit-transition: 0.3s;
+    }
+    .elementor-align-left .ua-testimonial-box .client-info, .elementor-align-right .ua-testimonial-box .client-info{
+      display: flex;
+      align-items: center;
+    }
+    .elementor-align-left .ua-testimonial-box .client-info{
+      justify-content: flex-start;
+    }
+    .elementor-align-right .ua-testimonial-box .client-info {
+      flex-flow: row-reverse;
+    }
+    .elementor-align-right .client-avatar img{
+      margin-left:15px ;
+    }
+    .elementor-align-left .client-avatar img{
+      margin-right:15px ;
     }

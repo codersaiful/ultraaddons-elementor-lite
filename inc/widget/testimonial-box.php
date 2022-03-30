@@ -842,6 +842,7 @@ class Testimonial_Box extends Base{
                         <?php echo $settings['quote'];?>
                 </p>
                 <?php if($position=='bottom'):?>
+                <div class="client-info">
                         <div class="client-avatar">
                                 <img src="<?php echo esc_attr( $image ); ?>">
                         </div>
