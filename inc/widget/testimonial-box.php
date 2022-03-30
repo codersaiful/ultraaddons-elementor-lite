@@ -92,9 +92,8 @@ class Testimonial_Box extends Base{
         $this->style_quote_controls();
         $this->style_avatar_controls();
         $this->style_box_style();
-        
+        $this->style_review_controls();
 
-       
     }
     
   
@@ -138,6 +137,15 @@ class Testimonial_Box extends Base{
                     'dynamic'       => ['active' => true],
                 ]
         );
+          $this->add_control(
+                'quote_title',
+                [
+                    'label' => __( 'Quote Title', 'ultraaddons' ),
+                    'type' => Controls_Manager::TEXT,
+                    'default'       => __( 'Awesome Products & Services', 'ultraaddons' ),
+                    'label_block'   => TRUE,
+                ]
+        );
         
         $this->add_control(
                 'quote',
@@ -173,6 +181,31 @@ class Testimonial_Box extends Base{
                         'default' => [
                                 'value' => 'fas fa-quote-left',
                                 'library' => 'solid',
+                        ],
+                ]
+        );
+        $this->add_control(
+                'customer_review',
+                [
+                        'label' => __( 'Add Review?', 'ultraaddons' ),
+                        'type' => Controls_Manager::SWITCHER,
+                        'label_on' => __( 'Yes', 'ultraaddons' ),
+                        'label_off' => __( 'No', 'ultraaddons' ),
+                        'default' => 'yes',
+                        'return_value' => 'yes',
+                ]
+        );
+        $this->add_control(
+                'rating_number',
+                [
+                        'label' => __( 'Rating', 'ultraaddons' ),
+                        'type' => Controls_Manager::NUMBER,
+                        'min' => 1,
+                        'step' => 1,
+                        'max' => 5,
+                        'default' => 5,
+                        'condition' => [
+                                'customer_review' => 'yes',
                         ],
                 ]
         );
@@ -217,7 +250,7 @@ class Testimonial_Box extends Base{
                         'default' => 'center',
                         'toggle' => true,
                         'prefix_class' => 'elementor-align-',
-                        'default' => 'left',
+                        'default' => 'center',
                 ]
         );
         $this->add_control(
@@ -235,7 +268,7 @@ class Testimonial_Box extends Base{
                                         'icon' => 'eicon-arrow-up',
                                 ],
                         ],
-                        'default' => 'bottom',
+                        'default' => 'top',
                 ]
         );
         
@@ -254,10 +287,10 @@ class Testimonial_Box extends Base{
                 [
                         'label' => __( 'Quote Icon Color', 'ultraaddons' ),
                         'type' => Controls_Manager::COLOR,
-                        'default' => '#0FC392',
+                        'default' => '#C30F6C',
                         'selectors' => [
-                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box span.quote-icon i' => 'color: {{VALUE}}',
-                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box span.quote-icon svg' => 'fill: {{VALUE}}',
+                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .quote-icon i' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .quote-icon svg' => 'fill: {{VALUE}}',
                         ],
                 ]
         );
@@ -279,8 +312,8 @@ class Testimonial_Box extends Base{
                         'label' => __( 'Quote Icon Color', 'ultraaddons' ),
                         'type' => Controls_Manager::COLOR,
                         'selectors' => [
-                                '{{WRAPPER}}:hover .ua-testimonial-wrapper .client-quote-box span.quote-icon i' => 'color: {{VALUE}}',
-                                '{{WRAPPER}}:hover .ua-testimonial-wrapper .client-quote-box span.quote-icon svg' => 'fill: {{VALUE}}',
+                                '{{WRAPPER}}:hover .ua-testimonial-wrapper .client-quote-box .quote-icon i' => 'color: {{VALUE}}',
+                                '{{WRAPPER}}:hover .ua-testimonial-wrapper .client-quote-box .quote-icon svg' => 'fill: {{VALUE}}',
                         ],
                 ]
         );
@@ -311,8 +344,8 @@ class Testimonial_Box extends Base{
                                 'size' => 50,
                         ],
                         'selectors' => [
-                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box span.quote-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
-                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box span.quote-icon svg' => 'width: {{SIZE}}{{UNIT}};',
+                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .quote-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
+                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .quote-icon svg' => 'width: {{SIZE}}{{UNIT}};',
                         ],
                 ]
         );
@@ -357,6 +390,24 @@ class Testimonial_Box extends Base{
                         ],
                 ]
         );
+         $this->add_responsive_control(
+                'title_margin',
+                [
+                        'label'       => esc_html__( 'Title Margin', 'ultraaddons' ),
+                        'type'        => Controls_Manager::DIMENSIONS,
+                        'size_units'  => [ '%', 'px' ],
+                        'placeholder' => [
+                                'top'    => '',
+                                'right'  => '',
+                                'bottom' => '',
+                                'left'   => '',
+                        ],
+                        'separator' =>'after',
+                        'selectors'   => [
+                                '{{WRAPPER}} .client-info' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                ]
+        );
         
         
         $this->end_controls_section();
@@ -397,6 +448,24 @@ class Testimonial_Box extends Base{
                         ],
                 ]
         );
+        $this->add_responsive_control(
+                'subtitle_margin',
+                [
+                        'label'       => esc_html__( 'Subtitle Margin', 'ultraaddons' ),
+                        'type'        => Controls_Manager::DIMENSIONS,
+                        'size_units'  => [ '%', 'px' ],
+                        'placeholder' => [
+                                'top'    => '',
+                                'right'  => '',
+                                'bottom' => '',
+                                'left'   => '',
+                        ],
+                        'separator' =>'after',
+                        'selectors'   => [
+                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .ua-testimonial-subtitle' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                ]
+        );
         
         
         $this->end_controls_section();
@@ -416,7 +485,45 @@ class Testimonial_Box extends Base{
             ]
         );
         
+         $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                        'name' => 'quote_title_typography',
+                        'label' => 'Quote Title Typography',
+                        'selector' => '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .quote-title',
+                ]
+        );
         
+        $this->add_control(
+                'quote_title_color',
+                [
+                        'label' => __( 'Quote Title Color', 'ultraaddons' ),
+                        'type' => Controls_Manager::COLOR,
+                        'default' => '#54595F',
+                        'selectors' => [
+                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .quote-title' => 'color: {{VALUE}}',
+                        ],
+                ]
+        );
+        $this->add_responsive_control(
+                'quote_title_margin',
+                [
+                        'label'       => esc_html__( 'Quote Title Margin', 'ultraaddons' ),
+                        'type'        => Controls_Manager::DIMENSIONS,
+                        'size_units'  => [ '%', 'px' ],
+                        'placeholder' => [
+                                'top'    => '',
+                                'right'  => '',
+                                'bottom' => '',
+                                'left'   => '',
+                        ],
+                        'separator' =>'after',
+                        'selectors'   => [
+                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .quote-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                ]
+        );
+
         $this->add_group_control(
                 Group_Control_Typography::get_type(),
                 [
@@ -437,6 +544,7 @@ class Testimonial_Box extends Base{
                         ],
                 ]
         );
+       
         
         
         $this->end_controls_section();
@@ -472,24 +580,102 @@ class Testimonial_Box extends Base{
                 [
                         'label' => __( 'Size', 'ultraaddons' ),
                         'type' => Controls_Manager::SLIDER,
-                        'size_units' => [ 'px', '%' ],
+                        'size_units' => [ 'px' ],
                         'range' => [
                                 'px' => [
                                         'min' => 0,
-                                        'max' => 100,
+                                        'max' => 200,
                                         'step' => 1,
-                                ],
-                                '%' => [
-                                        'min' => 0,
-                                        'max' => 100,
                                 ],
                         ],
                         'default' => [
                                 'unit' => 'px',
-                                'size' => 50,
+                                'size' => 100,
                         ],
                         'selectors' => [
                                 '{{WRAPPER}} .ua-testimonial-wrapper .client-info .user-avatar' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                        ],
+                ]
+        );
+         $this->add_responsive_control(
+                'avatar_radius',
+                [
+                        'label'       => esc_html__( 'Avatar Radius', 'ultraaddons' ),
+                        'type'        => Controls_Manager::DIMENSIONS,
+                        'size_units'  => [ '%', 'px' ],
+                        'placeholder' => [
+                                'top'    => '',
+                                'right'  => '',
+                                'bottom' => '',
+                                'left'   => '',
+                        ],
+                        'separator' =>'after',
+                        'selectors'   => [
+                                '{{WRAPPER}} .ua-testimonial-wrapper .client-info .user-avatar' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                ]
+        );
+        
+        $this->end_controls_section();
+    }
+    protected function style_review_controls() {
+        $this->start_controls_section(
+            'review',
+            [
+                'label'     => esc_html__( 'Review', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        
+       $this->add_control(
+                'review_icon_color',
+                [
+                        'label' => __( 'Review Icon Color', 'ultraaddons' ),
+                        'type' => Controls_Manager::COLOR,
+                        'default' => '#C30F6C',
+                        'selectors' => [
+                                '{{WRAPPER}} .customer-review i' => 'color: {{VALUE}}',
+                        ],
+                ]
+        );
+        $this->add_control(
+                'review_icon_size',
+                [
+                        'label' => esc_html__( 'Icon Size', 'ultraaddons' ),
+                        'type' => Controls_Manager::SLIDER,
+                        'size_units' => [ 'px' ],
+                        'range' => [
+                                'px' => [
+                                        'min' => 12,
+                                        'max' => 100,
+                                        'step' => 5,
+                                ],
+                                
+                        ],
+                        'default' => [
+                                'unit' => 'px',
+                                'size' => 20,
+                        ],
+                        'selectors' => [
+                                '{{WRAPPER}} .customer-review i' => 'font-size: {{SIZE}}{{UNIT}};',
+                        ],
+                ]
+        );
+        $this->add_responsive_control(
+                'review_margin',
+                [
+                        'label'       => esc_html__( 'Review Margin', 'ultraaddons' ),
+                        'type'        => Controls_Manager::DIMENSIONS,
+                        'size_units'  => [ '%', 'px' ],
+                        'placeholder' => [
+                                'top'    => '',
+                                'right'  => '',
+                                'bottom' => '',
+                                'left'   => '',
+                        ],
+                        'separator' =>'after',
+                        'selectors'   => [
+                                '{{WRAPPER}} .customer-review' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                         ],
                 ]
         );
@@ -518,10 +704,37 @@ class Testimonial_Box extends Base{
                         'selector' => '{{WRAPPER}} .ua-testimonial-wrapper',
                 ]
         );
-         $this->add_responsive_control(
+        $this->add_group_control(
+                Group_Control_Border::get_type(),
+                array(
+                    'name'        => 'box_border',
+                    'label'       => esc_html__( 'Border', 'ultraaddons' ),
+                    'placeholder' => '1px',
+                    'default'     => '',
+                    'selector'    => '{{WRAPPER}} .ua-testimonial-wrapper',
+                )
+            );
+                $this->add_responsive_control(
                         'box_radius',
                         [
                                 'label'       => esc_html__( 'Box Radius', 'ultraaddons' ),
+                                'type'        => Controls_Manager::DIMENSIONS,
+                                'size_units'  => [ '%', 'px' ],
+                                'placeholder' => [
+                                        'top'    => '0',
+                                        'right'  => '0',
+                                        'bottom' => '0',
+                                        'left'   => '0',
+                                ],
+                                'selectors'   => [
+                                        '{{WRAPPER}} .ua-testimonial-wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                ],
+                        ]
+                );
+                 $this->add_responsive_control(
+                        'box_padding',
+                        [
+                                'label'       => esc_html__( 'Box Padding', 'ultraaddons' ),
                                 'type'        => Controls_Manager::DIMENSIONS,
                                 'size_units'  => [ '%', 'px' ],
                                 'placeholder' => [
@@ -532,7 +745,7 @@ class Testimonial_Box extends Base{
                                 ],
                                 'separator' =>'after',
                                 'selectors'   => [
-                                        '{{WRAPPER}} .ua-testimonial-wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                        '{{WRAPPER}} .ua-testimonial-wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                                 ],
                         ]
                 );
@@ -560,9 +773,9 @@ class Testimonial_Box extends Base{
 
         $settings = $this->get_settings_for_display();
         $position = $settings['content_position'];
-        $position_class = $position ? 'position-' . $position : '';
+        $quote_title =  $settings['quote_title'];
 
-        $this->add_render_attribute( 'wrapper', 'class', 'ua-testimonial-wrapper ' .$position_class .'' );
+        $this->add_render_attribute( 'wrapper', 'class', 'ua-testimonial-wrapper' );
         $this->add_render_attribute( 'item', 'class', 'ua-testimonial' );
         $this->add_render_attribute( 'title', 'class', 'ua-testimonial-title' );
         $this->add_render_attribute( 'sub-title', 'class', 'ua-testimonial-subtitle' );
@@ -580,10 +793,7 @@ class Testimonial_Box extends Base{
     <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
         <div <?php echo $this->get_render_attribute_string( 'item' ); ?>>
             <div class="client-quote-box">
-                <?php echo '<p ' . $this->get_render_attribute_string( 'quote' ) . '>' . $settings['quote'] . '</p>'; ?>
-               <span class="quote-icon">
-                    <?php \Elementor\Icons_Manager::render_icon( $settings['quote_icon'], [ 'aria-hidden' => 'true' ] ); ?>
-                </span>
+                 <?php if($position=='top'):?>
                 <div class="client-info">
                     <div class="user-avatar" 
                         <?php if( $image ){ ?>
@@ -595,6 +805,41 @@ class Testimonial_Box extends Base{
                         <?php echo '<span ' . $this->get_render_attribute_string( 'sub-title' ) . '>' . $settings['sub-title'] . '</span>'; ?>
                     </div>
                 </div>
+                <?php endif;?>
+                <div class="quote-icon">
+                        <?php \Elementor\Icons_Manager::render_icon( $settings['quote_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                </div>
+                <?php if( $quote_title ): ?>
+                        <h2 class="quote-title">
+                                <?php echo $quote_title; ?>
+                        </h2>
+                <?php endif;?>
+                <?php if($settings['customer_review']=='yes'): ?>
+                        <div class="customer-review">
+                                <?php
+                                $r=$settings['rating_number'];
+                                for ($x = 1; $x <= $r; $x++) {?>
+                                <i class="fas fa fa-star checked"></i>
+                                <?php }?>
+                                
+                        </div>
+                <?php endif;?>
+                <p <?php echo $this->get_render_attribute_string( 'quote' );?> >
+                        <?php echo $settings['quote'];?>
+                </p>
+                <?php if($position=='bottom'):?>
+                <div class="client-info">
+                    <div class="user-avatar" 
+                        <?php if( $image ){ ?>
+                            style="background-image: url(<?php echo esc_attr( $image ); ?>);"
+                        <?php } ?> 
+                         ></div>
+                    <div class="user-name">
+                        <?php echo '<p ' . $this->get_render_attribute_string( 'title' ) . '>' . $settings['title'] . '</p>'; ?>
+                        <?php echo '<span ' . $this->get_render_attribute_string( 'sub-title' ) . '>' . $settings['sub-title'] . '</span>'; ?>
+                    </div>
+                </div>
+                <?php endif;?>
             </div>
         </div>
 

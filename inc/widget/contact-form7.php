@@ -496,7 +496,7 @@ class Contact_Form7 extends Base{
                                 ],
                                 'default' => 'left',
                                 'selectors' => [
-                                        '{{WRAPPER}} .wpcf7 p' => 'text-align:{{VALUE}};',
+                                        '{{WRAPPER}} .ua-form.cf7-forms input[type="submit"] ' => 'text-align:{{VALUE}};',
                                 ],
                                
                             ]
@@ -516,7 +516,7 @@ class Contact_Form7 extends Base{
                                         'unit' => 'px',
                                 ],
                                 'selectors' => [
-                                        '{{WRAPPER}} form.ultraaddons-cf7-form input[type="submit"]' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                        '{{WRAPPER}} .ua-form.cf7-forms input[type="submit"]' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                                 ],
                         ]
                 );
@@ -527,7 +527,7 @@ class Contact_Form7 extends Base{
                                 'type' => Controls_Manager::DIMENSIONS,
                                 'size_units' => [ 'px' ],
                                 'selectors' => [
-                                        '{{WRAPPER}} form.ultraaddons-cf7-form input[type="submit"]' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                        '{{WRAPPER}} .ua-form.cf7-forms input[type="submit"]' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                                 ],
                         ]
                 );
@@ -538,7 +538,7 @@ class Contact_Form7 extends Base{
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#FFF',
                                 'selectors' => [
-                                        '{{WRAPPER}} form.ultraaddons-cf7-form input[type="submit"]' => 'color: {{VALUE}};',
+                                        '{{WRAPPER}} .ua-form.cf7-forms input[type="submit"]' => 'color: {{VALUE}};',
                                 ],
                         ]
                 );
@@ -550,7 +550,7 @@ class Contact_Form7 extends Base{
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#0fc392',
                                 'selectors' => [
-                                        '{{WRAPPER}} form.ultraaddons-cf7-form input[type="submit"]' => 'border-color: {{VALUE}};',
+                                        '{{WRAPPER}} .ua-form.cf7-forms input[type="submit"]' => 'border-color: {{VALUE}};',
                                 ],
                         ]
                 );
@@ -562,7 +562,7 @@ class Contact_Form7 extends Base{
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#0fc392',
                                 'selectors' => [
-                                        '{{WRAPPER}} form.ultraaddons-cf7-form input[type="submit"]' => 'background-color: {{VALUE}};',
+                                        '{{WRAPPER}} .ua-form.cf7-forms input[type="submit"]' => 'background-color: {{VALUE}};',
                                 ],
                         ]
                 );
@@ -605,7 +605,7 @@ class Contact_Form7 extends Base{
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#0fc392',
                                 'selectors' => [
-                                        '{{WRAPPER}} form.ultraaddons-cf7-form input[type="submit"]:hover' => 'color: {{VALUE}};',
+                                        '{{WRAPPER}} .ua-form.cf7-forms input[type="submit"]:hover' => 'color: {{VALUE}};',
                                 ],
                         ]
                 );
@@ -617,7 +617,7 @@ class Contact_Form7 extends Base{
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#0fc392',
                                 'selectors' => [
-                                        '{{WRAPPER}} form.ultraaddons-cf7-form input[type="submit"]:hover' => 'border-color: {{VALUE}};',
+                                        '{{WRAPPER}} .ua-form.cf7-forms input[type="submit"]:hover' => 'border-color: {{VALUE}};',
                                 ],
                         ]
                 );
@@ -629,7 +629,7 @@ class Contact_Form7 extends Base{
                                 'type' => Controls_Manager::COLOR,
                                 'default' => 'transparent',
                                 'selectors' => [
-                                        '{{WRAPPER}} form.ultraaddons-cf7-form input[type="submit"]:hover' => 'background-color: {{VALUE}};',
+                                        '{{WRAPPER}} .ua-form.cf7-forms input[type="submit"]:hover' => 'background-color: {{VALUE}};',
                                 ],
                         ]
                 );
@@ -642,7 +642,7 @@ class Contact_Form7 extends Base{
                         Group_Control_Typography::get_type(),
                         [
                                 'name' => 'button_typography',
-                                'selector' => '{{WRAPPER}} form.ultraaddons-cf7-form input[type="submit"]',
+                                'selector' => '{{WRAPPER}} .ua-form.cf7-forms input[type="submit"]',
                                 'global' => [
                                         'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
                                 ],
@@ -664,7 +664,7 @@ class Contact_Form7 extends Base{
                                         'unit' => 'px',
                                 ],
                                 'selectors' => [
-                                        '{{WRAPPER}} form.ultraaddons-cf7-form input[type="submit"]' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                        '{{WRAPPER}} .ua-form.cf7-forms input[type="submit"]' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                                 ],
                         ]
                 );
@@ -714,7 +714,7 @@ class Contact_Form7 extends Base{
                                 'default' => '#ffb900',
                                 'selectors' => [
                                         '{{WRAPPER}} .wpcf7 form.invalid .wpcf7-response-output' => 'color: {{VALUE}}; border-color: {{VALUE}};',
-                                        '{{WRAPPER}} ..wpcf7 form.unaccepted .wpcf7-response-output' => 'color: {{VALUE}}; border-color: {{VALUE}};',
+                                        '{{WRAPPER}} .wpcf7 form.unaccepted .wpcf7-response-output' => 'color: {{VALUE}}; border-color: {{VALUE}};',
                                 ],
                         ]
                 );
