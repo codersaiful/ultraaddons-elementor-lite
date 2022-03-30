@@ -4,6 +4,7 @@
   }
     .ua-testimonial-box .client-avatar img {
       border-radius: 50%;
+      display: initial;
     }
     .customer-review i {
       color: #FF9900;

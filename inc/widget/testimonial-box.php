@@ -590,7 +590,7 @@ class Testimonial_Box extends Base{
                         ],
                         'default' => [
                                 'unit' => 'px',
-                                'size' => 100,
+                                'size' => 120,
                         ],
                         'selectors' => [
                                 '{{WRAPPER}} .ua-testimonial-box .client-info .client-avatar img' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
