@@ -35,7 +35,7 @@
 }
 
 .user-avatar {
-    border: 4px solid #0FC392;
+    border: 4px solid #C30F6C;
     border-radius: 50%;
     margin-right: 18px;
     transition: 0.3s;
@@ -60,6 +60,8 @@
 
 .user-name span {
   color: #5C6B79;
+  display: block;
+  margin: 5px;
 }
 .ua-testimonial-wrapper .owl-item .client-quote-box:hover span.quote-icon,
 .ua-testimonial-wrapper .owl-item  .client-quote-box:hover p,
@@ -68,8 +70,10 @@
 }
 .ua-testimonial-wrapper{
   padding:50px;
-  background:#b6dcfe;
-  border:1px solid #ddd
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius: 60px 0px 60px 60px;
+  box-shadow: 5px 16px 17px -13px rgba(0,0,0,0.59);
 }
 .ua-testimonial-wrapper .owl-item  .client-quote-box:hover .user-avatar{
     border-color:#2BE1B0;
@@ -105,3 +109,10 @@
 .customer-review i{
 color:orange
 }
+.client-quote-box .quote-icon i {
+    color: #C80C7E;
+    font-size: 50px;
+  }
+  .quote-title {
+    font-size: 32px;
+  }

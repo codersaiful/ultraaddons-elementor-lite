@@ -191,7 +191,7 @@ class Testimonial_Box extends Base{
                         'type' => Controls_Manager::SWITCHER,
                         'label_on' => __( 'Yes', 'ultraaddons' ),
                         'label_off' => __( 'No', 'ultraaddons' ),
-                        'default' => 'no',
+                        'default' => 'yes',
                         'return_value' => 'yes',
                 ]
         );
@@ -250,7 +250,7 @@ class Testimonial_Box extends Base{
                         'default' => 'center',
                         'toggle' => true,
                         'prefix_class' => 'elementor-align-',
-                        'default' => 'left',
+                        'default' => 'center',
                 ]
         );
         $this->add_control(
@@ -268,7 +268,7 @@ class Testimonial_Box extends Base{
                                         'icon' => 'eicon-arrow-up',
                                 ],
                         ],
-                        'default' => 'bottom',
+                        'default' => 'top',
                 ]
         );
         
@@ -287,7 +287,7 @@ class Testimonial_Box extends Base{
                 [
                         'label' => __( 'Quote Icon Color', 'ultraaddons' ),
                         'type' => Controls_Manager::COLOR,
-                        'default' => '#0FC392',
+                        'default' => '#C30F6C',
                         'selectors' => [
                                 '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .quote-icon i' => 'color: {{VALUE}}',
                                 '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .quote-icon svg' => 'fill: {{VALUE}}',
@@ -448,6 +448,24 @@ class Testimonial_Box extends Base{
                         ],
                 ]
         );
+        $this->add_responsive_control(
+                'subtitle_margin',
+                [
+                        'label'       => esc_html__( 'Subtitle Margin', 'ultraaddons' ),
+                        'type'        => Controls_Manager::DIMENSIONS,
+                        'size_units'  => [ '%', 'px' ],
+                        'placeholder' => [
+                                'top'    => '',
+                                'right'  => '',
+                                'bottom' => '',
+                                'left'   => '',
+                        ],
+                        'separator' =>'after',
+                        'selectors'   => [
+                                '{{WRAPPER}} .ua-testimonial-wrapper .client-quote-box .ua-testimonial-subtitle' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                ]
+        );
         
         
         $this->end_controls_section();
@@ -566,13 +584,13 @@ class Testimonial_Box extends Base{
                         'range' => [
                                 'px' => [
                                         'min' => 0,
-                                        'max' => 100,
+                                        'max' => 200,
                                         'step' => 1,
                                 ],
                         ],
                         'default' => [
                                 'unit' => 'px',
-                                'size' => 50,
+                                'size' => 100,
                         ],
                         'selectors' => [
                                 '{{WRAPPER}} .ua-testimonial-wrapper .client-info .user-avatar' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
@@ -614,7 +632,7 @@ class Testimonial_Box extends Base{
                 [
                         'label' => __( 'Review Icon Color', 'ultraaddons' ),
                         'type' => Controls_Manager::COLOR,
-                        'default' => '#0FC392',
+                        'default' => '#C30F6C',
                         'selectors' => [
                                 '{{WRAPPER}} .customer-review i' => 'color: {{VALUE}}',
                         ],
@@ -686,6 +704,16 @@ class Testimonial_Box extends Base{
                         'selector' => '{{WRAPPER}} .ua-testimonial-wrapper',
                 ]
         );
+        $this->add_group_control(
+                Group_Control_Border::get_type(),
+                array(
+                    'name'        => 'box_border',
+                    'label'       => esc_html__( 'Border', 'ultraaddons' ),
+                    'placeholder' => '1px',
+                    'default'     => '',
+                    'selector'    => '{{WRAPPER}} .ua-testimonial-wrapper',
+                )
+            );
                 $this->add_responsive_control(
                         'box_radius',
                         [
@@ -693,10 +721,10 @@ class Testimonial_Box extends Base{
                                 'type'        => Controls_Manager::DIMENSIONS,
                                 'size_units'  => [ '%', 'px' ],
                                 'placeholder' => [
-                                        'top'    => '',
-                                        'right'  => '',
-                                        'bottom' => '',
-                                        'left'   => '',
+                                        'top'    => '0',
+                                        'right'  => '0',
+                                        'bottom' => '0',
+                                        'left'   => '0',
                                 ],
                                 'selectors'   => [
                                         '{{WRAPPER}} .ua-testimonial-wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -791,7 +819,7 @@ class Testimonial_Box extends Base{
                                 <?php
                                 $r=$settings['rating_number'];
                                 for ($x = 1; $x <= $r; $x++) {?>
-                                <i class="fa fa-star checked"></i>
+                                <i class="fas fa fa-star checked"></i>
                                 <?php }?>
                                 
                         </div>

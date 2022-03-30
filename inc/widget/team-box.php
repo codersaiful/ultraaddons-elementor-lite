@@ -34,12 +34,6 @@ class Team_Box extends Base{
 
         //For General Section
         $this->content_socials_controls();
-        
-        //For Design Section Style Tab
-        $this->style_design_controls();
-        
-        //For Typography Section Style Tab
-        $this->style_typography_controls();
 
        
     }
@@ -54,7 +48,6 @@ class Team_Box extends Base{
                         
                 <ul class="social_links">
                     <?php
-                    echo 'temp-2' == $settings['template'] ? '<li class="handle"><i class="fas fa-plus"></i></li>' : '';
                     foreach ( $settings['profiles'] as $profile ) :
                             $icon = $profile['name'];
                             $url = $profile['link']['url'];
@@ -99,20 +92,7 @@ class Team_Box extends Base{
                         'tab' => Controls_Manager::TAB_CONTENT,
                 ]
         );
-        
-        $this->add_control(
-            'template',
-                [
-                    'label'         => __( 'Template', 'ultraaddons' ),
-                    'type'          => Controls_Manager::SELECT,
-                    'options' => [
-                            'default'   => __( 'Default', 'ultraaddons' ),
-                            'temp-2'    => __( 'Template Two', 'ultraaddons' ),
-                    ],
-                    'default' => 'default',
-                    'prefix_class' => 'team-box-',
-                ]
-        );
+
 
         $this->add_control(
                 'image',
@@ -304,164 +284,8 @@ class Team_Box extends Base{
      * 
      * @since 1.0.0.9
      */
-    protected function style_design_controls() {
-        $this->start_controls_section(
-            'style_general',
-            [
-                'label'     => esc_html__( 'Design', 'ultraaddons' ),
-                'tab'       => Controls_Manager::TAB_STYLE,
-            ]
-        );
-        
-
-        $this->add_control(
-            'primary_color',
-            [
-                'label'     => __( 'Primary Color', 'ultraaddons' ),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .ua-single-team-wrapper .team-box-btn a' => 'background-color: {{VALUE}};',
-                    '{{WRAPPER}} .ua-single-team-wrapper .team-box-item:hover ' => 'border-color: {{VALUE}};',
-                    '{{WRAPPER}} .ua-single-team-wrapper .team-box-item:hover .team-box-btn a' => 'outline: 2px solid {{VALUE}};color: {{VALUE}};background-color: transparent;',
-                ],
-                'default'   => '#0FC392',
-            ]
-        );
-        
-
-        $this->add_control(
-            'title_color',
-            [
-                'label'     => __( 'Title Color', 'ultraaddons' ),
-                'type'      => Controls_Manager::COLOR,
-                'scheme'    => [
-                    'type'  => Color::get_type(),
-                    'value' => Color::COLOR_1,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .ua-single-team-wrapper .team-box-title' => 'color: {{VALUE}}',
-                ],
-                'default'   => '#21272C',
-            ]
-        );
-        
-        $this->add_control(
-            'description_color',
-            [
-                'label'     => __( 'Designation Color', 'ultraaddons' ),
-                'type'      => Controls_Manager::COLOR,
-                'scheme'    => [
-                    'type'  => Color::get_type(),
-                    'value' => Color::COLOR_1,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .ua-single-team-wrapper .team-box-designation' => 'color: {{VALUE}}',
-                ],
-                'default'   => '#5C6B79',
-            ]
-        );
-        
-        
-                
-        $this->add_responsive_control(
-                'margin',
-                [
-                        'label' => __( 'Content Margin', 'ultraaddons' ),
-                        'type' => Controls_Manager::DIMENSIONS,
-                        'size_units' => [ 'px', '%' ],
-                        'default'   => [
-                                //'size' => 55,
-                                'unit' => 'px',
-                        ],
-                        'selectors' => [
-                                '{{WRAPPER}} .ua-single-team-wrapper .team-box-info' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                        ],
-                ]
-        );
-        
-        $this->add_responsive_control(
-                'avd_head_space',
-                [
-                        'label' => __( 'Profile Box Size', 'ultraaddons' ),
-                        'type' => Controls_Manager::SLIDER,
-                        'default' => [
-                                'size' => 230,
-                        ],
-                        'range' => [
-                                'px' => [
-                                        'min' => 80,
-                                        'max' => 600,
-                                ],
-                        ],
-                        'condition' => [
-                                'template' => 'default',
-                        ],
-                        'selectors' => [
-                                '{{WRAPPER}} .ua-single-team-wrapper .team-box-profile-avatar' => 'height: {{SIZE}}{{UNIT}};width: {{SIZE}}{{UNIT}};',
-                        ],
-                ]
-        );
-        
-        
-        $this->add_responsive_control(
-                'padding',
-                [
-                        'label' => __( 'Content Padding', 'ultraaddons' ),
-                        'type' => Controls_Manager::DIMENSIONS,
-                        'size_units' => [ 'px', '%' ],
-                        'default'   => [
-                                'unit' => 'px',
-                        ],
-                        'selectors' => [
-                                '{{WRAPPER}} .ua-single-team-wrapper .team-box-info' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                        ],
-                ]
-        );
-        
-        
-        
-        $this->end_controls_section();
-    }
+   
     
-    /**
-     * Typography Section for Style Tab
-     * 
-     * @since 1.0.0.9
-     */
-    protected function style_typography_controls() {
-        $this->start_controls_section(
-            'typography',
-            [
-                'label'     => esc_html__( 'Typography', 'ultraaddons' ),
-                'tab'       => Controls_Manager::TAB_STYLE,
-            ]
-        );
-        
-        
-        $this->add_group_control(
-                Group_Control_Typography::get_type(),
-                [
-                        'name' => 'title_typography',
-                        'label' => 'Title Typography',
-                        'selector' => '{{WRAPPER}} .ua-single-team-wrapper h2.team-box-title',
-
-                ]
-        );
-        
-        $this->add_group_control(
-                Group_Control_Typography::get_type(),
-                [
-                        'name' => 'design_typography',
-                        'label' => 'Designation Typography',
-                        'selector' => '{{WRAPPER}} .ua-single-team-wrapper .team-box-designation',
-
-                ]
-        );
-        
-        
-        $this->end_controls_section();
-    }
-       
    
 /**
      * Render oEmbed widget output on the frontend.
@@ -474,71 +298,24 @@ class Team_Box extends Base{
     protected function render() {
         
         $settings           = $this->get_settings_for_display();
-        
-        $this->add_render_attribute( 'wrapper', 'class', 'ua-single-team-wrapper' );
-        
-        $this->add_inline_editing_attributes( 'title', 'None' );
-        $this->add_render_attribute( 'title', 'class', 'team-box-title' );
-
-        $this->add_inline_editing_attributes( 'designation', 'none' );
-        $this->add_render_attribute( 'designation', 'class', 'team-box-designation' );
-
-        
-       $link = false;
-        if ( ! empty( $settings['link']['url'] ) ) {
-                $this->add_link_attributes( 'button', $settings['link'] );
-                $this->add_render_attribute( 'button', 'class', 'team-box-link' );
-                $link = true;
-        }
-        
-        //Value Assigning
-        $image = !empty( $settings['image']['url'] ) ? $settings['image']['url'] : false;
-
-        if( empty( $image ) ){
-            $this->add_render_attribute( 'wrapper', 'class', 'no-profile-image' );
-        }
-        $title = !empty( $settings['title'] ) ? $settings['title'] : false;
-        $designation = !empty( $settings['designation'] ) ? $settings['designation'] : false;
         ?>
-    <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
-        <div class="team-box-item">
-            <div class="team-box-profile-avatar"
-                 
-                <?php if( ! empty( $image ) ){ ?>
-                 style="background-image: url(<?php echo esc_attr( $image ); ?>);"
-                <?php } ?> 
-                 >
+        
+        <div id="member-container">
+                <div class="member">
+                <img src="https://i5.imgpile.com/i/69743.jpg">
+                <h2>Daniel Murphy</h2>
+                <p class="who">CEO / Founder</p>
+                <p class="member-text">Id cibo omnium perfecto sed, vel eius rationibus ea. Ea postea ocurreret reformidans eam, vix ea iudico.</p>
                 
+                <div class="soc-icons">
+                <a href="https://twitter.com">&#xf099;</a>
+                <a href="https://linkedin.com">&#xf0e1;</a>
+                <a href="https://github.com/">&#xf09b;</a>
+                <a href="https://plus.google.com">&#xf0d5;</a>
+                </div>
                 
-                <?php 
-                if( ! empty( $image ) ){ //'temp-2' == $settings['template'] && 
-                ?>
-                <img class="ua-temp2-profile-image" src="<?php echo esc_url( $image ); ?>">    
-                <?php    
-                }
-
-                $this->social_links();
-                ?>
-            </div>  
-            
-            <div class="team-box-info">
-                <div class="team-box-name">
-                    <?php if( $title ){ ?>
-                    <h2 <?php echo $this->get_render_attribute_string( 'title' ); ?>><?php echo esc_html( $title ); ?></h2>
-                    <?php } ?>
-                    
-                    <?php if( $designation ){ ?>
-                    <span <?php echo $this->get_render_attribute_string( 'designation' ); ?>><?php echo esc_html( $designation ); ?></span>
-                    <?php } ?>
                 </div>
-                <?php if( $link ){ ?>
-                <div class="team-box-btn">
-                    <a <?php echo $this->get_render_attribute_string( 'button' ); ?>><i class="fas fa-angle-double-right"></i></a>
                 </div>
-                <?php } ?>
-            </div>
-        </div>
-    </div>
           
         <?php
         
