@@ -1,5 +1,6 @@
 .ua-testimonial-box{
   padding: 20px;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
   }
     .ua-testimonial-box .client-avatar img {
       border-radius: 50%;

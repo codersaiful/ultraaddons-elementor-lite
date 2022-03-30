@@ -725,7 +725,7 @@ class Testimonial_Box extends Base{
                                         ],
                                 ],
                                 'color' => [
-                                        'default' => '#D4D4D4',
+                                        'default' => '#F0F0F0',
                                 ],
                         ],
                         'selector' => '{{WRAPPER}} .ua-testimonial-box',
