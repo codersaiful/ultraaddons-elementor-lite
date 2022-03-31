@@ -1,115 +1,57 @@
-#member-container {
-    width: 70%;
-    margin: 50px auto;
-    text-align: center;
-  }
-  
-  .member {
-    display: inline-block;
-    width: 250px;
-    height: 400px;
-    border-top: 1px solid #26C6DA;
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
-    background-color: #f9f9f9;
-    position: relative;
-    transition: ease all .5s;
-  }
-  
-  .member:hover {
-      border-top: 1px solid #B388FF;
-  }
-  
-  .member:before, .member:after {
-      z-index: -1;
-      position: absolute;
-      content: "";
-      bottom: 15px;
-      left: 10px;
-      width: 50%;
-      top: 80%;
-      max-width:300px;
-      background: #000;
-      box-shadow: 0 15px 15px rgba(0,0,0,.5);
-      transform: rotate(-3deg);
-  }
-  
-  .member:after {
-      transform: rotate(3deg);
-      right: 10px;
-      left: auto;
-  }
-  
-  .member img {
-    width: 150px;
-    height: auto;
-    border: 5px solid #fff;
-    border-radius: 50%;
-    margin: 15px auto;
-    display: block;
-    box-shadow: 0 0 2px rgba(0,0,0, .2);
-  }
-  
-  .member h2 {
-    color: #424242;
-    text-align: center;
-    width: 200px;
-    display: block;
-    margin: 10px auto;
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
-    font-weight: 300;
-  }
-  
-  .who {
-    font-family: 'Roboto', sans-serif;
-    font-size: 11px;  
-    color: #26C6DA;
-    text-align: center;
-    display: block;
-    max-width: 100px;
-    margin: -2px auto;
-    padding: 3px;
-    border: 1px solid #fff;
-    box-shadow: 0 0 3px rgba(0,0,0,.1);
-    font-weight: 300;
-  }
-  
-  .member-text {
-    width: 80%;
-    text-align: center;
-    margin: 12px auto;
-    font-family: 'Roboto', sans-serif;
-    font-size: 12px;
-    color: #424242;
-  }
-  
-  .soc-icons a {
-    font-family: 'FontAwesome';
-    text-decoration: none;
-    color: #424242;
-    padding: 8px;
-    border: 1px solid  #fdfdfd;
-    box-shadow: 0 0 1px rgba(0,0,0,.2);
-    border-radius: 2px;
-    display: inline-block;
-    width: 20px; 
-    transition: ease all .3s;
-  }
-  
-  .soc-icons a:hover {
-    background-color: #26C6DA;
-    border: 1px solid #26C6DA;
-    color: #fff;
-  }
-  
-  .soc-icons a:active {
-    background-color: #9FA8DA;
-    border: 1px solid #9FA8DA;
-    color: #fff;
-  }
-  
-  .soc-icons {
-    margin: 20px auto;
-    text-align: center;
-  }
+.ua-team-container {
+  text-align: center;
+}
+
+.ua-team-container .member {
+  position: relative;
+  transition: ease all .5s;
+  overflow: hidden;
+}
+
+.ua-team-container .member img {
+  display: inline-block;
+  box-shadow: 0 0 2px rgba(0,0,0, .2);
+  object-fit: cover;
+
+}
+
+.ua-team-container .member h2 {
+ font-weight: 700;
+font-size: 20px;
+color: #000;
+letter-spacing: .18px;
+line-height: 24px;
+margin: 0 0 9px;
+}
+
+.ua-team-container .member-text {
+  margin: 15px auto;
+}
+.ua-team-container .social_links {
+  margin: 0;
+  padding: 0;
+}
+.ua-team-container .social-icons {
+  margin-bottom: 25px
+}
+.ua-team-container .social-icons ul li {
+  list-style: none;
+  display: inline-block;
+  position: relative;
+}
+.ua-team-container .social-icons a {
+  margin-right: 22px;
+  color: #363842;
+  font-size: 16px
+}
+
+.ua-team-container .social-icons a:hover {
+  color: #c81a3b
+}
+.ua-team-container .team-content-wrap {
+  padding: 15px 0px;
+}
+.ua-team-container .ua-team .who {
+  font-size: 14px;
+  color: #ACACAC;
+}
