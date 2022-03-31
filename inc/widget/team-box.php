@@ -213,7 +213,7 @@ class Team_Box extends Base{
                                 'type'      => Controls_Manager::COLOR,
                                 'separator' => 'after',
                                 'selectors' => [
-                                                '{{WRAPPER}} .ua-card-title' => 'color: {{VALUE}};',
+                                                '{{WRAPPER}} .ua-team-title' => 'color: {{VALUE}};',
                                 ],
                         ]
                 );
@@ -222,7 +222,7 @@ class Team_Box extends Base{
                         [
                                         'name' => 'designation_typography',
                                         'label' => 'Designation Typography',
-                                        'selector' => '{{WRAPPER}} .ua-team .who',
+                                        'selector' => '{{WRAPPER}} .ua-team-container .who',
 
                         ]
                 );
@@ -232,7 +232,26 @@ class Team_Box extends Base{
                                 'type'      => Controls_Manager::COLOR,
                                 'separator' => 'after',
                                 'selectors' => [
-                                                '{{WRAPPER}} .ua-team .who' => 'color: {{VALUE}};',
+                                                '{{WRAPPER}} .ua-team-container .who' => 'color: {{VALUE}};',
+                                ],
+                        ]
+                );
+                $this->add_group_control(
+                        Group_Control_Typography::get_type(),
+                        [
+                                        'name' => 'desc_typography',
+                                        'label' => 'Description Typography',
+                                        'selector' => '{{WRAPPER}} .ua-team-container .member-text',
+
+                        ]
+                );
+                $this->add_control(
+                        'desc_color', [
+                                'label' => __( 'Description Color', 'ultraaddons' ),
+                                'type'      => Controls_Manager::COLOR,
+                                'separator' => 'after',
+                                'selectors' => [
+                                                '{{WRAPPER}} .ua-team-container .member-text' => 'color: {{VALUE}};',
                                 ],
                         ]
                 );
@@ -346,6 +365,15 @@ class Team_Box extends Base{
 				'label' => __( 'Box Background', 'ultraaddons' ),
 				'types' => [ 'classic', 'gradient'],
 				'selector' => '{{WRAPPER}} .ua-team-container .member',
+			]
+		);
+                $this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'team_box_hover_background',
+				'label' => __( 'Box Hover Background', 'ultraaddons' ),
+				'types' => [ 'classic', 'gradient'],
+				'selector' => '{{WRAPPER}} .ua-team-container .member:hover',
 			]
 		);
                 $this->add_responsive_control(
