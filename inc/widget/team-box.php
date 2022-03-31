@@ -324,6 +324,53 @@ class Team_Box extends Base{
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
+                $this->start_controls_tabs(
+			'style_tabs'
+		);
+                //Normal Tab
+                $this->start_controls_tab(
+			'style_normal_tab',
+			[
+				'label' => esc_html__( 'Normal', 'ultraaddons' ),
+			]
+		);
+
+                        $this->add_group_control(
+                                Group_Control_Background::get_type(),
+                                [
+                                        'name' => 'team_box_background',
+                                        'label' => __( 'Box Background', 'ultraaddons' ),
+                                        'types' => [ 'classic', 'gradient'],
+                                        'selector' => '{{WRAPPER}} .ua-team-container .member',
+                                ]
+                        );
+
+
+		$this->end_controls_tab();
+                //Hover Tab
+		$this->start_controls_tab(
+			'style_hover_tab',
+			[
+				'label' => esc_html__( 'Hover', 'ultraaddons' ),
+			]
+		);
+
+                        $this->add_group_control(
+                                Group_Control_Background::get_type(),
+                                [
+                                        'name' => 'team_box_hover_background',
+                                        'label' => __( 'Box Background', 'ultraaddons' ),
+                                        'types' => [ 'classic', 'gradient'],
+                                        'selector' => '{{WRAPPER}} .ua-team-container .member:hover',
+                                ]
+                        );
+
+
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
+                //End Normal/Hover Tab
+
                 $this->add_responsive_control(
 			'box_padding',
 			[
@@ -336,6 +383,7 @@ class Team_Box extends Base{
 					'bottom' => '',
 					'left'   => '',
 				],
+                                'separator' => 'before',
 				'selectors'   => [
 					'{{WRAPPER}} .ua-team-container .member' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -358,24 +406,8 @@ class Team_Box extends Base{
 				],
 			]
 		);
-                $this->add_group_control(
-			Group_Control_Background::get_type(),
-			[
-				'name' => 'team_box_background',
-				'label' => __( 'Box Background', 'ultraaddons' ),
-				'types' => [ 'classic', 'gradient'],
-				'selector' => '{{WRAPPER}} .ua-team-container .member',
-			]
-		);
-                $this->add_group_control(
-			Group_Control_Background::get_type(),
-			[
-				'name' => 'team_box_hover_background',
-				'label' => __( 'Box Hover Background', 'ultraaddons' ),
-				'types' => [ 'classic', 'gradient'],
-				'selector' => '{{WRAPPER}} .ua-team-container .member:hover',
-			]
-		);
+             
+          
                 $this->add_responsive_control(
 			'box_radius',
 			[

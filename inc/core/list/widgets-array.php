@@ -666,6 +666,14 @@ $widgetsArray = [
             __( 'General', 'ultraaddons' ),
         ],
     ],
+    'Video_Popup'=> [
+        'name'      => __( 'Video Popup', 'ultraaddons' ),
+        'is_pro'   => false,
+        'icon'      => 'eicon-play',
+        'cat'       => [
+            __( 'General', 'ultraaddons' ),
+        ],
+    ],
 
 ];
 
