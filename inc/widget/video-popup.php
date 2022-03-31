@@ -113,7 +113,14 @@ class Video_Popup extends Base{
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
-        
+        $this->add_control(
+            'video_id', [
+                    'label' => __( 'Youtube ID', 'ultraaddons' ),
+                    'type' => Controls_Manager::TEXT,
+                    'default' => 'n_ea3devnlg',
+                    'label_block' => false,
+            ]
+    );
         
         $this->end_controls_section();
     }
@@ -134,7 +141,7 @@ class Video_Popup extends Base{
         });
         </script>';
         ?>
-        <button class="js-modal-btn"  data-video-id="wlrvO4QvyIQ">Open Vimeo</button>
+        <button class="js-modal-btn"  data-video-id="<?php echo $settings['video_id']; ?>">Open Vimeo</button>
         <?php
         
     }
