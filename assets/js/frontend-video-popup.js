@@ -40,15 +40,21 @@ $window.on( 'elementor/frontend/init', function() {
                         loop: loop, 
                     },
                 });
-            }else{
-                    var autoplay    = ($settings.vautoplay==0) ? false : true;
-                    var controls    = ($settings.vcontrols==1) ? true : false;
-                    var loop        = ($settings.vloop==0)     ? false : true;
+            }
+            else if($settings.video_type=='vimeo'){
+
+                    var autoplay    = ($settings.vautoplay==1) ? true : false;
+                   // var controls    = ($settings.vcontrols==1) ? true : false;
+                    var loop        = ($settings.vloop==1)     ? true : false;
+                    console.log(autoplay, loop);
+                    
                     new ModalVideo('.js-modal-btn-'+$id,{
                         channel:'vimeo',
+                        vimeo:{
                         autoplay:autoplay,
                         //controls:controls,
-
+                        loop:loop
+                    },
                 });
             }
 

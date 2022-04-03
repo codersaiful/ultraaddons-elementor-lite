@@ -21,8 +21,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
     * Rich options for youtube API and Vimeo API
 
     * @source: https://github.com/appleple/modal-video
-    * @since 1.1.0.12
     * @package UltraAddons
+    * @since 1.1.0.12
     * @author Saiful islam <codersaiful@gmail.com>
     * @author B M Rafiul <bmrafiul.alam@gmail.com>
  */
@@ -34,7 +34,7 @@ class Video_Popup extends Base{
 
           //Naming of Args for Modal-video
           $name           = 'modal-video';
-          $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/modal-video/js/modal-video.min.js';
+          $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/modal-video/js/modal-video.js';
           $dependency     =  ['jquery'];//['jquery'];
           $version        = ULTRA_ADDONS_VERSION;
           $in_footer      = true;
@@ -204,6 +204,22 @@ class Video_Popup extends Base{
             ]
         ]
     );
+    $this->add_control(
+        'showinfo',
+        [
+            'label' => __( 'Show Info', 'ultraaddons' ),
+            'type' => Controls_Manager::SWITCHER,
+            'label_on' => __( 'Yes', 'ultraaddons' ),
+            'label_off' => __( 'No', 'ultraaddons' ),
+            'return_value' => '1',
+            'default' => '1',
+            'frontend_available' => true,
+            'condition'=>[
+                'video_type' =>'youtube'
+            ]
+        ]
+    );
+
 
      /**
      * Viemo Controls
@@ -241,8 +257,8 @@ class Video_Popup extends Base{
             'type' => Controls_Manager::SWITCHER,
             'label_on' => __( 'Yes', 'ultraaddons' ),
             'label_off' => __( 'No', 'ultraaddons' ),
-            'return_value' => '0',
-            'default' => '0',
+            'return_value' => '1',
+            'default' => '1',
             'frontend_available' => true,
             'condition'=>[
                 'video_type' =>'vimeo'
@@ -257,7 +273,7 @@ class Video_Popup extends Base{
             'label_on' => __( 'Yes', 'ultraaddons' ),
             'label_off' => __( 'No', 'ultraaddons' ),
             'return_value' => '1',
-            'default' => '0',
+            'default' => '1',
             'frontend_available' => true,
             'condition'=>[
                 'video_type' =>'vimeo'
