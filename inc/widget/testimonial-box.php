@@ -710,7 +710,7 @@ class Testimonial_Box extends Base{
                 Group_Control_Border::get_type(),
                 [
                         'name' => 'box_border',
-                        'label' => __( 'Some Border', 'elementor' ),
+                        'label' => __( 'Box Border', 'ultraaddons' ),
                         'fields_options' => [
                                 'border' => [
                                         'default' => 'solid',

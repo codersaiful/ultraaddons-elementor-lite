@@ -417,3 +417,16 @@ ul.wpuf-form li .wpuf-fields .wpuf-name-field-wrap.format-first-last .wpuf-name-
 .intl-tel-input {
     width: 100%;
 }
+.ua-video-btn-wrap{
+    display: flex;
+}
+.ua-video-btn {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    padding: 25px;
+    background: #db0c0c;
+    color: #fff;
+    cursor: pointer;
+  }
