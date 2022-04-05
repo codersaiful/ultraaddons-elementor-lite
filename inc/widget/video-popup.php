@@ -34,7 +34,7 @@ class Video_Popup extends Base{
 
           //Naming of Args for Modal-video
           $name           = 'modal-video';
-          $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/modal-video/js/modal-video.js';
+          $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/modal-video/js/modal-video.min.js';
           $dependency     =  ['jquery'];//['jquery'];
           $version        = ULTRA_ADDONS_VERSION;
           $in_footer      = true;

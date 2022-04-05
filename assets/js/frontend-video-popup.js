@@ -46,7 +46,6 @@ $window.on( 'elementor/frontend/init', function() {
                     var autoplay    = ($settings.vautoplay==1) ? true : false;
                    // var controls    = ($settings.vcontrols==1) ? true : false;
                     var loop        = ($settings.vloop==1)     ? true : false;
-                    console.log(autoplay, loop);
                     
                     new ModalVideo('.js-modal-btn-'+$id,{
                         channel:'vimeo',

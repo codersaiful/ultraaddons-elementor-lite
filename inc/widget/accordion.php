@@ -1122,6 +1122,11 @@ class Accordion extends Base{
                     }
                     $link_attributes = $this->get_render_attribute_string( '_ua_accordions_link' );
 
+                    $is_external = $item['_ua_accordions_link']['is_external'];
+                    $is_nofollow = $item['_ua_accordions_link']['nofollow'];
+
+                    $get_target= $is_external=='on' ? 'target="_blank"' : ''; 
+                    $get_nofollow= $is_external=='on' ? 'rel="nofollow"' : ''; 
 
                     $title_active_class = '';
                     $content_active_class = '';
@@ -1198,7 +1203,7 @@ class Accordion extends Base{
                                     <?php endif; ?>
                                     
                                     <?php if ( 'yes' == $item['_ua_accordions_button_show'] ) : ?>
-                                        <a <?php echo $link_attributes; ?> class="ua_cu_btn btn_2 ua-accordion-button">
+                                        <a href="<?php echo $item['_ua_accordions_link']['url']; ?>" <?php echo $get_target;?> <?php echo  $get_nofollow;?> class="ua_cu_btn btn_2 ua-accordion-button">
                                             <?php echo ultraaddons_addons_kses( $item['_ua_accordions_button_text'] ); ?>
                                         </a>
                                     <?php endif; ?>
