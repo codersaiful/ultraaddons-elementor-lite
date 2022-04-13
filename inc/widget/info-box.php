@@ -621,6 +621,17 @@ class Info_Box extends Base {
 
                 ]
         );
+        $this->add_responsive_control(
+                'title_padding',
+                [
+                        'label' => __( 'Title Padding', 'ultraaddons' ),
+                        'type' => Controls_Manager::DIMENSIONS,
+                        'size_units' => [ 'px'],
+                        'selectors' => [
+                                '{{WRAPPER}} .elementor-icon-box-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                ]
+        );
 
         $this->add_control(
                 'heading_description',
@@ -674,14 +685,15 @@ class Info_Box extends Base {
                         ],
                 ]
         );
+       
         $this->add_responsive_control(
                 'description_padding',
                 [
-                        'label' => __( 'Padding', 'ultraaddons' ),
+                        'label' => __( 'Description Padding', 'ultraaddons' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px'],
                         'selectors' => [
-                                '{{WRAPPER}} .elementor-icon-box-description' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                '{{WRAPPER}} .elementor-icon-box-description'=> 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                         ],
                 ]
         );
@@ -1196,8 +1208,6 @@ class Info_Box extends Base {
             $wrapper_tag = 'a';
             $this->add_link_attributes( 'wrapper-tag', $settings['wrapper_link'] );
             $button_show = false;
-           
-
         }
         
     ?>

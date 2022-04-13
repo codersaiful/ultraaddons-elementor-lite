@@ -31,7 +31,7 @@
 
 .ua_accordion_item {
     border-bottom: 1px solid #e5e5e5;
-    padding: 35px 35px 35px 72px;
+    /*! padding: 35px 35px 35px 72px; */
 }
 .ua_accordion_item:last-child {
     border-bottom: 0 solid transparent;
@@ -69,11 +69,12 @@
     font-size: 16px;
     font-weight: 600;
     line-height: 20px;
+    padding: 20px;
 }
 .ua_accordion_item .ua-icon {
     transition: transform 0.2s ease-out;
-    right: 6px;
-    top: -5%;
+    right: 20px;
+    top: 20%;
     position: absolute;
     cursor: pointer;
     color: #060a24;
@@ -104,6 +105,7 @@
     .ua_accordion_item .ua_accordion_inner {
         display: flex;
         /* align-items: center; */
+        padding: 15px;
     }
     .ua_accordion_item .ua_accordion_inner .ua_accordion_thumb {
         /* flex: 31% 0 0; */
@@ -137,7 +139,6 @@
     margin-top: 29px;
 }
 .ua_accordion_item.ua_accordion_style_08 {
-    padding: 20px 20px 20px 40px;
     border: 1px solid #cccccc;
     background-color: #fff;
     margin-bottom: 10px;

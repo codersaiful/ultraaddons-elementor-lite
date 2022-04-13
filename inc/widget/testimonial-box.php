@@ -590,7 +590,7 @@ class Testimonial_Box extends Base{
                         ],
                         'default' => [
                                 'unit' => 'px',
-                                'size' => 100,
+                                'size' => 120,
                         ],
                         'selectors' => [
                                 '{{WRAPPER}} .ua-testimonial-box .client-info .client-avatar img' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
@@ -710,7 +710,7 @@ class Testimonial_Box extends Base{
                 Group_Control_Border::get_type(),
                 [
                         'name' => 'box_border',
-                        'label' => __( 'Some Border', 'elementor' ),
+                        'label' => __( 'Box Border', 'ultraaddons' ),
                         'fields_options' => [
                                 'border' => [
                                         'default' => 'solid',

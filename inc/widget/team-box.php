@@ -15,6 +15,14 @@ use Elementor\Repeater;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+ /**
+     * Team Widget 
+     *
+     * @since 1.1.0.12
+     * @author B M Rafiul Alam
+     * bmrafiul.alam@gmail.com
+     */
+
 class Team_Box extends Base{
     
     /**
@@ -26,23 +34,25 @@ class Team_Box extends Base{
      * @access protected
      */
     protected function register_controls() {
-        
-
-        
         //For Information
         $this->content_information_controls();
-
         //For General Section
         $this->content_socials_controls();
-
-       
+        //For General Style
+        $this->general_style();
+         //For Icon Style
+        $this->icon_style();
+        //For Box Style
+        $this->box_style();
+        //For Image Style
+        $this->image_style();
     }
     
     
     
     protected function social_links() {
         $settings           = $this->get_settings_for_display();
-        if ( $settings['show_profiles' ] && is_array( $settings['profiles' ] ) ) {
+        if ( $settings['show_profiles' ]=='yes' && is_array( $settings['profiles' ] ) ) {
         ?>
             <div class="team-box-social-link">
                         
@@ -83,7 +93,7 @@ class Team_Box extends Base{
      */
     protected function content_information_controls(){
         
-        $placeholder_image = ULTRA_ADDONS_URL . 'assets/images/team-member.jpg';
+        $placeholder_image = ULTRA_ADDONS_URL . 'assets/images/team.jpg';
 
         $this->start_controls_section(
                 '_section_info',
@@ -109,15 +119,13 @@ class Team_Box extends Base{
                 ]
         );
 
-        
-
         $this->add_control(
                 'title',
                 [
                         'label' => __( 'Name', 'ultraaddons' ),
                         'label_block' => true,
                         'type' => Controls_Manager::TEXT,
-                        'default' => __( 'Mr. Name', 'ultraaddons' ),
+                        'default' => __( 'Jhone Doe', 'ultraaddons' ),
                         'placeholder' => __( 'Type Member Name', 'ultraaddons' ),
                         'separator' => 'before',
                         'dynamic' => [
@@ -145,7 +153,6 @@ class Team_Box extends Base{
                         'label' => __( 'Description', 'ultraaddons' ),
                         'label_block' => true,
                         'type' => Controls_Manager::TEXTAREA,
-                        'default' => __( 'Id cibo omnium perfecto sed, vel eius rationibus ea. Ea postea ocurreret reformidans eam, vix ea iudico.', 'ultraaddons' ),
                         'dynamic' => [
                                 'active' => true,
                         ]
@@ -153,24 +160,364 @@ class Team_Box extends Base{
         );
         
         
-        $this->add_control(
-                'link',
-                [
-                        'label' => __( 'Link', 'ultraaddons' ),
-                        'type' => Controls_Manager::URL,
-                        'dynamic' => [
-                                'active' => true,
-                        ],
-                        'placeholder' => __( 'https://your-link.com', 'ultraaddons' ),
-                        'default' => [
-                                'url' => '#',
-                        ],
-                ]
-        );
                
         $this->end_controls_section();
     }
 
+        protected function general_style(){
+                        
+                $this->start_controls_section(
+                        'general_style',
+                        [
+                                'label' =>  __( 'General', 'ultraaddons' ) ,
+                                'tab' => Controls_Manager::TAB_STYLE,
+                        ]
+                );
+                $this->add_responsive_control(
+			'team_text_alignment',
+			[
+				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'icon' => 'eicon-text-align-right',
+					]
+				],
+				'default' => 'left',
+				'selectors' => [
+					'{{WRAPPER}} .ua-team-container' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+                $this->add_group_control(
+                        Group_Control_Typography::get_type(),
+                        [
+                                        'name' => 'team_title_typography',
+                                        'label' => 'Title Typography',
+                                        'selector' => '{{WRAPPER}} .ua-team-title',
+
+                        ]
+                );
+                $this->add_control(
+                        'team_title_color', [
+                                'label' => __( 'Title Color', 'ultraaddons' ),
+                                'type'      => Controls_Manager::COLOR,
+                                'separator' => 'after',
+                                'selectors' => [
+                                                '{{WRAPPER}} .ua-team-title' => 'color: {{VALUE}};',
+                                ],
+                        ]
+                );
+                $this->add_group_control(
+                        Group_Control_Typography::get_type(),
+                        [
+                                        'name' => 'designation_typography',
+                                        'label' => 'Designation Typography',
+                                        'selector' => '{{WRAPPER}} .ua-team-container .who',
+
+                        ]
+                );
+                $this->add_control(
+                        'designation_color', [
+                                'label' => __( 'Designation Color', 'ultraaddons' ),
+                                'type'      => Controls_Manager::COLOR,
+                                'separator' => 'after',
+                                'selectors' => [
+                                                '{{WRAPPER}} .ua-team-container .who' => 'color: {{VALUE}};',
+                                ],
+                        ]
+                );
+                $this->add_group_control(
+                        Group_Control_Typography::get_type(),
+                        [
+                                        'name' => 'desc_typography',
+                                        'label' => 'Description Typography',
+                                        'selector' => '{{WRAPPER}} .ua-team-container .member-text',
+
+                        ]
+                );
+                $this->add_control(
+                        'desc_color', [
+                                'label' => __( 'Description Color', 'ultraaddons' ),
+                                'type'      => Controls_Manager::COLOR,
+                                'separator' => 'after',
+                                'selectors' => [
+                                                '{{WRAPPER}} .ua-team-container .member-text' => 'color: {{VALUE}};',
+                                ],
+                        ]
+                );
+
+
+                $this->end_controls_section();
+        }
+
+        protected function icon_style(){
+                        
+                $this->start_controls_section(
+                        'icon_style',
+                        [
+                                'label' =>  __( 'Icon', 'ultraaddons' ) ,
+                                'tab' => Controls_Manager::TAB_STYLE,
+                        ]
+                );
+               
+                $this->add_control(
+                        'icon_color', [
+                                'label' => __( 'Icon Color', 'ultraaddons' ),
+                                'type'      => Controls_Manager::COLOR,
+                                'selectors' => [
+                                                '{{WRAPPER}} .social_links i' => 'color: {{VALUE}};',
+                                ],
+                        ]
+                );
+                $this->add_control(
+                        'icon_hover_color', [
+                                'label' => __( 'Icon Hover Color', 'ultraaddons' ),
+                                'type'      => Controls_Manager::COLOR,
+                                'separator' => 'before',
+                                'selectors' => [
+                                                '{{WRAPPER}} .social_links i:hover' => 'color: {{VALUE}};',
+                                ],
+                        ]
+                );
+                $this->add_control(
+			'icon_size',
+			[
+				'label' => __( 'Icon Size', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px'],
+				'range' => [
+					'px' => [
+						'min' => 10,
+						'max' => 80,
+						'step' => 5,
+					],
+				],
+                                'separator' => 'before',
+				'default' => [
+					'unit' => 'px',
+					'size' => 20,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .social_links i' => 'font-size: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+               
+                $this->end_controls_section();
+        }
+        protected function box_style(){
+                        
+                $this->start_controls_section(
+                        'box_style',
+                        [
+                                'label' =>  __( 'Box', 'ultraaddons' ) ,
+                                'tab' => Controls_Manager::TAB_STYLE,
+                        ]
+                );
+                $this->start_controls_tabs(
+			'style_tabs'
+		);
+                //Normal Tab
+                $this->start_controls_tab(
+			'style_normal_tab',
+			[
+				'label' => esc_html__( 'Normal', 'ultraaddons' ),
+			]
+		);
+
+                        $this->add_group_control(
+                                Group_Control_Background::get_type(),
+                                [
+                                        'name' => 'team_box_background',
+                                        'label' => __( 'Box Background', 'ultraaddons' ),
+                                        'types' => [ 'classic', 'gradient'],
+                                        'selector' => '{{WRAPPER}} .ua-team-container .member',
+                                ]
+                        );
+
+
+		$this->end_controls_tab();
+                //Hover Tab
+		$this->start_controls_tab(
+			'style_hover_tab',
+			[
+				'label' => esc_html__( 'Hover', 'ultraaddons' ),
+			]
+		);
+
+                        $this->add_group_control(
+                                Group_Control_Background::get_type(),
+                                [
+                                        'name' => 'team_box_hover_background',
+                                        'label' => __( 'Box Background', 'ultraaddons' ),
+                                        'types' => [ 'classic', 'gradient'],
+                                        'selector' => '{{WRAPPER}} .ua-team-container .member:hover',
+                                ]
+                        );
+
+
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
+                //End Normal/Hover Tab
+
+                $this->add_responsive_control(
+			'box_padding',
+			[
+				'label'       => esc_html__( 'Padding', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+                                'separator' => 'before',
+				'selectors'   => [
+					'{{WRAPPER}} .ua-team-container .member' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+                $this->add_responsive_control(
+			'content_padding',
+			[
+				'label'       => esc_html__( 'Content Padding', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-team-container .team-content-wrap' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+             
+          
+                $this->add_responsive_control(
+			'box_radius',
+			[
+				'label'       => esc_html__( 'Box Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ '%', 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-team-container .member' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+                $this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'team_box_shadow',
+				'label' => __( 'Box Shadow', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-team-container .member',
+			]
+		);
+                $this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'box_border',
+				'label' => __( 'Border', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-team-container .member',
+			]
+		);
+               
+                $this->end_controls_section();
+        }
+
+        protected function image_style(){
+                        
+                $this->start_controls_section(
+                        'image_style',
+                        [
+                                'label' =>  __( 'Image', 'ultraaddons' ) ,
+                                'tab' => Controls_Manager::TAB_STYLE,
+                        ]
+                );
+                $this->add_control(
+			'image_size',
+			[
+				'label' => __( 'Image Size', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px'],
+				'range' => [
+					'px' => [
+						'min' => 50,
+						'max' => 200,
+						'step' => 5,
+					],
+				],
+                                'separator' => 'before',
+				'selectors' => [
+					'{{WRAPPER}} .ua-team-container .member img' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+                $this->add_responsive_control(
+			'image_radius',
+			[
+				'label'       => esc_html__( 'Image Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ '%', 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-team-container .member img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+                $this->add_responsive_control(
+			'image_margin',
+			[
+				'label'       => esc_html__( 'Image Margin', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ '%', 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-team-container .member img' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+                $this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'image_border',
+				'label' => __( 'Border', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-team-container .member img',
+			]
+		);
+             
+                $this->end_controls_section();
+        }
 
     /**
      * General Section for Content Controls
@@ -282,7 +629,7 @@ class Team_Box extends Base{
                         'label_on' => __( 'Show', 'ultraaddons' ),
                         'label_off' => __( 'Hide', 'ultraaddons' ),
                         'return_value' => 'yes',
-                        'default' => 'yes',
+                        'default' => 'no',
                         'separator' => 'before',
                         'style_transfer' => true,
                 ]
@@ -314,23 +661,19 @@ class Team_Box extends Base{
         $image = !empty( $settings['image']['url'] ) ? $settings['image']['url'] : false;
         ?>
         
-        <div id="member-container">
+        <div class="ua-team-container">
                 <div class="member">
-                <img src="<?php echo $image;?>">
-                <h2><?php echo $settings['title'];?></h2>
-                <p class="who"><?php echo $settings['designation'];?></p>
-                <p class="member-text"><?php echo $settings['description'];?></p>
-                
-                <div class="soc-icons">
-                <?php 
-                foreach($settings['profiles'] as $profile):
-                ?>
-                <a href="https://twitter.com">&#xf099;</a>
-                <?php endforeach;?>
+                        <img src="<?php echo $image;?>">
+                        <div class="team-content-wrap">
+                                <h2 class="ua-team-title"><?php echo $settings['title'];?></h2>
+                                        <span class="who"><?php echo $settings['designation'];?></span>
+                                <p class="member-text"><?php echo $settings['description'];?></p>
+                                <div class="social-icons">
+                                        <?php $this->social_links();?>
+                                </div>
+                        </div>
                 </div>
-                
-                </div>
-                </div>
+        </div>
           
         <?php
         
