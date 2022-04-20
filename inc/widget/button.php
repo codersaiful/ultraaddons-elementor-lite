@@ -346,7 +346,8 @@ class Button extends Base{
 				],
 				'separator' =>'after',
 				'selectors'   => [
-					'{{WRAPPER}} .ua-btn, .ua-btn:before' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ua-btn-wrap a.ua-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} ;',
+					'{{WRAPPER}} .ua-btn-wrap a.ua-btn:before' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} ;',
 				],
 			]
 		);
