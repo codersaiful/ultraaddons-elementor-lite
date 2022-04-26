@@ -1,0 +1,68 @@
+.ua-image-box {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+    text-align: center;
+    position: relative;
+    background-color: #fff;
+    overflow: hidden;
+}
+.ua-image-box .ua-image-box-title{
+	padding:5px 15px 20px 15px;
+    margin: 0;
+    font-size: 24px;
+    color:#040415;
+}
+.ua-image-box-content{
+    font-size: 16px;
+    color: #656575;
+}
+.image-box-content-wrap{
+    padding: 0px 15px 40px 15px;
+}
+
+.ua-image-box-icon-wrap {
+    border-radius: 100%;
+    top: 0;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+}
+.ua-image-box-icon {
+    background:blue;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 35px;
+    color: #fff;border: 3px solid #fff;
+    transform: .7s;
+}
+.ua-image-box:hover .ua-image-box-icon{
+    background-color: transparent;
+    background-image: linear-gradient(200deg, #AC2BD5 11%, #D23D62 86%);
+    transform: .5s;
+}
+a.ua-img-box-button {
+    background: blue;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: inline-block;
+}
+.ua-image-box:hover a.ua-img-box-button{
+    background-color: transparent;
+    background-image: linear-gradient(200deg, #AC2BD5 11%, #D23D62 86%);
+}
+
+
