@@ -98,7 +98,7 @@ class Button extends Base{
 				'label' => esc_html__( 'Select Animation', 'ultraaddons' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => ultraaddons_button_hover(),
-				'default' => 'hvr-fade',
+				'default' => 'none',
 			]
 		);
         $this->add_control(
@@ -255,6 +255,7 @@ class Button extends Base{
 				],
 				'selectors' => [
 					'{{WRAPPER}} .ua-btn i' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .ua-btn svg' => 'margin-left: {{SIZE}}{{UNIT}};',
 				],
                 'condition' => array(
 					'_icon_position' => 'right',
@@ -365,8 +366,20 @@ class Button extends Base{
 			'_btn_bg_hover_bg', [
 				'label' => __( 'Hover Background', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
+				'condition'=>['_ua_btn_animation!'=>'none'],
 				'selectors' => [
-						'{{WRAPPER}} .ua-btn:before, .ua-btn:hover' => 'background: {{VALUE}};',
+						'{{WRAPPER}} .ua-btn:before' => 'background: {{VALUE}};',
+				],
+			]
+        );
+		$this->add_control(
+			'_btn_bg_hover_bg_normal', [
+				'label' => __( 'Hover Background', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'default' =>'#000000',
+				'condition'=>['_ua_btn_animation'=>'none'],
+				'selectors' => [
+						'{{WRAPPER}} .ua-btn:hover' => 'background: {{VALUE}};',
 				],
 			]
         );
@@ -408,10 +421,11 @@ class Button extends Base{
         if ( ! empty( $settings['_ua_button_link']['url'] ) ) {
 			$this->add_link_attributes( '_ua_button_link', $settings['_ua_button_link'] );
 		}
+		$btn_class=  ($settings['_ua_btn_animation']!='none') ?  'ua-btn ' . $settings['_ua_btn_animation'] : 'ua-btn';
         $this->add_render_attribute(
             'button_class',
             [
-                'class' => 'ua-btn ' . $settings['_ua_btn_animation'] ,
+                'class' => $btn_class,
             ]
         );
         ?>

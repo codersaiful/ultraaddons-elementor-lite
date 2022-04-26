@@ -319,7 +319,7 @@ class News_Ticker extends Base{
         $this->start_controls_section(
             '_ua_news_ticker_content_style',
             [
-                'label'     => esc_html__( 'Content Style', 'ultraaddons' ),
+                'label'     => esc_html__( 'Content', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -429,7 +429,7 @@ class News_Ticker extends Base{
         $this->start_controls_section(
             '_ua_ticker_btn_style',
             [
-                'label'     => esc_html__( 'Action Button Style', 'ultraaddons' ),
+                'label'     => esc_html__( 'Action Button', 'ultraaddons' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -440,7 +440,8 @@ class News_Ticker extends Base{
 				'default'=>'#333',
 				'selectors' => [
 						'{{WRAPPER}} .bn-arrow:after, .bn-pause:after, .bn-pause:before' => 'border-color: {{VALUE}} !important;',
-						'{{WRAPPER}} .bn-pause:after, .bn-pause:before' => 'background-color: {{VALUE}} !important;',
+						'{{WRAPPER}} .bn-pause:after' => 'background-color: {{VALUE}} !important;',
+						'{{WRAPPER}} .bn-pause:before' => 'background-color: {{VALUE}} !important;',
 				],
 			]
         );
@@ -451,6 +452,15 @@ class News_Ticker extends Base{
 				'default'=>'#eaeaea',
 				'selectors' => [
 						'{{WRAPPER}} .bn-controls button' => 'background-color: {{VALUE}};',
+					],
+			]
+        );
+		$this->add_control(
+			'_ua_ticker_play_btn_bg', [
+				'label' => __( 'Play Button Background', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .bn-play::after' => 'border-left-color: {{VALUE}};',
 					],
 			]
         );

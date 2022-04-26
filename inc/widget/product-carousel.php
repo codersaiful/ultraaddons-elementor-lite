@@ -679,6 +679,23 @@ $this->end_controls_section();
 			[
 				'name' => 'box_border',
 				'label' => __( 'Border', 'ultraaddons' ),
+				'fields_options' => [
+					'border' => [
+						'default' => 'solid',
+					],
+					'width' => [
+						'default' => [
+							'top' => '1',
+							'right' => '1',
+							'bottom' => '1',
+							'left' => '1',
+							'isLinked' => false,
+						],
+					],
+					'color' => [
+						'default' => '#f5f5f5',
+					],
+				],
 				'selector' => '{{WRAPPER}} .slider-container .ua-card',
 			]
 		);
@@ -883,7 +900,8 @@ $this->end_controls_section();
 				'type' => Controls_Manager::COLOR,
 				'default' => '#333',
 				'selectors' => [
-					'{{WRAPPER}} .ua-thumbnail .cart-links a, .ua-thumbnail .cart-links a i ' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .ua-thumbnail .cart-links a ' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .ua-thumbnail .cart-links a i ' => 'color: {{VALUE}};',
 				],
 			]
 		);

@@ -1,10 +1,9 @@
 
 .pg .ua-product-card {
     position: relative;
-    box-shadow: 0 2px 7px #dfdfdf;
     margin-bottom: 20px;
     overflow: hidden;
-}
+box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;}
 
 .ua-badge span.ua-onsale {
     min-height: 2em;
@@ -100,10 +99,11 @@
 .ua-product-links a {
     display: inline-block;
     margin-left: 5px;
-    color: #e1e1e1;
+    /* color: #f9f9f9; */
     transition: 0.3s;
-    font-size: 17px;
-}
+    font-size: 14px;
+padding: 10px 10px;text-decoration: none;font-weight: 400;/* height: 37px; */
+    /* width: 35px; */}
 
 .ua-product-links a:hover {
     color: #c36;
@@ -141,4 +141,8 @@
 }
 .pg .ua-product-title {
     font-size:22px
+}
+.flex-row .ua-product-links a{
+    width: 40px;
+    height: 40px;
 }
