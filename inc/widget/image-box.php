@@ -46,6 +46,7 @@ class Image_Box extends Base{
         $this->style_icon_controls();
         $this->style_box_controls();
         $this->style_image_controls();
+        $this->style_button_controls();
     }
     
         
@@ -529,12 +530,124 @@ class Image_Box extends Base{
 				],
 			]
 		);
+        
+        
+      $this->end_controls_section();
+     }
+      /**
+	 * Icon Style
+	 */
+
+	 protected function style_button_controls(){
+        $this->start_controls_section(
+             '_ua_button_style',
+             [
+                 'label'     => esc_html__( 'Button', 'ultraaddons' ),
+                 'tab'       => Controls_Manager::TAB_STYLE,
+                 //'condition'=>['image_box_style'=>'2'],
+                 'conditions' => [
+                    'terms' => [
+                        [
+                            'name' => 'image_box_style',
+                            'operator' => 'in',
+                            'value' => [
+                                '2',
+                                '3'
+                            ]
+                        ]
+                    ]
+                ]
+             ]
+         );
+         $this->start_controls_tabs(
+            'btn_style_tabs'
+        );
+    
+        $this->start_controls_tab(
+            'btn_style_normal_tab',
+            [
+                'label' => esc_html__( 'Normal', 'ultraaddons' ),
+            ]
+        );
+
+        
+        $this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'button_bg',
+				'label' => esc_html__( 'Button Background', 'ultraaddons' ),
+				'types' => [ 'classic', 'gradient'],
+                'exclude' =>['image'],
+				'selector' => '{{WRAPPER}} .ua-img-box-button',
+			]
+		);
+
+        $this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'button_border',
+				'label' => esc_html__( 'Border', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-img-box-button',
+			]
+		);
+       
+        $this->add_responsive_control(
+			'button_radius',
+			[
+				'label'       => esc_html__( 'Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ '%', 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'separator' =>'before',
+				'selectors'   => [
+					'{{WRAPPER}} .ua-img-box-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->end_controls_tab();
+        
+        //Hover Tab
+        $this->start_controls_tab(
+            'btn_style_hover_tab',
+            [
+                'label' => esc_html__( 'Hover', 'ultraaddons' ),
+            ]
+        );
+    
+
+        $this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'button_bg_hover',
+				'label' => esc_html__( 'Button Background', 'ultraaddons' ),
+				'types' => [ 'classic', 'gradient'],
+                'exclude' =>['image'],
+				'selector' => '{{WRAPPER}} .ua-img-box-button:hover',
+			]
+		);
+
+        $this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'button_border_hover',
+				'label' => esc_html__( 'Border', 'ultraaddons' ),
+				'selector' => '{{WRAPPER}} .ua-img-box-button:hover',
+			]
+		);
+        $this->end_controls_tab();
+    
+        $this->end_controls_tabs();
 
         
       $this->end_controls_section();
      }
-     
 
+     
      /**
      * Render oEmbed widget output on the frontend.
      *
