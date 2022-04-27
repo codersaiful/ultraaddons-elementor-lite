@@ -397,6 +397,14 @@ class Info_Box extends Base {
                             ],
                     ]
             );
+            $this->add_group_control(
+                Group_Control_Box_Shadow::get_type(),
+                [
+                        'name' => '_iconshadow',
+                        'label' => __( 'Icon Shadow', 'ultraaddons' ),
+                        'selector' => '{{WRAPPER}} .elementor-icon',
+                ]
+        );
 
             $this->end_controls_tab();
 

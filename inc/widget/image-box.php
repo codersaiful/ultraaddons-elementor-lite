@@ -207,7 +207,7 @@ class Image_Box extends Base{
 				'label' => __( 'Title Hover Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-						'{{WRAPPER}} .ua-image-box-title:hover' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .ua-image-box:hover .ua-image-box-title' => 'color: {{VALUE}};',
 				],
 			]
         );

@@ -48,7 +48,8 @@ a.ua-img-box-button {
 	border-radius: 10px;
 }
 
-.ua-image-box.style-2 .ua-image-box-title, .ua-image-box.style-3 .ua-image-box-title {
+.ua-image-box.style-2 .ua-image-box-title,
+.ua-image-box.style-3 .ua-image-box-title {
 	margin-top: 15px;
 }
 
@@ -75,7 +76,7 @@ a.ua-img-box-button {
 	border-radius: 125px;
 	overflow: auto;
 	text-align: center;
-    padding: 15px;
+	padding: 15px;
 }
 
 .ua-image-box.style-3 img {
@@ -85,8 +86,9 @@ a.ua-img-box-button {
 	object-fit: cover;
 	margin: 0 auto;
 }
+
 .ua-image-box.style-3 a.ua-img-box-button {
-	background:transparent;
+	background: transparent;
 	padding: 10px 20px;
 	color: #000000;
 	border-radius: 5px;
@@ -95,20 +97,25 @@ a.ua-img-box-button {
 	font-weight: 500;
 	transition: 0.3s;
 }
+
 .ua-image-box.style-3:hover a.ua-img-box-button {
 	background-color: transparent;
-    color:#5C4EFF;
-    text-decoration: underline;
-    text-underline-offset: 3px
+	color: #5C4EFF;
+	text-decoration: underline;
+	text-underline-offset: 3px
 }
-.ua-image-box.style-3:hover .ua-image-box-title, .ua-image-box.style-1:hover .ua-image-box-title{
-    color:#5C4EFF;
+
+.ua-image-box.style-3:hover .ua-image-box-title,
+.ua-image-box.style-1:hover .ua-image-box-title {
+	color: #5C4EFF;
 }
-.image-wrap{
-    position: relative;
+
+.image-wrap {
+	position: relative;
 }
-.ua-image-box.style-1 .ua-image-box-title{
-margin-top: 40px;
+
+.ua-image-box.style-1 .ua-image-box-title {
+	margin-top: 40px;
 }
 
 .ua-image-box:hover .ua-image-box-icon {
@@ -118,22 +125,25 @@ margin-top: 40px;
 }
 
 .ua-image-box-icon {
-    background-color: blue;
-    width: 70px;
-    height: 70px;
-    border-radius: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    left: 50%;
-    border: 3px solid #fff ;
-    transform: translate(-50%);
-color: #fff;fill: #fff;
-top: 75%;}
+	background-color: blue;
+	width: 70px;
+	height: 70px;
+	border-radius: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	left: 50%;
+	border: 3px solid #fff;
+	transform: translate(-50%);
+	color: #fff;
+	fill: #fff;
+	top: 75%;
+}
+
 .ua-image-box-icon svg {
-    width: 2em;
-    height: 2em;
-    position: relative;
-    display: block;
+	width: 2em;
+	height: 2em;
+	position: relative;
+	display: block;
 }
