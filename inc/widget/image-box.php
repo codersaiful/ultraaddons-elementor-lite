@@ -313,6 +313,16 @@ class Image_Box extends Base{
 				'selector' => '{{WRAPPER}} .ua-image-box-icon',
 			]
 		);
+        $this->add_control(
+			'icon_color', [
+				'label' => __( 'Icon Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-image-box-icon i' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .ua-image-box-icon svg' => 'fill: {{VALUE}};',
+				],
+			]
+        );
 
         $this->add_group_control(
 			Group_Control_Border::get_type(),
@@ -335,9 +345,14 @@ class Image_Box extends Base{
 						'step' => 5,
 					],
 				],
+                'default' => [
+					'unit' => 'px',
+					'size' => 35,
+				],
 			
 				'selectors' => [
 					'{{WRAPPER}} .ua-image-box-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .ua-image-box-icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -530,6 +545,45 @@ class Image_Box extends Base{
 				],
 			]
 		);
+        $this->add_control(
+			'image_width',
+			[
+				'label' => esc_html__( 'Image Width', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'range' => [
+					'px' => [
+						'min' => 100,
+						'max' => 500,
+						'step' => 5,
+					],
+				],
+			
+				'selectors' => [
+					'{{WRAPPER}} .ua-image-box img' => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_control(
+			'image_height',
+			[
+				'label' => esc_html__( 'Image Height', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'range' => [
+					'px' => [
+						'min' => 100,
+						'max' => 500,
+						'step' => 5,
+					],
+				],
+			
+				'selectors' => [
+					'{{WRAPPER}} .ua-image-box img' => 'height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+     
         
         
       $this->end_controls_section();
@@ -671,18 +725,20 @@ class Image_Box extends Base{
 		);
         ?>
         <div <?php echo $this->get_render_attribute_string( 'image_box_class' );?>>
-        <?php 
-			if(!empty($settings['ua_image_box_image']['url'])){
-				echo '<img  class="ua-image" src="' . $settings['ua_image_box_image']['url'] .'">';
-			}
-			?>
-            <?php if(! empty($settings['icon']['value']) && $settings['image_box_style']=='1' ){ ?>
-            <div class="ua-image-box-icon-wrap">
-                <div class="ua-image-box-icon">
-                    <?php \Elementor\Icons_Manager::render_icon( $settings['icon'], [ 'aria-hidden' => 'true' ] ); ?>
-                </div>
+            <div class="image-wrap">
+                <?php 
+                if(!empty($settings['ua_image_box_image']['url'])){
+                    echo '<img  class="ua-image" src="' . $settings['ua_image_box_image']['url'] .'">';
+                }
+                ?>
+                <?php if(! empty($settings['icon']['value']) && $settings['image_box_style']=='1' ){ ?>
+                    <div class="ua-image-box-icon">
+                        <?php \Elementor\Icons_Manager::render_icon( $settings['icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                    </div>
+                <?php } ?>
+
             </div>
-            <?php } ?>
+          
             <div class="image-box-content-wrap">
                 <?php 
                 echo '<a href="' . $url. '"' . $target . $nofollow . ' class="ua-image-box-title-link">
