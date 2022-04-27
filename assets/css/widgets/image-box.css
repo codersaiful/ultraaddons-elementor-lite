@@ -11,7 +11,7 @@
 	margin: 0;
 	font-size: 26px;
 	color: #040415;
-}
+font-weight: bold;}
 
 .ua-image-box-content {
 	font-size: 16px;
@@ -73,7 +73,7 @@ a.ua-img-box-button {
 
 /*Style 3*/
 .ua-image-box.style-3 {
-	border-radius: 125px;
+	border-radius: 150px;
 	overflow: auto;
 	text-align: center;
 	padding: 15px;
