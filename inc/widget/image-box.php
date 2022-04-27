@@ -624,7 +624,16 @@ class Image_Box extends Base{
             ]
         );
 
-        
+        $this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+					'name' => 'button_typography',
+					'label' => 'Button Typography',
+					'selector' => '{{WRAPPER}} .ua-img-box-button',
+
+			]
+        );
+
         $this->add_group_control(
 			Group_Control_Background::get_type(),
 			[
