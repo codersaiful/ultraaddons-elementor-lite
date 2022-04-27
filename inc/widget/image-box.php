@@ -261,7 +261,7 @@ class Image_Box extends Base{
         $this->add_responsive_control(
 			'desc_margin',
 			[
-				'label'       => esc_html__( 'Title Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Description Margin', 'ultraaddons' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -270,7 +270,6 @@ class Image_Box extends Base{
 					'bottom' => '',
 					'left'   => '',
 				],
-				'separator' =>'after',
 				'selectors'   => [
 					'{{WRAPPER}} .ua-image-box-content' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],

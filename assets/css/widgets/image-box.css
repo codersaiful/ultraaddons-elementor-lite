@@ -138,7 +138,7 @@ a.ua-img-box-button {
 	transform: translate(-50%);
 	color: #fff;
 	fill: #fff;
-	top: 75%;
+	bottom: -25px;
 }
 
 .ua-image-box-icon svg {
