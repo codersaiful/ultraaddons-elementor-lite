@@ -54,7 +54,7 @@ a.ua-img-box-button {
 }
 
 .ua-image-box.style-2 a.ua-img-box-button {
-	background: rgb(217, 217, 251);
+	background: #f0edff;
 	padding: 10px 20px;
 	color: #5C4EFF;
 	border-radius: 5px;
@@ -62,7 +62,7 @@ a.ua-img-box-button {
 	display: inline-block;
 	font-weight: 500;
 	transition: 0.3s;
-}
+font-weight: 600;}
 
 .ua-image-box.style-2:hover a.ua-img-box-button {
 	background-color: transparent;
