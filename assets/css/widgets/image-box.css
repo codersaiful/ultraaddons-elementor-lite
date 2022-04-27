@@ -147,3 +147,6 @@ a.ua-img-box-button {
 	position: relative;
 	display: block;
 }
+.ua-image-box a.ua-image-box-title-link, .btn-wrap a.ua-img-box-button {
+    text-decoration: none;
+}
