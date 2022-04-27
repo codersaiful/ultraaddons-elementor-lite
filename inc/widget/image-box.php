@@ -42,9 +42,10 @@ class Image_Box extends Base{
     protected function register_controls() {
         //For General Section
         $this->content_general_controls();
-        $this->style_icon_controls();
         $this->style_general_controls();
+        $this->style_icon_controls();
         $this->style_box_controls();
+        $this->style_image_controls();
     }
     
         
@@ -87,6 +88,7 @@ class Image_Box extends Base{
                 'value' => 'fas fa-star',
                 'library' => 'solid',
             ],
+            'condition'=>['image_box_style'=>'1']
         ]
     );
 
@@ -108,7 +110,7 @@ class Image_Box extends Base{
         [
                 'label' => __( 'Description', 'ultraaddons' ),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => __( 'Al contrario del pensamiento popular, el texto de Lorem Ipsum no es simplemente texto aleatorio.', 'ultraaddons' ),
+                'default' => __( 'Al contrario del pensamiento popular, el texto de Lorem Ipsum.', 'ultraaddons' ),
                 'label_block' => true,
         ]
     );
@@ -130,7 +132,7 @@ class Image_Box extends Base{
             'show_external' => true,
             'separator' =>'after',
             'default' => [
-                'url' => '',
+                'url' => '#',
                 'is_external' => true,
                 'nofollow' => true,
             ],
@@ -151,6 +153,19 @@ class Image_Box extends Base{
                  'tab'       => Controls_Manager::TAB_STYLE,
              ]
          );
+         $this->add_responsive_control(
+            'image_box_style',
+                [
+                    'label'         => esc_html__( 'Style', 'ultraaddons' ),
+                    'type'          => Controls_Manager::SELECT,
+                    'options' => [
+                            '1'   => __( 'Style-1', 'ultraaddons' ),
+                            '2'   => __( 'Style-2', 'ultraaddons' ),
+                            '3'   => __( 'Style-3', 'ultraaddons' ),
+                    ],
+                    'default' => '1',
+                ]
+        );
            $this->add_responsive_control(
             'image_box_align',
             [
@@ -170,7 +185,7 @@ class Image_Box extends Base{
                                     'icon' => 'eicon-text-align-right',
                             ],
                     ],
-                    'default' => 'center',
+                    'default' => '',
                     'selectors' => [
                             '{{WRAPPER}} .ua-image-box' => 'text-align: {{VALUE}};',
                     ],
@@ -183,6 +198,15 @@ class Image_Box extends Base{
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-image-box-title' => 'color: {{VALUE}};',
+				],
+			]
+        );
+        $this->add_control(
+			'title_hover_color', [
+				'label' => __( 'Title Hover Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+						'{{WRAPPER}} .ua-image-box-title:hover' => 'color: {{VALUE}};',
 				],
 			]
         );
@@ -263,6 +287,7 @@ class Image_Box extends Base{
              [
                  'label'     => esc_html__( 'Icon', 'ultraaddons' ),
                  'tab'       => Controls_Manager::TAB_STYLE,
+                 'condition'=>['image_box_style'=>'1']
              ]
          );
          $this->start_controls_tabs(
@@ -456,6 +481,58 @@ class Image_Box extends Base{
         
       $this->end_controls_section();
      }
+     /**
+	 * Image Style
+	 */
+
+	 protected function style_image_controls(){
+        $this->start_controls_section(
+             '_ua_image_style',
+             [
+                 'label'     => esc_html__( 'Image', 'ultraaddons' ),
+                 'tab'       => Controls_Manager::TAB_STYLE,
+             ]
+         );
+        
+       
+        $this->add_responsive_control(
+			'image_radius',
+			[
+				'label'       => esc_html__( 'Image Radius', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ '%', 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-image-box img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+        $this->add_responsive_control(
+			'image_padding',
+			[
+				'label'       => esc_html__( 'Image Padding', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ '%', 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'selectors'   => [
+					'{{WRAPPER}} .ua-image-box img' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+        
+      $this->end_controls_section();
+     }
      
 
      /**
@@ -468,17 +545,25 @@ class Image_Box extends Base{
      */
     protected function render() {
         $settings           = $this->get_settings_for_display();
+    
         $target 	= $settings['_button_link']['is_external'] ? ' target="_blank"' : '';
 		$nofollow 	= $settings['_button_link']['nofollow'] ? ' rel="nofollow"' : '';
 		$url		= $settings['_button_link']['url'];
+
+        $this->add_render_attribute(
+			'image_box_class',
+			[
+				'class' => 'ua-image-box style-' . $settings['image_box_style'],
+			]
+		);
         ?>
-        <div class="ua-image-box">
+        <div <?php echo $this->get_render_attribute_string( 'image_box_class' );?>>
         <?php 
 			if(!empty($settings['ua_image_box_image']['url'])){
 				echo '<img  class="ua-image" src="' . $settings['ua_image_box_image']['url'] .'">';
 			}
 			?>
-            <?php if(! empty($settings['icon']['value'])){ ?>
+            <?php if(! empty($settings['icon']['value']) && $settings['image_box_style']=='1' ){ ?>
             <div class="ua-image-box-icon-wrap">
                 <div class="ua-image-box-icon">
                     <?php \Elementor\Icons_Manager::render_icon( $settings['icon'], [ 'aria-hidden' => 'true' ] ); ?>
@@ -486,11 +571,17 @@ class Image_Box extends Base{
             </div>
             <?php } ?>
             <div class="image-box-content-wrap">
-                <h2 class="ua-image-box-title"><?php echo $settings['title_text']; ?></h2>
+                <?php 
+                echo '<a href="' . $url. '"' . $target . $nofollow . ' class="ua-image-box-title-link">
+                    <h2 class="ua-image-box-title">
+                         ' . $settings['title_text'] .'
+                    </h2>
+                </a>';
+                ?>
                 <div class="ua-image-box-content">
                     <?php echo $settings['description_text']; ?>
                     <?php 
-                    if(!empty($url)){
+                    if(!empty($url && $settings['image_box_style']=='2' || $settings['image_box_style']=='3' )){
                         echo '<div class="btn-wrap"> 
                                 <a href="' . $url. '"' . $target . $nofollow . ' class="ua-img-box-button">
                                 ' .  $settings['_button_text'] . '
