@@ -242,6 +242,7 @@ class Team_Box extends Base{
                                         'name' => 'desc_typography',
                                         'label' => 'Description Typography',
                                         'selector' => '{{WRAPPER}} .ua-team-container .member-text',
+                                        'condition'=>['description!'=>'']
 
                         ]
                 );
@@ -249,6 +250,7 @@ class Team_Box extends Base{
                         'desc_color', [
                                 'label' => __( 'Description Color', 'ultraaddons' ),
                                 'type'      => Controls_Manager::COLOR,
+                                'condition'=>['description!'=>''],
                                 'separator' => 'after',
                                 'selectors' => [
                                                 '{{WRAPPER}} .ua-team-container .member-text' => 'color: {{VALUE}};',
@@ -433,14 +435,32 @@ class Team_Box extends Base{
 				'selector' => '{{WRAPPER}} .ua-team-container .member',
 			]
 		);
+
                 $this->add_group_control(
-			Group_Control_Border::get_type(),
-			[
-				'name' => 'box_border',
-				'label' => __( 'Border', 'ultraaddons' ),
-				'selector' => '{{WRAPPER}} .ua-team-container .member',
-			]
-		);
+                        Group_Control_Border::get_type(),
+                        [
+                                'name' => 'box_border',
+                                'label' => __( 'Border', 'ultraaddons' ),
+                                'fields_options' => [
+                                        'border' => [
+                                                'default' => 'solid',
+                                        ],
+                                        'width' => [
+                                                'default' => [
+                                                        'top' => '1',
+                                                        'right' => '1',
+                                                        'bottom' => '1',
+                                                        'left' => '1',
+                                                        'isLinked' => false,
+                                                ],
+                                        ],
+                                        'color' => [
+                                                'default' => '#f7f7f7',
+                                        ],
+                                ],
+                                'selector' => '{{WRAPPER}} .ua-team-container .member',
+                        ]
+                );
                
                 $this->end_controls_section();
         }
@@ -457,22 +477,26 @@ class Team_Box extends Base{
                 $this->add_control(
 			'image_size',
 			[
-				'label' => __( 'Image Size', 'ultraaddons' ),
+				'label' => esc_html__( 'Image Size', 'ultraaddons' ),
 				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px'],
+				'size_units' => [ 'px', '%' ],
 				'range' => [
 					'px' => [
-						'min' => 50,
-						'max' => 200,
+						'min' => 0,
+						'max' => 1000,
 						'step' => 5,
 					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
 				],
-                                'separator' => 'before',
 				'selectors' => [
 					'{{WRAPPER}} .ua-team-container .member img' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
+
                 $this->add_responsive_control(
 			'image_radius',
 			[

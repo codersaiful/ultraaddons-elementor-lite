@@ -6,7 +6,7 @@
   position: relative;
   transition: ease all .5s;
   overflow: hidden;
-}
+border: 1px solid #f7f7f7;}
 
 .ua-team-container .member img {
   display: inline-block;
@@ -49,7 +49,7 @@ margin: 0 0 9px;
   color: #c81a3b
 }
 .ua-team-container .team-content-wrap {
-  padding: 15px 0px;
+  padding: 15px;
 }
 .ua-team-container .ua-team .who {
   font-size: 14px;

@@ -45,3 +45,6 @@
     .elementor-align-left .client-avatar img{
       margin-right:15px ;
     }
+    .ua-testimonial-box .client-quote-box .ua-testimonial-subtitle {
+      display: inline-block;
+  }

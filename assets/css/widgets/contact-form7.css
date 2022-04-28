@@ -76,7 +76,7 @@ form.ultraaddons-cf7-form input.wpcf7-form-control.wpcf7-submit {
     padding: 16px 45px;
     font-size: 16px;
     line-height: 1.2;
-    width: 100%;
+    width: auto;
     font-weight: bold;
     font-family: 'Roboto', sans-serif;
     font-family: var(--medilac-font-secondary);
