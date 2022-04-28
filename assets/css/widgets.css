@@ -310,14 +310,14 @@ Pagination
     border-radius: 20px;
     margin: 6px 6px 6px 6px;
     color: #080808;
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
     padding: 10px 15px;
   }
   .ua-pagination .page-numbers.current,
   a.page-numbers:hover {
     background: #000000;
     color: #fff;
-    border: 1px solid #5c5c5c;
+    /* border: 1px solid #5c5c5c; */
   }
   .ua-pagination .page-numbers.current, 
   .ua-pagination a.page-numbers:hover {
@@ -325,12 +325,11 @@ Pagination
       color: #333;
   }
    .ua-btn-wrap a.ua-btn, .elementor-widget-ultraaddons-button .ua-btn-wrap a.ua-btn{
-    margin: 0.4em;
     padding: 1em;
     cursor: pointer;
-    background: #e1e1e1;
+    background: #4a74e0;
     text-decoration: none;
-    color: #666;
+    color: #fff;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -425,7 +424,7 @@ ul.wpuf-form li .wpuf-fields .wpuf-name-field-wrap.format-first-last .wpuf-name-
     justify-content: center;
     align-content: center;
     align-items: center;
-    padding: 25px;
+    padding: 20px 30px;
     background: #db0c0c;
     color: #fff;
     cursor: pointer;

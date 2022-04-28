@@ -545,7 +545,7 @@ function ultraaddons_get_fonts(){
 
 function ultraaddons_button_hover(){
     return  array(
-        'hvr-fade' => 'Fade',
+		'none'=>'None',
         'hvr-back-pulse' => 'Back Pulse',
         'hvr-sweep-to-right' => 'Sweep To Right',
         'hvr-sweep-to-left' => 'Sweep To Left',

@@ -336,7 +336,7 @@
         category_class = '';
     }
     let targetSelector = allSelector + fremum_class + category_class;
-    console.log(targetSelector);
+    //console.log(targetSelector);
     $(targetSelector).fadeIn('medium');
 
     }

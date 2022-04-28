@@ -674,6 +674,14 @@ $widgetsArray = [
             __( 'General', 'ultraaddons' ),
         ],
     ],
+    'Image_Box'=> [
+        'name'      => __( 'Image Box', 'ultraaddons' ),
+        'is_pro'   => false,
+        'icon'      => 'eicon-image-box',
+        'cat'       => [
+            __( 'General', 'ultraaddons' ),
+        ],
+    ],
 
 ];
 

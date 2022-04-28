@@ -429,7 +429,6 @@ class Timeline extends Base{
                 'options'   => [
                     '_skin_1' => 'Style 01',
                     '_skin_2' => 'Style 02',
-                    '_skin_3' => 'Style 03',
                 ],
                 'default' => '_skin_1'
             ]
@@ -660,11 +659,11 @@ class Timeline extends Base{
                     ],
                     'icon' => [
                         'title' => esc_html__('Icon', 'ultraaddons'),
-                        'icon' => 'fa fa-gear',
+                        'icon' => 'eicon-cog',
                     ],
                     'image' => [
                         'title' => esc_html__('Image', 'ultraaddons'),
-                        'icon' => 'fa fa-picture-o',
+                        'icon' => 'eicon-image-bold',
                     ],
                 ],
                 'default' => 'icon',
@@ -957,6 +956,9 @@ class Timeline extends Base{
 				],
 				'default' => 'show',
 				'prefix_class' => 'ultraaddons-content-arrow-',
+                'condition' => [
+                	'_ua_timeline_skin' => ['_skin_1']
+                ],
 			]
 		);
 

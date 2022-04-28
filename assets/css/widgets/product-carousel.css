@@ -14,7 +14,7 @@
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
+    /* border: 1px solid rgba(0,0,0,.125); */
     border-radius: 0.25rem;
     color:#111
 }
@@ -112,7 +112,7 @@ font-size: 20px;
     border-radius: 60px;
     font-size: 18px;
     line-height: 18px;
-    padding-top: 9px;
+    padding: 9px;
     overflow: hidden;
     position: relative;
     -webkit-box-shadow: 1px 0 32px rgba(0, 0, 0, 0.2);
@@ -159,6 +159,9 @@ font-size: 20px;
 .ua-pc .ua-pc button.slider-nav{
     background-color: transparent;
     outline: none;
+}
+.ua-product-title {
+    margin: 0;
 }
 @keyframes bounceIn {
     from,
@@ -224,3 +227,4 @@ font-size: 20px;
         padding-left: 0.5rem!important;
     }
 }
+

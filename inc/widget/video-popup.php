@@ -326,6 +326,10 @@ class Video_Popup extends Base{
                     'label' => esc_html__( 'Icon', 'ultraaddons' ),
                     'type' => Controls_Manager::ICONS,
                     'fa4compatibility' => 'icon',
+                    'default' => [
+                        'value' => 'fas fa-play',
+                        'library' => 'solid',
+                    ],
                     'skin' => 'inline',
                     'label_block' => true,
                 ]
@@ -411,7 +415,7 @@ class Video_Popup extends Base{
                     ],
                     'default' => [
                         'unit' => 'px',
-                        'size' => '16',
+                        'size' => '',
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .ua-video-btn' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',

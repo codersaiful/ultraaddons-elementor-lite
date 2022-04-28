@@ -508,14 +508,14 @@ class Image_Accordion extends Base{
                 ],
             ]
         );
-        $this->add_control(
+       /*  $this->add_control(
             'ua_img_accordion_active_background_text',
             [
                 'label' => esc_html__( 'Active Item Background', 'ultraaddons' ),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'before'
             ]
-        );
+        ); 
     
         $this->add_group_control(
             Group_Control_Background::get_type(),
@@ -525,7 +525,7 @@ class Image_Accordion extends Base{
                 'selector' => '{{WRAPPER}} .ultraaddons-single-image-accordion:before',
 
             )
-        );
+        );*/
         $this->add_responsive_control(
             'ua_img_accordion_container_padding',
             [

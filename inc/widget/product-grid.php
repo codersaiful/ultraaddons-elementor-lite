@@ -582,14 +582,7 @@ class Product_Grid extends Base{
 				'selector' => '{{WRAPPER}} .add-card.button',
 			]
 		);
-		$this->add_group_control(
-			Group_Control_Box_Shadow::get_type(),
-			[
-				'name' => 'btn_shadow',
-				'label' => esc_html__( 'Button Shadow', 'ultraaddons' ),
-				'selector' => '{{WRAPPER}} .add-card.button',
-			]
-		);
+	
         $this->add_control(
 			'_btn_text_color', [
 				'label' => __( 'Button Text Color', 'ultraaddons' ),
