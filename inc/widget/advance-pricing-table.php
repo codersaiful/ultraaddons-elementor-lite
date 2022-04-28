@@ -858,7 +858,7 @@ class Advance_Pricing_Table extends Base{
             [
 				'label'     => esc_html__( 'Month Typography', 'ultraaddons' ),
                 'name' => 'month_typography',
-                'selector' => '{{WRAPPER}} .month',
+                'selector' => '{{WRAPPER}} .month, .slash',
             ]
         );
 	
