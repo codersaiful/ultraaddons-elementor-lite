@@ -80,11 +80,12 @@ font-weight: 600;}
 border-radius: 50vmin;}
 
 .ua-image-box.style-3 img {
-	border-radius: 100%;
+	border-radius: 50%;
 	height: 250px;
 	width: 250px;
 	object-fit: cover;
 	margin: 0 auto;
+	
 }
 
 .ua-image-box.style-3 a.ua-img-box-button {
