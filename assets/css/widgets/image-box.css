@@ -80,9 +80,9 @@ font-weight: 600;}
 border-radius: 50vmin;}
 
 .ua-image-box.style-3 img {
-	border-radius: 100vw;
-	/* height: 235px; */
-	/* width: 235px; */
+	border-radius: 100%;
+	height: 250px;
+	width: 250px;
 	object-fit: cover;
 	margin: 0 auto;
 }
