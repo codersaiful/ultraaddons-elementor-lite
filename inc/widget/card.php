@@ -719,6 +719,24 @@ class Card extends Base{
 				],
 			]
 		);
+		$this->add_responsive_control(
+			'_ua_box_padding',
+			[
+				'label'       => esc_html__( 'Box Padding', 'ultraaddons' ),
+				'type'        => Controls_Manager::DIMENSIONS,
+				'size_units'  => [ '%', 'px' ],
+				'placeholder' => [
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				],
+				'separator'=>'before',
+				'selectors'   => [
+					'{{WRAPPER}} .ua-card' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 		$this->add_group_control(
 			Group_Control_Box_Shadow::get_type(),
 			[
@@ -799,7 +817,7 @@ class Card extends Base{
 				],
 			]
         );
-		$this->add_responsive_control(
+		/* $this->add_responsive_control(
 			'_ua_card_price_margin',
 			[
 				'label'       => esc_html__( 'Price Margin', 'ultraaddons' ),
@@ -816,7 +834,7 @@ class Card extends Base{
 					'{{WRAPPER}} .card-price' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
-		);
+		); */
 		
 	
 	 $this->end_controls_section();
@@ -839,12 +857,13 @@ class Card extends Base{
 			'_ua_card_wish_color', [
 				'label' => __( 'Wish Icon Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
+				'default'   =>'#ddd',
 				'selectors' => [
 						'{{WRAPPER}} .card-wish a' => 'color: {{VALUE}};',
 				],
 			]
         );
-		$this->add_responsive_control(
+	/* 	$this->add_responsive_control(
 			'_ua_card_wish_margin',
 			[
 				'label'       => esc_html__( 'Wish Margin', 'ultraaddons' ),
@@ -860,7 +879,7 @@ class Card extends Base{
 					'{{WRAPPER}} .card-wish' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
-		);
+		); */
 		$this->add_control(
 			'_ua_card_wish_icon_size',
 			[
