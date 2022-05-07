@@ -382,11 +382,11 @@ class Recent_Blog extends Base{
                         'options' => [
                                 'classic' => [
                                         'title' => __( 'Classic', 'ultraaddons' ),
-                                        'icon' => 'fa fas fa-grip-horizontal',
+                                        'icon' => 'eicon-archive-posts',
                                 ],
                                 'modern' => [
                                         'title' => __( 'Modern', 'ultraaddons' ),
-                                        'icon' => 'fa fas fa-th-large',
+                                        'icon' => 'eicon-archive',
                                 ],
 
                         ],
@@ -432,11 +432,11 @@ class Recent_Blog extends Base{
                     'options' => [
                             'on' => [
                                     'title' => __( 'Show', 'ultraaddons' ),
-                                    'icon' => 'fa fa-eye',
+                                    'icon' => 'eicon-preview-medium',
                             ],
                             'off' => [
                                     'title' => __( 'Hide', 'ultraaddons' ),
-                                    'icon' => 'fa fa-eye-slash',
+                                    'icon' => 'eicon-ban',
                             ],
                     ],
                     'default' => 'on',
@@ -452,11 +452,11 @@ class Recent_Blog extends Base{
                     'options' => [
                             'on' => [
                                     'title' => __( 'Show', 'ultraaddons' ),
-                                    'icon' => 'fa fa-eye',
+                                    'icon' => 'eicon-preview-medium',
                             ],
                             'off' => [
                                     'title' => __( 'Hide', 'ultraaddons' ),
-                                    'icon' => 'fa fa-eye-slash',
+                                    'icon' => 'eicon-ban',
                             ],
                     ],
                     'default' => 'on',
@@ -492,14 +492,14 @@ class Recent_Blog extends Base{
                     'description'   => esc_html__( 'Thumbnail Image and Date will be hidden.', 'ultraaddons' ),
                     'type'          => Controls_Manager::CHOOSE,
                     'options' => [
-                            'on' => [
-                                    'title' => __( 'Show', 'ultraaddons' ),
-                                    'icon' => 'fa fa-eye',
-                            ],
-                            'off' => [
-                                    'title' => __( 'Hide', 'ultraaddons' ),
-                                    'icon' => 'fa fa-eye-slash',
-                            ],
+                        'on' => [
+                                'title' => __( 'Show', 'ultraaddons' ),
+                                'icon' => 'eicon-preview-medium',
+                        ],
+                        'off' => [
+                                'title' => __( 'Hide', 'ultraaddons' ),
+                                'icon' => 'eicon-ban',
+                        ],
                     ],
                     'default' => 'on',
                     'toggle' => true,
@@ -518,11 +518,11 @@ class Recent_Blog extends Base{
                     'options' => [
                             'on' => [
                                     'title' => __( 'Show', 'ultraaddons' ),
-                                    'icon' => 'fa fa-eye',
+                                    'icon' => 'eicon-preview-medium',
                             ],
                             'off' => [
                                     'title' => __( 'Hide', 'ultraaddons' ),
-                                    'icon' => 'fa fa-eye-slash',
+                                    'icon' => 'eicon-ban',
                             ],
                     ],
                     'default' => 'on',
@@ -540,11 +540,11 @@ class Recent_Blog extends Base{
                     'options' => [
                             'on' => [
                                     'title' => __( 'Show', 'ultraaddons' ),
-                                    'icon' => 'fa fa-eye',
+                                    'icon' => 'eicon-preview-medium',
                             ],
                             'off' => [
                                     'title' => __( 'Hide', 'ultraaddons' ),
-                                    'icon' => 'fa fa-eye-slash',
+                                    'icon' => 'eicon-ban',
                             ],
                     ],
                     'default' => 'on',
@@ -663,7 +663,7 @@ class Recent_Blog extends Base{
                     'value' => Color::COLOR_1,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .recent-blog-meta span i' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .recent-blog-meta i' => 'color: {{VALUE}}',
                 ],
                 'default'   => '#021429',
                 'condition' => [
@@ -737,7 +737,6 @@ class Recent_Blog extends Base{
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .recent-blog-item-wrap .recent-blog-img a.recent-blog-date' => 'background-color: {{VALUE}}',
-                    '{{WRAPPER}} .recent-blog-item-wrap span.recent-blog-author i,{{WRAPPER}} .recent-blog-item-wrap span.published-date i' => 'color: {{VALUE}}',
                 ],
                 'default'   => '#0FC392',
             ]
@@ -784,9 +783,6 @@ class Recent_Blog extends Base{
                 [
                         'label' => __( 'Image Custom Height', 'ultraaddons' ),
                         'type' => Controls_Manager::SLIDER,
-                        'default' => [
-                                'size' => 0,
-                        ],
                         'size_units' => [ 'px', '%' ],
                         'range' => [
                             'px' => [

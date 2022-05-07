@@ -419,7 +419,7 @@ ul.wpuf-form li .wpuf-fields .wpuf-name-field-wrap.format-first-last .wpuf-name-
 .ua-video-btn-wrap{
     display: flex;
 }
-.ua-video-btn {
+.elementor-widget-ultraaddons-video-popup .ua-video-btn {
     display: flex;
     justify-content: center;
     align-content: center;
@@ -428,4 +428,7 @@ ul.wpuf-form li .wpuf-fields .wpuf-name-field-wrap.format-first-last .wpuf-name-
     background: #db0c0c;
     color: #fff;
     cursor: pointer;
+  }
+  .elementor-widget-ultraaddons-video-popup .ua-video-btn:hover{
+      background-color: #21272c;
   }

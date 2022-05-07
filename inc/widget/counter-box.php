@@ -164,6 +164,8 @@ class Counter_Box extends Base{
                         'label'     => __( 'Icon', 'ultraaddons' ),
                         'type'      => Controls_Manager::ICONS,
                         'default'   => $default_icon,
+                        'skin' => 'inline',
+                        'exclude_inline_options' =>['svg']
                 ]
         );
         
