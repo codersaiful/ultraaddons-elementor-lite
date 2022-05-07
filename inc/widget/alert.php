@@ -141,7 +141,7 @@ class Alert extends Base{
 			]
 		);
 		
-		$this->add_control(
+		/* $this->add_control(
 			'_ua_alert_show_as_default',
 			[
                 'label' => __('Set as Default', 'ultraaddons'),
@@ -149,7 +149,7 @@ class Alert extends Base{
                 'default' => '',
                 'return_value' => 'yes',
 			]
-        );
+        ); */
         
         $this->add_control(
             '_ua_alert_title_size',
@@ -263,7 +263,8 @@ class Alert extends Base{
             [
                 'name' => 'alert_background',
                 'label' => esc_html__('Background Color', 'ultraaddons'),
-                'types' => [ 'classic', 'gradient', 'video' ],
+                'types' => [ 'classic', 'gradient' ],
+                'exclude' =>['image'],
                 'selector' => '{{WRAPPER}} .ua_alert_box.ua_alert_box_style_01',
             ]
         );

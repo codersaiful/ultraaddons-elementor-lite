@@ -45,6 +45,7 @@ class Breadcrumb extends Base{
         
         //For General Section
         $this->content_general_controls();
+        $this->general_style();
         $this->wrapper_controls();
     }
     
@@ -81,7 +82,7 @@ class Breadcrumb extends Base{
             'wraper_style',
             [
                 'label'     => esc_html__( 'Box', 'ultraaddons' ),
-                'tab'       => Controls_Manager::TAB_CONTENT,
+                'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
         
@@ -96,6 +97,7 @@ class Breadcrumb extends Base{
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .ultraaddons-breadcrumb' => 'background-color: {{VALUE}}',
+                    '{{WRAPPER}} .ua-breadcrumb-menu' => 'background-color: {{VALUE}}',
                 ],
             ]
         );
@@ -104,7 +106,7 @@ class Breadcrumb extends Base{
 			[
 				'name' => 'border',
 				'label' => esc_html__( 'Border', 'ultraaddons' ),
-				'selector' => '{{WRAPPER}} .ultraaddons-breadcrumb',
+				'selector' => '{{WRAPPER}} .ultraaddons-breadcrumb, .ua-breadcrumb-menu',
 			]
 		);
         $this->add_control(
@@ -115,6 +117,7 @@ class Breadcrumb extends Base{
 				'size_units' => [ 'px', 'em' ],
 				'selectors' => [
 					'{{WRAPPER}} .ultraaddons-breadcrumb' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ua-breadcrumb-menu' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -126,6 +129,7 @@ class Breadcrumb extends Base{
 				'size_units' => [ 'px', 'em' ],
 				'selectors' => [
 					'{{WRAPPER}} .ultraaddons-breadcrumb' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ua-breadcrumb-menu' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -134,13 +138,14 @@ class Breadcrumb extends Base{
 			[
 				'name' => 'box_shadow',
 				'label' => esc_html__( 'Box Shadow', 'ultraaddons' ),
-				'selector' => '{{WRAPPER}} .ultraaddons-breadcrumb',
+				'selector' => '{{WRAPPER}} .ultraaddons-breadcrumb, .ua-breadcrumb-menu',
 			]
 		);
 
         
         $this->end_controls_section();
     }
+
     protected function content_general_controls() {
         $this->start_controls_section(
             'general_content',
@@ -172,6 +177,17 @@ class Breadcrumb extends Base{
                 ]
         );
         
+        $this->end_controls_section();
+    }
+    
+    protected function general_style() {
+        $this->start_controls_section(
+            'general_style',
+            [
+                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
         $this->add_control(
             'heading_alignment',
                 [
@@ -248,9 +264,9 @@ class Breadcrumb extends Base{
                 ]
         );
         
+
         $this->end_controls_section();
     }
-    
     
     private function breadcrumb() {
         $settings = $this->get_settings_for_display();

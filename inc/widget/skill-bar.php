@@ -364,7 +364,7 @@ class Skill_Bar extends Base{
 			]
 		);
                 
-                $this->add_control(
+               /*  $this->add_control(
 			'bar_bg_color',
 			[
 				'label' => __( 'Background Color', 'ultraaddons' ),
@@ -373,7 +373,7 @@ class Skill_Bar extends Base{
 					'{{WRAPPER}} .barfiller' => 'background-color: {{VALUE}};',
 				],
 			]
-		);
+		); */
                 
                 $this->add_control(
 			'bar_height',

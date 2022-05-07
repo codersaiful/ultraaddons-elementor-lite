@@ -264,14 +264,14 @@ $widgetsArray = [
             ],
     ],
     
-    'Skill_Bar' => [
+    /* 'Skill_Bar' => [
             'name'  => __( 'Skill Bar', 'ultraaddons' ),
             'is_pro'   => false,
             'icon'      => 'uicon-skillbar',
             'cat'       => [
                 __( 'General', 'ultraaddons' ),
             ],
-    ],
+    ], */
     
     
     'WordPress_Plugin_Stats' => [
