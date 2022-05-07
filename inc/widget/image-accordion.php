@@ -74,7 +74,8 @@ class Image_Accordion extends Base{
                     <input type="radio" name="ua_id_<?php echo esc_attr($this->get_id()); ?>" id="ua_id_<?php echo esc_attr($this->get_id()) .'_'. $key; ?>" class="ultraaddons-single-image-accordion--input" <?php echo esc_attr( $item['ua_img_accordion_active'] == 'yes' ? 'checked' : '' ); ?> hidden>
                     <label for="ua_id_<?php echo esc_attr($this->get_id()) .'_'. $key; ?>" class="ultraaddons-single-image-accordion ua-image-accordion-item" style="background-image: url(<?php echo esc_url($item['ua_img_accordion_bg']['url']); ?>)">
                         <span class="ultraaddons-accordion-content">
-                        <?php if($item['ua_img_accordion_enable_pupup'] == 'yes' || $item['ua_img_accordion_enable_project_link'] == 'yes') {
+                        <?php 
+                        if( $item['ua_img_accordion_enable_project_link'] == 'yes') {
 
                             if (!empty($item['ua_img_accordion_project_link']['url'])) {
 
@@ -91,7 +92,8 @@ class Image_Accordion extends Base{
 
                             ?>
                             <span class="ultraaddons-icon-wrapper ua-image-accordion-actions">
-                            <?php if($item['ua_img_accordion_enable_pupup'] == 'yes') { ?>
+                            <?php
+                            /*  if($item['ua_img_accordion_enable_pupup'] == 'yes') { ?>
                                     <a href="<?php echo esc_url($item['ua_img_accordion_bg']['url']); ?>" class="icon-outline circle" data-elementor-open-lightbox="yes">
                                     <?php
 
@@ -108,8 +110,8 @@ class Image_Accordion extends Base{
                                             <?php
                                         }
                                     ?>
-                                    </a>
-                            <?php } ?>
+                                    </a> */
+                                    //}?>
                             <?php if($item['ua_img_accordion_enable_project_link'] == 'yes') {
                                     if ( ! empty( $item['ua_img_accordion_project_link']['url'] ) ) {
                                         $this->add_link_attributes( 'button-2' . $key, $item['ua_img_accordion_project_link'] );
@@ -333,7 +335,7 @@ class Image_Accordion extends Base{
                 ]
             );
 
-            $repeater->add_control(
+           /*  $repeater->add_control(
                 'ua_img_accordion_enable_pupup',
                 [
                     'label'         => esc_html__( 'Enable Popup', 'ultraaddons' ),
@@ -361,7 +363,7 @@ class Image_Accordion extends Base{
                         'ua_img_accordion_enable_pupup' => 'yes'
                     ]
                 ]
-            );
+            ); */
 
             $repeater->add_control(
                 'ua_img_accordion_enable_project_link',
