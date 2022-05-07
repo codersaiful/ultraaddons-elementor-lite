@@ -84,11 +84,33 @@ class Flip_Box extends Base{
 				],
 			]
 		);
+		$this->add_control(
+			'show_front_image',
+			[
+				'label'       => esc_html__( 'Front Image Background', 'ultraaddons' ),
+				'type'        => Controls_Manager::CHOOSE,
+				'label_block' => false,
+				'options'     => [
+					'none' => [
+						'title' => esc_html__( 'None', 'ultraaddons' ),
+						'icon'  => 'eicon-ban',
+					],
+					'front_image' => [
+						'title' => esc_html__( 'Image', 'ultraaddons' ),
+						'icon'  => 'eicon-image-rollover',
+					],
+				],
+				'default'     => 'front_image',
+			]
+		);
 		 $this->add_control(
 			'_ua_front_image',
 			[
 				'label' => __( 'Front Image', 'ultraaddons' ),
 				'type' => Controls_Manager::MEDIA,
+				'condition' => [
+					'show_front_image' => 'front_image',
+				],
 				'default' => [
 						'url' => $placeholder_image,//Utils::get_placeholder_image_src(),
 				],
@@ -96,6 +118,18 @@ class Flip_Box extends Base{
 						'active' => true,
 				],
 
+			]
+        );
+		$this->add_control(
+			'_ua_flipbox_bg_front', [
+				'label' => __( 'Front Background', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'condition' => [
+					'show_front_image' => 'none',
+				],
+				'selectors' => [
+						'{{WRAPPER}} .ua-flip .front' => 'background-color: {{VALUE}};',
+				],
 			]
         );
 		$this->add_control(
@@ -114,7 +148,7 @@ class Flip_Box extends Base{
 						'icon'  => 'eicon-image-rollover',
 					],
 				],
-				'default'     => 'icon',
+				'default'     => 'none',
 			]
 		);
 		 $this->add_control(
@@ -132,6 +166,19 @@ class Flip_Box extends Base{
 						'active' => true,
 				],
 
+			]
+        );
+		$this->add_control(
+			'_ua_flipbox_bg_back', [
+				'label' => __( 'Back Background', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'condition' => [
+					'icon_type' => 'none',
+				],
+				'selectors' => [
+						'{{WRAPPER}} .ua-flip .back' => 'background: {{VALUE}};',
+				],
+				'separator'=>'before'
 			]
         );
 		$this->add_control(
@@ -160,6 +207,29 @@ class Flip_Box extends Base{
 				],
 				'selectors' => [
 					'{{WRAPPER}} .back i' => 'font-size: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_control(
+			'_ua_flip_size',
+			[
+				'label' => __( 'Flip Height', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em' ],
+				'range' => [
+					'px' => [
+						'min' => 10,
+						'max' => 500,
+						'step' => 5,
+					],
+					'em' => [
+						'min' => 0,
+						'max' => 200,
+					],
+				],
+
+				'selectors' => [
+					'{{WRAPPER}} .ua-flip > .front, .ua-flip > .back' => 'height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -252,16 +322,7 @@ class Flip_Box extends Base{
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
-        
-      $this->add_control(
-			'_ua_flipbox_bg_front', [
-				'label' => __( 'Front Background', 'ultraaddons' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-						'{{WRAPPER}} .ua-flip .front' => 'background-color: {{VALUE}};',
-				],
-			]
-        );
+
 		
 		$this->add_control(
 			'_ua_front_title_color', [
@@ -274,16 +335,7 @@ class Flip_Box extends Base{
 			]
         );
 	
-		$this->add_control(
-			'_ua_flipbox_bg_back', [
-				'label' => __( 'Back Background', 'ultraaddons' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-						'{{WRAPPER}} .ua-flip .back' => 'background: {{VALUE}};',
-				],
-				'separator'=>'before'
-			]
-        );
+		
 		
 		$this->add_control(
 			'_ua_flipbox_title_back', [
