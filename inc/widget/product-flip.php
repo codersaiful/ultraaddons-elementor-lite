@@ -607,7 +607,7 @@ class Product_Flip extends Base{
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'cart_btn_shadow',
-				'label' => __( 'Nav Shadow', 'ultraaddons' ),
+				'label' => __( 'Button Shadow', 'ultraaddons' ),
 				'selector' => '{{WRAPPER}} .ua-cart a.button',
 			]
 		);
