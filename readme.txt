@@ -8,7 +8,7 @@ Contributors: codersaiful, codeastrology, ultraaddons
 Requires at least: 4.0.0
 Tested up to: 5.9
 Requires PHP: 5.6
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -51,7 +51,16 @@ Use our pre-made section and templates to create your site very quickly with stu
 - [**Icon Box**](https://ultraaddons.com/widget/icon-box/) – Show Icon Box.
 - [**Testimonial Box**](https://ultraaddons.com/widget/testimonial-box/) – Show users feedback in beautiful way.
 - [**Team Box**](https://ultraaddons.com/widget/team-box/) – Display your team members in a beautiful way.
-- [**Skill Bar**](https://ultraaddons.com/widget/skill-bar/) – Display your skills in a dynamic way.
+- [**Card**](https://ultraaddons.com/widget/card/) – Display profile or product in card view.
+- [**Skill Chart**](https://ultraaddons.com/widget/skill-chart/) – Display your skill set by chart.
+- [**Post Timeline**](https://ultraaddons.com/widget/post-timeline/) – Post view in timeline.
+- [**Work Hour**](https://ultraaddons.com/widget/work-hour/) – Display work hour or offical hour by this widget
+- [**News Ticker**](https://ultraaddons.com/widget/news-ticker/) – Display news or urgent notice by this widget
+- [**Moving Letter**](https://ultraaddons.com/widget/moving-letters/) – Display 15 type animation text by this widget 
+- [**Dual Color Heading**](https://ultraaddons.com/widget/dual-color-heading/) – Make attractive heading for beautiful website
+- [**Timeline**](https://ultraaddons.com/widget/timeline/) – Represent your company or personal data by Timeline.
+- [**Accordion**](https://ultraaddons.com/widget/accordion/) – Make faq or information on easyway by accordion .
+- [**Animated Headline**](https://ultraaddons.com/widget/animated-headline/) – Make beautiful and attractive heading by animated headline.
 
 -[**View All Demos**](https://ultraaddons.com/widgets/)
 
@@ -61,11 +70,23 @@ Use our pre-made section and templates to create your site very quickly with stu
 - [**Product Grid**](https://ultraaddons.com/widget/product-grid/) – Display your store products in list or grid view using our elementor widget.
 - [**Product Table**](https://ultraaddons.com/widget/product_table/) – Use our product table widget to show your store products in a new way.
 - [**WooCommerce Products**](https://ultraaddons.com/widget/wc_products/)
+- [**WooCommerce Products Carousel**](https://ultraaddons.com/widget/product-carousel/) - Display product on carousel
+- [**WooCommerce Products Flip**](https://ultraaddons.com/widget/product-flip/) - Display product on Flip box
 
 ***Forms***
 - [**Contact Form 7**](https://ultraaddons.com/widget/contact_form7/) – Show your contact form 7 forms with lots of customization options.
 - [**WPForms**](https://ultraaddons.com/widget/wpforms/) – Show your WPForms forms with lots of customization options.
 - [**Formidable Forms**](https://ultraaddons.com/widget/formidable-forms/) – Show your Formidable forms with lots of customization options.
+- [**Caldera Forms**](https://ultraaddons.com/widget/caldera-forms/) – Show your forms with Caldera forms.
+
+***Charts***
+- [**Bar Chart**](https://ultraaddons.com/widget/bar-chart/) – Display statics on Bar chart.
+- [**Line Chart**](https://ultraaddons.com/widget/line-chart/) – Show statics on Line chart.
+- [**Pie Chart**](https://ultraaddons.com/widget/pie-chart/) – Show statics on Pie chart
+- [**Polar Chart**](https://ultraaddons.com/widget/polar-chart/) – Show statics on nice Polar chart
+- [**Doughnut Chart**](https://ultraaddons.com/widget/doughnut-chart/) – Show statics on nice Doughnut chart
+- [**Mix Chart**](https://ultraaddons.com/widget/mixed-chart/) – Show statics on nice Mix chart
+- [**Radar Chart**](https://ultraaddons.com/widget/radar-chart/) – Display statics on Radar chart
 
 
 ***FREE and PRO EXTENSIONS are also available***
@@ -116,6 +137,7 @@ Yes, there are lot of filter and action hook available here. You can customize f
 
 1. UltraAddons in Dashboard
 2. UltraAddons in Dashboard
+3. Card
 4. WooCommerce Grid
 5. WooCommerce Grid
 6. WooCommerce Grid
@@ -128,8 +150,10 @@ Yes, there are lot of filter and action hook available here. You can customize f
 13. Line Chart
 14. Pie Chart
 15. Mix Chart
-16. Product Carousel
-17. Hotspot
+16. Polar Chart
+17. Radar Chart
+18. Product Carousel
+19. Hotspot
 
 
 == Change log ==
