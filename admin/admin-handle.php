@@ -213,7 +213,7 @@ class Admin_Handle{
              * 
              * @since 1.0.8.0
              */
-            add_submenu_page( 'ultraaddons-elementor-lite', esc_html__( 'GET PRO', 'ultraaddons' ),  __( 'GET PRO', 'ultraaddons' ), self::$capability, 'https://codecanyon.net/item/ultraaddons-elementor-lite-pro/33337985?ref=CodeAstrology&utm_source=UltraAddons_Installed_Plugin',null,null );
+            add_submenu_page( 'ultraaddons-elementor-lite', esc_html__( 'GET PRO', 'ultraaddons' ),  __( 'GET PRO', 'ultraaddons' ), self::$capability, 'https://ultraaddons.com/pricing/',null,null );
 
         }
         

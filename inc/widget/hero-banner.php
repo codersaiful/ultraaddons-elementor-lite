@@ -903,7 +903,7 @@ class Hero_Banner extends Base{
             ]
         );
 
-		$this->add_responsive_control(
+/* 		$this->add_responsive_control(
             'image_space_first',
             [
                 'label' => __( 'Spacing', 'ultraaddons' ),
@@ -922,6 +922,18 @@ class Hero_Banner extends Base{
                     '{{WRAPPER}}.ua_banner_img' => 'margin-right: {{SIZE}}{{UNIT}};',
                     '{{WRAPPER}}.ua_banner_img' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                     '(mobile){{WRAPPER}} .ua_banner_img' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        ); */
+
+        $this->add_responsive_control(
+            'image_space_first',
+            [
+                'label' => esc_html__('Spacing', 'ultraaddons'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .ua_banner_img' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );

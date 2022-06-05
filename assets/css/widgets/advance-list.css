@@ -3,6 +3,10 @@
     justify-content: start;
     align-items: center;
     flex-wrap: wrap;
+    padding: 0;
+}
+.ua-list-items li{
+  padding: 10px;
 }
 .ua-element.ua-element-list-item ul.ua-list-items {
     padding-left: 0;

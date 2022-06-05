@@ -96,7 +96,7 @@
 }
 .ua_accordion_item .ua_accordion_panel {
     display: none;
-    margin-top: 30px;
+    /*! margin-top: 30px; */
 }
 .ua_accordion_item.ua-active .ua_accordion_title::before {
     transform: rotate(-140deg);
@@ -144,7 +144,7 @@
     margin-bottom: 10px;
 }
 .ua_accordion_item.ua_accordion_style_08 .ua_accordion_panel {
-    margin-top: 26px;
+    /*! margin-top: 26px; */
 }
 .ua_accordion_style_08 .ua-icon {
     color: #060a24;
