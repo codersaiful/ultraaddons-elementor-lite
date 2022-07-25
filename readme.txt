@@ -1,6 +1,6 @@
-=== UltraAddons Elementor Lite (Header & Footer Builder, Menu Builder, Cart Icon, Shortcode) ===
+=== Addons - UltraAddons Elementor Lite (Header & Footer Builder, Menu Builder, Cart Icon, Shortcode) ===
 
-Plugin Name: UltraAddons Elementor Lite
+Plugin Name: Addons - UltraAddons Elementor Lite
 Author: codersaiful
 Author URI: https://ultraaddons.com/
 Tags: addons, elementor addons, ultraaddons, page builder, page builder addons, Editor, Web Page Builder
