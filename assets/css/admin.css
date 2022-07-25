@@ -298,6 +298,7 @@ h2.ua-item-name {
 
 .category-list ul.widget-free-pro-list {
     margin-right: 20px;
+    display: none; /* All Widget has transferred to Free, So we hide this part */
 }
 
 .category-list ul>li:hover,.category-list ul>li.active {

@@ -23,7 +23,8 @@ Making custom header and custom footer. WooCommerce minicart anywhere. Elementor
 Elementor page/section show in Sidebar area. using WordPress widget.
 
 ***Features***
-
+* 85+ Full Page Template
+* 500+ Ready Block
 * Custom Header for whole site.
 * Custom Footer for whole site.
 * Elementor Page/Section/Template display in anywhere using shortcode. sample shortcode is `[UltraAddons_Template id='123']`. Here 123 will be post ID of the Elementor Template.
@@ -37,7 +38,7 @@ Elementor page/section show in Sidebar area. using WordPress widget.
 * Slider with Any content. Dynamic content.
 * Slider with Pre-build Template of Elementor
 
-***200+ READY BLOCKS AND 100+ READY PAGES***
+***500+ READY BLOCKS AND 85+ READY PAGES***
 Use our pre-made section and templates to create your site very quickly with stunning looks.
 
 ***Demo***
@@ -89,7 +90,7 @@ Use our pre-made section and templates to create your site very quickly with stu
 - [**Radar Chart**](https://ultraaddons.com/widget/radar-chart/) – Display statics on Radar chart
 
 
-***FREE and PRO EXTENSIONS are also available***
+***EXTENSIONS***
 - [**Wrapper Link**](https://ultraaddons.com/extensions/wrapper-link/) - Using this wrapper link extension you can link any elements.
 - [**Hover Effect**](https://ultraaddons.com/extensions/hover-effect/) - Using this extension you can easily add hover effect on any any elements.
 - [**CSS Transform (Pro)**](https://ultraaddons.com/extensions/css-transform/) - Using this extension you can easily add css transform on any any elements.
@@ -157,6 +158,12 @@ Yes, there are lot of filter and action hook available here. You can customize f
 
 
 == Change log ==
+
+= 1.1.3 =
+* All widget are free Available
+* Code Optimize
+* Bug Fixed
+
 = 1.1.1 =
 
 * [Added]: WooCommerce Widgets

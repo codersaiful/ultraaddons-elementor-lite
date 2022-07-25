@@ -121,7 +121,7 @@ $widgetsArray = [
     
     /* 'Animated_Header' => [
             'name'  => __( 'Animated Header', 'ultraaddons' ),
-            'is_pro'   => true,
+            'is_pro'   => false,
             'icon'      => 'uicon-animated-header',
             'cat'       => [
                 __( 'General', 'ultraaddons' ),
@@ -131,7 +131,7 @@ $widgetsArray = [
     
     'Product_Slider' => [
             'name'  => __( 'Product Slider', 'ultraaddons' ),
-            'is_pro'   => true,
+            'is_pro'   => false,
             'icon'      => 'uicon-product-slider',
             'cat'       => [
                 __( 'WooCommerce', 'ultraaddons' ),
@@ -169,7 +169,7 @@ $widgetsArray = [
     
     'WC_Products' => [
             'name'  => __( 'WooCommerce Products', 'ultraaddons' ),
-            'is_pro'   => true,
+            'is_pro'   => false,
             'is_wc'     => false,
             'icon'      => 'uicon-product',
             'cat'       => [
@@ -210,7 +210,7 @@ $widgetsArray = [
     
     'Product_Categories' => [
             'name'  => __( 'Product Categories', 'ultraaddons' ),
-            'is_pro'   => true,
+            'is_pro'   => false,
             'icon'      => 'uicon-icon-box',
             'cat'       => [
                 __( 'WooCommerce', 'ultraaddons' ),
@@ -230,7 +230,7 @@ $widgetsArray = [
     
     'Gallery_Box' => [
             'name'  => __( 'Gallery Box', 'ultraaddons' ),
-            'is_pro'   => true,
+            'is_pro'   => false,
             'icon'      => 'eicon-gallery-justified',
             'cat'       => [
                 __( 'General', 'ultraaddons' ),
@@ -239,7 +239,7 @@ $widgetsArray = [
     
    /*  'Info_Boards' => [
             'name'  => __( 'Info Boards', 'ultraaddons' ),
-            'is_pro'   => true,
+            'is_pro'   => false,
             'icon'      => 'eicon-form-horizontal',
             'cat'       => [
                 __( 'General', 'ultraaddons' ),
@@ -248,7 +248,7 @@ $widgetsArray = [
     
     'Offer_Card' => [
             'name'  => __( 'Offer Card', 'ultraaddons' ),
-            'is_pro'   => true,
+            'is_pro'   => false,
             'icon'      => 'eicon-form-horizontal',
             'cat'       => [
                 __( 'General', 'ultraaddons' ),
@@ -521,7 +521,7 @@ $widgetsArray = [
     
     'Product_Tabs'=> [
         'name'      => __( 'Product Tabs', 'ultraaddons' ),
-        'is_pro'   => true,
+        'is_pro'   => false,
         'icon'      => 'eicon-product-images',
         'cat'       => [
             __( 'WooCommerce', 'ultraaddons' ),
@@ -627,7 +627,7 @@ $widgetsArray = [
     ],
     'WPForms'=> [
         'name'      => __( 'WPForms', 'ultraaddons' ),
-        'is_pro'   => true,
+        'is_pro'   => false,
         'icon'      => 'ua-icon-wpforms',
         'cat'       => [
             __( 'Forms', 'ultraaddons' ),
@@ -635,7 +635,7 @@ $widgetsArray = [
     ],
     'Ninja_Forms'=> [
         'name'      => __( 'Ninja Forms', 'ultraaddons' ),
-        'is_pro'   => true,
+        'is_pro'   => false,
         'icon'      => 'ua-icon-ninja',
         'cat'       => [
             __( 'Forms', 'ultraaddons' ),
@@ -660,7 +660,7 @@ $widgetsArray = [
 
     'Advance_Pricing_Table'=> [
         'name'      => __( 'Advance Pricing Table', 'ultraaddons' ),
-        'is_pro'   => true,
+        'is_pro'   => false,
         'icon'      => 'eicon-price-table',
         'cat'       => [
             __( 'General', 'ultraaddons' ),
