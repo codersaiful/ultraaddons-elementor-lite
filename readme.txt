@@ -1,4 +1,4 @@
-=== Addons - UltraAddons Elementor Lite (Header & Footer Builder, Menu Builder, Cart Icon, Shortcode) ===
+=== UltraAddons ===
 
 Plugin Name: Addons - UltraAddons Elementor Lite
 Author: codersaiful
@@ -18,6 +18,8 @@ Elementor Addons Plugin. Different type Unique Element, Pre-defined block, Custo
 
 *UltraAddons Elementor Lite* is a Elementor Addons Plugin and it has some Unique features and Ready made Widget. By using this plugin, You able to create a Full web site just by drag and drop.
 Build your desired page just few click. Easy to use and use able for any theme and plugin. Available many filter.
+
+**UltraAddons Elementor Lite (Header & Footer Builder, Menu Builder, Cart Icon, Shortcode)**
 
 Making custom header and custom footer. WooCommerce minicart anywhere. Elementor Template or Page or Section showing to anywhere of site.
 Elementor page/section show in Sidebar area. using WordPress widget.
