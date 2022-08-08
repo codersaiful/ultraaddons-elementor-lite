@@ -161,6 +161,7 @@ Yes, there are lot of filter and action hook available here. You can customize f
 == Change log ==
 
 = 1.1.4 =
+* Dashboard Menu Fix and Shortcode_Template part has transerred to Setting menu.
 * Counter_Box has removed
 * Flip_Box has been removed
 
