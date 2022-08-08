@@ -8,7 +8,7 @@ Contributors: codersaiful, codeastrology, ultraaddons
 Requires at least: 4.0.0
 Tested up to: 6.0.1
 Requires PHP: 5.6
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl.html
 
