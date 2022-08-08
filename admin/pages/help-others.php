@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * This file has removed from latest version
+ * but stil I kept it plugin
+ * because it can be need later
+ * 
+ * I will remove it from menu
+ */
+
 use UltraAddons\Core\Settings;
 
 defined( 'ABSPATH' ) || die();

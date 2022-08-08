@@ -299,16 +299,16 @@ class Admin_Handle{
                 'position'      =>  9992,
             ],
             
-            
-            [
-                'parent_slug'   => self::$menu_slug,//$parent_slug,
-                'page_title'    =>  __( 'Help & Others', 'ultraaddons' ),
-                'menu_title'    =>  __( 'Help & Others', 'ultraaddons' ),
-                'capability'    => self::$capability,
-                'menu_slug'     => 'ultraaddons-help-n-others',
-                'function'      => [__CLASS__, 'help_n_others_page'],
-                'position'      =>  9991,
-            ],
+            //has removed @since 1.1.4.0
+            // [
+            //     'parent_slug'   => self::$menu_slug,//$parent_slug,
+            //     'page_title'    =>  __( 'Help & Others', 'ultraaddons' ),
+            //     'menu_title'    =>  __( 'Help & Others', 'ultraaddons' ),
+            //     'capability'    => self::$capability,
+            //     'menu_slug'     => 'ultraaddons-help-n-others',
+            //     'function'      => [__CLASS__, 'help_n_others_page'],
+            //     'position'      =>  9991,
+            // ],
             
             
         ];

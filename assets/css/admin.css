@@ -545,6 +545,7 @@ body.wp-admin pre.xdebug-var-dump {
     border: none;
 }
 
+
 section.welcome-banner {
     background-repeat: no-repeat;
     background-size: cover;
@@ -1099,7 +1100,10 @@ li#toplevel_page_ultraaddons-elementor-lite.wp-has-submenu.wp-has-current-submen
     color: white !important;
 }
 li#toplevel_page_ultraaddons-elementor-lite.wp-has-submenu.wp-has-current-submenu.wp-menu-open ul li.current a {
-    background: #00000011;
+    background: #00000096;
+}
+li#toplevel_page_ultraaddons-elementor-lite li.wp-first-item {
+    display: none;
 }
 
 
