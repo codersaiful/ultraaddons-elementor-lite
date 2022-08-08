@@ -390,14 +390,7 @@ $widgetsArray = [
     ], */
     
     //@author B M Rafiul Alam Rafiul <bmrafiul.alam@gmail.com>
-    'Flip_Box' => [
-            'name'  => __( 'Flip Box', 'ultraaddons' ),
-            'is_pro'   => false,
-            'icon'      => 'eicon-flip-box',
-            'cat'       => [
-                __( 'General', 'ultraaddons' ),
-            ],
-    ],
+    
 	'Dual_Color_Heading' => [
             'name'  => __( 'Dual Color Heading', 'ultraaddons' ),
             'is_pro'   => false,

@@ -146,7 +146,6 @@ Yes, there are lot of filter and action hook available here. You can customize f
 6. WooCommerce Grid
 7. WooCommerce Category
 8. Working Hour
-9. FlipBox
 10. Step Flow
 11. WPForms
 12. Bar Chart
@@ -160,6 +159,10 @@ Yes, there are lot of filter and action hook available here. You can customize f
 
 
 == Change log ==
+
+= 1.1.4 =
+* Counter_Box has removed
+* Flip_Box has been removed
 
 = 1.1.3 =
 * All widget are free Available
