@@ -219,15 +219,7 @@ $widgetsArray = [
     
     
     //New Added Widgets
-    'Counter_Box' => [
-            'name'  => __( 'Counter Box', 'ultraaddons' ),
-            'is_pro'   => false,
-            'icon'      => 'uicon-counter',
-            'cat'       => [
-                __( 'General', 'ultraaddons' ),
-            ],
-    ],
-    
+
     'Gallery_Box' => [
             'name'  => __( 'Gallery Box', 'ultraaddons' ),
             'is_pro'   => false,
