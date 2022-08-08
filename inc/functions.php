@@ -647,6 +647,8 @@ add_filter('wp_nav_menu','ultraaddons_submenu_class');
 
 /**
  * Get Formidable Forms List
+ * 
+ * @author Saiful Islam <codersaiful@gmail.com>
  * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
  * @since 1.1.0.9
  * @return array
