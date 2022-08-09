@@ -289,7 +289,7 @@ class Header_Footer_Post{
 				<label for="ua_display_rule"><?php _e( $field_title ); ?></label>
 			</td>
 			<td class="ua-options-row-content">
-				<select name="ua_display[<?php echo esc_attr($rule); ?>][]" class="target_rule-condition form-control ast-input" multiple>
+				<select name="ua_display[<?php echo esc_attr($rule); ?>][]" class="ua-target_rule-condition form-control ast-input" multiple>
 					
 					<?php
 					foreach( $field_arr as $field_key => $field ){
@@ -315,7 +315,7 @@ class Header_Footer_Post{
 
 					}
 					?>
-					<option value="">Select</option>
+					
 					
 				</select>
 			</td>
@@ -358,13 +358,17 @@ class Header_Footer_Post{
 
 		// update_post_meta( $post_id, 'ua_target_include_locations', $target_locations );
 		// update_post_meta( $post_id, 'ua_target_exclude_locations', $target_exclusion );
-		update_post_meta( $post_id, 'ua_target_user_roles', $target_users );
+		// update_post_meta( $post_id, 'ua_target_user_roles', $target_users );
 
 		if ( isset( $_POST['ua_template_type'] ) ) {
 			update_post_meta( $post_id, 'ua_template_type', esc_attr( $_POST['ua_template_type'] ) );
 		}
 		if ( isset( $_POST['ua_display'] ) ) {
-			update_post_meta( $post_id, 'ua_display', $_POST['ua_display'] );
+			$display = $_POST['ua_display'];
+			
+			update_post_meta( $post_id, 'ua_display', $display );
+		}else{
+			update_post_meta( $post_id, 'ua_display', [] );
 		}
 
 		if ( isset( $_POST['display-on-canvas-template'] ) ) {

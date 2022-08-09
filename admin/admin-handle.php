@@ -117,6 +117,27 @@ class Admin_Handle{
         
         wp_register_script($handle, $src, $deps, $ver, $in_footer);
         wp_enqueue_script($handle);
+
+
+        //Select2 Added specially for Header Footer Display on/Off. this is css
+        $handle = 'select2';
+        $src = ULTRA_ADDONS_ASSETS . 'vendor/select2/css/select2.min.css';
+        $deps = [];
+        $ver = ULTRA_ADDONS_VERSION;
+        $media = 'all';
+        
+        wp_register_style( $handle, $src, $deps, $ver, $media );
+        wp_enqueue_style( $handle );
+
+        //Select2 Added specially for Header Footer Display on/Off. this is JS
+        $handle = 'select2';
+        $src = ULTRA_ADDONS_ASSETS . 'vendor/select2/js/select2.full.min.js';
+        $deps = ['jquery'];
+        $ver = ULTRA_ADDONS_VERSION;
+        $in_footer = true;
+        
+        wp_register_script($handle, $src, $deps, $ver, $in_footer);
+        wp_enqueue_script($handle);
     }
     
     /**

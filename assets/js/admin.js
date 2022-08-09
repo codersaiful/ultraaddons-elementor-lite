@@ -14,7 +14,7 @@
         $(document.body).on('change','.ua-option-item-wrappper,.ua-form-wrappper',function(e){
             $('.ultraaddons-wrap button.ua-primary').removeClass('ua-no-update'); //remove class from that submit button
             //Container Size field wrapper hide or show on Change anything of Field
-            hf_container_size_update();
+            ua_container_size_update();
         });
         
         /**
@@ -26,8 +26,8 @@
         });
         
         //By default check for Container Size field wrapper of Header Footer page
-        hf_container_size_update();
-        function hf_container_size_update(){
+        ua_container_size_update();
+        function ua_container_size_update(){
             
             var hf_container_size = $('.ua-hf-type-radio:checked').val();
             // console.log(hf_container_size);
@@ -257,7 +257,12 @@
             }
         }
       });
-      
+
+      /**
+       * Fot Header Footer
+       * Display On Options
+       */
+      $('.ua-target_rule-condition').select2();
   });
 
 
