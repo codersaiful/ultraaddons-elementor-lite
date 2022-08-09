@@ -630,6 +630,19 @@ function ultraaddons_theme_demo(){
     return new \UltraAddons\Base\Theme_Demo;
 }
 
+if ( ! function_exists( 'wp_body_open' ) ) {
+	/**
+	 * Adds backwards compatibility for wp_body_open() introduced with WordPress 5.2
+	 *
+	 * @since 1.1.4.2
+	 * @see https://developer.wordpress.org/reference/functions/wp_body_open/
+	 * @return void
+	 */
+	function wp_body_open() {
+		do_action( 'wp_body_open' );
+	}
+}
+
 /**
  * For navigation menu widget replace submenu class name 
  * 
