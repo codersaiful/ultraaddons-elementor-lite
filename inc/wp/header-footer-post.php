@@ -207,7 +207,10 @@ class Header_Footer_Post{
 		global $post;
 		$post_id = $post->ID;
 		$values = get_post_meta($post_id,'ua_display',true);
-		$rule = $values[$rule] ?? array();
+		
+		$rules_arr = $values[$rule] ?? array();
+		var_dump($rules_arr);
+		// return;
 		$field_arr = [
 			'Basic' => [
 				'basic-global' => __( 'Entire Website', 'ultraaddons' ), 
@@ -227,11 +230,13 @@ class Header_Footer_Post{
 					<?php
 					foreach( $field_arr as $field_key => $field ){
 						if( is_array( $field ) ){
-							$selected = in_array($field_key, $rule) ? 'selected' : '';
+							
+							
 							?>
 							<optgroup label="<?php echo esc_attr( $field_key ); ?>">
 							<?php
 							foreach( $field as $each_key => $each_item){
+								$selected = in_array($each_key, $rules_arr) ? 'selected' : '';
 								?>
 								<option <?php echo esc_attr( $selected );?> 
 								value="<?php echo esc_attr( $each_key ); ?>">
@@ -247,11 +252,7 @@ class Header_Footer_Post{
 					}
 					?>
 					<option value="">Select</option>
-					<optgroup label="Basic">
-						<option value="basic-global" selected="selected">Entire Website</option>
-						<option value="basic-singulars">All Singulars</option>
-						<option value="basic-archives">All Archives</option>
-					</optgroup>
+					
 					<optgroup label="Special Pages">
 						<option value="special-404">404 Page</option>
 						<option value="special-search">Search Page</option>
