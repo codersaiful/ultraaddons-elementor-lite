@@ -207,11 +207,12 @@ class Header_Footer_Post{
 		global $post;
 		$post_id = $post->ID;
 		$values = get_post_meta($post_id,'ua_display',true);
+		$rule = $values[$rule] ?? array();
 		$field_arr = [
 			'Basic' => [
-				'basic-global', 
-				'basic-singulars',
-				'basic-archives'
+				'basic-global' => __( 'Entire Website', 'ultraaddons' ), 
+				'basic-singulars' => __( 'All Singulars', 'ultraaddons' ),
+				'basic-archives' => __( 'All Archives', 'ultraaddons' ),
 			]
 		];
 		
@@ -222,6 +223,29 @@ class Header_Footer_Post{
 			</td>
 			<td class="ua-options-row-content">
 				<select name="ua_display[<?php echo esc_attr($rule); ?>][]" class="target_rule-condition form-control ast-input" multiple>
+					
+					<?php
+					foreach( $field_arr as $field_key => $field ){
+						if( is_array( $field ) ){
+							$selected = in_array($field_key, $rule) ? 'selected' : '';
+							?>
+							<optgroup label="<?php echo esc_attr( $field_key ); ?>">
+							<?php
+							foreach( $field as $each_key => $each_item){
+								?>
+								<option <?php echo esc_attr( $selected );?> 
+								value="<?php echo esc_attr( $each_key ); ?>">
+									<?php echo esc_attr( $each_item ); ?>
+								</option>
+								<?php 
+							}
+							?>
+							</optgroup>
+							<?php	
+						}
+
+					}
+					?>
 					<option value="">Select</option>
 					<optgroup label="Basic">
 						<option value="basic-global" selected="selected">Entire Website</option>
