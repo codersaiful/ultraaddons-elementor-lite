@@ -102,7 +102,7 @@ class Header_Footer_Post{
 			"labels" => $labels,
 			"description" => __( "This post is for Medilac Header and Footer", "ultraaddons" ),
 			"public" => true,
-			"publicly_queryable" => false,
+			"publicly_queryable" => true,
 			"show_ui" => true,
 			"show_in_rest" => true,
 			"rest_base" => "",
