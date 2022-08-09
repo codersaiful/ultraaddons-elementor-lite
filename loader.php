@@ -369,6 +369,23 @@ class Loader {
      */
     public function wp_enqueue_style(){
         
+        
+                
+        //Animate CSS Load
+        wp_enqueue_style('animate', ULTRA_ADDONS_ASSETS . 'vendor/css/animate.min.css' );
+
+        $elementor = \Elementor\Plugin::instance();
+        $elementor->frontend->enqueue_styles();
+        
+		
+
+		if ( class_exists( '\ElementorPro\Plugin' ) ) {
+			$elementor_pro = \ElementorPro\Plugin::instance();
+			$elementor_pro->enqueue_styles();
+            var_dump($elementor_pro);
+		}
+        
+
         /**
          * Common CSS file for all Widgets
          * 
@@ -376,9 +393,6 @@ class Loader {
          */
         wp_register_style( 'ultraaddons-widgets-style', ULTRA_ADDONS_ASSETS . 'css/widgets.css' );
         wp_enqueue_style( 'ultraaddons-widgets-style' );
-                
-        //Animate CSS Load
-        wp_enqueue_style('animate', ULTRA_ADDONS_ASSETS . 'vendor/css/animate.min.css' );
     }
     
     /**

@@ -37,7 +37,9 @@ class Header_Footer {
     protected static $body_class = [];
 
 
+    
     public static function init() {
+        add_action( 'wp_enqueue_scripts', [ __CLASS__, 'enqueue_scripts' ] );
         $type = self::get_type();
         self::$body_class[] = 'ultraaddons-wrapper-' . self::get_wrapper();
         
@@ -67,6 +69,19 @@ class Header_Footer {
         
     }
     
+    public static function enqueue_scripts(){
+        
+        
+        $header_id = 231;
+        if ( class_exists( '\Elementor\Core\Files\CSS\Post' ) ) {
+            $css_file = new \Elementor\Core\Files\CSS\Post( $header_id );
+        } elseif ( class_exists( '\Elementor\Post_CSS_File' ) ) {
+            $css_file = new \Elementor\Post_CSS_File( $header_id );
+        }
+
+        $css_file->enqueue();
+    }
+
     public static function add_footer() {
         echo ultraaddons_elementor_display_content( self::get_footer_id() );
     }
