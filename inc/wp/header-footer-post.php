@@ -183,7 +183,12 @@ class Header_Footer_Post{
 					</td>
 					<td class="ua-options-row-content">
 						<span class="ua-shortcode-col-wrap">
-							<input type="text" onfocus="this.select();" readonly="readonly" value="[hfe_template id='<?php echo esc_attr( $post->ID ); ?>']" class="ua-large-text code">
+							<input type="text" 
+							onfocus="this.select();" 
+							readonly="readonly" 
+							style="width: 300px;max-width:100%;"
+							value="[UltraAddons_Template id='<?php echo esc_attr( $post->ID ); ?>']" 
+							class="ua-large-text code">
 						</span>
 					</td>
 				</tr>
@@ -213,11 +218,70 @@ class Header_Footer_Post{
 		// return;
 		$field_arr = [
 			'Basic' => [
+
 				'basic-global' => __( 'Entire Website', 'ultraaddons' ), 
 				'basic-singulars' => __( 'All Singulars', 'ultraaddons' ),
 				'basic-archives' => __( 'All Archives', 'ultraaddons' ),
+			],
+			
+			'Special Pages'=>[
+
+				'special-404' => __( '404 Page', 'ultraaddons' ),
+				'special-search' => __( 'Search Page', 'ultraaddons' ),
+				'special-blog' => __( 'Blog / Posts Page', 'ultraaddons' ),
+				'special-front' => __( 'Front Page', 'ultraaddons' ),
+				'special-date' => __( 'Date Archive', 'ultraaddons' ),
+				'special-author' => __( 'Author Archive', 'ultraaddons' ),
+				'special-woo-shop' => __( 'WooCommerce Shop Page', 'ultraaddons' ),
+			],
+
+			'Posts'=>[
+
+				'post|all' => __( 'All Posts', 'ultraaddons' ),
+				'post|all|archive' => __( 'All Posts Archive', 'ultraaddons' ),
+				'post|all|taxarchive|category' => __( 'All Categories Archive', 'ultraaddons' ),
+				'post|all|taxarchive|post_tag' => __( 'All Tags Archive', 'ultraaddons' ),
+
+			],
+
+			'Pages'=>[
+
+				'page|all' => __( 'All Pages', 'ultraaddons' ),
+
+			],
+
+			'Landing Pages'=>[
+
+				'e-landing-page|all' => __( 'All Landing Pages', 'ultraaddons' ),
+				'e-landing-page|all|archive' => __( 'All Landing Pages Archive', 'ultraaddons' ),
+
+			],
+
+			'My Templates'=>[
+
+				'elementor_library|all' => __( 'All My Templates', 'ultraaddons' ),
+				'elementor_library|all|archive' => __( 'All My Templates Archive', 'ultraaddons' ),
+
+			],
+
+			'Products'=>[
+
+				'product|all' => __( 'All Products', 'ultraaddons' ),
+				'product|all|archive' => __( 'All Products Archive', 'ultraaddons' ),
+				'product|all|taxarchive|product_cat' => __( 'All Product Categories Archive', 'ultraaddons' ),
+				'product|all|taxarchive|product_tag' => __( 'All Product Tags Archive', 'ultraaddons' ),
+				'product|all|taxarchive|product_shipping_class' => __( 'All Product Shipping Classes Archive', 'ultraaddons' ),
+
+			],
+
+			'Specific Target'=>[
+
+				'specifics' => __( 'Specific Pages / Posts / Taxonomies, etc.', 'ultraaddons' ),
+
 			]
+
 		];
+		
 		
 		?>
 		<tr class="ua-options-row display-rule">
@@ -253,47 +317,6 @@ class Header_Footer_Post{
 					?>
 					<option value="">Select</option>
 					
-					<optgroup label="Special Pages">
-						<option value="special-404">404 Page</option>
-						<option value="special-search">Search Page</option>
-						<option value="special-blog">Blog / Posts Page</option>
-						<option value="special-front">Front Page</option>
-						<option value="special-date">Date Archive</option>
-						<option value="special-author">Author Archive</option>
-						<option value="special-woo-shop">WooCommerce Shop Page</option>
-					</optgroup>
-					<optgroup label="Posts">
-						<option value="post|all">All Posts</option>
-						<option value="post|all|archive">All Posts Archive</option>
-						<option value="post|all|taxarchive|category">All Categories Archive</option>
-						<option value="post|all|taxarchive|post_tag">All Tags Archive</option>
-					</optgroup>
-					<optgroup label="Pages">
-						<option value="page|all">All Pages</option>
-					</optgroup>
-					<optgroup label="Landing Pages">
-						<option value="e-landing-page|all">All Landing Pages</option>
-						<option value="e-landing-page|all|archive">All Landing Pages Archive</option>
-					</optgroup>
-					<optgroup label="My Templates">
-						<option value="elementor_library|all">All My Templates</option>
-						<option value="elementor_library|all|archive">All My Templates Archive</option>
-					</optgroup>
-					<optgroup label="Products">
-						<option value="product|all">All Products</option>
-						<option value="product|all|archive">All Products Archive</option>
-						<option value="product|all|taxarchive|product_cat">All Product Categories Archive</option>
-						<option value="product|all|taxarchive|product_tag">All Product Tags Archive</option>
-						<option value="product|all|taxarchive|product_shipping_class">All Product Shipping Classes Archive</option>
-					</optgroup>
-					
-					<!-- <optgroup label="Header &amp; Footer">
-						<option value="header_footer|all">All Header &amp; Footer</option>
-						<option value="header_footer|all|archive">All Header &amp; Footer Archive</option>
-					</optgroup> -->
-					<optgroup label="Specific Target">
-						<option value="specifics">Specific Pages / Posts / Taxonomies, etc.</option>
-					</optgroup>
 				</select>
 			</td>
 		</tr>

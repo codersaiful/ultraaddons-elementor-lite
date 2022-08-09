@@ -25,6 +25,15 @@ class Shortcode{
         
         (int) $select_post_id = $post_id;
         if ( \Elementor\Plugin::instance()->documents->get( $select_post_id ) ) {
+            if ( class_exists( '\Elementor\Core\Files\CSS\Post' ) ) {
+                $css_file = new \Elementor\Core\Files\CSS\Post( $select_post_id );
+            } elseif ( class_exists( '\Elementor\Post_CSS_File' ) ) {
+                // Load elementor styles.
+                $css_file = new \Elementor\Post_CSS_File( $select_post_id );
+            }
+            if(isset($css_file)){
+                $css_file->enqueue();
+            }
             return \Elementor\Plugin::instance()->frontend->get_builder_content_for_display( $select_post_id );
         }
         return;
