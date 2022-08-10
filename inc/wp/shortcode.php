@@ -20,6 +20,9 @@ class Shortcode{
         $post_id = (int) $atts['id'];
         
         if( ! $post_id ){
+            $post_id = (int) $atts['template_id'];
+        }
+        if( ! $post_id ){
             return;
         }
         
