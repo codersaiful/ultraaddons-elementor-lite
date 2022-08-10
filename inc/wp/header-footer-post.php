@@ -1,12 +1,14 @@
 <?php
 namespace UltraAddons\WP;
 
+use UltraAddons\Core\Header_Footer;
 class Header_Footer_Post{
     
     public static function init() {
         add_action( 'init', [ __CLASS__, 'register_post' ],99 );
 		add_action( 'add_meta_boxes', [ __CLASS__, 'register_metabox' ] );
 		add_action( 'save_post', [ __CLASS__, 'save_meta' ] );
+		add_action( 'save_post', [ __CLASS__, 'delete_post' ] );
 
 		//Now menu is handaling from admin-handle.php file
         //add_action( 'admin_menu', [ __CLASS__, 'add_submenu' ] );
@@ -159,15 +161,17 @@ class Header_Footer_Post{
 			<tbody>
 				<tr class="ua-options-row type-of-template">
 					<td class="ua-options-row-heading">
-						<label for="ua_template_type"><?php _e( 'Type of Template', 'header-footer-elementor' ); ?></label>
+						<label for="ua_template_type"><?php _e( 'Type of Template', 'ultraaddons' ); ?></label>
 					</td>
 					<td class="ua-options-row-content">
 						<select name="ua_template_type" id="ua_template_type">
-							<option value="" <?php selected( $template_type, '' ); ?>><?php _e( 'Select Option', 'header-footer-elementor' ); ?></option>
-							<option value="type_header" <?php selected( $template_type, 'type_header' ); ?>><?php _e( 'Header', 'header-footer-elementor' ); ?></option>
-							<option value="type_before_footer" <?php selected( $template_type, 'type_before_footer' ); ?>><?php _e( 'Before Footer', 'header-footer-elementor' ); ?></option>
-							<option value="type_footer" <?php selected( $template_type, 'type_footer' ); ?>><?php _e( 'Footer', 'header-footer-elementor' ); ?></option>
-							<option value="custom" <?php selected( $template_type, 'custom' ); ?>><?php _e( 'Custom Block', 'header-footer-elementor' ); ?></option>
+							<option value="" <?php selected( $template_type, '' ); ?>><?php _e( 'Select Option', 'ultraaddons' ); ?></option>
+							<option value="header" <?php selected( $template_type, 'header' ); ?>><?php _e( 'Header', 'ultraaddons' ); ?></option>
+							<option value="before_header" <?php selected( $template_type, 'before_header' ); ?>><?php _e( 'Before Header/Topbar', 'ultraaddons' ); ?></option>
+							<option value="footer" <?php selected( $template_type, 'footer' ); ?>><?php _e( 'Footer', 'ultraaddons' ); ?></option>
+							<option value="before_footer" <?php selected( $template_type, 'before_footer' ); ?>><?php _e( 'Before Footer', 'ultraaddons' ); ?></option>
+							<option value="after_footer" <?php selected( $template_type, 'after_footer' ); ?>><?php _e( 'After Footer', 'ultraaddons' ); ?></option>
+							<!-- <option value="custom" <?php selected( $template_type, 'custom' ); ?>><?php _e( 'Custom Block', 'ultraaddons' ); ?></option> -->
 						</select>
 					</td>
 				</tr>
@@ -177,8 +181,8 @@ class Header_Footer_Post{
 				 ?>
 				<tr class="ua-options-row ua-shortcode">
 					<td class="ua-options-row-heading">
-						<label for="ua_template_type"><?php _e( 'Shortcode', 'header-footer-elementor' ); ?></label>
-						<i class="ua-options-row-heading-help dashicons dashicons-editor-help" title="<?php _e( 'Copy this shortcode and paste it into your post, page, or text widget content.', 'header-footer-elementor' ); ?>">
+						<label for="ua_template_type"><?php _e( 'Shortcode', 'ultraaddons' ); ?></label>
+						<i class="ua-options-row-heading-help dashicons dashicons-editor-help" title="<?php _e( 'Copy this shortcode and paste it into your post, page, or text widget content.', 'ultraaddons' ); ?>">
 						</i>
 					</td>
 					<td class="ua-options-row-content">
@@ -195,9 +199,9 @@ class Header_Footer_Post{
 				<tr class="ua-options-row enable-for-canvas">
 					<td class="ua-options-row-heading">
 						<label for="display-on-canvas-template">
-							<?php _e( 'Enable Layout for Elementor Canvas Template?', 'header-footer-elementor' ); ?>
+							<?php _e( 'Enable Layout for Elementor Canvas Template?', 'ultraaddons' ); ?>
 						</label>
-						<i class="ua-options-row-heading-help dashicons dashicons-editor-help" title="<?php _e( 'Enabling this option will display this layout on pages using Elementor Canvas Template.', 'header-footer-elementor' ); ?>"></i>
+						<i class="ua-options-row-heading-help dashicons dashicons-editor-help" title="<?php _e( 'Enabling this option will display this layout on pages using Elementor Canvas Template.', 'ultraaddons' ); ?>"></i>
 					</td>
 					<td class="ua-options-row-content">
 						<input type="checkbox" id="display-on-canvas-template" name="display-on-canvas-template" value="1" <?php checked( $display_on_canvas, true ); ?> />
@@ -323,6 +327,31 @@ class Header_Footer_Post{
 		<?php
 	}
 
+	public static function update_option(){
+		$args = [
+            'post_type'     => 'header_footer',
+            'post_status'   => 'published',
+            'meta_query'    => [
+                [
+                    'key'   => 'ua_template_type',
+                    // 'value'=> 'footer',
+                ]
+            ],
+        ];
+
+        $posts = query_posts($args);
+        $f_post = [];
+        foreach( $posts as $each_post ){
+            $post_id = $each_post->ID;
+            $f_post[$post_id] = get_post_meta($post_id,'ua_display',true);
+        }
+        var_dump($f_post);
+        $f_post = ultraaddons_optimize_array($f_post);
+        update_option(Header_Footer::$key, $f_post);
+        
+        wp_reset_postdata();
+		// die();
+	}
 	/**
 	 * Save meta field.
 	 *
@@ -376,5 +405,26 @@ class Header_Footer_Post{
 		} else {
 			delete_post_meta( $post_id, 'display-on-canvas-template' );
 		}
+
+		//Update on WP Option
+		// self::update_option();
+	}
+	public static function delete_post( $post_id ) {
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return;
+		}
+
+		// if our nonce isn't there, or we can't verify it, bail.
+		if ( ! isset( $_POST['ua_meta_nounce'] ) || ! wp_verify_nonce( $_POST['ua_meta_nounce'], 'ua_meta_nounce' ) ) {
+			return;
+		}
+
+		// if our current user can't edit this post, bail.
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			return;
+		}
+
+		//Update on WP Option
+		// self::update_option();
 	}
 }

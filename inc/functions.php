@@ -794,3 +794,25 @@ function ultraaddons_get_weform_list(){
 
     return $options;
 }
+
+function ultraaddons_optimize_array( $array ){
+
+
+    if( ! is_array( $array ) ) return $array;
+
+    foreach ($array as $key => &$value) {
+        if ( ! is_bool( $value ) && empty($value)) {
+           unset($array[$key]);
+        }
+        else {
+           if (is_array($value)) {
+              $value = ultraaddons_optimize_array($value);
+              if (! is_bool( $value ) && empty($value)) {
+                 unset($array[$key]);
+              }
+           }
+        }
+     }
+  
+     return $array;
+}
