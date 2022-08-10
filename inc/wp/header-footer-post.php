@@ -1,14 +1,17 @@
 <?php
 namespace UltraAddons\WP;
 
+use UltraAddons;
+use UltraAddons\Classes\Template_List;
 use UltraAddons\Core\Header_Footer;
 class Header_Footer_Post{
-    public static $post_type = 'header_footers';
+    public static $post_type = 'header_footer';
     public static function init() {
         add_action( 'init', [ __CLASS__, 'register_post' ],99 );
 		add_action( 'add_meta_boxes', [ __CLASS__, 'register_metabox' ] );
 		add_action( 'save_post', [ __CLASS__, 'save_meta' ] );
 		add_action( 'trashed_post', [ __CLASS__, 'delete_post' ] );
+		add_action( 'delete_post', [ __CLASS__, 'delete_post' ] );
 
 		//Now menu is handaling from admin-handle.php file
         //add_action( 'admin_menu', [ __CLASS__, 'add_submenu' ] );
@@ -223,9 +226,9 @@ class Header_Footer_Post{
 		$field_arr = [
 			'Basic' => [
 
-				'basic-global' => __( 'Entire Website', 'ultraaddons' ), 
-				'basic-singulars' => __( 'All Singulars', 'ultraaddons' ),
-				'basic-archives' => __( 'All Archives', 'ultraaddons' ),
+				'entire_site' => __( 'Entire Website', 'ultraaddons' ), 
+				'singular' => __( 'All Singulars', 'ultraaddons' ),
+				'archives' => __( 'All Archives', 'ultraaddons' ),
 			],
 			
 			'Special Pages'=>[
@@ -327,10 +330,21 @@ class Header_Footer_Post{
 		<?php
 	}
 
+	/**
+	 * Update option for header_footer template/ and other data
+	 * Actually Our template header-footer wise
+	 * Optimized value save on wp_option
+	 * using update_option()
+	 * 
+	 * 
+	 *
+	 * @return void
+	 */
 	public static function update_option(){
+		
 		$args = [
             'post_type'     => self::$post_type,
-            'post_status'   => 'published',
+            'post_status'   => 'publish',
             'meta_query'    => [
                 [
                     'key'   => 'ua_template_type',
@@ -343,9 +357,17 @@ class Header_Footer_Post{
         $f_post = [];
         foreach( $posts as $each_post ){
             $post_id = $each_post->ID;
-            $f_post[$post_id] = get_post_meta($post_id,'ua_display',true);
+			$position_name = get_post_meta($post_id,'ua_template_type',true);
+			if(empty( $position_name )) continue;
+            $position['position'] = $position_name;
+			$display = get_post_meta($post_id,'ua_display',true);
+			
+			$merge = array_merge($display,$position);
+            $f_post[$post_id] = $merge;
+            
         }
         $f_post = ultraaddons_optimize_array($f_post);
+		
         update_option(Header_Footer::$key, $f_post);
         
         wp_reset_postdata();
@@ -408,15 +430,12 @@ class Header_Footer_Post{
 		self::update_option();
 	}
 	public static function delete_post( $post_id ) {
-		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		
+		
+		// ONly for our header_footer post type
+		if ( get_post_type() !== self::$post_type ) {
 			return;
 		}
-
-		// if our nonce isn't there, or we can't verify it, bail.
-		if ( ! isset( $_POST['ua_meta_nounce'] ) || ! wp_verify_nonce( $_POST['ua_meta_nounce'], 'ua_meta_nounce' ) ) {
-			return;
-		}
-
 		// if our current user can't edit this post, bail.
 		if ( ! current_user_can( 'edit_posts' ) ) {
 			return;
@@ -424,7 +443,6 @@ class Header_Footer_Post{
 
 		//Update on WP Option
 		self::update_option();
-		var_dump(34334);
-		die();
+
 	}
 }

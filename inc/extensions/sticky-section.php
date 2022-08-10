@@ -105,7 +105,7 @@ class Sticky_Section{
             '_ua_sticky_z_index',
             [
                 'label' => esc_html__('Z-Index', 'ultraaddons'),
-                'description' => __( 'Indicate Layer postion for your Sticky section.', 'ultraaddons' ),
+                'description' => __( 'Indicate Layer position for your Sticky section.', 'ultraaddons' ),
                 'type' => Controls_Manager::SLIDER,
                 'default' => [
                     'size' => 1000,
