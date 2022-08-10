@@ -9,6 +9,8 @@ class Shortcode{
          * template_id
          */
         add_shortcode( 'UltraAddons_Template', [__CLASS__, 'show_template'] );
+        add_shortcode( 'UA_Template', [__CLASS__, 'show_template'] );
+        add_shortcode( 'ULTRAADDONS_TEMPLATE', [__CLASS__, 'show_template'] );
     }
     
     public static function show_template( $atts ) {
@@ -21,6 +23,9 @@ class Shortcode{
         
         if( ! $post_id ){
             $post_id = (int) $atts['template_id'];
+        }
+        if( ! $post_id ){
+            $post_id = (int) $atts['post_id'];
         }
         if( ! $post_id ){
             return;

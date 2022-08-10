@@ -99,7 +99,10 @@ $category_slug = Settings::get_widget_category();
                                     <p>UltraAddons provide a shortcode <code>[UltraAddons_Template id='123']</code>. Here 
                                         123 is a POST_ID. Use any Elementor page/Template's POST_ID as id. Use Anywhere.<br>
                                         Suppose: you want to show any Elementor Item/Widget/Template in widget, or in any WordPress post or in Guttenberg block. 
-                                        Just use this shortcode.
+                                        Just use this shortcode.<br>
+                                        <code>`[UltraAddons_Template id='1234']`,`[UA_Template id='1234']` and `[ULTRAADDONS_TEMPLATE id='1234']`</code>
+                                        <br>
+                                        <code>Attribute: `id` or `template_id` or `post_id`</code>
                                     </p>
                                 </div>
                             </div>
