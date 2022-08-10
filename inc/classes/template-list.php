@@ -1,6 +1,8 @@
 <?php
 namespace UltraAddons\Classes;
 
+use UltraAddons\WP\Header_Footer_Post as HF_Post;
+
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
@@ -20,7 +22,7 @@ class Template_List {
     public function get_templates() {
 
         $args = array(
-            'post_type'     =>  'header_footer',
+            'post_type'     =>  HF_Post::$post_type,
             'post_status'   =>  'publish'
         );
         $query = get_posts( $args );

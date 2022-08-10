@@ -1,6 +1,8 @@
 <?php
 namespace UltraAddons\Core;
 
+use UltraAddons\WP\Header_Footer_Post as FH_Post;
+
 use WP_Query;
 
 defined( 'ABSPATH' ) || die();
@@ -22,7 +24,7 @@ class Header_Footer {
      *
      * @var string option key for update and get data from database. 
      */
-    public static $key = 'ultraaddons_header_footer';
+    public static $key = 'ultraaddons_header_footer_s';
     
     /**
      * Default data for header id, and footer id.
@@ -42,48 +44,14 @@ class Header_Footer {
     
     public static function init() {
 
-        $args = [
-            'post_type'     => 'header_footer',
-            'post_status'   => 'published',
-            'meta_query'    => [
-                [
-                    'key'   => 'ua_template_type',
-                    // 'value'=> 'footer',
-                ]
-            ],
-        ];
         
-        $ppp = new WP_Query($args);
-        $f_post = [];
-        if($ppp->have_posts()): $ppp->the_post();
-            $post_id = $ppp->get_the_ID();
-            $f_post[$post_id] = get_post_meta($post_id,'ua_display',true);
-        endif;
-        var_dump($f_post);
-        // wp_reset_query();
-        $posts = query_posts($args);
-        $f_post = [];
-        foreach( $posts as $each_post ){
-            $post_id = $each_post->ID;
-            $f_post[$post_id] = get_post_meta($post_id,'ua_display',true);
+        $rule = get_option( self::$key );
+        if( empty( $rule ) ){
+            FH_Post::update_option();
+            $rule = get_option( self::$key );
         }
-        // $posts = array_map(function($perPost){
-        //     $post_id = $perPost->ID;
-        //     $display = get_post_meta($post_id,'ua_display',true);
-        //     if(empty($display)) return null;
-            
-        //     $output = [
-        //         'template_id' => $post_id,
-        //         'ua_display'    => get_post_meta($post_id,'ua_display',true),
-        //     ];
-        //     return $output;
-        // },$posts);
-        // var_dump($f_post);
-        $f_post = ultraaddons_optimize_array($f_post);
         
-        var_dump($f_post);
-        wp_reset_postdata();
-        // var_dump(get_option(self::$key));
+        var_dump($rule);
 
         add_action( 'wp_enqueue_scripts', [ __CLASS__, 'enqueue_scripts' ] );
         $type = self::get_type();

@@ -3,12 +3,12 @@ namespace UltraAddons\WP;
 
 use UltraAddons\Core\Header_Footer;
 class Header_Footer_Post{
-    
+    public static $post_type = 'header_footers';
     public static function init() {
         add_action( 'init', [ __CLASS__, 'register_post' ],99 );
 		add_action( 'add_meta_boxes', [ __CLASS__, 'register_metabox' ] );
 		add_action( 'save_post', [ __CLASS__, 'save_meta' ] );
-		add_action( 'save_post', [ __CLASS__, 'delete_post' ] );
+		add_action( 'trashed_post', [ __CLASS__, 'delete_post' ] );
 
 		//Now menu is handaling from admin-handle.php file
         //add_action( 'admin_menu', [ __CLASS__, 'add_submenu' ] );
@@ -36,7 +36,7 @@ class Header_Footer_Post{
             return $template_file;
         }
         $type = get_post_type();
-        if( $type == 'header_footer' ){
+        if( $type == self::$post_type ){
             $template = ULTRA_ADDONS_DIR . 'template/header-footer-elementor.php';
             return is_file( $template ) ? $template : $template_file;
         }
@@ -54,7 +54,7 @@ class Header_Footer_Post{
         $parent_slug = 'ultraaddons-elementor-lite';
         $page_title = $menu_title = esc_html__( 'Header & Footer Templates', 'medilac' );
         $capability = ULTRA_ADDONS_CAPABILITY;//'edit_themes';
-        $menu_slug = admin_url( 'edit.php?post_type=header_footer' );
+        $menu_slug = admin_url( 'edit.php?post_type=' . self::$post_type );
         add_submenu_page( $parent_slug, $page_title, $menu_title, $capability, $menu_slug, '', 3 );
     }
     
@@ -123,7 +123,7 @@ class Header_Footer_Post{
 			"supports" => [ 'title', 'thumbnail', 'elementor' ],
 		];
 
-		register_post_type( "header_footer", $args );
+		register_post_type( self::$post_type, $args );
     }
 
 	public static function register_metabox() {
@@ -134,7 +134,7 @@ class Header_Footer_Post{
 				__CLASS__,
 				'metabox_render',
 			],
-			'header_footer',
+			self::$post_type,
 			'normal',
 			'high'
 		);
@@ -329,7 +329,7 @@ class Header_Footer_Post{
 
 	public static function update_option(){
 		$args = [
-            'post_type'     => 'header_footer',
+            'post_type'     => self::$post_type,
             'post_status'   => 'published',
             'meta_query'    => [
                 [
@@ -345,12 +345,10 @@ class Header_Footer_Post{
             $post_id = $each_post->ID;
             $f_post[$post_id] = get_post_meta($post_id,'ua_display',true);
         }
-        var_dump($f_post);
         $f_post = ultraaddons_optimize_array($f_post);
         update_option(Header_Footer::$key, $f_post);
         
         wp_reset_postdata();
-		// die();
 	}
 	/**
 	 * Save meta field.
@@ -407,7 +405,7 @@ class Header_Footer_Post{
 		}
 
 		//Update on WP Option
-		// self::update_option();
+		self::update_option();
 	}
 	public static function delete_post( $post_id ) {
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
@@ -425,6 +423,8 @@ class Header_Footer_Post{
 		}
 
 		//Update on WP Option
-		// self::update_option();
+		self::update_option();
+		var_dump(34334);
+		die();
 	}
 }

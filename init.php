@@ -361,8 +361,9 @@ function ultraaddons_elementor_activation(){
     $role->add_cap( ULTRA_ADDONS_CAPABILITY );
     
     $cpt_support = get_option( 'elementor_cpt_support', [ 'page', 'post' ] );
-    if( is_array($cpt_support) ){
-        $cpt_support['header_footer'] = 'header_footer';
+    $hf_post_type = \UltraAddons\WP\Header_Footer_Post::$post_type; //It's actually 'header_footer'
+	if( is_array($cpt_support) ){
+        $cpt_support[$hf_post_type] = $hf_post_type;
         update_option( 'elementor_cpt_support', $cpt_support);
     }
 }
