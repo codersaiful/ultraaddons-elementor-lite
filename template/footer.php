@@ -1,5 +1,5 @@
 <?php
-use \UltraAddons\Core\Header_Footer;
+use \UltraAddons\Classes\Header_Footer_Render as HF_Render;
 /**
  * Custom Footer file
  * by UltraAddons
@@ -14,7 +14,7 @@ use \UltraAddons\Core\Header_Footer;
 <?php
 
 
-echo ultraaddons_elementor_display_content( Header_Footer::get_footer_id() );
+echo ultraaddons_elementor_display_content( HF_Render::get_footer_id() );
 
 wp_footer(); 
 ?>

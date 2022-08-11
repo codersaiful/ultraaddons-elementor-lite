@@ -227,8 +227,10 @@ class Header_Footer_Post{
 			'Basic' => [
 
 				'entire_site' => __( 'Entire Website', 'ultraaddons' ), 
-				'singular' => __( 'All Singulars', 'ultraaddons' ),
+				'is_singular' => __( 'All Singulars', 'ultraaddons' ),
 				'archives' => __( 'All Archives', 'ultraaddons' ),
+				'is_front_page' => __( 'Front Page', 'ultraaddons' ),
+				'is_home' => __( 'Blog Page', 'ultraaddons' ),
 			],
 			
 			'Special Pages'=>[

@@ -1,5 +1,6 @@
 <?php
 use \UltraAddons\Core\Header_Footer;
+use \UltraAddons\Classes\Header_Footer_Render as HF_Render;
 
 /**
  * The header for our theme
@@ -38,9 +39,8 @@ $body_class     = 'ua-body';
     
     ?>
     <header id="masthead" class="site-header <?php echo esc_attr( $header_class ); ?>">
-        
         <?php
-        echo ultraaddons_elementor_display_content( Header_Footer::get_header_id() );
+        echo ultraaddons_elementor_display_content( HF_Render::get_header_id() );
         ?>
     </header><!-- #masthead -->
     <?php

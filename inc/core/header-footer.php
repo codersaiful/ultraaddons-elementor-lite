@@ -2,6 +2,7 @@
 namespace UltraAddons\Core;
 
 use UltraAddons\WP\Header_Footer_Post as HF_Post;
+use UltraAddons\Classes\Header_Footer_Render as HF_Render;
 
 use WP_Query;
 
@@ -64,7 +65,7 @@ class Header_Footer {
     
     public static function init() {
 
-        // HF_Post::update_option();
+        if( is_admin() ) return;
         
         $heder_footer = get_option( self::$key );
         
@@ -74,21 +75,19 @@ class Header_Footer {
         }
         
         if( empty( $heder_footer ) || ! is_array( $heder_footer ) ) return;
+        HF_Render::init($heder_footer);
+        
+        
 
-        $locs = [];
-        foreach($heder_footer as $key=>$eack ){
-            $position = $eack['position'];
-            $locs[$position]= true;
-        }
         // $loc = array_filter($heder_footer,function($item){
         //     // var_dump($item['position']);
         //     return $item['position']=='header';
         // });
 
-        var_dump($locs,$heder_footer);
+        // var_dump($locs,$heder_footer);
         // self::$settings = $heder_footer;
         // var_dump(self::get_current_page_type());
-        // self::handleHeader();
+        
         // add_action( 'wp_enqueue_scripts', [ __CLASS__, 'enqueue_scripts' ] );
         return;
         // var_dump($heder_footer); 
@@ -123,13 +122,7 @@ class Header_Footer {
         
     }
     
-    public static function handleHeader(){
-        global $post;
-        $page_id = get_the_ID();
-        $post_type = get_post_type();
-
-        var_dump($post,$page_id,$post_type,self::$settings);
-    }
+    
 
     public static function enqueue_scripts(){
         
