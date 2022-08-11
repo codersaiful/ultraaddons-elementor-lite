@@ -228,19 +228,17 @@ class Header_Footer_Post{
 
 				'entire_site' => __( 'Entire Website', 'ultraaddons' ), 
 				'is_singular' => __( 'All Singulars', 'ultraaddons' ),
-				'archives' => __( 'All Archives', 'ultraaddons' ),
-				'is_front_page' => __( 'Front Page', 'ultraaddons' ),
-				'is_home' => __( 'Blog Page', 'ultraaddons' ),
+				'is_tax' => __( 'All Archives', 'ultraaddons' ),
 			],
 			
 			'Special Pages'=>[
 
-				'special-404' => __( '404 Page', 'ultraaddons' ),
-				'special-search' => __( 'Search Page', 'ultraaddons' ),
-				'special-blog' => __( 'Blog / Posts Page', 'ultraaddons' ),
-				'special-front' => __( 'Front Page', 'ultraaddons' ),
-				'special-date' => __( 'Date Archive', 'ultraaddons' ),
-				'special-author' => __( 'Author Archive', 'ultraaddons' ),
+				'is_404' => __( '404 Page', 'ultraaddons' ),
+				'is_search' => __( 'Search Page', 'ultraaddons' ),
+				'is_home' => __( 'Blog Page', 'ultraaddons' ),
+				'is_front_page' => __( 'Front Page', 'ultraaddons' ),
+				'is_date' => __( 'Date Archive', 'ultraaddons' ),
+				// 'special-author' => __( 'Author Archive', 'ultraaddons' ),
 				// 'special-woo-shop' => __( 'WooCommerce Shop Page', 'ultraaddons' ),
 			],
 
@@ -278,6 +276,7 @@ class Header_Footer_Post{
 				'is_shop' => __( 'Shop Page', 'ultraaddons' ),
 				'is_wc_category' => __( 'Products Category', 'ultraaddons' ),
 				'is_wc_taxonomy' => __( 'Products  Taxonomy/Archive', 'ultraaddons' ),
+				'is_wc_search' => __( 'Products Search', 'ultraaddons' ),
 				'is_woocommerce' => __( 'Entire WooCommerce', 'ultraaddons' ),
 
 

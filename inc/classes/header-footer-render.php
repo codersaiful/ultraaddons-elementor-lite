@@ -190,6 +190,9 @@ class Header_Footer_Render {
 				$page_type = 'is_404';
 			} elseif ( is_search() ) {
 				$page_type = 'is_search';
+                if(self::is_woocommerce()){
+                    $page_type  = 'is_wc_search';
+                }
 			} elseif ( is_archive() ) {
 				$page_type = 'is_archive';
                 // var_dump(is_category(), is_tag(), is_tax());
