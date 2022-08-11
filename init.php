@@ -62,7 +62,16 @@ define( 'ULTRA_ADDONS_MINIMUM_PHP_VERSION', '5.4' );
 $ultraaddons_capability = apply_filters( 'ultraaddons_capability', 'manage_ultraaddons' );
 define( 'ULTRA_ADDONS_CAPABILITY', $ultraaddons_capability );
 
-
+/**
+ * Auto Loader
+ * finally activated and running now.
+ * 
+ * It's was inside UltraAddons Class, but problem on activation loader. I I transferred here.
+ * 
+ * @since 1.0.1.0
+ * @since 1.1.4.5 It's was inside UltraAddons Class, but problem on activation loader. I I transferred here.
+ */
+include_once ULTRA_ADDONS_DIR . 'autoloader.php';
 
 /**
  * Main ULTRA_ADDONS Addons Class
@@ -197,14 +206,7 @@ final class UltraAddons {
 		 */
 		do_action( 'ultraaddons_init' );
 
-		/**
-		 * Auto Loader
-		 * finally activated and running now.
-		 * 
-		 * @since 1.0.1.0
-		 */
-		include_once ULTRA_ADDONS_DIR . 'autoloader.php';
-	
+			
 	
 		//Including Function File. It will stay at the Top of the File
 		include_once ULTRA_ADDONS_DIR . 'inc/functions.php';
