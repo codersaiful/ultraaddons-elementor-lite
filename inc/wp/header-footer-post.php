@@ -221,8 +221,7 @@ class Header_Footer_Post{
 		$values = get_post_meta($post_id,'ua_display',true);
 		
 		$rules_arr = $values[$rule] ?? array();
-		// var_dump($rules_arr);
-		// return;
+		
 		$field_arr = [
 			'Basic' => [
 
