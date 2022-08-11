@@ -5,18 +5,108 @@ use UltraAddons;
 use UltraAddons\Classes\Template_List;
 use UltraAddons\Core\Header_Footer;
 class Header_Footer_Post{
+
+	public static $availeable_fields=[];
+
     public static $post_type = 'header_footer';
     public static function init() {
         add_action( 'init', [ __CLASS__, 'register_post' ],99 );
+		self::set_available_fields();
+
 		add_action( 'add_meta_boxes', [ __CLASS__, 'register_metabox' ] );
 		add_action( 'save_post', [ __CLASS__, 'save_meta' ] );
 		add_action( 'trashed_post', [ __CLASS__, 'delete_post' ] );
 		add_action( 'delete_post', [ __CLASS__, 'delete_post' ] );
 
-		//Now menu is handaling from admin-handle.php file
-        //add_action( 'admin_menu', [ __CLASS__, 'add_submenu' ] );
+		//posts_column_head column_content
+		add_filter('manage_posts_columns', [ __CLASS__, 'posts_column_head' ]);
+		add_action('manage_posts_custom_column', [ __CLASS__, 'column_content' ], 10, 2);
+
+		/**
+		 * Header Footer Template Display within our Builin 
+		 * Template File
+		 */
         add_filter( 'template_include', [ __CLASS__, 'template_include' ] );
     }
+
+	public static function get_available_fields(){
+		return self::$availeable_fields;
+	}
+	public static function set_available_fields()
+	{
+		
+		self::$availeable_fields = [
+			'Basic' => [
+	
+				'entire_site' => __( 'Entire Website', 'ultraaddons' ), 
+				'is_singular' => __( 'All Singulars', 'ultraaddons' ),
+				'is_tax' => __( 'All Archives', 'ultraaddons' ),
+			],
+			
+			'Special Pages'=>[
+	
+				'is_404' => __( '404 Page', 'ultraaddons' ),
+				'is_search' => __( 'Search Page', 'ultraaddons' ),
+				'is_home' => __( 'Blog Page', 'ultraaddons' ),
+				'is_front_page' => __( 'Front Page', 'ultraaddons' ),
+				'is_date' => __( 'Date Archive', 'ultraaddons' ),
+				// 'special-author' => __( 'Author Archive', 'ultraaddons' ),
+				// 'special-woo-shop' => __( 'WooCommerce Shop Page', 'ultraaddons' ),
+			],
+	
+			// 'Posts'=>[
+	
+			// 	'post|all' => __( 'All Posts', 'ultraaddons' ),
+			// 	'post|all|archive' => __( 'All Posts Archive', 'ultraaddons' ),
+			// 	'post|all|taxarchive|category' => __( 'All Categories Archive', 'ultraaddons' ),
+			// 	'post|all|taxarchive|post_tag' => __( 'All Tags Archive', 'ultraaddons' ),
+	
+			// ],
+	
+			// 'Pages'=>[
+	
+			// 	'page|all' => __( 'All Pages', 'ultraaddons' ),
+	
+			// ],
+	
+			// 'Landing Pages'=>[
+	
+			// 	'e-landing-page|all' => __( 'All Landing Pages', 'ultraaddons' ),
+			// 	'e-landing-page|all|archive' => __( 'All Landing Pages Archive', 'ultraaddons' ),
+	
+			// ],
+	
+			// 'My Templates'=>[
+	
+			// 	'elementor_library|all' => __( 'All My Templates', 'ultraaddons' ),
+			// 	'elementor_library|all|archive' => __( 'All My Templates Archive', 'ultraaddons' ),
+	
+			// ],
+	
+			'WooCommerce'=>[
+	
+				'is_shop' => __( 'Shop Page', 'ultraaddons' ),
+				'is_wc_category' => __( 'Products Category', 'ultraaddons' ),
+				'is_wc_taxonomy' => __( 'Products  Taxonomy/Archive', 'ultraaddons' ),
+				'is_wc_search' => __( 'Products Search', 'ultraaddons' ),
+				'is_woocommerce' => __( 'Entire WooCommerce', 'ultraaddons' ),
+	
+	
+				// 'product|all|taxarchive|product_cat' => __( 'All Product Categories Archive', 'ultraaddons' ),
+				// 'product|all|taxarchive|product_tag' => __( 'All Product Tags Archive', 'ultraaddons' ),
+				// 'product|all|taxarchive|product_shipping_class' => __( 'All Product Shipping Classes Archive', 'ultraaddons' ),
+	
+			],
+	
+			'Specific Target'=>[
+	
+				'specifics' => __( 'Specific Pages / Posts / Taxonomies, etc.', 'ultraaddons' ),
+	
+			]
+	
+		];
+		return self::$availeable_fields;
+	}
     
     /**
      * Mainly When we will create custom Header footer post by Elementor
@@ -48,17 +138,54 @@ class Header_Footer_Post{
     }
     
     /**
-     * Add submenu under UltraAddons Menu
-     * Mainly for Creating Menu List
-     * 
-     * @since 1.0.4.0
+     * //posts_column_head column_content
      */
-    public static function add_submenu() {
-        $parent_slug = 'ultraaddons-elementor-lite';
-        $page_title = $menu_title = esc_html__( 'Header & Footer Templates', 'medilac' );
-        $capability = ULTRA_ADDONS_CAPABILITY;//'edit_themes';
-        $menu_slug = admin_url( 'edit.php?post_type=' . self::$post_type );
-        add_submenu_page( $parent_slug, $page_title, $menu_title, $capability, $menu_slug, '', 3 );
+    public static function posts_column_head( $default ) {
+		
+		if( get_post_type() != self::$post_type ) return $default;
+		$heads = [];
+		$heads['title'] = __( 'Name', 'ultraaddons' );
+		$heads['ua-location'] = __( 'Type/Location', 'ultraaddons' );
+		$heads['ua-setting'] = __( 'Setting', 'ultraaddons' );
+        return $heads;
+    }
+    
+    public static function column_content( $column_name, $post_id ) {
+		
+        if ($column_name == 'ua-location') {
+			$location = get_post_meta( $post_id,'ua_template_type', true );
+			if( empty( $location ) ){
+				echo esc_html__( 'N/A', 'ultraaddons' );
+			}else{
+				echo esc_html( ucwords( $location ) );
+			}
+			
+		}
+		
+        if ($column_name == 'ua-setting') {
+
+		$sett = get_post_meta( $post_id,'ua_display',true);
+		$rule = $sett['rule'] ?? [];
+		$availeable_fields = self::get_available_fields();
+		$temp_avl = [];
+		foreach( $availeable_fields as $fild ){
+			$temp_avl = array_merge($temp_avl, $fild);
+		}
+		$availeable_fields = $temp_avl;
+		$rules = array_map(function($itm) use($availeable_fields){
+
+			return $availeable_fields[$itm] ?? '';
+		},$rule);
+		$all_sett = implode(",",$rules );
+		
+		if( empty( $all_sett ) ){
+			echo esc_html__( 'N/A', 'ultraaddons' );
+		}else{
+			echo esc_html( $all_sett );
+		}
+			
+		}
+
     }
     
     public static function register_post() {
@@ -154,8 +281,6 @@ class Header_Footer_Post{
 		$values            = get_post_custom( $post->ID );
 		$template_type     = isset( $values['ua_template_type'] ) ? esc_attr( $values['ua_template_type'][0] ) : '';
 		$display_on_canvas = isset( $values['display-on-canvas-template'] ) ? true : false;
-		// var_dump($values);
-
 
 		// We'll use this nonce field later on when saving.
 		wp_nonce_field( 'ua_meta_nounce', 'ua_meta_nounce' );
@@ -222,78 +347,6 @@ class Header_Footer_Post{
 		
 		$rules_arr = $values[$rule] ?? array();
 		
-		$field_arr = [
-			'Basic' => [
-
-				'entire_site' => __( 'Entire Website', 'ultraaddons' ), 
-				'is_singular' => __( 'All Singulars', 'ultraaddons' ),
-				'is_tax' => __( 'All Archives', 'ultraaddons' ),
-			],
-			
-			'Special Pages'=>[
-
-				'is_404' => __( '404 Page', 'ultraaddons' ),
-				'is_search' => __( 'Search Page', 'ultraaddons' ),
-				'is_home' => __( 'Blog Page', 'ultraaddons' ),
-				'is_front_page' => __( 'Front Page', 'ultraaddons' ),
-				'is_date' => __( 'Date Archive', 'ultraaddons' ),
-				// 'special-author' => __( 'Author Archive', 'ultraaddons' ),
-				// 'special-woo-shop' => __( 'WooCommerce Shop Page', 'ultraaddons' ),
-			],
-
-			// 'Posts'=>[
-
-			// 	'post|all' => __( 'All Posts', 'ultraaddons' ),
-			// 	'post|all|archive' => __( 'All Posts Archive', 'ultraaddons' ),
-			// 	'post|all|taxarchive|category' => __( 'All Categories Archive', 'ultraaddons' ),
-			// 	'post|all|taxarchive|post_tag' => __( 'All Tags Archive', 'ultraaddons' ),
-
-			// ],
-
-			// 'Pages'=>[
-
-			// 	'page|all' => __( 'All Pages', 'ultraaddons' ),
-
-			// ],
-
-			// 'Landing Pages'=>[
-
-			// 	'e-landing-page|all' => __( 'All Landing Pages', 'ultraaddons' ),
-			// 	'e-landing-page|all|archive' => __( 'All Landing Pages Archive', 'ultraaddons' ),
-
-			// ],
-
-			// 'My Templates'=>[
-
-			// 	'elementor_library|all' => __( 'All My Templates', 'ultraaddons' ),
-			// 	'elementor_library|all|archive' => __( 'All My Templates Archive', 'ultraaddons' ),
-
-			// ],
-
-			'WooCommerce'=>[
-
-				'is_shop' => __( 'Shop Page', 'ultraaddons' ),
-				'is_wc_category' => __( 'Products Category', 'ultraaddons' ),
-				'is_wc_taxonomy' => __( 'Products  Taxonomy/Archive', 'ultraaddons' ),
-				'is_wc_search' => __( 'Products Search', 'ultraaddons' ),
-				'is_woocommerce' => __( 'Entire WooCommerce', 'ultraaddons' ),
-
-
-				// 'product|all|taxarchive|product_cat' => __( 'All Product Categories Archive', 'ultraaddons' ),
-				// 'product|all|taxarchive|product_tag' => __( 'All Product Tags Archive', 'ultraaddons' ),
-				// 'product|all|taxarchive|product_shipping_class' => __( 'All Product Shipping Classes Archive', 'ultraaddons' ),
-
-			],
-
-			'Specific Target'=>[
-
-				'specifics' => __( 'Specific Pages / Posts / Taxonomies, etc.', 'ultraaddons' ),
-
-			]
-
-		];
-		
-		
 		?>
 		<tr class="ua-options-row display-rule">
 			<td class="ua-options-row-heading">
@@ -303,7 +356,7 @@ class Header_Footer_Post{
 				<select name="ua_display[<?php echo esc_attr($rule); ?>][]" class="ua-target_rule-condition form-control ast-input" multiple>
 					
 					<?php
-					foreach( $field_arr as $field_key => $field ){
+					foreach( self::$availeable_fields as $field_key => $field ){
 						if( is_array( $field ) ){
 							
 							
