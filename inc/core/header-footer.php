@@ -85,7 +85,7 @@ class Header_Footer {
         //     return $item['position']=='header';
         // });
 
-        var_dump($l   ocs,$heder_footer);
+        var_dump($locs,$heder_footer);
         // self::$settings = $heder_footer;
         // var_dump(self::get_current_page_type());
         // self::handleHeader();
