@@ -10,6 +10,7 @@ class Header_Footer_Render {
     public static $heder_footer_data = [];
     public static $template_loc = [];
     public static $template_datas = null;
+    
     /**
 	 * Current page type
 	 *
@@ -32,21 +33,51 @@ class Header_Footer_Render {
     public static function init( $heder_footer_data ){
         if( ! is_array( $heder_footer_data ) ) return;
         self::$heder_footer_data = $heder_footer_data;
-        $locs = [];
+        $locs =[]; // $wasys = 
+        
         foreach(self::$heder_footer_data as $key=>$eack ){
             $position = $eack['position'];
-            $locs[$position]= true;
+            // $way = isset($eack['way']) ? 'css' : 'direct';
+            // $wasys[$key]=$way;
+            $locs[$position]= $key;
         }
 
         if(empty($locs)) return;
         // var_dump($locs);
+        // var_dump($wasys,$locs,self::$heder_footer_data);
+        // var_dump(self::$heder_footer_data);
         
         add_action( 'get_header', [__CLASS__, 'get_header'], 10, 2 );
+
+        // add_action( 'wp_body_open', [__CLASS__, 'add_header'] );
+        // add_filter( 'body_class', [__CLASS__, 'header_css_body_class'] );
+
         add_action( 'get_footer', [__CLASS__, 'get_footer'], 10, 2 );
+
+        // add_action( 'wp_footer', [__CLASS__, 'add_footer'] );
+        // add_filter( 'body_class', [__CLASS__, 'header_css_body_class'] );
 
 
         //Totally complete, I added all templates css file
         add_action( 'wp_enqueue_scripts', [ __CLASS__, 'enqueue_scripts' ] );
+    }
+
+    public static function add_header(){
+        
+        echo ultraaddons_elementor_display_content( self::get_header_id() );
+    }
+    public static function header_css_body_class( $body_class ){
+        $body_class[] = 'ua-header-type-css';
+        return $body_class;
+    }
+
+    public static function add_footer(){
+        
+        echo ultraaddons_elementor_display_content( self::get_header_id() );
+    }
+    public static function footer_css_body_class( $body_class ){
+        $body_class[] = 'ua-footer-type-css';
+        return $body_class;
     }
 
     public static function get_header($name, $args){
@@ -100,7 +131,7 @@ class Header_Footer_Render {
         }
 
         $page_type = self::get_current_page_type();
-        var_dump($page_type);
+        // var_dump($page_type);
         $header = $pagewise_tem['header'] ?? [];
         $entire_header_id = $header['entire_site'] ?? 0;
         $header_id = $header[$page_type] ?? $entire_header_id;
@@ -158,6 +189,11 @@ class Header_Footer_Render {
     }
 
     public static function enqueue_scripts(){
+        $handle = 'ultraaddons-icon-font';
+        $src = ULTRA_ADDONS_ASSETS . 'css/header-footer.css';
+        wp_register_style( $handle, $src );//, $deps, $ver, $media
+        wp_enqueue_style( $handle );
+
         if(!is_array( self::$heder_footer_data )) return;
         foreach(self::$heder_footer_data as $template_id => $templates){
             
@@ -242,7 +278,6 @@ class Header_Footer_Render {
         if( is_cart() || is_checkout() || is_woocommerce() || is_checkout_pay_page() || is_account_page()){
             return true;
         }
-
 
     }
 }

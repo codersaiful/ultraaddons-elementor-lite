@@ -143,11 +143,14 @@ class Header_Footer_Post{
     public static function posts_column_head( $default ) {
 		
 		if( get_post_type() != self::$post_type ) return $default;
-		$heads = [];
-		$heads['title'] = __( 'Name', 'ultraaddons' );
-		$heads['ua-location'] = __( 'Type/Location', 'ultraaddons' );
-		$heads['ua-setting'] = __( 'Setting', 'ultraaddons' );
-        return $heads;
+
+		if( isset( $default['date'] ) ){
+			unset($default['date']);
+		}
+
+		$default['ua-location'] = __( 'Type/Location', 'ultraaddons' );
+		$default['ua-setting'] = __( 'Setting', 'ultraaddons' );
+        return $default;
     }
     
     public static function column_content( $column_name, $post_id ) {
@@ -281,7 +284,9 @@ class Header_Footer_Post{
 		$values            = get_post_custom( $post->ID );
 		$template_type     = isset( $values['ua_template_type'] ) ? esc_attr( $values['ua_template_type'][0] ) : '';
 		$display_on_canvas = isset( $values['display-on-canvas-template'] ) ? true : false;
-
+		$ua_display = get_post_meta($post->ID,'ua_display',true);
+		$way = ! empty( $ua_display['way'] ) ? true : false;
+		
 		// We'll use this nonce field later on when saving.
 		wp_nonce_field( 'ua_meta_nounce', 'ua_meta_nounce' );
 		?>
@@ -324,6 +329,8 @@ class Header_Footer_Post{
 						</span>
 					</td>
 				</tr>
+				
+				
 				<tr class="ua-options-row enable-for-canvas">
 					<td class="ua-options-row-heading">
 						<label for="display-on-canvas-template">
@@ -335,6 +342,24 @@ class Header_Footer_Post{
 						<input type="checkbox" id="display-on-canvas-template" name="display-on-canvas-template" value="1" <?php checked( $display_on_canvas, true ); ?> />
 					</td>
 				</tr>
+
+				<tr style="display: none !important;" class="ua-options-row enable-for-canvas">
+					<td class="ua-options-row-heading">
+						<label for="display-on-canvas-template">
+							<?php _e( 'Enabling Header Footer using CSS', 'ultraaddons' ); ?>
+						</label>
+						<i class="ua-options-row-heading-help dashicons dashicons-editor-help" title="<?php _e( 'Actually it will not replace header file,<br> just it will hide current header. where header footer class should be', 'ultraaddons' ); ?>"></i>
+						<!-- <p>Actually it will not replace header file,<br> just it will hide current header. <br>
+							where header footer class should be (.site-header or ##masthead)</p> -->
+							<code>.site-header or ##masthead</p></code>
+					</td>
+					<td class="ua-options-row-content">
+					<input type="hidden" name="ua_display[way]" value="">
+						<input type="checkbox" id="ua_display_way" name="ua_display[way]" value="1" <?php checked( $way, true ); ?> />
+						
+					</td>
+				</tr>
+
 			</tbody>
 		</table>
 		<?php
@@ -353,6 +378,7 @@ class Header_Footer_Post{
 				<label for="ua_display_rule"><?php _e( $field_title ); ?></label>
 			</td>
 			<td class="ua-options-row-content">
+				
 				<select name="ua_display[<?php echo esc_attr($rule); ?>][]" class="ua-target_rule-condition form-control ast-input" multiple>
 					
 					<?php

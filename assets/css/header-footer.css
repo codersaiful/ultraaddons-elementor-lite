@@ -1,0 +1,5 @@
+body.ua-header-type-css header#masthead,
+body.ua-header-type-css header.site-header,
+body.ua-header-type-css header#masthead.site-header{
+    display: none !important;
+}
