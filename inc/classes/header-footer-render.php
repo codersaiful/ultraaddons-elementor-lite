@@ -93,14 +93,14 @@ class Header_Footer_Render {
         $pagewise_tem = [];
         foreach( self::$heder_footer_data as $key=>$datas ){
             $position = $datas['position'];
-            $rules = $datas['rule'];
+            $rules = $datas['rule'] ?? [];
             foreach( $rules as $rule ){
                 $pagewise_tem[$position][$rule] = $key;
             }
         }
 
         $page_type = self::get_current_page_type();
-var_dump($page_type);
+        var_dump($page_type);
         $header = $pagewise_tem['header'] ?? [];
         $entire_header_id = $header['entire_site'] ?? 0;
         $header_id = $header[$page_type] ?? $entire_header_id;
@@ -185,22 +185,27 @@ var_dump($page_type);
 		if ( null === self::$current_page_type ) {
 			$page_type  = '';
 			$current_id = false;
-
+            // var_dump(is_404(),is_search());
 			if ( is_404() ) {
 				$page_type = 'is_404';
 			} elseif ( is_search() ) {
 				$page_type = 'is_search';
 			} elseif ( is_archive() ) {
 				$page_type = 'is_archive';
-
+                // var_dump(is_category(), is_tag(), is_tax());
 				if ( is_category() || is_tag() || is_tax() ) {
 					$page_type = 'is_tax';
+                    if ( function_exists( 'is_product_category' ) && is_product_category() ) {
+                        $page_type = 'is_wc_category';
+                    }if ( function_exists( 'is_product_taxonomy' ) && is_product_taxonomy() ) {
+                        $page_type = 'is_wc_taxonomy';
+                    }
 				} elseif ( is_date() ) {
 					$page_type = 'is_date';
 				} elseif ( is_author() ) {
 					$page_type = 'is_author';
 				} elseif ( function_exists( 'is_shop' ) && is_shop() ) {
-					$page_type = 'is_woo_shop_page';
+					$page_type = 'is_wc_shop';
 				}
 			} elseif ( is_home() ) {
 				$page_type = 'is_home';
@@ -210,15 +215,31 @@ var_dump($page_type);
 			} elseif ( is_singular() ) {
 				$page_type  = 'is_singular';
 				$current_id = get_the_id();
+                if ( function_exists( 'is_product' ) && is_product() ) {
+					$page_type = 'is_wc_single';
+				}elseif(self::is_woocommerce()){
+                        $page_type  = 'is_woocommerce';
+                }
 			} else {
 				$current_id = get_the_id();
 			}
+            
+            
 
 			self::$current_page_data['ID'] = $current_id;
 			self::$current_page_type       = $page_type;
 		}
 
-		return self::$current_page_type;
+		return apply_filters('ultraaddons_hf_current_page_type', self::$current_page_type);
 	}
     
+    private static function is_woocommerce(){
+        if(!function_exists('is_woocommerce')) return false;
+
+        if( is_cart() || is_checkout() || is_woocommerce() || is_checkout_pay_page() || is_account_page()){
+            return true;
+        }
+
+
+    }
 }

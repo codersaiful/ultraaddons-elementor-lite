@@ -241,45 +241,49 @@ class Header_Footer_Post{
 				'special-front' => __( 'Front Page', 'ultraaddons' ),
 				'special-date' => __( 'Date Archive', 'ultraaddons' ),
 				'special-author' => __( 'Author Archive', 'ultraaddons' ),
-				'special-woo-shop' => __( 'WooCommerce Shop Page', 'ultraaddons' ),
+				// 'special-woo-shop' => __( 'WooCommerce Shop Page', 'ultraaddons' ),
 			],
 
-			'Posts'=>[
+			// 'Posts'=>[
 
-				'post|all' => __( 'All Posts', 'ultraaddons' ),
-				'post|all|archive' => __( 'All Posts Archive', 'ultraaddons' ),
-				'post|all|taxarchive|category' => __( 'All Categories Archive', 'ultraaddons' ),
-				'post|all|taxarchive|post_tag' => __( 'All Tags Archive', 'ultraaddons' ),
+			// 	'post|all' => __( 'All Posts', 'ultraaddons' ),
+			// 	'post|all|archive' => __( 'All Posts Archive', 'ultraaddons' ),
+			// 	'post|all|taxarchive|category' => __( 'All Categories Archive', 'ultraaddons' ),
+			// 	'post|all|taxarchive|post_tag' => __( 'All Tags Archive', 'ultraaddons' ),
 
-			],
+			// ],
 
-			'Pages'=>[
+			// 'Pages'=>[
 
-				'page|all' => __( 'All Pages', 'ultraaddons' ),
+			// 	'page|all' => __( 'All Pages', 'ultraaddons' ),
 
-			],
+			// ],
 
-			'Landing Pages'=>[
+			// 'Landing Pages'=>[
 
-				'e-landing-page|all' => __( 'All Landing Pages', 'ultraaddons' ),
-				'e-landing-page|all|archive' => __( 'All Landing Pages Archive', 'ultraaddons' ),
+			// 	'e-landing-page|all' => __( 'All Landing Pages', 'ultraaddons' ),
+			// 	'e-landing-page|all|archive' => __( 'All Landing Pages Archive', 'ultraaddons' ),
 
-			],
+			// ],
 
-			'My Templates'=>[
+			// 'My Templates'=>[
 
-				'elementor_library|all' => __( 'All My Templates', 'ultraaddons' ),
-				'elementor_library|all|archive' => __( 'All My Templates Archive', 'ultraaddons' ),
+			// 	'elementor_library|all' => __( 'All My Templates', 'ultraaddons' ),
+			// 	'elementor_library|all|archive' => __( 'All My Templates Archive', 'ultraaddons' ),
 
-			],
+			// ],
 
-			'Products'=>[
+			'WooCommerce'=>[
 
-				'product|all' => __( 'All Products', 'ultraaddons' ),
-				'product|all|archive' => __( 'All Products Archive', 'ultraaddons' ),
-				'product|all|taxarchive|product_cat' => __( 'All Product Categories Archive', 'ultraaddons' ),
-				'product|all|taxarchive|product_tag' => __( 'All Product Tags Archive', 'ultraaddons' ),
-				'product|all|taxarchive|product_shipping_class' => __( 'All Product Shipping Classes Archive', 'ultraaddons' ),
+				'is_shop' => __( 'Shop Page', 'ultraaddons' ),
+				'is_wc_category' => __( 'Products Category', 'ultraaddons' ),
+				'is_wc_taxonomy' => __( 'Products  Taxonomy/Archive', 'ultraaddons' ),
+				'is_woocommerce' => __( 'Entire WooCommerce', 'ultraaddons' ),
+
+
+				// 'product|all|taxarchive|product_cat' => __( 'All Product Categories Archive', 'ultraaddons' ),
+				// 'product|all|taxarchive|product_tag' => __( 'All Product Tags Archive', 'ultraaddons' ),
+				// 'product|all|taxarchive|product_shipping_class' => __( 'All Product Shipping Classes Archive', 'ultraaddons' ),
 
 			],
 
