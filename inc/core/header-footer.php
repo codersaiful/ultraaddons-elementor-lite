@@ -64,7 +64,7 @@ class Header_Footer {
     
     public static function init() {
 
-        HF_Post::update_option();
+        // HF_Post::update_option();
         
         $heder_footer = get_option( self::$key );
         
@@ -85,7 +85,7 @@ class Header_Footer {
         //     return $item['position']=='header';
         // });
 
-        var_dump($locs,$heder_footer);
+        var_dump($l   ocs,$heder_footer);
         // self::$settings = $heder_footer;
         // var_dump(self::get_current_page_type());
         // self::handleHeader();
