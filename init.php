@@ -3,7 +3,7 @@
  * Plugin Name: Addons - UltraAddons Elementor Lite
  * Plugin URI: https://ultraaddons.com/
  * Description: Elementor Addons Plugin. Build your desired page just few click. Easy to use and useable for any theme and plugin. Available many filter.
- * Version: 1.1.0
+ * Version: 1.1.4
  * Author: CodeAstrology
  * Author URI: https://profiles.wordpress.org/codersaiful/#content-plugins
  * License: GPL3+
@@ -12,11 +12,11 @@
  * Domain Path: /languages/
  * 
  * Requires at least:    4.0.0
- * Tested up to:         5.9
+ * Tested up to:         6.0.1
  * WC requires at least: 3.0.0
  * WC tested up to: 	 6.1.1
- * Elementor tested up to: 3.5.4
- * Elementor Pro tested up to: 5.11.0
+ * Elementor tested up to: 3.9.7
+ * Elementor Pro tested up to: 7.11.0
  *
  * @package UltraAddons
  * @category Addons
@@ -46,7 +46,7 @@
 
 defined( 'ABSPATH' ) || die();
 
-define( 'ULTRA_ADDONS_VERSION', '1.1.0.12' );
+define( 'ULTRA_ADDONS_VERSION', '1.1.4.7' );
 define( 'ULTRA_ADDONS__FILE__', __FILE__ );
 define( 'ULTRA_ADDONS_BASE_NAME', plugin_basename( __FILE__ ) );
 define( 'ULTRA_ADDONS_DIR', plugin_dir_path( ULTRA_ADDONS__FILE__ ) );
@@ -62,7 +62,16 @@ define( 'ULTRA_ADDONS_MINIMUM_PHP_VERSION', '5.4' );
 $ultraaddons_capability = apply_filters( 'ultraaddons_capability', 'manage_ultraaddons' );
 define( 'ULTRA_ADDONS_CAPABILITY', $ultraaddons_capability );
 
-
+/**
+ * Auto Loader
+ * finally activated and running now.
+ * 
+ * It's was inside UltraAddons Class, but problem on activation loader. I I transferred here.
+ * 
+ * @since 1.0.1.0
+ * @since 1.1.4.5 It's was inside UltraAddons Class, but problem on activation loader. I I transferred here.
+ */
+include_once ULTRA_ADDONS_DIR . 'autoloader.php';
 
 /**
  * Main ULTRA_ADDONS Addons Class
@@ -197,14 +206,7 @@ final class UltraAddons {
 		 */
 		do_action( 'ultraaddons_init' );
 
-		/**
-		 * Auto Loader
-		 * finally activated and running now.
-		 * 
-		 * @since 1.0.1.0
-		 */
-		include_once ULTRA_ADDONS_DIR . 'autoloader.php';
-	
+			
 	
 		//Including Function File. It will stay at the Top of the File
 		include_once ULTRA_ADDONS_DIR . 'inc/functions.php';
@@ -361,8 +363,9 @@ function ultraaddons_elementor_activation(){
     $role->add_cap( ULTRA_ADDONS_CAPABILITY );
     
     $cpt_support = get_option( 'elementor_cpt_support', [ 'page', 'post' ] );
-    if( is_array($cpt_support) ){
-        $cpt_support['header_footer'] = 'header_footer';
+    $hf_post_type = \UltraAddons\WP\Header_Footer_Post::$post_type; //It's actually 'header_footer'
+	if( is_array($cpt_support) ){
+        $cpt_support[$hf_post_type] = $hf_post_type;
         update_option( 'elementor_cpt_support', $cpt_support);
     }
 }

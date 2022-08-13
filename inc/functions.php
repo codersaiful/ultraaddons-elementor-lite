@@ -160,7 +160,7 @@ function ultraaddons_elementor_display_content( $post_id = false ){
     }
     
     (int) $select_post_id = $post_id;
-    if ( \Elementor\Plugin::instance()->db->is_built_with_elementor( $select_post_id ) ) {
+    if ( \Elementor\Plugin::instance()->documents->get( $select_post_id )->is_built_with_elementor() ) {
         return \Elementor\Plugin::instance()->frontend->get_builder_content_for_display( $select_post_id );
     }
     return false;
@@ -630,6 +630,19 @@ function ultraaddons_theme_demo(){
     return new \UltraAddons\Base\Theme_Demo;
 }
 
+if ( ! function_exists( 'wp_body_open' ) ) {
+	/**
+	 * Adds backwards compatibility for wp_body_open() introduced with WordPress 5.2
+	 *
+	 * @since 1.1.4.2
+	 * @see https://developer.wordpress.org/reference/functions/wp_body_open/
+	 * @return void
+	 */
+	function wp_body_open() {
+		do_action( 'wp_body_open' );
+	}
+}
+
 /**
  * For navigation menu widget replace submenu class name 
  * 
@@ -647,6 +660,8 @@ add_filter('wp_nav_menu','ultraaddons_submenu_class');
 
 /**
  * Get Formidable Forms List
+ * 
+ * @author Saiful Islam <codersaiful@gmail.com>
  * @author B M Rafiul Alam <bmrafiul.alam@gmail.com>
  * @since 1.1.0.9
  * @return array
@@ -778,4 +793,26 @@ function ultraaddons_get_weform_list(){
     }
 
     return $options;
+}
+
+function ultraaddons_optimize_array( $array ){
+
+
+    if( ! is_array( $array ) ) return $array;
+
+    foreach ($array as $key => &$value) {
+        if ( ! is_bool( $value ) && empty($value)) {
+           unset($array[$key]);
+        }
+        else {
+           if (is_array($value)) {
+              $value = ultraaddons_optimize_array($value);
+              if (! is_bool( $value ) && empty($value)) {
+                 unset($array[$key]);
+              }
+           }
+        }
+     }
+  
+     return $array;
 }

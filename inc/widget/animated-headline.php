@@ -75,18 +75,19 @@ class Animated_Headline extends Base{
         <?php if ( ! empty( $settings['before_text'] ) ) : ?>
 			<span class="elementor-headline-plain-text elementor-headline-text-wrapper"><?php echo $settings['before_text']; ?></span>
 		<?php endif; ?>
-        <span class="elementor-headline-dynamic-wrapper elementor-headline-text-wrapper">
-        <?php if ( 'rotate' === $settings['headline_style'] && $settings['rotating_text'] ) :
-			$rotating_text = explode( "\n", $settings['rotating_text'] );
-			foreach ( $rotating_text as $key => $text ) :
-				$status_class = 1 > $key ? 'elementor-headline-text-active' : ''; ?>
-			<span class="elementor-headline-dynamic-text <?php echo $status_class; ?>">
-				<?php echo str_replace( ' ', '&nbsp;', $text ); ?>
-			</span>
-		<?php endforeach; ?>
-		<?php elseif ( 'highlight' === $settings['headline_style'] && ! empty( $settings['highlighted_text'] ) ) : ?>
-			<span class="elementor-headline-dynamic-text elementor-headline-text-active"><?php echo $settings['highlighted_text']; ?></span>
-		<?php endif ?>
+		<span class="elementor-headline-dynamic-wrapper elementor-headline-text-wrapper">
+			<?php if ( 'rotate' === $settings['headline_style'] && $settings['rotating_text'] ) :
+				$rotating_text = explode( "\n", $settings['rotating_text'] );
+				foreach ( $rotating_text as $key => $text ) :
+					$status_class = 1 > $key ? 'elementor-headline-text-active' : ''; ?>
+				<span class="elementor-headline-dynamic-text <?php echo $status_class; ?>">
+					<?php echo str_replace( ' ', '&nbsp;', $text ); ?>
+				</span>
+			<?php endforeach; ?>
+			<?php elseif ( 'highlight' === $settings['headline_style'] && ! empty( $settings['highlighted_text'] ) ) : ?>
+				<span class="elementor-headline-dynamic-text elementor-headline-text-active"><?php echo $settings['highlighted_text']; ?></span>
+			<?php endif ?>
+		</span>
         <?php if ( ! empty( $settings['after_text'] ) ) : ?>
 			<span class="elementor-headline-plain-text elementor-headline-text-wrapper"><?php echo $settings['after_text']; ?></span>
         <?php endif; ?>

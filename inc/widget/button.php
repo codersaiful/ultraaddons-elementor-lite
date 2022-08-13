@@ -104,7 +104,7 @@ class Button extends Base{
         $this->add_control(
 			'selected_icon',
 			[
-				'label' => esc_html__( 'Icon', 'elementor' ),
+				'label' => esc_html__( 'Icon', 'ultraaddons' ),
 				'type' => Controls_Manager::ICONS,
 				'fa4compatibility' => 'icon',
 				'skin' => 'inline',

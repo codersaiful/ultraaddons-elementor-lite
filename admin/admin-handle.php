@@ -1,6 +1,8 @@
 <?php
 namespace UltraAddons\Admin;
 
+use UltraAddons\WP\Header_Footer_Post as HF_Post;
+
 defined( 'ABSPATH' ) || die();
 
 /**
@@ -111,6 +113,27 @@ class Admin_Handle{
         //Our main admin script
         $handle = 'ultraaddons-admin-script';
         $src = ULTRA_ADDONS_ASSETS . 'js/admin.js';
+        $deps = ['jquery'];
+        $ver = ULTRA_ADDONS_VERSION;
+        $in_footer = true;
+        
+        wp_register_script($handle, $src, $deps, $ver, $in_footer);
+        wp_enqueue_script($handle);
+
+
+        //Select2 Added specially for Header Footer Display on/Off. this is css
+        $handle = 'select2';
+        $src = ULTRA_ADDONS_ASSETS . 'vendor/select2/css/select2.min.css';
+        $deps = [];
+        $ver = ULTRA_ADDONS_VERSION;
+        $media = 'all';
+        
+        wp_register_style( $handle, $src, $deps, $ver, $media );
+        wp_enqueue_style( $handle );
+
+        //Select2 Added specially for Header Footer Display on/Off. this is JS
+        $handle = 'select2';
+        $src = ULTRA_ADDONS_ASSETS . 'vendor/select2/js/select2.full.min.js';
         $deps = ['jquery'];
         $ver = ULTRA_ADDONS_VERSION;
         $in_footer = true;
@@ -259,23 +282,22 @@ class Admin_Handle{
                 'function'      => [__CLASS__, 'extensions_page'],
                 'position'      =>  2,
             ],
-            [
-                'parent_slug'   => self::$menu_slug,//$parent_slug,
-                'page_title'    =>  __( 'Custom Header Footer', 'ultraaddons' ),
-                'menu_title'    =>  __( 'Header Footer', 'ultraaddons' ),
-                'capability'    => self::$capability,
-                'menu_slug'     => 'ultraaddons-header-footer',
-                'function'      => [__CLASS__, 'header_footer_page'],
-                'position'      =>  3,
-            ],
+            // [
+            //     'parent_slug'   => self::$menu_slug,//$parent_slug,
+            //     'page_title'    =>  __( 'Custom Header Footer', 'ultraaddons' ),
+            //     'menu_title'    =>  __( 'Header Footer', 'ultraaddons' ),
+            //     'capability'    => self::$capability,
+            //     'menu_slug'     => 'ultraaddons-header-footer',
+            //     'function'      => [__CLASS__, 'header_footer_page'],
+            //     'position'      =>  3,
+            // ],
             
             [
                 'parent_slug'   => self::$menu_slug,//$parent_slug,
                 'page_title'    =>  __( 'Custom Header Footer Template', 'ultraaddons' ),
-                'menu_title'    =>  __( 'Header Footer Template', 'ultraaddons' ),
+                'menu_title'    =>  __( 'Header Footer', 'ultraaddons' ),
                 'capability'    => self::$capability,
-                'menu_slug'     => 'edit.php?post_type=header_footer',
-                // 'function'      => [__CLASS__, 'header_footer_page'],
+                'menu_slug'     => 'edit.php?post_type=' . HF_Post::$post_type,
                 // 'position'      =>  2,
             ],
             
@@ -285,7 +307,6 @@ class Admin_Handle{
                 'menu_title'    =>  __( 'Custom Fonts', 'ultraaddons' ),
                 'capability'    => self::$capability,
                 'menu_slug'     => 'edit-tags.php?taxonomy=ultraaddons-custom-fonts',
-                // 'function'      => [__CLASS__, 'header_footer_page'],
                 // 'position'      =>  2,
             ],
             
@@ -299,16 +320,16 @@ class Admin_Handle{
                 'position'      =>  9992,
             ],
             
-            
-            [
-                'parent_slug'   => self::$menu_slug,//$parent_slug,
-                'page_title'    =>  __( 'Help & Others', 'ultraaddons' ),
-                'menu_title'    =>  __( 'Help & Others', 'ultraaddons' ),
-                'capability'    => self::$capability,
-                'menu_slug'     => 'ultraaddons-help-n-others',
-                'function'      => [__CLASS__, 'help_n_others_page'],
-                'position'      =>  9991,
-            ],
+            //has removed @since 1.1.4.0
+            // [
+            //     'parent_slug'   => self::$menu_slug,//$parent_slug,
+            //     'page_title'    =>  __( 'Help & Others', 'ultraaddons' ),
+            //     'menu_title'    =>  __( 'Help & Others', 'ultraaddons' ),
+            //     'capability'    => self::$capability,
+            //     'menu_slug'     => 'ultraaddons-help-n-others',
+            //     'function'      => [__CLASS__, 'help_n_others_page'],
+            //     'position'      =>  9991,
+            // ],
             
             
         ];
@@ -384,16 +405,16 @@ class Admin_Handle{
         include_once self::$footer_file;
     }
     
-    /**
-     * Opening Header Footer for User.
-     */
-    public static function header_footer_page() {
-        include_once self::$header_file;
+    // /**
+    //  * Opening Header Footer for User.
+    //  */
+    // public static function header_footer_page() {
+    //     include_once self::$header_file;
         
-        include ULTRA_ADDONS_DIR . 'admin/pages/header-footer.php';
+    //     include ULTRA_ADDONS_DIR . 'admin/pages/header-footer.php';
         
-        include_once self::$footer_file;
-    }
+    //     include_once self::$footer_file;
+    // }
     
     /**
      * Opening Header Footer for User.
@@ -447,7 +468,8 @@ class Admin_Handle{
     public static function keep_menu_open( $parent_file ){
         global $current_screen;
         //var_dump($current_screen);
-        if( $current_screen->post_type  == 'header_footer' ) return self::$menu_slug;//'ultraaddons-elementor-lite'; 
+        $hf_post_type =HF_Post::$post_type; //It's actually 'header_footer' \UltraAddons\WP\Header_Footer_Post::$post_type; //It's actually 'header_footer'
+        if( $current_screen->post_type  == HF_Post::$post_type ) return self::$menu_slug;//'ultraaddons-elementor-lite'; 
         if( $current_screen->taxonomy == 'ultraaddons-custom-fonts' ) return self::$menu_slug;//'ultraaddons-elementor-lite';
         
         //Return to default
@@ -466,7 +488,7 @@ class Admin_Handle{
 
         global $current_screen;
 
-        if( $current_screen->post_type  == 'header_footer' ) return 'edit.php?post_type=header_footer';
+        if( $current_screen->post_type  == HF_Post::$post_type ) return 'edit.php?post_type=' . HF_Post::$post_type;
 
         //Return to default
         return $submenu_file;

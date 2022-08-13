@@ -152,7 +152,7 @@ class WordPress_Plugin_Stats extends Base{
         $this->add_control(
             'plugin_slug',
                 [
-                    'label'         => esc_html__( 'Heading', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Plugin Slug', 'ultraaddons' ),
                     'type'          => Controls_Manager::TEXT,
                     'placeholder'   => __( 'Your plugin slug. eg: ultraaddons-elementor-lite', 'ultraaddons' ),
                     'default'       => 'ultraaddons-elementor-lite',

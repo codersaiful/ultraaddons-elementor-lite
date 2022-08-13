@@ -42,7 +42,7 @@ body.ultraaddons-footer-css #site-footer
     height: 0;
 }
 
-.ultraaddons-container {
+/* .ultraaddons-container {
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
@@ -51,8 +51,8 @@ body.ultraaddons-footer-css #site-footer
 }
 body:not(.elementor-page) .ultraaddons-container{
     margin-top: 100px;    
-}
-
+} */
+/* 
 @media (min-width:576px) {
     body.ultraaddons-wrapper-box .ultraaddons-container {
        max-width: 540px
@@ -76,7 +76,7 @@ body:not(.elementor-page) .ultraaddons-container{
     body.ultraaddons-wrapper-box .ultraaddons-container{
         max-width: 1170px;
     }
-}
+} */
 /*******Header Footer Style END here********/
 
 /*******************************
@@ -419,7 +419,7 @@ ul.wpuf-form li .wpuf-fields .wpuf-name-field-wrap.format-first-last .wpuf-name-
 .ua-video-btn-wrap{
     display: flex;
 }
-.ua-video-btn {
+.elementor-widget-ultraaddons-video-popup .ua-video-btn {
     display: flex;
     justify-content: center;
     align-content: center;
@@ -428,4 +428,7 @@ ul.wpuf-form li .wpuf-fields .wpuf-name-field-wrap.format-first-last .wpuf-name-
     background: #db0c0c;
     color: #fff;
     cursor: pointer;
+  }
+  .elementor-widget-ultraaddons-video-popup .ua-video-btn:hover{
+      background-color: #21272c;
   }

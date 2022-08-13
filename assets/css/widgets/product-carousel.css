@@ -156,12 +156,13 @@ font-size: 20px;
     height: 4rem;
     margin: 0.5rem;
 }
-.ua-pc .ua-pc button.slider-nav{
-    background-color: transparent;
-    outline: none;
-}
+
 .ua-product-title {
     margin: 0;
+}
+.ua-element-product-carousel .ua-pc button.slider-nav{
+    background-color:transparent !important;
+    outline: none;
 }
 @keyframes bounceIn {
     from,

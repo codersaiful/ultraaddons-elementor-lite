@@ -249,7 +249,7 @@ class Product_Accordion extends Base{
                 ]
             );
 
-            $repeater->add_control(
+           /*  $repeater->add_control(
                 'ua_img_accordion_enable_pupup',
                 [
                     'label'         => esc_html__( 'Enable Popup', 'ultraaddons' ),
@@ -260,9 +260,9 @@ class Product_Accordion extends Base{
                     'default'       => '',
                     'separator'     => 'before',
                 ]
-            );
+            ); */
 
-            $repeater->add_control(
+           /*  $repeater->add_control(
                 'ua_img_accordion_pup_up_icons',
                 [
                     'label'             => esc_html__('Popup Icon', 'ultraaddons' ),
@@ -277,7 +277,7 @@ class Product_Accordion extends Base{
                         'ua_img_accordion_enable_pupup' => 'yes'
                     ]
                 ]
-            );
+            ); */
 
             $repeater->add_control(
                 'ua_img_accordion_enable_project_link',
@@ -1164,7 +1164,7 @@ class Product_Accordion extends Base{
                     <input type="radio" name="ua_id_<?php echo esc_attr($this->get_id()); ?>" id="ua_id_<?php echo esc_attr($this->get_id()) .'_'. $key; ?>" class="ultraaddons-single-product-accordion--input" <?php echo esc_attr( $item['ua_img_accordion_active'] == 'yes' ? 'checked' : '' ); ?> hidden>
                     <label for="ua_id_<?php echo esc_attr($this->get_id()) .'_'. $key; ?>" class="ultraaddons-single-product-accordion ua-product-accordion-item" style="background-image: url(<?php echo esc_url( $bg_link ); ?>)">
                         <span class="ultraaddons-accordion-content">
-                        <?php if($item['ua_img_accordion_enable_pupup'] == 'yes' || $item['ua_img_accordion_enable_project_link'] == 'yes') {
+                        <?php if( $item['ua_img_accordion_enable_project_link'] == 'yes') {
 
                             if (!empty($item['ua_img_accordion_project_link']['url'])) {
 
@@ -1181,7 +1181,8 @@ class Product_Accordion extends Base{
 
                             ?>
                             <span class="ultraaddons-icon-wrapper ua-product-accordion-actions">
-                            <?php if($item['ua_img_accordion_enable_pupup'] == 'yes') { ?>
+                            <?php 
+                            /* if($item['ua_img_accordion_enable_pupup'] == 'yes') { ?>
                                     <a href="<?php echo esc_url($item['ua_img_accordion_bg']['url']); ?>" class="icon-outline circle" data-elementor-open-lightbox="yes">
                                     <?php
 
@@ -1196,10 +1197,10 @@ class Product_Accordion extends Base{
                                             ?>
                                             <i class="<?php echo esc_attr($item['ua_img_accordion_pup_up_icon']); ?>" aria-hidden="true"></i>
                                             <?php
-                                        }
+                                        } </a>*/
                                     ?>
-                                    </a>
-                            <?php } ?>
+                                    
+                            <?php //} ?>
                             <?php if($item['ua_img_accordion_enable_project_link'] == 'yes') {
                                     if ( ! empty( $item['ua_img_accordion_project_link']['url'] ) ) {
                                         $this->add_link_attributes( 'button-2' . $key, $item['ua_img_accordion_project_link'] );

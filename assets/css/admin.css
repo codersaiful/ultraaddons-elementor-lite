@@ -298,6 +298,7 @@ h2.ua-item-name {
 
 .category-list ul.widget-free-pro-list {
     margin-right: 20px;
+    display: none; /* All Widget has transferred to Free, So we hide this part */
 }
 
 .category-list ul>li:hover,.category-list ul>li.active {
@@ -543,6 +544,7 @@ body.wp-admin pre.xdebug-var-dump {
     color: #fff;
     border: none;
 }
+
 
 section.welcome-banner {
     background-repeat: no-repeat;
@@ -1098,7 +1100,10 @@ li#toplevel_page_ultraaddons-elementor-lite.wp-has-submenu.wp-has-current-submen
     color: white !important;
 }
 li#toplevel_page_ultraaddons-elementor-lite.wp-has-submenu.wp-has-current-submenu.wp-menu-open ul li.current a {
-    background: #00000011;
+    background: #00000096;
+}
+li#toplevel_page_ultraaddons-elementor-lite li.wp-first-item {
+    display: none;
 }
 
 

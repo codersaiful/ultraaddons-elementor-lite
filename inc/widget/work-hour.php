@@ -141,7 +141,7 @@ class Work_Hour extends Base{
 				'type'      => Controls_Manager::COLOR,
 				'default'=>'#ddd',
 				'selectors' => [
-						'{{WRAPPER}} {{CURRENT_ITEM}}.ua-work-hours-row' => 'background: {{VALUE}};',
+						'{{WRAPPER}} {{CURRENT_ITEM}}.ua-work-hours-row.highlight' => 'background: {{VALUE}} !important;',
 				],
 			]
         );
@@ -385,6 +385,15 @@ class Work_Hour extends Base{
                 'label'     => esc_html__( 'Box', 'ultraaddons' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
             ]
+        );
+		$this->add_control(
+			'wh_box_bg', [
+				'label' => __( 'Box background Color', 'ultraaddons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .ua-work-hours' => 'background-color: {{VALUE}};',
+				],
+			]
         );
 		$this->add_responsive_control(
 			'_ua_wh_box_radius',

@@ -343,6 +343,18 @@ class Product_Carousel extends Base{
 				'raw' => __( '<h2 class="ua-inner-text">Indicators Settings</h2>', 'ultraaddons' ),
 			]
 		);
+		
+		$this->add_control(
+			'_slider_indicator',
+			[
+				'label' => __( 'Indicators', 'ultraaddons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'ultraaddons' ),
+				'label_off' => __( 'No', 'ultraaddons' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		);
 		$this->add_control(
 			'_slider_indicator_shape',
 			[
@@ -354,17 +366,6 @@ class Product_Carousel extends Base{
 					'slider-indicators-square' => 'Square'
 				],
 				'default' => 'default',
-			]
-		);
-		$this->add_control(
-			'_slider_indicator',
-			[
-				'label' => __( 'Indicators', 'ultraaddons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
-				'return_value' => 'yes',
-				'default' => 'no',
 			]
 		);
 		$this->add_control(

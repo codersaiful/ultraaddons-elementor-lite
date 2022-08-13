@@ -1,6 +1,11 @@
 <?php
 namespace UltraAddons\Core;
 
+use UltraAddons\WP\Header_Footer_Post as HF_Post;
+use UltraAddons\Classes\Header_Footer_Render as HF_Render;
+
+use WP_Query;
+
 defined( 'ABSPATH' ) || die();
 
 /**
@@ -22,6 +27,26 @@ class Header_Footer {
      */
     public static $key = 'ultraaddons_header_footer';
     
+    public static $settings = null;
+    /**
+	 * Current page type
+	 *
+	 * @since  1.0.0
+	 *
+	 * @var $current_page_type
+	 */
+	private static $current_page_type = null;
+
+    /**
+	 * CUrrent page data
+	 *
+	 * @since  1.0.0
+	 *
+	 * @var $current_page_data
+	 */
+	private static $current_page_data = array();
+
+
     /**
      * Default data for header id, and footer id.
      *
@@ -37,7 +62,37 @@ class Header_Footer {
     protected static $body_class = [];
 
 
+    
     public static function init() {
+
+        if( is_admin() ) return;
+        
+        $heder_footer = get_option( self::$key );
+        
+        if( empty( $heder_footer ) ){
+            HF_Post::update_option();
+            $heder_footer = get_option( self::$key );
+        }
+        
+        if( empty( $heder_footer ) || ! is_array( $heder_footer ) ) return;
+        HF_Render::init($heder_footer);
+        
+        
+
+        // $loc = array_filter($heder_footer,function($item){
+        //     // var_dump($item['position']);
+        //     return $item['position']=='header';
+        // });
+
+        // var_dump($locs,$heder_footer);
+        // self::$settings = $heder_footer;
+        // var_dump(self::get_current_page_type());
+        
+        // add_action( 'wp_enqueue_scripts', [ __CLASS__, 'enqueue_scripts' ] );
+        return;
+        // var_dump($heder_footer); 
+
+        
         $type = self::get_type();
         self::$body_class[] = 'ultraaddons-wrapper-' . self::get_wrapper();
         
@@ -67,6 +122,70 @@ class Header_Footer {
         
     }
     
+    
+
+    public static function enqueue_scripts(){
+        
+        
+        $header_id = 231;
+        if ( class_exists( '\Elementor\Core\Files\CSS\Post' ) ) {
+            $css_file = new \Elementor\Core\Files\CSS\Post( $header_id );
+        } elseif ( class_exists( '\Elementor\Post_CSS_File' ) ) {
+            $css_file = new \Elementor\Post_CSS_File( $header_id );
+        }
+
+        $css_file->enqueue();
+    }
+
+
+    /**
+	 * Get current page type
+	 *
+	 * @since  1.0.0
+	 *
+	 * @return string Page Type.
+	 */
+	public static function get_current_page_type() {
+		if ( null === self::$current_page_type ) {
+			$page_type  = '';
+			$current_id = false;
+
+			if ( is_404() ) {
+				$page_type = 'is_404';
+			} elseif ( is_search() ) {
+				$page_type = 'is_search';
+			} elseif ( is_archive() ) {
+				$page_type = 'is_archive';
+
+				if ( is_category() || is_tag() || is_tax() ) {
+					$page_type = 'is_tax';
+				} elseif ( is_date() ) {
+					$page_type = 'is_date';
+				} elseif ( is_author() ) {
+					$page_type = 'is_author';
+				} elseif ( function_exists( 'is_shop' ) && is_shop() ) {
+					$page_type = 'is_woo_shop_page';
+				}
+			} elseif ( is_home() ) {
+				$page_type = 'is_home';
+			} elseif ( is_front_page() ) {
+				$page_type  = 'is_front_page';
+				$current_id = get_the_id();
+			} elseif ( is_singular() ) {
+				$page_type  = 'is_singular';
+				$current_id = get_the_id();
+			} else {
+				$current_id = get_the_id();
+			}
+
+			self::$current_page_data['ID'] = $current_id;
+			self::$current_page_type       = $page_type;
+		}
+
+		return self::$current_page_type;
+	}
+
+
     public static function add_footer() {
         echo ultraaddons_elementor_display_content( self::get_footer_id() );
     }

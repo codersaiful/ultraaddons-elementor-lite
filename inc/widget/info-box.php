@@ -1233,7 +1233,6 @@ class Info_Box extends Base {
         if( $button_show ){
             $this->button_render();
         }
-        
         ?>
     </<?php echo $wrapper_tag; ?>>
     <?php

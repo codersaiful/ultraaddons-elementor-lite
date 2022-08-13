@@ -43,6 +43,7 @@ class Post_Title extends Base{
         
         //For General Section
         $this->content_general_controls();
+        $this->style_general_controls();
 
        
     }
@@ -122,6 +123,20 @@ class Post_Title extends Base{
                     'prefix_class' => 'elementor-align-',
                 ]
         );
+        
+        
+        $this->end_controls_section();
+    }
+
+    protected function style_general_controls() {
+        $this->start_controls_section(
+            'general_style',
+            [
+                'label'     => esc_html__( 'Style', 'ultraaddons' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        
         
         $this->add_control(
             'heading_color',

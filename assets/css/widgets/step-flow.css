@@ -53,14 +53,14 @@
 .ua-step-arrow, .ua-step-arrow:after {
     position: absolute;
     display: inline-block;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #758e9b;
 }
 .ua-step-arrow:after {
     top: -2px;
     right: 5px;
     width: 12px;
     height: 12px;
-    border-right: 1px solid #ddd;
+    border-right: 1px solid #758e9b;
     color: #ddd;
     content: "";
     -webkit-transform: rotate(45deg) translateY(-50%);

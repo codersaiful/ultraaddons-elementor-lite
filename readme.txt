@@ -1,14 +1,14 @@
-=== UltraAddons Elementor Lite (Header & Footer Builder, Menu Builder, Cart Icon, Shortcode) ===
+=== UltraAddons ===
 
-Plugin Name: UltraAddons Elementor Lite
+Plugin Name: Addons - UltraAddons Elementor Lite
 Author: codersaiful
 Author URI: https://ultraaddons.com/
 Tags: addons, elementor addons, ultraaddons, page builder, page builder addons, Editor, Web Page Builder
 Contributors: codersaiful, codeastrology, ultraaddons
 Requires at least: 4.0.0
-Tested up to: 5.9
+Tested up to: 6.0.1
 Requires PHP: 5.6
-Stable tag: 1.1.0
+Stable tag: 1.1.4
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -19,11 +19,14 @@ Elementor Addons Plugin. Different type Unique Element, Pre-defined block, Custo
 *UltraAddons Elementor Lite* is a Elementor Addons Plugin and it has some Unique features and Ready made Widget. By using this plugin, You able to create a Full web site just by drag and drop.
 Build your desired page just few click. Easy to use and use able for any theme and plugin. Available many filter.
 
+**UltraAddons Elementor Lite (Header & Footer Builder, Menu Builder, Cart Icon, Shortcode)**
+
 Making custom header and custom footer. WooCommerce minicart anywhere. Elementor Template or Page or Section showing to anywhere of site.
 Elementor page/section show in Sidebar area. using WordPress widget.
 
 ***Features***
-
+* 85+ Full Page Template
+* 500+ Ready Block
 * Custom Header for whole site.
 * Custom Footer for whole site.
 * Elementor Page/Section/Template display in anywhere using shortcode. sample shortcode is `[UltraAddons_Template id='123']`. Here 123 will be post ID of the Elementor Template.
@@ -37,44 +40,59 @@ Elementor page/section show in Sidebar area. using WordPress widget.
 * Slider with Any content. Dynamic content.
 * Slider with Pre-build Template of Elementor
 
-***200+ READY BLOCKS AND 100+ READY PAGES***
+***500+ READY BLOCKS AND 85+ READY PAGES***
 Use our pre-made section and templates to create your site very quickly with stunning looks.
 
 ***Demo***
 
-- [**Slider**](https://ultraaddons.com/widget/slider/) – Powerful Slider.
-- [**Advance Heading**](https://ultraaddons.com/widget/advance_heading/) – Advance Heading.
+- [**Advance Heading**](https://ultraaddons.com/widget/advance-heading/) – Advance Heading.
 - [**Button**](https://ultraaddons.com/widget/button/) – Advance Powerful Button.
 - [**Counter**](https://ultraaddons.com/widget/counter/) – Awesome animated counter widget.
 - [**Count Down Timer**](https://ultraaddons.com/widget/count_down_timer/) – Count Down Timer.
-- [**Info Box**](https://ultraaddons.com/widget/info_box/) – Info Box for making different type service, info, content items group box.
-- [**Advance List Item**](https://ultraaddons.com/widget/advance_list/) – Advance List Item for making different type service, info, content items group box.
-- [**Navigation Menu**](https://ultraaddons.com/widget/Menu/) – Create your custom navigation menu.
-- [**Search**](https://ultraaddons.com/widget/Search/) – Show search widget anywhere in your elementor page.
-- [**Price Table**](https://ultraaddons.com/widget/price_table/) – Show custom price table.
-- [**Icon Box**](https://ultraaddons.com/widget/icon_box/) – Show Icon Box.
-- [**Testimonial Slider**](https://ultraaddons.com/widget/testimonial_slider/) – Show users feedback in beautiful animated way.
-- [**Testimonial Box**](https://ultraaddons.com/widget/testimonial_box/) – Show users feedback in beautiful way.
-- [**Team Box**](https://ultraaddons.com/widget/team_box/) – Display your team members in a beautiful way.
-- [**Gallery Box**](https://ultraaddons.com/widget/gallery_box/) – Display your images in a beautiful way.
-- [**Recent Blog**](https://ultraaddons.com/widget/recent_blog/) – Display your blog posts in a beautiful way.
-- [**Skill Bar**](https://ultraaddons.com/widget/skill_bar/) – Display your skills in a dynamic way.
-- [**Contact Form 7**](https://ultraaddons.com/widget/contact_form7/) – Show your contact form 7 forms with lots of customization options.
+- [**Step Flow**](https://ultraaddons.com/widget/step-flow/) – Info Box for making different type service, info, content items group box.
+- [**Hotspot**](https://ultraaddons.com/widget/hotspot/) – Focus your products position by hotspot.
+- [**Icon Box**](https://ultraaddons.com/widget/icon-box/) – Show Icon Box.
+- [**Testimonial Box**](https://ultraaddons.com/widget/testimonial-box/) – Show users feedback in beautiful way.
+- [**Team Box**](https://ultraaddons.com/widget/team-box/) – Display your team members in a beautiful way.
+- [**Card**](https://ultraaddons.com/widget/card/) – Display profile or product in card view.
+- [**Skill Chart**](https://ultraaddons.com/widget/skill-chart/) – Display your skill set by chart.
+- [**Post Timeline**](https://ultraaddons.com/widget/post-timeline/) – Post view in timeline.
+- [**Work Hour**](https://ultraaddons.com/widget/work-hour/) – Display work hour or offical hour by this widget
+- [**News Ticker**](https://ultraaddons.com/widget/news-ticker/) – Display news or urgent notice by this widget
+- [**Moving Letter**](https://ultraaddons.com/widget/moving-letters/) – Display 15 type animation text by this widget 
+- [**Dual Color Heading**](https://ultraaddons.com/widget/dual-color-heading/) – Make attractive heading for beautiful website
+- [**Timeline**](https://ultraaddons.com/widget/timeline/) – Represent your company or personal data by Timeline.
+- [**Accordion**](https://ultraaddons.com/widget/accordion/) – Make faq or information on easyway by accordion .
+- [**Animated Headline**](https://ultraaddons.com/widget/animated-headline/) – Make beautiful and attractive heading by animated headline.
+
+-[**View All Demos**](https://ultraaddons.com/widgets/)
+
 
 ***WooCommerce***
-- [**Mini Cart**](https://ultraaddons.com/widget/cart/) – Use the mini cart widget to boost your conversion rate.
+- [**Product Categories**](https://ultraaddons.com/widget/product-categories/) – Show WooCommerce Product Catrgories
+- [**Product Grid**](https://ultraaddons.com/widget/product-grid/) – Display your store products in list or grid view using our elementor widget.
 - [**Product Table**](https://ultraaddons.com/widget/product_table/) – Use our product table widget to show your store products in a new way.
-- [**WooCommerce Products**](https://ultraaddons.com/widget/wc_products/) – Display your store products in list or grid view using our elementor widget.
-- [**Offer Card**](https://ultraaddons.com/widget/offer_card/) – Represent your products in a creative way.
+- [**WooCommerce Products**](https://ultraaddons.com/widget/wc_products/)
+- [**WooCommerce Products Carousel**](https://ultraaddons.com/widget/product-carousel/) - Display product on carousel
+- [**WooCommerce Products Flip**](https://ultraaddons.com/widget/product-flip/) - Display product on Flip box
 
-***Pro Version also available***
-- [**WooCommerce Categories**](https://ultraaddons.com/widget/wc_categories/) – List your store categories in awesome way.
-- [**Animated Header**](https://ultraaddons.com/widget/animated_header/) – Animated heading.
-- [**Product Slider**](https://ultraaddons.com/widget/product_slider/) – Product Slider
-- [**Info Boards**](https://ultraaddons.com/widget/info_boards/) – Info Boards
-- [**WordPress Plugin Stats**](https://ultraaddons.com/widget/wordpress_plugin_stats/) – Show any WordPress plugins stats in anywhere in your site.
+***Forms***
+- [**Contact Form 7**](https://ultraaddons.com/widget/contact_form7/) – Show your contact form 7 forms with lots of customization options.
+- [**WPForms**](https://ultraaddons.com/widget/wpforms/) – Show your WPForms forms with lots of customization options.
+- [**Formidable Forms**](https://ultraaddons.com/widget/formidable-forms/) – Show your Formidable forms with lots of customization options.
+- [**Caldera Forms**](https://ultraaddons.com/widget/caldera-forms/) – Show your forms with Caldera forms.
 
-***FREE and PRO EXTENSIONS are also available***
+***Charts***
+- [**Bar Chart**](https://ultraaddons.com/widget/bar-chart/) – Display statics on Bar chart.
+- [**Line Chart**](https://ultraaddons.com/widget/line-chart/) – Show statics on Line chart.
+- [**Pie Chart**](https://ultraaddons.com/widget/pie-chart/) – Show statics on Pie chart
+- [**Polar Chart**](https://ultraaddons.com/widget/polar-chart/) – Show statics on nice Polar chart
+- [**Doughnut Chart**](https://ultraaddons.com/widget/doughnut-chart/) – Show statics on nice Doughnut chart
+- [**Mix Chart**](https://ultraaddons.com/widget/mixed-chart/) – Show statics on nice Mix chart
+- [**Radar Chart**](https://ultraaddons.com/widget/radar-chart/) – Display statics on Radar chart
+
+
+***EXTENSIONS***
 - [**Wrapper Link**](https://ultraaddons.com/extensions/wrapper-link/) - Using this wrapper link extension you can link any elements.
 - [**Hover Effect**](https://ultraaddons.com/extensions/hover-effect/) - Using this extension you can easily add hover effect on any any elements.
 - [**CSS Transform (Pro)**](https://ultraaddons.com/extensions/css-transform/) - Using this extension you can easily add css transform on any any elements.
@@ -121,17 +139,45 @@ Yes, there are lot of filter and action hook available here. You can customize f
 == Screenshots ==
 
 1. UltraAddons in Dashboard
-2. Info Box
-3. Count Down timer
-4. Count down timer with background image
-5. Different type button with our Button Widget.
-6. Advance List Items with different design
-7. Widgets in Elementor Screen Area
-8. Info Box widget Editing Area
-9. Hover Effect and Wrapper link for All Widget
+2. UltraAddons in Dashboard
+3. Card
+4. WooCommerce Grid
+5. WooCommerce Grid
+6. WooCommerce Grid
+7. WooCommerce Category
+8. Working Hour
+10. Step Flow
+11. WPForms
+12. Bar Chart
+13. Line Chart
+14. Pie Chart
+15. Mix Chart
+16. Polar Chart
+17. Radar Chart
+18. Product Carousel
+19. Hotspot
 
 
 == Change log ==
+
+= 1.1.4 =
+* Template/Block display shortcodes `[UltraAddons_Template id='1234']`,`[UA_Template id='1234']` and `[ULTRAADDONS_TEMPLATE id='1234']`.
+* Dashboard Menu Fix and Shortcode_Template part has transerred to Setting menu.
+* Counter_Box has removed
+* Flip_Box has been removed
+
+= 1.1.3 =
+* All widget are free Available
+* Code Optimize
+* Bug Fixed
+
+= 1.1.1 =
+
+* [Added]: WooCommerce Widgets
+* [Added]: Chrats 
+* [Added]: New Forms
+* [Fixed]: Fix some bugs
+
 
 = 1.0.9 =
 

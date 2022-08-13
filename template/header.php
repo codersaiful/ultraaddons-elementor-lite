@@ -1,4 +1,7 @@
 <?php
+use \UltraAddons\Core\Header_Footer;
+use \UltraAddons\Classes\Header_Footer_Render as HF_Render;
+
 /**
  * The header for our theme
  *
@@ -8,7 +11,8 @@
  *
  * @package Medilac
  */
-$header_class = 'ultaaddons-elementor-header';
+$header_class   = 'ua-header';
+$body_class     = 'ua-body';
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -20,7 +24,7 @@ $header_class = 'ultaaddons-elementor-header';
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class( $body_class ); ?>>
 <?php wp_body_open(); ?>
 
     <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'medilac' ); ?></a>
@@ -32,16 +36,7 @@ $header_class = 'ultaaddons-elementor-header';
      * @HOOK for at Before Header
      */
     do_action( 'ultraaddons_before_header' );
-    
-    ?>
-    <header id="masthead" class="site-header <?php echo esc_attr( $header_class ); ?>">
-        
-        <?php
-        echo ultraaddons_elementor_display_content( UltraAddons\Core\Header_Footer::get_header_id() );
-        ?>
-    </header><!-- #masthead -->
-    <?php
-    
+    echo ultraaddons_elementor_display_content( HF_Render::get_header_id() );
     /**
      * Insert Content or Do something at the Before Header of Site.
      * 

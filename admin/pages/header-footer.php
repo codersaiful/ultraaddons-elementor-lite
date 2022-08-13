@@ -2,6 +2,7 @@
 
 use UltraAddons\Classes\Template_List;
 use UltraAddons\Core\Header_Footer;
+use UltraAddons\WP\Header_Footer_Post as HF_Post;
 
 defined( 'ABSPATH' ) || die();
 
@@ -16,7 +17,7 @@ $key = Header_Footer::$key;
 
 
 if( $form_datas && $key ){
-    update_option( $key, $form_datas );
+    // update_option( $key, $form_datas );
 }
 $current_data = Header_Footer::get_data();
 $type = isset( $current_data['type'] ) ? $current_data['type'] : '';
@@ -27,7 +28,7 @@ $templates = $template_obj->get_templates();
 
 
 
-$add_new_elementor_template = admin_url( 'post-new.php?post_type=header_footer' );
+$add_new_elementor_template = admin_url( 'post-new.php?post_type=' . HF_Post::$post_type );
 ?>
 
 <div class="ultraaddons-section ua-option-wrapper">

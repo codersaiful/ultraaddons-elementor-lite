@@ -44,3 +44,6 @@ a.ua-info-box-wrapper {
 .ua-info-box-icon .elementor-icon {
     padding: 0.5em;
 }
+.elementor-widget-ultraaddons-icon-box a.ua-info-box-wrapper {
+    text-decoration: none;
+}

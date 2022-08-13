@@ -830,7 +830,7 @@ class Advance_Pricing_Table extends Base{
 				],
 				'separator'=>'after',
 				'selectors'   => [
-					'{{WRAPPER}} .amount' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .plan .price' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1254,7 +1254,7 @@ class Advance_Pricing_Table extends Base{
             Group_Control_Typography::get_type(),
             [
 				'label'     => esc_html__( 'Discount Typography', 'ultraaddons' ),
-                'name' => 'discount_typography',
+                'name' => 'discount_percent_typography',
                 'selector' => '{{WRAPPER}} .discount-percent',
             ]
         );
@@ -1482,15 +1482,17 @@ class Advance_Pricing_Table extends Base{
 								?>
 								<span class="dollar"><?php echo $currency_symbol;?></span>
 								<span class="amount"><s><?php echo $list_price; ?></s></span>
-
+								<?php
+								if(!empty($selling_price)):
+								?>
 								<span class="dollar"><?php echo $currency_symbol;?></span>
 								<span class="discount-amount"><?php echo $selling_price; ?></span>
+								<?php endif;?>
 								<?php }else{?>
-								<span class="dollar"><?php echo $currency_symbol;?></span>
+									<span class="dollar"><?php echo $currency_symbol;?></span>
 								<span class="amount"><?php echo $item['list_price'];?></span>
 								<?php }?>
-							
-								<?php if( !empty($item['list_period']) ):?>
+							   <?php if( !empty($item['list_period']) ):?>
 								<span class="slash">/</span>
 								<?php endif;?>
 								<span class="month"><?php echo $item['list_period'];?></span>

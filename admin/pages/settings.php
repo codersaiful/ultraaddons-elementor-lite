@@ -84,4 +84,31 @@ $category_slug = Settings::get_widget_category();
             </div>
         </div>
     </div>
+    <div class="ua-section-inside">
+        
+        <div class="ua-sectioon-content">
+            <div class="ua-content-inside">
+
+            <h3 class="ua-section-title"><?php echo esc_html__( 'Other Features', 'ultraaddons' ); ?></h3>
+                    <div class="ua-extra-wrappper">
+
+                        <div class="ua-content-section">
+                            <div class="ua-content-inside">
+                                <div class="ua-content-info ua-shortcode-content">
+                                    <h3><?php echo esc_html__( 'Shortcode', 'ultraaddons' ); ?> <small><?php echo esc_html( "[UltraAddons_Template id='template_id']" ); ?></small></h3>
+                                    <p>UltraAddons provide a shortcode <code>[UltraAddons_Template id='123']</code>. Here 
+                                        123 is a POST_ID. Use any Elementor page/Template's POST_ID as id. Use Anywhere.<br>
+                                        Suppose: you want to show any Elementor Item/Widget/Template in widget, or in any WordPress post or in Guttenberg block. 
+                                        Just use this shortcode.<br>
+                                        <code>`[UltraAddons_Template id='1234']`,`[UA_Template id='1234']` and `[ULTRAADDONS_TEMPLATE id='1234']`</code>
+                                        <br>
+                                        <code>Attribute: `id` or `template_id` or `post_id`</code>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- /.ua-form-wrappper -->
+            </div>
+        </div>
+    </div>
 </div>

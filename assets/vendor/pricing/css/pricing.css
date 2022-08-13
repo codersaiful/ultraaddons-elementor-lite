@@ -251,3 +251,10 @@ h2.plan-title {
     border-radius: 59%;
 }
 .elementor-widget-ultraaddons-advance-pricing-table .elementor-widget-container{min-height: 1px;}
+.ua-element-advance-pricing-table .plan {
+  transition: 0.3s ease-in-out;
+
+}
+.ua-element-advance-pricing-table .plan:hover{
+  transform: scale(1.03);
+}

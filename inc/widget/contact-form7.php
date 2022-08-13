@@ -453,6 +453,36 @@ class Contact_Form7 extends Base{
                                 ],
                         ]
                 );
+               
+
+                $this->add_control(
+			'_cf7_input_width',
+			[
+				'label' => esc_html__( 'Input Width', 'ultraaddons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 5,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => '%',
+					'size' => 50,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .ua-form.cf7-forms label' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpcf7-form-control-wrap' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpcf7-form-control' => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
 
                 $this->end_controls_section();
             
@@ -488,6 +518,7 @@ class Contact_Form7 extends Base{
                                         ],
                                         'center' => [
                                                 'title' => __( 'Center', 'ultraaddons' ),
+                                                'icon' => 'eicon-text-align-center',
                                         ],
                                         'right' => [
                                                 'title' => __( 'Right', 'ultraaddons' ),
@@ -870,7 +901,7 @@ class Contact_Form7 extends Base{
                 'selectors'   => [
                     '{{WRAPPER}} .ua-form.cf7-forms label' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
-                                'separator'=>'after',
+                'separator'=>'after',
             ]
             );
                 $this->end_controls_section();

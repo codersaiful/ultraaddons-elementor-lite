@@ -1122,11 +1122,11 @@ class Accordion extends Base{
                     }
                     $link_attributes = $this->get_render_attribute_string( '_ua_accordions_link' );
 
-                    $is_external = $item['_ua_accordions_link']['is_external'];
-                    $is_nofollow = $item['_ua_accordions_link']['nofollow'];
-
+                    $is_external = !empty($item['_ua_accordions_link']['is_external']);
+                    $is_nofollow = !empty($item['_ua_accordions_link']['nofollow']);
+                    
                     $get_target= $is_external=='on' ? 'target="_blank"' : ''; 
-                    $get_nofollow= $is_external=='on' ? 'rel="nofollow"' : ''; 
+                    $get_nofollow= $is_nofollow=='on' ? 'rel="nofollow"' : ''; 
 
                     $title_active_class = '';
                     $content_active_class = '';

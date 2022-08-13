@@ -400,8 +400,8 @@ class Step_Flow extends Base{
 				'label' => __( 'Direction Color', 'ultraaddons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .ua-step-arrow, .ua-step-arrow:after' => 'border-top: 1px solid {{VALUE}};',
-					'{{WRAPPER}} .ua-step-arrow:after' => 'border-right: 1px solid {{VALUE}};',
+					'{{WRAPPER}} .ua-step-arrow:after' => 'border-top: 1px solid {{VALUE}}; border-right: 1px solid {{VALUE}}; ',
+					'{{WRAPPER}} .ua-step-arrow' => 'border-top: 1px solid {{VALUE}};',
 				],
 			]
         );
