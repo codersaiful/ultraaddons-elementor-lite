@@ -9,6 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class Header_Footer_Render {
     public static $heder_footer_data = [];
     public static $template_loc = [];
+    public static $pagewise_template = [];
     public static $template_datas = null;
     
     /**
@@ -43,28 +44,38 @@ class Header_Footer_Render {
         }
 
         if(empty($locs)) return;
-        // var_dump($locs);
-        // var_dump($wasys,$locs,self::$heder_footer_data);
-        // var_dump(self::$heder_footer_data);
+
         
-        add_action( 'get_header', [__CLASS__, 'get_header'], 10, 2 );
-
-        // add_action( 'wp_body_open', [__CLASS__, 'add_header'] );
-        // add_filter( 'body_class', [__CLASS__, 'header_css_body_class'] );
-
-        add_action( 'get_footer', [__CLASS__, 'get_footer'], 10, 2 );
-
-        // add_action( 'wp_footer', [__CLASS__, 'add_footer'] );
-        // add_filter( 'body_class', [__CLASS__, 'header_css_body_class'] );
-
+        $header = $locs['header'] ?? false;
+        $before_header = $locs['before_header'] ?? false;
+        $footer = $locs['footer'] ?? false;
+        $after_footer = $locs['after_footer'] ?? false;
+        
+        if( $header ){
+            add_action( 'get_header', [__CLASS__, 'get_header'], 10, 2 );
+        }
+        
+        if( $before_header ){
+            add_action( 'wp_body_open', [__CLASS__, 'add_header'] );
+            add_filter( 'body_class', [__CLASS__, 'header_css_body_class'] );
+        }
+        // var_dump($footer);
+        if( $footer ){
+            add_action( 'get_footer', [__CLASS__, 'get_footer'], 10, 2 );
+        }
+        
+        if( $after_footer ){
+            add_action( 'wp_footer', [__CLASS__, 'add_footer'] );
+            add_filter( 'body_class', [__CLASS__, 'header_css_body_class'] );
+        }
 
         //Totally complete, I added all templates css file
         add_action( 'wp_enqueue_scripts', [ __CLASS__, 'enqueue_scripts' ] );
     }
 
     public static function add_header(){
-        
-        echo ultraaddons_elementor_display_content( self::get_header_id() );
+        self::conditional_set_template_data();
+        echo ultraaddons_elementor_display_content( self::get_before_header_id() );
     }
     public static function header_css_body_class( $body_class ){
         $body_class[] = 'ua-header-type-css';
@@ -72,8 +83,8 @@ class Header_Footer_Render {
     }
 
     public static function add_footer(){
-        
-        echo ultraaddons_elementor_display_content( self::get_header_id() );
+        self::conditional_set_template_data();
+        echo ultraaddons_elementor_display_content( self::get_after_footer_id() );
     }
     public static function footer_css_body_class( $body_class ){
         $body_class[] = 'ua-footer-type-css';
@@ -82,10 +93,8 @@ class Header_Footer_Render {
 
     public static function get_header($name, $args){
 
-        if( ! self::$template_datas ){
-            self::set_template_data();
-        }
-        // var_dump(self::get_header_id());
+        self::conditional_set_template_data();
+
         if(self::get_header_id()){
             self::set_template('header');
         }
@@ -93,10 +102,8 @@ class Header_Footer_Render {
     }
     public static function get_footer($name, $args){
 
-        if( ! self::$template_datas ){
-            self::set_template_data();
-        }
-        // var_dump(self::get_header_id());
+        self::conditional_set_template_data();
+
         if(self::get_footer_id()){
             self::set_template('footer');
         }
@@ -104,23 +111,39 @@ class Header_Footer_Render {
     }
 
     public static function get_header_id(){
-        if( ! self::$template_datas ){
-            self::set_template_data();
-        }
+        self::conditional_set_template_data();
         
         return self::$template_datas['header_id'] ?? 0;
     }
+    public static function get_before_header_id(){
+        self::conditional_set_template_data();
+        return self::$template_datas['before_header_id'] ?? 0;
+    }
 
     public static function get_footer_id(){
+        
+        self::conditional_set_template_data();
+        return self::$template_datas['footer_id'] ?? 0;
+    }
+    public static function get_after_footer_id(){
+        
+        self::conditional_set_template_data();
+        return self::$template_datas['after_footer_id'] ?? 0;
+    }
+
+    private static function conditional_set_template_data(){
         if( ! self::$template_datas ){
             self::set_template_data();
         }
-        
-        return self::$template_datas['footer_id'] ?? 0;
     }
     private static function set_template_data(){
+
+        /**
+         * It will find and set current page type. It's obviously need for here.
+         * Otherwise it will unable to set $template_datas
+         */
+        self::get_current_page_type();
         
-        // var_dump($page_type,self::$current_page_data,self::$heder_footer_data);
         $pagewise_tem = [];
         foreach( self::$heder_footer_data as $key=>$datas ){
             $position = $datas['position'];
@@ -129,25 +152,44 @@ class Header_Footer_Render {
                 $pagewise_tem[$position][$rule] = $key;
             }
         }
-
-        $page_type = self::get_current_page_type();
-        // var_dump($page_type);
-        $header = $pagewise_tem['header'] ?? [];
-        $entire_header_id = $header['entire_site'] ?? 0;
-        $header_id = $header[$page_type] ?? $entire_header_id;
-
+        self::$pagewise_template = $pagewise_tem;
         
-        $footer = $pagewise_tem['footer'] ?? [];
-        $entire_footer_id = $footer['entire_site'] ?? 0;
-        $footer_id = $footer[$page_type] ?? $entire_footer_id;
-
-        
+                
         return self::$template_datas = [
-            'header_id' => $header_id,
-            'footer_id' => $footer_id,
+            'header_id' => self::get_loc_wise_id( 'header' ),
+            'before_header_id' => self::get_loc_wise_id( 'before_header' ),
+            'footer_id' => self::get_loc_wise_id( 'footer' ),
+            'after_footer_id' => self::get_loc_wise_id( 'after_footer' ),
         ];
     }
 
+    /**
+     * Getting Location(header/footer/before_header/after_footer) wise 
+     * selected Template ID
+     * when page/content will load and specific page.
+     * 
+     * In this method, we will take help from 
+     * Method: self::get_current_page_type();
+     * It's compolsury before this function
+     * 
+     * @param String $location_name it's should be within header/footer/before_header/after_footer etc
+     *
+     * @return void
+     */
+    public static function get_loc_wise_id( $location_name = 'header' ){
+        if(null == self::$current_page_type){
+            self::get_current_page_type();
+        }
+
+        $location_s_sett = self::$pagewise_template[$location_name] ?? false;
+
+        if( ! $location_s_sett ) return false;
+
+        $entire_header_id = $location_s_sett['entire_site'] ?? 0;
+        $location_id = $location_s_sett[self::$current_page_type] ?? $entire_header_id;
+
+        return $location_id;
+    }
     /**
      * Set your template 
      * we can use this method for any kind of template set
@@ -212,6 +254,7 @@ class Header_Footer_Render {
 
     /**
 	 * Get current page type
+     * It's not only get actually It's also for set
 	 *
 	 * @since  1.0.0
 	 *

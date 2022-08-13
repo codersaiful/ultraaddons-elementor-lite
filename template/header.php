@@ -36,15 +36,7 @@ $body_class     = 'ua-body';
      * @HOOK for at Before Header
      */
     do_action( 'ultraaddons_before_header' );
-    
-    ?>
-    <header id="masthead" class="site-header <?php echo esc_attr( $header_class ); ?>">
-        <?php
-        echo ultraaddons_elementor_display_content( HF_Render::get_header_id() );
-        ?>
-    </header><!-- #masthead -->
-    <?php
-    
+    echo ultraaddons_elementor_display_content( HF_Render::get_header_id() );
     /**
      * Insert Content or Do something at the Before Header of Site.
      * 

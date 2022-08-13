@@ -42,7 +42,7 @@ body.ultraaddons-footer-css #site-footer
     height: 0;
 }
 
-.ultraaddons-container {
+/* .ultraaddons-container {
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
@@ -51,8 +51,8 @@ body.ultraaddons-footer-css #site-footer
 }
 body:not(.elementor-page) .ultraaddons-container{
     margin-top: 100px;    
-}
-
+} */
+/* 
 @media (min-width:576px) {
     body.ultraaddons-wrapper-box .ultraaddons-container {
        max-width: 540px
@@ -76,7 +76,7 @@ body:not(.elementor-page) .ultraaddons-container{
     body.ultraaddons-wrapper-box .ultraaddons-container{
         max-width: 1170px;
     }
-}
+} */
 /*******Header Footer Style END here********/
 
 /*******************************
