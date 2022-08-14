@@ -161,6 +161,7 @@ Yes, there are lot of filter and action hook available here. You can customize f
 == Change log ==
 
 = 1.1.4 =
+* CSS Load issue fixed and make it faster and faster.
 * Template/Block display shortcodes `[UltraAddons_Template id='1234']`,`[UA_Template id='1234']` and `[ULTRAADDONS_TEMPLATE id='1234']`.
 * Dashboard Menu Fix and Shortcode_Template part has transerred to Setting menu.
 * Counter_Box has removed
