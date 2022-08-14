@@ -51,6 +51,19 @@ class Header_Footer_Render {
         $footer = $locs['footer'] ?? false;
         $after_footer = $locs['after_footer'] ?? false;
         
+        /**
+         * This is curently off actually
+         * I will enable it later.
+         * It's actually will be use for Canvas
+         * 
+         * Right now, I will opp this option from Admin Panel
+         * 
+         * Pore jokhon chalu korbo, tokhon canvas on offer vittite data khuje niye chalu korbo
+         * 
+         */
+        // add_action( 'wp', [__CLASS__, 'test_func'] );
+        
+        
         if( $header ){
             add_action( 'get_header', [__CLASS__, 'get_header'], 10, 2 );
         }
@@ -73,6 +86,23 @@ class Header_Footer_Render {
         add_action( 'wp_enqueue_scripts', [ __CLASS__, 'enqueue_scripts' ] );
     }
 
+    public static function test_func(){
+        self::conditional_set_template_data();
+        $canvas = get_post_meta(self::get_header_id(),'display-on-canvas-template',true);
+        $canvas = ! empty( $canvas ) ? true : false;
+        
+        if ( $canvas ) {
+            add_action( 'elementor/page_templates/canvas/before_content', [ __CLASS__, 'get_canvas_header' ] );
+        }else{
+            add_action( 'get_header', [__CLASS__, 'get_header'], 10, 2 );
+        }
+        
+    }
+
+    public static function get_canvas_header(){
+        self::conditional_set_template_data();
+        echo ultraaddons_elementor_display_content( self::get_header_id() );
+    }
     public static function add_header(){
         self::conditional_set_template_data();
         echo ultraaddons_elementor_display_content( self::get_before_header_id() );

@@ -330,8 +330,8 @@ class Header_Footer_Post{
 					</td>
 				</tr>
 				
-				
-				<tr class="ua-options-row enable-for-canvas">
+				<!-- asole eta apatoto off kroe rakha hoyeche. emonki kajo o kora hoyeche. saman. header-footer-render.php file a -->
+				<tr  style="display: none !important;" class="ua-options-row enable-for-canvas">
 					<td class="ua-options-row-heading">
 						<label for="display-on-canvas-template">
 							<?php _e( 'Enable Layout for Elementor Canvas Template?', 'ultraaddons' ); ?>
@@ -343,6 +343,7 @@ class Header_Footer_Post{
 					</td>
 				</tr>
 
+				<!-- vabtechi ei jinis ta asole rakhboi na. kono dorkar nei. karon header footer ekhon masthead er baire rakha hocche. -->
 				<tr style="display: none !important;" class="ua-options-row enable-for-canvas">
 					<td class="ua-options-row-heading">
 						<label for="display-on-canvas-template">
