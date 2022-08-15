@@ -32,12 +32,16 @@ class Header_Footer_Render {
 
     
     public static function init( $heder_footer_data ){
+        
+        $heder_footer_data = array_filter($heder_footer_data,function($item){
+            return ! empty( $item );
+        });
         if( ! is_array( $heder_footer_data ) ) return;
+        
         self::$heder_footer_data = $heder_footer_data;
         $locs =[]; // $wasys = 
-        var_dump(self::$heder_footer_data);
         foreach(self::$heder_footer_data as $key=>$eack ){
-            $position = $eack['position'];
+            $position = $eack['position'] ?? false;
             // $way = isset($eack['way']) ? 'css' : 'direct';
             // $wasys[$key]=$way;
             $locs[$position]= $key;
@@ -226,7 +230,7 @@ class Header_Footer_Render {
             $header_id = $location_s_sett['is_tax'] ?? $header_id;
             $header_id = $location_s_sett['is_tax'] ?? $header_id;
         }
-        var_dump(self::$current_page_type,self::is_woocommerce());
+        
         $location_id = $location_s_sett[self::$current_page_type] ?? $header_id;
 
         return $location_id;
