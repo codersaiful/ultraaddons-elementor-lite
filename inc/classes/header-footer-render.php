@@ -35,7 +35,7 @@ class Header_Footer_Render {
         if( ! is_array( $heder_footer_data ) ) return;
         self::$heder_footer_data = $heder_footer_data;
         $locs =[]; // $wasys = 
-        
+        var_dump(self::$heder_footer_data);
         foreach(self::$heder_footer_data as $key=>$eack ){
             $position = $eack['position'];
             // $way = isset($eack['way']) ? 'css' : 'direct';
@@ -215,8 +215,19 @@ class Header_Footer_Render {
 
         if( ! $location_s_sett ) return false;
 
-        $entire_header_id = $location_s_sett['entire_site'] ?? 0;
-        $location_id = $location_s_sett[self::$current_page_type] ?? $entire_header_id;
+        $header_id = $location_s_sett['entire_site'] ?? 0;
+        if( self::is_woocommerce() ){
+            $header_id = $location_s_sett['is_woocommerce'] ?? $header_id;
+            $header_id = $location_s_sett['is_wc_taxonomy'] ?? $header_id;
+            $header_id = $location_s_sett['is_wc_category'] ?? $header_id;
+
+        }else{
+            $header_id = $location_s_sett['is_home'] ?? $header_id;
+            $header_id = $location_s_sett['is_tax'] ?? $header_id;
+            $header_id = $location_s_sett['is_tax'] ?? $header_id;
+        }
+        var_dump(self::$current_page_type,self::is_woocommerce());
+        $location_id = $location_s_sett[self::$current_page_type] ?? $header_id;
 
         return $location_id;
     }
