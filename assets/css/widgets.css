@@ -432,3 +432,14 @@ ul.wpuf-form li .wpuf-fields .wpuf-name-field-wrap.format-first-last .wpuf-name-
   .elementor-widget-ultraaddons-video-popup .ua-video-btn:hover{
       background-color: #21272c;
   }
+  .ultraaddons-header-footer-empty{
+    display: none;
+  }
+  body.logged-in .ultraaddons-header-footer-empty,
+  body.logged-in.admin-bar .ultraaddons-header-footer-empty {
+    color: #ffeb3b;
+    padding: 3px;
+    margin: 0;
+    display: block;
+    background: #90b3d7;
+}
