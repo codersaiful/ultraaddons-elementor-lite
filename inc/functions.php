@@ -161,7 +161,17 @@ function ultraaddons_elementor_display_content( $post_id = false ){
     
     (int) $select_post_id = $post_id;
     if ( \Elementor\Plugin::instance()->documents->get( $select_post_id )->is_built_with_elementor() ) {
-        return \Elementor\Plugin::instance()->frontend->get_builder_content_for_display( $select_post_id );
+        $final_content = \Elementor\Plugin::instance()->frontend->get_builder_content_for_display( $select_post_id );
+        if( ! empty( $final_content ) ){
+            return $final_content;
+        }else{
+            $title = get_the_title( $select_post_id );
+            $custom_content = '<p class="ultraaddons-header-footer-empty">';
+            $custom_content .= "Your Header/Footer template [$title] is empty.";
+            $custom_content .= '</p>';
+            return apply_filters( 'ultraaddons_template_empty_output', $custom_content );
+        }
+        
     }
     return false;
 }

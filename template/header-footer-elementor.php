@@ -25,18 +25,16 @@
 </head>
 
 <body <?php body_class( 'ultraaddons-header-footer-body' ); ?>>
-<?php wp_body_open(); ?>
-
     <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'ultraaddons' ); ?></a>
-<div id="page" class="hfeed site header-footer-fullwidth ultraaddons-page">
-<?php
-    if ( have_posts() ) : while ( have_posts() ) : the_post();
-        the_content();
-    endwhile;
-    endif;
+    <div id="page" class="hfeed site header-footer-fullwidth ultraaddons-page">
+    <?php
+        if ( have_posts() ) : while ( have_posts() ) : the_post();
+            the_content();
+        endwhile;
+        endif;
 
-wp_footer(); 
-?>
+    wp_footer(); 
+    ?>
     </div><!-- #page -->
 </body>
 </html>

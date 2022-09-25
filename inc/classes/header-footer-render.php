@@ -228,7 +228,7 @@ class Header_Footer_Render {
         }else{
             $header_id = $location_s_sett['is_home'] ?? $header_id;
             $header_id = $location_s_sett['is_tax'] ?? $header_id;
-            $header_id = $location_s_sett['is_tax'] ?? $header_id;
+            $header_id = $location_s_sett['is_cat'] ?? $header_id;
         }
         
         $location_id = $location_s_sett[self::$current_page_type] ?? $header_id;
