@@ -276,10 +276,10 @@ class Header_Footer_Render {
     }
 
     public static function enqueue_scripts(){
-        $handle = 'ultraaddons-icon-font';
-        $src = ULTRA_ADDONS_ASSETS . 'css/header-footer.css';
-        wp_register_style( $handle, $src );//, $deps, $ver, $media
-        wp_enqueue_style( $handle );
+        // $handle = 'ua-header-footer';
+        // $src = ULTRA_ADDONS_ASSETS . 'css/header-footer.css';
+        // wp_register_style( $handle, $src );//, $deps, $ver, $media
+        // wp_enqueue_style( $handle );
 
         if(!is_array( self::$heder_footer_data )) return;
         foreach(self::$heder_footer_data as $template_id => $templates){
