@@ -3,7 +3,7 @@
  * Plugin Name: Addons - UltraAddons Elementor Lite
  * Plugin URI: https://ultraaddons.com/
  * Description: Elementor Addons Plugin. Build your desired page just few click. Easy to use and useable for any theme and plugin. Available many filter.
- * Version: 1.1.4
+ * Version: 1.1.5
  * Author: CodeAstrology
  * Author URI: https://profiles.wordpress.org/codersaiful/#content-plugins
  * License: GPL3+
