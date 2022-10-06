@@ -1,10 +1,10 @@
-=== UltraAddons ===
+=== UltraAddons (Advance Header & Footer Builder, Custom Font, Custom CSS, Menu Builder, Cart Icon, Anywhere Elementor Shortcode) ===
 
 Plugin Name: Addons - UltraAddons Elementor Lite
-Author: codersaiful, rafiul17, fazlebari
+Author: codersaiful
 Author URI: https://ultraaddons.com/
-Tags: addons, elementor addons, ultraaddons, page builder, page builder addons, Editor, Web Page Builder
-Contributors: codersaiful, codeastrology, ultraaddons
+Tags: addons, elementor addons, header footer, anywhere elementor, elementor cart widget, elementor woocommerce, Elementor form, card timeline cart woocommerce profile builder font, custom css elementor
+Contributors: codersaiful, codeastrology, ultraaddons, rafiul17, fazlebari
 Requires at least: 4.0.0
 Tested up to: 6.0.1
 Requires PHP: 5.6
@@ -12,7 +12,7 @@ Stable tag: 1.1.5
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl.html
 
-Elementor Addons Plugin. Different type Unique Element, Pre-defined block, Custom header Footer, Anywhere Elementor block by shortcode, Elementor in widget.
+78+ Fee widget, Custom Font, Custom CSS, Advance Header & Footer Builder, Menu Builder, Cart Icon, Anywhere Elementor Shortcode, 85+ Full Ready Template. All are free to use.
 
 == Description ==
 
