@@ -1,7 +1,7 @@
 === UltraAddons ===
 
 Plugin Name: Addons - UltraAddons Elementor Lite
-Author: codersaiful
+Author: codersaiful, rafiul17, fazlebari
 Author URI: https://ultraaddons.com/
 Tags: addons, elementor addons, ultraaddons, page builder, page builder addons, Editor, Web Page Builder
 Contributors: codersaiful, codeastrology, ultraaddons
@@ -109,6 +109,18 @@ To change theme's default Header or Footer, Even add additional content to Heade
 ***Shortcode `[UltraAddons_Template id='template_id']`***
 UltraAddons provide a shortcode `[UltraAddons_Template id='123']`. Here 123 is a POST_ID. Use any Elementor page/Template's POST_ID as id. Use Anywhere.
 Suppose: you want to show any Elementor Item/Widget/Template in widget, or in any WordPress post or in Guttenberg block. Just use this shortcode.
+
+
+**👷 HONORABLE CONTRIBUTOR - [GitHub](https://github.com/codersaiful/ultraaddons-elementor-lite/graphs/contributors) 👷**<br>
+
+* [codersaiful](https://github.com/codersaiful) (836+ commits And Pro: 500+ commits )
+* [rafiul](https://github.com/rafiul) (400+ commits )
+* [fazlebarisn](https://github.com/fazlebarisn) (1 commit)
+* 👉 [You can join here](https://github.com/codersaiful/ultraaddons-elementor-lite/fork)
+
+**🥇 CONTRIBUTE 🥇**<br>
+You are welcome to contribute  to this project. Join with us [Fork Github repository](https://github.com/codersaiful/ultraaddons-elementor-lite/fork).
+
 
 ***Credits***
 * Owl Carousel v2.3.4 - https://github.com/OwlCarousel2/OwlCarousel2 https://github.com/OwlCarousel2/OwlCarousel2/blob/master/LICENSE
