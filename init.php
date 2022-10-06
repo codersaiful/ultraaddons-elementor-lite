@@ -5,7 +5,7 @@
  * Description: Elementor Addons Plugin. Build your desired page just few click. Easy to use and useable for any theme and plugin. Available many filter.
  * Version: 1.1.5
  * Author: CodeAstrology Team
- * Author URI: https://codeastrology.com/downloads/ultraaddons-elementor/
+ * Author URI: https://codeastrology.com/
  * License: GPL3+
  * License URI: http://www.gnu.org/licenses/gpl.html
  * Text Domain: ultraaddons
