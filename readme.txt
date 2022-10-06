@@ -5,6 +5,7 @@ Author: codersaiful
 Author URI: https://ultraaddons.com/
 Tags: addons, elementor addons, header footer, anywhere elementor, elementor cart widget, elementor woocommerce, Elementor form, card timeline cart woocommerce profile builder font, custom css elementor
 Contributors: codersaiful, codeastrology, ultraaddons, rafiul17, fazlebari
+Donate link: https://codeastrology.com/downloads/ultraaddons-elementor/
 Requires at least: 4.0.0
 Tested up to: 6.0.1
 Requires PHP: 5.6
