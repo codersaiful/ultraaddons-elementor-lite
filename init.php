@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: Addons - UltraAddons Elementor Lite by CodeAstrology
+ * Plugin Name: UltraAddons - Elementor Addons by CodeAstrology
  * Plugin URI: https://ultraaddons.com/
- * Description: Elementor Addons Plugin. Build your desired page just few click. Easy to use and useable for any theme and plugin. Available many filter.
+ * Description: 78+ Fee widget, Custom Font, Custom CSS, Anywhere Elementor Shortcode, Header Footer Builder, Menu Builder, Woo Widget, 85+ Full Ready Template. All are free to use.
  * Version: 1.1.5
  * Author: CodeAstrology Team
  * Author URI: https://codeastrology.com/
