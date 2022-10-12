@@ -12,10 +12,10 @@
  * Domain Path: /languages/
  * 
  * Requires at least:    4.0.0
- * Tested up to:         6.0.1
+ * Tested up to:         6.0.2
  * WC requires at least: 3.0.0
- * WC tested up to: 	 6.1.1
- * Elementor tested up to: 3.9.7
+ * WC tested up to: 	 7.0.0
+ * Elementor tested up to: 3.7.8
  * Elementor Pro tested up to: 7.11.0
  *
  * @package UltraAddons
