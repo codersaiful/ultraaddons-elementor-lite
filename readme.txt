@@ -7,8 +7,8 @@ Tags: elementor,elementor addons,elementor widget,elements,custom css elementor,
 Contributors: codersaiful, codeastrology, ultraaddons, rafiul17, fazlebari
 Donate link: https://codeastrology.com/downloads/ultraaddons-elementor/
 Requires at least: 4.0.0
-Tested up to: 6.0.3
-Requires PHP: 5.6
+Tested up to: 6.1
+Requires PHP: 7.0
 Stable tag: 1.1.5
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl.html
