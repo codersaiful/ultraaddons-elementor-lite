@@ -1,21 +1,21 @@
 <?php
 /**
- * Plugin Name: Addons - UltraAddons Elementor Lite
+ * Plugin Name: UltraAddons - Elementor Addons by CodeAstrology
  * Plugin URI: https://ultraaddons.com/
- * Description: Elementor Addons Plugin. Build your desired page just few click. Easy to use and useable for any theme and plugin. Available many filter.
- * Version: 1.1.4
- * Author: CodeAstrology
- * Author URI: https://profiles.wordpress.org/codersaiful/#content-plugins
+ * Description: 78+ Fee widget, Custom Font, Custom CSS, Anywhere Elementor Shortcode, Header Footer Builder, Menu Builder, Woo Widget, 85+ Full Ready Template. All are free to use.
+ * Version: 1.1.5
+ * Author: CodeAstrology Team
+ * Author URI: https://codeastrology.com/
  * License: GPL3+
  * License URI: http://www.gnu.org/licenses/gpl.html
  * Text Domain: ultraaddons
  * Domain Path: /languages/
  * 
  * Requires at least:    4.0.0
- * Tested up to:         6.0.1
+ * Tested up to:         6.1
  * WC requires at least: 3.0.0
- * WC tested up to: 	 6.1.1
- * Elementor tested up to: 3.9.7
+ * WC tested up to: 	 7.0.0
+ * Elementor tested up to: 3.7.8
  * Elementor Pro tested up to: 7.11.0
  *
  * @package UltraAddons
@@ -30,12 +30,12 @@
  * #607d8b - For Elementor Screen section title background
  * ********************************
  * 
- * UltraAddons Elementor Lite is free software: you can redistribute it and/or modify
+ * UltraAddons - Elementor Addons is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * UltraAddons Elementor Lite is distributed in the hope that it will be useful,
+ * UltraAddons - Elementor Addons is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
@@ -46,7 +46,7 @@
 
 defined( 'ABSPATH' ) || die();
 
-define( 'ULTRA_ADDONS_VERSION', '1.1.4.7' );
+define( 'ULTRA_ADDONS_VERSION', '1.1.5.1' );
 define( 'ULTRA_ADDONS__FILE__', __FILE__ );
 define( 'ULTRA_ADDONS_BASE_NAME', plugin_basename( __FILE__ ) );
 define( 'ULTRA_ADDONS_DIR', plugin_dir_path( ULTRA_ADDONS__FILE__ ) );
@@ -279,7 +279,7 @@ final class UltraAddons {
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor */
 			esc_html__( '%1$s requires %2$s to be installed and activated.%3$s', 'ultraaddons' ),
-			'<strong>' . esc_html__( 'UltraAddons Elementor Lite', 'ultraaddons' ) . '</strong>',
+			'<strong>' . esc_html__( 'UltraAddons - Elementor Addons', 'ultraaddons' ) . '</strong>',
 			'<strong><a href="https://wordpress.org/plugins/elementor/" target="_blank">' . esc_html__( 'Elementor', 'ultraaddons' ) . '</a></strong>',
 			'<style>div.ultraaddons-notice-error-elementor{background:#e5e5e5;color:#607d8b}div.ultraaddons-notice-error-elementor>p{font-size:22px}div.ultraaddons-notice-error-elementor>p>strong{color:#9c27b0;font-weight:700}</style>'
 		);
@@ -304,7 +304,7 @@ final class UltraAddons {
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor 3: Required Elementor version */
 			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'ultraaddons' ),
-			'<strong>' . esc_html__( 'UltraAddons Elementor Lite', 'ultraaddons' ) . '</strong>',
+			'<strong>' . esc_html__( 'UltraAddons - Elementor Addons', 'ultraaddons' ) . '</strong>',
 			'<strong>' . esc_html__( 'Elementor', 'ultraaddons' ) . '</strong>',
 			 self::MINIMUM_ELEMENTOR_VERSION
 		);
@@ -329,7 +329,7 @@ final class UltraAddons {
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: PHP 3: Required PHP version */
 			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'ultraaddons' ),
-			'<strong>' . esc_html__( 'UltraAddons Elementor Lite', 'ultraaddons' ) . '</strong>',
+			'<strong>' . esc_html__( 'UltraAddons - Elementor Addons', 'ultraaddons' ) . '</strong>',
 			'<strong>' . esc_html__( 'PHP', 'ultraaddons' ) . '</strong>',
 			 self::MINIMUM_PHP_VERSION
 		);

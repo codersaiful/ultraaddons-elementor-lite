@@ -1,22 +1,23 @@
-=== UltraAddons ===
+=== UltraAddons - Elementor Addons (Header Footer Builder, Custom Font, Custom CSS,Woo Widget, Menu Builder, Anywhere Elementor Shortcode) ===
 
 Plugin Name: Addons - UltraAddons Elementor Lite
 Author: codersaiful
 Author URI: https://ultraaddons.com/
-Tags: addons, elementor addons, ultraaddons, page builder, page builder addons, Editor, Web Page Builder
-Contributors: codersaiful, codeastrology, ultraaddons
+Tags: elementor,elementor addons,elementor widget,elements,custom css elementor, elementor fonts, header footer, anywhere elementor, elementor woocommerce, Elementor form, card timeline cart woocommerce profile builder font
+Contributors: codersaiful, codeastrology, ultraaddons, rafiul17, fazlebari
+Donate link: https://codeastrology.com/downloads/ultraaddons-elementor/
 Requires at least: 4.0.0
-Tested up to: 6.0.1
-Requires PHP: 5.6
-Stable tag: 1.1.4
+Tested up to: 6.1
+Requires PHP: 7.0
+Stable tag: 1.1.5
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl.html
 
-Elementor Addons Plugin. Different type Unique Element, Pre-defined block, Custom header Footer, Anywhere Elementor block by shortcode, Elementor in widget.
+78+ Fee widget, Custom Font, Custom CSS, Anywhere Elementor Shortcode, Header Footer Builder, Menu Builder, Woo Widget, 85+ Full Ready Template. All are free to use.
 
 == Description ==
 
-*UltraAddons Elementor Lite* is a Elementor Addons Plugin and it has some Unique features and Ready made Widget. By using this plugin, You able to create a Full web site just by drag and drop.
+*UltraAddons - Elementor Addons* is a Elementor Addons Plugin and it has some Unique features and Ready made Widget. By using this plugin, You able to create a Full web site just by drag and drop.
 Build your desired page just few click. Easy to use and use able for any theme and plugin. Available many filter.
 
 **UltraAddons Elementor Lite (Header & Footer Builder, Menu Builder, Cart Icon, Shortcode)**
@@ -27,8 +28,11 @@ Elementor page/section show in Sidebar area. using WordPress widget.
 ***Features***
 * 85+ Full Page Template
 * 500+ Ready Block
-* Custom Header for whole site.
-* Custom Footer for whole site.
+* Add Custom Font free.
+* Logical Widget feature (User Able to show or hide any widget by condition)
+* Custom Header for any page with condition or for whole site.
+* Custom Topbar for any page with condition or for whole site. (Specially for showing offer)
+* Custom Footer for any page with condition or for whole site.
 * Elementor Page/Section/Template display in anywhere using shortcode. sample shortcode is `[UltraAddons_Template id='123']`. Here 123 will be post ID of the Elementor Template.
 * Many Ready widget,
 * [**Woo Product Table**](https://wordpress.org/plugins/woo-product-table/) display anywhere with Designing and Customizing. Available Typography, Color and different style.
@@ -109,6 +113,18 @@ To change theme's default Header or Footer, Even add additional content to Heade
 ***Shortcode `[UltraAddons_Template id='template_id']`***
 UltraAddons provide a shortcode `[UltraAddons_Template id='123']`. Here 123 is a POST_ID. Use any Elementor page/Template's POST_ID as id. Use Anywhere.
 Suppose: you want to show any Elementor Item/Widget/Template in widget, or in any WordPress post or in Guttenberg block. Just use this shortcode.
+
+
+**👷 HONORABLE CONTRIBUTOR - [GitHub](https://github.com/codersaiful/ultraaddons-elementor-lite/graphs/contributors) 👷**<br>
+
+* [codersaiful](https://github.com/codersaiful) (836+ commits And Pro: 500+ commits )
+* [rafiul](https://github.com/rafiul) (400+ commits )
+* [fazlebarisn](https://github.com/fazlebarisn) (1 commit)
+* 👉 [You can join here](https://github.com/codersaiful/ultraaddons-elementor-lite/fork)
+
+**🥇 CONTRIBUTE 🥇**<br>
+You are welcome to contribute  to this project. Join with us [Fork Github repository](https://github.com/codersaiful/ultraaddons-elementor-lite/fork).
+
 
 ***Credits***
 * Owl Carousel v2.3.4 - https://github.com/OwlCarousel2/OwlCarousel2 https://github.com/OwlCarousel2/OwlCarousel2/blob/master/LICENSE
