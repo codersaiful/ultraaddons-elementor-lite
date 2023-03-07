@@ -12,9 +12,9 @@
  * Domain Path: /languages/
  * 
  * Requires at least:    4.0.0
- * Tested up to:         6.1.1
+ * Tested up to:         6.2
  * WC requires at least: 3.0.0
- * WC tested up to: 	 6.1.1
+ * WC tested up to: 	 7.4.0
  * Elementor tested up to: 3.11.2
  * Elementor Pro tested up to: 7.11.0
  *
