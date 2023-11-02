@@ -142,9 +142,9 @@ class Post_Title extends Base{
             [
                 'label'     => __( 'Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
-				'global' => [
-            		'default' => Global_Colors::COLOR_PRIMARY,
-				],
+                'global' => [
+                    'default' => Global_Colors::COLOR_PRIMARY,
+                ],
                 'selectors' => [
                     '{{WRAPPER}} .post-title-wrapper h4.heading-tag' => 'color: {{VALUE}}',
                 ],
