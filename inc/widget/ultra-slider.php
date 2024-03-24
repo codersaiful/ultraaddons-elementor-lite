@@ -7,9 +7,7 @@ use Elementor\Group_Control_Typography;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Repeater;
-use Elementor\Core\Schemes\Color;
 use Elementor\Utils;
-use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Background;
@@ -680,7 +678,9 @@ class Ultra_Slider extends Base{
 			[
 				'name' => 'button_typography',
 				'label' => __( 'Typography', 'ultraaddons' ),
-				'scheme' => Typography::TYPOGRAPHY_1,
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				],
 				'selector' => '{{WRAPPER}} .ua-slider-wrapper .ua-slider-item .slider-button',
 			]
 		);
@@ -754,7 +754,9 @@ class Ultra_Slider extends Base{
 			[
 				'name' => 'button_hover_typography',
 				'label' => __( 'Typography', 'ultraaddons' ),
-				'scheme' => Typography::TYPOGRAPHY_1,
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				],
 				'selector' => '{{WRAPPER}} .ua-slider-wrapper .ua-slider-item .slider-button:hover',
 			]
 		);

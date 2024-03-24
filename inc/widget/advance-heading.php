@@ -3,9 +3,8 @@ namespace UltraAddons\Widget;
 
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
-use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
-use Elementor\Core\Schemes\Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
@@ -184,9 +183,8 @@ class Advance_Heading extends Base{
             [
                 'label'     => __( 'Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
-                'scheme'    => [
-                    'type'  => Color::get_type(),
-                    'value' => Color::COLOR_1,
+                'global' => [
+                    'default' => Global_Colors::COLOR_PRIMARY,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .advance-heading-wrapper span.sub-heading-wrapper' => 'color: {{VALUE}}',
@@ -201,9 +199,8 @@ class Advance_Heading extends Base{
             [
                 'label'     => __( 'Heading Text Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
-                'scheme'    => [
-                    'type'  => Color::get_type(),
-                    'value' => Color::COLOR_1,
+                'global' => [
+                    'default' => Global_Colors::COLOR_PRIMARY,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .advance-heading-wrapper .heading-tag' => 'color: {{VALUE}}',
@@ -506,9 +503,8 @@ class Advance_Heading extends Base{
             [
                 'label'     => __( 'Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
-                'scheme'    => [
-                    'type'  => Color::get_type(),
-                    'value' => Color::COLOR_1,
+                'global' => [
+                    'default' => Global_Colors::COLOR_PRIMARY,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .content-title span.ultraaddons-sub-heading, .section-title.v1.ultraaddons-advance-heading h3.ultraaddons-heading' => 'color: {{VALUE}}',
@@ -520,7 +516,9 @@ class Advance_Heading extends Base{
             [
                 'name'     => 'heading_tag_typography',
                 'selector' => '{{WRAPPER}} .pricing-box-item .pricing-icon .ultraaddons-price-table-heading, .section-title.v1.ultraaddons-advance-heading h3.ultraaddons-heading',
-                'scheme'   => Typography::TYPOGRAPHY_1,
+                'global' => [
+                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                ],
             ]
         );
         $this->add_responsive_control(
