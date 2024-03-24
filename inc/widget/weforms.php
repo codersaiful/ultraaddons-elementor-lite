@@ -6,7 +6,6 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
-use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Box_Shadow;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -562,7 +561,9 @@ class WeForms extends Base{
                         Group_Control_Typography::get_type(),
                         [
                             'name' => 'ua_weform_submit_btn_typography',
-                            'scheme' => Typography::TYPOGRAPHY_1,
+                            'global' => [
+                                'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                            ],
                             'selector' => '{{WRAPPER}} .ua-weforms ul.wpuf-form .wpuf-submit input[type="submit"]',
                         ]
                     );

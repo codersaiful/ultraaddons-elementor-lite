@@ -2,9 +2,7 @@
 namespace UltraAddons\Widget;
 
 use Elementor\Controls_Manager;
-use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
-use Elementor\Core\Schemes\Typography;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Background;
