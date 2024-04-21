@@ -9,7 +9,7 @@ Donate link: https://codeastrology.com/downloads/ultraaddons-elementor/
 Requires at least: 4.0.0
 Tested up to: 6.2
 Requires PHP: 7.0
-Stable tag: 1.1.5
+Stable tag: 1.1.6
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl.html
 
