@@ -176,6 +176,11 @@ Yes, there are lot of filter and action hook available here. You can customize f
 
 == Change log ==
 
+= 1.1.6 =
+* Depreciated code has been removed by Github User [rami-elementor](https://github.com/codersaiful/ultraaddons-elementor-lite/commits?author=rami-elementor)
+* Bug fixed.
+* Code Optimized.
+
 = 1.1.4 =
 * CSS Load issue fixed and make it faster and faster.
 * Template/Block display shortcodes `[UltraAddons_Template id='1234']`,`[UA_Template id='1234']` and `[ULTRAADDONS_TEMPLATE id='1234']`.
