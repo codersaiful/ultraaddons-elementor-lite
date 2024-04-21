@@ -2,11 +2,12 @@
 namespace UltraAddons\Widget;
 
 use Elementor\Controls_Manager;
-use Elementor\Core\Schemes;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Background;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Icons_Manager;
 use Elementor\Repeater;
 
@@ -554,10 +555,9 @@ class Pricing_Table extends Base {
 				'label' => __( 'Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '#ddd',
-				'scheme' => [
-					'type' => Schemes\Color::get_type(),
-					'value' => Schemes\Color::COLOR_3,
-				],
+                'global' => [
+                    'default' => Global_Colors::COLOR_TEXT,
+                ],
 				'condition' => [
 					'section_divider' => 'yes',
 				],
@@ -709,7 +709,9 @@ class Pricing_Table extends Base {
 			[
 				'name' => 'heading_typography',
 				'selector' => '{{WRAPPER}} .ua-price-table__heading',
-				'scheme' => Schemes\Typography::TYPOGRAPHY_1,
+                'global' => [
+                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                ],
                                 'default' => [
                                         'font-weight'   => 400,
                                 ],
@@ -741,7 +743,9 @@ class Pricing_Table extends Base {
 			[
 				'name' => 'sub_heading_typography',
 				'selector' => '{{WRAPPER}} .ua-price-table__subheading',
-				'scheme' => Schemes\Typography::TYPOGRAPHY_2,
+                'global' => [
+                    'default' => Global_Typography::TYPOGRAPHY_SECONDARY,
+                ],
 			]
 		);
                 
@@ -895,7 +899,9 @@ class Pricing_Table extends Base {
 			[
 				'name' => 'price_typography',
 				'selector' => '{{WRAPPER}} .ua-price-table__price_inner',
-				'scheme' => Schemes\Typography::TYPOGRAPHY_1,
+                'global' => [
+                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                ],
 			]
 		);
                 
@@ -967,7 +973,9 @@ class Pricing_Table extends Base {
 			[
 				'name' => 'price_typography_hover',
 				'selector' => '{{WRAPPER}}:hover .ua-price-table__price_inner',
-				'scheme' => Schemes\Typography::TYPOGRAPHY_1,
+                'global' => [
+                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                ],
 			]
 		);
                 
@@ -1217,10 +1225,9 @@ class Pricing_Table extends Base {
 			[
 				'label' => __( 'Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Schemes\Color::get_type(),
-					'value' => Schemes\Color::COLOR_2,
-				],
+                'global' => [
+                    'default' => Global_Colors::COLOR_SECONDARY,
+                ],
 				'selectors' => [
 					'{{WRAPPER}} .ua-price-table__original-price' => 'color: {{VALUE}}',
 				],
@@ -1236,7 +1243,9 @@ class Pricing_Table extends Base {
 			[
 				'name' => 'original_price_typography',
 				'selector' => '{{WRAPPER}} .ua-price-table__original-price',
-				'scheme' => Schemes\Typography::TYPOGRAPHY_1,
+                'global' => [
+                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                ],
 				'condition' => [
 					'sale' => 'yes',
 					'original_price!' => '',
@@ -1321,10 +1330,9 @@ class Pricing_Table extends Base {
 			[
 				'label' => __( 'Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Schemes\Color::get_type(),
-					'value' => Schemes\Color::COLOR_2,
-				],
+                'global' => [
+                    'default' => Global_Colors::COLOR_SECONDARY,
+                ],
 				'selectors' => [
 					'{{WRAPPER}} .ua-price-table__period' => 'color: {{VALUE}}',
 				],
@@ -1339,7 +1347,9 @@ class Pricing_Table extends Base {
 			[
 				'name' => 'period_typography',
 				'selector' => '{{WRAPPER}} .ua-price-table__period',
-				'scheme' => Schemes\Typography::TYPOGRAPHY_2,
+                'global' => [
+                    'default' => Global_Typography::TYPOGRAPHY_SECONDARY,
+                ],
 				'condition' => [
 					'period!' => '',
 				],
@@ -1467,10 +1477,9 @@ class Pricing_Table extends Base {
 			[
 				'label' => __( 'Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Schemes\Color::get_type(),
-					'value' => Schemes\Color::COLOR_3,
-				],
+                'global' => [
+                    'default' => Global_Colors::COLOR_TEXT,
+                ],
 				'selectors' => [
 					'{{WRAPPER}} .ua-price-table__features-list' => 'color: {{VALUE}}',
 				],
@@ -1502,11 +1511,9 @@ class Pricing_Table extends Base {
 			[
 				'label' => __( 'Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
-//				'scheme' => [
-//					'type' => Schemes\Color::get_type(),
-//					'value' => Schemes\Color::COLOR_3,
-//				],
-				
+				// 'global' => [
+				// 	'default' => Global_Colors::COLOR_TEXT,
+				// ],
 				'selectors' => [
 					'{{WRAPPER}}:hover .ua-price-table__features-list' => 'color: {{VALUE}}',
 				],
@@ -1532,7 +1539,9 @@ class Pricing_Table extends Base {
 			[
 				'name' => 'features_list_typography',
 				'selector' => '{{WRAPPER}} .ua-price-table__features-list li',
-				'scheme' => Schemes\Typography::TYPOGRAPHY_3,
+                'global' => [
+                    'default' => Global_Typography::TYPOGRAPHY_TEXT,
+                ],
 			]
 		);
 
@@ -1636,10 +1645,9 @@ class Pricing_Table extends Base {
 			[
 				'label' => __( 'Color', 'ultraaddons' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Schemes\Color::get_type(),
-					'value' => Schemes\Color::COLOR_3,
-				],
+                'global' => [
+                    'default' => Global_Colors::COLOR_TEXT,
+                ],
 				'selectors' => [
 					'{{WRAPPER}} .ua-price-table__additional_info' => 'color: {{VALUE}}',
 				],
@@ -1654,7 +1662,9 @@ class Pricing_Table extends Base {
 			[
 				'name' => 'additional_info_typography',
 				'selector' => '{{WRAPPER}} .ua-price-table__additional_info',
-				'scheme' => Schemes\Typography::TYPOGRAPHY_3,
+                'global' => [
+                    'default' => Global_Typography::TYPOGRAPHY_TEXT,
+                ],
 				'condition' => [
 					'footer_additional_info!' => '',
 				],
@@ -1728,7 +1738,9 @@ class Pricing_Table extends Base {
 			[
 				'name' => 'ribbon_typography',
 				'selector' => '{{WRAPPER}} .ua-price-table__ribbon-inner',
-				'scheme' => Schemes\Typography::TYPOGRAPHY_4,
+                'global' => [
+                    'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+                ],
 			]
 		);
 

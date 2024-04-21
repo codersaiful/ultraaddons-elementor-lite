@@ -3,9 +3,8 @@ namespace UltraAddons\Widget;
 
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
-use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
-use Elementor\Core\Schemes\Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
@@ -229,9 +228,8 @@ class WordPress_Plugin_Stats extends Base{
             [
                 'label'     => __( 'Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
-                'scheme'    => [
-                    'type'  => Color::get_type(),
-                    'value' => Color::COLOR_1,
+                'global' => [
+                    'default' => Global_Colors::COLOR_PRIMARY,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .wp-plugin-name-heading' => 'color: {{VALUE}}',
@@ -245,9 +243,8 @@ class WordPress_Plugin_Stats extends Base{
             [
                 'label'     => __( 'Label Text Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
-                'scheme'    => [
-                    'type'  => Color::get_type(),
-                    'value' => Color::COLOR_1,
+                'global' => [
+                    'default' => Global_Colors::COLOR_PRIMARY,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .wp-plugin-stats .label-text' => 'color: {{VALUE}}',
@@ -262,9 +259,8 @@ class WordPress_Plugin_Stats extends Base{
             [
                 'label'     => __( 'Number Text Color', 'ultraaddons' ),
                 'type'      => Controls_Manager::COLOR,
-                'scheme'    => [
-                    'type'  => Color::get_type(),
-                    'value' => Color::COLOR_1,
+                'global' => [
+                    'default' => Global_Colors::COLOR_PRIMARY,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .wp-plugin-stats .number-text' => 'color: {{VALUE}}',

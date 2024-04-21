@@ -7,7 +7,6 @@ use \Elementor\Group_Control_Box_Shadow;
 use \Elementor\Group_Control_Typography;
 use \Elementor\Group_Control_Background;
 use \Elementor\Utils;
-use \Elementor\Core\Schemes;
 use \ELEMENTOR\Icons_Manager;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
