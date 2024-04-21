@@ -3,7 +3,7 @@
 Plugin Name: Addons - UltraAddons Elementor Lite
 Author: codersaiful
 Author URI: https://ultraaddons.com/
-Tags: elementor,elementor addons,elementor widget,elements,custom css elementor, elementor fonts, header footer, anywhere elementor, elementor woocommerce, Elementor form, card timeline cart woocommerce profile builder font
+Tags: elementor,elementor addons,elementor widget,elements,custom css elementor
 Contributors: codersaiful, codeastrology, ultraaddons, rafiul17, fazlebari
 Donate link: https://codeastrology.com/downloads/ultraaddons-elementor/
 Requires at least: 4.0.0
