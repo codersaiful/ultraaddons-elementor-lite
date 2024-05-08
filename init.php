@@ -1,6 +1,7 @@
 <?php
 /**
  * Plugin Name: UltraAddons - Elementor Addons by CodeAstrology
+ * Requires Plugins: elementor
  * Plugin URI: https://ultraaddons.com/
  * Description: 78+ Fee widget, Custom Font, Custom CSS, Anywhere Elementor Shortcode, Header Footer Builder, Menu Builder, Woo Widget, 85+ Full Ready Template. All are free to use.
  * Version: 1.1.6
