@@ -903,7 +903,7 @@ class Hero_Slider extends Base{
         $settings = $this->get_settings_for_display();
 		$id= $this->get_id();
         ?>
-   	<div class="ua-hero hero-slider-<?php echo $id;?>">
+   	<div class="ua-hero hero-slider-<?php echo esc_attr( $id );?>">
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
             <!-- Slides -->
@@ -916,15 +916,15 @@ class Hero_Slider extends Base{
 					$is_external	= ( $item['action_btn_link']['is_external']=='on') ? 'target="_blank"' : '';
 					$nofollow		= ( $item['action_btn_link']['nofollow']=='on') ? 'rel="nofollow"' :'';
             ?>
-            <div class="swiper-slide slide-<?php echo $count;?> elementor-repeater-item-<?php echo $item['_id']; ?>">
+            <div class="swiper-slide slide-<?php echo esc_attr( $count );?> elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
                 <div class="ua-image">
                     <div class="ua-slider-container">
                         <div class="animated-area">
-							<h4 class="ua-slider-sub-title elementor-repeater-item-<?php echo $item['_id']; ?>">
-								<?php echo $item['list_title'];?>
+							<h4 class="ua-slider-sub-title elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
+								<?php echo esc_html( $item['list_title'] );?>
 							</h4>
-							<h1 class="ua-slider-title elementor-repeater-item-<?php echo $item['_id']; ?>"><?php echo $item['list_content'];?></h1>
-							<a href="<?php echo esc_url($url); ?>" <?php echo esc_attr($is_external);?> <?php echo esc_attr($nofollow);?> class="ua-slider-buttton elementor-repeater-item-<?php echo $item['_id']; ?> <?php echo $settings['_ua_btn_animation'];?>"><?php echo $item['list_btn'];?></a>
+							<h1 class="ua-slider-title elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>"><?php echo esc_html( $item['list_content'] );?></h1>
+							<a href="<?php echo esc_url($url); ?>" <?php echo esc_attr($is_external);?> <?php echo esc_attr($nofollow);?> class="ua-slider-buttton elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?> <?php echo esc_attr( $settings['_ua_btn_animation'] );?>"><?php echo esc_html( $item['list_btn'] );?></a>
                         </div>
                     </div>
                 </div>

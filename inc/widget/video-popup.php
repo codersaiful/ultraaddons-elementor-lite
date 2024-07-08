@@ -589,9 +589,9 @@ class Video_Popup extends Base{
        
         ?>
         <div class="ua-video-btn-wrap">
-            <button class="js-modal-btn-<?php echo $id;?> ua-video-btn" data-video-id="<?php echo esc_attr($video_id);?>">
+            <button class="js-modal-btn-<?php echo esc_html($id);?> ua-video-btn" data-video-id="<?php echo esc_attr($video_id);?>">
                 <?php Icons_Manager::render_icon( $settings['selected_icon'], [ 'aria-hidden' => 'true' ] ); ?>
-                <?php echo $settings['btn_text']; ?>
+                <?php echo esc_html($settings['btn_text']); ?>
             </button>
         </div>
         <?php

@@ -1337,17 +1337,17 @@ class Advance_Pricing_Table extends Base{
 	}
 	
 	?>
-<section class="pricing-columns pricing-section adv-pricing-table-<?php echo $id; ?>">
+<section class="pricing-columns pricing-section adv-pricing-table-<?php echo esc_attr( $id ); ?>">
 	<div class="toggle-wrap">
-		<label class="toggler toggler--is-active"><?php echo $settings['toggle_a'] ?></label>
+		<label class="toggler toggler--is-active"><?php echo esc_html( $settings['toggle_a'] ); ?></label>
 		<div class="toggle">
 			<input type="checkbox" class="check switcher">
 			<b class="b switch"></b>
 		</div>
-		<label class="filt-hourly toggler"><?php echo $settings['toggle_b'] ?></label>
+		<label class="filt-hourly toggler"><?php echo esc_html( $settings['toggle_b'] ); ?></label>
 	</div>
 	<p class="desc">
-		<?php echo $settings['price_desc']; ?>
+		<?php echo wp_kses_data( $settings['price_desc'] ); ?>
 	</p>
 	<!--Part A-->
 	<div class="wrapper-full monthly">
@@ -1372,10 +1372,10 @@ class Advance_Pricing_Table extends Base{
 
 					?>
 					<div class="ua-col-3">
-						<div class="plan plan-<?php echo $count;?> <?php echo 'elementor-repeater-item-' . esc_attr( $item['_id'] ) . ''?>" >
+						<div class="plan plan-<?php echo esc_attr( $count ); ?> elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>" >
 							<?php if($item['show_badge']=='yes'):?>
 							<div class="featured-badge">
-								<?php echo $item['badge_text'] ;?>
+								<?php echo esc_html( $item['badge_text'] );?>
 							</div>
 							<?php endif;?>
 							<?php
@@ -1384,7 +1384,7 @@ class Advance_Pricing_Table extends Base{
 							<div class="discount-percent">
 								<?php
 								if( !empty($percent) ){
-									 echo round($percent);
+									 echo esc_html( round( $percent ));
 								}
 								?>%
 							</div>
@@ -1393,31 +1393,31 @@ class Advance_Pricing_Table extends Base{
 							<div class="pricing-icon-wrapper">
 								<?php \Elementor\Icons_Manager::render_icon( $item['icon'], [ 'aria-hidden' => 'true' ] ); ?>
 							</div>
-							<h2 class="plan-title"><?php echo $item['list_title'];?></h2>
+							<h2 class="plan-title"><?php echo esc_html( $item['list_title'] ); ?></h2>
 							<div class="price">
 								<?php
 								if('yes'=== $item['is_discount']){
 								?>
-								<span class="dollar"><?php echo $currency_symbol;?></span>
-								<span class="amount"><s><?php echo $list_price; ?></s></span>
+								<span class="dollar"><?php echo esc_html($currency_symbol);?></span>
+								<span class="amount"><s><?php echo esc_html( $list_price ); ?></s></span>
 								<?php
 								if(!empty($selling_price)):
 								?>
-								<span class="dollar"><?php echo $currency_symbol;?></span>
-								<span class="discount-amount"><?php echo $selling_price; ?></span>
+								<span class="dollar"><?php echo esc_html($currency_symbol);?></span>
+								<span class="discount-amount"><?php echo esc_html($selling_price); ?></span>
 								<?php endif;?>
 								<?php }else{?>
-									<span class="dollar"><?php echo $currency_symbol;?></span>
-								<span class="amount"><?php echo $item['list_price'];?></span>
+									<span class="dollar"><?php echo esc_html($currency_symbol);?></span>
+								<span class="amount"><?php echo esc_html( $item['list_price'] );?></span>
 								<?php }?>
 							   <?php if( !empty($item['list_period']) ):?>
 								<span class="slash">/</span>
 								<?php endif;?>
-								<span class="month"><?php echo $item['list_period'];?></span>
+								<span class="month"><?php echo esc_html($item['list_period']);?></span>
 							</div>
-							<div class="features-list"><?php echo $item['list_feature'];?></div>
+							<div class="features-list"><?php echo esc_html($item['list_feature']);?></div>
 							<a class="button ua-sign-up" href="<?php echo esc_url($url); ?>" <?php echo esc_attr($is_external);?> <?php echo esc_attr($nofollow);?>>
-								<?php echo $item['list_button'];?>
+								<?php echo esc_html($item['list_button']);?>
 							</a>
 						</div>
 					</div>
@@ -1451,10 +1451,10 @@ class Advance_Pricing_Table extends Base{
 							}
 					?>
 					<div class="ua-col-3">
-						<div class="plan plan-<?php echo $count;?> <?php echo 'elementor-repeater-item-' . esc_attr( $item['_id'] ) . ''?>">
+						<div class="plan plan-<?php echo esc_attr($count);?> elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
 							<?php if($item['show_badge']=='yes'):?>
 							<div class="featured-badge">
-								<?php echo $item['badge_text'] ;?>
+								<?php echo esc_html($item['badge_text']) ;?>
 							</div>
 							<?php endif;?>
 							<?php
@@ -1463,7 +1463,7 @@ class Advance_Pricing_Table extends Base{
 							<div class="discount-percent">
 								<?php 
 								if( !empty($percent) ){
-									echo round($percent);
+									echo esc_html( round($percent));
 								}
 								?>%
 								
@@ -1473,31 +1473,31 @@ class Advance_Pricing_Table extends Base{
 							<div class="pricing-icon-wrapper">
 								<?php \Elementor\Icons_Manager::render_icon( $item['icon'], [ 'aria-hidden' => 'true' ] ); ?>
 							</div>
-							<h2 class="plan-title"><?php echo $item['list_title'];?></h2>
+							<h2 class="plan-title"><?php echo esc_html($item['list_title']);?></h2>
 							<div class="price">
 								<?php
 								if('yes'=== $item['is_discount']){
 								?>
-								<span class="dollar"><?php echo $currency_symbol;?></span>
-								<span class="amount"><s><?php echo $list_price; ?></s></span>
+								<span class="dollar"><?php echo esc_html($currency_symbol);?></span>
+								<span class="amount"><s><?php echo esc_html($list_price); ?></s></span>
 								<?php
 								if(!empty($selling_price)):
 								?>
-								<span class="dollar"><?php echo $currency_symbol;?></span>
-								<span class="discount-amount"><?php echo $selling_price; ?></span>
+								<span class="dollar"><?php echo esc_html($currency_symbol);?></span>
+								<span class="discount-amount"><?php echo esc_html($selling_price); ?></span>
 								<?php endif;?>
 								<?php }else{?>
-									<span class="dollar"><?php echo $currency_symbol;?></span>
-								<span class="amount"><?php echo $item['list_price'];?></span>
+									<span class="dollar"><?php echo esc_html($currency_symbol);?></span>
+								<span class="amount"><?php echo esc_html($item['list_price']);?></span>
 								<?php }?>
 							   <?php if( !empty($item['list_period']) ):?>
 								<span class="slash">/</span>
 								<?php endif;?>
-								<span class="month"><?php echo $item['list_period'];?></span>
+								<span class="month"><?php echo esc_html($item['list_period']);?></span>
 							</div>
 							<div class="features-list"><?php echo $item['list_feature'];?></div>
 							<a class="button ua-sign-up" href="<?php echo esc_url($url); ?>" <?php echo esc_attr($is_external);?> <?php echo esc_attr($nofollow);?>>
-								<?php echo $item['list_button'];?>
+								<?php echo esc_html($item['list_button']);?>
 							</a>
 						</div>
 					</div>

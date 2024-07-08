@@ -338,14 +338,14 @@ class Hotspot extends Base{
 			<?php
 			if(!empty($url)):
 			?>
-				<a href="<?php echo esc_url($url); ?>" <?php echo esc_attr($is_external);?> <?php echo esc_attr($nofollow);?> class="ua-hotspot elementor-repeater-item-<?php echo $item['_id']; ?> ua-hotspot--<?php echo  $count;?>">
-					<span class="ua-hotspot--title"><?php echo $item['list_title'];?></span>
+				<a href="<?php echo esc_url($url); ?>" <?php echo esc_attr( $is_external );?> <?php echo esc_attr( $nofollow );?> class="ua-hotspot elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?> ua-hotspot--<?php echo  esc_attr( $count );?>">
+					<span class="ua-hotspot--title"><?php echo esc_attr( $item['list_title'] );?></span>
 					<span class="ua-hotspot--cta"></span>
 				</a>
             <?php 
 			else:?>
-				<div class="ua-hotspot elementor-repeater-item-<?php echo $item['_id']; ?> ua-hotspot--<?php echo $count;?>">
-					<span class="ua-hotspot--title"><?php echo $item['list_title'];?></span>
+				<div class="ua-hotspot elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?> ua-hotspot--<?php echo esc_attr( $count );?>">
+					<span class="ua-hotspot--title"><?php echo esc_html( $item['list_title'] );?></span>
 					<span class="ua-hotspot--cta"></span>
 				</div>
 			<?php 

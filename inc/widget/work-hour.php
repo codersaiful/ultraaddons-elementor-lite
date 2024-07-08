@@ -578,8 +578,8 @@ class Work_Hour extends Base{
 	$settings =	$this->get_settings_for_display();
 	?>
 	 <div class="ua-work-hours">
-		 <h2 class="ua-work-hour-title"> <?php echo $settings['_ua_wh_title']; ?></h2>
-		 <span class="ua-work-hour-sub-title"><?php echo $settings['_ua_wh_sub_title']; ?></span>
+		 <h2 class="ua-work-hour-title"> <?php echo esc_html( $settings['_ua_wh_title'] ); ?></h2>
+		 <span class="ua-work-hour-sub-title"><?php echo esc_html( $settings['_ua_wh_sub_title'] ); ?></span>
 	 <?php
 	 if ( isset( $settings['_ua_wh_list'] ) ) :
 		$count = 0;
@@ -589,9 +589,9 @@ class Work_Hour extends Base{
 		 $rowNumber 	= ($count % 2 == 0) ? 'even-row' : 'odd-row';
 		 $row_class 	= $rowNumber . ' '. $dayHighlight;
 		?>
-		<div class="ua-work-hours-row elementor-repeater-item-<?php echo $item['_id']; ?> <?php echo $row_class;?>">
+		<div class="ua-work-hours-row elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?> <?php echo esc_attr( $row_class );?>">
 			<span class="ua-work-day">
-			<?php echo $item['_ua_wh_day'];?>
+			<?php echo esc_html( $item['_ua_wh_day'] );?>
 			</span>
 			<?php
 			if($item['_ua_wh_closed']!='yes'){?>
@@ -605,12 +605,12 @@ class Work_Hour extends Base{
 				$time_format = ($settings['_ua_wh_day_format'] =='yes')
 				? date("H:i", $start_time) . " - " .  date("H:i", $end_time) 
 				: date("h:i A", $start_time) . " - " .  date("h:i A", $end_time);
-				echo $time_format;
+				echo esc_html( $time_format );
 				?>
 			</span>
 			<?php }else{?>
 			<span class="ua-work-timing closed">
-			<?php echo $item['_ua_wh_closed']? 'Closed': '' ; ?>
+			<?php echo $item['_ua_wh_closed'] ? 'Closed': '' ; ?>
 			</span>
 			<?php } ?>
 		</div>
