@@ -9,7 +9,7 @@ Donate link: https://codeastrology.com/downloads/ultraaddons-elementor/
 Requires at least: 4.0.0
 Tested up to: 6.5.5
 Requires PHP: 7.0
-Stable tag: 1.1.7
+Stable tag: 1.1.8
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -175,6 +175,11 @@ Yes, there are lot of filter and action hook available here. You can customize f
 
 
 == Change log ==
+
+= 1.1.8 =
+* Advance Pricing Table has been fixed.
+* sanitize issue fixed.
+* Bug fixed & Code Optimized.
 
 = 1.1.7 =
 * sanitize issue fixed.
