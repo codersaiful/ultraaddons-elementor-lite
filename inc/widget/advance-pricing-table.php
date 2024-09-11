@@ -1415,7 +1415,7 @@ class Advance_Pricing_Table extends Base{
 								<?php endif;?>
 								<span class="month"><?php echo esc_html($item['list_period']);?></span>
 							</div>
-							<div class="features-list"><?php echo esc_html($item['list_feature']);?></div>
+							<div class="features-list"><?php echo wp_kses_post($item['list_feature']);?></div>
 							<a class="button ua-sign-up" href="<?php echo esc_url($url); ?>" <?php echo esc_attr($is_external);?> <?php echo esc_attr($nofollow);?>>
 								<?php echo esc_html($item['list_button']);?>
 							</a>
@@ -1495,7 +1495,7 @@ class Advance_Pricing_Table extends Base{
 								<?php endif;?>
 								<span class="month"><?php echo esc_html($item['list_period']);?></span>
 							</div>
-							<div class="features-list"><?php echo $item['list_feature'];?></div>
+							<div class="features-list"><?php echo wp_kses_post($item['list_feature']);?></div>
 							<a class="button ua-sign-up" href="<?php echo esc_url($url); ?>" <?php echo esc_attr($is_external);?> <?php echo esc_attr($nofollow);?>>
 								<?php echo esc_html($item['list_button']);?>
 							</a>
