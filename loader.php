@@ -381,7 +381,9 @@ class Loader {
 
 		if ( class_exists( '\ElementorPro\Plugin' ) ) {
 			$elementor_pro = \ElementorPro\Plugin::instance();
-			$elementor_pro->enqueue_styles();
+            if(method_exists($elementor_pro, 'enqueue_styles')){
+                $elementor_pro->enqueue_styles();
+            }
 		}
         
 
