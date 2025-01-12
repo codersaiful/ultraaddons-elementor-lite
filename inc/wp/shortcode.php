@@ -30,7 +30,12 @@ class Shortcode{
         if( ! $post_id ){
             return;
         }
+
+        $post_status = get_post_status( $post_id );
+        if( 'publish' !== $post_status ) return;
         
+        // var_dump(get_post_states( $post_id ));
+        var_dump(get_post_status( 454545 ));
         (int) $select_post_id = $post_id;
         if ( \Elementor\Plugin::instance()->documents->get( $select_post_id ) ) {
             if ( class_exists( '\Elementor\Core\Files\CSS\Post' ) ) {
