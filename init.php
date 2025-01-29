@@ -14,8 +14,6 @@
  * 
  * Requires at least:    4.0.0
  * Tested up to:         6.7.1
- * WC requires at least: 3.0.0
- * WC tested up to: 	 9.0.2
  * Elementor tested up to: 3.26.4
  * Elementor Pro tested up to: 7.11.0
  *
