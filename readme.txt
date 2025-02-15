@@ -7,9 +7,9 @@ Tags: elementor,elementor addons,elementor widget,elements,custom css elementor
 Contributors: codersaiful, codeastrology, ultraaddons, rafiul17, fazlebari
 Donate link: https://codeastrology.com/downloads/ultraaddons-elementor/
 Requires at least: 4.0.0
-Tested up to: 6.7.1
+Tested up to: 6.7.2
 Requires PHP: 7.0
-Stable tag: 1.1.9
+Stable tag: 2.0.0
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -175,6 +175,10 @@ Yes, there are lot of filter and action hook available here. You can customize f
 
 
 == Change log ==
+
+= 2.0.0 =
+* *Advance Pricing Table* issue has been fixed. Specially for discounted price.
+* Bug fixed & Code Optimized
 
 = 1.1.9 =
 * Elementor Shortcode issue for post status has been fixed.
