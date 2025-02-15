@@ -13,7 +13,7 @@ Stable tag: 2.0.0
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl.html
 
-78+ Fee widget, Custom Font, Custom CSS, Anywhere Elementor Shortcode, Header Footer Builder, Menu Builder, Woo Widget, 85+ Full Ready Template. All are free to use.
+Fee widget, Custom Font, Custom CSS, Anywhere Elementor Shortcode, Header Footer Builder, Menu Builder, Woo Widget.
 
 == Description ==
 
