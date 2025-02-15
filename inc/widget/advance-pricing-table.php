@@ -1363,11 +1363,14 @@ class Advance_Pricing_Table extends Base{
 							$nofollow 	= ( $item['website_link']['nofollow']=='on') ? 'rel="nofollow"' :'';
 							$count=$count+1;
 							//Discount Calculate
-							$list_price 	=  $item['list_price'];
+							$list_price 	=  $item['list_price'] ?? 0;
 							$selling_price 	=  $item['list_discount_price'];
 							$discount 		= ((float)$list_price - (float)$selling_price);
-							if( $list_price != 0 ){
+							if( is_numeric( $list_price ) && is_numeric( $discount ) ){
 							$percent 		= ($discount/$list_price) * 100;
+							}
+							else{
+								$percent = 0;
 							}
 
 					?>
