@@ -1,4 +1,4 @@
-=== UltraAddons - Elementor Addons (Header Footer Builder, Custom Font, Custom CSS,Woo Widget, Menu Builder, Anywhere Elementor Shortcode) ===
+=== UltraAddons for Elementor ===
 
 Plugin Name: Addons - UltraAddons Elementor Lite
 Author: codersaiful
