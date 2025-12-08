@@ -166,6 +166,11 @@ Yes. Many filters and action hooks are available for customization.
 
 == Changelog ==
 
+= 2.0.1 =  
+* Major Update: Code refactored and optimized.
+* Bug fixes.
+* Performance improved.
+
 = 2.0.0 =  
 * Advance Pricing Table issue fixed (discounted price).  
 * Bug fixes & code optimization.
@@ -207,7 +212,45 @@ Yes. Many filters and action hooks are available for customization.
 * [Added]: New Forms  
 * [Fixed]: Various bug fixes
 
-... (older entries unchanged)
 
-= 1.0.0 =  
+= 1.0.9 =
+
+* [Added]: Portfolio Widget (pro)
+* [Added]: Animated Headline Widget (pro)
+* [Added]: Drop Cap Widget (free)
+* [Added]: Product Accordion Widget (pro)
+* [Added]: Image Accordion Widget (pro)
+* [Added]: Timeline (pro)
+* [Added]: Floating Effect Extension (free)
+* [Added]: Custom CSS Extension (free)
+* [Fixed]: Custom css issue fixed
+* [Fixed]: Pro widget list showing issue fixed
+
+= 1.0.7 =
+
+ * Bug Fixed
+
+= 1.0.3 =
+
+* [Added]: Icon Box Elementor Widget Added.
+* [Added]: Shortcode for Elementor Widget/Template.
+* [Fixed]: Slider Issue Fixed.
+* [Fixed]: Bug Fixed.
+
+= 1.0.2 =
+
+* [Added]: Price Table Widget.
+* [Fixed]: Widget On/Off issue fixed.
+
+= 1.0.1 =
+
+* [Added]: New widget for Woo Product Table
+* [Added]: Header Footer Features
+* [Added]: WC Cart Widget
+* [Added]: WP Menu Widget
+* [Added]: Compatibility for Medilac Theme
+* [Fixed]: Bug Fix
+
+= 1.0.0 =
+
 * Initial release
