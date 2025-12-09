@@ -355,9 +355,50 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
         $font_name = $term->name;
         $trangient_name = "ua_font_trangient_" . $font_name;
         if( isset( $_POST[self::$meta_key] ) && is_array( $_POST[self::$meta_key] ) ){
-            $meta_value = $_POST[self::$meta_key];
+            $meta_value = array();
+            
+            // Sanitize fallback field
+            if ( isset( $_POST[self::$meta_key]['fallback'] ) ) {
+                $meta_value['fallback'] = sanitize_text_field( wp_unslash( $_POST[self::$meta_key]['fallback'] ) );
+            }
+            
+            // Sanitize display field
+            if ( isset( $_POST[self::$meta_key]['display'] ) ) {
+                $meta_value['display'] = sanitize_text_field( wp_unslash( $_POST[self::$meta_key]['display'] ) );
+            }
+            
+            // Sanitize variants array
+            if ( isset( $_POST[self::$meta_key]['variants'] ) && is_array( $_POST[self::$meta_key]['variants'] ) ) {
+                $meta_value['variants'] = array();
+                foreach ( $_POST[self::$meta_key]['variants'] as $variant_key => $variant ) {
+                    if ( ! is_array( $variant ) ) {
+                        continue;
+                    }
+                    
+                    $sanitized_variant = array();
+                    
+                    // Sanitize weight
+                    if ( isset( $variant['weight'] ) ) {
+                        $sanitized_variant['weight'] = absint( $variant['weight'] );
+                    }
+                    
+                    // Sanitize format array
+                    if ( isset( $variant['format'] ) && is_array( $variant['format'] ) ) {
+                        $sanitized_variant['format'] = array_map( 'sanitize_text_field', array_map( 'wp_unslash', $variant['format'] ) );
+                    }
+                    
+                    // Sanitize URL array
+                    if ( isset( $variant['url'] ) && is_array( $variant['url'] ) ) {
+                        $sanitized_variant['url'] = array_map( 'esc_url_raw', array_map( 'wp_unslash', $variant['url'] ) );
+                    }
+                    
+                    $meta_value['variants'][] = $sanitized_variant;
+                }
+            }
+            
             update_term_meta( $term_id, self::$meta_key, $meta_value );
-            set_transient( $trangient_name, $fonts_args );
+            // Note: $fonts_args is not defined, so commenting out the transient line
+            // set_transient( $trangient_name, $fonts_args );
         }
     }
 

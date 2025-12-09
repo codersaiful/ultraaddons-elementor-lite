@@ -497,7 +497,17 @@ class Header_Footer_Post{
 			update_post_meta( $post_id, 'ua_template_type', esc_attr( sanitize_text_field( $_POST['ua_template_type'] ?? '' ) ) );
 		}
 		if ( isset( $_POST['ua_display'] ) ) {
-			$display = $_POST['ua_display'];
+			$display = array();
+			
+			// Sanitize the 'rule' array if present
+			if ( isset( $_POST['ua_display']['rule'] ) && is_array( $_POST['ua_display']['rule'] ) ) {
+				$display['rule'] = array_map( 'sanitize_text_field', wp_unslash( $_POST['ua_display']['rule'] ) );
+			}
+			
+			// Sanitize the 'way' field if present
+			if ( isset( $_POST['ua_display']['way'] ) ) {
+				$display['way'] = sanitize_text_field( wp_unslash( $_POST['ua_display']['way'] ) );
+			}
 			
 			update_post_meta( $post_id, 'ua_display', $display );
 		}else{
