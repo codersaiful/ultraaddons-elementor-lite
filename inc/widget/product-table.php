@@ -193,6 +193,7 @@ class Product_Table extends Base{
                             'label' => __( 'Additional Information', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::RAW_HTML,
                             'raw' => $wpt_extra_msg . sprintf( 
+                                    /** translators: 1: start tag of anchor 2: closing of anchor tag */
                                     __( 'Create %sa new table%s.', 'ultraaddons-elementor-lite' ), 
                                     '<a href="' . admin_url( 'post-new.php?post_type=wpt_product_table' ) . '">',
                                     '</a>'
