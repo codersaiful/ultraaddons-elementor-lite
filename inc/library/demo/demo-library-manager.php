@@ -119,7 +119,9 @@ class Demo_Library_Manager {
 			'dark_stylesheet_url'     	=> self::TEMPLATE_ASSETS . 'css/editor-dark.min.css',
 			'i18n' => [
 				'iconDemoTitlePreviewPage'      => self::$theme_demo['button']['text'],//esc_html__( 'Demo', 'ultraaddons-elementor-lite' ),
+				/* translators: 1: Widget's name */
 				'promotionDemoDialogHeader'     => esc_html__( '%s Widget', 'ultraaddons-elementor-lite' ),
+				/* translators: 1: Widget's name */
 				'promotionDemoDialogMessage'    => esc_html__( 'Use %s widget with other exclusive pro widgets and 100% unique features to extend your toolbox and build sites faster and better.', 'ultraaddons-elementor-lite' ),
 				'demoEmptyTitle'       => esc_html__( 'No Templates Found', 'ultraaddons-elementor-lite' ),
 				'demoEmptyMessage'     => esc_html__( 'Try different category or sync for new templates.', 'ultraaddons-elementor-lite' ),

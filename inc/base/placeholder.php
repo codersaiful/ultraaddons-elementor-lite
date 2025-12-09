@@ -63,6 +63,7 @@ class Placeholder extends Widget_Base{
         
         <div class="ua-plac-content">
             <p><?php
+            /* translators: 1: title */
             echo sprintf( esc_html__( 'Use %s widget and dozens more pro features to extend your toolbox and build sites faster and better.', 'ultraaddons-elementor-lite' ), $this->title );
             ?></p>
             <p>

@@ -534,7 +534,7 @@ function ultraaddons_get_image_cropped_url( $url, $args = array() ) {
 }
 
 function ultraaddons_image_placeholder( $width, $height ) {
-    echo '<img src="' . ULTRA_ADDONS_ASSETS . 'images/no-image.png" width="'.$width.'" height="'.$width.'" alt="' . esc_attr__( 'Thumbnail', 'ultraaddons-elementor-lite' ) . '"/>';
+    echo '<img src="' . esc_attr( ULTRA_ADDONS_ASSETS ) . 'images/no-image.png" width="'.$width.'" height="'.$width.'" alt="' . esc_attr__( 'Thumbnail', 'ultraaddons-elementor-lite' ) . '"/>';
 }
 
 /**

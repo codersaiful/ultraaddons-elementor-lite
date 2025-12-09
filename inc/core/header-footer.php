@@ -187,7 +187,7 @@ class Header_Footer {
 
 
     public static function add_footer() {
-        echo ultraaddons_elementor_display_content( self::get_footer_id() );
+        echo wp_kses_post( ultraaddons_elementor_display_content( self::get_footer_id() ) );
     }
     public static function show_footer( $name, $args ) {
         include ULTRA_ADDONS_DIR . 'template/footer.php';
@@ -203,7 +203,7 @@ class Header_Footer {
     }
     
     public static function add_header() {
-        echo ultraaddons_elementor_display_content( self::get_header_id() );
+        echo wp_kses_post( ultraaddons_elementor_display_content( self::get_header_id() ) );
     }
     public static function show_header( $name, $args ) {
         include ULTRA_ADDONS_DIR . 'template/header.php';

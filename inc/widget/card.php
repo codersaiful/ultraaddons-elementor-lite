@@ -996,7 +996,7 @@ class Card extends Base{
 	?>
 	<div class="ua-c ua-card-content content-<?php echo esc_attr( $align );?>">
 		<div class="ua-card <?php echo esc_attr( $row ); ?> <?php echo esc_attr( $overflow );?>">
-			<div <?php echo $this->get_render_attribute_string( 'card_avatar_class' );?>>
+			<div <?php echo esc_attr($this->get_render_attribute_string( 'card_avatar_class' ));?>>
 			<?php 
 			if(!empty($settings['_ua_card_image']['url'])){
 				echo '<img  class="ua-card-avatar" src="' . esc_url( $settings['_ua_card_image']['url'] ) .'" alt="' . esc_attr( $settings['_ua_card_title'] ) . '">';
