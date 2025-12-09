@@ -376,7 +376,7 @@ class Header_Footer_Post{
 		?>
 		<tr class="ua-options-row display-rule">
 			<td class="ua-options-row-heading">
-				<label for="ua_display_rule"><?php _e( $field_title ); ?></label>
+				<label for="ua_display_rule"><?php _e( $field_title, 'ultraaddons-elementor-lite' ); ?></label>
 			</td>
 			<td class="ua-options-row-content">
 				

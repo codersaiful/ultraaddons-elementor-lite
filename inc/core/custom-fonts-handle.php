@@ -72,13 +72,13 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
         <style>.form-field.term-description-wrap,.form-field.term-slug-wrap{display: none !important;}</style>
         
         <div class="form-field">
-            <label for="font-fallback"><?php echo esc_html__( 'Font Fallback' ); ?></label>
+            <label for="font-fallback"><?php echo esc_html__( 'Font Fallback', 'ultraaddons-elementor-lite' ); ?></label>
             <input name="ua_fonts[fallback]" type="text" id="font-fallback">
             <p></p>
         </div> 
 
         <div class="form-field">
-            <label for="font-display"><?php echo esc_html__( 'Font Display' ); ?></label>
+            <label for="font-display"><?php echo esc_html__( 'Font Display', 'ultraaddons-elementor-lite' ); ?></label>
             <?php self::render_font_dsplay(); ?>
             <p></p>
         </div> 
@@ -107,7 +107,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
         <style>.form-field.term-description-wrap,.form-field.term-slug-wrap{display: none !important;}</style>
         <tr class="form-field">
             <th>
-            <label for="font-fallback"><?php echo esc_html__( 'Font Fallback' ); ?></label>
+            <label for="font-fallback"><?php echo esc_html__( 'Font Fallback', 'ultraaddons-elementor-lite' ); ?></label>
             </th>
             <td>
                 <input name="ua_fonts[fallback]" type="text" id="font-fallback" value="<?php echo esc_attr( $font_fallback ); ?>">
@@ -117,7 +117,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
 
         <tr class="form-field">
             <th>
-                <label for="font-display"><?php echo esc_html__( 'Font Display' ); ?></label>
+                <label for="font-display"><?php echo esc_html__( 'Font Display', 'ultraaddons-elementor-lite' ); ?></label>
             </th>
             <td>
                 <?php self::render_font_dsplay( $font_display ); ?>
@@ -182,13 +182,13 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
             <div class="font-variation-wrapper" data-variant_key="<?php echo esc_attr( $variant_key ); ?>">
                 <span class="ua-close-variant"><i><?php echo esc_html__( 'Delete Variant', 'ultraaddons-elementor-lite' ); ?> </i>&#9986;</span>
                 <div class="form-field">
-                    <label for="font-weight-<?php echo esc_attr( $variant_key ); ?>"><?php echo esc_html__( 'Font Weight' ); ?></label>
+                    <label for="font-weight-<?php echo esc_attr( $variant_key ); ?>"><?php echo esc_html__( 'Font Weight', 'ultraaddons-elementor-lite' ); ?></label>
                     <?php self::render_font_weight( $font_weight, $name_prefix . '[weight]', 'font-weight-' . $variant_key ); ?>
-                    <p class="ua-field-notice"><?php echo esc_html__( 'Font weight for this variant.' ); ?></p>
+                    <p class="ua-field-notice"><?php echo esc_html__( 'Font weight for this variant.', 'ultraaddons-elementor-lite' ); ?></p>
                 </div> 
                 
                 <div class="fonts-upload-wrapper form-field">
-                    <label><?php echo esc_html__( 'Font File Upload' ); ?> <span class="font-upload-add-font-button">+ add new font file</span></label>
+                    <label><?php echo esc_html__( 'Font File Upload', 'ultraaddons-elementor-lite' ); ?> <span class="font-upload-add-font-button">+ add new font file</span></label>
                     
                     <div class="fonts-upload-wrapper-inside">
                     <?php
@@ -210,7 +210,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
                     
                     ?>
                     </div>
-                    <p class="ua-field-notice"><?php echo esc_html__( 'Upload your webfonts. Supported font type/format: [woff2,woff,ttf and otf].' ); ?></p>
+                    <p class="ua-field-notice"><?php echo esc_html__( 'Upload your webfonts. Supported font type/format: [woff2,woff,ttf and otf].', 'ultraaddons-elementor-lite' ); ?></p>
 
                 </div>
 
