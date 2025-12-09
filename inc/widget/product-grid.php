@@ -170,7 +170,7 @@ class Product_Grid extends Base{
 				'label' => __( 'Product by included IDs', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'placeholder' => __( '1,2,3,4,20,33', 'ultraaddons-elementor-lite' ),
-				'description' => __('Add multiple ids by comma separated.'),
+				'description' => __(  'Add multiple ids by comma separated.', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
@@ -180,7 +180,7 @@ class Product_Grid extends Base{
 				'label' => __( 'Product by excluded IDs', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'placeholder' => __( '1,2,3,4,20,33', 'ultraaddons-elementor-lite' ),
-				'description' => __('Add multiple ids by comma separated.'),
+				'description' => __(  'Add multiple ids by comma separated.', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
@@ -1116,8 +1116,8 @@ class Product_Grid extends Base{
                 'format' => '/page/%#%',
                 'current' => $current_page,
                 'total' => $total_pages,
-                'prev_text'    => __('« Prev'),
-                'next_text'    => __('Next »'),
+                'prev_text'    => __(  '« Prev', 'ultraaddons-elementor-lite' ),
+                'next_text'    => __(  'Next »', 'ultraaddons-elementor-lite' ),
             ));
         }
         ?>

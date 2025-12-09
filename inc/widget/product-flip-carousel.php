@@ -477,7 +477,7 @@ class Product_Flip_Carousel extends Base{
 				'label' => __( 'Product by included IDs', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'placeholder' => __( '1,2,3,4,20,33', 'ultraaddons-elementor-lite' ),
-				'description' => __('Add multiple ids by comma separated.'),
+				'description' => __(  'Add multiple ids by comma separated.', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
@@ -487,7 +487,7 @@ class Product_Flip_Carousel extends Base{
 				'label' => __( 'Product by excluded IDs', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'placeholder' => __( '1,2,3,4,20,33', 'ultraaddons-elementor-lite' ),
-				'description' => __('Add multiple ids by comma separated.'),
+				'description' => __(  'Add multiple ids by comma separated.', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
