@@ -734,7 +734,7 @@ class Image_Box extends Base{
             <div class="image-wrap">
                 <?php 
                 if(!empty($settings['ua_image_box_image']['url'])){
-                    echo '<img  class="ua-image" src="' . $settings['ua_image_box_image']['url'] .'">';
+                    echo '<img  class="ua-image" src="' . esc_url( $settings['ua_image_box_image']['url'] ) .'" alt="' . esc_attr( $settings['title_text'] ) . '">';
                 }
                 ?>
                 <?php if(! empty($settings['icon']['value']) && $settings['image_box_style']=='1' ){ ?>
@@ -747,19 +747,19 @@ class Image_Box extends Base{
           
             <div class="image-box-content-wrap">
                 <?php 
-                echo '<a href="' . $url. '"' . $target . $nofollow . ' class="ua-image-box-title-link">
+                echo '<a href="' . esc_url( $url ). '"' . $target . $nofollow . ' class="ua-image-box-title-link">
                     <h2 class="ua-image-box-title">
-                         ' . $settings['title_text'] .'
+                         ' . esc_html( $settings['title_text'] ) .'
                     </h2>
                 </a>';
                 ?>
                 <div class="ua-image-box-content">
-                    <?php echo $settings['description_text']; ?>
+                    <?php echo wp_kses_post( $settings['description_text'] ); ?>
                     <?php 
                     if(!empty($url && $settings['image_box_style']=='2' || $settings['image_box_style']=='3' )){
                         echo '<div class="btn-wrap"> 
-                                <a href="' . $url. '"' . $target . $nofollow . ' class="ua-img-box-button">
-                                ' .  $settings['_button_text'] . '
+                                <a href="' . esc_url( $url ). '"' . $target . $nofollow . ' class="ua-img-box-button">
+                                ' .  esc_html( $settings['_button_text'] ) . '
                                 </a>
                             </div>';
                         }

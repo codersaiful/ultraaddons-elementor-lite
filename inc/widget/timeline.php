@@ -131,12 +131,12 @@ class Timeline extends Base{
     
                         /*Date*/
                         $date_format = !empty( $settings['date_format']) ?  $settings['date_format'] : 'F j, Y';
-                        $date = date( $date_format, strtotime($item['_ua_timeline_time']));
+                        $date = wp_date( $date_format, strtotime($item['_ua_timeline_time']));
                         if('timeline_text' == $item['_ua_timeline_style']){
                             $date = $item['_ua_timeline_time_text'];
                         }
                         $time_format = !empty( $settings['time_format']) ?  $settings['time_format'] : 'g:i a';
-                        $time = 'timeline_calender' == $item['_ua_timeline_style'] ? date($time_format, strtotime($item['_ua_timeline_time'])) : '';
+                        $time = 'timeline_calender' == $item['_ua_timeline_style'] ? wp_date($time_format, strtotime($item['_ua_timeline_time'])) : '';
     
                         ?>
                     <div <?php echo $timeline_inner_wraper; ?>>
@@ -216,12 +216,12 @@ class Timeline extends Base{
 
                         /*Date*/
                         $date_format = !empty( $settings['date_format']) ?  $settings['date_format'] : 'F j, Y';
-                        $date = date( $date_format, strtotime($item['_ua_timeline_time']));
+                        $date = wp_date( $date_format, strtotime($item['_ua_timeline_time']));
                         if('timeline_text' == $item['_ua_timeline_style']){
                             $date = $item['_ua_timeline_time_text'];
                         }
                         $time_format = !empty( $settings['time_format']) ?  $settings['time_format'] : 'g:i a';
-                        $time = 'timeline_calender' == $item['_ua_timeline_style'] ? date($time_format, strtotime($item['_ua_timeline_time'])) : '';
+                        $time = 'timeline_calender' == $item['_ua_timeline_style'] ? wp_date($time_format, strtotime($item['_ua_timeline_time'])) : '';
 
                         /*Icon*/
 
@@ -349,12 +349,12 @@ class Timeline extends Base{
 
                         /*Date*/
                         $date_format = !empty( $settings['date_format']) ?  $settings['date_format'] : 'F j, Y';
-                        $date = date( $date_format, strtotime($item['_ua_timeline_time']));
+                        $date = wp_date( $date_format, strtotime($item['_ua_timeline_time']));
                         if('timeline_text' == $item['_ua_timeline_style']){
                             $date = $item['_ua_timeline_time_text'];
                         }
                         $time_format = !empty( $settings['time_format']) ?  $settings['time_format'] : 'g:i a';
-                        $time = 'timeline_calender' == $item['_ua_timeline_style'] ? date($time_format, strtotime($item['_ua_timeline_time'])) : '';
+                        $time = 'timeline_calender' == $item['_ua_timeline_style'] ? wp_date($time_format, strtotime($item['_ua_timeline_time'])) : '';
 
                         /*Icon*/
 
@@ -514,7 +514,7 @@ class Timeline extends Base{
 				'label' => __('Calender', 'ultraaddons-elementor-lite'),
 				'show_label' => false,
 				'type' => Controls_Manager::DATE_TIME,
-				'default' => date('M d Y g:i a'),
+				'default' => wp_date('M d Y g:i a'),
 				'condition' => [
 					'_ua_timeline_style' => ['timeline_calender'],
 				],
@@ -720,7 +720,7 @@ class Timeline extends Base{
 				'label' => __('Calender', 'ultraaddons-elementor-lite'),
 				'show_label' => false,
 				'type' => Controls_Manager::DATE_TIME,
-				'default' => date('M d Y g:i a'),
+				'default' => wp_date('M d Y g:i a'),
 				'condition' => [
 					'_ua_timeline_style' => ['timeline_calender'],
 				],
@@ -899,15 +899,15 @@ class Timeline extends Base{
 				'label' => __('Date Format', 'ultraaddons-elementor-lite'),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
-					'd M Y'     => date("d M Y"),
-					'm.d.y'     => date("m.d.y"),
-					'j, n, Y'   => date("j, n, Y"),
-					'Ymd'       => date("Ymd"),
-					'D M j, Y'  => date("D M j, Y"),
-					'F j, Y'    => date("F j, Y"),
-					'j M, Y'    => date("j M, Y"),
-					'Y-m-d'     => date("Y-m-d"),
-					'Y/m/d'     => date("Y/m/d"),
+					'd M Y'     => wp_date("d M Y"),
+					'm.d.y'     => wp_date("m.d.y"),
+					'j, n, Y'   => wp_date("j, n, Y"),
+					'Ymd'       => wp_date("Ymd"),
+					'D M j, Y'  => wp_date("D M j, Y"),
+					'F j, Y'    => wp_date("F j, Y"),
+					'j M, Y'    => wp_date("j M, Y"),
+					'Y-m-d'     => wp_date("Y-m-d"),
+					'Y/m/d'     => wp_date("Y/m/d"),
 				],
 				'default' => 'd M Y',
 				'condition' => [
@@ -922,18 +922,18 @@ class Timeline extends Base{
 				'label' => __('Time Format', 'ultraaddons-elementor-lite'),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
-					'g:i a'     => date("g:i a"),
-					'g:i A'     => date("g:i A"),
-					'g:i'       => date("g:i"),
-					'G:i a'     => date("G:i a"),
-					'G:i A'     => date("G:i A"),
-					'G:i'       => date("G:i"),
-					'H:i:s a'   => date("H:i:s a"),
-					'H:i:s A'   => date("H:i:s A"),
-					'H:i:s'     => date("H:i:s"),
-					'H:m:s a'   => date("H:m:s a"),
-					'H:m:s A'   => date("H:m:s A"),
-					'H:m:s'     => date("H:m:s"),
+					'g:i a'     => wp_date("g:i a"),
+					'g:i A'     => wp_date("g:i A"),
+					'g:i'       => wp_date("g:i"),
+					'G:i a'     => wp_date("G:i a"),
+					'G:i A'     => wp_date("G:i A"),
+					'G:i'       => wp_date("G:i"),
+					'H:i:s a'   => wp_date("H:i:s a"),
+					'H:i:s A'   => wp_date("H:i:s A"),
+					'H:i:s'     => wp_date("H:i:s"),
+					'H:m:s a'   => wp_date("H:m:s a"),
+					'H:m:s A'   => wp_date("H:m:s A"),
+					'H:m:s'     => wp_date("H:m:s"),
 				],
 				'default' => 'g:i a',
 				'condition' => [

@@ -97,7 +97,7 @@ trait Button_Helper{
                                     <?php endif; ?>
                             </span>
                             <?php endif; ?>
-                            <span <?php echo $this->get_render_attribute_string( 'btn_text' ); ?>><?php echo $settings['btn_text']; ?></span>
+                            <span <?php echo $this->get_render_attribute_string( 'btn_text' ); ?>><?php echo esc_html( $settings['btn_text'] ); ?></span>
                     </span>
                 </a>
         </div>

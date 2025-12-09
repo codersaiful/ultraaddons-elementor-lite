@@ -603,8 +603,8 @@ class Work_Hour extends Base{
 				 * Checking condition format 24 hrs/12 hrs.
 				 */
 				$time_format = ($settings['_ua_wh_day_format'] =='yes')
-				? date("H:i", $start_time) . " - " .  date("H:i", $end_time) 
-				: date("h:i A", $start_time) . " - " .  date("h:i A", $end_time);
+				? wp_date("H:i", $start_time) . " - " .  wp_date("H:i", $end_time) 
+				: wp_date("h:i A", $start_time) . " - " .  wp_date("h:i A", $end_time);
 				echo esc_html( $time_format );
 				?>
 			</span>

@@ -338,7 +338,7 @@ class Product_Carousel extends Base{
 			'indicator_part',
 			[
 				'type' => Controls_Manager::RAW_HTML,
-				'raw' => __( '<h2 class="ua-inner-text">Indicators Settings</h2>', 'ultraaddons-elementor-lite' ),
+				'raw' => '<h2 class="ua-inner-text">' . esc_html__( 'Indicators Settings', 'ultraaddons-elementor-lite' ) . '</h2>',
 			]
 		);
 		
