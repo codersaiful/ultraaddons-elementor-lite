@@ -1,6 +1,8 @@
 <?php
 namespace UltraAddons\WP;
-
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly.
+}
 use UltraAddons;
 use UltraAddons\Classes\Template_List;
 use UltraAddons\Core\Header_Footer;

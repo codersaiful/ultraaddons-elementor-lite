@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly.
+}
 /**
  * This Template for Elementor Editor Page.
  * I mean: when Header Footer post will show on Single Page

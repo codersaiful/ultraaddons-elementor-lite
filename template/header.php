@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly.
+}
 use \UltraAddons\Core\Header_Footer;
 use \UltraAddons\Classes\Header_Footer_Render as HF_Render;
 
