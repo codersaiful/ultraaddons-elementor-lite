@@ -36,7 +36,7 @@ class Card extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua', 'card', 'profile', 'info box' ];
+        return [ 'ultraaddons-elementor-lite', 'ua', 'card', 'profile', 'info box' ];
     }
 	
 	 /**
@@ -75,7 +75,7 @@ class Card extends Base{
 		
             '_ua_card_content_tab',
             [
-                'label'     => esc_html__( 'Content', 'ultraaddons' ),
+                'label'     => esc_html__( 'Content', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -83,7 +83,7 @@ class Card extends Base{
 		$this->add_control(
 			'_ua_card_image',
 			[
-				'label' => __( 'Card Image', 'ultraaddons' ),
+				'label' => __( 'Card Image', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::MEDIA,
 				 'default' => [
 						'url' => $placeholder_image,//Utils::get_placeholder_image_src(),
@@ -97,30 +97,30 @@ class Card extends Base{
 		$this->add_control(
 			'_ua_card_title',
 			[
-				'label' => __( 'Card Title', 'ultraaddons' ),
+				'label' => __( 'Card Title', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Jhone Doe', 'ultraaddons' ),
-				'placeholder' => __( 'Enter your title', 'ultraaddons' ),
+				'default' => __( 'Jhone Doe', 'ultraaddons-elementor-lite' ),
+				'placeholder' => __( 'Enter your title', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
 		$this->add_control(
 			'_ua_card_sub_title',
 			[
-				'label' => __( 'Card Sub Title', 'ultraaddons' ),
+				'label' => __( 'Card Sub Title', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'WordPress Developer', 'ultraaddons' ),
-				'placeholder' => __( 'Enter your title', 'ultraaddons' ),
+				'default' => __( 'WordPress Developer', 'ultraaddons-elementor-lite' ),
+				'placeholder' => __( 'Enter your title', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
 		$this->add_control(
 			'_ua_card_content',
 			[
-				'label' => __( 'Card Content', 'ultraaddons' ),
+				'label' => __( 'Card Content', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXTAREA,
-				'default' => __( 'Minim dolor in amet nulla laboris enim dolore consequat proident fugiat culpa eiusmod.', 'ultraaddons' ),
-				'placeholder' => __( 'Enter Content', 'ultraaddons' ),
+				'default' => __( 'Minim dolor in amet nulla laboris enim dolore consequat proident fugiat culpa eiusmod.', 'ultraaddons-elementor-lite' ),
+				'placeholder' => __( 'Enter Content', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 				'separator' =>'after'
 			]
@@ -128,18 +128,18 @@ class Card extends Base{
 		$this->add_control(
 			'_ua_card_button',
 			[
-				'label' => __( 'Button Text', 'ultraaddons' ),
+				'label' => __( 'Button Text', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'View Profile', 'ultraaddons' ),
+				'default' => __( 'View Profile', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
 		$this->add_control(
 			'_ua_card_button_link',
 			[
-				'label' => __( 'Link', 'ultraaddons' ),
+				'label' => __( 'Link', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::URL,
-				'placeholder' => __( 'https://your-link.com', 'ultraaddons' ),
+				'placeholder' => __( 'https://your-link.com', 'ultraaddons-elementor-lite' ),
 				'show_external' => true,
 				'separator' =>'after',
 				'default' => [
@@ -152,10 +152,10 @@ class Card extends Base{
 		$this->add_control(
 			'show_price',
 			[
-				'label' => esc_html__( 'Show Price & Wish', 'ultraaddons' ),
+				'label' => esc_html__( 'Show Price & Wish', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Show', 'ultraaddons' ),
-				'label_off' => esc_html__( 'Hide', 'ultraaddons' ),
+				'label_on' => esc_html__( 'Show', 'ultraaddons-elementor-lite' ),
+				'label_off' => esc_html__( 'Hide', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'no',
 			]
@@ -163,7 +163,7 @@ class Card extends Base{
 		$this->add_control(
 			'_ua_card_price',
 			[
-				'label' => __( 'Price', 'ultraaddons' ),
+				'label' => __( 'Price', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
 				'label_block' => false,
 				'condition'=>[
@@ -174,9 +174,9 @@ class Card extends Base{
 		$this->add_control(
 			'_ua_card_wish_link',
 			[
-				'label' => __( 'Wish Link', 'ultraaddons' ),
+				'label' => __( 'Wish Link', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::URL,
-				'placeholder' => __( 'https://your-link.com', 'ultraaddons' ),
+				'placeholder' => __( 'https://your-link.com', 'ultraaddons-elementor-lite' ),
 				'show_external' => true,
 				'separator' =>'before',
 				'default' => [
@@ -192,7 +192,7 @@ class Card extends Base{
 		$this->add_control(
 			'wish_icon',
 			[
-				'label' => esc_html__( 'Icon', 'ultraaddons' ),
+				'label' => esc_html__( 'Icon', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::ICONS,
 				'default' => [
 					'value' => 'fas fa-heart',
@@ -212,17 +212,17 @@ class Card extends Base{
 		$this->start_controls_section(
 		'_ua_card_content_settings_tab',
             [
-                'label'     => esc_html__( 'Content Settings', 'ultraaddons' ),
+                'label'     => esc_html__( 'Content Settings', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
 		$this->add_control(
 			'_ua_card_direction',
 			[
-				'label' => __( 'Direction', 'ultraaddons' ),
+				'label' => __( 'Direction', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Row', 'ultraaddons' ),
-				'label_off' => __( 'Col', 'ultraaddons' ),
+				'label_on' => __( 'Row', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'Col', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'no',
 			]
@@ -231,15 +231,15 @@ class Card extends Base{
 		$this->add_responsive_control(
 			'_ua_card_order',
 			[
-				'label' => esc_html__( 'Column Order', 'ultraaddons' ),
+				'label' => esc_html__( 'Column Order', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'title' => esc_html__( 'Left', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-arrow-left',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'title' => esc_html__( 'Right', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-arrow-right',
 					],
 				
@@ -253,19 +253,19 @@ class Card extends Base{
 		$this->add_responsive_control(
 			'_ua_card_justify_content',
 			[
-				'label' => esc_html__( 'Justify Content', 'ultraaddons' ),
+				'label' => esc_html__( 'Justify Content', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'start' => [
-						'title' => esc_html__( 'Top', 'ultraaddons' ),
+						'title' => esc_html__( 'Top', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-v-align-top',
 					],
 					'center' => [
-						'title' => esc_html__( 'Middle', 'ultraaddons' ),
+						'title' => esc_html__( 'Middle', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-v-align-middle',
 					],
 					'end' => [
-						'title' => esc_html__( 'Bottom', 'ultraaddons' ),
+						'title' => esc_html__( 'Bottom', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-v-align-bottom',
 					],
 				
@@ -279,19 +279,19 @@ class Card extends Base{
 		$this->add_responsive_control(
 			'_ua_card_text_alignment',
 			[
-				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
+				'label' => esc_html__( 'Alignment', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'title' => esc_html__( 'Left', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'ultraaddons' ),
+						'title' => esc_html__( 'Center', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'title' => esc_html__( 'Right', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-right',
 					]
 				],
@@ -305,7 +305,7 @@ class Card extends Base{
 		$this->add_control(
 			'_ua_card_title_tag',
 			[
-				'label' => esc_html__( 'Select Title Tag', 'ultraaddons' ),
+				'label' => esc_html__( 'Select Title Tag', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'h1' => 'H1',
@@ -322,7 +322,7 @@ class Card extends Base{
 		$this->add_control(
 			'_ua_card_sub_title_tag',
 			[
-				'label' => esc_html__( 'Select Sub Title Tag', 'ultraaddons' ),
+				'label' => esc_html__( 'Select Sub Title Tag', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'h1' => 'H1',
@@ -339,10 +339,10 @@ class Card extends Base{
 		$this->add_control(
 			'_ua_card_overflow',
 			[
-				'label' => __( 'Overflow', 'ultraaddons' ),
+				'label' => __( 'Overflow', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Visible', 'ultraaddons' ),
-				'label_off' => __( 'Hidden', 'ultraaddons' ),
+				'label_on' => __( 'Visible', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'Hidden', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'no',
 			]
@@ -357,14 +357,14 @@ class Card extends Base{
        $this->start_controls_section(
             '_ua_card_style',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
 		$this->add_responsive_control(
 			'_ua_image_radius',
 			[
-				'label'       => esc_html__( 'Image Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Image Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -381,7 +381,7 @@ class Card extends Base{
 		$this->add_control(
 			'_ua_card_image_height',
 			[
-				'label' => __( 'Image Size', 'ultraaddons' ),
+				'label' => __( 'Image Size', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px'],
 				'range' => [
@@ -403,7 +403,7 @@ class Card extends Base{
 		$this->add_responsive_control(
 			'_ua_card_image_margin',
 			[
-				'label'       => esc_html__( 'Image Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Image Margin', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -421,7 +421,7 @@ class Card extends Base{
 		$this->add_responsive_control(
 			'_ua_card_image_padding',
 			[
-				'label'       => esc_html__( 'Image Padding', 'ultraaddons' ),
+				'label'       => esc_html__( 'Image Padding', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -446,7 +446,7 @@ class Card extends Base{
         );
 		$this->add_control(
 			'_ua_card_title_color', [
-				'label' => __( 'Title Color', 'ultraaddons' ),
+				'label' => __( 'Title Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-card-title' => 'color: {{VALUE}};',
@@ -456,7 +456,7 @@ class Card extends Base{
 		$this->add_responsive_control(
 			'_ua_card_title_margin',
 			[
-				'label'       => esc_html__( 'Title Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Title Margin', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -482,7 +482,7 @@ class Card extends Base{
         );
 		$this->add_control(
 			'_ua_card_sub_title_color', [
-				'label' => __( 'Sub Title Color', 'ultraaddons' ),
+				'label' => __( 'Sub Title Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-card-sub-title' => 'color: {{VALUE}};',
@@ -492,7 +492,7 @@ class Card extends Base{
 		$this->add_responsive_control(
 			'_ua_card_sub_title_margin',
 			[
-				'label'       => esc_html__( 'Sub Title Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Sub Title Margin', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -519,7 +519,7 @@ class Card extends Base{
 
 		$this->add_control(
 			'_ua_card_content_color', [
-				'label' => __( 'Content Color', 'ultraaddons' ),
+				'label' => __( 'Content Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-card-text' => 'color: {{VALUE}};',
@@ -530,7 +530,7 @@ class Card extends Base{
 		$this->add_responsive_control(
 			'_ua_card_content_padding',
 			[
-				'label'       => esc_html__( 'Content Padding', 'ultraaddons' ),
+				'label'       => esc_html__( 'Content Padding', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -554,7 +554,7 @@ class Card extends Base{
        $this->start_controls_section(
             '_ua_card_button_style',
             [
-                'label'     => esc_html__( 'Button', 'ultraaddons' ),
+                'label'     => esc_html__( 'Button', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -567,7 +567,7 @@ class Card extends Base{
 		$this->start_controls_tab(
 			'style_normal_tab',
 			[
-				'label' => __( 'Normal', 'ultraaddons' ),
+				'label' => __( 'Normal', 'ultraaddons-elementor-lite' ),
 			]
 		);
 		$this->add_group_control(
@@ -583,14 +583,14 @@ class Card extends Base{
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'btn_background',
-				'label' => __( 'Button Background', 'ultraaddons' ),
+				'label' => __( 'Button Background', 'ultraaddons-elementor-lite' ),
 				'types' => [ 'classic', 'gradient'],
 				'selector' => '{{WRAPPER}} .ua-card-button',
 			]
 		);
 		$this->add_control(
 			'_ua_btn_text_color', [
-				'label' => __( 'Button Text Color', 'ultraaddons' ),
+				'label' => __( 'Button Text Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-card-button' => 'color: {{VALUE}};',
@@ -601,7 +601,7 @@ class Card extends Base{
 		$this->add_responsive_control(
 			'_ua_card_btn_radius',
 			[
-				'label'       => esc_html__( 'Button Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Button Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -618,7 +618,7 @@ class Card extends Base{
 		$this->add_responsive_control(
 			'_ua_card_btn_padding',
 			[
-				'label'       => esc_html__( 'Button Padding', 'ultraaddons' ),
+				'label'       => esc_html__( 'Button Padding', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -639,12 +639,12 @@ class Card extends Base{
 		$this->start_controls_tab(
 			'style_hover_tab',
 			[
-				'label' => __( 'Hover', 'ultraaddons' ),
+				'label' => __( 'Hover', 'ultraaddons-elementor-lite' ),
 			]
 		);
 		$this->add_control(
 			'_ua_btn_text_hover_color', [
-				'label' => __( 'Button Text Hover Color', 'ultraaddons' ),
+				'label' => __( 'Button Text Hover Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-card-button:hover' => 'color: {{VALUE}};',
@@ -654,7 +654,7 @@ class Card extends Base{
         );
 		$this->add_control(
 			'_ua_btn_bg_hover_color', [
-				'label' => __( 'Button Background', 'ultraaddons' ),
+				'label' => __( 'Button Background', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-card-button:hover' => 'background: {{VALUE}};',
@@ -673,7 +673,7 @@ class Card extends Base{
        $this->start_controls_section(
             '_ua_card_box_style',
             [
-                'label'     => esc_html__( 'Box', 'ultraaddons' ),
+                'label'     => esc_html__( 'Box', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -686,7 +686,7 @@ class Card extends Base{
 		$this->start_controls_tab(
 			'box_normal_tab',
 			[
-				'label' => __( 'Normal', 'ultraaddons' ),
+				'label' => __( 'Normal', 'ultraaddons-elementor-lite' ),
 			]
 		);
 		
@@ -694,7 +694,7 @@ class Card extends Base{
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'box_background',
-				'label' => __( 'Box Background', 'ultraaddons' ),
+				'label' => __( 'Box Background', 'ultraaddons-elementor-lite' ),
 				'types' => [ 'classic', 'gradient'],
 				'selector' => '{{WRAPPER}} .ua-card',
 			]
@@ -702,7 +702,7 @@ class Card extends Base{
 		$this->add_responsive_control(
 			'_ua_box_radius',
 			[
-				'label'       => esc_html__( 'Box Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Box Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -720,7 +720,7 @@ class Card extends Base{
 		$this->add_responsive_control(
 			'_ua_box_padding',
 			[
-				'label'       => esc_html__( 'Box Padding', 'ultraaddons' ),
+				'label'       => esc_html__( 'Box Padding', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -739,7 +739,7 @@ class Card extends Base{
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'card_box_shadow',
-				'label' => __( 'Box Shadow', 'ultraaddons' ),
+				'label' => __( 'Box Shadow', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-card',
 			]
 		);
@@ -747,7 +747,7 @@ class Card extends Base{
 			Group_Control_Border::get_type(),
 			[
 				'name' => '_ua_box_border',
-				'label' => __( 'Border', 'ultraaddons' ),
+				'label' => __( 'Border', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-c .ua-card',
 			]
 		);
@@ -758,14 +758,14 @@ class Card extends Base{
 		$this->start_controls_tab(
 			'box_hover_tab',
 			[
-				'label' => __( 'Hover', 'ultraaddons' ),
+				'label' => __( 'Hover', 'ultraaddons-elementor-lite' ),
 			]
 		);
 		$this->add_group_control(
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'box_hover_background',
-				'label' => __( 'Box Background', 'ultraaddons' ),
+				'label' => __( 'Box Background', 'ultraaddons-elementor-lite' ),
 				'types' => [ 'classic', 'gradient'],
 				'selector' => '{{WRAPPER}} .ua-card:hover',
 			]
@@ -774,7 +774,7 @@ class Card extends Base{
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'card_box_hover_shadow',
-				'label' => __( 'Box Shadow', 'ultraaddons' ),
+				'label' => __( 'Box Shadow', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-card:hover',
 			]
 		);
@@ -790,7 +790,7 @@ class Card extends Base{
        $this->start_controls_section(
             '_ua_card_price_style',
             [
-                'label'     => esc_html__( 'Price', 'ultraaddons' ),
+                'label'     => esc_html__( 'Price', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
 				'condition'=>[
 					'show_price'=>'yes'
@@ -808,7 +808,7 @@ class Card extends Base{
         );
 		$this->add_control(
 			'_ua_card_price_color', [
-				'label' => __( 'Price Color', 'ultraaddons' ),
+				'label' => __( 'Price Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .card-price' => 'color: {{VALUE}};',
@@ -818,7 +818,7 @@ class Card extends Base{
 		/* $this->add_responsive_control(
 			'_ua_card_price_margin',
 			[
-				'label'       => esc_html__( 'Price Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Price Margin', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -844,7 +844,7 @@ class Card extends Base{
        $this->start_controls_section(
             '_ua_card_wish_style',
             [
-                'label'     => esc_html__( 'Wish', 'ultraaddons' ),
+                'label'     => esc_html__( 'Wish', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
 				'condition'=>[
 					'show_price'=>'yes'
@@ -853,7 +853,7 @@ class Card extends Base{
         );
 		$this->add_control(
 			'_ua_card_wish_color', [
-				'label' => __( 'Wish Icon Color', 'ultraaddons' ),
+				'label' => __( 'Wish Icon Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   =>'#ddd',
 				'selectors' => [
@@ -864,7 +864,7 @@ class Card extends Base{
 	/* 	$this->add_responsive_control(
 			'_ua_card_wish_margin',
 			[
-				'label'       => esc_html__( 'Wish Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Wish Margin', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -881,7 +881,7 @@ class Card extends Base{
 		$this->add_control(
 			'_ua_card_wish_icon_size',
 			[
-				'label' => __( 'Icon Size', 'ultraaddons' ),
+				'label' => __( 'Icon Size', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px'],
 				'range' => [
@@ -903,7 +903,7 @@ class Card extends Base{
 		$this->add_responsive_control(
 			'_ua_card_wish_padding',
 			[
-				'label'       => esc_html__( 'Wish Padding', 'ultraaddons' ),
+				'label'       => esc_html__( 'Wish Padding', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -920,7 +920,7 @@ class Card extends Base{
 		$this->add_responsive_control(
 			'_ua_card_wish_radius',
 			[
-				'label'       => esc_html__( 'Wish Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Wish Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -936,7 +936,7 @@ class Card extends Base{
 		);
 		$this->add_control(
 			'_ua_card_wish_bg', [
-				'label' => __( 'Wish Background Color', 'ultraaddons' ),
+				'label' => __( 'Wish Background Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .card-wish a' => 'background-color: {{VALUE}};',

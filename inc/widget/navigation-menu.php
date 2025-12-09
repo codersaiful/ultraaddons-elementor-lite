@@ -62,7 +62,7 @@ class Navigation_Menu extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons','ua', 'nav', 'menu', 'navigation' ];
+        return [ 'ultraaddons-elementor-lite','ua', 'nav', 'menu', 'navigation' ];
     }
     
     
@@ -92,7 +92,7 @@ class Navigation_Menu extends Base{
         $this->start_controls_section(
             'general_content',
             [
-                'label'     => esc_html__( 'Menu', 'ultraaddons' ),
+                'label'     => esc_html__( 'Menu', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -100,20 +100,20 @@ class Navigation_Menu extends Base{
         if ( ! empty( $menus ) ) {
             $this->add_control(
                 'menu',[
-                    'label'        => __( 'Menu', 'ultraaddons' ),
+                    'label'        => __( 'Menu', 'ultraaddons-elementor-lite' ),
                     'type'         => Controls_Manager::SELECT,
                     'options'      => $menus,
                     'default'      => array_keys( $menus )[0],
                     'save_default' => true,
                     'separator'    => 'after',
-                    'description'  => sprintf( __( 'Go to the <a href="%s" target="_blank">Menus screen</a> to manage your menus.', 'ultraaddons' ), admin_url( 'nav-menus.php' ) ),
+                    'description'  => sprintf( __( 'Go to the <a href="%s" target="_blank">Menus screen</a> to manage your menus.', 'ultraaddons-elementor-lite' ), admin_url( 'nav-menus.php' ) ),
                 ]
             );
     } else {
         $this->add_control(
             'menu_error',[
                 'type'            => Controls_Manager::RAW_HTML,
-                'raw'             => sprintf( __( '<strong>There are no menus in your site.</strong><br>Go to the <a href="%s" target="_blank">Menus screen</a> to create one.', 'ultraaddons' ), admin_url( 'nav-menus.php?action=edit&menu=0' ) ),
+                'raw'             => sprintf( __( '<strong>There are no menus in your site.</strong><br>Go to the <a href="%s" target="_blank">Menus screen</a> to create one.', 'ultraaddons-elementor-lite' ), admin_url( 'nav-menus.php?action=edit&menu=0' ) ),
                 'separator'       => 'after',
                 'content_classes' => 'elementor-panel-alert elementor-panel-alert-info',
             ]
@@ -127,7 +127,7 @@ protected function layout_controls() {
     $this->start_controls_section(
         'section_layout',
         [
-            'label' => __( 'Layout', 'ultraaddons' ),
+            'label' => __( 'Layout', 'ultraaddons-elementor-lite' ),
         ]
     );
 
@@ -135,23 +135,23 @@ protected function layout_controls() {
     $this->add_control(
         'navmenu_align',
         [
-            'label'        => __( 'Alignment', 'ultraaddons' ),
+            'label'        => __( 'Alignment', 'ultraaddons-elementor-lite' ),
             'type'         => Controls_Manager::CHOOSE,
             'options'      => [
                 'left'    => [
-                    'title' => __( 'Left', 'ultraaddons' ),
+                    'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
                     'icon'  => 'eicon-h-align-left',
                 ],
                 'center'  => [
-                    'title' => __( 'Center', 'ultraaddons' ),
+                    'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
                     'icon'  => 'eicon-h-align-center',
                 ],
                 'right'   => [
-                    'title' => __( 'Right', 'ultraaddons' ),
+                    'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
                     'icon'  => 'eicon-h-align-right',
                 ],
                 'justify' => [
-                    'title' => __( 'Justify', 'ultraaddons' ),
+                    'title' => __( 'Justify', 'ultraaddons-elementor-lite' ),
                     'icon'  => 'eicon-h-align-stretch',
                 ],
             ],
@@ -164,13 +164,13 @@ protected function layout_controls() {
     $this->add_control(
         'submenu_icon',
         [
-            'label'        => __( 'Submenu Icon', 'ultraaddons' ),
+            'label'        => __( 'Submenu Icon', 'ultraaddons-elementor-lite' ),
             'type'         => Controls_Manager::SELECT,
             'default'      => 'arrow-small',
             'options'      => [
-                'arrow-small'   => __( 'Arrows Small', 'ultraaddons' ),
-                'arrow-big'   => __( 'Arrows BIg', 'ultraaddons' ),
-                'plus'    => __( 'Plus Sign', 'ultraaddons' ),
+                'arrow-small'   => __( 'Arrows Small', 'ultraaddons-elementor-lite' ),
+                'arrow-big'   => __( 'Arrows BIg', 'ultraaddons-elementor-lite' ),
+                'plus'    => __( 'Plus Sign', 'ultraaddons-elementor-lite' ),
             ],
         ]
     );
@@ -178,12 +178,12 @@ protected function layout_controls() {
     $this->add_control(
         'submenu_animation',
         [
-            'label'        => __( 'Submenu Animation', 'ultraaddons' ),
+            'label'        => __( 'Submenu Animation', 'ultraaddons-elementor-lite' ),
             'type'         => Controls_Manager::SELECT,
             'default'      => 'none',
             'options'      => [
-                'none'     => __( 'Default', 'ultraaddons' ),
-                'slide_up' => __( 'Slide Up', 'ultraaddons' ),
+                'none'     => __( 'Default', 'ultraaddons-elementor-lite' ),
+                'slide_up' => __( 'Slide Up', 'ultraaddons-elementor-lite' ),
             ],
             'prefix_class' => '',
         ]
@@ -191,13 +191,13 @@ protected function layout_controls() {
    /*  $this->add_control(
         'breakpoint',
         [
-            'label'        => __( 'Breakpoint', 'ultraaddons' ),
+            'label'        => __( 'Breakpoint', 'ultraaddons-elementor-lite' ),
             'type'         => Controls_Manager::SELECT,
             'default'      => 'mobile',
             'options'      => [
-                '768' => __( 'Mobile (768px >)', 'ultraaddons' ),
-                '1025' => __( 'Tablet (1025px >)', 'ultraaddons' ),
-                'none'   => __( 'None', 'ultraaddons' ),
+                '768' => __( 'Mobile (768px >)', 'ultraaddons-elementor-lite' ),
+                '1025' => __( 'Tablet (1025px >)', 'ultraaddons-elementor-lite' ),
+                'none'   => __( 'None', 'ultraaddons-elementor-lite' ),
             ],
         ]
     ); */
@@ -210,14 +210,14 @@ protected function nav_style() {
     $this->start_controls_section(
         'nav_style',
         [
-            'label'     => esc_html__( 'General Style', 'ultraaddons' ),
+            'label'     => esc_html__( 'General Style', 'ultraaddons-elementor-lite' ),
             'tab'       => Controls_Manager::TAB_STYLE,
         ]
     );
     $this->add_control(
         'nav_bg_color',
         [
-            'label'     => __( 'Background Color', 'ultraaddons' ),
+            'label'     => __( 'Background Color', 'ultraaddons-elementor-lite' ),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#FFFFFF',
             'selectors' => [
@@ -229,7 +229,7 @@ protected function nav_style() {
     $this->add_responsive_control(
         'nav_padding',
         [
-            'label'       => esc_html__( 'Navigation Padding', 'ultraaddons' ),
+            'label'       => esc_html__( 'Navigation Padding', 'ultraaddons-elementor-lite' ),
             'type'        => Controls_Manager::DIMENSIONS,
             'size_units'  => [ 'px', '%' ],
             'placeholder' => [
@@ -247,7 +247,7 @@ protected function nav_style() {
         Group_Control_Typography::get_type(),
         [
             'name'     => 'nav_typography',
-            'label'    => __( 'Typography', 'ultraaddons' ),
+            'label'    => __( 'Typography', 'ultraaddons-elementor-lite' ),
             'global'   => [
                 'default' => Global_Typography::TYPOGRAPHY_ACCENT,
             ],
@@ -258,7 +258,7 @@ protected function nav_style() {
     $this->add_control(
         'nav_color',
         [
-            'label'     => __( 'Link Text Color', 'ultraaddons' ),
+            'label'     => __( 'Link Text Color', 'ultraaddons-elementor-lite' ),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#111',
             'selectors' => [
@@ -274,29 +274,29 @@ protected function nav_style() {
     $this->start_controls_tab(
         'btn_normal_tab',
         [
-            'label' => esc_html__( 'Normal', 'ultraaddons' ),
+            'label' => esc_html__( 'Normal', 'ultraaddons-elementor-lite' ),
         ]
     );
     $this->add_control(
         'nav_hover',
         [
-            'label'     => __( 'Link Hover Effect', 'ultraaddons' ),
+            'label'     => __( 'Link Hover Effect', 'ultraaddons-elementor-lite' ),
             'type'      => Controls_Manager::SELECT,
             'default'   => 'none',
             'options'   => [
-                'none'        => __( 'None', 'ultraaddons' ),
-                'stroke'   => __( 'Stroke', 'ultraaddons' ),
-                'fill'    => __( 'Fill', 'ultraaddons' ),
-                'circle' => __( 'Circle', 'ultraaddons' ),
-                'shift'      => __( 'Shif', 'ultraaddons' ),
-                'text'        => __( 'Text', 'ultraaddons' ),
+                'none'        => __( 'None', 'ultraaddons-elementor-lite' ),
+                'stroke'   => __( 'Stroke', 'ultraaddons-elementor-lite' ),
+                'fill'    => __( 'Fill', 'ultraaddons-elementor-lite' ),
+                'circle' => __( 'Circle', 'ultraaddons-elementor-lite' ),
+                'shift'      => __( 'Shif', 'ultraaddons-elementor-lite' ),
+                'text'        => __( 'Text', 'ultraaddons-elementor-lite' ),
             ],
         ]
     );
     $this->add_control(
         'nav_hover_effect_color',
         [
-            'label'     => __( 'Hover Effect Color', 'ultraaddons' ),
+            'label'     => __( 'Hover Effect Color', 'ultraaddons-elementor-lite' ),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#111',
             'selectors' => [
@@ -316,7 +316,7 @@ protected function nav_style() {
     $this->add_control(
         'nav_hover_color',
         [
-            'label'     => __( 'Hover Color', 'ultraaddons' ),
+            'label'     => __( 'Hover Color', 'ultraaddons-elementor-lite' ),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#111',
             'selectors' => [
@@ -336,7 +336,7 @@ protected function drop_down_style() {
     $this->start_controls_section(
         'dropdown_style',
         [
-            'label'     => esc_html__( 'Dropdown', 'ultraaddons' ),
+            'label'     => esc_html__( 'Dropdown', 'ultraaddons-elementor-lite' ),
             'tab'       => Controls_Manager::TAB_STYLE,
         ]
     );
@@ -344,7 +344,7 @@ protected function drop_down_style() {
     $this->add_responsive_control(
         'dropdown_padding',
         [
-            'label'       => esc_html__( 'Navigation Padding', 'ultraaddons' ),
+            'label'       => esc_html__( 'Navigation Padding', 'ultraaddons-elementor-lite' ),
             'type'        => Controls_Manager::DIMENSIONS,
             'size_units'  => [ 'px', '%' ],
             'placeholder' => [
@@ -362,7 +362,7 @@ protected function drop_down_style() {
     $this->add_control(
         'nav_sub_menu_bg',
         [
-            'label'     => __( 'Sub Menu Background', 'ultraaddons' ),
+            'label'     => __( 'Sub Menu Background', 'ultraaddons-elementor-lite' ),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#F9F9F9',
             'selectors' => [
@@ -374,7 +374,7 @@ protected function drop_down_style() {
         Group_Control_Border::get_type(),
         [
             'name' => 'nav_sub_menu_border',
-            'label' => __( 'Border', 'ultraaddons' ),
+            'label' => __( 'Border', 'ultraaddons-elementor-lite' ),
             'selector' => '{{WRAPPER}}  .navbar.open-mobile .nav li',
         ]
     );
@@ -386,26 +386,26 @@ protected function navbar_toggle_style() {
     $this->start_controls_section(
         'toggle_style',
         [
-            'label'     => esc_html__( 'Navbar Toggle', 'ultraaddons' ),
+            'label'     => esc_html__( 'Navbar Toggle', 'ultraaddons-elementor-lite' ),
             'tab'       => Controls_Manager::TAB_STYLE,
         ]
     );
     $this->add_control(
         'nav_toggle_align',
         [
-            'label'        => __( 'Alignment', 'ultraaddons' ),
+            'label'        => __( 'Alignment', 'ultraaddons-elementor-lite' ),
             'type'         => Controls_Manager::CHOOSE,
             'options'      => [
                 'left'    => [
-                    'title' => __( 'Left', 'ultraaddons' ),
+                    'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
                     'icon'  => 'eicon-h-align-left',
                 ],
                 'center'  => [
-                    'title' => __( 'Center', 'ultraaddons' ),
+                    'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
                     'icon'  => 'eicon-h-align-center',
                 ],
                 'right'   => [
-                    'title' => __( 'Right', 'ultraaddons' ),
+                    'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
                     'icon'  => 'eicon-h-align-right',
                 ]
             ],
@@ -418,7 +418,7 @@ protected function navbar_toggle_style() {
     $this->add_control(
         'nav_toggle_bg',
         [
-            'label'     => __( 'Button Background', 'ultraaddons' ),
+            'label'     => __( 'Button Background', 'ultraaddons-elementor-lite' ),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#fff',
             'selectors' => [
@@ -429,7 +429,7 @@ protected function navbar_toggle_style() {
     $this->add_control(
         'nav_toggle_menu_bg',
         [
-            'label'     => __( 'Dropdown Background', 'ultraaddons' ),
+            'label'     => __( 'Dropdown Background', 'ultraaddons-elementor-lite' ),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#fff',
             'selectors' => [
@@ -441,7 +441,7 @@ protected function navbar_toggle_style() {
     $this->add_control(
         'nav_toggle_menu_color',
         [
-            'label'     => __( 'Dropdown Text Color', 'ultraaddons' ),
+            'label'     => __( 'Dropdown Text Color', 'ultraaddons-elementor-lite' ),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#222',
             'selectors' => [
@@ -452,7 +452,7 @@ protected function navbar_toggle_style() {
     $this->add_control(
         'toggle_icon',
         [
-            'label' => esc_html__( 'Icon', 'ultraaddons' ),
+            'label' => esc_html__( 'Icon', 'ultraaddons-elementor-lite' ),
             'type' => Controls_Manager::ICONS,
             'default' => [
                 'value' => 'fas fa-bars',
@@ -464,7 +464,7 @@ protected function navbar_toggle_style() {
     $this->add_control(
         'nav_toggle_icon_color',
         [
-            'label'     => __( 'Icon Color', 'ultraaddons' ),
+            'label'     => __( 'Icon Color', 'ultraaddons-elementor-lite' ),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#222',
             'selectors' => [
@@ -475,7 +475,7 @@ protected function navbar_toggle_style() {
     $this->add_control(
         'toggle_icon_size',
         [
-            'label' => esc_html__( 'Icon Size', 'ultraaddons' ),
+            'label' => esc_html__( 'Icon Size', 'ultraaddons-elementor-lite' ),
             'type' => Controls_Manager::SLIDER,
             'size_units' => [ 'px' ],
             'range' => [
@@ -536,7 +536,7 @@ protected function navbar_toggle_style() {
        
         ?>
         <nav class="ua navbar" data-function="navbar" data-breakpoint="768" data-toggle-siblings="true" data-delay="500" aria-label="Main">
-            <button class="navbar-toggle" aria-haspopup="true" aria-expanded="false" <?php esc_attr_e( 'Toggle navigation','ultraaddons' ); ?>>
+            <button class="navbar-toggle" aria-haspopup="true" aria-expanded="false" <?php esc_attr_e( 'Toggle navigation','ultraaddons-elementor-lite' ); ?>>
             <?php \Elementor\Icons_Manager::render_icon( $settings['toggle_icon'], [ 'aria-hidden' => 'true' ] ); ?>
             </button>
             <div <?php echo $this->get_render_attribute_string( 'ua-nav-menu' ); ?>>

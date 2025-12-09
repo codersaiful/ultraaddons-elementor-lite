@@ -27,7 +27,7 @@ class Wrapper_Link {
 		$element->start_controls_section(
 			'_ua_section_wrapper_link',
 			[
-				'label' => __( 'Wrapper Link', 'ultraaddons' ) . ultraaddons_icon_markup(),
+				'label' => __( 'Wrapper Link', 'ultraaddons-elementor-lite' ) . ultraaddons_icon_markup(),
 				'tab'   => $tabs,
 			]
 		);
@@ -35,7 +35,7 @@ class Wrapper_Link {
 		$element->add_control(
 			'_ua_element_link',
 			[
-				'label'       => __( 'Desired URL', 'ultraaddons' ),
+				'label'       => __( 'Desired URL', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::URL,
 				'dynamic'     => [
 					'active' => true,

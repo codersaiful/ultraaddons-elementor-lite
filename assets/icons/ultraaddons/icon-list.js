@@ -1,6 +1,6 @@
 {
   "icons": [
-	"ultraaddons",
+	'ultraaddons-elementor-lite',
         "animated-header",
         "blog-list",
         "button",

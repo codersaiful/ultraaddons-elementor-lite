@@ -129,7 +129,7 @@ class Base extends Widget_Base{
      * ********
      * convert to lower case
      * replace - to _
-     * added 'ultraaddons' as prefix of each widget name
+     * added 'ultraaddons-elementor-lite' as prefix of each widget name
      * ********
      *
      * @since 1.0.0
@@ -219,7 +219,7 @@ class Base extends Widget_Base{
         }else if( $this->is_pro() ){
             $default = [ 'ultraaddons-pro' ];
         }else{
-            $default = [ 'ultraaddons' ];
+            $default = [ 'ultraaddons-elementor-lite' ];
         }
         
 
@@ -260,7 +260,7 @@ class Base extends Widget_Base{
             $widget_category = $default;
         }
 
-        return $widget_category; //Here was Static 'ultraaddons'
+        return $widget_category; //Here was Static 'ultraaddons-elementor-lite'
     }
 
     /**
@@ -291,7 +291,7 @@ class Base extends Widget_Base{
      * @return array Widget keyword's Array
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'addons', 'basic', 'ua', 'latest' ];
+        return [ 'ultraaddons-elementor-lite', 'addons', 'basic', 'ua', 'latest' ];
     }
     
     /**

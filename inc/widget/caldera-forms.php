@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class Caldera_Forms extends Base{
        
         public function get_keywords() {
-                return [ 'ultraaddons', 'ua', 'appointment', 'contact', 'quote', 'form', 'schedule', 'formidable', 'contact form', ];
+                return [ 'ultraaddons-elementor-lite', 'ua', 'appointment', 'contact', 'quote', 'form', 'schedule', 'formidable', 'contact form', ];
         }
 
          /**
@@ -42,7 +42,7 @@ class Caldera_Forms extends Base{
                 $this->start_controls_section(
                         '_section_frm',
                         [
-                                'label' =>  __( 'Contact Form', 'ultraaddons' ) ,
+                                'label' =>  __( 'Contact Form', 'ultraaddons-elementor-lite' ) ,
                                 'tab' => Controls_Manager::TAB_CONTENT,
                         ]
                 );
@@ -50,7 +50,7 @@ class Caldera_Forms extends Base{
                         $this->add_control(
                                 'form_id',
                                 array(
-                                'label'   => __( 'Form', 'ultraaddons' ),
+                                'label'   => __( 'Form', 'ultraaddons-elementor-lite' ),
                                 'type'    => Controls_Manager::SELECT2,
                                 'options' => ultraaddons_get_caldera_form_list(),
                                 'default' =>0
@@ -60,7 +60,7 @@ class Caldera_Forms extends Base{
                         $this->add_control(
                                 'form_error',[
                                     'type'            => Controls_Manager::RAW_HTML,
-                                    'raw'             => sprintf( __( '<strong>Please install or activate WPForms.</strong><br>Go to the <a href="%s" target="_blank" style="color:#93003c">Plugin page</a> to actions.', 'ultraaddons' ), admin_url( 'plugin-install.php?s=caldera%20forms&tab=search&type=term' ) ),
+                                    'raw'             => sprintf( __( '<strong>Please install or activate WPForms.</strong><br>Go to the <a href="%s" target="_blank" style="color:#93003c">Plugin page</a> to actions.', 'ultraaddons-elementor-lite' ), admin_url( 'plugin-install.php?s=caldera%20forms&tab=search&type=term' ) ),
                                     'separator'       => 'after',
                                     'content_classes' => 'elementor-panel-alert elementor-panel-alert-warning',
                                 ]
@@ -74,7 +74,7 @@ class Caldera_Forms extends Base{
         $this->start_controls_section(
                 'container_style',
                 [
-                    'label'                 => __('Form Container', 'ultraaddons'),
+                    'label'                 => __('Form Container', 'ultraaddons-elementor-lite'),
                     'tab'                   => Controls_Manager::TAB_STYLE,
                 ]
             );
@@ -82,7 +82,7 @@ class Caldera_Forms extends Base{
             $this->add_control(
                 'ua_contact_form_background',
                 [
-                    'label' => esc_html__('Form Background Color', 'ultraaddons'),
+                    'label' => esc_html__('Form Background Color', 'ultraaddons-elementor-lite'),
                     'type' => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .ua-form.caldera-forms' => 'background: {{VALUE}};',
@@ -93,7 +93,7 @@ class Caldera_Forms extends Base{
             $this->add_responsive_control(
                 'ua_contact_form_max_width',
                 [
-                    'label' => esc_html__('Form Max Width', 'ultraaddons'),
+                    'label' => esc_html__('Form Max Width', 'ultraaddons-elementor-lite'),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => ['px', 'em', '%'],
                     'range' => [
@@ -116,7 +116,7 @@ class Caldera_Forms extends Base{
             $this->add_responsive_control(
                 'ua_contact_form_margin',
                 [
-                    'label' => esc_html__('Form Margin', 'ultraaddons'),
+                    'label' => esc_html__('Form Margin', 'ultraaddons-elementor-lite'),
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => ['px', 'em', '%'],
                     'selectors' => [
@@ -128,7 +128,7 @@ class Caldera_Forms extends Base{
             $this->add_responsive_control(
                 'ua_contact_form_padding',
                 [
-                    'label' => esc_html__('Form Padding', 'ultraaddons'),
+                    'label' => esc_html__('Form Padding', 'ultraaddons-elementor-lite'),
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => ['px', 'em', '%'],
                     'selectors' => [
@@ -141,7 +141,7 @@ class Caldera_Forms extends Base{
             $this->add_control(
                 'ua_contact_form_border_radius',
                 [
-                    'label' => esc_html__('Border Radius', 'ultraaddons'),
+                    'label' => esc_html__('Border Radius', 'ultraaddons-elementor-lite'),
                     'type' => Controls_Manager::DIMENSIONS,
                     'separator' => 'before',
                     'size_units' => ['px'],
@@ -177,26 +177,26 @@ class Caldera_Forms extends Base{
                 $this->start_controls_section(
                         'from_style',
                         [
-                                'label' =>  __( 'Title & Description', 'ultraaddons' ) ,
+                                'label' =>  __( 'Title & Description', 'ultraaddons-elementor-lite' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
                 $this->add_control(
                         'align',
                             [
-                                'label'         => esc_html__( 'Align', 'ultraaddons' ),
+                                'label'         => esc_html__( 'Align', 'ultraaddons-elementor-lite' ),
                                 'type'          => Controls_Manager::CHOOSE,
                                 'options' => [
                                         'left' => [
-                                                'title' => __( 'Left', 'ultraaddons' ),
+                                                'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
                                                 'icon' => 'fa fa-align-left',
                                         ],
                                         'center' => [
-                                                'title' => __( 'Center', 'ultraaddons' ),
+                                                'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
                                                 'icon' => 'fa fa-align-center',
                                         ],
                                         'right' => [
-                                                'title' => __( 'Right', 'ultraaddons' ),
+                                                'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
                                                 'icon' => 'fa fa-align-right',
                                         ],
                                 ],
@@ -227,7 +227,7 @@ class Caldera_Forms extends Base{
                 $this->add_control(
                         'title_color',
                         [
-                                'label' => __( 'Title Color', 'ultraaddons' ),
+                                'label' => __( 'Title Color', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#333',
                                 'selectors' => [
@@ -239,7 +239,7 @@ class Caldera_Forms extends Base{
                 $this->add_responsive_control(
 			'title_margin',
 			[
-				'label'       => esc_html__( 'Title Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Title Margin', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -271,7 +271,7 @@ class Caldera_Forms extends Base{
                 $this->add_control(
                         'desc_color',
                         [
-                                'label' => __( 'Deccription Color', 'ultraaddons' ),
+                                'label' => __( 'Deccription Color', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#333',
                                 'selectors' => [
@@ -282,7 +282,7 @@ class Caldera_Forms extends Base{
                 $this->add_responsive_control(
 			'desc_margin',
 			[
-				'label'       => esc_html__( 'Description Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Description Margin', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -304,7 +304,7 @@ class Caldera_Forms extends Base{
                 $this->start_controls_section(
                         'label_style',
                         [
-                                'label' =>  __( 'Label', 'ultraaddons' ) ,
+                                'label' =>  __( 'Label', 'ultraaddons-elementor-lite' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
@@ -323,7 +323,7 @@ class Caldera_Forms extends Base{
                 $this->add_control(
                         'label_color',
                         [
-                                'label' => __( 'Form Label Color', 'ultraaddons' ),
+                                'label' => __( 'Form Label Color', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#333',
                                 'selectors' => [
@@ -334,7 +334,7 @@ class Caldera_Forms extends Base{
             $this->add_responsive_control(
 		'label_margin',
 			[
-                        'label'       => esc_html__( 'Label Margin', 'ultraaddons' ),
+                        'label'       => esc_html__( 'Label Margin', 'ultraaddons-elementor-lite' ),
                         'type'        => Controls_Manager::DIMENSIONS,
                         'size_units'  => [ 'px', '%' ],
                         'placeholder' => [
@@ -356,14 +356,14 @@ class Caldera_Forms extends Base{
                 $this->start_controls_section(
                         'input_style',
                         [
-                                'label' =>  __( 'Input & Textarea', 'ultraaddons' ) ,
+                                'label' =>  __( 'Input & Textarea', 'ultraaddons-elementor-lite' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
                 $this->add_control(
 			'input_radius',
 			[
-				'label' => __( 'Border Radius', 'ultraaddons' ),
+				'label' => __( 'Border Radius', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
@@ -374,7 +374,7 @@ class Caldera_Forms extends Base{
                 $this->add_control(
 			'input_bg_color',
 			[
-				'label' => __( 'Background Color', 'ultraaddons' ),
+				'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -386,7 +386,7 @@ class Caldera_Forms extends Base{
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'input_border',
-				'label' => esc_html__( 'Border', 'ultraaddons' ),
+				'label' => esc_html__( 'Border', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-form.caldera-forms .form-control',
 			]
 		);
@@ -394,7 +394,7 @@ class Caldera_Forms extends Base{
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'input_shadow',
-				'label' => esc_html__( 'Input Shadow', 'ultraaddons' ),
+				'label' => esc_html__( 'Input Shadow', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-form.caldera-forms .form-control',
 			]
 		);
@@ -408,7 +408,7 @@ class Caldera_Forms extends Base{
 		$this->add_control(
 			'text_height',
 			[
-				'label' => esc_html__( 'Input Text Height', 'ultraaddons' ),
+				'label' => esc_html__( 'Input Text Height', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'range' => [
@@ -430,7 +430,7 @@ class Caldera_Forms extends Base{
                 $this->add_control(
 			'textarea_height',
 			[
-				'label' => esc_html__( 'Textarea Height', 'ultraaddons' ),
+				'label' => esc_html__( 'Textarea Height', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'range' => [
@@ -456,7 +456,7 @@ class Caldera_Forms extends Base{
                 $this->start_controls_section(
                         'button_style',
                         [
-                                'label' =>  __( 'Submit Button', 'ultraaddons' ) ,
+                                'label' =>  __( 'Submit Button', 'ultraaddons-elementor-lite' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
@@ -468,12 +468,12 @@ class Caldera_Forms extends Base{
                 $this->start_controls_tab(
                         'btn_normal_tab',
                         [
-                                'label' => esc_html__( 'Normal', 'ultraaddons' ),
+                                'label' => esc_html__( 'Normal', 'ultraaddons-elementor-lite' ),
                         ]
                 );
                 $this->add_control(
                         '_btn_bg_color', [
-                                'label' => __( 'Button Background', 'ultraaddons' ),
+                                'label' => __( 'Button Background', 'ultraaddons-elementor-lite' ),
                                 'type'      => Controls_Manager::COLOR,
                                 'selectors' => [
                                         '{{WRAPPER}} .ua-form.caldera-forms .btn' => 'background-color: {{VALUE}};',
@@ -489,7 +489,7 @@ class Caldera_Forms extends Base{
                     );
                 $this->add_control(
                         '_btn_text_color', [
-                                'label' => __( 'Button Text Color', 'ultraaddons' ),
+                                'label' => __( 'Button Text Color', 'ultraaddons-elementor-lite' ),
                                 'type'      => Controls_Manager::COLOR,
                                 'selectors' => [
                                                 '{{WRAPPER}} .ua-form.caldera-forms .btn' => 'color: {{VALUE}};',
@@ -509,7 +509,7 @@ class Caldera_Forms extends Base{
                 $this->add_responsive_control(
                         '_btn_padding',
                         [
-                                'label'       => esc_html__( 'Button Padding', 'ultraaddons' ),
+                                'label'       => esc_html__( 'Button Padding', 'ultraaddons-elementor-lite' ),
                                 'type'        => Controls_Manager::DIMENSIONS,
                                 'size_units'  => [ '%', 'px' ],
                                 'placeholder' => [
@@ -526,7 +526,7 @@ class Caldera_Forms extends Base{
                 $this->add_responsive_control(
                         '_btn_radius',
                         [
-                                'label'       => esc_html__( 'Button Radius', 'ultraaddons' ),
+                                'label'       => esc_html__( 'Button Radius', 'ultraaddons-elementor-lite' ),
                                 'type'        => Controls_Manager::DIMENSIONS,
                                 'size_units'  => [ '%', 'px' ],
                                 'placeholder' => [
@@ -553,7 +553,7 @@ class Caldera_Forms extends Base{
                 );
                 $this->add_control(
                         '_btn_bg_hover_bg', [
-                                'label' => __( 'Hover Background', 'ultraaddons' ),
+                                'label' => __( 'Hover Background', 'ultraaddons-elementor-lite' ),
                                 'type'      => Controls_Manager::COLOR,
                                 'selectors' => [
                                         '{{WRAPPER}} .ua-form.caldera-forms .btn:hover' => 'background: {{VALUE}};',
@@ -569,7 +569,7 @@ class Caldera_Forms extends Base{
                     );
                 $this->add_control(
                         '_btn_text_hover_color', [
-                                'label' => __( 'Button Text Color', 'ultraaddons' ),
+                                'label' => __( 'Button Text Color', 'ultraaddons-elementor-lite' ),
                                 'type'      => Controls_Manager::COLOR,
                                 'selectors' => [
                                         '{{WRAPPER}} .ua-form.caldera-forms .btn:hover' => 'color: {{VALUE}};',
@@ -624,7 +624,7 @@ class Caldera_Forms extends Base{
         </div>
         <?php
          else:
-                echo "<div class='ua-alert'>" . esc_html__( "Please select Caldera Forms.", 'ultraaddons' ) . "</div>";
+                echo "<div class='ua-alert'>" . esc_html__( "Please select Caldera Forms.", 'ultraaddons-elementor-lite' ) . "</div>";
                endif;
         ?>
         <?php

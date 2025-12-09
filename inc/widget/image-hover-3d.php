@@ -25,7 +25,7 @@ class Image_Hover_3D extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons','ua', '3d', 'image', 'magic', '3dimage','magic image'];
+        return [ 'ultraaddons-elementor-lite','ua', '3d', 'image', 'magic', '3dimage','magic image'];
     }
     
     
@@ -101,7 +101,7 @@ class Image_Hover_3D extends Base{
         $this->start_controls_section(
             'general',
             [
-                'label' => __( 'General', 'ultraaddons' ),
+                'label' => __( 'General', 'ultraaddons-elementor-lite' ),
             ]
         );
 
@@ -109,7 +109,7 @@ class Image_Hover_3D extends Base{
         $repeater->add_control(
                 'image',
                 [
-                        'label' => __( 'Background Image', 'ultraaddons' ),
+                        'label' => __( 'Background Image', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::MEDIA,
                         'default' => [
                                 'url' => Utils::get_placeholder_image_src(),
@@ -123,13 +123,13 @@ class Image_Hover_3D extends Base{
         $repeater->add_control(
                 'title',
                 [
-                    'label' => __( 'Title', 'ultraaddons' ),
+                    'label' => __( 'Title', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::TEXT,
                     'dynamic' => [
                         'active' => true,
                     ],
-                    'placeholder' => __( 'Enter your title', 'ultraaddons' ),
-                    'default' => __( 'Slider Title Text', 'ultraaddons' ),
+                    'placeholder' => __( 'Enter your title', 'ultraaddons-elementor-lite' ),
+                    'default' => __( 'Slider Title Text', 'ultraaddons-elementor-lite' ),
                     'label_block' => true,
                 ]                                       
         );
@@ -137,13 +137,13 @@ class Image_Hover_3D extends Base{
         $repeater->add_control(
                 'content',
                 [
-                    'label' => __( 'Content', 'ultraaddons' ),
+                    'label' => __( 'Content', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::TEXT,
                     'dynamic' => [
                         'active' => true,
                     ],
-                    'placeholder' => __( 'Enter your content...', 'ultraaddons' ),
-                    'default' => __( "Lorem Ipsum is simply dumy text of the printing & typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1975, when an unknown printer.", 'ultraaddons' ),
+                    'placeholder' => __( 'Enter your content...', 'ultraaddons-elementor-lite' ),
+                    'default' => __( "Lorem Ipsum is simply dumy text of the printing & typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1975, when an unknown printer.", 'ultraaddons-elementor-lite' ),
                     'label_block' => true,
                 ]
         );
@@ -151,35 +151,35 @@ class Image_Hover_3D extends Base{
         $this->add_control(
                 'images',
                 [
-                    'label' => __( 'Image and content', 'ultraaddons' ),
+                    'label' => __( 'Image and content', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::REPEATER,
                     'fields' => $repeater->get_controls(),
                     'default' => [
                         [
                             'image' => Utils::get_placeholder_image_src(),
-                            'title' => __( 'Image Title', 'ultraaddons' ),
-                            'content' => __( 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.', 'ultraaddons' ),
+                            'title' => __( 'Image Title', 'ultraaddons-elementor-lite' ),
+                            'content' => __( 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.', 'ultraaddons-elementor-lite' ),
                                                     
                         ],
                                         
                         [
                             'image' => Utils::get_placeholder_image_src(),
-                            'title' => __( 'Image Title', 'ultraaddons' ),
-                            'content' => __( 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.', 'ultraaddons' ),
+                            'title' => __( 'Image Title', 'ultraaddons-elementor-lite' ),
+                            'content' => __( 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.', 'ultraaddons-elementor-lite' ),
                                                     
                         ],
                                         
                         [
                             'image' => Utils::get_placeholder_image_src(),
-                            'title' => __( 'Image Title', 'ultraaddons' ),
-                            'content' => __( 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.', 'ultraaddons' ),
+                            'title' => __( 'Image Title', 'ultraaddons-elementor-lite' ),
+                            'content' => __( 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.', 'ultraaddons-elementor-lite' ),
                                                     
                         ],
                                         
                         [
                             'image' => Utils::get_placeholder_image_src(),
-                            'title' => __( 'Image Title', 'ultraaddons' ),
-                            'content' => __( 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.', 'ultraaddons' ),
+                            'title' => __( 'Image Title', 'ultraaddons-elementor-lite' ),
+                            'content' => __( 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.', 'ultraaddons-elementor-lite' ),
                                                     
                         ],
                                         
@@ -199,26 +199,26 @@ class Image_Hover_3D extends Base{
         $this->start_controls_section(
             'content',
             [
-                'label' => __( 'Content', 'ultraaddons' ),
+                'label' => __( 'Content', 'ultraaddons-elementor-lite' ),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_responsive_control(
 			'text_alignment',
 			[
-				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
+				'label' => esc_html__( 'Alignment', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'start' => [
-						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'title' => esc_html__( 'Left', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'ultraaddons' ),
+						'title' => esc_html__( 'Center', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-center',
 					],
 					'end' => [
-						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'title' => esc_html__( 'Right', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-right',
 					]
 				],
@@ -255,7 +255,7 @@ class Image_Hover_3D extends Base{
         );
         $this->add_control(
 			'title_color', [
-				'label' => __( 'Title Color', 'ultraaddons' ),
+				'label' => __( 'Title Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-3dimage-content h2' => 'color: {{VALUE}};',
@@ -265,7 +265,7 @@ class Image_Hover_3D extends Base{
         );
         $this->add_control(
 			'desc_color', [
-				'label' => __( 'Description Color', 'ultraaddons' ),
+				'label' => __( 'Description Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-3dimage-content p' => 'color: {{VALUE}};',
@@ -279,7 +279,7 @@ class Image_Hover_3D extends Base{
         $this->start_controls_section(
             'basic',
             [
-                'label' => __( 'Basic Box', 'ultraaddons' ),
+                'label' => __( 'Basic Box', 'ultraaddons-elementor-lite' ),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -287,7 +287,7 @@ class Image_Hover_3D extends Base{
         $this->add_control(
             'basic_height',
             [
-                    'label' => __( 'Box Height', 'ultraaddons' ),
+                    'label' => __( 'Box Height', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => [ 'px' ],
                     'range' => [
@@ -310,7 +310,7 @@ class Image_Hover_3D extends Base{
         $this->add_control(
             'basic_width',
             [
-                    'label' => __( 'Box Width', 'ultraaddons' ),
+                    'label' => __( 'Box Width', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => [ 'px' ],
                     'range' => [
@@ -333,7 +333,7 @@ class Image_Hover_3D extends Base{
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'box_shadow',
-				'label' => esc_html__( 'Box Shadow', 'ultraaddons' ),
+				'label' => esc_html__( 'Box Shadow', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-3d-image-hover-wrapper .ua-3dimage-box',
 			]
 		);
@@ -342,7 +342,7 @@ class Image_Hover_3D extends Base{
 			'important_note',
 			[
 				'type' => Controls_Manager::RAW_HTML,
-				'raw' => __( 'This option is only for live design purposes.', 'ultraaddons' ),
+				'raw' => __( 'This option is only for live design purposes.', 'ultraaddons-elementor-lite' ),
 				'content_classes' => 'ua-alert',
 				'separator' => 'before',
 				'condition' => ['back_view'=>'yes']
@@ -351,10 +351,10 @@ class Image_Hover_3D extends Base{
         $this->add_control(
 			'back_view',
 			[
-				'label' => __( 'View Back', 'ultraaddons' ),
+				'label' => __( 'View Back', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Show', 'ultraaddons' ),
-				'label_off' => __( 'Hide', 'ultraaddons' ),
+				'label_on' => __( 'Show', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'Hide', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'no',
 			]
@@ -368,7 +368,7 @@ class Image_Hover_3D extends Base{
         $this->start_controls_section(
             'hover_box',
             [
-                'label' => __( 'Hover Box', 'ultraaddons' ),
+                'label' => __( 'Hover Box', 'ultraaddons-elementor-lite' ),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -394,7 +394,7 @@ class Image_Hover_3D extends Base{
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'hover_box_shadow',
-				'label' => esc_html__( 'Hover Box Shadow', 'ultraaddons' ),
+				'label' => esc_html__( 'Hover Box Shadow', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-3d-image-hover-wrapper .ua-3dimage-box:hover',
 			]
 		);
@@ -411,7 +411,7 @@ class Image_Hover_3D extends Base{
         $this->start_controls_section(
             'typography',
             [
-                'label'     => esc_html__( 'Typography', 'ultraaddons' ),
+                'label'     => esc_html__( 'Typography', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );

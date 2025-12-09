@@ -180,7 +180,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
 
             
             <div class="font-variation-wrapper" data-variant_key="<?php echo esc_attr( $variant_key ); ?>">
-                <span class="ua-close-variant"><i><?php echo esc_html__( 'Delete Variant', 'ultraaddons' ); ?> </i>&#9986;</span>
+                <span class="ua-close-variant"><i><?php echo esc_html__( 'Delete Variant', 'ultraaddons-elementor-lite' ); ?> </i>&#9986;</span>
                 <div class="form-field">
                     <label for="font-weight-<?php echo esc_attr( $variant_key ); ?>"><?php echo esc_html__( 'Font Weight' ); ?></label>
                     <?php self::render_font_weight( $font_weight, $name_prefix . '[weight]', 'font-weight-' . $variant_key ); ?>
@@ -201,7 +201,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
                     <div class="form-file-field font-file-each-wrapper">
                         
                         <input name="<?php echo esc_attr( $name_prefix ); ?>[format][]" type="hidden" class="font-upload-format" value="<?php echo esc_attr( $format ); ?>">
-                        <input name="<?php echo esc_attr( $name_prefix ); ?>[url][]" type="text" value="<?php echo esc_attr( $url ); ?>" class="font-upload-url" id="font-url-<?php echo esc_attr( $variant_key ); ?>" placeholder="<?php echo esc_attr( 'Font file URL...','ultraaddons' ); ?>">
+                        <input name="<?php echo esc_attr( $name_prefix ); ?>[url][]" type="text" value="<?php echo esc_attr( $url ); ?>" class="font-upload-url" id="font-url-<?php echo esc_attr( $variant_key ); ?>" placeholder="<?php echo esc_attr( 'Font file URL...','ultraaddons-elementor-lite' ); ?>">
                         <a href="#" class="ultraaddons-font-upload-button ua-button button">Upload Font</a>
                     </div> 
 
@@ -377,7 +377,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
             $old_columns = $columns;
             $columns     = array(
                 'cb'   => $old_columns['cb'],
-                'name' => esc_html__( 'Font Name', 'ultraaddons' ),
+                'name' => esc_html__( 'Font Name', 'ultraaddons-elementor-lite' ),
             );
 
         }

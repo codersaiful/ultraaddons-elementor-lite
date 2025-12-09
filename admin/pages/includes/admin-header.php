@@ -8,7 +8,7 @@ defined( 'ABSPATH' ) || die();
  * 
  * @version 1.0.0.11
  */
-$header_title       = esc_html__( 'UltraAddons', 'ultraaddons' );
+$header_title       = esc_html__( 'UltraAddons', 'ultraaddons-elementor-lite' );
 $header_title       = apply_filters( 'ultraaddons/admin/header_title', $header_title );
 $full_logo_image    = ULTRA_ADDONS_ASSETS . 'images/ultraaddons-logo-new.png';
 $full_logo_image    = apply_filters( 'ultraaddons/admin/header_logo', $full_logo_image );

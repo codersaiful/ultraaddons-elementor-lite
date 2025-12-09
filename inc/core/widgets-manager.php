@@ -12,7 +12,7 @@ defined( 'ABSPATH' ) || die();
  * In that file, The Array's Each Item array formate like bellow:
  * ******************************
  * 'Button'=> [
-    'name'  => __( 'Button', 'ultraaddons' ),
+    'name'  => __( 'Button', 'ultraaddons-elementor-lite' ),
     ],
  * ******************************
  * 

@@ -41,7 +41,7 @@ class Library_Source extends Source_Base {
 	}
 
 	public function get_title() {
-		return __( 'UltraAddons Library', 'ultraaddons' );
+		return __( 'UltraAddons Library', 'ultraaddons-elementor-lite' );
 	}
 
 	public function register_data() {}
@@ -214,7 +214,7 @@ class Library_Source extends Source_Base {
 		$data = json_decode( $data, true );
 
 		if ( empty( $data ) || empty( $data['content'] ) ) {
-			throw new \Exception( __( 'Template does not have any content', 'ultraaddons' ) );
+			throw new \Exception( __( 'Template does not have any content', 'ultraaddons-elementor-lite' ) );
 		}
 
 		$data['content'] = $this->replace_elements_ids( $data['content'] );

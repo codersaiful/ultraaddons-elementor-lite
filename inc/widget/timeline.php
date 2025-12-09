@@ -26,7 +26,7 @@ class Timeline extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua', 'timeline', 'progress', 'time', 'line' ];
+        return [ 'ultraaddons-elementor-lite', 'ua', 'timeline', 'progress', 'time', 'line' ];
     }
     
     
@@ -413,7 +413,7 @@ class Timeline extends Base{
         $this->start_controls_section(
             'general_content',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -421,7 +421,7 @@ class Timeline extends Base{
         $this->add_control(
             '_ua_timeline_skin',
             [
-                'label' => esc_html__( 'Design Format', 'ultraaddons' ),
+                'label' => esc_html__( 'Design Format', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::SELECT,
                 'label_block' => false,
                 'options'   => [
@@ -439,7 +439,7 @@ class Timeline extends Base{
         $this->start_controls_section(
             '_ua_timeline_content_skin_1_layout_section',
             [
-                'label' => esc_html__('Content', 'ultraaddons'),
+                'label' => esc_html__('Content', 'ultraaddons-elementor-lite'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
                 'condition' => [
                 	'_ua_timeline_skin' => ['_skin_1', '_skin_3']
@@ -456,7 +456,7 @@ class Timeline extends Base{
         $this->start_controls_section(
             '_ua_timeline_content_skin_2_layout_section',
             [
-                'label' => esc_html__('Content', 'ultraaddons'),
+                'label' => esc_html__('Content', 'ultraaddons-elementor-lite'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
                 'condition' => [
                 	'_ua_timeline_skin' => ['_skin_2']
@@ -474,10 +474,10 @@ class Timeline extends Base{
         $repeater->add_control(
             '_ua_timeline_title',
             [
-                'label' => __( 'Title', 'ultraaddons' ),
+                'label' => __( 'Title', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::TEXT,
-                'default' => __( 'Title Here...', 'ultraaddons' ),
-                'placeholder' => __( 'Enter your title', 'ultraaddons' ),
+                'default' => __( 'Title Here...', 'ultraaddons-elementor-lite' ),
+                'placeholder' => __( 'Enter your title', 'ultraaddons-elementor-lite' ),
                 'label_block' => true,
             ]
         );
@@ -488,7 +488,7 @@ class Timeline extends Base{
                 'label' => 'Description',
                 'type' => Controls_Manager::TEXTAREA,
                 'default' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates eligendiniour dignissimos ads',
-                'placeholder' => __( 'Enter your description', 'ultraaddons' ),
+                'placeholder' => __( 'Enter your description', 'ultraaddons-elementor-lite' ),
                 'show_label' => true,
                 'rows' => 10,
             ]
@@ -496,11 +496,11 @@ class Timeline extends Base{
         $repeater->add_control(
 			'_ua_timeline_style',
 			[
-				'label' => __('Time', 'ultraaddons'),
+				'label' => __('Time', 'ultraaddons-elementor-lite'),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
-					'timeline_calender' => __('Calender', 'ultraaddons'),
-					'timeline_text' => __('Text', 'ultraaddons'),
+					'timeline_calender' => __('Calender', 'ultraaddons-elementor-lite'),
+					'timeline_text' => __('Text', 'ultraaddons-elementor-lite'),
 				],
 				'default' => 'timeline_calender',
 				'style_transfer' => true,
@@ -511,7 +511,7 @@ class Timeline extends Base{
 		$repeater->add_control(
 			'_ua_timeline_time',
 			[
-				'label' => __('Calender', 'ultraaddons'),
+				'label' => __('Calender', 'ultraaddons-elementor-lite'),
 				'show_label' => false,
 				'type' => Controls_Manager::DATE_TIME,
 				'default' => date('M d Y g:i a'),
@@ -524,12 +524,12 @@ class Timeline extends Base{
 		$repeater->add_control(
 			'_ua_timeline_time_text',
 			[
-				'label' => __('Text Time', 'ultraaddons'),
+				'label' => __('Text Time', 'ultraaddons-elementor-lite'),
 				'show_label' => false,
 				'label_block' => true,
 				'type' => Controls_Manager::TEXT,
-				'default' => __('2020 - 2021', 'ultraaddons'),
-				'placeholder' => __('Text Time', 'ultraaddons'),
+				'default' => __('2020 - 2021', 'ultraaddons-elementor-lite'),
+				'placeholder' => __('Text Time', 'ultraaddons-elementor-lite'),
 				'condition' => [
 					'_ua_timeline_style' => ['timeline_text'],
 				],
@@ -539,36 +539,36 @@ class Timeline extends Base{
         $repeater->add_control(
             '_ua_timeline_title_size',
             [
-                'label' => __( 'Title Tag', 'ultraaddons' ),
+                'label' => __( 'Title Tag', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::CHOOSE,
                 'label_block' => true,
                 'options' => [
                     'h1'  => [
-                        'title' => __( 'H1', 'ultraaddons' ),
+                        'title' => __( 'H1', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h1'
                     ],
                     'h2'  => [
-                        'title' => __( 'H2', 'ultraaddons' ),
+                        'title' => __( 'H2', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h2'
                     ],
                     'h3'  => [
-                        'title' => __( 'H3', 'ultraaddons' ),
+                        'title' => __( 'H3', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h3'
                     ],
                     'h4'  => [
-                        'title' => __( 'H4', 'ultraaddons' ),
+                        'title' => __( 'H4', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h4'
                     ],
                     'h5'  => [
-                        'title' => __( 'H5', 'ultraaddons' ),
+                        'title' => __( 'H5', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h5'
                     ],
                     'h6'  => [
-                        'title' => __( 'H6', 'ultraaddons' ),
+                        'title' => __( 'H6', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h6'
                     ],
                     'p'  => [
-                        'title' => __( 'P', 'ultraaddons' ),
+                        'title' => __( 'P', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-paragraph'
                     ],
                 ],
@@ -584,24 +584,24 @@ class Timeline extends Base{
                 'fields'      => $repeater->get_controls(),
                 'default' => [
                     [
-                        '_ua_timeline_title' => __( 'Title #1', 'ultraaddons' ),
+                        '_ua_timeline_title' => __( 'Title #1', 'ultraaddons-elementor-lite' ),
                         
-                        '_ua_timeline_desc' =>__( 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates eligendiniour dignissimos ads', 'ultraaddons' ),
+                        '_ua_timeline_desc' =>__( 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates eligendiniour dignissimos ads', 'ultraaddons-elementor-lite' ),
                     ],
                     [
-                        '_ua_timeline_title' => __( 'Title #2', 'ultraaddons' ),
+                        '_ua_timeline_title' => __( 'Title #2', 'ultraaddons-elementor-lite' ),
 
-                        '_ua_timeline_desc' =>__( 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates eligendiniour dignissimos ads', 'ultraaddons' ),
+                        '_ua_timeline_desc' =>__( 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates eligendiniour dignissimos ads', 'ultraaddons-elementor-lite' ),
                     ],
                     [
-                        '_ua_timeline_title' => __( 'Title #3', 'ultraaddons' ),
+                        '_ua_timeline_title' => __( 'Title #3', 'ultraaddons-elementor-lite' ),
 
-                        '_ua_timeline_desc' =>__( 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates eligendiniour dignissimos ads', 'ultraaddons' ),
+                        '_ua_timeline_desc' =>__( 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates eligendiniour dignissimos ads', 'ultraaddons-elementor-lite' ),
                     ],
                     [
-                        '_ua_timeline_title' => __( 'Title #4', 'ultraaddons' ),
+                        '_ua_timeline_title' => __( 'Title #4', 'ultraaddons-elementor-lite' ),
 
-                        '_ua_timeline_desc' =>__( 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates eligendiniour dignissimos ads', 'ultraaddons' ),
+                        '_ua_timeline_desc' =>__( 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates eligendiniour dignissimos ads', 'ultraaddons-elementor-lite' ),
                     ],
                 ],
 
@@ -616,10 +616,10 @@ class Timeline extends Base{
         $repeater->add_control(
             '_ua_timeline_title',
             [
-                'label' => __( 'Title', 'ultraaddons' ),
+                'label' => __( 'Title', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::TEXT,
-                'default' => __( 'Title Here...', 'ultraaddons' ),
-                'placeholder' => __( 'Enter your title', 'ultraaddons' ),
+                'default' => __( 'Title Here...', 'ultraaddons-elementor-lite' ),
+                'placeholder' => __( 'Enter your title', 'ultraaddons-elementor-lite' ),
                 'label_block' => true,
             ]
         );
@@ -630,7 +630,7 @@ class Timeline extends Base{
                 'label' => 'Description',
                 'type' => Controls_Manager::TEXTAREA,
                 'default' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates eligendiniour dignissimos ads',
-                'placeholder' => __( 'Enter your description', 'ultraaddons' ),
+                'placeholder' => __( 'Enter your description', 'ultraaddons-elementor-lite' ),
                 'show_label' => true,
                 'rows' => 10,
             ]
@@ -638,7 +638,7 @@ class Timeline extends Base{
         $repeater->add_control(
             '_ua_timeline_icon_show',
             [
-                'label' => esc_html__('Enable Icon', 'ultraaddons'),
+                'label' => esc_html__('Enable Icon', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::SWITCHER,
                 'default' => 'yes',
                 'return_value' => 'yes',
@@ -647,20 +647,20 @@ class Timeline extends Base{
         $repeater->add_control(
             '_ua_timeline_icon_type',
             [   
-                'label' => esc_html__('Icon Type', 'ultraaddons'),
+                'label' => esc_html__('Icon Type', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::CHOOSE,
                 'label_block' => false,
                 'options' => [
                     'none' => [
-                        'title' => esc_html__('None', 'ultraaddons'),
+                        'title' => esc_html__('None', 'ultraaddons-elementor-lite'),
                         'icon' => 'fa fa-ban',
                     ],
                     'icon' => [
-                        'title' => esc_html__('Icon', 'ultraaddons'),
+                        'title' => esc_html__('Icon', 'ultraaddons-elementor-lite'),
                         'icon' => 'eicon-cog',
                     ],
                     'image' => [
-                        'title' => esc_html__('Image', 'ultraaddons'),
+                        'title' => esc_html__('Image', 'ultraaddons-elementor-lite'),
                         'icon' => 'eicon-image-bold',
                     ],
                 ],
@@ -673,7 +673,7 @@ class Timeline extends Base{
         $repeater->add_control(
             '_ua_timeline_selected_icon',
             [
-                'label' => __( 'Icon', 'ultraaddons' ),
+                'label' => __( 'Icon', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::ICONS,
                 'fa4compatibility' => 'icon',
                 'default' => [
@@ -689,7 +689,7 @@ class Timeline extends Base{
         $repeater->add_control(
              '_ua_timeline_icon_image',
              [   
-                 'label' => esc_html__('Image', 'ultraaddons'),
+                 'label' => esc_html__('Image', 'ultraaddons-elementor-lite'),
                  'type' => Controls_Manager::MEDIA,
                  'default' => [
                      'url' => '',
@@ -703,11 +703,11 @@ class Timeline extends Base{
         $repeater->add_control(
 			'_ua_timeline_style',
 			[
-				'label' => __('Time', 'ultraaddons'),
+				'label' => __('Time', 'ultraaddons-elementor-lite'),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
-					'timeline_calender' => __('Calender', 'ultraaddons'),
-					'timeline_text' => __('Text', 'ultraaddons'),
+					'timeline_calender' => __('Calender', 'ultraaddons-elementor-lite'),
+					'timeline_text' => __('Text', 'ultraaddons-elementor-lite'),
 				],
 				'default' => 'timeline_calender',
 				'style_transfer' => true,
@@ -717,7 +717,7 @@ class Timeline extends Base{
 		$repeater->add_control(
 			'_ua_timeline_time',
 			[
-				'label' => __('Calender', 'ultraaddons'),
+				'label' => __('Calender', 'ultraaddons-elementor-lite'),
 				'show_label' => false,
 				'type' => Controls_Manager::DATE_TIME,
 				'default' => date('M d Y g:i a'),
@@ -730,12 +730,12 @@ class Timeline extends Base{
 		$repeater->add_control(
 			'_ua_timeline_time_text',
 			[
-				'label' => __('Text Time', 'ultraaddons'),
+				'label' => __('Text Time', 'ultraaddons-elementor-lite'),
 				'show_label' => false,
 				'label_block' => true,
 				'type' => Controls_Manager::TEXT,
-				'default' => __('2020 - 2021', 'ultraaddons'),
-				'placeholder' => __('Text Time', 'ultraaddons'),
+				'default' => __('2020 - 2021', 'ultraaddons-elementor-lite'),
+				'placeholder' => __('Text Time', 'ultraaddons-elementor-lite'),
 				'condition' => [
 					'_ua_timeline_style' => ['timeline_text'],
 				],
@@ -745,36 +745,36 @@ class Timeline extends Base{
         $repeater->add_control(
             '_ua_timeline_title_size',
             [
-                'label' => __( 'Title Tag', 'ultraaddons' ),
+                'label' => __( 'Title Tag', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::CHOOSE,
                 'label_block' => true,
                 'options' => [
                     'h1'  => [
-                        'title' => __( 'H1', 'ultraaddons' ),
+                        'title' => __( 'H1', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h1'
                     ],
                     'h2'  => [
-                        'title' => __( 'H2', 'ultraaddons' ),
+                        'title' => __( 'H2', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h2'
                     ],
                     'h3'  => [
-                        'title' => __( 'H3', 'ultraaddons' ),
+                        'title' => __( 'H3', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h3'
                     ],
                     'h4'  => [
-                        'title' => __( 'H4', 'ultraaddons' ),
+                        'title' => __( 'H4', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h4'
                     ],
                     'h5'  => [
-                        'title' => __( 'H5', 'ultraaddons' ),
+                        'title' => __( 'H5', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h5'
                     ],
                     'h6'  => [
-                        'title' => __( 'H6', 'ultraaddons' ),
+                        'title' => __( 'H6', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h6'
                     ],
                     'p'  => [
-                        'title' => __( 'P', 'ultraaddons' ),
+                        'title' => __( 'P', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-paragraph'
                     ],
                 ],
@@ -790,24 +790,24 @@ class Timeline extends Base{
                 'fields'      => $repeater->get_controls(),
                 'default' => [
                     [
-                        '_ua_timeline_title' => __( 'Title #1', 'ultraaddons' ),
+                        '_ua_timeline_title' => __( 'Title #1', 'ultraaddons-elementor-lite' ),
                         
-                        '_ua_timeline_desc' =>__( 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates eligendiniour dignissimos ads', 'ultraaddons' ),
+                        '_ua_timeline_desc' =>__( 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates eligendiniour dignissimos ads', 'ultraaddons-elementor-lite' ),
                     ],
                     [
-                        '_ua_timeline_title' => __( 'Title #2', 'ultraaddons' ),
+                        '_ua_timeline_title' => __( 'Title #2', 'ultraaddons-elementor-lite' ),
 
-                        '_ua_timeline_desc' =>__( 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates eligendiniour dignissimos ads', 'ultraaddons' ),
+                        '_ua_timeline_desc' =>__( 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates eligendiniour dignissimos ads', 'ultraaddons-elementor-lite' ),
                     ],
                     [
-                        '_ua_timeline_title' => __( 'Title #3', 'ultraaddons' ),
+                        '_ua_timeline_title' => __( 'Title #3', 'ultraaddons-elementor-lite' ),
 
-                        '_ua_timeline_desc' =>__( 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates eligendiniour dignissimos ads', 'ultraaddons' ),
+                        '_ua_timeline_desc' =>__( 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates eligendiniour dignissimos ads', 'ultraaddons-elementor-lite' ),
                     ],
                     [
-                        '_ua_timeline_title' => __( 'Title #4', 'ultraaddons' ),
+                        '_ua_timeline_title' => __( 'Title #4', 'ultraaddons-elementor-lite' ),
 
-                        '_ua_timeline_desc' =>__( 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates eligendiniour dignissimos ads', 'ultraaddons' ),
+                        '_ua_timeline_desc' =>__( 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates eligendiniour dignissimos ads', 'ultraaddons-elementor-lite' ),
                     ],
                 ],
 
@@ -820,7 +820,7 @@ class Timeline extends Base{
         $this->start_controls_section(
             '_ua_timeline_options_layout_section',
             [
-                'label' => esc_html__('Options', 'ultraaddons'),
+                'label' => esc_html__('Options', 'ultraaddons-elementor-lite'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT, 
             ]
         );
@@ -833,10 +833,10 @@ class Timeline extends Base{
         $this->add_control(
 			'show_title',
 			[
-				'label' => __('Show Title?', 'ultraaddons'),
+				'label' => __('Show Title?', 'ultraaddons-elementor-lite'),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __('Show', 'ultraaddons'),
-				'label_off' => __('Hide', 'ultraaddons'),
+				'label_on' => __('Show', 'ultraaddons-elementor-lite'),
+				'label_off' => __('Hide', 'ultraaddons-elementor-lite'),
 				'return_value' => 'yes',
 				'default' => 'yes',
 			]
@@ -844,10 +844,10 @@ class Timeline extends Base{
     	$this->add_control(
 			'show_desc',
 			[
-				'label' => __('Show Description?', 'ultraaddons'),
+				'label' => __('Show Description?', 'ultraaddons-elementor-lite'),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __('Show', 'ultraaddons'),
-				'label_off' => __('Hide', 'ultraaddons'),
+				'label_on' => __('Show', 'ultraaddons-elementor-lite'),
+				'label_off' => __('Hide', 'ultraaddons-elementor-lite'),
 				'return_value' => 'yes',
 				'default' => 'yes',
 			]
@@ -855,10 +855,10 @@ class Timeline extends Base{
     	$this->add_control(
 			'show_date_time',
 			[
-				'label' => __('Show Date Time?', 'ultraaddons'),
+				'label' => __('Show Date Time?', 'ultraaddons-elementor-lite'),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __('Show', 'ultraaddons'),
-				'label_off' => __('Hide', 'ultraaddons'),
+				'label_on' => __('Show', 'ultraaddons-elementor-lite'),
+				'label_off' => __('Hide', 'ultraaddons-elementor-lite'),
 				'return_value' => 'yes',
 				'default' => 'yes',
 			]
@@ -866,10 +866,10 @@ class Timeline extends Base{
     	$this->add_control(
 			'show_date',
 			[
-				'label' => __('Show Date?', 'ultraaddons'),
+				'label' => __('Show Date?', 'ultraaddons-elementor-lite'),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __('Show', 'ultraaddons'),
-				'label_off' => __('Hide', 'ultraaddons'),
+				'label_on' => __('Show', 'ultraaddons-elementor-lite'),
+				'label_off' => __('Hide', 'ultraaddons-elementor-lite'),
 				'return_value' => 'yes',
 				'default' => 'yes',
 				'condition' => [
@@ -881,10 +881,10 @@ class Timeline extends Base{
 		$this->add_control(
 			'show_time',
 			[
-				'label' => __('Show Time?', 'ultraaddons'),
+				'label' => __('Show Time?', 'ultraaddons-elementor-lite'),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __('Show', 'ultraaddons'),
-				'label_off' => __('Hide', 'ultraaddons'),
+				'label_on' => __('Show', 'ultraaddons-elementor-lite'),
+				'label_off' => __('Hide', 'ultraaddons-elementor-lite'),
 				'return_value' => 'yes',
 				'default' => '',
 				'condition' => [
@@ -896,7 +896,7 @@ class Timeline extends Base{
 		$this->add_control(
 			'date_format',
 			[
-				'label' => __('Date Format', 'ultraaddons'),
+				'label' => __('Date Format', 'ultraaddons-elementor-lite'),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'd M Y'     => date("d M Y"),
@@ -919,7 +919,7 @@ class Timeline extends Base{
 		$this->add_control(
 			'time_format',
 			[
-				'label' => __('Time Format', 'ultraaddons'),
+				'label' => __('Time Format', 'ultraaddons-elementor-lite'),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'g:i a'     => date("g:i a"),
@@ -946,11 +946,11 @@ class Timeline extends Base{
 		$this->add_control(
 			'show_content_arrow',
 			[
-				'label' => __('Show Content Arrow?', 'ultraaddons'),
+				'label' => __('Show Content Arrow?', 'ultraaddons-elementor-lite'),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
-					'show' => __('Show', 'ultraaddons'),
-					'hide' => __('Hide', 'ultraaddons'),
+					'show' => __('Show', 'ultraaddons-elementor-lite'),
+					'hide' => __('Hide', 'ultraaddons-elementor-lite'),
 				],
 				'default' => 'show',
 				'prefix_class' => 'ultraaddons-content-arrow-',
@@ -964,19 +964,19 @@ class Timeline extends Base{
 		$this->add_control(
 			'icon_box_align',
 			[
-				'label' => __('Icon Box Alignment', 'ultraaddons'),
+				'label' => __('Icon Box Alignment', 'ultraaddons-elementor-lite'),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'top' => [
-						'title' => __('Top', 'ultraaddons'),
+						'title' => __('Top', 'ultraaddons-elementor-lite'),
 						'icon' => 'eicon-v-align-top',
 					],
 					'center' => [
-						'title' => __('Center', 'ultraaddons'),
+						'title' => __('Center', 'ultraaddons-elementor-lite'),
 						'icon' => 'eicon-v-align-middle',
 					],
 					'bottom' => [
-						'title' => __('Bottom', 'ultraaddons'),
+						'title' => __('Bottom', 'ultraaddons-elementor-lite'),
 						'icon' => 'eicon-v-align-bottom',
 					],
 				],
@@ -991,14 +991,14 @@ class Timeline extends Base{
         $this->start_controls_section(
             '_ua_timeline_general_style_layout_section',
             [
-                'label' => esc_html__('General', 'ultraaddons'),
+                'label' => esc_html__('General', 'ultraaddons-elementor-lite'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
          $this->add_responsive_control(
             '_ua_timeline_margin',
             [
-                'label' => esc_html__('Margin', 'ultraaddons'),
+                'label' => esc_html__('Margin', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -1022,7 +1022,7 @@ class Timeline extends Base{
 	            'label' => 'Color',
 	            'fields_options' => [
 					'background' => [
-						'label' => __( 'Box Background', 'ultraaddons' ),
+						'label' => __( 'Box Background', 'ultraaddons-elementor-lite' ),
 					],
 				],
 	            'types' => [ 'classic', 'gradient' ],
@@ -1039,7 +1039,7 @@ class Timeline extends Base{
         $this->start_controls_section(
             '_ua_timeline_icon_style_layout_section',
             [
-                'label' => esc_html__('Icon', 'ultraaddons'),
+                'label' => esc_html__('Icon', 'ultraaddons-elementor-lite'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE, 
             ]
         );
@@ -1051,7 +1051,7 @@ class Timeline extends Base{
     protected function uac_register_icon_controls(){
     	 $this->add_responsive_control(
         '_ua_timeline_icon_size',[
-            'label' => __('Icon Size', 'ultraaddons'),
+            'label' => __('Icon Size', 'ultraaddons-elementor-lite'),
             'type' => Controls_Manager::SLIDER,
             'default' => [
                 'size' => '',
@@ -1077,7 +1077,7 @@ class Timeline extends Base{
     	);
     	 $this->add_responsive_control(
 			'_ua_timeline_icon_rotate', [
-				'label' => __( 'Rotate', 'ultraaddons' ),
+				'label' => __( 'Rotate', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'deg' ],
 				'default' => [
@@ -1101,7 +1101,7 @@ class Timeline extends Base{
     	 $this->add_control(
 			'_ua_timeline_icon_color_skin_2',
 			[
-				'label' => esc_html__( 'Color', 'ultraaddons'),
+				'label' => esc_html__( 'Color', 'ultraaddons-elementor-lite'),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -1121,7 +1121,7 @@ class Timeline extends Base{
 	            'label' => 'Color',
 	            'fields_options' => [
 					'background' => [
-						'label' => __( 'Icon Background', 'ultraaddons' ),
+						'label' => __( 'Icon Background', 'ultraaddons-elementor-lite' ),
 					],
 				],
 	            'types' => [ 'classic', 'gradient' ],
@@ -1136,7 +1136,7 @@ class Timeline extends Base{
             Group_Control_Border::get_type(),
             [
                 'name' => '_ua_timeline_icon_border',
-                'label' => esc_html__('Border', 'ultraaddons'),
+                'label' => esc_html__('Border', 'ultraaddons-elementor-lite'),
                 'selector' => '{{WRAPPER}} .ultraaddons-timeline-section .ultraaddons-timeline-inner-wraper .ultraaddons-timeline-counter, {{WRAPPER}} .ultraaddons-timeline-section .ua_timeline_inner .ultraaddons-timeline-inner-wraper span.ultraaddons-bullet-top',
             ]
         );
@@ -1146,7 +1146,7 @@ class Timeline extends Base{
         $this->start_controls_section(
             '_ua_timeline_border_line_style_layout_section',
             [
-                'label' => esc_html__('Border line', 'ultraaddons'),
+                'label' => esc_html__('Border line', 'ultraaddons-elementor-lite'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE, 
             ]
         );
@@ -1160,7 +1160,7 @@ class Timeline extends Base{
             Group_Control_Border::get_type(),
 	            [
 	                'name' => '_ua_timeline_border_color_skin_2',
-	                'label' => esc_html__('Border', 'ultraaddons'),
+	                'label' => esc_html__('Border', 'ultraaddons-elementor-lite'),
 	                'selector' => '{{WRAPPER}} .ultraaddons-timeline-section .ultraaddons-timeline-section-inner:before',
 	                'condition' => [
 		                '_ua_timeline_skin' =>  [ '_skin_1', '_skin_2' ],
@@ -1171,16 +1171,16 @@ class Timeline extends Base{
 		  $this->add_control(
 			'_ua_timeline_border_style',
 			[
-				'label' => __( 'Border Type', 'ultraaddons' ),
+				'label' => __( 'Border Type', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => '',
 				'options' => [
-					'none'       => __( 'None', 'ultraaddons' ),
-					'solid'  => __( 'Solid', 'ultraaddons' ),
-					'double' => __( 'Double', 'ultraaddons' ),
-					'dotted' => __( 'Dotted', 'ultraaddons' ),
-					'dashed' => __( 'Dashed', 'ultraaddons' ),
-					'groove' => __( 'Groove', 'ultraaddons' ),
+					'none'       => __( 'None', 'ultraaddons-elementor-lite' ),
+					'solid'  => __( 'Solid', 'ultraaddons-elementor-lite' ),
+					'double' => __( 'Double', 'ultraaddons-elementor-lite' ),
+					'dotted' => __( 'Dotted', 'ultraaddons-elementor-lite' ),
+					'dashed' => __( 'Dashed', 'ultraaddons-elementor-lite' ),
+					'groove' => __( 'Groove', 'ultraaddons-elementor-lite' ),
 				],
 				'selectors' => [
 	                '{{WRAPPER}} .ua_horizontal_container.ultraaddons-timeline-section .ua_timeline_inner.ultraaddons-top-border' => 'border-top-style: {{VALUE}};',
@@ -1193,7 +1193,7 @@ class Timeline extends Base{
 		   $this->add_control(
             '_ua_images_nav_normal_color',
             [
-                'label' => esc_html__('Color', 'ultraaddons'),
+                'label' => esc_html__('Color', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -1207,7 +1207,7 @@ class Timeline extends Base{
 		 $this->add_responsive_control(
 	        'adv_timeline_border_top',
 	        [
-	            'label' => __('Border Height', 'ultraaddons'),
+	            'label' => __('Border Height', 'ultraaddons-elementor-lite'),
 	            'type' => Controls_Manager::SLIDER,
 	            'default' => [
 	                'size' => '',
@@ -1233,7 +1233,7 @@ class Timeline extends Base{
 		 $this->add_responsive_control(
 	        '_ua_timeline_border_position',
 	        [
-	            'label' => __('Position', 'ultraaddons'),
+	            'label' => __('Position', 'ultraaddons-elementor-lite'),
 	            'type' => Controls_Manager::SLIDER,
 	            'default' => [
 	                'size' => '',
@@ -1259,7 +1259,7 @@ class Timeline extends Base{
 		 $this->add_responsive_control(
 	        '_ua_timeline_border_width',
 	        [
-	            'label' => __('Border Width', 'ultraaddons'),
+	            'label' => __('Border Width', 'ultraaddons-elementor-lite'),
 	            'type' => Controls_Manager::SLIDER,
 	            'default' => [
 	                'size' => '',
@@ -1287,7 +1287,7 @@ class Timeline extends Base{
 		$this->start_controls_section(
             '_ua_timeline_content_style_section',
             [
-                'label'     => __('Content', 'ultraaddons'),
+                'label'     => __('Content', 'ultraaddons-elementor-lite'),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -1297,7 +1297,7 @@ class Timeline extends Base{
 
 		$this->start_controls_tab( 'title_normal', 
 			[ 
-				'label' => esc_html__( 'Normal', 'ultraaddons'),
+				'label' => esc_html__( 'Normal', 'ultraaddons-elementor-lite'),
 				'condition' => [
 					'show_title' => ['yes'],
 				],
@@ -1306,7 +1306,7 @@ class Timeline extends Base{
 		$this->add_control(
             '_ua_timeline_content_title_heading',
             [
-                'label' => __( 'Title', 'ultraaddons' ),
+                'label' => __( 'Title', 'ultraaddons-elementor-lite' ),
                 'type'  => Controls_Manager::HEADING,
                 'condition' => [
 					'show_title' => ['yes'],
@@ -1327,7 +1327,7 @@ class Timeline extends Base{
 		$this->add_control(
 			'_ua_timeline_content_title_color',
 			[
-				'label' => esc_html__( 'Color', 'ultraaddons'),
+				'label' => esc_html__( 'Color', 'ultraaddons-elementor-lite'),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -1342,10 +1342,10 @@ class Timeline extends Base{
 		  $this->add_control(
             '_ua_timeline_content_title_ofset',
             [
-                'label'        => __('Offset', 'ultraaddons'),
+                'label'        => __('Offset', 'ultraaddons-elementor-lite'),
                 'type'         => Controls_Manager::POPOVER_TOGGLE,
-                'label_on'     => __('Custom', 'ultraaddons'),
-                'label_off'    => __('None', 'ultraaddons'),
+                'label_on'     => __('Custom', 'ultraaddons-elementor-lite'),
+                'label_off'    => __('None', 'ultraaddons-elementor-lite'),
                 'return_value' => 'yes',
                 'condition' => [
 					'show_title' => ['yes'],
@@ -1357,7 +1357,7 @@ class Timeline extends Base{
         $this->add_responsive_control(
             'content_title_offset_x',
             [
-                'label'       => __('Offset Left', 'ultraaddons'),
+                'label'       => __('Offset Left', 'ultraaddons-elementor-lite'),
                 'type'        => Controls_Manager::SLIDER,
                 'size_units'  => ['px', '%', 'em', 'rem'],
                 'condition'   => [
@@ -1377,7 +1377,7 @@ class Timeline extends Base{
         $this->add_responsive_control(
             'content_title_offset_y',
             [
-                'label'      => __('Offset Top', 'ultraaddons'),
+                'label'      => __('Offset Top', 'ultraaddons-elementor-lite'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%', 'em', 'rem'],
                 'condition'  => [
@@ -1405,7 +1405,7 @@ class Timeline extends Base{
 
 		$this->start_controls_tab( '_ua_timeline_content_title_hover', 
 			[ 
-				'label' => esc_html__( 'Hover', 'ultraaddons'),
+				'label' => esc_html__( 'Hover', 'ultraaddons-elementor-lite'),
 				'condition' => [
 					'show_title' => ['yes'],
 				],
@@ -1415,7 +1415,7 @@ class Timeline extends Base{
 		$this->add_control(
 			'_ua_timeline_content_title_hover_color',
 			[
-				'label' => esc_html__( 'Color', 'ultraaddons'),
+				'label' => esc_html__( 'Color', 'ultraaddons-elementor-lite'),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -1436,7 +1436,7 @@ class Timeline extends Base{
 		$this->start_controls_tabs( '_ua_timeline_content_style_tabs' );
 
 		$this->start_controls_tab( 'content_normal', [ 
-				'label' => esc_html__( 'Normal', 'ultraaddons'),
+				'label' => esc_html__( 'Normal', 'ultraaddons-elementor-lite'),
 				'condition' => [
 					'show_desc' => ['yes'],
 				],
@@ -1445,7 +1445,7 @@ class Timeline extends Base{
 		$this->add_control(
             '_ua_timeline_content_heading',
             [
-                'label' => __( 'Content', 'ultraaddons' ),
+                'label' => __( 'Content', 'ultraaddons-elementor-lite' ),
                 'type'  => Controls_Manager::HEADING,
                 'condition' => [
 					'show_desc' => ['yes'],
@@ -1466,7 +1466,7 @@ class Timeline extends Base{
 		$this->add_control(
 			'_ua_timeline_content_color',
 			[
-				'label' => esc_html__( 'Color', 'ultraaddons'),
+				'label' => esc_html__( 'Color', 'ultraaddons-elementor-lite'),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -1481,10 +1481,10 @@ class Timeline extends Base{
 		  $this->add_control(
             '_ua_timeline_content_ofset',
             [
-                'label'        => __('Offset', 'ultraaddons'),
+                'label'        => __('Offset', 'ultraaddons-elementor-lite'),
                 'type'         => Controls_Manager::POPOVER_TOGGLE,
-                'label_on'     => __('Custom', 'ultraaddons'),
-                'label_off'    => __('None', 'ultraaddons'),
+                'label_on'     => __('Custom', 'ultraaddons-elementor-lite'),
+                'label_off'    => __('None', 'ultraaddons-elementor-lite'),
                 'return_value' => 'yes',
                 'condition' => [
 					'show_desc' => ['yes'],
@@ -1496,7 +1496,7 @@ class Timeline extends Base{
         $this->add_responsive_control(
             'content_offset_x',
             [
-                'label'       => __('Offset Left', 'ultraaddons'),
+                'label'       => __('Offset Left', 'ultraaddons-elementor-lite'),
                 'type'        => Controls_Manager::SLIDER,
                 'size_units'  => ['px', '%', 'em', 'rem'],
                 'condition'   => [
@@ -1516,7 +1516,7 @@ class Timeline extends Base{
         $this->add_responsive_control(
             'content_offset_y',
             [
-                'label'      => __('Offset Top', 'ultraaddons'),
+                'label'      => __('Offset Top', 'ultraaddons-elementor-lite'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%', 'em', 'rem'],
                 'condition'  => [
@@ -1541,7 +1541,7 @@ class Timeline extends Base{
 		$this->end_controls_tab();
 
 		$this->start_controls_tab( '_ua_timeline_content_hover', [ 
-			'label' => esc_html__( 'Hover', 'ultraaddons'),
+			'label' => esc_html__( 'Hover', 'ultraaddons-elementor-lite'),
 			'condition' => [
 					'show_desc' => ['yes'],
 				],
@@ -1551,7 +1551,7 @@ class Timeline extends Base{
 		$this->add_control(
 			'_ua_timeline_content_hover_color',
 			[
-				'label' => esc_html__( 'Color', 'ultraaddons'),
+				'label' => esc_html__( 'Color', 'ultraaddons-elementor-lite'),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -1570,7 +1570,7 @@ class Timeline extends Base{
 		$this->start_controls_tabs( '_ua_timeline_content_date_style_tabs' );
 		    $this->start_controls_tab( 'date_normal', 
 		    	[ 
-		    		'label' => esc_html__( 'Normal', 'ultraaddons'),
+		    		'label' => esc_html__( 'Normal', 'ultraaddons-elementor-lite'),
 		    		'condition' => [
 		    			'show_date_time' => ['yes'],
 		    		],
@@ -1578,7 +1578,7 @@ class Timeline extends Base{
 				$this->add_control(
 		            '_ua_timeline_content_date_heading',
 		            [
-		                'label' => __( 'Date Time', 'ultraaddons' ),
+		                'label' => __( 'Date Time', 'ultraaddons-elementor-lite' ),
 		                'type'  => Controls_Manager::HEADING,
 		                'condition' => [
 			    			'show_date_time' => ['yes'],
@@ -1599,7 +1599,7 @@ class Timeline extends Base{
 				$this->add_control(
 					'_ua_timeline_content_date_color',
 					[
-						'label' => esc_html__( 'Color', 'ultraaddons'),
+						'label' => esc_html__( 'Color', 'ultraaddons-elementor-lite'),
 						'type' => Controls_Manager::COLOR,
 						'default' => '',
 						'selectors' => [
@@ -1614,10 +1614,10 @@ class Timeline extends Base{
 		  $this->add_control(
             '_ua_timeline_content_date_ofset',
             [
-                'label'        => __('Offset', 'ultraaddons'),
+                'label'        => __('Offset', 'ultraaddons-elementor-lite'),
                 'type'         => Controls_Manager::POPOVER_TOGGLE,
-                'label_on'     => __('Custom', 'ultraaddons'),
-                'label_off'    => __('None', 'ultraaddons'),
+                'label_on'     => __('Custom', 'ultraaddons-elementor-lite'),
+                'label_off'    => __('None', 'ultraaddons-elementor-lite'),
                 'return_value' => 'yes',
                 'condition' => [
 	    			'show_date_time' => ['yes'],
@@ -1629,7 +1629,7 @@ class Timeline extends Base{
         $this->add_responsive_control(
             'content_date_offset_x',
             [
-                'label'       => __('Offset Left', 'ultraaddons'),
+                'label'       => __('Offset Left', 'ultraaddons-elementor-lite'),
                 'type'        => Controls_Manager::SLIDER,
                 'size_units'  => ['px', '%', 'em', 'rem'],
                 'condition'   => [
@@ -1651,7 +1651,7 @@ class Timeline extends Base{
         $this->add_responsive_control(
             'content_date_offset_y',
             [
-                'label'      => __('Offset Top', 'ultraaddons'),
+                'label'      => __('Offset Top', 'ultraaddons-elementor-lite'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%', 'em', 'rem'],
                 'condition'  => [
@@ -1680,7 +1680,7 @@ class Timeline extends Base{
 
 
         $this->start_controls_tab( '_ua_timeline_date_hover', [ 
-            'label' => esc_html__( 'Hover', 'ultraaddons'),
+            'label' => esc_html__( 'Hover', 'ultraaddons-elementor-lite'),
             'condition' => [
     			'show_date_time' => ['yes'],
     		],
@@ -1690,7 +1690,7 @@ class Timeline extends Base{
         $this->add_control(
             '_ua_timeline_date_hover_color',
             [
-                'label' => esc_html__( 'Color', 'ultraaddons'),
+                'label' => esc_html__( 'Color', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -1714,7 +1714,7 @@ class Timeline extends Base{
         $this->start_controls_section(
             'section_tab_style',
             [
-                'label' => esc_html__('Slider Options', 'ultraaddons'),
+                'label' => esc_html__('Slider Options', 'ultraaddons-elementor-lite'),
                 'tab' => Controls_Manager::TAB_CONTENT,
                 'condition' => [
                 	'_ua_timeline_skin' => ['_skin_3'],
@@ -1725,10 +1725,10 @@ class Timeline extends Base{
         $this->add_control(
             '_ua_timeline_slider_autoplay',
             [
-                'label'        => esc_html__('Autoplay', 'ultraaddons'),
+                'label'        => esc_html__('Autoplay', 'ultraaddons-elementor-lite'),
                 'type'         => \Elementor\Controls_Manager::SWITCHER,
-                'label_on'     => esc_html__('Yes', 'ultraaddons'),
-                'label_off'    => esc_html__('No', 'ultraaddons'),
+                'label_on'     => esc_html__('Yes', 'ultraaddons-elementor-lite'),
+                'label_off'    => esc_html__('No', 'ultraaddons-elementor-lite'),
                 'return_value' => 'yes',
                 'default'      => 'yes',
             ]
@@ -1737,7 +1737,7 @@ class Timeline extends Base{
         $this->add_control(
             '_ua_timeline_slider_speed',
             [
-                'label'   => esc_html__('Autoplay Speed', 'ultraaddons'),
+                'label'   => esc_html__('Autoplay Speed', 'ultraaddons-elementor-lite'),
                 'type'    => \Elementor\Controls_Manager::NUMBER,
                 'default' => 2000,
             ]
@@ -1746,10 +1746,10 @@ class Timeline extends Base{
         $this->add_control(
             '_ua_timeline_slider_loop',
             [
-                'label'        => esc_html__('Infinite Loop', 'ultraaddons'),
+                'label'        => esc_html__('Infinite Loop', 'ultraaddons-elementor-lite'),
                 'type'         => \Elementor\Controls_Manager::SWITCHER,
-                'label_on'     => esc_html__('Yes', 'ultraaddons'),
-                'label_off'    => esc_html__('No', 'ultraaddons'),
+                'label_on'     => esc_html__('Yes', 'ultraaddons-elementor-lite'),
+                'label_off'    => esc_html__('No', 'ultraaddons-elementor-lite'),
                 'return_value' => 'yes',
                 'default'      => 'yes',
             ]
@@ -1758,7 +1758,7 @@ class Timeline extends Base{
          $this->add_responsive_control(
             '_ua_timeline_slider_space',
             [
-                'label'   => esc_html__('Slider Space', 'ultraaddons'),
+                'label'   => esc_html__('Slider Space', 'ultraaddons-elementor-lite'),
                 'type'    => \Elementor\Controls_Manager::NUMBER,
                 'default' => 55,
             ]
@@ -1767,7 +1767,7 @@ class Timeline extends Base{
          $this->add_responsive_control(
             '_ua_timeline_slider_perpage',
             [
-                'label'   => esc_html__('Slider Item', 'ultraaddons'),
+                'label'   => esc_html__('Slider Item', 'ultraaddons-elementor-lite'),
                 'type'    => \Elementor\Controls_Manager::NUMBER,
                 'default' => 3,
             ]
@@ -1776,10 +1776,10 @@ class Timeline extends Base{
          $this->add_responsive_control(
             '_ua_timeline_slider_center',
             [
-                'label'        => esc_html__('Center', 'ultraaddons'),
+                'label'        => esc_html__('Center', 'ultraaddons-elementor-lite'),
                 'type'         => \Elementor\Controls_Manager::SWITCHER,
-                'label_on'     => esc_html__('Yes', 'ultraaddons'),
-                'label_off'    => esc_html__('No', 'ultraaddons'),
+                'label_on'     => esc_html__('Yes', 'ultraaddons-elementor-lite'),
+                'label_off'    => esc_html__('No', 'ultraaddons-elementor-lite'),
                 'return_value' => 'yes',
                 'default'      => 'no',
             ]
@@ -1788,10 +1788,10 @@ class Timeline extends Base{
         $this->add_control(
             '_ua_timeline_slider_drag',
             [
-                'label'        => esc_html__('MouseDrag', 'ultraaddons'),
+                'label'        => esc_html__('MouseDrag', 'ultraaddons-elementor-lite'),
                 'type'         => \Elementor\Controls_Manager::SWITCHER,
-                'label_on'     => esc_html__('Yes', 'ultraaddons'),
-                'label_off'    => esc_html__('No', 'ultraaddons'),
+                'label_on'     => esc_html__('Yes', 'ultraaddons-elementor-lite'),
+                'label_off'    => esc_html__('No', 'ultraaddons-elementor-lite'),
                 'return_value' => 'yes',
                 'default'      => 'no',
             ]
@@ -1804,7 +1804,7 @@ class Timeline extends Base{
         $this->start_controls_section(
             '_ua_timeline_nav_control',
             [
-                'label' => __( 'Navigation', 'ultraaddons' ),
+                'label' => __( 'Navigation', 'ultraaddons-elementor-lite' ),
                 'tab' => Controls_Manager::TAB_CONTENT,
                 'condition' => [
                 	'_ua_timeline_skin' => ['_skin_3'],
@@ -1814,10 +1814,10 @@ class Timeline extends Base{
         $this->add_control(
             '_ua_timeline_slider_nav_show',
             [
-                'label'        => esc_html__('Nav Show', 'ultraaddons'),
+                'label'        => esc_html__('Nav Show', 'ultraaddons-elementor-lite'),
                 'type'         => \Elementor\Controls_Manager::SWITCHER,
-                'label_on'     => esc_html__('Yes', 'ultraaddons'),
-                'label_off'    => esc_html__('No', 'ultraaddons'),
+                'label_on'     => esc_html__('Yes', 'ultraaddons-elementor-lite'),
+                'label_off'    => esc_html__('No', 'ultraaddons-elementor-lite'),
                 'return_value' => 'yes',
                 'default'      => 'yes',
             ]
@@ -1825,16 +1825,16 @@ class Timeline extends Base{
         $this->add_control(
             '_ua_pagination_type',
             [   
-                'label' => esc_html__('Pagination Type', 'ultraaddons'),
+                'label' => esc_html__('Pagination Type', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::CHOOSE,
                 'label_block' => false,
                 'options' => [
                     'arrow' => [
-                        'title' => esc_html__('Arrow', 'ultraaddons'),
+                        'title' => esc_html__('Arrow', 'ultraaddons-elementor-lite'),
                         'icon' => 'eicon-arrow-circle-left',
                     ],
                     'dot' => [
-                        'title' => esc_html__('Dot', 'ultraaddons'),
+                        'title' => esc_html__('Dot', 'ultraaddons-elementor-lite'),
                         'icon' => 'eicon-dot-circle-o',
                     ],
                 ],
@@ -1849,14 +1849,14 @@ class Timeline extends Base{
 
 		$this->start_controls_tab( '_ua_timeline_nav_style_normal_tab',
 			[ 
-				'label' => esc_html__( 'Normal', 'ultraaddons'),
+				'label' => esc_html__( 'Normal', 'ultraaddons-elementor-lite'),
 			] 
 		);
 
 		 $this->add_control(
             '_ua_timeline_nav_normal_color',
             [
-                'label' => esc_html__('Color', 'ultraaddons'),
+                'label' => esc_html__('Color', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -1878,7 +1878,7 @@ class Timeline extends Base{
                 'types' => [ 'classic', 'gradient' ],
                 'fields_options' => [
 					'background' => [
-						'label' => __( 'Background Color', 'ultraaddons' ),
+						'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
 					],
 				],
                 'selector' => '{{WRAPPER}} .ultraaddons-timeline-section .ultraaddons-timeline-section-inner .owl-prev, {{WRAPPER}} .ultraaddons-timeline-section .ultraaddons-timeline-section-inner .owl-next',
@@ -1895,7 +1895,7 @@ class Timeline extends Base{
                 'types' => [ 'classic', 'gradient' ],
                 'fields_options' => [
 					'background' => [
-						'label' => __( 'Background Color', 'ultraaddons' ),
+						'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
 					],
 				],
                 'selector' => 
@@ -1911,7 +1911,7 @@ class Timeline extends Base{
             Group_Control_Border::get_type(),
             [
                 'name' => '_ua_timeline_nav_normal_border',
-                'label' => esc_html__('Border', 'ultraaddons'),
+                'label' => esc_html__('Border', 'ultraaddons-elementor-lite'),
                 'selector' => '{{WRAPPER}} .ultraaddons-image-carousel-wrap .ultraaddons-carouse-next-prev',
                 'condition' => [
 	                '_ua_timeline_slider_nav_show'  =>  [ 'yes' ],
@@ -1922,7 +1922,7 @@ class Timeline extends Base{
 		 $this->add_responsive_control(
             '_ua_timeline_nav_normal_border_radius',
             [
-                'label' => esc_html__('Border Radius', 'ultraaddons'),
+                'label' => esc_html__('Border Radius', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -1937,7 +1937,7 @@ class Timeline extends Base{
 
 		$this->start_controls_tab( '_ua_timeline_nav_style_hover_tab',
 			[ 
-				'label' => esc_html__( 'Hover', 'ultraaddons')
+				'label' => esc_html__( 'Hover', 'ultraaddons-elementor-lite')
 			] 
 		);
 		$this->add_group_control(
@@ -1947,7 +1947,7 @@ class Timeline extends Base{
                 'types' => [ 'classic', 'gradient' ],
                 'fields_options' => [
 					'background' => [
-						'label' => __( 'Active Color', 'ultraaddons' ),
+						'label' => __( 'Active Color', 'ultraaddons-elementor-lite' ),
 					],
 				],
                 'selector' => 
@@ -1962,7 +1962,7 @@ class Timeline extends Base{
 		$this->add_control(
             '_ua_timeline_nav_hover_color',
             [
-                'label' => esc_html__('Color', 'ultraaddons'),
+                'label' => esc_html__('Color', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -1982,7 +1982,7 @@ class Timeline extends Base{
                 'types' => [ 'classic', 'gradient' ],
                 'fields_options' => [
                     'background' => [
-                        'label' => __( 'Background Color', 'ultraaddons' ),
+                        'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
                     ],
                 ],
                 'selector' => '{{WRAPPER}} .ultraaddons-image-carousel-wrap .ultraaddons-carouse-next-prev:hover',
@@ -1999,7 +1999,7 @@ class Timeline extends Base{
 		$this->add_responsive_control(
             '_ua_timeline_nav_position_top',
             [
-                'label'       => __('Position', 'ultraaddons'),
+                'label'       => __('Position', 'ultraaddons-elementor-lite'),
                 'type'        => Controls_Manager::SLIDER,
                 'size_units'  => ['px', '%', 'em', 'rem'],
                 'range' => [
@@ -2044,7 +2044,7 @@ class Timeline extends Base{
 		$this->add_responsive_control(
         '_ua_timeline_nav_size',
         [
-            'label' => __('Icon Size', 'ultraaddons'),
+            'label' => __('Icon Size', 'ultraaddons-elementor-lite'),
             'type' => Controls_Manager::SLIDER,
             'default' => [
                 'size' => '',
@@ -2090,7 +2090,7 @@ class Timeline extends Base{
 
 		$this->start_controls_tab( '_ua_timeline_icon_next_tab',
 			[ 
-				'label' => esc_html__( 'Next', 'ultraaddons'),
+				'label' => esc_html__( 'Next', 'ultraaddons-elementor-lite'),
 				'condition' => [
 	                '_ua_timeline_slider_nav_show'  =>  [ 'yes' ],
 	                '_ua_pagination_type'           =>  [ 'arrow' ],
@@ -2101,10 +2101,10 @@ class Timeline extends Base{
 		$this->add_control(
             '_ua_timeline_nav_right_top_ofset',
             [
-                'label'        => __('Next', 'ultraaddons'),
+                'label'        => __('Next', 'ultraaddons-elementor-lite'),
                 'type'         => Controls_Manager::POPOVER_TOGGLE,
-                'label_on'     => __('Custom', 'ultraaddons'),
-                'label_off'    => __('None', 'ultraaddons'),
+                'label_on'     => __('Custom', 'ultraaddons-elementor-lite'),
+                'label_off'    => __('None', 'ultraaddons-elementor-lite'),
                 'return_value' => 'yes',
                 'condition' => [
                     '_ua_timeline_slider_nav_show'  =>  [ 'yes' ],
@@ -2117,7 +2117,7 @@ class Timeline extends Base{
         $this->add_responsive_control(
             '_ua_timeline_nav_right_left',
             [
-                'label'      => __('Slide', 'ultraaddons'),
+                'label'      => __('Slide', 'ultraaddons-elementor-lite'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%', 'em', 'rem'],
                 'range' => [
@@ -2165,7 +2165,7 @@ class Timeline extends Base{
         $this->add_control(
             '_ua_timeline_nav_next_icon',
             [
-                'label' => __( 'Change Icon', 'ultraaddons' ),
+                'label' => __( 'Change Icon', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::ICONS,
                 'fa4compatibility' => 'icon_next',
                 'default' => [
@@ -2197,7 +2197,7 @@ class Timeline extends Base{
 
 		$this->start_controls_tab( '_ua_timeline_icon_prev_tab',
 			[ 
-				'label' => esc_html__( 'Prev', 'ultraaddons'),
+				'label' => esc_html__( 'Prev', 'ultraaddons-elementor-lite'),
 				'condition' => [
 	                '_ua_timeline_slider_nav_show'  =>  [ 'yes' ],
 	                '_ua_pagination_type'           =>  [ 'arrow' ],
@@ -2208,10 +2208,10 @@ class Timeline extends Base{
 		$this->add_control(
             '_ua_timeline_nav_left_top_ofset',
             [
-                'label'        => __('Prev', 'ultraaddons'),
+                'label'        => __('Prev', 'ultraaddons-elementor-lite'),
                 'type'         => Controls_Manager::POPOVER_TOGGLE,
-                'label_on'     => __('Custom', 'ultraaddons'),
-                'label_off'    => __('None', 'ultraaddons'),
+                'label_on'     => __('Custom', 'ultraaddons-elementor-lite'),
+                'label_off'    => __('None', 'ultraaddons-elementor-lite'),
                 'return_value' => 'yes',
                 'condition' => [
                     '_ua_timeline_slider_nav_show'  =>  [ 'yes' ],
@@ -2225,7 +2225,7 @@ class Timeline extends Base{
         $this->add_responsive_control(
             '_ua_timeline_nav_left_left',
             [
-                'label'      => __('Slide', 'ultraaddons'),
+                'label'      => __('Slide', 'ultraaddons-elementor-lite'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%', 'em', 'rem'],
                 'condition'  => [
@@ -2275,7 +2275,7 @@ class Timeline extends Base{
         $this->add_control(
             '_ua_timeline_nav_prev_icon',
             [
-                'label' => __( 'Change Icon', 'ultraaddons' ),
+                'label' => __( 'Change Icon', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::ICONS,
                 'fa4compatibility' => 'icon_prev',
                 'default' => [

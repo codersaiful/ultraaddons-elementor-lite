@@ -29,7 +29,7 @@ class Hover_Effect {
 		$element->start_controls_section(
 			'_ua_section_hover_animation',
 			[
-				'label' => __( 'Hover Effect', 'ultraaddons' ) . ultraaddons_icon_markup(),
+				'label' => __( 'Hover Effect', 'ultraaddons-elementor-lite' ) . ultraaddons_icon_markup(),
 				'tab'   => $tabs,
 			]
 		);
@@ -37,7 +37,7 @@ class Hover_Effect {
 		$element->add_control(
                         '_ua_hover_animation',
                         [
-                                'label' => __( 'Animation', 'ultraaddons' ),
+                                'label' => __( 'Animation', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::HOVER_ANIMATION,
                                 'prefix_class' => 'elementor-animation-',
                         ]

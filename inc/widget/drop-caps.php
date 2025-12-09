@@ -28,7 +28,7 @@ class Drop_Caps extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons','ua', 'drop', 'caps' ];
+        return [ 'ultraaddons-elementor-lite','ua', 'drop', 'caps' ];
     }
 
     /**
@@ -75,17 +75,17 @@ class Drop_Caps extends Base{
         $this->start_controls_section(
             'ua_dropcaps_content',
             [
-                'label' => esc_html__( 'Dropcaps', 'ultraaddons' ),
+                'label' => esc_html__( 'Dropcaps', 'ultraaddons-elementor-lite' ),
             ]
         );
 
 		$this->add_control(
 			'ua_dropcaps_text',
 			[
-				'label'         => esc_html__( 'Content', 'ultraaddons' ),
+				'label'         => esc_html__( 'Content', 'ultraaddons-elementor-lite' ),
 				'type'          => Controls_Manager::TEXTAREA,
-				'default'       => esc_html__( 'Lorem ipsum dolor sit amet, consec adipisicing elit, sed do eiusmod tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip exl Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.', 'ultraaddons' ),
-				'placeholder'   => esc_html__( 'Enter Your Drop Caps Content.', 'ultraaddons' ),
+				'default'       => esc_html__( 'Lorem ipsum dolor sit amet, consec adipisicing elit, sed do eiusmod tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip exl Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.', 'ultraaddons-elementor-lite' ),
+				'placeholder'   => esc_html__( 'Enter Your Drop Caps Content.', 'ultraaddons-elementor-lite' ),
                 'separator'=>'before',
                 'dynamic' => [
                     'active' => true,
@@ -98,7 +98,7 @@ class Drop_Caps extends Base{
 		$this->start_controls_section(
             'ua_dropcaps_style_section',
             [
-                'label' => esc_html__( 'Style', 'ultraaddons' ),
+                'label' => esc_html__( 'Style', 'ultraaddons-elementor-lite' ),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -106,7 +106,7 @@ class Drop_Caps extends Base{
             $this->add_responsive_control(
                 'ua_content_color',
                 [
-                    'label' => esc_html__( 'Color', 'ultraaddons' ),
+                    'label' => esc_html__( 'Color', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::COLOR,
                     'default' => '#333333',
                     'selectors' => [
@@ -129,7 +129,7 @@ class Drop_Caps extends Base{
         $this->start_controls_section(
             'ua_dropcaps_latter_style_section',
             [
-                'label' => esc_html__( 'Dropcap Latter', 'ultraaddons' ),
+                'label' => esc_html__( 'Dropcap Latter', 'ultraaddons-elementor-lite' ),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -137,7 +137,7 @@ class Drop_Caps extends Base{
             $this->add_responsive_control(
                 'ua_content_dropcaps_color',
                 [
-                    'label' => esc_html__( 'Color', 'ultraaddons' ),
+                    'label' => esc_html__( 'Color', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::COLOR,
                     'default' => '#903',
                     'selectors' => [
@@ -158,7 +158,7 @@ class Drop_Caps extends Base{
                 Group_Control_Background::get_type(),
                 [
                     'name' => 'ua_content_dropcaps_background',
-                    'label' => esc_html__( 'Background', 'ultraaddons' ),
+                    'label' => esc_html__( 'Background', 'ultraaddons-elementor-lite' ),
                     'types' => [ 'classic', 'gradient' ],
                     'selector' => '{{WRAPPER}} .ua-dropcap-cotnent:first-child:first-letter',
                 ]
@@ -167,7 +167,7 @@ class Drop_Caps extends Base{
             $this->add_responsive_control(
                 'ua_content_dropcaps_padding',
                 [
-                    'label' => esc_html__( 'Padding', 'ultraaddons' ),
+                    'label' => esc_html__( 'Padding', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px', '%', 'em' ],
                     'selectors' => [
@@ -180,7 +180,7 @@ class Drop_Caps extends Base{
             $this->add_responsive_control(
                 'ua_content_dropcaps_margin',
                 [
-                    'label' => esc_html__( 'Margin', 'ultraaddons' ),
+                    'label' => esc_html__( 'Margin', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px', '%', 'em' ],
                     'selectors' => [
@@ -193,7 +193,7 @@ class Drop_Caps extends Base{
                 Group_Control_Border::get_type(),
                 [
                     'name' => 'ua_content_dropcaps_border',
-                    'label' => esc_html__( 'Border', 'ultraaddons' ),
+                    'label' => esc_html__( 'Border', 'ultraaddons-elementor-lite' ),
                     'selector' => '{{WRAPPER}} .ua-dropcap-cotnent:first-child:first-letter',
                 ]
             );
@@ -201,7 +201,7 @@ class Drop_Caps extends Base{
             $this->add_responsive_control(
                 'ua_content_dropcaps_border_radius',
                 [
-                    'label' => esc_html__( 'Border Radius', 'ultraaddons' ),
+                    'label' => esc_html__( 'Border Radius', 'ultraaddons-elementor-lite' ),
 					'type' => Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px', '%', 'em' ],
                     'selectors' => [

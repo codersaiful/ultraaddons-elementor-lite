@@ -46,9 +46,9 @@ class Placeholder_Extension {
             $element->add_control(
                     'ua_' . $element_get_name . '_control_' . $slug,
                     [
-                            'label' => __( 'Important Note', 'ultraaddons' ),
+                            'label' => __( 'Important Note', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::RAW_HTML,
-                            'raw' => __( 'Premium Extension.', 'ultraaddons' ),
+                            'raw' => __( 'Premium Extension.', 'ultraaddons-elementor-lite' ),
                             
                     ]
             );

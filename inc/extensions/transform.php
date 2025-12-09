@@ -47,7 +47,7 @@ class Transform {
 		$element->start_controls_section(
 			'_ua_section_css_transform',
 			[
-					'label' => __( 'CSS Transform', 'ultraaddons' ) . ultraaddons_icon_markup(),
+					'label' => __( 'CSS Transform', 'ultraaddons-elementor-lite' ) . ultraaddons_icon_markup(),
 					'tab'   => $tabs,
 			]
 		);
@@ -55,7 +55,7 @@ class Transform {
 		$element->add_control(
 			'ua_transform_fx',
 			[
-				'label' => __( 'Enable', 'ultraaddons' ),
+				'label' => __( 'Enable', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
 				'return_value' => 'yes',
 				'prefix_class' => 'ua-css-transform-',
@@ -74,7 +74,7 @@ class Transform {
 		$element->start_controls_tab(
 			'_tabs_ua_transform_normal',
 			[
-				'label' => __( 'Normal', 'ultraaddons' ),
+				'label' => __( 'Normal', 'ultraaddons-elementor-lite' ),
 				'condition' => [
 					'ua_transform_fx' => 'yes',
 				],
@@ -84,7 +84,7 @@ class Transform {
 		$element->add_control(
 			'ua_transform_fx_translate_toggle',
 			[
-				'label' => __( 'Translate', 'ultraaddons' ),
+				'label' => __( 'Translate', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::POPOVER_TOGGLE,
 				'return_value' => 'yes',
 				'condition' => [
@@ -98,7 +98,7 @@ class Transform {
 		$element->add_responsive_control(
 			'ua_transform_fx_translate_x',
 			[
-				'label' => __( 'Translate X', 'ultraaddons' ),
+				'label' => __( 'Translate X', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'range' => [
@@ -120,7 +120,7 @@ class Transform {
 		$element->add_responsive_control(
 			'ua_transform_fx_translate_y',
 			[
-				'label' => __( 'Translate Y', 'ultraaddons' ),
+				'label' => __( 'Translate Y', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'range' => [
@@ -144,7 +144,7 @@ class Transform {
 		$element->add_control(
 			'ua_transform_fx_rotate_toggle',
 			[
-				'label' => __( 'Rotate', 'ultraaddons' ),
+				'label' => __( 'Rotate', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::POPOVER_TOGGLE,
 				'condition' => [
 					'ua_transform_fx' => 'yes',
@@ -157,15 +157,15 @@ class Transform {
 		$element->add_control(
 			'ua_transform_fx_rotate_mode',
 			[
-				'label' => __( 'Mode', 'ultraaddons' ),
+				'label' => __( 'Mode', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'compact' => [
-						'title' => __( 'Compact', 'ultraaddons' ),
+						'title' => __( 'Compact', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-plus-circle',
 					],
 					'loose' => [
-						'title' => __( 'Loose', 'ultraaddons' ),
+						'title' => __( 'Loose', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-minus-circle',
 					],
 				],
@@ -184,7 +184,7 @@ class Transform {
 		$element->add_responsive_control(
 			'ua_transform_fx_rotate_x',
 			[
-				'label' => __( 'Rotate X', 'ultraaddons' ),
+				'label' => __( 'Rotate X', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'range' => [
@@ -207,7 +207,7 @@ class Transform {
 		$element->add_responsive_control(
 			'ua_transform_fx_rotate_y',
 			[
-				'label' => __( 'Rotate Y', 'ultraaddons' ),
+				'label' => __( 'Rotate Y', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'range' => [
@@ -230,7 +230,7 @@ class Transform {
 		$element->add_responsive_control(
 			'ua_transform_fx_rotate_z',
 			[
-				'label' => __( 'Rotate (Z)', 'ultraaddons' ),
+				'label' => __( 'Rotate (Z)', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'range' => [
@@ -254,7 +254,7 @@ class Transform {
 		$element->add_control(
 			'ua_transform_fx_scale_toggle',
 			[
-				'label' => __( 'Scale', 'ultraaddons' ),
+				'label' => __( 'Scale', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::POPOVER_TOGGLE,
 				'return_value' => 'yes',
 				'condition' => [
@@ -268,15 +268,15 @@ class Transform {
 		$element->add_control(
 			'ua_transform_fx_scale_mode',
 			[
-				'label' => __( 'Mode', 'ultraaddons' ),
+				'label' => __( 'Mode', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'compact' => [
-						'title' => __( 'Compact', 'ultraaddons' ),
+						'title' => __( 'Compact', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-plus-circle',
 					],
 					'loose' => [
-						'title' => __( 'Loose', 'ultraaddons' ),
+						'title' => __( 'Loose', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-minus-circle',
 					],
 				],
@@ -295,7 +295,7 @@ class Transform {
 		$element->add_responsive_control(
 			'ua_transform_fx_scale_x',
 			[
-				'label' => __( 'Scale (X)', 'ultraaddons' ),
+				'label' => __( 'Scale (X)', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'default' => [
@@ -321,7 +321,7 @@ class Transform {
 		$element->add_responsive_control(
 			'ua_transform_fx_scale_y',
 			[
-				'label' => __( 'Scale Y', 'ultraaddons' ),
+				'label' => __( 'Scale Y', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'default' => [
@@ -350,7 +350,7 @@ class Transform {
 		$element->add_control(
 			'ua_transform_fx_skew_toggle',
 			[
-				'label' => __( 'Skew', 'ultraaddons' ),
+				'label' => __( 'Skew', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::POPOVER_TOGGLE,
 				'return_value' => 'yes',
 				'condition' => [
@@ -364,7 +364,7 @@ class Transform {
 		$element->add_responsive_control(
 			'ua_transform_fx_skew_x',
 			[
-				'label' => __( 'Skew X', 'ultraaddons' ),
+				'label' => __( 'Skew X', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['deg'],
 				'range' => [
@@ -386,7 +386,7 @@ class Transform {
 		$element->add_responsive_control(
 			'ua_transform_fx_skew_y',
 			[
-				'label' => __( 'Skew Y', 'ultraaddons' ),
+				'label' => __( 'Skew Y', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['deg'],
 				'range' => [
@@ -412,7 +412,7 @@ class Transform {
 		$element->start_controls_tab(
             '_tabs_ua_transform_hover',
             [
-				'label' => __( 'Hover', 'ultraaddons' ),
+				'label' => __( 'Hover', 'ultraaddons-elementor-lite' ),
 				'condition' => [
 					'ua_transform_fx' => 'yes',
 				],
@@ -422,7 +422,7 @@ class Transform {
 		$element->add_control(
 			'ua_transform_fx_translate_toggle_hover',
 			[
-				'label' => __( 'Translate', 'ultraaddons' ),
+				'label' => __( 'Translate', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::POPOVER_TOGGLE,
 				'return_value' => 'yes',
 				'condition' => [
@@ -436,7 +436,7 @@ class Transform {
 		$element->add_responsive_control(
 			'ua_transform_fx_translate_x_hover',
 			[
-				'label' => __( 'Translate X', 'ultraaddons' ),
+				'label' => __( 'Translate X', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'range' => [
@@ -458,7 +458,7 @@ class Transform {
 		$element->add_responsive_control(
 			'ua_transform_fx_translate_y_hover',
 			[
-				'label' => __( 'Translate Y', 'ultraaddons' ),
+				'label' => __( 'Translate Y', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'range' => [
@@ -482,7 +482,7 @@ class Transform {
 		$element->add_control(
 			'ua_transform_fx_rotate_toggle_hover',
 			[
-				'label' => __( 'Rotate', 'ultraaddons' ),
+				'label' => __( 'Rotate', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::POPOVER_TOGGLE,
 				'condition' => [
 					'ua_transform_fx' => 'yes',
@@ -495,15 +495,15 @@ class Transform {
 		$element->add_control(
 			'ua_transform_fx_rotate_mode_hover',
 			[
-				'label' => __( 'Mode', 'ultraaddons' ),
+				'label' => __( 'Mode', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'compact' => [
-						'title' => __( 'Compact', 'ultraaddons' ),
+						'title' => __( 'Compact', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-plus-circle',
 					],
 					'loose' => [
-						'title' => __( 'Loose', 'ultraaddons' ),
+						'title' => __( 'Loose', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-minus-circle',
 					],
 				],
@@ -522,7 +522,7 @@ class Transform {
 		$element->add_responsive_control(
 			'ua_transform_fx_rotate_x_hover',
 			[
-				'label' => __( 'Rotate X', 'ultraaddons' ),
+				'label' => __( 'Rotate X', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'range' => [
@@ -545,7 +545,7 @@ class Transform {
 		$element->add_responsive_control(
 			'ua_transform_fx_rotate_y_hover',
 			[
-				'label' => __( 'Rotate Y', 'ultraaddons' ),
+				'label' => __( 'Rotate Y', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'range' => [
@@ -568,7 +568,7 @@ class Transform {
 		$element->add_responsive_control(
 			'ua_transform_fx_rotate_z_hover',
 			[
-				'label' => __( 'Rotate (Z)', 'ultraaddons' ),
+				'label' => __( 'Rotate (Z)', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'range' => [
@@ -592,7 +592,7 @@ class Transform {
 		$element->add_control(
 			'ua_transform_fx_scale_toggle_hover',
 			[
-				'label' => __( 'Scale', 'ultraaddons' ),
+				'label' => __( 'Scale', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::POPOVER_TOGGLE,
 				'return_value' => 'yes',
 				'condition' => [
@@ -606,15 +606,15 @@ class Transform {
 		$element->add_control(
 			'ua_transform_fx_scale_mode_hover',
 			[
-				'label' => __( 'Mode', 'ultraaddons' ),
+				'label' => __( 'Mode', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'compact' => [
-						'title' => __( 'Compact', 'ultraaddons' ),
+						'title' => __( 'Compact', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-plus-circle',
 					],
 					'loose' => [
-						'title' => __( 'Loose', 'ultraaddons' ),
+						'title' => __( 'Loose', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-minus-circle',
 					],
 				],
@@ -633,7 +633,7 @@ class Transform {
 		$element->add_responsive_control(
 			'ua_transform_fx_scale_x_hover',
 			[
-				'label' => __( 'Scale (X)', 'ultraaddons' ),
+				'label' => __( 'Scale (X)', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'default' => [
@@ -659,7 +659,7 @@ class Transform {
 		$element->add_responsive_control(
 			'ua_transform_fx_scale_y_hover',
 			[
-				'label' => __( 'Scale Y', 'ultraaddons' ),
+				'label' => __( 'Scale Y', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'default' => [
@@ -688,7 +688,7 @@ class Transform {
 		$element->add_control(
 			'ua_transform_fx_skew_toggle_hover',
 			[
-				'label' => __( 'Skew', 'ultraaddons' ),
+				'label' => __( 'Skew', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::POPOVER_TOGGLE,
 				'return_value' => 'yes',
 				'condition' => [
@@ -702,7 +702,7 @@ class Transform {
 		$element->add_responsive_control(
 			'ua_transform_fx_skew_x_hover',
 			[
-				'label' => __( 'Skew X', 'ultraaddons' ),
+				'label' => __( 'Skew X', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['deg'],
 				'range' => [
@@ -724,7 +724,7 @@ class Transform {
 		$element->add_responsive_control(
 			'ua_transform_fx_skew_y_hover',
 			[
-				'label' => __( 'Skew Y', 'ultraaddons' ),
+				'label' => __( 'Skew Y', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['deg'],
 				'range' => [
@@ -748,7 +748,7 @@ class Transform {
 		$element->add_control(
 			'ua_transform_fx_transition_duration',
 			[
-				'label' => __( 'Transition Duration', 'ultraaddons' ),
+				'label' => __( 'Transition Duration', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'separator' => 'before',
 				'size_units' => ['px'],

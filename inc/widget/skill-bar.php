@@ -61,7 +61,7 @@ class Skill_Bar extends Base{
          * @return string keywords
          */
         public function get_keywords() {
-            return [ 'ultraaddons', 'ua', 'skill bar', 'progress bar', 'skill' ];
+            return [ 'ultraaddons-elementor-lite', 'ua', 'skill bar', 'progress bar', 'skill' ];
         }
 
         /**
@@ -195,7 +195,7 @@ class Skill_Bar extends Base{
             $this->start_controls_section(
                         'section_progress',
 			[
-				'label' => __( 'Progress Bar', 'ultraaddons' ),
+				'label' => __( 'Progress Bar', 'ultraaddons-elementor-lite' ),
 			]
                 );
         
@@ -203,13 +203,13 @@ class Skill_Bar extends Base{
                 $repeater->add_control(
                         'title',
 			[
-				'label' => __( 'Title', 'ultraaddons' ),
+				'label' => __( 'Title', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
 				'dynamic' => [
 					'active' => true,
 				],
-				'placeholder' => __( 'Enter your title', 'ultraaddons' ),
-				'default' => __( 'My Skill', 'ultraaddons' ),
+				'placeholder' => __( 'Enter your title', 'ultraaddons-elementor-lite' ),
+				'default' => __( 'My Skill', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
                 );
@@ -217,7 +217,7 @@ class Skill_Bar extends Base{
             $repeater->add_control(
 			'percent',
 			[
-				'label' => __( 'Percentage', 'ultraaddons' ),
+				'label' => __( 'Percentage', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 50,
@@ -232,7 +232,7 @@ class Skill_Bar extends Base{
         $repeater->add_control(
 			'more_options_1',
 			[
-				'label' => __( 'Color', 'ultraaddons' ),
+				'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -241,7 +241,7 @@ class Skill_Bar extends Base{
                 $repeater->add_control(
 			'repeater_bar_color',
 			[
-				'label' => __( 'Bar Color', 'ultraaddons' ),
+				'label' => __( 'Bar Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}} .barfiller .fill' => 'background-color: {{VALUE}} !important;',
@@ -252,7 +252,7 @@ class Skill_Bar extends Base{
                 $repeater->add_control(
 			'repeater_bar_bg_color',
 			[
-				'label' => __( 'Background Color', 'ultraaddons' ),
+				'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}} .barfiller' => 'background-color: {{VALUE}};',
@@ -263,7 +263,7 @@ class Skill_Bar extends Base{
                 $repeater->add_control(
 			'more_options_2',
 			[
-				'label' => __( 'Text Color', 'ultraaddons' ),
+				'label' => __( 'Text Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -272,7 +272,7 @@ class Skill_Bar extends Base{
         $repeater->add_control(
 			'repeater_title_color',
 			[
-				'label' => __( 'Text Color', 'ultraaddons' ),
+				'label' => __( 'Text Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}} .heading' => 'color: {{VALUE}};',
@@ -291,12 +291,12 @@ class Skill_Bar extends Base{
                 $this->add_control(
 			'progress_list',
 			[
-				'label' => __( 'Progress Bars', 'ultraaddons' ),
+				'label' => __( 'Progress Bars', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
-						'title' => __( 'My Skill #1', 'ultraaddons' ),
+						'title' => __( 'My Skill #1', 'ultraaddons-elementor-lite' ),
                                                 'percent' => [
                                                         'size' => 80,
                                                         'unit' => '%',
@@ -304,7 +304,7 @@ class Skill_Bar extends Base{
                                                 'repeater_bar_color' => 'red',
 					],
 					[
-						'title' => __( 'My Skill #2', 'ultraaddons' ),
+						'title' => __( 'My Skill #2', 'ultraaddons-elementor-lite' ),
                                                 'percent' => [
                                                         'size' => 70,
                                                         'unit' => '%',
@@ -312,7 +312,7 @@ class Skill_Bar extends Base{
                                                 'repeater_bar_color' => 'green',
 					],
 					[
-						'title' => __( 'My Skill #3', 'ultraaddons' ),
+						'title' => __( 'My Skill #3', 'ultraaddons-elementor-lite' ),
                                                 'percent' => [
                                                         'size' => 65,
                                                         'unit' => '%',
@@ -320,7 +320,7 @@ class Skill_Bar extends Base{
                                                 'repeater_bar_color' => 'purple',
 					],
 					[
-						'title' => __( 'My Skill #4', 'ultraaddons' ),
+						'title' => __( 'My Skill #4', 'ultraaddons-elementor-lite' ),
                                                 'percent' => [
                                                         'size' => 75,
                                                         'unit' => '%',
@@ -335,10 +335,10 @@ class Skill_Bar extends Base{
                 $this->add_control( 
                         'display_percentage',
                         [
-                                'label' => __( 'Display Percentage', 'ultraaddons' ),
+                                'label' => __( 'Display Percentage', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::SWITCHER,
-                                'label_on' => __( 'Show', 'ultraaddons' ),
-				'label_off' => __( 'Hide', 'ultraaddons' ),
+                                'label_on' => __( 'Show', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'Hide', 'ultraaddons-elementor-lite' ),
                                 'return_value' => 'yes',
                                 'default' => 'yes',
                         ]
@@ -359,7 +359,7 @@ class Skill_Bar extends Base{
                 $this->start_controls_section(
 			'section_progress_style',
 			[
-				'label' => __( 'Progress Bar', 'ultraaddons' ),
+				'label' => __( 'Progress Bar', 'ultraaddons-elementor-lite' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -367,7 +367,7 @@ class Skill_Bar extends Base{
                /*  $this->add_control(
 			'bar_bg_color',
 			[
-				'label' => __( 'Background Color', 'ultraaddons' ),
+				'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .barfiller' => 'background-color: {{VALUE}};',
@@ -378,7 +378,7 @@ class Skill_Bar extends Base{
                 $this->add_control(
 			'bar_height',
 			[
-				'label' => __( 'Height', 'ultraaddons' ),
+				'label' => __( 'Height', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'selectors' => [
 					'{{WRAPPER}} .barfiller .fill' => 'height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};',
@@ -390,7 +390,7 @@ class Skill_Bar extends Base{
                 $this->add_control(
 			'bar_border_radius',
 			[
-				'label' => __( 'Border Radius', 'ultraaddons' ),
+				'label' => __( 'Border Radius', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
@@ -405,7 +405,7 @@ class Skill_Bar extends Base{
                 $this->start_controls_section(
 			'section_title',
 			[
-				'label' => __( 'Text Style', 'ultraaddons' ),
+				'label' => __( 'Text Style', 'ultraaddons-elementor-lite' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -421,7 +421,7 @@ class Skill_Bar extends Base{
                 $this->add_control(
 			'title_color',
 			[
-				'label' => __( 'Text Color', 'ultraaddons' ),
+				'label' => __( 'Text Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .heading' => 'color: {{VALUE}};',
@@ -457,7 +457,7 @@ class Skill_Bar extends Base{
                 $this->add_control(
 			'percentage_color',
 			[
-				'label' => __( 'Text Color', 'ultraaddons' ),
+				'label' => __( 'Text Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .progress-score' => 'color: {{VALUE}};',

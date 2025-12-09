@@ -25,7 +25,7 @@
 </head>
 
 <body <?php body_class( 'ultraaddons-header-footer-body' ); ?>>
-    <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'ultraaddons' ); ?></a>
+    <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'ultraaddons-elementor-lite' ); ?></a>
     <div id="page" class="hfeed site header-footer-fullwidth ultraaddons-page">
     <?php
         if ( have_posts() ) : while ( have_posts() ) : the_post();

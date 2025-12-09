@@ -26,7 +26,7 @@ class Alert extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua', 'alert', 'notice', 'info' ];
+        return [ 'ultraaddons-elementor-lite', 'ua', 'alert', 'notice', 'info' ];
     }
     
     
@@ -89,7 +89,7 @@ class Alert extends Base{
         $this->start_controls_section(
             'general_content',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -97,7 +97,7 @@ class Alert extends Base{
         $this->add_control(
 			'_ua_alert_design_format',
 			[
-				'label' => esc_html__( 'Alert Design', 'ultraaddons' ),
+				'label' => esc_html__( 'Alert Design', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'label_block' => false,
 				'options'   => [
@@ -124,17 +124,17 @@ class Alert extends Base{
         $this->start_controls_section(
 			'_ua_alert_content_section',
 			[
-				'label' => __( 'Alert Content', 'ultraaddons' ),
+				'label' => __( 'Alert Content', 'ultraaddons-elementor-lite' ),
 			]
 		);
 
 		$this->add_control(
 			'_ua_alert_title',
 			[
-				'label' => __( 'Alert Title', 'ultraaddons' ),
+				'label' => __( 'Alert Title', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXTAREA,
-				'default' => __( 'The quickest & easiest service provider', 'ultraaddons' ),
-				'placeholder' => __( 'Enter your title', 'ultraaddons' ),
+				'default' => __( 'The quickest & easiest service provider', 'ultraaddons-elementor-lite' ),
+				'placeholder' => __( 'Enter your title', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
@@ -142,7 +142,7 @@ class Alert extends Base{
 		/* $this->add_control(
 			'_ua_alert_show_as_default',
 			[
-                'label' => __('Set as Default', 'ultraaddons'),
+                'label' => __('Set as Default', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::SWITCHER,
                 'default' => '',
                 'return_value' => 'yes',
@@ -152,36 +152,36 @@ class Alert extends Base{
         $this->add_control(
             '_ua_alert_title_size',
             [
-                'label' => __( 'Title HTML Tag', 'ultraaddons' ),
+                'label' => __( 'Title HTML Tag', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::CHOOSE,
                 'label_block' => true,
                 'options' => [
                     'h1'  => [
-                        'title' => __( 'H1', 'ultraaddons' ),
+                        'title' => __( 'H1', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h1'
                     ],
                     'h2'  => [
-                        'title' => __( 'H2', 'ultraaddons' ),
+                        'title' => __( 'H2', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h2'
                     ],
                     'h3'  => [
-                        'title' => __( 'H3', 'ultraaddons' ),
+                        'title' => __( 'H3', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h3'
                     ],
                     'h4'  => [
-                        'title' => __( 'H4', 'ultraaddons' ),
+                        'title' => __( 'H4', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h4'
                     ],
                     'h5'  => [
-                        'title' => __( 'H5', 'ultraaddons' ),
+                        'title' => __( 'H5', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h5'
                     ],
                     'h6'  => [
-                        'title' => __( 'H6', 'ultraaddons' ),
+                        'title' => __( 'H6', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h6'
                     ],
                     'p'  => [
-                        'title' => __( 'P', 'ultraaddons' ),
+                        'title' => __( 'P', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-paragraph'
                     ],
                 ],
@@ -193,10 +193,10 @@ class Alert extends Base{
 		$this->add_control(
 			'_ua_alert_icon_show',
 			[
-				'label' => __( 'Alert Icon', 'ultraaddons' ),
+				'label' => __( 'Alert Icon', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'NO', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'NO', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 			]
@@ -205,7 +205,7 @@ class Alert extends Base{
 		$this->add_control(
 			'_ua_alert_icon',
 			[
-				'label' => __( 'Alert Icon', 'ultraaddons' ),
+				'label' => __( 'Alert Icon', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::ICONS,
                 'fa4compatibility' => 'icon',
                 'default' => [
@@ -217,10 +217,10 @@ class Alert extends Base{
 		$this->add_control(
 			'_ua_alert_cross_icon_show',
 			[
-				'label' => __( 'Alert Cross Icon', 'ultraaddons' ),
+				'label' => __( 'Alert Cross Icon', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'NO', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'NO', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 			]
@@ -229,7 +229,7 @@ class Alert extends Base{
 		$this->add_control(
 			'_ua_alert_cross_icon',
 			[
-				'label' => __( 'Alert Cross Icon', 'ultraaddons' ),
+				'label' => __( 'Alert Cross Icon', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::ICONS,
                 'fa4compatibility' => 'icon',
                 'default' => [
@@ -251,7 +251,7 @@ class Alert extends Base{
         $this->start_controls_section(
             '_ua_alert_style_general',
             [
-                'label' => esc_html__('General', 'ultraaddons'),
+                'label' => esc_html__('General', 'ultraaddons-elementor-lite'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -260,7 +260,7 @@ class Alert extends Base{
             Group_Control_Background::get_type(),
             [
                 'name' => 'alert_background',
-                'label' => esc_html__('Background Color', 'ultraaddons'),
+                'label' => esc_html__('Background Color', 'ultraaddons-elementor-lite'),
                 'types' => [ 'classic', 'gradient' ],
                 'exclude' =>['image'],
                 'selector' => '{{WRAPPER}} .ua_alert_box.ua_alert_box_style_01',
@@ -270,7 +270,7 @@ class Alert extends Base{
         $this->add_control(
             '_ua_alert_box_border',
             [
-                'label' => esc_html__('Border Color', 'ultraaddons'),
+                'label' => esc_html__('Border Color', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -282,7 +282,7 @@ class Alert extends Base{
         $this->add_control(
             '_ua_alert_box_border_radius',
             [
-                'label' => __( 'Border Radius', 'ultraaddons' ),
+                'label' => __( 'Border Radius', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
@@ -294,7 +294,7 @@ class Alert extends Base{
 		$this->add_responsive_control(
             '_ua_alert_box_margin',
             [
-                'label' => esc_html__('Box Margin', 'ultraaddons'),
+                'label' => esc_html__('Box Margin', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -306,7 +306,7 @@ class Alert extends Base{
         $this->add_responsive_control(
             '_ua_alert_box_padding',
             [
-                'label' => esc_html__('Box Padding', 'ultraaddons'),
+                'label' => esc_html__('Box Padding', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -327,7 +327,7 @@ class Alert extends Base{
         $this->start_controls_section(
             '_ua_alert_title_style_settings',
             [
-                'label' => esc_html__('Alert Title', 'ultraaddons'),
+                'label' => esc_html__('Alert Title', 'ultraaddons-elementor-lite'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -341,7 +341,7 @@ class Alert extends Base{
         $this->add_control(
             '_ua_alert_text_color',
             [
-                'label' => esc_html__('Text Color', 'ultraaddons'),
+                'label' => esc_html__('Text Color', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -352,7 +352,7 @@ class Alert extends Base{
         $this->add_control(
             '_alert_title_opacity',
             [
-                'label'     => __('Opacity', 'ultraaddons'),
+                'label'     => __('Opacity', 'ultraaddons-elementor-lite'),
                 'type'      => Controls_Manager::SLIDER,
                 'range'     => [
                     'px' => [
@@ -369,7 +369,7 @@ class Alert extends Base{
         $this->add_responsive_control(
             '_alert_title_padding',
             [
-                'label'      => __('Padding', 'ultraaddons'),
+                'label'      => __('Padding', 'ultraaddons-elementor-lite'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
@@ -382,14 +382,14 @@ class Alert extends Base{
         $this->start_controls_section(
             '_ua_alert_icon_style_settings',
             [
-                'label' => esc_html__('Alert Icon', 'ultraaddons'),
+                'label' => esc_html__('Alert Icon', 'ultraaddons-elementor-lite'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             '_ua_alert_icon_bg_color',
             [
-                'label' => esc_html__('Icon Background Color', 'ultraaddons'),
+                'label' => esc_html__('Icon Background Color', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -400,7 +400,7 @@ class Alert extends Base{
         $this->add_control(
             '_ua_alert_icon_color',
             [
-                'label' => esc_html__('Icon Color', 'ultraaddons'),
+                'label' => esc_html__('Icon Color', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -411,7 +411,7 @@ class Alert extends Base{
         $this->add_responsive_control(
             '_ua_alert_icon_size',
             [
-                'label' => __( 'Icon Size', 'ultraaddons' ),
+                'label' => __( 'Icon Size', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::SLIDER,
                 'range' => [
                     'px' => [
@@ -428,7 +428,7 @@ class Alert extends Base{
         $this->add_responsive_control(
             '_alert_icon_padding',
             [
-                'label'      => __('Padding', 'ultraaddons'),
+                'label'      => __('Padding', 'ultraaddons-elementor-lite'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
@@ -439,7 +439,7 @@ class Alert extends Base{
         $this->add_responsive_control(
             '_alert_icon_radius',
             [
-                'label'      => __('Radius', 'ultraaddons'),
+                'label'      => __('Radius', 'ultraaddons-elementor-lite'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
@@ -452,14 +452,14 @@ class Alert extends Base{
         $this->start_controls_section(
             '_ua_alert_cross_icon_style_settings',
             [
-                'label' => __('Cross Icon', 'ultraaddons'),
+                'label' => __('Cross Icon', 'ultraaddons-elementor-lite'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             '_ua_alert_cross_icon_bg_color',
             [
-                'label' => __('Icon Background Color', 'ultraaddons'),
+                'label' => __('Icon Background Color', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -470,7 +470,7 @@ class Alert extends Base{
         $this->add_control(
             '_ua_alert_cross_icon_color',
             [
-                'label' => __('Icon Color', 'ultraaddons'),
+                'label' => __('Icon Color', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -481,7 +481,7 @@ class Alert extends Base{
         $this->add_responsive_control(
             '_ua_alert_cross_icon_size',
             [
-                'label' => __( 'Icon Size', 'ultraaddons' ),
+                'label' => __( 'Icon Size', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::SLIDER,
                 'range' => [
                     'px' => [
@@ -499,7 +499,7 @@ class Alert extends Base{
         $this->add_responsive_control(
             '_alert_cross_icon_padding',
             [
-                'label'      => __('Padding', 'ultraaddons'),
+                'label'      => __('Padding', 'ultraaddons-elementor-lite'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [

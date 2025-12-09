@@ -150,10 +150,10 @@ class Admin_Handle{
      * @return Array
      */
     public static function add_action_links( $links ) {
-        $ultraaddons_links[] = '<a href="' . admin_url( 'admin.php?page=ultraaddons-elementor-lite' ) . '" title="' . esc_attr__( 'Welcome to UltraAddons', 'ultraaddons' ) . '" target="_blank">' . esc_html__( 'Welcome','ultraaddons' ).'</a>';
-        $ultraaddons_links[] = '<a href="https://ultraaddons.com/pricing/" title="' . esc_attr__( 'GET PRO', 'ultraaddons' ) . '" target="_blank">' . esc_html__( 'GET PRO','ultraaddons' ).'</a>';
-        $ultraaddons_links[] = '<a href="https://codeastrology.com/support/" title="' . esc_attr__( 'CodeAstrology Support', 'ultraaddons' ) . '" target="_blank">'.esc_html__( 'Support','ultraaddons' ).'</a>';
-        //$ultraaddons_links[] = '<a href="https://github.com/codersaiful/ultraaddons-elementor-lite" title="' . esc_attr__( 'Github Repo Link', 'ultraaddons' ) . '" target="_blank">'.esc_html__( 'Github Repository','ultraaddons' ).'</a>';
+        $ultraaddons_links[] = '<a href="' . admin_url( 'admin.php?page=ultraaddons-elementor-lite' ) . '" title="' . esc_attr__( 'Welcome to UltraAddons', 'ultraaddons-elementor-lite' ) . '" target="_blank">' . esc_html__( 'Welcome','ultraaddons-elementor-lite' ).'</a>';
+        $ultraaddons_links[] = '<a href="https://ultraaddons.com/pricing/" title="' . esc_attr__( 'GET PRO', 'ultraaddons-elementor-lite' ) . '" target="_blank">' . esc_html__( 'GET PRO','ultraaddons-elementor-lite' ).'</a>';
+        $ultraaddons_links[] = '<a href="https://codeastrology.com/support/" title="' . esc_attr__( 'CodeAstrology Support', 'ultraaddons-elementor-lite' ) . '" target="_blank">'.esc_html__( 'Support','ultraaddons-elementor-lite' ).'</a>';
+        //$ultraaddons_links[] = '<a href="https://github.com/codersaiful/ultraaddons-elementor-lite" title="' . esc_attr__( 'Github Repo Link', 'ultraaddons-elementor-lite' ) . '" target="_blank">'.esc_html__( 'Github Repository','ultraaddons-elementor-lite' ).'</a>';
         return array_merge( $ultraaddons_links, $links );
     } 
     
@@ -177,8 +177,8 @@ class Admin_Handle{
     public static function admin_menu(){
         $icon_url = ULTRA_ADDONS_ASSETS . 'images/white.png';
         $menu = [
-            'page_title'    => __( 'UltraAddons Elementor Addons', 'ultraaddons' ),
-            'menu_title'    => __( 'Ultra Addons', 'ultraaddons' ),
+            'page_title'    => __( 'UltraAddons Elementor Addons', 'ultraaddons-elementor-lite' ),
+            'menu_title'    => __( 'Ultra Addons', 'ultraaddons-elementor-lite' ),
             'capability'    => self::$capability,
             'menu_slug'    => self::$menu_slug,//'ultraaddons-elementor-lite',
             'function'    => [ __CLASS__, 'welcome_page' ],
@@ -234,7 +234,7 @@ class Admin_Handle{
              * 
              * @since 1.0.8.0
              */
-            add_submenu_page( 'ultraaddons-elementor-lite', esc_html__( 'GET PRO', 'ultraaddons' ),  __( 'GET PRO', 'ultraaddons' ), self::$capability, 'https://ultraaddons.com/pricing/',null,null );
+            add_submenu_page( 'ultraaddons-elementor-lite', esc_html__( 'GET PRO', 'ultraaddons-elementor-lite' ),  __( 'GET PRO', 'ultraaddons-elementor-lite' ), self::$capability, 'https://ultraaddons.com/pricing/',null,null );
 
         }
         
@@ -252,8 +252,8 @@ class Admin_Handle{
         self::$sub_menu = [
             [
                 'parent_slug'   => self::$menu_slug,//$parent_slug,
-                'page_title'    =>  __( 'UltraAddons Elementor Addons', 'ultraaddons' ),
-                'menu_title'    =>  __( 'Welcome', 'ultraaddons' ),
+                'page_title'    =>  __( 'UltraAddons Elementor Addons', 'ultraaddons-elementor-lite' ),
+                'menu_title'    =>  __( 'Welcome', 'ultraaddons-elementor-lite' ),
                 'capability'    => self::$capability,
                 'menu_slug'     => 'ultraaddons-elementor-lite',
                 'function'      => [__CLASS__, 'welcome_page'],
@@ -262,8 +262,8 @@ class Admin_Handle{
             
             [
                 'parent_slug'   => self::$menu_slug,//$parent_slug,
-                'page_title'    =>  __( 'UltraAddons Widgets', 'ultraaddons' ),
-                'menu_title'    =>  __( 'Widgets', 'ultraaddons' ),
+                'page_title'    =>  __( 'UltraAddons Widgets', 'ultraaddons-elementor-lite' ),
+                'menu_title'    =>  __( 'Widgets', 'ultraaddons-elementor-lite' ),
                 'capability'    => self::$capability,
                 'menu_slug'     => 'ultraaddons-widgets', //When Welcome Page will Active, then it will active
                 //'menu_slug'     => 'ultraaddons-elementor-lite',
@@ -273,8 +273,8 @@ class Admin_Handle{
             
             [
                 'parent_slug'   => self::$menu_slug,//$parent_slug,
-                'page_title'    =>  __( 'UltraAddons Extensions', 'ultraaddons' ),
-                'menu_title'    =>  __( 'Extensions', 'ultraaddons' ),
+                'page_title'    =>  __( 'UltraAddons Extensions', 'ultraaddons-elementor-lite' ),
+                'menu_title'    =>  __( 'Extensions', 'ultraaddons-elementor-lite' ),
                 'capability'    => self::$capability,
                 'menu_slug'     => 'ultraaddons-extensions',
                 'function'      => [__CLASS__, 'extensions_page'],
@@ -282,8 +282,8 @@ class Admin_Handle{
             ],
             // [
             //     'parent_slug'   => self::$menu_slug,//$parent_slug,
-            //     'page_title'    =>  __( 'Custom Header Footer', 'ultraaddons' ),
-            //     'menu_title'    =>  __( 'Header Footer', 'ultraaddons' ),
+            //     'page_title'    =>  __( 'Custom Header Footer', 'ultraaddons-elementor-lite' ),
+            //     'menu_title'    =>  __( 'Header Footer', 'ultraaddons-elementor-lite' ),
             //     'capability'    => self::$capability,
             //     'menu_slug'     => 'ultraaddons-header-footer',
             //     'function'      => [__CLASS__, 'header_footer_page'],
@@ -292,8 +292,8 @@ class Admin_Handle{
             
             [
                 'parent_slug'   => self::$menu_slug,//$parent_slug,
-                'page_title'    =>  __( 'Custom Header Footer Template', 'ultraaddons' ),
-                'menu_title'    =>  __( 'Header Footer', 'ultraaddons' ),
+                'page_title'    =>  __( 'Custom Header Footer Template', 'ultraaddons-elementor-lite' ),
+                'menu_title'    =>  __( 'Header Footer', 'ultraaddons-elementor-lite' ),
                 'capability'    => self::$capability,
                 'menu_slug'     => 'edit.php?post_type=' . HF_Post::$post_type,
                 // 'position'      =>  2,
@@ -301,8 +301,8 @@ class Admin_Handle{
             
             [
                 'parent_slug'   => self::$menu_slug,//$parent_slug,
-                'page_title'    =>  __( 'Custom Fonts', 'ultraaddons' ),
-                'menu_title'    =>  __( 'Custom Fonts', 'ultraaddons' ),
+                'page_title'    =>  __( 'Custom Fonts', 'ultraaddons-elementor-lite' ),
+                'menu_title'    =>  __( 'Custom Fonts', 'ultraaddons-elementor-lite' ),
                 'capability'    => self::$capability,
                 'menu_slug'     => 'edit-tags.php?taxonomy=ultraaddons-custom-fonts',
                 // 'position'      =>  2,
@@ -310,8 +310,8 @@ class Admin_Handle{
             
             [
                 'parent_slug'   => self::$menu_slug,//$parent_slug,
-                'page_title'    =>  __( 'Settings for UltraAddons', 'ultraaddons' ),
-                'menu_title'    =>  __( 'Settings', 'ultraaddons' ),
+                'page_title'    =>  __( 'Settings for UltraAddons', 'ultraaddons-elementor-lite' ),
+                'menu_title'    =>  __( 'Settings', 'ultraaddons-elementor-lite' ),
                 'capability'    => self::$capability,
                 'menu_slug'     => 'ultraaddons-elementor-settings',
                 'function'      => [__CLASS__, 'settings_page'],
@@ -321,8 +321,8 @@ class Admin_Handle{
             //has removed @since 1.1.4.0
             // [
             //     'parent_slug'   => self::$menu_slug,//$parent_slug,
-            //     'page_title'    =>  __( 'Help & Others', 'ultraaddons' ),
-            //     'menu_title'    =>  __( 'Help & Others', 'ultraaddons' ),
+            //     'page_title'    =>  __( 'Help & Others', 'ultraaddons-elementor-lite' ),
+            //     'menu_title'    =>  __( 'Help & Others', 'ultraaddons-elementor-lite' ),
             //     'capability'    => self::$capability,
             //     'menu_slug'     => 'ultraaddons-help-n-others',
             //     'function'      => [__CLASS__, 'help_n_others_page'],

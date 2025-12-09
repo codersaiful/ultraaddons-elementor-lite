@@ -80,7 +80,7 @@ class News_Ticker extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua', 'step flow', 'step', 'flow' ];
+        return [ 'ultraaddons-elementor-lite', 'ua', 'step flow', 'step', 'flow' ];
     }
 	
 	 /**
@@ -116,7 +116,7 @@ class News_Ticker extends Base{
         $this->start_controls_section(
             'ticker_settings',
             [
-                'label'     => esc_html__( 'Control Settings', 'ultraaddons' ),
+                'label'     => esc_html__( 'Control Settings', 'ultraaddons-elementor-lite' ),
             ]
         );
 
@@ -124,7 +124,7 @@ class News_Ticker extends Base{
 		$this->add_control(
 			'delayTimer',
 			[
-				'label' => __( 'Delay Timer', 'ultraaddons' ),
+				'label' => __( 'Delay Timer', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 2000,
 				'max' => 6000,
@@ -136,7 +136,7 @@ class News_Ticker extends Base{
 		$this->add_control(
 			'scrollSpeed',
 			[
-				'label' => __( 'Scroll Speed', 'ultraaddons' ),
+				'label' => __( 'Scroll Speed', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 2,
 				'max' => 20,
@@ -148,7 +148,7 @@ class News_Ticker extends Base{
 		$this->add_control(
 			'zIndex',
 			[
-				'label' => __( 'ZIndex', 'ultraaddons' ),
+				'label' => __( 'ZIndex', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 99999,
 				'max' => 999999,
@@ -161,10 +161,10 @@ class News_Ticker extends Base{
 		$this->add_control(
 			'play',
 			[
-				'label' => __( 'Play', 'ultraaddons' ),
+				'label' => __( 'Play', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 				'frontend_available' => true,
@@ -173,10 +173,10 @@ class News_Ticker extends Base{
 		$this->add_control(
 			'stopOnHover',
 			[
-				'label' => __( 'Stop on Hover', 'ultraaddons' ),
+				'label' => __( 'Stop on Hover', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 				'frontend_available' => true,
@@ -185,10 +185,10 @@ class News_Ticker extends Base{
 		$this->add_control(
 			'show_controls',
 			[
-				'label' => __( 'Action Button', 'ultraaddons' ),
+				'label' => __( 'Action Button', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 			]
@@ -196,45 +196,45 @@ class News_Ticker extends Base{
 		$this->add_control(
 			'position',
 			[
-				'label' => __( 'Position', 'ultraaddons' ),
+				'label' => __( 'Position', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'auto',
 				'frontend_available' => true,
 				'options' => [
-					'auto'  => __( 'Default', 'ultraaddons' ),
-					'fixed-top' => __( 'Top', 'ultraaddons' ),
-					'fixed-bottom' => __( 'Bottom', 'ultraaddons' ),
+					'auto'  => __( 'Default', 'ultraaddons-elementor-lite' ),
+					'fixed-top' => __( 'Top', 'ultraaddons-elementor-lite' ),
+					'fixed-bottom' => __( 'Bottom', 'ultraaddons-elementor-lite' ),
 				],
 			]
 		);
 		$this->add_control(
 			'effect',
 			[
-				'label' => __( 'Effects', 'ultraaddons' ),
+				'label' => __( 'Effects', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'scroll',
 				'frontend_available' => true,
 				'options' => [
-					'scroll'  => __( 'Scroll', 'ultraaddons' ),
-					'fade'  => __( 'Fade', 'ultraaddons' ),
-					'slide-down' => __( 'Slide Down', 'ultraaddons' ),
-					'slide-up' => __( 'Slide Up', 'ultraaddons' ),
-					'slide-right' => __( 'Slide Right', 'ultraaddons' ),
-					'slide-left' => __( 'Slide Left', 'ultraaddons' ),
-					'typography' => __( 'Typography', 'ultraaddons' ),
+					'scroll'  => __( 'Scroll', 'ultraaddons-elementor-lite' ),
+					'fade'  => __( 'Fade', 'ultraaddons-elementor-lite' ),
+					'slide-down' => __( 'Slide Down', 'ultraaddons-elementor-lite' ),
+					'slide-up' => __( 'Slide Up', 'ultraaddons-elementor-lite' ),
+					'slide-right' => __( 'Slide Right', 'ultraaddons-elementor-lite' ),
+					'slide-left' => __( 'Slide Left', 'ultraaddons-elementor-lite' ),
+					'typography' => __( 'Typography', 'ultraaddons-elementor-lite' ),
 				],
 			]
 		);
 		$this->add_control(
 			'direction',
 			[
-				'label' => __( 'Direction', 'ultraaddons' ),
+				'label' => __( 'Direction', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'ltr',
 				'frontend_available' => true,
 				'options' => [
-					'rtl'  => __( 'RTL', 'ultraaddons' ),
-					'ltr' => __( 'LTR', 'ultraaddons' ),
+					'rtl'  => __( 'RTL', 'ultraaddons-elementor-lite' ),
+					'ltr' => __( 'LTR', 'ultraaddons-elementor-lite' ),
 				],
 			]
 		);
@@ -254,15 +254,15 @@ class News_Ticker extends Base{
 		
             '_ua_news_ticker_content_tab',
             [
-                'label'     => esc_html__( 'Content', 'ultraaddons' ),
+                'label'     => esc_html__( 'Content', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
 		$this->add_control(
 			'ticker_label', [
-				'label' => __( 'Label', 'ultraaddons' ),
+				'label' => __( 'Label', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'News' , 'ultraaddons' ),
+				'default' => __( 'News' , 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
@@ -270,18 +270,18 @@ class News_Ticker extends Base{
 
 		$repeater->add_control(
 			'news_title', [
-				'label' => __( 'Text', 'ultraaddons' ),
+				'label' => __( 'Text', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXTAREA,
-				'default' => __( 'Lorem Ipsum simply dummy text of the printing and typesetting industry' , 'ultraaddons' ),
+				'default' => __( 'Lorem Ipsum simply dummy text of the printing and typesetting industry' , 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
 		$repeater->add_control(
 			'news_link',
 			[
-				'label' => __( 'Link', 'ultraaddons' ),
+				'label' => __( 'Link', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::URL,
-				'placeholder' => __( 'https://your-link.com', 'ultraaddons' ),
+				'placeholder' => __( 'https://your-link.com', 'ultraaddons-elementor-lite' ),
 				'show_external' => true,
 				'default' => [
 					'url' => '#',
@@ -294,15 +294,15 @@ class News_Ticker extends Base{
 		$this->add_control(
 			'ticker_list',
 			[
-				'label' => __( 'News Ticker List', 'ultraaddons' ),
+				'label' => __( 'News Ticker List', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
-						'news_title' => __( '- Lorem Ipsum simply dummy text of the printing and typesetting industry', 'ultraaddons' ),
+						'news_title' => __( '- Lorem Ipsum simply dummy text of the printing and typesetting industry', 'ultraaddons-elementor-lite' ),
 					],
 					[
-						'news_title' => __( '- When an unknown printer took a galley of type and scrambled it to make a type specimen book', 'ultraaddons' ),
+						'news_title' => __( '- When an unknown printer took a galley of type and scrambled it to make a type specimen book', 'ultraaddons-elementor-lite' ),
 					],
 				],
 				'title_field' => '{{{ news_title }}}',
@@ -317,13 +317,13 @@ class News_Ticker extends Base{
         $this->start_controls_section(
             '_ua_news_ticker_content_style',
             [
-                'label'     => esc_html__( 'Content', 'ultraaddons' ),
+                'label'     => esc_html__( 'Content', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
 		$this->add_control(
 			'_ua_ticker_text_color', [
-				'label' => __( 'Text Color', 'ultraaddons' ),
+				'label' => __( 'Text Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'=>'#333',
 				'selectors' => [
@@ -334,7 +334,7 @@ class News_Ticker extends Base{
         ); 
 		$this->add_control(
 			'_ua_ticker_label_bg', [
-				'label' => __( 'Label Background', 'ultraaddons' ),
+				'label' => __( 'Label Background', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'=>'#333',
 				'selectors' => [
@@ -344,7 +344,7 @@ class News_Ticker extends Base{
         );
 		$this->add_control(
 			'_ua_ticker_label_color', [
-				'label' => __( 'Label Text Color', 'ultraaddons' ),
+				'label' => __( 'Label Text Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'=>'#fff',
 				'selectors' => [
@@ -355,7 +355,7 @@ class News_Ticker extends Base{
         ); 
 		$this->add_control(
 			'_ua_ticker_border_color', [
-				'label' => __( 'Border Color', 'ultraaddons' ),
+				'label' => __( 'Border Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'=>'#333',
 				'selectors' => [
@@ -367,7 +367,7 @@ class News_Ticker extends Base{
 		$this->add_responsive_control(
 			'_ua_ticker_border_radius',
 			[
-				'label'       => esc_html__( 'Box Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Box Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -385,14 +385,14 @@ class News_Ticker extends Base{
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'ticker_box_shadow',
-				'label' => __( 'Box Shadow', 'ultraaddons' ),
+				'label' => __( 'Box Shadow', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-news-ticker-wrap',
 			]
 		);
 		
 		$this->add_control(
 			'_ua_ticker_bg_color', [
-				'label' => __( 'Background Color', 'ultraaddons' ),
+				'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'=>'#fff',
 				'selectors' => [
@@ -427,13 +427,13 @@ class News_Ticker extends Base{
         $this->start_controls_section(
             '_ua_ticker_btn_style',
             [
-                'label'     => esc_html__( 'Action Button', 'ultraaddons' ),
+                'label'     => esc_html__( 'Action Button', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
 		$this->add_control(
 			'_ua_ticker_btn_bg', [
-				'label' => __( 'Control Color', 'ultraaddons' ),
+				'label' => __( 'Control Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'=>'#333',
 				'selectors' => [
@@ -445,7 +445,7 @@ class News_Ticker extends Base{
         );
 		$this->add_control(
 			'_ua_ticker_ctrl_bg', [
-				'label' => __( 'Control Background', 'ultraaddons' ),
+				'label' => __( 'Control Background', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'=>'#eaeaea',
 				'selectors' => [
@@ -455,7 +455,7 @@ class News_Ticker extends Base{
         );
 		$this->add_control(
 			'_ua_ticker_play_btn_bg', [
-				'label' => __( 'Play Button Background', 'ultraaddons' ),
+				'label' => __( 'Play Button Background', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .bn-play::after' => 'border-left-color: {{VALUE}};',

@@ -96,7 +96,7 @@ class Team_Box extends Base{
         $this->start_controls_section(
                 '_section_info',
                 [
-                        'label' => __( 'Information', 'ultraaddons' ),
+                        'label' => __( 'Information', 'ultraaddons-elementor-lite' ),
                         'tab' => Controls_Manager::TAB_CONTENT,
                 ]
         );
@@ -105,7 +105,7 @@ class Team_Box extends Base{
         $this->add_control(
                 'image',
                 [
-                        'label' => __( 'Photo', 'ultraaddons' ),
+                        'label' => __( 'Photo', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::MEDIA,
                         'default' => [
                                 'url' => $placeholder_image,//Utils::get_placeholder_image_src(),
@@ -120,11 +120,11 @@ class Team_Box extends Base{
         $this->add_control(
                 'title',
                 [
-                        'label' => __( 'Name', 'ultraaddons' ),
+                        'label' => __( 'Name', 'ultraaddons-elementor-lite' ),
                         'label_block' => true,
                         'type' => Controls_Manager::TEXT,
-                        'default' => __( 'Jhone Doe', 'ultraaddons' ),
-                        'placeholder' => __( 'Type Member Name', 'ultraaddons' ),
+                        'default' => __( 'Jhone Doe', 'ultraaddons-elementor-lite' ),
+                        'placeholder' => __( 'Type Member Name', 'ultraaddons-elementor-lite' ),
                         'separator' => 'before',
                         'dynamic' => [
                                 'active' => true,
@@ -135,11 +135,11 @@ class Team_Box extends Base{
         $this->add_control(
                 'designation',
                 [
-                        'label' => __( 'Designation', 'ultraaddons' ),
+                        'label' => __( 'Designation', 'ultraaddons-elementor-lite' ),
                         'label_block' => true,
                         'type' => Controls_Manager::TEXT,
-                        'default' => __( 'WordPress Developer', 'ultraaddons' ),
-                        'placeholder' => __( 'Type Member Designation', 'ultraaddons' ),
+                        'default' => __( 'WordPress Developer', 'ultraaddons-elementor-lite' ),
+                        'placeholder' => __( 'Type Member Designation', 'ultraaddons-elementor-lite' ),
                         'dynamic' => [
                                 'active' => true,
                         ]
@@ -148,7 +148,7 @@ class Team_Box extends Base{
         $this->add_control(
                 'description',
                 [
-                        'label' => __( 'Description', 'ultraaddons' ),
+                        'label' => __( 'Description', 'ultraaddons-elementor-lite' ),
                         'label_block' => true,
                         'type' => Controls_Manager::TEXTAREA,
                         'dynamic' => [
@@ -167,26 +167,26 @@ class Team_Box extends Base{
                 $this->start_controls_section(
                         'general_style',
                         [
-                                'label' =>  __( 'General', 'ultraaddons' ) ,
+                                'label' =>  __( 'General', 'ultraaddons-elementor-lite' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
                 $this->add_responsive_control(
 			'team_text_alignment',
 			[
-				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
+				'label' => esc_html__( 'Alignment', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'title' => esc_html__( 'Left', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'ultraaddons' ),
+						'title' => esc_html__( 'Center', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'title' => esc_html__( 'Right', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-right',
 					]
 				],
@@ -207,7 +207,7 @@ class Team_Box extends Base{
                 );
                 $this->add_control(
                         'team_title_color', [
-                                'label' => __( 'Title Color', 'ultraaddons' ),
+                                'label' => __( 'Title Color', 'ultraaddons-elementor-lite' ),
                                 'type'      => Controls_Manager::COLOR,
                                 'separator' => 'after',
                                 'selectors' => [
@@ -226,7 +226,7 @@ class Team_Box extends Base{
                 );
                 $this->add_control(
                         'designation_color', [
-                                'label' => __( 'Designation Color', 'ultraaddons' ),
+                                'label' => __( 'Designation Color', 'ultraaddons-elementor-lite' ),
                                 'type'      => Controls_Manager::COLOR,
                                 'separator' => 'after',
                                 'selectors' => [
@@ -246,7 +246,7 @@ class Team_Box extends Base{
                 );
                 $this->add_control(
                         'desc_color', [
-                                'label' => __( 'Description Color', 'ultraaddons' ),
+                                'label' => __( 'Description Color', 'ultraaddons-elementor-lite' ),
                                 'type'      => Controls_Manager::COLOR,
                                 'condition'=>['description!'=>''],
                                 'separator' => 'after',
@@ -265,14 +265,14 @@ class Team_Box extends Base{
                 $this->start_controls_section(
                         'icon_style',
                         [
-                                'label' =>  __( 'Icon', 'ultraaddons' ) ,
+                                'label' =>  __( 'Icon', 'ultraaddons-elementor-lite' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
                
                 $this->add_control(
                         'icon_color', [
-                                'label' => __( 'Icon Color', 'ultraaddons' ),
+                                'label' => __( 'Icon Color', 'ultraaddons-elementor-lite' ),
                                 'type'      => Controls_Manager::COLOR,
                                 'selectors' => [
                                                 '{{WRAPPER}} .social_links i' => 'color: {{VALUE}};',
@@ -281,7 +281,7 @@ class Team_Box extends Base{
                 );
                 $this->add_control(
                         'icon_hover_color', [
-                                'label' => __( 'Icon Hover Color', 'ultraaddons' ),
+                                'label' => __( 'Icon Hover Color', 'ultraaddons-elementor-lite' ),
                                 'type'      => Controls_Manager::COLOR,
                                 'separator' => 'before',
                                 'selectors' => [
@@ -292,7 +292,7 @@ class Team_Box extends Base{
                 $this->add_control(
 			'icon_size',
 			[
-				'label' => __( 'Icon Size', 'ultraaddons' ),
+				'label' => __( 'Icon Size', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px'],
 				'range' => [
@@ -320,7 +320,7 @@ class Team_Box extends Base{
                 $this->start_controls_section(
                         'box_style',
                         [
-                                'label' =>  __( 'Box', 'ultraaddons' ) ,
+                                'label' =>  __( 'Box', 'ultraaddons-elementor-lite' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
@@ -331,7 +331,7 @@ class Team_Box extends Base{
                 $this->start_controls_tab(
 			'style_normal_tab',
 			[
-				'label' => esc_html__( 'Normal', 'ultraaddons' ),
+				'label' => esc_html__( 'Normal', 'ultraaddons-elementor-lite' ),
 			]
 		);
 
@@ -339,7 +339,7 @@ class Team_Box extends Base{
                                 Group_Control_Background::get_type(),
                                 [
                                         'name' => 'team_box_background',
-                                        'label' => __( 'Box Background', 'ultraaddons' ),
+                                        'label' => __( 'Box Background', 'ultraaddons-elementor-lite' ),
                                         'types' => [ 'classic', 'gradient'],
                                         'selector' => '{{WRAPPER}} .ua-team-container .member',
                                 ]
@@ -351,7 +351,7 @@ class Team_Box extends Base{
 		$this->start_controls_tab(
 			'style_hover_tab',
 			[
-				'label' => esc_html__( 'Hover', 'ultraaddons' ),
+				'label' => esc_html__( 'Hover', 'ultraaddons-elementor-lite' ),
 			]
 		);
 
@@ -359,7 +359,7 @@ class Team_Box extends Base{
                                 Group_Control_Background::get_type(),
                                 [
                                         'name' => 'team_box_hover_background',
-                                        'label' => __( 'Box Background', 'ultraaddons' ),
+                                        'label' => __( 'Box Background', 'ultraaddons-elementor-lite' ),
                                         'types' => [ 'classic', 'gradient'],
                                         'selector' => '{{WRAPPER}} .ua-team-container .member:hover',
                                 ]
@@ -374,7 +374,7 @@ class Team_Box extends Base{
                 $this->add_responsive_control(
 			'box_padding',
 			[
-				'label'       => esc_html__( 'Padding', 'ultraaddons' ),
+				'label'       => esc_html__( 'Padding', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px' ],
 				'placeholder' => [
@@ -392,7 +392,7 @@ class Team_Box extends Base{
                 $this->add_responsive_control(
 			'content_padding',
 			[
-				'label'       => esc_html__( 'Content Padding', 'ultraaddons' ),
+				'label'       => esc_html__( 'Content Padding', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px' ],
 				'placeholder' => [
@@ -411,7 +411,7 @@ class Team_Box extends Base{
                 $this->add_responsive_control(
 			'box_radius',
 			[
-				'label'       => esc_html__( 'Box Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Box Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -429,7 +429,7 @@ class Team_Box extends Base{
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'team_box_shadow',
-				'label' => __( 'Box Shadow', 'ultraaddons' ),
+				'label' => __( 'Box Shadow', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-team-container .member',
 			]
 		);
@@ -438,7 +438,7 @@ class Team_Box extends Base{
                         Group_Control_Border::get_type(),
                         [
                                 'name' => 'box_border',
-                                'label' => __( 'Border', 'ultraaddons' ),
+                                'label' => __( 'Border', 'ultraaddons-elementor-lite' ),
                                 'fields_options' => [
                                         'border' => [
                                                 'default' => 'solid',
@@ -468,14 +468,14 @@ class Team_Box extends Base{
                 $this->start_controls_section(
                         'image_style',
                         [
-                                'label' =>  __( 'Image', 'ultraaddons' ) ,
+                                'label' =>  __( 'Image', 'ultraaddons-elementor-lite' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
                 $this->add_control(
 			'image_size',
 			[
-				'label' => esc_html__( 'Image Size', 'ultraaddons' ),
+				'label' => esc_html__( 'Image Size', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%' ],
 				'range' => [
@@ -498,7 +498,7 @@ class Team_Box extends Base{
                 $this->add_responsive_control(
 			'image_radius',
 			[
-				'label'       => esc_html__( 'Image Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Image Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -515,7 +515,7 @@ class Team_Box extends Base{
                 $this->add_responsive_control(
 			'image_margin',
 			[
-				'label'       => esc_html__( 'Image Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Image Margin', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -533,7 +533,7 @@ class Team_Box extends Base{
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'image_border',
-				'label' => __( 'Border', 'ultraaddons' ),
+				'label' => __( 'Border', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-team-container .member img',
 			]
 		);
@@ -550,7 +550,7 @@ class Team_Box extends Base{
         $this->start_controls_section(
             'social',
             [
-                'label'     => esc_html__( 'Social', 'ultraaddons' ),
+                'label'     => esc_html__( 'Social', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -560,7 +560,7 @@ class Team_Box extends Base{
         $repeater->add_control(
                 'name',
                 [
-                        'label' => __( 'Profile Name', 'ultraaddons' ),
+                        'label' => __( 'Profile Name', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SELECT2,
                         'label_block' => true,
                         'select2options' => [
@@ -572,8 +572,8 @@ class Team_Box extends Base{
 
         $repeater->add_control(
                 'link', [
-                        'label' => __( 'Profile Link', 'ultraaddons' ),
-                        'placeholder' => __( 'Add your profile link', 'ultraaddons' ),
+                        'label' => __( 'Profile Link', 'ultraaddons-elementor-lite' ),
+                        'placeholder' => __( 'Add your profile link', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::URL,
                         'label_block' => true,
                         'autocomplete' => false,
@@ -589,8 +589,8 @@ class Team_Box extends Base{
 
         $repeater->add_control(
                 'email', [
-                        'label' => __( 'Email Address', 'ultraaddons' ),
-                        'placeholder' => __( 'Add your email address', 'ultraaddons' ),
+                        'label' => __( 'Email Address', 'ultraaddons-elementor-lite' ),
+                        'placeholder' => __( 'Add your email address', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::TEXT,
                         'label_block' => false,
                         'input_type' => 'email',
@@ -608,7 +608,7 @@ class Team_Box extends Base{
         $repeater->add_control(
                 'social_icon_color',
                 [
-                        'label' => __( 'Icon Color', 'ultraaddons' ),
+                        'label' => __( 'Icon Color', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ua-single-team-wrapper {{CURRENT_ITEM}}' => 'color: {{VALUE}}',
@@ -646,10 +646,10 @@ class Team_Box extends Base{
         $this->add_control(
                 'show_profiles',
                 [
-                        'label' => __( 'Show Profiles', 'ultraaddons' ),
+                        'label' => __( 'Show Profiles', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SWITCHER,
-                        'label_on' => __( 'Show', 'ultraaddons' ),
-                        'label_off' => __( 'Hide', 'ultraaddons' ),
+                        'label_on' => __( 'Show', 'ultraaddons-elementor-lite' ),
+                        'label_off' => __( 'Hide', 'ultraaddons-elementor-lite' ),
                         'return_value' => 'yes',
                         'default' => 'no',
                         'separator' => 'before',
@@ -703,45 +703,45 @@ class Team_Box extends Base{
 
      protected static function get_profile_names() {
         return [
-                '500px'          => __( '500px', 'ultraaddons' ),
-                'apple'          => __( 'Apple', 'ultraaddons' ),
-                'behance'        => __( 'Behance', 'ultraaddons' ),
-                'bitbucket'      => __( 'BitBucket', 'ultraaddons' ),
-                'codepen'        => __( 'CodePen', 'ultraaddons' ),
-                'delicious'      => __( 'Delicious', 'ultraaddons' ),
-                'deviantart'     => __( 'DeviantArt', 'ultraaddons' ),
-                'digg'           => __( 'Digg', 'ultraaddons' ),
-                'dribbble'       => __( 'Dribbble', 'ultraaddons' ),
-                'email'          => __( 'Email', 'ultraaddons' ),
-                'facebook'       => __( 'Facebook', 'ultraaddons' ),
-                'flickr'         => __( 'Flicker', 'ultraaddons' ),
-                'foursquare'     => __( 'FourSquare', 'ultraaddons' ),
-                'github'         => __( 'Github', 'ultraaddons' ),
-                'houzz'          => __( 'Houzz', 'ultraaddons' ),
-                'instagram'      => __( 'Instagram', 'ultraaddons' ),
-                'jsfiddle'       => __( 'JS Fiddle', 'ultraaddons' ),
-                'linkedin'       => __( 'LinkedIn', 'ultraaddons' ),
-                'medium'         => __( 'Medium', 'ultraaddons' ),
-                'pinterest'      => __( 'Pinterest', 'ultraaddons' ),
-                'product-hunt'   => __( 'Product Hunt', 'ultraaddons' ),
-                'reddit'         => __( 'Reddit', 'ultraaddons' ),
-                'slideshare'     => __( 'Slide Share', 'ultraaddons' ),
-                'snapchat'       => __( 'Snapchat', 'ultraaddons' ),
-                'soundcloud'     => __( 'SoundCloud', 'ultraaddons' ),
-                'spotify'        => __( 'Spotify', 'ultraaddons' ),
-                'stack-overflow' => __( 'StackOverflow', 'ultraaddons' ),
-                'tripadvisor'    => __( 'TripAdvisor', 'ultraaddons' ),
-                'tumblr'         => __( 'Tumblr', 'ultraaddons' ),
-                'twitch'         => __( 'Twitch', 'ultraaddons' ),
-                'twitter'        => __( 'Twitter', 'ultraaddons' ),
-                'vimeo'          => __( 'Vimeo', 'ultraaddons' ),
-                'vk'             => __( 'VK', 'ultraaddons' ),
-                'website'        => __( 'Website', 'ultraaddons' ),
-                'whatsapp'       => __( 'WhatsApp', 'ultraaddons' ),
-                'wordpress'      => __( 'WordPress', 'ultraaddons' ),
-                'xing'           => __( 'Xing', 'ultraaddons' ),
-                'yelp'           => __( 'Yelp', 'ultraaddons' ),
-                'youtube'        => __( 'YouTube', 'ultraaddons' ),
+                '500px'          => __( '500px', 'ultraaddons-elementor-lite' ),
+                'apple'          => __( 'Apple', 'ultraaddons-elementor-lite' ),
+                'behance'        => __( 'Behance', 'ultraaddons-elementor-lite' ),
+                'bitbucket'      => __( 'BitBucket', 'ultraaddons-elementor-lite' ),
+                'codepen'        => __( 'CodePen', 'ultraaddons-elementor-lite' ),
+                'delicious'      => __( 'Delicious', 'ultraaddons-elementor-lite' ),
+                'deviantart'     => __( 'DeviantArt', 'ultraaddons-elementor-lite' ),
+                'digg'           => __( 'Digg', 'ultraaddons-elementor-lite' ),
+                'dribbble'       => __( 'Dribbble', 'ultraaddons-elementor-lite' ),
+                'email'          => __( 'Email', 'ultraaddons-elementor-lite' ),
+                'facebook'       => __( 'Facebook', 'ultraaddons-elementor-lite' ),
+                'flickr'         => __( 'Flicker', 'ultraaddons-elementor-lite' ),
+                'foursquare'     => __( 'FourSquare', 'ultraaddons-elementor-lite' ),
+                'github'         => __( 'Github', 'ultraaddons-elementor-lite' ),
+                'houzz'          => __( 'Houzz', 'ultraaddons-elementor-lite' ),
+                'instagram'      => __( 'Instagram', 'ultraaddons-elementor-lite' ),
+                'jsfiddle'       => __( 'JS Fiddle', 'ultraaddons-elementor-lite' ),
+                'linkedin'       => __( 'LinkedIn', 'ultraaddons-elementor-lite' ),
+                'medium'         => __( 'Medium', 'ultraaddons-elementor-lite' ),
+                'pinterest'      => __( 'Pinterest', 'ultraaddons-elementor-lite' ),
+                'product-hunt'   => __( 'Product Hunt', 'ultraaddons-elementor-lite' ),
+                'reddit'         => __( 'Reddit', 'ultraaddons-elementor-lite' ),
+                'slideshare'     => __( 'Slide Share', 'ultraaddons-elementor-lite' ),
+                'snapchat'       => __( 'Snapchat', 'ultraaddons-elementor-lite' ),
+                'soundcloud'     => __( 'SoundCloud', 'ultraaddons-elementor-lite' ),
+                'spotify'        => __( 'Spotify', 'ultraaddons-elementor-lite' ),
+                'stack-overflow' => __( 'StackOverflow', 'ultraaddons-elementor-lite' ),
+                'tripadvisor'    => __( 'TripAdvisor', 'ultraaddons-elementor-lite' ),
+                'tumblr'         => __( 'Tumblr', 'ultraaddons-elementor-lite' ),
+                'twitch'         => __( 'Twitch', 'ultraaddons-elementor-lite' ),
+                'twitter'        => __( 'Twitter', 'ultraaddons-elementor-lite' ),
+                'vimeo'          => __( 'Vimeo', 'ultraaddons-elementor-lite' ),
+                'vk'             => __( 'VK', 'ultraaddons-elementor-lite' ),
+                'website'        => __( 'Website', 'ultraaddons-elementor-lite' ),
+                'whatsapp'       => __( 'WhatsApp', 'ultraaddons-elementor-lite' ),
+                'wordpress'      => __( 'WordPress', 'ultraaddons-elementor-lite' ),
+                'xing'           => __( 'Xing', 'ultraaddons-elementor-lite' ),
+                'yelp'           => __( 'Yelp', 'ultraaddons-elementor-lite' ),
+                'youtube'        => __( 'YouTube', 'ultraaddons-elementor-lite' ),
         ];
     }
 

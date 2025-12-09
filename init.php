@@ -177,7 +177,7 @@ final class UltraAddons {
 	 */
 	public function i18n() {
 
-		load_plugin_textdomain( 'ultraaddons' );
+		load_plugin_textdomain( 'ultraaddons-elementor-lite' );
 
 	}
 
@@ -277,9 +277,9 @@ final class UltraAddons {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor */
-			esc_html__( '%1$s requires %2$s to be installed and activated.%3$s', 'ultraaddons' ),
-			'<strong>' . esc_html__( 'UltraAddons - Elementor Addons', 'ultraaddons' ) . '</strong>',
-			'<strong><a href="https://wordpress.org/plugins/elementor/" target="_blank">' . esc_html__( 'Elementor', 'ultraaddons' ) . '</a></strong>',
+			esc_html__( '%1$s requires %2$s to be installed and activated.%3$s', 'ultraaddons-elementor-lite' ),
+			'<strong>' . esc_html__( 'UltraAddons - Elementor Addons', 'ultraaddons-elementor-lite' ) . '</strong>',
+			'<strong><a href="https://wordpress.org/plugins/elementor/" target="_blank">' . esc_html__( 'Elementor', 'ultraaddons-elementor-lite' ) . '</a></strong>',
 			'<style>div.ultraaddons-notice-error-elementor{background:#e5e5e5;color:#607d8b}div.ultraaddons-notice-error-elementor>p{font-size:22px}div.ultraaddons-notice-error-elementor>p>strong{color:#9c27b0;font-weight:700}</style>'
 		);
 
@@ -302,9 +302,9 @@ final class UltraAddons {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor 3: Required Elementor version */
-			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'ultraaddons' ),
-			'<strong>' . esc_html__( 'UltraAddons - Elementor Addons', 'ultraaddons' ) . '</strong>',
-			'<strong>' . esc_html__( 'Elementor', 'ultraaddons' ) . '</strong>',
+			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'ultraaddons-elementor-lite' ),
+			'<strong>' . esc_html__( 'UltraAddons - Elementor Addons', 'ultraaddons-elementor-lite' ) . '</strong>',
+			'<strong>' . esc_html__( 'Elementor', 'ultraaddons-elementor-lite' ) . '</strong>',
 			 self::MINIMUM_ELEMENTOR_VERSION
 		);
 
@@ -327,9 +327,9 @@ final class UltraAddons {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: PHP 3: Required PHP version */
-			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'ultraaddons' ),
-			'<strong>' . esc_html__( 'UltraAddons - Elementor Addons', 'ultraaddons' ) . '</strong>',
-			'<strong>' . esc_html__( 'PHP', 'ultraaddons' ) . '</strong>',
+			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'ultraaddons-elementor-lite' ),
+			'<strong>' . esc_html__( 'UltraAddons - Elementor Addons', 'ultraaddons-elementor-lite' ) . '</strong>',
+			'<strong>' . esc_html__( 'PHP', 'ultraaddons-elementor-lite' ) . '</strong>',
 			 self::MINIMUM_PHP_VERSION
 		);
 

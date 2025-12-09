@@ -28,7 +28,7 @@ class Image_Accordion extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons','ua', 'image', 'accordion' ];
+        return [ 'ultraaddons-elementor-lite','ua', 'image', 'accordion' ];
     }
 
     /**
@@ -212,7 +212,7 @@ class Image_Accordion extends Base{
         $this->start_controls_section(
             'ua_img_accordion_content_tab',
             [
-                'label' => esc_html__('Content', 'ultraaddons' ),
+                'label' => esc_html__('Content', 'ultraaddons-elementor-lite' ),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -222,18 +222,18 @@ class Image_Accordion extends Base{
             $repeater->add_control(
                 'ua_img_accordion_active',
                 [
-                    'label'     => esc_html__('Active ? ', 'ultraaddons' ),
+                    'label'     => esc_html__('Active ? ', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::SWITCHER,
                     'default'   => 'no',
-                    'label_on'  => esc_html__( 'Yes', 'ultraaddons' ),
-                    'label_off' => esc_html__( 'No', 'ultraaddons' ),
+                    'label_on'  => esc_html__( 'Yes', 'ultraaddons-elementor-lite' ),
+                    'label_off' => esc_html__( 'No', 'ultraaddons-elementor-lite' ),
                 ]
             );
 
             $repeater->add_control(
                 'ua_img_accordion_bg',
                 [
-                    'label'     => esc_html__( 'Background Image', 'ultraaddons' ),
+                    'label'     => esc_html__( 'Background Image', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::MEDIA,
                     'default'   => [
                         'url' => Utils::get_placeholder_image_src(),
@@ -245,20 +245,20 @@ class Image_Accordion extends Base{
             $repeater->add_control(
                 'ua_img_accordion_title',
                 [
-                    'label'         => esc_html__('Title', 'ultraaddons' ),
+                    'label'         => esc_html__('Title', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::TEXT,
                     'label_block'   => true,
-                    'default'       => esc_html__('Image accordion Title', 'ultraaddons' ),
+                    'default'       => esc_html__('Image accordion Title', 'ultraaddons-elementor-lite' ),
                 ]
             );
 
             $repeater->add_control(
                 'ua_img_accordion_enable_icon',
                 [
-                    'label'         => esc_html__( 'Enable Icon', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Enable Icon', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::SWITCHER,
-                    'label_on'      => esc_html__( 'Yes', 'ultraaddons' ),
-                    'label_off'     => esc_html__( 'No', 'ultraaddons' ),
+                    'label_on'      => esc_html__( 'Yes', 'ultraaddons-elementor-lite' ),
+                    'label_off'     => esc_html__( 'No', 'ultraaddons-elementor-lite' ),
                     'return_value'  => 'yes',
                     'default'       => '',
                 ]
@@ -267,7 +267,7 @@ class Image_Accordion extends Base{
             $repeater->add_control(
                 'ua_img_accordion_title_icons',
                 [
-                    'label'             => esc_html__('Icon for title', 'ultraaddons' ),
+                    'label'             => esc_html__('Icon for title', 'ultraaddons-elementor-lite' ),
                     'type'              => Controls_Manager::ICONS,
                     'fa4compatibility'  => 'ua_img_accordion_title_icon',
                     'default'           => [
@@ -282,12 +282,12 @@ class Image_Accordion extends Base{
             $repeater->add_control(
                 'ua_img_accordion_title_icon_position',
                 [
-                    'label'     => esc_html__( 'Icon Position', 'ultraaddons' ),
+                    'label'     => esc_html__( 'Icon Position', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::SELECT,
                     'default'   => 'left',
                     'options'   => [
-                        'left'      => esc_html__( 'Before', 'ultraaddons' ),
-                        'right'     => esc_html__( 'After', 'ultraaddons' ),
+                        'left'      => esc_html__( 'Before', 'ultraaddons-elementor-lite' ),
+                        'right'     => esc_html__( 'After', 'ultraaddons-elementor-lite' ),
                     ],
                     'condition' => [
                         'ua_img_accordion_title_icons!' => '',
@@ -299,10 +299,10 @@ class Image_Accordion extends Base{
             $repeater->add_control(
                 'ua_img_accordion_enable_button',
                 [
-                    'label'         => esc_html__( 'Enable Button', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Enable Button', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::SWITCHER,
-                    'label_on'      => esc_html__( 'Yes', 'ultraaddons' ),
-                    'label_off'     => esc_html__( 'No', 'ultraaddons' ),
+                    'label_on'      => esc_html__( 'Yes', 'ultraaddons-elementor-lite' ),
+                    'label_off'     => esc_html__( 'No', 'ultraaddons-elementor-lite' ),
                     'return_value'  => 'yes',
                     'default'       => 'yes',
                     'separator'     => 'before',
@@ -312,10 +312,10 @@ class Image_Accordion extends Base{
             $repeater->add_control(
                 'ua_img_accordion_button_label',
                 [
-                    'label'         => esc_html__('Button Label', 'ultraaddons' ),
+                    'label'         => esc_html__('Button Label', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::TEXT,
                     'label_block'   => true,
-                    'default'       => esc_html__('Read More','ultraaddons' ),
+                    'default'       => esc_html__('Read More','ultraaddons-elementor-lite' ),
                     'condition'     => [
                         'ua_img_accordion_enable_button' => 'yes',
                     ],
@@ -325,7 +325,7 @@ class Image_Accordion extends Base{
             $repeater->add_control(
                 'ua_img_accordion_button_url',
                 [
-                    'label'     => esc_html__('Button URL', 'ultraaddons' ),
+                    'label'     => esc_html__('Button URL', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::URL,
                     'condition' => [
                         'ua_img_accordion_enable_button' => 'yes',
@@ -336,10 +336,10 @@ class Image_Accordion extends Base{
            /*  $repeater->add_control(
                 'ua_img_accordion_enable_pupup',
                 [
-                    'label'         => esc_html__( 'Enable Popup', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Enable Popup', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::SWITCHER,
-                    'label_on'      => esc_html__( 'Yes', 'ultraaddons' ),
-                    'label_off'     => esc_html__( 'No', 'ultraaddons' ),
+                    'label_on'      => esc_html__( 'Yes', 'ultraaddons-elementor-lite' ),
+                    'label_off'     => esc_html__( 'No', 'ultraaddons-elementor-lite' ),
                     'return_value'  => 'yes',
                     'default'       => '',
                     'separator'     => 'before',
@@ -349,7 +349,7 @@ class Image_Accordion extends Base{
             $repeater->add_control(
                 'ua_img_accordion_pup_up_icons',
                 [
-                    'label'             => esc_html__('Popup Icon', 'ultraaddons' ),
+                    'label'             => esc_html__('Popup Icon', 'ultraaddons-elementor-lite' ),
                     'type'              => Controls_Manager::ICONS,
                     'fa4compatibility'  => 'ua_img_accordion_pup_up_icon',
                     'default'           => [
@@ -366,10 +366,10 @@ class Image_Accordion extends Base{
             $repeater->add_control(
                 'ua_img_accordion_enable_project_link',
                 [
-                    'label'         => esc_html__( 'Enable Project Link', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Enable Project Link', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::SWITCHER,
-                    'label_on'      => esc_html__( 'Yes', 'ultraaddons' ),
-                    'label_off'     => esc_html__( 'No', 'ultraaddons' ),
+                    'label_on'      => esc_html__( 'Yes', 'ultraaddons-elementor-lite' ),
+                    'label_off'     => esc_html__( 'No', 'ultraaddons-elementor-lite' ),
                     'return_value'  => 'yes',
                     'separator'     => 'before',
                 ]
@@ -378,9 +378,9 @@ class Image_Accordion extends Base{
             $repeater->add_control(
                 'ua_img_accordion_project_link',
                 [
-                    'label'         => esc_html__( 'Project Link', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Project Link', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::URL,
-                    'placeholder'   => esc_html__( 'https://example.com', 'ultraaddons' ),
+                    'placeholder'   => esc_html__( 'https://example.com', 'ultraaddons-elementor-lite' ),
                     'condition'     => [
                         'ua_img_accordion_enable_project_link' => 'yes'
                     ],
@@ -390,7 +390,7 @@ class Image_Accordion extends Base{
             $repeater->add_control(
                 'ua_img_accordion_project_link_icons',
                 [
-                    'label'             => esc_html__('Project Link Icon', 'ultraaddons' ),
+                    'label'             => esc_html__('Project Link Icon', 'ultraaddons-elementor-lite' ),
                     'type'              => Controls_Manager::ICONS,
                     'fa4compatibility'  => 'ua_img_accordion_project_link_icon',
                     'default'           => [
@@ -407,13 +407,13 @@ class Image_Accordion extends Base{
             $this->add_control(
                 'ua_img_accordion_items',
                 [
-                    'label' => esc_html__('Accordion Items', 'ultraaddons' ),
+                    'label' => esc_html__('Accordion Items', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::REPEATER,
                     'default' => [
-                        [ 'ua_img_accordion_title' => esc_html__('This is title','ultraaddons' ) ],
+                        [ 'ua_img_accordion_title' => esc_html__('This is title','ultraaddons-elementor-lite' ) ],
                         [ 'ua_img_accordion_icon' => esc_attr('icon icon-minus' ) ],
                         [ 'ua_img_accordion_link' => esc_url('#' ) ],
-                        [ 'ua_img_accordion_button_label' => esc_html__('Read More','ultraaddons' ) ],
+                        [ 'ua_img_accordion_button_label' => esc_html__('Read More','ultraaddons-elementor-lite' ) ],
                     ],
                     'fields' => $repeater->get_controls(),
                     'title_field' => '{{ ua_img_accordion_title }}',
@@ -423,12 +423,12 @@ class Image_Accordion extends Base{
             $this->add_responsive_control(
                 'items_style',
                 [
-                    'label'         => esc_html__('Style', 'ultraaddons' ),
+                    'label'         => esc_html__('Style', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::SELECT,
                     'options'       => [
-                        ''              => esc_html__('Default', 'ultraaddons' ),
-                        'horizontal'    => esc_html__('Horizontal', 'ultraaddons' ),
-                        'vertical'      => esc_html__('Vertical', 'ultraaddons' ),
+                        ''              => esc_html__('Default', 'ultraaddons-elementor-lite' ),
+                        'horizontal'    => esc_html__('Horizontal', 'ultraaddons-elementor-lite' ),
+                        'vertical'      => esc_html__('Vertical', 'ultraaddons-elementor-lite' ),
                     ],
                     'default'       => 'horizontal',
                     'prefix_class'  => 'ua-image-accordion%s-',
@@ -438,11 +438,11 @@ class Image_Accordion extends Base{
             $this->add_control(
                 'active_behavior',
                 [
-                    'label'         => esc_html__('Active Behaivor', 'ultraaddons' ),
+                    'label'         => esc_html__('Active Behaivor', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::SELECT,
                     'options'       => [
-                        'click' => esc_html__('Click', 'ultraaddons' ),
-                        'hover' => esc_html__('Hover', 'ultraaddons' ),
+                        'click' => esc_html__('Click', 'ultraaddons-elementor-lite' ),
+                        'hover' => esc_html__('Hover', 'ultraaddons-elementor-lite' ),
                     ],
                     'default'       => 'click',
                     'prefix_class'  => 'ua-image-accordion-',
@@ -461,7 +461,7 @@ class Image_Accordion extends Base{
         $this->start_controls_section(
             'ua_img_accordion_general_settings',
             [
-              'label' => esc_html__( 'General', 'ultraaddons' ),
+              'label' => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
               'tab' => Controls_Manager::TAB_STYLE
             ]
         );
@@ -469,7 +469,7 @@ class Image_Accordion extends Base{
         $this->add_responsive_control(
             'ua_img_accordion_min_height',
             [
-                'label' => esc_html__( 'Min Height', 'ultraaddons' ),
+                'label' => esc_html__( 'Min Height', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
     
@@ -494,7 +494,7 @@ class Image_Accordion extends Base{
         $this->add_responsive_control(
             'ua_img_accordion_gutter',
             [
-                'label' => esc_html__( 'Gutter', 'ultraaddons' ),
+                'label' => esc_html__( 'Gutter', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::SLIDER,
                 'range' => [
                     'px' => [
@@ -511,7 +511,7 @@ class Image_Accordion extends Base{
        /*  $this->add_control(
             'ua_img_accordion_active_background_text',
             [
-                'label' => esc_html__( 'Active Item Background', 'ultraaddons' ),
+                'label' => esc_html__( 'Active Item Background', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'before'
             ]
@@ -529,7 +529,7 @@ class Image_Accordion extends Base{
         $this->add_responsive_control(
             'ua_img_accordion_container_padding',
             [
-                'label' => esc_html__( 'Padding', 'ultraaddons' ),
+                'label' => esc_html__( 'Padding', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em', '%' ],
                 'separator' => 'before',
@@ -542,7 +542,7 @@ class Image_Accordion extends Base{
         $this->add_responsive_control(
             'ua_img_accordion_container_margin',
             [
-                'label' => esc_html__( 'Margin', 'ultraaddons' ),
+                'label' => esc_html__( 'Margin', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em', '%' ],
                 'selectors' => [
@@ -554,7 +554,7 @@ class Image_Accordion extends Base{
             Group_Control_Border::get_type(),
             [
                 'name' => 'ua_img_accordion_border_group',
-                'label' => esc_html__( 'Border', 'ultraaddons' ),
+                'label' => esc_html__( 'Border', 'ultraaddons-elementor-lite' ),
                 'selector' => '{{WRAPPER}} .ultraaddons-image-accordion-wrapper',
             ]
         );
@@ -562,7 +562,7 @@ class Image_Accordion extends Base{
         $this->add_control(
             'ua_img_accordion_border_radius',
             [
-                'label' => esc_html__( 'Border Radius', 'ultraaddons' ),
+                'label' => esc_html__( 'Border Radius', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::SLIDER,
                 'range' => [
                     'px' => [
@@ -593,7 +593,7 @@ class Image_Accordion extends Base{
         $this->start_controls_section(
             'ua_img_accordion_section_img_accordion_title_settings',
             [
-                'label' => esc_html__( 'Title', 'ultraaddons' ),
+                'label' => esc_html__( 'Title', 'ultraaddons-elementor-lite' ),
                 'tab' => Controls_Manager::TAB_STYLE
             ]
         );
@@ -601,7 +601,7 @@ class Image_Accordion extends Base{
         $this->add_control(
             'ua_img_accordion_section_img_accordion_icon_title',
             [
-                'label' => esc_html_x( 'Margin', 'Border Control', 'ultraaddons' ),
+                'label' => esc_html_x( 'Margin', 'Border Control', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::DIMENSIONS,
 				'default' => [
 					'top' => '0',
@@ -619,7 +619,7 @@ class Image_Accordion extends Base{
         $this->add_control(
             'ua_img_accordion_section_img_accordion_title_icon_spacing',
             [
-                'label' => esc_html_x( 'Title Icon Spacing', 'Border Control', 'ultraaddons' ),
+                'label' => esc_html_x( 'Title Icon Spacing', 'Border Control', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'selectors' => [
                     '{{WRAPPER}} .ultraaddons-single-image-accordion .ultraaddons-accordion-title-wrapper .icon-title > i, {{WRAPPER}} .ultraaddons-single-image-accordion .ultraaddons-accordion-title-wrapper .icon-title > svg' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -630,7 +630,7 @@ class Image_Accordion extends Base{
 		$this->add_control(
 			'ua_img_accordion_title_color',
 			[
-                'label' => esc_html__( 'Color', 'ultraaddons' ),
+                'label' => esc_html__( 'Color', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#fff',
                 'selectors' => [
@@ -643,7 +643,7 @@ class Image_Accordion extends Base{
         $this->add_responsive_control(
             'ua_img_accordion_title_icon_size',
             [
-                'label' => esc_html__( 'Icon Size', 'ultraaddons' ),
+                'label' => esc_html__( 'Icon Size', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%' ],
                 'range' => [
@@ -684,7 +684,7 @@ class Image_Accordion extends Base{
         $this->start_controls_section(
             'ua_img_accordion_section_img_accordion_content_settings',
             [
-                'label' => esc_html__( 'Content', 'ultraaddons' ),
+                'label' => esc_html__( 'Content', 'ultraaddons-elementor-lite' ),
                 'tab' => Controls_Manager::TAB_STYLE
             ]
         );
@@ -692,19 +692,19 @@ class Image_Accordion extends Base{
         $this->add_responsive_control(
             'ua_img_accordion_section_img_accordion_content_align',
             [
-                'label' =>esc_html__( 'Alignment', 'ultraaddons' ),
+                'label' =>esc_html__( 'Alignment', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
-                            'title' => __( 'Left', 'ultraaddons' ),
+                            'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
                             'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
-                            'title' => __( 'Center', 'ultraaddons' ),
+                            'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
                             'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
-                            'title' => __( 'Right', 'ultraaddons' ),
+                            'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
                             'icon' => 'eicon-text-align-right',
                     ],
                  ],
@@ -718,7 +718,7 @@ class Image_Accordion extends Base{
         $this->add_responsive_control(
             'ua_img_accordion_section_img_accordion_content_padding',
             [
-                'label' =>esc_html__( 'Padding', 'ultraaddons' ),
+                'label' =>esc_html__( 'Padding', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em', '%' ],
                 'selectors' => [
@@ -730,20 +730,20 @@ class Image_Accordion extends Base{
         $this->add_responsive_control(
             'ua_img_accordion_section_img_accordion_content_position',
             [
-                'label' => esc_html__( 'Vertical Position', 'ultraaddons' ),
+                'label' => esc_html__( 'Vertical Position', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::CHOOSE,
                 'label_block' => false,
                 'options' => [
                     'flex-start' => [
-                        'title' => esc_html__( 'Top', 'ultraaddons' ),
+                        'title' => esc_html__( 'Top', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-v-align-top',
                     ],
                     'center' => [
-                        'title' => esc_html__( 'Center', 'ultraaddons' ),
+                        'title' => esc_html__( 'Center', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-v-align-middle',
                     ],
                     'flex-end' => [
-                        'title' => esc_html__( 'Bottom', 'ultraaddons' ),
+                        'title' => esc_html__( 'Bottom', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-v-align-bottom',
                     ],
                 ],
@@ -765,7 +765,7 @@ class Image_Accordion extends Base{
         $this->start_controls_section(
             'ua_img_accordion_button_style_settings',
             [
-                'label' => esc_html__( 'Button', 'ultraaddons' ),
+                'label' => esc_html__( 'Button', 'ultraaddons-elementor-lite' ),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -773,7 +773,7 @@ class Image_Accordion extends Base{
         $this->add_responsive_control(
             'ua_img_accordion_text_padding',
             [
-                'label' =>esc_html__( 'Padding', 'ultraaddons' ),
+                'label' =>esc_html__( 'Padding', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em', '%' ],
                 'default' => [
@@ -794,7 +794,7 @@ class Image_Accordion extends Base{
             Group_Control_Typography::get_type(),
             [
                 'name' => 'ua_img_accordion_btn_typography',
-                'label' =>esc_html__( 'Typography', 'ultraaddons' ),
+                'label' =>esc_html__( 'Typography', 'ultraaddons-elementor-lite' ),
                 'selector' => '{{WRAPPER}} .ultraaddons-accordion-content .ultraaddons-btn',
             ]
         );
@@ -804,14 +804,14 @@ class Image_Accordion extends Base{
         $this->start_controls_tab(
             'ua_img_accordion_tab_button_normal',
             [
-                'label' =>esc_html__( 'Normal', 'ultraaddons' ),
+                'label' =>esc_html__( 'Normal', 'ultraaddons-elementor-lite' ),
             ]
         );
 
         $this->add_control(
             'ua_img_accordion_btn_text_color',
             [
-                'label' =>esc_html__( 'Text Color', 'ultraaddons' ),
+                'label' =>esc_html__( 'Text Color', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -823,7 +823,7 @@ class Image_Accordion extends Base{
             Group_Control_Background::get_type(),
             array(
                 'name' => 'ua_img_accordion_btn_bg_color_group',
-				'label' => esc_html__( 'Background', 'ultraaddons' ),
+				'label' => esc_html__( 'Background', 'ultraaddons-elementor-lite' ),
                 'selector' => '{{WRAPPER}} .ultraaddons-accordion-content .ultraaddons-btn',
 				'fields_options' => [
                     'background' => [
@@ -840,7 +840,7 @@ class Image_Accordion extends Base{
 		$this->add_control(
             'ua_img_accordion_btn_border_color',
             [
-                'label' => esc_html__( 'Border', 'ultraaddons' ),
+                'label' => esc_html__( 'Border', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'before',
 
@@ -851,7 +851,7 @@ class Image_Accordion extends Base{
             Group_Control_Border::get_type(),
             [
                 'name' => 'ua_img_accordion_btn_border_group',
-                'label' => esc_html__( 'Border', 'ultraaddons' ),
+                'label' => esc_html__( 'Border', 'ultraaddons-elementor-lite' ),
                 'selector' => '{{WRAPPER}} .ultraaddons-accordion-content .ultraaddons-btn',
 				'fields_options' => [
                     'border' => [
@@ -876,7 +876,7 @@ class Image_Accordion extends Base{
         $this->add_control(
             'ua_img_accordion_btn_border_radius',
             [
-                'label' => esc_html__( 'Border Radius', 'ultraaddons' ),
+                'label' => esc_html__( 'Border Radius', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
 				'default' => ['top' => '5', 'bottom' => '5', 'left' => '5', 'right' => '5', 'unit' => 'px'],
@@ -891,14 +891,14 @@ class Image_Accordion extends Base{
         $this->start_controls_tab(
             'ua_img_accordion_btn_tab_button_hover',
             [
-                'label' =>esc_html__( 'Hover', 'ultraaddons' ),
+                'label' =>esc_html__( 'Hover', 'ultraaddons-elementor-lite' ),
             ]
         );
 
         $this->add_control(
             'ua_img_accordion_btn_hover_color',
             [
-                'label' =>esc_html__( 'Text Color', 'ultraaddons' ),
+                'label' =>esc_html__( 'Text Color', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#fff',
                 'selectors' => [
@@ -919,7 +919,7 @@ class Image_Accordion extends Base{
         $this->add_control(
             'ua_img_accordion_btn_border_color_hover',
             [
-                'label' => esc_html__( 'Border', 'ultraaddons' ),
+                'label' => esc_html__( 'Border', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -929,7 +929,7 @@ class Image_Accordion extends Base{
             Group_Control_Border::get_type(),
             [
                 'name' => 'ua_img_accordion_btn_border_hover_group',
-                'label' => esc_html__( 'Border', 'ultraaddons' ),
+                'label' => esc_html__( 'Border', 'ultraaddons-elementor-lite' ),
                 'selector' => '{{WRAPPER}} .ultraaddons-accordion-content .ultraaddons-btn:hover',
             ]
         );
@@ -937,7 +937,7 @@ class Image_Accordion extends Base{
         $this->add_control(
             'btn_border_radius_hover',
             [
-                'label' => esc_html__( 'Border Radius', 'ultraaddons' ),
+                'label' => esc_html__( 'Border Radius', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
@@ -963,7 +963,7 @@ class Image_Accordion extends Base{
         $this->start_controls_section(
             'ua_img_accordion_style_section',
             [
-                'label' => esc_html__( 'Action Icon', 'ultraaddons' ),
+                'label' => esc_html__( 'Action Icon', 'ultraaddons-elementor-lite' ),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -971,7 +971,7 @@ class Image_Accordion extends Base{
         $this->add_control(
             'actions_width',
             [
-                'label'     => esc_html__( 'Width', 'ultraaddons' ),
+                'label'     => esc_html__( 'Width', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::SLIDER,
                 'selectors' => [
                     '{{WRAPPER}} .ua-image-accordion-actions > a' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
@@ -982,7 +982,7 @@ class Image_Accordion extends Base{
         $this->add_control(
             'ua_img_accordion_section_img_accordion_icon_left_spacing',
             [
-                'label' => esc_html__( 'Icon Left Spacing', 'ultraaddons' ),
+                'label' => esc_html__( 'Icon Left Spacing', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::SLIDER,
                 'range' => [
                     'px' => [
@@ -999,7 +999,7 @@ class Image_Accordion extends Base{
         $this->add_control(
             'ua_img_accordion_section_img_accordion_icon_spacing',
             [
-                'label' => esc_html_x( 'Icon Container Spacing', 'Border Control', 'ultraaddons' ),
+                'label' => esc_html_x( 'Icon Container Spacing', 'Border Control', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'selectors' => [
                     '{{WRAPPER}} .ultraaddons-single-image-accordion .ultraaddons-icon-wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -1010,7 +1010,7 @@ class Image_Accordion extends Base{
         $this->add_control(
             'actions_border_width',
             [
-                'label'         => esc_html__( 'Border Width', 'ultraaddons' ),
+                'label'         => esc_html__( 'Border Width', 'ultraaddons-elementor-lite' ),
                 'type'          => Controls_Manager::NUMBER,
                 'placeholder'   => '1',
                 'selectors'     => [
@@ -1024,14 +1024,14 @@ class Image_Accordion extends Base{
         $this->start_controls_tab(
             'ua_img_accordion_pupup_normal_tab',
             [
-                'label' => esc_html__( 'Normal', 'ultraaddons' ),
+                'label' => esc_html__( 'Normal', 'ultraaddons-elementor-lite' ),
             ]
         );
 
         $this->add_control(
             'ua_img_accordion_pup_up_icon_color',
             [
-                'label' => esc_html__( 'Popup Icon Color', 'ultraaddons' ),
+                'label' => esc_html__( 'Popup Icon Color', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ultraaddons-icon-wrapper a:first-child' => 'color: {{VALUE}};',
@@ -1043,7 +1043,7 @@ class Image_Accordion extends Base{
         $this->add_control(
             'ua_img_accordion_pup_up_project_color',
             [
-                'label' => esc_html__( 'Link Icon Color', 'ultraaddons' ),
+                'label' => esc_html__( 'Link Icon Color', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ultraaddons-icon-wrapper a:last-child' => 'color: {{VALUE}};',
@@ -1055,7 +1055,7 @@ class Image_Accordion extends Base{
         $this->add_control(
             'action_btn_bg',
             [
-                'label'     => esc_html__( 'Background Color', 'ultraaddons' ),
+                'label'     => esc_html__( 'Background Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-image-accordion-actions > a' => 'background-color: {{VALUE}}; border-color: {{VALUE}};',
@@ -1068,14 +1068,14 @@ class Image_Accordion extends Base{
         $this->start_controls_tab(
             'ua_img_accordion_pup_up_hover_tab',
             [
-                'label' => esc_html__( 'Hover', 'ultraaddons' ),
+                'label' => esc_html__( 'Hover', 'ultraaddons-elementor-lite' ),
             ]
         );
 
         $this->add_control(
             'ua_img_accordion_pup_up_icon_color_hover',
             [
-                'label' => esc_html__( 'Popup Icon color', 'ultraaddons' ),
+                'label' => esc_html__( 'Popup Icon color', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ultraaddons-icon-wrapper a:first-child:hover' => 'color: {{VALUE}}',
@@ -1087,7 +1087,7 @@ class Image_Accordion extends Base{
         $this->add_control(
             'ua_img_accordion_pup_up_project_color_hover',
             [
-                'label' => esc_html__( 'Link Icon color', 'ultraaddons' ),
+                'label' => esc_html__( 'Link Icon color', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ultraaddons-icon-wrapper a:last-child:hover' => 'color: {{VALUE}};',
@@ -1099,7 +1099,7 @@ class Image_Accordion extends Base{
         $this->add_control(
             'action_btn_bg_hover',
             [
-                'label'     => esc_html__( 'Background Color (Hover)', 'ultraaddons' ),
+                'label'     => esc_html__( 'Background Color (Hover)', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-image-accordion-actions > a:hover' => 'background-color: {{VALUE}}; border-color: {{VALUE}};',

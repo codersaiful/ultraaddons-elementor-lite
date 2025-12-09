@@ -177,7 +177,7 @@ if ( $filter ) {
 			$slugs[]        = $slug;
 			$category_html .= '<li class="nav-item"><a href="' . esc_url( get_term_link( $id, 'product_cat' ) ) . '" class="' . esc_attr( $slug ) . '" data-filter=".' . esc_attr( $slug ) . '">' . esc_html( $name ) . '</a></li>';
 		}
-		$category_html  = '<ul class="nav nav-filter cat-filter' . ( 'right' == $filter_pos ? ' ml-auto' : '' ) . '"><li class="nav-item active nav-item-all"><a href="#" data-filter="' . implode( ',', $slugs ) . '">' . esc_html__( 'All', 'ultraaddons' ) . '</a></li>' . $category_html;
+		$category_html  = '<ul class="nav nav-filter cat-filter' . ( 'right' == $filter_pos ? ' ml-auto' : '' ) . '"><li class="nav-item active nav-item-all"><a href="#" data-filter="' . implode( ',', $slugs ) . '">' . esc_html__( 'All', 'ultraaddons-elementor-lite' ) . '</a></li>' . $category_html;
 		$category_html .= '</ul>';
 
 		if ( 'top' == $filter_pos || 'left' == $filter_pos ) {
@@ -304,7 +304,7 @@ if ( 'yes' == $out_stock_style ) {
 
 wc_set_loop_prop( 'load_more', esc_attr( $load_more ) );
 if ( 'button' == $load_more && ! $ids ) {
-	wc_set_loop_prop( 'view_more_label', esc_attr( $view_more_label ? $view_more_label : esc_html__( 'View more products', 'ultraaddons' ) ) );
+	wc_set_loop_prop( 'view_more_label', esc_attr( $view_more_label ? $view_more_label : esc_html__( 'View more products', 'ultraaddons-elementor-lite' ) ) );
 	wc_set_loop_prop( 'view_more_icon', esc_attr( $view_more_icon['value'] ) );
 	
 }

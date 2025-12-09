@@ -230,11 +230,11 @@ function ultraaddons_widget_data_is_empty( $source, $key = false ) {
 function ultraaddons_woocommerce_cart_link() {
         if( ! WC()->cart ) return;
         ?>
-        <a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'ultraaddons' ); ?>">
+        <a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'ultraaddons-elementor-lite' ); ?>">
             <?php
             $item_cmount = WC()->cart->get_cart_contents_count();
             /* translators: number of items in the mini cart. */
-            $item_count_text = _n( 'item', 'items', $item_cmount, 'ultraaddons' );
+            $item_count_text = _n( 'item', 'items', $item_cmount, 'ultraaddons-elementor-lite' );
             $item_count_text = apply_filters( 'ultraaddons_item_text', $item_count_text, $item_cmount );
             if( $item_cmount > 0 ){
             ?>
@@ -393,8 +393,8 @@ function ultraaddons_get_post_types($args = [], $array_diff_key = []){
     $_post_types = get_post_types($post_type_args, 'objects');
 
     $post_types = array(
-        'by_id'    => __('Manual Selection', 'ultraaddons'),
-        'category' => __('Category', 'ultraaddons'),
+        'by_id'    => __('Manual Selection', 'ultraaddons-elementor-lite'),
+        'category' => __('Category', 'ultraaddons-elementor-lite'),
     );
 
     foreach ($_post_types as $post_type => $object) {
@@ -532,7 +532,7 @@ function ultraaddons_get_image_cropped_url( $url, $args = array() ) {
 }
 
 function ultraaddons_image_placeholder( $width, $height ) {
-    echo '<img src="' . ULTRA_ADDONS_ASSETS . 'images/no-image.png" width="'.$width.'" height="'.$width.'" alt="' . esc_attr__( 'Thumbnail', 'droit-elementor-addons' ) . '"/>';
+    echo '<img src="' . ULTRA_ADDONS_ASSETS . 'images/no-image.png" width="'.$width.'" height="'.$width.'" alt="' . esc_attr__( 'Thumbnail', 'ultraaddons-elementor-lite' ) . '"/>';
 }
 
 /**
@@ -687,7 +687,7 @@ if( class_exists( 'FrmForm' ) ){
             $options = array( '' => '' );
 
             foreach ( $forms as $form ) {
-                $form_title           = '' === $form->name ? __( '(no title)', 'ultraaddons' ) : FrmAppHelper::truncate( $form->name, 50 );
+                $form_title           = '' === $form->name ? __( '(no title)', 'ultraaddons-elementor-lite' ) : FrmAppHelper::truncate( $form->name, 50 );
                 $options[ $form->id ] = esc_html( $form_title );
             }
             return $options;
@@ -712,13 +712,13 @@ if( class_exists( 'WPForms\WPForms' ) ){
         $formlist=[];
         
         if( $post = get_posts($args)){
-            $formlist[0] = esc_html__('Select WPforms', 'ultraaddons');
+            $formlist[0] = esc_html__('Select WPforms', 'ultraaddons-elementor-lite');
             foreach ( $post as $posts ) {
                 (int)$formlist[$posts->ID] = $posts->post_title;
             }
         }
         else{
-            (int)$formlist['0'] = esc_html__('No wpforms found!', 'ultraaddons');
+            (int)$formlist['0'] = esc_html__('No wpforms found!', 'ultraaddons-elementor-lite');
         }
     return $formlist;
     }
@@ -738,14 +738,14 @@ if( class_exists( 'WPForms\WPForms' ) ){
 
             if (!empty($contact_forms) && !is_wp_error($contact_forms)) {
 
-                $options[0] = esc_html__('Select Ninja Form', 'ultraaddons');
+                $options[0] = esc_html__('Select Ninja Form', 'ultraaddons-elementor-lite');
 
                 foreach ($contact_forms as $form) {
                     $options[$form->get_id()] = $form->get_setting('title');
                 }
             }
         } else {
-            $options[0] = esc_html__('No form found. Create a Form First', 'ultraaddons');
+            $options[0] = esc_html__('No form found. Create a Form First', 'ultraaddons-elementor-lite');
         }
 
         return $options;
@@ -764,13 +764,13 @@ function ultraaddons_get_caldera_form_list(){
         $contact_forms = \Caldera_Forms_Forms::get_forms(true, true);
 
         if (!empty($contact_forms) && !is_wp_error($contact_forms)) {
-            $options[0] = esc_html__('Select Caldera Form', 'ultraaddons');
+            $options[0] = esc_html__('Select Caldera Form', 'ultraaddons-elementor-lite');
             foreach ($contact_forms as $form) {
                 $options[$form['ID']] = $form['name'];
             }
         }
     } else {
-        $options[0] = esc_html__('Create a Form First', 'ultraaddons');
+        $options[0] = esc_html__('Create a Form First', 'ultraaddons-elementor-lite');
     }
 
     return $options;
@@ -794,12 +794,12 @@ function ultraaddons_get_weform_list(){
     $options = array();
 
     if (!empty($weforms_list) && !is_wp_error($weforms_list)) {
-        $options[0] = esc_html__('Select weForm', 'ultraaddons');
+        $options[0] = esc_html__('Select weForm', 'ultraaddons-elementor-lite');
         foreach ($weforms_list as $form_list) {
             $options[$form_list->ID] = $form_list->post_title;
         }
     } else {
-        $options[0] = esc_html__('Create a Form First', 'ultraaddons');
+        $options[0] = esc_html__('Create a Form First', 'ultraaddons-elementor-lite');
     }
 
     return $options;

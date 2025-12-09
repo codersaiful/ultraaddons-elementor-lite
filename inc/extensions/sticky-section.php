@@ -61,11 +61,11 @@ class Sticky_Section{
         $element->add_control(
             '_ua_sticky_section_switch',
             [
-                    'label' => __( 'Switch', 'ultraaddons' ),
-                    'description' => __( 'Enable Sticky Section for any section.', 'ultraaddons' ),
+                    'label' => __( 'Switch', 'ultraaddons-elementor-lite' ),
+                    'description' => __( 'Enable Sticky Section for any section.', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::SWITCHER,
-                    'label_on' => __( 'On', 'ultraaddons' ),
-                    'label_off' => __( 'Off', 'ultraaddons' ),
+                    'label_on' => __( 'On', 'ultraaddons-elementor-lite' ),
+                    'label_off' => __( 'Off', 'ultraaddons-elementor-lite' ),
                     'return_value' => 'yes',
                     'default' => '',
                     'prefix_class' => 'ua-sticky-',
@@ -77,8 +77,8 @@ class Sticky_Section{
         $element->add_responsive_control(
             '_ua_sticky_margin_top',
             [
-                'label' => esc_html__('Margin/Space Top', 'ultraaddons'),
-                'description' => __( 'Margin top / White space from top.', 'ultraaddons' ),
+                'label' => esc_html__('Margin/Space Top', 'ultraaddons-elementor-lite'),
+                'description' => __( 'Margin top / White space from top.', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::SLIDER,
                 'default' => [
                     'size' => 0,
@@ -104,8 +104,8 @@ class Sticky_Section{
         $element->add_control(
             '_ua_sticky_z_index',
             [
-                'label' => esc_html__('Z-Index', 'ultraaddons'),
-                'description' => __( 'Indicate Layer position for your Sticky section.', 'ultraaddons' ),
+                'label' => esc_html__('Z-Index', 'ultraaddons-elementor-lite'),
+                'description' => __( 'Indicate Layer position for your Sticky section.', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::SLIDER,
                 'default' => [
                     'size' => 1000,

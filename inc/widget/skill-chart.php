@@ -62,7 +62,7 @@ class Skill_Chart extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua', 'heading', 'skill', 'chart','pie chart','graph' ];
+        return [ 'ultraaddons-elementor-lite', 'ua', 'heading', 'skill', 'chart','pie chart','graph' ];
     }
 	 protected function register_controls() {
         //For Content
@@ -80,21 +80,21 @@ class Skill_Chart extends Base{
         $this->start_controls_section(
             'skill_chart_content',
             [
-                'label'     => esc_html__( 'Content', 'ultraaddons' ),
+                'label'     => esc_html__( 'Content', 'ultraaddons-elementor-lite' ),
             ]
         );
         $this->add_control(
 			'_ua_skill_title', [
-				'label' => __( 'Skill Name', 'ultraaddons' ),
+				'label' => __( 'Skill Name', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'WordPress' , 'ultraaddons' ),
+				'default' => __( 'WordPress' , 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
 		$this->add_control(
 			'_ua_data_percent',
 			[
-				'label' => __( 'Skill Percent', 'ultraaddons' ),
+				'label' => __( 'Skill Percent', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 0,
 				'max' => 100,
@@ -111,7 +111,7 @@ class Skill_Chart extends Base{
 		$this->start_controls_section(
             'skill_pie_settings',
             [
-                'label'     => esc_html__( 'Control Settings', 'ultraaddons' ),
+                'label'     => esc_html__( 'Control Settings', 'ultraaddons-elementor-lite' ),
             ]
         );
 
@@ -119,7 +119,7 @@ class Skill_Chart extends Base{
 		$this->add_control(
 			'lineWidth',
 			[
-				'label' => __( 'Line Width', 'ultraaddons' ),
+				'label' => __( 'Line Width', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 2,
 				'max' => 50,
@@ -131,7 +131,7 @@ class Skill_Chart extends Base{
 		$this->add_control(
 			'size',
 			[
-				'label' => __( 'Size', 'ultraaddons' ),
+				'label' => __( 'Size', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 100,
 				'max' => 500,
@@ -143,7 +143,7 @@ class Skill_Chart extends Base{
 		$this->add_control(
 			'animate',
 			[
-				'label' => __( 'Animation Speed', 'ultraaddons' ),
+				'label' => __( 'Animation Speed', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 100,
 				'max' => 5000,
@@ -154,7 +154,7 @@ class Skill_Chart extends Base{
 		);
 		$this->add_control(
 			'scaleColor', [
-				'label' => __( 'Scale Color', 'ultraaddons' ),
+				'label' => __( 'Scale Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'=>'#ddd',
 				'frontend_available' => true,
@@ -163,7 +163,7 @@ class Skill_Chart extends Base{
 		
 		$this->add_control(
 			'barColor', [
-				'label' => __( 'Bar Color', 'ultraaddons' ),
+				'label' => __( 'Bar Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'=>'#27CCC0',
 				'frontend_available' => true,
@@ -171,7 +171,7 @@ class Skill_Chart extends Base{
         );
 		$this->add_control(
 			'trackColor', [
-				'label' => __( 'Bar Color', 'ultraaddons' ),
+				'label' => __( 'Bar Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'=>'#ddd',
 				'frontend_available' => true,
@@ -180,14 +180,14 @@ class Skill_Chart extends Base{
         $this->add_control(
 			'lineCap',
 			[
-				'label' => __( 'Line Cap', 'ultraaddons' ),
+				'label' => __( 'Line Cap', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'round',
 				'frontend_available' => true,
 				'options' => [
-					'round'  => __( 'Round', 'ultraaddons' ),
-					'butt' => __( 'Butt', 'ultraaddons' ),
-					'square' => __( 'Square', 'ultraaddons' ),
+					'round'  => __( 'Round', 'ultraaddons-elementor-lite' ),
+					'butt' => __( 'Butt', 'ultraaddons-elementor-lite' ),
+					'square' => __( 'Square', 'ultraaddons-elementor-lite' ),
 				],
 			]
 		);
@@ -198,7 +198,7 @@ class Skill_Chart extends Base{
         $this->start_controls_section(
             '_ua_skill_chart_style',
             [
-                'label'     => esc_html__( 'Content', 'ultraaddons' ),
+                'label'     => esc_html__( 'Content', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -213,7 +213,7 @@ class Skill_Chart extends Base{
         );
 		$this->add_control(
 			'_ua_skill_chart_text', [
-				'label' => __( 'Skill Text Color', 'ultraaddons' ),
+				'label' => __( 'Skill Text Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'=>'#333',
 				'selectors' => [

@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class Contact_Form7 extends Base{
     
         public function get_keywords() {
-                return [ 'ultraaddons','ua', 'appointment', 'contact', 'quote', 'forms', 'schedule', 'cf7', 'contact form', ];
+                return [ 'ultraaddons-elementor-lite','ua', 'appointment', 'contact', 'quote', 'forms', 'schedule', 'cf7', 'contact form', ];
         }
     
         protected function register_content_controls(){
@@ -21,7 +21,7 @@ class Contact_Form7 extends Base{
                 $this->start_controls_section(
                         '_section_cf7',
                         [
-                                'label' => ultraaddons_is_cf7_activated() ? __( 'Contact Form 7', 'ultraaddons' ) : __( 'Missing Notice', 'ultraaddons' ),
+                                'label' => ultraaddons_is_cf7_activated() ? __( 'Contact Form 7', 'ultraaddons-elementor-lite' ) : __( 'Missing Notice', 'ultraaddons-elementor-lite' ),
                                 'tab' => Controls_Manager::TAB_CONTENT,
                         ]
                 );
@@ -32,7 +32,7 @@ class Contact_Form7 extends Base{
                         [
                             'type' => Controls_Manager::RAW_HTML,
                             'raw' => sprintf(
-                                __( 'Hello %2$s, looks like %1$s is missing in your site. Please click on the link below and install/activate %1$s. Make sure to refresh this page after installation or activation.', 'ultraaddons' ),
+                                __( 'Hello %2$s, looks like %1$s is missing in your site. Please click on the link below and install/activate %1$s. Make sure to refresh this page after installation or activation.', 'ultraaddons-elementor-lite' ),
                                 '<a href="'.esc_url( admin_url( 'plugin-install.php?s=Contact+Form+7&tab=search&type=term' ) )
                                 .'" target="_blank" rel="noopener">Contact Form 7</a>',
                                 ultraaddons_get_current_user_display_name()
@@ -56,7 +56,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                     'form_id',
                     [
-                        'label' => __( 'Select Your Form', 'ultraaddons' ),
+                        'label' => __( 'Select Your Form', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SELECT,
                         'label_block' => true,
                         'options' => ultraaddons_get_cf7_forms(),
@@ -65,33 +65,33 @@ class Contact_Form7 extends Base{
                 $this->add_control(
 			'_cf7_form_style',
 			[
-				'label' => esc_html__( 'Form Style', 'ultraaddons' ),
+				'label' => esc_html__( 'Form Style', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT2,
 				'multiple' => false,
                                 'default'  => 'style-default',
 				'options' => [
-					'style-default' => __( 'Default', 'ultraaddons' ),
-					'style-1'  => __( 'Style 1', 'ultraaddons' ),
-					'style-2'  => __( 'Style 2', 'ultraaddons' ),
+					'style-default' => __( 'Default', 'ultraaddons-elementor-lite' ),
+					'style-1'  => __( 'Style 1', 'ultraaddons-elementor-lite' ),
+					'style-2'  => __( 'Style 2', 'ultraaddons-elementor-lite' ),
 				],
 			]
 		);
                 $this->add_control(
                     'html_class',
                     [
-                        'label' => __( 'HTML Class', 'ultraaddons' ),
+                        'label' => __( 'HTML Class', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::TEXT,
                         'label_block' => true,
-                        'description' => __( 'Add CSS custom class to the form.', 'ultraaddons' ),
+                        'description' => __( 'Add CSS custom class to the form.', 'ultraaddons-elementor-lite' ),
                     ]
                 );
                 $this->add_control(
 			'show_title',
 			[
-				'label' => esc_html__( 'Custom Title', 'ultraaddons' ),
+				'label' => esc_html__( 'Custom Title', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Show', 'ultraaddons' ),
-				'label_off' => esc_html__( 'Hide', 'ultraaddons' ),
+				'label_on' => esc_html__( 'Show', 'ultraaddons-elementor-lite' ),
+				'label_off' => esc_html__( 'Hide', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'no',
 			]
@@ -100,10 +100,10 @@ class Contact_Form7 extends Base{
                 $this->add_control(
 			'show_desc',
 			[
-				'label' => esc_html__( 'Custom Description', 'ultraaddons' ),
+				'label' => esc_html__( 'Custom Description', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Show', 'ultraaddons' ),
-				'label_off' => esc_html__( 'Hide', 'ultraaddons' ),
+				'label_on' => esc_html__( 'Show', 'ultraaddons-elementor-lite' ),
+				'label_off' => esc_html__( 'Hide', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'no',
                                  'condition'=>[
@@ -115,10 +115,10 @@ class Contact_Form7 extends Base{
                 $this->add_control(
 			'custom_title',
 			[
-				'label' => esc_html__( 'Custom Title', 'ultraaddons' ),
+				'label' => esc_html__( 'Custom Title', 'ultraaddons-elementor-lite' ),
                                 'label_block' => true,
 				'type' => Controls_Manager::TEXT,
-                                'default' => esc_html__( 'Contact Us', 'ultraaddons' ),
+                                'default' => esc_html__( 'Contact Us', 'ultraaddons-elementor-lite' ),
                                 'condition'=>[
                                         'show_title'=>'yes'
                                 ],
@@ -127,7 +127,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         'title_tag',
                         [
-                            'label' => esc_html__( 'Select Title Tag', 'ultraaddons' ),
+                            'label' => esc_html__( 'Select Title Tag', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SELECT,
                             'options' => [
                                 'h1' => 'H1',
@@ -146,9 +146,9 @@ class Contact_Form7 extends Base{
                 $this->add_control(
 			'form_description',
 			[
-				'label' => esc_html__( 'Description', 'ultraaddons' ),
+				'label' => esc_html__( 'Description', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXTAREA,
-                                'default' => esc_html__( 'Please send us a message by filling out the form below and we will get back with you shortly.', 'ultraaddons' ),
+                                'default' => esc_html__( 'Please send us a message by filling out the form below and we will get back with you shortly.', 'ultraaddons-elementor-lite' ),
 				'rows' => 4,
                                 'condition'=>[
                                         'show_desc'=>'yes'
@@ -164,7 +164,7 @@ class Contact_Form7 extends Base{
                 $this->start_controls_section(
                         '_section_cf7_style_general',
                         [
-                                'label' =>  __( 'Title &  Description', 'ultraaddons' ) ,
+                                'label' =>  __( 'Title &  Description', 'ultraaddons-elementor-lite' ) ,
                                 'tab'   => Controls_Manager::TAB_STYLE,
                                   'condition'=>[
                                         'show_title'=>'yes',
@@ -175,19 +175,19 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         'align',
                             [
-                                'label'         => esc_html__( 'Align', 'ultraaddons' ),
+                                'label'         => esc_html__( 'Align', 'ultraaddons-elementor-lite' ),
                                 'type'          => Controls_Manager::CHOOSE,
                                 'options' => [
                                         'left' => [
-                                                'title' => __( 'Left', 'ultraaddons' ),
+                                                'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
                                                 'icon' => 'eicon-text-align-left',
                                         ],
                                         'center' => [
-                                                'title' => __( 'Center', 'ultraaddons' ),
+                                                'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
                                                 'icon' => 'eicon-text-align-center',
                                         ],
                                         'right' => [
-                                                'title' => __( 'Right', 'ultraaddons' ),
+                                                'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
                                                 'icon' => 'eicon-text-align-right',
                                         ],
                                 ],
@@ -217,7 +217,7 @@ class Contact_Form7 extends Base{
                     $this->add_control(
                         'title_color',
                         [
-                                'label' => __( 'Title Color', 'ultraaddons' ),
+                                'label' => __( 'Title Color', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::COLOR,
                                 'selectors' => [
                                         '{{WRAPPER}} .ua-form .ua-cf7-title' => 'color: {{VALUE}};',
@@ -230,7 +230,7 @@ class Contact_Form7 extends Base{
                 $this->add_responsive_control(
                     'title_margin',
                     [
-                        'label'       => esc_html__( 'Title Margin', 'ultraaddons' ),
+                        'label'       => esc_html__( 'Title Margin', 'ultraaddons-elementor-lite' ),
                         'type'        => Controls_Manager::DIMENSIONS,
                         'size_units'  => [ 'px', '%' ],
                         'placeholder' => [
@@ -263,7 +263,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         'desc_color',
                         [
-                                'label' => __( 'Deccription Color', 'ultraaddons' ),
+                                'label' => __( 'Deccription Color', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::COLOR,
                                 'selectors' => [
                                         '{{WRAPPER}} .ua-form .ua-cf7-description' => 'color: {{VALUE}};',
@@ -276,7 +276,7 @@ class Contact_Form7 extends Base{
                     $this->add_responsive_control(
                     'desc_margin',
                     [
-                        'label'       => esc_html__( 'Description Margin', 'ultraaddons' ),
+                        'label'       => esc_html__( 'Description Margin', 'ultraaddons-elementor-lite' ),
                         'type'        => Controls_Manager::DIMENSIONS,
                         'size_units'  => [ 'px', '%' ],
                         'placeholder' => [
@@ -305,7 +305,7 @@ class Contact_Form7 extends Base{
                 $this->start_controls_section(
                         '_section_cf7_style_input',
                         [
-                                'label' => __( 'Input & Textarea', 'ultraaddons' ),
+                                'label' => __( 'Input & Textarea', 'ultraaddons-elementor-lite' ),
                                 'tab'   => Controls_Manager::TAB_STYLE,
                         ]
                 );
@@ -313,7 +313,7 @@ class Contact_Form7 extends Base{
                 $this->add_responsive_control(
                         '_cf7_input_border',
                         [   
-                                'label' => __( 'Border', 'ultraaddons' ),
+                                'label' => __( 'Border', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::DIMENSIONS,
                                 'size_units' => [ 'px' ],
                                 'default' => [
@@ -333,7 +333,7 @@ class Contact_Form7 extends Base{
                 $this->add_responsive_control(
                         '_cf7_input_border_radius',
                         [   
-                                'label' => __( 'Border Radius', 'ultraaddons' ),
+                                'label' => __( 'Border Radius', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::DIMENSIONS,
                                 'size_units' => [ 'px','%' ],
                                 'selectors' => [
@@ -347,14 +347,14 @@ class Contact_Form7 extends Base{
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'input_shadow',
-				'label' => esc_html__( 'Input Shadow', 'ultraaddons' ),
+				'label' => esc_html__( 'Input Shadow', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} form.ultraaddons-cf7-form input:not([type="submit"]), form.ultraaddons-cf7-form textarea, form.ultraaddons-cf7-form select',
 			]
 		);
                 $this->add_control(
                         '_cf7_input_text_color',
                         [   
-                                'label' => __( 'Text Color', 'ultraaddons' ),
+                                'label' => __( 'Text Color', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#5C6B79',
                                 'selectors' => [
@@ -371,7 +371,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         '_cf7_input_border_color',
                         [   
-                                'label' => __( 'Border Color', 'ultraaddons' ),
+                                'label' => __( 'Border Color', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#EEF1F4',
                                 'selectors' => [
@@ -385,7 +385,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         '_cf7_input_border_focus_color',
                         [   
-                                'label' => __( 'Border Focus Color', 'ultraaddons' ),
+                                'label' => __( 'Border Focus Color', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#EEF1F4',
                                 'selectors' => [
@@ -400,7 +400,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         '_cf7_input_bg_color',
                         [   
-                                'label' => __( 'Background Color', 'ultraaddons' ),
+                                'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '',
                                 'selectors' => [
@@ -413,7 +413,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         '_cf7_text_height',
                         [   
-                                'label' => __( 'Text Height', 'ultraaddons' ),
+                                'label' => __( 'Text Height', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::SLIDER,
                                 'size_units' => [ 'px' ],
 				'range' => [
@@ -435,7 +435,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         '_cf7_textarea_height',
                         [   
-                                'label' => __( 'Text Area Height', 'ultraaddons' ),
+                                'label' => __( 'Text Area Height', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::SLIDER,
                                 'size_units' => [ 'px' ],
 				'range' => [
@@ -458,7 +458,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
 			'_cf7_input_width',
 			[
-				'label' => esc_html__( 'Input Width', 'ultraaddons' ),
+				'label' => esc_html__( 'Input Width', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%' ],
 				'range' => [
@@ -493,7 +493,7 @@ class Contact_Form7 extends Base{
                 $this->start_controls_section(
                         '_section_cf7_style_button',
                         [
-                                'label' => __( 'Submit Button', 'ultraaddons' ),
+                                'label' => __( 'Submit Button', 'ultraaddons-elementor-lite' ),
                                 'tab'   => Controls_Manager::TAB_STYLE,
                         ]
                 );
@@ -503,25 +503,25 @@ class Contact_Form7 extends Base{
                 $this->start_controls_tab(
                         'tab_button_normal',
                         [
-                                'label' => __( 'Normal', 'ultraaddons' ),
+                                'label' => __( 'Normal', 'ultraaddons-elementor-lite' ),
                         ]
                 );
                 $this->add_control(
                         'button_align',
                             [
-                                'label'         => esc_html__( 'Align', 'ultraaddons' ),
+                                'label'         => esc_html__( 'Align', 'ultraaddons-elementor-lite' ),
                                 'type'          => Controls_Manager::CHOOSE,
                                 'options' => [
                                         'left' => [
-                                                'title' => __( 'Left', 'ultraaddons' ),
+                                                'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
                                                 'icon' => 'eicon-text-align-left',
                                         ],
                                         'center' => [
-                                                'title' => __( 'Center', 'ultraaddons' ),
+                                                'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
                                                 'icon' => 'eicon-text-align-center',
                                         ],
                                         'right' => [
-                                                'title' => __( 'Right', 'ultraaddons' ),
+                                                'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
                                                 'icon' => 'eicon-text-align-right',
                                         ],
                                 ],
@@ -536,7 +536,7 @@ class Contact_Form7 extends Base{
                 $this->add_responsive_control(
                         '_cf7_button_border',
                         [   
-                                'label' => __( 'Border', 'ultraaddons' ),
+                                'label' => __( 'Border', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::DIMENSIONS,
                                 'size_units' => [ 'px' ],
                                 'default' => [
@@ -554,7 +554,7 @@ class Contact_Form7 extends Base{
                 $this->add_responsive_control(
                         '_cf7_button_border_radius',
                         [   
-                                'label' => __( 'Border Radius', 'ultraaddons' ),
+                                'label' => __( 'Border Radius', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::DIMENSIONS,
                                 'size_units' => [ 'px' ],
                                 'selectors' => [
@@ -565,7 +565,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         '_cf7_button_text_color',
                         [   
-                                'label' => __( 'Text Color', 'ultraaddons' ),
+                                'label' => __( 'Text Color', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#FFF',
                                 'selectors' => [
@@ -577,7 +577,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         '_cf7_button_border_color',
                         [   
-                                'label' => __( 'Border Color', 'ultraaddons' ),
+                                'label' => __( 'Border Color', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#0fc392',
                                 'selectors' => [
@@ -589,7 +589,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         '_cf7_button_bg_color',
                         [   
-                                'label' => __( 'Background Color', 'ultraaddons' ),
+                                'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#0fc392',
                                 'selectors' => [
@@ -600,7 +600,7 @@ class Contact_Form7 extends Base{
                 $this->add_responsive_control(
                         'cf7_button_width',
                         [
-                                'label' => __( 'Width', 'ultraaddons' ),
+                                'label' => __( 'Width', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::SLIDER,
                               'size_units' => [ '%','px', 'em',  ],
                               'range' => [
@@ -624,7 +624,7 @@ class Contact_Form7 extends Base{
                 $this->start_controls_tab(
                         'tab_button_hover',
                         [
-                                'label' => __( 'Hover', 'ultraaddons' ),
+                                'label' => __( 'Hover', 'ultraaddons-elementor-lite' ),
                         ]
                 );
                 
@@ -632,7 +632,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         '_cf7_button_text_color_hover',
                         [   
-                                'label' => __( 'Text Color', 'ultraaddons' ),
+                                'label' => __( 'Text Color', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#0fc392',
                                 'selectors' => [
@@ -644,7 +644,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         '_cf7_button_border_color_hover',
                         [   
-                                'label' => __( 'Border Color', 'ultraaddons' ),
+                                'label' => __( 'Border Color', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#0fc392',
                                 'selectors' => [
@@ -656,7 +656,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         '_cf7_button_bg_color_hover',
                         [   
-                                'label' => __( 'Background Color', 'ultraaddons' ),
+                                'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => 'transparent',
                                 'selectors' => [
@@ -684,7 +684,7 @@ class Contact_Form7 extends Base{
                 $this->add_responsive_control(
                         '_cf7_button_padding',
                         [   
-                                'label' => __( 'Padding', 'ultraaddons' ),
+                                'label' => __( 'Padding', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::DIMENSIONS,
                                 'size_units' => [ 'px' ],
                                 'default' => [
@@ -708,7 +708,7 @@ class Contact_Form7 extends Base{
                 $this->start_controls_section(
                         '_section_cf7_style_other',
                         [
-                                'label' => __( 'Errors', 'ultraaddons' ),
+                                'label' => __( 'Errors', 'ultraaddons-elementor-lite' ),
                                 'tab'   => Controls_Manager::TAB_STYLE,
                         ]
                 );
@@ -716,7 +716,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         '_cf7_required_text_color',
                         [   
-                                'label' => __( 'Required Text Color', 'ultraaddons' ),
+                                'label' => __( 'Required Text Color', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#dc3232',
                                 'selectors' => [
@@ -728,7 +728,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         '_cf7_success_text_color',
                         [   
-                                'label' => __( 'Response Text Color', 'ultraaddons' ),
+                                'label' => __( 'Response Text Color', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#06A703',
                                 'selectors' => [
@@ -740,7 +740,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         '_cf7_error_text_color',
                         [   
-                                'label' => __( 'Error Text Border Color', 'ultraaddons' ),
+                                'label' => __( 'Error Text Border Color', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#ffb900',
                                 'selectors' => [
@@ -757,7 +757,7 @@ class Contact_Form7 extends Base{
                 $this->start_controls_section(
                         'container_style',
                         [
-                            'label'                 => __('Form Container', 'ultraaddons'),
+                            'label'                 => __('Form Container', 'ultraaddons-elementor-lite'),
                             'tab'                   => Controls_Manager::TAB_STYLE,
                         ]
                     );
@@ -765,7 +765,7 @@ class Contact_Form7 extends Base{
                     $this->add_control(
                         'ua_contact_form_background',
                         [
-                            'label' => esc_html__('Form Background Color', 'ultraaddons'),
+                            'label' => esc_html__('Form Background Color', 'ultraaddons-elementor-lite'),
                             'type' => Controls_Manager::COLOR,
                             'selectors' => [
                                 '{{WRAPPER}} .ua-form.cf7-forms' => 'background: {{VALUE}};',
@@ -776,7 +776,7 @@ class Contact_Form7 extends Base{
                     $this->add_responsive_control(
                         'ua_contact_form_max_width',
                         [
-                            'label' => esc_html__('Form Max Width', 'ultraaddons'),
+                            'label' => esc_html__('Form Max Width', 'ultraaddons-elementor-lite'),
                             'type' => Controls_Manager::SLIDER,
                             'size_units' => ['px', 'em', '%'],
                             'range' => [
@@ -799,7 +799,7 @@ class Contact_Form7 extends Base{
                     $this->add_responsive_control(
                         'ua_contact_form_margin',
                         [
-                            'label' => esc_html__('Form Margin', 'ultraaddons'),
+                            'label' => esc_html__('Form Margin', 'ultraaddons-elementor-lite'),
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => ['px', 'em', '%'],
                             'selectors' => [
@@ -811,7 +811,7 @@ class Contact_Form7 extends Base{
                     $this->add_responsive_control(
                         'ua_contact_form_padding',
                         [
-                            'label' => esc_html__('Form Padding', 'ultraaddons'),
+                            'label' => esc_html__('Form Padding', 'ultraaddons-elementor-lite'),
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => ['px', 'em', '%'],
                             'selectors' => [
@@ -824,7 +824,7 @@ class Contact_Form7 extends Base{
                     $this->add_control(
                         'ua_contact_form_border_radius',
                         [
-                            'label' => esc_html__('Border Radius', 'ultraaddons'),
+                            'label' => esc_html__('Border Radius', 'ultraaddons-elementor-lite'),
                             'type' => Controls_Manager::DIMENSIONS,
                             'separator' => 'before',
                             'size_units' => ['px'],
@@ -860,7 +860,7 @@ class Contact_Form7 extends Base{
                 $this->start_controls_section(
                         'label_style',
                         [
-                                'label' =>  __( 'Labels', 'ultraaddons' ) ,
+                                'label' =>  __( 'Labels', 'ultraaddons-elementor-lite' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
@@ -879,7 +879,7 @@ class Contact_Form7 extends Base{
                 $this->add_control(
                         'label_color',
                         [
-                                'label' => __( 'Form Label Color', 'ultraaddons' ),
+                                'label' => __( 'Form Label Color', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::COLOR,
                                 'selectors' => [
                                         '{{WRAPPER}} .ua-form.cf7-forms label' => 'color: {{VALUE}};',
@@ -889,7 +889,7 @@ class Contact_Form7 extends Base{
                 $this->add_responsive_control(
             'label_margin',
             [
-                'label'       => esc_html__( 'Label Margin', 'ultraaddons' ),
+                'label'       => esc_html__( 'Label Margin', 'ultraaddons-elementor-lite' ),
                 'type'        => Controls_Manager::DIMENSIONS,
                 'size_units'  => [ 'px', '%' ],
                 'placeholder' => [
@@ -974,7 +974,7 @@ class Contact_Form7 extends Base{
                             'html_class' => 'ultraaddons-cf7-form ' . sanitize_html_class( $settings['html_class'] . $settings['_cf7_form_style'] ),
                         ] );
                 else:
-                 echo "<div class='ua-alert'>" . esc_html__( "Please select Contact form 7.", 'ultraaddons' ) . "</div>";
+                 echo "<div class='ua-alert'>" . esc_html__( "Please select Contact form 7.", 'ultraaddons-elementor-lite' ) . "</div>";
                 endif;
                 ?>
         </div>

@@ -83,7 +83,7 @@ class General_Extension{
             '_ua_general_extension',
             [
                 'label' => 'General Extension'. ultraaddons_icon_markup(),
-                'description' => __( 'Group of Features. All common feaatures are available in one place.', 'ultraaddons' ),
+                'description' => __( 'Group of Features. All common feaatures are available in one place.', 'ultraaddons-elementor-lite' ),
                 'tab' => $tab
             ] 
         );
@@ -91,11 +91,11 @@ class General_Extension{
         $element->add_control(
             '_ua_general_ex_paralax_switch',
             [
-                    'label' => __( 'Paralax Background', 'ultraaddons' ),
-                    'description' => __( 'Enable Paralax Background for any section to activate Scrollax.', 'ultraaddons' ),
+                    'label' => __( 'Paralax Background', 'ultraaddons-elementor-lite' ),
+                    'description' => __( 'Enable Paralax Background for any section to activate Scrollax.', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::SWITCHER,
-                    'label_on' => __( 'On', 'ultraaddons' ),
-                    'label_off' => __( 'Off', 'ultraaddons' ),
+                    'label_on' => __( 'On', 'ultraaddons-elementor-lite' ),
+                    'label_off' => __( 'Off', 'ultraaddons-elementor-lite' ),
                     'return_value' => 'yes',
                     'default' => '',
                     'prefix_class' => 'ua-paralax-',

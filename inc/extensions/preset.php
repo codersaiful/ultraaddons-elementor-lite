@@ -39,7 +39,7 @@ class Preset {
 		$element->start_controls_section(
 			'_ua_preset_settings_title',
 			[
-				'label' => esc_html__( 'Preset Setting', 'ultraaddons' ) . ultraaddons_icon_markup(),
+				'label' => esc_html__( 'Preset Setting', 'ultraaddons-elementor-lite' ) . ultraaddons_icon_markup(),
 				'tab'   => $tabs,
 			]
 		);
@@ -48,8 +48,8 @@ class Preset {
                 $element->add_control(
                         '_ua_preset_name',
                         [
-                                'label' => esc_html__( 'Preset Switch', 'ultraaddons' ),
-                                'description' => esc_html__( 'Current setting will be override.', 'ultraaddons' ),
+                                'label' => esc_html__( 'Preset Switch', 'ultraaddons-elementor-lite' ),
+                                'description' => esc_html__( 'Current setting will be override.', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::SELECT2,
                                 'multiple' => false,
                                 'label_block' => true,

@@ -63,19 +63,19 @@ class Custom_Fonts_Taxonomy{
         
 			// Taxonomy: bsf_custom_fonts.
 			$labels = array(
-				'name'              => __( 'Custom Fonts', 'ultraaddons' ),
-				'singular_name'     => __( 'Font', 'ultraaddons' ),
-				'menu_name'         => _x( 'Custom Fonts', 'Admin menu name', 'ultraaddons' ),
-				'search_items'      => __( 'Search Fonts', 'ultraaddons' ),
-				'all_items'         => __( 'All Fonts', 'ultraaddons' ),
-				'parent_item'       => __( 'Parent Font', 'ultraaddons' ),
-				'parent_item_colon' => __( 'Parent Font:', 'ultraaddons' ),
-				'edit_item'         => __( 'Edit Font', 'ultraaddons' ),
-				'update_item'       => __( 'Update Font', 'ultraaddons' ),
-				'add_new_item'      => __( 'Add New Font', 'ultraaddons' ),
-				'new_item_name'     => __( 'New Font Name', 'ultraaddons' ),
-				'not_found'         => __( 'No fonts found', 'ultraaddons' ),
-				'back_to_items'     => __( '← Go to Fonts', 'ultraaddons' ),
+				'name'              => __( 'Custom Fonts', 'ultraaddons-elementor-lite' ),
+				'singular_name'     => __( 'Font', 'ultraaddons-elementor-lite' ),
+				'menu_name'         => _x( 'Custom Fonts', 'Admin menu name', 'ultraaddons-elementor-lite' ),
+				'search_items'      => __( 'Search Fonts', 'ultraaddons-elementor-lite' ),
+				'all_items'         => __( 'All Fonts', 'ultraaddons-elementor-lite' ),
+				'parent_item'       => __( 'Parent Font', 'ultraaddons-elementor-lite' ),
+				'parent_item_colon' => __( 'Parent Font:', 'ultraaddons-elementor-lite' ),
+				'edit_item'         => __( 'Edit Font', 'ultraaddons-elementor-lite' ),
+				'update_item'       => __( 'Update Font', 'ultraaddons-elementor-lite' ),
+				'add_new_item'      => __( 'Add New Font', 'ultraaddons-elementor-lite' ),
+				'new_item_name'     => __( 'New Font Name', 'ultraaddons-elementor-lite' ),
+				'not_found'         => __( 'No fonts found', 'ultraaddons-elementor-lite' ),
+				'back_to_items'     => __( '← Go to Fonts', 'ultraaddons-elementor-lite' ),
 			);
 
 			$args = array(

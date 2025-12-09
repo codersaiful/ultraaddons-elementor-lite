@@ -28,7 +28,7 @@ class Breadcrumb extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons','ua', 'breadcrumb', 'nav', 'navigation' ];
+        return [ 'ultraaddons-elementor-lite','ua', 'breadcrumb', 'nav', 'navigation' ];
     }
     
     
@@ -58,7 +58,7 @@ class Breadcrumb extends Base{
      */
     protected function render() {
         $settings           = $this->get_settings_for_display();
-        $this->home = ! empty( $settings['home_title'] ) ? $settings['home_title'] : esc_html( 'Home', 'ultraaddons' );
+        $this->home = ! empty( $settings['home_title'] ) ? $settings['home_title'] : esc_html( 'Home', 'ultraaddons-elementor-lite' );
         $this->separator = ! empty( $settings['separator_sign'] ) ? $settings['separator_sign'] : '/';
         ?>
         <div class="ua-breadcrumb-wrapper" >
@@ -80,7 +80,7 @@ class Breadcrumb extends Base{
         $this->start_controls_section(
             'wraper_style',
             [
-                'label'     => esc_html__( 'Box', 'ultraaddons' ),
+                'label'     => esc_html__( 'Box', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -88,7 +88,7 @@ class Breadcrumb extends Base{
         $this->add_control(
             'wraper_bg',
             [
-                'label'     => __( 'Background', 'ultraaddons' ),
+                'label'     => __( 'Background', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'global' => [
                     'default' => Global_Colors::COLOR_PRIMARY,
@@ -103,14 +103,14 @@ class Breadcrumb extends Base{
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'border',
-				'label' => esc_html__( 'Border', 'ultraaddons' ),
+				'label' => esc_html__( 'Border', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ultraaddons-breadcrumb, .ua-breadcrumb-menu',
 			]
 		);
         $this->add_control(
 			'wrap_padding',
 			[
-				'label' => esc_html__( 'Padding', 'ultraaddons' ),
+				'label' => esc_html__( 'Padding', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em' ],
 				'selectors' => [
@@ -122,7 +122,7 @@ class Breadcrumb extends Base{
         $this->add_control(
 			'border_radius',
 			[
-				'label' => esc_html__( 'Border radius', 'ultraaddons' ),
+				'label' => esc_html__( 'Border radius', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em' ],
 				'selectors' => [
@@ -135,7 +135,7 @@ class Breadcrumb extends Base{
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'box_shadow',
-				'label' => esc_html__( 'Box Shadow', 'ultraaddons' ),
+				'label' => esc_html__( 'Box Shadow', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ultraaddons-breadcrumb, .ua-breadcrumb-menu',
 			]
 		);
@@ -148,7 +148,7 @@ class Breadcrumb extends Base{
         $this->start_controls_section(
             'general_content',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -156,9 +156,9 @@ class Breadcrumb extends Base{
         $this->add_control(
             'home_title',
                 [
-                    'label'         => esc_html__( 'Home menu Text (Optional)', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Home menu Text (Optional)', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::TEXT,
-                    'default'       => esc_html( 'Home', 'ultraaddons' ),
+                    'default'       => esc_html( 'Home', 'ultraaddons-elementor-lite' ),
                     'label_block'   => TRUE,
                     'dynamic'       => ['active' => true],
                 ]
@@ -167,7 +167,7 @@ class Breadcrumb extends Base{
         $this->add_control(
             'separator_sign',
                 [
-                    'label'         => esc_html__( 'Separator (Optional)', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Separator (Optional)', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::TEXT,
                     'default'       => '/',
                     'label_block'   => TRUE,
@@ -182,26 +182,26 @@ class Breadcrumb extends Base{
         $this->start_controls_section(
             'general_style',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'heading_alignment',
                 [
-                    'label'         => esc_html__( 'Align', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Align', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::CHOOSE,
                     'options' => [
                         'left' => [
-                                'title' => __( 'Left', 'ultraaddons' ),
+                                'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
                                 'icon' => 'eicon-text-align-left',
                         ],
                         'center' => [
-                                'title' => __( 'Center', 'ultraaddons' ),
+                                'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
                                 'icon' => 'eicon-text-align-center',
                         ],
                         'right' => [
-                                'title' => __( 'Right', 'ultraaddons' ),
+                                'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
                                 'icon' => 'eicon-text-align-right',
                         ],
                      ],
@@ -214,7 +214,7 @@ class Breadcrumb extends Base{
         $this->add_control(
             'link_color',
             [
-                'label'     => __( 'Link Color', 'ultraaddons' ),
+                'label'     => __( 'Link Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-breadcrumb-menu nav a, .ultraaddons-breadcrumb .item a' => 'color: {{VALUE}}',
@@ -224,7 +224,7 @@ class Breadcrumb extends Base{
         $this->add_control(
             'current_item',
             [
-                'label'     => __( 'Current Menu Color', 'ultraaddons' ),
+                'label'     => __( 'Current Menu Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-breadcrumb-menu nav, ul#ultraaddons-breadcrumb li.item-current' => 'color: {{VALUE}}',
@@ -234,7 +234,7 @@ class Breadcrumb extends Base{
         $this->add_control(
             'separator_color',
             [
-                'label'     => __( 'Separator Color', 'ultraaddons' ),
+                'label'     => __( 'Separator Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-breadcrumb-menu nav span, .ua-breadcrumb-menu .seperator' => 'color: {{VALUE}}',
@@ -245,7 +245,7 @@ class Breadcrumb extends Base{
         $this->add_control(
             'link_color_hover',
             [
-                'label'     => __( 'Hover Color', 'ultraaddons' ),
+                'label'     => __( 'Hover Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-breadcrumb-menu nav a:hover, .ultraaddons-breadcrumb li a:hover' => 'color: {{VALUE}}',
@@ -268,7 +268,7 @@ class Breadcrumb extends Base{
     
     private function breadcrumb() {
         $settings = $this->get_settings_for_display();
-        $this->home = ! empty( $settings['home_title'] ) ? $settings['home_title'] : esc_html( 'Home', 'ultraaddons' );
+        $this->home = ! empty( $settings['home_title'] ) ? $settings['home_title'] : esc_html( 'Home', 'ultraaddons-elementor-lite' );
         $this->separator = ! empty( $settings['separator_sign'] ) ? $settings['separator_sign'] : '/';
 
     $separator = $this->separator;

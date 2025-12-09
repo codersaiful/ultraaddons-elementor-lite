@@ -31,8 +31,8 @@ class Icons_Manager{
      * Taking help from Elementor Already used Array. 
      */
     public static function additional_tab( $tabs ) {
-        $tabs['ultraaddons'] = [
-            'name'      => 'ultraaddons',
+        $tabs['ultraaddons-elementor-lite'] = [
+            'name'      => 'ultraaddons-elementor-lite',
             'label'     =>  'UltraAddons Icons',
             'url'       => ULTRA_ADDONS_ASSETS . 'icons/ultraaddons/css/ultraaddons.css',
             'enqueue'   => [

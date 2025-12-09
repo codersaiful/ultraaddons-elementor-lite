@@ -20,7 +20,7 @@ $disable_item = Extensions_Manager::disableExtensionKeys();
 <div class="ultraaddons-section ua-option-wrapper ua-extensions-page">
     <div class="ua-section-inside">
         <div class="ua-header">
-            <h1 class="ua-page-title"><?php echo esc_html__( 'Extension', 'ultraaddons' ); ?></h1>
+            <h1 class="ua-page-title"><?php echo esc_html__( 'Extension', 'ultraaddons-elementor-lite' ); ?></h1>
         </div>
         
         <div class="ua-sectioon-content">
@@ -76,7 +76,7 @@ $disable_item = Extensions_Manager::disableExtensionKeys();
                              data-type="<?php echo esc_attr( $free_pro ); ?>"
                              class="ua-option-item <?php echo esc_attr( implode( " ", $html_class ) ); ?>">
                             <div class="ua-option-item-inside">
-                                <span class="ua-option-version-type ua-option-version-type-<?php echo esc_attr( $free_pro ); ?>"><?php echo $free_pro == 'pro' ? esc_html__( 'Pro', 'ultraaddons' ) : esc_html__( 'Free', 'ultraaddons' ); ?></span>
+                                <span class="ua-option-version-type ua-option-version-type-<?php echo esc_attr( $free_pro ); ?>"><?php echo $free_pro == 'pro' ? esc_html__( 'Pro', 'ultraaddons-elementor-lite' ) : esc_html__( 'Free', 'ultraaddons-elementor-lite' ); ?></span>
                                 <i class="ua-option-icon <?php echo esc_attr( $icon ); ?>"></i>
                                 <h2 class="ua-item-name"><?php echo esc_html( $name ); ?></h2>
                                 <div class="ua-option-checkbox">
@@ -88,7 +88,7 @@ $disable_item = Extensions_Manager::disableExtensionKeys();
                         <?php } ?>
                     </div>
                     <div class="ua-widget-footer">
-                        <button class="primary button button-primary ua-primary ua-no-update" type="submit" name="submit" value="submit"><?php echo esc_html__( 'Save Change', 'ultraaddons' ); ?></button>
+                        <button class="primary button button-primary ua-primary ua-no-update" type="submit" name="submit" value="submit"><?php echo esc_html__( 'Save Change', 'ultraaddons-elementor-lite' ); ?></button>
                     </div>
                 </form>
                 

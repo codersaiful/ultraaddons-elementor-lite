@@ -16,11 +16,11 @@ if( $updated ){
 
 $items = Widgets_Manager::widgets();
 // $items['More'] = [
-//             'name'      => __( 'More Widget Comming Soon ....', 'ultraaddons' ),
+//             'name'      => __( 'More Widget Comming Soon ....', 'ultraaddons-elementor-lite' ),
 //             'is_pro'   => true,
 //             'icon'      => 'uicon-ultraaddons',//eicon-global-colors
 //             'cat'       => [
-//                 __( 'Basic', 'ultraaddons' ),
+//                 __( 'Basic', 'ultraaddons-elementor-lite' ),
 //             ],
 //     ];
 $disable_items = Widgets_Manager::disableWidgetKeys();
@@ -29,14 +29,14 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
 <div class="ultraaddons-section ua-option-wrapper ua-widgets-page">
     <div class="ua-section-inside">
         <div class="ua-header">
-            <h1 class="ua-page-title"><?php echo esc_html__( 'Widgets List', 'ultraaddons' ); ?></h1>
+            <h1 class="ua-page-title"><?php echo esc_html__( 'Widgets List', 'ultraaddons-elementor-lite' ); ?></h1>
         </div>
 
         <div class="category-list">
             <ul class="widget-free-pro-list">
-                <li class="wid-cat-wise-target" data-target="free"><?php echo esc_html__( "Free", "ultraaddons" ); ?></li>
-                <li class="wid-cat-wise-target" data-target="pro"><?php echo esc_html__( "Premium", "ultraaddons" ); ?></li>
-                <li class="wid-cat-wise-target active" data-target="free-pro-all"><?php echo esc_html__( "All", "ultraaddons" ); ?></li>
+                <li class="wid-cat-wise-target" data-target="free"><?php echo esc_html__( "Free", 'ultraaddons-elementor-lite' ); ?></li>
+                <li class="wid-cat-wise-target" data-target="pro"><?php echo esc_html__( "Premium", 'ultraaddons-elementor-lite' ); ?></li>
+                <li class="wid-cat-wise-target active" data-target="free-pro-all"><?php echo esc_html__( "All", 'ultraaddons-elementor-lite' ); ?></li>
             </ul>
             <ul class="widget-cat-list" >
             <?php
@@ -47,7 +47,7 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
                 $c_name = str_replace( '_', ' ', $cat );
                 $wid_cats[$cat] =  $c_name;
             }
-            $wid_cats['category-all'] = esc_html__( 'All', 'ultraaddons' );
+            $wid_cats['category-all'] = esc_html__( 'All', 'ultraaddons-elementor-lite' );
 
             foreach( $wid_cats as $wid_cat_key => $wid_cat ){
                 $active_class = $wid_cat_key == 'all' ? 'active' : '';
@@ -112,7 +112,7 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
                              data-type="<?php echo esc_attr( $free_pro ); ?>"
                              class="ua-option-item <?php echo esc_attr( implode( " ", $html_class ) ); ?> <?php echo esc_attr( implode( ',', $cat ) ); ?>">
                             <div class="ua-option-item-inside">
-                                <span class="ua-option-version-type ua-option-version-type-<?php echo esc_attr( $free_pro ); ?>"><?php echo $free_pro == 'pro' ? esc_html__( 'Pro', 'ultraaddons' ) : esc_html__( 'Free', 'ultraaddons' ); ?></span>
+                                <span class="ua-option-version-type ua-option-version-type-<?php echo esc_attr( $free_pro ); ?>"><?php echo $free_pro == 'pro' ? esc_html__( 'Pro', 'ultraaddons-elementor-lite' ) : esc_html__( 'Free', 'ultraaddons-elementor-lite' ); ?></span>
                                 <i class="ua-option-icon <?php echo esc_attr( $icon ); ?>"></i>
                                 <h2 class="ua-item-name"><?php echo esc_html( $name ); ?></h2>
                                 <div class="ua-option-checkbox">
@@ -124,7 +124,7 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
                         <?php } ?>
                     </div>
                     <div class="ua-item-footer">
-                        <button class="primary button button-primary ua-primary ua-no-update" type="submit" name="submit" value="submit"><?php echo esc_html__( 'Save Change', 'ultraaddons' ); ?></button>
+                        <button class="primary button button-primary ua-primary ua-no-update" type="submit" name="submit" value="submit"><?php echo esc_html__( 'Save Change', 'ultraaddons-elementor-lite' ); ?></button>
                     </div>
                 </form>
                 

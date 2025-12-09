@@ -82,7 +82,7 @@ class Testimonial_Slider extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua', 'testimonial', 'review', 'feedback', 'user', 'rating', 'slider' ];
+        return [ 'ultraaddons-elementor-lite', 'ua', 'testimonial', 'review', 'feedback', 'user', 'rating', 'slider' ];
     }
     
     
@@ -192,7 +192,7 @@ class Testimonial_Slider extends Base{
         $this->start_controls_section(
             'general_content',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -201,9 +201,9 @@ class Testimonial_Slider extends Base{
         $repeater->add_control(
                 'title',
                 [
-                    'label' => __( 'Title', 'ultraaddons' ),
+                    'label' => __( 'Title', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::TEXT,
-                    'default'       => __( 'Jonny Robartson', 'ultraaddons' ),
+                    'default'       => __( 'Jonny Robartson', 'ultraaddons-elementor-lite' ),
                     'label_block'   => TRUE,
                     'dynamic'       => ['active' => true],
                 ]
@@ -212,9 +212,9 @@ class Testimonial_Slider extends Base{
         $repeater->add_control(
                 'sub-title',
                 [
-                    'label' => __( 'Position/Designation', 'ultraaddons' ),
+                    'label' => __( 'Position/Designation', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::TEXT,
-                    'default'       => __( 'UI/UX Designer', 'ultraaddons' ),
+                    'default'       => __( 'UI/UX Designer', 'ultraaddons-elementor-lite' ),
                     'label_block'   => TRUE,
                     'dynamic'       => ['active' => true],
                 ]
@@ -223,9 +223,9 @@ class Testimonial_Slider extends Base{
         $repeater->add_control(
                 'quote',
                 [
-                    'label' => __( 'Quote', 'ultraaddons' ),
+                    'label' => __( 'Quote', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::TEXTAREA,
-                    'default'       => __( 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incdidunt ut labore et dolore magna do aliqua quis ipsum suspendisse ces gravida. Risus commodo viverra maecenas.', 'ultraaddons' ),
+                    'default'       => __( 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incdidunt ut labore et dolore magna do aliqua quis ipsum suspendisse ces gravida. Risus commodo viverra maecenas.', 'ultraaddons-elementor-lite' ),
                     'label_block'   => TRUE,
                     'dynamic'       => ['active' => true],
                     'rows' => 5,
@@ -236,7 +236,7 @@ class Testimonial_Slider extends Base{
         $repeater->add_control(
                 'image',
                 [
-                        'label' => __( 'Photo', 'ultraaddons' ),
+                        'label' => __( 'Photo', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::MEDIA,
                         'default' => [
                                 'url' => $placeholder_image,//Utils::get_placeholder_image_src(),
@@ -258,36 +258,36 @@ class Testimonial_Slider extends Base{
                         'default' => [
                                 [
                                         'icon' => $default_icon,
-                                        'title' => __( 'Saiful Islam', 'ultraaddons' ),
-                                        'sub-title' => __( 'Web Developer', 'ultraaddons' ),
-                                        'quote' => __( 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incdidunt ut labore et dolore magna do aliqua quis ipsum suspendisse ces gravida. Risus commodo viverra maecenas.', 'ultraaddons' ),
+                                        'title' => __( 'Saiful Islam', 'ultraaddons-elementor-lite' ),
+                                        'sub-title' => __( 'Web Developer', 'ultraaddons-elementor-lite' ),
+                                        'quote' => __( 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incdidunt ut labore et dolore magna do aliqua quis ipsum suspendisse ces gravida. Risus commodo viverra maecenas.', 'ultraaddons-elementor-lite' ),
                                         'image' => [
                                                 'url' => $placeholder_image,
                                         ],
                                 ],
                                 [
                                         'icon' => $default_icon,
-                                        'title' => __( 'Mukul Robartson', 'ultraaddons' ),
-                                        'sub-title' => __( 'UI/UX Designer', 'ultraaddons' ),
-                                        'quote' => __( 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incdidunt ut labore et dolore magna do aliqua quis ipsum suspendisse ces gravida. Risus commodo viverra maecenas.', 'ultraaddons' ),
+                                        'title' => __( 'Mukul Robartson', 'ultraaddons-elementor-lite' ),
+                                        'sub-title' => __( 'UI/UX Designer', 'ultraaddons-elementor-lite' ),
+                                        'quote' => __( 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incdidunt ut labore et dolore magna do aliqua quis ipsum suspendisse ces gravida. Risus commodo viverra maecenas.', 'ultraaddons-elementor-lite' ),
                                         'image' => [
                                                 'url' => $placeholder_image,
                                         ],
                                 ],
                                 [
                                         'icon' => $default_icon,
-                                        'title' => __( 'Jonny Robartson', 'ultraaddons' ),
-                                        'sub-title' => __( 'UI/UX Designer', 'ultraaddons' ),
-                                        'quote' => __( 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incdidunt ut labore et dolore magna do aliqua quis ipsum suspendisse ces gravida. Risus commodo viverra maecenas.', 'ultraaddons' ),
+                                        'title' => __( 'Jonny Robartson', 'ultraaddons-elementor-lite' ),
+                                        'sub-title' => __( 'UI/UX Designer', 'ultraaddons-elementor-lite' ),
+                                        'quote' => __( 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incdidunt ut labore et dolore magna do aliqua quis ipsum suspendisse ces gravida. Risus commodo viverra maecenas.', 'ultraaddons-elementor-lite' ),
                                         'image' => [
                                                 'url' => $placeholder_image,
                                         ],
                                 ],
                                 [
                                         'icon' => $default_icon,
-                                        'title' => __( 'Jonny Robartson', 'ultraaddons' ),
-                                        'sub-title' => __( 'UI/UX Designer', 'ultraaddons' ),
-                                        'quote' => __( 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incdidunt ut labore et dolore magna do aliqua quis ipsum suspendisse ces gravida. Risus commodo viverra maecenas.', 'ultraaddons' ),
+                                        'title' => __( 'Jonny Robartson', 'ultraaddons-elementor-lite' ),
+                                        'sub-title' => __( 'UI/UX Designer', 'ultraaddons-elementor-lite' ),
+                                        'quote' => __( 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incdidunt ut labore et dolore magna do aliqua quis ipsum suspendisse ces gravida. Risus commodo viverra maecenas.', 'ultraaddons-elementor-lite' ),
                                         'image' => [
                                                 'url' => $placeholder_image,
                                         ],
@@ -312,7 +312,7 @@ class Testimonial_Slider extends Base{
         $this->start_controls_section(
             'style_general',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -320,19 +320,19 @@ class Testimonial_Slider extends Base{
         $this->add_control(
                 'text_align',
                 [
-                        'label' => __( 'Alignment', 'ultraaddons' ),
+                        'label' => __( 'Alignment', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::CHOOSE,
                         'options' => [
                                 'left' => [
-                                        'title' => __( 'Left', 'ultraaddons' ),
+                                        'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
                                         'icon' => 'eicon-text-align-left',
                                 ],
                                 'center' => [
-                                        'title' => __( 'Center', 'ultraaddons' ),
+                                        'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
                                         'icon' => 'eicon-text-align-center',
                                 ],
                                 'right' => [
-                                        'title' => __( 'Right', 'ultraaddons' ),
+                                        'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
                                         'icon' => 'eicon-text-align-right',
                                 ],
                         ],
@@ -351,14 +351,14 @@ class Testimonial_Slider extends Base{
         
         $this->start_controls_tab('testimonial-stl-tab-normal', 
                 [
-                    'label' => __( 'Normal', 'ultraaddons' ),
+                    'label' => __( 'Normal', 'ultraaddons-elementor-lite' ),
                 ]
         );
         
         $this->add_control(
             'bg-color',
             [
-                'label'     => __( 'Background Color', 'ultraaddons' ),
+                'label'     => __( 'Background Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-testimonial-slider-wrapper .client-quote-box' => 'background-color: {{VALUE}}',
@@ -371,7 +371,7 @@ class Testimonial_Slider extends Base{
         $this->add_responsive_control(
                 'padding',
                 [
-                        'label' => __( 'Padding', 'ultraaddons' ),
+                        'label' => __( 'Padding', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', '%' ],
                         'default'   => [
@@ -391,7 +391,7 @@ class Testimonial_Slider extends Base{
             Group_Control_Border::get_type(),
             array(
                 'name'        => 'border',
-                'label'       => esc_html__( 'Border', 'ultraaddons' ),
+                'label'       => esc_html__( 'Border', 'ultraaddons-elementor-lite' ),
                 'placeholder' => '1px',
                 'default'     => '',
                 'selector'    => '{{WRAPPER}} .ua-testimonial-slider-wrapper .client-quote-box',
@@ -401,7 +401,7 @@ class Testimonial_Slider extends Base{
         $this->add_control(
                 'quote-icon-size',
                 [
-                        'label' => __( 'Quote Icon Size', 'ultraaddons' ),
+                        'label' => __( 'Quote Icon Size', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SLIDER,
                         'size_units' => [ 'px', '%' ],
                         'range' => [
@@ -428,7 +428,7 @@ class Testimonial_Slider extends Base{
         $this->add_control(
                 'quote_icon_color',
                 [
-                        'label' => __( 'Quote Icon Color', 'ultraaddons' ),
+                        'label' => __( 'Quote Icon Color', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::COLOR,
                         'default' => '#0FC392',
                         'selectors' => [
@@ -455,14 +455,14 @@ class Testimonial_Slider extends Base{
         
         $this->start_controls_tab('testimonial-stl-tab-hover', 
                 [
-                    'label' => __( 'Hover', 'ultraaddons' ),
+                    'label' => __( 'Hover', 'ultraaddons-elementor-lite' ),
                 ]
         );
         
         $this->add_control(
             'bg-color-hover',
             [
-                'label'     => __( 'Background Color', 'ultraaddons' ),
+                'label'     => __( 'Background Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-testimonial-slider-wrapper .client-quote-box:hover' => 'background-color: {{VALUE}}',
@@ -474,7 +474,7 @@ class Testimonial_Slider extends Base{
         $this->add_responsive_control(
                 'padding-hover',
                 [
-                        'label' => __( 'Padding', 'ultraaddons' ),
+                        'label' => __( 'Padding', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', '%' ],
                         'selectors' => [
@@ -487,7 +487,7 @@ class Testimonial_Slider extends Base{
             Group_Control_Border::get_type(),
             array(
                 'name'        => 'border-hover',
-                'label'       => esc_html__( 'Border', 'ultraaddons' ),
+                'label'       => esc_html__( 'Border', 'ultraaddons-elementor-lite' ),
                 'placeholder' => '1px',
                 'default'     => '',
                 'selector'    => '{{WRAPPER}} .ua-testimonial-slider-wrapper .client-quote-box:hover',
@@ -497,7 +497,7 @@ class Testimonial_Slider extends Base{
         $this->add_control(
                 'quote-icon-size-hover',
                 [
-                        'label' => __( 'Quote Icon Size', 'ultraaddons' ),
+                        'label' => __( 'Quote Icon Size', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SLIDER,
                         'size_units' => [ 'px', '%' ],
                         'range' => [
@@ -521,7 +521,7 @@ class Testimonial_Slider extends Base{
         $this->add_control(
                 'quote_icon_color-hover',
                 [
-                        'label' => __( 'Quote Icon Color', 'ultraaddons' ),
+                        'label' => __( 'Quote Icon Color', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::COLOR,
                         'selectors' => [
                                 '{{WRAPPER}} .ua-testimonial-slider-wrapper .client-quote-box:hover span.quote-icon' => 'color: {{VALUE}}',
@@ -569,7 +569,7 @@ class Testimonial_Slider extends Base{
         $this->start_controls_section(
             'title-typography',
             [
-                'label'     => esc_html__( 'Title', 'ultraaddons' ),
+                'label'     => esc_html__( 'Title', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -587,7 +587,7 @@ class Testimonial_Slider extends Base{
         $this->add_control(
                 'title_color',
                 [
-                        'label' => __( 'Color', 'ultraaddons' ),
+                        'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::COLOR,
                         'default' => '#5C6B79',
                         'selectors' => [
@@ -609,7 +609,7 @@ class Testimonial_Slider extends Base{
         $this->start_controls_section(
             'subtitle-typography',
             [
-                'label'     => esc_html__( 'Designation', 'ultraaddons' ),
+                'label'     => esc_html__( 'Designation', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -627,7 +627,7 @@ class Testimonial_Slider extends Base{
         $this->add_control(
                 'subtitle_color',
                 [
-                        'label' => __( 'Color', 'ultraaddons' ),
+                        'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::COLOR,
                         'default' => '#5C6B79',
                         'selectors' => [
@@ -649,7 +649,7 @@ class Testimonial_Slider extends Base{
         $this->start_controls_section(
             'quote-typography',
             [
-                'label'     => esc_html__( 'Quote', 'ultraaddons' ),
+                'label'     => esc_html__( 'Quote', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -667,7 +667,7 @@ class Testimonial_Slider extends Base{
         $this->add_control(
                 'quote_color',
                 [
-                        'label' => __( 'Color', 'ultraaddons' ),
+                        'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::COLOR,
                         'default' => '#54595F',
                         'selectors' => [
@@ -690,7 +690,7 @@ class Testimonial_Slider extends Base{
         $this->start_controls_section(
             'nav',
             [
-                'label'     => esc_html__( 'Navigation', 'ultraaddons' ),
+                'label'     => esc_html__( 'Navigation', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -699,7 +699,7 @@ class Testimonial_Slider extends Base{
             Group_Control_Border::get_type(),
             array(
                 'name'        => 'nav_border',
-                'label'       => esc_html__( 'Border', 'ultraaddons' ),
+                'label'       => esc_html__( 'Border', 'ultraaddons-elementor-lite' ),
                 'fields_options' => [
 			'border' => [
 				'default' => 'solid',
@@ -723,7 +723,7 @@ class Testimonial_Slider extends Base{
         $this->add_control(
                 'navigation_icon_color',
                 [
-                        'label' => __( 'Navigation Icon Color', 'ultraaddons' ),
+                        'label' => __( 'Navigation Icon Color', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::COLOR,
 //                        'default' => '#0FC392',
                         'selectors' => [
@@ -738,7 +738,7 @@ class Testimonial_Slider extends Base{
         $this->add_control(
                 'navigation_bg_color',
                 [
-                        'label' => __( 'Navigation BG Color', 'ultraaddons' ),
+                        'label' => __( 'Navigation BG Color', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::COLOR,
                         'selectors' => [
                                 '{{WRAPPER}} .ua-testimonial-main-wrapper .owl-nav button.owl-next, .ua-testimonial-main-wrapper .owl-nav button.owl-prev' => 'background-color: {{VALUE}};border-color: {{VALUE}};',
@@ -749,7 +749,7 @@ class Testimonial_Slider extends Base{
         $this->add_responsive_control(
                 'nav_radius',
                 [
-                        'label' => __( 'Radius', 'ultraaddons' ),
+                        'label' => __( 'Radius', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', '%' ],
                         'selectors' => [
@@ -761,7 +761,7 @@ class Testimonial_Slider extends Base{
          $this->add_responsive_control(
                 'nav_padding',
                 [
-                        'label' => __( 'Padding', 'ultraaddons' ),
+                        'label' => __( 'Padding', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', '%' ],
                         'selectors' => [
@@ -792,7 +792,7 @@ class Testimonial_Slider extends Base{
         $this->start_controls_section(
             'avatar',
             [
-                'label'     => esc_html__( 'Avatar', 'ultraaddons' ),
+                'label'     => esc_html__( 'Avatar', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -801,7 +801,7 @@ class Testimonial_Slider extends Base{
             Group_Control_Border::get_type(),
             array(
                 'name'        => 'avatar-border',
-                'label'       => esc_html__( 'Border', 'ultraaddons' ),
+                'label'       => esc_html__( 'Border', 'ultraaddons-elementor-lite' ),
                 'fields_options' => [
 			'border' => [
 				'default' => 'solid',
@@ -826,7 +826,7 @@ class Testimonial_Slider extends Base{
         $this->add_control(
                 'avatar-size',
                 [
-                        'label' => __( 'Size', 'ultraaddons' ),
+                        'label' => __( 'Size', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SLIDER,
                         'size_units' => [ 'px' ],
                         'range' => [
@@ -859,17 +859,17 @@ class Testimonial_Slider extends Base{
         $this->start_controls_section(
             'slider-settings',
             [
-                'label'     => esc_html__( 'Slider Settings', 'ultraaddons' ),
+                'label'     => esc_html__( 'Slider Settings', 'ultraaddons-elementor-lite' ),
             ]
         );
         
         $this->add_control(
                 'autoplay',
                 [
-                        'label' => __( 'Autoplay?', 'ultraaddons' ),
+                        'label' => __( 'Autoplay?', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SWITCHER,
-                        'label_on' => __( 'Yes', 'ultraaddons' ),
-                        'label_off' => __( 'No', 'ultraaddons' ),
+                        'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+                        'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
                         'default' => 'yes',
                         'return_value' => 'yes',
                         'frontend_available' => true,
@@ -879,10 +879,10 @@ class Testimonial_Slider extends Base{
         $this->add_control(
                 'pause_on_hover',
                 [
-                        'label' => __( 'Pause on Hover', 'ultraaddons' ),
+                        'label' => __( 'Pause on Hover', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SWITCHER,
-                        'label_on' => __( 'Yes', 'ultraaddons' ),
-                        'label_off' => __( 'No', 'ultraaddons' ),
+                        'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+                        'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
                         'default' => 'yes',
                         'return_value' => 'yes',
                         'condition' => [
@@ -895,13 +895,13 @@ class Testimonial_Slider extends Base{
         $this->add_control(
                 'autoplay_speed',
                 [
-                        'label' => __( 'Autoplay Speed', 'ultraaddons' ),
+                        'label' => __( 'Autoplay Speed', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::NUMBER,
                         'min' => 100,
                         'step' => 100,
                         'max' => 10000,
                         'default' => 3000,
-                        'description' => __( 'Autoplay speed in milliseconds', 'ultraaddons' ),
+                        'description' => __( 'Autoplay speed in milliseconds', 'ultraaddons-elementor-lite' ),
                         'condition' => [
                                 'autoplay' => 'yes',
                         ],
@@ -913,10 +913,10 @@ class Testimonial_Slider extends Base{
         $this->add_control(
                 'loop',
                 [
-                        'label' => __( 'Infinite Loop?', 'ultraaddons' ),
+                        'label' => __( 'Infinite Loop?', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SWITCHER,
-                        'label_on' => __( 'Yes', 'ultraaddons' ),
-                        'label_off' => __( 'No', 'ultraaddons' ),
+                        'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+                        'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
                         'default' => 'yes',
                         'return_value' => 'yes',
                         'frontend_available' => true,
@@ -926,13 +926,13 @@ class Testimonial_Slider extends Base{
         $this->add_control(
                 'autoplayTimeout',
                 [
-                        'label' => __( 'Autoplay Delay', 'ultraaddons' ),
+                        'label' => __( 'Autoplay Delay', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::NUMBER,
                         'min' => 1000,
                         'step' => 1000,
                         'max' => 10000,
                         'default' => 3000,
-                        'description' => __( 'Autoplay delay in milliseconds', 'ultraaddons' ),
+                        'description' => __( 'Autoplay delay in milliseconds', 'ultraaddons-elementor-lite' ),
                         'frontend_available' => true,
                 ]
         );
@@ -940,13 +940,13 @@ class Testimonial_Slider extends Base{
         $this->add_control(
                 'navigation',
                 [
-                        'label' => __( 'Navigation', 'ultraaddons' ),
+                        'label' => __( 'Navigation', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SELECT,
                         'options' => [
-                                'none' => __( 'None', 'ultraaddons' ),
-                                'arrow' => __( 'Arrow', 'ultraaddons' ),
-                                'dots' => __( 'Dots', 'ultraaddons' ),
-                                'both' => __( 'Arrow & Dots', 'ultraaddons' ),
+                                'none' => __( 'None', 'ultraaddons-elementor-lite' ),
+                                'arrow' => __( 'Arrow', 'ultraaddons-elementor-lite' ),
+                                'dots' => __( 'Dots', 'ultraaddons-elementor-lite' ),
+                                'both' => __( 'Arrow & Dots', 'ultraaddons-elementor-lite' ),
                         ],
                         'default' => 'arrow',
                         'frontend_available' => true,
@@ -960,14 +960,14 @@ class Testimonial_Slider extends Base{
         $this->add_control(
                 'navigation_arrow_position',
                 [
-                        'label' => __( 'Arrow Position', 'ultraaddons' ),
+                        'label' => __( 'Arrow Position', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SELECT,
                         'options' => [
-                                'top-right'      => __( 'Top Right', 'ultraaddons' ),
-                                'top-left'      => __( 'Top Left', 'ultraaddons' ),
-//                                'center'    => __( 'Center', 'ultraaddons' ),
-                                'bottom-right'    => __( 'Bottom Right', 'ultraaddons' ),
-                                'bottom-left'    => __( 'Bottom Left', 'ultraaddons' ),
+                                'top-right'      => __( 'Top Right', 'ultraaddons-elementor-lite' ),
+                                'top-left'      => __( 'Top Left', 'ultraaddons-elementor-lite' ),
+//                                'center'    => __( 'Center', 'ultraaddons-elementor-lite' ),
+                                'bottom-right'    => __( 'Bottom Right', 'ultraaddons-elementor-lite' ),
+                                'bottom-left'    => __( 'Bottom Left', 'ultraaddons-elementor-lite' ),
                         ],
                         'condition' => [
                                 'navigation' => ['arrow','both'],
@@ -981,7 +981,7 @@ class Testimonial_Slider extends Base{
         $this->add_control(
                 'next_prev_spacing',
                 [
-                        'label' => __( 'Navigation Button Spacing', 'elementor' ),
+                        'label' => __( 'Navigation Button Spacing', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SLIDER,
                         'default' => [
                                 'size' => 70,
@@ -1009,7 +1009,7 @@ class Testimonial_Slider extends Base{
 //        $this->add_control(
 //                'next_prev_center_spacing',
 //                [
-//                        'label' => __( 'Navigation Spacing', 'elementor' ),
+//                        'label' => __( 'Navigation Spacing', 'ultraaddons-elementor-lite' ),
 //                        'type' => Controls_Manager::SLIDER,
 ////                                'size_units' => [ 'px' ],
 //                        'default' => [
@@ -1039,15 +1039,15 @@ class Testimonial_Slider extends Base{
         $this->add_responsive_control(
                 'slides_to_show',
                 [
-                        'label' => __( 'Slides To Show', 'ultraaddons' ),
+                        'label' => __( 'Slides To Show', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SELECT,
                         'options' => [
-                                1 => __( '1 Slide', 'ultraaddons' ),
-                                2 => __( '2 Slides', 'ultraaddons' ),
-                                3 => __( '3 Slides', 'ultraaddons' ),
-                                4 => __( '4 Slides', 'ultraaddons' ),
-                                5 => __( '5 Slides', 'ultraaddons' ),
-                                6 => __( '6 Slides', 'ultraaddons' ),
+                                1 => __( '1 Slide', 'ultraaddons-elementor-lite' ),
+                                2 => __( '2 Slides', 'ultraaddons-elementor-lite' ),
+                                3 => __( '3 Slides', 'ultraaddons-elementor-lite' ),
+                                4 => __( '4 Slides', 'ultraaddons-elementor-lite' ),
+                                5 => __( '5 Slides', 'ultraaddons-elementor-lite' ),
+                                6 => __( '6 Slides', 'ultraaddons-elementor-lite' ),
                         ],
                         'desktop_default' => 3,
                         'tablet_default' => 2,

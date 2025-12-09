@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class Icon_Box extends Info_Box {
     
     public function get_keywords() {
-            return [ 'ultraaddons','ua', 'icon', 'icon box', 'box' ];
+            return [ 'ultraaddons-elementor-lite','ua', 'icon', 'icon box', 'box' ];
     }
     
     

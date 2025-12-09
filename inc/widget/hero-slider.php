@@ -80,7 +80,7 @@ class Hero_Slider extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons','ua', 'slider', 'hero', 'carousel','banner' ];
+        return [ 'ultraaddons-elementor-lite','ua', 'slider', 'hero', 'carousel','banner' ];
     }
     
     
@@ -106,17 +106,17 @@ class Hero_Slider extends Base{
         $this->start_controls_section(
             'slider_settings',
             [
-                'label'     => esc_html__( 'Slider Settings . ', 'ultraaddons' ),
+                'label'     => esc_html__( 'Slider Settings . ', 'ultraaddons-elementor-lite' ),
             ]
         );
 
 		$this->add_control(
 			'loop',
 			[
-				'label' => __( 'Loop', 'ultraaddons' ),
+				'label' => __( 'Loop', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 				'frontend_available' => true,
@@ -126,7 +126,7 @@ class Hero_Slider extends Base{
 		$this->add_control(
 			'speed',
 			[
-				'label' => __( 'Speed', 'ultraaddons' ),
+				'label' => __( 'Speed', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 500,
 				'max' => 3000,
@@ -138,7 +138,7 @@ class Hero_Slider extends Base{
         $this->add_control(
 			'delay',
 			[
-				'label' => __( 'Delay', 'ultraaddons' ),
+				'label' => __( 'Delay', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 1000,
 				'max' => 7000,
@@ -152,10 +152,10 @@ class Hero_Slider extends Base{
         $this->add_control(
 			'stopOnHover',
 			[
-				'label' => __( 'Stop On Hover', 'ultraaddons' ),
+				'label' => __( 'Stop On Hover', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
                 'frontend_available' => true,
@@ -165,36 +165,36 @@ class Hero_Slider extends Base{
 		$this->add_control(
 			'effect',
 			[
-				'label' => __( 'Effects', 'ultraaddons' ),
+				'label' => __( 'Effects', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'fade',
 				'frontend_available' => true,
 				'options' => [
-					'fade'  => __( 'Fade', 'ultraaddons' ),
-					'flip' => __( 'Flip', 'ultraaddons' ),
+					'fade'  => __( 'Fade', 'ultraaddons-elementor-lite' ),
+					'flip' => __( 'Flip', 'ultraaddons-elementor-lite' ),
 				],
 			]
 		);
        /*  $this->add_control(
 			'slidesPerView',
 			[
-				'label' => __( 'Slides View', 'ultraaddons' ),
+				'label' => __( 'Slides View', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'default',
 				'frontend_available' => true,
 				'options' => [
-                    'auto'  => __( 'Auto', 'ultraaddons' ),
-					'1'  => __( 'One', 'ultraaddons' ),
-					'2' => __( 'Two', 'ultraaddons' ),
-					'3' => __( 'Three', 'ultraaddons' ),
-					'4' => __( 'Four', 'ultraaddons' ),
+                    'auto'  => __( 'Auto', 'ultraaddons-elementor-lite' ),
+					'1'  => __( 'One', 'ultraaddons-elementor-lite' ),
+					'2' => __( 'Two', 'ultraaddons-elementor-lite' ),
+					'3' => __( 'Three', 'ultraaddons-elementor-lite' ),
+					'4' => __( 'Four', 'ultraaddons-elementor-lite' ),
 				],
 			]
 		); */
        /*  $this->add_control(
 			'spaceBetween',
 			[
-				'label' => __( 'Space Between', 'ultraaddons' ),
+				'label' => __( 'Space Between', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 0,
 				'max' => 100,
@@ -209,23 +209,23 @@ class Hero_Slider extends Base{
 		/* $this->add_control(
 			'direction',
 			[
-				'label' => __( 'Direction', 'ultraaddons' ),
+				'label' => __( 'Direction', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'vertical',
 				'frontend_available' => true,
 				'options' => [
-					'vertical'  => __( 'Vertical', 'ultraaddons' ),
-					'horizontal' => __( 'Horizontal', 'ultraaddons' ),
+					'vertical'  => __( 'Vertical', 'ultraaddons-elementor-lite' ),
+					'horizontal' => __( 'Horizontal', 'ultraaddons-elementor-lite' ),
 				],
 			]
 		); */
         $this->add_control(
 			'navigation',
 			[
-				'label' => __( 'Navigation', 'ultraaddons' ),
+				'label' => __( 'Navigation', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
                 'frontend_available' => true,
@@ -234,10 +234,10 @@ class Hero_Slider extends Base{
         $this->add_control(
 			'pagination',
 			[
-				'label' => __( 'Pagination', 'ultraaddons' ),
+				'label' => __( 'Pagination', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
                 'frontend_available' => true,
@@ -247,14 +247,14 @@ class Hero_Slider extends Base{
         $this->add_control(
 			'pagination_type',
 			[
-				'label' => __( 'Pagination Type', 'ultraaddons' ),
+				'label' => __( 'Pagination Type', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'bullets',
 				'frontend_available' => true,
 				'options' => [
-					'bullets'  => __( 'Bullets', 'ultraaddons' ),
-					'fraction' => __( 'Fraction', 'ultraaddons' ),
-					'progressbar' => __( 'Progressbar', 'ultraaddons' ),
+					'bullets'  => __( 'Bullets', 'ultraaddons-elementor-lite' ),
+					'fraction' => __( 'Fraction', 'ultraaddons-elementor-lite' ),
+					'progressbar' => __( 'Progressbar', 'ultraaddons-elementor-lite' ),
 				],
 			]
 		);
@@ -271,7 +271,7 @@ class Hero_Slider extends Base{
         $this->start_controls_section(
             'general_content',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -281,7 +281,7 @@ class Hero_Slider extends Base{
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'image',
-				'label' => esc_html__( 'Slider Background', 'ultraaddons' ),
+				'label' => esc_html__( 'Slider Background', 'ultraaddons-elementor-lite' ),
 				'types' => [ 'classic' ],
 				'selector' => '{{WRAPPER}} {{CURRENT_ITEM}}.swiper-slide',
 			]
@@ -289,17 +289,17 @@ class Hero_Slider extends Base{
 
 		$repeater->add_control(
 			'list_title', [
-				'label' => esc_html__( 'Title', 'ultraaddons' ),
+				'label' => esc_html__( 'Title', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'List Title' , 'ultraaddons' ),
+				'default' => esc_html__( 'List Title' , 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
         $repeater->add_control(
 			'list_content', [
-				'label' => esc_html__( 'Content', 'ultraaddons' ),
+				'label' => esc_html__( 'Content', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXTAREA,
-				'default' => esc_html__( 'Lorem ipsum dolor sit amet consectetur adipisicing elit.' , 'ultraaddons' ),
+				'default' => esc_html__( 'Lorem ipsum dolor sit amet consectetur adipisicing elit.' , 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 				'separator' => 'after'
 			]
@@ -307,16 +307,16 @@ class Hero_Slider extends Base{
 
         $repeater->add_control(
 			'list_btn', [
-				'label' => esc_html__( 'Button Text', 'ultraaddons' ),
+				'label' => esc_html__( 'Button Text', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'Read More' , 'ultraaddons' ),
+				'default' => esc_html__( 'Read More' , 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
 		$repeater->add_control(
 			'action_btn_link',
 			[
-				'label' => esc_html__( 'Button Link', 'ultraaddons' ),
+				'label' => esc_html__( 'Button Link', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::URL,
 				'placeholder' => esc_html__( 'https://your-link.com', 'ultraaddonse' ),
 				'default' => [
@@ -332,7 +332,7 @@ class Hero_Slider extends Base{
 		$repeater->add_control(
 			'_top_title_animation',
 			[
-				'label' => esc_html__( 'Top Title Animation', 'ultraaddons' ),
+				'label' => esc_html__( 'Top Title Animation', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => ultraaddons_animation(),
 				'default' => 'fadeInDown',
@@ -344,7 +344,7 @@ class Hero_Slider extends Base{
 		$repeater->add_control(
 			'_title_animation',
 			[
-				'label' => esc_html__( 'Title Animation', 'ultraaddons' ),
+				'label' => esc_html__( 'Title Animation', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => ultraaddons_animation(),
 				'default' => 'fadeInLeft',
@@ -356,7 +356,7 @@ class Hero_Slider extends Base{
 		$repeater->add_control(
 			'_button_animation',
 			[
-				'label' => esc_html__( 'Button Animation', 'ultraaddons' ),
+				'label' => esc_html__( 'Button Animation', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => ultraaddons_animation(),
 				'default' => 'fadeInUp',
@@ -368,15 +368,15 @@ class Hero_Slider extends Base{
         $this->add_control(
 			'list',
 			[
-				'label' => esc_html__( 'Repeater List', 'ultraaddons' ),
+				'label' => esc_html__( 'Repeater List', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
-						'list_title' => esc_html__( 'Ultra Addons', 'ultraaddons' ),
+						'list_title' => esc_html__( 'Ultra Addons', 'ultraaddons-elementor-lite' ),
 					],
 					[
-						'list_title' => esc_html__( 'Woo Table', 'ultraaddons' ),
+						'list_title' => esc_html__( 'Woo Table', 'ultraaddons-elementor-lite' ),
 					],
 
 				],
@@ -396,26 +396,26 @@ class Hero_Slider extends Base{
         $this->start_controls_section(
             'general_style',
             [
-                'label'     => esc_html__( 'General Style', 'ultraaddons' ),
+                'label'     => esc_html__( 'General Style', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_responsive_control(
 			'_slider_text_alignment',
 			[
-				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
+				'label' => esc_html__( 'Alignment', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'start' => [
-						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'title' => esc_html__( 'Left', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'ultraaddons' ),
+						'title' => esc_html__( 'Center', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-center',
 					],
 					'end' => [
-						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'title' => esc_html__( 'Right', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-right',
 					]
 				],
@@ -428,7 +428,7 @@ class Hero_Slider extends Base{
 		$this->add_control(
 			'slider_height',
 			[
-				'label' => esc_html__( 'Slider Height', 'ultraaddons' ),
+				'label' => esc_html__( 'Slider Height', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px','vh' ],
 				'range' => [
@@ -463,7 +463,7 @@ class Hero_Slider extends Base{
         );
         $this->add_control(
 			'slider_title', [
-				'label' => __( 'Title Color', 'ultraaddons' ),
+				'label' => __( 'Title Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-slider-title' => 'color: {{VALUE}};',
@@ -475,7 +475,7 @@ class Hero_Slider extends Base{
 		$this->add_responsive_control(
 			'_slide_title_margin',
 			[
-				'label'       => esc_html__( 'Title Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Title Margin', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'default' => [
@@ -503,7 +503,7 @@ class Hero_Slider extends Base{
         );
         $this->add_control(
 			'slider_small_title', [
-				'label' => __( 'Small Title Color', 'ultraaddons' ),
+				'label' => __( 'Small Title Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-slider-sub-title' => 'color: {{VALUE}};',
@@ -516,7 +516,7 @@ class Hero_Slider extends Base{
 		$this->add_responsive_control(
 			'_content_padding',
 			[
-				'label'       => esc_html__( 'Content Padding', 'ultraaddons' ),
+				'label'       => esc_html__( 'Content Padding', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -533,10 +533,10 @@ class Hero_Slider extends Base{
 		$this->add_control(
 			'overlay',
 			[
-				'label' => __( 'Overlay', 'ultraaddons' ),
+				'label' => __( 'Overlay', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 				'separator' => 'before',
@@ -545,7 +545,7 @@ class Hero_Slider extends Base{
 		);
 		$this->add_control(
 			'overlay_bg', [
-				'label' => __( 'Overlay Background', 'ultraaddons' ),
+				'label' => __( 'Overlay Background', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-hero-slider-overlay ' => 'background-color: {{VALUE}};',
@@ -564,7 +564,7 @@ class Hero_Slider extends Base{
 		$this->start_controls_section(
             'slide_btn_style',
             [
-                'label'     => esc_html__( 'Button', 'ultraaddons' ),
+                'label'     => esc_html__( 'Button', 'ultraaddons-elementor-lite' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -577,12 +577,12 @@ class Hero_Slider extends Base{
 		$this->start_controls_tab(
 			'style_normal_tab',
 			[
-				'label' => __( 'Normal', 'ultraaddons' ),
+				'label' => __( 'Normal', 'ultraaddons-elementor-lite' ),
 			]
 		);
 		$this->add_control(
 			'_ua_slide_btn_bg', [
-				'label' => __( 'Button Background', 'ultraaddons' ),
+				'label' => __( 'Button Background', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-hero .ua-slider-container .ua-slider-buttton' => 'background: {{VALUE}};',
@@ -593,13 +593,13 @@ class Hero_Slider extends Base{
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'slider_btn_border',
-				'label' => esc_html__( 'Button Border', 'ultraaddons' ),
+				'label' => esc_html__( 'Button Border', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-hero .ua-slider-buttton',
 			]
 		);
 		$this->add_control(
 			'_ua_slide_btn_color', [
-				'label' => __( 'Button Text Color', 'ultraaddons' ),
+				'label' => __( 'Button Text Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-slider-container .ua-slider-buttton, i.uicon.uicon-cart' => 'color: {{VALUE}};',
@@ -618,7 +618,7 @@ class Hero_Slider extends Base{
 		$this->add_responsive_control(
 			'_slide_btn_radius',
 			[
-				'label'       => esc_html__( 'Button Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Button Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -636,7 +636,7 @@ class Hero_Slider extends Base{
 		$this->add_responsive_control(
 			'_slide_btn_padding',
 			[
-				'label'       => esc_html__( 'Button Padding', 'ultraaddons' ),
+				'label'       => esc_html__( 'Button Padding', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -658,13 +658,13 @@ class Hero_Slider extends Base{
 		$this->start_controls_tab(
 			'slide_btn_hover_tabs',
 			[
-				'label' => __( 'Hover', 'ultraaddons' ),
+				'label' => __( 'Hover', 'ultraaddons-elementor-lite' ),
 			]
 		);
 		$this->add_control(
 			'_ua_btn_animation',
 			[
-				'label' => esc_html__( 'Select Animation', 'ultraaddons' ),
+				'label' => esc_html__( 'Select Animation', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => ultraaddons_button_hover(),
 				'default' => 'hvr-fade',
@@ -672,7 +672,7 @@ class Hero_Slider extends Base{
 		);
 		$this->add_control(
 			'_ua_slide_btn_hover_bg', [
-				'label' => __( 'Button Background', 'ultraaddons' ),
+				'label' => __( 'Button Background', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-hero .ua-slider-container .ua-slider-buttton:before, .ua-slider-container .ua-slider-buttton:hover' => 'background: {{VALUE}};',
@@ -683,13 +683,13 @@ class Hero_Slider extends Base{
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'slider_btn_hover_border',
-				'label' => esc_html__( 'Button Border', 'ultraaddons' ),
+				'label' => esc_html__( 'Button Border', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-slider-container a.ua-slider-buttton:hover',
 			]
 		);
 		$this->add_control(
 			'_ua_slide_btn_hover_color', [
-				'label' => __( 'Button Text Color', 'ultraaddons' ),
+				'label' => __( 'Button Text Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-slider-container .ua-slider-buttton' => 'color: {{VALUE}};',
@@ -709,14 +709,14 @@ class Hero_Slider extends Base{
         $this->start_controls_section(
             'pagination_style',
             [
-                'label'     => esc_html__( 'Pagination', 'ultraaddons' ),
+                'label'     => esc_html__( 'Pagination', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
 		$this->add_responsive_control(
 			'slider_bullet_radius',
 			[
-				'label'       => esc_html__( 'Bullets Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Bullets Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -736,7 +736,7 @@ class Hero_Slider extends Base{
 		$this->add_control(
 			'slider_bullet_height',
 			[
-				'label' => esc_html__( 'Bullets Height', 'ultraaddons' ),
+				'label' => esc_html__( 'Bullets Height', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'range' => [
@@ -760,7 +760,7 @@ class Hero_Slider extends Base{
 		$this->add_control(
 			'slider_bullet_width',
 			[
-				'label' => esc_html__( 'Bullets Width', 'ultraaddons' ),
+				'label' => esc_html__( 'Bullets Width', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'range' => [
@@ -784,7 +784,7 @@ class Hero_Slider extends Base{
 
 		$this->add_control(
 			'slider_bullet_color', [
-				'label' => __( 'Bullet Color', 'ultraaddons' ),
+				'label' => __( 'Bullet Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-hero .swiper-pagination-bullet' => 'background: {{VALUE}};',
@@ -797,7 +797,7 @@ class Hero_Slider extends Base{
 	
 		$this->add_control(
 			'slider_progress_fill_color', [
-				'label' => __( 'Progress Fill Color', 'ultraaddons' ),
+				'label' => __( 'Progress Fill Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-hero .swiper-pagination-progressbar .swiper-pagination-progressbar-fill' => 'background: {{VALUE}};',
@@ -810,7 +810,7 @@ class Hero_Slider extends Base{
         );
 		$this->add_control(
 			'slider_progress_color', [
-				'label' => __( 'Progress Color', 'ultraaddons' ),
+				'label' => __( 'Progress Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-hero .swiper-pagination-progressbar' => 'background: {{VALUE}};',
@@ -822,7 +822,7 @@ class Hero_Slider extends Base{
         );
 		$this->add_control(
 			'slider_fraction_color', [
-				'label' => __( 'Fraction Color', 'ultraaddons' ),
+				'label' => __( 'Fraction Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-hero .swiper-pagination-fraction' => 'color: {{VALUE}};',
@@ -853,13 +853,13 @@ class Hero_Slider extends Base{
         $this->start_controls_section(
             'navigation_style',
             [
-                'label'     => esc_html__( 'Navigation', 'ultraaddons' ),
+                'label'     => esc_html__( 'Navigation', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
 		$this->add_control(
 			'slider_navigation_color', [
-				'label' => __( 'Navigation Color', 'ultraaddons' ),
+				'label' => __( 'Navigation Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .swiper-button-next:after, .swiper-button-prev:after' => 'color: {{VALUE}};',
@@ -869,7 +869,7 @@ class Hero_Slider extends Base{
 		$this->add_control(
 			'icon_size',
 			[
-				'label' => esc_html__( 'Icon Size', 'ultraaddons' ),
+				'label' => esc_html__( 'Icon Size', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px'],
 				'range' => [

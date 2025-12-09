@@ -26,7 +26,7 @@ class Advance_List extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua','list', 'item', 'ul', 'ol', 'list item', 'list-item','item-list','advance' ];
+        return [ 'ultraaddons-elementor-lite', 'ua','list', 'item', 'ul', 'ol', 'list item', 'list-item','item-list','advance' ];
     }
     
     /**
@@ -121,7 +121,7 @@ class Advance_List extends Base{
         $this->start_controls_section(
             'general_content',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -137,7 +137,7 @@ class Advance_List extends Base{
         $repeater->add_control(
                 'icon',
                 [
-                        'label'     => __( 'Icon', 'ultraaddons' ),
+                        'label'     => __( 'Icon', 'ultraaddons-elementor-lite' ),
                         'type'      => Controls_Manager::ICONS,
                         'default'   => $default_icon,
                 ]
@@ -146,10 +146,10 @@ class Advance_List extends Base{
         $repeater->add_control(
                 'title',
                 [
-                        'label'     => __( 'Title', 'ultraaddons' ),
+                        'label'     => __( 'Title', 'ultraaddons-elementor-lite' ),
                         'label_block'=> true,	
                         'type'      => Controls_Manager::TEXT,
-                        'default'   => __( 'List Item', 'ultraaddons' ),
+                        'default'   => __( 'List Item', 'ultraaddons-elementor-lite' ),
                 ]
         );
         
@@ -157,16 +157,16 @@ class Advance_List extends Base{
         $repeater->add_control(
                 'description',
                 [
-                        'label'     => __( 'Description', 'ultraaddons' ),
+                        'label'     => __( 'Description', 'ultraaddons-elementor-lite' ),
                         'type'      => Controls_Manager::TEXTAREA,
-                        'default'   => __( 'Description of List Item', 'ultraaddons' ),
+                        'default'   => __( 'Description of List Item', 'ultraaddons-elementor-lite' ),
                 ]
         );
         
         $repeater->add_control(
             'icon_color',
             [
-                'label'     => __( 'Icon Color', 'ultraaddons' ),
+                'label'     => __( 'Icon Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-list-item-wrapper .ua-list-items {{CURRENT_ITEM}} i' => 'color: {{VALUE}}',
@@ -179,7 +179,7 @@ class Advance_List extends Base{
         $repeater->add_control(
             'icon_each_bg_color',
             [
-                'label'     => __( 'Icon Background', 'ultraaddons' ),
+                'label'     => __( 'Icon Background', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-list-item-wrapper .ua-list-items {{CURRENT_ITEM}} i,.elementor-element.ua-list-temp-temp-2 .ua-list-items {{CURRENT_ITEM}}::after' => 'background-color: {{VALUE}}',
@@ -192,7 +192,7 @@ class Advance_List extends Base{
         $repeater->add_control(
             'item_background',
             [
-                'label'     => __( 'Item Background', 'ultraaddons' ),
+                'label'     => __( 'Item Background', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-list-item-wrapper .ua-list-items {{CURRENT_ITEM}}' => 'background-color: {{VALUE}}',
@@ -210,20 +210,20 @@ class Advance_List extends Base{
                         'default' => [
                                 [
                                         'icon' => $default_icon,
-                                        'title' => __( 'List Item #1', 'ultraaddons' ),
-                                        'description' => __( 'Description of List Item', 'ultraaddons' ),
+                                        'title' => __( 'List Item #1', 'ultraaddons-elementor-lite' ),
+                                        'description' => __( 'Description of List Item', 'ultraaddons-elementor-lite' ),
                                 ],
                                 
                                 [
                                         'icon' => $default_icon,
-                                        'title' => __( 'List Item #2', 'ultraaddons' ),
-                                        'description' => __( 'Description of List Item', 'ultraaddons' ),
+                                        'title' => __( 'List Item #2', 'ultraaddons-elementor-lite' ),
+                                        'description' => __( 'Description of List Item', 'ultraaddons-elementor-lite' ),
                                 ],
                                 
                                 [
                                         'icon' => $default_icon,
-                                        'title' => __( 'List Item #3', 'ultraaddons' ),
-                                        'description' => __( 'Description of List Item', 'ultraaddons' ),
+                                        'title' => __( 'List Item #3', 'ultraaddons-elementor-lite' ),
+                                        'description' => __( 'Description of List Item', 'ultraaddons-elementor-lite' ),
                                 ],
                                 
                         ],
@@ -245,7 +245,7 @@ class Advance_List extends Base{
         $this->start_controls_section(
             'style_general',
             [
-                'label'     => esc_html__( 'Content', 'ultraaddons' ),
+                'label'     => esc_html__( 'Content', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -253,12 +253,12 @@ class Advance_List extends Base{
         $this->add_control(
             'template',
                 [
-                    'label'         => esc_html__( 'Template', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Template', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::SELECT,
                     'options' => [
-                            'default'   => __( 'Default', 'ultraaddons' ),
-                            'temp-2'    => __( 'Template Two', 'ultraaddons' ),
-                            'temp-3'    => __( 'Template Three', 'ultraaddons' ),
+                            'default'   => __( 'Default', 'ultraaddons-elementor-lite' ),
+                            'temp-2'    => __( 'Template Two', 'ultraaddons-elementor-lite' ),
+                            'temp-3'    => __( 'Template Three', 'ultraaddons-elementor-lite' ),
                     ],
                     'default' => 'default',
                     'prefix_class' => 'ua-list-temp-',
@@ -268,13 +268,13 @@ class Advance_List extends Base{
         $this->add_responsive_control(
             'list-column',
                 [
-                    'label'         => esc_html__( 'Column', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Column', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::SELECT,
                     'options' => [
-                            '100%'    => __( 'One Column', 'ultraaddons' ),
-                            '48%'     => __( 'Two Column', 'ultraaddons' ),
-                            '30.33%'  => __( 'Three Column', 'ultraaddons' ),
-                            '24.8%'     => __( 'Four Column', 'ultraaddons' ),
+                            '100%'    => __( 'One Column', 'ultraaddons-elementor-lite' ),
+                            '48%'     => __( 'Two Column', 'ultraaddons-elementor-lite' ),
+                            '30.33%'  => __( 'Three Column', 'ultraaddons-elementor-lite' ),
+                            '24.8%'     => __( 'Four Column', 'ultraaddons-elementor-lite' ),
                     ],
                     'desktop_default' => '30.33%',
                     'tablet_default' => '48%',
@@ -288,7 +288,7 @@ class Advance_List extends Base{
         $this->add_control(
             'title_color',
             [
-                'label'     => __( 'Title Color', 'ultraaddons' ),
+                'label'     => __( 'Title Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-list-item-wrapper .ua-list-items li .list-item-title' => 'color: {{VALUE}}',
@@ -299,7 +299,7 @@ class Advance_List extends Base{
          $this->add_responsive_control(
                 'title_margin',
                 [
-                        'label' => __( 'Title Margin', 'ultraaddons' ),
+                        'label' => __( 'Title Margin', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px' ],
                         'default'   => [
@@ -315,7 +315,7 @@ class Advance_List extends Base{
         $this->add_control(
             'description_color',
             [
-                'label'     => __( 'Description Color', 'ultraaddons' ),
+                'label'     => __( 'Description Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-list-item-wrapper .ua-list-items li .list-item-description' => 'color: {{VALUE}}',
@@ -326,7 +326,7 @@ class Advance_List extends Base{
          $this->add_responsive_control(
                     'icon_size',
                     [
-                            'label' => __( 'Icon Size', 'ultraaddons' ),
+                            'label' => __( 'Icon Size', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SLIDER,
                             'default' => [
                                     'size' => 20,
@@ -345,7 +345,7 @@ class Advance_List extends Base{
              $this->add_responsive_control(
                     'icon_space',
                     [
-                            'label' => __( 'Icon Space', 'ultraaddons' ),
+                            'label' => __( 'Icon Space', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SLIDER,
                             'default' => [
                                     'size' => 5,
@@ -374,7 +374,7 @@ class Advance_List extends Base{
         $this->start_controls_section(
             'typography',
             [
-                'label'     => esc_html__( 'Typography', 'ultraaddons' ),
+                'label'     => esc_html__( 'Typography', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -414,14 +414,14 @@ class Advance_List extends Base{
         $this->start_controls_section(
             'list_style',
             [
-                'label'     => esc_html__( 'Box', 'ultraaddons' ),
+                'label'     => esc_html__( 'Box', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_responsive_control(
                 'padding',
                 [
-                        'label' => __( 'Padding', 'ultraaddons' ),
+                        'label' => __( 'Padding', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', '%' ],
                         'default'   => [
@@ -437,7 +437,7 @@ class Advance_List extends Base{
         $this->add_responsive_control(
                 'margin',
                 [
-                        'label' => __( 'Margin', 'ultraaddons' ),
+                        'label' => __( 'Margin', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', '%' ],
                         'default'   => [
@@ -452,7 +452,7 @@ class Advance_List extends Base{
         $this->add_responsive_control(
 			'list_box_radius',
 			[
-				'label'       => esc_html__( 'Box Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Box Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -470,7 +470,7 @@ class Advance_List extends Base{
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'box_shadow',
-				'label' => __( 'Box Shadow', 'ultraaddons' ),
+				'label' => __( 'Box Shadow', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .list-item',
 			]
 		);

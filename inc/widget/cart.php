@@ -26,7 +26,7 @@ class Cart extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons','ua', 'cart', 'wc', 'woocommerce', 'minicart', 'mini cart' ];
+        return [ 'ultraaddons-elementor-lite','ua', 'cart', 'wc', 'woocommerce', 'minicart', 'mini cart' ];
     }
     
     
@@ -81,7 +81,7 @@ class Cart extends Base{
          */
         if ( ! class_exists( 'WooCommerce' ) ) {
         ?>
-        <h3><?php echo esc_html__( 'WooComemrce is not activated.', 'ultraaddons' ); ?></h3>
+        <h3><?php echo esc_html__( 'WooComemrce is not activated.', 'ultraaddons-elementor-lite' ); ?></h3>
         <?php    
             return;
         }
@@ -135,7 +135,7 @@ class Cart extends Base{
                                 do_action( 'ultraaddons_minicart_top' );
                                 
 				$instance = array(
-					//'title' => esc_html( 'My Cart', 'ultraaddons' ),
+					//'title' => esc_html( 'My Cart', 'ultraaddons-elementor-lite' ),
 					'title' => $title,
 				);
                                 $instance = apply_filters( 'ultraaddons_minicart_args', $instance );
@@ -165,26 +165,26 @@ class Cart extends Base{
         $this->start_controls_section(
                 'general',
                 [
-                        'label' => __( 'General', 'ultraaddons' ),
+                        'label' => __( 'General', 'ultraaddons-elementor-lite' ),
                 ]
         );
         
         $this->add_responsive_control(
                     'align',
                     [
-                            'label' => __( 'Alignment', 'ultraaddons' ),
+                            'label' => __( 'Alignment', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::CHOOSE,
                             'options' => [
                                     'left'    => [
-                                            'title' => __( 'Left', 'ultraaddons' ),
+                                            'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
                                             'icon' => 'eicon-h-align-left',
                                     ],
                                     'center' => [
-                                            'title' => __( 'Center', 'ultraaddons' ),
+                                            'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
                                             'icon' => 'eicon-h-align-center',
                                     ],
                                     'right' => [
-                                            'title' => __( 'Right', 'ultraaddons' ),
+                                            'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
                                             'icon' => 'eicon-h-align-right',
                                     ]
                             ],
@@ -198,7 +198,7 @@ class Cart extends Base{
         $this->add_control(
                     'add_icon',
                     [
-                            'label' => __( 'Cart Icon', 'ultraaddons' ),
+                            'label' => __( 'Cart Icon', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::ICONS,
                             'fa4compatibility' => 'icon',
                             'default' => [
@@ -213,12 +213,12 @@ class Cart extends Base{
         $this->add_control(
                 'cart_label',
                 [
-                        'label' => __( 'Cart Label', 'ultraaddons' ),
+                        'label' => __( 'Cart Label', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::TEXT,
                         'dynamic' => [
                                 'active' => true,
                         ],
-                        'default' => __( 'Shopping Cart', 'ultraaddons' ),
+                        'default' => __( 'Shopping Cart', 'ultraaddons-elementor-lite' ),
                 ]
         );
         
@@ -226,7 +226,7 @@ class Cart extends Base{
         $this->add_control(
                 'cart_title',
                 [
-                        'label' => __( 'Cart Title', 'ultraaddons' ),
+                        'label' => __( 'Cart Title', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::TEXT,
                         'dynamic' => [
                                 'active' => true,
@@ -238,11 +238,11 @@ class Cart extends Base{
         $this->add_control(
                 'expand_always',
                 [
-                        'label' => __( 'Expand Always', 'ultraaddons' ),
-                        'description' => __( 'Cart Item will stay exanded always.', 'ultraaddons' ),
+                        'label' => __( 'Expand Always', 'ultraaddons-elementor-lite' ),
+                        'description' => __( 'Cart Item will stay exanded always.', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SWITCHER,
-                        'label_on' => __( 'On', 'ultraaddons' ),
-                        'label_off' => __( 'Off', 'ultraaddons' ),
+                        'label_on' => __( 'On', 'ultraaddons-elementor-lite' ),
+                        'label_off' => __( 'Off', 'ultraaddons-elementor-lite' ),
                         'return_value' => 'yes',
                         'default' => '',
                         'prefix_class' => 'expand-always-'
@@ -252,11 +252,11 @@ class Cart extends Base{
         $this->add_control(
                 'see_hover',
                 [
-                        'label' => __( 'Show Hover', 'ultraaddons' ),
-                        'description' => __( 'Only for Admin Screen. When user want to apply design on Cart items.', 'ultraaddons' ),
+                        'label' => __( 'Show Hover', 'ultraaddons-elementor-lite' ),
+                        'description' => __( 'Only for Admin Screen. When user want to apply design on Cart items.', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SWITCHER,
-                        'label_on' => __( 'Show', 'ultraaddons' ),
-                        'label_off' => __( 'Hide', 'ultraaddons' ),
+                        'label_on' => __( 'Show', 'ultraaddons-elementor-lite' ),
+                        'label_off' => __( 'Hide', 'ultraaddons-elementor-lite' ),
                         'return_value' => 'yes',
                         'default' => '',
                         'prefix_class' => 'see-hover-in-admin-',
@@ -270,7 +270,7 @@ class Cart extends Base{
         $this->add_responsive_control(
                 'item_box_space',
                 [
-                        'label' => __( 'Item Box Spacing', 'ultraaddons' ),
+                        'label' => __( 'Item Box Spacing', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SLIDER,
                         'default' => [
                                 'size' => 30,
@@ -291,7 +291,7 @@ class Cart extends Base{
         $this->add_responsive_control(
                 'item_box_width',
                 [
-                        'label' => __( 'Item Box Width', 'ultraaddons' ),
+                        'label' => __( 'Item Box Width', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SLIDER,
                         'default' => [
                                 'size' => 400,
@@ -323,7 +323,7 @@ class Cart extends Base{
             $this->start_controls_section(
                     'general_style',
                     [
-                            'label' => __( 'General', 'ultraaddons' ),
+                            'label' => __( 'General', 'ultraaddons-elementor-lite' ),
                             'tab' => Controls_Manager::TAB_STYLE,
                     ]
             );
@@ -332,7 +332,7 @@ class Cart extends Base{
             $this->add_control(
                     'wrapper_bg_color',
                     [
-                            'label'     => __( 'Background', 'ultraaddons' ),
+                            'label'     => __( 'Background', 'ultraaddons-elementor-lite' ),
                             'type'      => Controls_Manager::COLOR,
                             'selectors' => [
                                     '{{WRAPPER}} .ultraaddons-cart-wrapper ul.site-elementor-cart' => 'background-color: {{VALUE}}',
@@ -343,7 +343,7 @@ class Cart extends Base{
             $this->add_responsive_control(
                     'wrapper_padding',
                     [
-                            'label' => __( 'Padding', 'ultraaddons' ),
+                            'label' => __( 'Padding', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => [ 'px', '%' ],
                             'default'   => [
@@ -370,7 +370,7 @@ class Cart extends Base{
             $this->start_controls_section(
                     'icon_style',
                     [
-                            'label' => __( 'Cart Icon', 'ultraaddons' ),
+                            'label' => __( 'Cart Icon', 'ultraaddons-elementor-lite' ),
                             'tab' => Controls_Manager::TAB_STYLE,
                     ]
             );
@@ -379,7 +379,7 @@ class Cart extends Base{
             $this->add_control(
                     'icon_color',
                     [
-                            'label'     => __( 'Color', 'ultraaddons' ),
+                            'label'     => __( 'Color', 'ultraaddons-elementor-lite' ),
                             'type'      => Controls_Manager::COLOR,
                             'selectors' => [
                                     '{{WRAPPER}} .ultraaddons-cart-wrapper .site-elementor-cart li.cart-link-li .icon-wrapper i' => 'color: {{VALUE}}',
@@ -391,7 +391,7 @@ class Cart extends Base{
             $this->add_control(
                     'icon_bg_color',
                     [
-                            'label'     => __( 'Background', 'ultraaddons' ),
+                            'label'     => __( 'Background', 'ultraaddons-elementor-lite' ),
                             'type'      => Controls_Manager::COLOR,
                             'default'   => 'transparent',
                             'selectors' => [
@@ -404,7 +404,7 @@ class Cart extends Base{
             $this->add_responsive_control(
                     'icon-padding',
                     [
-                            'label' => __( 'Padding', 'ultraaddons' ),
+                            'label' => __( 'Padding', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => [ 'px', '%' ],
                             'default'   => [
@@ -430,7 +430,7 @@ class Cart extends Base{
             $this->start_controls_section(
                     'label_style',
                     [
-                            'label' => __( 'Label', 'ultraaddons' ),
+                            'label' => __( 'Label', 'ultraaddons-elementor-lite' ),
                             'tab' => Controls_Manager::TAB_STYLE,
                     ]
             );
@@ -438,7 +438,7 @@ class Cart extends Base{
             $this->add_control(
                     'label_style_heading_1',
                     [
-                            'label' => __( 'Label', 'ultraaddons' ),
+                            'label' => __( 'Label', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::HEADING,
                     ]
             );
@@ -446,7 +446,7 @@ class Cart extends Base{
             $this->add_control(
                     'label_color',
                     [
-                            'label'     => __( 'Label Color', 'ultraaddons' ),
+                            'label'     => __( 'Label Color', 'ultraaddons-elementor-lite' ),
                             'type'      => Controls_Manager::COLOR,
                             'selectors' => [
                                     '{{WRAPPER}} .ultraaddons-cart-wrapper ul.site-elementor-cart li.cart-text-li' => 'color: {{VALUE}}',
@@ -457,7 +457,7 @@ class Cart extends Base{
             $this->add_control(
                     'label_bg_color',
                     [
-                            'label'     => __( 'Label Background Color', 'ultraaddons' ),
+                            'label'     => __( 'Label Background Color', 'ultraaddons-elementor-lite' ),
                             'type'      => Controls_Manager::COLOR,
                             'selectors' => [
                                     '{{WRAPPER}} .ultraaddons-cart-wrapper ul.site-elementor-cart li.cart-text-li' => 'background-color: {{VALUE}}',
@@ -477,7 +477,7 @@ class Cart extends Base{
             $this->add_responsive_control(
                     'label_padding',
                     [
-                            'label' => __( 'Label Padding', 'ultraaddons' ),
+                            'label' => __( 'Label Padding', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => [ 'px', '%' ],
                             'default'   => [
@@ -494,7 +494,7 @@ class Cart extends Base{
             $this->add_control(
                     'label_style_heading_2',
                     [
-                            'label' => __( 'Price', 'ultraaddons' ),
+                            'label' => __( 'Price', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::HEADING,
                             'separator' => 'before',
                     ]
@@ -503,7 +503,7 @@ class Cart extends Base{
             $this->add_control(
                     'price_color',
                     [
-                            'label'     => __( 'Price Color', 'ultraaddons' ),
+                            'label'     => __( 'Price Color', 'ultraaddons-elementor-lite' ),
                             'type'      => Controls_Manager::COLOR,
                             'selectors' => [
                                     '{{WRAPPER}} .ultraaddons-cart-wrapper .site-elementor-cart li.cart-link-li span.woocommerce-Price-amount.amount' => 'color: {{VALUE}}',
@@ -514,7 +514,7 @@ class Cart extends Base{
             $this->add_control(
                     'price_bg_color',
                     [
-                            'label'     => __( 'Price Background Color', 'ultraaddons' ),
+                            'label'     => __( 'Price Background Color', 'ultraaddons-elementor-lite' ),
                             'type'      => Controls_Manager::COLOR,
                             'default'   => '#13c392',
                             'selectors' => [
@@ -535,7 +535,7 @@ class Cart extends Base{
             $this->add_responsive_control(
                     'price_padding',
                     [
-                            'label' => __( 'Price Padding', 'ultraaddons' ),
+                            'label' => __( 'Price Padding', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => [ 'px', '%' ],
                             'default'   => [
@@ -552,7 +552,7 @@ class Cart extends Base{
             $this->add_control(
                     'label_style_heading_3',
                     [
-                            'label' => __( 'Quantity', 'ultraaddons' ),
+                            'label' => __( 'Quantity', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::HEADING,
                             'separator' => 'before',
                     ]
@@ -561,7 +561,7 @@ class Cart extends Base{
             $this->add_control(
                     'qty_color',
                     [
-                            'label'     => __( 'Quantity Color', 'ultraaddons' ),
+                            'label'     => __( 'Quantity Color', 'ultraaddons-elementor-lite' ),
                             'type'      => Controls_Manager::COLOR,
                             'selectors' => [
                                     '{{WRAPPER}} .ultraaddons-cart-wrapper .site-elementor-cart li.cart-link-li span.count' => 'color: {{VALUE}}',
@@ -572,7 +572,7 @@ class Cart extends Base{
             $this->add_control(
                     'qty_bg_color',
                     [
-                            'label'     => __( 'Quantity Background Color', 'ultraaddons' ),
+                            'label'     => __( 'Quantity Background Color', 'ultraaddons-elementor-lite' ),
                             'type'      => Controls_Manager::COLOR,
                             'selectors' => [
                                     '{{WRAPPER}} .ultraaddons-cart-wrapper .site-elementor-cart li.cart-link-li span.count' => 'background-color: {{VALUE}}',
@@ -592,7 +592,7 @@ class Cart extends Base{
             $this->add_responsive_control(
                     'qty_padding',
                     [
-                            'label' => __( 'Quantity Padding', 'ultraaddons' ),
+                            'label' => __( 'Quantity Padding', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => [ 'px', '%' ],
                             'default'   => [
@@ -609,10 +609,10 @@ class Cart extends Base{
             $this->add_control(
                     'hide_count',
                     [
-                            'label' => __( 'Hide Count Item', 'ultraaddons' ),
+                            'label' => __( 'Hide Count Item', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SWITCHER,
-                            'label_on' => __( 'Hide', 'ultraaddons' ),
-                            'label_off' => __( 'Show', 'ultraaddons' ),
+                            'label_on' => __( 'Hide', 'ultraaddons-elementor-lite' ),
+                            'label_off' => __( 'Show', 'ultraaddons-elementor-lite' ),
                             'return_value' => 'yes',
                             'default' => '',
                             'selectors' => [
@@ -634,7 +634,7 @@ class Cart extends Base{
             $this->start_controls_section(
                     'header_style',
                     [
-                            'label' => __( 'Header', 'ultraaddons' ),
+                            'label' => __( 'Header', 'ultraaddons-elementor-lite' ),
                             'tab' => Controls_Manager::TAB_STYLE,
                     ]
             );
@@ -642,19 +642,19 @@ class Cart extends Base{
             $this->add_responsive_control(
                     'cart_title_align',
                     [
-                            'label' => __( 'Alignment', 'ultraaddons' ),
+                            'label' => __( 'Alignment', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::CHOOSE,
                             'options' => [
                                     'left'    => [
-                                            'title' => __( 'Left', 'ultraaddons' ),
+                                            'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
                                             'icon' => 'eicon-text-align-left',
                                     ],
                                     'center' => [
-                                            'title' => __( 'Center', 'ultraaddons' ),
+                                            'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
                                             'icon' => 'eicon-text-align-center',
                                     ],
                                     'right' => [
-                                            'title' => __( 'Right', 'ultraaddons' ),
+                                            'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
                                             'icon' => 'eicon-text-align-right',
                                     ]
                             ],
@@ -667,7 +667,7 @@ class Cart extends Base{
             $this->add_control(
                     'title_color',
                     [
-                            'label'     => __( 'Color', 'ultraaddons' ),
+                            'label'     => __( 'Color', 'ultraaddons-elementor-lite' ),
                             'type'      => Controls_Manager::COLOR,
                             'selectors' => [
                                     '{{WRAPPER}} .widget_shopping_cart h2.widgettitle' => 'color: {{VALUE}}',

@@ -35,7 +35,7 @@ class Work_Hour extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua', 'work', 'hour', 'business'];
+        return [ 'ultraaddons-elementor-lite', 'ua', 'work', 'hour', 'business'];
     }
 	 protected function register_controls() {
         //For Content
@@ -55,22 +55,22 @@ class Work_Hour extends Base{
         $this->start_controls_section(
             'wh_content_tab',
             [
-                'label'     => esc_html__( 'Content', 'ultraaddons' ),
+                'label'     => esc_html__( 'Content', 'ultraaddons-elementor-lite' ),
             ]
         );
         $this->add_control(
 			'_ua_wh_title', [
-				'label' => __( 'Title', 'ultraaddons' ),
+				'label' => __( 'Title', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Office Hour' , 'ultraaddons' ),
+				'default' => __( 'Office Hour' , 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
 		 $this->add_control(
 			'_ua_wh_sub_title', [
-				'label' => __( 'Sub Title', 'ultraaddons' ),
+				'label' => __( 'Sub Title', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Add your work hour sub title' , 'ultraaddons' ),
+				'default' => __( 'Add your work hour sub title' , 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
@@ -78,35 +78,35 @@ class Work_Hour extends Base{
 		
 		$repeater->add_control(
 			'_ua_wh_day', [
-				'label' => __( 'Day', 'ultraaddons' ),
+				'label' => __( 'Day', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Monday' , 'ultraaddons' ),
+				'default' => __( 'Monday' , 'ultraaddons-elementor-lite' ),
 				'label_block' => false,
 			]
 		);
 		$repeater->add_control(
 			'_ua_wh_start_time', [
-				'label' => __( 'Start Time', 'ultraaddons' ),
+				'label' => __( 'Start Time', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( '08:00' , 'ultraaddons' ),
+				'default' => __( '08:00' , 'ultraaddons-elementor-lite' ),
 				'label_block' => false,
 			]
 		);
 		$repeater->add_control(
 			'_ua_wh_end_time', [
-				'label' => __( 'End Time', 'ultraaddons' ),
+				'label' => __( 'End Time', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( '19:00' , 'ultraaddons' ),
+				'default' => __( '19:00' , 'ultraaddons-elementor-lite' ),
 				'label_block' => false,
 			]
 		);
 		$repeater->add_control(
 			'_ua_wh_closed',
 			[
-				'label' => __( 'Closed?', 'ultraaddons' ),
+				'label' => __( 'Closed?', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'no',
 			]
@@ -114,10 +114,10 @@ class Work_Hour extends Base{
 		$repeater->add_control(
 			'_ua_wh_day_highlight',
 			[
-				'label' => __( 'Highlight?', 'ultraaddons' ),
+				'label' => __( 'Highlight?', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'no',
 			]
@@ -126,7 +126,7 @@ class Work_Hour extends Base{
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => '_ua_wh_list_shadow',
-				'label' => __( 'Highlight Day', 'ultraaddons' ),
+				'label' => __( 'Highlight Day', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} {{CURRENT_ITEM}}.ua-work-hours-row',
 				'condition' =>[
 					'_ua_wh_day_highlight' =>'yes'
@@ -135,7 +135,7 @@ class Work_Hour extends Base{
 		);
 		$repeater->add_control(
 			'_ua_wh_bg_color', [
-				'label' => __( 'Background Color', 'ultraaddons' ),
+				'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'=>'#ddd',
 				'selectors' => [
@@ -145,7 +145,7 @@ class Work_Hour extends Base{
         );
 		$repeater->add_control(
 			'_ua_wh_text_color', [
-				'label' => __( 'Text Color', 'ultraaddons' ),
+				'label' => __( 'Text Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} {{CURRENT_ITEM}}.ua-work-hours-row .ua-work-day' => 'color: {{VALUE}};',
@@ -157,30 +157,30 @@ class Work_Hour extends Base{
 		$this->add_control(
 			'_ua_wh_list',
 			[
-				'label' => __( 'Work Hour List', 'ultraaddons' ),
+				'label' => __( 'Work Hour List', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
-						'_ua_wh_day' => __( 'Monday', 'ultraaddons' ),
+						'_ua_wh_day' => __( 'Monday', 'ultraaddons-elementor-lite' ),
 					],
 					[
-						'_ua_wh_day' => __( 'Tuesday', 'ultraaddons' ),
+						'_ua_wh_day' => __( 'Tuesday', 'ultraaddons-elementor-lite' ),
 					],
 					[
-						'_ua_wh_day' => __( 'Wednesday', 'ultraaddons' ),
+						'_ua_wh_day' => __( 'Wednesday', 'ultraaddons-elementor-lite' ),
 					],
 					[
-						'_ua_wh_day' => __( 'Thursday', 'ultraaddons' ),
+						'_ua_wh_day' => __( 'Thursday', 'ultraaddons-elementor-lite' ),
 					],
 					[
-						'_ua_wh_day' => __( 'Friday', 'ultraaddons' ),
+						'_ua_wh_day' => __( 'Friday', 'ultraaddons-elementor-lite' ),
 					],
 					[
-						'_ua_wh_day' => __( 'Saturady', 'ultraaddons' ),
+						'_ua_wh_day' => __( 'Saturady', 'ultraaddons-elementor-lite' ),
 					],
 					[
-						'_ua_wh_day' => __( 'Sunday', 'ultraaddons' ),
+						'_ua_wh_day' => __( 'Sunday', 'ultraaddons-elementor-lite' ),
 					],
 				],
 				'title_field' => '{{{ _ua_wh_day }}}',
@@ -189,10 +189,10 @@ class Work_Hour extends Base{
 		$this->add_control(
 			'_ua_wh_day_format',
 			[
-				'label' => __( '24 Hours Format?', 'ultraaddons' ),
+				'label' => __( '24 Hours Format?', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'no',
 			]
@@ -206,7 +206,7 @@ class Work_Hour extends Base{
 		$this->start_controls_section(
             'wh_style',
             [
-                'label'     => esc_html__( 'Work Hours', 'ultraaddons' ),
+                'label'     => esc_html__( 'Work Hours', 'ultraaddons-elementor-lite' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -222,7 +222,7 @@ class Work_Hour extends Base{
 		
 		$this->add_control(
 			'wh_title_color', [
-				'label' => __( 'Title Color', 'ultraaddons' ),
+				'label' => __( 'Title Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'=>'#333',
 				'selectors' => [
@@ -233,7 +233,7 @@ class Work_Hour extends Base{
 		$this->add_responsive_control(
 			'_ua_wh_title_margin',
 			[
-				'label'       => esc_html__( 'Title Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Title Margin', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -251,23 +251,23 @@ class Work_Hour extends Base{
 		$this->add_responsive_control(
 			'_ua_wh_title_alignment',
 			[
-				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
+				'label' => esc_html__( 'Alignment', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'title' => esc_html__( 'Left', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'ultraaddons' ),
+						'title' => esc_html__( 'Center', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'title' => esc_html__( 'Right', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-right',
 					],
 					'justify' => [
-						'title' => esc_html__( 'justify', 'ultraaddons' ),
+						'title' => esc_html__( 'justify', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-justify',
 					],
 				],
@@ -288,7 +288,7 @@ class Work_Hour extends Base{
         );
 		$this->add_control(
 			'wh_sub_title_color', [
-				'label' => __( 'Sub Title Color', 'ultraaddons' ),
+				'label' => __( 'Sub Title Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'=>'#333',
 				'selectors' => [
@@ -299,7 +299,7 @@ class Work_Hour extends Base{
 		$this->add_responsive_control(
 			'_ua_wh_sub_title_margin',
 			[
-				'label'       => esc_html__( 'Sub Title Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Sub Title Margin', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -316,7 +316,7 @@ class Work_Hour extends Base{
 		);
 		$this->add_control(
 			'wh_content_color', [
-				'label' => __( 'Content Color', 'ultraaddons' ),
+				'label' => __( 'Content Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'=>'#333',
 				'selectors' => [
@@ -349,14 +349,14 @@ class Work_Hour extends Base{
 			Group_Control_Border::get_type(),
 			[
 				'name' => '_ua_wh_row_border',
-				'label' => __( 'Row Border', 'ultraaddons' ),
+				'label' => __( 'Row Border', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-work-hours-row',
 			]
 		);
 		$this->add_responsive_control(
 			'_ua_wh_row_margin',
 			[
-				'label'       => esc_html__( 'Row Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Row Margin', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -380,13 +380,13 @@ class Work_Hour extends Base{
 		$this->start_controls_section(
             'wh_box',
             [
-                'label'     => esc_html__( 'Box', 'ultraaddons' ),
+                'label'     => esc_html__( 'Box', 'ultraaddons-elementor-lite' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
 		$this->add_control(
 			'wh_box_bg', [
-				'label' => __( 'Box background Color', 'ultraaddons' ),
+				'label' => __( 'Box background Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ua-work-hours' => 'background-color: {{VALUE}};',
@@ -396,7 +396,7 @@ class Work_Hour extends Base{
 		$this->add_responsive_control(
 			'_ua_wh_box_radius',
 			[
-				'label'       => esc_html__( 'Box Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Box Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -413,7 +413,7 @@ class Work_Hour extends Base{
 		$this->add_responsive_control(
 			'_ua_wh_box_margin',
 			[
-				'label'       => esc_html__( 'Box Padding', 'ultraaddons' ),
+				'label'       => esc_html__( 'Box Padding', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -431,7 +431,7 @@ class Work_Hour extends Base{
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => '_ua_wh_box_shadow',
-				'label' => __( 'Box Shadow', 'ultraaddons' ),
+				'label' => __( 'Box Shadow', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-work-hours',
 			]
 		);
@@ -445,7 +445,7 @@ class Work_Hour extends Base{
 		$this->start_controls_section(
             'wh_row_style',
             [
-                'label'     => esc_html__( 'Row', 'ultraaddons' ),
+                'label'     => esc_html__( 'Row', 'ultraaddons-elementor-lite' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -458,7 +458,7 @@ class Work_Hour extends Base{
 		$this->start_controls_tab(
 			'style_normal_tab',
 			[
-				'label' => __( 'Normal', 'ultraaddons' ),
+				'label' => __( 'Normal', 'ultraaddons-elementor-lite' ),
 			]
 		);
 		
@@ -466,7 +466,7 @@ class Work_Hour extends Base{
 			Group_Control_Background::get_type(),
 				[
 					'name' => 'row_background',
-					'label' => __( 'Row Background', 'ultraaddons' ),
+					'label' => __( 'Row Background', 'ultraaddons-elementor-lite' ),
 					'types' => [ 'classic', 'gradient'],
 					'exclude' => [ 'image' ],
 					'selector' => '{{WRAPPER}} .ua-work-hours-row',
@@ -480,14 +480,14 @@ class Work_Hour extends Base{
 		$this->start_controls_tab(
 			'style_hover_tab',
 			[
-				'label' => __( 'Hover', 'ultraaddons' ),
+				'label' => __( 'Hover', 'ultraaddons-elementor-lite' ),
 			]
 		);
 		$this->add_group_control(
 		Group_Control_Background::get_type(),
 			[
 				'name' => 'row_background_hover',
-				'label' => __( 'Row Background', 'ultraaddons' ),
+				'label' => __( 'Row Background', 'ultraaddons-elementor-lite' ),
 				'types' => [ 'classic', 'gradient'],
 				'exclude' => [ 'image' ],
 				'selector' => '{{WRAPPER}} .ua-work-hours-row:hover',
@@ -495,7 +495,7 @@ class Work_Hour extends Base{
 		);
 		$this->add_control(
 			'_ua_row_hover_text_color', [
-				'label' => __( 'Text Color', 'ultraaddons' ),
+				'label' => __( 'Text Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-work-hours-row:hover' => 'color: {{VALUE}};',
@@ -514,7 +514,7 @@ class Work_Hour extends Base{
 		$this->start_controls_tab(
 			'style_odd_tab',
 			[
-				'label' => __( 'Odd', 'ultraaddons' ),
+				'label' => __( 'Odd', 'ultraaddons-elementor-lite' ),
 			]
 		);
 		
@@ -522,7 +522,7 @@ class Work_Hour extends Base{
 			Group_Control_Background::get_type(),
 				[
 					'name' => 'odd_row_background',
-					'label' => __( 'Row Background', 'ultraaddons' ),
+					'label' => __( 'Row Background', 'ultraaddons-elementor-lite' ),
 					'types' => [ 'classic', 'gradient'],
 					'exclude' => [ 'image' ],
 					'selector' => '{{WRAPPER}} .ua-work-hours-row.odd-row',
@@ -530,7 +530,7 @@ class Work_Hour extends Base{
 			);
 			$this->add_control(
 			'_ua_row_odd_text_color', [
-				'label' => __( 'Text Color', 'ultraaddons' ),
+				'label' => __( 'Text Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-work-hours-row.odd-row' => 'color: {{VALUE}};',
@@ -545,21 +545,21 @@ class Work_Hour extends Base{
 		$this->start_controls_tab(
 			'style_even_tab',
 			[
-				'label' => __( 'Even', 'ultraaddons' ),
+				'label' => __( 'Even', 'ultraaddons-elementor-lite' ),
 			]
 		);
 		$this->add_group_control(
 		Group_Control_Background::get_type(),
 			[
 				'name' => 'even_row_background',
-				'label' => __( 'Even Row Background', 'ultraaddons' ),
+				'label' => __( 'Even Row Background', 'ultraaddons-elementor-lite' ),
 				'types' => [ 'classic', 'gradient'],
 				'selector' => '{{WRAPPER}} .ua-work-hours-row.even-row',
 			]
 		);
 		$this->add_control(
 			'_ua_row_even_text_color', [
-				'label' => __( 'Text Color', 'ultraaddons' ),
+				'label' => __( 'Text Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-work-hours-row.even-row' => 'color: {{VALUE}};',

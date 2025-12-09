@@ -90,7 +90,7 @@ class Custom_Fonts{
 
     public static function font_group( $font_groups ){
         $font_group_key = self::$font_group_key;
-        $new_group[$font_group_key] = __( 'Custom Fonts - UltraAddons', 'ultraaddons' );
+        $new_group[$font_group_key] = __( 'Custom Fonts - UltraAddons', 'ultraaddons-elementor-lite' );
         $font_groups                   = $new_group + $font_groups;
         return $font_groups;
     }

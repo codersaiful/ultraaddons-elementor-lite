@@ -55,7 +55,7 @@ class ready extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'post', 'page title', 'title' ];
+        return [ 'ultraaddons-elementor-lite', 'post', 'page title', 'title' ];
     }
     
     
@@ -85,7 +85,7 @@ class ready extends Base{
         $this->start_controls_section(
             'general_content',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );

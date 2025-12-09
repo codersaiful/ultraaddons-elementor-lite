@@ -66,7 +66,7 @@ class Loader {
          * In that file, The Array's Each Item array formate like bellow:
          * ******************************
          * 'Button'=> [
-         *   'name'  => __( 'Button', 'ultraaddons' ),
+         *   'name'  => __( 'Button', 'ultraaddons-elementor-lite' ),
          *   ],
          * ******************************
          * 
@@ -252,7 +252,7 @@ class Loader {
 //            if( is_readable( $file ) ){
 //                include_once $file;
 //            }else{
-//                $error = esc_html__( "The file ( %s ) of [%s] Class is not founded.", 'ultraaddons' );
+//                $error = esc_html__( "The file ( %s ) of [%s] Class is not founded.", 'ultraaddons-elementor-lite' );
 //                $this->errors[$widget_key] = $error;
 //                //printf( $error, $file, $name );
 //            }
@@ -505,16 +505,16 @@ class Loader {
      * @since 1.0.0
      */
     public function add_categories( $elements_manager ) {
-        $elements_manager->add_category('ultraaddons', 
+        $elements_manager->add_category('ultraaddons-elementor-lite', 
                 [
-                    'title'     => esc_html__( 'UltraAddons', 'ultraaddons' ), 
+                    'title'     => esc_html__( 'UltraAddons', 'ultraaddons-elementor-lite' ), 
                     'icon'      => 'uicon-ultraaddons'
                 ]
         );
         
         $elements_manager->add_category('ultraaddons-wc', 
                 [
-                    'title'     => esc_html__( 'Ultra WooCommerce', 'ultraaddons' ), 
+                    'title'     => esc_html__( 'Ultra WooCommerce', 'ultraaddons-elementor-lite' ), 
                     'icon'      => 'uicon-ultraaddons'
                 ]
         );

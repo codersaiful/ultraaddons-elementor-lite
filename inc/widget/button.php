@@ -49,7 +49,7 @@ class Button extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons','ua', 'button', 'btn', 'hover','action' ];
+        return [ 'ultraaddons-elementor-lite','ua', 'button', 'btn', 'hover','action' ];
     }
     
     
@@ -77,23 +77,23 @@ class Button extends Base{
         $this->start_controls_section(
             'general_content',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
         $this->add_control(
 			'_ua_button',
 			[
-				'label' => __( 'Button Text', 'ultraaddons' ),
+				'label' => __( 'Button Text', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Ultra Addons', 'ultraaddons' ),
+				'default' => __( 'Ultra Addons', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
         $this->add_control(
 			'_ua_btn_animation',
 			[
-				'label' => esc_html__( 'Select Animation', 'ultraaddons' ),
+				'label' => esc_html__( 'Select Animation', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => ultraaddons_button_hover(),
 				'default' => 'none',
@@ -102,7 +102,7 @@ class Button extends Base{
         $this->add_control(
 			'selected_icon',
 			[
-				'label' => esc_html__( 'Icon', 'ultraaddons' ),
+				'label' => esc_html__( 'Icon', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::ICONS,
 				'fa4compatibility' => 'icon',
 				'skin' => 'inline',
@@ -112,15 +112,15 @@ class Button extends Base{
         $this->add_responsive_control(
 			'_icon_position',
 			[
-				'label' => esc_html__( 'Icon Position', 'ultraaddons' ),
+				'label' => esc_html__( 'Icon Position', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'title' => esc_html__( 'Left', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-arrow-left',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'title' => esc_html__( 'Right', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-arrow-right',
 					],
 				
@@ -132,7 +132,7 @@ class Button extends Base{
         $this->add_control(
 			'_ua_button_link',
 			[
-				'label'       => __( 'Button URL', 'ultraaddons' ),
+				'label'       => __( 'Button URL', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::URL,
 				'dynamic'     => [
 					'active' => true,
@@ -152,26 +152,26 @@ class Button extends Base{
         $this->start_controls_section(
             'btn_style',
             [
-                'label'     => esc_html__( 'Style', 'ultraaddons' ),
+                'label'     => esc_html__( 'Style', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_responsive_control(
 			'_btn_alignment',
 			[
-				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
+				'label' => esc_html__( 'Alignment', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'start' => [
-						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'title' => esc_html__( 'Left', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'ultraaddons' ),
+						'title' => esc_html__( 'Center', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-center',
 					],
 					'end' => [
-						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'title' => esc_html__( 'Right', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-right',
 					],
 				],
@@ -184,7 +184,7 @@ class Button extends Base{
         $this->add_control(
 			'icon_size',
 			[
-				'label' => esc_html__( 'Icon Size', 'ultraaddons' ),
+				'label' => esc_html__( 'Icon Size', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%' ],
 				'range' => [
@@ -211,7 +211,7 @@ class Button extends Base{
         $this->add_control(
 			'icon_space',
 			[
-				'label' => esc_html__( 'Icon Space', 'ultraaddons' ),
+				'label' => esc_html__( 'Icon Space', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%' ],
 				'range' => [
@@ -237,7 +237,7 @@ class Button extends Base{
         $this->add_control(
 			'icon_space_right',
 			[
-				'label' => esc_html__( 'Icon Space', 'ultraaddons' ),
+				'label' => esc_html__( 'Icon Space', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%' ],
 				'range' => [
@@ -267,12 +267,12 @@ class Button extends Base{
         $this->start_controls_tab(
 			'btn_normal_tab',
 			[
-				'label' => esc_html__( 'Normal', 'ultraaddons' ),
+				'label' => esc_html__( 'Normal', 'ultraaddons-elementor-lite' ),
 			]
 		);
         $this->add_control(
 			'_btn_bg_color', [
-				'label' => __( 'Button Background', 'ultraaddons' ),
+				'label' => __( 'Button Background', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-btn' => 'background-color: {{VALUE}};',
@@ -283,7 +283,7 @@ class Button extends Base{
 			Group_Control_Border::get_type(),
 			[
 				'name' => '_btn_border',
-				'label' => esc_html__( 'Button Border', 'ultraaddons' ),
+				'label' => esc_html__( 'Button Border', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-btn',
 			]
 		);
@@ -291,13 +291,13 @@ class Button extends Base{
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'box_shadow',
-				'label' => esc_html__( 'Button Shadow', 'ultraaddons' ),
+				'label' => esc_html__( 'Button Shadow', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-btn',
 			]
 		);
         $this->add_control(
 			'_btn_text_color', [
-				'label' => __( 'Button Text Color', 'ultraaddons' ),
+				'label' => __( 'Button Text Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-btn' => 'color: {{VALUE}};',
@@ -317,7 +317,7 @@ class Button extends Base{
         $this->add_responsive_control(
 			'_btn_padding',
 			[
-				'label'       => esc_html__( 'Button Padding', 'ultraaddons' ),
+				'label'       => esc_html__( 'Button Padding', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -334,7 +334,7 @@ class Button extends Base{
         $this->add_responsive_control(
 			'_btn_radius',
 			[
-				'label'       => esc_html__( 'Button Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Button Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -362,7 +362,7 @@ class Button extends Base{
 		);
         $this->add_control(
 			'_btn_bg_hover_bg', [
-				'label' => __( 'Hover Background', 'ultraaddons' ),
+				'label' => __( 'Hover Background', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'condition'=>['_ua_btn_animation!'=>'none'],
 				'selectors' => [
@@ -372,7 +372,7 @@ class Button extends Base{
         );
 		$this->add_control(
 			'_btn_bg_hover_bg_normal', [
-				'label' => __( 'Hover Background', 'ultraaddons' ),
+				'label' => __( 'Hover Background', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'default' =>'#000000',
 				'condition'=>['_ua_btn_animation'=>'none'],
@@ -385,14 +385,14 @@ class Button extends Base{
 			Group_Control_Border::get_type(),
 			[
 				'name' => '_btn_hover_border',
-				'label' => esc_html__( 'Button Border', 'ultraaddons' ),
+				'label' => esc_html__( 'Button Border', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-btn:hover',
 			]
 		);
 
 		$this->add_control(
 			'_btn_text_hover_color', [
-				'label' => __( 'Button Text Color', 'ultraaddons' ),
+				'label' => __( 'Button Text Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-btn:hover' => 'color: {{VALUE}};',

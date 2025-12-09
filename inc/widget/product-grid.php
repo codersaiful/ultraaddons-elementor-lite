@@ -40,7 +40,7 @@ class Product_Grid extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua', 'products', 'product', 'grid', 'woo','wc' ];
+        return [ 'ultraaddons-elementor-lite', 'ua', 'products', 'product', 'grid', 'woo','wc' ];
     }
 	
 	
@@ -73,14 +73,14 @@ class Product_Grid extends Base{
         $this->start_controls_section(
             'query_content',
             [
-                'label'     => esc_html__( 'Query Settings', 'ultraaddons' ),
+                'label'     => esc_html__( 'Query Settings', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
 		$this->add_control(
 			'_ua_text_truncate',
 			[
-				'label' => __( 'Description Length', 'ultraaddons' ),
+				'label' => __( 'Description Length', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 5,
 				'max' => 300,
@@ -91,7 +91,7 @@ class Product_Grid extends Base{
 		$this->add_control(
 			'_ua_post_per_page',
 			[
-				'label' => __( 'Show Products', 'ultraaddons' ),
+				'label' => __( 'Show Products', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 1,
 				'max' => 300,
@@ -103,7 +103,7 @@ class Product_Grid extends Base{
 		$this->add_control(
 			'_ua_post_page_number',
 			[
-				'label' => __( 'Page Number', 'ultraaddons' ),
+				'label' => __( 'Page Number', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 1,
 				//'max' => 300,
@@ -115,7 +115,7 @@ class Product_Grid extends Base{
 		$this->add_control(
 			'_ua_product_order',
 			[
-				'label' => esc_html__( 'Order', 'ultraaddons' ),
+				'label' => esc_html__( 'Order', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'asc' => 'Asc',
@@ -127,7 +127,7 @@ class Product_Grid extends Base{
 		$this->add_control(
 			'_ua_product_orderby',
 			[
-				'label' => esc_html__( 'Orderby', 'ultraaddons' ),
+				'label' => esc_html__( 'Orderby', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'none' => 'None',
@@ -145,7 +145,7 @@ class Product_Grid extends Base{
 		$this->add_control(
             'cat_ids',
             [
-                'label' => esc_html__( 'Select category', 'ultraaddons' ),
+                'label' => esc_html__( 'Select category', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::SELECT2,
                 'options' => $this->product_tax_options(),
                 'multiple' => 'true'
@@ -156,7 +156,7 @@ class Product_Grid extends Base{
 		$this->add_control(
             'tag_ids',
             [
-                'label' => esc_html__( 'Select Tag', 'ultraaddons' ),
+                'label' => esc_html__( 'Select Tag', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::SELECT2,
                 'options' => $this->product_tax_options( 'product_tag' ),
                 'multiple' => 'true'
@@ -167,9 +167,9 @@ class Product_Grid extends Base{
 		$this->add_control(
 			'_ua_query_post_in',
 			[
-				'label' => __( 'Product by included IDs', 'ultraaddons' ),
+				'label' => __( 'Product by included IDs', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXTAREA,
-				'placeholder' => __( '1,2,3,4,20,33', 'ultraaddons' ),
+				'placeholder' => __( '1,2,3,4,20,33', 'ultraaddons-elementor-lite' ),
 				'description' => __('Add multiple ids by comma separated.'),
 				'label_block' => true,
 			]
@@ -177,9 +177,9 @@ class Product_Grid extends Base{
 		$this->add_control(
 			'_ua_query_post_not_in',
 			[
-				'label' => __( 'Product by excluded IDs', 'ultraaddons' ),
+				'label' => __( 'Product by excluded IDs', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXTAREA,
-				'placeholder' => __( '1,2,3,4,20,33', 'ultraaddons' ),
+				'placeholder' => __( '1,2,3,4,20,33', 'ultraaddons-elementor-lite' ),
 				'description' => __('Add multiple ids by comma separated.'),
 				'label_block' => true,
 			]
@@ -195,14 +195,14 @@ class Product_Grid extends Base{
 		$this->start_controls_section(
 		'_ua_card_content_settings_tab',
             [
-                'label'     => esc_html__( 'Grid Settings', 'ultraaddons' ),
+                'label'     => esc_html__( 'Grid Settings', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
 		$this->add_control(
 			'_ua_col',
 			[
-				'label' => esc_html__( 'Column', 'ultraaddons' ),
+				'label' => esc_html__( 'Column', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'1' => '1 Column',
@@ -217,10 +217,10 @@ class Product_Grid extends Base{
 		$this->add_control(
 			'_ua_card_direction',
 			[
-				'label' => __( 'Direction', 'ultraaddons' ),
+				'label' => __( 'Direction', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Row', 'ultraaddons' ),
-				'label_off' => __( 'Col', 'ultraaddons' ),
+				'label_on' => __( 'Row', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'Col', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'no',
 			]
@@ -229,15 +229,15 @@ class Product_Grid extends Base{
 		$this->add_responsive_control(
 			'_ua_card_order',
 			[
-				'label' => esc_html__( 'Column Order', 'ultraaddons' ),
+				'label' => esc_html__( 'Column Order', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'title' => esc_html__( 'Left', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-arrow-left',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'title' => esc_html__( 'Right', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-arrow-right',
 					],
 				
@@ -251,19 +251,19 @@ class Product_Grid extends Base{
 		$this->add_responsive_control(
 			'_ua_card_justify_content',
 			[
-				'label' => esc_html__( 'Justify Content', 'ultraaddons' ),
+				'label' => esc_html__( 'Justify Content', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'start' => [
-						'title' => esc_html__( 'Top', 'ultraaddons' ),
+						'title' => esc_html__( 'Top', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-v-align-top',
 					],
 					'center' => [
-						'title' => esc_html__( 'Middle', 'ultraaddons' ),
+						'title' => esc_html__( 'Middle', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-v-align-middle',
 					],
 					'end' => [
-						'title' => esc_html__( 'Bottom', 'ultraaddons' ),
+						'title' => esc_html__( 'Bottom', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-v-align-bottom',
 					],
 				
@@ -288,14 +288,14 @@ class Product_Grid extends Base{
         $this->start_controls_section(
             'general_style',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
 	
 		$this->add_control(
 			'_ua_title_color', [
-				'label' => __( 'Title Color', 'ultraaddons' ),
+				'label' => __( 'Title Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .pg .ua-product-title' => 'color: {{VALUE}};',
@@ -314,7 +314,7 @@ class Product_Grid extends Base{
         $this->add_responsive_control(
 			'_ua_title_margin',
 			[
-				'label'       => esc_html__( 'Title Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Title Margin', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -331,7 +331,7 @@ class Product_Grid extends Base{
 
 		$this->add_control(
 			'_ua_product_price_color', [
-				'label' => __( 'Price Color', 'ultraaddons' ),
+				'label' => __( 'Price Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .pg .ua-product-price' => 'color: {{VALUE}};',
@@ -352,7 +352,7 @@ class Product_Grid extends Base{
 	
 		$this->add_control(
 			'_ua_content_color', [
-				'label' => __( 'Description Color', 'ultraaddons' ),
+				'label' => __( 'Description Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .pg .ua-product-details p' => 'color: {{VALUE}};',
@@ -373,7 +373,7 @@ class Product_Grid extends Base{
 		$this->add_responsive_control(
 			'_ua_back_desc_margin',
 			[
-				'label'       => esc_html__( 'Description Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Description Margin', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -390,7 +390,7 @@ class Product_Grid extends Base{
 		$this->add_responsive_control(
 			'_ua_box_padding',
 			[
-				'label'       => esc_html__( 'Description Padding', 'ultraaddons' ),
+				'label'       => esc_html__( 'Description Padding', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', 'em' ],
 				'placeholder' => [
@@ -407,7 +407,7 @@ class Product_Grid extends Base{
 	
 		$this->add_control(
 			'_ua_cat_color', [
-				'label' => __( 'Category Color', 'ultraaddons' ),
+				'label' => __( 'Category Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'	=> '#a1a1a1',
 				'selectors' => [
@@ -429,7 +429,7 @@ class Product_Grid extends Base{
 		$this->add_control(
 			'_ua_front_title_tag',
 			[
-				'label' => esc_html__( 'Select Title Tag', 'ultraaddons' ),
+				'label' => esc_html__( 'Select Title Tag', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'h1' => 'H1',
@@ -447,23 +447,23 @@ class Product_Grid extends Base{
 		$this->add_responsive_control(
 			'_ua_card_text_alignment',
 			[
-				'label' => esc_html__( 'Text Alignment', 'ultraaddons' ),
+				'label' => esc_html__( 'Text Alignment', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'title' => esc_html__( 'Left', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'ultraaddons' ),
+						'title' => esc_html__( 'Center', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'title' => esc_html__( 'Right', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-right',
 					],
 					'justify' => [
-						'title' => esc_html__( 'justify', 'ultraaddons' ),
+						'title' => esc_html__( 'justify', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-justify',
 					],
 				],
@@ -481,13 +481,13 @@ class Product_Grid extends Base{
         $this->start_controls_section(
             '_ua_product_box_style',
             [
-                'label'     => esc_html__( 'Box', 'ultraaddons' ),
+                'label'     => esc_html__( 'Box', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
 		$this->add_control(
 			'_ua_box_bg', [
-				'label' => __( 'Box Background', 'ultraaddons' ),
+				'label' => __( 'Box Background', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
                 'default'   => '#fff',
 				'selectors' => [
@@ -498,7 +498,7 @@ class Product_Grid extends Base{
 		$this->add_responsive_control(
 			'_ua_box_radius',
 			[
-				'label'       => esc_html__( 'Box Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Box Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -517,7 +517,7 @@ class Product_Grid extends Base{
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'box_shadow',
-				'label' => __( 'Box Shadow', 'ultraaddons' ),
+				'label' => __( 'Box Shadow', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .pg .ua-product-card',
 			]
 		);
@@ -525,7 +525,7 @@ class Product_Grid extends Base{
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'box_border',
-				'label' => esc_html__( 'Border', 'ultraaddons' ),
+				'label' => esc_html__( 'Border', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .pg .ua-product-card',
 			]
 		);
@@ -533,7 +533,7 @@ class Product_Grid extends Base{
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'footer_line_border',
-				'label' => esc_html__( 'Footer Border', 'ultraaddons' ),
+				'label' => esc_html__( 'Footer Border', 'ultraaddons-elementor-lite' ),
 				'show_label'=>true,
 				'selector' => '{{WRAPPER}} .pg .ua-product-bottom-details',
 			]
@@ -548,7 +548,7 @@ class Product_Grid extends Base{
 		$this->start_controls_section(
             'cart_btn_style',
             [
-                'label'     => esc_html__( 'Cart Button', 'ultraaddons' ),
+                'label'     => esc_html__( 'Cart Button', 'ultraaddons-elementor-lite' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -560,12 +560,12 @@ class Product_Grid extends Base{
         $this->start_controls_tab(
 			'btn_normal_tab',
 			[
-				'label' => esc_html__( 'Normal', 'ultraaddons' ),
+				'label' => esc_html__( 'Normal', 'ultraaddons-elementor-lite' ),
 			]
 		);
         $this->add_control(
 			'_btn_bg_color', [
-				'label' => __( 'Button Background', 'ultraaddons' ),
+				'label' => __( 'Button Background', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .add-card.button' => 'background-color: {{VALUE}};',
@@ -576,14 +576,14 @@ class Product_Grid extends Base{
 			Group_Control_Border::get_type(),
 			[
 				'name' => '_btn_border',
-				'label' => esc_html__( 'Button Border', 'ultraaddons' ),
+				'label' => esc_html__( 'Button Border', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .add-card.button',
 			]
 		);
 	
         $this->add_control(
 			'_btn_text_color', [
-				'label' => __( 'Button Text Color', 'ultraaddons' ),
+				'label' => __( 'Button Text Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .add-card.button' => 'color: {{VALUE}};',
@@ -603,7 +603,7 @@ class Product_Grid extends Base{
         $this->add_responsive_control(
 			'_btn_padding',
 			[
-				'label'       => esc_html__( 'Button Padding', 'ultraaddons' ),
+				'label'       => esc_html__( 'Button Padding', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -620,7 +620,7 @@ class Product_Grid extends Base{
         $this->add_responsive_control(
 			'_btn_radius',
 			[
-				'label'       => esc_html__( 'Button Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Button Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -647,7 +647,7 @@ class Product_Grid extends Base{
 		);
         $this->add_control(
 			'_btn_bg_hover_bg', [
-				'label' => __( 'Hover Background', 'ultraaddons' ),
+				'label' => __( 'Hover Background', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .add-card.button:hover' => 'background: {{VALUE}};',
@@ -656,7 +656,7 @@ class Product_Grid extends Base{
         );
 		$this->add_control(
 			'_btn_text_hover_color', [
-				'label' => __( 'Button Text Color', 'ultraaddons' ),
+				'label' => __( 'Button Text Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .add-card.button:hover' => 'color: {{VALUE}};',
@@ -679,14 +679,14 @@ class Product_Grid extends Base{
         $this->start_controls_section(
             'sale_flash_style',
             [
-                'label'     => esc_html__( 'Sale Flash', 'ultraaddons' ),
+                'label'     => esc_html__( 'Sale Flash', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
 		
 		$this->add_control(
 			'_ua_sale_flash_bg', [
-				'label' => __( 'Flash Background', 'ultraaddons' ),
+				'label' => __( 'Flash Background', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-badge .ua-onsale' => 'background-color: {{VALUE}};',
@@ -696,7 +696,7 @@ class Product_Grid extends Base{
         );
 		$this->add_control(
 			'_ua_flash_color', [
-				'label' => __( 'Flash Text Color', 'ultraaddons' ),
+				'label' => __( 'Flash Text Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-badge .ua-onsale' => 'color: {{VALUE}};',
@@ -716,7 +716,7 @@ class Product_Grid extends Base{
 		$this->add_responsive_control(
 			'_ua_flash_margin',
 			[
-				'label'       => esc_html__( 'Flash Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Flash Margin', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -733,7 +733,7 @@ class Product_Grid extends Base{
 		$this->add_responsive_control(
 			'_ua_flash_padding',
 			[
-				'label'       => esc_html__( 'Flash Padding', 'ultraaddons' ),
+				'label'       => esc_html__( 'Flash Padding', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -750,7 +750,7 @@ class Product_Grid extends Base{
 		$this->add_responsive_control(
 			'_ua_flash_radius',
 			[
-				'label'       => esc_html__( 'Flash Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Flash Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -775,7 +775,7 @@ class Product_Grid extends Base{
         $this->start_controls_section(
             'pagination_style',
             [
-                'label'     => esc_html__( 'Pagination', 'ultraaddons' ),
+                'label'     => esc_html__( 'Pagination', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -788,12 +788,12 @@ class Product_Grid extends Base{
 		$this->start_controls_tab(
 			'pagi_normal_tab',
 			[
-				'label' => __( 'Normal', 'ultraaddons' ),
+				'label' => __( 'Normal', 'ultraaddons-elementor-lite' ),
 			]
 		);
 		$this->add_control(
 			'_ua_pagi_bg', [
-				'label' => __( 'Background', 'ultraaddons' ),
+				'label' => __( 'Background', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-pagination .page-numbers' => 'background-color: {{VALUE}};',
@@ -804,7 +804,7 @@ class Product_Grid extends Base{
 
 		$this->add_control(
 			'_ua_pagi_color', [
-				'label' => __( 'Text Color', 'ultraaddons' ),
+				'label' => __( 'Text Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-pagination .page-numbers' => 'color: {{VALUE}};',
@@ -817,7 +817,7 @@ class Product_Grid extends Base{
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'border',
-				'label' => esc_html__( 'Border', 'ultraaddons' ),
+				'label' => esc_html__( 'Border', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-pagination .page-numbers',
 			]
 		);
@@ -825,14 +825,14 @@ class Product_Grid extends Base{
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'pagi_shadow',
-				'label' => __( 'Box Shadow', 'ultraaddons' ),
+				'label' => __( 'Box Shadow', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-pagination .page-numbers',
 			]
 		);
 		$this->add_responsive_control(
 			'_ua_pagi_margin',
 			[
-				'label'       => esc_html__( 'Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Margin', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -849,7 +849,7 @@ class Product_Grid extends Base{
 		$this->add_responsive_control(
 			'_ua_pagi_number_margin',
 			[
-				'label'       => esc_html__( 'Number Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Number Margin', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -866,7 +866,7 @@ class Product_Grid extends Base{
 		$this->add_responsive_control(
 			'_ua_pagi_padding',
 			[
-				'label'       => esc_html__( 'Padding', 'ultraaddons' ),
+				'label'       => esc_html__( 'Padding', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -883,7 +883,7 @@ class Product_Grid extends Base{
 		$this->add_responsive_control(
 			'_ua_pagi_radius',
 			[
-				'label'       => esc_html__( 'Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -904,13 +904,13 @@ class Product_Grid extends Base{
 		$this->start_controls_tab(
 			'pagi_btn_hover_tabs',
 			[
-				'label' => __( 'Hover', 'ultraaddons' ),
+				'label' => __( 'Hover', 'ultraaddons-elementor-lite' ),
 			]
 		);
 
         $this->add_control(
 			'_ua_pagi_hover_bg', [
-				'label' => __( 'Background Color', 'ultraaddons' ),
+				'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-pagination a.page-numbers:hover' => 'background: {{VALUE}};',
@@ -920,7 +920,7 @@ class Product_Grid extends Base{
 	
 		$this->add_control(
 			'_ua_pagi_hover_color', [
-				'label' => __( 'Text Color', 'ultraaddons' ),
+				'label' => __( 'Text Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-pagination a.page-numbers:hover' => 'color: {{VALUE}};',
@@ -937,7 +937,7 @@ class Product_Grid extends Base{
 		);
         $this->add_control(
 			'_ua_pagi_active_bg', [
-				'label' => __( 'Background Color', 'ultraaddons' ),
+				'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}}  .ua-pagination .page-numbers.current' => 'background: {{VALUE}};',
@@ -947,7 +947,7 @@ class Product_Grid extends Base{
 	
 		$this->add_control(
 			'_ua_pagi_active_color', [
-				'label' => __( 'Text Color', 'ultraaddons' ),
+				'label' => __( 'Text Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}}  .ua-pagination .page-numbers.current' => 'color: {{VALUE}};',
@@ -965,7 +965,7 @@ class Product_Grid extends Base{
 
 		//Intrigate with WooCommerce
         if( ! class_exists( 'WooCommerce' ) ){
-            echo "<div class='ua-alert'>" . esc_html__( "WooCommerce is not Activated.", 'ultraaddons' ) . "</div>";
+            echo "<div class='ua-alert'>" . esc_html__( "WooCommerce is not Activated.", 'ultraaddons-elementor-lite' ) . "</div>";
 			return;
         }
 		$settings 	= $this->get_settings_for_display();
@@ -1053,7 +1053,7 @@ class Product_Grid extends Base{
             <div class="ua-badge">
                 <?php
                 echo apply_filters( 'woocommerce_sale_flash', '<span class="ua-onsale">' 
-                . esc_html__( 'Sale!', 'ultraaddons' ) . '</span>', $product );
+                . esc_html__( 'Sale!', 'ultraaddons-elementor-lite' ) . '</span>', $product );
                 ?>
             </div>
             <?php endif; ?>
@@ -1090,7 +1090,7 @@ class Product_Grid extends Base{
 							if ( 'yes'!=$settings['_ua_card_direction'] ):
 							?>
 								<span>
-									<?php echo esc_html__('ADD TO CART', 'ultraaddons'); ?>
+									<?php echo esc_html__('ADD TO CART', 'ultraaddons-elementor-lite'); ?>
 								</span>
 							<?php endif; ?>
                         </a>
@@ -1124,7 +1124,7 @@ class Product_Grid extends Base{
     </nav> 
      <?php
 	} else {
-		 echo "<div class='ua-alert'>" . esc_html__( "No products found!", 'ultraaddons' ) . "</div>";
+		 echo "<div class='ua-alert'>" . esc_html__( "No products found!", 'ultraaddons-elementor-lite' ) . "</div>";
 	}
 	wp_reset_postdata();
     ?>

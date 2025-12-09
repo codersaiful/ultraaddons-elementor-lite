@@ -36,7 +36,7 @@
     },
     {
       "uid": "5ee08732c65fe43d29e08c17faad66b1",
-      "css": "ultraaddons",
+      "css": 'ultraaddons-elementor-lite',
       "code": 59392,
       "src": "custom_icons",
       "selected": true,
@@ -45,7 +45,7 @@
         "width": 1000
       },
       "search": [
-        "ultraaddons"
+        'ultraaddons-elementor-lite'
       ]
     },
     {

@@ -26,7 +26,7 @@ class Post_Title extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons','ua', 'post', 'page title', 'title' ];
+        return [ 'ultraaddons-elementor-lite','ua', 'post', 'page title', 'title' ];
     }
     
     
@@ -82,7 +82,7 @@ class Post_Title extends Base{
         $this->start_controls_section(
             'general_content',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -90,7 +90,7 @@ class Post_Title extends Base{
         $this->add_control(
             'post_id',
                 [
-                    'label'         => esc_html__( 'Post ID (Optional)', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Post ID (Optional)', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::NUMBER,
                     'default'       => false,
                     'label_block'   => false,
@@ -101,19 +101,19 @@ class Post_Title extends Base{
         $this->add_control(
             'heading_alignment',
                 [
-                    'label'         => esc_html__( 'Heading', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Heading', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::CHOOSE,
                     'options' => [
                         'left' => [
-                                'title' => __( 'Left', 'ultraaddons' ),
+                                'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
                                 'icon' => 'eicon-text-align-left',
                         ],
                         'center' => [
-                                'title' => __( 'Center', 'ultraaddons' ),
+                                'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
                                 'icon' => 'eicon-text-align-center',
                         ],
                         'right' => [
-                                'title' => __( 'Right', 'ultraaddons' ),
+                                'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
                                 'icon' => 'eicon-text-align-right',
                         ],
                     ],
@@ -131,7 +131,7 @@ class Post_Title extends Base{
         $this->start_controls_section(
             'general_style',
             [
-                'label'     => esc_html__( 'Style', 'ultraaddons' ),
+                'label'     => esc_html__( 'Style', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -140,7 +140,7 @@ class Post_Title extends Base{
         $this->add_control(
             'heading_color',
             [
-                'label'     => __( 'Color', 'ultraaddons' ),
+                'label'     => __( 'Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'global' => [
                     'default' => Global_Colors::COLOR_PRIMARY,

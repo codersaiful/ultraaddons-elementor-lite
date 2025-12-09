@@ -25,7 +25,7 @@ class Search extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua', 'search', 'find' ];
+        return [ 'ultraaddons-elementor-lite', 'ua', 'search', 'find' ];
     }
     
     
@@ -59,20 +59,20 @@ class Search extends Base{
         $this->start_controls_section(
                 'general',
                 [
-                        'label' => __( 'General', 'ultraaddons' ),
+                        'label' => __( 'General', 'ultraaddons-elementor-lite' ),
                 ]
         );
         
         $this->add_control(
                 'type',
                 [
-                        'label'        => __( 'Type', 'ultraaddons' ),
+                        'label'        => __( 'Type', 'ultraaddons-elementor-lite' ),
                         'type'         => Controls_Manager::SELECT,
                         'options'      => [
-                            'wp'        => __( 'Default Search', 'ultraaddons' ),
-                            'wc'        => __( 'WooCommerce Product Search', 'ultraaddons' ),
-                            'form_one'    => __( 'Search One', 'ultraaddons' ),
-                            'form_two'    => __( 'Search Two', 'ultraaddons' ),
+                            'wp'        => __( 'Default Search', 'ultraaddons-elementor-lite' ),
+                            'wc'        => __( 'WooCommerce Product Search', 'ultraaddons-elementor-lite' ),
+                            'form_one'    => __( 'Search One', 'ultraaddons-elementor-lite' ),
+                            'form_two'    => __( 'Search Two', 'ultraaddons-elementor-lite' ),
                         ],
                         'default'      => 'wp',
                         'save_default' => true,
@@ -91,7 +91,7 @@ class Search extends Base{
             $this->start_controls_section(
                     'general_style',
                     [
-                            'label' => __( 'Input', 'ultraaddons' ),
+                            'label' => __( 'Input', 'ultraaddons-elementor-lite' ),
                             'tab' => Controls_Manager::TAB_STYLE,
                             'condition'=>[
                                     'type'=>['wp','wc','form_one']
@@ -109,7 +109,7 @@ class Search extends Base{
                  $this->add_control(
 			'repeater_bar_bg_color',
 			[
-				'label' => __( 'Background Color', 'ultraaddons' ),
+				'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ua-form-one' => 'background-color: {{VALUE}};',
@@ -121,21 +121,21 @@ class Search extends Base{
             $this->start_controls_tab(
                 'input_normal',
                 [
-                    'label'  => esc_html__( 'Normal', 'ultraaddons' )
+                    'label'  => esc_html__( 'Normal', 'ultraaddons-elementor-lite' )
                 ]
             );
              $this->add_group_control(
                 Group_Control_Border::get_type(),
                     [
                             'name' => 'border_wrapper',
-                            'label' => __( 'Wrapper Border', 'ultraaddons' ),
+                            'label' => __( 'Wrapper Border', 'ultraaddons-elementor-lite' ),
                             'selector' => '{{WRAPPER}} form.search-form,{{WRAPPER}} form.woocommerce-product-search, .ua-form-one',
                     ]
                 );
             $this->add_control(
                     'border_radius',
                     [
-                            'label' => __( 'Border Radius', 'ultraaddons' ),
+                            'label' => __( 'Border Radius', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => [ 'px' ],
                             'selectors' => [
@@ -151,7 +151,7 @@ class Search extends Base{
                     Group_Control_Box_Shadow::get_type(),
                     [
                             'name' => 'box_shadow',
-                            'label' => __( 'Box Shadow', 'ultraaddons' ),
+                            'label' => __( 'Box Shadow', 'ultraaddons-elementor-lite' ),
                             'selector' => '{{WRAPPER}} form.search-form,{{WRAPPER}} form.woocommerce-product-search, form.ua-form-one',
                     ]
             );
@@ -163,21 +163,21 @@ class Search extends Base{
             $this->start_controls_tab(
                 'input_hover',
                 [
-                    'label'  => esc_html__( 'Hover', 'ultraaddons' )
+                    'label'  => esc_html__( 'Hover', 'ultraaddons-elementor-lite' )
                 ]
             );
              $this->add_group_control(
                 Group_Control_Border::get_type(),
                     [
                             'name' => 'border_wrapper_hover',
-                            'label' => __( 'Wrapper Border', 'ultraaddons' ),
+                            'label' => __( 'Wrapper Border', 'ultraaddons-elementor-lite' ),
                             'selector' => '{{WRAPPER}} form.search-form:hover,{{WRAPPER}} form.woocommerce-product-search:hover, .ua-form-one:hover',
                     ]
                 );
             $this->add_control(
                     'border_radius_hover',
                     [
-                            'label' => __( 'Border Radius', 'ultraaddons' ),
+                            'label' => __( 'Border Radius', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => [ 'px' ],
                             'selectors' => [
@@ -193,7 +193,7 @@ class Search extends Base{
                     Group_Control_Box_Shadow::get_type(),
                     [
                             'name' => 'box_shadow_hover',
-                            'label' => __( 'Box Shadow', 'ultraaddons' ),
+                            'label' => __( 'Box Shadow', 'ultraaddons-elementor-lite' ),
                             'selector' => '{{WRAPPER}} form.search-form:hover,{{WRAPPER}} form.woocommerce-product-search:hover, form.ua-form-one:hover',
                     ]
             );
@@ -210,7 +210,7 @@ class Search extends Base{
             $this->start_controls_section(
                     'button_style',
                     [
-                            'label' => __( 'Button', 'ultraaddons' ),
+                            'label' => __( 'Button', 'ultraaddons-elementor-lite' ),
                             'tab' => Controls_Manager::TAB_STYLE,
                             'condition'=>[
                                     'type'=>['wp','wc','form_one']
@@ -220,15 +220,15 @@ class Search extends Base{
             $this->add_responsive_control(
                 'btn_position',
                 [
-                        'label' => esc_html__( 'Button Position', 'ultraaddons' ),
+                        'label' => esc_html__( 'Button Position', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::CHOOSE,
                         'options' => [
                                 'left' => [
-                                        'title' => esc_html__( 'Left', 'ultraaddons' ),
+                                        'title' => esc_html__( 'Left', 'ultraaddons-elementor-lite' ),
                                         'icon' => 'eicon-arrow-left',
                                 ],
                                 'right' => [
-                                        'title' => esc_html__( 'Right', 'ultraaddons' ),
+                                        'title' => esc_html__( 'Right', 'ultraaddons-elementor-lite' ),
                                         'icon' => 'eicon-arrow-right',
                                 ],
                         ],
@@ -243,13 +243,13 @@ class Search extends Base{
             $this->start_controls_tab(
                 'tab_icon_bg',
                 [
-                    'label'  => esc_html__( 'Normal', 'ultraaddons' )
+                    'label'  => esc_html__( 'Normal', 'ultraaddons-elementor-lite' )
                 ]
             );
             $this->add_control(
                 'icon_bg',
                 [
-                        'label' => __( 'Button Background', 'ultraaddons' ),
+                        'label' => __( 'Button Background', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::COLOR,
                         'selectors' => [
                                 '{{WRAPPER}} form.search-form input.search-submit' => 'background-color: {{VALUE}}',
@@ -263,14 +263,14 @@ class Search extends Base{
                     Group_Control_Border::get_type(),
                     [
                             'name' => 'border',
-                            'label' => __( 'Border', 'ultraaddons' ),
+                            'label' => __( 'Border', 'ultraaddons-elementor-lite' ),
                             'selector' => '{{WRAPPER}} form.search-form input.search-field,{{WRAPPER}} form.woocommerce-product-search input.search-field, .ua-form-one input[type="text"]',
                     ]
             );
              $this->add_control(
                     'btn_border_radius',
                     [
-                            'label' => __( 'Border Radius', 'ultraaddons' ),
+                            'label' => __( 'Border Radius', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => [ 'px' ],
                             'selectors' => [
@@ -286,13 +286,13 @@ class Search extends Base{
             $this->start_controls_tab(
                 'tab_icon_hover_bg',
                 [
-                    'label'  => esc_html__( 'Hover', 'ultraaddons' )
+                    'label'  => esc_html__( 'Hover', 'ultraaddons-elementor-lite' )
                 ]
             );
             $this->add_control(
                 'icon_hover_bg',
                 [
-                        'label' => __( 'Button Hover Background', 'ultraaddons' ),
+                        'label' => __( 'Button Hover Background', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::COLOR,
                         'selectors' => [
                                 '{{WRAPPER}} form.search-form:hover input.search-submit' => 'background-color: {{VALUE}}',
@@ -306,7 +306,7 @@ class Search extends Base{
                     Group_Control_Border::get_type(),
                         [
                             'name' => 'border_hover',
-                            'label' => __( 'Border', 'ultraaddons' ),
+                            'label' => __( 'Border', 'ultraaddons-elementor-lite' ),
                            'selector' => '{{WRAPPER}} form.search-form:hover,{{WRAPPER}} form.woocommerce-product-search:hover',
                         ]
             );
@@ -314,7 +314,7 @@ class Search extends Base{
              $this->add_control(
                     'btn_border_radius_hover',
                     [
-                            'label' => __( 'Border Radius', 'ultraaddons' ),
+                            'label' => __( 'Border Radius', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => [ 'px' ],
                             'selectors' => [
@@ -334,7 +334,7 @@ class Search extends Base{
             $this->start_controls_section(
                     'form_two_style',
                     [
-                            'label' => __( 'Input', 'ultraaddons' ),
+                            'label' => __( 'Input', 'ultraaddons-elementor-lite' ),
                             'tab' => Controls_Manager::TAB_STYLE,
                             'condition'=>[
                                     'type'=>'form_two'
@@ -345,7 +345,7 @@ class Search extends Base{
                     Group_Control_Border::get_type(),
                     [
                             'name' => 'input_two_border',
-                            'label' => __( 'Border', 'ultraaddons' ),
+                            'label' => __( 'Border', 'ultraaddons-elementor-lite' ),
                             'selector' => '{{WRAPPER}} .search-box.ua-form-two',
                     ]
             );
@@ -360,7 +360,7 @@ class Search extends Base{
                  $this->add_control(
 			'input_two_text_color',
 			[
-				'label' => __( 'Input Text Color', 'ultraaddons' ),
+				'label' => __( 'Input Text Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .search-box.ua-form-two input[type=text], .search-box.ua-form-two input[type=text]::placeholder' => 'color: {{VALUE}};',
@@ -436,7 +436,7 @@ class Search extends Base{
                 <button type="submit"><i class="fa fa-search"></i></button>
                 <?php endif;?>
                 <input type="search" name="s" class="ua-form-one-text" value="<?php the_search_query(); ?>"
-            placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'ultraaddons' ); ?>">
+            placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'ultraaddons-elementor-lite' ); ?>">
                 <?php 
                 if($new_position==='right'):?>
                 <button type="submit"><i class="fa fa-search"></i></button>
@@ -447,7 +447,7 @@ class Search extends Base{
 	public function search_form_template_two($type){
             ?>
 		<form action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" class="search-box <?php echo $type;?>">
-		   <input type="text" name="s" value="<?php the_search_query(); ?>"  class="ua-form-one-text" placeholder=" <?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'ultraaddons' ); ?> "/>
+		   <input type="text" name="s" value="<?php the_search_query(); ?>"  class="ua-form-one-text" placeholder=" <?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'ultraaddons-elementor-lite' ); ?> "/>
 		  <button type="reset"></button>
 		</form>
     <?php }

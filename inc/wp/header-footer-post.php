@@ -38,69 +38,69 @@ class Header_Footer_Post{
 		self::$availeable_fields = [
 			'Basic' => [
 	
-				'entire_site' => __( 'Entire Website', 'ultraaddons' ), 
-				'is_singular' => __( 'All Singulars', 'ultraaddons' ),
-				'is_tax' => __( 'All Archives', 'ultraaddons' ),
+				'entire_site' => __( 'Entire Website', 'ultraaddons-elementor-lite' ), 
+				'is_singular' => __( 'All Singulars', 'ultraaddons-elementor-lite' ),
+				'is_tax' => __( 'All Archives', 'ultraaddons-elementor-lite' ),
 			],
 			
 			'Special Pages'=>[
 	
-				'is_404' => __( '404 Page', 'ultraaddons' ),
-				'is_search' => __( 'Search Page', 'ultraaddons' ),
-				'is_home' => __( 'Blog Page', 'ultraaddons' ),
-				'is_front_page' => __( 'Front Page', 'ultraaddons' ),
-				'is_date' => __( 'Date Archive', 'ultraaddons' ),
-				// 'special-author' => __( 'Author Archive', 'ultraaddons' ),
-				// 'special-woo-shop' => __( 'WooCommerce Shop Page', 'ultraaddons' ),
+				'is_404' => __( '404 Page', 'ultraaddons-elementor-lite' ),
+				'is_search' => __( 'Search Page', 'ultraaddons-elementor-lite' ),
+				'is_home' => __( 'Blog Page', 'ultraaddons-elementor-lite' ),
+				'is_front_page' => __( 'Front Page', 'ultraaddons-elementor-lite' ),
+				'is_date' => __( 'Date Archive', 'ultraaddons-elementor-lite' ),
+				// 'special-author' => __( 'Author Archive', 'ultraaddons-elementor-lite' ),
+				// 'special-woo-shop' => __( 'WooCommerce Shop Page', 'ultraaddons-elementor-lite' ),
 			],
 	
 			// 'Posts'=>[
 	
-			// 	'post|all' => __( 'All Posts', 'ultraaddons' ),
-			// 	'post|all|archive' => __( 'All Posts Archive', 'ultraaddons' ),
-			// 	'post|all|taxarchive|category' => __( 'All Categories Archive', 'ultraaddons' ),
-			// 	'post|all|taxarchive|post_tag' => __( 'All Tags Archive', 'ultraaddons' ),
+			// 	'post|all' => __( 'All Posts', 'ultraaddons-elementor-lite' ),
+			// 	'post|all|archive' => __( 'All Posts Archive', 'ultraaddons-elementor-lite' ),
+			// 	'post|all|taxarchive|category' => __( 'All Categories Archive', 'ultraaddons-elementor-lite' ),
+			// 	'post|all|taxarchive|post_tag' => __( 'All Tags Archive', 'ultraaddons-elementor-lite' ),
 	
 			// ],
 	
 			// 'Pages'=>[
 	
-			// 	'page|all' => __( 'All Pages', 'ultraaddons' ),
+			// 	'page|all' => __( 'All Pages', 'ultraaddons-elementor-lite' ),
 	
 			// ],
 	
 			// 'Landing Pages'=>[
 	
-			// 	'e-landing-page|all' => __( 'All Landing Pages', 'ultraaddons' ),
-			// 	'e-landing-page|all|archive' => __( 'All Landing Pages Archive', 'ultraaddons' ),
+			// 	'e-landing-page|all' => __( 'All Landing Pages', 'ultraaddons-elementor-lite' ),
+			// 	'e-landing-page|all|archive' => __( 'All Landing Pages Archive', 'ultraaddons-elementor-lite' ),
 	
 			// ],
 	
 			// 'My Templates'=>[
 	
-			// 	'elementor_library|all' => __( 'All My Templates', 'ultraaddons' ),
-			// 	'elementor_library|all|archive' => __( 'All My Templates Archive', 'ultraaddons' ),
+			// 	'elementor_library|all' => __( 'All My Templates', 'ultraaddons-elementor-lite' ),
+			// 	'elementor_library|all|archive' => __( 'All My Templates Archive', 'ultraaddons-elementor-lite' ),
 	
 			// ],
 	
 			'WooCommerce'=>[
 	
-				'is_shop' => __( 'Shop Page', 'ultraaddons' ),
-				'is_wc_category' => __( 'Products Category', 'ultraaddons' ),
-				'is_wc_taxonomy' => __( 'Products  Taxonomy/Archive', 'ultraaddons' ),
-				'is_wc_search' => __( 'Products Search', 'ultraaddons' ),
-				'is_woocommerce' => __( 'Entire WooCommerce', 'ultraaddons' ),
+				'is_shop' => __( 'Shop Page', 'ultraaddons-elementor-lite' ),
+				'is_wc_category' => __( 'Products Category', 'ultraaddons-elementor-lite' ),
+				'is_wc_taxonomy' => __( 'Products  Taxonomy/Archive', 'ultraaddons-elementor-lite' ),
+				'is_wc_search' => __( 'Products Search', 'ultraaddons-elementor-lite' ),
+				'is_woocommerce' => __( 'Entire WooCommerce', 'ultraaddons-elementor-lite' ),
 	
 	
-				// 'product|all|taxarchive|product_cat' => __( 'All Product Categories Archive', 'ultraaddons' ),
-				// 'product|all|taxarchive|product_tag' => __( 'All Product Tags Archive', 'ultraaddons' ),
-				// 'product|all|taxarchive|product_shipping_class' => __( 'All Product Shipping Classes Archive', 'ultraaddons' ),
+				// 'product|all|taxarchive|product_cat' => __( 'All Product Categories Archive', 'ultraaddons-elementor-lite' ),
+				// 'product|all|taxarchive|product_tag' => __( 'All Product Tags Archive', 'ultraaddons-elementor-lite' ),
+				// 'product|all|taxarchive|product_shipping_class' => __( 'All Product Shipping Classes Archive', 'ultraaddons-elementor-lite' ),
 	
 			],
 	
 			'Specific Target'=>[
 	
-				'specifics' => __( 'Specific Pages / Posts / Taxonomies, etc.', 'ultraaddons' ),
+				'specifics' => __( 'Specific Pages / Posts / Taxonomies, etc.', 'ultraaddons-elementor-lite' ),
 	
 			]
 	
@@ -148,8 +148,8 @@ class Header_Footer_Post{
 			unset($default['date']);
 		}
 
-		$default['ua-location'] = __( 'Type/Location', 'ultraaddons' );
-		$default['ua-setting'] = __( 'Setting', 'ultraaddons' );
+		$default['ua-location'] = __( 'Type/Location', 'ultraaddons-elementor-lite' );
+		$default['ua-setting'] = __( 'Setting', 'ultraaddons-elementor-lite' );
         return $default;
     }
     
@@ -158,7 +158,7 @@ class Header_Footer_Post{
         if ($column_name == 'ua-location') {
 			$location = get_post_meta( $post_id,'ua_template_type', true );
 			if( empty( $location ) ){
-				echo esc_html__( 'N/A', 'ultraaddons' );
+				echo esc_html__( 'N/A', 'ultraaddons-elementor-lite' );
 			}else{
 				echo esc_html( ucwords( $location ) );
 			}
@@ -182,7 +182,7 @@ class Header_Footer_Post{
 		$all_sett = implode(",",$rules );
 		
 		if( empty( $all_sett ) ){
-			echo esc_html__( 'N/A', 'ultraaddons' );
+			echo esc_html__( 'N/A', 'ultraaddons-elementor-lite' );
 		}else{
 			echo esc_html( $all_sett );
 		}
@@ -198,44 +198,44 @@ class Header_Footer_Post{
 		 */
 
 		$labels = [
-			"name" => __( "Header & Footer", "ultraaddons" ),
-			"singular_name" => __( "Header & Footer", "ultraaddons" ),
-			"menu_name" => __( "Header & Footer", "ultraaddons" ),
-			"all_items" => __( "All Header & Footer", "ultraaddons" ),
-			"add_new" => __( "Add new", "ultraaddons" ),
-			"add_new_item" => __( "Add new Header & Footer", "ultraaddons" ),
-			"edit_item" => __( "Edit Header & Footer", "ultraaddons" ),
-			"new_item" => __( "New Header & Footer", "ultraaddons" ),
-			"view_item" => __( "View Header & Footer", "ultraaddons" ),
-			"view_items" => __( "View Header & Footer", "ultraaddons" ),
-			"search_items" => __( "Search Header & Footer", "ultraaddons" ),
-			"not_found" => __( "No Header & Footer found", "ultraaddons" ),
-			"not_found_in_trash" => __( "No Header & Footer found in trash", "ultraaddons" ),
-			"parent" => __( "Parent Header & Footer:", "ultraaddons" ),
-			"featured_image" => __( "Featured image for this Header & Footer", "ultraaddons" ),
-			"set_featured_image" => __( "Set featured image for this Header & Footer", "ultraaddons" ),
-			"remove_featured_image" => __( "Remove featured image for this Header & Footer", "ultraaddons" ),
-			"use_featured_image" => __( "Use as featured image for this Header & Footer", "ultraaddons" ),
-			"archives" => __( "Header & Footer archives", "ultraaddons" ),
-			"insert_into_item" => __( "Insert into Header & Footer", "ultraaddons" ),
-			"uploaded_to_this_item" => __( "Upload to this Header & Footer", "ultraaddons" ),
-			"filter_items_list" => __( "Filter Header & Footer list", "ultraaddons" ),
-			"items_list_navigation" => __( "Header & Footer list navigation", "ultraaddons" ),
-			"items_list" => __( "Header & Footer list", "ultraaddons" ),
-			"attributes" => __( "Header & Footer attributes", "ultraaddons" ),
-			"name_admin_bar" => __( "Header & Footer", "ultraaddons" ),
-			"item_published" => __( "Header & Footer published", "ultraaddons" ),
-			"item_published_privately" => __( "Header & Footer published privately.", "ultraaddons" ),
-			"item_reverted_to_draft" => __( "Header & Footer reverted to draft.", "ultraaddons" ),
-			"item_scheduled" => __( "Header & Footer scheduled", "ultraaddons" ),
-			"item_updated" => __( "Header & Footer updated.", "ultraaddons" ),
-			"parent_item_colon" => __( "Parent Header & Footer:", "ultraaddons" ),
+			"name" => __( "Header & Footer", 'ultraaddons-elementor-lite' ),
+			"singular_name" => __( "Header & Footer", 'ultraaddons-elementor-lite' ),
+			"menu_name" => __( "Header & Footer", 'ultraaddons-elementor-lite' ),
+			"all_items" => __( "All Header & Footer", 'ultraaddons-elementor-lite' ),
+			"add_new" => __( "Add new", 'ultraaddons-elementor-lite' ),
+			"add_new_item" => __( "Add new Header & Footer", 'ultraaddons-elementor-lite' ),
+			"edit_item" => __( "Edit Header & Footer", 'ultraaddons-elementor-lite' ),
+			"new_item" => __( "New Header & Footer", 'ultraaddons-elementor-lite' ),
+			"view_item" => __( "View Header & Footer", 'ultraaddons-elementor-lite' ),
+			"view_items" => __( "View Header & Footer", 'ultraaddons-elementor-lite' ),
+			"search_items" => __( "Search Header & Footer", 'ultraaddons-elementor-lite' ),
+			"not_found" => __( "No Header & Footer found", 'ultraaddons-elementor-lite' ),
+			"not_found_in_trash" => __( "No Header & Footer found in trash", 'ultraaddons-elementor-lite' ),
+			"parent" => __( "Parent Header & Footer:", 'ultraaddons-elementor-lite' ),
+			"featured_image" => __( "Featured image for this Header & Footer", 'ultraaddons-elementor-lite' ),
+			"set_featured_image" => __( "Set featured image for this Header & Footer", 'ultraaddons-elementor-lite' ),
+			"remove_featured_image" => __( "Remove featured image for this Header & Footer", 'ultraaddons-elementor-lite' ),
+			"use_featured_image" => __( "Use as featured image for this Header & Footer", 'ultraaddons-elementor-lite' ),
+			"archives" => __( "Header & Footer archives", 'ultraaddons-elementor-lite' ),
+			"insert_into_item" => __( "Insert into Header & Footer", 'ultraaddons-elementor-lite' ),
+			"uploaded_to_this_item" => __( "Upload to this Header & Footer", 'ultraaddons-elementor-lite' ),
+			"filter_items_list" => __( "Filter Header & Footer list", 'ultraaddons-elementor-lite' ),
+			"items_list_navigation" => __( "Header & Footer list navigation", 'ultraaddons-elementor-lite' ),
+			"items_list" => __( "Header & Footer list", 'ultraaddons-elementor-lite' ),
+			"attributes" => __( "Header & Footer attributes", 'ultraaddons-elementor-lite' ),
+			"name_admin_bar" => __( "Header & Footer", 'ultraaddons-elementor-lite' ),
+			"item_published" => __( "Header & Footer published", 'ultraaddons-elementor-lite' ),
+			"item_published_privately" => __( "Header & Footer published privately.", 'ultraaddons-elementor-lite' ),
+			"item_reverted_to_draft" => __( "Header & Footer reverted to draft.", 'ultraaddons-elementor-lite' ),
+			"item_scheduled" => __( "Header & Footer scheduled", 'ultraaddons-elementor-lite' ),
+			"item_updated" => __( "Header & Footer updated.", 'ultraaddons-elementor-lite' ),
+			"parent_item_colon" => __( "Parent Header & Footer:", 'ultraaddons-elementor-lite' ),
 		];
 
 		$args = [
-			"label" => __( "Header & Footer", "ultraaddons" ),
+			"label" => __( "Header & Footer", 'ultraaddons-elementor-lite' ),
 			"labels" => $labels,
-			"description" => __( "This post is for Medilac Header and Footer", "ultraaddons" ),
+			"description" => __( "This post is for Medilac Header and Footer", 'ultraaddons-elementor-lite' ),
 			"public" => true,
 			"publicly_queryable" => true,
 			"show_ui" => true,
@@ -253,7 +253,7 @@ class Header_Footer_Post{
 			"rewrite" => [ "slug" => "header-footer", "with_front" => true ],
 			"query_var" => true,
 			"menu_icon" => "dashicons-hammer",
-			"supports" => [ 'title', 'thumbnail', 'elementor' ],
+			"supports" => [ 'title', 'thumbnail', 'ultraaddons-elementor-lite' ],
 		];
 
 		register_post_type( self::$post_type, $args );
@@ -262,7 +262,7 @@ class Header_Footer_Post{
 	public static function register_metabox() {
 		add_meta_box(
 			'ua-meta-box',
-			__( 'Header & Footer Options', 'ultraaddons' ),
+			__( 'Header & Footer Options', 'ultraaddons-elementor-lite' ),
 			[
 				__CLASS__,
 				'metabox_render',
@@ -294,17 +294,17 @@ class Header_Footer_Post{
 			<tbody>
 				<tr class="ua-options-row type-of-template">
 					<td class="ua-options-row-heading">
-						<label for="ua_template_type"><?php _e( 'Type of Template', 'ultraaddons' ); ?></label>
+						<label for="ua_template_type"><?php _e( 'Type of Template', 'ultraaddons-elementor-lite' ); ?></label>
 					</td>
 					<td class="ua-options-row-content">
 						<select name="ua_template_type" id="ua_template_type">
-							<option value="" <?php selected( $template_type, '' ); ?>><?php _e( 'Select Option', 'ultraaddons' ); ?></option>
-							<option value="header" <?php selected( $template_type, 'header' ); ?>><?php _e( 'Header', 'ultraaddons' ); ?></option>
-							<option value="before_header" <?php selected( $template_type, 'before_header' ); ?>><?php _e( 'Before Header/Topbar', 'ultraaddons' ); ?></option>
-							<option value="footer" <?php selected( $template_type, 'footer' ); ?>><?php _e( 'Footer', 'ultraaddons' ); ?></option>
-							<!-- <option value="before_footer" <?php selected( $template_type, 'before_footer' ); ?>><?php _e( 'Before Footer', 'ultraaddons' ); ?></option> -->
-							<option value="after_footer" <?php selected( $template_type, 'after_footer' ); ?>><?php _e( 'After Footer', 'ultraaddons' ); ?></option>
-							<!-- <option value="custom" <?php selected( $template_type, 'custom' ); ?>><?php _e( 'Custom Block', 'ultraaddons' ); ?></option> -->
+							<option value="" <?php selected( $template_type, '' ); ?>><?php _e( 'Select Option', 'ultraaddons-elementor-lite' ); ?></option>
+							<option value="header" <?php selected( $template_type, 'header' ); ?>><?php _e( 'Header', 'ultraaddons-elementor-lite' ); ?></option>
+							<option value="before_header" <?php selected( $template_type, 'before_header' ); ?>><?php _e( 'Before Header/Topbar', 'ultraaddons-elementor-lite' ); ?></option>
+							<option value="footer" <?php selected( $template_type, 'footer' ); ?>><?php _e( 'Footer', 'ultraaddons-elementor-lite' ); ?></option>
+							<!-- <option value="before_footer" <?php selected( $template_type, 'before_footer' ); ?>><?php _e( 'Before Footer', 'ultraaddons-elementor-lite' ); ?></option> -->
+							<option value="after_footer" <?php selected( $template_type, 'after_footer' ); ?>><?php _e( 'After Footer', 'ultraaddons-elementor-lite' ); ?></option>
+							<!-- <option value="custom" <?php selected( $template_type, 'custom' ); ?>><?php _e( 'Custom Block', 'ultraaddons-elementor-lite' ); ?></option> -->
 						</select>
 					</td>
 				</tr>
@@ -314,8 +314,8 @@ class Header_Footer_Post{
 				 ?>
 				<tr class="ua-options-row ua-shortcode">
 					<td class="ua-options-row-heading">
-						<label for="ua_template_type"><?php _e( 'Shortcode', 'ultraaddons' ); ?></label>
-						<i class="ua-options-row-heading-help dashicons dashicons-editor-help" title="<?php _e( 'Copy this shortcode and paste it into your post, page, or text widget content.', 'ultraaddons' ); ?>">
+						<label for="ua_template_type"><?php _e( 'Shortcode', 'ultraaddons-elementor-lite' ); ?></label>
+						<i class="ua-options-row-heading-help dashicons dashicons-editor-help" title="<?php _e( 'Copy this shortcode and paste it into your post, page, or text widget content.', 'ultraaddons-elementor-lite' ); ?>">
 						</i>
 					</td>
 					<td class="ua-options-row-content">
@@ -334,9 +334,9 @@ class Header_Footer_Post{
 				<tr  style="display: none !important;" class="ua-options-row enable-for-canvas">
 					<td class="ua-options-row-heading">
 						<label for="display-on-canvas-template">
-							<?php _e( 'Enable Layout for Elementor Canvas Template?', 'ultraaddons' ); ?>
+							<?php _e( 'Enable Layout for Elementor Canvas Template?', 'ultraaddons-elementor-lite' ); ?>
 						</label>
-						<i class="ua-options-row-heading-help dashicons dashicons-editor-help" title="<?php _e( 'Enabling this option will display this layout on pages using Elementor Canvas Template.', 'ultraaddons' ); ?>"></i>
+						<i class="ua-options-row-heading-help dashicons dashicons-editor-help" title="<?php _e( 'Enabling this option will display this layout on pages using Elementor Canvas Template.', 'ultraaddons-elementor-lite' ); ?>"></i>
 					</td>
 					<td class="ua-options-row-content">
 						<input type="checkbox" id="display-on-canvas-template" name="display-on-canvas-template" value="1" <?php checked( $display_on_canvas, true ); ?> />
@@ -347,9 +347,9 @@ class Header_Footer_Post{
 				<tr style="display: none !important;" class="ua-options-row enable-for-canvas">
 					<td class="ua-options-row-heading">
 						<label for="display-on-canvas-template">
-							<?php _e( 'Enabling Header Footer using CSS', 'ultraaddons' ); ?>
+							<?php _e( 'Enabling Header Footer using CSS', 'ultraaddons-elementor-lite' ); ?>
 						</label>
-						<i class="ua-options-row-heading-help dashicons dashicons-editor-help" title="<?php _e( 'Actually it will not replace header file,<br> just it will hide current header. where header footer class should be', 'ultraaddons' ); ?>"></i>
+						<i class="ua-options-row-heading-help dashicons dashicons-editor-help" title="<?php _e( 'Actually it will not replace header file,<br> just it will hide current header. where header footer class should be', 'ultraaddons-elementor-lite' ); ?>"></i>
 						<!-- <p>Actually it will not replace header file,<br> just it will hide current header. <br>
 							where header footer class should be (.site-header or ##masthead)</p> -->
 							<code>.site-header or ##masthead</p></code>

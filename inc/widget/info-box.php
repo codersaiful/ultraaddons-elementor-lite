@@ -26,33 +26,33 @@ class Info_Box extends Base {
      * @return type
      */
     public function get_keywords() {
-            return [ 'ultraaddons', 'ua','info', 'service', 'box','icon' ];
+            return [ 'ultraaddons-elementor-lite', 'ua','info', 'service', 'box','icon' ];
     }
     
     protected function content_infobox(){
         $this->start_controls_section(
                     'section_sliders',
                     [
-                            'label' => __( 'Info Box', 'ultraaddons' ),
+                            'label' => __( 'Info Box', 'ultraaddons-elementor-lite' ),
                     ]
             );
             
             $this->add_responsive_control(
                     'infobox_align',
                     [
-                            'label' => __( 'Alignment', 'ultraaddons' ),
+                            'label' => __( 'Alignment', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::CHOOSE,
                             'options' => [
                                     'left'    => [
-                                            'title' => __( 'Left', 'ultraaddons' ),
+                                            'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
                                             'icon' => 'eicon-text-align-left',
                                     ],
                                     'center' => [
-                                            'title' => __( 'Center', 'ultraaddons' ),
+                                            'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
                                             'icon' => 'eicon-text-align-center',
                                     ],
                                     'right' => [
-                                            'title' => __( 'Right', 'ultraaddons' ),
+                                            'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
                                             'icon' => 'eicon-text-align-right',
                                     ],
                             ],
@@ -66,11 +66,11 @@ class Info_Box extends Base {
             $this->add_control(
                     'icon_style',
                     [
-                            'label'     => esc_html__( 'Select Icon Or Image', 'ultraaddons' ),
+                            'label'     => esc_html__( 'Select Icon Or Image', 'ultraaddons-elementor-lite' ),
                             'type'      => Controls_Manager::SELECT,
                             'options'   => [
-                                'icon'      => __( 'Icon', 'ultraaddons' ),
-                                'image'     => __( 'Image', 'ultraaddons')
+                                'icon'      => __( 'Icon', 'ultraaddons-elementor-lite' ),
+                                'image'     => __( 'Image', 'ultraaddons-elementor-lite')
                             ],
                             'default'       => 'icon',
 
@@ -80,12 +80,12 @@ class Info_Box extends Base {
             $this->add_control(
                     'add_icon',
                     [
-                            'label' => __( 'Icon', 'ultraaddons' ),
+                            'label' => __( 'Icon', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::ICONS,
                             'fa4compatibility' => 'icon',
                             'default' => [
                                     'value' => 'uicon uicon-ultraaddons',
-                                    'library' => 'ultraaddons',
+                                    'library' => 'ultraaddons-elementor-lite',
                             ],
                             'condition' => [
                                     'icon_style' => 'icon',
@@ -96,7 +96,7 @@ class Info_Box extends Base {
             $this->add_control(
                     'add_image',
                     [
-                            'label'     => __( 'Select Image', 'ultraaddons' ),
+                            'label'     => __( 'Select Image', 'ultraaddons-elementor-lite' ),
                             'type'      => Controls_Manager::MEDIA,
                             'default'   => [
                                 'url'       => Utils::get_placeholder_image_src(),
@@ -110,12 +110,12 @@ class Info_Box extends Base {
             $this->add_control(
                     'view',
                     [
-                            'label' => __( 'View', 'ultraaddons' ),
+                            'label' => __( 'View', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SELECT,
                             'options' => [
-                                    'default' => __( 'Default', 'ultraaddons' ),
-                                    'stacked' => __( 'Stacked', 'ultraaddons' ),
-                                    'framed' => __( 'Framed', 'ultraaddons' ),
+                                    'default' => __( 'Default', 'ultraaddons-elementor-lite' ),
+                                    'stacked' => __( 'Stacked', 'ultraaddons-elementor-lite' ),
+                                    'framed' => __( 'Framed', 'ultraaddons-elementor-lite' ),
                             ],
                             'default' => 'stacked',
                             'prefix_class' => 'elementor-view-',
@@ -129,11 +129,11 @@ class Info_Box extends Base {
             $this->add_control(
                     'shape',
                     [
-                            'label' => __( 'Shape', 'ultraaddons' ),
+                            'label' => __( 'Shape', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SELECT,
                             'options' => [
-                                    'circle' => __( 'Circle', 'ultraaddons' ),
-                                    'square' => __( 'Square', 'ultraaddons' ),
+                                    'circle' => __( 'Circle', 'ultraaddons-elementor-lite' ),
+                                    'square' => __( 'Square', 'ultraaddons-elementor-lite' ),
                             ],
                             'default' => 'square',
                             'condition' => [
@@ -148,20 +148,20 @@ class Info_Box extends Base {
             $this->add_control(
                     'title_text',
                     [
-                            'label' => __( 'Title & Description', 'ultraaddons' ),
+                            'label' => __( 'Title & Description', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::TEXT,
                             'dynamic' => [
                                     'active' => true,
                             ],
-                            'default' => __( 'Info Box Title', 'ultraaddons' ),
-                            'placeholder' => __( 'Enter your title', 'ultraaddons' ),
+                            'default' => __( 'Info Box Title', 'ultraaddons-elementor-lite' ),
+                            'placeholder' => __( 'Enter your title', 'ultraaddons-elementor-lite' ),
                             'label_block' => true,
                     ]
             );
             $this->add_control(
                     'count_text',
                     [
-                            'label' => __( 'Count Text', 'ultraaddons' ),
+                            'label' => __( 'Count Text', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::TEXT,
                             'label_block' => true,
                     ]
@@ -169,7 +169,7 @@ class Info_Box extends Base {
             $this->add_control(
                     'title_size',
                     [
-                            'label' => __( 'Title HTML Tag', 'ultraaddons' ),
+                            'label' => __( 'Title HTML Tag', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SELECT,
                             'options' => [
                                     'h1' => 'H1',
@@ -194,8 +194,8 @@ class Info_Box extends Base {
                             'dynamic' => [
                                     'active' => true,
                             ],
-                            'default' => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'ultraaddons' ),
-                            'placeholder' => __( 'Enter your description', 'ultraaddons' ),
+                            'default' => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'ultraaddons-elementor-lite' ),
+                            'placeholder' => __( 'Enter your description', 'ultraaddons-elementor-lite' ),
                             'rows' => 10,
                             'separator' => 'none',
                             'show_label' => false,
@@ -206,10 +206,10 @@ class Info_Box extends Base {
             $this->add_control(
                     'wrapper_link_switch',
                     [
-                            'label' => __( 'Wrapper Link Switch', 'ultraaddons' ),
+                            'label' => __( 'Wrapper Link Switch', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SWITCHER,
-                            'label_on' => __( 'Yes', 'ultraaddons' ),
-                            'label_off' => __( 'No', 'ultraaddons' ),
+                            'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+                            'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
                             'return_value' => 'yes',
                     ]
             );
@@ -217,12 +217,12 @@ class Info_Box extends Base {
             $this->add_control(
                     'wrapper_link',
                     [
-                            'label' => __( 'Wrapper Link', 'ultraaddons' ),
+                            'label' => __( 'Wrapper Link', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::URL,
                             'dynamic' => [
                                     'active' => true,
                             ],
-                            'placeholder' => __( 'https://your-link.com', 'ultraaddons' ),
+                            'placeholder' => __( 'https://your-link.com', 'ultraaddons-elementor-lite' ),
                             'default' => [
                                     'url' => '#',
                             ],
@@ -242,7 +242,7 @@ class Info_Box extends Base {
         $this->start_controls_section(
                     'section_style_icon',
                     [
-                            'label' => __( 'Icon', 'ultraaddons' ),
+                            'label' => __( 'Icon', 'ultraaddons-elementor-lite' ),
                             'tab'   => Controls_Manager::TAB_STYLE,
                            'condition' => [
                                     'icon_style' => 'icon',
@@ -255,14 +255,14 @@ class Info_Box extends Base {
             $this->start_controls_tab(
                     'icon_colors_normal',
                     [
-                            'label' => __( 'Normal', 'ultraaddons' ),
+                            'label' => __( 'Normal', 'ultraaddons-elementor-lite' ),
                     ]
             );
 
             $this->add_control(
                     'primary_color',
                     [
-                            'label' => __( 'Icon Color', 'ultraaddons' ),
+                            'label' => __( 'Icon Color', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::COLOR,
                             'global' => [
                                     'default' => Global_Colors::COLOR_PRIMARY,
@@ -278,7 +278,7 @@ class Info_Box extends Base {
             $this->add_control(
                     'secondary_color',
                     [
-                            'label' => __( 'Background Color', 'ultraaddons' ),
+                            'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::COLOR,
                             'default' => '#0FC392',
                             'condition' => [
@@ -294,7 +294,7 @@ class Info_Box extends Base {
             $this->add_responsive_control(
                     'icon_space',
                     [
-                            'label' => __( 'Spacing', 'ultraaddons' ),
+                            'label' => __( 'Spacing', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SLIDER,
                             'default' => [
                                     'size' => 40,
@@ -315,7 +315,7 @@ class Info_Box extends Base {
             $this->add_responsive_control(
                     'icon_size',
                     [
-                            'label' => __( 'Icon Size', 'ultraaddons' ),
+                            'label' => __( 'Icon Size', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SLIDER,
                             'range' => [
                                     'px' => [
@@ -336,7 +336,7 @@ class Info_Box extends Base {
             $this->add_control(
                     'icon_padding',
                     [
-                            'label' => __( 'Padding', 'ultraaddons' ),
+                            'label' => __( 'Padding', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SLIDER,
                             'selectors' => [
                                     '{{WRAPPER}} .elementor-icon' => 'padding: {{SIZE}}{{UNIT}};',
@@ -357,7 +357,7 @@ class Info_Box extends Base {
             $this->add_control(
                     'rotate',
                     [
-                            'label' => __( 'Rotate', 'ultraaddons' ),
+                            'label' => __( 'Rotate', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SLIDER,
                             'default' => [
                                     'size' => 0,
@@ -372,7 +372,7 @@ class Info_Box extends Base {
             $this->add_control(
                     'border_width',
                     [
-                            'label' => __( 'Border Width', 'ultraaddons' ),
+                            'label' => __( 'Border Width', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::DIMENSIONS,
                             'selectors' => [
                                     '{{WRAPPER}} .elementor-icon' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -386,7 +386,7 @@ class Info_Box extends Base {
             $this->add_control(
                     'border_radius',
                     [
-                            'label' => __( 'Border Radius', 'ultraaddons' ),
+                            'label' => __( 'Border Radius', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => [ 'px', '%' ],
                             'selectors' => [
@@ -401,7 +401,7 @@ class Info_Box extends Base {
                 Group_Control_Box_Shadow::get_type(),
                 [
                         'name' => '_iconshadow',
-                        'label' => __( 'Icon Shadow', 'ultraaddons' ),
+                        'label' => __( 'Icon Shadow', 'ultraaddons-elementor-lite' ),
                         'selector' => '{{WRAPPER}} .elementor-icon',
                 ]
         );
@@ -411,14 +411,14 @@ class Info_Box extends Base {
             $this->start_controls_tab(
                     'icon_colors_hover',
                     [
-                            'label' => __( 'Hover', 'ultraaddons' ),
+                            'label' => __( 'Hover', 'ultraaddons-elementor-lite' ),
                     ]
             );
 
             $this->add_control(
                     'hover_primary_color',
                     [
-                            'label' => __( 'Icon Color', 'ultraaddons' ),
+                            'label' => __( 'Icon Color', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::COLOR,
                             'default' => '',
                             'selectors' => [
@@ -431,7 +431,7 @@ class Info_Box extends Base {
             $this->add_control(
                     'hover_secondary_color',
                     [
-                            'label' => __( 'Background Color', 'ultraaddons' ),
+                            'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::COLOR,
                             'default' => '',
                             'condition' => [
@@ -447,7 +447,7 @@ class Info_Box extends Base {
             $this->add_responsive_control(
                     'icon_space_hover',
                     [
-                            'label' => __( 'Spacing', 'ultraaddons' ),
+                            'label' => __( 'Spacing', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SLIDER,
 
                             'range' => [
@@ -466,7 +466,7 @@ class Info_Box extends Base {
             $this->add_responsive_control(
                     'hover_icon_size',
                     [
-                            'label' => __( 'Size', 'ultraaddons' ),
+                            'label' => __( 'Size', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SLIDER,
                             'range' => [
                                     'px' => [
@@ -486,7 +486,7 @@ class Info_Box extends Base {
             $this->add_control(
                     'hover_icon_padding',
                     [
-                            'label' => __( 'Padding', 'ultraaddons' ),
+                            'label' => __( 'Padding', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SLIDER,
                             'selectors' => [
                                     '{{WRAPPER}}:hover .elementor-icon' => 'padding: {{SIZE}}{{UNIT}};',
@@ -506,7 +506,7 @@ class Info_Box extends Base {
             $this->add_control(
                     'hover_rotate',
                     [
-                            'label' => __( 'Rotate', 'ultraaddons' ),
+                            'label' => __( 'Rotate', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SLIDER,
 //                            'default' => [
 //                                    'size' => 0,
@@ -521,7 +521,7 @@ class Info_Box extends Base {
             $this->add_control(
                     'hover_border_width',
                     [
-                            'label' => __( 'Border Width', 'ultraaddons' ),
+                            'label' => __( 'Border Width', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::DIMENSIONS,
                             'selectors' => [
                                     '{{WRAPPER}}:hover .elementor-icon' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -535,7 +535,7 @@ class Info_Box extends Base {
             $this->add_control(
                     'hover_border_radius',
                     [
-                            'label' => __( 'Border Radius', 'ultraaddons' ),
+                            'label' => __( 'Border Radius', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => [ 'px', '%' ],
                             'selectors' => [
@@ -560,7 +560,7 @@ class Info_Box extends Base {
         $this->start_controls_section(
                 'section_style_content',
                 [
-                        'label' => __( 'Content', 'ultraaddons' ),
+                        'label' => __( 'Content', 'ultraaddons-elementor-lite' ),
                         'tab'   => Controls_Manager::TAB_STYLE,
                 ]
         );
@@ -570,7 +570,7 @@ class Info_Box extends Base {
         $this->start_controls_tab(
                 'style_content_normal',
                 [
-                        'label' => __( 'Normal', 'ultraaddons' ),
+                        'label' => __( 'Normal', 'ultraaddons-elementor-lite' ),
                 ]
         );
         
@@ -579,7 +579,7 @@ class Info_Box extends Base {
         $this->add_control(
                 'heading_title',
                 [
-                        'label' => __( 'Title', 'ultraaddons' ),
+                        'label' => __( 'Title', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::HEADING,
                         'separator' => 'before',
                 ]
@@ -588,7 +588,7 @@ class Info_Box extends Base {
         $this->add_responsive_control(
                 'title_bottom_space',
                 [
-                        'label' => __( 'Spacing', 'ultraaddons' ),
+                        'label' => __( 'Spacing', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SLIDER,
                         'range' => [
                                 'px' => [
@@ -605,7 +605,7 @@ class Info_Box extends Base {
         $this->add_control(
                 'title_color',
                 [
-                        'label' => __( 'Color', 'ultraaddons' ),
+                        'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::COLOR,
                         'default' => '#21272c',
                         'selectors' => [
@@ -632,7 +632,7 @@ class Info_Box extends Base {
         $this->add_responsive_control(
                 'title_padding',
                 [
-                        'label' => __( 'Title Padding', 'ultraaddons' ),
+                        'label' => __( 'Title Padding', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px'],
                         'selectors' => [
@@ -644,7 +644,7 @@ class Info_Box extends Base {
         $this->add_control(
                 'heading_description',
                 [
-                        'label' => __( 'Description', 'ultraaddons' ),
+                        'label' => __( 'Description', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::HEADING,
                         'separator' => 'before',
                 ]
@@ -653,7 +653,7 @@ class Info_Box extends Base {
         $this->add_responsive_control(
                 'description_bottom_space',
                 [
-                        'label' => __( 'Spacing', 'ultraaddons' ),
+                        'label' => __( 'Spacing', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SLIDER,
                         'range' => [
                                 'px' => [
@@ -671,7 +671,7 @@ class Info_Box extends Base {
         $this->add_control(
                 'description_color',
                 [
-                        'label' => __( 'Color', 'ultraaddons' ),
+                        'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::COLOR,
                         'default' => '',
                         'selectors' => [
@@ -697,7 +697,7 @@ class Info_Box extends Base {
         $this->add_responsive_control(
                 'description_padding',
                 [
-                        'label' => __( 'Description Padding', 'ultraaddons' ),
+                        'label' => __( 'Description Padding', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px'],
                         'selectors' => [
@@ -712,7 +712,7 @@ class Info_Box extends Base {
         $this->start_controls_tab(
                 'style_content_normal_hover',
                 [
-                        'label' => __( 'Hover', 'ultraaddons' ),
+                        'label' => __( 'Hover', 'ultraaddons-elementor-lite' ),
                 ]
         );
         
@@ -720,7 +720,7 @@ class Info_Box extends Base {
         $this->add_control(
                 'heading_title_hover',
                 [
-                        'label' => __( 'Title', 'ultraaddons' ),
+                        'label' => __( 'Title', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::HEADING,
                         'separator' => 'before',
                 ]
@@ -729,7 +729,7 @@ class Info_Box extends Base {
         $this->add_responsive_control(
                 'title_bottom_space_hover',
                 [
-                        'label' => __( 'Spacing', 'ultraaddons' ),
+                        'label' => __( 'Spacing', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SLIDER,
                         'range' => [
                                 'px' => [
@@ -746,7 +746,7 @@ class Info_Box extends Base {
         $this->add_control(
                 'title_color_hover',
                 [
-                        'label' => __( 'Color', 'ultraaddons' ),
+                        'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::COLOR,
 //                        'default' => '#21272c',
                         'selectors' => [
@@ -774,7 +774,7 @@ class Info_Box extends Base {
         $this->add_control(
                 'heading_description_hover',
                 [
-                        'label' => __( 'Description', 'ultraaddons' ),
+                        'label' => __( 'Description', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::HEADING,
                         'separator' => 'before',
                 ]
@@ -783,7 +783,7 @@ class Info_Box extends Base {
         $this->add_responsive_control(
                 'description_bottom_space_hover',
                 [
-                        'label' => __( 'Spacing', 'ultraaddons' ),
+                        'label' => __( 'Spacing', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SLIDER,
                         'range' => [
                                 'px' => [
@@ -800,7 +800,7 @@ class Info_Box extends Base {
         $this->add_control(
                 'description_color_hover',
                 [
-                        'label' => __( 'Color', 'ultraaddons' ),
+                        'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::COLOR,
                         'default' => '',
                         'selectors' => [
@@ -841,16 +841,16 @@ class Info_Box extends Base {
                         $this->start_controls_section(
                                 'box_section',
                                 [
-                                        'label' => esc_html__( 'Box', 'ultraaddons' ),
+                                        'label' => esc_html__( 'Box', 'ultraaddons-elementor-lite' ),
                                         'tab' => Controls_Manager::TAB_STYLE,
                                 ]
                         );
                 $this->add_responsive_control(
                         'wrapper_link_padding',
                         [
-                                'label' => __( 'Padding', 'ultraaddons' ),
+                                'label' => __( 'Padding', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::DIMENSIONS,
-                                'description' => __( 'For setting wrapper link padding, Please set zero padding for main box from Advance Tab.', 'ultraaddons' ),
+                                'description' => __( 'For setting wrapper link padding, Please set zero padding for main box from Advance Tab.', 'ultraaddons-elementor-lite' ),
                                 'size_units' => [ 'px', '%' ],
                                 'default'   => [
                                         'top' => 30,
@@ -867,7 +867,7 @@ class Info_Box extends Base {
                 $this->add_responsive_control(
                         'wrapper_border_radius',
                         [
-                                'label' => __( 'Radius', 'ultraaddons' ),
+                                'label' => __( 'Radius', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::DIMENSIONS,
                                 'size_units' => [ 'px', '%' ],
                                 'selectors' => [
@@ -881,7 +881,7 @@ class Info_Box extends Base {
                         Group_Control_Box_Shadow::get_type(),
                         [
                                 'name' => 'box_shadow',
-                                'label' => esc_html__( 'Box Shadow', 'ultraaddons' ),
+                                'label' => esc_html__( 'Box Shadow', 'ultraaddons-elementor-lite' ),
                                 'selector' => '{{WRAPPER}} .elementor-widget-container',
                         ]
                 );
@@ -894,7 +894,7 @@ class Info_Box extends Base {
                 $this->start_controls_section(
                         'image_section',
                         [
-                                'label' => esc_html__( 'Image', 'ultraaddons' ),
+                                'label' => esc_html__( 'Image', 'ultraaddons-elementor-lite' ),
                                 'tab' => Controls_Manager::TAB_STYLE,
                                 'condition' => [
                                     'icon_style' => 'image',
@@ -904,7 +904,7 @@ class Info_Box extends Base {
                 $this->add_responsive_control(
                     'image_size',
                     [
-                            'label' => __( 'Image Size', 'ultraaddons' ),
+                            'label' => __( 'Image Size', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SLIDER,
                             'size_units' => [ 'px', '%' ],
                             'default' => [
@@ -928,7 +928,7 @@ class Info_Box extends Base {
                 $this->add_control(
                 'image_margin',
                 [
-                        'label' => __( 'Image Margin', 'ultraaddons' ),
+                        'label' => __( 'Image Margin', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', '%' ],
                         'selectors' => [
@@ -939,7 +939,7 @@ class Info_Box extends Base {
          $this->add_control(
                 'image_radius',
                 [
-                        'label' => __( 'Image Radius', 'ultraaddons' ),
+                        'label' => __( 'Image Radius', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', '%' ],
                         'selectors' => [
@@ -956,7 +956,7 @@ class Info_Box extends Base {
         $this->start_controls_section(
                 'counter_section',
                 [
-                        'label' => esc_html__( 'Counter', 'ultraaddons' ),
+                        'label' => esc_html__( 'Counter', 'ultraaddons-elementor-lite' ),
                         'tab' => Controls_Manager::TAB_STYLE,
                 ]
         );
@@ -965,14 +965,14 @@ class Info_Box extends Base {
                 'count_alignment',
                 [
                         'type' => Controls_Manager::CHOOSE,
-                        'label' => esc_html__( 'Horizontal Position', 'ultraaddons' ),
+                        'label' => esc_html__( 'Horizontal Position', 'ultraaddons-elementor-lite' ),
                         'options' => [
                                 'left' => [
-                                        'title' => esc_html__( 'Left', 'ultraaddons' ),
+                                        'title' => esc_html__( 'Left', 'ultraaddons-elementor-lite' ),
                                         'icon' => 'eicon-arrow-left',
                                 ],
                                 'right' => [
-                                        'title' => esc_html__( 'Right', 'ultraaddons' ),
+                                        'title' => esc_html__( 'Right', 'ultraaddons-elementor-lite' ),
                                         'icon' => 'eicon-arrow-right',
                                 ],
                         ],
@@ -984,14 +984,14 @@ class Info_Box extends Base {
                 'count_position',
                 [
                         'type' => Controls_Manager::CHOOSE,
-                        'label' => esc_html__( 'Vertical Position', 'ultraaddons' ),
+                        'label' => esc_html__( 'Vertical Position', 'ultraaddons-elementor-lite' ),
                         'options' => [
                                 'top' => [
-                                        'title' => esc_html__( 'Top', 'ultraaddons' ),
+                                        'title' => esc_html__( 'Top', 'ultraaddons-elementor-lite' ),
                                         'icon' => 'eicon-arrow-up',
                                 ],
                                 'bottom' => [
-                                        'title' => esc_html__( 'Bottom', 'ultraaddons' ),
+                                        'title' => esc_html__( 'Bottom', 'ultraaddons-elementor-lite' ),
                                         'icon' => 'eicon-arrow-down',
                                 ],
                                
@@ -1010,7 +1010,7 @@ class Info_Box extends Base {
         $this->add_control(
                 'counter_color',
                 [
-                        'label' => __( 'Text Color', 'ultraaddons' ),
+                        'label' => __( 'Text Color', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::COLOR,
                         'default' => '#222',
                         'selectors' => [
@@ -1021,7 +1021,7 @@ class Info_Box extends Base {
         $this->add_control(
                 'counter_bg',
                 [
-                        'label' => __( 'Background Color', 'ultraaddons' ),
+                        'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::COLOR,
                         'default' => '#ddd',
                         'selectors' => [
@@ -1032,7 +1032,7 @@ class Info_Box extends Base {
         $this->add_control(
                 'count_radius',
                 [
-                        'label' => __( 'Border Radius', 'ultraaddons' ),
+                        'label' => __( 'Border Radius', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', '%' ],
                         'selectors' => [
@@ -1044,7 +1044,7 @@ class Info_Box extends Base {
          $this->add_control(
                 'count_padding',
                 [
-                        'label' => __( 'Padding', 'ultraaddons' ),
+                        'label' => __( 'Padding', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', '%' ],
                         'selectors' => [
@@ -1055,7 +1055,7 @@ class Info_Box extends Base {
         $this->add_responsive_control(
                 'counter_size',
                 [
-                        'label' => __( 'Size', 'ultraaddons' ),
+                        'label' => __( 'Size', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SLIDER,
                         'default' => [
                                 'size' => 40,
@@ -1076,7 +1076,7 @@ class Info_Box extends Base {
                 Group_Control_Box_Shadow::get_type(),
                 [
                         'name' => 'count_shadow',
-                        'label' => esc_html__( 'Box Shadow', 'ultraaddons' ),
+                        'label' => esc_html__( 'Box Shadow', 'ultraaddons-elementor-lite' ),
                         'selector' => '{{WRAPPER}} .count-text',
                 ]
         );

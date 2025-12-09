@@ -28,7 +28,7 @@ class Accordion extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua', 'toggle', 'accordion' ];
+        return [ 'ultraaddons-elementor-lite', 'ua', 'toggle', 'accordion' ];
     }
 
     /**
@@ -57,7 +57,7 @@ class Accordion extends Base{
         $this->start_controls_section(
 			'_ua_accordions_preset_section',
 			[
-				'label' => __( 'Preset', 'ultraaddons' ),
+				'label' => __( 'Preset', 'ultraaddons-elementor-lite' ),
                 'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -65,7 +65,7 @@ class Accordion extends Base{
         $this->add_control(
 		    '_ua_accordions_skin',
 		    [
-			    'label' => esc_html__( 'Design Format', 'ultraaddons' ),
+			    'label' => esc_html__( 'Design Format', 'ultraaddons-elementor-lite' ),
 			    'type' => Controls_Manager::SELECT,
 			    'label_block' => false,
 			    'options'   => [
@@ -79,7 +79,7 @@ class Accordion extends Base{
         $this->add_control(
             '_ua_accordions_icon_show',
             [
-                'label'         => esc_html__('Enable Icon', 'ultraaddons'),
+                'label'         => esc_html__('Enable Icon', 'ultraaddons-elementor-lite'),
                 'type'          => Controls_Manager::SWITCHER,
                 'default'       => 'yes',
                 'return_value'  => 'yes',
@@ -88,16 +88,16 @@ class Accordion extends Base{
         $this->add_control(
             '_ua_accordions_icon_type',
             [   
-                'label' => esc_html__('Icon', 'ultraaddons'),
+                'label' => esc_html__('Icon', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::CHOOSE,
                 'label_block' => false,
                 'options' => [
                     'none' => [
-                        'title'     => esc_html__('None', 'ultraaddons'),
+                        'title'     => esc_html__('None', 'ultraaddons-elementor-lite'),
                         'icon'      => 'eicon-ban',
                     ],
                     'icon' => [
-                        'title'     => esc_html__('Icon', 'ultraaddons'),
+                        'title'     => esc_html__('Icon', 'ultraaddons-elementor-lite'),
                         'icon'      => 'eicon-star',
                     ],
                 ],
@@ -110,7 +110,7 @@ class Accordion extends Base{
         $this->add_control(
             '_ua_accordion_selected_icon',
             [
-                'label'             => __( 'Icon', 'ultraaddons' ),
+                'label'             => __( 'Icon', 'ultraaddons-elementor-lite' ),
                 'type'              => Controls_Manager::ICONS,
                 'fa4compatibility'  => 'icon',
                 'default'           => [
@@ -140,7 +140,7 @@ class Accordion extends Base{
          $this->add_control(
              '_ua_accordions_icon_image',
              [   
-                 'label'    => esc_html__('Image', 'ultraaddons'),
+                 'label'    => esc_html__('Image', 'ultraaddons-elementor-lite'),
                  'type'     => Controls_Manager::MEDIA,
                  'default'  => [
                      'url'  => '',
@@ -156,7 +156,7 @@ class Accordion extends Base{
         $this->add_control(
             'selected_active_icon',
             [
-                'label'             => __( 'Icon', 'ultraaddons' ),
+                'label'             => __( 'Icon', 'ultraaddons-elementor-lite' ),
                 'type'              => Controls_Manager::ICONS,
                 'fa4compatibility'  => 'icon_active',
                 'default'       => [
@@ -187,7 +187,7 @@ class Accordion extends Base{
         $this->add_control(
              '_ua_accordions_active_image',
              [   
-                 'label' => esc_html__('Image', 'ultraaddons'),
+                 'label' => esc_html__('Image', 'ultraaddons-elementor-lite'),
                  'type' => Controls_Manager::MEDIA,
                  'default' => [
                      'url' => '',
@@ -209,7 +209,7 @@ class Accordion extends Base{
         $this->start_controls_section(
             '_ua_accordions_content_settings',
             [
-              'label' => esc_html__( 'Content', 'ultraaddons' ),
+              'label' => esc_html__( 'Content', 'ultraaddons-elementor-lite' ),
               'tab' => Controls_Manager::TAB_CONTENT
             ]
         );
@@ -219,10 +219,10 @@ class Accordion extends Base{
 		$repeater->add_control(
 			'_ua_accordions_title',
 			[
-				'label' => __( 'Accordion Title','ultraaddons' ),
+				'label' => __( 'Accordion Title','ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Accordion Title','ultraaddons' ),
-				'placeholder' => __( 'Enter your title','ultraaddons' ),
+				'default' => __( 'Accordion Title','ultraaddons-elementor-lite' ),
+				'placeholder' => __( 'Enter your title','ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
@@ -231,7 +231,7 @@ class Accordion extends Base{
 		$repeater->add_control(
 			'_ua_accordions_show_as_default',
 			[
-                'label' => __('Set as Default','ultraaddons'),
+                'label' => __('Set as Default','ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::SWITCHER,
                 'default' => '',
                 'return_value' => 'yes',
@@ -240,7 +240,7 @@ class Accordion extends Base{
 		$repeater->add_control(
 			'_ua_accordions_content_heading',
 			[
-				'label'     => __( 'Content','ultraaddons' ),
+				'label'     => __( 'Content','ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -251,8 +251,8 @@ class Accordion extends Base{
 			[
 				'label' => 'Description',
 				'type' => Controls_Manager::TEXTAREA,
-				'default' => __( 'Choose your training and register for free. If you are a freelancer, the courses are entirely taken care of, you have nothing to pay and no money to advance.','ultraaddons' ),
-				'placeholder' => __( 'Enter your description','ultraaddons' ),
+				'default' => __( 'Choose your training and register for free. If you are a freelancer, the courses are entirely taken care of, you have nothing to pay and no money to advance.','ultraaddons-elementor-lite' ),
+				'placeholder' => __( 'Enter your description','ultraaddons-elementor-lite' ),
 				'show_label' => true,
                 'rows' => 10,
 			]
@@ -260,7 +260,7 @@ class Accordion extends Base{
         $repeater->add_control(
             '_ua_accordions_image_show',
             [
-                'label' => esc_html__('Enable Image','ultraaddons'),
+                'label' => esc_html__('Enable Image','ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::SWITCHER,
                 'default' => 'yes',
                 'return_value' => 'yes',
@@ -269,7 +269,7 @@ class Accordion extends Base{
         );
         $repeater->add_control(
             '_ua_accordions_image', [
-                'label'      => __('Image','ultraaddons'),
+                'label'      => __('Image','ultraaddons-elementor-lite'),
                 'type'       => Controls_Manager::MEDIA,
                 'default'    => [
                     'url' => Utils::get_placeholder_image_src(),
@@ -283,7 +283,7 @@ class Accordion extends Base{
 		$repeater->add_control(
             '_ua_accordions_button_show',
             [
-                'label' => esc_html__('Enable Button','ultraaddons'),
+                'label' => esc_html__('Enable Button','ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::SWITCHER,
                 'default' => 'yes',
                 'return_value' => 'yes',
@@ -293,10 +293,10 @@ class Accordion extends Base{
 		$repeater->add_control(
 			'_ua_accordions_button_text',
 			[
-				'label' => __( 'Button','ultraaddons' ),
+				'label' => __( 'Button','ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Work With Us','ultraaddons' ),
-				'placeholder' => __( 'Enter your text','ultraaddons' ),
+				'default' => __( 'Work With Us','ultraaddons-elementor-lite' ),
+				'placeholder' => __( 'Enter your text','ultraaddons-elementor-lite' ),
 				'label_block' => true,
                 'condition' => [
                     '_ua_accordions_button_show' => [ 'yes' ],
@@ -306,9 +306,9 @@ class Accordion extends Base{
 		$repeater->add_control(
 			'_ua_accordions_link',
 			[
-				'label' => __( 'Link','ultraaddons' ),
+				'label' => __( 'Link','ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::URL,
-				'placeholder' => __( 'https://your-link.com','ultraaddons' ),
+				'placeholder' => __( 'https://your-link.com','ultraaddons-elementor-lite' ),
                 'condition' => [
                     '_ua_accordions_button_show' => [ 'yes' ],
                 ],
@@ -317,36 +317,36 @@ class Accordion extends Base{
         $repeater->add_control(
             '_ua_accordions_title_size',
             [
-                'label' => __( 'Title HTML Tag','ultraaddons' ),
+                'label' => __( 'Title HTML Tag','ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::CHOOSE,
                 'label_block' => true,
                 'options' => [
                     'h1'  => [
-                        'title' => __( 'H1','ultraaddons' ),
+                        'title' => __( 'H1','ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h1'
                     ],
                     'h2'  => [
-                        'title' => __( 'H2','ultraaddons' ),
+                        'title' => __( 'H2','ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h2'
                     ],
                     'h3'  => [
-                        'title' => __( 'H3','ultraaddons' ),
+                        'title' => __( 'H3','ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h3'
                     ],
                     'h4'  => [
-                        'title' => __( 'H4','ultraaddons' ),
+                        'title' => __( 'H4','ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h4'
                     ],
                     'h5'  => [
-                        'title' => __( 'H5','ultraaddons' ),
+                        'title' => __( 'H5','ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h5'
                     ],
                     'h6'  => [
-                        'title' => __( 'H6','ultraaddons' ),
+                        'title' => __( 'H6','ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h6'
                     ],
                     'p'  => [
-                        'title' => __( 'P','ultraaddons' ),
+                        'title' => __( 'P','ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-paragraph'
                     ],
                 ],
@@ -358,14 +358,14 @@ class Accordion extends Base{
 		$this->add_control(
             '_ua_accordions_list',
             [
-                'label'       => __('Accordions','ultraaddons'),
+                'label'       => __('Accordions','ultraaddons-elementor-lite'),
                 'type'        => \Elementor\Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
                 'default'     => [
-                    ['_ua_accordions_title' => esc_html__('Accordion Title 1','ultraaddons')],
-                    ['_ua_accordions_title' => esc_html__('Accordion Title 2','ultraaddons')],
-                    ['_ua_accordions_title' => esc_html__('Accordion Title 3','ultraaddons')],
-                    ['_ua_accordions_title' => esc_html__('Accordion Title 4','ultraaddons')],
+                    ['_ua_accordions_title' => esc_html__('Accordion Title 1','ultraaddons-elementor-lite')],
+                    ['_ua_accordions_title' => esc_html__('Accordion Title 2','ultraaddons-elementor-lite')],
+                    ['_ua_accordions_title' => esc_html__('Accordion Title 3','ultraaddons-elementor-lite')],
+                    ['_ua_accordions_title' => esc_html__('Accordion Title 4','ultraaddons-elementor-lite')],
                 ],
                 'title_field' => '{{{ _ua_accordions_title }}}',
             ]
@@ -379,14 +379,14 @@ class Accordion extends Base{
         $this->start_controls_section(
             '_ua_accordions_style_general',
             [
-                'label' => esc_html__('General', 'ultraaddons'),
+                'label' => esc_html__('General', 'ultraaddons-elementor-lite'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             '_ua_accordions_padding',
             [
-                'label' => esc_html__('Padding', 'ultraaddons'),
+                'label' => esc_html__('Padding', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -398,7 +398,7 @@ class Accordion extends Base{
         $this->add_responsive_control(
             '_ua_accordions_margin',
             [
-                'label' => esc_html__('Margin Bottom', 'ultraaddons'),
+                'label' => esc_html__('Margin Bottom', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::SLIDER,
                 'default' => [
                     'size' => '',
@@ -421,7 +421,7 @@ class Accordion extends Base{
             Group_Control_Border::get_type(),
             [
                 'name' => '_ua_accordions_item_border',
-                'label' => esc_html__('Border', 'ultraaddons'),
+                'label' => esc_html__('Border', 'ultraaddons-elementor-lite'),
                 'selector' => '{{WRAPPER}} .ua-advance-accordions .ua-accordion-wrapper',
             ]
         );
@@ -441,7 +441,7 @@ class Accordion extends Base{
         $this->start_controls_section(
             '_ua_accordions_title_style_settings',
             [
-                'label' => esc_html__('Title', 'ultraaddons'),
+                'label' => esc_html__('Title', 'ultraaddons-elementor-lite'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -455,7 +455,7 @@ class Accordion extends Base{
         $this->add_responsive_control(
             '_ua_accordions_title_padding',
             [
-                'label' => esc_html__('Padding', 'ultraaddons'),
+                'label' => esc_html__('Padding', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -466,7 +466,7 @@ class Accordion extends Base{
         $this->add_responsive_control(
             '_ua_accordions_icon_size',
             [
-                'label' => __('Icon Size', 'ultraaddons'),
+                'label' => __('Icon Size', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::SLIDER,
                 'default' => [
                     'size' => '',
@@ -491,7 +491,7 @@ class Accordion extends Base{
         $this->add_responsive_control(
             '_ua_accordions_icon_gap',
             [
-                'label' => esc_html__('Icon Gap', 'ultraaddons'),
+                'label' => esc_html__('Icon Gap', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::SLIDER,
                 'default' => [
                     'size' => '',
@@ -518,7 +518,7 @@ class Accordion extends Base{
         $this->start_controls_tabs('_ua_accordions_header_tabs');
 
         $this->start_controls_tab('_ua_accordions_header_normal', 
-        	['label' => esc_html__('Normal', 'ultraaddons')]
+        	['label' => esc_html__('Normal', 'ultraaddons-elementor-lite')]
         );
 
         $this->add_group_control(
@@ -532,7 +532,7 @@ class Accordion extends Base{
         $this->add_control(
             '_ua_accordions_text_color',
             [
-                'label' => esc_html__('Text Color', 'ultraaddons'),
+                'label' => esc_html__('Text Color', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -544,7 +544,7 @@ class Accordion extends Base{
         $this->add_control(
             '_ua_accordions_icon_color',
             [
-                'label' => esc_html__('Icon Color', 'ultraaddons'),
+                'label' => esc_html__('Icon Color', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -561,14 +561,14 @@ class Accordion extends Base{
             Group_Control_Border::get_type(),
             [
                 'name' => '_ua_accordions_border',
-                'label' => esc_html__('Border', 'ultraaddons'),
+                'label' => esc_html__('Border', 'ultraaddons-elementor-lite'),
                 'selector' => '{{WRAPPER}} .ua-advance-accordions .ua-accordion-wrapper .ua-accordion-title',
             ]
         );
         $this->add_responsive_control(
             '_ua_accordions_border_radius',
             [
-                'label' => esc_html__('Border Radius', 'ultraaddons'),
+                'label' => esc_html__('Border Radius', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -580,7 +580,7 @@ class Accordion extends Base{
         $this->end_controls_tab();
 
         $this->start_controls_tab('_ua_accordions_header_hover', 
-        	['label' => esc_html__('Hover', 'ultraaddons')]
+        	['label' => esc_html__('Hover', 'ultraaddons-elementor-lite')]
         );
         
         $this->add_group_control(
@@ -594,7 +594,7 @@ class Accordion extends Base{
         $this->add_control(
             '_ua_accordions_text_color_hover',
             [
-                'label' => esc_html__('Text Color', 'ultraaddons'),
+                'label' => esc_html__('Text Color', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -606,7 +606,7 @@ class Accordion extends Base{
         $this->add_control(
             '_ua_accordions_icon_color_hover',
             [
-                'label' => esc_html__('Icon Color', 'ultraaddons'),
+                'label' => esc_html__('Icon Color', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -622,14 +622,14 @@ class Accordion extends Base{
             Group_Control_Border::get_type(),
             [
                 'name' => '_ua_accordions_border_hover',
-                'label' => esc_html__('Border', 'ultraaddons'),
+                'label' => esc_html__('Border', 'ultraaddons-elementor-lite'),
                 'selector' => '{{WRAPPER}} .ua-advance-accordions .ua-accordion-wrapper .ua-accordion-title:hover',
             ]
         );
         $this->add_responsive_control(
             '_ua_accordions_border_radius_hover',
             [
-                'label' => esc_html__('Border Radius', 'ultraaddons'),
+                'label' => esc_html__('Border Radius', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -640,7 +640,7 @@ class Accordion extends Base{
         $this->end_controls_tab();
 
         $this->start_controls_tab('_ua_accordions_header_active', 
-        	['label' => esc_html__('Active', 'ultraaddons')]
+        	['label' => esc_html__('Active', 'ultraaddons-elementor-lite')]
         );
 
         $this->add_group_control(
@@ -654,7 +654,7 @@ class Accordion extends Base{
         $this->add_control(
             '_ua_accordions_text_color_active',
             [
-                'label' => esc_html__('Text Color', 'ultraaddons'),
+                'label' => esc_html__('Text Color', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -666,7 +666,7 @@ class Accordion extends Base{
         $this->add_control(
             '_ua_accordions_icon_color_active',
             [
-                'label' => esc_html__('Icon Color', 'ultraaddons'),
+                'label' => esc_html__('Icon Color', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -682,7 +682,7 @@ class Accordion extends Base{
             Group_Control_Border::get_type(),
             [
                 'name' => '_ua_accordions_border_active',
-                'label' => esc_html__('Border', 'ultraaddons'),
+                'label' => esc_html__('Border', 'ultraaddons-elementor-lite'),
                 'selector' => '{{WRAPPER}} .ua-advance-accordions .ua-accordion-wrapper .ua-accordion-title.ua-active',
             ]
         );
@@ -690,7 +690,7 @@ class Accordion extends Base{
         $this->add_responsive_control(
             '_ua_accordions_radius_active',
             [
-                'label' => esc_html__('Border Radius', 'ultraaddons'),
+                'label' => esc_html__('Border Radius', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -708,14 +708,14 @@ class Accordion extends Base{
         $this->start_controls_section(
             '_ua_accordions_content_style_settings',
             [
-                'label' => esc_html__('Content', 'ultraaddons'),
+                'label' => esc_html__('Content', 'ultraaddons-elementor-lite'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             '_ua_accordions_content_bg_color',
             [
-                'label' => esc_html__('Background Color', 'ultraaddons'),
+                'label' => esc_html__('Background Color', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -734,7 +734,7 @@ class Accordion extends Base{
         $this->add_responsive_control(
             '_ua_accordions_content_padding',
             [
-                'label' => esc_html__('Padding', 'ultraaddons'),
+                'label' => esc_html__('Padding', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -746,7 +746,7 @@ class Accordion extends Base{
             Group_Control_Border::get_type(),
             [
                 'name' => '_ua_accordions_content_border',
-                'label' => esc_html__('Border', 'ultraaddons'),
+                'label' => esc_html__('Border', 'ultraaddons-elementor-lite'),
                 'selector' => '{{WRAPPER}} .ua-advance-accordions .ua-accordion-wrapper .ua-accordion-content-wrapper',
             ]
         );
@@ -763,7 +763,7 @@ class Accordion extends Base{
         $this->add_control(
             '_ua_accordions_content_heading',
             [
-                'label' => __( 'Description', 'ultraaddons' ),
+                'label' => __( 'Description', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
             ]
@@ -771,7 +771,7 @@ class Accordion extends Base{
         $this->add_control(
             '_ua_accordions_content_text_color',
             [
-                'label' => esc_html__('Text Color', 'ultraaddons'),
+                'label' => esc_html__('Text Color', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -791,19 +791,19 @@ class Accordion extends Base{
         $this->add_responsive_control(
             '_ua_accordions_content_align',
             [
-                'label' => __( 'Alignment', 'ultraaddons' ),
+                'label' => __( 'Alignment', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::CHOOSE,
                 'options' => [
                     'center' => [
-                        'title' => __( 'Center', 'ultraaddons' ),
+                        'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-text-align-center',
                     ],
                     'flex-start' => [
-                        'title' => __( 'Top', 'ultraaddons' ),
+                        'title' => __( 'Top', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-v-align-top',
                     ],
                     'flex-end' => [
-                        'title' => __( 'Bottom', 'ultraaddons' ),
+                        'title' => __( 'Bottom', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-v-align-bottom',
                     ],
                 ],
@@ -815,7 +815,7 @@ class Accordion extends Base{
         $this->add_control(
             '_ua_accordions_button_heading',
             [
-                'label' => __( 'Button', 'ultraaddons' ),
+                'label' => __( 'Button', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
             ]
@@ -824,14 +824,14 @@ class Accordion extends Base{
 
         $this->start_controls_tab( '_ua_accordion_normal_style',
             [ 
-                'label' => esc_html__( 'Style', 'ultraaddons')
+                'label' => esc_html__( 'Style', 'ultraaddons-elementor-lite')
             ] 
         );
 
          $this->add_control(
             '_ua_accordions_button_text_color',
             [
-                'label' => esc_html__('Text Color', 'ultraaddons'),
+                'label' => esc_html__('Text Color', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -843,7 +843,7 @@ class Accordion extends Base{
         $this->add_control(
             '_ua_accordions_button_bg_color',
             [
-                'label' => esc_html__('Background Color', 'ultraaddons'),
+                'label' => esc_html__('Background Color', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -855,7 +855,7 @@ class Accordion extends Base{
             Group_Control_Border::get_type(),
             [
                 'name' => '_ua_accordions_border_button',
-                'label' => esc_html__('Border', 'ultraaddons'),
+                'label' => esc_html__('Border', 'ultraaddons-elementor-lite'),
                 'selector' => '{{WRAPPER}} .ua-advance-accordions .ua-accordion-wrapper .ua-accordion-content-wrapper .ua_accordion_inner_content .ua-accordion-button',
             ]
         );
@@ -863,14 +863,14 @@ class Accordion extends Base{
 
         $this->start_controls_tab( '_ua_accordion_button_hover',
             [ 
-                'label' => esc_html__( 'Hover', 'ultraaddons')
+                'label' => esc_html__( 'Hover', 'ultraaddons-elementor-lite')
             ] 
         );
         
         $this->add_control(
             '_ua_accordions_button_text_color_hover',
             [
-                'label' => esc_html__('Text Color', 'ultraaddons'),
+                'label' => esc_html__('Text Color', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -882,7 +882,7 @@ class Accordion extends Base{
         $this->add_control(
             '_ua_accordions_button_bg_color_hover',
             [
-                'label' => esc_html__('Background Color', 'ultraaddons'),
+                'label' => esc_html__('Background Color', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -894,7 +894,7 @@ class Accordion extends Base{
             Group_Control_Border::get_type(),
             [
                 'name' => '_ua_accordions_border_button_hover',
-                'label' => esc_html__('Border', 'ultraaddons'),
+                'label' => esc_html__('Border', 'ultraaddons-elementor-lite'),
                 'selector' => '{{WRAPPER}} .ua-advance-accordions .ua-accordion-wrapper .ua-accordion-content-wrapper .ua_accordion_inner_content .ua-accordion-button:hover',
             ]
         );
@@ -914,7 +914,7 @@ class Accordion extends Base{
         $this->add_responsive_control(
             '_ua_accordions_button_padding',
             [
-                'label' => esc_html__('Padding', 'ultraaddons'),
+                'label' => esc_html__('Padding', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -925,7 +925,7 @@ class Accordion extends Base{
         $this->add_responsive_control(
             '_ua_accordions_button_margin',
             [
-                'label' => esc_html__('Margin', 'ultraaddons'),
+                'label' => esc_html__('Margin', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::SLIDER,
                 'default' => [
                     'size' => '',
@@ -949,7 +949,7 @@ class Accordion extends Base{
         $this->add_responsive_control(
             '_ua_accordions_button_border_radius',
             [
-                'label' => esc_html__('Border Radius', 'ultraaddons'),
+                'label' => esc_html__('Border Radius', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -970,22 +970,22 @@ class Accordion extends Base{
         $this->start_controls_section(
             '_ua_accordions_icon_style',
             [
-                'label' => esc_html__('Icon', 'ultraaddons'),
+                'label' => esc_html__('Icon', 'ultraaddons-elementor-lite'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
 			'icon_align',
 			[
-				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
+				'label' => esc_html__( 'Alignment', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'title' => esc_html__( 'Left', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-h-align-left',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'title' => esc_html__( 'Right', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-h-align-right',
 					],
 				],
@@ -997,7 +997,7 @@ class Accordion extends Base{
 		$this->add_control(
 			'icon_color',
 			[
-				'label' => esc_html__( 'Color', 'ultraaddons' ),
+				'label' => esc_html__( 'Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ua-icon i' => 'color: {{VALUE}};',
@@ -1009,7 +1009,7 @@ class Accordion extends Base{
 		$this->add_control(
 			'icon_active_color',
 			[
-				'label' => esc_html__( 'Active Color', 'ultraaddons' ),
+				'label' => esc_html__( 'Active Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ua-active .ua-icon i' => 'color: {{VALUE}};',
@@ -1021,7 +1021,7 @@ class Accordion extends Base{
 		$this->add_responsive_control(
 			'icon_space',
 			[
-				'label' => esc_html__( 'Spacing', 'ultraaddons' ),
+				'label' => esc_html__( 'Spacing', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [

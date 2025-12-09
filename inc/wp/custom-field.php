@@ -32,7 +32,7 @@ if( ! function_exists( 'ultraaddons_cmb2_metaboxes' )){
              */
             $cmb = new_cmb2_box( array(
                     'id'            => 'ua_page_template_option',
-                    'title'         => __( 'UltraAddons Template', 'ultraaddons' ),
+                    'title'         => __( 'UltraAddons Template', 'ultraaddons-elementor-lite' ),
                     'object_types'  => $ultraaddons_object_types, // Post type
                     'context'       => 'normal',
                     'priority'      => 'high',
@@ -42,18 +42,18 @@ if( ! function_exists( 'ultraaddons_cmb2_metaboxes' )){
             ) );
             //Layout Topbar
             $choices_topbar = array(
-                ''              => __( 'Not for Template', 'ultraaddons' ),
-                'single-product/sale-flash.php'        => __( 'Sale badge', 'ultraaddons' ),
-                'single-product/title.php'   => __( 'Product Title', 'ultraaddons' ),
-                'single-product/rating.php'   => __( 'Rating', 'ultraaddons' ),
-                'single-product/short-description.php'   => __( 'Short Description', 'ultraaddons' ),
-                'single'   => __( 'Signle', 'ultraaddons' ),
-                'single'   => __( 'Signle', 'ultraaddons' ),
-                'single'   => __( 'Signle', 'ultraaddons' ),
+                ''              => __( 'Not for Template', 'ultraaddons-elementor-lite' ),
+                'single-product/sale-flash.php'        => __( 'Sale badge', 'ultraaddons-elementor-lite' ),
+                'single-product/title.php'   => __( 'Product Title', 'ultraaddons-elementor-lite' ),
+                'single-product/rating.php'   => __( 'Rating', 'ultraaddons-elementor-lite' ),
+                'single-product/short-description.php'   => __( 'Short Description', 'ultraaddons-elementor-lite' ),
+                'single'   => __( 'Signle', 'ultraaddons-elementor-lite' ),
+                'single'   => __( 'Signle', 'ultraaddons-elementor-lite' ),
+                'single'   => __( 'Signle', 'ultraaddons-elementor-lite' ),
                 );
             $cmb->add_field( array(
-                    'name'       => __( 'Choose Template', 'ultraaddons' ),
-                    'desc'       => __( 'Default widget is Free, If you want convert as Premium, Set Pro', 'ultraaddons' ),
+                    'name'       => __( 'Choose Template', 'ultraaddons-elementor-lite' ),
+                    'desc'       => __( 'Default widget is Free, If you want convert as Premium, Set Pro', 'ultraaddons-elementor-lite' ),
                     'id'         => 'ua_page_template',
                     'type'       => 'select',
                     'default'    => '',

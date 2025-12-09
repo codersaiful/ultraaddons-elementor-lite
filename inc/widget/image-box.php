@@ -25,7 +25,7 @@ class Image_Box extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua', 'image box', 'image', 'box','info' ];
+        return [ 'ultraaddons-elementor-lite', 'ua', 'image box', 'image', 'box','info' ];
     }
     
     
@@ -59,7 +59,7 @@ class Image_Box extends Base{
         $this->start_controls_section(
             'general_content',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -67,7 +67,7 @@ class Image_Box extends Base{
     $this->add_control(
         'ua_image_box_image',
         [
-            'label' => __( 'Choose Image', 'ultraaddons' ),
+            'label' => __( 'Choose Image', 'ultraaddons-elementor-lite' ),
             'type' => Controls_Manager::MEDIA,
                 'default' => [
                     'url' => $placeholder_image,//Utils::get_placeholder_image_src(),
@@ -81,7 +81,7 @@ class Image_Box extends Base{
     $this->add_control(
         'icon',
         [
-            'label' => esc_html__( 'Icon', 'ultraaddons' ),
+            'label' => esc_html__( 'Icon', 'ultraaddons-elementor-lite' ),
             'type' => Controls_Manager::ICONS,
             'default' => [
                 'value' => 'fas fa-star',
@@ -94,40 +94,40 @@ class Image_Box extends Base{
     $this->add_control(
             'title_text',
             [
-                    'label' => __( 'Title', 'ultraaddons' ),
+                    'label' => __( 'Title', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::TEXT,
                     'dynamic' => [
                             'active' => true,
                     ],
-                    'default' => __( 'Image Box Title', 'ultraaddons' ),
-                    'placeholder' => __( 'Enter your title', 'ultraaddons' ),
+                    'default' => __( 'Image Box Title', 'ultraaddons-elementor-lite' ),
+                    'placeholder' => __( 'Enter your title', 'ultraaddons-elementor-lite' ),
                     'label_block' => true,
             ]
     );
     $this->add_control(
         'description_text',
         [
-                'label' => __( 'Description', 'ultraaddons' ),
+                'label' => __( 'Description', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => __( 'Al contrario del pensamiento popular, el texto de Lorem Ipsum.', 'ultraaddons' ),
+                'default' => __( 'Al contrario del pensamiento popular, el texto de Lorem Ipsum.', 'ultraaddons-elementor-lite' ),
                 'label_block' => true,
         ]
     );
     $this->add_control(
         '_button_text',
         [
-            'label' => __( 'Button Text', 'ultraaddons' ),
+            'label' => __( 'Button Text', 'ultraaddons-elementor-lite' ),
             'type' => Controls_Manager::TEXT,
-            'default' => __( 'Explore Now', 'ultraaddons' ),
+            'default' => __( 'Explore Now', 'ultraaddons-elementor-lite' ),
             'label_block' => true,
         ]
     );
     $this->add_control(
         '_button_link',
         [
-            'label' => __( 'Link', 'ultraaddons' ),
+            'label' => __( 'Link', 'ultraaddons-elementor-lite' ),
             'type' => Controls_Manager::URL,
-            'placeholder' => __( 'https://your-link.com', 'ultraaddons' ),
+            'placeholder' => __( 'https://your-link.com', 'ultraaddons-elementor-lite' ),
             'show_external' => true,
             'separator' =>'after',
             'default' => [
@@ -148,19 +148,19 @@ class Image_Box extends Base{
         $this->start_controls_section(
              '_ua_general_style',
              [
-                 'label'     => esc_html__( 'Content', 'ultraaddons' ),
+                 'label'     => esc_html__( 'Content', 'ultraaddons-elementor-lite' ),
                  'tab'       => Controls_Manager::TAB_STYLE,
              ]
          );
          $this->add_responsive_control(
             'image_box_style',
                 [
-                    'label'         => esc_html__( 'Style', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Style', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::SELECT,
                     'options' => [
-                            '1'   => __( 'Style-1', 'ultraaddons' ),
-                            '2'   => __( 'Style-2', 'ultraaddons' ),
-                            '3'   => __( 'Style-3', 'ultraaddons' ),
+                            '1'   => __( 'Style-1', 'ultraaddons-elementor-lite' ),
+                            '2'   => __( 'Style-2', 'ultraaddons-elementor-lite' ),
+                            '3'   => __( 'Style-3', 'ultraaddons-elementor-lite' ),
                     ],
                     'default' => '1',
                 ]
@@ -168,19 +168,19 @@ class Image_Box extends Base{
            $this->add_responsive_control(
             'image_box_align',
             [
-                    'label' => __( 'Alignment', 'ultraaddons' ),
+                    'label' => __( 'Alignment', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::CHOOSE,
                     'options' => [
                             'left'    => [
-                                    'title' => __( 'Left', 'ultraaddons' ),
+                                    'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
                                     'icon' => 'eicon-text-align-left',
                             ],
                             'center' => [
-                                    'title' => __( 'Center', 'ultraaddons' ),
+                                    'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
                                     'icon' => 'eicon-text-align-center',
                             ],
                             'right' => [
-                                    'title' => __( 'Right', 'ultraaddons' ),
+                                    'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
                                     'icon' => 'eicon-text-align-right',
                             ],
                     ],
@@ -193,7 +193,7 @@ class Image_Box extends Base{
          
          $this->add_control(
 			'title_color', [
-				'label' => __( 'Title Color', 'ultraaddons' ),
+				'label' => __( 'Title Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-image-box-title' => 'color: {{VALUE}};',
@@ -202,7 +202,7 @@ class Image_Box extends Base{
         );
         $this->add_control(
 			'title_hover_color', [
-				'label' => __( 'Title Hover Color', 'ultraaddons' ),
+				'label' => __( 'Title Hover Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-image-box:hover .ua-image-box-title' => 'color: {{VALUE}};',
@@ -221,7 +221,7 @@ class Image_Box extends Base{
         $this->add_responsive_control(
 			'title_margin',
 			[
-				'label'       => esc_html__( 'Title Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Title Margin', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -239,7 +239,7 @@ class Image_Box extends Base{
 
         $this->add_control(
 			'desc_color', [
-				'label' => __( 'Description Color', 'ultraaddons' ),
+				'label' => __( 'Description Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
                 'separator' =>'before',
 				'selectors' => [
@@ -259,7 +259,7 @@ class Image_Box extends Base{
         $this->add_responsive_control(
 			'desc_margin',
 			[
-				'label'       => esc_html__( 'Description Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Description Margin', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -283,7 +283,7 @@ class Image_Box extends Base{
         $this->start_controls_section(
              '_ua_icon_style',
              [
-                 'label'     => esc_html__( 'Icon', 'ultraaddons' ),
+                 'label'     => esc_html__( 'Icon', 'ultraaddons-elementor-lite' ),
                  'tab'       => Controls_Manager::TAB_STYLE,
                  'condition'=>['image_box_style'=>'1']
              ]
@@ -295,7 +295,7 @@ class Image_Box extends Base{
         $this->start_controls_tab(
             'style_normal_tab',
             [
-                'label' => esc_html__( 'Normal', 'ultraaddons' ),
+                'label' => esc_html__( 'Normal', 'ultraaddons-elementor-lite' ),
             ]
         );
 
@@ -304,7 +304,7 @@ class Image_Box extends Base{
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'icon_bg',
-				'label' => esc_html__( 'Icon Background', 'ultraaddons' ),
+				'label' => esc_html__( 'Icon Background', 'ultraaddons-elementor-lite' ),
 				'types' => [ 'classic', 'gradient'],
                 'exclude' =>['image'],
 				'selector' => '{{WRAPPER}} .ua-image-box-icon',
@@ -312,7 +312,7 @@ class Image_Box extends Base{
 		);
         $this->add_control(
 			'icon_color', [
-				'label' => __( 'Icon Color', 'ultraaddons' ),
+				'label' => __( 'Icon Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-image-box-icon i' => 'color: {{VALUE}};',
@@ -325,14 +325,14 @@ class Image_Box extends Base{
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'icon_border',
-				'label' => esc_html__( 'Border', 'ultraaddons' ),
+				'label' => esc_html__( 'Border', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-image-box-icon',
 			]
 		);
         $this->add_control(
 			'icon_size',
 			[
-				'label' => esc_html__( 'Icon Size', 'ultraaddons' ),
+				'label' => esc_html__( 'Icon Size', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%' ],
 				'range' => [
@@ -356,7 +356,7 @@ class Image_Box extends Base{
         $this->add_control(
 			'icon_wraper_size',
 			[
-				'label' => esc_html__( 'Icon Wraper Size', 'ultraaddons' ),
+				'label' => esc_html__( 'Icon Wraper Size', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%' ],
 				'range' => [
@@ -374,7 +374,7 @@ class Image_Box extends Base{
         $this->add_responsive_control(
 			'icon_radius',
 			[
-				'label'       => esc_html__( 'Icon Box Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Icon Box Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -395,7 +395,7 @@ class Image_Box extends Base{
         $this->start_controls_tab(
             'style_hover_tab',
             [
-                'label' => esc_html__( 'Hover', 'ultraaddons' ),
+                'label' => esc_html__( 'Hover', 'ultraaddons-elementor-lite' ),
             ]
         );
     
@@ -404,7 +404,7 @@ class Image_Box extends Base{
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'icon_bg_hover',
-				'label' => esc_html__( 'Icon Background', 'ultraaddons' ),
+				'label' => esc_html__( 'Icon Background', 'ultraaddons-elementor-lite' ),
 				'types' => [ 'classic', 'gradient'],
                 'exclude' =>['image'],
 				'selector' => '{{WRAPPER}} .ua-image-box-icon:hover',
@@ -415,7 +415,7 @@ class Image_Box extends Base{
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'icon_border_hover',
-				'label' => esc_html__( 'Border', 'ultraaddons' ),
+				'label' => esc_html__( 'Border', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-image-box-icon:hover',
 			]
 		);
@@ -435,7 +435,7 @@ class Image_Box extends Base{
         $this->start_controls_section(
              '_ua_box_style',
              [
-                 'label'     => esc_html__( 'Box', 'ultraaddons' ),
+                 'label'     => esc_html__( 'Box', 'ultraaddons-elementor-lite' ),
                  'tab'       => Controls_Manager::TAB_STYLE,
              ]
          );
@@ -443,7 +443,7 @@ class Image_Box extends Base{
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => '_box_shadow',
-				'label' => __( 'Box Shadow', 'ultraaddons' ),
+				'label' => __( 'Box Shadow', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-image-box',
 			]
 		);
@@ -451,14 +451,14 @@ class Image_Box extends Base{
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'box_border',
-				'label' => esc_html__( 'Border', 'ultraaddons' ),
+				'label' => esc_html__( 'Border', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-image-box',
 			]
 		);
         $this->add_responsive_control(
 			'box_radius',
 			[
-				'label'       => esc_html__( 'Box Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Box Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -476,7 +476,7 @@ class Image_Box extends Base{
         $this->add_responsive_control(
 			'box_padding',
 			[
-				'label'       => esc_html__( 'Box Padding', 'ultraaddons' ),
+				'label'       => esc_html__( 'Box Padding', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -502,7 +502,7 @@ class Image_Box extends Base{
         $this->start_controls_section(
              '_ua_image_style',
              [
-                 'label'     => esc_html__( 'Image', 'ultraaddons' ),
+                 'label'     => esc_html__( 'Image', 'ultraaddons-elementor-lite' ),
                  'tab'       => Controls_Manager::TAB_STYLE,
              ]
          );
@@ -511,7 +511,7 @@ class Image_Box extends Base{
         $this->add_responsive_control(
 			'image_radius',
 			[
-				'label'       => esc_html__( 'Image Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Image Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -528,7 +528,7 @@ class Image_Box extends Base{
         $this->add_responsive_control(
 			'image_padding',
 			[
-				'label'       => esc_html__( 'Image Padding', 'ultraaddons' ),
+				'label'       => esc_html__( 'Image Padding', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -545,7 +545,7 @@ class Image_Box extends Base{
         $this->add_control(
 			'image_width',
 			[
-				'label' => esc_html__( 'Image Width', 'ultraaddons' ),
+				'label' => esc_html__( 'Image Width', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%' ],
 				'range' => [
@@ -564,7 +564,7 @@ class Image_Box extends Base{
         $this->add_control(
 			'image_height',
 			[
-				'label' => esc_html__( 'Image Height', 'ultraaddons' ),
+				'label' => esc_html__( 'Image Height', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%' ],
 				'range' => [
@@ -593,7 +593,7 @@ class Image_Box extends Base{
         $this->start_controls_section(
              '_ua_button_style',
              [
-                 'label'     => esc_html__( 'Button', 'ultraaddons' ),
+                 'label'     => esc_html__( 'Button', 'ultraaddons-elementor-lite' ),
                  'tab'       => Controls_Manager::TAB_STYLE,
                  //'condition'=>['image_box_style'=>'2'],
                  'conditions' => [
@@ -617,7 +617,7 @@ class Image_Box extends Base{
         $this->start_controls_tab(
             'btn_style_normal_tab',
             [
-                'label' => esc_html__( 'Normal', 'ultraaddons' ),
+                'label' => esc_html__( 'Normal', 'ultraaddons-elementor-lite' ),
             ]
         );
 
@@ -635,7 +635,7 @@ class Image_Box extends Base{
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'button_bg',
-				'label' => esc_html__( 'Button Background', 'ultraaddons' ),
+				'label' => esc_html__( 'Button Background', 'ultraaddons-elementor-lite' ),
 				'types' => [ 'classic', 'gradient'],
                 'exclude' =>['image'],
 				'selector' => '{{WRAPPER}} .ua-img-box-button',
@@ -646,7 +646,7 @@ class Image_Box extends Base{
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'button_border',
-				'label' => esc_html__( 'Border', 'ultraaddons' ),
+				'label' => esc_html__( 'Border', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-img-box-button',
 			]
 		);
@@ -654,7 +654,7 @@ class Image_Box extends Base{
         $this->add_responsive_control(
 			'button_radius',
 			[
-				'label'       => esc_html__( 'Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -675,7 +675,7 @@ class Image_Box extends Base{
         $this->start_controls_tab(
             'btn_style_hover_tab',
             [
-                'label' => esc_html__( 'Hover', 'ultraaddons' ),
+                'label' => esc_html__( 'Hover', 'ultraaddons-elementor-lite' ),
             ]
         );
     
@@ -684,7 +684,7 @@ class Image_Box extends Base{
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'button_bg_hover',
-				'label' => esc_html__( 'Button Background', 'ultraaddons' ),
+				'label' => esc_html__( 'Button Background', 'ultraaddons-elementor-lite' ),
 				'types' => [ 'classic', 'gradient'],
                 'exclude' =>['image'],
 				'selector' => '{{WRAPPER}} .ua-img-box-button:hover',
@@ -695,7 +695,7 @@ class Image_Box extends Base{
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'button_border_hover',
-				'label' => esc_html__( 'Border', 'ultraaddons' ),
+				'label' => esc_html__( 'Border', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-img-box-button:hover',
 			]
 		);

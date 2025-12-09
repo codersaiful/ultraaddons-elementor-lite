@@ -85,7 +85,7 @@ class Moving_Letters extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua','animation', 'animate', 'dynamic', 'text', 'heading', 'anime', 'moving', 'letters' ];
+        return [ 'ultraaddons-elementor-lite', 'ua','animation', 'animate', 'dynamic', 'text', 'heading', 'anime', 'moving', 'letters' ];
     }
     
     
@@ -114,59 +114,59 @@ class Moving_Letters extends Base{
         $this->start_controls_section(
             'general_content',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
         $this->add_control(
 			'anim_type',
 			[
-				'label' => __( 'Animation Type', 'ultraaddons' ),
+				'label' => __( 'Animation Type', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => '1',
 				'frontend_available' => true,
 				'options' => [
-					'1' => __( 'Animation-1', 'ultraaddons' ),
-					'2' => __( 'Animation-2', 'ultraaddons' ),
-					'3' => __( 'Animation-3', 'ultraaddons' ),
-					'4' => __( 'Animation-4', 'ultraaddons' ),
-					'5' => __( 'Animation-5', 'ultraaddons' ),
-					'6' => __( 'Animation-6', 'ultraaddons' ),
-					'7' => __( 'Animation-7', 'ultraaddons' ),
-					'8' => __( 'Animation-8', 'ultraaddons' ),
-					'9' => __( 'Animation-9', 'ultraaddons' ),
-					'10' => __( 'Animation-10', 'ultraaddons' ),
-					'11' => __( 'Animation-11', 'ultraaddons' ),
-					'12' => __( 'Animation-12', 'ultraaddons' ),
-					'13' => __( 'Animation-13', 'ultraaddons' ),
-					'14' => __( 'Animation-14', 'ultraaddons' ),
-					'15' => __( 'Animation-15', 'ultraaddons' ),
-					'16' => __( 'Animation-16', 'ultraaddons' ),
+					'1' => __( 'Animation-1', 'ultraaddons-elementor-lite' ),
+					'2' => __( 'Animation-2', 'ultraaddons-elementor-lite' ),
+					'3' => __( 'Animation-3', 'ultraaddons-elementor-lite' ),
+					'4' => __( 'Animation-4', 'ultraaddons-elementor-lite' ),
+					'5' => __( 'Animation-5', 'ultraaddons-elementor-lite' ),
+					'6' => __( 'Animation-6', 'ultraaddons-elementor-lite' ),
+					'7' => __( 'Animation-7', 'ultraaddons-elementor-lite' ),
+					'8' => __( 'Animation-8', 'ultraaddons-elementor-lite' ),
+					'9' => __( 'Animation-9', 'ultraaddons-elementor-lite' ),
+					'10' => __( 'Animation-10', 'ultraaddons-elementor-lite' ),
+					'11' => __( 'Animation-11', 'ultraaddons-elementor-lite' ),
+					'12' => __( 'Animation-12', 'ultraaddons-elementor-lite' ),
+					'13' => __( 'Animation-13', 'ultraaddons-elementor-lite' ),
+					'14' => __( 'Animation-14', 'ultraaddons-elementor-lite' ),
+					'15' => __( 'Animation-15', 'ultraaddons-elementor-lite' ),
+					'16' => __( 'Animation-16', 'ultraaddons-elementor-lite' ),
 				],
 			]
 		);
         $this->add_control(
 			'anime_title_1', [
-				'label' => __( 'Text', 'ultraaddons' ),
+				'label' => __( 'Text', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Ultra Addons' , 'ultraaddons' ),
+				'default' => __( 'Ultra Addons' , 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
 
         $this->add_control(
 			'anime_title_2', [
-				'label' => __( 'Text 2', 'ultraaddons' ),
+				'label' => __( 'Text 2', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( '!' , 'ultraaddons' ),
+				'default' => __( '!' , 'ultraaddons-elementor-lite' ),
                 'condition' =>['anim_type' => ['4', '5','8','15']]
 			]
 		);
         $this->add_control(
 			'anime_title_3', [
-				'label' => __( 'Text 3', 'ultraaddons' ),
+				'label' => __( 'Text 3', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Ultra' , 'ultraaddons' ),
+				'default' => __( 'Ultra' , 'ultraaddons-elementor-lite' ),
                 'condition' =>['anim_type' => ['4', '5']]
 			]
 		);
@@ -183,26 +183,26 @@ class Moving_Letters extends Base{
         $this->start_controls_section(
             'general_style',
             [
-                'label'     => esc_html__( 'Style', 'ultraaddons' ),
+                'label'     => esc_html__( 'Style', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'text_alignment',
                 [
-                    'label'         => esc_html__( 'Alignment', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Alignment', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::CHOOSE,
                     'options' => [
                             'left' => [
-                                    'title' => __( 'Left', 'ultraaddons' ),
+                                    'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
                                     'icon' => 'eicon-text-align-left',
                             ],
                             'center' => [
-                                    'title' => __( 'Center', 'ultraaddons' ),
+                                    'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
                                     'icon' => 'eicon-text-align-center',
                             ],
                             'right' => [
-                                    'title' => __( 'Right', 'ultraaddons' ),
+                                    'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
                                     'icon' => 'eicon-text-align-right',
                             ],
                     ],
@@ -215,7 +215,7 @@ class Moving_Letters extends Base{
         );   
         $this->add_control(
 			'_text_color', [
-				'label' => __( 'Text Color', 'ultraaddons' ),
+				'label' => __( 'Text Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'=>'#333',
 				'selectors' => [
@@ -237,14 +237,14 @@ class Moving_Letters extends Base{
 			Group_Control_Text_Shadow::get_type(),
 			[
 				'name' => 'text_shadow',
-				'label' => __( 'Text Shadow', 'ultraaddons' ),
+				'label' => __( 'Text Shadow', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-ml',
 			]
 		);
         $this->add_control(
 			'_line_height',
 			[
-				'label' => __( 'Line Height', 'ultraaddons' ),
+				'label' => __( 'Line Height', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px'],
 				'range' => [
@@ -265,7 +265,7 @@ class Moving_Letters extends Base{
 		);
         $this->add_control(
 			'_line_color', [
-				'label' => __( 'Line Color', 'ultraaddons' ),
+				'label' => __( 'Line Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'=>'#333',
 				'selectors' => [

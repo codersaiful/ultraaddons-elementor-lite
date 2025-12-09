@@ -37,7 +37,7 @@ class Dual_Color_Heading extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua', 'heading', 'dual', 'header', 'title' ];
+        return [ 'ultraaddons-elementor-lite', 'ua', 'heading', 'dual', 'header', 'title' ];
     }
 	
 	 /**
@@ -62,25 +62,25 @@ class Dual_Color_Heading extends Base{
         $this->start_controls_section(
             '_ua_dual_heading_content',
             [
-                'label'     => esc_html__( 'Content', 'ultraaddons' ),
+                'label'     => esc_html__( 'Content', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
 		$this->add_control(
 			'_ua_dual_tag_selection',
 			[
-				'label'   => esc_html__( 'Select Tag', 'ultraaddons' ),
+				'label'   => esc_html__( 'Select Tag', 'ultraaddons-elementor-lite' ),
 				'type'    => Controls_Manager::SELECT,
 				'options' => [
-					'h1'   => esc_html__( 'H1', 'ultraaddons' ),
-					'h2'   => esc_html__( 'H2', 'ultraaddons' ),
-					'h3'   => esc_html__( 'H3', 'ultraaddons' ),
-					'h4'   => esc_html__( 'H4', 'ultraaddons' ),
-					'h5'   => esc_html__( 'H5', 'ultraaddons' ),
-					'h6'   => esc_html__( 'H6', 'ultraaddons' ),
-					'div'  => esc_html__( 'div', 'ultraaddons' ),
-					'span' => esc_html__( 'span', 'ultraaddons' ),
-					'p'    => esc_html__( 'p', 'ultraaddons' ),
+					'h1'   => esc_html__( 'H1', 'ultraaddons-elementor-lite' ),
+					'h2'   => esc_html__( 'H2', 'ultraaddons-elementor-lite' ),
+					'h3'   => esc_html__( 'H3', 'ultraaddons-elementor-lite' ),
+					'h4'   => esc_html__( 'H4', 'ultraaddons-elementor-lite' ),
+					'h5'   => esc_html__( 'H5', 'ultraaddons-elementor-lite' ),
+					'h6'   => esc_html__( 'H6', 'ultraaddons-elementor-lite' ),
+					'div'  => esc_html__( 'div', 'ultraaddons-elementor-lite' ),
+					'span' => esc_html__( 'span', 'ultraaddons-elementor-lite' ),
+					'p'    => esc_html__( 'p', 'ultraaddons-elementor-lite' ),
 				],
 				'default' => 'h3',
 			]
@@ -90,31 +90,31 @@ class Dual_Color_Heading extends Base{
 			'_ua_dual_before_heading_text',
 			[
 
-				'label'    => esc_html__( 'Before Text', 'ultraaddons' ),
+				'label'    => esc_html__( 'Before Text', 'ultraaddons-elementor-lite' ),
 				'type'     => Controls_Manager::TEXT,
 				'selector' => '{{WRAPPER}} .ua-heading-text',
 				'dynamic'  => [
 					'active' => true,
 				],
-				'default'  => esc_html__( 'I love', 'ultraaddons' ),
+				'default'  => esc_html__( 'I love', 'ultraaddons-elementor-lite' ),
 			]
 		);
 		$this->add_control(
 			'_ua_dual_second_heading_text',
 			[
-				'label'    => esc_html__( 'Highlighted Text', 'ultraaddons' ),
+				'label'    => esc_html__( 'Highlighted Text', 'ultraaddons-elementor-lite' ),
 				'type'     => Controls_Manager::TEXT,
 				'selector' => '{{WRAPPER}} .ua-highlight-text',
 				'dynamic'  => [
 					'active' => true,
 				],
-				'default'  => esc_html__( 'this website', 'ultraaddons' ),
+				'default'  => esc_html__( 'this website', 'ultraaddons-elementor-lite' ),
 			]
 		);
 		$this->add_control(
 			'_ua_dual_after_heading_text',
 			[
-				'label'    => esc_html__( 'After Text', 'ultraaddons' ),
+				'label'    => esc_html__( 'After Text', 'ultraaddons-elementor-lite' ),
 				'type'     => Controls_Manager::TEXT,
 				'dynamic'  => [
 					'active' => true,
@@ -125,9 +125,9 @@ class Dual_Color_Heading extends Base{
 		$this->add_control(
 			'_ua_dual_heading_link',
 			[
-				'label'       => esc_html__( 'Link', 'ultraaddons' ),
+				'label'       => esc_html__( 'Link', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::URL,
-				'placeholder' => esc_html__( 'https://your-link.com', 'ultraaddons' ),
+				'placeholder' => esc_html__( 'https://your-link.com', 'ultraaddons-elementor-lite' ),
 				'dynamic'     => [
 					'active' => true,
 				],
@@ -142,7 +142,7 @@ class Dual_Color_Heading extends Base{
         $this->start_controls_section(
             '_ua_dual_color_heading_style',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -150,19 +150,19 @@ class Dual_Color_Heading extends Base{
 		$this->add_responsive_control(
 			'dual_color_alignment',
 			[
-				'label'     => esc_html__( 'Alignment', 'ultraaddons' ),
+				'label'     => esc_html__( 'Alignment', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::CHOOSE,
 				'options'   => [
 					'left'   => [
-						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'title' => esc_html__( 'Left', 'ultraaddons-elementor-lite' ),
 						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'ultraaddons' ),
+						'title' => esc_html__( 'Center', 'ultraaddons-elementor-lite' ),
 						'icon'  => 'eicon-text-align-center',
 					],
 					'right'  => [
-						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'title' => esc_html__( 'Right', 'ultraaddons-elementor-lite' ),
 						'icon'  => 'eicon-text-align-right',
 					],
 				],
@@ -176,10 +176,10 @@ class Dual_Color_Heading extends Base{
 		$this->add_control(
 			'_ua_heading_layout',
 			[
-				'label'        => esc_html__( 'Layout', 'ultraaddons' ),
+				'label'        => esc_html__( 'Layout', 'ultraaddons-elementor-lite' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Stack', 'ultraaddons' ),
-				'label_off'    => esc_html__( 'Inline', 'ultraaddons' ),
+				'label_on'     => esc_html__( 'Stack', 'ultraaddons-elementor-lite' ),
+				'label_off'    => esc_html__( 'Inline', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default'      => 'no',
 				'prefix_class' => 'ua-stack-desktop-',
@@ -188,14 +188,14 @@ class Dual_Color_Heading extends Base{
 		$this->add_control(
 			'_ua_heading_stack_on',
 			[
-				'label'        => esc_html__( 'Responsive Support', 'ultraaddons' ),
-				'description'  => esc_html__( 'Choose on what breakpoint the heading will stack.', 'ultraaddons' ),
+				'label'        => esc_html__( 'Responsive Support', 'ultraaddons-elementor-lite' ),
+				'description'  => esc_html__( 'Choose on what breakpoint the heading will stack.', 'ultraaddons-elementor-lite' ),
 				'type'         => Controls_Manager::SELECT,
 				'default'      => 'none',
 				'options'      => [
-					'none'   => esc_html__( 'No', 'ultraaddons' ),
-					'tablet' => esc_html__( 'For Tablet & Mobile', 'ultraaddons' ),
-					'mobile' => esc_html__( 'For Mobile Only', 'ultraaddons' ),
+					'none'   => esc_html__( 'No', 'ultraaddons-elementor-lite' ),
+					'tablet' => esc_html__( 'For Tablet & Mobile', 'ultraaddons-elementor-lite' ),
+					'mobile' => esc_html__( 'For Mobile Only', 'ultraaddons-elementor-lite' ),
 				],
 				'condition'    => [
 					'_ua_heading_layout!' => 'yes',
@@ -206,7 +206,7 @@ class Dual_Color_Heading extends Base{
 		$this->add_responsive_control(
 			'_ua_heading_margin',
 			[
-				'label'      => esc_html__( 'Spacing Between Headings', 'ultraaddons' ),
+				'label'      => esc_html__( 'Spacing Between Headings', 'ultraaddons-elementor-lite' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'range'      => [
@@ -238,7 +238,7 @@ class Dual_Color_Heading extends Base{
         $this->start_controls_section(
 			'heading_style_fields',
 			[
-				'label' => esc_html__( 'Heading Style', 'ultraaddons' ),
+				'label' => esc_html__( 'Heading Style', 'ultraaddons-elementor-lite' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -248,14 +248,14 @@ class Dual_Color_Heading extends Base{
 		$this->start_controls_tab(
 			'tab_heading',
 			[
-				'label' => esc_html__( 'Normal', 'ultraaddons' ),
+				'label' => esc_html__( 'Normal', 'ultraaddons-elementor-lite' ),
 			]
 		);
 
 		$this->add_control(
 			'first_heading_color',
 			[
-				'label'     => esc_html__( 'Text Color', 'ultraaddons' ),
+				'label'     => esc_html__( 'Text Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#032e42',
 				'selectors' => [
@@ -276,14 +276,14 @@ class Dual_Color_Heading extends Base{
 		$this->start_controls_tab(
 			'tab_highlight',
 			[
-				'label' => esc_html__( 'Highlight', 'ultraaddons' ),
+				'label' => esc_html__( 'Highlight', 'ultraaddons-elementor-lite' ),
 			]
 		);
 
 		$this->add_control(
 			'second_heading_color',
 			[
-				'label'     => esc_html__( 'Highlight Color', 'ultraaddons' ),
+				'label'     => esc_html__( 'Highlight Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#d83030',
 				'selectors' => [

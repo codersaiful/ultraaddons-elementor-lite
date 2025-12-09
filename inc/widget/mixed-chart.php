@@ -65,7 +65,7 @@ class Mixed_Chart extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua', 'chart', 'mix','mixed', 'bar','line' ];
+        return [ 'ultraaddons-elementor-lite', 'ua', 'chart', 'mix','mixed', 'bar','line' ];
     }
     
     
@@ -95,17 +95,17 @@ class Mixed_Chart extends Base{
         $this->start_controls_section(
             'general_content',
             [
-                'label'     => esc_html__( 'Content', 'ultraaddons' ),
+                'label'     => esc_html__( 'Content', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
          $this->add_control(
 			'show_title',
 			[
-				'label' => esc_html__( 'Custom Title', 'ultraaddons' ),
+				'label' => esc_html__( 'Custom Title', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Show', 'ultraaddons' ),
-				'label_off' => esc_html__( 'Hide', 'ultraaddons' ),
+				'label_on' => esc_html__( 'Show', 'ultraaddons-elementor-lite' ),
+				'label_off' => esc_html__( 'Hide', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'no',
 			]
@@ -113,9 +113,9 @@ class Mixed_Chart extends Base{
          $this->add_control(
 			'chart_custom_title',
 			[
-				'label' => __( 'Custom Title', 'ultraaddons' ),
+				'label' => __( 'Custom Title', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Ultra Addons', 'ultraaddons' ),
+				'default' => __( 'Ultra Addons', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
                 'condition'=>[
                     'show_title'=>'yes',
@@ -126,7 +126,7 @@ class Mixed_Chart extends Base{
          $this->add_control(
 			'chart_description',
 			[
-				'label' => __( 'Description', 'ultraaddons' ),
+				'label' => __( 'Description', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'label_block' => true,
                 'separator' => 'after',
@@ -139,9 +139,9 @@ class Mixed_Chart extends Base{
         $this->add_control(
 			'chart_title',
 			[
-				'label' => __( 'Chart Title', 'ultraaddons' ),
+				'label' => __( 'Chart Title', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Ultra Addons Chart Title', 'ultraaddons' ),
+				'default' => __( 'Ultra Addons Chart Title', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
                 'frontend_available' => true,
 			]
@@ -149,9 +149,9 @@ class Mixed_Chart extends Base{
         $this->add_control(
 			'bar_legend_label',
 			[
-				'label' => __( 'Bar Chart Legend Label', 'ultraaddons' ),
+				'label' => __( 'Bar Chart Legend Label', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Ultra Addons', 'ultraaddons' ),
+				'default' => __( 'Ultra Addons', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
                 'frontend_available' => true,
 			]
@@ -159,9 +159,9 @@ class Mixed_Chart extends Base{
         $this->add_control(
 			'line_legend_label',
 			[
-				'label' => __( 'Line Chart Legend Label', 'ultraaddons' ),
+				'label' => __( 'Line Chart Legend Label', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Woo Product Table', 'ultraaddons' ),
+				'default' => __( 'Woo Product Table', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
                 'frontend_available' => true,
 			]
@@ -171,32 +171,32 @@ class Mixed_Chart extends Base{
 
 		$repeater->add_control(
 			'labels', [
-				'label' => esc_html__( 'Labels', 'ultraaddons' ),
+				'label' => esc_html__( 'Labels', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'January' , 'ultraaddons' ),
+				'default' => esc_html__( 'January' , 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
         $repeater->add_control(
 			'bar_data', [
-				'label' => esc_html__( 'Bar Chart Data', 'ultraaddons' ),
+				'label' => esc_html__( 'Bar Chart Data', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::NUMBER,
-				'default' => esc_html__( '10' , 'ultraaddons' ),
+				'default' => esc_html__( '10' , 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
         $repeater->add_control(
 			'backgroundColor', [
-				'label' => __( 'Background Color', 'ultraaddons' ),
+				'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
                 'separator' =>'after'
 			]
         );
         $repeater->add_control(
 			'line_data', [
-				'label' => esc_html__( 'Line Chart Data', 'ultraaddons' ),
+				'label' => esc_html__( 'Line Chart Data', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::NUMBER,
-				'default' => esc_html__( '10' , 'ultraaddons' ),
+				'default' => esc_html__( '10' , 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
@@ -204,28 +204,28 @@ class Mixed_Chart extends Base{
         $this->add_control(
 			'data_list',
 			[
-				'label' => esc_html__( 'Bar Chart Data', 'ultraaddons' ),
+				'label' => esc_html__( 'Bar Chart Data', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
                 'frontend_available' => true,
 				'default' => [
 					[
-						'labels' => esc_html__( 'January', 'ultraaddons' ),
-						'bar_data' => esc_html__( '10', 'ultraaddons' ),
+						'labels' => esc_html__( 'January', 'ultraaddons-elementor-lite' ),
+						'bar_data' => esc_html__( '10', 'ultraaddons-elementor-lite' ),
                         'backgroundColor' => '#138FE4',
-                        'line_data' => esc_html__( '12', 'ultraaddons' ),
+                        'line_data' => esc_html__( '12', 'ultraaddons-elementor-lite' ),
 					],
 					[
-						'labels' => esc_html__( 'Februay', 'ultraaddons' ),
-                        'bar_data' => esc_html__( '12', 'ultraaddons' ),
+						'labels' => esc_html__( 'Februay', 'ultraaddons-elementor-lite' ),
+                        'bar_data' => esc_html__( '12', 'ultraaddons-elementor-lite' ),
                         'backgroundColor' => '#50C602',
-                        'line_data' => esc_html__( '14', 'ultraaddons' ),
+                        'line_data' => esc_html__( '14', 'ultraaddons-elementor-lite' ),
 					],
                     [
-					    'labels' => esc_html__( 'March', 'ultraaddons' ),
-                        'bar_data' => esc_html__( '20', 'ultraaddons' ),
+					    'labels' => esc_html__( 'March', 'ultraaddons-elementor-lite' ),
+                        'bar_data' => esc_html__( '20', 'ultraaddons-elementor-lite' ),
                         'backgroundColor' => '#CCE71E',
-                        'line_data' => esc_html__( '22', 'ultraaddons' ),
+                        'line_data' => esc_html__( '22', 'ultraaddons-elementor-lite' ),
 					],
 				],
 				'title_field' => '{{{ labels }}}',
@@ -239,13 +239,13 @@ class Mixed_Chart extends Base{
         $this->start_controls_section(
             'chart_style',
             [
-                'label'     => esc_html__( 'Chart Style', 'ultraaddons' ),
+                'label'     => esc_html__( 'Chart Style', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
 			'borderColor', [
-				'label' => __( 'Line Color', 'ultraaddons' ),
+				'label' => __( 'Line Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
                 'frontend_available' => true,
                 'default'           => '#959595',
@@ -254,7 +254,7 @@ class Mixed_Chart extends Base{
         $this->add_control(
             'borderWidth',
                 [
-                    'label' => esc_html__( 'Line Width', 'ultraaddons' ),
+                    'label' => esc_html__( 'Line Width', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::NUMBER,
                     'min' => 1,
                     'max' => 20,
@@ -266,7 +266,7 @@ class Mixed_Chart extends Base{
         $this->add_control(
             'pointBorderWidth',
                 [
-                    'label' => esc_html__( 'Line Point Width', 'ultraaddons' ),
+                    'label' => esc_html__( 'Line Point Width', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::NUMBER,
                     'min' => 1,
                     'max' => 20,
@@ -279,10 +279,10 @@ class Mixed_Chart extends Base{
         $this->add_control(
 			'fill_color',
 			[
-				'label' => __( 'Fill Color', 'ultraaddons' ),
+				'label' => __( 'Fill Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'no',
                 'frontend_available' => true,
@@ -291,7 +291,7 @@ class Mixed_Chart extends Base{
 		);
         $this->add_control(
 			'fill_color_bg', [
-				'label' => __( 'Fill Color', 'ultraaddons' ),
+				'label' => __( 'Fill Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
                 'default'   =>'#ddd',
                 'frontend_available' => true,
@@ -300,7 +300,7 @@ class Mixed_Chart extends Base{
         );
         $this->add_control(
 			'x_ticks_color', [
-				'label' => __( 'X Axis Label Color', 'ultraaddons' ),
+				'label' => __( 'X Axis Label Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
                 'default'   =>'#ddd',
                 'frontend_available' => true,
@@ -309,7 +309,7 @@ class Mixed_Chart extends Base{
         );
         $this->add_control(
 			'y_ticks_color', [
-				'label' => __( 'Y Axis Label Color', 'ultraaddons' ),
+				'label' => __( 'Y Axis Label Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
                 'default'   =>'#ddd',
                 'frontend_available' => true,
@@ -317,7 +317,7 @@ class Mixed_Chart extends Base{
         );
         $this->add_control(
 			'x_grid_color', [
-				'label' => __( 'X Grid Color', 'ultraaddons' ),
+				'label' => __( 'X Grid Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
                 'default'   =>'#DEDEDE',
                 'frontend_available' => true,
@@ -326,7 +326,7 @@ class Mixed_Chart extends Base{
         );
         $this->add_control(
 			'y_grid_color', [
-				'label' => __( 'Y Grid Color', 'ultraaddons' ),
+				'label' => __( 'Y Grid Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
                 'default'   =>'#DEDEDE',
                 'frontend_available' => true,
@@ -339,13 +339,13 @@ class Mixed_Chart extends Base{
         $this->start_controls_section(
             'legend_style',
             [
-                'label'     => esc_html__( 'Legend Style', 'ultraaddons' ),
+                'label'     => esc_html__( 'Legend Style', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
 			'legend_color', [
-				'label' => __( 'Legend Color', 'ultraaddons' ),
+				'label' => __( 'Legend Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
                 'default'   =>'#ddd',
                 'frontend_available' => true,
@@ -354,23 +354,23 @@ class Mixed_Chart extends Base{
         $this->add_responsive_control(
 			'legend_position',
 			[
-				'label' => esc_html__( 'Legend Position', 'ultraaddons' ),
+				'label' => esc_html__( 'Legend Position', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'top' => [
-						'title' => esc_html__( 'Top', 'ultraaddons' ),
+						'title' => esc_html__( 'Top', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-v-align-top',
 					],
                     'right' => [
-						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'title' => esc_html__( 'Right', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-h-align-right',
 					],
                     'bottom' => [
-						'title' => esc_html__( 'Bottom', 'ultraaddons' ),
+						'title' => esc_html__( 'Bottom', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-v-align-bottom',
 					],
 					'left' => [
-						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'title' => esc_html__( 'Left', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-h-align-left',
 					],
 				],
@@ -381,10 +381,10 @@ class Mixed_Chart extends Base{
         $this->add_control(
 			'display_legend',
 			[
-				'label' => esc_html__( 'Legend Display', 'ultraaddons' ),
+				'label' => esc_html__( 'Legend Display', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Show', 'ultraaddons' ),
-				'label_off' => esc_html__( 'Hide', 'ultraaddons' ),
+				'label_on' => esc_html__( 'Show', 'ultraaddons-elementor-lite' ),
+				'label_off' => esc_html__( 'Hide', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
                 'frontend_available' => true,
@@ -398,13 +398,13 @@ class Mixed_Chart extends Base{
         $this->start_controls_section(
             'box_style',
             [
-                'label'     => esc_html__( 'Box Style', 'ultraaddons' ),
+                'label'     => esc_html__( 'Box Style', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
 			'box_bg', [
-				'label' => __( 'Box Background', 'ultraaddons' ),
+				'label' => __( 'Box Background', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
                 'default'   =>'#fff',
                 'selectors' => [
@@ -416,7 +416,7 @@ class Mixed_Chart extends Base{
         $this->add_responsive_control(
             'box_padding',
             [
-                    'label' => __( 'Padding', 'ultraaddons' ),
+                    'label' => __( 'Padding', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px' ],
                     'default'   => [
@@ -438,26 +438,26 @@ class Mixed_Chart extends Base{
         $this->start_controls_section(
             'title_style',
             [
-                'label'     => esc_html__( 'Title & Description', 'ultraaddons' ),
+                'label'     => esc_html__( 'Title & Description', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
          $this->add_control(
             'content_align',
                 [
-                    'label'         => esc_html__( 'Align', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Align', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::CHOOSE,
                     'options' => [
                             'left' => [
-                                    'title' => __( 'Left', 'ultraaddons' ),
+                                    'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
                                     'icon' => 'eicon-text-align-left',
                             ],
                             'center' => [
-                                    'title' => __( 'Center', 'ultraaddons' ),
+                                    'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
                                     'icon' => 'eicon-text-align-center',
                             ],
                             'right' => [
-                                    'title' => __( 'Right', 'ultraaddons' ),
+                                    'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
                                     'icon' => 'eicon-text-align-right',
                             ],
                     ],
@@ -471,7 +471,7 @@ class Mixed_Chart extends Base{
          $this->add_control(
 			'_ua_chart_title_tag',
 			[
-				'label' => esc_html__( 'Select Title Tag', 'ultraaddons' ),
+				'label' => esc_html__( 'Select Title Tag', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'h1' => 'H1',
@@ -497,7 +497,7 @@ class Mixed_Chart extends Base{
         );
         $this->add_control(
 			'chart_title_color', [
-				'label' => __( 'Title Color', 'ultraaddons' ),
+				'label' => __( 'Title Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					'{{WRAPPER}} .chart-title' => 'color: {{VALUE}};',
@@ -508,7 +508,7 @@ class Mixed_Chart extends Base{
         $this->add_responsive_control(
             'title_padding',
             [
-                    'label' => __( 'Title Margin', 'ultraaddons' ),
+                    'label' => __( 'Title Margin', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px' ],
                     'separator'  => 'after',
@@ -526,7 +526,7 @@ class Mixed_Chart extends Base{
         );
         $this->add_control(
 			'chart_desc_color', [
-				'label' => __( 'Description Color', 'ultraaddons' ),
+				'label' => __( 'Description Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					'{{WRAPPER}} .chart-desc' => 'color: {{VALUE}};',

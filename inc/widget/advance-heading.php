@@ -26,7 +26,7 @@ class Advance_Heading extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons','ua', 'heading', 'header', 'title' ];
+        return [ 'ultraaddons-elementor-lite','ua', 'heading', 'header', 'title' ];
     }
     
     
@@ -107,7 +107,7 @@ class Advance_Heading extends Base{
         $this->start_controls_section(
             'avd_general_content',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -115,10 +115,10 @@ class Advance_Heading extends Base{
         $this->add_control(
             'avd_heading',
                 [
-                    'label'         => esc_html__( 'Heading', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Heading', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::TEXT,
-                    'placeholder'   => __( 'Lorem Ipsum is simply dummy text', 'ultraaddons' ),
-                    'default'       => __( 'Lorem Ipsum is simply dummy text', 'ultraaddons' ),
+                    'placeholder'   => __( 'Lorem Ipsum is simply dummy text', 'ultraaddons-elementor-lite' ),
+                    'default'       => __( 'Lorem Ipsum is simply dummy text', 'ultraaddons-elementor-lite' ),
                     'label_block'   => TRUE,
                     'dynamic'       => ['active' => true],
                 ]
@@ -127,10 +127,10 @@ class Advance_Heading extends Base{
         $this->add_control(
             'avd_sub_heading',
                 [
-                    'label'         => esc_html__( 'Sub Heading', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Sub Heading', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::TEXT,
-                    'placeholder'   => __( 'About Heading', 'ultraaddons' ),
-                    'default'       => __( 'About Heading', 'ultraaddons' ),
+                    'placeholder'   => __( 'About Heading', 'ultraaddons-elementor-lite' ),
+                    'default'       => __( 'About Heading', 'ultraaddons-elementor-lite' ),
                     'label_block'   => TRUE,
                     'dynamic'       => ['active' => true],
                 ]
@@ -148,7 +148,7 @@ class Advance_Heading extends Base{
         $this->start_controls_section(
             'avd_heading_design_style',
             [
-                'label'     => esc_html__( 'Design', 'ultraaddons' ),
+                'label'     => esc_html__( 'Design', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -156,19 +156,19 @@ class Advance_Heading extends Base{
         $this->add_control(
             'avd_heading_alignment',
                 [
-                    'label'         => esc_html__( 'Heading', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Heading', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::CHOOSE,
                     'options' => [
                             'left' => [
-                                    'title' => __( 'Left', 'ultraaddons' ),
+                                    'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
                                     'icon' => 'eicon-text-align-left',
                             ],
                             'center' => [
-                                    'title' => __( 'Center', 'ultraaddons' ),
+                                    'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
                                     'icon' => 'eicon-text-align-center',
                             ],
                             'right' => [
-                                    'title' => __( 'Right', 'ultraaddons' ),
+                                    'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
                                     'icon' => 'eicon-text-align-right',
                             ],
                     ],
@@ -181,7 +181,7 @@ class Advance_Heading extends Base{
         $this->add_control(
             'avd_heading_color',
             [
-                'label'     => __( 'Color', 'ultraaddons' ),
+                'label'     => __( 'Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'global' => [
                     'default' => Global_Colors::COLOR_PRIMARY,
@@ -197,7 +197,7 @@ class Advance_Heading extends Base{
         $this->add_control(
             'avd_sub_heading_color',
             [
-                'label'     => __( 'Heading Text Color', 'ultraaddons' ),
+                'label'     => __( 'Heading Text Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'global' => [
                     'default' => Global_Colors::COLOR_PRIMARY,
@@ -213,7 +213,7 @@ class Advance_Heading extends Base{
         $this->add_responsive_control(
                 'avd_head_v_space',
                 [
-                        'label' => __( 'Vertical Spacing', 'ultraaddons' ),
+                        'label' => __( 'Vertical Spacing', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SLIDER,
                         'default' => [
                                 'size' => 15,
@@ -233,7 +233,7 @@ class Advance_Heading extends Base{
         $this->add_responsive_control(
                 'avd_head_h_space',
                 [
-                        'label' => __( 'Horizontal Spacing', 'ultraaddons' ),
+                        'label' => __( 'Horizontal Spacing', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SLIDER,
                         'default' => [
                                 'size' => 10,
@@ -255,7 +255,7 @@ class Advance_Heading extends Base{
         $this->add_responsive_control(
                 'avd_line_height',
                 [
-                        'label' => __( 'Line Width', 'ultraaddons' ),
+                        'label' => __( 'Line Width', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SLIDER,
                         'default' => [
                                 'size' => 2,
@@ -275,7 +275,7 @@ class Advance_Heading extends Base{
         $this->add_responsive_control(
                 'avd_line_length',
                 [
-                        'label' => __( 'Line Length', 'ultraaddons' ),
+                        'label' => __( 'Line Length', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SLIDER,
                         'size_units' => [ 'px', '%' ],
                         'default' => [
@@ -313,7 +313,7 @@ class Advance_Heading extends Base{
         $this->start_controls_section(
             'mc_avd_heading_typography',
             [
-                'label'     => esc_html__( 'Typography', 'ultraaddons' ),
+                'label'     => esc_html__( 'Typography', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -360,18 +360,18 @@ class Advance_Heading extends Base{
         $this->start_controls_section(
             'heading_style_settings',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
             ]
         );
         $this->add_control(
             'heading_style',
             [
-                'label'     => esc_html__( 'Heading Style', 'ultraaddons' ),
+                'label'     => esc_html__( 'Heading Style', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::SELECT,
                 'label_block'   => true,
                 'options'       => [
-                    '1'         => esc_html__( 'Style 01', 'ultraaddons' ),
-                    '2'         => esc_html__( 'Style 02', 'ultraaddons' ),
+                    '1'         => esc_html__( 'Style 01', 'ultraaddons-elementor-lite' ),
+                    '2'         => esc_html__( 'Style 02', 'ultraaddons-elementor-lite' ),
                 ],
                 'default'       => '1',
             ]
@@ -390,25 +390,25 @@ class Advance_Heading extends Base{
         $this->start_controls_section(
             'advance_heading_settings',
             [
-                'label'     => esc_html__( 'Content', 'ultraaddons' ),
+                'label'     => esc_html__( 'Content', 'ultraaddons-elementor-lite' ),
             ]
         );
         $this->add_control(
             'advance_sub_heading',
                 [
-                    'label'     => esc_html__( 'Sub Heading', 'ultraaddons' ),
+                    'label'     => esc_html__( 'Sub Heading', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::TEXT,
-                    'placeholder'   => __( 'Our Services', 'ultraaddons' ),
+                    'placeholder'   => __( 'Our Services', 'ultraaddons-elementor-lite' ),
                     'label_block'   => TRUE,
                 ]
         );
         $this->add_control(
             'advance_heading',
                 [
-                    'label'     => esc_html__( 'Heading', 'ultraaddons' ),
+                    'label'     => esc_html__( 'Heading', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::TEXTAREA,
                     'label_block'   => TRUE,
-                    'placeholder'   => __( 'We Provide Best Services sFor Your Health', 'ultraaddons' ),
+                    'placeholder'   => __( 'We Provide Best Services sFor Your Health', 'ultraaddons-elementor-lite' ),
                 ]
         );
         $this->end_controls_section();
@@ -425,7 +425,7 @@ class Advance_Heading extends Base{
 	    $this->start_controls_section(
 	            'advance_heading_general_setting',
                 [
-                    'label'    => __( 'General Settings', 'ultraaddons' ),
+                    'label'    => __( 'General Settings', 'ultraaddons-elementor-lite' ),
                     'tab'      => Controls_Manager::TAB_STYLE,
                     'show_label' => false,
                 ]
@@ -433,7 +433,7 @@ class Advance_Heading extends Base{
         $this->add_responsive_control(
             'heading_general_padding',
             [
-                'label'      => __( 'Padding', 'ultraaddons' ),
+                'label'      => __( 'Padding', 'ultraaddons-elementor-lite' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%', 'em' ],
                 'selectors'  => [
@@ -444,7 +444,7 @@ class Advance_Heading extends Base{
         $this->add_responsive_control(
             'heading_tag_general_margin',
             [
-                'label'      => __( 'Margin', 'ultraaddons' ),
+                'label'      => __( 'Margin', 'ultraaddons-elementor-lite' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%', 'em' ],
                 'selectors'  => [
@@ -455,19 +455,19 @@ class Advance_Heading extends Base{
         $this->add_control(
             'heading_tag_general_text_align',
             [
-                'label' => __( 'Alignment', 'ultraaddons' ),
+                'label' => __( 'Alignment', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
-                        'title' => __( 'Left', 'ultraaddons' ),
+                        'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
                         'icon' => 'fa fa-align-left',
                     ],
                     'center' => [
-                        'title' => __( 'Center', 'ultraaddons' ),
+                        'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
                         'icon' => 'fa fa-align-center',
                     ],
                     'right' => [
-                        'title' => __( 'Right', 'ultraaddons' ),
+                        'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
                         'icon' => 'fa fa-align-right',
                     ],
                 ],
@@ -493,7 +493,7 @@ class Advance_Heading extends Base{
 	    $this->start_controls_section(
 	            'advance_heading_style_setting',
                 [
-                    'label'    => __( 'Heading', 'ultraaddons' ),
+                    'label'    => __( 'Heading', 'ultraaddons-elementor-lite' ),
                     'tab'      => Controls_Manager::TAB_STYLE,
                     'show_label' => false,
                 ]
@@ -501,7 +501,7 @@ class Advance_Heading extends Base{
         $this->add_control(
             'heading_tag_colors',
             [
-                'label'     => __( 'Color', 'ultraaddons' ),
+                'label'     => __( 'Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'global' => [
                     'default' => Global_Colors::COLOR_PRIMARY,
@@ -524,7 +524,7 @@ class Advance_Heading extends Base{
         $this->add_responsive_control(
             'heading_tag_padding',
             [
-                'label'      => __( 'Padding', 'ultraaddons' ),
+                'label'      => __( 'Padding', 'ultraaddons-elementor-lite' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%', 'em' ],
                 'selectors'  => [
@@ -535,7 +535,7 @@ class Advance_Heading extends Base{
         $this->add_responsive_control(
             'heading_tag_margin',
             [
-                'label'      => __( 'Margin', 'ultraaddons' ),
+                'label'      => __( 'Margin', 'ultraaddons-elementor-lite' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%', 'em' ],
                 'selectors'  => [
@@ -547,7 +547,7 @@ class Advance_Heading extends Base{
             Group_Control_Border::get_type(),
             [
                 'name' => 'heading_tag_border',
-                'label' => __( 'Border', 'ultraaddons' ),
+                'label' => __( 'Border', 'ultraaddons-elementor-lite' ),
                 'selector' => '{{WRAPPER}} .pricing-box-item .pricing-icon .ultraaddons-price-table-heading, .section-title.v1.ultraaddons-advance-heading h3.ultraaddons-heading',
             ]
         );
