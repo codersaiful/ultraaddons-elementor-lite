@@ -9,7 +9,7 @@
  * Author URI: https://codeastrology.com/
  * License: GPL3+
  * License URI: http://www.gnu.org/licenses/gpl.html
- * Text Domain: ultraaddons
+ * Text Domain: ultraaddons-elementor-lite
  * Domain Path: /languages/
  * 
  * Requires at least:    4.0
