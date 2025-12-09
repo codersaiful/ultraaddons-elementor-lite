@@ -2,7 +2,7 @@
 Contributors: codersaiful, codeastrology, ultraaddons, rafiul17, fazlebari
 Tags: drag-and-drop, editor, elementor, landing-page, builder
 Donate link: https://codeastrology.com/downloads/ultraaddons-elementor/
-Requires at least: 4.0.0
+Requires at least: 4.0
 Tested up to: 6.9
 Requires PHP: 7.0
 Stable tag: 2.0.1

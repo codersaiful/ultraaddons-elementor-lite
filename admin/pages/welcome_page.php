@@ -151,18 +151,5 @@ to our newsletter.', 'ultraaddons' ); ?></p>
 
         </section>
 
-        <section class="ua-section pr6 rating">
-            <div class="inner-wrapper">
-                <div class="full-width info-box" style="background-image: url(<?php echo esc_url( ULTRA_ADDONS_ASSETS . 'images/svg/Illustration-2.svg' ); ?>);">
-                    <h3 class="big"><?php echo esc_html__( 'Are you like our Product?', 'ultraaddons' ); ?></h3>
-                    <p><?php echo esc_html__( ' Thanks for your recent visit to our plugin. We want to provide the best experience possible! To help us, please take a moment to leave your feedback. Thank you', 'ultraaddons' ); ?></p>
-                    <div class="btn-wrapper">
-                        <a href="https://wordpress.org/support/plugin/ultraaddons-elementor-lite/reviews/?filter=5" class="ua-button button" target="_blank"><?php echo esc_html__( 'Rating us', 'ultraaddons' ); ?></a>    
-                    </div>
-                    <img src="<?php echo esc_url( ULTRA_ADDONS_ASSETS . 'images/svg/Illustration-2.svg' ); ?>" alt="">
-                </div>
-            </div>
-        </section>
-
     </div>
         

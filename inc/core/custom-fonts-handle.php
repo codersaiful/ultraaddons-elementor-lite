@@ -412,11 +412,13 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
         if ( is_null( self::$fonts ) ) {
 
             self::$fonts = array();
+            
+            $term_name = self::get_font_group();
             $args = array(
+                'taxonomy'   => $term_name,
                 'hide_empty' => false
             );
-            $term_name = self::get_font_group();
-            $terms = get_terms( $term_name, $args );
+            $terms = get_terms( $args );
 
             if ( ! empty( $terms ) ) {
                 foreach ( $terms as $term ) {

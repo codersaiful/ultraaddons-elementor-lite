@@ -12,7 +12,7 @@
  * Text Domain: ultraaddons
  * Domain Path: /languages/
  * 
- * Requires at least:    4.0.0
+ * Requires at least:    4.0
  * Tested up to:         6.7.2
  * Elementor tested up to: 3.26.4
  * Elementor Pro tested up to: 7.11.0

@@ -423,8 +423,11 @@ class Breadcrumb extends Base{
             // Get tag information
             $term_id        = get_query_var('tag_id');
             $taxonomy       = 'post_tag';
-            $args           = 'include=' . $term_id;
-            $terms          = get_terms( $taxonomy, $args );
+            $args = array(
+                'taxonomy'   => $taxonomy,
+                'include' => $term_id,
+            );
+            $terms          = get_terms( $args );
             $get_term_name  = $terms[0]->name;
 
             // Display the tag name

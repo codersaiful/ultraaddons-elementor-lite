@@ -13,6 +13,20 @@ use Elementor\Group_Control_Background;
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Recent_Blog extends Base{
+
+    /**
+     * Widget Variables for render use
+     * read more, excerpt, excerpt limit, title, date, meta, thumbs, layout
+     */
+    public $read_more;
+    public $excerpt;
+    public $excerpt_limit;
+    public $title;
+    public $date;
+    public $meta;
+    public $thumbs;
+    public $layout;
+
         
     /**
      * Get your widget by keywords
@@ -564,10 +578,11 @@ class Recent_Blog extends Base{
      */
     protected function get_cat_as_options(){
         $args = [
+            'taxonomy'  =>  'category',
             'orderby'   =>  'count',
             'hide_empty'=>  0
         ];
-        $categories = get_terms( 'category', $args );
+        $categories = get_terms( $args );
         
         $options = [];
         if( is_array( $categories ) && count( $categories ) > 0 ){
