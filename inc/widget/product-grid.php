@@ -642,7 +642,7 @@ class Product_Grid extends Base{
         $this->start_controls_tab(
 			'btn_hover_tab',
 			[
-				'label' => esc_html__( 'Hover', 'ultraaddonse' ),
+				'label' => esc_html__( 'Hover', 'ultraaddons-elementor-lite' ),
 			]
 		);
         $this->add_control(
@@ -932,7 +932,7 @@ class Product_Grid extends Base{
         $this->start_controls_tab(
 			'style_active_tab',
 			[
-				'label' => esc_html__( 'Active', 'ultraaddonse' ),
+				'label' => esc_html__( 'Active', 'ultraaddons-elementor-lite' ),
 			]
 		);
         $this->add_control(

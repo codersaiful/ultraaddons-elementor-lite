@@ -549,7 +549,7 @@ class Caldera_Forms extends Base{
                 $this->start_controls_tab(
                         'btn_hover_tab',
                         [
-                                'label' => esc_html__( 'Hover', 'ultraaddonse' ),
+                                'label' => esc_html__( 'Hover', 'ultraaddons-elementor-lite' ),
                         ]
                 );
                 $this->add_control(

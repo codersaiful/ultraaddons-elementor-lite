@@ -318,7 +318,7 @@ class Hero_Slider extends Base{
 			[
 				'label' => esc_html__( 'Button Link', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::URL,
-				'placeholder' => esc_html__( 'https://your-link.com', 'ultraaddonse' ),
+				'placeholder' => esc_html__( 'https://your-link.com', 'ultraaddons-elementor-lite' ),
 				'default' => [
 					'url' => '',
 					'is_external' => true,
