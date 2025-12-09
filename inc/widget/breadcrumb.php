@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class Breadcrumb extends Base{
     
     private $home;
+    private $separator;
     
     /**
      * Get your widget name
@@ -58,7 +59,7 @@ class Breadcrumb extends Base{
      */
     protected function render() {
         $settings           = $this->get_settings_for_display();
-        $this->home = ! empty( $settings['home_title'] ) ? $settings['home_title'] : esc_html( 'Home', 'ultraaddons-elementor-lite' );
+        $this->home = ! empty( $settings['home_title'] ) ? $settings['home_title'] : esc_html__( 'Home', 'ultraaddons-elementor-lite' );
         $this->separator = ! empty( $settings['separator_sign'] ) ? $settings['separator_sign'] : '/';
         ?>
         <div class="ua-breadcrumb-wrapper" >
@@ -158,7 +159,7 @@ class Breadcrumb extends Base{
                 [
                     'label'         => esc_html__( 'Home menu Text (Optional)', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::TEXT,
-                    'default'       => esc_html( 'Home', 'ultraaddons-elementor-lite' ),
+                    'default'       => esc_html__( 'Home', 'ultraaddons-elementor-lite' ),
                     'label_block'   => TRUE,
                     'dynamic'       => ['active' => true],
                 ]

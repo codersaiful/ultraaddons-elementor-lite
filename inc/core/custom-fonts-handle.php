@@ -201,7 +201,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
                     <div class="form-file-field font-file-each-wrapper">
                         
                         <input name="<?php echo esc_attr( $name_prefix ); ?>[format][]" type="hidden" class="font-upload-format" value="<?php echo esc_attr( $format ); ?>">
-                        <input name="<?php echo esc_attr( $name_prefix ); ?>[url][]" type="text" value="<?php echo esc_attr( $url ); ?>" class="font-upload-url" id="font-url-<?php echo esc_attr( $variant_key ); ?>" placeholder="<?php echo esc_attr( 'Font file URL...','ultraaddons-elementor-lite' ); ?>">
+                        <input name="<?php echo esc_attr( $name_prefix ); ?>[url][]" type="text" value="<?php echo esc_attr( $url ); ?>" class="font-upload-url" id="font-url-<?php echo esc_attr( $variant_key ); ?>" placeholder="<?php echo esc_attr__( 'Font file URL...','ultraaddons-elementor-lite' ); ?>">
                         <a href="#" class="ultraaddons-font-upload-button ua-button button">Upload Font</a>
                     </div> 
 
