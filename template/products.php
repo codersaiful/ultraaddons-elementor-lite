@@ -395,4 +395,4 @@ $output .= do_shortcode( '[products ' . $extra_atts . ']' );
 
 $output .= '</div>';
 
-echo $output;
+echo wp_kses_post( $output );
