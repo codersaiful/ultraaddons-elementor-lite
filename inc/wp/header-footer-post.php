@@ -472,7 +472,7 @@ class Header_Footer_Post{
 		}
 
 		// if our nonce isn't there, or we can't verify it, bail.
-		if ( ! isset( $_POST['ua_meta_nounce'] ) || ! wp_verify_nonce( $_POST['ua_meta_nounce'], 'ua_meta_nounce' ) ) {
+		if ( ! isset( $_POST['ua_meta_nounce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['ua_meta_nounce'] ?? '' ) ), 'ua_meta_nounce' ) ) {
 			return;
 		}
 
@@ -494,7 +494,7 @@ class Header_Footer_Post{
 		// update_post_meta( $post_id, 'ua_target_user_roles', $target_users );
 
 		if ( isset( $_POST['ua_template_type'] ) ) {
-			update_post_meta( $post_id, 'ua_template_type', esc_attr( $_POST['ua_template_type'] ) );
+			update_post_meta( $post_id, 'ua_template_type', esc_attr( sanitize_text_field( $_POST['ua_template_type'] ?? '' ) ) );
 		}
 		if ( isset( $_POST['ua_display'] ) ) {
 			$display = $_POST['ua_display'];
@@ -505,7 +505,7 @@ class Header_Footer_Post{
 		}
 
 		if ( isset( $_POST['display-on-canvas-template'] ) ) {
-			update_post_meta( $post_id, 'display-on-canvas-template', esc_attr( $_POST['display-on-canvas-template'] ) );
+			update_post_meta( $post_id, 'display-on-canvas-template', esc_attr( sanitize_text_field( $_POST['display-on-canvas-template'] ?? '' ) ) );
 		} else {
 			delete_post_meta( $post_id, 'display-on-canvas-template' );
 		}
