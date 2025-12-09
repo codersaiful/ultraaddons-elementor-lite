@@ -30,7 +30,7 @@ $body_class     = 'ua-body';
 <body <?php body_class( $body_class ); ?>>
 <?php wp_body_open(); ?>
 
-    <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'medilac' ); ?></a>
+    <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'ultraaddons-elementor-lite' ); ?></a>
     <?php
     
     /**
