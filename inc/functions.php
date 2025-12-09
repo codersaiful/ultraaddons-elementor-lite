@@ -408,12 +408,12 @@ function ultraaddons_get_post_types($args = [], $array_diff_key = []){
 
 function ultraaddons_get_grid_metro_size() {
     return [
-        '1:1'   => esc_html__( 'Width 1 - Height 1', 'ultraaddon' ),
-        '1:2'   => esc_html__( 'Width 1 - Height 2', 'ultraaddon' ),
-        '1:0.7' => esc_html__( 'Width 1 - Height 70%', 'ultraaddon' ),
-        '1:1.3' => esc_html__( 'Width 1 - Height 130%', 'ultraaddon' ),
-        '2:1'   => esc_html__( 'Width 2 - Height 1', 'ultraaddon' ),
-        '2:2'   => esc_html__( 'Width 2 - Height 2', 'ultraaddon' ),
+        '1:1'   => esc_html__( 'Width 1 - Height 1', 'ultraaddons-elementor-lite' ),
+        '1:2'   => esc_html__( 'Width 1 - Height 2', 'ultraaddons-elementor-lite' ),
+        '1:0.7' => esc_html__( 'Width 1 - Height 70%', 'ultraaddons-elementor-lite' ),
+        '1:1.3' => esc_html__( 'Width 1 - Height 130%', 'ultraaddons-elementor-lite' ),
+        '2:1'   => esc_html__( 'Width 2 - Height 1', 'ultraaddons-elementor-lite' ),
+        '2:2'   => esc_html__( 'Width 2 - Height 2', 'ultraaddons-elementor-lite' ),
     ];
 }
 

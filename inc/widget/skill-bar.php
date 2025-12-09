@@ -413,7 +413,7 @@ class Skill_Bar extends Base{
                 $this->add_control(
 			'title_more_options',
 			[
-				'label' => __( 'Title Text Options', 'plugin-name' ),
+				'label' => __( 'Title Text Options', 'ultraaddons-elementor-lite' ),
 				'type' => \Elementor\Controls_Manager::HEADING,
 			]
 		);
@@ -448,7 +448,7 @@ class Skill_Bar extends Base{
                 $this->add_control(
 			'more_options',
 			[
-				'label' => __( 'Percentage Options', 'plugin-name' ),
+				'label' => __( 'Percentage Options', 'ultraaddons-elementor-lite' ),
 				'type' => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]

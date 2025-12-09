@@ -775,7 +775,7 @@ class Testimonial_Slider extends Base{
                 Group_Control_Box_Shadow::get_type(),
                 [
                 'name' => 'navigation_shadow',
-                'label' => esc_html__( 'Navigation Shadow', 'plugin-name' ),
+                'label' => esc_html__( 'Navigation Shadow', 'ultraaddons-elementor-lite' ),
                 'selector' => '{{WRAPPER}} .ua-testimonial-slider-wrapper button.owl-prev, .ua-testimonial-slider-wrapper button.owl-next',
              
                 ]

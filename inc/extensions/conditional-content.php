@@ -132,13 +132,13 @@ class Conditional_Content
 		$element->add_control(
 			'_ua_condc_visibility',
 			[
-				'label' => esc_html__( 'Content/Section Visibility', 'plugin-name' ),
+				'label' => esc_html__( 'Content/Section Visibility', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'hide',
 				'label_block' => true,
 				'options' => [
-					'show'  => esc_html__( 'Show', 'plugin-name' ),
-					'hide' => esc_html__( 'Hide', 'plugin-name' ),
+					'show'  => esc_html__( 'Show', 'ultraaddons-elementor-lite' ),
+					'hide' => esc_html__( 'Hide', 'ultraaddons-elementor-lite' ),
 				],
 				'condition' => [
                     '_ua_condc_switch'  => ['on'],
