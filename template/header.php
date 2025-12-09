@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly.
+}
 use \UltraAddons\Core\Header_Footer;
 use \UltraAddons\Classes\Header_Footer_Render as HF_Render;
 
@@ -27,7 +30,7 @@ $body_class     = 'ua-body';
 <body <?php body_class( $body_class ); ?>>
 <?php wp_body_open(); ?>
 
-    <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'medilac' ); ?></a>
+    <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'ultraaddons-elementor-lite' ); ?></a>
     <?php
     
     /**

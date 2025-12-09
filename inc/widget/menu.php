@@ -75,7 +75,7 @@ class Menu extends Base{
         $menu = $this->get_available_menus();
 
         if( empty( $menu ) ){
-            echo wp_kses_post( '<h2 class="hidden_text">' . __( 'There is no menu available. Please create First' ) . '</h2>' );
+            echo wp_kses_post( '<h2 class="hidden_text">' . __( 'There is no menu available. Please create First', 'ultraaddons-elementor-lite' ) . '</h2>' );
             return;
         }
         $wrapper_id = 'ua-navigation-' . $this->get_id();
@@ -381,7 +381,7 @@ class Menu extends Base{
                                     'value' => 'fas fa-shopping-cart', //<i class="fas fa-shopping-cart"></i>
                                     'library' => 'fa-solid',
                             ],
-                            'description'   => esc_html__( 'Only for Mobile Menu, If any user want to show rext for Mobile' ),
+                            'description'   => esc_html__( 'Only for Mobile Menu, If any user want to show rext for Mobile', 'ultraaddons-elementor-lite' ),
                             
                     ]
             );
@@ -396,7 +396,7 @@ class Menu extends Base{
                         'placeholder'  => __( 'Primary Menu', 'ultraaddons-elementor-lite' ),
                         'default'      => __( 'Primary Menu', 'ultraaddons-elementor-lite' ),//'Primary Menu',
                         'save_default' => true,
-                        'description'   => esc_html__( 'Only for Mobile Menu, If any user want to show rext for Mobile' ),
+                        'description'   => esc_html__( 'Only for Mobile Menu, If any user want to show rext for Mobile', 'ultraaddons-elementor-lite' ),
                 ]
         );
         

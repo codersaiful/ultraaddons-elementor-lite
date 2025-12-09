@@ -994,37 +994,37 @@ class Card extends Base{
 		}
 		
 	?>
-	<div class="ua-c ua-card-content content-<?php echo $align;?>">
-		<div class="ua-card <?php echo $row; ?> <?php echo $overflow;?>">
+	<div class="ua-c ua-card-content content-<?php echo esc_attr( $align );?>">
+		<div class="ua-card <?php echo esc_attr( $row ); ?> <?php echo esc_attr( $overflow );?>">
 			<div <?php echo $this->get_render_attribute_string( 'card_avatar_class' );?>>
 			<?php 
 			if(!empty($settings['_ua_card_image']['url'])){
-				echo '<img  class="ua-card-avatar" src="' . $settings['_ua_card_image']['url'] .'">';
+				echo '<img  class="ua-card-avatar" src="' . esc_url( $settings['_ua_card_image']['url'] ) .'" alt="' . esc_attr( $settings['_ua_card_title'] ) . '">';
 			}
 			?>
 			</div>
 			<div <?php echo $this->get_render_attribute_string( 'card_body_class' );?>>
 				<?php
-				echo '<' . $settings['_ua_card_title_tag'] . ' class="ua-card-title">' . esc_html($settings['_ua_card_title']) . 
-					'</' . $settings['_ua_card_title_tag'] . '>';
+				echo '<' . esc_html( $settings['_ua_card_title_tag'] ) . ' class="ua-card-title">' . esc_html($settings['_ua_card_title']) . 
+					'</' . esc_html( $settings['_ua_card_title_tag'] ) . '>';
 				?>
 				<?php
-				echo '<' . $settings['_ua_card_sub_title_tag'] . ' class="ua-card-sub-title">' . esc_html($settings['_ua_card_sub_title']) . 
-						'</' . $settings['_ua_card_sub_title_tag'] . '>';
+				echo '<' . esc_html( $settings['_ua_card_sub_title_tag'] ) . ' class="ua-card-sub-title">' . esc_html($settings['_ua_card_sub_title']) . 
+						'</' . esc_html( $settings['_ua_card_sub_title_tag'] ) . '>';
 				?>
-				<p class="ua-card-text"><?php echo $settings['_ua_card_content']; ?></p>
+				<p class="ua-card-text"><?php echo wp_kses_post( $settings['_ua_card_content'] ); ?></p>
 				<div class="ua-card-footer">
 					<?php 
 						if(!empty($url)){
-							echo '<a href="' . $url. '"' . $target . $nofollow . ' class="ua-card-button">
-							' .  $settings['_ua_card_button'] . '
+							echo '<a href="' . esc_url( $url ). '"' . $target . $nofollow . ' class="ua-card-button">
+							' .  esc_html( $settings['_ua_card_button'] ) . '
 							</a>';
 						}
 					?>
 				</div>
 				<?php  if( !empty($settings['_ua_card_price']) ):?>
 				<div class="footer-bottom">
-					<div class="card-price"><?php echo $settings['_ua_card_price'];?> </div> 
+					<div class="card-price"><?php echo esc_html( $settings['_ua_card_price'] );?> </div> 
 					<div class="card-wish">
 						<a <?php echo $this->get_render_attribute_string( 'wish_link' ); ?>>
 							<?php \Elementor\Icons_Manager::render_icon( $settings['wish_icon'], [ 'aria-hidden' => 'true' ] ); ?>

@@ -72,13 +72,13 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
         <style>.form-field.term-description-wrap,.form-field.term-slug-wrap{display: none !important;}</style>
         
         <div class="form-field">
-            <label for="font-fallback"><?php echo esc_html__( 'Font Fallback' ); ?></label>
+            <label for="font-fallback"><?php echo esc_html__( 'Font Fallback', 'ultraaddons-elementor-lite' ); ?></label>
             <input name="ua_fonts[fallback]" type="text" id="font-fallback">
             <p></p>
         </div> 
 
         <div class="form-field">
-            <label for="font-display"><?php echo esc_html__( 'Font Display' ); ?></label>
+            <label for="font-display"><?php echo esc_html__( 'Font Display', 'ultraaddons-elementor-lite' ); ?></label>
             <?php self::render_font_dsplay(); ?>
             <p></p>
         </div> 
@@ -107,7 +107,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
         <style>.form-field.term-description-wrap,.form-field.term-slug-wrap{display: none !important;}</style>
         <tr class="form-field">
             <th>
-            <label for="font-fallback"><?php echo esc_html__( 'Font Fallback' ); ?></label>
+            <label for="font-fallback"><?php echo esc_html__( 'Font Fallback', 'ultraaddons-elementor-lite' ); ?></label>
             </th>
             <td>
                 <input name="ua_fonts[fallback]" type="text" id="font-fallback" value="<?php echo esc_attr( $font_fallback ); ?>">
@@ -117,7 +117,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
 
         <tr class="form-field">
             <th>
-                <label for="font-display"><?php echo esc_html__( 'Font Display' ); ?></label>
+                <label for="font-display"><?php echo esc_html__( 'Font Display', 'ultraaddons-elementor-lite' ); ?></label>
             </th>
             <td>
                 <?php self::render_font_dsplay( $font_display ); ?>
@@ -182,13 +182,13 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
             <div class="font-variation-wrapper" data-variant_key="<?php echo esc_attr( $variant_key ); ?>">
                 <span class="ua-close-variant"><i><?php echo esc_html__( 'Delete Variant', 'ultraaddons-elementor-lite' ); ?> </i>&#9986;</span>
                 <div class="form-field">
-                    <label for="font-weight-<?php echo esc_attr( $variant_key ); ?>"><?php echo esc_html__( 'Font Weight' ); ?></label>
+                    <label for="font-weight-<?php echo esc_attr( $variant_key ); ?>"><?php echo esc_html__( 'Font Weight', 'ultraaddons-elementor-lite' ); ?></label>
                     <?php self::render_font_weight( $font_weight, $name_prefix . '[weight]', 'font-weight-' . $variant_key ); ?>
-                    <p class="ua-field-notice"><?php echo esc_html__( 'Font weight for this variant.' ); ?></p>
+                    <p class="ua-field-notice"><?php echo esc_html__( 'Font weight for this variant.', 'ultraaddons-elementor-lite' ); ?></p>
                 </div> 
                 
                 <div class="fonts-upload-wrapper form-field">
-                    <label><?php echo esc_html__( 'Font File Upload' ); ?> <span class="font-upload-add-font-button">+ add new font file</span></label>
+                    <label><?php echo esc_html__( 'Font File Upload', 'ultraaddons-elementor-lite' ); ?> <span class="font-upload-add-font-button">+ add new font file</span></label>
                     
                     <div class="fonts-upload-wrapper-inside">
                     <?php
@@ -210,7 +210,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
                     
                     ?>
                     </div>
-                    <p class="ua-field-notice"><?php echo esc_html__( 'Upload your webfonts. Supported font type/format: [woff2,woff,ttf and otf].' ); ?></p>
+                    <p class="ua-field-notice"><?php echo esc_html__( 'Upload your webfonts. Supported font type/format: [woff2,woff,ttf and otf].', 'ultraaddons-elementor-lite' ); ?></p>
 
                 </div>
 
@@ -353,11 +353,49 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
     public static function save_term_fields( $term_id ){
         $term = get_term_by('term_id',$term_id,self::$font_group_key);
         $font_name = $term->name;
-        $trangient_name = "ua_font_trangient_" . $font_name;
         if( isset( $_POST[self::$meta_key] ) && is_array( $_POST[self::$meta_key] ) ){
-            $meta_value = $_POST[self::$meta_key];
+            $meta_value = array();
+            
+            // Sanitize fallback field
+            if ( isset( $_POST[self::$meta_key]['fallback'] ) ) {
+                $meta_value['fallback'] = sanitize_text_field( wp_unslash( $_POST[self::$meta_key]['fallback'] ) );
+            }
+            
+            // Sanitize display field
+            if ( isset( $_POST[self::$meta_key]['display'] ) ) {
+                $meta_value['display'] = sanitize_text_field( wp_unslash( $_POST[self::$meta_key]['display'] ) );
+            }
+            
+            // Sanitize variants array
+            if ( isset( $_POST[self::$meta_key]['variants'] ) && is_array( $_POST[self::$meta_key]['variants'] ) ) {
+                $meta_value['variants'] = array();
+                foreach ( $_POST[self::$meta_key]['variants'] as $variant_key => $variant ) {
+                    if ( ! is_array( $variant ) ) {
+                        continue;
+                    }
+                    
+                    $sanitized_variant = array();
+                    
+                    // Sanitize weight
+                    if ( isset( $variant['weight'] ) ) {
+                        $sanitized_variant['weight'] = absint( $variant['weight'] );
+                    }
+                    
+                    // Sanitize format array
+                    if ( isset( $variant['format'] ) && is_array( $variant['format'] ) ) {
+                        $sanitized_variant['format'] = array_map( 'sanitize_text_field', array_map( 'wp_unslash', $variant['format'] ) );
+                    }
+                    
+                    // Sanitize URL array
+                    if ( isset( $variant['url'] ) && is_array( $variant['url'] ) ) {
+                        $sanitized_variant['url'] = array_map( 'esc_url_raw', array_map( 'wp_unslash', $variant['url'] ) );
+                    }
+                    
+                    $meta_value['variants'][$variant_key] = $sanitized_variant;
+                }
+            }
+            
             update_term_meta( $term_id, self::$meta_key, $meta_value );
-            set_transient( $trangient_name, $fonts_args );
         }
     }
 

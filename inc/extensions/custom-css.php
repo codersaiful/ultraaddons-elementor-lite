@@ -74,7 +74,13 @@ class Custom_CSS {
 		$element->add_control(
 			'ua_custom_css_description',
 			[
-				'raw' => __( 'Use "selector" to target wrapper element. Examples:<br>selector {color: red;} // For main element<br>selector .child-element {margin: 10px;} // For child element<br>.my-class {text-align: center;} // Or use any custom selector', 'ultraaddons-elementor-lite' ),
+				'raw' => sprintf(
+					/* translators: 1: Line break, 2: Line break, 3: Line break */
+					__( 'Use "selector" to target wrapper element. Examples:%1$sselector {color: red;} // For main element%2$sselector .child-element {margin: 10px;} // For child element%3$s.my-class {text-align: center;} // Or use any custom selector', 'ultraaddons-elementor-lite' ),
+					'<br>',
+					'<br>',
+					'<br>'
+				),
 				'type' => Controls_Manager::RAW_HTML,
 				'content_classes' => 'elementor-descriptor',
 				'condition' => [

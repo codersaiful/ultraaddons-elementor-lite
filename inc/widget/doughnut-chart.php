@@ -470,7 +470,7 @@ class Doughnut_Chart extends Base{
                             '</' . $settings['_ua_chart_title_tag'] . '>';
                     }
                 ?>
-                <p class="chart-desc"><?php echo $settings['chart_description']; ?></p>
+                <p class="chart-desc"><?php echo wp_kses_post( $settings['chart_description'] ); ?></p>
            </div>
            
             <canvas id="uaChart-<?php echo esc_attr($id);?>"></canvas>

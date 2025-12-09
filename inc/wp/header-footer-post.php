@@ -1,6 +1,8 @@
 <?php
 namespace UltraAddons\WP;
-
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly.
+}
 use UltraAddons;
 use UltraAddons\Classes\Template_List;
 use UltraAddons\Core\Header_Footer;
@@ -376,7 +378,7 @@ class Header_Footer_Post{
 		?>
 		<tr class="ua-options-row display-rule">
 			<td class="ua-options-row-heading">
-				<label for="ua_display_rule"><?php _e( $field_title ); ?></label>
+				<label for="ua_display_rule"><?php echo esc_html( $field_title ); ?></label>
 			</td>
 			<td class="ua-options-row-content">
 				
@@ -497,7 +499,17 @@ class Header_Footer_Post{
 			update_post_meta( $post_id, 'ua_template_type', esc_attr( sanitize_text_field( $_POST['ua_template_type'] ?? '' ) ) );
 		}
 		if ( isset( $_POST['ua_display'] ) ) {
-			$display = $_POST['ua_display'];
+			$display = array();
+			
+			// Sanitize the 'rule' array if present
+			if ( isset( $_POST['ua_display']['rule'] ) && is_array( $_POST['ua_display']['rule'] ) ) {
+				$display['rule'] = array_map( 'sanitize_text_field', wp_unslash( $_POST['ua_display']['rule'] ) );
+			}
+			
+			// Sanitize the 'way' field if present
+			if ( isset( $_POST['ua_display']['way'] ) ) {
+				$display['way'] = sanitize_text_field( wp_unslash( $_POST['ua_display']['way'] ) );
+			}
 			
 			update_post_meta( $post_id, 'ua_display', $display );
 		}else{

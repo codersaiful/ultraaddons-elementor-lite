@@ -1,5 +1,7 @@
 <?php
-
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly.
+}
 use UltraAddons\Extensions\Custom_Fonts as Ex_Fonts; //Ex - Extensions
 use UltraAddons\Core\Custom_Fonts_Handle as Fonts;
 

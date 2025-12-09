@@ -290,7 +290,7 @@ class Ultra_Slider extends Base{
                             [
                                     'label' => __( 'Template Not founded', 'ultraaddons-elementor-lite' ),
                                     'type' => Controls_Manager::RAW_HTML,
-                                    'description' => esc_html__( 'There is no existing Elementor Template. Please create first.' ),
+                                    'description' => esc_html__( 'There is no existing Elementor Template. Please create first.', 'ultraaddons-elementor-lite' ),
                                     'condition' => [
                                                 'slide_type' => 'template',
                                         ]

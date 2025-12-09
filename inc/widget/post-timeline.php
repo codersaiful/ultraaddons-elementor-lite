@@ -182,7 +182,7 @@ class Post_Timeline extends Base{
 				'label' => __( 'Product by included IDs', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'placeholder' => __( '1,2,3,4,20,33', 'ultraaddons-elementor-lite' ),
-				'description' => __('Add multiple ids by comma separated.'),
+				'description' => __(  'Add multiple ids by comma separated.', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
@@ -192,7 +192,7 @@ class Post_Timeline extends Base{
 				'label' => __( 'Product by excluded IDs', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'placeholder' => __( '1,2,3,4,20,33', 'ultraaddons-elementor-lite' ),
-				'description' => __('Add multiple ids by comma separated.'),
+				'description' => __(  'Add multiple ids by comma separated.', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
@@ -202,15 +202,15 @@ class Post_Timeline extends Base{
 				'label' => __('Date Format', 'ultraaddons-elementor-lite'),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
-					'd M Y'     => date("d M Y"),
-					'm.d.y'     => date("m.d.y"),
-					'j, n, Y'   => date("j, n, Y"),
-					'Ymd'       => date("Ymd"),
-					'D M j, Y'  => date("D M j, Y"),
-					'F j, Y'    => date("F j, Y"),
-					'j M, Y'    => date("j M, Y"),
-					'Y-m-d'     => date("Y-m-d"),
-					'Y/m/d'     => date("Y/m/d"),
+					'd M Y'     => wp_date("d M Y"),
+					'm.d.y'     => wp_date("m.d.y"),
+					'j, n, Y'   => wp_date("j, n, Y"),
+					'Ymd'       => wp_date("Ymd"),
+					'D M j, Y'  => wp_date("D M j, Y"),
+					'F j, Y'    => wp_date("F j, Y"),
+					'j M, Y'    => wp_date("j M, Y"),
+					'Y-m-d'     => wp_date("Y-m-d"),
+					'Y/m/d'     => wp_date("Y/m/d"),
 				],
 				'default' => 'd M Y',
 			]

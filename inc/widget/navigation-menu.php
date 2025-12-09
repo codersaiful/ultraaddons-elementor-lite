@@ -106,6 +106,7 @@ class Navigation_Menu extends Base{
                     'default'      => array_keys( $menus )[0],
                     'save_default' => true,
                     'separator'    => 'after',
+                    /* translators: %s: Nav menu URL */
                     'description'  => sprintf( __( 'Go to the <a href="%s" target="_blank">Menus screen</a> to manage your menus.', 'ultraaddons-elementor-lite' ), admin_url( 'nav-menus.php' ) ),
                 ]
             );
@@ -113,6 +114,7 @@ class Navigation_Menu extends Base{
         $this->add_control(
             'menu_error',[
                 'type'            => Controls_Manager::RAW_HTML,
+                /* translators: %s: Nav menu URL */
                 'raw'             => sprintf( __( '<strong>There are no menus in your site.</strong><br>Go to the <a href="%s" target="_blank">Menus screen</a> to create one.', 'ultraaddons-elementor-lite' ), admin_url( 'nav-menus.php?action=edit&menu=0' ) ),
                 'separator'       => 'after',
                 'content_classes' => 'elementor-panel-alert elementor-panel-alert-info',
@@ -310,7 +312,7 @@ protected function nav_style() {
     $this->start_controls_tab(
         'btn_hover_tab',
         [
-            'label' => esc_html__( 'Hover', 'ultraaddonse' ),
+            'label' => esc_html__( 'Hover', 'ultraaddons-elementor-lite' ),
         ]
     );
     $this->add_control(

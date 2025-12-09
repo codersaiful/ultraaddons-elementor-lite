@@ -62,6 +62,7 @@ class Formidable_Form extends Base{
                         $this->add_control(
                                 'form_error',[
                                     'type'            => Controls_Manager::RAW_HTML,
+                                    /* translators: %s: Plugin installation URL */
                                     'raw'             => sprintf( __( '<strong>Please install or activate Formidable Forms.</strong><br>Go to the <a href="%s" target="_blank" style="color:#93003c">Plugin page</a> to actions.', 'ultraaddons-elementor-lite' ), admin_url( 'plugin-install.php?s=formidable&tab=search&type=term' ) ),
                                     'separator'       => 'after',
                                     'content_classes' => 'elementor-panel-alert elementor-panel-alert-warning',
@@ -670,7 +671,7 @@ class Formidable_Form extends Base{
                 $this->start_controls_tab(
                         'btn_hover_tab',
                         [
-                                'label' => esc_html__( 'Hover', 'ultraaddonse' ),
+                                'label' => esc_html__( 'Hover', 'ultraaddons-elementor-lite' ),
                         ]
                 );
                 $this->add_control(

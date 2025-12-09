@@ -1,6 +1,9 @@
 <?php
 namespace UltraAddons\WP;
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly.
+}
 /**
  * ******************
  * TAXONOMY CUSTOM FONTS
