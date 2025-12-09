@@ -106,7 +106,7 @@ $disable_item = Extensions_Manager::disableExtensionKeys();
 ?>
 <div class="remodal" data-remodal-id="modal">
   <button data-remodal-action="close" class="remodal-close"></button>
-  <img class="popup-image" src=" <?php echo ULTRA_ADDONS_ASSETS . 'images/popup-pro.png'; ?>">
+  <img class="popup-image" src=" <?php echo esc_attr( ULTRA_ADDONS_ASSETS ) . 'images/popup-pro.png'; ?>">
   <h1>Go Pro</h1>
   <p>
     Unlock 4+ amazing extension to build awesome websites.
