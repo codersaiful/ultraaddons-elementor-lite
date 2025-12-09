@@ -353,7 +353,6 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
     public static function save_term_fields( $term_id ){
         $term = get_term_by('term_id',$term_id,self::$font_group_key);
         $font_name = $term->name;
-        $trangient_name = "ua_font_trangient_" . $font_name;
         if( isset( $_POST[self::$meta_key] ) && is_array( $_POST[self::$meta_key] ) ){
             $meta_value = array();
             
@@ -392,13 +391,11 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
                         $sanitized_variant['url'] = array_map( 'esc_url_raw', array_map( 'wp_unslash', $variant['url'] ) );
                     }
                     
-                    $meta_value['variants'][] = $sanitized_variant;
+                    $meta_value['variants'][$variant_key] = $sanitized_variant;
                 }
             }
             
             update_term_meta( $term_id, self::$meta_key, $meta_value );
-            // Note: $fonts_args is not defined, so commenting out the transient line
-            // set_transient( $trangient_name, $fonts_args );
         }
     }
 

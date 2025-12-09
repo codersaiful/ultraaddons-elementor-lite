@@ -115,7 +115,7 @@ if( isset( $_POST[self::$meta_key] ) && is_array( $_POST[self::$meta_key] ) ){
                 $sanitized_variant['url'] = array_map( 'esc_url_raw', array_map( 'wp_unslash', $variant['url'] ) );
             }
             
-            $meta_value['variants'][] = $sanitized_variant;
+            $meta_value['variants'][$variant_key] = $sanitized_variant;
         }
     }
     
@@ -130,7 +130,9 @@ if( isset( $_POST[self::$meta_key] ) && is_array( $_POST[self::$meta_key] ) ){
 - `esc_url_raw()` - Sanitizes URLs for database storage
 - `is_array()` - Validates array data types
 
-**Note**: WordPress taxonomy forms have built-in nonce verification, so custom nonce implementation is not required for this context.
+**Note**: 
+- WordPress taxonomy forms have built-in nonce verification, so custom nonce implementation is not required for this context.
+- Removed unused transient code that referenced an undefined variable.
 
 ### 3. init.php
 
