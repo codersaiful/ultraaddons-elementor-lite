@@ -40,18 +40,18 @@ $ultraaddons_page_class         = strtolower(str_replace(' ', '-', $ultraaddons_
                     $ultraaddons_sub_menus = UltraAddons\Admin\Admin_Handle::get_submenu_for_header();
                     //There is no nonce verification needed as we are just reading the 'page' parameter
                     //phpcs:ignore WordPress.Security.NonceVerification.Recommended 
-                    $current_page = isset( $_GET['page'] ) ? sanitize_text_field( $_GET['page'] ) : false;
-                    foreach( $ultraaddons_sub_menus as $sub_menu ){
-                        if( ! isset( $sub_menu['position'] ) || $sub_menu['menu_slug'] == 'ultraaddons-help-n-others' ){
+                    $ultraaddons_current_page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';
+                    foreach( $ultraaddons_sub_menus as $ultraaddons_sub_menu ){
+                        if( ! isset( $ultraaddons_sub_menu['position'] ) || $ultraaddons_sub_menu['menu_slug'] == 'ultraaddons-help-n-others' ){
                             continue;
                         }
                         
                         
-                        $ultraaddons_menu_title = $sub_menu['menu_title'];
-                        $ultraaddons_menu_slug = $sub_menu['menu_slug'];
-                        $active_class = $current_page == $ultraaddons_menu_slug ? 'ua-current-menu' : '';
+                        $ultraaddons_menu_title = $ultraaddons_sub_menu['menu_title'];
+                        $ultraaddons_menu_slug = $ultraaddons_sub_menu['menu_slug'];
+                        $ultraaddons_active_class = $ultraaddons_current_page == $ultraaddons_menu_slug ? 'ua-current-menu' : '';
                     ?>
-                        <li class="<?php echo esc_attr( $active_class . ' ' . $ultraaddons_menu_slug ); ?>">
+                        <li class="<?php echo esc_attr( $ultraaddons_active_class . ' ' . $ultraaddons_menu_slug ); ?>">
                             <a href="<?php echo esc_url( admin_url( 'admin.php?page=' . $ultraaddons_menu_slug ) ); ?>">
                                 <?php echo esc_html( $ultraaddons_menu_title ); ?>
                             </a>

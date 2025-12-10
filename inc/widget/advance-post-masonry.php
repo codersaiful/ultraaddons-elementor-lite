@@ -30,8 +30,8 @@ class Advance_Post_Masonry extends Base{
      *
      * @return string Widget name.
      */
-    public function __construct($data = [], $args = null) {
-        parent::__construct($data, $args);
+    public function __construct($data = [], $ultraaddons_args = null) {
+        parent::__construct($data, $ultraaddons_args);
        
         //For Blog Widget
         $ultraaddons_name           = 'imagesloaded.pkgd.min';
@@ -1614,32 +1614,32 @@ class Advance_Post_Masonry extends Base{
         if (!$settings['_ua_show_category']) {
             return;
         }
-        $output = '';
+        $ultraaddons_output = '';
         $class = $settings['_ua_blog_skin'] == '_skin_2' || $settings['_ua_blog_skin'] == '_skin_3' ? 'ua_tag ua-post__category' : 'd-inline-block ua_tag sa ua-post__category';
         if( 'category' == $taxonomy ) {
             if( $type == 'single' ){
-                $category = get_the_category();
-                if( !empty( $category ) ) {
-                    $output = '<a href="' . esc_url( get_category_link( $category[0]->term_id ) ) .'" class="'.$class.'">'. esc_html( $category[0]->cat_name ) .'</a>';
+                $ultraaddons_category = get_the_category();
+                if( !empty( $ultraaddons_category ) ) {
+                    $ultraaddons_output = '<a href="' . esc_url( get_category_link( $ultraaddons_category[0]->term_id ) ) .'" class="'.$class.'">'. esc_html( $ultraaddons_category[0]->cat_name ) .'</a>';
                 }
             }
             else{
-                $category = (object) get_the_category_list(', ');
-                if( !empty( $category ) ) {
-                    $output = '<a href="#" class="'.$class.'">'. esc_html( $category[0]->cat_name ) .'</a>';
+                $ultraaddons_category = (object) get_the_category_list(', ');
+                if( !empty( $ultraaddons_category ) ) {
+                    $ultraaddons_output = '<a href="#" class="'.$class.'">'. esc_html( $ultraaddons_category[0]->cat_name ) .'</a>';
                 }
                 
             }
         }
         else {
-            $terms = get_the_terms( get_the_ID(), $taxonomy );
-            $term_link = get_term_link( $terms[0], $taxonomy );
+            $ultraaddons_terms = get_the_terms( get_the_ID(), $taxonomy );
+            $term_link = get_term_link( $ultraaddons_terms[0], $taxonomy );
 
-            if( !empty( $terms ) ) {
-                $output = '<a href="' . esc_url( $term_link ) .'" class="'.$class.'">'. esc_html( $terms[0]->name ) .'</a>';
+            if( !empty( $ultraaddons_terms ) ) {
+                $ultraaddons_output = '<a href="' . esc_url( $term_link ) .'" class="'.$class.'">'. esc_html( $ultraaddons_terms[0]->name ) .'</a>';
             }
         }
-        echo wp_kses_post( $output );
+        echo wp_kses_post( $ultraaddons_output );
     }
     protected function render_author(){
         $settings = $this->get_settings_for_display();
@@ -1654,7 +1654,7 @@ class Advance_Post_Masonry extends Base{
      <?php
     }
     protected function render_avatar() {
-        $args = array(
+        $ultraaddons_args = array(
         'size'          => 45,
         'height'        => 45,
         'width'         => 45,
@@ -1662,7 +1662,7 @@ class Advance_Post_Masonry extends Base{
     );
         ?>
         <div class="ua-post__avatar">
-            <?php echo get_avatar( get_the_author_meta( 'ID' ), 45, '', get_the_author_meta( 'display_name' ), $args ); ?>
+            <?php echo get_avatar( get_the_author_meta( 'ID' ), 45, '', get_the_author_meta( 'display_name' ), $ultraaddons_args ); ?>
         </div>
         <?php
     }
@@ -1679,16 +1679,16 @@ class Advance_Post_Masonry extends Base{
         if (!$settings['_ua_show_tag']) {
             return;
         }
-        $output = '';
+        $ultraaddons_output = '';
         $post_tags = get_the_tags();
         $separator = ', ';
         if (!empty($post_tags)) {
-            $output .= '<ul class="tag_list">';
+            $ultraaddons_output .= '<ul class="tag_list">';
             foreach ($post_tags as $tag) {
-                $output .= '<li><a href="' . get_tag_link($tag->term_id) . '">' . $tag->name . '</a></li>' . $separator;
+                $ultraaddons_output .= '<li><a href="' . get_tag_link($tag->term_id) . '">' . $tag->name . '</a></li>' . $separator;
             }
-             $output .= '</ul>';
-            echo wp_kses_post( $output );
+             $ultraaddons_output .= '</ul>';
+            echo wp_kses_post( $ultraaddons_output );
 
         }
     }
@@ -1877,6 +1877,7 @@ protected function get_grid_layout_four_options( array $settings ) {
         ];
         if ( !empty( $tax_query ) ) {
             $tax_query = array_merge( ['relation' => 'AND'], $tax_query );
+            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
             $query_args = array_merge( $query_args, ['tax_query' => $tax_query] );
         }
         
@@ -1942,8 +1943,8 @@ protected function get_grid_layout_four_options( array $settings ) {
         if ( isset( $settings['_ua_grid_metro_layout'] ) && !empty($settings['_ua_grid_metro_layout']) ) {
             $metro_layout = [];
 
-        foreach ( $settings['_ua_grid_metro_layout'] as $ultraaddons_key => $value ) {
-            $metro_layout[] = $value['size'];
+        foreach ( $settings['_ua_grid_metro_layout'] as $ultraaddons_key => $ultraaddons_value ) {
+            $metro_layout[] = $ultraaddons_value['size'];
             
             }
         } else {

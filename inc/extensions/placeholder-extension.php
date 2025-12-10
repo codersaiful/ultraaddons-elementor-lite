@@ -33,10 +33,10 @@ class Placeholder_Extension {
                     $tabs = Controls_Manager::TAB_LAYOUT;
             }
 
-            $slug = preg_replace('/(\s+)/', '-', $this->name);
+            $ultraaddons_slug = preg_replace('/(\s+)/', '-', $this->name);
             $label = $this->name . ' <sup class="ultaaddons-pro-badge">Pro</sup> '; 
             $element->start_controls_section(
-                    '_ua_' . $element_get_name . '_' . $slug,
+                    '_ua_' . $element_get_name . '_' . $ultraaddons_slug,
                     [
                             'label' => $label . ultraaddons_icon_markup(),
                             'tab'   => $tabs,
@@ -44,7 +44,7 @@ class Placeholder_Extension {
             );
 
             $element->add_control(
-                    'ua_' . $element_get_name . '_control_' . $slug,
+                    'ua_' . $element_get_name . '_control_' . $ultraaddons_slug,
                     [
                             'label' => __( 'Important Note', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::RAW_HTML,

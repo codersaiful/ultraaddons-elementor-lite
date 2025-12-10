@@ -98,7 +98,7 @@ class Portfolio extends Base {
     public function query_posts() {
         $settings = $this->get_settings_for_display();
 
-        $args = array(
+        $ultraaddons_args = array(
             'posts_per_page' => isset( $settings['_ua_posts_per_page'] ) ? $settings['_ua_posts_per_page'] : 3,
             'post_status'   => 'publish',
             'post_type' => isset( $settings['_ua_post_type'] ) ? $settings['_ua_post_type'] : 'post',
@@ -108,7 +108,7 @@ class Portfolio extends Base {
             // 'post__not_in' => '',
             'author__in' => ''
         );
-		$this->_query = new WP_Query( $args );
+		$this->_query = new WP_Query( $ultraaddons_args );
 	}
 
     protected function render_post() {
@@ -675,24 +675,24 @@ class Portfolio extends Base {
 			return;
 		}
 
-		$terms = [];
+		$ultraaddons_terms = [];
 
 		foreach ( $this->_query->posts as $post ) {
-			$terms += $post->tags;
+			$ultraaddons_terms += $post->tags;
 		}
 
-		if ( empty( $terms ) ) {
+		if ( empty( $ultraaddons_terms ) ) {
 			return;
 		}
 
-		usort( $terms, function( $a, $b ) {
+		usort( $ultraaddons_terms, function( $a, $b ) {
 			return strcmp( $a->name, $b->name );
 		} );
 
 		?>
 		<ul class="elementor-portfolio__filters">
 			<li class="elementor-portfolio__filter elementor-active" data-filter="__all"><?php echo esc_html__( 'All', 'ultraaddons-elementor-lite' ); ?></li>
-			<?php foreach ( $terms as $term ) { ?>
+			<?php foreach ( $ultraaddons_terms as $term ) { ?>
 				<li class="elementor-portfolio__filter" data-filter="<?php echo esc_attr( $term->term_id ); ?>"><?php echo esc_html( $term->name ); ?></li>
 			<?php } ?>
 		</ul>

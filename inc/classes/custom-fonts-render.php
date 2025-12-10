@@ -98,8 +98,8 @@ array (size=3)
         if( empty( $fonts_args ) ) return;
 
         $fontface = "";
-        foreach( $fonts_args as $args ){
-            $fontface .= self::fontface_each_by_args( $args ) . "\n";
+        foreach( $fonts_args as $ultraaddons_args ){
+            $fontface .= self::fontface_each_by_args( $ultraaddons_args ) . "\n";
         }
 
         return $fontface;
@@ -115,12 +115,12 @@ array (size=3)
       'font-display' => string 'auto' (length=4)
       'src' => string 'url(mylink/FONT-ThicccAF.ttf) format('ttf')' (length=101)
      *
-     * @param Array $args
+     * @param Array $ultraaddons_args
      * @return String
      */
-    protected static function fontface_each_by_args( $args ){
+    protected static function fontface_each_by_args( $ultraaddons_args ){
         $property = '';
-        foreach( $args as $property_name => $property_value ){
+        foreach( $ultraaddons_args as $property_name => $property_value ){
             $property .= "$property_name: $property_value;"; //\n
         }
 

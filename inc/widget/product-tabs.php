@@ -17,8 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class Product_Tabs extends Base{
     
 
-	public function __construct($data = [], $args = null) {
-        parent::__construct($data, $args);
+	public function __construct($data = [], $ultraaddons_args = null) {
+        parent::__construct($data, $ultraaddons_args);
 		
         //Naming of Args 
         $ultraaddons_name           = 'isotop';
@@ -1196,14 +1196,14 @@ class Product_Tabs extends Base{
 						<ul class="pf-filter-btn">
 							<li class="list active" data-filter="*"><a href="#">All</a></li>
 							<?php
-							$args = array(
+							$ultraaddons_args = array(
 								'orderby'       => 'ID',
 								'order'         => 'DESC',
 								'hide_empty'    => true,
 								'taxonomy'      => 'product_cat'
 							);
 							//Filter List by category 
-							$categories = get_categories( $args );
+							$categories = get_categories( $ultraaddons_args );
 							if(is_array($categories) && count($categories) > 0):
 								foreach ($categories as $cat):
 								$id = $cat->term_id;
@@ -1243,14 +1243,14 @@ class Product_Tabs extends Base{
 		<div class="pgf ua-row projects">
 		<?php
 			$paged = (get_query_var('paged')) ? get_query_var('paged') : $settings['_ua_post_page_number'] ;
-			$all_categories = get_categories( $args );
-			$cat_ids = array();
+			$all_categories = get_categories( $ultraaddons_args );
+			$ultraaddons_cat_ids = array();
 
 			foreach ($all_categories as $cat){
-				array_push($cat_ids, $cat->term_id);
+				array_push($ultraaddons_cat_ids, $cat->term_id);
 			}
-			//print_r($cat_ids);
-			$args = array(
+			//print_r($ultraaddons_cat_ids);
+			$ultraaddons_args = array(
 				'post_type' 	=> 'product',
 				'posts_per_page'=> $settings['_ua_post_per_page'],
 				'order'			=> $settings['_ua_product_order'],
@@ -1258,25 +1258,25 @@ class Product_Tabs extends Base{
 			);
 			if(! empty( $settings['_ua_query_post_in'] )){
 				$include_ids = explode(',',$settings['_ua_query_post_in']);
-				$args['post__in'] = $include_ids;
+				$ultraaddons_args['post__in'] = $include_ids;
 			}
 			if(! empty( $settings['_ua_query_post_not_in'] )){
 				$exclude_ids = explode(',',$settings['_ua_query_post_not_in']);
 				//phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_post_not_in
-				$args['post__not_in'] = $exclude_ids;
+				$ultraaddons_args['post__not_in'] = $exclude_ids;
 			}
 	
 			//phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
-			$args['tax_query'] = array(
+			$ultraaddons_args['tax_query'] = array(
 				array(
 					'taxonomy'  => 'product_cat',
 					'field'     => 'id', 
-					'terms'     => (!empty($settings['cat_ids'])) ?  $settings['cat_ids'] : $cat_ids,
+					'terms'     => (!empty($settings['cat_ids'])) ?  $settings['cat_ids'] : $ultraaddons_cat_ids,
 				)
 			);
 			
 			
-			$loop = new \WP_Query( $args );
+			$loop = new \WP_Query( $ultraaddons_args );
 			if ( $loop->have_posts() ) {
 				while ( $loop->have_posts() ) : $loop->the_post();
 					$id 		= $loop->post->ID;

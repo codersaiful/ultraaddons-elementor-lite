@@ -21,7 +21,7 @@ class Custom_Fonts_Taxonomy{
     private static $instance = null;
     
     public static $meta_key = 'ua_fonts';
-    public static $slug = 'ultraaddons-custom-fonts';
+    public static $ultraaddons_slug = 'ultraaddons-custom-fonts';
 
 	/**
 	 * Fonts
@@ -54,7 +54,7 @@ class Custom_Fonts_Taxonomy{
     }
 
 	public static function get_term_name(){
-		return self::$slug;
+		return self::$ultraaddons_slug;
 	}
 	
 	public static function get_meta_key(){
@@ -81,7 +81,7 @@ class Custom_Fonts_Taxonomy{
 				'back_to_items'     => __( '← Go to Fonts', 'ultraaddons-elementor-lite' ),
 			);
 
-			$args = array(
+			$ultraaddons_args = array(
 				'hierarchical'      => false,
 				'labels'            => $labels,
 				'public'            => false,
@@ -93,9 +93,9 @@ class Custom_Fonts_Taxonomy{
 			);
 
 			register_taxonomy(
-				self::$slug,
+				self::$ultraaddons_slug,
 				apply_filters( 'ultraaddons_taxonomy_objects_custom_fonts', array() ),
-				apply_filters( 'ultraaddons_taxonomy_args_custom_fonts', $args )
+				apply_filters( 'ultraaddons_taxonomy_args_custom_fonts', $ultraaddons_args )
 			);
     }
 

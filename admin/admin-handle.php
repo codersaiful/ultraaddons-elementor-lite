@@ -18,7 +18,7 @@ defined( 'ABSPATH' ) || die();
  */
 class Admin_Handle{
     
-    public static $sub_menu = array();
+    public static $ultraaddons_sub_menu = array();
     public static $capability = ULTRA_ADDONS_CAPABILITY;
     public static $ultraaddons_menu_slug = 'ultraaddons-elementor-lite';
     public static $header_file = ULTRA_ADDONS_DIR . 'admin/pages/includes/admin-header.php';
@@ -249,7 +249,7 @@ class Admin_Handle{
      * @return array
      */
     public static function get_submenu(){
-        self::$sub_menu = [
+        self::$ultraaddons_sub_menu = [
             [
                 'parent_slug'   => self::$ultraaddons_menu_slug,//$parent_slug,
                 'page_title'    =>  __( 'UltraAddons Elementor Addons', 'ultraaddons-elementor-lite' ),
@@ -332,13 +332,13 @@ class Admin_Handle{
             
         ];
         
-        self::$sub_menu = apply_filters( 'ultraaddons/admin/sub_menu', self::$sub_menu );
+        self::$ultraaddons_sub_menu = apply_filters( 'ultraaddons/admin/sub_menu', self::$ultraaddons_sub_menu );
         
-        if( empty( self::$sub_menu ) || ! is_array( self::$sub_menu ) ){
-            self::$sub_menu = [];
+        if( empty( self::$ultraaddons_sub_menu ) || ! is_array( self::$ultraaddons_sub_menu ) ){
+            self::$ultraaddons_sub_menu = [];
         }
         
-        return self::$sub_menu;
+        return self::$ultraaddons_sub_menu;
     }
     
     /**

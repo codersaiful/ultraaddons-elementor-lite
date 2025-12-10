@@ -86,7 +86,7 @@ class Menu extends Base{
         $this->add_render_attribute( 'wrapper', 'id', $wrapper_id );
         $menu_id = $settings['menu'];
 
-        $args = array(
+        $ultraaddons_args = array(
 		'menu'                 => $menu_id,
 		'container'            => 'div',
 		'container_class'      => 'ua-menu-container',
@@ -106,7 +106,7 @@ class Menu extends Base{
 		//'walker'               => new Menu_Walker(),
 		//'theme_location'       => '',
 	);
-        $menu_html = wp_nav_menu( $args );
+        $menu_html = wp_nav_menu( $ultraaddons_args );
         $menu_text = $settings['menu_text'];//esc_html_e( 'Primary Menu', 'ultraaddons-elementor-lite' );
 
         

@@ -62,7 +62,7 @@ class Library_Source extends Source_Base {
 		return new \WP_Error( 'invalid_request', 'Cannot export template from a UltraAddons library' );
 	}
 
-	public function get_items( $args = [] ) {
+	public function get_items( $ultraaddons_args = [] ) {
 		$library_data = self::get_library_data();
 
 		$ultraaddons_templates = [];
@@ -208,8 +208,8 @@ class Library_Source extends Source_Base {
 	 *
 	 * @return array|\WP_Error Remote Template data.
 	 */
-	public function get_data( array $args, $context = 'display' ) {
-		$data = self::request_template_data( $args['template_id'] );
+	public function get_data( array $ultraaddons_args, $context = 'display' ) {
+		$data = self::request_template_data( $ultraaddons_args['template_id'] );
 
 		$data = json_decode( $data, true );
 
@@ -220,7 +220,7 @@ class Library_Source extends Source_Base {
 		$data['content'] = $this->replace_elements_ids( $data['content'] );
 		$data['content'] = $this->process_export_import_content( $data['content'], 'on_import' );
 
-		$post_id = $args['editor_post_id'];
+		$post_id = $ultraaddons_args['editor_post_id'];
 		$document = ultraaddons_elementor()->documents->get( $post_id );
 
 		if ( $document ) {

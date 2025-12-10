@@ -33,12 +33,12 @@ class Product_Carousel extends Base{
      * we have called this __construct() method
      * 
      * @param Array $data
-     * @param Array $args
+     * @param Array $ultraaddons_args
      * 
      * @by Saiful Islam
      */
-	public function __construct($data = [], $args = null) {
-        parent::__construct($data, $args);
+	public function __construct($data = [], $ultraaddons_args = null) {
+        parent::__construct($data, $ultraaddons_args);
 
         //Naming of Args for swiffySlider
         $ultraaddons_name           = 'swiffySlider';
@@ -1020,7 +1020,7 @@ if( Plugin::$instance->editor->is_edit_mode()){
     <ul class="slider-container">
         <?php
 		
-        $args = array(
+        $ultraaddons_args = array(
             'post_type' 	=> 'product',
             'posts_per_page'=> $settings['_ua_post_per_page'],
 			'paged'=> ! empty( $settings['_ua_post_page_number'] ) ? $settings['_ua_post_page_number'] : 1,
@@ -1029,17 +1029,17 @@ if( Plugin::$instance->editor->is_edit_mode()){
             );
 		if(! empty( $settings['_ua_query_post_in'] )){
 			$include_ids = explode(',',$settings['_ua_query_post_in']);
-			$args['post__in'] = $include_ids;
+			$ultraaddons_args['post__in'] = $include_ids;
 		}
 		if(! empty( $settings['_ua_query_post_not_in'] )){
 			$exclude_ids = explode(',',$settings['_ua_query_post_not_in']);
 			//phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_post_not_in
-			$args['post__not_in'] = $exclude_ids;
+			$ultraaddons_args['post__not_in'] = $exclude_ids;
 		}
 
 		if( ! empty( $settings['cat_ids'] ) ){
 			//phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
-			$args['tax_query'] = array(
+			$ultraaddons_args['tax_query'] = array(
 				array(
 					'taxonomy'  => 'product_cat',
 					'field'     => 'id', 
@@ -1050,7 +1050,7 @@ if( Plugin::$instance->editor->is_edit_mode()){
 		
 		if( ! empty( $settings['tag_ids'] ) ){
 			//phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
-			$args['tax_query'] = array(
+			$ultraaddons_args['tax_query'] = array(
 				array(
 					'taxonomy'  => 'product_tag',
 					'field'     => 'id', 
@@ -1059,7 +1059,7 @@ if( Plugin::$instance->editor->is_edit_mode()){
 			);
 		}	
 
-        $loop = new \WP_Query( $args );
+        $loop = new \WP_Query( $ultraaddons_args );
         if ( $loop->have_posts() ) {
 			$count=0;
 			$number=array();
@@ -1069,11 +1069,11 @@ if( Plugin::$instance->editor->is_edit_mode()){
 				$image_id  	 = $product->get_image_id();
 				$image_url 	 = wp_get_attachment_image_url( $image_id, 'full' );
 				$description = $loop->post->post_excerpt;
-                $category 	 = get_the_category( $id );
+                $ultraaddons_category 	 = get_the_category( $id );
 				$count		= $count+1;
 				$number[]	=$count;
-				if(!empty($category)){
-                    echo $category[0]->cat_name;
+				if(!empty($ultraaddons_category)){
+                    echo esc_html( $ultraaddons_category[0]->name ?? '' );
                 }
 				?>
         <li>
@@ -1097,7 +1097,7 @@ if( Plugin::$instance->editor->is_edit_mode()){
                 </div>
                 <div class="ua-card-body ua-d-flex ua-flex-column ua-flex-md-row">
                     <div class="ua-flex-grow-1">
-                        <a href="<?php echo get_the_permalink(); ?>">
+                        <a href="<?php echo esc_url( get_the_permalink() ); ?>">
                             <?php
                             echo '<' . esc_html( $settings['_ua_front_title_tag'] ) . ' class="ua-product-title">' . esc_html( $loop->post->post_title ) . 
                                     '</' . esc_html( $settings['_ua_front_title_tag'] ) . '>';

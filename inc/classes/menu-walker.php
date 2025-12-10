@@ -12,33 +12,33 @@ class Menu_Walker extends \Walker_Nav_Menu {
 	 * Start element
 	 *
 	 * @since 1.3.0
-	 * @param string $output Output HTML.
+	 * @param string $ultraaddons_output Output HTML.
 	 * @param object $ultraaddons_item Individual Menu item.
 	 * @param int    $depth Depth.
-	 * @param array  $args Arguments array.
+	 * @param array  $ultraaddons_args Arguments array.
 	 * @param int    $id Menu ID.
 	 * @access public
 	 */
-	public function start_el( &$output, $ultraaddons_item, $depth = 0, $args = [], $id = 0 ) {
+	public function start_el( &$ultraaddons_output, $ultraaddons_item, $depth = 0, $ultraaddons_args = [], $id = 0 ) {
 
 		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
-		$args   = (object) $args;
+		$ultraaddons_args   = (object) $ultraaddons_args;
 
 		$class_names = '';
-		$value       = '';
+		$ultraaddons_value       = '';
 		$rel_xfn     = '';
 		$rel_blank   = '';
 
 		$classes = empty( $ultraaddons_item->classes ) ? [] : (array) $ultraaddons_item->classes;
-		$submenu = $args->has_children ? ' ua-has-submenu' : '';
+		$submenu = $ultraaddons_args->has_children ? ' ua-has-submenu' : '';
 
 		if ( 0 === $depth ) {
 			array_push( $classes, 'parent' );
 		}
-		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $ultraaddons_item, $args, $depth ) );
+		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $ultraaddons_item, $ultraaddons_args, $depth ) );
 		$class_names = ' class="' . esc_attr( $class_names ) . $submenu . ' ua-creative-menu"';
 
-		$output .= $indent . '<li id="menu-item-' . $ultraaddons_item->ID . '"' . $value . $class_names . '>';
+		$ultraaddons_output .= $indent . '<li id="menu-item-' . $ultraaddons_item->ID . '"' . $ultraaddons_value . $class_names . '>';
 
 		if ( isset( $ultraaddons_item->target ) && '_blank' === $ultraaddons_item->target && isset( $ultraaddons_item->xfn ) && false === strpos( $ultraaddons_item->xfn, 'noopener' ) ) {
 			$rel_xfn = ' noopener';
@@ -54,8 +54,8 @@ class Menu_Walker extends \Walker_Nav_Menu {
 
 		$atts = apply_filters( 'ua_nav_menu_attrs', $attributes );
 
-		$item_output  = $args->has_children ? '<div class="ua-has-submenu-container">' : '';
-		$item_output .= $args->before;
+		$item_output  = $ultraaddons_args->has_children ? '<div class="ua-has-submenu-container">' : '';
+		$item_output .= $ultraaddons_args->before;
 		$item_output .= '<a' . $atts;
 		if ( 0 === $depth ) {
 			$item_output .= ' class = "ua-menu-item"';
@@ -64,18 +64,18 @@ class Menu_Walker extends \Walker_Nav_Menu {
 		}
 
 		$item_output .= '>';
-		$item_output .= $args->link_before . apply_filters( 'the_title', $ultraaddons_item->title, $ultraaddons_item->ID ) . $args->link_after;
-		if ( $args->has_children ) {
+		$item_output .= $ultraaddons_args->link_before . apply_filters( 'the_title', $ultraaddons_item->title, $ultraaddons_item->ID ) . $ultraaddons_args->link_after;
+		if ( $ultraaddons_args->has_children ) {
 			$item_output .= "<span class='ua-menu-toggle sub-arrow ua-menu-child-";
 			$item_output .= $depth;
 			$item_output .= "'><i class='fa'></i></span>";
 		}
 		$item_output .= '</a>';
 
-		$item_output .= $args->after;
-		$item_output .= $args->has_children ? '</div>' : '';
+		$item_output .= $ultraaddons_args->after;
+		$item_output .= $ultraaddons_args->has_children ? '</div>' : '';
 
-		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $ultraaddons_item, $depth, $args );
+		$ultraaddons_output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $ultraaddons_item, $depth, $ultraaddons_args );
 	}
 
 	/**
@@ -86,18 +86,18 @@ class Menu_Walker extends \Walker_Nav_Menu {
 	 * @param object $children_elements Child Elements.
 	 * @param int    $max_depth Maximum Depth.
 	 * @param int    $depth Depth.
-	 * @param array  $args Arguments array.
-	 * @param string $output Output HTML.
+	 * @param array  $ultraaddons_args Arguments array.
+	 * @param string $ultraaddons_output Output HTML.
 	 * @access public
 	 */
-	function display_element( $element, &$children_elements, $max_depth, $depth, $args, &$output ) {
+	function display_element( $element, &$children_elements, $max_depth, $depth, $ultraaddons_args, &$ultraaddons_output ) {
 
 		$id_field = $this->db_fields['id'];
 
-		if ( is_object( $args[0] ) ) {
-			$args[0]->has_children = ! empty( $children_elements[ $element->$id_field ] );
+		if ( is_object( $ultraaddons_args[0] ) ) {
+			$ultraaddons_args[0]->has_children = ! empty( $children_elements[ $element->$id_field ] );
 		}
-		return parent::display_element( $element, $children_elements, $max_depth, $depth, $args, $output );
+		return parent::display_element( $element, $children_elements, $max_depth, $depth, $ultraaddons_args, $ultraaddons_output );
 	}
 }
 

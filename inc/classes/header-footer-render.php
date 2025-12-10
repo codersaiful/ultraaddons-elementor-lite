@@ -111,21 +111,21 @@ class Header_Footer_Render {
         self::conditional_set_template_data();
         echo wp_kses_post( ultraaddons_elementor_display_content( self::get_before_header_id() ) );
     }
-    public static function header_css_body_class( $body_class ){
-        $body_class[] = 'ua-header-type-css';
-        return $body_class;
+    public static function header_css_body_class( $ultraaddons_body_class ){
+        $ultraaddons_body_class[] = 'ua-header-type-css';
+        return $ultraaddons_body_class;
     }
 
     public static function add_footer(){
         self::conditional_set_template_data();
         echo wp_kses_post( ultraaddons_elementor_display_content( self::get_after_footer_id() ) );
     }
-    public static function footer_css_body_class( $body_class ){
-        $body_class[] = 'ua-footer-type-css';
-        return $body_class;
+    public static function footer_css_body_class( $ultraaddons_body_class ){
+        $ultraaddons_body_class[] = 'ua-footer-type-css';
+        return $ultraaddons_body_class;
     }
 
-    public static function get_header($ultraaddons_name, $args){
+    public static function get_header($ultraaddons_name, $ultraaddons_args){
 
         self::conditional_set_template_data();
 
@@ -134,7 +134,7 @@ class Header_Footer_Render {
         }
         
     }
-    public static function get_footer($ultraaddons_name, $args){
+    public static function get_footer($ultraaddons_name, $ultraaddons_args){
 
         self::conditional_set_template_data();
 

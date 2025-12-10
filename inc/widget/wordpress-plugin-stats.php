@@ -69,10 +69,10 @@ class WordPress_Plugin_Stats extends Base{
         $settings           = $this->get_settings_for_display();
 
         
-        $slug = $settings['plugin_slug'];
+        $ultraaddons_slug = $settings['plugin_slug'];
         $plugin_name = $settings['plugin_name'];
         
-        $plugin_slug = ! empty( $slug ) ? $slug : 'ultraaddons-elementor-lite'; 
+        $plugin_slug = ! empty( $ultraaddons_slug ) ? $ultraaddons_slug : 'ultraaddons-elementor-lite'; 
         //Transient name with plugin's slug, so that, if a user if change plugin, than data will be update/change
         $transient_name = 'ua_stats-' . $plugin_slug;
         $transient = get_transient( $transient_name );

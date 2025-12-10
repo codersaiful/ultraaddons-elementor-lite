@@ -21,11 +21,11 @@ class Template_List {
     
     public function get_templates() {
 
-        $args = array(
+        $ultraaddons_args = array(
             'post_type'     =>  HF_Post::$post_type,
             'post_status'   =>  'publish'
         );
-        $query = get_posts( $args );
+        $query = get_posts( $ultraaddons_args );
 
         // Check, If post not found , Direct return main choicese
         if( empty( $query ) ){

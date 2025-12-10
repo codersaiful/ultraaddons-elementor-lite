@@ -1175,7 +1175,7 @@ class Info_Box extends Base {
                     if ( $is_new || $svg_library_bool ) {
                             Icons_Manager::render_icon( $settings['add_icon'], [ 'aria-hidden' => 'true' ] );
                     } elseif ( ! empty( $settings['add_icon'] ) ) {?>
-                            <i <?php echo $this->get_render_attribute_string( 'i' ); ?>></i>
+                            <i <?php echo esc_attr( $this->get_render_attribute_string( 'i' ) ); ?>></i>
                     <?php } ?>
                 </<?php echo esc_attr( $icon_tag ); ?>>
             <?php } elseif( 'image' == $icon_style ) { ?>
@@ -1219,14 +1219,14 @@ class Info_Box extends Base {
         }
         
     ?>
-    <<?php echo esc_attr( $wrapper_tag ); ?> <?php echo $this->get_render_attribute_string( 'wrapper-tag' ); ?>>
+    <<?php echo esc_attr( $wrapper_tag ); ?> <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper-tag' ) ); ?>>
         <?php $this->get_image_icon(); ?>
         <div class="ua-info-box-content">
             <<?php echo esc_attr( $settings['title_size'] ); ?> class="elementor-icon-box-title">
-                    <<?php echo esc_attr( $icon_tag ); ?><?php echo $this->get_render_attribute_string( 'title_text' ); ?>><?php echo esc_html( $settings['title_text'] ); ?></<?php echo esc_attr( $icon_tag ); ?>>
+                    <<?php echo esc_attr( $icon_tag ); ?><?php echo esc_attr( $this->get_render_attribute_string( 'title_text' ) ); ?>><?php echo esc_html( $settings['title_text'] ); ?></<?php echo esc_attr( $icon_tag ); ?>>
             </<?php echo esc_attr( $settings['title_size'] ); ?>>
             <?php if ( ! ultraaddons_widget_data_is_empty( $settings['description_text'] ) ) : ?>
-            <p <?php echo $this->get_render_attribute_string( 'description_text' ); ?>><?php echo esc_html( $settings['description_text'] ); ?></p>
+            <p <?php echo esc_attr( $this->get_render_attribute_string( 'description_text' ) ); ?>><?php echo esc_html( $settings['description_text'] ); ?></p>
             <?php endif; ?>
         </div>
         <?php 

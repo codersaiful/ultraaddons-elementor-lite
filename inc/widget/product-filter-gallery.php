@@ -1135,14 +1135,14 @@ class Product_Filter_Gallery extends Base{
 				<ul class="pf-filter-btn">
 					<li class="list active" data-filter="all"><?php echo esc_html( $settings['_ua_all_btn_txt'] );?></li>
 					<?php
-					$args = array(
+					$ultraaddons_args = array(
 						'orderby'       => 'ID',
 						'order'         => 'DESC',
 						'hide_empty'    => true,
 						'taxonomy'      => 'product_cat'
 					);
 					//Filter List by category 
-					$categories = get_categories( $args );
+					$categories = get_categories( $ultraaddons_args );
 					if(is_array($categories) && count($categories) > 0):
 						foreach ($categories as $cat):?>
 						<li class="list" data-filter="<?php echo  esc_attr( $cat->name );?>">
@@ -1175,7 +1175,7 @@ class Product_Filter_Gallery extends Base{
 		</div>
     	<?php
 		$paged = (get_query_var('paged')) ? get_query_var('paged') : $settings['_ua_post_page_number'] ;
-        $args = array(
+        $ultraaddons_args = array(
             'post_type' 	=> 'product',
             'posts_per_page'=> $settings['_ua_post_per_page'],
             'paged'         => $paged,
@@ -1184,18 +1184,18 @@ class Product_Filter_Gallery extends Base{
         );
 		if(! empty( $settings['_ua_query_post_in'] )){
 			$include_ids = explode(',',$settings['_ua_query_post_in']);
-			$args['post__in'] = $include_ids;
+			$ultraaddons_args['post__in'] = $include_ids;
 		}
 
 		if(! empty( $settings['_ua_query_post_not_in'] )){
 			$exclude_ids = explode(',',$settings['_ua_query_post_not_in']);
 			//phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_post_not_in
-			$args['post__not_in'] = $exclude_ids;
+			$ultraaddons_args['post__not_in'] = $exclude_ids;
 		}
 
 		if( ! empty( $settings['cat_ids'] ) ){
 			//phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
-			$args['tax_query'] = array(
+			$ultraaddons_args['tax_query'] = array(
 				array(
 					'taxonomy'  => 'product_cat',
 					'field'     => 'id', 
@@ -1205,7 +1205,7 @@ class Product_Filter_Gallery extends Base{
 		}	
 
 	/* 	if( ! empty( $settings['tag_ids'] ) ){
-			$args['tax_query'] = array(
+			$ultraaddons_args['tax_query'] = array(
 				array(
 					'taxonomy'  => 'product_tag',
 					'field'     => 'id', 
@@ -1214,7 +1214,7 @@ class Product_Filter_Gallery extends Base{
 			);
 		} */	
         
-        $loop = new \WP_Query( $args );
+        $loop = new \WP_Query( $ultraaddons_args );
         if ( $loop->have_posts() ):
             while ( $loop->have_posts() ) : $loop->the_post();
 				$id 		    = $loop->post->ID;
@@ -1258,9 +1258,9 @@ class Product_Filter_Gallery extends Base{
 									</span>
 									<a href="<?php echo esc_url( get_the_permalink() ); ?>">
 									<?php
-										echo '<' . $settings['_ua_front_title_tag'] . ' class="ua-product-title">' 
+										echo '<' . esc_html( $settings['_ua_front_title_tag'] ) . ' class="ua-product-title">' 
 											. esc_html( $loop->post->post_title ) . 
-											'</' . $settings['_ua_front_title_tag'] . '>';
+											'</' . esc_html( $settings['_ua_front_title_tag'] ) . '>';
 										?>
 									</a>
 								<p> <?php echo esc_html( $this->word_shortener($description, $settings['_ua_text_truncate']) );?></p>
@@ -1294,11 +1294,11 @@ class Product_Filter_Gallery extends Base{
         $total_pages = $loop->max_num_pages;
 
         if ($total_pages > 1){
-            $current_page = max(1, get_query_var('paged'));
+            $ultraaddons_current_page = max(1, get_query_var('paged'));
             echo wp_kses_post( paginate_links(array(
                 'base' => get_pagenum_link(1) . '%_%',
                 'format' => '/page/%#%',
-                'current' => $current_page,
+                'current' => $ultraaddons_current_page,
                 'total' => $total_pages,
                 'prev_text'    => __( '« Prev', 'ultraaddons-elementor-lite' ),
                 'next_text'    => __( 'Next »', 'ultraaddons-elementor-lite' ),

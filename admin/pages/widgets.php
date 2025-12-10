@@ -14,8 +14,8 @@ if( $ultraaddons_updated ){
 }
 
 
-$items = Widgets_Manager::widgets();
-// $items['More'] = [
+$ultraaddons_items = Widgets_Manager::widgets();
+// $ultraaddons_items['More'] = [
 //             'name'      => __( 'More Widget Comming Soon ....', 'ultraaddons-elementor-lite' ),
 //             'is_pro'   => true,
 //             'icon'      => 'uicon-ultraaddons',//eicon-global-colors
@@ -23,7 +23,7 @@ $items = Widgets_Manager::widgets();
 //                 __( 'Basic', 'ultraaddons-elementor-lite' ),
 //             ],
 //     ];
-$disable_items = Widgets_Manager::disableWidgetKeys();
+$ultraaddons_disable_items = Widgets_Manager::disableWidgetKeys();
 ?>
 
 <div class="ultraaddons-section ua-option-wrapper ua-widgets-page">
@@ -40,19 +40,19 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
             </ul>
             <ul class="widget-cat-list" >
             <?php
-            $temp_widgets = $items;
-            $wid_cats = [];
-            foreach( $temp_widgets as $temp_wid_key => $temp_wdget ){
-                $cat = $temp_wdget['cat'][0] ?? 'no-cat';
-                $c_name = str_replace( '_', ' ', $cat );
-                $wid_cats[$cat] =  $c_name;
+            $ultraaddons_temp_widgets = $ultraaddons_items;
+            $ultraaddons_wid_cats = [];
+            foreach( $ultraaddons_temp_widgets as $ultraaddons_temp_wid_key => $ultraaddons_temp_wdget ){
+                $cat = $ultraaddons_temp_wdget['cat'][0] ?? 'no-cat';
+                $ultraaddons_temp_wdget = str_replace( '_', ' ', $cat );
+                $ultraaddons_wid_cats[$cat] =  $ultraaddons_temp_wdget;
             }
-            $wid_cats['category-all'] = esc_html__( 'All', 'ultraaddons-elementor-lite' );
+            $ultraaddons_wid_cats['category-all'] = esc_html__( 'All', 'ultraaddons-elementor-lite' );
 
-            foreach( $wid_cats as $wid_cat_key => $wid_cat ){
-                $active_class = $wid_cat_key == 'all' ? 'active' : '';
+            foreach( $ultraaddons_wid_cats as $ultraaddons_wid_cat_key => $wid_cat ){
+                $ultraaddons_active_class = $ultraaddons_wid_cat_key == 'all' ? 'active' : '';
             ?>
-                <li class="wid-cat-wise-target <?php echo esc_attr( $active_class ); ?>" data-target="<?php echo esc_attr( $wid_cat_key ); ?>" ><?php echo esc_html( $wid_cat ); ?></li>
+                <li class="wid-cat-wise-target <?php echo esc_attr( $ultraaddons_active_class ); ?>" data-target="<?php echo esc_attr( $ultraaddons_wid_cat_key ); ?>" ><?php echo esc_html( $wid_cat ); ?></li>
             <?php
             }
             
@@ -68,7 +68,7 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
                 <form class="ua-option-list-form" action="" method="post">
                     <div class="ua-option-item-wrappper">
                         <?php 
-                        foreach( $items as $ultraaddons_class_name => $ultraaddons_item ){
+                        foreach( $ultraaddons_items as $ultraaddons_class_name => $ultraaddons_item ){
 
                             $ultraaddons_name = isset( $ultraaddons_item['name'] ) ? $ultraaddons_item['name'] : false;
                             $ultraaddons_icon = isset( $ultraaddons_item['icon'] ) ? $ultraaddons_item['icon'] : false;
@@ -94,8 +94,8 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
                              */
                             $ultraaddons_item_oo_option = isset( $ultraaddons_item['is_pro'] ) && $ultraaddons_item['is_pro'] && ! ultraaddons_is_pro()  ? 'item_on_off_disable' : 'item_on_off_enable';
                             
-                            $ultraaddons_checkbox = in_array( $ultraaddons_class_name, $disable_items ) ? 'checked' : '';
-                            $ultraaddons_enbl_disbl_class = in_array( $ultraaddons_class_name, $disable_items ) ? 'disabled' : 'enabled';
+                            $ultraaddons_checkbox = in_array( $ultraaddons_class_name, $ultraaddons_disable_items ) ? 'checked' : '';
+                            $ultraaddons_enbl_disbl_class = in_array( $ultraaddons_class_name, $ultraaddons_disable_items ) ? 'disabled' : 'enabled';
                             $ultraaddons_checkbox_id = 'checkbox_' . $ultraaddons_class_name;
                             $ultraaddons_html_class = [];
                             //$ultraaddons_html_class[] = $ultraaddons_name;

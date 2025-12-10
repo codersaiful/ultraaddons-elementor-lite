@@ -559,7 +559,7 @@ class Post_Timeline extends Base{
     <div class="ua-post-timeline">
         <ul>
         <?php
-        $args = array(
+        $ultraaddons_args = array(
             'post_type' 	=> $settings['_ua_post_type'],
             'posts_per_page'=> $settings['_ua_post_per_page'],
 			'paged'=> ! empty( $settings['_ua_post_page_number'] ) ? $settings['_ua_post_page_number'] : 1,
@@ -568,16 +568,16 @@ class Post_Timeline extends Base{
             );
 		if(! empty( $settings['_ua_query_post_in'] )){
 			$include_ids = explode(',',$settings['_ua_query_post_in']);
-			$args['post__in'] = $include_ids;
+			$ultraaddons_args['post__in'] = $include_ids;
 		}
 		if(! empty( $settings['_ua_query_post_not_in'] )){
 			$exclude_ids = explode(',',$settings['_ua_query_post_not_in']);
 			//phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_post_not_in
-			$args['post__not_in'] = $exclude_ids;
+			$ultraaddons_args['post__not_in'] = $exclude_ids;
 		}
 
 	 	if( ! empty( $settings['cat_ids'] ) ){
-			$args['tax_query'] = array(
+			$ultraaddons_args['tax_query'] = array(
 				array(
 					'taxonomy'  => 'product_cat',
 					'field'     => 'id', 
@@ -588,7 +588,7 @@ class Post_Timeline extends Base{
 		
 		if( ! empty( $settings['tag_ids'] ) ){
 			//phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
-			$args['tax_query'] = array(
+			$ultraaddons_args['tax_query'] = array(
 				array(
 					'taxonomy'  => 'product_tag',
 					'field'     => 'id', 
@@ -596,7 +596,7 @@ class Post_Timeline extends Base{
 				)
 			);
 		} 
-         $loop = new \WP_Query( $args ); 
+         $loop = new \WP_Query( $ultraaddons_args ); 
             while ( $loop->have_posts() ) : $loop->the_post();
             if ( has_post_thumbnail() ):
             ?>

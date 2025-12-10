@@ -1002,7 +1002,7 @@ class Product_Grid extends Base{
 	<div class="ua-row pg">
 	<?php
 		$paged = (get_query_var('paged')) ? get_query_var('paged') : $settings['_ua_post_page_number'] ;
-        $args = array(
+        $ultraaddons_args = array(
             'post_type' 	=> 'product',
             'posts_per_page'=> $settings['_ua_post_per_page'],
             'paged'         => $paged,
@@ -1011,17 +1011,17 @@ class Product_Grid extends Base{
             );
 		if(! empty( $settings['_ua_query_post_in'] )){
 			$include_ids = explode(',',$settings['_ua_query_post_in']);
-			$args['post__in'] = $include_ids;
+			$ultraaddons_args['post__in'] = $include_ids;
 		}
 		if(! empty( $settings['_ua_query_post_not_in'] )){
 			$exclude_ids = explode(',',$settings['_ua_query_post_not_in']);
 			//phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_post__not_in
-			$args['post__not_in'] = $exclude_ids;
+			$ultraaddons_args['post__not_in'] = $exclude_ids;
 		}
 
 		if( ! empty( $settings['cat_ids'] ) ){
 			//phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.TaxQuery_tax_query
-			$args['tax_query'] = array(
+			$ultraaddons_args['tax_query'] = array(
 				array(
 					'taxonomy'  => 'product_cat',
 					'field'     => 'id', 
@@ -1032,7 +1032,7 @@ class Product_Grid extends Base{
 
 		if( ! empty( $settings['tag_ids'] ) ){
 			//phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.TaxQuery_tax_query
-			$args['tax_query'] = array(
+			$ultraaddons_args['tax_query'] = array(
 				array(
 					'taxonomy'  => 'product_tag',
 					'field'     => 'id', 
@@ -1041,7 +1041,7 @@ class Product_Grid extends Base{
 			);
 		}	
 
-        $loop = new \WP_Query( $args );
+        $loop = new \WP_Query( $ultraaddons_args );
         if ( $loop->have_posts() ) {
             while ( $loop->have_posts() ) : $loop->the_post();
 				$id 		= $loop->post->ID;
@@ -1087,7 +1087,7 @@ class Product_Grid extends Base{
                 <div class="ua-product-bottom-details">
                     <div class="ua-product-price"><?php echo wp_kses_post( $product->get_price_html() );?> </div>
                     <div class="ua-product-links">
-                        <a href="?add-to-cart=<?php echo esc_attr($id); ?>"  class="add-card button add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo esc_attr($id); ?>"  aria-label="Add '<?php echo get_the_title(); ?>' to your cart" rel="nofollow">
+                        <a href="?add-to-cart=<?php echo esc_attr($id); ?>"  class="add-card button add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo esc_attr($id); ?>"  aria-label="Add '<?php echo esc_attr( get_the_title() ); ?>' to your cart" rel="nofollow">
                             <i class="uicon uicon-cart"></i>
 							<?php
 							if ( 'yes'!=$settings['_ua_card_direction'] ):
@@ -1112,16 +1112,16 @@ class Product_Grid extends Base{
 
         if ($total_pages > 1){
     
-            $current_page = max(1, get_query_var('paged'));
+            $ultraaddons_current_page = max(1, get_query_var('paged'));
     
-            echo paginate_links(array(
+            echo wp_kses_post( paginate_links(array(
                 'base' => get_pagenum_link(1) . '%_%',
                 'format' => '/page/%#%',
-                'current' => $current_page,
+                'current' => $ultraaddons_current_page,
                 'total' => $total_pages,
                 'prev_text'    => __(  '« Prev', 'ultraaddons-elementor-lite' ),
                 'next_text'    => __(  'Next »', 'ultraaddons-elementor-lite' ),
-            ));
+            )) );
         }
         ?>
     </nav> 
@@ -1181,7 +1181,7 @@ class Product_Grid extends Base{
             return;
         }
     
-        $args = array(
+        $ultraaddons_args = array(
             'total'   => wc_get_loop_prop( 'total_pages' ),
             'current' => wc_get_loop_prop( 'current_page' ),
             'base'    => esc_url_raw( add_query_arg( 'product-page', '%#%', false ) ),
@@ -1189,11 +1189,11 @@ class Product_Grid extends Base{
         );
     
         if ( ! wc_get_loop_prop( 'is_shortcode' ) ) {
-            $args['format'] = '';
-            $args['base']   = esc_url_raw( str_replace( 999999999, '%#%', remove_query_arg( 'add-to-cart', get_pagenum_link( 999999999, false ) ) ) );
+            $ultraaddons_args['format'] = '';
+            $ultraaddons_args['base']   = esc_url_raw( str_replace( 999999999, '%#%', remove_query_arg( 'add-to-cart', get_pagenum_link( 999999999, false ) ) ) );
         }
     
-        wc_get_template( 'loop/pagination.php', $args );
+        wc_get_template( 'loop/pagination.php', $ultraaddons_args );
     }
 //End of Class
 }

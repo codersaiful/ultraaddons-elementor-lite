@@ -188,7 +188,7 @@ class Image_Accordion extends Base{
                                 }    
                             ?>
                                 <span class="ultraaddons-btn-wrapper">
-                                    <a class="ua-image-accordion--btn ultraaddons-btn whitespace--normal" <?php echo $this->get_render_attribute_string( 'button-' . $ultraaddons_key ); ?>>
+                                    <a class="ua-image-accordion--btn ultraaddons-btn whitespace--normal" <?php echo esc_attr( $this->get_render_attribute_string( 'button-' . $ultraaddons_key ) ); ?>>
                                         <?php echo esc_html($ultraaddons_item['ua_img_accordion_button_label']);?>
                                     </a>
                                 </span>

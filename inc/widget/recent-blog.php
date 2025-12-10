@@ -94,15 +94,15 @@ class Recent_Blog extends Base{
      * Such: Layout two, Need two Query.
      * Each time, we dont want to write same code
      * 
-     * @param type $args Query argument for query expected post
+     * @param type $ultraaddons_args Query argument for query expected post
      * @return Void Actually we have just 
      */
-    protected function populate_blog_loop( $args = false ){
+    protected function populate_blog_loop( $ultraaddons_args = false ){
         
-        if( ! $args || ! is_array( $args ) ){
+        if( ! $ultraaddons_args || ! is_array( $ultraaddons_args ) ){
             return false;
         }
-        $the_query = new \WP_Query( $args );
+        $the_query = new \WP_Query( $ultraaddons_args );
         
         
         // The Loop
@@ -135,7 +135,7 @@ class Recent_Blog extends Base{
             <?php if( $this->thumbs ){ ?>
             <div class="recent-blog-img">
                 <a 
-                    <?php  if( $this->layout == 'modern' && isset( $args['custom_thumb_image'] ) && $args['custom_thumb_image'] == 'background'){ ?>
+                    <?php  if( $this->layout == 'modern' && isset( $ultraaddons_args['custom_thumb_image'] ) && $ultraaddons_args['custom_thumb_image'] == 'background'){ ?>
                     style="background-image:url(<?php echo esc_url( $thumbnail ); ?>);"    
                     <?php } ?>
                     class="ua-recent-blog-permalink ua-recent-blog-permalink-image" href="<?php the_permalink(); ?>">
@@ -192,7 +192,6 @@ class Recent_Blog extends Base{
             // no posts found
         }
         wp_reset_postdata();
-        wp_reset_query();
         return true;
     }
 
@@ -233,7 +232,7 @@ class Recent_Blog extends Base{
         $this->layout = !empty( $settings['layout'] ) ? $settings['layout'] : 'classic';
 
         
-        $args = [
+        $ultraaddons_args = [
             'posts_per_page'    =>  is_numeric( $post_per_page ) ? $post_per_page : 3,
             'post_type'         =>  'post',
             'post_status'       =>  'publish',
@@ -243,7 +242,7 @@ class Recent_Blog extends Base{
         ];
         
         if( $this->layout == 'modern' ){
-            $args['offset'] = 1;
+            $ultraaddons_args['offset'] = 1;
         }
 
         
@@ -262,7 +261,7 @@ class Recent_Blog extends Base{
                  * Thats why, need new name.
                  * Becuae: default args will be use at the bottom of this code
                  */
-                $single_args = $args;
+                $single_args = $ultraaddons_args;
                 $single_args['posts_per_page'] = 1;
                 $single_args['custom_thumb_image'] = 'normal';
                 $single_args['offset'] = 0;
@@ -288,7 +287,7 @@ class Recent_Blog extends Base{
             } //ending if statement
             
             //Blog Populating is for always
-            $this->populate_blog_loop( $args );
+            $this->populate_blog_loop( $ultraaddons_args );
             
             //CLOSING: recent blog right part closing, and when only modern layout
             if( $this->layout == 'modern' ){
@@ -577,17 +576,17 @@ class Recent_Blog extends Base{
      * @since 1.0.0.9
      */
     protected function get_cat_as_options(){
-        $args = [
+        $ultraaddons_args = [
             'taxonomy'  =>  'category',
             'orderby'   =>  'count',
             'hide_empty'=>  0
         ];
-        $categories = get_terms( $args );
+        $categories = get_terms( $ultraaddons_args );
         
         $options = [];
         if( is_array( $categories ) && count( $categories ) > 0 ){
-            foreach( $categories as $category ){
-                $options[$category->term_id]  = $category->name;
+            foreach( $categories as $ultraaddons_category ){
+                $options[$ultraaddons_category->term_id]  = $ultraaddons_category->name;
             }
         }
 

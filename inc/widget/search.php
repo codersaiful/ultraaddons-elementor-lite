@@ -381,13 +381,13 @@ class Search extends Base{
      * @access protected
      */
     protected function render() {
-        global $new_position;
+        global $ultraaddons_new_position;
         $settings = $this->get_settings_for_display();
 
         $this->add_render_attribute( 'wrapper', 'id', 'ultraaddons-search-box-wrapper' );
         $type            	= $settings['type'];
         $button_position 	= $settings['btn_position'];
-        $new_position 		= $button_position;
+        $ultraaddons_new_position 		= $button_position;
 
        $border_type = $settings['input_two_border_border'];
        $get_border_type = (!empty($border_type)) ? $border_type : 0;
@@ -432,17 +432,17 @@ class Search extends Base{
         }
 
     public function search_form_template_one($type){
-             global $new_position;
+             global $ultraaddons_new_position;
             ?>
         <form action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" class="<?php echo esc_attr( $type ); ?>">
                 <?php 
-                if($new_position==='left'):?>
+                if($ultraaddons_new_position==='left'):?>
                 <button type="submit"><i class="fa fa-search"></i></button>
                 <?php endif;?>
                 <input type="search" name="s" class="ua-form-one-text" value="<?php echo esc_attr( get_search_query() ); ?>"
             placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'ultraaddons-elementor-lite' ); ?>">
                 <?php 
-                if($new_position==='right'):?>
+                if($ultraaddons_new_position==='right'):?>
                 <button type="submit"><i class="fa fa-search"></i></button>
                 <?php endif;?>
         </form>

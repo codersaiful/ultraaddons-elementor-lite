@@ -17,12 +17,12 @@ class Skill_Bar extends Base{
          * we have called this __construct() method
          * 
          * @param Array $data
-         * @param Array $args
+         * @param Array $ultraaddons_args
          * 
          * @by Saiful Islam
          */
-        public function __construct($data = [], $args = null) {
-            parent::__construct($data, $args);
+        public function __construct($data = [], $ultraaddons_args = null) {
+            parent::__construct($data, $ultraaddons_args);
 
             //Naming of Barfiller
             $ultraaddons_name           = 'barfiller';

@@ -13,7 +13,7 @@ if( $ultraaddons_updated ){
     update_option( Extensions_Manager::$disabled_items_key, $ultraaddons_update_value );
 }
 
-$ua_items = Extensions_Manager::get_list();
+$ultraaddons_items = Extensions_Manager::get_list();
 $ultraaddons_disable_item = Extensions_Manager::disableExtensionKeys();
 ?>
 
@@ -29,7 +29,7 @@ $ultraaddons_disable_item = Extensions_Manager::disableExtensionKeys();
                 <form class="ua-option-list-form" action="" method="post">
                     <div class="ua-option-item-wrappper">
                         <?php 
-                        foreach( $ua_items as $ultraaddons_class_name => $ultraaddons_item ){
+                        foreach( $ultraaddons_items as $ultraaddons_class_name => $ultraaddons_item ){
 
                             $ultraaddons_name = isset( $ultraaddons_item['name'] ) ? $ultraaddons_item['name'] : false;
                             $ultraaddons_icon = isset( $ultraaddons_item['icon'] ) ? $ultraaddons_item['icon'] : false;

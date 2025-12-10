@@ -2008,7 +2008,7 @@ class Pricing_Table extends Base {
                                                                         endif;
                                                                 endif; ?>
                                                                 <?php if ( ! empty( $ultraaddons_item['item_text'] ) ) : ?>
-                                                                        <span <?php echo $this->get_render_attribute_string( $repeater_setting_key ); ?>>
+                                                                        <span <?php echo esc_attr( $this->get_render_attribute_string( $repeater_setting_key ) ); ?>>
                                                                                 <?php echo esc_html( $ultraaddons_item['item_text'] ); ?>
                                                                         </span>
                                                                         <?php
@@ -2041,7 +2041,7 @@ class Pricing_Table extends Base {
 			endif;
 
 			?>
-			<div <?php echo $this->get_render_attribute_string( 'ribbon-wrapper' ); ?>>
+			<div <?php echo esc_attr( $this->get_render_attribute_string( 'ribbon-wrapper' ) ); ?>>
 				<div <?php echo esc_attr( $this->get_render_attribute_string( 'ribbon_title' ) ); ?>><?php echo esc_html( $settings['ribbon_title'] ); ?></div>
 			</div>
 			<?php

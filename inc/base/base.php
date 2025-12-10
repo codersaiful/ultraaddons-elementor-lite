@@ -45,10 +45,10 @@ class Base extends Widget_Base{
      * @author Saiful Islam<codersaiful@gmail.com>
      * 
      * @param Array $data Construction param
-     * @param Array $args Construction param
+     * @param Array $ultraaddons_args Construction param
      */
-//    public function __construct($data = [], $args = null) {
-//        parent::__construct($data, $args);
+//    public function __construct($data = [], $ultraaddons_args = null) {
+//        parent::__construct($data, $ultraaddons_args);
 //       
 //        $ultraaddons_name = $this->get_pure_name();
 //        $ultraaddons_name = str_replace('_','-', $ultraaddons_name);
@@ -348,8 +348,8 @@ class Base extends Widget_Base{
      * @return Boolean
      */
     public function is_pro(){
-        $args = $this->get_widget_args();
-        return isset( $args['is_pro'] ) ? $args['is_pro'] : false;
+        $ultraaddons_args = $this->get_widget_args();
+        return isset( $ultraaddons_args['is_pro'] ) ? $ultraaddons_args['is_pro'] : false;
     }
     
     /**
@@ -359,8 +359,8 @@ class Base extends Widget_Base{
      * @return Boolean
      */
     public function is_wc(){
-        $args = $this->get_widget_args();
-        return isset( $args['is_wc'] ) ? $args['is_wc'] : false;
+        $ultraaddons_args = $this->get_widget_args();
+        return isset( $ultraaddons_args['is_wc'] ) ? $ultraaddons_args['is_wc'] : false;
     }
 
 }

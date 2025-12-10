@@ -144,7 +144,7 @@ class Timeline extends Base{
                         <div class="ua_timeline_main_coutent_inner ultraaddons-timeline-content-inner">
                             <?php if ( $settings['show_title'] == 'yes'): ?>
                                 <?php if ($has_title_text): ?>  
-                                    <<?php echo ultraaddons_title_tag($ultraaddons_item['_ua_timeline_title_size']); ?> <?php echo esc_attr( $timeline_title_class ); ?>><?php echo esc_html($ultraaddons_item['_ua_timeline_title']); ?></<?php echo ultraaddons_title_tag($ultraaddons_item['_ua_timeline_title_size']); ?>>
+                                    <<?php echo esc_attr( ultraaddons_title_tag($ultraaddons_item['_ua_timeline_title_size']) ); ?> <?php echo esc_attr( $timeline_title_class ); ?>><?php echo esc_html($ultraaddons_item['_ua_timeline_title']); ?></<?php echo esc_attr( ultraaddons_title_tag($ultraaddons_item['_ua_timeline_title_size']) ); ?>>
                                 <?php endif; ?>
                             <?php endif; ?>
                             <?php if ( $settings['show_desc'] == 'yes'): ?>

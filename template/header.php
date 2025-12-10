@@ -14,8 +14,8 @@ use \UltraAddons\Classes\Header_Footer_Render as HF_Render;
  *
  * @package Medilac
  */
-$header_class   = 'ua-header';
-$body_class     = 'ua-body';
+$ultraaddons_header_class   = 'ua-header';
+$ultraaddons_body_class     = 'ua-body';
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -27,7 +27,7 @@ $body_class     = 'ua-body';
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class( $body_class ); ?>>
+<body <?php body_class( $ultraaddons_body_class ); ?>>
 <?php wp_body_open(); ?>
 
     <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'ultraaddons-elementor-lite' ); ?></a>

@@ -165,7 +165,7 @@ The `$_GET['activate']` parameter is only being unset (not read or used), which 
 
 **Code**:
 ```php
-$current_page = isset( $_GET['page'] ) ? sanitize_text_field( $_GET['page'] ) : false;
+$ultraaddons_current_page = isset( $_GET['page'] ) ? sanitize_text_field( $_GET['page'] ) : false;
 ```
 
 No changes needed - this was already properly sanitized.

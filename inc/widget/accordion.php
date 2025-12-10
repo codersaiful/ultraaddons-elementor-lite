@@ -1097,7 +1097,7 @@ class Accordion extends Base{
         <div <?php echo esc_attr($this->get_render_attribute_string('ua_accordion_wrapper')); ?> >
             <div class="ua_accordion">
                 <?php
-                $i = 1;
+                $ultraaddons_i = 1;
                 foreach ( $_ua_accordions_list as $index => $ultraaddons_item ) :
                     
                     $tab_count = $index + 1;
@@ -1210,7 +1210,7 @@ class Accordion extends Base{
                         </div>
                     </div>
                     <?php 
-                    $i++; 
+                    $ultraaddons_i++; 
                 endforeach; ?>
             </div>
         </div>

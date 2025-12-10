@@ -126,13 +126,13 @@ class Theme_Demo{
      * To set demo details infor
      * we can use this method
      *
-     * @param array $args
+     * @param array $ultraaddons_args
      * @return object
      */
-    public static function set_demo_info( array $args ) 
+    public static function set_demo_info( array $ultraaddons_args ) 
     {
-        if( ! is_array( $args ) ) return null;
-        self::$theme_demo_args = $args;
+        if( ! is_array( $ultraaddons_args ) ) return null;
+        self::$theme_demo_args = $ultraaddons_args;
         return self::$_instance;
     }
 

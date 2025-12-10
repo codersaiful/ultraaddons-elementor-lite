@@ -97,7 +97,7 @@ if( ! function_exists( 'wqpmb_locate_template_ultraaddons' ) ){
 }
 
 add_action('wp_here_stay_on_wp',function(){
-    $args = array(
+    $ultraaddons_args = array(
         'post_type'     =>  'page',
         'post_status'   =>  'publish',
         'posts_per_page'=> '-1',
@@ -109,7 +109,7 @@ add_action('wp_here_stay_on_wp',function(){
         //         )
         // ),
     );
-    $query = get_posts( $args ); //  new \WP_Query($args);// ;
+    $query = get_posts( $ultraaddons_args ); //  new \WP_Query($ultraaddons_args);// ;
 //    var_dump(get_the_ID());
 //    var_dump($query);
     if(is_product()){

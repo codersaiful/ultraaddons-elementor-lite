@@ -37,7 +37,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
     
 
     public static function init() {
-        self::$font_group_key = self::$slug;//self::get_font_group();
+        self::$font_group_key = self::$ultraaddons_slug;//self::get_font_group();
 
         /**
          * Add Taxonomy for Custom Field
@@ -377,7 +377,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
             // Sanitize variants array
             if ( isset( $_POST[self::$meta_key]['variants'] ) && is_array( $_POST[self::$meta_key]['variants'] ) ) {
                 $meta_value['variants'] = array();
-                foreach ( $_POST[self::$meta_key]['variants'] as $variant_key => $variant ) {
+                foreach ( wp_unslash( $_POST[self::$meta_key]['variants'] ) as $variant_key => $variant ) {
                     if ( ! is_array( $variant ) ) {
                         continue;
                     }
@@ -434,7 +434,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
     /**
      * In parent class,
      * method was get_term_name
-     * and property was self::$slug;
+     * and property was self::$ultraaddons_slug;
      * 
      * but here need $font_group
      * 
@@ -460,14 +460,14 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
             self::$fonts = array();
             
             $term_name = self::get_font_group();
-            $args = array(
+            $ultraaddons_args = array(
                 'taxonomy'   => $term_name,
                 'hide_empty' => false
             );
-            $terms = get_terms( $args );
+            $ultraaddons_terms = get_terms( $ultraaddons_args );
 
-            if ( ! empty( $terms ) ) {
-                foreach ( $terms as $term ) {
+            if ( ! empty( $ultraaddons_terms ) ) {
+                foreach ( $ultraaddons_terms as $term ) {
                     self::$fonts[ $term->name ] = $term_name;
                 }
             }

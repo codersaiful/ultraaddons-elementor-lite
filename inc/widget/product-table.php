@@ -148,12 +148,12 @@ class Product_Table extends Base{
 			]
 		);
                 
-                $args = array(
+                $ultraaddons_args = array(
                     'post_type' => 'wpt_product_table',
                     'posts_per_page'=> '-1',
                     'post_status' => 'publish',
                 );
-                $productTable = new \WP_Query( $args );
+                $productTable = new \WP_Query( $ultraaddons_args );
                 $table_options = array();
                 $wpt_extra_msg = false;
                 if ($productTable->have_posts()) : 
@@ -171,7 +171,6 @@ class Product_Table extends Base{
                 
 		
                 wp_reset_postdata();
-                wp_reset_query();
                 if( $table_options && is_array( $table_options ) ){
                     $this->add_control(
                             'table_id',

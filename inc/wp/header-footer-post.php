@@ -234,7 +234,7 @@ class Header_Footer_Post{
 			"parent_item_colon" => __( "Parent Header & Footer:", 'ultraaddons-elementor-lite' ),
 		];
 
-		$args = [
+		$ultraaddons_args = [
 			"label" => __( "Header & Footer", 'ultraaddons-elementor-lite' ),
 			"labels" => $labels,
 			"description" => __( "This post is for Medilac Header and Footer", 'ultraaddons-elementor-lite' ),
@@ -258,7 +258,7 @@ class Header_Footer_Post{
 			"supports" => [ 'title', 'thumbnail', 'ultraaddons-elementor-lite' ],
 		];
 
-		register_post_type( self::$post_type, $args );
+		register_post_type( self::$post_type, $ultraaddons_args );
     }
 
 	public static function register_metabox() {
@@ -428,7 +428,7 @@ class Header_Footer_Post{
 	 */
 	public static function update_option(){
 		
-		$args = [
+		$ultraaddons_args = [
             'post_type'     => self::$post_type,
             'post_status'   => 'publish',
 			//phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
@@ -440,7 +440,8 @@ class Header_Footer_Post{
             ],
         ];
 
-        $posts = query_posts($args);
+		//phpcs:ignore WordPress.WP.DiscouragedFunctions.query_posts_query_posts
+        $posts = query_posts($ultraaddons_args);
         $f_post = [];
         foreach( $posts as $each_post ){
             $post_id = $each_post->ID;

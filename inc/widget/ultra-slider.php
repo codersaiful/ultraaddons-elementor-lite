@@ -24,12 +24,12 @@ class Ultra_Slider extends Base{
          * we have called this __construct() method
          * 
          * @param Array $data
-         * @param Array $args
+         * @param Array $ultraaddons_args
          * 
          * @by Saiful Islam
          */
-        public function __construct($data = [], $args = null) {
-            parent::__construct($data, $args);
+        public function __construct($data = [], $ultraaddons_args = null) {
+            parent::__construct($data, $ultraaddons_args);
 
             //Naming of Args for owlCarousel
             $ultraaddons_name           = 'owlCarousel';
@@ -171,11 +171,11 @@ class Ultra_Slider extends Base{
                             $link = true;
                         }
                         
-                        $slug = $slide['slide_template'];
+                        $ultraaddons_slug = $slide['slide_template'];
 
-                        if( ! empty( $slug ) ){
+                        if( ! empty( $ultraaddons_slug ) ){
                              
-                            $queried_post = get_page_by_path($slug, OBJECT, 'elementor_library');
+                            $queried_post = get_page_by_path($ultraaddons_slug, OBJECT, 'elementor_library');
 
                             (int) $select_post_id = $queried_post->ID;
                             
@@ -255,12 +255,12 @@ class Ultra_Slider extends Base{
                                 ]
                  * 
                  */
-                $args = array(
+                $ultraaddons_args = array(
                     'post_type'     =>  'elementor_library',
                     'post_status'   =>  'publish',
                     'posts_per_page' => -1,
                 );
-                $query = get_posts( $args );
+                $query = get_posts( $ultraaddons_args );
                 $template_choices = array();
 
                 //If found post, then itarate
@@ -268,8 +268,8 @@ class Ultra_Slider extends Base{
                     foreach( $query as $q_post ){
                         //var_dump($q_post->post_name);
                         $id = (int) $q_post->ID;
-                        $slug = $q_post->post_name;
-                        $template_choices[$slug] = $q_post->post_title; //$id
+                        $ultraaddons_slug = $q_post->post_name;
+                        $template_choices[$ultraaddons_slug] = $q_post->post_title; //$id
                     }
                     
                     

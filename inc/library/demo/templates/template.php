@@ -10,24 +10,24 @@ use UltraAddons\Library\Demo\Theme_Demo;
 
 defined( 'ABSPATH' ) || exit;
 
-$theme_info = Theme_Demo::get_demo_info();
+$ultraaddons_theme_info = Theme_Demo::get_demo_info();
 
-$back_button_text = $theme_info['back_button_text'] ?? __( 'Back to Library', 'ultraaddons-elementor-lite' );
-$library_icon = $theme_info['library_icon'] ?? 'uicon-ultraaddons';
-$page_templates = $theme_info['page_templates'] ?? 'https://ultraaddons.com/templates/';
-$lern_more_message = $theme_info['lern_more_message'] ?? __( 'Learn more about UltraAddons Template Library.', 'ultraaddons-elementor-lite' );
+$ultraaddons_back_button_text = $ultraaddons_theme_info['back_button_text'] ?? __( 'Back to Library', 'ultraaddons-elementor-lite' );
+$ultraaddons_library_icon = $ultraaddons_theme_info['library_icon'] ?? 'uicon-ultraaddons';
+$ultraaddons_page_templates = $ultraaddons_theme_info['page_templates'] ?? 'https://ultraaddons.com/templates/';
+$ultraaddons_lern_more_message = $ultraaddons_theme_info['lern_more_message'] ?? __( 'Learn more about UltraAddons Template Library.', 'ultraaddons-elementor-lite' );
 
 ?>
 <script type="text/template" id="tmpl-EldmTempDemo__header-logo">
     <span class="EldmTempDemo__logo-wrap">
-		<i class="<?php echo esc_attr( $library_icon ); ?>"></i>
+		<i class="<?php echo esc_attr( $ultraaddons_library_icon ); ?>"></i>
 	</span>
     <span class="EldmTempDemo__logo-title">{{{ title }}}</span>
 </script>
 
 <script type="text/template" id="tmpl-EldmTempDemo__header-back">
 	<i class="eicon-" aria-hidden="true"></i>
-	<span><?php echo esc_html( $back_button_text ); ?></span>
+	<span><?php echo esc_html( $ultraaddons_back_button_text ); ?></span>
 </script>
 
 <script type="text/template" id="tmpl-EldmTempDemo__header-menu">
@@ -170,7 +170,7 @@ $lern_more_message = $theme_info['lern_more_message'] ?? __( 'Learn more about U
 	<div class="elementor-template-library-blank-title"></div>
 	<div class="elementor-template-library-blank-message"></div>
 	<div class="elementor-template-library-blank-footer">
-		<?php echo esc_html( $lern_more_message ); ?>
-		<a class="elementor-template-library-blank-footer-link" href="<?php echo esc_url( $page_templates ); ?>" target="_blank"><?php echo esc_html__( 'Click here', 'ultraaddons-elementor-lite' ); ?></a>
+		<?php echo esc_html( $ultraaddons_lern_more_message ); ?>
+		<a class="elementor-template-library-blank-footer-link" href="<?php echo esc_url( $ultraaddons_page_templates ); ?>" target="_blank"><?php echo esc_html__( 'Click here', 'ultraaddons-elementor-lite' ); ?></a>
 	</div>
 </script>

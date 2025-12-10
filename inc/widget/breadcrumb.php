@@ -282,13 +282,13 @@ class Breadcrumb extends Base{
      * WooCommerce Plugin -> Includes -> wc-template-functions.php
      */
     if( $wooBreadCumb && function_exists( 'woocommerce_breadcrumb' ) ){
-        $args = array(
+        $ultraaddons_args = array(
             'delimiter' => '<span>&nbsp;' . $separator . '&nbsp;</span>',
             'home'      => $this->home,
         );
         
-        $args = apply_filters( 'ultraaddons_wc_breadcrumb_args', $args );
-        woocommerce_breadcrumb( $args );
+        $ultraaddons_args = apply_filters( 'ultraaddons_wc_breadcrumb_args', $ultraaddons_args );
+        woocommerce_breadcrumb( $ultraaddons_args );
         return true;
     }
     
@@ -336,15 +336,15 @@ class Breadcrumb extends Base{
           }
 
           // Get categories
-          $category = get_the_category( $post->ID );
+          $ultraaddons_category = get_the_category( $post->ID );
 
           // If category not empty
-          if( !empty( $category ) ) {
+          if( !empty( $ultraaddons_category ) ) {
 
                 // Arrange category parent to child
-                $category_values      = array_values( $category );
+                $category_values      = array_values( $ultraaddons_category );
                 $get_last_category    = end( $category_values );
-                // $get_last_category    = $category[count($category) - 1];
+                // $get_last_category    = $ultraaddons_category[count($ultraaddons_category) - 1];
                 $get_parent_category  = rtrim( get_category_parents( $get_last_category->term_id, true, ',' ), ',' );
                 $cat_parent           = explode( ',', $get_parent_category );
 
@@ -424,12 +424,12 @@ class Breadcrumb extends Base{
             // Get tag information
             $term_id        = get_query_var('tag_id');
             $taxonomy       = 'post_tag';
-            $args = array(
+            $ultraaddons_args = array(
                 'taxonomy'   => $taxonomy,
                 'include' => $term_id,
             );
-            $terms          = get_terms( $args );
-            $get_term_name  = $terms[0]->name;
+            $ultraaddons_terms          = get_terms( $ultraaddons_args );
+            $get_term_name  = $ultraaddons_terms[0]->name;
 
             // Display the tag name
             echo '<li class="item-current item">'. esc_html( $get_term_name ) .'</li>';

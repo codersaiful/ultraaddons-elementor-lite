@@ -771,7 +771,7 @@ class Product_Flip extends Base{
 	<div class="ua-row">
 	<?php
 		
-        $args = array(
+        $ultraaddons_args = array(
             'post_type' 	=> 'product',
             'posts_per_page'=> $settings['_ua_post_per_page'],
             'paged'=> ! empty( $settings['_ua_post_page_number'] ) ? $settings['_ua_post_page_number'] : 1,
@@ -780,17 +780,17 @@ class Product_Flip extends Base{
             );
 		if(! empty( $settings['_ua_query_post_in'] )){
 			$include_ids = explode(',',$settings['_ua_query_post_in']);
-			$args['post__in'] = $include_ids;
+			$ultraaddons_args['post__in'] = $include_ids;
 		}
 		if(! empty( $settings['_ua_query_post_not_in'] )){
 			$exclude_ids = explode(',',$settings['_ua_query_post_not_in']);
 			//phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_post_not_in
-			$args['post__not_in'] = $exclude_ids;
+			$ultraaddons_args['post__not_in'] = $exclude_ids;
 		}
 
 		if( ! empty( $settings['cat_ids'] ) ){
 			//phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
-			$args['tax_query'] = array(
+			$ultraaddons_args['tax_query'] = array(
 				array(
 					'taxonomy'  => 'product_cat',
 					'field'     => 'id', 
@@ -802,7 +802,7 @@ class Product_Flip extends Base{
 		
 		if( ! empty( $settings['tag_ids'] ) ){
 			//phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
-			$args['tax_query'] = array(
+			$ultraaddons_args['tax_query'] = array(
 				array(
 					'taxonomy'  => 'product_tag',
 					'field'     => 'id', 
@@ -811,7 +811,7 @@ class Product_Flip extends Base{
 			);
 		}	
 
-        $loop = new \WP_Query( $args );
+        $loop = new \WP_Query( $ultraaddons_args );
         if ( $loop->have_posts() ) {
             while ( $loop->have_posts() ) : $loop->the_post();
 				$id 		= $loop->post->ID;
@@ -826,7 +826,7 @@ class Product_Flip extends Base{
 		echo wp_kses_post( apply_filters( 'woocommerce_sale_flash', '<span class="ua-onsale">' . esc_html__( 'Sale!', 'ultraaddons-elementor-lite' ) . '</span>', $product ) );
 		endif;
 		?>
-			<a href="<?php echo get_the_permalink(); ?>">
+			<a href="<?php echo esc_url( get_the_permalink() ); ?>">
 				<?php
 				echo '<' . esc_attr( $settings['_ua_front_title_tag'] ) . ' class="front-title">' . esc_html( $loop->post->post_title ) . 
 						'</' . esc_attr( $settings['_ua_front_title_tag'] ) . '>';

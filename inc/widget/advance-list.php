@@ -68,14 +68,14 @@ class Advance_List extends Base{
         $this->add_render_attribute( 'wrapper', 'class', 'ua-list-item-wrapper' );
         
         
-        $ua_items = $settings['list_items'];
+        $ultraaddons_items = $settings['list_items'];
 
         ?>
     <div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
         <ul class="ua-list-items">
             <?php
             $serial = 1;
-            foreach( $ua_items as $ultraaddons_key => $ultraaddons_item ){
+            foreach( $ultraaddons_items as $ultraaddons_key => $ultraaddons_item ){
 
                 $_id = !empty( $ultraaddons_item['_id'] ) ? $ultraaddons_item['_id'] : false;
                 $title = !empty( $ultraaddons_item['title'] ) ? $ultraaddons_item['title'] : false;

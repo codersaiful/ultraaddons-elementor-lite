@@ -115,9 +115,9 @@ class WC_Products extends Base{
         $this->add_render_attribute( 'wrapper', 'class', 'ua-products-grid-wrapper' );
         $limit = ! empty( $settings['limit']['size'] ) && is_numeric( $settings['limit']['size'] ) ? $settings['limit']['size'] : 8;
         $col = ! empty( $settings['col']['size'] ) && is_numeric( $settings['col']['size'] ) ? $settings['col']['size'] : 4;
-        $cat_ids = is_array( $settings['cat_ids'] ) ? implode( ',', $settings['cat_ids'] ) : '';
+        $ultraaddons_cat_ids = is_array( $settings['cat_ids'] ) ? implode( ',', $settings['cat_ids'] ) : '';
 
-        $shortcode = '[products limit="' . $limit . '" columns="' . $col . '" orderby="popularity" category="' . $cat_ids . '" ]';
+        $shortcode = '[products limit="' . $limit . '" columns="' . $col . '" orderby="popularity" category="' . $ultraaddons_cat_ids . '" ]';
 //        var_dump($shortcode);
         ?>
     <div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>

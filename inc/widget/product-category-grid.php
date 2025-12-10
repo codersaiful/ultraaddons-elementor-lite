@@ -351,14 +351,14 @@ class Product_Category_Grid extends Base{
         return;
     }
 
-    $args = array(
+    $ultraaddons_args = array(
         'orderby'       => $settings['_ua_cat_orderby'],
         'order'         => $settings['_ua_cat_order'],
         'hide_empty'    => true,
         'taxonomy'      => 'product_cat'
     );
     //Filter List by category 
-    $categories = get_categories( $args );
+    $categories = get_categories( $ultraaddons_args );
     if(is_array($categories) && count($categories) > 0):
         $limit  = $settings['_cat_show_number'];
         $counter=0;

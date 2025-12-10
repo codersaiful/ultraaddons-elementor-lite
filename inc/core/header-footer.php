@@ -59,7 +59,7 @@ class Header_Footer {
         'wrapper'   => 'box', //Default value is: box, among box and flued
     ];
 
-    protected static $body_class = [];
+    protected static $ultraaddons_body_class = [];
 
 
     
@@ -94,10 +94,10 @@ class Header_Footer {
 
         
         $type = self::get_type();
-        self::$body_class[] = 'ultraaddons-wrapper-' . self::get_wrapper();
+        self::$ultraaddons_body_class[] = 'ultraaddons-wrapper-' . self::get_wrapper();
         
         if( self::get_header_id() ){
-            self::$body_class[] = 'ultraaddons-header-' . $type;
+            self::$ultraaddons_body_class[] = 'ultraaddons-header-' . $type;
             if( $type == 'php' ){
                 add_action( 'get_header', [__CLASS__, 'show_header'], 10, 2 );
             }else{ //else if( $type == 'css' )
@@ -107,7 +107,7 @@ class Header_Footer {
         }
         
         if( self::get_footer_id() ){
-            self::$body_class[] = 'ultraaddons-footer-' . $type;
+            self::$ultraaddons_body_class[] = 'ultraaddons-footer-' . $type;
 //            add_action( 'get_footer', [__CLASS__, 'show_footer'], 10, 2 );
             if( $type == 'php' ){
                 add_action( 'get_footer', [__CLASS__, 'show_footer'], 10, 2 );
@@ -189,7 +189,7 @@ class Header_Footer {
     public static function add_footer() {
         echo wp_kses_post( ultraaddons_elementor_display_content( self::get_footer_id() ) );
     }
-    public static function show_footer( $ultraaddons_name, $args ) {
+    public static function show_footer( $ultraaddons_name, $ultraaddons_args ) {
         include ULTRA_ADDONS_DIR . 'template/footer.php';
         
         
@@ -205,7 +205,7 @@ class Header_Footer {
     public static function add_header() {
         echo wp_kses_post( ultraaddons_elementor_display_content( self::get_header_id() ) );
     }
-    public static function show_header( $ultraaddons_name, $args ) {
+    public static function show_header( $ultraaddons_name, $ultraaddons_args ) {
         include ULTRA_ADDONS_DIR . 'template/header.php';
         
         
@@ -334,7 +334,7 @@ class Header_Footer {
      */
     public static function body_class( $class ) {
         
-        return array_merge( self::$body_class, $class );
+        return array_merge( self::$ultraaddons_body_class, $class );
     }
 }
 

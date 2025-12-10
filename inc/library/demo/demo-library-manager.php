@@ -196,9 +196,9 @@ class Demo_Library_Manager {
 		} );
 	}
 
-	public static function get_template_data( array $args ) {
+	public static function get_template_data( array $ultraaddons_args ) {
 		$source = self::get_source();
-		$data = $source->get_data( $args );
+		$data = $source->get_data( $ultraaddons_args );
 		return $data;
 	}
 
@@ -207,14 +207,14 @@ class Demo_Library_Manager {
 	 *
 	 * type_tags has been added in version 2.15.0
 	 *
-	 * @param array $args
+	 * @param array $ultraaddons_args
 	 *
 	 * @return array
 	 */
-	public static function get_library_data( array $args ) {
+	public static function get_library_data( array $ultraaddons_args ) {
 		$source = self::get_source();
 
-		if ( ! empty( $args['sync'] ) ) {
+		if ( ! empty( $ultraaddons_args['sync'] ) ) {
 			Demo_Library_Source::get_library_data( true );
 		}
 

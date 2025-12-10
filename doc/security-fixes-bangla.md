@@ -114,7 +114,7 @@ if ( isset( $_GET['activate'] ) ) {
 **অবস্থা**: ✅ ইতিমধ্যে সঠিকভাবে sanitize করা ছিল
 
 ```php
-$current_page = isset( $_GET['page'] ) ? sanitize_text_field( $_GET['page'] ) : false;
+$ultraaddons_current_page = isset( $_GET['page'] ) ? sanitize_text_field( $_GET['page'] ) : false;
 ```
 
 ## ব্যবহৃত Security Functions

@@ -18,7 +18,7 @@ if( class_exists( 'ELDM_Elementor_Demo_Manager' ) ){
 //http://wptheme.cm/wp-json/demo/v2/templates
 if( class_exists( '\UltraAddons\Library\Demo\Theme_Demo' ) ){
 	//$demo_manager = new \UltraAddons\Library\Demo\Theme_Demo;
-	$args = [
+	$ultraaddons_args = [
 		'root_site' => 'here your demo site url', //http://example.com/
 		'button' => [
 			'text'	=> esc_html__( "Theme Demo", 'ultraaddons-elementor-lite' ),
@@ -40,7 +40,7 @@ if( class_exists( '\UltraAddons\Library\Demo\Theme_Demo' ) ){
 	/************************
 	//Smart Way is this
 	$demo_manager
-	->set_demo_info($args)
+	->set_demo_info($ultraaddons_args)
 	->load();
 	//**********************/
 
@@ -54,11 +54,11 @@ if( class_exists( '\UltraAddons\Library\Demo\Theme_Demo' ) ){
 
 
 	// var_dump($demo_manager);
-	$demo = new \UltraAddons\Library\Demo\Theme_Demo;
-	$demo->set_demo_info( $args );
-	// $demo->setRootSite( 'http://localhost/wordpress_theme/' );
-	$demo->load();
-	// \UltraAddons\Library\Demo\Theme_Demo::set_demo_info($args);
+	$ultraaddons_demo = new \UltraAddons\Library\Demo\Theme_Demo;
+	$ultraaddons_demo->set_demo_info( $ultraaddons_args );
+	// $ultraaddons_demo->setRootSite( 'http://localhost/wordpress_theme/' );
+	$ultraaddons_demo->load();
+	// \UltraAddons\Library\Demo\Theme_Demo::set_demo_info($ultraaddons_args);
 	// \UltraAddons\Library\Demo\Theme_Demo::load();
 
 }

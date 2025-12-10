@@ -380,18 +380,18 @@ function ultraaddons_addons_kses( $string = '', $level = 'basic' ) {
 /**
  * Returns all registered post types
  */
-function ultraaddons_get_post_types($args = [], $array_diff_key = []){
+function ultraaddons_get_post_types($ultraaddons_args = [], $array_diff_key = []){
     $post_type_args = [
         'public' => true,
         'show_in_nav_menus' => true
     ];
 
-    if (!empty($args['post_type'])) {
-        $post_type_args['name'] = $args['post_type'];
-        unset($args['post_type']);
+    if (!empty($ultraaddons_args['post_type'])) {
+        $post_type_args['name'] = $ultraaddons_args['post_type'];
+        unset($ultraaddons_args['post_type']);
     }
 
-    $post_type_args = wp_parse_args($post_type_args, $args);
+    $post_type_args = wp_parse_args($post_type_args, $ultraaddons_args);
     $_post_types = get_post_types($post_type_args, 'objects');
 
     $post_types = array(
@@ -419,16 +419,16 @@ function ultraaddons_get_grid_metro_size() {
     ];
 }
 
-function ultraaddons_get_the_post_thumbnail( $args = array() ) {
-    if ( ! empty( $args['post_id'] ) ) {
-        $args['id'] = get_post_thumbnail_id( $args['post_id'] );
+function ultraaddons_get_the_post_thumbnail( $ultraaddons_args = array() ) {
+    if ( ! empty( $ultraaddons_args['post_id'] ) ) {
+        $ultraaddons_args['id'] = get_post_thumbnail_id( $ultraaddons_args['post_id'] );
     } else {
-        $args['id'] = get_post_thumbnail_id( get_the_ID() );
+        $ultraaddons_args['id'] = get_post_thumbnail_id( get_the_ID() );
     }
-    return ultraaddons_get_attachment_by_id( $args );
+    return ultraaddons_get_attachment_by_id( $ultraaddons_args );
 }
 
-function ultraaddons_get_attachment_by_id( $args = array() ) {
+function ultraaddons_get_attachment_by_id( $ultraaddons_args = array() ) {
     $defaults = array(
         'id'     => '',
         'size'   => 'full',
@@ -436,13 +436,13 @@ function ultraaddons_get_attachment_by_id( $args = array() ) {
         'height' => '',
         'crop'   => true,
     );
-    $args = wp_parse_args( $args, $defaults );
-    $image_full = ultraaddons_get_the_post_thumbnail( $args['id'] );
+    $ultraaddons_args = wp_parse_args( $ultraaddons_args, $defaults );
+    $image_full = ultraaddons_get_the_post_thumbnail( $ultraaddons_args['id'] );
     if ( $image_full === false ) {
         return false;
     }
     $url           = $image_full['src'];
-    $cropped_image = ultraaddons_get_image_cropped_url( $url, $args );
+    $cropped_image = ultraaddons_get_image_cropped_url( $url, $ultraaddons_args );
     if ( $cropped_image[0] === '' ) {
         return '';
     }
@@ -458,7 +458,7 @@ function ultraaddons_get_attachment_by_id( $args = array() ) {
     $image = ultraaddons_build_img_tag( $image_attributes );
 
     // Wrap img with caption tags.
-    if ( isset( $args['caption_enable'] ) && $args['caption_enable'] === true && $image_full['caption'] !== '' ) {
+    if ( isset( $ultraaddons_args['caption_enable'] ) && $ultraaddons_args['caption_enable'] === true && $image_full['caption'] !== '' ) {
         $before = '<figure>';
         $after  = '<figcaption class="wp-caption-text gallery-caption">' . $image_full['caption'] . '</figcaption></figure>';
         $image = $before . $image . $after;
@@ -473,16 +473,16 @@ function ultraaddons_build_img_tag( $attributes = array() ) {
     }
     $attributes_str = '';
     if ( ! empty( $attributes ) ) {
-        foreach ( $attributes as $attribute => $value ) {
-            $attributes_str .= ' ' . $attribute . '="' . esc_attr( $value ) . '"';
+        foreach ( $attributes as $attribute => $ultraaddons_value ) {
+            $attributes_str .= ' ' . $attribute . '="' . esc_attr( $ultraaddons_value ) . '"';
         }
     }
     $image = '<img ' . $attributes_str . ' />';
     return $image;
 }
 
-function ultraaddons_get_image_cropped_url( $url, $args = array() ) {
-    extract( $args );
+function ultraaddons_get_image_cropped_url( $url, $ultraaddons_args = array() ) {
+    extract( $ultraaddons_args );
     if ( $url === false ) {
         return array( 0 => '' );
     }
@@ -492,7 +492,7 @@ function ultraaddons_get_image_cropped_url( $url, $args = array() ) {
     }
 
     if ( $size !== 'custom' && ! preg_match( '/(\d+)x(\d+)/', $size ) ) {
-        $attachment_url = wp_get_attachment_image_url( $args['id'], $size );
+        $attachment_url = wp_get_attachment_image_url( $ultraaddons_args['id'], $size );
 
         if ( ! $attachment_url ) {
             return array( 0 => $url );
@@ -706,14 +706,14 @@ if( class_exists( 'FrmForm' ) ){
  */
 if( class_exists( 'WPForms\WPForms' ) ){
     function ultraaddons_get_wpform_list(){
-    $args = array(
+    $ultraaddons_args = array(
         'post_type' => 'wpforms', 
         'posts_per_page' => -1
     );
 
         $formlist=[];
         
-        if( $post = get_posts($args)){
+        if( $post = get_posts($ultraaddons_args)){
             $formlist[0] = esc_html__('Select WPforms', 'ultraaddons-elementor-lite');
             foreach ( $post as $posts ) {
                 (int)$formlist[$posts->ID] = $posts->post_title;
@@ -812,14 +812,14 @@ function ultraaddons_optimize_array( $array ){
 
     if( ! is_array( $array ) ) return $array;
 
-    foreach ($array as $ultraaddons_key => &$value) {
-        if ( ! is_bool( $value ) && empty($value)) {
+    foreach ($array as $ultraaddons_key => &$ultraaddons_value) {
+        if ( ! is_bool( $ultraaddons_value ) && empty($ultraaddons_value)) {
            unset($array[$ultraaddons_key]);
         }
         else {
-           if (is_array($value)) {
-              $value = ultraaddons_optimize_array($value);
-              if (! is_bool( $value ) && empty($value)) {
+           if (is_array($ultraaddons_value)) {
+              $ultraaddons_value = ultraaddons_optimize_array($ultraaddons_value);
+              if (! is_bool( $ultraaddons_value ) && empty($ultraaddons_value)) {
                  unset($array[$ultraaddons_key]);
               }
            }
