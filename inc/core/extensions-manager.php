@@ -70,9 +70,9 @@ class Extensions_Manager{
              */
             if( ! in_array( $ex_name_key, $disable_keys ) && ( ! $is_pro || ultraaddons_is_pro() ) ){
                 //include_once $file;
-                $class_name = '\UltraAddons\Extensions\\' . $ex_name_key;
-                if( method_exists( $class_name, 'init' ) ){
-                    $class_name::init();
+                $ua_class_name = '\UltraAddons\Extensions\\' . $ex_name_key;
+                if( method_exists( $ua_class_name, 'init' ) ){
+                    $ua_class_name::init();
                 }
             }elseif( $is_pro && ! ultraaddons_is_pro() ){
                 new Placeholder_Extension( $extension );

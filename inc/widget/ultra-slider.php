@@ -32,14 +32,14 @@ class Ultra_Slider extends Base{
             parent::__construct($data, $args);
 
             //Naming of Args for owlCarousel
-            $name           = 'owlCarousel';
+            $ua_name           = 'owlCarousel';
             $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/owl.carousel.min.js';
             $dependency     =  ['jquery'];//['jquery'];
             $version        = ULTRA_ADDONS_VERSION;
             $in_footer  = true;
 
-            wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-            wp_enqueue_script( $name );
+            wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
+            wp_enqueue_script( $ua_name );
 
 
             //CSS file for Slider Script Owl Carousel Slider

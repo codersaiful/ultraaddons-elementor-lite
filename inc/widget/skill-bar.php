@@ -25,14 +25,14 @@ class Skill_Bar extends Base{
             parent::__construct($data, $args);
 
             //Naming of Barfiller
-            $name           = 'barfiller';
+            $ua_name           = 'barfiller';
             $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/barfiller.js';
             $dependency     =  ['jquery'];//['jquery'];
             $version        = ULTRA_ADDONS_VERSION;
             $in_footer  = true;
 
-            wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-            wp_enqueue_script( $name );
+            wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
+            wp_enqueue_script( $ua_name );
 
             //Third-party CSS file Load
             wp_register_style( 'barfiller', ULTRA_ADDONS_ASSETS . 'vendor/css/barfiller.css', array(), ULTRA_ADDONS_VERSION );
@@ -120,11 +120,11 @@ class Skill_Bar extends Base{
 
                     <ul class="bars">
                         <?php
-			foreach ( $settings['progress_list'] as $index => $item ) :
+			foreach ( $settings['progress_list'] as $index => $ua_item ) :
                                 $repeater_setting_key = $this->get_repeater_setting_key( 'title', 'progress_list', $index );
-                                $_id = !empty( $item['_id'] ) ? $item['_id'] : false;
+                                $_id = !empty( $ua_item['_id'] ) ? $ua_item['_id'] : false;
                                 
-                                $progress_percentage = is_numeric( $item['percent']['size'] ) ? $item['percent']['size'] : '0';
+                                $progress_percentage = is_numeric( $ua_item['percent']['size'] ) ? $ua_item['percent']['size'] : '0';
                                 if ( 100 < $progress_percentage ) {
                                         $progress_percentage = 100;
                                 }
@@ -133,7 +133,7 @@ class Skill_Bar extends Base{
                                         'class' => 'heading',
                                 ]);
 
-                                $bar_color = isset( $item['repeater_bar_color'] ) && !empty( $item['repeater_bar_color'] ) ? $item['repeater_bar_color'] : false;
+                                $bar_color = isset( $ua_item['repeater_bar_color'] ) && !empty( $ua_item['repeater_bar_color'] ) ? $ua_item['repeater_bar_color'] : false;
                                 $this->add_render_attribute( $repeater_setting_key . '.skill', [
                                         'class' => 'ua-skill-wrapper ua-repeater-skils elementor-repeater-item-' . esc_attr( $_id ),
                                         'role' => 'progressbar',
@@ -142,7 +142,7 @@ class Skill_Bar extends Base{
                                         'aria-id' => esc_attr( $_id ),
                                         'aria-color' => $bar_color,
                                         'aria-valuenow' => $progress_percentage,
-                                        'aria-valuetext' => $item['title'], 
+                                        'aria-valuetext' => $ua_item['title'], 
                                 ] );
 
                                 $this->add_render_attribute( $repeater_setting_key . '.progress-bar', [
@@ -154,7 +154,7 @@ class Skill_Bar extends Base{
 //                                $this->add_inline_editing_attributes( $repeater_setting_key . '.title', 'none' );
 				?>
                                 <li <?php echo esc_attr( $this->get_render_attribute_string( $repeater_setting_key . '.skill' ) ); ?>>
-                                    <div <?php echo esc_attr( $this->get_render_attribute_string( $repeater_setting_key . '.title' ) ); ?>><?php echo esc_html( $item['title'] ); ?></div>
+                                    <div <?php echo esc_attr( $this->get_render_attribute_string( $repeater_setting_key . '.title' ) ); ?>><?php echo esc_html( $ua_item['title'] ); ?></div>
                                     <div <?php echo esc_attr( $this->get_render_attribute_string( $repeater_setting_key . '.progress-bar' ) ); ?>>
                                         <div id="bar-<?php echo esc_attr( $this->get_id() . '-' .$_id . '-' . ( $index + 1 ) );?>" class="barfiller">
                                             <span class="fill" data-percentage="<?php echo esc_attr( $progress_percentage ); ?>"></span>

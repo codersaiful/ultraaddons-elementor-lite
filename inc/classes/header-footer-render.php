@@ -33,8 +33,8 @@ class Header_Footer_Render {
     
     public static function init( $heder_footer_data ){
         
-        $heder_footer_data = array_filter($heder_footer_data,function($item){
-            return ! empty( $item );
+        $heder_footer_data = array_filter($heder_footer_data,function($ua_item){
+            return ! empty( $ua_item );
         });
         if( ! is_array( $heder_footer_data ) ) return;
         
@@ -125,7 +125,7 @@ class Header_Footer_Render {
         return $body_class;
     }
 
-    public static function get_header($name, $args){
+    public static function get_header($ua_name, $args){
 
         self::conditional_set_template_data();
 
@@ -134,7 +134,7 @@ class Header_Footer_Render {
         }
         
     }
-    public static function get_footer($name, $args){
+    public static function get_footer($ua_name, $args){
 
         self::conditional_set_template_data();
 

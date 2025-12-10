@@ -31,27 +31,27 @@ class Video_Popup extends Base{
         parent::__construct($data, $args);
 
           //Naming of Args for Modal-video
-          $name           = 'modal-video';
+          $ua_name           = 'modal-video';
           $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/modal-video/js/modal-video.min.js';
           $dependency     =  ['jquery'];//['jquery'];
           $version        = ULTRA_ADDONS_VERSION;
           $in_footer      = true;
   
-          wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-          wp_enqueue_script( $name );
+          wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
+          wp_enqueue_script( $ua_name );
 
-          $name           = 'front-end-modal-video';
+          $ua_name           = 'front-end-modal-video';
           $js_file_url    = ULTRA_ADDONS_ASSETS . 'js/frontend-video-popup.js';
           $dependency     =  ['jquery'];//['jquery'];
           $version        = ULTRA_ADDONS_VERSION;
           $in_footer      = true;
   
-          wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-          wp_enqueue_script( $name );
+          wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
+          wp_enqueue_script( $ua_name );
   
 
          //CSS file for dependency
-		$name           = 'modal-video';
+		$ua_name           = 'modal-video';
         $css_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/modal-video/css/modal-video.min.css';
         $dependency     =  [];//kaj ta ses hoyni. pore abar try korte hobe.
         $version        = ULTRA_ADDONS_VERSION;

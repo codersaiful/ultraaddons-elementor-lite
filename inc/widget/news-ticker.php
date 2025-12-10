@@ -29,14 +29,14 @@ class News_Ticker extends Base{
         parent::__construct($data, $args);
 
         //Naming of Args for News Ticker
-        $name           = 'NewsTicker';
+        $ua_name           = 'NewsTicker';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/breaking-news-ticker.min.js';
         $dependency     =  ['jquery'];//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  = true;
 
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );
+        wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ua_name );
 
 
         //CSS file News Ticker
@@ -476,13 +476,13 @@ class News_Ticker extends Base{
 		
 			if ( isset( $settings['ticker_list'] ) ) {
 				echo '<ul>';
-				foreach (  $settings['ticker_list'] as $item ) {
-					$target 	= $item['news_link']['is_external'] ? ' target="_blank"' : '';
-					$nofollow 	= $item['news_link']['nofollow'] ? ' rel="nofollow"' : '';
-					$url		= $item['news_link']['url'];
-					echo '<li class="news-tricker-element elementor-repeater-item-' . esc_attr( $item['_id'] ) . '">';
+				foreach (  $settings['ticker_list'] as $ua_item ) {
+					$target 	= $ua_item['news_link']['is_external'] ? ' target="_blank"' : '';
+					$nofollow 	= $ua_item['news_link']['nofollow'] ? ' rel="nofollow"' : '';
+					$url		= $ua_item['news_link']['url'];
+					echo '<li class="news-tricker-element elementor-repeater-item-' . esc_attr( $ua_item['_id'] ) . '">';
 					if( ! empty( $url ) ){
-						echo '<a href="' . esc_url( $url ) . '"' . esc_attr( $target ) . esc_attr( $nofollow ) . '>'. esc_html( $item['news_title'] ) .'</a>';
+						echo '<a href="' . esc_url( $url ) . '"' . esc_attr( $target ) . esc_attr( $nofollow ) . '>'. esc_html( $ua_item['news_title'] ) .'</a>';
 					}
 					
 					echo '</li>';

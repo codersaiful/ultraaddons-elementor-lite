@@ -18,24 +18,24 @@ class Bar_Chart extends Base{
         parent::__construct($data, $args);
 
         //Naming of Args for Skill Chart
-        $name           = 'chart-js';
+        $ua_name           = 'chart-js';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/chart-js/chart.js';
         $dependency     =  ['jquery'];//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer      = true;
 
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );
+        wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ua_name );
 
         //Naming of Args for front end chart
-        $name           = 'frontend-chart-js';
+        $ua_name           = 'frontend-chart-js';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'js/frontend-chart.js';
         $dependency     =  ['jquery'];//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  = true;
 
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );
+        wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ua_name );
     }
 	
 

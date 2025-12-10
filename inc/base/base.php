@@ -50,26 +50,26 @@ class Base extends Widget_Base{
 //    public function __construct($data = [], $args = null) {
 //        parent::__construct($data, $args);
 //       
-//        $name = $this->get_pure_name();
-//        $name = str_replace('_','-', $name);
-//        $name = strtolower( $name );
-//        $handle = 'ultraaddons-' . $name;
+//        $ua_name = $this->get_pure_name();
+//        $ua_name = str_replace('_','-', $ua_name);
+//        $ua_name = strtolower( $ua_name );
+//        $handle = 'ultraaddons-' . $ua_name;
 //        $handle = $this->get_css_handle();
 //
 //        $deps = ['ultraaddons-widgets-style'];
 //        $ver  = ULTRA_ADDONS_VERSION;
 //        $media= 'all';
 //
-//        $src = ULTRA_ADDONS_ASSETS . 'css/widgets/' . strtolower( $name ) . '.css';
+//        $src = ULTRA_ADDONS_ASSETS . 'css/widgets/' . strtolower( $ua_name ) . '.css';
 //
-//        $css_file_dir = ULTRA_ADDONS_DIR . 'assets/css/widgets/' . strtolower( $name ) . '.css';
+//        $css_file_dir = ULTRA_ADDONS_DIR . 'assets/css/widgets/' . strtolower( $ua_name ) . '.css';
 //
 //
 //        $pass_css = false; 
 //        if( defined( 'ULTRA_ADDONS_PRO_ASSETS' ) && isset( $widget['is_pro'] ) && $widget['is_pro'] ){
 //
-//            $src_pro = ULTRA_ADDONS_PRO_ASSETS . 'css/widgets/' . strtolower( $name ) . '.css';
-//            $css_file_dir_pro = ULTRA_ADDONS_PRO_DIR . 'assets/css/widgets/' . strtolower( $name ) . '.css';
+//            $src_pro = ULTRA_ADDONS_PRO_ASSETS . 'css/widgets/' . strtolower( $ua_name ) . '.css';
+//            $css_file_dir_pro = ULTRA_ADDONS_PRO_DIR . 'assets/css/widgets/' . strtolower( $ua_name ) . '.css';
 //
 //            if( is_file( $css_file_dir_pro ) ){
 //                //Direct pass as we founded it in Pro folder
@@ -94,10 +94,10 @@ class Base extends Widget_Base{
      * @return Array return as Array
      */
 //    public function get_style_depends() {
-//        $name = $this->get_pure_name();
-//        $name = str_replace('_','-', $name);
-//        $name = strtolower( $name );
-//        $handle = 'ultraaddons-' . $name;
+//        $ua_name = $this->get_pure_name();
+//        $ua_name = str_replace('_','-', $ua_name);
+//        $ua_name = strtolower( $ua_name );
+//        $handle = 'ultraaddons-' . $ua_name;
 //        $handle = $this->get_css_handle();
 //        return [$handle];
 //    }
@@ -114,10 +114,10 @@ class Base extends Widget_Base{
      * @return String
      */
 //    protected function get_css_handle(){
-//        $name = $this->get_pure_name();
-//        $name = str_replace('_','-', $name);
-//        $name = strtolower( $name );
-//        $handle = 'ultraaddons-' . $name;
+//        $ua_name = $this->get_pure_name();
+//        $ua_name = str_replace('_','-', $ua_name);
+//        $ua_name = strtolower( $ua_name );
+//        $handle = 'ultraaddons-' . $ua_name;
 //        return $handle;
 //    }
 
@@ -143,9 +143,9 @@ class Base extends Widget_Base{
         /**
          * Automatically generate widget name from class
          */
-        $name = strtolower( $this->get_pure_name() );
-        $name = str_replace( '_', '-', $name );
-        return 'ultraaddons-' . $name;
+        $ua_name = strtolower( $this->get_pure_name() );
+        $ua_name = str_replace( '_', '-', $ua_name );
+        return 'ultraaddons-' . $ua_name;
     }
     
     /**
@@ -155,14 +155,14 @@ class Base extends Widget_Base{
     public function get_icon() {
         $widgetsArray = Widgets_Manager::widgets();
         $title = $this->get_pure_name();
-        $icon = 'ultraaddons ';
+        $ua_icon = 'ultraaddons ';
         if( is_array( $widgetsArray ) && isset( $widgetsArray[$title]['icon'] ) && ! empty( $widgetsArray[$title]['icon'] ) ){
-            $icon .= $widgetsArray[$title]['icon'];
+            $ua_icon .= $widgetsArray[$title]['icon'];
         }else{
-            $icon .= 'eicon-check-circle-o';
+            $ua_icon .= 'eicon-check-circle-o';
         }
         
-        return $icon;
+        return $ua_icon;
     }
     
     /**
@@ -277,8 +277,8 @@ class Base extends Widget_Base{
      */
     public function get_custom_help_url() {
         
-        $name = $this->get_pure_name();
-        return ultraaddons_help_url( $name, $this );
+        $ua_name = $this->get_pure_name();
+        return ultraaddons_help_url( $ua_name, $this );
     }
     
     /**
@@ -325,8 +325,8 @@ class Base extends Widget_Base{
      * @return String name of Class
      */
     public function get_pure_name(){
-        $name = str_replace( __NAMESPACE__, '', $this->get_class_name() );
-        return ltrim( $name, '\\' );
+        $ua_name = str_replace( __NAMESPACE__, '', $this->get_class_name() );
+        return ltrim( $ua_name, '\\' );
     }
     
     /**

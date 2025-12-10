@@ -68,26 +68,26 @@ class Advance_List extends Base{
         $this->add_render_attribute( 'wrapper', 'class', 'ua-list-item-wrapper' );
         
         
-        $items = $settings['list_items'];
+        $ua_items = $settings['list_items'];
 
         ?>
     <div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
         <ul class="ua-list-items">
             <?php
             $serial = 1;
-            foreach( $items as $key => $item ){
+            foreach( $ua_items as $key => $ua_item ){
 
-                $_id = !empty( $item['_id'] ) ? $item['_id'] : false;
-                $title = !empty( $item['title'] ) ? $item['title'] : false;
-                $description = !empty( $item['description'] ) ? $item['description'] : false;
-                $icon     = !empty( $item['icon']['value'] ) && is_string( $item['icon']['value'] ) ? $item['icon']['value'] : false;
+                $_id = !empty( $ua_item['_id'] ) ? $ua_item['_id'] : false;
+                $title = !empty( $ua_item['title'] ) ? $ua_item['title'] : false;
+                $description = !empty( $ua_item['description'] ) ? $ua_item['description'] : false;
+                $ua_icon     = !empty( $ua_item['icon']['value'] ) && is_string( $ua_item['icon']['value'] ) ? $ua_item['icon']['value'] : false;
 
                 ?>
             <li class="list-item list-item-<?php echo esc_attr( $serial ); ?> elementor-repeater-item-<?php echo esc_attr( $_id ); ?>"> 
                 <div class="list-item-inside">
                 
-                    <?php if( $icon ){ ?>
-                    <i class="<?php echo esc_attr( $icon ); ?>"></i>
+                    <?php if( $ua_icon ){ ?>
+                    <i class="<?php echo esc_attr( $ua_icon ); ?>"></i>
                     <?php } ?>
 
                     <?php if( $title ){  ?>

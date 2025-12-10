@@ -13,13 +13,13 @@ class Menu_Walker extends \Walker_Nav_Menu {
 	 *
 	 * @since 1.3.0
 	 * @param string $output Output HTML.
-	 * @param object $item Individual Menu item.
+	 * @param object $ua_item Individual Menu item.
 	 * @param int    $depth Depth.
 	 * @param array  $args Arguments array.
 	 * @param int    $id Menu ID.
 	 * @access public
 	 */
-	public function start_el( &$output, $item, $depth = 0, $args = [], $id = 0 ) {
+	public function start_el( &$output, $ua_item, $depth = 0, $args = [], $id = 0 ) {
 
 		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 		$args   = (object) $args;
@@ -29,28 +29,28 @@ class Menu_Walker extends \Walker_Nav_Menu {
 		$rel_xfn     = '';
 		$rel_blank   = '';
 
-		$classes = empty( $item->classes ) ? [] : (array) $item->classes;
+		$classes = empty( $ua_item->classes ) ? [] : (array) $ua_item->classes;
 		$submenu = $args->has_children ? ' ua-has-submenu' : '';
 
 		if ( 0 === $depth ) {
 			array_push( $classes, 'parent' );
 		}
-		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $depth ) );
+		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $ua_item, $args, $depth ) );
 		$class_names = ' class="' . esc_attr( $class_names ) . $submenu . ' ua-creative-menu"';
 
-		$output .= $indent . '<li id="menu-item-' . $item->ID . '"' . $value . $class_names . '>';
+		$output .= $indent . '<li id="menu-item-' . $ua_item->ID . '"' . $value . $class_names . '>';
 
-		if ( isset( $item->target ) && '_blank' === $item->target && isset( $item->xfn ) && false === strpos( $item->xfn, 'noopener' ) ) {
+		if ( isset( $ua_item->target ) && '_blank' === $ua_item->target && isset( $ua_item->xfn ) && false === strpos( $ua_item->xfn, 'noopener' ) ) {
 			$rel_xfn = ' noopener';
 		}
-		if ( isset( $item->target ) && '_blank' === $item->target && isset( $item->xfn ) && empty( $item->xfn ) ) {
+		if ( isset( $ua_item->target ) && '_blank' === $ua_item->target && isset( $ua_item->xfn ) && empty( $ua_item->xfn ) ) {
 			$rel_blank = 'rel="noopener"';
 		}
 
-		$attributes  = ! empty( $item->attr_title ) ? ' title="' . esc_attr( $item->attr_title ) . '"' : '';
-		$attributes .= ! empty( $item->target ) ? ' target="' . esc_attr( $item->target ) . '"' : '';
-		$attributes .= ! empty( $item->xfn ) ? ' rel="' . esc_attr( $item->xfn ) . $rel_xfn . '"' : '' . $rel_blank;
-		$attributes .= ! empty( $item->url ) ? ' href="' . esc_attr( $item->url ) . '"' : '';
+		$attributes  = ! empty( $ua_item->attr_title ) ? ' title="' . esc_attr( $ua_item->attr_title ) . '"' : '';
+		$attributes .= ! empty( $ua_item->target ) ? ' target="' . esc_attr( $ua_item->target ) . '"' : '';
+		$attributes .= ! empty( $ua_item->xfn ) ? ' rel="' . esc_attr( $ua_item->xfn ) . $rel_xfn . '"' : '' . $rel_blank;
+		$attributes .= ! empty( $ua_item->url ) ? ' href="' . esc_attr( $ua_item->url ) . '"' : '';
 
 		$atts = apply_filters( 'ua_nav_menu_attrs', $attributes );
 
@@ -60,11 +60,11 @@ class Menu_Walker extends \Walker_Nav_Menu {
 		if ( 0 === $depth ) {
 			$item_output .= ' class = "ua-menu-item"';
 		} else {
-			$item_output .= in_array( 'current-menu-item', $item->classes ) ? ' class = "ua-sub-menu-item ua-sub-menu-item-active"' : ' class = "ua-sub-menu-item"';
+			$item_output .= in_array( 'current-menu-item', $ua_item->classes ) ? ' class = "ua-sub-menu-item ua-sub-menu-item-active"' : ' class = "ua-sub-menu-item"';
 		}
 
 		$item_output .= '>';
-		$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+		$item_output .= $args->link_before . apply_filters( 'the_title', $ua_item->title, $ua_item->ID ) . $args->link_after;
 		if ( $args->has_children ) {
 			$item_output .= "<span class='ua-menu-toggle sub-arrow ua-menu-child-";
 			$item_output .= $depth;
@@ -75,7 +75,7 @@ class Menu_Walker extends \Walker_Nav_Menu {
 		$item_output .= $args->after;
 		$item_output .= $args->has_children ? '</div>' : '';
 
-		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $ua_item, $depth, $args );
 	}
 
 	/**

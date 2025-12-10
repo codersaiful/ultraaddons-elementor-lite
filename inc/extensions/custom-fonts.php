@@ -52,7 +52,7 @@ class Custom_Fonts{
          * 
          * @date 25/1/2022
          */
-        add_filter('upload_mimes', [__CLASS__, 'custom_upload_mimes']);
+        // add_filter('upload_mimes', [__CLASS__, 'custom_upload_mimes']);
 
         /**
          * Render All selected Custom field here.

@@ -34,47 +34,47 @@ class Advance_Post_Masonry extends Base{
         parent::__construct($data, $args);
        
         //For Blog Widget
-        $name           = 'imagesloaded.pkgd.min';
+        $ua_name           = 'imagesloaded.pkgd.min';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/imagesloaded.pkgd.min.js';
         $dependency     =  ['jquery','elementor-frontend'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  = true;
 
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );
+        wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ua_name );
         
         //For Blog Widget
-        $name           = 'isotope.pkgd.min';
+        $ua_name           = 'isotope.pkgd.min';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/isotope.pkgd.min.js';
         $dependency     =  ['jquery','elementor-frontend'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  = true;
 
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );
+        wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ua_name );
         
         //For Blog Widget
-        $name           = 'packery-mode.pkgd.min';
+        $ua_name           = 'packery-mode.pkgd.min';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/packery-mode.pkgd.min.js';
         $dependency     =  ['jquery','elementor-frontend'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  = true;
 
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );
+        wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ua_name );
         
         
         
         //Naming of Args for Masonary
         //For Blog Widget
-        $name           = 'masonry_grid';
+        $ua_name           = 'masonry_grid';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/masonry_grid.js';
         $dependency     =  ['jquery','elementor-frontend'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  = true;
 
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );
+        wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ua_name );
         
     }
     

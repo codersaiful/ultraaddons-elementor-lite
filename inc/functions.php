@@ -15,11 +15,11 @@ defined( 'ABSPATH' ) || die();
  * @since 1.0.0.2
  * @by Saiful
  * 
- * @param string $class_name
+ * @param string $ua_class_name
  * @param type $object
  * @return string Full URL link for Class
  */
-function ultraaddons_help_url( $class_name, $object = false ){
+function ultraaddons_help_url( $ua_class_name, $object = false ){
     
     /**
      * using Constant: ULTRA_ADDONS_WIDGET_HELP_ULR 
@@ -27,7 +27,7 @@ function ultraaddons_help_url( $class_name, $object = false ){
      * 
      * @since 1.0.0.3
      */
-    return ULTRA_ADDONS_WIDGET_HELP_ULR . $class_name;
+    return ULTRA_ADDONS_WIDGET_HELP_ULR . $ua_class_name;
 }
 
 if( ! function_exists( 'ultraaddons_is_cf7_activated' ) ){
@@ -75,11 +75,11 @@ if( !function_exists( 'ultraaddons_get_current_user_display_name' ) ){
      */
     function ultraaddons_get_current_user_display_name() {
             $user = wp_get_current_user();
-            $name = 'user';
+            $ua_name = 'user';
             if ( $user->exists() && $user->display_name ) {
-                    $name = $user->display_name;
+                    $ua_name = $user->display_name;
             }
-            return $name;
+            return $ua_name;
     }
 }
 if( ! function_exists( 'ultraaddons_do_shortcode' ) ){

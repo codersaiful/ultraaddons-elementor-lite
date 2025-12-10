@@ -55,14 +55,14 @@ class General_Extension{
     public static function wp_enqueue_scripts(){
 
         //Naming of Args for Scrollax
-        $name           = 'Scrollax';
+        $ua_name           = 'Scrollax';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/Scrollax/scrollax.min.js';
         $dependency     =  ['jquery'];//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  = true;
 
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );
+        wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ua_name );
     }
     
 

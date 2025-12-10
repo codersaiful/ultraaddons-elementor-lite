@@ -65,7 +65,7 @@ class Custom_Fonts_Render {
      * We are getting help from method font_args_by_name()
      * and this method will return like bellow array
      * 
-     * CAN BE NEED: $term = get_term_by('name',$name,Fonts::$font_group_key);
+     * CAN BE NEED: $term = get_term_by('name',$ua_name,Fonts::$font_group_key);
      * 
 array (size=3)
   0 => 
@@ -135,12 +135,12 @@ array (size=3)
      * Getting details array of Font name
      * based on Font name
      * 
-     * @param string $name Font name specially Font taxonomy title actually
+     * @param string $ua_name Font name specially Font taxonomy title actually
      * @return Array|null|false for success, returna a array, otherwise return null
      * 
      */
-    public static function font_args_by_name( $name ){
-        $term = get_term_by('name',$name,Fonts::$font_group_key);
+    public static function font_args_by_name( $ua_name ){
+        $term = get_term_by('name',$ua_name,Fonts::$font_group_key);
         
         if( ! $term ) return false;
         $term_id = $term->term_id;

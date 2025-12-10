@@ -230,12 +230,12 @@ class Loader {
     public function init_widgets() {
 
         foreach( $this->widgetsArray as $widget_key => $widget ){
-            $name = $widget_key;//isset( $widget['name'] ) ? $widget['name'] : '';
+            $ua_name = $widget_key;//isset( $widget['name'] ) ? $widget['name'] : '';
             
-            $name = str_replace('_','-', $name);
+            $ua_name = str_replace('_','-', $ua_name);
             
-            $class_name = str_replace( '-','_', $name );
-            $class_name =  '\UltraAddons\Widget\\' . ucwords( $class_name, '_' );
+            $ua_class_name = str_replace( '-','_', $ua_name );
+            $ua_class_name =  '\UltraAddons\Widget\\' . ucwords( $ua_class_name, '_' );
 
 
             /**
@@ -247,18 +247,18 @@ class Loader {
              * widgets -> widget | because: in name space, available widget, not widgets
              * ****************************
              */
-//            $file = ULTRA_ADDONS_DIR . 'inc/widgets/'. strtolower( $name ) . '.php';
+//            $file = ULTRA_ADDONS_DIR . 'inc/widgets/'. strtolower( $ua_name ) . '.php';
 //            $file = realpath( $file );
 //            if( is_readable( $file ) ){
 //                include_once $file;
 //            }else{
 //                $error = esc_html__( "The file ( %s ) of [%s] Class is not founded.", 'ultraaddons-elementor-lite' );
 //                $this->errors[$widget_key] = $error;
-//                //printf( $error, $file, $name );
+//                //printf( $error, $file, $ua_name );
 //            }
 
-            if( $class_name && class_exists( $class_name ) ){
-                ultraaddons_elementor()->widgets_manager->register_widget_type( new $class_name() );
+            if( $ua_class_name && class_exists( $ua_class_name ) ){
+                ultraaddons_elementor()->widgets_manager->register_widget_type( new $ua_class_name() );
             }
             
             
@@ -431,18 +431,18 @@ class Loader {
         
         foreach( $this->widgetsArray as $widget_key => $widget ){
 
-            $name = $widget_key;//isset( $widget['name'] ) ? $widget['name'] : '';
+            $ua_name = $widget_key;//isset( $widget['name'] ) ? $widget['name'] : '';
 
-            $name = str_replace('_','-', $name);
-            $name = strtolower( $name );
-            $handle = 'ultraaddons-' . $name;
+            $ua_name = str_replace('_','-', $ua_name);
+            $ua_name = strtolower( $ua_name );
+            $handle = 'ultraaddons-' . $ua_name;
             
             $deps = ['ultraaddons-widgets-style'];
             $ver  = ULTRA_ADDONS_VERSION;
             $media= 'all';
             
-            $src = ULTRA_ADDONS_ASSETS . 'css/widgets/' . strtolower( $name ) . '.css';
-            $css_file_dir = ULTRA_ADDONS_DIR . 'assets/css/widgets/' . strtolower( $name ) . '.css';
+            $src = ULTRA_ADDONS_ASSETS . 'css/widgets/' . strtolower( $ua_name ) . '.css';
+            $css_file_dir = ULTRA_ADDONS_DIR . 'assets/css/widgets/' . strtolower( $ua_name ) . '.css';
             
             /**
              * CSS file load based on Element/Widget
@@ -457,8 +457,8 @@ class Loader {
             $pass_css = false; //Actually if found CSS file in Pro folder, we will direct pass
             if( defined( 'ULTRA_ADDONS_PRO_ASSETS' ) && isset( $widget['is_pro'] ) && $widget['is_pro'] ){
               
-                $src_pro = ULTRA_ADDONS_PRO_ASSETS . 'css/widgets/' . strtolower( $name ) . '.css';
-                $css_file_dir_pro = ULTRA_ADDONS_PRO_DIR . 'assets/css/widgets/' . strtolower( $name ) . '.css';
+                $src_pro = ULTRA_ADDONS_PRO_ASSETS . 'css/widgets/' . strtolower( $ua_name ) . '.css';
+                $css_file_dir_pro = ULTRA_ADDONS_PRO_DIR . 'assets/css/widgets/' . strtolower( $ua_name ) . '.css';
 
                 if( is_file( $css_file_dir_pro ) ){
                     //Direct pass as we founded it in Pro folder

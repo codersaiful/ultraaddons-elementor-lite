@@ -19,7 +19,7 @@ if( class_exists( 'ELDM_Elementor_Demo_Manager' ) ){
 if( class_exists( '\UltraAddons\Library\Demo\Theme_Demo' ) ){
 	//$demo_manager = new \UltraAddons\Library\Demo\Theme_Demo;
 	$args = [
-		'root_site' => 'http://localhost/wordpress_theme/',
+		'root_site' => 'here your demo site url', //http://example.com/
 		'button' => [
 			'text'	=> esc_html__( "Theme Demo", 'ultraaddons-elementor-lite' ),
 			'icon'	=> 'eicon-instagram-likes',

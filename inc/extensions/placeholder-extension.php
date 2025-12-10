@@ -5,7 +5,7 @@ use Elementor\Controls_Manager;
 use Elementor\Element_Base;
 
 class Placeholder_Extension {
-    protected $name;
+    protected $ua_name;
     protected $extension = array();
     protected $message = "Premium Extension.";
     public function __construct( $extension = false, $message = false ){

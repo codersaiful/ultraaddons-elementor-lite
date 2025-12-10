@@ -27,17 +27,17 @@ class Product_Flip_Carousel extends Base{
         parent::__construct($data, $args);
 
         //Naming of Args for swiffySlider
-        $name           = 'swiffySlider';
+        $ua_name           = 'swiffySlider';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/swiffy-slider/dist/js/swiffy-slider.min.js';
         $dependency     =  ['jquery'];//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  	= true;
 
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );
+        wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ua_name );
 		
         //CSS file for dependency
-		$name           = 'swiffySlider';
+		$ua_name           = 'swiffySlider';
         $css_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/swiffy-slider/dist/css/swiffy-slider.min.css';
         $dependency     =  [];//kaj ta ses hoyni. pore abar try korte hobe.
         $version        = ULTRA_ADDONS_VERSION;

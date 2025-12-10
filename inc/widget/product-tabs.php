@@ -21,24 +21,24 @@ class Product_Tabs extends Base{
         parent::__construct($data, $args);
 		
         //Naming of Args 
-        $name           = 'isotop';
+        $ua_name           = 'isotop';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/isotope.pkgd.min.js';
         $dependency     =  ['jquery'];//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  	= true;
 
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );
+        wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ua_name );
 
 		//Naming of Args 
-        $name           = 'product';
+        $ua_name           = 'product';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/product.js';
         $dependency     =  ['jquery'];//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  	= true;
 
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );
+        wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ua_name );
 
     }
 	/**

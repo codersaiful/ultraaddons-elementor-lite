@@ -79,9 +79,9 @@ class Header_Footer {
         
         
 
-        // $loc = array_filter($heder_footer,function($item){
-        //     // var_dump($item['position']);
-        //     return $item['position']=='header';
+        // $loc = array_filter($heder_footer,function($ua_item){
+        //     // var_dump($ua_item['position']);
+        //     return $ua_item['position']=='header';
         // });
 
         // var_dump($locs,$heder_footer);
@@ -189,7 +189,7 @@ class Header_Footer {
     public static function add_footer() {
         echo wp_kses_post( ultraaddons_elementor_display_content( self::get_footer_id() ) );
     }
-    public static function show_footer( $name, $args ) {
+    public static function show_footer( $ua_name, $args ) {
         include ULTRA_ADDONS_DIR . 'template/footer.php';
         
         
@@ -205,7 +205,7 @@ class Header_Footer {
     public static function add_header() {
         echo wp_kses_post( ultraaddons_elementor_display_content( self::get_header_id() ) );
     }
-    public static function show_header( $name, $args ) {
+    public static function show_header( $ua_name, $args ) {
         include ULTRA_ADDONS_DIR . 'template/header.php';
         
         

@@ -174,10 +174,10 @@ if ( $filter ) {
 
 		foreach ( $terms as $term_cat ) {
 			$id             = $term_cat->term_id;
-			$name           = $term_cat->name;
+			$ua_name           = $term_cat->name;
 			$slug           = $term_cat->slug;
 			$slugs[]        = $slug;
-			$category_html .= '<li class="nav-item"><a href="' . esc_url( get_term_link( $id, 'product_cat' ) ) . '" class="' . esc_attr( $slug ) . '" data-filter=".' . esc_attr( $slug ) . '">' . esc_html( $name ) . '</a></li>';
+			$category_html .= '<li class="nav-item"><a href="' . esc_url( get_term_link( $id, 'product_cat' ) ) . '" class="' . esc_attr( $slug ) . '" data-filter=".' . esc_attr( $slug ) . '">' . esc_html( $ua_name ) . '</a></li>';
 		}
 		$category_html  = '<ul class="nav nav-filter cat-filter' . ( 'right' == $filter_pos ? ' ml-auto' : '' ) . '"><li class="nav-item active nav-item-all"><a href="#" data-filter="' . implode( ',', $slugs ) . '">' . esc_html__( 'All', 'ultraaddons-elementor-lite' ) . '</a></li>' . $category_html;
 		$category_html .= '</ul>';
