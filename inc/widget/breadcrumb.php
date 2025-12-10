@@ -318,7 +318,7 @@ class Breadcrumb extends Base{
     echo '<ul id="'. esc_attr( $defaults['id'] ) .'" class="'. esc_attr( $defaults['classes'] ) .'">';
 
     // Creating home link
-    echo '<li class="item"><a href="'. get_home_url() .'">'. esc_html( $defaults['home_title'] ) .'</a></li>' . $sep;
+    echo '<li class="item"><a href="'. esc_attr( get_home_url() ) .'">'. esc_html( $defaults['home_title'] ) .'</a></li>' . esc_html( $sep );
 
         if ( is_single() ) {
 
@@ -331,7 +331,7 @@ class Breadcrumb extends Base{
                 $post_type_object   = get_post_type_object( $post_type );
                 $post_type_link     = get_post_type_archive_link( $post_type );
 
-                echo '<li class="item item-cat"><a href="'. $post_type_link .'">'. $post_type_object->labels->name .'</a></li>'. $sep;
+                echo '<li class="item item-cat"><a href="'. esc_attr( $post_type_link ) .'">'. esc_html( $post_type_object->labels->name ) .'</a></li>'. esc_html( $sep );
 
           }
 
@@ -371,17 +371,17 @@ class Breadcrumb extends Base{
             // Check if the post is in a category
             if( !empty( $get_last_category ) ) {
 
-                echo $display_category;
-                echo '<li class="item item-current">'. get_the_title() .'</li>';
+                echo esc_html( $display_category );
+                echo '<li class="item item-current">'. esc_html( get_the_title() ) .'</li>';
 
             } else if( !empty( $cat_id ) ) {
 
                 echo '<li class="item item-cat"><a href="'. $cat_link .'">'. $cat_name .'</a></li>' . $sep;
-                echo '<li class="item-current item">'. get_the_title() .'</li>';
+                echo '<li class="item-current item">'. esc_html( get_the_title() ) .'</li>';
 
             } else {
 
-                echo '<li class="item-current item">'. get_the_title() .'</li>';
+                echo '<li class="item-current item">'. esc_html( get_the_title() ) .'</li>';
 
             }
 
@@ -397,12 +397,12 @@ class Breadcrumb extends Base{
                   $post_type_object   = get_post_type_object( $post_type );
                   $post_type_link     = get_post_type_archive_link( $post_type );
 
-                  echo '<li class="item item-cat item-custom-post-type-' . $post_type . '"><a href="' . $post_type_link . '">' . $post_type_object->labels->name . '</a></li>' . $sep;
+                  echo '<li class="item item-cat item-custom-post-type-' . esc_attr( $post_type ) . '"><a href="' . esc_url( $post_type_link ) . '">' . esc_html( $post_type_object->labels->name ) . '</a></li>' . esc_html( $sep );
 
                 }
 
                 $custom_tax_name = get_queried_object()->name;
-                echo '<li class="item item-current">'. $custom_tax_name .'</li>';
+                echo '<li class="item item-current">'. esc_html( $custom_tax_name ) .'</li>';
 
             } else if ( is_category() ) {
 
@@ -413,11 +413,11 @@ class Breadcrumb extends Base{
                     $parent_category = get_category( $parent );
                     $category_link   = get_category_link( $parent );
 
-                    echo '<li class="item"><a href="'. esc_url( $category_link ) .'">'. $parent_category->name .'</a></li>' . $sep;
+                    echo '<li class="item"><a href="'. esc_url( $category_link ) .'">'. esc_html( $parent_category->name ) .'</a></li>' . esc_html( $sep );
 
                 }
 
-                echo '<li class="item item-current">'. single_cat_title( '', false ) .'</li>';
+                echo '<li class="item item-current">'. esc_html( single_cat_title( '', false ) ) .'</li>';
 
             } else if ( is_tag() ) {
 
@@ -439,28 +439,28 @@ class Breadcrumb extends Base{
                 // Day archive
 
                 // Year link
-                echo '<li class="item-year item"><a href="'. get_year_link( get_the_time('Y') ) .'">'. get_the_time('Y') . ' Archives</a></li>' . $sep;
+                echo '<li class="item-year item"><a href="'. esc_url( get_year_link( get_the_time('Y') ) ) .'">'. esc_html( get_the_time('Y') ) . ' Archives</a></li>' . esc_html( $sep );
 
                 // Month link
-                echo '<li class="item-month item"><a href="'. get_month_link( get_the_time('Y'), get_the_time('m') ) .'">'. get_the_time('M') .' Archives</a></li>' . $sep;
+                echo '<li class="item-month item"><a href="'. esc_url( get_month_link( get_the_time('Y'), get_the_time('m') ) ) .'">'. esc_html( get_the_time('M') ) .' Archives</a></li>' . esc_html( $sep );
 
                 // Day display
-                echo '<li class="item-current item">'. get_the_time('jS') .' '. get_the_time('M'). ' Archives</li>';
+                echo '<li class="item-current item">'. esc_html( get_the_time('jS') ) .' '. esc_html( get_the_time('M') ). ' Archives</li>';
 
             } else if( is_month() ) {
 
                 // Month archive
 
                 // Year link
-                echo '<li class="item-year item"><a href="'. get_year_link( get_the_time('Y') ) .'">'. get_the_time('Y') . ' Archives</a></li>' . $sep;
+                echo '<li class="item-year item"><a href="'. esc_url( get_year_link( get_the_time('Y') ) ) .'">'. esc_html( get_the_time('Y') ) . ' Archives</a></li>' . esc_html( $sep );
 
                 // Month Display
-                echo '<li class="item-month item-current item">'. get_the_time('M') .' Archives</li>';
+                echo '<li class="item-month item-current item">'. esc_html( get_the_time('M') ) .' Archives</li>';
 
             } else if ( is_year() ) {
 
                 // Year Display
-                echo '<li class="item-year item-current item">'. get_the_time('Y') .' Archives</li>';
+                echo '<li class="item-year item-current item">'. esc_html( get_the_time('Y') ) .' Archives</li>';
 
           } else if ( is_author() ) {
 
@@ -471,12 +471,11 @@ class Breadcrumb extends Base{
                 $userdata = get_userdata( $author );
 
                 // Display author name
-                echo '<li class="item-current item">'. 'Author: '. $userdata->display_name . '</li>';
+                echo '<li class="item-current item">'. 'Author: '. esc_html( $userdata->display_name ) . '</li>';
 
             } else {
 
-                echo '<li class="item item-current">'. post_type_archive_title() .'</li>';
-
+                echo '<li class="item item-current">'. esc_html( post_type_archive_title() ) .'</li>';
             }
 
     } else if ( is_page() ) {
@@ -494,7 +493,7 @@ class Breadcrumb extends Base{
         if ( !isset( $parents ) ) $parents = null;
         foreach ( $anc as $ancestor ) {
 
-          $parents .= '<li class="item-parent item"><a href="'. get_permalink( $ancestor ) .'">'. get_the_title( $ancestor ) .'</a></li>' . $sep;
+          $parents .= '<li class="item-parent item"><a href="'. esc_url( get_permalink( $ancestor ) ) .'">'. esc_html( get_the_title( $ancestor ) ) .'</a></li>' . esc_html( $sep );
 
         }
 
@@ -502,19 +501,19 @@ class Breadcrumb extends Base{
         echo $parents;
 
         // Current page
-        echo '<li class="item-current item">'. get_the_title() .'</li>';
+        echo '<li class="item-current item">'. esc_html( get_the_title() ) .'</li>';
 
       } else {
 
         // Just display current page if not parents
-        echo '<li class="item-current item">'. get_the_title() .'</li>';
+        echo '<li class="item-current item">'. esc_html( get_the_title() ) .'</li>';
 
       }
 
     } else if ( is_search() ) {
 
         // Search results page
-        echo '<li class="item-current item">Search results for: '. get_search_query() .'</li>';
+        echo '<li class="item-current item">Search results for: '. esc_html( get_search_query() ) .'</li>';
 
     } else if ( is_404() ) {
 

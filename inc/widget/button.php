@@ -428,11 +428,11 @@ class Button extends Base{
         );
         ?>
         <div class="ua-btn-wrap ua-d-flex">
-            <a <?php echo $this->get_render_attribute_string( '_ua_button_link' ); ?> <?php echo $this->get_render_attribute_string( 'button_class' );?>>
+            <a <?php echo esc_attr( $this->get_render_attribute_string( '_ua_button_link' ) ); ?> <?php echo esc_attr( $this->get_render_attribute_string( 'button_class' ) );?>>
             <?php if('left'==$settings['_icon_position']):?>
              <?php Icons_Manager::render_icon( $settings['selected_icon'], [ 'aria-hidden' => 'true' ] ); ?>
             <?php endif;?>
-            <?php echo $settings['_ua_button'];?>
+            <?php echo esc_html( $settings['_ua_button'] );?>
             <?php if('right'==$settings['_icon_position']):?>
              <?php Icons_Manager::render_icon( $settings['selected_icon'], [ 'aria-hidden' => 'true' ] ); ?>
             <?php endif;?>

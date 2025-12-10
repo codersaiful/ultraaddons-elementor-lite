@@ -616,10 +616,10 @@ class Caldera_Forms extends Base{
         <?php 
         if(!empty($form_id)):
         ?>
-        <div <?php echo $this->get_render_attribute_string( 'ua_caldera_forms_class' );?>>
+        <div <?php echo esc_attr( $this->get_render_attribute_string( 'ua_caldera_forms_class' ) );?>>
             <?php
                 echo do_shortcode(
-                    '[caldera_form id="'. $form_id .'" ]'
+                    '[caldera_form id="'. esc_attr( $form_id ) .'" ]'
                 );
             ?>
         </div>

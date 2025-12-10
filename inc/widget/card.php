@@ -1003,7 +1003,7 @@ class Card extends Base{
 			}
 			?>
 			</div>
-			<div <?php echo $this->get_render_attribute_string( 'card_body_class' );?>>
+			<div <?php echo esc_attr( $this->get_render_attribute_string( 'card_body_class' ));?>>
 				<?php
 				echo '<' . esc_html( $settings['_ua_card_title_tag'] ) . ' class="ua-card-title">' . esc_html($settings['_ua_card_title']) . 
 					'</' . esc_html( $settings['_ua_card_title_tag'] ) . '>';
@@ -1016,8 +1016,8 @@ class Card extends Base{
 				<div class="ua-card-footer">
 					<?php 
 						if(!empty($url)){
-							echo '<a href="' . esc_url( $url ). '"' . $target . $nofollow . ' class="ua-card-button">
-							' .  esc_html( $settings['_ua_card_button'] ) . '
+							echo '<a href="' . esc_url( $url ). '"' . esc_attr( $target . $nofollow ) . ' class="ua-card-button">
+							' .  esc_html( $settings['_ua_card_button'] ?? '' ) . '
 							</a>';
 						}
 					?>
@@ -1026,7 +1026,7 @@ class Card extends Base{
 				<div class="footer-bottom">
 					<div class="card-price"><?php echo esc_html( $settings['_ua_card_price'] );?> </div> 
 					<div class="card-wish">
-						<a <?php echo $this->get_render_attribute_string( 'wish_link' ); ?>>
+						<a <?php echo esc_attr( $this->get_render_attribute_string( 'wish_link' ) ); ?>>
 							<?php \Elementor\Icons_Manager::render_icon( $settings['wish_icon'], [ 'aria-hidden' => 'true' ] ); ?>
 						</a>
 					</div>
