@@ -69,7 +69,7 @@ class Image_Hover_3D extends Base{
             <?php
             foreach($settings['images'] as $image){
             ?>
-            <div class="ua-3dimage-box 3dimage-box-<?php echo $image['_id']; ?>">
+            <div class="ua-3dimage-box 3dimage-box-<?php echo esc_attr( $image['_id'] ?? '' ); ?>">
                 <div class="ua-3dimage-imgbx">
                     <?php if( ! empty( $image['image']['url'] ) ){ ?>
                     <img src="<?php echo esc_url( $image['image']['url'] ); ?>">
@@ -77,8 +77,8 @@ class Image_Hover_3D extends Base{
                 </div>
                 <div class="ua-3dimage-content">
                     <div class="ua-3dimage-content-inside">
-                        <h2><?php echo $image['title']; ?></h2>
-                        <p><?php echo $image['content']; ?></p>
+                        <h2><?php echo esc_html( $image['title'] ?? '' ); ?></h2>
+                        <p><?php echo esc_html( $image['content'] ?? '' ); ?></p>
                     </div>
                 </div>
             </div>

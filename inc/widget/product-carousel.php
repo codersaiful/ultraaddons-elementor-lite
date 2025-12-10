@@ -1016,7 +1016,7 @@ if( Plugin::$instance->editor->is_edit_mode()){
 }
 ?>
 
-<div <?php echo $this->get_render_attribute_string( 'slider_options' ); ?>>
+<div <?php echo esc_attr( $this->get_render_attribute_string( 'slider_options' ) ); ?>>
     <ul class="slider-container">
         <?php
 		
@@ -1077,41 +1077,41 @@ if( Plugin::$instance->editor->is_edit_mode()){
             <div class="ua-card shadow ua-h-100">
                 <div class="ua-thumbnail">
 					<?php if ( $product->is_on_sale() ) : 
-					echo apply_filters( 'woocommerce_sale_flash', '<span class="ua-onsale">' 
-					. esc_html__( 'Sale!', 'ultraaddons-elementor-lite' ) . '</span>', $product );
+					echo wp_kses_post( apply_filters( 'woocommerce_sale_flash', '<span class="ua-onsale">' 
+					. esc_html__( 'Sale!', 'ultraaddons-elementor-lite' ) . '</span>', $product ) );
 					endif;
 					?>
 					<div class="cart-links">
-						<a href="?add-to-cart=<?php echo esc_attr($id); ?>"  class="add-card button add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo esc_attr($id); ?>"  aria-label="Add '<?php echo get_the_title(); ?>' to your cart" rel="nofollow">
+						<a href="?add-to-cart=<?php echo esc_attr($id); ?>"  class="add-card button add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo esc_attr($id); ?>"  aria-label="Add '<?php echo esc_attr( get_the_title() ); ?>' to your cart" rel="nofollow">
 							<i class="uicon uicon-cart"></i>
 							<span>
 								<?php echo esc_html__('ADD TO CART', 'ultraaddons-elementor-lite'); ?>
 							</span>
 						</a>
 					</div>
-                    <?php echo woocommerce_get_product_thumbnail('woocommerce_full_size');?>
+                    <?php echo wp_kses_post( woocommerce_get_product_thumbnail('woocommerce_full_size') ); ?>
 			
                 </div>
                 <div class="ua-card-body ua-d-flex ua-flex-column ua-flex-md-row">
                     <div class="ua-flex-grow-1">
                         <a href="<?php echo get_the_permalink(); ?>">
                             <?php
-                            echo '<' . $settings['_ua_front_title_tag'] . ' class="ua-product-title">' . $loop->post->post_title . 
-                                    '</' . $settings['_ua_front_title_tag'] . '>';
+                            echo '<' . esc_html( $settings['_ua_front_title_tag'] ) . ' class="ua-product-title">' . esc_html( $loop->post->post_title ) . 
+                                    '</' . esc_html( $settings['_ua_front_title_tag'] ) . '>';
                             ?>
                         </a>
                         <p class="ua-card-text">
                             <?php 
                             foreach( wp_get_post_terms( get_the_id(), 'product_cat' ) as $term ){
                             if( $term ){
-                                    echo $term->name; // product category name
+                                    echo esc_html( $term->name ); // product category name
                                 }
                             }
                             ?>
                         </p>
                     </div>
                     <div class="ua-px-md-2 ua-pc-price">
-						<?php echo $product->get_price_html();?> 
+						<?php echo wp_kses_post( $product->get_price_html() );?> 
 					</div>
                 </div>
         </li>

@@ -370,15 +370,15 @@ class Product_Category_Grid extends Base{
          ?>
         <div class="ua-col ua-col-4 mb-20">
             <div class="ua-cat-box">
-                <a href="<?php echo  get_term_link( $cat->slug, 'product_cat' );?>">
+                <a href="<?php echo esc_url( get_term_link( $cat->slug, 'product_cat' ) ); ?>">
                 <div class="cat-image">
-                    <img src="<?php echo $img_url;?>">
+                    <img src="<?php echo esc_url( $img_url ); ?>">
                 </div>
 
-                <div class="cat-name <?php echo $reset;?>">
-                     <?php echo $cat->name;?> 
+                <div class="cat-name <?php echo esc_attr( $reset ); ?>">
+                     <?php echo esc_html( $cat->name );?> 
                      <?php if($settings['_ua_cat_count']=='yes'):?>
-                     (<?php echo $cat->count;?>)
+                     (<?php echo esc_html( $cat->count );?>)
                      <?php endif;?>
                 </div>
                 </a>

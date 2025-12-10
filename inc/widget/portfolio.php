@@ -135,7 +135,7 @@ class Portfolio extends Base {
 
 		?>
 		<article <?php post_class( $classes ); ?>>
-			<a class="elementor-post__thumbnail__link" href="<?php echo get_permalink(); ?>">
+			<a class="elementor-post__thumbnail__link" href="<?php echo esc_url( get_permalink() ); ?>">
 		<?php
 	}
 
@@ -149,7 +149,7 @@ class Portfolio extends Base {
 		$thumbnail_html = Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail_size' );
 		?>
 		<div class="elementor-portfolio-item__img elementor-post__thumbnail">
-			<?php echo $thumbnail_html; ?>
+			<?php echo wp_kses_post( $thumbnail_html ); ?>
 		</div>
 		<?php
 	}
@@ -173,9 +173,9 @@ class Portfolio extends Base {
 
 		$tag = Utils::validate_html_tag( $this->get_settings( 'title_tag' ) );
 		?>
-		<<?php echo $tag; ?> class="elementor-portfolio-item__title">
+		<<?php echo esc_attr( $tag ); ?> class="elementor-portfolio-item__title">
 		<?php the_title(); ?>
-		</<?php echo $tag; ?>>
+		</<?php echo esc_attr( $tag ); ?>>
 		<?php
 	}
 
@@ -691,9 +691,9 @@ class Portfolio extends Base {
 
 		?>
 		<ul class="elementor-portfolio__filters">
-			<li class="elementor-portfolio__filter elementor-active" data-filter="__all"><?php echo __( 'All', 'ultraaddons-elementor-lite' ); ?></li>
+			<li class="elementor-portfolio__filter elementor-active" data-filter="__all"><?php echo esc_html__( 'All', 'ultraaddons-elementor-lite' ); ?></li>
 			<?php foreach ( $terms as $term ) { ?>
-				<li class="elementor-portfolio__filter" data-filter="<?php echo esc_attr( $term->term_id ); ?>"><?php echo $term->name; ?></li>
+				<li class="elementor-portfolio__filter" data-filter="<?php echo esc_attr( $term->term_id ); ?>"><?php echo esc_html( $term->name ); ?></li>
 			<?php } ?>
 		</ul>
 		<?php

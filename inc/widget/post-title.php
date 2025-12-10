@@ -64,8 +64,8 @@ class Post_Title extends Base{
         //$alignment = !empty( $settings['heading_alignment'] ) ? $settings['heading_alignment'] : 'left';
         ?>
         <div class="post-title-wrapper" >
-            <h4 <?php echo $this->get_render_attribute_string( 'heading' ); ?>>
-                <?php echo get_the_title( $post_id ); ?>
+            <h4 <?php echo esc_attr( $this->get_render_attribute_string( 'heading' ) ); ?>>
+                <?php echo esc_html( get_the_title( $post_id ) ); ?>
             </h4>
         </div>    
         <?php

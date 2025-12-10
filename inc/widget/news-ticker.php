@@ -470,7 +470,7 @@ class News_Ticker extends Base{
 		$settings 				=	$this->get_settings_for_display();
 	?>
 	<div class="ua-news-ticker-wrap">
-	  <div class="bn-label"><?php echo $settings['ticker_label']; ?></div>
+	  <div class="bn-label"><?php echo esc_html( $settings['ticker_label'] ); ?></div>
 	  <div class="bn-news">
 		<?php
 		
@@ -480,9 +480,9 @@ class News_Ticker extends Base{
 					$target 	= $item['news_link']['is_external'] ? ' target="_blank"' : '';
 					$nofollow 	= $item['news_link']['nofollow'] ? ' rel="nofollow"' : '';
 					$url		= $item['news_link']['url'];
-					echo '<li class="news-tricker-element elementor-repeater-item-' . $item['_id'] . '">';
+					echo '<li class="news-tricker-element elementor-repeater-item-' . esc_attr( $item['_id'] ) . '">';
 					if( ! empty( $url ) ){
-						echo '<a href="' . $url. '"' . $target . $nofollow . '>'.$item['news_title'].'</a>';
+						echo '<a href="' . esc_url( $url ) . '"' . esc_attr( $target ) . esc_attr( $nofollow ) . '>'. esc_html( $item['news_title'] ) .'</a>';
 					}
 					
 					echo '</li>';

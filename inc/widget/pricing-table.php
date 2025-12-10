@@ -14,6 +14,13 @@ use Elementor\Repeater;
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Pricing_Table extends Base {
+
+	public $svg;
+	public $ua_image_upload;
+	public $ua_icon_choose;
+	public $ua_icon_select;
+	public $heading_tag;
+	
     
     use \UltraAddons\Traits\Button_Helper;
     
@@ -1817,7 +1824,7 @@ class Pricing_Table extends Base {
 		$currency_position = $this->get_settings( 'currency_position' );
 		$location_setting = ! empty( $currency_position ) ? $currency_position : 'before';
 		if ( ! empty( $symbol ) && $location === $location_setting ) {
-			echo '<span class="ua-price-table__currency ua-currency--' . $location . '">' . $symbol . '</span>';
+			echo '<span class="ua-price-table__currency ua-currency--' . esc_attr( $location ) . '">' . esc_html( $symbol ) . '</span>';
 		}
 	}
 
@@ -1864,11 +1871,11 @@ class Pricing_Table extends Base {
                     <?php } ?>
 
                     <?php if ( ! empty( $settings['heading'] ) ) : ?>
-                            <<?php echo $this->heading_tag . ' ' . $this->get_render_attribute_string( 'heading' ); ?>><?php echo $settings['heading'] . '</' . $this->heading_tag; ?>>
+                            <<?php echo esc_html( $this->heading_tag ) . ' ' . esc_attr( $this->get_render_attribute_string( 'heading' ) ); ?>><?php echo esc_html( $settings['heading'] ) . '</' . esc_html( $this->heading_tag ); ?>>
                     <?php endif; ?>
 
                     <?php if ( ! empty( $settings['sub_heading'] ) ) : ?>
-                            <span <?php echo $this->get_render_attribute_string( 'sub_heading' ); ?>><?php echo $settings['sub_heading']; ?></span>
+                            <span <?php echo esc_attr( $this->get_render_attribute_string( 'sub_heading' ) ); ?>><?php echo esc_html( $settings['sub_heading'] ); ?></span>
                     <?php endif; ?>
 
             </div>    
@@ -1942,30 +1949,30 @@ class Pricing_Table extends Base {
                        		<div class="ua-price-table__price">
 								<div class="ua-price-table__price_inner">
 									<?php if ( 'yes' === $settings['sale'] && ! empty( $settings['original_price'] ) ) : ?>
-											<span class="ua-price-table__original-price ua-typo-excluded"><?php echo $symbol . $settings['original_price']; ?></span>
+											<span class="ua-price-table__original-price ua-typo-excluded"><?php echo wp_kses_post( $symbol . $settings['original_price'] ); ?></span>
 									<?php endif; ?>
-									<?php $this->render_currency_symbol( $symbol, 'before' ); ?>
+									<?php esc_html( $this->render_currency_symbol( $symbol, 'before' ) ); ?>
 									<?php if ( '' !== $fraction ) : ?>
 										<?php if ( $currency_style && $currency_style == '2' ) : ?>
-											<span class="currency-inner-wrapper"><span class="ua-price-table__integer-part"><?php echo $intpart; ?></span><span class="ua-price-table__currency_sep"><?php echo $currency_format; ?></span><span class="ua-price-table__fractional-part"><?php echo $fraction; ?></span></span>
+											<span class="currency-inner-wrapper"><span class="ua-price-table__integer-part"><?php echo esc_html( $intpart ); ?></span><span class="ua-price-table__currency_sep"><?php echo esc_html( $currency_format ); ?></span><span class="ua-price-table__fractional-part"><?php echo esc_html( $fraction ); ?></span></span>
 										<?php else : ?>
-											<span class="ua-price-table__integer-part"><?php echo $intpart; ?></span><span class="ua-price-table__currency_sep"><?php echo $currency_format; ?></span><span class="ua-price-table__fractional-part"><?php echo $fraction; ?></span>
+											<span class="ua-price-table__integer-part"><?php echo esc_html( $intpart ); ?></span><span class="ua-price-table__currency_sep"><?php echo esc_html( $currency_format ); ?></span><span class="ua-price-table__fractional-part"><?php echo esc_html( $fraction ); ?></span>
 										<?php endif; ?>
 									<?php else : ?>
-											<span class="ua-price-table__integer-part"><?php echo $intpart; ?></span>
+											<span class="ua-price-table__integer-part"><?php echo esc_html( $intpart ); ?></span>
 
 									<?php endif; ?>
 
-									<?php $this->render_currency_symbol( $symbol, 'after' ); ?>
+									<?php esc_html( $this->render_currency_symbol( $symbol, 'after' ) ); ?>
 												
 									<?php if ( ! empty( $settings['period'] ) && 'beside' === $period_position ) : ?>
 										
-										<?php echo $period_element; ?>
+										<?php echo esc_html( $period_element ); ?>
 										
 									<?php endif; ?>
 									<?php if ( ! empty( $settings['period'] ) && 'below' === $period_position ) : ?>
 									<span class="ua-price-table__period-wrapper">
-										<?php echo $period_element; ?>
+										<?php echo esc_html( $period_element ); ?>
 									</span>
 								<?php endif; ?>
 
@@ -1990,7 +1997,7 @@ class Pricing_Table extends Base {
                                                 }
                                                 $is_new = ! isset( $item['item_icon'] ) && $migration_allowed;
                                                 ?>
-                                                <li class="elementor-repeater-item-<?php echo $item['_id']; ?>">
+                                                <li class="elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
                                                         <div class="ua-price-table__feature-inner">
                                                                 <?php if ( ! empty( $item['item_icon'] ) || ! empty( $item['selected_item_icon'] ) ) :
                                                                         if ( $is_new || $migrated ) :
@@ -2002,7 +2009,7 @@ class Pricing_Table extends Base {
                                                                 endif; ?>
                                                                 <?php if ( ! empty( $item['item_text'] ) ) : ?>
                                                                         <span <?php echo $this->get_render_attribute_string( $repeater_setting_key ); ?>>
-                                                                                <?php echo $item['item_text']; ?>
+                                                                                <?php echo esc_html( $item['item_text'] ); ?>
                                                                         </span>
                                                                         <?php
                                                                 else :
@@ -2020,7 +2027,7 @@ class Pricing_Table extends Base {
                         ?>
 					<?php if ( ! empty( $settings['footer_additional_info'] ) ) : ?>
                     <div class="ua-price-table-footer">
-                    	<div <?php echo $this->get_render_attribute_string( 'footer_additional_info' ); ?>><?php echo $settings['footer_additional_info']; ?></div>
+                    	<div <?php echo esc_attr( $this->get_render_attribute_string( 'footer_additional_info' ) ); ?>><?php echo esc_html( $settings['footer_additional_info'] ); ?></div>
 					</div>
 					 <?php endif; ?>
                 </div>
@@ -2035,7 +2042,7 @@ class Pricing_Table extends Base {
 
 			?>
 			<div <?php echo $this->get_render_attribute_string( 'ribbon-wrapper' ); ?>>
-				<div <?php echo $this->get_render_attribute_string( 'ribbon_title' ); ?>><?php echo $settings['ribbon_title']; ?></div>
+				<div <?php echo esc_attr( $this->get_render_attribute_string( 'ribbon_title' ) ); ?>><?php echo esc_html( $settings['ribbon_title'] ); ?></div>
 			</div>
 			<?php
 		endif;

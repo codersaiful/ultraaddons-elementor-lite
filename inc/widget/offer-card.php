@@ -79,7 +79,7 @@ class Offer_Card extends Base{
         $this->add_render_attribute( 'offer-image', 'class', 'ua-offer-img' );
         $this->add_render_attribute( 'offer-image', 'class', $image_position );
          ?>
-        <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
+        <div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
             <div class="ua-offer-inner">
                 <div class="ua-offer-texts">
                     <?php if( ! empty( $highlighted_title ) ) : ?>
@@ -91,11 +91,11 @@ class Offer_Card extends Base{
                     <?php endif; ?>
                     
                     <?php if( ! empty( $settings['link']['url'] ) ) : ?>
-                    <a <?php echo $this->get_render_attribute_string( 'button' ); ?>><?php echo esc_html( $button_text ); ?></a>
+                    <a <?php echo esc_attr( $this->get_render_attribute_string( 'button' ) ); ?>><?php echo esc_html( $button_text ); ?></a>
                     <?php endif; ?>
                 </div>
                 <?php if( $image ){ ?>
-                <div <?php echo $this->get_render_attribute_string( 'offer-image' ); ?>>
+                <div <?php echo esc_attr( $this->get_render_attribute_string( 'offer-image' ) ); ?>>
                     <img src="<?php echo esc_url( $image ); ?>" alt="">
                 </div>
                 <?php } ?>

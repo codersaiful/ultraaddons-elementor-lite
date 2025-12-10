@@ -137,14 +137,14 @@ class Hero_Banner extends Base{
                     <div class="ua_col_lg_7"> 
                         <div class="ua_banner_content ua_banner_content">
                             <?php if ( $has_title_text ) : ?> 
-                            <<?php echo $ua_title_size; ?> class="ua_banner_title">
+                            <<?php echo esc_attr( $ua_title_size ); ?> class="ua_banner_title">
                                 <?php echo esc_html( $this->get_banner_settings('ua_title') ); ?>
-                            </<?php echo $ua_title_size; ?>>
+                            </<?php echo esc_attr( $ua_title_size ); ?>>
                             <?php endif; ?>
                             <p class="ua_banner_desc"><?php echo wp_kses_post( $this->get_banner_settings('ua_description_text') ); ?></p>
                             <?php if($has_button_active): ?>
                                 <?php if($ua_button_text): ?>  
-                                    <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_3"><?php echo $this->get_banner_settings('ua_button_text'); ?></a>
+                                    <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_3"><?php echo esc_html( $this->get_banner_settings('ua_button_text') ); ?></a>
                                 <?php endif; ?>
                                 <?php if($ua_button2_text): ?>  
                                     <a href="<?php echo esc_url($this->get_banner_settings('_ua_banner2_link')['url']); ?>" class="ua_video_popup_area ua_cu_btn btn_4"> 
@@ -193,19 +193,19 @@ class Hero_Banner extends Base{
                     <div class="ua_col_lg_7"> 
                         <div class="ua_banner_content ua_banner_content_style_01">
                             <?php if ( $has_title_text ) : ?> 
-                                <<?php echo $ua_title_size; ?> class="ua_banner_title">
+                                <<?php echo esc_attr( $ua_title_size ); ?> class="ua_banner_title">
                                     <?php echo esc_html( $this->get_banner_settings('ua_title') ); ?>
-                                </<?php echo $ua_title_size; ?>>
+                                </<?php echo esc_attr( $ua_title_size ); ?>>
                             <?php endif; ?>
                             
                             <?php if($has_button_active): ?>
                                 
                                 <p class="ua_banner_desc"><?php echo wp_kses_post( $this->get_banner_settings('ua_description_text') ); ?></p>
                                 <?php if($ua_button_text): ?>
-                                <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_3"><?php echo $this->get_banner_settings('ua_button_text'); ?></a>
+                                <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_3"><?php echo wp_kses_post( $this->get_banner_settings('ua_button_text') ); ?></a>
                                 <?php endif; ?>
                                 <?php if($ua_button2_text): ?> 
-                                <a href="<?php echo esc_url($this->get_banner_settings('_ua_banner2_link')['url']); ?>" class="ua_video_popup_area ua_cu_btn btn_4"> 
+                                <a href="<?php echo esc_url($this->get_banner_settings('_ua_banner2_link')['url'] ?? ''); ?>" class="ua_video_popup_area ua_cu_btn btn_4"> 
                                 <?php Icons_Manager::render_icon( $this->get_banner_settings('_ua_banner2_icon') ); ?>
                                 <?php echo wp_kses_post($this->get_banner_settings('ua_button2_text')); ?>
                                 </a>
@@ -253,15 +253,15 @@ class Hero_Banner extends Base{
                 <div class="ua_col_lg_7"> 
                     <div class="ua_banner_content ua_banner_content_style_02">
                             <?php if ( $has_title_text ) : ?> 
-                                <<?php echo $ua_title_size; ?> class="ua_banner_title">
+                                <<?php echo esc_attr( $ua_title_size ); ?> class="ua_banner_title">
                                     <?php echo esc_html( $this->get_banner_settings('ua_title') ); ?>
-                                </<?php echo $ua_title_size; ?>>
+                                </<?php echo esc_attr( $ua_title_size ); ?>>
                             <?php endif; ?>
                             <p class="ua_banner_desc"><?php echo wp_kses_post( $this->get_banner_settings('ua_description_text') ); ?></p>
 
                             <?php if($has_button_active): ?>
                                 <?php if($ua_button_text): ?>
-                                <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_3"><?php echo $this->get_banner_settings('ua_button_text'); ?></a>
+                                <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_3"><?php echo wp_kses_post( $this->get_banner_settings('ua_button_text') ); ?></a>
                                 <?php endif; ?>
                                 <?php if($ua_button2_text): ?> 
                                 <a href="<?php echo esc_url($this->get_banner_settings('_ua_banner2_link')['url']); ?>" class="ua_video_popup_area ua_cu_btn btn_4"> 
@@ -311,15 +311,15 @@ class Hero_Banner extends Base{
                     <div class="ua_col_xl_7 ua_col_md_6"> 
                             <div class="ua_banner_content ua_banner_content_style_03">
                                 <?php if ( $has_title_text ) : ?> 
-                                    <<?php echo $ua_title_size; ?> class="ua_banner_title">
+                                    <<?php echo esc_attr( $ua_title_size ); ?> class="ua_banner_title">
                                         <?php echo esc_html( $this->get_banner_settings('ua_title') ); ?>
-                                    </<?php echo $ua_title_size; ?>>
+                                    </<?php echo esc_attr( $ua_title_size ); ?>>
                                 <?php endif; ?>
                                 <p class="ua_banner_desc"><?php echo wp_kses_post( $this->get_banner_settings('ua_description_text') ); ?></p>
                                 
                                 <?php if($has_button_active): ?>
                                     <?php if($ua_button_text): ?>
-                                    <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_3"><?php echo $this->get_banner_settings('ua_button_text'); ?></a>
+                                    <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_3"><?php echo wp_kses_post( $this->get_banner_settings('ua_button_text') ); ?></a>
                                     <?php endif; ?>
                                 <?php endif; ?>
                             </div>
@@ -363,14 +363,14 @@ class Hero_Banner extends Base{
                     <div class="ua_col_lg_6"> 
                         <div class="ua_banner_content ua_banner_content_style_04">
                         <?php if ( $has_title_text ) : ?>   
-                            <<?php echo $ua_title_size; ?> class="ua_banner_title">
+                            <<?php echo esc_attr( $ua_title_size ); ?> class="ua_banner_title">
                                     <?php echo esc_html( $this->get_banner_settings('ua_title') ); ?>
-                                </<?php echo $ua_title_size; ?>>
+                                </<?php echo esc_attr( $ua_title_size ); ?>>
                             <?php endif; ?>
                             <p class="ua_banner_desc"><?php echo wp_kses_post( $this->get_banner_settings('ua_description_text') ); ?></p>
                             <?php if($has_button_active): ?>
                                 <?php if($ua_button_text): ?>
-                                    <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_3"><?php echo $this->get_banner_settings('ua_button_text'); ?></a>
+                                    <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_3"><?php echo wp_kses_post( $this->get_banner_settings('ua_button_text') ); ?></a>
                                 <?php endif; ?>
                             <?php endif; ?>
                         </div>
@@ -420,15 +420,15 @@ class Hero_Banner extends Base{
                     <div class="ua_col_xl_7 ua_col_md_8"> 
                         <div class="ua_banner_content ua_banner_content_style_07">
                             <?php if ( $has_title_text ) : ?>
-                                <<?php echo $ua_title_size; ?> class="ua_banner_title">
+                                <<?php echo esc_attr( $ua_title_size ); ?> class="ua_banner_title">
                                     <?php echo esc_html( $this->get_banner_settings('ua_title') ); ?>
-                                </<?php echo $ua_title_size; ?>>
+                                </<?php echo esc_attr( $ua_title_size ); ?>>
                             <?php endif; ?>
                             <form action="#" class="ua_banner_subscribe_form">
                                 <input type="email" name="ua_email" id="ua_email1" placeholder="Type your e-mail">
                                 <i class="fas fa-envelope ua_mail_icon"></i>
                                 <?php if($ua_button_text): ?>
-                                    <button type="submit" class="ua_cu_btn"><?php echo $this->get_banner_settings('ua_button_text'); ?></button>
+                                    <button type="submit" class="ua_cu_btn"><?php echo wp_kses_post( $this->get_banner_settings('ua_button_text') ); ?></button>
                                 <?php endif; ?>
                             </form> 
                         </div>
@@ -462,14 +462,14 @@ class Hero_Banner extends Base{
                     <div class="ua_col_lg_6"> 
                         <div class="ua_banner_content ua_banner_content_style_06">
                             <?php if ( $has_title_text ) : ?>
-                                <<?php echo $ua_title_size; ?> class="ua_banner_title">
+                                <<?php echo esc_attr( $ua_title_size ); ?> class="ua_banner_title">
                                     <?php echo esc_html( $this->get_banner_settings('ua_title') ); ?>
-                                </<?php echo $ua_title_size; ?>>
+                                </<?php echo esc_attr( $ua_title_size ); ?>>
                             <?php endif; ?>
                             <p class="ua_banner_desc"><?php echo wp_kses_post( $this->get_banner_settings('ua_description_text') ); ?></p>
                             <?php if($has_button_active): ?>
                                 <?php if($ua_button_text): ?>
-                                <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_3"><?php echo $this->get_banner_settings('ua_button_text'); ?></a>
+                                <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_3"><?php echo wp_kses_post( $this->get_banner_settings('ua_button_text') ); ?></a>
                                 <?php endif; ?>
                                 <?php if($ua_button2_text): ?>
                                 <a href="<?php echo esc_url($this->get_banner_settings('_ua_banner2_link')['url']); ?>" class="ua_video_popup_area ua_cu_btn btn_1"> 
@@ -516,9 +516,9 @@ class Hero_Banner extends Base{
                     <div class="ua_col_lg_12"> 
                         <div class="ua_banner_content ua_banner_content_style_05">
                             <?php if ( $has_title_text ) : ?>
-                                <<?php echo $ua_title_size; ?> class="ua_banner_title">
+                                <<?php echo esc_attr( $ua_title_size ); ?> class="ua_banner_title">
                                     <?php echo esc_html( $this->get_banner_settings('ua_title') ); ?>
-                                </<?php echo $ua_title_size; ?>>
+                                </<?php echo esc_attr( $ua_title_size ); ?>>
                             <?php endif; ?>
                             <p class="ua_banner_desc"><?php echo wp_kses_post( $this->get_banner_settings('ua_description_text') ); ?></p>
                         </div>
@@ -558,14 +558,14 @@ class Hero_Banner extends Base{
                     <div class="ua_col_lg_12"> 
                         <div class="ua_banner_content ua_banner_content_style_09 ua_text_center">
                             <?php if ( $has_title_text ) : ?>
-                                <<?php echo $ua_title_size; ?> class="ua_banner_title">
+                                <<?php echo esc_attr( $ua_title_size ); ?> class="ua_banner_title">
                                     <?php echo wp_kses_post( $this->get_banner_settings('ua_title') ); ?>
-                                </<?php echo $ua_title_size; ?>>
+                                </<?php echo esc_attr( $ua_title_size ); ?>>
                             <?php endif; ?>
                             <p class="ua_banner_desc"><?php echo wp_kses_post( $this->get_banner_settings('ua_description_text') ); ?></p>
                             <?php if($has_button_active): ?>
                                 <?php if($ua_button_text): ?>
-                                    <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_2"><?php echo $this->get_banner_settings('ua_button_text'); ?></a>
+                                    <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_2"><?php echo wp_kses_post( $this->get_banner_settings('ua_button_text') ); ?></a>
                                 <?php endif;  ?>
                             <?php endif;  ?>
                         </div>
@@ -598,14 +598,14 @@ class Hero_Banner extends Base{
                     <div class="ua_col_lg_6"> 
                         <div class="ua_banner_content ua_banner_content_style_10">
                         <?php if ( $has_title_text ) : ?>
-                                <<?php echo $ua_title_size; ?> class="ua_banner_title">
+                                <<?php echo esc_attr( $ua_title_size ); ?> class="ua_banner_title">
                                     <?php echo wp_kses_post( $this->get_banner_settings('ua_title') ); ?>
-                                </<?php echo $ua_title_size; ?>>
+                                </<?php echo esc_attr( $ua_title_size ); ?>>
                             <?php endif; ?>
                             <p class="ua_banner_desc"><?php echo wp_kses_post( $this->get_banner_settings('ua_description_text') ); ?></p>
                             <?php if($has_button_active): ?>
                                 <?php if($ua_button_text): ?>
-                                    <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_3"><?php echo $this->get_banner_settings('ua_button_text'); ?></a>
+                                    <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_3"><?php echo wp_kses_post( $this->get_banner_settings('ua_button_text') ); ?></a>
                                 <?php endif;  ?>
                             <?php endif;  ?>
                         </div>

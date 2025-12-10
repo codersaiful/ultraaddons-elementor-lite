@@ -165,24 +165,24 @@ class Recent_Blog extends Base{
                 <div class="recent-blog-meta">
                     <span class="recent-blog-author"><i class="far fa-user"></i><?php echo esc_html( get_the_author() ); ?></span>
                     
-                    <span class="published-date <?php echo $this->date ? 'hide-on-mobile' : '' ; ?>"><i class="far fa-calendar-alt"></i><?php echo esc_html( get_the_date() ); ?></span>
+                    <span class="published-date <?php echo esc_attr( $this->date ? 'hide-on-mobile' : '' ); ?>"><i class="far fa-calendar-alt"></i><?php echo esc_html( get_the_date() ); ?></span>
                     
                 </div>
                 <?php } ?>
                 
                 <?php if( $this->title ){ ?>
-                <a class="ua-recent-blog-permalink ua-recent-blog-permalink-title" href="<?php the_permalink(); ?>">
-                    <h2 class="ua-recent-blog-title"><?php the_title(); ?></h2>
+                <a class="ua-recent-blog-permalink ua-recent-blog-permalink-title" href="<?php echo esc_url( get_permalink() ); ?>">
+                    <h2 class="ua-recent-blog-title"><?php echo esc_html( get_the_title() ); ?></h2>
                 </a>
                 <?php 
 //                var_dump($this->excerpt_limit);
                 }
                 if( $this->excerpt && $this->excerpt_limit ){ ?>
-                <div class="para ua-rb-ecerpt"><?php echo $this->excerpts( $this->excerpt_limit['size'] ); ?></div>
+                <div class="para ua-rb-ecerpt"><?php echo wp_kses_post( $this->excerpts( $this->excerpt_limit['size'] ) ); ?></div>
                 <?php 
                 }
                 if( ! empty( $this->read_more ) ){ ?>
-                <a href="<?php the_permalink(); ?>" class="read-more"><?php echo esc_html( $this->read_more ); ?> <i class="fas fa-angle-double-right"></i></a>
+                <a href="<?php echo esc_url( get_permalink() ); ?>" class="read-more"><?php echo esc_html( $this->read_more ); ?> <i class="fas fa-angle-double-right"></i></a>
             <?php } ?>
             </div>
         </div>    
@@ -253,7 +253,7 @@ class Recent_Blog extends Base{
 
         
 
-        <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
+        <div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
             <?php
             //SARTING: recent blog right part starting, and when only modern layout
             if( $this->layout == 'modern' ){

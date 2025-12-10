@@ -954,22 +954,23 @@ class Contact_Form7 extends Base{
                         ['class' => 'ua-form cf7-forms']
                 );
                 ?>
-        <div <?php echo $this->get_render_attribute_string( 'ua_form_class' );?>>
+        <div <?php echo esc_attr( $this->get_render_attribute_string( 'ua_form_class' ) ); ?>>
         <?php 
                 if('yes' === $settings['show_title']){
-                    echo '<' . $settings['title_tag'] . ' class="ua-cf7-title">' . $settings['custom_title']. 
-                            '</' . $settings['title_tag'] . '>';
+                    echo '<' . esc_html( $settings['title_tag'] ) . ' class="ua-cf7-title">' . esc_html( $settings['custom_title'] ). 
+                            '</' . esc_html( $settings['title_tag'] ) . '>';
                 }
             ?>
             <p class="ua-cf7-description">
             <?php 
                 if('yes' === $settings['show_desc']){
-                        echo $settings['form_description'];
+                        echo esc_html( $settings['form_description'] );
                 }
             ?>
             </p>
                 <?php
                 if ( ! empty( $settings['form_id'] ) ):
+                        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                         echo ultraaddons_do_shortcode( 'contact-form-7', [
                             'id' => $settings['form_id'],
                             'html_class' => 'ultraaddons-cf7-form ' . sanitize_html_class( $settings['html_class'] . $settings['_cf7_form_style'] ),

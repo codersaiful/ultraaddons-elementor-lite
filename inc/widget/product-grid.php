@@ -1047,42 +1047,42 @@ class Product_Grid extends Base{
 				$image_url 	= wp_get_attachment_image_url( $image_id, 'full' );
 				$description = $loop->post->post_excerpt;
     ?>
-    <div class="ua-col-<?php echo $col;?>">
-        <div class="ua-product-card <?php echo $flex_row; ?>">
+    <div class="ua-col-<?php echo esc_attr( $col );?>">
+        <div class="ua-product-card <?php echo esc_attr( $flex_row ); ?>">
             <?php if ( $product->is_on_sale() ) : ?>
             <div class="ua-badge">
                 <?php
-                echo apply_filters( 'woocommerce_sale_flash', '<span class="ua-onsale">' 
-                . esc_html__( 'Sale!', 'ultraaddons-elementor-lite' ) . '</span>', $product );
+                echo wp_kses_post( apply_filters( 'woocommerce_sale_flash', '<span class="ua-onsale">' 
+                . esc_html__( 'Sale!', 'ultraaddons-elementor-lite' ) . '</span>', $product ) );
                 ?>
             </div>
             <?php endif; ?>
             
-            <div <?php echo $this->get_render_attribute_string( 'thumb_class' );?>>
-                <?php echo woocommerce_get_product_thumbnail('woocommerce_full_size');?>
+            <div <?php echo esc_attr( $this->get_render_attribute_string( 'thumb_class' ) );?>>
+                <?php echo wp_kses_post( woocommerce_get_product_thumbnail('woocommerce_full_size') );?>
             </div>
-            <div <?php echo $this->get_render_attribute_string( 'ua_product_details' );?>>
+            <div <?php echo esc_attr( $this->get_render_attribute_string( 'ua_product_details' ) );?>>
 				<div class="product-text-wrap">
 					<span class="product-catagory">
 						<?php 
 						foreach( wp_get_post_terms( get_the_id(), 'product_cat' ) as $term ){
 						if( $term ){
-								echo $term->name; // product category name
+								echo esc_html( $term->name ); // product category name
 							}
 						}
 						?>
 						</span>
-						<a href="<?php echo get_the_permalink(); ?>">
+						<a href="<?php echo esc_url( get_the_permalink() ); ?>">
 						<?php
-							echo '<' . $settings['_ua_front_title_tag'] . ' class="ua-product-title">' 
-								. $loop->post->post_title . 
-								'</' . $settings['_ua_front_title_tag'] . '>';
+							echo '<' . esc_html( $settings['_ua_front_title_tag'] ) . ' class="ua-product-title">' 
+								. esc_html( $loop->post->post_title ) . 
+								'</' . esc_html( $settings['_ua_front_title_tag'] ) . '>';
 							?>
 						</a>
-					<p> <?php echo $this->word_shortener($description, $settings['_ua_text_truncate']);?></p>
+					<p> <?php echo esc_html( $this->word_shortener($description, $settings['_ua_text_truncate']) );?></p>
 				</div>
                 <div class="ua-product-bottom-details">
-                    <div class="ua-product-price"><?php echo $product->get_price_html();?> </div>
+                    <div class="ua-product-price"><?php echo wp_kses_post( $product->get_price_html() );?> </div>
                     <div class="ua-product-links">
                         <a href="?add-to-cart=<?php echo esc_attr($id); ?>"  class="add-card button add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo esc_attr($id); ?>"  aria-label="Add '<?php echo get_the_title(); ?>' to your cart" rel="nofollow">
                             <i class="uicon uicon-cart"></i>

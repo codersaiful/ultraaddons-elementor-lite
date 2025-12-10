@@ -74,10 +74,10 @@ class Search_Box extends Base{
         
         
         ?>
-        <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
+        <div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
             
-            <ul <?php echo $this->get_render_attribute_string( 'cart' ); ?>>
-			<li <?php echo $this->get_render_attribute_string( 'cart_link' ); ?>>
+            <ul <?php echo esc_attr( $this->get_render_attribute_string( 'cart' ) ); ?>>
+			<li <?php echo esc_attr( $this->get_render_attribute_string( 'cart_link' ) ); ?>>
 				<?php ultraaddons_woocommerce_cart_link(); ?>
 			</li>
                         <li class="minicart-content-wrapper">

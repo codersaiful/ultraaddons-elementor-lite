@@ -1191,7 +1191,7 @@ $this->end_controls_section();
 		</script>';
 	}
 	?>
-<div <?php echo $this->get_render_attribute_string( 'slider_options' ); ?>>
+<div <?php echo esc_attr( $this->get_render_attribute_string( 'slider_options' ) ); ?>>
     <ul class="slider-container">
         <?php
         $args = array(
@@ -1245,31 +1245,31 @@ $this->end_controls_section();
 				$number[]	=$count;
             ?>
         <li>
-			<div class="ua-product-flip flip-<?php echo $settings['_ua_product_flip_animation_type']; ?>">
+			<div class="ua-product-flip flip-<?php echo esc_attr( $settings['_ua_product_flip_animation_type'] ); ?>">
 				<div class="front" style="background:url(<?php echo esc_url($image_url);?>)">
 					<?php if ( $product->is_on_sale() ) : 
-					echo apply_filters( 'woocommerce_sale_flash', '<span class="ua-onsale">' . esc_html__( 'Sale!', 'ultraaddons-elementor-lite' ) . '</span>', $product );
+					echo wp_kses_post( apply_filters( 'woocommerce_sale_flash', '<span class="ua-onsale">' . esc_html__( 'Sale!', 'ultraaddons-elementor-lite' ) . '</span>', $product ) );
 					endif;
 					?>
 					<a href="<?php echo get_the_permalink(); ?>">
 						<?php
-						echo '<' . $settings['_ua_front_title_tag'] . ' class="front-title">' . $loop->post->post_title . 
-								'</' . $settings['_ua_front_title_tag'] . '>';
+						echo '<' . esc_attr( $settings['_ua_front_title_tag'] ) . ' class="front-title">' . esc_html( $loop->post->post_title ) . 
+								'</' . esc_attr( $settings['_ua_front_title_tag'] ) . '>';
 						?>
 					</a>
 					<span class="ua-product-price">
-						<?php echo $product->get_price_html();?> 
+						<?php echo wp_kses_post( $product->get_price_html() );?> 
 					</span>
 				</div>
 				<div class="back" <?php echo $back_view; ?>>
 					<a href="<?php echo get_the_permalink(); ?>">
 						<?php
-						echo '<' . $settings['_ua_back_title_tag'] . ' class="back-title">' . $loop->post->post_title . 
-								'</' . $settings['_ua_back_title_tag'] . '>';
+						echo '<' . esc_attr( $settings['_ua_back_title_tag'] ) . ' class="back-title">' . esc_html( $loop->post->post_title ) . 
+								'</' . esc_attr( $settings['_ua_back_title_tag'] ) . '>';
 						?>
 					</a>
 					<div class="ua-desc">
-						<?php echo $this->word_shortener($description, $settings['_ua_text_truncate']);?>
+						<?php echo esc_html( $this->word_shortener($description, $settings['_ua_text_truncate']));?>
 					</div>
 					<div class="ua-cart">
 						<?php 

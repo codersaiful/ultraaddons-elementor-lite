@@ -1208,8 +1208,8 @@ class Product_Tabs extends Base{
 								foreach ($categories as $cat):
 								$id = $cat->term_id;
 								?>
-								<li class="list" data-cat="<?php echo  $cat->slug;?>" data-filter=".<?php echo  $cat->slug;?>">
-									<a href="<?php echo esc_url( get_term_link( $id, 'product_cat' ) );?>"> <?php echo  $cat->name;?> (<?php echo $cat->count; ?>)</a>
+								<li class="list" data-cat="<?php echo esc_attr( $cat->slug );?>" data-filter=".<?php echo  esc_attr( $cat->slug );?>">
+									<a href="<?php echo esc_url( get_term_link( $id, 'product_cat' ) );?>"> <?php echo  esc_html( $cat->name );?> (<?php echo esc_html( $cat->count ); ?>)</a>
 								</li>  
 							<?php
 								endforeach;
@@ -1225,9 +1225,9 @@ class Product_Tabs extends Base{
 						//If Selected manual from frontend
 						$selected_cat = $settings['cat_ids'];
 						foreach($selected_cat as $selected_cats):?>
-							<li class="list"  data-filter=".<?php echo strtolower(get_the_category_by_ID( $selected_cats ));?>">
+							<li class="list"  data-filter=".<?php echo esc_attr( strtolower( get_the_category_by_ID( $selected_cats ) ) );?>">
 							<a href="#">
-								<?php echo get_the_category_by_ID( $selected_cats );?>
+								<?php echo esc_html( get_the_category_by_ID( $selected_cats ) );?>
 							</a>
 							</li> 
 						<?php
@@ -1290,18 +1290,18 @@ class Product_Tabs extends Base{
 					}
 				}
 		?>
-		<div class="ua-col-<?php echo $col;?> items <?php echo implode(" ", $data);?>">
+		<div class="ua-col-<?php echo esc_attr( $col );?> items <?php echo esc_attr( implode(" ", $data) );?>">
 		<div class="ua-cp-product">
           <div class="ua-cp-img">
 		  <?php if ( $product->is_on_sale() ) : ?>
 				<div class="ua-badge">
 					<?php
-					echo apply_filters( 'woocommerce_sale_flash', '<span class="ua-onsale">' 
-					. esc_html__( 'Sale!', 'ultraaddons-elementor-lite' ) . '</span>', $product );
+					echo wp_kses_post( apply_filters( 'woocommerce_sale_flash', '<span class="ua-onsale">' 
+					. esc_html__( 'Sale!', 'ultraaddons-elementor-lite' ) . '</span>', $product ) );
 					?>
 				</div>
 				<?php endif; ?>
-				<?php echo woocommerce_get_product_thumbnail('woocommerce_full_size');?>
+				<?php echo wp_kses_post( woocommerce_get_product_thumbnail('woocommerce_full_size') );?>
 			</div>
           <div class="ua-cp-text">
             <div class="ua-category">
@@ -1312,26 +1312,26 @@ class Product_Tabs extends Base{
 						 $cat= $term->name; // product category name
 						}
 					}
-					echo $cat;
+					echo esc_html( $cat );
 					?>
 				</span>
             </div>
             <div class="title-product">
-			<a href="<?php echo get_the_permalink(); ?>">
+			<a href="<?php echo esc_url( get_the_permalink() ); ?>">
 			<?php
-			echo '<' . $settings['_ua_front_title_tag'] . ' class="ua-product-title">' 
-				. $loop->post->post_title . 
-				'</' . $settings['_ua_front_title_tag'] . '>';
+			echo '<' . esc_html( $settings['_ua_front_title_tag'] ) . ' class="ua-product-title">' 
+				. esc_html( $loop->post->post_title ) . 
+				'</' . esc_html( $settings['_ua_front_title_tag'] ) . '>';
 			?>
 			</a>
             </div>
             <div class="description-prod">
-              <p><?php echo $this->word_shortener($description, $settings['_ua_text_truncate']);?></p>
+              <p><?php echo esc_html( $this->word_shortener($description, $settings['_ua_text_truncate']) );?></p>
             </div>
             <div class="ua-card-footer">
-              <div class="ua-left"><span class="price"><?php echo $product->get_price_html();?> </span></div>
+              <div class="ua-left"><span class="price"><?php echo wp_kses_post( $product->get_price_html() );?> </span></div>
               <div class="ua-right">	
-					<a href="?add-to-cart=<?php echo esc_attr($id); ?>"  class="buy-btn add-card button add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo esc_attr($id); ?>"  aria-label="Add '<?php echo get_the_title(); ?>' to your cart" rel="nofollow">
+					<a href="?add-to-cart=<?php echo esc_attr($id); ?>"  class="buy-btn add-card button add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo esc_attr($id); ?>"  aria-label="Add '<?php echo esc_attr( get_the_title() ); ?>' to your cart" rel="nofollow">
 						<i class="uicon uicon-cart"></i>
 						<?php
 						if ( 'yes'!=$settings['_ua_card_direction'] ):

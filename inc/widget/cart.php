@@ -111,19 +111,19 @@ class Cart extends Base{
                 $this->add_render_attribute( 'icon-wrapper', 'class', 'icon-svg' );
         }
         ?>
-        <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
+        <div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
             
-            <ul <?php echo $this->get_render_attribute_string( 'cart' ); ?>>
-			<li <?php echo $this->get_render_attribute_string( 'cart_text' ); ?>>
-				<?php echo $cart_text; ?>
+            <ul <?php echo esc_attr( $this->get_render_attribute_string( 'cart' ) ); ?>>
+			<li <?php echo esc_attr( $this->get_render_attribute_string( 'cart_text' ) ); ?>>
+				<?php echo esc_html( $cart_text ); ?>
 			</li>
-			<li <?php echo $this->get_render_attribute_string( 'cart_link' ); ?>>
+			<li <?php echo esc_attr( $this->get_render_attribute_string( 'cart_link' ) ); ?>>
 				<?php ultraaddons_woocommerce_cart_link(); ?>
-                            <div <?php echo $this->get_render_attribute_string( 'icon-wrapper' ); ?>>
+                            <div <?php echo esc_attr( $this->get_render_attribute_string( 'icon-wrapper' ) ); ?>>
                                 <?php if( $svg ){ ?>
                                 <img class="ua-cart-icon-image" src="<?php echo esc_url( $svg ); ?>">
                                 <?php }else{ ?>
-                                <i <?php echo $this->get_render_attribute_string( 'i' ); ?>></i>
+                                <i <?php echo esc_attr( $this->get_render_attribute_string( 'i' ) ); ?>></i>
                                 <?php } ?>
                             </div>
 			</li>

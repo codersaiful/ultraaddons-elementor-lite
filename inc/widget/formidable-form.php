@@ -777,7 +777,7 @@ class Formidable_Form extends Base{
 			]
 		);
         ?>
-        <div <?php echo $this->get_render_attribute_string( 'ua_form_class' );?>>
+        <div <?php echo esc_attr( $this->get_render_attribute_string( 'ua_form_class' ) );?>>
                 <?php
                 echo do_shortcode(
                         '[formidable 

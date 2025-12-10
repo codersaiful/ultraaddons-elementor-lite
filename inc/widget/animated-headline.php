@@ -67,7 +67,7 @@ class Animated_Headline extends Base{
         if ( ! empty( $settings['link']['url'] ) ) {
 			$this->add_link_attributes( 'url', $settings['link'] );
 
-			echo '<a ' . $this->get_render_attribute_string( 'url' ) . '>';
+			echo '<a ' . esc_attr( $this->get_render_attribute_string( 'url' ) ) . '>';
 		}
         ?>
 

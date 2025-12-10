@@ -376,7 +376,7 @@ class Breadcrumb extends Base{
 
             } else if( !empty( $cat_id ) ) {
 
-                echo '<li class="item item-cat"><a href="'. $cat_link .'">'. $cat_name .'</a></li>' . $sep;
+                echo '<li class="item item-cat"><a href="'. esc_attr( $cat_link ) .'">'. esc_html( $cat_name ) .'</a></li>' . esc_html( $sep );
                 echo '<li class="item-current item">'. esc_html( get_the_title() ) .'</li>';
 
             } else {
@@ -432,7 +432,7 @@ class Breadcrumb extends Base{
             $get_term_name  = $terms[0]->name;
 
             // Display the tag name
-            echo '<li class="item-current item">'. $get_term_name .'</li>';
+            echo '<li class="item-current item">'. esc_html( $get_term_name ) .'</li>';
 
             } else if( is_day() ) {
 
@@ -498,7 +498,7 @@ class Breadcrumb extends Base{
         }
 
         // Display parent pages
-        echo $parents;
+        echo wp_kses_data( $parents );
 
         // Current page
         echo '<li class="item-current item">'. esc_html( get_the_title() ) .'</li>';

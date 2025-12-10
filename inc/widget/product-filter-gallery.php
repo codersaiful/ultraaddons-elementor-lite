@@ -1133,7 +1133,7 @@ class Product_Filter_Gallery extends Base{
 			<?php
 			if(empty($settings['cat_ids'])):?>
 				<ul class="pf-filter-btn">
-					<li class="list active" data-filter="all"><?php echo $settings['_ua_all_btn_txt'];?></li>
+					<li class="list active" data-filter="all"><?php echo esc_html( $settings['_ua_all_btn_txt'] );?></li>
 					<?php
 					$args = array(
 						'orderby'       => 'ID',
@@ -1145,8 +1145,8 @@ class Product_Filter_Gallery extends Base{
 					$categories = get_categories( $args );
 					if(is_array($categories) && count($categories) > 0):
 						foreach ($categories as $cat):?>
-						<li class="list" data-filter="<?php echo  $cat->name;?>">
-							<?php echo  $cat->name;?>
+						<li class="list" data-filter="<?php echo  esc_attr( $cat->name );?>">
+							<?php echo  esc_html( $cat->name );?>
 						</li>  
 					<?php
 						endforeach;
@@ -1157,13 +1157,13 @@ class Product_Filter_Gallery extends Base{
 			else:
 			?>
 			<ul class="pf-filter-btn">
-				<li class="list active" data-filter="all"><?php echo $settings['_ua_all_btn_txt'];?></li>
+				<li class="list active" data-filter="all"><?php echo esc_html( $settings['_ua_all_btn_txt'] );?></li>
 				<?php
 				//If Selected manual from frontend
 				$selected_cat = $settings['cat_ids'];
 				foreach($selected_cat as $selected_cats):?>
-					<li class="list" data-filter="<?php echo get_the_category_by_ID( $selected_cats );?>">
-						<?php echo get_the_category_by_ID( $selected_cats );?>
+					<li class="list" data-filter="<?php echo esc_attr( get_the_category_by_ID( $selected_cats ) );?>">
+						<?php echo esc_html( get_the_category_by_ID( $selected_cats ) );?>
 					</li> 
 				<?php
 				endforeach;
@@ -1229,44 +1229,44 @@ class Product_Filter_Gallery extends Base{
 					}
 				}
 				?>
-				<div class="ua-col-<?php echo $col;?> itemsbox <?php echo $cat;?>">
-					<div class="ua-product-card <?php echo $flex_row; ?>">
+				<div class="ua-col-<?php echo esc_attr( $col );?> itemsbox <?php echo esc_attr( $cat );?>">
+					<div class="ua-product-card <?php echo esc_attr( $flex_row ); ?>">
 						<?php if ( $product->is_on_sale() ) : ?>
 						<div class="ua-badge">
 							<?php
-							echo apply_filters( 'woocommerce_sale_flash', '<span class="ua-onsale">' 
-							. esc_html__( 'Sale!', 'ultraaddons-elementor-lite' ) . '</span>', $product );
+							echo wp_kses_post( apply_filters( 'woocommerce_sale_flash', '<span class="ua-onsale">' 
+							. esc_html__( 'Sale!', 'ultraaddons-elementor-lite' ) . '</span>', $product ) );
 							?>
 						</div>
 						<?php endif; ?>
 						
-						<div <?php echo $this->get_render_attribute_string( 'thumb_class' );?>>
-							<?php echo woocommerce_get_product_thumbnail('woocommerce_full_size');?>
+						<div <?php echo esc_attr( $this->get_render_attribute_string( 'thumb_class' ) );?>>
+							<?php echo wp_kses_post( woocommerce_get_product_thumbnail('woocommerce_full_size') );?>
 						</div>
-						<div <?php echo $this->get_render_attribute_string( 'ua_product_details' );?>>
+						<div <?php echo esc_attr( $this->get_render_attribute_string( 'ua_product_details' ) );?>>
 							<div class="product-text-wrap">
 								<span class="product-catagory">
 									<?php 
 									foreach( wp_get_post_terms( get_the_id(), 'product_cat' ) as $term ){
 									if( $term ){
-											echo $term->name; // product category name
+											echo esc_html( $term->name ); // product category name
 										}
 									}
 									?>
 									</span>
-									<a href="<?php echo get_the_permalink(); ?>">
+									<a href="<?php echo esc_url( get_the_permalink() ); ?>">
 									<?php
 										echo '<' . $settings['_ua_front_title_tag'] . ' class="ua-product-title">' 
-											. $loop->post->post_title . 
+											. esc_html( $loop->post->post_title ) . 
 											'</' . $settings['_ua_front_title_tag'] . '>';
 										?>
 									</a>
-								<p> <?php echo $this->word_shortener($description, $settings['_ua_text_truncate']);?></p>
+								<p> <?php echo esc_html( $this->word_shortener($description, $settings['_ua_text_truncate']) );?></p>
 							</div>
 							<div class="ua-product-bottom-details">
-								<div class="ua-product-price"><?php echo $product->get_price_html();?> </div>
+								<div class="ua-product-price"><?php echo wp_kses_post( $product->get_price_html() );?> </div>
 								<div class="ua-product-links">
-									<a href="?add-to-cart=<?php echo esc_attr($id); ?>"  class="add-card button add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo esc_attr($id); ?>"  aria-label="Add '<?php echo get_the_title(); ?>' to your cart" rel="nofollow">
+									<a href="?add-to-cart=<?php echo esc_attr($id); ?>"  class="add-card button add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo esc_attr($id); ?>"  aria-label="Add '<?php echo esc_attr( get_the_title() ); ?>' to your cart" rel="nofollow">
 										<i class="uicon uicon-cart"></i>
 										<?php
 										if ( 'yes'!=$settings['_ua_card_direction'] ):
@@ -1293,14 +1293,14 @@ class Product_Filter_Gallery extends Base{
 
         if ($total_pages > 1){
             $current_page = max(1, get_query_var('paged'));
-            echo paginate_links(array(
+            echo wp_kses_post( paginate_links(array(
                 'base' => get_pagenum_link(1) . '%_%',
                 'format' => '/page/%#%',
                 'current' => $current_page,
                 'total' => $total_pages,
                 'prev_text'    => __( '« Prev', 'ultraaddons-elementor-lite' ),
                 'next_text'    => __( 'Next »', 'ultraaddons-elementor-lite' ),
-            ));
+            )) );
         }
         ?>
     </nav> 

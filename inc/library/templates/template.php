@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || exit;
 
 <script type="text/template" id="tmpl-UltraTempLibrary__header-back">
 	<i class="eicon-" aria-hidden="true"></i>
-	<span><?php echo __( 'Back to Library', 'ultraaddons-elementor-lite' ); ?></span>
+	<span><?php echo esc_html__( 'Back to Library', 'ultraaddons-elementor-lite' ); ?></span>
 </script>
 
 <script type="text/template" id="tmpl-UltraTempLibrary__header-menu">
@@ -152,12 +152,12 @@ defined( 'ABSPATH' ) || exit;
 
 <script type="text/template" id="tmpl-UltraTempLibrary__empty">
 	<div class="elementor-template-library-blank-icon">
-		<img src="<?php echo ELEMENTOR_ASSETS_URL . 'images/no-search-results.svg'; ?>" class="elementor-template-library-no-results" />
+		<img src="<?php echo esc_url( ELEMENTOR_ASSETS_URL ) . 'images/no-search-results.svg'; ?>" class="elementor-template-library-no-results" />
 	</div>
 	<div class="elementor-template-library-blank-title"></div>
 	<div class="elementor-template-library-blank-message"></div>
 	<div class="elementor-template-library-blank-footer">
 		<?php esc_html_e( 'Learn more about UltraAddons Template Library.', 'ultraaddons-elementor-lite' ); ?>
-		<a class="elementor-template-library-blank-footer-link" href="https://ultraaddons.com/templates/" target="_blank"><?php echo __( 'Click here', 'ultraaddons-elementor-lite' ); ?></a>
+		<a class="elementor-template-library-blank-footer-link" href="https://ultraaddons.com/templates/" target="_blank"><?php echo esc_html__( 'Click here', 'ultraaddons-elementor-lite' ); ?></a>
 	</div>
 </script>

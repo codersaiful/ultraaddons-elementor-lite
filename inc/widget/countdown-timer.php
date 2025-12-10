@@ -85,24 +85,24 @@ class Countdown_Timer extends Base{
 
         $separator = isset( $settings['show_separator'] ) && $settings['show_separator'] == 'yes' ? '<div class="sep"><span>:</span></div>' : '';
         ?>
-    <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
+    <div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
         
         <div class="ua-coun-down-timer <?php echo esc_attr( $unique_class ); ?>">
             <div class="single-date">
                 <span class="timer_int days">00 </span>
-                <span class="timer_label"><?php echo $days; ?></span>
+                <span class="timer_label"><?php echo esc_html( $days ); ?></span>
             </div>
-            <?php echo $separator; ?>
+            <?php echo esc_html( $separator ); ?>
             <div class="single-date">
                 <span class="timer_int hrs">00 </span>
                 <span class="timer_label"><?php echo esc_html( $hours ); ?></span>
             </div>
-            <?php echo $separator; ?>
+            <?php echo esc_html( $separator ); ?>
             <div class="single-date">
                 <span class="timer_int mnts">00 </span>
                 <span class="timer_label"><?php echo esc_html( $minutes ); ?></span>
             </div>
-            <?php echo $separator; ?>
+            <?php echo esc_html( $separator ); ?>
             <div class="single-date">
                 <span class="timer_int secs">00 </span>
                 <span class="timer_label"><?php echo esc_html( $seconds ); ?></span>

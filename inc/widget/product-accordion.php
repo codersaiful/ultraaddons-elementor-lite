@@ -1159,8 +1159,8 @@ class Product_Accordion extends Base{
                         $bg_link = $item['ua_img_accordion_bg_empty_id']['url'];
                     }
                     ?>
-                    <input type="radio" name="ua_id_<?php echo esc_attr($this->get_id()); ?>" id="ua_id_<?php echo esc_attr($this->get_id()) .'_'. $key; ?>" class="ultraaddons-single-product-accordion--input" <?php echo esc_attr( $item['ua_img_accordion_active'] == 'yes' ? 'checked' : '' ); ?> hidden>
-                    <label for="ua_id_<?php echo esc_attr($this->get_id()) .'_'. $key; ?>" class="ultraaddons-single-product-accordion ua-product-accordion-item" style="background-image: url(<?php echo esc_url( $bg_link ); ?>)">
+                    <input type="radio" name="ua_id_<?php echo esc_attr($this->get_id()); ?>" id="ua_id_<?php echo esc_attr($this->get_id() .'_'. $key); ?>" class="ultraaddons-single-product-accordion--input" <?php echo esc_attr( $item['ua_img_accordion_active'] == 'yes' ? 'checked' : '' ); ?> hidden>
+                    <label for="ua_id_<?php echo esc_attr($this->get_id() .'_'. $key); ?>" class="ultraaddons-single-product-accordion ua-product-accordion-item" style="background-image: url(<?php echo esc_url( $bg_link ); ?>)">
                         <span class="ultraaddons-accordion-content">
                         <?php if( $item['ua_img_accordion_enable_project_link'] == 'yes') {
 
@@ -1204,7 +1204,7 @@ class Product_Accordion extends Base{
                                         $this->add_link_attributes( 'button-2' . $key, $item['ua_img_accordion_project_link'] );
                                     }
                                 ?>
-                                    <a <?php echo $this->get_render_attribute_string( 'button-2' . $key ); ?> class="icon-outline circle">
+                                    <a <?php echo esc_attr( $this->get_render_attribute_string( 'button-2' . $key ) ); ?> class="icon-outline circle">
                                     <?php
                                         $migrated = isset( $item['__fa4_migrated']['ua_img_accordion_project_link_icons'] );
                                         // Check if its a new widget without previously selected icon using the old Icon control
@@ -1294,7 +1294,7 @@ class Product_Accordion extends Base{
                                 }
                             ?>
                                 <span class="ultraaddons-btn-wrapper">
-                                    <a class="ua-product-accordion--btn ultraaddons-btn whitespace--normal" <?php echo $this->get_render_attribute_string( 'button-' . $key ); ?>>
+                                    <a class="ua-product-accordion--btn ultraaddons-btn whitespace--normal" <?php echo esc_attr( $this->get_render_attribute_string( 'button-' . $key ) ); ?>>
                                         <?php if($show_product){
                                             echo esc_html($item['ua_img_accordion_button_label_for_product']);
                                         }else{

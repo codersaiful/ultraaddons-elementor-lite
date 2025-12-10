@@ -52,12 +52,12 @@ class Info_Boards extends Base {
                 
                 $repeater = $settings['list_items'];
                 ?>
-                <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
+                <div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
                         
                         <?php
                         foreach( $repeater as $item ){ ?>
                         
-                        <div class="info-board elementor-repeater-item-<?php echo $item['_id']; ?>">
+                        <div class="info-board elementor-repeater-item-<?php echo esc_attr( $item['_id'] ?? '' ); ?>">
                             
                                 <div class="info-board-title">
                                     
@@ -74,7 +74,7 @@ class Info_Boards extends Base {
                                     
                                         <?php echo wp_kses_post( $item['description'] ); ?>
                                     
-                                        <?php echo $this->render_button( $item ); ?>
+                                        <?php echo wp_kses_post( $this->render_button( $item ) ); ?>
                                         
                                 </div>
                         </div>

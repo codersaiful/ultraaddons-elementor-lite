@@ -310,7 +310,7 @@ class Dual_Color_Heading extends Base{
 		$settings = $this->get_settings_for_display();
 		?>
 		<div class="ua-module-content ua-dual-color-heading">
-			<<?php echo $settings['_ua_dual_tag_selection']; ?>>
+			<<?php echo esc_attr( $settings['_ua_dual_tag_selection'] ); ?>>
 				<?php if ( ! empty( $settings['_ua_dual_heading_link']['url'] ) ) { ?>
 					<a href="<?php echo esc_url( $settings['_ua_dual_heading_link']['url'] ); ?>"
 					<?php if ( 'on' == $settings['_ua_dual_heading_link']['is_external'] ): ?>
@@ -322,25 +322,25 @@ class Dual_Color_Heading extends Base{
 					<?php } ?>
 				<span class="ua-before-heading">
 					<span class="ua-dual-heading-text ua-first-text">
-					<?php echo $settings['_ua_dual_before_heading_text']; ?>
+					<?php echo esc_html( $settings['_ua_dual_before_heading_text'] ?? '' ); ?>
 					</span>
 				</span>
 				<span class="ua-adv-heading-stack">
 					<span class="ua-dual-heading-text ua-highlight-text">
-					<?php echo $settings['_ua_dual_second_heading_text']; ?>
+					<?php echo esc_html( $settings['_ua_dual_second_heading_text'] ?? '' ); ?>
 					</span>
 				</span>
 				<?php if ( ! empty( $settings['_ua_dual_after_heading_text'] ) ): ?>
 				<span class="ua-after-heading">
 					<span class="ua-dual-heading-text ua-third-text">
-					<?php echo $settings['_ua_dual_after_heading_text']; ?>
+					<?php echo esc_html( $settings['_ua_dual_after_heading_text'] ?? '' ); ?>
 					</span>
 				</span>
 				<?php endif; ?>
 				<?php if ( ! empty( $settings['_ua_dual_heading_link']['url'] ) ): ?>
 				</a>
 				<?php endif ?>
-			</<?php echo $settings['_ua_dual_tag_selection']; ?>>
+			</<?php echo esc_attr( $settings['_ua_dual_tag_selection'] ); ?>>
 		</div>
 		<?php
 	}

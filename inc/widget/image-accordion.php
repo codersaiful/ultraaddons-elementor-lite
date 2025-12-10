@@ -69,8 +69,8 @@ class Image_Accordion extends Base{
         <div class="ua-widget-container">
             <div class="ua-image-accordion ultraaddons-image-accordion-wrapper">
                 <?php foreach ( $ua_img_accordion_items as $key => $item ) : ?>
-                    <input type="radio" name="ua_id_<?php echo esc_attr($this->get_id()); ?>" id="ua_id_<?php echo esc_attr($this->get_id()) .'_'. $key; ?>" class="ultraaddons-single-image-accordion--input" <?php echo esc_attr( $item['ua_img_accordion_active'] == 'yes' ? 'checked' : '' ); ?> hidden>
-                    <label for="ua_id_<?php echo esc_attr($this->get_id()) .'_'. $key; ?>" class="ultraaddons-single-image-accordion ua-image-accordion-item" style="background-image: url(<?php echo esc_url($item['ua_img_accordion_bg']['url']); ?>)">
+                    <input type="radio" name="ua_id_<?php echo esc_attr($this->get_id()); ?>" id="ua_id_<?php echo esc_attr($this->get_id() .'_'. $key); ?>" class="ultraaddons-single-image-accordion--input" <?php echo esc_attr( $item['ua_img_accordion_active'] == 'yes' ? 'checked' : '' ); ?> hidden>
+                    <label for="ua_id_<?php echo esc_attr($this->get_id() .'_'. $key); ?>" class="ultraaddons-single-image-accordion ua-image-accordion-item" style="background-image: url(<?php echo esc_url($item['ua_img_accordion_bg']['url'] ?? ''); ?>)">
                         <span class="ultraaddons-accordion-content">
                         <?php 
                         if( $item['ua_img_accordion_enable_project_link'] == 'yes') {
@@ -115,7 +115,7 @@ class Image_Accordion extends Base{
                                         $this->add_link_attributes( 'button-2' . $key, $item['ua_img_accordion_project_link'] );
                                     }
                                 ?>
-                                    <a <?php echo $this->get_render_attribute_string( 'button-2' . $key ); ?> class="icon-outline circle">
+                                    <a <?php echo esc_attr( $this->get_render_attribute_string( 'button-2' . $key ) ); ?> class="icon-outline circle">
                                     <?php
                                         $migrated = isset( $item['__fa4_migrated']['ua_img_accordion_project_link_icons'] );
                                         // Check if its a new widget without previously selected icon using the old Icon control

@@ -754,7 +754,7 @@ class Ninja_Forms extends Base{
         <?php
         if(!empty( $form_id )):
         ?>
-        <div <?php echo $this->get_render_attribute_string( 'ua_ninjaforms_class' );?>>
+        <div <?php echo esc_attr( $this->get_render_attribute_string( 'ua_ninjaforms_class' ) );?>>
             <?php
                 echo do_shortcode(
                     '[ninja_form id="'. $form_id .'" ]'

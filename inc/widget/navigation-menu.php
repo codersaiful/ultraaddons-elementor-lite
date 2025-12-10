@@ -541,7 +541,7 @@ protected function navbar_toggle_style() {
             <button class="navbar-toggle" aria-haspopup="true" aria-expanded="false" <?php esc_attr_e( 'Toggle navigation','ultraaddons-elementor-lite' ); ?>>
             <?php \Elementor\Icons_Manager::render_icon( $settings['toggle_icon'], [ 'aria-hidden' => 'true' ] ); ?>
             </button>
-            <div <?php echo $this->get_render_attribute_string( 'ua-nav-menu' ); ?>>
+            <div <?php echo esc_attr( $this->get_render_attribute_string( 'ua-nav-menu' ) ); ?>>
                 <?php
 				if ( $get_menu_id ) :
 					wp_nav_menu( array(

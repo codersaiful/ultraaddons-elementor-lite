@@ -126,10 +126,10 @@ class Product_Table extends Base{
             if( $table_id && is_numeric( $table_id ) ){
                 $name = get_the_title( $table_id );
                 $shortcode = "[Product_Table id='{$table_id}' name='{$name}']";
-                $shortcode = do_shortcode( shortcode_unautop( $shortcode ) );
+                // $shortcode = do_shortcode( shortcode_unautop( $shortcode ) );
 		?>
                 <div class="wpt-elementor-wrapper wpt-elementor-wrapper-<?php echo esc_attr( $table_id ); ?>">
-                    <?php echo $shortcode; ?>
+                    <?php echo do_shortcode( shortcode_unautop( $shortcode ) ); ?>
                 </div>
 		<?php
             }else{
@@ -194,7 +194,7 @@ class Product_Table extends Base{
                             'type' => Controls_Manager::RAW_HTML,
                             'raw' => $wpt_extra_msg . sprintf( 
                                     /* translators: 1: start tag of anchor 2: closing of anchor tag  */
-                                    __( 'Create %sa new table%s.', 'ultraaddons-elementor-lite' ), 
+                                    __( 'Create %1$sa new table%2$s.', 'ultraaddons-elementor-lite' ), 
                                     '<a href="' . admin_url( 'post-new.php?post_type=wpt_product_table' ) . '">',
                                     '</a>'
                                     ),

@@ -297,25 +297,25 @@ class Moving_Letters extends Base{
         echo' <h1 class="ua-ml ml1">
                 <span class="text-wrapper">
                     <span class="line line1"></span>
-                    <span class="letters"> ' . $settings["anime_title_1"] . ' </span>
+                    <span class="letters"> ' . esc_html( $settings["anime_title_1"] ) . ' </span>
                     <span class="line line2"></span>
                 </span>
             </h1>';
         }
 
         if($anim_type==2){
-            echo '<h1 class="ua-ml ml2">' . $settings["anime_title_1"] . '</h1>';
+            echo '<h1 class="ua-ml ml2">' . esc_html( $settings["anime_title_1"] ) . '</h1>';
         }
 
         if($anim_type==3){
-            echo '<h1 class="ua-ml ml3">' . $settings["anime_title_1"] . '</h1>';
+            echo '<h1 class="ua-ml ml3">' . esc_html( $settings["anime_title_1"] ) . '</h1>';
          }
 
         if($anim_type==4){
         echo '<h1 class="ua-ml ml4">
-            <span class="letters letters-1"> '. $settings["anime_title_1"] .'</span>
-            <span class="letters letters-2"> '. $settings["anime_title_2"] .'</span>
-            <span class="letters letters-3"> '. $settings["anime_title_3"] .'</span>
+            <span class="letters letters-1"> '. esc_html( $settings["anime_title_1"] ) .'</span>
+            <span class="letters letters-2"> '. esc_html( $settings["anime_title_2"] ) .'</span>
+            <span class="letters letters-3"> '. esc_html( $settings["anime_title_3"] ) .'</span>
           </h1>';
          }
 
@@ -323,9 +323,9 @@ class Moving_Letters extends Base{
         echo '<h1 class="ua-ml ml5">
             <span class="text-wrapper">
               <span class="line line1"></span>
-              <span class="letters letters-left">' . $settings["anime_title_1"] .'</span>
-              <span class="letters ampersand">' . $settings["anime_title_2"] . '</span>
-              <span class="letters letters-right">' . $settings["anime_title_3"] .'</span>
+              <span class="letters letters-left">' . esc_html( $settings["anime_title_1"] ) .'</span>
+              <span class="letters ampersand">' . esc_html( $settings["anime_title_2"] ) . '</span>
+              <span class="letters letters-right">' . esc_html( $settings["anime_title_3"] ) .'</span>
               <span class="line line2"></span>
             </span>
           </h1>
@@ -335,7 +335,7 @@ class Moving_Letters extends Base{
         if($anim_type==6){
         echo '<h1 class="ua-ml ml6">
             <span class="text-wrapper">
-              <span class="letters">' . $settings["anime_title_1"] . '</span>
+              <span class="letters">' . esc_html( $settings["anime_title_1"] ) . '</span>
             </span>
           </h1>';
          }
@@ -343,7 +343,7 @@ class Moving_Letters extends Base{
         if($anim_type==7){
         echo '<h1 class="ua-ml ml7">
                 <span class="text-wrapper">
-                <span class="letters">' . $settings["anime_title_1"] . '</span>
+                <span class="letters">' . esc_html( $settings["anime_title_1"] ) . '</span>
                 </span>
             </h1>';
          }
@@ -351,8 +351,8 @@ class Moving_Letters extends Base{
         if($anim_type==8){
         echo '<h1 class="ua-ml ml8">
                 <span class="letters-container">
-                <span class="letters letters-left">' . $settings["anime_title_1"] . '</span>
-                <span class="letters bang">'. $settings["anime_title_2"] . '</span>
+                <span class="letters letters-left">' . esc_html( $settings["anime_title_1"] ) . '</span>
+                <span class="letters bang">'. esc_html( $settings["anime_title_2"] ) . '</span>
                 </span>
                 <span class="circle circle-white"></span>
                 <span class="circle circle-dark"></span>
@@ -363,7 +363,7 @@ class Moving_Letters extends Base{
         if($anim_type==9){
         echo '<h1 class="ua-ml ml9">
                 <span class="text-wrapper">
-                <span class="letters">' . $settings["anime_title_1"] . '</span>
+                <span class="letters">' . esc_html( $settings["anime_title_1"] ) . '</span>
                 </span>
             </h1>';
         }
@@ -371,7 +371,7 @@ class Moving_Letters extends Base{
         if($anim_type==10){
         echo '<h1 class="ua-ml ml10">
                 <span class="text-wrapper">
-                <span class="letters">' . $settings["anime_title_1"] . '</span>
+                <span class="letters">' . esc_html( $settings["anime_title_1"] ) . '</span>
                 </span>
             </h1>';
         }
@@ -380,23 +380,23 @@ class Moving_Letters extends Base{
         echo '<h1 class="ua-ml ml11">
                 <span class="text-wrapper">
                 <span class="line line1"></span>
-                <span class="letters">' . $settings["anime_title_1"] . '</span>
+                <span class="letters">' . esc_html( $settings["anime_title_1"] ) . '</span>
                 </span>
             </h1>';
          }
 
         if($anim_type==12){
-        echo '<h1 class="ua-ml ml12">' . $settings["anime_title_1"] . '</h1>';
+        echo '<h1 class="ua-ml ml12">' . esc_html( $settings["anime_title_1"] ) . '</h1>';
         }
 
         if($anim_type==13){
-        echo '<h1 class="ua-ml ml13">' . $settings["anime_title_1"] . '</h1>';
+        echo '<h1 class="ua-ml ml13">' . esc_html( $settings["anime_title_1"] ) . '</h1>';
         }
 
         if($anim_type==14){
         echo '<h1 class="ua-ml ml14">
                 <span class="text-wrapper">
-                <span class="letters">' . $settings["anime_title_1"] . '</span>
+                <span class="letters">' . esc_html( $settings["anime_title_1"] ) . '</span>
                 <span class="line"></span>
                 </span>
             </h1>';
@@ -404,13 +404,13 @@ class Moving_Letters extends Base{
 
         if($anim_type==15){
         echo '<h1 class="ua-ml ml15">
-                <span class="word">' . $settings["anime_title_1"] . '</span>
-                <span class="word">' . $settings["anime_title_2"] . '</span>
+                <span class="word">' . esc_html( $settings["anime_title_1"] ) . '</span>
+                <span class="word">' . esc_html( $settings["anime_title_2"] ) . '</span>
             </h1>';
          }
 
         if($anim_type==16){
-            echo '<h1 class="ua-ml ml16">' . $settings["anime_title_1"] . '</h1>';
+            echo '<h1 class="ua-ml ml16">' . esc_html( $settings["anime_title_1"] ) . '</h1>';
         }
 
     }

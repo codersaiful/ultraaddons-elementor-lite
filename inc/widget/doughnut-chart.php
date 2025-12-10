@@ -466,8 +466,8 @@ class Doughnut_Chart extends Base{
             <div class="chart-content">
                 <?php
                     if('yes'===$settings['show_title']){
-                    echo '<' . $settings['_ua_chart_title_tag'] . ' class="chart-title">' . esc_html($settings['chart_custom_title']) . 
-                            '</' . $settings['_ua_chart_title_tag'] . '>';
+                    echo '<' . esc_html( $settings['_ua_chart_title_tag'] ) . ' class="chart-title">' . esc_html($settings['chart_custom_title']) . 
+                            '</' . esc_html( $settings['_ua_chart_title_tag'] ) . '>';
                     }
                 ?>
                 <p class="chart-desc"><?php echo wp_kses_post( $settings['chart_description'] ); ?></p>

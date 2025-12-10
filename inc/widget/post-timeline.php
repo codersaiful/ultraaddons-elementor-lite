@@ -479,7 +479,7 @@ class Post_Timeline extends Base{
     
     protected function excerpt($limit) {
         $content = wp_strip_all_tags(get_the_content() , true );
-        echo wp_trim_words($content, $limit);
+        echo wp_kses_post( wp_trim_words($content, $limit) );
     }
 
      /**
@@ -599,18 +599,18 @@ class Post_Timeline extends Base{
             if ( has_post_thumbnail() ):
             ?>
             <li>
-                <a href="<?php echo get_the_permalink(); ?>">
+                <a href="<?php echo esc_url( get_the_permalink() ); ?>">
                     <div class="ua-pt-thumbnail">
-                        <?php echo get_the_post_thumbnail( $loop->ID, 'large' ); ?>
+                        <?php echo wp_kses_post( get_the_post_thumbnail( $loop->ID, 'large' ) ); ?>
                     </div>
                     <div class="ua-pt-txt">
-                        <time><?php echo get_the_date($date_format); ?></time>
+                        <time><?php echo esc_html( get_the_date($date_format) ); ?></time>
                         <h3 class="ua-post-title">
                             <?php $title = get_the_title();?>
-                             <?php echo $this->title_shortener($title, $settings['_ua_title_truncate']);?>
+                             <?php echo esc_html( $this->title_shortener($title, $settings['_ua_title_truncate']) ); ?>
                         </h3>
                         <p>
-                            <?php echo $this->excerpt($lenght);?>
+                            <?php echo wp_kses_post( $this->excerpt($lenght) ); ?>
                             
                         </p>
                     </div>

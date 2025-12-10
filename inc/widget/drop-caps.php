@@ -65,7 +65,7 @@ class Drop_Caps extends Base{
         ?>
 		<div class="ua-dropcap-wraper">
 			<?php if( !empty( $ua_dropcaps_text ) ) : ?>
-			<p class="ua-dropcap-cotnent"><?php echo ultraaddons_addons_kses( $ua_dropcaps_text )?></p>
+			<p class="ua-dropcap-cotnent"><?php echo wp_kses_post( ultraaddons_addons_kses( $ua_dropcaps_text ) );?></p>
 			<?php endif; ?>
 		</div>
         <?php

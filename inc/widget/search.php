@@ -396,21 +396,25 @@ class Search extends Base{
 
        echo '<style>
        .search-box.ua-form-two button[type=reset]:before, .search-box.ua-form-two button[type=reset]:after{
-               border-left: ' . $get_border_type .' ' . $border_width . 'px '. $border_color .';
+               border-left: ' . esc_attr( $get_border_type ) .' ' . esc_attr( $border_width ) . 'px '. esc_attr( $border_color ) .';
        }
        </style>';
         
         ?>
-        <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
+        <div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
             <div class="ua-serach-inside">
                 <?php
                 if( class_exists( 'WooCommerce' ) && $type === 'wc' ){
+                    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                     echo get_product_search_form();
                 }elseif( $type === 'wp' ){
+                        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                         echo get_search_form();
                 }elseif($type ==='form_one'){
+                        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                         echo $this->search_form_template_one($type ='ua-form-one');
                 }elseif($type ==='form_two'){
+                        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                         echo $this->search_form_template_two($type ='ua-form-two');
                 }
                 ?>
@@ -430,12 +434,12 @@ class Search extends Base{
     public function search_form_template_one($type){
              global $new_position;
             ?>
-        <form action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" class="<?php echo $type ?>">
+        <form action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" class="<?php echo esc_attr( $type ); ?>">
                 <?php 
                 if($new_position==='left'):?>
                 <button type="submit"><i class="fa fa-search"></i></button>
                 <?php endif;?>
-                <input type="search" name="s" class="ua-form-one-text" value="<?php the_search_query(); ?>"
+                <input type="search" name="s" class="ua-form-one-text" value="<?php echo esc_attr( get_search_query() ); ?>"
             placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'ultraaddons-elementor-lite' ); ?>">
                 <?php 
                 if($new_position==='right'):?>
@@ -446,8 +450,8 @@ class Search extends Base{
 	
 	public function search_form_template_two($type){
             ?>
-		<form action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" class="search-box <?php echo $type;?>">
-		   <input type="text" name="s" value="<?php the_search_query(); ?>"  class="ua-form-one-text" placeholder=" <?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'ultraaddons-elementor-lite' ); ?> "/>
+		<form action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" class="search-box <?php echo esc_attr( $type ); ?>">
+		   <input type="text" name="s" value="<?php echo esc_attr( get_search_query() ); ?>"  class="ua-form-one-text" placeholder=" <?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'ultraaddons-elementor-lite' ); ?> "/>
 		  <button type="reset"></button>
 		</form>
     <?php }

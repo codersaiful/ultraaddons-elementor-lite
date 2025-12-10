@@ -120,15 +120,15 @@ class Menu extends Base{
         $svg        = !empty( $settings['add_icon']['value']['url'] ) && is_string( $settings['add_icon']['value']['url'] ) ? $settings['add_icon']['value']['url'] : false;
 
         ?>
-        <nav <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
+        <nav <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
             <div class="ua-nav-inside">
                 <button class="ua-menu-toggle" aria-controls="<?php echo esc_attr( $wrapper_id ); ?>" aria-expanded="false">
                     <?php if( $svg ){ ?>
                     <img class="ua-menu-icon-svg" src="<?php echo esc_url( $svg ); ?>">
                     <?php }elseif( $has_icon ){ ?>
-                    <i <?php echo $this->get_render_attribute_string( 'i' ); ?>></i>
+                    <i <?php echo esc_attr( $this->get_render_attribute_string( 'i' ) ); ?>></i>
                     <?php } ?>
-                    <span><?php echo $menu_text; ?></span>
+                    <span><?php echo esc_html( $menu_text ); ?></span>
                 </button>
                 <?php echo wp_kses_post( $menu_html ); ?>
             </div>

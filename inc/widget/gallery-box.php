@@ -91,9 +91,8 @@ class Gallery_Box extends Base{
             $icon_html = '<img class="" src="' . esc_url( $svg ) . '" alt="' . esc_attr__( 'Follow Me', 'ultraaddons-elementor-lite' ) .'">';
         }
         ?>
-        <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>            
-            <div class="ua-gallery-item" <?php if( $image ){ echo "style='background-image:url({$image})'"; } ?>>
-<!--                <img src="<?php echo esc_url( $image ); ?>" alt="Image">-->
+        <div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>            
+            <div class="ua-gallery-item" <?php if( $image ){ echo esc_attr( "style='background-image:url({$image})'" ); } ?>>
                 <div class="ua-gallery-item-info">
                     <div class="ua-gallery-info-title">
                         <span><?php echo wp_kses_data( $box_sub_title ); ?></span>
@@ -101,7 +100,7 @@ class Gallery_Box extends Base{
                     </div>
                     <?php if( $add_icon && ! empty( $settings['gallery_btn_link']['url'] ) ) : ?>
                     <div class="ua-gallery-info-link">
-                        <a <?php echo $this->get_render_attribute_string( 'gallery_btn_link' ); ?>><?php echo $icon_html; ?></a>
+                        <a <?php echo esc_attr( $this->get_render_attribute_string( 'gallery_btn_link' ) ); ?>><?php echo esc_html( $icon_html ); ?></a>
                     </div>
                     <?php endif; ?>
                 </div>

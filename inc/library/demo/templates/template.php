@@ -165,12 +165,12 @@ $lern_more_message = $theme_info['lern_more_message'] ?? __( 'Learn more about U
 
 <script type="text/template" id="tmpl-EldmTempDemo__empty">
 	<div class="elementor-template-library-blank-icon">
-		<img src="<?php echo ELEMENTOR_ASSETS_URL . 'images/no-search-results.svg'; ?>" class="elementor-template-library-no-results" />
+		<img src="<?php echo esc_url( ELEMENTOR_ASSETS_URL ) . 'images/no-search-results.svg'; ?>" class="elementor-template-library-no-results" />
 	</div>
 	<div class="elementor-template-library-blank-title"></div>
 	<div class="elementor-template-library-blank-message"></div>
 	<div class="elementor-template-library-blank-footer">
 		<?php echo esc_html( $lern_more_message ); ?>
-		<a class="elementor-template-library-blank-footer-link" href="<?php echo esc_url( $page_templates ); ?>" target="_blank"><?php echo __( 'Click here', 'ultraaddons-elementor-lite' ); ?></a>
+		<a class="elementor-template-library-blank-footer-link" href="<?php echo esc_url( $page_templates ); ?>" target="_blank"><?php echo esc_html__( 'Click here', 'ultraaddons-elementor-lite' ); ?></a>
 	</div>
 </script>

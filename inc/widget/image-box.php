@@ -730,7 +730,7 @@ class Image_Box extends Base{
 			]
 		);
         ?>
-        <div <?php echo $this->get_render_attribute_string( 'image_box_class' );?>>
+        <div <?php echo esc_attr( $this->get_render_attribute_string( 'image_box_class' ) );?>>
             <div class="image-wrap">
                 <?php 
                 if(!empty($settings['ua_image_box_image']['url'])){
@@ -747,7 +747,7 @@ class Image_Box extends Base{
           
             <div class="image-box-content-wrap">
                 <?php 
-                echo '<a href="' . esc_url( $url ). '"' . $target . $nofollow . ' class="ua-image-box-title-link">
+                echo '<a href="' . esc_url( $url ). '"' . esc_attr( $target . $nofollow ) . ' class="ua-image-box-title-link">
                     <h2 class="ua-image-box-title">
                          ' . esc_html( $settings['title_text'] ) .'
                     </h2>
@@ -758,7 +758,7 @@ class Image_Box extends Base{
                     <?php 
                     if(!empty($url && $settings['image_box_style']=='2' || $settings['image_box_style']=='3' )){
                         echo '<div class="btn-wrap"> 
-                                <a href="' . esc_url( $url ). '"' . $target . $nofollow . ' class="ua-img-box-button">
+                                <a href="' . esc_url( $url ). '"' . esc_attr( $target . $nofollow ) . ' class="ua-img-box-button">
                                 ' .  esc_html( $settings['_button_text'] ) . '
                                 </a>
                             </div>';
