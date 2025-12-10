@@ -420,15 +420,15 @@ class Step_Flow extends Base{
 			<?php \Elementor\Icons_Manager::render_icon( $settings['_ua_step_flow_icon'], [ 'aria-hidden' => 'true' ] ); ?>
 			<?php if('yes'===$badge ): ?>
 			<span class="ua-steps-label">
-				<?php echo $settings['_ua_step_flow_badge']; ?>
+				<?php echo esc_html( $settings['_ua_step_flow_badge'] ); ?>
 			</span>
 			<?php endif;?>
 		</div>
 		<h2 class="ua-steps-title">
-			<?php echo $settings['_ua_step_flow_title']; ?>
+			<?php echo esc_html( $settings['_ua_step_flow_title'] ); ?>
 		</h2>
 		<p class="ua-step-description">
-			<?php echo $settings['_ua_step_flow_content']; ?>
+			<?php echo esc_html( $settings['_ua_step_flow_content'] ); ?>
 		</p>
 	</div>
 <?php }

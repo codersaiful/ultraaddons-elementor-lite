@@ -238,7 +238,7 @@ class Recent_Blog extends Base{
             'post_type'         =>  'post',
             'post_status'       =>  'publish',
             'category__in'      =>  $categories,
-            'post__not_in'      =>  get_option( 'sticky_posts' ),
+            // 'post__not_in'      =>  get_option( 'sticky_posts' ),
             'custom_thumb_image'=>  'background', //Normal or background,//Its created by me. To maintain image as background on two layout
         ];
         

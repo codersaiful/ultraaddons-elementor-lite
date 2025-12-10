@@ -48,7 +48,7 @@ class Advance_Pricing_Table extends Base{
         wp_enqueue_script( $name );
 
          //CSS file for Slider Script Owl Carousel Slider
-        wp_register_style('adv-pricing', ULTRA_ADDONS_ASSETS . 'vendor/pricing/css/pricing.css' );
+        wp_register_style('adv-pricing', ULTRA_ADDONS_ASSETS . 'vendor/pricing/css/pricing.css', array(), ULTRA_ADDONS_VERSION );
         wp_enqueue_style('adv-pricing' );
 
     }
@@ -1187,7 +1187,7 @@ class Advance_Pricing_Table extends Base{
 				'label' => __( 'Badge Background', 'ultraaddons-elementor-lite' ),
 				'types' => [ 'classic', 'gradient'],
 				'selector' => '{{WRAPPER}} .featured-badge',
-				'exclude' => [ 'image' ],
+				// 'exclude' => [ 'image' ],
 			]
 		);
 		$this->add_responsive_control(
@@ -1263,7 +1263,7 @@ class Advance_Pricing_Table extends Base{
 				'label' => __( 'Badge Background', 'ultraaddons-elementor-lite' ),
 				'types' => [ 'classic', 'gradient'],
 				'selector' => '{{WRAPPER}} .discount-percent',
-				'exclude' => [ 'image' ],
+				// 'exclude' => [ 'image' ],
 			]
 		);
 		$this->add_responsive_control(

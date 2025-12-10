@@ -23,7 +23,7 @@ $page_class         = strtolower(str_replace(' ', '-', $get_page_name ));
     
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Roboto:wght@300&display=swap" rel="stylesheet">
+        
         <div class="ultraaddons-dashboard-area <?php echo esc_html( $page_class ); ?>">
             <div class="ua-admin-header-wrapper">
                 <div class="ua-branding">
@@ -38,7 +38,8 @@ $page_class         = strtolower(str_replace(' ', '-', $get_page_name ));
                     <ul class="ua-submenu">
                     <?php
                     $sub_menus = UltraAddons\Admin\Admin_Handle::get_submenu_for_header();
-
+                    //There is no nonce verification needed as we are just reading the 'page' parameter
+                    //phpcs:ignore WordPress.Security.NonceVerification.Recommended 
                     $current_page = isset( $_GET['page'] ) ? sanitize_text_field( $_GET['page'] ) : false;
                     foreach( $sub_menus as $sub_menu ){
                         if( ! isset( $sub_menu['position'] ) || $sub_menu['menu_slug'] == 'ultraaddons-help-n-others' ){

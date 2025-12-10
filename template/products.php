@@ -164,7 +164,7 @@ if ( $filter ) {
 		$term_args['parent'] = 0;
 	}
 
-	$terms = get_terms( 'product_cat', $term_args );
+	$terms = get_terms( $term_args );
 
 	if ( count( $terms ) > 1 ) {
 		$slugs         = array();
@@ -278,7 +278,7 @@ if ( $status ) {
 }
 
 if ( is_array( $count ) && 0 === $count['size'] ) {
-	echo $output . '</div>';
+	echo wp_kses_post( $output ) . '</div>';
 	return;
 }
 

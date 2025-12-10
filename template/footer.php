@@ -17,7 +17,7 @@ use \UltraAddons\Classes\Header_Footer_Render as HF_Render;
 <?php
 
 
-echo ultraaddons_elementor_display_content( HF_Render::get_footer_id() );
+echo wp_kses_post( ultraaddons_elementor_display_content( HF_Render::get_footer_id() ));
 
 wp_footer(); 
 ?>

@@ -104,6 +104,8 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
 
         
         ?>
+        <!-- nonce input -->
+        <?php wp_nonce_field( 'ultraaddons_custom_fonts_nonce_action', 'ultraaddons_custom_fonts_nonce_field' ); ?>
         <style>.form-field.term-description-wrap,.form-field.term-slug-wrap{display: none !important;}</style>
         <tr class="form-field">
             <th>
@@ -351,6 +353,12 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
      * @since 1.1.0.3
      */
     public static function save_term_fields( $term_id ){
+
+        // Verify nonce for wp_nonce_field( 'ultraaddons_custom_fonts_nonce_action', 'ultraaddons_custom_fonts_nonce_field' )
+        if ( ! isset( $_POST['ultraaddons_custom_fonts_nonce_field'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['ultraaddons_custom_fonts_nonce_field'] ) ), 'ultraaddons_custom_fonts_nonce_action' ) ) {
+            return;
+        }
+
         $term = get_term_by('term_id',$term_id,self::$font_group_key);
         $font_name = $term->name;
         if( isset( $_POST[self::$meta_key] ) && is_array( $_POST[self::$meta_key] ) ){

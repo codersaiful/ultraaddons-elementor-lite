@@ -685,11 +685,11 @@ class Team_Box extends Base{
         
         <div class="ua-team-container">
                 <div class="member">
-                        <img src="<?php echo $image;?>">
+                        <img src="<?php echo esc_url( $image ); ?>">
                         <div class="team-content-wrap">
-                                <h2 class="ua-team-title"><?php echo $settings['title'];?></h2>
-                                        <span class="who"><?php echo $settings['designation'];?></span>
-                                <p class="member-text"><?php echo $settings['description'];?></p>
+                                <h2 class="ua-team-title"><?php echo esc_html( $settings['title'] ); ?></h2>
+                                        <span class="who"><?php echo esc_html( $settings['designation'] ); ?></span>
+                                <p class="member-text"><?php echo esc_html( $settings['description'] ); ?></p>
                                 <div class="social-icons">
                                         <?php $this->social_links();?>
                                 </div>

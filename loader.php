@@ -295,7 +295,7 @@ class Loader {
 
         $handle = 'ultraaddons-icon-font';
         $src = ULTRA_ADDONS_ASSETS . 'icons/ultraaddons/css/ultraaddons.css';
-        wp_register_style( $handle, $src );//, $deps, $ver, $media
+        wp_register_style( $handle, $src, array(), ULTRA_ADDONS_VERSION );//, $deps, $ver, $media
         wp_enqueue_style( $handle );
 
 
@@ -312,7 +312,7 @@ class Loader {
          * @author Saiful Islam <codersaiful@gmail.com>
          * @since 1.1.0.9
          */
-        wp_register_style( 'ultraaddons-extra-icons-style', ULTRA_ADDONS_ASSETS . 'icons/ultra-addons-extra/css/fontello.css' );
+        wp_register_style( 'ultraaddons-extra-icons-style', ULTRA_ADDONS_ASSETS . 'icons/ultra-addons-extra/css/fontello.css', array(), ULTRA_ADDONS_VERSION );
         wp_enqueue_style( 'ultraaddons-extra-icons-style' );
     }
 
@@ -372,7 +372,7 @@ class Loader {
         
                 
         //Animate CSS Load
-        wp_enqueue_style('animate', ULTRA_ADDONS_ASSETS . 'vendor/css/animate.min.css' );
+        wp_enqueue_style('animate', ULTRA_ADDONS_ASSETS . 'vendor/css/animate.min.css', array(), ULTRA_ADDONS_VERSION );
 
         $elementor = \Elementor\Plugin::instance();
         $elementor->frontend->enqueue_styles();
@@ -392,7 +392,7 @@ class Loader {
          * 
          * @since 1.0.0.0
          */
-        wp_register_style( 'ultraaddons-widgets-style', ULTRA_ADDONS_ASSETS . 'css/widgets.css' );
+        wp_register_style( 'ultraaddons-widgets-style', ULTRA_ADDONS_ASSETS . 'css/widgets.css', array(), ULTRA_ADDONS_VERSION );
         wp_enqueue_style( 'ultraaddons-widgets-style' );
     }
     
@@ -417,7 +417,7 @@ class Loader {
          * Mainly I have added an icon for our Elementor Widget
          * over this CSS file
          */
-        wp_register_style( 'ultraaddons-screen-style', ULTRA_ADDONS_ASSETS . 'css/elementor-style.css' );
+        wp_register_style( 'ultraaddons-screen-style', ULTRA_ADDONS_ASSETS . 'css/elementor-style.css', array(), ULTRA_ADDONS_VERSION );
         wp_enqueue_style( 'ultraaddons-screen-style' );
     }
 

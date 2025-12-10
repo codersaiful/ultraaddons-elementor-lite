@@ -35,7 +35,7 @@ class Skill_Bar extends Base{
             wp_enqueue_script( $name );
 
             //Third-party CSS file Load
-            wp_register_style( 'barfiller', ULTRA_ADDONS_ASSETS . 'vendor/css/barfiller.css' );
+            wp_register_style( 'barfiller', ULTRA_ADDONS_ASSETS . 'vendor/css/barfiller.css', array(), ULTRA_ADDONS_VERSION );
             wp_enqueue_style('barfiller' );
 
         }
@@ -115,7 +115,7 @@ class Skill_Bar extends Base{
 
 
                 ?>
-                <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
+                <div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
 
 
                     <ul class="bars">
@@ -153,14 +153,14 @@ class Skill_Bar extends Base{
 
 //                                $this->add_inline_editing_attributes( $repeater_setting_key . '.title', 'none' );
 				?>
-                                <li <?php echo $this->get_render_attribute_string( $repeater_setting_key . '.skill' ); ?>>
-                                    <div <?php echo $this->get_render_attribute_string( $repeater_setting_key . '.title' ); ?>><?php echo $item['title']; ?></div>
-                                    <div <?php echo $this->get_render_attribute_string( $repeater_setting_key . '.progress-bar' ); ?>>
+                                <li <?php echo esc_attr( $this->get_render_attribute_string( $repeater_setting_key . '.skill' ) ); ?>>
+                                    <div <?php echo esc_attr( $this->get_render_attribute_string( $repeater_setting_key . '.title' ) ); ?>><?php echo esc_html( $item['title'] ); ?></div>
+                                    <div <?php echo esc_attr( $this->get_render_attribute_string( $repeater_setting_key . '.progress-bar' ) ); ?>>
                                         <div id="bar-<?php echo esc_attr( $this->get_id() . '-' .$_id . '-' . ( $index + 1 ) );?>" class="barfiller">
                                             <span class="fill" data-percentage="<?php echo esc_attr( $progress_percentage ); ?>"></span>
                                         </div>
                                         <?php if ( 'yes' == $settings['display_percentage'] ) { ?>
-                                        <div class="progress-score"><?php echo $progress_percentage; ?>%</div>
+                                        <div class="progress-score"><?php echo esc_html( $progress_percentage ); ?>%</div>
                                         <?php } ?>
                                     </div>
                                 </li>

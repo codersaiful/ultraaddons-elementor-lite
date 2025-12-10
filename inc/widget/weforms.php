@@ -721,7 +721,7 @@ class WeForms extends Base{
         <?php 
         if (!empty($form_id)):
         ?>
-        <div <?php echo $this->get_render_attribute_string( 'ua_weforms_class' );?>>
+        <div <?php echo esc_attr( $this->get_render_attribute_string( 'ua_weforms_class' ) );?>>
                 <?php
                 echo do_shortcode(
                         '[weforms id="'. $form_id .'" ]'

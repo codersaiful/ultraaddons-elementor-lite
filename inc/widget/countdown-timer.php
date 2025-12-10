@@ -63,10 +63,10 @@ class Countdown_Timer extends Base{
      */
     protected function render() {
         $settings = $this->get_settings_for_display();
-        $unique_class = 'ua-count-down-' . rand( 509,1254 );
+        $unique_class = 'ua-count-down-' . wp_rand( 509,1254 );
         $this->add_render_attribute( 'wrapper', 'class', 'ua-coun-down-timer-wrapper' );
         $date = $settings['date_time'];
-        $date_time = date( 'm/d/Y H:i', strtotime($date) );
+        $date_time = gmdate( 'm/d/Y H:i', strtotime($date) );
         
         //Label's 
         $days = $settings['days'];

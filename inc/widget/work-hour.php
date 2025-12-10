@@ -468,7 +468,7 @@ class Work_Hour extends Base{
 					'name' => 'row_background',
 					'label' => __( 'Row Background', 'ultraaddons-elementor-lite' ),
 					'types' => [ 'classic', 'gradient'],
-					'exclude' => [ 'image' ],
+					// 'exclude' => [ 'image' ],
 					'selector' => '{{WRAPPER}} .ua-work-hours-row',
 				]
 			);
@@ -489,7 +489,7 @@ class Work_Hour extends Base{
 				'name' => 'row_background_hover',
 				'label' => __( 'Row Background', 'ultraaddons-elementor-lite' ),
 				'types' => [ 'classic', 'gradient'],
-				'exclude' => [ 'image' ],
+				// 'exclude' => [ 'image' ],
 				'selector' => '{{WRAPPER}} .ua-work-hours-row:hover',
 			]
 		);
@@ -524,7 +524,7 @@ class Work_Hour extends Base{
 					'name' => 'odd_row_background',
 					'label' => __( 'Row Background', 'ultraaddons-elementor-lite' ),
 					'types' => [ 'classic', 'gradient'],
-					'exclude' => [ 'image' ],
+					// 'exclude' => [ 'image' ],
 					'selector' => '{{WRAPPER}} .ua-work-hours-row.odd-row',
 				]
 			);

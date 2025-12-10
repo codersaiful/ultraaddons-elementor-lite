@@ -846,18 +846,18 @@ class WPForms extends Base{
         <?php
         if(!empty( $form_id )):
         ?>
-        <div <?php echo $this->get_render_attribute_string( 'ua_wpform_class' );?>>
+        <div <?php echo esc_attr( $this->get_render_attribute_string( 'ua_wpform_class' ) );?>>
             <?php 
                 if('yes' === $settings['title']){
-                    echo '<' . $settings['title_tag'] . ' class="ua-wp-form-title">' .  $title. 
-                            '</' . $settings['title_tag'] . '>';
+                    echo '<' . esc_html( $settings['title_tag'] ) . ' class="ua-wp-form-title">' .  esc_html( $title ) . 
+                            '</' . esc_html( $settings['title_tag'] ) . '>';
                 }
             ?>
             <p class="ua-wpform-description">
             <?php 
                 if('yes' === $settings['description']){
                 $post = get_post( $id );
-                echo $excerpt = ( $post->post_excerpt ) ? $post->post_excerpt : $post->post_content;
+                echo esc_html( $excerpt = ( $post->post_excerpt ) ? $post->post_excerpt : $post->post_content );
                 }
             ?>
             </p>

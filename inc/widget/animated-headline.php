@@ -571,7 +571,7 @@ class Animated_Headline extends Base{
 					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
 				],
 				'selector' => '{{WRAPPER}} .elementor-headline-dynamic-text',
-				'exclude' => [ 'font_size' ],
+				// 'exclude' => [ 'font_size' ],
 			]
 		);
 

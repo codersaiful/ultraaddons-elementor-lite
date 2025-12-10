@@ -273,6 +273,7 @@ final class UltraAddons {
 	 */
 	public function admin_notice_missing_main_plugin() {
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if ( isset( $_GET['activate'] ) ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Only unsetting, not using the value
 			unset( $_GET['activate'] );
@@ -286,7 +287,7 @@ final class UltraAddons {
 			'<style>div.ultraaddons-notice-error-elementor{background:#e5e5e5;color:#607d8b}div.ultraaddons-notice-error-elementor>p{font-size:22px}div.ultraaddons-notice-error-elementor>p>strong{color:#9c27b0;font-weight:700}</style>'
 		);
 
-		printf( '<div class="notice notice-error ultraaddons-notice-error-elementor"><p>%1$s</p></div>', $message );
+		printf( '<div class="notice notice-error ultraaddons-notice-error-elementor"><p>%1$s</p></div>', wp_kses_post( $message ) );
 
 	}
 
@@ -301,6 +302,7 @@ final class UltraAddons {
 	 */
 	public function admin_notice_minimum_elementor_version() {
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if ( isset( $_GET['activate'] ) ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Only unsetting, not using the value
 			unset( $_GET['activate'] );
@@ -314,7 +316,7 @@ final class UltraAddons {
 			 self::MINIMUM_ELEMENTOR_VERSION
 		);
 
-		printf( '<div class="notice notice-error"><p>%1$s</p></div>', $message );
+		printf( '<div class="notice notice-error"><p>%1$s</p></div>', wp_kses_post( $message ) );
 
 	}
 
@@ -329,6 +331,7 @@ final class UltraAddons {
 	 */
 	public function admin_notice_minimum_php_version() {
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if ( isset( $_GET['activate'] ) ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Only unsetting, not using the value
 			unset( $_GET['activate'] );
@@ -342,7 +345,7 @@ final class UltraAddons {
 			 self::MINIMUM_PHP_VERSION
 		);
 
-		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message );
+		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', wp_kses_post( $message ) );
 
 	}
         

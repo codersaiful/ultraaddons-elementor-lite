@@ -38,10 +38,10 @@ class Testimonial_Slider extends Base{
 
 
         //CSS file for Slider Script Owl Carousel Slider
-        wp_register_style('owlCarousel', ULTRA_ADDONS_ASSETS . 'vendor/css/owl.carousel.css' );
+        wp_register_style('owlCarousel', ULTRA_ADDONS_ASSETS . 'vendor/css/owl.carousel.css', array(), ULTRA_ADDONS_VERSION );
         wp_enqueue_style('owlCarousel' );
 
-        wp_register_style('owlCarousel-theme', ULTRA_ADDONS_ASSETS . 'vendor/css/owl/owl.theme.default.css' );
+        wp_register_style('owlCarousel-theme', ULTRA_ADDONS_ASSETS . 'vendor/css/owl/owl.theme.default.css', array(), ULTRA_ADDONS_VERSION );
         wp_enqueue_style( 'owlCarousel-theme' );
 
     }
@@ -130,7 +130,7 @@ class Testimonial_Slider extends Base{
         $slider_items = $settings['testimonial_items'];
         ?>
         <div class="ua-testimonial-main-wrapper">
-            <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
+            <div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
                 <?php 
                 foreach( $slider_items as $key => $item ){
                     $_id = !empty( $item['_id'] ) ? $item['_id'] : false;
@@ -149,12 +149,12 @@ class Testimonial_Slider extends Base{
                         $this->add_render_attribute( 'item' . '-' . $_id, 'class', 'no-profile-image' );
                     }
                 ?>
-                <div <?php echo $this->get_render_attribute_string( 'item' . '-' . $_id ); ?>>
+                <div <?php echo esc_attr( $this->get_render_attribute_string( 'item' . '-' . $_id ) ); ?>>
                     <div class="client-quote-box">
                         <span class="quote-icon">
                             <i class="fas fa-quote-left"></i>
                         </span>
-                        <?php echo '<p ' . $this->get_render_attribute_string( 'quote' . '-' . $_id ) . '>' . $item['quote'] . '</p>'; ?>
+                        <?php echo '<p ' . esc_attr( $this->get_render_attribute_string( 'quote' . '-' . $_id ) ) . '>' . esc_html( $item['quote'] ) . '</p>'; ?>
                         <div class="client-info">
                             <div class="user-avatar" 
                                 <?php if( $image ){ ?>
@@ -162,8 +162,8 @@ class Testimonial_Slider extends Base{
                                 <?php } ?> 
                                  ></div>
                             <div class="user-name">
-                                <?php echo '<p ' . $this->get_render_attribute_string( 'title' . '-' . $_id ) . '>' . $item['title'] . '</p>'; ?>
-                                <?php echo '<span ' . $this->get_render_attribute_string( 'sub-title' . '-' . $_id ) . '>' . $item['sub-title'] . '</span>'; ?>
+                                <?php echo '<p ' . esc_attr( $this->get_render_attribute_string( 'title' . '-' . $_id ) ) . '>' . esc_html( $item['title'] ) . '</p>'; ?>
+                                <?php echo '<span ' . esc_attr( $this->get_render_attribute_string( 'sub-title' . '-' . $_id ) ) . '>' . esc_html( $item['sub-title'] ) . '</span>'; ?>
                             </div>
                         </div>
                     </div>

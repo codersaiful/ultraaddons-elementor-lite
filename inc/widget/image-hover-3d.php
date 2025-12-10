@@ -380,7 +380,7 @@ class Image_Hover_3D extends Base{
 				'name' => 'box_background',
                 'title'=> 'Testing Title',
 				'types' => [ 'gradient' ],
-                'exclude' =>['image'],
+                //'exclude' =>['image'],
 				'selector' => '{{WRAPPER}} .ua-3dimage-box .ua-3dimage-imgbx:before',
                 'separator' => 'before',
 				'fields_options' => [

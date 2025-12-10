@@ -120,7 +120,7 @@ class WC_Products extends Base{
         $shortcode = '[products limit="' . $limit . '" columns="' . $col . '" orderby="popularity" category="' . $cat_ids . '" ]';
 //        var_dump($shortcode);
         ?>
-    <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
+    <div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
         <div class="ua-content-of-products">
             <h2 class="ua-product-section-title"><?php echo esc_html( $settings['title'] ); ?></h2>
         </div>

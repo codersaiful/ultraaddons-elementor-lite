@@ -572,6 +572,7 @@ class Post_Timeline extends Base{
 		}
 		if(! empty( $settings['_ua_query_post_not_in'] )){
 			$exclude_ids = explode(',',$settings['_ua_query_post_not_in']);
+			//phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_post_not_in
 			$args['post__not_in'] = $exclude_ids;
 		}
 
@@ -586,6 +587,7 @@ class Post_Timeline extends Base{
 		}
 		
 		if( ! empty( $settings['tag_ids'] ) ){
+			//phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 			$args['tax_query'] = array(
 				array(
 					'taxonomy'  => 'product_tag',

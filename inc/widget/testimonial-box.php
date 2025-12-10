@@ -805,8 +805,8 @@ class Testimonial_Box extends Base{
             $this->add_render_attribute( 'wrapper', 'class', 'no-profile-image' );
         }
         ?>
-    <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
-        <div <?php echo $this->get_render_attribute_string( 'item' ); ?>>
+    <div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
+        <div <?php echo esc_attr( $this->get_render_attribute_string( 'item' ) ); ?>>
             <div class="client-quote-box">
                  <?php if($position=='top'):?>
                 <div class="client-info">
@@ -814,8 +814,8 @@ class Testimonial_Box extends Base{
                                 <img src="<?php echo esc_attr( $image ); ?>">
                         </div>
                     <div class="user-name">
-                        <?php echo '<p ' . $this->get_render_attribute_string( 'title' ) . '>' . $settings['title'] . '</p>'; ?>
-                        <?php echo '<span ' . $this->get_render_attribute_string( 'sub-title' ) . '>' . $settings['sub-title'] . '</span>'; ?>
+                        <?php echo '<p ' . esc_attr( $this->get_render_attribute_string( 'title' ) ) . '>' . esc_html( $settings['title'] ) . '</p>'; ?>
+                        <?php echo '<span ' . esc_attr( $this->get_render_attribute_string( 'sub-title' ) ) . '>' . esc_html( $settings['sub-title'] ) . '</span>'; ?>
                     </div>
                 </div>
                 <?php endif;?>
@@ -824,7 +824,7 @@ class Testimonial_Box extends Base{
                 </div>
                 <?php if( $quote_title ): ?>
                         <h2 class="quote-title">
-                                <?php echo $quote_title; ?>
+                                <?php echo esc_html( $quote_title ); ?>
                         </h2>
                 <?php endif;?>
                 <?php if($settings['customer_review']=='yes'): ?>
@@ -836,8 +836,8 @@ class Testimonial_Box extends Base{
                         <?php }?>
                         </div>
                 <?php endif;?>
-                <p <?php echo $this->get_render_attribute_string( 'quote' );?> >
-                        <?php echo $settings['quote'];?>
+                <p <?php echo esc_attr( $this->get_render_attribute_string( 'quote' ) );?> >
+                        <?php echo esc_html( $settings['quote'] ); ?>
                 </p>
                 <?php if($position=='bottom'):?>
                 <div class="client-info">
@@ -845,8 +845,8 @@ class Testimonial_Box extends Base{
                                 <img src="<?php echo esc_attr( $image ); ?>">
                         </div>
                         <div class="user-name">
-                                <?php echo '<p ' . $this->get_render_attribute_string( 'title' ) . '>' . $settings['title'] . '</p>'; ?>
-                                <?php echo '<span ' . $this->get_render_attribute_string( 'sub-title' ) . '>' . $settings['sub-title'] . '</span>'; ?>
+                                <?php echo '<p ' . esc_attr( $this->get_render_attribute_string( 'title' ) ) . '>' . esc_html( $settings['title'] ) . '</p>'; ?>
+                                <?php echo '<span ' . esc_attr( $this->get_render_attribute_string( 'sub-title' ) ) . '>' . esc_html( $settings['sub-title'] ) . '</span>'; ?>
                         </div>
                 </div>
                 <?php endif;?>

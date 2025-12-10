@@ -151,7 +151,7 @@ class Ultra_Slider extends Base{
 
                 ?>
             <div class="ua-slider-main-wrapper">
-                <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
+                <div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
                     
                     <?php
                     foreach( $settings['slides'] as $key => $slide ){
@@ -181,7 +181,7 @@ class Ultra_Slider extends Base{
                             
                             if( Plugin::$instance->documents->get( $select_post_id )->is_built_with_elementor() ){
                                 echo wp_kses_post( '<div class="ua-slider-item">' );
-                                echo Plugin::instance()->frontend->get_builder_content_for_display( $select_post_id );
+                                echo wp_kses_post( Plugin::$instance->frontend->get_builder_content_for_display( $select_post_id ) );
                                 echo wp_kses_post( '</div>' );
                             }
                         }else{
@@ -199,7 +199,7 @@ class Ultra_Slider extends Base{
                                                 <h1><?php echo wp_kses_post( $title ); ?></h1>
                                                 <p class="para"><?php echo wp_kses_post( $content ); ?></p>
                                                 <div class="hero-btn">
-                                                    <a <?php echo $this->get_render_attribute_string( $repeater_key . '.button' ); ?>><?php echo esc_html( $button ); ?></a>
+                                                    <a <?php echo esc_attr( $this->get_render_attribute_string( $repeater_key . '.button' ) ); ?>><?php echo esc_html( $button ); ?></a>
                                                 </div>
                                             </div>
                                         </div>

@@ -29,7 +29,7 @@ class Navigation_Menu extends Base{
         wp_enqueue_script( $name );
 
          //CSS file Navabr
-         wp_register_style('navbarjs', ULTRA_ADDONS_ASSETS . 'vendor/navbar/css/navbar.css' );
+         wp_register_style('navbarjs', ULTRA_ADDONS_ASSETS . 'vendor/navbar/css/navbar.css', array(), ULTRA_ADDONS_VERSION );
          wp_enqueue_style('navbarjs' );
     }
 	

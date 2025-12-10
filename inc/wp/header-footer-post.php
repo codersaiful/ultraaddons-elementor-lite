@@ -296,17 +296,17 @@ class Header_Footer_Post{
 			<tbody>
 				<tr class="ua-options-row type-of-template">
 					<td class="ua-options-row-heading">
-						<label for="ua_template_type"><?php _e( 'Type of Template', 'ultraaddons-elementor-lite' ); ?></label>
+						<label for="ua_template_type"><?php esc_html_e( 'Type of Template', 'ultraaddons-elementor-lite' ); ?></label>
 					</td>
 					<td class="ua-options-row-content">
 						<select name="ua_template_type" id="ua_template_type">
-							<option value="" <?php selected( $template_type, '' ); ?>><?php _e( 'Select Option', 'ultraaddons-elementor-lite' ); ?></option>
-							<option value="header" <?php selected( $template_type, 'header' ); ?>><?php _e( 'Header', 'ultraaddons-elementor-lite' ); ?></option>
-							<option value="before_header" <?php selected( $template_type, 'before_header' ); ?>><?php _e( 'Before Header/Topbar', 'ultraaddons-elementor-lite' ); ?></option>
-							<option value="footer" <?php selected( $template_type, 'footer' ); ?>><?php _e( 'Footer', 'ultraaddons-elementor-lite' ); ?></option>
-							<!-- <option value="before_footer" <?php selected( $template_type, 'before_footer' ); ?>><?php _e( 'Before Footer', 'ultraaddons-elementor-lite' ); ?></option> -->
-							<option value="after_footer" <?php selected( $template_type, 'after_footer' ); ?>><?php _e( 'After Footer', 'ultraaddons-elementor-lite' ); ?></option>
-							<!-- <option value="custom" <?php selected( $template_type, 'custom' ); ?>><?php _e( 'Custom Block', 'ultraaddons-elementor-lite' ); ?></option> -->
+							<option value="" <?php selected( $template_type, '' ); ?>><?php esc_html_e( 'Select Option', 'ultraaddons-elementor-lite' ); ?></option>
+							<option value="header" <?php selected( $template_type, 'header' ); ?>><?php esc_html_e( 'Header', 'ultraaddons-elementor-lite' ); ?></option>
+							<option value="before_header" <?php selected( $template_type, 'before_header' ); ?>><?php esc_html_e( 'Before Header/Topbar', 'ultraaddons-elementor-lite' ); ?></option>
+							<option value="footer" <?php selected( $template_type, 'footer' ); ?>><?php esc_html_e( 'Footer', 'ultraaddons-elementor-lite' ); ?></option>
+							<!-- <option value="before_footer" <?php selected( $template_type, 'before_footer' ); ?>><?php esc_html_e( 'Before Footer', 'ultraaddons-elementor-lite' ); ?></option> -->
+							<option value="after_footer" <?php selected( $template_type, 'after_footer' ); ?>><?php esc_html_e( 'After Footer', 'ultraaddons-elementor-lite' ); ?></option>
+							<!-- <option value="custom" <?php selected( $template_type, 'custom' ); ?>><?php esc_html_e( 'Custom Block', 'ultraaddons-elementor-lite' ); ?></option> -->
 						</select>
 					</td>
 				</tr>
@@ -316,8 +316,8 @@ class Header_Footer_Post{
 				 ?>
 				<tr class="ua-options-row ua-shortcode">
 					<td class="ua-options-row-heading">
-						<label for="ua_template_type"><?php _e( 'Shortcode', 'ultraaddons-elementor-lite' ); ?></label>
-						<i class="ua-options-row-heading-help dashicons dashicons-editor-help" title="<?php _e( 'Copy this shortcode and paste it into your post, page, or text widget content.', 'ultraaddons-elementor-lite' ); ?>">
+						<label for="ua_template_type"><?php esc_html_e( 'Shortcode', 'ultraaddons-elementor-lite' ); ?></label>
+						<i class="ua-options-row-heading-help dashicons dashicons-editor-help" title="<?php esc_html_e( 'Copy this shortcode and paste it into your post, page, or text widget content.', 'ultraaddons-elementor-lite' ); ?>">
 						</i>
 					</td>
 					<td class="ua-options-row-content">
@@ -336,9 +336,9 @@ class Header_Footer_Post{
 				<tr  style="display: none !important;" class="ua-options-row enable-for-canvas">
 					<td class="ua-options-row-heading">
 						<label for="display-on-canvas-template">
-							<?php _e( 'Enable Layout for Elementor Canvas Template?', 'ultraaddons-elementor-lite' ); ?>
+							<?php esc_html_e( 'Enable Layout for Elementor Canvas Template?', 'ultraaddons-elementor-lite' ); ?>
 						</label>
-						<i class="ua-options-row-heading-help dashicons dashicons-editor-help" title="<?php _e( 'Enabling this option will display this layout on pages using Elementor Canvas Template.', 'ultraaddons-elementor-lite' ); ?>"></i>
+						<i class="ua-options-row-heading-help dashicons dashicons-editor-help" title="<?php esc_html_e( 'Enabling this option will display this layout on pages using Elementor Canvas Template.', 'ultraaddons-elementor-lite' ); ?>"></i>
 					</td>
 					<td class="ua-options-row-content">
 						<input type="checkbox" id="display-on-canvas-template" name="display-on-canvas-template" value="1" <?php checked( $display_on_canvas, true ); ?> />
@@ -349,9 +349,9 @@ class Header_Footer_Post{
 				<tr style="display: none !important;" class="ua-options-row enable-for-canvas">
 					<td class="ua-options-row-heading">
 						<label for="display-on-canvas-template">
-							<?php _e( 'Enabling Header Footer using CSS', 'ultraaddons-elementor-lite' ); ?>
+							<?php esc_html_e( 'Enabling Header Footer using CSS', 'ultraaddons-elementor-lite' ); ?>
 						</label>
-						<i class="ua-options-row-heading-help dashicons dashicons-editor-help" title="<?php _e( 'Actually it will not replace header file,<br> just it will hide current header. where header footer class should be', 'ultraaddons-elementor-lite' ); ?>"></i>
+						<i class="ua-options-row-heading-help dashicons dashicons-editor-help" title="<?php esc_html_e( 'Actually it will not replace header file,<br> just it will hide current header. where header footer class should be', 'ultraaddons-elementor-lite' ); ?>"></i>
 						<!-- <p>Actually it will not replace header file,<br> just it will hide current header. <br>
 							where header footer class should be (.site-header or ##masthead)</p> -->
 							<code>.site-header or ##masthead</p></code>
@@ -431,6 +431,7 @@ class Header_Footer_Post{
 		$args = [
             'post_type'     => self::$post_type,
             'post_status'   => 'publish',
+			//phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
             'meta_query'    => [
                 [
                     'key'   => 'ua_template_type',
@@ -496,7 +497,9 @@ class Header_Footer_Post{
 		// update_post_meta( $post_id, 'ua_target_user_roles', $target_users );
 
 		if ( isset( $_POST['ua_template_type'] ) ) {
-			update_post_meta( $post_id, 'ua_template_type', esc_attr( sanitize_text_field( $_POST['ua_template_type'] ?? '' ) ) );
+
+			//$_POST['ua_template_type'] not unslashed before sanitization. Use wp_unslash() or similar
+			update_post_meta( $post_id, 'ua_template_type', esc_attr( sanitize_text_field( wp_unslash( $_POST['ua_template_type'] ?? '' ) ) ) );
 		}
 		if ( isset( $_POST['ua_display'] ) ) {
 			$display = array();
@@ -517,7 +520,7 @@ class Header_Footer_Post{
 		}
 
 		if ( isset( $_POST['display-on-canvas-template'] ) ) {
-			update_post_meta( $post_id, 'display-on-canvas-template', esc_attr( sanitize_text_field( $_POST['display-on-canvas-template'] ?? '' ) ) );
+			update_post_meta( $post_id, 'display-on-canvas-template', esc_attr( sanitize_text_field( wp_unslash( $_POST['display-on-canvas-template'] ?? '' ) ) ) );
 		} else {
 			delete_post_meta( $post_id, 'display-on-canvas-template' );
 		}

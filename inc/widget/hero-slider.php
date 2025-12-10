@@ -39,7 +39,7 @@ class Hero_Slider extends Base{
         wp_enqueue_script( $name );
 
         //CSS file swiper
-        wp_register_style('swiper', ULTRA_ADDONS_ASSETS . 'vendor/swiper/css/swiper.min.css' );
+        wp_register_style('swiper', ULTRA_ADDONS_ASSETS . 'vendor/swiper/css/swiper.min.css', array(), ULTRA_ADDONS_VERSION );
         wp_enqueue_style('swiper' );
 
     }

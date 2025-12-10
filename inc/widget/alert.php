@@ -262,7 +262,7 @@ class Alert extends Base{
                 'name' => 'alert_background',
                 'label' => esc_html__('Background Color', 'ultraaddons-elementor-lite'),
                 'types' => [ 'classic', 'gradient' ],
-                'exclude' =>['image'],
+                // 'exclude' =>['image'],
                 'selector' => '{{WRAPPER}} .ua_alert_box.ua_alert_box_style_01',
             ]
         );

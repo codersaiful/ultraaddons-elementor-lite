@@ -437,7 +437,7 @@ class Product_Accordion extends Base{
                 'name'     => 'ua_img_accordion_bg_active_color',
                 'default' => '',
                 'selector' => '{{WRAPPER}} .ultraaddons-single-product-accordion:before',
-                'exclude' =>['image']
+                // 'exclude' =>['image']
 
             )
         );

@@ -306,7 +306,7 @@ class Image_Box extends Base{
 				'name' => 'icon_bg',
 				'label' => esc_html__( 'Icon Background', 'ultraaddons-elementor-lite' ),
 				'types' => [ 'classic', 'gradient'],
-                'exclude' =>['image'],
+                //'exclude' =>['image'],
 				'selector' => '{{WRAPPER}} .ua-image-box-icon',
 			]
 		);
@@ -406,7 +406,7 @@ class Image_Box extends Base{
 				'name' => 'icon_bg_hover',
 				'label' => esc_html__( 'Icon Background', 'ultraaddons-elementor-lite' ),
 				'types' => [ 'classic', 'gradient'],
-                'exclude' =>['image'],
+                //'exclude' =>['image'],
 				'selector' => '{{WRAPPER}} .ua-image-box-icon:hover',
 			]
 		);
@@ -637,7 +637,7 @@ class Image_Box extends Base{
 				'name' => 'button_bg',
 				'label' => esc_html__( 'Button Background', 'ultraaddons-elementor-lite' ),
 				'types' => [ 'classic', 'gradient'],
-                'exclude' =>['image'],
+                //'exclude' =>['image'],
 				'selector' => '{{WRAPPER}} .ua-img-box-button',
 			]
 		);
@@ -686,7 +686,7 @@ class Image_Box extends Base{
 				'name' => 'button_bg_hover',
 				'label' => esc_html__( 'Button Background', 'ultraaddons-elementor-lite' ),
 				'types' => [ 'classic', 'gradient'],
-                'exclude' =>['image'],
+                //'exclude' =>['image'],
 				'selector' => '{{WRAPPER}} .ua-img-box-button:hover',
 			]
 		);

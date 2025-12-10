@@ -101,13 +101,13 @@ add_action('wp_here_stay_on_wp',function(){
         'post_type'     =>  'page',
         'post_status'   =>  'publish',
         'posts_per_page'=> '-1',
-        'meta_query' => array(
-                array(
-                    'key' => 'ua_page_template',
-                    //'value' => ':13112;',
-                    //'compare' => 'LIKE'
-                )
-        ),
+        // 'meta_query' => array(
+        //         array(
+        //             'key' => 'ua_page_template',
+        //             //'value' => ':13112;',
+        //             //'compare' => 'LIKE'
+        //         )
+        // ),
     );
     $query = get_posts( $args ); //  new \WP_Query($args);// ;
 //    var_dump(get_the_ID());
@@ -119,13 +119,10 @@ add_action('wp_here_stay_on_wp',function(){
     foreach($query as $qr){
         $id = $qr->ID;
         $chosent_tem_path = get_post_meta( $id, 'ua_page_template', true );
-        var_dump($chosent_tem_path);
+
         add_filter( 'woocommerce_locate_template', function( $template, $template_name ){
-//            var_dump($template_name);
             global $chosent_tem_path;
-            var_dump($chosent_tem_path);
             $_template = ULTRA_ADDONS_DIR . 'template/' . $chosent_tem_path;
-            //var_dump($chosent_tem_path,$template_name,$_template,validate_file($_template));
             if( $chosent_tem_path == $template_name && is_file($_template) ){
                return $_template; 
             }

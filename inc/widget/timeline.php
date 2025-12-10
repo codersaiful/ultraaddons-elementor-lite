@@ -139,18 +139,18 @@ class Timeline extends Base{
                         $time = 'timeline_calender' == $item['_ua_timeline_style'] ? wp_date($time_format, strtotime($item['_ua_timeline_time'])) : '';
     
                         ?>
-                    <div <?php echo $timeline_inner_wraper; ?>>
+                    <div <?php echo esc_attr( $timeline_inner_wraper ); ?>>
                         <div class="ua_limeline_counter ultraaddons-timeline-counter"></div>
                         <div class="ua_timeline_main_coutent_inner ultraaddons-timeline-content-inner">
                             <?php if ( $settings['show_title'] == 'yes'): ?>
                                 <?php if ($has_title_text): ?>  
-                                    <<?php echo ultraaddons_title_tag($item['_ua_timeline_title_size']); ?> <?php echo $timeline_title_class; ?>><?php echo esc_html($item['_ua_timeline_title']); ?></<?php echo ultraaddons_title_tag($item['_ua_timeline_title_size']); ?>>
+                                    <<?php echo ultraaddons_title_tag($item['_ua_timeline_title_size']); ?> <?php echo esc_attr( $timeline_title_class ); ?>><?php echo esc_html($item['_ua_timeline_title']); ?></<?php echo ultraaddons_title_tag($item['_ua_timeline_title_size']); ?>>
                                 <?php endif; ?>
                             <?php endif; ?>
                             <?php if ( $settings['show_desc'] == 'yes'): ?>
                                 <?php if ($has_timeline_text): ?>
-                                    <p <?php echo $timeline_content_class; ?>>
-                                        <?php echo ultraaddons_parse_text_editor($item['_ua_timeline_desc']); ?>
+                                    <p <?php echo esc_attr( $timeline_content_class ); ?>>
+                                        <?php echo wp_kses_post( ultraaddons_parse_text_editor($item['_ua_timeline_desc']) ); ?>
                                     </p>
                                 <?php endif ?>
                             <?php endif ?>
@@ -159,9 +159,11 @@ class Timeline extends Base{
                                     <p class="ua_date ultraaddons-date-time">
                                         <?php
                                             if ($date &&  $settings['show_date']) {
+                                                /* translators: %s: Date */ 
                                                 printf('<span class="date">%s</span>', esc_html($date));
                                             }
                                             if ($time &&  $settings['show_time']) {
+                                                /* translators: %s: Time */ 
                                                 printf('<span class="time">%s</span>', esc_html($time));
                                             }
                                         ?>
@@ -234,7 +236,7 @@ class Timeline extends Base{
                         $has_icon = ( ! $is_new || ! empty( $item['_ua_timeline_selected_icon']['value'] ) );
 
                         ?>
-                    <div <?php echo $timeline_inner_wraper; ?>>
+                    <div <?php echo esc_attr( $timeline_inner_wraper ); ?>>
                         <?php if ( $item['_ua_timeline_icon_show'] === 'yes' ): ?>
                             <div class="ua_limeline_counter ua_single_limeline_icon ultraaddons-timeline-counter">
                                 <?php
@@ -250,13 +252,13 @@ class Timeline extends Base{
                         <div class="ua_timeline_main_coutent_inner ultraaddons-timeline-content-inner">
                             <?php if ( $settings['show_title'] == 'yes'): ?>
                                 <?php if ($has_title_text): ?>  
-                                    <<?php echo ultraaddons_title_tag($item['_ua_timeline_title_size']); ?> <?php echo $timeline_title_class; ?>><?php echo esc_html($item['_ua_timeline_title']); ?></<?php echo ultraaddons_title_tag($item['_ua_timeline_title_size']); ?>>
+                                    <<?php echo wp_kses_post( ultraaddons_title_tag($item['_ua_timeline_title_size']) ); ?> <?php echo esc_attr( $timeline_title_class ); ?>><?php echo esc_html($item['_ua_timeline_title']); ?></<?php echo wp_kses_post( ultraaddons_title_tag($item['_ua_timeline_title_size']) ); ?>>
                                 <?php endif; ?>
                             <?php endif; ?>
                             <?php if ( $settings['show_desc'] == 'yes'): ?>
                                 <?php if ($has_timeline_text): ?>
-                                    <p <?php echo $timeline_content_class; ?>>
-                                        <?php echo ultraaddons_parse_text_editor($item['_ua_timeline_desc']); ?>
+                                    <p <?php echo esc_attr( $timeline_content_class ); ?>>
+                                        <?php echo wp_kses_post( ultraaddons_parse_text_editor($item['_ua_timeline_desc']) ); ?>
                                     </p>
                                 <?php endif ?>
                             <?php endif ?>
@@ -265,9 +267,11 @@ class Timeline extends Base{
                                     <p class="ua_date ultraaddons-date-time">
                                         <?php
                                             if ($date &&  $settings['show_date']) {
+                                                /* translators: %s: Date */
                                                 printf('<span class="date">%s</span>', esc_html($date));
                                             }
                                             if ($time &&  $settings['show_time']) {
+                                                /* translators: %s: Time */
                                                 printf('<span class="time">%s</span>', esc_html($time));
                                             }
                                         ?>
@@ -367,15 +371,17 @@ class Timeline extends Base{
                         $has_icon = ( ! $is_new || ! empty( $item['_ua_timeline_selected_icon']['value'] ) );
 
                         ?>
-                    <div <?php echo $timeline_inner_wraper; ?>>
+                    <div <?php echo esc_attr( $timeline_inner_wraper ); ?>>
                         <?php if ( $settings['show_date_time'] == 'yes'): ?>
                                 <div class="ua_img_handler_top ua_style_2 ultraaddons-timeline-date-time">
                                     <div class="ua_date ultraaddons-date-time">
                                         <?php
                                             if ($date &&  $settings['show_date']) {
+                                                /* translators: %s: Date */
                                                 printf('<p class="date">%s</p>', esc_html($date));
                                             }
                                             if ($time &&  $settings['show_time']) {
+                                                /* translators: %s: Time */
                                                 printf('<p class="time">%s</p>', esc_html($time));
                                             }
                                         ?>
@@ -385,13 +391,13 @@ class Timeline extends Base{
                             <div class="ua_content_inner_bottom ultraaddons-timeline-content-inner">
                                 <?php if ( $settings['show_title'] == 'yes'): ?>
                                 <?php if ($has_title_text): ?>  
-                                    <<?php echo ultraaddons_title_tag($item['_ua_timeline_title_size']); ?> <?php echo $timeline_title_class; ?>><?php echo esc_html($item['_ua_timeline_title']); ?></<?php echo ultraaddons_title_tag($item['_ua_timeline_title_size']); ?>>
+                                    <<?php echo wp_kses_post( ultraaddons_title_tag($item['_ua_timeline_title_size']) ); ?> <?php echo esc_attr( $timeline_title_class ); ?>><?php echo esc_html($item['_ua_timeline_title']); ?></<?php echo wp_kses_post( ultraaddons_title_tag($item['_ua_timeline_title_size']) ); ?>>
                                 <?php endif; ?>
                             <?php endif; ?>
                                 <?php if ( $settings['show_desc'] == 'yes'): ?>
                                 <?php if ($has_timeline_text): ?>
-                                    <p <?php echo $timeline_content_class; ?>>
-                                        <?php echo ultraaddons_parse_text_editor($item['_ua_timeline_desc']); ?>
+                                    <p <?php echo esc_attr( $timeline_content_class ); ?>>
+                                        <?php echo wp_kses_post( ultraaddons_parse_text_editor($item['_ua_timeline_desc']) ); ?>
                                     </p>
                                 <?php endif ?>
                             <?php endif ?>

@@ -105,7 +105,7 @@ class Portfolio extends Base {
             'orderby'   => isset( $settings['_ua_order_by'] ) ? $settings['_ua_order_by'] : 'date',
             'order' => isset( $settings['_ua_order'] ) ? $settings['_ua_order'] : 'asc',
             'ignore_sticky_posts' => isset( $settings['_ua_ignore_sticky_posts'] ) && $settings['_ua_ignore_sticky_posts'] == 'yes' ? true : false,
-            'post__not_in' => '',
+            // 'post__not_in' => '',
             'author__in' => ''
         );
 		$this->_query = new WP_Query( $args );
@@ -223,7 +223,7 @@ class Portfolio extends Base {
 			Group_Control_Image_Size::get_type(),
 			[
 				'name' => 'thumbnail_size',
-				'exclude' => [ 'custom' ],
+				// 'exclude' => [ 'custom' ],
 				'default' => 'medium',
 				'prefix_class' => 'elementor-portfolio--thumbnail-size-',
 			]

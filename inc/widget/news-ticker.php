@@ -40,7 +40,7 @@ class News_Ticker extends Base{
 
 
         //CSS file News Ticker
-        wp_register_style('NewsTicker', ULTRA_ADDONS_ASSETS . 'vendor/css/breaking-news-ticker.css' );
+        wp_register_style('NewsTicker', ULTRA_ADDONS_ASSETS . 'vendor/css/breaking-news-ticker.css', array(), ULTRA_ADDONS_VERSION );
         wp_enqueue_style('NewsTicker' );
 
     }

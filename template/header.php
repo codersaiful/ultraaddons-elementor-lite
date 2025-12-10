@@ -39,7 +39,7 @@ $body_class     = 'ua-body';
      * @HOOK for at Before Header
      */
     do_action( 'ultraaddons_before_header' );
-    echo ultraaddons_elementor_display_content( HF_Render::get_header_id() );
+    echo wp_kses_post( ultraaddons_elementor_display_content( HF_Render::get_header_id() ) );
     /**
      * Insert Content or Do something at the Before Header of Site.
      * 

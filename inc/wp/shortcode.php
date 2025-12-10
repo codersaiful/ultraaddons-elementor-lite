@@ -17,7 +17,11 @@ class Shortcode{
         if( empty( $atts['id'] ) ){
             return;
         }
-        $pairs = array( 'exclude' => false );
+        $pairs = array(
+            'id'            =>  '',
+            'template_id'   =>  '',
+            'post_id'       =>  '',
+        );
         extract( shortcode_atts( $pairs, $atts ) );
         $post_id = (int) $atts['id'];
         
