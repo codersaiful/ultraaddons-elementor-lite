@@ -170,7 +170,7 @@ if ( $filter ) {
 		$ultraaddons_slugs         = array();
 		$ultraaddons_category_html = '';
 
-		do_action( 'ua_save_used_widget', 'tabs' );
+		do_action( 'ultraaddons_save_used_widget', 'tabs' );
 
 		foreach ( $ultraaddons_terms as $ultraaddons_term_cat ) {
 			$id             = $ultraaddons_term_cat->term_id;
@@ -378,17 +378,17 @@ foreach ( $ultraaddons_more_atts as $ultraaddons_key => $ultraaddons_value ) {
 	$ultraaddons_extra_atts .= $ultraaddons_key . '=' . json_encode( $ultraaddons_value ) . ' ';
 }
 
-do_action( 'ua_save_used_widget', 'products' );
+do_action( 'ultraaddons_save_used_widget', 'products' );
 if ( 'slider' == $layout_mode ) {
-	do_action( 'ua_save_used_widget', 'slider' );
+	do_action( 'ultraaddons_save_used_widget', 'slider' );
 }
 if ( $type ) {
 	if ( is_array( $ultraaddons_visible_options ) && in_array( 'deal', $ultraaddons_visible_options ) ) {
-		do_action( 'ua_save_used_widget', 'countdown' );
+		do_action( 'ultraaddons_save_used_widget', 'countdown' );
 	}
 } else {
 	if ( defined( 'ULTRAADDONS_VERSION' ) && ( in_array( 'deal', get_option( 'product_show_op' ) ) || in_array( 'deal', get_option( 'public_product_show_op' ) ) ) ) {
-		do_action( 'ua_save_used_widget', 'countdown' );
+		do_action( 'ultraaddons_save_used_widget', 'countdown' );
 	}
 }
 $ultraaddons_output .= do_shortcode( '[products ' . $ultraaddons_extra_atts . ']' );

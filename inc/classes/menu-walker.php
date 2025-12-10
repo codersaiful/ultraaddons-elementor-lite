@@ -35,7 +35,7 @@ class Menu_Walker extends \Walker_Nav_Menu {
 		if ( 0 === $depth ) {
 			array_push( $classes, 'parent' );
 		}
-		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $ultraaddons_item, $ultraaddons_args, $depth ) );
+		$class_names = join( ' ', apply_filters( 'ultraaddons_nav_menu_css_class', array_filter( $classes ), $ultraaddons_item, $ultraaddons_args, $depth ) );
 		$class_names = ' class="' . esc_attr( $class_names ) . $submenu . ' ua-creative-menu"';
 
 		$ultraaddons_output .= $indent . '<li id="menu-item-' . $ultraaddons_item->ID . '"' . $ultraaddons_value . $class_names . '>';
@@ -52,7 +52,7 @@ class Menu_Walker extends \Walker_Nav_Menu {
 		$attributes .= ! empty( $ultraaddons_item->xfn ) ? ' rel="' . esc_attr( $ultraaddons_item->xfn ) . $rel_xfn . '"' : '' . $rel_blank;
 		$attributes .= ! empty( $ultraaddons_item->url ) ? ' href="' . esc_attr( $ultraaddons_item->url ) . '"' : '';
 
-		$atts = apply_filters( 'ua_nav_menu_attrs', $attributes );
+		$atts = apply_filters( 'ultraaddons_ua_nav_menu_attrs', $attributes );
 
 		$item_output  = $ultraaddons_args->has_children ? '<div class="ua-has-submenu-container">' : '';
 		$item_output .= $ultraaddons_args->before;
@@ -64,6 +64,7 @@ class Menu_Walker extends \Walker_Nav_Menu {
 		}
 
 		$item_output .= '>';
+		//phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 		$item_output .= $ultraaddons_args->link_before . apply_filters( 'the_title', $ultraaddons_item->title, $ultraaddons_item->ID ) . $ultraaddons_args->link_after;
 		if ( $ultraaddons_args->has_children ) {
 			$item_output .= "<span class='ua-menu-toggle sub-arrow ua-menu-child-";
@@ -75,7 +76,7 @@ class Menu_Walker extends \Walker_Nav_Menu {
 		$item_output .= $ultraaddons_args->after;
 		$item_output .= $ultraaddons_args->has_children ? '</div>' : '';
 
-		$ultraaddons_output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $ultraaddons_item, $depth, $ultraaddons_args );
+		$ultraaddons_output .= apply_filters( 'ultraaddons_walker_nav_menu_start_el', $item_output, $ultraaddons_item, $depth, $ultraaddons_args );
 	}
 
 	/**

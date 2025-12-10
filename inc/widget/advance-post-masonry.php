@@ -1672,7 +1672,7 @@ class Advance_Post_Masonry extends Base{
             return;
         }
         $author_prefix_text = $settings['_ua_blog_skin'] == '_skin_1' ? ' By' : '';
-        echo '<p class="ua_date ua-post__date"><a href="#">'. esc_html( apply_filters('the_date', get_the_date(), get_option('date_format'), '', ''). $author_prefix_text ) . '</a></p>';
+        echo '<p class="ua_date ua-post__date"><a href="#">'. esc_html( get_the_date() . $author_prefix_text ) . '</a></p>';
     }
     protected function render_tag() {    
         $settings = $this->get_settings_for_display();

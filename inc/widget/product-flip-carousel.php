@@ -1207,7 +1207,7 @@ $this->end_controls_section();
 		}
 		if(! empty( $settings['_ua_query_post_not_in'] )){
 			$exclude_ids = explode(',',$settings['_ua_query_post_not_in']);
-			//phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_post_not_in
+			//phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_post__not_in
 			$ultraaddons_args['post__not_in'] = $exclude_ids;
 		}
 
@@ -1251,7 +1251,7 @@ $this->end_controls_section();
 			<div class="ua-product-flip flip-<?php echo esc_attr( $settings['_ua_product_flip_animation_type'] ); ?>">
 				<div class="front" style="background:url(<?php echo esc_url($image_url);?>)">
 					<?php if ( $product->is_on_sale() ) : 
-					echo wp_kses_post( apply_filters( 'woocommerce_sale_flash', '<span class="ua-onsale">' . esc_html__( 'Sale!', 'ultraaddons-elementor-lite' ) . '</span>', $product ) );
+					echo wp_kses_post( apply_filters( 'ultraaddons_woocommerce_sale_flash', '<span class="ua-onsale">' . esc_html__( 'Sale!', 'ultraaddons-elementor-lite' ) . '</span>', $product ) );
 					endif;
 					?>
 					<a href="<?php echo esc_url( get_the_permalink() ); ?>">

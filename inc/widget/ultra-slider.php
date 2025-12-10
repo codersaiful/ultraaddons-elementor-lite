@@ -43,10 +43,10 @@ class Ultra_Slider extends Base{
 
 
             //CSS file for Slider Script Owl Carousel Slider
-            wp_register_style('owlCarousel', ULTRA_ADDONS_ASSETS . 'vendor/css/owl.carousel.css' );
+            wp_register_style('owlCarousel', ULTRA_ADDONS_ASSETS . 'vendor/css/owl.carousel.css', [] , ULTRA_ADDONS_VERSION );
             wp_enqueue_style('owlCarousel' );
 
-            wp_register_style('owlCarousel-theme', ULTRA_ADDONS_ASSETS . 'vendor/css/owl/owl.theme.default.css' );
+            wp_register_style('owlCarousel-theme', ULTRA_ADDONS_ASSETS . 'vendor/css/owl/owl.theme.default.css', [] , ULTRA_ADDONS_VERSION );
             wp_enqueue_style( 'owlCarousel-theme' );
 
         }

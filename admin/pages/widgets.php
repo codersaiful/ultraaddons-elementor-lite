@@ -49,10 +49,10 @@ $ultraaddons_disable_items = Widgets_Manager::disableWidgetKeys();
             }
             $ultraaddons_wid_cats['category-all'] = esc_html__( 'All', 'ultraaddons-elementor-lite' );
 
-            foreach( $ultraaddons_wid_cats as $ultraaddons_wid_cat_key => $wid_cat ){
+            foreach( $ultraaddons_wid_cats as $ultraaddons_wid_cat_key => $ultraaddons_wid_cat ){
                 $ultraaddons_active_class = $ultraaddons_wid_cat_key == 'all' ? 'active' : '';
             ?>
-                <li class="wid-cat-wise-target <?php echo esc_attr( $ultraaddons_active_class ); ?>" data-target="<?php echo esc_attr( $ultraaddons_wid_cat_key ); ?>" ><?php echo esc_html( $wid_cat ); ?></li>
+                <li class="wid-cat-wise-target <?php echo esc_attr( $ultraaddons_active_class ); ?>" data-target="<?php echo esc_attr( $ultraaddons_wid_cat_key ); ?>" ><?php echo esc_html( $ultraaddons_wid_cat ); ?></li>
             <?php
             }
             

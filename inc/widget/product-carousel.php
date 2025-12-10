@@ -1033,7 +1033,7 @@ if( Plugin::$instance->editor->is_edit_mode()){
 		}
 		if(! empty( $settings['_ua_query_post_not_in'] )){
 			$exclude_ids = explode(',',$settings['_ua_query_post_not_in']);
-			//phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_post_not_in
+			//phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_post__not_in
 			$ultraaddons_args['post__not_in'] = $exclude_ids;
 		}
 
@@ -1080,7 +1080,7 @@ if( Plugin::$instance->editor->is_edit_mode()){
             <div class="ua-card shadow ua-h-100">
                 <div class="ua-thumbnail">
 					<?php if ( $product->is_on_sale() ) : 
-					echo wp_kses_post( apply_filters( 'woocommerce_sale_flash', '<span class="ua-onsale">' 
+					echo wp_kses_post( apply_filters( 'ultraaddons_woocommerce_sale_flash', '<span class="ua-onsale">' 
 					. esc_html__( 'Sale!', 'ultraaddons-elementor-lite' ) . '</span>', $product ) );
 					endif;
 					?>

@@ -116,7 +116,7 @@ class Theme_Demo{
         $merrged_args['templates'] = self::$root_site . sprintf( self::$templates_permalink, self::$permalink_prefix );
         $merrged_args['template'] = self::$root_site . sprintf( self::$template_permalink, self::$permalink_prefix );
 
-        self::$theme_demo_args = apply_filters( 'eldm_theme_demo_args', $merrged_args );
+        self::$theme_demo_args = apply_filters( 'ultraaddons_eldm_theme_demo_args', $merrged_args );
 
 
         return self::$theme_demo_args;

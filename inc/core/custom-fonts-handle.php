@@ -377,6 +377,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
             // Sanitize variants array
             if ( isset( $_POST[self::$meta_key]['variants'] ) && is_array( $_POST[self::$meta_key]['variants'] ) ) {
                 $meta_value['variants'] = array();
+                //Here need array of variants
                 foreach ( wp_unslash( $_POST[self::$meta_key]['variants'] ) as $variant_key => $variant ) {
                     if ( ! is_array( $variant ) ) {
                         continue;

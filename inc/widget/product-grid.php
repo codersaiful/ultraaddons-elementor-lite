@@ -1020,7 +1020,7 @@ class Product_Grid extends Base{
 		}
 
 		if( ! empty( $settings['cat_ids'] ) ){
-			//phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.TaxQuery_tax_query
+			//phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 			$ultraaddons_args['tax_query'] = array(
 				array(
 					'taxonomy'  => 'product_cat',
@@ -1031,7 +1031,7 @@ class Product_Grid extends Base{
 		}	
 
 		if( ! empty( $settings['tag_ids'] ) ){
-			//phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.TaxQuery_tax_query
+			//phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 			$ultraaddons_args['tax_query'] = array(
 				array(
 					'taxonomy'  => 'product_tag',
@@ -1055,7 +1055,7 @@ class Product_Grid extends Base{
             <?php if ( $product->is_on_sale() ) : ?>
             <div class="ua-badge">
                 <?php
-                echo wp_kses_post( apply_filters( 'woocommerce_sale_flash', '<span class="ua-onsale">' 
+                echo wp_kses_post( apply_filters( 'ultraaddons_woocommerce_sale_flash', '<span class="ua-onsale">' 
                 . esc_html__( 'Sale!', 'ultraaddons-elementor-lite' ) . '</span>', $product ) );
                 ?>
             </div>

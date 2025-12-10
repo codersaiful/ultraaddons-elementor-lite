@@ -572,11 +572,12 @@ class Post_Timeline extends Base{
 		}
 		if(! empty( $settings['_ua_query_post_not_in'] )){
 			$exclude_ids = explode(',',$settings['_ua_query_post_not_in']);
-			//phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_post_not_in
+			//phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_post__not_in
 			$ultraaddons_args['post__not_in'] = $exclude_ids;
 		}
 
 	 	if( ! empty( $settings['cat_ids'] ) ){
+			//phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 			$ultraaddons_args['tax_query'] = array(
 				array(
 					'taxonomy'  => 'product_cat',

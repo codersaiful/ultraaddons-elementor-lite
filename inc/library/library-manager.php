@@ -114,7 +114,7 @@ class Library_Manager {
 
 		]; 
 
-		$additional_library = apply_filters( 'eldm_library_basic_data', $additional_library );
+		$additional_library = apply_filters( 'ultraaddons_eldm_library_basic_data', $additional_library );
 		
         $localize_data = [
 			'placeholder_widgets' => Widgets_Manager::proWidgets(),

@@ -75,14 +75,14 @@ if( ! function_exists( 'ultraaddons_cmb2_metaboxes' )){
 //    return $template;
 //} );
 
-if( ! function_exists( 'wqpmb_locate_template_ultraaddons' ) ){
+if( ! function_exists( 'ultraaddons_located_template_ultraaddons' ) ){
     /**
      * Template selection for Quantity Button
      * 
      * @global type $woocommerce
      * @return type Template
      */
-    function wqpmb_locate_template_ultraaddons( $template, $template_name, $template_path ){
+    function ultraaddons_located_template_ultraaddons( $template, $template_name, $template_path ){
         
         
         
@@ -93,7 +93,7 @@ if( ! function_exists( 'wqpmb_locate_template_ultraaddons' ) ){
 
         return $template;
     }
-    //add_filter( 'woocommerce_locate_template', 'wqpmb_locate_template_ultraaddons',1,3 );
+    //add_filter( 'woocommerce_locate_template', 'ultraaddons_located_template_ultraaddons',1,3 );
 }
 
 add_action('wp_here_stay_on_wp',function(){
