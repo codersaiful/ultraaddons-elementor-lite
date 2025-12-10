@@ -26,8 +26,8 @@ use Elementor\Widget_Base;
  * @deprecated since version 1.0.9.4
  */
 class Placeholder extends Widget_Base{
-    public $ua_name;
-    public $ua_icon;
+    public $ultraaddons_name;
+    public $ultraaddons_icon;
     public $title;
     public function __construct( String $widget_key, Array $widget = null ) {
         $this->name = $widget_key;

@@ -20,23 +20,23 @@ class Hero_Slider extends Base{
         parent::__construct($data, $args);
 
         //Naming of Args for swiper
-        $ua_name           = 'swiper';
+        $ultraaddons_name           = 'swiper';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/swiper/js/swiper.min.js';
         $dependency     =  ['jquery'];//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer      = true;
 
-        wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ua_name );
+        wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ultraaddons_name );
 
-        $ua_name          = 'frontend-hero-slider';
+        $ultraaddons_name          = 'frontend-hero-slider';
         $js_file_url   = ULTRA_ADDONS_ASSETS . 'js/frontend-hero-slider.js';
         $dependency    =  [];//['jquery'];
         $version       = ULTRA_ADDONS_VERSION;
         $in_footer  	  = true;
 
-        wp_register_script( $ua_name , $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ua_name );
+        wp_register_script( $ultraaddons_name , $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ultraaddons_name );
 
         //CSS file swiper
         wp_register_style('swiper', ULTRA_ADDONS_ASSETS . 'vendor/swiper/css/swiper.min.css', array(), ULTRA_ADDONS_VERSION );
@@ -910,21 +910,21 @@ class Hero_Slider extends Base{
             <?php 
             if ( $settings['list'] ) {
                 $count=0;
-                foreach (  $settings['list'] as $ua_item ) {
+                foreach (  $settings['list'] as $ultraaddons_item ) {
                     $count 			= $count+1;
-					$url			= (!empty( $ua_item['action_btn_link']['url'] )) ? $ua_item['action_btn_link']['url']  : '';
-					$is_external	= ( $ua_item['action_btn_link']['is_external']=='on') ? 'target="_blank"' : '';
-					$nofollow		= ( $ua_item['action_btn_link']['nofollow']=='on') ? 'rel="nofollow"' :'';
+					$url			= (!empty( $ultraaddons_item['action_btn_link']['url'] )) ? $ultraaddons_item['action_btn_link']['url']  : '';
+					$is_external	= ( $ultraaddons_item['action_btn_link']['is_external']=='on') ? 'target="_blank"' : '';
+					$nofollow		= ( $ultraaddons_item['action_btn_link']['nofollow']=='on') ? 'rel="nofollow"' :'';
             ?>
-            <div class="swiper-slide slide-<?php echo esc_attr( $count );?> elementor-repeater-item-<?php echo esc_attr( $ua_item['_id'] ); ?>">
+            <div class="swiper-slide slide-<?php echo esc_attr( $count );?> elementor-repeater-item-<?php echo esc_attr( $ultraaddons_item['_id'] ); ?>">
                 <div class="ua-image">
                     <div class="ua-slider-container">
                         <div class="animated-area">
-							<h4 class="ua-slider-sub-title elementor-repeater-item-<?php echo esc_attr( $ua_item['_id'] ); ?>">
-								<?php echo esc_html( $ua_item['list_title'] );?>
+							<h4 class="ua-slider-sub-title elementor-repeater-item-<?php echo esc_attr( $ultraaddons_item['_id'] ); ?>">
+								<?php echo esc_html( $ultraaddons_item['list_title'] );?>
 							</h4>
-							<h1 class="ua-slider-title elementor-repeater-item-<?php echo esc_attr( $ua_item['_id'] ); ?>"><?php echo esc_html( $ua_item['list_content'] );?></h1>
-							<a href="<?php echo esc_url($url); ?>" <?php echo esc_attr($is_external);?> <?php echo esc_attr($nofollow);?> class="ua-slider-buttton elementor-repeater-item-<?php echo esc_attr( $ua_item['_id'] ); ?> <?php echo esc_attr( $settings['_ua_btn_animation'] );?>"><?php echo esc_html( $ua_item['list_btn'] );?></a>
+							<h1 class="ua-slider-title elementor-repeater-item-<?php echo esc_attr( $ultraaddons_item['_id'] ); ?>"><?php echo esc_html( $ultraaddons_item['list_content'] );?></h1>
+							<a href="<?php echo esc_url($url); ?>" <?php echo esc_attr($is_external);?> <?php echo esc_attr($nofollow);?> class="ua-slider-buttton elementor-repeater-item-<?php echo esc_attr( $ultraaddons_item['_id'] ); ?> <?php echo esc_attr( $settings['_ua_btn_animation'] );?>"><?php echo esc_html( $ultraaddons_item['list_btn'] );?></a>
                         </div>
                     </div>
                 </div>

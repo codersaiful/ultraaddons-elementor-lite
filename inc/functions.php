@@ -15,11 +15,11 @@ defined( 'ABSPATH' ) || die();
  * @since 1.0.0.2
  * @by Saiful
  * 
- * @param string $ua_class_name
+ * @param string $ultraaddons_class_name
  * @param type $object
  * @return string Full URL link for Class
  */
-function ultraaddons_help_url( $ua_class_name, $object = false ){
+function ultraaddons_help_url( $ultraaddons_class_name, $object = false ){
     
     /**
      * using Constant: ULTRA_ADDONS_WIDGET_HELP_ULR 
@@ -27,7 +27,7 @@ function ultraaddons_help_url( $ua_class_name, $object = false ){
      * 
      * @since 1.0.0.3
      */
-    return ULTRA_ADDONS_WIDGET_HELP_ULR . $ua_class_name;
+    return ULTRA_ADDONS_WIDGET_HELP_ULR . $ultraaddons_class_name;
 }
 
 if( ! function_exists( 'ultraaddons_is_cf7_activated' ) ){
@@ -75,11 +75,11 @@ if( !function_exists( 'ultraaddons_get_current_user_display_name' ) ){
      */
     function ultraaddons_get_current_user_display_name() {
             $user = wp_get_current_user();
-            $ua_name = 'user';
+            $ultraaddons_name = 'user';
             if ( $user->exists() && $user->display_name ) {
-                    $ua_name = $user->display_name;
+                    $ultraaddons_name = $user->display_name;
             }
-            return $ua_name;
+            return $ultraaddons_name;
     }
 }
 if( ! function_exists( 'ultraaddons_do_shortcode' ) ){
@@ -206,17 +206,17 @@ function ultraaddons_get_placeholder_image_src( $image = '' ) {
 * Checks a control value for being empty, including a string of '0' not covered by PHP's empty().
 *
 * @param mixed $source
-* @param bool|string $key
+* @param bool|string $ultraaddons_key
 *
 * @return bool
 */
-function ultraaddons_widget_data_is_empty( $source, $key = false ) {
+function ultraaddons_widget_data_is_empty( $source, $ultraaddons_key = false ) {
        if ( is_array( $source ) ) {
-               if ( ! isset( $source[ $key ] ) ) {
+               if ( ! isset( $source[ $ultraaddons_key ] ) ) {
                        return true;
                }
 
-               $source = $source[ $key ];
+               $source = $source[ $ultraaddons_key ];
        }
 
        return '0' !== $source && empty( $source );
@@ -812,15 +812,15 @@ function ultraaddons_optimize_array( $array ){
 
     if( ! is_array( $array ) ) return $array;
 
-    foreach ($array as $key => &$value) {
+    foreach ($array as $ultraaddons_key => &$value) {
         if ( ! is_bool( $value ) && empty($value)) {
-           unset($array[$key]);
+           unset($array[$ultraaddons_key]);
         }
         else {
            if (is_array($value)) {
               $value = ultraaddons_optimize_array($value);
               if (! is_bool( $value ) && empty($value)) {
-                 unset($array[$key]);
+                 unset($array[$ultraaddons_key]);
               }
            }
         }

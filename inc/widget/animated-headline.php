@@ -78,8 +78,8 @@ class Animated_Headline extends Base{
 		<span class="elementor-headline-dynamic-wrapper elementor-headline-text-wrapper">
 			<?php if ( 'rotate' === $settings['headline_style'] && $settings['rotating_text'] ) :
 				$rotating_text = explode( "\n", $settings['rotating_text'] );
-				foreach ( $rotating_text as $key => $text ) :
-					$status_class = 1 > $key ? 'elementor-headline-text-active' : ''; ?>
+				foreach ( $rotating_text as $ultraaddons_key => $text ) :
+					$status_class = 1 > $ultraaddons_key ? 'elementor-headline-text-active' : ''; ?>
 				<span class="elementor-headline-dynamic-text <?php echo esc_attr( $status_class ); ?>">
 					<?php echo wp_kses_post( str_replace( ' ', '&nbsp;', $text ) ); ?>
 				</span>

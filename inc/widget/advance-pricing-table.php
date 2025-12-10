@@ -29,23 +29,23 @@ class Advance_Pricing_Table extends Base{
         parent::__construct($data, $args);
 
         //Naming of Args for pricing
-        $ua_name           = 'pricing';
+        $ultraaddons_name           = 'pricing';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/pricing/js/pricing.js';
         $dependency     =  ['jquery'];//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  = true;
 
-        wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ua_name );
+        wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ultraaddons_name );
 
-        $ua_name           = 'modernizr';
+        $ultraaddons_name           = 'modernizr';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'js/modernizr.js';
         $dependency     =  ['jquery'];//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  = true;
 
-        wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ua_name );
+        wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ultraaddons_name );
 
          //CSS file for Slider Script Owl Carousel Slider
         wp_register_style('adv-pricing', ULTRA_ADDONS_ASSETS . 'vendor/pricing/css/pricing.css', array(), ULTRA_ADDONS_VERSION );
@@ -1357,14 +1357,14 @@ class Advance_Pricing_Table extends Base{
 					<?php 
 					if ( $settings['list'] ) {
 						$count=0;
-						foreach (  $settings['list'] as $ua_item ) {
-							$url		= (!empty( $ua_item['website_link']['url'] )) ? $ua_item['website_link']['url']  : '';
-							$is_external 	= ( $ua_item['website_link']['is_external']=='on') ? 'target="_blank"' : '';
-							$nofollow 	= ( $ua_item['website_link']['nofollow']=='on') ? 'rel="nofollow"' :'';
+						foreach (  $settings['list'] as $ultraaddons_item ) {
+							$url		= (!empty( $ultraaddons_item['website_link']['url'] )) ? $ultraaddons_item['website_link']['url']  : '';
+							$is_external 	= ( $ultraaddons_item['website_link']['is_external']=='on') ? 'target="_blank"' : '';
+							$nofollow 	= ( $ultraaddons_item['website_link']['nofollow']=='on') ? 'rel="nofollow"' :'';
 							$count=$count+1;
 							//Discount Calculate
-							$list_price 	=  $ua_item['list_price'] ?? 0;
-							$selling_price 	=  $ua_item['list_discount_price'];
+							$list_price 	=  $ultraaddons_item['list_price'] ?? 0;
+							$selling_price 	=  $ultraaddons_item['list_discount_price'];
 							$discount 		= ((float)$list_price - (float)$selling_price);
 							if( is_numeric( $list_price ) && is_numeric( $discount ) ){
 							$percent 		= ($discount/$list_price) * 100;
@@ -1375,14 +1375,14 @@ class Advance_Pricing_Table extends Base{
 
 					?>
 					<div class="ua-col-3">
-						<div class="plan plan-<?php echo esc_attr( $count ); ?> elementor-repeater-item-<?php echo esc_attr( $ua_item['_id'] ); ?>" >
-							<?php if($ua_item['show_badge']=='yes'):?>
+						<div class="plan plan-<?php echo esc_attr( $count ); ?> elementor-repeater-item-<?php echo esc_attr( $ultraaddons_item['_id'] ); ?>" >
+							<?php if($ultraaddons_item['show_badge']=='yes'):?>
 							<div class="featured-badge">
-								<?php echo esc_html( $ua_item['badge_text'] );?>
+								<?php echo esc_html( $ultraaddons_item['badge_text'] );?>
 							</div>
 							<?php endif;?>
 							<?php
-							if('yes'=== $ua_item['show_discount']):
+							if('yes'=== $ultraaddons_item['show_discount']):
 							?>
 							<div class="discount-percent">
 								<?php
@@ -1394,12 +1394,12 @@ class Advance_Pricing_Table extends Base{
 							<?php endif;?>
 							
 							<div class="pricing-icon-wrapper">
-								<?php \Elementor\Icons_Manager::render_icon( $ua_item['icon'], [ 'aria-hidden' => 'true' ] ); ?>
+								<?php \Elementor\Icons_Manager::render_icon( $ultraaddons_item['icon'], [ 'aria-hidden' => 'true' ] ); ?>
 							</div>
-							<h2 class="plan-title"><?php echo esc_html( $ua_item['list_title'] ); ?></h2>
+							<h2 class="plan-title"><?php echo esc_html( $ultraaddons_item['list_title'] ); ?></h2>
 							<div class="price">
 								<?php
-								if('yes'=== $ua_item['is_discount']){
+								if('yes'=== $ultraaddons_item['is_discount']){
 								?>
 								<span class="dollar"><?php echo esc_html($currency_symbol);?></span>
 								<span class="amount"><s><?php echo esc_html( $list_price ); ?></s></span>
@@ -1411,16 +1411,16 @@ class Advance_Pricing_Table extends Base{
 								<?php endif;?>
 								<?php }else{?>
 									<span class="dollar"><?php echo esc_html($currency_symbol);?></span>
-								<span class="amount"><?php echo esc_html( $ua_item['list_price'] );?></span>
+								<span class="amount"><?php echo esc_html( $ultraaddons_item['list_price'] );?></span>
 								<?php }?>
-							   <?php if( !empty($ua_item['list_period']) ):?>
+							   <?php if( !empty($ultraaddons_item['list_period']) ):?>
 								<span class="slash">/</span>
 								<?php endif;?>
-								<span class="month"><?php echo esc_html($ua_item['list_period']);?></span>
+								<span class="month"><?php echo esc_html($ultraaddons_item['list_period']);?></span>
 							</div>
-							<div class="features-list"><?php echo wp_kses_post($ua_item['list_feature']);?></div>
+							<div class="features-list"><?php echo wp_kses_post($ultraaddons_item['list_feature']);?></div>
 							<a class="button ua-sign-up" href="<?php echo esc_url($url); ?>" <?php echo esc_attr($is_external);?> <?php echo esc_attr($nofollow);?>>
-								<?php echo esc_html($ua_item['list_button']);?>
+								<?php echo esc_html($ultraaddons_item['list_button']);?>
 							</a>
 						</div>
 					</div>
@@ -1439,14 +1439,14 @@ class Advance_Pricing_Table extends Base{
 					<?php 
 					if ( $settings['list_b'] ) {
 						$count=0;
-						foreach (  $settings['list_b'] as $ua_item ) {
-							$url		= (!empty( $ua_item['website_link']['url'] )) ? $ua_item['website_link']['url']  : '';
-							$is_external 	= ( $ua_item['website_link']['is_external']=='on') ? 'target="_blank"' : '';
-							$nofollow 	= ( $ua_item['website_link']['nofollow']=='on') ? 'rel="nofollow"' :'';
+						foreach (  $settings['list_b'] as $ultraaddons_item ) {
+							$url		= (!empty( $ultraaddons_item['website_link']['url'] )) ? $ultraaddons_item['website_link']['url']  : '';
+							$is_external 	= ( $ultraaddons_item['website_link']['is_external']=='on') ? 'target="_blank"' : '';
+							$nofollow 	= ( $ultraaddons_item['website_link']['nofollow']=='on') ? 'rel="nofollow"' :'';
 							$count=$count+1;
 							//Discount Calculate
-							$list_price 	=  $ua_item['list_price'];
-							$selling_price 	=  $ua_item['list_discount_price'];
+							$list_price 	=  $ultraaddons_item['list_price'];
+							$selling_price 	=  $ultraaddons_item['list_discount_price'];
 							$discount 		= ((float)$list_price - (float)$selling_price);
 
 							if( $list_price != 0 ){
@@ -1454,14 +1454,14 @@ class Advance_Pricing_Table extends Base{
 							}
 					?>
 					<div class="ua-col-3">
-						<div class="plan plan-<?php echo esc_attr($count);?> elementor-repeater-item-<?php echo esc_attr( $ua_item['_id'] ); ?>">
-							<?php if($ua_item['show_badge']=='yes'):?>
+						<div class="plan plan-<?php echo esc_attr($count);?> elementor-repeater-item-<?php echo esc_attr( $ultraaddons_item['_id'] ); ?>">
+							<?php if($ultraaddons_item['show_badge']=='yes'):?>
 							<div class="featured-badge">
-								<?php echo esc_html($ua_item['badge_text']) ;?>
+								<?php echo esc_html($ultraaddons_item['badge_text']) ;?>
 							</div>
 							<?php endif;?>
 							<?php
-							if('yes'=== $ua_item['show_discount']):
+							if('yes'=== $ultraaddons_item['show_discount']):
 							?>
 							<div class="discount-percent">
 								<?php 
@@ -1474,12 +1474,12 @@ class Advance_Pricing_Table extends Base{
 							<?php endif;?>
 
 							<div class="pricing-icon-wrapper">
-								<?php \Elementor\Icons_Manager::render_icon( $ua_item['icon'], [ 'aria-hidden' => 'true' ] ); ?>
+								<?php \Elementor\Icons_Manager::render_icon( $ultraaddons_item['icon'], [ 'aria-hidden' => 'true' ] ); ?>
 							</div>
-							<h2 class="plan-title"><?php echo esc_html($ua_item['list_title']);?></h2>
+							<h2 class="plan-title"><?php echo esc_html($ultraaddons_item['list_title']);?></h2>
 							<div class="price">
 								<?php
-								if('yes'=== $ua_item['is_discount']){
+								if('yes'=== $ultraaddons_item['is_discount']){
 								?>
 								<span class="dollar"><?php echo esc_html($currency_symbol);?></span>
 								<span class="amount"><s><?php echo esc_html($list_price); ?></s></span>
@@ -1491,16 +1491,16 @@ class Advance_Pricing_Table extends Base{
 								<?php endif;?>
 								<?php }else{?>
 									<span class="dollar"><?php echo esc_html($currency_symbol);?></span>
-								<span class="amount"><?php echo esc_html($ua_item['list_price']);?></span>
+								<span class="amount"><?php echo esc_html($ultraaddons_item['list_price']);?></span>
 								<?php }?>
-							   <?php if( !empty($ua_item['list_period']) ):?>
+							   <?php if( !empty($ultraaddons_item['list_period']) ):?>
 								<span class="slash">/</span>
 								<?php endif;?>
-								<span class="month"><?php echo esc_html($ua_item['list_period']);?></span>
+								<span class="month"><?php echo esc_html($ultraaddons_item['list_period']);?></span>
 							</div>
-							<div class="features-list"><?php echo wp_kses_post($ua_item['list_feature']);?></div>
+							<div class="features-list"><?php echo wp_kses_post($ultraaddons_item['list_feature']);?></div>
 							<a class="button ua-sign-up" href="<?php echo esc_url($url); ?>" <?php echo esc_attr($is_external);?> <?php echo esc_attr($nofollow);?>>
-								<?php echo esc_html($ua_item['list_button']);?>
+								<?php echo esc_html($ultraaddons_item['list_button']);?>
 							</a>
 						</div>
 					</div>

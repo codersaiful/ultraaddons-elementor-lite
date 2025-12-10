@@ -34,47 +34,47 @@ class Advance_Post_Masonry extends Base{
         parent::__construct($data, $args);
        
         //For Blog Widget
-        $ua_name           = 'imagesloaded.pkgd.min';
+        $ultraaddons_name           = 'imagesloaded.pkgd.min';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/imagesloaded.pkgd.min.js';
         $dependency     =  ['jquery','elementor-frontend'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  = true;
 
-        wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ua_name );
+        wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ultraaddons_name );
         
         //For Blog Widget
-        $ua_name           = 'isotope.pkgd.min';
+        $ultraaddons_name           = 'isotope.pkgd.min';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/isotope.pkgd.min.js';
         $dependency     =  ['jquery','elementor-frontend'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  = true;
 
-        wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ua_name );
+        wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ultraaddons_name );
         
         //For Blog Widget
-        $ua_name           = 'packery-mode.pkgd.min';
+        $ultraaddons_name           = 'packery-mode.pkgd.min';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/packery-mode.pkgd.min.js';
         $dependency     =  ['jquery','elementor-frontend'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  = true;
 
-        wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ua_name );
+        wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ultraaddons_name );
         
         
         
         //Naming of Args for Masonary
         //For Blog Widget
-        $ua_name           = 'masonry_grid';
+        $ultraaddons_name           = 'masonry_grid';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/masonry_grid.js';
         $dependency     =  ['jquery','elementor-frontend'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  = true;
 
-        wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ua_name );
+        wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ultraaddons_name );
         
     }
     
@@ -1942,7 +1942,7 @@ protected function get_grid_layout_four_options( array $settings ) {
         if ( isset( $settings['_ua_grid_metro_layout'] ) && !empty($settings['_ua_grid_metro_layout']) ) {
             $metro_layout = [];
 
-        foreach ( $settings['_ua_grid_metro_layout'] as $key => $value ) {
+        foreach ( $settings['_ua_grid_metro_layout'] as $ultraaddons_key => $value ) {
             $metro_layout[] = $value['size'];
             
             }

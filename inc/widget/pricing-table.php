@@ -1986,30 +1986,30 @@ class Pricing_Table extends Base {
                             if ( ! empty( $settings['features_list'] ) ) : ?>
                                 <ul class="ua-price-table__features-list">
                                         <?php
-                                        foreach ( $settings['features_list'] as $index => $ua_item ) :
+                                        foreach ( $settings['features_list'] as $index => $ultraaddons_item ) :
                                                 $repeater_setting_key = $this->get_repeater_setting_key( 'item_text', 'features_list', $index );
                                                 $this->add_inline_editing_attributes( $repeater_setting_key );
 
-                                                $migrated = isset( $ua_item['__fa4_migrated']['selected_item_icon'] );
+                                                $migrated = isset( $ultraaddons_item['__fa4_migrated']['selected_item_icon'] );
                                                 // add old default
-                                                if ( ! isset( $ua_item['item_icon'] ) && ! $migration_allowed ) {
-                                                        $ua_item['item_icon'] = 'fa fa-check-circle';
+                                                if ( ! isset( $ultraaddons_item['item_icon'] ) && ! $migration_allowed ) {
+                                                        $ultraaddons_item['item_icon'] = 'fa fa-check-circle';
                                                 }
-                                                $is_new = ! isset( $ua_item['item_icon'] ) && $migration_allowed;
+                                                $is_new = ! isset( $ultraaddons_item['item_icon'] ) && $migration_allowed;
                                                 ?>
-                                                <li class="elementor-repeater-item-<?php echo esc_attr( $ua_item['_id'] ); ?>">
+                                                <li class="elementor-repeater-item-<?php echo esc_attr( $ultraaddons_item['_id'] ); ?>">
                                                         <div class="ua-price-table__feature-inner">
-                                                                <?php if ( ! empty( $ua_item['item_icon'] ) || ! empty( $ua_item['selected_item_icon'] ) ) :
+                                                                <?php if ( ! empty( $ultraaddons_item['item_icon'] ) || ! empty( $ultraaddons_item['selected_item_icon'] ) ) :
                                                                         if ( $is_new || $migrated ) :
-                                                                                Icons_Manager::render_icon( $ua_item['selected_item_icon'], [ 'aria-hidden' => 'true' ] );
+                                                                                Icons_Manager::render_icon( $ultraaddons_item['selected_item_icon'], [ 'aria-hidden' => 'true' ] );
                                                                         else : ?>
-                                                                                <i class="<?php echo esc_attr( $ua_item['item_icon'] ); ?>" aria-hidden="true"></i>
+                                                                                <i class="<?php echo esc_attr( $ultraaddons_item['item_icon'] ); ?>" aria-hidden="true"></i>
                                                                                 <?php
                                                                         endif;
                                                                 endif; ?>
-                                                                <?php if ( ! empty( $ua_item['item_text'] ) ) : ?>
+                                                                <?php if ( ! empty( $ultraaddons_item['item_text'] ) ) : ?>
                                                                         <span <?php echo $this->get_render_attribute_string( $repeater_setting_key ); ?>>
-                                                                                <?php echo esc_html( $ua_item['item_text'] ); ?>
+                                                                                <?php echo esc_html( $ultraaddons_item['item_text'] ); ?>
                                                                         </span>
                                                                         <?php
                                                                 else :

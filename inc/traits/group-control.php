@@ -20,15 +20,15 @@ trait Group_Control{
      * and will use method gradient_background()
      * 
      * @param type $selectors
-     * @param string $ua_name
+     * @param string $ultraaddons_name
      */
-    public function gradient_background( $selectors = '', $ua_name = ''){
-        if( ! is_string( $selectors ) || ! is_string( $ua_name ) ){
+    public function gradient_background( $selectors = '', $ultraaddons_name = ''){
+        if( ! is_string( $selectors ) || ! is_string( $ultraaddons_name ) ){
             return;
         }
         //Confirm String name
-        if( ! empty( $ua_name ) ){
-            $ua_name = 'bacground_' . $this->get_id();
+        if( ! empty( $ultraaddons_name ) ){
+            $ultraaddons_name = 'bacground_' . $this->get_id();
         }
         $this->add_group_control(
                 Group_Control_Background::get_type(),

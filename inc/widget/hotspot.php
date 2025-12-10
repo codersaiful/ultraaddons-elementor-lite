@@ -329,23 +329,23 @@ class Hotspot extends Base{
             <?php 
             if ( $settings['list'] ) {
                 $count=0;
-                foreach (  $settings['list'] as $ua_item ) {
+                foreach (  $settings['list'] as $ultraaddons_item ) {
                      $count		= $count+1;
-                     $url		= (!empty( $ua_item['website_link']['url'] )) ? $ua_item['website_link']['url']  : '';
-					 $is_external 	= ( $ua_item['website_link']['is_external']=='on') ? 'target="_blank"' : '';
-					 $nofollow 	= ( $ua_item['website_link']['nofollow']=='on') ? 'rel="nofollow"' :'';
+                     $url		= (!empty( $ultraaddons_item['website_link']['url'] )) ? $ultraaddons_item['website_link']['url']  : '';
+					 $is_external 	= ( $ultraaddons_item['website_link']['is_external']=='on') ? 'target="_blank"' : '';
+					 $nofollow 	= ( $ultraaddons_item['website_link']['nofollow']=='on') ? 'rel="nofollow"' :'';
             ?>
 			<?php
 			if(!empty($url)):
 			?>
-				<a href="<?php echo esc_url($url); ?>" <?php echo esc_attr( $is_external );?> <?php echo esc_attr( $nofollow );?> class="ua-hotspot elementor-repeater-item-<?php echo esc_attr( $ua_item['_id'] ); ?> ua-hotspot--<?php echo  esc_attr( $count );?>">
-					<span class="ua-hotspot--title"><?php echo esc_attr( $ua_item['list_title'] );?></span>
+				<a href="<?php echo esc_url($url); ?>" <?php echo esc_attr( $is_external );?> <?php echo esc_attr( $nofollow );?> class="ua-hotspot elementor-repeater-item-<?php echo esc_attr( $ultraaddons_item['_id'] ); ?> ua-hotspot--<?php echo  esc_attr( $count );?>">
+					<span class="ua-hotspot--title"><?php echo esc_attr( $ultraaddons_item['list_title'] );?></span>
 					<span class="ua-hotspot--cta"></span>
 				</a>
             <?php 
 			else:?>
-				<div class="ua-hotspot elementor-repeater-item-<?php echo esc_attr( $ua_item['_id'] ); ?> ua-hotspot--<?php echo esc_attr( $count );?>">
-					<span class="ua-hotspot--title"><?php echo esc_html( $ua_item['list_title'] );?></span>
+				<div class="ua-hotspot elementor-repeater-item-<?php echo esc_attr( $ultraaddons_item['_id'] ); ?> ua-hotspot--<?php echo esc_attr( $count );?>">
+					<span class="ua-hotspot--title"><?php echo esc_html( $ultraaddons_item['list_title'] );?></span>
 					<span class="ua-hotspot--cta"></span>
 				</div>
 			<?php 

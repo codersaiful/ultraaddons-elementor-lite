@@ -21,24 +21,24 @@ class Product_Tabs extends Base{
         parent::__construct($data, $args);
 		
         //Naming of Args 
-        $ua_name           = 'isotop';
+        $ultraaddons_name           = 'isotop';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/isotope.pkgd.min.js';
         $dependency     =  ['jquery'];//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  	= true;
 
-        wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ua_name );
+        wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ultraaddons_name );
 
 		//Naming of Args 
-        $ua_name           = 'product';
+        $ultraaddons_name           = 'product';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/product.js';
         $dependency     =  ['jquery'];//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  	= true;
 
-        wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ua_name );
+        wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ultraaddons_name );
 
     }
 	/**
@@ -1396,8 +1396,8 @@ class Product_Tabs extends Base{
 			  $str = '';
 			  $count = 1;
 	
-			  foreach($all as $key){
-				$str .= $key . ($count >= $words ? '' : ' ');
+			  foreach($all as $ultraaddons_key){
+				$str .= $ultraaddons_key . ($count >= $words ? '' : ' ');
 				$count++;
 				if($count > $words){
 				  break;

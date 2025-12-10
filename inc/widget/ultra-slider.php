@@ -32,14 +32,14 @@ class Ultra_Slider extends Base{
             parent::__construct($data, $args);
 
             //Naming of Args for owlCarousel
-            $ua_name           = 'owlCarousel';
+            $ultraaddons_name           = 'owlCarousel';
             $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/owl.carousel.min.js';
             $dependency     =  ['jquery'];//['jquery'];
             $version        = ULTRA_ADDONS_VERSION;
             $in_footer  = true;
 
-            wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
-            wp_enqueue_script( $ua_name );
+            wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
+            wp_enqueue_script( $ultraaddons_name );
 
 
             //CSS file for Slider Script Owl Carousel Slider
@@ -154,8 +154,8 @@ class Ultra_Slider extends Base{
                 <div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
                     
                     <?php
-                    foreach( $settings['slides'] as $key => $slide ){
-                        $repeater_key = $this->get_repeater_setting_key( 'title', 'slides', $key );
+                    foreach( $settings['slides'] as $ultraaddons_key => $slide ){
+                        $repeater_key = $this->get_repeater_setting_key( 'title', 'slides', $ultraaddons_key );
                         
                         $_id = !empty( $slide['_id'] ) ? $slide['_id'] : false;
                         $image = isset( $slide['image']['url'] ) && ! empty( $slide['image']['url'] ) ? $slide['image']['url'] : false;

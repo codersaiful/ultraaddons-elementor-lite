@@ -906,8 +906,8 @@ class Product_Flip extends Base{
 		  $str = '';
 		  $count = 1;
 
-		  foreach($all as $key){
-			$str .= $key . ($count >= $words ? '' : ' ');
+		  foreach($all as $ultraaddons_key){
+			$str .= $ultraaddons_key . ($count >= $words ? '' : ' ');
 			$count++;
 			if($count > $words){
 			  break;

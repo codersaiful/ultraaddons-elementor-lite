@@ -4,13 +4,13 @@ use UltraAddons\Core\Widgets_Manager;
 
 defined( 'ABSPATH' ) || die();
 
-$ua_updated = filter_input_array( INPUT_POST );
-if( $ua_updated ){
-    $ua_update_value = false;
-    if( ! empty( $ua_updated['item'] ) ){
-        $ua_update_value = $ua_updated['item'];
+$ultraaddons_updated = filter_input_array( INPUT_POST );
+if( $ultraaddons_updated ){
+    $ultraaddons_update_value = false;
+    if( ! empty( $ultraaddons_updated['item'] ) ){
+        $ultraaddons_update_value = $ultraaddons_updated['item'];
     }
-    update_option( Widgets_Manager::$disabled_items_key, $ua_update_value );
+    update_option( Widgets_Manager::$disabled_items_key, $ultraaddons_update_value );
 }
 
 
@@ -68,12 +68,12 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
                 <form class="ua-option-list-form" action="" method="post">
                     <div class="ua-option-item-wrappper">
                         <?php 
-                        foreach( $items as $ua_class_name => $ua_item ){
+                        foreach( $items as $ultraaddons_class_name => $ultraaddons_item ){
 
-                            $ua_name = isset( $ua_item['name'] ) ? $ua_item['name'] : false;
-                            $ua_icon = isset( $ua_item['icon'] ) ? $ua_item['icon'] : false;
-                            $cat = isset( $ua_item['cat'] ) && is_array( $ua_item['cat'] ) ? $ua_item['cat'] : [];
-                            $ua_free_pro = isset( $ua_item['is_pro'] ) && $ua_item['is_pro'] ? 'pro' : 'free';
+                            $ultraaddons_name = isset( $ultraaddons_item['name'] ) ? $ultraaddons_item['name'] : false;
+                            $ultraaddons_icon = isset( $ultraaddons_item['icon'] ) ? $ultraaddons_item['icon'] : false;
+                            $cat = isset( $ultraaddons_item['cat'] ) && is_array( $ultraaddons_item['cat'] ) ? $ultraaddons_item['cat'] : [];
+                            $ultraaddons_free_pro = isset( $ultraaddons_item['is_pro'] ) && $ultraaddons_item['is_pro'] ? 'pro' : 'free';
                             
                             /**
                              * On or OFF feature will stay or not
@@ -92,31 +92,31 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
                              * 
                              * @since 1.0.7.17
                              */
-                            $item_oo_option = isset( $ua_item['is_pro'] ) && $ua_item['is_pro'] && ! ultraaddons_is_pro()  ? 'item_on_off_disable' : 'item_on_off_enable';
+                            $ultraaddons_item_oo_option = isset( $ultraaddons_item['is_pro'] ) && $ultraaddons_item['is_pro'] && ! ultraaddons_is_pro()  ? 'item_on_off_disable' : 'item_on_off_enable';
                             
-                            $checkbox = in_array( $ua_class_name, $disable_items ) ? 'checked' : '';
-                            $enbl_disbl_class = in_array( $ua_class_name, $disable_items ) ? 'disabled' : 'enabled';
-                            $checkbox_id = 'checkbox_' . $ua_class_name;
-                            $html_class = [];
-                            //$html_class[] = $ua_name;
-                            $html_class[] = $enbl_disbl_class;
-                            $html_class[] = $item_oo_option;
-                            //$html_class[] = $ua_icon;
-                            $html_class[] = $ua_free_pro;
-                            $html_class[] = $ua_class_name;
+                            $ultraaddons_checkbox = in_array( $ultraaddons_class_name, $disable_items ) ? 'checked' : '';
+                            $ultraaddons_enbl_disbl_class = in_array( $ultraaddons_class_name, $disable_items ) ? 'disabled' : 'enabled';
+                            $ultraaddons_checkbox_id = 'checkbox_' . $ultraaddons_class_name;
+                            $ultraaddons_html_class = [];
+                            //$ultraaddons_html_class[] = $ultraaddons_name;
+                            $ultraaddons_html_class[] = $ultraaddons_enbl_disbl_class;
+                            $ultraaddons_html_class[] = $ultraaddons_item_oo_option;
+                            //$ultraaddons_html_class[] = $ultraaddons_icon;
+                            $ultraaddons_html_class[] = $ultraaddons_free_pro;
+                            $ultraaddons_html_class[] = $ultraaddons_class_name;
                         ?>
-                        <label data-name="<?php echo esc_attr( $ua_name ); ?>" 
-                             for="<?php echo esc_attr( $checkbox_id ); ?>"
-                             data-object_name="<?php echo esc_attr( $ua_class_name ); ?>"
+                        <label data-name="<?php echo esc_attr( $ultraaddons_name ); ?>" 
+                             for="<?php echo esc_attr( $ultraaddons_checkbox_id ); ?>"
+                             data-object_name="<?php echo esc_attr( $ultraaddons_class_name ); ?>"
                              data-category="<?php echo esc_attr( implode( ',', $cat ) ); ?>"
-                             data-type="<?php echo esc_attr( $ua_free_pro ); ?>"
-                             class="ua-option-item <?php echo esc_attr( implode( " ", $html_class ) ); ?> <?php echo esc_attr( implode( ',', $cat ) ); ?>">
+                             data-type="<?php echo esc_attr( $ultraaddons_free_pro ); ?>"
+                             class="ua-option-item <?php echo esc_attr( implode( " ", $ultraaddons_html_class ) ); ?> <?php echo esc_attr( implode( ',', $cat ) ); ?>">
                             <div class="ua-option-item-inside">
-                                <span class="ua-option-version-type ua-option-version-type-<?php echo esc_attr( $ua_free_pro ); ?>"><?php echo $ua_free_pro == 'pro' ? esc_html__( 'Pro', 'ultraaddons-elementor-lite' ) : esc_html__( 'Free', 'ultraaddons-elementor-lite' ); ?></span>
-                                <i class="ua-option-icon <?php echo esc_attr( $ua_icon ); ?>"></i>
-                                <h2 class="ua-item-name"><?php echo esc_html( $ua_name ); ?></h2>
+                                <span class="ua-option-version-type ua-option-version-type-<?php echo esc_attr( $ultraaddons_free_pro ); ?>"><?php echo $ultraaddons_free_pro == 'pro' ? esc_html__( 'Pro', 'ultraaddons-elementor-lite' ) : esc_html__( 'Free', 'ultraaddons-elementor-lite' ); ?></span>
+                                <i class="ua-option-icon <?php echo esc_attr( $ultraaddons_icon ); ?>"></i>
+                                <h2 class="ua-item-name"><?php echo esc_html( $ultraaddons_name ); ?></h2>
                                 <div class="ua-option-checkbox">
-                                    <input class="ua-checkbox-hidden" id="<?php echo esc_attr( $checkbox_id ); ?>" type="checkbox" name="item[]" value="<?php echo esc_attr( $ua_class_name ); ?>" <?php echo esc_attr( $checkbox ); ?>>
+                                    <input class="ua-checkbox-hidden" id="<?php echo esc_attr( $ultraaddons_checkbox_id ); ?>" type="checkbox" name="item[]" value="<?php echo esc_attr( $ultraaddons_class_name ); ?>" <?php echo esc_attr( $ultraaddons_checkbox ); ?>>
                                     <div class="ua-designed-checkbox"></div>
                                 </div>
                             </div>

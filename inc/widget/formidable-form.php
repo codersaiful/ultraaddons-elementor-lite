@@ -739,9 +739,9 @@ class Formidable_Form extends Base{
             $this->end_controls_section();
             }
 
-        private function add_basic_switcher_control( $key, $title ) {
+        private function add_basic_switcher_control( $ultraaddons_key, $title ) {
                 $this->add_control(
-                        $key,
+                        $ultraaddons_key,
                         array(
                                 'label' => $title,
                                 'type'  => Controls_Manager::SWITCHER,

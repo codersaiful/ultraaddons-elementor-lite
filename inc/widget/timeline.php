@@ -96,15 +96,15 @@ class Timeline extends Base{
        <div class="ua_timeline_section ua_timeline_default_style ultraaddons-timeline-section ultraaddons-timeline-default-style">
             <div class="ua_timeline_section_inner ultraaddons-timeline-section-inner">
                 <?php if ( $settings['_ua_timeline_items']):
-                    foreach (  $settings['_ua_timeline_items'] as $index => $ua_item ):
+                    foreach (  $settings['_ua_timeline_items'] as $index => $ultraaddons_item ):
     
                         $item_count = $index + 1;
                         
                         /*Inner Wrapper*/
                         $timeline_id_key = $this->get_repeater_setting_key( '_id', '_ua_timeline_items', $index );
                         $this->add_render_attribute( $timeline_id_key, [
-                            'id' => 'timeline-' . $ua_item['_id'],
-                            'class' => [ "ua_limeline_section_inner_wrapper", "elementor-repeater-item-{$ua_item['_id']}", "ultraaddons-timeline-inner-wraper" ],
+                            'id' => 'timeline-' . $ultraaddons_item['_id'],
+                            'class' => [ "ua_limeline_section_inner_wrapper", "elementor-repeater-item-{$ultraaddons_item['_id']}", "ultraaddons-timeline-inner-wraper" ],
                             'data-item' => $item_count,
                         ] );
                         $timeline_inner_wraper = $this->get_render_attribute_string( $timeline_id_key );
@@ -117,7 +117,7 @@ class Timeline extends Base{
                         ] );
     
                         $timeline_title_class = $this->get_render_attribute_string( $timeline_title_key );
-                        $has_title_text = ! empty( $ua_item['_ua_timeline_title'] );
+                        $has_title_text = ! empty( $ultraaddons_item['_ua_timeline_title'] );
     
                         /*Content*/
                         $timeline_content_key = $this->get_repeater_setting_key( '_ua_timeline_desc', '_ua_timeline_items', $index );
@@ -127,16 +127,16 @@ class Timeline extends Base{
                         ] );
     
                         $timeline_content_class = $this->get_render_attribute_string( $timeline_content_key );
-                        $has_timeline_text = ! empty( $ua_item['_ua_timeline_desc'] );
+                        $has_timeline_text = ! empty( $ultraaddons_item['_ua_timeline_desc'] );
     
                         /*Date*/
                         $date_format = !empty( $settings['date_format']) ?  $settings['date_format'] : 'F j, Y';
-                        $date = wp_date( $date_format, strtotime($ua_item['_ua_timeline_time']));
-                        if('timeline_text' == $ua_item['_ua_timeline_style']){
-                            $date = $ua_item['_ua_timeline_time_text'];
+                        $date = wp_date( $date_format, strtotime($ultraaddons_item['_ua_timeline_time']));
+                        if('timeline_text' == $ultraaddons_item['_ua_timeline_style']){
+                            $date = $ultraaddons_item['_ua_timeline_time_text'];
                         }
                         $time_format = !empty( $settings['time_format']) ?  $settings['time_format'] : 'g:i a';
-                        $time = 'timeline_calender' == $ua_item['_ua_timeline_style'] ? wp_date($time_format, strtotime($ua_item['_ua_timeline_time'])) : '';
+                        $time = 'timeline_calender' == $ultraaddons_item['_ua_timeline_style'] ? wp_date($time_format, strtotime($ultraaddons_item['_ua_timeline_time'])) : '';
     
                         ?>
                     <div <?php echo esc_attr( $timeline_inner_wraper ); ?>>
@@ -144,13 +144,13 @@ class Timeline extends Base{
                         <div class="ua_timeline_main_coutent_inner ultraaddons-timeline-content-inner">
                             <?php if ( $settings['show_title'] == 'yes'): ?>
                                 <?php if ($has_title_text): ?>  
-                                    <<?php echo ultraaddons_title_tag($ua_item['_ua_timeline_title_size']); ?> <?php echo esc_attr( $timeline_title_class ); ?>><?php echo esc_html($ua_item['_ua_timeline_title']); ?></<?php echo ultraaddons_title_tag($ua_item['_ua_timeline_title_size']); ?>>
+                                    <<?php echo ultraaddons_title_tag($ultraaddons_item['_ua_timeline_title_size']); ?> <?php echo esc_attr( $timeline_title_class ); ?>><?php echo esc_html($ultraaddons_item['_ua_timeline_title']); ?></<?php echo ultraaddons_title_tag($ultraaddons_item['_ua_timeline_title_size']); ?>>
                                 <?php endif; ?>
                             <?php endif; ?>
                             <?php if ( $settings['show_desc'] == 'yes'): ?>
                                 <?php if ($has_timeline_text): ?>
                                     <p <?php echo esc_attr( $timeline_content_class ); ?>>
-                                        <?php echo wp_kses_post( ultraaddons_parse_text_editor($ua_item['_ua_timeline_desc']) ); ?>
+                                        <?php echo wp_kses_post( ultraaddons_parse_text_editor($ultraaddons_item['_ua_timeline_desc']) ); ?>
                                     </p>
                                 <?php endif ?>
                             <?php endif ?>
@@ -183,15 +183,15 @@ class Timeline extends Base{
         <div class="ua_timeline_section ua_timeline_default_style ua_style_01 ultraaddons-timeline-section ultraaddons-timeline-default-style">
             <div class="ua_timeline_section_inner ultraaddons-timeline-section-inner">
                 <?php if ( $settings['_ua_timeline_items_skin_second']):
-                    foreach (  $settings['_ua_timeline_items_skin_second'] as $index => $ua_item ):
+                    foreach (  $settings['_ua_timeline_items_skin_second'] as $index => $ultraaddons_item ):
 
                         $item_count = $index + 1;
 
                         /*Inner Wrapper*/
                         $timeline_id_key = $this->get_repeater_setting_key( '_id', '_ua_timeline_items_skin_second', $index );
                         $this->add_render_attribute( $timeline_id_key, [
-                            'id' => 'timeline-' . $ua_item['_id'],
-                            'class' => [ "ua_limeline_section_inner_wrapper", "elementor-repeater-item-{$ua_item['_id']}", "ultraaddons-timeline-inner-wraper" ],
+                            'id' => 'timeline-' . $ultraaddons_item['_id'],
+                            'class' => [ "ua_limeline_section_inner_wrapper", "elementor-repeater-item-{$ultraaddons_item['_id']}", "ultraaddons-timeline-inner-wraper" ],
                             'data-item' => $item_count,
                         ] );
                         $timeline_inner_wraper = $this->get_render_attribute_string( $timeline_id_key );
@@ -204,7 +204,7 @@ class Timeline extends Base{
                         ] );
 
                         $timeline_title_class = $this->get_render_attribute_string( $timeline_title_key );
-                        $has_title_text = ! empty( $ua_item['_ua_timeline_title'] );
+                        $has_title_text = ! empty( $ultraaddons_item['_ua_timeline_title'] );
 
                         /*Content*/
                         $timeline_content_key = $this->get_repeater_setting_key( '_ua_timeline_desc', '_ua_timeline_items_skin_second', $index );
@@ -214,51 +214,51 @@ class Timeline extends Base{
                         ] );
 
                         $timeline_content_class = $this->get_render_attribute_string( $timeline_content_key );
-                        $has_timeline_text = ! empty( $ua_item['_ua_timeline_desc'] );
+                        $has_timeline_text = ! empty( $ultraaddons_item['_ua_timeline_desc'] );
 
                         /*Date*/
                         $date_format = !empty( $settings['date_format']) ?  $settings['date_format'] : 'F j, Y';
-                        $date = wp_date( $date_format, strtotime($ua_item['_ua_timeline_time']));
-                        if('timeline_text' == $ua_item['_ua_timeline_style']){
-                            $date = $ua_item['_ua_timeline_time_text'];
+                        $date = wp_date( $date_format, strtotime($ultraaddons_item['_ua_timeline_time']));
+                        if('timeline_text' == $ultraaddons_item['_ua_timeline_style']){
+                            $date = $ultraaddons_item['_ua_timeline_time_text'];
                         }
                         $time_format = !empty( $settings['time_format']) ?  $settings['time_format'] : 'g:i a';
-                        $time = 'timeline_calender' == $ua_item['_ua_timeline_style'] ? wp_date($time_format, strtotime($ua_item['_ua_timeline_time'])) : '';
+                        $time = 'timeline_calender' == $ultraaddons_item['_ua_timeline_style'] ? wp_date($time_format, strtotime($ultraaddons_item['_ua_timeline_time'])) : '';
 
                         /*Icon*/
 
-                        $migrated = isset( $ua_item['__fa4_migrated']['_ua_timeline_selected_icon'] );
+                        $migrated = isset( $ultraaddons_item['__fa4_migrated']['_ua_timeline_selected_icon'] );
 
-                        if ( ! isset( $ua_item['icon'] ) && ! Icons_Manager::is_migration_allowed() ) {
-                            $ua_item['icon'] = 'fas fa-check';
+                        if ( ! isset( $ultraaddons_item['icon'] ) && ! Icons_Manager::is_migration_allowed() ) {
+                            $ultraaddons_item['icon'] = 'fas fa-check';
                         }
-                        $is_new = empty( $ua_item['icon'] ) && Icons_Manager::is_migration_allowed();
-                        $has_icon = ( ! $is_new || ! empty( $ua_item['_ua_timeline_selected_icon']['value'] ) );
+                        $is_new = empty( $ultraaddons_item['icon'] ) && Icons_Manager::is_migration_allowed();
+                        $has_icon = ( ! $is_new || ! empty( $ultraaddons_item['_ua_timeline_selected_icon']['value'] ) );
 
                         ?>
                     <div <?php echo esc_attr( $timeline_inner_wraper ); ?>>
-                        <?php if ( $ua_item['_ua_timeline_icon_show'] === 'yes' ): ?>
+                        <?php if ( $ultraaddons_item['_ua_timeline_icon_show'] === 'yes' ): ?>
                             <div class="ua_limeline_counter ua_single_limeline_icon ultraaddons-timeline-counter">
                                 <?php
-                                    if($ua_item['_ua_timeline_icon_type'] == 'icon'){
+                                    if($ultraaddons_item['_ua_timeline_icon_type'] == 'icon'){
                                         if ( $is_new || $migrated ) { ?>
-                                        <?php Icons_Manager::render_icon( $ua_item['_ua_timeline_selected_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                                        <?php Icons_Manager::render_icon( $ultraaddons_item['_ua_timeline_selected_icon'], [ 'aria-hidden' => 'true' ] ); ?>
                                     <?php }
-                                    }elseif( $ua_item['_ua_timeline_icon_type'] == 'image' ){ ?>
-                                        <img src="<?php echo esc_url($ua_item['_ua_timeline_icon_image']['url']); ?>" alt="<?php echo esc_attr( get_post_meta($ua_item['_ua_timeline_icon_image']['id'], '_wp_attachment_image_alt', true) ); ?>">
+                                    }elseif( $ultraaddons_item['_ua_timeline_icon_type'] == 'image' ){ ?>
+                                        <img src="<?php echo esc_url($ultraaddons_item['_ua_timeline_icon_image']['url']); ?>" alt="<?php echo esc_attr( get_post_meta($ultraaddons_item['_ua_timeline_icon_image']['id'], '_wp_attachment_image_alt', true) ); ?>">
                                 <?php } ?>
                             </div>
                         <?php endif; ?>
                         <div class="ua_timeline_main_coutent_inner ultraaddons-timeline-content-inner">
                             <?php if ( $settings['show_title'] == 'yes'): ?>
                                 <?php if ($has_title_text): ?>  
-                                    <<?php echo wp_kses_post( ultraaddons_title_tag($ua_item['_ua_timeline_title_size']) ); ?> <?php echo esc_attr( $timeline_title_class ); ?>><?php echo esc_html($ua_item['_ua_timeline_title']); ?></<?php echo wp_kses_post( ultraaddons_title_tag($ua_item['_ua_timeline_title_size']) ); ?>>
+                                    <<?php echo wp_kses_post( ultraaddons_title_tag($ultraaddons_item['_ua_timeline_title_size']) ); ?> <?php echo esc_attr( $timeline_title_class ); ?>><?php echo esc_html($ultraaddons_item['_ua_timeline_title']); ?></<?php echo wp_kses_post( ultraaddons_title_tag($ultraaddons_item['_ua_timeline_title_size']) ); ?>>
                                 <?php endif; ?>
                             <?php endif; ?>
                             <?php if ( $settings['show_desc'] == 'yes'): ?>
                                 <?php if ($has_timeline_text): ?>
                                     <p <?php echo esc_attr( $timeline_content_class ); ?>>
-                                        <?php echo wp_kses_post( ultraaddons_parse_text_editor($ua_item['_ua_timeline_desc']) ); ?>
+                                        <?php echo wp_kses_post( ultraaddons_parse_text_editor($ultraaddons_item['_ua_timeline_desc']) ); ?>
                                     </p>
                                 <?php endif ?>
                             <?php endif ?>
@@ -318,15 +318,15 @@ class Timeline extends Base{
         <div class="ua_horizontal_container ultraaddons-timeline-section ultraaddons-timeline-default-style">
             <div class="ua_timeline_inner ultraaddons-timeline-section-inner owl-carousel ultraaddons-top-border" data-controls="<?php echo esc_attr($slide_controls); ?>">
                 <?php if ( $settings['_ua_timeline_items']):
-                    foreach (  $settings['_ua_timeline_items'] as $index => $ua_item ):
+                    foreach (  $settings['_ua_timeline_items'] as $index => $ultraaddons_item ):
 
                         $item_count = $index + 1;
 
                         /*Inner Wrapper*/
                         $timeline_id_key = $this->get_repeater_setting_key( '_id', '_ua_timeline_items', $index );
                         $this->add_render_attribute( $timeline_id_key, [
-                            'id' => 'timeline-inner-' . $ua_item['_id'],
-                            'class' => [ "horizontal_content_wrapper", "elementor-repeater-item-{$ua_item['_id']}", "ultraaddons-timeline-inner-wraper" ],
+                            'id' => 'timeline-inner-' . $ultraaddons_item['_id'],
+                            'class' => [ "horizontal_content_wrapper", "elementor-repeater-item-{$ultraaddons_item['_id']}", "ultraaddons-timeline-inner-wraper" ],
                             'data-item' => $item_count,
                         ] );
                         $timeline_inner_wraper = $this->get_render_attribute_string( $timeline_id_key );
@@ -339,7 +339,7 @@ class Timeline extends Base{
                         ] );
 
                         $timeline_title_class = $this->get_render_attribute_string( $timeline_title_key );
-                        $has_title_text = ! empty( $ua_item['_ua_timeline_title'] );
+                        $has_title_text = ! empty( $ultraaddons_item['_ua_timeline_title'] );
 
                         /*Content*/
                         $timeline_content_key = $this->get_repeater_setting_key( '_ua_timeline_desc', '_ua_timeline_items', $index );
@@ -349,26 +349,26 @@ class Timeline extends Base{
                         ] );
 
                         $timeline_content_class = $this->get_render_attribute_string( $timeline_content_key );
-                        $has_timeline_text = ! empty( $ua_item['_ua_timeline_desc'] );
+                        $has_timeline_text = ! empty( $ultraaddons_item['_ua_timeline_desc'] );
 
                         /*Date*/
                         $date_format = !empty( $settings['date_format']) ?  $settings['date_format'] : 'F j, Y';
-                        $date = wp_date( $date_format, strtotime($ua_item['_ua_timeline_time']));
-                        if('timeline_text' == $ua_item['_ua_timeline_style']){
-                            $date = $ua_item['_ua_timeline_time_text'];
+                        $date = wp_date( $date_format, strtotime($ultraaddons_item['_ua_timeline_time']));
+                        if('timeline_text' == $ultraaddons_item['_ua_timeline_style']){
+                            $date = $ultraaddons_item['_ua_timeline_time_text'];
                         }
                         $time_format = !empty( $settings['time_format']) ?  $settings['time_format'] : 'g:i a';
-                        $time = 'timeline_calender' == $ua_item['_ua_timeline_style'] ? wp_date($time_format, strtotime($ua_item['_ua_timeline_time'])) : '';
+                        $time = 'timeline_calender' == $ultraaddons_item['_ua_timeline_style'] ? wp_date($time_format, strtotime($ultraaddons_item['_ua_timeline_time'])) : '';
 
                         /*Icon*/
 
-                        $migrated = isset( $ua_item['__fa4_migrated']['_ua_timeline_selected_icon'] );
+                        $migrated = isset( $ultraaddons_item['__fa4_migrated']['_ua_timeline_selected_icon'] );
 
-                        if ( ! isset( $ua_item['icon'] ) && ! Icons_Manager::is_migration_allowed() ) {
-                            $ua_item['icon'] = 'fas fa-check';
+                        if ( ! isset( $ultraaddons_item['icon'] ) && ! Icons_Manager::is_migration_allowed() ) {
+                            $ultraaddons_item['icon'] = 'fas fa-check';
                         }
-                        $is_new = empty( $ua_item['icon'] ) && Icons_Manager::is_migration_allowed();
-                        $has_icon = ( ! $is_new || ! empty( $ua_item['_ua_timeline_selected_icon']['value'] ) );
+                        $is_new = empty( $ultraaddons_item['icon'] ) && Icons_Manager::is_migration_allowed();
+                        $has_icon = ( ! $is_new || ! empty( $ultraaddons_item['_ua_timeline_selected_icon']['value'] ) );
 
                         ?>
                     <div <?php echo esc_attr( $timeline_inner_wraper ); ?>>
@@ -391,13 +391,13 @@ class Timeline extends Base{
                             <div class="ua_content_inner_bottom ultraaddons-timeline-content-inner">
                                 <?php if ( $settings['show_title'] == 'yes'): ?>
                                 <?php if ($has_title_text): ?>  
-                                    <<?php echo wp_kses_post( ultraaddons_title_tag($ua_item['_ua_timeline_title_size']) ); ?> <?php echo esc_attr( $timeline_title_class ); ?>><?php echo esc_html($ua_item['_ua_timeline_title']); ?></<?php echo wp_kses_post( ultraaddons_title_tag($ua_item['_ua_timeline_title_size']) ); ?>>
+                                    <<?php echo wp_kses_post( ultraaddons_title_tag($ultraaddons_item['_ua_timeline_title_size']) ); ?> <?php echo esc_attr( $timeline_title_class ); ?>><?php echo esc_html($ultraaddons_item['_ua_timeline_title']); ?></<?php echo wp_kses_post( ultraaddons_title_tag($ultraaddons_item['_ua_timeline_title_size']) ); ?>>
                                 <?php endif; ?>
                             <?php endif; ?>
                                 <?php if ( $settings['show_desc'] == 'yes'): ?>
                                 <?php if ($has_timeline_text): ?>
                                     <p <?php echo esc_attr( $timeline_content_class ); ?>>
-                                        <?php echo wp_kses_post( ultraaddons_parse_text_editor($ua_item['_ua_timeline_desc']) ); ?>
+                                        <?php echo wp_kses_post( ultraaddons_parse_text_editor($ultraaddons_item['_ua_timeline_desc']) ); ?>
                                     </p>
                                 <?php endif ?>
                             <?php endif ?>

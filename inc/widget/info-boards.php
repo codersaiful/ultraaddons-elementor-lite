@@ -55,26 +55,26 @@ class Info_Boards extends Base {
                 <div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
                         
                         <?php
-                        foreach( $repeater as $ua_item ){ ?>
+                        foreach( $repeater as $ultraaddons_item ){ ?>
                         
-                        <div class="info-board elementor-repeater-item-<?php echo esc_attr( $ua_item['_id'] ?? '' ); ?>">
+                        <div class="info-board elementor-repeater-item-<?php echo esc_attr( $ultraaddons_item['_id'] ?? '' ); ?>">
                             
                                 <div class="info-board-title">
                                     
-                                        <?php if( ! empty( $ua_item['icon']['value'] ) ) : ?>
+                                        <?php if( ! empty( $ultraaddons_item['icon']['value'] ) ) : ?>
                                     
-                                            <i class="<?php echo esc_attr( $ua_item['icon']['value'] ); ?>"></i>
+                                            <i class="<?php echo esc_attr( $ultraaddons_item['icon']['value'] ); ?>"></i>
                                             
                                         <?php endif; ?>
                                         
-                                        <h4><?php echo esc_html( $ua_item['title'] ); ?></h4>
+                                        <h4><?php echo esc_html( $ultraaddons_item['title'] ); ?></h4>
                                 </div>
                             
                                 <div class="info-board-content">
                                     
-                                        <?php echo wp_kses_post( $ua_item['description'] ); ?>
+                                        <?php echo wp_kses_post( $ultraaddons_item['description'] ); ?>
                                     
-                                        <?php echo wp_kses_post( $this->render_button( $ua_item ) ); ?>
+                                        <?php echo wp_kses_post( $this->render_button( $ultraaddons_item ) ); ?>
                                         
                                 </div>
                         </div>

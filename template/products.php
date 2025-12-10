@@ -174,10 +174,10 @@ if ( $filter ) {
 
 		foreach ( $terms as $term_cat ) {
 			$id             = $term_cat->term_id;
-			$ua_name           = $term_cat->name;
+			$ultraaddons_name           = $term_cat->name;
 			$slug           = $term_cat->slug;
 			$slugs[]        = $slug;
-			$category_html .= '<li class="nav-item"><a href="' . esc_url( get_term_link( $id, 'product_cat' ) ) . '" class="' . esc_attr( $slug ) . '" data-filter=".' . esc_attr( $slug ) . '">' . esc_html( $ua_name ) . '</a></li>';
+			$category_html .= '<li class="nav-item"><a href="' . esc_url( get_term_link( $id, 'product_cat' ) ) . '" class="' . esc_attr( $slug ) . '" data-filter=".' . esc_attr( $slug ) . '">' . esc_html( $ultraaddons_name ) . '</a></li>';
 		}
 		$category_html  = '<ul class="nav nav-filter cat-filter' . ( 'right' == $filter_pos ? ' ml-auto' : '' ) . '"><li class="nav-item active nav-item-all"><a href="#" data-filter="' . implode( ',', $slugs ) . '">' . esc_html__( 'All', 'ultraaddons-elementor-lite' ) . '</a></li>' . $category_html;
 		$category_html .= '</ul>';
@@ -374,8 +374,8 @@ if ( ! $ids && '' != $load_more ) {
 wc_set_loop_prop( 'page', 1 );
 
 $extra_atts = ' ';
-foreach ( $more_atts as $key => $value ) {
-	$extra_atts .= $key . '=' . json_encode( $value ) . ' ';
+foreach ( $more_atts as $ultraaddons_key => $value ) {
+	$extra_atts .= $ultraaddons_key . '=' . json_encode( $value ) . ' ';
 }
 
 do_action( 'ua_save_used_widget', 'products' );

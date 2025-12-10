@@ -38,14 +38,14 @@ class Moving_Letters extends Base{
         parent::__construct($data, $args);
 
         //Naming of Args for anime
-        $ua_name           = 'anime';
+        $ultraaddons_name           = 'anime';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/anime/lib/anime.min.js';
         $dependency     =  [];//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  	= true;
 
-        wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ua_name );
+        wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ultraaddons_name );
 
         $ml_name        = 'frontend-moving-letters';
         $ml_js_file_url    = ULTRA_ADDONS_ASSETS . 'js/frontend-moving-letters.js';

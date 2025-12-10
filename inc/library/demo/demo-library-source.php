@@ -67,15 +67,15 @@ class Demo_Library_Source extends Source_Base {
 	public function get_items( $args = [] ) {
 		$library_data = self::get_library_data();
 
-		$templates = [];
+		$ultraaddons_templates = [];
 
 		if ( ! empty( $library_data['templates'] ) ) {
 			foreach ( $library_data['templates'] as $template_data ) {
-				$templates[] = $this->prepare_template( $template_data );
+				$ultraaddons_templates[] = $this->prepare_template( $template_data );
 			}
 		}
 
-		return $templates;
+		return $ultraaddons_templates;
 	}
 
 	public function get_tags() {
@@ -172,9 +172,9 @@ class Demo_Library_Source extends Source_Base {
 	 * @return array Remote template.
 	 */
 	public function get_item( $template_id ) {
-		$templates = $this->get_items();
+		$ultraaddons_templates = $this->get_items();
 
-		return $templates[ $template_id ];
+		return $ultraaddons_templates[ $template_id ];
 	}
 
 	public static function request_template_data( $template_id ) {

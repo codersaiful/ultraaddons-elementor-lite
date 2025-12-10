@@ -583,22 +583,22 @@ class Work_Hour extends Base{
 	 <?php
 	 if ( isset( $settings['_ua_wh_list'] ) ) :
 		$count = 0;
-		 foreach (  $settings['_ua_wh_list'] as $ua_item ) :
-		 $dayHighlight 	= ($ua_item['_ua_wh_day_highlight']=='yes') ? 'highlight' : '';
+		 foreach (  $settings['_ua_wh_list'] as $ultraaddons_item ) :
+		 $dayHighlight 	= ($ultraaddons_item['_ua_wh_day_highlight']=='yes') ? 'highlight' : '';
 		 $count 		= $count+1;
 		 $rowNumber 	= ($count % 2 == 0) ? 'even-row' : 'odd-row';
 		 $row_class 	= $rowNumber . ' '. $dayHighlight;
 		?>
-		<div class="ua-work-hours-row elementor-repeater-item-<?php echo esc_attr( $ua_item['_id'] ); ?> <?php echo esc_attr( $row_class );?>">
+		<div class="ua-work-hours-row elementor-repeater-item-<?php echo esc_attr( $ultraaddons_item['_id'] ); ?> <?php echo esc_attr( $row_class );?>">
 			<span class="ua-work-day">
-			<?php echo esc_html( $ua_item['_ua_wh_day'] );?>
+			<?php echo esc_html( $ultraaddons_item['_ua_wh_day'] );?>
 			</span>
 			<?php
-			if($ua_item['_ua_wh_closed']!='yes'){?>
+			if($ultraaddons_item['_ua_wh_closed']!='yes'){?>
 			<span class="ua-work-timing">
 				<?php
-				$start_time = strtotime($ua_item['_ua_wh_start_time']);
-				$end_time 	= strtotime($ua_item['_ua_wh_end_time']);
+				$start_time = strtotime($ultraaddons_item['_ua_wh_start_time']);
+				$end_time 	= strtotime($ultraaddons_item['_ua_wh_end_time']);
 				/**
 				 * Checking condition format 24 hrs/12 hrs.
 				 */
@@ -610,7 +610,7 @@ class Work_Hour extends Base{
 			</span>
 			<?php }else{?>
 			<span class="ua-work-timing closed">
-			<?php echo $ua_item['_ua_wh_closed'] ? 'Closed': '' ; ?>
+			<?php echo $ultraaddons_item['_ua_wh_closed'] ? 'Closed': '' ; ?>
 			</span>
 			<?php } ?>
 		</div>

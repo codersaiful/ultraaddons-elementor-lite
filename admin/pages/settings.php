@@ -7,23 +7,23 @@ defined( 'ABSPATH' ) || die();
 /**
  * Controlling Form Submission
  */
-$form_datas = filter_input_array(INPUT_POST);
+$ultraaddons_form_datas = filter_input_array(INPUT_POST);
 
-$form_datas = apply_filters( 'ultraaddons/admin/setting/save_data', $form_datas, 'settings' );
+$ultraaddons_form_datas = apply_filters( 'ultraaddons/admin/setting/save_data', $ultraaddons_form_datas, 'settings' );
 
-$key = Settings::$key; //'ultraaddons_settings'
+$ultraaddons_key = Settings::$ultraaddons_key; //'ultraaddons_settings'
 
-if( $form_datas && $key ){
+if( $ultraaddons_form_datas && $ultraaddons_key ){
     /**
      * Action hook for when save data
      */
-    do_action( 'ultraaddons/admin/setting/on_save', $form_datas, $key );
-    update_option( $key, $form_datas );
+    do_action( 'ultraaddons/admin/setting/on_save', $ultraaddons_form_datas, $ultraaddons_key );
+    update_option( $ultraaddons_key, $ultraaddons_form_datas );
 }
-$current_data = Settings::get_data();
+$ultraaddons_current_data = Settings::get_data();
 
 
-$category_slug = Settings::get_widget_category();
+$ultraaddons_category_slug = Settings::get_widget_category();
 ?>
 
 <div class="ultraaddons-section ua-option-wrapper">
@@ -53,8 +53,8 @@ $category_slug = Settings::get_widget_category();
                         <label class="field-label field-label-header-choose"><?php echo esc_html__( 'Widget Showing in', 'ultraaddons-elementor-lite' ); ?></label>    
                         <select class="ultraddons-select" name="widget_in">
                             <option value="" ><?php echo esc_html__( 'Only UltraAddons', 'ultraaddons-elementor-lite' ); ?></option>
-                            <option value="basic" <?php echo $category_slug == 'basic' ? 'selected' : ''; ?>><?php echo esc_html__( 'Basic', 'ultraaddons-elementor-lite' ); ?></option>
-                            <option value="general" <?php echo $category_slug == 'general' ? 'selected' : ''; ?>><?php echo esc_html__( 'General', 'ultraaddons-elementor-lite' ); ?></option>
+                            <option value="basic" <?php echo $ultraaddons_category_slug == 'basic' ? 'selected' : ''; ?>><?php echo esc_html__( 'Basic', 'ultraaddons-elementor-lite' ); ?></option>
+                            <option value="general" <?php echo $ultraaddons_category_slug == 'general' ? 'selected' : ''; ?>><?php echo esc_html__( 'General', 'ultraaddons-elementor-lite' ); ?></option>
                             
                         </select>
                         <div class="ua-form-message">

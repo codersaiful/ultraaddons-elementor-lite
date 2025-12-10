@@ -50,26 +50,26 @@ class Base extends Widget_Base{
 //    public function __construct($data = [], $args = null) {
 //        parent::__construct($data, $args);
 //       
-//        $ua_name = $this->get_pure_name();
-//        $ua_name = str_replace('_','-', $ua_name);
-//        $ua_name = strtolower( $ua_name );
-//        $handle = 'ultraaddons-' . $ua_name;
+//        $ultraaddons_name = $this->get_pure_name();
+//        $ultraaddons_name = str_replace('_','-', $ultraaddons_name);
+//        $ultraaddons_name = strtolower( $ultraaddons_name );
+//        $handle = 'ultraaddons-' . $ultraaddons_name;
 //        $handle = $this->get_css_handle();
 //
 //        $deps = ['ultraaddons-widgets-style'];
 //        $ver  = ULTRA_ADDONS_VERSION;
 //        $media= 'all';
 //
-//        $src = ULTRA_ADDONS_ASSETS . 'css/widgets/' . strtolower( $ua_name ) . '.css';
+//        $src = ULTRA_ADDONS_ASSETS . 'css/widgets/' . strtolower( $ultraaddons_name ) . '.css';
 //
-//        $css_file_dir = ULTRA_ADDONS_DIR . 'assets/css/widgets/' . strtolower( $ua_name ) . '.css';
+//        $css_file_dir = ULTRA_ADDONS_DIR . 'assets/css/widgets/' . strtolower( $ultraaddons_name ) . '.css';
 //
 //
 //        $pass_css = false; 
 //        if( defined( 'ULTRA_ADDONS_PRO_ASSETS' ) && isset( $widget['is_pro'] ) && $widget['is_pro'] ){
 //
-//            $src_pro = ULTRA_ADDONS_PRO_ASSETS . 'css/widgets/' . strtolower( $ua_name ) . '.css';
-//            $css_file_dir_pro = ULTRA_ADDONS_PRO_DIR . 'assets/css/widgets/' . strtolower( $ua_name ) . '.css';
+//            $src_pro = ULTRA_ADDONS_PRO_ASSETS . 'css/widgets/' . strtolower( $ultraaddons_name ) . '.css';
+//            $css_file_dir_pro = ULTRA_ADDONS_PRO_DIR . 'assets/css/widgets/' . strtolower( $ultraaddons_name ) . '.css';
 //
 //            if( is_file( $css_file_dir_pro ) ){
 //                //Direct pass as we founded it in Pro folder
@@ -94,10 +94,10 @@ class Base extends Widget_Base{
      * @return Array return as Array
      */
 //    public function get_style_depends() {
-//        $ua_name = $this->get_pure_name();
-//        $ua_name = str_replace('_','-', $ua_name);
-//        $ua_name = strtolower( $ua_name );
-//        $handle = 'ultraaddons-' . $ua_name;
+//        $ultraaddons_name = $this->get_pure_name();
+//        $ultraaddons_name = str_replace('_','-', $ultraaddons_name);
+//        $ultraaddons_name = strtolower( $ultraaddons_name );
+//        $handle = 'ultraaddons-' . $ultraaddons_name;
 //        $handle = $this->get_css_handle();
 //        return [$handle];
 //    }
@@ -114,10 +114,10 @@ class Base extends Widget_Base{
      * @return String
      */
 //    protected function get_css_handle(){
-//        $ua_name = $this->get_pure_name();
-//        $ua_name = str_replace('_','-', $ua_name);
-//        $ua_name = strtolower( $ua_name );
-//        $handle = 'ultraaddons-' . $ua_name;
+//        $ultraaddons_name = $this->get_pure_name();
+//        $ultraaddons_name = str_replace('_','-', $ultraaddons_name);
+//        $ultraaddons_name = strtolower( $ultraaddons_name );
+//        $handle = 'ultraaddons-' . $ultraaddons_name;
 //        return $handle;
 //    }
 
@@ -143,9 +143,9 @@ class Base extends Widget_Base{
         /**
          * Automatically generate widget name from class
          */
-        $ua_name = strtolower( $this->get_pure_name() );
-        $ua_name = str_replace( '_', '-', $ua_name );
-        return 'ultraaddons-' . $ua_name;
+        $ultraaddons_name = strtolower( $this->get_pure_name() );
+        $ultraaddons_name = str_replace( '_', '-', $ultraaddons_name );
+        return 'ultraaddons-' . $ultraaddons_name;
     }
     
     /**
@@ -153,16 +153,16 @@ class Base extends Widget_Base{
      * @return string by default, 
      */
     public function get_icon() {
-        $widgetsArray = Widgets_Manager::widgets();
+        $ultraaddons_widgetsArray = Widgets_Manager::widgets();
         $title = $this->get_pure_name();
-        $ua_icon = 'ultraaddons ';
-        if( is_array( $widgetsArray ) && isset( $widgetsArray[$title]['icon'] ) && ! empty( $widgetsArray[$title]['icon'] ) ){
-            $ua_icon .= $widgetsArray[$title]['icon'];
+        $ultraaddons_icon = 'ultraaddons ';
+        if( is_array( $ultraaddons_widgetsArray ) && isset( $ultraaddons_widgetsArray[$title]['icon'] ) && ! empty( $ultraaddons_widgetsArray[$title]['icon'] ) ){
+            $ultraaddons_icon .= $ultraaddons_widgetsArray[$title]['icon'];
         }else{
-            $ua_icon .= 'eicon-check-circle-o';
+            $ultraaddons_icon .= 'eicon-check-circle-o';
         }
         
-        return $ua_icon;
+        return $ultraaddons_icon;
     }
     
     /**
@@ -178,12 +178,12 @@ class Base extends Widget_Base{
      * @return String
      */
     public function get_title() {
-        $widgetsArray = Widgets_Manager::widgets();
+        $ultraaddons_widgetsArray = Widgets_Manager::widgets();
 
         $title = $this->get_pure_name();
         
-        if( is_array( $widgetsArray ) && isset( $widgetsArray[$title]['name'] ) && ! empty( $widgetsArray[$title]['name'] ) ){
-            return $widgetsArray[$title]['name'];
+        if( is_array( $ultraaddons_widgetsArray ) && isset( $ultraaddons_widgetsArray[$title]['name'] ) && ! empty( $ultraaddons_widgetsArray[$title]['name'] ) ){
+            return $ultraaddons_widgetsArray[$title]['name'];
         }
         
         return str_replace( '_', ' ', $title );
@@ -277,8 +277,8 @@ class Base extends Widget_Base{
      */
     public function get_custom_help_url() {
         
-        $ua_name = $this->get_pure_name();
-        return ultraaddons_help_url( $ua_name, $this );
+        $ultraaddons_name = $this->get_pure_name();
+        return ultraaddons_help_url( $ultraaddons_name, $this );
     }
     
     /**
@@ -305,12 +305,12 @@ class Base extends Widget_Base{
      */
     public function get_html_wrapper_class() {
         $wr_class = strtolower( str_replace( '_', '-', $this->get_pure_name() ) );
-        $html_class = parent::get_html_wrapper_class();
-        $html_class .= ' ua-element';
-        $html_class .= ' ua-element-' . $wr_class . ' ';
-        //$html_class .= ' ua-' . $this->get_name() . ' ';
+        $ultraaddons_html_class = parent::get_html_wrapper_class();
+        $ultraaddons_html_class .= ' ua-element';
+        $ultraaddons_html_class .= ' ua-element-' . $wr_class . ' ';
+        //$ultraaddons_html_class .= ' ua-' . $this->get_name() . ' ';
         
-        return rtrim( $html_class );
+        return rtrim( $ultraaddons_html_class );
     }
     
     /**
@@ -325,8 +325,8 @@ class Base extends Widget_Base{
      * @return String name of Class
      */
     public function get_pure_name(){
-        $ua_name = str_replace( __NAMESPACE__, '', $this->get_class_name() );
-        return ltrim( $ua_name, '\\' );
+        $ultraaddons_name = str_replace( __NAMESPACE__, '', $this->get_class_name() );
+        return ltrim( $ultraaddons_name, '\\' );
     }
     
     /**

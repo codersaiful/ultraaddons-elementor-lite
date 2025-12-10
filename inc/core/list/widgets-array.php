@@ -9,7 +9,7 @@
  */
 
 
-$widgetsArray = [
+$ultraaddons_widgetsArray = [
     'Button'=> [
         'name'      => __( 'Button', 'ultraaddons-elementor-lite' ),
         'is_pro'   => false,
@@ -663,4 +663,4 @@ $widgetsArray = [
 
 ];
 
-return apply_filters( 'ultraaddons/widgets/array', $widgetsArray );
+return apply_filters( 'ultraaddons/widgets/array', $ultraaddons_widgetsArray );

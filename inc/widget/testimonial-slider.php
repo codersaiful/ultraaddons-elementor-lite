@@ -27,14 +27,14 @@ class Testimonial_Slider extends Base{
         parent::__construct($data, $args);
 
         //Naming of Args for owlCarousel
-        $ua_name           = 'owlCarousel';
+        $ultraaddons_name           = 'owlCarousel';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/owl.carousel.min.js';
         $dependency     =  ['jquery'];//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  = true;
 
-        wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ua_name );
+        wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ultraaddons_name );
 
 
         //CSS file for Slider Script Owl Carousel Slider
@@ -132,8 +132,8 @@ class Testimonial_Slider extends Base{
         <div class="ua-testimonial-main-wrapper">
             <div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
                 <?php 
-                foreach( $slider_items as $key => $ua_item ){
-                    $_id = !empty( $ua_item['_id'] ) ? $ua_item['_id'] : false;
+                foreach( $slider_items as $ultraaddons_key => $ultraaddons_item ){
+                    $_id = !empty( $ultraaddons_item['_id'] ) ? $ultraaddons_item['_id'] : false;
 
                     $this->add_render_attribute( 'item' . '-' . $_id, 'class', 'ua-testimonial ua-testimonial-' . $_id );
                     $this->add_render_attribute( 'title' . '-' . $_id, 'class', 'ua-testimonial-title ua-testimonial-title-' . $_id );
@@ -144,7 +144,7 @@ class Testimonial_Slider extends Base{
 //                    $this->add_inline_editing_attributes( 'sub-title'   . '-' . $_id, 'none' );
 //                    $this->add_inline_editing_attributes( 'quote'       . '-' . $_id, 'advanced' );
 
-                    $image = !empty( $ua_item['image']['url'] ) ? $ua_item['image']['url'] : false;
+                    $image = !empty( $ultraaddons_item['image']['url'] ) ? $ultraaddons_item['image']['url'] : false;
                     if( empty( $image ) ){
                         $this->add_render_attribute( 'item' . '-' . $_id, 'class', 'no-profile-image' );
                     }
@@ -154,7 +154,7 @@ class Testimonial_Slider extends Base{
                         <span class="quote-icon">
                             <i class="fas fa-quote-left"></i>
                         </span>
-                        <?php echo '<p ' . esc_attr( $this->get_render_attribute_string( 'quote' . '-' . $_id ) ) . '>' . esc_html( $ua_item['quote'] ) . '</p>'; ?>
+                        <?php echo '<p ' . esc_attr( $this->get_render_attribute_string( 'quote' . '-' . $_id ) ) . '>' . esc_html( $ultraaddons_item['quote'] ) . '</p>'; ?>
                         <div class="client-info">
                             <div class="user-avatar" 
                                 <?php if( $image ){ ?>
@@ -162,8 +162,8 @@ class Testimonial_Slider extends Base{
                                 <?php } ?> 
                                  ></div>
                             <div class="user-name">
-                                <?php echo '<p ' . esc_attr( $this->get_render_attribute_string( 'title' . '-' . $_id ) ) . '>' . esc_html( $ua_item['title'] ) . '</p>'; ?>
-                                <?php echo '<span ' . esc_attr( $this->get_render_attribute_string( 'sub-title' . '-' . $_id ) ) . '>' . esc_html( $ua_item['sub-title'] ) . '</span>'; ?>
+                                <?php echo '<p ' . esc_attr( $this->get_render_attribute_string( 'title' . '-' . $_id ) ) . '>' . esc_html( $ultraaddons_item['title'] ) . '</p>'; ?>
+                                <?php echo '<span ' . esc_attr( $this->get_render_attribute_string( 'sub-title' . '-' . $_id ) ) . '>' . esc_html( $ultraaddons_item['sub-title'] ) . '</span>'; ?>
                             </div>
                         </div>
                     </div>

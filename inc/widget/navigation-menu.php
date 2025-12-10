@@ -19,14 +19,14 @@ class Navigation_Menu extends Base{
         parent::__construct($data, $args);
 
         //Naming of Args for Navbar
-        $ua_name           = 'navbarjs';
+        $ultraaddons_name           = 'navbarjs';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/navbar/js/navbar.min.js';
         $dependency     =  ['jquery'];//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  = true;
 
-        wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ua_name );
+        wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ultraaddons_name );
 
          //CSS file Navabr
          wp_register_style('navbarjs', ULTRA_ADDONS_ASSETS . 'vendor/navbar/css/navbar.css', array(), ULTRA_ADDONS_VERSION );

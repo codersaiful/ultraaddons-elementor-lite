@@ -18,24 +18,24 @@ class Pie_Chart extends Base{
         parent::__construct($data, $args);
 
         //Naming of Args for Skill Chart
-        $ua_name           = 'chart-js';
+        $ultraaddons_name           = 'chart-js';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/chart-js/chart.js';
         $dependency     =  ['jquery'];//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer      = true;
 
-        wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ua_name );
+        wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ultraaddons_name );
 
         //Naming of Args for front end chart
-        $ua_name           = 'frontend-chart-js';
+        $ultraaddons_name           = 'frontend-chart-js';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'js/frontend-chart.js';
         $dependency     =  ['jquery'];//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  = true;
 
-        wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ua_name );
+        wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ultraaddons_name );
     }
 	
 

@@ -68,22 +68,22 @@ class Image_Accordion extends Base{
         ?>
         <div class="ua-widget-container">
             <div class="ua-image-accordion ultraaddons-image-accordion-wrapper">
-                <?php foreach ( $ua_img_accordion_items as $key => $ua_item ) : ?>
-                    <input type="radio" name="ua_id_<?php echo esc_attr($this->get_id()); ?>" id="ua_id_<?php echo esc_attr($this->get_id() .'_'. $key); ?>" class="ultraaddons-single-image-accordion--input" <?php echo esc_attr( $ua_item['ua_img_accordion_active'] == 'yes' ? 'checked' : '' ); ?> hidden>
-                    <label for="ua_id_<?php echo esc_attr($this->get_id() .'_'. $key); ?>" class="ultraaddons-single-image-accordion ua-image-accordion-item" style="background-image: url(<?php echo esc_url($ua_item['ua_img_accordion_bg']['url'] ?? ''); ?>)">
+                <?php foreach ( $ua_img_accordion_items as $ultraaddons_key => $ultraaddons_item ) : ?>
+                    <input type="radio" name="ua_id_<?php echo esc_attr($this->get_id()); ?>" id="ua_id_<?php echo esc_attr($this->get_id() .'_'. $ultraaddons_key); ?>" class="ultraaddons-single-image-accordion--input" <?php echo esc_attr( $ultraaddons_item['ua_img_accordion_active'] == 'yes' ? 'checked' : '' ); ?> hidden>
+                    <label for="ua_id_<?php echo esc_attr($this->get_id() .'_'. $ultraaddons_key); ?>" class="ultraaddons-single-image-accordion ua-image-accordion-item" style="background-image: url(<?php echo esc_url($ultraaddons_item['ua_img_accordion_bg']['url'] ?? ''); ?>)">
                         <span class="ultraaddons-accordion-content">
                         <?php 
-                        if( $ua_item['ua_img_accordion_enable_project_link'] == 'yes') {
+                        if( $ultraaddons_item['ua_img_accordion_enable_project_link'] == 'yes') {
 
-                            if (!empty($ua_item['ua_img_accordion_project_link']['url'])) {
+                            if (!empty($ultraaddons_item['ua_img_accordion_project_link']['url'])) {
 
-                                $this->add_render_attribute('projectlink', 'href', $ua_item['ua_img_accordion_project_link']['url']);
+                                $this->add_render_attribute('projectlink', 'href', $ultraaddons_item['ua_img_accordion_project_link']['url']);
 
-                                if ($ua_item['ua_img_accordion_project_link']['is_external']) {
+                                if ($ultraaddons_item['ua_img_accordion_project_link']['is_external']) {
                                     $this->add_render_attribute('projectlink', 'target', '_blank');
                                 }
 
-                                if (!empty($ua_item['ua_img_accordion_project_link']['nofollow'])) {
+                                if (!empty($ultraaddons_item['ua_img_accordion_project_link']['nofollow'])) {
                                     $this->add_render_attribute('projectlink', 'rel', 'nofollow');
                                 }
                             }
@@ -91,42 +91,42 @@ class Image_Accordion extends Base{
                             ?>
                             <span class="ultraaddons-icon-wrapper ua-image-accordion-actions">
                             <?php
-                            /*  if($ua_item['ua_img_accordion_enable_pupup'] == 'yes') { ?>
-                                    <a href="<?php echo esc_url($ua_item['ua_img_accordion_bg']['url']); ?>" class="icon-outline circle" data-elementor-open-lightbox="yes">
+                            /*  if($ultraaddons_item['ua_img_accordion_enable_pupup'] == 'yes') { ?>
+                                    <a href="<?php echo esc_url($ultraaddons_item['ua_img_accordion_bg']['url']); ?>" class="icon-outline circle" data-elementor-open-lightbox="yes">
                                     <?php
 
-                                        $migrated = isset( $ua_item['__fa4_migrated']['ua_img_accordion_pup_up_icons'] );
+                                        $migrated = isset( $ultraaddons_item['__fa4_migrated']['ua_img_accordion_pup_up_icons'] );
                                         // Check if its a new widget without previously selected icon using the old Icon control
-                                        $is_new = empty( $ua_item['ua_img_accordion_pup_up_icon'] );
+                                        $is_new = empty( $ultraaddons_item['ua_img_accordion_pup_up_icon'] );
                                         if ( $is_new || $migrated ) {
 
                                             // new icon
-                                            Icons_Manager::render_icon( $ua_item['ua_img_accordion_pup_up_icons'], [ 'aria-hidden' => 'true'] );
+                                            Icons_Manager::render_icon( $ultraaddons_item['ua_img_accordion_pup_up_icons'], [ 'aria-hidden' => 'true'] );
                                         } else {
                                             ?>
-                                            <i class="<?php echo esc_attr($ua_item['ua_img_accordion_pup_up_icon']); ?>" aria-hidden="true"></i>
+                                            <i class="<?php echo esc_attr($ultraaddons_item['ua_img_accordion_pup_up_icon']); ?>" aria-hidden="true"></i>
                                             <?php
                                         }
                                     ?>
                                     </a> */
                                     //}?>
-                            <?php if($ua_item['ua_img_accordion_enable_project_link'] == 'yes') {
-                                    if ( ! empty( $ua_item['ua_img_accordion_project_link']['url'] ) ) {
-                                        $this->add_link_attributes( 'button-2' . $key, $ua_item['ua_img_accordion_project_link'] );
+                            <?php if($ultraaddons_item['ua_img_accordion_enable_project_link'] == 'yes') {
+                                    if ( ! empty( $ultraaddons_item['ua_img_accordion_project_link']['url'] ) ) {
+                                        $this->add_link_attributes( 'button-2' . $ultraaddons_key, $ultraaddons_item['ua_img_accordion_project_link'] );
                                     }
                                 ?>
-                                    <a <?php echo esc_attr( $this->get_render_attribute_string( 'button-2' . $key ) ); ?> class="icon-outline circle">
+                                    <a <?php echo esc_attr( $this->get_render_attribute_string( 'button-2' . $ultraaddons_key ) ); ?> class="icon-outline circle">
                                     <?php
-                                        $migrated = isset( $ua_item['__fa4_migrated']['ua_img_accordion_project_link_icons'] );
+                                        $migrated = isset( $ultraaddons_item['__fa4_migrated']['ua_img_accordion_project_link_icons'] );
                                         // Check if its a new widget without previously selected icon using the old Icon control
-                                        $is_new = empty( $ua_item['ua_img_accordion_project_link_icon'] );
+                                        $is_new = empty( $ultraaddons_item['ua_img_accordion_project_link_icon'] );
                                         if ( $is_new || $migrated ) {
 
                                             // new icon
-                                            Icons_Manager::render_icon( $ua_item['ua_img_accordion_project_link_icons'], [ 'aria-hidden' => 'true'] );
+                                            Icons_Manager::render_icon( $ultraaddons_item['ua_img_accordion_project_link_icons'], [ 'aria-hidden' => 'true'] );
                                         } else {
                                             ?>
-                                            <i class="<?php echo esc_attr($ua_item['ua_img_accordion_project_link_icon']); ?>" aria-hidden="true"></i>
+                                            <i class="<?php echo esc_attr($ultraaddons_item['ua_img_accordion_project_link_icon']); ?>" aria-hidden="true"></i>
                                             <?php
                                         }
                                     ?>
@@ -135,45 +135,45 @@ class Image_Accordion extends Base{
                             </span>
                             <?php } ?>
                             <span class="ultraaddons-accordion-title-wrapper">
-                                <span class="ultraaddons-accordion-title <?php echo esc_attr($ua_item['ua_img_accordion_title_icons'] != '') ? 'icon-title' : ''?>">
-                                <?php if($ua_item['ua_img_accordion_enable_icon']  == 'yes'): ?>
-                                <?php if($ua_item['ua_img_accordion_title_icon_position'] == 'left'): ?>
+                                <span class="ultraaddons-accordion-title <?php echo esc_attr($ultraaddons_item['ua_img_accordion_title_icons'] != '') ? 'icon-title' : ''?>">
+                                <?php if($ultraaddons_item['ua_img_accordion_enable_icon']  == 'yes'): ?>
+                                <?php if($ultraaddons_item['ua_img_accordion_title_icon_position'] == 'left'): ?>
                                     <!-- same-1 -->
                                     <?php
 
-                                        $migrated = isset( $ua_item['__fa4_migrated']['ua_img_accordion_title_icons'] );
+                                        $migrated = isset( $ultraaddons_item['__fa4_migrated']['ua_img_accordion_title_icons'] );
                                         // Check if its a new widget without previously selected icon using the old Icon control
-                                        $is_new = empty( $ua_item['ua_img_accordion_title_icon'] );
+                                        $is_new = empty( $ultraaddons_item['ua_img_accordion_title_icon'] );
                                         if ( $is_new || $migrated ) {
 
                                             // new icon
-                                            Icons_Manager::render_icon( $ua_item['ua_img_accordion_title_icons'], [ 'aria-hidden' => 'true'] );
+                                            Icons_Manager::render_icon( $ultraaddons_item['ua_img_accordion_title_icons'], [ 'aria-hidden' => 'true'] );
                                         } else {
                                             ?>
-                                            <i class="<?php echo esc_attr($ua_item['ua_img_accordion_title_icon']); ?>" aria-hidden="true"></i>
+                                            <i class="<?php echo esc_attr($ultraaddons_item['ua_img_accordion_title_icon']); ?>" aria-hidden="true"></i>
                                             <?php
                                         }
                                     ?>
                                 <?php endif; ?>
                                 <?php endif; ?>
 
-                                <?php echo esc_html($ua_item['ua_img_accordion_title']); ?>
+                                <?php echo esc_html($ultraaddons_item['ua_img_accordion_title']); ?>
 
-                                <?php if($ua_item['ua_img_accordion_enable_icon']  == 'yes'): ?>
-                                <?php if($ua_item['ua_img_accordion_title_icon_position'] == 'right'): ?>
+                                <?php if($ultraaddons_item['ua_img_accordion_enable_icon']  == 'yes'): ?>
+                                <?php if($ultraaddons_item['ua_img_accordion_title_icon_position'] == 'right'): ?>
                                     <!-- same-1 -->
                                     <?php
 
-                                        $migrated = isset( $ua_item['__fa4_migrated']['ua_img_accordion_title_icons'] );
+                                        $migrated = isset( $ultraaddons_item['__fa4_migrated']['ua_img_accordion_title_icons'] );
                                         // Check if its a new widget without previously selected icon using the old Icon control
-                                        $is_new = empty( $ua_item['ua_img_accordion_title_icon'] );
+                                        $is_new = empty( $ultraaddons_item['ua_img_accordion_title_icon'] );
                                         if ( $is_new || $migrated ) {
 
                                             // new icon
-                                            Icons_Manager::render_icon( $ua_item['ua_img_accordion_title_icons'], [ 'aria-hidden' => 'true'] );
+                                            Icons_Manager::render_icon( $ultraaddons_item['ua_img_accordion_title_icons'], [ 'aria-hidden' => 'true'] );
                                         } else {
                                             ?>
-                                            <i class="<?php echo esc_attr($ua_item['ua_img_accordion_title_icon']); ?>" aria-hidden="true"></i>
+                                            <i class="<?php echo esc_attr($ultraaddons_item['ua_img_accordion_title_icon']); ?>" aria-hidden="true"></i>
                                             <?php
                                         }
                                     ?>
@@ -181,15 +181,15 @@ class Image_Accordion extends Base{
                                 <?php endif; ?>
                                 </span>
                             </span>
-                            <?php if($ua_item['ua_img_accordion_enable_button'] == 'yes'):
+                            <?php if($ultraaddons_item['ua_img_accordion_enable_button'] == 'yes'):
                             
-                                if ( ! empty( $ua_item['ua_img_accordion_button_url']['url'] ) ) {
-                                    $this->add_link_attributes( 'button-' . $key, $ua_item['ua_img_accordion_button_url'] );
+                                if ( ! empty( $ultraaddons_item['ua_img_accordion_button_url']['url'] ) ) {
+                                    $this->add_link_attributes( 'button-' . $ultraaddons_key, $ultraaddons_item['ua_img_accordion_button_url'] );
                                 }    
                             ?>
                                 <span class="ultraaddons-btn-wrapper">
-                                    <a class="ua-image-accordion--btn ultraaddons-btn whitespace--normal" <?php echo $this->get_render_attribute_string( 'button-' . $key ); ?>>
-                                        <?php echo esc_html($ua_item['ua_img_accordion_button_label']);?>
+                                    <a class="ua-image-accordion--btn ultraaddons-btn whitespace--normal" <?php echo $this->get_render_attribute_string( 'button-' . $ultraaddons_key ); ?>>
+                                        <?php echo esc_html($ultraaddons_item['ua_img_accordion_button_label']);?>
                                     </a>
                                 </span>
                             <?php endif; ?>

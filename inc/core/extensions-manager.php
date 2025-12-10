@@ -70,9 +70,9 @@ class Extensions_Manager{
              */
             if( ! in_array( $ex_name_key, $disable_keys ) && ( ! $is_pro || ultraaddons_is_pro() ) ){
                 //include_once $file;
-                $ua_class_name = '\UltraAddons\Extensions\\' . $ex_name_key;
-                if( method_exists( $ua_class_name, 'init' ) ){
-                    $ua_class_name::init();
+                $ultraaddons_class_name = '\UltraAddons\Extensions\\' . $ex_name_key;
+                if( method_exists( $ultraaddons_class_name, 'init' ) ){
+                    $ultraaddons_class_name::init();
                 }
             }elseif( $is_pro && ! ultraaddons_is_pro() ){
                 new Placeholder_Extension( $extension );
@@ -115,10 +115,10 @@ class Extensions_Manager{
         if( ! is_file( $file ) ){
             return [];
         }
-        $extensionsArray = include $file;
+        $ultraaddons_extensionsArray = include $file;
 
-        if( is_array( $extensionsArray ) ){
-            return $extensionsArray;
+        if( is_array( $ultraaddons_extensionsArray ) ){
+            return $ultraaddons_extensionsArray;
         }
         return [];
     }

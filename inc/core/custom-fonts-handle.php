@@ -33,7 +33,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
      *
      * @var string option key for update and get data from database. 
      */
-    //public static $key = 'ultraaddons_header_footer';
+    //public static $ultraaddons_key = 'ultraaddons_header_footer';
     
 
     public static function init() {
@@ -195,9 +195,9 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
                     <div class="fonts-upload-wrapper-inside">
                     <?php
                     $url_serial = 0;
-                    foreach( $urls as $key=>$url ){
+                    foreach( $urls as $ultraaddons_key=>$url ){
                         if( empty( $url ) && $url_serial ) continue;
-                        $format = isset( $variant['format'][$key] ) ? $variant['format'][$key] : '';
+                        $format = isset( $variant['format'][$ultraaddons_key] ) ? $variant['format'][$ultraaddons_key] : '';
                         $url_serial++;
                     ?>
                     <div class="form-file-field font-file-each-wrapper">
@@ -265,12 +265,12 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
         <option value="800">Extra-Bold 800</option>
         <option value="900">Ultra-Bold 900</option>
      *
-     * @param Srging $ua_name  Actually field name, need for form submission
+     * @param Srging $ultraaddons_name  Actually field name, need for form submission
      * @param String $tag_id_selector id selector attribute, Need for label tag
      * @param String $current_value
      * @return void
      */
-    public static function render_font_weight( $current_value = null, $ua_name = 'ua_fonts[variants][0][weight]', $tag_id_selector = '' ){
+    public static function render_font_weight( $current_value = null, $ultraaddons_name = 'ua_fonts[variants][0][weight]', $tag_id_selector = '' ){
         
         $options = $default = array(
             '100'     => 'Thin 100',
@@ -297,7 +297,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
         //As I removed wp_parse_args() I checked it over if statement
         $options = is_array( $options ) ? $options : array();
 
-        self::rennder_select( $options, $current_value, $ua_name, $tag_id_selector );
+        self::rennder_select( $options, $current_value, $ultraaddons_name, $tag_id_selector );
         //self::rennder_select( $options, $current_value, 'ua_fonts[weight]', 'font-weight' );
         //self::rennder_select( $options, null, 'ua_fonts[fallback]', 'font-display' );
 
@@ -317,16 +317,16 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
      *
      * @param array $options array of options.
      * @param String $checked Default or selected option_value
-     * @param String $ua_name form's filed name, which need to save data on database
+     * @param String $ultraaddons_name form's filed name, which need to save data on database
      * @param String $tag_id its tag's id attribute
      * @return void
      */
-    public static function rennder_select( $options, $current_value = null, $ua_name=null,  $tag_id=null ){
+    public static function rennder_select( $options, $current_value = null, $ultraaddons_name=null,  $tag_id=null ){
 
         if( ! is_array( $options ) ) return"";
 
         ?>
-        <select id="<?php echo esc_attr( $tag_id ); ?>" name="<?php echo esc_attr( $ua_name ); ?>">
+        <select id="<?php echo esc_attr( $tag_id ); ?>" name="<?php echo esc_attr( $ultraaddons_name ); ?>">
         <?php
         
         foreach($options as $option_key => $option_value){

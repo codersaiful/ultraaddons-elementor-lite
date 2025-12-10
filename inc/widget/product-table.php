@@ -124,8 +124,8 @@ class Product_Table extends Base{
             $settings = $this->get_settings_for_display();
             $table_id = isset( $settings['table_id'] ) && !empty( $settings['table_id'] ) ? $settings['table_id'] : false;
             if( $table_id && is_numeric( $table_id ) ){
-                $ua_name = get_the_title( $table_id );
-                $shortcode = "[Product_Table id='{$table_id}' name='{$ua_name}']";
+                $ultraaddons_name = get_the_title( $table_id );
+                $shortcode = "[Product_Table id='{$table_id}' name='{$ultraaddons_name}']";
                 // $shortcode = do_shortcode( shortcode_unautop( $shortcode ) );
 		?>
                 <div class="wpt-elementor-wrapper wpt-elementor-wrapper-<?php echo esc_attr( $table_id ); ?>">

@@ -20,7 +20,7 @@ class Admin_Handle{
     
     public static $sub_menu = array();
     public static $capability = ULTRA_ADDONS_CAPABILITY;
-    public static $menu_slug = 'ultraaddons-elementor-lite';
+    public static $ultraaddons_menu_slug = 'ultraaddons-elementor-lite';
     public static $header_file = ULTRA_ADDONS_DIR . 'admin/pages/includes/admin-header.php';
     public static $footer_file = ULTRA_ADDONS_DIR . 'admin/pages/includes/admin-footer.php';
 
@@ -180,7 +180,7 @@ class Admin_Handle{
             'page_title'    => __( 'UltraAddons Elementor Addons', 'ultraaddons-elementor-lite' ),
             'menu_title'    => __( 'Ultra Addons', 'ultraaddons-elementor-lite' ),
             'capability'    => self::$capability,
-            'menu_slug'    => self::$menu_slug,//'ultraaddons-elementor-lite',
+            'menu_slug'    => self::$ultraaddons_menu_slug,//'ultraaddons-elementor-lite',
             'function'    => [ __CLASS__, 'welcome_page' ],
             //'function'    => [ __CLASS__, 'root_page' ], //When Welcome Page will Active, then it will active
             'icon_url'    => $icon_url,
@@ -190,20 +190,20 @@ class Admin_Handle{
         $menu = apply_filters( 'ultraaddons/admin/menu', $menu );
         
         $page_title = isset( $menu['page_title'] ) ? $menu['page_title'] : false;
-        $menu_title = isset( $menu['menu_title'] ) ? $menu['menu_title'] : false;
+        $ultraaddons_menu_title = isset( $menu['menu_title'] ) ? $menu['menu_title'] : false;
         $capability = isset( $menu['capability'] ) ? $menu['capability'] : false; //'manage_woocommerce';//
-        $menu_slug = isset( $menu['menu_slug'] ) ? $menu['menu_slug'] : false;
+        $ultraaddons_menu_slug = isset( $menu['menu_slug'] ) ? $menu['menu_slug'] : false;
         $function = isset( $menu['function'] ) ? $menu['function'] : false;
         $icon_url = isset( $menu['icon_url'] ) ? $menu['icon_url'] : false;
         $position = isset( $menu['position'] ) ? $menu['position'] : false;
         
         
-        add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
+        add_menu_page( $page_title, $ultraaddons_menu_title, $capability, $ultraaddons_menu_slug, $function, $icon_url, $position );
         
         /**
          * Adding Submenu
          */
-        self::add_submenu( $menu_slug );
+        self::add_submenu( $ultraaddons_menu_slug );
     }
     
     /**
@@ -217,14 +217,14 @@ class Admin_Handle{
 
             $parent_slug = isset( $menu['parent_slug'] ) ? $menu['parent_slug'] : false;
             $page_title = isset( $menu['page_title'] ) ? $menu['page_title'] : false;
-            $menu_title = isset( $menu['menu_title'] ) ? $menu['menu_title'] : false;
+            $ultraaddons_menu_title = isset( $menu['menu_title'] ) ? $menu['menu_title'] : false;
             $capability = isset( $menu['capability'] ) ? $menu['capability'] : false;
-            $menu_slug = isset( $menu['menu_slug'] ) ? $menu['menu_slug'] : false;
+            $ultraaddons_menu_slug = isset( $menu['menu_slug'] ) ? $menu['menu_slug'] : false;
             $function = isset( $menu['function'] ) ? $menu['function'] : false;
             $icon_url = isset( $menu['icon_url'] ) ? $menu['icon_url'] : false;
             $position = isset( $menu['position'] ) ? $menu['position'] : 100; //Actually $position param should be Number, can't be bool(false/true)
 
-            add_submenu_page($parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function, $position);
+            add_submenu_page($parent_slug, $page_title, $ultraaddons_menu_title, $capability, $ultraaddons_menu_slug, $function, $position);
         }
         
         if( ! did_action( 'ultraaddons_pro_init' ) ){
@@ -251,7 +251,7 @@ class Admin_Handle{
     public static function get_submenu(){
         self::$sub_menu = [
             [
-                'parent_slug'   => self::$menu_slug,//$parent_slug,
+                'parent_slug'   => self::$ultraaddons_menu_slug,//$parent_slug,
                 'page_title'    =>  __( 'UltraAddons Elementor Addons', 'ultraaddons-elementor-lite' ),
                 'menu_title'    =>  __( 'Welcome', 'ultraaddons-elementor-lite' ),
                 'capability'    => self::$capability,
@@ -261,7 +261,7 @@ class Admin_Handle{
             ],
             
             [
-                'parent_slug'   => self::$menu_slug,//$parent_slug,
+                'parent_slug'   => self::$ultraaddons_menu_slug,//$parent_slug,
                 'page_title'    =>  __( 'UltraAddons Widgets', 'ultraaddons-elementor-lite' ),
                 'menu_title'    =>  __( 'Widgets', 'ultraaddons-elementor-lite' ),
                 'capability'    => self::$capability,
@@ -272,7 +272,7 @@ class Admin_Handle{
             ],
             
             [
-                'parent_slug'   => self::$menu_slug,//$parent_slug,
+                'parent_slug'   => self::$ultraaddons_menu_slug,//$parent_slug,
                 'page_title'    =>  __( 'UltraAddons Extensions', 'ultraaddons-elementor-lite' ),
                 'menu_title'    =>  __( 'Extensions', 'ultraaddons-elementor-lite' ),
                 'capability'    => self::$capability,
@@ -281,7 +281,7 @@ class Admin_Handle{
                 'position'      =>  2,
             ],
             // [
-            //     'parent_slug'   => self::$menu_slug,//$parent_slug,
+            //     'parent_slug'   => self::$ultraaddons_menu_slug,//$parent_slug,
             //     'page_title'    =>  __( 'Custom Header Footer', 'ultraaddons-elementor-lite' ),
             //     'menu_title'    =>  __( 'Header Footer', 'ultraaddons-elementor-lite' ),
             //     'capability'    => self::$capability,
@@ -291,7 +291,7 @@ class Admin_Handle{
             // ],
             
             [
-                'parent_slug'   => self::$menu_slug,//$parent_slug,
+                'parent_slug'   => self::$ultraaddons_menu_slug,//$parent_slug,
                 'page_title'    =>  __( 'Custom Header Footer Template', 'ultraaddons-elementor-lite' ),
                 'menu_title'    =>  __( 'Header Footer', 'ultraaddons-elementor-lite' ),
                 'capability'    => self::$capability,
@@ -300,7 +300,7 @@ class Admin_Handle{
             ],
             
             [
-                'parent_slug'   => self::$menu_slug,//$parent_slug,
+                'parent_slug'   => self::$ultraaddons_menu_slug,//$parent_slug,
                 'page_title'    =>  __( 'Custom Fonts', 'ultraaddons-elementor-lite' ),
                 'menu_title'    =>  __( 'Custom Fonts', 'ultraaddons-elementor-lite' ),
                 'capability'    => self::$capability,
@@ -309,7 +309,7 @@ class Admin_Handle{
             ],
             
             [
-                'parent_slug'   => self::$menu_slug,//$parent_slug,
+                'parent_slug'   => self::$ultraaddons_menu_slug,//$parent_slug,
                 'page_title'    =>  __( 'Settings for UltraAddons', 'ultraaddons-elementor-lite' ),
                 'menu_title'    =>  __( 'Settings', 'ultraaddons-elementor-lite' ),
                 'capability'    => self::$capability,
@@ -320,7 +320,7 @@ class Admin_Handle{
             
             //has removed @since 1.1.4.0
             // [
-            //     'parent_slug'   => self::$menu_slug,//$parent_slug,
+            //     'parent_slug'   => self::$ultraaddons_menu_slug,//$parent_slug,
             //     'page_title'    =>  __( 'Help & Others', 'ultraaddons-elementor-lite' ),
             //     'menu_title'    =>  __( 'Help & Others', 'ultraaddons-elementor-lite' ),
             //     'capability'    => self::$capability,
@@ -447,8 +447,8 @@ class Admin_Handle{
         global $current_screen;
         //var_dump($current_screen);
         $hf_post_type =HF_Post::$post_type; //It's actually 'header_footer' \UltraAddons\WP\Header_Footer_Post::$post_type; //It's actually 'header_footer'
-        if( $current_screen->post_type  == HF_Post::$post_type ) return self::$menu_slug;//'ultraaddons-elementor-lite'; 
-        if( $current_screen->taxonomy == 'ultraaddons-custom-fonts' ) return self::$menu_slug;//'ultraaddons-elementor-lite';
+        if( $current_screen->post_type  == HF_Post::$post_type ) return self::$ultraaddons_menu_slug;//'ultraaddons-elementor-lite'; 
+        if( $current_screen->taxonomy == 'ultraaddons-custom-fonts' ) return self::$ultraaddons_menu_slug;//'ultraaddons-elementor-lite';
         
         //Return to default
         return $parent_file;
@@ -462,7 +462,7 @@ class Admin_Handle{
      */
     public static function keep_submenu_open( $submenu_file, $parent_file ){
 
-        if( $parent_file !== self::$menu_slug ) return $submenu_file; //Return to default
+        if( $parent_file !== self::$ultraaddons_menu_slug ) return $submenu_file; //Return to default
 
         global $current_screen;
 

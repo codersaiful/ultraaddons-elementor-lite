@@ -393,9 +393,9 @@ class Header_Footer_Post{
 							<optgroup label="<?php echo esc_attr( $field_key ); ?>">
 							<?php
 							foreach( $field as $each_key => $each_item){
-								$selected = in_array($each_key, $rules_arr) ? 'selected' : '';
+								$ultraaddons_selected = in_array($each_key, $rules_arr) ? 'selected' : '';
 								?>
-								<option <?php echo esc_attr( $selected );?> 
+								<option <?php echo esc_attr( $ultraaddons_selected );?> 
 								value="<?php echo esc_attr( $each_key ); ?>">
 									<?php echo esc_attr( $each_item ); ?>
 								</option>
@@ -455,7 +455,7 @@ class Header_Footer_Post{
         }
         $f_post = ultraaddons_optimize_array($f_post);
 		
-        update_option(Header_Footer::$key, $f_post);
+        update_option(Header_Footer::$ultraaddons_key, $f_post);
         
         wp_reset_postdata();
 	}

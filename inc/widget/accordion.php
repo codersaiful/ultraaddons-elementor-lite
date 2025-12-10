@@ -1071,14 +1071,14 @@ class Accordion extends Base{
         $migrated       = isset( $__fa4_migrated['_ua_accordion_selected_icon'] );
         $icon_position  = 'icon-'. $settings['icon_align'];
 
-        if (  !empty( $ua_icon ) && ! Icons_Manager::is_migration_allowed() ) {
+        if (  !empty( $ultraaddons_icon ) && ! Icons_Manager::is_migration_allowed() ) {
         
             $settings['icon'] = 'fas fa-angle-up';
             $settings['icon_active'] = 'fas fa-angle-down';
         }
 
 
-        $is_new = empty( $ua_icon ) && Icons_Manager::is_migration_allowed();
+        $is_new = empty( $ultraaddons_icon ) && Icons_Manager::is_migration_allowed();
         $has_icon = ( ! $is_new || ! empty( $_ua_accordion_selected_icon['value'] ) );
         
         $this->add_render_attribute(
@@ -1098,30 +1098,30 @@ class Accordion extends Base{
             <div class="ua_accordion">
                 <?php
                 $i = 1;
-                foreach ( $_ua_accordions_list as $index => $ua_item ) :
+                foreach ( $_ua_accordions_list as $index => $ultraaddons_item ) :
                     
                     $tab_count = $index + 1;
 
                     
-                    $has_title_text = ! empty( $ua_item['_ua_accordions_title'] );
+                    $has_title_text = ! empty( $ultraaddons_item['_ua_accordions_title'] );
 
-                    $has_description_text = ! empty( $ua_item['_ua_accordions_description_text'] );
+                    $has_description_text = ! empty( $ultraaddons_item['_ua_accordions_description_text'] );
 
-                    $has_image = ! empty( $ua_item['_ua_accordions_image']['url'] );
+                    $has_image = ! empty( $ultraaddons_item['_ua_accordions_image']['url'] );
 
                     $tab_title_setting_key = $this->get_repeater_setting_key( '_ua_accordions_title', '_ua_accordions_list', $index );
 
                     $tab_content_setting_key = $this->get_repeater_setting_key( '_ua_accordions_description_text', '_ua_accordions_list', $index );
 
                     $icon_tag = '';
-                    if ( ! empty( $ua_item['_ua_accordions_link']['url'] ) ) {
+                    if ( ! empty( $ultraaddons_item['_ua_accordions_link']['url'] ) ) {
                         $icon_tag = 'a';
-                        $this->add_link_attributes( '_ua_accordions_link', $ua_item['_ua_accordions_link'] );
+                        $this->add_link_attributes( '_ua_accordions_link', $ultraaddons_item['_ua_accordions_link'] );
                     }
                     $link_attributes = $this->get_render_attribute_string( '_ua_accordions_link' );
 
-                    $is_external = !empty($ua_item['_ua_accordions_link']['is_external']);
-                    $is_nofollow = !empty($ua_item['_ua_accordions_link']['nofollow']);
+                    $is_external = !empty($ultraaddons_item['_ua_accordions_link']['is_external']);
+                    $is_nofollow = !empty($ultraaddons_item['_ua_accordions_link']['nofollow']);
                     
                     $get_target= $is_external=='on' ? 'target="_blank"' : ''; 
                     $get_nofollow= $is_nofollow=='on' ? 'rel="nofollow"' : ''; 
@@ -1129,7 +1129,7 @@ class Accordion extends Base{
                     $title_active_class = '';
                     $content_active_class = '';
 
-                    if ($ua_item['_ua_accordions_show_as_default'] == 'yes') {
+                    if ($ultraaddons_item['_ua_accordions_show_as_default'] == 'yes') {
                         $title_active_class = 'ua-active-default ua-active';
                         $content_active_class = 'ua-active-default ua-active';
                     }
@@ -1149,9 +1149,9 @@ class Accordion extends Base{
                     <div class="ua_accordion_item ua_accordion_style_08 ua-accordion-wrapper">
                         <div <?php echo esc_attr( $this->get_render_attribute_string( $tab_title_setting_key ) ); ?>>
                             <?php if ( $has_title_text ) : ?>
-                                <<?php echo esc_html( ultraaddons_title_tag( $ua_item['_ua_accordions_title_size'] ) ); ?> class="ua_accordion_title ua-accordions-title">
-                                    <?php echo do_shortcode($ua_item['_ua_accordions_title']); ?>
-                                </<?php echo esc_html( ultraaddons_title_tag( $ua_item['_ua_accordions_title_size'] ) ); ?>>
+                                <<?php echo esc_html( ultraaddons_title_tag( $ultraaddons_item['_ua_accordions_title_size'] ) ); ?> class="ua_accordion_title ua-accordions-title">
+                                    <?php echo do_shortcode($ultraaddons_item['_ua_accordions_title']); ?>
+                                </<?php echo esc_html( ultraaddons_title_tag( $ultraaddons_item['_ua_accordions_title_size'] ) ); ?>>
                             <?php endif; ?>
                             <div class="ua-icon">
                                 <?php 
@@ -1184,11 +1184,11 @@ class Accordion extends Base{
                         </div>
                         <div <?php echo esc_attr( $this->get_render_attribute_string( $tab_content_setting_key ) ); ?>>
                             <div class="ua_accordion_inner">
-                                <?php if ( 'yes' == $ua_item['_ua_accordions_image_show'] ) : ?>
+                                <?php if ( 'yes' == $ultraaddons_item['_ua_accordions_image_show'] ) : ?>
                                     <?php if ( $has_image ): ?>
                                     <div class="ua_accordion_thumb">
                                         <a <?php echo esc_attr( $link_attributes ); ?> >
-                                        <img src="<?php echo esc_url($ua_item['_ua_accordions_image']['url']); ?>" alt="#" class="ua_img_res">
+                                        <img src="<?php echo esc_url($ultraaddons_item['_ua_accordions_image']['url']); ?>" alt="#" class="ua_img_res">
                                         </a>
                                     </div>
                                     <?php endif; ?>
@@ -1196,13 +1196,13 @@ class Accordion extends Base{
                                 <div class="ua_accordion_inner_content">
                                     <?php if ( $has_description_text ) : ?>
                                     <p class="ua_desc">
-                                        <?php echo do_shortcode( $ua_item['_ua_accordions_description_text'] ); ?>
+                                        <?php echo do_shortcode( $ultraaddons_item['_ua_accordions_description_text'] ); ?>
                                     </p>
                                     <?php endif; ?>
                                     
-                                    <?php if ( 'yes' == $ua_item['_ua_accordions_button_show'] ) : ?>
-                                        <a href="<?php echo esc_url( $ua_item['_ua_accordions_link']['url'] ?? '' ); ?>" <?php echo esc_attr( $get_target );?> <?php echo  esc_attr( $get_nofollow );?> class="ua_cu_btn btn_2 ua-accordion-button">
-                                            <?php echo esc_html( $ua_item['_ua_accordions_button_text'] ); ?>
+                                    <?php if ( 'yes' == $ultraaddons_item['_ua_accordions_button_show'] ) : ?>
+                                        <a href="<?php echo esc_url( $ultraaddons_item['_ua_accordions_link']['url'] ?? '' ); ?>" <?php echo esc_attr( $get_target );?> <?php echo  esc_attr( $get_nofollow );?> class="ua_cu_btn btn_2 ua-accordion-button">
+                                            <?php echo esc_html( $ultraaddons_item['_ua_accordions_button_text'] ); ?>
                                         </a>
                                     <?php endif; ?>
                                 </div>

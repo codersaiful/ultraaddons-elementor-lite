@@ -20,7 +20,7 @@ class Button extends Base{
         parent::__construct($data, $args);
 
         //CSS file for dependency
-		$ua_name           = 'hover-css';
+		$ultraaddons_name           = 'hover-css';
         $css_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/hover-css/css/hover-min.css';
         $dependency     =  [];
         $version        = ULTRA_ADDONS_VERSION;

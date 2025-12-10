@@ -57,22 +57,22 @@ class Team_Box extends Base{
                 <ul class="social_links">
                     <?php
                     foreach ( $settings['profiles'] as $profile ) :
-                            $ua_icon = $profile['name'];
+                            $ultraaddons_icon = $profile['name'];
                             $url = $profile['link']['url'];
 
                             if ( $profile['name'] === 'website' ) {
-                                    $ua_icon = 'globe far';
+                                    $ultraaddons_icon = 'globe far';
                             } elseif ( $profile['name'] === 'email' ) {
-                                    $ua_icon = 'envelope far';
+                                    $ultraaddons_icon = 'envelope far';
                                     $url = 'mailto:' . antispambot( $profile['email'] );
                             } else {
-                                    $ua_icon .= ' fab';
+                                    $ultraaddons_icon .= ' fab';
                             }
 
                             printf( '<li><a target="_blank" rel="noopener" href="%s" class="elementor-repeater-item-%s"><i class="lab fa-%s" aria-hidden="true"></i></a></li>',
                                     esc_url( $url ),
                                     esc_attr( $profile['_id'] ),
-                                    esc_attr( $ua_icon )
+                                    esc_attr( $ultraaddons_icon )
                             );
                     endforeach; ?>
                 </ul>

@@ -15,19 +15,19 @@ defined( 'ABSPATH' ) || die();
 /**
  * Controlling Form Submission
  */
-$form_datas = filter_input_array(INPUT_POST);
+$ultraaddons_form_datas = filter_input_array(INPUT_POST);
 
-do_action( 'ultraaddons_save_data', $form_datas, 'settings' );
+do_action( 'ultraaddons_save_data', $ultraaddons_form_datas, 'settings' );
 
-$key = Settings::$key;
+$ultraaddons_key = Settings::$ultraaddons_key;
 
-if( $form_datas && $key ){
-    update_option( $key, $form_datas );
+if( $ultraaddons_form_datas && $ultraaddons_key ){
+    update_option( $ultraaddons_key, $ultraaddons_form_datas );
 }
-$current_data = Settings::get_data();
+$ultraaddons_current_data = Settings::get_data();
 
 
-$category_slug = Settings::get_widget_category();
+$ultraaddons_category_slug = Settings::get_widget_category();
 ?>
 
 <div class="ultraaddons-section ua-option-wrapper">

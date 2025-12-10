@@ -23,7 +23,7 @@ class Settings {
      *
      * @var string option key for update and get data from database. 
      */
-    public static $key = 'ultraaddons_settings';
+    public static $ultraaddons_key = 'ultraaddons_settings';
     
     /**
      * Default data for header id, and footer id.
@@ -39,7 +39,7 @@ class Settings {
     /**
      * Getting settings data from
      * database
-     * I have taken data based on sell:$key which is 'ultraaddons_settings'
+     * I have taken data based on sell:$ultraaddons_key which is 'ultraaddons_settings'
      * Actually if not found any data in database, based on this key
      * then it will return default data from property
      * 
@@ -54,7 +54,7 @@ class Settings {
          * 
          * @since 1.0.1.0
          */
-        $data = get_option( self::$key, self::$data );
+        $data = get_option( self::$ultraaddons_key, self::$data );
         return apply_filters( 'ultraaddons/settings/data', $data );
     }
     

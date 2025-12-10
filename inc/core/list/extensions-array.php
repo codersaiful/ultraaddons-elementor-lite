@@ -11,7 +11,7 @@ use Elementor\Controls_Manager;
  */
 
 
-$extensionsArray = [
+$ultraaddons_extensionsArray = [
             'Wrapper_Link'=> [
                     'name'      => __( 'Wrapper Link', 'ultraaddons-elementor-lite' ),
                     'is_pro'   => false,
@@ -174,4 +174,4 @@ $extensionsArray = [
             
         ];
 
-return apply_filters( 'ultraaddons/extensions/array', $extensionsArray );
+return apply_filters( 'ultraaddons/extensions/array', $ultraaddons_extensionsArray );

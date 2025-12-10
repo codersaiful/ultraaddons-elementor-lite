@@ -18,14 +18,14 @@ class ready extends Base{
         parent::__construct($data, $args);
 
         //Naming of Args for Skill Chart
-        $ua_name           = 'SkillChart';
+        $ultraaddons_name           = 'SkillChart';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/easypiechart.js';
         $dependency     =  ['jquery'];//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  = true;
 
-        wp_register_script( $ua_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ua_name );
+        wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ultraaddons_name );
     }
 	
 

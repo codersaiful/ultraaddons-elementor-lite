@@ -75,19 +75,19 @@ class Advance_List extends Base{
         <ul class="ua-list-items">
             <?php
             $serial = 1;
-            foreach( $ua_items as $key => $ua_item ){
+            foreach( $ua_items as $ultraaddons_key => $ultraaddons_item ){
 
-                $_id = !empty( $ua_item['_id'] ) ? $ua_item['_id'] : false;
-                $title = !empty( $ua_item['title'] ) ? $ua_item['title'] : false;
-                $description = !empty( $ua_item['description'] ) ? $ua_item['description'] : false;
-                $ua_icon     = !empty( $ua_item['icon']['value'] ) && is_string( $ua_item['icon']['value'] ) ? $ua_item['icon']['value'] : false;
+                $_id = !empty( $ultraaddons_item['_id'] ) ? $ultraaddons_item['_id'] : false;
+                $title = !empty( $ultraaddons_item['title'] ) ? $ultraaddons_item['title'] : false;
+                $description = !empty( $ultraaddons_item['description'] ) ? $ultraaddons_item['description'] : false;
+                $ultraaddons_icon     = !empty( $ultraaddons_item['icon']['value'] ) && is_string( $ultraaddons_item['icon']['value'] ) ? $ultraaddons_item['icon']['value'] : false;
 
                 ?>
             <li class="list-item list-item-<?php echo esc_attr( $serial ); ?> elementor-repeater-item-<?php echo esc_attr( $_id ); ?>"> 
                 <div class="list-item-inside">
                 
-                    <?php if( $ua_icon ){ ?>
-                    <i class="<?php echo esc_attr( $ua_icon ); ?>"></i>
+                    <?php if( $ultraaddons_icon ){ ?>
+                    <i class="<?php echo esc_attr( $ultraaddons_icon ); ?>"></i>
                     <?php } ?>
 
                     <?php if( $title ){  ?>
