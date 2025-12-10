@@ -52,7 +52,7 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
             foreach( $wid_cats as $wid_cat_key => $wid_cat ){
                 $active_class = $wid_cat_key == 'all' ? 'active' : '';
             ?>
-                <li class="wid-cat-wise-target <?php echo esc_attr( $active_class ); ?>" data-target="<?php echo esc_attr( $wid_cat_key ); ?>" ><?php echo $wid_cat; ?></li>
+                <li class="wid-cat-wise-target <?php echo esc_attr( $active_class ); ?>" data-target="<?php echo esc_attr( $wid_cat_key ); ?>" ><?php echo esc_html( $wid_cat ); ?></li>
             <?php
             }
             
@@ -142,7 +142,7 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
 ?>
 <div class="remodal" data-remodal-id="modal">
   <button data-remodal-action="close" class="remodal-close"></button>
-  <img class="popup-image" src=" <?php echo ULTRA_ADDONS_ASSETS . 'images/popup-pro.png'; ?>">
+  <img class="popup-image" src=" <?php echo esc_url( ULTRA_ADDONS_ASSETS . 'images/popup-pro.png' ); ?>">
   <h1>Go Pro</h1>
   <p>
     Unlock 30+ amazing widgets to build awesome websites.

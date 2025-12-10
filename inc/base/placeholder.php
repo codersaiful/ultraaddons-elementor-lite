@@ -64,7 +64,7 @@ class Placeholder extends Widget_Base{
         <div class="ua-plac-content">
             <p><?php
             /* translators: 1: title */
-            echo sprintf( esc_html__( 'Use %s widget and dozens more pro features to extend your toolbox and build sites faster and better.', 'ultraaddons-elementor-lite' ), $this->title );
+            echo sprintf( esc_html__( 'Use %s widget and dozens more pro features to extend your toolbox and build sites faster and better.', 'ultraaddons-elementor-lite' ), esc_html( $this->title ) );
             ?></p>
             <p>
                 <a href="<?php echo esc_url( ultraaddons_help_url( $this->name ) ); ?>" class="button button-readmore">

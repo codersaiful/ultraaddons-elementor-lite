@@ -52,7 +52,9 @@ $add_new_elementor_template = admin_url( 'post-new.php?post_type=' . HF_Post::$p
                                 <?php
                                 foreach( $templates as $templ_id => $templ_name ){
                                     $selected = isset( $current_data['header_id'] ) && $current_data['header_id'] == $templ_id ? 'selected' : '';
-                                    echo "<option value='{$templ_id}' $selected>{$templ_name}</option>";
+                                ?>
+                                <option value='<?php echo esc_attr( $templ_id ); ?>' <?php echo esc_attr( $selected ); ?>><?php echo esc_html( $templ_name ); ?></option>
+                                <?php 
                                 }
                                 ?>
                             </select>
@@ -74,7 +76,9 @@ $add_new_elementor_template = admin_url( 'post-new.php?post_type=' . HF_Post::$p
                                 <?php
                                 foreach( $templates as $templ_id => $templ_name ){
                                     $selected = isset( $current_data['footer_id'] ) && $current_data['footer_id'] == $templ_id ? 'selected' : '';
-                                    echo "<option value='{$templ_id}' $selected>{$templ_name}</option>";
+                                ?>
+                                <option value='<?php echo esc_attr( $templ_id ); ?>' <?php echo esc_attr( $selected ); ?>><?php echo esc_html( $templ_name ); ?></option>
+                                <?php 
                                 }
                                 ?>
                             </select>

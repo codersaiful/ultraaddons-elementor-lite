@@ -24,7 +24,7 @@ $page_class         = strtolower(str_replace(' ', '-', $get_page_name ));
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Roboto:wght@300&display=swap" rel="stylesheet">
-        <div class="ultraaddons-dashboard-area <?php echo $page_class;?>">
+        <div class="ultraaddons-dashboard-area <?php echo esc_html( $page_class ); ?>">
             <div class="ua-admin-header-wrapper">
                 <div class="ua-branding">
                     <img src="<?php echo esc_attr( $full_logo_image ); ?>">

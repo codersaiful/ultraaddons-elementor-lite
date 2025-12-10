@@ -209,7 +209,7 @@ class Info_Boards extends Base {
                                                             'library' => 'solid',
                                                     ],
                                                     'title' => esc_html__( 'Opening Hours', 'ultraaddons-elementor-lite' ),
-                                                    'description' => esc_html__( '<ul><li><p>Fri-Sat</p><p>8AM - 10PM</p></li><li><p>Mon-Tue</p> <p>8AM - 10PM</p></li><li><p>Thu-Sun</p> <p>8AM - 10PM</p></li></ul>', 'ultraaddons-elementor-lite' ),
+                                                    'description' => '<ul><li><p>Fri-Sat</p><p>8AM - 10PM</p></li><li><p>Mon-Tue</p> <p>8AM - 10PM</p></li><li><p>Thu-Sun</p> <p>8AM - 10PM</p></li></ul>',
                                                     'button' => esc_html__( 'Sunday Closed', 'ultraaddons-elementor-lite' ),
                                                     'link' => [
                                                             'url' => '',
@@ -224,7 +224,7 @@ class Info_Boards extends Base {
                                                             'library' => 'solid',
                                                     ],
                                                     'title' => esc_html__( 'Emergency Cases', 'ultraaddons-elementor-lite' ),
-                                                    'description' => esc_html__( '<p>Lorem ipsum dolor sit amet consect adipisicing a sed do eusmod tempor incididunt ut labore.</p>', 'ultraaddons-elementor-lite' ),
+                                                    'description' => '<p>Lorem ipsum dolor sit amet consect adipisicing a sed do eusmod tempor incididunt ut labore.</p>',
                                                     'button' => esc_html__( 'Click Here', 'ultraaddons-elementor-lite' ),
                                                     'link' => [
                                                             'url' => '#',
@@ -239,7 +239,7 @@ class Info_Boards extends Base {
                                                             'library' => 'regular',
                                                     ],
                                                     'title' => esc_html__( 'Doctor Timetable', 'ultraaddons-elementor-lite' ),
-                                                    'description' => esc_html__( '<p>Lorem ipsum dolor sit amet consect adipisicing a sed do eusmod tempor incididunt ut labore.</p>', 'ultraaddons-elementor-lite' ),
+                                                    'description' => '<p>Lorem ipsum dolor sit amet consect adipisicing a sed do eusmod tempor incididunt ut labore.</p>',
                                                     'button' => esc_html__( 'Click Here', 'ultraaddons-elementor-lite' ),
                                                     'link' => [
                                                             'url' => '#',
