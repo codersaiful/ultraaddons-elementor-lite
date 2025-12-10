@@ -32,6 +32,7 @@ class Contact_Form7 extends Base{
                         [
                             'type' => Controls_Manager::RAW_HTML,
                             'raw' => sprintf(
+                                /* translators: 1: widget name 2: user name 3: link to install/activate Contact Form 7   */
                                 __( 'Hello %2$s, looks like %1$s is missing in your site. Please click on the link below and install/activate %1$s. Make sure to refresh this page after installation or activation.', 'ultraaddons-elementor-lite' ),
                                 '<a href="'.esc_url( admin_url( 'plugin-install.php?s=Contact+Form+7&tab=search&type=term' ) )
                                 .'" target="_blank" rel="noopener">Contact Form 7</a>',
