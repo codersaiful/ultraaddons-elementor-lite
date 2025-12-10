@@ -17,7 +17,19 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 
 class Advance_Post_Masonry extends Base{
+
+    public $current_permalink;//current_permalink
     
+    /**
+     * Get your widget name
+     *
+     * Retrieve image accordion widget name.
+     *
+     * @since 1.0.0
+     * @access public
+     *
+     * @return string Widget name.
+     */
     public function __construct($data = [], $args = null) {
         parent::__construct($data, $args);
        
@@ -1529,7 +1541,7 @@ class Advance_Post_Masonry extends Base{
         $tag = !empty( $settings['_ua_title_tag'] ) ? $settings['_ua_title_tag'] : 'h3';
         ?>
     
-    <<?php echo $tag; ?> class="ua_title ua-post__title"> <a href="<?php echo $this->current_permalink; ?>" <?php echo $optional_attributes_html; ?>><?php the_title();?></a> </<?php echo $tag; ?>>
+    <<?php echo esc_attr( $tag ); ?> class="ua_title ua-post__title"> <a href="<?php echo esc_url( $this->current_permalink ); ?>" <?php echo esc_attr( $optional_attributes_html ); ?>><?php the_title();?></a> </<?php echo esc_attr( $tag ); ?>>
     <?php
     }
     protected function render_thumbnail($_image_width, $_image_height){
@@ -1588,7 +1600,7 @@ class Advance_Post_Masonry extends Base{
             <?php 
             if ( ! has_excerpt() ) {
                 echo '<p>';
-                echo wp_trim_words( get_the_content(), 10, '...' );
+                echo esc_html( wp_trim_words( get_the_content(), 10, '...' ) );
                echo '</p>';
             } else { 
                 the_excerpt();
@@ -1627,7 +1639,7 @@ class Advance_Post_Masonry extends Base{
                 $output = '<a href="' . esc_url( $term_link ) .'" class="'.$class.'">'. esc_html( $terms[0]->name ) .'</a>';
             }
         }
-        echo $output;
+        echo wp_kses_post( $output );
     }
     protected function render_author(){
         $settings = $this->get_settings_for_display();
@@ -1660,7 +1672,7 @@ class Advance_Post_Masonry extends Base{
             return;
         }
         $author_prefix_text = $settings['_ua_blog_skin'] == '_skin_1' ? ' By' : '';
-        echo '<p class="ua_date ua-post__date"><a href="#">'.apply_filters('the_date', get_the_date(), get_option('date_format'), '', ''). $author_prefix_text . '</a></p>';
+        echo '<p class="ua_date ua-post__date"><a href="#">'. esc_html( apply_filters('the_date', get_the_date(), get_option('date_format'), '', ''). $author_prefix_text ) . '</a></p>';
     }
     protected function render_tag() {    
         $settings = $this->get_settings_for_display();
@@ -1676,7 +1688,7 @@ class Advance_Post_Masonry extends Base{
                 $output .= '<li><a href="' . get_tag_link($tag->term_id) . '">' . $tag->name . '</a></li>' . $separator;
             }
              $output .= '</ul>';
-            echo trim($output, $separator);
+            echo wp_kses_post( $output );
 
         }
     }
@@ -1704,8 +1716,8 @@ protected function render_read_more() {
     $optional_attributes_html = $this->get_optional_link_attributes_html();
 
     ?>
-        <a class="ua-post__read-more read_more_btn" href="<?php echo $this->current_permalink; ?>" <?php echo $optional_attributes_html; ?>>
-            <?php echo $settings['_ua_read_more_text']; ?>
+        <a class="ua-post__read-more read_more_btn" href="<?php echo esc_url( $this->current_permalink ); ?>" <?php echo esc_attr( $optional_attributes_html ); ?>>
+            <?php echo esc_html( $settings['_ua_read_more_text'] ); ?>
         </a>
     <?php
 }
@@ -1979,11 +1991,11 @@ protected function get_grid_layout_four_options( array $settings ) {
                             $_image_height *= 2;
                         }
                         ?>
-                        <div class="<?php echo $classes; ?>" data-width="<?php echo esc_attr( $ratioW ); ?>" data-height="<?php echo esc_attr( $ratioH ); ?>">
+                        <div class="<?php echo esc_attr( $classes ); ?>" data-width="<?php echo esc_attr( $ratioW ); ?>" data-height="<?php echo esc_attr( $ratioH ); ?>">
 
                             <div class="grid-item-height" style="height: 950px;">
                                 <div class="grid-item-content ua_masonry_blog_post zoom_in_effect ua-post__area blog_grid_masonory">
-                                    <a href="<?php echo $this->current_permalink; ?>" class="ua_masonry_blog_thumb">
+                                    <a href="<?php echo esc_url( $this->current_permalink ); ?>" class="ua_masonry_blog_thumb">
                                         <?php $this->render_thumbnails(); ?>
                                     </a>
                                     <?php $this->render_category();  ?>
@@ -2042,13 +2054,13 @@ protected function get_grid_layout_four_options( array $settings ) {
               $this->current_permalink = get_permalink();
 
         ?>
-         <div class="ua_col_lg_<?php echo $columns; ?> ua_col_sm_<?php echo $settings['_ua_blog_columns_tablet']; ?>">
+         <div class="ua_col_lg_<?php echo esc_attr( $columns ); ?> ua_col_sm_<?php echo esc_attr( $settings['_ua_blog_columns_tablet'] ); ?>">
             
             <div class="ua-post__area blog_grid_masonory style_5 zoom_in_effect">
                 <?php 
                 if ( $settings[ '_ua_show_thumb' ] == 'yes'):
                  ?>
-                <a href="<?php echo $this->current_permalink; ?>" class="post_thumb">
+                <a href="<?php echo esc_url( $this->current_permalink ); ?>" class="post_thumb">
                     <?php $this->render_thumbnails();?>
                 </a>
             <?php endif; ?>
@@ -2086,10 +2098,10 @@ protected function get_grid_layout_four_options( array $settings ) {
               $query_posts->the_post();
               $this->current_permalink = get_permalink();
         ?>
-         <div class="ua_col_lg_<?php echo $columns; ?> ua_col_sm_<?php echo $settings['_ua_blog_columns_tablet']; ?>">
+         <div class="ua_col_lg_<?php echo esc_attr( $columns ); ?> ua_col_sm_<?php echo esc_attr( $settings['_ua_blog_columns_tablet'] ); ?>">
             
             <div class="ua-post__area ua_blog_grid_masonory_post style_8 zoom_in_effect">
-                 <a href="<?php echo $this->current_permalink; ?>" class="ua_blog_grid_masonory_img">
+                 <a href="<?php echo esc_url( $this->current_permalink ); ?>" class="ua_blog_grid_masonory_img">
                     <?php $this->render_thumbnails();?>
                 </a>
                 <div class="ua_post_box_content">
@@ -2150,10 +2162,10 @@ protected function get_grid_layout_four_options( array $settings ) {
                         $_image_height = $_image_width * isset($settings['_ua_metro_image_ratio_four']['size'])? $settings['_ua_metro_image_ratio_four']['size'] : '';
 
                     ?>
-                      <div class="<?php echo $classes; ?>">
+                      <div class="<?php echo esc_attr( $classes ); ?>">
                         
                         <div class="ua-post__area ua_blog_grid_masonory_post style_6">
-                            <a href="<?php echo $this->current_permalink; ?>" class="ua_blog_grid_masonory_post_thumb">
+                            <a href="<?php echo esc_url( $this->current_permalink ); ?>" class="ua_blog_grid_masonory_post_thumb">
                                <?php $this->render_thumbnails(); ?>
                             </a>
                             <div class="ua_blog_grid_masonory_post_inner">

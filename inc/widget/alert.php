@@ -64,10 +64,10 @@ class Alert extends Base{
         $alert_cross_show       = ! empty( $settings['_ua_alert_cross_icon_show'] );
         ?>
         <div class="ua_alert_box ua_alert_box_style_01 <?php echo esc_html( $settings['_ua_alert_design_format']); ?>">
-            <<?php echo $_ua_alert_title_size; ?> class="ua_alert_desc">
+            <<?php echo esc_html( $_ua_alert_title_size ); ?> class="ua_alert_desc">
                 <?php if($alert_show_icon): ?><?php Icons_Manager::render_icon( $settings['_ua_alert_icon'] ); ?><?php endif; ?>
                 <?php echo wp_kses_post( $settings['_ua_alert_title']); ?>
-            </<?php echo $_ua_alert_title_size; ?>>
+            </<?php echo esc_html( $_ua_alert_title_size ); ?>>
             <?php if($alert_cross_show): ?>
             <button type="button" class="ua_alert_close">
                 <?php Icons_Manager::render_icon( $settings['_ua_alert_cross_icon'] ); ?>

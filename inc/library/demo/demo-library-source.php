@@ -216,7 +216,7 @@ class Demo_Library_Source extends Source_Base {
 		$data = json_decode( $data, true );
 
 		if ( empty( $data ) || empty( $data['content'] ) ) {
-			throw new \Exception( __( 'Template does not have any content', 'ultraaddons-elementor-lite' ) );
+			throw new \Exception( esc_html__( 'Template does not have any content', 'ultraaddons-elementor-lite' ) );
 		}
 
 		$data['content'] = $this->replace_elements_ids( $data['content'] );

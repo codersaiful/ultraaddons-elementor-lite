@@ -165,7 +165,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
 
         
         $count = count( $variants );
-        echo '<div class="all-variant-group-wrapper" data-count="'. $count .'">';
+        echo '<div class="all-variant-group-wrapper" data-count="'. esc_attr( $count ) .'">';
         $variant_key = 0;
         foreach( $variants as $variant ){
 

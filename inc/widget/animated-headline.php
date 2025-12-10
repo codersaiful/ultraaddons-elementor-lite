@@ -71,28 +71,28 @@ class Animated_Headline extends Base{
 		}
         ?>
 
-        <<?php echo $tag; ?> <?php echo $this->get_render_attribute_string( 'headline' ); ?>>
+        <<?php echo esc_html( $tag ); ?> <?php echo esc_attr( $this->get_render_attribute_string( 'headline' ) ); ?>>
         <?php if ( ! empty( $settings['before_text'] ) ) : ?>
-			<span class="elementor-headline-plain-text elementor-headline-text-wrapper"><?php echo $settings['before_text']; ?></span>
+			<span class="elementor-headline-plain-text elementor-headline-text-wrapper"><?php echo esc_html( $settings['before_text'] ?? '' ); ?></span>
 		<?php endif; ?>
 		<span class="elementor-headline-dynamic-wrapper elementor-headline-text-wrapper">
 			<?php if ( 'rotate' === $settings['headline_style'] && $settings['rotating_text'] ) :
 				$rotating_text = explode( "\n", $settings['rotating_text'] );
 				foreach ( $rotating_text as $key => $text ) :
 					$status_class = 1 > $key ? 'elementor-headline-text-active' : ''; ?>
-				<span class="elementor-headline-dynamic-text <?php echo $status_class; ?>">
-					<?php echo str_replace( ' ', '&nbsp;', $text ); ?>
+				<span class="elementor-headline-dynamic-text <?php echo esc_attr( $status_class ); ?>">
+					<?php echo wp_kses_post( str_replace( ' ', '&nbsp;', $text ) ); ?>
 				</span>
 			<?php endforeach; ?>
 			<?php elseif ( 'highlight' === $settings['headline_style'] && ! empty( $settings['highlighted_text'] ) ) : ?>
-				<span class="elementor-headline-dynamic-text elementor-headline-text-active"><?php echo $settings['highlighted_text']; ?></span>
+				<span class="elementor-headline-dynamic-text elementor-headline-text-active"><?php echo esc_html( $settings['highlighted_text'] ?? '' ); ?></span>
 			<?php endif ?>
 		</span>
         <?php if ( ! empty( $settings['after_text'] ) ) : ?>
-			<span class="elementor-headline-plain-text elementor-headline-text-wrapper"><?php echo $settings['after_text']; ?></span>
+			<span class="elementor-headline-plain-text elementor-headline-text-wrapper"><?php echo esc_html( $settings['after_text'] ?? '' ); ?></span>
         <?php endif; ?>
         </span>
-        </<?php echo $tag; ?>>
+        </<?php echo esc_html( $tag ); ?>>
 		<?php
 
 		if ( ! empty( $settings['link']['url'] ) ) {

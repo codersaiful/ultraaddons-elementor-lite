@@ -56,7 +56,7 @@ class Custom_Fonts_Render {
             
         }
         $style_code .= "</style>";
-        echo $style_code;
+        echo wp_kses_post( $style_code );
     }
 
     /**

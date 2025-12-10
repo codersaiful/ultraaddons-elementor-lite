@@ -81,14 +81,14 @@ class Advance_Heading extends Base{
         ?>
         <div class="advance-heading-wrapper <?php echo esc_attr( $alignment ); ?>" >
             <?php if( ! empty( $settings['avd_sub_heading'] ) ){ ?>
-            <span <?php echo $this->get_render_attribute_string( 'avd_sub_heading_wrapper' ); ?>>
-                <span <?php echo $this->get_render_attribute_string( 'avd_sub_heading' ); ?>><?php echo wp_kses_post( $settings['avd_sub_heading'] ); ?></span>
+            <span <?php echo esc_attr( $this->get_render_attribute_string( 'avd_sub_heading_wrapper' ) ); ?>>
+                <span <?php echo esc_attr( $this->get_render_attribute_string( 'avd_sub_heading' ) ); ?>><?php echo wp_kses_post( $settings['avd_sub_heading'] ); ?></span>
             </span>
             <?php
             }
             if( ! empty( $settings['avd_heading'] ) ){
             ?>
-            <h4 <?php echo $this->get_render_attribute_string( 'avd_heading' ); ?>>
+            <h4 <?php echo esc_attr( $this->get_render_attribute_string( 'avd_heading' ) ); ?>>
                 <?php echo wp_kses_post( $settings['avd_heading'] ); ?>
             </h4>
             <?php } ?>

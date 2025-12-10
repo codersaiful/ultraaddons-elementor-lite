@@ -71,7 +71,7 @@ class Advance_List extends Base{
         $items = $settings['list_items'];
 
         ?>
-    <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
+    <div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
         <ul class="ua-list-items">
             <?php
             $serial = 1;

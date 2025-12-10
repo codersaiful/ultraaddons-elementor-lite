@@ -1094,7 +1094,7 @@ class Accordion extends Base{
         $id_int = substr( $this->get_id_int(), 0, 4 );
         ?>
         <?php if ($has_accordions): ?>
-        <div <?php echo $this->get_render_attribute_string('ua_accordion_wrapper'); ?> >
+        <div <?php echo esc_attr($this->get_render_attribute_string('ua_accordion_wrapper')); ?> >
             <div class="ua_accordion">
                 <?php
                 $i = 1;
@@ -1147,7 +1147,7 @@ class Accordion extends Base{
 
                     ?>
                     <div class="ua_accordion_item ua_accordion_style_08 ua-accordion-wrapper">
-                        <div <?php echo $this->get_render_attribute_string( $tab_title_setting_key ); ?>>
+                        <div <?php echo esc_attr( $this->get_render_attribute_string( $tab_title_setting_key ) ); ?>>
                             <?php if ( $has_title_text ) : ?>
                                 <<?php echo esc_html( ultraaddons_title_tag( $item['_ua_accordions_title_size'] ) ); ?> class="ua_accordion_title ua-accordions-title">
                                     <?php echo do_shortcode($item['_ua_accordions_title']); ?>
@@ -1182,12 +1182,12 @@ class Accordion extends Base{
                                 ?>
                             </div>
                         </div>
-                        <div <?php echo $this->get_render_attribute_string( $tab_content_setting_key ); ?>>
+                        <div <?php echo esc_attr( $this->get_render_attribute_string( $tab_content_setting_key ) ); ?>>
                             <div class="ua_accordion_inner">
                                 <?php if ( 'yes' == $item['_ua_accordions_image_show'] ) : ?>
                                     <?php if ( $has_image ): ?>
                                     <div class="ua_accordion_thumb">
-                                        <a <?php echo $link_attributes; ?> >
+                                        <a <?php echo esc_attr( $link_attributes ); ?> >
                                         <img src="<?php echo esc_url($item['_ua_accordions_image']['url']); ?>" alt="#" class="ua_img_res">
                                         </a>
                                     </div>
@@ -1201,8 +1201,8 @@ class Accordion extends Base{
                                     <?php endif; ?>
                                     
                                     <?php if ( 'yes' == $item['_ua_accordions_button_show'] ) : ?>
-                                        <a href="<?php echo $item['_ua_accordions_link']['url']; ?>" <?php echo $get_target;?> <?php echo  $get_nofollow;?> class="ua_cu_btn btn_2 ua-accordion-button">
-                                            <?php echo ultraaddons_addons_kses( $item['_ua_accordions_button_text'] ); ?>
+                                        <a href="<?php echo esc_url( $item['_ua_accordions_link']['url'] ?? '' ); ?>" <?php echo esc_attr( $get_target );?> <?php echo  esc_attr( $get_nofollow );?> class="ua_cu_btn btn_2 ua-accordion-button">
+                                            <?php echo esc_html( $item['_ua_accordions_button_text'] ); ?>
                                         </a>
                                     <?php endif; ?>
                                 </div>
