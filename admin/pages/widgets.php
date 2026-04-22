@@ -6,11 +6,18 @@ defined( 'ABSPATH' ) || die();
 
 $updated = filter_input_array( INPUT_POST );
 if( $updated ){
-    $update_value = false;
-    if( ! empty( $updated['item'] ) ){
-        $update_value = $updated['item'];
+    // Verify nonce and capability before saving.
+    if (
+        isset( $updated['_ultraaddons_widgets_nonce'] ) &&
+        wp_verify_nonce( $updated['_ultraaddons_widgets_nonce'], 'ultraaddons_widgets_save' ) &&
+        current_user_can( ULTRA_ADDONS_CAPABILITY )
+    ) {
+        $update_value = false;
+        if( ! empty( $updated['item'] ) ){
+            $update_value = array_map( 'sanitize_key', $updated['item'] );
+        }
+        update_option( Widgets_Manager::$disabled_items_key, $update_value );
     }
-    update_option( Widgets_Manager::$disabled_items_key, $update_value );
 }
 
 
@@ -52,7 +59,7 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
             foreach( $wid_cats as $wid_cat_key => $wid_cat ){
                 $active_class = $wid_cat_key == 'all' ? 'active' : '';
             ?>
-                <li class="wid-cat-wise-target <?php echo esc_attr( $active_class ); ?>" data-target="<?php echo esc_attr( $wid_cat_key ); ?>" ><?php echo $wid_cat; ?></li>
+                <li class="wid-cat-wise-target <?php echo esc_attr( $active_class ); ?>" data-target="<?php echo esc_attr( $wid_cat_key ); ?>" ><?php echo esc_html( $wid_cat ); ?></li>
             <?php
             }
             
@@ -66,6 +73,7 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
             <div class="ua-content-inside">
 
                 <form class="ua-option-list-form" action="" method="post">
+                    <?php wp_nonce_field( 'ultraaddons_widgets_save', '_ultraaddons_widgets_nonce' ); ?>
                     <div class="ua-option-item-wrappper">
                         <?php 
                         foreach( $items as $class_name => $item ){

@@ -14,11 +14,19 @@ $form_datas = apply_filters( 'ultraaddons/admin/setting/save_data', $form_datas,
 $key = Settings::$key; //'ultraaddons_settings'
 
 if( $form_datas && $key ){
-    /**
-     * Action hook for when save data
-     */
-    do_action( 'ultraaddons/admin/setting/on_save', $form_datas, $key );
-    update_option( $key, $form_datas );
+
+    // Verify nonce and capability before saving.
+    if (
+        isset( $form_datas['_ultraaddons_settings_nonce'] ) &&
+        wp_verify_nonce( $form_datas['_ultraaddons_settings_nonce'], 'ultraaddons_settings_save' ) &&
+        current_user_can( ULTRA_ADDONS_CAPABILITY )
+    ) {
+        /**
+         * Action hook for when save data
+         */
+        do_action( 'ultraaddons/admin/setting/on_save', $form_datas, $key );
+        update_option( $key, $form_datas );
+    }
 }
 $current_data = Settings::get_data();
 
@@ -36,13 +44,14 @@ $category_slug = Settings::get_widget_category();
             <div class="ua-content-inside">
 
                 <form class="ua-header-footer-form" action="" method="post">
+                    <?php wp_nonce_field( 'ultraaddons_settings_save', '_ultraaddons_settings_nonce' ); ?>
                     <div class="ua-form-wrappper">
-                    
-                        
+
+
                     <?php
                     /**
                      * Action hook for setting
-                     * 
+                     *
                      * @since 1.0.9.2
                      */
                     do_action( 'ultraaddons/admin/setting/form/top' );

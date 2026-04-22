@@ -60,7 +60,15 @@ class Admin_Handle{
      * 
      * @since 1.0.0.5
      */
-    public static function get_enqueue(){
+    public static function get_enqueue( $hook_suffix ){
+        // Only load admin assets on UltraAddons pages and the header_footer post type screen.
+        $current_screen = get_current_screen();
+        $is_ua_page = ( false !== strpos( $hook_suffix, 'ultraaddons' ) );
+        $is_hf_screen = $current_screen && ( $current_screen->post_type === \UltraAddons\WP\Header_Footer_Post::$post_type );
+        if ( ! $is_ua_page && ! $is_hf_screen ) {
+            return;
+        }
+
         $handle = 'ultraaddons-admin-style';
         $src = ULTRA_ADDONS_ASSETS . 'css/admin.css';
         $deps = [];

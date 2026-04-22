@@ -17,21 +17,19 @@ class Shortcode{
         if( empty( $atts['id'] ) ){
             return;
         }
-        $pairs = array( 'exclude' => false );
-        extract( shortcode_atts( $pairs, $atts ) );
-        $post_id = (int) $atts['id'];
-        
+        $post_id = ! empty( $atts['id'] ) ? (int) $atts['id'] : 0;
+
         if( ! $post_id ){
-            $post_id = (int) $atts['template_id'];
+            $post_id = ! empty( $atts['template_id'] ) ? (int) $atts['template_id'] : 0;
         }
         if( ! $post_id ){
-            $post_id = (int) $atts['post_id'];
+            $post_id = ! empty( $atts['post_id'] ) ? (int) $atts['post_id'] : 0;
         }
         if( ! $post_id ){
             return;
         }
-        
-        (int) $select_post_id = $post_id;
+
+        $select_post_id = (int) $post_id;
         if ( \Elementor\Plugin::instance()->documents->get( $select_post_id ) ) {
             if ( class_exists( '\Elementor\Core\Files\CSS\Post' ) ) {
                 $css_file = new \Elementor\Core\Files\CSS\Post( $select_post_id );

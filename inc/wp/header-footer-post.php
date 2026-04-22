@@ -376,7 +376,7 @@ class Header_Footer_Post{
 		?>
 		<tr class="ua-options-row display-rule">
 			<td class="ua-options-row-heading">
-				<label for="ua_display_rule"><?php _e( $field_title ); ?></label>
+				<label for="ua_display_rule"><?php echo esc_html( $field_title ); ?></label>
 			</td>
 			<td class="ua-options-row-content">
 				
@@ -437,7 +437,8 @@ class Header_Footer_Post{
             ],
         ];
 
-        $posts = query_posts($args);
+        $query = new \WP_Query( $args );
+        $posts = $query->get_posts();
         $f_post = [];
         foreach( $posts as $each_post ){
             $post_id = $each_post->ID;
@@ -496,9 +497,8 @@ class Header_Footer_Post{
 		if ( isset( $_POST['ua_template_type'] ) ) {
 			update_post_meta( $post_id, 'ua_template_type', esc_attr( $_POST['ua_template_type'] ) );
 		}
-		if ( isset( $_POST['ua_display'] ) ) {
-			$display = $_POST['ua_display'];
-			
+		if ( isset( $_POST['ua_display'] ) && is_array( $_POST['ua_display'] ) ) {
+			$display = map_deep( wp_unslash( $_POST['ua_display'] ), 'sanitize_text_field' );
 			update_post_meta( $post_id, 'ua_display', $display );
 		}else{
 			update_post_meta( $post_id, 'ua_display', [] );

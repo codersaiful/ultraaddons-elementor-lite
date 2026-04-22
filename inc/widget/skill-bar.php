@@ -154,7 +154,7 @@ class Skill_Bar extends Base{
 //                                $this->add_inline_editing_attributes( $repeater_setting_key . '.title', 'none' );
 				?>
                                 <li <?php echo $this->get_render_attribute_string( $repeater_setting_key . '.skill' ); ?>>
-                                    <div <?php echo $this->get_render_attribute_string( $repeater_setting_key . '.title' ); ?>><?php echo $item['title']; ?></div>
+                                    <div <?php echo $this->get_render_attribute_string( $repeater_setting_key . '.title' ); ?>><?php echo esc_html( $item['title'] ); ?></div>
                                     <div <?php echo $this->get_render_attribute_string( $repeater_setting_key . '.progress-bar' ); ?>>
                                         <div id="bar-<?php echo esc_attr( $this->get_id() . '-' .$_id . '-' . ( $index + 1 ) );?>" class="barfiller">
                                             <span class="fill" data-percentage="<?php echo esc_attr( $progress_percentage ); ?>"></span>
