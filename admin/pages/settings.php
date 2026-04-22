@@ -21,6 +21,9 @@ if( $form_datas && $key ){
         wp_verify_nonce( $form_datas['_ultraaddons_settings_nonce'], 'ultraaddons_settings_save' ) &&
         current_user_can( ULTRA_ADDONS_CAPABILITY )
     ) {
+        // Strip WP nonce fields — they must not be stored in options.
+        unset( $form_datas['_ultraaddons_settings_nonce'], $form_datas['_wp_http_referer'] );
+
         /**
          * Action hook for when save data
          */
