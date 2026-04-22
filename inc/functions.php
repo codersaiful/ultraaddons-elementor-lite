@@ -159,7 +159,7 @@ function ultraaddons_elementor_display_content( $post_id = false ){
         return;
     }
     
-    (int) $select_post_id = $post_id;
+    $select_post_id = (int) $post_id;
     if ( \Elementor\Plugin::instance()->documents->get( $select_post_id )->is_built_with_elementor() ) {
         $final_content = \Elementor\Plugin::instance()->frontend->get_builder_content_for_display( $select_post_id );
         if( ! empty( $final_content ) ){
@@ -480,7 +480,11 @@ function ultraaddons_build_img_tag( $attributes = array() ) {
 }
 
 function ultraaddons_get_image_cropped_url( $url, $args = array() ) {
-    extract( $args );
+    $size   = isset( $args['size'] )   ? $args['size']   : 'full';
+    $width  = isset( $args['width'] )  ? $args['width']  : '';
+    $height = isset( $args['height'] ) ? $args['height'] : '';
+    $crop   = isset( $args['crop'] )   ? $args['crop']   : true;
+
     if ( $url === false ) {
         return array( 0 => '' );
     }

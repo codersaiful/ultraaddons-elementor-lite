@@ -432,7 +432,7 @@ class Button extends Base{
             <?php if('left'==$settings['_icon_position']):?>
              <?php Icons_Manager::render_icon( $settings['selected_icon'], [ 'aria-hidden' => 'true' ] ); ?>
             <?php endif;?>
-            <?php echo $settings['_ua_button'];?>
+            <?php echo esc_html( $settings['_ua_button'] );?>
             <?php if('right'==$settings['_icon_position']):?>
              <?php Icons_Manager::render_icon( $settings['selected_icon'], [ 'aria-hidden' => 'true' ] ); ?>
             <?php endif;?>

@@ -57,7 +57,7 @@ define( 'ULTRA_ADDONS_ASSETS', trailingslashit( ULTRA_ADDONS_URL . 'assets' ) );
 define( 'ULTRA_ADDONS_WIDGET_HELP_ULR', trailingslashit( 'https://ultraaddons.com/widget/' ) );
 
 define( 'ULTRA_ADDONS_MINIMUM_ELEMENTOR_VERSION', '2.5.0' );
-define( 'ULTRA_ADDONS_MINIMUM_PHP_VERSION', '5.4' );
+define( 'ULTRA_ADDONS_MINIMUM_PHP_VERSION', '7.4' );
 
 
 $ultraaddons_capability = apply_filters( 'ultraaddons_capability', 'manage_ultraaddons' );
@@ -117,7 +117,7 @@ final class UltraAddons {
 	 *
 	 * @var string Minimum PHP version required to run the plugin.
 	 */
-	const MINIMUM_PHP_VERSION = '7.0';
+	const MINIMUM_PHP_VERSION = '7.4';
 
 	/**
 	 * Instance

@@ -231,8 +231,8 @@ class Skill_Chart extends Base{
     protected function render() {
         $settings =	$this->get_settings_for_display();
         ?>
-	 <div class="ua-skill-chart" data-percent="<?php echo $settings['_ua_data_percent']; ?>">
-		<?php echo $settings['_ua_skill_title'];?>
+	 <div class="ua-skill-chart" data-percent="<?php echo esc_attr( $settings['_ua_data_percent'] ); ?>">
+		<?php echo esc_html( $settings['_ua_skill_title'] );?>
 	 </div>
 	<?php }
 }

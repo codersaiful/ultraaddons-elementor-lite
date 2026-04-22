@@ -97,11 +97,19 @@ class Loader {
          */
         $this->widgetsArray = $widgetsArray;
              
+        /**
+         * elementor/widgets/register replaced elementor/widgets/widgets_registered in Elementor 3.5.0.
+         * Use the new hook when available, fall back for older Elementor versions.
+         */
+        $widget_hook = version_compare( ELEMENTOR_VERSION, '3.5.0', '>=' )
+            ? 'elementor/widgets/register'
+            : 'elementor/widgets/widgets_registered';
+
         //Register and Including Base and common Class file
-        add_action( 'elementor/widgets/widgets_registered', [ $this, 'register' ],1 );
+        add_action( $widget_hook, [ $this, 'register' ], 1 );
 
         //Register Widgets All
-        add_action( 'elementor/widgets/widgets_registered', [ $this, 'init_widgets' ] );
+        add_action( $widget_hook, [ $this, 'init_widgets' ] );
         
         //add_action( 'elementor/controls/controls_registered', [ $this, 'init_controls' ] );
         add_action( 'elementor/elements/categories_registered', [ $this, 'add_categories' ] );
@@ -258,7 +266,13 @@ class Loader {
 //            }
 
             if( $class_name && class_exists( $class_name ) ){
-                ultraaddons_elementor()->widgets_manager->register_widget_type( new $class_name() );
+                $manager = ultraaddons_elementor()->widgets_manager;
+                // register() replaced register_widget_type() in Elementor 3.5.0.
+                if ( method_exists( $manager, 'register' ) ) {
+                    $manager->register( new $class_name() );
+                } else {
+                    $manager->register_widget_type( new $class_name() );
+                }
             }
             
             

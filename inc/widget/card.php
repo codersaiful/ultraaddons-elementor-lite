@@ -1012,7 +1012,7 @@ class Card extends Base{
 				echo '<' . $settings['_ua_card_sub_title_tag'] . ' class="ua-card-sub-title">' . esc_html($settings['_ua_card_sub_title']) . 
 						'</' . $settings['_ua_card_sub_title_tag'] . '>';
 				?>
-				<p class="ua-card-text"><?php echo $settings['_ua_card_content']; ?></p>
+				<p class="ua-card-text"><?php echo wp_kses_post( $settings['_ua_card_content'] ); ?></p>
 				<div class="ua-card-footer">
 					<?php 
 						if(!empty($url)){
@@ -1024,7 +1024,7 @@ class Card extends Base{
 				</div>
 				<?php  if( !empty($settings['_ua_card_price']) ):?>
 				<div class="footer-bottom">
-					<div class="card-price"><?php echo $settings['_ua_card_price'];?> </div> 
+					<div class="card-price"><?php echo esc_html( $settings['_ua_card_price'] );?> </div>
 					<div class="card-wish">
 						<a <?php echo $this->get_render_attribute_string( 'wish_link' ); ?>>
 							<?php \Elementor\Icons_Manager::render_icon( $settings['wish_icon'], [ 'aria-hidden' => 'true' ] ); ?>

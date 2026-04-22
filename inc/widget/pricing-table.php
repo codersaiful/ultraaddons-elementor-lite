@@ -1864,11 +1864,11 @@ class Pricing_Table extends Base {
                     <?php } ?>
 
                     <?php if ( ! empty( $settings['heading'] ) ) : ?>
-                            <<?php echo $this->heading_tag . ' ' . $this->get_render_attribute_string( 'heading' ); ?>><?php echo $settings['heading'] . '</' . $this->heading_tag; ?>>
+                            <<?php echo $this->heading_tag . ' ' . $this->get_render_attribute_string( 'heading' ); ?>><?php echo wp_kses_post( $settings['heading'] ); ?></<?php echo esc_html( $this->heading_tag ); ?>>
                     <?php endif; ?>
 
                     <?php if ( ! empty( $settings['sub_heading'] ) ) : ?>
-                            <span <?php echo $this->get_render_attribute_string( 'sub_heading' ); ?>><?php echo $settings['sub_heading']; ?></span>
+                            <span <?php echo $this->get_render_attribute_string( 'sub_heading' ); ?>><?php echo esc_html( $settings['sub_heading'] ); ?></span>
                     <?php endif; ?>
 
             </div>    
@@ -2002,7 +2002,7 @@ class Pricing_Table extends Base {
                                                                 endif; ?>
                                                                 <?php if ( ! empty( $item['item_text'] ) ) : ?>
                                                                         <span <?php echo $this->get_render_attribute_string( $repeater_setting_key ); ?>>
-                                                                                <?php echo $item['item_text']; ?>
+                                                                                <?php echo wp_kses_post( $item['item_text'] ); ?>
                                                                         </span>
                                                                         <?php
                                                                 else :
@@ -2020,7 +2020,7 @@ class Pricing_Table extends Base {
                         ?>
 					<?php if ( ! empty( $settings['footer_additional_info'] ) ) : ?>
                     <div class="ua-price-table-footer">
-                    	<div <?php echo $this->get_render_attribute_string( 'footer_additional_info' ); ?>><?php echo $settings['footer_additional_info']; ?></div>
+                    	<div <?php echo $this->get_render_attribute_string( 'footer_additional_info' ); ?>><?php echo wp_kses_post( $settings['footer_additional_info'] ); ?></div>
 					</div>
 					 <?php endif; ?>
                 </div>
@@ -2035,7 +2035,7 @@ class Pricing_Table extends Base {
 
 			?>
 			<div <?php echo $this->get_render_attribute_string( 'ribbon-wrapper' ); ?>>
-				<div <?php echo $this->get_render_attribute_string( 'ribbon_title' ); ?>><?php echo $settings['ribbon_title']; ?></div>
+				<div <?php echo $this->get_render_attribute_string( 'ribbon_title' ); ?>><?php echo esc_html( $settings['ribbon_title'] ); ?></div>
 			</div>
 			<?php
 		endif;

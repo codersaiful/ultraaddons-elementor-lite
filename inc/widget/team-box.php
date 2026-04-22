@@ -687,9 +687,9 @@ class Team_Box extends Base{
                 <div class="member">
                         <img src="<?php echo $image;?>">
                         <div class="team-content-wrap">
-                                <h2 class="ua-team-title"><?php echo $settings['title'];?></h2>
-                                        <span class="who"><?php echo $settings['designation'];?></span>
-                                <p class="member-text"><?php echo $settings['description'];?></p>
+                                <h2 class="ua-team-title"><?php echo esc_html( $settings['title'] );?></h2>
+                                        <span class="who"><?php echo esc_html( $settings['designation'] );?></span>
+                                <p class="member-text"><?php echo wp_kses_post( $settings['description'] );?></p>
                                 <div class="social-icons">
                                         <?php $this->social_links();?>
                                 </div>

@@ -1182,8 +1182,8 @@ class Info_Box extends Base {
                     <img class="infobox-image" src="<?php echo esc_url( $add_image );?>" alt="" />
             <?php } ?>
             <?php if(!empty($settings['count_text'])): ?>
-                <div class="count-text count-<?php echo $settings['count_alignment'];?> count-<?php echo $settings['count_position'];?> ">
-                        <?php echo $settings['count_text']; ?>
+                <div class="count-text count-<?php echo esc_attr( $settings['count_alignment'] );?> count-<?php echo esc_attr( $settings['count_position'] );?> ">
+                        <?php echo esc_html( $settings['count_text'] ); ?>
                 </div>
              <?php endif;?>
         </div>
@@ -1223,10 +1223,10 @@ class Info_Box extends Base {
         <?php $this->get_image_icon(); ?>
         <div class="ua-info-box-content">
             <<?php echo esc_attr( $settings['title_size'] ); ?> class="elementor-icon-box-title">
-                    <<?php echo implode( ' ', [ $icon_tag ] ); ?><?php echo $this->get_render_attribute_string( 'title_text' ); ?>><?php echo $settings['title_text']; ?></<?php echo $icon_tag; ?>>
+                    <<?php echo implode( ' ', [ $icon_tag ] ); ?><?php echo $this->get_render_attribute_string( 'title_text' ); ?>><?php echo wp_kses_post( $settings['title_text'] ); ?></<?php echo esc_html( $icon_tag ); ?>>
             </<?php echo esc_attr( $settings['title_size'] ); ?>>
             <?php if ( ! ultraaddons_widget_data_is_empty( $settings['description_text'] ) ) : ?>
-            <p <?php echo $this->get_render_attribute_string( 'description_text' ); ?>><?php echo $settings['description_text']; ?></p>
+            <p <?php echo $this->get_render_attribute_string( 'description_text' ); ?>><?php echo wp_kses_post( $settings['description_text'] ); ?></p>
             <?php endif; ?>
         </div>
         <?php 
