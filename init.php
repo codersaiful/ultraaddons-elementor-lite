@@ -159,8 +159,9 @@ final class UltraAddons {
 	 */
 	public function __construct() {
 
+		add_action( 'init', [ $this, 'init' ], 2 );
 		add_action( 'init', [ $this, 'i18n' ] );
-		add_action( 'plugins_loaded', [ $this, 'init' ] );
+		
 
 	}
 
