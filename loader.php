@@ -38,6 +38,7 @@ class Loader {
      * @access public
      */
     public $ultraaddons_widgetsArray = array();
+    public $widgetsArray = array();
 
 
     public function __construct() {
