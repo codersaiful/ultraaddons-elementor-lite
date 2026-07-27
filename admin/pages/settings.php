@@ -13,12 +13,14 @@ $ultraaddons_form_datas = apply_filters( 'ultraaddons/admin/setting/save_data', 
 
 $ultraaddons_key = Settings::$ultraaddons_key; //'ultraaddons_settings'
 
+$ultraaddons_saved = false;
 if( $ultraaddons_form_datas && $ultraaddons_key ){
     /**
      * Action hook for when save data
      */
     do_action( 'ultraaddons/admin/setting/on_save', $ultraaddons_form_datas, $ultraaddons_key );
     update_option( $ultraaddons_key, $ultraaddons_form_datas );
+    $ultraaddons_saved = true;
 }
 $ultraaddons_current_data = Settings::get_data();
 
@@ -26,89 +28,104 @@ $ultraaddons_current_data = Settings::get_data();
 $ultraaddons_category_slug = Settings::get_widget_category();
 ?>
 
-<div class="ultraaddons-section ua-option-wrapper">
-    <div class="ua-section-inside">
-        <div class="ua-header">
-            <h1 class="ua-page-title"><?php echo esc_html__( 'Settings', 'ultraaddons-elementor-lite' ); ?></h1>
-        </div>
-        
-        <div class="ua-sectioon-content">
-            <div class="ua-content-inside">
+<div class="ultraaddons-section ua-settings-page">
 
-                <form class="ua-header-footer-form" action="" method="post">
-                    <div class="ua-form-wrappper">
-                    
-                        
+    <?php if ( $ultraaddons_saved ) : ?>
+    <div class="ua-notice ua-notice-success">
+        <span class="dashicons dashicons-yes-alt"></span>
+        <?php echo esc_html__( 'Settings saved successfully!', 'ultraaddons-elementor-lite' ); ?>
+    </div>
+    <?php endif; ?>
+
+    <div class="ua-settings-grid">
+
+        <!-- Main Settings Card -->
+        <div class="ua-card">
+            <div class="ua-card-header">
+                <span class="ua-card-icon dashicons dashicons-admin-settings"></span>
+                <div>
+                    <h2 class="ua-card-title"><?php echo esc_html__( 'General Settings', 'ultraaddons-elementor-lite' ); ?></h2>
+                    <p class="ua-card-subtitle"><?php echo esc_html__( 'Configure how UltraAddons behaves in your Elementor editor.', 'ultraaddons-elementor-lite' ); ?></p>
+                </div>
+            </div>
+            <div class="ua-card-body">
+                <form class="ua-settings-form" action="" method="post">
+
                     <?php
                     /**
                      * Action hook for setting
-                     * 
+                     *
                      * @since 1.0.9.2
                      */
                     do_action( 'ultraaddons/admin/setting/form/top' );
                     ?>
 
-
-                    <div class="ultraaddons-field-container field-container-category">
-                        <label class="field-label field-label-header-choose"><?php echo esc_html__( 'Widget Showing in', 'ultraaddons-elementor-lite' ); ?></label>    
-                        <select class="ultraddons-select" name="widget_in">
-                            <option value="" ><?php echo esc_html__( 'Only UltraAddons', 'ultraaddons-elementor-lite' ); ?></option>
-                            <option value="basic" <?php echo $ultraaddons_category_slug == 'basic' ? 'selected' : ''; ?>><?php echo esc_html__( 'Basic', 'ultraaddons-elementor-lite' ); ?></option>
-                            <option value="general" <?php echo $ultraaddons_category_slug == 'general' ? 'selected' : ''; ?>><?php echo esc_html__( 'General', 'ultraaddons-elementor-lite' ); ?></option>
-                            
-                        </select>
-                        <div class="ua-form-message">
-                            <p>
-                                Widget shows in <b>Addons - UltraAddons</b> Category of Elementor(in Elementor Edit Screen). If you want to show UltraAddons Widget
-                                    in Basic or General category, Choose and Save Change.
+                    <div class="ua-setting-row">
+                        <div class="ua-setting-info">
+                            <label class="ua-setting-label" for="ua-widget-in">
+                                <?php echo esc_html__( 'Widget Panel Category', 'ultraaddons-elementor-lite' ); ?>
+                            </label>
+                            <p class="ua-setting-desc">
+                                <?php echo esc_html__( 'Choose where UltraAddons widgets appear inside the Elementor editor panel.', 'ultraaddons-elementor-lite' ); ?>
                             </p>
+                        </div>
+                        <div class="ua-setting-control">
+                            <select id="ua-widget-in" class="ua-select" name="widget_in">
+                                <option value=""><?php echo esc_html__( 'UltraAddons (Default)', 'ultraaddons-elementor-lite' ); ?></option>
+                                <option value="basic" <?php selected( $ultraaddons_category_slug, 'basic' ); ?>><?php echo esc_html__( 'Basic', 'ultraaddons-elementor-lite' ); ?></option>
+                                <option value="general" <?php selected( $ultraaddons_category_slug, 'general' ); ?>><?php echo esc_html__( 'General', 'ultraaddons-elementor-lite' ); ?></option>
+                            </select>
                         </div>
                     </div>
 
                     <?php
                     /**
                      * Action hook for setting
-                     * 
+                     *
                      * @since 1.0.9.2
                      */
                     do_action( 'ultraaddons/admin/setting/form/bottom' );
                     ?>
-                     
 
-                    </div> <!-- /.ua-form-wrappper -->
-                    <div class="ua-widget-footer">
-                        <button class="primary button button-primary ua-primary ua-no-update" type="submit"><?php echo esc_html__( 'Save Change', 'ultraaddons-elementor-lite' ); ?></button>
+                    <div class="ua-card-footer">
+                        <button class="ua-btn ua-btn-primary" type="submit">
+                            <span class="dashicons dashicons-saved"></span>
+                            <?php echo esc_html__( 'Save Changes', 'ultraaddons-elementor-lite' ); ?>
+                        </button>
                     </div>
+
                 </form>
-                
             </div>
-        </div>
-    </div>
-    <div class="ua-section-inside">
-        
-        <div class="ua-sectioon-content">
-            <div class="ua-content-inside">
+        </div><!-- /.ua-card -->
 
-            <h3 class="ua-section-title"><?php echo esc_html__( 'Other Features', 'ultraaddons-elementor-lite' ); ?></h3>
-                    <div class="ua-extra-wrappper">
-
-                        <div class="ua-content-section">
-                            <div class="ua-content-inside">
-                                <div class="ua-content-info ua-shortcode-content">
-                                    <h3><?php echo esc_html__( 'Shortcode', 'ultraaddons-elementor-lite' ); ?> <small><?php echo esc_html( "[UltraAddons_Template id='template_id']" ); ?></small></h3>
-                                    <p>UltraAddons provide a shortcode <code>[UltraAddons_Template id='123']</code>. Here 
-                                        123 is a POST_ID. Use any Elementor page/Template's POST_ID as id. Use Anywhere.<br>
-                                        Suppose: you want to show any Elementor Item/Widget/Template in widget, or in any WordPress post or in Guttenberg block. 
-                                        Just use this shortcode.<br>
-                                        <code>`[UltraAddons_Template id='1234']`,`[UA_Template id='1234']` and `[ULTRAADDONS_TEMPLATE id='1234']`</code>
-                                        <br>
-                                        <code>Attribute: `id` or `template_id` or `post_id`</code>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- /.ua-form-wrappper -->
+        <!-- Shortcode Card -->
+        <div class="ua-card">
+            <div class="ua-card-header">
+                <span class="ua-card-icon dashicons dashicons-shortcode"></span>
+                <div>
+                    <h2 class="ua-card-title"><?php echo esc_html__( 'Template Shortcode', 'ultraaddons-elementor-lite' ); ?></h2>
+                    <p class="ua-card-subtitle"><?php echo esc_html__( 'Embed any Elementor template anywhere on your site.', 'ultraaddons-elementor-lite' ); ?></p>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
+            <div class="ua-card-body">
+                <div class="ua-shortcode-demo">
+                    <code class="ua-code-block">[UltraAddons_Template id='<span class="ua-code-placeholder">POST_ID</span>']</code>
+                </div>
+                <p class="ua-setting-desc">
+                    <?php echo esc_html__( 'Replace POST_ID with the ID of any Elementor page, post, or template. Works in posts, pages, Gutenberg blocks, text widgets, and more.', 'ultraaddons-elementor-lite' ); ?>
+                </p>
+                <div class="ua-shortcode-aliases">
+                    <p class="ua-setting-desc"><?php echo esc_html__( 'Supported shortcode aliases:', 'ultraaddons-elementor-lite' ); ?></p>
+                    <ul class="ua-aliases-list">
+                        <li><code>[UltraAddons_Template id='123']</code></li>
+                        <li><code>[UA_Template id='123']</code></li>
+                        <li><code>[ULTRAADDONS_TEMPLATE id='123']</code></li>
+                    </ul>
+                    <p class="ua-setting-desc"><?php echo esc_html__( 'Supported attributes: id, template_id, post_id', 'ultraaddons-elementor-lite' ); ?></p>
+                </div>
+            </div>
+        </div><!-- /.ua-card -->
+
+    </div><!-- /.ua-settings-grid -->
+
+</div><!-- /.ua-settings-page -->

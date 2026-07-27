@@ -1291,3 +1291,225 @@ div.ua-sectioon-content[free_pro='free-pro-all'] .ua-option-item{display: block;
 .about-wrap .notice, .about-wrap div.error, .about-wrap div.updated {
     display: block!important;
 }
+
+/* =========================================================
+   Settings Page — Modern Card Design
+   ========================================================= */
+
+.ua-settings-page {
+    padding: 0 0 40px;
+}
+
+/* Success notice */
+.ua-notice {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+.ua-notice-success {
+    background: #f0fdf4;
+    border: 1px solid #86efac;
+    color: #166534;
+}
+.ua-notice-success .dashicons {
+    color: #16a34a;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+}
+
+/* Settings grid */
+.ua-settings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 10px;
+}
+@media (max-width: 1100px) {
+    .ua-settings-grid { grid-template-columns: 1fr; }
+}
+
+/* Card */
+.ua-settings-page .ua-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    transition: box-shadow .2s ease;
+}
+.ua-settings-page .ua-card:hover {
+    box-shadow: 0 4px 16px rgba(115,32,228,.10);
+}
+
+.ua-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 22px 24px 18px;
+    border-bottom: 1px solid #f3f4f6;
+    background: linear-gradient(135deg, #faf5ff 0%, #f8f9fa 100%);
+}
+.ua-card-icon {
+    font-size: 28px;
+    width: 28px;
+    height: 28px;
+    color: #7320e4;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+.ua-card-title {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #111827 !important;
+    margin: 0 0 4px !important;
+    line-height: 1.4 !important;
+}
+.ua-card-subtitle {
+    font-size: 13px;
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.ua-card-body {
+    padding: 24px;
+}
+
+/* Setting row */
+.ua-setting-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid #f3f4f6;
+}
+.ua-setting-row:last-of-type {
+    border-bottom: none;
+}
+.ua-setting-info {
+    flex: 1;
+}
+.ua-setting-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+.ua-setting-desc {
+    font-size: 13px;
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.55;
+}
+.ua-setting-control {
+    flex-shrink: 0;
+    min-width: 180px;
+}
+
+/* Select */
+.ua-select {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: #fff;
+    font-size: 13px;
+    color: #374151;
+    appearance: auto;
+    transition: border-color .15s ease, box-shadow .15s ease;
+    cursor: pointer;
+}
+.ua-select:focus {
+    outline: none;
+    border-color: #7320e4;
+    box-shadow: 0 0 0 3px rgba(115,32,228,.12);
+}
+
+/* Card footer / button */
+.ua-card-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 20px;
+    border-top: 1px solid #f3f4f6;
+    margin-top: 16px;
+}
+.ua-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: background .18s ease, transform .12s ease, box-shadow .18s ease;
+}
+.ua-btn-primary {
+    background: linear-gradient(135deg, #7320e4 0%, #9b59e8 100%);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(115,32,228,.30);
+}
+.ua-btn-primary:hover {
+    background: linear-gradient(135deg, #5c18b8 0%, #7d44cc 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(115,32,228,.35);
+    color: #fff;
+}
+.ua-btn-primary:active {
+    transform: translateY(0);
+}
+.ua-btn .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+}
+
+/* Shortcode card */
+.ua-shortcode-demo {
+    background: #1e1e2e;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+}
+.ua-code-block {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    color: #cdd6f4;
+    background: transparent;
+    border: none;
+    padding: 0;
+    display: block;
+}
+.ua-code-placeholder {
+    color: #a6e3a1;
+}
+.ua-aliases-list {
+    margin: 8px 0 8px 0;
+    padding-left: 0;
+    list-style: none;
+}
+.ua-aliases-list li {
+    margin-bottom: 6px;
+}
+.ua-aliases-list code {
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 5px;
+    padding: 3px 8px;
+    font-size: 13px;
+    color: #7320e4;
+}
+
+/* =========================================================
+   End Settings Page Styles
+   ========================================================= */

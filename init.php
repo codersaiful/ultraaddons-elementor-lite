@@ -376,8 +376,8 @@ function ultraaddons_elementor_activation(){
     
     $cpt_support = get_option( 'elementor_cpt_support', [ 'page', 'post' ] );
     $hf_post_type = \UltraAddons\WP\Header_Footer_Post::$post_type; //It's actually 'header_footer'
-	if( is_array($cpt_support) ){
-        $cpt_support[$hf_post_type] = $hf_post_type;
+	if( is_array($cpt_support) && ! in_array( $hf_post_type, $cpt_support, true ) ){
+        $cpt_support[] = $hf_post_type;
         update_option( 'elementor_cpt_support', $cpt_support);
     }
 }

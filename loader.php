@@ -99,10 +99,13 @@ class Loader {
         $this->widgetsArray = $ultraaddons_widgetsArray;
              
         //Register and Including Base and common Class file
-        add_action( 'elementor/widgets/widgets_registered', [ $this, 'register' ],1 );
+        // Support both old (< 3.5) and new (>= 3.5) Elementor hooks
+        add_action( 'elementor/widgets/widgets_registered', [ $this, 'register' ], 1 );
+        add_action( 'elementor/widgets/register', [ $this, 'register' ], 1 );
 
         //Register Widgets All
         add_action( 'elementor/widgets/widgets_registered', [ $this, 'init_widgets' ] );
+        add_action( 'elementor/widgets/register', [ $this, 'init_widgets' ] );
         
         //add_action( 'elementor/controls/controls_registered', [ $this, 'init_controls' ] );
         add_action( 'elementor/elements/categories_registered', [ $this, 'add_categories' ] );
@@ -259,7 +262,14 @@ class Loader {
 //            }
 
             if( $ultraaddons_class_name && class_exists( $ultraaddons_class_name ) ){
-                ultraaddons_elementor()->widgets_manager->register_widget_type( new $ultraaddons_class_name() );
+                $widget_instance = new $ultraaddons_class_name();
+                $widgets_manager = ultraaddons_elementor()->widgets_manager;
+                // Use register() for Elementor >= 3.5, fall back to register_widget_type()
+                if ( method_exists( $widgets_manager, 'register' ) ) {
+                    $widgets_manager->register( $widget_instance );
+                } else {
+                    $widgets_manager->register_widget_type( $widget_instance );
+                }
             }
             
             
@@ -370,23 +380,8 @@ class Loader {
      */
     public function wp_enqueue_style(){
         
-        
-                
         //Animate CSS Load
         wp_enqueue_style('animate', ULTRA_ADDONS_ASSETS . 'vendor/css/animate.min.css', array(), ULTRA_ADDONS_VERSION );
-
-        $elementor = \Elementor\Plugin::instance();
-        $elementor->frontend->enqueue_styles();
-        
-		
-
-		if ( class_exists( '\ElementorPro\Plugin' ) ) {
-			$elementor_pro = \ElementorPro\Plugin::instance();
-            if(method_exists($elementor_pro, 'enqueue_styles')){
-                $elementor_pro->enqueue_styles();
-            }
-		}
-        
 
         /**
          * Common CSS file for all Widgets
