@@ -467,9 +467,19 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
             );
             $ultraaddons_terms = get_terms( $ultraaddons_args );
 
-            if ( ! empty( $ultraaddons_terms ) ) {
+            if ( ! is_wp_error( $ultraaddons_terms ) && ! empty( $ultraaddons_terms ) ) {
                 foreach ( $ultraaddons_terms as $term ) {
-                    self::$fonts[ $term->name ] = $term_name;
+                    $font_name = '';
+
+                    if ( is_object( $term ) && isset( $term->name ) ) {
+                        $font_name = $term->name;
+                    } elseif ( is_array( $term ) && isset( $term['name'] ) ) {
+                        $font_name = $term['name'];
+                    }
+
+                    if ( '' !== $font_name ) {
+                        self::$fonts[ $font_name ] = $term_name;
+                    }
                 }
             }
 

@@ -246,20 +246,29 @@ final class UltraAddons {
 		
 		
 		
-		//Elementor Widget and script Loader
+		// Elementor widget registration uses translated labels, so load it on init.
+		add_action( 'init', [ $this, 'load_loader' ], 20 );
+                 
+
+	}
+
+	/**
+	 * Load the Elementor loader once WordPress init has started.
+	 *
+	 * @return void
+	 */
+	public function load_loader() {
 		include_once ULTRA_ADDONS_DIR . 'loader.php';
-        
+
 		/**
 		 * Checking UltraAddons Elementor Loaded or not
 		 * We added it after 1.1.0.8
 		 * and add this hook after Full load UltraAddons
-		 * 
+		 *
 		 * @since 1.1.0.8
 		 * @author Saiful Islam <codersaiful@gmail.com>
 		 */
 		do_action( 'ultraaddons_loaded' );
-                
-
 	}
 
         /**

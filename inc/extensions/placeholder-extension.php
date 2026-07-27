@@ -6,6 +6,7 @@ use Elementor\Element_Base;
 
 class Placeholder_Extension {
     protected $ultraaddons_name;
+    protected $name = '';
     protected $extension = array();
     protected $message = "Premium Extension.";
     public function __construct( $extension = false, $message = false ){

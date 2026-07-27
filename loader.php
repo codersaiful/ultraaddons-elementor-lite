@@ -38,6 +38,8 @@ class Loader {
      * @access public
      */
     public $ultraaddons_widgetsArray = array();
+    public $widgetsArray = array();
+    protected $did_register_widgets = false;
 
 
     public function __construct() {
@@ -97,11 +99,9 @@ class Loader {
          */
         $this->widgetsArray = $ultraaddons_widgetsArray;
              
-        //Register and Including Base and common Class file
-        add_action( 'elementor/widgets/widgets_registered', [ $this, 'register' ],1 );
-
-        //Register Widgets All
-        add_action( 'elementor/widgets/widgets_registered', [ $this, 'init_widgets' ] );
+        // Register widgets for current Elementor API and keep legacy fallback.
+        add_action( 'elementor/widgets/register', [ $this, 'bootstrap_widgets' ], 1 );
+        add_action( 'elementor/widgets/widgets_registered', [ $this, 'bootstrap_widgets' ], 1 );
         
         //add_action( 'elementor/controls/controls_registered', [ $this, 'init_controls' ] );
         add_action( 'elementor/elements/categories_registered', [ $this, 'add_categories' ] );
@@ -128,6 +128,23 @@ class Loader {
         add_action('elementor/editor/before_enqueue_scripts', [ $this, 'icon_enqueue_scripts' ]);
 
         
+    }
+
+    /**
+     * Bootstrap widget registration once per request.
+     *
+     * @param object $widgets_manager Elementor widgets manager.
+     *
+     * @return void
+     */
+    public function bootstrap_widgets( $widgets_manager = null ) {
+        if ( $this->did_register_widgets ) {
+            return;
+        }
+
+        $this->did_register_widgets = true;
+        $this->register();
+        $this->init_widgets( $widgets_manager );
     }
 
     
@@ -227,7 +244,7 @@ class Loader {
      *
      * @access public
      */
-    public function init_widgets() {
+    public function init_widgets( $widgets_manager = null ) {
 
         foreach( $this->widgetsArray as $widget_key => $widget ){
             $ultraaddons_name = $widget_key;//isset( $widget['name'] ) ? $widget['name'] : '';
@@ -258,7 +275,15 @@ class Loader {
 //            }
 
             if( $ultraaddons_class_name && class_exists( $ultraaddons_class_name ) ){
-                ultraaddons_elementor()->widgets_manager->register_widget_type( new $ultraaddons_class_name() );
+                $widget_instance = new $ultraaddons_class_name();
+
+                if ( $widgets_manager && method_exists( $widgets_manager, 'register' ) ) {
+                    $widgets_manager->register( $widget_instance );
+                } elseif ( method_exists( ultraaddons_elementor()->widgets_manager, 'register' ) ) {
+                    ultraaddons_elementor()->widgets_manager->register( $widget_instance );
+                } else {
+                    ultraaddons_elementor()->widgets_manager->register_widget_type( $widget_instance );
+                }
             }
             
             
