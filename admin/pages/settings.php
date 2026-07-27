@@ -15,12 +15,16 @@ $ultraaddons_key = Settings::$ultraaddons_key; //'ultraaddons_settings'
 
 $ultraaddons_saved = false;
 if( $ultraaddons_form_datas && $ultraaddons_key ){
-    /**
-     * Action hook for when save data
-     */
-    do_action( 'ultraaddons/admin/setting/on_save', $ultraaddons_form_datas, $ultraaddons_key );
-    update_option( $ultraaddons_key, $ultraaddons_form_datas );
-    $ultraaddons_saved = true;
+    // Verify nonce before processing form data
+    $nonce = isset( $ultraaddons_form_datas['_ultraaddons_settings_nonce'] ) ? $ultraaddons_form_datas['_ultraaddons_settings_nonce'] : '';
+    if ( wp_verify_nonce( $nonce, 'ultraaddons_settings_save' ) ) {
+        /**
+         * Action hook for when save data
+         */
+        do_action( 'ultraaddons/admin/setting/on_save', $ultraaddons_form_datas, $ultraaddons_key );
+        update_option( $ultraaddons_key, $ultraaddons_form_datas );
+        $ultraaddons_saved = true;
+    }
 }
 $ultraaddons_current_data = Settings::get_data();
 
@@ -50,6 +54,8 @@ $ultraaddons_category_slug = Settings::get_widget_category();
             </div>
             <div class="ua-card-body">
                 <form class="ua-settings-form" action="" method="post">
+
+                    <?php wp_nonce_field( 'ultraaddons_settings_save', '_ultraaddons_settings_nonce' ); ?>
 
                     <?php
                     /**
