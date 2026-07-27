@@ -16,7 +16,7 @@ $ultraaddons_key = Settings::$ultraaddons_key; //'ultraaddons_settings'
 $ultraaddons_saved = false;
 if( $ultraaddons_form_datas && $ultraaddons_key ){
     // Verify nonce before processing form data
-    $nonce = isset( $ultraaddons_form_datas['_ultraaddons_settings_nonce'] ) ? $ultraaddons_form_datas['_ultraaddons_settings_nonce'] : '';
+    $nonce = $ultraaddons_form_datas['_ultraaddons_settings_nonce'] ?? '';
     if ( wp_verify_nonce( $nonce, 'ultraaddons_settings_save' ) ) {
         /**
          * Action hook for when save data
@@ -78,8 +78,8 @@ $ultraaddons_category_slug = Settings::get_widget_category();
                         <div class="ua-setting-control">
                             <select id="ua-widget-in" class="ua-select" name="widget_in">
                                 <option value=""><?php echo esc_html__( 'UltraAddons (Default)', 'ultraaddons-elementor-lite' ); ?></option>
-                                <option value="basic" <?php selected( $ultraaddons_category_slug, 'basic' ); ?>><?php echo esc_html__( 'Basic', 'ultraaddons-elementor-lite' ); ?></option>
-                                <option value="general" <?php selected( $ultraaddons_category_slug, 'general' ); ?>><?php echo esc_html__( 'General', 'ultraaddons-elementor-lite' ); ?></option>
+                                <option value="basic" <?php selected( $ultraaddons_category_slug, 'basic', true ); ?>><?php echo esc_html__( 'Basic', 'ultraaddons-elementor-lite' ); ?></option>
+                                <option value="general" <?php selected( $ultraaddons_category_slug, 'general', true ); ?>><?php echo esc_html__( 'General', 'ultraaddons-elementor-lite' ); ?></option>
                             </select>
                         </div>
                     </div>
