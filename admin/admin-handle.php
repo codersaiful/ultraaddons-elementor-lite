@@ -59,6 +59,14 @@ class Admin_Handle{
      * @since 1.0.0.5
      */
     public static function get_enqueue(){
+
+        // Load WordPress media uploader on Custom Fonts taxonomy page so that
+        // the "Upload Font" button can open the media library.
+        $current_screen = get_current_screen();
+        if ( $current_screen && isset( $current_screen->taxonomy ) && 'ultraaddons-custom-fonts' === $current_screen->taxonomy ) {
+            wp_enqueue_media();
+        }
+
         $handle = 'ultraaddons-admin-style';
         $src = ULTRA_ADDONS_ASSETS . 'css/admin.css';
         $deps = [];

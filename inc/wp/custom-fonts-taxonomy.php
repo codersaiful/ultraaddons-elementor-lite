@@ -37,7 +37,13 @@ class Custom_Fonts_Taxonomy{
      * @since 1.1.0.2
      */
     public function __construct(){
-        add_action( 'init', array( $this, 'register_taxonomy' ) );
+        // If init has already fired (e.g. we are instantiated inside an init callback),
+        // call register_taxonomy() directly. Otherwise schedule it normally.
+        if ( did_action( 'init' ) ) {
+            $this->register_taxonomy();
+        } else {
+            add_action( 'init', array( $this, 'register_taxonomy' ) );
+        }
     }
 	
 	/**
@@ -87,7 +93,12 @@ class Custom_Fonts_Taxonomy{
 				'public'            => false,
 				'show_in_nav_menus' => false,
 				'show_ui'           => true,
-				'capabilities'      => array( ULTRA_ADDONS_CAPABILITY ),
+				'capabilities'      => array(
+					'manage_terms' => ULTRA_ADDONS_CAPABILITY,
+					'edit_terms'   => ULTRA_ADDONS_CAPABILITY,
+					'delete_terms' => ULTRA_ADDONS_CAPABILITY,
+					'assign_terms' => ULTRA_ADDONS_CAPABILITY,
+				),
 				'query_var'         => false,
 				'rewrite'           => false,
 			);
