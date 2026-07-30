@@ -3,9 +3,9 @@ Contributors: codersaiful, codeastrology, ultraaddons, rafiul17, fazlebari
 Tags: drag-and-drop, editor, elementor, landing-page, builder
 Donate link: https://codeastrology.com/downloads/ultraaddons-elementor/
 Requires at least: 4.0
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 7.0
-Stable tag: 2.0.2
+Stable tag: 2.0.3
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -165,6 +165,11 @@ Yes. Many filters and action hooks are available for customization.
 19. Hotspot
 
 == Changelog ==
+
+= 2.0.3 =  
+* Bug fixes and code optimization.
+* Fixed: text domain issue for translation.
+* Fixed: dependency issue for Elementor plugin.
 
 = 2.0.2 =  
 * Sanitize and optimization improvements.

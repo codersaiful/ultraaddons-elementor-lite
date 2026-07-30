@@ -4,7 +4,7 @@
  * Requires Plugins: elementor
  * Plugin URI: https://ultraaddons.com/
  * Description: 78+ Fee widget, Custom Font, Custom CSS, Anywhere Elementor Shortcode, Header Footer Builder, Menu Builder, Woo Widget, 85+ Full Ready Template. All are free to use.
- * Version: 2.0.2
+ * Version: 2.0.3
  * Author: CodeAstrology Team
  * Author URI: https://codeastrology.com/
  * License: GPL3+
@@ -13,8 +13,8 @@
  * Domain Path: /languages/
  * 
  * Requires at least:    4.0
- * Tested up to:         6.7.2
- * Elementor tested up to: 3.26.4
+ * Tested up to:         7.0
+ * Elementor tested up to: 4.2.1
  * Elementor Pro tested up to: 7.11.0
  *
  * @package UltraAddons
@@ -45,7 +45,7 @@
 
 defined( 'ABSPATH' ) || die();
 
-define( 'ULTRA_ADDONS_VERSION', '2.0.2.3' );
+define( 'ULTRA_ADDONS_VERSION', '2.0.3.0' );
 define( 'ULTRA_ADDONS__FILE__', __FILE__ );
 define( 'ULTRA_ADDONS_BASE_NAME', plugin_basename( __FILE__ ) );
 define( 'ULTRA_ADDONS_DIR', plugin_dir_path( ULTRA_ADDONS__FILE__ ) );
