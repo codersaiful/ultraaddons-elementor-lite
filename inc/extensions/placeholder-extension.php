@@ -7,8 +7,11 @@ use Elementor\Element_Base;
 class Placeholder_Extension {
     protected $ultraaddons_name;
     protected $extension = array();
+
+    protected $name = "";
+
     protected $message = "Premium Extension.";
-    public function __construct( $extension = false, $message = false ){
+    public function __construct( $extension = null, $message = false ){
 
         //$extension_name = $extension['name'];
         if( ! $extension || ! isset( $extension['name'] ) ){

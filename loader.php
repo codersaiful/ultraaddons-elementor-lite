@@ -29,6 +29,7 @@ class Loader {
      */
     public $errors = array();
     
+    public $widgetsArray = array();
     /**
      * Widget List, it will come from an another file.
      * currently we insert at the bottom of this class
