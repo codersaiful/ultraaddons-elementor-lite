@@ -13,7 +13,7 @@ class Header_Footer_Post{
     public static $post_type = 'header_footer';
     public static function init() {
         add_action( 'init', [ __CLASS__, 'register_post' ],99 );
-		self::set_available_fields();
+		add_action( 'init', [ __CLASS__, 'set_available_fields' ] );
 
 		add_action( 'add_meta_boxes', [ __CLASS__, 'register_metabox' ] );
 		add_action( 'save_post', [ __CLASS__, 'save_meta' ] );

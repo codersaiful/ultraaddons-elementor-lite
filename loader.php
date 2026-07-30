@@ -61,43 +61,14 @@ class Loader {
         $this->core_load_on_init();
         
         /**
-         * Widget has come from Plugin/ultraaddons-elementor-lite/inc/core/widgets_array.php file
-         * Controll by Widgets_Manager Object/Class
+         * Widget array is deferred to the `init` hook (priority 5) so that
+         * __() calls inside widgets-array.php happen after `after_setup_theme`
+         * fires, preventing the WP 6.7 _load_textdomain_just_in_time notice.
          * 
-         * In that file, The Array's Each Item array formate like bellow:
-         * ******************************
-         * 'Button'=> [
-         *   'name'  => __( 'Button', 'ultraaddons-elementor-lite' ),
-         *   ],
-         * ******************************
-         * 
-         * ### To that Array ####
-         * 
-         * Array key will be name of Class. and name should be like file name
-         * Actually If Aray key: Advance_Title, file name shold be: advance-title.php in widgets folder and advance-title.css in css folder
-         * 
-         * ****************************
-         * and Each $widgets['name'] will be title of the widgets
-         * Actually we will handle also it from database.
-         * 
-         * Previous Code of WidgetArray is:
-         * $ultraaddons_widgetsArray = include ULTRA_ADDONS_DIR . 'inc/core/list/widgets-array.php';
+         * @since 2.0.2
          */
-       
-        $ultraaddons_widgetsArray = Widgets_Manager::activeWidgets();
-        
-        if( ! is_array( $ultraaddons_widgetsArray ) ){
-            return;
-        }
+        add_action( 'init', [ $this, 'setup_widgets_array' ], 5 );
 
-        /**
-         * Assigning $this->widgetsArray Array
-         * Over Constructor
-         * 
-         * @access public
-         */
-        $this->widgetsArray = $ultraaddons_widgetsArray;
-             
         //Register and Including Base and common Class file
         add_action( 'elementor/widgets/widgets_registered', [ $this, 'register' ],1 );
 
@@ -134,6 +105,20 @@ class Loader {
     
 
     /**
+     * Populate the widgets array on `init` hook (priority 5) so that
+     * translation calls inside widgets-array.php happen after
+     * `after_setup_theme` has fired (WP 6.7 notice prevention).
+     *
+     * @since 2.0.2
+     */
+    public function setup_widgets_array() {
+        $this->widgetsArray = Widgets_Manager::activeWidgets();
+        if ( ! is_array( $this->widgetsArray ) ) {
+            $this->widgetsArray = [];
+        }
+    }
+
+    /**
      * Included Base Class for our All Widgets
      * will include button common file here
      * 
@@ -158,7 +143,18 @@ class Loader {
      * @since 1.0.1.1
      */
     public function core_load_on_init(){
-        \UltraAddons\Core\Extensions_Manager::init();
+        /**
+         * Extensions_Manager::init() is deferred to the `init` hook because
+         * extensions-array.php contains top-level __() calls that would
+         * trigger the WP 6.7 _load_textdomain_just_in_time notice if run
+         * during `plugins_loaded`.
+         *
+         * @since 2.0.2
+         */
+        add_action( 'init', function() {
+            \UltraAddons\Core\Extensions_Manager::init();
+        }, 1 );
+
         \UltraAddons\Core\Header_Footer::init();
         \UltraAddons\Core\Icons_Manager::init();
         
