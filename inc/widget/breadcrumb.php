@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class Breadcrumb extends Base{
     
     private $home;
+    private $separator;
     
     /**
      * Get your widget name
@@ -28,7 +29,7 @@ class Breadcrumb extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons','ua', 'breadcrumb', 'nav', 'navigation' ];
+        return [ 'ultraaddons-elementor-lite','ua', 'breadcrumb', 'nav', 'navigation' ];
     }
     
     
@@ -58,7 +59,7 @@ class Breadcrumb extends Base{
      */
     protected function render() {
         $settings           = $this->get_settings_for_display();
-        $this->home = ! empty( $settings['home_title'] ) ? $settings['home_title'] : esc_html( 'Home', 'ultraaddons' );
+        $this->home = ! empty( $settings['home_title'] ) ? $settings['home_title'] : esc_html__( 'Home', 'ultraaddons-elementor-lite' );
         $this->separator = ! empty( $settings['separator_sign'] ) ? $settings['separator_sign'] : '/';
         ?>
         <div class="ua-breadcrumb-wrapper" >
@@ -80,7 +81,7 @@ class Breadcrumb extends Base{
         $this->start_controls_section(
             'wraper_style',
             [
-                'label'     => esc_html__( 'Box', 'ultraaddons' ),
+                'label'     => esc_html__( 'Box', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -88,7 +89,7 @@ class Breadcrumb extends Base{
         $this->add_control(
             'wraper_bg',
             [
-                'label'     => __( 'Background', 'ultraaddons' ),
+                'label'     => __( 'Background', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'global' => [
                     'default' => Global_Colors::COLOR_PRIMARY,
@@ -103,14 +104,14 @@ class Breadcrumb extends Base{
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'border',
-				'label' => esc_html__( 'Border', 'ultraaddons' ),
+				'label' => esc_html__( 'Border', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ultraaddons-breadcrumb, .ua-breadcrumb-menu',
 			]
 		);
         $this->add_control(
 			'wrap_padding',
 			[
-				'label' => esc_html__( 'Padding', 'ultraaddons' ),
+				'label' => esc_html__( 'Padding', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em' ],
 				'selectors' => [
@@ -122,7 +123,7 @@ class Breadcrumb extends Base{
         $this->add_control(
 			'border_radius',
 			[
-				'label' => esc_html__( 'Border radius', 'ultraaddons' ),
+				'label' => esc_html__( 'Border radius', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em' ],
 				'selectors' => [
@@ -135,7 +136,7 @@ class Breadcrumb extends Base{
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'box_shadow',
-				'label' => esc_html__( 'Box Shadow', 'ultraaddons' ),
+				'label' => esc_html__( 'Box Shadow', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ultraaddons-breadcrumb, .ua-breadcrumb-menu',
 			]
 		);
@@ -148,7 +149,7 @@ class Breadcrumb extends Base{
         $this->start_controls_section(
             'general_content',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -156,9 +157,9 @@ class Breadcrumb extends Base{
         $this->add_control(
             'home_title',
                 [
-                    'label'         => esc_html__( 'Home menu Text (Optional)', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Home menu Text (Optional)', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::TEXT,
-                    'default'       => esc_html( 'Home', 'ultraaddons' ),
+                    'default'       => esc_html__( 'Home', 'ultraaddons-elementor-lite' ),
                     'label_block'   => TRUE,
                     'dynamic'       => ['active' => true],
                 ]
@@ -167,7 +168,7 @@ class Breadcrumb extends Base{
         $this->add_control(
             'separator_sign',
                 [
-                    'label'         => esc_html__( 'Separator (Optional)', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Separator (Optional)', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::TEXT,
                     'default'       => '/',
                     'label_block'   => TRUE,
@@ -182,26 +183,26 @@ class Breadcrumb extends Base{
         $this->start_controls_section(
             'general_style',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'heading_alignment',
                 [
-                    'label'         => esc_html__( 'Align', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Align', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::CHOOSE,
                     'options' => [
                         'left' => [
-                                'title' => __( 'Left', 'ultraaddons' ),
+                                'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
                                 'icon' => 'eicon-text-align-left',
                         ],
                         'center' => [
-                                'title' => __( 'Center', 'ultraaddons' ),
+                                'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
                                 'icon' => 'eicon-text-align-center',
                         ],
                         'right' => [
-                                'title' => __( 'Right', 'ultraaddons' ),
+                                'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
                                 'icon' => 'eicon-text-align-right',
                         ],
                      ],
@@ -214,7 +215,7 @@ class Breadcrumb extends Base{
         $this->add_control(
             'link_color',
             [
-                'label'     => __( 'Link Color', 'ultraaddons' ),
+                'label'     => __( 'Link Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-breadcrumb-menu nav a, .ultraaddons-breadcrumb .item a' => 'color: {{VALUE}}',
@@ -224,7 +225,7 @@ class Breadcrumb extends Base{
         $this->add_control(
             'current_item',
             [
-                'label'     => __( 'Current Menu Color', 'ultraaddons' ),
+                'label'     => __( 'Current Menu Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-breadcrumb-menu nav, ul#ultraaddons-breadcrumb li.item-current' => 'color: {{VALUE}}',
@@ -234,7 +235,7 @@ class Breadcrumb extends Base{
         $this->add_control(
             'separator_color',
             [
-                'label'     => __( 'Separator Color', 'ultraaddons' ),
+                'label'     => __( 'Separator Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-breadcrumb-menu nav span, .ua-breadcrumb-menu .seperator' => 'color: {{VALUE}}',
@@ -245,7 +246,7 @@ class Breadcrumb extends Base{
         $this->add_control(
             'link_color_hover',
             [
-                'label'     => __( 'Hover Color', 'ultraaddons' ),
+                'label'     => __( 'Hover Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-breadcrumb-menu nav a:hover, .ultraaddons-breadcrumb li a:hover' => 'color: {{VALUE}}',
@@ -268,7 +269,7 @@ class Breadcrumb extends Base{
     
     private function breadcrumb() {
         $settings = $this->get_settings_for_display();
-        $this->home = ! empty( $settings['home_title'] ) ? $settings['home_title'] : esc_html( 'Home', 'ultraaddons' );
+        $this->home = ! empty( $settings['home_title'] ) ? $settings['home_title'] : esc_html( 'Home', 'ultraaddons-elementor-lite' );
         $this->separator = ! empty( $settings['separator_sign'] ) ? $settings['separator_sign'] : '/';
 
     $separator = $this->separator;
@@ -281,13 +282,13 @@ class Breadcrumb extends Base{
      * WooCommerce Plugin -> Includes -> wc-template-functions.php
      */
     if( $wooBreadCumb && function_exists( 'woocommerce_breadcrumb' ) ){
-        $args = array(
+        $ultraaddons_args = array(
             'delimiter' => '<span>&nbsp;' . $separator . '&nbsp;</span>',
             'home'      => $this->home,
         );
         
-        $args = apply_filters( 'ultraaddons_wc_breadcrumb_args', $args );
-        woocommerce_breadcrumb( $args );
+        $ultraaddons_args = apply_filters( 'ultraaddons_wc_breadcrumb_args', $ultraaddons_args );
+        woocommerce_breadcrumb( $ultraaddons_args );
         return true;
     }
     
@@ -317,7 +318,7 @@ class Breadcrumb extends Base{
     echo '<ul id="'. esc_attr( $defaults['id'] ) .'" class="'. esc_attr( $defaults['classes'] ) .'">';
 
     // Creating home link
-    echo '<li class="item"><a href="'. get_home_url() .'">'. esc_html( $defaults['home_title'] ) .'</a></li>' . $sep;
+    echo '<li class="item"><a href="'. esc_attr( get_home_url() ) .'">'. esc_html( $defaults['home_title'] ) .'</a></li>' . esc_html( $sep );
 
         if ( is_single() ) {
 
@@ -330,20 +331,20 @@ class Breadcrumb extends Base{
                 $post_type_object   = get_post_type_object( $post_type );
                 $post_type_link     = get_post_type_archive_link( $post_type );
 
-                echo '<li class="item item-cat"><a href="'. $post_type_link .'">'. $post_type_object->labels->name .'</a></li>'. $sep;
+                echo '<li class="item item-cat"><a href="'. esc_attr( $post_type_link ) .'">'. esc_html( $post_type_object->labels->name ) .'</a></li>'. esc_html( $sep );
 
           }
 
           // Get categories
-          $category = get_the_category( $post->ID );
+          $ultraaddons_category = get_the_category( $post->ID );
 
           // If category not empty
-          if( !empty( $category ) ) {
+          if( !empty( $ultraaddons_category ) ) {
 
                 // Arrange category parent to child
-                $category_values      = array_values( $category );
+                $category_values      = array_values( $ultraaddons_category );
                 $get_last_category    = end( $category_values );
-                // $get_last_category    = $category[count($category) - 1];
+                // $get_last_category    = $ultraaddons_category[count($ultraaddons_category) - 1];
                 $get_parent_category  = rtrim( get_category_parents( $get_last_category->term_id, true, ',' ), ',' );
                 $cat_parent           = explode( ',', $get_parent_category );
 
@@ -370,17 +371,17 @@ class Breadcrumb extends Base{
             // Check if the post is in a category
             if( !empty( $get_last_category ) ) {
 
-                echo $display_category;
-                echo '<li class="item item-current">'. get_the_title() .'</li>';
+                echo esc_html( $display_category );
+                echo '<li class="item item-current">'. esc_html( get_the_title() ) .'</li>';
 
             } else if( !empty( $cat_id ) ) {
 
-                echo '<li class="item item-cat"><a href="'. $cat_link .'">'. $cat_name .'</a></li>' . $sep;
-                echo '<li class="item-current item">'. get_the_title() .'</li>';
+                echo '<li class="item item-cat"><a href="'. esc_attr( $cat_link ) .'">'. esc_html( $cat_name ) .'</a></li>' . esc_html( $sep );
+                echo '<li class="item-current item">'. esc_html( get_the_title() ) .'</li>';
 
             } else {
 
-                echo '<li class="item-current item">'. get_the_title() .'</li>';
+                echo '<li class="item-current item">'. esc_html( get_the_title() ) .'</li>';
 
             }
 
@@ -396,12 +397,12 @@ class Breadcrumb extends Base{
                   $post_type_object   = get_post_type_object( $post_type );
                   $post_type_link     = get_post_type_archive_link( $post_type );
 
-                  echo '<li class="item item-cat item-custom-post-type-' . $post_type . '"><a href="' . $post_type_link . '">' . $post_type_object->labels->name . '</a></li>' . $sep;
+                  echo '<li class="item item-cat item-custom-post-type-' . esc_attr( $post_type ) . '"><a href="' . esc_url( $post_type_link ) . '">' . esc_html( $post_type_object->labels->name ) . '</a></li>' . esc_html( $sep );
 
                 }
 
                 $custom_tax_name = get_queried_object()->name;
-                echo '<li class="item item-current">'. $custom_tax_name .'</li>';
+                echo '<li class="item item-current">'. esc_html( $custom_tax_name ) .'</li>';
 
             } else if ( is_category() ) {
 
@@ -412,51 +413,54 @@ class Breadcrumb extends Base{
                     $parent_category = get_category( $parent );
                     $category_link   = get_category_link( $parent );
 
-                    echo '<li class="item"><a href="'. esc_url( $category_link ) .'">'. $parent_category->name .'</a></li>' . $sep;
+                    echo '<li class="item"><a href="'. esc_url( $category_link ) .'">'. esc_html( $parent_category->name ) .'</a></li>' . esc_html( $sep );
 
                 }
 
-                echo '<li class="item item-current">'. single_cat_title( '', false ) .'</li>';
+                echo '<li class="item item-current">'. esc_html( single_cat_title( '', false ) ) .'</li>';
 
             } else if ( is_tag() ) {
 
             // Get tag information
             $term_id        = get_query_var('tag_id');
             $taxonomy       = 'post_tag';
-            $args           = 'include=' . $term_id;
-            $terms          = get_terms( $taxonomy, $args );
-            $get_term_name  = $terms[0]->name;
+            $ultraaddons_args = array(
+                'taxonomy'   => $taxonomy,
+                'include' => $term_id,
+            );
+            $ultraaddons_terms          = get_terms( $ultraaddons_args );
+            $get_term_name  = $ultraaddons_terms[0]->name;
 
             // Display the tag name
-            echo '<li class="item-current item">'. $get_term_name .'</li>';
+            echo '<li class="item-current item">'. esc_html( $get_term_name ) .'</li>';
 
             } else if( is_day() ) {
 
                 // Day archive
 
                 // Year link
-                echo '<li class="item-year item"><a href="'. get_year_link( get_the_time('Y') ) .'">'. get_the_time('Y') . ' Archives</a></li>' . $sep;
+                echo '<li class="item-year item"><a href="'. esc_url( get_year_link( get_the_time('Y') ) ) .'">'. esc_html( get_the_time('Y') ) . ' Archives</a></li>' . esc_html( $sep );
 
                 // Month link
-                echo '<li class="item-month item"><a href="'. get_month_link( get_the_time('Y'), get_the_time('m') ) .'">'. get_the_time('M') .' Archives</a></li>' . $sep;
+                echo '<li class="item-month item"><a href="'. esc_url( get_month_link( get_the_time('Y'), get_the_time('m') ) ) .'">'. esc_html( get_the_time('M') ) .' Archives</a></li>' . esc_html( $sep );
 
                 // Day display
-                echo '<li class="item-current item">'. get_the_time('jS') .' '. get_the_time('M'). ' Archives</li>';
+                echo '<li class="item-current item">'. esc_html( get_the_time('jS') ) .' '. esc_html( get_the_time('M') ). ' Archives</li>';
 
             } else if( is_month() ) {
 
                 // Month archive
 
                 // Year link
-                echo '<li class="item-year item"><a href="'. get_year_link( get_the_time('Y') ) .'">'. get_the_time('Y') . ' Archives</a></li>' . $sep;
+                echo '<li class="item-year item"><a href="'. esc_url( get_year_link( get_the_time('Y') ) ) .'">'. esc_html( get_the_time('Y') ) . ' Archives</a></li>' . esc_html( $sep );
 
                 // Month Display
-                echo '<li class="item-month item-current item">'. get_the_time('M') .' Archives</li>';
+                echo '<li class="item-month item-current item">'. esc_html( get_the_time('M') ) .' Archives</li>';
 
             } else if ( is_year() ) {
 
                 // Year Display
-                echo '<li class="item-year item-current item">'. get_the_time('Y') .' Archives</li>';
+                echo '<li class="item-year item-current item">'. esc_html( get_the_time('Y') ) .' Archives</li>';
 
           } else if ( is_author() ) {
 
@@ -467,12 +471,11 @@ class Breadcrumb extends Base{
                 $userdata = get_userdata( $author );
 
                 // Display author name
-                echo '<li class="item-current item">'. 'Author: '. $userdata->display_name . '</li>';
+                echo '<li class="item-current item">'. 'Author: '. esc_html( $userdata->display_name ) . '</li>';
 
             } else {
 
-                echo '<li class="item item-current">'. post_type_archive_title() .'</li>';
-
+                echo '<li class="item item-current">'. esc_html( post_type_archive_title() ) .'</li>';
             }
 
     } else if ( is_page() ) {
@@ -490,27 +493,27 @@ class Breadcrumb extends Base{
         if ( !isset( $parents ) ) $parents = null;
         foreach ( $anc as $ancestor ) {
 
-          $parents .= '<li class="item-parent item"><a href="'. get_permalink( $ancestor ) .'">'. get_the_title( $ancestor ) .'</a></li>' . $sep;
+          $parents .= '<li class="item-parent item"><a href="'. esc_url( get_permalink( $ancestor ) ) .'">'. esc_html( get_the_title( $ancestor ) ) .'</a></li>' . esc_html( $sep );
 
         }
 
         // Display parent pages
-        echo $parents;
+        echo wp_kses_data( $parents );
 
         // Current page
-        echo '<li class="item-current item">'. get_the_title() .'</li>';
+        echo '<li class="item-current item">'. esc_html( get_the_title() ) .'</li>';
 
       } else {
 
         // Just display current page if not parents
-        echo '<li class="item-current item">'. get_the_title() .'</li>';
+        echo '<li class="item-current item">'. esc_html( get_the_title() ) .'</li>';
 
       }
 
     } else if ( is_search() ) {
 
         // Search results page
-        echo '<li class="item-current item">Search results for: '. get_search_query() .'</li>';
+        echo '<li class="item-current item">Search results for: '. esc_html( get_search_query() ) .'</li>';
 
     } else if ( is_404() ) {
 

@@ -14,28 +14,28 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Radar_Chart extends Base{
     
-    public function __construct($data = [], $args = null) {
-        parent::__construct($data, $args);
+    public function __construct($data = [], $ultraaddons_args = null) {
+        parent::__construct($data, $ultraaddons_args);
 
         //Naming of Args for Skill Chart
-        $name           = 'chart-js';
+        $ultraaddons_name           = 'chart-js';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/chart-js/chart.js';
         $dependency     =  ['jquery'];//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer      = true;
 
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );
+        wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ultraaddons_name );
 
         //Naming of Args for front end chart
-        $name           = 'frontend-chart-js';
+        $ultraaddons_name           = 'frontend-chart-js';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'js/frontend-chart.js';
         $dependency     =  ['jquery'];//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  = true;
 
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );
+        wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ultraaddons_name );
     }
 	
 
@@ -65,7 +65,7 @@ class Radar_Chart extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua', 'radar', 'mix','mixed', 'bar','line', 'graph' ];
+        return [ 'ultraaddons-elementor-lite', 'ua', 'radar', 'mix','mixed', 'bar','line', 'graph' ];
     }
     
     
@@ -95,17 +95,17 @@ class Radar_Chart extends Base{
         $this->start_controls_section(
             'general_content',
             [
-                'label'     => esc_html__( 'Content', 'ultraaddons' ),
+                'label'     => esc_html__( 'Content', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
          $this->add_control(
 			'show_title',
 			[
-				'label' => esc_html__( 'Custom Title', 'ultraaddons' ),
+				'label' => esc_html__( 'Custom Title', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Show', 'ultraaddons' ),
-				'label_off' => esc_html__( 'Hide', 'ultraaddons' ),
+				'label_on' => esc_html__( 'Show', 'ultraaddons-elementor-lite' ),
+				'label_off' => esc_html__( 'Hide', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'no',
 			]
@@ -113,9 +113,9 @@ class Radar_Chart extends Base{
          $this->add_control(
 			'chart_custom_title',
 			[
-				'label' => __( 'Custom Title', 'ultraaddons' ),
+				'label' => __( 'Custom Title', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Ultra Addons', 'ultraaddons' ),
+				'default' => __( 'Ultra Addons', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
                 'condition'=>[
                     'show_title'=>'yes',
@@ -126,7 +126,7 @@ class Radar_Chart extends Base{
          $this->add_control(
 			'chart_description',
 			[
-				'label' => __( 'Description', 'ultraaddons' ),
+				'label' => __( 'Description', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'label_block' => true,
                 'separator' => 'after',
@@ -138,9 +138,9 @@ class Radar_Chart extends Base{
         $this->add_control(
 			'chart_title',
 			[
-				'label' => __( 'Chart Title', 'ultraaddons' ),
+				'label' => __( 'Chart Title', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Ultra Addons Chart Title', 'ultraaddons' ),
+				'default' => __( 'Ultra Addons Chart Title', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
                 'frontend_available' => true,
 			]
@@ -148,9 +148,9 @@ class Radar_Chart extends Base{
         $this->add_control(
 			'bar_legend_label',
 			[
-				'label' => __( 'Data #1 Legend Label', 'ultraaddons' ),
+				'label' => __( 'Data #1 Legend Label', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Ultra Addons', 'ultraaddons' ),
+				'default' => __( 'Ultra Addons', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
                 'frontend_available' => true,
 			]
@@ -158,9 +158,9 @@ class Radar_Chart extends Base{
         $this->add_control(
 			'line_legend_label',
 			[
-				'label' => __( 'Line Chart Legend Label', 'ultraaddons' ),
+				'label' => __( 'Line Chart Legend Label', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Woo Product Table', 'ultraaddons' ),
+				'default' => __( 'Woo Product Table', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
                 'frontend_available' => true,
 			]
@@ -170,32 +170,32 @@ class Radar_Chart extends Base{
 
 		$repeater->add_control(
 			'labels', [
-				'label' => esc_html__( 'Labels', 'ultraaddons' ),
+				'label' => esc_html__( 'Labels', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'January' , 'ultraaddons' ),
+				'default' => esc_html__( 'January' , 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
         $repeater->add_control(
 			'data_1', [
-				'label' => esc_html__( 'Data #1', 'ultraaddons' ),
+				'label' => esc_html__( 'Data #1', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::NUMBER,
-				'default' => esc_html__( '10' , 'ultraaddons' ),
+				'default' => esc_html__( '10' , 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
         $repeater->add_control(
 			'backgroundColor', [
-				'label' => __( 'Background Color', 'ultraaddons' ),
+				'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
                 'separator' =>'after'
 			]
         );
         $repeater->add_control(
 			'data_2', [
-				'label' => esc_html__( 'Data #2', 'ultraaddons' ),
+				'label' => esc_html__( 'Data #2', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::NUMBER,
-				'default' => esc_html__( '10' , 'ultraaddons' ),
+				'default' => esc_html__( '10' , 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
@@ -203,7 +203,7 @@ class Radar_Chart extends Base{
         $this->add_control(
 			'data_list',
 			[
-				'label' => esc_html__( 'Chart Data', 'ultraaddons' ),
+				'label' => esc_html__( 'Chart Data', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
                 'frontend_available' => true,
@@ -211,41 +211,41 @@ class Radar_Chart extends Base{
                 // data:   [28, 48, 40, 19, 96, 27, 100],
 				'default' => [
 					[
-						'labels' => esc_html__( 'January', 'ultraaddons' ),
-						'data_1' => esc_html__( '65', 'ultraaddons' ),
+						'labels' => esc_html__( 'January', 'ultraaddons-elementor-lite' ),
+						'data_1' => esc_html__( '65', 'ultraaddons-elementor-lite' ),
                         'backgroundColor' => '#138FE440',
-                        'data_2' => esc_html__( '28', 'ultraaddons' ),
+                        'data_2' => esc_html__( '28', 'ultraaddons-elementor-lite' ),
 					],
 					[
-						'labels' => esc_html__( 'Februay', 'ultraaddons' ),
-                        'data_1' => esc_html__( '59', 'ultraaddons' ),
+						'labels' => esc_html__( 'Februay', 'ultraaddons-elementor-lite' ),
+                        'data_1' => esc_html__( '59', 'ultraaddons-elementor-lite' ),
                         'backgroundColor' => '#54D300CC',
-                        'data_2' => esc_html__( '48', 'ultraaddons' ),
+                        'data_2' => esc_html__( '48', 'ultraaddons-elementor-lite' ),
 					],
                     [
-					    'labels' => esc_html__( 'March', 'ultraaddons' ),
-                        'data_1' => esc_html__( '90', 'ultraaddons' ),
-                        'data_2' => esc_html__( '40', 'ultraaddons' ),
+					    'labels' => esc_html__( 'March', 'ultraaddons-elementor-lite' ),
+                        'data_1' => esc_html__( '90', 'ultraaddons-elementor-lite' ),
+                        'data_2' => esc_html__( '40', 'ultraaddons-elementor-lite' ),
 					],
                     [
-					    'labels' => esc_html__( 'April', 'ultraaddons' ),
-                        'data_1' => esc_html__( '81', 'ultraaddons' ),
-                        'data_2' => esc_html__( '19', 'ultraaddons' ),
+					    'labels' => esc_html__( 'April', 'ultraaddons-elementor-lite' ),
+                        'data_1' => esc_html__( '81', 'ultraaddons-elementor-lite' ),
+                        'data_2' => esc_html__( '19', 'ultraaddons-elementor-lite' ),
 					],
                     [
-					    'labels' => esc_html__( 'May', 'ultraaddons' ),
-                        'data_1' => esc_html__( '56', 'ultraaddons' ),
-                        'data_2' => esc_html__( '96', 'ultraaddons' ),
+					    'labels' => esc_html__( 'May', 'ultraaddons-elementor-lite' ),
+                        'data_1' => esc_html__( '56', 'ultraaddons-elementor-lite' ),
+                        'data_2' => esc_html__( '96', 'ultraaddons-elementor-lite' ),
 					],
                     [
-					    'labels' => esc_html__( 'June', 'ultraaddons' ),
-                        'data_1' => esc_html__( '55', 'ultraaddons' ),
-                        'data_2' => esc_html__( '27', 'ultraaddons' ),
+					    'labels' => esc_html__( 'June', 'ultraaddons-elementor-lite' ),
+                        'data_1' => esc_html__( '55', 'ultraaddons-elementor-lite' ),
+                        'data_2' => esc_html__( '27', 'ultraaddons-elementor-lite' ),
 					],
                     [
-					    'labels' => esc_html__( 'July', 'ultraaddons' ),
-                        'data_1' => esc_html__( '40', 'ultraaddons' ),
-                        'data_2' => esc_html__( '100', 'ultraaddons' ),
+					    'labels' => esc_html__( 'July', 'ultraaddons-elementor-lite' ),
+                        'data_1' => esc_html__( '40', 'ultraaddons-elementor-lite' ),
+                        'data_2' => esc_html__( '100', 'ultraaddons-elementor-lite' ),
 					],
 				],
 				'title_field' => '{{{ labels }}}',
@@ -259,13 +259,13 @@ class Radar_Chart extends Base{
         $this->start_controls_section(
             'chart_style',
             [
-                'label'     => esc_html__( 'Chart Style', 'ultraaddons' ),
+                'label'     => esc_html__( 'Chart Style', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
 			'title_color', [
-				'label' => __( 'Title Color', 'ultraaddons' ),
+				'label' => __( 'Title Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
                 'frontend_available' => true,
                 'default'           => '#959595',
@@ -274,7 +274,7 @@ class Radar_Chart extends Base{
         );
         $this->add_control(
 			'pointLabels', [
-				'label' => __( 'Point Labels Color', 'ultraaddons' ),
+				'label' => __( 'Point Labels Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
                 'frontend_available' => true,
                 'default'           => '#959595',
@@ -282,7 +282,7 @@ class Radar_Chart extends Base{
         );
         $this->add_control(
 			'grid_color', [
-				'label' => __( 'Grid Color', 'ultraaddons' ),
+				'label' => __( 'Grid Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
                 'default'   =>'#DEDEDE',
                 'frontend_available' => true,
@@ -291,7 +291,7 @@ class Radar_Chart extends Base{
         );
         $this->add_control(
 			'angle_color', [
-				'label' => __( 'Angle Lines Color', 'ultraaddons' ),
+				'label' => __( 'Angle Lines Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
                 'default'   =>'#DEDEDE',
                 'frontend_available' => true,
@@ -305,13 +305,13 @@ class Radar_Chart extends Base{
         $this->start_controls_section(
             'legend_style',
             [
-                'label'     => esc_html__( 'Legend Style', 'ultraaddons' ),
+                'label'     => esc_html__( 'Legend Style', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
 			'legend_color', [
-				'label' => __( 'Legend Text Color', 'ultraaddons' ),
+				'label' => __( 'Legend Text Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
                 'default'   =>'#ddd',
                 'frontend_available' => true,
@@ -320,23 +320,23 @@ class Radar_Chart extends Base{
         $this->add_responsive_control(
 			'legend_position',
 			[
-				'label' => esc_html__( 'Legend Position', 'ultraaddons' ),
+				'label' => esc_html__( 'Legend Position', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'top' => [
-						'title' => esc_html__( 'Top', 'ultraaddons' ),
+						'title' => esc_html__( 'Top', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-v-align-top',
 					],
                     'right' => [
-						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'title' => esc_html__( 'Right', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-h-align-right',
 					],
                     'bottom' => [
-						'title' => esc_html__( 'Bottom', 'ultraaddons' ),
+						'title' => esc_html__( 'Bottom', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-v-align-bottom',
 					],
 					'left' => [
-						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'title' => esc_html__( 'Left', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-h-align-left',
 					],
 				],
@@ -347,10 +347,10 @@ class Radar_Chart extends Base{
         $this->add_control(
 			'display_legend',
 			[
-				'label' => esc_html__( 'Legend Display', 'ultraaddons' ),
+				'label' => esc_html__( 'Legend Display', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Show', 'ultraaddons' ),
-				'label_off' => esc_html__( 'Hide', 'ultraaddons' ),
+				'label_on' => esc_html__( 'Show', 'ultraaddons-elementor-lite' ),
+				'label_off' => esc_html__( 'Hide', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
                 'frontend_available' => true,
@@ -363,13 +363,13 @@ class Radar_Chart extends Base{
         $this->start_controls_section(
             'box_style',
             [
-                'label'     => esc_html__( 'Box Style', 'ultraaddons' ),
+                'label'     => esc_html__( 'Box Style', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
 			'box_bg', [
-				'label' => __( 'Box Background', 'ultraaddons' ),
+				'label' => __( 'Box Background', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
                 'default'   =>'#fff',
                 'selectors' => [
@@ -381,7 +381,7 @@ class Radar_Chart extends Base{
         $this->add_responsive_control(
             'box_padding',
             [
-                    'label' => __( 'Padding', 'ultraaddons' ),
+                    'label' => __( 'Padding', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px' ],
                     'default'   => [
@@ -403,26 +403,26 @@ class Radar_Chart extends Base{
         $this->start_controls_section(
             'title_style',
             [
-                'label'     => esc_html__( 'Title & Description', 'ultraaddons' ),
+                'label'     => esc_html__( 'Title & Description', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
          $this->add_control(
             'content_align',
                 [
-                    'label'         => esc_html__( 'Align', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Align', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::CHOOSE,
                     'options' => [
                             'left' => [
-                                    'title' => __( 'Left', 'ultraaddons' ),
+                                    'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
                                     'icon' => 'eicon-text-align-left',
                             ],
                             'center' => [
-                                    'title' => __( 'Center', 'ultraaddons' ),
+                                    'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
                                     'icon' => 'eicon-text-align-center',
                             ],
                             'right' => [
-                                    'title' => __( 'Right', 'ultraaddons' ),
+                                    'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
                                     'icon' => 'eicon-text-align-right',
                             ],
                     ],
@@ -436,7 +436,7 @@ class Radar_Chart extends Base{
          $this->add_control(
 			'_ua_chart_title_tag',
 			[
-				'label' => esc_html__( 'Select Title Tag', 'ultraaddons' ),
+				'label' => esc_html__( 'Select Title Tag', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'h1' => 'H1',
@@ -462,7 +462,7 @@ class Radar_Chart extends Base{
         );
         $this->add_control(
 			'chart_title_color', [
-				'label' => __( 'Title Color', 'ultraaddons' ),
+				'label' => __( 'Title Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					'{{WRAPPER}} .chart-title' => 'color: {{VALUE}};',
@@ -473,7 +473,7 @@ class Radar_Chart extends Base{
         $this->add_responsive_control(
             'title_padding',
             [
-                    'label' => __( 'Title Margin', 'ultraaddons' ),
+                    'label' => __( 'Title Margin', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px' ],
                     'separator'  => 'after',
@@ -491,7 +491,7 @@ class Radar_Chart extends Base{
         );
         $this->add_control(
 			'chart_desc_color', [
-				'label' => __( 'Description Color', 'ultraaddons' ),
+				'label' => __( 'Description Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					'{{WRAPPER}} .chart-desc' => 'color: {{VALUE}};',
@@ -516,11 +516,11 @@ class Radar_Chart extends Base{
             <div class="chart-content">
                 <?php
                     if('yes'===$settings['show_title']){
-                    echo '<' . $settings['_ua_chart_title_tag'] . ' class="chart-title">' . esc_html($settings['chart_custom_title']) . 
-                            '</' . $settings['_ua_chart_title_tag'] . '>';
+                    echo '<' . esc_attr( $settings['_ua_chart_title_tag'] ) . ' class="chart-title">' . esc_html($settings['chart_custom_title']) . 
+                            '</' . esc_attr( $settings['_ua_chart_title_tag'] ) . '>';
                     }
                 ?>
-                <p class="chart-desc"><?php echo $settings['chart_description']; ?></p>
+                <p class="chart-desc"><?php echo esc_html( $settings['chart_description'] ); ?></p>
            </div>
             <canvas id="uaChart-<?php echo esc_attr($id);?>"></canvas>
         </div>

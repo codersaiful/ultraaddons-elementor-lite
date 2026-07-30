@@ -25,30 +25,30 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Advance_Pricing_Table extends Base{
 
-    public function __construct($data = [], $args = null) {
-        parent::__construct($data, $args);
+    public function __construct($data = [], $ultraaddons_args = null) {
+        parent::__construct($data, $ultraaddons_args);
 
         //Naming of Args for pricing
-        $name           = 'pricing';
+        $ultraaddons_name           = 'pricing';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/pricing/js/pricing.js';
         $dependency     =  ['jquery'];//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  = true;
 
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );
+        wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ultraaddons_name );
 
-        $name           = 'modernizr';
+        $ultraaddons_name           = 'modernizr';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'js/modernizr.js';
         $dependency     =  ['jquery'];//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  = true;
 
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );
+        wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ultraaddons_name );
 
          //CSS file for Slider Script Owl Carousel Slider
-        wp_register_style('adv-pricing', ULTRA_ADDONS_ASSETS . 'vendor/pricing/css/pricing.css' );
+        wp_register_style('adv-pricing', ULTRA_ADDONS_ASSETS . 'vendor/pricing/css/pricing.css', array(), ULTRA_ADDONS_VERSION );
         wp_enqueue_style('adv-pricing' );
 
     }
@@ -81,7 +81,7 @@ class Advance_Pricing_Table extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua', 'price', 'pricing','table','advance', 'discount' ];
+        return [ 'ultraaddons-elementor-lite', 'ua', 'price', 'pricing','table','advance', 'discount' ];
     }
     
     
@@ -116,29 +116,29 @@ class Advance_Pricing_Table extends Base{
         $this->start_controls_section(
             'general_content',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
 		$this->add_control(
 			'toggle_a', [
-				'label' => esc_html__( 'Toggle A Label', 'ultraaddons' ),
+				'label' => esc_html__( 'Toggle A Label', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'Monthly' , 'ultraaddons' ),
+				'default' => esc_html__( 'Monthly' , 'ultraaddons-elementor-lite' ),
 				'label_block' => false,
 			]
 		);
 		$this->add_control(
 			'toggle_b', [
-				'label' => esc_html__( 'Toggle B Label', 'ultraaddons' ),
+				'label' => esc_html__( 'Toggle B Label', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'Yearly' , 'ultraaddons' ),
+				'default' => esc_html__( 'Yearly' , 'ultraaddons-elementor-lite' ),
 				'label_block' => false,
 			]
 		);
 		$this->add_control(
 			'price_desc', [
-				'label' => esc_html__( 'Description', 'ultraaddons' ),
+				'label' => esc_html__( 'Description', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'label_block' => true,
 				'default'	=> 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium <br>doloremque laudantium'
@@ -148,38 +148,38 @@ class Advance_Pricing_Table extends Base{
 		$this->add_control(
 			'list_curreny',
 			[
-				'label' => __( 'Currency Symbol', 'ultraaddons' ),
+				'label' => __( 'Currency Symbol', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
-					'' => __( 'None', 'ultraaddons' ),
-					'&#36;' => '&#36; ' . _x( 'Dollar', 'Currency Symbol', 'ultraaddons' ),
-					'&#128;' => '&#128; ' . _x( 'Euro', 'Currency Symbol', 'ultraaddons' ),
-					'&#3647;' => '&#3647; ' . _x( 'Baht', 'Currency Symbol', 'ultraaddons' ),
-					'&#8355;' => '&#8355; ' . _x( 'Franc', 'Currency Symbol', 'ultraaddons' ),
-					'&fnof;' => '&fnof; ' . _x( 'Guilder', 'Currency Symbol', 'ultraaddons' ),
-					'kr' => 'kr ' . _x( 'Krona', 'Currency Symbol', 'ultraaddons' ),
-					'&#8356;' => '&#8356; ' . _x( 'Lira', 'Currency Symbol', 'ultraaddons' ),
-					'&#8359;' => '&#8359; ' . _x( 'Peseta', 'Currency Symbol', 'ultraaddons' ),
-					'&#8369;' => '&#8369; ' . _x( 'Peso', 'Currency Symbol', 'ultraaddons' ),
-					'&#163;' => '&#163; ' . _x( 'Pound Sterling', 'Currency Symbol', 'ultraaddons' ),
-					'R$' => 'R$ ' . _x( 'Real', 'Currency Symbol', 'ultraaddons' ),
-					'&#8381;' => '&#8381; ' . _x( 'Ruble', 'Currency Symbol', 'ultraaddons' ),
-					'&#8360;' => '&#8360; ' . _x( 'Rupee', 'Currency Symbol', 'ultraaddons' ),
-					'&#8377;' => '&#8377; ' . _x( 'Rupee (Indian)', 'Currency Symbol', 'ultraaddons' ),
-					'&#8362;' => '&#8362; ' . _x( 'Shekel', 'Currency Symbol', 'ultraaddons' ),
-					'&#165;' => '&#165; ' . _x( 'Yen/Yuan', 'Currency Symbol', 'ultraaddons' ),
-					'&#8361;' => '&#8361; ' . _x( 'Won', 'Currency Symbol', 'ultraaddons' ),
-					'&#8378;' => '&#8378; ' . _x( 'Lira (Turkish)', 'Currency Symbol', 'ultraaddons' ),
-					'custom' => __( 'Custom', 'ultraaddons' ),
+					'' => __( 'None', 'ultraaddons-elementor-lite' ),
+					'&#36;' => '&#36; ' . _x( 'Dollar', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'&#128;' => '&#128; ' . _x( 'Euro', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'&#3647;' => '&#3647; ' . _x( 'Baht', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'&#8355;' => '&#8355; ' . _x( 'Franc', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'&fnof;' => '&fnof; ' . _x( 'Guilder', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'kr' => 'kr ' . _x( 'Krona', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'&#8356;' => '&#8356; ' . _x( 'Lira', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'&#8359;' => '&#8359; ' . _x( 'Peseta', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'&#8369;' => '&#8369; ' . _x( 'Peso', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'&#163;' => '&#163; ' . _x( 'Pound Sterling', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'R$' => 'R$ ' . _x( 'Real', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'&#8381;' => '&#8381; ' . _x( 'Ruble', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'&#8360;' => '&#8360; ' . _x( 'Rupee', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'&#8377;' => '&#8377; ' . _x( 'Rupee (Indian)', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'&#8362;' => '&#8362; ' . _x( 'Shekel', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'&#165;' => '&#165; ' . _x( 'Yen/Yuan', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'&#8361;' => '&#8361; ' . _x( 'Won', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'&#8378;' => '&#8378; ' . _x( 'Lira (Turkish)', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'custom' => __( 'Custom', 'ultraaddons-elementor-lite' ),
 				],
 				'default' => '&#36;',
 			]
 		);
 		$this->add_control(
 			'list_custom_curreny', [
-				'label' => esc_html__( 'Custom Currency', 'ultraaddons' ),
+				'label' => esc_html__( 'Custom Currency', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( '$' , 'ultraaddons' ),
+				'default' => esc_html__( '$' , 'ultraaddons-elementor-lite' ),
 				'label_block' => false,
 				'condition'=>[
 					'list_curreny' =>'custom'
@@ -189,10 +189,10 @@ class Advance_Pricing_Table extends Base{
 		$this->add_control(
 			'is_back',
 			[
-				'label' => __( 'Edit Back Part?', 'ultraaddons' ),
+				'label' => __( 'Edit Back Part?', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'no',
 				'separator' => 'before'
@@ -202,16 +202,16 @@ class Advance_Pricing_Table extends Base{
 
 		$repeater->add_control(
 			'list_title', [
-				'label' => esc_html__( 'Title', 'ultraaddons' ),
+				'label' => esc_html__( 'Title', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'Basic' , 'ultraaddons' ),
+				'default' => esc_html__( 'Basic' , 'ultraaddons-elementor-lite' ),
 				'label_block' => false,
 			]
 		);
 		$repeater->add_control(
 			'icon',
 			[
-				'label' => esc_html__( 'Icon', 'ultraaddons' ),
+				'label' => esc_html__( 'Icon', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::ICONS,
 				'default' => [
 					'value' => 'fas fa fa-business-time',
@@ -222,28 +222,28 @@ class Advance_Pricing_Table extends Base{
 	
 		$repeater->add_control(
 			'list_price', [
-				'label' => esc_html__( 'Price', 'ultraaddons' ),
+				'label' => esc_html__( 'Price', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( '33.99' , 'ultraaddons' ),
+				'default' => esc_html__( '33.99' , 'ultraaddons-elementor-lite' ),
 				'label_block' => false,
 			]
 		);
 		$repeater->add_control(
 			'is_discount',
 			[
-				'label' => __( 'Discount?', 'ultraaddons' ),
+				'label' => __( 'Discount?', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Show', 'ultraaddons' ),
-				'label_off' => __( 'Hide', 'ultraaddons' ),
+				'label_on' => __( 'Show', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'Hide', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'no',
 			]
 		);
 		$repeater->add_control(
 			'list_discount_price', [
-				'label' => esc_html__( 'Discount Price', 'ultraaddons' ),
+				'label' => esc_html__( 'Discount Price', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( '25.99' , 'ultraaddons' ),
+				'default' => esc_html__( '25.99' , 'ultraaddons-elementor-lite' ),
 				'label_block' => false,
 				'condition' =>[
 					'is_discount'=>'yes'
@@ -253,10 +253,10 @@ class Advance_Pricing_Table extends Base{
 		$repeater->add_control(
 			'show_discount',
 			[
-				'label' => __( 'Show Discount?', 'ultraaddons' ),
+				'label' => __( 'Show Discount?', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Show', 'ultraaddons' ),
-				'label_off' => __( 'Hide', 'ultraaddons' ),
+				'label_on' => __( 'Show', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'Hide', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'no',
 				'condition' =>[
@@ -266,15 +266,15 @@ class Advance_Pricing_Table extends Base{
 		);
 		$repeater->add_control(
 			'list_period', [
-				'label' => esc_html__( 'Period', 'ultraaddons' ),
+				'label' => esc_html__( 'Period', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'Mo' , 'ultraaddons' ),
+				'default' => esc_html__( 'Mo' , 'ultraaddons-elementor-lite' ),
 				'label_block' => false,
 			]
 		);
 		$repeater->add_control(
 			'list_feature', [
-				'label' => esc_html__( 'Features', 'ultraaddons' ),
+				'label' => esc_html__( 'Features', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'label_block' => true,
 				'default' => '<ul>
@@ -288,9 +288,9 @@ class Advance_Pricing_Table extends Base{
 		$repeater->add_control(
 			'website_link',
 			[
-				'label' => esc_html__( 'Link', 'ultraaddons' ),
+				'label' => esc_html__( 'Link', 'ultraaddons-elementor-lite' ),
 				'type' => \Elementor\Controls_Manager::URL,
-				'placeholder' => esc_html__( 'https://your-link.com', 'ultraaddons' ),
+				'placeholder' => esc_html__( 'https://your-link.com', 'ultraaddons-elementor-lite' ),
 				'default' => [
 					'url' => '',
 					'is_external' => false,
@@ -302,28 +302,28 @@ class Advance_Pricing_Table extends Base{
 		);
 		$repeater->add_control(
 			'list_button', [
-				'label' => esc_html__( 'Button Text', 'ultraaddons' ),
+				'label' => esc_html__( 'Button Text', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'Buy Now' , 'ultraaddons' ),
+				'default' => esc_html__( 'Buy Now' , 'ultraaddons-elementor-lite' ),
 				'label_block' => false,
 			]
 		);
 		$repeater->add_control(
 			'show_badge',
 			[
-				'label' => __( 'Show Badge', 'ultraaddons' ),
+				'label' => __( 'Show Badge', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Show', 'ultraaddons' ),
-				'label_off' => __( 'Hide', 'ultraaddons' ),
+				'label_on' => __( 'Show', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'Hide', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'no',
 			]
 		);
 		$repeater->add_control(
 			'badge_text', [
-				'label' => esc_html__( 'Badge Text', 'ultraaddons' ),
+				'label' => esc_html__( 'Badge Text', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'Featured' , 'ultraaddons' ),
+				'default' => esc_html__( 'Featured' , 'ultraaddons-elementor-lite' ),
 				'label_block' => false,
 				'condition' =>[
 					'show_badge'=>'yes'
@@ -334,14 +334,14 @@ class Advance_Pricing_Table extends Base{
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'box_background',
-				'label' => __( 'Box Background', 'ultraaddons' ),
+				'label' => __( 'Box Background', 'ultraaddons-elementor-lite' ),
 				'types' => [ 'classic', 'gradient'],
 				'selector' => '{{WRAPPER}} {{CURRENT_ITEM}}.plan',
 			]
 		);
 		$repeater->add_control(
 			'feature_text_color', [
-				'label' => __( 'Feature Text Color', 'ultraaddons' ),
+				'label' => __( 'Feature Text Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'separator' => 'before',
 				'selectors' => [
@@ -351,7 +351,7 @@ class Advance_Pricing_Table extends Base{
         );
 		$repeater->add_control(
 			'box_hover_color', [
-				'label' => __( 'Box Hover', 'ultraaddons' ),
+				'label' => __( 'Box Hover', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'separator' => 'before',
 				'selectors' => [
@@ -362,14 +362,14 @@ class Advance_Pricing_Table extends Base{
 		$repeater->add_group_control(
             Group_Control_Typography::get_type(),
             [
-				'label'     => esc_html__( 'Title Typography', 'ultraaddons' ),
+				'label'     => esc_html__( 'Title Typography', 'ultraaddons-elementor-lite' ),
                 'name' => 'title_typography',
                 'selector' => '{{WRAPPER}} {{CURRENT_ITEM}} .plan-title',
             ]
         );
 		$repeater->add_control(
 			'title_color', [
-				'label' => __( 'Title Color', 'ultraaddons' ),
+				'label' => __( 'Title Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'separator' => 'before',
 				'selectors' => [
@@ -380,7 +380,7 @@ class Advance_Pricing_Table extends Base{
         );
 		$repeater->add_control(
 			'amount_color', [
-				'label' => __( 'Price Color', 'ultraaddons' ),
+				'label' => __( 'Price Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'separator' => 'before',
 				'selectors' => [
@@ -391,7 +391,7 @@ class Advance_Pricing_Table extends Base{
         );
 		$repeater->add_control(
 			'month_color', [
-				'label' => __( 'Month Color', 'ultraaddons' ),
+				'label' => __( 'Month Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} {{CURRENT_ITEM}} .month' => 'color: {{VALUE}};',
@@ -402,7 +402,7 @@ class Advance_Pricing_Table extends Base{
         );
 		$repeater->add_control(
 			'separator_color', [
-				'label' => __( 'Separator Color', 'ultraaddons' ),
+				'label' => __( 'Separator Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'separator' => 'before',
 				'selectors' => [
@@ -413,7 +413,7 @@ class Advance_Pricing_Table extends Base{
         );
 		$repeater->add_control(
 			'icon_color', [
-				'label' => __( 'Icon Color', 'ultraaddons' ),
+				'label' => __( 'Icon Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'separator' => 'before',
 				'selectors' => [
@@ -426,18 +426,18 @@ class Advance_Pricing_Table extends Base{
         $this->add_control(
 			'list',
 			[
-				'label' => esc_html__( 'Price List A', 'ultraaddons' ),
+				'label' => esc_html__( 'Price List A', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
-						'list_title' => esc_html__( 'Basic', 'ultraaddons' ),
+						'list_title' => esc_html__( 'Basic', 'ultraaddons-elementor-lite' ),
 					],
 					[
-						'list_title' => esc_html__( 'Advance', 'ultraaddons' ),
+						'list_title' => esc_html__( 'Advance', 'ultraaddons-elementor-lite' ),
 					],
                     [
-						'list_title' => esc_html__( 'Premier', 'ultraaddons' ),
+						'list_title' => esc_html__( 'Premier', 'ultraaddons-elementor-lite' ),
 					],
 				],
 				'title_field' => '{{{ list_title }}}',
@@ -447,16 +447,16 @@ class Advance_Pricing_Table extends Base{
 		$repeater_b = new \Elementor\Repeater();
 			$repeater_b->add_control(
 			'list_title', [
-				'label' => esc_html__( 'Title', 'ultraaddons' ),
+				'label' => esc_html__( 'Title', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'Basic B' , 'ultraaddons' ),
+				'default' => esc_html__( 'Basic B' , 'ultraaddons-elementor-lite' ),
 				'label_block' => false,
 			]
 		);
 		$repeater_b->add_control(
 			'icon',
 			[
-				'label' => esc_html__( 'Icon', 'ultraaddons' ),
+				'label' => esc_html__( 'Icon', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::ICONS,
 				'default' => [
 					'value' => 'far fa fa-check-circle',
@@ -466,9 +466,9 @@ class Advance_Pricing_Table extends Base{
 		);
 		$repeater_b->add_control(
 			'list_price', [
-				'label' => esc_html__( 'Price', 'ultraaddons' ),
+				'label' => esc_html__( 'Price', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( '55.99' , 'ultraaddons' ),
+				'default' => esc_html__( '55.99' , 'ultraaddons-elementor-lite' ),
 				'label_block' => false,
 			]
 		);
@@ -476,10 +476,10 @@ class Advance_Pricing_Table extends Base{
 		$repeater_b->add_control(
 			'is_discount',
 			[
-				'label' => __( 'Discount?', 'ultraaddons' ),
+				'label' => __( 'Discount?', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Show', 'ultraaddons' ),
-				'label_off' => __( 'Hide', 'ultraaddons' ),
+				'label_on' => __( 'Show', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'Hide', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'no',
 
@@ -488,10 +488,10 @@ class Advance_Pricing_Table extends Base{
 		$repeater_b->add_control(
 			'show_discount',
 			[
-				'label' => __( 'Show Discount?', 'ultraaddons' ),
+				'label' => __( 'Show Discount?', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Show', 'ultraaddons' ),
-				'label_off' => __( 'Hide', 'ultraaddons' ),
+				'label_on' => __( 'Show', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'Hide', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'no',
 				'condition' =>[
@@ -501,9 +501,9 @@ class Advance_Pricing_Table extends Base{
 		);
 		$repeater_b->add_control(
 			'list_discount_price', [
-				'label' => esc_html__( 'Discount Price', 'ultraaddons' ),
+				'label' => esc_html__( 'Discount Price', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( '40.99' , 'ultraaddons' ),
+				'default' => esc_html__( '40.99' , 'ultraaddons-elementor-lite' ),
 				'label_block' => false,
 				'condition' =>[
 					'is_discount'=>'yes'
@@ -513,15 +513,15 @@ class Advance_Pricing_Table extends Base{
 		
 		$repeater_b->add_control(
 			'list_period', [
-				'label' => esc_html__( 'Period', 'ultraaddons' ),
+				'label' => esc_html__( 'Period', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'Mo' , 'ultraaddons' ),
+				'default' => esc_html__( 'Mo' , 'ultraaddons-elementor-lite' ),
 				'label_block' => false,
 			]
 		);
 		$repeater_b->add_control(
 			'list_feature', [
-				'label' => esc_html__( 'Features', 'ultraaddons' ),
+				'label' => esc_html__( 'Features', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'label_block' => true,
 				'default' => '<ul>
@@ -535,9 +535,9 @@ class Advance_Pricing_Table extends Base{
 		$repeater_b->add_control(
 			'website_link',
 			[
-				'label' => esc_html__( 'Link', 'ultraaddons' ),
+				'label' => esc_html__( 'Link', 'ultraaddons-elementor-lite' ),
 				'type' => \Elementor\Controls_Manager::URL,
-				'placeholder' => esc_html__( 'https://your-link.com', 'ultraaddons' ),
+				'placeholder' => esc_html__( 'https://your-link.com', 'ultraaddons-elementor-lite' ),
 				'default' => [
 					'url' => '',
 					'is_external' => false,
@@ -549,19 +549,19 @@ class Advance_Pricing_Table extends Base{
 		);
 		$repeater_b->add_control(
 			'list_button', [
-				'label' => esc_html__( 'Button Text', 'ultraaddons' ),
+				'label' => esc_html__( 'Button Text', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'Buy Now' , 'ultraaddons' ),
+				'default' => esc_html__( 'Buy Now' , 'ultraaddons-elementor-lite' ),
 				'label_block' => false,
 			]
 		);
 		$repeater_b->add_control(
 			'show_badge',
 			[
-				'label' => __( 'Show Badge', 'ultraaddons' ),
+				'label' => __( 'Show Badge', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Show', 'ultraaddons' ),
-				'label_off' => __( 'Hide', 'ultraaddons' ),
+				'label_on' => __( 'Show', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'Hide', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'no',
 				'separator' => 'after'
@@ -571,14 +571,14 @@ class Advance_Pricing_Table extends Base{
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'box_background',
-				'label' => __( 'Box Background', 'ultraaddons' ),
+				'label' => __( 'Box Background', 'ultraaddons-elementor-lite' ),
 				'types' => [ 'classic', 'gradient'],
 				'selector' => '{{WRAPPER}} {{CURRENT_ITEM}}.plan',
 			]
 		);
 		$repeater_b->add_control(
 			'feature_text_color', [
-				'label' => __( 'Feature Text Color', 'ultraaddons' ),
+				'label' => __( 'Feature Text Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'separator' => 'before',
 				'selectors' => [
@@ -588,7 +588,7 @@ class Advance_Pricing_Table extends Base{
         );
 		$repeater_b->add_control(
 			'box_hover_color', [
-				'label' => __( 'Box Hover', 'ultraaddons' ),
+				'label' => __( 'Box Hover', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'separator' => 'before',
 				'selectors' => [
@@ -599,14 +599,14 @@ class Advance_Pricing_Table extends Base{
 		$repeater_b->add_group_control(
             Group_Control_Typography::get_type(),
             [
-				'label'     => esc_html__( 'Title Typography', 'ultraaddons' ),
+				'label'     => esc_html__( 'Title Typography', 'ultraaddons-elementor-lite' ),
                 'name' => 'title_typography',
                 'selector' => '{{WRAPPER}} {{CURRENT_ITEM}} .plan-title',
             ]
         );
 		$repeater_b->add_control(
 			'title_color', [
-				'label' => __( 'Title Color', 'ultraaddons' ),
+				'label' => __( 'Title Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'separator' => 'before',
 				'selectors' => [
@@ -617,7 +617,7 @@ class Advance_Pricing_Table extends Base{
         );
 		$repeater_b->add_control(
 			'amount_color', [
-				'label' => __( 'Price Color', 'ultraaddons' ),
+				'label' => __( 'Price Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} {{CURRENT_ITEM}} .amount' => 'color: {{VALUE}};',
@@ -627,7 +627,7 @@ class Advance_Pricing_Table extends Base{
         );
 		$repeater_b->add_control(
 			'month_color', [
-				'label' => __( 'Month Color', 'ultraaddons' ),
+				'label' => __( 'Month Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} {{CURRENT_ITEM}} .month' => 'color: {{VALUE}};',
@@ -638,7 +638,7 @@ class Advance_Pricing_Table extends Base{
         );
 		$repeater_b->add_control(
 			'separator_color', [
-				'label' => __( 'Separator Color', 'ultraaddons' ),
+				'label' => __( 'Separator Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'separator' => 'before',
 				'selectors' => [
@@ -649,7 +649,7 @@ class Advance_Pricing_Table extends Base{
         );
 		$repeater_b->add_control(
 			'icon_color', [
-				'label' => __( 'Icon Color', 'ultraaddons' ),
+				'label' => __( 'Icon Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'separator' => 'before',
 				'selectors' => [
@@ -662,21 +662,21 @@ class Advance_Pricing_Table extends Base{
         $this->add_control(
 			'list_b',
 			[
-				'label' => esc_html__( 'Price List B', 'ultraaddons' ),
+				'label' => esc_html__( 'Price List B', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
-						'list_title' => esc_html__( 'Basic', 'ultraaddons' ),
-						'list_price' => esc_html__( '50', 'ultraaddons' ),
+						'list_title' => esc_html__( 'Basic', 'ultraaddons-elementor-lite' ),
+						'list_price' => esc_html__( '50', 'ultraaddons-elementor-lite' ),
 					],
 					[
-						'list_title' => esc_html__( 'Advance', 'ultraaddons' ),
-						'list_price' => esc_html__( '70', 'ultraaddons' ),
+						'list_title' => esc_html__( 'Advance', 'ultraaddons-elementor-lite' ),
+						'list_price' => esc_html__( '70', 'ultraaddons-elementor-lite' ),
 					],
                     [
-						'list_title' => esc_html__( 'Premier', 'ultraaddons' ),
-						'list_price' => esc_html__( '100', 'ultraaddons' ),
+						'list_title' => esc_html__( 'Premier', 'ultraaddons-elementor-lite' ),
+						'list_price' => esc_html__( '100', 'ultraaddons-elementor-lite' ),
 					],
 				],
 				'title_field' => '{{{ list_title }}}',
@@ -689,26 +689,26 @@ class Advance_Pricing_Table extends Base{
         $this->start_controls_section(
             'general_style',
             [
-                'label'     => esc_html__( 'General Style', 'ultraaddons' ),
+                'label'     => esc_html__( 'General Style', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
 		$this->add_responsive_control(
 			'_alignment',
 			[
-				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
+				'label' => esc_html__( 'Alignment', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'title' => esc_html__( 'Left', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'ultraaddons' ),
+						'title' => esc_html__( 'Center', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'title' => esc_html__( 'Right', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-right',
 					],
 				],
@@ -721,7 +721,7 @@ class Advance_Pricing_Table extends Base{
 		$this->add_control(
 			'column_space',
 			[
-				'label' => esc_html__( 'Column Spacing', 'ultraaddons' ),
+				'label' => esc_html__( 'Column Spacing', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'separator' => 'after',
@@ -744,14 +744,14 @@ class Advance_Pricing_Table extends Base{
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-				'label'     => esc_html__( 'Description Typography', 'ultraaddons' ),
+				'label'     => esc_html__( 'Description Typography', 'ultraaddons-elementor-lite' ),
                 'name' => 'desc_typography',
                 'selector' => '{{WRAPPER}} .desc',
             ]
         );
 		$this->add_control(
 			'desc_color', [
-				'label' => __( 'Description Color', 'ultraaddons' ),
+				'label' => __( 'Description Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .desc' => 'color: {{VALUE}};',
@@ -762,7 +762,7 @@ class Advance_Pricing_Table extends Base{
 		$this->add_responsive_control(
 			'desc_margin',
 			[
-				'label'       => esc_html__( 'Description Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Description Margin', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px' ],
 				'placeholder' => [
@@ -782,7 +782,7 @@ class Advance_Pricing_Table extends Base{
 		$this->add_responsive_control(
 			'title_margin',
 			[
-				'label'       => esc_html__( 'Title Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Title Margin', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px' ],
 				'placeholder' => [
@@ -800,7 +800,7 @@ class Advance_Pricing_Table extends Base{
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-				'label'     => esc_html__( 'Price Typography', 'ultraaddons' ),
+				'label'     => esc_html__( 'Price Typography', 'ultraaddons-elementor-lite' ),
                 'name' => 'amount_typography',
                 'selector' => '{{WRAPPER}} .amount',
             ]
@@ -808,7 +808,7 @@ class Advance_Pricing_Table extends Base{
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-				'label'     => esc_html__( 'Discount Price Typography', 'ultraaddons' ),
+				'label'     => esc_html__( 'Discount Price Typography', 'ultraaddons-elementor-lite' ),
                 'name' => 'discount_typography',
                 'selector' => '{{WRAPPER}} .discount-amount',
             ]
@@ -817,7 +817,7 @@ class Advance_Pricing_Table extends Base{
 		$this->add_responsive_control(
 			'price_margin',
 			[
-				'label'       => esc_html__( 'Price Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Price Margin', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px' ],
 				'placeholder' => [
@@ -835,14 +835,14 @@ class Advance_Pricing_Table extends Base{
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-				'label'     => esc_html__( 'Currency Typography', 'ultraaddons' ),
+				'label'     => esc_html__( 'Currency Typography', 'ultraaddons-elementor-lite' ),
                 'name' => 'currency_typography',
                 'selector' => '{{WRAPPER}} .dollar',
             ]
         );
 		$this->add_control(
 			'currency_color', [
-				'label' => __( 'Currency Color', 'ultraaddons' ),
+				'label' => __( 'Currency Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .dollar' => 'color: {{VALUE}};',
@@ -854,7 +854,7 @@ class Advance_Pricing_Table extends Base{
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-				'label'     => esc_html__( 'Month Typography', 'ultraaddons' ),
+				'label'     => esc_html__( 'Month Typography', 'ultraaddons-elementor-lite' ),
                 'name' => 'month_typography',
                 'selector' => '{{WRAPPER}} .month, .slash',
             ]
@@ -863,7 +863,7 @@ class Advance_Pricing_Table extends Base{
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-				'label'     => esc_html__( 'Featured Typography', 'ultraaddons' ),
+				'label'     => esc_html__( 'Featured Typography', 'ultraaddons-elementor-lite' ),
                 'name' => 'featured_typography',
                 'selector' => '{{WRAPPER}} .features-list',
             ]
@@ -874,14 +874,14 @@ class Advance_Pricing_Table extends Base{
         $this->start_controls_section(
             'icon_style',
             [
-                'label'     => esc_html__( 'Icon', 'ultraaddons' ),
+                'label'     => esc_html__( 'Icon', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
 		$this->add_control(
 			'icon_size',
 			[
-				'label' => esc_html__( 'Size', 'ultraaddons' ),
+				'label' => esc_html__( 'Size', 'ultraaddons-elementor-lite' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%' ],
 				'range' => [
@@ -916,7 +916,7 @@ class Advance_Pricing_Table extends Base{
        $this->start_controls_section(
             '_ua_card_box_style',
             [
-                'label'     => esc_html__( 'Box', 'ultraaddons' ),
+                'label'     => esc_html__( 'Box', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -924,7 +924,7 @@ class Advance_Pricing_Table extends Base{
 		$this->add_responsive_control(
 			'_ua_box_radius',
 			[
-				'label'       => esc_html__( 'Box Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Box Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -942,7 +942,7 @@ class Advance_Pricing_Table extends Base{
 		$this->add_responsive_control(
 			'_ua_box_padding',
 			[
-				'label'       => esc_html__( 'Box Padding', 'ultraaddons' ),
+				'label'       => esc_html__( 'Box Padding', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -961,7 +961,7 @@ class Advance_Pricing_Table extends Base{
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'card_box_shadow',
-				'label' => __( 'Box Shadow', 'ultraaddons' ),
+				'label' => __( 'Box Shadow', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .plan',
 			]
 		);
@@ -969,7 +969,7 @@ class Advance_Pricing_Table extends Base{
 			Group_Control_Border::get_type(),
 			[
 				'name' => '_ua_box_border',
-				'label' => __( 'Border', 'plugin-domain' ),
+				'label' => __( 'Border', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .plan',
 			]
 		);
@@ -981,13 +981,13 @@ class Advance_Pricing_Table extends Base{
         $this->start_controls_section(
             'toggle_style',
             [
-                'label'     => esc_html__( 'Toggle', 'ultraaddons' ),
+                'label'     => esc_html__( 'Toggle', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
 		$this->add_control(
 			'toggle_color', [
-				'label' => __( 'Toggle Background', 'ultraaddons' ),
+				'label' => __( 'Toggle Background', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .toggle' => 'background: {{VALUE}};',
@@ -997,7 +997,7 @@ class Advance_Pricing_Table extends Base{
         );
 		$this->add_control(
 			'toggle_text_color', [
-				'label' => __( 'Toggle Active Text Color', 'ultraaddons' ),
+				'label' => __( 'Toggle Active Text Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .toggler.toggler--is-active' => 'color: {{VALUE}};',
@@ -1007,7 +1007,7 @@ class Advance_Pricing_Table extends Base{
         );
 		$this->add_control(
 			'toggle_deactive_text_color', [
-				'label' => __( 'Toggle De-active Text Color', 'ultraaddons' ),
+				'label' => __( 'Toggle De-active Text Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .toggler' => 'color: {{VALUE}};',
@@ -1024,7 +1024,7 @@ class Advance_Pricing_Table extends Base{
        $this->start_controls_section(
             '_ua_card_button_style',
             [
-                'label'     => esc_html__( 'Button', 'ultraaddons' ),
+                'label'     => esc_html__( 'Button', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -1037,7 +1037,7 @@ class Advance_Pricing_Table extends Base{
 		$this->start_controls_tab(
 			'style_normal_tab',
 			[
-				'label' => __( 'Normal', 'ultraaddons' ),
+				'label' => __( 'Normal', 'ultraaddons-elementor-lite' ),
 			]
 		);
 		$this->add_group_control(
@@ -1053,14 +1053,14 @@ class Advance_Pricing_Table extends Base{
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'btn_background',
-				'label' => __( 'Button Background', 'ultraaddons' ),
+				'label' => __( 'Button Background', 'ultraaddons-elementor-lite' ),
 				'types' => [ 'classic', 'gradient'],
 				'selector' => '{{WRAPPER}} .ua-sign-up',
 			]
 		);
 		$this->add_control(
 			'_ua_btn_text_color', [
-				'label' => __( 'Button Text Color', 'ultraaddons' ),
+				'label' => __( 'Button Text Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-sign-up' => 'color: {{VALUE}};',
@@ -1071,7 +1071,7 @@ class Advance_Pricing_Table extends Base{
 		$this->add_responsive_control(
 			'_ua_card_btn_radius',
 			[
-				'label'       => esc_html__( 'Button Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Button Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -1088,7 +1088,7 @@ class Advance_Pricing_Table extends Base{
 		$this->add_responsive_control(
 			'_ua_card_btn_padding',
 			[
-				'label'       => esc_html__( 'Button Padding', 'ultraaddons' ),
+				'label'       => esc_html__( 'Button Padding', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -1105,7 +1105,7 @@ class Advance_Pricing_Table extends Base{
 		$this->add_responsive_control(
 			'btn_margin',
 			[
-				'label'       => esc_html__( 'Button Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Button Margin', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -1123,7 +1123,7 @@ class Advance_Pricing_Table extends Base{
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'btb_border',
-				'label' => __( 'Border', 'ultraaddons' ),
+				'label' => __( 'Border', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-sign-up',
 			]
 		);
@@ -1134,12 +1134,12 @@ class Advance_Pricing_Table extends Base{
 		$this->start_controls_tab(
 			'style_hover_tab',
 			[
-				'label' => __( 'Hover', 'ultraaddons' ),
+				'label' => __( 'Hover', 'ultraaddons-elementor-lite' ),
 			]
 		);
 		$this->add_control(
 			'_ua_btn_text_hover_color', [
-				'label' => __( 'Button Text Hover Color', 'ultraaddons' ),
+				'label' => __( 'Button Text Hover Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-sign-up:hover' => 'color: {{VALUE}};',
@@ -1149,7 +1149,7 @@ class Advance_Pricing_Table extends Base{
         );
 		$this->add_control(
 			'_ua_btn_bg_hover_color', [
-				'label' => __( 'Button Background', 'ultraaddons' ),
+				'label' => __( 'Button Background', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-sign-up:hover' => 'background: {{VALUE}};',
@@ -1168,14 +1168,14 @@ class Advance_Pricing_Table extends Base{
        $this->start_controls_section(
             '_badge_style',
             [
-                'label'     => esc_html__( 'Badge', 'ultraaddons' ),
+                'label'     => esc_html__( 'Badge', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-				'label'     => esc_html__( 'Badge Typography', 'ultraaddons' ),
+				'label'     => esc_html__( 'Badge Typography', 'ultraaddons-elementor-lite' ),
                 'name' => 'badge_typography',
                 'selector' => '{{WRAPPER}} .featured-badge',
             ]
@@ -1184,16 +1184,16 @@ class Advance_Pricing_Table extends Base{
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'badge_background',
-				'label' => __( 'Badge Background', 'ultraaddons' ),
+				'label' => __( 'Badge Background', 'ultraaddons-elementor-lite' ),
 				'types' => [ 'classic', 'gradient'],
 				'selector' => '{{WRAPPER}} .featured-badge',
-				'exclude' => [ 'image' ],
+				// 'exclude' => [ 'image' ],
 			]
 		);
 		$this->add_responsive_control(
 			'badge_radius',
 			[
-				'label'       => esc_html__( 'Badge Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Badge Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -1211,7 +1211,7 @@ class Advance_Pricing_Table extends Base{
 		$this->add_responsive_control(
 			'badge_padding',
 			[
-				'label'       => esc_html__( 'Badge Padding', 'ultraaddons' ),
+				'label'       => esc_html__( 'Badge Padding', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -1230,7 +1230,7 @@ class Advance_Pricing_Table extends Base{
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'badge_shadow',
-				'label' => __( 'Badge Shadow', 'ultraaddons' ),
+				'label' => __( 'Badge Shadow', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .featured-badge',
 			]
 		);
@@ -1244,14 +1244,14 @@ class Advance_Pricing_Table extends Base{
        $this->start_controls_section(
             '_discount_style',
             [
-                'label'     => esc_html__( 'Discount', 'ultraaddons' ),
+                'label'     => esc_html__( 'Discount', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-				'label'     => esc_html__( 'Discount Typography', 'ultraaddons' ),
+				'label'     => esc_html__( 'Discount Typography', 'ultraaddons-elementor-lite' ),
                 'name' => 'discount_percent_typography',
                 'selector' => '{{WRAPPER}} .discount-percent',
             ]
@@ -1260,16 +1260,16 @@ class Advance_Pricing_Table extends Base{
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'discount_background',
-				'label' => __( 'Badge Background', 'ultraaddons' ),
+				'label' => __( 'Badge Background', 'ultraaddons-elementor-lite' ),
 				'types' => [ 'classic', 'gradient'],
 				'selector' => '{{WRAPPER}} .discount-percent',
-				'exclude' => [ 'image' ],
+				// 'exclude' => [ 'image' ],
 			]
 		);
 		$this->add_responsive_control(
 			'discount_radius',
 			[
-				'label'       => esc_html__( 'Discount Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Discount Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -1287,7 +1287,7 @@ class Advance_Pricing_Table extends Base{
 		$this->add_responsive_control(
 			'discount_padding',
 			[
-				'label'       => esc_html__( 'Discount Padding', 'ultraaddons' ),
+				'label'       => esc_html__( 'Discount Padding', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ '%', 'px' ],
 				'placeholder' => [
@@ -1306,7 +1306,7 @@ class Advance_Pricing_Table extends Base{
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'discount_shadow',
-				'label' => __( 'Discount Shadow', 'ultraaddons' ),
+				'label' => __( 'Discount Shadow', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .discount-percent',
 			]
 		);
@@ -1337,17 +1337,17 @@ class Advance_Pricing_Table extends Base{
 	}
 	
 	?>
-<section class="pricing-columns pricing-section adv-pricing-table-<?php echo $id; ?>">
+<section class="pricing-columns pricing-section adv-pricing-table-<?php echo esc_attr( $id ); ?>">
 	<div class="toggle-wrap">
-		<label class="toggler toggler--is-active"><?php echo $settings['toggle_a'] ?></label>
+		<label class="toggler toggler--is-active"><?php echo esc_html( $settings['toggle_a'] ); ?></label>
 		<div class="toggle">
 			<input type="checkbox" class="check switcher">
 			<b class="b switch"></b>
 		</div>
-		<label class="filt-hourly toggler"><?php echo $settings['toggle_b'] ?></label>
+		<label class="filt-hourly toggler"><?php echo esc_html( $settings['toggle_b'] ); ?></label>
 	</div>
 	<p class="desc">
-		<?php echo $settings['price_desc']; ?>
+		<?php echo wp_kses_data( $settings['price_desc'] ); ?>
 	</p>
 	<!--Part A-->
 	<div class="wrapper-full monthly">
@@ -1357,67 +1357,70 @@ class Advance_Pricing_Table extends Base{
 					<?php 
 					if ( $settings['list'] ) {
 						$count=0;
-						foreach (  $settings['list'] as $item ) {
-							$url		= (!empty( $item['website_link']['url'] )) ? $item['website_link']['url']  : '';
-							$is_external 	= ( $item['website_link']['is_external']=='on') ? 'target="_blank"' : '';
-							$nofollow 	= ( $item['website_link']['nofollow']=='on') ? 'rel="nofollow"' :'';
+						foreach (  $settings['list'] as $ultraaddons_item ) {
+							$url		= (!empty( $ultraaddons_item['website_link']['url'] )) ? $ultraaddons_item['website_link']['url']  : '';
+							$is_external 	= ( $ultraaddons_item['website_link']['is_external']=='on') ? 'target="_blank"' : '';
+							$nofollow 	= ( $ultraaddons_item['website_link']['nofollow']=='on') ? 'rel="nofollow"' :'';
 							$count=$count+1;
 							//Discount Calculate
-							$list_price 	=  $item['list_price'];
-							$selling_price 	=  $item['list_discount_price'];
+							$list_price 	=  $ultraaddons_item['list_price'] ?? 0;
+							$selling_price 	=  $ultraaddons_item['list_discount_price'];
 							$discount 		= ((float)$list_price - (float)$selling_price);
-							if( $list_price != 0 ){
+							if( is_numeric( $list_price ) && is_numeric( $discount ) ){
 							$percent 		= ($discount/$list_price) * 100;
+							}
+							else{
+								$percent = 0;
 							}
 
 					?>
 					<div class="ua-col-3">
-						<div class="plan plan-<?php echo $count;?> <?php echo 'elementor-repeater-item-' . esc_attr( $item['_id'] ) . ''?>" >
-							<?php if($item['show_badge']=='yes'):?>
+						<div class="plan plan-<?php echo esc_attr( $count ); ?> elementor-repeater-item-<?php echo esc_attr( $ultraaddons_item['_id'] ); ?>" >
+							<?php if($ultraaddons_item['show_badge']=='yes'):?>
 							<div class="featured-badge">
-								<?php echo $item['badge_text'] ;?>
+								<?php echo esc_html( $ultraaddons_item['badge_text'] );?>
 							</div>
 							<?php endif;?>
 							<?php
-							if('yes'=== $item['show_discount']):
+							if('yes'=== $ultraaddons_item['show_discount']):
 							?>
 							<div class="discount-percent">
 								<?php
 								if( !empty($percent) ){
-									 echo round($percent);
+									 echo esc_html( round( $percent ));
 								}
 								?>%
 							</div>
 							<?php endif;?>
 							
 							<div class="pricing-icon-wrapper">
-								<?php \Elementor\Icons_Manager::render_icon( $item['icon'], [ 'aria-hidden' => 'true' ] ); ?>
+								<?php \Elementor\Icons_Manager::render_icon( $ultraaddons_item['icon'], [ 'aria-hidden' => 'true' ] ); ?>
 							</div>
-							<h2 class="plan-title"><?php echo $item['list_title'];?></h2>
+							<h2 class="plan-title"><?php echo esc_html( $ultraaddons_item['list_title'] ); ?></h2>
 							<div class="price">
 								<?php
-								if('yes'=== $item['is_discount']){
+								if('yes'=== $ultraaddons_item['is_discount']){
 								?>
-								<span class="dollar"><?php echo $currency_symbol;?></span>
-								<span class="amount"><s><?php echo $list_price; ?></s></span>
+								<span class="dollar"><?php echo esc_html($currency_symbol);?></span>
+								<span class="amount"><s><?php echo esc_html( $list_price ); ?></s></span>
 								<?php
 								if(!empty($selling_price)):
 								?>
-								<span class="dollar"><?php echo $currency_symbol;?></span>
-								<span class="discount-amount"><?php echo $selling_price; ?></span>
+								<span class="dollar"><?php echo esc_html($currency_symbol);?></span>
+								<span class="discount-amount"><?php echo esc_html($selling_price); ?></span>
 								<?php endif;?>
 								<?php }else{?>
-									<span class="dollar"><?php echo $currency_symbol;?></span>
-								<span class="amount"><?php echo $item['list_price'];?></span>
+									<span class="dollar"><?php echo esc_html($currency_symbol);?></span>
+								<span class="amount"><?php echo esc_html( $ultraaddons_item['list_price'] );?></span>
 								<?php }?>
-							   <?php if( !empty($item['list_period']) ):?>
+							   <?php if( !empty($ultraaddons_item['list_period']) ):?>
 								<span class="slash">/</span>
 								<?php endif;?>
-								<span class="month"><?php echo $item['list_period'];?></span>
+								<span class="month"><?php echo esc_html($ultraaddons_item['list_period']);?></span>
 							</div>
-							<div class="features-list"><?php echo $item['list_feature'];?></div>
+							<div class="features-list"><?php echo wp_kses_post($ultraaddons_item['list_feature']);?></div>
 							<a class="button ua-sign-up" href="<?php echo esc_url($url); ?>" <?php echo esc_attr($is_external);?> <?php echo esc_attr($nofollow);?>>
-								<?php echo $item['list_button'];?>
+								<?php echo esc_html($ultraaddons_item['list_button']);?>
 							</a>
 						</div>
 					</div>
@@ -1436,14 +1439,14 @@ class Advance_Pricing_Table extends Base{
 					<?php 
 					if ( $settings['list_b'] ) {
 						$count=0;
-						foreach (  $settings['list_b'] as $item ) {
-							$url		= (!empty( $item['website_link']['url'] )) ? $item['website_link']['url']  : '';
-							$is_external 	= ( $item['website_link']['is_external']=='on') ? 'target="_blank"' : '';
-							$nofollow 	= ( $item['website_link']['nofollow']=='on') ? 'rel="nofollow"' :'';
+						foreach (  $settings['list_b'] as $ultraaddons_item ) {
+							$url		= (!empty( $ultraaddons_item['website_link']['url'] )) ? $ultraaddons_item['website_link']['url']  : '';
+							$is_external 	= ( $ultraaddons_item['website_link']['is_external']=='on') ? 'target="_blank"' : '';
+							$nofollow 	= ( $ultraaddons_item['website_link']['nofollow']=='on') ? 'rel="nofollow"' :'';
 							$count=$count+1;
 							//Discount Calculate
-							$list_price 	=  $item['list_price'];
-							$selling_price 	=  $item['list_discount_price'];
+							$list_price 	=  $ultraaddons_item['list_price'];
+							$selling_price 	=  $ultraaddons_item['list_discount_price'];
 							$discount 		= ((float)$list_price - (float)$selling_price);
 
 							if( $list_price != 0 ){
@@ -1451,19 +1454,19 @@ class Advance_Pricing_Table extends Base{
 							}
 					?>
 					<div class="ua-col-3">
-						<div class="plan plan-<?php echo $count;?> <?php echo 'elementor-repeater-item-' . esc_attr( $item['_id'] ) . ''?>">
-							<?php if($item['show_badge']=='yes'):?>
+						<div class="plan plan-<?php echo esc_attr($count);?> elementor-repeater-item-<?php echo esc_attr( $ultraaddons_item['_id'] ); ?>">
+							<?php if($ultraaddons_item['show_badge']=='yes'):?>
 							<div class="featured-badge">
-								<?php echo $item['badge_text'] ;?>
+								<?php echo esc_html($ultraaddons_item['badge_text']) ;?>
 							</div>
 							<?php endif;?>
 							<?php
-							if('yes'=== $item['show_discount']):
+							if('yes'=== $ultraaddons_item['show_discount']):
 							?>
 							<div class="discount-percent">
 								<?php 
 								if( !empty($percent) ){
-									echo round($percent);
+									echo esc_html( round($percent));
 								}
 								?>%
 								
@@ -1471,33 +1474,33 @@ class Advance_Pricing_Table extends Base{
 							<?php endif;?>
 
 							<div class="pricing-icon-wrapper">
-								<?php \Elementor\Icons_Manager::render_icon( $item['icon'], [ 'aria-hidden' => 'true' ] ); ?>
+								<?php \Elementor\Icons_Manager::render_icon( $ultraaddons_item['icon'], [ 'aria-hidden' => 'true' ] ); ?>
 							</div>
-							<h2 class="plan-title"><?php echo $item['list_title'];?></h2>
+							<h2 class="plan-title"><?php echo esc_html($ultraaddons_item['list_title']);?></h2>
 							<div class="price">
 								<?php
-								if('yes'=== $item['is_discount']){
+								if('yes'=== $ultraaddons_item['is_discount']){
 								?>
-								<span class="dollar"><?php echo $currency_symbol;?></span>
-								<span class="amount"><s><?php echo $list_price; ?></s></span>
+								<span class="dollar"><?php echo esc_html($currency_symbol);?></span>
+								<span class="amount"><s><?php echo esc_html($list_price); ?></s></span>
 								<?php
 								if(!empty($selling_price)):
 								?>
-								<span class="dollar"><?php echo $currency_symbol;?></span>
-								<span class="discount-amount"><?php echo $selling_price; ?></span>
+								<span class="dollar"><?php echo esc_html($currency_symbol);?></span>
+								<span class="discount-amount"><?php echo esc_html($selling_price); ?></span>
 								<?php endif;?>
 								<?php }else{?>
-									<span class="dollar"><?php echo $currency_symbol;?></span>
-								<span class="amount"><?php echo $item['list_price'];?></span>
+									<span class="dollar"><?php echo esc_html($currency_symbol);?></span>
+								<span class="amount"><?php echo esc_html($ultraaddons_item['list_price']);?></span>
 								<?php }?>
-							   <?php if( !empty($item['list_period']) ):?>
+							   <?php if( !empty($ultraaddons_item['list_period']) ):?>
 								<span class="slash">/</span>
 								<?php endif;?>
-								<span class="month"><?php echo $item['list_period'];?></span>
+								<span class="month"><?php echo esc_html($ultraaddons_item['list_period']);?></span>
 							</div>
-							<div class="features-list"><?php echo $item['list_feature'];?></div>
+							<div class="features-list"><?php echo wp_kses_post($ultraaddons_item['list_feature']);?></div>
 							<a class="button ua-sign-up" href="<?php echo esc_url($url); ?>" <?php echo esc_attr($is_external);?> <?php echo esc_attr($nofollow);?>>
-								<?php echo $item['list_button'];?>
+								<?php echo esc_html($ultraaddons_item['list_button']);?>
 							</a>
 						</div>
 					</div>

@@ -33,18 +33,18 @@ class Header_Footer_Render {
     
     public static function init( $heder_footer_data ){
         
-        $heder_footer_data = array_filter($heder_footer_data,function($item){
-            return ! empty( $item );
+        $heder_footer_data = array_filter($heder_footer_data,function($ultraaddons_item){
+            return ! empty( $ultraaddons_item );
         });
         if( ! is_array( $heder_footer_data ) ) return;
         
         self::$heder_footer_data = $heder_footer_data;
         $locs =[]; // $wasys = 
-        foreach(self::$heder_footer_data as $key=>$eack ){
+        foreach(self::$heder_footer_data as $ultraaddons_key=>$eack ){
             $position = $eack['position'] ?? false;
             // $way = isset($eack['way']) ? 'css' : 'direct';
-            // $wasys[$key]=$way;
-            $locs[$position]= $key;
+            // $wasys[$ultraaddons_key]=$way;
+            $locs[$position]= $ultraaddons_key;
         }
 
         if(empty($locs)) return;
@@ -105,27 +105,27 @@ class Header_Footer_Render {
 
     public static function get_canvas_header(){
         self::conditional_set_template_data();
-        echo ultraaddons_elementor_display_content( self::get_header_id() );
+        echo wp_kses_post( ultraaddons_elementor_display_content( self::get_header_id() ) );
     }
     public static function add_header(){
         self::conditional_set_template_data();
-        echo ultraaddons_elementor_display_content( self::get_before_header_id() );
+        echo wp_kses_post( ultraaddons_elementor_display_content( self::get_before_header_id() ) );
     }
-    public static function header_css_body_class( $body_class ){
-        $body_class[] = 'ua-header-type-css';
-        return $body_class;
+    public static function header_css_body_class( $ultraaddons_body_class ){
+        $ultraaddons_body_class[] = 'ua-header-type-css';
+        return $ultraaddons_body_class;
     }
 
     public static function add_footer(){
         self::conditional_set_template_data();
-        echo ultraaddons_elementor_display_content( self::get_after_footer_id() );
+        echo wp_kses_post( ultraaddons_elementor_display_content( self::get_after_footer_id() ) );
     }
-    public static function footer_css_body_class( $body_class ){
-        $body_class[] = 'ua-footer-type-css';
-        return $body_class;
+    public static function footer_css_body_class( $ultraaddons_body_class ){
+        $ultraaddons_body_class[] = 'ua-footer-type-css';
+        return $ultraaddons_body_class;
     }
 
-    public static function get_header($name, $args){
+    public static function get_header($ultraaddons_name, $ultraaddons_args){
 
         self::conditional_set_template_data();
 
@@ -134,7 +134,7 @@ class Header_Footer_Render {
         }
         
     }
-    public static function get_footer($name, $args){
+    public static function get_footer($ultraaddons_name, $ultraaddons_args){
 
         self::conditional_set_template_data();
 
@@ -179,11 +179,11 @@ class Header_Footer_Render {
         self::get_current_page_type();
         
         $pagewise_tem = [];
-        foreach( self::$heder_footer_data as $key=>$datas ){
+        foreach( self::$heder_footer_data as $ultraaddons_key=>$datas ){
             $position = $datas['position'];
             $rules = $datas['rule'] ?? [];
             foreach( $rules as $rule ){
-                $pagewise_tem[$position][$rule] = $key;
+                $pagewise_tem[$position][$rule] = $ultraaddons_key;
             }
         }
         self::$pagewise_template = $pagewise_tem;
@@ -258,8 +258,8 @@ class Header_Footer_Render {
         include $file;
         
         
-        // $templates   = [];
-        $templates[] = $template_name . '.php';
+        // $ultraaddons_templates   = [];
+        $ultraaddons_templates[] = $template_name . '.php';
         
         $rem_action = 'wp_head';
         
@@ -271,7 +271,7 @@ class Header_Footer_Render {
         remove_all_actions( $rem_action );
         ob_start();
         
-        locate_template( $templates, true );
+        locate_template( $ultraaddons_templates, true );
         ob_get_clean();
     }
 
@@ -282,7 +282,7 @@ class Header_Footer_Render {
         // wp_enqueue_style( $handle );
 
         if(!is_array( self::$heder_footer_data )) return;
-        foreach(self::$heder_footer_data as $template_id => $templates){
+        foreach(self::$heder_footer_data as $template_id => $ultraaddons_templates){
             
             if ( class_exists( '\Elementor\Core\Files\CSS\Post' ) ) {
                 $css_file = new \Elementor\Core\Files\CSS\Post( $template_id );

@@ -26,7 +26,7 @@ class Testimonial_Box extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua', 'testimonial', 'review', 'feedback', 'user', 'rating' ];
+        return [ 'ultraaddons-elementor-lite', 'ua', 'testimonial', 'review', 'feedback', 'user', 'rating' ];
     }
     
     /**
@@ -108,7 +108,7 @@ class Testimonial_Box extends Base{
         $this->start_controls_section(
             'general_content',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -117,9 +117,9 @@ class Testimonial_Box extends Base{
         $this->add_control(
                 'title',
                 [
-                    'label' => __( 'Title', 'ultraaddons' ),
+                    'label' => __( 'Title', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::TEXT,
-                    'default'       => __( 'John Doe', 'ultraaddons' ),
+                    'default'       => __( 'John Doe', 'ultraaddons-elementor-lite' ),
                     'label_block'   => TRUE,
                     'dynamic'       => ['active' => true],
                 ]
@@ -128,9 +128,9 @@ class Testimonial_Box extends Base{
         $this->add_control(
                 'sub-title',
                 [
-                    'label' => __( 'Position/Designation', 'ultraaddons' ),
+                    'label' => __( 'Position/Designation', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::TEXT,
-                    'default'       => __( 'Business Consultant', 'ultraaddons' ),
+                    'default'       => __( 'Business Consultant', 'ultraaddons-elementor-lite' ),
                     'label_block'   => TRUE,
                     'dynamic'       => ['active' => true],
                 ]
@@ -138,9 +138,9 @@ class Testimonial_Box extends Base{
           $this->add_control(
                 'quote_title',
                 [
-                    'label' => __( 'Quote Title', 'ultraaddons' ),
+                    'label' => __( 'Quote Title', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::TEXT,
-                    'default'       => __( 'Awesome Products & Services', 'ultraaddons' ),
+                    'default'       => __( 'Awesome Products & Services', 'ultraaddons-elementor-lite' ),
                     'label_block'   => TRUE,
                 ]
         );
@@ -148,9 +148,9 @@ class Testimonial_Box extends Base{
         $this->add_control(
                 'quote',
                 [
-                    'label' => __( 'Quote', 'ultraaddons' ),
+                    'label' => __( 'Quote', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::TEXTAREA,
-                    'default'       => __( 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incdidunt ut labore et dolore magna do aliqua quis ipsum suspendisse ces gravida. Risus commodo viverra maecenas.', 'ultraaddons' ),
+                    'default'       => __( 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incdidunt ut labore et dolore magna do aliqua quis ipsum suspendisse ces gravida. Risus commodo viverra maecenas.', 'ultraaddons-elementor-lite' ),
                     'label_block'   => TRUE,
                     'dynamic'       => ['active' => true],
                     'rows' => 5,
@@ -161,7 +161,7 @@ class Testimonial_Box extends Base{
         $this->add_control(
                 'image',
                 [
-                        'label' => __( 'Photo', 'ultraaddons' ),
+                        'label' => __( 'Photo', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::MEDIA,
                         'default' => [
                                 'url' => $placeholder_image,//Utils::get_placeholder_image_src(),
@@ -174,7 +174,7 @@ class Testimonial_Box extends Base{
         $this->add_control(
                 'quote_icon',
                 [
-                        'label' => esc_html__( 'Quote Icon', 'ultraaddons' ),
+                        'label' => esc_html__( 'Quote Icon', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::ICONS,
                         'default' => [
                                 'value' => 'fas fa-quote-left',
@@ -185,10 +185,10 @@ class Testimonial_Box extends Base{
         $this->add_control(
                 'customer_review',
                 [
-                        'label' => __( 'Add Review?', 'ultraaddons' ),
+                        'label' => __( 'Add Review?', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SWITCHER,
-                        'label_on' => __( 'Yes', 'ultraaddons' ),
-                        'label_off' => __( 'No', 'ultraaddons' ),
+                        'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+                        'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
                         'default' => 'yes',
                         'return_value' => 'yes',
                 ]
@@ -196,7 +196,7 @@ class Testimonial_Box extends Base{
         $this->add_control(
                 'rating_number',
                 [
-                        'label' => __( 'Rating', 'ultraaddons' ),
+                        'label' => __( 'Rating', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::NUMBER,
                         'min' => 1,
                         'step' => 1,
@@ -221,7 +221,7 @@ class Testimonial_Box extends Base{
         $this->start_controls_section(
             'style_general',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -229,19 +229,19 @@ class Testimonial_Box extends Base{
         $this->add_control(
                 'text_align',
                 [
-                        'label' => __( 'Alignment', 'ultraaddons' ),
+                        'label' => __( 'Alignment', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::CHOOSE,
                         'options' => [
                                 'left' => [
-                                        'title' => __( 'Left', 'ultraaddons' ),
+                                        'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
                                         'icon' => 'eicon-text-align-left',
                                 ],
                                 'center' => [
-                                        'title' => __( 'Center', 'ultraaddons' ),
+                                        'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
                                         'icon' => 'eicon-text-align-center',
                                 ],
                                 'right' => [
-                                        'title' => __( 'Right', 'ultraaddons' ),
+                                        'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
                                         'icon' => 'eicon-text-align-right',
                                 ],
                         ],
@@ -254,15 +254,15 @@ class Testimonial_Box extends Base{
         $this->add_control(
                 'content_position',
                 [
-                        'label' => __( 'Content Position', 'ultraaddons' ),
+                        'label' => __( 'Content Position', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::CHOOSE,
                         'options' => [
                                 'bottom' => [
-                                        'title' => __( 'Bottom', 'ultraaddons' ),
+                                        'title' => __( 'Bottom', 'ultraaddons-elementor-lite' ),
                                         'icon' => 'eicon-arrow-down',
                                 ],
                                 'top' => [
-                                        'title' => __( 'Top', 'ultraaddons' ),
+                                        'title' => __( 'Top', 'ultraaddons-elementor-lite' ),
                                         'icon' => 'eicon-arrow-up',
                                 ],
                         ],
@@ -274,7 +274,7 @@ class Testimonial_Box extends Base{
         $this->start_controls_tabs('testimonial-style-tabs');
         $this->start_controls_tab('testimonial-stl-tab-normal', 
                 [
-                    'label' => __( 'Normal', 'ultraaddons' ),
+                    'label' => __( 'Normal', 'ultraaddons-elementor-lite' ),
                 ]
         );
         
@@ -283,7 +283,7 @@ class Testimonial_Box extends Base{
         $this->add_control(
                 'quote_icon_color',
                 [
-                        'label' => __( 'Quote Icon Color', 'ultraaddons' ),
+                        'label' => __( 'Quote Icon Color', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::COLOR,
                         'default' => '#C4C4C4',
                         'selectors' => [
@@ -300,14 +300,14 @@ class Testimonial_Box extends Base{
         
         $this->start_controls_tab('testimonial-stl-tab-hover', 
                 [
-                    'label' => __( 'Hover', 'ultraaddons' ),
+                    'label' => __( 'Hover', 'ultraaddons-elementor-lite' ),
                 ]
         );
         
         $this->add_control(
                 'quote_icon_color_hover',
                 [
-                        'label' => __( 'Quote Icon Color', 'ultraaddons' ),
+                        'label' => __( 'Quote Icon Color', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::COLOR,
                         'selectors' => [
                                 '{{WRAPPER}}:hover .ua-testimonial-box .client-quote-box .quote-icon i' => 'color: {{VALUE}}',
@@ -323,7 +323,7 @@ class Testimonial_Box extends Base{
         $this->add_control(
                 'quote-icon-size',
                 [
-                        'label' => __( 'Quote Icon Size', 'ultraaddons' ),
+                        'label' => __( 'Quote Icon Size', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SLIDER,
                         'size_units' => [ 'px', '%' ],
                         'range' => [
@@ -362,7 +362,7 @@ class Testimonial_Box extends Base{
         $this->start_controls_section(
             'title-typography',
             [
-                'label'     => esc_html__( 'Title', 'ultraaddons' ),
+                'label'     => esc_html__( 'Title', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -380,7 +380,7 @@ class Testimonial_Box extends Base{
         $this->add_control(
                 'title_color',
                 [
-                        'label' => __( 'Color', 'ultraaddons' ),
+                        'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::COLOR,
                         'default' => '#5C6B79',
                         'selectors' => [
@@ -391,7 +391,7 @@ class Testimonial_Box extends Base{
          $this->add_responsive_control(
                 'title_margin',
                 [
-                        'label'       => esc_html__( 'Title Margin', 'ultraaddons' ),
+                        'label'       => esc_html__( 'Title Margin', 'ultraaddons-elementor-lite' ),
                         'type'        => Controls_Manager::DIMENSIONS,
                         'size_units'  => [ '%', 'px' ],
                         'placeholder' => [
@@ -420,7 +420,7 @@ class Testimonial_Box extends Base{
         $this->start_controls_section(
             'subtitle-typography',
             [
-                'label'     => esc_html__( 'Position', 'ultraaddons' ),
+                'label'     => esc_html__( 'Position', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -438,7 +438,7 @@ class Testimonial_Box extends Base{
         $this->add_control(
                 'subtitle_color',
                 [
-                        'label' => __( 'Color', 'ultraaddons' ),
+                        'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::COLOR,
                         'default' => '#5C6B79',
                         'selectors' => [
@@ -449,7 +449,7 @@ class Testimonial_Box extends Base{
         $this->add_responsive_control(
                 'subtitle_margin',
                 [
-                        'label'       => esc_html__( 'Subtitle Margin', 'ultraaddons' ),
+                        'label'       => esc_html__( 'Subtitle Margin', 'ultraaddons-elementor-lite' ),
                         'type'        => Controls_Manager::DIMENSIONS,
                         'size_units'  => [ '%', 'px' ],
                         'placeholder' => [
@@ -478,7 +478,7 @@ class Testimonial_Box extends Base{
         $this->start_controls_section(
             'quote-typography',
             [
-                'label'     => esc_html__( 'Quote', 'ultraaddons' ),
+                'label'     => esc_html__( 'Quote', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -495,7 +495,7 @@ class Testimonial_Box extends Base{
         $this->add_control(
                 'quote_title_color',
                 [
-                        'label' => __( 'Quote Title Color', 'ultraaddons' ),
+                        'label' => __( 'Quote Title Color', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::COLOR,
                         'default' => '#54595F',
                         'selectors' => [
@@ -506,7 +506,7 @@ class Testimonial_Box extends Base{
         $this->add_responsive_control(
                 'quote_title_margin',
                 [
-                        'label'       => esc_html__( 'Quote Title Margin', 'ultraaddons' ),
+                        'label'       => esc_html__( 'Quote Title Margin', 'ultraaddons-elementor-lite' ),
                         'type'        => Controls_Manager::DIMENSIONS,
                         'size_units'  => [ '%', 'px' ],
                         'placeholder' => [
@@ -534,7 +534,7 @@ class Testimonial_Box extends Base{
         $this->add_control(
                 'quote_color',
                 [
-                        'label' => __( 'Color', 'ultraaddons' ),
+                        'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::COLOR,
                         'default' => '#54595F',
                         'selectors' => [
@@ -557,7 +557,7 @@ class Testimonial_Box extends Base{
         $this->start_controls_section(
             'avatar',
             [
-                'label'     => esc_html__( 'Avatar', 'ultraaddons' ),
+                'label'     => esc_html__( 'Avatar', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -566,7 +566,7 @@ class Testimonial_Box extends Base{
             Group_Control_Border::get_type(),
             array(
                 'name'        => 'avatar-border',
-                'label'       => esc_html__( 'Border', 'ultraaddons' ),
+                'label'       => esc_html__( 'Border', 'ultraaddons-elementor-lite' ),
                 'placeholder' => '1px',
                 'default'     => '',
                 'selector'    => '{{WRAPPER}} .ua-testimonial-box .client-info .client-avatar img',
@@ -576,7 +576,7 @@ class Testimonial_Box extends Base{
         $this->add_control(
                 'avatar-size',
                 [
-                        'label' => __( 'Size', 'ultraaddons' ),
+                        'label' => __( 'Size', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SLIDER,
                         'size_units' => [ 'px' ],
                         'range' => [
@@ -598,7 +598,7 @@ class Testimonial_Box extends Base{
          $this->add_responsive_control(
                 'avatar_radius',
                 [
-                        'label'       => esc_html__( 'Avatar Radius', 'ultraaddons' ),
+                        'label'       => esc_html__( 'Avatar Radius', 'ultraaddons-elementor-lite' ),
                         'type'        => Controls_Manager::DIMENSIONS,
                         'size_units'  => [ '%', 'px' ],
                         'placeholder' => [
@@ -620,7 +620,7 @@ class Testimonial_Box extends Base{
         $this->start_controls_section(
             'review',
             [
-                'label'     => esc_html__( 'Review', 'ultraaddons' ),
+                'label'     => esc_html__( 'Review', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -628,7 +628,7 @@ class Testimonial_Box extends Base{
        $this->add_control(
                 'review_icon_color',
                 [
-                        'label' => __( 'Review Icon Color', 'ultraaddons' ),
+                        'label' => __( 'Review Icon Color', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::COLOR,
                         'default' => '#FF9900',
                         'selectors' => [
@@ -639,7 +639,7 @@ class Testimonial_Box extends Base{
         $this->add_control(
                 'review_icon_size',
                 [
-                        'label' => esc_html__( 'Icon Size', 'ultraaddons' ),
+                        'label' => esc_html__( 'Icon Size', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SLIDER,
                         'size_units' => [ 'px' ],
                         'range' => [
@@ -662,7 +662,7 @@ class Testimonial_Box extends Base{
         $this->add_responsive_control(
                 'review_margin',
                 [
-                        'label'       => esc_html__( 'Review Margin', 'ultraaddons' ),
+                        'label'       => esc_html__( 'Review Margin', 'ultraaddons-elementor-lite' ),
                         'type'        => Controls_Manager::DIMENSIONS,
                         'size_units'  => [ '%', 'px' ],
                         'placeholder' => [
@@ -689,7 +689,7 @@ class Testimonial_Box extends Base{
         $this->start_controls_section(
             'box_style',
             [
-                'label'     => esc_html__( 'Box', 'ultraaddons' ),
+                'label'     => esc_html__( 'Box', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -697,7 +697,7 @@ class Testimonial_Box extends Base{
                 Group_Control_Background::get_type(),
                 [
                         'name' => 'box_background',
-                        'label' => esc_html__( 'Background', 'ultraaddons' ),
+                        'label' => esc_html__( 'Background', 'ultraaddons-elementor-lite' ),
                         'types' => [ 'classic', 'gradient' ],
                         'selector' => '{{WRAPPER}} .ua-testimonial-box',
                 ]
@@ -708,7 +708,7 @@ class Testimonial_Box extends Base{
                 Group_Control_Border::get_type(),
                 [
                         'name' => 'box_border',
-                        'label' => __( 'Box Border', 'ultraaddons' ),
+                        'label' => __( 'Box Border', 'ultraaddons-elementor-lite' ),
                         'fields_options' => [
                                 'border' => [
                                         'default' => 'solid',
@@ -732,7 +732,7 @@ class Testimonial_Box extends Base{
                 $this->add_responsive_control(
                         'box_radius',
                         [
-                                'label'       => esc_html__( 'Box Radius', 'ultraaddons' ),
+                                'label'       => esc_html__( 'Box Radius', 'ultraaddons-elementor-lite' ),
                                 'type'        => Controls_Manager::DIMENSIONS,
                                 'size_units'  => [ '%', 'px' ],
                                 'placeholder' => [
@@ -749,7 +749,7 @@ class Testimonial_Box extends Base{
                  $this->add_responsive_control(
                         'box_padding',
                         [
-                                'label'       => esc_html__( 'Box Padding', 'ultraaddons' ),
+                                'label'       => esc_html__( 'Box Padding', 'ultraaddons-elementor-lite' ),
                                 'type'        => Controls_Manager::DIMENSIONS,
                                 'size_units'  => [ '%', 'px' ],
                                 'placeholder' => [
@@ -805,8 +805,8 @@ class Testimonial_Box extends Base{
             $this->add_render_attribute( 'wrapper', 'class', 'no-profile-image' );
         }
         ?>
-    <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
-        <div <?php echo $this->get_render_attribute_string( 'item' ); ?>>
+    <div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
+        <div <?php echo esc_attr( $this->get_render_attribute_string( 'item' ) ); ?>>
             <div class="client-quote-box">
                  <?php if($position=='top'):?>
                 <div class="client-info">
@@ -814,8 +814,8 @@ class Testimonial_Box extends Base{
                                 <img src="<?php echo esc_attr( $image ); ?>">
                         </div>
                     <div class="user-name">
-                        <?php echo '<p ' . $this->get_render_attribute_string( 'title' ) . '>' . $settings['title'] . '</p>'; ?>
-                        <?php echo '<span ' . $this->get_render_attribute_string( 'sub-title' ) . '>' . $settings['sub-title'] . '</span>'; ?>
+                        <?php echo '<p ' . esc_attr( $this->get_render_attribute_string( 'title' ) ) . '>' . esc_html( $settings['title'] ) . '</p>'; ?>
+                        <?php echo '<span ' . esc_attr( $this->get_render_attribute_string( 'sub-title' ) ) . '>' . esc_html( $settings['sub-title'] ) . '</span>'; ?>
                     </div>
                 </div>
                 <?php endif;?>
@@ -824,7 +824,7 @@ class Testimonial_Box extends Base{
                 </div>
                 <?php if( $quote_title ): ?>
                         <h2 class="quote-title">
-                                <?php echo $quote_title; ?>
+                                <?php echo esc_html( $quote_title ); ?>
                         </h2>
                 <?php endif;?>
                 <?php if($settings['customer_review']=='yes'): ?>
@@ -836,8 +836,8 @@ class Testimonial_Box extends Base{
                         <?php }?>
                         </div>
                 <?php endif;?>
-                <p <?php echo $this->get_render_attribute_string( 'quote' );?> >
-                        <?php echo $settings['quote'];?>
+                <p <?php echo esc_attr( $this->get_render_attribute_string( 'quote' ) );?> >
+                        <?php echo esc_html( $settings['quote'] ); ?>
                 </p>
                 <?php if($position=='bottom'):?>
                 <div class="client-info">
@@ -845,8 +845,8 @@ class Testimonial_Box extends Base{
                                 <img src="<?php echo esc_attr( $image ); ?>">
                         </div>
                         <div class="user-name">
-                                <?php echo '<p ' . $this->get_render_attribute_string( 'title' ) . '>' . $settings['title'] . '</p>'; ?>
-                                <?php echo '<span ' . $this->get_render_attribute_string( 'sub-title' ) . '>' . $settings['sub-title'] . '</span>'; ?>
+                                <?php echo '<p ' . esc_attr( $this->get_render_attribute_string( 'title' ) ) . '>' . esc_html( $settings['title'] ) . '</p>'; ?>
+                                <?php echo '<span ' . esc_attr( $this->get_render_attribute_string( 'sub-title' ) ) . '>' . esc_html( $settings['sub-title'] ) . '</span>'; ?>
                         </div>
                 </div>
                 <?php endif;?>

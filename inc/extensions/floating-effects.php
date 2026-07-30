@@ -65,7 +65,7 @@ class Floating_Effects {
 		$element->start_controls_section(
 			'_ua_section_floating_effects',
 			[
-				'label' => __( 'Floating Effects', 'ultraaddons' ) . ultraaddons_icon_markup(),
+				'label' => __( 'Floating Effects', 'ultraaddons-elementor-lite' ) . ultraaddons_icon_markup(),
 				'tab' => Controls_Manager::TAB_ADVANCED,
 			]
 		);
@@ -73,7 +73,7 @@ class Floating_Effects {
 		$element->add_control(
 			'ua_floating_fx',
 			[
-				'label' => __( 'Enable', 'ultraaddons' ),
+				'label' => __( 'Enable', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
 				'return_value' => 'yes',
 				'frontend_available' => true,
@@ -83,7 +83,7 @@ class Floating_Effects {
 		$element->add_control(
 			'ua_floating_fx_translate_toggle',
 			[
-				'label' => __( 'Translate', 'ultraaddons' ),
+				'label' => __( 'Translate', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::POPOVER_TOGGLE,
 				'return_value' => 'yes',
 				'frontend_available' => true,
@@ -98,7 +98,7 @@ class Floating_Effects {
 		$element->add_control(
 			'ua_floating_fx_translate_x',
 			[
-				'label' => __( 'Translate X', 'ultraaddons' ),
+				'label' => __( 'Translate X', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'sizes' => [
@@ -114,8 +114,8 @@ class Floating_Effects {
 					]
 				],
 				'labels' => [
-					__( 'From', 'ultraaddons' ),
-					__( 'To', 'ultraaddons' ),
+					__( 'From', 'ultraaddons-elementor-lite' ),
+					__( 'To', 'ultraaddons-elementor-lite' ),
 				],
 				'scales' => 1,
 				'handles' => 'range',
@@ -131,7 +131,7 @@ class Floating_Effects {
 		$element->add_control(
 			'ua_floating_fx_translate_y',
 			[
-				'label' => __( 'Translate Y', 'ultraaddons' ),
+				'label' => __( 'Translate Y', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'sizes' => [
@@ -147,8 +147,8 @@ class Floating_Effects {
 					]
 				],
 				'labels' => [
-					__( 'From', 'ultraaddons' ),
-					__( 'To', 'ultraaddons' ),
+					__( 'From', 'ultraaddons-elementor-lite' ),
+					__( 'To', 'ultraaddons-elementor-lite' ),
 				],
 				'scales' => 1,
 				'handles' => 'range',
@@ -164,7 +164,7 @@ class Floating_Effects {
 		$element->add_control(
 			'ua_floating_fx_translate_duration',
 			[
-				'label' => __( 'Duration', 'ultraaddons' ),
+				'label' => __( 'Duration', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'range' => [
@@ -189,7 +189,7 @@ class Floating_Effects {
 		$element->add_control(
 			'ua_floating_fx_translate_delay',
 			[
-				'label' => __( 'Delay', 'ultraaddons' ),
+				'label' => __( 'Delay', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'range' => [
@@ -213,7 +213,7 @@ class Floating_Effects {
 		$element->add_control(
 			'ua_floating_fx_rotate_toggle',
 			[
-				'label' => __( 'Rotate', 'ultraaddons' ),
+				'label' => __( 'Rotate', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::POPOVER_TOGGLE,
 				'return_value' => 'yes',
 				'frontend_available' => true,
@@ -228,7 +228,7 @@ class Floating_Effects {
 		$element->add_control(
 			'ua_floating_fx_rotate_x',
 			[
-				'label' => __( 'Rotate X', 'ultraaddons' ),
+				'label' => __( 'Rotate X', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'sizes' => [
@@ -244,8 +244,8 @@ class Floating_Effects {
 					]
 				],
 				'labels' => [
-					__( 'From', 'ultraaddons' ),
-					__( 'To', 'ultraaddons' ),
+					__( 'From', 'ultraaddons-elementor-lite' ),
+					__( 'To', 'ultraaddons-elementor-lite' ),
 				],
 				'scales' => 1,
 				'handles' => 'range',
@@ -261,7 +261,7 @@ class Floating_Effects {
 		$element->add_control(
 			'ua_floating_fx_rotate_y',
 			[
-				'label' => __( 'Rotate Y', 'ultraaddons' ),
+				'label' => __( 'Rotate Y', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'sizes' => [
@@ -277,8 +277,8 @@ class Floating_Effects {
 					]
 				],
 				'labels' => [
-					__( 'From', 'ultraaddons' ),
-					__( 'To', 'ultraaddons' ),
+					__( 'From', 'ultraaddons-elementor-lite' ),
+					__( 'To', 'ultraaddons-elementor-lite' ),
 				],
 				'scales' => 1,
 				'handles' => 'range',
@@ -294,7 +294,7 @@ class Floating_Effects {
 		$element->add_control(
 			'ua_floating_fx_rotate_z',
 			[
-				'label' => __( 'Rotate Z', 'ultraaddons' ),
+				'label' => __( 'Rotate Z', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'sizes' => [
@@ -310,8 +310,8 @@ class Floating_Effects {
 					]
 				],
 				'labels' => [
-					__( 'From', 'ultraaddons' ),
-					__( 'To', 'ultraaddons' ),
+					__( 'From', 'ultraaddons-elementor-lite' ),
+					__( 'To', 'ultraaddons-elementor-lite' ),
 				],
 				'scales' => 1,
 				'handles' => 'range',
@@ -327,7 +327,7 @@ class Floating_Effects {
 		$element->add_control(
 			'ua_floating_fx_rotate_duration',
 			[
-				'label' => __( 'Duration', 'ultraaddons' ),
+				'label' => __( 'Duration', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'range' => [
@@ -352,7 +352,7 @@ class Floating_Effects {
 		$element->add_control(
 			'ua_floating_fx_rotate_delay',
 			[
-				'label' => __( 'Delay', 'ultraaddons' ),
+				'label' => __( 'Delay', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'range' => [
@@ -376,7 +376,7 @@ class Floating_Effects {
 		$element->add_control(
 			'ua_floating_fx_scale_toggle',
 			[
-				'label' => __( 'Scale', 'ultraaddons' ),
+				'label' => __( 'Scale', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::POPOVER_TOGGLE,
 				'return_value' => 'yes',
 				'frontend_available' => true,
@@ -391,7 +391,7 @@ class Floating_Effects {
 		$element->add_control(
 			'ua_floating_fx_scale_x',
 			[
-				'label' => __( 'Scale X', 'ultraaddons' ),
+				'label' => __( 'Scale X', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'sizes' => [
@@ -408,8 +408,8 @@ class Floating_Effects {
 					]
 				],
 				'labels' => [
-					__( 'From', 'ultraaddons' ),
-					__( 'To', 'ultraaddons' ),
+					__( 'From', 'ultraaddons-elementor-lite' ),
+					__( 'To', 'ultraaddons-elementor-lite' ),
 				],
 				'scales' => 1,
 				'handles' => 'range',
@@ -425,7 +425,7 @@ class Floating_Effects {
 		$element->add_control(
 			'ua_floating_fx_scale_y',
 			[
-				'label' => __( 'Scale Y', 'ultraaddons' ),
+				'label' => __( 'Scale Y', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'sizes' => [
@@ -442,8 +442,8 @@ class Floating_Effects {
 					]
 				],
 				'labels' => [
-					__( 'From', 'ultraaddons' ),
-					__( 'To', 'ultraaddons' ),
+					__( 'From', 'ultraaddons-elementor-lite' ),
+					__( 'To', 'ultraaddons-elementor-lite' ),
 				],
 				'scales' => 1,
 				'handles' => 'range',
@@ -459,7 +459,7 @@ class Floating_Effects {
 		$element->add_control(
 			'ua_floating_fx_scale_duration',
 			[
-				'label' => __( 'Duration', 'ultraaddons' ),
+				'label' => __( 'Duration', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'range' => [
@@ -484,7 +484,7 @@ class Floating_Effects {
 		$element->add_control(
 			'ua_floating_fx_scale_delay',
 			[
-				'label' => __( 'Delay', 'ultraaddons' ),
+				'label' => __( 'Delay', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'range' => [

@@ -52,7 +52,7 @@ class Custom_Fonts{
          * 
          * @date 25/1/2022
          */
-        add_filter('upload_mimes', [__CLASS__, 'custom_upload_mimes']);
+        // add_filter('upload_mimes', [__CLASS__, 'custom_upload_mimes']);
 
         /**
          * Render All selected Custom field here.
@@ -79,18 +79,18 @@ class Custom_Fonts{
      * @param Array $existing_mimes
      * @return Array
      */
-    public static function custom_upload_mimes ( $existing_mimes ) {
+    // public static function custom_upload_mimes ( $existing_mimes ) {
 
-        $existing_mimes['ttf'] = 'application/x-font-ttf';
-        $existing_mimes['woff'] = 'application/x-font-woff';
-        $existing_mimes['woff2'] = 'application/x-font-woff2';
-        $existing_mimes['otf'] = 'application/x-font-otf';
-        return $existing_mimes;
-    }
+    //     $existing_mimes['ttf'] = 'application/x-font-ttf';
+    //     $existing_mimes['woff'] = 'application/x-font-woff';
+    //     $existing_mimes['woff2'] = 'application/x-font-woff2';
+    //     $existing_mimes['otf'] = 'application/x-font-otf';
+    //     return $existing_mimes;
+    // }
 
     public static function font_group( $font_groups ){
         $font_group_key = self::$font_group_key;
-        $new_group[$font_group_key] = __( 'Custom Fonts - UltraAddons', 'ultraaddons' );
+        $new_group[$font_group_key] = __( 'Custom Fonts - UltraAddons', 'ultraaddons-elementor-lite' );
         $font_groups                   = $new_group + $font_groups;
         return $font_groups;
     }

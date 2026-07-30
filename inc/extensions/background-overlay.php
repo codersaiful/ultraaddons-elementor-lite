@@ -31,7 +31,7 @@ class Background_Overlay {
 		$element->start_controls_section(
 			'_ua_background_overlay',
 			[
-				'label' => __( 'Background Overlay', 'ultraaddons' ) . ultraaddons_icon_markup(),
+				'label' => __( 'Background Overlay', 'ultraaddons-elementor-lite' ) . ultraaddons_icon_markup(),
 				'tab'   => $tabs,
 			]
 		);
@@ -39,11 +39,11 @@ class Background_Overlay {
 		$element->add_control(
 				'_ua_overlay_bg_on_off',
 				[
-						'label' => __( 'Switch', 'ultraaddons' ),
-						'description' => __( 'Custom background overlay for any element, any column, any item.', 'ultraaddons' ),
+						'label' => __( 'Switch', 'ultraaddons-elementor-lite' ),
+						'description' => __( 'Custom background overlay for any element, any column, any item.', 'ultraaddons-elementor-lite' ),
 						'type' => Controls_Manager::SWITCHER,
-						'label_on' => __( 'On', 'ultraaddons' ),
-						'label_off' => __( 'Off', 'ultraaddons' ),
+						'label_on' => __( 'On', 'ultraaddons-elementor-lite' ),
+						'label_off' => __( 'Off', 'ultraaddons-elementor-lite' ),
 						'return_value' => 'yes',
 						'default' => '',
 						'prefix_class' => 'ua-background-overlay-',
@@ -77,7 +77,7 @@ class Background_Overlay {
         $element->add_control(
 			'_ua_background_overlay_opacity',
 			[
-				'label' => __( 'Opacity', 'elementor' ),
+				'label' => __( 'Opacity', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 1,
@@ -102,10 +102,10 @@ class Background_Overlay {
 		$element->add_control(
 			'_ua_overlay_blend_mode',
 			[
-				'label' => __( 'Blend Mode', 'elementor' ),
+				'label' => __( 'Blend Mode', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
-					'' => __( 'Normal', 'elementor' ),
+					'' => __( 'Normal', 'ultraaddons-elementor-lite' ),
 					'multiply' => 'Multiply',
 					'screen' => 'Screen',
 					'overlay' => 'Overlay',
@@ -131,7 +131,7 @@ class Background_Overlay {
 		$element->add_responsive_control(
 			'_ua_overlay_radius',
 			[
-				'label'      => __( 'Radius', 'ultraaddons' ),
+				'label'      => __( 'Radius', 'ultraaddons-elementor-lite' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors'  => [
@@ -158,7 +158,7 @@ class Background_Overlay {
 		$this->add_control(
 			'background_overlay_opacity',
 			[
-				'label' => __( 'Opacity', 'elementor' ),
+				'label' => __( 'Opacity', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => .5,
@@ -189,10 +189,10 @@ class Background_Overlay {
 		$this->add_control(
 			'overlay_blend_mode',
 			[
-				'label' => __( 'Blend Mode', 'elementor' ),
+				'label' => __( 'Blend Mode', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
-					'' => __( 'Normal', 'elementor' ),
+					'' => __( 'Normal', 'ultraaddons-elementor-lite' ),
 					'multiply' => 'Multiply',
 					'screen' => 'Screen',
 					'overlay' => 'Overlay',

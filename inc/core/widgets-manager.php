@@ -12,7 +12,7 @@ defined( 'ABSPATH' ) || die();
  * In that file, The Array's Each Item array formate like bellow:
  * ******************************
  * 'Button'=> [
-    'name'  => __( 'Button', 'ultraaddons' ),
+    'name'  => __( 'Button', 'ultraaddons-elementor-lite' ),
     ],
  * ******************************
  * 
@@ -36,7 +36,7 @@ class Widgets_Manager{
      *
      * @var type Key of get_options()
      */
-    public static $key = 'ultraaddons_widgets';
+    public static $ultraaddons_key = 'ultraaddons_widgets';
 
     
     /**
@@ -69,10 +69,10 @@ class Widgets_Manager{
         if( ! is_file( $file ) ){
             return [];
         }
-        $widgetsArray = include $file;
+        $ultraaddons_widgetsArray = include $file;
 
-        if( is_array( $widgetsArray ) ){
-            return $widgetsArray;
+        if( is_array( $ultraaddons_widgetsArray ) ){
+            return $ultraaddons_widgetsArray;
         }
         return [];
     }

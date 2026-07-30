@@ -35,7 +35,7 @@ class Post_Timeline extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons','ua', 'post', 'timeline', 'time','line' ];
+        return [ 'ultraaddons-elementor-lite','ua', 'post', 'timeline', 'time','line' ];
     }
     
     
@@ -66,14 +66,14 @@ class Post_Timeline extends Base{
         $this->start_controls_section(
             'query_content',
             [
-                'label'     => esc_html__( 'Query Settings', 'ultraaddons' ),
+                'label'     => esc_html__( 'Query Settings', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
         $this->add_control(
 			'_ua_post_type',
 			[
-				'label' => esc_html__( 'Post Type', 'ultraaddons' ),
+				'label' => esc_html__( 'Post Type', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => $this->get_post_type(),
 				'default' => 'post',
@@ -82,7 +82,7 @@ class Post_Timeline extends Base{
         $this->add_control(
 			'_ua_title_truncate',
 			[
-				'label' => __( 'Title Length', 'ultraaddons' ),
+				'label' => __( 'Title Length', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 1,
 				'max' => 300,
@@ -93,7 +93,7 @@ class Post_Timeline extends Base{
 		$this->add_control(
 			'_ua_text_truncate',
 			[
-				'label' => __( 'Description Length', 'ultraaddons' ),
+				'label' => __( 'Description Length', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 5,
 				'max' => 300,
@@ -104,7 +104,7 @@ class Post_Timeline extends Base{
 		$this->add_control(
 			'_ua_post_per_page',
 			[
-				'label' => __( 'Show Item', 'ultraaddons' ),
+				'label' => __( 'Show Item', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 1,
 				'max' => 300,
@@ -115,7 +115,7 @@ class Post_Timeline extends Base{
 		$this->add_control(
 			'_ua_post_page_number',
 			[
-				'label' => __( 'Page Number', 'ultraaddons' ),
+				'label' => __( 'Page Number', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 1,
 				//'max' => 300,
@@ -127,7 +127,7 @@ class Post_Timeline extends Base{
 		$this->add_control(
 			'_ua_product_order',
 			[
-				'label' => esc_html__( 'Order', 'ultraaddons' ),
+				'label' => esc_html__( 'Order', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'asc' => 'Asc',
@@ -139,7 +139,7 @@ class Post_Timeline extends Base{
 		$this->add_control(
 			'_ua_product_orderby',
 			[
-				'label' => esc_html__( 'Orderby', 'ultraaddons' ),
+				'label' => esc_html__( 'Orderby', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'none' => 'None',
@@ -157,7 +157,7 @@ class Post_Timeline extends Base{
 		 /* $this->add_control(
             'cat_ids',
             [
-                'label' => esc_html__( 'Select category', 'ultraaddons' ),
+                'label' => esc_html__( 'Select category', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::SELECT2,
                 'options' => $this->get_taxanomy(),
                 'multiple' => 'true'
@@ -168,7 +168,7 @@ class Post_Timeline extends Base{
 		$this->add_control(
             'tag_ids',
             [
-                'label' => esc_html__( 'Select Tag', 'ultraaddons' ),
+                'label' => esc_html__( 'Select Tag', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::SELECT2,
                 'options' => $this->product_tax_options( 'product_tag' ),
                 'multiple' => 'true'
@@ -179,38 +179,38 @@ class Post_Timeline extends Base{
 		$this->add_control(
 			'_ua_query_post_in',
 			[
-				'label' => __( 'Product by included IDs', 'ultraaddons' ),
+				'label' => __( 'Product by included IDs', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXTAREA,
-				'placeholder' => __( '1,2,3,4,20,33', 'ultraaddons' ),
-				'description' => __('Add multiple ids by comma separated.'),
+				'placeholder' => __( '1,2,3,4,20,33', 'ultraaddons-elementor-lite' ),
+				'description' => __(  'Add multiple ids by comma separated.', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
 		$this->add_control(
 			'_ua_query_post_not_in',
 			[
-				'label' => __( 'Product by excluded IDs', 'ultraaddons' ),
+				'label' => __( 'Product by excluded IDs', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXTAREA,
-				'placeholder' => __( '1,2,3,4,20,33', 'ultraaddons' ),
-				'description' => __('Add multiple ids by comma separated.'),
+				'placeholder' => __( '1,2,3,4,20,33', 'ultraaddons-elementor-lite' ),
+				'description' => __(  'Add multiple ids by comma separated.', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
         $this->add_control(
 			'date_format',
 			[
-				'label' => __('Date Format', 'ultraaddons'),
+				'label' => __('Date Format', 'ultraaddons-elementor-lite'),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
-					'd M Y'     => date("d M Y"),
-					'm.d.y'     => date("m.d.y"),
-					'j, n, Y'   => date("j, n, Y"),
-					'Ymd'       => date("Ymd"),
-					'D M j, Y'  => date("D M j, Y"),
-					'F j, Y'    => date("F j, Y"),
-					'j M, Y'    => date("j M, Y"),
-					'Y-m-d'     => date("Y-m-d"),
-					'Y/m/d'     => date("Y/m/d"),
+					'd M Y'     => wp_date("d M Y"),
+					'm.d.y'     => wp_date("m.d.y"),
+					'j, n, Y'   => wp_date("j, n, Y"),
+					'Ymd'       => wp_date("Ymd"),
+					'D M j, Y'  => wp_date("D M j, Y"),
+					'F j, Y'    => wp_date("F j, Y"),
+					'j M, Y'    => wp_date("j M, Y"),
+					'Y-m-d'     => wp_date("Y-m-d"),
+					'Y/m/d'     => wp_date("Y/m/d"),
 				],
 				'default' => 'd M Y',
 			]
@@ -227,26 +227,26 @@ class Post_Timeline extends Base{
         $this->start_controls_section(
             'style_tab',
             [
-                'label'     => esc_html__( 'Style', 'ultraaddons' ),
+                'label'     => esc_html__( 'Style', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_responsive_control(
 			'_ua_text_alignment',
 			[
-				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
+				'label' => esc_html__( 'Alignment', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'start' => [
-						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'title' => esc_html__( 'Left', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'ultraaddons' ),
+						'title' => esc_html__( 'Center', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-center',
 					],
 					'end' => [
-						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'title' => esc_html__( 'Right', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-right',
 					]
 				],
@@ -267,7 +267,7 @@ class Post_Timeline extends Base{
         );
 		$this->add_control(
 			'_title_color', [
-				'label' => __( 'Title Color', 'ultraaddons' ),
+				'label' => __( 'Title Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-post-title' => 'color: {{VALUE}};',
@@ -277,7 +277,7 @@ class Post_Timeline extends Base{
         $this->add_responsive_control(
 			'_ua_title_margin',
 			[
-				'label'       => esc_html__( 'Title Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Title Margin', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -302,7 +302,7 @@ class Post_Timeline extends Base{
         );
 		$this->add_control(
 			'_date_color', [
-				'label' => __( 'Date Color', 'ultraaddons' ),
+				'label' => __( 'Date Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-pt-txt time' => 'color: {{VALUE}};',
@@ -312,7 +312,7 @@ class Post_Timeline extends Base{
         $this->add_responsive_control(
 			'_ua_time_margin',
 			[
-				'label'       => esc_html__( 'Date Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Date Margin', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -337,7 +337,7 @@ class Post_Timeline extends Base{
         );
 		$this->add_control(
 			'_content_color', [
-				'label' => __( 'Content Color', 'ultraaddons' ),
+				'label' => __( 'Content Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-pt-txt p' => 'color: {{VALUE}};',
@@ -347,7 +347,7 @@ class Post_Timeline extends Base{
         $this->add_responsive_control(
 			'_ua_content_margin',
 			[
-				'label'       => esc_html__( 'Content Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Content Margin', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -365,7 +365,7 @@ class Post_Timeline extends Base{
 		$this->add_responsive_control(
 			'_ua_image_radius',
 			[
-				'label'       => esc_html__( 'Image Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Image Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -391,14 +391,14 @@ class Post_Timeline extends Base{
         $this->start_controls_section(
             'box_style_tab',
             [
-                'label'     => esc_html__( 'Box', 'ultraaddons' ),
+                'label'     => esc_html__( 'Box', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_responsive_control(
 			'_ua_box_radius',
 			[
-				'label'       => esc_html__( 'Box Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Box Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -415,7 +415,7 @@ class Post_Timeline extends Base{
          $this->add_responsive_control(
 			'_ua_box_padding',
 			[
-				'label'       => esc_html__( 'Box Padding', 'ultraaddons' ),
+				'label'       => esc_html__( 'Box Padding', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -433,7 +433,7 @@ class Post_Timeline extends Base{
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'box_shadow',
-				'label' => __( 'Box Shadow', 'ultraaddons' ),
+				'label' => __( 'Box Shadow', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-post-timeline ul li a',
 			]
 		);
@@ -449,7 +449,7 @@ class Post_Timeline extends Base{
         $this->start_controls_section(
             'line_style_tab',
             [
-                'label'     => esc_html__( 'Line', 'ultraaddons' ),
+                'label'     => esc_html__( 'Line', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -457,14 +457,14 @@ class Post_Timeline extends Base{
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'h_line_border',
-				'label' => __( 'Horizontal Line', 'ultraaddons' ),
+				'label' => __( 'Horizontal Line', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-post-timeline ul li .ua-pt-line, .ua-post-timeline ul li:nth-child(odd)::after',
 			]
 		);
       
         $this->add_control(
 			'_line_btn_bg', [
-				'label' => __( 'Node Background', 'ultraaddons' ),
+				'label' => __( 'Node Background', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-post-timeline ul li .ua-pt-thumbnail::after, .ua-post-timeline ul::before' => 'background-color: {{VALUE}};',
@@ -479,7 +479,7 @@ class Post_Timeline extends Base{
     
     protected function excerpt($limit) {
         $content = wp_strip_all_tags(get_the_content() , true );
-        echo wp_trim_words($content, $limit);
+        echo wp_kses_post( wp_trim_words($content, $limit) );
     }
 
      /**
@@ -529,8 +529,8 @@ class Post_Timeline extends Base{
 		  $str = '';
 		  $count = 1;
 
-		  foreach($all as $key){
-			$str .= $key . ($count >= $words ? '' : ' ');
+		  foreach($all as $ultraaddons_key){
+			$str .= $ultraaddons_key . ($count >= $words ? '' : ' ');
 			$count++;
 			if($count > $words){
 			  break;
@@ -559,7 +559,7 @@ class Post_Timeline extends Base{
     <div class="ua-post-timeline">
         <ul>
         <?php
-        $args = array(
+        $ultraaddons_args = array(
             'post_type' 	=> $settings['_ua_post_type'],
             'posts_per_page'=> $settings['_ua_post_per_page'],
 			'paged'=> ! empty( $settings['_ua_post_page_number'] ) ? $settings['_ua_post_page_number'] : 1,
@@ -568,15 +568,17 @@ class Post_Timeline extends Base{
             );
 		if(! empty( $settings['_ua_query_post_in'] )){
 			$include_ids = explode(',',$settings['_ua_query_post_in']);
-			$args['post__in'] = $include_ids;
+			$ultraaddons_args['post__in'] = $include_ids;
 		}
 		if(! empty( $settings['_ua_query_post_not_in'] )){
 			$exclude_ids = explode(',',$settings['_ua_query_post_not_in']);
-			$args['post__not_in'] = $exclude_ids;
+			//phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_post__not_in
+			$ultraaddons_args['post__not_in'] = $exclude_ids;
 		}
 
 	 	if( ! empty( $settings['cat_ids'] ) ){
-			$args['tax_query'] = array(
+			//phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
+			$ultraaddons_args['tax_query'] = array(
 				array(
 					'taxonomy'  => 'product_cat',
 					'field'     => 'id', 
@@ -586,7 +588,8 @@ class Post_Timeline extends Base{
 		}
 		
 		if( ! empty( $settings['tag_ids'] ) ){
-			$args['tax_query'] = array(
+			//phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
+			$ultraaddons_args['tax_query'] = array(
 				array(
 					'taxonomy'  => 'product_tag',
 					'field'     => 'id', 
@@ -594,23 +597,23 @@ class Post_Timeline extends Base{
 				)
 			);
 		} 
-         $loop = new \WP_Query( $args ); 
+         $loop = new \WP_Query( $ultraaddons_args ); 
             while ( $loop->have_posts() ) : $loop->the_post();
             if ( has_post_thumbnail() ):
             ?>
             <li>
-                <a href="<?php echo get_the_permalink(); ?>">
+                <a href="<?php echo esc_url( get_the_permalink() ); ?>">
                     <div class="ua-pt-thumbnail">
-                        <?php echo get_the_post_thumbnail( $loop->ID, 'large' ); ?>
+                        <?php echo wp_kses_post( get_the_post_thumbnail( $loop->ID, 'large' ) ); ?>
                     </div>
                     <div class="ua-pt-txt">
-                        <time><?php echo get_the_date($date_format); ?></time>
+                        <time><?php echo esc_html( get_the_date($date_format) ); ?></time>
                         <h3 class="ua-post-title">
                             <?php $title = get_the_title();?>
-                             <?php echo $this->title_shortener($title, $settings['_ua_title_truncate']);?>
+                             <?php echo esc_html( $this->title_shortener($title, $settings['_ua_title_truncate']) ); ?>
                         </h3>
                         <p>
-                            <?php echo $this->excerpt($lenght);?>
+                            <?php echo wp_kses_post( $this->excerpt($lenght) ); ?>
                             
                         </p>
                     </div>

@@ -17,52 +17,64 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 
 class Advance_Post_Masonry extends Base{
+
+    public $current_permalink;//current_permalink
     
-    public function __construct($data = [], $args = null) {
-        parent::__construct($data, $args);
+    /**
+     * Get your widget name
+     *
+     * Retrieve image accordion widget name.
+     *
+     * @since 1.0.0
+     * @access public
+     *
+     * @return string Widget name.
+     */
+    public function __construct($data = [], $ultraaddons_args = null) {
+        parent::__construct($data, $ultraaddons_args);
        
         //For Blog Widget
-        $name           = 'imagesloaded.pkgd.min';
+        $ultraaddons_name           = 'imagesloaded.pkgd.min';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/imagesloaded.pkgd.min.js';
         $dependency     =  ['jquery','elementor-frontend'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  = true;
 
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );
+        wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ultraaddons_name );
         
         //For Blog Widget
-        $name           = 'isotope.pkgd.min';
+        $ultraaddons_name           = 'isotope.pkgd.min';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/isotope.pkgd.min.js';
         $dependency     =  ['jquery','elementor-frontend'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  = true;
 
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );
+        wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ultraaddons_name );
         
         //For Blog Widget
-        $name           = 'packery-mode.pkgd.min';
+        $ultraaddons_name           = 'packery-mode.pkgd.min';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/packery-mode.pkgd.min.js';
         $dependency     =  ['jquery','elementor-frontend'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  = true;
 
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );
+        wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ultraaddons_name );
         
         
         
         //Naming of Args for Masonary
         //For Blog Widget
-        $name           = 'masonry_grid';
+        $ultraaddons_name           = 'masonry_grid';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/masonry_grid.js';
         $dependency     =  ['jquery','elementor-frontend'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  = true;
 
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );
+        wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ultraaddons_name );
         
     }
     
@@ -87,7 +99,7 @@ class Advance_Post_Masonry extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons','ua','post masonry', 'advance blog', 'blog', 'post' ];
+        return [ 'ultraaddons-elementor-lite','ua','post masonry', 'advance blog', 'blog', 'post' ];
     }
 
     /**
@@ -136,14 +148,14 @@ class Advance_Post_Masonry extends Base{
         $this->start_controls_section(
             '_ua_blog_layout_section',
             [
-                'label' => esc_html__('Layout', 'ultraaddons'),
+                'label' => esc_html__('Layout', 'ultraaddons-elementor-lite'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
         $this->add_control(
             '_ua_blog_skin',
             [
-                'label' => esc_html__( 'Design Format', 'ultraaddons' ),
+                'label' => esc_html__( 'Design Format', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::SELECT,
                 'label_block' => false,
                 'options'   => [
@@ -167,7 +179,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_responsive_control(
             '_ua_blog_columns',
             [
-                'label' => __( 'Columns', 'ultraaddons' ),
+                'label' => __( 'Columns', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::SELECT,
                 'default' => '4',
                 'tablet_default' => '2',
@@ -189,10 +201,10 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
             '_ua_show_title',
             [
-                'label'     => __('Title', 'ultraaddons'),
+                'label'     => __('Title', 'ultraaddons-elementor-lite'),
                 'type'      => Controls_Manager::SWITCHER,
-                'label_on'  => __('Show', 'ultraaddons'),
-                'label_off' => __('Hide', 'ultraaddons'),
+                'label_on'  => __('Show', 'ultraaddons-elementor-lite'),
+                'label_off' => __('Hide', 'ultraaddons-elementor-lite'),
                 'default'   => 'yes',
             ]
         );
@@ -200,10 +212,10 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
             '_ua_show_excerpt',
             [
-                'label'     => __('Excerpt', 'ultraaddons'),
+                'label'     => __('Excerpt', 'ultraaddons-elementor-lite'),
                 'type'      => Controls_Manager::SWITCHER,
-                'label_on'  => __('Show', 'ultraaddons'),
-                'label_off' => __('Hide', 'ultraaddons'),
+                'label_on'  => __('Show', 'ultraaddons-elementor-lite'),
+                'label_off' => __('Hide', 'ultraaddons-elementor-lite'),
                 'default'   => 'yes',
                 'separator' => 'before',
                 'condition' => [
@@ -215,36 +227,36 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
             '_ua_title_tag',
             [
-                'label' => __( 'Title HTML Tag', 'ultraaddons' ),
+                'label' => __( 'Title HTML Tag', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::CHOOSE,
                 'label_block' => true,
                 'options' => [
                     'h1'  => [
-                        'title' => __( 'H1', 'ultraaddons' ),
+                        'title' => __( 'H1', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h1'
                     ],
                     'h2'  => [
-                        'title' => __( 'H2', 'ultraaddons' ),
+                        'title' => __( 'H2', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h2'
                     ],
                     'h3'  => [
-                        'title' => __( 'H3', 'ultraaddons' ),
+                        'title' => __( 'H3', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h3'
                     ],
                     'h4'  => [
-                        'title' => __( 'H4', 'ultraaddons' ),
+                        'title' => __( 'H4', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h4'
                     ],
                     'h5'  => [
-                        'title' => __( 'H5', 'ultraaddons' ),
+                        'title' => __( 'H5', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h5'
                     ],
                     'h6'  => [
-                        'title' => __( 'H6', 'ultraaddons' ),
+                        'title' => __( 'H6', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h6'
                     ],
                     'p'  => [
-                        'title' => __( 'P', 'ultraaddons' ),
+                        'title' => __( 'P', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-paragraph'
                     ],
                 ],
@@ -259,11 +271,11 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
             '_ua_show_category',
             [
-                'label'     => __('Category', 'ultraaddons'),
+                'label'     => __('Category', 'ultraaddons-elementor-lite'),
                 'type'      => Controls_Manager::SWITCHER,
                 'default'   => 'yes',
-                'label_off' => __('Hide', 'ultraaddons'),
-                'label_on'  => __('Show', 'ultraaddons'),
+                'label_off' => __('Hide', 'ultraaddons-elementor-lite'),
+                'label_on'  => __('Show', 'ultraaddons-elementor-lite'),
                 'condition'   => [
                     '_ua_blog_skin' => ['_skin_1', '_skin_2', '_skin_3'],
                 ],
@@ -272,11 +284,11 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
             '_ua_show_tag',
             [
-                'label'     => __('Tags', 'ultraaddons'),
+                'label'     => __('Tags', 'ultraaddons-elementor-lite'),
                 'type'      => Controls_Manager::SWITCHER,
                 'default'   => 'yes',
-                'label_off' => __('Hide', 'ultraaddons'),
-                'label_on'  => __('Show', 'ultraaddons'),
+                'label_off' => __('Hide', 'ultraaddons-elementor-lite'),
+                'label_on'  => __('Show', 'ultraaddons-elementor-lite'),
                 'condition' => [
                     '_ua_blog_skin' => ['_skin_2'],
                 ]
@@ -286,21 +298,21 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
             '_ua_show_thumb',
             [
-                'label'     => __('Show Image', 'ultraaddons'),
+                'label'     => __('Show Image', 'ultraaddons-elementor-lite'),
                 'type'      => Controls_Manager::SWITCHER,
                 'default'   => 'yes',
-                'label_off' => __('Hide', 'ultraaddons'),
-                'label_on'  => __('Show', 'ultraaddons'),
+                'label_off' => __('Hide', 'ultraaddons-elementor-lite'),
+                'label_on'  => __('Show', 'ultraaddons-elementor-lite'),
             ]
         );
         $this->add_control(
             '_ua_show_author',
             [
-                'label'     => __('Show Author', 'ultraaddons'),
+                'label'     => __('Show Author', 'ultraaddons-elementor-lite'),
                 'type'      => Controls_Manager::SWITCHER,
                 'default'   => 'yes',
-                'label_off' => __('Hide', 'ultraaddons'),
-                'label_on'  => __('Show', 'ultraaddons'),
+                'label_off' => __('Hide', 'ultraaddons-elementor-lite'),
+                'label_on'  => __('Show', 'ultraaddons-elementor-lite'),
                 'condition'   => [
                     '_ua_blog_skin' => ['_skin_2', '_skin_3', '_skin_4'],
                 ],
@@ -310,11 +322,11 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
             '_ua_show_date',
             [
-                'label'     => __('Show Date', 'ultraaddons'),
+                'label'     => __('Show Date', 'ultraaddons-elementor-lite'),
                 'type'      => Controls_Manager::SWITCHER,
                 'default'   => 'yes',
-                'label_off' => __('Hide', 'ultraaddons'),
-                'label_on'  => __('Show', 'ultraaddons'),
+                'label_off' => __('Hide', 'ultraaddons-elementor-lite'),
+                'label_on'  => __('Show', 'ultraaddons-elementor-lite'),
             ]
         );
     
@@ -322,10 +334,10 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
             '_ua_show_read_more',
             [
-                'label'     => __('Read More', 'ultraaddons'),
+                'label'     => __('Read More', 'ultraaddons-elementor-lite'),
                 'type'      => Controls_Manager::SWITCHER,
-                'label_on'  => __('Show', 'ultraaddons'),
-                'label_off' => __('Hide', 'ultraaddons'),
+                'label_on'  => __('Show', 'ultraaddons-elementor-lite'),
+                'label_off' => __('Hide', 'ultraaddons-elementor-lite'),
                 'default'   => 'yes',
                 'separator' => 'before',
                 'condition'   => [
@@ -337,9 +349,9 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
             '_ua_read_more_text',
             [
-                'label'     => __('Read More Text', 'ultraaddons'),
+                'label'     => __('Read More Text', 'ultraaddons-elementor-lite'),
                 'type'      => Controls_Manager::TEXT,
-                'default'   => __('Learn More »', 'ultraaddons'),
+                'default'   => __('Learn More »', 'ultraaddons-elementor-lite'),
                 'condition' => [
                     '_ua_show_read_more' => ['yes'],
                     '_ua_blog_skin' => ['_skin_4'],
@@ -350,10 +362,10 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
             '_ua_open_new_tab',
             [
-                'label' => __( 'Open in new window', 'ultraaddons' ),
+                'label' => __( 'Open in new window', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::SWITCHER,
-                'label_on' => __( 'Yes', 'ultraaddons' ),
-                'label_off' => __( 'No', 'ultraaddons' ),
+                'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+                'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
                 'default' => 'no',
                 'render_type' => 'none',
             ]
@@ -366,7 +378,7 @@ class Advance_Post_Masonry extends Base{
         $this->start_controls_section(
             '_ua_blog_masonary_section',
             [
-                'label' => esc_html__('Masonary Layout (Skin 1)', 'ultraaddons'),
+                'label' => esc_html__('Masonary Layout (Skin 1)', 'ultraaddons-elementor-lite'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
                 'condition' => [
                     '_ua_blog_skin' => ['_skin_1'],
@@ -376,19 +388,19 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
             '_ua_masonary_type',
             [
-                'label'   => __('Masonary Type', 'ultraaddons'),
+                'label'   => __('Masonary Type', 'ultraaddons-elementor-lite'),
                 'type'    => \Elementor\Controls_Manager::SELECT,
                 'default' => 'metro',
                 'options' => [
-                    'metro'   => __('Metro', 'ultraaddons'),
-                    'masonry'       => __('Masonry', 'ultraaddons'),
+                    'metro'   => __('Metro', 'ultraaddons-elementor-lite'),
+                    'masonry'       => __('Masonry', 'ultraaddons-elementor-lite'),
                 ],
             ]
         );
         $this->add_responsive_control(
             '_ua_zigzag_height',
             [
-                'label'     => esc_html__( 'Zigzag Height', 'ultraaddons' ),
+                'label'     => esc_html__( 'Zigzag Height', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::NUMBER,
                 'step'      => 1,
             ] 
@@ -397,7 +409,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
             '_ua_zigzag_reversed',
             [
-                'label'     => esc_html__( 'Zigzag Reversed?', 'ultraaddons' ),
+                'label'     => esc_html__( 'Zigzag Reversed?', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::SWITCHER,   
             ] 
         );
@@ -406,7 +418,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
             '_ua_metro_image_size_width',
             [
-                'label'     => esc_html__( 'Image Size', 'ultraaddons' ),
+                'label'     => esc_html__( 'Image Size', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::NUMBER,
                 'step'      => 1,
                 'default'   => 480,
@@ -416,7 +428,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
             '_ua_metro_image_ratio',
             [
-                'label'     => esc_html__( 'Image Ratio', 'ultraaddons' ),
+                'label'     => esc_html__( 'Image Ratio', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::SLIDER,
                 'range'     => [
                     'px' => [
@@ -435,7 +447,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_responsive_control(
             '_ua_grid_columns',
             [
-                'label'          => esc_html__( 'Columns', 'ultraaddons' ),
+                'label'          => esc_html__( 'Columns', 'ultraaddons-elementor-lite' ),
                 'type'           => Controls_Manager::NUMBER,
                 'min'            => 1,
                 'max'            => 12,
@@ -449,7 +461,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_responsive_control(
             '_ua_grid_gutter',
             [
-                'label'   => esc_html__( 'Gutter', 'ultraaddons' ),
+                'label'   => esc_html__( 'Gutter', 'ultraaddons-elementor-lite' ),
                 'type'    => Controls_Manager::NUMBER,
                 'min'     => 0,
                 'max'     => 200,
@@ -463,7 +475,7 @@ class Advance_Post_Masonry extends Base{
         $layout_repeater->add_control(
             '_ua_size',
             [
-                'label'   => esc_html__( 'Item Size', 'ultraaddons' ),
+                'label'   => esc_html__( 'Item Size', 'ultraaddons-elementor-lite' ),
                 'type'    => Controls_Manager::SELECT,
                 'default' => '1:1',
                 'options' => ultraaddons_get_grid_metro_size(),
@@ -473,7 +485,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
             '_ua_grid_metro_layout',
             [
-                'label'       => esc_html__( 'Metro Layout', 'ultraaddons' ),
+                'label'       => esc_html__( 'Metro Layout', 'ultraaddons-elementor-lite' ),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $layout_repeater->get_controls(),
                 'default'     => [
@@ -493,7 +505,7 @@ class Advance_Post_Masonry extends Base{
         $this->start_controls_section(
             '_ua_blog_masonary_four_section',
             [
-                'label' => esc_html__('Masonary Layout (Skin 4)', 'ultraaddons'),
+                'label' => esc_html__('Masonary Layout (Skin 4)', 'ultraaddons-elementor-lite'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
                 'condition' => [
                     '_ua_blog_skin' => ['_skin_4'],
@@ -503,19 +515,19 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
             '_ua_masonary_type_four',
             [
-                'label'   => __('Masonary Type', 'ultraaddons'),
+                'label'   => __('Masonary Type', 'ultraaddons-elementor-lite'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'masonry',
                 'options' => [
-                    'metro'   => __('Metro', 'ultraaddons'),
-                    'masonry'       => __('Masonry', 'ultraaddons'),
+                    'metro'   => __('Metro', 'ultraaddons-elementor-lite'),
+                    'masonry'       => __('Masonry', 'ultraaddons-elementor-lite'),
                 ],
             ]
         );
         $this->add_responsive_control(
             '_ua_zigzag_height_four',
             [
-                'label'     => esc_html__( 'Zigzag Height', 'ultraaddons' ),
+                'label'     => esc_html__( 'Zigzag Height', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::NUMBER,
                 'step'      => 1, 
             ] 
@@ -524,7 +536,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
             '_ua_zigzag_reversed_four',
             [
-                'label'     => esc_html__( 'Zigzag Reversed?', 'ultraaddons' ),
+                'label'     => esc_html__( 'Zigzag Reversed?', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::SWITCHER,
                 
             ] 
@@ -534,7 +546,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
             '_ua_metro_image_size_width_four',
             [
-                'label'     => esc_html__( 'Image Size', 'ultraaddons' ),
+                'label'     => esc_html__( 'Image Size', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::NUMBER,
                 'step'      => 1,
                 'default'   => 480,
@@ -544,7 +556,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
             '_ua_metro_image_ratio_four',
             [
-                'label'     => esc_html__( 'Image Ratio', 'ultraaddons' ),
+                'label'     => esc_html__( 'Image Ratio', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::SLIDER,
                 'range'     => [
                     'px' => [
@@ -563,7 +575,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_responsive_control(
             '_ua_grid_columns_four',
             [
-                'label'          => esc_html__( 'Columns', 'ultraaddons' ),
+                'label'          => esc_html__( 'Columns', 'ultraaddons-elementor-lite' ),
                 'type'           => Controls_Manager::NUMBER,
                 'min'            => 1,
                 'max'            => 12,
@@ -577,7 +589,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_responsive_control(
             '_ua_grid_gutter_four',
             [
-                'label'   => esc_html__( 'Gutter', 'ultraaddons' ),
+                'label'   => esc_html__( 'Gutter', 'ultraaddons-elementor-lite' ),
                 'type'    => Controls_Manager::NUMBER,
                 'min'     => 0,
                 'max'     => 200,
@@ -593,7 +605,7 @@ class Advance_Post_Masonry extends Base{
         $this->start_controls_section(
             '_ua_blog_query_section',
             [
-                'label' => esc_html__('Query', 'ultraaddons'),
+                'label' => esc_html__('Query', 'ultraaddons-elementor-lite'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );        
@@ -601,7 +613,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
             '_ua_post_type',
             [
-                'label' => __( 'Source', 'ultraaddons' ),
+                'label' => __( 'Source', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::SELECT,
                 'options' => ultraaddons_get_post_types( [],[ 'elementor_library', 'attachment' ] ),
                 'default' => 'post',
@@ -610,9 +622,9 @@ class Advance_Post_Masonry extends Base{
 
         $this->add_control(
             '_ua_posts_per_page', [
-                'label'       => esc_html__('Posts Per Page', 'ultraaddons'),
+                'label'       => esc_html__('Posts Per Page', 'ultraaddons-elementor-lite'),
                 'type'        => Controls_Manager::NUMBER,
-                'placeholder' => esc_html__('Enter Number', 'ultraaddons'),
+                'placeholder' => esc_html__('Enter Number', 'ultraaddons-elementor-lite'),
                 'default'     => '6',
             ]
         );
@@ -620,19 +632,19 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
             '_ua_order_by',
             [
-                'label'   => __('Order By', 'ultraaddons'),
+                'label'   => __('Order By', 'ultraaddons-elementor-lite'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'date',
                 'options' => [
-                    'modified'   => __('Modified', 'ultraaddons'),
-                    'date'       => __('Date', 'ultraaddons'),
-                    'rand'       => __('Rand', 'ultraaddons'),
-                    'ID'         => __('ID', 'ultraaddons'),
-                    'title'      => __('Title', 'ultraaddons'),
-                    'author'     => __('Author', 'ultraaddons'),
-                    'name'       => __('Name', 'ultraaddons'),
-                    'parent'     => __('Parent', 'ultraaddons'),
-                    'menu_order' => __('Menu Order', 'ultraaddons'),
+                    'modified'   => __('Modified', 'ultraaddons-elementor-lite'),
+                    'date'       => __('Date', 'ultraaddons-elementor-lite'),
+                    'rand'       => __('Rand', 'ultraaddons-elementor-lite'),
+                    'ID'         => __('ID', 'ultraaddons-elementor-lite'),
+                    'title'      => __('Title', 'ultraaddons-elementor-lite'),
+                    'author'     => __('Author', 'ultraaddons-elementor-lite'),
+                    'name'       => __('Name', 'ultraaddons-elementor-lite'),
+                    'parent'     => __('Parent', 'ultraaddons-elementor-lite'),
+                    'menu_order' => __('Menu Order', 'ultraaddons-elementor-lite'),
                 ],
                 'separator' => 'before',
             ]
@@ -640,25 +652,25 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
             '_ua_order',
             [
-                'label'   => __('Order', 'ultraaddons'),
+                'label'   => __('Order', 'ultraaddons-elementor-lite'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'ase',
                 'options' => [
-                    'ase'  => __('Ascending Order', 'ultraaddons'),
-                    'desc' => __('Descending Order', 'ultraaddons'),
+                    'ase'  => __('Ascending Order', 'ultraaddons-elementor-lite'),
+                    'desc' => __('Descending Order', 'ultraaddons-elementor-lite'),
                 ],
             ]
         );
         $this->add_control(
             '_ua_ignore_sticky_posts', 
             [
-                'label' => __( 'Ignore Sticky Posts', 'ultraaddons' ),
+                'label' => __( 'Ignore Sticky Posts', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::SWITCHER,
                 'default' => 'yes',
                 'condition' => [
                     '_ua_post_type!' => ['page', 'by_id', 'category'],
                 ],
-                'description' => __( 'Sticky-posts ordering is visible on frontend only', 'ultraaddons' ),
+                'description' => __( 'Sticky-posts ordering is visible on frontend only', 'ultraaddons-elementor-lite' ),
             ]
         );
 
@@ -671,7 +683,7 @@ class Advance_Post_Masonry extends Base{
         $this->start_controls_section(
             '_ua_blog_style_general',
             [
-                'label' => esc_html__('General', 'ultraaddons'),
+                'label' => esc_html__('General', 'ultraaddons-elementor-lite'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -679,7 +691,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
             '_ua_blog_style_general_background',
             [
-                'label' => esc_html__('Background Color', 'ultraaddons'),
+                'label' => esc_html__('Background Color', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -695,7 +707,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_responsive_control(
             '_ua_blog_box_margin',
             [
-                'label' => esc_html__('Margin', 'ultraaddons'),
+                'label' => esc_html__('Margin', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -712,7 +724,7 @@ class Advance_Post_Masonry extends Base{
         $this->start_controls_section(
             '_ua_section_style_image',
             [
-                'label'     => __('Thumbnail', 'ultraaddons'),
+                'label'     => __('Thumbnail', 'ultraaddons-elementor-lite'),
                 'tab'       => Controls_Manager::TAB_STYLE,
                 'condition'   => [
                     '_ua_show_thumb' => ['yes'],
@@ -723,7 +735,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_responsive_control(
             '_free_ua_blog_image_width',
             [
-                'label' => __( 'Image Width', 'ultraaddons' ),
+                'label' => __( 'Image Width', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::SLIDER,
                 'range' => [
                     'px'  => [
@@ -765,7 +777,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_responsive_control(
             '_free_ua_blog_image_height',
             [
-                'label'      => __('Height', 'ultraaddons'),
+                'label'      => __('Height', 'ultraaddons-elementor-lite'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%', 'em', 'rem'],
                 'range'      => [
@@ -807,17 +819,17 @@ class Advance_Post_Masonry extends Base{
         $this->add_responsive_control(
             '_ua_blog_object-fit',
             [
-                'label' => __( 'Object Fit', 'ultraaddons' ),
+                'label' => __( 'Object Fit', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::SELECT,
 
                 'condition' => [
                     '_free_ua_blog_image_height[size]!' => '',
                 ],
                 'options' => [
-                    '' => __( 'Default', 'ultraaddons' ),
-                    'fill' => __( 'Fill', 'ultraaddons' ),
-                    'cover' => __( 'Cover', 'ultraaddons' ),
-                    'contain' => __( 'Contain', 'ultraaddons' ),
+                    '' => __( 'Default', 'ultraaddons-elementor-lite' ),
+                    'fill' => __( 'Fill', 'ultraaddons-elementor-lite' ),
+                    'cover' => __( 'Cover', 'ultraaddons-elementor-lite' ),
+                    'contain' => __( 'Contain', 'ultraaddons-elementor-lite' ),
                 ],
                 'default' => '',
                 'selectors' => [
@@ -829,10 +841,10 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
             '_ua_blog_image_ofset',
             [
-                'label'        => __('Offset', 'ultraaddons'),
+                'label'        => __('Offset', 'ultraaddons-elementor-lite'),
                 'type'         => Controls_Manager::POPOVER_TOGGLE,
-                'label_on'     => __('Custom', 'ultraaddons'),
-                'label_off'    => __('None', 'ultraaddons'),
+                'label_on'     => __('Custom', 'ultraaddons-elementor-lite'),
+                'label_off'    => __('None', 'ultraaddons-elementor-lite'),
                 'return_value' => 'yes',
             ]
         );
@@ -842,7 +854,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_responsive_control(
             'image_offset_x',
             [
-                'label'       => __('Offset Left', 'ultraaddons'),
+                'label'       => __('Offset Left', 'ultraaddons-elementor-lite'),
                 'type'        => Controls_Manager::SLIDER,
                 'size_units'  => ['px', '%', 'em', 'rem'],
                 'condition'   => [
@@ -861,7 +873,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_responsive_control(
             'image_offset_y',
             [
-                'label'      => __('Offset Top', 'ultraaddons'),
+                'label'      => __('Offset Top', 'ultraaddons-elementor-lite'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%', 'em', 'rem'],
                 
@@ -885,7 +897,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_responsive_control(
             '_ua_blog_image_pading',
             [
-                'label'      => __('Padding', 'ultraaddons'),
+                'label'      => __('Padding', 'ultraaddons-elementor-lite'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
@@ -897,7 +909,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_responsive_control(
             '_ua_blog_image_radius',
             [
-                'label'      => __('Border Radius', 'ultraaddons'),
+                'label'      => __('Border Radius', 'ultraaddons-elementor-lite'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['%', 'px', 'em'],
                 'selectors'  => [
@@ -915,7 +927,7 @@ class Advance_Post_Masonry extends Base{
         $this->start_controls_section(
             '_ua_blog_section_style_title',
             [
-                'label'     => __('Title', 'ultraaddons'),
+                'label'     => __('Title', 'ultraaddons-elementor-lite'),
                 'tab'       => Controls_Manager::TAB_STYLE,
                 'condition' => [
                     '_ua_show_title' => ['yes'],
@@ -926,14 +938,14 @@ class Advance_Post_Masonry extends Base{
 
         $this->start_controls_tab( '_ua_blog_title_style',
             [ 
-                'label' => esc_html__( 'Style', 'ultraaddons')
+                'label' => esc_html__( 'Style', 'ultraaddons-elementor-lite')
             ] 
         );
 
         $this->add_control(
         '_ua_blog_title_color',
             [
-                'label'     => __('Text Color', 'ultraaddons'),
+                'label'     => __('Text Color', 'ultraaddons-elementor-lite'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-post__area .ua-post__title a' => 'color: {{VALUE}};',
@@ -950,10 +962,10 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
             '_ua_blog_title_ofset',
             [
-                'label'        => __('Offset', 'ultraaddons'),
+                'label'        => __('Offset', 'ultraaddons-elementor-lite'),
                 'type'         => Controls_Manager::POPOVER_TOGGLE,
-                'label_on'     => __('Custom', 'ultraaddons'),
-                'label_off'    => __('None', 'ultraaddons'),
+                'label_on'     => __('Custom', 'ultraaddons-elementor-lite'),
+                'label_off'    => __('None', 'ultraaddons-elementor-lite'),
                 'return_value' => 'yes',
             ]
         );
@@ -963,7 +975,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_responsive_control(
             'blog_title_offset_x',
             [
-                'label'       => __('Offset Left', 'ultraaddons'),
+                'label'       => __('Offset Left', 'ultraaddons-elementor-lite'),
                 'type'        => Controls_Manager::SLIDER,
                 'size_units'  => ['px', '%', 'em', 'rem'],
                 'condition'   => [
@@ -982,7 +994,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_responsive_control(
             '_ua_blog_title_offset_y',
             [
-                'label'      => __('Offset Top', 'ultraaddons'),
+                'label'      => __('Offset Top', 'ultraaddons-elementor-lite'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%', 'em', 'rem'],
                 
@@ -1006,7 +1018,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_responsive_control(
             '_ua_blog_title_pading',
             [
-                'label'      => __('Padding', 'ultraaddons'),
+                'label'      => __('Padding', 'ultraaddons-elementor-lite'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
@@ -1017,14 +1029,14 @@ class Advance_Post_Masonry extends Base{
         $this->end_controls_tab();
         $this->start_controls_tab( '_ua_blog_title_hover',
             [ 
-                'label' => esc_html__( 'Hover', 'ultraaddons')
+                'label' => esc_html__( 'Hover', 'ultraaddons-elementor-lite')
             ] 
         );
         
         $this->add_control(
         '_ua_blog_title_h_color',
             [
-                'label'     => __('Color', 'ultraaddons'),
+                'label'     => __('Color', 'ultraaddons-elementor-lite'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-post__area .ua-post__title a:hover' => 'color: {{VALUE}};',
@@ -1043,7 +1055,7 @@ class Advance_Post_Masonry extends Base{
         $this->start_controls_section(
             '_ua_blog_section_style_content',
             [
-                'label'     => __('Content', 'ultraaddons'),
+                'label'     => __('Content', 'ultraaddons-elementor-lite'),
                 'tab'       => Controls_Manager::TAB_STYLE,
                 'condition'   => [
                     '_ua_blog_skin' => ['_skin_3', '_skin_4'],
@@ -1055,7 +1067,7 @@ class Advance_Post_Masonry extends Base{
          $this->add_control(
         '_ua_blog_content_color',
             [
-                'label'     => __('Text Color', 'ultraaddons'),
+                'label'     => __('Text Color', 'ultraaddons-elementor-lite'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-post__area .ua-post__content' => 'color: {{VALUE}};',
@@ -1074,7 +1086,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_responsive_control(
             '_ua_blog_content_pading',
             [
-                'label'      => __('Padding', 'ultraaddons'),
+                'label'      => __('Padding', 'ultraaddons-elementor-lite'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
@@ -1090,7 +1102,7 @@ class Advance_Post_Masonry extends Base{
         $this->start_controls_section(
             '_ua_blog_section_style_cat',
             [
-                'label'     => __('Category', 'ultraaddons'),
+                'label'     => __('Category', 'ultraaddons-elementor-lite'),
                 'tab'       => Controls_Manager::TAB_STYLE,
                 'condition'   => [
                     '_ua_blog_skin' => ['_skin_2', '_skin_3'],
@@ -1102,7 +1114,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
         '_ua_blog_cat_color',
             [
-                'label'     => __('Text Color', 'ultraaddons'),
+                'label'     => __('Text Color', 'ultraaddons-elementor-lite'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-post__area .ua-post__category' => 'color: {{VALUE}};',
@@ -1124,7 +1136,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
             '_ua_blog_cat_bg_color_after',
                 [
-                    'label'     => __('Background After Color', 'ultraaddons'),
+                    'label'     => __('Background After Color', 'ultraaddons-elementor-lite'),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .ua_blog_grid_masonory_post.style_8 .ua_tag:after' => 'background-color: {{VALUE}};',
@@ -1138,7 +1150,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
         '_ua_blog_cat_bg_color',
             [
-                'label'     => __('Background Color', 'ultraaddons'),
+                'label'     => __('Background Color', 'ultraaddons-elementor-lite'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-post__area .ua-post__category' => 'background-color: {{VALUE}};',
@@ -1149,10 +1161,10 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
             '_ua_blog_cat_ofset',
             [
-                'label'        => __('Offset', 'ultraaddons'),
+                'label'        => __('Offset', 'ultraaddons-elementor-lite'),
                 'type'         => Controls_Manager::POPOVER_TOGGLE,
-                'label_on'     => __('Custom', 'ultraaddons'),
-                'label_off'    => __('None', 'ultraaddons'),
+                'label_on'     => __('Custom', 'ultraaddons-elementor-lite'),
+                'label_off'    => __('None', 'ultraaddons-elementor-lite'),
                 'return_value' => 'yes',
             ]
         );
@@ -1162,7 +1174,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_responsive_control(
             '_ua_blog_cat_offset_x',
             [
-                'label'       => __('Offset Left', 'ultraaddons'),
+                'label'       => __('Offset Left', 'ultraaddons-elementor-lite'),
                 'type'        => Controls_Manager::SLIDER,
                 'size_units'  => ['px', '%', 'em', 'rem'],
                 'condition'   => [
@@ -1181,7 +1193,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_responsive_control(
             '_ua_blog_cat_offset_y',
             [
-                'label'      => __('Offset Top', 'ultraaddons'),
+                'label'      => __('Offset Top', 'ultraaddons-elementor-lite'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%', 'em', 'rem'],
                 
@@ -1205,7 +1217,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_responsive_control(
             '_ua_blog_cat_pading',
             [
-                'label'      => __('Padding', 'ultraaddons'),
+                'label'      => __('Padding', 'ultraaddons-elementor-lite'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
@@ -1216,7 +1228,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_responsive_control(
             '_ua_blog_cat_radius',
             [
-                'label'      => __('Border Radius', 'ultraaddons'),
+                'label'      => __('Border Radius', 'ultraaddons-elementor-lite'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['%', 'px', 'em'],
                 'selectors'  => [
@@ -1233,7 +1245,7 @@ class Advance_Post_Masonry extends Base{
         $this->start_controls_section(
             '_ua_blog_section_style_auth',
             [
-                'label'     => __('Author', 'ultraaddons'),
+                'label'     => __('Author', 'ultraaddons-elementor-lite'),
                 'tab'       => Controls_Manager::TAB_STYLE,
                 'condition'   => [
                     '_ua_blog_skin' => ['_skin_2', '_skin_3', '_skin_4'],
@@ -1247,14 +1259,14 @@ class Advance_Post_Masonry extends Base{
 
         $this->start_controls_tab( '_ua_blog_author_style',
             [ 
-                'label' => esc_html__( 'Normal', 'ultraaddons')
+                'label' => esc_html__( 'Normal', 'ultraaddons-elementor-lite')
             ] 
         );
 
         $this->add_control(
         '_ua_blog_auth_color',
             [
-                'label'     => __('Text Color', 'ultraaddons'),
+                'label'     => __('Text Color', 'ultraaddons-elementor-lite'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-post__area .ua-post_author a' => 'color: {{VALUE}};',
@@ -1272,10 +1284,10 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
             '_ua_blog_auth_ofset',
             [
-                'label'        => __('Offset', 'ultraaddons'),
+                'label'        => __('Offset', 'ultraaddons-elementor-lite'),
                 'type'         => Controls_Manager::POPOVER_TOGGLE,
-                'label_on'     => __('Custom', 'ultraaddons'),
-                'label_off'    => __('None', 'ultraaddons'),
+                'label_on'     => __('Custom', 'ultraaddons-elementor-lite'),
+                'label_off'    => __('None', 'ultraaddons-elementor-lite'),
                 'return_value' => 'yes',
             ]
         );
@@ -1285,7 +1297,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_responsive_control(
             '_ua_blog_auth_offset_x',
             [
-                'label'       => __('Offset Left', 'ultraaddons'),
+                'label'       => __('Offset Left', 'ultraaddons-elementor-lite'),
                 'type'        => Controls_Manager::SLIDER,
                 'size_units'  => ['px', '%', 'em', 'rem'],
                 'condition'   => [
@@ -1304,7 +1316,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_responsive_control(
             '_ua_blog_auth_offset_y',
             [
-                'label'      => __('Offset Top', 'ultraaddons'),
+                'label'      => __('Offset Top', 'ultraaddons-elementor-lite'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%', 'em', 'rem'],
                 
@@ -1328,7 +1340,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_responsive_control(
             '_ua_blog_auth_pading',
             [
-                'label'      => __('Padding', 'ultraaddons'),
+                'label'      => __('Padding', 'ultraaddons-elementor-lite'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
@@ -1339,7 +1351,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_responsive_control(
             '_ua_blog_auth_radius',
             [
-                'label'      => __('Border Radius', 'ultraaddons'),
+                'label'      => __('Border Radius', 'ultraaddons-elementor-lite'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['%', 'px', 'em'],
                 'selectors'  => [
@@ -1353,14 +1365,14 @@ class Advance_Post_Masonry extends Base{
 
         $this->start_controls_tab( '_ua_blog_author_hover',
             [ 
-                'label' => esc_html__( 'Hover', 'ultraaddons')
+                'label' => esc_html__( 'Hover', 'ultraaddons-elementor-lite')
             ] 
         );
         
         $this->add_control(
         '_ua_blog_auth_h_color',
             [
-                'label'     => __('Color', 'ultraaddons'),
+                'label'     => __('Color', 'ultraaddons-elementor-lite'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-post__area .ua-post_author a:hover' => 'color: {{VALUE}};',
@@ -1380,7 +1392,7 @@ class Advance_Post_Masonry extends Base{
         $this->start_controls_section(
             '_ua_blog_section_style_date',
             [
-                'label'     => __('Date', 'ultraaddons'),
+                'label'     => __('Date', 'ultraaddons-elementor-lite'),
                 'tab'       => Controls_Manager::TAB_STYLE,
                 'condition' => [
                     '_ua_show_date' => ['yes'],
@@ -1392,13 +1404,13 @@ class Advance_Post_Masonry extends Base{
 
         $this->start_controls_tab( '_ua_blog_date_style',
             [ 
-                'label' => esc_html__( 'Normal', 'ultraaddons')
+                'label' => esc_html__( 'Normal', 'ultraaddons-elementor-lite')
             ] 
         );
         $this->add_control(
         '_ua_blog_date_color',
             [
-                'label'     => __('Text Color', 'ultraaddons'),
+                'label'     => __('Text Color', 'ultraaddons-elementor-lite'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-post__area .ua-post__date a' => 'color: {{VALUE}};',
@@ -1415,10 +1427,10 @@ class Advance_Post_Masonry extends Base{
         $this->add_control(
             '_ua_blog_date_ofset',
             [
-                'label'        => __('Offset', 'ultraaddons'),
+                'label'        => __('Offset', 'ultraaddons-elementor-lite'),
                 'type'         => Controls_Manager::POPOVER_TOGGLE,
-                'label_on'     => __('Custom', 'ultraaddons'),
-                'label_off'    => __('None', 'ultraaddons'),
+                'label_on'     => __('Custom', 'ultraaddons-elementor-lite'),
+                'label_off'    => __('None', 'ultraaddons-elementor-lite'),
                 'return_value' => 'yes',
             ]
         );
@@ -1428,7 +1440,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_responsive_control(
             '_ua_blog_date_offset_x',
             [
-                'label'       => __('Offset Left', 'ultraaddons'),
+                'label'       => __('Offset Left', 'ultraaddons-elementor-lite'),
                 'type'        => Controls_Manager::SLIDER,
                 'size_units'  => ['px', '%', 'em', 'rem'],
                 'condition'   => [
@@ -1447,7 +1459,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_responsive_control(
             '_ua_blog_date_offset_y',
             [
-                'label'      => __('Offset Top', 'ultraaddons'),
+                'label'      => __('Offset Top', 'ultraaddons-elementor-lite'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%', 'em', 'rem'],
                 
@@ -1471,7 +1483,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_responsive_control(
             '_ua_blog_date_pading',
             [
-                'label'      => __('Padding', 'ultraaddons'),
+                'label'      => __('Padding', 'ultraaddons-elementor-lite'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
@@ -1482,7 +1494,7 @@ class Advance_Post_Masonry extends Base{
         $this->add_responsive_control(
             '_ua_blog_date_radius',
             [
-                'label'      => __('Border Radius', 'ultraaddons'),
+                'label'      => __('Border Radius', 'ultraaddons-elementor-lite'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['%', 'px', 'em'],
                 'selectors'  => [
@@ -1496,14 +1508,14 @@ class Advance_Post_Masonry extends Base{
 
         $this->start_controls_tab( '_ua_blog_date_hover',
             [ 
-                'label' => esc_html__( 'Hover', 'ultraaddons')
+                'label' => esc_html__( 'Hover', 'ultraaddons-elementor-lite')
             ] 
         );
         
         $this->add_control(
         '_ua_blog_date_h_color',
             [
-                'label'     => __('Color', 'ultraaddons'),
+                'label'     => __('Color', 'ultraaddons-elementor-lite'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-post__area .ua-post__date a:hover' => 'color: {{VALUE}};',
@@ -1529,7 +1541,7 @@ class Advance_Post_Masonry extends Base{
         $tag = !empty( $settings['_ua_title_tag'] ) ? $settings['_ua_title_tag'] : 'h3';
         ?>
     
-    <<?php echo $tag; ?> class="ua_title ua-post__title"> <a href="<?php echo $this->current_permalink; ?>" <?php echo $optional_attributes_html; ?>><?php the_title();?></a> </<?php echo $tag; ?>>
+    <<?php echo esc_attr( $tag ); ?> class="ua_title ua-post__title"> <a href="<?php echo esc_url( $this->current_permalink ); ?>" <?php echo esc_attr( $optional_attributes_html ); ?>><?php the_title();?></a> </<?php echo esc_attr( $tag ); ?>>
     <?php
     }
     protected function render_thumbnail($_image_width, $_image_height){
@@ -1588,7 +1600,7 @@ class Advance_Post_Masonry extends Base{
             <?php 
             if ( ! has_excerpt() ) {
                 echo '<p>';
-                echo wp_trim_words( get_the_content(), 10, '...' );
+                echo esc_html( wp_trim_words( get_the_content(), 10, '...' ) );
                echo '</p>';
             } else { 
                 the_excerpt();
@@ -1602,32 +1614,32 @@ class Advance_Post_Masonry extends Base{
         if (!$settings['_ua_show_category']) {
             return;
         }
-        $output = '';
+        $ultraaddons_output = '';
         $class = $settings['_ua_blog_skin'] == '_skin_2' || $settings['_ua_blog_skin'] == '_skin_3' ? 'ua_tag ua-post__category' : 'd-inline-block ua_tag sa ua-post__category';
         if( 'category' == $taxonomy ) {
             if( $type == 'single' ){
-                $category = get_the_category();
-                if( !empty( $category ) ) {
-                    $output = '<a href="' . esc_url( get_category_link( $category[0]->term_id ) ) .'" class="'.$class.'">'. esc_html( $category[0]->cat_name ) .'</a>';
+                $ultraaddons_category = get_the_category();
+                if( !empty( $ultraaddons_category ) ) {
+                    $ultraaddons_output = '<a href="' . esc_url( get_category_link( $ultraaddons_category[0]->term_id ) ) .'" class="'.$class.'">'. esc_html( $ultraaddons_category[0]->cat_name ) .'</a>';
                 }
             }
             else{
-                $category = (object) get_the_category_list(', ');
-                if( !empty( $category ) ) {
-                    $output = '<a href="#" class="'.$class.'">'. esc_html( $category[0]->cat_name ) .'</a>';
+                $ultraaddons_category = (object) get_the_category_list(', ');
+                if( !empty( $ultraaddons_category ) ) {
+                    $ultraaddons_output = '<a href="#" class="'.$class.'">'. esc_html( $ultraaddons_category[0]->cat_name ) .'</a>';
                 }
                 
             }
         }
         else {
-            $terms = get_the_terms( get_the_ID(), $taxonomy );
-            $term_link = get_term_link( $terms[0], $taxonomy );
+            $ultraaddons_terms = get_the_terms( get_the_ID(), $taxonomy );
+            $term_link = get_term_link( $ultraaddons_terms[0], $taxonomy );
 
-            if( !empty( $terms ) ) {
-                $output = '<a href="' . esc_url( $term_link ) .'" class="'.$class.'">'. esc_html( $terms[0]->name ) .'</a>';
+            if( !empty( $ultraaddons_terms ) ) {
+                $ultraaddons_output = '<a href="' . esc_url( $term_link ) .'" class="'.$class.'">'. esc_html( $ultraaddons_terms[0]->name ) .'</a>';
             }
         }
-        echo $output;
+        echo wp_kses_post( $ultraaddons_output );
     }
     protected function render_author(){
         $settings = $this->get_settings_for_display();
@@ -1642,7 +1654,7 @@ class Advance_Post_Masonry extends Base{
      <?php
     }
     protected function render_avatar() {
-        $args = array(
+        $ultraaddons_args = array(
         'size'          => 45,
         'height'        => 45,
         'width'         => 45,
@@ -1650,7 +1662,7 @@ class Advance_Post_Masonry extends Base{
     );
         ?>
         <div class="ua-post__avatar">
-            <?php echo get_avatar( get_the_author_meta( 'ID' ), 45, '', get_the_author_meta( 'display_name' ), $args ); ?>
+            <?php echo get_avatar( get_the_author_meta( 'ID' ), 45, '', get_the_author_meta( 'display_name' ), $ultraaddons_args ); ?>
         </div>
         <?php
     }
@@ -1660,23 +1672,23 @@ class Advance_Post_Masonry extends Base{
             return;
         }
         $author_prefix_text = $settings['_ua_blog_skin'] == '_skin_1' ? ' By' : '';
-        echo '<p class="ua_date ua-post__date"><a href="#">'.apply_filters('the_date', get_the_date(), get_option('date_format'), '', ''). $author_prefix_text . '</a></p>';
+        echo '<p class="ua_date ua-post__date"><a href="#">'. esc_html( get_the_date() . $author_prefix_text ) . '</a></p>';
     }
     protected function render_tag() {    
         $settings = $this->get_settings_for_display();
         if (!$settings['_ua_show_tag']) {
             return;
         }
-        $output = '';
+        $ultraaddons_output = '';
         $post_tags = get_the_tags();
         $separator = ', ';
         if (!empty($post_tags)) {
-            $output .= '<ul class="tag_list">';
+            $ultraaddons_output .= '<ul class="tag_list">';
             foreach ($post_tags as $tag) {
-                $output .= '<li><a href="' . get_tag_link($tag->term_id) . '">' . $tag->name . '</a></li>' . $separator;
+                $ultraaddons_output .= '<li><a href="' . get_tag_link($tag->term_id) . '">' . $tag->name . '</a></li>' . $separator;
             }
-             $output .= '</ul>';
-            echo trim($output, $separator);
+             $ultraaddons_output .= '</ul>';
+            echo wp_kses_post( $ultraaddons_output );
 
         }
     }
@@ -1704,8 +1716,8 @@ protected function render_read_more() {
     $optional_attributes_html = $this->get_optional_link_attributes_html();
 
     ?>
-        <a class="ua-post__read-more read_more_btn" href="<?php echo $this->current_permalink; ?>" <?php echo $optional_attributes_html; ?>>
-            <?php echo $settings['_ua_read_more_text']; ?>
+        <a class="ua-post__read-more read_more_btn" href="<?php echo esc_url( $this->current_permalink ); ?>" <?php echo esc_attr( $optional_attributes_html ); ?>>
+            <?php echo esc_html( $settings['_ua_read_more_text'] ); ?>
         </a>
     <?php
 }
@@ -1865,6 +1877,7 @@ protected function get_grid_layout_four_options( array $settings ) {
         ];
         if ( !empty( $tax_query ) ) {
             $tax_query = array_merge( ['relation' => 'AND'], $tax_query );
+            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
             $query_args = array_merge( $query_args, ['tax_query' => $tax_query] );
         }
         
@@ -1930,8 +1943,8 @@ protected function get_grid_layout_four_options( array $settings ) {
         if ( isset( $settings['_ua_grid_metro_layout'] ) && !empty($settings['_ua_grid_metro_layout']) ) {
             $metro_layout = [];
 
-        foreach ( $settings['_ua_grid_metro_layout'] as $key => $value ) {
-            $metro_layout[] = $value['size'];
+        foreach ( $settings['_ua_grid_metro_layout'] as $ultraaddons_key => $ultraaddons_value ) {
+            $metro_layout[] = $ultraaddons_value['size'];
             
             }
         } else {
@@ -1979,11 +1992,11 @@ protected function get_grid_layout_four_options( array $settings ) {
                             $_image_height *= 2;
                         }
                         ?>
-                        <div class="<?php echo $classes; ?>" data-width="<?php echo esc_attr( $ratioW ); ?>" data-height="<?php echo esc_attr( $ratioH ); ?>">
+                        <div class="<?php echo esc_attr( $classes ); ?>" data-width="<?php echo esc_attr( $ratioW ); ?>" data-height="<?php echo esc_attr( $ratioH ); ?>">
 
                             <div class="grid-item-height" style="height: 950px;">
                                 <div class="grid-item-content ua_masonry_blog_post zoom_in_effect ua-post__area blog_grid_masonory">
-                                    <a href="<?php echo $this->current_permalink; ?>" class="ua_masonry_blog_thumb">
+                                    <a href="<?php echo esc_url( $this->current_permalink ); ?>" class="ua_masonry_blog_thumb">
                                         <?php $this->render_thumbnails(); ?>
                                     </a>
                                     <?php $this->render_category();  ?>
@@ -2042,13 +2055,13 @@ protected function get_grid_layout_four_options( array $settings ) {
               $this->current_permalink = get_permalink();
 
         ?>
-         <div class="ua_col_lg_<?php echo $columns; ?> ua_col_sm_<?php echo $settings['_ua_blog_columns_tablet']; ?>">
+         <div class="ua_col_lg_<?php echo esc_attr( $columns ); ?> ua_col_sm_<?php echo esc_attr( $settings['_ua_blog_columns_tablet'] ); ?>">
             
             <div class="ua-post__area blog_grid_masonory style_5 zoom_in_effect">
                 <?php 
                 if ( $settings[ '_ua_show_thumb' ] == 'yes'):
                  ?>
-                <a href="<?php echo $this->current_permalink; ?>" class="post_thumb">
+                <a href="<?php echo esc_url( $this->current_permalink ); ?>" class="post_thumb">
                     <?php $this->render_thumbnails();?>
                 </a>
             <?php endif; ?>
@@ -2086,10 +2099,10 @@ protected function get_grid_layout_four_options( array $settings ) {
               $query_posts->the_post();
               $this->current_permalink = get_permalink();
         ?>
-         <div class="ua_col_lg_<?php echo $columns; ?> ua_col_sm_<?php echo $settings['_ua_blog_columns_tablet']; ?>">
+         <div class="ua_col_lg_<?php echo esc_attr( $columns ); ?> ua_col_sm_<?php echo esc_attr( $settings['_ua_blog_columns_tablet'] ); ?>">
             
             <div class="ua-post__area ua_blog_grid_masonory_post style_8 zoom_in_effect">
-                 <a href="<?php echo $this->current_permalink; ?>" class="ua_blog_grid_masonory_img">
+                 <a href="<?php echo esc_url( $this->current_permalink ); ?>" class="ua_blog_grid_masonory_img">
                     <?php $this->render_thumbnails();?>
                 </a>
                 <div class="ua_post_box_content">
@@ -2150,10 +2163,10 @@ protected function get_grid_layout_four_options( array $settings ) {
                         $_image_height = $_image_width * isset($settings['_ua_metro_image_ratio_four']['size'])? $settings['_ua_metro_image_ratio_four']['size'] : '';
 
                     ?>
-                      <div class="<?php echo $classes; ?>">
+                      <div class="<?php echo esc_attr( $classes ); ?>">
                         
                         <div class="ua-post__area ua_blog_grid_masonory_post style_6">
-                            <a href="<?php echo $this->current_permalink; ?>" class="ua_blog_grid_masonory_post_thumb">
+                            <a href="<?php echo esc_url( $this->current_permalink ); ?>" class="ua_blog_grid_masonory_post_thumb">
                                <?php $this->render_thumbnails(); ?>
                             </a>
                             <div class="ua_blog_grid_masonory_post_inner">

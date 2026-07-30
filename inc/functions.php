@@ -1,5 +1,7 @@
 <?php
-
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly.
+}
 use UltraAddons\Extensions\Custom_Fonts as Ex_Fonts; //Ex - Extensions
 use UltraAddons\Core\Custom_Fonts_Handle as Fonts;
 
@@ -13,11 +15,11 @@ defined( 'ABSPATH' ) || die();
  * @since 1.0.0.2
  * @by Saiful
  * 
- * @param string $class_name
+ * @param string $ultraaddons_class_name
  * @param type $object
  * @return string Full URL link for Class
  */
-function ultraaddons_help_url( $class_name, $object = false ){
+function ultraaddons_help_url( $ultraaddons_class_name, $object = false ){
     
     /**
      * using Constant: ULTRA_ADDONS_WIDGET_HELP_ULR 
@@ -25,7 +27,7 @@ function ultraaddons_help_url( $class_name, $object = false ){
      * 
      * @since 1.0.0.3
      */
-    return ULTRA_ADDONS_WIDGET_HELP_ULR . $class_name;
+    return ULTRA_ADDONS_WIDGET_HELP_ULR . $ultraaddons_class_name;
 }
 
 if( ! function_exists( 'ultraaddons_is_cf7_activated' ) ){
@@ -73,11 +75,11 @@ if( !function_exists( 'ultraaddons_get_current_user_display_name' ) ){
      */
     function ultraaddons_get_current_user_display_name() {
             $user = wp_get_current_user();
-            $name = 'user';
+            $ultraaddons_name = 'user';
             if ( $user->exists() && $user->display_name ) {
-                    $name = $user->display_name;
+                    $ultraaddons_name = $user->display_name;
             }
-            return $name;
+            return $ultraaddons_name;
     }
 }
 if( ! function_exists( 'ultraaddons_do_shortcode' ) ){
@@ -204,17 +206,17 @@ function ultraaddons_get_placeholder_image_src( $image = '' ) {
 * Checks a control value for being empty, including a string of '0' not covered by PHP's empty().
 *
 * @param mixed $source
-* @param bool|string $key
+* @param bool|string $ultraaddons_key
 *
 * @return bool
 */
-function ultraaddons_widget_data_is_empty( $source, $key = false ) {
+function ultraaddons_widget_data_is_empty( $source, $ultraaddons_key = false ) {
        if ( is_array( $source ) ) {
-               if ( ! isset( $source[ $key ] ) ) {
+               if ( ! isset( $source[ $ultraaddons_key ] ) ) {
                        return true;
                }
 
-               $source = $source[ $key ];
+               $source = $source[ $ultraaddons_key ];
        }
 
        return '0' !== $source && empty( $source );
@@ -230,11 +232,11 @@ function ultraaddons_widget_data_is_empty( $source, $key = false ) {
 function ultraaddons_woocommerce_cart_link() {
         if( ! WC()->cart ) return;
         ?>
-        <a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'ultraaddons' ); ?>">
+        <a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'ultraaddons-elementor-lite' ); ?>">
             <?php
             $item_cmount = WC()->cart->get_cart_contents_count();
             /* translators: number of items in the mini cart. */
-            $item_count_text = _n( 'item', 'items', $item_cmount, 'ultraaddons' );
+            $item_count_text = _n( 'item', 'items', $item_cmount, 'ultraaddons-elementor-lite' );
             $item_count_text = apply_filters( 'ultraaddons_item_text', $item_count_text, $item_cmount );
             if( $item_cmount > 0 ){
             ?>
@@ -378,23 +380,23 @@ function ultraaddons_addons_kses( $string = '', $level = 'basic' ) {
 /**
  * Returns all registered post types
  */
-function ultraaddons_get_post_types($args = [], $array_diff_key = []){
+function ultraaddons_get_post_types($ultraaddons_args = [], $array_diff_key = []){
     $post_type_args = [
         'public' => true,
         'show_in_nav_menus' => true
     ];
 
-    if (!empty($args['post_type'])) {
-        $post_type_args['name'] = $args['post_type'];
-        unset($args['post_type']);
+    if (!empty($ultraaddons_args['post_type'])) {
+        $post_type_args['name'] = $ultraaddons_args['post_type'];
+        unset($ultraaddons_args['post_type']);
     }
 
-    $post_type_args = wp_parse_args($post_type_args, $args);
+    $post_type_args = wp_parse_args($post_type_args, $ultraaddons_args);
     $_post_types = get_post_types($post_type_args, 'objects');
 
     $post_types = array(
-        'by_id'    => __('Manual Selection', 'ultraaddons'),
-        'category' => __('Category', 'ultraaddons'),
+        'by_id'    => __('Manual Selection', 'ultraaddons-elementor-lite'),
+        'category' => __('Category', 'ultraaddons-elementor-lite'),
     );
 
     foreach ($_post_types as $post_type => $object) {
@@ -408,25 +410,25 @@ function ultraaddons_get_post_types($args = [], $array_diff_key = []){
 
 function ultraaddons_get_grid_metro_size() {
     return [
-        '1:1'   => esc_html__( 'Width 1 - Height 1', 'ultraaddon' ),
-        '1:2'   => esc_html__( 'Width 1 - Height 2', 'ultraaddon' ),
-        '1:0.7' => esc_html__( 'Width 1 - Height 70%', 'ultraaddon' ),
-        '1:1.3' => esc_html__( 'Width 1 - Height 130%', 'ultraaddon' ),
-        '2:1'   => esc_html__( 'Width 2 - Height 1', 'ultraaddon' ),
-        '2:2'   => esc_html__( 'Width 2 - Height 2', 'ultraaddon' ),
+        '1:1'   => esc_html__( 'Width 1 - Height 1', 'ultraaddons-elementor-lite' ),
+        '1:2'   => esc_html__( 'Width 1 - Height 2', 'ultraaddons-elementor-lite' ),
+        '1:0.7' => esc_html__( 'Width 1 - Height 70%', 'ultraaddons-elementor-lite' ),
+        '1:1.3' => esc_html__( 'Width 1 - Height 130%', 'ultraaddons-elementor-lite' ),
+        '2:1'   => esc_html__( 'Width 2 - Height 1', 'ultraaddons-elementor-lite' ),
+        '2:2'   => esc_html__( 'Width 2 - Height 2', 'ultraaddons-elementor-lite' ),
     ];
 }
 
-function ultraaddons_get_the_post_thumbnail( $args = array() ) {
-    if ( ! empty( $args['post_id'] ) ) {
-        $args['id'] = get_post_thumbnail_id( $args['post_id'] );
+function ultraaddons_get_the_post_thumbnail( $ultraaddons_args = array() ) {
+    if ( ! empty( $ultraaddons_args['post_id'] ) ) {
+        $ultraaddons_args['id'] = get_post_thumbnail_id( $ultraaddons_args['post_id'] );
     } else {
-        $args['id'] = get_post_thumbnail_id( get_the_ID() );
+        $ultraaddons_args['id'] = get_post_thumbnail_id( get_the_ID() );
     }
-    return ultraaddons_get_attachment_by_id( $args );
+    return ultraaddons_get_attachment_by_id( $ultraaddons_args );
 }
 
-function ultraaddons_get_attachment_by_id( $args = array() ) {
+function ultraaddons_get_attachment_by_id( $ultraaddons_args = array() ) {
     $defaults = array(
         'id'     => '',
         'size'   => 'full',
@@ -434,13 +436,13 @@ function ultraaddons_get_attachment_by_id( $args = array() ) {
         'height' => '',
         'crop'   => true,
     );
-    $args = wp_parse_args( $args, $defaults );
-    $image_full = ultraaddons_get_the_post_thumbnail( $args['id'] );
+    $ultraaddons_args = wp_parse_args( $ultraaddons_args, $defaults );
+    $image_full = ultraaddons_get_the_post_thumbnail( $ultraaddons_args['id'] );
     if ( $image_full === false ) {
         return false;
     }
     $url           = $image_full['src'];
-    $cropped_image = ultraaddons_get_image_cropped_url( $url, $args );
+    $cropped_image = ultraaddons_get_image_cropped_url( $url, $ultraaddons_args );
     if ( $cropped_image[0] === '' ) {
         return '';
     }
@@ -456,7 +458,7 @@ function ultraaddons_get_attachment_by_id( $args = array() ) {
     $image = ultraaddons_build_img_tag( $image_attributes );
 
     // Wrap img with caption tags.
-    if ( isset( $args['caption_enable'] ) && $args['caption_enable'] === true && $image_full['caption'] !== '' ) {
+    if ( isset( $ultraaddons_args['caption_enable'] ) && $ultraaddons_args['caption_enable'] === true && $image_full['caption'] !== '' ) {
         $before = '<figure>';
         $after  = '<figcaption class="wp-caption-text gallery-caption">' . $image_full['caption'] . '</figcaption></figure>';
         $image = $before . $image . $after;
@@ -471,16 +473,16 @@ function ultraaddons_build_img_tag( $attributes = array() ) {
     }
     $attributes_str = '';
     if ( ! empty( $attributes ) ) {
-        foreach ( $attributes as $attribute => $value ) {
-            $attributes_str .= ' ' . $attribute . '="' . esc_attr( $value ) . '"';
+        foreach ( $attributes as $attribute => $ultraaddons_value ) {
+            $attributes_str .= ' ' . $attribute . '="' . esc_attr( $ultraaddons_value ) . '"';
         }
     }
     $image = '<img ' . $attributes_str . ' />';
     return $image;
 }
 
-function ultraaddons_get_image_cropped_url( $url, $args = array() ) {
-    extract( $args );
+function ultraaddons_get_image_cropped_url( $url, $ultraaddons_args = array() ) {
+    extract( $ultraaddons_args );
     if ( $url === false ) {
         return array( 0 => '' );
     }
@@ -490,7 +492,7 @@ function ultraaddons_get_image_cropped_url( $url, $args = array() ) {
     }
 
     if ( $size !== 'custom' && ! preg_match( '/(\d+)x(\d+)/', $size ) ) {
-        $attachment_url = wp_get_attachment_image_url( $args['id'], $size );
+        $attachment_url = wp_get_attachment_image_url( $ultraaddons_args['id'], $size );
 
         if ( ! $attachment_url ) {
             return array( 0 => $url );
@@ -532,7 +534,7 @@ function ultraaddons_get_image_cropped_url( $url, $args = array() ) {
 }
 
 function ultraaddons_image_placeholder( $width, $height ) {
-    echo '<img src="' . ULTRA_ADDONS_ASSETS . 'images/no-image.png" width="'.$width.'" height="'.$width.'" alt="' . esc_attr__( 'Thumbnail', 'droit-elementor-addons' ) . '"/>';
+    echo '<img src="' . esc_url( ULTRA_ADDONS_ASSETS ) . 'images/no-image.png" width="'. esc_attr( $width ) .'" height="'. esc_attr( $height ) .'" alt="' . esc_attr__( 'Thumbnail', 'ultraaddons-elementor-lite' ) . '"/>';
 }
 
 /**
@@ -640,18 +642,6 @@ function ultraaddons_theme_demo(){
     return new \UltraAddons\Base\Theme_Demo;
 }
 
-if ( ! function_exists( 'wp_body_open' ) ) {
-	/**
-	 * Adds backwards compatibility for wp_body_open() introduced with WordPress 5.2
-	 *
-	 * @since 1.1.4.2
-	 * @see https://developer.wordpress.org/reference/functions/wp_body_open/
-	 * @return void
-	 */
-	function wp_body_open() {
-		do_action( 'wp_body_open' );
-	}
-}
 
 /**
  * For navigation menu widget replace submenu class name 
@@ -682,12 +672,14 @@ if( class_exists( 'FrmForm' ) ){
     function ultraaddons_get_formidable_forms(){
     
             $query   = array();
+            // It's needd for frm forms dropdown
+            //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
             $where   = apply_filters( 'frm_forms_dropdown', $query, 'form' );
             $forms   = FrmForm::get_published_forms( $where, 999, 'exclude' );
             $options = array( '' => '' );
 
             foreach ( $forms as $form ) {
-                $form_title           = '' === $form->name ? __( '(no title)', 'ultraaddons' ) : FrmAppHelper::truncate( $form->name, 50 );
+                $form_title           = '' === $form->name ? __( '(no title)', 'ultraaddons-elementor-lite' ) : FrmAppHelper::truncate( $form->name, 50 );
                 $options[ $form->id ] = esc_html( $form_title );
             }
             return $options;
@@ -704,21 +696,21 @@ if( class_exists( 'FrmForm' ) ){
  */
 if( class_exists( 'WPForms\WPForms' ) ){
     function ultraaddons_get_wpform_list(){
-    $args = array(
+    $ultraaddons_args = array(
         'post_type' => 'wpforms', 
         'posts_per_page' => -1
     );
 
         $formlist=[];
         
-        if( $post = get_posts($args)){
-            $formlist[0] = esc_html__('Select WPforms', 'ultraaddons');
+        if( $post = get_posts($ultraaddons_args)){
+            $formlist[0] = esc_html__('Select WPforms', 'ultraaddons-elementor-lite');
             foreach ( $post as $posts ) {
                 (int)$formlist[$posts->ID] = $posts->post_title;
             }
         }
         else{
-            (int)$formlist['0'] = esc_html__('No wpforms found!', 'ultraaddons');
+            (int)$formlist['0'] = esc_html__('No wpforms found!', 'ultraaddons-elementor-lite');
         }
     return $formlist;
     }
@@ -738,14 +730,14 @@ if( class_exists( 'WPForms\WPForms' ) ){
 
             if (!empty($contact_forms) && !is_wp_error($contact_forms)) {
 
-                $options[0] = esc_html__('Select Ninja Form', 'ultraaddons');
+                $options[0] = esc_html__('Select Ninja Form', 'ultraaddons-elementor-lite');
 
                 foreach ($contact_forms as $form) {
                     $options[$form->get_id()] = $form->get_setting('title');
                 }
             }
         } else {
-            $options[0] = esc_html__('No form found. Create a Form First', 'ultraaddons');
+            $options[0] = esc_html__('No form found. Create a Form First', 'ultraaddons-elementor-lite');
         }
 
         return $options;
@@ -764,13 +756,13 @@ function ultraaddons_get_caldera_form_list(){
         $contact_forms = \Caldera_Forms_Forms::get_forms(true, true);
 
         if (!empty($contact_forms) && !is_wp_error($contact_forms)) {
-            $options[0] = esc_html__('Select Caldera Form', 'ultraaddons');
+            $options[0] = esc_html__('Select Caldera Form', 'ultraaddons-elementor-lite');
             foreach ($contact_forms as $form) {
                 $options[$form['ID']] = $form['name'];
             }
         }
     } else {
-        $options[0] = esc_html__('Create a Form First', 'ultraaddons');
+        $options[0] = esc_html__('Create a Form First', 'ultraaddons-elementor-lite');
     }
 
     return $options;
@@ -794,12 +786,12 @@ function ultraaddons_get_weform_list(){
     $options = array();
 
     if (!empty($weforms_list) && !is_wp_error($weforms_list)) {
-        $options[0] = esc_html__('Select weForm', 'ultraaddons');
+        $options[0] = esc_html__('Select weForm', 'ultraaddons-elementor-lite');
         foreach ($weforms_list as $form_list) {
             $options[$form_list->ID] = $form_list->post_title;
         }
     } else {
-        $options[0] = esc_html__('Create a Form First', 'ultraaddons');
+        $options[0] = esc_html__('Create a Form First', 'ultraaddons-elementor-lite');
     }
 
     return $options;
@@ -810,15 +802,15 @@ function ultraaddons_optimize_array( $array ){
 
     if( ! is_array( $array ) ) return $array;
 
-    foreach ($array as $key => &$value) {
-        if ( ! is_bool( $value ) && empty($value)) {
-           unset($array[$key]);
+    foreach ($array as $ultraaddons_key => &$ultraaddons_value) {
+        if ( ! is_bool( $ultraaddons_value ) && empty($ultraaddons_value)) {
+           unset($array[$ultraaddons_key]);
         }
         else {
-           if (is_array($value)) {
-              $value = ultraaddons_optimize_array($value);
-              if (! is_bool( $value ) && empty($value)) {
-                 unset($array[$key]);
+           if (is_array($ultraaddons_value)) {
+              $ultraaddons_value = ultraaddons_optimize_array($ultraaddons_value);
+              if (! is_bool( $ultraaddons_value ) && empty($ultraaddons_value)) {
+                 unset($array[$ultraaddons_key]);
               }
            }
         }

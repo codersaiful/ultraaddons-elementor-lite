@@ -23,7 +23,7 @@ class Offer_Card extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua','offer', 'card', 'product card', 'product board', 'buy' ];
+        return [ 'ultraaddons-elementor-lite', 'ua','offer', 'card', 'product card', 'product board', 'buy' ];
     }
    
     /**
@@ -79,7 +79,7 @@ class Offer_Card extends Base{
         $this->add_render_attribute( 'offer-image', 'class', 'ua-offer-img' );
         $this->add_render_attribute( 'offer-image', 'class', $image_position );
          ?>
-        <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
+        <div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
             <div class="ua-offer-inner">
                 <div class="ua-offer-texts">
                     <?php if( ! empty( $highlighted_title ) ) : ?>
@@ -91,11 +91,11 @@ class Offer_Card extends Base{
                     <?php endif; ?>
                     
                     <?php if( ! empty( $settings['link']['url'] ) ) : ?>
-                    <a <?php echo $this->get_render_attribute_string( 'button' ); ?>><?php echo esc_html( $button_text ); ?></a>
+                    <a <?php echo esc_attr( $this->get_render_attribute_string( 'button' ) ); ?>><?php echo esc_html( $button_text ); ?></a>
                     <?php endif; ?>
                 </div>
                 <?php if( $image ){ ?>
-                <div <?php echo $this->get_render_attribute_string( 'offer-image' ); ?>>
+                <div <?php echo esc_attr( $this->get_render_attribute_string( 'offer-image' ) ); ?>>
                     <img src="<?php echo esc_url( $image ); ?>" alt="">
                 </div>
                 <?php } ?>
@@ -116,7 +116,7 @@ class Offer_Card extends Base{
         $this->start_controls_section(
             'general_content',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -124,11 +124,11 @@ class Offer_Card extends Base{
         $this->add_responsive_control(
             'orientation',
                 [
-                    'label'         => esc_html__( 'Orientation', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Orientation', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::SELECT,
                     'options'       => [
-                            'portrait' => __( 'Portrait', 'ultraaddons' ),
-                            'landscape' => __( 'Landscape', 'ultraaddons' ),
+                            'portrait' => __( 'Portrait', 'ultraaddons-elementor-lite' ),
+                            'landscape' => __( 'Landscape', 'ultraaddons-elementor-lite' ),
                     ],
                     'devices' => [ 'desktop', 'tablet', 'mobile' ],
                     'default'       => 'landscape',
@@ -139,9 +139,9 @@ class Offer_Card extends Base{
         $this->add_control(
             'heading',
                 [
-                    'label'         => esc_html__( 'Heading', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Heading', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::TEXT,
-                    'default'       => __( 'Product Biggest Offer', 'ultraaddons' ),
+                    'default'       => __( 'Product Biggest Offer', 'ultraaddons-elementor-lite' ),
                     'label_block'   => TRUE,
                     'dynamic'       => ['active' => true],
                 ]
@@ -150,9 +150,9 @@ class Offer_Card extends Base{
         $this->add_control(
             'highlighted_title',
                 [
-                    'label'         => esc_html__( 'Highlighted Title', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Highlighted Title', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::TEXT,
-                    'default'       => __( 'Hot Offer', 'ultraaddons' ),
+                    'default'       => __( 'Hot Offer', 'ultraaddons-elementor-lite' ),
                     'label_block'   => TRUE,
                     'dynamic'       => ['active' => true],
                 ]
@@ -162,7 +162,7 @@ class Offer_Card extends Base{
         $this->add_control(
                 'image',
                 [
-                        'label' => __( 'Photo', 'ultraaddons' ),
+                        'label' => __( 'Photo', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::MEDIA,
                         'default' => [
                                 'url' => $placeholder_image,//Utils::get_placeholder_image_src(),
@@ -176,7 +176,7 @@ class Offer_Card extends Base{
         $this->add_control(
                 'button_heading',
                 [
-                        'label' => __( 'Button', 'ultraaddons' ),
+                        'label' => __( 'Button', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::HEADING,
                         'label_block' => true,
                         'separator' => 'before',
@@ -186,19 +186,19 @@ class Offer_Card extends Base{
         $this->add_control(
                 'text',
                 [
-                        'label' => __( 'Text', 'ultraaddons' ),
+                        'label' => __( 'Text', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::TEXT,
-                        'placeholder' => __( 'Click Here', 'ultraaddons' ),
-                        'default' => __( 'Click Here', 'ultraaddons' ),
+                        'placeholder' => __( 'Click Here', 'ultraaddons-elementor-lite' ),
+                        'default' => __( 'Click Here', 'ultraaddons-elementor-lite' ),
                 ]
         );
         
         $this->add_control(
                 'link',
                 [
-                        'label' => __( 'Link', 'ultraaddons' ),
+                        'label' => __( 'Link', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::URL,
-                        'placeholder' => __( 'https://example.com', 'ultraaddons' ),
+                        'placeholder' => __( 'https://example.com', 'ultraaddons-elementor-lite' ),
                         'default' => [
                                 'url' => '#',
                         ],
@@ -217,7 +217,7 @@ class Offer_Card extends Base{
         $this->start_controls_section(
             'offer_design_style',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -225,19 +225,19 @@ class Offer_Card extends Base{
         $this->add_control(
             'offer_alignment',
                 [
-                    'label'         => esc_html__( 'Alignment', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Alignment', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::CHOOSE,
                     'options' => [
                         'left' => [
-                                'title' => __( 'Left', 'ultraaddons' ),
+                                'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
                                 'icon' => 'eicon-text-align-left',
                         ],
                         'center' => [
-                                'title' => __( 'Center', 'ultraaddons' ),
+                                'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
                                 'icon' => 'eicon-text-align-center',
                         ],
                         'right' => [
-                                'title' => __( 'Right', 'ultraaddons' ),
+                                'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
                                 'icon' => 'eicon-text-align-right',
                         ],
                     ],
@@ -249,19 +249,19 @@ class Offer_Card extends Base{
         $this->add_responsive_control(
                 'content_align',
                 [
-                        'label' => __( 'Vertical Position', 'ultraaddons' ),
+                        'label' => __( 'Vertical Position', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::CHOOSE,
                         'options' => [
                                 'start' => [
-                                        'title' => __( 'Top', 'ultraaddons' ),
+                                        'title' => __( 'Top', 'ultraaddons-elementor-lite' ),
                                         'icon' => 'eicon-v-align-top',
                                 ],
                                 'center' => [
-                                        'title' => __( 'Middle', 'ultraaddons' ),
+                                        'title' => __( 'Middle', 'ultraaddons-elementor-lite' ),
                                         'icon' => 'eicon-v-align-middle',
                                 ],
                                 'end' => [
-                                        'title' => __( 'Bottom', 'ultraaddons' ),
+                                        'title' => __( 'Bottom', 'ultraaddons-elementor-lite' ),
                                         'icon' => 'eicon-v-align-bottom',
                                 ],
                         ],
@@ -278,7 +278,7 @@ class Offer_Card extends Base{
         $this->start_controls_section(
             'offer_title_style',
             [
-                'label'     => esc_html__( 'Title', 'ultraaddons' ),
+                'label'     => esc_html__( 'Title', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -286,7 +286,7 @@ class Offer_Card extends Base{
         $this->add_control(
             'offer_heading_color',
             [
-                'label'     => __( 'Color', 'ultraaddons' ),
+                'label'     => __( 'Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-offer-texts p.offer-heading' => 'color: {{VALUE}}',
@@ -310,7 +310,7 @@ class Offer_Card extends Base{
         $this->add_responsive_control(
                 'title_margin',
                 [
-                        'label' => __( 'Margin', 'ultraaddons' ),
+                        'label' => __( 'Margin', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', '%', 'em' ],
                         'selectors' => [
@@ -324,7 +324,7 @@ class Offer_Card extends Base{
         $this->start_controls_section(
             'offer_subtitle_style',
             [
-                'label'     => esc_html__( 'Sub Title', 'ultraaddons' ),
+                'label'     => esc_html__( 'Sub Title', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -332,7 +332,7 @@ class Offer_Card extends Base{
         $this->add_control(
             'offer_subheading_color',
             [
-                'label'     => __( 'Color', 'ultraaddons' ),
+                'label'     => __( 'Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-offer-texts p.offer-subheading' => 'color: {{VALUE}}',
@@ -356,7 +356,7 @@ class Offer_Card extends Base{
         $this->add_responsive_control(
                 'subtitle_margin',
                 [
-                        'label' => __( 'Margin', 'ultraaddons' ),
+                        'label' => __( 'Margin', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', '%', 'em' ],
                         'selectors' => [
@@ -370,7 +370,7 @@ class Offer_Card extends Base{
         $this->start_controls_section(
             'offer_image_style',
             [
-                'label'     => esc_html__( 'Image', 'ultraaddons' ),
+                'label'     => esc_html__( 'Image', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -378,7 +378,7 @@ class Offer_Card extends Base{
         $this->add_responsive_control(
                 'image_margin',
                 [
-                        'label' => __( 'Margin', 'ultraaddons' ),
+                        'label' => __( 'Margin', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', '%', 'em' ],
                         'selectors' => [
@@ -392,7 +392,7 @@ class Offer_Card extends Base{
         $this->start_controls_section(
             'offer_button_style',
             [
-                'label'     => esc_html__( 'Button', 'ultraaddons' ),
+                'label'     => esc_html__( 'Button', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -400,7 +400,7 @@ class Offer_Card extends Base{
         $this->add_responsive_control(
                 'button_margin',
                 [
-                        'label' => __( 'Margin', 'ultraaddons' ),
+                        'label' => __( 'Margin', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', '%', 'em' ],
                         'selectors' => [
@@ -413,14 +413,14 @@ class Offer_Card extends Base{
         $this->start_controls_tab(
             'tab_button_content_normal',
             [
-                'label'  => esc_html__( 'Normal', 'ultraaddons' )
+                'label'  => esc_html__( 'Normal', 'ultraaddons-elementor-lite' )
             ]
         );
         
         $this->add_control(
             'offer_button_color',
             [
-                'label'     => __( 'Color', 'ultraaddons' ),
+                'label'     => __( 'Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-offer-texts .offer-btn' => 'color: {{VALUE}}',
@@ -431,7 +431,7 @@ class Offer_Card extends Base{
         $this->add_control(
             'offer_button_bg_color',
             [
-                'label'     => __( 'Background', 'ultraaddons' ),
+                'label'     => __( 'Background', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-offer-texts .offer-btn' => 'background-color: {{VALUE}}',
@@ -443,7 +443,7 @@ class Offer_Card extends Base{
                 Group_Control_Border::get_type(),
                 [
                         'name' => 'offer_button_border',
-                        'label' => __( 'Border', 'ultraaddons' ),
+                        'label' => __( 'Border', 'ultraaddons-elementor-lite' ),
                         'selector' => '{{WRAPPER}} .ua-offer-texts .offer-btn',
                 ]
         );
@@ -451,7 +451,7 @@ class Offer_Card extends Base{
         $this->add_control(
                 'offer_button_border_radius',
                 [
-                        'label' => __( 'Border Radius', 'ultraaddons' ),
+                        'label' => __( 'Border Radius', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', '%' ],
                         'selectors' => [
@@ -464,7 +464,7 @@ class Offer_Card extends Base{
                 Group_Control_Box_Shadow::get_type(),
                 [
                         'name' => 'offer_button_box_shadow',
-                        'label' => __( 'Box Shadow', 'ultraaddons' ),
+                        'label' => __( 'Box Shadow', 'ultraaddons-elementor-lite' ),
                         'selector' => '{{WRAPPER}} .ua-offer-texts .offer-btn',
                 ]
         );
@@ -473,14 +473,14 @@ class Offer_Card extends Base{
         $this->start_controls_tab(
             'tab_button_content_hover',
             [
-                'label'  => esc_html__( 'Hover', 'ultraaddons' )
+                'label'  => esc_html__( 'Hover', 'ultraaddons-elementor-lite' )
             ]
         );
         
         $this->add_control(
             'offer_button_color_hover',
             [
-                'label'     => __( 'Color', 'ultraaddons' ),
+                'label'     => __( 'Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-offer-texts .offer-btn:hover' => 'color: {{VALUE}}',
@@ -491,7 +491,7 @@ class Offer_Card extends Base{
         $this->add_control(
             'offer_button_bg_color_hover',
             [
-                'label'     => __( 'Background', 'ultraaddons' ),
+                'label'     => __( 'Background', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-offer-texts .offer-btn:hover' => 'background-color: {{VALUE}}',
@@ -503,7 +503,7 @@ class Offer_Card extends Base{
                 Group_Control_Border::get_type(),
                 [
                         'name' => 'offer_button_border_hover',
-                        'label' => __( 'Border', 'ultraaddons' ),
+                        'label' => __( 'Border', 'ultraaddons-elementor-lite' ),
                         'selector' => '{{WRAPPER}} .ua-offer-texts .offer-btn:hover',
                 ]
         );
@@ -511,7 +511,7 @@ class Offer_Card extends Base{
         $this->add_control(
                 'offer_button_border_radius_hover',
                 [
-                        'label' => __( 'Border Radius', 'ultraaddons' ),
+                        'label' => __( 'Border Radius', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', '%' ],
                         'selectors' => [
@@ -524,7 +524,7 @@ class Offer_Card extends Base{
                 Group_Control_Box_Shadow::get_type(),
                 [
                         'name' => 'offer_button_box_shadow_hover',
-                        'label' => __( 'Box Shadow', 'ultraaddons' ),
+                        'label' => __( 'Box Shadow', 'ultraaddons-elementor-lite' ),
                         'selector' => '{{WRAPPER}} .ua-offer-texts .offer-btn:hover',
                 ]
         );
@@ -544,7 +544,7 @@ class Offer_Card extends Base{
         $this->start_controls_section(
             'ua_avd_heading_typography',
             [
-                'label'     => esc_html__( 'Typography', 'ultraaddons' ),
+                'label'     => esc_html__( 'Typography', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -591,18 +591,18 @@ class Offer_Card extends Base{
         $this->start_controls_section(
             'heading_style_settings',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
             ]
         );
         $this->add_control(
             'heading_style',
             [
-                'label'     => esc_html__( 'Heading Style', 'ultraaddons' ),
+                'label'     => esc_html__( 'Heading Style', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::SELECT,
                 'label_block'   => true,
                 'options'       => [
-                    '1'         => esc_html__( 'Style 01', 'ultraaddons' ),
-                    '2'         => esc_html__( 'Style 02', 'ultraaddons' ),
+                    '1'         => esc_html__( 'Style 01', 'ultraaddons-elementor-lite' ),
+                    '2'         => esc_html__( 'Style 02', 'ultraaddons-elementor-lite' ),
                 ],
                 'default'       => '1',
             ]
@@ -621,25 +621,25 @@ class Offer_Card extends Base{
         $this->start_controls_section(
             'advance_heading_settings',
             [
-                'label'     => esc_html__( 'Content', 'ultraaddons' ),
+                'label'     => esc_html__( 'Content', 'ultraaddons-elementor-lite' ),
             ]
         );
         $this->add_control(
             'advance_sub_heading',
                 [
-                    'label'     => esc_html__( 'Sub Heading', 'ultraaddons' ),
+                    'label'     => esc_html__( 'Sub Heading', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::TEXT,
-                    'placeholder'   => __( 'Our Services', 'ultraaddons' ),
+                    'placeholder'   => __( 'Our Services', 'ultraaddons-elementor-lite' ),
                     'label_block'   => TRUE,
                 ]
         );
         $this->add_control(
             'advance_heading',
                 [
-                    'label'     => esc_html__( 'Heading', 'ultraaddons' ),
+                    'label'     => esc_html__( 'Heading', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::TEXTAREA,
                     'label_block'   => TRUE,
-                    'placeholder'   => __( 'We Provide Best Services sFor Your Health', 'ultraaddons' ),
+                    'placeholder'   => __( 'We Provide Best Services sFor Your Health', 'ultraaddons-elementor-lite' ),
                 ]
         );
         $this->end_controls_section();
@@ -656,7 +656,7 @@ class Offer_Card extends Base{
 	    $this->start_controls_section(
 	            'advance_heading_general_setting',
                 [
-                    'label'    => __( 'General Settings', 'ultraaddons' ),
+                    'label'    => __( 'General Settings', 'ultraaddons-elementor-lite' ),
                     'tab'      => Controls_Manager::TAB_STYLE,
                     'show_label' => false,
                 ]
@@ -664,7 +664,7 @@ class Offer_Card extends Base{
         $this->add_responsive_control(
             'heading_general_padding',
             [
-                'label'      => __( 'Padding', 'ultraaddons' ),
+                'label'      => __( 'Padding', 'ultraaddons-elementor-lite' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%', 'em' ],
                 'selectors'  => [
@@ -675,7 +675,7 @@ class Offer_Card extends Base{
         $this->add_responsive_control(
             'heading_tag_general_margin',
             [
-                'label'      => __( 'Margin', 'ultraaddons' ),
+                'label'      => __( 'Margin', 'ultraaddons-elementor-lite' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%', 'em' ],
                 'selectors'  => [
@@ -686,19 +686,19 @@ class Offer_Card extends Base{
         $this->add_control(
             'heading_tag_general_text_align',
             [
-                'label' => __( 'Alignment', 'ultraaddons' ),
+                'label' => __( 'Alignment', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
-                            'title' => __( 'Left', 'ultraaddons' ),
+                            'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
                             'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
-                            'title' => __( 'Center', 'ultraaddons' ),
+                            'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
                             'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
-                            'title' => __( 'Right', 'ultraaddons' ),
+                            'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
                             'icon' => 'eicon-text-align-right',
                     ],
                  ],
@@ -724,7 +724,7 @@ class Offer_Card extends Base{
 	    $this->start_controls_section(
 	            'advance_sub_heading_style_setting',
                 [
-                    'label'    => __( 'Sub Heading', 'ultraaddons' ),
+                    'label'    => __( 'Sub Heading', 'ultraaddons-elementor-lite' ),
                     'tab'      => Controls_Manager::TAB_STYLE,
                     'show_label' => false,
                 ]
@@ -732,7 +732,7 @@ class Offer_Card extends Base{
         $this->add_control(
             'sub_heading_color',
             [
-                'label'     => __( 'Color', 'ultraaddons' ),
+                'label'     => __( 'Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'global' => [
                     'default' => Global_Colors::COLOR_PRIMARY,
@@ -745,7 +745,7 @@ class Offer_Card extends Base{
         $this->add_control(
             'sub_border_heading_color',
             [
-                'label'     => __( 'After Border Color', 'ultraaddons' ),
+                'label'     => __( 'After Border Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'global' => [
                     'default' => Global_Colors::COLOR_PRIMARY,
@@ -768,7 +768,7 @@ class Offer_Card extends Base{
         $this->add_responsive_control(
             'sub_header_padding',
             [
-                'label'      => __( 'Padding', 'ultraaddons' ),
+                'label'      => __( 'Padding', 'ultraaddons-elementor-lite' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%', 'em' ],
                 'selectors'  => [
@@ -779,7 +779,7 @@ class Offer_Card extends Base{
         $this->add_responsive_control(
             'sub_header_margin',
             [
-                'label'      => __( 'Margin', 'ultraaddons' ),
+                'label'      => __( 'Margin', 'ultraaddons-elementor-lite' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%', 'em' ],
                 'selectors'  => [
@@ -791,7 +791,7 @@ class Offer_Card extends Base{
             Group_Control_Border::get_type(),
             [
                 'name' => 'sub_heading_border',
-                'label' => __( 'Border', 'ultraaddons' ),
+                'label' => __( 'Border', 'ultraaddons-elementor-lite' ),
                 'selector' => '{{WRAPPER}} .content-title .ultraaddons-sub-heading.elementor-inline-editing, .section-title.v1.ultraaddons-advance-heading span',
             ]
         );
@@ -810,7 +810,7 @@ class Offer_Card extends Base{
 	    $this->start_controls_section(
 	            'advance_heading_style_setting',
                 [
-                    'label'    => __( 'Heading', 'ultraaddons' ),
+                    'label'    => __( 'Heading', 'ultraaddons-elementor-lite' ),
                     'tab'      => Controls_Manager::TAB_STYLE,
                     'show_label' => false,
                 ]
@@ -818,7 +818,7 @@ class Offer_Card extends Base{
         $this->add_control(
             'heading_tag_colors',
             [
-                'label'     => __( 'Color', 'ultraaddons' ),
+                'label'     => __( 'Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'global' => [
                     'default' => Global_Colors::COLOR_PRIMARY,
@@ -841,7 +841,7 @@ class Offer_Card extends Base{
         $this->add_responsive_control(
             'heading_tag_padding',
             [
-                'label'      => __( 'Padding', 'ultraaddons' ),
+                'label'      => __( 'Padding', 'ultraaddons-elementor-lite' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%', 'em' ],
                 'selectors'  => [
@@ -852,7 +852,7 @@ class Offer_Card extends Base{
         $this->add_responsive_control(
             'heading_tag_margin',
             [
-                'label'      => __( 'Margin', 'ultraaddons' ),
+                'label'      => __( 'Margin', 'ultraaddons-elementor-lite' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%', 'em' ],
                 'selectors'  => [
@@ -864,7 +864,7 @@ class Offer_Card extends Base{
             Group_Control_Border::get_type(),
             [
                 'name' => 'heading_tag_border',
-                'label' => __( 'Border', 'ultraaddons' ),
+                'label' => __( 'Border', 'ultraaddons-elementor-lite' ),
                 'selector' => '{{WRAPPER}} .pricing-box-item .pricing-icon .ultraaddons-price-table-heading, .section-title.v1.ultraaddons-advance-heading h3.ultraaddons-heading',
             ]
         );

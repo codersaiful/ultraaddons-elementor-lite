@@ -25,7 +25,7 @@ class Header_Footer {
      *
      * @var string option key for update and get data from database. 
      */
-    public static $key = 'ultraaddons_header_footer';
+    public static $ultraaddons_key = 'ultraaddons_header_footer';
     
     public static $settings = null;
     /**
@@ -59,7 +59,7 @@ class Header_Footer {
         'wrapper'   => 'box', //Default value is: box, among box and flued
     ];
 
-    protected static $body_class = [];
+    protected static $ultraaddons_body_class = [];
 
 
     
@@ -67,11 +67,11 @@ class Header_Footer {
 
         if( is_admin() ) return;
         
-        $heder_footer = get_option( self::$key );
+        $heder_footer = get_option( self::$ultraaddons_key );
         
         if( empty( $heder_footer ) ){
             HF_Post::update_option();
-            $heder_footer = get_option( self::$key );
+            $heder_footer = get_option( self::$ultraaddons_key );
         }
         
         if( empty( $heder_footer ) || ! is_array( $heder_footer ) ) return;
@@ -79,9 +79,9 @@ class Header_Footer {
         
         
 
-        // $loc = array_filter($heder_footer,function($item){
-        //     // var_dump($item['position']);
-        //     return $item['position']=='header';
+        // $loc = array_filter($heder_footer,function($ultraaddons_item){
+        //     // var_dump($ultraaddons_item['position']);
+        //     return $ultraaddons_item['position']=='header';
         // });
 
         // var_dump($locs,$heder_footer);
@@ -94,10 +94,10 @@ class Header_Footer {
 
         
         $type = self::get_type();
-        self::$body_class[] = 'ultraaddons-wrapper-' . self::get_wrapper();
+        self::$ultraaddons_body_class[] = 'ultraaddons-wrapper-' . self::get_wrapper();
         
         if( self::get_header_id() ){
-            self::$body_class[] = 'ultraaddons-header-' . $type;
+            self::$ultraaddons_body_class[] = 'ultraaddons-header-' . $type;
             if( $type == 'php' ){
                 add_action( 'get_header', [__CLASS__, 'show_header'], 10, 2 );
             }else{ //else if( $type == 'css' )
@@ -107,7 +107,7 @@ class Header_Footer {
         }
         
         if( self::get_footer_id() ){
-            self::$body_class[] = 'ultraaddons-footer-' . $type;
+            self::$ultraaddons_body_class[] = 'ultraaddons-footer-' . $type;
 //            add_action( 'get_footer', [__CLASS__, 'show_footer'], 10, 2 );
             if( $type == 'php' ){
                 add_action( 'get_footer', [__CLASS__, 'show_footer'], 10, 2 );
@@ -187,34 +187,34 @@ class Header_Footer {
 
 
     public static function add_footer() {
-        echo ultraaddons_elementor_display_content( self::get_footer_id() );
+        echo wp_kses_post( ultraaddons_elementor_display_content( self::get_footer_id() ) );
     }
-    public static function show_footer( $name, $args ) {
+    public static function show_footer( $ultraaddons_name, $ultraaddons_args ) {
         include ULTRA_ADDONS_DIR . 'template/footer.php';
         
         
-        $templates   = [];
-        $templates[] = 'footer.php';
+        $ultraaddons_templates   = [];
+        $ultraaddons_templates[] = 'footer.php';
         // Avoid running wp_footer hooks again.
         remove_all_actions( 'wp_footer' );
         ob_start();
-        locate_template( $templates, true );
+        locate_template( $ultraaddons_templates, true );
         ob_get_clean();
     }
     
     public static function add_header() {
-        echo ultraaddons_elementor_display_content( self::get_header_id() );
+        echo wp_kses_post( ultraaddons_elementor_display_content( self::get_header_id() ) );
     }
-    public static function show_header( $name, $args ) {
+    public static function show_header( $ultraaddons_name, $ultraaddons_args ) {
         include ULTRA_ADDONS_DIR . 'template/header.php';
         
         
-        $templates   = [];
-        $templates[] = 'header.php';
+        $ultraaddons_templates   = [];
+        $ultraaddons_templates[] = 'header.php';
         // Avoid running wp_head hooks again.
         remove_all_actions( 'wp_head' );
         ob_start();
-        locate_template( $templates, true );
+        locate_template( $ultraaddons_templates, true );
         ob_get_clean();
     }
     
@@ -306,7 +306,7 @@ class Header_Footer {
     /**
      * Getting header footer data from
      * database
-     * I have taken data based on sell:$key which is 'ultraaddons_header_footer'
+     * I have taken data based on sell:$ultraaddons_key which is 'ultraaddons_header_footer'
      * Actually if not found any data in database, based on this key
      * then it will return default data from property
      * 
@@ -321,7 +321,7 @@ class Header_Footer {
          * 
          * @since 1.0.1.0
          */
-        $data = get_option( self::$key, self::$data );
+        $data = get_option( self::$ultraaddons_key, self::$data );
         return apply_filters( 'ultraaddons/header_footer/data', $data );
     }
     
@@ -334,7 +334,7 @@ class Header_Footer {
      */
     public static function body_class( $class ) {
         
-        return array_merge( self::$body_class, $class );
+        return array_merge( self::$ultraaddons_body_class, $class );
     }
 }
 

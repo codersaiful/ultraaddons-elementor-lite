@@ -118,13 +118,15 @@ class Demo_Library_Manager {
 			'editor_nonce'            	=> wp_create_nonce( 'eldm_editor_nonce' ),
 			'dark_stylesheet_url'     	=> self::TEMPLATE_ASSETS . 'css/editor-dark.min.css',
 			'i18n' => [
-				'iconDemoTitlePreviewPage'      => self::$theme_demo['button']['text'],//esc_html__( 'Demo', 'ultraaddons' ),
-				'promotionDemoDialogHeader'     => esc_html__( '%s Widget', 'ultraaddons' ),
-				'promotionDemoDialogMessage'    => esc_html__( 'Use %s widget with other exclusive pro widgets and 100% unique features to extend your toolbox and build sites faster and better.', 'ultraaddons' ),
-				'demoEmptyTitle'       => esc_html__( 'No Templates Found', 'ultraaddons' ),
-				'demoEmptyMessage'     => esc_html__( 'Try different category or sync for new templates.', 'ultraaddons' ),
-				'demoNoResultsTitle'   => esc_html__( 'No Results Found', 'ultraaddons' ),
-				'demoNoResultsMessage' => esc_html__( 'Please make sure your search is spelled correctly or try a different words.', 'ultraaddons' ),
+				'iconDemoTitlePreviewPage'      => self::$theme_demo['button']['text'],//esc_html__( 'Demo', 'ultraaddons-elementor-lite' ),
+				/* translators: 1: Widget's name */
+				'promotionDemoDialogHeader'     => esc_html__( '%s Widget', 'ultraaddons-elementor-lite' ),
+				/* translators: 1: Widget's name */
+				'promotionDemoDialogMessage'    => esc_html__( 'Use %s widget with other exclusive pro widgets and 100% unique features to extend your toolbox and build sites faster and better.', 'ultraaddons-elementor-lite' ),
+				'demoEmptyTitle'       => esc_html__( 'No Templates Found', 'ultraaddons-elementor-lite' ),
+				'demoEmptyMessage'     => esc_html__( 'Try different category or sync for new templates.', 'ultraaddons-elementor-lite' ),
+				'demoNoResultsTitle'   => esc_html__( 'No Results Found', 'ultraaddons-elementor-lite' ),
+				'demoNoResultsMessage' => esc_html__( 'Please make sure your search is spelled correctly or try a different words.', 'ultraaddons-elementor-lite' ),
 			],
 		];
         
@@ -158,7 +160,7 @@ class Demo_Library_Manager {
 				$editor_post_id = absint( $data['editor_post_id'] );
 
 				if ( ! get_post( $editor_post_id ) ) {
-					throw new \Exception( __( 'Post not found.', 'ultraaddons' ) );
+					throw new \Exception( esc_html__( 'Post not found.', 'ultraaddons-elementor-lite' ) );
 				}
 
 				ultraaddons_elementor()->db->switch_to_post( $editor_post_id );
@@ -178,14 +180,14 @@ class Demo_Library_Manager {
 				$editor_post_id = absint( $data['editor_post_id'] );
 
 				if ( ! get_post( $editor_post_id ) ) {
-					throw new \Exception( __( 'Post not found', 'ultraaddons' ) );
+					throw new \Exception( esc_html__( 'Post not found', 'ultraaddons-elementor-lite' ) );
 				}
 
 				ultraaddons_elementor()->db->switch_to_post( $editor_post_id );
 			}
 
 			if ( empty( $data['template_id'] ) ) {
-				throw new \Exception( __( 'Template id missing', 'ultraaddons' ) );
+				throw new \Exception( esc_html__( 'Template id missing', 'ultraaddons-elementor-lite' ) );
 			}
 
 			$result = self::get_template_data( $data );
@@ -194,9 +196,9 @@ class Demo_Library_Manager {
 		} );
 	}
 
-	public static function get_template_data( array $args ) {
+	public static function get_template_data( array $ultraaddons_args ) {
 		$source = self::get_source();
-		$data = $source->get_data( $args );
+		$data = $source->get_data( $ultraaddons_args );
 		return $data;
 	}
 
@@ -205,14 +207,14 @@ class Demo_Library_Manager {
 	 *
 	 * type_tags has been added in version 2.15.0
 	 *
-	 * @param array $args
+	 * @param array $ultraaddons_args
 	 *
 	 * @return array
 	 */
-	public static function get_library_data( array $args ) {
+	public static function get_library_data( array $ultraaddons_args ) {
 		$source = self::get_source();
 
-		if ( ! empty( $args['sync'] ) ) {
+		if ( ! empty( $ultraaddons_args['sync'] ) ) {
 			Demo_Library_Source::get_library_data( true );
 		}
 

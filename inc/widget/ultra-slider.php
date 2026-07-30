@@ -24,29 +24,29 @@ class Ultra_Slider extends Base{
          * we have called this __construct() method
          * 
          * @param Array $data
-         * @param Array $args
+         * @param Array $ultraaddons_args
          * 
          * @by Saiful Islam
          */
-        public function __construct($data = [], $args = null) {
-            parent::__construct($data, $args);
+        public function __construct($data = [], $ultraaddons_args = null) {
+            parent::__construct($data, $ultraaddons_args);
 
             //Naming of Args for owlCarousel
-            $name           = 'owlCarousel';
+            $ultraaddons_name           = 'owlCarousel';
             $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/owl.carousel.min.js';
             $dependency     =  ['jquery'];//['jquery'];
             $version        = ULTRA_ADDONS_VERSION;
             $in_footer  = true;
 
-            wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-            wp_enqueue_script( $name );
+            wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
+            wp_enqueue_script( $ultraaddons_name );
 
 
             //CSS file for Slider Script Owl Carousel Slider
-            wp_register_style('owlCarousel', ULTRA_ADDONS_ASSETS . 'vendor/css/owl.carousel.css' );
+            wp_register_style('owlCarousel', ULTRA_ADDONS_ASSETS . 'vendor/css/owl.carousel.css', [] , ULTRA_ADDONS_VERSION );
             wp_enqueue_style('owlCarousel' );
 
-            wp_register_style('owlCarousel-theme', ULTRA_ADDONS_ASSETS . 'vendor/css/owl/owl.theme.default.css' );
+            wp_register_style('owlCarousel-theme', ULTRA_ADDONS_ASSETS . 'vendor/css/owl/owl.theme.default.css', [] , ULTRA_ADDONS_VERSION );
             wp_enqueue_style( 'owlCarousel-theme' );
 
         }
@@ -88,7 +88,7 @@ class Ultra_Slider extends Base{
          * @return string keywords
          */
         public function get_keywords() {
-            return [ 'ultraaddons', 'slider','ua','carousel', 'slide' ];
+            return [ 'ultraaddons-elementor-lite', 'slider','ua','carousel', 'slide' ];
         }
         
         
@@ -151,11 +151,11 @@ class Ultra_Slider extends Base{
 
                 ?>
             <div class="ua-slider-main-wrapper">
-                <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
+                <div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
                     
                     <?php
-                    foreach( $settings['slides'] as $key => $slide ){
-                        $repeater_key = $this->get_repeater_setting_key( 'title', 'slides', $key );
+                    foreach( $settings['slides'] as $ultraaddons_key => $slide ){
+                        $repeater_key = $this->get_repeater_setting_key( 'title', 'slides', $ultraaddons_key );
                         
                         $_id = !empty( $slide['_id'] ) ? $slide['_id'] : false;
                         $image = isset( $slide['image']['url'] ) && ! empty( $slide['image']['url'] ) ? $slide['image']['url'] : false;
@@ -171,17 +171,17 @@ class Ultra_Slider extends Base{
                             $link = true;
                         }
                         
-                        $slug = $slide['slide_template'];
+                        $ultraaddons_slug = $slide['slide_template'];
 
-                        if( ! empty( $slug ) ){
+                        if( ! empty( $ultraaddons_slug ) ){
                              
-                            $queried_post = get_page_by_path($slug, OBJECT, 'elementor_library');
+                            $queried_post = get_page_by_path($ultraaddons_slug, OBJECT, 'elementor_library');
 
                             (int) $select_post_id = $queried_post->ID;
                             
                             if( Plugin::$instance->documents->get( $select_post_id )->is_built_with_elementor() ){
                                 echo wp_kses_post( '<div class="ua-slider-item">' );
-                                echo Plugin::instance()->frontend->get_builder_content_for_display( $select_post_id );
+                                echo wp_kses_post( Plugin::$instance->frontend->get_builder_content_for_display( $select_post_id ) );
                                 echo wp_kses_post( '</div>' );
                             }
                         }else{
@@ -199,7 +199,7 @@ class Ultra_Slider extends Base{
                                                 <h1><?php echo wp_kses_post( $title ); ?></h1>
                                                 <p class="para"><?php echo wp_kses_post( $content ); ?></p>
                                                 <div class="hero-btn">
-                                                    <a <?php echo $this->get_render_attribute_string( $repeater_key . '.button' ); ?>><?php echo esc_html( $button ); ?></a>
+                                                    <a <?php echo esc_attr( $this->get_render_attribute_string( $repeater_key . '.button' ) ); ?>><?php echo esc_html( $button ); ?></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -230,7 +230,7 @@ class Ultra_Slider extends Base{
                 $this->start_controls_section(
                         'general',
 			[
-				'label' => __( 'General', 'ultraaddons' ),
+				'label' => __( 'General', 'ultraaddons-elementor-lite' ),
 			]
                 );
                 
@@ -238,11 +238,11 @@ class Ultra_Slider extends Base{
                 $repeater->add_control(
                             'slide_type',
                             [
-                                    'label' => __( 'Slide Type', 'ultraaddons' ),
+                                    'label' => __( 'Slide Type', 'ultraaddons-elementor-lite' ),
                                     'type' => Controls_Manager::SELECT,
                                     'options' => [
-                                        'template' => __( 'Elementor Template', 'ultraaddons' ),
-                                        'default' => __( 'Default', 'ultraaddons' ),
+                                        'template' => __( 'Elementor Template', 'ultraaddons-elementor-lite' ),
+                                        'default' => __( 'Default', 'ultraaddons-elementor-lite' ),
                                     ],
                                     'default' => 'default',
                                     //'prefix_class' => 'slider-type-'
@@ -255,12 +255,12 @@ class Ultra_Slider extends Base{
                                 ]
                  * 
                  */
-                $args = array(
+                $ultraaddons_args = array(
                     'post_type'     =>  'elementor_library',
                     'post_status'   =>  'publish',
                     'posts_per_page' => -1,
                 );
-                $query = get_posts( $args );
+                $query = get_posts( $ultraaddons_args );
                 $template_choices = array();
 
                 //If found post, then itarate
@@ -268,15 +268,15 @@ class Ultra_Slider extends Base{
                     foreach( $query as $q_post ){
                         //var_dump($q_post->post_name);
                         $id = (int) $q_post->ID;
-                        $slug = $q_post->post_name;
-                        $template_choices[$slug] = $q_post->post_title; //$id
+                        $ultraaddons_slug = $q_post->post_name;
+                        $template_choices[$ultraaddons_slug] = $q_post->post_title; //$id
                     }
                     
                     
                     $repeater->add_control(
                             'slide_template',
                             [
-                                    'label' => __( 'Template as Slide', 'ultraaddons' ),
+                                    'label' => __( 'Template as Slide', 'ultraaddons-elementor-lite' ),
                                     'type' => Controls_Manager::SELECT,
                                     'options' => $template_choices,
                                     'condition' => [
@@ -288,9 +288,9 @@ class Ultra_Slider extends Base{
                     $repeater->add_control(
                             'no_slide_template',
                             [
-                                    'label' => __( 'Template Not founded', 'ultraaddons' ),
+                                    'label' => __( 'Template Not founded', 'ultraaddons-elementor-lite' ),
                                     'type' => Controls_Manager::RAW_HTML,
-                                    'description' => esc_html__( 'There is no existing Elementor Template. Please create first.' ),
+                                    'description' => esc_html__( 'There is no existing Elementor Template. Please create first.', 'ultraaddons-elementor-lite' ),
                                     'condition' => [
                                                 'slide_type' => 'template',
                                         ]
@@ -301,7 +301,7 @@ class Ultra_Slider extends Base{
                 $repeater->add_control(
                         'image',
                         [
-                                'label' => __( 'Background Image', 'ultraaddons' ),
+                                'label' => __( 'Background Image', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::MEDIA,
                                 'default' => [
                                         'url' => Utils::get_placeholder_image_src(),
@@ -318,13 +318,13 @@ class Ultra_Slider extends Base{
                 $repeater->add_control(
                         'title',
 			[
-				'label' => __( 'Title', 'ultraaddons' ),
+				'label' => __( 'Title', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
 				'dynamic' => [
 					'active' => true,
 				],
-				'placeholder' => __( 'Enter your title', 'ultraaddons' ),
-				'default' => __( 'Slider Title Text', 'ultraaddons' ),
+				'placeholder' => __( 'Enter your title', 'ultraaddons-elementor-lite' ),
+				'default' => __( 'Slider Title Text', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
                                 'condition' => [
                                             'slide_type' => 'default',
@@ -335,13 +335,13 @@ class Ultra_Slider extends Base{
                 $repeater->add_control(
                         'content',
 			[
-				'label' => __( 'Content', 'ultraaddons' ),
+				'label' => __( 'Content', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
 				'dynamic' => [
 					'active' => true,
 				],
-				'placeholder' => __( 'Enter your content...', 'ultraaddons' ),
-				'default' => __( "Lorem Ipsum is simply dumy text of the printing & typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1975, when an unknown printer.", 'ultraaddons' ),
+				'placeholder' => __( 'Enter your content...', 'ultraaddons-elementor-lite' ),
+				'default' => __( "Lorem Ipsum is simply dumy text of the printing & typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1975, when an unknown printer.", 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
                                 'condition' => [
                                             'slide_type' => 'default',
@@ -352,13 +352,13 @@ class Ultra_Slider extends Base{
                 $repeater->add_control(
                         'button',
                         [
-                                'label' => __( 'Text', 'ultraaddons' ),
+                                'label' => __( 'Text', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::TEXT,
                                 'dynamic' => [
                                         'active' => true,
                                 ],
-                                'default' => __( 'Click here', 'ultraaddons' ),
-                                'placeholder' => __( 'Click here', 'ultraaddons' ),
+                                'default' => __( 'Click here', 'ultraaddons-elementor-lite' ),
+                                'placeholder' => __( 'Click here', 'ultraaddons-elementor-lite' ),
                                 'condition' => [
                                             'slide_type' => 'default',
                                 ],
@@ -368,12 +368,12 @@ class Ultra_Slider extends Base{
                 $repeater->add_control(
                         'button_link',
                         [
-                                'label' => __( 'Link', 'ultraaddons' ),
+                                'label' => __( 'Link', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::URL,
                                 'dynamic' => [
                                         'active' => true,
                                 ],
-                                'placeholder' => __( 'https://your-link.com', 'ultraaddons' ),
+                                'placeholder' => __( 'https://your-link.com', 'ultraaddons-elementor-lite' ),
                                 'default' => [
                                         'url' => '#',
                                 ],
@@ -398,33 +398,33 @@ class Ultra_Slider extends Base{
                 $this->add_control(
 			'slides',
 			[
-				'label' => __( 'Slides', 'ultraaddons' ),
+				'label' => __( 'Slides', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
 						'image' => Utils::get_placeholder_image_src(),
-						'title' => __( 'Slide One', 'ultraaddons' ),
-						'content' => __( 'This is Sample Content ...', 'ultraaddons' ),
-						'button' => __( 'Click Here', 'ultraaddons' ),
+						'title' => __( 'Slide One', 'ultraaddons-elementor-lite' ),
+						'content' => __( 'This is Sample Content ...', 'ultraaddons-elementor-lite' ),
+						'button' => __( 'Click Here', 'ultraaddons-elementor-lite' ),
 						'button_link' => '#',
                                                 
 					],
                                     
 					[
 						'image' => Utils::get_placeholder_image_src(),
-						'title' => __( 'Slide Two Text', 'ultraaddons' ),
-						'content' => __( 'This is Sample Content ...', 'ultraaddons' ),
-						'button' => __( 'Click Here', 'ultraaddons' ),
+						'title' => __( 'Slide Two Text', 'ultraaddons-elementor-lite' ),
+						'content' => __( 'This is Sample Content ...', 'ultraaddons-elementor-lite' ),
+						'button' => __( 'Click Here', 'ultraaddons-elementor-lite' ),
 						'button_link' => '#',
                                                 
 					],
                                     
 					[
 						'image' => Utils::get_placeholder_image_src(),
-						'title' => __( 'Slide Three', 'ultraaddons' ),
-						'content' => __( 'This is Sample Content ...', 'ultraaddons' ),
-						'button' => __( 'Click Here', 'ultraaddons' ),
+						'title' => __( 'Slide Three', 'ultraaddons-elementor-lite' ),
+						'content' => __( 'This is Sample Content ...', 'ultraaddons-elementor-lite' ),
+						'button' => __( 'Click Here', 'ultraaddons-elementor-lite' ),
 						'button_link' => '#',
                                                 
 					],
@@ -438,10 +438,10 @@ class Ultra_Slider extends Base{
 //                $this->add_control( 
 //                        'display_percentage',
 //                        [
-//                                'label' => __( 'Display Percentage', 'ultraaddons' ),
+//                                'label' => __( 'Display Percentage', 'ultraaddons-elementor-lite' ),
 //                                'type' => Controls_Manager::SWITCHER,
-//                                'label_on' => __( 'Show', 'ultraaddons' ),
-//				'label_off' => __( 'Hide', 'ultraaddons' ),
+//                                'label_on' => __( 'Show', 'ultraaddons-elementor-lite' ),
+//				'label_off' => __( 'Hide', 'ultraaddons-elementor-lite' ),
 //                                'return_value' => 'yes',
 //                                'default' => 'yes',
 //                        ]
@@ -462,7 +462,7 @@ class Ultra_Slider extends Base{
                 $this->start_controls_section(
 			'section_progress_style',
 			[
-				'label' => __( 'General', 'ultraaddons' ),
+				'label' => __( 'General', 'ultraaddons-elementor-lite' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -470,19 +470,19 @@ class Ultra_Slider extends Base{
                 $this->add_control(
                         'text_align',
                         [
-                                'label' => __( 'Alignment', 'ultraaddons' ),
+                                'label' => __( 'Alignment', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::CHOOSE,
                                 'options' => [
                                         'left' => [
-                                                'title' => __( 'Left', 'ultraaddons' ),
+                                                'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
                                                 'icon' => 'eicon-text-align-left',
                                         ],
                                         'center' => [
-                                                'title' => __( 'Center', 'ultraaddons' ),
+                                                'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
                                                 'icon' => 'eicon-text-align-center',
                                         ],
                                         'right' => [
-                                                'title' => __( 'Right', 'ultraaddons' ),
+                                                'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
                                                 'icon' => 'eicon-text-align-right',
                                         ],
                                 ],
@@ -495,7 +495,7 @@ class Ultra_Slider extends Base{
                 $this->add_responsive_control(
 			'slider-height',
 			[
-				'label' => __( 'Height', 'elementor' ),
+				'label' => __( 'Height', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 //				'default' => [
 //					'size' => 1,
@@ -517,7 +517,7 @@ class Ultra_Slider extends Base{
                 $this->add_responsive_control(
                         'slider_wrapper_padding',
                         [
-                                'label' => __( 'Slider Area Padding', 'ultraaddons' ),
+                                'label' => __( 'Slider Area Padding', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::DIMENSIONS,
                                 'size_units' => [ 'px', '%' ],
 //                                'default'   => [
@@ -536,7 +536,7 @@ class Ultra_Slider extends Base{
                 $this->add_responsive_control(
                         'slider_wrapper_margin',
                         [
-                                'label' => __( 'Slider Area Margin', 'ultraaddons' ),
+                                'label' => __( 'Slider Area Margin', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::DIMENSIONS,
                                 'size_units' => [ 'px', '%' ],
 //                                'default'   => [
@@ -558,7 +558,7 @@ class Ultra_Slider extends Base{
                 $this->add_responsive_control(
                         'slider_item_padding',
                         [
-                                'label' => __( 'Slider Inner Padding', 'ultraaddons' ),
+                                'label' => __( 'Slider Inner Padding', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::DIMENSIONS,
                                 'size_units' => [ 'px', '%' ],
 //                                'default'   => [
@@ -577,7 +577,7 @@ class Ultra_Slider extends Base{
                 $this->add_responsive_control(
                         'slider_item_margin',
                         [
-                                'label' => __( 'Slider Inner Margin', 'ultraaddons' ),
+                                'label' => __( 'Slider Inner Margin', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::DIMENSIONS,
                                 'size_units' => [ 'px', '%' ],
 //                                'default'   => [
@@ -598,7 +598,7 @@ class Ultra_Slider extends Base{
                 $this->add_control(
 			'title_options',
 			[
-				'label' => __( 'Title', 'ultraaddons' ),
+				'label' => __( 'Title', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -608,7 +608,7 @@ class Ultra_Slider extends Base{
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'title_typography',
-				'label' => __( 'Typography', 'ultraaddons' ),
+				'label' => __( 'Typography', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-slider-item .ua-slide-content-wrap .ua-hero-text h1',
 			]
 		);
@@ -616,7 +616,7 @@ class Ultra_Slider extends Base{
                 $this->add_control(
 			'title_color',
 			[
-				'label' => __( 'Color', 'ultraaddons' ),
+				'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
                                 'default' => '#021429',
 				'selectors' => [
@@ -628,7 +628,7 @@ class Ultra_Slider extends Base{
                 $this->add_control(
 			'subtitle_options',
 			[
-				'label' => __( 'Sub-Title', 'ultraaddons' ),
+				'label' => __( 'Sub-Title', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -638,7 +638,7 @@ class Ultra_Slider extends Base{
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'sub_title_typography',
-				'label' => __( 'Typography', 'ultraaddons' ),
+				'label' => __( 'Typography', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-slider-item .ua-slide-content-wrap .ua-hero-text p',
 			]
 		);
@@ -646,7 +646,7 @@ class Ultra_Slider extends Base{
                 $this->add_control(
 			'sub_title_color',
 			[
-				'label' => __( 'Color', 'ultraaddons' ),
+				'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
                                 'default' => '#5C6B79',
 				'selectors' => [
@@ -658,7 +658,7 @@ class Ultra_Slider extends Base{
                 $this->add_control(
 			'button_options',
 			[
-				'label' => __( 'Button', 'ultraaddons' ),
+				'label' => __( 'Button', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -669,7 +669,7 @@ class Ultra_Slider extends Base{
                 $this->start_controls_tab(
                         'tab_button_content_normal',
                         [
-                                'label'  => esc_html__( 'Normal', 'ultraaddons' )
+                                'label'  => esc_html__( 'Normal', 'ultraaddons-elementor-lite' )
                         ]
                 );
                 
@@ -677,7 +677,7 @@ class Ultra_Slider extends Base{
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'button_typography',
-				'label' => __( 'Typography', 'ultraaddons' ),
+				'label' => __( 'Typography', 'ultraaddons-elementor-lite' ),
 				'global' => [
 					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
 				],
@@ -688,7 +688,7 @@ class Ultra_Slider extends Base{
                 $this->add_control(
 			'button_color',
 			[
-				'label' => __( 'Color', 'ultraaddons' ),
+				'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
                                 'default' => '#FFF',
 				'selectors' => [
@@ -700,7 +700,7 @@ class Ultra_Slider extends Base{
                 $this->add_control(
 			'button_bg_color',
 			[
-				'label' => __( 'Background Color', 'ultraaddons' ),
+				'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
                                 'default' => '#0FC392',
 				'selectors' => [
@@ -711,7 +711,7 @@ class Ultra_Slider extends Base{
                  $this->add_responsive_control(
                         'button_padding',
                         [
-                                'label' => __( 'Button Padding', 'ultraaddons' ),
+                                'label' => __( 'Button Padding', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::DIMENSIONS,
                                 'size_units' => [ 'px', '%' ],
                                 'selectors' => [
@@ -723,7 +723,7 @@ class Ultra_Slider extends Base{
                 $this->add_responsive_control(
                         'button_radius',
                         [
-                                'label' => __( 'Button Radius', 'ultraaddons' ),
+                                'label' => __( 'Button Radius', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::DIMENSIONS,
                                 'size_units' => [ 'px', '%' ],
                                 'selectors' => [
@@ -736,7 +736,7 @@ class Ultra_Slider extends Base{
 			Group_Control_Box_Shadow::get_type(),
 			[
                                 'name' => 'button_shadow',
-                                'label' => esc_html__( 'Button Shadow', 'ultraaddons' ),
+                                'label' => esc_html__( 'Button Shadow', 'ultraaddons-elementor-lite' ),
                                 'selector' => '{{WRAPPER}} .ua-slider-wrapper .ua-slider-item .slider-button',
 			]
 		);
@@ -745,7 +745,7 @@ class Ultra_Slider extends Base{
                 $this->start_controls_tab(
                         'tab_button_content_hover',
                         [
-                                'label'  => esc_html__( 'Hover', 'ultraaddons' )
+                                'label'  => esc_html__( 'Hover', 'ultraaddons-elementor-lite' )
                         ]
                 );
                 
@@ -753,7 +753,7 @@ class Ultra_Slider extends Base{
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'button_hover_typography',
-				'label' => __( 'Typography', 'ultraaddons' ),
+				'label' => __( 'Typography', 'ultraaddons-elementor-lite' ),
 				'global' => [
 					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
 				],
@@ -764,7 +764,7 @@ class Ultra_Slider extends Base{
                 $this->add_control(
 			'button_hover_color',
 			[
-				'label' => __( 'Color', 'ultraaddons' ),
+				'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '#0FC392',
 				'selectors' => [
@@ -776,7 +776,7 @@ class Ultra_Slider extends Base{
                 $this->add_control(
 			'button_hover_bg_color',
 			[
-				'label' => __( 'Background Color', 'ultraaddons' ),
+				'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => 'transparent',
 				'selectors' => [
@@ -793,7 +793,7 @@ class Ultra_Slider extends Base{
                 $this->add_control(
 			'pagination_options',
 			[
-				'label' => __( 'Pagination/Navigation', 'ultraaddons' ),
+				'label' => __( 'Pagination/Navigation', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -802,7 +802,7 @@ class Ultra_Slider extends Base{
                 $this->add_control(
                         'navigation_icon_color',
                         [
-                                'label' => __( 'Navigation Icon Color', 'ultraaddons' ),
+                                'label' => __( 'Navigation Icon Color', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::COLOR,
                                 'condition'=>[
                                         'navigation'=>['arrow','both']
@@ -817,7 +817,7 @@ class Ultra_Slider extends Base{
                 $this->add_control(
                         'navigation_bg_color',
                         [
-                                'label' => __( 'Navigation BG Color', 'ultraaddons' ),
+                                'label' => __( 'Navigation BG Color', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::COLOR,
                                 'selectors' => [
                                         '{{WRAPPER}}.navigation-arrow-position-center .ua-slider-wrapper .owl-nav button' => 'background-color: {{VALUE}};border-color: {{VALUE}};',
@@ -831,7 +831,7 @@ class Ultra_Slider extends Base{
                 $this->add_responsive_control(
                         'navigation_radius',
                         [
-                                'label' => __( 'Navigation Radius', 'ultraaddons' ),
+                                'label' => __( 'Navigation Radius', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::DIMENSIONS,
                                 'size_units' => [ 'px', '%' ],
                                 'selectors' => [
@@ -846,7 +846,7 @@ class Ultra_Slider extends Base{
                  $this->add_responsive_control(
                         'navigation_padding',
                         [
-                                'label' => __( 'Navigation Padding', 'ultraaddons' ),
+                                'label' => __( 'Navigation Padding', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::DIMENSIONS,
                                 'size_units' => [ 'px', '%' ],
                                 'selectors' => [
@@ -861,7 +861,7 @@ class Ultra_Slider extends Base{
                  $this->add_control(
 			'navigation_size',
 			[
-				'label' => __( 'Navigation Size', 'ultraaddons' ),
+				'label' => __( 'Navigation Size', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
                                 'size_units' => [ 'px'],
                                 'range' => [
@@ -887,7 +887,7 @@ class Ultra_Slider extends Base{
                 $this->add_control(
                         'dot_icon_color',
                         [
-                                'label' => __( 'Dots Icon Color', 'ultraaddons' ),
+                                'label' => __( 'Dots Icon Color', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#717171',
                                  'condition'=>[
@@ -903,7 +903,7 @@ class Ultra_Slider extends Base{
                 $this->add_control(
                         'dots_bg_active_color',
                         [
-                                'label' => __( 'Active Dots/Number Color', 'ultraaddons' ),
+                                'label' => __( 'Active Dots/Number Color', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::COLOR,
                                 'selectors' => [
                                         '{{WRAPPER}} .ua-slider-wrapper.ua-number-slider-wrapper .owl-dots button.owl-dot.active' => 'color: {{VALUE}};',
@@ -918,7 +918,7 @@ class Ultra_Slider extends Base{
                 $this->add_control(
                         'dots_bg_color',
                         [
-                                'label' => __( 'Dots/Number Color', 'ultraaddons' ),
+                                'label' => __( 'Dots/Number Color', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::COLOR,
                                 'selectors' => [
                                         '{{WRAPPER}} .ua-slider-wrapper.ua-number-slider-wrapper .owl-dots button.owl-dot' => 'color: {{VALUE}};',
@@ -933,10 +933,10 @@ class Ultra_Slider extends Base{
                 $this->add_control( 
                        'display_underline',
                         [
-                                'label' => __( 'Number Underline', 'ultraaddons' ),
+                                'label' => __( 'Number Underline', 'ultraaddons-elementor-lite' ),
                                'type' => Controls_Manager::SWITCHER,
-                               'label_on' => __( 'Show', 'ultraaddons' ),
-				'label_off' => __( 'Hide', 'ultraaddons' ),
+                               'label_on' => __( 'Show', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'Hide', 'ultraaddons-elementor-lite' ),
                                'return_value' => 'yes',
                                 'default' => 'yes',
                                 'condition'=>[
@@ -955,14 +955,14 @@ class Ultra_Slider extends Base{
             $this->start_controls_section(
                     'slider-background-effect',
                     [
-                        'label'     => esc_html__( 'Overlay Effect', 'ultraaddons' ),
+                        'label'     => esc_html__( 'Overlay Effect', 'ultraaddons-elementor-lite' ),
                     ]
                 );
 
                 $this->add_control(
 			'background_overlay',
 			[
-				'label' => __( 'Backgrund Color', 'ultraaddons' ),
+				'label' => __( 'Backgrund Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
                                 'default' => '#EEFFF100',
 				'selectors' => [
@@ -976,7 +976,7 @@ class Ultra_Slider extends Base{
 			Group_Control_Css_Filter::get_type(),
 			[
 				'name' => 'css_filters',
-                                'label' => __( 'CSS Filter', 'ultraaddons' ),
+                                'label' => __( 'CSS Filter', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-slider-item',
 			]
 		);
@@ -993,17 +993,17 @@ class Ultra_Slider extends Base{
                 $this->start_controls_section(
                     'slider-settings',
                     [
-                        'label'     => esc_html__( 'Slider Settings', 'ultraaddons' ),
+                        'label'     => esc_html__( 'Slider Settings', 'ultraaddons-elementor-lite' ),
                     ]
                 );
 
                 $this->add_control(
                         'autoplay',
                         [
-                                'label' => __( 'Autoplay?', 'ultraaddons' ),
+                                'label' => __( 'Autoplay?', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::SWITCHER,
-                                'label_on' => __( 'Yes', 'ultraaddons' ),
-                                'label_off' => __( 'No', 'ultraaddons' ),
+                                'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+                                'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
                                 'default' => 'yes',
                                 'return_value' => 'yes',
                                 'frontend_available' => true,
@@ -1013,10 +1013,10 @@ class Ultra_Slider extends Base{
                 $this->add_control(
                         'pause_on_hover',
                         [
-                                'label' => __( 'Pause on Hover', 'ultraaddons' ),
+                                'label' => __( 'Pause on Hover', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::SWITCHER,
-                                'label_on' => __( 'Yes', 'ultraaddons' ),
-                                'label_off' => __( 'No', 'ultraaddons' ),
+                                'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+                                'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
                                 'default' => 'yes',
                                 'return_value' => 'yes',
                                 'condition' => [
@@ -1029,13 +1029,13 @@ class Ultra_Slider extends Base{
                 $this->add_control(
                         'autoplay_speed',
                         [
-                                'label' => __( 'Autoplay Speed', 'ultraaddons' ),
+                                'label' => __( 'Autoplay Speed', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::NUMBER,
                                 'min' => 100,
                                 'step' => 100,
                                 'max' => 10000,
                                 'default' => 3000,
-                                'description' => __( 'Autoplay speed in milliseconds', 'ultraaddons' ),
+                                'description' => __( 'Autoplay speed in milliseconds', 'ultraaddons-elementor-lite' ),
                                 'condition' => [
                                         'autoplay' => 'yes',
                                 ],
@@ -1047,10 +1047,10 @@ class Ultra_Slider extends Base{
                 $this->add_control(
                         'loop',
                         [
-                                'label' => __( 'Infinite Loop?', 'ultraaddons' ),
+                                'label' => __( 'Infinite Loop?', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::SWITCHER,
-                                'label_on' => __( 'Yes', 'ultraaddons' ),
-                                'label_off' => __( 'No', 'ultraaddons' ),
+                                'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+                                'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
                                 'default' => 'yes',
                                 'return_value' => 'yes',
                                 'frontend_available' => true,
@@ -1060,13 +1060,13 @@ class Ultra_Slider extends Base{
                 $this->add_control(
                         'autoplayTimeout',
                         [
-                                'label' => __( 'Autoplay Delay', 'ultraaddons' ),
+                                'label' => __( 'Autoplay Delay', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::NUMBER,
                                 'min' => 1000,
                                 'step' => 1000,
                                 'max' => 10000,
                                 'default' => 3000,
-                                'description' => __( 'Autoplay delay in milliseconds', 'ultraaddons' ),
+                                'description' => __( 'Autoplay delay in milliseconds', 'ultraaddons-elementor-lite' ),
                                 'frontend_available' => true,
                         ]
                 );
@@ -1074,13 +1074,13 @@ class Ultra_Slider extends Base{
                 $this->add_control(
                         'navigation',
                         [
-                                'label' => __( 'Navigation', 'ultraaddons' ),
+                                'label' => __( 'Navigation', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::SELECT,
                                 'options' => [
-                                        'none'      => __( 'None', 'ultraaddons' ),
-                                        'arrow'     => __( 'Arrow', 'ultraaddons' ),
-                                        'dots'      => __( 'Dots/Number', 'ultraaddons' ),
-                                        'both'      => __( 'Arrow & Dots/Number', 'ultraaddons' ),
+                                        'none'      => __( 'None', 'ultraaddons-elementor-lite' ),
+                                        'arrow'     => __( 'Arrow', 'ultraaddons-elementor-lite' ),
+                                        'dots'      => __( 'Dots/Number', 'ultraaddons-elementor-lite' ),
+                                        'both'      => __( 'Arrow & Dots/Number', 'ultraaddons-elementor-lite' ),
                                 ],
                                 'default' => 'dots',
                                 'frontend_available' => true,
@@ -1090,11 +1090,11 @@ class Ultra_Slider extends Base{
                 $this->add_control(
                         'navigation_type',
                         [
-                                'label' => __( 'Navigation Type', 'ultraaddons' ),
+                                'label' => __( 'Navigation Type', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::SELECT,
                                 'options' => [
-                                        'dots'      => __( 'Dots', 'ultraaddons' ),
-                                        'number'    => __( 'Number', 'ultraaddons' ),
+                                        'dots'      => __( 'Dots', 'ultraaddons-elementor-lite' ),
+                                        'number'    => __( 'Number', 'ultraaddons-elementor-lite' ),
                                 ],
                                 'condition' => [
                                         'navigation' => ['dots', 'both'],
@@ -1106,14 +1106,14 @@ class Ultra_Slider extends Base{
                 $this->add_control(
                         'navigation_arrow_position',
                         [
-                                'label' => __( 'Arrow Position', 'ultraaddons' ),
+                                'label' => __( 'Arrow Position', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::SELECT,
                                 'options' => [
-                                        'top-right'      => __( 'Top Right', 'ultraaddons' ),
-                                        'top-left'      => __( 'Top Left', 'ultraaddons' ),
-                                        'center'    => __( 'Center', 'ultraaddons' ),
-                                        'bottom-right'    => __( 'Bottom Right', 'ultraaddons' ),
-                                        'bottom-left'    => __( 'Bottom Left', 'ultraaddons' ),
+                                        'top-right'      => __( 'Top Right', 'ultraaddons-elementor-lite' ),
+                                        'top-left'      => __( 'Top Left', 'ultraaddons-elementor-lite' ),
+                                        'center'    => __( 'Center', 'ultraaddons-elementor-lite' ),
+                                        'bottom-right'    => __( 'Bottom Right', 'ultraaddons-elementor-lite' ),
+                                        'bottom-left'    => __( 'Bottom Left', 'ultraaddons-elementor-lite' ),
                                 ],
                                 'condition' => [
                                         'navigation' => ['arrow','both'],
@@ -1126,7 +1126,7 @@ class Ultra_Slider extends Base{
                 $this->add_control(
                         'next_prev_spacing',
                         [
-                                'label' => __( 'Navigation Button Spacing', 'ultraaddons' ),
+                                'label' => __( 'Navigation Button Spacing', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::SLIDER,
                                 'default' => [
                                         'size' => 50,
@@ -1155,7 +1155,7 @@ class Ultra_Slider extends Base{
                 $this->add_control(
                         'next_prev_center_spacing',
                         [
-                                'label' => __( 'Navigation Spacing', 'elementor' ),
+                                'label' => __( 'Navigation Spacing', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::SLIDER,
 //                                'size_units' => [ 'px' ],
                                 'default' => [
@@ -1184,11 +1184,11 @@ class Ultra_Slider extends Base{
                 $this->add_control(
                         'navigation_number_position',
                         [
-                                'label' => __( 'Number Position', 'ultraaddons' ),
+                                'label' => __( 'Number Position', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::SELECT,
                                 'options' => [
-                                        'left'      => __( 'Left', 'ultraaddons' ),
-                                        'right'    => __( 'Right', 'ultraaddons' ),
+                                        'left'      => __( 'Left', 'ultraaddons-elementor-lite' ),
+                                        'right'    => __( 'Right', 'ultraaddons-elementor-lite' ),
                                 ],
                                 'condition' => [
                                         'navigation' => ['dots','both'],
@@ -1202,15 +1202,15 @@ class Ultra_Slider extends Base{
                 $this->add_responsive_control(
                         'slides_to_show',
                         [
-                                'label' => __( 'Slides To Show', 'ultraaddons' ),
+                                'label' => __( 'Slides To Show', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::SELECT,
                                 'options' => [
-                                        1 => __( '1 Slide', 'ultraaddons' ),
-                                        2 => __( '2 Slides', 'ultraaddons' ),
-                                        3 => __( '3 Slides', 'ultraaddons' ),
-                                        4 => __( '4 Slides', 'ultraaddons' ),
-                                        5 => __( '5 Slides', 'ultraaddons' ),
-                                        6 => __( '6 Slides', 'ultraaddons' ),
+                                        1 => __( '1 Slide', 'ultraaddons-elementor-lite' ),
+                                        2 => __( '2 Slides', 'ultraaddons-elementor-lite' ),
+                                        3 => __( '3 Slides', 'ultraaddons-elementor-lite' ),
+                                        4 => __( '4 Slides', 'ultraaddons-elementor-lite' ),
+                                        5 => __( '5 Slides', 'ultraaddons-elementor-lite' ),
+                                        6 => __( '6 Slides', 'ultraaddons-elementor-lite' ),
                                 ],
                                 'desktop_default' => 1,
                                 'tablet_default' => 1,
@@ -1226,8 +1226,8 @@ class Ultra_Slider extends Base{
                 $this->add_control(
                         'external_animation',
                         [
-                                'label' => __( 'External Animation', 'ultraaddons' ),
-//                                'description' => esc_html__( 'Not mandatory, But you can apply. Generate from Animate.style', 'ultraaddons' ),
+                                'label' => __( 'External Animation', 'ultraaddons-elementor-lite' ),
+//                                'description' => esc_html__( 'Not mandatory, But you can apply. Generate from Animate.style', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::SELECT2,
                                 'options' => $animation_options,
                                 'default' => '',
@@ -1243,7 +1243,7 @@ class Ultra_Slider extends Base{
             $this->start_controls_section(
                     'slider-number-pagination',
                     [
-                        'label'     => esc_html__( 'Pagination Number', 'ultraaddons' ),
+                        'label'     => esc_html__( 'Pagination Number', 'ultraaddons-elementor-lite' ),
                         'tab' => Controls_Manager::TAB_STYLE,
                     ]
                 );
@@ -1256,7 +1256,7 @@ class Ultra_Slider extends Base{
             $this->start_controls_section(
                     'slider-next-prev-pagination',
                     [
-                        'label'     => esc_html__( 'Pagination Next Prev', 'ultraaddons' ),
+                        'label'     => esc_html__( 'Pagination Next Prev', 'ultraaddons-elementor-lite' ),
                         'tab' => Controls_Manager::TAB_STYLE,
                     ]
                 );
@@ -1269,7 +1269,7 @@ class Ultra_Slider extends Base{
             $this->start_controls_section(
                     'slider-bullet-pagination',
                     [
-                        'label'     => esc_html__( 'Pagination Next Prev', 'ultraaddons' ),
+                        'label'     => esc_html__( 'Pagination Next Prev', 'ultraaddons-elementor-lite' ),
                         'tab' => Controls_Manager::TAB_STYLE,
                     ]
                 );

@@ -33,11 +33,11 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
      *
      * @var string option key for update and get data from database. 
      */
-    //public static $key = 'ultraaddons_header_footer';
+    //public static $ultraaddons_key = 'ultraaddons_header_footer';
     
 
     public static function init() {
-        self::$font_group_key = self::$slug;//self::get_font_group();
+        self::$font_group_key = self::$ultraaddons_slug;//self::get_font_group();
 
         /**
          * Add Taxonomy for Custom Field
@@ -72,13 +72,13 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
         <style>.form-field.term-description-wrap,.form-field.term-slug-wrap{display: none !important;}</style>
         
         <div class="form-field">
-            <label for="font-fallback"><?php echo esc_html__( 'Font Fallback' ); ?></label>
+            <label for="font-fallback"><?php echo esc_html__( 'Font Fallback', 'ultraaddons-elementor-lite' ); ?></label>
             <input name="ua_fonts[fallback]" type="text" id="font-fallback">
             <p></p>
         </div> 
 
         <div class="form-field">
-            <label for="font-display"><?php echo esc_html__( 'Font Display' ); ?></label>
+            <label for="font-display"><?php echo esc_html__( 'Font Display', 'ultraaddons-elementor-lite' ); ?></label>
             <?php self::render_font_dsplay(); ?>
             <p></p>
         </div> 
@@ -104,10 +104,12 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
 
         
         ?>
+        <!-- nonce input -->
+        <?php wp_nonce_field( 'ultraaddons_custom_fonts_nonce_action', 'ultraaddons_custom_fonts_nonce_field' ); ?>
         <style>.form-field.term-description-wrap,.form-field.term-slug-wrap{display: none !important;}</style>
         <tr class="form-field">
             <th>
-            <label for="font-fallback"><?php echo esc_html__( 'Font Fallback' ); ?></label>
+            <label for="font-fallback"><?php echo esc_html__( 'Font Fallback', 'ultraaddons-elementor-lite' ); ?></label>
             </th>
             <td>
                 <input name="ua_fonts[fallback]" type="text" id="font-fallback" value="<?php echo esc_attr( $font_fallback ); ?>">
@@ -117,7 +119,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
 
         <tr class="form-field">
             <th>
-                <label for="font-display"><?php echo esc_html__( 'Font Display' ); ?></label>
+                <label for="font-display"><?php echo esc_html__( 'Font Display', 'ultraaddons-elementor-lite' ); ?></label>
             </th>
             <td>
                 <?php self::render_font_dsplay( $font_display ); ?>
@@ -165,7 +167,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
 
         
         $count = count( $variants );
-        echo '<div class="all-variant-group-wrapper" data-count="'. $count .'">';
+        echo '<div class="all-variant-group-wrapper" data-count="'. esc_attr( $count ) .'">';
         $variant_key = 0;
         foreach( $variants as $variant ){
 
@@ -180,28 +182,28 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
 
             
             <div class="font-variation-wrapper" data-variant_key="<?php echo esc_attr( $variant_key ); ?>">
-                <span class="ua-close-variant"><i><?php echo esc_html__( 'Delete Variant', 'ultraaddons' ); ?> </i>&#9986;</span>
+                <span class="ua-close-variant"><i><?php echo esc_html__( 'Delete Variant', 'ultraaddons-elementor-lite' ); ?> </i>&#9986;</span>
                 <div class="form-field">
-                    <label for="font-weight-<?php echo esc_attr( $variant_key ); ?>"><?php echo esc_html__( 'Font Weight' ); ?></label>
+                    <label for="font-weight-<?php echo esc_attr( $variant_key ); ?>"><?php echo esc_html__( 'Font Weight', 'ultraaddons-elementor-lite' ); ?></label>
                     <?php self::render_font_weight( $font_weight, $name_prefix . '[weight]', 'font-weight-' . $variant_key ); ?>
-                    <p class="ua-field-notice"><?php echo esc_html__( 'Font weight for this variant.' ); ?></p>
+                    <p class="ua-field-notice"><?php echo esc_html__( 'Font weight for this variant.', 'ultraaddons-elementor-lite' ); ?></p>
                 </div> 
                 
                 <div class="fonts-upload-wrapper form-field">
-                    <label><?php echo esc_html__( 'Font File Upload' ); ?> <span class="font-upload-add-font-button">+ add new font file</span></label>
+                    <label><?php echo esc_html__( 'Font File Upload', 'ultraaddons-elementor-lite' ); ?> <span class="font-upload-add-font-button">+ add new font file</span></label>
                     
                     <div class="fonts-upload-wrapper-inside">
                     <?php
                     $url_serial = 0;
-                    foreach( $urls as $key=>$url ){
+                    foreach( $urls as $ultraaddons_key=>$url ){
                         if( empty( $url ) && $url_serial ) continue;
-                        $format = isset( $variant['format'][$key] ) ? $variant['format'][$key] : '';
+                        $format = isset( $variant['format'][$ultraaddons_key] ) ? $variant['format'][$ultraaddons_key] : '';
                         $url_serial++;
                     ?>
                     <div class="form-file-field font-file-each-wrapper">
                         
                         <input name="<?php echo esc_attr( $name_prefix ); ?>[format][]" type="hidden" class="font-upload-format" value="<?php echo esc_attr( $format ); ?>">
-                        <input name="<?php echo esc_attr( $name_prefix ); ?>[url][]" type="text" value="<?php echo esc_attr( $url ); ?>" class="font-upload-url" id="font-url-<?php echo esc_attr( $variant_key ); ?>" placeholder="<?php echo esc_attr( 'Font file URL...','ultraaddons' ); ?>">
+                        <input name="<?php echo esc_attr( $name_prefix ); ?>[url][]" type="text" value="<?php echo esc_attr( $url ); ?>" class="font-upload-url" id="font-url-<?php echo esc_attr( $variant_key ); ?>" placeholder="<?php echo esc_attr__( 'Font file URL...','ultraaddons-elementor-lite' ); ?>">
                         <a href="#" class="ultraaddons-font-upload-button ua-button button">Upload Font</a>
                     </div> 
 
@@ -210,7 +212,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
                     
                     ?>
                     </div>
-                    <p class="ua-field-notice"><?php echo esc_html__( 'Upload your webfonts. Supported font type/format: [woff2,woff,ttf and otf].' ); ?></p>
+                    <p class="ua-field-notice"><?php echo esc_html__( 'Upload your webfonts. Supported font type/format: [woff2,woff,ttf and otf].', 'ultraaddons-elementor-lite' ); ?></p>
 
                 </div>
 
@@ -263,12 +265,12 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
         <option value="800">Extra-Bold 800</option>
         <option value="900">Ultra-Bold 900</option>
      *
-     * @param Srging $name  Actually field name, need for form submission
+     * @param Srging $ultraaddons_name  Actually field name, need for form submission
      * @param String $tag_id_selector id selector attribute, Need for label tag
      * @param String $current_value
      * @return void
      */
-    public static function render_font_weight( $current_value = null, $name = 'ua_fonts[variants][0][weight]', $tag_id_selector = '' ){
+    public static function render_font_weight( $current_value = null, $ultraaddons_name = 'ua_fonts[variants][0][weight]', $tag_id_selector = '' ){
         
         $options = $default = array(
             '100'     => 'Thin 100',
@@ -295,7 +297,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
         //As I removed wp_parse_args() I checked it over if statement
         $options = is_array( $options ) ? $options : array();
 
-        self::rennder_select( $options, $current_value, $name, $tag_id_selector );
+        self::rennder_select( $options, $current_value, $ultraaddons_name, $tag_id_selector );
         //self::rennder_select( $options, $current_value, 'ua_fonts[weight]', 'font-weight' );
         //self::rennder_select( $options, null, 'ua_fonts[fallback]', 'font-display' );
 
@@ -315,16 +317,16 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
      *
      * @param array $options array of options.
      * @param String $checked Default or selected option_value
-     * @param String $name form's filed name, which need to save data on database
+     * @param String $ultraaddons_name form's filed name, which need to save data on database
      * @param String $tag_id its tag's id attribute
      * @return void
      */
-    public static function rennder_select( $options, $current_value = null, $name=null,  $tag_id=null ){
+    public static function rennder_select( $options, $current_value = null, $ultraaddons_name=null,  $tag_id=null ){
 
         if( ! is_array( $options ) ) return"";
 
         ?>
-        <select id="<?php echo esc_attr( $tag_id ); ?>" name="<?php echo esc_attr( $name ); ?>">
+        <select id="<?php echo esc_attr( $tag_id ); ?>" name="<?php echo esc_attr( $ultraaddons_name ); ?>">
         <?php
         
         foreach($options as $option_key => $option_value){
@@ -351,13 +353,58 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
      * @since 1.1.0.3
      */
     public static function save_term_fields( $term_id ){
+
+        // Verify nonce for wp_nonce_field( 'ultraaddons_custom_fonts_nonce_action', 'ultraaddons_custom_fonts_nonce_field' )
+        if ( ! isset( $_POST['ultraaddons_custom_fonts_nonce_field'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['ultraaddons_custom_fonts_nonce_field'] ) ), 'ultraaddons_custom_fonts_nonce_action' ) ) {
+            return;
+        }
+
         $term = get_term_by('term_id',$term_id,self::$font_group_key);
         $font_name = $term->name;
-        $trangient_name = "ua_font_trangient_" . $font_name;
         if( isset( $_POST[self::$meta_key] ) && is_array( $_POST[self::$meta_key] ) ){
-            $meta_value = $_POST[self::$meta_key];
+            $meta_value = array();
+            
+            // Sanitize fallback field
+            if ( isset( $_POST[self::$meta_key]['fallback'] ) ) {
+                $meta_value['fallback'] = sanitize_text_field( wp_unslash( $_POST[self::$meta_key]['fallback'] ) );
+            }
+            
+            // Sanitize display field
+            if ( isset( $_POST[self::$meta_key]['display'] ) ) {
+                $meta_value['display'] = sanitize_text_field( wp_unslash( $_POST[self::$meta_key]['display'] ) );
+            }
+            
+            // Sanitize variants array
+            if ( isset( $_POST[self::$meta_key]['variants'] ) && is_array( $_POST[self::$meta_key]['variants'] ) ) {
+                $meta_value['variants'] = array();
+                //Here need array of variants
+                foreach ( wp_unslash( $_POST[self::$meta_key]['variants'] ) as $variant_key => $variant ) {
+                    if ( ! is_array( $variant ) ) {
+                        continue;
+                    }
+                    
+                    $sanitized_variant = array();
+                    
+                    // Sanitize weight
+                    if ( isset( $variant['weight'] ) ) {
+                        $sanitized_variant['weight'] = absint( $variant['weight'] );
+                    }
+                    
+                    // Sanitize format array
+                    if ( isset( $variant['format'] ) && is_array( $variant['format'] ) ) {
+                        $sanitized_variant['format'] = array_map( 'sanitize_text_field', array_map( 'wp_unslash', $variant['format'] ) );
+                    }
+                    
+                    // Sanitize URL array
+                    if ( isset( $variant['url'] ) && is_array( $variant['url'] ) ) {
+                        $sanitized_variant['url'] = array_map( 'esc_url_raw', array_map( 'wp_unslash', $variant['url'] ) );
+                    }
+                    
+                    $meta_value['variants'][$variant_key] = $sanitized_variant;
+                }
+            }
+            
             update_term_meta( $term_id, self::$meta_key, $meta_value );
-            set_transient( $trangient_name, $fonts_args );
         }
     }
 
@@ -377,7 +424,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
             $old_columns = $columns;
             $columns     = array(
                 'cb'   => $old_columns['cb'],
-                'name' => esc_html__( 'Font Name', 'ultraaddons' ),
+                'name' => esc_html__( 'Font Name', 'ultraaddons-elementor-lite' ),
             );
 
         }
@@ -388,7 +435,7 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
     /**
      * In parent class,
      * method was get_term_name
-     * and property was self::$slug;
+     * and property was self::$ultraaddons_slug;
      * 
      * but here need $font_group
      * 
@@ -412,14 +459,16 @@ class Custom_Fonts_Handle extends Custom_Fonts_Taxonomy {
         if ( is_null( self::$fonts ) ) {
 
             self::$fonts = array();
-            $args = array(
+            
+            $term_name = self::get_font_group();
+            $ultraaddons_args = array(
+                'taxonomy'   => $term_name,
                 'hide_empty' => false
             );
-            $term_name = self::get_font_group();
-            $terms = get_terms( $term_name, $args );
+            $ultraaddons_terms = get_terms( $ultraaddons_args );
 
-            if ( ! empty( $terms ) ) {
-                foreach ( $terms as $term ) {
+            if ( ! empty( $ultraaddons_terms ) ) {
+                foreach ( $ultraaddons_terms as $term ) {
                     self::$fonts[ $term->name ] = $term_name;
                 }
             }

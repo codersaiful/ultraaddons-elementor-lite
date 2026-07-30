@@ -56,7 +56,7 @@ class Custom_Fonts_Render {
             
         }
         $style_code .= "</style>";
-        echo $style_code;
+        echo wp_kses_post( $style_code );
     }
 
     /**
@@ -65,7 +65,7 @@ class Custom_Fonts_Render {
      * We are getting help from method font_args_by_name()
      * and this method will return like bellow array
      * 
-     * CAN BE NEED: $term = get_term_by('name',$name,Fonts::$font_group_key);
+     * CAN BE NEED: $term = get_term_by('name',$ultraaddons_name,Fonts::$font_group_key);
      * 
 array (size=3)
   0 => 
@@ -98,8 +98,8 @@ array (size=3)
         if( empty( $fonts_args ) ) return;
 
         $fontface = "";
-        foreach( $fonts_args as $args ){
-            $fontface .= self::fontface_each_by_args( $args ) . "\n";
+        foreach( $fonts_args as $ultraaddons_args ){
+            $fontface .= self::fontface_each_by_args( $ultraaddons_args ) . "\n";
         }
 
         return $fontface;
@@ -115,12 +115,12 @@ array (size=3)
       'font-display' => string 'auto' (length=4)
       'src' => string 'url(mylink/FONT-ThicccAF.ttf) format('ttf')' (length=101)
      *
-     * @param Array $args
+     * @param Array $ultraaddons_args
      * @return String
      */
-    protected static function fontface_each_by_args( $args ){
+    protected static function fontface_each_by_args( $ultraaddons_args ){
         $property = '';
-        foreach( $args as $property_name => $property_value ){
+        foreach( $ultraaddons_args as $property_name => $property_value ){
             $property .= "$property_name: $property_value;"; //\n
         }
 
@@ -135,12 +135,12 @@ array (size=3)
      * Getting details array of Font name
      * based on Font name
      * 
-     * @param string $name Font name specially Font taxonomy title actually
+     * @param string $ultraaddons_name Font name specially Font taxonomy title actually
      * @return Array|null|false for success, returna a array, otherwise return null
      * 
      */
-    public static function font_args_by_name( $name ){
-        $term = get_term_by('name',$name,Fonts::$font_group_key);
+    public static function font_args_by_name( $ultraaddons_name ){
+        $term = get_term_by('name',$ultraaddons_name,Fonts::$font_group_key);
         
         if( ! $term ) return false;
         $term_id = $term->term_id;
@@ -174,9 +174,9 @@ array (size=3)
             $font_details['font-fallback'] = $fallback;
 
             $font_src = "";
-            foreach( $urls as $key => $url ){
+            foreach( $urls as $ultraaddons_key => $url ){
                 
-                $format = $formats[$key];
+                $format = $formats[$ultraaddons_key];
                 $font_src .= ! empty( $url ) ? "url($url) format('$format')," : '';
             }
             $font_src = rtrim( $font_src, ',' );

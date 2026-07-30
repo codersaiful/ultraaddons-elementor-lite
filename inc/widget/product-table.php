@@ -26,7 +26,7 @@ class Product_Table extends Base{
          * @return string keywords
          */
         public function get_keywords() {
-            return [ 'ultraaddons', 'ua','table', 'woo', 'product', 'wpt table', 'wc', 'tbl' ]; //'ultraaddons eicon-table'
+            return [ 'ultraaddons-elementor-lite', 'ua','table', 'woo', 'product', 'wpt table', 'wc', 'tbl' ]; //'ultraaddons eicon-table'
         }
 
         /**
@@ -124,17 +124,17 @@ class Product_Table extends Base{
             $settings = $this->get_settings_for_display();
             $table_id = isset( $settings['table_id'] ) && !empty( $settings['table_id'] ) ? $settings['table_id'] : false;
             if( $table_id && is_numeric( $table_id ) ){
-                $name = get_the_title( $table_id );
-                $shortcode = "[Product_Table id='{$table_id}' name='{$name}']";
-                $shortcode = do_shortcode( shortcode_unautop( $shortcode ) );
+                $ultraaddons_name = get_the_title( $table_id );
+                $shortcode = "[Product_Table id='{$table_id}' name='{$ultraaddons_name}']";
+                // $shortcode = do_shortcode( shortcode_unautop( $shortcode ) );
 		?>
                 <div class="wpt-elementor-wrapper wpt-elementor-wrapper-<?php echo esc_attr( $table_id ); ?>">
-                    <?php echo $shortcode; ?>
+                    <?php echo do_shortcode( shortcode_unautop( $shortcode ) ); ?>
                 </div>
 		<?php
             }else{
                 echo '<h2 class="wpt_elmnt_select_note">';
-                echo esc_html__( 'Please select a Table.', 'wpt_pro' );
+                echo esc_html__( 'Please select a Table.', 'ultraaddons-elementor-lite' );
                 echo '</h2>';
             }
 	}
@@ -143,17 +143,17 @@ class Product_Table extends Base{
                 $this->start_controls_section(
 			'general',
 			[
-				'label' => __( 'General', 'wpt_pro' ),
+				'label' => __( 'General', 'ultraaddons-elementor-lite' ),
 				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
                 
-                $args = array(
+                $ultraaddons_args = array(
                     'post_type' => 'wpt_product_table',
                     'posts_per_page'=> '-1',
                     'post_status' => 'publish',
                 );
-                $productTable = new \WP_Query( $args );
+                $productTable = new \WP_Query( $ultraaddons_args );
                 $table_options = array();
                 $wpt_extra_msg = false;
                 if ($productTable->have_posts()) : 
@@ -171,12 +171,11 @@ class Product_Table extends Base{
                 
 		
                 wp_reset_postdata();
-                wp_reset_query();
                 if( $table_options && is_array( $table_options ) ){
                     $this->add_control(
                             'table_id',
                             [
-                                    'label' => __( 'Table List', 'wpt_pro' ),
+                                    'label' => __( 'Table List', 'ultraaddons-elementor-lite' ),
                                     'type' => Controls_Manager::SELECT,
                                     'options' => $table_options,
                                     //'default' => '',
@@ -184,16 +183,17 @@ class Product_Table extends Base{
                     );
                     
                 }else{
-                    $wpt_extra_msg = __( 'There is not founded any table to your. ', 'wpt_pro' );
+                    $wpt_extra_msg = __( 'There is not founded any table to your. ', 'ultraaddons-elementor-lite' );
                 }
                 
                 $this->add_control(
                         'table_notification',
                         [
-                            'label' => __( 'Additional Information', 'wpt_pro' ),
+                            'label' => __( 'Additional Information', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::RAW_HTML,
                             'raw' => $wpt_extra_msg . sprintf( 
-                                    __( 'Create %sa new table%s.', 'wpt_pro' ), 
+                                    /* translators: 1: start tag of anchor 2: closing of anchor tag  */
+                                    __( 'Create %1$sa new table%2$s.', 'ultraaddons-elementor-lite' ), 
                                     '<a href="' . admin_url( 'post-new.php?post_type=wpt_product_table' ) . '">',
                                     '</a>'
                                     ),
@@ -214,7 +214,7 @@ class Product_Table extends Base{
             $this->start_controls_section(
                 'style_general',
                 [
-                    'label'     => esc_html__( 'General', 'ultraaddons' ),
+                    'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                     'tab'       => Controls_Manager::TAB_STYLE,
                 ]
             );
@@ -235,7 +235,7 @@ class Product_Table extends Base{
             $this->start_controls_section(
                 'thead',
                 [
-                    'label'     => esc_html__( 'Table Head', 'ultraaddons' ),
+                    'label'     => esc_html__( 'Table Head', 'ultraaddons-elementor-lite' ),
                     'tab'       => Controls_Manager::TAB_STYLE,
                 ]
             );
@@ -254,7 +254,7 @@ class Product_Table extends Base{
             $this->add_control(
                 'thead-color',
                 [
-                    'label'     => __( 'Color', 'ultraaddons' ),
+                    'label'     => __( 'Color', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} table.wpt_product_table thead tr th' => 'color: {{VALUE}}',
@@ -266,7 +266,7 @@ class Product_Table extends Base{
             $this->add_control(
                 'thead-bg-color',
                 [
-                    'label'     => __( 'Background Color', 'ultraaddons' ),
+                    'label'     => __( 'Background Color', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} table.wpt_product_table thead tr th' => 'background-color: {{VALUE}}',
@@ -278,7 +278,7 @@ class Product_Table extends Base{
             $this->add_control(
                 'thead-border-color',
                 [
-                    'label'     => __( 'Border Color', 'ultraaddons' ),
+                    'label'     => __( 'Border Color', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} table.wpt_product_table thead .wpt_table_header_row th' => 'border-color: {{VALUE}}',
@@ -290,7 +290,7 @@ class Product_Table extends Base{
             $this->add_responsive_control(
                     'cell_gap',
                     [
-                            'label' => __( 'Cell Padding', 'ultraaddons' ),
+                            'label' => __( 'Cell Padding', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SLIDER,
                             'size_units' => [ 'px', '%' ],
                             'range' => [
@@ -321,7 +321,7 @@ class Product_Table extends Base{
             $this->start_controls_section(
                 'minicart',
                 [
-                    'label'     => esc_html__( 'Mini Cart', 'ultraaddons' ),
+                    'label'     => esc_html__( 'Mini Cart', 'ultraaddons-elementor-lite' ),
                     'tab'       => Controls_Manager::TAB_STYLE,
                 ]
             );
@@ -329,7 +329,7 @@ class Product_Table extends Base{
             $this->add_control(
                 'mini_cart_bg_color',
                 [
-                    'label'     => __( 'Background', 'ultraaddons' ),
+                    'label'     => __( 'Background', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .wpt_product_table_wrapper div.tables_cart_message_box' => 'background-color: {{VALUE}}',
@@ -341,7 +341,7 @@ class Product_Table extends Base{
             $this->add_control(
                     'mini_header_1',
                     [
-                            'label' => __( 'Cart Header', 'ultraaddons' ),
+                            'label' => __( 'Cart Header', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::HEADING,
                             'separator' => 'before',
                     ]
@@ -350,7 +350,7 @@ class Product_Table extends Base{
             $this->add_control(
                 'header-color',
                 [
-                    'label'     => __( 'Header Background', 'ultraaddons' ),
+                    'label'     => __( 'Header Background', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                             '{{WRAPPER}} .wpt_product_table_wrapper div.tables_cart_message_box a.cart-contents' => 'background-color: {{VALUE}}',
@@ -362,7 +362,7 @@ class Product_Table extends Base{
             $this->add_control(
                 'header-amount-color',
                 [
-                    'label'     => __( 'Header Price Text Color', 'ultraaddons' ),
+                    'label'     => __( 'Header Price Text Color', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                             '{{WRAPPER}} .wpt_product_table_wrapper div.tables_cart_message_box a.cart-contents span.amount' => 'color: {{VALUE}}',
@@ -373,7 +373,7 @@ class Product_Table extends Base{
             $this->add_control(
                     'mini_header_2',
                     [
-                            'label' => __( 'Cart Contents', 'ultraaddons' ),
+                            'label' => __( 'Cart Contents', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::HEADING,
                             'separator' => 'before',
                     ]
@@ -393,7 +393,7 @@ class Product_Table extends Base{
             $this->add_control(
                 'title-color',
                 [
-                    'label'     => __( 'Title Color', 'ultraaddons' ),
+                    'label'     => __( 'Title Color', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                             '{{WRAPPER}} .wpt_product_table_wrapper .widget_shopping_cart_content ul li a:not(.remove)' => 'color: {{VALUE}}',
@@ -404,7 +404,7 @@ class Product_Table extends Base{
             $this->add_control(
                 'price-color',
                 [
-                    'label'     => __( 'Quantity X Price Color', 'ultraaddons' ),
+                    'label'     => __( 'Quantity X Price Color', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                             '{{WRAPPER}} .wpt_product_table_wrapper .widget_shopping_cart_content ul li span.quantity' => 'color: {{VALUE}}',
@@ -415,7 +415,7 @@ class Product_Table extends Base{
             $this->add_control(
                     'mini_header_3',
                     [
-                            'label' => __( 'Cart Total', 'ultraaddons' ),
+                            'label' => __( 'Cart Total', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::HEADING,
                             'separator' => 'before',
                     ]
@@ -435,7 +435,7 @@ class Product_Table extends Base{
             $this->add_control(
                 'mini_cart_total_price_label_color',
                 [
-                    'label'     => __( 'Total Price Label Color', 'ultraaddons' ),
+                    'label'     => __( 'Total Price Label Color', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .wpt_product_table_wrapper .widget_shopping_cart_content .total' => 'color: {{VALUE}}',
@@ -446,7 +446,7 @@ class Product_Table extends Base{
             $this->add_control(
                 'mini_cart_total_price_color',
                 [
-                    'label'     => __( 'Total Price Text Color', 'ultraaddons' ),
+                    'label'     => __( 'Total Price Text Color', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .wpt_product_table_wrapper .widget_shopping_cart_content .total span.amount' => 'color: {{VALUE}}',
@@ -463,7 +463,7 @@ class Product_Table extends Base{
             $this->start_controls_section(
                 'search_box',
                 [
-                    'label'     => esc_html__( 'Search & Filter Box', 'ultraaddons' ),
+                    'label'     => esc_html__( 'Search & Filter Box', 'ultraaddons-elementor-lite' ),
                     'tab'       => Controls_Manager::TAB_STYLE,
                 ]
             );
@@ -491,7 +491,7 @@ class Product_Table extends Base{
             $this->add_control(
                 'color',
                 [
-                    'label'     => __( 'Text Color', 'ultraaddons' ),
+                    'label'     => __( 'Text Color', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .wpt_product_table_wrapper .wpt_filter_wrapper' => 'color: {{VALUE}}',
@@ -504,10 +504,10 @@ class Product_Table extends Base{
             $this->add_control(
                 'search_box_title',
                 [
-                    'label'     => __( 'Show Title', 'ultraaddons' ),
+                    'label'     => __( 'Show Title', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::SWITCHER,
-                    'label_on' => __( 'Yes', 'ultraaddons' ),
-                    'label_off' => __( 'No', 'ultraaddons' ),
+                    'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+                    'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
                     'return_value' => 'yes',
                     'default' => 'yes',
                     'prefix_class' => 'search-title-show-'
@@ -530,7 +530,7 @@ class Product_Table extends Base{
             $this->start_controls_section(
                 'tbody',
                 [
-                    'label'     => esc_html__( 'Table Body', 'ultraaddons' ),
+                    'label'     => esc_html__( 'Table Body', 'ultraaddons-elementor-lite' ),
                     'tab'       => Controls_Manager::TAB_STYLE,
                 ]
             );
@@ -538,7 +538,7 @@ class Product_Table extends Base{
             $this->add_control(
                     'title_typo',
                     [
-                            'label' => __( 'Product Title', 'ultraaddons' ),
+                            'label' => __( 'Product Title', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::HEADING,
                     ]
             );
@@ -554,7 +554,7 @@ class Product_Table extends Base{
             $this->add_control(
                 'tbody_title_color',
                 [
-                    'label'     => __( 'Color', 'ultraaddons' ),
+                    'label'     => __( 'Color', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} table.wpt_product_table tbody tr td .product_title a:not(.product_description), {{WRAPPER}} table.wpt_product_table tbody tr td .product_title span:not(.product_description)' => 'color: {{VALUE}}',
@@ -566,7 +566,7 @@ class Product_Table extends Base{
             $this->add_control(
                     'links_typo',
                     [
-                            'label' => __( 'Links', 'ultraaddons' ),
+                            'label' => __( 'Links', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::HEADING,
                             'separator' => 'before',
                     ]
@@ -583,7 +583,7 @@ class Product_Table extends Base{
             $this->add_control(
                 'tbody_links_color',
                 [
-                    'label'     => __( 'Color', 'ultraaddons' ),
+                    'label'     => __( 'Color', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} table.wpt_product_table tbody tr td:not(.wpt_product_title):not(.wpt_action) a' => 'color: {{VALUE}}',
@@ -595,7 +595,7 @@ class Product_Table extends Base{
             $this->add_control(
                     'price_typo',
                     [
-                            'label' => __( 'Price', 'ultraaddons' ),
+                            'label' => __( 'Price', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::HEADING,
                             'separator' => 'before',
                     ]
@@ -607,7 +607,7 @@ class Product_Table extends Base{
             $this->start_controls_tab(
                     'tab_sale_price',
                     [
-                            'label'  => esc_html__( 'Sale Price', 'ultraaddons' )
+                            'label'  => esc_html__( 'Sale Price', 'ultraaddons-elementor-lite' )
                     ]
             );
             
@@ -622,7 +622,7 @@ class Product_Table extends Base{
             $this->add_control(
                 'tbody_sale_price_color',
                 [
-                    'label'     => __( 'Text Color', 'ultraaddons' ),
+                    'label'     => __( 'Text Color', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} table.wpt_product_table tbody tr td.wpt_price del' => 'color: {{VALUE}}',
@@ -637,7 +637,7 @@ class Product_Table extends Base{
             $this->start_controls_tab(
                     'tab_regular_price',
                     [
-                            'label'  => esc_html__( 'Regular Price', 'ultraaddons' )
+                            'label'  => esc_html__( 'Regular Price', 'ultraaddons-elementor-lite' )
                     ]
             );
             
@@ -652,7 +652,7 @@ class Product_Table extends Base{
             $this->add_control(
                 'tbody_regular_price_color',
                 [
-                    'label'     => __( 'Text Color', 'ultraaddons' ),
+                    'label'     => __( 'Text Color', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} table.wpt_product_table tbody tr td.wpt_price ins' => 'color: {{VALUE}}',
@@ -673,7 +673,7 @@ class Product_Table extends Base{
             $this->add_control(
                     'quantity_style',
                     [
-                            'label' => __( 'Quantity', 'ultraaddons' ),
+                            'label' => __( 'Quantity', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::HEADING,
                             'separator' => 'before',
                     ]
@@ -682,7 +682,7 @@ class Product_Table extends Base{
             $this->add_control(
                 'tbody_qty_color',
                 [
-                    'label'     => __( 'Color', 'ultraaddons' ),
+                    'label'     => __( 'Color', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .wpt_product_table_wrapper .quantity .qty' => 'color: {{VALUE}}',
@@ -695,7 +695,7 @@ class Product_Table extends Base{
             $this->add_control(
                 'tbody_qty_bg_color',
                 [
-                    'label'     => __( 'Background Color', 'ultraaddons' ),
+                    'label'     => __( 'Background Color', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .wpt_product_table_wrapper .quantity .qty' => 'background-color: {{VALUE}}',
@@ -708,7 +708,7 @@ class Product_Table extends Base{
             $this->add_responsive_control(
                     'qty_input',
                     [
-                            'label' => __( 'Padding', 'ultraaddons' ),
+                            'label' => __( 'Padding', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => [ 'px', '%' ],
                             'range' => [
@@ -738,7 +738,7 @@ class Product_Table extends Base{
             $this->add_control(
                     'others_typo',
                     [
-                            'label' => __( 'Others', 'ultraaddons' ),
+                            'label' => __( 'Others', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::HEADING,
                             'separator' => 'before',
                     ]
@@ -755,7 +755,7 @@ class Product_Table extends Base{
             $this->add_control(
                 'tbody-other-color',
                 [
-                    'label'     => __( 'Text Color', 'ultraaddons' ),
+                    'label'     => __( 'Text Color', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} table.wpt_product_table tbody tr td p, {{WRAPPER}} table.wpt_product_table tbody tr td:not(.wpt_product_title):not(.wpt_action):not(.wpt_price) div, {{WRAPPER}} table.wpt_product_table tbody tr td div.product_description' => 'color: {{VALUE}}',
@@ -768,7 +768,7 @@ class Product_Table extends Base{
             $this->add_control(
                 'tbody-bg-color',
                 [
-                    'label'     => __( 'Background Color', 'ultraaddons' ),
+                    'label'     => __( 'Background Color', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} table.wpt_product_table tbody tr td' => 'background-color: {{VALUE}}',
@@ -780,10 +780,10 @@ class Product_Table extends Base{
             $this->add_control(
                 'striped_table',
                 [
-                    'label'     => __( 'Striped Table', 'ultraaddons' ),
+                    'label'     => __( 'Striped Table', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::SWITCHER,
-                    'label_on' => __( 'Yes', 'ultraaddons' ),
-                    'label_off' => __( 'No', 'ultraaddons' ),
+                    'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+                    'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
                     'return_value' => 'yes',
                     'default' => 'yes',                    
                 ]
@@ -792,7 +792,7 @@ class Product_Table extends Base{
             $this->add_control(
                 'tbody_bg_color_striped',
                 [
-                    'label'     => __( 'Background Striped Color', 'ultraaddons' ),
+                    'label'     => __( 'Background Striped Color', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} table.wpt_product_table tbody tr:nth-child(2n+2) td' => 'background-color: {{VALUE}}',
@@ -807,7 +807,7 @@ class Product_Table extends Base{
             $this->add_control(
                 'tbody_border_color_striped',
                 [
-                    'label'     => __( 'Border Color', 'ultraaddons' ),
+                    'label'     => __( 'Border Color', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} table.wpt_product_table tbody tr td' => 'border-color: {{VALUE}}',
@@ -819,7 +819,7 @@ class Product_Table extends Base{
             $this->add_responsive_control(
                     'cell_gap_body',
                     [
-                            'label' => __( 'Cell Padding', 'ultraaddons' ),
+                            'label' => __( 'Cell Padding', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SLIDER,
                             'size_units' => [ 'px', '%' ],
                             'range' => [
@@ -846,7 +846,7 @@ class Product_Table extends Base{
             $this->add_control(
                     'tbody-scrollbar-color',
                     [
-                            'label'     => __( 'Scrollbar Color', 'ultraaddons' ),
+                            'label'     => __( 'Scrollbar Color', 'ultraaddons-elementor-lite' ),
                             'type'      => Controls_Manager::COLOR,
                             'selectors' => [
                                     '{{WRAPPER}} .wpt_product_table_wrapper ::-webkit-scrollbar-thumb' => 'background: {{VALUE}}',
@@ -872,7 +872,7 @@ class Product_Table extends Base{
             $this->start_controls_section(
                     'design_column',
                     [
-                        'label' => __( 'Design Column', 'ultraaddons' ),
+                        'label' => __( 'Design Column', 'ultraaddons-elementor-lite' ),
                         'tab'       => Controls_Manager::TAB_STYLE,
                     ]
             );
@@ -880,8 +880,8 @@ class Product_Table extends Base{
             /**
              * sample options
                     [
-                            'left'     => __( 'Left', 'ultraaddons' ),
-                            'right'     => __( 'Right', 'ultraaddons' ),
+                            'left'     => __( 'Left', 'ultraaddons-elementor-lite' ),
+                            'right'     => __( 'Right', 'ultraaddons-elementor-lite' ),
                     ]
              */
             $repeater = new Repeater();
@@ -889,7 +889,7 @@ class Product_Table extends Base{
             $repeater->add_control(
                     'column_name',
                     [
-                            'label' => __( 'Select a Column', 'ultraaddons' ),
+                            'label' => __( 'Select a Column', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SELECT,
                             'options' => $columns_options,
                         'default' => '',
@@ -900,7 +900,7 @@ class Product_Table extends Base{
             $repeater->add_control(
                     'color',
                     [
-                            'label' => __( 'Color', 'ultraaddons' ),
+                            'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::COLOR,
                             'selectors' => [
                                     '{{WRAPPER}} table.wpt_product_table tbody tr td.wpt_product_title,{{WRAPPER}} table.wpt_product_table tbody tr td.wpt_{{column_name.VALUE}}' => 'color: {{VALUE}} !important',
@@ -917,7 +917,7 @@ class Product_Table extends Base{
             $repeater->add_control(
                     'background-color',
                     [
-                            'label' => __( 'Background Color', 'ultraaddons' ),
+                            'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::COLOR,
                             'selectors' => [
                                     '{{WRAPPER}} .wpt_product_table .wpt{{{ column_name }}}' => 'color: {{VALUE}}',
@@ -1005,7 +1005,7 @@ class Product_Table extends Base{
             $this->start_controls_section(
                 'button_style_section',
                 [
-                    'label' => __( 'Button', 'ultraaddons' ),
+                    'label' => __( 'Button', 'ultraaddons-elementor-lite' ),
                     'tab'       => Controls_Manager::TAB_STYLE,
                 ]
             );
@@ -1021,7 +1021,7 @@ class Product_Table extends Base{
             $this->add_responsive_control(
                     'button_padding',
                     [
-                            'label' => __( 'Padding', 'ultraaddons' ),
+                            'label' => __( 'Padding', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => [ 'px', '%', 'em' ],
                             'default' => [
@@ -1041,14 +1041,14 @@ class Product_Table extends Base{
             $this->start_controls_tab(
                     'wpt_button_style_normal',
                     [
-                            'label'  => esc_html__( 'Normal', 'ultraaddons' ),
+                            'label'  => esc_html__( 'Normal', 'ultraaddons-elementor-lite' ),
                     ]
             );
             
             $this->add_control(
                 'wpt_button_color',
                 [
-                    'label'     => __( 'Color', 'ultraaddons' ),
+                    'label'     => __( 'Color', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.add_to_cart_button, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.button' => 'color: {{VALUE}}',
@@ -1062,7 +1062,7 @@ class Product_Table extends Base{
             $this->add_control(
                 'wpt_button_bg_color',
                 [
-                    'label'     => __( 'Background Color', 'ultraaddons' ),
+                    'label'     => __( 'Background Color', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.add_to_cart_button, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.button' => 'background-color: {{VALUE}}',
@@ -1077,7 +1077,7 @@ class Product_Table extends Base{
                     Group_Control_Border::get_type(),
                     [
                             'name' => 'border',
-                            'label' => __( 'Border', 'ultraaddons' ),
+                            'label' => __( 'Border', 'ultraaddons-elementor-lite' ),
                             'selector' => '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table>tbody tr.wpt_row td a.add_to_cart_button, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table>tbody tr.wpt_row td a.button, {{WRAPPER}} .wpt_product_table_wrapper .all_check_header_footer a.button.add_to_cart_all_selected, {{WRAPPER}} .wpt_product_table_wrapper .widget_shopping_cart_content p.woocommerce-mini-cart__buttons.buttons a.button.wc-forward',
                     ]
             );
@@ -1087,14 +1087,14 @@ class Product_Table extends Base{
             $this->start_controls_tab(
                     'wpt_button_style_hover',
                     [
-                            'label'  => esc_html__( 'Hover', 'ultraaddons' ),
+                            'label'  => esc_html__( 'Hover', 'ultraaddons-elementor-lite' ),
                     ]
             );
             
             $this->add_control(
                 'wpt_button_color_hover',
                 [
-                    'label'     => __( 'Color', 'ultraaddons' ),
+                    'label'     => __( 'Color', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.add_to_cart_button:hover, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.button:hover' => 'color: {{VALUE}} !important',
@@ -1108,7 +1108,7 @@ class Product_Table extends Base{
             $this->add_control(
                 'wpt_button_bg_color_hover',
                 [
-                    'label'     => __( 'Background Color', 'ultraaddons' ),
+                    'label'     => __( 'Background Color', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.add_to_cart_button:hover, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table tbody tr.wpt_row td a.button:hover' => 'background-color: {{VALUE}} !important',
@@ -1123,7 +1123,7 @@ class Product_Table extends Base{
                     Group_Control_Border::get_type(),
                     [
                             'name' => 'border_hover',
-                            'label' => __( 'Border', 'ultraaddons' ),
+                            'label' => __( 'Border', 'ultraaddons-elementor-lite' ),
                             'selector' => '{{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table>tbody tr.wpt_row td a.add_to_cart_button:hover, {{WRAPPER}} .wpt_product_table_wrapper table.wpt_product_table>tbody tr.wpt_row td a.button:hover, {{WRAPPER}} .wpt_product_table_wrapper .all_check_header_footer a.button.add_to_cart_all_selected:hover, {{WRAPPER}} .wpt_product_table_wrapper .widget_shopping_cart_content p.woocommerce-mini-cart__buttons.buttons a.button.wc-forward:hover',
                     ]
             );
@@ -1151,7 +1151,7 @@ class Product_Table extends Base{
             $this->start_controls_section(
                 'fc_style_section',
                 [
-                    'label' => __( 'Footer Cart', 'ultraaddons' ),
+                    'label' => __( 'Footer Cart', 'ultraaddons-elementor-lite' ),
                     'tab'       => Controls_Manager::TAB_STYLE,
                 ]
             );
@@ -1159,10 +1159,10 @@ class Product_Table extends Base{
             $this->add_control(
                 'fc_cart_display',
                 [
-                    'label'     => __( 'Show or Hide', 'ultraaddons' ),
+                    'label'     => __( 'Show or Hide', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::SWITCHER,
-                    'label_on' => __( 'Hide', 'ultraaddons' ),
-                    'label_off' => __( 'Show', 'ultraaddons' ),
+                    'label_on' => __( 'Hide', 'ultraaddons-elementor-lite' ),
+                    'label_off' => __( 'Show', 'ultraaddons-elementor-lite' ),
                     'return_value' => 'yes',
                     'default' => '',
                     'selectors' => [
@@ -1174,7 +1174,7 @@ class Product_Table extends Base{
             $this->add_responsive_control(
                     'fc_size',
                     [
-                            'label' => __( 'Size', 'ultraaddons' ),
+                            'label' => __( 'Size', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SLIDER,
                             'size_units' => [ 'px' ],
                             'range' => [
@@ -1200,7 +1200,7 @@ class Product_Table extends Base{
             $this->add_control(
                     'fc_cart_color',
                     [
-                        'label'     => __( 'Color', 'ultraaddons' ),
+                        'label'     => __( 'Color', 'ultraaddons-elementor-lite' ),
                         'type'      => Controls_Manager::COLOR,
                         'condition' => [
                                 'fc_cart_display' => '',
@@ -1215,7 +1215,7 @@ class Product_Table extends Base{
             $this->add_control(
                     'fc_cart_background',
                     [
-                            'label'     => __( 'Background', 'ultraaddons' ),
+                            'label'     => __( 'Background', 'ultraaddons-elementor-lite' ),
                             'type'      => Controls_Manager::COLOR,
                             'condition' => [
                                     'fc_cart_display' => '',
@@ -1230,7 +1230,7 @@ class Product_Table extends Base{
             $this->add_responsive_control(
                     'fc_font_size',
                     [
-                            'label' => __( 'Font Size', 'ultraaddons' ),
+                            'label' => __( 'Font Size', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SLIDER,
                             'size_units' => [ 'px', 'em' ],
                             'range' => [
@@ -1262,11 +1262,11 @@ class Product_Table extends Base{
             $this->add_control(
                     'fc_horizontal',
                     [
-                            'label' => __( 'Horizontal Orientation', 'ultraaddons' ),
+                            'label' => __( 'Horizontal Orientation', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::CHOOSE,
                             'options' => [
                                     'left' => [
-                                            'title' => __( 'Left', 'ultraaddons' ),
+                                            'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
                                             'icon' => 'eicon-h-align-left',
                                     ],
                             ],
@@ -1284,7 +1284,7 @@ class Product_Table extends Base{
             $this->add_responsive_control(
                     'position_x_axis_toggle',
                     [
-                            'label' => __( 'Offset', 'ultraaddons' ),
+                            'label' => __( 'Offset', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SLIDER,
                             'size_units' => [ 'px', '%' ],
                             'range' => [
@@ -1315,7 +1315,7 @@ class Product_Table extends Base{
             $this->add_responsive_control(
                     'position_x_axis',
                     [
-                            'label' => __( 'Offset', 'ultraaddons' ),
+                            'label' => __( 'Offset', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SLIDER,
                             'size_units' => [ 'px', '%' ],
                             'range' => [
@@ -1347,11 +1347,11 @@ class Product_Table extends Base{
             $this->add_control(
                     'fc_vertical',
                     [
-                            'label' => __( 'Vertical Orientation', 'ultraaddons' ),
+                            'label' => __( 'Vertical Orientation', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::CHOOSE,
                             'options' => [
                                     'top' => [
-                                            'title' => __( 'Left', 'ultraaddons' ),
+                                            'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
                                             'icon' => 'eicon-v-align-top',
                                     ],
                             ],
@@ -1369,7 +1369,7 @@ class Product_Table extends Base{
             $this->add_responsive_control(
                     'position_y_axis_toggle',
                     [
-                            'label' => __( 'Offset', 'ultraaddons' ),
+                            'label' => __( 'Offset', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SLIDER,
                             'size_units' => [ 'px', '%' ],
                             'range' => [
@@ -1400,7 +1400,7 @@ class Product_Table extends Base{
             $this->add_responsive_control(
                     'position_y_axis',
                     [
-                            'label' => __( 'Offset', 'ultraaddons' ),
+                            'label' => __( 'Offset', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SLIDER,
                             'size_units' => [ 'px', '%' ],
                             'range' => [

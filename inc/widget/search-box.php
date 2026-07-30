@@ -24,7 +24,7 @@ class Search_Box extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua', 'cart', 'wc', 'woocommerce', 'minicart', 'mini cart' ];
+        return [ 'ultraaddons-elementor-lite', 'ua', 'cart', 'wc', 'woocommerce', 'minicart', 'mini cart' ];
     }
     
     
@@ -57,7 +57,7 @@ class Search_Box extends Base{
          */
         if ( ! class_exists( 'WooCommerce' ) ) {
         ?>
-        <h3><?php echo esc_html__( 'WooComemrce is not activated.', 'ultraaddons' ); ?></h3>
+        <h3><?php echo esc_html__( 'WooComemrce is not activated.', 'ultraaddons-elementor-lite' ); ?></h3>
         <?php    
             return;
         }
@@ -74,10 +74,10 @@ class Search_Box extends Base{
         
         
         ?>
-        <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
+        <div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
             
-            <ul <?php echo $this->get_render_attribute_string( 'cart' ); ?>>
-			<li <?php echo $this->get_render_attribute_string( 'cart_link' ); ?>>
+            <ul <?php echo esc_attr( $this->get_render_attribute_string( 'cart' ) ); ?>>
+			<li <?php echo esc_attr( $this->get_render_attribute_string( 'cart_link' ) ); ?>>
 				<?php ultraaddons_woocommerce_cart_link(); ?>
 			</li>
                         <li class="minicart-content-wrapper">
@@ -88,7 +88,7 @@ class Search_Box extends Base{
                                 do_action( 'ultraaddons_minicart_top' );
                                 
 				$instance = array(
-					//'title' => esc_html( 'My Cart', 'ultraaddons' ),
+					//'title' => esc_html( 'My Cart', 'ultraaddons-elementor-lite' ),
 					'title' => $title,
 				);
                                 $instance = apply_filters( 'ultraaddons_minicart_args', $instance );

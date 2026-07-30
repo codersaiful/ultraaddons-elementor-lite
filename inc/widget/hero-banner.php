@@ -24,7 +24,7 @@ class Hero_Banner extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons','ua', 'hero', 'header', 'banner', 'call to action', 'c2a' ];
+        return [ 'ultraaddons-elementor-lite','ua', 'hero', 'header', 'banner', 'call to action', 'c2a' ];
     }
     
     // Get Control ID
@@ -137,14 +137,14 @@ class Hero_Banner extends Base{
                     <div class="ua_col_lg_7"> 
                         <div class="ua_banner_content ua_banner_content">
                             <?php if ( $has_title_text ) : ?> 
-                            <<?php echo $ua_title_size; ?> class="ua_banner_title">
+                            <<?php echo esc_attr( $ua_title_size ); ?> class="ua_banner_title">
                                 <?php echo esc_html( $this->get_banner_settings('ua_title') ); ?>
-                            </<?php echo $ua_title_size; ?>>
+                            </<?php echo esc_attr( $ua_title_size ); ?>>
                             <?php endif; ?>
                             <p class="ua_banner_desc"><?php echo wp_kses_post( $this->get_banner_settings('ua_description_text') ); ?></p>
                             <?php if($has_button_active): ?>
                                 <?php if($ua_button_text): ?>  
-                                    <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_3"><?php echo $this->get_banner_settings('ua_button_text'); ?></a>
+                                    <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_3"><?php echo esc_html( $this->get_banner_settings('ua_button_text') ); ?></a>
                                 <?php endif; ?>
                                 <?php if($ua_button2_text): ?>  
                                     <a href="<?php echo esc_url($this->get_banner_settings('_ua_banner2_link')['url']); ?>" class="ua_video_popup_area ua_cu_btn btn_4"> 
@@ -193,19 +193,19 @@ class Hero_Banner extends Base{
                     <div class="ua_col_lg_7"> 
                         <div class="ua_banner_content ua_banner_content_style_01">
                             <?php if ( $has_title_text ) : ?> 
-                                <<?php echo $ua_title_size; ?> class="ua_banner_title">
+                                <<?php echo esc_attr( $ua_title_size ); ?> class="ua_banner_title">
                                     <?php echo esc_html( $this->get_banner_settings('ua_title') ); ?>
-                                </<?php echo $ua_title_size; ?>>
+                                </<?php echo esc_attr( $ua_title_size ); ?>>
                             <?php endif; ?>
                             
                             <?php if($has_button_active): ?>
                                 
                                 <p class="ua_banner_desc"><?php echo wp_kses_post( $this->get_banner_settings('ua_description_text') ); ?></p>
                                 <?php if($ua_button_text): ?>
-                                <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_3"><?php echo $this->get_banner_settings('ua_button_text'); ?></a>
+                                <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_3"><?php echo wp_kses_post( $this->get_banner_settings('ua_button_text') ); ?></a>
                                 <?php endif; ?>
                                 <?php if($ua_button2_text): ?> 
-                                <a href="<?php echo esc_url($this->get_banner_settings('_ua_banner2_link')['url']); ?>" class="ua_video_popup_area ua_cu_btn btn_4"> 
+                                <a href="<?php echo esc_url($this->get_banner_settings('_ua_banner2_link')['url'] ?? ''); ?>" class="ua_video_popup_area ua_cu_btn btn_4"> 
                                 <?php Icons_Manager::render_icon( $this->get_banner_settings('_ua_banner2_icon') ); ?>
                                 <?php echo wp_kses_post($this->get_banner_settings('ua_button2_text')); ?>
                                 </a>
@@ -253,15 +253,15 @@ class Hero_Banner extends Base{
                 <div class="ua_col_lg_7"> 
                     <div class="ua_banner_content ua_banner_content_style_02">
                             <?php if ( $has_title_text ) : ?> 
-                                <<?php echo $ua_title_size; ?> class="ua_banner_title">
+                                <<?php echo esc_attr( $ua_title_size ); ?> class="ua_banner_title">
                                     <?php echo esc_html( $this->get_banner_settings('ua_title') ); ?>
-                                </<?php echo $ua_title_size; ?>>
+                                </<?php echo esc_attr( $ua_title_size ); ?>>
                             <?php endif; ?>
                             <p class="ua_banner_desc"><?php echo wp_kses_post( $this->get_banner_settings('ua_description_text') ); ?></p>
 
                             <?php if($has_button_active): ?>
                                 <?php if($ua_button_text): ?>
-                                <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_3"><?php echo $this->get_banner_settings('ua_button_text'); ?></a>
+                                <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_3"><?php echo wp_kses_post( $this->get_banner_settings('ua_button_text') ); ?></a>
                                 <?php endif; ?>
                                 <?php if($ua_button2_text): ?> 
                                 <a href="<?php echo esc_url($this->get_banner_settings('_ua_banner2_link')['url']); ?>" class="ua_video_popup_area ua_cu_btn btn_4"> 
@@ -311,15 +311,15 @@ class Hero_Banner extends Base{
                     <div class="ua_col_xl_7 ua_col_md_6"> 
                             <div class="ua_banner_content ua_banner_content_style_03">
                                 <?php if ( $has_title_text ) : ?> 
-                                    <<?php echo $ua_title_size; ?> class="ua_banner_title">
+                                    <<?php echo esc_attr( $ua_title_size ); ?> class="ua_banner_title">
                                         <?php echo esc_html( $this->get_banner_settings('ua_title') ); ?>
-                                    </<?php echo $ua_title_size; ?>>
+                                    </<?php echo esc_attr( $ua_title_size ); ?>>
                                 <?php endif; ?>
                                 <p class="ua_banner_desc"><?php echo wp_kses_post( $this->get_banner_settings('ua_description_text') ); ?></p>
                                 
                                 <?php if($has_button_active): ?>
                                     <?php if($ua_button_text): ?>
-                                    <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_3"><?php echo $this->get_banner_settings('ua_button_text'); ?></a>
+                                    <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_3"><?php echo wp_kses_post( $this->get_banner_settings('ua_button_text') ); ?></a>
                                     <?php endif; ?>
                                 <?php endif; ?>
                             </div>
@@ -363,14 +363,14 @@ class Hero_Banner extends Base{
                     <div class="ua_col_lg_6"> 
                         <div class="ua_banner_content ua_banner_content_style_04">
                         <?php if ( $has_title_text ) : ?>   
-                            <<?php echo $ua_title_size; ?> class="ua_banner_title">
+                            <<?php echo esc_attr( $ua_title_size ); ?> class="ua_banner_title">
                                     <?php echo esc_html( $this->get_banner_settings('ua_title') ); ?>
-                                </<?php echo $ua_title_size; ?>>
+                                </<?php echo esc_attr( $ua_title_size ); ?>>
                             <?php endif; ?>
                             <p class="ua_banner_desc"><?php echo wp_kses_post( $this->get_banner_settings('ua_description_text') ); ?></p>
                             <?php if($has_button_active): ?>
                                 <?php if($ua_button_text): ?>
-                                    <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_3"><?php echo $this->get_banner_settings('ua_button_text'); ?></a>
+                                    <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_3"><?php echo wp_kses_post( $this->get_banner_settings('ua_button_text') ); ?></a>
                                 <?php endif; ?>
                             <?php endif; ?>
                         </div>
@@ -420,15 +420,15 @@ class Hero_Banner extends Base{
                     <div class="ua_col_xl_7 ua_col_md_8"> 
                         <div class="ua_banner_content ua_banner_content_style_07">
                             <?php if ( $has_title_text ) : ?>
-                                <<?php echo $ua_title_size; ?> class="ua_banner_title">
+                                <<?php echo esc_attr( $ua_title_size ); ?> class="ua_banner_title">
                                     <?php echo esc_html( $this->get_banner_settings('ua_title') ); ?>
-                                </<?php echo $ua_title_size; ?>>
+                                </<?php echo esc_attr( $ua_title_size ); ?>>
                             <?php endif; ?>
                             <form action="#" class="ua_banner_subscribe_form">
                                 <input type="email" name="ua_email" id="ua_email1" placeholder="Type your e-mail">
                                 <i class="fas fa-envelope ua_mail_icon"></i>
                                 <?php if($ua_button_text): ?>
-                                    <button type="submit" class="ua_cu_btn"><?php echo $this->get_banner_settings('ua_button_text'); ?></button>
+                                    <button type="submit" class="ua_cu_btn"><?php echo wp_kses_post( $this->get_banner_settings('ua_button_text') ); ?></button>
                                 <?php endif; ?>
                             </form> 
                         </div>
@@ -462,14 +462,14 @@ class Hero_Banner extends Base{
                     <div class="ua_col_lg_6"> 
                         <div class="ua_banner_content ua_banner_content_style_06">
                             <?php if ( $has_title_text ) : ?>
-                                <<?php echo $ua_title_size; ?> class="ua_banner_title">
+                                <<?php echo esc_attr( $ua_title_size ); ?> class="ua_banner_title">
                                     <?php echo esc_html( $this->get_banner_settings('ua_title') ); ?>
-                                </<?php echo $ua_title_size; ?>>
+                                </<?php echo esc_attr( $ua_title_size ); ?>>
                             <?php endif; ?>
                             <p class="ua_banner_desc"><?php echo wp_kses_post( $this->get_banner_settings('ua_description_text') ); ?></p>
                             <?php if($has_button_active): ?>
                                 <?php if($ua_button_text): ?>
-                                <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_3"><?php echo $this->get_banner_settings('ua_button_text'); ?></a>
+                                <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_3"><?php echo wp_kses_post( $this->get_banner_settings('ua_button_text') ); ?></a>
                                 <?php endif; ?>
                                 <?php if($ua_button2_text): ?>
                                 <a href="<?php echo esc_url($this->get_banner_settings('_ua_banner2_link')['url']); ?>" class="ua_video_popup_area ua_cu_btn btn_1"> 
@@ -516,9 +516,9 @@ class Hero_Banner extends Base{
                     <div class="ua_col_lg_12"> 
                         <div class="ua_banner_content ua_banner_content_style_05">
                             <?php if ( $has_title_text ) : ?>
-                                <<?php echo $ua_title_size; ?> class="ua_banner_title">
+                                <<?php echo esc_attr( $ua_title_size ); ?> class="ua_banner_title">
                                     <?php echo esc_html( $this->get_banner_settings('ua_title') ); ?>
-                                </<?php echo $ua_title_size; ?>>
+                                </<?php echo esc_attr( $ua_title_size ); ?>>
                             <?php endif; ?>
                             <p class="ua_banner_desc"><?php echo wp_kses_post( $this->get_banner_settings('ua_description_text') ); ?></p>
                         </div>
@@ -558,14 +558,14 @@ class Hero_Banner extends Base{
                     <div class="ua_col_lg_12"> 
                         <div class="ua_banner_content ua_banner_content_style_09 ua_text_center">
                             <?php if ( $has_title_text ) : ?>
-                                <<?php echo $ua_title_size; ?> class="ua_banner_title">
+                                <<?php echo esc_attr( $ua_title_size ); ?> class="ua_banner_title">
                                     <?php echo wp_kses_post( $this->get_banner_settings('ua_title') ); ?>
-                                </<?php echo $ua_title_size; ?>>
+                                </<?php echo esc_attr( $ua_title_size ); ?>>
                             <?php endif; ?>
                             <p class="ua_banner_desc"><?php echo wp_kses_post( $this->get_banner_settings('ua_description_text') ); ?></p>
                             <?php if($has_button_active): ?>
                                 <?php if($ua_button_text): ?>
-                                    <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_2"><?php echo $this->get_banner_settings('ua_button_text'); ?></a>
+                                    <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_2"><?php echo wp_kses_post( $this->get_banner_settings('ua_button_text') ); ?></a>
                                 <?php endif;  ?>
                             <?php endif;  ?>
                         </div>
@@ -598,14 +598,14 @@ class Hero_Banner extends Base{
                     <div class="ua_col_lg_6"> 
                         <div class="ua_banner_content ua_banner_content_style_10">
                         <?php if ( $has_title_text ) : ?>
-                                <<?php echo $ua_title_size; ?> class="ua_banner_title">
+                                <<?php echo esc_attr( $ua_title_size ); ?> class="ua_banner_title">
                                     <?php echo wp_kses_post( $this->get_banner_settings('ua_title') ); ?>
-                                </<?php echo $ua_title_size; ?>>
+                                </<?php echo esc_attr( $ua_title_size ); ?>>
                             <?php endif; ?>
                             <p class="ua_banner_desc"><?php echo wp_kses_post( $this->get_banner_settings('ua_description_text') ); ?></p>
                             <?php if($has_button_active): ?>
                                 <?php if($ua_button_text): ?>
-                                    <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_3"><?php echo $this->get_banner_settings('ua_button_text'); ?></a>
+                                    <a href="<?php echo esc_url($this->get_banner_settings('ua_button_link')['url']); ?>" class="ua_cu_btn btn_3"><?php echo wp_kses_post( $this->get_banner_settings('ua_button_text') ); ?></a>
                                 <?php endif;  ?>
                             <?php endif;  ?>
                         </div>
@@ -631,13 +631,13 @@ class Hero_Banner extends Base{
 		$this->start_controls_section(
 			'ua_preset_section',
 			[
-				'label' => __( 'Preset', 'ultraaddons' ),
+				'label' => __( 'Preset', 'ultraaddons-elementor-lite' ),
 			]
         );
         $this->add_control(
 			'ua_skin',
 			[
-				'label' => esc_html__( 'Design Format', 'ultraaddons' ),
+				'label' => esc_html__( 'Design Format', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'label_block' => false,
 				'options'   => [
@@ -658,13 +658,13 @@ class Hero_Banner extends Base{
 		$this->add_control(
 			'ua_revers',
 			[
-				'label' => __( 'Banner Reverse', 'ultraaddons' ),
+				'label' => __( 'Banner Reverse', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
 				'condition' => [
 					$this->get_control_id( 'ua_skin' ) => ['_skin_1', '_skin_2', '_skin_3' ,'_skin_4','_skin_5', '_skin_6','_skin_7'],
                 ],
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'NO', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'NO', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'No',
 			]
@@ -678,17 +678,17 @@ class Hero_Banner extends Base{
 		$this->start_controls_section(
 			'ua_content_section',
 			[
-				'label' => __( 'Content', 'ultraaddons' ),
+				'label' => __( 'Content', 'ultraaddons-elementor-lite' ),
 			]
 		);
 
 		$this->add_control(
 			'ua_title',
 			[
-				'label' => __( 'Title', 'ultraaddons' ),
+				'label' => __( 'Title', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'The quickest & easiest service provider', 'ultraaddons' ),
-				'placeholder' => __( 'Enter your title', 'ultraaddons' ),
+				'default' => __( 'The quickest & easiest service provider', 'ultraaddons-elementor-lite' ),
+				'placeholder' => __( 'Enter your title', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
@@ -697,36 +697,36 @@ class Hero_Banner extends Base{
         $this->add_control(
             'ua_title_size',
             [
-                'label' => __( 'Title HTML Tag', 'ultraaddons' ),
+                'label' => __( 'Title HTML Tag', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::CHOOSE,
                 'label_block' => true,
                 'options' => [
                     'h1'  => [
-                        'title' => __( 'H1', 'ultraaddons' ),
+                        'title' => __( 'H1', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h1'
                     ],
                     'h2'  => [
-                        'title' => __( 'H2', 'ultraaddons' ),
+                        'title' => __( 'H2', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h2'
                     ],
                     'h3'  => [
-                        'title' => __( 'H3', 'ultraaddons' ),
+                        'title' => __( 'H3', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h3'
                     ],
                     'h4'  => [
-                        'title' => __( 'H4', 'ultraaddons' ),
+                        'title' => __( 'H4', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h4'
                     ],
                     'h5'  => [
-                        'title' => __( 'H5', 'ultraaddons' ),
+                        'title' => __( 'H5', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h5'
                     ],
                     'h6'  => [
-                        'title' => __( 'H6', 'ultraaddons' ),
+                        'title' => __( 'H6', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-h6'
                     ],
                     'p'  => [
-                        'title' => __( 'P', 'ultraaddons' ),
+                        'title' => __( 'P', 'ultraaddons-elementor-lite' ),
                         'icon' => 'eicon-editor-paragraph'
                     ],
                 ],
@@ -741,8 +741,8 @@ class Hero_Banner extends Base{
 			[
 				'label' => 'Description',
 				'type' => Controls_Manager::TEXTAREA,
-				'default' => __( 'Easily and reliably host a website for your business, organization, or project.', 'ultraaddons' ),
-				'placeholder' => __( 'Enter your description', 'ultraaddons' ),
+				'default' => __( 'Easily and reliably host a website for your business, organization, or project.', 'ultraaddons-elementor-lite' ),
+				'placeholder' => __( 'Enter your description', 'ultraaddons-elementor-lite' ),
 				'show_label' => true,
                 'rows' => 10,
 			]
@@ -752,7 +752,7 @@ class Hero_Banner extends Base{
         $this->add_control(
             'ua_images_show',
             [
-                'label' => esc_html__('Enable Images', 'ultraaddons'),
+                'label' => esc_html__('Enable Images', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::SWITCHER,
                 'default' => 'yes',
                 'return_value' => 'yes',
@@ -762,7 +762,7 @@ class Hero_Banner extends Base{
 
         $this->add_control(
             'ua_images_feature', [
-                'label'      => __('Feature Image', 'ultraaddons'),
+                'label'      => __('Feature Image', 'ultraaddons-elementor-lite'),
                 'type'       => \Elementor\Controls_Manager::MEDIA,
                 'default'    => [
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
@@ -780,14 +780,14 @@ class Hero_Banner extends Base{
         $this->start_controls_section(
             'ua_button_section',
             [
-                'label' => __( 'Banner Button', 'ultraaddons' ),
+                'label' => __( 'Banner Button', 'ultraaddons-elementor-lite' ),
             ]
         );
 
         $this->add_control(
             'ua_button_show',
             [
-                'label' => esc_html__('Enable Button', 'ultraaddons'),
+                'label' => esc_html__('Enable Button', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::SWITCHER,
                 'default' => 'yes',
                 'return_value' => 'yes',
@@ -797,10 +797,10 @@ class Hero_Banner extends Base{
 		$this->add_control(
 			'ua_button_text',
 			[
-				'label' => __( 'Button', 'ultraaddons' ),
+				'label' => __( 'Button', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Work With Us', 'ultraaddons' ),
-				'placeholder' => __( 'Enter your text', 'ultraaddons' ),
+				'default' => __( 'Work With Us', 'ultraaddons-elementor-lite' ),
+				'placeholder' => __( 'Enter your text', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
                 'condition' => [
                     $this->get_control_id( 'ua_button_show' ) => [ 'yes' ],
@@ -810,9 +810,9 @@ class Hero_Banner extends Base{
 		$this->add_control(
 			'ua_button_link',
 			[
-				'label' => __( 'Button Link', 'ultraaddons' ),
+				'label' => __( 'Button Link', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::URL,
-				'placeholder' => __( 'https://your-link.com', 'ultraaddons' ),
+				'placeholder' => __( 'https://your-link.com', 'ultraaddons-elementor-lite' ),
                 'default'   => [
                     'url' => '#'
                 ],
@@ -826,10 +826,10 @@ class Hero_Banner extends Base{
         $this->add_control(
 			'ua_button2_text',
 			[
-				'label' => __( 'Button Two', 'ultraaddons' ),
+				'label' => __( 'Button Two', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Watch Video', 'ultraaddons' ),
-				'placeholder' => __( 'Enter your text', 'ultraaddons' ),
+				'default' => __( 'Watch Video', 'ultraaddons-elementor-lite' ),
+				'placeholder' => __( 'Enter your text', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
                 'condition' => [
 					$this->get_control_id( 'ua_button_show' ) => [ 'yes' ],
@@ -840,9 +840,9 @@ class Hero_Banner extends Base{
 		$this->add_control(
 			'_ua_banner2_link',
 			[
-				'label' => __( 'Button Two Link', 'ultraaddons' ),
+				'label' => __( 'Button Two Link', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::URL,
-				'placeholder' => __( 'https://your-link.com', 'ultraaddons' ),
+				'placeholder' => __( 'https://your-link.com', 'ultraaddons-elementor-lite' ),
                 'default'   => [
                     'url' => '#'
                 ],
@@ -856,7 +856,7 @@ class Hero_Banner extends Base{
 		$this->add_control(
 			'_ua_banner2_icon',
 			[
-				'label' => __( 'Button Two Icon', 'ultraaddons' ),
+				'label' => __( 'Button Two Icon', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::ICONS,
                 'fa4compatibility' => 'icon',
                 'default' => [
@@ -874,7 +874,7 @@ class Hero_Banner extends Base{
 		$this->start_controls_section(
             'ua_style_general',
             [
-                'label' => esc_html__('General', 'ultraaddons'),
+                'label' => esc_html__('General', 'ultraaddons-elementor-lite'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -883,7 +883,7 @@ class Hero_Banner extends Base{
             Group_Control_Background::get_type(),
             [
                 'name' => 'bn_background',
-                'label' => esc_html__('Background Color', 'ultraaddons'),
+                'label' => esc_html__('Background Color', 'ultraaddons-elementor-lite'),
                 'types' => [ 'classic', 'gradient', 'video' ],
                 'selector' => '{{WRAPPER}} .ua_banner_section_style_01, {{WRAPPER}} .ua_banner_section_style_02, {{WRAPPER}} .ua_banner_section_style_09',
             ]
@@ -897,7 +897,7 @@ class Hero_Banner extends Base{
 		$this->start_controls_section(
             'ua_style_images',
             [
-                'label' => esc_html__('Images', 'ultraaddons'),
+                'label' => esc_html__('Images', 'ultraaddons-elementor-lite'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -905,7 +905,7 @@ class Hero_Banner extends Base{
 /* 		$this->add_responsive_control(
             'image_space_first',
             [
-                'label' => __( 'Spacing', 'ultraaddons' ),
+                'label' => __( 'Spacing', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::SLIDER,
                 'default' => [
                     'size' => 15,
@@ -928,7 +928,7 @@ class Hero_Banner extends Base{
         $this->add_responsive_control(
             'image_space_first',
             [
-                'label' => esc_html__('Spacing', 'ultraaddons'),
+                'label' => esc_html__('Spacing', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -940,7 +940,7 @@ class Hero_Banner extends Base{
         $this->add_responsive_control(
             'image_size_width_first',
             [
-                'label'      => __('Width', 'ultraaddons'),
+                'label'      => __('Width', 'ultraaddons-elementor-lite'),
                 'type'       => Controls_Manager::SLIDER,
                 'default' => [
                     'size' => '',
@@ -974,7 +974,7 @@ class Hero_Banner extends Base{
         $this->add_responsive_control(
             'image_size_height_first',
             [
-                'label'      => __('Height', 'ultraaddons'),
+                'label'      => __('Height', 'ultraaddons-elementor-lite'),
                 'type'       => Controls_Manager::SLIDER,
                 'default' => [
                     'size' => '',
@@ -1007,7 +1007,7 @@ class Hero_Banner extends Base{
         $this->add_responsive_control(
             'image_padding_first',
             [
-                'label' => esc_html__('Padding', 'ultraaddons'),
+                'label' => esc_html__('Padding', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -1025,7 +1025,7 @@ class Hero_Banner extends Base{
 		$this->start_controls_section(
             'ua_title_style_settings',
             [
-                'label' => esc_html__('Title', 'ultraaddons'),
+                'label' => esc_html__('Title', 'ultraaddons-elementor-lite'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -1039,7 +1039,7 @@ class Hero_Banner extends Base{
         $this->add_control(
             'ua_text_color',
             [
-                'label' => esc_html__('Text Color', 'ultraaddons'),
+                'label' => esc_html__('Text Color', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -1051,7 +1051,7 @@ class Hero_Banner extends Base{
 		$this->add_responsive_control(
 			'ua_title_bottom_space',
 			[
-				'label' => __( 'Spacing', 'ultraaddons' ),
+				'label' => __( 'Spacing', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -1073,7 +1073,7 @@ class Hero_Banner extends Base{
 		$this->start_controls_section(
             'ua_content_style_settings',
             [
-                'label' => esc_html__('Content', 'ultraaddons'),
+                'label' => esc_html__('Content', 'ultraaddons-elementor-lite'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -1088,7 +1088,7 @@ class Hero_Banner extends Base{
         $this->add_control(
             'ua_content_color',
             [
-                'label' => esc_html__('Text Color', 'ultraaddons'),
+                'label' => esc_html__('Text Color', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -1099,7 +1099,7 @@ class Hero_Banner extends Base{
 		$this->add_responsive_control(
 			'ua_content_bottom_space',
 			[
-				'label' => __( 'Spacing', 'ultraaddons' ),
+				'label' => __( 'Spacing', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -1116,7 +1116,7 @@ class Hero_Banner extends Base{
 		$this->add_responsive_control(
             'content_padding_first',
             [
-                'label' => esc_html__('Content Padding', 'ultraaddons'),
+                'label' => esc_html__('Content Padding', 'ultraaddons-elementor-lite'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -1133,7 +1133,7 @@ class Hero_Banner extends Base{
 		$this->start_controls_section(
             'ua_button_style_settings',
             [
-                'label' => esc_html__('Button One', 'ultraaddons'),
+                'label' => esc_html__('Button One', 'ultraaddons-elementor-lite'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -1142,14 +1142,14 @@ class Hero_Banner extends Base{
 
 		$this->start_controls_tab( '_button_normal',
 			[
-				'label' => __( 'Normal', 'ultraaddons' ),
+				'label' => __( 'Normal', 'ultraaddons-elementor-lite' ),
 			]
 		);
 
 		$this->add_control(
 			'button_color',
 			[
-				'label' => __( 'Color', 'ultraaddons' ),
+				'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -1163,7 +1163,7 @@ class Hero_Banner extends Base{
 		$this->add_control(
 			'button_bg_color',
 			[
-				'label' => __( 'Background Color', 'ultraaddons' ),
+				'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -1183,7 +1183,7 @@ class Hero_Banner extends Base{
 		$this->add_control(
 			'btn_border_radius',
 			[
-				'label' => __( 'Border Radius', 'ultraaddons' ),
+				'label' => __( 'Border Radius', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
@@ -1196,7 +1196,7 @@ class Hero_Banner extends Base{
 		$this->add_control(
 			'button_transition',
 			[
-				'label' => __( 'Transition Duration', 'ultraaddons' ),
+				'label' => __( 'Transition Duration', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 0.3,
@@ -1216,14 +1216,14 @@ class Hero_Banner extends Base{
 
 		$this->start_controls_tab( '_button_hover',
 			[
-				'label' => __( 'Hover', 'ultraaddons' ),
+				'label' => __( 'Hover', 'ultraaddons-elementor-lite' ),
 			]
 		);
 
 		$this->add_control(
 			'button_hover_color',
 			[
-				'label' => __( 'Color', 'ultraaddons' ),
+				'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -1236,7 +1236,7 @@ class Hero_Banner extends Base{
 		$this->add_control(
 			'button_hover_bg_color',
 			[
-				'label' => __( 'Background Color', 'ultraaddons' ),
+				'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -1247,7 +1247,7 @@ class Hero_Banner extends Base{
 		$this->add_control(
 			'hover_border_radius',
 			[
-				'label' => __( 'Border Radius', 'ultraaddons' ),
+				'label' => __( 'Border Radius', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'selectors' => [
 					'{{WRAPPER}} .btn_2:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -1259,7 +1259,7 @@ class Hero_Banner extends Base{
 		$this->add_control(
 			'button_hover_transition',
 			[
-				'label' => __( 'Transition Duration', 'ultraaddons' ),
+				'label' => __( 'Transition Duration', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 0.3,
@@ -1289,7 +1289,7 @@ class Hero_Banner extends Base{
 		$this->start_controls_section(
             'ua_button2_style_settings',
             [
-				'label' => esc_html__('Button Two', 'ultraaddons'),
+				'label' => esc_html__('Button Two', 'ultraaddons-elementor-lite'),
 				'condition' => [
 					$this->get_control_id('ua_skin') => ['_skin_1', '_skin_2', '_skin_3' ,'_skin_7'],
 				],
@@ -1301,14 +1301,14 @@ class Hero_Banner extends Base{
 
 		$this->start_controls_tab( '_button2_normal',
 			[
-				'label' => __( 'Normal', 'ultraaddons' ),
+				'label' => __( 'Normal', 'ultraaddons-elementor-lite' ),
 			]
 		);
 		
 		$this->add_control(
 			'button2_color',
 			[
-				'label' => __( 'Color', 'ultraaddons' ),
+				'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -1321,7 +1321,7 @@ class Hero_Banner extends Base{
 		$this->add_control(
 			'button2_bg_color',
 			[
-				'label' => __( 'Background Color', 'ultraaddons' ),
+				'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -1341,7 +1341,7 @@ class Hero_Banner extends Base{
 		$this->add_control(
 			'btn2_border_radius',
 			[
-				'label' => __( 'Border Radius', 'ultraaddons' ),
+				'label' => __( 'Border Radius', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
@@ -1353,7 +1353,7 @@ class Hero_Banner extends Base{
 		$this->add_control(
 			'button2_transition',
 			[
-				'label' => __( 'Transition Duration', 'ultraaddons' ),
+				'label' => __( 'Transition Duration', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 0.3,
@@ -1374,14 +1374,14 @@ class Hero_Banner extends Base{
 
 		$this->start_controls_tab( '_button2_hover',
 			[
-				'label' => __( 'Hover', 'ultraaddons' ),
+				'label' => __( 'Hover', 'ultraaddons-elementor-lite' ),
 			]
 		);
 
 		$this->add_control(
 			'button2_hover_color',
 			[
-				'label' => __( 'Color', 'ultraaddons' ),
+				'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -1393,7 +1393,7 @@ class Hero_Banner extends Base{
 		$this->add_control(
 			'button2_hover_bg_color',
 			[
-				'label' => __( 'Background Color', 'ultraaddons' ),
+				'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -1405,7 +1405,7 @@ class Hero_Banner extends Base{
 		$this->add_control(
 			'button2_hover_border_radius',
 			[
-				'label' => __( 'Border Radius', 'ultraaddons' ),
+				'label' => __( 'Border Radius', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'selectors' => [
 					'{{WRAPPER}} .ua_cu_btn.btn_4:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -1416,7 +1416,7 @@ class Hero_Banner extends Base{
 		$this->add_control(
 			'button2_hover_transition',
 			[
-				'label' => __( 'Transition Duration', 'ultraaddons' ),
+				'label' => __( 'Transition Duration', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 0.3,

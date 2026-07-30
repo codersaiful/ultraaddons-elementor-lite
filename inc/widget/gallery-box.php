@@ -24,7 +24,7 @@ class Gallery_Box extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons','ua', 'product', 'gallery', 'image', 'gallery image' ];
+        return [ 'ultraaddons-elementor-lite','ua', 'product', 'gallery', 'image', 'gallery image' ];
     }
     
     
@@ -88,12 +88,11 @@ class Gallery_Box extends Base{
         if( $add_icon ){
             $icon_html = '<i class="' . esc_attr( $add_icon ) . '"></i>';
         }elseif( $svg ){
-            $icon_html = '<img class="" src="' . esc_url( $svg ) . '" alt="' . esc_attr__( 'Follow Me', 'ultraaddons' ) .'">';
+            $icon_html = '<img class="" src="' . esc_url( $svg ) . '" alt="' . esc_attr__( 'Follow Me', 'ultraaddons-elementor-lite' ) .'">';
         }
         ?>
-        <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>            
-            <div class="ua-gallery-item" <?php if( $image ){ echo "style='background-image:url({$image})'"; } ?>>
-<!--                <img src="<?php echo esc_url( $image ); ?>" alt="Image">-->
+        <div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>            
+            <div class="ua-gallery-item" <?php if( $image ){ echo esc_attr( "style='background-image:url({$image})'" ); } ?>>
                 <div class="ua-gallery-item-info">
                     <div class="ua-gallery-info-title">
                         <span><?php echo wp_kses_data( $box_sub_title ); ?></span>
@@ -101,7 +100,7 @@ class Gallery_Box extends Base{
                     </div>
                     <?php if( $add_icon && ! empty( $settings['gallery_btn_link']['url'] ) ) : ?>
                     <div class="ua-gallery-info-link">
-                        <a <?php echo $this->get_render_attribute_string( 'gallery_btn_link' ); ?>><?php echo $icon_html; ?></a>
+                        <a <?php echo esc_attr( $this->get_render_attribute_string( 'gallery_btn_link' ) ); ?>><?php echo esc_html( $icon_html ); ?></a>
                     </div>
                     <?php endif; ?>
                 </div>
@@ -120,7 +119,7 @@ class Gallery_Box extends Base{
         $this->start_controls_section(
             'general_content',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -128,12 +127,12 @@ class Gallery_Box extends Base{
         $this->add_control(
                 'style',
                 [
-                        'label' => __( 'Template', 'ultraaddons' ),
+                        'label' => __( 'Template', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SELECT,
                         'default' => '1',
                         'options' => [
-                                '1' => __( 'Style 1', 'ultraaddons' ),
-                                '2' => __( 'Style 2', 'ultraaddons' ),
+                                '1' => __( 'Style 1', 'ultraaddons-elementor-lite' ),
+                                '2' => __( 'Style 2', 'ultraaddons-elementor-lite' ),
                         ],
                         'prefix_class' => 'ua-gallery-style-',
                 ]
@@ -143,7 +142,7 @@ class Gallery_Box extends Base{
         $this->add_control(
                 'image',
                 [
-                        'label' => __( 'Photo', 'ultraaddons' ),
+                        'label' => __( 'Photo', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::MEDIA,
                         'default' => [
                                 'url' => Utils::get_placeholder_image_src(),
@@ -157,9 +156,9 @@ class Gallery_Box extends Base{
         $this->add_control(
             'heading',
                 [
-                    'label'         => esc_html__( 'Heading', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Heading', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::TEXT,
-                    'default'       => __( 'Gallery Image Title', 'ultraaddons' ),
+                    'default'       => __( 'Gallery Image Title', 'ultraaddons-elementor-lite' ),
                     'label_block'   => TRUE,
                     'dynamic'       => ['active' => true],
                 ]
@@ -168,9 +167,9 @@ class Gallery_Box extends Base{
         $this->add_control(
             'box_sub_title',
                 [
-                    'label'         => esc_html__( 'Sub Title', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Sub Title', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::TEXT,
-                    'default'       => __( 'Sub Title', 'ultraaddons' ),
+                    'default'       => __( 'Sub Title', 'ultraaddons-elementor-lite' ),
                     'label_block'   => TRUE,
                     'dynamic'       => ['active' => true],
                 ]
@@ -179,9 +178,9 @@ class Gallery_Box extends Base{
         $this->add_control(
             'gallery_btn_link',
             [
-                'label'     => esc_html__( 'Link', 'ultraaddons' ),
+                'label'     => esc_html__( 'Link', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::URL,
-                'placeholder' => __( 'https://your-link.com', 'ultraaddons' ),
+                'placeholder' => __( 'https://your-link.com', 'ultraaddons-elementor-lite' ),
                 'show_external' => true,
                 'default' => [
                         'url' => '',
@@ -194,7 +193,7 @@ class Gallery_Box extends Base{
         $this->add_control(
             'add_icon',
                 [
-                        'label'     => __( 'Icon', 'ultraaddons' ),
+                        'label'     => __( 'Icon', 'ultraaddons-elementor-lite' ),
                         'type'      => Controls_Manager::ICONS,
                         'default'   => [
                                 'value' => 'fas fa-plus',
@@ -215,7 +214,7 @@ class Gallery_Box extends Base{
         $this->start_controls_section(
             'avd_heading_design_style',
             [
-                'label'     => esc_html__( 'Design', 'ultraaddons' ),
+                'label'     => esc_html__( 'Design', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -227,7 +226,7 @@ class Gallery_Box extends Base{
                 Group_Control_Background::get_type(),
                 [
                         'name' => 'gradient',
-                        'label' => __( 'Gradient', 'ultraaddons' ),
+                        'label' => __( 'Gradient', 'ultraaddons-elementor-lite' ),
                         'types' => [ 'gradient' ],
                         'selector' => '{{WRAPPER}} .ua-gallery-box-wrapper .ua-gallery-item-info',
                 ]
@@ -235,7 +234,7 @@ class Gallery_Box extends Base{
         
         $this->add_control(
                 'title_color', [
-                        'label' => __( 'Title Color', 'ultraaddons' ),
+                        'label' => __( 'Title Color', 'ultraaddons-elementor-lite' ),
                         'type'      => Controls_Manager::COLOR,
                         'selectors' => [
                                 '{{WRAPPER}} .ua-gallery-info-title p' => 'color: {{VALUE}};',
@@ -245,7 +244,7 @@ class Gallery_Box extends Base{
         
         $this->add_control(
                 'sub_title_color', [
-                        'label' => __( 'Sub Title Color', 'ultraaddons' ),
+                        'label' => __( 'Sub Title Color', 'ultraaddons-elementor-lite' ),
                         'type'      => Controls_Manager::COLOR,
                         'selectors' => [
                                 '{{WRAPPER}} .ua-gallery-info-title span' => 'color: {{VALUE}};',
@@ -255,7 +254,7 @@ class Gallery_Box extends Base{
         
         $this->add_control(
                 'icon_color', [
-                        'label' => __( 'Icon Color', 'ultraaddons' ),
+                        'label' => __( 'Icon Color', 'ultraaddons-elementor-lite' ),
                         'type'      => Controls_Manager::COLOR,
                         'selectors' => [
                                 '{{WRAPPER}} .ua-gallery-info-link a' => 'color: {{VALUE}}; border-color: {{VALUE}};',
@@ -268,7 +267,7 @@ class Gallery_Box extends Base{
         $this->add_control(
                 'gb_box_height',
                 [
-                        'label' => __( 'Box Height', 'ultraaddons' ),
+                        'label' => __( 'Box Height', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SLIDER,
                         'size_units' => [ 'px' ],
                         'range' => [
@@ -296,7 +295,7 @@ class Gallery_Box extends Base{
         $this->start_controls_section(
             'mc_style_typography',
             [
-                'label'     => esc_html__( 'Typography', 'ultraaddons' ),
+                'label'     => esc_html__( 'Typography', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );

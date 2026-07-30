@@ -1,5 +1,7 @@
 <?php
-
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly.
+}
 /**
  * Custom field for page
  * 
@@ -32,7 +34,7 @@ if( ! function_exists( 'ultraaddons_cmb2_metaboxes' )){
              */
             $cmb = new_cmb2_box( array(
                     'id'            => 'ua_page_template_option',
-                    'title'         => __( 'UltraAddons Template', 'ultraaddons' ),
+                    'title'         => __( 'UltraAddons Template', 'ultraaddons-elementor-lite' ),
                     'object_types'  => $ultraaddons_object_types, // Post type
                     'context'       => 'normal',
                     'priority'      => 'high',
@@ -42,18 +44,18 @@ if( ! function_exists( 'ultraaddons_cmb2_metaboxes' )){
             ) );
             //Layout Topbar
             $choices_topbar = array(
-                ''              => __( 'Not for Template', 'ultraaddons' ),
-                'single-product/sale-flash.php'        => __( 'Sale badge', 'ultraaddons' ),
-                'single-product/title.php'   => __( 'Product Title', 'ultraaddons' ),
-                'single-product/rating.php'   => __( 'Rating', 'ultraaddons' ),
-                'single-product/short-description.php'   => __( 'Short Description', 'ultraaddons' ),
-                'single'   => __( 'Signle', 'ultraaddons' ),
-                'single'   => __( 'Signle', 'ultraaddons' ),
-                'single'   => __( 'Signle', 'ultraaddons' ),
+                ''              => __( 'Not for Template', 'ultraaddons-elementor-lite' ),
+                'single-product/sale-flash.php'        => __( 'Sale badge', 'ultraaddons-elementor-lite' ),
+                'single-product/title.php'   => __( 'Product Title', 'ultraaddons-elementor-lite' ),
+                'single-product/rating.php'   => __( 'Rating', 'ultraaddons-elementor-lite' ),
+                'single-product/short-description.php'   => __( 'Short Description', 'ultraaddons-elementor-lite' ),
+                'single'   => __( 'Signle', 'ultraaddons-elementor-lite' ),
+                'single'   => __( 'Signle', 'ultraaddons-elementor-lite' ),
+                'single'   => __( 'Signle', 'ultraaddons-elementor-lite' ),
                 );
             $cmb->add_field( array(
-                    'name'       => __( 'Choose Template', 'ultraaddons' ),
-                    'desc'       => __( 'Default widget is Free, If you want convert as Premium, Set Pro', 'ultraaddons' ),
+                    'name'       => __( 'Choose Template', 'ultraaddons-elementor-lite' ),
+                    'desc'       => __( 'Default widget is Free, If you want convert as Premium, Set Pro', 'ultraaddons-elementor-lite' ),
                     'id'         => 'ua_page_template',
                     'type'       => 'select',
                     'default'    => '',
@@ -73,14 +75,14 @@ if( ! function_exists( 'ultraaddons_cmb2_metaboxes' )){
 //    return $template;
 //} );
 
-if( ! function_exists( 'wqpmb_locate_template_ultraaddons' ) ){
+if( ! function_exists( 'ultraaddons_located_template_ultraaddons' ) ){
     /**
      * Template selection for Quantity Button
      * 
      * @global type $woocommerce
      * @return type Template
      */
-    function wqpmb_locate_template_ultraaddons( $template, $template_name, $template_path ){
+    function ultraaddons_located_template_ultraaddons( $template, $template_name, $template_path ){
         
         
         
@@ -91,23 +93,23 @@ if( ! function_exists( 'wqpmb_locate_template_ultraaddons' ) ){
 
         return $template;
     }
-    //add_filter( 'woocommerce_locate_template', 'wqpmb_locate_template_ultraaddons',1,3 );
+    //add_filter( 'woocommerce_locate_template', 'ultraaddons_located_template_ultraaddons',1,3 );
 }
 
 add_action('wp_here_stay_on_wp',function(){
-    $args = array(
+    $ultraaddons_args = array(
         'post_type'     =>  'page',
         'post_status'   =>  'publish',
         'posts_per_page'=> '-1',
-        'meta_query' => array(
-                array(
-                    'key' => 'ua_page_template',
-                    //'value' => ':13112;',
-                    //'compare' => 'LIKE'
-                )
-        ),
+        // 'meta_query' => array(
+        //         array(
+        //             'key' => 'ua_page_template',
+        //             //'value' => ':13112;',
+        //             //'compare' => 'LIKE'
+        //         )
+        // ),
     );
-    $query = get_posts( $args ); //  new \WP_Query($args);// ;
+    $query = get_posts( $ultraaddons_args ); //  new \WP_Query($ultraaddons_args);// ;
 //    var_dump(get_the_ID());
 //    var_dump($query);
     if(is_product()){
@@ -117,13 +119,10 @@ add_action('wp_here_stay_on_wp',function(){
     foreach($query as $qr){
         $id = $qr->ID;
         $chosent_tem_path = get_post_meta( $id, 'ua_page_template', true );
-        var_dump($chosent_tem_path);
+
         add_filter( 'woocommerce_locate_template', function( $template, $template_name ){
-//            var_dump($template_name);
             global $chosent_tem_path;
-            var_dump($chosent_tem_path);
             $_template = ULTRA_ADDONS_DIR . 'template/' . $chosent_tem_path;
-            //var_dump($chosent_tem_path,$template_name,$_template,validate_file($_template));
             if( $chosent_tem_path == $template_name && is_file($_template) ){
                return $_template; 
             }

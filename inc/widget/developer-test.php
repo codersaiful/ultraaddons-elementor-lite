@@ -36,7 +36,7 @@ class Developer_Test extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua', 'test', 'tst', 'saiful' ];
+        return [ 'ultraaddons-elementor-lite', 'ua', 'test', 'tst', 'saiful' ];
     }
 	
 	 /**
@@ -78,7 +78,7 @@ class Developer_Test extends Base{
         $this->start_controls_section(
             'test_settings',
             [
-                'label'     => esc_html__( 'Control Settings', 'ultraaddons' ),
+                'label'     => esc_html__( 'Control Settings', 'ultraaddons-elementor-lite' ),
             ]
         );
 
@@ -86,7 +86,7 @@ class Developer_Test extends Base{
 		$this->add_control(
 			'delayTimer',
 			[
-				'label' => __( 'Delay Timer', 'ultraaddons' ),
+				'label' => __( 'Delay Timer', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 2000,
 				'max' => 6000,
@@ -98,7 +98,7 @@ class Developer_Test extends Base{
 		$this->add_control(
 			'scrollSpeed',
 			[
-				'label' => __( 'Scroll Speed', 'ultraaddons' ),
+				'label' => __( 'Scroll Speed', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 2,
 				'max' => 20,
@@ -110,7 +110,7 @@ class Developer_Test extends Base{
 		$this->add_control(
 			'zIndex',
 			[
-				'label' => __( 'ZIndex', 'ultraaddons' ),
+				'label' => __( 'ZIndex', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 99999,
 				'max' => 999999,
@@ -123,10 +123,10 @@ class Developer_Test extends Base{
 		$this->add_control(
 			'play',
 			[
-				'label' => __( 'Play', 'ultraaddons' ),
+				'label' => __( 'Play', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 				'frontend_available' => true,
@@ -135,10 +135,10 @@ class Developer_Test extends Base{
 		$this->add_control(
 			'stopOnHover',
 			[
-				'label' => __( 'Stop on Hover', 'ultraaddons' ),
+				'label' => __( 'Stop on Hover', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 				'frontend_available' => true,
@@ -147,10 +147,10 @@ class Developer_Test extends Base{
 		$this->add_control(
 			'show_controls',
 			[
-				'label' => __( 'Action Button', 'ultraaddons' ),
+				'label' => __( 'Action Button', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 			]
@@ -158,45 +158,45 @@ class Developer_Test extends Base{
 		$this->add_control(
 			'position',
 			[
-				'label' => __( 'Position', 'ultraaddons' ),
+				'label' => __( 'Position', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'auto',
 				'frontend_available' => true,
 				'options' => [
-					'auto'  => __( 'Default', 'ultraaddons' ),
-					'fixed-top' => __( 'Top', 'ultraaddons' ),
-					'fixed-bottom' => __( 'Bottom', 'ultraaddons' ),
+					'auto'  => __( 'Default', 'ultraaddons-elementor-lite' ),
+					'fixed-top' => __( 'Top', 'ultraaddons-elementor-lite' ),
+					'fixed-bottom' => __( 'Bottom', 'ultraaddons-elementor-lite' ),
 				],
 			]
 		);
 		$this->add_control(
 			'effect',
 			[
-				'label' => __( 'Effects', 'ultraaddons' ),
+				'label' => __( 'Effects', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'scroll',
 				'frontend_available' => true,
 				'options' => [
-					'scroll'  => __( 'Scroll', 'ultraaddons' ),
-					'fade'  => __( 'Fade', 'ultraaddons' ),
-					'slide-down' => __( 'Slide Down', 'ultraaddons' ),
-					'slide-up' => __( 'Slide Up', 'ultraaddons' ),
-					'slide-right' => __( 'Slide Right', 'ultraaddons' ),
-					'slide-left' => __( 'Slide Left', 'ultraaddons' ),
-					'typography' => __( 'Typography', 'ultraaddons' ),
+					'scroll'  => __( 'Scroll', 'ultraaddons-elementor-lite' ),
+					'fade'  => __( 'Fade', 'ultraaddons-elementor-lite' ),
+					'slide-down' => __( 'Slide Down', 'ultraaddons-elementor-lite' ),
+					'slide-up' => __( 'Slide Up', 'ultraaddons-elementor-lite' ),
+					'slide-right' => __( 'Slide Right', 'ultraaddons-elementor-lite' ),
+					'slide-left' => __( 'Slide Left', 'ultraaddons-elementor-lite' ),
+					'typography' => __( 'Typography', 'ultraaddons-elementor-lite' ),
 				],
 			]
 		);
 		$this->add_control(
 			'direction',
 			[
-				'label' => __( 'Direction', 'ultraaddons' ),
+				'label' => __( 'Direction', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'ltr',
 				'frontend_available' => true,
 				'options' => [
-					'rtl'  => __( 'RTL', 'ultraaddons' ),
-					'ltr' => __( 'LTR', 'ultraaddons' ),
+					'rtl'  => __( 'RTL', 'ultraaddons-elementor-lite' ),
+					'ltr' => __( 'LTR', 'ultraaddons-elementor-lite' ),
 				],
 			]
 		);

@@ -45,10 +45,10 @@ abstract class Feature_Manager {
      * @return Array Disabled Widget key's array 
      */
     public static function disabledKeys(){
-        $disable_items = get_option( self::$disabled_items_key, '' );
+        $ultraaddons_disable_items = get_option( self::$disabled_items_key, '' );
         
-        if( is_array( $disable_items ) && ! empty( $disable_items ) ){
-            return apply_filters( 'ultraaddons/widgets/disabled', $disable_items );
+        if( is_array( $ultraaddons_disable_items ) && ! empty( $ultraaddons_disable_items ) ){
+            return apply_filters( 'ultraaddons/widgets/disabled', $ultraaddons_disable_items );
         }
         return [];//Tested with ['Button']
     }

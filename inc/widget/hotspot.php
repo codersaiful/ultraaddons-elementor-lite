@@ -25,7 +25,7 @@ class Hotspot extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons','ua', 'hot', 'spot', 'mark','product' ];
+        return [ 'ultraaddons-elementor-lite','ua', 'hot', 'spot', 'mark','product' ];
     }
     
     
@@ -55,14 +55,14 @@ class Hotspot extends Base{
         $this->start_controls_section(
             'general_content',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
         $this->add_control(
 			'_hotspot_image',
 			[
-				'label' => __( 'Hotspot Image', 'ultraaddons' ),
+				'label' => __( 'Hotspot Image', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::MEDIA,
 				 'default' => [
 						'url' => $placeholder_image,//Utils::get_placeholder_image_src(),
@@ -76,7 +76,7 @@ class Hotspot extends Base{
 		$this->add_control(
 			'image_size',
 			[
-				'label' => esc_html__( 'Image Size', 'ultraaddons' ),
+				'label' => esc_html__( 'Image Size', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%' ],
 				'range' => [
@@ -103,18 +103,18 @@ class Hotspot extends Base{
 
 		$repeater->add_control(
 			'list_title', [
-				'label' => esc_html__( 'Title', 'ultraaddons' ),
+				'label' => esc_html__( 'Title', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'List Title' , 'ultraaddons' ),
+				'default' => esc_html__( 'List Title' , 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
         $repeater->add_control(
 			'website_link',
 			[
-				'label' => esc_html__( 'Link', 'ultraaddons' ),
+				'label' => esc_html__( 'Link', 'ultraaddons-elementor-lite' ),
 				'type' => \Elementor\Controls_Manager::URL,
-				'placeholder' => esc_html__( 'https://your-link.com', 'ultraaddons' ),
+				'placeholder' => esc_html__( 'https://your-link.com', 'ultraaddons-elementor-lite' ),
 				'default' => [
 					'url' => '',
 					'is_external' => false,
@@ -127,7 +127,7 @@ class Hotspot extends Base{
         $repeater->add_control(
 			'top',
 			[
-				'label' => esc_html__( 'Top Positions', 'ultraaddons' ),
+				'label' => esc_html__( 'Top Positions', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%' ],
 				'range' => [
@@ -153,7 +153,7 @@ class Hotspot extends Base{
         $repeater->add_control(
 			'left',
 			[
-				'label' => esc_html__( 'Left Positions', 'ultraaddons' ),
+				'label' => esc_html__( 'Left Positions', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%' ],
 				'range' => [
@@ -179,7 +179,7 @@ class Hotspot extends Base{
 		);
         $repeater->add_control(
 			'_hotspot_color', [
-				'label' => __( 'Spot Background', 'ultraaddons' ),
+				'label' => __( 'Spot Background', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} {{CURRENT_ITEM}} .ua-hotspot--cta' => 'background: {{VALUE}};',
@@ -190,7 +190,7 @@ class Hotspot extends Base{
         );
         $repeater->add_control(
 			'_hotspot_title_bg', [
-				'label' => __( 'Spot Title Background', 'ultraaddons' ),
+				'label' => __( 'Spot Title Background', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} {{CURRENT_ITEM}} .ua-hotspot--title' => 'background: {{VALUE}};',
@@ -201,7 +201,7 @@ class Hotspot extends Base{
         );
         $repeater->add_control(
 			'_hotspot_title_text_color', [
-				'label' => __( 'Title Text Color', 'ultraaddons' ),
+				'label' => __( 'Title Text Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}} .ua-hotspot--title' => 'color: {{VALUE}};',
@@ -212,18 +212,18 @@ class Hotspot extends Base{
         $this->add_control(
 			'list',
 			[
-				'label' => esc_html__( 'Repeater List', 'ultraaddons' ),
+				'label' => esc_html__( 'Repeater List', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
-						'list_title' => esc_html__( 'iPhone', 'ultraaddons' ),
+						'list_title' => esc_html__( 'iPhone', 'ultraaddons-elementor-lite' ),
 					],
 					[
-						'list_title' => esc_html__( 'Mackbook', 'ultraaddons' ),
+						'list_title' => esc_html__( 'Mackbook', 'ultraaddons-elementor-lite' ),
 					],
                     [
-						'list_title' => esc_html__( 'iWatch', 'ultraaddons' ),
+						'list_title' => esc_html__( 'iWatch', 'ultraaddons-elementor-lite' ),
 					],
 				],
 				'title_field' => '{{{ list_title }}}',
@@ -239,7 +239,7 @@ class Hotspot extends Base{
         $this->start_controls_section(
             'style_content',
             [
-                'label'     => esc_html__( 'Style', 'ultraaddons' ),
+                'label'     => esc_html__( 'Style', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -255,7 +255,7 @@ class Hotspot extends Base{
         $this->add_responsive_control(
 			'_ua_title_radius',
 			[
-				'label'       => esc_html__( 'Title Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Title Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -272,7 +272,7 @@ class Hotspot extends Base{
         $this->add_responsive_control(
 			'_ua_spot_radius',
 			[
-				'label'       => esc_html__( 'Spot Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Spot Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -289,7 +289,7 @@ class Hotspot extends Base{
         $this->add_control(
 			'size',
 			[
-				'label' => esc_html__( 'Spot Size', 'ultraaddons' ),
+				'label' => esc_html__( 'Spot Size', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%' ],
 				'range' => [
@@ -329,23 +329,23 @@ class Hotspot extends Base{
             <?php 
             if ( $settings['list'] ) {
                 $count=0;
-                foreach (  $settings['list'] as $item ) {
+                foreach (  $settings['list'] as $ultraaddons_item ) {
                      $count		= $count+1;
-                     $url		= (!empty( $item['website_link']['url'] )) ? $item['website_link']['url']  : '';
-					 $is_external 	= ( $item['website_link']['is_external']=='on') ? 'target="_blank"' : '';
-					 $nofollow 	= ( $item['website_link']['nofollow']=='on') ? 'rel="nofollow"' :'';
+                     $url		= (!empty( $ultraaddons_item['website_link']['url'] )) ? $ultraaddons_item['website_link']['url']  : '';
+					 $is_external 	= ( $ultraaddons_item['website_link']['is_external']=='on') ? 'target="_blank"' : '';
+					 $nofollow 	= ( $ultraaddons_item['website_link']['nofollow']=='on') ? 'rel="nofollow"' :'';
             ?>
 			<?php
 			if(!empty($url)):
 			?>
-				<a href="<?php echo esc_url($url); ?>" <?php echo esc_attr($is_external);?> <?php echo esc_attr($nofollow);?> class="ua-hotspot elementor-repeater-item-<?php echo $item['_id']; ?> ua-hotspot--<?php echo  $count;?>">
-					<span class="ua-hotspot--title"><?php echo $item['list_title'];?></span>
+				<a href="<?php echo esc_url($url); ?>" <?php echo esc_attr( $is_external );?> <?php echo esc_attr( $nofollow );?> class="ua-hotspot elementor-repeater-item-<?php echo esc_attr( $ultraaddons_item['_id'] ); ?> ua-hotspot--<?php echo  esc_attr( $count );?>">
+					<span class="ua-hotspot--title"><?php echo esc_attr( $ultraaddons_item['list_title'] );?></span>
 					<span class="ua-hotspot--cta"></span>
 				</a>
             <?php 
 			else:?>
-				<div class="ua-hotspot elementor-repeater-item-<?php echo $item['_id']; ?> ua-hotspot--<?php echo $count;?>">
-					<span class="ua-hotspot--title"><?php echo $item['list_title'];?></span>
+				<div class="ua-hotspot elementor-repeater-item-<?php echo esc_attr( $ultraaddons_item['_id'] ); ?> ua-hotspot--<?php echo esc_attr( $count );?>">
+					<span class="ua-hotspot--title"><?php echo esc_html( $ultraaddons_item['list_title'] );?></span>
 					<span class="ua-hotspot--cta"></span>
 				</div>
 			<?php 

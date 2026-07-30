@@ -2,32 +2,32 @@
 /**
  * Template library templates
  * 
- * 'back_button_text' => esc_html__( 'Back to Library', 'ultraaddons' ),
-            'lern_more_message' => esc_html__( 'Learn more about UltraAddons Template Library.', 'ultraaddons' ),
+ * 'back_button_text' => esc_html__( 'Back to Library', 'ultraaddons-elementor-lite' ),
+            'lern_more_message' => esc_html__( 'Learn more about UltraAddons Template Library.', 'ultraaddons-elementor-lite' ),
             'page_template' => 'https://ultraaddons.com/templates/',
  */
 use UltraAddons\Library\Demo\Theme_Demo;
 
 defined( 'ABSPATH' ) || exit;
 
-$theme_info = Theme_Demo::get_demo_info();
+$ultraaddons_theme_info = Theme_Demo::get_demo_info();
 
-$back_button_text = $theme_info['back_button_text'] ?? __( 'Back to Library', 'ultraaddons' );
-$library_icon = $theme_info['library_icon'] ?? 'uicon-ultraaddons';
-$page_templates = $theme_info['page_templates'] ?? 'https://ultraaddons.com/templates/';
-$lern_more_message = $theme_info['lern_more_message'] ?? __( 'Learn more about UltraAddons Template Library.', 'ultraaddons' );
+$ultraaddons_back_button_text = $ultraaddons_theme_info['back_button_text'] ?? __( 'Back to Library', 'ultraaddons-elementor-lite' );
+$ultraaddons_library_icon = $ultraaddons_theme_info['library_icon'] ?? 'uicon-ultraaddons';
+$ultraaddons_page_templates = $ultraaddons_theme_info['page_templates'] ?? 'https://ultraaddons.com/templates/';
+$ultraaddons_lern_more_message = $ultraaddons_theme_info['lern_more_message'] ?? __( 'Learn more about UltraAddons Template Library.', 'ultraaddons-elementor-lite' );
 
 ?>
 <script type="text/template" id="tmpl-EldmTempDemo__header-logo">
     <span class="EldmTempDemo__logo-wrap">
-		<i class="<?php echo esc_attr( $library_icon ); ?>"></i>
+		<i class="<?php echo esc_attr( $ultraaddons_library_icon ); ?>"></i>
 	</span>
     <span class="EldmTempDemo__logo-title">{{{ title }}}</span>
 </script>
 
 <script type="text/template" id="tmpl-EldmTempDemo__header-back">
 	<i class="eicon-" aria-hidden="true"></i>
-	<span><?php echo esc_html( $back_button_text ); ?></span>
+	<span><?php echo esc_html( $ultraaddons_back_button_text ); ?></span>
 </script>
 
 <script type="text/template" id="tmpl-EldmTempDemo__header-menu">
@@ -38,23 +38,23 @@ $lern_more_message = $theme_info['lern_more_message'] ?? __( 'Learn more about U
 
 <script type="text/template" id="tmpl-EldmTempDemo__header-menu-responsive">
 	<div class="elementor-component-tab EldmTempDemo__responsive-menu-item elementor-active" data-tab="desktop">
-		<i class="eicon-device-desktop" aria-hidden="true" title="<?php esc_attr_e( 'Desktop view', 'ultraaddons' ); ?>"></i>
-		<span class="elementor-screen-only"><?php esc_html_e( 'Desktop view', 'ultraaddons' ); ?></span>
+		<i class="eicon-device-desktop" aria-hidden="true" title="<?php esc_attr_e( 'Desktop view', 'ultraaddons-elementor-lite' ); ?>"></i>
+		<span class="elementor-screen-only"><?php esc_html_e( 'Desktop view', 'ultraaddons-elementor-lite' ); ?></span>
 	</div>
 	<div class="elementor-component-tab EldmTempDemo__responsive-menu-item" data-tab="tab">
-		<i class="eicon-device-tablet" aria-hidden="true" title="<?php esc_attr_e( 'Tab view', 'ultraaddons' ); ?>"></i>
-		<span class="elementor-screen-only"><?php esc_html_e( 'Tab view', 'ultraaddons' ); ?></span>
+		<i class="eicon-device-tablet" aria-hidden="true" title="<?php esc_attr_e( 'Tab view', 'ultraaddons-elementor-lite' ); ?>"></i>
+		<span class="elementor-screen-only"><?php esc_html_e( 'Tab view', 'ultraaddons-elementor-lite' ); ?></span>
 	</div>
 	<div class="elementor-component-tab EldmTempDemo__responsive-menu-item" data-tab="mobile">
-		<i class="eicon-device-mobile" aria-hidden="true" title="<?php esc_attr_e( 'Mobile view', 'ultraaddons' ); ?>"></i>
-		<span class="elementor-screen-only"><?php esc_html_e( 'Mobile view', 'ultraaddons' ); ?></span>
+		<i class="eicon-device-mobile" aria-hidden="true" title="<?php esc_attr_e( 'Mobile view', 'ultraaddons-elementor-lite' ); ?>"></i>
+		<span class="elementor-screen-only"><?php esc_html_e( 'Mobile view', 'ultraaddons-elementor-lite' ); ?></span>
 	</div>
 </script>
 
 <script type="text/template" id="tmpl-EldmTempDemo__header-actions">
 	<div id="EldmTempDemo__header-sync" class="elementor-templates-modal__header__item">
-		<i class="eicon-sync" aria-hidden="true" title="<?php esc_attr_e( 'Sync Library', 'ultraaddons' ); ?>"></i>
-		<span class="elementor-screen-only"><?php esc_html_e( 'Sync Library', 'ultraaddons' ); ?></span>
+		<i class="eicon-sync" aria-hidden="true" title="<?php esc_attr_e( 'Sync Library', 'ultraaddons-elementor-lite' ); ?>"></i>
+		<span class="elementor-screen-only"><?php esc_html_e( 'Sync Library', 'ultraaddons-elementor-lite' ); ?></span>
 	</div>
 </script>
 
@@ -71,14 +71,14 @@ $lern_more_message = $theme_info['lern_more_message'] ?? __( 'Learn more about U
 <script type="text/template" id="tmpl-EldmTempDemo__insert-button">
 	<a class="elementor-template-library-template-action elementor-button EldmTempDemo__insert-button">
 		<i class="eicon-file-download" aria-hidden="true"></i>
-		<span class="elementor-button-title"><?php esc_html_e( 'Insert', 'ultraaddons' ); ?></span>
+		<span class="elementor-button-title"><?php esc_html_e( 'Insert', 'ultraaddons-elementor-lite' ); ?></span>
 	</a>
 </script>
 
 <script type="text/template" id="tmpl-EldmTempDemo__pro-button">
 	<a class="elementor-template-library-template-action elementor-button EldmTempDemo__pro-button" href="https://ultra_theme_demo.com/pricing/" target="_blank">
 		<i class="eicon-external-link-square" aria-hidden="true"></i>
-		<span class="elementor-button-title"><?php esc_html_e( 'Get Pro', 'ultraaddons' ); ?></span>
+		<span class="elementor-button-title"><?php esc_html_e( 'Get Pro', 'ultraaddons-elementor-lite' ); ?></span>
 	</a>
 </script>
 
@@ -92,7 +92,7 @@ $lern_more_message = $theme_info['lern_more_message'] ?? __( 'Learn more about U
 				<div class="elementor-loader-box"></div>
 			</div>
 		</div>
-		<div class="elementor-loading-title"><?php esc_html_e( 'Loading', 'ultraaddons' ); ?></div>
+		<div class="elementor-loading-title"><?php esc_html_e( 'Loading', 'ultraaddons-elementor-lite' ); ?></div>
 	</div>
 </script>
 
@@ -104,7 +104,7 @@ $lern_more_message = $theme_info['lern_more_message'] ?? __( 'Learn more about U
 				<# if ( selectedTag ) { #>
 				<span class="EldmTempDemo__filter-btn">{{{ ultra_theme_demo.library.getTags()[selectedTag] }}} <i class="eicon-caret-right"></i></span>
 				<# } else { #>
-				<span class="EldmTempDemo__filter-btn"><?php esc_html_e( 'Filter', 'ultraaddons' ); ?> <i class="eicon-caret-right"></i></span>
+				<span class="EldmTempDemo__filter-btn"><?php esc_html_e( 'Filter', 'ultraaddons-elementor-lite' ); ?> <i class="eicon-caret-right"></i></span>
 				<# } #>
 				<ul id="EldmTempDemo__filter-tags" class="EldmTempDemo__filter-tags">
 					<li data-tag="">All</li>
@@ -118,8 +118,8 @@ $lern_more_message = $theme_info['lern_more_message'] ?? __( 'Learn more about U
 		</div>
 		<div id="EldmTempDemo__toolbar-counter"></div>
 		<div id="EldmTempDemo__toolbar-search">
-			<label for="EldmTempDemo__search" class="elementor-screen-only"><?php esc_html_e( 'Search Templates:', 'ultraaddons' ); ?></label>
-			<input id="EldmTempDemo__search" placeholder="<?php esc_attr_e( 'Search', 'ultraaddons' ); ?>">
+			<label for="EldmTempDemo__search" class="elementor-screen-only"><?php esc_html_e( 'Search Templates:', 'ultraaddons-elementor-lite' ); ?></label>
+			<input id="EldmTempDemo__search" placeholder="<?php esc_attr_e( 'Search', 'ultraaddons-elementor-lite' ); ?>">
 			<i class="eicon-search"></i>
 		</div>
 	</div>
@@ -137,13 +137,13 @@ $lern_more_message = $theme_info['lern_more_message'] ?? __( 'Learn more about U
 		<img class="EldmTempDemo__template-thumbnail" src="{{ thumbnail }}">
                     
 		<# if ( obj.isPro ) { #>
-                <span class="EldmTempDemo__template-badge hasPro_<?php echo esc_attr( ultraaddons_plugin_version() ); ?>"><?php esc_html_e( 'Pro', 'ultraaddons' ); ?></span>
+                <span class="EldmTempDemo__template-badge hasPro_<?php echo esc_attr( ultraaddons_plugin_version() ); ?>"><?php esc_html_e( 'Pro', 'ultraaddons-elementor-lite' ); ?></span>
 		<# } #>
 		<# if ( extra.message ) { #>
                 <span title="{{ extra.message }}" class="EldmTempDemo__template-alert"><i class="eicon-alert"></i></span>
 		<# } #>
 	</div>
-	<div class="EldmTempDemo__template-stats" <?php echo esc_html__( 'Status automatically updates on a daily basis.', 'ultraaddons' ); ?>>
+	<div class="EldmTempDemo__template-stats" <?php echo esc_html__( 'Status automatically updates on a daily basis.', 'ultraaddons-elementor-lite' ); ?>>
 		<span class="EldmTempDemo-stats views" title="Views">
                     <i class="eicon-preview-thin" aria-hidden="true"></i>
                     <i class="ultra-temp-stats-number">{{extra.views}}</i>    
@@ -158,19 +158,19 @@ $lern_more_message = $theme_info['lern_more_message'] ?? __( 'Learn more about U
                 <span class="EldmTempDemo-footer-title">{{{ title }}}</span>
 		<a href="#" class="elementor-button EldmTempDemo__preview-button">
 			<i class="eicon-device-desktop" aria-hidden="true"></i>
-			<?php esc_html_e( 'Preview', 'ultraaddons' ); ?>
+			<?php esc_html_e( 'Preview', 'ultraaddons-elementor-lite' ); ?>
 		</a>
 	</div>
 </script>
 
 <script type="text/template" id="tmpl-EldmTempDemo__empty">
 	<div class="elementor-template-library-blank-icon">
-		<img src="<?php echo ELEMENTOR_ASSETS_URL . 'images/no-search-results.svg'; ?>" class="elementor-template-library-no-results" />
+		<img src="<?php echo esc_url( ELEMENTOR_ASSETS_URL ) . 'images/no-search-results.svg'; ?>" class="elementor-template-library-no-results" />
 	</div>
 	<div class="elementor-template-library-blank-title"></div>
 	<div class="elementor-template-library-blank-message"></div>
 	<div class="elementor-template-library-blank-footer">
-		<?php echo esc_html( $lern_more_message ); ?>
-		<a class="elementor-template-library-blank-footer-link" href="<?php echo esc_url( $page_templates ); ?>" target="_blank"><?php echo __( 'Click here', 'ultraaddons' ); ?></a>
+		<?php echo esc_html( $ultraaddons_lern_more_message ); ?>
+		<a class="elementor-template-library-blank-footer-link" href="<?php echo esc_url( $ultraaddons_page_templates ); ?>" target="_blank"><?php echo esc_html__( 'Click here', 'ultraaddons-elementor-lite' ); ?></a>
 	</div>
 </script>

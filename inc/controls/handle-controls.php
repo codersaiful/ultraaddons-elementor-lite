@@ -16,19 +16,19 @@ class Handle_Controls{
     
     /**
      * Replace Args label value
-     * we will change $args['label'] value with our new name
+     * we will change $ultraaddons_args['label'] value with our new name
      * 
-     * @param array $args
+     * @param array $ultraaddons_args
      * @param type $new_name
      * @return Array
      */
-    public static function replace_label( $args = [], $new_name = false ) {
-        if( ! is_array( $args ) || ! $new_name || empty( $new_name ) ){
-            return $args;
+    public static function replace_label( $ultraaddons_args = [], $new_name = false ) {
+        if( ! is_array( $ultraaddons_args ) || ! $new_name || empty( $new_name ) ){
+            return $ultraaddons_args;
         }
-        $args['label'] = $new_name;
+        $ultraaddons_args['label'] = $new_name;
         
-        return $args;
+        return $ultraaddons_args;
     }
     
     
@@ -38,29 +38,29 @@ class Handle_Controls{
      * to change something from Selecto
      * we can use this method
      * 
-     * @param type $args main Args of add_control.
+     * @param type $ultraaddons_args main Args of add_control.
      * @param type $target_peroperty_name
      * @param type $new_peroperty_name
      * @return Array Always Array
      */
-    public static function replace_selector_value( $args = [], $target_peroperty_name = false,$new_peroperty_name = false ) {
-        if( ! is_array( $args ) || ! $target_peroperty_name || ! $new_peroperty_name ){
-            return $args;
+    public static function replace_selector_value( $ultraaddons_args = [], $target_peroperty_name = false,$new_peroperty_name = false ) {
+        if( ! is_array( $ultraaddons_args ) || ! $target_peroperty_name || ! $new_peroperty_name ){
+            return $ultraaddons_args;
         }
-        $args['label'] = $new_peroperty_name;
-        if( isset( $args['selector'] ) && is_string( $args['selector'] ) ){
-            $args['selector'] = str_replace( $target_peroperty_name, $new_peroperty_name, $args['selector'] );
+        $ultraaddons_args['label'] = $new_peroperty_name;
+        if( isset( $ultraaddons_args['selector'] ) && is_string( $ultraaddons_args['selector'] ) ){
+            $ultraaddons_args['selector'] = str_replace( $target_peroperty_name, $new_peroperty_name, $ultraaddons_args['selector'] );
         }
         
-        if( isset( $args['selectors'] ) && is_array( $args['selectors'] ) ){
+        if( isset( $ultraaddons_args['selectors'] ) && is_array( $ultraaddons_args['selectors'] ) ){
             $temp_selectos = [];
-            foreach( $args['selectors'] as $selector => $value ){
-                $final_value = str_replace( $target_peroperty_name, $new_peroperty_name, $value );
+            foreach( $ultraaddons_args['selectors'] as $selector => $ultraaddons_value ){
+                $final_value = str_replace( $target_peroperty_name, $new_peroperty_name, $ultraaddons_value );
                 $temp_selectos[$selector] = $final_value;
             }
-            $args['selectors'] = $temp_selectos;
+            $ultraaddons_args['selectors'] = $temp_selectos;
         }
-        return $args;
+        return $ultraaddons_args;
     }
     
     
@@ -72,60 +72,60 @@ class Handle_Controls{
      * In this place, I will replace it with rotateX,
      * then we have to use this
      * 
-     * @param type $args
+     * @param type $ultraaddons_args
      * @param type $target_peroperty_name
      * @param type $new_peroperty_name
      * @return Array Always Array
      */
-    public static function replace_selector( $args = [], $target_peroperty_name = false,$new_peroperty_name = false ) {
-        if( ! is_array( $args ) || ! $target_peroperty_name || ! $new_peroperty_name ){
-            return $args;
+    public static function replace_selector( $ultraaddons_args = [], $target_peroperty_name = false,$new_peroperty_name = false ) {
+        if( ! is_array( $ultraaddons_args ) || ! $target_peroperty_name || ! $new_peroperty_name ){
+            return $ultraaddons_args;
         }
         
-        if( isset( $args['selector'] ) && is_string( $args['selector'] ) ){
-            $args['selector'] = str_replace( $target_peroperty_name, $new_peroperty_name, $args['selector'] );
+        if( isset( $ultraaddons_args['selector'] ) && is_string( $ultraaddons_args['selector'] ) ){
+            $ultraaddons_args['selector'] = str_replace( $target_peroperty_name, $new_peroperty_name, $ultraaddons_args['selector'] );
         }
         
-        if( isset( $args['selectors'] ) && is_array( $args['selectors'] ) ){
+        if( isset( $ultraaddons_args['selectors'] ) && is_array( $ultraaddons_args['selectors'] ) ){
             $temp_selectos = [];
-            foreach( $args['selectors'] as $selector => $value ){
+            foreach( $ultraaddons_args['selectors'] as $selector => $ultraaddons_value ){
                 $final_selector = str_replace( $target_peroperty_name, $new_peroperty_name, $selector );
-                $temp_selectos[$final_selector] = $value;
+                $temp_selectos[$final_selector] = $ultraaddons_value;
             }
-            $args['selectors'] = $temp_selectos;
+            $ultraaddons_args['selectors'] = $temp_selectos;
         }
-        return $args;
+        return $ultraaddons_args;
     }
     
     /**
      * Here, We will convert second params of default add_control.
      * Only adding over to .elementor-widget-container
      * 
-     * @param type $args
+     * @param type $ultraaddons_args
      * @param type $hover_selector
      * @return type
      */
-    public static function convert_hover( $args = [], $hover_selector = '.elementor-widget-container' ) {
-        if( ! is_array( $args ) ){
-            return $args;
+    public static function convert_hover( $ultraaddons_args = [], $hover_selector = '.elementor-widget-container' ) {
+        if( ! is_array( $ultraaddons_args ) ){
+            return $ultraaddons_args;
         }
         
-        if( isset( $args['selector'] ) && is_string( $args['selector'] ) ){
-            $args['selector'] = str_replace( $hover_selector, $hover_selector . ':hover', $args['selector'] );
+        if( isset( $ultraaddons_args['selector'] ) && is_string( $ultraaddons_args['selector'] ) ){
+            $ultraaddons_args['selector'] = str_replace( $hover_selector, $hover_selector . ':hover', $ultraaddons_args['selector'] );
         }
-        //var_dump($args['selectors']);
-        if( isset( $args['selectors'] ) && is_array( $args['selectors'] ) ){
+        //var_dump($ultraaddons_args['selectors']);
+        if( isset( $ultraaddons_args['selectors'] ) && is_array( $ultraaddons_args['selectors'] ) ){
             $temp_selectos = [];
-            foreach( $args['selectors'] as $selector => $value ){
+            foreach( $ultraaddons_args['selectors'] as $selector => $ultraaddons_value ){
                 $final_selector = str_replace( $hover_selector, $hover_selector . ':hover', $selector );
-                $temp_selectos[$final_selector] = $value;
+                $temp_selectos[$final_selector] = $ultraaddons_value;
             }
-            $args['selectors'] = $temp_selectos;
+            $ultraaddons_args['selectors'] = $temp_selectos;
         }
-        return $args;
+        return $ultraaddons_args;
     }
-//    public function add_control( $args, $control_name = false ) {
-//        if( ! is_array( $args ) ){
+//    public function add_control( $ultraaddons_args, $control_name = false ) {
+//        if( ! is_array( $ultraaddons_args ) ){
 //            return;
 //        }
 //        
@@ -133,13 +133,13 @@ class Handle_Controls{
 //            return;
 //        }
 //        
-//        $this->element->add_control( $control_name, $args);
+//        $this->element->add_control( $control_name, $ultraaddons_args);
 //        
 //        
 //    }
 //    
-//    public function add_hover_control( $args, $control_name = false ) {
-//        if( ! is_array( $args ) ){
+//    public function add_hover_control( $ultraaddons_args, $control_name = false ) {
+//        if( ! is_array( $ultraaddons_args ) ){
 //            return;
 //        }
 //        
@@ -148,6 +148,6 @@ class Handle_Controls{
 //        }
 //        $control_name = $control_name . '_hover';
 //        
-//        $this->element->add_control( $control_name, $args);
+//        $this->element->add_control( $control_name, $ultraaddons_args);
 //    }
 }

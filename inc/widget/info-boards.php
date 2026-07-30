@@ -17,7 +17,7 @@ class Info_Boards extends Base {
          * @return string keywords
          */
         public function get_keywords() {
-                return [ 'ultraaddons', 'info', 'box', 'boards', 'banner', 'notification' ];
+                return [ 'ultraaddons-elementor-lite', 'info', 'box', 'boards', 'banner', 'notification' ];
         }
 
         /**
@@ -52,29 +52,29 @@ class Info_Boards extends Base {
                 
                 $repeater = $settings['list_items'];
                 ?>
-                <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
+                <div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
                         
                         <?php
-                        foreach( $repeater as $item ){ ?>
+                        foreach( $repeater as $ultraaddons_item ){ ?>
                         
-                        <div class="info-board elementor-repeater-item-<?php echo $item['_id']; ?>">
+                        <div class="info-board elementor-repeater-item-<?php echo esc_attr( $ultraaddons_item['_id'] ?? '' ); ?>">
                             
                                 <div class="info-board-title">
                                     
-                                        <?php if( ! empty( $item['icon']['value'] ) ) : ?>
+                                        <?php if( ! empty( $ultraaddons_item['icon']['value'] ) ) : ?>
                                     
-                                            <i class="<?php echo esc_attr( $item['icon']['value'] ); ?>"></i>
+                                            <i class="<?php echo esc_attr( $ultraaddons_item['icon']['value'] ); ?>"></i>
                                             
                                         <?php endif; ?>
                                         
-                                        <h4><?php echo esc_html( $item['title'] ); ?></h4>
+                                        <h4><?php echo esc_html( $ultraaddons_item['title'] ); ?></h4>
                                 </div>
                             
                                 <div class="info-board-content">
                                     
-                                        <?php echo wp_kses_post( $item['description'] ); ?>
+                                        <?php echo wp_kses_post( $ultraaddons_item['description'] ); ?>
                                     
-                                        <?php echo $this->render_button( $item ); ?>
+                                        <?php echo wp_kses_post( $this->render_button( $ultraaddons_item ) ); ?>
                                         
                                 </div>
                         </div>
@@ -95,7 +95,7 @@ class Info_Boards extends Base {
                 $this->start_controls_section(
                         '_section_content',
                         [
-                                'label' => esc_html__( 'Info Boards', 'ultraaddons' ),
+                                'label' => esc_html__( 'Info Boards', 'ultraaddons-elementor-lite' ),
                                 'tab' => Controls_Manager::TAB_CONTENT,
                         ]
                 );
@@ -108,7 +108,7 @@ class Info_Boards extends Base {
                 
                 $repeater->add_control(
                         'bg_color', [
-                                'label' => esc_html__( 'Background Color', 'ultraaddons' ),
+                                'label' => esc_html__( 'Background Color', 'ultraaddons-elementor-lite' ),
                                 'type'      => Controls_Manager::COLOR,
                                 'default'   => '#0FC392',
                                 'selectors' => [
@@ -118,7 +118,7 @@ class Info_Boards extends Base {
                 );
                 $repeater->add_control(
                         'color', [
-                                'label' => esc_html__( 'Color', 'ultraaddons' ),
+                                'label' => esc_html__( 'Color', 'ultraaddons-elementor-lite' ),
                                 'type'      => Controls_Manager::COLOR,
                                 'default'   => '#FFF',
                                 'selectors' => [
@@ -128,7 +128,7 @@ class Info_Boards extends Base {
                 );
                 $repeater->add_control(
                         'icon', [
-                                'label' => esc_html__( 'Icon', 'ultraaddons' ),
+                                'label' => esc_html__( 'Icon', 'ultraaddons-elementor-lite' ),
                                 'type'      => Controls_Manager::ICONS,
                                 'default'   => $default_icon,
                         ]
@@ -136,7 +136,7 @@ class Info_Boards extends Base {
                 
                 $repeater->add_control(
                         'title', [
-                                'label' => esc_html__( 'Title', 'ultraaddons' ),
+                                'label' => esc_html__( 'Title', 'ultraaddons-elementor-lite' ),
                                 'type'      => Controls_Manager::TEXT,
                                 'default' => '',
                         ]
@@ -144,7 +144,7 @@ class Info_Boards extends Base {
                 
                 $repeater->add_control(
                         'description', [
-                                'label' => esc_html__( 'Content', 'ultraaddons' ),
+                                'label' => esc_html__( 'Content', 'ultraaddons-elementor-lite' ),
                                 'type'      => Controls_Manager::WYSIWYG,
                                 'default' => '',
                         ]
@@ -152,7 +152,7 @@ class Info_Boards extends Base {
                 
                 $repeater->add_control(
                         'button', [
-                                'label' => esc_html__( 'Button/Label', 'ultraaddons' ),
+                                'label' => esc_html__( 'Button/Label', 'ultraaddons-elementor-lite' ),
                                 'type'      => Controls_Manager::TEXT,
                                 'default' => '',
                                 'label_block' => true,
@@ -162,12 +162,12 @@ class Info_Boards extends Base {
                 $repeater->add_control(
                         'link', 
                         [
-                                'label' => esc_html__( 'Link', 'ultraaddons' ),
+                                'label' => esc_html__( 'Link', 'ultraaddons-elementor-lite' ),
                                 'type'      => Controls_Manager::URL,
                                 'dynamic' => [
                                         'active' => true,
                                         ],
-                                'placeholder' => esc_html__( 'https://your-link.com', 'ultraaddons' ),
+                                'placeholder' => esc_html__( 'https://your-link.com', 'ultraaddons-elementor-lite' ),
                                 'default' => [
                                         'url' => '',
                                 ],
@@ -208,9 +208,9 @@ class Info_Boards extends Base {
                                                             'value' => 'fas fa-medkit',
                                                             'library' => 'solid',
                                                     ],
-                                                    'title' => esc_html__( 'Opening Hours', 'ultraaddons' ),
-                                                    'description' => esc_html__( '<ul><li><p>Fri-Sat</p><p>8AM - 10PM</p></li><li><p>Mon-Tue</p> <p>8AM - 10PM</p></li><li><p>Thu-Sun</p> <p>8AM - 10PM</p></li></ul>', 'ultraaddons' ),
-                                                    'button' => esc_html__( 'Sunday Closed', 'ultraaddons' ),
+                                                    'title' => esc_html__( 'Opening Hours', 'ultraaddons-elementor-lite' ),
+                                                    'description' => '<ul><li><p>Fri-Sat</p><p>8AM - 10PM</p></li><li><p>Mon-Tue</p> <p>8AM - 10PM</p></li><li><p>Thu-Sun</p> <p>8AM - 10PM</p></li></ul>',
+                                                    'button' => esc_html__( 'Sunday Closed', 'ultraaddons-elementor-lite' ),
                                                     'link' => [
                                                             'url' => '',
                                                     ],
@@ -223,9 +223,9 @@ class Info_Boards extends Base {
                                                             'value' => 'fas fa-ambulance',
                                                             'library' => 'solid',
                                                     ],
-                                                    'title' => esc_html__( 'Emergency Cases', 'ultraaddons' ),
-                                                    'description' => esc_html__( '<p>Lorem ipsum dolor sit amet consect adipisicing a sed do eusmod tempor incididunt ut labore.</p>', 'ultraaddons' ),
-                                                    'button' => esc_html__( 'Click Here', 'ultraaddons' ),
+                                                    'title' => esc_html__( 'Emergency Cases', 'ultraaddons-elementor-lite' ),
+                                                    'description' => '<p>Lorem ipsum dolor sit amet consect adipisicing a sed do eusmod tempor incididunt ut labore.</p>',
+                                                    'button' => esc_html__( 'Click Here', 'ultraaddons-elementor-lite' ),
                                                     'link' => [
                                                             'url' => '#',
                                                     ],
@@ -238,9 +238,9 @@ class Info_Boards extends Base {
                                                             'value' => 'far fa-clock',
                                                             'library' => 'regular',
                                                     ],
-                                                    'title' => esc_html__( 'Doctor Timetable', 'ultraaddons' ),
-                                                    'description' => esc_html__( '<p>Lorem ipsum dolor sit amet consect adipisicing a sed do eusmod tempor incididunt ut labore.</p>', 'ultraaddons' ),
-                                                    'button' => esc_html__( 'Click Here', 'ultraaddons' ),
+                                                    'title' => esc_html__( 'Doctor Timetable', 'ultraaddons-elementor-lite' ),
+                                                    'description' => '<p>Lorem ipsum dolor sit amet consect adipisicing a sed do eusmod tempor incididunt ut labore.</p>',
+                                                    'button' => esc_html__( 'Click Here', 'ultraaddons-elementor-lite' ),
                                                     'link' => [
                                                             'url' => '#',
                                                     ],
@@ -258,7 +258,7 @@ class Info_Boards extends Base {
                 $this->start_controls_section(
                         '_section_style_general',
                         [
-                                'label' => esc_html__( 'General', 'ultraaddons' ),
+                                'label' => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
@@ -266,13 +266,13 @@ class Info_Boards extends Base {
                 $this->add_responsive_control(
                     'info_board_column',
                         [
-                            'label'         => esc_html__( 'Column', 'ultraaddons' ),
+                            'label'         => esc_html__( 'Column', 'ultraaddons-elementor-lite' ),
                             'type'          => Controls_Manager::SELECT,
                             'options' => [
-                                    '100%'     => esc_html__( 'One Column', 'ultraaddons' ),
-                                    '50%'     => esc_html__( 'Two Column', 'ultraaddons' ),
-                                    '33.33%'     => esc_html__( 'Three Column', 'ultraaddons' ),
-                                    '25%'     => esc_html__( 'Four Column', 'ultraaddons' ),
+                                    '100%'     => esc_html__( 'One Column', 'ultraaddons-elementor-lite' ),
+                                    '50%'     => esc_html__( 'Two Column', 'ultraaddons-elementor-lite' ),
+                                    '33.33%'     => esc_html__( 'Three Column', 'ultraaddons-elementor-lite' ),
+                                    '25%'     => esc_html__( 'Four Column', 'ultraaddons-elementor-lite' ),
                             ],
                             'selectors' => [
                                         '{{WRAPPER}} .info-board' => 'width: {{VALUE}};',
@@ -282,7 +282,7 @@ class Info_Boards extends Base {
                 
                 $this->add_control(
                         'icon_size', [
-                                'label' => esc_html__( 'Icon Size', 'ultraaddons' ),
+                                'label' => esc_html__( 'Icon Size', 'ultraaddons-elementor-lite' ),
                                 'type'      => Controls_Manager::SLIDER,
                                 'range' => [
                                         'px' => [

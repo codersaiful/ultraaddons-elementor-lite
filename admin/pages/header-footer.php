@@ -9,32 +9,32 @@ defined( 'ABSPATH' ) || die();
 /**
  * Controlling Form Submission
  */
-$form_datas = filter_input_array(INPUT_POST);
+$ultraaddons_form_datas = filter_input_array(INPUT_POST);
 
-do_action( 'ultraaddons_save_data', $form_datas, 'header_foooter' );
+do_action( 'ultraaddons_save_data', $ultraaddons_form_datas, 'header_foooter' );
 
-$key = Header_Footer::$key;
+$ultraaddons_key = Header_Footer::$ultraaddons_key;
 
 
-if( $form_datas && $key ){
-    // update_option( $key, $form_datas );
+if( $ultraaddons_form_datas && $ultraaddons_key ){
+    // update_option( $ultraaddons_key, $ultraaddons_form_datas );
 }
-$current_data = Header_Footer::get_data();
-$type = isset( $current_data['type'] ) ? $current_data['type'] : '';
-$wrapper = isset( $current_data['wrapper'] ) ? $current_data['wrapper'] : 'box';;
+$ultraaddons_current_data = Header_Footer::get_data();
+$type = isset( $ultraaddons_current_data['type'] ) ? $ultraaddons_current_data['type'] : '';
+$ultraaddons_wrapper = isset( $ultraaddons_current_data['wrapper'] ) ? $ultraaddons_current_data['wrapper'] : 'box';;
 
-$template_obj = new Template_List();
-$templates = $template_obj->get_templates();
+$ultraaddons_template_obj = new Template_List();
+$ultraaddons_templates = $ultraaddons_template_obj->get_templates();
 
 
 
-$add_new_elementor_template = admin_url( 'post-new.php?post_type=' . HF_Post::$post_type );
+$ultraaddons_add_new_elementor_template = admin_url( 'post-new.php?post_type=' . HF_Post::$post_type );
 ?>
 
 <div class="ultraaddons-section ua-option-wrapper">
     <div class="ua-section-inside">
         <div class="ua-header">
-            <h1 class="ua-page-title"><?php echo esc_html__( 'Header & Footer', 'ultraaddons' ); ?></h1>
+            <h1 class="ua-page-title"><?php echo esc_html__( 'Header & Footer', 'ultraaddons-elementor-lite' ); ?></h1>
         </div>
         
         <div class="ua-sectioon-content">
@@ -43,16 +43,18 @@ $add_new_elementor_template = admin_url( 'post-new.php?post_type=' . HF_Post::$p
                 <form class="ua-header-footer-form" action="" method="post">
                     <div class="ua-form-wrappper">
                     <?php
-                    if( is_array( $templates ) && count( $templates ) > 0 ){
+                    if( is_array( $ultraaddons_templates ) && count( $ultraaddons_templates ) > 0 ){
                     ?>
                         <div class="ultraaddons-field-container">
-                            <label class="field-label field-label-header-choose"><?php echo esc_html__( 'Select Header', 'ultraaddons' ); ?></label>    
+                            <label class="field-label field-label-header-choose"><?php echo esc_html__( 'Select Header', 'ultraaddons-elementor-lite' ); ?></label>    
                             <select class="ultraddons-select" name="header_id">
-                                <option value=""><?php echo esc_html__( 'None', 'ultraaddons' ); ?></option>
+                                <option value=""><?php echo esc_html__( 'None', 'ultraaddons-elementor-lite' ); ?></option>
                                 <?php
-                                foreach( $templates as $templ_id => $templ_name ){
-                                    $selected = isset( $current_data['header_id'] ) && $current_data['header_id'] == $templ_id ? 'selected' : '';
-                                    echo "<option value='{$templ_id}' $selected>{$templ_name}</option>";
+                                foreach( $ultraaddons_templates as $ultraaddons_templ_id => $ultraaddons_templ_name ){
+                                    $ultraaddons_selected = isset( $ultraaddons_current_data['header_id'] ) && $ultraaddons_current_data['header_id'] == $ultraaddons_templ_id ? 'selected' : '';
+                                ?>
+                                <option value='<?php echo esc_attr( $ultraaddons_templ_id ); ?>' <?php echo esc_attr( $ultraaddons_selected ); ?>><?php echo esc_html( $ultraaddons_templ_name ); ?></option>
+                                <?php 
                                 }
                                 ?>
                             </select>
@@ -61,20 +63,22 @@ $add_new_elementor_template = admin_url( 'post-new.php?post_type=' . HF_Post::$p
                                    Template list is coming from Elementor Template. If you already made your header in Elementor 
                                    Template, Then Choose any one. Otherwise, 
                                    Create new 
-                                   <a href="<?php echo esc_url( $add_new_elementor_template ); ?>" target="_blank">
+                                   <a href="<?php echo esc_url( $ultraaddons_add_new_elementor_template ); ?>" target="_blank">
                                        Header as Elementor Template
                                    </a>.
                                 </p>
                             </div>
                         </div>
                         <div class="ultraaddons-field-container">
-                            <label class="field-label field-label-footer-choose"><?php echo esc_html__( 'Select Footer', 'ultraaddons' ); ?></label>    
+                            <label class="field-label field-label-footer-choose"><?php echo esc_html__( 'Select Footer', 'ultraaddons-elementor-lite' ); ?></label>    
                             <select class="ultraddons-select" name="footer_id">
-                                <option value=""><?php echo esc_html__( 'None', 'ultraaddons' ); ?></option>
+                                <option value=""><?php echo esc_html__( 'None', 'ultraaddons-elementor-lite' ); ?></option>
                                 <?php
-                                foreach( $templates as $templ_id => $templ_name ){
-                                    $selected = isset( $current_data['footer_id'] ) && $current_data['footer_id'] == $templ_id ? 'selected' : '';
-                                    echo "<option value='{$templ_id}' $selected>{$templ_name}</option>";
+                                foreach( $ultraaddons_templates as $ultraaddons_templ_id => $ultraaddons_templ_name ){
+                                    $ultraaddons_selected = isset( $ultraaddons_current_data['footer_id'] ) && $ultraaddons_current_data['footer_id'] == $ultraaddons_templ_id ? 'selected' : '';
+                                ?>
+                                <option value='<?php echo esc_attr( $ultraaddons_templ_id ); ?>' <?php echo esc_attr( $ultraaddons_selected ); ?>><?php echo esc_html( $ultraaddons_templ_name ); ?></option>
+                                <?php 
                                 }
                                 ?>
                             </select>
@@ -83,7 +87,7 @@ $add_new_elementor_template = admin_url( 'post-new.php?post_type=' . HF_Post::$p
                                    Template list is coming from Elementor Template. If you already made your footer in Elementor 
                                    Template, Then Choose any one. Otherwise, 
                                    Create new 
-                                   <a href="<?php echo esc_url( $add_new_elementor_template ); ?>" target="_blank">
+                                   <a href="<?php echo esc_url( $ultraaddons_add_new_elementor_template ); ?>" target="_blank">
                                        Footer as Elementor Template
                                    </a>.
                                 </p>
@@ -139,10 +143,10 @@ $add_new_elementor_template = admin_url( 'post-new.php?post_type=' . HF_Post::$p
                         </div>
 
                         <div class="ultraaddons-field-container field-container-size">
-                            <label class="field-label field-label-header-choose"><?php echo esc_html__( 'Container Size', 'ultraaddons' ); ?></label>    
+                            <label class="field-label field-label-header-choose"><?php echo esc_html__( 'Container Size', 'ultraaddons-elementor-lite' ); ?></label>    
                             <select class="ultraddons-select" name="wrapper">
-                                <option value="box" <?php echo $wrapper == 'box' ? 'selected' : ''; ?>><?php echo esc_html__( 'Box', 'ultraaddons' ); ?></option>
-                                <option value="flued" <?php echo $wrapper == 'flued' ? 'selected' : ''; ?>><?php echo esc_html__( 'Flued', 'ultraaddons' ); ?></option>
+                                <option value="box" <?php echo $ultraaddons_wrapper == 'box' ? 'selected' : ''; ?>><?php echo esc_html__( 'Box', 'ultraaddons-elementor-lite' ); ?></option>
+                                <option value="flued" <?php echo $ultraaddons_wrapper == 'flued' ? 'selected' : ''; ?>><?php echo esc_html__( 'Flued', 'ultraaddons-elementor-lite' ); ?></option>
                                 
                             </select>
                             <div class="ua-form-message">
@@ -157,12 +161,12 @@ $add_new_elementor_template = admin_url( 'post-new.php?post_type=' . HF_Post::$p
                     <?php
                     }else{
                     ?>
-                        <h2 class="ultraaddons-header-footer-not"><?php echo esc_html__( "There is no Template founded in Elementor Library", 'ultraaddons' ); ?></h2>
+                        <h2 class="ultraaddons-header-footer-not"><?php echo esc_html__( "There is no Template founded in Elementor Library", 'ultraaddons-elementor-lite' ); ?></h2>
                     <?php } ?>   
 
                     </div> <!-- /.ua-form-wrappper -->
                     <div class="ua-widget-footer">
-                        <button class="primary button button-primary ua-primary ua-no-update" type="submit"><?php echo esc_html__( 'Save Change', 'ultraaddons' ); ?></button>
+                        <button class="primary button button-primary ua-primary ua-no-update" type="submit"><?php echo esc_html__( 'Save Change', 'ultraaddons-elementor-lite' ); ?></button>
                     </div>
                 </form>
                 

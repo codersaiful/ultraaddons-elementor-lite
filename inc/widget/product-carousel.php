@@ -33,25 +33,25 @@ class Product_Carousel extends Base{
      * we have called this __construct() method
      * 
      * @param Array $data
-     * @param Array $args
+     * @param Array $ultraaddons_args
      * 
      * @by Saiful Islam
      */
-	public function __construct($data = [], $args = null) {
-        parent::__construct($data, $args);
+	public function __construct($data = [], $ultraaddons_args = null) {
+        parent::__construct($data, $ultraaddons_args);
 
         //Naming of Args for swiffySlider
-        $name           = 'swiffySlider';
+        $ultraaddons_name           = 'swiffySlider';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/swiffy-slider/dist/js/swiffy-slider.min.js';
         $dependency     =  ['jquery'];//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  	= true;
 
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );
+        wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ultraaddons_name );
 		
         //CSS file for dependency
-		$name           = 'swiffySlider';
+		$ultraaddons_name           = 'swiffySlider';
         $css_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/swiffy-slider/dist/css/swiffy-slider.min.css';
         $dependency     =  [];//kaj ta ses hoyni. pore abar try korte hobe.
         $version        = ULTRA_ADDONS_VERSION;
@@ -97,7 +97,7 @@ class Product_Carousel extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons','ua', 'product', 'slider', 'carousel' ];
+        return [ 'ultraaddons-elementor-lite','ua', 'product', 'slider', 'carousel' ];
     }
     
     
@@ -136,14 +136,14 @@ class Product_Carousel extends Base{
         $this->start_controls_section(
             'query_content',
             [
-                'label'     => esc_html__( 'Query Settings', 'ultraaddons' ),
+                'label'     => esc_html__( 'Query Settings', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
 		$this->add_control(
 			'_ua_text_truncate',
 			[
-				'label' => __( 'Description Length', 'ultraaddons' ),
+				'label' => __( 'Description Length', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 5,
 				'max' => 300,
@@ -154,7 +154,7 @@ class Product_Carousel extends Base{
 		$this->add_control(
 			'_ua_post_per_page',
 			[
-				'label' => __( 'Show Products', 'ultraaddons' ),
+				'label' => __( 'Show Products', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 1,
 				'max' => 300,
@@ -165,7 +165,7 @@ class Product_Carousel extends Base{
 		$this->add_control(
 			'_ua_post_page_number',
 			[
-				'label' => __( 'Page Number', 'ultraaddons' ),
+				'label' => __( 'Page Number', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 1,
 				//'max' => 300,
@@ -177,7 +177,7 @@ class Product_Carousel extends Base{
 		$this->add_control(
 			'_ua_product_order',
 			[
-				'label' => esc_html__( 'Order', 'ultraaddons' ),
+				'label' => esc_html__( 'Order', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'asc' => 'Asc',
@@ -189,7 +189,7 @@ class Product_Carousel extends Base{
 		$this->add_control(
 			'_ua_product_orderby',
 			[
-				'label' => esc_html__( 'Orderby', 'ultraaddons' ),
+				'label' => esc_html__( 'Orderby', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'none' => 'None',
@@ -207,7 +207,7 @@ class Product_Carousel extends Base{
 		$this->add_control(
             'cat_ids',
             [
-                'label' => esc_html__( 'Select category', 'ultraaddons' ),
+                'label' => esc_html__( 'Select category', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::SELECT2,
                 'options' => $this->product_tax_options(),
                 'multiple' => 'true'
@@ -218,7 +218,7 @@ class Product_Carousel extends Base{
 		$this->add_control(
             'tag_ids',
             [
-                'label' => esc_html__( 'Select Tag', 'ultraaddons' ),
+                'label' => esc_html__( 'Select Tag', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::SELECT2,
                 'options' => $this->product_tax_options( 'product_tag' ),
                 'multiple' => 'true'
@@ -229,20 +229,20 @@ class Product_Carousel extends Base{
 		$this->add_control(
 			'_ua_query_post_in',
 			[
-				'label' => __( 'Product by included IDs', 'ultraaddons' ),
+				'label' => __( 'Product by included IDs', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXTAREA,
-				'placeholder' => __( '1,2,3,4,20,33', 'ultraaddons' ),
-				'description' => __('Add multiple ids by comma separated.'),
+				'placeholder' => __( '1,2,3,4,20,33', 'ultraaddons-elementor-lite' ),
+				'description' => __(  'Add multiple ids by comma separated.', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
 		$this->add_control(
 			'_ua_query_post_not_in',
 			[
-				'label' => __( 'Product by excluded IDs', 'ultraaddons' ),
+				'label' => __( 'Product by excluded IDs', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXTAREA,
-				'placeholder' => __( '1,2,3,4,20,33', 'ultraaddons' ),
-				'description' => __('Add multiple ids by comma separated.'),
+				'placeholder' => __( '1,2,3,4,20,33', 'ultraaddons-elementor-lite' ),
+				'description' => __(  'Add multiple ids by comma separated.', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
@@ -258,14 +258,14 @@ class Product_Carousel extends Base{
         $this->start_controls_section(
             'nav_settings',
             [
-                'label'     => esc_html__( 'Navigation Settings', 'ultraaddons' ),
+                'label'     => esc_html__( 'Navigation Settings', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
 		$this->add_control(
 			'_slider_navigation',
 			[
-				'label' => esc_html__( 'Navigation', 'ultraaddons' ),
+				'label' => esc_html__( 'Navigation', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'none' => 'None',
@@ -282,10 +282,10 @@ class Product_Carousel extends Base{
         $this->add_control(
 			'_slider_nav_dark',
 			[
-				'label' => __( 'Dark', 'ultraaddons' ),
+				'label' => __( 'Dark', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 			]
@@ -293,10 +293,10 @@ class Product_Carousel extends Base{
 		$this->add_control(
 			'_slider_nav_visible',
 			[
-				'label' => __( 'Always Visible', 'ultraaddons' ),
+				'label' => __( 'Always Visible', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 			]
@@ -304,10 +304,10 @@ class Product_Carousel extends Base{
 		$this->add_control(
 			'_slider_nav_outside',
 			[
-				'label' => __( 'Nav Outside', 'ultraaddons' ),
+				'label' => __( 'Nav Outside', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'no',
 			]
@@ -315,10 +315,10 @@ class Product_Carousel extends Base{
 		/* $this->add_control(
 			'_slider_mouse_drag',
 			[
-				'label' => __( 'Mouse Drag', 'ultraaddons' ),
+				'label' => __( 'Mouse Drag', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'no',
 			]
@@ -326,10 +326,10 @@ class Product_Carousel extends Base{
         $this->add_control(
 			'_slider_nav_small',
 			[
-				'label' => __( 'Small', 'ultraaddons' ),
+				'label' => __( 'Small', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 			]
@@ -338,17 +338,17 @@ class Product_Carousel extends Base{
 			'indicator_part',
 			[
 				'type' => Controls_Manager::RAW_HTML,
-				'raw' => __( '<h2 class="ua-inner-text">Indicators Settings</h2>', 'ultraaddons' ),
+				'raw' => '<h2 class="ua-inner-text">' . esc_html__( 'Indicators Settings', 'ultraaddons-elementor-lite' ) . '</h2>',
 			]
 		);
 		
 		$this->add_control(
 			'_slider_indicator',
 			[
-				'label' => __( 'Indicators', 'ultraaddons' ),
+				'label' => __( 'Indicators', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'no',
 			]
@@ -356,7 +356,7 @@ class Product_Carousel extends Base{
 		$this->add_control(
 			'_slider_indicator_shape',
 			[
-				'label' => esc_html__( 'Indicator Shape ', 'ultraaddons' ),
+				'label' => esc_html__( 'Indicator Shape ', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'default' => 'Default',
@@ -369,10 +369,10 @@ class Product_Carousel extends Base{
 		$this->add_control(
 			'_slider_indicator_outside',
 			[
-				'label' => __( 'Indicators Outside', 'ultraaddons' ),
+				'label' => __( 'Indicators Outside', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'no',
 			]
@@ -380,10 +380,10 @@ class Product_Carousel extends Base{
 		$this->add_control(
 			'_slider_indicator_highlight',
 			[
-				'label' => __( 'Indicators Highlight', 'ultraaddons' ),
+				'label' => __( 'Indicators Highlight', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'no',
 			]
@@ -391,10 +391,10 @@ class Product_Carousel extends Base{
 		$this->add_control(
 			'_slider_indicator_dark',
 			[
-				'label' => __( 'Indicators Dark', 'ultraaddons' ),
+				'label' => __( 'Indicators Dark', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 			]
@@ -402,10 +402,10 @@ class Product_Carousel extends Base{
 		$this->add_control(
 			'_slider_indicator_visible_sm',
 			[
-				'label' => __( 'Visible on Small Devices', 'ultraaddons' ),
+				'label' => __( 'Visible on Small Devices', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'no',
 			]
@@ -425,7 +425,7 @@ class Product_Carousel extends Base{
         $this->start_controls_section(
             'general_content',
             [
-                'label'     => esc_html__( 'Slider Options', 'ultraaddons' ),
+                'label'     => esc_html__( 'Slider Options', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -433,7 +433,7 @@ class Product_Carousel extends Base{
 		 $this->add_control(
 			'_slider_to_show',
 			[
-				'label' => esc_html__( 'Slider to Show', 'ultraaddons' ),
+				'label' => esc_html__( 'Slider to Show', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'1' => 'One',
@@ -449,10 +449,10 @@ class Product_Carousel extends Base{
         $this->add_control(
 			'_slider_gap',
 			[
-				'label' => __( 'Gap', 'ultraaddons' ),
+				'label' => __( 'Gap', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 			]
@@ -460,10 +460,10 @@ class Product_Carousel extends Base{
          $this->add_control(
 			'_slider_auto_play',
 			[
-				'label' => __( 'Auto Play', 'ultraaddons' ),
+				'label' => __( 'Auto Play', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 			]
@@ -471,7 +471,7 @@ class Product_Carousel extends Base{
         $this->add_control(
 			'_slider_speed',
 			[
-				'label' => __( 'Auto Play Interval', 'ultraaddons' ),
+				'label' => __( 'Auto Play Interval', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 1500,
 				'max' => 6000,
@@ -482,10 +482,10 @@ class Product_Carousel extends Base{
         $this->add_control(
 			'_slider_pause',
 			[
-				'label' => __( 'Pause on Hover', 'ultraaddons' ),
+				'label' => __( 'Pause on Hover', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 			]
@@ -493,10 +493,10 @@ class Product_Carousel extends Base{
          $this->add_control(
 			'_slider_reveal',
 			[
-				'label' => __( 'Reveal', 'ultraaddons' ),
+				'label' => __( 'Reveal', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'ultraaddons' ),
-				'label_off' => __( 'No', 'ultraaddons' ),
+				'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 			]
@@ -514,7 +514,7 @@ protected function animation_controls() {
 	$this->start_controls_section(
 		'animation_controls',
 		[
-			'label'     => esc_html__( 'Animation Options', 'ultraaddons' ),
+			'label'     => esc_html__( 'Animation Options', 'ultraaddons-elementor-lite' ),
 			'tab'       => Controls_Manager::TAB_CONTENT,
 		]
 	);
@@ -522,10 +522,10 @@ protected function animation_controls() {
 	$this->add_control(
 		'_slider_animation_enabled',
 		[
-			'label' => __( 'Enable Animation', 'ultraaddons' ),
+			'label' => __( 'Enable Animation', 'ultraaddons-elementor-lite' ),
 			'type' => Controls_Manager::SWITCHER,
-			'label_on' => __( 'Yes', 'ultraaddons' ),
-			'label_off' => __( 'No', 'ultraaddons' ),
+			'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+			'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
 			'return_value' => 'yes',
 			'default' => 'no',
 		]
@@ -533,7 +533,7 @@ protected function animation_controls() {
 	$this->add_control(
 		'_slider_anim_type',
 		[
-			'label' => esc_html__( 'Select Animation', 'ultraaddons' ),
+			'label' => esc_html__( 'Select Animation', 'ultraaddons-elementor-lite' ),
 			'type' => Controls_Manager::SELECT,
 			'options' => [
 				'none' => 'None',
@@ -558,7 +558,7 @@ $this->end_controls_section();
         $this->start_controls_section(
             'style_content',
             [
-                'label'     => esc_html__( 'Content', 'ultraaddons' ),
+                'label'     => esc_html__( 'Content', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -572,7 +572,7 @@ $this->end_controls_section();
         );
 		$this->add_control(
 			'_title_color', [
-				'label' => __( 'Title Color', 'ultraaddons' ),
+				'label' => __( 'Title Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-product-title' => 'color: {{VALUE}};',
@@ -590,7 +590,7 @@ $this->end_controls_section();
         );
 		$this->add_control(
 			'_cat_color', [
-				'label' => __( 'Category Color', 'ultraaddons' ),
+				'label' => __( 'Category Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-card-text' => 'color: {{VALUE}};',
@@ -608,7 +608,7 @@ $this->end_controls_section();
         );
 		$this->add_control(
 			'_price_color', [
-				'label' => __( 'Price Color', 'ultraaddons' ),
+				'label' => __( 'Price Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-pc-price' => 'color: {{VALUE}};',
@@ -619,7 +619,7 @@ $this->end_controls_section();
 		$this->add_control(
 			'_ua_front_title_tag',
 			[
-				'label' => esc_html__( 'Select Title Tag', 'ultraaddons' ),
+				'label' => esc_html__( 'Select Title Tag', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'h1' => 'H1',
@@ -644,7 +644,7 @@ $this->end_controls_section();
         $this->start_controls_section(
             'style_box',
             [
-                'label'     => esc_html__( 'Box', 'ultraaddons' ),
+                'label'     => esc_html__( 'Box', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -652,14 +652,14 @@ $this->end_controls_section();
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'box_shadow',
-				'label' => __( 'Box Shadow', 'ultraaddons' ),
+				'label' => __( 'Box Shadow', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .slider-container .ua-card',
 			]
 		);
 		$this->add_responsive_control(
 			'_box_radius',
 			[
-				'label'       => esc_html__( 'Box Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Box Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -677,7 +677,7 @@ $this->end_controls_section();
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'box_border',
-				'label' => __( 'Border', 'ultraaddons' ),
+				'label' => __( 'Border', 'ultraaddons-elementor-lite' ),
 				'fields_options' => [
 					'border' => [
 						'default' => 'solid',
@@ -709,7 +709,7 @@ $this->end_controls_section();
         $this->start_controls_section(
             'style_navi',
             [
-                'label'     => esc_html__( 'Navigation', 'ultraaddons' ),
+                'label'     => esc_html__( 'Navigation', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -718,13 +718,13 @@ $this->end_controls_section();
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'nav_shadow',
-				'label' => __( 'Nav Shadow', 'ultraaddons' ),
+				'label' => __( 'Nav Shadow', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .slider-nav-dark.slider-nav-round .slider-nav::before, .slider-nav-dark.slider-nav-square .slider-nav::before',
 			]
 		);
 		$this->add_control(
 			'_nav_bg', [
-				'label' => __( 'Nav Background', 'ultraaddons' ),
+				'label' => __( 'Nav Background', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .slider-nav-dark.slider-nav-round .slider-nav::before, .slider-nav-dark.slider-nav-square .slider-nav::before' => 'background: {{VALUE}};',
@@ -733,7 +733,7 @@ $this->end_controls_section();
         );
 		$this->add_control(
 			'_indicator_bg', [
-				'label' => __( 'Indicator Background', 'ultraaddons' ),
+				'label' => __( 'Indicator Background', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .slider-indicators>*' => 'background-color: {{VALUE}}; filter:none',
@@ -752,14 +752,14 @@ $this->end_controls_section();
         $this->start_controls_section(
             'sale_flash_style',
             [
-                'label'     => esc_html__( 'Sale Flash', 'ultraaddons' ),
+                'label'     => esc_html__( 'Sale Flash', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
 		
 		$this->add_control(
 			'_ua_sale_flash_bg', [
-				'label' => __( 'Flash Background', 'ultraaddons' ),
+				'label' => __( 'Flash Background', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-onsale' => 'background-color: {{VALUE}};',
@@ -769,7 +769,7 @@ $this->end_controls_section();
         );
 		$this->add_control(
 			'_ua_flash_color', [
-				'label' => __( 'Flash Text Color', 'ultraaddons' ),
+				'label' => __( 'Flash Text Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-onsale' => 'color: {{VALUE}};',
@@ -789,7 +789,7 @@ $this->end_controls_section();
 		$this->add_responsive_control(
 			'_ua_flash_margin',
 			[
-				'label'       => esc_html__( 'Flash Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Flash Margin', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -806,7 +806,7 @@ $this->end_controls_section();
 		$this->add_responsive_control(
 			'_ua_flash_padding',
 			[
-				'label'       => esc_html__( 'Flash Padding', 'ultraaddons' ),
+				'label'       => esc_html__( 'Flash Padding', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -823,7 +823,7 @@ $this->end_controls_section();
 		$this->add_responsive_control(
 			'_ua_flash_radius',
 			[
-				'label'       => esc_html__( 'Flash Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Flash Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -847,7 +847,7 @@ $this->end_controls_section();
 		$this->start_controls_section(
 			'pc_cart_style',
 			[
-				'label' => __( 'Cart', 'ultraaddons' ),
+				'label' => __( 'Cart', 'ultraaddons-elementor-lite' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -867,7 +867,7 @@ $this->end_controls_section();
 		$this->add_control(
 			'aep_blog_readmore_spacing',
 			[
-				'label' => __( 'Content Spacing', 'ultraaddons' ),
+				'label' => __( 'Content Spacing', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
@@ -888,14 +888,14 @@ $this->end_controls_section();
 		$this->start_controls_tab(
 			'tab_button_normal',
 			[
-				'label' => __( 'Normal', 'ultraaddons' ),
+				'label' => __( 'Normal', 'ultraaddons-elementor-lite' ),
 			]
 		);
 		
 		$this->add_control(
 			'aep_cart_color',
 			[
-				'label' => __( 'Text Color', 'ultraaddons' ),
+				'label' => __( 'Text Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '#333',
 				'selectors' => [
@@ -906,7 +906,7 @@ $this->end_controls_section();
 		);
 		$this->add_control(
 			'aep_cart_bg_color', [
-				'label' => __( 'Cart Background', 'ultraaddons' ),
+				'label' => __( 'Cart Background', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ua-thumbnail .cart-links a' => 'background: {{VALUE}};',
@@ -929,13 +929,13 @@ $this->end_controls_section();
 		$this->start_controls_tab(
 			'tab_button_hover',
 			[
-				'label' => __( 'Hover', 'ultraaddons' ),
+				'label' => __( 'Hover', 'ultraaddons-elementor-lite' ),
 			]
 		);
 		$this->add_control(
 			'hover_color',
 			[
-				'label' => __( 'Text Color', 'ultraaddons' ),
+				'label' => __( 'Text Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ua-thumbnail .cart-links a:hover' => 'color: {{VALUE}};',
@@ -961,7 +961,7 @@ $this->end_controls_section();
 	$settings   	= $this->get_settings_for_display();	
     //Get Intrigate with WooCommerce
     if( ! class_exists( 'WooCommerce' ) ){
-        echo "<div class='ua-alert'>" . esc_html__( "WooCommerce is not Activated.", 'ultraaddons' ) . "</div>";
+        echo "<div class='ua-alert'>" . esc_html__( "WooCommerce is not Activated.", 'ultraaddons-elementor-lite' ) . "</div>";
         return;
     }
 	/**
@@ -1016,11 +1016,11 @@ if( Plugin::$instance->editor->is_edit_mode()){
 }
 ?>
 
-<div <?php echo $this->get_render_attribute_string( 'slider_options' ); ?>>
+<div <?php echo esc_attr( $this->get_render_attribute_string( 'slider_options' ) ); ?>>
     <ul class="slider-container">
         <?php
 		
-        $args = array(
+        $ultraaddons_args = array(
             'post_type' 	=> 'product',
             'posts_per_page'=> $settings['_ua_post_per_page'],
 			'paged'=> ! empty( $settings['_ua_post_page_number'] ) ? $settings['_ua_post_page_number'] : 1,
@@ -1029,15 +1029,17 @@ if( Plugin::$instance->editor->is_edit_mode()){
             );
 		if(! empty( $settings['_ua_query_post_in'] )){
 			$include_ids = explode(',',$settings['_ua_query_post_in']);
-			$args['post__in'] = $include_ids;
+			$ultraaddons_args['post__in'] = $include_ids;
 		}
 		if(! empty( $settings['_ua_query_post_not_in'] )){
 			$exclude_ids = explode(',',$settings['_ua_query_post_not_in']);
-			$args['post__not_in'] = $exclude_ids;
+			//phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_post__not_in
+			$ultraaddons_args['post__not_in'] = $exclude_ids;
 		}
 
 		if( ! empty( $settings['cat_ids'] ) ){
-			$args['tax_query'] = array(
+			//phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
+			$ultraaddons_args['tax_query'] = array(
 				array(
 					'taxonomy'  => 'product_cat',
 					'field'     => 'id', 
@@ -1047,7 +1049,8 @@ if( Plugin::$instance->editor->is_edit_mode()){
 		}
 		
 		if( ! empty( $settings['tag_ids'] ) ){
-			$args['tax_query'] = array(
+			//phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
+			$ultraaddons_args['tax_query'] = array(
 				array(
 					'taxonomy'  => 'product_tag',
 					'field'     => 'id', 
@@ -1056,7 +1059,7 @@ if( Plugin::$instance->editor->is_edit_mode()){
 			);
 		}	
 
-        $loop = new \WP_Query( $args );
+        $loop = new \WP_Query( $ultraaddons_args );
         if ( $loop->have_posts() ) {
 			$count=0;
 			$number=array();
@@ -1066,59 +1069,59 @@ if( Plugin::$instance->editor->is_edit_mode()){
 				$image_id  	 = $product->get_image_id();
 				$image_url 	 = wp_get_attachment_image_url( $image_id, 'full' );
 				$description = $loop->post->post_excerpt;
-                $category 	 = get_the_category( $id );
+                $ultraaddons_category 	 = get_the_category( $id );
 				$count		= $count+1;
 				$number[]	=$count;
-				if(!empty($category)){
-                    echo $category[0]->cat_name;
+				if(!empty($ultraaddons_category)){
+                    echo esc_html( $ultraaddons_category[0]->name ?? '' );
                 }
 				?>
         <li>
             <div class="ua-card shadow ua-h-100">
                 <div class="ua-thumbnail">
 					<?php if ( $product->is_on_sale() ) : 
-					echo apply_filters( 'woocommerce_sale_flash', '<span class="ua-onsale">' 
-					. esc_html__( 'Sale!', 'ultraaddons' ) . '</span>', $product );
+					echo wp_kses_post( apply_filters( 'ultraaddons_woocommerce_sale_flash', '<span class="ua-onsale">' 
+					. esc_html__( 'Sale!', 'ultraaddons-elementor-lite' ) . '</span>', $product ) );
 					endif;
 					?>
 					<div class="cart-links">
-						<a href="?add-to-cart=<?php echo esc_attr($id); ?>"  class="add-card button add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo esc_attr($id); ?>"  aria-label="Add '<?php echo get_the_title(); ?>' to your cart" rel="nofollow">
+						<a href="?add-to-cart=<?php echo esc_attr($id); ?>"  class="add-card button add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo esc_attr($id); ?>"  aria-label="Add '<?php echo esc_attr( get_the_title() ); ?>' to your cart" rel="nofollow">
 							<i class="uicon uicon-cart"></i>
 							<span>
-								<?php echo esc_html__('ADD TO CART', 'ultraaddons'); ?>
+								<?php echo esc_html__('ADD TO CART', 'ultraaddons-elementor-lite'); ?>
 							</span>
 						</a>
 					</div>
-                    <?php echo woocommerce_get_product_thumbnail('woocommerce_full_size');?>
+                    <?php echo wp_kses_post( woocommerce_get_product_thumbnail('woocommerce_full_size') ); ?>
 			
                 </div>
                 <div class="ua-card-body ua-d-flex ua-flex-column ua-flex-md-row">
                     <div class="ua-flex-grow-1">
-                        <a href="<?php echo get_the_permalink(); ?>">
+                        <a href="<?php echo esc_url( get_the_permalink() ); ?>">
                             <?php
-                            echo '<' . $settings['_ua_front_title_tag'] . ' class="ua-product-title">' . $loop->post->post_title . 
-                                    '</' . $settings['_ua_front_title_tag'] . '>';
+                            echo '<' . esc_html( $settings['_ua_front_title_tag'] ) . ' class="ua-product-title">' . esc_html( $loop->post->post_title ) . 
+                                    '</' . esc_html( $settings['_ua_front_title_tag'] ) . '>';
                             ?>
                         </a>
                         <p class="ua-card-text">
                             <?php 
                             foreach( wp_get_post_terms( get_the_id(), 'product_cat' ) as $term ){
                             if( $term ){
-                                    echo $term->name; // product category name
+                                    echo esc_html( $term->name ); // product category name
                                 }
                             }
                             ?>
                         </p>
                     </div>
                     <div class="ua-px-md-2 ua-pc-price">
-						<?php echo $product->get_price_html();?> 
+						<?php echo wp_kses_post( $product->get_price_html() );?> 
 					</div>
                 </div>
         </li>
         <?php
 	 endwhile;
 	} else {
-		 echo "<div class='ua-alert'>" . esc_html__( "No products found!", 'ultraaddons' ) . "</div>";
+		 echo "<div class='ua-alert'>" . esc_html__( "No products found!", 'ultraaddons-elementor-lite' ) . "</div>";
 	}
 	wp_reset_postdata();
 	?>

@@ -43,7 +43,7 @@ class Demo_Library_Source extends Source_Base {
 	}
 
 	public function get_title() {
-		return __( 'Theme Demo Library', 'ultraaddons' );
+		return __( 'Theme Demo Library', 'ultraaddons-elementor-lite' );
 	}
 
 	public function register_data() {}
@@ -64,18 +64,18 @@ class Demo_Library_Source extends Source_Base {
 		return new \WP_Error( 'invalid_request', 'Cannot export template from a UltraAddons library' );
 	}
 
-	public function get_items( $args = [] ) {
+	public function get_items( $ultraaddons_args = [] ) {
 		$library_data = self::get_library_data();
 
-		$templates = [];
+		$ultraaddons_templates = [];
 
 		if ( ! empty( $library_data['templates'] ) ) {
 			foreach ( $library_data['templates'] as $template_data ) {
-				$templates[] = $this->prepare_template( $template_data );
+				$ultraaddons_templates[] = $this->prepare_template( $template_data );
 			}
 		}
 
-		return $templates;
+		return $ultraaddons_templates;
 	}
 
 	public function get_tags() {
@@ -172,9 +172,9 @@ class Demo_Library_Source extends Source_Base {
 	 * @return array Remote template.
 	 */
 	public function get_item( $template_id ) {
-		$templates = $this->get_items();
+		$ultraaddons_templates = $this->get_items();
 
-		return $templates[ $template_id ];
+		return $ultraaddons_templates[ $template_id ];
 	}
 
 	public static function request_template_data( $template_id ) {
@@ -210,19 +210,19 @@ class Demo_Library_Source extends Source_Base {
 	 *
 	 * @return array|\WP_Error Remote Template data.
 	 */
-	public function get_data( array $args, $context = 'display' ) {
-		$data = self::request_template_data( $args['template_id'] );
+	public function get_data( array $ultraaddons_args, $context = 'display' ) {
+		$data = self::request_template_data( $ultraaddons_args['template_id'] );
 
 		$data = json_decode( $data, true );
 
 		if ( empty( $data ) || empty( $data['content'] ) ) {
-			throw new \Exception( __( 'Template does not have any content', 'ultraaddons' ) );
+			throw new \Exception( esc_html__( 'Template does not have any content', 'ultraaddons-elementor-lite' ) );
 		}
 
 		$data['content'] = $this->replace_elements_ids( $data['content'] );
 		$data['content'] = $this->process_export_import_content( $data['content'], 'on_import' );
 
-		$post_id = $args['editor_post_id'];
+		$post_id = $ultraaddons_args['editor_post_id'];
 		$document = ultraaddons_elementor()->documents->get( $post_id );
 
 		if ( $document ) {

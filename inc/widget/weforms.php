@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class WeForms extends Base{
        
         public function get_keywords() {
-                return [ 'ultraaddons','ua', 'appointment', 'contact', 'quote', 'form', 'schedule','we', 'weforms', 'contact form' ];
+                return [ 'ultraaddons-elementor-lite','ua', 'appointment', 'contact', 'quote', 'form', 'schedule','we', 'weforms', 'contact form' ];
         }
 
          /**
@@ -41,7 +41,7 @@ class WeForms extends Base{
                 $this->start_controls_section(
                         '_section_frm',
                         [
-                                'label' =>  __( 'Contact Form', 'ultraaddons' ) ,
+                                'label' =>  __( 'Contact Form', 'ultraaddons-elementor-lite' ) ,
                                 'tab' => Controls_Manager::TAB_CONTENT,
                         ]
                 );
@@ -49,7 +49,7 @@ class WeForms extends Base{
                         $this->add_control(
                                 'form_id',
                                 array(
-                                'label'   => __( 'Form', 'ultraaddons' ),
+                                'label'   => __( 'Form', 'ultraaddons-elementor-lite' ),
                                 'type'    => Controls_Manager::SELECT2,
                                 'options' => ultraaddons_get_weform_list(),
                                 'default' =>0
@@ -59,7 +59,8 @@ class WeForms extends Base{
                         $this->add_control(
                                 'form_error',[
                                     'type'            => Controls_Manager::RAW_HTML,
-                                    'raw'             => sprintf( __( '<strong>Please install or activate WPForms.</strong><br>Go to the <a href="%s" target="_blank" style="color:#93003c">Plugin page</a> to actions.', 'ultraaddons' ), admin_url( 'plugin-install.php?s=WeForms&tab=search&type=term' ) ),
+                                    /* translators: %s: Plugin installation URL */
+                                    'raw'             => sprintf( __( '<strong>Please install or activate WPForms.</strong><br>Go to the <a href="%s" target="_blank" style="color:#93003c">Plugin page</a> to actions.', 'ultraaddons-elementor-lite' ), admin_url( 'plugin-install.php?s=WeForms&tab=search&type=term' ) ),
                                     'separator'       => 'after',
                                     'content_classes' => 'elementor-panel-alert elementor-panel-alert-warning',
                                 ]
@@ -74,7 +75,7 @@ class WeForms extends Base{
                 $this->start_controls_section(
                         'from_style',
                         [
-                                'label' =>  __( 'Title & Description', 'ultraaddons' ) ,
+                                'label' =>  __( 'Title & Description', 'ultraaddons-elementor-lite' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
@@ -95,7 +96,7 @@ class WeForms extends Base{
                 $this->add_control(
                         'title_color',
                         [
-                                'label' => __( 'Title Color', 'ultraaddons' ),
+                                'label' => __( 'Title Color', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::COLOR,
                                 'selectors' => [
                                         '{{WRAPPER}} .ua-form .ua-wp-form-title' => 'color: {{VALUE}};',
@@ -105,7 +106,7 @@ class WeForms extends Base{
                 $this->add_responsive_control(
                     'title_margin',
                     [
-                        'label'       => esc_html__( 'Title Margin', 'ultraaddons' ),
+                        'label'       => esc_html__( 'Title Margin', 'ultraaddons-elementor-lite' ),
                         'type'        => Controls_Manager::DIMENSIONS,
                         'size_units'  => [ 'px', '%' ],
                         'placeholder' => [
@@ -136,7 +137,7 @@ class WeForms extends Base{
                 $this->add_control(
                         'desc_color',
                         [
-                                'label' => __( 'Deccription Color', 'ultraaddons' ),
+                                'label' => __( 'Deccription Color', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::COLOR,
                                 'selectors' => [
                                         '{{WRAPPER}} .ua-form .frm_description p' => 'color: {{VALUE}};',
@@ -146,7 +147,7 @@ class WeForms extends Base{
                 $this->add_responsive_control(
 			'desc_margin',
 			[
-				'label'       => esc_html__( 'Description Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Description Margin', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -168,7 +169,7 @@ class WeForms extends Base{
                 $this->start_controls_section(
                         'ua_form_label_styles',
                         [
-                            'label' => esc_html__('Form Label', 'ultraaddons'),
+                            'label' => esc_html__('Form Label', 'ultraaddons-elementor-lite'),
                             'tab' => Controls_Manager::TAB_STYLE,
                         ]
                     );
@@ -187,7 +188,7 @@ class WeForms extends Base{
                 $this->add_control(
                         'label_color',
                         [
-                                'label' => __( 'Form Label Color', 'ultraaddons' ),
+                                'label' => __( 'Form Label Color', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#333',
                                 'selectors' => [
@@ -198,7 +199,7 @@ class WeForms extends Base{
                 $this->add_responsive_control(
                     'label_margin',
                     [
-                        'label'       => esc_html__( 'Label Margin', 'ultraaddons' ),
+                        'label'       => esc_html__( 'Label Margin', 'ultraaddons-elementor-lite' ),
                         'type'        => Controls_Manager::DIMENSIONS,
                         'size_units'  => [ 'px', '%' ],
                         'placeholder' => [
@@ -227,7 +228,7 @@ class WeForms extends Base{
                 $this->add_control(
                         'sub_label_color',
                         [
-                                'label' => __( 'Sub Label Color', 'ultraaddons' ),
+                                'label' => __( 'Sub Label Color', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::COLOR,
                                 'default' => '#333',
                                 'separator'=>'after',
@@ -243,7 +244,7 @@ class WeForms extends Base{
                 $this->start_controls_section(
                         'us_section_weform_styles',
                         [
-                            'label' => esc_html__('Form Container', 'ultraaddons'),
+                            'label' => esc_html__('Form Container', 'ultraaddons-elementor-lite'),
                             'tab' => Controls_Manager::TAB_STYLE,
                         ]
                     );
@@ -251,7 +252,7 @@ class WeForms extends Base{
                     $this->add_control(
                         'us_weform_background',
                         [
-                            'label' => esc_html__('Form Background Color', 'ultraaddons'),
+                            'label' => esc_html__('Form Background Color', 'ultraaddons-elementor-lite'),
                             'type' => Controls_Manager::COLOR,
                             'selectors' => [
                                 '{{WRAPPER}} .ua-weforms' => 'background-color: {{VALUE}};',
@@ -263,7 +264,7 @@ class WeForms extends Base{
                     $this->add_responsive_control(
                         'us_weform_width',
                         [
-                            'label' => esc_html__('Form Width', 'ultraaddons'),
+                            'label' => esc_html__('Form Width', 'ultraaddons-elementor-lite'),
                             'type' => Controls_Manager::SLIDER,
                             'size_units' => ['px', 'em', '%'],
                             'range' => [
@@ -285,7 +286,7 @@ class WeForms extends Base{
                     $this->add_responsive_control(
                         'us_weform_max_width',
                         [
-                            'label' => esc_html__('Form Max Width', 'ultraaddons'),
+                            'label' => esc_html__('Form Max Width', 'ultraaddons-elementor-lite'),
                             'type' => Controls_Manager::SLIDER,
                             'size_units' => ['px', 'em', '%'],
                             'range' => [
@@ -307,7 +308,7 @@ class WeForms extends Base{
                     $this->add_responsive_control(
                         'us_weform_margin',
                         [
-                            'label' => esc_html__('Form Margin', 'ultraaddons'),
+                            'label' => esc_html__('Form Margin', 'ultraaddons-elementor-lite'),
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => ['px', 'em', '%'],
                             'selectors' => [
@@ -319,7 +320,7 @@ class WeForms extends Base{
                     $this->add_responsive_control(
                         'us_weform_padding',
                         [
-                            'label' => esc_html__('Form Padding', 'ultraaddons'),
+                            'label' => esc_html__('Form Padding', 'ultraaddons-elementor-lite'),
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => ['px', 'em', '%'],
                             'selectors' => [
@@ -331,7 +332,7 @@ class WeForms extends Base{
                     $this->add_control(
                         'us_weform_border_radius',
                         [
-                            'label' => esc_html__('Border Radius', 'ultraaddons'),
+                            'label' => esc_html__('Border Radius', 'ultraaddons-elementor-lite'),
                             'type' => Controls_Manager::DIMENSIONS,
                             'separator' => 'before',
                             'size_units' => ['px'],
@@ -363,14 +364,14 @@ class WeForms extends Base{
                 $this->start_controls_section(
                         'input_style',
                         [
-                                'label' =>  __( 'Input & Textarea', 'ultraaddons' ) ,
+                                'label' =>  __( 'Input & Textarea', 'ultraaddons-elementor-lite' ) ,
                                 'tab' => Controls_Manager::TAB_STYLE,
                         ]
                 );
                 $this->add_control(
 			'input_radius',
 			[
-				'label' => __( 'Border Radius', 'ultraaddons' ),
+				'label' => __( 'Border Radius', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
@@ -394,7 +395,7 @@ class WeForms extends Base{
                 $this->add_control(
 			'input_bg_color',
 			[
-                        'label' => __( 'Background Color', 'ultraaddons' ),
+                        'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::COLOR,
                         'default' => '',
                         'selectors' => [
@@ -438,7 +439,7 @@ class WeForms extends Base{
 		$this->add_control(
 			'text_height',
 			[
-				'label' => esc_html__( 'Input Text Height', 'ultraaddons' ),
+				'label' => esc_html__( 'Input Text Height', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'range' => [
@@ -472,7 +473,7 @@ class WeForms extends Base{
         $this->add_control(
 			'textarea_height',
 			[
-				'label' => esc_html__( 'Textarea Height', 'ultraaddons' ),
+				'label' => esc_html__( 'Textarea Height', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'range' => [
@@ -498,31 +499,31 @@ class WeForms extends Base{
                 $this->start_controls_section(
                         'ua_section_weform_submit_button_styles',
                         [
-                            'label' => esc_html__('Submit Button', 'ultraaddons'),
+                            'label' => esc_html__('Submit Button', 'ultraaddons-elementor-lite'),
                             'tab' => Controls_Manager::TAB_STYLE,
                         ]
                     );
                     $this->add_responsive_control(
                         'ua_weform_submit_btn_alignment',
                         [
-                            'label' => esc_html__('Button Alignment', 'ultraaddons'),
+                            'label' => esc_html__('Button Alignment', 'ultraaddons-elementor-lite'),
                             'type' => Controls_Manager::CHOOSE,
                             'label_block' => true,
                             'options' => [
                                 'default' => [
-                                    'title' => __('Default', 'ultraaddons'),
+                                    'title' => __('Default', 'ultraaddons-elementor-lite'),
                                     'icon' => ' eicon-ban',
                                 ],
                                 'left' => [
-                                    'title' => esc_html__('Left', 'ultraaddons'),
+                                    'title' => esc_html__('Left', 'ultraaddons-elementor-lite'),
                                     'icon' => 'eicon-text-align-left',
                                 ],
                                 'center' => [
-                                    'title' => esc_html__('Center', 'ultraaddons'),
+                                    'title' => esc_html__('Center', 'ultraaddons-elementor-lite'),
                                     'icon' => 'eicon-text-align-center',
                                 ],
                                 'right' => [
-                                    'title' => esc_html__('Right', 'ultraaddons'),
+                                    'title' => esc_html__('Right', 'ultraaddons-elementor-lite'),
                                     'icon' => 'eicon-text-align-right',
                                 ],
                             ],
@@ -536,7 +537,7 @@ class WeForms extends Base{
                     $this->add_responsive_control(
                         'ua_weform_submit_btn_width',
                         [
-                            'label' => esc_html__('Button Width', 'ultraaddons'),
+                            'label' => esc_html__('Button Width', 'ultraaddons-elementor-lite'),
                             'type' => Controls_Manager::SLIDER,
                             'size_units' => ['px', 'em', '%'],
                             'range' => [
@@ -571,7 +572,7 @@ class WeForms extends Base{
                     $this->add_responsive_control(
                         'ua_weform_submit_btn_margin',
                         [
-                            'label' => esc_html__('Margin', 'ultraaddons'),
+                            'label' => esc_html__('Margin', 'ultraaddons-elementor-lite'),
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => ['px', 'em', '%'],
                             'selectors' => [
@@ -583,7 +584,7 @@ class WeForms extends Base{
                     $this->add_responsive_control(
                         'ua_weform_submit_btn_padding',
                         [
-                            'label' => esc_html__('Padding', 'ultraaddons'),
+                            'label' => esc_html__('Padding', 'ultraaddons-elementor-lite'),
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => ['px', 'em', '%'],
                             'selectors' => [
@@ -594,12 +595,12 @@ class WeForms extends Base{
                     
                     $this->start_controls_tabs('ua_weform_submit_button_tabs');
                     
-                    $this->start_controls_tab('normal', ['label' => esc_html__('Normal', 'ultraaddons')]);
+                    $this->start_controls_tab('normal', ['label' => esc_html__('Normal', 'ultraaddons-elementor-lite')]);
                     
                     $this->add_control(
                         'ua_weform_submit_btn_text_color',
                         [
-                            'label' => esc_html__('Text Color', 'ultraaddons'),
+                            'label' => esc_html__('Text Color', 'ultraaddons-elementor-lite'),
                             'type' => Controls_Manager::COLOR,
                             'selectors' => [
                                 '{{WRAPPER}} .ua-weforms ul.wpuf-form .wpuf-submit input[type="submit"]' => 'color: {{VALUE}};',
@@ -610,7 +611,7 @@ class WeForms extends Base{
                     $this->add_control(
                         'ua_weform_submit_btn_background_color',
                         [
-                            'label' => esc_html__('Background Color', 'ultraaddons'),
+                            'label' => esc_html__('Background Color', 'ultraaddons-elementor-lite'),
                             'type' => Controls_Manager::COLOR,
                             'selectors' => [
                                 '{{WRAPPER}} .ua-weforms ul.wpuf-form .wpuf-submit input[type="submit"]' => 'background-color: {{VALUE}};',
@@ -629,7 +630,7 @@ class WeForms extends Base{
                     $this->add_control(
                         'ua_weform_submit_btn_border_radius',
                         [
-                            'label' => esc_html__('Border Radius', 'ultraaddons'),
+                            'label' => esc_html__('Border Radius', 'ultraaddons-elementor-lite'),
                             'type' => Controls_Manager::SLIDER,
                             'range' => [
                                 'px' => [
@@ -644,12 +645,12 @@ class WeForms extends Base{
                     
                     $this->end_controls_tab();
                     
-                    $this->start_controls_tab('ua_weform_submit_btn_hover', ['label' => esc_html__('Hover', 'ultraaddons')]);
+                    $this->start_controls_tab('ua_weform_submit_btn_hover', ['label' => esc_html__('Hover', 'ultraaddons-elementor-lite')]);
                     
                     $this->add_control(
                         'ua_weform_submit_btn_hover_text_color',
                         [
-                            'label' => esc_html__('Text Color', 'ultraaddons'),
+                            'label' => esc_html__('Text Color', 'ultraaddons-elementor-lite'),
                             'type' => Controls_Manager::COLOR,
                             'selectors' => [
                                 '{{WRAPPER}} .ua-weforms ul.wpuf-form .wpuf-submit input[type="submit"]:hover' => 'color: {{VALUE}};',
@@ -660,7 +661,7 @@ class WeForms extends Base{
                     $this->add_control(
                         'ua_weform_submit_btn_hover_background_color',
                         [
-                            'label' => esc_html__('Background Color', 'ultraaddons'),
+                            'label' => esc_html__('Background Color', 'ultraaddons-elementor-lite'),
                             'type' => Controls_Manager::COLOR,
                             'selectors' => [
                                 '{{WRAPPER}} .ua-weforms ul.wpuf-form .wpuf-submit input[type="submit"]:hover' => 'background-color: {{VALUE}};',
@@ -671,7 +672,7 @@ class WeForms extends Base{
                     $this->add_control(
                         'ua_weform_submit_btn_hover_border_color',
                         [
-                            'label' => esc_html__('Border Color', 'ultraaddons'),
+                            'label' => esc_html__('Border Color', 'ultraaddons-elementor-lite'),
                             'type' => Controls_Manager::COLOR,
                             'selectors' => [
                                 '{{WRAPPER}} .ua-weforms ul.wpuf-form .wpuf-submit input[type="submit"]:hover' => 'border-color: {{VALUE}};',
@@ -720,7 +721,7 @@ class WeForms extends Base{
         <?php 
         if (!empty($form_id)):
         ?>
-        <div <?php echo $this->get_render_attribute_string( 'ua_weforms_class' );?>>
+        <div <?php echo esc_attr( $this->get_render_attribute_string( 'ua_weforms_class' ) );?>>
                 <?php
                 echo do_shortcode(
                         '[weforms id="'. $form_id .'" ]'
@@ -729,7 +730,7 @@ class WeForms extends Base{
         </div>
         <?php 
         else:
-         echo "<div class='ua-alert'>" . esc_html__( "Please select weForms.", 'ultraaddons' ) . "</div>";
+         echo "<div class='ua-alert'>" . esc_html__( "Please select weForms.", 'ultraaddons-elementor-lite' ) . "</div>";
         endif;
         }
 }

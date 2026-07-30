@@ -109,7 +109,7 @@ class Conditional_Content
 		$element->start_controls_section(
 			'_ua_condc_title',
 			[
-				'label' => __( 'Conditional Content', 'ultraaddons' ) . ultraaddons_icon_markup(),
+				'label' => __( 'Conditional Content', 'ultraaddons-elementor-lite' ) . ultraaddons_icon_markup(),
 				'tab'   => $tabs,
 			]
 		);
@@ -119,10 +119,10 @@ class Conditional_Content
 		$element->add_control(
 			'_ua_condc_switch',
 			[
-				'label' => esc_html__( 'Apply Conidtion', 'ultraaddons' ),
+				'label' => esc_html__( 'Apply Conidtion', 'ultraaddons-elementor-lite' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'On', 'ultraaddons' ),
-				'label_off' => esc_html__( 'Off', 'ultraaddons' ),
+				'label_on' => esc_html__( 'On', 'ultraaddons-elementor-lite' ),
+				'label_off' => esc_html__( 'Off', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'on',
 				'default' => 'off',
 				'prefix_class'=> 'ua-conditional-content-'
@@ -132,13 +132,13 @@ class Conditional_Content
 		$element->add_control(
 			'_ua_condc_visibility',
 			[
-				'label' => esc_html__( 'Content/Section Visibility', 'plugin-name' ),
+				'label' => esc_html__( 'Content/Section Visibility', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'hide',
 				'label_block' => true,
 				'options' => [
-					'show'  => esc_html__( 'Show', 'plugin-name' ),
-					'hide' => esc_html__( 'Hide', 'plugin-name' ),
+					'show'  => esc_html__( 'Show', 'ultraaddons-elementor-lite' ),
+					'hide' => esc_html__( 'Hide', 'ultraaddons-elementor-lite' ),
 				],
 				'condition' => [
                     '_ua_condc_switch'  => ['on'],
@@ -149,10 +149,10 @@ class Conditional_Content
 		$element->add_control(
 			'_ua_condc_post_ID',
 			[
-				'label' => __( 'Post ID','ultraaddons' ),
+				'label' => __( 'Post ID','ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => '',
-				'placeholder' => __( 'Enter your POST ID (Optional)','ultraaddons' ),
+				'placeholder' => __( 'Enter your POST ID (Optional)','ultraaddons-elementor-lite' ),
 				'label_block' => true,
 				'condition' => [
                     '_ua_condc_switch'  => ['on'],
@@ -163,10 +163,10 @@ class Conditional_Content
 		$element->add_control(
 			'_ua_condc_user_role',
 			[
-				'label' => __( 'User Role','ultraaddons' ),
+				'label' => __( 'User Role','ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => '',
-				'placeholder' => __( 'Enter your User ID (Optional)','ultraaddons' ),
+				'placeholder' => __( 'Enter your User ID (Optional)','ultraaddons-elementor-lite' ),
 				'label_block' => true,
 				'condition' => [
                     '_ua_condc_switch'  => ['on'],
@@ -180,10 +180,10 @@ class Conditional_Content
 		$repeater->add_control(
 			'_ua_condc_post_ID',
 			[
-				'label' => __( 'Post ID','ultraaddons' ),
+				'label' => __( 'Post ID','ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => '',
-				'placeholder' => __( 'Enter your POST ID (Optional)','ultraaddons' ),
+				'placeholder' => __( 'Enter your POST ID (Optional)','ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
@@ -191,10 +191,10 @@ class Conditional_Content
 		$repeater->add_control(
 			'_ua_condc_user_ID',
 			[
-				'label' => __( 'User ID','ultraaddons' ),
+				'label' => __( 'User ID','ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => '',
-				'placeholder' => __( 'Enter your User ID (Optional)','ultraaddons' ),
+				'placeholder' => __( 'Enter your User ID (Optional)','ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
@@ -202,15 +202,15 @@ class Conditional_Content
 		$repeater->add_control(
 			'_ua_condc_post_switch',
 			[
-				'label' => esc_html__( 'Visibility', 'ultraaddons' ),
+				'label' => esc_html__( 'Visibility', 'ultraaddons-elementor-lite' ),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'show' => [
-						'title' => esc_html__( 'Visible', 'ultraaddons' ),
+						'title' => esc_html__( 'Visible', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-preview-medium',
 					],
 					'hide' => [
-						'title' => esc_html__( 'Hidden', 'ultraaddons' ),
+						'title' => esc_html__( 'Hidden', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-editor-close',
 					],
 				],
@@ -222,7 +222,7 @@ class Conditional_Content
 		$element->add_control(
             '_ua_condc_options',
             [
-                'label'       => __('Conditions','ultraaddons'),
+                'label'       => __('Conditions','ultraaddons-elementor-lite'),
                 'type'        => \Elementor\Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
                 'default'     => [
@@ -241,9 +241,9 @@ class Conditional_Content
 		$element->add_control(
 			'_ua_condc_title_note',
 			[
-				'label' => esc_html__( 'Important Note', 'ultraaddons' ),
+				'label' => esc_html__( 'Important Note', 'ultraaddons-elementor-lite' ),
 				'type' => \Elementor\Controls_Manager::RAW_HTML,
-				'raw' => esc_html__( 'You able to set condition for Post/Page ID or user ID base.', 'ultraaddons' ),
+				'raw' => esc_html__( 'You able to set condition for Post/Page ID or user ID base.', 'ultraaddons-elementor-lite' ),
 				'content_classes' => 'ua-note',
 			]
 		);

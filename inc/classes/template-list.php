@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * @since 1.0.1.0
  */
 class Template_List {
-    public $templates = [];
+    public $ultraaddons_templates = [];
     
     public function __construct() {
         
@@ -21,11 +21,11 @@ class Template_List {
     
     public function get_templates() {
 
-        $args = array(
+        $ultraaddons_args = array(
             'post_type'     =>  HF_Post::$post_type,
             'post_status'   =>  'publish'
         );
-        $query = get_posts( $args );
+        $query = get_posts( $ultraaddons_args );
 
         // Check, If post not found , Direct return main choicese
         if( empty( $query ) ){

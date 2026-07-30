@@ -29,6 +29,7 @@ class Loader {
      */
     public $errors = array();
     
+    public $widgetsArray = array();
     /**
      * Widget List, it will come from an another file.
      * currently we insert at the bottom of this class
@@ -37,7 +38,7 @@ class Loader {
      * 
      * @access public
      */
-    public $widgetsArray = array();
+    public $ultraaddons_widgetsArray = array();
 
 
     public function __construct() {
@@ -60,43 +61,14 @@ class Loader {
         $this->core_load_on_init();
         
         /**
-         * Widget has come from Plugin/ultraaddons-elementor-lite/inc/core/widgets_array.php file
-         * Controll by Widgets_Manager Object/Class
+         * Widget array is deferred to the `init` hook (priority 5) so that
+         * __() calls inside widgets-array.php happen after `after_setup_theme`
+         * fires, preventing the WP 6.7 _load_textdomain_just_in_time notice.
          * 
-         * In that file, The Array's Each Item array formate like bellow:
-         * ******************************
-         * 'Button'=> [
-         *   'name'  => __( 'Button', 'ultraaddons' ),
-         *   ],
-         * ******************************
-         * 
-         * ### To that Array ####
-         * 
-         * Array key will be name of Class. and name should be like file name
-         * Actually If Aray key: Advance_Title, file name shold be: advance-title.php in widgets folder and advance-title.css in css folder
-         * 
-         * ****************************
-         * and Each $widgets['name'] will be title of the widgets
-         * Actually we will handle also it from database.
-         * 
-         * Previous Code of WidgetArray is:
-         * $widgetsArray = include ULTRA_ADDONS_DIR . 'inc/core/list/widgets-array.php';
+         * @since 2.0.2
          */
-       
-        $widgetsArray = Widgets_Manager::activeWidgets();
-        
-        if( ! is_array( $widgetsArray ) ){
-            return;
-        }
+        add_action( 'init', [ $this, 'setup_widgets_array' ], 5 );
 
-        /**
-         * Assigning $this->widgetsArray Array
-         * Over Constructor
-         * 
-         * @access public
-         */
-        $this->widgetsArray = $widgetsArray;
-             
         //Register and Including Base and common Class file
         add_action( 'elementor/widgets/widgets_registered', [ $this, 'register' ],1 );
 
@@ -133,6 +105,20 @@ class Loader {
     
 
     /**
+     * Populate the widgets array on `init` hook (priority 5) so that
+     * translation calls inside widgets-array.php happen after
+     * `after_setup_theme` has fired (WP 6.7 notice prevention).
+     *
+     * @since 2.0.2
+     */
+    public function setup_widgets_array() {
+        $this->widgetsArray = Widgets_Manager::activeWidgets();
+        if ( ! is_array( $this->widgetsArray ) ) {
+            $this->widgetsArray = [];
+        }
+    }
+
+    /**
      * Included Base Class for our All Widgets
      * will include button common file here
      * 
@@ -157,7 +143,18 @@ class Loader {
      * @since 1.0.1.1
      */
     public function core_load_on_init(){
-        \UltraAddons\Core\Extensions_Manager::init();
+        /**
+         * Extensions_Manager::init() is deferred to the `init` hook because
+         * extensions-array.php contains top-level __() calls that would
+         * trigger the WP 6.7 _load_textdomain_just_in_time notice if run
+         * during `plugins_loaded`.
+         *
+         * @since 2.0.2
+         */
+        add_action( 'init', function() {
+            \UltraAddons\Core\Extensions_Manager::init();
+        }, 1 );
+
         \UltraAddons\Core\Header_Footer::init();
         \UltraAddons\Core\Icons_Manager::init();
         
@@ -230,12 +227,12 @@ class Loader {
     public function init_widgets() {
 
         foreach( $this->widgetsArray as $widget_key => $widget ){
-            $name = $widget_key;//isset( $widget['name'] ) ? $widget['name'] : '';
+            $ultraaddons_name = $widget_key;//isset( $widget['name'] ) ? $widget['name'] : '';
             
-            $name = str_replace('_','-', $name);
+            $ultraaddons_name = str_replace('_','-', $ultraaddons_name);
             
-            $class_name = str_replace( '-','_', $name );
-            $class_name =  '\UltraAddons\Widget\\' . ucwords( $class_name, '_' );
+            $ultraaddons_class_name = str_replace( '-','_', $ultraaddons_name );
+            $ultraaddons_class_name =  '\UltraAddons\Widget\\' . ucwords( $ultraaddons_class_name, '_' );
 
 
             /**
@@ -247,18 +244,18 @@ class Loader {
              * widgets -> widget | because: in name space, available widget, not widgets
              * ****************************
              */
-//            $file = ULTRA_ADDONS_DIR . 'inc/widgets/'. strtolower( $name ) . '.php';
+//            $file = ULTRA_ADDONS_DIR . 'inc/widgets/'. strtolower( $ultraaddons_name ) . '.php';
 //            $file = realpath( $file );
 //            if( is_readable( $file ) ){
 //                include_once $file;
 //            }else{
-//                $error = esc_html__( "The file ( %s ) of [%s] Class is not founded.", 'ultraaddons' );
+//                $error = esc_html__( "The file ( %s ) of [%s] Class is not founded.", 'ultraaddons-elementor-lite' );
 //                $this->errors[$widget_key] = $error;
-//                //printf( $error, $file, $name );
+//                //printf( $error, $file, $ultraaddons_name );
 //            }
 
-            if( $class_name && class_exists( $class_name ) ){
-                ultraaddons_elementor()->widgets_manager->register_widget_type( new $class_name() );
+            if( $ultraaddons_class_name && class_exists( $ultraaddons_class_name ) ){
+                ultraaddons_elementor()->widgets_manager->register_widget_type( new $ultraaddons_class_name() );
             }
             
             
@@ -295,7 +292,7 @@ class Loader {
 
         $handle = 'ultraaddons-icon-font';
         $src = ULTRA_ADDONS_ASSETS . 'icons/ultraaddons/css/ultraaddons.css';
-        wp_register_style( $handle, $src );//, $deps, $ver, $media
+        wp_register_style( $handle, $src, array(), ULTRA_ADDONS_VERSION );//, $deps, $ver, $media
         wp_enqueue_style( $handle );
 
 
@@ -312,7 +309,7 @@ class Loader {
          * @author Saiful Islam <codersaiful@gmail.com>
          * @since 1.1.0.9
          */
-        wp_register_style( 'ultraaddons-extra-icons-style', ULTRA_ADDONS_ASSETS . 'icons/ultra-addons-extra/css/fontello.css' );
+        wp_register_style( 'ultraaddons-extra-icons-style', ULTRA_ADDONS_ASSETS . 'icons/ultra-addons-extra/css/fontello.css', array(), ULTRA_ADDONS_VERSION );
         wp_enqueue_style( 'ultraaddons-extra-icons-style' );
     }
 
@@ -372,7 +369,7 @@ class Loader {
         
                 
         //Animate CSS Load
-        wp_enqueue_style('animate', ULTRA_ADDONS_ASSETS . 'vendor/css/animate.min.css' );
+        wp_enqueue_style('animate', ULTRA_ADDONS_ASSETS . 'vendor/css/animate.min.css', array(), ULTRA_ADDONS_VERSION );
 
         $elementor = \Elementor\Plugin::instance();
         $elementor->frontend->enqueue_styles();
@@ -381,7 +378,9 @@ class Loader {
 
 		if ( class_exists( '\ElementorPro\Plugin' ) ) {
 			$elementor_pro = \ElementorPro\Plugin::instance();
-			$elementor_pro->enqueue_styles();
+            if(method_exists($elementor_pro, 'enqueue_styles')){
+                $elementor_pro->enqueue_styles();
+            }
 		}
         
 
@@ -390,7 +389,7 @@ class Loader {
          * 
          * @since 1.0.0.0
          */
-        wp_register_style( 'ultraaddons-widgets-style', ULTRA_ADDONS_ASSETS . 'css/widgets.css' );
+        wp_register_style( 'ultraaddons-widgets-style', ULTRA_ADDONS_ASSETS . 'css/widgets.css', array(), ULTRA_ADDONS_VERSION );
         wp_enqueue_style( 'ultraaddons-widgets-style' );
     }
     
@@ -415,7 +414,7 @@ class Loader {
          * Mainly I have added an icon for our Elementor Widget
          * over this CSS file
          */
-        wp_register_style( 'ultraaddons-screen-style', ULTRA_ADDONS_ASSETS . 'css/elementor-style.css' );
+        wp_register_style( 'ultraaddons-screen-style', ULTRA_ADDONS_ASSETS . 'css/elementor-style.css', array(), ULTRA_ADDONS_VERSION );
         wp_enqueue_style( 'ultraaddons-screen-style' );
     }
 
@@ -429,18 +428,18 @@ class Loader {
         
         foreach( $this->widgetsArray as $widget_key => $widget ){
 
-            $name = $widget_key;//isset( $widget['name'] ) ? $widget['name'] : '';
+            $ultraaddons_name = $widget_key;//isset( $widget['name'] ) ? $widget['name'] : '';
 
-            $name = str_replace('_','-', $name);
-            $name = strtolower( $name );
-            $handle = 'ultraaddons-' . $name;
+            $ultraaddons_name = str_replace('_','-', $ultraaddons_name);
+            $ultraaddons_name = strtolower( $ultraaddons_name );
+            $handle = 'ultraaddons-' . $ultraaddons_name;
             
             $deps = ['ultraaddons-widgets-style'];
             $ver  = ULTRA_ADDONS_VERSION;
             $media= 'all';
             
-            $src = ULTRA_ADDONS_ASSETS . 'css/widgets/' . strtolower( $name ) . '.css';
-            $css_file_dir = ULTRA_ADDONS_DIR . 'assets/css/widgets/' . strtolower( $name ) . '.css';
+            $src = ULTRA_ADDONS_ASSETS . 'css/widgets/' . strtolower( $ultraaddons_name ) . '.css';
+            $css_file_dir = ULTRA_ADDONS_DIR . 'assets/css/widgets/' . strtolower( $ultraaddons_name ) . '.css';
             
             /**
              * CSS file load based on Element/Widget
@@ -455,8 +454,8 @@ class Loader {
             $pass_css = false; //Actually if found CSS file in Pro folder, we will direct pass
             if( defined( 'ULTRA_ADDONS_PRO_ASSETS' ) && isset( $widget['is_pro'] ) && $widget['is_pro'] ){
               
-                $src_pro = ULTRA_ADDONS_PRO_ASSETS . 'css/widgets/' . strtolower( $name ) . '.css';
-                $css_file_dir_pro = ULTRA_ADDONS_PRO_DIR . 'assets/css/widgets/' . strtolower( $name ) . '.css';
+                $src_pro = ULTRA_ADDONS_PRO_ASSETS . 'css/widgets/' . strtolower( $ultraaddons_name ) . '.css';
+                $css_file_dir_pro = ULTRA_ADDONS_PRO_DIR . 'assets/css/widgets/' . strtolower( $ultraaddons_name ) . '.css';
 
                 if( is_file( $css_file_dir_pro ) ){
                     //Direct pass as we founded it in Pro folder
@@ -503,16 +502,16 @@ class Loader {
      * @since 1.0.0
      */
     public function add_categories( $elements_manager ) {
-        $elements_manager->add_category('ultraaddons', 
+        $elements_manager->add_category('ultraaddons-elementor-lite', 
                 [
-                    'title'     => esc_html__( 'UltraAddons', 'ultraaddons' ), 
+                    'title'     => esc_html__( 'UltraAddons', 'ultraaddons-elementor-lite' ), 
                     'icon'      => 'uicon-ultraaddons'
                 ]
         );
         
         $elements_manager->add_category('ultraaddons-wc', 
                 [
-                    'title'     => esc_html__( 'Ultra WooCommerce', 'ultraaddons' ), 
+                    'title'     => esc_html__( 'Ultra WooCommerce', 'ultraaddons-elementor-lite' ), 
                     'icon'      => 'uicon-ultraaddons'
                 ]
         );
@@ -523,4 +522,4 @@ class Loader {
 
 }
 
-new Loader();//( $widgetsArray );
+new Loader();//( $ultraaddons_widgetsArray );

@@ -1,5 +1,7 @@
 <?php
-
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly.
+}
 if ( ! function_exists( 'wc_set_loop_prop' ) ) {
 	return;
 }
@@ -93,167 +95,167 @@ extract(
 );
 
 // For running shortcode
-if ( is_string( $title_link ) ) {
-	$title_link = json_decode( $title_link, true );
+if ( is_string( $ultraaddons_title_link ) ) {
+	$ultraaddons_title_link = json_decode( $ultraaddons_title_link, true );
 }
-if ( is_string( $visible_options ) ) {
-	$visible_options = explode( ',', $visible_options );
+if ( is_string( $ultraaddons_visible_options ) ) {
+	$ultraaddons_visible_options = explode( ',', $ultraaddons_visible_options );
 }
-if ( is_string( $product_labels ) ) {
-	$product_labels = explode( ',', $product_labels );
+if ( is_string( $ultraaddons_product_labels ) ) {
+	$ultraaddons_product_labels = explode( ',', $ultraaddons_product_labels );
 }
-if ( is_string( $view_more_icon ) ) {
-	$view_more_icon = json_decode( $view_more_icon, true );
+if ( is_string( $ultraaddons_view_more_icon ) ) {
+	$ultraaddons_view_more_icon = json_decode( $ultraaddons_view_more_icon, true );
 }
 
-$output       = '';
-$heading_html = '';
+$ultraaddons_output       = '';
+$ultraaddons_heading_html = '';
 
-$more_atts = array();
+$ultraaddons_more_atts = array();
 
 if ( $title ) {
-	$heading_html = $title;
+	$ultraaddons_heading_html = $title;
 
-	if ( $title_link && isset( $title_link['url'] ) && $title_link['url'] ) {
-		$heading_html = sprintf( '<a href="%1$s"' . ( $title_link['is_external'] ? ' target="nofollow"' : '' ) . ( $title_link['nofollow'] ? ' rel="_blank"' : '' ) . '>%2$s</a>', esc_url( $title_link['url'] ), $heading_html );
+	if ( $ultraaddons_title_link && isset( $ultraaddons_title_link['url'] ) && $ultraaddons_title_link['url'] ) {
+		$ultraaddons_heading_html = sprintf( '<a href="%1$s"' . ( $ultraaddons_title_link['is_external'] ? ' target="nofollow"' : '' ) . ( $ultraaddons_title_link['nofollow'] ? ' rel="_blank"' : '' ) . '>%2$s</a>', esc_url( $ultraaddons_title_link['url'] ), $ultraaddons_heading_html );
 	}
 
-	$heading_html = '<h2 class="heading-title">' . $heading_html . '</h2>';
+	$ultraaddons_heading_html = '<h2 class="heading-title">' . $ultraaddons_heading_html . '</h2>';
 }
 if ( $desc ) {
-	$heading_html .= '<p class="heading-desc">' . $desc . '</p>';
+	$ultraaddons_heading_html .= '<p class="heading-desc">' . $desc . '</p>';
 }
 
-if ( $heading_html ) {
-	$heading_html = '<div class="title-wrapper">' . $heading_html . '</div>';
+if ( $ultraaddons_heading_html ) {
+	$ultraaddons_heading_html = '<div class="title-wrapper">' . $ultraaddons_heading_html . '</div>';
 }
 
-$cat_ids = array();
+$ultraaddons_cat_ids = array();
 
-if ( $category ) {
+if ( $ultraaddons_category ) {
 
-	if ( ! is_array( $category ) ) {
-		$category = explode( ',', $category );
+	if ( ! is_array( $ultraaddons_category ) ) {
+		$ultraaddons_category = explode( ',', $ultraaddons_category );
 	}
 
-	for ( $i = 0; $i < count( $category );  $i ++ ) {
-		if ( '0' !== $category[ $i ] && ! intval( $category[ $i ] ) ) {
-			$category[ $i ] = get_term_by( 'slug', $category[ $i ], 'product_cat' );
-			$category[ $i ] = $category[ $i ] ? $category[ $i ]->term_id : -1;
+	for ( $ultraaddons_i = 0; $ultraaddons_i < count( $ultraaddons_category );  $ultraaddons_i ++ ) {
+		if ( '0' !== $ultraaddons_category[ $ultraaddons_i ] && ! intval( $ultraaddons_category[ $ultraaddons_i ] ) ) {
+			$ultraaddons_category[ $ultraaddons_i ] = get_term_by( 'slug', $ultraaddons_category[ $ultraaddons_i ], 'product_cat' );
+			$ultraaddons_category[ $ultraaddons_i ] = $ultraaddons_category[ $ultraaddons_i ] ? $ultraaddons_category[ $ultraaddons_i ]->term_id : -1;
 		}
-		if ( get_term( $category[ $i ], 'product_cat' ) ) {
-			$cat_ids[] = $category[ $i ];
+		if ( get_term( $ultraaddons_category[ $ultraaddons_i ], 'product_cat' ) ) {
+			$ultraaddons_cat_ids[] = $ultraaddons_category[ $ultraaddons_i ];
 		}
 	}
 }
 
 if ( $filter ) {
-	$terms     = array();
-	$term_args = array(
+	$ultraaddons_terms     = array();
+	$ultraaddons_term_args = array(
 		'taxonomy'   => 'product_cat',
 		'hide_empty' => boolval( $hide_empty_cat ),
 	);
-	if ( 1 == count( $cat_ids ) ) {
-		$term_args['parent'] = $cat_ids[0];
-	} elseif ( 1 < count( $cat_ids ) ) {
-		$term_args['include'] = implode( ',', $cat_ids );
-		$term_args['orderby'] = 'include';
+	if ( 1 == count( $ultraaddons_cat_ids ) ) {
+		$ultraaddons_term_args['parent'] = $ultraaddons_cat_ids[0];
+	} elseif ( 1 < count( $ultraaddons_cat_ids ) ) {
+		$ultraaddons_term_args['include'] = implode( ',', $ultraaddons_cat_ids );
+		$ultraaddons_term_args['orderby'] = 'include';
 	} else {
-		$term_args['parent'] = 0;
+		$ultraaddons_term_args['parent'] = 0;
 	}
 
-	$terms = get_terms( 'product_cat', $term_args );
+	$ultraaddons_terms = get_terms( $ultraaddons_term_args );
 
-	if ( count( $terms ) > 1 ) {
-		$slugs         = array();
-		$category_html = '';
+	if ( count( $ultraaddons_terms ) > 1 ) {
+		$ultraaddons_slugs         = array();
+		$ultraaddons_category_html = '';
 
-		do_action( 'ua_save_used_widget', 'tabs' );
+		do_action( 'ultraaddons_save_used_widget', 'tabs' );
 
-		foreach ( $terms as $term_cat ) {
-			$id             = $term_cat->term_id;
-			$name           = $term_cat->name;
-			$slug           = $term_cat->slug;
-			$slugs[]        = $slug;
-			$category_html .= '<li class="nav-item"><a href="' . esc_url( get_term_link( $id, 'product_cat' ) ) . '" class="' . esc_attr( $slug ) . '" data-filter=".' . esc_attr( $slug ) . '">' . esc_html( $name ) . '</a></li>';
+		foreach ( $ultraaddons_terms as $ultraaddons_term_cat ) {
+			$id             = $ultraaddons_term_cat->term_id;
+			$ultraaddons_name           = $ultraaddons_term_cat->name;
+			$ultraaddons_slug           = $ultraaddons_term_cat->slug;
+			$ultraaddons_slugs[]        = $ultraaddons_slug;
+			$ultraaddons_category_html .= '<li class="nav-item"><a href="' . esc_url( get_term_link( $id, 'product_cat' ) ) . '" class="' . esc_attr( $ultraaddons_slug ) . '" data-filter=".' . esc_attr( $ultraaddons_slug ) . '">' . esc_html( $ultraaddons_name ) . '</a></li>';
 		}
-		$category_html  = '<ul class="nav nav-filter cat-filter' . ( 'right' == $filter_pos ? ' ml-auto' : '' ) . '"><li class="nav-item active nav-item-all"><a href="#" data-filter="' . implode( ',', $slugs ) . '">' . esc_html__( 'All', 'ultraaddons' ) . '</a></li>' . $category_html;
-		$category_html .= '</ul>';
+		$ultraaddons_category_html  = '<ul class="nav nav-filter cat-filter' . ( 'right' == $filter_pos ? ' ml-auto' : '' ) . '"><li class="nav-item active nav-item-all"><a href="#" data-filter="' . implode( ',', $ultraaddons_slugs ) . '">' . esc_html__( 'All', 'ultraaddons-elementor-lite' ) . '</a></li>' . $ultraaddons_category_html;
+		$ultraaddons_category_html .= '</ul>';
 
 		if ( 'top' == $filter_pos || 'left' == $filter_pos ) {
-			$output .= $category_html;
-			if ( $heading_html ) {
-				$output .= $heading_html;
+			$ultraaddons_output .= $ultraaddons_category_html;
+			if ( $ultraaddons_heading_html ) {
+				$ultraaddons_output .= $ultraaddons_heading_html;
 			}
 		} else {
-			if ( $heading_html ) {
-				$output .= $heading_html;
+			if ( $ultraaddons_heading_html ) {
+				$ultraaddons_output .= $ultraaddons_heading_html;
 			}
-			$output .= $category_html;
+			$ultraaddons_output .= $ultraaddons_category_html;
 		}
 
 		if ( 'left' == $filter_pos || 'right' == $filter_pos ) {
-			$output = '<div class="heading heading-with-filter justify-content-between mb-0">' . $output . '</div>';
+			$ultraaddons_output = '<div class="heading heading-with-filter justify-content-between mb-0">' . $ultraaddons_output . '</div>';
 		} elseif ( ! $title_pos ) {
-			$output = '<div class="heading d-block">' . $output . '</div>';
+			$ultraaddons_output = '<div class="heading d-block">' . $ultraaddons_output . '</div>';
 		}
 		if ( $title_pos ) {
-			$output = '<div class="heading side' . ( 'right' == $title_pos ? ' order-last' : '' ) . '">' . $output . '</div>';
+			$ultraaddons_output = '<div class="heading side' . ( 'right' == $title_pos ? ' order-last' : '' ) . '">' . $ultraaddons_output . '</div>';
 		}
 	}
 } else {
-	if ( $heading_html ) {
-		$output .= $heading_html;
+	if ( $ultraaddons_heading_html ) {
+		$ultraaddons_output .= $ultraaddons_heading_html;
 	}
 }
 
-$output = '<div class="ua-product-wrapper' . ( $title_pos ? ' d-flex' : '' ) . '">' . $output;
+$ultraaddons_output = '<div class="ua-product-wrapper' . ( $title_pos ? ' d-flex' : '' ) . '">' . $ultraaddons_output;
 
-$more_atts['columns'] = intval( $columns );
+$ultraaddons_more_atts['columns'] = intval( $columns );
 
 if ( 'featured' == $status ) {
-	$more_atts['visibility'] = 'featured';
+	$ultraaddons_more_atts['visibility'] = 'featured';
 } elseif ( 'on_sale' == $status ) {
-	$more_atts['on_sale'] = '1';
+	$ultraaddons_more_atts['on_sale'] = '1';
 } elseif ( 'pre_order' == $status ) {
-	$more_atts['visibility'] = 'pre_order';
+	$ultraaddons_more_atts['visibility'] = 'pre_order';
 }
 
 if ( isset( $total_sales ) && $total_sales ) {
 	if ( 'count' == $total_sales || 'percent' == $total_sales ) {
-		$more_atts['total_sales'] = $total_sales;
+		$ultraaddons_more_atts['total_sales'] = $total_sales;
 	}
 }
 
-$ids_filtered = '';
+$ultraaddons_ids_filtered = '';
 
-if ( $ids ) {
-	if ( ! is_array( $ids ) ) {
-		$ids = str_replace( ' ', '', $ids );
-		$ids = explode( ',', $ids );
+if ( $ultraaddons_ids ) {
+	if ( ! is_array( $ultraaddons_ids ) ) {
+		$ultraaddons_ids = str_replace( ' ', '', $ultraaddons_ids );
+		$ultraaddons_ids = explode( ',', $ultraaddons_ids );
 	}
-	for ( $i = 0; $i < count( $ids );  $i ++ ) {
-		if ( '0' !== $ids[ $i ] && ! intval( $ids[ $i ] ) ) {
+	for ( $ultraaddons_i = 0; $ultraaddons_i < count( $ultraaddons_ids );  $ultraaddons_i ++ ) {
+		if ( '0' !== $ultraaddons_ids[ $ultraaddons_i ] && ! intval( $ultraaddons_ids[ $ultraaddons_i ] ) ) {
 			if ( defined( 'ULTRAADDONS_VERSION' ) ) {
-				$ids[ $i ] = ua_get_post_id_by_name( 'product', $ids[ $i ] );
+				$ultraaddons_ids[ $ultraaddons_i ] = ua_get_post_id_by_name( 'product', $ultraaddons_ids[ $ultraaddons_i ] );
 			}
 		}
 	}
-	$ids_filtered = implode( ',', $ids );
+	$ultraaddons_ids_filtered = implode( ',', $ultraaddons_ids );
 }
 
-if ( $ids_filtered ) {
-	$more_atts['ids'] = esc_attr( $ids_filtered );
+if ( $ultraaddons_ids_filtered ) {
+	$ultraaddons_more_atts['ids'] = esc_attr( $ultraaddons_ids_filtered );
 	$orderby          = 'post__in';
 }
-if ( count( $cat_ids ) ) {
-	$more_atts['category'] = esc_attr( implode( ',', $cat_ids ) );
+if ( count( $ultraaddons_cat_ids ) ) {
+	$ultraaddons_more_atts['category'] = esc_attr( implode( ',', $ultraaddons_cat_ids ) );
 }
 if ( $orderby ) {
-	$more_atts['orderby'] = esc_attr( $orderby );
+	$ultraaddons_more_atts['orderby'] = esc_attr( $orderby );
 }
 if ( $order ) {
-	$more_atts['order'] = esc_attr( $order );
+	$ultraaddons_more_atts['order'] = esc_attr( $order );
 }
 if ( $order_from ) {
 	if ( 'custom' == $order_from && $order_from_date ) {
@@ -272,19 +274,19 @@ if ( $order_to ) {
 set_query_var( 'hide_out_date', $hide_out_date );
 
 if ( $status ) {
-	$more_atts['status'] = esc_attr( $status );
+	$ultraaddons_more_atts['status'] = esc_attr( $status );
 }
 
 if ( is_array( $count ) && 0 === $count['size'] ) {
-	echo $output . '</div>';
+	echo wp_kses_post( $ultraaddons_output ) . '</div>';
 	return;
 }
 
 if ( $count ) {
 	if ( is_array( $count ) ) {
-		$more_atts['per_page'] = intval( $count['size'] );
+		$ultraaddons_more_atts['per_page'] = intval( $count['size'] );
 	} else {
-		$more_atts['per_page'] = intval( $count );
+		$ultraaddons_more_atts['per_page'] = intval( $count );
 	}
 }
 
@@ -296,16 +298,16 @@ if ( $spacing ) {
 	}
 }
 
-if ( 'yes' == $out_stock_style ) {
-	$out_stock_style = 'text';
+if ( 'yes' == $ultraaddons_out_stock_style ) {
+	$ultraaddons_out_stock_style = 'text';
 } else {
-	$out_stock_style = '';
+	$ultraaddons_out_stock_style = '';
 }
 
 wc_set_loop_prop( 'load_more', esc_attr( $load_more ) );
-if ( 'button' == $load_more && ! $ids ) {
-	wc_set_loop_prop( 'view_more_label', esc_attr( $view_more_label ? $view_more_label : esc_html__( 'View more products', 'ultraaddons' ) ) );
-	wc_set_loop_prop( 'view_more_icon', esc_attr( $view_more_icon['value'] ) );
+if ( 'button' == $load_more && ! $ultraaddons_ids ) {
+	wc_set_loop_prop( 'view_more_label', esc_attr( $view_more_label ? $view_more_label : esc_html__( 'View more products', 'ultraaddons-elementor-lite' ) ) );
+	wc_set_loop_prop( 'view_more_icon', esc_attr( $ultraaddons_view_more_icon['value'] ) );
 	
 }
 wc_set_loop_prop( 'product_border', esc_attr( $product_border ) );
@@ -325,14 +327,14 @@ wc_set_loop_prop( 't_x_pos', $t_x_pos );
 wc_set_loop_prop( 't_y_pos', $t_y_pos );
 wc_set_loop_prop( 'product_hover', $product_hover );
 wc_set_loop_prop( 'product_vertical_animate', $product_vertical_animate );
-wc_set_loop_prop( 'product_show_op', $visible_options );
+wc_set_loop_prop( 'product_show_op', $ultraaddons_visible_options );
 wc_set_loop_prop( 'product_read_more', $product_read_more );
 wc_set_loop_prop( 'product_label_type', $product_label_type );
-wc_set_loop_prop( 'product_labels', $product_labels );
+wc_set_loop_prop( 'product_labels', $ultraaddons_product_labels );
 wc_set_loop_prop( 'quickview_pos', $quickview_pos );
 wc_set_loop_prop( 'wishlist_pos', $wishlist_pos );
 wc_set_loop_prop( 'wishlist_style', $wishlist_style );
-wc_set_loop_prop( 'out_stock_style', $out_stock_style );
+wc_set_loop_prop( 'out_stock_style', $ultraaddons_out_stock_style );
 wc_set_loop_prop( 'product_icon_hide', $product_icon_hide );
 wc_set_loop_prop( 'product_label_hide', $product_label_hide );
 wc_set_loop_prop( 'disable_product_out', $disable_product_out );
@@ -363,34 +365,34 @@ if ( 'yes' == $slider_auto_play ) {
 }
 wc_set_loop_prop( 'slider_center', 'yes' == $slider_center ? true : false );
 
-wc_set_loop_prop( 'extra_atts', $more_atts );
+wc_set_loop_prop( 'extra_atts', $ultraaddons_more_atts );
 
-if ( ! $ids && '' != $load_more ) {
-	$more_atts['paginate'] = 1;
+if ( ! $ultraaddons_ids && '' != $load_more ) {
+	$ultraaddons_more_atts['paginate'] = 1;
 }
 
 wc_set_loop_prop( 'page', 1 );
 
-$extra_atts = ' ';
-foreach ( $more_atts as $key => $value ) {
-	$extra_atts .= $key . '=' . json_encode( $value ) . ' ';
+$ultraaddons_extra_atts = ' ';
+foreach ( $ultraaddons_more_atts as $ultraaddons_key => $ultraaddons_value ) {
+	$ultraaddons_extra_atts .= $ultraaddons_key . '=' . json_encode( $ultraaddons_value ) . ' ';
 }
 
-do_action( 'ua_save_used_widget', 'products' );
+do_action( 'ultraaddons_save_used_widget', 'products' );
 if ( 'slider' == $layout_mode ) {
-	do_action( 'ua_save_used_widget', 'slider' );
+	do_action( 'ultraaddons_save_used_widget', 'slider' );
 }
 if ( $type ) {
-	if ( is_array( $visible_options ) && in_array( 'deal', $visible_options ) ) {
-		do_action( 'ua_save_used_widget', 'countdown' );
+	if ( is_array( $ultraaddons_visible_options ) && in_array( 'deal', $ultraaddons_visible_options ) ) {
+		do_action( 'ultraaddons_save_used_widget', 'countdown' );
 	}
 } else {
 	if ( defined( 'ULTRAADDONS_VERSION' ) && ( in_array( 'deal', get_option( 'product_show_op' ) ) || in_array( 'deal', get_option( 'public_product_show_op' ) ) ) ) {
-		do_action( 'ua_save_used_widget', 'countdown' );
+		do_action( 'ultraaddons_save_used_widget', 'countdown' );
 	}
 }
-$output .= do_shortcode( '[products ' . $extra_atts . ']' );
+$ultraaddons_output .= do_shortcode( '[products ' . $ultraaddons_extra_atts . ']' );
 
-$output .= '</div>';
+$ultraaddons_output .= '</div>';
 
-echo $output;
+echo wp_kses_post( $ultraaddons_output );

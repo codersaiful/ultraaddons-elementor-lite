@@ -14,18 +14,18 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class ready extends Base{
 
-    public function __construct($data = [], $args = null) {
-        parent::__construct($data, $args);
+    public function __construct($data = [], $ultraaddons_args = null) {
+        parent::__construct($data, $ultraaddons_args);
 
         //Naming of Args for Skill Chart
-        $name           = 'SkillChart';
+        $ultraaddons_name           = 'SkillChart';
         $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/js/easypiechart.js';
         $dependency     =  ['jquery'];//['jquery'];
         $version        = ULTRA_ADDONS_VERSION;
         $in_footer  = true;
 
-        wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $name );
+        wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
+        wp_enqueue_script( $ultraaddons_name );
     }
 	
 
@@ -55,7 +55,7 @@ class ready extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'post', 'page title', 'title' ];
+        return [ 'ultraaddons-elementor-lite', 'post', 'page title', 'title' ];
     }
     
     
@@ -85,7 +85,7 @@ class ready extends Base{
         $this->start_controls_section(
             'general_content',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );

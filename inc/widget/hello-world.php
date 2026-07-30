@@ -25,7 +25,7 @@ class Hello_World extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'heading', 'header', 'title' ];
+        return [ 'ultraaddons-elementor-lite', 'heading', 'header', 'title' ];
     }
 
     protected function render() {

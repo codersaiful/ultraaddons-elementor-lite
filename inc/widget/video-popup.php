@@ -27,31 +27,31 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Video_Popup extends Base{
 
-    public function __construct($data = [], $args = null) {
-        parent::__construct($data, $args);
+    public function __construct($data = [], $ultraaddons_args = null) {
+        parent::__construct($data, $ultraaddons_args);
 
           //Naming of Args for Modal-video
-          $name           = 'modal-video';
+          $ultraaddons_name           = 'modal-video';
           $js_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/modal-video/js/modal-video.min.js';
           $dependency     =  ['jquery'];//['jquery'];
           $version        = ULTRA_ADDONS_VERSION;
           $in_footer      = true;
   
-          wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-          wp_enqueue_script( $name );
+          wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
+          wp_enqueue_script( $ultraaddons_name );
 
-          $name           = 'front-end-modal-video';
+          $ultraaddons_name           = 'front-end-modal-video';
           $js_file_url    = ULTRA_ADDONS_ASSETS . 'js/frontend-video-popup.js';
           $dependency     =  ['jquery'];//['jquery'];
           $version        = ULTRA_ADDONS_VERSION;
           $in_footer      = true;
   
-          wp_register_script( $name, $js_file_url, $dependency, $version, $in_footer );
-          wp_enqueue_script( $name );
+          wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
+          wp_enqueue_script( $ultraaddons_name );
   
 
          //CSS file for dependency
-		$name           = 'modal-video';
+		$ultraaddons_name           = 'modal-video';
         $css_file_url    = ULTRA_ADDONS_ASSETS . 'vendor/modal-video/css/modal-video.min.css';
         $dependency     =  [];//kaj ta ses hoyni. pore abar try korte hobe.
         $version        = ULTRA_ADDONS_VERSION;
@@ -87,7 +87,7 @@ class Video_Popup extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons','ua', 'modal', 'video', 'popup','play' ];
+        return [ 'ultraaddons-elementor-lite','ua', 'modal', 'video', 'popup','play' ];
     }
     
     
@@ -114,7 +114,7 @@ class Video_Popup extends Base{
         $this->start_controls_section(
             'general_content',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -122,19 +122,19 @@ class Video_Popup extends Base{
     $this->add_control(
         'video_type',
         [
-            'label' => __( 'Video Type', 'ultraaddons' ),
+            'label' => __( 'Video Type', 'ultraaddons-elementor-lite' ),
             'type' => Controls_Manager::SELECT,
             'default' => 'youtube',
             'frontend_available' => true,
             'options' => [
-                'youtube'  => __( 'Youtube', 'ultraaddons' ),
-                'vimeo' => __( 'Viemo', 'ultraaddons' ),
+                'youtube'  => __( 'Youtube', 'ultraaddons-elementor-lite' ),
+                'vimeo' => __( 'Viemo', 'ultraaddons-elementor-lite' ),
             ],
         ]
     );
     $this->add_control(
         'btn_text', [
-                'label' => __( 'Button text', 'ultraaddons' ),
+                'label' => __( 'Button text', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::TEXT,
                 'default' => 'Play',
                 'label_block' => true,
@@ -143,7 +143,7 @@ class Video_Popup extends Base{
 
      $this->add_control(
             'youtube_url', [
-                    'label' => __( 'Youtube URL', 'ultraaddons' ),
+                    'label' => __( 'Youtube URL', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::TEXT,
                     'default' => 'https://www.youtube.com/watch?v=n_ea3devnlg',
                     'label_block' => true,
@@ -160,10 +160,10 @@ class Video_Popup extends Base{
     $this->add_control(
         'controls',
         [
-            'label' => __( 'Controls', 'ultraaddons' ),
+            'label' => __( 'Controls', 'ultraaddons-elementor-lite' ),
             'type' => Controls_Manager::SWITCHER,
-            'label_on' => __( 'Yes', 'ultraaddons' ),
-            'label_off' => __( 'No', 'ultraaddons' ),
+            'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+            'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
             'return_value' => '1',
             'default' => '1',
             'frontend_available' => true,
@@ -175,10 +175,10 @@ class Video_Popup extends Base{
     $this->add_control(
         'autoplay',
         [
-            'label' => __( 'Autoplay', 'ultraaddons' ),
+            'label' => __( 'Autoplay', 'ultraaddons-elementor-lite' ),
             'type' => Controls_Manager::SWITCHER,
-            'label_on' => __( 'Yes', 'ultraaddons' ),
-            'label_off' => __( 'No', 'ultraaddons' ),
+            'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+            'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
             'return_value' => '1',
             'default' => '1',
             'frontend_available' => true,
@@ -190,10 +190,10 @@ class Video_Popup extends Base{
     $this->add_control(
         'loop',
         [
-            'label' => __( 'Loop', 'ultraaddons' ),
+            'label' => __( 'Loop', 'ultraaddons-elementor-lite' ),
             'type' => Controls_Manager::SWITCHER,
-            'label_on' => __( 'Yes', 'ultraaddons' ),
-            'label_off' => __( 'No', 'ultraaddons' ),
+            'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+            'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
             'return_value' => '1',
             'default' => '0',
             'frontend_available' => true,
@@ -205,10 +205,10 @@ class Video_Popup extends Base{
     $this->add_control(
         'showinfo',
         [
-            'label' => __( 'Show Info', 'ultraaddons' ),
+            'label' => __( 'Show Info', 'ultraaddons-elementor-lite' ),
             'type' => Controls_Manager::SWITCHER,
-            'label_on' => __( 'Yes', 'ultraaddons' ),
-            'label_off' => __( 'No', 'ultraaddons' ),
+            'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+            'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
             'return_value' => '1',
             'default' => '1',
             'frontend_available' => true,
@@ -224,7 +224,7 @@ class Video_Popup extends Base{
      */
     $this->add_control(
         'vimeo_id', [
-                'label' => __( 'Vimeo URL', 'ultraaddons' ),
+                'label' => __( 'Vimeo URL', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::TEXT,
                 'default' => 'https://vimeo.com/691786534',
                 'label_block' => true,
@@ -236,10 +236,10 @@ class Video_Popup extends Base{
  /*    $this->add_control(
         'vcontrols',
         [
-            'label' => __( 'Controls', 'ultraaddons' ),
+            'label' => __( 'Controls', 'ultraaddons-elementor-lite' ),
             'type' => Controls_Manager::SWITCHER,
-            'label_on' => __( 'Yes', 'ultraaddons' ),
-            'label_off' => __( 'No', 'ultraaddons' ),
+            'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+            'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
             'return_value' => '1',
             'default' => '1',
             'frontend_available' => true,
@@ -251,10 +251,10 @@ class Video_Popup extends Base{
     $this->add_control(
         'vautoplay',
         [
-            'label' => __( 'Autoplay', 'ultraaddons' ),
+            'label' => __( 'Autoplay', 'ultraaddons-elementor-lite' ),
             'type' => Controls_Manager::SWITCHER,
-            'label_on' => __( 'Yes', 'ultraaddons' ),
-            'label_off' => __( 'No', 'ultraaddons' ),
+            'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+            'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
             'return_value' => '1',
             'default' => '1',
             'frontend_available' => true,
@@ -266,10 +266,10 @@ class Video_Popup extends Base{
     $this->add_control(
         'vloop',
         [
-            'label' => __( 'Loop', 'ultraaddons' ),
+            'label' => __( 'Loop', 'ultraaddons-elementor-lite' ),
             'type' => Controls_Manager::SWITCHER,
-            'label_on' => __( 'Yes', 'ultraaddons' ),
-            'label_off' => __( 'No', 'ultraaddons' ),
+            'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
+            'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
             'return_value' => '1',
             'default' => '1',
             'frontend_available' => true,
@@ -288,7 +288,7 @@ class Video_Popup extends Base{
             $this->start_controls_section(
                 'btn_style',
                 [
-                    'label'     => esc_html__( 'Style', 'ultraaddons' ),
+                    'label'     => esc_html__( 'Style', 'ultraaddons-elementor-lite' ),
                     'tab'       => Controls_Manager::TAB_STYLE,
                 ]
             );
@@ -296,19 +296,19 @@ class Video_Popup extends Base{
             $this->add_responsive_control(
                 '_btn_alignment',
                 [
-                    'label' => esc_html__( 'Alignment', 'ultraaddons' ),
+                    'label' => esc_html__( 'Alignment', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::CHOOSE,
                     'options' => [
                         'start' => [
-                            'title' => esc_html__( 'Left', 'ultraaddons' ),
+                            'title' => esc_html__( 'Left', 'ultraaddons-elementor-lite' ),
                             'icon' => 'eicon-text-align-left',
                         ],
                         'center' => [
-                            'title' => esc_html__( 'Center', 'ultraaddons' ),
+                            'title' => esc_html__( 'Center', 'ultraaddons-elementor-lite' ),
                             'icon' => 'eicon-text-align-center',
                         ],
                         'end' => [
-                            'title' => esc_html__( 'Right', 'ultraaddons' ),
+                            'title' => esc_html__( 'Right', 'ultraaddons-elementor-lite' ),
                             'icon' => 'eicon-text-align-right',
                         ],
                     ],
@@ -321,7 +321,7 @@ class Video_Popup extends Base{
             $this->add_control(
                 'selected_icon',
                 [
-                    'label' => esc_html__( 'Icon', 'ultraaddons' ),
+                    'label' => esc_html__( 'Icon', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::ICONS,
                     'fa4compatibility' => 'icon',
                     'default' => [
@@ -335,7 +335,7 @@ class Video_Popup extends Base{
             $this->add_control(
                 'icon_size',
                 [
-                    'label' => esc_html__( 'Icon Size', 'ultraaddons' ),
+                    'label' => esc_html__( 'Icon Size', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => [ 'px', '%' ],
                     'range' => [
@@ -363,7 +363,7 @@ class Video_Popup extends Base{
             $this->add_control(
                 'icon_space',
                 [
-                    'label' => esc_html__( 'Icon Space', 'ultraaddons' ),
+                    'label' => esc_html__( 'Icon Space', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => [ 'px', '%' ],
                     'range' => [
@@ -391,13 +391,13 @@ class Video_Popup extends Base{
             $this->start_controls_tab(
                 'btn_normal_tab',
                 [
-                    'label' => esc_html__( 'Normal', 'ultraaddons' ),
+                    'label' => esc_html__( 'Normal', 'ultraaddons-elementor-lite' ),
                 ]
             );
             $this->add_control(
                 'btn_size',
                 [
-                    'label' => esc_html__( 'Button Size', 'ultraaddons' ),
+                    'label' => esc_html__( 'Button Size', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => [ 'px', '%' ],
                     'range' => [
@@ -422,7 +422,7 @@ class Video_Popup extends Base{
             );
             $this->add_control(
                 '_btn_bg_color', [
-                    'label' => __( 'Button Background', 'ultraaddons' ),
+                    'label' => __( 'Button Background', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                             '{{WRAPPER}} .ua-video-btn' => 'background-color: {{VALUE}};',
@@ -433,7 +433,7 @@ class Video_Popup extends Base{
                 Group_Control_Border::get_type(),
                 [
                         'name' => 'box_border',
-                        'label' => __( 'Button Border', 'elementor' ),
+                        'label' => __( 'Button Border', 'ultraaddons-elementor-lite' ),
                         'fields_options' => [
                                 'border' => [
                                         'default' => 'solid',
@@ -458,13 +458,13 @@ class Video_Popup extends Base{
                 Group_Control_Box_Shadow::get_type(),
                 [
                     'name' => 'box_shadow',
-                    'label' => esc_html__( 'Button Shadow', 'ultraaddons' ),
+                    'label' => esc_html__( 'Button Shadow', 'ultraaddons-elementor-lite' ),
                     'selector' => '{{WRAPPER}} .ua-video-btn',
                 ]
             );
             $this->add_control(
                 '_btn_text_color', [
-                    'label' => __( 'Button Text Color', 'ultraaddons' ),
+                    'label' => __( 'Button Text Color', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                             '{{WRAPPER}} .ua-video-btn' => 'color: {{VALUE}};',
@@ -485,7 +485,7 @@ class Video_Popup extends Base{
             $this->add_responsive_control(
                 '_btn_padding',
                 [
-                    'label'       => esc_html__( 'Button Padding', 'ultraaddons' ),
+                    'label'       => esc_html__( 'Button Padding', 'ultraaddons-elementor-lite' ),
                     'type'        => Controls_Manager::DIMENSIONS,
                     'size_units'  => [ '%', 'px' ],
                     'placeholder' => [
@@ -502,7 +502,7 @@ class Video_Popup extends Base{
             $this->add_responsive_control(
                 '_btn_radius',
                 [
-                    'label'       => esc_html__( 'Button Radius', 'ultraaddons' ),
+                    'label'       => esc_html__( 'Button Radius', 'ultraaddons-elementor-lite' ),
                     'type'        => Controls_Manager::DIMENSIONS,
                     'size_units'  => [ '%', 'px' ],
                     'placeholder' => [
@@ -524,12 +524,12 @@ class Video_Popup extends Base{
             $this->start_controls_tab(
                 'btn_hover_tab',
                 [
-                    'label' => esc_html__( 'Hover', 'ultraaddonse' ),
+                    'label' => esc_html__( 'Hover', 'ultraaddons-elementor-lite' ),
                 ]
             );
             $this->add_control(
                 '_btn_bg_hover_bg', [
-                    'label' => __( 'Hover Background', 'ultraaddons' ),
+                    'label' => __( 'Hover Background', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                             '{{WRAPPER}} .ua-video-btn:before, .ua-video-btn:hover' => 'background: {{VALUE}};',
@@ -540,14 +540,14 @@ class Video_Popup extends Base{
                 Group_Control_Border::get_type(),
                 [
                     'name' => '_btn_hover_border',
-                    'label' => esc_html__( 'Button Border', 'ultraaddons' ),
+                    'label' => esc_html__( 'Button Border', 'ultraaddons-elementor-lite' ),
                     'selector' => '{{WRAPPER}} .ua-video-btn:hover',
                 ]
             );
     
             $this->add_control(
                 '_btn_text_hover_color', [
-                    'label' => __( 'Button Text Color', 'ultraaddons' ),
+                    'label' => __( 'Button Text Color', 'ultraaddons-elementor-lite' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                             '{{WRAPPER}} .ua-video-btn:hover' => 'color: {{VALUE}};',
@@ -589,9 +589,9 @@ class Video_Popup extends Base{
        
         ?>
         <div class="ua-video-btn-wrap">
-            <button class="js-modal-btn-<?php echo $id;?> ua-video-btn" data-video-id="<?php echo esc_attr($video_id);?>">
+            <button class="js-modal-btn-<?php echo esc_html($id);?> ua-video-btn" data-video-id="<?php echo esc_attr($video_id);?>">
                 <?php Icons_Manager::render_icon( $settings['selected_icon'], [ 'aria-hidden' => 'true' ] ); ?>
-                <?php echo $settings['btn_text']; ?>
+                <?php echo esc_html($settings['btn_text']); ?>
             </button>
         </div>
         <?php

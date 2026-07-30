@@ -13,6 +13,20 @@ use Elementor\Group_Control_Background;
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Recent_Blog extends Base{
+
+    /**
+     * Widget Variables for render use
+     * read more, excerpt, excerpt limit, title, date, meta, thumbs, layout
+     */
+    public $read_more;
+    public $excerpt;
+    public $excerpt_limit;
+    public $title;
+    public $date;
+    public $meta;
+    public $thumbs;
+    public $layout;
+
         
     /**
      * Get your widget by keywords
@@ -23,7 +37,7 @@ class Recent_Blog extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua', 'blog', 'recent', 'recent blog', 'recent content' ];
+        return [ 'ultraaddons-elementor-lite', 'ua', 'blog', 'recent', 'recent blog', 'recent content' ];
     }
         
     /**
@@ -80,15 +94,15 @@ class Recent_Blog extends Base{
      * Such: Layout two, Need two Query.
      * Each time, we dont want to write same code
      * 
-     * @param type $args Query argument for query expected post
+     * @param type $ultraaddons_args Query argument for query expected post
      * @return Void Actually we have just 
      */
-    protected function populate_blog_loop( $args = false ){
+    protected function populate_blog_loop( $ultraaddons_args = false ){
         
-        if( ! $args || ! is_array( $args ) ){
+        if( ! $ultraaddons_args || ! is_array( $ultraaddons_args ) ){
             return false;
         }
-        $the_query = new \WP_Query( $args );
+        $the_query = new \WP_Query( $ultraaddons_args );
         
         
         // The Loop
@@ -121,7 +135,7 @@ class Recent_Blog extends Base{
             <?php if( $this->thumbs ){ ?>
             <div class="recent-blog-img">
                 <a 
-                    <?php  if( $this->layout == 'modern' && isset( $args['custom_thumb_image'] ) && $args['custom_thumb_image'] == 'background'){ ?>
+                    <?php  if( $this->layout == 'modern' && isset( $ultraaddons_args['custom_thumb_image'] ) && $ultraaddons_args['custom_thumb_image'] == 'background'){ ?>
                     style="background-image:url(<?php echo esc_url( $thumbnail ); ?>);"    
                     <?php } ?>
                     class="ua-recent-blog-permalink ua-recent-blog-permalink-image" href="<?php the_permalink(); ?>">
@@ -151,24 +165,24 @@ class Recent_Blog extends Base{
                 <div class="recent-blog-meta">
                     <span class="recent-blog-author"><i class="far fa-user"></i><?php echo esc_html( get_the_author() ); ?></span>
                     
-                    <span class="published-date <?php echo $this->date ? 'hide-on-mobile' : '' ; ?>"><i class="far fa-calendar-alt"></i><?php echo esc_html( get_the_date() ); ?></span>
+                    <span class="published-date <?php echo esc_attr( $this->date ? 'hide-on-mobile' : '' ); ?>"><i class="far fa-calendar-alt"></i><?php echo esc_html( get_the_date() ); ?></span>
                     
                 </div>
                 <?php } ?>
                 
                 <?php if( $this->title ){ ?>
-                <a class="ua-recent-blog-permalink ua-recent-blog-permalink-title" href="<?php the_permalink(); ?>">
-                    <h2 class="ua-recent-blog-title"><?php the_title(); ?></h2>
+                <a class="ua-recent-blog-permalink ua-recent-blog-permalink-title" href="<?php echo esc_url( get_permalink() ); ?>">
+                    <h2 class="ua-recent-blog-title"><?php echo esc_html( get_the_title() ); ?></h2>
                 </a>
                 <?php 
 //                var_dump($this->excerpt_limit);
                 }
                 if( $this->excerpt && $this->excerpt_limit ){ ?>
-                <div class="para ua-rb-ecerpt"><?php echo $this->excerpts( $this->excerpt_limit['size'] ); ?></div>
+                <div class="para ua-rb-ecerpt"><?php echo wp_kses_post( $this->excerpts( $this->excerpt_limit['size'] ) ); ?></div>
                 <?php 
                 }
                 if( ! empty( $this->read_more ) ){ ?>
-                <a href="<?php the_permalink(); ?>" class="read-more"><?php echo esc_html( $this->read_more ); ?> <i class="fas fa-angle-double-right"></i></a>
+                <a href="<?php echo esc_url( get_permalink() ); ?>" class="read-more"><?php echo esc_html( $this->read_more ); ?> <i class="fas fa-angle-double-right"></i></a>
             <?php } ?>
             </div>
         </div>    
@@ -178,7 +192,6 @@ class Recent_Blog extends Base{
             // no posts found
         }
         wp_reset_postdata();
-        wp_reset_query();
         return true;
     }
 
@@ -219,17 +232,17 @@ class Recent_Blog extends Base{
         $this->layout = !empty( $settings['layout'] ) ? $settings['layout'] : 'classic';
 
         
-        $args = [
+        $ultraaddons_args = [
             'posts_per_page'    =>  is_numeric( $post_per_page ) ? $post_per_page : 3,
             'post_type'         =>  'post',
             'post_status'       =>  'publish',
             'category__in'      =>  $categories,
-            'post__not_in'      =>  get_option( 'sticky_posts' ),
+            // 'post__not_in'      =>  get_option( 'sticky_posts' ),
             'custom_thumb_image'=>  'background', //Normal or background,//Its created by me. To maintain image as background on two layout
         ];
         
         if( $this->layout == 'modern' ){
-            $args['offset'] = 1;
+            $ultraaddons_args['offset'] = 1;
         }
 
         
@@ -239,7 +252,7 @@ class Recent_Blog extends Base{
 
         
 
-        <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
+        <div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
             <?php
             //SARTING: recent blog right part starting, and when only modern layout
             if( $this->layout == 'modern' ){
@@ -248,7 +261,7 @@ class Recent_Blog extends Base{
                  * Thats why, need new name.
                  * Becuae: default args will be use at the bottom of this code
                  */
-                $single_args = $args;
+                $single_args = $ultraaddons_args;
                 $single_args['posts_per_page'] = 1;
                 $single_args['custom_thumb_image'] = 'normal';
                 $single_args['offset'] = 0;
@@ -274,7 +287,7 @@ class Recent_Blog extends Base{
             } //ending if statement
             
             //Blog Populating is for always
-            $this->populate_blog_loop( $args );
+            $this->populate_blog_loop( $ultraaddons_args );
             
             //CLOSING: recent blog right part closing, and when only modern layout
             if( $this->layout == 'modern' ){
@@ -313,7 +326,7 @@ class Recent_Blog extends Base{
         $this->start_controls_section(
             'ua_recent_post_query',
             [
-                'label'     => esc_html__( 'Query', 'ultraaddons' ),
+                'label'     => esc_html__( 'Query', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -321,7 +334,7 @@ class Recent_Blog extends Base{
         $this->add_control(
                 'ua_posts_per_page',
                 [
-                        'label' => __( 'Posts Count', 'ultraaddons' ),
+                        'label' => __( 'Posts Count', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SLIDER,
                         'default' => [
                                 'size' => 3,
@@ -344,7 +357,7 @@ class Recent_Blog extends Base{
         $this->add_control(
                 'ua_posts_cat',
                 [
-                        'label' => __( 'Categories', 'ultraaddons' ),
+                        'label' => __( 'Categories', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SELECT2,
                         'default' => [],
                         'multiple' => true,
@@ -367,7 +380,7 @@ class Recent_Blog extends Base{
         $this->start_controls_section(
             'layout_section',
             [
-                'label'     => esc_html__( 'Layout', 'ultraaddons' ),
+                'label'     => esc_html__( 'Layout', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -376,15 +389,15 @@ class Recent_Blog extends Base{
         $this->add_control(
                 'layout',
                 [
-                        'label' => __( 'Layout', 'ultraaddons' ),
+                        'label' => __( 'Layout', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::CHOOSE,
                         'options' => [
                                 'classic' => [
-                                        'title' => __( 'Classic', 'ultraaddons' ),
+                                        'title' => __( 'Classic', 'ultraaddons-elementor-lite' ),
                                         'icon' => 'eicon-archive-posts',
                                 ],
                                 'modern' => [
-                                        'title' => __( 'Modern', 'ultraaddons' ),
+                                        'title' => __( 'Modern', 'ultraaddons-elementor-lite' ),
                                         'icon' => 'eicon-archive',
                                 ],
 
@@ -409,7 +422,7 @@ class Recent_Blog extends Base{
         $this->start_controls_section(
             'ua_recent_post_general',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -417,24 +430,24 @@ class Recent_Blog extends Base{
         $this->add_control(
                 'ua_rc_read_more',
                 [
-                        'label' => __( 'Read More text', 'ultraaddons' ),
+                        'label' => __( 'Read More text', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::TEXT,
-                        'default' => __( 'Read More', 'ultraaddons' ),
+                        'default' => __( 'Read More', 'ultraaddons-elementor-lite' ),
                 ]
         );
         
         $this->add_control(
             'title_on_off',
                 [
-                    'label'         => esc_html__( 'Title', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Title', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::CHOOSE,
                     'options' => [
                             'on' => [
-                                    'title' => __( 'Show', 'ultraaddons' ),
+                                    'title' => __( 'Show', 'ultraaddons-elementor-lite' ),
                                     'icon' => 'eicon-preview-medium',
                             ],
                             'off' => [
-                                    'title' => __( 'Hide', 'ultraaddons' ),
+                                    'title' => __( 'Hide', 'ultraaddons-elementor-lite' ),
                                     'icon' => 'eicon-ban',
                             ],
                     ],
@@ -446,15 +459,15 @@ class Recent_Blog extends Base{
         $this->add_control(
             'excerpt_on_off',
                 [
-                    'label'         => esc_html__( 'Excerpt', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Excerpt', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::CHOOSE,
                     'options' => [
                             'on' => [
-                                    'title' => __( 'Show', 'ultraaddons' ),
+                                    'title' => __( 'Show', 'ultraaddons-elementor-lite' ),
                                     'icon' => 'eicon-preview-medium',
                             ],
                             'off' => [
-                                    'title' => __( 'Hide', 'ultraaddons' ),
+                                    'title' => __( 'Hide', 'ultraaddons-elementor-lite' ),
                                     'icon' => 'eicon-ban',
                             ],
                     ],
@@ -466,7 +479,7 @@ class Recent_Blog extends Base{
         $this->add_control(
             'excerpt_limit',
                 [
-                    'label'         => esc_html__( 'Excerpt Limit', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Excerpt Limit', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::SLIDER,
                     'default' => [
                             'size' => 20,
@@ -487,16 +500,16 @@ class Recent_Blog extends Base{
         $this->add_control(
             'thumbs_on_off',
                 [
-                    'label'         => esc_html__( 'Thumbs', 'ultraaddons' ),
-                    'description'   => esc_html__( 'Thumbnail Image and Date will be hidden.', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Thumbs', 'ultraaddons-elementor-lite' ),
+                    'description'   => esc_html__( 'Thumbnail Image and Date will be hidden.', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::CHOOSE,
                     'options' => [
                         'on' => [
-                                'title' => __( 'Show', 'ultraaddons' ),
+                                'title' => __( 'Show', 'ultraaddons-elementor-lite' ),
                                 'icon' => 'eicon-preview-medium',
                         ],
                         'off' => [
-                                'title' => __( 'Hide', 'ultraaddons' ),
+                                'title' => __( 'Hide', 'ultraaddons-elementor-lite' ),
                                 'icon' => 'eicon-ban',
                         ],
                     ],
@@ -511,16 +524,16 @@ class Recent_Blog extends Base{
         $this->add_control(
             'date_on_off',
                 [
-                    'label'         => esc_html__( 'Date', 'ultraaddons' ),
-                    'description'   => esc_html__( 'Recommends for Classic Layout.', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Date', 'ultraaddons-elementor-lite' ),
+                    'description'   => esc_html__( 'Recommends for Classic Layout.', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::CHOOSE,
                     'options' => [
                             'on' => [
-                                    'title' => __( 'Show', 'ultraaddons' ),
+                                    'title' => __( 'Show', 'ultraaddons-elementor-lite' ),
                                     'icon' => 'eicon-preview-medium',
                             ],
                             'off' => [
-                                    'title' => __( 'Hide', 'ultraaddons' ),
+                                    'title' => __( 'Hide', 'ultraaddons-elementor-lite' ),
                                     'icon' => 'eicon-ban',
                             ],
                     ],
@@ -533,16 +546,16 @@ class Recent_Blog extends Base{
         $this->add_control(
             'meta_on_off',
                 [
-                    'label'         => esc_html__( 'Meta Info', 'ultraaddons' ),
-                    'description'   => esc_html__( 'Recommends for Modern Layout.', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Meta Info', 'ultraaddons-elementor-lite' ),
+                    'description'   => esc_html__( 'Recommends for Modern Layout.', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::CHOOSE,
                     'options' => [
                             'on' => [
-                                    'title' => __( 'Show', 'ultraaddons' ),
+                                    'title' => __( 'Show', 'ultraaddons-elementor-lite' ),
                                     'icon' => 'eicon-preview-medium',
                             ],
                             'off' => [
-                                    'title' => __( 'Hide', 'ultraaddons' ),
+                                    'title' => __( 'Hide', 'ultraaddons-elementor-lite' ),
                                     'icon' => 'eicon-ban',
                             ],
                     ],
@@ -563,16 +576,17 @@ class Recent_Blog extends Base{
      * @since 1.0.0.9
      */
     protected function get_cat_as_options(){
-        $args = [
+        $ultraaddons_args = [
+            'taxonomy'  =>  'category',
             'orderby'   =>  'count',
             'hide_empty'=>  0
         ];
-        $categories = get_terms( 'category', $args );
+        $categories = get_terms( $ultraaddons_args );
         
         $options = [];
         if( is_array( $categories ) && count( $categories ) > 0 ){
-            foreach( $categories as $category ){
-                $options[$category->term_id]  = $category->name;
+            foreach( $categories as $ultraaddons_category ){
+                $options[$ultraaddons_category->term_id]  = $ultraaddons_category->name;
             }
         }
 
@@ -588,7 +602,7 @@ class Recent_Blog extends Base{
         $this->start_controls_section(
             'ua_rc_design_style',
             [
-                'label'     => esc_html__( 'Design', 'ultraaddons' ),
+                'label'     => esc_html__( 'Design', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -598,7 +612,7 @@ class Recent_Blog extends Base{
         $this->add_control(
             'ua_rc_title_color',
             [
-                'label'     => __( 'Title Color', 'ultraaddons' ),
+                'label'     => __( 'Title Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'global' => [
                     'default' => Global_Colors::COLOR_PRIMARY,
@@ -616,7 +630,7 @@ class Recent_Blog extends Base{
         $this->add_control(
             'ua_rc_excerpt_color',
             [
-                'label'     => __( 'Excerpt Color', 'ultraaddons' ),
+                'label'     => __( 'Excerpt Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'global' => [
                     'default' => Global_Colors::COLOR_PRIMARY,
@@ -634,7 +648,7 @@ class Recent_Blog extends Base{
         $this->add_control(
             'ua_rc_meta_color',
             [
-                'label'     => __( 'Meta Color', 'ultraaddons' ),
+                'label'     => __( 'Meta Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'global' => [
                     'default' => Global_Colors::COLOR_PRIMARY,
@@ -652,7 +666,7 @@ class Recent_Blog extends Base{
         $this->add_control(
             'ua_rc_meta_icon_color',
             [
-                'label'     => __( 'Meta Icon Color', 'ultraaddons' ),
+                'label'     => __( 'Meta Icon Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'global' => [
                     'default' => Global_Colors::COLOR_PRIMARY,
@@ -670,7 +684,7 @@ class Recent_Blog extends Base{
         $this->add_control(
             'ua_rc_readmore_color',
             [
-                'label'     => __( 'Read More Color', 'ultraaddons' ),
+                'label'     => __( 'Read More Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'global' => [
                     'default' => Global_Colors::COLOR_PRIMARY,
@@ -687,7 +701,7 @@ class Recent_Blog extends Base{
         $this->add_control(
             'ua_rc_readmore_hover_color',
             [
-                'label'     => __( 'Read More Hover Color', 'ultraaddons' ),
+                'label'     => __( 'Read More Hover Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'global' => [
                     'default' => Global_Colors::COLOR_PRIMARY,
@@ -707,7 +721,7 @@ class Recent_Blog extends Base{
         $this->add_control(
             'ua_rc_date_text_color',
             [
-                'label'     => __( 'Date Text Color', 'ultraaddons' ),
+                'label'     => __( 'Date Text Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .recent-blog-item-wrap .recent-blog-img a.recent-blog-date' => 'color: {{VALUE}}',
@@ -722,7 +736,7 @@ class Recent_Blog extends Base{
         $this->add_control(
             'ua_rc_date_bg_color',
             [
-                'label'     => __( 'Date Background', 'ultraaddons' ),
+                'label'     => __( 'Date Background', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'global' => [
                     'default' => Global_Colors::COLOR_PRIMARY,
@@ -737,7 +751,7 @@ class Recent_Blog extends Base{
         $this->add_responsive_control(
             'ua_rc_date_text_padding',
             [
-                'label'     => __( 'Date Text Padding', 'ultraaddons' ),
+                'label'     => __( 'Date Text Padding', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
@@ -753,7 +767,7 @@ class Recent_Blog extends Base{
         $this->add_responsive_control(
                 'ua_rc_space',
                 [
-                        'label' => __( 'Spacing', 'ultraaddons' ),
+                        'label' => __( 'Spacing', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SLIDER,
                         'default' => [
                                 'size' => 0,
@@ -773,7 +787,7 @@ class Recent_Blog extends Base{
          $this->add_responsive_control(
                 'ua_rc_image_height',
                 [
-                        'label' => __( 'Image Custom Height', 'ultraaddons' ),
+                        'label' => __( 'Image Custom Height', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SLIDER,
                         'size_units' => [ 'px', '%' ],
                         'range' => [
@@ -810,7 +824,7 @@ class Recent_Blog extends Base{
         $this->start_controls_section(
             'ua_rc_typography',
             [
-                'label'     => esc_html__( 'Typography', 'ultraaddons' ),
+                'label'     => esc_html__( 'Typography', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -819,7 +833,7 @@ class Recent_Blog extends Base{
                 Group_Control_Typography::get_type(),
                 [
                         'name' => 'ua_rc_title_typography',
-                        'label' => __( 'Title Typography', 'ultraaddons' ),
+                        'label' => __( 'Title Typography', 'ultraaddons-elementor-lite' ),
                         'selector' => '{{WRAPPER}} .recent-blog-info h2',
                         'global' => [
                                 'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
@@ -835,7 +849,7 @@ class Recent_Blog extends Base{
                 Group_Control_Typography::get_type(),
                 [
                         'name' => 'ua_rc_excerpt_typography',
-                        'label' => __( 'Content Typography', 'ultraaddons' ),
+                        'label' => __( 'Content Typography', 'ultraaddons-elementor-lite' ),
                         'selector' => '{{WRAPPER}} .ua-rb-ecerpt',
                         'global' => [
                                 'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
@@ -851,7 +865,7 @@ class Recent_Blog extends Base{
                 Group_Control_Typography::get_type(),
                 [
                         'name' => 'ua_rc_date_typography',
-                        'label' => __( 'Date Typography', 'ultraaddons' ),
+                        'label' => __( 'Date Typography', 'ultraaddons-elementor-lite' ),
                         'selector' => '{{WRAPPER}} .recent-blog-img a.recent-blog-date',
                         'global' => [
                                 'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
@@ -867,7 +881,7 @@ class Recent_Blog extends Base{
                 Group_Control_Typography::get_type(),
                 [
                         'name' => 'ua_rc_meta_typography',
-                        'label' => __( 'Meta Typography', 'ultraaddons' ),
+                        'label' => __( 'Meta Typography', 'ultraaddons-elementor-lite' ),
                         'selector' => '{{WRAPPER}} .recent-blog-meta',
                         'global' => [
                                 'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
@@ -883,7 +897,7 @@ class Recent_Blog extends Base{
                 Group_Control_Typography::get_type(),
                 [
                         'name' => 'ua_rc_readmore_typography',
-                        'label' => __( 'Read More Typography', 'ultraaddons' ),
+                        'label' => __( 'Read More Typography', 'ultraaddons-elementor-lite' ),
                         'selector' => '{{WRAPPER}} .recent-blog-info .read-more',
                         'global' => [
                                 'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
@@ -898,7 +912,7 @@ class Recent_Blog extends Base{
         $this->add_control(
                 'ua_rc_icon_size',
                 [
-                        'label' => __( 'Icon Size', 'ultraaddons' ),
+                        'label' => __( 'Icon Size', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SLIDER,
                         'default' => [
                                 'size' => 16,

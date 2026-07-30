@@ -103,18 +103,18 @@ class Library_Manager {
 		$additional_library = [
 			'status' => false,
 			'button' => [
-				'text'	=> esc_html__( "Theme Demo", 'ultraaddons' ),
+				'text'	=> esc_html__( "Theme Demo", 'ultraaddons-elementor-lite' ),
 				'icon'	=> 'uicon-ultraaddons',
 			],
 			'tabs' => [
-				'section' => esc_html__( "Blog", 'ultraaddons' ),
-				'page' => esc_html__( "Page", 'ultraaddons' ),
-				'landing' => esc_html__( "Landing", 'ultraaddons' ),
+				'section' => esc_html__( "Blog", 'ultraaddons-elementor-lite' ),
+				'page' => esc_html__( "Page", 'ultraaddons-elementor-lite' ),
+				'landing' => esc_html__( "Landing", 'ultraaddons-elementor-lite' ),
 			],
 
 		]; 
 
-		$additional_library = apply_filters( 'eldm_library_basic_data', $additional_library );
+		$additional_library = apply_filters( 'ultraaddons_eldm_library_basic_data', $additional_library );
 		
         $localize_data = [
 			'placeholder_widgets' => Widgets_Manager::proWidgets(),
@@ -123,13 +123,15 @@ class Library_Manager {
 			'editor_nonce'            => wp_create_nonce( 'ua_editor_nonce' ),
 			'dark_stylesheet_url'     => self::ULTRA_ADDONS_TEMPLATE_ASSETS . 'css/editor-dark.min.css',
 			'i18n' => [
-				'iconTitlePreviewPage'      => esc_html__( 'Library', 'ultraaddons' ),
-				'promotionDialogHeader'     => esc_html__( '%s Widget', 'ultraaddons' ),
-				'promotionDialogMessage'    => esc_html__( 'Use %s widget with other exclusive pro widgets and 100% unique features to extend your toolbox and build sites faster and better.', 'ultraaddons' ),
-				'templatesEmptyTitle'       => esc_html__( 'No Templates Found', 'ultraaddons' ),
-				'templatesEmptyMessage'     => esc_html__( 'Try different category or sync for new templates.', 'ultraaddons' ),
-				'templatesNoResultsTitle'   => esc_html__( 'No Results Found', 'ultraaddons' ),
-				'templatesNoResultsMessage' => esc_html__( 'Please make sure your search is spelled correctly or try a different words.', 'ultraaddons' ),
+				'iconTitlePreviewPage'      => esc_html__( 'Library', 'ultraaddons-elementor-lite' ),
+				/* translators: 1: widget name */
+				'promotionDialogHeader'     => esc_html__( '%s Widget', 'ultraaddons-elementor-lite' ),
+				/* translators: 1: widget name */
+				'promotionDialogMessage'    => esc_html__( 'Use %s widget with other exclusive pro widgets and 100% unique features to extend your toolbox and build sites faster and better.', 'ultraaddons-elementor-lite' ),
+				'templatesEmptyTitle'       => esc_html__( 'No Templates Found', 'ultraaddons-elementor-lite' ),
+				'templatesEmptyMessage'     => esc_html__( 'Try different category or sync for new templates.', 'ultraaddons-elementor-lite' ),
+				'templatesNoResultsTitle'   => esc_html__( 'No Results Found', 'ultraaddons-elementor-lite' ),
+				'templatesNoResultsMessage' => esc_html__( 'Please make sure your search is spelled correctly or try a different words.', 'ultraaddons-elementor-lite' ),
 			],
 			'additional_library' => $additional_library,
 		];
@@ -164,7 +166,7 @@ class Library_Manager {
 				$editor_post_id = absint( $data['editor_post_id'] );
 
 				if ( ! get_post( $editor_post_id ) ) {
-					throw new \Exception( __( 'Post not found.', 'ultraaddons' ) );
+					throw new \Exception( esc_html__( 'Post not found.', 'ultraaddons-elementor-lite' ) );
 				}
 
 				ultraaddons_elementor()->db->switch_to_post( $editor_post_id );
@@ -184,14 +186,14 @@ class Library_Manager {
 				$editor_post_id = absint( $data['editor_post_id'] );
 
 				if ( ! get_post( $editor_post_id ) ) {
-					throw new \Exception( __( 'Post not found', 'ultraaddons' ) );
+					throw new \Exception( esc_html__( 'Post not found', 'ultraaddons-elementor-lite' ) );
 				}
 
 				ultraaddons_elementor()->db->switch_to_post( $editor_post_id );
 			}
 
 			if ( empty( $data['template_id'] ) ) {
-				throw new \Exception( __( 'Template id missing', 'ultraaddons' ) );
+				throw new \Exception( esc_html__( 'Template id missing', 'ultraaddons-elementor-lite' ) );
 			}
 
 			$result = self::get_template_data( $data );
@@ -200,9 +202,9 @@ class Library_Manager {
 		} );
 	}
 
-	public static function get_template_data( array $args ) {
+	public static function get_template_data( array $ultraaddons_args ) {
 		$source = self::get_source();
-		$data = $source->get_data( $args );
+		$data = $source->get_data( $ultraaddons_args );
 		return $data;
 	}
 
@@ -211,14 +213,14 @@ class Library_Manager {
 	 *
 	 * type_tags has been added in version 2.15.0
 	 *
-	 * @param array $args
+	 * @param array $ultraaddons_args
 	 *
 	 * @return array
 	 */
-	public static function get_library_data( array $args ) {
+	public static function get_library_data( array $ultraaddons_args ) {
 		$source = self::get_source();
 
-		if ( ! empty( $args['sync'] ) ) {
+		if ( ! empty( $ultraaddons_args['sync'] ) ) {
 			Library_Source::get_library_data( true );
 		}
 

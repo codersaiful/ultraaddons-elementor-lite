@@ -26,7 +26,7 @@ class WC_Products extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua', 'wc', 'product', 'woocommerce', 'items', 'price' ];
+        return [ 'ultraaddons-elementor-lite', 'ua', 'wc', 'product', 'woocommerce', 'items', 'price' ];
     }
         
     /**
@@ -107,7 +107,7 @@ class WC_Products extends Base{
         
         //Intrigate with WooCommerce
         if( ! class_exists( 'WooCommerce' ) ){
-            echo "<p style='color: #d00;font-size: 22px;'>" . esc_html__( "WooCommerce is not Activated", 'ultraaddons' ) . "</p>";
+            echo "<p style='color: #d00;font-size: 22px;'>" . esc_html__( "WooCommerce is not Activated", 'ultraaddons-elementor-lite' ) . "</p>";
         }
 
         $settings = $this->get_settings_for_display();
@@ -115,12 +115,12 @@ class WC_Products extends Base{
         $this->add_render_attribute( 'wrapper', 'class', 'ua-products-grid-wrapper' );
         $limit = ! empty( $settings['limit']['size'] ) && is_numeric( $settings['limit']['size'] ) ? $settings['limit']['size'] : 8;
         $col = ! empty( $settings['col']['size'] ) && is_numeric( $settings['col']['size'] ) ? $settings['col']['size'] : 4;
-        $cat_ids = is_array( $settings['cat_ids'] ) ? implode( ',', $settings['cat_ids'] ) : '';
+        $ultraaddons_cat_ids = is_array( $settings['cat_ids'] ) ? implode( ',', $settings['cat_ids'] ) : '';
 
-        $shortcode = '[products limit="' . $limit . '" columns="' . $col . '" orderby="popularity" category="' . $cat_ids . '" ]';
+        $shortcode = '[products limit="' . $limit . '" columns="' . $col . '" orderby="popularity" category="' . $ultraaddons_cat_ids . '" ]';
 //        var_dump($shortcode);
         ?>
-    <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
+    <div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
         <div class="ua-content-of-products">
             <h2 class="ua-product-section-title"><?php echo esc_html( $settings['title'] ); ?></h2>
         </div>
@@ -158,7 +158,7 @@ class WC_Products extends Base{
                 <div class="ua-product-ul-wrapper ua-product-ul-wrapper-preview">
                     <p class="ua-aply-now-message">
                     <?php 
-                      echo esc_html( 'Click on Aply button to see changes.', 'ultraaddons' );
+                      echo esc_html( 'Click on Aply button to see changes.', 'ultraaddons-elementor-lite' );
                     ?>
                     </p>
                 </div>
@@ -181,7 +181,7 @@ class WC_Products extends Base{
         $this->start_controls_section(
             'general',
             [
-                'label'     => esc_html__( 'Query', 'ultraaddons' ),
+                'label'     => esc_html__( 'Query', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -190,9 +190,9 @@ class WC_Products extends Base{
         $this->add_control(
                 'title',
                 [
-                    'label' => __( 'Sectioin Title', 'ultraaddons' ),
+                    'label' => __( 'Sectioin Title', 'ultraaddons-elementor-lite' ),
                     'type' => Controls_Manager::TEXT,
-                    'default'       => __( 'Recent Products', 'ultraaddons' ),
+                    'default'       => __( 'Recent Products', 'ultraaddons-elementor-lite' ),
                     'label_block'   => true,
                     'dynamic'       => ['active' => true],
                 ]
@@ -201,7 +201,7 @@ class WC_Products extends Base{
         $this->add_control(
                 'limit',
                 [
-                        'label' => __( 'Limit', 'ultraaddons' ),
+                        'label' => __( 'Limit', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SLIDER,
                         'size_units' => [ 'px' ],
                         'range' => [
@@ -221,7 +221,7 @@ class WC_Products extends Base{
         $this->add_control(
                 'col',
                 [
-                        'label' => __( 'Col', 'ultraaddons' ),
+                        'label' => __( 'Col', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SLIDER,
                         'size_units' => [ 'px' ],
                         'range' => [
@@ -242,7 +242,7 @@ class WC_Products extends Base{
         $this->add_control(
             'cat_ids',
             [
-                'label' => esc_html__( 'Select category', 'ultraaddons' ),
+                'label' => esc_html__( 'Select category', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::SELECT2,
                 'options' => $this->product_cat_options(),
                 'multiple' => 'true'
@@ -286,7 +286,7 @@ class WC_Products extends Base{
         $this->start_controls_section(
             'design',
             [
-                'label'     => esc_html__( 'Design', 'ultraaddons' ),
+                'label'     => esc_html__( 'Design', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -296,7 +296,7 @@ class WC_Products extends Base{
         $this->add_control(
             'primary_color',
             [
-                'label'     => __( 'Primary Color', 'ultraaddons' ),
+                'label'     => __( 'Primary Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'global' => [
                     'default' => Global_Colors::COLOR_PRIMARY,
@@ -312,7 +312,7 @@ class WC_Products extends Base{
         $this->add_control(
             'section_title_color',
             [
-                'label'     => __( 'Section Title Color', 'ultraaddons' ),
+                'label'     => __( 'Section Title Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'global' => [
                     'default' => Global_Colors::COLOR_PRIMARY,
@@ -327,7 +327,7 @@ class WC_Products extends Base{
         $this->add_responsive_control(
                 'margin',
                 [
-                        'label' => __( 'Margin', 'ultraaddons' ),
+                        'label' => __( 'Margin', 'ultraaddons-elementor-lite' ),
                         'type'       => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', '%', 'em' ],
                         'selectors' => [
@@ -352,7 +352,7 @@ class WC_Products extends Base{
         $this->start_controls_section(
             'typography',
             [
-                'label'     => esc_html__( 'Typography', 'ultraaddons' ),
+                'label'     => esc_html__( 'Typography', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );

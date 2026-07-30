@@ -1,22 +1,20 @@
 <?php
 /**
- * Plugin Name: UltraAddons - Elementor Addons by CodeAstrology
+ * Plugin Name: UltraAddons for Elementor
  * Requires Plugins: elementor
  * Plugin URI: https://ultraaddons.com/
  * Description: 78+ Fee widget, Custom Font, Custom CSS, Anywhere Elementor Shortcode, Header Footer Builder, Menu Builder, Woo Widget, 85+ Full Ready Template. All are free to use.
- * Version: 1.1.6
+ * Version: 2.0.3
  * Author: CodeAstrology Team
  * Author URI: https://codeastrology.com/
  * License: GPL3+
  * License URI: http://www.gnu.org/licenses/gpl.html
- * Text Domain: ultraaddons
+ * Text Domain: ultraaddons-elementor-lite
  * Domain Path: /languages/
  * 
- * Requires at least:    4.0.0
- * Tested up to:         6.5.2
- * WC requires at least: 3.0.0
- * WC tested up to: 	 8.8.2
- * Elementor tested up to: 3.21.1
+ * Requires at least:    4.0
+ * Tested up to:         7.0
+ * Elementor tested up to: 4.2.1
  * Elementor Pro tested up to: 7.11.0
  *
  * @package UltraAddons
@@ -47,7 +45,7 @@
 
 defined( 'ABSPATH' ) || die();
 
-define( 'ULTRA_ADDONS_VERSION', '1.1.6.0' );
+define( 'ULTRA_ADDONS_VERSION', '2.0.3.0' );
 define( 'ULTRA_ADDONS__FILE__', __FILE__ );
 define( 'ULTRA_ADDONS_BASE_NAME', plugin_basename( __FILE__ ) );
 define( 'ULTRA_ADDONS_DIR', plugin_dir_path( ULTRA_ADDONS__FILE__ ) );
@@ -179,7 +177,7 @@ final class UltraAddons {
 	 */
 	public function i18n() {
 
-		load_plugin_textdomain( 'ultraaddons' );
+		load_plugin_textdomain( 'ultraaddons-elementor-lite' );
 
 	}
 
@@ -275,17 +273,21 @@ final class UltraAddons {
 	 */
 	public function admin_notice_missing_main_plugin() {
 
-		if ( isset( $_GET['activate'] ) ) unset( $_GET['activate'] );
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( isset( $_GET['activate'] ) ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Only unsetting, not using the value
+			unset( $_GET['activate'] );
+		}
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor */
-			esc_html__( '%1$s requires %2$s to be installed and activated.%3$s', 'ultraaddons' ),
-			'<strong>' . esc_html__( 'UltraAddons - Elementor Addons', 'ultraaddons' ) . '</strong>',
-			'<strong><a href="https://wordpress.org/plugins/elementor/" target="_blank">' . esc_html__( 'Elementor', 'ultraaddons' ) . '</a></strong>',
+			esc_html__( '%1$s requires %2$s to be installed and activated.%3$s', 'ultraaddons-elementor-lite' ),
+			'<strong>' . esc_html__( 'UltraAddons - Elementor Addons', 'ultraaddons-elementor-lite' ) . '</strong>',
+			'<strong><a href="https://wordpress.org/plugins/elementor/" target="_blank">' . esc_html__( 'Elementor', 'ultraaddons-elementor-lite' ) . '</a></strong>',
 			'<style>div.ultraaddons-notice-error-elementor{background:#e5e5e5;color:#607d8b}div.ultraaddons-notice-error-elementor>p{font-size:22px}div.ultraaddons-notice-error-elementor>p>strong{color:#9c27b0;font-weight:700}</style>'
 		);
 
-		printf( '<div class="notice notice-error ultraaddons-notice-error-elementor"><p>%1$s</p></div>', $message );
+		printf( '<div class="notice notice-error ultraaddons-notice-error-elementor"><p>%1$s</p></div>', wp_kses_post( $message ) );
 
 	}
 
@@ -300,17 +302,21 @@ final class UltraAddons {
 	 */
 	public function admin_notice_minimum_elementor_version() {
 
-		if ( isset( $_GET['activate'] ) ) unset( $_GET['activate'] );
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( isset( $_GET['activate'] ) ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Only unsetting, not using the value
+			unset( $_GET['activate'] );
+		}
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor 3: Required Elementor version */
-			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'ultraaddons' ),
-			'<strong>' . esc_html__( 'UltraAddons - Elementor Addons', 'ultraaddons' ) . '</strong>',
-			'<strong>' . esc_html__( 'Elementor', 'ultraaddons' ) . '</strong>',
+			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'ultraaddons-elementor-lite' ),
+			'<strong>' . esc_html__( 'UltraAddons - Elementor Addons', 'ultraaddons-elementor-lite' ) . '</strong>',
+			'<strong>' . esc_html__( 'Elementor', 'ultraaddons-elementor-lite' ) . '</strong>',
 			 self::MINIMUM_ELEMENTOR_VERSION
 		);
 
-		printf( '<div class="notice notice-error"><p>%1$s</p></div>', $message );
+		printf( '<div class="notice notice-error"><p>%1$s</p></div>', wp_kses_post( $message ) );
 
 	}
 
@@ -325,17 +331,21 @@ final class UltraAddons {
 	 */
 	public function admin_notice_minimum_php_version() {
 
-		if ( isset( $_GET['activate'] ) ) unset( $_GET['activate'] );
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( isset( $_GET['activate'] ) ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Only unsetting, not using the value
+			unset( $_GET['activate'] );
+		}
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: PHP 3: Required PHP version */
-			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'ultraaddons' ),
-			'<strong>' . esc_html__( 'UltraAddons - Elementor Addons', 'ultraaddons' ) . '</strong>',
-			'<strong>' . esc_html__( 'PHP', 'ultraaddons' ) . '</strong>',
+			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'ultraaddons-elementor-lite' ),
+			'<strong>' . esc_html__( 'UltraAddons - Elementor Addons', 'ultraaddons-elementor-lite' ) . '</strong>',
+			'<strong>' . esc_html__( 'PHP', 'ultraaddons-elementor-lite' ) . '</strong>',
 			 self::MINIMUM_PHP_VERSION
 		);
 
-		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message );
+		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', wp_kses_post( $message ) );
 
 	}
         

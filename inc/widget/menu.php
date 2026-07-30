@@ -25,7 +25,7 @@ class Menu extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua','menu', 'nav', 'navbar', 'menubar','navigation' ];
+        return [ 'ultraaddons-elementor-lite', 'ua','menu', 'nav', 'navbar', 'menubar','navigation' ];
     }
     
     /**
@@ -75,7 +75,7 @@ class Menu extends Base{
         $menu = $this->get_available_menus();
 
         if( empty( $menu ) ){
-            echo wp_kses_post( '<h2 class="hidden_text">' . __( 'There is no menu available. Please create First' ) . '</h2>' );
+            echo wp_kses_post( '<h2 class="hidden_text">' . __( 'There is no menu available. Please create First', 'ultraaddons-elementor-lite' ) . '</h2>' );
             return;
         }
         $wrapper_id = 'ua-navigation-' . $this->get_id();
@@ -86,7 +86,7 @@ class Menu extends Base{
         $this->add_render_attribute( 'wrapper', 'id', $wrapper_id );
         $menu_id = $settings['menu'];
 
-        $args = array(
+        $ultraaddons_args = array(
 		'menu'                 => $menu_id,
 		'container'            => 'div',
 		'container_class'      => 'ua-menu-container',
@@ -106,8 +106,8 @@ class Menu extends Base{
 		//'walker'               => new Menu_Walker(),
 		//'theme_location'       => '',
 	);
-        $menu_html = wp_nav_menu( $args );
-        $menu_text = $settings['menu_text'];//esc_html_e( 'Primary Menu', 'ultraaddons' );
+        $menu_html = wp_nav_menu( $ultraaddons_args );
+        $menu_text = $settings['menu_text'];//esc_html_e( 'Primary Menu', 'ultraaddons-elementor-lite' );
 
         
         //Handle Icon
@@ -120,15 +120,15 @@ class Menu extends Base{
         $svg        = !empty( $settings['add_icon']['value']['url'] ) && is_string( $settings['add_icon']['value']['url'] ) ? $settings['add_icon']['value']['url'] : false;
 
         ?>
-        <nav <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
+        <nav <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
             <div class="ua-nav-inside">
                 <button class="ua-menu-toggle" aria-controls="<?php echo esc_attr( $wrapper_id ); ?>" aria-expanded="false">
                     <?php if( $svg ){ ?>
                     <img class="ua-menu-icon-svg" src="<?php echo esc_url( $svg ); ?>">
                     <?php }elseif( $has_icon ){ ?>
-                    <i <?php echo $this->get_render_attribute_string( 'i' ); ?>></i>
+                    <i <?php echo esc_attr( $this->get_render_attribute_string( 'i' ) ); ?>></i>
                     <?php } ?>
-                    <span><?php echo $menu_text; ?></span>
+                    <span><?php echo esc_html( $menu_text ); ?></span>
                 </button>
                 <?php echo wp_kses_post( $menu_html ); ?>
             </div>
@@ -285,7 +285,7 @@ class Menu extends Base{
             $this->start_controls_section(
                     'general_style',
                     [
-                            'label' => __( 'General', 'ultraaddons' ),
+                            'label' => __( 'General', 'ultraaddons-elementor-lite' ),
                             'tab' => Controls_Manager::TAB_STYLE,
                     ]
             );
@@ -294,12 +294,12 @@ class Menu extends Base{
             $this->add_control(
                     'template',
                     [
-                            'label'     => __( 'Background', 'ultraaddons' ),
+                            'label'     => __( 'Background', 'ultraaddons-elementor-lite' ),
                             'type'      => Controls_Manager::SELECT,
                             'options'   => [
-                                'default'   => __( 'Normal', 'ultraaddons' ),
-                                'temp-2'   => __( 'Template 2', 'ultraaddons' ),
-                                'temp-3'   => __( 'Template 3', 'ultraaddons' ),
+                                'default'   => __( 'Normal', 'ultraaddons-elementor-lite' ),
+                                'temp-2'   => __( 'Template 2', 'ultraaddons-elementor-lite' ),
+                                'temp-3'   => __( 'Template 3', 'ultraaddons-elementor-lite' ),
                             ],
                             'default'      => 'normal',
                             'prefix_class' => 'ua-menu-temp-'
@@ -321,7 +321,7 @@ class Menu extends Base{
         $this->start_controls_section(
                 'general',
                 [
-                        'label' => __( 'General', 'ultraaddons' ),
+                        'label' => __( 'General', 'ultraaddons-elementor-lite' ),
                 ]
         );
         
@@ -331,14 +331,14 @@ class Menu extends Base{
                 $this->add_control(
                         'menu',
                         [
-                                'label'        => __( 'Menu', 'ultraaddons' ),
+                                'label'        => __( 'Menu', 'ultraaddons-elementor-lite' ),
                                 'type'         => Controls_Manager::SELECT,
                                 'options'      => $menus,
                                 'default'      => array_keys( $menus )[0],
                                 'save_default' => true,
                                 'separator'    => 'after',
                                 /* translators: %s Nav menu URL */
-                                'description'  => sprintf( __( 'Go to the <a href="%s" target="_blank">Menus screen</a> to manage your menus.', 'ultraaddons' ), admin_url( 'nav-menus.php' ) ),
+                                'description'  => sprintf( __( 'Go to the <a href="%s" target="_blank">Menus screen</a> to manage your menus.', 'ultraaddons-elementor-lite' ), admin_url( 'nav-menus.php' ) ),
                         ]
                 );
         } else {
@@ -347,7 +347,7 @@ class Menu extends Base{
                         [
                                 'type'            => Controls_Manager::RAW_HTML,
                                 /* translators: %s Nav menu URL */
-                                'raw'             => sprintf( __( '<strong>There are no menus in your site.</strong><br>Go to the <a href="%s" target="_blank">Menus screen</a> to create one.', 'ultraaddons' ), admin_url( 'nav-menus.php?action=edit&menu=0' ) ),
+                                'raw'             => sprintf( __( '<strong>There are no menus in your site.</strong><br>Go to the <a href="%s" target="_blank">Menus screen</a> to create one.', 'ultraaddons-elementor-lite' ), admin_url( 'nav-menus.php?action=edit&menu=0' ) ),
                                 'separator'       => 'after',
                                 'content_classes' => 'elementor-panel-alert elementor-panel-alert-info',
                         ]
@@ -358,12 +358,12 @@ class Menu extends Base{
         $this->add_control(
                 'sub_menu_type',
                 [
-                        'label'        => __( 'Sub Menu Type', 'ultraaddons' ),
+                        'label'        => __( 'Sub Menu Type', 'ultraaddons-elementor-lite' ),
                         'type'         => Controls_Manager::SELECT,
                         'options'      => [
-                            'normal'    => __( 'Default', 'ultraaddons' ),
-                            'fullwidth'    => __( 'Full Width Flex', 'ultraaddons' ),
-                            'mega'    => __( 'Mega', 'ultraaddons' ),
+                            'normal'    => __( 'Default', 'ultraaddons-elementor-lite' ),
+                            'fullwidth'    => __( 'Full Width Flex', 'ultraaddons-elementor-lite' ),
+                            'mega'    => __( 'Mega', 'ultraaddons-elementor-lite' ),
                         ],
                         'default'      => 'normal',
                         'save_default' => true,
@@ -374,14 +374,14 @@ class Menu extends Base{
         $this->add_control(
                     'add_icon',
                     [
-                            'label' => __( 'Menu Icon', 'ultraaddons' ),
+                            'label' => __( 'Menu Icon', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::ICONS,
                             'fa4compatibility' => 'icon',
                             'default' => [
                                     'value' => 'fas fa-shopping-cart', //<i class="fas fa-shopping-cart"></i>
                                     'library' => 'fa-solid',
                             ],
-                            'description'   => esc_html__( 'Only for Mobile Menu, If any user want to show rext for Mobile' ),
+                            'description'   => esc_html__( 'Only for Mobile Menu, If any user want to show rext for Mobile', 'ultraaddons-elementor-lite' ),
                             
                     ]
             );
@@ -391,23 +391,23 @@ class Menu extends Base{
         $this->add_control(
                 'menu_text',
                 [
-                        'label'        => __( 'Menu Text', 'ultraaddons' ),
+                        'label'        => __( 'Menu Text', 'ultraaddons-elementor-lite' ),
                         'type'         => Controls_Manager::TEXT,
-                        'placeholder'  => __( 'Primary Menu', 'ultraaddons' ),
-                        'default'      => __( 'Primary Menu', 'ultraaddons' ),//'Primary Menu',
+                        'placeholder'  => __( 'Primary Menu', 'ultraaddons-elementor-lite' ),
+                        'default'      => __( 'Primary Menu', 'ultraaddons-elementor-lite' ),//'Primary Menu',
                         'save_default' => true,
-                        'description'   => esc_html__( 'Only for Mobile Menu, If any user want to show rext for Mobile' ),
+                        'description'   => esc_html__( 'Only for Mobile Menu, If any user want to show rext for Mobile', 'ultraaddons-elementor-lite' ),
                 ]
         );
         
         $this->add_control(
                 'mega_menu',
                 [
-                        'label' => __( 'General Mega Menu', 'ultraaddons' ),
-                        'description' => __( 'All submenu will display in two line', 'ultraaddons' ),
+                        'label' => __( 'General Mega Menu', 'ultraaddons-elementor-lite' ),
+                        'description' => __( 'All submenu will display in two line', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SWITCHER,
-                        'label_on' => __( 'On', 'ultraaddons' ),
-                        'label_off' => __( 'Off', 'ultraaddons' ),
+                        'label_on' => __( 'On', 'ultraaddons-elementor-lite' ),
+                        'label_off' => __( 'Off', 'ultraaddons-elementor-lite' ),
                         'return_value' => 'yes',
                         'default' => '',
                         'prefix_class' => 'mega-menu-'

@@ -26,7 +26,7 @@ class Countdown_Timer extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua','timer', 'count', 'down', 'countdown', 'count down timer', 'count timer','clock','watch' ];
+        return [ 'ultraaddons-elementor-lite', 'ua','timer', 'count', 'down', 'countdown', 'count down timer', 'count timer','clock','watch' ];
     }
     
     
@@ -63,10 +63,10 @@ class Countdown_Timer extends Base{
      */
     protected function render() {
         $settings = $this->get_settings_for_display();
-        $unique_class = 'ua-count-down-' . rand( 509,1254 );
+        $unique_class = 'ua-count-down-' . wp_rand( 509,1254 );
         $this->add_render_attribute( 'wrapper', 'class', 'ua-coun-down-timer-wrapper' );
         $date = $settings['date_time'];
-        $date_time = date( 'm/d/Y H:i', strtotime($date) );
+        $date_time = gmdate( 'm/d/Y H:i', strtotime($date) );
         
         //Label's 
         $days = $settings['days'];
@@ -85,24 +85,24 @@ class Countdown_Timer extends Base{
 
         $separator = isset( $settings['show_separator'] ) && $settings['show_separator'] == 'yes' ? '<div class="sep"><span>:</span></div>' : '';
         ?>
-    <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
+    <div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
         
         <div class="ua-coun-down-timer <?php echo esc_attr( $unique_class ); ?>">
             <div class="single-date">
                 <span class="timer_int days">00 </span>
-                <span class="timer_label"><?php echo $days; ?></span>
+                <span class="timer_label"><?php echo esc_html( $days ); ?></span>
             </div>
-            <?php echo $separator; ?>
+            <?php echo esc_html( $separator ); ?>
             <div class="single-date">
                 <span class="timer_int hrs">00 </span>
                 <span class="timer_label"><?php echo esc_html( $hours ); ?></span>
             </div>
-            <?php echo $separator; ?>
+            <?php echo esc_html( $separator ); ?>
             <div class="single-date">
                 <span class="timer_int mnts">00 </span>
                 <span class="timer_label"><?php echo esc_html( $minutes ); ?></span>
             </div>
-            <?php echo $separator; ?>
+            <?php echo esc_html( $separator ); ?>
             <div class="single-date">
                 <span class="timer_int secs">00 </span>
                 <span class="timer_label"><?php echo esc_html( $seconds ); ?></span>
@@ -178,7 +178,7 @@ class Countdown_Timer extends Base{
         $this->start_controls_section(
             'label',
             [
-                'label'     => esc_html__( 'Label', 'ultraaddons' ),
+                'label'     => esc_html__( 'Label', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -187,12 +187,12 @@ class Countdown_Timer extends Base{
         $this->add_control(
             'days',
             [
-                'label'                 => __( 'Day', 'ultraaddons' ),
+                'label'                 => __( 'Day', 'ultraaddons-elementor-lite' ),
                 'type'                  => Controls_Manager::TEXT,
-                'placeholder'   => __( 'eg: Days', 'ultraaddons' ),
+                'placeholder'   => __( 'eg: Days', 'ultraaddons-elementor-lite' ),
                 'label_block'   => TRUE,
                 'dynamic'       => ['active' => true],
-                'default'       => esc_html__( 'Days', 'ultraaddons' ),
+                'default'       => esc_html__( 'Days', 'ultraaddons-elementor-lite' ),
             ]
         );
         
@@ -200,12 +200,12 @@ class Countdown_Timer extends Base{
         $this->add_control(
             'hours',
             [
-                'label'                 => __( 'Hour', 'ultraaddons' ),
+                'label'                 => __( 'Hour', 'ultraaddons-elementor-lite' ),
                 'type'                  => Controls_Manager::TEXT,
-                'placeholder'   => __( 'eg: Hours', 'ultraaddons' ),
+                'placeholder'   => __( 'eg: Hours', 'ultraaddons-elementor-lite' ),
                 'label_block'   => TRUE,
                 'dynamic'       => ['active' => true],
-                'default'       => esc_html__( 'Hours', 'ultraaddons' ),
+                'default'       => esc_html__( 'Hours', 'ultraaddons-elementor-lite' ),
             ]
         );
         
@@ -213,12 +213,12 @@ class Countdown_Timer extends Base{
         $this->add_control(
             'minutes',
             [
-                'label'                 => __( 'Minute', 'ultraaddons' ),
+                'label'                 => __( 'Minute', 'ultraaddons-elementor-lite' ),
                 'type'                  => Controls_Manager::TEXT,
-                'placeholder'   => __( 'eg: Minutes', 'ultraaddons' ),
+                'placeholder'   => __( 'eg: Minutes', 'ultraaddons-elementor-lite' ),
                 'label_block'   => TRUE,
                 'dynamic'       => ['active' => true],
-                'default'       => esc_html__( 'Minutes', 'ultraaddons' ),
+                'default'       => esc_html__( 'Minutes', 'ultraaddons-elementor-lite' ),
             ]
         );
         
@@ -226,12 +226,12 @@ class Countdown_Timer extends Base{
         $this->add_control(
             'seconds',
             [
-                'label'                 => __( 'Second', 'ultraaddons' ),
+                'label'                 => __( 'Second', 'ultraaddons-elementor-lite' ),
                 'type'                  => Controls_Manager::TEXT,
-                'placeholder'   => __( 'eg: Seconds', 'ultraaddons' ),
+                'placeholder'   => __( 'eg: Seconds', 'ultraaddons-elementor-lite' ),
                 'label_block'   => TRUE,
                 'dynamic'       => ['active' => true],
-                'default'       => esc_html__( 'Seconds', 'ultraaddons' ),
+                'default'       => esc_html__( 'Seconds', 'ultraaddons-elementor-lite' ),
             ]
         );
         
@@ -250,7 +250,7 @@ class Countdown_Timer extends Base{
         $this->start_controls_section(
             'general_content',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -259,7 +259,7 @@ class Countdown_Timer extends Base{
         $this->add_control(
             'date_time',
             [
-                'label'                 => __( 'End Date', 'ultraaddons' ),
+                'label'                 => __( 'End Date', 'ultraaddons-elementor-lite' ),
                 'type'                  => Controls_Manager::DATE_TIME,
             ]
         );
@@ -271,7 +271,7 @@ class Countdown_Timer extends Base{
         $this->start_controls_section(
             'general_timer_controls',
             [
-                'label'     => esc_html__( 'Timer Controls', 'ultraaddons' ),
+                'label'     => esc_html__( 'Timer Controls', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -279,12 +279,12 @@ class Countdown_Timer extends Base{
         $this->add_control(
                 'view',
                 [
-                        'label' => __( 'View', 'ultraaddons' ),
+                        'label' => __( 'View', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SELECT,
                         'options' => [
-                                'default' => __( 'Default', 'ultraaddons' ),
-                                'stacked' => __( 'Stacked', 'ultraaddons' ),
-                                'framed' => __( 'Framed', 'ultraaddons' ),
+                                'default' => __( 'Default', 'ultraaddons-elementor-lite' ),
+                                'stacked' => __( 'Stacked', 'ultraaddons-elementor-lite' ),
+                                'framed' => __( 'Framed', 'ultraaddons-elementor-lite' ),
                         ],
                         'default' => 'framed',
                         'prefix_class' => 'elementor-view-',
@@ -294,11 +294,11 @@ class Countdown_Timer extends Base{
         $this->add_control(
                 'shape',
                 [
-                        'label' => __( 'Shape', 'ultraaddons' ),
+                        'label' => __( 'Shape', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SELECT,
                         'options' => [
-                                'circle' => __( 'Circle', 'ultraaddons' ),
-                                'square' => __( 'Square', 'ultraaddons' ),
+                                'circle' => __( 'Circle', 'ultraaddons-elementor-lite' ),
+                                'square' => __( 'Square', 'ultraaddons-elementor-lite' ),
                         ],
                         'default' => 'circle',
                         'condition' => [
@@ -311,10 +311,10 @@ class Countdown_Timer extends Base{
         $this->add_control(
                 'show_separator',
                 [
-                        'label' => __( 'Show Separator?', 'ultraaddons' ),
+                        'label' => __( 'Show Separator?', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SWITCHER,
-                        'label_on' => __( 'Show', 'ultraaddons' ),
-                        'label_off' => __( 'Hide', 'ultraaddons' ),
+                        'label_on' => __( 'Show', 'ultraaddons-elementor-lite' ),
+                        'label_off' => __( 'Hide', 'ultraaddons-elementor-lite' ),
                         'return_value' => 'yes',
                         'default' => 'yes',
                 ]
@@ -323,7 +323,7 @@ class Countdown_Timer extends Base{
         $this->add_responsive_control(
                 'box_size',
                 [
-                        'label' => __( 'Box Size', 'ultraaddons' ),
+                        'label' => __( 'Box Size', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SLIDER,
                         'size_units' => [ 'px' ],
                         'range' => [
@@ -349,7 +349,7 @@ class Countdown_Timer extends Base{
         $this->add_responsive_control(
                 'box_gap',
                 [
-                        'label' => __( 'Box Gap', 'ultraaddons' ),
+                        'label' => __( 'Box Gap', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SLIDER,
                         'size_units' => [ 'px' ],
                         'range' => [
@@ -381,7 +381,7 @@ class Countdown_Timer extends Base{
         $this->start_controls_section(
             'style_general',
             [
-                'label'     => esc_html__( 'Design', 'ultraaddons' ),
+                'label'     => esc_html__( 'Design', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -389,7 +389,7 @@ class Countdown_Timer extends Base{
         $this->add_control(
             'bg_color',
             [
-                'label'     => __( 'Background', 'ultraaddons' ),
+                'label'     => __( 'Background', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .single-date' => 'background-color: {{VALUE}}',
@@ -400,7 +400,7 @@ class Countdown_Timer extends Base{
         $this->add_control(
             'time_color',
             [
-                'label'     => __( 'Time Text Color', 'ultraaddons' ),
+                'label'     => __( 'Time Text Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .single-date span.timer_int' => 'color: {{VALUE}}',
@@ -411,7 +411,7 @@ class Countdown_Timer extends Base{
         $this->add_control(
             'label_color',
             [
-                'label'     => __( 'Label Color', 'ultraaddons' ),
+                'label'     => __( 'Label Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .single-date span.timer_label' => 'color: {{VALUE}}',
@@ -423,7 +423,7 @@ class Countdown_Timer extends Base{
                 Group_Control_Border::get_type(),
                 [
                         'name' => 'border',
-                        'label' => __( 'Border', 'ultraaddons' ),
+                        'label' => __( 'Border', 'ultraaddons-elementor-lite' ),
                         'selector' => '{{WRAPPER}} .single-date',
                 ]
         );
@@ -432,7 +432,7 @@ class Countdown_Timer extends Base{
                 Group_Control_Box_Shadow::get_type(),
                 [
                         'name' => 'box_shadow',
-                        'label' => __( 'Box Shadow', 'ultraaddons' ),
+                        'label' => __( 'Box Shadow', 'ultraaddons-elementor-lite' ),
                         'selector' => '{{WRAPPER}} .single-date',
                 ]
         );
@@ -449,7 +449,7 @@ class Countdown_Timer extends Base{
         $this->start_controls_section(
             'typography',
             [
-                'label'     => esc_html__( 'Typography', 'ultraaddons' ),
+                'label'     => esc_html__( 'Typography', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );

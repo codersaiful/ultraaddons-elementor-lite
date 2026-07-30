@@ -36,7 +36,7 @@ class Step_Flow extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua', 'step flow', 'step', 'flow' ];
+        return [ 'ultraaddons-elementor-lite', 'ua', 'step flow', 'step', 'flow' ];
     }
 	
 	 /**
@@ -64,23 +64,23 @@ class Step_Flow extends Base{
         $this->start_controls_section(
             '_ua_step_flow_content_tab',
             [
-                'label'     => esc_html__( 'Content', 'ultraaddons' ),
+                'label'     => esc_html__( 'Content', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
 		$this->add_control(
 			'_ua_step_flow_badge',
 			[
-				'label' => __( 'Badge', 'ultraaddons' ),
+				'label' => __( 'Badge', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( '1', 'ultraaddons' ),
+				'default' => __( '1', 'ultraaddons-elementor-lite' ),
 				'label_block' => false,
 			]
 		);
 		$this->add_control(
 			'_ua_step_flow_icon',
 			[
-				'label' => __( 'Icon', 'ultraaddons' ),
+				'label' => __( 'Icon', 'ultraaddons-elementor-lite' ),
 				'type' => \Elementor\Controls_Manager::ICONS,
 				'default' => [
 					'value' => 'fas fa-star',
@@ -91,10 +91,10 @@ class Step_Flow extends Base{
 		$this->add_control(
 			'_ua_step_flow_title',
 			[
-				'label' => __( 'Title', 'ultraaddons' ),
+				'label' => __( 'Title', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Step Flow Title', 'ultraaddons' ),
-				'placeholder' => __( 'Enter your title', 'ultraaddons' ),
+				'default' => __( 'Step Flow Title', 'ultraaddons-elementor-lite' ),
+				'placeholder' => __( 'Enter your title', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
@@ -102,20 +102,20 @@ class Step_Flow extends Base{
 		$this->add_control(
 			'_ua_step_flow_content',
 			[
-				'label' => __( 'Content', 'ultraaddons' ),
+				'label' => __( 'Content', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXTAREA,
-				'default' => __( 'The quickest & easiest service provider. Loem Ipsum doler sit amit.', 'ultraaddons' ),
-				'placeholder' => __( 'Enter your title', 'ultraaddons' ),
+				'default' => __( 'The quickest & easiest service provider. Loem Ipsum doler sit amit.', 'ultraaddons-elementor-lite' ),
+				'placeholder' => __( 'Enter your title', 'ultraaddons-elementor-lite' ),
 				'label_block' => true,
 			]
 		);
 		$this->add_control(
 			'_ua_step_flow_direction',
 			[
-				'label' => __( 'Direction Arrow', 'ultraaddons' ),
+				'label' => __( 'Direction Arrow', 'ultraaddons-elementor-lite' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => __( 'Show', 'ultraaddons' ),
-				'label_off' => __( 'Hide', 'ultraaddons' ),
+				'label_on' => __( 'Show', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'Hide', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 			]
@@ -123,10 +123,10 @@ class Step_Flow extends Base{
 		$this->add_control(
 			'_ua_step_flow_badge_switch',
 			[
-				'label' => __( 'Badge', 'ultraaddons' ),
+				'label' => __( 'Badge', 'ultraaddons-elementor-lite' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => __( 'Show', 'ultraaddons' ),
-				'label_off' => __( 'Hide', 'ultraaddons' ),
+				'label_on' => __( 'Show', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'Hide', 'ultraaddons-elementor-lite' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 			]
@@ -134,19 +134,19 @@ class Step_Flow extends Base{
 		$this->add_responsive_control(
 			'_ua_step_flow_text_alignment',
 			[
-				'label' => esc_html__( 'Alignment', 'ultraaddons' ),
+				'label' => esc_html__( 'Alignment', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'ultraaddons' ),
+						'title' => esc_html__( 'Left', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'ultraaddons' ),
+						'title' => esc_html__( 'Center', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'ultraaddons' ),
+						'title' => esc_html__( 'Right', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-text-align-right',
 					],
 				],
@@ -163,14 +163,14 @@ class Step_Flow extends Base{
         $this->start_controls_section(
             'step_flow_content_style',
             [
-                'label'     => esc_html__( 'Content Style', 'ultraaddons' ),
+                'label'     => esc_html__( 'Content Style', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
 		$this->add_responsive_control(
 			'_ua_step_flow_title_margin',
 			[
-				'label'       => esc_html__( 'Title Margin', 'ultraaddons' ),
+				'label'       => esc_html__( 'Title Margin', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px'],
 				'placeholder' => [
@@ -186,7 +186,7 @@ class Step_Flow extends Base{
 		);
 		$this->add_control(
 			'_ua_step_flow_title_color', [
-				'label' => __( 'Title Color', 'ultraaddons' ),
+				'label' => __( 'Title Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-steps-title' => 'color: {{VALUE}};',
@@ -204,7 +204,7 @@ class Step_Flow extends Base{
         );
 		$this->add_control(
 			'_ua_step_flow_content_color', [
-				'label' => __( 'Description Color', 'ultraaddons' ),
+				'label' => __( 'Description Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-step-description' => 'color: {{VALUE}};',
@@ -227,7 +227,7 @@ class Step_Flow extends Base{
       $this->start_controls_section(
             '_ua_step_flow_iconbox_style',
             [
-                'label'     => esc_html__( 'Icon Box Style', 'ultraaddons' ),
+                'label'     => esc_html__( 'Icon Box Style', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -235,7 +235,7 @@ class Step_Flow extends Base{
       $this->add_responsive_control(
 			'_ua_icon_box_radius',
 			[
-				'label'       => esc_html__( 'Box Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Box Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -253,7 +253,7 @@ class Step_Flow extends Base{
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name' => '_ua_step_flow_border',
-				'label' => __( 'Border', 'ultraaddons' ),
+				'label' => __( 'Border', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-steps-icon',
 			]
 		);
@@ -261,14 +261,14 @@ class Step_Flow extends Base{
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => '_ua_icon_box_shadow',
-				'label' => __( 'Box Shadow', 'ultraaddons' ),
+				'label' => __( 'Box Shadow', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-steps-icon',
 			]
 		);
 		$this->add_control(
 			'_ua_step_flow_icon_size_s',
 			[
-				'label' => __( 'Icon Size', 'ultraaddons' ),
+				'label' => __( 'Icon Size', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', 'em' ],
 				'range' => [
@@ -294,7 +294,7 @@ class Step_Flow extends Base{
 		);
 		$this->add_control(
 			'_ua_step_flow_icon_color_s', [
-				'label' => __( 'Icon Color', 'ultraaddons' ),
+				'label' => __( 'Icon Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-steps-icon i' => 'color: {{VALUE}};',
@@ -305,7 +305,7 @@ class Step_Flow extends Base{
 			\Elementor\Group_Control_Background::get_type(),
 			[
 				'name' => '_ua_step_flow_icon',
-				'label' => __( 'Background', 'ultraaddons' ),
+				'label' => __( 'Background', 'ultraaddons-elementor-lite' ),
 				'types' => [ 'classic', 'gradient' ],
 				'selector' => '{{WRAPPER}} .ua-steps-icon',
 				'separator' => 'before'
@@ -318,13 +318,13 @@ class Step_Flow extends Base{
       $this->start_controls_section(
             '_ua_step_flow_badge_style',
             [
-                'label'     => esc_html__( 'Badge Style', 'ultraaddons' ),
+                'label'     => esc_html__( 'Badge Style', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
 		$this->add_control(
 			'_ua_step_flow_badge_bg', [
-				'label' => __( 'Badge Background', 'ultraaddons' ),
+				'label' => __( 'Badge Background', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-steps-label' => 'background-color: {{VALUE}};',
@@ -333,7 +333,7 @@ class Step_Flow extends Base{
         );
 		$this->add_control(
 			'_ua_step_flow_badge_step', [
-				'label' => __( 'Step Color', 'ultraaddons' ),
+				'label' => __( 'Step Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 						'{{WRAPPER}} .ua-steps-label' => 'color: {{VALUE}};',
@@ -352,7 +352,7 @@ class Step_Flow extends Base{
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => '_ua_badge_shadow',
-				'label' => __( 'Badge Shadow', 'ultraaddons' ),
+				'label' => __( 'Badge Shadow', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-steps-label',
 			]
 		);
@@ -360,14 +360,14 @@ class Step_Flow extends Base{
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name' => '_ua_step_flow_badge_border',
-				'label' => __( 'Border', 'ultraaddons' ),
+				'label' => __( 'Border', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-steps-label',
 			]
 		);
 		$this->add_responsive_control(
 			'_ua_badge_radius',
 			[
-				'label'       => esc_html__( 'Badge Radius', 'ultraaddons' ),
+				'label'       => esc_html__( 'Badge Radius', 'ultraaddons-elementor-lite' ),
 				'type'        => Controls_Manager::DIMENSIONS,
 				'size_units'  => [ 'px', '%' ],
 				'placeholder' => [
@@ -389,13 +389,13 @@ class Step_Flow extends Base{
       $this->start_controls_section(
             '_ua_step_flow_direction_style',
             [
-                'label'     => esc_html__( 'Direction Style', 'ultraaddons' ),
+                'label'     => esc_html__( 'Direction Style', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
 		$this->add_control(
 			'_ua_step_flow_direction_color', [
-				'label' => __( 'Direction Color', 'ultraaddons' ),
+				'label' => __( 'Direction Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ua-step-arrow:after' => 'border-top: 1px solid {{VALUE}}; border-right: 1px solid {{VALUE}}; ',
@@ -420,15 +420,15 @@ class Step_Flow extends Base{
 			<?php \Elementor\Icons_Manager::render_icon( $settings['_ua_step_flow_icon'], [ 'aria-hidden' => 'true' ] ); ?>
 			<?php if('yes'===$badge ): ?>
 			<span class="ua-steps-label">
-				<?php echo $settings['_ua_step_flow_badge']; ?>
+				<?php echo esc_html( $settings['_ua_step_flow_badge'] ); ?>
 			</span>
 			<?php endif;?>
 		</div>
 		<h2 class="ua-steps-title">
-			<?php echo $settings['_ua_step_flow_title']; ?>
+			<?php echo esc_html( $settings['_ua_step_flow_title'] ); ?>
 		</h2>
 		<p class="ua-step-description">
-			<?php echo $settings['_ua_step_flow_content']; ?>
+			<?php echo esc_html( $settings['_ua_step_flow_content'] ); ?>
 		</p>
 	</div>
 <?php }

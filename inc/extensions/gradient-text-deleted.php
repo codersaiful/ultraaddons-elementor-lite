@@ -55,7 +55,7 @@ class Gradient_Text {
 		$element->start_controls_section(
 			'_ua_section_gradient_text',
 			[
-				'label' => __( 'Gradient Text', 'ultraaddons' ) . ultraaddons_icon_markup(),
+				'label' => __( 'Gradient Text', 'ultraaddons-elementor-lite' ) . ultraaddons_icon_markup(),
 				'tab'   => $tabs,
 			]
 		);
@@ -64,11 +64,11 @@ class Gradient_Text {
                 $element->add_control(
                         '_ua_gradient_text_on_off',
                         [
-                                'label' => __( 'Switch', 'ultraaddons' ),
-                                'description' => __( 'Gradient Text enable or disable option.', 'ultraaddons' ),
+                                'label' => __( 'Switch', 'ultraaddons-elementor-lite' ),
+                                'description' => __( 'Gradient Text enable or disable option.', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::SWITCHER,
-                                'label_on' => __( 'On', 'ultraaddons' ),
-                                'label_off' => __( 'Off', 'ultraaddons' ),
+                                'label_on' => __( 'On', 'ultraaddons-elementor-lite' ),
+                                'label_off' => __( 'Off', 'ultraaddons-elementor-lite' ),
                                 'return_value' => 'yes',
                                 'default' => '',
                                 'prefix_class' => 'ua-gradient-text-switch-',
@@ -105,7 +105,7 @@ class Gradient_Text {
                 $element->start_controls_tab(
                         '_ua_gradient_normal',
                         [
-                                'label' => __( 'Normal', 'ultraaddons' ),
+                                'label' => __( 'Normal', 'ultraaddons-elementor-lite' ),
                         ]
                 );
                 
@@ -123,7 +123,7 @@ class Gradient_Text {
                 $element->start_controls_tab(
                         '_ua_gradient_hover',
                         [
-                                'label' => __( 'Hover', 'ultraaddons' ),
+                                'label' => __( 'Hover', 'ultraaddons-elementor-lite' ),
                         ]
                 );
 

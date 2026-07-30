@@ -32,7 +32,7 @@ class Portfolio extends Base {
      * @return type array
      */
     public function get_keywords() {
-            return [ 'ultraaddons','ua', 'info', 'service', 'box' ];
+            return [ 'ultraaddons-elementor-lite','ua', 'info', 'service', 'box' ];
     }
     
     
@@ -98,17 +98,17 @@ class Portfolio extends Base {
     public function query_posts() {
         $settings = $this->get_settings_for_display();
 
-        $args = array(
+        $ultraaddons_args = array(
             'posts_per_page' => isset( $settings['_ua_posts_per_page'] ) ? $settings['_ua_posts_per_page'] : 3,
             'post_status'   => 'publish',
             'post_type' => isset( $settings['_ua_post_type'] ) ? $settings['_ua_post_type'] : 'post',
             'orderby'   => isset( $settings['_ua_order_by'] ) ? $settings['_ua_order_by'] : 'date',
             'order' => isset( $settings['_ua_order'] ) ? $settings['_ua_order'] : 'asc',
             'ignore_sticky_posts' => isset( $settings['_ua_ignore_sticky_posts'] ) && $settings['_ua_ignore_sticky_posts'] == 'yes' ? true : false,
-            'post__not_in' => '',
+            // 'post__not_in' => '',
             'author__in' => ''
         );
-		$this->_query = new WP_Query( $args );
+		$this->_query = new WP_Query( $ultraaddons_args );
 	}
 
     protected function render_post() {
@@ -135,7 +135,7 @@ class Portfolio extends Base {
 
 		?>
 		<article <?php post_class( $classes ); ?>>
-			<a class="elementor-post__thumbnail__link" href="<?php echo get_permalink(); ?>">
+			<a class="elementor-post__thumbnail__link" href="<?php echo esc_url( get_permalink() ); ?>">
 		<?php
 	}
 
@@ -149,7 +149,7 @@ class Portfolio extends Base {
 		$thumbnail_html = Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail_size' );
 		?>
 		<div class="elementor-portfolio-item__img elementor-post__thumbnail">
-			<?php echo $thumbnail_html; ?>
+			<?php echo wp_kses_post( $thumbnail_html ); ?>
 		</div>
 		<?php
 	}
@@ -173,9 +173,9 @@ class Portfolio extends Base {
 
 		$tag = Utils::validate_html_tag( $this->get_settings( 'title_tag' ) );
 		?>
-		<<?php echo $tag; ?> class="elementor-portfolio-item__title">
+		<<?php echo esc_attr( $tag ); ?> class="elementor-portfolio-item__title">
 		<?php the_title(); ?>
-		</<?php echo $tag; ?>>
+		</<?php echo esc_attr( $tag ); ?>>
 		<?php
 	}
 
@@ -190,7 +190,7 @@ class Portfolio extends Base {
 		$this->start_controls_section(
 			'section_layout',
 			[
-				'label' => __( 'Layout', 'ultraaddons' ),
+				'label' => __( 'Layout', 'ultraaddons-elementor-lite' ),
 				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -198,7 +198,7 @@ class Portfolio extends Base {
 		$this->add_responsive_control(
 			'columns',
 			[
-				'label' => __( 'Columns', 'ultraaddons' ),
+				'label' => __( 'Columns', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => '3',
 				'tablet_default' => '2',
@@ -223,7 +223,7 @@ class Portfolio extends Base {
 			Group_Control_Image_Size::get_type(),
 			[
 				'name' => 'thumbnail_size',
-				'exclude' => [ 'custom' ],
+				// 'exclude' => [ 'custom' ],
 				'default' => 'medium',
 				'prefix_class' => 'elementor-portfolio--thumbnail-size-',
 			]
@@ -232,10 +232,10 @@ class Portfolio extends Base {
 		// $this->add_control(
 		// 	'masonry',
 		// 	[
-		// 		'label' => __( 'Masonry', 'ultraaddons' ),
+		// 		'label' => __( 'Masonry', 'ultraaddons-elementor-lite' ),
 		// 		'type' => Controls_Manager::SWITCHER,
-		// 		'label_off' => __( 'Off', 'ultraaddons' ),
-		// 		'label_on' => __( 'On', 'ultraaddons' ),
+		// 		'label_off' => __( 'Off', 'ultraaddons-elementor-lite' ),
+		// 		'label_on' => __( 'On', 'ultraaddons-elementor-lite' ),
 		// 		'condition' => [
 		// 			'columns!' => '1',
 		// 		],
@@ -247,7 +247,7 @@ class Portfolio extends Base {
 		$this->add_control(
 			'item_ratio',
 			[
-				'label' => __( 'Item Ratio', 'ultraaddons' ),
+				'label' => __( 'Item Ratio', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 0.66,
@@ -270,18 +270,18 @@ class Portfolio extends Base {
 		$this->add_control(
 			'show_title',
 			[
-				'label' => __( 'Show Title', 'ultraaddons' ),
+				'label' => __( 'Show Title', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => 'yes',
-				'label_off' => __( 'Off', 'ultraaddons' ),
-				'label_on' => __( 'On', 'ultraaddons' ),
+				'label_off' => __( 'Off', 'ultraaddons-elementor-lite' ),
+				'label_on' => __( 'On', 'ultraaddons-elementor-lite' ),
 			]
 		);
 
 		$this->add_control(
 			'title_tag',
 			[
-				'label' => __( 'Title HTML Tag', 'ultraaddons' ),
+				'label' => __( 'Title HTML Tag', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'h1' => 'H1',
@@ -306,7 +306,7 @@ class Portfolio extends Base {
 		$this->start_controls_section(
 			'section_query',
 			[
-				'label' => __( 'Query', 'ultraaddons' ),
+				'label' => __( 'Query', 'ultraaddons-elementor-lite' ),
 				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -314,7 +314,7 @@ class Portfolio extends Base {
         $this->add_control(
             '_ua_post_type',
             [
-                'label' => __( 'Source', 'ultraaddons' ),
+                'label' => __( 'Source', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::SELECT,
                 'options' => ultraaddons_get_post_types( [],[ 'elementor_library', 'attachment' ] ),
                 'default' => 'post',
@@ -323,9 +323,9 @@ class Portfolio extends Base {
 
         $this->add_control(
             '_ua_posts_per_page', [
-                'label'       => esc_html__('Posts Per Page', 'ultraaddons'),
+                'label'       => esc_html__('Posts Per Page', 'ultraaddons-elementor-lite'),
                 'type'        => Controls_Manager::NUMBER,
-                'placeholder' => esc_html__('Enter Number', 'ultraaddons'),
+                'placeholder' => esc_html__('Enter Number', 'ultraaddons-elementor-lite'),
                 'default'     => '3',
             ]
         );
@@ -333,19 +333,19 @@ class Portfolio extends Base {
         $this->add_control(
             '_ua_order_by',
             [
-                'label'   => __('Order By', 'ultraaddons'),
+                'label'   => __('Order By', 'ultraaddons-elementor-lite'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'date',
                 'options' => [
-                    'modified'   => __('Modified', 'ultraaddons'),
-                    'date'       => __('Date', 'ultraaddons'),
-                    'rand'       => __('Rand', 'ultraaddons'),
-                    'ID'         => __('ID', 'ultraaddons'),
-                    'title'      => __('Title', 'ultraaddons'),
-                    'author'     => __('Author', 'ultraaddons'),
-                    'name'       => __('Name', 'ultraaddons'),
-                    'parent'     => __('Parent', 'ultraaddons'),
-                    'menu_order' => __('Menu Order', 'ultraaddons'),
+                    'modified'   => __('Modified', 'ultraaddons-elementor-lite'),
+                    'date'       => __('Date', 'ultraaddons-elementor-lite'),
+                    'rand'       => __('Rand', 'ultraaddons-elementor-lite'),
+                    'ID'         => __('ID', 'ultraaddons-elementor-lite'),
+                    'title'      => __('Title', 'ultraaddons-elementor-lite'),
+                    'author'     => __('Author', 'ultraaddons-elementor-lite'),
+                    'name'       => __('Name', 'ultraaddons-elementor-lite'),
+                    'parent'     => __('Parent', 'ultraaddons-elementor-lite'),
+                    'menu_order' => __('Menu Order', 'ultraaddons-elementor-lite'),
                 ],
                 'separator' => 'before',
             ]
@@ -353,25 +353,25 @@ class Portfolio extends Base {
         $this->add_control(
             '_ua_order',
             [
-                'label'   => __('Order', 'ultraaddons'),
+                'label'   => __('Order', 'ultraaddons-elementor-lite'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'asc',
                 'options' => [
-                    'asc'  => __('Ascending Order', 'ultraaddons'),
-                    'desc' => __('Descending Order', 'ultraaddons'),
+                    'asc'  => __('Ascending Order', 'ultraaddons-elementor-lite'),
+                    'desc' => __('Descending Order', 'ultraaddons-elementor-lite'),
                 ],
             ]
         );
         $this->add_control(
             '_ua_ignore_sticky_posts', 
             [
-                'label' => __( 'Ignore Sticky Posts', 'ultraaddons' ),
+                'label' => __( 'Ignore Sticky Posts', 'ultraaddons-elementor-lite' ),
                 'type' => Controls_Manager::SWITCHER,
                 'default' => 'yes',
                 'condition' => [
                     '_ua_post_type!' => ['page', 'by_id', 'category'],
                 ],
-                'description' => __( 'Sticky-posts ordering is visible on frontend only', 'ultraaddons' ),
+                'description' => __( 'Sticky-posts ordering is visible on frontend only', 'ultraaddons-elementor-lite' ),
             ]
         );
 
@@ -380,7 +380,7 @@ class Portfolio extends Base {
 		$this->start_controls_section(
 			'filter_bar',
 			[
-				'label' => __( 'Filter Bar', 'ultraaddons' ),
+				'label' => __( 'Filter Bar', 'ultraaddons-elementor-lite' ),
 				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -388,17 +388,17 @@ class Portfolio extends Base {
 		$this->add_control(
 			'show_filter_bar',
 			[
-				'label' => __( 'Show', 'ultraaddons' ),
+				'label' => __( 'Show', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_off' => __( 'Off', 'ultraaddons' ),
-				'label_on' => __( 'On', 'ultraaddons' ),
+				'label_off' => __( 'Off', 'ultraaddons-elementor-lite' ),
+				'label_on' => __( 'On', 'ultraaddons-elementor-lite' ),
 			]
 		);
 
 		$this->add_control(
 			'taxonomy',
 			[
-				'label' => __( 'Taxonomy', 'ultraaddons' ),
+				'label' => __( 'Taxonomy', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT2,
 				'label_block' => true,
 				'default' => [],
@@ -415,7 +415,7 @@ class Portfolio extends Base {
 		$this->start_controls_section(
 			'section_design_layout',
 			[
-				'label' => __( 'Items', 'ultraaddons' ),
+				'label' => __( 'Items', 'ultraaddons-elementor-lite' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -428,7 +428,7 @@ class Portfolio extends Base {
 		$this->add_control(
 			'item_gap',
 			[
-				'label' => __( 'Item Gap', 'ultraaddons' ),
+				'label' => __( 'Item Gap', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'selectors' => [
 					'{{WRAPPER}}' => '--grid-row-gap: {{SIZE}}{{UNIT}}; --grid-column-gap: {{SIZE}}{{UNIT}};',
@@ -441,7 +441,7 @@ class Portfolio extends Base {
 		$this->add_control(
 			'column_gap',
 			[
-				'label' => __( 'Columns Gap', 'ultraaddons' ),
+				'label' => __( 'Columns Gap', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -458,7 +458,7 @@ class Portfolio extends Base {
 		$this->add_control(
 			'row_gap',
 			[
-				'label' => __( 'Rows Gap', 'ultraaddons' ),
+				'label' => __( 'Rows Gap', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -476,7 +476,7 @@ class Portfolio extends Base {
 		$this->add_control(
 			'border_radius',
 			[
-				'label' => __( 'Border Radius', 'ultraaddons' ),
+				'label' => __( 'Border Radius', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
@@ -490,7 +490,7 @@ class Portfolio extends Base {
 		$this->start_controls_section(
 			'section_design_overlay',
 			[
-				'label' => __( 'Item Overlay', 'ultraaddons' ),
+				'label' => __( 'Item Overlay', 'ultraaddons-elementor-lite' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -498,7 +498,7 @@ class Portfolio extends Base {
 		$this->add_control(
 			'color_background',
 			[
-				'label' => __( 'Background Color', 'ultraaddons' ),
+				'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'global' => [
 					'default' => Global_Colors::COLOR_ACCENT,
@@ -512,7 +512,7 @@ class Portfolio extends Base {
 		$this->add_control(
 			'color_title',
 			[
-				'label' => __( 'Color', 'ultraaddons' ),
+				'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
 				'separator' => 'before',
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
@@ -543,7 +543,7 @@ class Portfolio extends Base {
 		$this->start_controls_section(
 			'section_design_filter',
 			[
-				'label' => __( 'Filter Bar', 'ultraaddons' ),
+				'label' => __( 'Filter Bar', 'ultraaddons-elementor-lite' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'condition' => [
 					'show_filter_bar' => 'yes',
@@ -554,7 +554,7 @@ class Portfolio extends Base {
 		$this->add_control(
 			'color_filter',
 			[
-				'label' => __( 'Color', 'ultraaddons' ),
+				'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'global' => [
 					'default' => Global_Colors::COLOR_TEXT,
@@ -568,7 +568,7 @@ class Portfolio extends Base {
 		$this->add_control(
 			'color_filter_active',
 			[
-				'label' => __( 'Active Color', 'ultraaddons' ),
+				'label' => __( 'Active Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'global' => [
 					'default' => Global_Colors::COLOR_PRIMARY,
@@ -593,7 +593,7 @@ class Portfolio extends Base {
 		$this->add_control(
 			'filter_item_spacing',
 			[
-				'label' => __( 'Space Between', 'ultraaddons' ),
+				'label' => __( 'Space Between', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 10,
@@ -614,7 +614,7 @@ class Portfolio extends Base {
 		$this->add_control(
 			'filter_spacing',
 			[
-				'label' => __( 'Spacing', 'ultraaddons' ),
+				'label' => __( 'Spacing', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 10,
@@ -675,25 +675,25 @@ class Portfolio extends Base {
 			return;
 		}
 
-		$terms = [];
+		$ultraaddons_terms = [];
 
 		foreach ( $this->_query->posts as $post ) {
-			$terms += $post->tags;
+			$ultraaddons_terms += $post->tags;
 		}
 
-		if ( empty( $terms ) ) {
+		if ( empty( $ultraaddons_terms ) ) {
 			return;
 		}
 
-		usort( $terms, function( $a, $b ) {
+		usort( $ultraaddons_terms, function( $a, $b ) {
 			return strcmp( $a->name, $b->name );
 		} );
 
 		?>
 		<ul class="elementor-portfolio__filters">
-			<li class="elementor-portfolio__filter elementor-active" data-filter="__all"><?php echo __( 'All', 'elementor-pro' ); ?></li>
-			<?php foreach ( $terms as $term ) { ?>
-				<li class="elementor-portfolio__filter" data-filter="<?php echo esc_attr( $term->term_id ); ?>"><?php echo $term->name; ?></li>
+			<li class="elementor-portfolio__filter elementor-active" data-filter="__all"><?php echo esc_html__( 'All', 'ultraaddons-elementor-lite' ); ?></li>
+			<?php foreach ( $ultraaddons_terms as $term ) { ?>
+				<li class="elementor-portfolio__filter" data-filter="<?php echo esc_attr( $term->term_id ); ?>"><?php echo esc_html( $term->name ); ?></li>
 			<?php } ?>
 		</ul>
 		<?php

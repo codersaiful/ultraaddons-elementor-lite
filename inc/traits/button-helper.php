@@ -85,19 +85,19 @@ trait Button_Helper{
             $this->add_inline_editing_attributes( 'btn_text' );
             ?>
 
-        <div <?php echo $this->get_render_attribute_string( 'btn_wrapper' ); ?>>
-                <a <?php echo $this->get_render_attribute_string( 'btn_link' ); ?>>
-                    <span <?php echo $this->get_render_attribute_string( 'content-wrapper' ); ?>>
+        <div <?php echo esc_attr( $this->get_render_attribute_string( 'btn_wrapper' ) ); ?>>
+                <a <?php echo esc_attr( $this->get_render_attribute_string( 'btn_link' ) ); ?>>
+                    <span <?php echo esc_attr( $this->get_render_attribute_string( 'content-wrapper' ) ); ?>>
                             <?php if ( ! empty( $settings['icon'] ) || ! empty( $settings['btn_icon']['value'] ) ) : ?>
-                            <span <?php echo $this->get_render_attribute_string( 'icon-align' ); ?>>
-                                    <?php if ( $is_new || $migrated ) :
+                            <span <?php echo esc_attr( $this->get_render_attribute_string( 'icon-align' ) ); ?>>
+                                    <?php if ( $is_new || $migrated ) : ?>
                                             Icons_Manager::render_icon( $settings['btn_icon'], [ 'aria-hidden' => 'true' ] );
                                     else : ?>
                                             <i class="<?php echo esc_attr( $settings['icon'] ); ?>" aria-hidden="true"></i>
                                     <?php endif; ?>
                             </span>
                             <?php endif; ?>
-                            <span <?php echo $this->get_render_attribute_string( 'btn_text' ); ?>><?php echo $settings['btn_text']; ?></span>
+                            <span <?php echo esc_attr( $this->get_render_attribute_string( 'btn_text' ) ); ?>><?php echo esc_html( $settings['btn_text'] ); ?></span>
                     </span>
                 </a>
         </div>
@@ -115,7 +115,7 @@ trait Button_Helper{
         $this->start_controls_section(
                     'btn_section_style',
                     [
-                            'label' => __( 'Button', 'ultraaddons' ),
+                            'label' => __( 'Button', 'ultraaddons-elementor-lite' ),
                             'tab' => Controls_Manager::TAB_STYLE,
                     ]
             );
@@ -123,23 +123,23 @@ trait Button_Helper{
             $this->add_responsive_control(
                     'btn_align',
                     [
-                            'label' => __( 'Alignment', 'ultraaddons' ),
+                            'label' => __( 'Alignment', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::CHOOSE,
                             'options' => [
                                     'left'    => [
-                                            'title' => __( 'Left', 'ultraaddons' ),
+                                            'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
                                             'icon' => 'eicon-text-align-left',
                                     ],
                                     'center' => [
-                                            'title' => __( 'Center', 'ultraaddons' ),
+                                            'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
                                             'icon' => 'eicon-text-align-center',
                                     ],
                                     'right' => [
-                                            'title' => __( 'Right', 'ultraaddons' ),
+                                            'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
                                             'icon' => 'eicon-text-align-right',
                                     ],
                                     'justify' => [
-                                            'title' => __( 'Justified', 'ultraaddons' ),
+                                            'title' => __( 'Justified', 'ultraaddons-elementor-lite' ),
                                             'icon' => 'eicon-text-align-justify',
                                     ],
                             ],
@@ -157,19 +157,19 @@ trait Button_Helper{
             $this->add_responsive_control(
                     'btn_align',
                     [
-                            'label' => __( 'Alignment', 'ultraaddons' ),
+                            'label' => __( 'Alignment', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::CHOOSE,
                             'options' => [
                                     'left'    => [
-                                            'title' => __( 'Left', 'ultraaddons' ),
+                                            'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
                                             'icon' => 'eicon-text-align-left',
                                     ],
                                     'center' => [
-                                            'title' => __( 'Center', 'ultraaddons' ),
+                                            'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
                                             'icon' => 'eicon-text-align-center',
                                     ],
                                     'right' => [
-                                            'title' => __( 'Right', 'ultraaddons' ),
+                                            'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
                                             'icon' => 'eicon-text-align-right',
                                     ],
                             ],
@@ -198,14 +198,14 @@ trait Button_Helper{
             $this->start_controls_tab(
                     'tab_btn_normal',
                     [
-                            'label' => __( 'Normal', 'ultraaddons' ),
+                            'label' => __( 'Normal', 'ultraaddons-elementor-lite' ),
                     ]
             );
             
             $this->add_control(
                     'btn_text_color',
                     [
-                            'label' => __( 'Text Color', 'ultraaddons' ),
+                            'label' => __( 'Text Color', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::COLOR,
                             'default' => '#21272c',
                             'selectors' => [
@@ -239,15 +239,15 @@ trait Button_Helper{
             $this->add_control(
                     'btn_border_type',
                     [
-                            'label' => _x( 'Border Type', 'Border Control', 'ultraaddons' ),
+                            'label' => _x( 'Border Type', 'Border Control', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SELECT,
                             'separator' => 'before',
                             'options' => [
-                                    '' => __( 'None', 'ultraaddons' ),
-                                    'solid' => _x( 'Solid', 'Border Control', 'ultraaddons' ),
-                                    'double' => _x( 'Double', 'Border Control', 'ultraaddons' ),
-                                    'dotted' => _x( 'Dotted', 'Border Control', 'ultraaddons' ),
-                                    'dashed' => _x( 'Dashed', 'Border Control', 'ultraaddons' ),
+                                    '' => __( 'None', 'ultraaddons-elementor-lite' ),
+                                    'solid' => _x( 'Solid', 'Border Control', 'ultraaddons-elementor-lite' ),
+                                    'double' => _x( 'Double', 'Border Control', 'ultraaddons-elementor-lite' ),
+                                    'dotted' => _x( 'Dotted', 'Border Control', 'ultraaddons-elementor-lite' ),
+                                    'dashed' => _x( 'Dashed', 'Border Control', 'ultraaddons-elementor-lite' ),
                             ],
                             'default' => 'solid',
                             'selectors' => [
@@ -259,7 +259,7 @@ trait Button_Helper{
             $this->add_control(
                     'btn_border_color',
                     [
-                            'label' => __( 'Border Color', 'ultraaddons' ),
+                            'label' => __( 'Border Color', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::COLOR,
                             'default' => $this->btn_border_color,
 //                            'default' => '#21272C',
@@ -272,7 +272,7 @@ trait Button_Helper{
             $this->add_control(
                     'btn_border_width',
                     [
-                            'label' => __( 'Border Width', 'ultraaddons' ),
+                            'label' => __( 'Border Width', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => [ 'px', '%' ],
                             'default' => [
@@ -291,7 +291,7 @@ trait Button_Helper{
             $this->add_control(
                     'btn_border_radius',
                     [
-                            'label' => __( 'Border Radius', 'ultraaddons' ),
+                            'label' => __( 'Border Radius', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => [ 'px', '%' ],
                             'selectors' => [
@@ -302,7 +302,7 @@ trait Button_Helper{
               $this->add_responsive_control(
                 'btn_padding',
                 [
-                        'label' => __( 'Padding', 'ultraaddons' ),
+                        'label' => __( 'Padding', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', '%' ],
 
@@ -315,7 +315,7 @@ trait Button_Helper{
         $this->add_responsive_control(
                 'btn_margin',
                 [
-                        'label' => __( 'Margin', 'ultraaddons' ),
+                        'label' => __( 'Margin', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', '%' ],
 
@@ -329,7 +329,7 @@ trait Button_Helper{
 //                    Group_Control_Border::get_type(),
 //                    [
 //                            'name' => 'btn_border',
-//                            'label' => __( 'Box Shadow', 'ultraaddons' ),
+//                            'label' => __( 'Box Shadow', 'ultraaddons-elementor-lite' ),
 //                            'selector' => '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button',
 //                    ]
 //            );
@@ -338,7 +338,7 @@ trait Button_Helper{
                     Group_Control_Box_Shadow::get_type(),
                     [
                             'name' => 'btn_box_shadow',
-                            'label' => __( 'Box Shadow', 'ultraaddons' ),
+                            'label' => __( 'Box Shadow', 'ultraaddons-elementor-lite' ),
                             'selector' => '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button',
                     ]
             );
@@ -348,14 +348,14 @@ trait Button_Helper{
             $this->start_controls_tab(
                     'tab_btn_hover',
                     [
-                            'label' => __( 'Hover', 'ultraaddons' ),
+                            'label' => __( 'Hover', 'ultraaddons-elementor-lite' ),
                     ]
             );
 
             $this->add_control(
                     'btn_hover_color',
                     [
-                            'label' => __( 'Text Color', 'ultraaddons' ),
+                            'label' => __( 'Text Color', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::COLOR,
                             'default' =>  $this->btn_text_hover_color,// '#FFF',
                             'selectors' => [
@@ -391,14 +391,14 @@ trait Button_Helper{
             $this->add_control(
                     'btn_hover_border_type',
                     [
-                            'label' => _x( 'Border Type', 'Border Control', 'ultraaddons' ),
+                            'label' => _x( 'Border Type', 'Border Control', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SELECT,
                             'options' => [
-                                    '' => __( 'None', 'ultraaddons' ),
-                                    'solid' => _x( 'Solid', 'Border Control', 'ultraaddons' ),
-                                    'double' => _x( 'Double', 'Border Control', 'ultraaddons' ),
-                                    'dotted' => _x( 'Dotted', 'Border Control', 'ultraaddons' ),
-                                    'dashed' => _x( 'Dashed', 'Border Control', 'ultraaddons' ),
+                                    '' => __( 'None', 'ultraaddons-elementor-lite' ),
+                                    'solid' => _x( 'Solid', 'Border Control', 'ultraaddons-elementor-lite' ),
+                                    'double' => _x( 'Double', 'Border Control', 'ultraaddons-elementor-lite' ),
+                                    'dotted' => _x( 'Dotted', 'Border Control', 'ultraaddons-elementor-lite' ),
+                                    'dashed' => _x( 'Dashed', 'Border Control', 'ultraaddons-elementor-lite' ),
                             ],
                             'default' => 'solid',
                             'selectors' => [
@@ -411,7 +411,7 @@ trait Button_Helper{
             $this->add_control(
                     'btn_hover_border_color',
                     [
-                            'label' => __( 'Border Color', 'ultraaddons' ),
+                            'label' => __( 'Border Color', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::COLOR,
                             'default' => $this->btn_border_hover_color,
                             'selectors' => [
@@ -424,7 +424,7 @@ trait Button_Helper{
             $this->add_control(
                     'btn_hover_border_width',
                     [
-                            'label' => __( 'Border Width', 'ultraaddons' ),
+                            'label' => __( 'Border Width', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => [ 'px', '%' ],
                             'default' => [
@@ -444,7 +444,7 @@ trait Button_Helper{
             $this->add_control(
                     'btn_hover_border_radius',
                     [
-                            'label' => __( 'Border Radius', 'ultraaddons' ),
+                            'label' => __( 'Border Radius', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => [ 'px', '%' ],
                             'selectors' => [
@@ -459,7 +459,7 @@ trait Button_Helper{
 //                    Group_Control_Border::get_type(),
 //                    [
 //                            'name' => 'btn_border_hover_hello',
-//                            'label' => __( 'Box Shadow', 'ultraaddons' ),
+//                            'label' => __( 'Box Shadow', 'ultraaddons-elementor-lite' ),
 //                            'selector' => '{{WRAPPER}}:hover .btn-wrapper .ua-button.elementor-button',
 //                    ]
 //            );
@@ -468,7 +468,7 @@ trait Button_Helper{
                     Group_Control_Box_Shadow::get_type(),
                     [
                             'name' => 'btn_hover_box_shadow',
-                            'label' => __( 'Box Shadow', 'ultraaddons' ),
+                            'label' => __( 'Box Shadow', 'ultraaddons-elementor-lite' ),
                             'selector' => '{{WRAPPER}}:hover .btn-wrapper .ua-button.elementor-button',
                     ]
             );
@@ -481,7 +481,7 @@ trait Button_Helper{
             $this->add_control(
                     'btn_class',
                     [
-                            'label' => __( 'Button Class', 'ultraaddons' ),
+                            'label' => __( 'Button Class', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::TEXT,
                             'default' => '',
                             'separator'=>'before',
@@ -500,19 +500,19 @@ trait Button_Helper{
     $this->start_controls_section(
                 'general',
                 [
-                        'label' => __( 'Button', 'ultraaddons' ),
+                        'label' => __( 'Button', 'ultraaddons-elementor-lite' ),
                 ]
         );
     $this->add_control(
                 'btn_text',
                 [
-                        'label' => __( 'Button Text', 'ultraaddons' ),
+                        'label' => __( 'Button Text', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::TEXT,
                         'dynamic' => [
                                 'active' => true,
                         ],
-                        'default' => __( 'Click here', 'ultraaddons' ),
-                        'placeholder' => __( 'Click here', 'ultraaddons' ),
+                        'default' => __( 'Click here', 'ultraaddons-elementor-lite' ),
+                        'placeholder' => __( 'Click here', 'ultraaddons-elementor-lite' ),
                         'separator' => 'before',
                 ]
         );
@@ -520,12 +520,12 @@ trait Button_Helper{
         $this->add_control(
                 'btn_link',
                 [
-                        'label' => __( 'Link', 'ultraaddons' ),
+                        'label' => __( 'Link', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::URL,
                         'dynamic' => [
                                 'active' => true,
                         ],
-                        'placeholder' => __( 'https://your-link.com', 'ultraaddons' ),
+                        'placeholder' => __( 'https://your-link.com', 'ultraaddons-elementor-lite' ),
                         'default' => [
                                 'url' => '#',
                         ],
@@ -535,7 +535,7 @@ trait Button_Helper{
         $this->add_control(
                 'btn_icon',
                 [
-                        'label' => __( 'Icon', 'ultraaddons' ),
+                        'label' => __( 'Icon', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::ICONS,
                         'fa4compatibility' => 'icon',
                         'default' => [
@@ -548,12 +548,12 @@ trait Button_Helper{
         $this->add_control(
                 'btn_icon_align',
                 [
-                        'label' => __( 'Icon Position', 'ultraaddons' ),
+                        'label' => __( 'Icon Position', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SELECT,
                         'default' => 'right',
                         'options' => [
-                                'left' => __( 'Before', 'ultraaddons' ),
-                                'right' => __( 'After', 'ultraaddons' ),
+                                'left' => __( 'Before', 'ultraaddons-elementor-lite' ),
+                                'right' => __( 'After', 'ultraaddons-elementor-lite' ),
                         ],
                         'condition' => [
                                 'btn_icon[value]!' => '',
@@ -564,7 +564,7 @@ trait Button_Helper{
         $this->add_control(
                 'btn_icon_spacing',
                 [
-                        'label' => __( 'Icon Spacing', 'ultraaddons' ),
+                        'label' => __( 'Icon Spacing', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SLIDER,
                         'range' => [
                                 'px' => [
@@ -585,7 +585,7 @@ trait Button_Helper{
         $this->add_control(
 			'btn_size',
 			[
-				'label' => __( 'Size', 'ultraaddons' ),
+				'label' => __( 'Size', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::SELECT,
                                 'default' => 'md',
                                 'options' => self::get_button_sizes(),
@@ -602,10 +602,10 @@ trait Button_Helper{
                 $this->add_responsive_control(
                     'btn_inline',
                     [
-                            'label' => __( 'Display Inline', 'ultraaddons' ),
+                            'label' => __( 'Display Inline', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SWITCHER,
-                            'label_on' => __( 'On', 'ultraaddons' ),
-                            'label_off' => __( 'Off', 'ultraaddons' ),
+                            'label_on' => __( 'On', 'ultraaddons-elementor-lite' ),
+                            'label_off' => __( 'Off', 'ultraaddons-elementor-lite' ),
                             'return_value' => 'auto',
                             'tablet_default' => '100%',
                             'mobile_default' => '100%',
@@ -622,11 +622,11 @@ trait Button_Helper{
     }
     public static function get_button_sizes() {
             return [
-                    'xs' => __( 'Extra Small', 'ultraaddons' ),
-                    'sm' => __( 'Small', 'ultraaddons' ),
-                    'md' => __( 'Medium', 'ultraaddons' ),
-                    'lg' => __( 'Large', 'ultraaddons' ),
-                    'xl' => __( 'Extra Large', 'ultraaddons' ),
+                    'xs' => __( 'Extra Small', 'ultraaddons-elementor-lite' ),
+                    'sm' => __( 'Small', 'ultraaddons-elementor-lite' ),
+                    'md' => __( 'Medium', 'ultraaddons-elementor-lite' ),
+                    'lg' => __( 'Large', 'ultraaddons-elementor-lite' ),
+                    'xl' => __( 'Extra Large', 'ultraaddons-elementor-lite' ),
             ];
     }
     

@@ -14,11 +14,18 @@ use Elementor\Repeater;
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Pricing_Table extends Base {
+
+	public $svg;
+	public $ua_image_upload;
+	public $ua_icon_choose;
+	public $ua_icon_select;
+	public $heading_tag;
+	
     
     use \UltraAddons\Traits\Button_Helper;
     
     public function get_keywords() {
-            return [ 'ultraaddons','ua', 'pricing', 'table', 'price', 'list', 'compare' ];
+            return [ 'ultraaddons-elementor-lite','ua', 'pricing', 'table', 'price', 'list', 'compare' ];
     }
     
     /**
@@ -66,23 +73,23 @@ class Pricing_Table extends Base {
         $this->start_controls_section(
 			'section_header',
 			[
-				'label' => __( 'Header', 'ultraaddons' ),
+				'label' => __( 'Header', 'ultraaddons-elementor-lite' ),
 			]
 		);
 
 		$this->add_control(
 			'heading',
 			[
-				'label' => __( 'Title', 'ultraaddons' ),
+				'label' => __( 'Title', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Basic Package', 'ultraaddons' ),
+				'default' => __( 'Basic Package', 'ultraaddons-elementor-lite' ),
 			]
 		);
 
 		$this->add_control(
 			'sub_heading',
 			[
-				'label' => __( 'Description', 'ultraaddons' ),
+				'label' => __( 'Description', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => '',
 			]
@@ -91,7 +98,7 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'heading_tag',
 			[
-				'label' => __( 'Heading Tag', 'ultraaddons' ),
+				'label' => __( 'Heading Tag', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'h2' => 'H2',
@@ -107,11 +114,11 @@ class Pricing_Table extends Base {
                 $this->add_control(
                         'ua_icon_select',
                         [
-                                'label'     => esc_html__( 'Select Icon/Image', 'ultraaddons' ),
+                                'label'     => esc_html__( 'Select Icon/Image', 'ultraaddons-elementor-lite' ),
                                 'type'      => Controls_Manager::SELECT,
                                 'options'   => [
-                                        'icon'      => __( 'Icon', 'ultraaddons' ),
-                                        'image'     => __( 'Image', 'ultraaddons')
+                                        'icon'      => __( 'Icon', 'ultraaddons-elementor-lite' ),
+                                        'image'     => __( 'Image', 'ultraaddons-elementor-lite')
                                 ],
                                 'default'       => 'icon',
 
@@ -120,12 +127,12 @@ class Pricing_Table extends Base {
                 $this->add_control(
                         'ua_icon_choose',
                         [
-                                'label'     => __( 'Icon', 'ultraaddons' ),
+                                'label'     => __( 'Icon', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::ICONS,
                                 'fa4compatibility' => 'icon',
                                 'default' => [
                                     'value' => 'uicon uicon-ultraaddons',
-                                    'library' => 'ultraaddons',
+                                    'library' => 'ultraaddons-elementor-lite',
                                 ],
                                 'condition' => [
                                         'ua_icon_select' => 'icon',
@@ -136,7 +143,7 @@ class Pricing_Table extends Base {
                 $this->add_control(
                         'ua_image_upload',
                         [
-                                'label'     => __( 'Select Image', 'ultraaddons' ),
+                                'label'     => __( 'Select Image', 'ultraaddons-elementor-lite' ),
                                 'type'      => Controls_Manager::MEDIA,
                                 'condition' => [
                                         'ua_icon_select'    => 'image',
@@ -150,35 +157,35 @@ class Pricing_Table extends Base {
                 $this->start_controls_section(
 			'section_pricing',
 			[
-				'label' => __( 'Pricing', 'ultraaddons' ),
+				'label' => __( 'Pricing', 'ultraaddons-elementor-lite' ),
 			]
 		);
 
 		$this->add_control(
 			'currency_symbol',
 			[
-				'label' => __( 'Currency Symbol', 'ultraaddons' ),
+				'label' => __( 'Currency Symbol', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
-					'' => __( 'None', 'ultraaddons' ),
-					'dollar' => '&#36; ' . _x( 'Dollar', 'Currency Symbol', 'ultraaddons' ),
-					'euro' => '&#128; ' . _x( 'Euro', 'Currency Symbol', 'ultraaddons' ),
-					'baht' => '&#3647; ' . _x( 'Baht', 'Currency Symbol', 'ultraaddons' ),
-					'franc' => '&#8355; ' . _x( 'Franc', 'Currency Symbol', 'ultraaddons' ),
-					'guilder' => '&fnof; ' . _x( 'Guilder', 'Currency Symbol', 'ultraaddons' ),
-					'krona' => 'kr ' . _x( 'Krona', 'Currency Symbol', 'ultraaddons' ),
-					'lira' => '&#8356; ' . _x( 'Lira', 'Currency Symbol', 'ultraaddons' ),
-					'peseta' => '&#8359 ' . _x( 'Peseta', 'Currency Symbol', 'ultraaddons' ),
-					'peso' => '&#8369; ' . _x( 'Peso', 'Currency Symbol', 'ultraaddons' ),
-					'pound' => '&#163; ' . _x( 'Pound Sterling', 'Currency Symbol', 'ultraaddons' ),
-					'real' => 'R$ ' . _x( 'Real', 'Currency Symbol', 'ultraaddons' ),
-					'ruble' => '&#8381; ' . _x( 'Ruble', 'Currency Symbol', 'ultraaddons' ),
-					'rupee' => '&#8360; ' . _x( 'Rupee', 'Currency Symbol', 'ultraaddons' ),
-					'indian_rupee' => '&#8377; ' . _x( 'Rupee (Indian)', 'Currency Symbol', 'ultraaddons' ),
-					'shekel' => '&#8362; ' . _x( 'Shekel', 'Currency Symbol', 'ultraaddons' ),
-					'yen' => '&#165; ' . _x( 'Yen/Yuan', 'Currency Symbol', 'ultraaddons' ),
-					'won' => '&#8361; ' . _x( 'Won', 'Currency Symbol', 'ultraaddons' ),
-					'custom' => __( 'Custom', 'ultraaddons' ),
+					'' => __( 'None', 'ultraaddons-elementor-lite' ),
+					'dollar' => '&#36; ' . _x( 'Dollar', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'euro' => '&#128; ' . _x( 'Euro', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'baht' => '&#3647; ' . _x( 'Baht', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'franc' => '&#8355; ' . _x( 'Franc', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'guilder' => '&fnof; ' . _x( 'Guilder', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'krona' => 'kr ' . _x( 'Krona', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'lira' => '&#8356; ' . _x( 'Lira', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'peseta' => '&#8359 ' . _x( 'Peseta', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'peso' => '&#8369; ' . _x( 'Peso', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'pound' => '&#163; ' . _x( 'Pound Sterling', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'real' => 'R$ ' . _x( 'Real', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'ruble' => '&#8381; ' . _x( 'Ruble', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'rupee' => '&#8360; ' . _x( 'Rupee', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'indian_rupee' => '&#8377; ' . _x( 'Rupee (Indian)', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'shekel' => '&#8362; ' . _x( 'Shekel', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'yen' => '&#165; ' . _x( 'Yen/Yuan', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'won' => '&#8361; ' . _x( 'Won', 'Currency Symbol', 'ultraaddons-elementor-lite' ),
+					'custom' => __( 'Custom', 'ultraaddons-elementor-lite' ),
 				],
 				'default' => 'dollar',
 			]
@@ -187,7 +194,7 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'currency_symbol_custom',
 			[
-				'label' => __( 'Custom Symbol', 'ultraaddons' ),
+				'label' => __( 'Custom Symbol', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
 				'condition' => [
 					'currency_symbol' => 'custom',
@@ -198,7 +205,7 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'price',
 			[
-				'label' => __( 'Price', 'ultraaddons' ),
+				'label' => __( 'Price', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => '39.99',
 				'dynamic' => [
@@ -210,7 +217,7 @@ class Pricing_Table extends Base {
                 $this->add_control(
 			'currency_format',
 			[
-				'label' => __( 'Currency Format', 'ultraaddons' ),
+				'label' => __( 'Currency Format', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'' => '1,234.56 (Default)',
@@ -223,11 +230,11 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'currency_style',
 			[
-				'label' => __( 'Currency Style', 'ultraaddons' ),
+				'label' => __( 'Currency Style', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
-					'1' => __( 'Style 1', 'ultraaddons' ),
-					'2' => __( 'Style 2', 'ultraaddons' ),
+					'1' => __( 'Style 1', 'ultraaddons-elementor-lite' ),
+					'2' => __( 'Style 2', 'ultraaddons-elementor-lite' ),
 				],
                                 'default' => '1',
 			]
@@ -236,10 +243,10 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'sale',
 			[
-				'label' => __( 'Sale', 'ultraaddons' ),
+				'label' => __( 'Sale', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'On', 'ultraaddons' ),
-				'label_off' => __( 'Off', 'ultraaddons' ),
+				'label_on' => __( 'On', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'Off', 'ultraaddons-elementor-lite' ),
 				'default' => '',
 			]
 		);
@@ -247,7 +254,7 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'original_price',
 			[
-				'label' => __( 'Sale Price', 'ultraaddons' ),
+				'label' => __( 'Sale Price', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::NUMBER,
 				'default' => '59',
 				'condition' => [
@@ -262,19 +269,19 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'period',
 			[
-				'label' => __( 'Period', 'ultraaddons' ),
+				'label' => __( 'Period', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( '/mon', 'ultraaddons' ),
+				'default' => __( '/mon', 'ultraaddons-elementor-lite' ),
 			]
 		);
 
                 $this->add_control(
                     'price_top',
                     [
-                            'label' => __( 'Price in Top', 'ultraaddons' ),
+                            'label' => __( 'Price in Top', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SWITCHER,
-                            'label_on' => __( 'On', 'ultraaddons' ),
-                            'label_off' => __( 'Off', 'ultraaddons' ),
+                            'label_on' => __( 'On', 'ultraaddons-elementor-lite' ),
+                            'label_off' => __( 'Off', 'ultraaddons-elementor-lite' ),
                             'return_value' => 'yes',    
                     ]
                 );
@@ -284,7 +291,7 @@ class Pricing_Table extends Base {
                 $this->start_controls_section(
 			'section_features',
 			[
-				'label' => __( 'Features', 'ultraaddons' ),
+				'label' => __( 'Features', 'ultraaddons-elementor-lite' ),
 			]
 		);
 
@@ -293,9 +300,9 @@ class Pricing_Table extends Base {
 		$repeater->add_control(
 			'item_text',
 			[
-				'label' => __( 'Text', 'ultraaddons' ),
+				'label' => __( 'Text', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'List Item', 'ultraaddons' ),
+				'default' => __( 'List Item', 'ultraaddons-elementor-lite' ),
 			]
 		);
 
@@ -307,7 +314,7 @@ class Pricing_Table extends Base {
 		$repeater->add_control(
 			'selected_item_icon',
 			[
-				'label' => __( 'Icon', 'ultraaddons' ),
+				'label' => __( 'Icon', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::ICONS,
 				'fa4compatibility' => 'item_icon',
 				'default' => $default_icon,
@@ -317,7 +324,7 @@ class Pricing_Table extends Base {
 		$repeater->add_control(
 			'item_icon_color',
 			[
-				'label' => __( 'Icon Color', 'ultraaddons' ),
+				'label' => __( 'Icon Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}} i' => 'color: {{VALUE}}',
@@ -333,15 +340,15 @@ class Pricing_Table extends Base {
 				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
-						'item_text' => __( 'List Item #1', 'ultraaddons' ),
+						'item_text' => __( 'List Item #1', 'ultraaddons-elementor-lite' ),
 						'selected_item_icon' => $default_icon,
 					],
 					[
-						'item_text' => __( 'List Item #2', 'ultraaddons' ),
+						'item_text' => __( 'List Item #2', 'ultraaddons-elementor-lite' ),
 						'selected_item_icon' => $default_icon,
 					],
 					[
-						'item_text' => __( 'List Item #3', 'ultraaddons' ),
+						'item_text' => __( 'List Item #3', 'ultraaddons-elementor-lite' ),
 						'selected_item_icon' => $default_icon,
 					],
 				],
@@ -355,7 +362,7 @@ class Pricing_Table extends Base {
                 $this->start_controls_section(
 			'section_footer',
 			[
-				'label' => __( 'Footer', 'ultraaddons' ),
+				'label' => __( 'Footer', 'ultraaddons-elementor-lite' ),
 			]
 		);
 
@@ -363,7 +370,7 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'footer_additional_info',
 			[
-				'label' => __( 'Additional Info', 'ultraaddons' ),
+				'label' => __( 'Additional Info', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'default' => '',
 				'rows' => 3,
@@ -375,14 +382,14 @@ class Pricing_Table extends Base {
 		$this->start_controls_section(
 			'section_ribbon',
 			[
-				'label' => __( 'Ribbon', 'ultraaddons' ),
+				'label' => __( 'Ribbon', 'ultraaddons-elementor-lite' ),
 			]
 		);
 
 		$this->add_control(
 			'show_ribbon',
 			[
-				'label' => __( 'Show', 'ultraaddons' ),
+				'label' => __( 'Show', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => 'no',
 				'separator' => 'before',
@@ -392,9 +399,9 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'ribbon_title',
 			[
-				'label' => __( 'Title', 'ultraaddons' ),
+				'label' => __( 'Title', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Popular', 'ultraaddons' ),
+				'default' => __( 'Popular', 'ultraaddons-elementor-lite' ),
 				'condition' => [
 					'show_ribbon' => 'yes',
 				],
@@ -404,15 +411,15 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'ribbon_x_position',
 			[
-				'label' => __( 'Position X', 'ultraaddons' ),
+				'label' => __( 'Position X', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => __( 'Left', 'ultraaddons' ),
+						'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-h-align-left',
 					],
 					'right' => [
-						'title' => __( 'Right', 'ultraaddons' ),
+						'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-h-align-right',
 					],
 				],
@@ -427,15 +434,15 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'ribbon_y_position',
 			[
-				'label' => __( 'Position Y', 'ultraaddons' ),
+				'label' => __( 'Position Y', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'top' => [
-						'title' => __( 'Top', 'ultraaddons' ),
+						'title' => __( 'Top', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-v-align-top',
 					],
 					'bottom' => [
-						'title' => __( 'Bottom', 'ultraaddons' ),
+						'title' => __( 'Bottom', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-v-align-bottom',
 					],
 				],
@@ -451,10 +458,10 @@ class Pricing_Table extends Base {
                 $this->add_control(
                         'ribbon_angle_45',
                         [
-                                'label' => __( 'Angle Ribbon', 'ultraaddons' ),
+                                'label' => __( 'Angle Ribbon', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::SWITCHER,
-                                'label_on' => __( 'On', 'ultraaddons' ),
-                                'label_off' => __( 'Off', 'ultraaddons' ),
+                                'label_on' => __( 'On', 'ultraaddons-elementor-lite' ),
+                                'label_off' => __( 'Off', 'ultraaddons-elementor-lite' ),
                                 'return_value' => 'yes',
                                 'prefix_class'  => 'ua-angle-ribbon-',
                                 'condition' => [
@@ -471,7 +478,7 @@ class Pricing_Table extends Base {
                 $this->start_controls_section(
 			'section_header_general_style',
 			[
-				'label' => __( 'General', 'ultraaddons' ),
+				'label' => __( 'General', 'ultraaddons-elementor-lite' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 			]
@@ -480,11 +487,11 @@ class Pricing_Table extends Base {
 //                $this->add_control(
 //			'template',
 //			[
-//				'label' => __( 'Style', 'ultraaddons' ),
+//				'label' => __( 'Style', 'ultraaddons-elementor-lite' ),
 //				'type' => Controls_Manager::SELECT,
 //				'options' => [
-//					'1' => __( 'Lite', 'ultraaddons' ),
-//					'2' => __( 'Dark', 'ultraaddons' ),
+//					'1' => __( 'Lite', 'ultraaddons-elementor-lite' ),
+//					'2' => __( 'Dark', 'ultraaddons-elementor-lite' ),
 //				],
 //				'default' => '1',
 //                                'prefix_class' => 'pricing-table-temp-'
@@ -494,19 +501,19 @@ class Pricing_Table extends Base {
                 $this->add_responsive_control(
                         'price_table_align',
                         [
-                                'label' => __( 'Alignment', 'ultraaddons' ),
+                                'label' => __( 'Alignment', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::CHOOSE,
                                 'options' => [
                                         'left'    => [
-                                                'title' => __( 'Left', 'ultraaddons' ),
+                                                'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
                                                 'icon' => 'eicon-text-align-left',
                                         ],
                                         'center' => [
-                                                'title' => __( 'Center', 'ultraaddons' ),
+                                                'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
                                                 'icon' => 'eicon-text-align-center',
                                         ],
                                         'right' => [
-                                                'title' => __( 'Right', 'ultraaddons' ),
+                                                'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
                                                 'icon' => 'eicon-text-align-right',
                                         ],
                                 ],
@@ -521,7 +528,7 @@ class Pricing_Table extends Base {
             $this->add_control(
 			'section_divider',
 			[
-				'label' => __( 'Divider', 'ultraaddons' ),
+				'label' => __( 'Divider', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 				'separator' => 'before',
@@ -531,13 +538,13 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'divider_style',
 			[
-				'label' => __( 'Style', 'ultraaddons' ),
+				'label' => __( 'Style', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
-					'solid' => __( 'Solid', 'ultraaddons' ),
-					'double' => __( 'Double', 'ultraaddons' ),
-					'dotted' => __( 'Dotted', 'ultraaddons' ),
-					'dashed' => __( 'Dashed', 'ultraaddons' ),
+					'solid' => __( 'Solid', 'ultraaddons-elementor-lite' ),
+					'double' => __( 'Double', 'ultraaddons-elementor-lite' ),
+					'dotted' => __( 'Dotted', 'ultraaddons-elementor-lite' ),
+					'dashed' => __( 'Dashed', 'ultraaddons-elementor-lite' ),
 				],
 				'default' => 'solid',
 				'condition' => [
@@ -552,7 +559,7 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'divider_color',
 			[
-				'label' => __( 'Color', 'ultraaddons' ),
+				'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '#ddd',
                 'global' => [
@@ -570,7 +577,7 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'divider_weight',
 			[
-				'label' => __( 'Weight', 'ultraaddons' ),
+				'label' => __( 'Weight', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 2,
@@ -594,7 +601,7 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'divider_width',
 			[
-				'label' => __( 'Width', 'ultraaddons' ),
+				'label' => __( 'Width', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
                                 'default' => [
 					'size' => 15,
@@ -618,7 +625,7 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'divider_gap',
 			[
-				'label' => __( 'Gap', 'ultraaddons' ),
+				'label' => __( 'Gap', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 15,
@@ -646,7 +653,7 @@ class Pricing_Table extends Base {
                 $this->start_controls_section(
 			'section_header_style',
 			[
-				'label' => __( 'Header', 'ultraaddons' ),
+				'label' => __( 'Header', 'ultraaddons-elementor-lite' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 			]
@@ -657,14 +664,14 @@ class Pricing_Table extends Base {
                 $this->start_controls_tab(
                 'header_tab_normal', 
                 [
-                    'label' => __( 'Normal', 'ultraaddons' ),
+                    'label' => __( 'Normal', 'ultraaddons-elementor-lite' ),
                 ]
                 );
                 
 		$this->add_control(
 			'header_bg_color',
 			[
-				'label' => __( 'Background Color', 'ultraaddons' ),
+				'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ua-price-table__header' => 'background-color: {{VALUE}}',
@@ -675,7 +682,7 @@ class Pricing_Table extends Base {
 		$this->add_responsive_control(
 			'header_padding',
 			[
-				'label' => __( 'Padding', 'ultraaddons' ),
+				'label' => __( 'Padding', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
@@ -687,7 +694,7 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'heading_heading_style',
 			[
-				'label' => __( 'Title', 'ultraaddons' ),
+				'label' => __( 'Title', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -696,7 +703,7 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'heading_color',
 			[
-				'label' => __( 'Color', 'ultraaddons' ),
+				'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ua-price-table__heading' => 'color: {{VALUE}}',
@@ -721,7 +728,7 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'heading_sub_heading_style',
 			[
-				'label' => __( 'Sub Title', 'ultraaddons' ),
+				'label' => __( 'Sub Title', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -730,7 +737,7 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'sub_heading_color',
 			[
-				'label' => __( 'Color', 'ultraaddons' ),
+				'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ua-price-table__subheading' => 'color: {{VALUE}}',
@@ -752,7 +759,7 @@ class Pricing_Table extends Base {
                 $this->add_control(
 			'heading_icon_style',
 			[
-				'label' => __( 'Icon', 'ultraaddons' ),
+				'label' => __( 'Icon', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -761,7 +768,7 @@ class Pricing_Table extends Base {
                 $this->add_responsive_control(
                         'header_icon_size',
                         [
-                                'label' => __( 'Icon Size', 'ultraaddons' ),
+                                'label' => __( 'Icon Size', 'ultraaddons-elementor-lite' ),
                                 'type' => Controls_Manager::SLIDER,
                                 'range' => [
                                         'px' => [
@@ -781,7 +788,7 @@ class Pricing_Table extends Base {
                 $this->add_control(
 			'header_icon_color',
 			[
-				'label' => __( 'Color', 'ultraaddons' ),
+				'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ua-pricing-table-icon' => 'color: {{VALUE}}',
@@ -794,14 +801,14 @@ class Pricing_Table extends Base {
                 $this->start_controls_tab(
                 'header_tab_hover', 
                 [
-                    'label' => __( 'Hover', 'ultraaddons' ),
+                    'label' => __( 'Hover', 'ultraaddons-elementor-lite' ),
                 ]
                 );
                 
                 $this->add_control(
 			'header_bg_color_hover',
 			[
-				'label' => __( 'Background Color', 'ultraaddons' ),
+				'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}}:hover .ua-price-table__header' => 'background-color: {{VALUE}}',
@@ -812,7 +819,7 @@ class Pricing_Table extends Base {
                 $this->add_control(
 			'heading_color_hover',
 			[
-				'label' => __( 'Title Color', 'ultraaddons' ),
+				'label' => __( 'Title Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}}:hover .ua-price-table__heading' => 'color: {{VALUE}}',
@@ -823,7 +830,7 @@ class Pricing_Table extends Base {
                 $this->add_control(
 			'sub_heading_color_hover',
 			[
-				'label' => __( 'Subtitle Color', 'ultraaddons' ),
+				'label' => __( 'Subtitle Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}}:hover .ua-price-table__subheading' => 'color: {{VALUE}}',
@@ -843,7 +850,7 @@ class Pricing_Table extends Base {
                 $this->start_controls_section(
 			'section_pricing_element_style',
 			[
-				'label' => __( 'Pricing', 'ultraaddons' ),
+				'label' => __( 'Pricing', 'ultraaddons-elementor-lite' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 			]
@@ -855,14 +862,14 @@ class Pricing_Table extends Base {
                 $this->start_controls_tab(
                 'price_tab_normal', 
                 [
-                    'label' => __( 'Normal', 'ultraaddons' ),
+                    'label' => __( 'Normal', 'ultraaddons-elementor-lite' ),
                 ]
                 );
                 
                 $this->add_control(
 			'pricing_element_bg_color',
 			[
-				'label' => __( 'Background Color', 'ultraaddons' ),
+				'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ua-price-table__price' => 'background-color: {{VALUE}}',
@@ -873,7 +880,7 @@ class Pricing_Table extends Base {
 		$this->add_responsive_control(
 			'pricing_element_padding',
 			[
-				'label' => __( 'Padding', 'ultraaddons' ),
+				'label' => __( 'Padding', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
@@ -885,7 +892,7 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'price_color',
 			[
-				'label' => __( 'Text Color', 'ultraaddons' ),
+				'label' => __( 'Text Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ua-price-table__currency, {{WRAPPER}} .ua-price-table__integer-part, {{WRAPPER}} .ua-price-table__fractional-part, {{WRAPPER}} .ua-price-table__currency_sep' => 'color: {{VALUE}}',
@@ -908,7 +915,7 @@ class Pricing_Table extends Base {
         $this->add_control(
 			'price_box_size',
 			[
-				'label' => __( 'Price Box Size', 'ultraaddons' ),
+				'label' => __( 'Price Box Size', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -928,7 +935,7 @@ class Pricing_Table extends Base {
                 
                 $this->start_controls_tab('price_tab_hover', 
                         [
-                            'label' => __( 'Hover', 'ultraaddons' ),
+                            'label' => __( 'Hover', 'ultraaddons-elementor-lite' ),
                         ]
                 );
                 
@@ -936,7 +943,7 @@ class Pricing_Table extends Base {
                 $this->add_control(
 			'pricing_element_bg_color_hover',
 			[
-				'label' => __( 'Background Color', 'ultraaddons' ),
+				'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}}:hover .ua-price-table__price' => 'background-color: {{VALUE}}',
@@ -947,7 +954,7 @@ class Pricing_Table extends Base {
 		$this->add_responsive_control(
 			'pricing_element_padding_hover',
 			[
-				'label' => __( 'Padding', 'ultraaddons' ),
+				'label' => __( 'Padding', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
@@ -959,7 +966,7 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'price_color_hover',
 			[
-				'label' => __( 'Text Color', 'ultraaddons' ),
+				'label' => __( 'Text Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}}:hover .ua-price-table__currency, {{WRAPPER}}:hover .ua-price-table__integer-part, {{WRAPPER}}:hover .ua-price-table__fractional-part, {{WRAPPER}}:hover .ua-price-table__currency_sep, {{WRAPPER}}:hover .ua-price-table__period' => 'color: {{VALUE}}',
@@ -982,7 +989,7 @@ class Pricing_Table extends Base {
                  $this->add_control(
 			'price_box_size_hover',
 			[
-				'label' => __( 'Price Box Size', 'ultraaddons' ),
+				'label' => __( 'Price Box Size', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -1017,10 +1024,10 @@ class Pricing_Table extends Base {
                 $this->add_control(
 			'price_addional_control',
 			[
-				'label' => __( 'Show Additional Controls?', 'ultraaddons' ),
+				'label' => __( 'Show Additional Controls?', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SWITCHER,
-                                'label_on' => __( 'Show', 'ultraaddons' ),
-				'label_off' => __( 'Hide', 'ultraaddons' ),
+                                'label_on' => __( 'Show', 'ultraaddons-elementor-lite' ),
+				'label_off' => __( 'Hide', 'ultraaddons-elementor-lite' ),
 				'default' => '',
 			]
 		);
@@ -1030,7 +1037,7 @@ class Pricing_Table extends Base {
                 $this->add_control(
 			'price_int_size',
 			[
-				'label' => __( 'Price Before Fraction', 'ultraaddons' ),
+				'label' => __( 'Price Before Fraction', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -1050,7 +1057,7 @@ class Pricing_Table extends Base {
                 $this->add_control(
 			'price_decimal_size',
 			[
-				'label' => __( 'Price After Fraction', 'ultraaddons' ),
+				'label' => __( 'Price After Fraction', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -1070,16 +1077,16 @@ class Pricing_Table extends Base {
                 $this->add_control(
 			'currency_fraction_position',
 			[
-				'label' => __( 'Fraction Position', 'ultraaddons' ),
+				'label' => __( 'Fraction Position', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::CHOOSE,
 				'default' => 'right',
 				'options' => [
 					'left' => [
-						'title' => __( 'Before', 'ultraaddons' ),
+						'title' => __( 'Before', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-h-align-left',
 					],
 					'right' => [
-						'title' => __( 'After', 'ultraaddons' ),
+						'title' => __( 'After', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-h-align-right',
 					],
 				],
@@ -1101,7 +1108,7 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'heading_currency_style',
 			[
-				'label' => __( 'Currency Symbol', 'ultraaddons' ),
+				'label' => __( 'Currency Symbol', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => [
@@ -1113,7 +1120,7 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'currency_size',
 			[
-				'label' => __( 'Size', 'ultraaddons' ),
+				'label' => __( 'Size', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -1136,16 +1143,16 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'currency_position',
 			[
-				'label' => __( 'Position', 'ultraaddons' ),
+				'label' => __( 'Position', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::CHOOSE,
 				'default' => 'before',
 				'options' => [
 					'before' => [
-						'title' => __( 'Before', 'ultraaddons' ),
+						'title' => __( 'Before', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-h-align-left',
 					],
 					'after' => [
-						'title' => __( 'After', 'ultraaddons' ),
+						'title' => __( 'After', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-h-align-right',
 					],
 				],
@@ -1155,19 +1162,19 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'currency_vertical_position',
 			[
-				'label' => __( 'Vertical Position', 'ultraaddons' ),
+				'label' => __( 'Vertical Position', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'top' => [
-						'title' => __( 'Top', 'ultraaddons' ),
+						'title' => __( 'Top', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-v-align-top',
 					],
 					'middle' => [
-						'title' => __( 'Middle', 'ultraaddons' ),
+						'title' => __( 'Middle', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-v-align-middle',
 					],
 					'bottom' => [
-						'title' => __( 'Bottom', 'ultraaddons' ),
+						'title' => __( 'Bottom', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-v-align-bottom',
 					],
 				],
@@ -1189,7 +1196,7 @@ class Pricing_Table extends Base {
                 $this->add_responsive_control(
 			'currency_symbol_gap',
 			[
-				'label' => __( 'Currency Space', 'ultraaddons' ),
+				'label' => __( 'Currency Space', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -1210,7 +1217,7 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'heading_original_price_style',
 			[
-				'label' => __( 'Sale Price', 'ultraaddons' ),
+				'label' => __( 'Sale Price', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => [
@@ -1223,7 +1230,7 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'original_price_color',
 			[
-				'label' => __( 'Color', 'ultraaddons' ),
+				'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
                 'global' => [
                     'default' => Global_Colors::COLOR_SECONDARY,
@@ -1256,7 +1263,7 @@ class Pricing_Table extends Base {
                 $this->add_responsive_control(
 			'sale_price_gap',
 			[
-				'label' => __( 'Space', 'ultraaddons' ),
+				'label' => __( 'Space', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -1281,19 +1288,19 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'original_price_vertical_position',
 			[
-				'label' => __( 'Vertical Position', 'ultraaddons' ),
+				'label' => __( 'Vertical Position', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'top' => [
-						'title' => __( 'Top', 'ultraaddons' ),
+						'title' => __( 'Top', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-v-align-top',
 					],
 					'middle' => [
-						'title' => __( 'Middle', 'ultraaddons' ),
+						'title' => __( 'Middle', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-v-align-middle',
 					],
 					'bottom' => [
-						'title' => __( 'Bottom', 'ultraaddons' ),
+						'title' => __( 'Bottom', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-v-align-bottom',
 					],
 				],
@@ -1316,7 +1323,7 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'heading_period_style',
 			[
-				'label' => __( 'Period', 'ultraaddons' ),
+				'label' => __( 'Period', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => [
@@ -1328,7 +1335,7 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'period_color',
 			[
-				'label' => __( 'Color', 'ultraaddons' ),
+				'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
                 'global' => [
                     'default' => Global_Colors::COLOR_SECONDARY,
@@ -1359,12 +1366,12 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'period_position',
 			[
-				'label' => __( 'Position', 'ultraaddons' ),
+				'label' => __( 'Position', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SELECT,
 				'label_block' => false,
 				'options' => [
-					'below' => __( 'Below', 'ultraaddons' ),
-					'beside' => __( 'Beside', 'ultraaddons' ),
+					'below' => __( 'Below', 'ultraaddons-elementor-lite' ),
+					'beside' => __( 'Beside', 'ultraaddons-elementor-lite' ),
 				],
 				'default' => 'below',
 				'condition' => [
@@ -1376,19 +1383,19 @@ class Pricing_Table extends Base {
                 $this->add_control(
 			'period_vertical_position',
 			[
-				'label' => __( 'Vertical Position', 'ultraaddons' ),
+				'label' => __( 'Vertical Position', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'top' => [
-						'title' => __( 'Top', 'ultraaddons' ),
+						'title' => __( 'Top', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-v-align-top',
 					],
 					'middle' => [
-						'title' => __( 'Middle', 'ultraaddons' ),
+						'title' => __( 'Middle', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-v-align-middle',
 					],
 					'bottom' => [
-						'title' => __( 'Bottom', 'ultraaddons' ),
+						'title' => __( 'Bottom', 'ultraaddons-elementor-lite' ),
 						'icon' => 'eicon-v-align-bottom',
 					],
 				],
@@ -1410,7 +1417,7 @@ class Pricing_Table extends Base {
                 $this->add_responsive_control(
 			'period_margin_below',
 			[
-				'label' => __( 'Margin', 'ultraaddons' ),
+				'label' => __( 'Margin', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
                                 'default' => [
@@ -1428,7 +1435,7 @@ class Pricing_Table extends Base {
                 $this->start_controls_section(
 			'section_features_list_style',
 			[
-				'label' => __( 'Features', 'ultraaddons' ),
+				'label' => __( 'Features', 'ultraaddons-elementor-lite' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 			]
@@ -1437,7 +1444,7 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'features_list_bg_color',
 			[
-				'label' => __( 'Background Color', 'ultraaddons' ),
+				'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'separator' => 'before',
 				'selectors' => [
@@ -1449,7 +1456,7 @@ class Pricing_Table extends Base {
 		$this->add_responsive_control(
 			'features_list_padding',
 			[
-				'label' => __( 'Padding', 'ultraaddons' ),
+				'label' => __( 'Padding', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
                                 'default' => [
@@ -1468,14 +1475,14 @@ class Pricing_Table extends Base {
                 $this->start_controls_tab(
                     'feature_tab_normal', 
                     [
-                        'label' => __( 'Normal', 'ultraaddons' ),
+                        'label' => __( 'Normal', 'ultraaddons-elementor-lite' ),
                     ]
                 );
                 
                 $this->add_control(
 			'features_list_color',
 			[
-				'label' => __( 'Color', 'ultraaddons' ),
+				'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
                 'global' => [
                     'default' => Global_Colors::COLOR_TEXT,
@@ -1488,7 +1495,7 @@ class Pricing_Table extends Base {
                 $this->add_control(
 			'features_list_icon_color',
 			[
-				'label' => __( 'Icon Color', 'ultraaddons' ),
+				'label' => __( 'Icon Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ua-price-table__features-list i' => 'color: {{VALUE}}',
@@ -1502,14 +1509,14 @@ class Pricing_Table extends Base {
                 $this->start_controls_tab(
                     'feature_tab_hover', 
                     [
-                        'label' => __( 'Hover', 'ultraaddons' ),
+                        'label' => __( 'Hover', 'ultraaddons-elementor-lite' ),
                     ]
                 );
                 
                 $this->add_control(
 			'features_list_color_hover',
 			[
-				'label' => __( 'Color', 'ultraaddons' ),
+				'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				// 'global' => [
 				// 	'default' => Global_Colors::COLOR_TEXT,
@@ -1522,7 +1529,7 @@ class Pricing_Table extends Base {
                 $this->add_control(
 			'features_list_icon_color_hover',
 			[
-				'label' => __( 'Icon Color', 'ultraaddons' ),
+				'label' => __( 'Icon Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}}:hover .ua-price-table__features-list i' => 'color: {{VALUE}}',
@@ -1548,7 +1555,7 @@ class Pricing_Table extends Base {
 		$this->add_responsive_control(
 			'item_gap',
 			[
-				'label' => __( 'Item Gap', 'ultraaddons' ),
+				'label' => __( 'Item Gap', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -1569,7 +1576,7 @@ class Pricing_Table extends Base {
             $this->add_responsive_control(
 			'icon_gap',
 			[
-				'label' => __( 'Icon Gap', 'ultraaddons' ),
+				'label' => __( 'Icon Gap', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -1592,7 +1599,7 @@ class Pricing_Table extends Base {
         $this->start_controls_section(
 			'section_footer_style',
 			[
-				'label' => __( 'Footer', 'ultraaddons' ),
+				'label' => __( 'Footer', 'ultraaddons-elementor-lite' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 			]
@@ -1601,7 +1608,7 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'footer_bg_color',
 			[
-				'label' => __( 'Background Color', 'ultraaddons' ),
+				'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ua-price-table-footer' => 'background-color: {{VALUE}}',
@@ -1612,7 +1619,7 @@ class Pricing_Table extends Base {
 		$this->add_responsive_control(
 			'footer_padding',
 			[
-				'label' => __( 'Padding', 'ultraaddons' ),
+				'label' => __( 'Padding', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
                                 'default' => [
@@ -1631,7 +1638,7 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'heading_additional_info',
 			[
-				'label' => __( 'Additional Info', 'ultraaddons' ),
+				'label' => __( 'Additional Info', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => [
@@ -1643,7 +1650,7 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'additional_info_color',
 			[
-				'label' => __( 'Color', 'ultraaddons' ),
+				'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
                 'global' => [
                     'default' => Global_Colors::COLOR_TEXT,
@@ -1674,7 +1681,7 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'additional_info_margin',
 			[
-				'label' => __( 'Margin', 'ultraaddons' ),
+				'label' => __( 'Margin', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'default' => [
@@ -1698,7 +1705,7 @@ class Pricing_Table extends Base {
 		$this->start_controls_section(
 			'section_ribbon_style',
 			[
-				'label' => __( 'Ribbon', 'ultraaddons' ),
+				'label' => __( 'Ribbon', 'ultraaddons-elementor-lite' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => [
@@ -1710,7 +1717,7 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'ribbon_bg_color',
 			[
-				'label' => __( 'Background Color', 'ultraaddons' ),
+				'label' => __( 'Background Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
                                 'default' => '#0FC392',
 				'selectors' => [
@@ -1723,7 +1730,7 @@ class Pricing_Table extends Base {
 		$this->add_control(
 			'ribbon_text_color',
 			[
-				'label' => __( 'Text Color', 'ultraaddons' ),
+				'label' => __( 'Text Color', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '#ffffff',
 				'separator' => 'before',
@@ -1766,7 +1773,7 @@ class Pricing_Table extends Base {
          $this->start_controls_section(
 			'section_box_style',
 			[
-				'label' => __( 'Box', 'ultraaddons' ),
+				'label' => __( 'Box', 'ultraaddons-elementor-lite' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 			]
@@ -1775,7 +1782,7 @@ class Pricing_Table extends Base {
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'box_background',
-				'label' => __( 'Box Background', 'ultraaddons' ),
+				'label' => __( 'Box Background', 'ultraaddons-elementor-lite' ),
 				'types' => [ 'classic', 'gradient'],
 				'selector' => '{{WRAPPER}} .ua-price-table',
 			]
@@ -1790,7 +1797,7 @@ class Pricing_Table extends Base {
 		$this->add_responsive_control(
 			'box_radius',
 			[
-				'label' => __( 'Box Radius', 'ultraaddons' ),
+				'label' => __( 'Box Radius', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px'],
 				'selectors' => [
@@ -1801,7 +1808,7 @@ class Pricing_Table extends Base {
 		$this->add_responsive_control(
 			'box_padding',
 			[
-				'label' => __( 'Box Padding', 'ultraaddons' ),
+				'label' => __( 'Box Padding', 'ultraaddons-elementor-lite' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px'],
 				'selectors' => [
@@ -1817,7 +1824,7 @@ class Pricing_Table extends Base {
 		$currency_position = $this->get_settings( 'currency_position' );
 		$location_setting = ! empty( $currency_position ) ? $currency_position : 'before';
 		if ( ! empty( $symbol ) && $location === $location_setting ) {
-			echo '<span class="ua-price-table__currency ua-currency--' . $location . '">' . $symbol . '</span>';
+			echo '<span class="ua-price-table__currency ua-currency--' . esc_attr( $location ) . '">' . esc_html( $symbol ) . '</span>';
 		}
 	}
 
@@ -1854,21 +1861,21 @@ class Pricing_Table extends Base {
                     <div class="ua-price-table__header_icon">
                             <?php
                             if( 'image' == $this->ua_icon_select ){ ?>
-                            <img class="ua-pricing-table-image" src="<?php echo esc_url( $this->ua_image_upload );?>" alt="<?php esc_attr__( 'Pricing Image', 'ultraaddons' ); ?>">
+                            <img class="ua-pricing-table-image" src="<?php echo esc_url( $this->ua_image_upload );?>" alt="<?php esc_attr__( 'Pricing Image', 'ultraaddons-elementor-lite' ); ?>">
                             <?php }elseif( $this->ua_icon_choose ){ ?>
                                 <i class="ua-pricing-table-icon <?php echo esc_attr( $this->ua_icon_choose ); ?>"></i>        
                             <?php }elseif( $this->svg ){ ?>
-                                <img class="ua-pricing-table-image ua-pricing-table-svg-image" src="<?php echo esc_url( $this->svg );?>" alt="<?php esc_attr__( 'Pricing Image', 'ultraaddons' ); ?>">
+                                <img class="ua-pricing-table-image ua-pricing-table-svg-image" src="<?php echo esc_url( $this->svg );?>" alt="<?php esc_attr__( 'Pricing Image', 'ultraaddons-elementor-lite' ); ?>">
                             <?php } ?>
                     </div>
                     <?php } ?>
 
                     <?php if ( ! empty( $settings['heading'] ) ) : ?>
-                            <<?php echo $this->heading_tag . ' ' . $this->get_render_attribute_string( 'heading' ); ?>><?php echo $settings['heading'] . '</' . $this->heading_tag; ?>>
+                            <<?php echo esc_html( $this->heading_tag ) . ' ' . esc_attr( $this->get_render_attribute_string( 'heading' ) ); ?>><?php echo esc_html( $settings['heading'] ) . '</' . esc_html( $this->heading_tag ); ?>>
                     <?php endif; ?>
 
                     <?php if ( ! empty( $settings['sub_heading'] ) ) : ?>
-                            <span <?php echo $this->get_render_attribute_string( 'sub_heading' ); ?>><?php echo $settings['sub_heading']; ?></span>
+                            <span <?php echo esc_attr( $this->get_render_attribute_string( 'sub_heading' ) ); ?>><?php echo esc_html( $settings['sub_heading'] ); ?></span>
                     <?php endif; ?>
 
             </div>    
@@ -1942,30 +1949,30 @@ class Pricing_Table extends Base {
                        		<div class="ua-price-table__price">
 								<div class="ua-price-table__price_inner">
 									<?php if ( 'yes' === $settings['sale'] && ! empty( $settings['original_price'] ) ) : ?>
-											<span class="ua-price-table__original-price ua-typo-excluded"><?php echo $symbol . $settings['original_price']; ?></span>
+											<span class="ua-price-table__original-price ua-typo-excluded"><?php echo wp_kses_post( $symbol . $settings['original_price'] ); ?></span>
 									<?php endif; ?>
-									<?php $this->render_currency_symbol( $symbol, 'before' ); ?>
+									<?php esc_html( $this->render_currency_symbol( $symbol, 'before' ) ); ?>
 									<?php if ( '' !== $fraction ) : ?>
 										<?php if ( $currency_style && $currency_style == '2' ) : ?>
-											<span class="currency-inner-wrapper"><span class="ua-price-table__integer-part"><?php echo $intpart; ?></span><span class="ua-price-table__currency_sep"><?php echo $currency_format; ?></span><span class="ua-price-table__fractional-part"><?php echo $fraction; ?></span></span>
+											<span class="currency-inner-wrapper"><span class="ua-price-table__integer-part"><?php echo esc_html( $intpart ); ?></span><span class="ua-price-table__currency_sep"><?php echo esc_html( $currency_format ); ?></span><span class="ua-price-table__fractional-part"><?php echo esc_html( $fraction ); ?></span></span>
 										<?php else : ?>
-											<span class="ua-price-table__integer-part"><?php echo $intpart; ?></span><span class="ua-price-table__currency_sep"><?php echo $currency_format; ?></span><span class="ua-price-table__fractional-part"><?php echo $fraction; ?></span>
+											<span class="ua-price-table__integer-part"><?php echo esc_html( $intpart ); ?></span><span class="ua-price-table__currency_sep"><?php echo esc_html( $currency_format ); ?></span><span class="ua-price-table__fractional-part"><?php echo esc_html( $fraction ); ?></span>
 										<?php endif; ?>
 									<?php else : ?>
-											<span class="ua-price-table__integer-part"><?php echo $intpart; ?></span>
+											<span class="ua-price-table__integer-part"><?php echo esc_html( $intpart ); ?></span>
 
 									<?php endif; ?>
 
-									<?php $this->render_currency_symbol( $symbol, 'after' ); ?>
+									<?php esc_html( $this->render_currency_symbol( $symbol, 'after' ) ); ?>
 												
 									<?php if ( ! empty( $settings['period'] ) && 'beside' === $period_position ) : ?>
 										
-										<?php echo $period_element; ?>
+										<?php echo esc_html( $period_element ); ?>
 										
 									<?php endif; ?>
 									<?php if ( ! empty( $settings['period'] ) && 'below' === $period_position ) : ?>
 									<span class="ua-price-table__period-wrapper">
-										<?php echo $period_element; ?>
+										<?php echo esc_html( $period_element ); ?>
 									</span>
 								<?php endif; ?>
 
@@ -1979,30 +1986,30 @@ class Pricing_Table extends Base {
                             if ( ! empty( $settings['features_list'] ) ) : ?>
                                 <ul class="ua-price-table__features-list">
                                         <?php
-                                        foreach ( $settings['features_list'] as $index => $item ) :
+                                        foreach ( $settings['features_list'] as $index => $ultraaddons_item ) :
                                                 $repeater_setting_key = $this->get_repeater_setting_key( 'item_text', 'features_list', $index );
                                                 $this->add_inline_editing_attributes( $repeater_setting_key );
 
-                                                $migrated = isset( $item['__fa4_migrated']['selected_item_icon'] );
+                                                $migrated = isset( $ultraaddons_item['__fa4_migrated']['selected_item_icon'] );
                                                 // add old default
-                                                if ( ! isset( $item['item_icon'] ) && ! $migration_allowed ) {
-                                                        $item['item_icon'] = 'fa fa-check-circle';
+                                                if ( ! isset( $ultraaddons_item['item_icon'] ) && ! $migration_allowed ) {
+                                                        $ultraaddons_item['item_icon'] = 'fa fa-check-circle';
                                                 }
-                                                $is_new = ! isset( $item['item_icon'] ) && $migration_allowed;
+                                                $is_new = ! isset( $ultraaddons_item['item_icon'] ) && $migration_allowed;
                                                 ?>
-                                                <li class="elementor-repeater-item-<?php echo $item['_id']; ?>">
+                                                <li class="elementor-repeater-item-<?php echo esc_attr( $ultraaddons_item['_id'] ); ?>">
                                                         <div class="ua-price-table__feature-inner">
-                                                                <?php if ( ! empty( $item['item_icon'] ) || ! empty( $item['selected_item_icon'] ) ) :
+                                                                <?php if ( ! empty( $ultraaddons_item['item_icon'] ) || ! empty( $ultraaddons_item['selected_item_icon'] ) ) :
                                                                         if ( $is_new || $migrated ) :
-                                                                                Icons_Manager::render_icon( $item['selected_item_icon'], [ 'aria-hidden' => 'true' ] );
+                                                                                Icons_Manager::render_icon( $ultraaddons_item['selected_item_icon'], [ 'aria-hidden' => 'true' ] );
                                                                         else : ?>
-                                                                                <i class="<?php echo esc_attr( $item['item_icon'] ); ?>" aria-hidden="true"></i>
+                                                                                <i class="<?php echo esc_attr( $ultraaddons_item['item_icon'] ); ?>" aria-hidden="true"></i>
                                                                                 <?php
                                                                         endif;
                                                                 endif; ?>
-                                                                <?php if ( ! empty( $item['item_text'] ) ) : ?>
-                                                                        <span <?php echo $this->get_render_attribute_string( $repeater_setting_key ); ?>>
-                                                                                <?php echo $item['item_text']; ?>
+                                                                <?php if ( ! empty( $ultraaddons_item['item_text'] ) ) : ?>
+                                                                        <span <?php echo esc_attr( $this->get_render_attribute_string( $repeater_setting_key ) ); ?>>
+                                                                                <?php echo esc_html( $ultraaddons_item['item_text'] ); ?>
                                                                         </span>
                                                                         <?php
                                                                 else :
@@ -2020,7 +2027,7 @@ class Pricing_Table extends Base {
                         ?>
 					<?php if ( ! empty( $settings['footer_additional_info'] ) ) : ?>
                     <div class="ua-price-table-footer">
-                    	<div <?php echo $this->get_render_attribute_string( 'footer_additional_info' ); ?>><?php echo $settings['footer_additional_info']; ?></div>
+                    	<div <?php echo esc_attr( $this->get_render_attribute_string( 'footer_additional_info' ) ); ?>><?php echo esc_html( $settings['footer_additional_info'] ); ?></div>
 					</div>
 					 <?php endif; ?>
                 </div>
@@ -2034,8 +2041,8 @@ class Pricing_Table extends Base {
 			endif;
 
 			?>
-			<div <?php echo $this->get_render_attribute_string( 'ribbon-wrapper' ); ?>>
-				<div <?php echo $this->get_render_attribute_string( 'ribbon_title' ); ?>><?php echo $settings['ribbon_title']; ?></div>
+			<div <?php echo esc_attr( $this->get_render_attribute_string( 'ribbon-wrapper' ) ); ?>>
+				<div <?php echo esc_attr( $this->get_render_attribute_string( 'ribbon_title' ) ); ?>><?php echo esc_html( $settings['ribbon_title'] ); ?></div>
 			</div>
 			<?php
 		endif;

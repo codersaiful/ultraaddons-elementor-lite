@@ -26,7 +26,7 @@ class WordPress_Plugin_Stats extends Base{
      * @return string keywords
      */
     public function get_keywords() {
-        return [ 'ultraaddons', 'ua', 'stats', 'wp', 'plugin', 'wordpress' ];
+        return [ 'ultraaddons-elementor-lite', 'ua', 'stats', 'wp', 'plugin', 'wordpress' ];
     }
     
     
@@ -69,10 +69,10 @@ class WordPress_Plugin_Stats extends Base{
         $settings           = $this->get_settings_for_display();
 
         
-        $slug = $settings['plugin_slug'];
+        $ultraaddons_slug = $settings['plugin_slug'];
         $plugin_name = $settings['plugin_name'];
         
-        $plugin_slug = ! empty( $slug ) ? $slug : 'ultraaddons-elementor-lite'; 
+        $plugin_slug = ! empty( $ultraaddons_slug ) ? $ultraaddons_slug : 'ultraaddons-elementor-lite'; 
         //Transient name with plugin's slug, so that, if a user if change plugin, than data will be update/change
         $transient_name = 'ua_stats-' . $plugin_slug;
         $transient = get_transient( $transient_name );
@@ -143,7 +143,7 @@ class WordPress_Plugin_Stats extends Base{
         $this->start_controls_section(
             'general',
             [
-                'label'     => esc_html__( 'General', 'ultraaddons' ),
+                'label'     => esc_html__( 'General', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -151,9 +151,9 @@ class WordPress_Plugin_Stats extends Base{
         $this->add_control(
             'plugin_slug',
                 [
-                    'label'         => esc_html__( 'Plugin Slug', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Plugin Slug', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::TEXT,
-                    'placeholder'   => __( 'Your plugin slug. eg: ultraaddons-elementor-lite', 'ultraaddons' ),
+                    'placeholder'   => __( 'Your plugin slug. eg: ultraaddons-elementor-lite', 'ultraaddons-elementor-lite' ),
                     'default'       => 'ultraaddons-elementor-lite',
                     'description'   => 'Only input WordPress.org plugin slug, not full url of plugin.',
                     'label_block'   => TRUE,
@@ -164,9 +164,9 @@ class WordPress_Plugin_Stats extends Base{
         $this->add_control(
             'plugin_name',
                 [
-                    'label'         => esc_html__( 'Plugin Name (optional)', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Plugin Name (optional)', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::TEXT,
-                    'placeholder'   => __( 'Plugin display name. eg: UltraAddons Elementor Lite', 'ultraaddons' ),
+                    'placeholder'   => __( 'Plugin display name. eg: UltraAddons Elementor Lite', 'ultraaddons-elementor-lite' ),
                     'default'       => '',
                     'label_block'   => TRUE,
                     'dynamic'       => ['active' => true],
@@ -177,7 +177,7 @@ class WordPress_Plugin_Stats extends Base{
         $this->add_control(
             'download_text',
                 [
-                    'label'         => esc_html__( 'Download Text (optional)', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Download Text (optional)', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::TEXT,  
                     'default'       => 'Download',
                     'dynamic'       => ['active' => true],
@@ -187,7 +187,7 @@ class WordPress_Plugin_Stats extends Base{
         $this->add_control(
             'active_install_text',
                 [
-                    'label'         => esc_html__( 'Active Install Text (optional)', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Active Install Text (optional)', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::TEXT,  
                     'default'       => 'Active Install',
                     'dynamic'       => ['active' => true],
@@ -196,7 +196,7 @@ class WordPress_Plugin_Stats extends Base{
         $this->add_control(
             'rating_text',
                 [
-                    'label'         => esc_html__( 'Rating Text (optional)', 'ultraaddons' ),
+                    'label'         => esc_html__( 'Rating Text (optional)', 'ultraaddons-elementor-lite' ),
                     'type'          => Controls_Manager::TEXT,  
                     'default'       => 'Rating',
                     'dynamic'       => ['active' => true],
@@ -216,7 +216,7 @@ class WordPress_Plugin_Stats extends Base{
         $this->start_controls_section(
             'style',
             [
-                'label'     => esc_html__( 'Design', 'ultraaddons' ),
+                'label'     => esc_html__( 'Design', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -226,7 +226,7 @@ class WordPress_Plugin_Stats extends Base{
         $this->add_control(
             'heading_color',
             [
-                'label'     => __( 'Color', 'ultraaddons' ),
+                'label'     => __( 'Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'global' => [
                     'default' => Global_Colors::COLOR_PRIMARY,
@@ -241,7 +241,7 @@ class WordPress_Plugin_Stats extends Base{
         $this->add_control(
             'label_text_color',
             [
-                'label'     => __( 'Label Text Color', 'ultraaddons' ),
+                'label'     => __( 'Label Text Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'global' => [
                     'default' => Global_Colors::COLOR_PRIMARY,
@@ -257,7 +257,7 @@ class WordPress_Plugin_Stats extends Base{
         $this->add_control(
             'number_text_color',
             [
-                'label'     => __( 'Number Text Color', 'ultraaddons' ),
+                'label'     => __( 'Number Text Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'global' => [
                     'default' => Global_Colors::COLOR_PRIMARY,
@@ -272,7 +272,7 @@ class WordPress_Plugin_Stats extends Base{
         $this->add_responsive_control(
                 'heading_spacing',
                 [
-                        'label' => __( 'Heading Spacing', 'ultraaddons' ),
+                        'label' => __( 'Heading Spacing', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::SLIDER,
                         'default' => [
                                 'size' => 10,
@@ -301,7 +301,7 @@ class WordPress_Plugin_Stats extends Base{
         $this->start_controls_section(
             'typography',
             [
-                'label'     => esc_html__( 'Typography', 'ultraaddons' ),
+                'label'     => esc_html__( 'Typography', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );

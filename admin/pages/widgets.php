@@ -4,55 +4,55 @@ use UltraAddons\Core\Widgets_Manager;
 
 defined( 'ABSPATH' ) || die();
 
-$updated = filter_input_array( INPUT_POST );
-if( $updated ){
-    $update_value = false;
-    if( ! empty( $updated['item'] ) ){
-        $update_value = $updated['item'];
+$ultraaddons_updated = filter_input_array( INPUT_POST );
+if( $ultraaddons_updated ){
+    $ultraaddons_update_value = false;
+    if( ! empty( $ultraaddons_updated['item'] ) ){
+        $ultraaddons_update_value = $ultraaddons_updated['item'];
     }
-    update_option( Widgets_Manager::$disabled_items_key, $update_value );
+    update_option( Widgets_Manager::$disabled_items_key, $ultraaddons_update_value );
 }
 
 
-$items = Widgets_Manager::widgets();
-// $items['More'] = [
-//             'name'      => __( 'More Widget Comming Soon ....', 'ultraaddons' ),
+$ultraaddons_items = Widgets_Manager::widgets();
+// $ultraaddons_items['More'] = [
+//             'name'      => __( 'More Widget Comming Soon ....', 'ultraaddons-elementor-lite' ),
 //             'is_pro'   => true,
 //             'icon'      => 'uicon-ultraaddons',//eicon-global-colors
 //             'cat'       => [
-//                 __( 'Basic', 'ultraaddons' ),
+//                 __( 'Basic', 'ultraaddons-elementor-lite' ),
 //             ],
 //     ];
-$disable_items = Widgets_Manager::disableWidgetKeys();
+$ultraaddons_disable_items = Widgets_Manager::disableWidgetKeys();
 ?>
 
 <div class="ultraaddons-section ua-option-wrapper ua-widgets-page">
     <div class="ua-section-inside">
         <div class="ua-header">
-            <h1 class="ua-page-title"><?php echo esc_html__( 'Widgets List', 'ultraaddons' ); ?></h1>
+            <h1 class="ua-page-title"><?php echo esc_html__( 'Widgets List', 'ultraaddons-elementor-lite' ); ?></h1>
         </div>
 
         <div class="category-list">
             <ul class="widget-free-pro-list">
-                <li class="wid-cat-wise-target" data-target="free"><?php echo esc_html__( "Free", "ultraaddons" ); ?></li>
-                <li class="wid-cat-wise-target" data-target="pro"><?php echo esc_html__( "Premium", "ultraaddons" ); ?></li>
-                <li class="wid-cat-wise-target active" data-target="free-pro-all"><?php echo esc_html__( "All", "ultraaddons" ); ?></li>
+                <li class="wid-cat-wise-target" data-target="free"><?php echo esc_html__( "Free", 'ultraaddons-elementor-lite' ); ?></li>
+                <li class="wid-cat-wise-target" data-target="pro"><?php echo esc_html__( "Premium", 'ultraaddons-elementor-lite' ); ?></li>
+                <li class="wid-cat-wise-target active" data-target="free-pro-all"><?php echo esc_html__( "All", 'ultraaddons-elementor-lite' ); ?></li>
             </ul>
             <ul class="widget-cat-list" >
             <?php
-            $temp_widgets = $items;
-            $wid_cats = [];
-            foreach( $temp_widgets as $temp_wid_key => $temp_wdget ){
-                $cat = $temp_wdget['cat'][0] ?? 'no-cat';
-                $c_name = str_replace( '_', ' ', $cat );
-                $wid_cats[$cat] =  $c_name;
+            $ultraaddons_temp_widgets = $ultraaddons_items;
+            $ultraaddons_wid_cats = [];
+            foreach( $ultraaddons_temp_widgets as $ultraaddons_temp_wid_key => $ultraaddons_temp_wdget ){
+                $cat = $ultraaddons_temp_wdget['cat'][0] ?? 'no-cat';
+                $ultraaddons_temp_wdget = str_replace( '_', ' ', $cat );
+                $ultraaddons_wid_cats[$cat] =  $ultraaddons_temp_wdget;
             }
-            $wid_cats['category-all'] = esc_html__( 'All', 'ultraaddons' );
+            $ultraaddons_wid_cats['category-all'] = esc_html__( 'All', 'ultraaddons-elementor-lite' );
 
-            foreach( $wid_cats as $wid_cat_key => $wid_cat ){
-                $active_class = $wid_cat_key == 'all' ? 'active' : '';
+            foreach( $ultraaddons_wid_cats as $ultraaddons_wid_cat_key => $ultraaddons_wid_cat ){
+                $ultraaddons_active_class = $ultraaddons_wid_cat_key == 'all' ? 'active' : '';
             ?>
-                <li class="wid-cat-wise-target <?php echo esc_attr( $active_class ); ?>" data-target="<?php echo esc_attr( $wid_cat_key ); ?>" ><?php echo $wid_cat; ?></li>
+                <li class="wid-cat-wise-target <?php echo esc_attr( $ultraaddons_active_class ); ?>" data-target="<?php echo esc_attr( $ultraaddons_wid_cat_key ); ?>" ><?php echo esc_html( $ultraaddons_wid_cat ); ?></li>
             <?php
             }
             
@@ -68,12 +68,12 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
                 <form class="ua-option-list-form" action="" method="post">
                     <div class="ua-option-item-wrappper">
                         <?php 
-                        foreach( $items as $class_name => $item ){
+                        foreach( $ultraaddons_items as $ultraaddons_class_name => $ultraaddons_item ){
 
-                            $name = isset( $item['name'] ) ? $item['name'] : false;
-                            $icon = isset( $item['icon'] ) ? $item['icon'] : false;
-                            $cat = isset( $item['cat'] ) && is_array( $item['cat'] ) ? $item['cat'] : [];
-                            $free_pro = isset( $item['is_pro'] ) && $item['is_pro'] ? 'pro' : 'free';
+                            $ultraaddons_name = isset( $ultraaddons_item['name'] ) ? $ultraaddons_item['name'] : false;
+                            $ultraaddons_icon = isset( $ultraaddons_item['icon'] ) ? $ultraaddons_item['icon'] : false;
+                            $cat = isset( $ultraaddons_item['cat'] ) && is_array( $ultraaddons_item['cat'] ) ? $ultraaddons_item['cat'] : [];
+                            $ultraaddons_free_pro = isset( $ultraaddons_item['is_pro'] ) && $ultraaddons_item['is_pro'] ? 'pro' : 'free';
                             
                             /**
                              * On or OFF feature will stay or not
@@ -92,31 +92,31 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
                              * 
                              * @since 1.0.7.17
                              */
-                            $item_oo_option = isset( $item['is_pro'] ) && $item['is_pro'] && ! ultraaddons_is_pro()  ? 'item_on_off_disable' : 'item_on_off_enable';
+                            $ultraaddons_item_oo_option = isset( $ultraaddons_item['is_pro'] ) && $ultraaddons_item['is_pro'] && ! ultraaddons_is_pro()  ? 'item_on_off_disable' : 'item_on_off_enable';
                             
-                            $checkbox = in_array( $class_name, $disable_items ) ? 'checked' : '';
-                            $enbl_disbl_class = in_array( $class_name, $disable_items ) ? 'disabled' : 'enabled';
-                            $checkbox_id = 'checkbox_' . $class_name;
-                            $html_class = [];
-                            //$html_class[] = $name;
-                            $html_class[] = $enbl_disbl_class;
-                            $html_class[] = $item_oo_option;
-                            //$html_class[] = $icon;
-                            $html_class[] = $free_pro;
-                            $html_class[] = $class_name;
+                            $ultraaddons_checkbox = in_array( $ultraaddons_class_name, $ultraaddons_disable_items ) ? 'checked' : '';
+                            $ultraaddons_enbl_disbl_class = in_array( $ultraaddons_class_name, $ultraaddons_disable_items ) ? 'disabled' : 'enabled';
+                            $ultraaddons_checkbox_id = 'checkbox_' . $ultraaddons_class_name;
+                            $ultraaddons_html_class = [];
+                            //$ultraaddons_html_class[] = $ultraaddons_name;
+                            $ultraaddons_html_class[] = $ultraaddons_enbl_disbl_class;
+                            $ultraaddons_html_class[] = $ultraaddons_item_oo_option;
+                            //$ultraaddons_html_class[] = $ultraaddons_icon;
+                            $ultraaddons_html_class[] = $ultraaddons_free_pro;
+                            $ultraaddons_html_class[] = $ultraaddons_class_name;
                         ?>
-                        <label data-name="<?php echo esc_attr( $name ); ?>" 
-                             for="<?php echo esc_attr( $checkbox_id ); ?>"
-                             data-object_name="<?php echo esc_attr( $class_name ); ?>"
+                        <label data-name="<?php echo esc_attr( $ultraaddons_name ); ?>" 
+                             for="<?php echo esc_attr( $ultraaddons_checkbox_id ); ?>"
+                             data-object_name="<?php echo esc_attr( $ultraaddons_class_name ); ?>"
                              data-category="<?php echo esc_attr( implode( ',', $cat ) ); ?>"
-                             data-type="<?php echo esc_attr( $free_pro ); ?>"
-                             class="ua-option-item <?php echo esc_attr( implode( " ", $html_class ) ); ?> <?php echo esc_attr( implode( ',', $cat ) ); ?>">
+                             data-type="<?php echo esc_attr( $ultraaddons_free_pro ); ?>"
+                             class="ua-option-item <?php echo esc_attr( implode( " ", $ultraaddons_html_class ) ); ?> <?php echo esc_attr( implode( ',', $cat ) ); ?>">
                             <div class="ua-option-item-inside">
-                                <span class="ua-option-version-type ua-option-version-type-<?php echo esc_attr( $free_pro ); ?>"><?php echo $free_pro == 'pro' ? esc_html__( 'Pro', 'ultraaddons' ) : esc_html__( 'Free', 'ultraaddons' ); ?></span>
-                                <i class="ua-option-icon <?php echo esc_attr( $icon ); ?>"></i>
-                                <h2 class="ua-item-name"><?php echo esc_html( $name ); ?></h2>
+                                <span class="ua-option-version-type ua-option-version-type-<?php echo esc_attr( $ultraaddons_free_pro ); ?>"><?php echo $ultraaddons_free_pro == 'pro' ? esc_html__( 'Pro', 'ultraaddons-elementor-lite' ) : esc_html__( 'Free', 'ultraaddons-elementor-lite' ); ?></span>
+                                <i class="ua-option-icon <?php echo esc_attr( $ultraaddons_icon ); ?>"></i>
+                                <h2 class="ua-item-name"><?php echo esc_html( $ultraaddons_name ); ?></h2>
                                 <div class="ua-option-checkbox">
-                                    <input class="ua-checkbox-hidden" id="<?php echo esc_attr( $checkbox_id ); ?>" type="checkbox" name="item[]" value="<?php echo esc_attr( $class_name ); ?>" <?php echo esc_attr( $checkbox ); ?>>
+                                    <input class="ua-checkbox-hidden" id="<?php echo esc_attr( $ultraaddons_checkbox_id ); ?>" type="checkbox" name="item[]" value="<?php echo esc_attr( $ultraaddons_class_name ); ?>" <?php echo esc_attr( $ultraaddons_checkbox ); ?>>
                                     <div class="ua-designed-checkbox"></div>
                                 </div>
                             </div>
@@ -124,7 +124,7 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
                         <?php } ?>
                     </div>
                     <div class="ua-item-footer">
-                        <button class="primary button button-primary ua-primary ua-no-update" type="submit" name="submit" value="submit"><?php echo esc_html__( 'Save Change', 'ultraaddons' ); ?></button>
+                        <button class="primary button button-primary ua-primary ua-no-update" type="submit" name="submit" value="submit"><?php echo esc_html__( 'Save Change', 'ultraaddons-elementor-lite' ); ?></button>
                     </div>
                 </form>
                 
@@ -142,7 +142,7 @@ $disable_items = Widgets_Manager::disableWidgetKeys();
 ?>
 <div class="remodal" data-remodal-id="modal">
   <button data-remodal-action="close" class="remodal-close"></button>
-  <img class="popup-image" src=" <?php echo ULTRA_ADDONS_ASSETS . 'images/popup-pro.png'; ?>">
+  <img class="popup-image" src=" <?php echo esc_url( ULTRA_ADDONS_ASSETS . 'images/popup-pro.png' ); ?>">
   <h1>Go Pro</h1>
   <p>
     Unlock 30+ amazing widgets to build awesome websites.

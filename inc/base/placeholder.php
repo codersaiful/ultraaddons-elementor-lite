@@ -26,8 +26,8 @@ use Elementor\Widget_Base;
  * @deprecated since version 1.0.9.4
  */
 class Placeholder extends Widget_Base{
-    public $name;
-    public $icon;
+    public $ultraaddons_name;
+    public $ultraaddons_icon;
     public $title;
     public function __construct( String $widget_key, Array $widget = null ) {
         $this->name = $widget_key;
@@ -63,11 +63,12 @@ class Placeholder extends Widget_Base{
         
         <div class="ua-plac-content">
             <p><?php
-            echo sprintf( esc_html__( 'Use %s widget and dozens more pro features to extend your toolbox and build sites faster and better.', 'ultraaddons' ), $this->title );
+            /* translators: 1: title */
+            echo sprintf( esc_html__( 'Use %s widget and dozens more pro features to extend your toolbox and build sites faster and better.', 'ultraaddons-elementor-lite' ), esc_html( $this->title ) );
             ?></p>
             <p>
                 <a href="<?php echo esc_url( ultraaddons_help_url( $this->name ) ); ?>" class="button button-readmore">
-                    <?php echo esc_html__( 'Read More', 'ultraaddons' ); ?>
+                    <?php echo esc_html__( 'Read More', 'ultraaddons-elementor-lite' ); ?>
                 </a>
             </p>
         </div>
