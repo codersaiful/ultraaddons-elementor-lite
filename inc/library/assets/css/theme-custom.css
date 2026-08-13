@@ -1,17 +1,50 @@
+.elementor-add-section-area-button.elementor-add-uaTheme-button,
 .elementor-add-new-section .elementor-add-uaTheme-button {
-    background-color: #13c392;
-    margin-left: 5px;
-    font-size: 27px;
-    vertical-align: bottom;
-    font-family: Arial,Helvetica,sans-serif;
-    display: inline-flex;
-    width: unset;
-    border-radius: 4px;
-    padding: 0 8px;
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    max-width: 40px !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    vertical-align: middle !important;
+    background-color: #0fc392 !important;
+    box-shadow: none !important;
+    cursor: pointer !important;
+    margin-left: 5px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    transform: none !important;
+    transition: none !important;
 }
 
+.elementor-add-section-area-button.elementor-add-uaTheme-button:hover,
+.elementor-add-new-section .elementor-add-uaTheme-button:hover {
+    background-color: #0fc392 !important;
+    transform: none !important;
+    box-shadow: none !important;
+    width: 40px !important;
+    height: 40px !important;
+}
+
+.elementor-add-section-area-button.elementor-add-uaTheme-button i {
+    font-size: 20px !important;
+    line-height: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #ffffff !important;
+    margin: 0 !important;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+.elementor-add-section-area-button.elementor-add-uaTheme-button:hover i {
+    transform: rotate(360deg) !important;
+}
+
+.elementor-add-section-area-button.elementor-add-uaTheme-button .elementor-add-uaTheme-button-text,
 .elementor-add-new-section .elementor-add-uaTheme-button-text {
-    padding-left: 6px;
-    padding-right: 0;font-size: 17px;
-    text-transform: capitalize;
+    display: none !important;
 }
