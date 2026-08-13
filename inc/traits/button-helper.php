@@ -85,19 +85,19 @@ trait Button_Helper{
             $this->add_inline_editing_attributes( 'btn_text' );
             ?>
 
-        <div <?php echo esc_attr( $this->get_render_attribute_string( 'btn_wrapper' ) ); ?>>
-                <a <?php echo esc_attr( $this->get_render_attribute_string( 'btn_link' ) ); ?>>
-                    <span <?php echo esc_attr( $this->get_render_attribute_string( 'content-wrapper' ) ); ?>>
+        <div <?php echo $this->get_render_attribute_string( 'btn_wrapper' ); ?>>
+                <a <?php echo $this->get_render_attribute_string( 'btn_link' ); ?>>
+                    <span <?php echo $this->get_render_attribute_string( 'content-wrapper' ); ?>>
                             <?php if ( ! empty( $settings['icon'] ) || ! empty( $settings['btn_icon']['value'] ) ) : ?>
-                            <span <?php echo esc_attr( $this->get_render_attribute_string( 'icon-align' ) ); ?>>
+                            <span <?php echo $this->get_render_attribute_string( 'icon-align' ); ?>>
                                     <?php if ( $is_new || $migrated ) : ?>
-                                            Icons_Manager::render_icon( $settings['btn_icon'], [ 'aria-hidden' => 'true' ] );
-                                    else : ?>
+                                            <?php Icons_Manager::render_icon( $settings['btn_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                                    <?php else : ?>
                                             <i class="<?php echo esc_attr( $settings['icon'] ); ?>" aria-hidden="true"></i>
                                     <?php endif; ?>
                             </span>
                             <?php endif; ?>
-                            <span <?php echo esc_attr( $this->get_render_attribute_string( 'btn_text' ) ); ?>><?php echo esc_html( $settings['btn_text'] ); ?></span>
+                            <span <?php echo $this->get_render_attribute_string( 'btn_text' ); ?>><?php echo esc_html( $settings['btn_text'] ); ?></span>
                     </span>
                 </a>
         </div>

@@ -324,7 +324,12 @@ Pagination
       background: #f9f9f9;
       color: #333;
   }
-   .ua-btn-wrap a.ua-btn, .elementor-widget-ultraaddons-button .ua-btn-wrap a.ua-btn{
+.ua-btn-wrap {
+    position: relative;
+    display: flex;
+}
+.ua-btn-wrap a.ua-btn, .elementor-widget-ultraaddons-button .ua-btn-wrap a.ua-btn{
+    position: relative;
     padding: 1em;
     cursor: pointer;
     background: #4a74e0;
@@ -333,12 +338,13 @@ Pagination
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow: hidden;
+    overflow: visible;
     text-decoration: none;
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
     align-content: space-between;
+    transition: all .3s ease;
 }
 
 .ua-btn-wrap .ua-effect:before {
@@ -354,7 +360,64 @@ Pagination
 }
 .ua-btn svg {
     width:1.5em;
-    height:1em
+    height:1em;
+    display: inline-block;
+    vertical-align: middle;
+}
+.ua-btn-text-wrap {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2;
+}
+.ua-btn-text {
+    display: block;
+}
+.ua-btn-subtext {
+    display: block;
+    font-size: 0.8em;
+    opacity: 0.85;
+    margin-top: 3px;
+    transition: color .3s ease;
+}
+.ua-btn-badge {
+    position: absolute;
+    top: -10px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+    padding: 4px 8px;
+    background-color: #ff3b30;
+    color: #ffffff;
+    border-radius: 10px;
+    z-index: 2;
+    white-space: nowrap;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+.ua-badge-top-right {
+    right: -10px;
+}
+.ua-badge-top-left {
+    left: -10px;
+}
+.ua-btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform .3s ease, margin .3s ease;
+}
+.ua-icon-anim-move-right:hover .ua-btn-icon {
+    transform: translateX(5px);
+}
+.ua-icon-anim-move-left:hover .ua-btn-icon {
+    transform: translateX(-5px);
+}
+.ua-icon-anim-rotate:hover .ua-btn-icon {
+    transform: rotate(360deg);
+}
+.ua-icon-anim-zoom:hover .ua-btn-icon {
+    transform: scale(1.25);
 }
 .mb-20{
     margin-bottom: 20px;
