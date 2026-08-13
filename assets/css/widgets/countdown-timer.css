@@ -1,60 +1,144 @@
-/*   Stethoscope  Section CSS
--------------------------------------------*/
+/*   Countdown Timer Widget CSS - UltraAddons Lite
+-------------------------------------------------- */
 
-.ua-coun-down-timer-wrapper .ua-coun-down-timer{
+.ua-coun-down-timer-wrapper {
+    width: 100%;
+    min-height: 100%;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.ua-coun-down-timer-wrapper .ua-coun-down-timer {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     width: 100%;
-    font-size: 36px;
+    gap: 8px;
 }
+
 .ua-coun-down-timer-wrapper .single-date {
     display: flex;
-    margin: 0 25px;
+    margin: 0 5px;
     text-align: center;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
 }
 
-.ua-coun-down-timer-wrapper .ua-coun-down-timer .single-date span:nth-child(1) {
-    font: bold 46px Roboto;
+/* Label Position Variations: Above, Below, Inline */
+.ua-coun-down-timer-wrapper .single-date.is-above {
+    flex-direction: column;
 }
 
-.ua-coun-down-timer-wrapper .ua-coun-down-timer .single-date span:nth-child(2) {
-    font: normal 16px Roboto;
-    font-weight: normal;
-    font-size: 16px;
-    font-family: 'Roboto', sans-serif;
-    font-family: var(--medilac-font-secondary);
+.ua-coun-down-timer-wrapper .single-date.is-above span.timer_label {
+    order: -1;
+    margin-top: 0;
+    margin-bottom: 6px;
+}
+
+.ua-coun-down-timer-wrapper .single-date.is-below span.timer_label {
+    order: 1;
+    margin-top: 6px;
+    margin-bottom: 0;
+}
+
+.ua-coun-down-timer-wrapper .single-date.is-inline {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 6px;
+}
+
+.ua-coun-down-timer-wrapper .single-date.is-inline span.timer_label {
+    order: 2;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.ua-coun-down-timer-wrapper .single-date:hover {
+    transform: translateY(-2px);
+}
+
+.ua-coun-down-timer-wrapper .ua-coun-down-timer .single-date span.timer_int {
+    font-family: inherit;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.5px;
+}
+
+.ua-coun-down-timer-wrapper .ua-coun-down-timer .single-date span.timer_label {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.2;
     display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.85;
 }
+
+/* Shape & View Styles */
 .elementor-shape-square .single-date {
-    border-radius: 0px;
+    border-radius: 8px;
 }
+
 .elementor-shape-circle .single-date {
     border-radius: 50%;
 }
+
 .elementor-view-stacked .single-date,
 .elementor-view-framed .single-date {
-    width: 120px;
-    height: 120px;
-    box-shadow: 0px 15px 25px 5px rgb(0 0 0 / 10%);
+    width: 110px;
+    height: 110px;
+    padding: 12px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.06);
 }
-.elementor-shape-default .single-date {
-    
-}
+
 .elementor-view-stacked .single-date {
-    background-color: #000;
-    color: #fff;
+    background-color: #1e293b;
+    color: #ffffff;
 }
-.elementor-shape-framed .single-date {
-    background-color: #fff;
-    color: #222;
+
+.elementor-view-framed .single-date {
+    background-color: #ffffff;
+    color: #1e293b;
+    border: 2px solid #e2e8f0;
 }
+
+.elementor-view-default .single-date {
+    background: transparent;
+    padding: 8px 16px;
+}
+
+/* Separator Style */
 .ua-coun-down-timer-wrapper .sep {
     display: flex;
     justify-content: center;
     align-items: center;
     line-height: 1;
+    font-size: 28px;
+    font-weight: 600;
+    padding: 0 4px;
+    color: #64748b;
+    opacity: 0.7;
+    user-select: none;
+}
+
+/* Expire Message Style */
+.ua-timer-expire-message {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ef4444;
+    margin-top: 20px;
+    padding: 14px 20px;
+    background: rgba(239, 68, 68, 0.08);
+    border-radius: 8px;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    display: inline-block;
 }
