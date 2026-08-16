@@ -119,7 +119,6 @@ trait Button_Helper{
                             'tab' => Controls_Manager::TAB_STYLE,
                     ]
             );
-            if( $this->get_name() == 'ultraaddons-button' ){
             $this->add_responsive_control(
                     'btn_align',
                     [
@@ -144,42 +143,12 @@ trait Button_Helper{
                                     ],
                             ],
                             'prefix_class' => 'elementor%s-align-',
-                            'default' => $this->btn_align,//'left',
-                    ]
-            );
-            }
-            /**
-             * @author B M Rafiul Alam
-             * bmrafiul.alam@gmail.com
-             * @since 1.1.0.11
-             */
-            if( $this->get_name() == 'ultraaddons-price-table' ){
-            $this->add_responsive_control(
-                    'btn_align',
-                    [
-                            'label' => __( 'Alignment', 'ultraaddons-elementor-lite' ),
-                            'type' => Controls_Manager::CHOOSE,
-                            'options' => [
-                                    'left'    => [
-                                            'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
-                                            'icon' => 'eicon-text-align-left',
-                                    ],
-                                    'center' => [
-                                            'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
-                                            'icon' => 'eicon-text-align-center',
-                                    ],
-                                    'right' => [
-                                            'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
-                                            'icon' => 'eicon-text-align-right',
-                                    ],
-                            ],
-                            'default' => 'left',
-                             'selectors' => [
+                            'default' => $this->btn_align,
+                            'selectors' => [
                                     '{{WRAPPER}} .btn-wrapper' => 'text-align: {{VALUE}};',
                             ],
                     ]
             );
-            }
             $this->add_group_control(
                     Group_Control_Typography::get_type(),
                     [
@@ -251,7 +220,7 @@ trait Button_Helper{
                             ],
                             'default' => 'solid',
                             'selectors' => [
-                                    '{{SELECTOR}} .btn-wrapper .ua-button.elementor-button' => 'border-style: {{VALUE}};',
+                                    '{{WRAPPER}} .btn-wrapper .ua-button.elementor-button' => 'border-style: {{VALUE}};',
                             ],
                     ]
             );

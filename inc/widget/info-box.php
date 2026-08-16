@@ -14,12 +14,21 @@ use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Icons_Manager;
 use Elementor\Group_Control_Border;
+use Elementor\Group_Control_Background;
 use Elementor\Utils;
 use Elementor\Group_Control_Box_Shadow;
 
 
 class Info_Box extends Base {
     use \UltraAddons\Traits\Button_Helper;
+
+    public function __construct( $data = [], $args = null ) {
+        parent::__construct( $data, $args );
+        $this->btn_align = 'center';
+        $this->btn_text_color = '#ffffff';
+        $this->btn_border_color = '#ffffff';
+    }
+
     /**
      * Set Keyword for search in
      * 
@@ -30,10 +39,11 @@ class Info_Box extends Base {
     }
     
     protected function content_infobox(){
+        $box_title = $this->get_title();
         $this->start_controls_section(
                     'section_sliders',
                     [
-                            'label' => __( 'Info Box', 'ultraaddons-elementor-lite' ),
+                            'label' => $box_title,
                     ]
             );
             
@@ -44,21 +54,72 @@ class Info_Box extends Base {
                             'type' => Controls_Manager::CHOOSE,
                             'options' => [
                                     'left'    => [
-                                            'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
-                                            'icon' => 'eicon-text-align-left',
+                                             'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
+                                             'icon' => 'eicon-text-align-left',
                                     ],
                                     'center' => [
-                                            'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
-                                            'icon' => 'eicon-text-align-center',
+                                             'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
+                                             'icon' => 'eicon-text-align-center',
+                                    ],
+                                    'right' => [
+                                             'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
+                                             'icon' => 'eicon-text-align-right',
+                                    ],
+                            ],
+                            'default' => 'center',
+                            'selectors' => [
+                                    '{{WRAPPER}} .ua-info-box-wrapper' => 'text-align: {{VALUE}};',
+                            ],
+                    ]
+            );
+            
+            $this->add_responsive_control(
+                    'icon_position',
+                    [
+                            'label' => __( 'Icon Position', 'ultraaddons-elementor-lite' ),
+                            'type' => Controls_Manager::CHOOSE,
+                            'options' => [
+                                    'left' => [
+                                            'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
+                                            'icon' => 'eicon-h-align-left',
+                                    ],
+                                    'top' => [
+                                            'title' => __( 'Top', 'ultraaddons-elementor-lite' ),
+                                            'icon' => 'eicon-v-align-top',
                                     ],
                                     'right' => [
                                             'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
-                                            'icon' => 'eicon-text-align-right',
+                                            'icon' => 'eicon-h-align-right',
                                     ],
                             ],
-                            'default' => 'left',
-                            'selectors' => [
-                                    '{{WRAPPER}} .ua-info-box-wrapper' => 'text-align: {{VALUE}};',
+                            'default' => 'top',
+                            'prefix_class' => 'ua-icon-box-position-',
+                    ]
+            );
+
+            $this->add_responsive_control(
+                    'icon_vertical_align',
+                    [
+                            'label' => __( 'Vertical Alignment', 'ultraaddons-elementor-lite' ),
+                            'type' => Controls_Manager::CHOOSE,
+                            'options' => [
+                                    'top' => [
+                                            'title' => __( 'Top', 'ultraaddons-elementor-lite' ),
+                                            'icon' => 'eicon-v-align-top',
+                                    ],
+                                    'middle' => [
+                                            'title' => __( 'Middle', 'ultraaddons-elementor-lite' ),
+                                            'icon' => 'eicon-v-align-middle',
+                                    ],
+                                    'bottom' => [
+                                            'title' => __( 'Bottom', 'ultraaddons-elementor-lite' ),
+                                            'icon' => 'eicon-v-align-bottom',
+                                    ],
+                            ],
+                            'default' => 'middle',
+                            'prefix_class' => 'ua-icon-box-valign-',
+                            'condition' => [
+                                    'icon_position!' => 'top',
                             ],
                     ]
             );
@@ -84,8 +145,8 @@ class Info_Box extends Base {
                             'type' => Controls_Manager::ICONS,
                             'fa4compatibility' => 'icon',
                             'default' => [
-                                    'value' => 'uicon uicon-ultraaddons',
-                                    'library' => 'ultraaddons-elementor-lite',
+                                    'value' => 'fas fa-star',
+                                    'library' => 'solid',
                             ],
                             'condition' => [
                                     'icon_style' => 'icon',
@@ -117,11 +178,10 @@ class Info_Box extends Base {
                                     'stacked' => __( 'Stacked', 'ultraaddons-elementor-lite' ),
                                     'framed' => __( 'Framed', 'ultraaddons-elementor-lite' ),
                             ],
-                            'default' => 'stacked',
+                            'default' => 'default',
                             'prefix_class' => 'elementor-view-',
                             'condition' => [
                                     'icon_style' => 'icon',
-//                                    'add_icon[library]!' => 'svg',
                             ],
                     ]
             );
@@ -149,11 +209,10 @@ class Info_Box extends Base {
                     'title_text',
                     [
                             'label' => __( 'Title & Description', 'ultraaddons-elementor-lite' ),
-                            'type' => Controls_Manager::TEXT,
                             'dynamic' => [
                                     'active' => true,
                             ],
-                            'default' => __( 'Info Box Title', 'ultraaddons-elementor-lite' ),
+                            'default' => __( 'Title', 'ultraaddons-elementor-lite' ),
                             'placeholder' => __( 'Enter your title', 'ultraaddons-elementor-lite' ),
                             'label_block' => true,
                     ]
@@ -182,7 +241,7 @@ class Info_Box extends Base {
                                     'span' => 'span',
                                     'p' => 'p',
                             ],
-                            'default' => 'h3',
+                            'default' => 'h2',
                     ]
             );
 
@@ -194,7 +253,7 @@ class Info_Box extends Base {
                             'dynamic' => [
                                     'active' => true,
                             ],
-                            'default' => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'ultraaddons-elementor-lite' ),
+                            'default' => __( 'Lorem ipsum dolor sit amet.', 'ultraaddons-elementor-lite' ),
                             'placeholder' => __( 'Enter your description', 'ultraaddons-elementor-lite' ),
                             'rows' => 10,
                             'separator' => 'none',
@@ -202,15 +261,51 @@ class Info_Box extends Base {
                     ]
             );
             
+            $this->add_control(
+                    'link_type',
+                    [
+                            'label' => __( 'Link Type', 'ultraaddons-elementor-lite' ),
+                            'type' => Controls_Manager::SELECT,
+                            'options' => [
+                                    'none'  => __( 'None', 'ultraaddons-elementor-lite' ),
+                                    'title' => __( 'Title', 'ultraaddons-elementor-lite' ),
+                                    'btn'   => __( 'Button', 'ultraaddons-elementor-lite' ),
+                                    'box'   => __( 'Box (Wrapper)', 'ultraaddons-elementor-lite' ),
+                            ],
+                            'default' => 'btn',
+                            'separator' => 'before',
+                    ]
+            );
+
+            $this->add_control(
+                    'box_link',
+                    [
+                            'label' => __( 'Link URL', 'ultraaddons-elementor-lite' ),
+                            'type' => Controls_Manager::URL,
+                            'dynamic' => [
+                                    'active' => true,
+                            ],
+                            'placeholder' => __( 'https://your-link.com', 'ultraaddons-elementor-lite' ),
+                            'default' => [
+                                    'url' => '#',
+                            ],
+                            'condition' => [
+                                    'link_type' => [ 'title', 'box' ],
+                            ],
+                    ]
+            );
             
             $this->add_control(
                     'wrapper_link_switch',
                     [
-                            'label' => __( 'Wrapper Link Switch', 'ultraaddons-elementor-lite' ),
+                            'label' => __( 'Legacy Wrapper Link', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SWITCHER,
                             'label_on' => __( 'Yes', 'ultraaddons-elementor-lite' ),
                             'label_off' => __( 'No', 'ultraaddons-elementor-lite' ),
                             'return_value' => 'yes',
+                            'condition' => [
+                                    'link_type' => 'btn',
+                            ],
                     ]
             );
             
@@ -226,16 +321,184 @@ class Info_Box extends Base {
                             'default' => [
                                     'url' => '#',
                             ],
-                        'condition' => [
-                            'wrapper_link_switch' => 'yes',
-                        ],
+                            'condition' => [
+                                    'wrapper_link_switch' => 'yes',
+                                    'link_type' => 'btn',
+                            ],
                     ]
             );
             
-            
-            
             $this->end_controls_section();
             
+    }
+
+    protected function content_badge() {
+        $this->start_controls_section(
+            'section_badge',
+            [
+                'label' => __( 'Badge / Ribbon', 'ultraaddons-elementor-lite' ),
+            ]
+        );
+
+        $this->add_control(
+            'badge_style',
+            [
+                'label' => __( 'Badge Style', 'ultraaddons-elementor-lite' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'corner',
+                'options' => [
+                    'none'   => __( 'None', 'ultraaddons-elementor-lite' ),
+                    'corner' => __( 'Corner Ribbon', 'ultraaddons-elementor-lite' ),
+                    'circle' => __( 'Circle Badge', 'ultraaddons-elementor-lite' ),
+                    'flag'   => __( 'Flag Badge', 'ultraaddons-elementor-lite' ),
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'badge_title',
+            [
+                'label' => __( 'Badge Text', 'ultraaddons-elementor-lite' ),
+                'type' => Controls_Manager::TEXT,
+                'dynamic' => [
+                    'active' => true,
+                ],
+                'default' => __( 'Hot', 'ultraaddons-elementor-lite' ),
+                'condition' => [
+                    'badge_style!' => 'none',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'badge_position',
+            [
+                'label' => __( 'Position', 'ultraaddons-elementor-lite' ),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'left' => [
+                        'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
+                        'icon' => 'eicon-h-align-left',
+                    ],
+                    'right' => [
+                        'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
+                        'icon' => 'eicon-h-align-right',
+                    ],
+                ],
+                'default' => 'right',
+                'condition' => [
+                    'badge_style!' => 'none',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+    }
+
+    protected function content_watermark() {
+        $this->start_controls_section(
+            'section_watermark',
+            [
+                'label' => __( 'Watermark', 'ultraaddons-elementor-lite' ),
+            ]
+        );
+
+        $this->add_control(
+            'watermark_type',
+            [
+                'label' => __( 'Watermark Type', 'ultraaddons-elementor-lite' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'none',
+                'options' => [
+                    'none'  => __( 'None', 'ultraaddons-elementor-lite' ),
+                    'icon'  => __( 'Icon', 'ultraaddons-elementor-lite' ),
+                    'image' => __( 'Image', 'ultraaddons-elementor-lite' ),
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'watermark_icon',
+            [
+                'label' => __( 'Watermark Icon', 'ultraaddons-elementor-lite' ),
+                'type' => Controls_Manager::ICONS,
+                'default' => [
+                    'value' => 'fas fa-shield-alt',
+                    'library' => 'solid',
+                ],
+                'condition' => [
+                    'watermark_type' => 'icon',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'watermark_image',
+            [
+                'label' => __( 'Watermark Image', 'ultraaddons-elementor-lite' ),
+                'type' => Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => Utils::get_placeholder_image_src(),
+                ],
+                'condition' => [
+                    'watermark_type' => 'image',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'watermark_h_position',
+            [
+                'label' => __( 'Horizontal Position', 'ultraaddons-elementor-lite' ),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'left' => [
+                        'title' => __( 'Left', 'ultraaddons-elementor-lite' ),
+                        'icon' => 'eicon-h-align-left',
+                    ],
+                    'center' => [
+                        'title' => __( 'Center', 'ultraaddons-elementor-lite' ),
+                        'icon' => 'eicon-h-align-center',
+                    ],
+                    'right' => [
+                        'title' => __( 'Right', 'ultraaddons-elementor-lite' ),
+                        'icon' => 'eicon-h-align-right',
+                    ],
+                ],
+                'default' => 'right',
+                'condition' => [
+                    'watermark_type!' => 'none',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'watermark_v_position',
+            [
+                'label' => __( 'Vertical Position', 'ultraaddons-elementor-lite' ),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'top' => [
+                        'title' => __( 'Top', 'ultraaddons-elementor-lite' ),
+                        'icon' => 'eicon-v-align-top',
+                    ],
+                    'middle' => [
+                        'title' => __( 'Middle', 'ultraaddons-elementor-lite' ),
+                        'icon' => 'eicon-v-align-middle',
+                    ],
+                    'bottom' => [
+                        'title' => __( 'Bottom', 'ultraaddons-elementor-lite' ),
+                        'icon' => 'eicon-v-align-bottom',
+                    ],
+                ],
+                'default' => 'bottom',
+                'condition' => [
+                    'watermark_type!' => 'none',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
     }
 
     protected function style_infobox(){
@@ -364,7 +627,7 @@ class Info_Box extends Base {
                                     'unit' => 'deg',
                             ],
                             'selectors' => [
-                                    '{{WRAPPER}} .elementor-icon i' => 'transform: rotate({{SIZE}}{{UNIT}});',
+                                    '{{WRAPPER}} .elementor-icon i, {{WRAPPER}} .elementor-icon svg' => 'transform: rotate({{SIZE}}{{UNIT}});',
                             ],
                     ]
             );
@@ -422,7 +685,7 @@ class Info_Box extends Base {
                             'type' => Controls_Manager::COLOR,
                             'default' => '',
                             'selectors' => [
-                                    '{{WRAPPER}}.elementor-view-stacked:hover .elementor-icon' => 'background-color: {{VALUE}};',
+                                    '{{WRAPPER}}.elementor-view-stacked:hover .elementor-icon' => 'fill: {{VALUE}}; color: {{VALUE}};',
                                     '{{WRAPPER}}.elementor-view-framed:hover .elementor-icon, {{WRAPPER}}.elementor-view-default:hover .elementor-icon' => 'fill: {{VALUE}}; color: {{VALUE}}; border-color: {{VALUE}};',
                             ],
                     ]
@@ -439,7 +702,7 @@ class Info_Box extends Base {
                             ],
                             'selectors' => [
                                     '{{WRAPPER}}.elementor-view-framed:hover .elementor-icon' => 'background-color: {{VALUE}};',
-                                    '{{WRAPPER}}.elementor-view-stacked:hover .elementor-icon' => 'fill: {{VALUE}}; color: {{VALUE}};',
+                                    '{{WRAPPER}}.elementor-view-stacked:hover .elementor-icon' => 'background-color: {{VALUE}};',
                             ],
                     ]
             );
@@ -508,12 +771,8 @@ class Info_Box extends Base {
                     [
                             'label' => __( 'Rotate', 'ultraaddons-elementor-lite' ),
                             'type' => Controls_Manager::SLIDER,
-//                            'default' => [
-//                                    'size' => 0,
-//                                    'unit' => 'deg',
-//                            ],
                             'selectors' => [
-                                    '{{WRAPPER}}:hover .elementor-icon i' => 'transform: rotate({{SIZE}}{{UNIT}});',
+                                    '{{WRAPPER}}:hover .elementor-icon i, {{WRAPPER}}:hover .elementor-icon svg' => 'transform: rotate({{SIZE}}{{UNIT}});',
                             ],
                     ]
             );
@@ -551,7 +810,25 @@ class Info_Box extends Base {
 
             $this->end_controls_tabs();
 
-            
+            $this->add_control(
+                    'icon_hover_animation',
+                    [
+                            'label' => __( 'Hover Animation', 'ultraaddons-elementor-lite' ),
+                            'type' => Controls_Manager::SELECT,
+                            'default' => '',
+                            'options' => [
+                                    '' => __( 'None', 'ultraaddons-elementor-lite' ),
+                                    'grow' => __( 'Grow', 'ultraaddons-elementor-lite' ),
+                                    'shrink' => __( 'Shrink', 'ultraaddons-elementor-lite' ),
+                                    'pulse' => __( 'Pulse', 'ultraaddons-elementor-lite' ),
+                                    'rotate' => __( 'Rotate', 'ultraaddons-elementor-lite' ),
+                                    'bob' => __( 'Bob / Float', 'ultraaddons-elementor-lite' ),
+                                    'wobble' => __( 'Wobble', 'ultraaddons-elementor-lite' ),
+                            ],
+                            'prefix_class' => 'ua-icon-anim-',
+                            'separator' => 'before',
+                    ]
+            );
 
             $this->end_controls_section();
     }
@@ -607,13 +884,10 @@ class Info_Box extends Base {
                 [
                         'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::COLOR,
-                        'default' => '#21272c',
+                        'default' => '#ffffff',
                         'selectors' => [
                                 '{{WRAPPER}} .ua-info-box-content .elementor-icon-box-title' => 'color: {{VALUE}};',
                                 '{{WRAPPER}} .ua-info-box-content .elementor-icon-box-title a' => 'color: {{VALUE}};',
-                        ],
-                        'global' => [
-                                'default' => Global_Colors::COLOR_PRIMARY,
                         ],
                 ]
         );
@@ -661,6 +935,9 @@ class Info_Box extends Base {
                                         'max' => 100,
                                 ],
                         ],
+                        'default' => [
+                                'size' => 22,
+                        ],
                         'selectors' => [
                                 '{{WRAPPER}} .elementor-icon-box-description' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                         ],
@@ -673,12 +950,9 @@ class Info_Box extends Base {
                 [
                         'label' => __( 'Color', 'ultraaddons-elementor-lite' ),
                         'type' => Controls_Manager::COLOR,
-                        'default' => '',
+                        'default' => '#ffffff',
                         'selectors' => [
                                 '{{WRAPPER}} .ua-info-box-content .elementor-icon-box-description' => 'color: {{VALUE}};',
-                        ],
-                        'global' => [
-                                'default' => Global_Colors::COLOR_TEXT,
                         ],
                 ]
         );
@@ -845,6 +1119,37 @@ class Info_Box extends Base {
                                         'tab' => Controls_Manager::TAB_STYLE,
                                 ]
                         );
+
+                $this->add_group_control(
+                        Group_Control_Background::get_type(),
+                        [
+                                'name' => 'box_background',
+                                'types' => [ 'classic', 'gradient' ],
+                                'selector' => '{{WRAPPER}} .elementor-widget-container',
+                        ]
+                );
+
+                $this->add_group_control(
+                        Group_Control_Border::get_type(),
+                        [
+                                'name' => 'box_border',
+                                'label' => esc_html__( 'Border', 'ultraaddons-elementor-lite' ),
+                                'selector' => '{{WRAPPER}} .elementor-widget-container',
+                        ]
+                );
+
+                $this->add_responsive_control(
+                        'wrapper_border_radius',
+                        [
+                                'label' => __( 'Radius', 'ultraaddons-elementor-lite' ),
+                                'type' => Controls_Manager::DIMENSIONS,
+                                'size_units' => [ 'px', '%' ],
+                                'selectors' => [
+                                        '{{WRAPPER}} .elementor-widget-container' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                ],
+                        ]
+                );
+
                 $this->add_responsive_control(
                         'wrapper_link_padding',
                         [
@@ -864,18 +1169,6 @@ class Info_Box extends Base {
                                 ],
                         ]
                 );
-                $this->add_responsive_control(
-                        'wrapper_border_radius',
-                        [
-                                'label' => __( 'Radius', 'ultraaddons-elementor-lite' ),
-                                'type' => Controls_Manager::DIMENSIONS,
-                                'size_units' => [ 'px', '%' ],
-                                'selectors' => [
-                                        '{{WRAPPER}} .elementor-widget-container' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                                ],
-                        ]
-                );
-        
         
                 $this->add_group_control(
                         Group_Control_Box_Shadow::get_type(),
@@ -908,7 +1201,7 @@ class Info_Box extends Base {
                             'type' => Controls_Manager::SLIDER,
                             'size_units' => [ 'px', '%' ],
                             'default' => [
-                                    'size' => 40,
+                                    'size' => 60,
                             ],
                             'range' => [
                                     'px' => [
@@ -921,7 +1214,7 @@ class Info_Box extends Base {
                                     ],
                             ],
                             'selectors' => [
-                                    '{{WRAPPER}} .infobox-image' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                                    '{{WRAPPER}} .infobox-image' => 'width: {{SIZE}}{{UNIT}}; height: auto; max-width: 100%; object-fit: cover;',
                             ],
                     ]
                 );
@@ -1085,7 +1378,308 @@ class Info_Box extends Base {
             
 
     }
-        /**
+    protected function style_badge() {
+        $this->start_controls_section(
+            'section_style_badge',
+            [
+                'label' => __( 'Badge / Ribbon', 'ultraaddons-elementor-lite' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'badge_style!' => 'none',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'     => 'badge_typography',
+                'selector' => '{{WRAPPER}} .ua-badge-inner',
+            ]
+        );
+
+        $this->start_controls_tabs( 'tabs_badge_style' );
+
+        $this->start_controls_tab(
+            'tab_badge_normal',
+            [
+                'label' => __( 'Normal', 'ultraaddons-elementor-lite' ),
+            ]
+        );
+
+        $this->add_control(
+            'badge_text_color',
+            [
+                'label'     => __( 'Text Color', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::COLOR,
+                'default'   => '#fff',
+                'selectors' => [
+                    '{{WRAPPER}} .ua-badge-inner' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'badge_bg_color',
+            [
+                'label'     => __( 'Background Color', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::COLOR,
+                'default'   => '#0FC392',
+                'selectors' => [
+                    '{{WRAPPER}} .ua-badge-inner' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .ua-badge-flag .ua-badge-inner:after' => 'border-top-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name'     => 'badge_box_shadow',
+                'selector' => '{{WRAPPER}} .ua-badge-inner',
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'tab_badge_hover',
+            [
+                'label' => __( 'Hover', 'ultraaddons-elementor-lite' ),
+            ]
+        );
+
+        $this->add_control(
+            'badge_text_color_hover',
+            [
+                'label'     => __( 'Text Color', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}}:hover .ua-badge-inner' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'badge_bg_color_hover',
+            [
+                'label'     => __( 'Background Color', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}}:hover .ua-badge-inner' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}}:hover .ua-badge-flag .ua-badge-inner:after' => 'border-top-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name'     => 'badge_box_shadow_hover',
+                'selector' => '{{WRAPPER}}:hover .ua-badge-inner',
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
+
+        $this->add_responsive_control(
+            'badge_padding',
+            [
+                'label'      => __( 'Padding', 'ultraaddons-elementor-lite' ),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em' ],
+                'separator'  => 'before',
+                'selectors'  => [
+                    '{{WRAPPER}} .ua-badge-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'badge_style!' => 'corner',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'badge_radius',
+            [
+                'label'      => __( 'Border Radius', 'ultraaddons-elementor-lite' ),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selectors'  => [
+                    '{{WRAPPER}} .ua-badge-inner' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'badge_style' => 'circle',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'badge_size',
+            [
+                'label'      => __( 'Badge Size', 'ultraaddons-elementor-lite' ),
+                'type'       => Controls_Manager::SLIDER,
+                'range'      => [
+                    'px' => [
+                        'min' => 20,
+                        'max' => 120,
+                    ],
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .ua-badge-circle .ua-badge-inner' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'badge_style' => 'circle',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+    }
+
+    protected function style_watermark() {
+        $this->start_controls_section(
+            'section_style_watermark',
+            [
+                'label' => __( 'Watermark', 'ultraaddons-elementor-lite' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'watermark_type!' => 'none',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'watermark_size',
+            [
+                'label'     => __( 'Size', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::SLIDER,
+                'range'     => [
+                    'px' => [
+                        'min' => 30,
+                        'max' => 400,
+                    ],
+                ],
+                'default'   => [
+                    'size' => 120,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .ua-watermark-icon i, {{WRAPPER}} .ua-watermark-icon svg' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .ua-watermark-image' => 'width: {{SIZE}}{{UNIT}}; height: auto;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'watermark_color',
+            [
+                'label'     => __( 'Color', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::COLOR,
+                'default'   => 'rgba(0,0,0,0.06)',
+                'selectors' => [
+                    '{{WRAPPER}} .ua-watermark-icon' => 'fill: {{VALUE}}; color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'watermark_type' => 'icon',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'watermark_color_hover',
+            [
+                'label'     => __( 'Hover Color', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}}:hover .ua-watermark-icon' => 'fill: {{VALUE}}; color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'watermark_type' => 'icon',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'watermark_opacity',
+            [
+                'label'     => __( 'Opacity', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::SLIDER,
+                'range'     => [
+                    'px' => [
+                        'min'  => 0,
+                        'max'  => 1,
+                        'step' => 0.05,
+                    ],
+                ],
+                'default'   => [
+                    'size' => 0.6,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .ua-info-box-watermark' => 'opacity: {{SIZE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'watermark_opacity_hover',
+            [
+                'label'     => __( 'Hover Opacity', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::SLIDER,
+                'range'     => [
+                    'px' => [
+                        'min'  => 0,
+                        'max'  => 1,
+                        'step' => 0.05,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}}:hover .ua-info-box-watermark' => 'opacity: {{SIZE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'watermark_rotation',
+            [
+                'label'     => __( 'Rotation', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::SLIDER,
+                'range'     => [
+                    'deg' => [
+                        'min' => -180,
+                        'max' => 180,
+                    ],
+                ],
+                'default'   => [
+                    'size' => 0,
+                    'unit' => 'deg',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .ua-info-box-watermark' => 'transform: rotate({{SIZE}}{{UNIT}});',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'watermark_hover_animation',
+            [
+                'label'     => __( 'Hover Animation', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::SELECT,
+                'default'   => 'none',
+                'options'   => [
+                    'none'   => __( 'None', 'ultraaddons-elementor-lite' ),
+                    'fade'   => __( 'Fade In', 'ultraaddons-elementor-lite' ),
+                    'zoom'   => __( 'Zoom / Scale', 'ultraaddons-elementor-lite' ),
+                    'slide'  => __( 'Slide Up', 'ultraaddons-elementor-lite' ),
+                    'rotate' => __( 'Rotate', 'ultraaddons-elementor-lite' ),
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+    }
+
+    /**
      * Register widget controls.
      *
      * Adds different input fields to allow the user to change and customize the widget settings.
@@ -1098,11 +1692,11 @@ class Info_Box extends Base {
         $this->btn_border_color = '#e2ebf1';
         
         $this->content_infobox();
+        $this->content_badge();
+        $this->content_watermark();
         
         $this->style_infobox();
-
         $this->style_image();
-        
         $this->style_content();
             
         /**
@@ -1112,11 +1706,73 @@ class Info_Box extends Base {
         $this->button_register_controls();
 
         $this->style_box();
-
+        $this->style_badge();
+        $this->style_watermark();
         $this->style_count();
     }
     
-    
+    /**
+     * Render Badge Output.
+     * 
+     * @since 2.0.2
+     */
+    public function render_badge() {
+        $settings = $this->get_settings_for_display();
+        $badge_style = ! empty( $settings['badge_style'] ) ? $settings['badge_style'] : 'none';
+        if ( 'none' === $badge_style || empty( $settings['badge_title'] ) ) {
+            return;
+        }
+
+        $badge_pos = ! empty( $settings['badge_position'] ) ? $settings['badge_position'] : 'right';
+        $this->add_render_attribute( 'badge_wrapper', 'class', [
+            'ua-info-box-badge',
+            'ua-badge-' . $badge_style,
+            'ua-badge-' . $badge_pos,
+        ] );
+        $this->add_inline_editing_attributes( 'badge_title', 'none' );
+        ?>
+        <div <?php $this->print_render_attribute_string( 'badge_wrapper' ); ?>>
+            <span class="ua-badge-inner" <?php $this->print_render_attribute_string( 'badge_title' ); ?>>
+                <?php echo esc_html( $settings['badge_title'] ); ?>
+            </span>
+        </div>
+        <?php
+    }
+
+    /**
+     * Render Watermark Output.
+     * 
+     * @since 2.0.2
+     */
+    public function render_watermark() {
+        $settings = $this->get_settings_for_display();
+        $wm_type = ! empty( $settings['watermark_type'] ) ? $settings['watermark_type'] : 'none';
+        if ( 'none' === $wm_type ) {
+            return;
+        }
+
+        $h_pos = ! empty( $settings['watermark_h_position'] ) ? $settings['watermark_h_position'] : 'right';
+        $v_pos = ! empty( $settings['watermark_v_position'] ) ? $settings['watermark_v_position'] : 'bottom';
+        $anim = ! empty( $settings['watermark_hover_animation'] ) ? $settings['watermark_hover_animation'] : 'none';
+
+        $this->add_render_attribute( 'watermark_wrapper', 'class', [
+            'ua-info-box-watermark',
+            'ua-wm-' . $h_pos,
+            'ua-wm-' . $v_pos,
+            'ua-wm-anim-' . $anim,
+        ] );
+        ?>
+        <div <?php $this->print_render_attribute_string( 'watermark_wrapper' ); ?>>
+            <?php if ( 'icon' === $wm_type && ! empty( $settings['watermark_icon']['value'] ) ) : ?>
+                <span class="ua-watermark-icon">
+                    <?php Icons_Manager::render_icon( $settings['watermark_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                </span>
+            <?php elseif ( 'image' === $wm_type && ! empty( $settings['watermark_image']['url'] ) ) : ?>
+                <img class="ua-watermark-image" src="<?php echo esc_url( $settings['watermark_image']['url'] ); ?>" alt="" />
+            <?php endif; ?>
+        </div>
+        <?php
+    }
     
     /**
      * Get Image Icon.
@@ -1130,62 +1786,24 @@ class Info_Box extends Base {
         $this->add_render_attribute( 'icon', 'class', [ 'elementor-icon' ] );
         $this->add_render_attribute( 'icon_wrapper', 'class', 'ua-info-box-icon' );
 
-        $icon_tag = 'span';
-
-        if ( ! isset( $settings['add_icon'] ) && ! Icons_Manager::is_migration_allowed() ) {
-                // add old default
-                $settings['add_icon'] = 'uicon uicon-ultraaddons';
-        }
-
-        $has_icon = ! empty( $settings['add_icon'] );
-
-        if ( $has_icon ) {
-            if( is_string( $settings['add_icon']['value'] ) ){
-                $this->add_render_attribute( 'i', 'class', $settings['add_icon'] );
-            }
-                
-                $this->add_render_attribute( 'i', 'aria-hidden', 'true' );
-        }
-        $svg_library_bool = false;
-        $add_icon= isset($settings['add_icon']['library'] );
-        if($add_icon == 'svg'){
-            $svg_library_bool = true;
-        }
-        
-
-        $icon_attributes = $this->get_render_attribute_string( 'icon' );
-
-
-        if ( ! $has_icon && ! empty( $settings['add_icon']['value'] ) ) {
-                $has_icon = true;
-        }
-        $migrated = isset( $settings['__fa4_migrated']['add_icon'] );
-        $is_new = ! isset( $settings['add_icon'] ) && Icons_Manager::is_migration_allowed();
-        
+        $has_icon = ! empty( $settings['add_icon']['value'] );
         $icon_style = isset( $settings['icon_style'] ) ? $settings['icon_style'] : 'icon';
         $add_image  = isset( $settings['add_image']['url'] ) ? $settings['add_image']['url'] : '';
-        $add_icon   = !empty( $settings['add_icon']['value'] ) && is_string( $settings['add_icon']['value'] ) ? $settings['add_icon']['value'] : false;
-        $svg        = !empty( $settings['add_icon']['value']['url'] ) && is_string( $settings['add_icon']['value']['url'] ) ? $settings['add_icon']['value']['url'] : false;
 
-        if ( $has_icon || 'image' == $icon_style ) { ?>
-        <div <?php echo esc_attr( $this->get_render_attribute_string( 'icon_wrapper' ) ); ?>>
-            <?php if( 'icon' == $icon_style ) { ?>
-                <<?php echo esc_attr( implode( ' ', [ $icon_tag, $icon_attributes ] ) ); ?>>
-                    <?php
-                    if ( $is_new || $svg_library_bool ) {
-                            Icons_Manager::render_icon( $settings['add_icon'], [ 'aria-hidden' => 'true' ] );
-                    } elseif ( ! empty( $settings['add_icon'] ) ) {?>
-                            <i <?php echo esc_attr( $this->get_render_attribute_string( 'i' ) ); ?>></i>
-                    <?php } ?>
-                </<?php echo esc_attr( $icon_tag ); ?>>
-            <?php } elseif( 'image' == $icon_style ) { ?>
-                    <img class="infobox-image" src="<?php echo esc_url( $add_image );?>" alt="" />
+        if ( $has_icon || 'image' === $icon_style ) { ?>
+        <div <?php $this->print_render_attribute_string( 'icon_wrapper' ); ?>>
+            <?php if( 'icon' === $icon_style && $has_icon ) { ?>
+                <span <?php $this->print_render_attribute_string( 'icon' ); ?>>
+                    <?php Icons_Manager::render_icon( $settings['add_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                </span>
+            <?php } elseif( 'image' === $icon_style && ! empty( $add_image ) ) { ?>
+                    <img class="infobox-image" src="<?php echo esc_url( $add_image ); ?>" alt="<?php echo esc_attr( $settings['title_text'] ?? '' ); ?>" />
             <?php } ?>
-            <?php if(!empty($settings['count_text'])): ?>
-                <div class="count-text count-<?php echo esc_attr( $settings['count_alignment']);?> count-<?php echo esc_attr( $settings['count_position']);?> ">
+            <?php if( ! empty( $settings['count_text'] ) ): ?>
+                <div class="count-text count-<?php echo esc_attr( $settings['count_alignment'] ?? 'right' ); ?> count-<?php echo esc_attr( $settings['count_position'] ?? 'top' ); ?>">
                         <?php echo esc_html( $settings['count_text'] ); ?>
                 </div>
-             <?php endif;?>
+             <?php endif; ?>
         </div>
         <?php 
         }
@@ -1200,43 +1818,59 @@ class Info_Box extends Base {
      * @access protected
      */
     protected function render() {
-            $settings = $this->get_settings_for_display();
-            $icon_tag = 'span';
-            $this->add_render_attribute( 'wrapper-tag', 'class', 'ua-info-box-wrapper' );
-            $this->add_render_attribute( 'description_text', 'class', 'elementor-icon-box-description' );
-            $this->add_inline_editing_attributes( 'title_text', 'none' );
-            $this->add_inline_editing_attributes( 'description_text' );
-            
-        
-        $wrapper_link_switch = !empty( $settings['wrapper_link_switch'] ) ? true : false;
-        $button_show = true;
+        $settings = $this->get_settings_for_display();
+        $this->add_render_attribute( 'wrapper-tag', 'class', 'ua-info-box-wrapper' );
+        $this->add_render_attribute( 'description_text', 'class', 'elementor-icon-box-description' );
+        $this->add_inline_editing_attributes( 'title_text', 'none' );
+        $this->add_inline_editing_attributes( 'description_text' );
+
+        $link_type = ! empty( $settings['link_type'] ) ? $settings['link_type'] : 'btn';
+        $wrapper_link_switch = ! empty( $settings['wrapper_link_switch'] ) && 'yes' === $settings['wrapper_link_switch'];
+        $box_url = ! empty( $settings['box_link']['url'] ) ? $settings['box_link'] : ( ! empty( $settings['wrapper_link']['url'] ) ? $settings['wrapper_link'] : [] );
+
+        $button_show = false;
         $wrapper_tag = 'div';
-        
-        if( $wrapper_link_switch & ! empty( $settings['btn_link']['url'] ) ){
-            $wrapper_tag = 'a';
-            $this->add_link_attributes( 'wrapper-tag', $settings['wrapper_link'] );
-            $button_show = false;
+
+        if ( 'box' === $link_type || $wrapper_link_switch ) {
+            if ( ! empty( $box_url['url'] ) ) {
+                $wrapper_tag = 'a';
+                $this->add_link_attributes( 'wrapper-tag', $box_url );
+            }
+        } elseif ( 'btn' === $link_type ) {
+            $button_show = true;
         }
-        
+
+        $title_tag = ! empty( $settings['title_size'] ) ? Utils::validate_html_tag( $settings['title_size'] ) : 'h3';
     ?>
-    <<?php echo esc_attr( $wrapper_tag ); ?> <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper-tag' ) ); ?>>
+    <<?php echo esc_attr( $wrapper_tag ); ?> <?php $this->print_render_attribute_string( 'wrapper-tag' ); ?>>
+        <?php $this->render_watermark(); ?>
+        <?php $this->render_badge(); ?>
         <?php $this->get_image_icon(); ?>
         <div class="ua-info-box-content">
-            <<?php echo esc_attr( $settings['title_size'] ); ?> class="elementor-icon-box-title">
-                    <<?php echo esc_attr( $icon_tag ); ?><?php echo esc_attr( $this->get_render_attribute_string( 'title_text' ) ); ?>><?php echo esc_html( $settings['title_text'] ); ?></<?php echo esc_attr( $icon_tag ); ?>>
-            </<?php echo esc_attr( $settings['title_size'] ); ?>>
+            <<?php echo esc_attr( $title_tag ); ?> class="elementor-icon-box-title">
+                <?php if ( 'title' === $link_type && ! empty( $box_url['url'] ) ) : 
+                    $this->add_link_attributes( 'title-link', $box_url );
+                ?>
+                    <a class="ua-info-box-title-link" <?php $this->print_render_attribute_string( 'title-link' ); ?>>
+                        <span <?php $this->print_render_attribute_string( 'title_text' ); ?>><?php echo esc_html( $settings['title_text'] ); ?></span>
+                    </a>
+                <?php else : ?>
+                    <span <?php $this->print_render_attribute_string( 'title_text' ); ?>><?php echo esc_html( $settings['title_text'] ); ?></span>
+                <?php endif; ?>
+            </<?php echo esc_attr( $title_tag ); ?>>
             <?php if ( ! ultraaddons_widget_data_is_empty( $settings['description_text'] ) ) : ?>
-            <p <?php echo esc_attr( $this->get_render_attribute_string( 'description_text' ) ); ?>><?php echo esc_html( $settings['description_text'] ); ?></p>
+            <p <?php $this->print_render_attribute_string( 'description_text' ); ?>><?php echo esc_html( $settings['description_text'] ); ?></p>
             <?php endif; ?>
+            <?php 
+            if ( $button_show ) {
+                $this->button_render();
+            }
+            ?>
         </div>
-        <?php 
-        if( $button_show ){
-            $this->button_render();
-        }
-        ?>
     </<?php echo esc_attr( $wrapper_tag ); ?>>
     <?php
-        
+
     }
 
 }
+
