@@ -238,16 +238,12 @@ function ultraaddons_woocommerce_cart_link() {
             /* translators: number of items in the mini cart. */
             $item_count_text = _n( 'item', 'items', $item_cmount, 'ultraaddons-elementor-lite' );
             $item_count_text = apply_filters( 'ultraaddons_item_text', $item_count_text, $item_cmount );
-            if( $item_cmount > 0 ){
             ?>
             <span class="count">
                 <span class="cart-count"><?php echo esc_html( $item_cmount ); ?></span>
                 <span class="cart-item-text"><?php echo esc_html( $item_count_text ); ?></span>
             </span>
             <span class="amount"><?php echo wp_kses_data( WC()->cart->get_cart_subtotal() ); ?></span>
-            <?php
-            }
-            ?>
         </a>
         <?php
 }
@@ -261,13 +257,64 @@ if ( ! function_exists( 'ultraaddons_woocommerce_cart_link_fragment' ) ) {
 	 * @return array Fragments to refresh via AJAX.
 	 */
 	function ultraaddons_woocommerce_cart_link_fragment( $fragments ) {
-		ob_start();
-		ultraaddons_woocommerce_cart_link();
-		$fragments['a.cart-contents'] = ob_get_clean();
+		if ( WC()->cart ) {
+			$count    = WC()->cart->get_cart_contents_count();
+			$subtotal = WC()->cart->get_cart_subtotal();
+			$fragments['.ultraaddons-cart-wrapper span.amount'] = '<span class="amount">' . $subtotal . '</span>';
+			$fragments['.ultraaddons-cart-wrapper span.cart-count'] = '<span class="cart-count">' . esc_html( $count ) . '</span>';
+			$fragments['.ultraaddons-cart-wrapper span.ua-cart-badge-count'] = '<span class="ua-cart-badge-count">' . esc_html( $count ) . '</span>';
+		}
+
 		return $fragments;
 	}
 }
 add_filter( 'woocommerce_add_to_cart_fragments', 'ultraaddons_woocommerce_cart_link_fragment' );
+
+/**
+ * Filter Mini Cart Item Quantity HTML to include +/- quantity buttons.
+ */
+function ultraaddons_widget_cart_item_quantity( $output, $cart_item, $cart_item_key ) {
+    if ( ! isset( $cart_item['quantity'] ) || ! isset( $cart_item['data'] ) ) {
+        return $output;
+    }
+    $qty = $cart_item['quantity'];
+    $product_price = WC()->cart->get_product_price( $cart_item['data'] );
+    
+    $qty_html  = '<div class="ua-mini-cart-qty-wrapper" data-cart-item-key="' . esc_attr( $cart_item_key ) . '">';
+    $qty_html .= '<button type="button" class="ua-qty-btn ua-qty-minus" data-key="' . esc_attr( $cart_item_key ) . '" data-qty="' . esc_attr( max( 0, $qty - 1 ) ) . '">-</button>';
+    $qty_html .= '<span class="ua-qty-number">' . esc_html( $qty ) . '</span>';
+    $qty_html .= '<button type="button" class="ua-qty-btn ua-qty-plus" data-key="' . esc_attr( $cart_item_key ) . '" data-qty="' . esc_attr( $qty + 1 ) . '">+</button>';
+    $qty_html .= '</div>';
+    
+    return '<span class="quantity">' . $qty_html . '<span class="ua-mini-cart-price">' . $product_price . '</span></span>';
+}
+add_filter( 'woocommerce_widget_cart_item_quantity', 'ultraaddons_widget_cart_item_quantity', 10, 3 );
+
+/**
+ * AJAX Handler for Mini Cart Quantity Update.
+ */
+function ultraaddons_update_cart_item_qty() {
+    $cart_item_key = isset( $_POST['cart_item_key'] ) ? sanitize_text_field( $_POST['cart_item_key'] ) : '';
+    $qty           = isset( $_POST['qty'] ) ? intval( $_POST['qty'] ) : 0;
+
+    if ( ! empty( $cart_item_key ) && WC()->cart ) {
+        if ( $qty > 0 ) {
+            WC()->cart->set_quantity( $cart_item_key, $qty, true );
+        } else {
+            WC()->cart->remove_cart_item( $cart_item_key );
+        }
+        WC()->cart->calculate_totals();
+    }
+
+    if ( class_exists( 'WC_AJAX' ) ) {
+        WC_AJAX::get_refreshed_fragments();
+    } else {
+        wp_send_json_success();
+    }
+    wp_die();
+}
+add_action( 'wp_ajax_ultraaddons_update_cart_item_qty', 'ultraaddons_update_cart_item_qty' );
+add_action( 'wp_ajax_nopriv_ultraaddons_update_cart_item_qty', 'ultraaddons_update_cart_item_qty' );
 
 /**
  * Finally I will creat field my custom code, currently using CMB2

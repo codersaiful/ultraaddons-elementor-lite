@@ -639,13 +639,14 @@
             EF.hooks.addAction( 'frontend/element_ready/ultraaddons-slider.default', add_number_inside_bullets);
            
            
-            // Cart Update in Editor Screen
-            EF.hooks.addAction(
-                    'frontend/element_ready/ultraaddons-wc-mini-cart.default',
-                    function ($scope) {
-                        trigger_cart_update();
-                    }
-            );
+             // Cart Update & Offcanvas Handler
+             EF.hooks.addAction(
+                     'frontend/element_ready/ultraaddons-cart.default',
+                     function ($scope) {
+                         trigger_cart_update();
+                         init_ultraaddons_mini_cart($scope);
+                     }
+             );
             
         
             
@@ -931,6 +932,135 @@
                 }
             });
     }
+
+    function init_ultraaddons_mini_cart($scope) {
+        // Dynamic event handlers read data-layout and data-trigger on demand
+    }
+
+    function openOffCanvas($wrapper) {
+        $wrapper.find('.ua-cart-offcanvas-overlay, .ua-cart-offcanvas-drawer').addClass('ua-active');
+        $('body').addClass('ua-cart-offcanvas-open');
+    }
+
+    function closeOffCanvas($wrapper) {
+        if ($wrapper && $wrapper.length) {
+            $wrapper.find('.ua-cart-offcanvas-overlay, .ua-cart-offcanvas-drawer').removeClass('ua-active');
+        } else {
+            $('.ua-cart-offcanvas-overlay, .ua-cart-offcanvas-drawer').removeClass('ua-active');
+        }
+        $('body').removeClass('ua-cart-offcanvas-open');
+    }
+
+    // Dynamic Header Click Handler (Dropdown, Off-Canvas, None)
+    $(document).on('click', '.ultraaddons-cart-wrapper .ua-cart-header-wrapper, .ultraaddons-cart-wrapper .ua-sticky-cart-trigger', function(e) {
+        var $wrapper = $(this).closest('.ultraaddons-cart-wrapper');
+        var layout   = $wrapper.attr('data-layout') || 'dropdown';
+        var trigger  = $wrapper.attr('data-trigger') || 'hover';
+
+        if ('none' === layout) {
+            return true; // Allow normal link navigation to WC Cart page
+        }
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        if ('offcanvas' === layout) {
+            openOffCanvas($wrapper);
+        } else if ('dropdown' === layout && 'click' === trigger) {
+            $wrapper.find('.minicart-content-wrapper').toggleClass('ua-open');
+        }
+    });
+
+    // Close Off-Canvas
+    $(document).on('click', '.ua-cart-offcanvas-close, .ua-cart-offcanvas-overlay', function(e) {
+        e.preventDefault();
+        var $wrapper = $(this).closest('.ultraaddons-cart-wrapper');
+        closeOffCanvas($wrapper);
+    });
+
+    $(document).on('keyup', function(e) {
+        if (e.key === 'Escape') {
+            closeOffCanvas();
+        }
+    });
+
+    // Close Dropdown when clicking outside
+    $(document).on('click', function(e) {
+        if (!$(e.target).closest('.ultraaddons-cart-wrapper').length) {
+            $('.minicart-content-wrapper').removeClass('ua-open');
+        }
+    });
+
+    // Dynamic Hover Handler
+    $(document).on('mouseenter', '.ultraaddons-cart-wrapper', function() {
+        var $wrapper = $(this);
+        var layout   = $wrapper.attr('data-layout') || 'dropdown';
+        var trigger  = $wrapper.attr('data-trigger') || 'hover';
+
+        if ('hover' === trigger) {
+            if ('offcanvas' === layout) {
+                openOffCanvas($wrapper);
+            } else if ('dropdown' === layout) {
+                $wrapper.find('.minicart-content-wrapper').addClass('ua-open');
+            }
+        }
+    }).on('mouseleave', '.ultraaddons-cart-wrapper', function() {
+        var $wrapper = $(this);
+        var layout   = $wrapper.attr('data-layout') || 'dropdown';
+        var trigger  = $wrapper.attr('data-trigger') || 'hover';
+
+        if ('hover' === trigger && 'dropdown' === layout) {
+            $wrapper.find('.minicart-content-wrapper').removeClass('ua-open');
+        }
+    });
+
+    // Auto open on add to cart
+    $(document.body).on('added_to_cart', function() {
+        $('.ultraaddons-cart-wrapper').each(function() {
+            var $wrapper = $(this);
+            var layout   = $wrapper.attr('data-layout') || 'dropdown';
+            var autoOpen = $wrapper.attr('data-auto-open') === 'yes';
+
+            if (autoOpen) {
+                if ('offcanvas' === layout) {
+                    openOffCanvas($wrapper);
+                } else if ('dropdown' === layout) {
+                    $wrapper.find('.minicart-content-wrapper').addClass('ua-open');
+                }
+            }
+        });
+    });
+
+    // Global Event Listener for Mini Cart Quantity +/- AJAX Buttons
+    $(document).on('click', '.ua-qty-btn', function(e) {
+        e.preventDefault();
+        var $btn         = $(this);
+        var cartItemKey  = $btn.data('key');
+        var newQty       = parseInt($btn.data('qty'), 10);
+        var $wrapper     = $btn.closest('.ultraaddons-cart-wrapper');
+        var ajaxUrl      = $wrapper.data('ajax-url') || (typeof wc_add_to_cart_params !== 'undefined' ? wc_add_to_cart_params.ajax_url : '/wp-admin/admin-ajax.php');
+
+        if (!cartItemKey || isNaN(newQty)) return;
+
+        $btn.css('opacity', '0.5');
+
+        $.ajax({
+            type: 'POST',
+            url: ajaxUrl,
+            data: {
+                action: 'ultraaddons_update_cart_item_qty',
+                cart_item_key: cartItemKey,
+                qty: newQty
+            },
+            success: function() {
+                $(document.body).trigger('wc_fragment_refresh');
+                $(document.body).trigger('added_to_cart');
+            },
+            complete: function() {
+                $btn.css('opacity', '1');
+            }
+        });
+    });
 
 
 } (jQuery, window));
