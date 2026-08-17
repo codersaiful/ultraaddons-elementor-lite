@@ -71,6 +71,13 @@ class Library_Manager {
 			ULTRA_ADDONS_VERSION
 		);
 
+        wp_enqueue_style(
+			'ultraaddons-library-custom',
+			self::ULTRA_ADDONS_TEMPLATE_ASSETS . 'css/custom.css',
+			null,
+			ULTRA_ADDONS_VERSION
+		);
+
 		wp_enqueue_script(
 			'ultraaddons-library-editor',
 			self::ULTRA_ADDONS_TEMPLATE_ASSETS . 'js/editor.min.js',

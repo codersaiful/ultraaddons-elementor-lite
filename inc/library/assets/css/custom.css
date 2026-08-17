@@ -1,17 +1,75 @@
+/* UltraAddons Elementor Template Library Button */
+.elementor-add-new-section .elementor-add-section-area-button.elementor-add-ua-button,
 .elementor-add-new-section .elementor-add-ua-button {
-    background-color: #13c392;
-    margin-left: 5px;
-    font-size: 27px;
-    vertical-align: bottom;
-    font-family: Arial,Helvetica,sans-serif;
-    display: inline-flex;
-    width: unset;
-    border-radius: 4px;
-    padding: 0 8px;
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    max-width: 40px !important;
+    max-height: 40px !important;
+    border-radius: 50% !important;
+    background-color: #13c392 !important;
+    color: #ffffff !important;
+    margin-left: 5px !important;
+    padding: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    vertical-align: middle !important;
+    cursor: pointer !important;
+    border: none !important;
+    outline: none !important;
+    box-sizing: border-box !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12) !important;
+    transform: none !important;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease !important;
 }
 
-.elementor-add-new-section .elementor-add-ua-button-text {
-    padding-left: 6px;
-    padding-right: 0;font-size: 17px;
-    text-transform: capitalize;
+.elementor-add-new-section .elementor-add-section-area-button.elementor-add-ua-button:hover,
+.elementor-add-new-section .elementor-add-ua-button:hover {
+    background-color: #0eb384 !important;
+    transform: none !important;
+    box-shadow: 0 2px 8px rgba(19, 195, 146, 0.45) !important;
+}
+
+/* Inner Icon - Smooth Slow Rotation on Hover */
+.elementor-add-new-section .elementor-add-ua-button i,
+.elementor-add-new-section .elementor-add-ua-button .uicon-ultraaddons {
+    font-size: 18px !important;
+    color: #ffffff !important;
+    line-height: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: rotate(0deg);
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.elementor-add-new-section .elementor-add-ua-button:hover i,
+.elementor-add-new-section .elementor-add-ua-button:hover .uicon-ultraaddons {
+    animation: uaSlowSpin 2s linear infinite !important;
+}
+
+@keyframes uaSlowSpin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Hide text */
+.elementor-add-new-section .elementor-add-ua-button-text,
+.elementor-add-new-section span.elementor-add-ua-button-text {
+    display: none !important;
+    font-size: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
