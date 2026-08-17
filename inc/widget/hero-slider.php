@@ -50,7 +50,7 @@ class Hero_Slider extends Base{
      * @return Array
      */
     public function get_style_depends() {
-        return ['swiper'];
+        return array_merge( parent::get_style_depends(), ['swiper'] );
     }
 
     /**
@@ -65,7 +65,7 @@ class Hero_Slider extends Base{
      * @by Saiful
      */
     public function get_script_depends() {
-		return [ 'jquery','swiper','frontend-hero-slider' ];
+		return array_merge( parent::get_script_depends(), [ 'jquery','swiper','frontend-hero-slider' ] );
     }
 
     

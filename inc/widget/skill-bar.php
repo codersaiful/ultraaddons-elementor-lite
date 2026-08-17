@@ -47,7 +47,7 @@ class Skill_Bar extends Base{
          * @return Array
          */
         public function get_style_depends() {
-            return ['barfiller'];
+            return array_merge( parent::get_style_depends(), ['barfiller'] );
         }
 
         
@@ -76,7 +76,7 @@ class Skill_Bar extends Base{
          * @by Saiful
          */
         public function get_script_depends() {
-                return [ 'jquery','barfiller' ];
+                return array_merge( parent::get_script_depends(), [ 'jquery','barfiller' ] );
         }
 
         /**

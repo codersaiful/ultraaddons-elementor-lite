@@ -51,7 +51,7 @@ class Polar_Chart extends Base{
      * @by Saiful
      */
     public function get_script_depends() {
-		return [ 'jquery','chart-js','frontend-chart-js' ];
+		return array_merge( parent::get_script_depends(), [ 'jquery','chart-js','frontend-chart-js' ] );
     }
     
     /**

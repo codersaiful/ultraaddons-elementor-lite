@@ -84,7 +84,7 @@ class Advance_Post_Masonry extends Base{
      * @return type
      */
     public function get_script_depends() {
-        return ['imagesloaded.pkgd.min','packery-mode.pkgd.min','isotope.pkgd.min', 'masonry_grid'];
+        return array_merge( parent::get_script_depends(), ['imagesloaded.pkgd.min','packery-mode.pkgd.min','isotope.pkgd.min', 'masonry_grid'] );
     }
     
     

@@ -48,7 +48,7 @@ class Skill_Chart extends Base{
      * @by Saiful
      */
     public function get_script_depends() {
-		return [ 'jquery','SkillChart' ];
+		return array_merge( parent::get_script_depends(), [ 'jquery','SkillChart' ] );
     }
 
     /**

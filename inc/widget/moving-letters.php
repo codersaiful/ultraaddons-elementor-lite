@@ -70,7 +70,7 @@ class Moving_Letters extends Base{
      * @by Saiful
      */
     public function get_script_depends() {
-            return [ 'anime' ,'frontend-moving-letters' ];
+            return array_merge( parent::get_script_depends(), [ 'anime' ,'frontend-moving-letters' ] );
     }
     
     

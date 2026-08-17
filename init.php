@@ -4,7 +4,7 @@
  * Requires Plugins: elementor
  * Plugin URI: https://ultraaddons.com/
  * Description: 78+ Fee widget, Custom Font, Custom CSS, Anywhere Elementor Shortcode, Header Footer Builder, Menu Builder, Woo Widget, 85+ Full Ready Template. All are free to use.
- * Version: 2.0.3
+ * Version: 3.0.0
  * Author: CodeAstrology Team
  * Author URI: https://codeastrology.com/
  * License: GPL3+
@@ -12,10 +12,10 @@
  * Text Domain: ultraaddons-elementor-lite
  * Domain Path: /languages/
  * 
- * Requires at least:    4.0
+ * Requires at least:    6.7
+ * Requires PHP:         8.0
  * Tested up to:         7.0
  * Elementor tested up to: 4.2.1
- * Elementor Pro tested up to: 7.11.0
  *
  * @package UltraAddons
  * @category Addons
@@ -45,7 +45,7 @@
 
 defined( 'ABSPATH' ) || die();
 
-define( 'ULTRA_ADDONS_VERSION', '2.0.3.0' );
+define( 'ULTRA_ADDONS_VERSION', '3.0.0' );
 define( 'ULTRA_ADDONS__FILE__', __FILE__ );
 define( 'ULTRA_ADDONS_BASE_NAME', plugin_basename( __FILE__ ) );
 define( 'ULTRA_ADDONS_DIR', plugin_dir_path( ULTRA_ADDONS__FILE__ ) );
@@ -54,8 +54,8 @@ define( 'ULTRA_ADDONS_ASSETS', trailingslashit( ULTRA_ADDONS_URL . 'assets' ) );
 
 define( 'ULTRA_ADDONS_WIDGET_HELP_ULR', trailingslashit( 'https://ultraaddons.com/widget/' ) );
 
-define( 'ULTRA_ADDONS_MINIMUM_ELEMENTOR_VERSION', '2.5.0' );
-define( 'ULTRA_ADDONS_MINIMUM_PHP_VERSION', '5.4' );
+define( 'ULTRA_ADDONS_MINIMUM_ELEMENTOR_VERSION', '4.0.0' );
+define( 'ULTRA_ADDONS_MINIMUM_PHP_VERSION', '8.0.0' );
 
 
 $ultraaddons_capability = apply_filters( 'ultraaddons_capability', 'manage_ultraaddons' );
@@ -106,7 +106,7 @@ final class UltraAddons {
 	 *
 	 * @var string Minimum Elementor version required to run the plugin.
 	 */
-	const MINIMUM_ELEMENTOR_VERSION = '2.0.0';
+	const MINIMUM_ELEMENTOR_VERSION = ULTRA_ADDONS_MINIMUM_ELEMENTOR_VERSION;
 
 	/**
 	 * Minimum PHP Version
@@ -115,7 +115,7 @@ final class UltraAddons {
 	 *
 	 * @var string Minimum PHP version required to run the plugin.
 	 */
-	const MINIMUM_PHP_VERSION = '7.0';
+	const MINIMUM_PHP_VERSION = ULTRA_ADDONS_MINIMUM_PHP_VERSION;
 
 	/**
 	 * Instance

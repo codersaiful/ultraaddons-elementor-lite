@@ -35,6 +35,42 @@ defined( 'ABSPATH' ) || die();
  * @todo Remove return [ 'basic' ]; from get_catogories method.
  */
 class Base extends Widget_Base{
+
+    /**
+     * Load the shared styles and this widget's stylesheet only when Elementor
+     * renders the widget on the current document.
+     *
+     * @return array
+     */
+    public function get_style_depends() {
+        $dependencies = [
+            'ultraaddons-widgets-style',
+            'animate',
+            'ultraaddons-icon-font',
+            'ultraaddons-extra-icons-style',
+        ];
+
+        $widget_slug = strtolower( str_replace( '_', '-', $this->get_pure_name() ) );
+        $style_file = ULTRA_ADDONS_DIR . 'assets/css/widgets/' . $widget_slug . '.css';
+        $pro_style_file = defined( 'ULTRA_ADDONS_PRO_DIR' )
+            ? ULTRA_ADDONS_PRO_DIR . 'assets/css/widgets/' . $widget_slug . '.css'
+            : '';
+
+        if ( is_file( $style_file ) || ( $pro_style_file && is_file( $pro_style_file ) ) ) {
+            $dependencies[] = 'ultraaddons-' . $widget_slug;
+        }
+
+        return $dependencies;
+    }
+
+    /**
+     * Load the shared frontend runtime only on documents using UltraAddons.
+     *
+     * @return array
+     */
+    public function get_script_depends() {
+        return [ 'ultraaddons-elementor-frontend' ];
+    }
     
     /**
      * Mainly called for register Style

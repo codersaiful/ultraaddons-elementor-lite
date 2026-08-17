@@ -46,10 +46,10 @@ class Navigation_Menu extends Base{
      * @by Saiful
      */
     public function get_script_depends() {
-		return [ 'jquery','navbarjs' ];
+		return array_merge( parent::get_script_depends(), [ 'jquery','navbarjs' ] );
     }
     public function get_style_depends() {
-		return [ 'navbarjs' ];
+		return array_merge( parent::get_style_depends(), [ 'navbarjs' ] );
     }
     /**
      * Get your widget name

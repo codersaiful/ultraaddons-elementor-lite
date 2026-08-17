@@ -41,7 +41,7 @@ class WC_Products extends Base{
      * @by Saiful
      */
     public function get_script_depends() {
-            return [ 'jquery' ];
+            return array_merge( parent::get_script_depends(), [ 'jquery' ] );
     }
     
     /**

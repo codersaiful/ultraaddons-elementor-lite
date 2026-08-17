@@ -54,7 +54,7 @@ class Product_Flip_Carousel extends Base{
      * @return Array
      */
     public function get_style_depends() {
-        return ['swiffySlider'];
+        return array_merge( parent::get_style_depends(), ['swiffySlider'] );
     }
 
     /**
@@ -69,7 +69,7 @@ class Product_Flip_Carousel extends Base{
      * @by Saiful
      */
     public function get_script_depends() {
-            return [ 'jquery','swiffySlider' ];
+            return array_merge( parent::get_script_depends(), [ 'jquery','swiffySlider' ] );
     }
     
     /**

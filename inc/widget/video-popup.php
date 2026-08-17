@@ -73,7 +73,11 @@ class Video_Popup extends Base{
      * @by Saiful
      */
     public function get_script_depends() {
-		return [ 'jquery', 'modal-video' ];
+		return array_merge( parent::get_script_depends(), [ 'jquery', 'modal-video' ] );
+    }
+
+    public function get_style_depends() {
+        return array_merge( parent::get_style_depends(), [ 'modal-video' ] );
     }
     
     /**

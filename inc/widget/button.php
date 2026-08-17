@@ -35,7 +35,7 @@ class Button extends Base{
      * @return Array
      */
     public function get_style_depends() {
-        return ['hover-css'];
+        return array_merge( parent::get_style_depends(), ['hover-css'] );
     }
     
     /**

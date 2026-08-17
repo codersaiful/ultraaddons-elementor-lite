@@ -51,7 +51,7 @@ class News_Ticker extends Base{
      * @return Array
      */
     public function get_style_depends() {
-        return ['NewsTicker'];
+        return array_merge( parent::get_style_depends(), ['NewsTicker'] );
     }
 
     /**
@@ -66,7 +66,7 @@ class News_Ticker extends Base{
      * @by Saiful
      */
     public function get_script_depends() {
-		return [ 'jquery','NewsTicker' ];
+		return array_merge( parent::get_script_depends(), [ 'jquery','NewsTicker' ] );
     }
 
     /**

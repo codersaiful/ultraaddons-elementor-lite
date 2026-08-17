@@ -53,7 +53,7 @@ class Testimonial_Slider extends Base{
          * @return Array
          */
     public function get_style_depends() {
-        return ['owlCarousel','owlCarousel-theme'];
+        return array_merge( parent::get_style_depends(), ['owlCarousel','owlCarousel-theme'] );
     }
 
     /**
@@ -68,7 +68,7 @@ class Testimonial_Slider extends Base{
      * @by Saiful
      */
     public function get_script_depends() {
-            return [ 'jquery','owlCarousel' ];
+            return array_merge( parent::get_script_depends(), [ 'jquery','owlCarousel' ] );
     }
     
     /**
