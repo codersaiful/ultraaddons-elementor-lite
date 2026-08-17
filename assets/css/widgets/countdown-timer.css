@@ -1,0 +1,339 @@
+/**
+ * UltraAddons Countdown Timer Widget Styles
+ *
+ * Architecture: Shape class (.ua-shape-*) and layout class (.ua-labels-inline)
+ * are BOTH on the inner .ua-countdown-wrap element. All CSS selectors target
+ * from .ua-countdown-wrap downward. No prefix_class on the outer widget wrapper.
+ *
+ * @since 2.0.3
+ */
+
+/* ==========================================================================
+   BASE STRUCTURE
+   ========================================================================== */
+
+.ua-countdown-wrapper {
+    display: block;
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.ua-countdown-wrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+/* Base Countdown Item (Block layout = vertical number + label) */
+.ua-countdown-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 0%;
+    flex: 1 1 0%;
+    min-width: 0;
+    max-width: 100%;
+    padding: 20px 10px;
+    margin: 0 6px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.ua-countdown-item:first-child { margin-left: 0 !important; }
+.ua-countdown-item:last-of-type { margin-right: 0 !important; }
+
+/* Base Number */
+.ua-countdown-number {
+    display: block;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+    -webkit-font-feature-settings: "tnum";
+    font-feature-settings: "tnum";
+    text-align: center;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Base Label */
+.ua-countdown-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+    margin-top: 6px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+/* Separators */
+.ua-countdown-separator {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-item-align: center;
+    align-self: center;
+    line-height: 1;
+    margin: 0 3px;
+    flex-shrink: 0;
+}
+
+.ua-countdown-separator span {
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.ua-countdown-separator span:first-child {
+    margin-bottom: 8px;
+}
+
+.ua-countdown-separator:last-of-type {
+    display: none !important;
+}
+
+
+/* ==========================================================================
+   SHAPE PRESETS — Block Layout (default, number above label)
+   ========================================================================== */
+
+/* --- 1. Rectangle Card (Rounded) — DEFAULT --- */
+.ua-shape-rounded .ua-countdown-item {
+    background-color: #13c392;
+    border-radius: 8px;
+    padding: 24px 10px;
+    aspect-ratio: auto;
+    height: auto;
+    width: auto;
+    max-height: none;
+}
+.ua-shape-rounded .ua-countdown-number { color: #fff; font-size: 48px; }
+.ua-shape-rounded .ua-countdown-label  { color: #fff; font-size: 12px; letter-spacing: 1px; margin-top: 8px; }
+.ua-shape-rounded .ua-countdown-separator span { background-color: #13c392; }
+
+/* --- 2. Circle (1:1 Dial) --- */
+.ua-shape-circle .ua-countdown-item {
+    background-color: #13c392;
+    border-radius: 50% !important;
+    aspect-ratio: 1 / 1;
+    width: 90px; height: 90px;
+    min-width: 90px; min-height: 90px;
+    max-width: 90px; max-height: 90px;
+    flex: 0 0 90px;
+    padding: 0;
+    margin: 0 6px;
+}
+.ua-shape-circle .ua-countdown-number { color: #fff; font-size: 28px; line-height: 1; }
+.ua-shape-circle .ua-countdown-label  { color: #fff; font-size: 9px;  margin-top: 3px; letter-spacing: 0.5px; }
+.ua-shape-circle .ua-countdown-separator span { background-color: #13c392; }
+
+/* --- 3. Square (1:1 Box) --- */
+.ua-shape-square .ua-countdown-item {
+    background-color: #13c392;
+    border-radius: 0 !important;
+    aspect-ratio: 1 / 1;
+    width: 90px; height: 90px;
+    min-width: 90px; min-height: 90px;
+    max-width: 90px; max-height: 90px;
+    flex: 0 0 90px;
+    padding: 0;
+    margin: 0 6px;
+}
+.ua-shape-square .ua-countdown-number { color: #fff; font-size: 28px; line-height: 1; }
+.ua-shape-square .ua-countdown-label  { color: #fff; font-size: 9px;  margin-top: 3px; letter-spacing: 0.5px; }
+.ua-shape-square .ua-countdown-separator span { background-color: #13c392; }
+
+/* --- 4. Flat (Minimal) --- */
+.ua-shape-flat .ua-countdown-item {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 10px 4px;
+}
+.ua-shape-flat .ua-countdown-number { color: #1e293b; font-size: 44px; }
+.ua-shape-flat .ua-countdown-label  { color: #64748b; font-size: 12px; }
+.ua-shape-flat .ua-countdown-separator span { background-color: #13c392; }
+
+/* --- 5. Framed (Bordered) --- */
+.ua-shape-framed .ua-countdown-item {
+    background: transparent !important;
+    border: 2px solid #13c392 !important;
+    box-shadow: none !important;
+    border-radius: 8px;
+    padding: 18px 8px;
+}
+.ua-shape-framed .ua-countdown-number { color: #13c392; font-size: 44px; }
+.ua-shape-framed .ua-countdown-label  { color: #1e293b; font-size: 12px; }
+.ua-shape-framed .ua-countdown-separator span { background-color: #13c392; }
+
+
+/* ==========================================================================
+   INLINE LABELS LAYOUT (number + label on same row)
+   Applied via .ua-labels-inline on .ua-countdown-wrap
+   ========================================================================== */
+
+.ua-labels-inline .ua-countdown-item {
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+    -ms-flex-direction: row !important;
+    flex-direction: row !important;
+    -webkit-box-align: baseline !important;
+    -ms-flex-align: baseline !important;
+    align-items: baseline !important;
+    -webkit-box-pack: center !important;
+    -ms-flex-pack: center !important;
+    justify-content: center !important;
+    gap: 6px;
+}
+
+.ua-labels-inline .ua-countdown-label {
+    margin-top: 0 !important;
+}
+
+/* Inline + Rectangle */
+.ua-labels-inline.ua-shape-rounded .ua-countdown-item {
+    padding: 14px 10px;
+}
+.ua-labels-inline.ua-shape-rounded .ua-countdown-number { font-size: 32px; }
+.ua-labels-inline.ua-shape-rounded .ua-countdown-label  { font-size: 11px; }
+
+/* Inline + Circle */
+.ua-labels-inline.ua-shape-circle .ua-countdown-item {
+    padding: 0 !important;
+    -webkit-box-align: center !important;
+    -ms-flex-align: center !important;
+    align-items: center !important;
+}
+.ua-labels-inline.ua-shape-circle .ua-countdown-number { font-size: 22px; }
+.ua-labels-inline.ua-shape-circle .ua-countdown-label  { font-size: 7px;  }
+
+/* Inline + Square */
+.ua-labels-inline.ua-shape-square .ua-countdown-item {
+    padding: 0 !important;
+    -webkit-box-align: center !important;
+    -ms-flex-align: center !important;
+    align-items: center !important;
+}
+.ua-labels-inline.ua-shape-square .ua-countdown-number { font-size: 22px; }
+.ua-labels-inline.ua-shape-square .ua-countdown-label  { font-size: 7px;  }
+
+/* Inline + Flat */
+.ua-labels-inline.ua-shape-flat .ua-countdown-item {
+    padding: 8px 4px;
+}
+.ua-labels-inline.ua-shape-flat .ua-countdown-number { font-size: 32px; }
+.ua-labels-inline.ua-shape-flat .ua-countdown-label  { font-size: 11px; }
+
+/* Inline + Framed */
+.ua-labels-inline.ua-shape-framed .ua-countdown-item {
+    padding: 12px 8px;
+}
+.ua-labels-inline.ua-shape-framed .ua-countdown-number { font-size: 32px; }
+.ua-labels-inline.ua-shape-framed .ua-countdown-label  { font-size: 11px; }
+
+
+/* ==========================================================================
+   UTILITY & EXPIRE
+   ========================================================================== */
+
+.ua-countdown-message {
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #1e293b;
+    margin-top: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.ua-countdown-template-wrap {
+    display: none;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.ua-hidden-element {
+    display: none !important;
+}
+
+/* ==========================================================================
+   ALIGNMENT
+   ========================================================================== */
+
+.ua-countdown-align-left .ua-countdown-wrap {
+    margin-left: 0; margin-right: auto;
+    -webkit-box-pack: start; -ms-flex-pack: start; justify-content: flex-start;
+}
+.ua-countdown-align-center .ua-countdown-wrap {
+    margin-left: auto; margin-right: auto;
+    -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center;
+}
+.ua-countdown-align-right .ua-countdown-wrap {
+    margin-left: auto; margin-right: 0;
+    -webkit-box-pack: end; -ms-flex-pack: end; justify-content: flex-end;
+}
+
+/* ==========================================================================
+   MOBILE BREAKPOINT
+   ========================================================================== */
+
+@media screen and (max-width: 767px) {
+    .ua-countdown-wrap {
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+    .ua-countdown-item {
+        -ms-flex-preferred-size: calc(50% - 12px) !important;
+        flex-basis: calc(50% - 12px) !important;
+        max-width: calc(50% - 12px) !important;
+        margin: 5px !important;
+    }
+    .ua-countdown-separator {
+        display: none !important;
+    }
+}
