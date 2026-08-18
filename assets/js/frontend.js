@@ -844,12 +844,79 @@
                     //add active class on selected item
                     $('.list').click(function(){
                       $(this).addClass('active').siblings().removeClass('active');    
-                    })
+                    });
                 }
             );
-    
 
-            
+            // Testimonial Box / Carousel Handler
+            var widgetTestimonialCarousel = function( $scope, $ ) {
+                var $carousel = $scope.find( '.ua-testimonial-carousel, .wpr-testimonial-carousel' );
+                if ( ! $carousel.length || ! $.fn.slick ) {
+                    return;
+                }
+
+                if ( $carousel.hasClass('slick-initialized') ) {
+                    $carousel.slick('unslick');
+                }
+
+                var rawData = $carousel.attr( 'data-slick' );
+                var settings = rawData ? JSON.parse( rawData ) : {};
+
+                var colsDesktop = ( settings.slidesToShow !== undefined && settings.slidesToShow !== '' ) ? parseInt(settings.slidesToShow, 10) : 2,
+                    colsTablet   = ( settings.columnsTablet !== undefined && settings.columnsTablet !== '' ) ? parseInt(settings.columnsTablet, 10) : ( colsDesktop > 2 ? 2 : colsDesktop ),
+                    colsMobile   = ( settings.columnsMobile !== undefined && settings.columnsMobile !== '' ) ? parseInt(settings.columnsMobile, 10) : 1,
+                    slidesToScroll = settings.slidesToScroll ? parseInt(settings.slidesToScroll, 10) : 1,
+                    slideEffect  = $carousel.attr('data-slide-effect') || 'slide';
+
+                if ( ! colsDesktop || isNaN(colsDesktop) ) {
+                    var sliderClass = ( $scope.attr('class') || '' ) + ' ' + ( $carousel.closest('.elementor-widget').attr('class') || '' );
+                    var desktopMatch = sliderClass.match(/(?:ua|wpr)-testimonial-slider-columns(?:-desktop)?-(\d)/);
+                    colsDesktop  = desktopMatch ? parseInt(desktopMatch[1], 10) : 2;
+                    colsTablet   = colsDesktop > 2 ? 2 : colsDesktop;
+                }
+
+                $carousel.slick({
+                    rtl: !! settings.rtl,
+                    infinite: settings.infinite !== false,
+                    speed: settings.speed || 700,
+                    arrows: !! settings.arrows,
+                    dots: !! settings.dots,
+                    autoplay: !! settings.autoplay,
+                    autoplaySpeed: settings.autoplaySpeed || 4000,
+                    pauseOnHover: settings.pauseOnHover !== false,
+                    prevArrow: $scope.find('.ua-testimonial-prev-arrow, .wpr-testimonial-prev-arrow'),
+                    nextArrow: $scope.find('.ua-testimonial-next-arrow, .wpr-testimonial-next-arrow'),
+                    appendDots: $scope.find('.ua-testimonial-dots, .wpr-testimonial-dots'),
+                    customPaging: function () {
+                        return '<span class="ua-testimonial-dot"></span>';
+                    },
+                    slidesToShow: colsDesktop,
+                    slidesToScroll: slidesToScroll,
+                    fade: ( colsDesktop === 1 && slideEffect === 'fade' ),
+                    responsive: [
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToShow: colsTablet,
+                                slidesToScroll: ( slidesToScroll > colsTablet ? colsTablet : slidesToScroll ),
+                                fade: ( colsTablet === 1 && slideEffect === 'fade' )
+                            }
+                        },
+                        {
+                            breakpoint: 767,
+                            settings: {
+                                slidesToShow: colsMobile,
+                                slidesToScroll: 1,
+                                fade: ( colsMobile === 1 && slideEffect === 'fade' )
+                            }
+                        }
+                    ]
+                });
+            };
+
+            EF.hooks.addAction( 'frontend/element_ready/ultraaddons-testimonial-box.default', widgetTestimonialCarousel );
+            EF.hooks.addAction( 'frontend/element_ready/testimonial-box.default', widgetTestimonialCarousel );
+
     });// Init hook wrapup
    
 
@@ -926,11 +993,71 @@
                             }
 
                         }
-
                     }
                 }
             });
     }
 
+    // Document Ready Fallback for Testimonial Carousel
+    $(document).ready(function() {
+        if ( typeof $.fn.slick !== 'undefined' ) {
+            $('.ua-testimonial-carousel, .wpr-testimonial-carousel').not('.slick-initialized').each(function() {
+                var $carousel = $(this);
+                var $scope = $carousel.closest('.elementor-widget');
+                var rawData = $carousel.attr('data-slick');
+                var settings = rawData ? JSON.parse(rawData) : {};
+                var colsDesktop = ( settings.slidesToShow !== undefined && settings.slidesToShow !== '' ) ? parseInt(settings.slidesToShow, 10) : 2,
+                    colsTablet   = ( settings.columnsTablet !== undefined && settings.columnsTablet !== '' ) ? parseInt(settings.columnsTablet, 10) : ( colsDesktop > 2 ? 2 : colsDesktop ),
+                    colsMobile   = ( settings.columnsMobile !== undefined && settings.columnsMobile !== '' ) ? parseInt(settings.columnsMobile, 10) : 1,
+                    slidesToScroll = settings.slidesToScroll ? parseInt(settings.slidesToScroll, 10) : 1,
+                    slideEffect  = $carousel.attr('data-slide-effect') || 'slide';
+
+                if ( ! colsDesktop || isNaN(colsDesktop) ) {
+                    var sliderClass = ( $scope.attr('class') || '' ) + ' ' + ( $carousel.closest('.elementor-widget').attr('class') || '' );
+                    var desktopMatch = sliderClass.match(/(?:ua|wpr)-testimonial-slider-columns(?:-desktop)?-(\d)/);
+                    colsDesktop  = desktopMatch ? parseInt(desktopMatch[1], 10) : 2;
+                    colsTablet   = colsDesktop > 2 ? 2 : colsDesktop;
+                }
+
+                $carousel.slick({
+                    rtl: !! settings.rtl,
+                    infinite: settings.infinite !== false,
+                    speed: settings.speed || 700,
+                    arrows: !! settings.arrows,
+                    dots: !! settings.dots,
+                    autoplay: !! settings.autoplay,
+                    autoplaySpeed: settings.autoplaySpeed || 4000,
+                    pauseOnHover: settings.pauseOnHover !== false,
+                    prevArrow: $scope.find('.ua-testimonial-prev-arrow, .wpr-testimonial-prev-arrow'),
+                    nextArrow: $scope.find('.ua-testimonial-next-arrow, .wpr-testimonial-next-arrow'),
+                    appendDots: $scope.find('.ua-testimonial-dots, .wpr-testimonial-dots'),
+                    customPaging: function () {
+                        return '<span class="ua-testimonial-dot"></span>';
+                    },
+                    slidesToShow: colsDesktop,
+                    slidesToScroll: slidesToScroll,
+                    fade: ( colsDesktop === 1 && slideEffect === 'fade' ),
+                    responsive: [
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToShow: colsTablet,
+                                slidesToScroll: ( slidesToScroll > colsTablet ? colsTablet : slidesToScroll ),
+                                fade: ( colsTablet === 1 && slideEffect === 'fade' )
+                            }
+                        },
+                        {
+                            breakpoint: 767,
+                            settings: {
+                                slidesToShow: colsMobile,
+                                slidesToScroll: 1,
+                                fade: ( colsMobile === 1 && slideEffect === 'fade' )
+                            }
+                        }
+                    ]
+                });
+            });
+        }
+    });
 
 } (jQuery, window));
