@@ -96,10 +96,13 @@ class Loader {
         //For Editor Screen
         add_action('elementor/editor/before_enqueue_scripts', [ $this, 'elementor_screen_style' ]);
         
-        //Mainly UltraAddons Icons font need to load in Elementor Screen.
-        add_action('elementor/editor/before_enqueue_scripts', [ $this, 'icon_enqueue_scripts' ]);
-
-        
+        // AJAX Endpoints for Product List Widget
+        add_action( 'wp_ajax_ua_product_quick_view', [ $this, 'ajax_product_quick_view' ] );
+        add_action( 'wp_ajax_nopriv_ua_product_quick_view', [ $this, 'ajax_product_quick_view' ] );
+        add_action( 'wp_ajax_ua_product_list_load_more', [ $this, 'ajax_product_list_load_more' ] );
+        add_action( 'wp_ajax_nopriv_ua_product_list_load_more', [ $this, 'ajax_product_list_load_more' ] );
+        add_action( 'wp_ajax_ua_ajax_add_to_cart', [ $this, 'ajax_modal_add_to_cart' ] );
+        add_action( 'wp_ajax_nopriv_ua_ajax_add_to_cart', [ $this, 'ajax_modal_add_to_cart' ] );
     }
 
     
@@ -519,6 +522,41 @@ class Loader {
         
     }
 
+    /**
+     * AJAX Endpoint: Product View / Quick View Modal
+     * 
+     * @since 2.0.3
+     */
+    public function ajax_product_quick_view() {
+        if ( class_exists( '\UltraAddons\Widget\Product_List' ) ) {
+            \UltraAddons\Widget\Product_List::ajax_quick_view();
+        }
+        wp_die();
+    }
+
+    /**
+     * AJAX Endpoint: Product List Load More
+     * 
+     * @since 2.0.3
+     */
+    public function ajax_product_list_load_more() {
+        if ( class_exists( '\UltraAddons\Widget\Product_List' ) ) {
+            \UltraAddons\Widget\Product_List::ajax_load_more();
+        }
+        wp_die();
+    }
+
+    /**
+     * AJAX Endpoint: Quick View Modal Add to Cart
+     * 
+     * @since 2.0.3
+     */
+    public function ajax_modal_add_to_cart() {
+        if ( class_exists( '\UltraAddons\Widget\Product_List' ) ) {
+            \UltraAddons\Widget\Product_List::ajax_modal_add_to_cart();
+        }
+        wp_die();
+    }
 
 }
 
