@@ -219,15 +219,6 @@ $ultraaddons_widgetsArray = [
     
     
     //New Added Widgets
-
-    'Gallery_Box' => [
-            'name'  => __( 'Gallery Box', 'ultraaddons-elementor-lite' ),
-            'is_pro'   => false,
-            'icon'      => 'eicon-gallery-justified',
-            'cat'       => [
-                __( 'General', 'ultraaddons-elementor-lite' ),
-            ],
-    ],
     
    /*  'Info_Boards' => [
             'name'  => __( 'Info Boards', 'ultraaddons-elementor-lite' ),
