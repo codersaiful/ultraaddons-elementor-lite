@@ -658,6 +658,14 @@ $ultraaddons_widgetsArray = [
             __( 'General', 'ultraaddons-elementor-lite' ),
         ],
     ],
+    'Filterable_Gallery'=> [
+        'name'      => __( 'Filterable Gallery', 'ultraaddons-elementor-lite' ),
+        'is_pro'   => false,
+        'icon'      => 'eicon-gallery-grid',
+        'cat'       => [
+            __( 'General', 'ultraaddons-elementor-lite' ),
+        ],
+    ],
 
 
 ];
