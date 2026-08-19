@@ -975,6 +975,92 @@
 
             EF.hooks.addAction( 'frontend/element_ready/ultraaddons-team-box.default', widgetTeamCarousel );
 
+            /**
+             * UltraAddons Flip Box Handler
+             *
+             * @param {jQuery} $scope
+             * @param {jQuery} $
+             */
+            var UltraAddonsFlipBox = function( $scope, $ ) {
+                var $wrapper = $scope.find( '.ua-flip-box-container' );
+                if ( ! $wrapper.length ) {
+                    return;
+                }
+
+                function setAutoMaxHeight() {
+                    var $front = $wrapper.find( '.ua-flip-box-front' );
+                    var $back = $wrapper.find( '.ua-flip-box-back' );
+                    var frontHeight = $front.outerHeight() || 0;
+                    var backHeight = $back.outerHeight() || 0;
+                    var maxHeight = Math.max( frontHeight, backHeight );
+                    if ( maxHeight > 0 ) {
+                        $wrapper.find( '.ua-flip-box-card' ).css( 'height', maxHeight + 'px' );
+                        $wrapper.css( 'height', maxHeight + 'px' );
+                    }
+                }
+
+                function setDynamicHeight() {
+                    var $front = $wrapper.find( '.ua-flip-box-front' );
+                    var $back = $wrapper.find( '.ua-flip-box-back' );
+                    var frontHeight = $front.outerHeight() || 0;
+                    var backHeight = $back.outerHeight() || 0;
+                    var targetHeight = ( $wrapper.hasClass( 'ua-flip-box-active' ) || $wrapper.hasClass( '--active' ) ) ? backHeight : frontHeight;
+                    if ( targetHeight > 0 ) {
+                        $wrapper.find( '.ua-flip-box-card' ).css( 'height', targetHeight + 'px' );
+                        $wrapper.css( 'height', targetHeight + 'px' );
+                    }
+                }
+
+                // Click event toggle
+                $wrapper.filter( '.ua-flip-box-click' ).add( $scope.find( '.ua-flip-box-click' ) ).off( 'click.uaFlipBox' ).on( 'click.uaFlipBox', function( e ) {
+                    if ( $( e.target ).closest( '.ua-flip-box-button, a[href]:not([href="#"])' ).length && ! $( this ).hasClass( 'ua-flip-box-active' ) ) {
+                        return;
+                    }
+                    $( this ).toggleClass( 'ua-flip-box-active --active' );
+                } );
+
+                // Hover event class toggle
+                $wrapper.filter( '.ua-flip-box-hover' ).add( $scope.find( '.ua-flip-box-hover' ) ).off( 'mouseenter.uaFlipBox mouseleave.uaFlipBox' ).on( 'mouseenter.uaFlipBox mouseleave.uaFlipBox', function() {
+                    $( this ).toggleClass( 'ua-flip-box-active --active' );
+                } );
+
+                // Touch support for hover trigger on mobile / tablet
+                if ( 'ontouchstart' in window || navigator.maxTouchPoints > 0 ) {
+                    $wrapper.filter( '.ua-flip-box-hover' ).add( $scope.find( '.ua-flip-box-hover' ) ).off( 'touchend.uaFlipBox' ).on( 'touchend.uaFlipBox', function( e ) {
+                        if ( $( e.target ).closest( '.ua-flip-box-button, a[href]:not([href="#"])' ).length && $( this ).hasClass( 'ua-flip-box-active' ) ) {
+                            return;
+                        }
+                        $( this ).toggleClass( 'ua-flip-box-active --active' );
+                    } );
+                }
+
+                // Auto height handling with responsive resize support
+                if ( $wrapper.hasClass( 'ua-flip-box-auto-height' ) ) {
+                    if ( $wrapper.hasClass( 'ua-flipbox-max' ) ) {
+                        setAutoMaxHeight();
+                        var interval = setInterval( setAutoMaxHeight, 250 );
+                        setTimeout( function() {
+                            clearInterval( interval );
+                        }, 4000 );
+
+                        $( window ).off( 'resize.uaFlipBox' + $scope.data( 'id' ) ).on( 'resize.uaFlipBox' + $scope.data( 'id' ), function() {
+                            setAutoMaxHeight();
+                        } );
+                    } else if ( $wrapper.hasClass( 'ua-flipbox-dynamic' ) ) {
+                        setDynamicHeight();
+                        $wrapper.on( 'click.uaFlipBox mouseenter.uaFlipBox mouseleave.uaFlipBox touchend.uaFlipBox', function() {
+                            setTimeout( setDynamicHeight, 50 );
+                        } );
+
+                        $( window ).off( 'resize.uaFlipBox' + $scope.data( 'id' ) ).on( 'resize.uaFlipBox' + $scope.data( 'id' ), function() {
+                            setDynamicHeight();
+                        } );
+                    }
+                }
+            };
+
+            EF.hooks.addAction( 'frontend/element_ready/ultraaddons-flip-box.default', UltraAddonsFlipBox );
+
     });// Init hook wrapup
    
 
@@ -1164,6 +1250,14 @@
                 });
             });
         }
+
+        // Document Ready Fallback for Flip Box click triggers
+        $('.ua-flip-box-click').off('click.uaFlipBoxDoc').on('click.uaFlipBoxDoc', function(e) {
+            if ($(e.target).closest('.ua-flip-box-button, a[href]:not([href="#"])').length && !$(this).hasClass('ua-flip-box-active')) {
+                return;
+            }
+            $(this).toggleClass('ua-flip-box-active --active');
+        });
     });
 
 } (jQuery, window));

@@ -430,6 +430,14 @@ $ultraaddons_widgetsArray = [
                 __( 'General', 'ultraaddons-elementor-lite' ),
             ],
     ],
+	'Flip_Box' => [
+            'name'  => __( 'Flip Box', 'ultraaddons-elementor-lite' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-flip-box',
+            'cat'       => [
+                __( 'General', 'ultraaddons-elementor-lite' ),
+            ],
+    ],
 	'Product_Flip' => [
             'name'  => __( 'Product Flip', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
