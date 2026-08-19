@@ -201,7 +201,7 @@ $ultraaddons_widgetsArray = [
     'Team_Box' => [
             'name'  => __( 'Team Box', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
-            'icon'      => 'uicon-team-box',
+            'icon'      => 'eicon-person',
             'cat'       => [
                 __( 'General', 'ultraaddons-elementor-lite' ),
             ],
