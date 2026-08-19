@@ -1,0 +1,347 @@
+/**
+ * UltraAddons Tooltip Widget Stylesheet
+ *
+ * Clean, lightweight, GPU-accelerated CSS animations and directional tooltip styles.
+ *
+ * @package UltraAddons
+ */
+
+/* ==========================================================================
+   1. BASE WRAPPER & CONTAINER
+   ========================================================================== */
+.ua-tooltip-wrapper {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.ua-tooltip {
+    position: relative;
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 15px;
+    color: #333333;
+    line-height: 1;
+    cursor: pointer;
+    box-sizing: border-box;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+/* ==========================================================================
+   2. TRIGGER CONTENT
+   ========================================================================== */
+.ua-tooltip-trigger {
+    display: inline-block;
+    color: inherit;
+    text-decoration: none;
+    outline: none;
+}
+
+.ua-tooltip-trigger a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.ua-tooltip-icon-trigger {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.ua-tooltip-icon-trigger i {
+    font-size: 40px;
+    line-height: 1;
+}
+
+.ua-tooltip-icon-trigger svg {
+    width: 40px;
+    height: 40px;
+    fill: currentColor;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.ua-tooltip-image-trigger img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: inherit;
+}
+
+.ua-tooltip-shortcode-trigger {
+    display: inline-block;
+    line-height: normal;
+}
+
+/* ==========================================================================
+   3. TOOLTIP BUBBLE
+   ========================================================================== */
+.ua-tooltip .ua-tooltip-bubble {
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    background-color: #222222;
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 10px 14px;
+    position: absolute;
+    z-index: 9999;
+    font-size: 14px;
+    line-height: 1.4;
+    text-align: center;
+    width: 160px;
+    box-sizing: border-box;
+    pointer-events: none;
+    -webkit-transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.ua-tooltip .ua-tooltip-bubble p {
+    margin: 0;
+    color: inherit;
+}
+
+.ua-tooltip .ua-tooltip-bubble a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+/* Visibility Trigger */
+.ua-tooltip:hover .ua-tooltip-bubble,
+.ua-tooltip:focus .ua-tooltip-bubble,
+.ua-tooltip.ua-tooltip-active .ua-tooltip-bubble,
+.ua-tooltip-trigger:focus + .ua-tooltip-bubble {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Arrow Base */
+.ua-tooltip .ua-tooltip-bubble::after {
+    content: "";
+    position: absolute;
+    border-width: 6px;
+    border-style: solid;
+}
+
+/* ==========================================================================
+   4. DIRECTIONS & KEYFRAME ANIMATIONS
+   ========================================================================== */
+
+/* --- Top --- */
+.ua-tooltip .ua-tooltip-bubble.ua-tooltip--top {
+    bottom: 100%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    margin: 0 auto 10px auto;
+}
+
+.ua-tooltip .ua-tooltip-bubble.ua-tooltip--top::after {
+    top: 100%;
+    left: calc(50% - 6px);
+    border-color: #222222 transparent transparent transparent;
+}
+
+.ua-tooltip:hover .ua-tooltip-bubble.ua-tooltip--top,
+.ua-tooltip.ua-tooltip-active .ua-tooltip-bubble.ua-tooltip--top,
+.ua-tooltip-trigger:focus + .ua-tooltip-bubble.ua-tooltip--top {
+    -webkit-animation: uaTooltipTopIn 300ms ease;
+    animation: uaTooltipTopIn 300ms ease;
+}
+
+/* --- Bottom --- */
+.ua-tooltip .ua-tooltip-bubble.ua-tooltip--bottom {
+    top: 100%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    margin: 10px auto 0 auto;
+}
+
+.ua-tooltip .ua-tooltip-bubble.ua-tooltip--bottom::after {
+    bottom: 100%;
+    left: calc(50% - 6px);
+    border-color: transparent transparent #222222 transparent;
+}
+
+.ua-tooltip:hover .ua-tooltip-bubble.ua-tooltip--bottom,
+.ua-tooltip.ua-tooltip-active .ua-tooltip-bubble.ua-tooltip--bottom,
+.ua-tooltip-trigger:focus + .ua-tooltip-bubble.ua-tooltip--bottom {
+    -webkit-animation: uaTooltipBottomIn 300ms ease;
+    animation: uaTooltipBottomIn 300ms ease;
+}
+
+/* --- Left --- */
+.ua-tooltip .ua-tooltip-bubble.ua-tooltip--left {
+    top: 50%;
+    right: 100%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    margin-right: 10px;
+}
+
+.ua-tooltip .ua-tooltip-bubble.ua-tooltip--left::after {
+    top: calc(50% - 6px);
+    left: 100%;
+    border-color: transparent transparent transparent #222222;
+}
+
+.ua-tooltip:hover .ua-tooltip-bubble.ua-tooltip--left,
+.ua-tooltip.ua-tooltip-active .ua-tooltip-bubble.ua-tooltip--left,
+.ua-tooltip-trigger:focus + .ua-tooltip-bubble.ua-tooltip--left {
+    -webkit-animation: uaTooltipLeftIn 300ms ease;
+    animation: uaTooltipLeftIn 300ms ease;
+}
+
+/* --- Right --- */
+.ua-tooltip .ua-tooltip-bubble.ua-tooltip--right {
+    top: 50%;
+    left: 100%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    margin-left: 10px;
+}
+
+.ua-tooltip .ua-tooltip-bubble.ua-tooltip--right::after {
+    top: calc(50% - 6px);
+    right: 100%;
+    border-color: transparent #222222 transparent transparent;
+}
+
+.ua-tooltip:hover .ua-tooltip-bubble.ua-tooltip--right,
+.ua-tooltip.ua-tooltip-active .ua-tooltip-bubble.ua-tooltip--right,
+.ua-tooltip-trigger:focus + .ua-tooltip-bubble.ua-tooltip--right {
+    -webkit-animation: uaTooltipRightIn 300ms ease;
+    animation: uaTooltipRightIn 300ms ease;
+}
+
+/* ==========================================================================
+   5. KEYFRAMES
+   ========================================================================== */
+@-webkit-keyframes uaTooltipTopIn {
+    0% {
+        opacity: 0;
+        bottom: calc(100% + 8px);
+    }
+    100% {
+        opacity: 1;
+        bottom: 100%;
+    }
+}
+
+@keyframes uaTooltipTopIn {
+    0% {
+        opacity: 0;
+        bottom: calc(100% + 8px);
+    }
+    100% {
+        opacity: 1;
+        bottom: 100%;
+    }
+}
+
+@-webkit-keyframes uaTooltipBottomIn {
+    0% {
+        opacity: 0;
+        top: calc(100% + 8px);
+    }
+    100% {
+        opacity: 1;
+        top: 100%;
+    }
+}
+
+@keyframes uaTooltipBottomIn {
+    0% {
+        opacity: 0;
+        top: calc(100% + 8px);
+    }
+    100% {
+        opacity: 1;
+        top: 100%;
+    }
+}
+
+@-webkit-keyframes uaTooltipLeftIn {
+    0% {
+        opacity: 0;
+        right: calc(100% + 8px);
+    }
+    100% {
+        opacity: 1;
+        right: 100%;
+    }
+}
+
+@keyframes uaTooltipLeftIn {
+    0% {
+        opacity: 0;
+        right: calc(100% + 8px);
+    }
+    100% {
+        opacity: 1;
+        right: 100%;
+    }
+}
+
+@-webkit-keyframes uaTooltipRightIn {
+    0% {
+        opacity: 0;
+        left: calc(100% + 8px);
+    }
+    100% {
+        opacity: 1;
+        left: 100%;
+    }
+}
+
+@keyframes uaTooltipRightIn {
+    0% {
+        opacity: 0;
+        left: calc(100% + 8px);
+    }
+    100% {
+        opacity: 1;
+        left: 100%;
+    }
+}
+
+/* ==========================================================================
+   6. RESPONSIVE BREAKPOINTS (TABLET & MOBILE)
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .ua-tooltip {
+        padding: 10px 20px;
+    }
+    .ua-tooltip .ua-tooltip-bubble {
+        width: 150px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 767px) {
+    .ua-tooltip {
+        padding: 8px 16px;
+    }
+    .ua-tooltip-icon-trigger i {
+        font-size: 28px;
+    }
+    .ua-tooltip-icon-trigger svg {
+        width: 28px;
+        height: 28px;
+    }
+    .ua-tooltip .ua-tooltip-bubble {
+        width: 140px;
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+}

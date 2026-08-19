@@ -1061,6 +1061,38 @@
 
             EF.hooks.addAction( 'frontend/element_ready/ultraaddons-flip-box.default', UltraAddonsFlipBox );
 
+            /**
+             * UltraAddons Tooltip Handler
+             *
+             * @param {jQuery} $scope
+             * @param {jQuery} $
+             */
+            var UltraAddonsTooltip = function( $scope, $ ) {
+                var $tooltip = $scope.find( '.ua-tooltip' );
+                if ( ! $tooltip.length ) {
+                    return;
+                }
+
+                // Touch support for mobile / tablet devices
+                if ( 'ontouchstart' in window || navigator.maxTouchPoints > 0 ) {
+                    $tooltip.off( 'touchend.uaTooltip' ).on( 'touchend.uaTooltip', function( e ) {
+                        if ( $( e.target ).closest( 'a[href]:not([href="#"])' ).length && $( this ).hasClass( 'ua-tooltip-active' ) ) {
+                            return;
+                        }
+                        $( this ).toggleClass( 'ua-tooltip-active' );
+                    } );
+
+                    // Close tooltip on tapping outside
+                    $( document ).on( 'touchend.uaTooltipDoc' + $scope.data( 'id' ), function( e ) {
+                        if ( ! $( e.target ).closest( $tooltip ).length ) {
+                            $tooltip.removeClass( 'ua-tooltip-active' );
+                        }
+                    } );
+                }
+            };
+
+            EF.hooks.addAction( 'frontend/element_ready/ultraaddons-tooltip.default', UltraAddonsTooltip );
+
     });// Init hook wrapup
    
 

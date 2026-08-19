@@ -438,6 +438,14 @@ $ultraaddons_widgetsArray = [
                 __( 'General', 'ultraaddons-elementor-lite' ),
             ],
     ],
+	'Tooltip' => [
+            'name'  => __( 'Tooltip', 'ultraaddons-elementor-lite' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-commenting-o',
+            'cat'       => [
+                __( 'General', 'ultraaddons-elementor-lite' ),
+            ],
+    ],
 	'Product_Flip' => [
             'name'  => __( 'Product Flip', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
