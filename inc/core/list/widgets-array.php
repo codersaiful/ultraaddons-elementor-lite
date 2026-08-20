@@ -329,6 +329,15 @@ $ultraaddons_widgetsArray = [
             ],
     ],
     
+    'Advanced_Tabs' => [
+            'name'  => __( 'Advanced Tabs', 'ultraaddons-elementor-lite' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-tabs',
+            'cat'       => [
+                __( 'General', 'ultraaddons-elementor-lite' ),
+            ],
+    ],
+    
     'Drop_Caps' => [
             'name'  => __( 'Drop Caps', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,

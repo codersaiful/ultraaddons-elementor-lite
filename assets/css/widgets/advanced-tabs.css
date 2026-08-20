@@ -1,0 +1,379 @@
+/**
+ * UltraAddons Advanced Tabs Widget Stylesheet
+ *
+ * Scoped, lightweight, accessible tabs styling supporting horizontal/vertical layouts,
+ * inline/stacked icons, active carets, fade-in transitions, and responsive stacking.
+ *
+ * @package UltraAddons
+ */
+
+/* ==========================================================================
+   1. BASE TABS CONTAINER & LAYOUTS
+   ========================================================================== */
+.ua-adv-tabs {
+    display: block;
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Horizontal Layout */
+.ua-adv-tabs.ua-tabs-horizontal {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+/* Vertical Layout */
+.ua-adv-tabs.ua-tabs-vertical {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+.ua-adv-tabs.ua-tabs-vertical > .ua-tabs-nav {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+}
+
+.ua-adv-tabs.ua-tabs-vertical > .ua-tabs-nav > ul {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.ua-adv-tabs.ua-tabs-vertical > .ua-tabs-nav > ul > li {
+    width: 100%;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+}
+
+.ua-adv-tabs.ua-tabs-vertical > .ua-tabs-content {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+
+/* ==========================================================================
+   2. NAVIGATION BAR & ITEMS
+   ========================================================================== */
+.ua-adv-tabs .ua-tabs-nav {
+    position: relative;
+    z-index: 1;
+}
+
+.ua-adv-tabs .ua-tabs-nav > ul.ua-tab-nav-list {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    z-index: 1;
+}
+
+.ua-adv-tabs .ua-tabs-nav > ul li.ua-tab-nav-item {
+    position: relative;
+    padding: 14px 20px;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    text-align: center;
+    background-color: #f1f1f1;
+    color: #333333;
+    user-select: none;
+    -webkit-user-select: none;
+    outline: none;
+    box-sizing: border-box;
+    -webkit-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.ua-adv-tabs .ua-tabs-nav > ul li.ua-tab-nav-item:hover {
+    background-color: #414141;
+    color: #ffffff;
+}
+
+.ua-adv-tabs .ua-tabs-nav > ul li.ua-tab-nav-item.active {
+    background-color: #444444;
+    color: #ffffff;
+}
+
+.ua-adv-tabs .ua-tabs-nav > ul li .ua-tab-title {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+}
+
+/* ==========================================================================
+   3. ICONS & IMAGES
+   ========================================================================== */
+.ua-adv-tabs .ua-tab-icon {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    line-height: 1;
+    color: inherit;
+    -webkit-transition: color 0.3s ease;
+    transition: color 0.3s ease;
+}
+
+.ua-adv-tabs .ua-tab-icon i {
+    font-size: 16px;
+    line-height: 1;
+}
+
+.ua-adv-tabs .ua-tab-icon svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.ua-adv-tabs .ua-tab-image {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.ua-adv-tabs .ua-tab-image img {
+    width: 16px;
+    height: auto;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Inline Icon Position */
+.ua-tab-inline-icon li .title-before-icon {
+    margin-right: 10px;
+}
+
+.ua-tab-inline-icon li .title-after-icon {
+    margin-left: 10px;
+}
+
+/* Stacked Icon Position (Top) */
+.ua-tab-top-icon li {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.ua-tab-top-icon li .ua-tab-icon,
+.ua-tab-top-icon li .ua-tab-image {
+    margin-bottom: 10px;
+}
+
+/* ==========================================================================
+   4. ACTIVE CARET (ARROW POINTER)
+   ========================================================================== */
+.ua-adv-tabs.ua-caret-enabled .ua-tabs-nav > ul li:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    display: none;
+    z-index: 2;
+}
+
+/* Horizontal Caret */
+.ua-adv-tabs.ua-caret-enabled.ua-tabs-horizontal > .ua-tabs-nav > ul li:after {
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #444444;
+}
+
+.ua-adv-tabs.ua-caret-enabled.ua-tabs-horizontal > .ua-tabs-nav > ul li.active:after {
+    display: block;
+}
+
+/* Vertical Caret */
+.ua-adv-tabs.ua-caret-enabled.ua-tabs-vertical > .ua-tabs-nav > ul li:after {
+    right: -10px;
+    top: calc(50% - 10px);
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #444444;
+}
+
+.ua-adv-tabs.ua-caret-enabled.ua-tabs-vertical > .ua-tabs-nav > ul li.active:after {
+    display: block;
+}
+
+/* RTL Vertical Caret */
+.rtl .ua-adv-tabs.ua-caret-enabled.ua-tabs-vertical > .ua-tabs-nav > ul li:after {
+    right: auto;
+    left: -10px;
+    border-left: 0;
+    border-right: 10px solid #444444;
+}
+
+.ua-adv-tabs.ua-caret-disabled .ua-tabs-nav > ul li:after {
+    display: none !important;
+}
+
+/* ==========================================================================
+   5. TABS CONTENT PANEL
+   ========================================================================== */
+.ua-adv-tabs .ua-tabs-content {
+    display: block;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.ua-adv-tabs .ua-tabs-content > .ua-tab-content-item {
+    display: none;
+    opacity: 0;
+    padding: 20px;
+    background-color: #ffffff;
+    color: #333333;
+    box-sizing: border-box;
+    border: 1px solid #eeeeee;
+    font-size: 1rem;
+    line-height: 1.7;
+    -webkit-transition: border-radius 0.3s ease;
+    transition: border-radius 0.3s ease;
+}
+
+.ua-adv-tabs .ua-tabs-content > .ua-tab-content-item p:last-child {
+    margin-bottom: 0;
+}
+
+.ua-adv-tabs .ua-tabs-content > .ua-tab-content-item.active {
+    display: block;
+    opacity: 1;
+    -webkit-animation: uaTabFadeIn 0.3s ease-in-out forwards;
+    animation: uaTabFadeIn 0.3s ease-in-out forwards;
+}
+
+@-webkit-keyframes uaTabFadeIn {
+    from {
+        opacity: 0;
+        -webkit-transform: translateY(4px);
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+@keyframes uaTabFadeIn {
+    from {
+        opacity: 0;
+        -webkit-transform: translateY(4px);
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   6. RESPONSIVE MOBILE OPTIMIZATION
+   ========================================================================== */
+@media (max-width: 767px) {
+    .ua-adv-tabs.ua-responsive-stack.ua-tabs-horizontal .ua-tabs-nav > ul,
+    .ua-adv-tabs.ua-responsive-stack.ua-tabs-vertical .ua-tabs-nav > ul {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    .ua-adv-tabs.ua-responsive-stack.ua-tabs-vertical {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    .ua-adv-tabs.ua-responsive-stack.ua-tabs-vertical > .ua-tabs-nav {
+        width: 100%;
+        min-width: 100% !important;
+    }
+
+    .ua-adv-tabs.ua-responsive-stack.ua-tabs-vertical > .ua-tabs-nav > ul li {
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+
+    .ua-adv-tabs.ua-responsive-stack.ua-tabs-vertical > .ua-tabs-nav > ul li:after {
+        border-left-color: transparent !important;
+        border-right-color: transparent !important;
+        border-top: 10px solid #444444;
+        border-bottom: 0;
+        bottom: -10px !important;
+        left: 0 !important;
+        right: 0 !important;
+        top: auto !important;
+        margin: 0 auto;
+    }
+
+    .ua-adv-tabs .ua-tabs-nav ul li.ua-tab-nav-item {
+        padding: 12px 15px;
+        font-size: 0.95rem;
+    }
+
+    .ua-adv-tabs .ua-tabs-content > .ua-tab-content-item {
+        padding: 15px;
+        font-size: 0.95rem;
+    }
+}

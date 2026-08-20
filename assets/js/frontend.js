@@ -1209,6 +1209,150 @@
             EF.hooks.addAction( 'frontend/element_ready/ultraaddons-advanced-accordion.default', UltraAddonsAccordion );
             EF.hooks.addAction( 'frontend/element_ready/ultraaddons-accordion.default', UltraAddonsAccordion );
 
+            /**
+             * UltraAddons Advanced Tabs Handler
+             *
+             * @param {jQuery} $scope
+             * @param {jQuery} $
+             */
+            var UltraAddonsAdvancedTabs = function( $scope, $ ) {
+                var $advTabs = $scope.find( '.ua-adv-tabs' );
+                if ( ! $advTabs.length ) {
+                    return;
+                }
+
+                var $navItems = $advTabs.find( '> .ua-tabs-nav ul li.ua-tab-nav-item' ),
+                    $contentItems = $advTabs.find( '> .ua-tabs-content > .ua-tab-content-item' ),
+                    scrollOnClick = $advTabs.data( 'scroll-on-click' ) === 'yes',
+                    scrollSpeed = parseInt( $advTabs.data( 'scroll-speed' ), 10 ) || 300,
+                    customIdOffset = parseInt( $advTabs.data( 'custom-id-offset' ), 10 ) || 0,
+                    isToggleMode = $advTabs.hasClass( 'ua-tab-toggle' ),
+                    hashTag = window.location.hash ? window.location.hash.substring( 1 ) : '',
+                    hashMatched = false;
+
+                // Function to re-calculate child sliders/swiper/galleries
+                function refreshNestedElements( $container ) {
+                    if ( ! $container || ! $container.length ) {
+                        return;
+                    }
+                    var $swipers = $container.find( '.swiper, .swiper-container' );
+                    $swipers.each( function() {
+                        if ( this.swiper ) {
+                            this.swiper.update();
+                            this.swiper.updateSize();
+                            this.swiper.updateSlides();
+                        }
+                    } );
+                    var $slick = $container.find( '.slick-slider' );
+                    if ( $slick.length && typeof $slick.slick === 'function' ) {
+                        $slick.slick( 'setPosition' );
+                    }
+                    var $isotope = $container.find( '.ua-grid-masonry, .isotope' );
+                    if ( $isotope.length && typeof $isotope.isotope === 'function' ) {
+                        $isotope.isotope( 'layout' );
+                    }
+                    $( window ).trigger( 'resize' );
+                }
+
+                // Activate specific tab by index
+                function activateTab( index, doScroll ) {
+                    var $targetNav = $navItems.eq( index ),
+                        $targetContent = $contentItems.eq( index );
+
+                    if ( ! $targetNav.length ) {
+                        return;
+                    }
+
+                    if ( isToggleMode && $targetNav.hasClass( 'active' ) ) {
+                        $targetNav.removeClass( 'active active-default' ).addClass( 'inactive' ).attr( 'aria-selected', 'false' ).attr( 'aria-expanded', 'false' ).attr( 'tabindex', '-1' );
+                        $targetContent.removeClass( 'active active-default' ).addClass( 'inactive' );
+                        return;
+                    }
+
+                    $navItems.removeClass( 'active active-default' ).addClass( 'inactive' ).attr( 'aria-selected', 'false' ).attr( 'aria-expanded', 'false' ).attr( 'tabindex', '-1' );
+                    $contentItems.removeClass( 'active active-default' ).addClass( 'inactive' );
+
+                    $targetNav.removeClass( 'inactive' ).addClass( 'active' ).attr( 'aria-selected', 'true' ).attr( 'aria-expanded', 'true' ).attr( 'tabindex', '0' );
+                    $targetContent.removeClass( 'inactive' ).addClass( 'active' );
+
+                    setTimeout( function() {
+                        refreshNestedElements( $targetContent );
+                    }, 50 );
+
+                    if ( doScroll && scrollOnClick ) {
+                        var scrollPos = $targetNav.offset().top - customIdOffset;
+                        $( 'html, body' ).animate( { scrollTop: scrollPos }, scrollSpeed );
+                    }
+                }
+
+                // Check URL hash for direct tab deep-linking
+                if ( hashTag ) {
+                    $navItems.each( function( idx ) {
+                        if ( $( this ).attr( 'id' ) === hashTag ) {
+                            hashMatched = true;
+                            activateTab( idx, true );
+                        }
+                    } );
+                }
+
+                // Initial open state fallback
+                if ( ! hashMatched ) {
+                    var initialFound = false;
+                    $navItems.each( function( idx ) {
+                        if ( $( this ).hasClass( 'active-default' ) ) {
+                            activateTab( idx, false );
+                            initialFound = true;
+                        }
+                    } );
+                    if ( ! initialFound && $navItems.filter( '.active' ).length ) {
+                        $navItems.filter( '.active' ).each( function() {
+                            var idx = $( this ).index();
+                            activateTab( idx, false );
+                        } );
+                    }
+                }
+
+                // Click event
+                $navItems.off( 'click.uaAdvTabs' ).on( 'click.uaAdvTabs', function( e ) {
+                    e.preventDefault();
+                    var index = $( this ).index();
+                    activateTab( index, true );
+                } );
+
+                // Keyboard arrow navigation
+                $navItems.off( 'keydown.uaAdvTabs' ).on( 'keydown.uaAdvTabs', function( e ) {
+                    var currentIndex = $navItems.index( this );
+                    if ( e.key === 'ArrowRight' || e.key === 'ArrowDown' ) {
+                        e.preventDefault();
+                        var nextIndex = ( currentIndex + 1 ) % $navItems.length;
+                        $navItems.eq( nextIndex ).focus();
+                        activateTab( nextIndex, false );
+                    } else if ( e.key === 'ArrowLeft' || e.key === 'ArrowUp' ) {
+                        e.preventDefault();
+                        var prevIndex = ( currentIndex - 1 + $navItems.length ) % $navItems.length;
+                        $navItems.eq( prevIndex ).focus();
+                        activateTab( prevIndex, false );
+                    } else if ( e.key === 'Enter' || e.key === ' ' ) {
+                        e.preventDefault();
+                        activateTab( currentIndex, true );
+                    }
+                } );
+
+                // Listen to hash changes in window
+                $( window ).off( 'hashchange.uaAdvTabs' + $scope.data( 'id' ) ).on( 'hashchange.uaAdvTabs' + $scope.data( 'id' ), function() {
+                    var newHash = window.location.hash ? window.location.hash.substring( 1 ) : '';
+                    if ( newHash ) {
+                        $navItems.each( function( idx ) {
+                            if ( $( this ).attr( 'id' ) === newHash ) {
+                                activateTab( idx, true );
+                            }
+                        } );
+                    }
+                } );
+            };
+
+            EF.hooks.addAction( 'frontend/element_ready/ultraaddons-advanced-tabs.default', UltraAddonsAdvancedTabs );
+
     });// Init hook wrapup
    
 
