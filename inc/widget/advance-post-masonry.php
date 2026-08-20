@@ -41,7 +41,6 @@ class Advance_Post_Masonry extends Base{
         $in_footer  = true;
 
         wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ultraaddons_name );
         
         //For Blog Widget
         $ultraaddons_name           = 'isotope.pkgd.min';
@@ -51,7 +50,6 @@ class Advance_Post_Masonry extends Base{
         $in_footer  = true;
 
         wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ultraaddons_name );
         
         //For Blog Widget
         $ultraaddons_name           = 'packery-mode.pkgd.min';
@@ -61,7 +59,6 @@ class Advance_Post_Masonry extends Base{
         $in_footer  = true;
 
         wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ultraaddons_name );
         
         
         
@@ -74,7 +71,6 @@ class Advance_Post_Masonry extends Base{
         $in_footer  = true;
 
         wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ultraaddons_name );
         
     }
     
@@ -84,7 +80,7 @@ class Advance_Post_Masonry extends Base{
      * @return type
      */
     public function get_script_depends() {
-        return ['imagesloaded.pkgd.min','packery-mode.pkgd.min','isotope.pkgd.min', 'masonry_grid'];
+        return array_merge( parent::get_script_depends(), ['imagesloaded.pkgd.min','packery-mode.pkgd.min','isotope.pkgd.min', 'masonry_grid'] );
     }
     
     

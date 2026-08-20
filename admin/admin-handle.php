@@ -58,86 +58,41 @@ class Admin_Handle{
      * 
      * @since 1.0.0.5
      */
-    public static function get_enqueue(){
-        $handle = 'ultraaddons-admin-style';
-        $src = ULTRA_ADDONS_ASSETS . 'css/admin.css';
-        $deps = [];
-        $ver = ULTRA_ADDONS_VERSION;
-        $media = 'all';
-        
-        wp_register_style( $handle, $src, $deps, $ver, $media );
-        wp_enqueue_style( $handle );
-        
-        // Owl Corousel added for welcome screen only @by Mukul
-        $handle = 'owl-corousel-style';
-        $src = ULTRA_ADDONS_ASSETS . 'vendor/css/owl/owl.carousel.min.css';
-        $deps = [];
-        $ver = ULTRA_ADDONS_VERSION;
-        $media = 'all';
-        
-        wp_register_style( $handle, $src, $deps, $ver, $media );
-        wp_enqueue_style( $handle );
+    public static function get_enqueue( $hook_suffix ) {
+        $page = isset( $_GET['page'] ) ? sanitize_key( wp_unslash( $_GET['page'] ) ) : '';
+        $screen = get_current_screen();
+        $ultraaddons_pages = [
+            self::$ultraaddons_menu_slug,
+            'ultraaddons-widgets',
+            'ultraaddons-extensions',
+            'ultraaddons-elementor-settings',
+        ];
+        $is_header_footer = $screen && HF_Post::$post_type === ( $screen->post_type ?? '' );
+        $is_custom_fonts = $screen && 'ultraaddons-custom-fonts' === ( $screen->taxonomy ?? '' );
 
-         // Owl Corousel added for welcome screen only @by Mukul
-        $handle = 'owl-corousel-script';
-        $src = ULTRA_ADDONS_ASSETS . 'vendor/js/owl.carousel.min.js';
-        $deps = ['jquery'];
-        $ver = ULTRA_ADDONS_VERSION;
-        $in_footer = true;
-        
-        wp_register_script($handle, $src, $deps, $ver, $in_footer);
-        wp_enqueue_script($handle);
+        if ( ! in_array( $page, $ultraaddons_pages, true ) && ! $is_header_footer && ! $is_custom_fonts ) {
+            return;
+        }
 
-         // Remodal added for widget popup
-         $handle = 'remodal-style';
-         $src = ULTRA_ADDONS_ASSETS . 'vendor/remodal/css/remodal.css';
-         $deps = [];
-         $ver = ULTRA_ADDONS_VERSION;
-         $media = 'all';
-         
-         wp_register_style( $handle, $src, $deps, $ver, $media );
-         wp_enqueue_style( $handle );
+        wp_enqueue_style( 'ultraaddons-admin-style', ULTRA_ADDONS_ASSETS . 'css/admin.css', [], ULTRA_ADDONS_VERSION );
+        wp_enqueue_script( 'ultraaddons-admin-script', ULTRA_ADDONS_ASSETS . 'js/admin.js', [ 'jquery' ], ULTRA_ADDONS_VERSION, true );
+        wp_enqueue_style( 'ultraaddons-icon-font', ULTRA_ADDONS_ASSETS . 'icons/ultraaddons/css/ultraaddons.css', [], ULTRA_ADDONS_VERSION );
+        wp_enqueue_style( 'ultraaddons-extra-icons-style', ULTRA_ADDONS_ASSETS . 'icons/ultra-addons-extra/css/fontello.css', [], ULTRA_ADDONS_VERSION );
 
-          // Remodal added for widget popup
-          $handle = 'remodal-script';
-          $src = ULTRA_ADDONS_ASSETS . 'vendor/remodal/js/remodal.min.js';
-          $deps = ['jquery'];
-          $ver = ULTRA_ADDONS_VERSION;
-          $in_footer = true;
-          
-          wp_register_script($handle, $src, $deps, $ver, $in_footer);
-          wp_enqueue_script($handle);
+        if ( self::$ultraaddons_menu_slug === $page ) {
+            wp_enqueue_style( 'owl-corousel-style', ULTRA_ADDONS_ASSETS . 'vendor/css/owl/owl.carousel.min.css', [], ULTRA_ADDONS_VERSION );
+            wp_enqueue_script( 'owl-corousel-script', ULTRA_ADDONS_ASSETS . 'vendor/js/owl.carousel.min.js', [ 'jquery' ], ULTRA_ADDONS_VERSION, true );
+        }
 
-        //Our main admin script
-        $handle = 'ultraaddons-admin-script';
-        $src = ULTRA_ADDONS_ASSETS . 'js/admin.js';
-        $deps = ['jquery'];
-        $ver = ULTRA_ADDONS_VERSION;
-        $in_footer = true;
-        
-        wp_register_script($handle, $src, $deps, $ver, $in_footer);
-        wp_enqueue_script($handle);
+        if ( in_array( $page, [ 'ultraaddons-widgets', 'ultraaddons-extensions' ], true ) ) {
+            wp_enqueue_style( 'remodal-style', ULTRA_ADDONS_ASSETS . 'vendor/remodal/css/remodal.css', [], ULTRA_ADDONS_VERSION );
+            wp_enqueue_script( 'remodal-script', ULTRA_ADDONS_ASSETS . 'vendor/remodal/js/remodal.min.js', [ 'jquery' ], ULTRA_ADDONS_VERSION, true );
+        }
 
-
-        //Select2 Added specially for Header Footer Display on/Off. this is css
-        $handle = 'select2';
-        $src = ULTRA_ADDONS_ASSETS . 'vendor/select2/css/select2.min.css';
-        $deps = [];
-        $ver = ULTRA_ADDONS_VERSION;
-        $media = 'all';
-        
-        wp_register_style( $handle, $src, $deps, $ver, $media );
-        wp_enqueue_style( $handle );
-
-        //Select2 Added specially for Header Footer Display on/Off. this is JS
-        $handle = 'select2';
-        $src = ULTRA_ADDONS_ASSETS . 'vendor/select2/js/select2.full.min.js';
-        $deps = ['jquery'];
-        $ver = ULTRA_ADDONS_VERSION;
-        $in_footer = true;
-        
-        wp_register_script($handle, $src, $deps, $ver, $in_footer);
-        wp_enqueue_script($handle);
+        if ( $is_header_footer ) {
+            wp_enqueue_style( 'select2', ULTRA_ADDONS_ASSETS . 'vendor/select2/css/select2.min.css', [], ULTRA_ADDONS_VERSION );
+            wp_enqueue_script( 'select2', ULTRA_ADDONS_ASSETS . 'vendor/select2/js/select2.full.min.js', [ 'jquery' ], ULTRA_ADDONS_VERSION, true );
+        }
     }
     
     /**
@@ -360,10 +315,10 @@ class Admin_Handle{
         $removed_menu = apply_filters( 'ultraaddons/admin/sub_menu/remove', $removed_menu, __CLASS__ );
         if( ! is_array( $removed_menu ) ) return $header_submenu;
         
-        //$removed_menu already checked. array or not
-        foreach( $removed_menu as $r_menu ){
-            $searched_key = array_search( $r_menu, $header_submenu );
-            unset( $header_submenu[$searched_key] );
+        foreach ( $header_submenu as $key => $menu ) {
+            if ( isset( $menu['menu_slug'] ) && in_array( $menu['menu_slug'], $removed_menu, true ) ) {
+                unset( $header_submenu[ $key ] );
+            }
         }
         return $header_submenu;
     }

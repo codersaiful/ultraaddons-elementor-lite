@@ -34,7 +34,6 @@ class Product_Flip_Carousel extends Base{
         $in_footer  	= true;
 
         wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ultraaddons_name );
 		
         //CSS file for dependency
 		$ultraaddons_name           = 'swiffySlider';
@@ -43,7 +42,6 @@ class Product_Flip_Carousel extends Base{
         $version        = ULTRA_ADDONS_VERSION;
         $media  	= 'all';
         wp_register_style('swiffySlider', $css_file_url,$dependency,$version, $media ); //product-carousel
-        wp_enqueue_style('swiffySlider' );
 		$this->add_view_icon();
     }
 
@@ -54,7 +52,7 @@ class Product_Flip_Carousel extends Base{
      * @return Array
      */
     public function get_style_depends() {
-        return ['swiffySlider'];
+        return array_merge( parent::get_style_depends(), ['swiffySlider'] );
     }
 
     /**
@@ -69,7 +67,7 @@ class Product_Flip_Carousel extends Base{
      * @by Saiful
      */
     public function get_script_depends() {
-            return [ 'jquery','swiffySlider' ];
+            return array_merge( parent::get_script_depends(), [ 'jquery','swiffySlider' ] );
     }
     
     /**

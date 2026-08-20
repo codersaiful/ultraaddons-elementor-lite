@@ -26,7 +26,6 @@ class Button extends Base{
         $version        = ULTRA_ADDONS_VERSION;
         $media  	= 'all';
         wp_register_style('hover-css', $css_file_url,$dependency,$version, $media ); //product-carousel
-        wp_enqueue_style('hover-css' );
     }
       /**
      * By B M Rafiul Alam
@@ -35,7 +34,7 @@ class Button extends Base{
      * @return Array
      */
     public function get_style_depends() {
-        return ['hover-css'];
+        return array_merge( parent::get_style_depends(), ['hover-css'] );
     }
     
     /**

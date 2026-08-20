@@ -10,7 +10,6 @@
     /**
      * For Deleveloper Only
      */
-    console.log(ULTRAADDONS_DATA);
     
     $window.on( 'elementor/frontend/init', function() {
 

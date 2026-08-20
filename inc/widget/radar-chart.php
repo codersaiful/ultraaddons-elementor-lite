@@ -25,7 +25,6 @@ class Radar_Chart extends Base{
         $in_footer      = true;
 
         wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ultraaddons_name );
 
         //Naming of Args for front end chart
         $ultraaddons_name           = 'frontend-chart-js';
@@ -35,7 +34,6 @@ class Radar_Chart extends Base{
         $in_footer  = true;
 
         wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ultraaddons_name );
     }
 	
 
@@ -51,7 +49,7 @@ class Radar_Chart extends Base{
      * @by Saiful
      */
     public function get_script_depends() {
-		return [ 'jquery','chart-js','frontend-chart-js' ];
+		return array_merge( parent::get_script_depends(), [ 'jquery','chart-js','frontend-chart-js' ] );
     }
     
     /**

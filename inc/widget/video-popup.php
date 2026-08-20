@@ -38,7 +38,6 @@ class Video_Popup extends Base{
           $in_footer      = true;
   
           wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
-          wp_enqueue_script( $ultraaddons_name );
 
           $ultraaddons_name           = 'front-end-modal-video';
           $js_file_url    = ULTRA_ADDONS_ASSETS . 'js/frontend-video-popup.js';
@@ -47,7 +46,6 @@ class Video_Popup extends Base{
           $in_footer      = true;
   
           wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
-          wp_enqueue_script( $ultraaddons_name );
   
 
          //CSS file for dependency
@@ -57,7 +55,6 @@ class Video_Popup extends Base{
         $version        = ULTRA_ADDONS_VERSION;
         $media  	= 'all';
         wp_register_style('modal-video', $css_file_url,$dependency,$version, $media ); //modal-video
-        wp_enqueue_style('modal-video' );
     }
 	
 
@@ -73,7 +70,11 @@ class Video_Popup extends Base{
      * @by Saiful
      */
     public function get_script_depends() {
-		return [ 'jquery', 'modal-video' ];
+		return array_merge( parent::get_script_depends(), [ 'jquery', 'modal-video' ] );
+    }
+
+    public function get_style_depends() {
+        return array_merge( parent::get_style_depends(), [ 'modal-video' ] );
     }
     
     /**

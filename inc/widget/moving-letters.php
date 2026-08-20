@@ -45,7 +45,6 @@ class Moving_Letters extends Base{
         $in_footer  	= true;
 
         wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ultraaddons_name );
 
         $ml_name        = 'frontend-moving-letters';
         $ml_js_file_url    = ULTRA_ADDONS_ASSETS . 'js/frontend-moving-letters.js';
@@ -54,7 +53,6 @@ class Moving_Letters extends Base{
         $ml_in_footer  	= true;
 
         wp_register_script( $ml_name , $ml_js_file_url, $ml_dependency, $ml_version, $ml_in_footer );
-        wp_enqueue_script( $ml_name );
 		
     }
 
@@ -70,7 +68,7 @@ class Moving_Letters extends Base{
      * @by Saiful
      */
     public function get_script_depends() {
-            return [ 'anime' ,'frontend-moving-letters' ];
+            return array_merge( parent::get_script_depends(), [ 'anime' ,'frontend-moving-letters' ] );
     }
     
     

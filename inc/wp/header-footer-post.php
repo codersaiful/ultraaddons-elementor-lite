@@ -440,17 +440,19 @@ class Header_Footer_Post{
             ],
         ];
 
-		//phpcs:ignore WordPress.WP.DiscouragedFunctions.query_posts_query_posts
-        $posts = query_posts($ultraaddons_args);
+        $query = new \WP_Query( $ultraaddons_args );
         $f_post = [];
-        foreach( $posts as $each_post ){
+        foreach ( $query->posts as $each_post ) {
             $post_id = $each_post->ID;
-			$position_name = get_post_meta($post_id,'ua_template_type',true);
-			if(empty( $position_name )) continue;
-            $position['position'] = $position_name;
-			$display = get_post_meta($post_id,'ua_display',true);
-			
-			$merge = array_merge($display,$position);
+            $position_name = get_post_meta( $post_id, 'ua_template_type', true );
+            if ( empty( $position_name ) ) {
+                continue;
+            }
+
+            $position = [ 'position' => $position_name ];
+            $display = get_post_meta( $post_id, 'ua_display', true );
+            $display = is_array( $display ) ? $display : [];
+            $merge = array_merge( $display, $position );
             $f_post[$post_id] = $merge;
             
         }
@@ -481,7 +483,7 @@ class Header_Footer_Post{
 		}
 
 		// if our current user can't edit this post, bail.
-		if ( ! current_user_can( 'edit_posts' ) ) {
+		if ( ! current_user_can( 'edit_post', $post_id ) ) {
 			return;
 		}
 
@@ -498,21 +500,30 @@ class Header_Footer_Post{
 		// update_post_meta( $post_id, 'ua_target_user_roles', $target_users );
 
 		if ( isset( $_POST['ua_template_type'] ) ) {
-
-			//$_POST['ua_template_type'] not unslashed before sanitization. Use wp_unslash() or similar
-			update_post_meta( $post_id, 'ua_template_type', esc_attr( sanitize_text_field( wp_unslash( $_POST['ua_template_type'] ?? '' ) ) ) );
+			$template_type = sanitize_key( wp_unslash( $_POST['ua_template_type'] ) );
+			if ( in_array( $template_type, [ 'header', 'before_header', 'footer', 'after_footer' ], true ) ) {
+				update_post_meta( $post_id, 'ua_template_type', $template_type );
+			} else {
+				delete_post_meta( $post_id, 'ua_template_type' );
+			}
 		}
 		if ( isset( $_POST['ua_display'] ) ) {
 			$display = array();
 			
-			// Sanitize the 'rule' array if present
 			if ( isset( $_POST['ua_display']['rule'] ) && is_array( $_POST['ua_display']['rule'] ) ) {
-				$display['rule'] = array_map( 'sanitize_text_field', wp_unslash( $_POST['ua_display']['rule'] ) );
+				$allowed_rules = [];
+				foreach ( self::$availeable_fields as $rule_group ) {
+					if ( is_array( $rule_group ) ) {
+						$allowed_rules = array_merge( $allowed_rules, array_keys( $rule_group ) );
+					}
+				}
+
+				$submitted_rules = array_map( 'sanitize_key', wp_unslash( $_POST['ua_display']['rule'] ) );
+				$display['rule'] = array_values( array_intersect( $submitted_rules, $allowed_rules ) );
 			}
 			
-			// Sanitize the 'way' field if present
 			if ( isset( $_POST['ua_display']['way'] ) ) {
-				$display['way'] = sanitize_text_field( wp_unslash( $_POST['ua_display']['way'] ) );
+				$display['way'] = '1' === sanitize_text_field( wp_unslash( $_POST['ua_display']['way'] ) ) ? '1' : '';
 			}
 			
 			update_post_meta( $post_id, 'ua_display', $display );
@@ -533,11 +544,11 @@ class Header_Footer_Post{
 		
 		
 		// ONly for our header_footer post type
-		if ( get_post_type() !== self::$post_type ) {
+		if ( get_post_type( $post_id ) !== self::$post_type ) {
 			return;
 		}
 		// if our current user can't edit this post, bail.
-		if ( ! current_user_can( 'edit_posts' ) ) {
+		if ( ! current_user_can( 'delete_post', $post_id ) ) {
 			return;
 		}
 

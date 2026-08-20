@@ -41,7 +41,7 @@ class Product_Table extends Base{
          * @by Saiful
          */
         public function get_script_depends() {
-                return [ 'jquery','select2' ];
+                return array_merge( parent::get_script_depends(), [ 'jquery','select2' ] );
         }
 
         /**

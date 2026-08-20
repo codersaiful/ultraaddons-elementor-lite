@@ -7,13 +7,24 @@ defined( 'ABSPATH' ) || die();
 /**
  * Controlling Form Submission
  */
-$ultraaddons_form_datas = filter_input_array(INPUT_POST);
-
-$ultraaddons_form_datas = apply_filters( 'ultraaddons/admin/setting/save_data', $ultraaddons_form_datas, 'settings' );
-
 $ultraaddons_key = Settings::$ultraaddons_key; //'ultraaddons_settings'
+$ultraaddons_form_datas = [];
 
-if( $ultraaddons_form_datas && $ultraaddons_key ){
+if ( isset( $_POST['ultraaddons_nonce'] ) && $ultraaddons_key ) {
+    if ( ! current_user_can( ULTRA_ADDONS_CAPABILITY ) ) {
+        wp_die( esc_html__( 'You are not allowed to manage UltraAddons settings.', 'ultraaddons-elementor-lite' ) );
+    }
+
+    check_admin_referer( 'ultraaddons_save_settings', 'ultraaddons_nonce' );
+    $raw_form_data = wp_unslash( $_POST );
+    unset( $raw_form_data['ultraaddons_nonce'], $raw_form_data['_wp_http_referer'] );
+    $ultraaddons_form_datas = map_deep( $raw_form_data, 'sanitize_text_field' );
+
+    if ( isset( $ultraaddons_form_datas['widget_in'] ) && ! in_array( $ultraaddons_form_datas['widget_in'], [ '', 'basic', 'general' ], true ) ) {
+        $ultraaddons_form_datas['widget_in'] = '';
+    }
+
+    $ultraaddons_form_datas = apply_filters( 'ultraaddons/admin/setting/save_data', $ultraaddons_form_datas, 'settings' );
     /**
      * Action hook for when save data
      */
@@ -36,6 +47,7 @@ $ultraaddons_category_slug = Settings::get_widget_category();
             <div class="ua-content-inside">
 
                 <form class="ua-header-footer-form" action="" method="post">
+                    <?php wp_nonce_field( 'ultraaddons_save_settings', 'ultraaddons_nonce' ); ?>
                     <div class="ua-form-wrappper">
                     
                         

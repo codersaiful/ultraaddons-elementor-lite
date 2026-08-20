@@ -69,19 +69,16 @@ class Loader {
          */
         add_action( 'init', [ $this, 'setup_widgets_array' ], 5 );
 
-        //Register and Including Base and common Class file
-        add_action( 'elementor/widgets/widgets_registered', [ $this, 'register' ],1 );
-
-        //Register Widgets All
-        add_action( 'elementor/widgets/widgets_registered', [ $this, 'init_widgets' ] );
+        // Register widgets through Elementor's current widget manager API.
+        add_action( 'elementor/widgets/register', [ $this, 'register_widgets' ] );
         
         //add_action( 'elementor/controls/controls_registered', [ $this, 'init_controls' ] );
         add_action( 'elementor/elements/categories_registered', [ $this, 'add_categories' ] );
 
-        //Add Style for Widgets
-        add_action( 'elementor/frontend/after_enqueue_styles', [ $this, 'widget_enqueue' ] );
-        add_action( 'wp_enqueue_scripts', [ $this, 'wp_enqueue_style' ] );   
-        add_action( 'wp_enqueue_scripts', [ $this, 'wp_enqueue_scripts' ] );
+        // Register assets early; Elementor queues the dependencies declared by
+        // widgets that are actually used on the current document.
+        add_action( 'wp_enqueue_scripts', [ $this, 'register_frontend_assets' ], 5 );
+        add_action( 'elementor/frontend/widget/before_render', [ $this, 'enqueue_widget_assets' ] );
     
         /**
          * For Admin and FrontEnd Enqueue 
@@ -91,13 +88,9 @@ class Loader {
          * @since 1.0.2.0
          */
         add_action( 'admin_enqueue_scripts', [ $this, 'icon_enqueue_scripts' ] );
-        add_action( 'wp_enqueue_scripts', [ $this, 'icon_enqueue_scripts' ] );
 
         //For Editor Screen
-        add_action('elementor/editor/before_enqueue_scripts', [ $this, 'elementor_screen_style' ]);
-        
-        //Mainly UltraAddons Icons font need to load in Elementor Screen.
-        add_action('elementor/editor/before_enqueue_scripts', [ $this, 'icon_enqueue_scripts' ]);
+        add_action( 'elementor/editor/before_enqueue_scripts', [ $this, 'elementor_screen_style' ] );
 
         
     }
@@ -124,9 +117,31 @@ class Loader {
      * 
      * @since 1.0.0.1
      */
-    public function register() {
+    private function include_widget_base() {
         $base_file = ULTRA_ADDONS_DIR . 'inc/base/base.php';
         include_once $base_file;
+    }
+
+    /**
+     * Register enabled widgets using Elementor's current API.
+     *
+     * @param \Elementor\Widgets_Manager $widgets_manager Elementor widget manager.
+     * @return void
+     */
+    public function register_widgets( $widgets_manager ) {
+        $this->include_widget_base();
+
+        if ( empty( $this->widgetsArray ) ) {
+            $this->setup_widgets_array();
+        }
+
+        foreach ( $this->widgetsArray as $widget_key => $widget ) {
+            $class_name = '\\UltraAddons\\Widget\\' . str_replace( '-', '_', ucwords( strtolower( str_replace( '_', '-', $widget_key ) ), '-' ) );
+
+            if ( class_exists( $class_name ) ) {
+                $widgets_manager->register( new $class_name() );
+            }
+        }
     }
     
     /**
@@ -225,45 +240,7 @@ class Loader {
      * @access public
      */
     public function init_widgets() {
-
-        foreach( $this->widgetsArray as $widget_key => $widget ){
-            $ultraaddons_name = $widget_key;//isset( $widget['name'] ) ? $widget['name'] : '';
-            
-            $ultraaddons_name = str_replace('_','-', $ultraaddons_name);
-            
-            $ultraaddons_class_name = str_replace( '-','_', $ultraaddons_name );
-            $ultraaddons_class_name =  '\UltraAddons\Widget\\' . ucwords( $ultraaddons_class_name, '_' );
-
-
-            /**
-             * We will register widget using auto loader
-             * 
-             * so bellow code is no need
-             * 
-             * ****************************
-             * widgets -> widget | because: in name space, available widget, not widgets
-             * ****************************
-             */
-//            $file = ULTRA_ADDONS_DIR . 'inc/widgets/'. strtolower( $ultraaddons_name ) . '.php';
-//            $file = realpath( $file );
-//            if( is_readable( $file ) ){
-//                include_once $file;
-//            }else{
-//                $error = esc_html__( "The file ( %s ) of [%s] Class is not founded.", 'ultraaddons-elementor-lite' );
-//                $this->errors[$widget_key] = $error;
-//                //printf( $error, $file, $ultraaddons_name );
-//            }
-
-            if( $ultraaddons_class_name && class_exists( $ultraaddons_class_name ) ){
-                ultraaddons_elementor()->widgets_manager->register_widget_type( new $ultraaddons_class_name() );
-            }
-            
-            
-            
-        }
-        
-        
-
+        $this->register_widgets( ultraaddons_elementor()->widgets_manager );
     }
 
     /**
@@ -282,7 +259,7 @@ class Loader {
      * @since 1.0.2.0
      * @author Saiful
      */
-    public function icon_enqueue_scripts( $hook_suffix ){
+    public function icon_enqueue_scripts() {
 
         /**
          * UltrAddons font added
@@ -293,7 +270,6 @@ class Loader {
         $handle = 'ultraaddons-icon-font';
         $src = ULTRA_ADDONS_ASSETS . 'icons/ultraaddons/css/ultraaddons.css';
         wp_register_style( $handle, $src, array(), ULTRA_ADDONS_VERSION );//, $deps, $ver, $media
-        wp_enqueue_style( $handle );
 
 
         /**
@@ -310,7 +286,43 @@ class Loader {
          * @since 1.1.0.9
          */
         wp_register_style( 'ultraaddons-extra-icons-style', ULTRA_ADDONS_ASSETS . 'icons/ultra-addons-extra/css/fontello.css', array(), ULTRA_ADDONS_VERSION );
+    }
+
+    /**
+     * Register all frontend assets without adding them to the page queue.
+     *
+     * @return void
+     */
+    public function register_frontend_assets() {
+        $this->icon_enqueue_scripts();
+        $this->wp_enqueue_style();
+        $this->wp_enqueue_scripts();
+        $this->widget_enqueue();
+    }
+
+    /**
+     * Queue shared and per-widget assets only when an UltraAddons widget renders.
+     * This also covers legacy widgets that override Elementor dependency methods.
+     *
+     * @param \Elementor\Widget_Base $widget Current widget instance.
+     * @return void
+     */
+    public function enqueue_widget_assets( $widget ) {
+        $widget_name = $widget->get_name();
+
+        if ( 0 !== strpos( $widget_name, 'ultraaddons-' ) ) {
+            return;
+        }
+
+        wp_enqueue_style( 'ultraaddons-widgets-style' );
+        wp_enqueue_style( 'ultraaddons-animate' );
+        wp_enqueue_style( 'ultraaddons-icon-font' );
         wp_enqueue_style( 'ultraaddons-extra-icons-style' );
+        wp_enqueue_script( 'ultraaddons-elementor-frontend' );
+
+        if ( wp_style_is( $widget_name, 'registered' ) ) {
+            wp_enqueue_style( $widget_name );
+        }
     }
 
     /**
@@ -333,24 +345,12 @@ class Loader {
         $in_footer  = true;
         
         wp_register_script( $frontend_js_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $frontend_js_name );      
         
         $ajax_url = admin_url( 'admin-ajax.php' );
         $version = ULTRA_ADDONS_VERSION;
-        $ULTRAADDONS_DATA = array( 
-            'plugin_name'        => 'UltraAddons',
-            'plugin_type'        => ultraaddons_plugin_version(),
-            'version'            => $version,
-            'active_widgets'     => $this->widgetsArray,
-            'widgets'            => Widgets_Manager::widgets(),
-            'ajaxurl'            => $ajax_url,
-            'ajax_url'           => $ajax_url,
-            'site_url'           => site_url(),
-            );
-            if( class_exists( '\WooCommerce' ) ){
-                $ULTRAADDONS_DATA['checkout_url'] = wc_get_checkout_url();
-                $ULTRAADDONS_DATA['cart_url'] = wc_get_cart_url();
-            }
+        $ULTRAADDONS_DATA = array(
+            'ajax_url' => $ajax_url,
+        );
         $ULTRAADDONS_DATA = apply_filters( 'ultraaddons_localize_data', $ULTRAADDONS_DATA );
         wp_localize_script( $frontend_js_name, 'ULTRAADDONS_DATA', $ULTRAADDONS_DATA );
        
@@ -369,19 +369,7 @@ class Loader {
         
                 
         //Animate CSS Load
-        wp_enqueue_style('animate', ULTRA_ADDONS_ASSETS . 'vendor/css/animate.min.css', array(), ULTRA_ADDONS_VERSION );
-
-        $elementor = \Elementor\Plugin::instance();
-        $elementor->frontend->enqueue_styles();
-        
-		
-
-		if ( class_exists( '\ElementorPro\Plugin' ) ) {
-			$elementor_pro = \ElementorPro\Plugin::instance();
-            if(method_exists($elementor_pro, 'enqueue_styles')){
-                $elementor_pro->enqueue_styles();
-            }
-		}
+        wp_register_style( 'ultraaddons-animate', ULTRA_ADDONS_ASSETS . 'vendor/css/animate.min.css', array(), ULTRA_ADDONS_VERSION );
         
 
         /**
@@ -390,7 +378,6 @@ class Loader {
          * @since 1.0.0.0
          */
         wp_register_style( 'ultraaddons-widgets-style', ULTRA_ADDONS_ASSETS . 'css/widgets.css', array(), ULTRA_ADDONS_VERSION );
-        wp_enqueue_style( 'ultraaddons-widgets-style' );
     }
     
     /**
@@ -407,6 +394,7 @@ class Loader {
      * @return void Adding Elementor Screen Style File
      */
     public function elementor_screen_style() {
+        $this->icon_enqueue_scripts();
         
         /**
          * Load at elementor editing screen 
@@ -416,6 +404,8 @@ class Loader {
          */
         wp_register_style( 'ultraaddons-screen-style', ULTRA_ADDONS_ASSETS . 'css/elementor-style.css', array(), ULTRA_ADDONS_VERSION );
         wp_enqueue_style( 'ultraaddons-screen-style' );
+        wp_enqueue_style( 'ultraaddons-icon-font' );
+        wp_enqueue_style( 'ultraaddons-extra-icons-style' );
     }
 
     
@@ -467,7 +457,6 @@ class Loader {
 
             if( $pass_css || is_file( $css_file_dir ) ){ //$pass_css - If true, we will not check again file exist
                  wp_register_style( $handle, $src, $deps, $ver, $media );
-                 wp_enqueue_style( $handle );
             }
             
         }

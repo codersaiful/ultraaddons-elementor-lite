@@ -34,15 +34,12 @@ class Testimonial_Slider extends Base{
         $in_footer  = true;
 
         wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ultraaddons_name );
 
 
         //CSS file for Slider Script Owl Carousel Slider
         wp_register_style('owlCarousel', ULTRA_ADDONS_ASSETS . 'vendor/css/owl.carousel.css', array(), ULTRA_ADDONS_VERSION );
-        wp_enqueue_style('owlCarousel' );
 
         wp_register_style('owlCarousel-theme', ULTRA_ADDONS_ASSETS . 'vendor/css/owl/owl.theme.default.css', array(), ULTRA_ADDONS_VERSION );
-        wp_enqueue_style( 'owlCarousel-theme' );
 
     }
 
@@ -53,7 +50,7 @@ class Testimonial_Slider extends Base{
          * @return Array
          */
     public function get_style_depends() {
-        return ['owlCarousel','owlCarousel-theme'];
+        return array_merge( parent::get_style_depends(), ['owlCarousel','owlCarousel-theme'] );
     }
 
     /**
@@ -68,7 +65,7 @@ class Testimonial_Slider extends Base{
      * @by Saiful
      */
     public function get_script_depends() {
-            return [ 'jquery','owlCarousel' ];
+            return array_merge( parent::get_script_depends(), [ 'jquery','owlCarousel' ] );
     }
     
     /**

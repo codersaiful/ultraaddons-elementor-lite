@@ -4,16 +4,19 @@ use UltraAddons\Core\Extensions_Manager;
 
 defined( 'ABSPATH' ) || die();
 
-$ultraaddons_updated = filter_input_array( INPUT_POST );
-if( $ultraaddons_updated ){
-    $ultraaddons_update_value = false;
-    if( ! empty( $ultraaddons_updated['item'] ) ){
-        $ultraaddons_update_value = $ultraaddons_updated['item'];
-    }
-    update_option( Extensions_Manager::$disabled_items_key, $ultraaddons_update_value );
-}
-
 $ultraaddons_items = Extensions_Manager::get_list();
+if ( isset( $_POST['ultraaddons_nonce'] ) ) {
+    if ( ! current_user_can( ULTRA_ADDONS_CAPABILITY ) ) {
+        wp_die( esc_html__( 'You are not allowed to manage UltraAddons extensions.', 'ultraaddons-elementor-lite' ) );
+    }
+
+    check_admin_referer( 'ultraaddons_save_extensions', 'ultraaddons_nonce' );
+    $submitted_items = isset( $_POST['item'] ) && is_array( $_POST['item'] )
+        ? array_map( 'sanitize_text_field', wp_unslash( $_POST['item'] ) )
+        : [];
+    $disabled_items = array_values( array_intersect( $submitted_items, array_keys( $ultraaddons_items ) ) );
+    update_option( Extensions_Manager::$disabled_items_key, $disabled_items );
+}
 $ultraaddons_disable_item = Extensions_Manager::disableExtensionKeys();
 ?>
 
@@ -27,6 +30,7 @@ $ultraaddons_disable_item = Extensions_Manager::disableExtensionKeys();
             <div class="ua-content-inside">
 
                 <form class="ua-option-list-form" action="" method="post">
+                    <?php wp_nonce_field( 'ultraaddons_save_extensions', 'ultraaddons_nonce' ); ?>
                     <div class="ua-option-item-wrappper">
                         <?php 
                         foreach( $ultraaddons_items as $ultraaddons_class_name => $ultraaddons_item ){

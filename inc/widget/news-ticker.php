@@ -36,12 +36,10 @@ class News_Ticker extends Base{
         $in_footer  = true;
 
         wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ultraaddons_name );
 
 
         //CSS file News Ticker
         wp_register_style('NewsTicker', ULTRA_ADDONS_ASSETS . 'vendor/css/breaking-news-ticker.css', array(), ULTRA_ADDONS_VERSION );
-        wp_enqueue_style('NewsTicker' );
 
     }
 	/**
@@ -51,7 +49,7 @@ class News_Ticker extends Base{
      * @return Array
      */
     public function get_style_depends() {
-        return ['NewsTicker'];
+        return array_merge( parent::get_style_depends(), ['NewsTicker'] );
     }
 
     /**
@@ -66,7 +64,7 @@ class News_Ticker extends Base{
      * @by Saiful
      */
     public function get_script_depends() {
-		return [ 'jquery','NewsTicker' ];
+		return array_merge( parent::get_script_depends(), [ 'jquery','NewsTicker' ] );
     }
 
     /**

@@ -27,7 +27,6 @@ class Hero_Slider extends Base{
         $in_footer      = true;
 
         wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ultraaddons_name );
 
         $ultraaddons_name          = 'frontend-hero-slider';
         $js_file_url   = ULTRA_ADDONS_ASSETS . 'js/frontend-hero-slider.js';
@@ -36,11 +35,9 @@ class Hero_Slider extends Base{
         $in_footer  	  = true;
 
         wp_register_script( $ultraaddons_name , $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ultraaddons_name );
 
         //CSS file swiper
         wp_register_style('swiper', ULTRA_ADDONS_ASSETS . 'vendor/swiper/css/swiper.min.css', array(), ULTRA_ADDONS_VERSION );
-        wp_enqueue_style('swiper' );
 
     }
 	/**
@@ -50,7 +47,7 @@ class Hero_Slider extends Base{
      * @return Array
      */
     public function get_style_depends() {
-        return ['swiper'];
+        return array_merge( parent::get_style_depends(), ['swiper'] );
     }
 
     /**
@@ -65,7 +62,7 @@ class Hero_Slider extends Base{
      * @by Saiful
      */
     public function get_script_depends() {
-		return [ 'jquery','swiper','frontend-hero-slider' ];
+		return array_merge( parent::get_script_depends(), [ 'jquery','swiper','frontend-hero-slider' ] );
     }
 
     

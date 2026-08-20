@@ -25,7 +25,6 @@ class ready extends Base{
         $in_footer  = true;
 
         wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ultraaddons_name );
     }
 	
 
@@ -41,7 +40,7 @@ class ready extends Base{
      * @by Saiful
      */
     public function get_script_depends() {
-		return [ 'jquery','SkillChart' ];
+		return array_merge( parent::get_script_depends(), [ 'jquery','SkillChart' ] );
     }
     
     /**

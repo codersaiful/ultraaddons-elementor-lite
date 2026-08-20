@@ -2,10 +2,10 @@
 Contributors: codersaiful, codeastrology, ultraaddons, rafiul17, fazlebari
 Tags: drag-and-drop, editor, elementor, landing-page, builder
 Donate link: https://codeastrology.com/downloads/ultraaddons-elementor/
-Requires at least: 4.0
+Requires at least: 6.7
 Tested up to: 7.0
-Requires PHP: 7.0
-Stable tag: 2.0.3
+Requires PHP: 8.0
+Stable tag: 3.0.0
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -165,6 +165,13 @@ Yes. Many filters and action hooks are available for customization.
 19. Hotspot
 
 == Changelog ==
+
+= 3.0.0 =
+* Foundation upgrade for WordPress 6.7+, PHP 8.0+, and Elementor 4.0+.
+* Modern Elementor widget registration API.
+* Conditional frontend widget assets and scoped admin assets.
+* Hardened admin settings and request validation.
+* Fixed shortcode, template library, and header/footer query issues.
 
 = 2.0.3 =  
 * Bug fixes and code optimization.

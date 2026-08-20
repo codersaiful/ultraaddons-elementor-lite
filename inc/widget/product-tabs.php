@@ -28,7 +28,6 @@ class Product_Tabs extends Base{
         $in_footer  	= true;
 
         wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ultraaddons_name );
 
 		//Naming of Args 
         $ultraaddons_name           = 'product';
@@ -38,7 +37,6 @@ class Product_Tabs extends Base{
         $in_footer  	= true;
 
         wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ultraaddons_name );
 
     }
 	/**
@@ -47,8 +45,8 @@ class Product_Tabs extends Base{
      * 
      * @return Array
      */
-    public function get_style_depends() {
-        return ['isotop', 'hoverIntent'];
+    public function get_script_depends() {
+        return array_merge( parent::get_script_depends(), ['isotop', 'hoverIntent'] );
     }
     /**
      * Get your widget name

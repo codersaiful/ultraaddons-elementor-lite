@@ -26,11 +26,9 @@ class Navigation_Menu extends Base{
         $in_footer  = true;
 
         wp_register_script( $ultraaddons_name, $js_file_url, $dependency, $version, $in_footer );
-        wp_enqueue_script( $ultraaddons_name );
 
          //CSS file Navabr
          wp_register_style('navbarjs', ULTRA_ADDONS_ASSETS . 'vendor/navbar/css/navbar.css', array(), ULTRA_ADDONS_VERSION );
-         wp_enqueue_style('navbarjs' );
     }
 	
 
@@ -46,10 +44,10 @@ class Navigation_Menu extends Base{
      * @by Saiful
      */
     public function get_script_depends() {
-		return [ 'jquery','navbarjs' ];
+		return array_merge( parent::get_script_depends(), [ 'jquery','navbarjs' ] );
     }
     public function get_style_depends() {
-		return [ 'navbarjs' ];
+		return array_merge( parent::get_style_depends(), [ 'navbarjs' ] );
     }
     /**
      * Get your widget name

@@ -169,6 +169,10 @@ class Library_Manager {
 					throw new \Exception( esc_html__( 'Post not found.', 'ultraaddons-elementor-lite' ) );
 				}
 
+				if ( ! current_user_can( 'edit_post', $editor_post_id ) ) {
+					throw new \Exception( esc_html__( 'Access denied.', 'ultraaddons-elementor-lite' ) );
+				}
+
 				ultraaddons_elementor()->db->switch_to_post( $editor_post_id );
 			}
 
@@ -187,6 +191,10 @@ class Library_Manager {
 
 				if ( ! get_post( $editor_post_id ) ) {
 					throw new \Exception( esc_html__( 'Post not found', 'ultraaddons-elementor-lite' ) );
+				}
+
+				if ( ! current_user_can( 'edit_post', $editor_post_id ) ) {
+					throw new \Exception( esc_html__( 'Access denied.', 'ultraaddons-elementor-lite' ) );
 				}
 
 				ultraaddons_elementor()->db->switch_to_post( $editor_post_id );

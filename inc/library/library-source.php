@@ -172,12 +172,19 @@ class Library_Source extends Source_Base {
 	public function get_item( $template_id ) {
 		$ultraaddons_templates = $this->get_items();
 
-		return $ultraaddons_templates[ $template_id ];
+		foreach ( $ultraaddons_templates as $template ) {
+			if ( isset( $template['template_id'] ) && (string) $template['template_id'] === (string) $template_id ) {
+				return $template;
+			}
+		}
+
+		return [];
 	}
 
 	public static function request_template_data( $template_id ) {
-		if ( empty( $template_id ) ) {
-			return;
+		$template_id = absint( $template_id );
+		if ( ! $template_id ) {
+			return new \WP_Error( 'invalid_template_id', esc_html__( 'Invalid template ID.', 'ultraaddons-elementor-lite' ) );
 		}
 
 		$body = [
@@ -198,6 +205,14 @@ class Library_Source extends Source_Base {
 			]
 		);
 
+		if ( is_wp_error( $response ) ) {
+			return $response;
+		}
+
+		if ( 200 !== (int) wp_remote_retrieve_response_code( $response ) ) {
+			return new \WP_Error( 'template_request_failed', esc_html__( 'Unable to download the template.', 'ultraaddons-elementor-lite' ) );
+		}
+
 		return wp_remote_retrieve_body( $response );
 	}
 
@@ -209,7 +224,12 @@ class Library_Source extends Source_Base {
 	 * @return array|\WP_Error Remote Template data.
 	 */
 	public function get_data( array $ultraaddons_args, $context = 'display' ) {
-		$data = self::request_template_data( $ultraaddons_args['template_id'] );
+		$template_id = isset( $ultraaddons_args['template_id'] ) ? absint( $ultraaddons_args['template_id'] ) : 0;
+		$data = self::request_template_data( $template_id );
+
+		if ( is_wp_error( $data ) ) {
+			throw new \Exception( esc_html( $data->get_error_message() ) );
+		}
 
 		$data = json_decode( $data, true );
 
@@ -220,7 +240,10 @@ class Library_Source extends Source_Base {
 		$data['content'] = $this->replace_elements_ids( $data['content'] );
 		$data['content'] = $this->process_export_import_content( $data['content'], 'on_import' );
 
-		$post_id = $ultraaddons_args['editor_post_id'];
+		$post_id = isset( $ultraaddons_args['editor_post_id'] ) ? absint( $ultraaddons_args['editor_post_id'] ) : 0;
+		if ( ! $post_id || ! current_user_can( 'edit_post', $post_id ) ) {
+			throw new \Exception( esc_html__( 'You are not allowed to edit this post.', 'ultraaddons-elementor-lite' ) );
+		}
 		$document = ultraaddons_elementor()->documents->get( $post_id );
 
 		if ( $document ) {
