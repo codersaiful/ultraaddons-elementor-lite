@@ -320,8 +320,8 @@ $ultraaddons_widgetsArray = [
             ],
     ],
     
-    'Accordion' => [
-            'name'  => __( 'Accordion', 'ultraaddons-elementor-lite' ),
+    'Advanced_Accordion' => [
+            'name'  => __( 'Advanced Accordion', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
             'icon'      => 'eicon-accordion',
             'cat'       => [

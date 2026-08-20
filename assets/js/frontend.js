@@ -1093,6 +1093,122 @@
 
             EF.hooks.addAction( 'frontend/element_ready/ultraaddons-tooltip.default', UltraAddonsTooltip );
 
+            /**
+             * UltraAddons Advanced Accordion Handler
+             *
+             * @param {jQuery} $scope
+             * @param {jQuery} $
+             */
+            var UltraAddonsAccordion = function( $scope, $ ) {
+                var hashTag = window.location.hash ? window.location.hash.substring( 1 ) : '',
+                    hashTagExists = false,
+                    $advAccordion = $scope.find( '.ua-adv-accordion' ),
+                    $accordionHeader = $scope.find( '.ua-accordion-header' ),
+                    accordionType = $advAccordion.data( 'accordion-type' ) || 'accordion',
+                    triggerEvent = $advAccordion.data( 'trigger-event' ) || 'click',
+                    accordionSpeed = parseInt( $advAccordion.data( 'toogle-speed' ), 10 ) || 300,
+                    customIdOffset = parseInt( $advAccordion.data( 'custom-id-offset' ), 10 ) || 0,
+                    scrollOnClick = $advAccordion.data( 'scroll-on-click' ) === 'yes',
+                    scrollSpeed = parseInt( $advAccordion.data( 'scroll-speed' ), 10 ) || 300;
+
+                if ( ! $advAccordion.length ) {
+                    return;
+                }
+
+                // Initial open state: URL hash deep-link takes priority over default active
+                if ( hashTag || scrollOnClick ) {
+                    $accordionHeader.each( function() {
+                        if ( scrollOnClick ) {
+                            $( this ).attr( 'data-scroll', $( this ).offset().top );
+                        }
+                        if ( hashTag && $( this ).attr( 'id' ) === hashTag ) {
+                            hashTagExists = true;
+                            $( this ).addClass( 'active' ).attr( 'aria-expanded', 'true' );
+                            $( this ).next( '.ua-accordion-content' ).slideDown( accordionSpeed );
+                        }
+                    } );
+                }
+
+                if ( ! hashTagExists ) {
+                    $accordionHeader.each( function() {
+                        if ( $( this ).hasClass( 'active-default' ) ) {
+                            $( this ).addClass( 'active' ).attr( 'aria-expanded', 'true' );
+                            $( this ).next( '.ua-accordion-content' ).slideDown( accordionSpeed );
+                        }
+                    } );
+                }
+
+                // Core Toggle Handler function
+                function toggleTab( $header, forceOpen ) {
+                    if ( $header.hasClass( 'ua-triggered' ) ) {
+                        return;
+                    }
+
+                    var isOpen = $header.hasClass( 'active' );
+
+                    if ( accordionType === 'accordion' ) {
+                        if ( isOpen && ! forceOpen ) {
+                            $header.removeClass( 'active' ).attr( 'aria-expanded', 'false' );
+                            $header.next( '.ua-accordion-content' ).slideUp( accordionSpeed );
+                        } else if ( ! isOpen ) {
+                            $header.closest( '.ua-adv-accordion' ).find( '.ua-accordion-header' ).removeClass( 'active' ).attr( 'aria-expanded', 'false' );
+                            $header.closest( '.ua-adv-accordion' ).find( '.ua-accordion-content' ).slideUp( accordionSpeed );
+                            $header.addClass( 'active' ).attr( 'aria-expanded', 'true' );
+                            $header.next( '.ua-accordion-content' ).slideDown( accordionSpeed );
+                        }
+                    } else {
+                        // Toggle mode (multi-open)
+                        if ( isOpen && ! forceOpen ) {
+                            $header.removeClass( 'active' ).attr( 'aria-expanded', 'false' );
+                            $header.next( '.ua-accordion-content' ).slideUp( accordionSpeed );
+                        } else if ( ! isOpen ) {
+                            $header.addClass( 'active' ).attr( 'aria-expanded', 'true' );
+                            $header.next( '.ua-accordion-content' ).slideDown( accordionSpeed );
+                        }
+                    }
+
+                    if ( scrollOnClick && $header.hasClass( 'active' ) ) {
+                        $( 'html, body' ).animate( {
+                            scrollTop: $header.offset().top - customIdOffset
+                        }, scrollSpeed );
+                    }
+
+                    setTimeout( function() {
+                        $header.addClass( 'ua-triggered' );
+                        setTimeout( function() {
+                            $header.removeClass( 'ua-triggered' );
+                        }, 100 );
+                    }, 50 );
+                }
+
+                // Remove previous event handlers for nested accordions
+                $accordionHeader.off( 'click.uaAdvAccordion mouseenter.uaAdvAccordion' );
+
+                // Click event
+                $accordionHeader.on( 'click.uaAdvAccordion', function( e ) {
+                    e.preventDefault();
+                    toggleTab( $( this ), false );
+                } );
+
+                // Hover event (if enabled)
+                if ( triggerEvent === 'hover' ) {
+                    $accordionHeader.on( 'mouseenter.uaAdvAccordion', function( e ) {
+                        toggleTab( $( this ), true );
+                    } );
+                }
+
+                // Keyboard navigation (Enter & Space)
+                $scope.off( 'keydown.uaAdvAccordion', '.ua-accordion-header' ).on( 'keydown.uaAdvAccordion', '.ua-accordion-header', function( e ) {
+                    if ( e.which === 13 || e.which === 32 ) {
+                        e.preventDefault();
+                        $( this ).trigger( 'click.uaAdvAccordion' );
+                    }
+                } );
+            };
+
+            EF.hooks.addAction( 'frontend/element_ready/ultraaddons-advanced-accordion.default', UltraAddonsAccordion );
+            EF.hooks.addAction( 'frontend/element_ready/ultraaddons-accordion.default', UltraAddonsAccordion );
+
     });// Init hook wrapup
    
 
