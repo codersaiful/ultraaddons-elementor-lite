@@ -338,6 +338,15 @@ $ultraaddons_widgetsArray = [
             ],
     ],
     
+    'Feature_List' => [
+            'name'  => __( 'Feature List', 'ultraaddons-elementor-lite' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-editor-list-ul',
+            'cat'       => [
+                __( 'General', 'ultraaddons-elementor-lite' ),
+            ],
+    ],
+    
     'Drop_Caps' => [
             'name'  => __( 'Drop Caps', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
