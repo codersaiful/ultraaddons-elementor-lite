@@ -843,12 +843,515 @@
                     //add active class on selected item
                     $('.list').click(function(){
                       $(this).addClass('active').siblings().removeClass('active');    
-                    })
+                    });
                 }
             );
-    
 
-            
+            // Testimonial Box / Carousel Handler
+            var widgetTestimonialCarousel = function( $scope, $ ) {
+                var $carousel = $scope.find( '.ua-testimonial-carousel, .wpr-testimonial-carousel' );
+                if ( ! $carousel.length || ! $.fn.slick ) {
+                    return;
+                }
+
+                if ( $carousel.hasClass('slick-initialized') ) {
+                    $carousel.slick('unslick');
+                }
+
+                var rawData = $carousel.attr( 'data-slick' );
+                var settings = rawData ? JSON.parse( rawData ) : {};
+
+                var colsDesktop = ( settings.slidesToShow !== undefined && settings.slidesToShow !== '' ) ? parseInt(settings.slidesToShow, 10) : 2,
+                    colsTablet   = ( settings.columnsTablet !== undefined && settings.columnsTablet !== '' ) ? parseInt(settings.columnsTablet, 10) : ( colsDesktop > 2 ? 2 : colsDesktop ),
+                    colsMobile   = ( settings.columnsMobile !== undefined && settings.columnsMobile !== '' ) ? parseInt(settings.columnsMobile, 10) : 1,
+                    slidesToScroll = settings.slidesToScroll ? parseInt(settings.slidesToScroll, 10) : 1,
+                    slideEffect  = $carousel.attr('data-slide-effect') || 'slide';
+
+                if ( ! colsDesktop || isNaN(colsDesktop) ) {
+                    var sliderClass = ( $scope.attr('class') || '' ) + ' ' + ( $carousel.closest('.elementor-widget').attr('class') || '' );
+                    var desktopMatch = sliderClass.match(/(?:ua|wpr)-testimonial-slider-columns(?:-desktop)?-(\d)/);
+                    colsDesktop  = desktopMatch ? parseInt(desktopMatch[1], 10) : 2;
+                    colsTablet   = colsDesktop > 2 ? 2 : colsDesktop;
+                }
+
+                $carousel.slick({
+                    rtl: !! settings.rtl,
+                    infinite: settings.infinite !== false,
+                    speed: settings.speed || 700,
+                    arrows: !! settings.arrows,
+                    dots: !! settings.dots,
+                    autoplay: !! settings.autoplay,
+                    autoplaySpeed: settings.autoplaySpeed || 4000,
+                    pauseOnHover: settings.pauseOnHover !== false,
+                    prevArrow: $scope.find('.ua-testimonial-prev-arrow, .wpr-testimonial-prev-arrow'),
+                    nextArrow: $scope.find('.ua-testimonial-next-arrow, .wpr-testimonial-next-arrow'),
+                    appendDots: $scope.find('.ua-testimonial-dots, .wpr-testimonial-dots'),
+                    customPaging: function () {
+                        return '<span class="ua-testimonial-dot"></span>';
+                    },
+                    slidesToShow: colsDesktop,
+                    slidesToScroll: slidesToScroll,
+                    fade: ( colsDesktop === 1 && slideEffect === 'fade' ),
+                    responsive: [
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToShow: colsTablet,
+                                slidesToScroll: ( slidesToScroll > colsTablet ? colsTablet : slidesToScroll ),
+                                fade: ( colsTablet === 1 && slideEffect === 'fade' )
+                            }
+                        },
+                        {
+                            breakpoint: 767,
+                            settings: {
+                                slidesToShow: colsMobile,
+                                slidesToScroll: 1,
+                                fade: ( colsMobile === 1 && slideEffect === 'fade' )
+                            }
+                        }
+                    ]
+                });
+            };
+
+            EF.hooks.addAction( 'frontend/element_ready/ultraaddons-testimonial-box.default', widgetTestimonialCarousel );
+            EF.hooks.addAction( 'frontend/element_ready/testimonial-box.default', widgetTestimonialCarousel );
+
+            // Team Box / Carousel Handler
+            var widgetTeamCarousel = function( $scope, $ ) {
+                var $carousel = $scope.find( '.ua-team-carousel' );
+                if ( ! $carousel.length || ! $.fn.slick ) {
+                    return;
+                }
+
+                if ( $carousel.hasClass('slick-initialized') ) {
+                    $carousel.slick('unslick');
+                }
+
+                var rawData = $carousel.attr( 'data-slick' );
+                var settings = rawData ? JSON.parse( rawData ) : {};
+
+                var colsDesktop = ( settings.slidesToShow !== undefined && settings.slidesToShow !== '' ) ? parseInt(settings.slidesToShow, 10) : 1,
+                    colsTablet   = ( settings.columnsTablet !== undefined && settings.columnsTablet !== '' ) ? parseInt(settings.columnsTablet, 10) : ( colsDesktop > 1 ? colsDesktop : 1 ),
+                    colsMobile   = ( settings.columnsMobile !== undefined && settings.columnsMobile !== '' ) ? parseInt(settings.columnsMobile, 10) : 1,
+                    slidesToScroll = settings.slidesToScroll ? parseInt(settings.slidesToScroll, 10) : 1,
+                    slideEffect  = $carousel.attr('data-slide-effect') || 'slide';
+
+                $carousel.slick({
+                    rtl: !! settings.rtl,
+                    infinite: settings.infinite !== false,
+                    speed: settings.speed || 700,
+                    arrows: !! settings.arrows,
+                    dots: !! settings.dots,
+                    autoplay: !! settings.autoplay,
+                    autoplaySpeed: settings.autoplaySpeed || 4000,
+                    pauseOnHover: settings.pauseOnHover !== false,
+                    prevArrow: $scope.find('.ua-team-prev-arrow'),
+                    nextArrow: $scope.find('.ua-team-next-arrow'),
+                    appendDots: $scope.find('.ua-team-dots'),
+                    slidesToShow: colsDesktop,
+                    slidesToScroll: slidesToScroll,
+                    fade: ( colsDesktop === 1 && slideEffect === 'fade' ),
+                    responsive: [
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToShow: colsTablet,
+                                slidesToScroll: ( slidesToScroll > colsTablet ? colsTablet : slidesToScroll ),
+                                fade: ( colsTablet === 1 && slideEffect === 'fade' )
+                            }
+                        },
+                        {
+                            breakpoint: 767,
+                            settings: {
+                                slidesToShow: colsMobile,
+                                slidesToScroll: 1,
+                                fade: ( colsMobile === 1 && slideEffect === 'fade' )
+                            }
+                        }
+                    ]
+                });
+            };
+
+            EF.hooks.addAction( 'frontend/element_ready/ultraaddons-team-box.default', widgetTeamCarousel );
+
+            /**
+             * UltraAddons Flip Box Handler
+             *
+             * @param {jQuery} $scope
+             * @param {jQuery} $
+             */
+            var UltraAddonsFlipBox = function( $scope, $ ) {
+                var $wrapper = $scope.find( '.ua-flip-box-container' );
+                if ( ! $wrapper.length ) {
+                    return;
+                }
+
+                function setAutoMaxHeight() {
+                    var $front = $wrapper.find( '.ua-flip-box-front' );
+                    var $back = $wrapper.find( '.ua-flip-box-back' );
+                    var frontHeight = $front.outerHeight() || 0;
+                    var backHeight = $back.outerHeight() || 0;
+                    var maxHeight = Math.max( frontHeight, backHeight );
+                    if ( maxHeight > 0 ) {
+                        $wrapper.find( '.ua-flip-box-card' ).css( 'height', maxHeight + 'px' );
+                        $wrapper.css( 'height', maxHeight + 'px' );
+                    }
+                }
+
+                function setDynamicHeight() {
+                    var $front = $wrapper.find( '.ua-flip-box-front' );
+                    var $back = $wrapper.find( '.ua-flip-box-back' );
+                    var frontHeight = $front.outerHeight() || 0;
+                    var backHeight = $back.outerHeight() || 0;
+                    var targetHeight = ( $wrapper.hasClass( 'ua-flip-box-active' ) || $wrapper.hasClass( '--active' ) ) ? backHeight : frontHeight;
+                    if ( targetHeight > 0 ) {
+                        $wrapper.find( '.ua-flip-box-card' ).css( 'height', targetHeight + 'px' );
+                        $wrapper.css( 'height', targetHeight + 'px' );
+                    }
+                }
+
+                // Click event toggle
+                $wrapper.filter( '.ua-flip-box-click' ).add( $scope.find( '.ua-flip-box-click' ) ).off( 'click.uaFlipBox' ).on( 'click.uaFlipBox', function( e ) {
+                    if ( $( e.target ).closest( '.ua-flip-box-button, a[href]:not([href="#"])' ).length && ! $( this ).hasClass( 'ua-flip-box-active' ) ) {
+                        return;
+                    }
+                    $( this ).toggleClass( 'ua-flip-box-active --active' );
+                } );
+
+                // Hover event class toggle
+                $wrapper.filter( '.ua-flip-box-hover' ).add( $scope.find( '.ua-flip-box-hover' ) ).off( 'mouseenter.uaFlipBox mouseleave.uaFlipBox' ).on( 'mouseenter.uaFlipBox mouseleave.uaFlipBox', function() {
+                    $( this ).toggleClass( 'ua-flip-box-active --active' );
+                } );
+
+                // Touch support for hover trigger on mobile / tablet
+                if ( 'ontouchstart' in window || navigator.maxTouchPoints > 0 ) {
+                    $wrapper.filter( '.ua-flip-box-hover' ).add( $scope.find( '.ua-flip-box-hover' ) ).off( 'touchend.uaFlipBox' ).on( 'touchend.uaFlipBox', function( e ) {
+                        if ( $( e.target ).closest( '.ua-flip-box-button, a[href]:not([href="#"])' ).length && $( this ).hasClass( 'ua-flip-box-active' ) ) {
+                            return;
+                        }
+                        $( this ).toggleClass( 'ua-flip-box-active --active' );
+                    } );
+                }
+
+                // Auto height handling with responsive resize support
+                if ( $wrapper.hasClass( 'ua-flip-box-auto-height' ) ) {
+                    if ( $wrapper.hasClass( 'ua-flipbox-max' ) ) {
+                        setAutoMaxHeight();
+                        var interval = setInterval( setAutoMaxHeight, 250 );
+                        setTimeout( function() {
+                            clearInterval( interval );
+                        }, 4000 );
+
+                        $( window ).off( 'resize.uaFlipBox' + $scope.data( 'id' ) ).on( 'resize.uaFlipBox' + $scope.data( 'id' ), function() {
+                            setAutoMaxHeight();
+                        } );
+                    } else if ( $wrapper.hasClass( 'ua-flipbox-dynamic' ) ) {
+                        setDynamicHeight();
+                        $wrapper.on( 'click.uaFlipBox mouseenter.uaFlipBox mouseleave.uaFlipBox touchend.uaFlipBox', function() {
+                            setTimeout( setDynamicHeight, 50 );
+                        } );
+
+                        $( window ).off( 'resize.uaFlipBox' + $scope.data( 'id' ) ).on( 'resize.uaFlipBox' + $scope.data( 'id' ), function() {
+                            setDynamicHeight();
+                        } );
+                    }
+                }
+            };
+
+            EF.hooks.addAction( 'frontend/element_ready/ultraaddons-flip-box.default', UltraAddonsFlipBox );
+
+            /**
+             * UltraAddons Tooltip Handler
+             *
+             * @param {jQuery} $scope
+             * @param {jQuery} $
+             */
+            var UltraAddonsTooltip = function( $scope, $ ) {
+                var $tooltip = $scope.find( '.ua-tooltip' );
+                if ( ! $tooltip.length ) {
+                    return;
+                }
+
+                // Touch support for mobile / tablet devices
+                if ( 'ontouchstart' in window || navigator.maxTouchPoints > 0 ) {
+                    $tooltip.off( 'touchend.uaTooltip' ).on( 'touchend.uaTooltip', function( e ) {
+                        if ( $( e.target ).closest( 'a[href]:not([href="#"])' ).length && $( this ).hasClass( 'ua-tooltip-active' ) ) {
+                            return;
+                        }
+                        $( this ).toggleClass( 'ua-tooltip-active' );
+                    } );
+
+                    // Close tooltip on tapping outside
+                    $( document ).on( 'touchend.uaTooltipDoc' + $scope.data( 'id' ), function( e ) {
+                        if ( ! $( e.target ).closest( $tooltip ).length ) {
+                            $tooltip.removeClass( 'ua-tooltip-active' );
+                        }
+                    } );
+                }
+            };
+
+            EF.hooks.addAction( 'frontend/element_ready/ultraaddons-tooltip.default', UltraAddonsTooltip );
+
+            /**
+             * UltraAddons Advanced Accordion Handler
+             *
+             * @param {jQuery} $scope
+             * @param {jQuery} $
+             */
+            var UltraAddonsAccordion = function( $scope, $ ) {
+                var hashTag = window.location.hash ? window.location.hash.substring( 1 ) : '',
+                    hashTagExists = false,
+                    $advAccordion = $scope.find( '.ua-adv-accordion' ),
+                    $accordionHeader = $scope.find( '.ua-accordion-header' ),
+                    accordionType = $advAccordion.data( 'accordion-type' ) || 'accordion',
+                    triggerEvent = $advAccordion.data( 'trigger-event' ) || 'click',
+                    accordionSpeed = parseInt( $advAccordion.data( 'toogle-speed' ), 10 ) || 300,
+                    customIdOffset = parseInt( $advAccordion.data( 'custom-id-offset' ), 10 ) || 0,
+                    scrollOnClick = $advAccordion.data( 'scroll-on-click' ) === 'yes',
+                    scrollSpeed = parseInt( $advAccordion.data( 'scroll-speed' ), 10 ) || 300;
+
+                if ( ! $advAccordion.length ) {
+                    return;
+                }
+
+                // Initial open state: URL hash deep-link takes priority over default active
+                if ( hashTag || scrollOnClick ) {
+                    $accordionHeader.each( function() {
+                        if ( scrollOnClick ) {
+                            $( this ).attr( 'data-scroll', $( this ).offset().top );
+                        }
+                        if ( hashTag && $( this ).attr( 'id' ) === hashTag ) {
+                            hashTagExists = true;
+                            $( this ).addClass( 'active' ).attr( 'aria-expanded', 'true' );
+                            $( this ).next( '.ua-accordion-content' ).slideDown( accordionSpeed );
+                        }
+                    } );
+                }
+
+                if ( ! hashTagExists ) {
+                    $accordionHeader.each( function() {
+                        if ( $( this ).hasClass( 'active-default' ) ) {
+                            $( this ).addClass( 'active' ).attr( 'aria-expanded', 'true' );
+                            $( this ).next( '.ua-accordion-content' ).slideDown( accordionSpeed );
+                        }
+                    } );
+                }
+
+                // Core Toggle Handler function
+                function toggleTab( $header, forceOpen ) {
+                    if ( $header.hasClass( 'ua-triggered' ) ) {
+                        return;
+                    }
+
+                    var isOpen = $header.hasClass( 'active' );
+
+                    if ( accordionType === 'accordion' ) {
+                        if ( isOpen && ! forceOpen ) {
+                            $header.removeClass( 'active' ).attr( 'aria-expanded', 'false' );
+                            $header.next( '.ua-accordion-content' ).slideUp( accordionSpeed );
+                        } else if ( ! isOpen ) {
+                            $header.closest( '.ua-adv-accordion' ).find( '.ua-accordion-header' ).removeClass( 'active' ).attr( 'aria-expanded', 'false' );
+                            $header.closest( '.ua-adv-accordion' ).find( '.ua-accordion-content' ).slideUp( accordionSpeed );
+                            $header.addClass( 'active' ).attr( 'aria-expanded', 'true' );
+                            $header.next( '.ua-accordion-content' ).slideDown( accordionSpeed );
+                        }
+                    } else {
+                        // Toggle mode (multi-open)
+                        if ( isOpen && ! forceOpen ) {
+                            $header.removeClass( 'active' ).attr( 'aria-expanded', 'false' );
+                            $header.next( '.ua-accordion-content' ).slideUp( accordionSpeed );
+                        } else if ( ! isOpen ) {
+                            $header.addClass( 'active' ).attr( 'aria-expanded', 'true' );
+                            $header.next( '.ua-accordion-content' ).slideDown( accordionSpeed );
+                        }
+                    }
+
+                    if ( scrollOnClick && $header.hasClass( 'active' ) ) {
+                        $( 'html, body' ).animate( {
+                            scrollTop: $header.offset().top - customIdOffset
+                        }, scrollSpeed );
+                    }
+
+                    setTimeout( function() {
+                        $header.addClass( 'ua-triggered' );
+                        setTimeout( function() {
+                            $header.removeClass( 'ua-triggered' );
+                        }, 100 );
+                    }, 50 );
+                }
+
+                // Remove previous event handlers for nested accordions
+                $accordionHeader.off( 'click.uaAdvAccordion mouseenter.uaAdvAccordion' );
+
+                // Click event
+                $accordionHeader.on( 'click.uaAdvAccordion', function( e ) {
+                    e.preventDefault();
+                    toggleTab( $( this ), false );
+                } );
+
+                // Hover event (if enabled)
+                if ( triggerEvent === 'hover' ) {
+                    $accordionHeader.on( 'mouseenter.uaAdvAccordion', function( e ) {
+                        toggleTab( $( this ), true );
+                    } );
+                }
+
+                // Keyboard navigation (Enter & Space)
+                $scope.off( 'keydown.uaAdvAccordion', '.ua-accordion-header' ).on( 'keydown.uaAdvAccordion', '.ua-accordion-header', function( e ) {
+                    if ( e.which === 13 || e.which === 32 ) {
+                        e.preventDefault();
+                        $( this ).trigger( 'click.uaAdvAccordion' );
+                    }
+                } );
+            };
+
+            EF.hooks.addAction( 'frontend/element_ready/ultraaddons-advanced-accordion.default', UltraAddonsAccordion );
+            EF.hooks.addAction( 'frontend/element_ready/ultraaddons-accordion.default', UltraAddonsAccordion );
+
+            /**
+             * UltraAddons Advanced Tabs Handler
+             *
+             * @param {jQuery} $scope
+             * @param {jQuery} $
+             */
+            var UltraAddonsAdvancedTabs = function( $scope, $ ) {
+                var $advTabs = $scope.find( '.ua-adv-tabs' );
+                if ( ! $advTabs.length ) {
+                    return;
+                }
+
+                var $navItems = $advTabs.find( '> .ua-tabs-nav ul li.ua-tab-nav-item' ),
+                    $contentItems = $advTabs.find( '> .ua-tabs-content > .ua-tab-content-item' ),
+                    scrollOnClick = $advTabs.data( 'scroll-on-click' ) === 'yes',
+                    scrollSpeed = parseInt( $advTabs.data( 'scroll-speed' ), 10 ) || 300,
+                    customIdOffset = parseInt( $advTabs.data( 'custom-id-offset' ), 10 ) || 0,
+                    isToggleMode = $advTabs.hasClass( 'ua-tab-toggle' ),
+                    hashTag = window.location.hash ? window.location.hash.substring( 1 ) : '',
+                    hashMatched = false;
+
+                // Function to re-calculate child sliders/swiper/galleries
+                function refreshNestedElements( $container ) {
+                    if ( ! $container || ! $container.length ) {
+                        return;
+                    }
+                    var $swipers = $container.find( '.swiper, .swiper-container' );
+                    $swipers.each( function() {
+                        if ( this.swiper ) {
+                            this.swiper.update();
+                            this.swiper.updateSize();
+                            this.swiper.updateSlides();
+                        }
+                    } );
+                    var $slick = $container.find( '.slick-slider' );
+                    if ( $slick.length && typeof $slick.slick === 'function' ) {
+                        $slick.slick( 'setPosition' );
+                    }
+                    var $isotope = $container.find( '.ua-grid-masonry, .isotope' );
+                    if ( $isotope.length && typeof $isotope.isotope === 'function' ) {
+                        $isotope.isotope( 'layout' );
+                    }
+                    $( window ).trigger( 'resize' );
+                }
+
+                // Activate specific tab by index
+                function activateTab( index, doScroll ) {
+                    var $targetNav = $navItems.eq( index ),
+                        $targetContent = $contentItems.eq( index );
+
+                    if ( ! $targetNav.length ) {
+                        return;
+                    }
+
+                    if ( isToggleMode && $targetNav.hasClass( 'active' ) ) {
+                        $targetNav.removeClass( 'active active-default' ).addClass( 'inactive' ).attr( 'aria-selected', 'false' ).attr( 'aria-expanded', 'false' ).attr( 'tabindex', '-1' );
+                        $targetContent.removeClass( 'active active-default' ).addClass( 'inactive' );
+                        return;
+                    }
+
+                    $navItems.removeClass( 'active active-default' ).addClass( 'inactive' ).attr( 'aria-selected', 'false' ).attr( 'aria-expanded', 'false' ).attr( 'tabindex', '-1' );
+                    $contentItems.removeClass( 'active active-default' ).addClass( 'inactive' );
+
+                    $targetNav.removeClass( 'inactive' ).addClass( 'active' ).attr( 'aria-selected', 'true' ).attr( 'aria-expanded', 'true' ).attr( 'tabindex', '0' );
+                    $targetContent.removeClass( 'inactive' ).addClass( 'active' );
+
+                    setTimeout( function() {
+                        refreshNestedElements( $targetContent );
+                    }, 50 );
+
+                    if ( doScroll && scrollOnClick ) {
+                        var scrollPos = $targetNav.offset().top - customIdOffset;
+                        $( 'html, body' ).animate( { scrollTop: scrollPos }, scrollSpeed );
+                    }
+                }
+
+                // Check URL hash for direct tab deep-linking
+                if ( hashTag ) {
+                    $navItems.each( function( idx ) {
+                        if ( $( this ).attr( 'id' ) === hashTag ) {
+                            hashMatched = true;
+                            activateTab( idx, true );
+                        }
+                    } );
+                }
+
+                // Initial open state fallback
+                if ( ! hashMatched ) {
+                    var initialFound = false;
+                    $navItems.each( function( idx ) {
+                        if ( $( this ).hasClass( 'active-default' ) ) {
+                            activateTab( idx, false );
+                            initialFound = true;
+                        }
+                    } );
+                    if ( ! initialFound && $navItems.filter( '.active' ).length ) {
+                        $navItems.filter( '.active' ).each( function() {
+                            var idx = $( this ).index();
+                            activateTab( idx, false );
+                        } );
+                    }
+                }
+
+                // Click event
+                $navItems.off( 'click.uaAdvTabs' ).on( 'click.uaAdvTabs', function( e ) {
+                    e.preventDefault();
+                    var index = $( this ).index();
+                    activateTab( index, true );
+                } );
+
+                // Keyboard arrow navigation
+                $navItems.off( 'keydown.uaAdvTabs' ).on( 'keydown.uaAdvTabs', function( e ) {
+                    var currentIndex = $navItems.index( this );
+                    if ( e.key === 'ArrowRight' || e.key === 'ArrowDown' ) {
+                        e.preventDefault();
+                        var nextIndex = ( currentIndex + 1 ) % $navItems.length;
+                        $navItems.eq( nextIndex ).focus();
+                        activateTab( nextIndex, false );
+                    } else if ( e.key === 'ArrowLeft' || e.key === 'ArrowUp' ) {
+                        e.preventDefault();
+                        var prevIndex = ( currentIndex - 1 + $navItems.length ) % $navItems.length;
+                        $navItems.eq( prevIndex ).focus();
+                        activateTab( prevIndex, false );
+                    } else if ( e.key === 'Enter' || e.key === ' ' ) {
+                        e.preventDefault();
+                        activateTab( currentIndex, true );
+                    }
+                } );
+
+                // Listen to hash changes in window
+                $( window ).off( 'hashchange.uaAdvTabs' + $scope.data( 'id' ) ).on( 'hashchange.uaAdvTabs' + $scope.data( 'id' ), function() {
+                    var newHash = window.location.hash ? window.location.hash.substring( 1 ) : '';
+                    if ( newHash ) {
+                        $navItems.each( function( idx ) {
+                            if ( $( this ).attr( 'id' ) === newHash ) {
+                                activateTab( idx, true );
+                            }
+                        } );
+                    }
+                } );
+            };
+
+            EF.hooks.addAction( 'frontend/element_ready/ultraaddons-advanced-tabs.default', UltraAddonsAdvancedTabs );
+
     });// Init hook wrapup
    
 
@@ -925,11 +1428,127 @@
                             }
 
                         }
-
                     }
                 }
             });
     }
 
+    // Document Ready Fallback for Testimonial Carousel
+    $(document).ready(function() {
+        if ( typeof $.fn.slick !== 'undefined' ) {
+            $('.ua-testimonial-carousel, .wpr-testimonial-carousel').not('.slick-initialized').each(function() {
+                var $carousel = $(this);
+                var $scope = $carousel.closest('.elementor-widget');
+                var rawData = $carousel.attr('data-slick');
+                var settings = rawData ? JSON.parse(rawData) : {};
+                var colsDesktop = ( settings.slidesToShow !== undefined && settings.slidesToShow !== '' ) ? parseInt(settings.slidesToShow, 10) : 2,
+                    colsTablet   = ( settings.columnsTablet !== undefined && settings.columnsTablet !== '' ) ? parseInt(settings.columnsTablet, 10) : ( colsDesktop > 2 ? 2 : colsDesktop ),
+                    colsMobile   = ( settings.columnsMobile !== undefined && settings.columnsMobile !== '' ) ? parseInt(settings.columnsMobile, 10) : 1,
+                    slidesToScroll = settings.slidesToScroll ? parseInt(settings.slidesToScroll, 10) : 1,
+                    slideEffect  = $carousel.attr('data-slide-effect') || 'slide';
+
+                if ( ! colsDesktop || isNaN(colsDesktop) ) {
+                    var sliderClass = ( $scope.attr('class') || '' ) + ' ' + ( $carousel.closest('.elementor-widget').attr('class') || '' );
+                    var desktopMatch = sliderClass.match(/(?:ua|wpr)-testimonial-slider-columns(?:-desktop)?-(\d)/);
+                    colsDesktop  = desktopMatch ? parseInt(desktopMatch[1], 10) : 2;
+                    colsTablet   = colsDesktop > 2 ? 2 : colsDesktop;
+                }
+
+                $carousel.slick({
+                    rtl: !! settings.rtl,
+                    infinite: settings.infinite !== false,
+                    speed: settings.speed || 700,
+                    arrows: !! settings.arrows,
+                    dots: !! settings.dots,
+                    autoplay: !! settings.autoplay,
+                    autoplaySpeed: settings.autoplaySpeed || 4000,
+                    pauseOnHover: settings.pauseOnHover !== false,
+                    prevArrow: $scope.find('.ua-testimonial-prev-arrow, .wpr-testimonial-prev-arrow'),
+                    nextArrow: $scope.find('.ua-testimonial-next-arrow, .wpr-testimonial-next-arrow'),
+                    appendDots: $scope.find('.ua-testimonial-dots, .wpr-testimonial-dots'),
+                    customPaging: function () {
+                        return '<span class="ua-testimonial-dot"></span>';
+                    },
+                    slidesToShow: colsDesktop,
+                    slidesToScroll: slidesToScroll,
+                    fade: ( colsDesktop === 1 && slideEffect === 'fade' ),
+                    responsive: [
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToShow: colsTablet,
+                                slidesToScroll: ( slidesToScroll > colsTablet ? colsTablet : slidesToScroll ),
+                                fade: ( colsTablet === 1 && slideEffect === 'fade' )
+                            }
+                        },
+                        {
+                            breakpoint: 767,
+                            settings: {
+                                slidesToShow: colsMobile,
+                                slidesToScroll: 1,
+                                fade: ( colsMobile === 1 && slideEffect === 'fade' )
+                            }
+                        }
+                    ]
+                });
+            });
+
+            // Document Ready Fallback for Team Carousel
+            $('.ua-team-carousel').not('.slick-initialized').each(function() {
+                var $carousel = $(this);
+                var $scope = $carousel.closest('.elementor-widget');
+                var rawData = $carousel.attr('data-slick');
+                var settings = rawData ? JSON.parse(rawData) : {};
+                var colsDesktop = ( settings.slidesToShow !== undefined && settings.slidesToShow !== '' ) ? parseInt(settings.slidesToShow, 10) : 1,
+                    colsTablet   = ( settings.columnsTablet !== undefined && settings.columnsTablet !== '' ) ? parseInt(settings.columnsTablet, 10) : ( colsDesktop > 1 ? colsDesktop : 1 ),
+                    colsMobile   = ( settings.columnsMobile !== undefined && settings.columnsMobile !== '' ) ? parseInt(settings.columnsMobile, 10) : 1,
+                    slidesToScroll = settings.slidesToScroll ? parseInt(settings.slidesToScroll, 10) : 1,
+                    slideEffect  = $carousel.attr('data-slide-effect') || 'slide';
+
+                $carousel.slick({
+                    rtl: !! settings.rtl,
+                    infinite: settings.infinite !== false,
+                    speed: settings.speed || 700,
+                    arrows: !! settings.arrows,
+                    dots: !! settings.dots,
+                    autoplay: !! settings.autoplay,
+                    autoplaySpeed: settings.autoplaySpeed || 4000,
+                    pauseOnHover: settings.pauseOnHover !== false,
+                    prevArrow: $scope.find('.ua-team-prev-arrow'),
+                    nextArrow: $scope.find('.ua-team-next-arrow'),
+                    appendDots: $scope.find('.ua-team-dots'),
+                    slidesToShow: colsDesktop,
+                    slidesToScroll: slidesToScroll,
+                    fade: ( colsDesktop === 1 && slideEffect === 'fade' ),
+                    responsive: [
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToShow: colsTablet,
+                                slidesToScroll: ( slidesToScroll > colsTablet ? colsTablet : slidesToScroll ),
+                                fade: ( colsTablet === 1 && slideEffect === 'fade' )
+                            }
+                        },
+                        {
+                            breakpoint: 767,
+                            settings: {
+                                slidesToShow: colsMobile,
+                                slidesToScroll: 1,
+                                fade: ( colsMobile === 1 && slideEffect === 'fade' )
+                            }
+                        }
+                    ]
+                });
+            });
+        }
+
+        // Document Ready Fallback for Flip Box click triggers
+        $('.ua-flip-box-click').off('click.uaFlipBoxDoc').on('click.uaFlipBoxDoc', function(e) {
+            if ($(e.target).closest('.ua-flip-box-button, a[href]:not([href="#"])').length && !$(this).hasClass('ua-flip-box-active')) {
+                return;
+            }
+            $(this).toggleClass('ua-flip-box-active --active');
+        });
+    });
 
 } (jQuery, window));

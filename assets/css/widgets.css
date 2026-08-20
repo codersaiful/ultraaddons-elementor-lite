@@ -14,11 +14,6 @@
 /*****************************
 * Comon Transition for All Element
 ******************************/
-.ua-info-box-wrapper .ua-info-box-icon,
-.ua-info-box-wrapper .ua-info-box-content,
-.ua-info-box-wrapper .elementor-icon-box-title,
-.ua-info-box-wrapper .elementor-icon-box-description,
-
 .ua-icon-box-wrapper .ua-icon-box-icon,
 .ua-icon-box-wrapper .ua-icon-box-content,
 .ua-icon-box-wrapper .elementor-icon-box-title,
@@ -153,13 +148,7 @@ div.ua-element .elementor-widget-container .btn-wrapper a.ua-button {
     background-color: #0fc392;
 }
 
-/*div.ua-element.ua-btn-align-left .btn-wrapper{text-align: left;}
-div.ua-element.ua-btn-align-right .btn-wrapper{text-align: right;}
-div.ua-element.ua-btn-align-center .btn-wrapper{text-align: center;}
-div.ua-element.ua-btn-align-justify .btn-wrapper{text-align: justify;}*/
-div.ua-element.ua-btn-align-justify .btn-wrapper a.ua-button{width: 100%;}
 
-.ua-btn-inline-yes.ua-element.ua-element-button{width: auto !important;}
 
 /*******************************
 * Transition
@@ -288,9 +277,7 @@ Alert
     font-size: 15px;
     width: 100%;
 }
-.ua-btn-wrap > .ua-btn{
-    text-decoration: none;
-}
+
 /*
 Pagination
 */
@@ -324,38 +311,7 @@ Pagination
       background: #f9f9f9;
       color: #333;
   }
-   .ua-btn-wrap a.ua-btn, .elementor-widget-ultraaddons-button .ua-btn-wrap a.ua-btn{
-    padding: 1em;
-    cursor: pointer;
-    background: #4a74e0;
-    text-decoration: none;
-    color: #fff;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    overflow: hidden;
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: space-between;
-}
 
-.ua-btn-wrap .ua-effect:before {
-    position: absolute;
-    content: "";
-    height: 100%;
-    width: 0;
-    background: #fff;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: all .3s ease;
-}
-.ua-btn svg {
-    width:1.5em;
-    height:1em
-}
 .mb-20{
     margin-bottom: 20px;
 }

@@ -51,6 +51,13 @@ class Autoloader {
             return;
         }
 
+        if ( $class === 'UltraAddons\Widget\Base' || $class === 'UltraAddons\Base\Base' ) {
+            $base_file = ULTRA_ADDONS_DIR . 'inc/base/base.php';
+            if ( is_readable( $base_file ) ) {
+                require_once $base_file;
+                return;
+            }
+        }
 
         $filename = strtolower(
                 preg_replace(

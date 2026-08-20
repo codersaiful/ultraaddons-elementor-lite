@@ -1,88 +1,472 @@
-.ultraaddons_info_box > .elementor-widget-container {
-    background: #fff;
-}
-.ua-info-box-icon img.infobox-svg{
-    width: 100px;
-}
+/**
+ * UltraAddons Info Box Widget Styles
+ * 
+ * @since 1.2.0
+ */
 
-.ua-element-info-box .elementor-widget-container .info-title {
-    color: #21272c;
-    font-weight: 700;
-    line-height: 1.6;
-    margin: 0 0 10px;
-}
-.ua-info-box-icon {
-    /* display: inline-flex; */
-    /* text-align: center; */
-    /* margin: 0 0 40px; */
-    /* justify-content: center; */
-    /* flex-wrap: wrap; */
-    /* align-items: center; */
-}
-.ua-info-box-content .elementor-icon-box-title {
-    font-weight: 700;
-    line-height: 1.6;
-    font-size: 24px;
-    margin-bottom: 30px;
-}
-
-.ua-info-box-content .elementor-icon-box-description {
-    font-size: 16px;
-    font-family: "Work Sans", sans-serif;
-    font-family: var(--medilac-font-primary);
-    color: #5C6B79;
-    line-height: 1.6;
-    margin-bottom: 40px;
-}
-.ua-element-info-box .elementor-widget-container {
-    padding: 50px;
-    background: white;
-}
-.ua-element-info-box .elementor-widget-container {
-    box-shadow: 0px 5px 23px 0 rgb(159 160 185 / 15%);
-}
-.ua-element-info-box .elementor-widget-container:hover {
-    box-shadow: 0px 5px 25px 0 rgb(159 160 185 / 25%);
-}
-
-
-a.ua-info-box-wrapper {
+.ua-infobox-wrap {
     display: block;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
 }
-@media (min-width: 768px) {
-    .ua-element-info-box.elementor-vertical-align-top .ua-info-box-wrapper {
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start; }
-  .ua-element-info-box.elementor-vertical-align-middle .ua-info-box-wrapper {
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center; }
-  .ua-element-info-box.elementor-vertical-align-bottom .ua-info-box-wrapper {
-    -webkit-box-align: end;
-        -ms-flex-align: end;
-            align-items: flex-end; }
+
+.ua-infobox-clickable-wrap {
+    display: block;
+    text-decoration: none !important;
+    color: inherit;
 }
-.ua-info-box-wrapper {
+
+.ua-infobox {
+    display: flex;
+    position: relative;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    overflow: hidden; /* Clips corner ribbon cleanly to border radius */
+}
+
+/* Layout Variations */
+.ua-infobox.ua-media-top {
+    flex-direction: column;
+}
+
+.ua-infobox.ua-media-bottom {
+    flex-direction: column;
+}
+
+.ua-infobox.ua-media-bottom .ua-infobox-media {
+    order: 2;
+    margin-top: 15px;
+}
+
+.ua-infobox.ua-media-bottom .ua-infobox-content {
+    order: 1;
+}
+
+.ua-infobox.ua-media-left {
+    flex-direction: row;
+}
+
+.ua-infobox.ua-media-left .ua-infobox-media {
+    justify-content: flex-start;
+}
+
+.ua-infobox.ua-media-left .ua-infobox-content,
+.ua-infobox.ua-media-left .ua-infobox-title-wrap,
+.ua-infobox.ua-media-left .ua-infobox-btn-wrap {
+    padding-left: 20px;
+    flex: 1 1 auto;
+    min-width: 0;
+    text-align: left;
+    align-items: flex-start;
+}
+
+.ua-infobox.ua-media-right {
+    flex-direction: row-reverse;
+}
+
+.ua-infobox.ua-media-right .ua-infobox-media {
+    justify-content: flex-end;
+}
+
+.ua-infobox.ua-media-right .ua-infobox-content,
+.ua-infobox.ua-media-right .ua-infobox-title-wrap,
+.ua-infobox.ua-media-right .ua-infobox-btn-wrap {
+    padding-right: 20px;
+    flex: 1 1 auto;
+    min-width: 0;
+    text-align: right;
+    align-items: flex-end;
+}
+
+/* Media (Icon / Image / Number) Wrapper */
+.ua-infobox-media {
+    display: flex;
+    position: relative;
+    transition: all 0.3s ease;
+    line-height: 1;
+    justify-content: center; /* Centered by default */
+}
+
+.ua-infobox-icon-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.ua-infobox-icon-wrap i {
+    line-height: 1;
+    transition: all 0.3s ease;
+}
+
+.ua-infobox-icon-wrap svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    transition: all 0.3s ease;
+}
+
+.ua-infobox-icon-wrap img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+/* Number Element */
+.ua-infobox-number {
+    font-weight: 700;
+    line-height: 1;
+    transition: all 0.3s ease;
+}
+
+/* Shapes */
+.ua-shape-circle .ua-infobox-icon-wrap,
+.ua-shape-circle img {
+    border-radius: 50% !important;
+}
+
+.ua-shape-radius .ua-infobox-icon-wrap,
+.ua-shape-radius img {
+    border-radius: 12px !important;
+}
+
+.ua-shape-square .ua-infobox-icon-wrap,
+.ua-shape-square img {
+    border-radius: 0 !important;
+}
+
+/* Hover Shapes */
+.ua-hover-shape-circle:hover .ua-infobox-icon-wrap,
+.ua-hover-shape-circle:hover img {
+    border-radius: 50% !important;
+}
+
+.ua-hover-shape-radius:hover .ua-infobox-icon-wrap,
+.ua-hover-shape-radius:hover img {
+    border-radius: 12px !important;
+}
+
+.ua-hover-shape-square:hover .ua-infobox-icon-wrap,
+.ua-hover-shape-square:hover img {
+    border-radius: 0 !important;
+}
+
+/* Content Area - Default Center */
+.ua-infobox-content {
     display: flex;
     flex-direction: column;
     position: relative;
-}
-.count-text {
-    position: absolute;
-    display: flex;
-    justify-content: center;
+    box-sizing: border-box;
+    text-align: center;
     align-items: center;
 }
-.count-left{
-    left: 0;
+
+.ua-infobox-title-wrap {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+    text-align: center;
+    align-items: center;
 }
-.count-right{
+
+.ua-infobox-title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.ua-infobox-subtitle {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin: 0 0 6px 0;
+    transition: color 0.3s ease;
+}
+
+.ua-infobox-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 0 15px 0;
+    transition: color 0.3s ease;
+}
+
+.ua-infobox-desc p:last-child {
+    margin-bottom: 0;
+}
+
+/* Button */
+.ua-infobox-btn-wrap {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.ua-infobox-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none !important;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 22px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-sizing: border-box;
+    line-height: 1;
+}
+
+.ua-infobox-btn-icon-left {
+    margin-right: 8px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.ua-infobox-btn-icon-right {
+    margin-left: 8px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.ua-infobox-btn svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
+/* Explicit Alignment Classes */
+.ua-align-left .ua-infobox-content,
+.ua-align-left .ua-infobox-title-wrap,
+.ua-align-left .ua-infobox-btn-wrap {
+    text-align: left;
+    align-items: flex-start;
+}
+
+.ua-align-left.ua-media-top .ua-infobox-media,
+.ua-align-left.ua-media-bottom .ua-infobox-media {
+    justify-content: flex-start;
+}
+
+.ua-align-center .ua-infobox-content,
+.ua-align-center .ua-infobox-title-wrap,
+.ua-align-center .ua-infobox-btn-wrap {
+    text-align: center;
+    align-items: center;
+}
+
+.ua-align-center.ua-media-top .ua-infobox-media,
+.ua-align-center.ua-media-bottom .ua-infobox-media {
+    justify-content: center;
+}
+
+.ua-align-right .ua-infobox-content,
+.ua-align-right .ua-infobox-title-wrap,
+.ua-align-right .ua-infobox-btn-wrap {
+    text-align: right;
+    align-items: flex-end;
+}
+
+.ua-align-right.ua-media-top .ua-infobox-media,
+.ua-align-right.ua-media-bottom .ua-infobox-media {
+    justify-content: flex-end;
+}
+
+/* Tablet Alignment */
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+    .ua-tablet-align-left .ua-infobox-content,
+    .ua-tablet-align-left .ua-infobox-title-wrap,
+    .ua-tablet-align-left .ua-infobox-btn-wrap {
+        text-align: left;
+        align-items: flex-start;
+    }
+    .ua-tablet-align-left.ua-media-top .ua-infobox-media,
+    .ua-tablet-align-left.ua-media-bottom .ua-infobox-media {
+        justify-content: flex-start;
+    }
+    .ua-tablet-align-center .ua-infobox-content,
+    .ua-tablet-align-center .ua-infobox-title-wrap,
+    .ua-tablet-align-center .ua-infobox-btn-wrap {
+        text-align: center;
+        align-items: center;
+    }
+    .ua-tablet-align-center.ua-media-top .ua-infobox-media,
+    .ua-tablet-align-center.ua-media-bottom .ua-infobox-media {
+        justify-content: center;
+    }
+    .ua-tablet-align-right .ua-infobox-content,
+    .ua-tablet-align-right .ua-infobox-title-wrap,
+    .ua-tablet-align-right .ua-infobox-btn-wrap {
+        text-align: right;
+        align-items: flex-end;
+    }
+    .ua-tablet-align-right.ua-media-top .ua-infobox-media,
+    .ua-tablet-align-right.ua-media-bottom .ua-infobox-media {
+        justify-content: flex-end;
+    }
+}
+
+/* Mobile Alignment */
+@media screen and (max-width: 767px) {
+    .ua-mobile-align-left .ua-infobox-content,
+    .ua-mobile-align-left .ua-infobox-title-wrap,
+    .ua-mobile-align-left .ua-infobox-btn-wrap {
+        text-align: left;
+        align-items: flex-start;
+    }
+    .ua-mobile-align-left.ua-media-top .ua-infobox-media,
+    .ua-mobile-align-left.ua-media-bottom .ua-infobox-media {
+        justify-content: flex-start;
+    }
+    .ua-mobile-align-center .ua-infobox-content,
+    .ua-mobile-align-center .ua-infobox-title-wrap,
+    .ua-mobile-align-center .ua-infobox-btn-wrap {
+        text-align: center;
+        align-items: center;
+    }
+    .ua-mobile-align-center.ua-media-top .ua-infobox-media,
+    .ua-mobile-align-center.ua-media-bottom .ua-infobox-media {
+        justify-content: center;
+    }
+    .ua-mobile-align-right .ua-infobox-content,
+    .ua-mobile-align-right .ua-infobox-title-wrap,
+    .ua-mobile-align-right .ua-infobox-btn-wrap {
+        text-align: right;
+        align-items: flex-end;
+    }
+    .ua-mobile-align-right.ua-media-top .ua-infobox-media,
+    .ua-mobile-align-right.ua-media-bottom .ua-infobox-media {
+        justify-content: flex-end;
+    }
+}
+
+/*==============================================================================
+ * BADGE STYLES (Corner Ribbon, Circle Badge, Flag Badge)
+ *============================================================================*/
+.ua-infobox-badge {
+    position: absolute;
+    display: inline-block;
+    text-align: center;
+    z-index: 35;
+    pointer-events: none;
+}
+
+.ua-infobox-badge-left {
+    left: 0;
+    right: auto;
+}
+
+.ua-infobox-badge-right {
+    left: auto;
     right: 0;
 }
-.count-bottom{
-    bottom: 0;
-}
-.count-top{
+
+/* 1. Corner Ribbon Badge */
+.ua-infobox-badge-corner {
     top: 0;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+}
+
+.ua-infobox-badge-corner.ua-infobox-badge-right {
+    right: 0;
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.ua-infobox-badge-corner.ua-infobox-badge-left {
+    left: 0;
+}
+
+.ua-infobox-badge-corner .ua-badge-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    display: block;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.4;
+    color: #ffffff;
+    background-color: #ff4757;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    margin-top: 30px;
+    transform: translateY(-50%) translateX(-50%) translateX(30px) rotate(-45deg);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+/* 2. Circle Badge */
+.ua-infobox-badge-circle {
+    top: 15px;
+}
+
+.ua-infobox-badge-circle.ua-infobox-badge-left {
+    left: 15px;
+}
+
+.ua-infobox-badge-circle.ua-infobox-badge-right {
+    right: 15px;
+}
+
+.ua-infobox-badge-circle .ua-badge-inner {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+    background-color: #ff4757;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    line-height: 1;
+}
+
+/* 3. Flag / Bookmark Badge */
+.ua-infobox-badge-flag {
+    top: 0;
+}
+
+.ua-infobox-badge-flag.ua-infobox-badge-left {
+    left: 20px;
+}
+
+.ua-infobox-badge-flag.ua-infobox-badge-right {
+    right: 20px;
+}
+
+.ua-infobox-badge-flag .ua-badge-inner {
+    display: inline-block;
+    padding: 8px 12px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+    background-color: #ff4757;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    line-height: 1.2;
 }

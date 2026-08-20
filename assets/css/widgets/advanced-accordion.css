@@ -1,0 +1,239 @@
+/**
+ * UltraAddons Advanced Accordion Widget Stylesheet
+ *
+ * Scoped, lightweight, accessible accordion styling with smooth animations,
+ * icon state transitions, rotating toggle arrow, and responsive layout.
+ *
+ * @package UltraAddons
+ */
+
+/* ==========================================================================
+   1. BASE ACCORDION CONTAINER & LIST
+   ========================================================================== */
+.ua-adv-accordion {
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.ua-adv-accordion .ua-accordion-list {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin-bottom: 10px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.ua-adv-accordion .ua-accordion-list:last-child {
+    margin-bottom: 0;
+}
+
+/* ==========================================================================
+   2. ACCORDION HEADER (TITLE & ICONS)
+   ========================================================================== */
+.ua-adv-accordion .ua-accordion-list .ua-accordion-header {
+    padding: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.02);
+    background-color: #f1f1f1;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.ua-adv-accordion .ua-accordion-list .ua-accordion-header > .ua-accordion-tab-title {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    margin: 0;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+}
+
+.ua-adv-accordion .ua-accordion-list .ua-accordion-header:hover {
+    background-color: #414141;
+    color: #ffffff;
+}
+
+.ua-adv-accordion .ua-accordion-list .ua-accordion-header.active {
+    background-color: #444444;
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   3. ICONS (TAB ICONS & TOGGLE ARROW)
+   ========================================================================== */
+/* Tab Item Icon */
+.ua-adv-accordion .ua-accordion-icon {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin-right: 10px;
+    line-height: 1;
+    color: inherit;
+    -webkit-transition: color 0.3s ease;
+    transition: color 0.3s ease;
+}
+
+.ua-adv-accordion .ua-accordion-icon i {
+    font-size: 16px;
+    line-height: 1;
+}
+
+.ua-adv-accordion .ua-accordion-icon svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Tab Icon State Toggle */
+.ua-adv-accordion .ua-accordion-icon-closed {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+}
+
+.ua-adv-accordion .ua-accordion-icon-opened {
+    display: none;
+}
+
+.ua-adv-accordion .ua-accordion-list .ua-accordion-header.active .ua-accordion-icon-closed {
+    display: none;
+}
+
+.ua-adv-accordion .ua-accordion-list .ua-accordion-header.active .ua-accordion-icon-opened {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+}
+
+/* Toggle Arrow Icon */
+.ua-adv-accordion .ua-toggle {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    line-height: 1;
+    color: inherit;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    z-index: 10;
+    -webkit-transition: -webkit-transform 0.3s ease-in-out, color 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.ua-adv-accordion .ua-toggle i {
+    font-size: 16px;
+    line-height: 1;
+}
+
+.ua-adv-accordion .ua-toggle svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Toggle Arrow Rotate when Active */
+.ua-adv-accordion .ua-accordion-list .ua-accordion-header.active .ua-toggle {
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.rtl .ua-adv-accordion .ua-accordion-list .ua-accordion-header.active .ua-toggle {
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+/* ==========================================================================
+   4. ACCORDION CONTENT PANEL
+   ========================================================================== */
+.ua-adv-accordion .ua-accordion-list .ua-accordion-content {
+    display: none;
+    border: 1px solid #eee;
+    padding: 15px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 1rem;
+    line-height: 1.7;
+    background-color: #ffffff;
+    color: #333333;
+}
+
+.ua-adv-accordion .ua-accordion-list .ua-accordion-content p:last-child {
+    margin-bottom: 0;
+}
+
+.ua-adv-accordion .ua-accordion-list .ua-accordion-content.active-default {
+    display: block;
+}
+
+/* ==========================================================================
+   5. RESPONSIVE OPTIMIZATIONS (TABLET & MOBILE)
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .ua-adv-accordion .ua-accordion-list .ua-accordion-header {
+        padding: 14px;
+        font-size: 0.95rem;
+    }
+    .ua-adv-accordion .ua-accordion-list .ua-accordion-content {
+        padding: 14px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .ua-adv-accordion .ua-accordion-list .ua-accordion-header {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+    .ua-adv-accordion .ua-accordion-icon i,
+    .ua-adv-accordion .ua-toggle i {
+        font-size: 14px;
+    }
+    .ua-adv-accordion .ua-accordion-icon svg,
+    .ua-adv-accordion .ua-toggle svg {
+        width: 14px;
+        height: 14px;
+    }
+    .ua-adv-accordion .ua-accordion-list .ua-accordion-content {
+        padding: 12px;
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+}

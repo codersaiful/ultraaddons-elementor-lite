@@ -1,0 +1,519 @@
+/**
+ * UltraAddons Flip Box Widget Stylesheet
+ *
+ * Smooth 3D animations, hardware-accelerated transforms, responsive layout,
+ * and high-fidelity styling for the Flip Box widget.
+ *
+ * @package UltraAddons
+ */
+
+/* ==========================================================================
+   1. BASE CONTAINER & CARD
+   ========================================================================== */
+.ua-flip-box-container {
+    position: relative;
+    width: 100%;
+    min-width: 100%;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+    box-sizing: border-box;
+}
+
+.elementor-widget-ultraaddons-flip-box {
+    width: 100%;
+}
+
+.ua-flip-box-fixed-height {
+    height: 300px;
+}
+
+.ua-flip-box-auto-height {
+    height: auto;
+    min-height: 100px;
+}
+
+.ua-flip-box-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: block;
+    text-decoration: none;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: -webkit-transform 500ms cubic-bezier(0.4, 0.2, 0.2, 1);
+    transition: transform 500ms cubic-bezier(0.4, 0.2, 0.2, 1);
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   2. FRONT & BACK PANELS
+   ========================================================================== */
+.ua-flip-box-front,
+.ua-flip-box-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    box-sizing: border-box;
+    border-radius: 6px;
+    padding: 30px;
+    text-align: center;
+    -webkit-transition: all 500ms cubic-bezier(0.4, 0.2, 0.2, 1);
+    transition: all 500ms cubic-bezier(0.4, 0.2, 0.2, 1);
+    overflow: hidden;
+}
+
+.ua-flip-box-front {
+    z-index: 2;
+    background-color: #8a35ff;
+    color: #ffffff;
+    -webkit-transform: rotateX(0deg) rotateY(0deg);
+    transform: rotateX(0deg) rotateY(0deg);
+}
+
+.ua-flip-box-back {
+    z-index: 1;
+    background-color: #502fc6;
+    color: #ffffff;
+}
+
+.ua-flip-box-inner {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    text-align: center;
+    -webkit-transition: -webkit-transform 500ms cubic-bezier(0.4, 0.2, 0.2, 1);
+    transition: transform 500ms cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+/* ==========================================================================
+   3. 3D DEPTH EFFECT
+   ========================================================================== */
+.ua-flip-box--3d .ua-flip-box-front,
+.ua-flip-box--3d .ua-flip-box-back {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.ua-flip-box--3d .ua-flip-box-inner {
+    -webkit-transform: translateZ(60px) scale(0.95);
+    transform: translateZ(60px) scale(0.95);
+}
+
+/* ==========================================================================
+   4. ANIMATION TYPES & FLIP BEHAVIOR
+   ========================================================================== */
+
+/* --- Flip Left --- */
+.ua-animate-left .ua-flip-box-back {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+}
+
+.ua-animate-left.ua-flip-box-hover:hover .ua-flip-box-card,
+.ua-animate-left.ua-flip-box-click.ua-flip-box-active .ua-flip-box-card,
+.ua-animate-left.ua-flip-box-click.--active .ua-flip-box-card {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+}
+
+/* --- Flip Right --- */
+.ua-animate-right .ua-flip-box-back {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.ua-animate-right.ua-flip-box-hover:hover .ua-flip-box-card,
+.ua-animate-right.ua-flip-box-click.ua-flip-box-active .ua-flip-box-card,
+.ua-animate-right.ua-flip-box-click.--active .ua-flip-box-card {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+/* --- Flip Top (Up) --- */
+.ua-animate-up .ua-flip-box-back {
+    -webkit-transform: rotateX(180deg);
+    transform: rotateX(180deg);
+}
+
+.ua-animate-up.ua-flip-box-hover:hover .ua-flip-box-card,
+.ua-animate-up.ua-flip-box-click.ua-flip-box-active .ua-flip-box-card,
+.ua-animate-up.ua-flip-box-click.--active .ua-flip-box-card {
+    -webkit-transform: rotateX(180deg);
+    transform: rotateX(180deg);
+}
+
+/* --- Flip Bottom (Down) --- */
+.ua-animate-down .ua-flip-box-back {
+    -webkit-transform: rotateX(-180deg);
+    transform: rotateX(-180deg);
+}
+
+.ua-animate-down.ua-flip-box-hover:hover .ua-flip-box-card,
+.ua-animate-down.ua-flip-box-click.ua-flip-box-active .ua-flip-box-card,
+.ua-animate-down.ua-flip-box-click.--active .ua-flip-box-card {
+    -webkit-transform: rotateX(-180deg);
+    transform: rotateX(-180deg);
+}
+
+/* --- Zoom In --- */
+.ua-animate-zoom-in .ua-flip-box-back {
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: scale(0.7);
+    transform: scale(0.7);
+    z-index: 3;
+    pointer-events: none;
+}
+
+.ua-animate-zoom-in.ua-flip-box-hover:hover .ua-flip-box-back,
+.ua-animate-zoom-in.ua-flip-box-click.ua-flip-box-active .ua-flip-box-back,
+.ua-animate-zoom-in.ua-flip-box-click.--active .ua-flip-box-back {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+/* --- Zoom Out --- */
+.ua-animate-zoom-out .ua-flip-box-front {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    z-index: 3;
+}
+
+.ua-animate-zoom-out .ua-flip-box-back {
+    z-index: 2;
+}
+
+.ua-animate-zoom-out.ua-flip-box-hover:hover .ua-flip-box-front,
+.ua-animate-zoom-out.ua-flip-box-click.ua-flip-box-active .ua-flip-box-front,
+.ua-animate-zoom-out.ua-flip-box-click.--active .ua-flip-box-front {
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: scale(0.7);
+    transform: scale(0.7);
+    pointer-events: none;
+}
+
+/* --- Fade In --- */
+.ua-animate-fade-in .ua-flip-box-card {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.ua-animate-fade-in .ua-flip-box-front {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+    -webkit-transition: opacity 600ms ease-in-out, visibility 600ms ease-in-out;
+    transition: opacity 600ms ease-in-out, visibility 600ms ease-in-out;
+}
+
+.ua-animate-fade-in .ua-flip-box-back {
+    opacity: 0;
+    visibility: hidden;
+    z-index: 3;
+    -webkit-transition: opacity 600ms ease-in-out, visibility 600ms ease-in-out;
+    transition: opacity 600ms ease-in-out, visibility 600ms ease-in-out;
+}
+
+.ua-animate-fade-in.ua-flip-box-hover:hover .ua-flip-box-front,
+.ua-animate-fade-in.ua-flip-box-click.ua-flip-box-active .ua-flip-box-front,
+.ua-animate-fade-in.ua-flip-box-click.--active .ua-flip-box-front {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.ua-animate-fade-in.ua-flip-box-hover:hover .ua-flip-box-back,
+.ua-animate-fade-in.ua-flip-box-click.ua-flip-box-active .ua-flip-box-back,
+.ua-animate-fade-in.ua-flip-box-click.--active .ua-flip-box-back {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Click pointer event helper */
+.ua-flip-box-click.ua-flip-box-active .ua-flip-box-front,
+.ua-flip-box-click.--active .ua-flip-box-front {
+    pointer-events: none;
+}
+
+.ua-flip-box-hover:hover .ua-flip-box-front {
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   5. AUTO HEIGHT ADJUSTMENTS
+   ========================================================================== */
+.ua-flip-box-auto-height {
+    height: auto !important;
+}
+
+.ua-flip-box-auto-height .ua-flip-box-front,
+.ua-flip-box-auto-height .ua-flip-box-back {
+    height: auto;
+    min-height: 100%;
+}
+
+/* ==========================================================================
+   6. INNER ELEMENTS (ICON, IMAGE, TITLE, DESC, BUTTON)
+   ========================================================================== */
+
+/* Media wrapper: keeps icon/image on its own block row */
+.ua-flip-box-media {
+    display: block;
+    width: 100%;
+    text-align: inherit;
+    line-height: 1;
+}
+
+/* Media: Icon */
+.ua-flip-box-icon-wrap {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    line-height: 1;
+    margin-bottom: 15px;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.ua-flip-box-icon {
+    font-size: 40px;
+    line-height: 1;
+    display: inline-block;
+    color: #ffffff;
+}
+
+.ua-flip-box-svg-icon svg {
+    width: 40px;
+    height: 40px;
+    fill: currentColor;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Media: Image */
+.ua-flip-box-image-wrap {
+    display: inline-block;
+    max-width: 100%;
+    line-height: 1;
+    margin-bottom: 15px;
+}
+
+.ua-flip-box-image-wrap img {
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.ua-flipbox-img-circle .ua-flip-box-image-wrap img {
+    border-radius: 50% !important;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+/* Title */
+.ua-flip-box-title {
+    display: block;
+    width: 100%;
+    color: #ffffff;
+    margin: 0 0 10px 0;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.ua-flip-box-title a,
+.ua-flip-box-linked-title {
+    display: inline-block;
+    color: inherit;
+    text-decoration: none;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.ua-flip-box-title a:hover,
+.ua-flip-box-linked-title:hover {
+    opacity: 0.85;
+}
+
+/* Content / Description */
+.ua-flip-box-desc {
+    color: #ffffff;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.ua-flip-box-desc p {
+    margin: 0 0 10px 0;
+    color: inherit;
+}
+
+.ua-flip-box-desc p:last-child {
+    margin-bottom: 0;
+}
+
+.ua-flip-box-desc a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+/* Button */
+.ua-flip-box-button {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #7048ff;
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 4px;
+    margin-top: 15px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.2;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-transition: all 0.3s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.ua-flip-box-button:hover {
+    background-color: #20087a;
+    color: #ffffff;
+}
+
+.ua-flip-box-button .ua-btn-icon {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    line-height: 1;
+}
+
+.ua-flip-box-button .ua-btn-icon svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
+/* ==========================================================================
+   7. RESPONSIVE BREAKPOINTS (TABLET & MOBILE)
+   ========================================================================== */
+
+/* Word wrap protection across all screens */
+.ua-flip-box-title,
+.ua-flip-box-desc {
+    white-space: normal;
+}
+
+/* Touch device optimizations */
+.ua-flip-box-container {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Tablet (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .ua-flip-box-fixed-height {
+        height: 280px;
+    }
+
+    .ua-flip-box-front,
+    .ua-flip-box-back {
+        padding: 25px 20px;
+    }
+
+    .ua-flip-box-title {
+        font-size: 20px;
+    }
+
+    .ua-flip-box-desc {
+        font-size: 14px;
+    }
+}
+
+/* Mobile (max-width: 767px) */
+@media (max-width: 767px) {
+    .ua-flip-box-container {
+        width: 100%;
+        display: block;
+        box-sizing: border-box;
+    }
+
+    .ua-flip-box-fixed-height {
+        height: 260px;
+    }
+
+    .ua-flip-box-front,
+    .ua-flip-box-back {
+        padding: 20px 15px;
+    }
+
+    .ua-flip-box-icon {
+        font-size: 32px;
+    }
+
+    .ua-flip-box-svg-icon svg {
+        width: 32px;
+        height: 32px;
+    }
+
+    .ua-flip-box-image-wrap img {
+        max-width: 80px;
+    }
+
+    .ua-flip-box-title {
+        font-size: 18px;
+        margin-bottom: 8px;
+        line-height: 1.3;
+    }
+
+    .ua-flip-box-desc {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .ua-flip-box-button {
+        padding: 8px 16px;
+        font-size: 13px;
+        margin-top: 10px;
+    }
+
+    /* On mobile 3D depth can be slightly reduced for performance */
+    .ua-flip-box--3d .ua-flip-box-inner {
+        -webkit-transform: translateZ(30px) scale(0.98);
+        transform: translateZ(30px) scale(0.98);
+    }
+}

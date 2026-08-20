@@ -508,6 +508,41 @@ class Loader {
         
     }
 
+    /**
+     * AJAX Endpoint: Product View / Quick View Modal
+     * 
+     * @since 2.0.3
+     */
+    public function ajax_product_quick_view() {
+        if ( class_exists( '\UltraAddons\Widget\Product_List' ) ) {
+            \UltraAddons\Widget\Product_List::ajax_quick_view();
+        }
+        wp_die();
+    }
+
+    /**
+     * AJAX Endpoint: Product List Load More
+     * 
+     * @since 2.0.3
+     */
+    public function ajax_product_list_load_more() {
+        if ( class_exists( '\UltraAddons\Widget\Product_List' ) ) {
+            \UltraAddons\Widget\Product_List::ajax_load_more();
+        }
+        wp_die();
+    }
+
+    /**
+     * AJAX Endpoint: Quick View Modal Add to Cart
+     * 
+     * @since 2.0.3
+     */
+    public function ajax_modal_add_to_cart() {
+        if ( class_exists( '\UltraAddons\Widget\Product_List' ) ) {
+            \UltraAddons\Widget\Product_List::ajax_modal_add_to_cart();
+        }
+        wp_die();
+    }
 
 }
 

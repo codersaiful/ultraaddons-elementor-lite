@@ -1,57 +1,746 @@
-.ua-team-container {
-  text-align: center;
+/**
+ * UltraAddons Elementor Lite - Team Box & Carousel Widget Stylesheet
+ *
+ * 1-to-1 parity with all 6 Design Presets (Simple, Overlay, Centered, Circle, Social on Bottom, Social on Right)
+ * plus responsive Carousel / Slider styles, navigation arrows, and dots.
+ *
+ * @package UltraAddons
+ * @version 1.3.0
+ */
+
+/* ==========================================================================
+   Base Team Member Card
+   ========================================================================== */
+.ua-team-member-wrapper {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
 }
 
-.ua-team-container .member {
-  position: relative;
-  transition: ease all .5s;
-  overflow: hidden;
-border: 1px solid #f7f7f7;}
-
-.ua-team-container .member img {
-  display: inline-block;
-  box-shadow: 0 0 2px rgba(0,0,0, .2);
-  object-fit: cover;
-
+.ua-team-item {
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: all 0.35s ease;
 }
 
-.ua-team-container .member h2 {
- font-weight: 700;
-font-size: 20px;
-color: #000;
-letter-spacing: .18px;
-line-height: 24px;
-margin: 0 0 9px;
+.ua-team-item *,
+.ua-team-item *::before,
+.ua-team-item *::after {
+    box-sizing: border-box;
 }
 
-.ua-team-container .member-text {
-  margin: 15px auto;
-}
-.ua-team-container .social_links {
-  margin: 0;
-  padding: 0;
-}
-.ua-team-container .social-icons {
-  margin-bottom: 25px
-}
-.ua-team-container .social-icons ul li {
-  list-style: none;
-  display: inline-block;
-  position: relative;
-}
-.ua-team-container .social-icons a {
-  margin-right: 22px;
-  color: #363842;
-  font-size: 16px
+.ua-team-item-inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
-.ua-team-container .social-icons a:hover {
-  color: #c81a3b
+/* ==========================================================================
+   Image Section
+   ========================================================================== */
+.ua-team-image {
+    position: relative;
+    overflow: hidden;
 }
-.ua-team-container .team-content-wrap {
-  padding: 15px;
+
+.ua-team-image > figure {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
-.ua-team-container .ua-team .who {
-  font-size: 14px;
-  color: #ACACAC;
+
+.ua-team-image > figure img {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.ua-team-avatar-rounded figure img,
+.team-avatar-rounded figure img {
+    border-radius: 50% !important;
+    height: auto;
+}
+
+/* ==========================================================================
+   Content Section
+   ========================================================================== */
+.ua-team-item .ua-team-content {
+    position: relative;
+    padding: 10px 15px;
+    text-align: center;
+    transition: all 0.35s ease;
+}
+
+.ua-team-item .ua-team-member-name {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin: 5px 0;
+    line-height: 1.3;
+    color: #272727;
+    text-transform: uppercase;
+    text-align: inherit;
+    transition: color 0.3s ease;
+}
+
+.ua-team-item .ua-team-member-name a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.ua-team-item .ua-team-member-position {
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 0.05em;
+    margin: 5px 0 10px;
+    color: #7a7a7a;
+    text-transform: uppercase;
+    text-align: inherit;
+    transition: color 0.3s ease;
+}
+
+.ua-team-item .ua-team-content,
+.ua-team-item .ua-team-content .ua-team-text {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #54595f;
+    margin: 0 0 10px;
+    text-align: inherit;
+    transition: color 0.3s ease;
+}
+
+.ua-team-item .ua-team-content .ua-team-text:last-child {
+    margin-bottom: 0;
+}
+
+/* ==========================================================================
+   Social Profiles
+   ========================================================================== */
+.ua-team-content > ul,
+.ua-team-member-social-profiles {
+    margin: 8px 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.ua-team-content li.ua-team-member-social-link,
+.ua-team-member-social-profiles li.ua-team-member-social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.ua-team-member-social-link > a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    font-size: 15px;
+    color: #ffffff;
+    background-color: #0274be;
+    border-radius: 50%;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    flex-shrink: 0;
+}
+
+.ua-team-member-social-link > a i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: inherit;
+    line-height: 1;
+}
+
+.ua-team-member-social-link > a svg {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+    fill: currentColor;
+}
+
+.ua-team-member-social-link > a img {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+}
+
+.ua-team-member-social-link > a:hover {
+    color: #ffffff;
+    background-color: #015286;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(2, 116, 190, 0.25);
+}
+
+.ua-team-member-social-link > a:focus {
+    outline: none;
+}
+
+/* ==========================================================================
+   Preset 1: Simple Style (with optional Description Overlay)
+   ========================================================================== */
+.ua-team-members-simple.ua-team-item .ua-team-content .ua-team-text.ua-team-text-overlay {
+    display: none;
+}
+
+.ua-team-members-simple.ua-team-item .ua-team-image {
+    position: relative;
+}
+
+.ua-team-members-simple.ua-team-item .ua-team-image .ua-team-text.ua-team-text-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    opacity: 0;
+    padding: 12px;
+    margin-bottom: 0;
+    background: rgba(255, 255, 255, 0.85);
+    transition: all 0.5s ease;
+    z-index: 2;
+}
+
+.ua-team-members-simple.ua-team-item .ua-team-image:hover .ua-team-text.ua-team-text-overlay {
+    opacity: 1;
+}
+
+/* ==========================================================================
+   Preset 2: Overlay Style
+   ========================================================================== */
+.ua-team-item.ua-team-members-overlay {
+    position: relative;
+}
+
+.ua-team-item.ua-team-members-overlay .ua-team-content {
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    margin-bottom: 0;
+    padding: 20px 15px;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: rgba(255, 255, 255, 0.88);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    transition: all 0.615s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: 3;
+}
+
+.ua-team-item.ua-team-members-overlay:hover .ua-team-content {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ==========================================================================
+   Preset 3: Centered Style
+   ========================================================================== */
+.ua-team-members-centered.ua-team-item {
+    text-align: center;
+}
+
+.ua-team-members-centered.ua-team-item .ua-team-content {
+    text-align: center;
+    padding: 15px;
+}
+
+.ua-team-members-centered.ua-team-item .ua-team-member-name,
+.ua-team-members-centered.ua-team-item .ua-team-member-position,
+.ua-team-members-centered.ua-team-item .ua-team-text {
+    text-align: center;
+}
+
+.ua-team-members-centered.ua-team-item .ua-team-member-social-profiles {
+    justify-content: center;
+}
+
+/* ==========================================================================
+   Preset 4: Circle Style
+   ========================================================================== */
+.ua-team-members-circle.ua-team-item {
+    text-align: center;
+}
+
+.ua-team-members-circle.ua-team-item .ua-team-image {
+    width: 160px;
+    height: 160px;
+    margin: 20px auto 10px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.ua-team-members-circle.ua-team-item .ua-team-image figure {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.ua-team-members-circle.ua-team-item .ua-team-image figure img {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    display: block;
+}
+
+.ua-team-members-circle.ua-team-item .ua-team-content {
+    text-align: center;
+    padding: 10px 15px 15px;
+}
+
+.ua-team-members-circle.ua-team-item .ua-team-member-social-profiles {
+    justify-content: center;
+}
+
+/* ==========================================================================
+   Preset 5: Social on Bottom
+   ========================================================================== */
+.ua-team-members-social-bottom.ua-team-item .ua-team-social-bottom-bar {
+    padding: 12px 15px;
+    border-top: 1px solid #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fafbfc;
+}
+
+.ua-team-members-social-bottom.ua-team-item .ua-team-social-bottom-bar .ua-team-member-social-profiles {
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+}
+
+/* ==========================================================================
+   Preset 6: Social on Right (Floating on Image)
+   ========================================================================== */
+.ua-team-members-social-right.ua-team-item .ua-team-image {
+    position: relative;
+}
+
+.ua-team-members-social-right.ua-team-item .ua-team-image .ua-team-member-social-profiles {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    width: auto !important;
+    z-index: 5;
+}
+
+.ua-team-members-social-right.ua-team-item .ua-team-image .ua-team-member-social-profiles li.ua-team-member-social-link {
+    display: block;
+    margin: 0;
+}
+
+.ua-team-members-social-right.ua-team-item .ua-team-image .ua-team-member-social-profiles li.ua-team-member-social-link > a {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* ==========================================================================
+   Alignments
+   ========================================================================== */
+.ua-team-align-left .ua-team-item,
+.ua-team-align-left .ua-team-item .ua-team-content,
+.ua-team-align-left .ua-team-item .ua-team-member-name,
+.ua-team-align-left .ua-team-item .ua-team-member-position,
+.ua-team-align-left .ua-team-item .ua-team-text,
+.ua-team-align-left .ua-team-item .ua-team-content p {
+    text-align: left;
+}
+
+.ua-team-align-left .ua-team-member-social-profiles,
+.ua-team-align-left .ua-team-social-bottom-bar,
+.ua-team-align-left .ua-team-social-bottom-bar .ua-team-member-social-profiles {
+    justify-content: flex-start;
+}
+
+.ua-team-align-center .ua-team-item,
+.ua-team-align-center .ua-team-item .ua-team-content,
+.ua-team-align-center .ua-team-item .ua-team-member-name,
+.ua-team-align-center .ua-team-item .ua-team-member-position,
+.ua-team-align-center .ua-team-item .ua-team-text,
+.ua-team-align-center .ua-team-item .ua-team-content p,
+.ua-team-align-centered .ua-team-item,
+.ua-team-align-centered .ua-team-item .ua-team-content,
+.ua-team-align-centered .ua-team-item .ua-team-member-name,
+.ua-team-align-centered .ua-team-item .ua-team-member-position,
+.ua-team-align-centered .ua-team-item .ua-team-text,
+.ua-team-align-centered .ua-team-item .ua-team-content p {
+    text-align: center;
+}
+
+.ua-team-align-center .ua-team-member-social-profiles,
+.ua-team-align-centered .ua-team-member-social-profiles,
+.ua-team-align-center .ua-team-social-bottom-bar,
+.ua-team-align-centered .ua-team-social-bottom-bar,
+.ua-team-align-center .ua-team-social-bottom-bar .ua-team-member-social-profiles,
+.ua-team-align-centered .ua-team-social-bottom-bar .ua-team-member-social-profiles {
+    justify-content: center;
+}
+
+.ua-team-align-right .ua-team-item,
+.ua-team-align-right .ua-team-item .ua-team-content,
+.ua-team-align-right .ua-team-item .ua-team-member-name,
+.ua-team-align-right .ua-team-item .ua-team-member-position,
+.ua-team-align-right .ua-team-item .ua-team-text,
+.ua-team-align-right .ua-team-item .ua-team-content p {
+    text-align: right;
+}
+
+.ua-team-align-right .ua-team-member-social-profiles,
+.ua-team-align-right .ua-team-social-bottom-bar,
+.ua-team-align-right .ua-team-social-bottom-bar .ua-team-member-social-profiles {
+    justify-content: flex-end;
+}
+
+/* ==========================================================================
+   Carousel Mode Styles
+   ========================================================================== */
+.ua-team-carousel-wrap {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.ua-team-carousel {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.ua-team-carousel .slick-list {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0 -10px;
+    padding: 10px 0;
+}
+
+.ua-team-carousel .slick-track {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: stretch;
+}
+
+.ua-team-carousel-slide {
+    padding: 0 10px;
+    height: auto;
+    display: flex !important;
+}
+
+.ua-team-carousel-slide .ua-team-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.ua-team-carousel-slide .ua-team-item-inner {
+    height: 100%;
+}
+
+/* Navigation Arrows */
+.ua-team-arrow-container {
+    position: static;
+}
+
+.ua-team-carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    color: #333333;
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+    transition: all 0.3s ease;
+}
+
+.ua-team-prev-arrow {
+    left: -20px;
+}
+
+.ua-team-next-arrow {
+    right: -20px;
+}
+
+.ua-team-carousel-arrow:hover {
+    color: #ffffff;
+    background-color: #0274be;
+    box-shadow: 0 4px 14px rgba(2, 116, 190, 0.3);
+}
+
+/* Dots Pagination */
+.ua-team-dots-container {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.ua-team-dots .slick-dots {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.ua-team-dots .slick-dots li {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    width: 10px;
+    height: 10px;
+}
+
+.ua-team-dots .slick-dots li button {
+    display: block;
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: #cbd5e1;
+    text-indent: -9999px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.ua-team-dots .slick-dots li.slick-active button {
+    background-color: #0274be;
+    transform: scale(1.25);
+}
+
+/* ==========================================================================
+   Responsive Overrides
+   ========================================================================== */
+
+/* Tablet (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .ua-team-item .ua-team-content {
+        padding: 12px 10px;
+    }
+
+    .ua-team-item .ua-team-member-name {
+        font-size: 18px;
+    }
+
+    .ua-team-item .ua-team-member-position {
+        font-size: 13px;
+    }
+
+    .ua-team-members-circle.ua-team-item .ua-team-image {
+        width: 140px;
+        height: 140px;
+    }
+
+    .ua-team-prev-arrow {
+        left: -10px;
+    }
+
+    .ua-team-next-arrow {
+        right: -10px;
+    }
+
+    .ua-team-carousel-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+}
+
+/* Mobile (max-width: 767px) */
+@media (max-width: 767px) {
+    .elementor-column:has(.elementor-widget-ultraaddons-team-box) {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+    }
+
+    .elementor-container:has(.elementor-widget-ultraaddons-team-box),
+    .e-con:has(.elementor-widget-ultraaddons-team-box),
+    .e-con-inner:has(.elementor-widget-ultraaddons-team-box) {
+        flex-wrap: wrap !important;
+        flex-direction: column !important;
+    }
+
+    .e-con:has(> .elementor-widget-ultraaddons-team-box),
+    .e-con-inner:has(> .elementor-widget-ultraaddons-team-box) {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+    }
+
+    .elementor-widget-ultraaddons-team-box {
+        width: 100% !important;
+        max-width: 100% !important;
+        display: block !important;
+        margin-bottom: 25px;
+    }
+
+    .ua-team-member-wrapper,
+    .ua-team-item {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .ua-team-carousel-slide {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+    }
+
+    .ua-team-item .ua-team-content {
+        padding: 10px 8px;
+    }
+
+    .ua-team-item .ua-team-member-name {
+        font-size: 17px;
+        margin: 4px 0;
+    }
+
+    .ua-team-item .ua-team-member-position {
+        font-size: 12px;
+        margin: 3px 0 8px;
+    }
+
+    .ua-team-item .ua-team-content,
+    .ua-team-item .ua-team-content .ua-team-text {
+        font-size: 13px;
+        line-height: 1.45;
+        margin: 0 0 8px;
+    }
+
+    .ua-team-member-social-link > a {
+        width: 32px;
+        height: 32px;
+        font-size: 13px;
+    }
+
+    .ua-team-member-social-profiles {
+        gap: 6px;
+        margin: 6px 0;
+    }
+
+    /* Preset 1 (Simple Style Text Overlay on Mobile) */
+    .ua-team-members-simple.ua-team-item .ua-team-image .ua-team-text.ua-team-text-overlay {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+    /* Preset 2 (Overlay Style on Mobile) */
+    .ua-team-item.ua-team-members-overlay .ua-team-content {
+        top: 6px;
+        bottom: 6px;
+        left: 6px;
+        right: 6px;
+        padding: 10px 8px;
+    }
+
+    /* Preset 4 (Circle Style on Mobile) */
+    .ua-team-members-circle.ua-team-item .ua-team-image {
+        width: 120px;
+        height: 120px;
+        margin: 15px auto 8px;
+    }
+
+    /* Preset 5 (Social on Bottom on Mobile) */
+    .ua-team-members-social-bottom.ua-team-item .ua-team-social-bottom-bar {
+        padding: 8px 10px;
+    }
+
+    /* Preset 6 (Social on Right on Mobile) */
+    .ua-team-members-social-right.ua-team-item .ua-team-image .ua-team-member-social-profiles {
+        right: 6px;
+        gap: 5px;
+    }
+
+    .ua-team-members-social-right.ua-team-item .ua-team-image .ua-team-member-social-profiles li.ua-team-member-social-link > a {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+
+    /* Carousel Navigation on Mobile */
+    .ua-team-carousel-arrow {
+        width: 32px;
+        height: 32px;
+        font-size: 13px;
+    }
+
+    .ua-team-prev-arrow {
+        left: 0;
+    }
+
+    .ua-team-next-arrow {
+        right: 0;
+    }
+
+    .ua-team-dots-container {
+        margin-top: 10px;
+    }
+
+    .ua-team-dots .slick-dots {
+        gap: 6px;
+    }
+
+    .ua-team-dots .slick-dots li,
+    .ua-team-dots .slick-dots li button {
+        width: 8px;
+        height: 8px;
+    }
 }

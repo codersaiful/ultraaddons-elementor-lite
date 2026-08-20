@@ -1,0 +1,1061 @@
+@charset "UTF-8";
+
+/**
+ * UltraAddons - Filterable Gallery Widget Stylesheet
+ * 
+ * Clean, responsive, and performant styles for Filterable Gallery.
+ * 
+ * @package UltraAddons
+ * @version 1.1.0
+ */
+
+/* ==========================================================================
+   1. Base Wrapper & CSS Variables
+   ========================================================================== */
+
+.ua-filterable-gallery-wrap {
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.ua-filterable-gallery-wrap *,
+.ua-filterable-gallery-wrap *::before,
+.ua-filterable-gallery-wrap *::after {
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   2. Filter Controls (Overlay & Card Layouts)
+   ========================================================================== */
+
+.ua-fg-controls-wrap {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.ua-fg-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 4px;
+}
+
+.ua-fg-control-item {
+    display: inline-block;
+    list-style: none;
+    margin: 0 4px;
+    padding: 0;
+}
+
+.ua-fg-filter-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    line-height: 1.2;
+    color: #444444;
+    background-color: transparent;
+    border: none;
+    border-radius: 0px;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    outline: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.ua-fg-filter-btn:hover {
+    color: #000000;
+}
+
+.ua-fg-filter-btn.ua-fg-active {
+    color: #ffffff;
+    background-color: #222222;
+    border-radius: 0px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.ua-fg-filter-btn:focus-visible {
+    outline: 2px solid #222222;
+    outline-offset: 2px;
+}
+
+/* ==========================================================================
+   3. Search & Filter Bar (Layout 3: Dropdown + Search Box)
+   ========================================================================== */
+
+.ua-fg-top-bar.ua-fg-layout-3-top-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 35px;
+    width: 100%;
+}
+
+.ua-fg-search-form-wrap {
+    display: inline-flex;
+    align-items: stretch;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 40px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    max-width: 480px;
+    width: 100%;
+    position: relative;
+}
+
+.ua-fg-dropdown-filter-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.ua-fg-filter-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: #ffffff;
+    border: none;
+    border-right: 1px solid #e2e8f0;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    color: #4a5568;
+    cursor: pointer;
+    outline: none;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+}
+
+body.rtl .ua-fg-filter-trigger {
+    border-right: none;
+    border-left: 1px solid #e2e8f0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
+
+.ua-fg-filter-trigger:hover {
+    color: #3182ce;
+}
+
+.ua-fg-trigger-icon {
+    font-size: 12px;
+    transition: transform 0.25s ease;
+}
+
+.ua-fg-dropdown-menu.ua-fg-open-filters + .ua-fg-filter-trigger .ua-fg-trigger-icon,
+.ua-fg-filter-trigger[aria-expanded="true"] .ua-fg-trigger-icon {
+    transform: rotate(180deg);
+}
+
+.ua-fg-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 180px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
+    list-style: none;
+    margin: 0;
+    padding: 8px 0;
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+body.rtl .ua-fg-dropdown-menu {
+    left: auto;
+    right: 0;
+}
+
+.ua-fg-dropdown-menu.ua-fg-open-filters {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.ua-fg-dropdown-item {
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #4a5568;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ua-fg-dropdown-item:hover,
+.ua-fg-dropdown-item.ua-fg-active {
+    background-color: #f7fafc;
+    color: #3182ce;
+    font-weight: 600;
+}
+
+.ua-fg-search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1 1 auto;
+}
+
+.ua-fg-search-input {
+    width: 100%;
+    height: 100%;
+    font-family: inherit;
+    font-size: 14px;
+    color: #2d3748;
+    background: transparent;
+    border: none;
+    padding: 12px 42px 12px 18px;
+    outline: none;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
+
+body.rtl .ua-fg-search-input {
+    padding: 12px 18px 12px 42px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+}
+
+.ua-fg-search-icon {
+    position: absolute;
+    right: 18px;
+    color: #a0aec0;
+    font-size: 14px;
+    pointer-events: none;
+}
+
+body.rtl .ua-fg-search-icon {
+    right: auto;
+    left: 18px;
+}
+
+/* ==========================================================================
+   4. Gallery Grid Container & Responsive Columns
+   ========================================================================== */
+
+.ua-fg-container {
+    --ua-fg-col-gap: 20px;
+    --ua-fg-row-gap: 20px;
+    position: relative;
+    width: 100%;
+    margin: 0;
+    min-height: 300px;
+    display: block;
+    box-sizing: border-box;
+    transition: height 0.3s ease;
+}
+
+.ua-fg-container::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Isotope Item Sizing (Desktop) */
+.ua-fg-item {
+    float: left;
+    padding: calc(var(--ua-fg-row-gap) / 2) calc(var(--ua-fg-col-gap) / 2);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.ua-fg-cols-1 .ua-fg-item { width: 100%; }
+.ua-fg-cols-2 .ua-fg-item { width: 50%; }
+.ua-fg-cols-3 .ua-fg-item { width: 33.3333%; }
+.ua-fg-cols-4 .ua-fg-item { width: 25%; }
+.ua-fg-cols-5 .ua-fg-item { width: 20%; }
+.ua-fg-cols-6 .ua-fg-item { width: 16.6666%; }
+
+/* Tablet Breakpoint (<= 1024px) */
+@media (max-width: 1024px) {
+    .ua-fg-container {
+        --ua-fg-col-gap: 16px;
+        --ua-fg-row-gap: 16px;
+    }
+    .ua-fg-cols-tab-1 .ua-fg-item { width: 100% !important; }
+    .ua-fg-cols-tab-2 .ua-fg-item { width: 50% !important; }
+    .ua-fg-cols-tab-3 .ua-fg-item { width: 33.3333% !important; }
+    .ua-fg-cols-tab-4 .ua-fg-item { width: 25% !important; }
+    .ua-fg-cols-tab-5 .ua-fg-item { width: 20% !important; }
+    .ua-fg-cols-tab-6 .ua-fg-item { width: 16.6666% !important; }
+
+    .ua-fg-filter-btn {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+    .ua-fg-style-grid .ua-fg-thumb-wrap {
+        height: 260px;
+    }
+}
+
+/* Mobile Breakpoint (<= 767px) */
+@media (max-width: 767px) {
+    .ua-fg-container {
+        --ua-fg-col-gap: 12px;
+        --ua-fg-row-gap: 12px;
+    }
+    .ua-fg-search-form-wrap {
+        flex-direction: column;
+        border-radius: 12px;
+        max-width: 100%;
+    }
+    .ua-fg-filter-trigger {
+        border-right: none;
+        border-bottom: 1px solid #e2e8f0;
+        border-radius: 12px 12px 0 0;
+        width: 100%;
+        justify-content: space-between;
+    }
+    body.rtl .ua-fg-filter-trigger {
+        border-left: none;
+        border-bottom: 1px solid #e2e8f0;
+        border-radius: 12px 12px 0 0;
+    }
+    .ua-fg-dropdown-menu {
+        width: 100%;
+    }
+    .ua-fg-search-input {
+        border-radius: 0 0 12px 12px;
+    }
+    .ua-fg-controls {
+        gap: 6px;
+    }
+    .ua-fg-filter-btn {
+        font-size: 12px;
+        padding: 7px 12px;
+    }
+    .ua-fg-cols-mob-1 .ua-fg-item { width: 100% !important; }
+    .ua-fg-cols-mob-2 .ua-fg-item { width: 50% !important; }
+    .ua-fg-cols-mob-3 .ua-fg-item { width: 33.3333% !important; }
+    .ua-fg-cols-mob-4 .ua-fg-item { width: 25% !important; }
+    .ua-fg-cols-mob-5 .ua-fg-item { width: 20% !important; }
+    .ua-fg-cols-mob-6 .ua-fg-item { width: 16.6666% !important; }
+
+    .ua-fg-style-grid .ua-fg-thumb-wrap {
+        height: 220px;
+    }
+
+    .ua-fg-card-body {
+        padding: 14px;
+    }
+    .ua-fg-title {
+        font-size: 16px;
+    }
+    .ua-fg-desc {
+        font-size: 12px;
+        margin-bottom: 8px;
+    }
+    .ua-fg-action-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 14px;
+    }
+}
+
+/* Extra Small Mobile (<= 480px) */
+@media (max-width: 480px) {
+    .ua-fg-filter-btn {
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+    .ua-fg-style-grid .ua-fg-thumb-wrap {
+        height: 200px;
+    }
+}
+
+/* ==========================================================================
+   5. Item Card Structure & Thumbnail Placeholder
+   ========================================================================== */
+
+.ua-fg-item-card {
+    position: relative;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 0px;
+    overflow: hidden;
+    transition: all 0.35s ease;
+}
+
+.ua-fg-item-card-card,
+.ua-fg-item-card-layout_3 {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    border: 1px solid #edf2f7;
+}
+
+.ua-fg-item-card-card:hover,
+.ua-fg-item-card-layout_3:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    transform: translateY(-4px);
+}
+
+.ua-fg-media-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.ua-fg-thumb-wrap {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: #f2f5f8;
+}
+
+/* Default Image Height 300px */
+.ua-fg-style-grid .ua-fg-thumb-wrap {
+    height: 300px;
+}
+
+.ua-fg-thumb-wrap img,
+.ua-fg-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.ua-fg-item-card:hover .ua-fg-thumb-wrap img {
+    transform: scale(1.06);
+}
+
+/* Default Placeholder Box (Light gray with centered icon) */
+.ua-fg-placeholder-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: #f2f4f8;
+}
+
+.ua-fg-placeholder-img svg {
+    opacity: 0.45;
+}
+
+/* Video Indicator Badge / Play Button */
+.ua-fg-video-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    padding: 16px;
+    aspect-ratio: 1 / 1;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.72);
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 18px;
+    line-height: 1;
+    z-index: 2;
+    pointer-events: auto;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ua-fg-video-badge i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    font-size: inherit;
+    width: 1em;
+    height: 1em;
+    margin-left: 2px; /* visual center for play triangle */
+}
+
+.ua-fg-item-card:hover .ua-fg-video-badge {
+    transform: translate(-50%, -50%) scale(1.12);
+    background: #e50914;
+    box-shadow: 0 6px 20px rgba(229, 9, 20, 0.45);
+}
+
+body.rtl .ua-fg-video-badge i {
+    margin-left: 0;
+    margin-right: 3px;
+}
+
+/* Category Badge */
+.ua-fg-category-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background-color: #3182ce;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    z-index: 2;
+    pointer-events: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+body.rtl .ua-fg-category-badge {
+    right: auto;
+    left: 14px;
+}
+
+/* ==========================================================================
+   6. Overlay Layout & Hover Animations
+   ========================================================================== */
+
+.ua-fg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.78);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    text-align: center;
+    z-index: 3;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.ua-fg-item-card:hover .ua-fg-overlay,
+.ua-fg-item-card:focus-within .ua-fg-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+.ua-fg-overlay-content {
+    width: 100%;
+    transform: translateY(15px);
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.ua-fg-item-card:hover .ua-fg-overlay-content,
+.ua-fg-item-card:focus-within .ua-fg-overlay-content {
+    transform: translateY(0);
+}
+
+/* Hover Animation Variations */
+.ua-fg-item-anim-slide-up .ua-fg-overlay {
+    transform: translateY(100%);
+}
+.ua-fg-item-anim-slide-up:hover .ua-fg-overlay,
+.ua-fg-item-anim-slide-up:focus-within .ua-fg-overlay {
+    transform: translateY(0);
+}
+
+.ua-fg-item-anim-zoom-in .ua-fg-overlay {
+    transform: scale(0.6);
+}
+.ua-fg-item-anim-zoom-in:hover .ua-fg-overlay,
+.ua-fg-item-anim-zoom-in:focus-within .ua-fg-overlay {
+    transform: scale(1);
+}
+
+.ua-fg-item-anim-fade-in .ua-fg-overlay {
+    transform: none;
+}
+
+/* ==========================================================================
+   7. Typography & Card Body (Card & Search Filter Layouts)
+   ========================================================================== */
+
+.ua-fg-title {
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 0 0 8px 0;
+}
+
+.ua-fg-item-card-hoverer .ua-fg-title,
+.ua-fg-item-card-hoverer .ua-fg-title a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.ua-fg-card-body .ua-fg-title,
+.ua-fg-card-body .ua-fg-title a {
+    color: #1a202c;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.ua-fg-title a:hover {
+    color: #3182ce;
+}
+
+.ua-fg-desc {
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 0 0 14px 0;
+}
+
+.ua-fg-item-card-hoverer .ua-fg-desc {
+    color: #e2e8f0;
+}
+
+.ua-fg-card-body .ua-fg-desc {
+    color: #718096;
+}
+
+.ua-fg-card-body {
+    padding: 20px;
+    text-align: left;
+}
+
+body.rtl .ua-fg-card-body {
+    text-align: right;
+}
+
+.ua-fg-card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.ua-fg-price {
+    font-size: 16px;
+    font-weight: 700;
+    color: #38a169;
+}
+
+.ua-fg-rating {
+    color: #ecc94b;
+    font-size: 13px;
+    display: inline-flex;
+    gap: 2px;
+}
+
+/* ==========================================================================
+   8. Action Buttons (Zoom & Link)
+   ========================================================================== */
+
+.ua-fg-actions {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.ua-fg-actions-bottom {
+    margin-top: 14px;
+    justify-content: flex-start;
+}
+
+body.rtl .ua-fg-actions-bottom {
+    justify-content: flex-start;
+}
+
+.ua-fg-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    padding: 14px;
+    margin: 0 !important;
+    line-height: 1 !important;
+    color: #ffffff;
+    background-color: #3182ce;
+    border: none;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    flex-shrink: 0;
+    aspect-ratio: 1 / 1;
+    box-sizing: border-box;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.ua-fg-action-btn i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1 !important;
+    font-size: inherit;
+    width: 1em;
+    height: 1em;
+    margin: 0 !important;
+}
+
+.ua-fg-action-btn svg {
+    display: inline-block;
+    vertical-align: middle;
+    width: 1em;
+    height: 1em;
+    max-width: 100%;
+    max-height: 100%;
+    fill: currentColor;
+}
+
+.ua-fg-action-btn:hover {
+    color: #ffffff;
+    background-color: #2b6cb0;
+    transform: translateY(-3px) scale(1.08);
+    box-shadow: 0 6px 14px rgba(49, 130, 206, 0.45);
+}
+
+.ua-fg-action-btn.ua-fg-video-action-btn {
+    background-color: #e50914;
+}
+
+.ua-fg-action-btn.ua-fg-video-action-btn:hover {
+    background-color: #b80710;
+    box-shadow: 0 6px 14px rgba(229, 9, 20, 0.45);
+}
+
+.ua-fg-action-btn.ua-fg-video-action-btn i {
+    margin-left: 2px !important;
+}
+
+body.rtl .ua-fg-action-btn.ua-fg-video-action-btn i {
+    margin-left: 0 !important;
+    margin-right: 2px !important;
+}
+
+.ua-fg-card-body .ua-fg-action-btn {
+    color: #4a5568;
+    background-color: #edf2f7;
+    box-shadow: none;
+}
+
+.ua-fg-card-body .ua-fg-action-btn:hover {
+    color: #ffffff;
+    background-color: #3182ce;
+    box-shadow: 0 4px 10px rgba(49, 130, 206, 0.3);
+}
+
+/* ==========================================================================
+   9. Load More Button & Button Sizes
+   ========================================================================== */
+
+.ua-fg-load-more-wrap {
+    width: 100%;
+    text-align: center;
+    margin-top: 35px;
+}
+
+.ua-fg-load-more-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #3182ce;
+    border: 1px solid #3182ce;
+    border-radius: 6px;
+    padding: 14px 34px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    outline: none;
+    box-shadow: 0 4px 14px rgba(49, 130, 206, 0.3);
+}
+
+/* Elementor button size presets */
+.ua-fg-load-more-btn.elementor-size-xs { padding: 8px 16px; font-size: 12px; }
+.ua-fg-load-more-btn.elementor-size-sm { padding: 10px 22px; font-size: 13px; }
+.ua-fg-load-more-btn.elementor-size-md { padding: 14px 32px; font-size: 15px; }
+.ua-fg-load-more-btn.elementor-size-lg { padding: 16px 40px; font-size: 17px; }
+.ua-fg-load-more-btn.elementor-size-xl { padding: 20px 48px; font-size: 19px; }
+
+.ua-fg-load-more-btn:hover {
+    background-color: #2b6cb0;
+    border-color: #2b6cb0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(49, 130, 206, 0.42);
+}
+
+.ua-fg-load-more-btn.ua-fg-loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.ua-fg-load-more-btn.ua-fg-loading .ua-fg-btn-icon {
+    animation: ua-fg-spin 0.9s infinite linear;
+}
+
+@keyframes ua-fg-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+.ua-fg-no-more-msg {
+    display: inline-block;
+    font-size: 14px;
+    color: #a0aec0;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+.ua-fg-not-found-msg {
+    width: 100%;
+    text-align: center;
+    padding: 40px 20px;
+    color: #718096;
+    font-size: 16px;
+}
+
+/* ==========================================================================
+   10. Lightbox Modal (Standard & Vertical Video)
+   ========================================================================== */
+
+.ua-fg-lightbox-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.ua-fg-lightbox-modal.ua-fg-lightbox-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+body.ua-fg-lightbox-active-body {
+    overflow: hidden !important;
+}
+
+.ua-fg-lightbox-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 15, 29, 0.92);
+    backdrop-filter: blur(8px);
+}
+
+.ua-fg-lightbox-container {
+    position: relative;
+    max-width: 92vw;
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+    animation: ua-fg-scale-up 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+@keyframes ua-fg-scale-up {
+    from {
+        transform: scale(0.92);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.ua-fg-lightbox-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #ffffff;
+    padding: 8px 12px;
+}
+
+.ua-fg-lightbox-counter {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.ua-fg-lightbox-close {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 32px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 6px;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.ua-fg-lightbox-close:hover {
+    color: #e53e3e;
+    transform: scale(1.15);
+}
+
+.ua-fg-lightbox-content-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ua-fg-lightbox-body {
+    max-width: 85vw;
+    max-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.ua-fg-lightbox-img {
+    max-width: 85vw;
+    max-height: 75vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
+}
+
+.ua-fg-lightbox-video {
+    max-width: 85vw;
+    max-height: 75vh;
+    border-radius: 6px;
+}
+
+.ua-fg-lightbox-video.ua-fg-vertical-video {
+    max-width: 400px;
+    max-height: 80vh;
+}
+
+.ua-fg-lightbox-iframe-scaler {
+    position: relative;
+    width: 80vw;
+    max-width: 900px;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6);
+}
+
+/* Vertical video layout (Shorts / Reels: 9:16) */
+.ua-fg-lightbox-iframe-scaler.ua-fg-vertical-video-popup {
+    width: 400px;
+    max-width: 90vw;
+    padding-bottom: 177.77%; /* 9:16 */
+}
+
+.ua-fg-lightbox-iframe-scaler iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.ua-fg-lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    z-index: 10;
+}
+
+.ua-fg-lightbox-nav:hover {
+    background-color: #3182ce;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.ua-fg-lightbox-prev {
+    left: -65px;
+}
+
+.ua-fg-lightbox-next {
+    right: -65px;
+}
+
+@media (max-width: 900px) {
+    .ua-fg-lightbox-prev {
+        left: 8px;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .ua-fg-lightbox-next {
+        right: 8px;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .ua-fg-lightbox-body {
+        max-width: 92vw;
+        max-height: 70vh;
+    }
+    .ua-fg-lightbox-img {
+        max-width: 92vw;
+        max-height: 70vh;
+    }
+    .ua-fg-lightbox-iframe-scaler {
+        width: 92vw;
+    }
+}
+
+.ua-fg-lightbox-footer {
+    text-align: center;
+    padding: 12px 10px 4px 10px;
+}
+
+.ua-fg-lightbox-caption {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
+}

@@ -201,7 +201,7 @@ $ultraaddons_widgetsArray = [
     'Team_Box' => [
             'name'  => __( 'Team Box', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
-            'icon'      => 'uicon-team-box',
+            'icon'      => 'eicon-person',
             'cat'       => [
                 __( 'General', 'ultraaddons-elementor-lite' ),
             ],
@@ -219,15 +219,6 @@ $ultraaddons_widgetsArray = [
     
     
     //New Added Widgets
-
-    'Gallery_Box' => [
-            'name'  => __( 'Gallery Box', 'ultraaddons-elementor-lite' ),
-            'is_pro'   => false,
-            'icon'      => 'eicon-gallery-justified',
-            'cat'       => [
-                __( 'General', 'ultraaddons-elementor-lite' ),
-            ],
-    ],
     
    /*  'Info_Boards' => [
             'name'  => __( 'Info Boards', 'ultraaddons-elementor-lite' ),
@@ -329,10 +320,28 @@ $ultraaddons_widgetsArray = [
             ],
     ],
     
-    'Accordion' => [
-            'name'  => __( 'Accordion', 'ultraaddons-elementor-lite' ),
+    'Advanced_Accordion' => [
+            'name'  => __( 'Advanced Accordion', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
             'icon'      => 'eicon-accordion',
+            'cat'       => [
+                __( 'General', 'ultraaddons-elementor-lite' ),
+            ],
+    ],
+    
+    'Advanced_Tabs' => [
+            'name'  => __( 'Advanced Tabs', 'ultraaddons-elementor-lite' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-tabs',
+            'cat'       => [
+                __( 'General', 'ultraaddons-elementor-lite' ),
+            ],
+    ],
+    
+    'Feature_List' => [
+            'name'  => __( 'Feature List', 'ultraaddons-elementor-lite' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-editor-list-ul',
             'cat'       => [
                 __( 'General', 'ultraaddons-elementor-lite' ),
             ],
@@ -439,6 +448,22 @@ $ultraaddons_widgetsArray = [
                 __( 'General', 'ultraaddons-elementor-lite' ),
             ],
     ],
+	'Flip_Box' => [
+            'name'  => __( 'Flip Box', 'ultraaddons-elementor-lite' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-flip-box',
+            'cat'       => [
+                __( 'General', 'ultraaddons-elementor-lite' ),
+            ],
+    ],
+	'Tooltip' => [
+            'name'  => __( 'Tooltip', 'ultraaddons-elementor-lite' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-commenting-o',
+            'cat'       => [
+                __( 'General', 'ultraaddons-elementor-lite' ),
+            ],
+    ],
 	'Product_Flip' => [
             'name'  => __( 'Product Flip', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
@@ -491,6 +516,14 @@ $ultraaddons_widgetsArray = [
         'name'  => __( 'Product Grid', 'ultraaddons-elementor-lite' ),
         'is_pro'   => false,
         'icon'      => 'eicon-product-images',
+        'cat'       => [
+            __( 'WooCommerce', 'ultraaddons-elementor-lite' ),
+        ],
+    ],
+    'Product_List' => [
+        'name'  => __( 'Product List', 'ultraaddons-elementor-lite' ),
+        'is_pro'   => false,
+        'icon'      => 'eicon-product-list',
         'cat'       => [
             __( 'WooCommerce', 'ultraaddons-elementor-lite' ),
         ],
@@ -655,6 +688,14 @@ $ultraaddons_widgetsArray = [
         'name'      => __( 'Video Popup', 'ultraaddons-elementor-lite' ),
         'is_pro'   => false,
         'icon'      => 'eicon-play',
+        'cat'       => [
+            __( 'General', 'ultraaddons-elementor-lite' ),
+        ],
+    ],
+    'Filterable_Gallery'=> [
+        'name'      => __( 'Filterable Gallery', 'ultraaddons-elementor-lite' ),
+        'is_pro'   => false,
+        'icon'      => 'eicon-gallery-grid',
         'cat'       => [
             __( 'General', 'ultraaddons-elementor-lite' ),
         ],
