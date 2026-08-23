@@ -710,6 +710,15 @@ $ultraaddons_widgetsArray = [
         ],
     ],
 
+    'Event_Calendar'=> [
+        'name'      => __( 'Event Calendar', 'ultraaddons-elementor-lite' ),
+        'is_pro'   => false,
+        'icon'      => 'eicon-calendar',
+        'cat'       => [
+            __( 'General', 'ultraaddons-elementor-lite' ),
+        ],
+    ],
+
 
 ];
 
