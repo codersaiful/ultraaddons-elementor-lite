@@ -684,20 +684,139 @@
 
             
             let UltraAddonsMap = {
-                /**
-                 * Skillbar
-                 * using barfiller
-                 * 
-                 * @since 1.0.5
-                 * taken from medilac-core
-                 */
-                skillBar:function( $scope, $ ){
-                    var items = $scope.find('.ua-skill-wrapper');
-                    $(items).each(function(a, b){
-                        let color = $(b).attr('aria-color');
-                        let id = $(b).attr('aria-id');
-                        let parentID = $(b).closest('.ua-element-skill-bar').data('id');
-                        $('#bar-' + parentID + '-' + id + '-' + (a+1)).barfiller({ barColor: color });
+                progressBar:function( $scope ){
+                    $scope.find('.ua-progress-bar').each(function(){
+                        var element = this;
+
+                        if (element.dataset.uaProgressInitialized === 'yes') {
+                            return;
+                        }
+
+                        element.dataset.uaProgressInitialized = 'yes';
+
+                        var options = $(element).data('options') || {};
+                        var percentage = Math.max(0, Math.min(100, Number(options.percentage) || 0));
+                        var value = Number(options.value) || 0;
+                        var duration = Math.max(0, Number(options.duration) || 0);
+                        var delay = Math.max(0, Number(options.delay) || 0);
+                        var loopDelay = Math.max(250, Number(options.loopDelay) || 1500);
+                        var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                        var line = element.querySelector('.ua-progress-line-inner');
+                        var circle = element.querySelector('.ua-progress-circle-value');
+                        var counters = element.querySelectorAll('.ua-progress-counter-value');
+                        var animationFrame;
+                        var loopTimer;
+
+                        if (reduceMotion) {
+                            duration = 0;
+                            delay = 0;
+                        }
+
+                        function formatValue(number) {
+                            var rounded = Math.round(number * 100) / 100;
+                            return options.separator === 'yes'
+                                ? rounded.toLocaleString()
+                                : String(rounded);
+                        }
+
+                        function setCounter(number) {
+                            counters.forEach(function(counter){
+                                counter.textContent = formatValue(number);
+                            });
+                        }
+
+                        function resetProgress() {
+                            window.cancelAnimationFrame(animationFrame);
+                            element.classList.remove('ua-progress-active');
+                            setCounter(0);
+
+                            if (line) {
+                                line.style.transitionDuration = '0ms';
+                                line.style.transitionDelay = '0ms';
+                                line.style.width = element.classList.contains('ua-progress-layout-vertical') ? '100%' : '0%';
+                                line.style.height = element.classList.contains('ua-progress-layout-vertical') ? '0%' : '100%';
+                            }
+
+                            if (circle) {
+                                circle.style.transitionDuration = '0ms';
+                                circle.style.transitionDelay = '0ms';
+                                circle.style.strokeDashoffset = circle.dataset.initialOffset;
+                            }
+                        }
+
+                        function animateCounter() {
+                            var startTime;
+
+                            function tick(timestamp) {
+                                if (!startTime) {
+                                    startTime = timestamp;
+                                }
+
+                                var elapsed = timestamp - startTime;
+                                var progress = duration ? Math.min(elapsed / duration, 1) : 1;
+                                setCounter(value * progress);
+
+                                if (progress < 1) {
+                                    animationFrame = window.requestAnimationFrame(tick);
+                                }
+                            }
+
+                            animationFrame = window.requestAnimationFrame(tick);
+                        }
+
+                        function runProgress() {
+                            element.classList.add('ua-progress-active');
+
+                            if (line) {
+                                line.style.transitionDuration = duration + 'ms';
+                                line.style.transitionDelay = delay + 'ms';
+
+                                if (element.classList.contains('ua-progress-layout-vertical')) {
+                                    line.style.height = percentage + '%';
+                                } else {
+                                    line.style.width = percentage + '%';
+                                }
+                            }
+
+                            if (circle) {
+                                circle.style.transitionDuration = duration + 'ms';
+                                circle.style.transitionDelay = delay + 'ms';
+                                circle.style.strokeDashoffset = circle.dataset.targetOffset;
+                            }
+
+                            window.setTimeout(animateCounter, delay);
+
+                            if (options.loop === 'yes' && !reduceMotion) {
+                                window.clearTimeout(loopTimer);
+                                loopTimer = window.setTimeout(function cycle(){
+                                    if (!document.documentElement.contains(element)) {
+                                        return;
+                                    }
+
+                                    resetProgress();
+                                    window.requestAnimationFrame(function(){
+                                        window.requestAnimationFrame(runProgress);
+                                    });
+                                }, delay + duration + loopDelay);
+                            }
+                        }
+
+                        resetProgress();
+
+                        if ('IntersectionObserver' in window) {
+                            var observer = new IntersectionObserver(function(entries){
+                                entries.forEach(function(entry){
+                                    if (entry.isIntersecting) {
+                                        runProgress();
+                                        observer.disconnect();
+                                    }
+                                });
+                            }, { threshold: 0.2 });
+
+                            observer.observe(element);
+                        } else {
+                            runProgress();
+                        }
                     });
                 },
                 //Alert 
@@ -726,7 +845,7 @@
             let elementReadyMap = {
                 'ultraaddons-alert.default'     : UltraAddonsMap.Alert,
                 //'ultraaddons-timeline.default'  : UltraAddonsMap.UA_Owl_Carousel, //It has removed actually
-                'ultraaddons-skill-bar.default' : UltraAddonsMap.skillBar,
+                'ultraaddons-progress-bar.default' : UltraAddonsMap.progressBar,
                 'ultraaddons-counter.default'  	: UltraAddonsMap.Counter,
             };
 			

@@ -247,14 +247,14 @@ $ultraaddons_widgetsArray = [
             ],
     ],
     
-    /* 'Skill_Bar' => [
-            'name'  => __( 'Skill Bar', 'ultraaddons-elementor-lite' ),
+    'Progress_Bar' => [
+            'name'  => __( 'Progress Bar', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
-            'icon'      => 'uicon-skillbar',
+            'icon'      => 'eicon-skill-bar',
             'cat'       => [
                 __( 'General', 'ultraaddons-elementor-lite' ),
             ],
-    ], */
+    ],
     
     
     'WordPress_Plugin_Stats' => [

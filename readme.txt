@@ -123,7 +123,6 @@ You are welcome to contribute to this project. Fork the repository on GitHub.
   License: https://github.com/OwlCarousel2/OwlCarousel2/blob/master/LICENSE  
 * jQuery countTo — https://github.com/mhuggins/jquery-countTo  
 * jQuery.Appear.js — https://github.com/morr/jquery.appear  
-* jQuery.barfiller.js — https://github.com/9bitStudios/barfiller
 
 == Frequently Asked Questions ==
 
@@ -172,6 +171,7 @@ Yes. Many filters and action hooks are available for customization.
 * Conditional frontend widget assets and scoped admin assets.
 * Hardened admin settings and request validation.
 * Fixed shortcode, template library, and header/footer query issues.
+* Rebuilt Progress Bar with horizontal, circular, and vertical layouts, native animation, and no Barfiller dependency.
 
 = 2.0.3 =  
 * Bug fixes and code optimization.
