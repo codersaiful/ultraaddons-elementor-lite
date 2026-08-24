@@ -12,9 +12,9 @@
     font-family: inherit;
     color: #1e293b;
     background-color: #ffffff;
-    border-radius: 16px;
+    border-radius: 12px;
     border: 1px solid #e2e8f0;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
     padding: 24px;
     position: relative;
 }
@@ -49,7 +49,7 @@
     align-items: center;
     gap: 6px;
     padding: 6px 14px;
-    border-radius: 30px;
+    border-radius: 20px;
     font-size: 13px;
     font-weight: 600;
     color: #64748b;
@@ -67,16 +67,9 @@
 }
 
 .ua-cal-cat-btn.ua-active {
-    background-color: #6841fa;
+    background-color: #4a2db6;
     color: #ffffff;
-    box-shadow: 0 4px 12px rgba(104, 65, 250, 0.25);
-}
-
-.ua-cal-cat-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    display: inline-block;
+    box-shadow: 0 4px 12px rgba(74, 45, 182, 0.25);
 }
 
 .ua-calendar-search-box {
@@ -87,7 +80,7 @@
 .ua-calendar-search-input {
     width: 100%;
     padding: 8px 36px 8px 14px;
-    border-radius: 30px;
+    border-radius: 20px;
     border: 1px solid #e2e8f0;
     background-color: #f8fafc;
     font-size: 13px;
@@ -97,9 +90,9 @@
 }
 
 .ua-calendar-search-input:focus {
-    border-color: #6841fa;
+    border-color: #4a2db6;
     background-color: #ffffff;
-    box-shadow: 0 0 0 3px rgba(104, 65, 250, 0.12);
+    box-shadow: 0 0 0 3px rgba(74, 45, 182, 0.12);
 }
 
 .ua-calendar-search-icon {
@@ -129,14 +122,14 @@
     display: inline-flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
     flex-shrink: 0;
 }
 
 .ua-cal-btn-group {
     display: inline-flex;
     border: 1px solid #e2e8f0;
-    border-radius: 8px;
+    border-radius: 6px;
     overflow: hidden;
     background-color: #ffffff;
     width: 100%;
@@ -146,11 +139,11 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 8px 14px;
+    padding: 6px 12px;
     background-color: #ffffff;
     border: none;
     color: #475569;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -161,8 +154,8 @@
 
 .ua-cal-btn svg {
     display: block;
-    width: 14px;
-    height: 14px;
+    width: 13px;
+    height: 13px;
 }
 
 .ua-cal-btn:hover {
@@ -179,11 +172,11 @@
     width: 100%;
     text-align: center;
     border: 1px solid #e2e8f0 !important;
-    border-radius: 8px;
-    font-size: 13px;
+    border-radius: 6px;
+    font-size: 12px;
     font-weight: 600;
     color: #64748b;
-    padding: 5px 12px;
+    padding: 4px 10px;
     background-color: #ffffff;
     cursor: pointer;
     line-height: 1.3;
@@ -197,34 +190,25 @@
 .ua-calendar-title {
     flex-grow: 1;
     margin: 0;
-    line-height: 1.15;
+    line-height: 1.2;
     text-align: center;
 }
 
 .ua-calendar-title .ua-title-month {
-    display: block;
-    font-size: 30px;
-    font-weight: 600;
-    color: #1e293b;
-    letter-spacing: -0.3px;
-}
-
-.ua-calendar-title .ua-title-year {
-    display: block;
+    display: inline-block;
     font-size: 24px;
-    font-weight: 400;
-    color: #64748b;
-    margin-top: 2px;
+    font-weight: 700;
+    color: #1e293b;
+    letter-spacing: -0.2px;
 }
 
 .ua-calendar-views {
     display: inline-flex;
     flex-shrink: 0;
     border: 1px solid #e2e8f0;
-    border-radius: 8px;
+    border-radius: 6px;
     overflow: hidden;
     background-color: #ffffff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
 .ua-view-btn {
@@ -232,9 +216,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 4px;
-    padding: 8px 16px;
-    font-size: 13px;
+    gap: 3px;
+    padding: 8px 14px;
+    font-size: 12px;
     font-weight: 600;
     color: #64748b;
     background: transparent;
@@ -258,12 +242,12 @@
 
 .ua-view-btn-icon svg {
     display: block;
-    width: 15px;
-    height: 15px;
+    width: 14px;
+    height: 14px;
 }
 
 .ua-view-btn-text {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     line-height: 1;
 }
@@ -299,19 +283,18 @@
     background-color: #f8fafc;
     border: 1px solid #e2e8f0;
     border-bottom: none;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
     overflow: hidden;
 }
 
 .ua-cal-weekday {
-    padding: 12px 6px;
+    padding: 10px 4px;
     text-align: center;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
     color: #1e293b;
     text-transform: capitalize;
-    letter-spacing: 0.2px;
     border-right: 1px solid #e2e8f0;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -327,14 +310,14 @@
     grid-template-columns: repeat(7, minmax(0, 1fr));
     width: 100%;
     border: 1px solid #e2e8f0;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
     overflow: hidden;
 }
 
 .ua-cal-day-cell {
-    min-height: 105px;
-    padding: 8px 6px 10px;
+    min-height: 100px;
+    padding: 6px 6px 8px;
     border-right: 1px solid #e2e8f0;
     border-bottom: 1px solid #e2e8f0;
     background-color: #ffffff;
@@ -366,26 +349,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
 }
 
 .ua-cal-day-num {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     color: #334155;
     text-align: center;
 }
 
 .ua-cal-day-today .ua-cal-day-num {
-    color: #4a2db6;
+    color: #1e293b;
     font-weight: 800;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 .ua-cal-day-events {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 3px;
     overflow: hidden;
     width: 100%;
 }
@@ -396,10 +379,8 @@
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-    padding: 4px 8px;
-    border-radius: 5px;
-    font-size: 12px;
-    font-weight: 600;
+    padding: 3px 6px;
+    border-radius: 4px;
     color: #ffffff;
     background-color: #4a2db6;
     cursor: pointer;
@@ -407,15 +388,14 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    transition: transform 0.15s ease, opacity 0.15s ease;
+    transition: opacity 0.15s ease;
     user-select: none;
-    line-height: 1.35;
+    line-height: 1.3;
     text-align: center;
 }
 
 .ua-event-pill:hover {
     opacity: 0.9;
-    transform: translateY(-1px);
 }
 
 .ua-event-pill-title {
@@ -423,158 +403,240 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: 12px;
-}
-
-.ua-event-pill-time {
-    font-size: 10px;
-    opacity: 0.9;
-    flex-shrink: 0;
-}
-
-.ua-event-pill-title {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    font-size: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+    color: inherit;
 }
 
 .ua-event-more-btn {
     font-size: 11px;
     font-weight: 600;
-    color: #6841fa;
+    color: #4a2db6;
     background: transparent;
     border: none;
     cursor: pointer;
-    text-align: left;
+    text-align: center;
     padding: 2px 4px;
 }
 
 /*--------------------------------------------------------------
- == 4. Week View
+ == 4. TimeGrid View (Day & Week Layout)
  --------------------------------------------------------------*/
-.ua-calendar-week-view {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
+.ua-timegrid-view {
+    width: 100%;
     border: 1px solid #e2e8f0;
-    border-radius: 10px;
+    border-radius: 6px;
     overflow: hidden;
+    background: #ffffff;
 }
 
-.ua-cal-week-col {
-    border-right: 1px solid #e2e8f0;
-    display: flex;
-    flex-direction: column;
-    min-height: 250px;
-    background-color: #ffffff;
+.ua-timegrid-header-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
 }
 
-.ua-cal-week-col:last-child {
-    border-right: none;
-}
-
-.ua-cal-week-col-head {
-    padding: 12px 6px;
+.ua-timegrid-header-table thead th {
+    padding: 10px 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1e293b;
     text-align: center;
-    background-color: #f8fafc;
+    background: #f8fafc;
     border-bottom: 1px solid #e2e8f0;
 }
 
-.ua-cal-week-col-name {
-    font-size: 12px;
-    font-weight: 700;
-    color: #64748b;
-    text-transform: uppercase;
+.ua-timegrid-axis-cell {
+    width: 60px;
+    min-width: 60px;
+    max-width: 60px;
+    border-right: 1px solid #e2e8f0;
 }
 
-.ua-cal-week-col-date {
-    font-size: 16px;
+.ua-timegrid-col-header {
+    border-right: 1px solid #e2e8f0;
+}
+
+.ua-timegrid-col-header:last-child {
+    border-right: none;
+}
+
+.ua-timegrid-col-header.ua-today-col {
+    background: #fff9db !important;
+}
+
+.ua-week-hdr-name {
+    font-size: 13px;
     font-weight: 700;
-    color: #0f172a;
+    color: #1e293b;
+}
+
+/* All-day row */
+.ua-timegrid-allday-row {
+    display: flex;
+    width: 100%;
+    border-bottom: 2px solid #e2e8f0;
+    background: #ffffff;
+}
+
+.ua-timegrid-allday-label {
+    width: 60px;
+    min-width: 60px;
+    max-width: 60px;
+    padding: 8px 6px;
+    font-size: 11px;
+    color: #64748b;
+    text-align: right;
+    border-right: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background: #f8fafc;
+}
+
+.ua-timegrid-allday-content {
+    flex: 1;
+    padding: 6px 10px;
+    min-height: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+}
+
+.ua-timegrid-allday-cols {
+    display: flex;
+    flex: 1;
+}
+
+.ua-timegrid-allday-cell {
+    flex: 1;
+    padding: 6px 6px;
+    min-height: 40px;
+    border-right: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.ua-timegrid-allday-cell:last-child {
+    border-right: none;
+}
+
+.ua-today-cell {
+    background-color: #fff9db !important;
+}
+
+/* Scrollable TimeGrid Body */
+.ua-timegrid-scroll-body {
+    max-height: 480px;
+    overflow-y: auto;
+    position: relative;
+}
+
+.ua-timegrid-body-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+}
+
+.ua-timegrid-hour-row {
+    height: 40px;
+}
+
+.ua-timegrid-time-label {
+    width: 60px;
+    min-width: 60px;
+    max-width: 60px;
+    padding: 0 8px 0 0;
+    text-align: right;
+    font-size: 11px;
+    color: #64748b;
+    vertical-align: top;
+    border-right: 1px solid #e2e8f0;
+    border-bottom: 1px solid #f1f5f9;
+    background: #ffffff;
+}
+
+.ua-timegrid-time-label span {
+    position: relative;
+    top: -7px;
+    display: inline-block;
+}
+
+.ua-timegrid-slot-cell {
+    border-right: 1px solid #e2e8f0;
+    border-bottom: 1px solid #f1f5f9;
+    padding: 2px 4px;
+    vertical-align: top;
+    position: relative;
+}
+
+.ua-timegrid-slot-cell:last-child {
+    border-right: none;
+}
+
+/* TimeGrid Event Block */
+.ua-timegrid-event {
+    background-color: #4a2db6;
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin-bottom: 2px;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+}
+
+.ua-timegrid-event:hover {
+    opacity: 0.9;
+}
+
+.ua-timegrid-event-title {
+    font-size: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+    color: inherit;
+    line-height: 1.3;
+}
+
+.ua-timegrid-event-loc {
+    font-size: 10px;
+    opacity: 0.9;
     margin-top: 2px;
 }
 
-.ua-cal-week-col.ua-cal-day-today .ua-cal-week-col-date {
-    color: #6841fa;
-}
-
-.ua-cal-week-col-events {
-    padding: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    flex-grow: 1;
-}
-
 /*--------------------------------------------------------------
- == 5. Day View
- --------------------------------------------------------------*/
-.ua-calendar-day-view {
-    border: 1px solid #e2e8f0;
-    border-radius: 10px;
-    padding: 20px;
-    background-color: #ffffff;
-}
-
-.ua-cal-day-view-header {
-    text-align: center;
-    padding-bottom: 16px;
-    margin-bottom: 16px;
-    border-bottom: 1px solid #f1f5f9;
-}
-
-.ua-cal-day-view-date {
-    font-size: 24px;
-    font-weight: 700;
-    color: #0f172a;
-}
-
-.ua-cal-day-view-weekday {
-    font-size: 14px;
-    font-weight: 600;
-    color: #6841fa;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-top: 4px;
-}
-
-.ua-cal-day-view-events-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-/*--------------------------------------------------------------
- == 6. List / Agenda View
+ == 5. List / Agenda View
  --------------------------------------------------------------*/
 .ua-calendar-list-view {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
 }
 
 .ua-cal-list-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 16px 20px;
+    padding: 14px 18px;
     background-color: #ffffff;
     border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    border-radius: 8px;
+    transition: all 0.2s ease;
     cursor: pointer;
     gap: 16px;
 }
 
 .ua-cal-list-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
     border-color: #cbd5e1;
 }
 
 .ua-cal-list-left {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 14px;
     flex-grow: 1;
 }
 
@@ -583,9 +645,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-width: 55px;
-    padding: 8px 10px;
-    border-radius: 10px;
+    min-width: 50px;
+    padding: 6px 8px;
+    border-radius: 6px;
     background-color: #f1f5f9;
     color: #334155;
     text-align: center;
@@ -595,11 +657,10 @@
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
 }
 
 .ua-cal-list-day {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 800;
     line-height: 1;
     margin-top: 2px;
@@ -608,11 +669,11 @@
 .ua-cal-list-info {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 3px;
 }
 
 .ua-cal-list-title {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
     color: #0f172a;
     margin: 0;
@@ -627,35 +688,25 @@
     color: #64748b;
 }
 
-.ua-cal-list-meta span {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-}
-
 .ua-cal-list-cat-badge {
     padding: 4px 10px;
-    border-radius: 20px;
+    border-radius: 12px;
     font-size: 11px;
     font-weight: 700;
     color: #ffffff;
+    background-color: #4a2db6;
 }
 
 .ua-cal-list-btn {
-    padding: 8px 18px;
-    border-radius: 25px;
-    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
     font-weight: 600;
-    background-color: #6841fa;
+    background-color: #4a2db6;
     color: #ffffff !important;
     text-decoration: none !important;
     white-space: nowrap;
     transition: all 0.2s ease;
-}
-
-.ua-cal-list-btn:hover {
-    background-color: #5527f5;
-    box-shadow: 0 4px 12px rgba(104, 65, 250, 0.3);
 }
 
 .ua-calendar-no-events {
@@ -664,6 +715,137 @@
     color: #94a3b8;
     font-size: 14px;
     font-weight: 500;
+}
+
+/*--------------------------------------------------------------
+ == 6. Table Layout View
+ --------------------------------------------------------------*/
+.ua-event-calendar.ua-layout-table {
+    padding: 20px;
+}
+
+.ua-table-search-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    justify-content: flex-end;
+}
+
+.ua-table-search-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #475569;
+}
+
+.ua-table-search-input {
+    padding: 8px 14px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #334155;
+    outline: none;
+    width: 200px;
+    transition: all 0.2s ease;
+}
+
+.ua-table-search-input:focus {
+    border-color: #4a2db6;
+    box-shadow: 0 0 0 3px rgba(74, 45, 182, 0.12);
+}
+
+.ua-table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+}
+
+.ua-event-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+}
+
+.ua-event-table th {
+    padding: 12px 14px;
+    background: #f8fafc;
+    color: #1e293b;
+    font-weight: 700;
+    font-size: 13px;
+    text-align: left;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.ua-event-table td {
+    padding: 12px 14px;
+    font-size: 13px;
+    color: #475569;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: middle;
+}
+
+.ua-event-table tr:last-child td {
+    border-bottom: none;
+}
+
+.ua-event-table tr:hover td {
+    background-color: #f8fafc;
+}
+
+.ua-event-row-title {
+    color: #1e293b;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.ua-event-row-title:hover {
+    color: #4a2db6;
+}
+
+.ua-table-details-btn {
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    color: #334155;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ua-table-details-btn:hover {
+    background: #4a2db6;
+    border-color: #4a2db6;
+    color: #ffffff;
+}
+
+.ua-table-pagination {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 16px;
+    justify-content: flex-end;
+}
+
+.ua-table-page-btn {
+    padding: 6px 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    background: #ffffff;
+    color: #475569;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ua-table-page-btn:hover,
+.ua-table-page-btn.ua-active {
+    background: #4a2db6;
+    border-color: #4a2db6;
+    color: #ffffff;
 }
 
 /*--------------------------------------------------------------
@@ -696,22 +878,22 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(15, 23, 42, 0.65);
-    -webkit-backdrop-filter: blur(4px);
-    backdrop-filter: blur(4px);
+    background-color: rgba(15, 23, 42, 0.6);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
 }
 
 .ua-event-modal-dialog {
     position: relative;
     z-index: 2;
     background-color: #ffffff;
-    border-radius: 18px;
+    border-radius: 12px;
     width: 100%;
-    max-width: 520px;
+    max-width: 500px;
     max-height: 90vh;
     overflow-y: auto;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
-    transform: scale(0.92);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    transform: scale(0.95);
     transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -721,65 +903,65 @@
 
 .ua-event-modal-close {
     position: absolute;
-    top: 14px;
-    right: 14px;
+    top: 12px;
+    right: 12px;
     z-index: 10;
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
-    background-color: rgba(15, 23, 42, 0.6);
+    background-color: rgba(15, 23, 42, 0.5);
     color: #ffffff;
     border: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
+    font-size: 14px;
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
 
 .ua-event-modal-close:hover {
-    background-color: rgba(15, 23, 42, 0.9);
+    background-color: rgba(15, 23, 42, 0.85);
 }
 
 .ua-event-modal-banner {
     width: 100%;
-    height: 200px;
+    height: 180px;
     object-fit: cover;
     display: block;
 }
 
 .ua-event-modal-body {
-    padding: 24px 28px 28px;
+    padding: 20px 24px 24px;
 }
 
 .ua-event-modal-category {
     display: inline-block;
-    padding: 4px 12px;
-    border-radius: 20px;
+    padding: 4px 10px;
+    border-radius: 12px;
     font-size: 11px;
     font-weight: 700;
     color: #ffffff;
-    background-color: #6841fa;
-    margin-bottom: 12px;
+    background-color: #10ecab;
+    margin-bottom: 10px;
 }
 
 .ua-event-modal-title {
-    font-size: 22px;
-    font-weight: 800;
+    font-size: 20px;
+    font-weight: 700;
     color: #0f172a;
-    margin: 0 0 16px;
+    margin: 0 0 14px;
     line-height: 1.3;
 }
 
 .ua-event-modal-meta-list {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-bottom: 18px;
-    padding: 14px;
+    gap: 6px;
+    margin-bottom: 16px;
+    padding: 12px;
     background-color: #f8fafc;
-    border-radius: 10px;
+    border-radius: 8px;
 }
 
 .ua-event-modal-meta-item {
@@ -790,65 +972,37 @@
     color: #475569;
 }
 
-.ua-event-modal-meta-item i,
-.ua-event-modal-meta-item svg {
-    color: #6841fa;
-    width: 16px;
-    text-align: center;
-}
-
 .ua-event-modal-desc {
-    font-size: 14px;
-    line-height: 1.65;
+    font-size: 13px;
+    line-height: 1.6;
     color: #475569;
-    margin: 0 0 24px;
+    margin: 0 0 20px;
 }
 
 .ua-event-modal-btn {
     display: block;
     width: 100%;
     text-align: center;
-    padding: 12px 24px;
-    background-color: #6841fa;
-    color: #ffffff !important;
-    border-radius: 30px;
-    font-size: 14px;
+    padding: 10px 20px;
+    background-color: #4a2db6;
+    color: #ffffff;
+    border-radius: 20px;
+    font-size: 13px;
     font-weight: 700;
     text-decoration: none !important;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    transition: background-color 0.2s ease, transform 0.15s ease;
 }
 
 .ua-event-modal-btn:hover {
-    background-color: #5527f5;
-    box-shadow: 0 6px 18px rgba(104, 65, 250, 0.35);
+    background-color: #3b2296;
 }
 
 /*--------------------------------------------------------------
  == 8. Responsive Breakpoints
  --------------------------------------------------------------*/
-@media (max-width: 991px) {
-    .ua-event-calendar {
-        padding: 18px;
-    }
-    .ua-calendar-title {
-        font-size: 18px;
-    }
-    .ua-cal-day-cell {
-        min-height: 90px;
-        padding: 6px 4px;
-    }
-}
-
 @media (max-width: 767px) {
     .ua-event-calendar {
         padding: 14px;
-    }
-    .ua-calendar-top-bar {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    .ua-calendar-search-box {
-        width: 100%;
     }
     .ua-calendar-header {
         flex-direction: column;
@@ -864,7 +1018,7 @@
     }
     .ua-cal-weekday {
         font-size: 11px;
-        padding: 8px 2px;
+        padding: 6px 2px;
     }
     .ua-cal-day-cell {
         min-height: 70px;
@@ -873,13 +1027,5 @@
     .ua-event-pill {
         font-size: 10px;
         padding: 2px 4px;
-    }
-    .ua-cal-list-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .ua-cal-list-btn {
-        width: 100%;
-        text-align: center;
     }
 }

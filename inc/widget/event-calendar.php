@@ -1327,8 +1327,42 @@ class Event_Calendar extends Base {
 		$this->start_controls_section(
 			'section_style_event_pills',
 			[
-				'label' => esc_html__( 'Event Badges', 'ultraaddons-elementor-lite' ),
-				'tab'   => Controls_Manager::TAB_STYLE,
+				'label'     => esc_html__( 'Event Badges', 'ultraaddons-elementor-lite' ),
+				'tab'       => Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'event_layout' => 'calendar',
+				],
+			]
+		);
+
+		$this->add_control(
+			'event_pill_text_color',
+			[
+				'label'     => esc_html__( 'Text Color', 'ultraaddons-elementor-lite' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .ua-event-pill, {{WRAPPER}} .ua-event-pill-title, {{WRAPPER}} .ua-timegrid-event, {{WRAPPER}} .ua-timegrid-event-title' => 'color: {{VALUE}} !important;',
+				],
+			]
+		);
+
+		$this->add_control(
+			'event_pill_bg_color',
+			[
+				'label'     => esc_html__( 'Background Color', 'ultraaddons-elementor-lite' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .ua-event-pill, {{WRAPPER}} .ua-timegrid-event' => 'background-color: {{VALUE}} !important;',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name'     => 'event_pill_typography',
+				'label'    => esc_html__( 'Typography', 'ultraaddons-elementor-lite' ),
+				'selector' => '{{WRAPPER}} .ua-event-pill, {{WRAPPER}} .ua-event-pill-title, {{WRAPPER}} .ua-timegrid-event, {{WRAPPER}} .ua-timegrid-event-title',
 			]
 		);
 
@@ -1339,17 +1373,20 @@ class Event_Calendar extends Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [
-					'{{WRAPPER}} .ua-event-pill' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ua-event-pill, {{WRAPPER}} .ua-timegrid-event' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
 
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
+		$this->add_responsive_control(
+			'event_pill_padding',
 			[
-				'name'     => 'event_pill_typography',
-				'label'    => esc_html__( 'Typography', 'ultraaddons-elementor-lite' ),
-				'selector' => '{{WRAPPER}} .ua-event-pill',
+				'label'      => esc_html__( 'Padding', 'ultraaddons-elementor-lite' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em' ],
+				'selectors'  => [
+					'{{WRAPPER}} .ua-event-pill, {{WRAPPER}} .ua-timegrid-event' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
 			]
 		);
 
@@ -1368,15 +1405,93 @@ class Event_Calendar extends Base {
 			]
 		);
 
-		$this->add_control(
-			'modal_primary_color',
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
 			[
-				'label'     => esc_html__( 'Primary Color', 'ultraaddons-elementor-lite' ),
+				'name'     => 'modal_dialog_bg',
+				'label'    => esc_html__( 'Dialog Background', 'ultraaddons-elementor-lite' ),
+				'types'    => [ 'classic', 'gradient' ],
+				'selector' => '{{WRAPPER}} .ua-event-modal-dialog',
+			]
+		);
+
+		$this->add_responsive_control(
+			'modal_dialog_border_radius',
+			[
+				'label'      => esc_html__( 'Dialog Border Radius', 'ultraaddons-elementor-lite' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'selectors'  => [
+					'{{WRAPPER}} .ua-event-modal-dialog' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name'     => 'modal_dialog_shadow',
+				'label'    => esc_html__( 'Box Shadow', 'ultraaddons-elementor-lite' ),
+				'selector' => '{{WRAPPER}} .ua-event-modal-dialog',
+			]
+		);
+
+		$this->add_control(
+			'heading_modal_category',
+			[
+				'label'     => esc_html__( 'Category Ribbon', 'ultraaddons-elementor-lite' ),
+				'type'      => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'modal_category_bg',
+			[
+				'label'     => esc_html__( 'Ribbon Color', 'ultraaddons-elementor-lite' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .ua-event-modal-btn' => 'background-color: {{VALUE}};',
-					'{{WRAPPER}} .ua-event-modal-category' => 'background-color: {{VALUE}};',
-					'{{WRAPPER}} .ua-event-modal-meta-item i, {{WRAPPER}} .ua-event-modal-meta-item svg' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .ua-event-modal-category' => 'background-color: {{VALUE}} !important;',
+				],
+			]
+		);
+
+		$this->add_control(
+			'modal_category_color',
+			[
+				'label'     => esc_html__( 'Text Color', 'ultraaddons-elementor-lite' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .ua-event-modal-category' => 'color: {{VALUE}} !important;',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name'     => 'modal_category_typography',
+				'label'    => esc_html__( 'Typography', 'ultraaddons-elementor-lite' ),
+				'selector' => '{{WRAPPER}} .ua-event-modal-category',
+			]
+		);
+
+		$this->add_control(
+			'heading_modal_title',
+			[
+				'label'     => esc_html__( 'Title', 'ultraaddons-elementor-lite' ),
+				'type'      => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'modal_title_color',
+			[
+				'label'     => esc_html__( 'Color', 'ultraaddons-elementor-lite' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .ua-event-modal-title' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -1385,8 +1500,129 @@ class Event_Calendar extends Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'modal_title_typography',
-				'label'    => esc_html__( 'Title Typography', 'ultraaddons-elementor-lite' ),
+				'label'    => esc_html__( 'Typography', 'ultraaddons-elementor-lite' ),
 				'selector' => '{{WRAPPER}} .ua-event-modal-title',
+			]
+		);
+
+		$this->add_control(
+			'heading_modal_meta',
+			[
+				'label'     => esc_html__( 'Date, Time & Location Meta', 'ultraaddons-elementor-lite' ),
+				'type'      => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'modal_meta_box_bg',
+			[
+				'label'     => esc_html__( 'Meta Box Background', 'ultraaddons-elementor-lite' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .ua-event-modal-meta-list' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'modal_meta_text_color',
+			[
+				'label'     => esc_html__( 'Meta Text Color', 'ultraaddons-elementor-lite' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .ua-event-modal-meta-item, {{WRAPPER}} .ua-event-modal-meta-item span' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name'     => 'modal_meta_typography',
+				'label'    => esc_html__( 'Meta Typography', 'ultraaddons-elementor-lite' ),
+				'selector' => '{{WRAPPER}} .ua-event-modal-meta-item, {{WRAPPER}} .ua-event-modal-meta-item span',
+			]
+		);
+
+		$this->add_control(
+			'heading_modal_desc',
+			[
+				'label'     => esc_html__( 'Description', 'ultraaddons-elementor-lite' ),
+				'type'      => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'modal_desc_color',
+			[
+				'label'     => esc_html__( 'Color', 'ultraaddons-elementor-lite' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .ua-event-modal-desc' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name'     => 'modal_desc_typography',
+				'label'    => esc_html__( 'Typography', 'ultraaddons-elementor-lite' ),
+				'selector' => '{{WRAPPER}} .ua-event-modal-desc',
+			]
+		);
+
+		$this->add_control(
+			'heading_modal_button',
+			[
+				'label'     => esc_html__( 'Button', 'ultraaddons-elementor-lite' ),
+				'type'      => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'modal_btn_color',
+			[
+				'label'     => esc_html__( 'Color', 'ultraaddons-elementor-lite' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .ua-event-modal-btn' => 'color: {{VALUE}} !important;',
+				],
+			]
+		);
+
+		$this->add_control(
+			'modal_btn_bg',
+			[
+				'label'     => esc_html__( 'Background Color', 'ultraaddons-elementor-lite' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .ua-event-modal-btn' => 'background-color: {{VALUE}} !important;',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name'     => 'modal_btn_typography',
+				'label'    => esc_html__( 'Typography', 'ultraaddons-elementor-lite' ),
+				'selector' => '{{WRAPPER}} .ua-event-modal-btn',
+			]
+		);
+
+		$this->add_responsive_control(
+			'modal_btn_border_radius',
+			[
+				'label'      => esc_html__( 'Border Radius', 'ultraaddons-elementor-lite' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'selectors'  => [
+					'{{WRAPPER}} .ua-event-modal-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
 			]
 		);
 
