@@ -704,7 +704,7 @@ $ultraaddons_widgetsArray = [
     'Content_Toggle'=> [
         'name'      => __( 'Content Toggle', 'ultraaddons-elementor-lite' ),
         'is_pro'   => false,
-        'icon'      => 'eicon-toggle',
+        'icon'      => 'eicon-dual-button',
         'cat'       => [
             __( 'General', 'ultraaddons-elementor-lite' ),
         ],
