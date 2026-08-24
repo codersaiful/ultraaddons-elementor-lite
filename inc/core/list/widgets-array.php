@@ -476,6 +476,7 @@ $ultraaddons_widgetsArray = [
             'name'  => __( 'Product Carousel', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
             'icon'      => 'eicon-products',
+            'badge'     => 'Updated',
             'cat'       => [
                 __( 'WooCommerce', 'ultraaddons-elementor-lite' ),
             ],

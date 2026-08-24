@@ -1,0 +1,567 @@
+/**
+ * UltraAddons WooCommerce Product Carousel Widget Stylesheet
+ *
+ * Supports 4 distinct design presets, responsive Swiper layout,
+ * interactive action buttons, badges, star rating, arrows, and pagination.
+ *
+ * @package UltraAddons
+ * @since 1.1.0.8
+ */
+
+/* -------------------------------------------------------------------------
+ * 1. Base Swiper & Carousel Container
+ * ------------------------------------------------------------------------- */
+.ua-product-carousel-wrapper {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.ua-product-carousel-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    list-style: none;
+    padding: 10px 4px 16px 4px;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.ua-product-carousel-slider .swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex !important;
+    transition-property: transform;
+    box-sizing: content-box;
+}
+
+.ua-product-carousel-wrapper .swiper-slide,
+.ua-product-slide {
+    flex-shrink: 0 !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+    float: none !important;
+    clear: none !important;
+    margin-bottom: 0 !important;
+    list-style: none !important;
+}
+
+/* -------------------------------------------------------------------------
+ * 2. Product Card Wrapper
+ * ------------------------------------------------------------------------- */
+.ua-product-card {
+    position: relative;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    min-height: 280px;
+    box-sizing: border-box;
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+.ua-card-hover-lift .ua-product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* -------------------------------------------------------------------------
+ * 3. Product Thumbnail & Badges
+ * ------------------------------------------------------------------------- */
+.ua-product-thumb {
+    position: relative;
+    overflow: hidden;
+    background: #f8fafc;
+    width: 100%;
+    min-height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ua-thumb-inner {
+    width: 100%;
+    height: 100%;
+    min-height: 160px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ua-thumb-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.ua-product-main-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.45s ease;
+}
+
+.ua-img-hover-zoom .ua-product-card:hover .ua-product-main-img {
+    transform: scale(1.07);
+}
+
+.ua-thumb-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.3s ease;
+    pointer-events: none;
+}
+
+.ua-product-card:hover .ua-thumb-overlay {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+/* Badges */
+.ua-product-badges {
+    position: absolute;
+    top: 12px;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.ua-badge-pos-left {
+    left: 12px;
+    align-items: flex-start;
+}
+
+.ua-badge-pos-right {
+    right: 12px;
+    align-items: flex-end;
+}
+
+.ua-badge {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    line-height: 1.2;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.ua-badge-sale {
+    background: linear-gradient(135deg, #6841fa, #5028df);
+    color: #ffffff;
+}
+
+.ua-badge-stockout {
+    background: #ef4444;
+    color: #ffffff;
+}
+
+/* -------------------------------------------------------------------------
+ * 4. Action Buttons (General)
+ * ------------------------------------------------------------------------- */
+.ua-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background-color: #ffffff;
+    color: #333333;
+    border-radius: 50%;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+    text-decoration: none !important;
+    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.ua-action-btn i,
+.ua-action-btn svg {
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+    transition: transform 0.2s ease;
+}
+
+.ua-action-btn:hover {
+    background-color: #6841fa;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(104, 65, 250, 0.35);
+}
+
+.ua-action-btn:hover i,
+.ua-action-btn:hover svg {
+    transform: scale(1.1);
+}
+
+.ua-action-btn.loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.ua-action-btn.loading:after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border: 2px solid #6841fa;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: ua-spin 0.6s linear infinite;
+}
+
+.ua-action-btn:hover.loading:after {
+    border-color: #ffffff;
+    border-top-color: transparent;
+}
+
+.ua-action-btn.added:after {
+    content: '\e87f';
+    font-family: 'eicons' !important;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 13px;
+}
+
+@keyframes ua-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* -------------------------------------------------------------------------
+ * 5. Preset 1: Overlay Action Icons on Hover
+ * ------------------------------------------------------------------------- */
+.ua-action-style-preset-1 {
+    position: absolute;
+    bottom: 14px;
+    left: 0;
+    width: 100%;
+    z-index: 6;
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    pointer-events: none;
+}
+
+.ua-action-style-preset-1 .ua-buttons-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.ua-product-card:hover .ua-action-style-preset-1 {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* -------------------------------------------------------------------------
+ * 6. Preset 2: Side Action Bar
+ * ------------------------------------------------------------------------- */
+.ua-action-style-preset-2 {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 6;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateX(12px);
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    pointer-events: none;
+}
+
+.ua-action-style-preset-2 .ua-buttons-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ua-product-card:hover .ua-action-style-preset-2 {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+/* -------------------------------------------------------------------------
+ * 7. Preset 3: Bottom Action Bar
+ * ------------------------------------------------------------------------- */
+.ua-action-style-preset-3 {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid #f1f5f9;
+    width: 100%;
+}
+
+.ua-action-style-preset-3 .ua-buttons-group {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.ua-action-style-preset-3 .ua-action-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    box-shadow: none;
+    background: #f1f5f9;
+    color: #475569;
+}
+
+.ua-action-style-preset-3 .ua-action-btn:hover {
+    background: #6841fa;
+    color: #ffffff;
+}
+
+/* -------------------------------------------------------------------------
+ * 8. Preset 4: Modern Minimal Card
+ * ------------------------------------------------------------------------- */
+.ua-action-style-preset-4 {
+    margin-top: 12px;
+    width: 100%;
+}
+
+.ua-action-style-preset-4 .ua-buttons-group {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+.ua-action-style-preset-4 .ua-btn-add-to-cart {
+    flex: 1;
+    width: auto;
+    height: 38px;
+    border-radius: 20px;
+    padding: 0 16px;
+    font-size: 13px;
+    font-weight: 600;
+    background: #6841fa;
+    color: #ffffff;
+    box-shadow: 0 3px 10px rgba(104, 65, 250, 0.25);
+}
+
+.ua-action-style-preset-4 .ua-btn-add-to-cart:hover {
+    background: #5028df;
+    color: #ffffff;
+    box-shadow: 0 6px 16px rgba(104, 65, 250, 0.4);
+}
+
+/* -------------------------------------------------------------------------
+ * 9. Details & Typography
+ * ------------------------------------------------------------------------- */
+.ua-product-details {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.ua-product-category {
+    font-size: 11.5px;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-bottom: 4px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.ua-product-category a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.ua-product-category a:hover {
+    color: #6841fa;
+}
+
+.ua-product-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #0f172a;
+    margin: 0 0 6px 0;
+    line-height: 1.35;
+}
+
+.ua-product-title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.ua-product-title a:hover {
+    color: #6841fa;
+}
+
+/* Star Rating */
+.ua-star-rating {
+    display: inline-flex;
+    align-items: center;
+    justify-content: inherit;
+    gap: 4px;
+    margin-bottom: 6px;
+}
+
+.ua-star-rating .ua-stars-inner {
+    display: inline-flex;
+    gap: 2px;
+    color: #ffb800;
+}
+
+.ua-star-rating .star-empty {
+    color: #e2e8f0;
+}
+
+.ua-rating-count {
+    font-size: 12px;
+    color: #94a3b8;
+    font-weight: 500;
+    margin-left: 2px;
+}
+
+/* Excerpt */
+.ua-product-excerpt {
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+
+/* Price */
+.ua-product-price {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: inherit;
+    gap: 6px;
+}
+
+.ua-product-price del {
+    color: #94a3b8;
+    font-size: 0.88em;
+    font-weight: 400;
+    text-decoration: line-through;
+}
+
+.ua-product-price ins {
+    color: #6841fa;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.ua-product-price .amount {
+    font-weight: 700;
+}
+
+/* -------------------------------------------------------------------------
+ * 10. Navigation Arrows & Pagination Dots
+ * ------------------------------------------------------------------------- */
+.ua-swiper-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #333333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    z-index: 10;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    user-select: none;
+}
+
+.ua-swiper-nav-btn:hover {
+    background: #6841fa;
+    color: #ffffff;
+    transform: translateY(-50%) scale(1.06);
+    box-shadow: 0 6px 20px rgba(104, 65, 250, 0.35);
+}
+
+.ua-swiper-button-prev {
+    left: 8px;
+}
+
+.ua-swiper-button-next {
+    right: 8px;
+}
+
+.ua-swiper-nav-btn.swiper-button-disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Pagination Dots */
+.ua-swiper-pagination {
+    position: relative;
+    margin-top: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    z-index: 10;
+}
+
+.ua-swiper-pagination .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #cbd5e1;
+    opacity: 1;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    margin: 0 !important;
+    cursor: pointer;
+}
+
+.ua-swiper-pagination .swiper-pagination-bullet-active {
+    background: #6841fa;
+    width: 24px;
+    border-radius: 12px;
+}
+
+.ua-no-products-found,
+.ua-alert-warning {
+    padding: 16px 20px;
+    background: #f8fafc;
+    border-left: 4px solid #6841fa;
+    color: #475569;
+    border-radius: 4px;
+    font-size: 14px;
+}

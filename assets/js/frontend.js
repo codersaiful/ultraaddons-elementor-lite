@@ -974,6 +974,8 @@
 
             EF.hooks.addAction( 'frontend/element_ready/ultraaddons-team-box.default', widgetTeamCarousel );
 
+
+
             /**
              * UltraAddons Flip Box Handler
              *
