@@ -260,6 +260,34 @@ span.ua-option-version-type.ua-option-version-type-pro {
 span.ua-option-version-type.ua-option-version-type-free {
     background: transparent;
 }
+.ua-option-item-wrappper .ua-option-item.ua-has-badge {
+    padding-bottom: 22px;
+}
+span.ua-option-badge {
+    position: absolute;
+    bottom: 6px;
+    left: 14px;
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    line-height: 1.2;
+    z-index: 10;
+}
+span.ua-option-badge.ua-option-badge-new {
+    background: #00b074;
+    color: #ffffff;
+}
+span.ua-option-badge.ua-option-badge-updated {
+    background: #4f46e5;
+    color: #ffffff;
+}
+span.ua-option-badge.ua-option-badge-popular {
+    background: #4353ff;
+    color: #ffffff;
+}
 h2.ua-item-name {
     padding: 0;
     margin: 10px auto;

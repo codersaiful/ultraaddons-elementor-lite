@@ -705,6 +705,7 @@ $ultraaddons_widgetsArray = [
         'name'      => __( 'Content Toggle', 'ultraaddons-elementor-lite' ),
         'is_pro'   => false,
         'icon'      => 'eicon-dual-button',
+        'badge'     => 'Updated',
         'cat'       => [
             __( 'General', 'ultraaddons-elementor-lite' ),
         ],
@@ -714,6 +715,7 @@ $ultraaddons_widgetsArray = [
         'name'      => __( 'Event Calendar', 'ultraaddons-elementor-lite' ),
         'is_pro'   => false,
         'icon'      => 'eicon-calendar',
+        'badge'     => 'New',
         'cat'       => [
             __( 'General', 'ultraaddons-elementor-lite' ),
         ],

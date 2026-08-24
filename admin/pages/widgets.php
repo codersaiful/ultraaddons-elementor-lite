@@ -75,6 +75,7 @@ $ultraaddons_disable_items = Widgets_Manager::disableWidgetKeys();
 
                             $ultraaddons_name = isset( $ultraaddons_item['name'] ) ? $ultraaddons_item['name'] : false;
                             $ultraaddons_icon = isset( $ultraaddons_item['icon'] ) ? $ultraaddons_item['icon'] : false;
+                            $ultraaddons_badge = isset( $ultraaddons_item['badge'] ) ? $ultraaddons_item['badge'] : false;
                             $cat = isset( $ultraaddons_item['cat'] ) && is_array( $ultraaddons_item['cat'] ) ? $ultraaddons_item['cat'] : [];
                             $ultraaddons_free_pro = isset( $ultraaddons_item['is_pro'] ) && $ultraaddons_item['is_pro'] ? 'pro' : 'free';
                             
@@ -107,6 +108,9 @@ $ultraaddons_disable_items = Widgets_Manager::disableWidgetKeys();
                             //$ultraaddons_html_class[] = $ultraaddons_icon;
                             $ultraaddons_html_class[] = $ultraaddons_free_pro;
                             $ultraaddons_html_class[] = $ultraaddons_class_name;
+                            if ( ! empty( $ultraaddons_badge ) ) {
+                                $ultraaddons_html_class[] = 'ua-has-badge';
+                            }
                         ?>
                         <label data-name="<?php echo esc_attr( $ultraaddons_name ); ?>" 
                              for="<?php echo esc_attr( $ultraaddons_checkbox_id ); ?>"
@@ -123,6 +127,9 @@ $ultraaddons_disable_items = Widgets_Manager::disableWidgetKeys();
                                     <div class="ua-designed-checkbox"></div>
                                 </div>
                             </div>
+                            <?php if ( ! empty( $ultraaddons_badge ) ) : ?>
+                                <span class="ua-option-badge ua-option-badge-<?php echo esc_attr( strtolower( $ultraaddons_badge ) ); ?>"><?php echo esc_html( $ultraaddons_badge ); ?></span>
+                            <?php endif; ?>
                         </label>
                         <?php } ?>
                     </div>
