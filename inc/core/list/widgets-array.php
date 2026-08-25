@@ -566,16 +566,9 @@ $ultraaddons_widgetsArray = [
         'cat'       => [
             __( 'General', 'ultraaddons-elementor-lite' ),
         ],
-    ], 
+    ], */
     
-    'Product_Tabs'=> [
-        'name'      => __( 'Product Tabs', 'ultraaddons-elementor-lite' ),
-        'is_pro'   => false,
-        'icon'      => 'eicon-product-images',
-        'cat'       => [
-            __( 'WooCommerce', 'ultraaddons-elementor-lite' ),
-        ],
-    ],*/
+
 
     'Hotspot'=> [
         'name'      => __( 'Hotspot', 'ultraaddons-elementor-lite' ),
