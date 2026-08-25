@@ -1,0 +1,718 @@
+/**
+ * UltraAddons WooCommerce Single Product Tabs Stylesheet
+ *
+ * @package UltraAddons
+ * @version 1.1.0.14
+ */
+
+/* ==========================================================================
+   1. Base Wrapper & Reset (Overrides Theme / WooCommerce Floats)
+   ========================================================================== */
+.ua-product-tabs-wrapper {
+  width: 100% !important;
+  display: block !important;
+  box-sizing: border-box;
+  clear: both;
+}
+
+.ua-product-tabs-wrapper *,
+.ua-product-tabs-wrapper *:before,
+.ua-product-tabs-wrapper *:after {
+  box-sizing: inherit;
+}
+
+.ua-product-tabs-wrapper .woocommerce-tabs {
+  position: relative;
+  width: 100% !important;
+  display: block !important;
+  float: none !important;
+  clear: both !important;
+}
+
+/* Clear default WooCommerce tab styles & float rules */
+.ua-product-tabs-wrapper .woocommerce-tabs ul.tabs {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  float: none !important;
+  width: 100% !important;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 0 15px 0 !important;
+  border: none !important;
+  position: relative;
+  z-index: 1;
+}
+
+.ua-product-tabs-wrapper .woocommerce-tabs ul.tabs:before,
+.ua-product-tabs-wrapper .woocommerce-tabs ul.tabs:after {
+  display: none !important;
+}
+
+.ua-product-tabs-wrapper .woocommerce-tabs ul.tabs li {
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  float: none !important;
+  width: auto !important;
+  border: none;
+  background: transparent;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+}
+
+.ua-product-tabs-wrapper .woocommerce-tabs ul.tabs li:before,
+.ua-product-tabs-wrapper .woocommerce-tabs ul.tabs li:after {
+  display: none !important;
+}
+
+.ua-product-tabs-wrapper .woocommerce-tabs ul.tabs li a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-decoration: none !important;
+  font-weight: 500;
+  padding: 10px 20px;
+  line-height: 1.4;
+  border: none;
+  background: transparent;
+  transition: all 0.25s ease;
+  white-space: nowrap !important;
+  width: auto !important;
+  outline: none !important;
+}
+
+.ua-product-tabs-wrapper .woocommerce-tabs ul.tabs li:focus,
+.ua-product-tabs-wrapper .woocommerce-tabs ul.tabs li:focus-visible,
+.ua-product-tabs-wrapper .woocommerce-tabs ul.tabs li a:focus,
+.ua-product-tabs-wrapper .woocommerce-tabs ul.tabs li a:focus-visible {
+  outline: none !important;
+  outline-offset: 0 !important;
+  box-shadow: none !important;
+}
+
+/* ==========================================================================
+   2. Style Presets (Horizontal Layout)
+   ========================================================================== */
+
+/* 2.1 Modern Capsule / Pill Preset */
+.ua-ptabs-preset-pill .woocommerce-tabs ul.tabs {
+  gap: 10px;
+}
+
+.ua-ptabs-preset-pill .woocommerce-tabs ul.tabs li {
+  border-radius: 9999px;
+  background-color: #f3f4f6;
+  overflow: hidden;
+}
+
+.ua-ptabs-preset-pill .woocommerce-tabs ul.tabs li a {
+  border-radius: 9999px;
+  color: #4b5563;
+}
+
+.ua-ptabs-preset-pill .woocommerce-tabs ul.tabs li:hover {
+  background-color: #e5e7eb;
+}
+
+.ua-ptabs-preset-pill .woocommerce-tabs ul.tabs li:hover a {
+  color: #1f2937;
+}
+
+.ua-ptabs-preset-pill .woocommerce-tabs ul.tabs li.active {
+  background-color: #4f46e5;
+}
+
+.ua-ptabs-preset-pill .woocommerce-tabs ul.tabs li.active a {
+  color: #ffffff;
+}
+
+/* 2.2 Minimal Underline Preset (Universal & Pure Underline) */
+.ua-product-tabs-wrapper.ua-ptabs-preset-minimal .woocommerce-tabs ul.tabs li,
+.ua-product-tabs-wrapper.ua-ptabs-preset-minimal .woocommerce-tabs ul.tabs li.active,
+.ua-product-tabs-wrapper.ua-ptabs-preset-minimal .woocommerce-tabs ul.tabs li:hover {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 0 none transparent !important;
+  border-width: 0 !important;
+  border-style: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  outline: none !important;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-preset-minimal .woocommerce-tabs ul.tabs li a {
+  background: transparent !important;
+  background-color: transparent !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: 2px solid transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  outline: none !important;
+  color: #6b7280;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-preset-minimal .woocommerce-tabs ul.tabs li:hover a {
+  color: #111827;
+  border-bottom-color: #cbd5e1 !important;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-preset-minimal .woocommerce-tabs ul.tabs li.active a {
+  color: #4f46e5 !important;
+  font-weight: 600;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: 2px solid #4f46e5 !important;
+  background: transparent !important;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-preset-minimal .woocommerce-tabs ul.tabs li:after {
+  display: none !important;
+}
+
+/* Horizontal specific for Minimal Underline */
+.ua-ptabs-layout-horizontal.ua-ptabs-preset-minimal .woocommerce-tabs ul.tabs {
+  border-bottom: 2px solid #e5e7eb !important;
+  gap: 24px !important;
+  margin-bottom: 20px !important;
+}
+
+.ua-ptabs-layout-horizontal.ua-ptabs-preset-minimal .woocommerce-tabs ul.tabs li {
+  margin-bottom: -2px !important;
+}
+
+.ua-ptabs-layout-horizontal.ua-ptabs-preset-minimal .woocommerce-tabs ul.tabs li a {
+  padding: 10px 4px 12px 4px !important;
+}
+
+/* 2.3 Bordered Card Preset (Independent Floating Outline Cards) */
+.ua-ptabs-preset-bordered .woocommerce-tabs ul.tabs {
+  gap: 12px !important;
+  margin-bottom: 20px !important;
+}
+
+.ua-ptabs-preset-bordered .woocommerce-tabs ul.tabs li {
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.ua-ptabs-preset-bordered .woocommerce-tabs ul.tabs li a {
+  color: #475569 !important;
+  padding: 10px 18px !important;
+  font-weight: 500;
+}
+
+.ua-ptabs-preset-bordered .woocommerce-tabs ul.tabs li:hover {
+  border-color: #cbd5e1 !important;
+  background-color: #f8fafc !important;
+}
+
+.ua-ptabs-preset-bordered .woocommerce-tabs ul.tabs li.active {
+  border: 2px solid #4f46e5 !important;
+  background-color: #eef2ff !important;
+  box-shadow: 0 4px 12px -2px rgba(79, 70, 229, 0.15) !important;
+}
+
+.ua-ptabs-preset-bordered .woocommerce-tabs ul.tabs li.active a {
+  color: #4f46e5 !important;
+  font-weight: 600;
+}
+
+/* 2.4 Classic Bar Preset (Classic Accent Bar Style) */
+.ua-product-tabs-wrapper.ua-ptabs-layout-horizontal.ua-ptabs-preset-classic .woocommerce-tabs ul.tabs {
+  gap: 8px !important;
+  margin-bottom: 20px !important;
+  padding: 0 !important;
+  border-bottom: 2px solid #e2e8f0 !important;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-layout-horizontal.ua-ptabs-preset-classic .woocommerce-tabs ul.tabs li {
+  border: 1px solid #e2e8f0 !important;
+  border-top: 3px solid transparent !important;
+  border-radius: 6px 6px 0 0 !important;
+  margin-bottom: -2px !important;
+  background-color: #f8fafc !important;
+  position: relative;
+  z-index: 1;
+  box-shadow: none !important;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-layout-horizontal.ua-ptabs-preset-classic .woocommerce-tabs ul.tabs li a {
+  color: #64748b !important;
+  padding: 10px 18px !important;
+  font-weight: 500;
+  border: none !important;
+  border-radius: 6px 6px 0 0 !important;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-layout-horizontal.ua-ptabs-preset-classic .woocommerce-tabs ul.tabs li:hover {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-layout-horizontal.ua-ptabs-preset-classic .woocommerce-tabs ul.tabs li:hover a {
+  color: #0f172a !important;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-layout-horizontal.ua-ptabs-preset-classic .woocommerce-tabs ul.tabs li.active {
+  background-color: #ffffff !important;
+  border-top: 3px solid #4f46e5 !important;
+  border-left: 1px solid #e2e8f0 !important;
+  border-right: 1px solid #e2e8f0 !important;
+  border-bottom: 2px solid #ffffff !important;
+  margin-bottom: -2px !important;
+  z-index: 3 !important;
+  box-shadow: none !important;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-layout-horizontal.ua-ptabs-preset-classic .woocommerce-tabs ul.tabs li.active a {
+  color: #4f46e5 !important;
+  font-weight: 700;
+  border: none !important;
+}
+
+/* ==========================================================================
+   3. Tab Icons
+   ========================================================================== */
+.ua-ptab-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  font-size: 16px;
+  margin-right: 8px;
+  transition: all 0.25s ease;
+}
+
+.ua-ptab-icon svg {
+  display: block;
+  fill: currentColor;
+  width: 16px;
+  height: 16px;
+  transition: fill 0.25s ease;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-icon-after .ua-ptab-icon {
+  margin-right: 0 !important;
+  margin-left: 8px !important;
+}
+
+/* ==========================================================================
+   4. Content Panel / Tab Panes (Overrides Theme Floats)
+   ========================================================================== */
+.ua-product-tabs-wrapper .woocommerce-tabs .woocommerce-Tabs-panel,
+.ua-product-tabs-wrapper .woocommerce-tabs .panel {
+  display: none;
+  float: none !important;
+  width: 100% !important;
+  clear: both !important;
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #f3f4f6;
+  margin-top: 15px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.ua-product-tabs-wrapper .woocommerce-tabs .woocommerce-Tabs-panel[style*="display: block"],
+.ua-product-tabs-wrapper .woocommerce-tabs .woocommerce-Tabs-panel:first-of-type,
+.ua-product-tabs-wrapper .woocommerce-tabs .panel[style*="display: block"] {
+  display: block;
+}
+
+.ua-product-tabs-wrapper .woocommerce-tabs .woocommerce-Tabs-panel h2,
+.ua-product-tabs-wrapper .woocommerce-tabs .woocommerce-Tabs-panel h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #111827;
+}
+
+.ua-product-tabs-wrapper .woocommerce-tabs .woocommerce-Tabs-panel p {
+  line-height: 1.7;
+  margin-bottom: 16px;
+  color: #4b5563;
+}
+
+.ua-product-tabs-wrapper .woocommerce-tabs .woocommerce-Tabs-panel p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   5. Additional Information / Specifications Table
+   ========================================================================== */
+.ua-product-tabs-wrapper .woocommerce-product-attributes {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 0;
+  border: none;
+}
+
+.ua-product-tabs-wrapper .woocommerce-product-attributes tr {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.ua-product-tabs-wrapper .woocommerce-product-attributes tr:last-child {
+  border-bottom: none;
+}
+
+.ua-product-tabs-wrapper .woocommerce-product-attributes th,
+.ua-product-tabs-wrapper .woocommerce-product-attributes td {
+  padding: 12px 16px;
+  border: none;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.ua-product-tabs-wrapper .woocommerce-product-attributes th {
+  font-weight: 600;
+  width: 30%;
+  color: #1f2937;
+  text-align: left;
+}
+
+.ua-product-tabs-wrapper .woocommerce-product-attributes td {
+  color: #4b5563;
+}
+
+.ua-product-tabs-wrapper .woocommerce-product-attributes td p {
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================================================
+   6. Reviews & Rating Form
+   ========================================================================== */
+.ua-product-tabs-wrapper #reviews #comments {
+  margin-bottom: 30px;
+}
+
+.ua-product-tabs-wrapper .commentlist {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 0 25px 0 !important;
+}
+
+.ua-product-tabs-wrapper .commentlist li {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f3f4f6;
+  list-style: none !important;
+}
+
+.ua-product-tabs-wrapper .commentlist li:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.ua-product-tabs-wrapper .star-rating {
+  color: #f59e0b;
+  margin-bottom: 8px;
+}
+
+.ua-product-tabs-wrapper #review_form #respond {
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.ua-product-tabs-wrapper #review_form #respond .comment-reply-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.ua-product-tabs-wrapper #review_form #respond input[type="text"],
+.ua-product-tabs-wrapper #review_form #respond input[type="email"],
+.ua-product-tabs-wrapper #review_form #respond textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.ua-product-tabs-wrapper #review_form #respond input[type="text"]:focus,
+.ua-product-tabs-wrapper #review_form #respond input[type="email"]:focus,
+.ua-product-tabs-wrapper #review_form #respond textarea:focus {
+  border-color: #4f46e5;
+  outline: none;
+}
+
+.ua-product-tabs-wrapper #respond input#submit,
+.ua-product-tabs-wrapper .button {
+  background-color: #4f46e5;
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ua-product-tabs-wrapper #respond input#submit:hover,
+.ua-product-tabs-wrapper .button:hover {
+  background-color: #3730a3;
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   7. Vertical Layout Styles
+   ========================================================================== */
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical .woocommerce-tabs {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 24px;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical.ua-ptabs-vside-right .woocommerce-tabs {
+  flex-direction: row-reverse !important;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical .woocommerce-tabs ul.tabs {
+  display: flex !important;
+  flex-direction: column !important;
+  flex-wrap: nowrap !important;
+  align-items: flex-start;
+  flex-shrink: 0 !important;
+  width: 240px;
+  margin: 0 !important;
+  gap: 8px !important;
+  border: none !important;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical .woocommerce-tabs ul.tabs li {
+  max-width: 100% !important;
+  width: auto;
+  margin: 0 !important;
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+  border-radius: 8px;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical .woocommerce-tabs ul.tabs li a {
+  width: auto;
+  white-space: normal !important;
+  word-break: break-word !important;
+  padding: 10px 16px !important;
+  box-sizing: border-box !important;
+  line-height: 1.35 !important;
+  display: inline-flex !important;
+  border-radius: 8px;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical .woocommerce-tabs .woocommerce-Tabs-panel,
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical .woocommerce-tabs .panel {
+  flex: 1 1 0% !important;
+  width: auto !important;
+  min-width: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* 7.1 Minimal preset in vertical layout (Direct Underline Under Text) */
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical.ua-ptabs-preset-minimal .woocommerce-tabs ul.tabs {
+  gap: 12px !important;
+  border: none !important;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical.ua-ptabs-preset-minimal .woocommerce-tabs ul.tabs li,
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical.ua-ptabs-preset-minimal .woocommerce-tabs ul.tabs li.active,
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical.ua-ptabs-preset-minimal .woocommerce-tabs ul.tabs li:hover {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 0 none transparent !important;
+  border-width: 0 !important;
+  border-style: none !important;
+  border-color: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  width: auto !important;
+  outline: none !important;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical.ua-ptabs-preset-minimal .woocommerce-tabs ul.tabs li a {
+  background: transparent !important;
+  background-color: transparent !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: 2px solid transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  outline: none !important;
+  width: auto !important;
+  color: #6b7280;
+  font-weight: 500;
+  padding: 6px 2px 8px 2px !important;
+  display: inline-flex !important;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical.ua-ptabs-preset-minimal .woocommerce-tabs ul.tabs li:hover a {
+  color: #111827;
+  border-bottom-color: #cbd5e1 !important;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical.ua-ptabs-preset-minimal .woocommerce-tabs ul.tabs li.active a {
+  color: #4f46e5 !important;
+  font-weight: 600;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: 2px solid #4f46e5 !important;
+  background: transparent !important;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical.ua-ptabs-preset-minimal .woocommerce-tabs ul.tabs li:after {
+  display: none !important;
+}
+
+/* 7.2 Pill preset in vertical layout */
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical.ua-ptabs-preset-pill .woocommerce-tabs ul.tabs li,
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical.ua-ptabs-preset-pill .woocommerce-tabs ul.tabs li a {
+  border-radius: 8px !important;
+}
+
+/* 7.3 Bordered preset in vertical layout (Floating Outline Cards) */
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical.ua-ptabs-preset-bordered .woocommerce-tabs ul.tabs {
+  gap: 10px !important;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical.ua-ptabs-preset-bordered .woocommerce-tabs ul.tabs li {
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical.ua-ptabs-preset-bordered .woocommerce-tabs ul.tabs li.active {
+  border: 2px solid #4f46e5 !important;
+  background-color: #eef2ff !important;
+  box-shadow: 0 4px 12px -2px rgba(79, 70, 229, 0.15) !important;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical.ua-ptabs-preset-bordered .woocommerce-tabs ul.tabs li.active a {
+  color: #4f46e5 !important;
+  font-weight: 600;
+}
+
+/* 7.4 Classic preset in vertical layout (Classic Left Accent Bar) */
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical.ua-ptabs-preset-classic .woocommerce-tabs ul.tabs {
+  border: none !important;
+  gap: 8px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical.ua-ptabs-preset-classic .woocommerce-tabs ul.tabs li {
+  border: 1px solid #e2e8f0 !important;
+  border-left: 4px solid transparent !important;
+  border-radius: 6px !important;
+  margin: 0 !important;
+  background-color: #f8fafc !important;
+  width: auto !important;
+  max-width: 100% !important;
+  display: inline-flex !important;
+  position: relative;
+  z-index: 1;
+  box-shadow: none !important;
+  transition: all 0.2s ease;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical.ua-ptabs-preset-classic.ua-ptabs-vside-right .woocommerce-tabs ul.tabs li {
+  border-left: 1px solid #e2e8f0 !important;
+  border-right: 4px solid transparent !important;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical.ua-ptabs-preset-classic .woocommerce-tabs ul.tabs li a {
+  width: auto !important;
+  padding: 10px 18px !important;
+  color: #64748b !important;
+  font-weight: 500;
+  border: none !important;
+  border-radius: 6px !important;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical.ua-ptabs-preset-classic .woocommerce-tabs ul.tabs li:hover {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical.ua-ptabs-preset-classic .woocommerce-tabs ul.tabs li:hover a {
+  color: #0f172a !important;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical.ua-ptabs-preset-classic .woocommerce-tabs ul.tabs li.active {
+  background-color: #ffffff !important;
+  border-top: 1px solid #e2e8f0 !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  border-right: 1px solid #e2e8f0 !important;
+  border-left: 4px solid #4f46e5 !important;
+  z-index: 3 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04) !important;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical.ua-ptabs-preset-classic.ua-ptabs-vside-right .woocommerce-tabs ul.tabs li.active {
+  border-left: 1px solid #e2e8f0 !important;
+  border-right: 4px solid #4f46e5 !important;
+}
+
+.ua-product-tabs-wrapper.ua-ptabs-layout-vertical.ua-ptabs-preset-classic .woocommerce-tabs ul.tabs li.active a {
+  color: #4f46e5 !important;
+  font-weight: 700;
+  border: none !important;
+}
+
+/* ==========================================================================
+   8. Responsive
+   ========================================================================== */
+@media (max-width: 767px) {
+  .ua-product-tabs-wrapper .woocommerce-tabs ul.tabs,
+  .ua-product-tabs-wrapper.ua-ptabs-layout-vertical .woocommerce-tabs ul.tabs {
+    flex-direction: column !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .ua-product-tabs-wrapper.ua-ptabs-layout-vertical .woocommerce-tabs {
+    flex-direction: column !important;
+  }
+
+  .ua-product-tabs-wrapper .woocommerce-tabs ul.tabs li {
+    width: 100% !important;
+  }
+
+  .ua-product-tabs-wrapper .woocommerce-tabs ul.tabs li a {
+    width: 100% !important;
+    justify-content: flex-start !important;
+  }
+
+  .ua-product-tabs-wrapper .woocommerce-product-attributes th {
+    width: 40%;
+  }
+}
