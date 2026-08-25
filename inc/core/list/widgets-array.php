@@ -529,6 +529,26 @@ $ultraaddons_widgetsArray = [
             __( 'WooCommerce', 'ultraaddons-elementor-lite' ),
         ],
     ],
+    'Product_Title' => [
+        'name'  => __( 'Product Title', 'ultraaddons-elementor-lite' ),
+        'is_pro'   => false,
+        'is_wc'     => true,
+        'icon'      => 'uicon-header',
+        'badge'     => 'New',
+        'cat'       => [
+            __( 'WooCommerce', 'ultraaddons-elementor-lite' ),
+        ],
+    ],
+    'Product_Price' => [
+        'name'  => __( 'Product Price', 'ultraaddons-elementor-lite' ),
+        'is_pro'   => false,
+        'is_wc'     => true,
+        'icon'      => 'uicon-pricing-table',
+        'badge'     => 'New',
+        'cat'       => [
+            __( 'WooCommerce', 'ultraaddons-elementor-lite' ),
+        ],
+    ],
 /*     'Product_Filter_Gallery' => [
         'name'  => __( 'Product Filter Gallery', 'ultraaddons-elementor-lite' ),
         'is_pro'   => false,

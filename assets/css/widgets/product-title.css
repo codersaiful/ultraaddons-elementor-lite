@@ -1,0 +1,76 @@
+/**
+ * UltraAddons WooCommerce Product Title Widget Styles
+ */
+
+.woocommerce div.product .ua-pt-heading,
+.ua-product-title-wrapper .ua-pt-heading {
+  margin: 0;
+  padding: 0;
+  line-height: 1.3;
+}
+
+.ua-product-title-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+}
+
+.ua-product-title-wrapper .ua-pt-heading a {
+  color: inherit;
+  text-decoration: none;
+  -webkit-transition: color 0.3s ease, opacity 0.3s ease;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.ua-product-title-wrapper .ua-pt-heading a:hover {
+  text-decoration: none;
+}
+
+.ua-product-title-wrapper .ua-pt-affix {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+/* Badge (Text) Affix */
+.ua-product-title-wrapper .ua-pt-affix.ua-pt-prefix-badge,
+.ua-product-title-wrapper .ua-pt-affix.ua-pt-suffix-badge {
+  font-size: 0.75em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background-color: #0fc392;
+  color: #ffffff;
+  border-radius: 4px;
+  padding: 4px 8px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+/* Icon Affix */
+.ua-product-title-wrapper .ua-pt-affix.ua-pt-prefix-icon,
+.ua-product-title-wrapper .ua-pt-affix.ua-pt-suffix-icon {
+  font-size: 1em;
+}
+
+.ua-product-title-wrapper .ua-pt-affix.ua-pt-prefix-icon svg,
+.ua-product-title-wrapper .ua-pt-affix.ua-pt-suffix-icon svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}

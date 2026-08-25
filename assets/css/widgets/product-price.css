@@ -1,0 +1,166 @@
+/**
+ * UltraAddons WooCommerce Product Price Widget Styles
+ */
+
+.ua-product-price-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+}
+
+.ua-pp-prefix {
+  -webkit-box-ordinal-group: 1;
+  -ms-flex-order: 0;
+  order: 0;
+}
+
+.ua-pp-price-inner {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+  -webkit-box-ordinal-group: 2;
+  -ms-flex-order: 1;
+  order: 1;
+}
+
+.ua-pp-discount-badge {
+  -webkit-box-ordinal-group: 3;
+  -ms-flex-order: 2;
+  order: 2;
+}
+
+.ua-pp-suffix {
+  -webkit-box-ordinal-group: 4;
+  -ms-flex-order: 3;
+  order: 3;
+}
+
+.ua-pp-price-inner p.price {
+  margin: 0;
+  display: inherit;
+  align-items: inherit;
+  gap: inherit;
+}
+
+.ua-product-price-wrapper .ua-pp-price-inner del,
+.ua-pp-price-inner del,
+.woocommerce div.product .ua-product-price-wrapper p.price del {
+  opacity: 0.75;
+  text-decoration: line-through;
+  text-decoration-line: line-through;
+  -webkit-text-decoration-line: line-through;
+}
+
+.ua-product-price-wrapper .ua-pp-price-inner del *,
+.ua-pp-price-inner del * {
+  text-decoration: line-through;
+  text-decoration-line: line-through;
+  -webkit-text-decoration-line: line-through;
+}
+
+.ua-pp-price-inner ins,
+.ua-product-price-wrapper ins {
+  text-decoration: none !important;
+  font-weight: 700;
+}
+
+.ua-pp-price-inner .amount {
+  font-weight: 600;
+}
+
+/* Stacked Layout */
+.ua-pp-stacked-yes .ua-pp-price-inner,
+.ua-pp-stacked-yes .ua-pp-price-inner p.price {
+  -webkit-box-orient: vertical !important;
+  -webkit-box-direction: normal !important;
+  -ms-flex-direction: column !important;
+  flex-direction: column !important;
+  -webkit-box-align: start !important;
+  -ms-flex-align: start !important;
+  align-items: flex-start !important;
+  gap: 4px;
+}
+
+.ua-pp-stacked-yes .ua-pp-price-inner del,
+.ua-pp-stacked-yes .ua-pp-price-inner ins {
+  display: block;
+}
+
+/* Discount Badge */
+.ua-pp-discount-badge {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  font-size: 0.75em;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background-color: #e63946;
+  color: #ffffff;
+  border-radius: 4px;
+  padding: 3px 7px;
+  line-height: 1;
+  text-transform: uppercase;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+/* Affixes (Prefix / Suffix) */
+.ua-pp-affix {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.ua-pp-affix.ua-pp-prefix-badge,
+.ua-pp-affix.ua-pp-suffix-badge {
+  font-size: 0.8em;
+  font-weight: 600;
+  background-color: #f4f4f6;
+  color: #555555;
+  border-radius: 4px;
+  padding: 4px 8px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.ua-pp-affix.ua-pp-prefix-icon,
+.ua-pp-affix.ua-pp-suffix-icon {
+  font-size: 1.1em;
+}
+
+.ua-pp-affix.ua-pp-prefix-icon svg,
+.ua-pp-affix.ua-pp-suffix-icon svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
