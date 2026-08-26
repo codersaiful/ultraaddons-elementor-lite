@@ -1,0 +1,630 @@
+/**
+ * UltraAddons - WooCommerce Products Widget Styles
+ *
+ * @package UltraAddons
+ * @version 2.0.3.5
+ */
+
+/* ==========================================================================
+   1. Products Container & Grid System
+   ========================================================================== */
+.ua-wc-products-wrapper {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.ua-wc-products-wrapper *,
+.ua-wc-products-wrapper *::before,
+.ua-wc-products-wrapper *::after {
+    box-sizing: border-box;
+}
+
+.ua-wc-products-grid {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 24px;
+    row-gap: 30px;
+    transition: opacity 0.3s ease;
+}
+
+.ua-wc-products-grid.ua-loading {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.ua-wc-no-products,
+.ua-wc-notice {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 30px;
+    color: #64748b;
+    font-size: 15px;
+    background: #f8fafc;
+    border-radius: 8px;
+    margin: 0;
+}
+
+/* ==========================================================================
+   2. Product Card & Elements
+   ========================================================================== */
+.ua-wc-product-card {
+    position: relative;
+    background-color: #ffffff;
+    border: 1px solid #edf2f7;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-sizing: border-box;
+    height: 100%;
+}
+
+.ua-wc-product-card:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 18px 36px -6px rgba(15, 23, 42, 0.1);
+    transform: translateY(-5px);
+}
+
+/* Thumbnail Area */
+.ua-product-thumb-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8fafc;
+    border-radius: 12px 12px 0 0;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+}
+
+.ua-product-img-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.ua-product-img-link img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+}
+
+/* Secondary Image Hover Flip */
+.ua-product-thumb-wrapper .ua-secondary-thumb {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.ua-product-thumb-wrapper.ua-has-secondary-image:hover .ua-secondary-thumb {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.06);
+}
+
+.ua-product-thumb-wrapper.ua-has-secondary-image:hover .ua-primary-thumb {
+    opacity: 0;
+}
+
+.ua-wc-product-card:hover .ua-product-thumb-wrapper:not(.ua-has-secondary-image) img {
+    transform: scale(1.06);
+}
+
+/* ==========================================================================
+   3. Smart Badges
+   ========================================================================== */
+.ua-product-badges {
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    pointer-events: none;
+}
+
+/* Positions */
+.ua-badge-pos-top-left {
+    top: 10px;
+    left: 10px;
+    align-items: flex-start;
+}
+
+.ua-badge-pos-top-right {
+    top: 10px;
+    right: 10px;
+    align-items: flex-end;
+}
+
+.ua-badge-pos-bottom-left {
+    bottom: 10px;
+    left: 10px;
+    align-items: flex-start;
+}
+
+.ua-badge-pos-bottom-right {
+    bottom: 10px;
+    right: 10px;
+    align-items: flex-end;
+}
+
+.ua-product-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    transition: all 0.2s ease;
+}
+
+/* Shapes */
+.ua-badge-shape-rounded .ua-product-badge {
+    border-radius: 4px;
+}
+
+.ua-badge-shape-square .ua-product-badge {
+    border-radius: 0px;
+}
+
+.ua-badge-shape-pill .ua-product-badge {
+    border-radius: 30px;
+    padding: 5px 12px;
+}
+
+.ua-badge-shape-circle .ua-product-badge {
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4px;
+    font-size: 10px;
+    line-height: 1.1;
+}
+
+/* Types */
+.ua-badge-sale {
+    background: linear-gradient(135deg, #ef4444 0%, #f43f5e 100%);
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.35);
+}
+
+.ua-badge-new {
+    background: linear-gradient(135deg, #0fc392 0%, #0284c7 100%);
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(15, 195, 146, 0.35);
+}
+
+.ua-badge-featured {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: #ffffff;
+}
+
+.ua-badge-hot {
+    background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+    color: #ffffff;
+}
+
+.ua-badge-out-of-stock {
+    background-color: #64748b;
+    color: #ffffff;
+}
+
+.ua-badge-low-stock {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   4. Content Wrapper & Typography
+   ========================================================================== */
+.ua-product-content-wrapper {
+    padding: 16px 18px 18px 18px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.ua-product-header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.ua-product-category {
+    width: 100%;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+    color: #94a3b8;
+    text-align: inherit;
+}
+
+.ua-product-category a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.ua-product-category a:hover {
+    color: #0fc392;
+}
+
+.ua-product-title {
+    width: 100%;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0 0 8px 0;
+    color: #1e293b;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 42px;
+    text-align: inherit;
+}
+
+.ua-product-title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.ua-product-title a:hover {
+    color: #0fc392;
+}
+
+/* Star Rating */
+.ua-product-rating {
+    width: 100%;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.ua-product-rating .star-rating {
+    font-size: 13px;
+    color: #f59e0b;
+    float: none;
+    margin: 0;
+}
+
+/* Footer: Price & Add to Cart */
+.ua-product-footer {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    padding-top: 10px;
+}
+
+/* Price */
+.ua-product-price {
+    font-size: 17px;
+    font-weight: 700;
+    color: #0fc392;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    line-height: 1.2;
+}
+
+.ua-product-price .woocommerce-Price-amount,
+.ua-product-price bdi {
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.ua-product-price del {
+    font-size: 13px;
+    font-weight: 400;
+    color: #94a3b8 !important;
+    text-decoration: line-through !important;
+    opacity: 0.85;
+}
+
+.ua-product-price del .woocommerce-Price-amount {
+    color: #94a3b8 !important;
+}
+
+.ua-product-price ins {
+    text-decoration: none !important;
+    color: #0fc392 !important;
+    font-weight: 700 !important;
+    font-size: 18px !important;
+}
+
+/* ==========================================================================
+   5. Add to Cart Button
+   ========================================================================== */
+.ua-product-cart-btn-wrapper {
+    margin-top: 0;
+    width: 100%;
+}
+
+.ua-wc-products-wrapper a.ua-btn-cart,
+.ua-wc-products-wrapper .ua-btn-cart,
+.elementor-widget-ultraaddons-wc-products .ua-btn-cart,
+.ua-btn-cart {
+    box-sizing: border-box !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+    min-height: 42px !important;
+    padding: 10px 18px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+    text-decoration: none !important;
+    text-transform: capitalize !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+    color: #ffffff !important;
+    background-color: #0fc392 !important;
+    border: 1px solid #0fc392 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(15, 195, 146, 0.25) !important;
+    transition: all 0.25s ease !important;
+    cursor: pointer !important;
+    float: none !important;
+    margin: 0 !important;
+}
+
+.ua-wc-products-wrapper a.ua-btn-cart:hover,
+.ua-wc-products-wrapper .ua-btn-cart:hover,
+.elementor-widget-ultraaddons-wc-products .ua-btn-cart:hover,
+.ua-btn-cart:hover {
+    background-color: #0da77d !important;
+    color: #ffffff !important;
+    border-color: #0da77d !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 18px rgba(15, 195, 146, 0.4) !important;
+}
+
+.ua-btn-cart.loading {
+    opacity: 0.7 !important;
+    cursor: wait !important;
+}
+
+.ua-btn-cart.added {
+    background-color: #10b981 !important;
+    color: #ffffff !important;
+    border-color: #10b981 !important;
+}
+
+.ua-btn-cart .ua-cart-icon {
+    font-size: 14px !important;
+    display: inline-block !important;
+    line-height: 1 !important;
+}
+
+.ua-btn-cart .ua-cart-text {
+    display: inline-block !important;
+    line-height: 1 !important;
+}
+
+/* ==========================================================================
+   6. Category Filter Bar
+   ========================================================================== */
+.ua-products-filter-bar,
+.ua-wc-products-wrapper .ua-products-filter-bar {
+    display: block !important;
+    text-align: center;
+    margin-bottom: 35px !important;
+    width: 100% !important;
+    padding: 0 !important;
+    list-style: none !important;
+}
+
+/* Base button reset & modern pill layout - Beats any Theme CSS */
+.ua-wc-products-wrapper .ua-products-filter-bar button.ua-filter-btn,
+.ua-wc-products-wrapper .ua-products-filter-bar .ua-filter-btn,
+.ua-products-filter-bar button.ua-filter-btn,
+.ua-products-filter-bar .ua-filter-btn,
+.elementor-widget-ultraaddons-wc-products .ua-products-filter-bar button.ua-filter-btn {
+    box-sizing: border-box !important;
+    display: inline-flex !important;
+    vertical-align: middle !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    padding: 8px 22px !important;
+    margin: 4px 6px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    line-height: 1.4 !important;
+    cursor: pointer !important;
+    border-radius: 50px !important;
+    background-color: #f8fafc !important;
+    color: #475569 !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+    transition: all 0.25s ease !important;
+    text-decoration: none !important;
+    outline: none !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    height: auto !important;
+    min-height: 0 !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+}
+
+.ua-wc-products-wrapper .ua-products-filter-bar button.ua-filter-btn:hover,
+.ua-products-filter-bar button.ua-filter-btn:hover,
+.elementor-widget-ultraaddons-wc-products .ua-products-filter-bar button.ua-filter-btn:hover {
+    color: #0fc392 !important;
+    border-color: #0fc392 !important;
+    background-color: #f0fdf4 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(15, 195, 146, 0.15) !important;
+}
+
+.ua-wc-products-wrapper .ua-products-filter-bar button.ua-filter-btn.ua-active,
+.ua-products-filter-bar button.ua-filter-btn.ua-active,
+.elementor-widget-ultraaddons-wc-products .ua-products-filter-bar button.ua-filter-btn.ua-active {
+    background-color: #0fc392 !important;
+    color: #ffffff !important;
+    border-color: #0fc392 !important;
+    font-weight: 600 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(15, 195, 146, 0.35) !important;
+}
+
+/* Product Count Badge */
+.ua-filter-btn .ua-filter-count {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 20px !important;
+    height: 20px !important;
+    padding: 0 6px !important;
+    margin-left: 6px !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+    border-radius: 20px !important;
+    background: rgba(0, 0, 0, 0.06) !important;
+    color: inherit !important;
+    transition: all 0.2s ease !important;
+}
+
+.ua-filter-btn.ua-active .ua-filter-count {
+    background: rgba(255, 255, 255, 0.25) !important;
+    color: #ffffff !important;
+}
+
+/* ==========================================================================
+   8. Load More Button & Pagination
+   ========================================================================== */
+.ua-load-more-wrapper,
+.ua-wc-products-wrapper .ua-load-more-wrapper {
+    display: block !important;
+    text-align: center;
+    margin-top: 35px;
+    width: 100% !important;
+}
+
+.ua-load-more-btn,
+.ua-wc-products-wrapper .ua-load-more-btn {
+    box-sizing: border-box !important;
+    display: inline-flex !important;
+    vertical-align: middle !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    padding: 12px 30px !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    background-color: #0fc392 !important;
+    border: none !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    transition: all 0.25s ease !important;
+    text-decoration: none !important;
+}
+
+.ua-load-more-btn:hover {
+    background-color: #0ca37a !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(15, 195, 146, 0.3) !important;
+}
+
+.ua-load-more-btn.ua-loading {
+    opacity: 0.75;
+    cursor: wait;
+}
+
+.ua-pagination,
+.ua-wc-products-wrapper .ua-pagination,
+.elementor-widget-ultraaddons-wc-products .ua-pagination {
+    display: block !important;
+    text-align: center;
+    margin-top: 35px;
+    width: 100% !important;
+    padding: 0 !important;
+    list-style: none !important;
+}
+
+.ua-pagination a,
+.ua-pagination span,
+.ua-pagination .page-numbers,
+.ua-wc-products-wrapper .ua-pagination a,
+.ua-wc-products-wrapper .ua-pagination span {
+    box-sizing: border-box !important;
+    display: inline-flex !important;
+    vertical-align: middle !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 40px !important;
+    height: 40px !important;
+    padding: 0 12px !important;
+    margin: 0 3px;
+    border-radius: 6px !important;
+    border: 1px solid #e2e8f0 !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #475569 !important;
+    background-color: #f8fafc !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+}
+
+.ua-pagination a:hover,
+.ua-pagination .current,
+.ua-wc-products-wrapper .ua-pagination a:hover,
+.ua-wc-products-wrapper .ua-pagination .current {
+    background-color: #0fc392 !important;
+    color: #ffffff !important;
+    border-color: #0fc392 !important;
+    box-shadow: 0 4px 12px rgba(15, 195, 146, 0.25) !important;
+}
+
+/* ==========================================================================
+   9. Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .ua-wc-products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .ua-wc-products-grid {
+        grid-template-columns: 1fr;
+    }
+}

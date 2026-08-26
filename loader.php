@@ -92,6 +92,10 @@ class Loader {
         //For Editor Screen
         add_action( 'elementor/editor/before_enqueue_scripts', [ $this, 'elementor_screen_style' ] );
 
+        // Register WC Products AJAX handlers early so they are available
+        // on admin-ajax.php requests (outside Elementor's widget registration flow).
+        add_action( 'wp_ajax_ua_wc_products_load_more', [ $this, 'handle_wc_products_ajax' ] );
+        add_action( 'wp_ajax_nopriv_ua_wc_products_load_more', [ $this, 'handle_wc_products_ajax' ] );
         
     }
 
@@ -462,6 +466,19 @@ class Loader {
         }
         
 
+    }
+    
+    /**
+     * AJAX proxy: Load More & Category Filter for WC Products widget.
+     * Ensures the WC_Products class file is loaded before calling the handler.
+     */
+    public function handle_wc_products_ajax() {
+        $this->include_widget_base();
+        if ( class_exists( '\\UltraAddons\\Widget\\WC_Products' ) ) {
+            \UltraAddons\Widget\WC_Products::ajax_load_products();
+        } else {
+            wp_send_json_error( [ 'message' => 'Widget class not found.' ] );
+        }
     }
     
     /**

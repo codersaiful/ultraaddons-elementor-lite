@@ -168,10 +168,11 @@ $ultraaddons_widgetsArray = [
     ],
     
     'WC_Products' => [
-            'name'  => __( 'WooCommerce Products', 'ultraaddons-elementor-lite' ),
+            'name'  => __( 'Woo Products', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
-            'is_wc'     => false,
+            'is_wc'     => true,
             'icon'      => 'uicon-product',
+            'badge'     => 'UPDATED',
             'cat'       => [
                 __( 'WooCommerce', 'ultraaddons-elementor-lite' ),
             ],
