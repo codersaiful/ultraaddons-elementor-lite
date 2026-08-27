@@ -1,1 +1,180 @@
-﻿
+/**
+ * UltraAddons - Post & Page Title Widget Stylesheet
+ *
+ * Lightweight, clean, responsive styling for Dynamic Post/Page Titles,
+ * prefix/suffix, subtitles, left accent stripe, and bottom divider bars.
+ *
+ * @package UltraAddons
+ * @version 2.0.3.6
+ */
+
+/* ==========================================================================
+   1. Container & Layout
+   ========================================================================== */
+.ua-post-title-container {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.ua-post-title-inner {
+    position: relative;
+    display: inline-flex;
+    align-items: stretch;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.ua-post-title-text-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* ==========================================================================
+   2. Main Heading & Link
+   ========================================================================== */
+.ua-post-title-heading {
+    margin: 0;
+    padding: 0;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.25;
+    color: #0f172a;
+    display: block;
+    word-break: break-word;
+}
+
+.ua-post-title-text {
+    display: inline;
+}
+
+.ua-post-title-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.ua-post-title-link:hover {
+    color: #0fc392;
+}
+
+/* Gradient Text Effect */
+.ua-post-title-heading.ua-title-gradient .ua-post-title-text,
+.ua-post-title-heading.ua-title-gradient .ua-post-title-link {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+}
+
+/* ==========================================================================
+   3. Prefix & Suffix
+   ========================================================================== */
+.ua-post-title-prefix,
+.ua-post-title-suffix {
+    color: #0fc392;
+    font-weight: 600;
+    font-size: 0.65em;
+    line-height: normal;
+    transition: color 0.3s ease;
+}
+
+.ua-post-title-prefix.pos-inline {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.ua-post-title-suffix.pos-inline {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+.ua-post-title-prefix.pos-block {
+    display: block;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.ua-post-title-suffix.pos-block {
+    display: block;
+    margin-top: 6px;
+}
+
+/* ==========================================================================
+   4. Subtitle / Post Excerpt
+   ========================================================================== */
+.ua-post-title-subtitle {
+    margin: 12px 0 0 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #64748b;
+}
+
+/* ==========================================================================
+   5. Accent Bars (Underline / Left Stripe)
+   ========================================================================== */
+
+/* Left Vertical Stripe Bar */
+.ua-post-title-left-bar {
+    display: block;
+    width: 5px;
+    background-color: #0fc392;
+    border-radius: 4px;
+    margin-right: 18px;
+    flex-shrink: 0;
+}
+
+/* Bottom Divider Line */
+.ua-post-title-accent-wrap {
+    display: flex;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.ua-post-title-container[style*="text-align: center"] .ua-post-title-accent-wrap {
+    justify-content: center;
+}
+.ua-post-title-container[style*="text-align: right"] .ua-post-title-accent-wrap {
+    justify-content: flex-end;
+}
+.ua-post-title-container[style*="text-align: left"] .ua-post-title-accent-wrap {
+    justify-content: flex-start;
+}
+
+.ua-post-title-accent {
+    display: block;
+    width: 50px;
+    height: 0;
+    background: transparent;
+    border: none;
+    border-top: 3px solid #0fc392;
+    box-sizing: border-box;
+}
+
+.ua-post-title-accent.style-solid {
+    border-top-style: solid;
+}
+.ua-post-title-accent.style-dashed {
+    border-top-style: dashed;
+}
+.ua-post-title-accent.style-dotted {
+    border-top-style: dotted;
+}
+.ua-post-title-accent.style-double {
+    border-top-style: double;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+    .ua-post-title-heading {
+        font-size: 28px;
+    }
+    .ua-post-title-subtitle {
+        font-size: 14px;
+    }
+}

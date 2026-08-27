@@ -270,11 +270,13 @@ $ultraaddons_widgetsArray = [
     ],
     
     'Post_Title' => [
-            'name'  => __( 'Post Title / Page Title', 'ultraaddons-elementor-lite' ),
+            'name'  => __( 'Post Title', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
-            'icon'      => 'uicon-skillbar',
+            'icon'      => 'uicon-header',
+            'badge'     => 'new',
             'cat'       => [
                 __( 'Header_Footer', 'ultraaddons-elementor-lite' ),
+                __( 'General', 'ultraaddons-elementor-lite' ),
             ],
     ],
     
