@@ -5,6 +5,11 @@ use UltraAddons\Core\Extensions_Manager;
 defined( 'ABSPATH' ) || die();
 
 $ultraaddons_items = Extensions_Manager::get_list();
+if ( is_array( $ultraaddons_items ) ) {
+    uasort( $ultraaddons_items, function ( $a, $b ) {
+        return strcasecmp( $a['name'] ?? '', $b['name'] ?? '' );
+    } );
+}
 if ( isset( $_POST['ultraaddons_nonce'] ) ) {
     if ( ! current_user_can( ULTRA_ADDONS_CAPABILITY ) ) {
         wp_die( esc_html__( 'You are not allowed to manage UltraAddons extensions.', 'ultraaddons-elementor-lite' ) );

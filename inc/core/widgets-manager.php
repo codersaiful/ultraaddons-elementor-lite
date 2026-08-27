@@ -72,6 +72,9 @@ class Widgets_Manager{
         $ultraaddons_widgetsArray = include $file;
 
         if( is_array( $ultraaddons_widgetsArray ) ){
+            uasort( $ultraaddons_widgetsArray, function( $a, $b ) {
+                return strcasecmp( $a['name'] ?? '', $b['name'] ?? '' );
+            });
             return $ultraaddons_widgetsArray;
         }
         return [];
@@ -119,6 +122,11 @@ class Widgets_Manager{
             if( ! in_array( $widget_key, self::disableWidgetKeys() ) && ( ! $is_pro || ultraaddons_is_pro() ) ){
                $active_widgets[$widget_key] = $widget; 
             }
+        }
+        if ( is_array( $active_widgets ) ) {
+            uasort( $active_widgets, function( $a, $b ) {
+                return strcasecmp( $a['name'] ?? '', $b['name'] ?? '' );
+            });
         }
         return apply_filters( 'ultraaddons/widgets/active', $active_widgets );//$active_widgets;
     }

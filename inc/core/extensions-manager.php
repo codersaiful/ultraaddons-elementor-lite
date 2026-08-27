@@ -118,6 +118,9 @@ class Extensions_Manager{
         $ultraaddons_extensionsArray = include $file;
 
         if( is_array( $ultraaddons_extensionsArray ) ){
+            uasort( $ultraaddons_extensionsArray, function( $a, $b ) {
+                return strcasecmp( $a['name'] ?? '', $b['name'] ?? '' );
+            });
             return $ultraaddons_extensionsArray;
         }
         return [];
