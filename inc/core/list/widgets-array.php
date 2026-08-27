@@ -240,9 +240,10 @@ $ultraaddons_widgetsArray = [
     ],
     
     'Recent_Blog' => [
-            'name'  => __( 'Recent Blog / Post Grid', 'ultraaddons-elementor-lite' ),
+            'name'  => __( 'Recent Blog', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
             'icon'      => 'uicon-blog-list',
+            'badge'     => 'Updated',
             'cat'       => [
                 __( 'General', 'ultraaddons-elementor-lite' ),
             ],
