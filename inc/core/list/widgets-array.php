@@ -259,12 +259,13 @@ $ultraaddons_widgetsArray = [
     ], */
     
     
-    'WordPress_Plugin_Stats' => [
-            'name'  => __( 'WordPress Plugin Stats', 'ultraaddons-elementor-lite' ),
+    'Stats_Counter' => [
+            'name'  => __( 'Stats Counter', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
             'icon'      => 'uicon-skillbar',
+            'badge'     => 'new',
             'cat'       => [
-                __( 'Helper', 'ultraaddons-elementor-lite' ),
+                __( 'General', 'ultraaddons-elementor-lite' ),
             ],
     ],
     

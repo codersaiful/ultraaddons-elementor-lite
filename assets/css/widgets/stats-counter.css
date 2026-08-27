@@ -1,0 +1,516 @@
+/**
+ * UltraAddons - Stats Counter Widget Stylesheet
+ *
+ * Distinct and refined styles for Modern Accent Card, Clean Minimalist,
+ * Horizontal / Side-by-Side, Watermark Backdrop, Glassmorphism, and Modern Outline.
+ * Supports mechanical Odometer / Vertical Rolling Digits and Number Divider line.
+ *
+ * @package UltraAddons
+ * @version 2.0.3.5
+ */
+
+/* ==========================================================================
+   1. Base Counter Container
+   ========================================================================== */
+.ua-stats-counter-wrapper {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.3s ease;
+    overflow: hidden;
+}
+
+/* Hover Lift Effect */
+.ua-stats-counter-wrapper.ua-counter-lift-yes:hover {
+    transform: translateY(-6px);
+}
+
+/* Alignment Classes for Vertical Layouts */
+.ua-stats-counter-wrapper.align-left {
+    align-items: flex-start;
+    text-align: left;
+}
+.ua-stats-counter-wrapper.align-left .ua-counter-content-wrap {
+    align-items: flex-start;
+    text-align: left;
+}
+.ua-stats-counter-wrapper.align-left .ua-counter-divider-wrap {
+    align-self: flex-start;
+}
+
+.ua-stats-counter-wrapper.align-center {
+    align-items: center;
+    text-align: center;
+}
+.ua-stats-counter-wrapper.align-center .ua-counter-content-wrap {
+    align-items: center;
+    text-align: center;
+}
+.ua-stats-counter-wrapper.align-center .ua-counter-divider-wrap {
+    align-self: center;
+}
+
+.ua-stats-counter-wrapper.align-right {
+    align-items: flex-end;
+    text-align: right;
+}
+.ua-stats-counter-wrapper.align-right .ua-counter-content-wrap {
+    align-items: flex-end;
+    text-align: right;
+}
+.ua-stats-counter-wrapper.align-right .ua-counter-divider-wrap {
+    align-self: flex-end;
+}
+
+/* ==========================================================================
+   2. Odometer / Vertical Rolling Digits
+   ========================================================================== */
+.ua-counter-number {
+    display: inline-flex;
+    align-items: baseline;
+    font-variant-numeric: tabular-nums;
+}
+
+.ua-odometer-digit {
+    display: inline-block;
+    height: 1.15em;
+    line-height: 1.15em;
+    overflow: hidden;
+    vertical-align: top;
+    position: relative;
+}
+
+.ua-odometer-ribbon {
+    display: flex;
+    flex-direction: column;
+    transform: translateY(0);
+    will-change: transform;
+    transition: transform 2s cubic-bezier(0.12, 0.8, 0.2, 1);
+}
+
+.ua-odometer-ribbon span {
+    display: block;
+    height: 1.15em;
+    line-height: 1.15em;
+    text-align: center;
+}
+
+.ua-odometer-sep {
+    display: inline-block;
+    height: 1.15em;
+    line-height: 1.15em;
+    vertical-align: top;
+    font-size: 0.6em;
+    margin: 0 2px;
+}
+
+/* ==========================================================================
+   3. Number Divider Line
+   ========================================================================== */
+.ua-counter-divider-wrap {
+    display: flex;
+    width: 100%;
+    margin: 6px 0 12px 0;
+}
+
+.ua-stats-counter-wrapper.align-center .ua-counter-divider-wrap {
+    justify-content: center;
+}
+.ua-stats-counter-wrapper.align-left .ua-counter-divider-wrap,
+.ua-stats-counter-wrapper.layout-inline .ua-counter-divider-wrap,
+.ua-stats-counter-wrapper.media-pos-left .ua-counter-divider-wrap {
+    justify-content: flex-start;
+}
+.ua-stats-counter-wrapper.align-right .ua-counter-divider-wrap,
+.ua-stats-counter-wrapper.media-pos-right .ua-counter-divider-wrap {
+    justify-content: flex-end;
+}
+
+.ua-counter-divider {
+    display: block;
+    width: 45px;
+    height: 3px;
+    border-top: 3px solid #0fc392;
+    border-radius: 3px;
+}
+
+.ua-counter-divider.divider-style-dashed {
+    border-top-style: dashed;
+}
+.ua-counter-divider.divider-style-dotted {
+    border-top-style: dotted;
+}
+.ua-counter-divider.divider-style-double {
+    border-top-style: double;
+}
+
+/* ==========================================================================
+   4. Distinct Layout Modes
+   ========================================================================== */
+
+/* 4.1 Modern Accent Card Layout */
+.ua-stats-counter-wrapper.layout-card {
+    background-color: #ffffff;
+    border-radius: 18px;
+    padding: 38px 30px;
+    border: 1px solid #eef2f6;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+    position: relative;
+}
+
+.ua-stats-counter-wrapper.layout-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #0fc392 0%, #02a379 100%);
+    border-radius: 18px 18px 0 0;
+    z-index: 1;
+}
+
+.ua-stats-counter-wrapper.layout-card:hover {
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.09);
+}
+
+/* 4.2 Clean Minimal Layout (Unboxed) */
+.ua-stats-counter-wrapper.layout-clean {
+    background: transparent !important;
+    padding: 10px 0;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* 4.3 Horizontal / Side-by-Side Layout */
+.ua-stats-counter-wrapper.layout-inline,
+.ua-stats-counter-wrapper.media-pos-left {
+    flex-direction: row;
+    align-items: center;
+    gap: 22px;
+}
+
+.ua-stats-counter-wrapper.layout-inline {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 26px 30px;
+    border: 1px solid #eef2f6;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.04);
+}
+
+.ua-stats-counter-wrapper.layout-inline .ua-counter-media,
+.ua-stats-counter-wrapper.media-pos-left .ua-counter-media,
+.ua-stats-counter-wrapper.media-pos-right .ua-counter-media {
+    margin-bottom: 0 !important;
+    flex-shrink: 0;
+}
+
+.ua-stats-counter-wrapper.layout-inline .ua-counter-content-wrap,
+.ua-stats-counter-wrapper.media-pos-left .ua-counter-content-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    flex: 1;
+    min-width: 0;
+}
+
+.ua-stats-counter-wrapper.media-pos-right {
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 22px;
+}
+
+.ua-stats-counter-wrapper.media-pos-right .ua-counter-content-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    flex: 1;
+    min-width: 0;
+}
+
+.ua-stats-counter-wrapper.media-pos-inline-number .ua-counter-number-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.ua-stats-counter-wrapper.media-pos-inline-number .ua-counter-media {
+    margin-bottom: 0 !important;
+    font-size: 0.85em;
+}
+
+.ua-stats-counter-wrapper.layout-inline .ua-counter-number-wrap {
+    margin-bottom: 4px;
+}
+
+.ua-stats-counter-wrapper.layout-inline .ua-counter-title {
+    margin-bottom: 2px;
+}
+
+.ua-stats-counter-wrapper.layout-inline .ua-counter-description {
+    margin-top: 4px;
+}
+
+.ua-stats-counter-wrapper.valign-top {
+    align-items: flex-start;
+}
+
+.ua-stats-counter-wrapper.valign-center {
+    align-items: center;
+}
+
+.ua-stats-counter-wrapper.valign-bottom {
+    align-items: flex-end;
+}
+
+/* 4.4 Watermark / Big Number Backdrop Layout */
+.ua-stats-counter-wrapper.layout-watermark {
+    background-color: #ffffff;
+    border-radius: 18px;
+    padding: 40px 30px;
+    border: 1px solid #eef2f6;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+    position: relative;
+}
+
+.ua-counter-watermark {
+    position: absolute;
+    font-size: 150px;
+    font-weight: 900;
+    line-height: 0.85;
+    color: #0f172a;
+    opacity: 0.06;
+    user-select: none;
+    pointer-events: none;
+    z-index: 0;
+    letter-spacing: -4px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.ua-counter-watermark.pos-center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+}
+
+.ua-counter-watermark.pos-bottom-right {
+    bottom: -8px;
+    right: 15px;
+}
+
+.ua-counter-watermark.pos-top-right {
+    top: 15px;
+    right: 15px;
+}
+
+.ua-counter-watermark.pos-bottom-left {
+    bottom: -8px;
+    left: 15px;
+}
+
+.ua-stats-counter-wrapper:hover .ua-counter-watermark.pos-center {
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+.ua-stats-counter-wrapper:hover .ua-counter-watermark:not(.pos-center) {
+    transform: scale(1.05);
+}
+
+/* 4.5 Glassmorphism Layout */
+.ua-stats-counter-wrapper.layout-glass {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.45) 100%);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: 20px;
+    padding: 38px 30px;
+    border: 1.5px solid rgba(255, 255, 255, 0.85);
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.ua-stats-counter-wrapper.layout-glass:hover {
+    box-shadow: 0 24px 50px rgba(15, 23, 42, 0.1);
+}
+
+/* 4.6 Modern Outline / Bordered Layout */
+.ua-stats-counter-wrapper.layout-bordered {
+    background-color: #ffffff;
+    border-radius: 18px;
+    padding: 38px 30px;
+    border: 2px solid #e2e8f0;
+    box-shadow: none;
+}
+
+.ua-stats-counter-wrapper.layout-bordered:hover {
+    border-color: #0fc392;
+    box-shadow: 0 12px 32px rgba(15, 195, 146, 0.08);
+}
+
+/* ==========================================================================
+   5. Media & Icon Elements
+   ========================================================================== */
+.ua-counter-media {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.ua-counter-media i,
+.ua-counter-media svg {
+    font-size: 30px;
+    width: 1em;
+    height: 1em;
+    color: #0fc392;
+    transition: color 0.3s ease, fill 0.3s ease;
+}
+
+.ua-counter-media img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Icon Shapes */
+.ua-counter-media.shape-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(15, 195, 146, 0.1);
+}
+
+.ua-counter-media.shape-square {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    background: rgba(15, 195, 146, 0.1);
+}
+
+.ua-counter-media.shape-rounded {
+    width: 74px;
+    height: 58px;
+    border-radius: 20px;
+    background: rgba(15, 195, 146, 0.1);
+}
+
+.ua-stats-counter-wrapper:hover .ua-counter-media {
+    transform: scale(1.05);
+}
+
+/* ==========================================================================
+   6. Milestone Badge
+   ========================================================================== */
+.ua-counter-badge {
+    position: absolute;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: linear-gradient(135deg, #0fc392 0%, #02a379 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(15, 195, 146, 0.25);
+}
+
+.ua-counter-badge.pos-top-right {
+    top: 18px;
+    right: 18px;
+}
+
+.ua-counter-badge.pos-top-left {
+    top: 18px;
+    left: 18px;
+}
+
+.ua-counter-badge.pos-inline {
+    position: static;
+    margin-bottom: 12px;
+    align-self: flex-start;
+}
+
+/* ==========================================================================
+   7. Number & Text Content
+   ========================================================================== */
+.ua-counter-content-wrap {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.ua-counter-number-wrap {
+    display: inline-flex;
+    align-items: baseline;
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #0f172a;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.ua-counter-prefix {
+    margin-right: 4px;
+    font-size: 0.75em;
+    font-weight: 600;
+    color: #0fc392;
+}
+
+.ua-counter-suffix {
+    margin-left: 4px;
+    font-size: 0.75em;
+    font-weight: 700;
+    color: #0fc392;
+}
+
+.ua-counter-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 6px 0;
+    line-height: 1.35;
+}
+
+.ua-counter-description {
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .ua-stats-counter-wrapper.layout-inline,
+    .ua-stats-counter-wrapper.media-pos-left,
+    .ua-stats-counter-wrapper.media-pos-right {
+        flex-direction: column !important;
+        text-align: center !important;
+        align-items: center !important;
+    }
+    .ua-stats-counter-wrapper.layout-inline .ua-counter-content-wrap,
+    .ua-stats-counter-wrapper.media-pos-left .ua-counter-content-wrap,
+    .ua-stats-counter-wrapper.media-pos-right .ua-counter-content-wrap {
+        align-items: center !important;
+        text-align: center !important;
+    }
+    .ua-counter-number-wrap {
+        font-size: 34px;
+    }
+    .ua-counter-watermark {
+        font-size: 100px !important;
+    }
+}
