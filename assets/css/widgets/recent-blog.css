@@ -1,1 +1,475 @@
-/* Recent Blog Widget (Removed / Blank) */
+/**
+ * UltraAddons - Recent Blog / Post Grid Widget Styles
+ *
+ * @package UltraAddons
+ * @version 2.0.3.5
+ */
+
+/* ==========================================================================
+   1. Main Wrapper & Layout Grid
+   ========================================================================== */
+.ua-recent-blog-wrapper {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.ua-recent-blog-wrapper * {
+    box-sizing: border-box;
+}
+
+.ua-recent-blog-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--ua-blog-cols, 3), 1fr);
+    gap: var(--ua-blog-row-gap, 30px) var(--ua-blog-col-gap, 30px);
+    width: 100%;
+    transition: opacity 0.25s ease;
+}
+
+.ua-recent-blog-grid.ua-loading {
+    opacity: 0.45;
+    pointer-events: none;
+}
+
+/* Responsive Grid Columns */
+@media (max-width: 1024px) {
+    .ua-recent-blog-grid {
+        grid-template-columns: repeat(var(--ua-blog-cols-tablet, 2), 1fr);
+        gap: var(--ua-blog-row-gap-tablet, 24px) var(--ua-blog-col-gap-tablet, 24px);
+    }
+}
+
+@media (max-width: 767px) {
+    .ua-recent-blog-grid {
+        grid-template-columns: repeat(var(--ua-blog-cols-mobile, 1), 1fr);
+        gap: var(--ua-blog-row-gap-mobile, 20px) var(--ua-blog-col-gap-mobile, 20px);
+    }
+}
+
+/* ==========================================================================
+   2. Product / Post Card Styling
+   ========================================================================== */
+.ua-blog-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #edf2f7;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.3s ease;
+}
+
+.ua-blog-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
+    border-color: rgba(15, 195, 146, 0.3);
+}
+
+/* ==========================================================================
+   3. Thumbnail & Image Container
+   ========================================================================== */
+.ua-blog-thumb-wrap {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: #f8fafc;
+    height: 220px;
+    flex-shrink: 0;
+}
+
+.ua-blog-thumb-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.ua-blog-thumb-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.ua-recent-blog-wrapper.ua-blog-zoom-yes .ua-blog-card:hover .ua-blog-thumb-wrap img,
+.elementor-widget.ua-blog-zoom-yes .ua-blog-card:hover .ua-blog-thumb-wrap img {
+    transform: scale(1.08);
+}
+
+/* Floating Category Badge */
+.ua-blog-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: linear-gradient(135deg, #0fc392, #02a379);
+    color: #ffffff !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 12px rgba(15, 195, 146, 0.35);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.ua-blog-badge:hover {
+    transform: scale(1.04);
+    opacity: 0.95;
+}
+
+/* ==========================================================================
+   4. Card Content Body
+   ========================================================================== */
+.ua-blog-content {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* Post Meta Info (Author, Date, Comments, Reading Time) */
+.ua-blog-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.ua-blog-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.ua-blog-meta-item i {
+    color: #0fc392;
+    font-size: 12px;
+}
+
+.ua-blog-meta-item a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.ua-blog-meta-item a:hover {
+    color: #0fc392;
+}
+
+.ua-blog-meta-avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Post Title */
+.ua-blog-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin: 0 0 10px 0;
+    color: #1e293b;
+}
+
+.ua-blog-title a {
+    color: inherit;
+    text-decoration: none;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: color 0.2s ease;
+}
+
+.ua-blog-title a:hover {
+    color: #0fc392;
+}
+
+/* Post Excerpt */
+.ua-blog-excerpt {
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Card Footer & Read More Button */
+.ua-blog-footer {
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ua-blog-read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none !important;
+    transition: all 0.25s ease;
+}
+
+.ua-blog-read-more i {
+    font-size: 11px;
+    transition: transform 0.2s ease;
+}
+
+.ua-blog-read-more:hover i {
+    transform: translateX(4px);
+}
+
+/* 1. Text Link Variant */
+.ua-blog-read-more.btn-style-text {
+    color: #0fc392;
+    background: transparent;
+    padding: 0;
+}
+
+.ua-blog-read-more.btn-style-text:hover {
+    color: #02a379;
+}
+
+/* 2. Solid Button Variant */
+.ua-blog-read-more.btn-style-button {
+    background-color: #0fc392;
+    color: #ffffff !important;
+    padding: 8px 18px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+}
+
+.ua-blog-read-more.btn-style-button:hover {
+    background-color: #02a379;
+    color: #ffffff !important;
+}
+
+/* 3. Outline Button Variant */
+.ua-blog-read-more.btn-style-outline {
+    background-color: transparent;
+    border: 1px solid #0fc392;
+    color: #0fc392 !important;
+    padding: 7px 17px;
+    border-radius: 6px;
+}
+
+.ua-blog-read-more.btn-style-outline:hover {
+    background-color: #0fc392;
+    color: #ffffff !important;
+}
+
+/* ==========================================================================
+   5. List Layout (Horizontal Card)
+   ========================================================================== */
+.ua-recent-blog-wrapper.layout-list .ua-recent-blog-grid {
+    grid-template-columns: 1fr;
+}
+
+.ua-recent-blog-wrapper.layout-list .ua-blog-card {
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.ua-recent-blog-wrapper.layout-list .ua-blog-thumb-wrap {
+    width: 38%;
+    height: auto;
+    min-height: 180px;
+}
+
+.ua-recent-blog-wrapper.layout-list .ua-blog-content {
+    width: 62%;
+    padding: 24px 28px;
+}
+
+@media (max-width: 767px) {
+    .ua-recent-blog-wrapper.layout-list .ua-blog-card {
+        flex-direction: column;
+    }
+    .ua-recent-blog-wrapper.layout-list .ua-blog-thumb-wrap {
+        width: 100%;
+        height: 220px;
+        min-height: auto;
+    }
+    .ua-recent-blog-wrapper.layout-list .ua-blog-content {
+        width: 100%;
+        padding: 20px;
+    }
+}
+
+/* ==========================================================================
+   6. Hero / Featured Post Layout
+   ========================================================================== */
+.ua-recent-blog-wrapper.layout-hero .ua-recent-blog-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+}
+
+.ua-recent-blog-wrapper.layout-hero .ua-blog-card:first-child {
+    grid-row: span 2;
+}
+
+.ua-recent-blog-wrapper.layout-hero .ua-blog-card:first-child .ua-blog-title {
+    font-size: 22px;
+}
+
+.ua-recent-blog-wrapper.layout-hero .ua-blog-card:first-child .ua-blog-thumb-wrap {
+    height: 320px;
+}
+
+@media (max-width: 900px) {
+    .ua-recent-blog-wrapper.layout-hero .ua-recent-blog-grid {
+        grid-template-columns: 1fr;
+    }
+    .ua-recent-blog-wrapper.layout-hero .ua-blog-card:first-child {
+        grid-row: auto;
+    }
+}
+
+/* ==========================================================================
+   7. Live AJAX Category Filter Bar
+   ========================================================================== */
+.ua-blog-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    justify-content: var(--ua-filter-align, center);
+}
+
+.ua-blog-filter-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #64748b;
+    background: #f1f5f9;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none !important;
+    transition: all 0.25s ease;
+}
+
+.ua-blog-filter-btn:hover {
+    color: #0fc392;
+    background: #e2e8f0;
+}
+
+.ua-blog-filter-btn.active {
+    color: #ffffff;
+    background: #0fc392;
+    box-shadow: 0 4px 14px rgba(15, 195, 146, 0.35);
+}
+
+/* Filter Underline Style */
+.ua-blog-filter-bar.filter-style-underline .ua-blog-filter-btn {
+    background: transparent;
+    border-radius: 0;
+    padding: 8px 14px;
+    border-bottom: 2px solid transparent;
+    color: #64748b;
+}
+
+.ua-blog-filter-bar.filter-style-underline .ua-blog-filter-btn.active {
+    color: #0fc392;
+    background: transparent;
+    border-bottom-color: #0fc392;
+    box-shadow: none;
+}
+
+/* ==========================================================================
+   8. AJAX Pagination & Load More Button
+   ========================================================================== */
+.ua-blog-pagination-wrapper {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.ua-blog-pagination,
+.ua-blog-pagination-wrapper:not(:has(.ua-blog-pagination)) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.ua-blog-pagination .page-numbers,
+.ua-blog-pagination-wrapper .page-numbers {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 14px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    color: #334155;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+}
+
+.ua-blog-pagination .page-numbers:hover,
+.ua-blog-pagination .page-numbers.current,
+.ua-blog-pagination-wrapper .page-numbers:hover,
+.ua-blog-pagination-wrapper .page-numbers.current {
+    background: #0fc392;
+    border-color: #0fc392;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(15, 195, 146, 0.3);
+}
+
+.ua-blog-load-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border-radius: 30px;
+    background: #0fc392;
+    color: #ffffff !important;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(15, 195, 146, 0.3);
+    transition: all 0.25s ease;
+    text-decoration: none !important;
+}
+
+.ua-blog-load-more-btn:hover {
+    background: #02a379;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(15, 195, 146, 0.4);
+}
+
+.ua-blog-load-more-btn.loading {
+    opacity: 0.75;
+    pointer-events: none;
+}

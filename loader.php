@@ -96,6 +96,10 @@ class Loader {
         // on admin-ajax.php requests (outside Elementor's widget registration flow).
         add_action( 'wp_ajax_ua_wc_products_load_more', [ $this, 'handle_wc_products_ajax' ] );
         add_action( 'wp_ajax_nopriv_ua_wc_products_load_more', [ $this, 'handle_wc_products_ajax' ] );
+
+        // Register Recent Blog / Post Grid AJAX handlers early
+        add_action( 'wp_ajax_ua_recent_blog_load_posts', [ $this, 'handle_recent_blog_ajax' ] );
+        add_action( 'wp_ajax_nopriv_ua_recent_blog_load_posts', [ $this, 'handle_recent_blog_ajax' ] );
         
     }
 
@@ -478,6 +482,23 @@ class Loader {
             \UltraAddons\Widget\WC_Products::ajax_load_products();
         } else {
             wp_send_json_error( [ 'message' => 'Widget class not found.' ] );
+        }
+    }
+
+    /**
+     * AJAX proxy: Load More, Pagination & Category Filter for Recent Blog widget.
+     * Ensures the Recent_Blog class file is loaded before calling the handler.
+     */
+    public function handle_recent_blog_ajax() {
+        $this->include_widget_base();
+        $blog_widget_file = ULTRA_ADDONS_DIR . 'inc/widget/recent-blog.php';
+        if ( file_exists( $blog_widget_file ) ) {
+            include_once $blog_widget_file;
+        }
+        if ( class_exists( '\\UltraAddons\\Widget\\Recent_Blog' ) ) {
+            \UltraAddons\Widget\Recent_Blog::ajax_load_posts();
+        } else {
+            wp_send_json_error( [ 'message' => 'Recent Blog widget class not found.' ] );
         }
     }
     

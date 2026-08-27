@@ -239,14 +239,14 @@ $ultraaddons_widgetsArray = [
             ],
     ],
     
-    /* 'Recent_Blog' => [
-            'name'  => __( 'Recent Blog', 'ultraaddons-elementor-lite' ),
+    'Recent_Blog' => [
+            'name'  => __( 'Recent Blog / Post Grid', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
             'icon'      => 'uicon-blog-list',
             'cat'       => [
                 __( 'General', 'ultraaddons-elementor-lite' ),
             ],
-    ], */
+    ],
     
     /* 'Skill_Bar' => [
             'name'  => __( 'Skill Bar', 'ultraaddons-elementor-lite' ),
