@@ -14,6 +14,7 @@ $ultraaddons_widgetsArray = [
         'name'      => __( 'Button', 'ultraaddons-elementor-lite' ),
         'is_pro'   => false,
         'icon'      => 'uicon-button',
+        'badge'    => 'new',
         'cat'       => [
             __( 'General', 'ultraaddons-elementor-lite' ),
         ],
@@ -33,6 +34,7 @@ $ultraaddons_widgetsArray = [
             'name'  => __( 'Advance Heading', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
             'icon'      => 'uicon-header',
+            'badge'     => 'new',
             'cat'       => [
                 __( 'General', 'ultraaddons-elementor-lite' ),
             ],
@@ -42,6 +44,7 @@ $ultraaddons_widgetsArray = [
             'name'  => __( 'Info Box', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
             'icon'      => 'uicon-icon-box',
+            'badge'     => 'new',
             'cat'       => [
                 __( 'General', 'ultraaddons-elementor-lite' ),
             ],
@@ -60,6 +63,7 @@ $ultraaddons_widgetsArray = [
             'name'  => __( 'Countdown Timer', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
             'icon'      => 'uicon-clock',//eicon-countdown
+            'badge'     => 'new',
             'cat'       => [
                 __( 'General', 'ultraaddons-elementor-lite' ),
             ],
@@ -78,6 +82,7 @@ $ultraaddons_widgetsArray = [
             'name'  => __( 'WC Mini Cart', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
             'icon'      => 'uicon-cart',
+            'badge'     => 'new',
             'cat'       => [
                 __( 'WooCommerce', 'ultraaddons-elementor-lite' ),
             ],
@@ -172,7 +177,7 @@ $ultraaddons_widgetsArray = [
             'is_pro'   => false,
             'is_wc'     => true,
             'icon'      => 'uicon-product',
-            'badge'     => 'UPDATED',
+            'badge'     => 'new',
             'cat'       => [
                 __( 'WooCommerce', 'ultraaddons-elementor-lite' ),
             ],
@@ -193,6 +198,7 @@ $ultraaddons_widgetsArray = [
             'name'  => __( 'Testimonial Box', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
             'icon'      => 'uicon-testimonial',
+            'badge'     => 'new',
             'cat'       => [
                 __( 'General', 'ultraaddons-elementor-lite' ),
             ],
@@ -203,6 +209,7 @@ $ultraaddons_widgetsArray = [
             'name'  => __( 'Team Box', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
             'icon'      => 'eicon-person',
+            'badge'     => 'new',
             'cat'       => [
                 __( 'General', 'ultraaddons-elementor-lite' ),
             ],
@@ -243,7 +250,7 @@ $ultraaddons_widgetsArray = [
             'name'  => __( 'Recent Blog', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
             'icon'      => 'uicon-blog-list',
-            'badge'     => 'Updated',
+            'badge'     => 'new',
             'cat'       => [
                 __( 'General', 'ultraaddons-elementor-lite' ),
             ],
@@ -329,6 +336,7 @@ $ultraaddons_widgetsArray = [
             'name'  => __( 'Advanced Accordion', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
             'icon'      => 'eicon-accordion',
+            'badge'     => 'new',
             'cat'       => [
                 __( 'General', 'ultraaddons-elementor-lite' ),
             ],
@@ -347,6 +355,7 @@ $ultraaddons_widgetsArray = [
             'name'  => __( 'Feature List', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
             'icon'      => 'eicon-editor-list-ul',
+            'badge'     => 'new',
             'cat'       => [
                 __( 'General', 'ultraaddons-elementor-lite' ),
             ],
@@ -457,6 +466,7 @@ $ultraaddons_widgetsArray = [
             'name'  => __( 'Flip Box', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
             'icon'      => 'eicon-flip-box',
+            'badge'     => 'New',
             'cat'       => [
                 __( 'General', 'ultraaddons-elementor-lite' ),
             ],
@@ -465,6 +475,7 @@ $ultraaddons_widgetsArray = [
             'name'  => __( 'Tooltip', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
             'icon'      => 'eicon-commenting-o',
+            'badge'     => 'New',
             'cat'       => [
                 __( 'General', 'ultraaddons-elementor-lite' ),
             ],
@@ -481,7 +492,7 @@ $ultraaddons_widgetsArray = [
             'name'  => __( 'Product Carousel', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
             'icon'      => 'eicon-products',
-            'badge'     => 'Updated',
+            'badge'     => 'new',
             'cat'       => [
                 __( 'WooCommerce', 'ultraaddons-elementor-lite' ),
             ],
@@ -530,6 +541,7 @@ $ultraaddons_widgetsArray = [
         'name'  => __( 'Product List', 'ultraaddons-elementor-lite' ),
         'is_pro'   => false,
         'icon'      => 'eicon-product-list',
+        'badge'     => 'New',
         'cat'       => [
             __( 'WooCommerce', 'ultraaddons-elementor-lite' ),
         ],
@@ -569,7 +581,7 @@ $ultraaddons_widgetsArray = [
         'is_pro'   => false,
         'is_wc'     => true,
         'icon'      => 'eicon-product-tabs',
-        'badge'     => 'UPDATED',
+        'badge'     => 'new',
         'cat'       => [
             __( 'WooCommerce', 'ultraaddons-elementor-lite' ),
         ],
@@ -735,6 +747,7 @@ $ultraaddons_widgetsArray = [
         'name'      => __( 'Filterable Gallery', 'ultraaddons-elementor-lite' ),
         'is_pro'   => false,
         'icon'      => 'eicon-gallery-grid',
+        'badge'     => 'New',
         'cat'       => [
             __( 'General', 'ultraaddons-elementor-lite' ),
         ],
@@ -744,7 +757,7 @@ $ultraaddons_widgetsArray = [
         'name'      => __( 'Content Toggle', 'ultraaddons-elementor-lite' ),
         'is_pro'   => false,
         'icon'      => 'eicon-dual-button',
-        'badge'     => 'Updated',
+        'badge'     => 'new',
         'cat'       => [
             __( 'General', 'ultraaddons-elementor-lite' ),
         ],
