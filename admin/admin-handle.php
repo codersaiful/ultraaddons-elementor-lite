@@ -78,6 +78,11 @@ class Admin_Handle{
         wp_enqueue_script( 'ultraaddons-admin-script', ULTRA_ADDONS_ASSETS . 'js/admin.js', [ 'jquery' ], ULTRA_ADDONS_VERSION, true );
         wp_enqueue_style( 'ultraaddons-icon-font', ULTRA_ADDONS_ASSETS . 'icons/ultraaddons/css/ultraaddons.css', [], ULTRA_ADDONS_VERSION );
         wp_enqueue_style( 'ultraaddons-extra-icons-style', ULTRA_ADDONS_ASSETS . 'icons/ultra-addons-extra/css/fontello.css', [], ULTRA_ADDONS_VERSION );
+        if ( wp_style_is( 'elementor-icons', 'registered' ) ) {
+            wp_enqueue_style( 'elementor-icons' );
+        } elseif ( defined( 'ELEMENTOR_ASSETS_URL' ) ) {
+            wp_enqueue_style( 'elementor-icons', ELEMENTOR_ASSETS_URL . 'lib/eicons/css/elementor-icons.min.css', [], defined( 'ELEMENTOR_VERSION' ) ? ELEMENTOR_VERSION : ULTRA_ADDONS_VERSION );
+        }
 
         if ( self::$ultraaddons_menu_slug === $page ) {
             wp_enqueue_style( 'owl-corousel-style', ULTRA_ADDONS_ASSETS . 'vendor/css/owl/owl.carousel.min.css', [], ULTRA_ADDONS_VERSION );

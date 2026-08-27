@@ -346,6 +346,7 @@ $ultraaddons_widgetsArray = [
             'name'  => __( 'Advanced Tabs', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
             'icon'      => 'eicon-tabs',
+            'badge'     => 'new',
             'cat'       => [
                 __( 'General', 'ultraaddons-elementor-lite' ),
             ],
