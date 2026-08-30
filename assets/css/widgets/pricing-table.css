@@ -1,1 +1,526 @@
-﻿
+/**
+ * UltraAddons - Pricing Table Widget Stylesheet
+ *
+ * @package UltraAddons
+ * @version 2.0.3.6
+ */
+
+/* ==========================================================================
+   1. Main Wrapper & Card Container
+   ========================================================================== */
+.ua-pricing-table-wrapper {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.ua-pricing-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    margin: 0;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 40px 32px;
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.ua-pricing-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* ==========================================================================
+   2. Ribbons & Badges
+   ========================================================================== */
+/* Corner Ribbon */
+.ua-pricing-ribbon-corner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 110px;
+    height: 110px;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.ua-pricing-ribbon-corner .ribbon-inner {
+    position: absolute;
+    display: block;
+    width: 160px;
+    padding: 6px 0;
+    background-color: #0fc392;
+    color: #ffffff;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    right: -42px;
+    top: 22px;
+    transform: rotate(45deg);
+}
+
+/* Left Corner Ribbon */
+.ua-pricing-ribbon-corner.corner-left {
+    right: auto;
+    left: 0;
+}
+.ua-pricing-ribbon-corner.corner-left .ribbon-inner {
+    right: auto;
+    left: -42px;
+    transform: rotate(-45deg);
+}
+
+/* Top Floating Pill Badge */
+.ua-pricing-ribbon-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    padding: 6px 16px;
+    background: linear-gradient(135deg, #0fc392 0%, #0284c7 100%);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.75px;
+    border-radius: 9999px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(15, 195, 146, 0.3);
+}
+
+/* Header Flag Badge */
+.ua-pricing-ribbon-flag {
+    position: absolute;
+    top: 0;
+    right: 24px;
+    padding: 8px 16px 12px;
+    background: #0fc392;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   3. Header Section
+   ========================================================================== */
+.ua-pricing-header {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.ua-pricing-header-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 36px;
+    color: #0fc392;
+    transition: transform 0.3s ease;
+}
+
+.ua-pricing-card:hover .ua-pricing-header-icon {
+    transform: scale(1.1);
+}
+
+.ua-pricing-header-img {
+    max-width: 64px;
+    height: auto;
+    margin-bottom: 16px;
+    display: inline-block;
+}
+
+.ua-pricing-title {
+    margin: 0 0 8px 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.3;
+}
+
+.ua-pricing-subtitle {
+    margin: 0;
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   4. Pricing & Switcher Section
+   ========================================================================== */
+.ua-pricing-price-box {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.ua-pricing-price-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2px;
+    line-height: 1;
+    position: relative;
+}
+
+.ua-pricing-original-price {
+    font-size: 20px;
+    font-weight: 600;
+    color: #94a3b8;
+    text-decoration: line-through;
+    align-self: center;
+    margin-right: 6px;
+    line-height: 1;
+}
+
+.ua-pricing-currency {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1;
+    align-self: flex-start;
+}
+
+.ua-pricing-amount {
+    font-size: 48px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1;
+    letter-spacing: -1px;
+    display: inline-block;
+    align-self: center;
+    transition: all 0.25s ease;
+}
+
+.ua-pricing-sub-price {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1;
+    align-self: flex-start;
+    display: inline-block;
+    transition: all 0.25s ease;
+}
+
+.ua-pricing-period {
+    font-size: 15px;
+    font-weight: 500;
+    color: #64748b;
+    align-self: flex-end;
+    margin-left: 4px;
+    line-height: 1;
+}
+
+.ua-pricing-period.period-block {
+    display: block;
+    width: 100%;
+    margin-top: 6px;
+    text-align: center;
+    align-self: auto;
+}
+
+/* Billing Cycle Switcher */
+.ua-pricing-switcher-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 16px 0 24px;
+    gap: 12px;
+}
+
+.ua-pricing-switch-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #64748b;
+    cursor: pointer;
+    transition: color 0.25s ease;
+    user-select: none;
+}
+
+.ua-pricing-switch-label.is-active {
+    color: #0f172a;
+}
+
+.ua-pricing-toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 26px;
+}
+
+.ua-pricing-toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.ua-pricing-toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #cbd5e1;
+    transition: 0.3s;
+    border-radius: 34px;
+}
+
+.ua-pricing-toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: #ffffff;
+    transition: 0.3s;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.ua-pricing-toggle-switch input:checked + .ua-pricing-toggle-slider {
+    background-color: #0fc392;
+}
+
+.ua-pricing-toggle-switch input:checked + .ua-pricing-toggle-slider:before {
+    transform: translateX(22px);
+}
+
+.ua-pricing-toggle-discount {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 8px;
+    background: #e6f9f4;
+    color: #0fc392;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 6px;
+    letter-spacing: 0.3px;
+    margin-left: 2px;
+}
+
+/* ==========================================================================
+   5. Features List Section
+   ========================================================================== */
+.ua-pricing-features {
+    margin-bottom: 32px;
+    flex-grow: 1;
+}
+
+.ua-pricing-features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+}
+
+.ua-pricing-feature-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    color: #334155;
+    line-height: 1.4;
+    position: relative;
+}
+
+.ua-pricing-feature-item.is-excluded {
+    color: #94a3b8;
+    opacity: 0.65;
+}
+
+.ua-pricing-feature-item.is-excluded .ua-pricing-feature-text {
+    text-decoration: line-through;
+}
+
+.ua-pricing-feature-item.is-highlighted {
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.ua-pricing-feature-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    margin-right: 12px;
+    flex-shrink: 0;
+    color: #0fc392;
+    line-height: 1;
+}
+
+.ua-pricing-feature-icon i {
+    font-size: inherit;
+    color: inherit;
+    line-height: 1;
+    display: inline-block;
+}
+
+.ua-pricing-feature-icon svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    display: inline-block;
+}
+
+.ua-pricing-feature-item.is-excluded .ua-pricing-feature-icon {
+    color: #cbd5e1;
+}
+
+.ua-pricing-feature-text {
+    display: inline-block;
+}
+
+/* Feature Tooltip */
+.ua-feature-tooltip-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.ua-feature-tooltip-icon {
+    font-size: 13px;
+    color: #94a3b8;
+    transition: color 0.2s ease;
+}
+
+.ua-feature-tooltip-wrap:hover .ua-feature-tooltip-icon {
+    color: #0fc392;
+}
+
+.ua-feature-tooltip-content {
+    visibility: hidden;
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    width: 200px;
+    background-color: #1e293b;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 12px;
+    line-height: 1.4;
+    opacity: 0;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    z-index: 9999;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.2);
+}
+
+.ua-feature-tooltip-content::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -6px;
+    border-width: 6px;
+    border-style: solid;
+    border-color: #1e293b transparent transparent transparent;
+}
+
+.ua-feature-tooltip-wrap:hover .ua-feature-tooltip-content {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ==========================================================================
+   6. Action Button & Footer Notice
+   ========================================================================== */
+.ua-pricing-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: auto;
+}
+
+.ua-pricing-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    max-width: 100%;
+    padding: 12px 32px;
+    background: #0fc392;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-sizing: border-box;
+    box-shadow: 0 4px 14px rgba(15, 195, 146, 0.25);
+    border: 2px solid transparent;
+}
+
+.ua-pricing-btn-width-full .ua-pricing-btn,
+.ua-pricing-btn.btn-full-width {
+    width: 100%;
+}
+
+.ua-pricing-btn:hover {
+    background: #0db184;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(15, 195, 146, 0.4);
+}
+
+.ua-pricing-btn .btn-icon-before {
+    margin-right: 8px;
+}
+
+.ua-pricing-btn .btn-icon-after {
+    margin-left: 8px;
+}
+
+.ua-pricing-notice {
+    margin: 12px 0 0 0;
+    font-size: 12px;
+    color: #94a3b8;
+    line-height: 1.4;
+}
+
+/* ==========================================================================
+   7. Responsive Styles
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .ua-pricing-card.is-featured {
+        transform: none;
+    }
+    .ua-pricing-card.is-featured:hover {
+        transform: translateY(-6px);
+    }
+}
+
+@media (max-width: 767px) {
+    .ua-pricing-card {
+        padding: 32px 20px;
+    }
+    .ua-pricing-amount {
+        font-size: 38px;
+    }
+}
