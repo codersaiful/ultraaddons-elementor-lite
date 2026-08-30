@@ -69,14 +69,16 @@ $ultraaddons_widgetsArray = [
             ],
     ],
     
-    /* 'Ultra_Slider' => [
-            'name'  => __( 'Ultra Slider', 'ultraaddons-elementor-lite' ),
+    'Advanced_Slider' => [
+            'name'  => __( 'Advanced Slider', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
             'icon'      => 'uicon-slider',
+            'badge'     => 'new',
             'cat'       => [
                 __( 'Slider', 'ultraaddons-elementor-lite' ),
+                __( 'General', 'ultraaddons-elementor-lite' ),
             ],
-    ], */
+    ],
     
     'Cart' => [
             'name'  => __( 'WC Mini Cart', 'ultraaddons-elementor-lite' ),

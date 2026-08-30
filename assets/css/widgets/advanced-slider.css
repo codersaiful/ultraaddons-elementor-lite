@@ -1,0 +1,507 @@
+/**
+ * UltraAddons - Advanced Slider CSS
+ *
+ * Fully responsive, modern, hardware-accelerated slider & carousel styles.
+ *
+ * @package UltraAddons
+ * @version 2.0.3.6
+ */
+
+/* ==========================================================================
+   1. Slider Container & Base
+   ========================================================================== */
+.ua-adv-slider-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.ua-adv-slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.ua-adv-slide {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 520px;
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+/* ==========================================================================
+   2. Slide Background, Video & Overlay
+   ========================================================================== */
+.ua-slide-bg-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.ua-slide-bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transform: scale(1);
+    transition: transform 0.6s ease;
+}
+
+/* Ken Burns Effects */
+.ua-kenburns-zoom .ua-slide-bg-image {
+    animation: uaKenBurnsZoom 15s ease-out infinite alternate;
+}
+
+.ua-kenburns-pan .ua-slide-bg-image {
+    animation: uaKenBurnsPan 20s ease-in-out infinite alternate;
+}
+
+@keyframes uaKenBurnsZoom {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.18);
+    }
+}
+
+@keyframes uaKenBurnsPan {
+    0% {
+        transform: scale(1.08) translate(0, 0);
+    }
+    50% {
+        transform: scale(1.15) translate(-2%, 2%);
+    }
+    100% {
+        transform: scale(1.08) translate(2%, -2%);
+    }
+}
+
+/* Background Overlay */
+.ua-slide-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    transition: background-color 0.3s ease;
+}
+
+/* Background Video */
+.ua-slide-bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* ==========================================================================
+   3. Content Box & Typography
+   ========================================================================== */
+.ua-slide-content-wrap {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 40px 52px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ua-slide-content-box {
+    position: relative;
+    max-width: 780px;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Subtitle / Tagline */
+.ua-slide-subtitle {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #0fc392;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+/* Main Title */
+.ua-slide-title {
+    font-size: 34px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.25;
+    margin-top: 0;
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+/* Description */
+.ua-slide-description {
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.88);
+    line-height: 1.6;
+    margin-top: 0;
+    margin-bottom: 22px;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ==========================================================================
+   4. Dual Action Buttons
+   ========================================================================== */
+.ua-slide-btn-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 14px;
+    margin-top: 4px;
+    max-width: 100%;
+}
+
+.ua-slide-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: transparent;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-sizing: border-box;
+}
+
+.ua-slide-btn-primary {
+    background-color: #0fc392;
+    color: #ffffff;
+    border-color: #0fc392;
+}
+
+.ua-slide-btn-primary:hover {
+    background-color: #0da87d;
+    border-color: #0da87d;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.ua-slide-btn-secondary {
+    background-color: transparent;
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.ua-slide-btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: #ffffff;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.ua-slide-btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+/* ==========================================================================
+   5. Staggered Content Entrance Animations
+   ========================================================================== */
+.ua-anim-fadeInUp .ua-slide-subtitle,
+.ua-anim-fadeInUp .ua-slide-title,
+.ua-anim-fadeInUp .ua-slide-description,
+.ua-anim-fadeInUp .ua-slide-btn-wrap {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.swiper-slide-active .ua-anim-fadeInUp .ua-slide-subtitle {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.15s;
+}
+
+.swiper-slide-active .ua-anim-fadeInUp .ua-slide-title {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+}
+
+.swiper-slide-active .ua-anim-fadeInUp .ua-slide-description {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.45s;
+}
+
+.swiper-slide-active .ua-anim-fadeInUp .ua-slide-btn-wrap {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.6s;
+}
+
+/* ZoomIn animation */
+.ua-anim-zoomIn .ua-slide-subtitle,
+.ua-anim-zoomIn .ua-slide-title,
+.ua-anim-zoomIn .ua-slide-description,
+.ua-anim-zoomIn .ua-slide-btn-wrap {
+    opacity: 0;
+    transform: scale(0.85);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.swiper-slide-active .ua-anim-zoomIn .ua-slide-subtitle {
+    opacity: 1;
+    transform: scale(1);
+    transition-delay: 0.15s;
+}
+
+.swiper-slide-active .ua-anim-zoomIn .ua-slide-title {
+    opacity: 1;
+    transform: scale(1);
+    transition-delay: 0.3s;
+}
+
+.swiper-slide-active .ua-anim-zoomIn .ua-slide-description {
+    opacity: 1;
+    transform: scale(1);
+    transition-delay: 0.45s;
+}
+
+.swiper-slide-active .ua-anim-zoomIn .ua-slide-btn-wrap {
+    opacity: 1;
+    transform: scale(1);
+    transition-delay: 0.6s;
+}
+
+/* ==========================================================================
+   6. Navigation Arrows
+   ========================================================================== */
+.ua-slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    background-color: transparent;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 20;
+    font-size: 28px;
+    border: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+}
+
+.ua-slider-arrow-prev {
+    left: 12px;
+}
+
+.ua-slider-arrow-next {
+    right: 12px;
+}
+
+.ua-slider-arrow:hover {
+    color: #0fc392;
+    transform: translateY(-50%) scale(1.15);
+}
+
+.ua-slider-arrow.swiper-button-disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Show on hover */
+.ua-arrows-on-hover .ua-slider-arrow {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.ua-arrows-on-hover .ua-slider-arrow-prev {
+    transform: translateY(-50%) translateX(-15px);
+}
+
+.ua-arrows-on-hover .ua-slider-arrow-next {
+    transform: translateY(-50%) translateX(15px);
+}
+
+.ua-adv-slider-container.ua-arrows-on-hover:hover .ua-slider-arrow,
+.ua-arrows-on-hover:hover .ua-slider-arrow {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.ua-adv-slider-container.ua-arrows-on-hover:hover .ua-slider-arrow-prev,
+.ua-arrows-on-hover:hover .ua-slider-arrow-prev {
+    transform: translateY(-50%) translateX(0);
+}
+
+.ua-adv-slider-container.ua-arrows-on-hover:hover .ua-slider-arrow-next,
+.ua-arrows-on-hover:hover .ua-slider-arrow-next {
+    transform: translateY(-50%) translateX(0);
+}
+
+/* ==========================================================================
+   7. Pagination Styles (Bullets, Fraction, Progressbar)
+   ========================================================================== */
+.ua-slider-pagination {
+    position: absolute;
+    bottom: 24px;
+    left: 0;
+    width: 100%;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    pointer-events: none;
+}
+
+.ua-slider-pagination .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    opacity: 1;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: all 0.3s ease;
+    margin: 0 !important;
+}
+
+.ua-slider-pagination .swiper-pagination-bullet-active {
+    background-color: #0fc392;
+    width: 28px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(15, 195, 146, 0.6);
+}
+
+/* Fraction Pagination */
+.ua-slider-pagination.swiper-pagination-fraction {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    bottom: 20px;
+}
+
+/* Progressbar Pagination */
+.ua-slider-pagination.swiper-pagination-progressbar {
+    top: 0;
+    bottom: auto;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.ua-slider-pagination.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+    background: #0fc392;
+}
+
+/* ==========================================================================
+   8. Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .ua-adv-slide {
+        min-height: 440px;
+    }
+
+    .ua-slide-title {
+        font-size: 30px;
+    }
+
+    .ua-slide-content-wrap {
+        padding: 30px 48px;
+    }
+}
+
+@media (max-width: 767px) {
+    .ua-adv-slide {
+        min-height: 380px;
+    }
+
+    .ua-slide-title {
+        font-size: 24px;
+        margin-bottom: 12px;
+    }
+
+    .ua-slide-subtitle {
+        font-size: 13px;
+        margin-bottom: 10px;
+    }
+
+    .ua-slide-description {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .ua-slide-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .ua-slide-content-wrap {
+        padding: 24px 36px;
+    }
+
+    .ua-slider-arrow {
+        width: 30px;
+        height: 30px;
+        font-size: 22px;
+    }
+
+    .ua-slider-arrow-prev {
+        left: 6px;
+    }
+
+    .ua-slider-arrow-next {
+        right: 6px;
+    }
+}
