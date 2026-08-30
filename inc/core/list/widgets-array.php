@@ -106,14 +106,15 @@ $ultraaddons_widgetsArray = [
             ],
     ], */
     
-   /*  'Pricing_Table' => [
+    'Pricing_Table' => [
             'name'  => __( 'Pricing Table', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
             'icon'      => 'uicon-pricing-table',
+            'badge'     => 'new',
             'cat'       => [
                 __( 'General', 'ultraaddons-elementor-lite' ),
             ],
-    ], */
+    ],
     
     'Product_Table' => [
             'name'  => __( 'Product Table', 'ultraaddons-elementor-lite' ),
@@ -728,14 +729,6 @@ $ultraaddons_widgetsArray = [
         ],
     ],
 
-    'Advance_Pricing_Table'=> [
-        'name'      => __( 'Advance Pricing Table', 'ultraaddons-elementor-lite' ),
-        'is_pro'   => false,
-        'icon'      => 'eicon-price-table',
-        'cat'       => [
-            __( 'General', 'ultraaddons-elementor-lite' ),
-        ],
-    ],
     'Video_Popup'=> [
         'name'      => __( 'Video Popup', 'ultraaddons-elementor-lite' ),
         'is_pro'   => false,
