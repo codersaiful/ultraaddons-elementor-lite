@@ -615,14 +615,6 @@ $ultraaddons_widgetsArray = [
             __( 'WooCommerce', 'ultraaddons-elementor-lite' ),
         ],
     ],
-    'Hero_Slider'=> [
-        'name'      => __( 'Hero Slider', 'ultraaddons-elementor-lite' ),
-        'is_pro'   => false,
-        'icon'      => 'uicon-slider',
-        'cat'       => [
-            __( 'Slider', 'ultraaddons-elementor-lite' ),
-        ],
-    ],
     'Bar_Chart'=> [
         'name'      => __( 'Bar Chart', 'ultraaddons-elementor-lite' ),
         'is_pro'   => false,
