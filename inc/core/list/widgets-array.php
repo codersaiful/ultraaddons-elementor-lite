@@ -170,6 +170,7 @@ $ultraaddons_widgetsArray = [
             'name'  => __( 'Icon Box', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
             'icon'      => 'uicon-icon-box',
+            'badge'     => 'new',
             'cat'       => [
                 __( 'General', 'ultraaddons-elementor-lite' ),
             ],
