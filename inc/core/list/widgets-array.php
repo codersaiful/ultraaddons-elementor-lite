@@ -602,6 +602,16 @@ $ultraaddons_widgetsArray = [
     ], */
     
 
+    'Image_Hotspots' => [
+        'name'      => __( 'Image Hotspots', 'ultraaddons-elementor-lite' ),
+        'is_pro'    => false,
+        'icon'      => 'eicon-image-hotspot',
+        'badge'     => 'new',
+        'cat'       => [
+            __( 'General', 'ultraaddons-elementor-lite' ),
+            __( 'WooCommerce', 'ultraaddons-elementor-lite' ),
+        ],
+    ],
 
     'Product_Category_Grid'=> [
         'name'      => __( 'Product Category Grid', 'ultraaddons-elementor-lite' ),
