@@ -1,0 +1,443 @@
+/**
+ * UltraAddons Content Ticker Stylesheet
+ * 60fps Hardware-Accelerated Animation System
+ */
+
+:root {
+    --ua-ticker-gap: 36px;
+    --ua-pulse-dot-color: #ffffff;
+}
+
+.ua-content-ticker-wrap {
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.ua-content-ticker {
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 48px;
+    height: var(--ua-ticker-height, 48px);
+    background-color: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* ===================================================
+   1. Heading Badge
+   =================================================== */
+.ua-ticker-badge-wrap {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    flex-shrink: 0;
+    z-index: 10;
+    height: 100%;
+    align-self: stretch;
+    margin-right: 16px;
+}
+
+.ua-ticker-pos-right .ua-ticker-badge-wrap {
+    margin-right: 0;
+    margin-left: 16px;
+}
+
+.ua-ticker-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+    background-color: #ef4444;
+    padding: 10px 20px 10px 18px;
+    height: 100%;
+    box-sizing: border-box;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.ua-ticker-badge a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.ua-ticker-badge-icon {
+    display: inline-flex;
+    align-items: center;
+    font-size: 13px;
+}
+
+/* Live TV Pulse Dot */
+.ua-ticker-pulse {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+}
+
+.ua-ticker-pulse-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--ua-pulse-dot-color, #ffffff);
+    z-index: 2;
+}
+
+.ua-ticker-pulse-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid var(--ua-pulse-dot-color, #ffffff);
+    animation: ua-live-pulse 1.6s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+    z-index: 1;
+}
+
+@keyframes ua-live-pulse {
+    0% {
+        transform: scale(0.6);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2.0);
+        opacity: 0;
+    }
+}
+
+/* Triangle Pointer */
+.ua-ticker-triangle {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent;
+    flex-shrink: 0;
+    align-self: center;
+}
+
+.ua-ticker-triangle-left {
+    border-width: 8px 0 8px 8px;
+    border-left-color: #ef4444;
+    margin-right: 0;
+    z-index: 11;
+}
+
+.ua-ticker-triangle-right {
+    border-width: 8px 8px 8px 0;
+    border-right-color: #ef4444;
+    margin-left: 0;
+    z-index: 11;
+}
+
+/* Badge on Right Position */
+.ua-ticker-pos-right .ua-content-ticker {
+    flex-direction: row-reverse;
+}
+
+/* ===================================================
+   2. Track & Content Area
+   =================================================== */
+.ua-ticker-track-wrap {
+    position: relative;
+    flex-grow: 1;
+    overflow: hidden;
+    height: 100%;
+    align-self: stretch;
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+
+.ua-ticker-track {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.ua-ticker-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+/* Thumbnail */
+.ua-ticker-item-thumb {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    overflow: hidden;
+    flex-shrink: 0;
+    line-height: 0;
+}
+
+.ua-ticker-item-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Category Badge */
+.ua-ticker-item-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: #1f2937;
+    padding: 2px 7px;
+    border-radius: 3px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    line-height: 1.4;
+    flex-shrink: 0;
+}
+
+/* Headline Title */
+.ua-ticker-item-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1f2937;
+    line-height: 1.4;
+}
+
+.ua-ticker-item-title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.ua-ticker-item-title a:hover {
+    color: #ef4444;
+}
+
+/* Date */
+.ua-ticker-item-date {
+    font-size: 12px;
+    color: #9ca3af;
+    white-space: nowrap;
+    margin-left: 2px;
+}
+
+/* ===================================================
+   3. Animation Modes
+   =================================================== */
+
+/* Swiper Container for Real Step-by-Step Slide Carousel */
+.ua-ticker-swiper {
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.ua-ticker-swiper .ua-ticker-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    box-sizing: content-box;
+}
+
+.ua-ticker-mode-vertical .ua-ticker-track {
+    flex-direction: column;
+}
+
+.ua-ticker-swiper .ua-ticker-item {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition-property: transform;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* Mode 1: Marquee Continuous Crawl */
+.ua-ticker-mode-marquee .ua-ticker-track-wrap {
+    mask-image: linear-gradient(to right, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+}
+
+.ua-ticker-mode-marquee .ua-ticker-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    will-change: transform;
+}
+
+.ua-ticker-mode-marquee .ua-ticker-item {
+    margin-right: var(--ua-ticker-gap, 36px);
+}
+
+.ua-ticker-mode-marquee[data-pause-hover="yes"] .ua-content-ticker:hover .ua-ticker-track {
+    animation-play-state: paused !important;
+}
+
+@keyframes ua-ticker-scroll-left {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+
+@keyframes ua-ticker-scroll-right {
+    0% {
+        transform: translate3d(-50%, 0, 0);
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/* Mode 2: Typewriter Animation */
+.ua-ticker-mode-typing .ua-ticker-item {
+    display: none;
+    width: 100%;
+}
+
+.ua-ticker-mode-typing .ua-ticker-item.ua-ticker-item-active {
+    display: inline-flex;
+}
+
+.ua-ticker-cursor {
+    display: inline-block;
+    margin-left: 2px;
+    font-weight: 700;
+    color: #ef4444;
+    animation: ua-cursor-blink 0.8s infinite;
+}
+
+@keyframes ua-cursor-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Mode 5: Fade Transition */
+.ua-ticker-mode-fade .ua-ticker-item {
+    display: none;
+    width: 100%;
+}
+
+.ua-ticker-mode-fade .ua-ticker-item.ua-ticker-item-active {
+    display: inline-flex;
+    animation: ua-ticker-fade 0.35s ease forwards;
+}
+
+@keyframes ua-ticker-fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* ===================================================
+   4. Navigation Buttons (Prev / Next) & Positioning
+   =================================================== */
+.ua-ticker-badge-wrap {
+    order: 1;
+}
+
+.ua-ticker-track-wrap {
+    order: 2;
+}
+
+.ua-ticker-nav {
+    order: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0 12px;
+    flex-shrink: 0;
+    z-index: 10;
+}
+
+/* Nav on Left (Placed between badge and headlines) */
+.ua-ticker-nav-pos-left .ua-ticker-nav {
+    order: 2;
+    padding: 0 6px 0 0;
+    margin-right: 14px;
+}
+
+.ua-ticker-nav-pos-left .ua-ticker-track-wrap {
+    order: 3;
+}
+
+/* When Badge is on Right side */
+.ua-ticker-pos-right.ua-ticker-nav-pos-right .ua-ticker-track-wrap {
+    order: 1;
+}
+
+.ua-ticker-pos-right.ua-ticker-nav-pos-right .ua-ticker-nav {
+    order: 2;
+    padding: 0 8px;
+}
+
+.ua-ticker-pos-right.ua-ticker-nav-pos-right .ua-ticker-badge-wrap {
+    order: 3;
+}
+
+.ua-ticker-pos-right.ua-ticker-nav-pos-left .ua-ticker-nav {
+    order: 1;
+    margin-left: 12px;
+    margin-right: 0;
+    padding: 0 4px;
+}
+
+.ua-ticker-pos-right.ua-ticker-nav-pos-left .ua-ticker-track-wrap {
+    order: 2;
+}
+
+.ua-ticker-pos-right.ua-ticker-nav-pos-left .ua-ticker-badge-wrap {
+    order: 3;
+}
+
+.ua-ticker-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #4b5563;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.ua-ticker-nav-btn:hover {
+    background-color: #ef4444;
+    color: #ffffff;
+}
+
+.ua-ticker-nav-btn:focus {
+    outline: none;
+}

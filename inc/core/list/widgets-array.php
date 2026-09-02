@@ -436,6 +436,16 @@ $ultraaddons_widgetsArray = [
                 __( 'General', 'ultraaddons-elementor-lite' ),
             ],
     ],
+	'Content_Ticker' => [
+            'name'  => __( 'Content Ticker', 'ultraaddons-elementor-lite' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-carousel',
+            'badge'     => 'new',
+            'cat'       => [
+                __( 'General', 'ultraaddons-elementor-lite' ),
+                __( 'Header_Footer', 'ultraaddons-elementor-lite' ),
+            ],
+    ],
 	'Card' => [
             'name'  => __( 'Card', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
