@@ -603,14 +603,6 @@ $ultraaddons_widgetsArray = [
     
 
 
-    'Hotspot'=> [
-        'name'      => __( 'Hotspot', 'ultraaddons-elementor-lite' ),
-        'is_pro'   => false,
-        'icon'      => 'eicon-image-hotspot',
-        'cat'       => [
-            __( 'Advance', 'ultraaddons-elementor-lite' ),
-        ],
-    ],
     'Product_Category_Grid'=> [
         'name'      => __( 'Product Category Grid', 'ultraaddons-elementor-lite' ),
         'is_pro'   => false,
