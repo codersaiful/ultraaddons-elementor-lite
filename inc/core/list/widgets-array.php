@@ -548,7 +548,7 @@ $ultraaddons_widgetsArray = [
     'Product_List' => [
         'name'  => __( 'Product List', 'ultraaddons-elementor-lite' ),
         'is_pro'   => false,
-        'icon'      => 'eicon-product-list',
+        'icon'      => 'eicon-post-list',
         'badge'     => 'New',
         'cat'       => [
             __( 'WooCommerce', 'ultraaddons-elementor-lite' ),

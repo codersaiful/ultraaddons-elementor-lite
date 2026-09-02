@@ -78,6 +78,13 @@ class Product_List extends Base {
     }
 
     /**
+     * Get Widget Icon.
+     */
+    public function get_icon() {
+        return 'ultraaddons eicon-post-list';
+    }
+
+    /**
      * Register Widget Controls
      */
     protected function register_controls() {
