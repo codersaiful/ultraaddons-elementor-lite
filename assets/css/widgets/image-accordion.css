@@ -1,0 +1,491 @@
+/**
+ * UltraAddons Image Accordion Stylesheet
+ *
+ * Smooth Flexbox transition engine, dual overlays,
+ * Ken Burns background zoom, and animated content reveal.
+ *
+ * @package UltraAddons
+ * @since 2.0.3.5
+ */
+
+:root {
+    --ua-ia-duration: 0.5s;
+    --ua-ia-active-flex: 3.5;
+}
+
+/* Base Container */
+.ua-image-accordion {
+    display: flex;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.ua-image-accordion *,
+.ua-image-accordion *::before,
+.ua-image-accordion *::after {
+    box-sizing: border-box;
+}
+
+/* Orientation */
+.ua-image-accordion,
+.ua-ia-dir-horizontal .ua-image-accordion,
+.ua-image-accordion.ua-ia-dir-horizontal {
+    flex-direction: row;
+}
+
+.ua-ia-dir-vertical .ua-image-accordion,
+.ua-image-accordion.ua-ia-dir-vertical {
+    flex-direction: column;
+}
+
+/* Tablet Orientation */
+@media (max-width: 1024px) {
+    .ua-ia-dir-tablet-vertical .ua-image-accordion {
+        flex-direction: column;
+    }
+    .ua-ia-dir-tablet-horizontal .ua-image-accordion {
+        flex-direction: row;
+    }
+}
+
+/* Mobile Orientation */
+@media (max-width: 767px) {
+    .ua-ia-dir-mobile-vertical .ua-image-accordion {
+        flex-direction: column;
+    }
+    .ua-ia-dir-mobile-horizontal .ua-image-accordion {
+        flex-direction: row;
+    }
+}
+
+/* Accordion Item */
+.ua-image-accordion .ua-ia-item {
+    position: relative;
+    flex: 1 1 0%;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: flex var(--ua-ia-duration, 0.4s) cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 1;
+}
+
+.ua-image-accordion .ua-ia-item.ua-ia-active {
+    flex: var(--ua-ia-active-flex, 3.5) 1 0%;
+    cursor: default;
+    z-index: 2;
+}
+
+/* Vertical Orientation Item Enhancements */
+.ua-ia-dir-vertical .ua-image-accordion .ua-ia-item,
+.ua-image-accordion.ua-ia-dir-vertical .ua-ia-item {
+    min-height: 50px;
+    width: 100%;
+}
+
+.ua-ia-dir-vertical .ua-image-accordion .ua-ia-item:not(.ua-ia-active) .ua-ia-content-wrap,
+.ua-image-accordion.ua-ia-dir-vertical .ua-ia-item:not(.ua-ia-active) .ua-ia-content-wrap {
+    padding: 15px 25px;
+    align-items: center;
+}
+
+.ua-ia-dir-vertical .ua-image-accordion .ua-ia-item:not(.ua-ia-active) .ua-ia-title,
+.ua-image-accordion.ua-ia-dir-vertical .ua-ia-item:not(.ua-ia-active) .ua-ia-title {
+    margin-bottom: 0;
+}
+
+/* Background Image Layer */
+.ua-image-accordion .ua-ia-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    transition: transform var(--ua-ia-duration, 0.5s) ease;
+    will-change: transform;
+    z-index: 1;
+}
+
+/* Ken Burns Zoom Effect */
+.ua-image-accordion[data-zoom="yes"] .ua-ia-item:hover .ua-ia-bg,
+.ua-image-accordion[data-zoom="yes"] .ua-ia-item.ua-ia-active .ua-ia-bg {
+    transform: scale(1.08);
+}
+
+/* Overlays */
+.ua-image-accordion .ua-ia-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    transition: opacity var(--ua-ia-duration, 0.5s) ease, background-color var(--ua-ia-duration, 0.5s) ease;
+}
+
+.ua-image-accordion .ua-ia-overlay-normal {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.ua-image-accordion .ua-ia-item.ua-ia-active .ua-ia-overlay-normal {
+    opacity: 0;
+}
+
+.ua-image-accordion .ua-ia-overlay-active {
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.65);
+}
+
+.ua-image-accordion .ua-ia-item.ua-ia-active .ua-ia-overlay-active {
+    opacity: 1;
+}
+
+/* Content Wrap */
+.ua-image-accordion .ua-ia-content-wrap {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    pointer-events: none;
+}
+
+.ua-image-accordion .ua-ia-content {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    pointer-events: auto;
+}
+
+.ua-image-accordion .ua-ia-content::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Icon */
+.ua-image-accordion .ua-ia-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 12px;
+    line-height: 1;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.ua-image-accordion .ua-ia-icon i,
+.ua-image-accordion .ua-ia-icon svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
+/* Subtitle / Badge */
+.ua-image-accordion .ua-ia-subtitle {
+    display: inline-block;
+    width: fit-content;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+/* Title */
+.ua-image-accordion .ua-ia-title {
+    margin: 0 0 10px 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.3;
+    transition: color 0.3s ease;
+    word-break: break-word;
+}
+
+/* Description */
+.ua-image-accordion .ua-ia-description {
+    margin: 0 0 15px 0;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+    word-break: break-word;
+}
+
+/* CTA Button */
+.ua-image-accordion .ua-ia-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: fit-content;
+    text-decoration: none !important;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #3f51b5;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ua-image-accordion .ua-ia-btn:hover {
+    background-color: #303f9f;
+    color: #ffffff;
+}
+
+.ua-image-accordion .ua-ia-btn i,
+.ua-image-accordion .ua-ia-btn svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
+/* ===================================================
+   Inactive / Active Content Visibility & Transitions
+   Pure CSS Transitions (hardware accelerated, 60fps)
+   =================================================== */
+
+/* --- Inactive: fast, clean retreat without delay --- */
+.ua-image-accordion .ua-ia-item:not(.ua-ia-active) .ua-ia-content {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.15s ease, visibility 0s linear 0.15s;
+    transition-delay: 0s !important;
+}
+
+.ua-image-accordion .ua-ia-item.ua-ia-active .ua-ia-content {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 0.25s ease;
+}
+
+.ua-image-accordion .ua-ia-item:not(.ua-ia-active) .ua-ia-icon,
+.ua-image-accordion .ua-ia-item:not(.ua-ia-active) .ua-ia-subtitle,
+.ua-image-accordion .ua-ia-item:not(.ua-ia-active) .ua-ia-title,
+.ua-image-accordion .ua-ia-item:not(.ua-ia-active) .ua-ia-description,
+.ua-image-accordion .ua-ia-item:not(.ua-ia-active) .ua-ia-btn {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.15s ease, transform 0.15s ease, visibility 0s linear 0.15s;
+    transition-delay: 0s !important;
+}
+
+/* --- Active: smooth hardware-accelerated entrance --- */
+.ua-image-accordion .ua-ia-item.ua-ia-active .ua-ia-icon,
+.ua-image-accordion .ua-ia-item.ua-ia-active .ua-ia-subtitle,
+.ua-image-accordion .ua-ia-item.ua-ia-active .ua-ia-title,
+.ua-image-accordion .ua-ia-item.ua-ia-active .ua-ia-description,
+.ua-image-accordion .ua-ia-item.ua-ia-active .ua-ia-btn {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+    transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+}
+
+/* Tightly staggered delays synchronized with flex expansion */
+.ua-image-accordion .ua-ia-item.ua-ia-active .ua-ia-icon {
+    transition-delay: 0.02s;
+}
+
+.ua-image-accordion .ua-ia-item.ua-ia-active .ua-ia-subtitle {
+    transition-delay: 0.06s;
+}
+
+.ua-image-accordion .ua-ia-item.ua-ia-active .ua-ia-title {
+    transition-delay: 0.10s;
+}
+
+.ua-image-accordion .ua-ia-item.ua-ia-active .ua-ia-description {
+    transition-delay: 0.14s;
+}
+
+.ua-image-accordion .ua-ia-item.ua-ia-active .ua-ia-btn {
+    transition-delay: 0.18s;
+}
+
+/* ===================================================
+   Content Entrance Animation Variants
+   =================================================== */
+
+/* --- 1. Slide Up (From Bottom) --- */
+.ua-ia-anim-slide-up .ua-ia-item:not(.ua-ia-active) .ua-ia-icon,
+.ua-ia-anim-slide-up .ua-ia-item:not(.ua-ia-active) .ua-ia-subtitle,
+.ua-ia-anim-slide-up .ua-ia-item:not(.ua-ia-active) .ua-ia-title,
+.ua-ia-anim-slide-up .ua-ia-item:not(.ua-ia-active) .ua-ia-description,
+.ua-ia-anim-slide-up .ua-ia-item:not(.ua-ia-active) .ua-ia-btn {
+    transform: translate3d(0, 25px, 0);
+}
+
+/* --- 2. Slide Down (From Top) --- */
+.ua-ia-anim-slide-down .ua-ia-item:not(.ua-ia-active) .ua-ia-icon,
+.ua-ia-anim-slide-down .ua-ia-item:not(.ua-ia-active) .ua-ia-subtitle,
+.ua-ia-anim-slide-down .ua-ia-item:not(.ua-ia-active) .ua-ia-title,
+.ua-ia-anim-slide-down .ua-ia-item:not(.ua-ia-active) .ua-ia-description,
+.ua-ia-anim-slide-down .ua-ia-item:not(.ua-ia-active) .ua-ia-btn {
+    transform: translate3d(0, -25px, 0);
+}
+
+/* --- 3. Slide Left (From Right) --- */
+.ua-ia-anim-slide-left .ua-ia-item:not(.ua-ia-active) .ua-ia-icon,
+.ua-ia-anim-slide-left .ua-ia-item:not(.ua-ia-active) .ua-ia-subtitle,
+.ua-ia-anim-slide-left .ua-ia-item:not(.ua-ia-active) .ua-ia-title,
+.ua-ia-anim-slide-left .ua-ia-item:not(.ua-ia-active) .ua-ia-description,
+.ua-ia-anim-slide-left .ua-ia-item:not(.ua-ia-active) .ua-ia-btn {
+    transform: translate3d(30px, 0, 0);
+}
+
+/* --- 4. Slide Right (From Left) --- */
+.ua-ia-anim-slide-right .ua-ia-item:not(.ua-ia-active) .ua-ia-icon,
+.ua-ia-anim-slide-right .ua-ia-item:not(.ua-ia-active) .ua-ia-subtitle,
+.ua-ia-anim-slide-right .ua-ia-item:not(.ua-ia-active) .ua-ia-title,
+.ua-ia-anim-slide-right .ua-ia-item:not(.ua-ia-active) .ua-ia-description,
+.ua-ia-anim-slide-right .ua-ia-item:not(.ua-ia-active) .ua-ia-btn {
+    transform: translate3d(-30px, 0, 0);
+}
+
+/* --- 5. Zoom In (Scale up from small) --- */
+.ua-ia-anim-zoom-in .ua-ia-item:not(.ua-ia-active) .ua-ia-icon,
+.ua-ia-anim-zoom-in .ua-ia-item:not(.ua-ia-active) .ua-ia-subtitle,
+.ua-ia-anim-zoom-in .ua-ia-item:not(.ua-ia-active) .ua-ia-title,
+.ua-ia-anim-zoom-in .ua-ia-item:not(.ua-ia-active) .ua-ia-description,
+.ua-ia-anim-zoom-in .ua-ia-item:not(.ua-ia-active) .ua-ia-btn {
+    transform: scale3d(0.85, 0.85, 1);
+}
+
+/* --- 6. Zoom Out (Scale down from large) --- */
+.ua-ia-anim-zoom-out .ua-ia-item:not(.ua-ia-active) .ua-ia-icon,
+.ua-ia-anim-zoom-out .ua-ia-item:not(.ua-ia-active) .ua-ia-subtitle,
+.ua-ia-anim-zoom-out .ua-ia-item:not(.ua-ia-active) .ua-ia-title,
+.ua-ia-anim-zoom-out .ua-ia-item:not(.ua-ia-active) .ua-ia-description,
+.ua-ia-anim-zoom-out .ua-ia-item:not(.ua-ia-active) .ua-ia-btn {
+    transform: scale3d(1.15, 1.15, 1);
+}
+
+/* --- 7. Fade In (Opacity only, no transform offset) --- */
+.ua-ia-anim-fade-in .ua-ia-item:not(.ua-ia-active) .ua-ia-icon,
+.ua-ia-anim-fade-in .ua-ia-item:not(.ua-ia-active) .ua-ia-subtitle,
+.ua-ia-anim-fade-in .ua-ia-item:not(.ua-ia-active) .ua-ia-title,
+.ua-ia-anim-fade-in .ua-ia-item:not(.ua-ia-active) .ua-ia-description,
+.ua-ia-anim-fade-in .ua-ia-item:not(.ua-ia-active) .ua-ia-btn {
+    transform: translate3d(0, 0, 0);
+}
+
+/* --- 8. None (Instant display, no delay) --- */
+.ua-ia-anim-none .ua-ia-item .ua-ia-icon,
+.ua-ia-anim-none .ua-ia-item .ua-ia-subtitle,
+.ua-ia-anim-none .ua-ia-item .ua-ia-title,
+.ua-ia-anim-none .ua-ia-item .ua-ia-description,
+.ua-ia-anim-none .ua-ia-item .ua-ia-btn {
+    transform: none !important;
+    transition: none !important;
+}
+
+/* Full Item Clickable Link Overlay */
+.ua-image-accordion .ua-ia-full-link {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    display: block;
+    text-indent: -9999px;
+}
+
+/* Accessibility Focus State */
+.ua-image-accordion .ua-ia-item:focus-visible {
+    outline: 2px solid #3f51b5;
+    outline-offset: -2px;
+}
+
+/* ===================================================
+   Skew Effect (Slanted Cards) - Royal Architecture
+   =================================================== */
+.ua-ia-skew-yes,
+.ua-ia-skew-yes .ua-image-accordion,
+.ua-image-accordion.ua-ia-skew-yes {
+    overflow: visible !important;
+    --ua-ia-skew: 4deg;
+    gap: 0 !important;
+}
+
+.ua-ia-skew-yes .ua-image-accordion .ua-ia-item,
+.ua-image-accordion.ua-ia-skew-yes .ua-ia-item {
+    transform: skewX(var(--ua-ia-skew, 4deg)) translateZ(0);
+    -webkit-transform: skewX(var(--ua-ia-skew, 4deg)) translateZ(0);
+    transform-origin: center center;
+    overflow: hidden !important;
+    margin: 0 !important;
+    margin-right: -1px !important; /* 1px overlap eliminates ANY gap or white seam */
+    border: none !important;
+    outline: none !important;
+    will-change: flex, transform;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.ua-ia-skew-yes .ua-image-accordion .ua-ia-item:focus,
+.ua-ia-skew-yes .ua-image-accordion .ua-ia-item:focus-visible,
+.ua-image-accordion.ua-ia-skew-yes .ua-ia-item:focus,
+.ua-image-accordion.ua-ia-skew-yes .ua-ia-item:focus-visible {
+    outline: none !important;
+}
+
+/* Background image naturally fills the skewed card without counter-skew collision */
+.ua-ia-skew-yes .ua-image-accordion .ua-ia-bg,
+.ua-image-accordion.ua-ia-skew-yes .ua-ia-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transform: none !important;
+    -webkit-transform: none !important;
+    transition: transform var(--ua-ia-duration, 0.4s) ease;
+}
+
+.ua-ia-skew-yes[data-zoom="yes"] .ua-ia-item.ua-ia-active .ua-ia-bg,
+.ua-ia-skew-yes .ua-image-accordion[data-zoom="yes"] .ua-ia-item.ua-ia-active .ua-ia-bg,
+.ua-image-accordion.ua-ia-skew-yes[data-zoom="yes"] .ua-ia-item.ua-ia-active .ua-ia-bg {
+    transform: scale(1.08) !important;
+    -webkit-transform: scale(1.08) !important;
+}
+
+/* Only content (text, icons) is counter-skewed to remain upright */
+.ua-ia-skew-yes .ua-image-accordion .ua-ia-content-wrap,
+.ua-image-accordion.ua-ia-skew-yes .ua-ia-content-wrap {
+    transform: skewX(calc(-1 * var(--ua-ia-skew, 4deg))) translateZ(0);
+    -webkit-transform: skewX(calc(-1 * var(--ua-ia-skew, 4deg))) translateZ(0);
+    transform-origin: center center;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    padding: 30px 40px;
+    box-sizing: border-box;
+}
+
+.ua-ia-skew-yes .ua-image-accordion .ua-ia-content,
+.ua-image-accordion.ua-ia-skew-yes .ua-ia-content {
+    max-width: 100%;
+}
+

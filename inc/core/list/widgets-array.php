@@ -322,6 +322,7 @@ $ultraaddons_widgetsArray = [
             'name'  => __( 'Image Accordion', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
             'icon'      => 'eicon-accordion',
+            'badge'     => 'new',
             'cat'       => [
                 __( 'General', 'ultraaddons-elementor-lite' ),
             ],
