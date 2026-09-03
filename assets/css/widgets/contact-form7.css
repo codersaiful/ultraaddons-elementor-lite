@@ -1,0 +1,712 @@
+/**
+ * UltraAddons - Modern & Interactive Contact Form 7 Stylesheet
+ * Featuring 5 Interactive Presets, Micro-Interactions, and Custom Form Controls
+ */
+
+/* ===================================================
+   1. Base Form Container & CF7 Markup Reset
+   =================================================== */
+.ua-cf7-wrapper {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Reset default CF7 quirky p & br tags */
+.ua-cf7-wrapper .wpcf7 form p {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.ua-cf7-wrapper .wpcf7 form br {
+    display: none;
+}
+
+.ua-cf7-wrapper .wpcf7 form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ua-cf7-row-gap, 18px);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Layout: 2 Columns for First Two Fields (Name & Email) */
+.ua-cf7-wrapper.ua-cf7-layout-two-cols-top .wpcf7 form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--ua-cf7-row-gap, 18px) var(--ua-cf7-col-gap, 20px);
+}
+
+.ua-cf7-wrapper.ua-cf7-layout-two-cols-top .wpcf7 form > p,
+.ua-cf7-wrapper.ua-cf7-layout-two-cols-top .wpcf7 form > label {
+    width: 100%;
+}
+
+.ua-cf7-wrapper.ua-cf7-layout-two-cols-top .wpcf7 form > p:nth-of-type(1),
+.ua-cf7-wrapper.ua-cf7-layout-two-cols-top .wpcf7 form > p:nth-of-type(2),
+.ua-cf7-wrapper.ua-cf7-layout-two-cols-top .wpcf7 form > label:nth-of-type(1),
+.ua-cf7-wrapper.ua-cf7-layout-two-cols-top .wpcf7 form > label:nth-of-type(2) {
+    width: calc(50% - (var(--ua-cf7-col-gap, 20px) / 2));
+}
+
+@media (max-width: 767px) {
+    .ua-cf7-wrapper.ua-cf7-layout-two-cols-top .wpcf7 form > p:nth-of-type(1),
+    .ua-cf7-wrapper.ua-cf7-layout-two-cols-top .wpcf7 form > p:nth-of-type(2),
+    .ua-cf7-wrapper.ua-cf7-layout-two-cols-top .wpcf7 form > label:nth-of-type(1),
+    .ua-cf7-wrapper.ua-cf7-layout-two-cols-top .wpcf7 form > label:nth-of-type(2) {
+        width: 100%;
+    }
+}
+
+/* Layout: 2 Columns for All Inputs (Textarea & Buttons stay Full Width) */
+.ua-cf7-wrapper.ua-cf7-layout-two-cols-all .wpcf7 form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--ua-cf7-row-gap, 18px) var(--ua-cf7-col-gap, 20px);
+}
+
+.ua-cf7-wrapper.ua-cf7-layout-two-cols-all .wpcf7 form > p,
+.ua-cf7-wrapper.ua-cf7-layout-two-cols-all .wpcf7 form > label {
+    width: calc(50% - (var(--ua-cf7-col-gap, 20px) / 2));
+}
+
+.ua-cf7-wrapper.ua-cf7-layout-two-cols-all .wpcf7 form > p:has(textarea),
+.ua-cf7-wrapper.ua-cf7-layout-two-cols-all .wpcf7 form > p:has(input[type="submit"]),
+.ua-cf7-wrapper.ua-cf7-layout-two-cols-all .wpcf7 form > p:has(button[type="submit"]),
+.ua-cf7-wrapper.ua-cf7-layout-two-cols-all .wpcf7 form > label:has(textarea) {
+    width: 100%;
+}
+
+@media (max-width: 767px) {
+    .ua-cf7-wrapper.ua-cf7-layout-two-cols-all .wpcf7 form > p,
+    .ua-cf7-wrapper.ua-cf7-layout-two-cols-all .wpcf7 form > label {
+        width: 100%;
+    }
+}
+
+/* Standard Grid Classes Support (for custom CF7 templates) */
+.ua-cf7-wrapper .row,
+.ua-cf7-wrapper .ua-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: calc(var(--ua-cf7-col-gap, 20px) / -2);
+    margin-right: calc(var(--ua-cf7-col-gap, 20px) / -2);
+    row-gap: var(--ua-cf7-row-gap, 18px);
+    width: calc(100% + var(--ua-cf7-col-gap, 20px));
+}
+
+.ua-cf7-wrapper .col-6,
+.ua-cf7-wrapper .col-md-6,
+.ua-cf7-wrapper .ua-col-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding-left: calc(var(--ua-cf7-col-gap, 20px) / 2);
+    padding-right: calc(var(--ua-cf7-col-gap, 20px) / 2);
+    box-sizing: border-box;
+}
+
+.ua-cf7-wrapper .col-4,
+.ua-cf7-wrapper .ua-col-4 {
+    flex: 0 0 33.333%;
+    max-width: 33.333%;
+    padding-left: calc(var(--ua-cf7-col-gap, 20px) / 2);
+    padding-right: calc(var(--ua-cf7-col-gap, 20px) / 2);
+    box-sizing: border-box;
+}
+
+.ua-cf7-wrapper .col-12,
+.ua-cf7-wrapper .ua-col-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding-left: calc(var(--ua-cf7-col-gap, 20px) / 2);
+    padding-right: calc(var(--ua-cf7-col-gap, 20px) / 2);
+    box-sizing: border-box;
+}
+
+@media (max-width: 767px) {
+    .ua-cf7-wrapper .col-6,
+    .ua-cf7-wrapper .col-md-6,
+    .ua-cf7-wrapper .ua-col-6,
+    .ua-cf7-wrapper .col-4,
+    .ua-cf7-wrapper .ua-col-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+.ua-cf7-wrapper .wpcf7-form-control-wrap {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+/* ===================================================
+   2. Header (Title & Subtitle)
+   =================================================== */
+.ua-cf7-header {
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.ua-cf7-title {
+    margin: 0 0 8px 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.3;
+}
+
+.ua-cf7-description {
+    margin: 0;
+    font-size: 15px;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* ===================================================
+   3. Field Labels
+   =================================================== */
+.ua-cf7-wrapper .wpcf7 label {
+    display: block;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 8px;
+    line-height: 1.4;
+    transition: color 0.2s ease;
+}
+
+.ua-cf7-wrapper.ua-cf7-hide-labels .wpcf7 label > br,
+.ua-cf7-wrapper.ua-cf7-hide-labels .wpcf7 label:not(:has(input[type="checkbox"])):not(:has(input[type="radio"])) {
+    font-size: 0 !important;
+    margin: 0 !important;
+    line-height: 0 !important;
+}
+
+/* Asterisk mark for required fields */
+.ua-cf7-wrapper .wpcf7 label .wpcf7-required {
+    color: #ef4444;
+    margin-left: 2px;
+}
+
+/* ===================================================
+   4. Universal Input, Textarea & Select Defaults
+   =================================================== */
+.ua-cf7-wrapper .wpcf7 input[type="text"],
+.ua-cf7-wrapper .wpcf7 input[type="email"],
+.ua-cf7-wrapper .wpcf7 input[type="url"],
+.ua-cf7-wrapper .wpcf7 input[type="password"],
+.ua-cf7-wrapper .wpcf7 input[type="search"],
+.ua-cf7-wrapper .wpcf7 input[type="number"],
+.ua-cf7-wrapper .wpcf7 input[type="tel"],
+.ua-cf7-wrapper .wpcf7 input[type="date"],
+.ua-cf7-wrapper .wpcf7 select,
+.ua-cf7-wrapper .wpcf7 textarea {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 15px;
+    color: #1e293b;
+    font-family: inherit;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ua-cf7-wrapper .wpcf7 input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.ua-cf7-wrapper .wpcf7 select {
+    height: var(--ua-cf7-input-height, 48px);
+    padding: 0 16px;
+}
+
+.ua-cf7-wrapper .wpcf7 textarea {
+    min-height: var(--ua-cf7-textarea-height, 130px);
+    padding: 14px 16px;
+    resize: vertical;
+}
+
+.ua-cf7-wrapper .wpcf7 input::placeholder,
+.ua-cf7-wrapper .wpcf7 textarea::placeholder {
+    color: #94a3b8;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.ua-cf7-wrapper .wpcf7 input:focus::placeholder,
+.ua-cf7-wrapper .wpcf7 textarea:focus::placeholder {
+    opacity: 0.5;
+}
+
+/* Custom Dropdown Select Arrow */
+.ua-cf7-wrapper .wpcf7 select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 16px 16px;
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+/* ===================================================
+   5. INTERACTIVE DESIGN PRESETS
+   =================================================== */
+
+/* --- PRESET 1: Clean Classic --- */
+.ua-cf7-preset-clean-classic .wpcf7 input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.ua-cf7-preset-clean-classic .wpcf7 select,
+.ua-cf7-preset-clean-classic .wpcf7 textarea {
+    background-color: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+}
+
+.ua-cf7-preset-clean-classic .wpcf7 input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):hover,
+.ua-cf7-preset-clean-classic .wpcf7 select:hover,
+.ua-cf7-preset-clean-classic .wpcf7 textarea:hover {
+    border-color: #94a3b8;
+}
+
+.ua-cf7-preset-clean-classic .wpcf7 input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):focus,
+.ua-cf7-preset-clean-classic .wpcf7 select:focus,
+.ua-cf7-preset-clean-classic .wpcf7 textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3.5px rgba(59, 130, 246, 0.15);
+}
+
+/* --- PRESET 2: Modern Boxed (Soft Background) --- */
+.ua-cf7-preset-modern-boxed .wpcf7 input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.ua-cf7-preset-modern-boxed .wpcf7 select,
+.ua-cf7-preset-modern-boxed .wpcf7 textarea {
+    background-color: #f1f5f9;
+    border: 1.5px solid transparent;
+    border-radius: 10px;
+}
+
+.ua-cf7-preset-modern-boxed .wpcf7 input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):hover,
+.ua-cf7-preset-modern-boxed .wpcf7 select:hover,
+.ua-cf7-preset-modern-boxed .wpcf7 textarea:hover {
+    background-color: #e2e8f0;
+}
+
+.ua-cf7-preset-modern-boxed .wpcf7 input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):focus,
+.ua-cf7-preset-modern-boxed .wpcf7 select:focus,
+.ua-cf7-preset-modern-boxed .wpcf7 textarea:focus {
+    outline: none;
+    background-color: #ffffff;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+}
+
+/* --- PRESET 3: Minimal Underline --- */
+.ua-cf7-preset-minimal-underline .wpcf7 input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.ua-cf7-preset-minimal-underline .wpcf7 select,
+.ua-cf7-preset-minimal-underline .wpcf7 textarea {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #cbd5e1;
+    border-radius: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.ua-cf7-preset-minimal-underline .wpcf7 select {
+    background-position: right 2px center;
+}
+
+.ua-cf7-preset-minimal-underline .wpcf7 input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):hover,
+.ua-cf7-preset-minimal-underline .wpcf7 select:hover,
+.ua-cf7-preset-minimal-underline .wpcf7 textarea:hover {
+    border-bottom-color: #94a3b8;
+}
+
+.ua-cf7-preset-minimal-underline .wpcf7 input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):focus,
+.ua-cf7-preset-minimal-underline .wpcf7 select:focus,
+.ua-cf7-preset-minimal-underline .wpcf7 textarea:focus {
+    outline: none;
+    border-bottom-color: #0f172a;
+    box-shadow: 0 1px 0 0 #0f172a;
+}
+
+/* --- PRESET 4: Soft Shadow / Floating Elevation --- */
+.ua-cf7-preset-soft-shadow .wpcf7 input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.ua-cf7-preset-soft-shadow .wpcf7 select,
+.ua-cf7-preset-soft-shadow .wpcf7 textarea {
+    background-color: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.05);
+}
+
+.ua-cf7-preset-soft-shadow .wpcf7 input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):hover,
+.ua-cf7-preset-soft-shadow .wpcf7 select:hover,
+.ua-cf7-preset-soft-shadow .wpcf7 textarea:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px -2px rgba(15, 23, 42, 0.08);
+}
+
+.ua-cf7-preset-soft-shadow .wpcf7 input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):focus,
+.ua-cf7-preset-soft-shadow .wpcf7 select:focus,
+.ua-cf7-preset-soft-shadow .wpcf7 textarea:focus {
+    outline: none;
+    transform: translateY(-1px);
+    border-color: #2563eb;
+    box-shadow: 0 8px 24px -2px rgba(37, 99, 235, 0.16);
+}
+
+/* --- PRESET 5: Rounded Pill --- */
+.ua-cf7-preset-rounded-pill .wpcf7 input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.ua-cf7-preset-rounded-pill .wpcf7 select {
+    background-color: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 30px;
+    padding-left: 22px;
+    padding-right: 22px;
+}
+
+.ua-cf7-preset-rounded-pill .wpcf7 select {
+    background-position: right 20px center;
+    padding-right: 44px;
+}
+
+.ua-cf7-preset-rounded-pill .wpcf7 textarea {
+    background-color: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 18px;
+    padding: 16px 22px;
+}
+
+.ua-cf7-preset-rounded-pill .wpcf7 input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):focus,
+.ua-cf7-preset-rounded-pill .wpcf7 select:focus,
+.ua-cf7-preset-rounded-pill .wpcf7 textarea:focus {
+    outline: none;
+    border-color: #10b981;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.18);
+}
+
+.ua-cf7-preset-rounded-pill .wpcf7 input[type="submit"] {
+    border-radius: 30px !important;
+}
+
+/* ===================================================
+   6. Custom Checkboxes & Radio Buttons
+   =================================================== */
+.ua-cf7-wrapper .wpcf7-checkbox,
+.ua-cf7-wrapper .wpcf7-radio {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    margin: 6px 0;
+}
+
+.ua-cf7-wrapper .wpcf7-list-item {
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+}
+
+.ua-cf7-wrapper .wpcf7-list-item label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    cursor: pointer;
+    font-weight: 500;
+    color: #475569;
+    user-select: none;
+}
+
+.ua-cf7-wrapper .wpcf7-checkbox input[type="checkbox"],
+.ua-cf7-wrapper .wpcf7-radio input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid #cbd5e1;
+    background-color: #ffffff;
+    margin: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    flex-shrink: 0;
+}
+
+/* Checkbox specific */
+.ua-cf7-wrapper .wpcf7-checkbox input[type="checkbox"] {
+    border-radius: 6px;
+}
+
+.ua-cf7-wrapper .wpcf7-checkbox input[type="checkbox"]:checked {
+    background-color: #3b82f6;
+    border-color: #3b82f6;
+}
+
+.ua-cf7-wrapper .wpcf7-checkbox input[type="checkbox"]:checked::after {
+    content: "";
+    width: 5px;
+    height: 9px;
+    border: solid #ffffff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg) translate(-1px, -1px);
+    display: block;
+}
+
+/* Radio specific */
+.ua-cf7-wrapper .wpcf7-radio input[type="radio"] {
+    border-radius: 50%;
+}
+
+.ua-cf7-wrapper .wpcf7-radio input[type="radio"]:checked {
+    border-color: #3b82f6;
+    background-color: #ffffff;
+}
+
+.ua-cf7-wrapper .wpcf7-radio input[type="radio"]:checked::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #3b82f6;
+    display: block;
+    transform: scale(1);
+    animation: ua-cf7-pop 0.2s ease-out;
+}
+
+@keyframes ua-cf7-pop {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+}
+
+/* ===================================================
+   7. File Upload Field Styling
+   =================================================== */
+.ua-cf7-wrapper input[type="file"].wpcf7-file {
+    padding: 10px 14px;
+    border: 1.5px dashed #cbd5e1;
+    border-radius: 10px;
+    background-color: #f8fafc;
+    cursor: pointer;
+    font-size: 14px;
+    color: #64748b;
+    height: auto;
+    transition: all 0.2s ease;
+}
+
+.ua-cf7-wrapper input[type="file"].wpcf7-file:hover {
+    border-color: #3b82f6;
+    background-color: #eff6ff;
+}
+
+.ua-cf7-wrapper input[type="file"].wpcf7-file::file-selector-button {
+    padding: 8px 16px;
+    margin-right: 14px;
+    background-color: #0f172a;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.ua-cf7-wrapper input[type="file"].wpcf7-file::file-selector-button:hover {
+    background-color: #1e293b;
+}
+
+/* ===================================================
+   8. Submit Button Styling & Micro-Interactions
+   =================================================== */
+.ua-cf7-wrapper .wpcf7 input[type="submit"],
+.ua-cf7-wrapper .wpcf7 button[type="submit"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--ua-cf7-btn-height, 50px);
+    padding: 0 32px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #0f172a;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+    width: auto;
+}
+
+.ua-cf7-wrapper .wpcf7 input[type="submit"]:hover,
+.ua-cf7-wrapper .wpcf7 button[type="submit"]:hover {
+    background-color: #1e293b;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.2);
+}
+
+.ua-cf7-wrapper .wpcf7 input[type="submit"]:active,
+.ua-cf7-wrapper .wpcf7 button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* Button Alignment Containers */
+.ua-cf7-btn-align-left .wpcf7 form p:has(input[type="submit"]),
+.ua-cf7-btn-align-left .wpcf7 form .wpcf7-submit-wrap {
+    text-align: left;
+}
+
+.ua-cf7-btn-align-center .wpcf7 form p:has(input[type="submit"]),
+.ua-cf7-btn-align-center .wpcf7 form .wpcf7-submit-wrap {
+    text-align: center;
+}
+
+.ua-cf7-btn-align-right .wpcf7 form p:has(input[type="submit"]),
+.ua-cf7-btn-align-right .wpcf7 form .wpcf7-submit-wrap {
+    text-align: right;
+}
+
+.ua-cf7-btn-align-justify .wpcf7 form input[type="submit"],
+.ua-cf7-btn-align-justify .wpcf7 form button[type="submit"] {
+    width: 100% !important;
+}
+
+/* Spinner adjustment */
+.ua-cf7-wrapper .wpcf7-spinner {
+    margin-left: 12px;
+    vertical-align: middle;
+}
+
+/* ===================================================
+   9. Alerts, Validation & Response Notices
+   =================================================== */
+
+/* Field Validation Error Tip */
+.ua-cf7-wrapper .wpcf7-not-valid-tip {
+    display: inline-block;
+    color: #ef4444;
+    font-size: 13px;
+    font-weight: 500;
+    margin-top: 6px;
+    line-height: 1.3;
+    animation: ua-cf7-fade-down 0.25s ease-out;
+}
+
+/* Invalid Field Highlighting & Shake */
+.ua-cf7-wrapper .wpcf7-not-valid {
+    border-color: #ef4444 !important;
+    background-color: #fffbfa !important;
+}
+
+@keyframes ua-cf7-shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-6px); }
+    40%, 80% { transform: translateX(6px); }
+}
+
+.ua-cf7-shake {
+    animation: ua-cf7-shake 0.4s ease-in-out;
+}
+
+/* Response Output (Success & Error Boxes) */
+.ua-cf7-wrapper .wpcf7-response-output {
+    margin: 16px 0 0 0 !important;
+    padding: 14px 18px !important;
+    border-radius: 10px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    line-height: 1.5 !important;
+    box-sizing: border-box !important;
+    animation: ua-cf7-fade-down 0.3s ease-out;
+}
+
+/* Success Message */
+.ua-cf7-wrapper .wpcf7-response-output.wpcf7-mail-sent-ok {
+    background-color: #f0fdf4 !important;
+    border: 1.5px solid #86efac !important;
+    color: #166534 !important;
+}
+
+/* Validation Error Message */
+.ua-cf7-wrapper .wpcf7-response-output.wpcf7-validation-errors {
+    background-color: #fef2f2 !important;
+    border: 1.5px solid #fca5a5 !important;
+    color: #991b1b !important;
+}
+
+/* General Error / Spam */
+.ua-cf7-wrapper .wpcf7-response-output.wpcf7-mail-sent-ng,
+.ua-cf7-wrapper .wpcf7-response-output.wpcf7-spam-blocked {
+    background-color: #fffbeb !important;
+    border: 1.5px solid #fde68a !important;
+    color: #92400e !important;
+}
+
+@keyframes ua-cf7-fade-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===================================================
+   10. Missing Notice (In Editor if CF7 is not active)
+   =================================================== */
+.ua-cf7-missing-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 36px 24px;
+    background-color: #fff1f2;
+    border: 1.5px dashed #f43f5e;
+    border-radius: 12px;
+    color: #881337;
+}
+
+.ua-cf7-missing-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.ua-cf7-missing-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.ua-cf7-missing-desc {
+    font-size: 14px;
+    max-width: 440px;
+    margin-bottom: 18px;
+    color: #9f1239;
+    line-height: 1.5;
+}
+
+.ua-cf7-missing-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    background-color: #e11d48;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.ua-cf7-missing-btn:hover {
+    background-color: #be123c;
+    color: #ffffff;
+}

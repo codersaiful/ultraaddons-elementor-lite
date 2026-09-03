@@ -161,7 +161,8 @@ $ultraaddons_widgetsArray = [
     'Contact_Form7' => [
             'name'  => __( 'Contact Form 7', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
-            'icon'      => 'uicon-contact-form-7',
+            'icon'      => 'eicon-form-horizontal',
+            'badge'     => 'new',
             'cat'       => [
                 __( 'Forms', 'ultraaddons-elementor-lite' ),
             ],
