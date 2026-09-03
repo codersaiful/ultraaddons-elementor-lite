@@ -767,6 +767,15 @@ $ultraaddons_widgetsArray = [
         ],
     ],
 
+    'Protected_Content'=> [
+        'name'      => __( 'Protected Content', 'ultraaddons-elementor-lite' ),
+        'is_pro'   => false,
+        'icon'      => 'eicon-lock',
+        'badge'     => 'New',
+        'cat'       => [
+            __( 'General', 'ultraaddons-elementor-lite' ),
+        ],
+    ],
 
 ];
 

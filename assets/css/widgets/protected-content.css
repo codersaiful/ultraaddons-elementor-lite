@@ -1,0 +1,320 @@
+/**
+ * UltraAddons - Protected Content Widget Styling
+ */
+
+.ua-protected-content-wrap {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ===================================================
+   1. Unlocked Content Reveal Animation
+   =================================================== */
+.ua-pc-unlocked-content {
+    animation: ua-pc-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes ua-pc-fade-in {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===================================================
+   2. Lock Screen Card
+   =================================================== */
+.ua-pc-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+    padding: 40px 32px;
+    max-width: 580px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+/* Lock Icon Wrapper */
+.ua-pc-icon-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background-color: #fef2f2;
+    color: #ef4444;
+    font-size: 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 0 8px rgba(239, 68, 68, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.ua-pc-card:hover .ua-pc-icon-wrap {
+    transform: scale(1.05);
+}
+
+.ua-pc-icon-wrap i,
+.ua-pc-icon-wrap svg {
+    display: block;
+    width: 28px;
+    height: 28px;
+    line-height: 1;
+}
+
+/* Title & Message */
+.ua-pc-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 10px 0;
+    line-height: 1.3;
+}
+
+.ua-pc-message {
+    font-size: 15px;
+    color: #6b7280;
+    line-height: 1.6;
+    margin: 0 0 24px 0;
+    max-width: 440px;
+}
+
+/* ===================================================
+   3. Password Form Layouts
+   =================================================== */
+.ua-pc-form {
+    width: 100%;
+    max-width: 440px;
+    display: flex;
+    box-sizing: border-box;
+}
+
+/* Inline Layout */
+.ua-pc-form-inline {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.ua-pc-form-inline .ua-pc-input-wrap {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Stacked Layout */
+.ua-pc-form-stacked {
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.ua-pc-form-stacked .ua-pc-input-wrap,
+.ua-pc-form-stacked .ua-pc-submit-btn {
+    width: 100%;
+}
+
+/* Input Field with Eye Toggle */
+.ua-pc-input-wrap {
+    position: relative;
+    box-sizing: border-box;
+}
+
+.ua-pc-input {
+    width: 100%;
+    height: 48px;
+    padding: 10px 44px 10px 16px;
+    font-size: 15px;
+    color: #1f2937;
+    background-color: #f9fafb;
+    border: 1.5px solid #d1d5db;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.ua-pc-input:focus {
+    outline: none;
+    background-color: #ffffff;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.ua-pc-eye-btn {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+    color: #9ca3af;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+    user-select: none;
+}
+
+.ua-pc-eye-btn:hover {
+    color: #374151;
+}
+
+/* Submit Button */
+.ua-pc-submit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 48px;
+    padding: 0 26px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #1f2937;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    white-space: nowrap;
+    box-sizing: border-box;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ua-pc-submit-btn:hover {
+    background-color: #111827;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.ua-pc-submit-btn:active {
+    transform: translateY(0);
+}
+
+.ua-pc-submit-btn.ua-pc-btn-loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+/* Spinner Icon */
+.ua-pc-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: ua-pc-spin 0.7s linear infinite;
+}
+
+@keyframes ua-pc-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Error Notification */
+.ua-pc-error {
+    display: none;
+    color: #ef4444;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+/* Shake Animation on Wrong Password */
+@keyframes ua-pc-shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-8px); }
+    40%, 80% { transform: translateX(8px); }
+}
+
+.ua-pc-shake {
+    animation: ua-pc-shake 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+/* ===================================================
+   4. Call to Action (Login / Register Button)
+   =================================================== */
+
+.ua-pc-cta-wrap {
+    width: 100%;
+    max-width: 440px;
+    display: flex;
+    justify-content: center;
+    margin-top: 4px;
+}
+
+.ua-pc-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 46px;
+    padding: 0 28px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #3b82f6;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 320px;
+}
+
+.ua-pc-cta-btn:hover {
+    background-color: #2563eb;
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+}
+
+/* ===================================================
+   5. Blur Teaser Mode
+   =================================================== */
+.ua-pc-teaser-wrap {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.ua-pc-teaser-preview {
+    filter: blur(8px);
+    opacity: 0.5;
+    pointer-events: none;
+    user-select: none;
+    max-height: 280px;
+    overflow: hidden;
+    transition: filter 0.3s ease;
+}
+
+.ua-pc-teaser-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(3px);
+    z-index: 10;
+    padding: 20px;
+}
+
+.ua-pc-teaser-overlay .ua-pc-card {
+    background-color: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
