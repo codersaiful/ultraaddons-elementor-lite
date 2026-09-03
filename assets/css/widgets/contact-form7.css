@@ -87,6 +87,147 @@
     }
 }
 
+/* Layout: Inline Newsletter (Joined Input & Submit Button in 1 Row) */
+
+/* Case 1: Separate <p> or elements */
+.ua-cf7-wrapper.ua-cf7-layout-inline-joined .wpcf7 form {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    width: 100% !important;
+}
+
+.ua-cf7-wrapper.ua-cf7-layout-inline-joined .wpcf7 form > p:not(:has(input[type="submit"])):not(:has(button[type="submit"])),
+.ua-cf7-wrapper.ua-cf7-layout-inline-joined .wpcf7 form > label:not(:has(input[type="submit"])):not(:has(button[type="submit"])),
+.ua-cf7-wrapper.ua-cf7-layout-inline-joined .wpcf7 form .ua-cf7-inline-input-wrap {
+    flex: 1 1 auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+}
+
+.ua-cf7-wrapper.ua-cf7-layout-inline-joined .wpcf7 form > p:has(input[type="submit"]):not(:has(.wpcf7-form-control-wrap)),
+.ua-cf7-wrapper.ua-cf7-layout-inline-joined .wpcf7 form > p:has(button[type="submit"]):not(:has(.wpcf7-form-control-wrap)),
+.ua-cf7-wrapper.ua-cf7-layout-inline-joined .wpcf7 form .wpcf7-submit-wrap,
+.ua-cf7-wrapper.ua-cf7-layout-inline-joined .wpcf7 form .ua-cf7-inline-submit-wrap {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    margin: 0 !important;
+    display: flex !important;
+}
+
+/* Case 2: Both input wrap and submit inside the SAME <p> tag */
+.ua-cf7-wrapper.ua-cf7-layout-inline-joined .wpcf7 form p:has(.wpcf7-form-control-wrap):has(input[type="submit"]),
+.ua-cf7-wrapper.ua-cf7-layout-inline-joined .wpcf7 form p:has(.wpcf7-form-control-wrap):has(button[type="submit"]),
+.ua-cf7-wrapper.ua-cf7-layout-inline-joined .wpcf7 form label:has(.wpcf7-form-control-wrap):has(input[type="submit"]),
+.ua-cf7-wrapper.ua-cf7-layout-inline-joined .wpcf7 form .ua-cf7-inline-row {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    margin: 0 !important;
+    gap: 0 !important;
+}
+
+.ua-cf7-wrapper.ua-cf7-layout-inline-joined .wpcf7 form p:has(.wpcf7-form-control-wrap):has(input[type="submit"]) br,
+.ua-cf7-wrapper.ua-cf7-layout-inline-joined .wpcf7 form p:has(.wpcf7-form-control-wrap):has(button[type="submit"]) br,
+.ua-cf7-wrapper.ua-cf7-layout-inline-joined .wpcf7 form .ua-cf7-inline-row br {
+    display: none !important;
+}
+
+/* Input Wrappers & Inputs */
+.ua-cf7-wrapper.ua-cf7-layout-inline-joined .wpcf7-form-control-wrap {
+    flex: 1 1 auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+    display: flex !important;
+    margin: 0 !important;
+}
+
+.ua-cf7-wrapper.ua-cf7-layout-inline-joined .wpcf7 input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
+    flex: 1 1 auto !important;
+    width: 100% !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-right: none !important;
+    height: var(--ua-cf7-input-height, 50px) !important;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
+}
+
+.ua-cf7-wrapper.ua-cf7-layout-inline-joined .wpcf7 input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):focus {
+    z-index: 2;
+}
+
+.ua-cf7-wrapper.ua-cf7-layout-inline-joined input[type="submit"],
+.ua-cf7-wrapper.ua-cf7-layout-inline-joined button[type="submit"] {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    height: var(--ua-cf7-input-height, 50px) !important;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    white-space: nowrap !important;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
+}
+
+/* Preset: Rounded Pill Newsletter (Like image 2) */
+.ua-cf7-wrapper.ua-cf7-layout-inline-joined.ua-cf7-preset-rounded-pill .wpcf7 input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
+    border-radius: 30px 0 0 30px !important;
+    padding-left: 24px !important;
+}
+
+.ua-cf7-wrapper.ua-cf7-layout-inline-joined.ua-cf7-preset-rounded-pill input[type="submit"],
+.ua-cf7-wrapper.ua-cf7-layout-inline-joined.ua-cf7-preset-rounded-pill button[type="submit"] {
+    border-radius: 0 30px 30px 0 !important;
+    padding-left: 26px !important;
+    padding-right: 28px !important;
+}
+
+/* Preset: Clean Classic (Like image 1) */
+.ua-cf7-wrapper.ua-cf7-layout-inline-joined.ua-cf7-preset-clean-classic .wpcf7 input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
+    border-radius: 8px 0 0 8px !important;
+}
+
+.ua-cf7-wrapper.ua-cf7-layout-inline-joined.ua-cf7-preset-clean-classic input[type="submit"],
+.ua-cf7-wrapper.ua-cf7-layout-inline-joined.ua-cf7-preset-clean-classic button[type="submit"] {
+    border-radius: 0 8px 8px 0 !important;
+}
+
+/* Mobile responsive collapse for narrow phones */
+@media (max-width: 480px) {
+    .ua-cf7-wrapper.ua-cf7-layout-inline-joined .wpcf7 form,
+    .ua-cf7-wrapper.ua-cf7-layout-inline-joined .wpcf7 form p:has(.wpcf7-form-control-wrap):has(input[type="submit"]),
+    .ua-cf7-wrapper.ua-cf7-layout-inline-joined .wpcf7 form p:has(.wpcf7-form-control-wrap):has(button[type="submit"]),
+    .ua-cf7-wrapper.ua-cf7-layout-inline-joined .wpcf7 form .ua-cf7-inline-row {
+        flex-direction: column !important;
+        gap: var(--ua-cf7-row-gap, 12px) !important;
+    }
+    .ua-cf7-wrapper.ua-cf7-layout-inline-joined .wpcf7 input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
+        border-radius: 8px !important;
+        border-right: 1.5px solid #cbd5e1 !important;
+        width: 100% !important;
+    }
+    .ua-cf7-wrapper.ua-cf7-layout-inline-joined input[type="submit"],
+    .ua-cf7-wrapper.ua-cf7-layout-inline-joined button[type="submit"] {
+        border-radius: 8px !important;
+        width: 100% !important;
+    }
+    .ua-cf7-wrapper.ua-cf7-layout-inline-joined.ua-cf7-preset-rounded-pill .wpcf7 input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
+        border-radius: 30px !important;
+        border-right: 1.5px solid #cbd5e1 !important;
+    }
+    .ua-cf7-wrapper.ua-cf7-layout-inline-joined.ua-cf7-preset-rounded-pill input[type="submit"],
+    .ua-cf7-wrapper.ua-cf7-layout-inline-joined.ua-cf7-preset-rounded-pill button[type="submit"] {
+        border-radius: 30px !important;
+    }
+}
+
 /* Standard Grid Classes Support (for custom CF7 templates) */
 .ua-cf7-wrapper .row,
 .ua-cf7-wrapper .ua-row {

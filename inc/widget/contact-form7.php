@@ -293,11 +293,12 @@ class Contact_Form7 extends Base {
                 'type'        => Controls_Manager::SELECT,
                 'default'     => 'single-col',
                 'options'     => [
-                    'single-col'   => esc_html__( '1 Column (Full Width)', 'ultraaddons-elementor-lite' ),
-                    'two-cols-top' => esc_html__( '2 Columns (Name & Email in 1 Row)', 'ultraaddons-elementor-lite' ),
-                    'two-cols-all' => esc_html__( '2 Columns (All Inputs 2 Columns)', 'ultraaddons-elementor-lite' ),
+                    'single-col'    => esc_html__( '1 Column (Full Width)', 'ultraaddons-elementor-lite' ),
+                    'two-cols-top'  => esc_html__( '2 Columns (Name & Email in 1 Row)', 'ultraaddons-elementor-lite' ),
+                    'two-cols-all'  => esc_html__( '2 Columns (All Inputs 2 Columns)', 'ultraaddons-elementor-lite' ),
+                    'inline-joined' => esc_html__( 'Inline Newsletter (Joined Input & Button)', 'ultraaddons-elementor-lite' ),
                 ],
-                'description' => esc_html__( 'Place Name and Email side-by-side in one row automatically.', 'ultraaddons-elementor-lite' ),
+                'description' => esc_html__( 'Choose form layout. Inline Newsletter connects the input and submit button in one unified row.', 'ultraaddons-elementor-lite' ),
             ]
         );
 

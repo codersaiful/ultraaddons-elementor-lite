@@ -17,6 +17,22 @@
             return;
         }
 
+        // Inline Newsletter Helper (Ensures input & submit button connect in 1 row)
+        if ($wrapper.hasClass('ua-cf7-layout-inline-joined')) {
+            var $submitBtn = $form.find('input[type="submit"], button[type="submit"]');
+            var $inputWrap = $form.find('.wpcf7-form-control-wrap').first();
+            if ($inputWrap.length && $submitBtn.length) {
+                var $submitParent = $submitBtn.parent();
+                var $inputParent = $inputWrap.parent();
+                if ($submitParent[0] === $inputParent[0]) {
+                    $submitParent.addClass('ua-cf7-inline-row');
+                } else {
+                    $inputParent.addClass('ua-cf7-inline-input-wrap');
+                    $submitParent.addClass('ua-cf7-inline-submit-wrap');
+                }
+            }
+        }
+
         // Auto Generate Placeholders from Field Labels
         if ($wrapper.hasClass('ua-cf7-auto-placeholders')) {
             $form.find('.wpcf7-form-control-wrap').each(function () {
