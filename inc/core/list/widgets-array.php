@@ -718,6 +718,7 @@ $ultraaddons_widgetsArray = [
         'name'      => __( 'Ninja Forms', 'ultraaddons-elementor-lite' ),
         'is_pro'   => false,
         'icon'      => 'ua-icon-ninja',
+        'badge'     => 'new',
         'cat'       => [
             __( 'Forms', 'ultraaddons-elementor-lite' ),
         ],

@@ -1,0 +1,377 @@
+/* ==========================================================================
+   UltraAddons - Ninja Forms Widget Stylesheet
+   ========================================================================== */
+
+/* 1. Form Container & Global Resets */
+.ua-ninja-forms-wrapper {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.ua-ninja-forms-wrapper .nf-form-cont {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.ua-ninja-forms-wrapper .nf-form-wrap {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.ua-ninja-forms-wrapper .nf-field-container {
+    margin-bottom: 18px;
+}
+
+.ua-ninja-forms-wrapper .nf-field-container:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* Hide Ninja Forms native title if we provide our own header */
+.ua-ninja-forms-wrapper .ua-nf-title ~ .nf-form-cont .nf-form-title {
+    display: none !important;
+}
+
+/* 2. Form Header (Title & Description) */
+.ua-ninja-forms-wrapper .ua-nf-title {
+    margin: 0 0 8px 0;
+    padding: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1e293b;
+    line-height: 1.3;
+}
+
+.ua-ninja-forms-wrapper .ua-nf-description {
+    margin: 0 0 20px 0;
+    padding: 0;
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* 3. Field Labels */
+.ua-ninja-forms-wrapper .nf-field-label {
+    margin-bottom: 6px;
+}
+
+.ua-ninja-forms-wrapper .nf-field-label label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #334155;
+    line-height: 1.4;
+    display: inline-block;
+}
+
+.ua-ninja-forms-wrapper .ninja-forms-req-symbol {
+    color: #ef4444;
+    font-weight: bold;
+    margin-left: 2px;
+}
+
+/* 4. Input, Textarea & Select Defaults */
+.ua-ninja-forms-wrapper .nf-field-element input:not([type="button"]):not([type="submit"]):not([type="checkbox"]):not([type="radio"]),
+.ua-ninja-forms-wrapper .nf-field-element textarea,
+.ua-ninja-forms-wrapper .nf-field-element select {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 15px;
+    color: #1e293b;
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    line-height: 1.5;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.ua-ninja-forms-wrapper .nf-field-element textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.ua-ninja-forms-wrapper .nf-field-element input:not([type="button"]):not([type="submit"]):focus,
+.ua-ninja-forms-wrapper .nf-field-element textarea:focus,
+.ua-ninja-forms-wrapper .nf-field-element select:focus {
+    border-color: #0284c7;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.ua-ninja-forms-wrapper .ninja-forms-field::placeholder {
+    color: #94a3b8;
+    opacity: 1;
+}
+
+/* 5. Submit Button Defaults */
+.ua-ninja-forms-wrapper .nf-field-element input[type="button"],
+.ua-ninja-forms-wrapper .nf-field-element input[type="submit"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.2;
+    padding: 12px 28px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    background-color: #0284c7;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.ua-ninja-forms-wrapper .nf-field-element input[type="button"]:hover,
+.ua-ninja-forms-wrapper .nf-field-element input[type="submit"]:hover {
+    background-color: #0369a1;
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+}
+
+.ua-ninja-forms-wrapper .nf-field-element input[type="button"]:active,
+.ua-ninja-forms-wrapper .nf-field-element input[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* 6. Submit Button Alignment */
+.ua-ninja-forms-wrapper.ua-nf-btn-align-left .submit-container .nf-field-element {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.ua-ninja-forms-wrapper.ua-nf-btn-align-center .submit-container .nf-field-element {
+    display: flex;
+    justify-content: center;
+}
+
+.ua-ninja-forms-wrapper.ua-nf-btn-align-right .submit-container .nf-field-element {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ua-ninja-forms-wrapper.ua-nf-btn-align-justify .submit-container .nf-field-element {
+    display: flex;
+    width: 100%;
+}
+
+.ua-ninja-forms-wrapper.ua-nf-btn-align-justify .submit-container .nf-field-element input[type="button"],
+.ua-ninja-forms-wrapper.ua-nf-btn-align-justify .submit-container .nf-field-element input[type="submit"] {
+    width: 100% !important;
+}
+
+/* 7. Field Display Options */
+.ua-ninja-forms-wrapper.ua-nf-hide-labels .nf-field-label {
+    display: none !important;
+}
+
+.ua-ninja-forms-wrapper.ua-nf-hide-placeholders .ninja-forms-field::placeholder {
+    opacity: 0 !important;
+    color: transparent !important;
+}
+
+.ua-ninja-forms-wrapper.ua-nf-hide-errors .nf-error-wrap,
+.ua-ninja-forms-wrapper.ua-nf-hide-errors .nf-error-msg {
+    display: none !important;
+}
+
+/* 8. Feedback Messages */
+.ua-ninja-forms-wrapper .nf-response-msg {
+    background-color: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #166534;
+    padding: 14px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.ua-ninja-forms-wrapper .nf-error-msg {
+    color: #ef4444;
+    font-size: 13px;
+    margin-top: 4px;
+    line-height: 1.4;
+}
+
+.ua-ninja-forms-wrapper .nf-error-wrap .nf-error-msg {
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #b91c1c;
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-top: 6px;
+}
+
+/* ==========================================================================
+   9. DESIGN PRESETS
+   ========================================================================== */
+
+/* Preset 1: Clean Classic */
+.ua-ninja-forms-wrapper.ua-nf-preset-clean-classic .nf-field-element input:not([type="button"]):not([type="submit"]):not([type="checkbox"]):not([type="radio"]),
+.ua-ninja-forms-wrapper.ua-nf-preset-clean-classic .nf-field-element textarea,
+.ua-ninja-forms-wrapper.ua-nf-preset-clean-classic .nf-field-element select {
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background-color: #ffffff;
+}
+.ua-ninja-forms-wrapper.ua-nf-preset-clean-classic .nf-field-element input:not([type="button"]):not([type="submit"]):focus,
+.ua-ninja-forms-wrapper.ua-nf-preset-clean-classic .nf-field-element textarea:focus,
+.ua-ninja-forms-wrapper.ua-nf-preset-clean-classic .nf-field-element select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+.ua-ninja-forms-wrapper.ua-nf-preset-clean-classic .nf-field-element input[type="button"],
+.ua-ninja-forms-wrapper.ua-nf-preset-clean-classic .nf-field-element input[type="submit"] {
+    background-color: #2563eb;
+    border-radius: 6px;
+}
+.ua-ninja-forms-wrapper.ua-nf-preset-clean-classic .nf-field-element input[type="button"]:hover,
+.ua-ninja-forms-wrapper.ua-nf-preset-clean-classic .nf-field-element input[type="submit"]:hover {
+    background-color: #1d4ed8;
+}
+
+/* Preset 2: Modern Boxed */
+.ua-ninja-forms-wrapper.ua-nf-preset-modern-boxed {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+}
+.ua-ninja-forms-wrapper.ua-nf-preset-modern-boxed .nf-field-element input:not([type="button"]):not([type="submit"]):not([type="checkbox"]):not([type="radio"]),
+.ua-ninja-forms-wrapper.ua-nf-preset-modern-boxed .nf-field-element textarea,
+.ua-ninja-forms-wrapper.ua-nf-preset-modern-boxed .nf-field-element select {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+.ua-ninja-forms-wrapper.ua-nf-preset-modern-boxed .nf-field-element input:not([type="button"]):not([type="submit"]):focus,
+.ua-ninja-forms-wrapper.ua-nf-preset-modern-boxed .nf-field-element textarea:focus,
+.ua-ninja-forms-wrapper.ua-nf-preset-modern-boxed .nf-field-element select:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+.ua-ninja-forms-wrapper.ua-nf-preset-modern-boxed .nf-field-element input[type="button"],
+.ua-ninja-forms-wrapper.ua-nf-preset-modern-boxed .nf-field-element input[type="submit"] {
+    background-color: #6366f1;
+    border-radius: 8px;
+}
+.ua-ninja-forms-wrapper.ua-nf-preset-modern-boxed .nf-field-element input[type="button"]:hover,
+.ua-ninja-forms-wrapper.ua-nf-preset-modern-boxed .nf-field-element input[type="submit"]:hover {
+    background-color: #4f46e5;
+}
+
+/* Preset 3: Minimal Underline */
+.ua-ninja-forms-wrapper.ua-nf-preset-minimal-underline .nf-field-element input:not([type="button"]):not([type="submit"]):not([type="checkbox"]):not([type="radio"]),
+.ua-ninja-forms-wrapper.ua-nf-preset-minimal-underline .nf-field-element textarea,
+.ua-ninja-forms-wrapper.ua-nf-preset-minimal-underline .nf-field-element select {
+    background-color: transparent !important;
+    border: none !important;
+    border-bottom: 2px solid #cbd5e1 !important;
+    border-radius: 0 !important;
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+    box-shadow: none !important;
+}
+.ua-ninja-forms-wrapper.ua-nf-preset-minimal-underline .nf-field-element input:not([type="button"]):not([type="submit"]):focus,
+.ua-ninja-forms-wrapper.ua-nf-preset-minimal-underline .nf-field-element textarea:focus,
+.ua-ninja-forms-wrapper.ua-nf-preset-minimal-underline .nf-field-element select:focus {
+    border-bottom-color: #0f172a !important;
+}
+.ua-ninja-forms-wrapper.ua-nf-preset-minimal-underline .nf-field-element input[type="button"],
+.ua-ninja-forms-wrapper.ua-nf-preset-minimal-underline .nf-field-element input[type="submit"] {
+    background-color: #0f172a;
+    border-radius: 4px;
+}
+.ua-ninja-forms-wrapper.ua-nf-preset-minimal-underline .nf-field-element input[type="button"]:hover,
+.ua-ninja-forms-wrapper.ua-nf-preset-minimal-underline .nf-field-element input[type="submit"]:hover {
+    background-color: #334155;
+}
+
+/* Preset 4: Soft Shadow */
+.ua-ninja-forms-wrapper.ua-nf-preset-soft-shadow {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+.ua-ninja-forms-wrapper.ua-nf-preset-soft-shadow .nf-field-element input:not([type="button"]):not([type="submit"]):not([type="checkbox"]):not([type="radio"]),
+.ua-ninja-forms-wrapper.ua-nf-preset-soft-shadow .nf-field-element textarea,
+.ua-ninja-forms-wrapper.ua-nf-preset-soft-shadow .nf-field-element select {
+    background-color: #ffffff;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+.ua-ninja-forms-wrapper.ua-nf-preset-soft-shadow .nf-field-element input:not([type="button"]):not([type="submit"]):focus,
+.ua-ninja-forms-wrapper.ua-nf-preset-soft-shadow .nf-field-element textarea:focus,
+.ua-ninja-forms-wrapper.ua-nf-preset-soft-shadow .nf-field-element select:focus {
+    border-color: #059669;
+    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.15);
+}
+.ua-ninja-forms-wrapper.ua-nf-preset-soft-shadow .nf-field-element input[type="button"],
+.ua-ninja-forms-wrapper.ua-nf-preset-soft-shadow .nf-field-element input[type="submit"] {
+    background-color: #059669;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+}
+.ua-ninja-forms-wrapper.ua-nf-preset-soft-shadow .nf-field-element input[type="button"]:hover,
+.ua-ninja-forms-wrapper.ua-nf-preset-soft-shadow .nf-field-element input[type="submit"]:hover {
+    background-color: #047857;
+    box-shadow: 0 6px 16px rgba(5, 150, 105, 0.35);
+}
+
+/* Preset 5: Rounded Pill */
+.ua-ninja-forms-wrapper.ua-nf-preset-rounded-pill .nf-field-element input:not([type="button"]):not([type="submit"]):not([type="checkbox"]):not([type="radio"]),
+.ua-ninja-forms-wrapper.ua-nf-preset-rounded-pill .nf-field-element select {
+    border-radius: 50px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    border: 1px solid #e2e8f0;
+}
+.ua-ninja-forms-wrapper.ua-nf-preset-rounded-pill .nf-field-element textarea {
+    border-radius: 16px !important;
+    padding: 14px 20px !important;
+    border: 1px solid #e2e8f0;
+}
+.ua-ninja-forms-wrapper.ua-nf-preset-rounded-pill .nf-field-element input:not([type="button"]):not([type="submit"]):focus,
+.ua-ninja-forms-wrapper.ua-nf-preset-rounded-pill .nf-field-element textarea:focus,
+.ua-ninja-forms-wrapper.ua-nf-preset-rounded-pill .nf-field-element select:focus {
+    border-color: #ec4899;
+    box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.15);
+}
+.ua-ninja-forms-wrapper.ua-nf-preset-rounded-pill .nf-field-element input[type="button"],
+.ua-ninja-forms-wrapper.ua-nf-preset-rounded-pill .nf-field-element input[type="submit"] {
+    background-color: #ec4899;
+    border-radius: 50px !important;
+    padding: 12px 32px !important;
+}
+.ua-ninja-forms-wrapper.ua-nf-preset-rounded-pill .nf-field-element input[type="button"]:hover,
+.ua-ninja-forms-wrapper.ua-nf-preset-rounded-pill .nf-field-element input[type="submit"]:hover {
+    background-color: #db2777;
+}
+
+/* 10. Editor Mode Alerts */
+.ua-ninja-forms-wrapper .ua-alert {
+    padding: 14px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 10px 0;
+}
+.ua-ninja-forms-wrapper .ua-alert-warning {
+    background-color: #fffbeb;
+    border: 1px solid #fef3c7;
+    color: #b45309;
+}
+.ua-ninja-forms-wrapper .ua-alert-info {
+    background-color: #f0f9ff;
+    border: 1px solid #e0f2fe;
+    color: #0369a1;
+}
