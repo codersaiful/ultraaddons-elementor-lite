@@ -818,3 +818,29 @@ function ultraaddons_optimize_array( $array ){
   
      return $array;
 }
+
+/**
+ * Get Fluent Forms List
+ * 
+ * @since 1.1.X
+ * @return array
+ */
+function ultraaddons_get_fluent_form_list() {
+    global $wpdb;
+    $options = [];
+    $table_name = $wpdb->prefix . 'fluentform_forms';
+
+    if ( $wpdb->get_var( $wpdb->prepare( "SHOW TABLES LIKE %s", $table_name ) ) === $table_name ) {
+        $forms = $wpdb->get_results( "SELECT id, title FROM {$table_name} ORDER BY id DESC" );
+        if ( ! empty( $forms ) ) {
+            $options['0'] = esc_html__( 'Select Fluent Form', 'ultraaddons-elementor-lite' );
+            foreach ( $forms as $form ) {
+                $options[ $form->id ] = esc_html( $form->title );
+            }
+            return $options;
+        }
+    }
+
+    $options['0'] = esc_html__( 'No Fluent Forms found!', 'ultraaddons-elementor-lite' );
+    return $options;
+}

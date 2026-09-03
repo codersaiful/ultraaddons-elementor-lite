@@ -738,6 +738,15 @@ $ultraaddons_widgetsArray = [
             __( 'Forms', 'ultraaddons-elementor-lite' ),
         ],
     ],
+    'Fluent_Forms'=> [
+        'name'      => __( 'Fluent Forms', 'ultraaddons-elementor-lite' ),
+        'is_pro'   => false,
+        'icon'      => 'eicon-form-horizontal',
+        'badge'     => 'new',
+        'cat'       => [
+            __( 'Forms', 'ultraaddons-elementor-lite' ),
+        ],
+    ],
 
     'Video_Popup'=> [
         'name'      => __( 'Video Popup', 'ultraaddons-elementor-lite' ),

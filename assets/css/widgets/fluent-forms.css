@@ -1,0 +1,352 @@
+/**
+ * UltraAddons - Fluent Forms Widget Stylesheet
+ * 
+ * Featuring 5 Interactive Presets, Header Controls, Field Display Toggles, and Button Alignments.
+ * @package UltraAddons
+ */
+
+/* ==========================================================================
+   1. Form Container & Global Resets
+   ========================================================================== */
+.ua-fluent-forms-wrapper {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+/* Reset Fluent Forms default outer margins */
+.ua-fluent-forms-wrapper form.fluentform {
+    margin: 0 !important;
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+}
+
+.ua-fluent-forms-wrapper .ff-el-group:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* ==========================================================================
+   2. Form Header (Title & Description)
+   ========================================================================== */
+.ua-fluent-forms-wrapper .ua-ff-title {
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.ua-fluent-forms-wrapper .ua-ff-description {
+    margin: 0 0 20px 0;
+    line-height: 1.6;
+    font-size: 15px;
+    color: #64748b;
+}
+
+/* ==========================================================================
+   3. Field Display Toggles (Hide Labels, Placeholders, Errors)
+   ========================================================================== */
+
+/* Hide Field Labels */
+.ua-fluent-forms-wrapper.ua-ff-hide-labels .ff-el-input--label {
+    display: none !important;
+}
+
+/* Hide Placeholders */
+.ua-fluent-forms-wrapper.ua-ff-hide-placeholders .ff-el-form-control::placeholder {
+    opacity: 0 !important;
+    color: transparent !important;
+}
+
+/* Hide Validation Errors */
+.ua-fluent-forms-wrapper.ua-ff-hide-errors .ff-el-is-error .error,
+.ua-fluent-forms-wrapper.ua-ff-hide-errors .text-danger,
+.ua-fluent-forms-wrapper.ua-ff-hide-errors .ff-errors-in-stack {
+    display: none !important;
+}
+
+/* ==========================================================================
+   4. Field Labels & Asterisk
+   ========================================================================== */
+.ua-fluent-forms-wrapper .ff-el-input--label label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 6px;
+    line-height: 1.4;
+    transition: color 0.2s ease;
+}
+
+.ua-fluent-forms-wrapper .ff-el-input--label.ff-el-is-required label:after,
+.ua-fluent-forms-wrapper .ff-el-input--label.ff-el-is-required label:before,
+.ua-fluent-forms-wrapper .ff-el-asterisk {
+    color: #ef4444;
+}
+
+/* ==========================================================================
+   5. Input, Textarea & Select Defaults
+   ========================================================================== */
+.ua-fluent-forms-wrapper .ff-el-form-control {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 15px;
+    color: #1e293b;
+    font-family: inherit;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ua-fluent-forms-wrapper input.ff-el-form-control,
+.ua-fluent-forms-wrapper select.ff-el-form-control {
+    height: 48px;
+    padding: 0 16px;
+}
+
+.ua-fluent-forms-wrapper textarea.ff-el-form-control {
+    min-height: 120px;
+    padding: 14px 16px;
+    resize: vertical;
+}
+
+.ua-fluent-forms-wrapper .ff-el-form-control::placeholder {
+    color: #94a3b8;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.ua-fluent-forms-wrapper .ff-el-form-control:focus::placeholder {
+    opacity: 0.5;
+}
+
+/* ==========================================================================
+   6. INTERACTIVE DESIGN PRESETS
+   ========================================================================== */
+
+/* --- PRESET 1: Clean Classic --- */
+.ua-fluent-forms-wrapper.ua-ff-preset-clean-classic .ff-el-form-control {
+    background-color: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 6px;
+}
+
+.ua-fluent-forms-wrapper.ua-ff-preset-clean-classic .ff-el-form-control:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    outline: none;
+}
+
+.ua-fluent-forms-wrapper.ua-ff-preset-clean-classic .ff-btn-submit {
+    background-color: #2563eb;
+    color: #ffffff;
+    border-radius: 6px;
+    border: none;
+    font-weight: 600;
+}
+
+.ua-fluent-forms-wrapper.ua-ff-preset-clean-classic .ff-btn-submit:hover {
+    background-color: #1d4ed8;
+}
+
+/* --- PRESET 2: Modern Boxed --- */
+.ua-fluent-forms-wrapper.ua-ff-preset-modern-boxed .ff-el-form-control {
+    background-color: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
+}
+
+.ua-fluent-forms-wrapper.ua-ff-preset-modern-boxed .ff-el-form-control:focus {
+    background-color: #ffffff;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    outline: none;
+}
+
+.ua-fluent-forms-wrapper.ua-ff-preset-modern-boxed .ff-btn-submit {
+    background-color: #4f46e5;
+    color: #ffffff;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+}
+
+.ua-fluent-forms-wrapper.ua-ff-preset-modern-boxed .ff-btn-submit:hover {
+    background-color: #4338ca;
+}
+
+/* --- PRESET 3: Minimal Underline --- */
+.ua-fluent-forms-wrapper.ua-ff-preset-minimal-underline .ff-el-form-control {
+    background-color: transparent !important;
+    border: none !important;
+    border-bottom: 2px solid #cbd5e1 !important;
+    border-radius: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-shadow: none !important;
+}
+
+.ua-fluent-forms-wrapper.ua-ff-preset-minimal-underline .ff-el-form-control:focus {
+    border-bottom-color: #0f172a !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.ua-fluent-forms-wrapper.ua-ff-preset-minimal-underline .ff-btn-submit {
+    background-color: #0f172a;
+    color: #ffffff;
+    border-radius: 4px;
+    border: none;
+    font-weight: 600;
+}
+
+.ua-fluent-forms-wrapper.ua-ff-preset-minimal-underline .ff-btn-submit:hover {
+    background-color: #334155;
+}
+
+/* --- PRESET 4: Soft Shadow --- */
+.ua-fluent-forms-wrapper.ua-ff-preset-soft-shadow .ff-el-form-control {
+    background-color: #ffffff;
+    border: 1px solid #f1f5f9;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+}
+
+.ua-fluent-forms-wrapper.ua-ff-preset-soft-shadow .ff-el-form-control:focus {
+    border-color: #0284c7;
+    box-shadow: 0 6px 18px rgba(2, 132, 199, 0.12);
+    outline: none;
+}
+
+.ua-fluent-forms-wrapper.ua-ff-preset-soft-shadow .ff-btn-submit {
+    background-color: #0284c7;
+    color: #ffffff;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+}
+
+.ua-fluent-forms-wrapper.ua-ff-preset-soft-shadow .ff-btn-submit:hover {
+    background-color: #0369a1;
+    box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4);
+    transform: translateY(-1px);
+}
+
+/* --- PRESET 5: Rounded Pill --- */
+.ua-fluent-forms-wrapper.ua-ff-preset-rounded-pill input.ff-el-form-control,
+.ua-fluent-forms-wrapper.ua-ff-preset-rounded-pill select.ff-el-form-control {
+    border-radius: 50px !important;
+    border: 1.5px solid #e2e8f0;
+    background-color: #f8fafc;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+
+.ua-fluent-forms-wrapper.ua-ff-preset-rounded-pill textarea.ff-el-form-control {
+    border-radius: 16px !important;
+    border: 1.5px solid #e2e8f0;
+    background-color: #f8fafc;
+    padding: 14px 20px !important;
+}
+
+.ua-fluent-forms-wrapper.ua-ff-preset-rounded-pill .ff-el-form-control:focus {
+    background-color: #ffffff;
+    border-color: #ec4899;
+    box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.15);
+    outline: none;
+}
+
+.ua-fluent-forms-wrapper.ua-ff-preset-rounded-pill .ff-btn-submit {
+    border-radius: 50px !important;
+    background-color: #ec4899;
+    color: #ffffff;
+    border: none;
+    font-weight: 600;
+    padding-left: 28px !important;
+    padding-right: 28px !important;
+}
+
+.ua-fluent-forms-wrapper.ua-ff-preset-rounded-pill .ff-btn-submit:hover {
+    background-color: #db2777;
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   7. Submit Button Alignments
+   ========================================================================== */
+.ua-fluent-forms-wrapper .ff-btn-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 26px;
+    font-size: 15px;
+    line-height: 1.4;
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+.ua-ff-btn-align-left .ff_submit_btn_wrapper {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.ua-ff-btn-align-center .ff_submit_btn_wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.ua-ff-btn-align-right .ff_submit_btn_wrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ua-ff-btn-align-justify .ff_submit_btn_wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.ua-ff-btn-align-justify .ff_submit_btn_wrapper .ff-btn-submit {
+    width: 100% !important;
+}
+
+/* ==========================================================================
+   8. Messages & Alert Feedback
+   ========================================================================== */
+.ua-fluent-forms-wrapper .ff-message-success {
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.ua-fluent-forms-wrapper .text-danger,
+.ua-fluent-forms-wrapper .error {
+    font-size: 13px;
+    margin-top: 5px;
+    line-height: 1.3;
+}
+
+/* ==========================================================================
+   9. Editor Alert Notices
+   ========================================================================== */
+.ua-fluent-forms-wrapper .ua-alert {
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.ua-fluent-forms-wrapper .ua-alert-warning {
+    background-color: #fffbeb;
+    color: #92400e;
+    border: 1px solid #fde68a;
+}
+
+.ua-fluent-forms-wrapper .ua-alert-info {
+    background-color: #eff6ff;
+    color: #1e40af;
+    border: 1px solid #bfdbfe;
+}
