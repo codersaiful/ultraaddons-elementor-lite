@@ -167,6 +167,15 @@ $ultraaddons_widgetsArray = [
                 __( 'Forms', 'ultraaddons-elementor-lite' ),
             ],
     ],
+    'Mailchimp' => [
+            'name'  => __( 'Mailchimp', 'ultraaddons-elementor-lite' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-mailchimp',
+            'badge'     => 'new',
+            'cat'       => [
+                __( 'Forms', 'ultraaddons-elementor-lite' ),
+            ],
+    ],
     'Icon_Box' => [
             'name'  => __( 'Icon Box', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,

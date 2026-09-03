@@ -100,6 +100,10 @@ class Loader {
         // Register Recent Blog / Post Grid AJAX handlers early
         add_action( 'wp_ajax_ua_recent_blog_load_posts', [ $this, 'handle_recent_blog_ajax' ] );
         add_action( 'wp_ajax_nopriv_ua_recent_blog_load_posts', [ $this, 'handle_recent_blog_ajax' ] );
+
+        // Register Mailchimp AJAX subscription handlers early
+        add_action( 'wp_ajax_ultraaddons_mailchimp_subscribe', [ $this, 'handle_mailchimp_ajax' ] );
+        add_action( 'wp_ajax_nopriv_ultraaddons_mailchimp_subscribe', [ $this, 'handle_mailchimp_ajax' ] );
         
     }
 
@@ -433,7 +437,7 @@ class Loader {
             $handle = 'ultraaddons-' . $ultraaddons_name;
             
             $deps = ['ultraaddons-widgets-style'];
-            $ver  = ULTRA_ADDONS_VERSION;
+            $ver  = defined( 'WP_DEBUG' ) && WP_DEBUG ? time() : ULTRA_ADDONS_VERSION;
             $media= 'all';
             
             $src = ULTRA_ADDONS_ASSETS . 'css/widgets/' . strtolower( $ultraaddons_name ) . '.css';
@@ -499,6 +503,23 @@ class Loader {
             \UltraAddons\Widget\Recent_Blog::ajax_load_posts();
         } else {
             wp_send_json_error( [ 'message' => 'Recent Blog widget class not found.' ] );
+        }
+    }
+
+    /**
+     * AJAX proxy: Subscription for Mailchimp widget.
+     * Ensures the Mailchimp class file is loaded before calling the handler.
+     */
+    public function handle_mailchimp_ajax() {
+        $this->include_widget_base();
+        $mailchimp_file = ULTRA_ADDONS_DIR . 'inc/widget/mailchimp.php';
+        if ( file_exists( $mailchimp_file ) ) {
+            include_once $mailchimp_file;
+        }
+        if ( class_exists( '\\UltraAddons\\Widget\\Mailchimp' ) ) {
+            \UltraAddons\Widget\Mailchimp::ajax_subscribe();
+        } else {
+            wp_send_json_error( [ 'message' => 'Mailchimp widget class not found.' ] );
         }
     }
     

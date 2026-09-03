@@ -1,0 +1,614 @@
+/**
+ * UltraAddons - Modern & Interactive Mailchimp Stylesheet
+ * Featuring 5 Interactive Presets, Inline Newsletter (Joined Input & Button), and AJAX Feedback
+ */
+
+/* ===================================================
+   1. Base Form Container & Structure
+   =================================================== */
+.ua-mailchimp-wrapper {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    padding: 6px 0;
+    box-sizing: border-box;
+}
+
+.ua-mailchimp-wrapper form.ua-mailchimp-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+}
+
+.ua-mailchimp-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+}
+
+.ua-mailchimp-fields-wrap,
+.ua-mailchimp-field-group,
+.ua-mailchimp-submit-wrap {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===================================================
+   2. Form Header (Title & Subtitle)
+   =================================================== */
+.ua-mailchimp-header {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.ua-mailchimp-title {
+    margin: 0 0 8px 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.3;
+}
+
+.ua-mailchimp-description {
+    margin: 0;
+    font-size: 15px;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* ===================================================
+   3. Field Labels & Groups
+   =================================================== */
+.ua-mailchimp-field-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.ua-mailchimp-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 8px;
+    line-height: 1.4;
+    transition: color 0.2s ease;
+}
+
+.ua-mailchimp-hide-labels .ua-mailchimp-label {
+    display: none !important;
+}
+
+.ua-mailchimp-required-mark {
+    color: #ef4444;
+    margin-left: 2px;
+}
+
+/* ===================================================
+   4. Universal Input Defaults
+   =================================================== */
+.ua-mailchimp-input {
+    display: block;
+    width: 100%;
+    height: var(--ua-mc-input-height, 50px) !important;
+    line-height: var(--ua-mc-input-height, 50px) !important;
+    padding: 0 18px !important;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 15px;
+    color: #1e293b;
+    font-family: inherit;
+    vertical-align: middle;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ua-mailchimp-input::placeholder {
+    color: #94a3b8;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.ua-mailchimp-input:focus::placeholder {
+    opacity: 0.5;
+}
+
+/* ===================================================
+   5. INTERACTIVE DESIGN PRESETS
+   =================================================== */
+
+/* --- PRESET 1: Clean Classic --- */
+.ua-mailchimp-preset-clean-classic .ua-mailchimp-input {
+    background-color: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+}
+
+.ua-mailchimp-preset-clean-classic .ua-mailchimp-input:hover {
+    border-color: #94a3b8;
+}
+
+.ua-mailchimp-preset-clean-classic .ua-mailchimp-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3.5px rgba(59, 130, 246, 0.15);
+}
+
+/* --- PRESET 2: Modern Boxed (Soft BG) --- */
+.ua-mailchimp-preset-modern-boxed .ua-mailchimp-input {
+    background-color: #f1f5f9;
+    border: 1.5px solid transparent;
+    border-radius: 10px;
+}
+
+.ua-mailchimp-preset-modern-boxed .ua-mailchimp-input:hover {
+    background-color: #e2e8f0;
+}
+
+.ua-mailchimp-preset-modern-boxed .ua-mailchimp-input:focus {
+    outline: none;
+    background-color: #ffffff;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+}
+
+/* --- PRESET 3: Minimal Underline --- */
+.ua-mailchimp-preset-minimal-underline .ua-mailchimp-input {
+    background-color: transparent;
+    border: none !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: 2px solid #cbd5e1;
+    border-radius: 0;
+    padding-left: 4px !important;
+    padding-right: 12px !important;
+    box-shadow: none;
+}
+
+.ua-mailchimp-preset-minimal-underline .ua-mailchimp-input:hover {
+    border-bottom-color: #94a3b8;
+}
+
+.ua-mailchimp-preset-minimal-underline .ua-mailchimp-input:focus {
+    outline: none;
+    border-bottom-color: #0f172a;
+    box-shadow: 0 1px 0 0 #0f172a;
+}
+
+.ua-mailchimp-layout-inline-joined.ua-mailchimp-preset-minimal-underline .ua-mailchimp-row {
+    gap: 10px !important;
+}
+
+.ua-mailchimp-layout-inline-joined.ua-mailchimp-preset-minimal-underline .ua-mailchimp-submit {
+    border-radius: 6px !important;
+}
+
+/* --- PRESET 4: Soft Shadow / Floating --- */
+.ua-mailchimp-preset-soft-shadow .ua-mailchimp-input {
+    background-color: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.05);
+}
+
+.ua-mailchimp-preset-soft-shadow .ua-mailchimp-input:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px -2px rgba(15, 23, 42, 0.08);
+}
+
+.ua-mailchimp-preset-soft-shadow .ua-mailchimp-input:focus {
+    outline: none;
+    transform: translateY(-1px);
+    border-color: #2563eb;
+    box-shadow: 0 8px 24px -2px rgba(37, 99, 235, 0.16);
+}
+
+/* --- PRESET 5: Rounded Pill --- */
+.ua-mailchimp-preset-rounded-pill .ua-mailchimp-input {
+    background-color: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 30px;
+    padding-left: 22px;
+    padding-right: 22px;
+}
+
+.ua-mailchimp-preset-rounded-pill .ua-mailchimp-input:focus {
+    outline: none;
+    border-color: #10b981;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.18);
+}
+
+.ua-mailchimp-preset-rounded-pill .ua-mailchimp-submit {
+    border-radius: 30px !important;
+}
+
+/* Layout: 1 Column (Stacked) */
+.ua-mailchimp-layout-single-col .ua-mailchimp-row {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ua-mc-row-gap, 16px);
+    width: 100%;
+}
+
+.ua-mailchimp-layout-single-col .ua-mailchimp-fields-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ua-mc-row-gap, 16px);
+    width: 100%;
+}
+
+.ua-mailchimp-layout-single-col .ua-mailchimp-submit-wrap {
+    width: 100%;
+}
+
+/* Layout: 2 Columns Side-by-Side */
+.ua-mailchimp-layout-two-cols .ua-mailchimp-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center !important;
+    gap: var(--ua-mc-row-gap, 16px) var(--ua-mc-col-gap, 16px);
+    width: 100%;
+}
+
+.ua-mailchimp-layout-two-cols .ua-mailchimp-fields-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 1 auto;
+    min-width: 0;
+    gap: var(--ua-mc-row-gap, 16px) var(--ua-mc-col-gap, 16px);
+}
+
+.ua-mailchimp-layout-two-cols .ua-mailchimp-field-group {
+    flex: 1 1 calc(50% - (var(--ua-mc-col-gap, 16px) / 2));
+    min-width: 180px;
+}
+
+.ua-mailchimp-layout-two-cols .ua-mailchimp-submit-wrap {
+    flex: 0 0 auto;
+}
+
+.ua-mailchimp-layout-two-cols .ua-mailchimp-gdpr-wrap {
+    width: 100%;
+}
+
+@media (max-width: 767px) {
+    .ua-mailchimp-layout-two-cols .ua-mailchimp-row,
+    .ua-mailchimp-layout-two-cols .ua-mailchimp-fields-wrap {
+        flex-direction: column;
+    }
+    .ua-mailchimp-layout-two-cols .ua-mailchimp-field-group {
+        width: 100%;
+        flex: 1 1 100%;
+    }
+}
+
+/* Layout: Inline Newsletter (Joined Input & Submit Button) */
+.ua-mailchimp-layout-inline-joined .ua-mailchimp-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+}
+
+.ua-mailchimp-layout-inline-joined .ua-mailchimp-fields-wrap {
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 auto;
+    min-width: 0;
+    gap: 0;
+    margin: 0;
+}
+
+.ua-mailchimp-layout-inline-joined .ua-mailchimp-field-group {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin: 0;
+}
+
+.ua-mailchimp-layout-inline-joined .ua-mailchimp-submit-wrap {
+    flex: 0 0 auto;
+    width: auto;
+    margin: 0;
+    display: flex;
+}
+
+/* Connect borders for Inline Joined */
+.ua-mailchimp-layout-inline-joined .ua-mailchimp-input {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-right: none !important;
+    height: var(--ua-mc-input-height, 50px) !important;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
+}
+
+.ua-mailchimp-layout-inline-joined .ua-mailchimp-input:focus {
+    z-index: 2;
+}
+
+.ua-mailchimp-layout-inline-joined .ua-mailchimp-submit {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    height: var(--ua-mc-input-height, 50px) !important;
+    white-space: nowrap !important;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
+}
+
+/* Preset: Rounded Pill Newsletter (Like capsule in demo image) */
+.ua-mailchimp-layout-inline-joined.ua-mailchimp-preset-rounded-pill .ua-mailchimp-input {
+    border-radius: 30px 0 0 30px !important;
+    padding-left: 24px !important;
+}
+
+.ua-mailchimp-layout-inline-joined.ua-mailchimp-preset-rounded-pill .ua-mailchimp-submit {
+    border-radius: 0 30px 30px 0 !important;
+    padding-left: 26px !important;
+    padding-right: 28px !important;
+}
+
+/* Preset: Clean Classic (Square Box in demo image) */
+.ua-mailchimp-layout-inline-joined.ua-mailchimp-preset-clean-classic .ua-mailchimp-input {
+    border-radius: 8px 0 0 8px !important;
+}
+
+.ua-mailchimp-layout-inline-joined.ua-mailchimp-preset-clean-classic .ua-mailchimp-submit {
+    border-radius: 0 8px 8px 0 !important;
+}
+
+/* Responsive wrap on narrow screens (< 480px) */
+@media (max-width: 480px) {
+    .ua-mailchimp-layout-inline-joined .ua-mailchimp-row {
+        flex-direction: column !important;
+        gap: var(--ua-mc-row-gap, 12px) !important;
+    }
+    .ua-mailchimp-layout-inline-joined .ua-mailchimp-input {
+        border-radius: 8px !important;
+        border-right: 1.5px solid #cbd5e1 !important;
+        width: 100% !important;
+    }
+    .ua-mailchimp-layout-inline-joined .ua-mailchimp-submit {
+        border-radius: 8px !important;
+        width: 100% !important;
+    }
+    .ua-mailchimp-layout-inline-joined.ua-mailchimp-preset-rounded-pill .ua-mailchimp-input {
+        border-radius: 30px !important;
+        border-right: 1.5px solid #cbd5e1 !important;
+    }
+    .ua-mailchimp-layout-inline-joined.ua-mailchimp-preset-rounded-pill .ua-mailchimp-submit {
+        border-radius: 30px !important;
+    }
+}
+
+/* ===================================================
+   7. Submit Button Styling & Micro-Interactions
+   =================================================== */
+.ua-mailchimp-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: var(--ua-mc-btn-height, 50px);
+    padding: 0 28px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #0f172a;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+    width: auto;
+}
+
+.ua-mailchimp-submit:hover {
+    background-color: #1e293b;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.2);
+}
+
+.ua-mailchimp-submit:active {
+    transform: translateY(0);
+}
+
+.ua-mailchimp-btn-align-left .ua-mailchimp-submit-wrap {
+    display: flex;
+    justify-content: flex-start;
+}
+.ua-mailchimp-btn-align-center .ua-mailchimp-submit-wrap {
+    display: flex;
+    justify-content: center;
+}
+.ua-mailchimp-btn-align-right .ua-mailchimp-submit-wrap {
+    display: flex;
+    justify-content: flex-end;
+}
+.ua-mailchimp-btn-align-justify .ua-mailchimp-submit-wrap,
+.ua-mailchimp-btn-align-justify .ua-mailchimp-submit {
+    width: 100% !important;
+}
+
+/* Loading Spinner on button */
+.ua-mailchimp-spinner {
+    display: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #ffffff;
+    animation: ua-mc-spin 0.6s linear infinite;
+}
+
+@keyframes ua-mc-spin {
+    to { transform: rotate(360deg); }
+}
+
+.ua-mailchimp-loading .ua-mailchimp-spinner {
+    display: inline-block;
+}
+
+.ua-mailchimp-loading .ua-mailchimp-submit {
+    pointer-events: none;
+    opacity: 0.85;
+}
+
+/* ===================================================
+   8. GDPR Compliance Checkbox
+   =================================================== */
+.ua-mailchimp-gdpr-wrap {
+    margin-top: 4px;
+    width: 100%;
+}
+
+.ua-mailchimp-gdpr-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #64748b;
+    cursor: pointer;
+    user-select: none;
+    line-height: 1.4;
+}
+
+.ua-mailchimp-gdpr-label a {
+    color: #3b82f6;
+    text-decoration: underline;
+}
+
+.ua-mailchimp-gdpr-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 4px;
+    background-color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.ua-mailchimp-gdpr-checkbox:checked {
+    background-color: #3b82f6;
+    border-color: #3b82f6;
+}
+
+.ua-mailchimp-gdpr-checkbox:checked::after {
+    content: "";
+    width: 4px;
+    height: 8px;
+    border: solid #ffffff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg) translate(-1px, -1px);
+    display: block;
+}
+
+/* ===================================================
+   9. Alerts & Response Messages
+   =================================================== */
+.ua-mailchimp-message {
+    display: none;
+    box-sizing: border-box;
+}
+
+.ua-mailchimp-message:empty,
+.ua-mailchimp-message:not(.ua-mailchimp-message-success):not(.ua-mailchimp-message-error) {
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0 !important;
+    line-height: 0 !important;
+    border: none !important;
+}
+
+.ua-mailchimp-message.ua-mailchimp-message-success {
+    display: block;
+    margin-top: 14px;
+    padding: 14px 18px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    background-color: #f0fdf4;
+    border: 1.5px solid #86efac;
+    color: #166534;
+    animation: ua-mc-fade 0.3s ease-out;
+}
+
+.ua-mailchimp-message.ua-mailchimp-message-error {
+    display: block;
+    margin-top: 14px;
+    padding: 14px 18px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    background-color: #fef2f2;
+    border: 1.5px solid #fca5a5;
+    color: #991b1b;
+    animation: ua-mc-fade 0.3s ease-out;
+}
+
+@keyframes ua-mc-fade {
+    0% { opacity: 0; transform: translateY(-8px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ua-mc-shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-6px); }
+    40%, 80% { transform: translateX(6px); }
+}
+
+.ua-mailchimp-shake {
+    animation: ua-mc-shake 0.4s ease-in-out;
+}
+
+/* Missing API Key Notice in Editor */
+.ua-mailchimp-missing-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 36px 24px;
+    background-color: #eff6ff;
+    border: 1.5px dashed #3b82f6;
+    border-radius: 12px;
+    color: #1e40af;
+}
+
+.ua-mailchimp-missing-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.ua-mailchimp-missing-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.ua-mailchimp-missing-desc {
+    font-size: 14px;
+    max-width: 440px;
+    margin-bottom: 18px;
+    color: #1d4ed8;
+    line-height: 1.5;
+}
