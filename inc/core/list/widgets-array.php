@@ -430,14 +430,14 @@ $ultraaddons_widgetsArray = [
     
     //@author B M Rafiul Alam Rafiul <bmrafiul.alam@gmail.com>
     
-	'Dual_Color_Heading' => [
+	/* 'Dual_Color_Heading' => [
             'name'  => __( 'Dual Color Heading', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
             'icon'      => 'eicon-heading',
             'cat'       => [
                 __( 'General', 'ultraaddons-elementor-lite' ),
             ],
-    ],
+    ], */
 	'Step_Flow' => [
             'name'  => __( 'Step Flow', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
