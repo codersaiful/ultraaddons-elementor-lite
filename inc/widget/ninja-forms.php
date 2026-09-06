@@ -56,7 +56,6 @@ class Ninja_Forms extends Base {
         // CONTENT TAB
         $this->register_setup_controls();
         $this->register_header_controls();
-        $this->register_fields_controls();
         $this->register_button_content_controls();
 
         // STYLE TAB
@@ -132,6 +131,20 @@ class Ninja_Forms extends Base {
                 'options'     => $forms,
                 'default'     => '0',
                 'description' => esc_html__( 'Select a Ninja Form to display on your page.', 'ultraaddons-elementor-lite' ),
+            ]
+        );
+
+        $this->add_control(
+            'hide_labels',
+            [
+                'label'        => esc_html__( 'Hide Field Labels', 'ultraaddons-elementor-lite' ),
+                'type'         => Controls_Manager::SWITCHER,
+                'label_on'     => esc_html__( 'Yes', 'ultraaddons-elementor-lite' ),
+                'label_off'    => esc_html__( 'No', 'ultraaddons-elementor-lite' ),
+                'return_value' => 'yes',
+                'default'      => 'no',
+                'separator'    => 'before',
+                'description'  => esc_html__( 'Hide outer field labels for a modern layout.', 'ultraaddons-elementor-lite' ),
             ]
         );
 
@@ -214,60 +227,6 @@ class Ninja_Forms extends Base {
     }
 
     /* =========================================================================
-       CONTENT TAB: Section 3 - Field Display Options
-       ========================================================================= */
-    protected function register_fields_controls() {
-        $this->start_controls_section(
-            'section_nf_fields',
-            [
-                'label' => esc_html__( 'Field Display Options', 'ultraaddons-elementor-lite' ),
-                'tab'   => Controls_Manager::TAB_CONTENT,
-            ]
-        );
-
-        $this->add_control(
-            'hide_labels',
-            [
-                'label'        => esc_html__( 'Hide Field Labels', 'ultraaddons-elementor-lite' ),
-                'type'         => Controls_Manager::SWITCHER,
-                'label_on'     => esc_html__( 'Yes', 'ultraaddons-elementor-lite' ),
-                'label_off'    => esc_html__( 'No', 'ultraaddons-elementor-lite' ),
-                'return_value' => 'yes',
-                'default'      => 'no',
-                'description'  => esc_html__( 'Hide outer field labels for a modern placeholder-only layout.', 'ultraaddons-elementor-lite' ),
-            ]
-        );
-
-        $this->add_control(
-            'hide_placeholders',
-            [
-                'label'        => esc_html__( 'Hide Placeholders', 'ultraaddons-elementor-lite' ),
-                'type'         => Controls_Manager::SWITCHER,
-                'label_on'     => esc_html__( 'Yes', 'ultraaddons-elementor-lite' ),
-                'label_off'    => esc_html__( 'No', 'ultraaddons-elementor-lite' ),
-                'return_value' => 'yes',
-                'default'      => 'no',
-                'description'  => esc_html__( 'Hide placeholder text inside form inputs.', 'ultraaddons-elementor-lite' ),
-            ]
-        );
-
-        $this->add_control(
-            'hide_errors',
-            [
-                'label'        => esc_html__( 'Hide Validation Errors', 'ultraaddons-elementor-lite' ),
-                'type'         => Controls_Manager::SWITCHER,
-                'label_on'     => esc_html__( 'Yes', 'ultraaddons-elementor-lite' ),
-                'label_off'    => esc_html__( 'No', 'ultraaddons-elementor-lite' ),
-                'return_value' => 'yes',
-                'default'      => 'no',
-                'description'  => esc_html__( 'Hide inline validation error messages.', 'ultraaddons-elementor-lite' ),
-            ]
-        );
-
-        $this->end_controls_section();
-    }
-
-    /* =========================================================================
        CONTENT TAB: Section 4 - Submit Button Options
        ========================================================================= */
     protected function register_button_content_controls() {
@@ -286,34 +245,6 @@ class Ninja_Forms extends Base {
                 'type'        => Controls_Manager::TEXT,
                 'placeholder' => esc_html__( 'Leave empty for form default', 'ultraaddons-elementor-lite' ),
                 'description' => esc_html__( 'Override the submit button text defined inside Ninja Forms.', 'ultraaddons-elementor-lite' ),
-            ]
-        );
-
-        $this->add_responsive_control(
-            'button_align',
-            [
-                'label'        => esc_html__( 'Alignment', 'ultraaddons-elementor-lite' ),
-                'type'         => Controls_Manager::CHOOSE,
-                'options'      => [
-                    'left'    => [
-                        'title' => esc_html__( 'Left', 'ultraaddons-elementor-lite' ),
-                        'icon'  => 'eicon-text-align-left',
-                    ],
-                    'center'  => [
-                        'title' => esc_html__( 'Center', 'ultraaddons-elementor-lite' ),
-                        'icon'  => 'eicon-text-align-center',
-                    ],
-                    'right'   => [
-                        'title' => esc_html__( 'Right', 'ultraaddons-elementor-lite' ),
-                        'icon'  => 'eicon-text-align-right',
-                    ],
-                    'justify' => [
-                        'title' => esc_html__( 'Full Width', 'ultraaddons-elementor-lite' ),
-                        'icon'  => 'eicon-text-align-justify',
-                    ],
-                ],
-                'default'      => 'left',
-                'prefix_class' => 'ua-nf-btn-align-',
             ]
         );
 
@@ -771,6 +702,43 @@ class Ninja_Forms extends Base {
             ]
         );
 
+        $this->add_responsive_control(
+            'button_align',
+            [
+                'label'        => esc_html__( 'Alignment', 'ultraaddons-elementor-lite' ),
+                'type'         => Controls_Manager::CHOOSE,
+                'options'      => [
+                    'left'    => [
+                        'title' => esc_html__( 'Left', 'ultraaddons-elementor-lite' ),
+                        'icon'  => 'eicon-text-align-left',
+                    ],
+                    'center'  => [
+                        'title' => esc_html__( 'Center', 'ultraaddons-elementor-lite' ),
+                        'icon'  => 'eicon-text-align-center',
+                    ],
+                    'right'   => [
+                        'title' => esc_html__( 'Right', 'ultraaddons-elementor-lite' ),
+                        'icon'  => 'eicon-text-align-right',
+                    ],
+                    'justify' => [
+                        'title' => esc_html__( 'Full Width', 'ultraaddons-elementor-lite' ),
+                        'icon'  => 'eicon-text-align-justify',
+                    ],
+                ],
+                'default'      => 'left',
+                'prefix_class' => 'ua-nf-btn-align%s-',
+                'selectors_dictionary' => [
+                    'left'    => 'flex-start',
+                    'center'  => 'center',
+                    'right'   => 'flex-end',
+                    'justify' => 'space-between',
+                ],
+                'selectors'    => [
+                    '{{WRAPPER}} .submit-container .nf-field-element, {{WRAPPER}} .submit-wrap .nf-field-element' => 'display: flex !important; justify-content: {{VALUE}} !important;',
+                ],
+            ]
+        );
+
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
@@ -1035,14 +1003,6 @@ class Ninja_Forms extends Base {
             $wrapper_classes[] = 'ua-nf-hide-labels';
         }
 
-        if ( 'yes' === $settings['hide_placeholders'] ) {
-            $wrapper_classes[] = 'ua-nf-hide-placeholders';
-        }
-
-        if ( 'yes' === $settings['hide_errors'] ) {
-            $wrapper_classes[] = 'ua-nf-hide-errors';
-        }
-
         echo '<div class="' . esc_attr( implode( ' ', $wrapper_classes ) ) . '">';
 
         // Form Header (Title & Description)
@@ -1127,7 +1087,7 @@ class Ninja_Forms extends Base {
             // Input Element
             echo '<div class="nf-field-element">';
             if ( 'textarea' === $type ) {
-                echo '<textarea class="ninja-forms-field nf-element" placeholder="' . esc_attr( $placeholder ) . '" readonly></textarea>';
+                echo '<textarea class="ninja-forms-field nf-element" placeholder="' . esc_attr( $placeholder ) . '"></textarea>';
             } elseif ( in_array( $type, [ 'listselect', 'select', 'listcountry', 'liststate' ], true ) ) {
                 echo '<select class="ninja-forms-field nf-element"><option>' . esc_html( $placeholder ? $placeholder : 'Select an option' ) . '</option></select>';
             } elseif ( in_array( $type, [ 'checkbox', 'listcheckbox' ], true ) ) {
@@ -1136,7 +1096,7 @@ class Ninja_Forms extends Base {
                 echo '<label><input type="radio" class="ninja-forms-field nf-element"> ' . esc_html( $label ) . '</label>';
             } else {
                 $input_type = in_array( $type, [ 'email', 'number', 'password', 'tel', 'url' ], true ) ? $type : 'text';
-                echo '<input type="' . esc_attr( $input_type ) . '" class="ninja-forms-field nf-element" placeholder="' . esc_attr( $placeholder ) . '" readonly>';
+                echo '<input type="' . esc_attr( $input_type ) . '" class="ninja-forms-field nf-element" placeholder="' . esc_attr( $placeholder ) . '">';
             }
             echo '</div>'; // .nf-field-element
 

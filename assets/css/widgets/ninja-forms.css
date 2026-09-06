@@ -142,43 +142,81 @@
 }
 
 /* 6. Submit Button Alignment */
-.ua-ninja-forms-wrapper.ua-nf-btn-align-left .submit-container .nf-field-element {
-    display: flex;
-    justify-content: flex-start;
+.ua-nf-btn-align-left .submit-container .nf-field-element,
+.ua-nf-btn-align-desktop-left .submit-container .nf-field-element,
+.ua-nf-btn-align-left .submit-wrap .nf-field-element,
+.ua-nf-btn-align-desktop-left .submit-wrap .nf-field-element {
+    display: flex !important;
+    justify-content: flex-start !important;
 }
 
-.ua-ninja-forms-wrapper.ua-nf-btn-align-center .submit-container .nf-field-element {
-    display: flex;
-    justify-content: center;
+.ua-nf-btn-align-center .submit-container .nf-field-element,
+.ua-nf-btn-align-desktop-center .submit-container .nf-field-element,
+.ua-nf-btn-align-center .submit-wrap .nf-field-element,
+.ua-nf-btn-align-desktop-center .submit-wrap .nf-field-element {
+    display: flex !important;
+    justify-content: center !important;
 }
 
-.ua-ninja-forms-wrapper.ua-nf-btn-align-right .submit-container .nf-field-element {
-    display: flex;
-    justify-content: flex-end;
+.ua-nf-btn-align-right .submit-container .nf-field-element,
+.ua-nf-btn-align-desktop-right .submit-container .nf-field-element,
+.ua-nf-btn-align-right .submit-wrap .nf-field-element,
+.ua-nf-btn-align-desktop-right .submit-wrap .nf-field-element {
+    display: flex !important;
+    justify-content: flex-end !important;
 }
 
-.ua-ninja-forms-wrapper.ua-nf-btn-align-justify .submit-container .nf-field-element {
-    display: flex;
-    width: 100%;
-}
-
-.ua-ninja-forms-wrapper.ua-nf-btn-align-justify .submit-container .nf-field-element input[type="button"],
-.ua-ninja-forms-wrapper.ua-nf-btn-align-justify .submit-container .nf-field-element input[type="submit"] {
+.ua-nf-btn-align-justify .submit-container .nf-field-element,
+.ua-nf-btn-align-desktop-justify .submit-container .nf-field-element,
+.ua-nf-btn-align-justify .submit-wrap .nf-field-element,
+.ua-nf-btn-align-desktop-justify .submit-wrap .nf-field-element {
+    display: flex !important;
     width: 100% !important;
+}
+
+.ua-nf-btn-align-justify .submit-container .nf-field-element input[type="button"],
+.ua-nf-btn-align-justify .submit-container .nf-field-element input[type="submit"],
+.ua-nf-btn-align-desktop-justify .submit-container .nf-field-element input[type="button"],
+.ua-nf-btn-align-desktop-justify .submit-container .nf-field-element input[type="submit"],
+.ua-nf-btn-align-justify .submit-wrap .nf-field-element input[type="button"],
+.ua-nf-btn-align-justify .submit-wrap .nf-field-element input[type="submit"],
+.ua-nf-btn-align-desktop-justify .submit-wrap .nf-field-element input[type="button"],
+.ua-nf-btn-align-desktop-justify .submit-wrap .nf-field-element input[type="submit"] {
+    width: 100% !important;
+}
+
+@media (max-width: 1024px) {
+    .ua-nf-btn-align-tablet-left .submit-container .nf-field-element,
+    .ua-nf-btn-align-tablet-left .submit-wrap .nf-field-element { display: flex !important; justify-content: flex-start !important; }
+    .ua-nf-btn-align-tablet-center .submit-container .nf-field-element,
+    .ua-nf-btn-align-tablet-center .submit-wrap .nf-field-element { display: flex !important; justify-content: center !important; }
+    .ua-nf-btn-align-tablet-right .submit-container .nf-field-element,
+    .ua-nf-btn-align-tablet-right .submit-wrap .nf-field-element { display: flex !important; justify-content: flex-end !important; }
+    .ua-nf-btn-align-tablet-justify .submit-container .nf-field-element,
+    .ua-nf-btn-align-tablet-justify .submit-wrap .nf-field-element { display: flex !important; width: 100% !important; }
+    .ua-nf-btn-align-tablet-justify .submit-container .nf-field-element input[type="button"],
+    .ua-nf-btn-align-tablet-justify .submit-container .nf-field-element input[type="submit"],
+    .ua-nf-btn-align-tablet-justify .submit-wrap .nf-field-element input[type="button"],
+    .ua-nf-btn-align-tablet-justify .submit-wrap .nf-field-element input[type="submit"] { width: 100% !important; }
+}
+
+@media (max-width: 767px) {
+    .ua-nf-btn-align-mobile-left .submit-container .nf-field-element,
+    .ua-nf-btn-align-mobile-left .submit-wrap .nf-field-element { display: flex !important; justify-content: flex-start !important; }
+    .ua-nf-btn-align-mobile-center .submit-container .nf-field-element,
+    .ua-nf-btn-align-mobile-center .submit-wrap .nf-field-element { display: flex !important; justify-content: center !important; }
+    .ua-nf-btn-align-mobile-right .submit-container .nf-field-element,
+    .ua-nf-btn-align-mobile-right .submit-wrap .nf-field-element { display: flex !important; justify-content: flex-end !important; }
+    .ua-nf-btn-align-mobile-justify .submit-container .nf-field-element,
+    .ua-nf-btn-align-mobile-justify .submit-wrap .nf-field-element { display: flex !important; width: 100% !important; }
+    .ua-nf-btn-align-mobile-justify .submit-container .nf-field-element input[type="button"],
+    .ua-nf-btn-align-mobile-justify .submit-container .nf-field-element input[type="submit"],
+    .ua-nf-btn-align-mobile-justify .submit-wrap .nf-field-element input[type="button"],
+    .ua-nf-btn-align-mobile-justify .submit-wrap .nf-field-element input[type="submit"] { width: 100% !important; }
 }
 
 /* 7. Field Display Options */
 .ua-ninja-forms-wrapper.ua-nf-hide-labels .nf-field-label {
-    display: none !important;
-}
-
-.ua-ninja-forms-wrapper.ua-nf-hide-placeholders .ninja-forms-field::placeholder {
-    opacity: 0 !important;
-    color: transparent !important;
-}
-
-.ua-ninja-forms-wrapper.ua-nf-hide-errors .nf-error-wrap,
-.ua-ninja-forms-wrapper.ua-nf-hide-errors .nf-error-msg {
     display: none !important;
 }
 
