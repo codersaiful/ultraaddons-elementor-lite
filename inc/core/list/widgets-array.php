@@ -692,14 +692,15 @@ $ultraaddons_widgetsArray = [
             __( 'Chart', 'ultraaddons-elementor-lite' ),
         ],
     ],
-   /*  'Navigation_Menu'=> [
+    'Navigation_Menu'=> [
         'name'      => __( 'Navigation Menu', 'ultraaddons-elementor-lite' ),
         'is_pro'   => false,
         'icon'      => 'eicon-menu-bar',
+        'badge'     => 'new',
         'cat'       => [
             __( 'Header_Footer', 'ultraaddons-elementor-lite' ),
         ],
-    ], */
+    ],
     'Formidable_Form'=> [
         'name'      => __( 'Formidable Form', 'ultraaddons-elementor-lite' ),
         'is_pro'   => false,
