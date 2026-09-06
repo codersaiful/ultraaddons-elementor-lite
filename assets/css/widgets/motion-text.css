@@ -1,0 +1,384 @@
+/**
+ * UltraAddons - Motion Text Widget Stylesheet
+ * 
+ * Hardware-accelerated, responsive typography animations
+ * Built exclusively for UltraAddons Elementor Lite
+ * 
+ * @package UltraAddons
+ * @author Saiful Islam <codersaiful@gmail.com>
+ * @version 1.1.0
+ */
+
+:root {
+    --ua-mt-duration: 0.75s;
+    --ua-mt-stagger: 0.05s;
+    --ua-mt-easing: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ua-motion-text-wrapper {
+    display: block;
+    position: relative;
+    width: 100%;
+}
+
+.ua-motion-heading {
+    display: block;
+    margin: 0;
+    padding: 0;
+    line-height: 1.25;
+    word-break: break-word;
+}
+
+/* Links inside motion heading */
+.ua-motion-heading a {
+    color: inherit;
+    text-decoration: none;
+    display: inline;
+}
+
+/* Mask wrapper: clips incoming sliding text */
+.ua-mt-mask {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    line-height: inherit;
+    padding-bottom: 0.08em; /* Prevent descender clipping (g, y, p, q, j) */
+}
+
+/* Individual animated unit (character, word, or line) */
+.ua-mt-unit {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    line-height: inherit;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    will-change: transform, opacity, filter;
+    transition-property: transform, opacity, filter;
+    transition-duration: var(--ua-mt-duration, 0.75s);
+    transition-timing-function: var(--ua-mt-easing, cubic-bezier(0.16, 1, 0.3, 1));
+    transition-delay: calc(var(--ua-mt-stagger, 0.05s) * var(--ua-mt-index, 0));
+}
+
+/* Whitespace spacer between words */
+.ua-mt-spacer {
+    display: inline-block;
+    white-space: pre;
+}
+
+/* Line-break wrapper */
+.ua-mt-line-wrap {
+    display: block;
+}
+
+/* Instant reset utility */
+.ua-mt-no-transition .ua-mt-unit {
+    transition: none !important;
+}
+
+/* -------------------------------------------------------------
+ * 1. Mask Slide Up (reveal-up) - Apple Style
+ * ------------------------------------------------------------- */
+.ua-mt-effect-reveal-up .ua-mt-unit {
+    transform: translateY(118%);
+    opacity: 0;
+}
+.ua-mt-animated.ua-mt-effect-reveal-up .ua-mt-unit,
+.ua-mt-animated .ua-mt-effect-reveal-up .ua-mt-unit {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* -------------------------------------------------------------
+ * 2. Mask Slide Down (reveal-down)
+ * ------------------------------------------------------------- */
+.ua-mt-effect-reveal-down .ua-mt-unit {
+    transform: translateY(-118%);
+    opacity: 0;
+}
+.ua-mt-animated.ua-mt-effect-reveal-down .ua-mt-unit,
+.ua-mt-animated .ua-mt-effect-reveal-down .ua-mt-unit {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* -------------------------------------------------------------
+ * 3. Mask Slide Left (reveal-left)
+ * ------------------------------------------------------------- */
+.ua-mt-effect-reveal-left .ua-mt-unit {
+    transform: translateX(115%);
+    opacity: 0;
+}
+.ua-mt-animated.ua-mt-effect-reveal-left .ua-mt-unit,
+.ua-mt-animated .ua-mt-effect-reveal-left .ua-mt-unit {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* -------------------------------------------------------------
+ * 4. Mask Slide Right (reveal-right)
+ * ------------------------------------------------------------- */
+.ua-mt-effect-reveal-right .ua-mt-unit {
+    transform: translateX(-115%);
+    opacity: 0;
+}
+.ua-mt-animated.ua-mt-effect-reveal-right .ua-mt-unit,
+.ua-mt-animated .ua-mt-effect-reveal-right .ua-mt-unit {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* -------------------------------------------------------------
+ * 5. Gaussian Blur In (blur-in)
+ * ------------------------------------------------------------- */
+.ua-mt-effect-blur-in .ua-mt-mask { overflow: visible; }
+.ua-mt-effect-blur-in .ua-mt-unit {
+    filter: blur(16px);
+    opacity: 0;
+    transform: scale(0.92);
+}
+.ua-mt-animated.ua-mt-effect-blur-in .ua-mt-unit,
+.ua-mt-animated .ua-mt-effect-blur-in .ua-mt-unit {
+    filter: blur(0);
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* -------------------------------------------------------------
+ * 6. Blur & Slide Up (blur-up) - Linear.app Style
+ * ------------------------------------------------------------- */
+.ua-mt-effect-blur-up .ua-mt-mask { overflow: visible; }
+.ua-mt-effect-blur-up .ua-mt-unit {
+    filter: blur(14px);
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+}
+.ua-mt-animated.ua-mt-effect-blur-up .ua-mt-unit,
+.ua-mt-animated .ua-mt-effect-blur-up .ua-mt-unit {
+    filter: blur(0);
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* -------------------------------------------------------------
+ * 7. Blur & Zoom In (blur-scale)
+ * ------------------------------------------------------------- */
+.ua-mt-effect-blur-scale .ua-mt-mask { overflow: visible; }
+.ua-mt-effect-blur-scale .ua-mt-unit {
+    filter: blur(14px);
+    opacity: 0;
+    transform: scale(1.35);
+}
+.ua-mt-animated.ua-mt-effect-blur-scale .ua-mt-unit,
+.ua-mt-animated .ua-mt-effect-blur-scale .ua-mt-unit {
+    filter: blur(0);
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* -------------------------------------------------------------
+ * 8. 3D Isometric Perspective Tilt (3d-tilt)
+ * ------------------------------------------------------------- */
+.ua-mt-effect-3d-tilt {
+    perspective: 900px;
+    -webkit-perspective: 900px;
+    transform-style: preserve-3d;
+}
+.ua-mt-effect-3d-tilt .ua-mt-mask { overflow: visible; }
+.ua-mt-effect-3d-tilt .ua-mt-unit {
+    transform: rotateX(70deg) translateY(24px) translateZ(-15px);
+    opacity: 0;
+    transform-origin: 50% 100%;
+}
+.ua-mt-animated.ua-mt-effect-3d-tilt .ua-mt-unit,
+.ua-mt-animated .ua-mt-effect-3d-tilt .ua-mt-unit {
+    transform: rotateX(0deg) translateY(0) translateZ(0);
+    opacity: 1;
+}
+
+/* -------------------------------------------------------------
+ * 9. 3D Flip Down (3d-flip-down)
+ * ------------------------------------------------------------- */
+.ua-mt-effect-3d-flip-down {
+    perspective: 900px;
+    -webkit-perspective: 900px;
+    transform-style: preserve-3d;
+}
+.ua-mt-effect-3d-flip-down .ua-mt-mask { overflow: visible; }
+.ua-mt-effect-3d-flip-down .ua-mt-unit {
+    transform: rotateX(-70deg) translateY(-24px) translateZ(-15px);
+    opacity: 0;
+    transform-origin: 50% 0%;
+}
+.ua-mt-animated.ua-mt-effect-3d-flip-down .ua-mt-unit,
+.ua-mt-animated .ua-mt-effect-3d-flip-down .ua-mt-unit {
+    transform: rotateX(0deg) translateY(0) translateZ(0);
+    opacity: 1;
+}
+
+/* -------------------------------------------------------------
+ * 10. 3D Horizontal Flip / Door Swing (3d-rotate-y)
+ * ------------------------------------------------------------- */
+.ua-mt-effect-3d-rotate-y {
+    perspective: 900px;
+    -webkit-perspective: 900px;
+    transform-style: preserve-3d;
+}
+.ua-mt-effect-3d-rotate-y .ua-mt-mask { overflow: visible; }
+.ua-mt-effect-3d-rotate-y .ua-mt-unit {
+    transform: rotateY(85deg) translateZ(25px);
+    opacity: 0;
+    transform-origin: 0% 50%;
+}
+.ua-mt-animated.ua-mt-effect-3d-rotate-y .ua-mt-unit,
+.ua-mt-animated .ua-mt-effect-3d-rotate-y .ua-mt-unit {
+    transform: rotateY(0deg) translateZ(0);
+    opacity: 1;
+}
+
+/* -------------------------------------------------------------
+ * 11. Soft Pop & Scale (pop-scale)
+ * ------------------------------------------------------------- */
+.ua-mt-effect-pop-scale .ua-mt-mask { overflow: visible; }
+.ua-mt-effect-pop-scale .ua-mt-unit {
+    transform: scale(0.68) translateY(14px);
+    opacity: 0;
+}
+.ua-mt-animated.ua-mt-effect-pop-scale .ua-mt-unit,
+.ua-mt-animated .ua-mt-effect-pop-scale .ua-mt-unit {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+/* -------------------------------------------------------------
+ * 12. Zoom In from Foreground (zoom-in-fade)
+ * ------------------------------------------------------------- */
+.ua-mt-effect-zoom-in-fade .ua-mt-mask { overflow: visible; }
+.ua-mt-effect-zoom-in-fade .ua-mt-unit {
+    transform: scale(1.42) translateY(-8px);
+    opacity: 0;
+}
+.ua-mt-animated.ua-mt-effect-zoom-in-fade .ua-mt-unit,
+.ua-mt-animated .ua-mt-effect-zoom-in-fade .ua-mt-unit {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+/* -------------------------------------------------------------
+ * 13. Elastic Spring Bounce (elastic-bounce)
+ * ------------------------------------------------------------- */
+.ua-mt-effect-elastic-bounce .ua-mt-mask { overflow: visible; }
+.ua-mt-effect-elastic-bounce .ua-mt-unit {
+    transform: translateY(38px) scale(0.8);
+    opacity: 0;
+}
+.ua-mt-animated.ua-mt-effect-elastic-bounce .ua-mt-unit,
+.ua-mt-animated .ua-mt-effect-elastic-bounce .ua-mt-unit {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+/* -------------------------------------------------------------
+ * 14. Dynamic Skew & Slide (skew-slide)
+ * ------------------------------------------------------------- */
+.ua-mt-effect-skew-slide .ua-mt-mask { overflow: visible; }
+.ua-mt-effect-skew-slide .ua-mt-unit {
+    transform: skewX(-24deg) translateX(36px);
+    opacity: 0;
+}
+.ua-mt-animated.ua-mt-effect-skew-slide .ua-mt-unit,
+.ua-mt-animated .ua-mt-effect-skew-slide .ua-mt-unit {
+    transform: skewX(0deg) translateX(0);
+    opacity: 1;
+}
+
+/* -------------------------------------------------------------
+ * 15. Creative Angle Swing (rotate-swing)
+ * ------------------------------------------------------------- */
+.ua-mt-effect-rotate-swing .ua-mt-mask { overflow: visible; }
+.ua-mt-effect-rotate-swing .ua-mt-unit {
+    transform: rotate(-22deg) translateY(24px);
+    opacity: 0;
+    transform-origin: 0% 100%;
+}
+.ua-mt-animated.ua-mt-effect-rotate-swing .ua-mt-unit,
+.ua-mt-animated .ua-mt-effect-rotate-swing .ua-mt-unit {
+    transform: rotate(0deg) translateY(0);
+    opacity: 1;
+}
+
+/* -------------------------------------------------------------
+ * 16. Cascade Wave Drop (wave-drop)
+ * ------------------------------------------------------------- */
+.ua-mt-effect-wave-drop .ua-mt-mask { overflow: visible; }
+.ua-mt-effect-wave-drop .ua-mt-unit {
+    transform: translateY(-46px);
+    opacity: 0;
+}
+.ua-mt-animated.ua-mt-effect-wave-drop .ua-mt-unit,
+.ua-mt-animated .ua-mt-effect-wave-drop .ua-mt-unit {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* -------------------------------------------------------------
+ * 17. Luminescent Shimmer Flow (shimmer-flow)
+ * ------------------------------------------------------------- */
+.ua-mt-effect-shimmer-flow .ua-mt-mask { overflow: visible; }
+.ua-mt-effect-shimmer-flow .ua-mt-unit {
+    opacity: 0.12;
+    transform: translateY(6px);
+    filter: blur(3px);
+}
+.ua-mt-animated.ua-mt-effect-shimmer-flow .ua-mt-unit,
+.ua-mt-animated .ua-mt-effect-shimmer-flow .ua-mt-unit {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+}
+
+/* -------------------------------------------------------------
+ * 18. Typewriter Stepped Fade (typewriter-fade)
+ * ------------------------------------------------------------- */
+.ua-mt-effect-typewriter-fade .ua-mt-mask { overflow: visible; }
+.ua-mt-effect-typewriter-fade .ua-mt-unit {
+    opacity: 0;
+    transform: translateY(3px);
+}
+.ua-mt-animated.ua-mt-effect-typewriter-fade .ua-mt-unit,
+.ua-mt-animated .ua-mt-effect-typewriter-fade .ua-mt-unit {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* -------------------------------------------------------------
+ * Gradient Text Fill Support
+ * ------------------------------------------------------------- */
+.ua-motion-heading.ua-mt-is-gradient .ua-mt-unit {
+    background: var(--ua-mt-gradient, linear-gradient(135deg, #0073aa, #9b51e0));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+/* -------------------------------------------------------------
+ * Text Stroke (Outline) Support
+ * ------------------------------------------------------------- */
+.ua-motion-heading.ua-mt-is-stroke .ua-mt-unit {
+    -webkit-text-stroke-width: var(--ua-mt-stroke-width, 1px);
+    -webkit-text-stroke-color: var(--ua-mt-stroke-color, currentColor);
+}
+
+/* Transparent fill with stroke */
+.ua-motion-heading.ua-mt-stroke-transparent .ua-mt-unit {
+    color: transparent;
+}
+
+/* -------------------------------------------------------------
+ * Alignments
+ * ------------------------------------------------------------- */
+.ua-mt-align-left { text-align: left; }
+.ua-mt-align-center { text-align: center; }
+.ua-mt-align-right { text-align: right; }
+.ua-mt-align-justify { text-align: justify; }

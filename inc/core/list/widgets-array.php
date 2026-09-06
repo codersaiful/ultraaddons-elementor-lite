@@ -540,6 +540,15 @@ $ultraaddons_widgetsArray = [
                 __( 'WooCommerce', 'ultraaddons-elementor-lite' ),
             ],
     ],
+    'Motion_Text' => [
+        'name'  => __( 'Motion Text', 'ultraaddons-elementor-lite' ),
+        'is_pro'   => false,
+        'icon'      => 'eicon-animation-text',
+        'badge'     => 'new',
+        'cat'       => [
+            __( 'Advance', 'ultraaddons-elementor-lite' ),
+        ],
+    ],
     'Product_Grid' => [
         'name'  => __( 'Product Grid', 'ultraaddons-elementor-lite' ),
         'is_pro'   => false,
