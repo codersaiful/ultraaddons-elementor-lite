@@ -1,0 +1,498 @@
+/**
+ * UltraAddons Modern Card Widget Stylesheet
+ * 
+ * Clean, lightweight, modular BEM architecture.
+ * Fully responsive across all devices and display modes.
+ */
+
+/* ==========================================================================
+   1. Base Card Structure & Container
+   ========================================================================== */
+.ua-card-item {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+}
+
+.ua-card-item *,
+.ua-card-item *::before,
+.ua-card-item *::after {
+    box-sizing: border-box;
+}
+
+.ua-card-inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: none;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   2. Media & Floating Badge
+   ========================================================================== */
+.ua-card-media-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    height: 220px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    background-color: #f8fafc;
+    flex-shrink: 0;
+}
+
+.ua-card-media-wrap img,
+.ua-card-photo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+/* Hover Effects on Media */
+.ua-card-img-effect-zoom:hover .ua-card-media-wrap img,
+.ua-card-img-effect-zoom:hover .ua-card-photo {
+    transform: scale(1.05);
+}
+
+.ua-card-img-effect-glow:hover .ua-card-media-wrap img,
+.ua-card-img-effect-glow:hover .ua-card-photo {
+    filter: brightness(1.12);
+}
+
+/* Floating Badge */
+.ua-card-badge {
+    position: absolute;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+    color: #ffffff;
+    background-color: #0284c7;
+    border-radius: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    pointer-events: none;
+}
+
+.ua-card-badge-top-left {
+    top: 12px;
+    left: 12px;
+}
+
+.ua-card-badge-top-right {
+    top: 12px;
+    right: 12px;
+}
+
+/* ==========================================================================
+   3. Card Body & Typography
+   ========================================================================== */
+.ua-card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.ua-card-designation {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.75px;
+    color: #0284c7;
+    margin-bottom: 6px;
+}
+
+.ua-card-headline {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #0f172a;
+}
+
+.ua-card-headline a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.ua-card-headline a:hover {
+    color: #0284c7;
+}
+
+.ua-card-bio {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #64748b;
+    margin-bottom: 16px;
+}
+
+.ua-card-bio p:last-child {
+    margin-bottom: 0;
+}
+
+/* ==========================================================================
+   4. Action Button
+   ========================================================================== */
+.ua-card-action-wrap {
+    display: flex;
+    margin-top: auto;
+}
+
+.ua-card-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 22px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #0284c7;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ua-card-cta-btn:hover {
+    background-color: #0369a1;
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+}
+
+.ua-card-btn-icon-before,
+.ua-card-btn-icon-after {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+}
+
+/* Full Width Button Modifier */
+.ua-card-btn-align-justify .ua-card-action-wrap,
+.ua-card-btn-align-desktop-justify .ua-card-action-wrap {
+    width: 100%;
+}
+
+.ua-card-btn-align-justify .ua-card-cta-btn,
+.ua-card-btn-align-desktop-justify .ua-card-cta-btn {
+    width: 100% !important;
+}
+
+/* ==========================================================================
+   5. Price & Wishlist Meta Row
+   ========================================================================== */
+.ua-card-meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    gap: 12px;
+}
+
+.ua-card-price-wrap {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.ua-card-price-regular {
+    font-size: 14px;
+    color: #94a3b8;
+    text-decoration: line-through;
+}
+
+.ua-card-price-sale {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0284c7;
+}
+
+.ua-card-wish-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #94a3b8;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ua-card-wish-btn:hover {
+    color: #ef4444;
+    transform: scale(1.18);
+}
+
+/* ==========================================================================
+   6. Social Profiles Strip
+   ========================================================================== */
+.ua-card-social-strip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.ua-card-social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    font-size: 14px;
+    color: #475569;
+    background-color: #f1f5f9;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.ua-card-social-link:hover {
+    background-color: #0284c7;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.ua-card-social-link i,
+.ua-card-social-link svg {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+/* Fallback for FontAwesome 5 environments where fa-x-twitter glyph doesn't exist */
+.ua-card-social-link .fa-x-twitter:before,
+.ua-card-social-link i.fa-x-twitter:before {
+    content: "" !important;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-color: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z'/%3E%3C/svg%3E") no-repeat center / contain;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z'/%3E%3C/svg%3E") no-repeat center / contain;
+    vertical-align: middle;
+}
+
+/* ==========================================================================
+   7. Layout Directions (Vertical & Horizontal)
+   ========================================================================== */
+/* Row Layout on Desktop */
+.ua-card-dir-row.ua-card-item,
+.ua-card-dir-desktop-row.ua-card-item,
+.ua-card-preset-minimal-horizontal.ua-card-item {
+    max-width: 680px;
+}
+
+.ua-card-dir-row .ua-card-inner,
+.ua-card-dir-desktop-row .ua-card-inner {
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.ua-card-dir-row .ua-card-media-wrap,
+.ua-card-dir-desktop-row .ua-card-media-wrap {
+    width: 40%;
+    height: 180px;
+    margin-bottom: 0;
+}
+
+.ua-card-dir-row .ua-card-body,
+.ua-card-dir-desktop-row .ua-card-body {
+    width: 60%;
+}
+
+/* Reverse Order */
+.ua-card-reverse-yes.ua-card-dir-column .ua-card-inner,
+.ua-card-reverse-yes .ua-card-inner {
+    flex-direction: column-reverse;
+}
+
+.ua-card-reverse-yes.ua-card-dir-column .ua-card-media-wrap,
+.ua-card-reverse-yes .ua-card-media-wrap {
+    margin-bottom: 0;
+    margin-top: 16px;
+}
+
+.ua-card-dir-row.ua-card-reverse-yes .ua-card-inner,
+.ua-card-dir-desktop-row.ua-card-reverse-yes .ua-card-inner {
+    flex-direction: row-reverse;
+}
+
+/* Mobile Fallback: Horizontal switches to clean stacked column on small screens */
+@media (max-width: 767px) {
+    .ua-card-dir-row.ua-card-item,
+    .ua-card-dir-desktop-row.ua-card-item,
+    .ua-card-preset-minimal-horizontal.ua-card-item {
+        max-width: 380px;
+    }
+    .ua-card-dir-row .ua-card-inner,
+    .ua-card-dir-desktop-row .ua-card-inner {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .ua-card-dir-row .ua-card-media-wrap,
+    .ua-card-dir-desktop-row .ua-card-media-wrap {
+        width: 100%;
+        height: 200px;
+        margin-bottom: 12px;
+    }
+    .ua-card-dir-row .ua-card-body,
+    .ua-card-dir-desktop-row .ua-card-body {
+        width: 100%;
+    }
+}
+
+/* ==========================================================================
+   8. The 5 Distinctive 1-Click Design Presets
+   ========================================================================== */
+
+/* Preset 1: Clean Classic */
+.ua-card-preset-clean-classic .ua-card-inner {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+}
+
+/* Preset 2: Modern Profile (Team / Author) */
+.ua-card-preset-modern-profile .ua-card-inner {
+    background-color: #ffffff;
+    border: 1px solid #f1f5f9;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+}
+.ua-card-preset-modern-profile .ua-card-media-wrap {
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 16px auto;
+    border-radius: 50%;
+    border: 3px solid #e0f2fe;
+}
+.ua-card-preset-modern-profile .ua-card-media-wrap img,
+.ua-card-preset-modern-profile .ua-card-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.ua-card-preset-modern-profile .ua-card-body {
+    align-items: center;
+    text-align: center;
+}
+.ua-card-preset-modern-profile .ua-card-designation {
+    background-color: #f0f9ff;
+    color: #0284c7;
+    padding: 3px 12px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+}
+.ua-card-preset-modern-profile .ua-card-social-strip {
+    justify-content: center;
+}
+.ua-card-preset-modern-profile .ua-card-action-wrap {
+    justify-content: center;
+    width: 100%;
+}
+
+/* Preset 3: Product Showcase (eCommerce) */
+.ua-card-preset-product-card .ua-card-inner {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 0;
+    overflow: hidden;
+}
+.ua-card-preset-product-card .ua-card-media-wrap {
+    height: 240px;
+    margin-bottom: 0;
+    border-radius: 0;
+    background-color: #f8fafc;
+}
+.ua-card-preset-product-card .ua-card-media-wrap img,
+.ua-card-preset-product-card .ua-card-photo {
+    object-fit: contain;
+    padding: 12px;
+}
+.ua-card-preset-product-card .ua-card-body {
+    padding: 20px;
+}
+.ua-card-preset-product-card .ua-card-badge {
+    background-color: #ef4444;
+}
+.ua-card-preset-product-card .ua-card-cta-btn {
+    width: 100%;
+    background-color: #0f172a;
+    border-radius: 8px;
+}
+.ua-card-preset-product-card .ua-card-cta-btn:hover {
+    background-color: #0284c7;
+}
+
+/* Preset 4: Minimal Horizontal */
+.ua-card-preset-minimal-horizontal .ua-card-inner {
+    flex-direction: row;
+    align-items: center;
+    background-color: #f8fafc;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    padding: 16px;
+    gap: 16px;
+}
+.ua-card-preset-minimal-horizontal .ua-card-media-wrap {
+    width: 110px;
+    height: 110px;
+    margin-bottom: 0;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+.ua-card-preset-minimal-horizontal .ua-card-media-wrap img,
+.ua-card-preset-minimal-horizontal .ua-card-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.ua-card-preset-minimal-horizontal .ua-card-cta-btn {
+    padding: 7px 16px;
+    font-size: 13px;
+}
+
+/* Preset 5: Soft Shadow (Elevated Modern) */
+.ua-card-preset-soft-shadow .ua-card-inner {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.08);
+}
+.ua-card-preset-soft-shadow .ua-card-inner:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px -8px rgba(15, 23, 42, 0.14);
+}
+.ua-card-preset-soft-shadow .ua-card-cta-btn {
+    border-radius: 30px;
+}

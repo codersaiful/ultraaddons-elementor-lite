@@ -460,6 +460,7 @@ $ultraaddons_widgetsArray = [
             'name'  => __( 'Card', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
             'icon'      => 'eicon-single-post',
+            'badge'     => 'new',
             'cat'       => [
                 __( 'General', 'ultraaddons-elementor-lite' ),
             ],
