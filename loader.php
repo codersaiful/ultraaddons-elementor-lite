@@ -79,6 +79,13 @@ class Loader {
         // widgets that are actually used on the current document.
         add_action( 'wp_enqueue_scripts', [ $this, 'register_frontend_assets' ], 5 );
         add_action( 'elementor/frontend/widget/before_render', [ $this, 'enqueue_widget_assets' ] );
+
+        // Prevent WP 6.9+ notice when third-party addons (e.g. Essential Addons) enqueue page scripts before eael-general is registered
+        add_action( 'wp_default_scripts', function( $scripts ) {
+            if ( isset( $scripts ) && is_object( $scripts ) && ! isset( $scripts->registered['eael-general'] ) ) {
+                $scripts->add( 'eael-general', false, [] );
+            }
+        }, 1 );
     
         /**
          * For Admin and FrontEnd Enqueue 
@@ -184,6 +191,11 @@ class Loader {
 
         \UltraAddons\Core\Header_Footer::init();
         \UltraAddons\Core\Icons_Manager::init();
+
+        // Mega Menu core and admin initialization
+        require_once ULTRA_ADDONS_DIR . 'inc/core/mega-menu/class-mega-menu.php';
+        require_once ULTRA_ADDONS_DIR . 'inc/core/mega-menu/class-ultra-nav-walker.php';
+        \UltraAddons\Core\Mega_Menu::init();
         
         /**
          * Library Manage

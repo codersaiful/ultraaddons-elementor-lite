@@ -1,0 +1,468 @@
+/**
+ * UltraAddons - Mega Menu Admin Stylesheet
+ * 
+ * Clean, modern, high-contrast UI for Appearance > Menus
+ * 
+ * @package UltraAddons
+ * @since 3.1.0
+ */
+
+/* -------------------------------------------------------------
+ * 1. Menu Item Trigger Button in WP Menu Builder
+ * ------------------------------------------------------------- */
+.ua-mega-trigger-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #f1f5f9;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.4;
+    cursor: pointer;
+    margin-left: 10px;
+    vertical-align: middle;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.ua-mega-trigger-btn:hover {
+    background: #4f46e5;
+    color: #ffffff;
+    border-color: #4f46e5;
+}
+
+.ua-mega-trigger-btn.ua-is-active {
+    background: #4f46e5;
+    color: #ffffff;
+    border-color: #4f46e5;
+    box-shadow: 0 1px 3px rgba(79, 70, 229, 0.3);
+}
+
+.ua-mega-trigger-btn.ua-is-active::before {
+    content: '●';
+    color: #34d399;
+    font-size: 10px;
+    margin-right: 2px;
+}
+
+/* -------------------------------------------------------------
+ * 2. Modal Overlay & Dialog
+ * ------------------------------------------------------------- */
+.ua-mega-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(4px);
+    z-index: 999990;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.ua-mega-modal-dialog {
+    background: #ffffff;
+    width: 640px;
+    max-width: 95%;
+    border-radius: 12px;
+    box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25), 0 0 0 1px rgba(15, 23, 42, 0.05);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: ua-modal-pop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes ua-modal-pop {
+    from { opacity: 0; transform: scale(0.96) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Modal Header */
+.ua-mega-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid #e2e8f0;
+    background: #f8fafc;
+}
+
+.ua-mega-header-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.ua-mega-badge-logo {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    padding: 5px 8px;
+    border-radius: 6px;
+    line-height: 1;
+}
+
+.ua-mega-header-text h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.ua-mega-item-name {
+    margin: 2px 0 0;
+    font-size: 12px;
+    color: #64748b;
+}
+
+.ua-mega-item-name strong {
+    color: #4f46e5;
+}
+
+.ua-mega-modal-close {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    line-height: 1;
+    color: #94a3b8;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.ua-mega-modal-close:hover {
+    color: #ef4444;
+    background: #fee2e2;
+}
+
+/* -------------------------------------------------------------
+ * 3. Modal Tabs
+ * ------------------------------------------------------------- */
+.ua-mega-modal-tabs {
+    display: flex;
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 0 16px;
+    gap: 8px;
+}
+
+.ua-mega-tab-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 12px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ua-mega-tab-btn .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+}
+
+.ua-mega-tab-btn:hover {
+    color: #4f46e5;
+}
+
+.ua-mega-tab-btn.ua-tab-active {
+    color: #4f46e5;
+    border-bottom-color: #4f46e5;
+}
+
+/* -------------------------------------------------------------
+ * 4. Modal Body & Field Rows
+ * ------------------------------------------------------------- */
+.ua-mega-modal-body {
+    padding: 20px;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.ua-field-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.ua-field-row:last-child {
+    border-bottom: none;
+}
+
+.ua-field-label {
+    flex: 1;
+}
+
+.ua-field-label label {
+    display: block;
+    font-size: 13px;
+    color: #1e293b;
+    margin-bottom: 2px;
+}
+
+.ua-field-desc {
+    display: block;
+    font-size: 11.5px;
+    color: #64748b;
+    line-height: 1.4;
+}
+
+.ua-field-control {
+    min-width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+}
+
+.ua-select,
+.ua-input-text,
+.ua-input-number {
+    width: 100%;
+    max-width: 220px;
+    height: 36px;
+    padding: 6px 10px;
+    font-size: 13px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #1e293b;
+    transition: border-color 0.2s;
+}
+
+.ua-select:focus,
+.ua-input-text:focus,
+.ua-input-number:focus {
+    border-color: #4f46e5;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.15);
+}
+
+.ua-unit {
+    font-size: 12px;
+    font-weight: 600;
+    color: #94a3b8;
+}
+
+/* Highlight Box for Edit Content */
+.ua-highlight-box {
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin: 8px 0;
+}
+
+.ua-btn-elementor {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    background: #4f46e5 !important;
+    border-color: #4f46e5 !important;
+    color: #ffffff !important;
+    padding: 6px 14px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    border-radius: 6px !important;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(79, 70, 229, 0.25) !important;
+}
+
+.ua-btn-elementor:hover {
+    background: #4338ca !important;
+    border-color: #4338ca !important;
+}
+
+.ua-btn-elementor .dashicons {
+    font-size: 16px;
+    line-height: 1;
+}
+
+/* Modern Toggle Switch */
+.ua-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    margin: 0;
+}
+
+.ua-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.ua-slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background-color: #cbd5e1;
+    transition: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 24px;
+}
+
+.ua-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.ua-switch input:checked + .ua-slider {
+    background-color: #4f46e5;
+}
+
+.ua-switch input:checked + .ua-slider:before {
+    transform: translateX(20px);
+}
+
+/* -------------------------------------------------------------
+ * 5. Modal Footer
+ * ------------------------------------------------------------- */
+.ua-mega-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 14px 20px;
+    border-top: 1px solid #e2e8f0;
+    background: #f8fafc;
+}
+
+.ua-status-msg {
+    margin-right: auto;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.ua-status-msg.ua-success {
+    color: #059669;
+}
+
+.ua-status-msg.ua-error {
+    color: #dc2626;
+}
+
+.ua-modal-btn-cancel {
+    padding: 6px 14px !important;
+    font-size: 13px !important;
+}
+
+.ua-modal-btn-save {
+    background: #4f46e5 !important;
+    border-color: #4f46e5 !important;
+    padding: 6px 18px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    border-radius: 6px !important;
+}
+
+.ua-modal-btn-save:hover {
+    background: #4338ca !important;
+    border-color: #4338ca !important;
+}
+
+/* -------------------------------------------------------------
+ * 6. Fullscreen Elementor Editor Iframe Overlay
+ * ------------------------------------------------------------- */
+.ua-mega-editor-overlay {
+    position: fixed;
+    inset: 0;
+    background: #0f172a;
+    z-index: 999999;
+    display: flex;
+    flex-direction: column;
+}
+
+.ua-mega-editor-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 48px;
+    padding: 0 20px;
+    background: #1e293b;
+    border-bottom: 1px solid #334155;
+}
+
+.ua-editor-title {
+    color: #f8fafc;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.ua-editor-close-btn {
+    background: transparent;
+    border: none;
+    font-size: 26px;
+    color: #94a3b8;
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.ua-editor-close-btn:hover {
+    color: #ffffff;
+    background: #ef4444;
+}
+
+.ua-mega-editor-frame-container {
+    flex: 1;
+    position: relative;
+    background: #0f172a;
+}
+
+.ua-mega-editor-frame-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+.ua-editor-loading-spinner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    font-size: 14px;
+    gap: 12px;
+}
+
+.ua-spinner {
+    width: 36px;
+    height: 36px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    border-top-color: #4f46e5;
+    animation: ua-spin 0.8s linear infinite;
+}
+
+@keyframes ua-spin {
+    to { transform: rotate(360deg); }
+}

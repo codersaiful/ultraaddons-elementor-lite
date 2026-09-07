@@ -23,12 +23,14 @@
 /* -------------------------------------------------------------
  * 1. Base Wrapper & Container
  * ------------------------------------------------------------- */
-.elementor-widget-ultraaddons-navigation-menu {
+.elementor-widget-ultraaddons-navigation-menu,
+.elementor-widget-ultraaddons-mega-menu {
     width: 100%;
     flex-grow: 1;
 }
 
-.elementor-widget-ultraaddons-navigation-menu .elementor-widget-container {
+.elementor-widget-ultraaddons-navigation-menu .elementor-widget-container,
+.elementor-widget-ultraaddons-mega-menu .elementor-widget-container {
     width: 100%;
 }
 
@@ -50,32 +52,51 @@
     width: 100%;
 }
 
+.ua-desktop-nav {
+    display: flex;
+    width: 100%;
+}
+
 /* Alignments (Desktop & Responsive classes) */
 .ua-nav-align-left .ua-nav-menu-container,
 .ua-nav-align-desktop-left .ua-nav-menu-container,
 .ua-nav-menu-wrapper.ua-nav-align-left .ua-nav-menu-container { justify-content: flex-start !important; }
+.ua-nav-align-left .ua-desktop-nav,
+.ua-nav-align-desktop-left .ua-desktop-nav,
+.ua-nav-menu-wrapper.ua-nav-align-left .ua-desktop-nav { display: flex; justify-content: flex-start !important; width: 100%; }
+.ua-nav-align-left .ua-nav-list,
+.ua-nav-align-desktop-left .ua-nav-list,
+.ua-nav-menu-wrapper.ua-nav-align-left .ua-nav-list { justify-content: flex-start !important; width: 100%; }
 
 .ua-nav-align-center .ua-nav-menu-container,
 .ua-nav-align-desktop-center .ua-nav-menu-container,
 .ua-nav-menu-wrapper.ua-nav-align-center .ua-nav-menu-container { justify-content: center !important; }
+.ua-nav-align-center .ua-desktop-nav,
+.ua-nav-align-desktop-center .ua-desktop-nav,
+.ua-nav-menu-wrapper.ua-nav-align-center .ua-desktop-nav { display: flex; justify-content: center !important; width: 100%; }
+.ua-nav-align-center .ua-nav-list,
+.ua-nav-align-desktop-center .ua-nav-list,
+.ua-nav-menu-wrapper.ua-nav-align-center .ua-nav-list { justify-content: center !important; width: 100%; }
 
 .ua-nav-align-right .ua-nav-menu-container,
 .ua-nav-align-desktop-right .ua-nav-menu-container,
 .ua-nav-menu-wrapper.ua-nav-align-right .ua-nav-menu-container { justify-content: flex-end !important; }
+.ua-nav-align-right .ua-desktop-nav,
+.ua-nav-align-desktop-right .ua-desktop-nav,
+.ua-nav-menu-wrapper.ua-nav-align-right .ua-desktop-nav { display: flex; justify-content: flex-end !important; width: 100%; }
+.ua-nav-align-right .ua-nav-list,
+.ua-nav-align-desktop-right .ua-nav-list,
+.ua-nav-menu-wrapper.ua-nav-align-right .ua-nav-list { justify-content: flex-end !important; width: 100%; }
 
 .ua-nav-align-justify .ua-nav-menu-container,
 .ua-nav-align-desktop-justify .ua-nav-menu-container,
 .ua-nav-menu-wrapper.ua-nav-align-justify .ua-nav-menu-container { justify-content: space-between !important; }
-
 .ua-nav-align-justify .ua-desktop-nav,
-.ua-nav-menu-wrapper.ua-nav-align-justify .ua-desktop-nav {
-    width: 100%;
-}
+.ua-nav-align-desktop-justify .ua-desktop-nav,
+.ua-nav-menu-wrapper.ua-nav-align-justify .ua-desktop-nav { display: flex; width: 100%; }
 .ua-nav-align-justify .ua-nav-list,
-.ua-nav-menu-wrapper.ua-nav-align-justify .ua-nav-list {
-    width: 100%;
-    justify-content: space-between;
-}
+.ua-nav-align-desktop-justify .ua-nav-list,
+.ua-nav-menu-wrapper.ua-nav-align-justify .ua-nav-list { width: 100%; justify-content: space-between !important; }
 
 @media (max-width: 1024px) {
     .ua-nav-align-tablet-left .ua-nav-menu-container { justify-content: flex-start !important; }
@@ -100,13 +121,34 @@
     padding: 0;
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    width: 100%;
 }
 
+.ua-layout-horizontal .ua-desktop-nav > .ua-nav-list,
+.ua-nav-menu-wrapper:not(.ua-layout-vertical) .ua-desktop-nav > .ua-nav-list {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+.ua-layout-horizontal .ua-desktop-nav > .ua-nav-list > .ua-nav-top-item,
+.ua-nav-menu-wrapper:not(.ua-layout-vertical) .ua-desktop-nav > .ua-nav-list > .ua-nav-top-item {
+    width: auto !important;
+    flex: 0 0 auto;
+}
+
+.ua-layout-vertical .ua-nav-list,
 .ua-nav-layout-vertical .ua-nav-list {
     flex-direction: column;
     align-items: stretch;
     width: 100%;
+}
+
+.ua-layout-vertical .ua-nav-item,
+.ua-nav-layout-vertical .ua-nav-item {
+    width: 100% !important;
 }
 
 .ua-nav-item {
@@ -158,23 +200,65 @@
     color: #4f46e5;
 }
 
-/* Submenu Indicator Arrows */
+/* -------------------------------------------------------------
+ * Submenu Indicator Arrows & Icons
+ * ------------------------------------------------------------- */
 .ua-sub-indicator {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     line-height: 1;
-    transition: transform var(--ua-nav-transition-speed) ease;
+    color: var(--ua-nav-indicator-color, inherit);
+    transition: transform var(--ua-nav-transition-speed, 0.22s) ease,
+                color var(--ua-nav-transition-speed, 0.22s) ease;
+    flex-shrink: 0;
+    vertical-align: middle;
 }
 
-/* Top-level arrow rotates 180deg when open */
-.ua-nav-top-item > .ua-nav-link > .ua-sub-indicator {
-    margin-left: 6px;
+.ua-sub-indicator svg {
+    width: var(--ua-nav-indicator-size, 10px);
+    height: auto;
+    display: inline-block;
+    vertical-align: middle;
+    flex-shrink: 0;
 }
-.ua-trigger-hover .ua-nav-top-item:hover > .ua-nav-link > .ua-sub-indicator,
-.ua-nav-menu-wrapper:not(.ua-trigger-click) .ua-nav-top-item:hover > .ua-nav-link > .ua-sub-indicator,
-.ua-nav-top-item.ua-sub-open > .ua-nav-link > .ua-sub-indicator {
+
+/* Spacing from text */
+.ua-nav-top-item > .ua-nav-link > .ua-sub-indicator {
+    margin-left: var(--ua-nav-indicator-spacing, 8px);
+}
+
+/* Hover & Active Indicator Colors */
+.ua-nav-link:hover .ua-sub-indicator,
+.ua-nav-item:hover > .ua-nav-link .ua-sub-indicator,
+.ua-nav-item.ua-sub-open > .ua-nav-link .ua-sub-indicator {
+    color: var(--ua-nav-indicator-hover-color, inherit);
+}
+
+.ua-nav-item.current-menu-item > .ua-nav-link .ua-sub-indicator,
+.ua-nav-item.ua-active-item > .ua-nav-link .ua-sub-indicator {
+    color: var(--ua-nav-indicator-active-color, inherit);
+}
+
+/* Top-level indicator rotation on hover and open */
+.ua-nav-top-item:hover > .ua-nav-link > .ua-sub-indicator.ua-indicator-down,
+.ua-nav-top-item.ua-sub-open > .ua-nav-link > .ua-sub-indicator.ua-indicator-down,
+.ua-has-mega-menu:hover > .ua-nav-link > .ua-sub-indicator.ua-indicator-down,
+.ua-has-mega-menu.ua-sub-open > .ua-nav-link > .ua-sub-indicator.ua-indicator-down {
     transform: rotate(180deg);
+}
+
+/* Rotate override off when indicator rotation disabled */
+.ua-indicator-rotate-no .ua-sub-indicator {
+    transform: none !important;
+}
+
+/* Plus icon rotation: turns into 45deg 'x' */
+.ua-indicator-type-plus .ua-nav-top-item:hover > .ua-nav-link > .ua-sub-indicator,
+.ua-indicator-type-plus .ua-nav-top-item.ua-sub-open > .ua-nav-link > .ua-sub-indicator,
+.ua-indicator-type-plus .ua-has-mega-menu:hover > .ua-nav-link > .ua-sub-indicator,
+.ua-indicator-type-plus .ua-has-mega-menu.ua-sub-open > .ua-nav-link > .ua-sub-indicator {
+    transform: rotate(45deg);
 }
 
 /* Nested flyout indicator: right arrow shifts right on hover */
@@ -183,10 +267,14 @@
     padding-left: 14px;
     transform: none;
 }
-.ua-trigger-hover .ua-sub-menu .ua-nav-item:hover > .ua-nav-link > .ua-sub-indicator,
-.ua-nav-menu-wrapper:not(.ua-trigger-click) .ua-sub-menu .ua-nav-item:hover > .ua-nav-link > .ua-sub-indicator,
+.ua-sub-menu .ua-nav-item:hover > .ua-nav-link > .ua-sub-indicator,
 .ua-sub-menu .ua-nav-item.ua-sub-open > .ua-nav-link > .ua-sub-indicator {
     transform: translateX(3px);
+}
+
+/* Hide when indicator is disabled */
+.ua-indicator-show-no .ua-sub-indicator {
+    display: none !important;
 }
 
 /* -------------------------------------------------------------
@@ -413,6 +501,22 @@
     left: auto;
     right: calc(-1 * var(--ua-nav-nested-offset, 2px) - 24px);
     width: calc(var(--ua-nav-nested-offset, 2px) + 28px);
+}
+
+/* Level 1 submenu alignment when menu is aligned to right */
+.ua-nav-align-right .ua-desktop-nav > .ua-nav-list > .ua-nav-item:last-child > .ua-sub-menu:not(.ua-mega-dropdown),
+.ua-nav-align-desktop-right .ua-desktop-nav > .ua-nav-list > .ua-nav-item:last-child > .ua-sub-menu:not(.ua-mega-dropdown),
+.ua-nav-menu-wrapper.ua-nav-align-right .ua-desktop-nav > .ua-nav-list > .ua-nav-item:last-child > .ua-sub-menu:not(.ua-mega-dropdown),
+.ua-desktop-nav > .ua-nav-list > .ua-nav-item > .ua-sub-menu.ua-dropdown-align-right {
+    left: auto;
+    right: 0;
+}
+.ua-nav-align-right .ua-desktop-nav > .ua-nav-list > .ua-nav-item:last-child > .ua-sub-menu:not(.ua-mega-dropdown)::before,
+.ua-nav-align-desktop-right .ua-desktop-nav > .ua-nav-list > .ua-nav-item:last-child > .ua-sub-menu:not(.ua-mega-dropdown)::before,
+.ua-nav-menu-wrapper.ua-nav-align-right .ua-desktop-nav > .ua-nav-list > .ua-nav-item:last-child > .ua-sub-menu:not(.ua-mega-dropdown)::before,
+.ua-desktop-nav > .ua-nav-list > .ua-nav-item > .ua-sub-menu.ua-dropdown-align-right::before {
+    left: auto;
+    right: 0;
 }
 
 /* Stacking Order: Nested hover levels always stay on top */
@@ -769,4 +873,202 @@
     .ua-nav-menu-wrapper.ua-bp-mobile .ua-nav-toggle-btn {
         display: inline-flex !important;
     }
+}
+
+/* -------------------------------------------------------------
+ * 9. UltraAddons Mega Menu Engine
+ * ------------------------------------------------------------- */
+/* Menu Item Icon */
+.ua-mega-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+/* Menu Item Badge */
+.ua-mega-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
+    vertical-align: middle;
+    margin-left: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+}
+
+.ua-badge-pill {
+    border-radius: 20px;
+    padding: 3px 8px;
+}
+
+.ua-badge-outline {
+    border-radius: 4px;
+    padding: 2px 6px;
+    background-color: transparent !important;
+    border: 1.5px solid currentColor;
+}
+
+.ua-badge-soft {
+    border-radius: 4px;
+    padding: 3px 7px;
+    opacity: 0.92;
+}
+
+/* Badge Live Pulsing Dot Animation */
+.ua-anim-pulse-dot .ua-badge-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: currentColor;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    animation: ua-badge-pulse 1.6s infinite;
+}
+
+@keyframes ua-badge-pulse {
+    0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(255, 255, 255, 0); }
+    100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+
+/* Badge Shimmer Sweep Animation */
+.ua-anim-shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: ua-badge-shimmer 2.5s infinite;
+}
+
+@keyframes ua-badge-shimmer {
+    0% { left: -100%; }
+    50%, 100% { left: 150%; }
+}
+
+/* Mega Dropdown Panel on Desktop */
+.ua-desktop-nav .ua-has-mega-menu.ua-mega-width-container,
+.ua-desktop-nav .ua-has-mega-menu.ua-mega-width-full {
+    position: static !important; /* Allows full-width / container-width positioning */
+}
+
+.ua-desktop-nav .ua-has-mega-menu.ua-mega-width-custom,
+.ua-desktop-nav .ua-has-mega-menu.ua-mega-width-fit {
+    position: relative !important; /* Allows relative positioning to parent menu item */
+}
+
+/* Hide standard WP submenu on desktop when mega menu is active */
+.ua-desktop-nav .ua-has-mega-menu > .ua-sub-menu:not(.ua-mega-dropdown) {
+    display: none !important;
+}
+
+.ua-desktop-nav .ua-mega-dropdown {
+    position: absolute;
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.15), 0 8px 16px -4px rgba(15, 23, 42, 0.08);
+}
+
+/* Width: Container Width (Dropdown panel only) */
+.ua-desktop-nav .ua-mega-dropdown.ua-mega-width-container {
+    left: 0;
+    right: 0;
+    width: 100% !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Width: Full Viewport Width (Dropdown panel only) */
+.ua-desktop-nav .ua-mega-dropdown.ua-mega-width-full {
+    left: 0;
+    right: auto;
+    width: 100vw !important;
+    max-width: 100vw !important;
+}
+
+/* Width: Custom Pixel Width (Dropdown panel only) */
+.ua-desktop-nav .ua-mega-dropdown.ua-mega-width-custom {
+    width: var(--ua-mega-custom-width, 760px) !important;
+    max-width: 95vw;
+}
+
+/* Width: Fit Content (Dropdown panel only) */
+.ua-desktop-nav .ua-mega-dropdown.ua-mega-width-fit {
+    width: max-content !important;
+    max-width: 95vw;
+}
+
+/* Horizontal Position Alignment (for custom and fit widths) */
+.ua-desktop-nav .ua-mega-dropdown.ua-mega-width-custom.ua-mega-pos-center,
+.ua-desktop-nav .ua-mega-dropdown.ua-mega-width-fit.ua-mega-pos-center {
+    left: 50%;
+    transform: translateX(-50%) translateY(6px);
+}
+.ua-desktop-nav .ua-has-mega-menu.ua-sub-open > .ua-mega-dropdown.ua-mega-pos-center,
+.ua-trigger-hover .ua-desktop-nav .ua-has-mega-menu:hover > .ua-mega-dropdown.ua-mega-pos-center {
+    transform: translateX(-50%) translateY(0);
+}
+
+.ua-desktop-nav .ua-mega-dropdown.ua-mega-width-custom.ua-mega-pos-left,
+.ua-desktop-nav .ua-mega-dropdown.ua-mega-width-fit.ua-mega-pos-left {
+    left: 0;
+    right: auto;
+}
+
+.ua-desktop-nav .ua-mega-dropdown.ua-mega-width-custom.ua-mega-pos-right,
+.ua-desktop-nav .ua-mega-dropdown.ua-mega-width-fit.ua-mega-pos-right {
+    left: auto;
+    right: 0;
+}
+
+/* Inner Elementor Content Container inside Mega Panel */
+.ua-mega-content-container {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.ua-mega-content-container .elementor-section-wrap,
+.ua-mega-content-container .elementor {
+    width: 100%;
+}
+
+/* Mobile Mega Menu Panel */
+.ua-mobile-dropdown .ua-mega-dropdown,
+.ua-nav-drawer .ua-mega-dropdown {
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    transform: none !important;
+    padding: 16px;
+    background-color: #f8fafc;
+    box-sizing: border-box;
+}
+
+/* Mobile AJAX Placeholder & Spinner */
+.ua-mega-ajax-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 20px;
+    color: #64748b;
+    font-size: 13px;
+    font-weight: 500;
 }

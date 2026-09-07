@@ -153,9 +153,45 @@
         });
 
         // -------------------------------------------------------------
-        // 3. Mobile Submenu Multi-Level Accordion (Click & Hover Support)
+        // 3. Mobile Submenu Multi-Level Accordion & Mega Menu AJAX
         // -------------------------------------------------------------
         var $mobileContainers = $wrapper.find('.ua-mobile-dropdown, .ua-nav-drawer');
+
+        var loadMobileMegaAjax = function ($panel) {
+            if (!$panel.length || $panel.hasClass('ua-loaded') || $panel.hasClass('ua-loading')) {
+                return;
+            }
+            var templateId = $panel.data('template-id');
+            if (!templateId) return;
+
+            $panel.addClass('ua-loading');
+            var ajaxUrl = (window.ua_nav_params && window.ua_nav_params.ajax_url) || window.ajaxurl || '/wp-admin/admin-ajax.php';
+
+            $.ajax({
+                url: ajaxUrl,
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    action: 'ua_get_mega_content',
+                    template_id: templateId
+                },
+                success: function (res) {
+                    $panel.removeClass('ua-loading');
+                    if (res && res.success && res.data && res.data.html) {
+                        $panel.html('<div class="ua-mega-content-container">' + res.data.html + '</div>').addClass('ua-loaded');
+                        if (window.elementorFrontend && typeof elementorFrontend.initOnReadyElements === 'function') {
+                            elementorFrontend.initOnReadyElements($panel);
+                        }
+                    } else {
+                        $panel.html('<div class="ua-mega-ajax-error" style="padding:15px; color:#ef4444; text-align:center;">Failed to load content.</div>');
+                    }
+                },
+                error: function () {
+                    $panel.removeClass('ua-loading');
+                    $panel.html('<div class="ua-mega-ajax-error" style="padding:15px; color:#ef4444; text-align:center;">Failed to load content.</div>');
+                }
+            });
+        };
 
         // Click Handler (Always enabled for touchscreen & manual toggles)
         $mobileContainers.off('click.uasub').on('click.uasub', '.menu-item-has-children > .ua-nav-link', function (e) {
@@ -171,6 +207,12 @@
             setActiveItem($link);
 
             if ($submenu.length) {
+                // Check if this submenu is an AJAX mega menu container
+                var $ajaxTarget = $submenu.hasClass('ua-mega-ajax') ? $submenu : $submenu.find('.ua-mega-ajax');
+                if ($ajaxTarget.length) {
+                    loadMobileMegaAjax($ajaxTarget);
+                }
+
                 if (isIndicator || !hasRealUrl) {
                     // Tapping indicator arrow or dummy '#' link toggles accordion
                     e.preventDefault();
@@ -196,8 +238,12 @@
                         if (isEditMode) {
                             e.preventDefault();
                         } else {
-                            closeMobileMenu();
-                            // Browser navigates to href naturally
+                            var target = $link.attr('target');
+                            if (target === '_blank') {
+                                window.open(href, '_blank');
+                            } else {
+                                window.location.href = href;
+                            }
                         }
                     }
                 }
@@ -212,6 +258,10 @@
                     var $item = $(this);
                     var $submenu = $item.children('.ua-sub-menu');
                     if ($submenu.length) {
+                        var $ajaxTarget = $submenu.hasClass('ua-mega-ajax') ? $submenu : $submenu.find('.ua-mega-ajax');
+                        if ($ajaxTarget.length) {
+                            loadMobileMegaAjax($ajaxTarget);
+                        }
                         $item.addClass('ua-sub-open');
                         $submenu.stop(true, true).slideDown(220);
                     }
@@ -227,9 +277,84 @@
         }
 
         // -------------------------------------------------------------
-        // 4. Desktop Submenu Flyout Smart Boundary Detection
+        // 4. Desktop Mega Menu Dynamic Positioning & Smart Flyouts
         // -------------------------------------------------------------
-        $wrapper.find('.ua-desktop-nav .ua-sub-menu .menu-item-has-children').on('mouseenter', function () {
+        var adjustMegaMenuPosition = function () {
+            var $megaItems = $wrapper.find('.ua-desktop-nav .ua-has-mega-menu');
+            if (!$megaItems.length) return;
+
+            var windowWidth = $(window).width();
+            var docWidth = document.documentElement.clientWidth || windowWidth;
+            var wrapperOffset = $wrapper.offset() || { left: 0, top: 0 };
+
+            $megaItems.each(function () {
+                var $item = $(this);
+                var $megaPanel = $item.children('.ua-mega-dropdown');
+                if (!$megaPanel.length) return;
+
+                if ($item.hasClass('ua-mega-width-full')) {
+                    // Span edge-to-edge across entire browser window
+                    $megaPanel.css({
+                        'left': (-wrapperOffset.left) + 'px',
+                        'width': docWidth + 'px',
+                        'right': 'auto'
+                    });
+                } else if ($item.hasClass('ua-mega-width-container')) {
+                    // Match nearest Elementor container or wrapper container
+                    var $container = $wrapper.closest('.elementor-container, .e-con, .elementor-row');
+                    if (!$container.length) {
+                        $container = $wrapper.find('.ua-nav-menu-container');
+                    }
+                    if ($container.length) {
+                        var contOffset = $container.offset() || { left: 0, top: 0 };
+                        $megaPanel.css({
+                            'left': (contOffset.left - wrapperOffset.left) + 'px',
+                            'width': $container.outerWidth() + 'px',
+                            'right': 'auto'
+                        });
+                    }
+                } else if ($item.hasClass('ua-mega-width-custom') || $item.hasClass('ua-mega-width-fit')) {
+                    // Prevent custom width panel from running off viewport edges
+                    $megaPanel.css('margin-left', '');
+                    var panelOffset = $megaPanel.offset();
+                    var panelWidth = $megaPanel.outerWidth();
+                    if (panelOffset && panelWidth) {
+                        if (panelOffset.left < 15) {
+                            var shiftRight = 15 - panelOffset.left;
+                            $megaPanel.css('margin-left', shiftRight + 'px');
+                        } else if (panelOffset.left + panelWidth > docWidth - 15) {
+                            var shiftLeft = (panelOffset.left + panelWidth) - (docWidth - 15);
+                            $megaPanel.css('margin-left', (-shiftLeft) + 'px');
+                        }
+                    }
+                }
+            });
+        };
+
+        // Recalculate mega menu bounds
+        adjustMegaMenuPosition();
+        $wrapper.find('.ua-desktop-nav .ua-has-mega-menu').on('mouseenter', adjustMegaMenuPosition);
+        $(window).on('resize.uamega', adjustMegaMenuPosition);
+
+        // Top-Level Submenu Boundary Detection (for right-aligned or edge menus)
+        $wrapper.find('.ua-desktop-nav > .ua-nav-list > .menu-item-has-children').on('mouseenter', function () {
+            var $item = $(this);
+            var $sub = $item.children('.ua-sub-menu:not(.ua-mega-dropdown)');
+            if (!$sub.length) return;
+
+            var windowWidth = $(window).width();
+            var itemOffset = $item.offset();
+            var subWidth = $sub.outerWidth() || 220;
+
+            if (itemOffset && (itemOffset.left + subWidth > windowWidth - 10)) {
+                $sub.addClass('ua-dropdown-align-right');
+            } else {
+                $sub.removeClass('ua-dropdown-align-right');
+            }
+        });
+
+        // Standard Nested Submenu Flyout Smart Boundary Detection
+        $wrapper.find('.ua-desktop-nav .ua-sub-menu:not(.ua-mega-dropdown) .menu-item-has-children').on('mouseenter', function () {
             var $item = $(this);
             var $nestedSub = $item.children('.ua-sub-menu');
             if (!$nestedSub.length) return;
@@ -277,6 +402,7 @@
                             // Close sibling open submenus at this level
                             $item.siblings('.menu-item-has-children').removeClass('ua-sub-open');
                             $item.addClass('ua-sub-open');
+                            adjustMegaMenuPosition();
                         }
                     } else {
                         // Parent link has a real destination URL (e.g. Home, Checkout, Cart)
@@ -287,6 +413,7 @@
 
                             $item.siblings('.menu-item-has-children').removeClass('ua-sub-open');
                             $item.addClass('ua-sub-open');
+                            adjustMegaMenuPosition();
                         } else {
                             // Submenu is ALREADY open: clicking the parent link follows the URL!
                             if (isEditMode) {
@@ -336,11 +463,19 @@
                 'frontend/element_ready/ultraaddons-navigation-menu.default',
                 UltraNavMenuHandler
             );
+            elementorFrontend.hooks.addAction(
+                'frontend/element_ready/ultraaddons-mega-menu.default',
+                UltraNavMenuHandler
+            );
         } else {
             $(window).on('elementor/frontend/init', function () {
                 if (window.elementorFrontend && window.elementorFrontend.hooks) {
                     elementorFrontend.hooks.addAction(
                         'frontend/element_ready/ultraaddons-navigation-menu.default',
+                        UltraNavMenuHandler
+                    );
+                    elementorFrontend.hooks.addAction(
+                        'frontend/element_ready/ultraaddons-mega-menu.default',
                         UltraNavMenuHandler
                     );
                 }
@@ -351,7 +486,7 @@
 
     // Direct DOM ready initialization fallback
     $(function () {
-        $('.elementor-widget-ultraaddons-navigation-menu').each(function () {
+        $('.elementor-widget-ultraaddons-navigation-menu, .elementor-widget-ultraaddons-mega-menu').each(function () {
             UltraNavMenuHandler($(this));
         });
     });

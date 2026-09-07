@@ -701,6 +701,15 @@ $ultraaddons_widgetsArray = [
             __( 'Header_Footer', 'ultraaddons-elementor-lite' ),
         ],
     ],
+    'Mega_Menu'=> [
+        'name'      => __( 'Mega Menu', 'ultraaddons-elementor-lite' ),
+        'is_pro'    => false,
+        'icon'      => 'eicon-nav-menu',
+        'badge'     => 'new',
+        'cat'       => [
+            __( 'Header_Footer', 'ultraaddons-elementor-lite' ),
+        ],
+    ],
     'Formidable_Form'=> [
         'name'      => __( 'Formidable Form', 'ultraaddons-elementor-lite' ),
         'is_pro'   => false,

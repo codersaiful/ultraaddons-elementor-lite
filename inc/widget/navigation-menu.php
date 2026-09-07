@@ -5,8 +5,12 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
+use UltraAddons\Core\Mega_Menu;
+use Ultra_Nav_Walker;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
+require_once ULTRA_ADDONS_DIR . 'inc/core/mega-menu/class-ultra-nav-walker.php';
 
 /**
  * UltraAddons Navigation Menu Widget
@@ -47,6 +51,14 @@ class Navigation_Menu extends Base {
             [ 'jquery' ],
             $js_ver,
             true
+        );
+
+        wp_localize_script(
+            'frontend-navigation-menu',
+            'ua_nav_params',
+            [
+                'ajax_url' => admin_url( 'admin-ajax.php' ),
+            ]
         );
     }
 
@@ -199,17 +211,21 @@ class Navigation_Menu extends Base {
                         'icon'  => 'eicon-h-align-stretch',
                     ],
                 ],
-                'prefix_class'         => 'ua-nav-align-%s',
+                'prefix_class'         => 'ua-nav-align%s-',
                 'selectors_dictionary' => [
-                    'left'    => 'flex-start',
-                    'center'  => 'center',
-                    'right'   => 'flex-end',
-                    'justify' => 'space-between',
+                    'left'          => 'flex-start',
+                    'center'        => 'center',
+                    'right'         => 'flex-end',
+                    'justify'       => 'space-between',
+                    'space-between' => 'space-between',
                 ],
                 'selectors'            => [
-                    '{{WRAPPER}} .ua-nav-menu-container' => 'justify-content: {{VALUE}} !important;',
-                    '{{WRAPPER}}'                        => 'width: 100%; flex-grow: 1;',
-                    '{{WRAPPER}} .elementor-widget-container' => 'width: 100%;',
+                    '{{WRAPPER}}'                                => 'width: 100%; flex-grow: 1;',
+                    '{{WRAPPER}} .elementor-widget-container'    => 'width: 100%;',
+                    '{{WRAPPER}} .ua-nav-menu-wrapper'           => 'width: 100%;',
+                    '{{WRAPPER}} .ua-nav-menu-container'         => 'justify-content: {{VALUE}} !important; width: 100%;',
+                    '{{WRAPPER}} .ua-desktop-nav'                => 'display: flex; justify-content: {{VALUE}} !important; width: 100%;',
+                    '{{WRAPPER}} .ua-desktop-nav > .ua-nav-list' => 'justify-content: {{VALUE}} !important; width: 100%;',
                 ],
             ]
         );
@@ -322,7 +338,51 @@ class Navigation_Menu extends Base {
             ]
         );
 
+        $this->add_control(
+            'ua_nav_indicator_show',
+            [
+                'label'        => esc_html__( 'Submenu Indicator Icon', 'ultraaddons-elementor-lite' ),
+                'type'         => Controls_Manager::SWITCHER,
+                'default'      => 'yes',
+                'return_value' => 'yes',
+                'prefix_class' => 'ua-indicator-show-',
+                'render_type'  => 'template',
+            ]
+        );
 
+        $this->add_control(
+            'ua_nav_indicator_type',
+            [
+                'label'       => esc_html__( 'Indicator Type', 'ultraaddons-elementor-lite' ),
+                'type'        => Controls_Manager::SELECT,
+                'default'     => 'classic',
+                'render_type' => 'template',
+                'options'     => [
+                    'classic' => esc_html__( 'Classic Chevron', 'ultraaddons-elementor-lite' ),
+                    'angle'   => esc_html__( 'Angle', 'ultraaddons-elementor-lite' ),
+                    'caret'   => esc_html__( 'Caret', 'ultraaddons-elementor-lite' ),
+                    'arrow'   => esc_html__( 'Arrow', 'ultraaddons-elementor-lite' ),
+                    'plus'    => esc_html__( 'Plus / Minus', 'ultraaddons-elementor-lite' ),
+                ],
+                'condition'   => [
+                    'ua_nav_indicator_show' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'ua_nav_indicator_rotate',
+            [
+                'label'        => esc_html__( 'Rotate on Hover/Open', 'ultraaddons-elementor-lite' ),
+                'type'         => Controls_Manager::SWITCHER,
+                'default'      => 'yes',
+                'return_value' => 'yes',
+                'prefix_class' => 'ua-indicator-rotate-',
+                'condition'    => [
+                    'ua_nav_indicator_show' => 'yes',
+                ],
+            ]
+        );
 
         $this->end_controls_section();
     }
@@ -860,7 +920,113 @@ class Navigation_Menu extends Base {
         $this->end_controls_section();
 
         // -------------------------------------------------------------
-        // 4. MOBILE TOGGLE & DRAWER STYLES
+        // 4. SUBMENU INDICATOR STYLES
+        // -------------------------------------------------------------
+        $this->start_controls_section(
+            '_section_ua_nav_style_indicator',
+            [
+                'label'     => esc_html__( 'Submenu Indicator Icon', 'ultraaddons-elementor-lite' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'ua_nav_indicator_show' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'ua_nav_indicator_size',
+            [
+                'label'      => esc_html__( 'Icon Size', 'ultraaddons-elementor-lite' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', 'em' ],
+                'range'      => [
+                    'px' => [ 'min' => 6, 'max' => 32, 'step' => 1 ],
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}}'                       => '--ua-nav-indicator-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .ua-sub-indicator svg' => 'width: {{SIZE}}{{UNIT}}; height: auto;',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'ua_nav_indicator_spacing',
+            [
+                'label'      => esc_html__( 'Spacing', 'ultraaddons-elementor-lite' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', 'em' ],
+                'range'      => [
+                    'px' => [ 'min' => 0, 'max' => 40, 'step' => 1 ],
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}}'                   => '--ua-nav-indicator-spacing: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .ua-sub-indicator' => 'margin-left: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->start_controls_tabs( 'ua_nav_indicator_tabs' );
+
+        $this->start_controls_tab(
+            'ua_nav_indicator_tab_normal',
+            [ 'label' => esc_html__( 'Normal', 'ultraaddons-elementor-lite' ) ]
+        );
+
+        $this->add_control(
+            'ua_nav_indicator_color',
+            [
+                'label'     => esc_html__( 'Color', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .ua-sub-indicator' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'ua_nav_indicator_tab_hover',
+            [ 'label' => esc_html__( 'Hover', 'ultraaddons-elementor-lite' ) ]
+        );
+
+        $this->add_control(
+            'ua_nav_indicator_color_hover',
+            [
+                'label'     => esc_html__( 'Hover Color', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .ua-nav-link:hover .ua-sub-indicator, {{WRAPPER}} .ua-nav-item.ua-sub-open > .ua-nav-link .ua-sub-indicator' => 'color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'ua_nav_indicator_tab_active',
+            [ 'label' => esc_html__( 'Active', 'ultraaddons-elementor-lite' ) ]
+        );
+
+        $this->add_control(
+            'ua_nav_indicator_color_active',
+            [
+                'label'     => esc_html__( 'Active Color', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .ua-nav-item.current-menu-item > .ua-nav-link .ua-sub-indicator, {{WRAPPER}} .ua-nav-item.ua-active-item > .ua-nav-link .ua-sub-indicator' => 'color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
+
+        $this->end_controls_section();
+
+        // -------------------------------------------------------------
+        // 5. MOBILE TOGGLE & DRAWER STYLES
         // -------------------------------------------------------------
         $this->start_controls_section(
             '_section_ua_nav_style_mobile',
@@ -932,12 +1098,18 @@ class Navigation_Menu extends Base {
         $drawer_tit = ! empty( $settings['ua_nav_drawer_title'] ) ? $settings['ua_nav_drawer_title'] : esc_html__( 'Navigation Menu', 'ultraaddons-elementor-lite' );
 
         $align      = ! empty( $settings['ua_nav_align'] ) ? $settings['ua_nav_align'] : 'left';
+        $show_ind   = ! empty( $settings['ua_nav_indicator_show'] ) ? $settings['ua_nav_indicator_show'] : 'yes';
+        $ind_type   = ! empty( $settings['ua_nav_indicator_type'] ) ? $settings['ua_nav_indicator_type'] : 'classic';
+        $ind_rotate = ! empty( $settings['ua_nav_indicator_rotate'] ) ? $settings['ua_nav_indicator_rotate'] : 'yes';
 
         $wrapper_classes = [
             'ua-nav-menu-wrapper',
             'ua-nav-layout-' . sanitize_html_class( $layout ),
             'ua-trigger-' . sanitize_html_class( $trigger ),
             'ua-nav-align-' . sanitize_html_class( $align ),
+            'ua-indicator-show-' . sanitize_html_class( $show_ind ),
+            'ua-indicator-type-' . sanitize_html_class( $ind_type ),
+            'ua-indicator-rotate-' . sanitize_html_class( $ind_rotate ),
         ];
 
         if ( 'none' !== $pointer ) {
@@ -972,7 +1144,7 @@ class Navigation_Menu extends Base {
                         'menu_class'      => 'ua-nav-list',
                         'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
                         'depth'           => 0,
-                        'walker'          => new Ultra_Nav_Walker(),
+                        'walker'          => new \Ultra_Nav_Walker( false, $ind_type, $show_ind ),
                         'fallback_cb'     => false,
                     ] );
                     ?>
@@ -1012,7 +1184,7 @@ class Navigation_Menu extends Base {
                                 'menu_class'  => 'ua-nav-list',
                                 'items_wrap'  => '<ul class="%2$s">%3$s</ul>',
                                 'depth'       => 0,
-                                'walker'      => new Ultra_Nav_Walker(),
+                                'walker'      => new \Ultra_Nav_Walker( true, $ind_type, $show_ind ),
                                 'fallback_cb' => false,
                             ] );
                             ?>
@@ -1028,7 +1200,7 @@ class Navigation_Menu extends Base {
                             'menu_class'  => 'ua-nav-list',
                             'items_wrap'  => '<ul class="%2$s">%3$s</ul>',
                             'depth'       => 0,
-                            'walker'      => new Ultra_Nav_Walker(),
+                            'walker'      => new \Ultra_Nav_Walker( true, $ind_type, $show_ind ),
                             'fallback_cb' => false,
                         ] );
                         ?>
@@ -1038,88 +1210,5 @@ class Navigation_Menu extends Base {
 
         </div>
         <?php
-    }
-}
-
-/**
- * Custom Semantic Nav Walker for UltraAddons Navigation Menu
- */
-class Ultra_Nav_Walker extends \Walker_Nav_Menu {
-
-    protected $first_item_marked = false;
-
-    public function start_lvl( &$output, $depth = 0, $args = null ) {
-        $indent = str_repeat( "\t", $depth );
-        $output .= "\n$indent<ul class=\"ua-sub-menu ua-sub-level-{$depth}\">\n";
-    }
-
-    public function end_lvl( &$output, $depth = 0, $args = null ) {
-        $indent = str_repeat( "\t", $depth );
-        $output .= "$indent</ul>\n";
-    }
-
-    public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
-        $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
-
-        $classes = empty( $item->classes ) ? [] : (array) $item->classes;
-        $classes[] = 'ua-nav-item';
-        $classes[] = 'menu-item-' . (int) $item->ID;
-        if ( 0 === $depth ) {
-            $classes[] = 'ua-nav-top-item';
-
-            $is_elementor = false;
-            if ( class_exists( '\Elementor\Plugin' ) && isset( \Elementor\Plugin::$instance ) ) {
-                $is_elementor = ( \Elementor\Plugin::$instance->editor->is_edit_mode() || \Elementor\Plugin::$instance->preview->is_preview_mode() );
-            }
-            if ( ! $this->first_item_marked && $is_elementor ) {
-                $classes[] = 'ua-first-item';
-                $this->first_item_marked = true;
-            }
-        }
-
-        $has_children = in_array( 'menu-item-has-children', $classes, true );
-
-        $class_names = implode( ' ', array_filter( array_map( 'esc_attr', $classes ) ) );
-        $output .= $indent . '<li class="' . $class_names . '">';
-
-        $atts = [];
-        $atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title : '';
-        $atts['target'] = ! empty( $item->target )     ? $item->target     : '';
-        $atts['rel']    = ! empty( $item->xfn )        ? $item->xfn        : '';
-        $atts['href']   = ! empty( $item->url )        ? $item->url        : '';
-        $atts['class']  = 'ua-nav-link';
-
-        $attributes = '';
-        foreach ( $atts as $attr => $value ) {
-            if ( ! empty( $value ) ) {
-                $value = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
-                $attributes .= ' ' . $attr . '="' . $value . '"';
-            }
-        }
-
-        $title = apply_filters( 'the_title', $item->title, $item->ID );
-
-        $item_output  = isset( $args->before ) ? $args->before : '';
-        $item_output .= '<a' . $attributes . '>';
-        $item_output .= ( isset( $args->link_before ) ? $args->link_before : '' ) . '<span class="ua-nav-title">' . $title . '</span>' . ( isset( $args->link_after ) ? $args->link_after : '' );
-
-        if ( $has_children ) {
-            if ( 0 === $depth ) {
-                // Top-level dropdown down chevron
-                $item_output .= '<span class="ua-sub-indicator ua-indicator-down" aria-hidden="true"><svg width="10" height="6" viewBox="0 0 10 6" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
-            } else {
-                // Nested flyout right chevron
-                $item_output .= '<span class="ua-sub-indicator ua-indicator-right" aria-hidden="true"><svg width="6" height="10" viewBox="0 0 6 10" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M1 9L5 5L1 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
-            }
-        }
-
-        $item_output .= '</a>';
-        $item_output .= isset( $args->after ) ? $args->after : '';
-
-        $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
-    }
-
-    public function end_el( &$output, $item, $depth = 0, $args = null ) {
-        $output .= "</li>\n";
     }
 }
