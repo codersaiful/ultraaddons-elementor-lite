@@ -2,11 +2,11 @@
  * UltraAddons - Modern Navigation Menu Stylesheet
  * 
  * High-performance, flexbox-powered, zero-dependency navigation styling.
- * Supports modern hover pointers, multi-level dropdowns, and responsive off-canvas drawer.
+ * Supports modern hover pointers, multi-level nested flyouts, and responsive off-canvas drawer.
  * 
  * @package UltraAddons
  * @author Saiful Islam <codersaiful@gmail.com>
- * @version 2.0.0
+ * @version 2.1.1
  */
 
 :root {
@@ -14,14 +14,24 @@
     --ua-nav-pointer-height: 2px;
     --ua-nav-pointer-offset: 4px;
     --ua-nav-pointer-radius: 6px;
-    --ua-nav-transition-speed: 0.28s;
-    --ua-nav-submenu-offset: 8px;
+    --ua-nav-transition-speed: 0.22s;
+    --ua-nav-submenu-offset: 0px;
+    --ua-nav-nested-offset: 2px;
     --ua-nav-drawer-width: 320px;
 }
 
 /* -------------------------------------------------------------
  * 1. Base Wrapper & Container
  * ------------------------------------------------------------- */
+.elementor-widget-ultraaddons-navigation-menu {
+    width: 100%;
+    flex-grow: 1;
+}
+
+.elementor-widget-ultraaddons-navigation-menu .elementor-widget-container {
+    width: 100%;
+}
+
 .ua-nav-menu-wrapper {
     position: relative;
     width: 100%;
@@ -40,11 +50,46 @@
     width: 100%;
 }
 
-/* Alignments */
-.ua-nav-align-left .ua-nav-menu-container { justify-content: flex-start; }
-.ua-nav-align-center .ua-nav-menu-container { justify-content: center; }
-.ua-nav-align-right .ua-nav-menu-container { justify-content: flex-end; }
-.ua-nav-align-justify .ua-nav-menu-container { justify-content: space-between; }
+/* Alignments (Desktop & Responsive classes) */
+.ua-nav-align-left .ua-nav-menu-container,
+.ua-nav-align-desktop-left .ua-nav-menu-container,
+.ua-nav-menu-wrapper.ua-nav-align-left .ua-nav-menu-container { justify-content: flex-start !important; }
+
+.ua-nav-align-center .ua-nav-menu-container,
+.ua-nav-align-desktop-center .ua-nav-menu-container,
+.ua-nav-menu-wrapper.ua-nav-align-center .ua-nav-menu-container { justify-content: center !important; }
+
+.ua-nav-align-right .ua-nav-menu-container,
+.ua-nav-align-desktop-right .ua-nav-menu-container,
+.ua-nav-menu-wrapper.ua-nav-align-right .ua-nav-menu-container { justify-content: flex-end !important; }
+
+.ua-nav-align-justify .ua-nav-menu-container,
+.ua-nav-align-desktop-justify .ua-nav-menu-container,
+.ua-nav-menu-wrapper.ua-nav-align-justify .ua-nav-menu-container { justify-content: space-between !important; }
+
+.ua-nav-align-justify .ua-desktop-nav,
+.ua-nav-menu-wrapper.ua-nav-align-justify .ua-desktop-nav {
+    width: 100%;
+}
+.ua-nav-align-justify .ua-nav-list,
+.ua-nav-menu-wrapper.ua-nav-align-justify .ua-nav-list {
+    width: 100%;
+    justify-content: space-between;
+}
+
+@media (max-width: 1024px) {
+    .ua-nav-align-tablet-left .ua-nav-menu-container { justify-content: flex-start !important; }
+    .ua-nav-align-tablet-center .ua-nav-menu-container { justify-content: center !important; }
+    .ua-nav-align-tablet-right .ua-nav-menu-container { justify-content: flex-end !important; }
+    .ua-nav-align-tablet-justify .ua-nav-menu-container { justify-content: space-between !important; }
+}
+
+@media (max-width: 767px) {
+    .ua-nav-align-mobile-left .ua-nav-menu-container { justify-content: flex-start !important; }
+    .ua-nav-align-mobile-center .ua-nav-menu-container { justify-content: center !important; }
+    .ua-nav-align-mobile-right .ua-nav-menu-container { justify-content: flex-end !important; }
+    .ua-nav-align-mobile-justify .ua-nav-menu-container { justify-content: space-between !important; }
+}
 
 /* -------------------------------------------------------------
  * 2. Main Navigation Menu List
@@ -84,6 +129,13 @@
     line-height: 1.4;
     transition: color var(--ua-nav-transition-speed) ease, background-color var(--ua-nav-transition-speed) ease;
     cursor: pointer;
+    z-index: 1;
+}
+
+.ua-nav-title,
+.ua-sub-indicator {
+    position: relative;
+    z-index: 2;
 }
 
 .ua-nav-link:hover,
@@ -93,34 +145,57 @@
 }
 
 .ua-nav-item.current-menu-item > .ua-nav-link,
+.ua-nav-item.current_page_item > .ua-nav-link,
 .ua-nav-item.current-menu-parent > .ua-nav-link,
-.ua-nav-item.ua-active-item > .ua-nav-link {
+.ua-nav-item.current-menu-ancestor > .ua-nav-link,
+.ua-nav-item.ua-active-item > .ua-nav-link,
+.ua-nav-item.ua-active-item:hover > .ua-nav-link,
+.ua-nav-item.current-menu-item:hover > .ua-nav-link,
+.ua-nav-item.ua-active-item > .ua-nav-link .ua-nav-title,
+.ua-nav-item.current-menu-item > .ua-nav-link .ua-nav-title,
+.ua-nav-item.ua-active-item > .ua-nav-link .ua-sub-indicator,
+.ua-nav-item.current-menu-item > .ua-nav-link .ua-sub-indicator {
     color: #4f46e5;
 }
 
-/* Submenu Indicator Arrow */
+/* Submenu Indicator Arrows */
 .ua-sub-indicator {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-left: 6px;
-    font-size: 11px;
     line-height: 1;
     transition: transform var(--ua-nav-transition-speed) ease;
 }
 
-.ua-nav-item:hover > .ua-nav-link > .ua-sub-indicator,
-.ua-nav-item.ua-sub-open > .ua-nav-link > .ua-sub-indicator {
+/* Top-level arrow rotates 180deg when open */
+.ua-nav-top-item > .ua-nav-link > .ua-sub-indicator {
+    margin-left: 6px;
+}
+.ua-trigger-hover .ua-nav-top-item:hover > .ua-nav-link > .ua-sub-indicator,
+.ua-nav-menu-wrapper:not(.ua-trigger-click) .ua-nav-top-item:hover > .ua-nav-link > .ua-sub-indicator,
+.ua-nav-top-item.ua-sub-open > .ua-nav-link > .ua-sub-indicator {
     transform: rotate(180deg);
 }
 
+/* Nested flyout indicator: right arrow shifts right on hover */
+.ua-sub-menu .ua-sub-indicator {
+    margin-left: auto;
+    padding-left: 14px;
+    transform: none;
+}
+.ua-trigger-hover .ua-sub-menu .ua-nav-item:hover > .ua-nav-link > .ua-sub-indicator,
+.ua-nav-menu-wrapper:not(.ua-trigger-click) .ua-sub-menu .ua-nav-item:hover > .ua-nav-link > .ua-sub-indicator,
+.ua-sub-menu .ua-nav-item.ua-sub-open > .ua-nav-link > .ua-sub-indicator {
+    transform: translateX(3px);
+}
+
 /* -------------------------------------------------------------
- * 3. Modern Hover Pointer Effects
+ * 3. Modern Hover Pointer Effects (Only on Top Level Items)
  * ------------------------------------------------------------- */
-.ua-pointer-underline .ua-nav-link::after,
-.ua-pointer-overline .ua-nav-link::before,
-.ua-pointer-double-line .ua-nav-link::before,
-.ua-pointer-double-line .ua-nav-link::after {
+.ua-pointer-underline .ua-nav-top-item > .ua-nav-link::after,
+.ua-pointer-overline .ua-nav-top-item > .ua-nav-link::before,
+.ua-pointer-double-line .ua-nav-top-item > .ua-nav-link::before,
+.ua-pointer-double-line .ua-nav-top-item > .ua-nav-link::after {
     content: '';
     position: absolute;
     left: 16px;
@@ -131,35 +206,54 @@
     pointer-events: none;
 }
 
-.ua-pointer-underline .ua-nav-link::after {
+.ua-pointer-underline .ua-nav-top-item > .ua-nav-link::after {
     bottom: var(--ua-nav-pointer-offset, 4px);
 }
 
-.ua-pointer-overline .ua-nav-link::before {
+.ua-pointer-overline .ua-nav-top-item > .ua-nav-link::before {
     top: var(--ua-nav-pointer-offset, 4px);
 }
 
-.ua-pointer-double-line .ua-nav-link::before {
+.ua-pointer-double-line .ua-nav-top-item > .ua-nav-link::before {
     top: var(--ua-nav-pointer-offset, 4px);
 }
-.ua-pointer-double-line .ua-nav-link::after {
+.ua-pointer-double-line .ua-nav-top-item > .ua-nav-link::after {
     bottom: var(--ua-nav-pointer-offset, 4px);
 }
 
 /* Background Pill Effect */
-.ua-pointer-pill .ua-nav-link::before {
+.ua-pointer-pill .ua-nav-top-item > .ua-nav-link::before {
     content: '';
     position: absolute;
-    inset: 4px;
-    background-color: var(--ua-nav-pointer-color, rgba(79, 70, 229, 0.08));
+    inset: 2px 4px;
+    background-color: var(--ua-nav-pointer-color, #4f46e5);
     border-radius: var(--ua-nav-pointer-radius, 20px);
     transition: all var(--ua-nav-transition-speed) ease;
-    z-index: -1;
+    z-index: 1;
     pointer-events: none;
 }
 
+/* Ensure text and arrow are 100% crisp white when pill is active or hovered */
+.ua-pointer-pill .ua-nav-top-item:hover > .ua-nav-link,
+.ua-pointer-pill .ua-nav-top-item.ua-sub-open > .ua-nav-link,
+.ua-pointer-pill .ua-nav-top-item.current-menu-item > .ua-nav-link,
+.ua-pointer-pill .ua-nav-top-item.current-menu-parent > .ua-nav-link,
+.ua-pointer-pill .ua-nav-top-item.ua-active-item > .ua-nav-link,
+.ua-pointer-pill .ua-nav-top-item:hover > .ua-nav-link .ua-nav-title,
+.ua-pointer-pill .ua-nav-top-item.ua-sub-open > .ua-nav-link .ua-nav-title,
+.ua-pointer-pill .ua-nav-top-item.current-menu-item > .ua-nav-link .ua-nav-title,
+.ua-pointer-pill .ua-nav-top-item.current-menu-parent > .ua-nav-link .ua-nav-title,
+.ua-pointer-pill .ua-nav-top-item.ua-active-item > .ua-nav-link .ua-nav-title,
+.ua-pointer-pill .ua-nav-top-item:hover > .ua-nav-link .ua-sub-indicator,
+.ua-pointer-pill .ua-nav-top-item.ua-sub-open > .ua-nav-link .ua-sub-indicator,
+.ua-pointer-pill .ua-nav-top-item.current-menu-item > .ua-nav-link .ua-sub-indicator,
+.ua-pointer-pill .ua-nav-top-item.current-menu-parent > .ua-nav-link .ua-sub-indicator,
+.ua-pointer-pill .ua-nav-top-item.ua-active-item > .ua-nav-link .ua-sub-indicator {
+    color: #ffffff !important;
+}
+
 /* Framed / Bracket Effect */
-.ua-pointer-framed .ua-nav-link::before {
+.ua-pointer-framed .ua-nav-top-item > .ua-nav-link::before {
     content: '';
     position: absolute;
     inset: 4px;
@@ -171,72 +265,75 @@
 }
 
 /* Animations */
-/* Fade */
-.ua-anim-fade .ua-nav-link::before,
-.ua-anim-fade .ua-nav-link::after {
+.ua-anim-fade .ua-nav-top-item > .ua-nav-link::before,
+.ua-anim-fade .ua-nav-top-item > .ua-nav-link::after {
     opacity: 0;
 }
-.ua-anim-fade .ua-nav-item:hover > .ua-nav-link::before,
-.ua-anim-fade .ua-nav-item:hover > .ua-nav-link::after,
-.ua-anim-fade .ua-nav-item.current-menu-item > .ua-nav-link::before,
-.ua-anim-fade .ua-nav-item.current-menu-item > .ua-nav-link::after {
+.ua-anim-fade .ua-nav-top-item:hover > .ua-nav-link::before,
+.ua-anim-fade .ua-nav-top-item:hover > .ua-nav-link::after,
+.ua-anim-fade .ua-nav-top-item.current-menu-item > .ua-nav-link::before,
+.ua-anim-fade .ua-nav-top-item.current-menu-item > .ua-nav-link::after,
+.ua-anim-fade .ua-nav-top-item.ua-active-item > .ua-nav-link::before,
+.ua-anim-fade .ua-nav-top-item.ua-active-item > .ua-nav-link::after {
     opacity: 1;
 }
 
-/* Slide Horizontal */
-.ua-anim-slide .ua-nav-link::before,
-.ua-anim-slide .ua-nav-link::after {
+.ua-anim-slide .ua-nav-top-item > .ua-nav-link::before,
+.ua-anim-slide .ua-nav-top-item > .ua-nav-link::after {
     opacity: 0;
     transform: scaleX(0);
     transform-origin: left center;
 }
-.ua-anim-slide .ua-nav-item:hover > .ua-nav-link::before,
-.ua-anim-slide .ua-nav-item:hover > .ua-nav-link::after,
-.ua-anim-slide .ua-nav-item.current-menu-item > .ua-nav-link::before,
-.ua-anim-slide .ua-nav-item.current-menu-item > .ua-nav-link::after {
+.ua-anim-slide .ua-nav-top-item:hover > .ua-nav-link::before,
+.ua-anim-slide .ua-nav-top-item:hover > .ua-nav-link::after,
+.ua-anim-slide .ua-nav-top-item.current-menu-item > .ua-nav-link::before,
+.ua-anim-slide .ua-nav-top-item.current-menu-item > .ua-nav-link::after,
+.ua-anim-slide .ua-nav-top-item.ua-active-item > .ua-nav-link::before,
+.ua-anim-slide .ua-nav-top-item.ua-active-item > .ua-nav-link::after {
     opacity: 1;
     transform: scaleX(1);
 }
 
-/* Grow / Zoom */
-.ua-anim-grow .ua-nav-link::before,
-.ua-anim-grow .ua-nav-link::after {
+.ua-anim-grow .ua-nav-top-item > .ua-nav-link::before,
+.ua-anim-grow .ua-nav-top-item > .ua-nav-link::after {
     opacity: 0;
     transform: scale(0.65);
 }
-.ua-anim-grow .ua-nav-item:hover > .ua-nav-link::before,
-.ua-anim-grow .ua-nav-item:hover > .ua-nav-link::after,
-.ua-anim-grow .ua-nav-item.current-menu-item > .ua-nav-link::before,
-.ua-anim-grow .ua-nav-item.current-menu-item > .ua-nav-link::after {
+.ua-anim-grow .ua-nav-top-item:hover > .ua-nav-link::before,
+.ua-anim-grow .ua-nav-top-item:hover > .ua-nav-link::after,
+.ua-anim-grow .ua-nav-top-item.current-menu-item > .ua-nav-link::before,
+.ua-anim-grow .ua-nav-top-item.current-menu-item > .ua-nav-link::after,
+.ua-anim-grow .ua-nav-top-item.ua-active-item > .ua-nav-link::before,
+.ua-anim-grow .ua-nav-top-item.ua-active-item > .ua-nav-link::after {
     opacity: 1;
     transform: scale(1);
 }
 
-/* Drop Vertical */
-.ua-anim-drop .ua-nav-link::before,
-.ua-anim-drop .ua-nav-link::after {
+.ua-anim-drop .ua-nav-top-item > .ua-nav-link::before,
+.ua-anim-drop .ua-nav-top-item > .ua-nav-link::after {
     opacity: 0;
     transform: translateY(-8px);
 }
-.ua-anim-drop .ua-nav-item:hover > .ua-nav-link::before,
-.ua-anim-drop .ua-nav-item:hover > .ua-nav-link::after,
-.ua-anim-drop .ua-nav-item.current-menu-item > .ua-nav-link::before,
-.ua-anim-drop .ua-nav-item.current-menu-item > .ua-nav-link::after {
+.ua-anim-drop .ua-nav-top-item:hover > .ua-nav-link::before,
+.ua-anim-drop .ua-nav-top-item:hover > .ua-nav-link::after,
+.ua-anim-drop .ua-nav-top-item.current-menu-item > .ua-nav-link::before,
+.ua-anim-drop .ua-nav-top-item.current-menu-item > .ua-nav-link::after,
+.ua-anim-drop .ua-nav-top-item.ua-active-item > .ua-nav-link::before,
+.ua-anim-drop .ua-nav-top-item.ua-active-item > .ua-nav-link::after {
     opacity: 1;
     transform: translateY(0);
 }
 
 /* -------------------------------------------------------------
- * 4. Desktop Submenu & Dropdown Engine
+ * 4. Desktop Submenu Dropdown & Multi-Level Flyout Engine
  * ------------------------------------------------------------- */
 .ua-sub-menu {
     position: absolute;
-    top: calc(100% + var(--ua-nav-submenu-offset, 8px));
+    top: calc(100% + var(--ua-nav-submenu-offset, 0px));
     left: 0;
     min-width: 220px;
     background-color: #ffffff;
     box-shadow: 0 12px 32px -4px rgba(15, 23, 42, 0.12), 0 4px 12px -2px rgba(15, 23, 42, 0.06);
-    border-radius: 8px;
     padding: 8px 0;
     margin: 0;
     list-style: none;
@@ -244,40 +341,99 @@
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transform: translateY(10px);
+    transform: translateY(6px);
     transition: opacity var(--ua-nav-transition-speed) ease,
                 visibility var(--ua-nav-transition-speed) ease,
                 transform var(--ua-nav-transition-speed) cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Open on hover (Desktop) */
-.ua-nav-menu-wrapper:not(.ua-mobile-mode) .ua-nav-item:hover > .ua-sub-menu,
-.ua-nav-menu-wrapper:not(.ua-mobile-mode) .ua-nav-item.ua-sub-open > .ua-sub-menu {
+/* Level 1 Dropdown Vertical Hover Bridge */
+.ua-desktop-nav > .ua-nav-list > .ua-nav-item > .ua-sub-menu::before {
+    content: '';
+    position: absolute;
+    top: calc(-1 * var(--ua-nav-submenu-offset, 0px) - 6px);
+    left: 0;
+    width: 100%;
+    height: calc(var(--ua-nav-submenu-offset, 0px) + 8px);
+    background: transparent;
+    pointer-events: auto;
+}
+
+/* Open Level 1 on hover (Desktop) */
+.ua-trigger-hover .ua-desktop-nav > .ua-nav-list > .ua-nav-item:hover > .ua-sub-menu,
+.ua-nav-menu-wrapper:not(.ua-trigger-click) .ua-desktop-nav > .ua-nav-list > .ua-nav-item:hover > .ua-sub-menu,
+.ua-desktop-nav > .ua-nav-list > .ua-nav-item.ua-sub-open > .ua-sub-menu {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
     transform: translateY(0);
 }
 
-/* Multi-level nested flyouts (Level 2+) */
-.ua-sub-menu .ua-sub-menu {
-    top: -8px;
-    left: calc(100% + 4px);
-    transform: translateX(10px);
+/* -------------------------------------------------------------
+ * 4.1 Nested Multi-Level Flyouts (Level 2, Level 3, Level 4...)
+ * Exactly matching user reference design: flush with top of item, opens to the right
+ * ------------------------------------------------------------- */
+.ua-desktop-nav .ua-sub-menu .ua-sub-menu {
+    top: 0;
+    left: calc(100% + var(--ua-nav-nested-offset, 2px));
+    margin-top: 0;
+    margin-left: 0;
+    transform: none;
 }
 
-.ua-nav-menu-wrapper:not(.ua-mobile-mode) .ua-sub-menu .ua-nav-item:hover > .ua-sub-menu,
-.ua-nav-menu-wrapper:not(.ua-mobile-mode) .ua-sub-menu .ua-nav-item.ua-sub-open > .ua-sub-menu {
+/* Seamless Horizontal Hover Bridge spanning the flyout gap */
+.ua-desktop-nav .ua-sub-menu .ua-sub-menu::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    bottom: -12px;
+    left: calc(-1 * var(--ua-nav-nested-offset, 2px) - 24px);
+    width: calc(var(--ua-nav-nested-offset, 2px) + 28px);
+    height: auto;
+    background: transparent;
+    pointer-events: auto;
+}
+
+/* Open Nested Flyouts on hover (Level 2+) */
+.ua-trigger-hover .ua-desktop-nav .ua-sub-menu .ua-nav-item:hover > .ua-sub-menu,
+.ua-nav-menu-wrapper:not(.ua-trigger-click) .ua-desktop-nav .ua-sub-menu .ua-nav-item:hover > .ua-sub-menu,
+.ua-desktop-nav .ua-sub-menu .ua-nav-item.ua-sub-open > .ua-sub-menu {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
-    transform: translateX(0);
+    transform: none;
+}
+
+/* Auto-flip nested submenu to the Left when near screen edge */
+.ua-desktop-nav .ua-sub-menu .ua-sub-menu.ua-flyout-left {
+    left: auto;
+    right: calc(100% + var(--ua-nav-nested-offset, 2px));
+}
+.ua-desktop-nav .ua-sub-menu .ua-sub-menu.ua-flyout-left::before {
+    left: auto;
+    right: calc(-1 * var(--ua-nav-nested-offset, 2px) - 24px);
+    width: calc(var(--ua-nav-nested-offset, 2px) + 28px);
+}
+
+/* Stacking Order: Nested hover levels always stay on top */
+.ua-desktop-nav .ua-nav-item:hover {
+    z-index: 50;
+}
+.ua-desktop-nav .ua-sub-menu .ua-nav-item:hover {
+    z-index: 100;
+}
+.ua-desktop-nav .ua-sub-menu .ua-sub-menu .ua-nav-item:hover {
+    z-index: 150;
+}
+.ua-desktop-nav .ua-sub-menu .ua-sub-menu .ua-sub-menu .ua-nav-item:hover {
+    z-index: 200;
 }
 
 /* Submenu Items & Links */
 .ua-sub-menu .ua-nav-item {
     display: block;
     width: 100%;
+    position: relative;
 }
 
 .ua-sub-menu .ua-nav-link {
@@ -285,14 +441,18 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 9px 20px;
+    padding: 10px 20px;
     font-size: 14px;
     color: #334155;
     background-color: transparent;
 }
 
+/* Parent item stays highlighted while child flyout is active/hovered */
 .ua-sub-menu .ua-nav-link:hover,
-.ua-sub-menu .ua-nav-item.current-menu-item > .ua-nav-link {
+.ua-sub-menu .ua-nav-item:hover > .ua-nav-link,
+.ua-sub-menu .ua-nav-item.ua-sub-open > .ua-nav-link,
+.ua-sub-menu .ua-nav-item.current-menu-item > .ua-nav-link,
+.ua-sub-menu .ua-nav-item.current-menu-parent > .ua-nav-link {
     background-color: #f8fafc;
     color: #4f46e5;
 }
@@ -372,7 +532,6 @@
     overflow: hidden;
     background-color: #ffffff;
     box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.1);
-    border-radius: 8px;
     margin-top: 12px;
 }
 
@@ -405,31 +564,89 @@
 /* Mobile Nested Submenu Accordions */
 .ua-mobile-dropdown .ua-sub-menu,
 .ua-nav-drawer .ua-sub-menu {
-    position: static;
-    opacity: 1;
-    visibility: visible;
+    position: static !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important; /* CRITICAL: Enables clicks on nested items */
     display: none;
-    box-shadow: none;
-    border-radius: 0;
-    transform: none;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    transform: none !important;
     padding: 0;
+    width: 100% !important;
+    min-width: 100% !important;
+    left: auto !important;
+    top: auto !important;
+    right: auto !important;
     background-color: #f8fafc;
 }
 
-.ua-mobile-dropdown .ua-sub-menu.ua-sub-expanded,
-.ua-nav-drawer .ua-sub-menu.ua-sub-expanded {
-    display: block;
+.ua-mobile-dropdown .ua-nav-link,
+.ua-nav-drawer .ua-nav-link {
+    pointer-events: auto !important;
+    cursor: pointer;
 }
 
-.ua-mobile-dropdown .ua-sub-menu .ua-nav-link,
-.ua-nav-drawer .ua-sub-menu .ua-nav-link {
+.ua-mobile-dropdown .ua-sub-indicator,
+.ua-nav-drawer .ua-sub-indicator {
+    margin-left: auto;
+    padding-left: 12px;
+    pointer-events: auto !important;
+    transition: transform 0.25s ease;
+}
+
+/* Top-level down arrow rotates 180deg (points UP) */
+.ua-mobile-dropdown .ua-nav-top-item.ua-sub-open > .ua-nav-link > .ua-sub-indicator,
+.ua-nav-drawer .ua-nav-top-item.ua-sub-open > .ua-nav-link > .ua-sub-indicator {
+    transform: rotate(180deg) !important;
+}
+
+/* Nested right arrow rotates 90deg (points DOWN) */
+.ua-mobile-dropdown .ua-nav-item:not(.ua-nav-top-item).ua-sub-open > .ua-nav-link > .ua-sub-indicator,
+.ua-nav-drawer .ua-nav-item:not(.ua-nav-top-item).ua-sub-open > .ua-nav-link > .ua-sub-indicator {
+    transform: rotate(90deg) !important;
+}
+
+/* Multi-level indentation & alternating background hierarchy */
+.ua-mobile-dropdown .ua-sub-level-0,
+.ua-nav-drawer .ua-sub-level-0 {
+    background-color: #f8fafc;
+}
+.ua-mobile-dropdown .ua-sub-level-1,
+.ua-nav-drawer .ua-sub-level-1 {
+    background-color: #f1f5f9;
+}
+.ua-mobile-dropdown .ua-sub-level-2,
+.ua-nav-drawer .ua-sub-level-2 {
+    background-color: #e2e8f0;
+}
+.ua-mobile-dropdown .ua-sub-level-3,
+.ua-nav-drawer .ua-sub-level-3 {
+    background-color: #cbd5e1;
+}
+
+.ua-mobile-dropdown .ua-sub-level-0 > .ua-nav-item > .ua-nav-link,
+.ua-nav-drawer .ua-sub-level-0 > .ua-nav-item > .ua-nav-link {
     padding-left: 36px;
     font-size: 14px;
 }
 
-.ua-mobile-dropdown .ua-sub-menu .ua-sub-menu .ua-nav-link,
-.ua-nav-drawer .ua-sub-menu .ua-sub-menu .ua-nav-link {
+.ua-mobile-dropdown .ua-sub-level-1 > .ua-nav-item > .ua-nav-link,
+.ua-nav-drawer .ua-sub-level-1 > .ua-nav-item > .ua-nav-link {
     padding-left: 52px;
+    font-size: 13.5px;
+}
+
+.ua-mobile-dropdown .ua-sub-level-2 > .ua-nav-item > .ua-nav-link,
+.ua-nav-drawer .ua-sub-level-2 > .ua-nav-item > .ua-nav-link {
+    padding-left: 68px;
+    font-size: 13px;
+}
+
+.ua-mobile-dropdown .ua-sub-level-3 > .ua-nav-item > .ua-nav-link,
+.ua-nav-drawer .ua-sub-level-3 > .ua-nav-item > .ua-nav-link {
+    padding-left: 84px;
+    font-size: 12.5px;
 }
 
 /* -------------------------------------------------------------

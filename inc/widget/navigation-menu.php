@@ -178,10 +178,10 @@ class Navigation_Menu extends Base {
         $this->add_responsive_control(
             'ua_nav_align',
             [
-                'label'     => esc_html__( 'Alignment', 'ultraaddons-elementor-lite' ),
-                'type'      => Controls_Manager::CHOOSE,
-                'default'   => 'left',
-                'options'   => [
+                'label'                => esc_html__( 'Alignment', 'ultraaddons-elementor-lite' ),
+                'type'                 => Controls_Manager::CHOOSE,
+                'default'              => 'left',
+                'options'              => [
                     'left' => [
                         'title' => esc_html__( 'Left', 'ultraaddons-elementor-lite' ),
                         'icon'  => 'eicon-h-align-left',
@@ -199,7 +199,18 @@ class Navigation_Menu extends Base {
                         'icon'  => 'eicon-h-align-stretch',
                     ],
                 ],
-                'prefix_class' => 'ua-nav-align-',
+                'prefix_class'         => 'ua-nav-align-%s',
+                'selectors_dictionary' => [
+                    'left'    => 'flex-start',
+                    'center'  => 'center',
+                    'right'   => 'flex-end',
+                    'justify' => 'space-between',
+                ],
+                'selectors'            => [
+                    '{{WRAPPER}} .ua-nav-menu-container' => 'justify-content: {{VALUE}} !important;',
+                    '{{WRAPPER}}'                        => 'width: 100%; flex-grow: 1;',
+                    '{{WRAPPER}} .elementor-widget-container' => 'width: 100%;',
+                ],
             ]
         );
 
@@ -311,28 +322,7 @@ class Navigation_Menu extends Base {
             ]
         );
 
-        $this->add_responsive_control(
-            'ua_nav_submenu_offset',
-            [
-                'label'      => esc_html__( 'Submenu Top Offset (px)', 'ultraaddons-elementor-lite' ),
-                'type'       => Controls_Manager::SLIDER,
-                'size_units' => [ 'px' ],
-                'range'      => [
-                    'px' => [
-                        'min'  => 0,
-                        'max'  => 50,
-                        'step' => 1,
-                    ],
-                ],
-                'default'    => [
-                    'unit' => 'px',
-                    'size' => 8,
-                ],
-                'selectors'  => [
-                    '{{WRAPPER}}' => '--ua-nav-submenu-offset: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
+
 
         $this->end_controls_section();
     }
@@ -500,7 +490,7 @@ class Navigation_Menu extends Base {
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#4f46e5',
                 'selectors' => [
-                    '{{WRAPPER}} .ua-nav-link:hover, {{WRAPPER}} .ua-nav-item:hover > .ua-nav-link' => 'color: {{VALUE}};',
+                    '{{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-link:hover, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item:hover > .ua-nav-link' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -533,7 +523,20 @@ class Navigation_Menu extends Base {
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#4f46e5',
                 'selectors' => [
-                    '{{WRAPPER}} .ua-nav-item.current-menu-item > .ua-nav-link, {{WRAPPER}} .ua-nav-item.current-menu-parent > .ua-nav-link' => 'color: {{VALUE}};',
+                    '{{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current-menu-item > .ua-nav-link, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current_page_item > .ua-nav-link, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current-menu-parent > .ua-nav-link, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current-menu-ancestor > .ua-nav-link, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.ua-active-item > .ua-nav-link, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.ua-active-item:hover > .ua-nav-link, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current-menu-item:hover > .ua-nav-link' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current-menu-item > .ua-nav-link .ua-nav-title, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current_page_item > .ua-nav-link .ua-nav-title, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.ua-active-item > .ua-nav-link .ua-nav-title' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current-menu-item > .ua-nav-link .ua-sub-indicator, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current_page_item > .ua-nav-link .ua-sub-indicator, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.ua-active-item > .ua-nav-link .ua-sub-indicator' => 'color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'ua_nav_item_bg_active',
+            [
+                'label'     => esc_html__( 'Background Color', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current-menu-item > .ua-nav-link, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current_page_item > .ua-nav-link, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current-menu-parent > .ua-nav-link, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current-menu-ancestor > .ua-nav-link, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.ua-active-item > .ua-nav-link, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.ua-active-item:hover > .ua-nav-link, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current-menu-item:hover > .ua-nav-link' => 'background-color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -573,7 +576,7 @@ class Navigation_Menu extends Base {
                     'size' => 4,
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .ua-desktop-nav .ua-nav-item:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .ua-desktop-nav > .ua-nav-list > .ua-nav-item:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}};',
                     '{{WRAPPER}}.ua-nav-layout-vertical .ua-desktop-nav .ua-nav-item:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}}; margin-right: 0;',
                 ],
             ]
@@ -603,6 +606,49 @@ class Navigation_Menu extends Base {
                 'default'   => '#4f46e5',
                 'selectors' => [
                     '{{WRAPPER}}' => '--ua-nav-pointer-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'ua_nav_pointer_text_color',
+            [
+                'label'     => esc_html__( 'Pill Text Color', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::COLOR,
+                'default'   => '#ffffff',
+                'condition' => [
+                    'ua_nav_pointer' => 'pill',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}}.ua-pointer-pill .ua-nav-top-item:hover > .ua-nav-link, {{WRAPPER}}.ua-pointer-pill .ua-nav-top-item.current-menu-item > .ua-nav-link, {{WRAPPER}}.ua-pointer-pill .ua-nav-top-item.ua-sub-open > .ua-nav-link, {{WRAPPER}}.ua-pointer-pill .ua-nav-top-item.current-menu-parent > .ua-nav-link, {{WRAPPER}}.ua-pointer-pill .ua-nav-top-item.ua-active-item > .ua-nav-link' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}}.ua-pointer-pill .ua-nav-top-item:hover > .ua-nav-link .ua-nav-title, {{WRAPPER}}.ua-pointer-pill .ua-nav-top-item.current-menu-item > .ua-nav-link .ua-nav-title, {{WRAPPER}}.ua-pointer-pill .ua-nav-top-item.ua-sub-open > .ua-nav-link .ua-nav-title, {{WRAPPER}}.ua-pointer-pill .ua-nav-top-item.current-menu-parent > .ua-nav-link .ua-nav-title, {{WRAPPER}}.ua-pointer-pill .ua-nav-top-item.ua-active-item > .ua-nav-link .ua-nav-title' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}}.ua-pointer-pill .ua-nav-top-item:hover > .ua-nav-link .ua-sub-indicator, {{WRAPPER}}.ua-pointer-pill .ua-nav-top-item.current-menu-item > .ua-nav-link .ua-sub-indicator, {{WRAPPER}}.ua-pointer-pill .ua-nav-top-item.ua-sub-open > .ua-nav-link .ua-sub-indicator, {{WRAPPER}}.ua-pointer-pill .ua-nav-top-item.current-menu-parent > .ua-nav-link .ua-sub-indicator, {{WRAPPER}}.ua-pointer-pill .ua-nav-top-item.ua-active-item > .ua-nav-link .ua-sub-indicator' => 'color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'ua_nav_pointer_pill_radius',
+            [
+                'label'      => esc_html__( 'Pill Border Radius (px)', 'ultraaddons-elementor-lite' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range'      => [
+                    'px' => [
+                        'min'  => 0,
+                        'max'  => 50,
+                        'step' => 1,
+                    ],
+                ],
+                'default'    => [
+                    'unit' => 'px',
+                    'size' => 20,
+                ],
+                'condition'  => [
+                    'ua_nav_pointer' => 'pill',
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}}' => '--ua-nav-pointer-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -705,7 +751,7 @@ class Navigation_Menu extends Base {
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#4f46e5',
                 'selectors' => [
-                    '{{WRAPPER}} .ua-sub-menu .ua-nav-link:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .ua-sub-menu .ua-nav-link:hover, {{WRAPPER}} .ua-sub-menu .ua-nav-item:hover > .ua-nav-link, {{WRAPPER}} .ua-sub-menu .ua-nav-item.ua-sub-open > .ua-nav-link' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -717,7 +763,53 @@ class Navigation_Menu extends Base {
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#f8fafc',
                 'selectors' => [
-                    '{{WRAPPER}} .ua-sub-menu .ua-nav-link:hover' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .ua-sub-menu .ua-nav-link:hover, {{WRAPPER}} .ua-sub-menu .ua-nav-item:hover > .ua-nav-link, {{WRAPPER}} .ua-sub-menu .ua-nav-item.ua-sub-open > .ua-nav-link' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'ua_nav_submenu_offset',
+            [
+                'label'      => esc_html__( 'Submenu Top Distance (px)', 'ultraaddons-elementor-lite' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range'      => [
+                    'px' => [
+                        'min'  => 0,
+                        'max'  => 40,
+                        'step' => 1,
+                    ],
+                ],
+                'default'    => [
+                    'unit' => 'px',
+                    'size' => 0,
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}}' => '--ua-nav-submenu-offset: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'ua_nav_nested_offset',
+            [
+                'label'      => esc_html__( 'Nested Submenu Gap (px)', 'ultraaddons-elementor-lite' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range'      => [
+                    'px' => [
+                        'min'  => 0,
+                        'max'  => 30,
+                        'step' => 1,
+                    ],
+                ],
+                'default'    => [
+                    'unit' => 'px',
+                    'size' => 2,
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}}' => '--ua-nav-nested-offset: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -751,13 +843,6 @@ class Navigation_Menu extends Base {
                 'label'      => esc_html__( 'Border Radius', 'ultraaddons-elementor-lite' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
-                'default'    => [
-                    'top'    => '8',
-                    'right'  => '8',
-                    'bottom' => '8',
-                    'left'   => '8',
-                    'unit'   => 'px',
-                ],
                 'selectors'  => [
                     '{{WRAPPER}} .ua-sub-menu' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
@@ -846,9 +931,13 @@ class Navigation_Menu extends Base {
         $toggle_txt = ! empty( $settings['ua_nav_toggle_text'] ) ? $settings['ua_nav_toggle_text'] : '';
         $drawer_tit = ! empty( $settings['ua_nav_drawer_title'] ) ? $settings['ua_nav_drawer_title'] : esc_html__( 'Navigation Menu', 'ultraaddons-elementor-lite' );
 
+        $align      = ! empty( $settings['ua_nav_align'] ) ? $settings['ua_nav_align'] : 'left';
+
         $wrapper_classes = [
             'ua-nav-menu-wrapper',
             'ua-nav-layout-' . sanitize_html_class( $layout ),
+            'ua-trigger-' . sanitize_html_class( $trigger ),
+            'ua-nav-align-' . sanitize_html_class( $align ),
         ];
 
         if ( 'none' !== $pointer ) {
@@ -882,7 +971,7 @@ class Navigation_Menu extends Base {
                         'container'       => false,
                         'menu_class'      => 'ua-nav-list',
                         'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-                        'depth'           => 4,
+                        'depth'           => 0,
                         'walker'          => new Ultra_Nav_Walker(),
                         'fallback_cb'     => false,
                     ] );
@@ -922,7 +1011,7 @@ class Navigation_Menu extends Base {
                                 'container'   => false,
                                 'menu_class'  => 'ua-nav-list',
                                 'items_wrap'  => '<ul class="%2$s">%3$s</ul>',
-                                'depth'       => 4,
+                                'depth'       => 0,
                                 'walker'      => new Ultra_Nav_Walker(),
                                 'fallback_cb' => false,
                             ] );
@@ -938,7 +1027,7 @@ class Navigation_Menu extends Base {
                             'container'   => false,
                             'menu_class'  => 'ua-nav-list',
                             'items_wrap'  => '<ul class="%2$s">%3$s</ul>',
-                            'depth'       => 4,
+                            'depth'       => 0,
                             'walker'      => new Ultra_Nav_Walker(),
                             'fallback_cb' => false,
                         ] );
@@ -956,6 +1045,8 @@ class Navigation_Menu extends Base {
  * Custom Semantic Nav Walker for UltraAddons Navigation Menu
  */
 class Ultra_Nav_Walker extends \Walker_Nav_Menu {
+
+    protected $first_item_marked = false;
 
     public function start_lvl( &$output, $depth = 0, $args = null ) {
         $indent = str_repeat( "\t", $depth );
@@ -975,6 +1066,15 @@ class Ultra_Nav_Walker extends \Walker_Nav_Menu {
         $classes[] = 'menu-item-' . (int) $item->ID;
         if ( 0 === $depth ) {
             $classes[] = 'ua-nav-top-item';
+
+            $is_elementor = false;
+            if ( class_exists( '\Elementor\Plugin' ) && isset( \Elementor\Plugin::$instance ) ) {
+                $is_elementor = ( \Elementor\Plugin::$instance->editor->is_edit_mode() || \Elementor\Plugin::$instance->preview->is_preview_mode() );
+            }
+            if ( ! $this->first_item_marked && $is_elementor ) {
+                $classes[] = 'ua-first-item';
+                $this->first_item_marked = true;
+            }
         }
 
         $has_children = in_array( 'menu-item-has-children', $classes, true );
@@ -1004,7 +1104,13 @@ class Ultra_Nav_Walker extends \Walker_Nav_Menu {
         $item_output .= ( isset( $args->link_before ) ? $args->link_before : '' ) . '<span class="ua-nav-title">' . $title . '</span>' . ( isset( $args->link_after ) ? $args->link_after : '' );
 
         if ( $has_children ) {
-            $item_output .= '<span class="ua-sub-indicator" aria-hidden="true"><svg width="10" height="6" viewBox="0 0 10 6" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
+            if ( 0 === $depth ) {
+                // Top-level dropdown down chevron
+                $item_output .= '<span class="ua-sub-indicator ua-indicator-down" aria-hidden="true"><svg width="10" height="6" viewBox="0 0 10 6" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
+            } else {
+                // Nested flyout right chevron
+                $item_output .= '<span class="ua-sub-indicator ua-indicator-right" aria-hidden="true"><svg width="6" height="10" viewBox="0 0 6 10" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M1 9L5 5L1 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
+            }
         }
 
         $item_output .= '</a>';
