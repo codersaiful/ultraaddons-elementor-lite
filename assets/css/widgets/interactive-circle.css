@@ -1,0 +1,477 @@
+/**
+ * UltraAddons - Interactive Circle Widget Styles
+ *
+ * Fully dynamic circular layout styled with CSS custom properties and 
+ * performant GPU-accelerated transforms. Zero static positioning bloat.
+ *
+ * @package UltraAddons
+ * @since 1.1.8
+ */
+
+:root {
+    --ua-ic-size: 500px;
+    --ua-ic-center-size: 240px;
+    --ua-ic-node-size: 60px;
+    --ua-ic-ring-border-color: rgba(99, 102, 241, 0.2);
+    --ua-ic-ring-border-width: 2px;
+    --ua-ic-node-bg: #ffffff;
+    --ua-ic-node-color: #4f46e5;
+    --ua-ic-node-active-bg: #4f46e5;
+    --ua-ic-node-active-color: #ffffff;
+    --ua-ic-spoke-color: rgba(99, 102, 241, 0.25);
+    --ua-ic-spoke-active-color: #4f46e5;
+    --ua-ic-rot-speed: 25s;
+}
+
+/* ==========================================================================
+   1. Widget Container & Orbit Stage
+   ========================================================================== */
+.ua-interactive-circle-wrap {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: visible;
+}
+
+.ua-interactive-circle-wrap *,
+.ua-interactive-circle-wrap *::before,
+.ua-interactive-circle-wrap *::after {
+    box-sizing: border-box;
+}
+
+.ua-ic-orbit-stage {
+    position: relative;
+    width: var(--ua-ic-size, 500px);
+    height: var(--ua-ic-size, 500px);
+    max-width: 100%;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    touch-action: manipulation;
+}
+
+/* Half Moon preset adjustment */
+.ua-interactive-circle-wrap.ua-ic-preset-half_moon .ua-ic-orbit-stage {
+    height: calc(var(--ua-ic-size, 500px) / 2 + 60px);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    align-items: flex-end;
+    padding-bottom: 30px;
+}
+
+/* Orbit background ring */
+.ua-ic-orbit-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    border: var(--ua-ic-ring-border-width, 2px) solid var(--ua-ic-ring-border-color, rgba(99, 102, 241, 0.2));
+    pointer-events: none;
+    z-index: 1;
+    transition: border-color 0.3s ease;
+}
+
+.ua-interactive-circle-wrap.ua-ic-preset-half_moon .ua-ic-orbit-ring {
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+}
+
+.ua-interactive-circle-wrap.ua-ic-preset-minimal_flow .ua-ic-orbit-ring {
+    border-style: dashed;
+    border-color: rgba(148, 163, 184, 0.35);
+}
+
+/* Spoke SVG / Lines layer */
+.ua-ic-spoke-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+    overflow: visible;
+}
+
+.ua-ic-spoke-line {
+    stroke: var(--ua-ic-spoke-color, rgba(99, 102, 241, 0.25));
+    stroke-width: 1.5;
+    stroke-dasharray: 4 4;
+    transition: stroke 0.35s ease, stroke-width 0.35s ease, opacity 0.35s ease;
+}
+
+.ua-ic-spoke-line.ua-ic-spoke-active {
+    stroke: var(--ua-ic-spoke-active-color, #4f46e5);
+    stroke-width: 2.5;
+    stroke-dasharray: none;
+    filter: drop-shadow(0 0 6px var(--ua-ic-spoke-active-color, #4f46e5));
+}
+
+/* Orbit continuous rotation (optional feature) */
+.ua-ic-orbit-stage.ua-ic-orbiting {
+    animation: uaOrbitRotate var(--ua-ic-rot-speed, 25s) linear infinite;
+}
+
+.ua-ic-orbit-stage.ua-ic-orbiting:hover {
+    animation-play-state: paused;
+}
+
+.ua-ic-orbit-stage.ua-ic-orbiting .ua-ic-node-btn {
+    animation: uaCounterRotate var(--ua-ic-rot-speed, 25s) linear infinite;
+}
+
+.ua-ic-orbit-stage.ua-ic-orbiting:hover .ua-ic-node-btn {
+    animation-play-state: paused;
+}
+
+@keyframes uaOrbitRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes uaCounterRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+}
+
+/* ==========================================================================
+   2. Node Items & Buttons
+   ========================================================================== */
+.ua-ic-nodes-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 4;
+}
+
+.ua-ic-node-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: var(--ua-ic-node-size, 60px);
+    height: var(--ua-ic-node-size, 60px);
+    margin-top: calc(-1 * var(--ua-ic-node-size, 60px) / 2);
+    margin-left: calc(-1 * var(--ua-ic-node-size, 60px) / 2);
+    pointer-events: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.ua-ic-node-btn {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: var(--ua-ic-node-bg, #ffffff);
+    color: var(--ua-ic-node-color, #4f46e5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    outline: none;
+}
+
+.ua-ic-node-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 24px rgba(79, 70, 229, 0.22);
+}
+
+.ua-ic-node-item.ua-ic-active .ua-ic-node-btn {
+    background-color: var(--ua-ic-node-active-bg, #4f46e5);
+    color: var(--ua-ic-node-active-color, #ffffff);
+    transform: scale(1.14);
+    box-shadow: 0 10px 28px rgba(79, 70, 229, 0.36);
+}
+
+.ua-ic-node-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    line-height: 1;
+    transition: transform 0.3s ease;
+}
+
+.ua-ic-node-icon svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
+.ua-ic-node-num {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+/* Node label / title tooltip underneath or floating */
+.ua-ic-node-title {
+    position: absolute;
+    bottom: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 12px;
+    font-weight: 600;
+    color: #475569;
+    pointer-events: none;
+    transition: color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.85;
+}
+
+.ua-ic-node-item.ua-ic-active .ua-ic-node-title {
+    color: #4f46e5;
+    font-weight: 700;
+    opacity: 1;
+    transform: translateX(-50%) translateY(2px);
+}
+
+/* Radar pulse animation for active node */
+.ua-ic-node-item.ua-ic-active .ua-ic-pulse::before,
+.ua-ic-node-item.ua-ic-active .ua-ic-pulse::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid var(--ua-ic-node-active-bg, #4f46e5);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    animation: uaPulseWave 2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+}
+
+.ua-ic-node-item.ua-ic-active .ua-ic-pulse::after {
+    animation-delay: 0.8s;
+}
+
+@keyframes uaPulseWave {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.7);
+        opacity: 0;
+    }
+}
+
+/* ==========================================================================
+   3. Center Content Stage
+   ========================================================================== */
+.ua-ic-center-stage {
+    position: relative;
+    width: var(--ua-ic-center-size, 240px);
+    height: var(--ua-ic-center-size, 240px);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    z-index: 3;
+    overflow: hidden;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.ua-interactive-circle-wrap.ua-ic-preset-half_moon .ua-ic-center-stage {
+    margin-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.ua-ic-content-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: scale(0.92);
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.4s;
+}
+
+.ua-ic-content-item.ua-ic-active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: scale(1);
+}
+
+/* Transitions for content change */
+.ua-interactive-circle-wrap.ua-ic-trans-fade .ua-ic-content-item {
+    transform: none;
+}
+.ua-interactive-circle-wrap.ua-ic-trans-fade .ua-ic-content-item.ua-ic-active {
+    transform: none;
+}
+
+.ua-interactive-circle-wrap.ua-ic-trans-slide_up .ua-ic-content-item {
+    transform: translateY(20px);
+}
+.ua-interactive-circle-wrap.ua-ic-trans-slide_up .ua-ic-content-item.ua-ic-active {
+    transform: translateY(0);
+}
+
+.ua-interactive-circle-wrap.ua-ic-trans-flip .ua-ic-content-item {
+    transform: perspective(600px) rotateY(40deg);
+}
+.ua-interactive-circle-wrap.ua-ic-trans-flip .ua-ic-content-item.ua-ic-active {
+    transform: perspective(600px) rotateY(0deg);
+}
+
+/* Content Elements */
+.ua-ic-content-media {
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ua-ic-content-media img {
+    max-width: 60px;
+    max-height: 60px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.ua-ic-content-media i,
+.ua-ic-content-media svg {
+    font-size: 32px;
+    color: #4f46e5;
+}
+
+.ua-ic-content-subtitle {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #6366f1;
+    margin-bottom: 4px;
+}
+
+.ua-ic-content-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #1e293b;
+    margin: 0 0 8px 0;
+}
+
+.ua-ic-content-desc {
+    font-size: 13px;
+    line-height: 1.45;
+    color: #64748b;
+    margin: 0 0 12px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.ua-ic-content-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 9999px;
+    background-color: #4f46e5;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.25);
+}
+
+.ua-ic-content-btn:hover {
+    background-color: #4338ca;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   4. Responsive Styles
+   ========================================================================== */
+@media (max-width: 767px) {
+    .ua-ic-orbit-stage {
+        --ua-ic-size: 360px;
+        --ua-ic-center-size: 180px;
+        --ua-ic-node-size: 48px;
+    }
+    
+    .ua-ic-content-title {
+        font-size: 15px;
+    }
+
+    .ua-ic-content-desc {
+        font-size: 12px;
+        -webkit-line-clamp: 2;
+        margin-bottom: 8px;
+    }
+
+    .ua-ic-node-title {
+        font-size: 10px;
+        bottom: -22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ua-ic-orbit-stage {
+        --ua-ic-size: 310px;
+        --ua-ic-center-size: 155px;
+        --ua-ic-node-size: 42px;
+    }
+
+    .ua-ic-node-icon {
+        font-size: 16px;
+    }
+
+    .ua-ic-node-num {
+        font-size: 12px;
+    }
+
+    .ua-ic-content-title {
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+
+    .ua-ic-content-desc {
+        display: none; /* Hide long desc on very tiny screens for crisp layout */
+    }
+
+    .ua-ic-content-btn {
+        padding: 4px 10px;
+        font-size: 11px;
+    }
+}

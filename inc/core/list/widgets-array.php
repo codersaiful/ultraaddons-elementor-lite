@@ -819,6 +819,16 @@ $ultraaddons_widgetsArray = [
         ],
     ],
 
+    'Interactive_Circle'=> [
+        'name'      => __( 'Interactive Circle', 'ultraaddons-elementor-lite' ),
+        'is_pro'    => false,
+        'icon'      => 'ultraaddons eicon-circle-o',
+        'badge'     => 'New',
+        'cat'       => [
+            __( 'General', 'ultraaddons-elementor-lite' ),
+        ],
+    ],
+
 ];
 
 return apply_filters( 'ultraaddons/widgets/array', $ultraaddons_widgetsArray );
