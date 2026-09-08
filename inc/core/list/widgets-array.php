@@ -710,6 +710,16 @@ $ultraaddons_widgetsArray = [
             __( 'Header_Footer', 'ultraaddons-elementor-lite' ),
         ],
     ],
+    'Google_Map'=> [
+        'name'      => __( 'Google Map', 'ultraaddons-elementor-lite' ),
+        'is_pro'    => false,
+        'icon'      => 'eicon-google-maps',
+        'badge'     => 'new',
+        'cat'       => [
+            __( 'General', 'ultraaddons-elementor-lite' ),
+            __( 'Basic', 'ultraaddons-elementor-lite' ),
+        ],
+    ],
     'Formidable_Form'=> [
         'name'      => __( 'Formidable Form', 'ultraaddons-elementor-lite' ),
         'is_pro'   => false,

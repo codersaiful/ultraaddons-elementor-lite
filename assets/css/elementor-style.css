@@ -228,3 +228,19 @@ section.elementor-element.elementor-element-edit-mode.elementor-section.ua-condi
     content: "Restricted";
     
 }
+
+/* Google Map Widget Full Width inside Elementor Containers */
+.elementor-widget-ultraaddons-google-map {
+    width: 100% !important;
+}
+
+.elementor-widget-ultraaddons-google-map .elementor-widget-container {
+    width: 100% !important;
+}
+
+.elementor-widget-ultraaddons-google-map .ua-google-map-wrapper,
+.elementor-widget-ultraaddons-google-map .ua-gmap-container,
+.elementor-widget-ultraaddons-google-map .ua-gmap-canvas,
+.elementor-widget-ultraaddons-google-map .ua-gmap-iframe {
+    width: 100% !important;
+}
