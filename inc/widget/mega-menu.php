@@ -532,7 +532,7 @@ class Mega_Menu extends Base {
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#334155',
                 'selectors' => [
-                    '{{WRAPPER}} .ua-desktop-nav .ua-nav-top-item > .ua-nav-link' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .ua-desktop-nav .ua-nav-top-item > .ua-nav-link, {{WRAPPER}} .ua-desktop-nav .ua-nav-top-item > .ua-nav-link .ua-nav-title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -563,19 +563,19 @@ class Mega_Menu extends Base {
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#4f46e5',
                 'selectors' => [
-                    '{{WRAPPER}} .ua-desktop-nav .ua-nav-top-item:hover > .ua-nav-link' => 'color: {{VALUE}};',
+                    '{{WRAPPER}}' => '--ua-nav-item-hover-color: {{VALUE}};',
+                    '{{WRAPPER}} .ua-desktop-nav .ua-nav-top-item:hover > .ua-nav-link, {{WRAPPER}} .ua-desktop-nav .ua-nav-top-item:hover > .ua-nav-link .ua-nav-title, {{WRAPPER}} .ua-desktop-nav .ua-nav-top-item:hover > .ua-nav-link .ua-sub-indicator' => 'color: {{VALUE}};',
                 ],
             ]
         );
 
         $this->add_control(
-            'ua_nav_pointer_color',
+            'ua_nav_item_bg_hover',
             [
-                'label'     => esc_html__( 'Pointer / Hover Color', 'ultraaddons-elementor-lite' ),
+                'label'     => esc_html__( 'Background Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
-                'default'   => '#4f46e5',
                 'selectors' => [
-                    '{{WRAPPER}}' => '--ua-nav-pointer-color: {{VALUE}};',
+                    '{{WRAPPER}} .ua-desktop-nav .ua-nav-top-item:hover > .ua-nav-link' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -595,7 +595,21 @@ class Mega_Menu extends Base {
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#4f46e5',
                 'selectors' => [
-                    '{{WRAPPER}} .ua-nav-item.current-menu-item > .ua-nav-link, {{WRAPPER}} .ua-nav-item.ua-active-item > .ua-nav-link' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}}' => '--ua-nav-item-active-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .ua-nav-item.current-menu-item > .ua-nav-link, {{WRAPPER}} .ua-nav-item.current_page_item > .ua-nav-link, {{WRAPPER}} .ua-nav-item.current-menu-parent > .ua-nav-link, {{WRAPPER}} .ua-nav-item.current-menu-ancestor > .ua-nav-link, {{WRAPPER}} .ua-nav-item.ua-active-item > .ua-nav-link, {{WRAPPER}} .ua-nav-item.ua-active-item:hover > .ua-nav-link, {{WRAPPER}} .ua-nav-item.current-menu-item:hover > .ua-nav-link, {{WRAPPER}} .ua-nav-item.current_page_item:hover > .ua-nav-link' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .ua-nav-item.current-menu-item > .ua-nav-link .ua-nav-title, {{WRAPPER}} .ua-nav-item.current_page_item > .ua-nav-link .ua-nav-title, {{WRAPPER}} .ua-nav-item.current-menu-parent > .ua-nav-link .ua-nav-title, {{WRAPPER}} .ua-nav-item.current-menu-ancestor > .ua-nav-link .ua-nav-title, {{WRAPPER}} .ua-nav-item.ua-active-item > .ua-nav-link .ua-nav-title, {{WRAPPER}} .ua-nav-item.ua-active-item:hover > .ua-nav-link .ua-nav-title, {{WRAPPER}} .ua-nav-item.current-menu-item:hover > .ua-nav-link .ua-nav-title, {{WRAPPER}} .ua-nav-item.current_page_item:hover > .ua-nav-link .ua-nav-title' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .ua-nav-item.current-menu-item > .ua-nav-link .ua-sub-indicator, {{WRAPPER}} .ua-nav-item.current_page_item > .ua-nav-link .ua-sub-indicator, {{WRAPPER}} .ua-nav-item.current-menu-parent > .ua-nav-link .ua-sub-indicator, {{WRAPPER}} .ua-nav-item.current-menu-ancestor > .ua-nav-link .ua-sub-indicator, {{WRAPPER}} .ua-nav-item.ua-active-item > .ua-nav-link .ua-sub-indicator' => 'color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'ua_nav_item_bg_active',
+            [
+                'label'     => esc_html__( 'Background Color', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .ua-nav-item.current-menu-item > .ua-nav-link, {{WRAPPER}} .ua-nav-item.current_page_item > .ua-nav-link, {{WRAPPER}} .ua-nav-item.current-menu-parent > .ua-nav-link, {{WRAPPER}} .ua-nav-item.current-menu-ancestor > .ua-nav-link, {{WRAPPER}} .ua-nav-item.ua-active-item > .ua-nav-link' => 'background-color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -611,15 +625,248 @@ class Mega_Menu extends Base {
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em' ],
                 'default'    => [
-                    'top'      => 14,
-                    'right'    => 18,
-                    'bottom'   => 14,
-                    'left'     => 18,
+                    'top'      => 10,
+                    'right'    => 8,
+                    'bottom'   => 10,
+                    'left'     => 8,
                     'isLinked' => false,
                 ],
                 'separator'  => 'before',
                 'selectors'  => [
                     '{{WRAPPER}} .ua-desktop-nav .ua-nav-top-item > .ua-nav-link' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'ua_nav_item_space_between',
+            [
+                'label'      => esc_html__( 'Space Between Items', 'ultraaddons-elementor-lite' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', 'em', 'rem' ],
+                'range'      => [
+                    'px' => [
+                        'min'  => 0,
+                        'max'  => 100,
+                        'step' => 1,
+                    ],
+                    'em' => [
+                        'min'  => 0,
+                        'max'  => 10,
+                        'step' => 0.1,
+                    ],
+                ],
+                'default'    => [
+                    'unit' => 'px',
+                    'size' => 8,
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .ua-desktop-nav > .ua-nav-list' => 'column-gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}}.ua-layout-vertical .ua-desktop-nav > .ua-nav-list, {{WRAPPER}}.ua-nav-layout-vertical .ua-desktop-nav > .ua-nav-list' => 'row-gap: {{SIZE}}{{UNIT}}; column-gap: 0;',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // -------------------------------------------------------------
+        // Pointer Styles (Thickness, Distance/Offset, Radius)
+        // -------------------------------------------------------------
+        $this->start_controls_section(
+            '_section_ua_nav_style_pointer',
+            [
+                'label'     => esc_html__( 'Pointer Style', 'ultraaddons-elementor-lite' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'ua_nav_pointer!' => 'none',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'ua_nav_pointer_color',
+            [
+                'label'     => esc_html__( 'Pointer Color', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::COLOR,
+                'default'   => '#4f46e5',
+                'condition' => [
+                    'ua_nav_pointer!' => 'none',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}}' => '--ua-nav-pointer-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'ua_nav_pointer_text_color',
+            [
+                'label'     => esc_html__( 'Pill Text Color', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::COLOR,
+                'default'   => '#ffffff',
+                'condition' => [
+                    'ua_nav_pointer' => 'pill',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}}.ua-pointer-pill .ua-nav-top-item:hover > .ua-nav-link, {{WRAPPER}}.ua-pointer-pill .ua-nav-top-item.current-menu-item > .ua-nav-link, {{WRAPPER}}.ua-pointer-pill .ua-nav-top-item.ua-sub-open > .ua-nav-link, {{WRAPPER}}.ua-pointer-pill .ua-nav-top-item.current-menu-parent > .ua-nav-link, {{WRAPPER}}.ua-pointer-pill .ua-nav-top-item.ua-active-item > .ua-nav-link' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}}.ua-pointer-pill .ua-nav-top-item:hover > .ua-nav-link .ua-nav-title, {{WRAPPER}}.ua-pointer-pill .ua-nav-top-item.current-menu-item > .ua-nav-link .ua-nav-title, {{WRAPPER}}.ua-pointer-pill .ua-nav-top-item.ua-sub-open > .ua-nav-link .ua-nav-title, {{WRAPPER}}.ua-pointer-pill .ua-nav-top-item.current-menu-parent > .ua-nav-link .ua-nav-title, {{WRAPPER}}.ua-pointer-pill .ua-nav-top-item.ua-active-item > .ua-nav-link .ua-nav-title' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}}.ua-pointer-pill .ua-nav-top-item:hover > .ua-nav-link .ua-sub-indicator, {{WRAPPER}}.ua-pointer-pill .ua-nav-top-item.current-menu-item > .ua-nav-link .ua-sub-indicator, {{WRAPPER}}.ua-pointer-pill .ua-nav-top-item.ua-sub-open > .ua-nav-link .ua-sub-indicator, {{WRAPPER}}.ua-pointer-pill .ua-nav-top-item.current-menu-parent > .ua-nav-link .ua-sub-indicator, {{WRAPPER}}.ua-pointer-pill .ua-nav-top-item.ua-active-item > .ua-nav-link .ua-sub-indicator' => 'color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'ua_nav_pointer_pill_radius',
+            [
+                'label'      => esc_html__( 'Pill Border Radius (px)', 'ultraaddons-elementor-lite' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range'      => [
+                    'px' => [
+                        'min'  => 0,
+                        'max'  => 50,
+                        'step' => 1,
+                    ],
+                ],
+                'default'    => [
+                    'unit' => 'px',
+                    'size' => 20,
+                ],
+                'condition'  => [
+                    'ua_nav_pointer' => 'pill',
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}}' => '--ua-nav-pointer-radius: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'ua_nav_pointer_pill_padding_h',
+            [
+                'label'      => esc_html__( 'Pill Horizontal Padding (px)', 'ultraaddons-elementor-lite' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range'      => [
+                    'px' => [
+                        'min'  => 6,
+                        'max'  => 40,
+                        'step' => 1,
+                    ],
+                ],
+                'default'    => [
+                    'unit' => 'px',
+                    'size' => 14,
+                ],
+                'condition'  => [
+                    'ua_nav_pointer' => 'pill',
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}}' => '--ua-nav-pill-padding-h: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'ua_nav_pointer_pill_padding_v',
+            [
+                'label'      => esc_html__( 'Pill Vertical Padding (px)', 'ultraaddons-elementor-lite' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range'      => [
+                    'px' => [
+                        'min'  => 2,
+                        'max'  => 25,
+                        'step' => 1,
+                    ],
+                ],
+                'default'    => [
+                    'unit' => 'px',
+                    'size' => 8,
+                ],
+                'condition'  => [
+                    'ua_nav_pointer' => 'pill',
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}}' => '--ua-nav-pill-padding-v: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'ua_nav_pointer_pill_gap',
+            [
+                'label'      => esc_html__( 'Space Between Pills (px)', 'ultraaddons-elementor-lite' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range'      => [
+                    'px' => [
+                        'min'  => 0,
+                        'max'  => 40,
+                        'step' => 1,
+                    ],
+                ],
+                'default'    => [
+                    'unit' => 'px',
+                    'size' => 8,
+                ],
+                'condition'  => [
+                    'ua_nav_pointer' => 'pill',
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}}' => '--ua-nav-pill-gap: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'ua_nav_pointer_height',
+            [
+                'label'      => esc_html__( 'Pointer Line Thickness (px)', 'ultraaddons-elementor-lite' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range'      => [
+                    'px' => [
+                        'min'  => 1,
+                        'max'  => 8,
+                        'step' => 1,
+                    ],
+                ],
+                'default'    => [
+                    'unit' => 'px',
+                    'size' => 2,
+                ],
+                'condition'  => [
+                    'ua_nav_pointer' => [ 'underline', 'overline', 'double-line', 'framed' ],
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}}' => '--ua-nav-pointer-height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'ua_nav_pointer_offset',
+            [
+                'label'      => esc_html__( 'Pointer Distance / Offset (px)', 'ultraaddons-elementor-lite' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range'      => [
+                    'px' => [
+                        'min'  => 0,
+                        'max'  => 25,
+                        'step' => 1,
+                    ],
+                ],
+                'default'    => [
+                    'unit' => 'px',
+                    'size' => 4,
+                ],
+                'condition'  => [
+                    'ua_nav_pointer' => [ 'underline', 'overline', 'double-line' ],
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}}' => '--ua-nav-pointer-offset: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );

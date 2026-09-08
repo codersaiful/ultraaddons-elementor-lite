@@ -550,7 +550,8 @@ class Navigation_Menu extends Base {
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#4f46e5',
                 'selectors' => [
-                    '{{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-link:hover, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item:hover > .ua-nav-link' => 'color: {{VALUE}};',
+                    '{{WRAPPER}}' => '--ua-nav-item-hover-color: {{VALUE}};',
+                    '{{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-link:hover, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item:hover > .ua-nav-link, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-link:hover .ua-nav-title, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item:hover > .ua-nav-link .ua-nav-title, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-link:hover .ua-sub-indicator, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item:hover > .ua-nav-link .ua-sub-indicator' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -583,9 +584,10 @@ class Navigation_Menu extends Base {
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#4f46e5',
                 'selectors' => [
-                    '{{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current-menu-item > .ua-nav-link, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current_page_item > .ua-nav-link, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current-menu-parent > .ua-nav-link, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current-menu-ancestor > .ua-nav-link, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.ua-active-item > .ua-nav-link, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.ua-active-item:hover > .ua-nav-link, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current-menu-item:hover > .ua-nav-link' => 'color: {{VALUE}} !important;',
-                    '{{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current-menu-item > .ua-nav-link .ua-nav-title, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current_page_item > .ua-nav-link .ua-nav-title, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.ua-active-item > .ua-nav-link .ua-nav-title' => 'color: {{VALUE}} !important;',
-                    '{{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current-menu-item > .ua-nav-link .ua-sub-indicator, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current_page_item > .ua-nav-link .ua-sub-indicator, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.ua-active-item > .ua-nav-link .ua-sub-indicator' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}}' => '--ua-nav-item-active-color: {{VALUE}} !important;',
+                    '{{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current-menu-item > .ua-nav-link, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current_page_item > .ua-nav-link, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current-menu-parent > .ua-nav-link, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current-menu-ancestor > .ua-nav-link, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.ua-active-item > .ua-nav-link, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.ua-active-item:hover > .ua-nav-link, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current-menu-item:hover > .ua-nav-link, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current_page_item:hover > .ua-nav-link' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current-menu-item > .ua-nav-link .ua-nav-title, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current_page_item > .ua-nav-link .ua-nav-title, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current-menu-parent > .ua-nav-link .ua-nav-title, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current-menu-ancestor > .ua-nav-link .ua-nav-title, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.ua-active-item > .ua-nav-link .ua-nav-title, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.ua-active-item:hover > .ua-nav-link .ua-nav-title, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current-menu-item:hover > .ua-nav-link .ua-nav-title, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current_page_item:hover > .ua-nav-link .ua-nav-title' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current-menu-item > .ua-nav-link .ua-sub-indicator, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current_page_item > .ua-nav-link .ua-sub-indicator, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current-menu-parent > .ua-nav-link .ua-sub-indicator, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.current-menu-ancestor > .ua-nav-link .ua-sub-indicator, {{WRAPPER}}:not(.ua-pointer-pill) .ua-nav-item.ua-active-item > .ua-nav-link .ua-sub-indicator' => 'color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -610,7 +612,13 @@ class Navigation_Menu extends Base {
             [
                 'label'      => esc_html__( 'Padding', 'ultraaddons-elementor-lite' ),
                 'type'       => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', 'em', '%' ],
+                'default'    => [
+                    'top'      => 10,
+                    'right'    => 8,
+                    'bottom'   => 10,
+                    'left'     => 8,
+                    'isLinked' => false,
+                ],
                 'separator'  => 'before',
                 'selectors'  => [
                     '{{WRAPPER}} .ua-desktop-nav .ua-nav-link' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -623,21 +631,26 @@ class Navigation_Menu extends Base {
             [
                 'label'      => esc_html__( 'Space Between Items', 'ultraaddons-elementor-lite' ),
                 'type'       => Controls_Manager::SLIDER,
-                'size_units' => [ 'px' ],
+                'size_units' => [ 'px', 'em', 'rem' ],
                 'range'      => [
                     'px' => [
                         'min'  => 0,
-                        'max'  => 50,
+                        'max'  => 100,
                         'step' => 1,
+                    ],
+                    'em' => [
+                        'min'  => 0,
+                        'max'  => 10,
+                        'step' => 0.1,
                     ],
                 ],
                 'default'    => [
                     'unit' => 'px',
-                    'size' => 4,
+                    'size' => 8,
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .ua-desktop-nav > .ua-nav-list > .ua-nav-item:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}}.ua-nav-layout-vertical .ua-desktop-nav .ua-nav-item:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}}; margin-right: 0;',
+                    '{{WRAPPER}} .ua-desktop-nav > .ua-nav-list' => 'column-gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}}.ua-layout-vertical .ua-desktop-nav > .ua-nav-list, {{WRAPPER}}.ua-nav-layout-vertical .ua-desktop-nav > .ua-nav-list' => 'row-gap: {{SIZE}}{{UNIT}}; column-gap: 0;',
                 ],
             ]
         );
@@ -709,6 +722,84 @@ class Navigation_Menu extends Base {
                 ],
                 'selectors'  => [
                     '{{WRAPPER}}' => '--ua-nav-pointer-radius: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'ua_nav_pointer_pill_padding_h',
+            [
+                'label'      => esc_html__( 'Pill Horizontal Padding (px)', 'ultraaddons-elementor-lite' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range'      => [
+                    'px' => [
+                        'min'  => 6,
+                        'max'  => 40,
+                        'step' => 1,
+                    ],
+                ],
+                'default'    => [
+                    'unit' => 'px',
+                    'size' => 14,
+                ],
+                'condition'  => [
+                    'ua_nav_pointer' => 'pill',
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}}' => '--ua-nav-pill-padding-h: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'ua_nav_pointer_pill_padding_v',
+            [
+                'label'      => esc_html__( 'Pill Vertical Padding (px)', 'ultraaddons-elementor-lite' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range'      => [
+                    'px' => [
+                        'min'  => 2,
+                        'max'  => 25,
+                        'step' => 1,
+                    ],
+                ],
+                'default'    => [
+                    'unit' => 'px',
+                    'size' => 8,
+                ],
+                'condition'  => [
+                    'ua_nav_pointer' => 'pill',
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}}' => '--ua-nav-pill-padding-v: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'ua_nav_pointer_pill_gap',
+            [
+                'label'      => esc_html__( 'Space Between Pills (px)', 'ultraaddons-elementor-lite' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range'      => [
+                    'px' => [
+                        'min'  => 0,
+                        'max'  => 40,
+                        'step' => 1,
+                    ],
+                ],
+                'default'    => [
+                    'unit' => 'px',
+                    'size' => 8,
+                ],
+                'condition'  => [
+                    'ua_nav_pointer' => 'pill',
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}}' => '--ua-nav-pill-gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );

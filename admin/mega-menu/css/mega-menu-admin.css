@@ -29,6 +29,11 @@
     text-decoration: none;
 }
 
+/* Mega menu is strictly for top-level navigation items: hide button on sub-items */
+.menu-item:not(.menu-item-depth-0) .ua-mega-trigger-btn {
+    display: none !important;
+}
+
 .ua-mega-trigger-btn:hover {
     background: #4f46e5;
     color: #ffffff;

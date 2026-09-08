@@ -151,6 +151,7 @@ class Mega_Menu {
             'icon_color'      => '#4f46e5',
             'icon_size'       => 16,           // UltraAddons distinct default
             'badge_text'      => '',
+            'badge_position'  => 'floating',   // 'floating', 'inline'
             'badge_style'     => 'pill',       // 'pill', 'outline', 'soft'
             'badge_bg'        => '#4f46e5',    // UltraAddons Indigo
             'badge_color'     => '#ffffff',
@@ -274,6 +275,7 @@ class Mega_Menu {
             'icon_color'      => sanitize_hex_color( $raw_settings['icon_color'] ?? '' ) ?: '#4f46e5',
             'icon_size'       => isset( $raw_settings['icon_size'] ) ? max( 10, min( 48, absint( $raw_settings['icon_size'] ) ) ) : 16,
             'badge_text'      => sanitize_text_field( $raw_settings['badge_text'] ?? '' ),
+            'badge_position'  => in_array( $raw_settings['badge_position'] ?? '', [ 'floating', 'inline' ], true ) ? sanitize_key( $raw_settings['badge_position'] ) : 'floating',
             'badge_style'     => in_array( $raw_settings['badge_style'] ?? '', [ 'pill', 'outline', 'soft' ], true ) ? sanitize_key( $raw_settings['badge_style'] ) : 'pill',
             'badge_bg'        => sanitize_hex_color( $raw_settings['badge_bg'] ?? '' ) ?: '#4f46e5',
             'badge_color'     => sanitize_hex_color( $raw_settings['badge_color'] ?? '' ) ?: '#ffffff',
@@ -301,8 +303,7 @@ class Mega_Menu {
             wp_send_json_error( [ 'message' => esc_html__( 'Elementor is required.', 'ultraaddons-elementor-lite' ) ] );
         }
 
-        $elementor = \Elementor\Plugin::instance();
-        $html = $elementor->frontend->get_builder_content_for_display( $template_id, true );
+        $html = self::render_template( $template_id );
 
         wp_send_json_success( [
             'html' => $html,
@@ -311,6 +312,9 @@ class Mega_Menu {
 
     /**
      * Helper: render mega menu content on the frontend
+     *
+     * Ensures all Elementor post styles, atomic flexbox rules, and widget dependencies
+     * are properly loaded on ANY page (including WooCommerce archives, blog pages, 404, etc.).
      *
      * @param int $template_id
      * @return string HTML
@@ -322,12 +326,64 @@ class Mega_Menu {
 
         $elementor = \Elementor\Plugin::instance();
 
-        // Enqueue template specific CSS if Elementor supports it
+        // 1. Enable widget-level asset dependencies (icon fonts, widget CSS files)
+        if ( class_exists( '\Elementor\Core\Base\Elements_Iteration_Actions\Assets' ) ) {
+            $page_assets = get_post_meta( $template_id, \Elementor\Core\Base\Elements_Iteration_Actions\Assets::ASSETS_META_KEY, true );
+            if ( ! empty( $page_assets ) && isset( $elementor->assets_loader ) ) {
+                $elementor->assets_loader->enable_assets( $page_assets );
+            }
+        }
+
+        // 2. Render builder content with inline CSS flag
+        $content = $elementor->frontend->get_builder_content_for_display( $template_id, true );
+
+        // 3. Guarantee all necessary template and atomic CSS are embedded
+        $extra_css = '';
+
+        // Template Post CSS
         if ( class_exists( '\Elementor\Core\Files\CSS\Post' ) ) {
             $css_file = new \Elementor\Core\Files\CSS\Post( $template_id );
             $css_file->enqueue();
+
+            // If Elementor did not print inline style block for this post, retrieve and inject it
+            if ( strpos( $content, 'elementor-post-' . $template_id ) === false ) {
+                $post_css = $css_file->get_content();
+                if ( ! empty( $post_css ) ) {
+                    $extra_css .= $post_css . "\n";
+                }
+            }
         }
 
-        return $elementor->frontend->get_builder_content_for_display( $template_id );
+        // Elementor 3.16+ Atomic and Local Container Styles
+        $upload_dir        = wp_upload_dir();
+        $elementor_css_dir = $upload_dir['basedir'] . '/elementor/css';
+
+        if ( is_dir( $elementor_css_dir ) ) {
+            // Include Elementor's base atomic CSS if not already on the page (e.g. WooCommerce archives)
+            static $base_atomic_loaded = false;
+            if ( ! $base_atomic_loaded && ! wp_style_is( 'elementor-base-desktop', 'enqueued' ) ) {
+                $base_file = $elementor_css_dir . '/base-desktop.css';
+                if ( file_exists( $base_file ) ) {
+                    $extra_css .= file_get_contents( $base_file ) . "\n";
+                    $base_atomic_loaded = true;
+                }
+            }
+
+            // Include local template CSS files (desktop and responsive variants)
+            $local_files = glob( $elementor_css_dir . '/local-' . (int) $template_id . '-*.css' );
+            if ( ! empty( $local_files ) ) {
+                foreach ( $local_files as $lf ) {
+                    if ( file_exists( $lf ) ) {
+                        $extra_css .= file_get_contents( $lf ) . "\n";
+                    }
+                }
+            }
+        }
+
+        if ( ! empty( $extra_css ) ) {
+            $content = '<style class="ua-mega-inline-styles" data-mega-template="' . (int) $template_id . '">' . $extra_css . '</style>' . $content;
+        }
+
+        return $content;
     }
 }

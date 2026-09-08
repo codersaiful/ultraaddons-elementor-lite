@@ -276,6 +276,18 @@ class Mega_Menu_Admin {
 
                         <div class="ua-field-row">
                             <div class="ua-field-label">
+                                <label for="ua-setting-badge-position"><strong><?php esc_html_e( 'Badge Position', 'ultraaddons-elementor-lite' ); ?></strong></label>
+                            </div>
+                            <div class="ua-field-control">
+                                <select id="ua-setting-badge-position" class="ua-select">
+                                    <option value="floating"><?php esc_html_e( 'Floating / Superscript (Top Corner)', 'ultraaddons-elementor-lite' ); ?></option>
+                                    <option value="inline"><?php esc_html_e( 'Inline Middle (Beside Text)', 'ultraaddons-elementor-lite' ); ?></option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="ua-field-row">
+                            <div class="ua-field-label">
                                 <label for="ua-setting-badge-style"><strong><?php esc_html_e( 'Badge Style', 'ultraaddons-elementor-lite' ); ?></strong></label>
                             </div>
                             <div class="ua-field-control">

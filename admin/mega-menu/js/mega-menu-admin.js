@@ -53,8 +53,12 @@
     // 2. Open Settings Modal
     // -------------------------------------------------------------
     var openModal = function (itemId) {
-        currentItemId = itemId;
         var $item = $('#menu-item-' + itemId);
+        if ($item.length && !$item.hasClass('menu-item-depth-0')) {
+            return;
+        }
+
+        currentItemId = itemId;
         currentItemTitle = $item.find('.menu-item-title').text() || ('Item #' + itemId);
 
         $('#ua-modal-item-title').text(currentItemTitle);
@@ -72,6 +76,7 @@
             icon_color: '#4f46e5',
             icon_size: 16,
             badge_text: '',
+            badge_position: 'floating',
             badge_style: 'pill',
             badge_bg: '#4f46e5',
             badge_color: '#ffffff',
@@ -92,6 +97,7 @@
 
         // Badge
         $('#ua-setting-badge-text').val(s.badge_text || '');
+        $('#ua-setting-badge-position').val(s.badge_position || 'floating');
         $('#ua-setting-badge-style').val(s.badge_style || 'pill');
         setColorPickerValue('#ua-setting-badge-bg', s.badge_bg || '#4f46e5');
         setColorPickerValue('#ua-setting-badge-color', s.badge_color || '#ffffff');
@@ -247,6 +253,7 @@
                 icon_color: $('#ua-setting-icon-color').val(),
                 icon_size: $('#ua-setting-icon-size').val(),
                 badge_text: $('#ua-setting-badge-text').val(),
+                badge_position: $('#ua-setting-badge-position').val(),
                 badge_style: $('#ua-setting-badge-style').val(),
                 badge_bg: $('#ua-setting-badge-bg').val(),
                 badge_color: $('#ua-setting-badge-color').val(),

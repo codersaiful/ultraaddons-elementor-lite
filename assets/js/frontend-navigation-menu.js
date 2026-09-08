@@ -297,11 +297,18 @@
                     $megaPanel.css({
                         'left': (-wrapperOffset.left) + 'px',
                         'width': docWidth + 'px',
-                        'right': 'auto'
+                        'right': 'auto',
+                        'transform': 'none'
                     });
                 } else if ($item.hasClass('ua-mega-width-container')) {
-                    // Match nearest Elementor container or wrapper container
-                    var $container = $wrapper.closest('.elementor-container, .e-con, .elementor-row');
+                    // Match main parent container or inner boxed container
+                    var $container = $wrapper.closest('.e-con.e-parent, .elementor-top-section, .elementor-section');
+                    if ($container.length && $container.find('> .e-con-inner, > .elementor-container').length) {
+                        $container = $container.find('> .e-con-inner, > .elementor-container').first();
+                    }
+                    if (!$container.length) {
+                        $container = $wrapper.closest('.elementor-container, .e-con-inner, .e-con, .elementor-row');
+                    }
                     if (!$container.length) {
                         $container = $wrapper.find('.ua-nav-menu-container');
                     }
@@ -310,7 +317,8 @@
                         $megaPanel.css({
                             'left': (contOffset.left - wrapperOffset.left) + 'px',
                             'width': $container.outerWidth() + 'px',
-                            'right': 'auto'
+                            'right': 'auto',
+                            'transform': 'none'
                         });
                     }
                 } else if ($item.hasClass('ua-mega-width-custom') || $item.hasClass('ua-mega-width-fit')) {

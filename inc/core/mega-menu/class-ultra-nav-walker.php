@@ -102,9 +102,17 @@ if ( ! class_exists( 'Ultra_Nav_Walker' ) ) {
             // Optional Menu Badge
             $badge_html = '';
             if ( $has_mega && ! empty( $mega_settings['badge_text'] ) ) {
-                $badge_style = 'background-color: ' . esc_attr( $mega_settings['badge_bg'] ) . '; color: ' . esc_attr( $mega_settings['badge_color'] ) . ';';
+                $bg_color   = ! empty( $mega_settings['badge_bg'] ) ? $mega_settings['badge_bg'] : '#4f46e5';
+                $text_color = ! empty( $mega_settings['badge_color'] ) ? $mega_settings['badge_color'] : '#ffffff';
+                if ( 'outline' === $mega_settings['badge_style'] ) {
+                    $outline_color = ( '#ffffff' === strtolower( $text_color ) || empty( $text_color ) ) ? $bg_color : $text_color;
+                    $badge_style   = 'border-color: ' . esc_attr( $outline_color ) . '; color: ' . esc_attr( $outline_color ) . ';';
+                } else {
+                    $badge_style = 'background-color: ' . esc_attr( $bg_color ) . '; color: ' . esc_attr( $text_color ) . ';';
+                }
                 $badge_dot   = ( 'pulse-dot' === $mega_settings['badge_animation'] ) ? '<span class="ua-badge-dot" aria-hidden="true"></span>' : '';
-                $badge_html  = ' <span class="ua-mega-badge ua-badge-' . esc_attr( $mega_settings['badge_style'] ) . ' ua-anim-' . esc_attr( $mega_settings['badge_animation'] ) . '" style="' . $badge_style . '">' . esc_html( $mega_settings['badge_text'] ) . $badge_dot . '</span>';
+                $badge_pos   = ! empty( $mega_settings['badge_position'] ) ? $mega_settings['badge_position'] : 'floating';
+                $badge_html  = ' <span class="ua-mega-badge ua-badge-' . esc_attr( $mega_settings['badge_style'] ) . ' ua-badge-pos-' . esc_attr( $badge_pos ) . ' ua-anim-' . esc_attr( $mega_settings['badge_animation'] ) . '" style="' . $badge_style . '">' . esc_html( $mega_settings['badge_text'] ) . $badge_dot . '</span>';
             }
 
             $item_output  = isset( $args->before ) ? $args->before : '';
