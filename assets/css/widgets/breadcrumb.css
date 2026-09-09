@@ -1,0 +1,333 @@
+/**
+ * UltraAddons - Breadcrumb Navigation Widget Styles
+ *
+ * Provides modern, sleek container-card layout, 3 visual design presets
+ * (Classic Card, Modern Pill Capsule, Chevron Arrow Trail),
+ * mobile horizontal swipe/scroll, and accessible breadcrumb trail UI.
+ *
+ * @package UltraAddons
+ */
+
+/* ==========================================================================
+   1. Base Wrapper & Trail Container
+   ========================================================================== */
+
+.ua-breadcrumb-wrap {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.ua-breadcrumb-wrap * {
+    box-sizing: border-box;
+}
+
+.ua-bc-trail {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 8px;
+    transition: all 0.25s ease;
+}
+
+/* ==========================================================================
+   2. Breadcrumb Items & Links
+   ========================================================================== */
+
+.ua-bc-item {
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    transition: all 0.25s ease;
+}
+
+.ua-bc-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    color: #64748b;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    transition: color 0.2s ease;
+}
+
+.ua-bc-link:hover,
+.ua-bc-link:focus {
+    color: #0274be;
+    text-decoration: none;
+    outline: none;
+}
+
+.ua-bc-current {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #1e293b;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: 600;
+    line-height: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+}
+
+.ua-bc-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9em;
+    line-height: 1;
+}
+
+.ua-bc-icon svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
+/* ==========================================================================
+   3. Separator
+   ========================================================================== */
+
+.ua-bc-sep {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    user-select: none;
+    list-style: none;
+    color: #94a3b8;
+    font-size: 12px;
+}
+
+.ua-bc-sep svg {
+    width: 12px;
+    height: 12px;
+    fill: currentColor;
+}
+
+/* ==========================================================================
+   4. Prefix
+   ========================================================================== */
+
+.ua-bc-prefix {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.4;
+}
+
+.ua-bc-prefix-icon {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+}
+
+.ua-bc-prefix-icon svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
+/* ==========================================================================
+   5. Presets: Classic, Pill / Badge, Arrow Trail
+   ========================================================================== */
+
+/* Preset 1: Classic Minimal (Sleek Card Container) */
+.ua-bc-preset-classic .ua-bc-trail,
+.ua-breadcrumb-wrap.ua-bc-preset-classic .ua-bc-trail {
+    background-color: #f8fafc;
+    border: 1px solid #eaedf3;
+    border-radius: 8px;
+    padding: 8px 18px;
+    gap: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.ua-bc-preset-classic .ua-bc-item,
+.ua-breadcrumb-wrap.ua-bc-preset-classic .ua-bc-item {
+    background: transparent;
+    padding: 0;
+}
+
+.ua-bc-preset-classic .ua-bc-link,
+.ua-breadcrumb-wrap.ua-bc-preset-classic .ua-bc-link {
+    color: #64748b;
+    transition: color 0.2s ease;
+}
+
+.ua-bc-preset-classic .ua-bc-link:hover,
+.ua-breadcrumb-wrap.ua-bc-preset-classic .ua-bc-link:hover {
+    color: #0274be;
+}
+
+.ua-bc-preset-classic .ua-bc-current,
+.ua-breadcrumb-wrap.ua-bc-preset-classic .ua-bc-current {
+    color: #1e293b;
+}
+
+.ua-bc-preset-classic .ua-bc-sep,
+.ua-breadcrumb-wrap.ua-bc-preset-classic .ua-bc-sep {
+    color: #94a3b8;
+    font-size: 12px;
+}
+
+/* Preset 2: Modern Pill / Badge (Individual pill chip badges for each step) */
+.ua-bc-preset-pill .ua-bc-trail,
+.ua-breadcrumb-wrap.ua-bc-preset-pill .ua-bc-trail {
+    background: transparent;
+    border: none;
+    padding: 0;
+    gap: 8px;
+}
+
+.ua-bc-preset-pill .ua-bc-item,
+.ua-breadcrumb-wrap.ua-bc-preset-pill .ua-bc-item {
+    background: transparent;
+    padding: 0;
+}
+
+.ua-bc-preset-pill .ua-bc-item .ua-bc-link,
+.ua-breadcrumb-wrap.ua-bc-preset-pill .ua-bc-item .ua-bc-link {
+    background-color: #f1f5f9;
+    color: #475569;
+    padding: 5px 14px;
+    border-radius: 50px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
+}
+
+.ua-bc-preset-pill .ua-bc-item .ua-bc-link:hover,
+.ua-bc-preset-pill .ua-bc-item .ua-bc-link:focus,
+.ua-breadcrumb-wrap.ua-bc-preset-pill .ua-bc-item .ua-bc-link:hover,
+.ua-breadcrumb-wrap.ua-bc-preset-pill .ua-bc-item .ua-bc-link:focus {
+    background-color: #e2e8f0;
+    color: #0274be;
+    border-color: #cbd5e1;
+    transform: translateY(-1px);
+}
+
+.ua-bc-preset-pill .ua-bc-item-current .ua-bc-current,
+.ua-breadcrumb-wrap.ua-bc-preset-pill .ua-bc-item-current .ua-bc-current {
+    background-color: #0274be;
+    color: #ffffff;
+    padding: 5px 16px;
+    border-radius: 50px;
+    box-shadow: 0 2px 8px rgba(2, 116, 190, 0.25);
+    border: 1px solid #0274be;
+}
+
+.ua-bc-preset-pill .ua-bc-sep,
+.ua-breadcrumb-wrap.ua-bc-preset-pill .ua-bc-sep {
+    color: #cbd5e1;
+    font-size: 11px;
+}
+
+/* Preset 3: Chevron Arrow Trail */
+.ua-bc-preset-arrow .ua-bc-trail {
+    background: transparent;
+    border: none;
+    padding: 0;
+    gap: 0;
+}
+
+.ua-bc-preset-arrow .ua-bc-sep {
+    display: none; /* Separator handled visually by chevron shape */
+}
+
+.ua-bc-preset-arrow .ua-bc-item {
+    position: relative;
+    background-color: #0274be;
+    color: #ffffff;
+    padding: 8px 18px 8px 24px;
+    clip-path: polygon(0% 0%, calc(100% - 10px) 0%, 100% 50%, calc(100% - 10px) 100%, 0% 100%, 10px 50%);
+    margin-right: -4px;
+}
+
+.ua-bc-preset-arrow .ua-bc-item:first-child {
+    padding-left: 16px;
+    clip-path: polygon(0% 0%, calc(100% - 10px) 0%, 100% 50%, calc(100% - 10px) 100%, 0% 100%);
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.ua-bc-preset-arrow .ua-bc-item:last-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.ua-bc-preset-arrow .ua-bc-item,
+.ua-bc-preset-arrow .ua-bc-item .ua-bc-link,
+.ua-bc-preset-arrow .ua-bc-item .ua-bc-title,
+.ua-bc-preset-arrow .ua-bc-item .ua-bc-icon,
+.ua-breadcrumb-wrap.ua-bc-preset-arrow .ua-bc-item .ua-bc-link {
+    color: #ffffff;
+}
+
+.ua-bc-preset-arrow .ua-bc-item .ua-bc-link:hover,
+.ua-bc-preset-arrow .ua-bc-item .ua-bc-link:focus,
+.ua-breadcrumb-wrap.ua-bc-preset-arrow .ua-bc-item .ua-bc-link:hover,
+.ua-breadcrumb-wrap.ua-bc-preset-arrow .ua-bc-item .ua-bc-link:focus {
+    color: #ffffff;
+    opacity: 0.92;
+}
+
+.ua-bc-preset-arrow .ua-bc-item:hover {
+    background-color: #025a94;
+}
+
+.ua-bc-preset-arrow .ua-bc-item-current {
+    background-color: #1e293b;
+    color: #ffffff;
+}
+
+.ua-bc-preset-arrow .ua-bc-item-current .ua-bc-current,
+.ua-bc-preset-arrow .ua-bc-item-current .ua-bc-title,
+.ua-bc-preset-arrow .ua-bc-item-current .ua-bc-icon,
+.ua-breadcrumb-wrap.ua-bc-preset-arrow .ua-bc-item-current .ua-bc-current {
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   6. Mobile Horizontal Touch Swipe
+   ========================================================================== */
+
+@media (max-width: 767px) {
+    .ua-breadcrumb-wrap.ua-bc-mobile-scroll {
+        overflow: hidden;
+    }
+
+    .ua-breadcrumb-wrap.ua-bc-mobile-scroll .ua-bc-trail {
+        display: inline-flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+    }
+
+    .ua-breadcrumb-wrap.ua-bc-mobile-scroll .ua-bc-trail::-webkit-scrollbar {
+        display: none; /* Chrome, Safari */
+    }
+
+    .ua-breadcrumb-wrap.ua-bc-mobile-scroll .ua-bc-item,
+    .ua-breadcrumb-wrap.ua-bc-mobile-scroll .ua-bc-sep,
+    .ua-breadcrumb-wrap.ua-bc-mobile-scroll .ua-bc-prefix {
+        flex-shrink: 0;
+    }
+}

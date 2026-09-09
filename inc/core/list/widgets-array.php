@@ -305,6 +305,7 @@ $ultraaddons_widgetsArray = [
             'name'  => __( 'Breadcrumb', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
             'icon'      => 'uicon-skillbar',
+            'badge'     => 'New',
             'cat'       => [
                 __( 'Header_Footer', 'ultraaddons-elementor-lite' ),
             ],
