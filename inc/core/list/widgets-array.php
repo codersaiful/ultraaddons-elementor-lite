@@ -617,6 +617,16 @@ $ultraaddons_widgetsArray = [
     ], */
     
 
+    'Dual_Button' => [
+        'name'      => __( 'Dual Button', 'ultraaddons-elementor-lite' ),
+        'is_pro'    => false,
+        'icon'      => 'eicon-dual-button',
+        'badge'     => 'new',
+        'cat'       => [
+            __( 'General', 'ultraaddons-elementor-lite' ),
+        ],
+    ],
+
     'Image_Comparison' => [
         'name'      => __( 'Image Comparison', 'ultraaddons-elementor-lite' ),
         'is_pro'    => false,

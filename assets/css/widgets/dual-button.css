@@ -1,0 +1,716 @@
+/**
+ * UltraAddons Dual Button (Double Button) Widget Stylesheet
+ *
+ * Provides Connected Capsule (Unified Pill) and Separated layouts,
+ * Middle Connector Badge (Text/Icon/Diamond/Circle),
+ * Pure CSS Tooltips, and Premium Hover Animations.
+ *
+ * @package UltraAddons
+ * @since 2.0.3.6
+ */
+
+.ua-dual-button-wrap {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.ua-dual-button-wrap *,
+.ua-dual-button-wrap *::before,
+.ua-dual-button-wrap *::after {
+    box-sizing: border-box;
+}
+
+/* Container */
+.ua-db-container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    max-width: 100%;
+}
+
+/* Stretch / Justified Equal Width Alignment */
+.ua-db-align-stretch .ua-db-container,
+.ua-db-align-tablet-stretch .ua-db-container,
+.ua-db-align-mobile-stretch .ua-db-container {
+    width: 100%;
+}
+.ua-db-align-stretch .ua-db-btn,
+.ua-db-align-tablet-stretch .ua-db-btn,
+.ua-db-align-mobile-stretch .ua-db-btn {
+    flex: 1;
+}
+
+/* Connected Capsule Mode */
+.ua-db-container.ua-db-connected {
+    gap: 0;
+}
+
+.ua-db-container.ua-db-connected .ua-db-btn-first {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+.ua-db-container.ua-db-connected .ua-db-btn-second {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    margin-left: -1px; /* Seamless border overlap */
+}
+
+/* Divided Mode (Pic 2 Preset) */
+.ua-db-container.ua-db-divided {
+    gap: 0;
+    align-items: stretch;
+}
+
+.ua-db-container.ua-db-divided .ua-db-btn-first {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-radius: 6px 0 0 6px;
+    border-right-width: 0;
+}
+
+.ua-db-container.ua-db-divided .ua-db-btn-second {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-radius: 0 6px 6px 0;
+    border-left-width: 0;
+}
+
+/* Middle Divider Line */
+.ua-db-divider-line {
+    display: block;
+    align-self: center;
+    width: 1px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.45);
+    flex-shrink: 0;
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* Separated Mode */
+.ua-db-container.ua-db-separated {
+    gap: 14px;
+}
+
+/* Button Base */
+.ua-db-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.3px;
+    padding: 14px 28px;
+    transition: background-color 0.24s ease, color 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease, transform 0.24s ease;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.ua-db-btn:focus,
+.ua-db-btn:active {
+    outline: none;
+}
+
+/* First Button Defaults */
+.ua-db-btn-first {
+    background-color: #4f46e5;
+    color: #ffffff;
+    border: 1px solid transparent;
+    border-radius: 50px 0 0 50px;
+    z-index: 1;
+}
+
+.ua-db-btn-first:hover {
+    background-color: #4338ca;
+    color: #ffffff;
+    z-index: 2;
+}
+
+/* Second Button Defaults */
+.ua-db-btn-second {
+    background-color: #f8fafc;
+    color: #0f172a;
+    border: 1px solid #e2e8f0;
+    border-radius: 0 50px 50px 0;
+    z-index: 1;
+}
+
+.ua-db-btn-second:hover {
+    background-color: #f1f5f9;
+    color: #0274be;
+    border-color: #cbd5e1;
+    z-index: 2;
+}
+
+/* Text and Icon */
+.ua-db-text {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+}
+
+.ua-db-icon {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: transform 0.24s ease;
+}
+
+.ua-db-icon svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    display: inline-block;
+}
+
+/* Middle Badge Connector */
+.ua-db-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #ffffff;
+    color: #475569;
+    border: 2px solid #e2e8f0;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    pointer-events: none;
+    flex-shrink: 0;
+    transition: transform 0.22s ease, border-color 0.22s ease;
+}
+
+.ua-db-badge-inner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.ua-db-badge-inner svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
+/* Badge Shapes */
+.ua-db-badge-shape-circle {
+    border-radius: 50%;
+}
+
+.ua-db-badge-shape-diamond {
+    border-radius: 4px;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.ua-db-badge-shape-diamond .ua-db-badge-inner {
+    transform: rotate(-45deg); /* Keeps text upright */
+}
+
+.ua-db-badge-shape-pill {
+    border-radius: 9999px;
+    width: auto !important;
+    min-width: 36px;
+    padding: 0 9px;
+}
+
+.ua-db-badge-shape-square {
+    border-radius: 6px;
+}
+
+.ua-db-badge-shape-flat {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    border-radius: 0;
+}
+
+/* ============================================
+   Pure CSS Tooltip Engine
+   ============================================ */
+.ua-db-btn[data-tooltip] {
+    overflow: visible; /* Prevents tooltip clipping */
+}
+
+.ua-db-btn[data-tooltip]::before,
+.ua-db-btn[data-tooltip]::after {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.2, 0.8, 0.4, 1);
+    z-index: 100;
+}
+
+/* Tooltip Bubble */
+.ua-db-btn[data-tooltip]::after {
+    content: attr(data-tooltip);
+    background-color: #0f172a;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: normal;
+    white-space: nowrap;
+    padding: 6px 12px;
+    border-radius: 6px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+    line-height: 1.4;
+}
+
+/* Tooltip Arrow */
+.ua-db-btn[data-tooltip]::before {
+    content: '';
+    border: 5px solid transparent;
+}
+
+/* Position: TOP */
+.ua-db-btn[data-tooltip-pos="top"]::after {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-6px);
+    margin-bottom: 6px;
+}
+.ua-db-btn[data-tooltip-pos="top"]::before {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-6px);
+    border-top-color: #0f172a;
+}
+.ua-db-btn[data-tooltip-pos="top"]:hover::after,
+.ua-db-btn[data-tooltip-pos="top"]:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Position: BOTTOM */
+.ua-db-btn[data-tooltip-pos="bottom"]::after {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(6px);
+    margin-top: 6px;
+}
+.ua-db-btn[data-tooltip-pos="bottom"]::before {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(6px);
+    border-bottom-color: #0f172a;
+}
+.ua-db-btn[data-tooltip-pos="bottom"]:hover::after,
+.ua-db-btn[data-tooltip-pos="bottom"]:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Position: LEFT */
+.ua-db-btn[data-tooltip-pos="left"]::after {
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%) translateX(-6px);
+    margin-right: 6px;
+}
+.ua-db-btn[data-tooltip-pos="left"]::before {
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%) translateX(-6px);
+    border-left-color: #0f172a;
+}
+.ua-db-btn[data-tooltip-pos="left"]:hover::after,
+.ua-db-btn[data-tooltip-pos="left"]:hover::before {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+/* Position: RIGHT */
+.ua-db-btn[data-tooltip-pos="right"]::after {
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%) translateX(6px);
+    margin-left: 6px;
+}
+.ua-db-btn[data-tooltip-pos="right"]::before {
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%) translateX(6px);
+    border-right-color: #0f172a;
+}
+.ua-db-btn[data-tooltip-pos="right"]:hover::after,
+.ua-db-btn[data-tooltip-pos="right"]:hover::before {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+/* ============================================
+   Premium Hover Animations
+   ============================================ */
+
+/* 1. Icon Shift / Nudge */
+.ua-db-btn.ua-anim-icon-shift:hover .ua-db-icon-right {
+    transform: translateX(4px);
+}
+.ua-db-btn.ua-anim-icon-shift:hover .ua-db-icon-left {
+    transform: translateX(-4px);
+}
+
+/* 2. Subtle Grow */
+.ua-db-btn.ua-anim-grow:hover {
+    transform: scale(1.04);
+    z-index: 3;
+}
+
+/* 3. Radar Pulse Ripple */
+@keyframes ua-db-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.45);
+    }
+    70% {
+        box-shadow: 0 0 0 12px rgba(79, 70, 229, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(79, 70, 229, 0);
+    }
+}
+.ua-db-btn.ua-anim-ripple:hover {
+    animation: ua-db-pulse 1.2s infinite;
+    z-index: 3;
+}
+
+/* 4. Shine Sweep (When tooltip is not active) */
+.ua-db-btn.ua-anim-shine:not([data-tooltip])::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.38) 50%, rgba(255, 255, 255, 0) 100%);
+    transform: skewX(-25deg);
+    transition: none;
+    pointer-events: none;
+}
+.ua-db-btn.ua-anim-shine:not([data-tooltip]):hover::after {
+    left: 140%;
+    transition: all 0.65s ease-in-out;
+}
+
+/* 5. Slide Fill Up */
+.ua-db-btn.ua-anim-slide-fill {
+    transition: transform 0.24s ease, box-shadow 0.24s ease;
+}
+.ua-db-btn.ua-anim-slide-fill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* 6. Push / Scale Down (Tactile Feel) */
+.ua-db-btn.ua-anim-push:hover {
+    transform: scale(0.96);
+    z-index: 3;
+}
+.ua-db-btn.ua-anim-push:active {
+    transform: scale(0.92);
+}
+
+/* ============================================
+   Hover.css Library Compatibility & Tuning
+   ============================================ */
+.ua-db-btn[class*="hvr-"] {
+    display: inline-flex !important;
+}
+
+.ua-db-btn[class*="hvr-sweep"]:before,
+.ua-db-btn[class*="hvr-bounce-to"]:before,
+.ua-db-btn[class*="hvr-radial"]:before,
+.ua-db-btn[class*="hvr-rectangle"]:before,
+.ua-db-btn[class*="hvr-shutter"]:before {
+    z-index: 1;
+    background-color: var(--ua-db-hover-overlay, rgba(255, 255, 255, 0.28));
+}
+
+.ua-db-btn[class*="hvr-sweep"],
+.ua-db-btn[class*="hvr-bounce-to"],
+.ua-db-btn[class*="hvr-radial"],
+.ua-db-btn[class*="hvr-rectangle"],
+.ua-db-btn[class*="hvr-shutter"] {
+    overflow: hidden;
+}
+
+.ua-db-btn[class*="hvr-underline"]:before,
+.ua-db-btn[class*="hvr-overline"]:before {
+    background-color: currentColor;
+    z-index: 3;
+}
+
+/* ============================================
+   Creative Hover Animations (Wayra, Isi, Aylen, etc.)
+   ============================================ */
+
+/* 7. Wayra Left & Wayra Right */
+.ua-db-btn.ua-anim-wayra-left,
+.ua-db-btn.ua-anim-wayra-right {
+    overflow: hidden;
+}
+.ua-db-btn.ua-anim-wayra-left::before,
+.ua-db-btn.ua-anim-wayra-right::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 150%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.25);
+    z-index: 1;
+    transition: transform 0.35s cubic-bezier(0.2, 1, 0.3, 1), opacity 0.35s ease;
+    opacity: 0;
+}
+.ua-db-btn.ua-anim-wayra-left::before {
+    left: 0;
+    transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -3em, 0);
+    transform-origin: 0% 100%;
+}
+.ua-db-btn.ua-anim-wayra-left:hover::before {
+    opacity: 1;
+    transform: rotate3d(0, 0, 1, 0deg);
+}
+.ua-db-btn.ua-anim-wayra-right::before {
+    right: 0;
+    transform: rotate3d(0, 0, 1, 45deg) translate3d(0, -3em, 0);
+    transform-origin: 100% 100%;
+}
+.ua-db-btn.ua-anim-wayra-right:hover::before {
+    opacity: 1;
+    transform: rotate3d(0, 0, 1, 0deg);
+}
+
+/* 8. Isi Left & Isi Right */
+.ua-db-btn.ua-anim-isi-left,
+.ua-db-btn.ua-anim-isi-right {
+    overflow: hidden;
+}
+.ua-db-btn.ua-anim-isi-left::before,
+.ua-db-btn.ua-anim-isi-right::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.22);
+    z-index: 1;
+    transition: transform 0.35s cubic-bezier(0.7, 0, 0.3, 1);
+}
+.ua-db-btn.ua-anim-isi-left::before {
+    left: 0;
+    transform: translate3d(-100%, 0, 0);
+}
+.ua-db-btn.ua-anim-isi-left:hover::before {
+    transform: translate3d(0, 0, 0);
+}
+.ua-db-btn.ua-anim-isi-right::before {
+    right: 0;
+    transform: translate3d(100%, 0, 0);
+}
+.ua-db-btn.ua-anim-isi-right:hover::before {
+    transform: translate3d(0, 0, 0);
+}
+
+/* 9. Aylen */
+.ua-db-btn.ua-anim-aylen {
+    overflow: hidden;
+}
+.ua-db-btn.ua-anim-aylen::before,
+.ua-db-btn.ua-anim-aylen::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transition: transform 0.35s ease;
+    pointer-events: none;
+}
+.ua-db-btn.ua-anim-aylen::before {
+    border-top: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: scale3d(0, 1, 1);
+}
+.ua-db-btn.ua-anim-aylen::after {
+    border-left: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    transform: scale3d(1, 0, 1);
+}
+.ua-db-btn.ua-anim-aylen:hover::before,
+.ua-db-btn.ua-anim-aylen:hover::after {
+    transform: scale3d(1, 1, 1);
+}
+
+/* 10. Antiman */
+.ua-db-btn.ua-anim-antiman {
+    overflow: hidden;
+}
+.ua-db-btn.ua-anim-antiman::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.22);
+    z-index: 1;
+    transform: scale3d(0.7, 1, 1);
+    transition: transform 0.35s cubic-bezier(0.2, 1, 0.3, 1), opacity 0.35s ease;
+    opacity: 0;
+}
+.ua-db-btn.ua-anim-antiman:hover::before {
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+}
+
+/* 11. Winona */
+.ua-db-btn.ua-anim-winona {
+    overflow: hidden;
+}
+.ua-db-btn.ua-anim-winona .ua-db-text,
+.ua-db-btn.ua-anim-winona .ua-db-icon {
+    transition: transform 0.3s cubic-bezier(0.2, 1, 0.3, 1), opacity 0.3s ease;
+}
+.ua-db-btn.ua-anim-winona:hover .ua-db-text,
+.ua-db-btn.ua-anim-winona:hover .ua-db-icon {
+    transform: translateY(-4px);
+}
+
+/* 12. Ray Left & Ray Right */
+.ua-db-btn.ua-anim-ray-left:hover {
+    box-shadow: -8px 0 20px -4px rgba(0, 0, 0, 0.3);
+    transform: translateX(4px);
+}
+.ua-db-btn.ua-anim-ray-right:hover {
+    box-shadow: 8px 0 20px -4px rgba(0, 0, 0, 0.3);
+    transform: translateX(-4px);
+}
+
+/* ============================================
+   Responsive Mobile Stacking Engine
+   ============================================ */
+
+/* Mobile Breakpoint (< 768px) */
+@media (max-width: 767px) {
+    .ua-dual-button-wrap.ua-db-stack-mobile .ua-db-container,
+    .ua-dual-button-wrap.ua-db-stack-tablet .ua-db-container {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+    }
+
+    .ua-dual-button-wrap.ua-db-stack-mobile.ua-db-full-mobile .ua-db-btn,
+    .ua-dual-button-wrap.ua-db-stack-tablet.ua-db-full-mobile .ua-db-btn {
+        width: 100%;
+    }
+
+    /* Reset connected borders when stacked on mobile */
+    .ua-dual-button-wrap.ua-db-stack-mobile .ua-db-container.ua-db-connected,
+    .ua-dual-button-wrap.ua-db-stack-tablet .ua-db-container.ua-db-connected {
+        gap: 12px;
+    }
+
+    .ua-dual-button-wrap.ua-db-stack-mobile .ua-db-container.ua-db-connected .ua-db-btn,
+    .ua-dual-button-wrap.ua-db-stack-tablet .ua-db-container.ua-db-connected .ua-db-btn {
+        border-radius: 50px !important;
+        margin: 0 !important;
+    }
+
+    /* Reset divided borders and hide divider when stacked on mobile */
+    .ua-dual-button-wrap.ua-db-stack-mobile .ua-db-container.ua-db-divided,
+    .ua-dual-button-wrap.ua-db-stack-tablet .ua-db-container.ua-db-divided {
+        gap: 12px;
+    }
+
+    .ua-dual-button-wrap.ua-db-stack-mobile .ua-db-container.ua-db-divided .ua-db-btn,
+    .ua-dual-button-wrap.ua-db-stack-tablet .ua-db-container.ua-db-divided .ua-db-btn {
+        border-radius: 6px !important;
+        border-right-width: 1px;
+        border-left-width: 1px;
+    }
+
+    .ua-dual-button-wrap.ua-db-stack-mobile .ua-db-divider-line,
+    .ua-dual-button-wrap.ua-db-stack-tablet .ua-db-divider-line {
+        display: none;
+    }
+
+    /* Reverse Order on Mobile */
+    .ua-dual-button-wrap.ua-db-stack-mobile.ua-db-stack-reverse .ua-db-container,
+    .ua-dual-button-wrap.ua-db-stack-tablet.ua-db-stack-reverse .ua-db-container {
+        flex-direction: column-reverse;
+    }
+
+    /* Middle badge in stacked layout sits cleanly between */
+    .ua-dual-button-wrap.ua-db-stack-mobile .ua-db-badge,
+    .ua-dual-button-wrap.ua-db-stack-tablet .ua-db-badge {
+        position: static;
+        transform: none;
+        margin: 0 auto;
+    }
+}
+
+/* Tablet Breakpoint (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .ua-dual-button-wrap.ua-db-stack-tablet .ua-db-container {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+    }
+
+    .ua-dual-button-wrap.ua-db-stack-tablet.ua-db-full-mobile .ua-db-btn {
+        width: 100%;
+    }
+
+    .ua-dual-button-wrap.ua-db-stack-tablet .ua-db-container.ua-db-connected {
+        gap: 12px;
+    }
+
+    .ua-dual-button-wrap.ua-db-stack-tablet .ua-db-container.ua-db-connected .ua-db-btn {
+        border-radius: 50px !important;
+        margin: 0 !important;
+    }
+
+    .ua-dual-button-wrap.ua-db-stack-tablet .ua-db-container.ua-db-divided {
+        gap: 12px;
+    }
+
+    .ua-dual-button-wrap.ua-db-stack-tablet .ua-db-container.ua-db-divided .ua-db-btn {
+        border-radius: 6px !important;
+        border-right-width: 1px;
+        border-left-width: 1px;
+    }
+
+    .ua-dual-button-wrap.ua-db-stack-tablet .ua-db-divider-line {
+        display: none;
+    }
+
+    .ua-dual-button-wrap.ua-db-stack-tablet.ua-db-stack-reverse .ua-db-container {
+        flex-direction: column-reverse;
+    }
+
+    .ua-dual-button-wrap.ua-db-stack-tablet .ua-db-badge {
+        position: static;
+        transform: none;
+        margin: 0 auto;
+    }
+}
