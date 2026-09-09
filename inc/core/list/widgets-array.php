@@ -617,6 +617,16 @@ $ultraaddons_widgetsArray = [
     ], */
     
 
+    'Image_Comparison' => [
+        'name'      => __( 'Image Comparison', 'ultraaddons-elementor-lite' ),
+        'is_pro'    => false,
+        'icon'      => 'eicon-image-before-after',
+        'badge'     => 'new',
+        'cat'       => [
+            __( 'General', 'ultraaddons-elementor-lite' ),
+        ],
+    ],
+
     'Image_Hotspots' => [
         'name'      => __( 'Image Hotspots', 'ultraaddons-elementor-lite' ),
         'is_pro'    => false,

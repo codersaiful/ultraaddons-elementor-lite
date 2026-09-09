@@ -1,0 +1,390 @@
+/**
+ * UltraAddons Image Comparison (Before/After) Widget Stylesheet
+ *
+ * High-performance GPU-accelerated image comparison styling
+ * using modern CSS clip-path, single CSS variable architecture,
+ * responsive aspect ratios, and modern glassmorphism badges.
+ *
+ * @package UltraAddons
+ * @since 2.0.3.6
+ */
+
+.ua-image-comparison-wrap {
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.ua-image-comparison-wrap *,
+.ua-image-comparison-wrap *::before,
+.ua-image-comparison-wrap *::after {
+    box-sizing: border-box;
+}
+
+/* Container */
+.ua-image-comparison-wrap .ua-ic-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    background-color: #f1f5f9;
+    touch-action: pan-y; /* Allows natural vertical page scrolling on touch devices while sliding horizontally */
+}
+
+.ua-image-comparison-wrap[data-orientation="vertical"] .ua-ic-container {
+    touch-action: pan-x; /* Allows horizontal scrolling while sliding vertically */
+}
+
+/* Aspect Ratio Engine */
+.ua-ic-container.ua-ic-ratio-16-9 {
+    aspect-ratio: 16 / 9;
+}
+.ua-ic-container.ua-ic-ratio-4-3 {
+    aspect-ratio: 4 / 3;
+}
+.ua-ic-container.ua-ic-ratio-1-1 {
+    aspect-ratio: 1 / 1;
+}
+.ua-ic-container.ua-ic-ratio-21-9 {
+    aspect-ratio: 21 / 9;
+}
+
+/* Layers */
+.ua-ic-layer {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+/* Natural Auto Height Mode */
+.ua-ic-container.ua-ic-ratio-auto .ua-ic-before-layer {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+.ua-ic-container.ua-ic-ratio-auto .ua-ic-before-layer .ua-ic-image-wrap {
+    height: auto;
+}
+.ua-ic-container.ua-ic-ratio-auto .ua-ic-before-layer img {
+    height: auto;
+}
+.ua-ic-container.ua-ic-ratio-auto .ua-ic-after-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Fixed Aspect Ratio & Custom Height Modes */
+.ua-ic-container:not(.ua-ic-ratio-auto) .ua-ic-before-layer,
+.ua-ic-container:not(.ua-ic-ratio-auto) .ua-ic-after-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Image Wrappers */
+.ua-ic-image-wrap {
+    width: 100%;
+    height: 100%;
+    display: block;
+    line-height: 0;
+}
+
+.ua-ic-image-wrap img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* GPU-Accelerated CSS clip-path Masking Engine */
+/* Horizontal: Clip after-layer from the left using --ua-ic-pos */
+.ua-image-comparison-wrap[data-orientation="horizontal"] .ua-ic-after-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: inset(0 0 0 var(--ua-ic-pos, 50%));
+    -webkit-clip-path: inset(0 0 0 var(--ua-ic-pos, 50%));
+}
+
+/* Vertical: Clip after-layer from top using --ua-ic-pos */
+.ua-image-comparison-wrap[data-orientation="vertical"] .ua-ic-after-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: inset(var(--ua-ic-pos, 50%) 0 0 0);
+    -webkit-clip-path: inset(var(--ua-ic-pos, 50%) 0 0 0);
+}
+
+/* Divider Line & Interactive Handle */
+.ua-ic-divider-wrap {
+    position: absolute;
+    z-index: 10;
+    cursor: grab;
+    cursor: -webkit-grab;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: none;
+}
+
+.ua-ic-divider-wrap:active,
+.ua-image-comparison-wrap.ua-is-dragging .ua-ic-divider-wrap {
+    cursor: grabbing;
+    cursor: -webkit-grabbing;
+}
+
+/* Horizontal Divider Positioning */
+.ua-image-comparison-wrap[data-orientation="horizontal"] .ua-ic-divider-wrap {
+    top: 0;
+    bottom: 0;
+    left: var(--ua-ic-pos, 50%);
+    width: 0;
+    transform: translateX(-50%);
+}
+
+.ua-image-comparison-wrap[data-orientation="horizontal"] .ua-ic-divider-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    border-left-width: var(--ua-ic-line-width, 2px);
+    border-left-style: solid;
+    border-left-color: var(--ua-ic-line-color, #ffffff);
+    pointer-events: none;
+}
+
+/* Vertical Divider Positioning */
+.ua-image-comparison-wrap[data-orientation="vertical"] .ua-ic-divider-wrap {
+    left: 0;
+    right: 0;
+    top: var(--ua-ic-pos, 50%);
+    height: 0;
+    transform: translateY(-50%);
+}
+
+.ua-image-comparison-wrap[data-orientation="vertical"] .ua-ic-divider-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 0;
+    border-top-width: var(--ua-ic-line-width, 2px);
+    border-top-style: solid;
+    border-top-color: var(--ua-ic-line-color, #ffffff);
+    pointer-events: none;
+}
+
+/* Line Shadow / Glow */
+.ua-image-comparison-wrap.has-line-shadow .ua-ic-divider-line {
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.45));
+}
+
+/* Handle Button */
+.ua-ic-handle-btn {
+    position: relative;
+    z-index: 2;
+    width: var(--ua-ic-handle-size, 42px);
+    height: var(--ua-ic-handle-size, 42px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    color: #0274be;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+    transition: transform 0.16s ease, box-shadow 0.16s ease;
+    flex-shrink: 0;
+    user-select: none;
+}
+
+.ua-ic-handle-btn:hover {
+    transform: scale(1.06);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+}
+
+.ua-image-comparison-wrap.ua-is-dragging .ua-ic-handle-btn {
+    transform: scale(1.08);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* Handle Shapes */
+.ua-ic-handle-btn.ua-ic-shape-circle {
+    border-radius: 50%;
+}
+.ua-ic-handle-btn.ua-ic-shape-rounded {
+    border-radius: 8px;
+}
+.ua-ic-handle-btn.ua-ic-shape-pill {
+    border-radius: 9999px;
+    width: calc(var(--ua-ic-handle-size, 42px) * 1.35);
+}
+.ua-ic-handle-btn.ua-ic-shape-bar {
+    border-radius: 4px;
+    width: 14px;
+    height: calc(var(--ua-ic-handle-size, 42px) * 1.5);
+}
+.ua-ic-handle-btn.ua-ic-shape-bar .ua-ic-handle-arrows {
+    display: none;
+}
+.ua-image-comparison-wrap[data-orientation="vertical"] .ua-ic-handle-btn.ua-ic-shape-bar {
+    width: calc(var(--ua-ic-handle-size, 42px) * 1.5);
+    height: 14px;
+}
+
+/* Handle Arrows */
+.ua-ic-handle-arrows {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    pointer-events: none;
+}
+
+.ua-image-comparison-wrap[data-orientation="vertical"] .ua-ic-handle-arrows {
+    flex-direction: column;
+    gap: 2px;
+}
+
+.ua-ic-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.ua-ic-arrow svg {
+    display: block;
+}
+
+/* Labels */
+.ua-ic-label {
+    position: absolute;
+    z-index: 5;
+    pointer-events: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.45);
+    padding: 6px 14px;
+    border-radius: 6px;
+    transition: opacity 0.22s ease, transform 0.22s ease;
+    white-space: nowrap;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* Horizontal Alignment */
+.ua-image-comparison-wrap[data-orientation="horizontal"] .ua-ic-label-before {
+    left: var(--ua-ic-label-offset, 16px);
+}
+.ua-image-comparison-wrap[data-orientation="horizontal"] .ua-ic-label-after {
+    right: var(--ua-ic-label-offset, 16px);
+}
+
+.ua-image-comparison-wrap[data-orientation="horizontal"] .ua-ic-label.ua-ic-pos-top {
+    top: var(--ua-ic-label-offset, 16px);
+}
+.ua-image-comparison-wrap[data-orientation="horizontal"] .ua-ic-label.ua-ic-pos-bottom {
+    bottom: var(--ua-ic-label-offset, 16px);
+}
+.ua-image-comparison-wrap[data-orientation="horizontal"] .ua-ic-label.ua-ic-pos-center {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Vertical Alignment */
+.ua-image-comparison-wrap[data-orientation="vertical"] .ua-ic-label-before {
+    top: var(--ua-ic-label-offset, 16px);
+}
+.ua-image-comparison-wrap[data-orientation="vertical"] .ua-ic-label-after {
+    bottom: var(--ua-ic-label-offset, 16px);
+}
+
+.ua-image-comparison-wrap[data-orientation="vertical"] .ua-ic-label.ua-ic-pos-left {
+    left: var(--ua-ic-label-offset, 16px);
+}
+.ua-image-comparison-wrap[data-orientation="vertical"] .ua-ic-label.ua-ic-pos-right {
+    right: var(--ua-ic-label-offset, 16px);
+}
+.ua-image-comparison-wrap[data-orientation="vertical"] .ua-ic-label.ua-ic-pos-center {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* 4 Label Badge Styles */
+/* 1. Glassmorphism */
+.ua-image-comparison-wrap.ua-ic-badge-glass .ua-ic-label {
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+/* 2. Pill Capsule */
+.ua-image-comparison-wrap.ua-ic-badge-pill .ua-ic-label {
+    background: rgba(0, 0, 0, 0.68);
+    border-radius: 9999px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 6px 18px;
+}
+
+/* 3. Soft Modern Badge */
+.ua-image-comparison-wrap.ua-ic-badge-soft .ua-ic-label {
+    background: rgba(255, 255, 255, 0.92);
+    color: #0f172a;
+    border-radius: 6px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+    text-shadow: none;
+}
+
+/* 4. Minimal Clean Tag */
+.ua-image-comparison-wrap.ua-ic-badge-minimal .ua-ic-label {
+    background: rgba(0, 0, 0, 0.75);
+    border-radius: 3px;
+    padding: 4px 10px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Visibility Modes */
+/* Show on Hover Only */
+.ua-image-comparison-wrap[data-label-mode="hover"] .ua-ic-label {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(4px);
+}
+.ua-image-comparison-wrap[data-label-mode="hover"]:hover .ua-ic-label {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Auto-Hide Near Divider Handle */
+.ua-ic-label.ua-ic-label-hidden {
+    opacity: 0 !important;
+    transform: scale(0.9) !important;
+    pointer-events: none !important;
+}
+
+/* Smooth Transition during Auto Sweep / Hover Reset */
+.ua-image-comparison-wrap.ua-has-transition {
+    transition: --ua-ic-pos 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.ua-image-comparison-wrap.ua-has-transition .ua-ic-divider-wrap,
+.ua-image-comparison-wrap.ua-has-transition .ua-ic-after-layer {
+    transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
