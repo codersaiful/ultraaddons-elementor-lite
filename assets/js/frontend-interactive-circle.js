@@ -17,6 +17,13 @@
             this.$wrap = $scope.find('.ua-interactive-circle-wrap');
             if (!this.$wrap.length) return;
 
+            // Clean up any existing instance on this scope during Elementor live re-renders
+            const oldInstance = this.$scope.data('uaInteractiveCircle');
+            if (oldInstance && typeof oldInstance.destroy === 'function') {
+                oldInstance.destroy();
+            }
+            this.$scope.data('uaInteractiveCircle', this);
+
             this.$stage = this.$wrap.find('.ua-ic-orbit-stage');
             this.$nodes = this.$wrap.find('.ua-ic-node-item');
             this.$contents = this.$wrap.find('.ua-ic-content-item');
@@ -38,6 +45,13 @@
             this.init();
         }
 
+        destroy() {
+            this.stopAutoplay();
+            if (this.resizeHandler) {
+                $(window).off('resize orientationchange', this.resizeHandler);
+            }
+        }
+
         init() {
             this.layoutNodes();
             this.bindEvents();
@@ -49,12 +63,13 @@
 
             // Recalculate on window resize with debounce
             let resizeTimer;
-            $(window).on('resize.uacircle orientationchange.uacircle', () => {
+            this.resizeHandler = () => {
                 clearTimeout(resizeTimer);
                 resizeTimer = setTimeout(() => {
                     this.layoutNodes();
                 }, 100);
-            });
+            };
+            $(window).on('resize orientationchange', this.resizeHandler);
 
             // Modern ResizeObserver if supported
             if (window.ResizeObserver && this.$stage[0]) {
@@ -73,48 +88,91 @@
             const stageHeight = this.$stage.outerHeight();
             const nodeWidth = this.$nodes.first().outerWidth() || 60;
 
-            // Radius calculation ensures nodes fit comfortably along the circular perimeter
-            let radius = (stageWidth / 2) - (nodeWidth / 2);
-            if (radius <= 0) radius = 100;
+            const isHalfMoon = (this.preset === 'half_moon');
+            const isSpoke    = (this.preset === 'cyber_spoke');
+            const isPointer  = (this.preset === 'inward_pointer' || this.preset === 'pointer_badge');
 
-            const isHalfMoon = this.preset === 'half_moon';
-            const cx = stageWidth / 2;
-            const cy = isHalfMoon ? stageHeight - (nodeWidth / 2) - 10 : stageHeight / 2;
-
-            // Prepare SVG canvas for spoke lines
+            // Prepare SVG canvas
             if (this.$spokeLayer.length) {
                 this.$spokeLayer.empty();
                 this.$spokeLayer.attr('viewBox', `0 0 ${stageWidth} ${stageHeight}`);
             }
 
-            this.$nodes.each((i, el) => {
-                let angle;
-                if (isHalfMoon) {
-                    // Spread along top semicircle: from PI (left) to 2*PI (right)
-                    const step = this.total > 1 ? Math.PI / (this.total - 1) : 0;
-                    angle = Math.PI + (step * i);
-                } else {
-                    // Full 360 circle starting at 12 o'clock (-PI / 2)
-                    angle = ((2 * Math.PI) / this.total) * i - (Math.PI / 2);
-                }
+            if (isHalfMoon) {
+                const cx = stageWidth / 2;
+                const cy = stageHeight - (nodeWidth / 2) - 15;
 
-                const x = radius * Math.cos(angle);
-                const y = radius * Math.sin(angle);
+                // Calculate safe radius so nodes never overflow horizontally or vertically
+                const maxRadiusX = (stageWidth / 2) - (nodeWidth / 2) - 20;
+                const maxRadiusY = cy - (nodeWidth / 2) - 20;
+                const radius = Math.max(80, Math.min(maxRadiusX, maxRadiusY));
 
-                // Set node transform relative to stage center
-                el.style.transform = `translate(${x}px, ${y}px)`;
+                // Offset relative to CSS top: 50%
+                const yOrigin = cy - (stageHeight / 2);
 
-                // Generate SVG spoke lines if preset is cyber_spoke or enabled
+                // Draw smooth SVG half-moon arch line
                 if (this.$spokeLayer.length) {
-                    const spokeLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-                    spokeLine.setAttribute('x1', cx);
-                    spokeLine.setAttribute('y1', cy);
-                    spokeLine.setAttribute('x2', cx + x);
-                    spokeLine.setAttribute('y2', cy + y);
-                    spokeLine.setAttribute('class', `ua-ic-spoke-line ua-ic-spoke-${i}`);
-                    this.$spokeLayer[0].appendChild(spokeLine);
+                    const arch = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    arch.setAttribute('d', `M ${cx - radius} ${cy} A ${radius} ${radius} 0 0 1 ${cx + radius} ${cy}`);
+                    arch.setAttribute('class', 'ua-ic-arch-line');
+                    this.$spokeLayer[0].appendChild(arch);
                 }
-            });
+
+                this.$nodes.each((i, el) => {
+                    // Semicircle: from PI (left, 180deg) to 2*PI (right, 360deg/0deg)
+                    const step = this.total > 1 ? Math.PI / (this.total - 1) : 0;
+                    const angle = Math.PI + (step * i);
+
+                    const relX = radius * Math.cos(angle);
+                    const relY = yOrigin + (radius * Math.sin(angle));
+
+                    el.style.transform = `translate(${relX}px, ${relY}px)`;
+                });
+            } else {
+                // Full 360 circle presets (Full Orbit, Cyber Spoke, Inward Pointer, Minimal Flow)
+                let radius = (stageWidth / 2) - (nodeWidth / 2);
+                if (radius <= 0) radius = 100;
+                const cx = stageWidth / 2;
+                const cy = stageHeight / 2;
+
+                this.$nodes.each((i, el) => {
+                    // Full 360 circle starting at 12 o'clock (-PI / 2)
+                    const angle = ((2 * Math.PI) / this.total) * i - (Math.PI / 2);
+
+                    const x = radius * Math.cos(angle);
+                    const y = radius * Math.sin(angle);
+
+                    el.style.transform = `translate(${x}px, ${y}px)`;
+
+                    // Inward Pointer Badges: exact radial angle pointing into center circle
+                    if (isPointer) {
+                        const pointerRotDeg = ((angle + Math.PI) * (180 / Math.PI)) - 45;
+                        el.style.setProperty('--ua-ic-pointer-rot', `${pointerRotDeg}deg`);
+                    }
+
+                    // Cyber Spoke Network: Spoke lines & SVG junction dots
+                    if (this.$spokeLayer.length && isSpoke) {
+                        const spokeLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                        spokeLine.setAttribute('x1', cx);
+                        spokeLine.setAttribute('y1', cy);
+                        spokeLine.setAttribute('x2', cx + x);
+                        spokeLine.setAttribute('y2', cy + y);
+                        spokeLine.setAttribute('class', `ua-ic-spoke-line ua-ic-spoke-${i}`);
+                        this.$spokeLayer[0].appendChild(spokeLine);
+
+                        // Junction dot at mid orbit ring (0.65 of stage)
+                        const ringRadius = stageWidth * 0.325;
+                        const dotX = cx + (ringRadius * Math.cos(angle));
+                        const dotY = cy + (ringRadius * Math.sin(angle));
+                        const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                        dot.setAttribute('cx', dotX);
+                        dot.setAttribute('cy', dotY);
+                        dot.setAttribute('r', '4.5');
+                        dot.setAttribute('class', `ua-ic-spoke-dot ua-ic-dot-${i}`);
+                        this.$spokeLayer[0].appendChild(dot);
+                    }
+                });
+            }
 
             // Re-highlight current active spoke
             this.highlightSpoke(this.currentIndex);
@@ -123,12 +181,19 @@
         bindEvents() {
             const self = this;
 
+            let hoverDebounceTimer = null;
             this.$nodes.each(function (index) {
                 const $node = $(this);
 
                 if (self.trigger === 'hover') {
                     $node.on('mouseenter', function () {
-                        self.activate(index);
+                        clearTimeout(hoverDebounceTimer);
+                        hoverDebounceTimer = setTimeout(() => {
+                            self.activate(index);
+                        }, 40); // 40ms buffer eliminates twitchy accidental hover sweeps
+                    });
+                    $node.on('mouseleave', function () {
+                        clearTimeout(hoverDebounceTimer);
                     });
                 } else {
                     $node.on('click', function (e) {
@@ -162,8 +227,13 @@
             });
         }
 
-        activate(index) {
+        activate(index, force = false) {
             if (index < 0 || index >= this.total) return;
+
+            // Guard against redundant activations on already active item
+            if (!force && this.currentIndex === index && this.$contents.eq(index).hasClass('ua-ic-active')) {
+                return;
+            }
 
             this.currentIndex = index;
 
@@ -185,6 +255,9 @@
 
             this.$spokeLayer.find('.ua-ic-spoke-line').removeClass('ua-ic-spoke-active');
             this.$spokeLayer.find(`.ua-ic-spoke-${index}`).addClass('ua-ic-spoke-active');
+
+            this.$spokeLayer.find('.ua-ic-spoke-dot').removeClass('ua-ic-dot-active');
+            this.$spokeLayer.find(`.ua-ic-dot-${index}`).addClass('ua-ic-dot-active');
         }
 
         startAutoplay() {

@@ -16,6 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * A modern, performant, circular process and roadmap widget featuring:
  * - Dynamic trigonometry distribution (no CSS static position bloat)
+ * - Rock-solid static center stage that never tilts or flips
+ * - Counter-rotating node engine (keeps icons and labels upright at all times)
  * - 4 Visual Presets: Full Orbit, Half Moon Arch, Cyber Spoke Network, Minimal Flow
  * - Click and Hover triggers with smooth content transitions
  * - Autoplay rotation with pause-on-hover & continuous orbit animations
@@ -24,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * @package UltraAddons
  * @author Saiful Islam <codersaiful@gmail.com>
- * @version 1.0.0
+ * @version 1.0.1
  */
 class Interactive_Circle extends Base {
 
@@ -157,42 +159,70 @@ class Interactive_Circle extends Base {
         $this->add_control(
             'circle_preset',
             [
-                'label'   => esc_html__( 'Style Preset', 'ultraaddons-elementor-lite' ),
-                'type'    => Controls_Manager::SELECT,
-                'default' => 'full_orbit',
-                'options' => [
-                    'full_orbit'   => esc_html__( 'Full Orbit (360°)', 'ultraaddons-elementor-lite' ),
-                    'half_moon'    => esc_html__( 'Half Moon (Arch)', 'ultraaddons-elementor-lite' ),
-                    'cyber_spoke'  => esc_html__( 'Cyber Spoke Network', 'ultraaddons-elementor-lite' ),
-                    'minimal_flow' => esc_html__( 'Minimal Flow', 'ultraaddons-elementor-lite' ),
+                'label'       => esc_html__( 'Style Preset', 'ultraaddons-elementor-lite' ),
+                'type'        => Controls_Manager::SELECT,
+                'default'     => 'full_orbit',
+                'options'     => [
+                    'full_orbit'     => esc_html__( 'Full Orbit (360°)', 'ultraaddons-elementor-lite' ),
+                    'half_moon'      => esc_html__( 'Half Moon (Arch)', 'ultraaddons-elementor-lite' ),
+                    'cyber_spoke'    => esc_html__( 'Cyber Spoke Network', 'ultraaddons-elementor-lite' ),
+                    'inward_pointer' => esc_html__( 'Inward Pointer Badges', 'ultraaddons-elementor-lite' ),
+                    'minimal_flow'   => esc_html__( 'Minimal Flow', 'ultraaddons-elementor-lite' ),
                 ],
+                'render_type' => 'template',
             ]
         );
 
         $this->add_control(
             'trigger_type',
             [
-                'label'   => esc_html__( 'Trigger On', 'ultraaddons-elementor-lite' ),
-                'type'    => Controls_Manager::SELECT,
-                'default' => 'click',
-                'options' => [
+                'label'       => esc_html__( 'Trigger On', 'ultraaddons-elementor-lite' ),
+                'type'        => Controls_Manager::SELECT,
+                'default'     => 'click',
+                'options'     => [
                     'click' => esc_html__( 'Mouse Click', 'ultraaddons-elementor-lite' ),
                     'hover' => esc_html__( 'Mouse Hover', 'ultraaddons-elementor-lite' ),
                 ],
+                'render_type' => 'template',
             ]
         );
 
         $this->add_control(
             'transition_effect',
             [
-                'label'   => esc_html__( 'Content Transition', 'ultraaddons-elementor-lite' ),
-                'type'    => Controls_Manager::SELECT,
-                'default' => 'zoom',
-                'options' => [
-                    'zoom'     => esc_html__( 'Scale Zoom', 'ultraaddons-elementor-lite' ),
+                'label'        => esc_html__( 'Content Transition', 'ultraaddons-elementor-lite' ),
+                'type'         => Controls_Manager::SELECT,
+                'default'      => 'fade',
+                'options'      => [
                     'fade'     => esc_html__( 'Smooth Fade', 'ultraaddons-elementor-lite' ),
-                    'slide_up' => esc_html__( 'Slide Up', 'ultraaddons-elementor-lite' ),
-                    'flip'     => esc_html__( '3D Flip', 'ultraaddons-elementor-lite' ),
+                    'zoom'     => esc_html__( 'Zoom In (Scale Pop)', 'ultraaddons-elementor-lite' ),
+                    'slide_up' => esc_html__( 'Slide Up (Glide)', 'ultraaddons-elementor-lite' ),
+                    'flip'     => esc_html__( '3D Flip (Perspective)', 'ultraaddons-elementor-lite' ),
+                ],
+                'prefix_class' => 'ua-ic-trans-',
+                'render_type'  => 'template',
+            ]
+        );
+
+        $this->add_control(
+            'transition_duration',
+            [
+                'label'      => esc_html__( 'Transition Speed (ms)', 'ultraaddons-elementor-lite' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => [ 'ms' ],
+                'range'      => [
+                    'ms' => [
+                        'min'  => 150,
+                        'max'  => 1000,
+                        'step' => 25,
+                    ],
+                ],
+                'default'    => [
+                    'unit' => 'ms',
+                    'size' => 350,
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .ua-interactive-circle-wrap' => '--ua-ic-trans-duration: {{SIZE}}ms;',
                 ],
             ]
         );
@@ -317,6 +347,17 @@ class Interactive_Circle extends Base {
             ]
         );
 
+        $repeater->add_control(
+            'item_accent_color',
+            [
+                'label'     => esc_html__( 'Node Accent Color', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} {{CURRENT_ITEM}}' => '--ua-node-accent: {{VALUE}}; --ua-node-accent-rgb: {{VALUE}};',
+                ],
+            ]
+        );
+
         $this->add_control(
             'circle_items',
             [
@@ -398,21 +439,23 @@ class Interactive_Circle extends Base {
                 'label_off'    => esc_html__( 'Off', 'ultraaddons-elementor-lite' ),
                 'return_value' => 'yes',
                 'default'      => '',
+                'render_type'  => 'template',
             ]
         );
 
         $this->add_control(
             'autoplay_interval',
             [
-                'label'     => esc_html__( 'Autoplay Interval (ms)', 'ultraaddons-elementor-lite' ),
-                'type'      => Controls_Manager::NUMBER,
-                'min'       => 1000,
-                'max'       => 15000,
-                'step'      => 500,
-                'default'   => 3500,
-                'condition' => [
+                'label'       => esc_html__( 'Autoplay Interval (ms)', 'ultraaddons-elementor-lite' ),
+                'type'        => Controls_Manager::NUMBER,
+                'min'         => 1000,
+                'max'         => 15000,
+                'step'        => 500,
+                'default'     => 3500,
+                'condition'   => [
                     'autoplay' => 'yes',
                 ],
+                'render_type' => 'template',
             ]
         );
 
@@ -425,9 +468,7 @@ class Interactive_Circle extends Base {
                 'label_off'    => esc_html__( 'No', 'ultraaddons-elementor-lite' ),
                 'return_value' => 'yes',
                 'default'      => 'yes',
-                'condition'    => [
-                    'autoplay' => 'yes',
-                ],
+                'render_type'  => 'template',
             ]
         );
 
@@ -435,11 +476,16 @@ class Interactive_Circle extends Base {
             'continuous_rotation',
             [
                 'label'        => esc_html__( 'Continuous Orbit Rotation', 'ultraaddons-elementor-lite' ),
+                'description'  => esc_html__( 'Smoothly rotates the circle orbit while keeping center and node items constantly upright.', 'ultraaddons-elementor-lite' ),
                 'type'         => Controls_Manager::SWITCHER,
                 'label_on'     => esc_html__( 'On', 'ultraaddons-elementor-lite' ),
                 'label_off'    => esc_html__( 'Off', 'ultraaddons-elementor-lite' ),
                 'return_value' => 'yes',
-                'default'      => '',
+                'default'      => 'yes',
+                'condition'    => [
+                    'circle_preset!' => 'half_moon',
+                ],
+                'render_type'  => 'template',
             ]
         );
 
@@ -465,19 +511,40 @@ class Interactive_Circle extends Base {
                 ],
                 'condition'  => [
                     'continuous_rotation' => 'yes',
+                    'circle_preset!'      => 'half_moon',
                 ],
             ]
         );
 
         $this->add_control(
-            'pulse_animation',
+            'active_node_effect',
             [
-                'label'        => esc_html__( 'Radar Pulse on Active Node', 'ultraaddons-elementor-lite' ),
-                'type'         => Controls_Manager::SWITCHER,
-                'label_on'     => esc_html__( 'Yes', 'ultraaddons-elementor-lite' ),
-                'label_off'    => esc_html__( 'No', 'ultraaddons-elementor-lite' ),
-                'return_value' => 'yes',
-                'default'      => 'yes',
+                'label'       => esc_html__( 'Active Node Outer Effect', 'ultraaddons-elementor-lite' ),
+                'type'        => Controls_Manager::SELECT,
+                'default'     => 'none',
+                'options'     => [
+                    'none'        => esc_html__( 'None (Simple & Clean)', 'ultraaddons-elementor-lite' ),
+                    'pulse'       => esc_html__( 'Radar Pulse (Expanding Wave)', 'ultraaddons-elementor-lite' ),
+                    'solid_ring'  => esc_html__( 'Solid Halo Ring (Static)', 'ultraaddons-elementor-lite' ),
+                    'double_ring' => esc_html__( 'Double Concentric Ring', 'ultraaddons-elementor-lite' ),
+                    'glow'        => esc_html__( 'Breathing Glow Aura', 'ultraaddons-elementor-lite' ),
+                ],
+                'render_type' => 'template',
+            ]
+        );
+
+        $this->add_control(
+            'active_effect_color',
+            [
+                'label'     => esc_html__( 'Active Effect Color', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::COLOR,
+                'default'   => 'rgba(79, 70, 229, 0.4)',
+                'condition' => [
+                    'active_node_effect!' => 'none',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .ua-interactive-circle-wrap' => '--ua-ic-active-effect-color: {{VALUE}};',
+                ],
             ]
         );
 
@@ -490,6 +557,24 @@ class Interactive_Circle extends Base {
                 'label_off'    => esc_html__( 'Hide', 'ultraaddons-elementor-lite' ),
                 'return_value' => 'yes',
                 'default'      => 'yes',
+                'render_type'  => 'template',
+            ]
+        );
+
+        $this->add_control(
+            'node_title_position',
+            [
+                'label'       => esc_html__( 'Title Position', 'ultraaddons-elementor-lite' ),
+                'type'        => Controls_Manager::SELECT,
+                'default'     => 'inside',
+                'options'     => [
+                    'inside'  => esc_html__( 'Inside Button (Compact)', 'ultraaddons-elementor-lite' ),
+                    'outside' => esc_html__( 'Outside / Below Button', 'ultraaddons-elementor-lite' ),
+                ],
+                'condition'   => [
+                    'show_node_labels' => 'yes',
+                ],
+                'render_type' => 'template',
             ]
         );
 
@@ -640,15 +725,15 @@ class Interactive_Circle extends Base {
                 ],
                 'default'    => [
                     'unit' => 'px',
-                    'size' => 60,
+                    'size' => 70,
                 ],
                 'tablet_default' => [
                     'unit' => 'px',
-                    'size' => 48,
+                    'size' => 56,
                 ],
                 'mobile_default' => [
                     'unit' => 'px',
-                    'size' => 42,
+                    'size' => 48,
                 ],
                 'selectors'  => [
                     '{{WRAPPER}} .ua-interactive-circle-wrap' => '--ua-ic-node-size: {{SIZE}}{{UNIT}};',
@@ -659,7 +744,7 @@ class Interactive_Circle extends Base {
         $this->add_control(
             'node_icon_size',
             [
-                'label'      => esc_html__( 'Icon / Text Size', 'ultraaddons-elementor-lite' ),
+                'label'      => esc_html__( 'Icon / Number Size', 'ultraaddons-elementor-lite' ),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range'      => [
@@ -705,7 +790,7 @@ class Interactive_Circle extends Base {
         $this->add_control(
             'node_text_color',
             [
-                'label'     => esc_html__( 'Icon / Text Color', 'ultraaddons-elementor-lite' ),
+                'label'     => esc_html__( 'Icon / Number Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#4f46e5',
                 'selectors' => [
@@ -754,7 +839,7 @@ class Interactive_Circle extends Base {
         $this->add_control(
             'node_color_hover',
             [
-                'label'     => esc_html__( 'Icon / Text Color', 'ultraaddons-elementor-lite' ),
+                'label'     => esc_html__( 'Icon / Number Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ua-ic-node-btn:hover' => 'color: {{VALUE}};',
@@ -806,7 +891,7 @@ class Interactive_Circle extends Base {
         $this->add_control(
             'node_color_active',
             [
-                'label'     => esc_html__( 'Icon / Text Color', 'ultraaddons-elementor-lite' ),
+                'label'     => esc_html__( 'Icon / Number Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
@@ -834,6 +919,18 @@ class Interactive_Circle extends Base {
             ]
         );
 
+        $this->add_control(
+            'node_active_outer_ring_color',
+            [
+                'label'     => esc_html__( 'Active Outer Ring / Effect Color', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::COLOR,
+                'default'   => 'rgba(79, 70, 229, 0.4)',
+                'selectors' => [
+                    '{{WRAPPER}} .ua-interactive-circle-wrap' => '--ua-ic-active-effect-color: {{VALUE}};',
+                ],
+            ]
+        );
+
         $this->end_controls_tab();
 
         $this->end_controls_tabs();
@@ -842,20 +939,39 @@ class Interactive_Circle extends Base {
         $this->add_control(
             'heading_node_titles',
             [
-                'label'     => esc_html__( 'Node Badge Title', 'ultraaddons-elementor-lite' ),
-                'type'      => Controls_Manager::HEADING,
-                'separator' => 'before',
+                'label'       => esc_html__( 'Node Badge Title', 'ultraaddons-elementor-lite' ),
+                'type'        => Controls_Manager::HEADING,
+                'separator'   => 'before',
+                'condition'   => [
+                    'show_node_labels' => 'yes',
+                ],
             ]
         );
 
         $this->add_control(
             'node_title_color',
             [
-                'label'     => esc_html__( 'Title Color', 'ultraaddons-elementor-lite' ),
-                'type'      => Controls_Manager::COLOR,
-                'default'   => '#475569',
-                'selectors' => [
+                'label'       => esc_html__( 'Title Color', 'ultraaddons-elementor-lite' ),
+                'type'        => Controls_Manager::COLOR,
+                'selectors'   => [
                     '{{WRAPPER}} .ua-ic-node-title' => 'color: {{VALUE}};',
+                ],
+                'condition'   => [
+                    'show_node_labels' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'node_title_hover_color',
+            [
+                'label'       => esc_html__( 'Hover Title Color', 'ultraaddons-elementor-lite' ),
+                'type'        => Controls_Manager::COLOR,
+                'selectors'   => [
+                    '{{WRAPPER}} .ua-ic-node-item:hover .ua-ic-node-title' => 'color: {{VALUE}};',
+                ],
+                'condition'   => [
+                    'show_node_labels' => 'yes',
                 ],
             ]
         );
@@ -863,11 +979,13 @@ class Interactive_Circle extends Base {
         $this->add_control(
             'node_title_active_color',
             [
-                'label'     => esc_html__( 'Active Title Color', 'ultraaddons-elementor-lite' ),
-                'type'      => Controls_Manager::COLOR,
-                'default'   => '#4f46e5',
-                'selectors' => [
+                'label'       => esc_html__( 'Active Title Color', 'ultraaddons-elementor-lite' ),
+                'type'        => Controls_Manager::COLOR,
+                'selectors'   => [
                     '{{WRAPPER}} .ua-ic-node-item.ua-ic-active .ua-ic-node-title' => 'color: {{VALUE}};',
+                ],
+                'condition'   => [
+                    'show_node_labels' => 'yes',
                 ],
             ]
         );
@@ -875,8 +993,11 @@ class Interactive_Circle extends Base {
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'     => 'node_title_typography',
-                'selector' => '{{WRAPPER}} .ua-ic-node-title',
+                'name'      => 'node_title_typography',
+                'selector'  => '{{WRAPPER}} .ua-ic-node-title',
+                'condition' => [
+                    'show_node_labels' => 'yes',
+                ],
             ]
         );
 
@@ -931,6 +1052,9 @@ class Interactive_Circle extends Base {
                 'label'     => esc_html__( 'Stage Background Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
+                'condition' => [
+                    'circle_preset!' => 'half_moon',
+                ],
                 'selectors' => [
                     '{{WRAPPER}} .ua-ic-center-stage' => 'background-color: {{VALUE}};',
                 ],
@@ -940,16 +1064,22 @@ class Interactive_Circle extends Base {
         $this->add_group_control(
             Group_Control_Border::get_type(),
             [
-                'name'     => 'center_border',
-                'selector' => '{{WRAPPER}} .ua-ic-center-stage',
+                'name'      => 'center_border',
+                'selector'  => '{{WRAPPER}} .ua-ic-center-stage',
+                'condition' => [
+                    'circle_preset!' => 'half_moon',
+                ],
             ]
         );
 
         $this->add_group_control(
             Group_Control_Box_Shadow::get_type(),
             [
-                'name'     => 'center_box_shadow',
-                'selector' => '{{WRAPPER}} .ua-ic-center-stage',
+                'name'      => 'center_box_shadow',
+                'selector'  => '{{WRAPPER}} .ua-ic-center-stage',
+                'condition' => [
+                    'circle_preset!' => 'half_moon',
+                ],
             ]
         );
 
@@ -1226,19 +1356,30 @@ class Interactive_Circle extends Base {
 
         $preset            = ! empty( $settings['circle_preset'] ) ? esc_attr( $settings['circle_preset'] ) : 'full_orbit';
         $trigger           = ! empty( $settings['trigger_type'] ) ? esc_attr( $settings['trigger_type'] ) : 'click';
-        $transition        = ! empty( $settings['transition_effect'] ) ? esc_attr( $settings['transition_effect'] ) : 'zoom';
+        $transition        = ! empty( $settings['transition_effect'] ) ? esc_attr( $settings['transition_effect'] ) : 'fade';
         $autoplay          = ( 'yes' === ( $settings['autoplay'] ?? '' ) ) ? '1' : '0';
         $interval          = ! empty( $settings['autoplay_interval'] ) ? intval( $settings['autoplay_interval'] ) : 3500;
-        $pause_hover       = ( 'yes' === ( $settings['pause_on_hover'] ?? '' ) ) ? '1' : '0';
-        $orbiting          = ( 'yes' === ( $settings['continuous_rotation'] ?? '' ) ) ? 'ua-ic-orbiting' : '';
-        $pulse             = ( 'yes' === ( $settings['pulse_animation'] ?? '' ) ) ? 'ua-ic-pulse' : '';
+        $pause_hover       = ( 'yes' === ( $settings['pause_on_hover'] ?? 'yes' ) ) ? '1' : '0';
+        $orbit_val         = $settings['continuous_rotation'] ?? 'yes';
+        $orbiting          = ( 'half_moon' !== $preset ) && ( 'yes' === $orbit_val );
+        $active_effect     = ! empty( $settings['active_node_effect'] ) ? $settings['active_node_effect'] : ( ( 'yes' === ( $settings['pulse_animation'] ?? '' ) ) ? 'pulse' : 'none' );
+        $effect_cls        = ( 'none' !== $active_effect ) ? 'ua-ic-effect-' . esc_attr( $active_effect ) : '';
         $show_node_labels  = ( 'yes' === ( $settings['show_node_labels'] ?? '' ) );
+        $title_pos         = ! empty( $settings['node_title_position'] ) ? $settings['node_title_position'] : 'inside';
 
         $wrapper_classes = [
             'ua-interactive-circle-wrap',
             'ua-ic-preset-' . $preset,
             'ua-ic-trans-' . $transition,
         ];
+
+        if ( $orbiting ) {
+            $wrapper_classes[] = 'ua-ic-orbiting';
+        }
+
+        if ( '1' === $pause_hover ) {
+            $wrapper_classes[] = 'ua-ic-pause-hover';
+        }
         ?>
         <div class="<?php echo esc_attr( implode( ' ', $wrapper_classes ) ); ?>"
              data-preset="<?php echo esc_attr( $preset ); ?>"
@@ -1247,81 +1388,94 @@ class Interactive_Circle extends Base {
              data-interval="<?php echo esc_attr( $interval ); ?>"
              data-pause-hover="<?php echo esc_attr( $pause_hover ); ?>">
 
-            <div class="ua-ic-orbit-stage <?php echo esc_attr( $orbiting ); ?>">
+            <!-- Center Content Stage: Sits in dead center and NEVER rotates -->
+            <div class="ua-ic-center-stage">
+                <?php foreach ( $items as $index => $item ) :
+                    $active_cls = ( 0 === $index ) ? 'ua-ic-active' : '';
+                    $title      = $item['title'] ?? '';
+                    $subtitle   = $item['subtitle'] ?? '';
+                    $desc       = $item['description'] ?? '';
+                    $btn_text   = $item['button_text'] ?? '';
+                    $btn_url    = $item['button_url']['url'] ?? '';
+                    $is_external= ! empty( $item['button_url']['is_external'] ) ? ' target="_blank"' : '';
+                    $nofollow   = ! empty( $item['button_url']['nofollow'] ) ? ' rel="nofollow"' : '';
+                    $media      = $item['content_image'] ?? [];
+                ?>
+                    <div class="ua-ic-content-item <?php echo esc_attr( $active_cls ); ?>" data-index="<?php echo esc_attr( $index ); ?>">
+                        <?php if ( ! empty( $media['url'] ) ) : ?>
+                            <div class="ua-ic-content-media">
+                                <img src="<?php echo esc_url( $media['url'] ); ?>" alt="<?php echo esc_attr( $title ); ?>">
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if ( ! empty( $subtitle ) ) : ?>
+                            <span class="ua-ic-content-subtitle"><?php echo esc_html( $subtitle ); ?></span>
+                        <?php endif; ?>
+
+                        <?php if ( ! empty( $title ) ) : ?>
+                            <h4 class="ua-ic-content-title"><?php echo esc_html( $title ); ?></h4>
+                        <?php endif; ?>
+
+                        <?php if ( ! empty( $desc ) ) : ?>
+                            <p class="ua-ic-content-desc"><?php echo esc_html( $desc ); ?></p>
+                        <?php endif; ?>
+
+                        <?php if ( ! empty( $btn_text ) ) : ?>
+                            <a href="<?php echo ! empty( $btn_url ) ? esc_url( $btn_url ) : '#'; ?>" class="ua-ic-content-btn"<?php echo $is_external . $nofollow; ?>>
+                                <?php echo esc_html( $btn_text ); ?>
+                            </a>
+                        <?php endif; ?>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+
+            <!-- Orbit Canvas Stage: Rotates smoothly if Orbit Rotation is enabled -->
+            <div class="ua-ic-orbit-stage">
                 <!-- Background Orbit Ring -->
                 <div class="ua-ic-orbit-ring"></div>
 
                 <!-- SVG Spoke Lines Layer -->
                 <svg class="ua-ic-spoke-layer"></svg>
 
-                <!-- Center Content Stage -->
-                <div class="ua-ic-center-stage">
-                    <?php foreach ( $items as $index => $item ) :
-                        $active_cls = ( 0 === $index ) ? 'ua-ic-active' : '';
-                        $title      = $item['title'] ?? '';
-                        $subtitle   = $item['subtitle'] ?? '';
-                        $desc       = $item['description'] ?? '';
-                        $btn_text   = $item['button_text'] ?? '';
-                        $btn_url    = $item['button_url']['url'] ?? '';
-                        $is_external= ! empty( $item['button_url']['is_external'] ) ? ' target="_blank"' : '';
-                        $nofollow   = ! empty( $item['button_url']['nofollow'] ) ? ' rel="nofollow"' : '';
-                        $media      = $item['content_image'] ?? [];
-                    ?>
-                        <div class="ua-ic-content-item <?php echo esc_attr( $active_cls ); ?>" data-index="<?php echo esc_attr( $index ); ?>">
-                            <?php if ( ! empty( $media['url'] ) ) : ?>
-                                <div class="ua-ic-content-media">
-                                    <img src="<?php echo esc_url( $media['url'] ); ?>" alt="<?php echo esc_attr( $title ); ?>">
-                                </div>
-                            <?php endif; ?>
-
-                            <?php if ( ! empty( $subtitle ) ) : ?>
-                                <span class="ua-ic-content-subtitle"><?php echo esc_html( $subtitle ); ?></span>
-                            <?php endif; ?>
-
-                            <?php if ( ! empty( $title ) ) : ?>
-                                <h4 class="ua-ic-content-title"><?php echo esc_html( $title ); ?></h4>
-                            <?php endif; ?>
-
-                            <?php if ( ! empty( $desc ) ) : ?>
-                                <p class="ua-ic-content-desc"><?php echo esc_html( $desc ); ?></p>
-                            <?php endif; ?>
-
-                            <?php if ( ! empty( $btn_text ) ) : ?>
-                                <a href="<?php echo ! empty( $btn_url ) ? esc_url( $btn_url ) : '#'; ?>" class="ua-ic-content-btn"<?php echo $is_external . $nofollow; ?>>
-                                    <?php echo esc_html( $btn_text ); ?>
-                                </a>
-                            <?php endif; ?>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-
                 <!-- Orbit Nodes Container -->
                 <div class="ua-ic-nodes-wrap">
                     <?php foreach ( $items as $index => $item ) :
-                        $active_cls = ( 0 === $index ) ? 'ua-ic-active' : '';
-                        $badge_type = $item['badge_type'] ?? 'icon';
-                        $title      = $item['title'] ?? '';
+                        $active_cls    = ( 0 === $index ) ? 'ua-ic-active' : '';
+                        $badge_type    = $item['badge_type'] ?? 'icon';
+                        $title         = $item['title'] ?? '';
+                        $item_id       = $item['_id'] ?? ( $index + 1 );
+                        $custom_accent = ! empty( $item['item_accent_color'] ) ? 'style="--ua-node-accent: ' . esc_attr( $item['item_accent_color'] ) . '; --ua-node-accent-rgb: ' . esc_attr( $item['item_accent_color'] ) . ';"' : '';
                     ?>
-                        <div class="ua-ic-node-item <?php echo esc_attr( $active_cls ); ?>" data-index="<?php echo esc_attr( $index ); ?>">
-                            <div class="ua-ic-node-btn <?php echo esc_attr( $pulse ); ?>" tabindex="0" role="button" aria-label="<?php echo esc_attr( $title ); ?>">
-                                <?php if ( 'icon' === $badge_type && ! empty( $item['node_icon'] ) ) : ?>
-                                    <span class="ua-ic-node-icon">
-                                        <?php Icons_Manager::render_icon( $item['node_icon'], [ 'aria-hidden' => 'true' ] ); ?>
-                                    </span>
-                                <?php else : ?>
-                                    <span class="ua-ic-node-num">
-                                        <?php echo esc_html( $item['node_number'] ?? ( $index + 1 ) ); ?>
-                                    </span>
+                        <div class="ua-ic-node-item elementor-repeater-item-<?php echo esc_attr( $item_id ); ?> <?php echo esc_attr( $active_cls ); ?>" data-index="<?php echo esc_attr( $index ); ?>" <?php echo $custom_accent; ?>>
+                            <div class="ua-ic-node-pointer-shape"></div>
+                            <div class="ua-ic-node-rotator">
+                                <div class="ua-ic-node-btn <?php echo esc_attr( $effect_cls ); ?>" tabindex="0" role="button" aria-label="<?php echo esc_attr( $title ); ?>">
+                                    <div class="ua-ic-node-btn-inner">
+                                        <?php if ( 'icon' === $badge_type && ! empty( $item['node_icon'] ) ) : ?>
+                                            <span class="ua-ic-node-icon">
+                                                <?php Icons_Manager::render_icon( $item['node_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                                            </span>
+                                        <?php else : ?>
+                                            <span class="ua-ic-node-num">
+                                                <?php echo esc_html( $item['node_number'] ?? ( $index + 1 ) ); ?>
+                                            </span>
+                                        <?php endif; ?>
+
+                                        <?php if ( $show_node_labels && ! empty( $title ) && 'inside' === $title_pos ) : ?>
+                                            <span class="ua-ic-node-title ua-ic-title-inside"><?php echo esc_html( $title ); ?></span>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+
+                                <?php if ( $show_node_labels && ! empty( $title ) && 'outside' === $title_pos ) : ?>
+                                    <span class="ua-ic-node-title ua-ic-title-outside"><?php echo esc_html( $title ); ?></span>
                                 <?php endif; ?>
                             </div>
-
-                            <?php if ( $show_node_labels && ! empty( $title ) ) : ?>
-                                <span class="ua-ic-node-title"><?php echo esc_html( $title ); ?></span>
-                            <?php endif; ?>
                         </div>
                     <?php endforeach; ?>
                 </div>
             </div>
+
         </div>
         <?php
     }

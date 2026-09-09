@@ -11,7 +11,7 @@
 :root {
     --ua-ic-size: 500px;
     --ua-ic-center-size: 240px;
-    --ua-ic-node-size: 60px;
+    --ua-ic-node-size: 70px;
     --ua-ic-ring-border-color: rgba(99, 102, 241, 0.2);
     --ua-ic-ring-border-width: 2px;
     --ua-ic-node-bg: #ffffff;
@@ -21,6 +21,8 @@
     --ua-ic-spoke-color: rgba(99, 102, 241, 0.25);
     --ua-ic-spoke-active-color: #4f46e5;
     --ua-ic-rot-speed: 25s;
+    --ua-ic-trans-duration: 350ms;
+    --ua-ic-active-effect-color: rgba(79, 70, 229, 0.4);
 }
 
 /* ==========================================================================
@@ -55,15 +57,13 @@
     align-items: center;
     user-select: none;
     touch-action: manipulation;
+    z-index: 2;
 }
 
 /* Half Moon preset adjustment */
 .ua-interactive-circle-wrap.ua-ic-preset-half_moon .ua-ic-orbit-stage {
-    height: calc(var(--ua-ic-size, 500px) / 2 + 60px);
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    align-items: flex-end;
-    padding-bottom: 30px;
+    height: calc(var(--ua-ic-size, 500px) * 0.58 + 40px);
+    border-radius: 0;
 }
 
 /* Orbit background ring */
@@ -80,9 +80,6 @@
     transition: border-color 0.3s ease;
 }
 
-.ua-interactive-circle-wrap.ua-ic-preset-half_moon .ua-ic-orbit-ring {
-    clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
-}
 
 .ua-interactive-circle-wrap.ua-ic-preset-minimal_flow .ua-ic-orbit-ring {
     border-style: dashed;
@@ -115,20 +112,26 @@
     filter: drop-shadow(0 0 6px var(--ua-ic-spoke-active-color, #4f46e5));
 }
 
-/* Orbit continuous rotation (optional feature) */
-.ua-ic-orbit-stage.ua-ic-orbiting {
+/* ==========================================================================
+   2. Continuous Orbit Rotation & Counter-Rotation Engine
+   ========================================================================== */
+/* The orbit stage rotates smoothly */
+.ua-interactive-circle-wrap.ua-ic-orbiting .ua-ic-orbit-stage {
     animation: uaOrbitRotate var(--ua-ic-rot-speed, 25s) linear infinite;
+    transform-origin: center center;
+    will-change: transform;
 }
 
-.ua-ic-orbit-stage.ua-ic-orbiting:hover {
-    animation-play-state: paused;
-}
-
-.ua-ic-orbit-stage.ua-ic-orbiting .ua-ic-node-btn {
+/* Each node's rotator counter-rotates at the exact same rate */
+.ua-interactive-circle-wrap.ua-ic-orbiting .ua-ic-node-rotator {
     animation: uaCounterRotate var(--ua-ic-rot-speed, 25s) linear infinite;
+    transform-origin: center center;
+    will-change: transform;
 }
 
-.ua-ic-orbit-stage.ua-ic-orbiting:hover .ua-ic-node-btn {
+/* Synchronized pause-on-hover */
+.ua-interactive-circle-wrap.ua-ic-pause-hover:hover .ua-ic-orbit-stage,
+.ua-interactive-circle-wrap.ua-ic-pause-hover:hover .ua-ic-node-rotator {
     animation-play-state: paused;
 }
 
@@ -143,7 +146,7 @@
 }
 
 /* ==========================================================================
-   2. Node Items & Buttons
+   3. Node Items, Rotators & Buttons
    ========================================================================== */
 .ua-ic-nodes-wrap {
     position: absolute;
@@ -159,16 +162,25 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: var(--ua-ic-node-size, 60px);
-    height: var(--ua-ic-node-size, 60px);
-    margin-top: calc(-1 * var(--ua-ic-node-size, 60px) / 2);
-    margin-left: calc(-1 * var(--ua-ic-node-size, 60px) / 2);
+    width: var(--ua-ic-node-size, 70px);
+    height: var(--ua-ic-node-size, 70px);
+    margin-top: calc(-1 * var(--ua-ic-node-size, 70px) / 2);
+    margin-left: calc(-1 * var(--ua-ic-node-size, 70px) / 2);
     pointer-events: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.ua-ic-node-rotator {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .ua-ic-node-btn {
@@ -184,29 +196,46 @@
     align-items: center;
     text-align: center;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     outline: none;
+    padding: 4px;
+}
+
+.ua-ic-node-btn-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    gap: 3px;
+    line-height: 1;
 }
 
 .ua-ic-node-btn:hover {
-    transform: scale(1.08);
-    box-shadow: 0 8px 24px rgba(79, 70, 229, 0.22);
+    box-shadow: 0 8px 24px rgba(79, 70, 229, 0.28);
 }
 
 .ua-ic-node-item.ua-ic-active .ua-ic-node-btn {
     background-color: var(--ua-ic-node-active-bg, #4f46e5);
     color: var(--ua-ic-node-active-color, #ffffff);
-    transform: scale(1.14);
-    box-shadow: 0 10px 28px rgba(79, 70, 229, 0.36);
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.2), 0 10px 28px rgba(79, 70, 229, 0.4);
 }
 
 .ua-ic-node-icon {
-    display: inline-flex;
+    display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
+    font-size: 19px;
     line-height: 1;
+    color: inherit;
     transition: transform 0.3s ease;
+}
+
+.ua-ic-node-icon i,
+.ua-ic-node-icon svg {
+    line-height: 1;
+    display: block;
 }
 
 .ua-ic-node-icon svg {
@@ -216,16 +245,35 @@
 }
 
 .ua-ic-node-num {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     line-height: 1;
     letter-spacing: -0.02em;
+    color: inherit;
 }
 
-/* Node label / title tooltip underneath or floating */
-.ua-ic-node-title {
+/* Node Title / Label inside button (Compact mode - like Essential Addons) */
+.ua-ic-node-title.ua-ic-title-inside {
+    position: static;
+    transform: none;
+    margin: 0;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.1;
+    max-width: 88%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    color: inherit;
+    pointer-events: none;
+    transition: color 0.3s ease;
+}
+
+/* Node Title / Label outside button (Floating underneath) */
+.ua-ic-node-title.ua-ic-title-outside {
     position: absolute;
-    bottom: -28px;
+    bottom: -24px;
     left: 50%;
     transform: translateX(-50%);
     white-space: nowrap;
@@ -233,18 +281,23 @@
     font-weight: 600;
     color: #475569;
     pointer-events: none;
-    transition: color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+    transition: color 0.3s ease, opacity 0.3s ease;
     opacity: 0.85;
 }
 
-.ua-ic-node-item.ua-ic-active .ua-ic-node-title {
+.ua-ic-node-item.ua-ic-active .ua-ic-title-outside {
     color: #4f46e5;
     font-weight: 700;
     opacity: 1;
-    transform: translateX(-50%) translateY(2px);
 }
 
-/* Radar pulse animation for active node */
+/* ==========================================================================
+   Active Node Outer Effects (Radar Pulse, Solid Ring, Double Ring, Glow)
+   ========================================================================== */
+
+/* 1. Radar Pulse (Expanding Waves) */
+.ua-ic-node-item.ua-ic-active .ua-ic-effect-pulse::before,
+.ua-ic-node-item.ua-ic-active .ua-ic-effect-pulse::after,
 .ua-ic-node-item.ua-ic-active .ua-ic-pulse::before,
 .ua-ic-node-item.ua-ic-active .ua-ic-pulse::after {
     content: '';
@@ -254,12 +307,13 @@
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    border: 2px solid var(--ua-ic-node-active-bg, #4f46e5);
+    border: 2px solid var(--ua-ic-active-effect-color, var(--ua-ic-node-active-bg, #4f46e5));
     transform: translate(-50%, -50%);
     pointer-events: none;
     animation: uaPulseWave 2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
 }
 
+.ua-ic-node-item.ua-ic-active .ua-ic-effect-pulse::after,
 .ua-ic-node-item.ua-ic-active .ua-ic-pulse::after {
     animation-delay: 0.8s;
 }
@@ -267,19 +321,84 @@
 @keyframes uaPulseWave {
     0% {
         transform: translate(-50%, -50%) scale(1);
-        opacity: 0.8;
+        opacity: 0.85;
     }
     100% {
-        transform: translate(-50%, -50%) scale(1.7);
+        transform: translate(-50%, -50%) scale(1.65);
         opacity: 0;
     }
 }
 
+/* 2. Solid Halo Ring (Static Clean Outline) */
+.ua-ic-node-item.ua-ic-active .ua-ic-effect-solid_ring::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    border-radius: 50%;
+    border: 2.5px solid var(--ua-ic-active-effect-color, var(--ua-ic-node-active-bg, #4f46e5));
+    pointer-events: none;
+    box-shadow: 0 0 10px var(--ua-ic-active-effect-color, rgba(79, 70, 229, 0.3));
+}
+
+/* 3. Double Concentric Ring (Modern Tech Look) */
+.ua-ic-node-item.ua-ic-active .ua-ic-effect-double_ring::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 50%;
+    border: 2px solid var(--ua-ic-active-effect-color, var(--ua-ic-node-active-bg, #4f46e5));
+    pointer-events: none;
+}
+.ua-ic-node-item.ua-ic-active .ua-ic-effect-double_ring::after {
+    content: '';
+    position: absolute;
+    top: -11px;
+    left: -11px;
+    right: -11px;
+    bottom: -11px;
+    border-radius: 50%;
+    border: 1px solid var(--ua-ic-active-effect-color, rgba(79, 70, 229, 0.4));
+    pointer-events: none;
+}
+
+/* 4. Breathing Glow Aura */
+.ua-ic-node-item.ua-ic-active .ua-ic-effect-glow::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 50%;
+    box-shadow: 0 0 20px 6px var(--ua-ic-active-effect-color, rgba(79, 70, 229, 0.5));
+    pointer-events: none;
+    animation: uaGlowBreathe 2.4s ease-in-out infinite alternate;
+}
+@keyframes uaGlowBreathe {
+    0% {
+        opacity: 0.4;
+        transform: scale(0.96);
+    }
+    100% {
+        opacity: 0.95;
+        transform: scale(1.06);
+    }
+}
+
 /* ==========================================================================
-   3. Center Content Stage
+   4. Center Content Stage (STAYS COMPLETELY STATIC IN DEAD CENTER)
    ========================================================================== */
 .ua-ic-center-stage {
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: var(--ua-ic-center-size, 240px);
     height: var(--ua-ic-center-size, 240px);
     border-radius: 50%;
@@ -289,17 +408,13 @@
     text-align: center;
     background: #ffffff;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-    z-index: 3;
+    z-index: 6;
     overflow: hidden;
     padding: 24px;
     box-sizing: border-box;
+    pointer-events: auto;
 }
 
-.ua-interactive-circle-wrap.ua-ic-preset-half_moon .ua-ic-center-stage {
-    margin-bottom: 0;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-}
 
 .ua-ic-content-item {
     position: absolute;
@@ -315,57 +430,121 @@
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transform: scale(0.92);
-    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.4s;
+    transform: none;
+    /* Outgoing: Fast clean exit in 0.16s so old text clears before new text enters */
+    transition: opacity 0.16s cubic-bezier(0.4, 0, 1, 1), visibility 0.16s;
+    will-change: opacity, transform;
 }
 
 .ua-ic-content-item.ua-ic-active {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
-    transform: scale(1);
+    transform: none;
+    /* Incoming: Staggered 0.08s delay eliminates ghosting; Apple fluid easing curve */
+    transition: opacity var(--ua-ic-trans-duration, 350ms) cubic-bezier(0.16, 1, 0.3, 1) 0.08s,
+                visibility var(--ua-ic-trans-duration, 350ms) ease;
 }
 
-/* Transitions for content change */
+/* --------------------------------------------------------------------------
+   Content Transitions (Fade, Zoom In, Slide Up, 3D Flip)
+   -------------------------------------------------------------------------- */
+
+/* 1. Smooth Fade: Gentle cross-dissolve */
+.ua-ic-trans-fade .ua-ic-content-item,
 .ua-interactive-circle-wrap.ua-ic-trans-fade .ua-ic-content-item {
+    opacity: 0;
+    visibility: hidden;
     transform: none;
+    transition: opacity 0.22s ease, visibility 0.22s ease;
 }
+.ua-ic-trans-fade .ua-ic-content-item.ua-ic-active,
 .ua-interactive-circle-wrap.ua-ic-trans-fade .ua-ic-content-item.ua-ic-active {
+    opacity: 1;
+    visibility: visible;
     transform: none;
+    transition: opacity var(--ua-ic-trans-duration, 380ms) cubic-bezier(0.16, 1, 0.3, 1),
+                visibility var(--ua-ic-trans-duration, 380ms) ease;
 }
 
+/* 2. Zoom In (Scale Pop): Distinct scale from 76% to 100% with lively pop */
+.ua-ic-trans-zoom .ua-ic-content-item,
+.ua-interactive-circle-wrap.ua-ic-trans-zoom .ua-ic-content-item {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.76);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+}
+.ua-ic-trans-zoom .ua-ic-content-item.ua-ic-active,
+.ua-interactive-circle-wrap.ua-ic-trans-zoom .ua-ic-content-item.ua-ic-active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    transition: opacity var(--ua-ic-trans-duration, 380ms) cubic-bezier(0.16, 1, 0.3, 1),
+                transform var(--ua-ic-trans-duration, 380ms) cubic-bezier(0.34, 1.35, 0.64, 1),
+                visibility var(--ua-ic-trans-duration, 380ms) ease;
+}
+
+/* 3. Slide Up (Glide): Glides up 28px smoothly into place */
+.ua-ic-trans-slide_up .ua-ic-content-item,
 .ua-interactive-circle-wrap.ua-ic-trans-slide_up .ua-ic-content-item {
-    transform: translateY(20px);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(28px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
 }
+.ua-ic-trans-slide_up .ua-ic-content-item.ua-ic-active,
 .ua-interactive-circle-wrap.ua-ic-trans-slide_up .ua-ic-content-item.ua-ic-active {
+    opacity: 1;
+    visibility: visible;
     transform: translateY(0);
+    transition: opacity var(--ua-ic-trans-duration, 380ms) cubic-bezier(0.16, 1, 0.3, 1),
+                transform var(--ua-ic-trans-duration, 380ms) cubic-bezier(0.16, 1, 0.3, 1),
+                visibility var(--ua-ic-trans-duration, 380ms) ease;
 }
 
-.ua-interactive-circle-wrap.ua-ic-trans-flip .ua-ic-content-item {
-    transform: perspective(600px) rotateY(40deg);
+/* 4. 3D Flip: True 3D perspective rotation (rotates in from 65deg) */
+.ua-ic-trans-flip .ua-ic-center-stage,
+.ua-interactive-circle-wrap.ua-ic-trans-flip .ua-ic-center-stage {
+    perspective: 800px;
 }
+.ua-ic-trans-flip .ua-ic-content-item,
+.ua-interactive-circle-wrap.ua-ic-trans-flip .ua-ic-content-item {
+    opacity: 0;
+    visibility: hidden;
+    transform: perspective(800px) rotateY(65deg) scale(0.85);
+    transform-origin: center center;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+}
+.ua-ic-trans-flip .ua-ic-content-item.ua-ic-active,
 .ua-interactive-circle-wrap.ua-ic-trans-flip .ua-ic-content-item.ua-ic-active {
-    transform: perspective(600px) rotateY(0deg);
+    opacity: 1;
+    visibility: visible;
+    transform: perspective(800px) rotateY(0deg) scale(1);
+    transform-origin: center center;
+    transition: opacity var(--ua-ic-trans-duration, 420ms) cubic-bezier(0.16, 1, 0.3, 1),
+                transform var(--ua-ic-trans-duration, 420ms) cubic-bezier(0.16, 1, 0.3, 1),
+                visibility var(--ua-ic-trans-duration, 420ms) ease;
 }
 
 /* Content Elements */
 .ua-ic-content-media {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .ua-ic-content-media img {
-    max-width: 60px;
-    max-height: 60px;
+    max-width: 55px;
+    max-height: 55px;
     object-fit: contain;
     border-radius: 8px;
 }
 
 .ua-ic-content-media i,
 .ua-ic-content-media svg {
-    font-size: 32px;
+    font-size: 28px;
     color: #4f46e5;
 }
 
@@ -421,13 +600,245 @@
 }
 
 /* ==========================================================================
-   4. Responsive Styles
+   5. Presets Styling
+   (Full Orbit, Half Moon Arch, Cyber Spoke, Inward Pointer Badges, Minimal Flow)
+   ========================================================================== */
+
+/* Pointer Shape default: hidden on normal presets */
+.ua-ic-node-pointer-shape {
+    display: none;
+}
+
+/* --------------------------------------------------------------------------
+   5.1. Preset: Half Moon (Arch)
+   -------------------------------------------------------------------------- */
+.ua-interactive-circle-wrap.ua-ic-preset-half_moon .ua-ic-orbit-ring {
+    display: none;
+}
+
+.ua-interactive-circle-wrap.ua-ic-preset-half_moon .ua-ic-orbit-stage,
+.ua-interactive-circle-wrap.ua-ic-preset-half_moon .ua-ic-node-rotator {
+    animation: none !important;
+}
+
+.ua-interactive-circle-wrap.ua-ic-preset-half_moon .ua-ic-arch-line {
+    fill: none;
+    stroke: var(--ua-ic-ring-border-color, rgba(99, 102, 241, 0.3));
+    stroke-width: var(--ua-ic-ring-border-width, 3px);
+    stroke-linecap: round;
+    filter: drop-shadow(0 2px 8px rgba(99, 102, 241, 0.15));
+}
+
+.ua-interactive-circle-wrap.ua-ic-preset-half_moon .ua-ic-nodes-wrap {
+    z-index: 10;
+}
+
+.ua-interactive-circle-wrap.ua-ic-preset-half_moon .ua-ic-node-item {
+    z-index: 10;
+}
+
+.ua-interactive-circle-wrap.ua-ic-preset-half_moon .ua-ic-center-stage {
+    top: auto !important;
+    bottom: 12px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: min(320px, 64%) !important;
+    max-width: 320px !important;
+    height: auto !important;
+    min-height: 140px !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 10px !important;
+    text-align: center;
+    pointer-events: none;
+    z-index: 5;
+    overflow: visible;
+}
+
+.ua-interactive-circle-wrap.ua-ic-preset-half_moon .ua-ic-content-item {
+    padding: 0 5px;
+    justify-content: flex-end;
+}
+
+.ua-interactive-circle-wrap.ua-ic-preset-half_moon .ua-ic-content-btn {
+    pointer-events: auto;
+}
+
+/* --------------------------------------------------------------------------
+   5.2. Preset: Cyber Spoke Network
+   -------------------------------------------------------------------------- */
+.ua-interactive-circle-wrap.ua-ic-preset-cyber_spoke .ua-ic-spoke-line {
+    stroke: var(--ua-ic-spoke-color, rgba(99, 102, 241, 0.3));
+    stroke-width: 1.5px;
+    stroke-dasharray: 4 4;
+}
+
+.ua-interactive-circle-wrap.ua-ic-preset-cyber_spoke .ua-ic-spoke-line.ua-ic-spoke-active {
+    stroke: var(--ua-ic-spoke-active-color, #4f46e5);
+    stroke-width: 2.5px;
+    stroke-dasharray: none;
+    filter: drop-shadow(0 0 8px var(--ua-ic-spoke-active-color, #4f46e5));
+}
+
+.ua-interactive-circle-wrap.ua-ic-preset-cyber_spoke .ua-ic-spoke-dot {
+    fill: #ffffff;
+    stroke: var(--ua-ic-spoke-color, #6366f1);
+    stroke-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.ua-interactive-circle-wrap.ua-ic-preset-cyber_spoke .ua-ic-spoke-dot.ua-ic-dot-active {
+    fill: var(--ua-ic-spoke-active-color, #4f46e5);
+    stroke: #ffffff;
+    stroke-width: 2.5px;
+    filter: drop-shadow(0 0 6px var(--ua-ic-spoke-active-color, #4f46e5));
+    r: 6;
+}
+
+/* --------------------------------------------------------------------------
+   5.3. Preset: Inward Pointer Badges (Inspired by Essential Addons Preset 4)
+   -------------------------------------------------------------------------- */
+.ua-interactive-circle-wrap.ua-ic-preset-inward_pointer .ua-ic-orbit-ring,
+.ua-interactive-circle-wrap.ua-ic-preset-inward_pointer .ua-ic-spoke-layer {
+    display: none;
+}
+
+.ua-interactive-circle-wrap.ua-ic-preset-inward_pointer .ua-ic-center-stage {
+    width: clamp(260px, 58%, 320px);
+    height: clamp(260px, 58%, 320px);
+    border-radius: 50%;
+    background: #ffffff;
+    border: 3px solid #e2e8f0;
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+}
+
+/* Default vibrant badge color sequence for inward_pointer */
+.ua-interactive-circle-wrap.ua-ic-preset-inward_pointer .ua-ic-node-item:nth-child(8n+1) { --ua-node-accent: #10b981; --ua-node-accent-rgb: 16, 185, 129; }
+.ua-interactive-circle-wrap.ua-ic-preset-inward_pointer .ua-ic-node-item:nth-child(8n+2) { --ua-node-accent: #2563eb; --ua-node-accent-rgb: 37, 99, 235; }
+.ua-interactive-circle-wrap.ua-ic-preset-inward_pointer .ua-ic-node-item:nth-child(8n+3) { --ua-node-accent: #6366f1; --ua-node-accent-rgb: 99, 102, 241; }
+.ua-interactive-circle-wrap.ua-ic-preset-inward_pointer .ua-ic-node-item:nth-child(8n+4) { --ua-node-accent: #f59e0b; --ua-node-accent-rgb: 245, 158, 11; }
+.ua-interactive-circle-wrap.ua-ic-preset-inward_pointer .ua-ic-node-item:nth-child(8n+5) { --ua-node-accent: #e11d48; --ua-node-accent-rgb: 225, 29, 72; }
+.ua-interactive-circle-wrap.ua-ic-preset-inward_pointer .ua-ic-node-item:nth-child(8n+6) { --ua-node-accent: #7c3aed; --ua-node-accent-rgb: 124, 58, 237; }
+.ua-interactive-circle-wrap.ua-ic-preset-inward_pointer .ua-ic-node-item:nth-child(8n+7) { --ua-node-accent: #06b6d4; --ua-node-accent-rgb: 6, 182, 212; }
+.ua-interactive-circle-wrap.ua-ic-preset-inward_pointer .ua-ic-node-item:nth-child(8n+8) { --ua-node-accent: #ec4899; --ua-node-accent-rgb: 236, 72, 153; }
+
+/* Inward-pointing teardrop pin badge shape */
+.ua-interactive-circle-wrap.ua-ic-preset-inward_pointer .ua-ic-node-pointer-shape {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50% 50% 0 50%;
+    background: var(--ua-node-accent, #4f46e5);
+    transform: rotate(var(--ua-ic-pointer-rot, 0deg));
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    transition: transform 0.4s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.ua-interactive-circle-wrap.ua-ic-preset-inward_pointer .ua-ic-node-item:hover .ua-ic-node-pointer-shape {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+    filter: brightness(1.05);
+}
+
+.ua-interactive-circle-wrap.ua-ic-preset-inward_pointer .ua-ic-node-item.ua-ic-active .ua-ic-node-pointer-shape {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.22), 0 0 0 3px rgba(255, 255, 255, 0.7);
+    filter: brightness(1.08);
+}
+
+/* Inner white circular button */
+.ua-interactive-circle-wrap.ua-ic-preset-inward_pointer .ua-ic-node-rotator {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ua-interactive-circle-wrap.ua-ic-preset-inward_pointer .ua-ic-node-btn {
+    width: 76%;
+    height: 76%;
+    border-radius: 50%;
+    background-color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.ua-interactive-circle-wrap.ua-ic-preset-inward_pointer .ua-ic-node-btn-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    gap: 3px;
+}
+
+.ua-interactive-circle-wrap.ua-ic-preset-inward_pointer .ua-ic-node-icon {
+    color: var(--ua-node-accent, inherit);
+    font-size: 18px;
+    line-height: 1;
+    transition: transform 0.25s ease;
+}
+
+.ua-interactive-circle-wrap.ua-ic-preset-inward_pointer .ua-ic-node-num {
+    color: var(--ua-node-accent, inherit);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.ua-interactive-circle-wrap.ua-ic-preset-inward_pointer .ua-ic-node-title.ua-ic-title-inside {
+    font-size: 10.5px;
+    font-weight: 600;
+    margin-top: 2px;
+    max-width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ua-interactive-circle-wrap.ua-ic-preset-inward_pointer .ua-ic-node-item:hover .ua-ic-node-btn {
+    transform: scale(1.04);
+}
+
+.ua-interactive-circle-wrap.ua-ic-preset-inward_pointer .ua-ic-node-item.ua-ic-active .ua-ic-node-btn {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+.ua-interactive-circle-wrap.ua-ic-preset-inward_pointer .ua-ic-node-item.ua-ic-active .ua-ic-node-title.ua-ic-title-inside {
+    font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   5.4. Preset: Minimal Flow
+   -------------------------------------------------------------------------- */
+.ua-interactive-circle-wrap.ua-ic-preset-minimal_flow .ua-ic-node-btn {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+/* ==========================================================================
+   6. Responsive Styles
    ========================================================================== */
 @media (max-width: 767px) {
     .ua-ic-orbit-stage {
         --ua-ic-size: 360px;
         --ua-ic-center-size: 180px;
-        --ua-ic-node-size: 48px;
+        --ua-ic-node-size: 56px;
     }
     
     .ua-ic-content-title {
@@ -440,21 +851,25 @@
         margin-bottom: 8px;
     }
 
-    .ua-ic-node-title {
+    .ua-ic-node-title.ua-ic-title-inside {
+        font-size: 9px;
+    }
+
+    .ua-ic-node-title.ua-ic-title-outside {
         font-size: 10px;
-        bottom: -22px;
+        bottom: -20px;
     }
 }
 
 @media (max-width: 480px) {
     .ua-ic-orbit-stage {
         --ua-ic-size: 310px;
-        --ua-ic-center-size: 155px;
-        --ua-ic-node-size: 42px;
+        --ua-ic-center-size: 150px;
+        --ua-ic-node-size: 48px;
     }
 
     .ua-ic-node-icon {
-        font-size: 16px;
+        font-size: 15px;
     }
 
     .ua-ic-node-num {
@@ -467,7 +882,7 @@
     }
 
     .ua-ic-content-desc {
-        display: none; /* Hide long desc on very tiny screens for crisp layout */
+        display: none;
     }
 
     .ua-ic-content-btn {
