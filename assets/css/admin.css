@@ -1319,3 +1319,10 @@ div.ua-sectioon-content[free_pro='free-pro-all'] .ua-option-item{display: block;
 .about-wrap .notice, .about-wrap div.error, .about-wrap div.updated {
     display: block!important;
 }
+
+/* Fallback for table widget icons */
+.ua-option-icon.uicon-table:before,
+.ua-option-icon.eicon-table:before {
+    content: '\e860';
+    font-family: eicons;
+}

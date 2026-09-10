@@ -117,6 +117,16 @@ $ultraaddons_widgetsArray = [
                 __( 'General', 'ultraaddons-elementor-lite' ),
             ],
     ],
+
+    'Data_Table' => [
+            'name'  => __( 'Data Table', 'ultraaddons-elementor-lite' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-table',
+            'badge'     => 'new',
+            'cat'       => [
+                __( 'General', 'ultraaddons-elementor-lite' ),
+            ],
+    ],
     
     'Product_Table' => [
             'name'  => __( 'Product Table', 'ultraaddons-elementor-lite' ),

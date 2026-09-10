@@ -1,0 +1,373 @@
+/**
+ * UltraAddons - Data Table Widget Stylesheet
+ *
+ * @package UltraAddons
+ * @version 2.0.4
+ * @author Saiful Islam <codersaiful@gmail.com>
+ */
+
+/* ==========================================================================
+   1. Wrapper & Alignment
+   ========================================================================== */
+.ua-data-table-wrapper {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.elementor-widget-ultraaddons-data-table.ua-table-align-left .ua-data-table-wrapper {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.elementor-widget-ultraaddons-data-table.ua-table-align-center .ua-data-table-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.elementor-widget-ultraaddons-data-table.ua-table-align-right .ua-data-table-wrapper {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+/* ==========================================================================
+   2. Toolbar & Export Button
+   ========================================================================== */
+.ua-table-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.ua-table-export-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #334155;
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.ua-table-export-btn:hover {
+    color: #0f172a;
+    background-color: #f1f5f9;
+    border-color: #94a3b8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+}
+
+.ua-table-export-btn i {
+    font-size: 14px;
+}
+
+/* ==========================================================================
+   3. Table Container & Base Table
+   ========================================================================== */
+.ua-table-responsive-container {
+    position: relative;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background: #ffffff;
+}
+
+/* Custom subtle scrollbar */
+.ua-table-responsive-container::-webkit-scrollbar {
+    height: 6px;
+}
+
+.ua-table-responsive-container::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 4px;
+}
+
+.ua-table-responsive-container::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.ua-table-responsive-container::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+.ua-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: left;
+    margin: 0;
+}
+
+/* ==========================================================================
+   4. Table Header (TH)
+   ========================================================================== */
+.ua-table-head {
+    background-color: #1e293b;
+}
+
+.ua-table-head-row {
+    margin: 0;
+}
+
+.ua-table-th {
+    padding: 14px 18px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #1e293b;
+    border-bottom: 1px solid #334155;
+    vertical-align: middle;
+    box-sizing: border-box;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.ua-th-inner {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.ua-header-media {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.ua-header-img img {
+    display: inline-block;
+    vertical-align: middle;
+    object-fit: contain;
+}
+
+.ua-header-text {
+    flex-grow: 1;
+}
+
+/* Sorting indicators */
+.ua-has-sorting .ua-table-th {
+    cursor: pointer;
+    user-select: none;
+}
+
+.ua-has-sorting .ua-table-th:hover {
+    background-color: #0f172a;
+}
+
+.ua-sort-indicator {
+    position: relative;
+    display: inline-block;
+    width: 10px;
+    height: 14px;
+    margin-left: 6px;
+    vertical-align: middle;
+    opacity: 0.35;
+    transition: opacity 0.2s ease;
+}
+
+.ua-sort-indicator::before,
+.ua-sort-indicator::after {
+    content: '';
+    position: absolute;
+    left: 1px;
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+}
+
+.ua-sort-indicator::before {
+    top: 1px;
+    border-bottom: 5px solid currentColor;
+}
+
+.ua-sort-indicator::after {
+    bottom: 1px;
+    border-top: 5px solid currentColor;
+}
+
+.ua-table-th:hover .ua-sort-indicator {
+    opacity: 0.7;
+}
+
+.ua-table-th.ua-sorted-asc .ua-sort-indicator {
+    opacity: 1;
+}
+
+.ua-table-th.ua-sorted-asc .ua-sort-indicator::before {
+    border-bottom-color: #38bdf8;
+}
+
+.ua-table-th.ua-sorted-asc .ua-sort-indicator::after {
+    display: none;
+}
+
+.ua-table-th.ua-sorted-desc .ua-sort-indicator {
+    opacity: 1;
+}
+
+.ua-table-th.ua-sorted-desc .ua-sort-indicator::before {
+    display: none;
+}
+
+.ua-table-th.ua-sorted-desc .ua-sort-indicator::after {
+    border-top-color: #38bdf8;
+}
+
+/* ==========================================================================
+   5. Table Body & Cells (TD)
+   ========================================================================== */
+.ua-table-row {
+    transition: background-color 0.2s ease;
+}
+
+/* Zebra Striping */
+.ua-table-row:nth-child(odd) .ua-table-td {
+    background-color: #ffffff;
+    color: #334155;
+}
+
+.ua-table-row:nth-child(even) .ua-table-td {
+    background-color: #f8fafc;
+    color: #334155;
+}
+
+.ua-table-row:hover .ua-table-td {
+    background-color: #f1f5f9;
+}
+
+.ua-table-td {
+    padding: 14px 18px;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: middle;
+    box-sizing: border-box;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.ua-td-content-wrap {
+    display: block;
+    width: 100%;
+}
+
+.ua-cell-content {
+    display: inline-block;
+    width: 100%;
+    word-break: break-word;
+}
+
+.ua-table-td a {
+    color: #2563eb;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.ua-table-td a:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+}
+
+.ua-cell-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.ua-cell-icon i {
+    font-size: 18px;
+    color: #10b981;
+}
+
+.ua-cell-icon svg {
+    width: 18px;
+    height: 18px;
+    fill: #10b981;
+}
+
+/* Mobile Header Label hidden on desktop */
+.ua-mobile-th {
+    display: none;
+}
+
+/* ==========================================================================
+   6. Mobile Responsive: Stack / Card View
+   ========================================================================== */
+.ua-is-mobile-card .ua-table-responsive-container {
+    overflow-x: visible;
+    border: none;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none !important;
+}
+
+.ua-is-mobile-card .ua-data-table {
+    display: block;
+    width: 100%;
+}
+
+.ua-is-mobile-card .ua-table-head {
+    display: none;
+}
+
+.ua-is-mobile-card .ua-table-body {
+    display: block;
+    width: 100%;
+}
+
+.ua-is-mobile-card .ua-table-row {
+    display: block;
+    margin-bottom: 16px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+}
+
+.ua-is-mobile-card .ua-table-td {
+    display: block;
+    width: 100% !important;
+    border-bottom: 1px solid #f1f5f9;
+    padding: 12px 16px;
+}
+
+.ua-is-mobile-card .ua-table-row .ua-table-td:last-child {
+    border-bottom: none;
+}
+
+.ua-is-mobile-card .ua-td-content-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.ua-is-mobile-card .ua-mobile-th {
+    display: inline-block;
+    flex-shrink: 0;
+    font-weight: 600;
+    font-size: 13px;
+    color: #64748b;
+    text-align: left;
+}
+
+.ua-is-mobile-card .ua-cell-content {
+    display: block;
+    text-align: right;
+    flex-grow: 1;
+}
