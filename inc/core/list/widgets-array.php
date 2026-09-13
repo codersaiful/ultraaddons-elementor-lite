@@ -350,15 +350,7 @@ $ultraaddons_widgetsArray = [
                 __( 'General', 'ultraaddons-elementor-lite' ),
             ],
     ],
-    
-    'Timeline' => [
-            'name'  => __( 'Timeline', 'ultraaddons-elementor-lite' ),
-            'is_pro'   => false,
-            'icon'      => 'eicon-time-line',
-            'cat'       => [
-                __( 'General', 'ultraaddons-elementor-lite' ),
-            ],
-    ],
+
     
     'Image_Accordion' => [
             'name'  => __( 'Image Accordion', 'ultraaddons-elementor-lite' ),
@@ -556,14 +548,7 @@ $ultraaddons_widgetsArray = [
                 __( 'Advance', 'ultraaddons-elementor-lite' ),
             ],
     ],
-    'Post_Timeline' => [
-            'name'  => __( 'Post Timeline', 'ultraaddons-elementor-lite' ),
-            'is_pro'   => false,
-            'icon'      => 'eicon-time-line',
-            'cat'       => [
-                __( 'General', 'ultraaddons-elementor-lite' ),
-            ],
-    ],
+
     'Product_Flip_Carousel' => [
             'name'  => __( 'Product Flip Carousel', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
