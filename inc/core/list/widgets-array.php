@@ -50,6 +50,16 @@ $ultraaddons_widgetsArray = [
             ],
     ],
     
+    'Reading_Progress_Bar' => [
+            'name'  => __( 'Reading Progress', 'ultraaddons-elementor-lite' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-scroll',
+            'badge'     => 'new',
+            'cat'       => [
+                __( 'General', 'ultraaddons-elementor-lite' ),
+            ],
+    ],
+    
     /* 'Advance_List' => [
             'name'  => __( 'Advance List', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,

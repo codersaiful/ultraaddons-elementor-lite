@@ -1307,6 +1307,101 @@
 
             EF.hooks.addAction( 'frontend/element_ready/ultraaddons-advanced-tabs.default', UltraAddonsAdvancedTabs );
 
+            /**
+             * UltraAddons Reading Progress Bar Handler
+             *
+             * @param {jQuery} $scope
+             * @param {jQuery} $
+             */
+            var UltraAddonsReadingProgressBar = function( $scope, $ ) {
+                var $wrap = $scope.find( '.ua-reading-progress-bar-wrap' );
+                if ( ! $wrap.length ) {
+                    return;
+                }
+
+                var $fill = $wrap.find( '.ua-reading-progress-bar-fill' ),
+                    targetType = $wrap.data( 'target-type' ) || 'page',
+                    targetSelector = $wrap.data( 'target-selector' ) || '.entry-content',
+                    position = $wrap.data( 'position' ) || 'top',
+                    offset = parseFloat( $wrap.data( 'offset' ) ) || 0,
+                    instanceId = $scope.data( 'id' ) || Math.floor( Math.random() * 10000 ),
+                    eventNamespace = 'scroll.uaRPB_' + instanceId + ' resize.uaRPB_' + instanceId,
+                    ticking = false;
+
+                function updatePosition() {
+                    if ( position === 'top' ) {
+                        var $adminBar = $( '#wpadminbar' );
+                        var adminBarH = ( $adminBar.length && $adminBar.css( 'position' ) === 'fixed' ) ? $adminBar.outerHeight() : 0;
+                        $wrap.css( 'top', ( adminBarH + offset ) + 'px' );
+                    } else {
+                        $wrap.css( 'bottom', offset + 'px' );
+                    }
+                }
+
+                function calculateProgress() {
+                    var progress = 0;
+                    var winScrollTop = $( window ).scrollTop();
+                    var winHeight = $( window ).height();
+
+                    if ( targetType === 'selector' && $( targetSelector ).length ) {
+                        var $target = $( targetSelector ).first();
+                        var targetTop = $target.offset().top;
+                        var targetHeight = $target.outerHeight();
+                        var effectiveScroll = winScrollTop - targetTop;
+                        var maxScroll = targetHeight - winHeight;
+
+                        if ( maxScroll <= 0 ) {
+                            maxScroll = targetHeight;
+                            effectiveScroll = winScrollTop + winHeight - targetTop;
+                        }
+
+                        if ( effectiveScroll <= 0 ) {
+                            progress = 0;
+                        } else if ( effectiveScroll >= maxScroll ) {
+                            progress = 100;
+                        } else {
+                            progress = ( effectiveScroll / maxScroll ) * 100;
+                        }
+                    } else {
+                        var docHeight = $( document ).height();
+                        var maxScroll = docHeight - winHeight;
+                        if ( maxScroll > 0 ) {
+                            progress = ( winScrollTop / maxScroll ) * 100;
+                        } else {
+                            progress = 100;
+                        }
+                    }
+
+                    progress = Math.min( 100, Math.max( 0, progress ) );
+                    $fill.css( 'width', progress + '%' );
+                    ticking = false;
+                }
+
+                function requestTick() {
+                    if ( ! ticking ) {
+                        window.requestAnimationFrame( calculateProgress );
+                        ticking = true;
+                    }
+                }
+
+                // Remove previous listener for this instance (prevents duplication on re-render)
+                $( window ).off( eventNamespace );
+
+                updatePosition();
+                calculateProgress();
+
+                $( window ).on( eventNamespace, function() {
+                    updatePosition();
+                    requestTick();
+                } );
+
+                $scope.on( 'remove', function() {
+                    $( window ).off( eventNamespace );
+                } );
+            };
+
+            EF.hooks.addAction( 'frontend/element_ready/ultraaddons-reading-progress-bar.default', UltraAddonsReadingProgressBar );
+
     });// Init hook wrapup
    
 

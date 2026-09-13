@@ -1,0 +1,37 @@
+/**
+ * UltraAddons Reading Progress Bar Widget Stylesheet
+ *
+ * @package UltraAddons
+ * @since 1.1.0.9
+ */
+
+.ua-reading-progress-bar-wrap {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    pointer-events: none;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.ua-reading-progress-bar-wrap.ua-rpb-pos-top {
+    top: 0;
+    bottom: auto;
+}
+
+.ua-reading-progress-bar-wrap.ua-rpb-pos-bottom {
+    bottom: 0;
+    top: auto;
+}
+
+.ua-reading-progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    will-change: width;
+    transition: width 60ms linear;
+    pointer-events: none;
+    box-sizing: border-box;
+}
