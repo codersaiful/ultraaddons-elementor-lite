@@ -111,6 +111,10 @@ class Loader {
         // Register Mailchimp AJAX subscription handlers early
         add_action( 'wp_ajax_ultraaddons_mailchimp_subscribe', [ $this, 'handle_mailchimp_ajax' ] );
         add_action( 'wp_ajax_nopriv_ultraaddons_mailchimp_subscribe', [ $this, 'handle_mailchimp_ajax' ] );
+
+        // Register Timeline AJAX handlers early
+        add_action( 'wp_ajax_ua_timeline_load_posts', [ $this, 'handle_timeline_ajax' ] );
+        add_action( 'wp_ajax_nopriv_ua_timeline_load_posts', [ $this, 'handle_timeline_ajax' ] );
         
     }
 
@@ -532,6 +536,23 @@ class Loader {
             \UltraAddons\Widget\Mailchimp::ajax_subscribe();
         } else {
             wp_send_json_error( [ 'message' => 'Mailchimp widget class not found.' ] );
+        }
+    }
+
+    /**
+     * AJAX proxy: Load More & Infinite Scroll for Timeline widget.
+     * Ensures the Timeline class file is loaded before calling the handler.
+     */
+    public function handle_timeline_ajax() {
+        $this->include_widget_base();
+        $timeline_file = ULTRA_ADDONS_DIR . 'inc/widget/timeline.php';
+        if ( file_exists( $timeline_file ) ) {
+            include_once $timeline_file;
+        }
+        if ( class_exists( '\\UltraAddons\\Widget\\Timeline' ) ) {
+            \UltraAddons\Widget\Timeline::ajax_load_posts();
+        } else {
+            wp_send_json_error( [ 'message' => 'Timeline widget class not found.' ] );
         }
     }
     

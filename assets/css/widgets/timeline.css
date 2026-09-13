@@ -1,0 +1,901 @@
+/**
+ * UltraAddons - Timeline (Story & Post Timeline) Widget Styles
+ *
+ * Ultra-modern, responsive timeline design with 60fps hardware-accelerated animations,
+ * zero layout shift, and clean BEM-like CSS architecture.
+ *
+ * @package UltraAddons
+ * @version 1.1.0
+ */
+
+:root {
+    --ua-timeline-primary: #0274be;
+    --ua-timeline-primary-hover: #005a96;
+    --ua-timeline-line-base: #e2e8f0;
+    --ua-timeline-card-bg: #ffffff;
+    --ua-timeline-text-title: #1e293b;
+    --ua-timeline-text-desc: #64748b;
+    --ua-timeline-distance: 36px;
+}
+
+/* ==========================================================================
+   Container & Base Wrapper
+   ========================================================================== */
+.ua-timeline-container {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.ua-timeline-container *,
+.ua-timeline-container *::before,
+.ua-timeline-container *::after {
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   Main Vertical Line & Scroll Progress Fill
+   ========================================================================== */
+.ua-timeline-line-wrap {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.ua-timeline-line {
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
+    width: 3px;
+    background-color: var(--ua-timeline-line-base);
+    border-radius: 2px;
+}
+
+.ua-timeline-fill {
+    position: absolute;
+    top: 20px;
+    width: 3px;
+    height: 0%;
+    background-color: var(--ua-timeline-primary);
+    border-radius: 2px;
+    transition: height 0.15s ease-out;
+    z-index: 2;
+}
+
+/* ==========================================================================
+   Timeline Items Wrap & Cards
+   ========================================================================== */
+.ua-timeline-items-wrap {
+    position: relative;
+    width: 100%;
+    z-index: 2;
+}
+
+.ua-timeline-item {
+    position: relative;
+    margin-bottom: 48px;
+    opacity: 1;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.ua-timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Marker Node */
+.ua-timeline-marker-wrap {
+    position: absolute;
+    top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.ua-timeline-marker {
+    width: 42px;
+    height: 42px;
+    background-color: #ffffff;
+    border: 3px solid var(--ua-timeline-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(2, 116, 190, 0.25);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ua-timeline-marker-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ua-timeline-primary);
+    font-size: 18px;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+.ua-timeline-marker-icon svg {
+    width: 18px;
+    height: 18px;
+    fill: var(--ua-timeline-primary);
+    transition: fill 0.3s ease;
+}
+
+/* Active / Scrolled Marker */
+.ua-timeline-item.is-active .ua-timeline-marker {
+    background-color: var(--ua-timeline-primary);
+    border-color: var(--ua-timeline-primary);
+    box-shadow: 0 6px 18px rgba(2, 116, 190, 0.4);
+}
+
+.ua-timeline-item.is-active .ua-timeline-marker-icon {
+    color: #ffffff;
+}
+
+.ua-timeline-item.is-active .ua-timeline-marker-icon svg {
+    fill: #ffffff;
+}
+
+/* Marker Pulse Animation */
+.has-marker-pulse .ua-timeline-item.is-active .ua-timeline-marker::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid var(--ua-timeline-primary);
+    animation: uaTimelinePulse 2s infinite;
+    pointer-events: none;
+}
+
+@keyframes uaTimelinePulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1.6);
+        opacity: 0;
+    }
+}
+
+/* Center Line Year / Group Divider */
+.ua-timeline-group-divider {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 36px 0 24px 0;
+    position: relative;
+    z-index: 6;
+}
+
+.ua-timeline-vertical_left .ua-timeline-group-divider {
+    justify-content: flex-start;
+    padding-left: calc(var(--ua-timeline-marker-size, 40px) / 2 - 20px);
+}
+
+.ua-timeline-vertical_right .ua-timeline-group-divider {
+    justify-content: flex-end;
+    padding-right: calc(var(--ua-timeline-marker-size, 40px) / 2 - 20px);
+}
+
+.ua-timeline-group-label {
+    display: inline-block;
+    background-color: var(--ua-timeline-primary, #0274be);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.2;
+    padding: 7px 22px;
+    border-radius: 50px;
+    box-shadow: 0 4px 14px rgba(2, 116, 190, 0.35);
+    border: 3px solid #ffffff;
+    position: relative;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Milestone / Year Badge */
+.ua-timeline-badge-wrap {
+    margin-bottom: 12px;
+}
+
+.ua-timeline-badge {
+    display: inline-block;
+    background-color: var(--ua-timeline-primary);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1;
+    padding: 6px 16px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(2, 116, 190, 0.2);
+}
+
+/* Card Box */
+.ua-timeline-card {
+    position: relative;
+    background-color: var(--ua-timeline-card-bg);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.07);
+    border: 1px solid #f1f5f9;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+}
+
+.ua-timeline-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 32px -4px rgba(2, 116, 190, 0.12);
+    border-color: #e2e8f0;
+}
+
+/* Media Overlay Mode (Demo 3 - Image Overlay) */
+.ua-timeline-card.has-media-overlay {
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border: none;
+}
+
+.ua-timeline-card.has-media-overlay .ua-timeline-media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0;
+    z-index: 1;
+}
+
+.ua-timeline-card.has-media-overlay .ua-timeline-media a {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.ua-timeline-card.has-media-overlay img.ua-timeline-img {
+    width: 100%;
+    height: 100% !important;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ua-timeline-card.has-media-overlay:hover img.ua-timeline-img {
+    transform: scale(1.08);
+}
+
+.ua-timeline-card.has-media-overlay .ua-timeline-card-inner {
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.5) 60%, transparent 100%);
+    padding: 28px 24px 22px 24px;
+    transition: all 0.35s ease;
+}
+
+.ua-timeline-card.has-media-overlay .ua-timeline-title,
+.ua-timeline-card.has-media-overlay .ua-timeline-title a,
+.ua-timeline-card.has-media-overlay .ua-timeline-desc,
+.ua-timeline-card.has-media-overlay .ua-timeline-date,
+.ua-timeline-card.has-media-overlay .ua-timeline-tag,
+.ua-timeline-card.has-media-overlay .ua-timeline-author {
+    color: #ffffff;
+}
+
+.ua-timeline-card.has-media-overlay .ua-timeline-desc p {
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.ua-timeline-card.has-media-overlay .ua-timeline-title a:hover {
+    color: #93c5fd;
+}
+
+.ua-timeline-card-inner {
+    padding: 24px;
+}
+
+/* Pointer Arrow */
+.ua-timeline-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* Media */
+.ua-timeline-media {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 16px;
+    line-height: 0;
+}
+
+.ua-timeline-media img.ua-timeline-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.ua-timeline-card:hover .ua-timeline-media img.ua-timeline-img {
+    transform: scale(1.04);
+}
+
+.ua-timeline-media a {
+    display: block;
+    overflow: hidden;
+}
+
+.ua-timeline-media-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8fafc;
+    color: var(--ua-timeline-primary);
+    font-size: 42px;
+    height: 160px;
+}
+
+.ua-timeline-video-wrap {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+
+.ua-timeline-video-wrap iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Card Content Details */
+.ua-timeline-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ua-timeline-primary);
+    margin-bottom: 8px;
+}
+
+.ua-timeline-tag {
+    background: rgba(2, 116, 190, 0.1);
+    color: var(--ua-timeline-primary);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.ua-timeline-author::before {
+    content: '•';
+    margin-right: 4px;
+    opacity: 0.6;
+}
+
+.ua-timeline-title {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--ua-timeline-text-title);
+    margin: 0 0 12px 0;
+}
+
+.ua-timeline-title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.ua-timeline-title a:hover {
+    color: var(--ua-timeline-primary);
+}
+
+.ua-timeline-desc {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ua-timeline-text-desc);
+    margin-bottom: 16px;
+}
+
+.ua-timeline-desc p:last-child {
+    margin-bottom: 0;
+}
+
+/* Button */
+.ua-timeline-btn-wrap {
+    margin-top: 16px;
+}
+
+.ua-timeline-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 18px;
+    background-color: var(--ua-timeline-primary);
+    color: #ffffff;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 8px rgba(2, 116, 190, 0.2);
+}
+
+.ua-timeline-btn:hover {
+    background-color: var(--ua-timeline-primary-hover);
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(2, 116, 190, 0.35);
+}
+
+/* ==========================================================================
+   Layout 1: Zig-Zag Centered (.ua-timeline-centered)
+   ========================================================================== */
+.ua-timeline-centered .ua-timeline-line-wrap {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.ua-timeline-centered .ua-timeline-item {
+    width: calc(50% - var(--ua-timeline-distance));
+}
+
+/* Left-aligned card */
+.ua-timeline-centered .ua-timeline-item.is-left {
+    margin-right: auto;
+    margin-left: 0;
+}
+
+.ua-timeline-centered .ua-timeline-item.is-left .ua-timeline-marker-wrap {
+    right: calc(-1 * var(--ua-timeline-distance) - 20px);
+    left: auto;
+}
+
+.ua-timeline-centered .ua-timeline-item.is-left .ua-timeline-arrow {
+    top: 30px;
+    right: -10px;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent var(--ua-timeline-card-bg);
+}
+
+/* Right-aligned card */
+.ua-timeline-centered .ua-timeline-item.is-right {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.ua-timeline-centered .ua-timeline-item.is-right .ua-timeline-marker-wrap {
+    left: calc(-1 * var(--ua-timeline-distance) - 20px);
+    right: auto;
+}
+
+.ua-timeline-centered .ua-timeline-item.is-right .ua-timeline-arrow {
+    top: 30px;
+    left: -10px;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent var(--ua-timeline-card-bg) transparent transparent;
+}
+
+/* ==========================================================================
+   Layout 2: Line Left (.ua-timeline-one-sided-left)
+   ========================================================================== */
+.ua-timeline-one-sided-left .ua-timeline-line-wrap {
+    left: 20px;
+    transform: none;
+}
+
+.ua-timeline-one-sided-left .ua-timeline-item {
+    width: calc(100% - 40px - var(--ua-timeline-distance));
+    margin-left: calc(40px + var(--ua-timeline-distance));
+    margin-right: 0;
+}
+
+.ua-timeline-one-sided-left .ua-timeline-marker-wrap {
+    left: calc(-1 * var(--ua-timeline-distance) - 40px);
+    right: auto;
+}
+
+.ua-timeline-one-sided-left .ua-timeline-arrow {
+    top: 30px;
+    left: -10px;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent var(--ua-timeline-card-bg) transparent transparent;
+}
+
+/* ==========================================================================
+   Layout 3: Line Right (.ua-timeline-one-sided-right)
+   ========================================================================== */
+.ua-timeline-one-sided-right .ua-timeline-line-wrap {
+    right: 20px;
+    left: auto;
+    transform: none;
+}
+
+.ua-timeline-one-sided-right .ua-timeline-item {
+    width: calc(100% - 40px - var(--ua-timeline-distance));
+    margin-right: calc(40px + var(--ua-timeline-distance));
+    margin-left: 0;
+}
+
+.ua-timeline-one-sided-right .ua-timeline-marker-wrap {
+    right: calc(-1 * var(--ua-timeline-distance) - 40px);
+    left: auto;
+}
+
+.ua-timeline-one-sided-right .ua-timeline-arrow {
+    top: 30px;
+    right: -10px;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent var(--ua-timeline-card-bg);
+}
+
+/* ==========================================================================
+   Layout 4: Horizontal Carousel (.ua-timeline-horizontal)
+   ========================================================================== */
+.ua-timeline-horizontal {
+    padding: 30px 0 50px 0;
+    overflow: hidden;
+}
+
+.ua-timeline-horizontal .ua-timeline-horizontal-line-wrap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 3px;
+    z-index: 1;
+}
+
+.ua-timeline-horizontal-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 3px;
+    background-color: var(--ua-timeline-line-base);
+}
+
+/* Line Bottom */
+.ua-timeline-carousel-line-bottom .ua-timeline-horizontal-line-wrap {
+    bottom: 80px;
+}
+
+.ua-timeline-carousel-line-bottom .ua-timeline-marker-wrap {
+    bottom: 60px;
+    top: auto;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.ua-timeline-carousel-line-bottom .ua-timeline-card {
+    margin-bottom: 40px;
+}
+
+.ua-timeline-carousel-line-bottom .ua-timeline-arrow {
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px 10px 0 10px;
+    border-color: var(--ua-timeline-card-bg) transparent transparent transparent;
+}
+
+/* Line Top */
+.ua-timeline-carousel-line-top .ua-timeline-horizontal-line-wrap {
+    top: 80px;
+}
+
+.ua-timeline-carousel-line-top .ua-timeline-marker-wrap {
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.ua-timeline-carousel-line-top .ua-timeline-card {
+    margin-top: 40px;
+}
+
+.ua-timeline-carousel-line-top .ua-timeline-arrow {
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0 10px 10px 10px;
+    border-color: transparent transparent var(--ua-timeline-card-bg) transparent;
+}
+
+.ua-timeline-horizontal .swiper-slide {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.ua-timeline-horizontal .ua-timeline-card {
+    flex: 1;
+}
+
+/* Carousel Navigation Arrows */
+.ua-timeline-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    background-color: #ffffff;
+    color: var(--ua-timeline-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.25s ease;
+}
+
+.ua-timeline-nav-btn:hover {
+    background-color: var(--ua-timeline-primary);
+    color: #ffffff;
+    box-shadow: 0 6px 20px rgba(2, 116, 190, 0.35);
+}
+
+.ua-timeline-prev {
+    left: -10px;
+}
+
+.ua-timeline-next {
+    right: -10px;
+}
+
+/* Carousel Pagination Dots */
+.ua-timeline-pagination {
+    position: relative;
+    margin-top: 24px;
+    text-align: center;
+}
+
+.ua-timeline-pagination .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background-color: #cbd5e1;
+    opacity: 1;
+    margin: 0 5px;
+    transition: all 0.25s ease;
+}
+
+.ua-timeline-pagination .swiper-pagination-bullet-active {
+    width: 24px;
+    border-radius: 6px;
+    background-color: var(--ua-timeline-primary);
+}
+
+/* ==========================================================================
+   Pagination: Load More & Infinite Scroll
+   ========================================================================== */
+.ua-timeline-pagination-wrap {
+    margin-top: 48px;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+}
+
+.ua-timeline-load-more-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: var(--ua-timeline-primary);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(2, 116, 190, 0.25);
+    transition: all 0.25s ease;
+}
+
+.ua-timeline-load-more-btn:hover {
+    background-color: var(--ua-timeline-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(2, 116, 190, 0.35);
+}
+
+.ua-timeline-infinite-loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px 0;
+    color: var(--ua-timeline-primary);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.ua-spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(2, 116, 190, 0.2);
+    border-top-color: var(--ua-timeline-primary);
+    border-radius: 50%;
+    animation: uaSpinnerSpin 0.7s linear infinite;
+}
+
+@keyframes uaSpinnerSpin {
+    to { transform: rotate(360deg); }
+}
+
+.ua-timeline-no-more p {
+    color: var(--ua-timeline-text-desc);
+    font-size: 14px;
+    font-style: italic;
+    margin: 16px 0 0;
+}
+
+.ua-timeline-no-posts {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--ua-timeline-text-desc);
+}
+
+/* ==========================================================================
+   Mobile Responsive Rules
+   ========================================================================== */
+@media (max-width: 767px) {
+    /* Auto convert Zig-Zag centered layout to single-sided line on mobile */
+    .ua-timeline-centered .ua-timeline-line-wrap {
+        left: 20px;
+        transform: none;
+    }
+
+    .ua-timeline-centered .ua-timeline-item {
+        width: calc(100% - 40px - var(--ua-timeline-distance)) !important;
+        margin-left: calc(40px + var(--ua-timeline-distance)) !important;
+        margin-right: 0 !important;
+    }
+
+    .ua-timeline-centered .ua-timeline-item .ua-timeline-marker-wrap {
+        left: calc(-1 * var(--ua-timeline-distance) - 40px) !important;
+        right: auto !important;
+    }
+
+    .ua-timeline-centered .ua-timeline-item .ua-timeline-arrow {
+        top: 30px;
+        left: -10px !important;
+        right: auto !important;
+        border-width: 10px 10px 10px 0 !important;
+        border-color: transparent var(--ua-timeline-card-bg) transparent transparent !important;
+    }
+
+    /* Adjust one-sided layouts for compact screens */
+    .ua-timeline-one-sided-left .ua-timeline-line-wrap,
+    .ua-timeline-one-sided-right .ua-timeline-line-wrap {
+        left: 16px;
+        right: auto;
+    }
+
+    .ua-timeline-one-sided-left .ua-timeline-item,
+    .ua-timeline-one-sided-right .ua-timeline-item {
+        width: calc(100% - 32px - var(--ua-timeline-distance));
+        margin-left: calc(32px + var(--ua-timeline-distance));
+        margin-right: 0;
+    }
+
+    .ua-timeline-one-sided-left .ua-timeline-marker-wrap,
+    .ua-timeline-one-sided-right .ua-timeline-marker-wrap {
+        left: calc(-1 * var(--ua-timeline-distance) - 32px);
+        right: auto;
+    }
+
+    .ua-timeline-one-sided-right .ua-timeline-arrow {
+        left: -10px;
+        right: auto;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent var(--ua-timeline-card-bg) transparent transparent;
+    }
+
+    .ua-timeline-card-inner {
+        padding: 18px;
+    }
+
+    .ua-timeline-prev {
+        left: 0;
+    }
+
+    .ua-timeline-next {
+        right: 0;
+    }
+}
+
+/* ==========================================================================
+   Entrance Animations
+   ========================================================================== */
+.ua-timeline-container.has-entrance-animation .ua-timeline-item {
+    opacity: 0;
+    transition: opacity calc(var(--ua-anim-duration, 600ms)) cubic-bezier(0.16, 1, 0.3, 1),
+                transform calc(var(--ua-anim-duration, 600ms)) cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+/* Fade */
+.ua-timeline-container.ua-anim-fade .ua-timeline-item {
+    opacity: 0;
+}
+.ua-timeline-container.ua-anim-fade .ua-timeline-item.ua-animated,
+.ua-timeline-container.ua-anim-fade .ua-timeline-item.is-active {
+    opacity: 1;
+}
+
+/* Zoom In */
+.ua-timeline-container.ua-anim-zoom-in .ua-timeline-item {
+    opacity: 0;
+    transform: scale(0.8);
+}
+.ua-timeline-container.ua-anim-zoom-in .ua-timeline-item.ua-animated,
+.ua-timeline-container.ua-anim-zoom-in .ua-timeline-item.is-active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Zoom Out */
+.ua-timeline-container.ua-anim-zoom-out .ua-timeline-item {
+    opacity: 0;
+    transform: scale(1.18);
+}
+.ua-timeline-container.ua-anim-zoom-out .ua-timeline-item.ua-animated,
+.ua-timeline-container.ua-anim-zoom-out .ua-timeline-item.is-active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Slide Up */
+.ua-timeline-container.ua-anim-slide-up .ua-timeline-item {
+    opacity: 0;
+    transform: translateY(50px);
+}
+.ua-timeline-container.ua-anim-slide-up .ua-timeline-item.ua-animated,
+.ua-timeline-container.ua-anim-slide-up .ua-timeline-item.is-active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Slide Down */
+.ua-timeline-container.ua-anim-slide-down .ua-timeline-item {
+    opacity: 0;
+    transform: translateY(-50px);
+}
+.ua-timeline-container.ua-anim-slide-down .ua-timeline-item.ua-animated,
+.ua-timeline-container.ua-anim-slide-down .ua-timeline-item.is-active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Flip Down */
+.ua-timeline-container.ua-anim-flip-down .ua-timeline-item {
+    opacity: 0;
+    transform: perspective(800px) rotateX(-45deg);
+    transform-origin: top center;
+}
+.ua-timeline-container.ua-anim-flip-down .ua-timeline-item.ua-animated,
+.ua-timeline-container.ua-anim-flip-down .ua-timeline-item.is-active {
+    opacity: 1;
+    transform: perspective(800px) rotateX(0deg);
+}
+

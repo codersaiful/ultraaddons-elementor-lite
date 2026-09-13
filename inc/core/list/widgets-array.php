@@ -71,6 +71,16 @@ $ultraaddons_widgetsArray = [
             ],
     ],
     
+    'Timeline' => [
+            'name'  => __( 'Timeline', 'ultraaddons-elementor-lite' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-time-line',
+            'badge'     => 'new',
+            'cat'       => [
+                __( 'General', 'ultraaddons-elementor-lite' ),
+            ],
+    ],
+    
     /* 'Advance_List' => [
             'name'  => __( 'Advance List', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
@@ -860,6 +870,16 @@ $ultraaddons_widgetsArray = [
         'name'      => __( 'Interactive Circle', 'ultraaddons-elementor-lite' ),
         'is_pro'    => false,
         'icon'      => 'ultraaddons eicon-circle-o',
+        'badge'     => 'New',
+        'cat'       => [
+            __( 'General', 'ultraaddons-elementor-lite' ),
+        ],
+    ],
+
+    'Timeline'=> [
+        'name'      => __( 'Timeline', 'ultraaddons-elementor-lite' ),
+        'is_pro'    => false,
+        'icon'      => 'eicon-time-line',
         'badge'     => 'New',
         'cat'       => [
             __( 'General', 'ultraaddons-elementor-lite' ),
