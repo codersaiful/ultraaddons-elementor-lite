@@ -1402,6 +1402,183 @@
 
             EF.hooks.addAction( 'frontend/element_ready/ultraaddons-reading-progress-bar.default', UltraAddonsReadingProgressBar );
 
+            /**
+             * UltraAddons Circle Menu Handler
+             *
+             * Computes circular trigonometry coordinates, sets CSS transform variables,
+             * and binds click/hover triggers with auto-close on document click.
+             *
+             * @param {jQuery} $scope
+             * @param {jQuery} $
+             */
+            var UltraAddonsCircleMenu = function( $scope, $ ) {
+                var $wrap = $scope.find( '.ua-circle-menu-wrap' );
+                if ( ! $wrap.length ) {
+                    return;
+                }
+
+                var $trigger = $wrap.find( '.ua-cm-trigger' ),
+                    $items = $wrap.find( '.ua-cm-item' ),
+                    totalItems = $items.length,
+                    settings = $wrap.data( 'settings' ) || {},
+                    direction = settings.direction || 'full',
+                    triggerType = settings.trigger || 'hover',
+                    radius = parseFloat( settings.radius ) || 120,
+                    speed = parseInt( settings.speed, 10 ) || 500,
+                    delay = parseInt( settings.delay, 10 ) || 0,
+                    stepOut = typeof settings.stepOut !== 'undefined' ? parseInt( settings.stepOut, 10 ) : 40,
+                    stepIn = typeof settings.stepIn !== 'undefined' ? parseInt( settings.stepIn, 10 ) : -30,
+                    transition = settings.transition || 'ease',
+                    instanceId = $scope.data( 'id' ) || Math.floor( Math.random() * 10000 ),
+                    docNamespace = 'click.uaCM_' + instanceId + ' touchend.uaCM_' + instanceId,
+                    isOpen = false,
+                    hoverTimer = null;
+
+                if ( ! totalItems ) {
+                    return;
+                }
+
+                // Apply CSS variables for speed and transition timing
+                $wrap[0].style.setProperty( '--ua-cm-duration', speed + 'ms' );
+                $wrap[0].style.setProperty( '--ua-cm-timing', transition );
+
+                // Direction angle ranges (degrees in screen coordinate space)
+                var angleRanges = {
+                    'top':          [ -135, -45 ],
+                    'right':        [ -45, 45 ],
+                    'bottom':       [ 45, 135 ],
+                    'left':         [ 135, 225 ],
+                    'top-half':     [ 180, 360 ],
+                    'bottom-half':  [ 0, 180 ],
+                    'left-half':    [ 90, 270 ],
+                    'right-half':   [ -90, 90 ],
+                    'top-left':     [ 180, 270 ],
+                    'top-right':    [ 270, 360 ],
+                    'bottom-left':  [ 90, 180 ],
+                    'bottom-right': [ 0, 90 ]
+                };
+
+                // Position items using trigonometry
+                $items.each( function( idx ) {
+                    var angle;
+
+                    if ( direction === 'full' ) {
+                        var step = 360 / totalItems;
+                        angle = -90 + ( idx * step );
+                    } else if ( angleRanges[ direction ] ) {
+                        var range = angleRanges[ direction ];
+                        if ( totalItems === 1 ) {
+                            angle = ( range[0] + range[1] ) / 2;
+                        } else {
+                            var arcStep = ( range[1] - range[0] ) / ( totalItems - 1 );
+                            angle = range[0] + ( idx * arcStep );
+                        }
+                    } else {
+                        angle = -90 + ( idx * ( 360 / totalItems ) );
+                    }
+
+                    var rad = angle * ( Math.PI / 180 ),
+                        tx = Math.round( radius * Math.cos( rad ) ),
+                        ty = Math.round( radius * Math.sin( rad ) );
+
+                    this.style.setProperty( '--ua-tx', tx + 'px' );
+                    this.style.setProperty( '--ua-ty', ty + 'px' );
+                } );
+
+                function setStagger( isOpening ) {
+                    var step = isOpening ? stepOut : stepIn;
+                    var absStep = Math.abs( step );
+
+                    $items.each( function( idx ) {
+                        var order = ( step >= 0 ) ? idx : ( totalItems - 1 - idx );
+                        this.style.transitionDelay = ( order * absStep ) + 'ms';
+                    } );
+                }
+
+                setStagger( true );
+
+                function openMenu() {
+                    if ( hoverTimer ) {
+                        clearTimeout( hoverTimer );
+                        hoverTimer = null;
+                    }
+                    isOpen = true;
+                    setStagger( true );
+                    $wrap.addClass( 'ua-cm-open' );
+                    $trigger.attr( 'aria-expanded', 'true' );
+                }
+
+                function closeMenu() {
+                    if ( hoverTimer ) {
+                        clearTimeout( hoverTimer );
+                        hoverTimer = null;
+                    }
+                    isOpen = false;
+                    setStagger( false );
+                    $wrap.removeClass( 'ua-cm-open' );
+                    $trigger.attr( 'aria-expanded', 'false' );
+                }
+
+                function toggleMenu() {
+                    if ( isOpen ) {
+                        closeMenu();
+                    } else {
+                        openMenu();
+                    }
+                }
+
+                // Bind events based on trigger mode
+                if ( triggerType === 'click' ) {
+                    $trigger.on( 'click', function( e ) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        toggleMenu();
+                    } );
+
+                    // Auto-close on click outside
+                    $( document ).off( docNamespace ).on( docNamespace, function( e ) {
+                        if ( isOpen && ! $( e.target ).closest( $wrap ).length ) {
+                            closeMenu();
+                        }
+                    } );
+                } else if ( triggerType === 'hover' ) {
+                    $wrap.on( 'mouseenter', function() {
+                        if ( hoverTimer ) {
+                            clearTimeout( hoverTimer );
+                            hoverTimer = null;
+                        }
+                        openMenu();
+                    } ).on( 'mouseleave', function() {
+                        if ( delay > 0 ) {
+                            hoverTimer = setTimeout( function() {
+                                closeMenu();
+                            }, delay );
+                        } else {
+                            closeMenu();
+                        }
+                    } );
+
+                    $trigger.on( 'focus', openMenu );
+                    $wrap.on( 'focusout', function() {
+                        setTimeout( function() {
+                            if ( ! $wrap.find( ':focus' ).length ) {
+                                closeMenu();
+                            }
+                        }, 10 );
+                    } );
+                }
+
+                // Element removal cleanup
+                $scope.on( 'remove', function() {
+                    if ( hoverTimer ) {
+                        clearTimeout( hoverTimer );
+                    }
+                    $( document ).off( docNamespace );
+                } );
+            };
+
+            EF.hooks.addAction( 'frontend/element_ready/ultraaddons-circle-menu.default', UltraAddonsCircleMenu );
+
     });// Init hook wrapup
    
 

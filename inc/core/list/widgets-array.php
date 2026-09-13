@@ -60,6 +60,17 @@ $ultraaddons_widgetsArray = [
             ],
     ],
     
+    'Circle_Menu' => [
+            'name'  => __( 'Circle Menu', 'ultraaddons-elementor-lite' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-dot-circle-o',
+            'badge'     => 'new',
+            'cat'       => [
+                __( 'General', 'ultraaddons-elementor-lite' ),
+                __( 'Header_Footer', 'ultraaddons-elementor-lite' ),
+            ],
+    ],
+    
     /* 'Advance_List' => [
             'name'  => __( 'Advance List', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
