@@ -28,6 +28,11 @@
     box-sizing: border-box;
 }
 
+/* Vertical Timelines (Zig-Zag, Line Left, Line Right) Side & Vertical Padding */
+.ua-timeline-container:not(.ua-timeline-horizontal) {
+    padding: 20px 25px;
+}
+
 .ua-timeline-container *,
 .ua-timeline-container *::before,
 .ua-timeline-container *::after {
@@ -204,21 +209,31 @@
     text-transform: uppercase;
 }
 
-/* Milestone / Year Badge */
+/* Extra Label / Date */
+.ua-timeline-extra-label-wrap,
 .ua-timeline-badge-wrap {
     margin-bottom: 12px;
+    transition: all 0.3s ease;
 }
 
+.ua-timeline-extra-label,
 .ua-timeline-badge {
-    display: inline-block;
-    background-color: var(--ua-timeline-primary);
-    color: #ffffff;
-    font-size: 13px;
+    display: block;
+    color: var(--ua-timeline-primary, #0274be);
+    font-size: 15px;
     font-weight: 600;
-    line-height: 1;
-    padding: 6px 16px;
-    border-radius: 20px;
-    box-shadow: 0 2px 8px rgba(2, 116, 190, 0.2);
+    line-height: 1.35;
+    transition: all 0.3s ease;
+}
+
+.ua-timeline-extra-sub-label {
+    display: block;
+    color: #7a7a7a;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.35;
+    margin-top: 6px;
+    transition: all 0.3s ease;
 }
 
 /* Card Box */
@@ -476,6 +491,30 @@
     border-color: transparent transparent transparent var(--ua-timeline-card-bg);
 }
 
+/* Left-aligned card -> Extra Label on RIGHT side of the center line */
+.ua-timeline-centered .ua-timeline-item.is-left .ua-timeline-extra-label-wrap,
+.ua-timeline-centered .ua-timeline-item.is-left .ua-timeline-badge-wrap {
+    position: absolute;
+    left: calc(100% + var(--ua-timeline-distance) + 35px);
+    top: 20px;
+    min-height: 42px;
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+    margin-bottom: 0;
+    pointer-events: auto;
+    z-index: 4;
+}
+
+.ua-timeline-centered .ua-timeline-item.is-left .ua-timeline-extra-label-wrap .ua-timeline-extra-label,
+.ua-timeline-centered .ua-timeline-item.is-left .ua-timeline-extra-label-wrap .ua-timeline-extra-sub-label {
+    text-align: left;
+}
+
 /* Right-aligned card */
 .ua-timeline-centered .ua-timeline-item.is-right {
     margin-left: auto;
@@ -494,11 +533,35 @@
     border-color: transparent var(--ua-timeline-card-bg) transparent transparent;
 }
 
+/* Right-aligned card -> Extra Label on LEFT side of the center line */
+.ua-timeline-centered .ua-timeline-item.is-right .ua-timeline-extra-label-wrap,
+.ua-timeline-centered .ua-timeline-item.is-right .ua-timeline-badge-wrap {
+    position: absolute;
+    right: calc(100% + var(--ua-timeline-distance) + 35px);
+    top: 20px;
+    min-height: 42px;
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    text-align: right;
+    margin-bottom: 0;
+    pointer-events: auto;
+    z-index: 4;
+}
+
+.ua-timeline-centered .ua-timeline-item.is-right .ua-timeline-extra-label-wrap .ua-timeline-extra-label,
+.ua-timeline-centered .ua-timeline-item.is-right .ua-timeline-extra-label-wrap .ua-timeline-extra-sub-label {
+    text-align: right;
+}
+
 /* ==========================================================================
    Layout 2: Line Left (.ua-timeline-one-sided-left)
    ========================================================================== */
 .ua-timeline-one-sided-left .ua-timeline-line-wrap {
-    left: 20px;
+    left: 0;
     transform: none;
 }
 
@@ -513,6 +576,13 @@
     right: auto;
 }
 
+.ua-timeline-one-sided-left .ua-timeline-extra-label-wrap,
+.ua-timeline-one-sided-left .ua-timeline-badge-wrap {
+    margin-bottom: 10px;
+    text-align: left;
+    display: block;
+}
+
 .ua-timeline-one-sided-left .ua-timeline-arrow {
     top: 30px;
     left: -10px;
@@ -524,7 +594,7 @@
    Layout 3: Line Right (.ua-timeline-one-sided-right)
    ========================================================================== */
 .ua-timeline-one-sided-right .ua-timeline-line-wrap {
-    right: 20px;
+    right: 0;
     left: auto;
     transform: none;
 }
@@ -540,6 +610,13 @@
     left: auto;
 }
 
+.ua-timeline-one-sided-right .ua-timeline-extra-label-wrap,
+.ua-timeline-one-sided-right .ua-timeline-badge-wrap {
+    margin-bottom: 10px;
+    text-align: right;
+    display: block;
+}
+
 .ua-timeline-one-sided-right .ua-timeline-arrow {
     top: 30px;
     right: -10px;
@@ -548,126 +625,387 @@
 }
 
 /* ==========================================================================
-   Layout 4: Horizontal Carousel (.ua-timeline-horizontal)
+   Layout 4: Horizontal Carousel (.ua-timeline-horizontal, .ua-timeline-carousel-line-top, .ua-timeline-carousel-line-bottom)
    ========================================================================== */
-.ua-timeline-horizontal {
-    padding: 30px 0 50px 0;
-    overflow: hidden;
+.ua-timeline-container.ua-timeline-horizontal {
+    position: relative !important;
+    width: 100% !important;
+    padding: 30px 0 50px 0 !important;
+    box-sizing: border-box !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
-.ua-timeline-horizontal .ua-timeline-horizontal-line-wrap {
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 3px;
-    z-index: 1;
+/* Swiper Container with side margins so arrows never overlap slides */
+.ua-timeline-horizontal .ua-timeline-swiper {
+    position: relative !important;
+    width: auto !important;
+    margin: 0 44px !important;
+    overflow: hidden !important;
+    z-index: 5 !important;
+    padding: 10px 0 !important;
 }
 
-.ua-timeline-horizontal-line {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    height: 3px;
-    background-color: var(--ua-timeline-line-base);
+.ua-timeline-horizontal .swiper-wrapper {
+    display: flex !important;
+    box-sizing: border-box !important;
+    align-items: stretch !important;
+    height: auto !important;
 }
 
-/* Line Bottom */
-.ua-timeline-carousel-line-bottom .ua-timeline-horizontal-line-wrap {
-    bottom: 80px;
-}
-
-.ua-timeline-carousel-line-bottom .ua-timeline-marker-wrap {
-    bottom: 60px;
-    top: auto;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.ua-timeline-carousel-line-bottom .ua-timeline-card {
-    margin-bottom: 40px;
-}
-
-.ua-timeline-carousel-line-bottom .ua-timeline-arrow {
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 10px 10px 0 10px;
-    border-color: var(--ua-timeline-card-bg) transparent transparent transparent;
-}
-
-/* Line Top */
-.ua-timeline-carousel-line-top .ua-timeline-horizontal-line-wrap {
-    top: 80px;
-}
-
-.ua-timeline-carousel-line-top .ua-timeline-marker-wrap {
-    top: 60px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.ua-timeline-carousel-line-top .ua-timeline-card {
-    margin-top: 40px;
-}
-
-.ua-timeline-carousel-line-top .ua-timeline-arrow {
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 0 10px 10px 10px;
-    border-color: transparent transparent var(--ua-timeline-card-bg) transparent;
-}
-
-.ua-timeline-horizontal .swiper-slide {
+/* Ensure items in horizontal carousel are ALWAYS visible */
+.ua-timeline-horizontal .ua-timeline-item.swiper-slide {
+    position: relative !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    margin-left: 0 !important;
     height: auto;
-    display: flex;
-    flex-direction: column;
+    box-sizing: border-box !important;
+    flex-shrink: 0;
 }
 
-.ua-timeline-horizontal .ua-timeline-card {
-    flex: 1;
+/* --------------------------------------------------------------------------
+   Line Top - Carousel (.ua-timeline-carousel-line-top)
+   -------------------------------------------------------------------------- */
+/* 1. Middle Line Progressbar */
+.ua-timeline-carousel-line-top .ua-timeline-line-progressbar,
+.ua-timeline-carousel-line-top .swiper-pagination-progressbar {
+    position: absolute !important;
+    height: 2px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    top: 100px !important;
+    bottom: auto !important;
+    width: calc(100% - 80px) !important;
+    background-color: var(--ua-timeline-line-base, #D6D6D6) !important;
+    z-index: 2 !important;
 }
 
-/* Carousel Navigation Arrows */
-.ua-timeline-nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 44px;
-    height: 44px;
-    background-color: #ffffff;
-    color: var(--ua-timeline-primary);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    z-index: 10;
+.ua-timeline-carousel-line-top .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+    background-color: var(--ua-timeline-primary, #0274be) !important;
+    height: 100% !important;
+}
+
+/* 2. Extra Label (above the line at top: 40px) */
+.ua-timeline-carousel-line-top .ua-timeline-extra-label-wrap {
+    position: absolute !important;
+    top: 40px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin: 0 !important;
+    padding: 0 5px !important;
+    box-sizing: border-box !important;
+    z-index: 4 !important;
+}
+
+.ua-timeline-carousel-line-top .ua-timeline-extra-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ua-timeline-primary, #0274be);
+    display: inline-block;
+}
+
+.ua-timeline-carousel-line-top .ua-timeline-extra-sub-label {
+    display: block;
+    font-size: 13px;
+    color: var(--ua-timeline-text-muted, #7A7A7A);
+    margin-top: 2px;
+}
+
+/* 3. Circular Marker Node (on the line at top: 100px) */
+.ua-timeline-carousel-line-top .ua-timeline-marker-wrap {
+    position: absolute !important;
+    top: 100px !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 10 !important;
+    margin: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.ua-timeline-carousel-line-top .ua-timeline-marker {
+    width: 40px !important;
+    height: 40px !important;
+    background-color: var(--ua-timeline-primary, #0274be) !important;
+    border: 2px solid var(--ua-timeline-primary, #0274be) !important;
+    border-radius: 50% !important;
+    color: #ffffff !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 18px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
     transition: all 0.25s ease;
 }
 
-.ua-timeline-nav-btn:hover {
-    background-color: var(--ua-timeline-primary);
-    color: #ffffff;
-    box-shadow: 0 6px 20px rgba(2, 116, 190, 0.35);
+.ua-timeline-carousel-line-top .ua-timeline-marker-icon,
+.ua-timeline-carousel-line-top .ua-timeline-marker-icon i,
+.ua-timeline-carousel-line-top .ua-timeline-marker-icon svg {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    font-size: 18px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.ua-timeline-prev {
-    left: -10px;
+/* 4. Card Box (below the line at top: 150px) */
+.ua-timeline-carousel-line-top .ua-timeline-card {
+    position: relative !important;
+    margin-top: 150px !important;
+    margin-bottom: 20px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    background-color: var(--ua-timeline-card-bg, #ffffff) !important;
+    border-radius: 6px !important;
+    padding: 20px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08) !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
 }
 
-.ua-timeline-next {
-    right: -10px;
+/* 5. Pointer Triangle on Top of Card */
+.ua-timeline-carousel-line-top .ua-timeline-arrow {
+    display: block !important;
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    bottom: 100% !important;
+    top: auto !important;
+    width: 0 !important;
+    height: 0 !important;
+    border: 11px solid transparent !important;
+    border-bottom-color: var(--ua-timeline-card-bg, #ffffff) !important;
 }
 
-/* Carousel Pagination Dots */
-.ua-timeline-pagination {
-    position: relative;
-    margin-top: 24px;
-    text-align: center;
+/* 6. Navigation Buttons on Line Top */
+.ua-timeline-carousel-line-top .ua-timeline-prev,
+.ua-timeline-carousel-line-top .ua-timeline-next {
+    position: absolute !important;
+    top: 100px !important;
+    transform: translateY(-50%) !important;
+    z-index: 15 !important;
+    cursor: pointer !important;
+    font-size: 26px !important;
+    color: var(--ua-timeline-primary, #0274be) !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    width: 32px !important;
+    height: 32px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: color 0.2s ease, opacity 0.2s ease !important;
+}
+
+.ua-timeline-carousel-line-top .ua-timeline-prev {
+    left: 6px !important;
+}
+
+.ua-timeline-carousel-line-top .ua-timeline-next {
+    right: 6px !important;
+}
+
+.ua-timeline-carousel-line-top .ua-timeline-prev.swiper-button-disabled,
+.ua-timeline-carousel-line-top .ua-timeline-next.swiper-button-disabled {
+    opacity: 0.35 !important;
+    cursor: auto !important;
+    pointer-events: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   Line Bottom - Carousel (.ua-timeline-carousel-line-bottom)
+   -------------------------------------------------------------------------- */
+/* 1. Middle Line Progressbar */
+.ua-timeline-carousel-line-bottom .ua-timeline-line-progressbar,
+.ua-timeline-carousel-line-bottom .swiper-pagination-progressbar {
+    position: absolute !important;
+    height: 2px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    bottom: 100px !important;
+    top: auto !important;
+    width: calc(100% - 80px) !important;
+    background-color: var(--ua-timeline-line-base, #D6D6D6) !important;
+    z-index: 2 !important;
+}
+
+.ua-timeline-carousel-line-bottom .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+    background-color: var(--ua-timeline-primary, #0274be) !important;
+    height: 100% !important;
+}
+
+/* 2. Card Box (above the line) */
+.ua-timeline-carousel-line-bottom .ua-timeline-card {
+    position: relative !important;
+    margin-top: 20px !important;
+    margin-bottom: 150px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    background-color: var(--ua-timeline-card-bg, #ffffff) !important;
+    border-radius: 6px !important;
+    padding: 20px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08) !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+}
+
+/* 3. Pointer Triangle on Bottom of Card */
+.ua-timeline-carousel-line-bottom .ua-timeline-arrow {
+    display: block !important;
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    top: 100% !important;
+    bottom: auto !important;
+    width: 0 !important;
+    height: 0 !important;
+    border: 11px solid transparent !important;
+    border-top-color: var(--ua-timeline-card-bg, #ffffff) !important;
+}
+
+/* 4. Circular Marker Node (on the line at bottom: 100px) */
+.ua-timeline-carousel-line-bottom .ua-timeline-marker-wrap {
+    position: absolute !important;
+    bottom: 100px !important;
+    top: auto !important;
+    left: 50% !important;
+    transform: translate(-50%, 50%) !important;
+    z-index: 10 !important;
+    margin: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.ua-timeline-carousel-line-bottom .ua-timeline-marker {
+    width: 40px !important;
+    height: 40px !important;
+    background-color: var(--ua-timeline-primary, #0274be) !important;
+    border: 2px solid var(--ua-timeline-primary, #0274be) !important;
+    border-radius: 50% !important;
+    color: #ffffff !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 18px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+    transition: all 0.25s ease;
+}
+
+.ua-timeline-carousel-line-bottom .ua-timeline-marker-icon,
+.ua-timeline-carousel-line-bottom .ua-timeline-marker-icon i,
+.ua-timeline-carousel-line-bottom .ua-timeline-marker-icon svg {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    font-size: 18px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 5. Extra Label (below the line at bottom: 40px) */
+.ua-timeline-carousel-line-bottom .ua-timeline-extra-label-wrap {
+    position: absolute !important;
+    bottom: 40px !important;
+    top: auto !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin: 0 !important;
+    padding: 0 5px !important;
+    box-sizing: border-box !important;
+    z-index: 4 !important;
+}
+
+.ua-timeline-carousel-line-bottom .ua-timeline-extra-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ua-timeline-primary, #0274be);
+    display: inline-block;
+}
+
+.ua-timeline-carousel-line-bottom .ua-timeline-extra-sub-label {
+    display: block;
+    font-size: 13px;
+    color: var(--ua-timeline-text-muted, #7A7A7A);
+    margin-top: 2px;
+}
+
+/* 6. Navigation Buttons on Line Bottom */
+.ua-timeline-carousel-line-bottom .ua-timeline-prev,
+.ua-timeline-carousel-line-bottom .ua-timeline-next {
+    position: absolute !important;
+    bottom: 100px !important;
+    top: auto !important;
+    transform: translateY(50%) !important;
+    z-index: 15 !important;
+    cursor: pointer !important;
+    font-size: 26px !important;
+    color: var(--ua-timeline-primary, #0274be) !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    width: 32px !important;
+    height: 32px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: color 0.2s ease, opacity 0.2s ease !important;
+}
+
+.ua-timeline-carousel-line-bottom .ua-timeline-prev {
+    left: 6px !important;
+}
+
+.ua-timeline-carousel-line-bottom .ua-timeline-next {
+    right: 6px !important;
+}
+
+.ua-timeline-carousel-line-bottom .ua-timeline-prev.swiper-button-disabled,
+.ua-timeline-carousel-line-bottom .ua-timeline-next.swiper-button-disabled {
+    opacity: 0.35 !important;
+    cursor: auto !important;
+    pointer-events: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   Equal Height Slides in Carousel
+   -------------------------------------------------------------------------- */
+.ua-equal-height-slides.ua-timeline-carousel-line-top .ua-timeline-card {
+    height: calc(100% - 170px) !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.ua-equal-height-slides.ua-timeline-carousel-line-bottom .ua-timeline-card {
+    height: calc(100% - 170px) !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.ua-equal-height-slides .ua-timeline-card-inner {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .ua-timeline-pagination .swiper-pagination-bullet {
@@ -677,12 +1015,27 @@
     opacity: 1;
     margin: 0 5px;
     transition: all 0.25s ease;
+    display: inline-block;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 .ua-timeline-pagination .swiper-pagination-bullet-active {
     width: 24px;
     border-radius: 6px;
     background-color: var(--ua-timeline-primary);
+}
+
+.ua-timeline-pagination.swiper-pagination-progressbar {
+    background: #e2e8f0;
+    height: 4px;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.ua-timeline-pagination.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+    background: var(--ua-timeline-primary);
 }
 
 /* ==========================================================================
@@ -718,6 +1071,14 @@
     box-shadow: 0 6px 20px rgba(2, 116, 190, 0.35);
 }
 
+.ua-timeline-infinite-trigger {
+    height: 4px;
+    width: 100%;
+    margin: 10px 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
 .ua-timeline-infinite-loader {
     display: flex;
     align-items: center;
@@ -727,6 +1088,11 @@
     color: var(--ua-timeline-primary);
     font-size: 14px;
     font-weight: 500;
+}
+
+.ua-timeline-infinite-loader[style*="display: none"],
+.ua-timeline-infinite-loader[style*="display:none"] {
+    display: none !important;
 }
 
 .ua-spinner {
@@ -759,9 +1125,13 @@
    Mobile Responsive Rules
    ========================================================================== */
 @media (max-width: 767px) {
+    .ua-timeline-container:not(.ua-timeline-horizontal) {
+        padding: 15px 15px !important;
+    }
+
     /* Auto convert Zig-Zag centered layout to single-sided line on mobile */
     .ua-timeline-centered .ua-timeline-line-wrap {
-        left: 20px;
+        left: 0 !important;
         transform: none;
     }
 
@@ -784,24 +1154,36 @@
         border-color: transparent var(--ua-timeline-card-bg) transparent transparent !important;
     }
 
+    .ua-timeline-centered .ua-timeline-item.is-left .ua-timeline-extra-label-wrap,
+    .ua-timeline-centered .ua-timeline-item.is-right .ua-timeline-extra-label-wrap,
+    .ua-timeline-centered .ua-timeline-item.is-left .ua-timeline-badge-wrap,
+    .ua-timeline-centered .ua-timeline-item.is-right .ua-timeline-badge-wrap {
+        position: static !important;
+        width: 100% !important;
+        height: auto !important;
+        display: block !important;
+        text-align: left !important;
+        margin-bottom: 10px !important;
+    }
+
     /* Adjust one-sided layouts for compact screens */
     .ua-timeline-one-sided-left .ua-timeline-line-wrap,
     .ua-timeline-one-sided-right .ua-timeline-line-wrap {
-        left: 16px;
-        right: auto;
+        left: 0 !important;
+        right: auto !important;
     }
 
     .ua-timeline-one-sided-left .ua-timeline-item,
     .ua-timeline-one-sided-right .ua-timeline-item {
-        width: calc(100% - 32px - var(--ua-timeline-distance));
-        margin-left: calc(32px + var(--ua-timeline-distance));
-        margin-right: 0;
+        width: calc(100% - 40px - var(--ua-timeline-distance)) !important;
+        margin-left: calc(40px + var(--ua-timeline-distance)) !important;
+        margin-right: 0 !important;
     }
 
     .ua-timeline-one-sided-left .ua-timeline-marker-wrap,
     .ua-timeline-one-sided-right .ua-timeline-marker-wrap {
-        left: calc(-1 * var(--ua-timeline-distance) - 32px);
-        right: auto;
+        left: calc(-1 * var(--ua-timeline-distance) - 40px) !important;
+        right: auto !important;
     }
 
     .ua-timeline-one-sided-right .ua-timeline-arrow {

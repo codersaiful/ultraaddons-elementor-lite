@@ -39,10 +39,29 @@ class Timeline extends Base {
         $js_file  = ULTRA_ADDONS_DIR . 'assets/js/widgets/timeline.js';
         $js_ver   = file_exists( $js_file ) ? filemtime( $js_file ) : ULTRA_ADDONS_VERSION;
 
+        // Ensure swiper script and style are registered
+        if ( ! wp_script_is( 'swiper', 'registered' ) ) {
+            wp_register_script(
+                'swiper',
+                ULTRA_ADDONS_ASSETS . 'vendor/swiper/js/swiper.min.js',
+                [ 'jquery' ],
+                ULTRA_ADDONS_VERSION,
+                true
+            );
+        }
+        if ( ! wp_style_is( 'swiper', 'registered' ) ) {
+            wp_register_style(
+                'swiper',
+                ULTRA_ADDONS_ASSETS . 'vendor/swiper/css/swiper.min.css',
+                [],
+                ULTRA_ADDONS_VERSION
+            );
+        }
+
         wp_register_style(
             'ultraaddons-timeline',
             ULTRA_ADDONS_ASSETS . 'css/widgets/timeline.css',
-            [ 'e-swiper' ],
+            [ 'swiper', 'e-swiper' ],
             $css_ver,
             'all'
         );
@@ -107,7 +126,7 @@ class Timeline extends Base {
      * Style Dependencies.
      */
     public function get_style_depends() {
-        return [ 'e-swiper', 'ultraaddons-timeline' ];
+        return [ 'swiper', 'e-swiper', 'ultraaddons-timeline' ];
     }
 
     /**
@@ -230,10 +249,11 @@ class Timeline extends Base {
                 'type'        => Controls_Manager::SELECT,
                 'default'     => 'centered',
                 'options'     => [
-                    'centered'       => esc_html__( 'Zig-Zag', 'ultraaddons-elementor-lite' ),
-                    'one-sided-left' => esc_html__( 'Line Left', 'ultraaddons-elementor-lite' ),
-                    'one-sided-right'=> esc_html__( 'Line Right', 'ultraaddons-elementor-lite' ),
-                    'horizontal'     => esc_html__( 'Horizontal Carousel', 'ultraaddons-elementor-lite' ),
+                    'centered'          => esc_html__( 'Zig-Zag', 'ultraaddons-elementor-lite' ),
+                    'one-sided-left'    => esc_html__( 'Line Left', 'ultraaddons-elementor-lite' ),
+                    'one-sided-right'   => esc_html__( 'Line Right', 'ultraaddons-elementor-lite' ),
+                    'horizontal-bottom' => esc_html__( 'Line Top - Carousel', 'ultraaddons-elementor-lite' ),
+                    'horizontal'        => esc_html__( 'Line Bottom - Carousel', 'ultraaddons-elementor-lite' ),
                 ],
                 'render_type' => 'template',
             ]
@@ -293,7 +313,7 @@ class Timeline extends Base {
                 'return_value' => 'yes',
                 'default'      => 'yes',
                 'condition'    => [
-                    'timeline_layout!' => 'horizontal',
+                    'timeline_layout!' => [ 'horizontal', 'horizontal-bottom' ],
                 ],
             ]
         );
@@ -352,6 +372,67 @@ class Timeline extends Base {
             ]
         );
 
+        // Carousel Controls (Aligned with Royal Addons Layout section)
+        $this->add_responsive_control(
+            'slides_to_show',
+            [
+                'label'          => esc_html__( 'Slides To Show', 'ultraaddons-elementor-lite' ),
+                'type'           => Controls_Manager::NUMBER,
+                'min'            => 1,
+                'max'            => 10,
+                'default'        => 3,
+                'tablet_default' => 2,
+                'mobile_default' => 1,
+                'separator'      => 'before',
+                'render_type'    => 'template',
+                'condition'      => [
+                    'timeline_layout' => [ 'horizontal', 'horizontal-bottom' ],
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'slides_gutter',
+            [
+                'label'          => esc_html__( 'Slides Gap (px)', 'ultraaddons-elementor-lite' ),
+                'type'           => Controls_Manager::SLIDER,
+                'range'          => [
+                    'px' => [ 'min' => 0, 'max' => 100, 'step' => 1 ],
+                ],
+                'default'        => [
+                    'unit' => 'px',
+                    'size' => 30,
+                ],
+                'tablet_default' => [
+                    'unit' => 'px',
+                    'size' => 20,
+                ],
+                'mobile_default' => [
+                    'unit' => 'px',
+                    'size' => 15,
+                ],
+                'render_type'    => 'template',
+                'condition'      => [
+                    'timeline_layout' => [ 'horizontal', 'horizontal-bottom' ],
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'equal_height_slides',
+            [
+                'label'        => esc_html__( 'Equal Height Slides', 'ultraaddons-elementor-lite' ),
+                'description'  => esc_html__( 'Make all slides the same height', 'ultraaddons-elementor-lite' ),
+                'type'         => Controls_Manager::SWITCHER,
+                'return_value' => 'yes',
+                'default'      => 'no',
+                'render_type'  => 'template',
+                'condition'    => [
+                    'timeline_layout' => [ 'horizontal', 'horizontal-bottom' ],
+                ],
+            ]
+        );
+
         $this->add_control(
             'carousel_loop',
             [
@@ -359,7 +440,9 @@ class Timeline extends Base {
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => 'no',
-                'separator'    => 'before',
+                'condition'    => [
+                    'timeline_layout' => [ 'horizontal', 'horizontal-bottom' ],
+                ],
             ]
         );
 
@@ -370,7 +453,102 @@ class Timeline extends Base {
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => 'no',
+                'condition'    => [
+                    'timeline_layout' => [ 'horizontal', 'horizontal-bottom' ],
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'carousel_autoplay_speed',
+            [
+                'label'     => esc_html__( 'Autoplay Speed (ms)', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::NUMBER,
+                'min'       => 1000,
+                'max'       => 10000,
+                'step'      => 500,
+                'default'   => 3500,
+                'condition' => [
+                    'timeline_layout'   => [ 'horizontal', 'horizontal-bottom' ],
+                    'carousel_autoplay' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'carousel_pause_on_hover',
+            [
+                'label'        => esc_html__( 'Pause on Hover', 'ultraaddons-elementor-lite' ),
+                'type'         => Controls_Manager::SWITCHER,
+                'return_value' => 'yes',
+                'default'      => 'yes',
+                'condition'    => [
+                    'timeline_layout'   => [ 'horizontal', 'horizontal-bottom' ],
+                    'carousel_autoplay' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'carousel_speed',
+            [
+                'label'     => esc_html__( 'Carousel Speed', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::NUMBER,
+                'min'       => 100,
+                'max'       => 5000,
+                'step'      => 50,
+                'default'   => 500,
+                'condition' => [
+                    'timeline_layout' => [ 'horizontal', 'horizontal-bottom' ],
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'carousel_icon',
+            [
+                'label'     => esc_html__( 'Carousel Icon', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::SELECT,
+                'default'   => 'angle',
+                'options'   => [
+                    'none'    => esc_html__( 'None', 'ultraaddons-elementor-lite' ),
+                    'angle'   => esc_html__( 'Angle', 'ultraaddons-elementor-lite' ),
+                    'chevron' => esc_html__( 'Chevron', 'ultraaddons-elementor-lite' ),
+                    'arrow'   => esc_html__( 'Arrow', 'ultraaddons-elementor-lite' ),
+                    'caret'   => esc_html__( 'Caret', 'ultraaddons-elementor-lite' ),
+                ],
+                'condition' => [
+                    'timeline_layout' => [ 'horizontal', 'horizontal-bottom' ],
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'carousel_pagination',
+            [
+                'label'        => esc_html__( 'Show Pagination', 'ultraaddons-elementor-lite' ),
+                'type'         => Controls_Manager::SWITCHER,
+                'return_value' => 'yes',
+                'default'      => 'no',
+                'condition'    => [
+                    'timeline_layout' => [ 'horizontal', 'horizontal-bottom' ],
+                ],
+            ]
+        );
+
+        // Vertical-Only Controls: Pagination & Entrance Animation
+        $this->add_control(
+            'show_pagination',
+            [
+                'label'        => esc_html__( 'Show Pagination', 'ultraaddons-elementor-lite' ),
+                'type'         => Controls_Manager::SWITCHER,
+                'return_value' => 'yes',
+                'default'      => 'no',
                 'separator'    => 'before',
+                'condition'    => [
+                    'timeline_content' => 'dynamic',
+                    'timeline_layout!' => [ 'horizontal', 'horizontal-bottom' ],
+                ],
             ]
         );
 
@@ -390,6 +568,9 @@ class Timeline extends Base {
                     'slide-down' => esc_html__( 'Slide Down', 'ultraaddons-elementor-lite' ),
                     'flip-down'  => esc_html__( 'Flip Down', 'ultraaddons-elementor-lite' ),
                 ],
+                'condition' => [
+                    'timeline_layout!' => [ 'horizontal', 'horizontal-bottom' ],
+                ],
             ]
         );
 
@@ -402,6 +583,7 @@ class Timeline extends Base {
                 'min'       => 0,
                 'max'       => 600,
                 'condition' => [
+                    'timeline_layout!'    => [ 'horizontal', 'horizontal-bottom' ],
                     'entrance_animation!' => 'none',
                 ],
             ]
@@ -417,147 +599,8 @@ class Timeline extends Base {
                 'max'       => 3000,
                 'step'      => 50,
                 'condition' => [
+                    'timeline_layout!'    => [ 'horizontal', 'horizontal-bottom' ],
                     'entrance_animation!' => 'none',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'show_pagination',
-            [
-                'label'        => esc_html__( 'Show Pagination', 'ultraaddons-elementor-lite' ),
-                'type'         => Controls_Manager::SWITCHER,
-                'return_value' => 'yes',
-                'default'      => 'no',
-                'separator'    => 'before',
-                'condition'    => [
-                    'timeline_content' => 'dynamic',
-                ],
-            ]
-        );
-
-        // Additional Carousel-Only Controls
-        $this->add_control(
-            'carousel_line_position',
-            [
-                'label'     => esc_html__( 'Carousel Line Position', 'ultraaddons-elementor-lite' ),
-                'type'      => Controls_Manager::SELECT,
-                'default'   => 'line-bottom',
-                'options'   => [
-                    'line-bottom' => esc_html__( 'Line Bottom', 'ultraaddons-elementor-lite' ),
-                    'line-top'    => esc_html__( 'Line Top', 'ultraaddons-elementor-lite' ),
-                ],
-                'condition' => [
-                    'timeline_layout' => 'horizontal',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'slides_to_show',
-            [
-                'label'          => esc_html__( 'Slides to Show', 'ultraaddons-elementor-lite' ),
-                'type'           => Controls_Manager::NUMBER,
-                'min'            => 1,
-                'max'            => 10,
-                'default'        => 3,
-                'tablet_default' => 2,
-                'mobile_default' => 1,
-                'condition'      => [
-                    'timeline_layout' => 'horizontal',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'slides_gutter',
-            [
-                'label'     => esc_html__( 'Slides Gap (px)', 'ultraaddons-elementor-lite' ),
-                'type'      => Controls_Manager::SLIDER,
-                'range'     => [
-                    'px' => [ 'min' => 0, 'max' => 60 ],
-                ],
-                'default'   => [
-                    'unit' => 'px',
-                    'size' => 24,
-                ],
-                'condition' => [
-                    'timeline_layout' => 'horizontal',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'carousel_autoplay_speed',
-            [
-                'label'     => esc_html__( 'Autoplay Speed (ms)', 'ultraaddons-elementor-lite' ),
-                'type'      => Controls_Manager::NUMBER,
-                'min'       => 1000,
-                'max'       => 10000,
-                'step'      => 500,
-                'default'   => 3500,
-                'condition' => [
-                    'timeline_layout'   => 'horizontal',
-                    'carousel_autoplay' => 'yes',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'carousel_speed',
-            [
-                'label'     => esc_html__( 'Transition Speed (ms)', 'ultraaddons-elementor-lite' ),
-                'type'      => Controls_Manager::NUMBER,
-                'min'       => 200,
-                'max'       => 3000,
-                'step'      => 100,
-                'default'   => 600,
-                'condition' => [
-                    'timeline_layout' => 'horizontal',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'carousel_pause_on_hover',
-            [
-                'label'        => esc_html__( 'Pause on Hover', 'ultraaddons-elementor-lite' ),
-                'type'         => Controls_Manager::SWITCHER,
-                'return_value' => 'yes',
-                'default'      => 'yes',
-                'condition'    => [
-                    'timeline_layout'   => 'horizontal',
-                    'carousel_autoplay' => 'yes',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'carousel_arrows',
-            [
-                'label'        => esc_html__( 'Navigation Arrows', 'ultraaddons-elementor-lite' ),
-                'type'         => Controls_Manager::SWITCHER,
-                'return_value' => 'yes',
-                'default'      => 'yes',
-                'condition'    => [
-                    'timeline_layout' => 'horizontal',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'carousel_pagination',
-            [
-                'label'     => esc_html__( 'Pagination Dots', 'ultraaddons-elementor-lite' ),
-                'type'      => Controls_Manager::SELECT,
-                'default'   => 'dots',
-                'options'   => [
-                    'none'        => esc_html__( 'None', 'ultraaddons-elementor-lite' ),
-                    'dots'        => esc_html__( 'Bullets / Dots', 'ultraaddons-elementor-lite' ),
-                    'progressbar' => esc_html__( 'Progress Bar', 'ultraaddons-elementor-lite' ),
-                ],
-                'condition' => [
-                    'timeline_layout' => 'horizontal',
                 ],
             ]
         );
@@ -593,43 +636,11 @@ class Timeline extends Base {
         $repeater->add_control(
             'item_group_divider',
             [
-                'label'       => esc_html__( 'Center Line Year / Group Divider', 'ultraaddons-elementor-lite' ),
+                'label'       => esc_html__( 'Main Line Label', 'ultraaddons-elementor-lite' ),
                 'description' => esc_html__( 'Displays a central divider pill (e.g. 2022, 2023) directly on the center line above this item.', 'ultraaddons-elementor-lite' ),
                 'type'        => Controls_Manager::TEXT,
                 'default'     => '',
-                'placeholder' => 'e.g. 2022 or Milestone Phase',
-                'label_block' => true,
-            ]
-        );
-
-        $repeater->add_control(
-            'item_badge',
-            [
-                'label'       => esc_html__( 'Milestone / Year Badge', 'ultraaddons-elementor-lite' ),
-                'type'        => Controls_Manager::TEXT,
-                'default'     => '2024',
-                'placeholder' => 'e.g. 2024 or Milestone 1',
-                'label_block' => true,
-            ]
-        );
-
-        $repeater->add_control(
-            'item_tag',
-            [
-                'label'       => esc_html__( 'Sub-tag / Category', 'ultraaddons-elementor-lite' ),
-                'type'        => Controls_Manager::TEXT,
-                'default'     => 'Milestone',
-                'placeholder' => 'e.g. Q1 Launch',
-                'label_block' => true,
-            ]
-        );
-
-        $repeater->add_control(
-            'item_date',
-            [
-                'label'       => esc_html__( 'Date / Period', 'ultraaddons-elementor-lite' ),
-                'type'        => Controls_Manager::TEXT,
-                'default'     => 'January 2024',
+                'placeholder' => 'e.g. 2022',
                 'label_block' => true,
             ]
         );
@@ -642,6 +653,53 @@ class Timeline extends Base {
                 'default' => [
                     'value'   => 'fas fa-flag',
                     'library' => 'fa-solid',
+                ],
+            ]
+        );
+
+        $repeater->add_control(
+            'extra_label_heading',
+            [
+                'label'     => esc_html__( 'Extra Label', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $repeater->add_control(
+            'item_show_extra_label',
+            [
+                'label'        => esc_html__( 'Show Extra Label', 'ultraaddons-elementor-lite' ),
+                'type'         => Controls_Manager::SWITCHER,
+                'return_value' => 'yes',
+                'default'      => 'yes',
+            ]
+        );
+
+        $repeater->add_control(
+            'item_badge',
+            [
+                'label'       => esc_html__( 'Primary Label', 'ultraaddons-elementor-lite' ),
+                'type'        => Controls_Manager::TEXT,
+                'default'     => '01 Jan 2022',
+                'placeholder' => 'e.g. 01 Jan 2022',
+                'label_block' => true,
+                'condition'   => [
+                    'item_show_extra_label' => 'yes',
+                ],
+            ]
+        );
+
+        $repeater->add_control(
+            'item_sub_label',
+            [
+                'label'       => esc_html__( 'Secondary Label', 'ultraaddons-elementor-lite' ),
+                'type'        => Controls_Manager::TEXT,
+                'default'     => 'Company Established',
+                'placeholder' => 'e.g. Company Established or Milestone',
+                'label_block' => true,
+                'condition'   => [
+                    'item_show_extra_label' => 'yes',
                 ],
             ]
         );
@@ -833,37 +891,40 @@ class Timeline extends Base {
                 'title_field' => '{{{ item_badge }}} - {{{ item_title }}}',
                 'default'     => [
                     [
-                        'item_badge'       => '2022',
-                        'item_tag'         => 'Foundation',
-                        'item_date'        => 'January 2022',
-                        'item_title'       => 'Company Founded',
-                        'item_description' => 'Started our journey with a small team and big vision to build transformative web tools.',
-                        'item_icon'        => [ 'value' => 'fas fa-flag', 'library' => 'fa-solid' ],
-                        'item_media_type'  => 'image',
-                        'item_image'       => [ 'url' => Utils::get_placeholder_image_src() ],
-                        'item_btn_text'    => '',
+                        'item_group_divider'    => '2022',
+                        'item_show_extra_label' => 'yes',
+                        'item_badge'            => 'January 2022',
+                        'item_sub_label'        => 'Foundation',
+                        'item_title'            => 'Company Founded',
+                        'item_description'      => 'Started our journey with a small team and big vision to build transformative web tools.',
+                        'item_icon'             => [ 'value' => 'fas fa-flag', 'library' => 'fa-solid' ],
+                        'item_media_type'       => 'image',
+                        'item_image'            => [ 'url' => Utils::get_placeholder_image_src() ],
+                        'item_btn_text'         => '',
                     ],
                     [
-                        'item_badge'       => '2023',
-                        'item_tag'         => 'Milestone',
-                        'item_date'        => 'June 2023',
-                        'item_title'       => '10,000+ Active Users',
-                        'item_description' => 'Achieved rapid adoption across the globe with our fast, versatile Elementor widgets suite.',
-                        'item_icon'        => [ 'value' => 'fas fa-rocket', 'library' => 'fa-solid' ],
-                        'item_media_type'  => 'image',
-                        'item_image'       => [ 'url' => Utils::get_placeholder_image_src() ],
-                        'item_btn_text'    => '',
+                        'item_group_divider'    => '',
+                        'item_show_extra_label' => 'yes',
+                        'item_badge'            => 'June 2023',
+                        'item_sub_label'        => 'Milestone',
+                        'item_title'            => '10,000+ Active Users',
+                        'item_description'      => 'Achieved rapid adoption across the globe with our fast, versatile Elementor widgets suite.',
+                        'item_icon'             => [ 'value' => 'fas fa-rocket', 'library' => 'fa-solid' ],
+                        'item_media_type'       => 'image',
+                        'item_image'            => [ 'url' => Utils::get_placeholder_image_src() ],
+                        'item_btn_text'         => '',
                     ],
                     [
-                        'item_badge'       => '2024',
-                        'item_tag'         => 'Innovation',
-                        'item_date'        => 'March 2024',
-                        'item_title'       => 'Platform 2.0 Release',
-                        'item_description' => 'Re-architected all components for ultra-fast rendering, zero bloat, and modern design standards.',
-                        'item_icon'        => [ 'value' => 'fas fa-trophy', 'library' => 'fa-solid' ],
-                        'item_media_type'  => 'image',
-                        'item_image'       => [ 'url' => Utils::get_placeholder_image_src() ],
-                        'item_btn_text'    => '',
+                        'item_group_divider'    => '2024',
+                        'item_show_extra_label' => 'yes',
+                        'item_badge'            => 'March 2024',
+                        'item_sub_label'        => 'Innovation',
+                        'item_title'            => 'Platform 2.0 Release',
+                        'item_description'      => 'Re-architected all components for ultra-fast rendering, zero bloat, and modern design standards.',
+                        'item_icon'             => [ 'value' => 'fas fa-trophy', 'library' => 'fa-solid' ],
+                        'item_media_type'       => 'image',
+                        'item_image'            => [ 'url' => Utils::get_placeholder_image_src() ],
+                        'item_btn_text'         => '',
                     ],
                 ],
             ]
@@ -1169,6 +1230,9 @@ class Timeline extends Base {
                 'return_value' => 'yes',
                 'default'      => 'yes',
                 'separator'    => 'before',
+                'condition'    => [
+                    'timeline_content' => 'dynamic',
+                ],
             ]
         );
 
@@ -1185,6 +1249,21 @@ class Timeline extends Base {
                 'condition' => [
                     'show_date'        => 'yes',
                     'timeline_content' => 'dynamic',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'group_by_year',
+            [
+                'label'        => esc_html__( 'Group By Year (Center Line Divider)', 'ultraaddons-elementor-lite' ),
+                'description'  => esc_html__( 'Automatically inserts a year divider pill on the center line when the post year changes.', 'ultraaddons-elementor-lite' ),
+                'type'         => Controls_Manager::SWITCHER,
+                'return_value' => 'yes',
+                'default'      => 'no',
+                'condition'    => [
+                    'timeline_content' => 'dynamic',
+                    'timeline_layout!' => [ 'horizontal', 'horizontal-bottom' ],
                 ],
             ]
         );
@@ -1247,7 +1326,7 @@ class Timeline extends Base {
                 'default'      => 'yes',
                 'separator'    => 'before',
                 'condition'    => [
-                    'timeline_layout!' => 'horizontal',
+                    'timeline_layout!' => [ 'horizontal', 'horizontal-bottom' ],
                 ],
             ]
         );
@@ -1267,7 +1346,7 @@ class Timeline extends Base {
                 'condition' => [
                     'timeline_content' => 'dynamic',
                     'show_pagination'  => 'yes',
-                    'timeline_layout!' => 'horizontal',
+                    'timeline_layout!' => [ 'horizontal', 'horizontal-bottom' ],
                 ],
             ]
         );
@@ -1400,7 +1479,7 @@ class Timeline extends Base {
                     '{{WRAPPER}}' => '--ua-timeline-distance: {{SIZE}}{{UNIT}};',
                 ],
                 'condition'      => [
-                    'timeline_layout!' => 'horizontal',
+                    'timeline_layout!' => [ 'horizontal', 'horizontal-bottom' ],
                 ],
             ]
         );
@@ -1585,13 +1664,13 @@ class Timeline extends Base {
     }
 
     /**
-     * Style Tab: Year / Milestone Badge.
+     * Style Tab: Extra Label.
      */
     protected function register_style_badge_controls() {
         $this->start_controls_section(
             'section_style_badge',
             [
-                'label'     => esc_html__( 'Milestone / Year Badge', 'ultraaddons-elementor-lite' ),
+                'label'     => esc_html__( 'Extra Label', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
                 'condition' => [
                     'show_badge' => 'yes',
@@ -1599,14 +1678,24 @@ class Timeline extends Base {
             ]
         );
 
-        $this->add_control(
-            'badge_color',
+        $this->add_responsive_control(
+            'extra_label_distance',
             [
-                'label'     => esc_html__( 'Text Color', 'ultraaddons-elementor-lite' ),
-                'type'      => Controls_Manager::COLOR,
-                'default'   => '#ffffff',
+                'label'     => esc_html__( 'Label Distance', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::SLIDER,
+                'range'     => [
+                    'px' => [ 'min' => 0, 'max' => 100 ],
+                ],
+                'default'   => [
+                    'unit' => 'px',
+                    'size' => 15,
+                ],
                 'selectors' => [
-                    '{{WRAPPER}} .ua-timeline-badge' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .ua-timeline-centered .ua-timeline-item.is-left .ua-timeline-extra-label-wrap'  => 'left: calc(100% + var(--ua-timeline-distance) + 20px + {{SIZE}}{{UNIT}});',
+                    '{{WRAPPER}} .ua-timeline-centered .ua-timeline-item.is-right .ua-timeline-extra-label-wrap' => 'right: calc(100% + var(--ua-timeline-distance) + 20px + {{SIZE}}{{UNIT}});',
+                ],
+                'condition' => [
+                    'timeline_layout' => 'centered',
                 ],
             ]
         );
@@ -1616,18 +1705,10 @@ class Timeline extends Base {
             [
                 'label'     => esc_html__( 'Background Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
-                'default'   => '#0274be',
+                'default'   => '',
                 'selectors' => [
-                    '{{WRAPPER}} .ua-timeline-badge' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .ua-timeline-extra-label-wrap' => 'background-color: {{VALUE}};',
                 ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name'     => 'badge_typography',
-                'selector' => '{{WRAPPER}} .ua-timeline-badge',
             ]
         );
 
@@ -1637,15 +1718,8 @@ class Timeline extends Base {
                 'label'      => esc_html__( 'Padding', 'ultraaddons-elementor-lite' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em' ],
-                'default'    => [
-                    'top'    => 6,
-                    'right'  => 16,
-                    'bottom' => 6,
-                    'left'   => 16,
-                    'unit'   => 'px',
-                ],
                 'selectors'  => [
-                    '{{WRAPPER}} .ua-timeline-badge' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .ua-timeline-extra-label-wrap' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -1658,12 +1732,8 @@ class Timeline extends Base {
                 'range'      => [
                     'px' => [ 'min' => 0, 'max' => 50 ],
                 ],
-                'default'    => [
-                    'unit' => 'px',
-                    'size' => 20,
-                ],
                 'selectors'  => [
-                    '{{WRAPPER}} .ua-timeline-badge' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .ua-timeline-extra-label-wrap' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -1672,7 +1742,74 @@ class Timeline extends Base {
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'badge_box_shadow',
-                'selector' => '{{WRAPPER}} .ua-timeline-badge',
+                'selector' => '{{WRAPPER}} .ua-timeline-extra-label-wrap',
+            ]
+        );
+
+        $this->add_control(
+            'heading_primary_label',
+            [
+                'label'     => esc_html__( 'Primary Label', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'badge_color',
+            [
+                'label'     => esc_html__( 'Color', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::COLOR,
+                'default'   => '#0274be',
+                'selectors' => [
+                    '{{WRAPPER}} .ua-timeline-extra-label, {{WRAPPER}} .ua-timeline-badge' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'     => 'badge_typography',
+                'selector' => '{{WRAPPER}} .ua-timeline-extra-label, {{WRAPPER}} .ua-timeline-badge',
+            ]
+        );
+
+        $this->add_control(
+            'heading_secondary_label',
+            [
+                'label'     => esc_html__( 'Secondary Label', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::HEADING,
+                'separator' => 'before',
+                'condition' => [
+                    'timeline_content' => 'custom',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'secondary_label_color',
+            [
+                'label'     => esc_html__( 'Color', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::COLOR,
+                'default'   => '#7a7a7a',
+                'selectors' => [
+                    '{{WRAPPER}} .ua-timeline-extra-sub-label' => 'color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'timeline_content' => 'custom',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'      => 'secondary_label_typography',
+                'selector'  => '{{WRAPPER}} .ua-timeline-extra-sub-label',
+                'condition' => [
+                    'timeline_content' => 'custom',
+                ],
             ]
         );
 
@@ -1689,7 +1826,7 @@ class Timeline extends Base {
                 'label'     => esc_html__( 'Center Line Year Divider', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
                 'condition' => [
-                    'timeline_layout!' => 'horizontal',
+                    'timeline_layout!' => [ 'horizontal', 'horizontal-bottom' ],
                 ],
             ]
         );
@@ -1823,6 +1960,43 @@ class Timeline extends Base {
                 ],
                 'selectors'  => [
                     '{{WRAPPER}} .ua-timeline-card-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'container_padding',
+            [
+                'label'       => esc_html__( 'Container Padding', 'ultraaddons-elementor-lite' ),
+                'description' => esc_html__( 'Add padding to both sides of the timeline to prevent cards and shadows from touching the borders.', 'ultraaddons-elementor-lite' ),
+                'type'        => Controls_Manager::DIMENSIONS,
+                'size_units'  => [ 'px', 'em', '%' ],
+                'default'     => [
+                    'top'    => 20,
+                    'right'  => 25,
+                    'bottom' => 20,
+                    'left'   => 25,
+                    'unit'   => 'px',
+                ],
+                'tablet_default' => [
+                    'top'    => 15,
+                    'right'  => 20,
+                    'bottom' => 15,
+                    'left'   => 20,
+                    'unit'   => 'px',
+                ],
+                'mobile_default' => [
+                    'top'    => 10,
+                    'right'  => 15,
+                    'bottom' => 10,
+                    'left'   => 15,
+                    'unit'   => 'px',
+                ],
+                'selectors'   => [
+                    '{{WRAPPER}} .ua-timeline-container:not(.ua-timeline-horizontal)' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'condition'   => [
+                    'timeline_layout!' => [ 'horizontal', 'horizontal-bottom' ],
                 ],
             ]
         );
@@ -2400,7 +2574,7 @@ class Timeline extends Base {
                 'label'     => esc_html__( 'Carousel Arrows & Dots', 'ultraaddons-elementor-lite' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
                 'condition' => [
-                    'timeline_layout' => 'horizontal',
+                    'timeline_layout' => [ 'horizontal', 'horizontal-bottom' ],
                 ],
             ]
         );
@@ -2411,7 +2585,7 @@ class Timeline extends Base {
                 'label'     => esc_html__( 'Navigation Arrows', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::HEADING,
                 'condition' => [
-                    'carousel_arrows' => 'yes',
+                    'carousel_icon!' => 'none',
                 ],
             ]
         );
@@ -2426,7 +2600,7 @@ class Timeline extends Base {
                     '{{WRAPPER}} .ua-timeline-nav-btn' => 'color: {{VALUE}};',
                 ],
                 'condition' => [
-                    'carousel_arrows' => 'yes',
+                    'carousel_icon!' => 'none',
                 ],
             ]
         );
@@ -2441,7 +2615,7 @@ class Timeline extends Base {
                     '{{WRAPPER}} .ua-timeline-nav-btn' => 'background-color: {{VALUE}};',
                 ],
                 'condition' => [
-                    'carousel_arrows' => 'yes',
+                    'carousel_icon!' => 'none',
                 ],
             ]
         );
@@ -2456,7 +2630,7 @@ class Timeline extends Base {
                     '{{WRAPPER}} .ua-timeline-nav-btn:hover' => 'color: {{VALUE}};',
                 ],
                 'condition' => [
-                    'carousel_arrows' => 'yes',
+                    'carousel_icon!' => 'none',
                 ],
             ]
         );
@@ -2471,7 +2645,7 @@ class Timeline extends Base {
                     '{{WRAPPER}} .ua-timeline-nav-btn:hover' => 'background-color: {{VALUE}};',
                 ],
                 'condition' => [
-                    'carousel_arrows' => 'yes',
+                    'carousel_icon!' => 'none',
                 ],
             ]
         );
@@ -2483,7 +2657,7 @@ class Timeline extends Base {
                 'type'      => Controls_Manager::HEADING,
                 'separator' => 'before',
                 'condition' => [
-                    'carousel_pagination!' => 'none',
+                    'carousel_pagination' => 'yes',
                 ],
             ]
         );
@@ -2498,7 +2672,7 @@ class Timeline extends Base {
                     '{{WRAPPER}} .ua-timeline-pagination .swiper-pagination-bullet' => 'background-color: {{VALUE}};',
                 ],
                 'condition' => [
-                    'carousel_pagination' => 'dots',
+                    'carousel_pagination' => 'yes',
                 ],
             ]
         );
@@ -2514,7 +2688,7 @@ class Timeline extends Base {
                     '{{WRAPPER}} .ua-timeline-pagination.swiper-pagination-progressbar .swiper-pagination-progressbar-fill' => 'background-color: {{VALUE}};',
                 ],
                 'condition' => [
-                    'carousel_pagination!' => 'none',
+                    'carousel_pagination' => 'yes',
                 ],
             ]
         );
@@ -2534,7 +2708,7 @@ class Timeline extends Base {
                 'condition' => [
                     'timeline_content' => 'dynamic',
                     'pagination_type'  => 'load_more',
-                    'timeline_layout!' => 'horizontal',
+                    'timeline_layout!' => [ 'horizontal', 'horizontal-bottom' ],
                 ],
             ]
         );
@@ -2788,11 +2962,11 @@ class Timeline extends Base {
             'elementor-repeater-item-' . esc_attr( $item_repeater_id ),
         ];
 
-        if ( 'horizontal' === $layout ) {
+        if ( 'horizontal' === $layout || 'horizontal-bottom' === $layout ) {
             $item_classes[] = 'swiper-slide';
         }
 
-        if ( ! empty( $item_data['group_divider'] ) && 'horizontal' !== $layout ) :
+        if ( ! empty( $item_data['group_divider'] ) && 'horizontal' !== $layout && 'horizontal-bottom' !== $layout ) :
             ?>
             <div class="ua-timeline-group-divider">
                 <span class="ua-timeline-group-label"><?php echo esc_html( $item_data['group_divider'] ); ?></span>
@@ -2807,12 +2981,6 @@ class Timeline extends Base {
         ?>
         <div class="<?php echo esc_attr( implode( ' ', $item_classes ) ); ?>" data-index="<?php echo esc_attr( $index ); ?>">
             
-            <?php if ( 'yes' === ( $settings['show_badge'] ?? 'yes' ) && ! empty( $item_data['badge'] ) ) : ?>
-                <div class="ua-timeline-badge-wrap">
-                    <span class="ua-timeline-badge"><?php echo esc_html( $item_data['badge'] ); ?></span>
-                </div>
-            <?php endif; ?>
-
             <!-- Timeline Marker Node -->
             <div class="ua-timeline-marker-wrap">
                 <div class="ua-timeline-marker">
@@ -2828,6 +2996,24 @@ class Timeline extends Base {
                 </div>
             </div>
 
+            <!-- Extra Label (Opposite side in Zig-Zag) -->
+            <?php 
+            $show_extra = 'yes' === ( $settings['show_badge'] ?? 'yes' );
+            if ( isset( $item_data['show_extra_label'] ) && ! $item_data['show_extra_label'] ) {
+                $show_extra = false;
+            }
+            if ( $show_extra && ( ! empty( $item_data['badge'] ) || ! empty( $item_data['sub_label'] ) ) ) : 
+            ?>
+                <div class="ua-timeline-extra-label-wrap">
+                    <?php if ( ! empty( $item_data['badge'] ) ) : ?>
+                        <span class="ua-timeline-extra-label ua-timeline-badge"><?php echo esc_html( $item_data['badge'] ); ?></span>
+                    <?php endif; ?>
+                    <?php if ( ! empty( $item_data['sub_label'] ) ) : ?>
+                        <span class="ua-timeline-extra-sub-label"><?php echo esc_html( $item_data['sub_label'] ); ?></span>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+
             <!-- Card Box -->
             <div class="<?php echo esc_attr( implode( ' ', $card_classes ) ); ?>">
                 <?php if ( 'yes' === ( $settings['show_pointer_arrow'] ?? 'yes' ) ) : ?>
@@ -2839,7 +3025,7 @@ class Timeline extends Base {
                 <?php endif; ?>
 
                 <div class="ua-timeline-card-inner">
-                    <?php if ( 'yes' === ( $settings['show_date'] ?? 'yes' ) && ( ! empty( $item_data['date'] ) || ! empty( $item_data['tag'] ) || ! empty( $item_data['author'] ) ) ) : ?>
+                    <?php if ( 'dynamic' === $settings['timeline_content'] && 'yes' === ( $settings['show_date'] ?? 'yes' ) && ( ! empty( $item_data['date'] ) || ! empty( $item_data['tag'] ) || ! empty( $item_data['author'] ) ) ) : ?>
                         <div class="ua-timeline-meta">
                             <?php if ( ! empty( $item_data['tag'] ) ) : ?>
                                 <span class="ua-timeline-tag"><?php echo esc_html( $item_data['tag'] ); ?></span>
@@ -2865,7 +3051,10 @@ class Timeline extends Base {
                         </<?php echo esc_attr( $title_tag ); ?>>
                     <?php endif; ?>
 
-                    <?php if ( ! empty( $item_data['description'] ) ) : ?>
+                    <?php 
+                    $show_desc = ( 'yes' === ( $settings['show_description'] ?? ( $settings['show_excerpt'] ?? 'yes' ) ) );
+                    if ( $show_desc && ! empty( $item_data['description'] ) ) : 
+                    ?>
                         <div class="ua-timeline-desc">
                             <?php echo wp_kses_post( $item_data['description'] ); ?>
                         </div>
@@ -2899,7 +3088,7 @@ class Timeline extends Base {
             return;
         }
 
-        $show_desc = ! empty( $settings['show_description'] ) ? ( 'yes' === $settings['show_description'] ) : ( 'yes' === ( $settings['show_excerpt'] ?? 'yes' ) );
+        $show_desc = ( 'yes' === ( $settings['show_description'] ?? ( $settings['show_excerpt'] ?? 'yes' ) ) );
 
         foreach ( $items as $index => $item ) {
             $is_even = ( 0 === $index % 2 );
@@ -2911,19 +3100,29 @@ class Timeline extends Base {
                 $button_link = $item['item_link']['url'];
             }
 
+            $primary_label = ! empty( $item['item_badge'] ) ? $item['item_badge'] : ( $item['item_date'] ?? '' );
+            if ( ! empty( $item['item_date'] ) && ! empty( $item['item_badge'] ) && is_numeric( trim( $item['item_badge'] ) ) && 4 === strlen( trim( $item['item_badge'] ) ) ) {
+                $primary_label = $item['item_date'];
+            }
+
+            $secondary_label = ! empty( $item['item_sub_label'] ) ? $item['item_sub_label'] : ( $item['item_tag'] ?? '' );
+            $show_item_extra = ( $item['item_show_extra_label'] ?? 'yes' ) !== 'no';
+
             $item_data = [
-                'repeater_id'   => $item['_id'] ?? $index,
-                'group_divider' => $item['item_group_divider'] ?? '',
-                'badge'         => $item['item_badge'] ?? '',
-                'tag'           => $item['item_tag'] ?? '',
-                'date'          => $item['item_date'] ?? '',
-                'icon'          => $item['item_icon'] ?? '',
-                'title'         => $item['item_title'] ?? '',
-                'link'          => $item['item_link']['url'] ?? '',
-                'description'   => $show_desc ? ( $item['item_description'] ?? '' ) : '',
-                'button_text'   => ( 'yes' === ( $settings['show_read_more'] ?? 'yes' ) ) ? ( $item['item_btn_text'] ?? ( $settings['read_more_text'] ?? esc_html__( 'Read More', 'ultraaddons-elementor-lite' ) ) ) : '',
-                'button_link'   => $button_link,
-                'media'         => [
+                'repeater_id'      => $item['_id'] ?? $index,
+                'group_divider'    => $item['item_group_divider'] ?? '',
+                'show_extra_label' => $show_item_extra,
+                'badge'            => $primary_label,
+                'sub_label'        => $secondary_label,
+                'tag'              => '',
+                'date'             => '',
+                'icon'             => $item['item_icon'] ?? '',
+                'title'            => $item['item_title'] ?? '',
+                'link'             => $item['item_link']['url'] ?? '',
+                'description'      => $show_desc ? ( $item['item_description'] ?? '' ) : '',
+                'button_text'      => ( 'yes' === ( $settings['show_read_more'] ?? 'yes' ) ) ? ( $item['item_btn_text'] ?? ( $settings['read_more_text'] ?? esc_html__( 'Read More', 'ultraaddons-elementor-lite' ) ) ) : '',
+                'button_link'      => $button_link,
+                'media'            => [
                     'type'      => $item['item_media_type'] ?? 'none',
                     'image_id'  => $item['item_image']['id'] ?? '',
                     'image_url' => $item['item_image']['url'] ?? '',
@@ -2963,7 +3162,7 @@ class Timeline extends Base {
             $post_date  = ( 'modified_date' === $date_source ) ? get_the_modified_date( $date_format ) : get_the_date( $date_format );
             $year_badge = get_the_date( 'Y' );
 
-            $extra_label = $year_badge;
+            $extra_label = $post_date;
             if ( 'custom_field' === ( $settings['extra_label_source'] ?? 'publish_date' ) && ! empty( $settings['extra_label_meta_key'] ) ) {
                 $meta_lbl = get_post_meta( $post_id, sanitize_key( $settings['extra_label_meta_key'] ), true );
                 if ( ! empty( $meta_lbl ) ) {
@@ -2989,7 +3188,7 @@ class Timeline extends Base {
             $image_id  = get_post_thumbnail_id( $post_id );
             $image_url = get_the_post_thumbnail_url( $post_id, $img_size );
 
-            $show_desc   = ! empty( $settings['show_description'] ) ? ( 'yes' === $settings['show_description'] ) : ( 'yes' === ( $settings['show_excerpt'] ?? 'yes' ) );
+            $show_desc   = ( 'yes' === ( $settings['show_description'] ?? ( $settings['show_excerpt'] ?? 'yes' ) ) );
             $excerpt_len = ! empty( $settings['excerpt_length'] ) ? intval( $settings['excerpt_length'] ) : 20;
             $excerpt     = wp_trim_words( get_the_excerpt(), $excerpt_len );
 
@@ -3034,9 +3233,9 @@ class Timeline extends Base {
     protected function render() {
         $settings   = $this->get_settings_for_display();
         $widget_id  = $this->get_id();
-        $layout     = $settings['timeline_layout'];
+        $layout     = $settings['timeline_layout'] ?? 'centered';
         $is_custom  = ( 'custom' === $settings['timeline_content'] );
-        $is_horiz   = ( 'horizontal' === $layout );
+        $is_horiz   = in_array( $layout, [ 'horizontal', 'horizontal-bottom' ], true );
 
         $anim          = $settings['entrance_animation'] ?? 'none';
         $anim_offset   = ! empty( $settings['animation_offset'] ) ? intval( $settings['animation_offset'] ) : 150;
@@ -3048,14 +3247,18 @@ class Timeline extends Base {
             'ua-timeline-' . esc_attr( $settings['timeline_content'] ),
         ];
 
-        if ( 'none' !== $anim ) {
+        if ( 'none' !== $anim && ! $is_horiz ) {
             $container_classes[] = 'has-entrance-animation';
             $container_classes[] = 'ua-anim-' . esc_attr( $anim );
         }
 
         if ( $is_horiz ) {
-            $line_pos = ! empty( $settings['carousel_line_position'] ) ? $settings['carousel_line_position'] : 'line-bottom';
+            $container_classes[] = 'ua-timeline-horizontal';
+            $line_pos = ( 'horizontal-bottom' === $layout ) ? 'line-top' : 'line-bottom';
             $container_classes[] = 'ua-timeline-carousel-' . esc_attr( $line_pos );
+            if ( 'yes' === ( $settings['equal_height_slides'] ?? 'no' ) ) {
+                $container_classes[] = 'ua-equal-height-slides';
+            }
         }
 
         if ( 'yes' === ( $settings['timeline_fill'] ?? 'yes' ) && ! $is_horiz ) {
@@ -3072,13 +3275,31 @@ class Timeline extends Base {
             $slides_desktop = ! empty( $settings['slides_to_show'] ) ? intval( $settings['slides_to_show'] ) : 3;
             $slides_tablet  = ! empty( $settings['slides_to_show_tablet'] ) ? intval( $settings['slides_to_show_tablet'] ) : 2;
             $slides_mobile  = ! empty( $settings['slides_to_show_mobile'] ) ? intval( $settings['slides_to_show_mobile'] ) : 1;
-            $gutter         = isset( $settings['slides_gutter']['size'] ) ? intval( $settings['slides_gutter']['size'] ) : 24;
+
+            $parse_gutter = function( $val, $default = 30 ) {
+                if ( is_array( $val ) ) {
+                    if ( isset( $val['size'] ) && '' !== $val['size'] && is_numeric( $val['size'] ) ) {
+                        $size = intval( $val['size'] );
+                        return ( 1 === $size || 5 === $size ) ? $default : $size;
+                    }
+                    return $default;
+                }
+                if ( isset( $val ) && '' !== $val && is_numeric( $val ) ) {
+                    $num = intval( $val );
+                    return ( 1 === $num || 5 === $num ) ? $default : $num;
+                }
+                return $default;
+            };
+
+            $gutter_desktop = $parse_gutter( $settings['slides_gutter'] ?? null, 30 );
+            $gutter_tablet  = $parse_gutter( $settings['slides_gutter_tablet'] ?? null, 20 );
+            $gutter_mobile  = $parse_gutter( $settings['slides_gutter_mobile'] ?? null, 15 );
 
             $swiper_config = [
                 'slidesPerView'  => $slides_mobile,
-                'spaceBetween'   => $gutter,
-                'speed'          => ! empty( $settings['carousel_speed'] ) ? intval( $settings['carousel_speed'] ) : 600,
-                'loop'           => ( 'yes' === ( $settings['carousel_loop'] ?? 'yes' ) ),
+                'spaceBetween'   => $gutter_mobile,
+                'speed'          => ! empty( $settings['carousel_speed'] ) ? intval( $settings['carousel_speed'] ) : 500,
+                'loop'           => ( 'yes' === ( $settings['carousel_loop'] ?? 'no' ) ),
                 'autoplay'       => ( 'yes' === ( $settings['carousel_autoplay'] ?? 'no' ) ) ? [
                     'delay'                => ! empty( $settings['carousel_autoplay_speed'] ) ? intval( $settings['carousel_autoplay_speed'] ) : 3500,
                     'disableOnInteraction' => ( 'yes' === ( $settings['carousel_pause_on_hover'] ?? 'yes' ) ),
@@ -3087,29 +3308,26 @@ class Timeline extends Base {
                 'breakpoints'    => [
                     768 => [
                         'slidesPerView' => $slides_tablet,
-                        'spaceBetween'  => $gutter,
+                        'spaceBetween'  => $gutter_tablet,
                     ],
                     1025 => [
                         'slidesPerView' => $slides_desktop,
-                        'spaceBetween'  => $gutter,
+                        'spaceBetween'  => $gutter_desktop,
                     ],
                 ],
             ];
 
-            if ( 'yes' === ( $settings['carousel_arrows'] ?? 'yes' ) ) {
+            if ( 'none' !== ( $settings['carousel_icon'] ?? 'angle' ) ) {
                 $swiper_config['navigation'] = [
                     'nextEl' => '.ua-swiper-next-' . esc_attr( $widget_id ),
                     'prevEl' => '.ua-swiper-prev-' . esc_attr( $widget_id ),
                 ];
             }
 
-            if ( 'none' !== ( $settings['carousel_pagination'] ?? 'dots' ) ) {
-                $swiper_config['pagination'] = [
-                    'el'        => '.ua-swiper-pagination-' . esc_attr( $widget_id ),
-                    'type'      => ( 'progressbar' === $settings['carousel_pagination'] ) ? 'progressbar' : 'bullets',
-                    'clickable' => true,
-                ];
-            }
+            $swiper_config['pagination'] = [
+                'el'   => '.ua-swiper-pagination-' . esc_attr( $widget_id ),
+                'type' => 'progressbar',
+            ];
         }
 
         ?>
@@ -3153,6 +3371,8 @@ class Timeline extends Base {
                          data-current-page="1"
                          data-last-year="<?php echo esc_attr( $last_year ); ?>"
                          data-pagination-type="<?php echo esc_attr( $settings['pagination_type'] ?? 'load_more' ); ?>"
+                         data-ajax-url="<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>"
+                         data-nonce="<?php echo esc_attr( wp_create_nonce( 'ua-timeline-nonce' ) ); ?>"
                          data-query="<?php echo esc_attr( wp_json_encode( $this->get_query_args( $settings, 1 ) ) ); ?>"
                          data-settings="<?php echo esc_attr( wp_json_encode( [
                              'timeline_layout'      => $settings['timeline_layout'],
@@ -3166,6 +3386,8 @@ class Timeline extends Base {
                              'title_tag'            => $settings['title_tag'] ?? 'span',
                              'show_date'            => $settings['show_date'] ?? 'yes',
                              'date_source'          => $settings['date_source'] ?? 'publish_date',
+                             'show_author'          => $settings['show_author'] ?? 'no',
+                             'group_by_year'        => $settings['group_by_year'] ?? 'no',
                              'show_description'     => $settings['show_description'] ?? ( $settings['show_excerpt'] ?? 'yes' ),
                              'excerpt_length'       => $settings['excerpt_length'] ?? 20,
                              'show_read_more'       => $settings['show_read_more'] ?? 'yes',
@@ -3181,6 +3403,7 @@ class Timeline extends Base {
                                 <span class="ua-btn-loader" style="display: none;"><?php echo esc_html( $settings['pagination_loading_text'] ?? esc_html__( 'Loading...', 'ultraaddons-elementor-lite' ) ); ?></span>
                             </button>
                         <?php elseif ( 'infinite_scroll' === $settings['pagination_type'] ) : ?>
+                            <div class="ua-timeline-infinite-trigger" style="height: 4px; width: 100%; opacity: 0; pointer-events: none; margin: 10px 0;"></div>
                             <div class="ua-timeline-infinite-loader" style="display: none;">
                                 <span class="ua-spinner"></span>
                                 <span class="ua-loading-text"><?php echo esc_html( $settings['pagination_loading_text'] ?? esc_html__( 'Loading...', 'ultraaddons-elementor-lite' ) ); ?></span>
@@ -3194,10 +3417,9 @@ class Timeline extends Base {
                 <?php endif; ?>
 
             <?php else : ?>
-                <!-- Horizontal Carousel Structure -->
-                <div class="ua-timeline-horizontal-line-wrap">
-                    <div class="ua-timeline-horizontal-line"></div>
-                </div>
+                <!-- Horizontal Carousel Structure (Matching Royal Addons 1:1) -->
+                <!-- Middle Line Progressbar (Swiper progressbar) -->
+                <div class="ua-timeline-line-progressbar ua-swiper-pagination-<?php echo esc_attr( $widget_id ); ?>"></div>
 
                 <div class="swiper ua-timeline-swiper ua-timeline-swiper-<?php echo esc_attr( $widget_id ); ?>">
                     <div class="swiper-wrapper">
@@ -3211,17 +3433,28 @@ class Timeline extends Base {
                     </div>
                 </div>
 
-                <?php if ( 'yes' === ( $settings['carousel_arrows'] ?? 'yes' ) ) : ?>
+                <?php 
+                $nav_icon = $settings['carousel_icon'] ?? 'angle';
+                if ( 'none' !== $nav_icon ) : 
+                    $icon_prev = 'fas fa-angle-left';
+                    $icon_next = 'fas fa-angle-right';
+                    if ( 'chevron' === $nav_icon ) {
+                        $icon_prev = 'eicon-chevron-left';
+                        $icon_next = 'eicon-chevron-right';
+                    } elseif ( 'arrow' === $nav_icon ) {
+                        $icon_prev = 'fas fa-arrow-left';
+                        $icon_next = 'fas fa-arrow-right';
+                    } elseif ( 'caret' === $nav_icon ) {
+                        $icon_prev = 'fas fa-caret-left';
+                        $icon_next = 'fas fa-caret-right';
+                    }
+                ?>
                     <div class="ua-timeline-nav-btn ua-timeline-prev ua-swiper-prev-<?php echo esc_attr( $widget_id ); ?>" tabindex="0" role="button" aria-label="<?php esc_attr_e( 'Previous', 'ultraaddons-elementor-lite' ); ?>">
-                        <i class="eicon-chevron-left" aria-hidden="true"></i>
+                        <i class="<?php echo esc_attr( $icon_prev ); ?>" aria-hidden="true"></i>
                     </div>
                     <div class="ua-timeline-nav-btn ua-timeline-next ua-swiper-next-<?php echo esc_attr( $widget_id ); ?>" tabindex="0" role="button" aria-label="<?php esc_attr_e( 'Next', 'ultraaddons-elementor-lite' ); ?>">
-                        <i class="eicon-chevron-right" aria-hidden="true"></i>
+                        <i class="<?php echo esc_attr( $icon_next ); ?>" aria-hidden="true"></i>
                     </div>
-                <?php endif; ?>
-
-                <?php if ( 'none' !== ( $settings['carousel_pagination'] ?? 'dots' ) ) : ?>
-                    <div class="ua-timeline-pagination ua-swiper-pagination-<?php echo esc_attr( $widget_id ); ?>"></div>
                 <?php endif; ?>
 
             <?php endif; ?>
@@ -3234,14 +3467,19 @@ class Timeline extends Base {
      * AJAX Handler for Load More / Infinite Scroll.
      */
     public static function ajax_load_posts() {
-        check_ajax_referer( 'ua-timeline-nonce', 'nonce' );
+        $nonce = $_POST['nonce'] ?? '';
+        if ( ! wp_verify_nonce( $nonce, 'ua-timeline-nonce' ) ) {
+            if ( ! current_user_can( 'edit_posts' ) ) {
+                wp_send_json_error( [ 'message' => 'Invalid security token' ], 403 );
+            }
+        }
 
         $paged      = isset( $_POST['paged'] ) ? intval( $_POST['paged'] ) : 1;
         $last_year  = isset( $_POST['last_year'] ) ? sanitize_text_field( $_POST['last_year'] ) : '';
         $query_args = isset( $_POST['query'] ) ? json_decode( stripslashes( $_POST['query'] ), true ) : [];
         $settings   = isset( $_POST['settings'] ) ? json_decode( stripslashes( $_POST['settings'] ), true ) : [];
 
-        if ( empty( $query_args ) ) {
+        if ( empty( $query_args ) || ! is_array( $query_args ) ) {
             wp_send_json_error( [ 'message' => 'Invalid query arguments' ] );
         }
 
@@ -3249,12 +3487,18 @@ class Timeline extends Base {
         $query = new \WP_Query( $query_args );
 
         if ( ! $query->have_posts() ) {
-            wp_send_json_success( [ 'html' => '', 'has_more' => false, 'last_year' => $last_year ] );
+            wp_send_json_success( [
+                'html'      => '',
+                'has_more'  => false,
+                'max_pages' => (int) $query->max_num_pages,
+                'last_year' => $last_year,
+            ] );
         }
 
         ob_start();
-        $index       = ( $paged - 1 ) * intval( $query_args['posts_per_page'] );
-        $date_format = ! empty( $settings['date_format'] ) ? $settings['date_format'] : 'F j, Y';
+        $posts_per_page = ! empty( $query_args['posts_per_page'] ) ? intval( $query_args['posts_per_page'] ) : 6;
+        $index          = ( $paged - 1 ) * $posts_per_page;
+        $date_format    = ! empty( $settings['date_format'] ) ? $settings['date_format'] : 'F j, Y';
         $date_source = $settings['date_source'] ?? 'publish_date';
         $title_tag   = Utils::validate_html_tag( $settings['title_tag'] ?? 'h3' );
         $layout      = $settings['timeline_layout'] ?? 'centered';
@@ -3267,7 +3511,7 @@ class Timeline extends Base {
             $post_date  = ( 'modified_date' === $date_source ) ? get_the_modified_date( $date_format ) : get_the_date( $date_format );
             $year_badge = get_the_date( 'Y' );
 
-            $extra_label = $year_badge;
+            $extra_label = $post_date;
             if ( 'custom_field' === ( $settings['extra_label_source'] ?? 'publish_date' ) && ! empty( $settings['extra_label_meta_key'] ) ) {
                 $meta_lbl = get_post_meta( $post_id, sanitize_key( $settings['extra_label_meta_key'] ), true );
                 if ( ! empty( $meta_lbl ) ) {
@@ -3296,7 +3540,7 @@ class Timeline extends Base {
             $image_id  = get_post_thumbnail_id( $post_id );
             $image_url = get_the_post_thumbnail_url( $post_id, $img_size );
 
-            $show_desc   = ! empty( $settings['show_description'] ) ? ( 'yes' === $settings['show_description'] ) : ( 'yes' === ( $settings['show_excerpt'] ?? 'yes' ) );
+            $show_desc   = ( 'yes' === ( $settings['show_description'] ?? ( $settings['show_excerpt'] ?? 'yes' ) ) );
             $excerpt_len = ! empty( $settings['excerpt_length'] ) ? intval( $settings['excerpt_length'] ) : 20;
             $excerpt     = wp_trim_words( get_the_excerpt(), $excerpt_len );
 
@@ -3313,12 +3557,7 @@ class Timeline extends Base {
             }
             ?>
             <div class="ua-timeline-item <?php echo esc_attr( $side_class ); ?> elementor-repeater-item-post-<?php echo esc_attr( $post_id ); ?>" data-index="<?php echo esc_attr( $index ); ?>">
-                <?php if ( 'yes' === ( $settings['show_badge'] ?? 'yes' ) ) : ?>
-                    <div class="ua-timeline-badge-wrap">
-                        <span class="ua-timeline-badge"><?php echo esc_html( $extra_label ); ?></span>
-                    </div>
-                <?php endif; ?>
-
+                
                 <div class="ua-timeline-marker-wrap">
                     <div class="ua-timeline-marker">
                         <span class="ua-timeline-marker-icon">
@@ -3330,6 +3569,12 @@ class Timeline extends Base {
                         </span>
                     </div>
                 </div>
+
+                <?php if ( 'yes' === ( $settings['show_badge'] ?? 'yes' ) && ! empty( $extra_label ) ) : ?>
+                    <div class="ua-timeline-extra-label-wrap">
+                        <span class="ua-timeline-extra-label ua-timeline-badge"><?php echo esc_html( $extra_label ); ?></span>
+                    </div>
+                <?php endif; ?>
 
                 <div class="<?php echo esc_attr( implode( ' ', $card_classes ) ); ?>">
                     <?php if ( 'yes' === ( $settings['show_pointer_arrow'] ?? 'yes' ) ) : ?>
@@ -3400,6 +3645,7 @@ class Timeline extends Base {
         wp_send_json_success( [
             'html'      => $html,
             'has_more'  => $has_more,
+            'max_pages' => (int) $query->max_num_pages,
             'last_year' => $last_year,
         ] );
     }
