@@ -6,6 +6,11 @@
         $(document.body).on('click','.ua-option-item-wrappper .ua-option-item.item_on_off_disable,.ultraaddons-wrap button.ua-primary.ua-no-update',function(e){
             e.preventDefault();
         });
+
+        // Prevent live preview and doc button clicks from toggling the checkbox
+        $(document.body).on('click', '.ua-item-action-btn', function(e){
+            e.stopPropagation();
+        });
         
         /**
          * Do something
@@ -267,98 +272,178 @@
 
 
   /**
-   * Widget filter
-   * Here was noman's code
-   * I(Saiful) removed that code
-   * need to recode
-   * 
-   * @author Saiful
-   * @Since 1.1.0.10
+   * Modern Elements Toolbar Filters (Search, Category, All/Free/Pro Tabs, Enable All)
    */
+  function initElementsToolbar() {
+    var $search = $('#ua-widget-search');
+    var $categorySelect = $('#ua-widget-category-select');
+    var $filterTabs = $('.ua-tab-pill, .ua-filter-tab');
+    var $enableAllSwitch = $('#ua-enable-all-elements');
+    var $toggleLabel = $('#ua-toggle-all-label');
+    var $items = $('.ua-option-item-wrappper .ua-option-item');
+    var $noFound = $('.ua-no-widgets-found');
 
-   let options = localStorage.getItem("options");
+    if (!$items.length) return;
 
-//    localStorage.removeItem('options');
-  if( ! options ){
-    let defaultOptions = {
-        list: 'free-pro-all',
-        category: 'category-all'
-    };
-    localStorage.setItem("options", JSON.stringify( defaultOptions ));
+    // Load saved filters if available
+    var savedType = localStorage.getItem('ua_filter_type') || 'free-pro-all';
+    var savedCat = localStorage.getItem('ua_filter_cat') || 'category-all';
 
-    options = localStorage.getItem("options");
+    if (savedType) {
+        $filterTabs.removeClass('active');
+        var $targetTab = $filterTabs.filter('[data-target="' + savedType + '"]');
+        if ($targetTab.length) {
+            $targetTab.addClass('active');
+        } else {
+            $filterTabs.filter('[data-target="free-pro-all"]').addClass('active');
+        }
+    }
+
+    if (savedCat && $categorySelect.find('option[value="' + savedCat + '"]').length) {
+        $categorySelect.val(savedCat);
+    }
+
+    // Filter function
+    function applyWidgetFilters() {
+        var searchTerm = ($search.val() || '').toLowerCase().trim();
+        var selectedCat = $categorySelect.val() || 'category-all';
+        var selectedType = $filterTabs.filter('.active').data('target') || 'free-pro-all';
+
+        var visibleCount = 0;
+
+        $items.each(function () {
+            var $item = $(this);
+            var name = ($item.data('name') || '').toString().toLowerCase();
+            var cats = ($item.data('category') || '').toString().toLowerCase().split(',');
+            var type = ($item.data('type') || '').toString().toLowerCase();
+
+            // 1. Search matching
+            var matchSearch = !searchTerm || name.indexOf(searchTerm) !== -1;
+
+            // 2. Category matching
+            var matchCat = (selectedCat === 'category-all') || (cats.indexOf(selectedCat.toLowerCase()) !== -1) || $item.hasClass(selectedCat);
+
+            // 3. Free / Pro matching
+            var matchType = (selectedType === 'free-pro-all') || (type === selectedType) || $item.hasClass(selectedType);
+
+            if (matchSearch && matchCat && matchType) {
+                $item.show();
+                visibleCount++;
+            } else {
+                $item.hide();
+            }
+        });
+
+        if (visibleCount === 0) {
+            $noFound.show();
+        } else {
+            $noFound.hide();
+        }
+    }
+
+    // Search event
+    $search.on('input keyup search', function () {
+        applyWidgetFilters();
+    });
+
+    // Category select event
+    $categorySelect.on('change', function () {
+        localStorage.setItem('ua_filter_cat', $(this).val());
+        applyWidgetFilters();
+    });
+
+    // All / Free / Pro Tab Click event
+    $filterTabs.on('click', function (e) {
+        e.preventDefault();
+        $filterTabs.removeClass('active');
+        $(this).addClass('active');
+        localStorage.setItem('ua_filter_type', $(this).data('target'));
+        applyWidgetFilters();
+    });
+
+    // Sync master "Enable All Elements" initial state
+    function syncMasterToggleState() {
+        var $freeItems = $items.not('.item_on_off_disable');
+        if (!$freeItems.length) return;
+
+        var disabledCount = $freeItems.filter('.disabled').length;
+        var totalCount = $freeItems.length;
+
+        // If all enabled, switch is ON. If more than half disabled, switch is OFF.
+        var isAllEnabled = (disabledCount === 0);
+        $enableAllSwitch.prop('checked', !isAllEnabled ? (disabledCount < totalCount / 2) : true);
+        updateToggleLabel($enableAllSwitch.is(':checked'));
+    }
+
+    function updateToggleLabel(isEnabled) {
+        if ($toggleLabel.length) {
+            var isExtension = $('.ua-extensions-page').length > 0;
+            var itemName = isExtension ? 'Extensions' : 'Elements';
+            $toggleLabel.text(isEnabled ? ('Disable All ' + itemName) : ('Enable All ' + itemName));
+        }
+    }
+
+    syncMasterToggleState();
+
+    // Enable All Elements Switch Change
+    $enableAllSwitch.on('change', function () {
+        var enableAll = $(this).is(':checked');
+        updateToggleLabel(enableAll);
+
+        // Target active/changeable items (skip pro items if user doesn't have pro)
+        var $targetItems = $items.not('.item_on_off_disable');
+
+        if (enableAll) {
+            // Enable all: uncheck hidden checkbox, remove disabled class
+            $targetItems.find('.ua-checkbox-hidden').prop('checked', false);
+            $targetItems.removeClass('disabled').addClass('enabled');
+        } else {
+            // Disable all: check hidden checkbox, add disabled class
+            $targetItems.find('.ua-checkbox-hidden').prop('checked', true);
+            $targetItems.removeClass('enabled').addClass('disabled');
+        }
+
+        // Activate submit button
+        $('.ultraaddons-wrap button.ua-primary').removeClass('ua-no-update');
+    });
+
+    // Also update master switch when individual widget is toggled
+    $(document.body).on('change', '.ua-checkbox-hidden', function () {
+        setTimeout(syncMasterToggleState, 50);
+    });
+
+    // Initial filter execution
+    applyWidgetFilters();
   }
 
-
-  $('.widget-free-pro-list li').on('click', function(){
-    options = localStorage.getItem("options");
-    options = JSON.parse(options);
-    options.list = $(this).data('target');
-
-    localStorage.setItem("options", JSON.stringify( options ));
-
-    setClassWrapper();
-  });
-
-  $('.widget-cat-list li').on('click', function(){
-    options = localStorage.getItem("options");
-    options = JSON.parse(options);
-    options.category = $(this).data('target');
-
-    localStorage.setItem("options", JSON.stringify( options ));
-
-    setClassWrapper();
-  });
-
-  
-
-  setClassWrapper();
-  function setClassWrapper(){
-    options = localStorage.getItem("options");
-    options = JSON.parse(options);
-    
-    let free_pro = options.list;
-    let category = options.category;
-
-
-    let allSelector = 'div.ua-widgets-page div.ua-sectioon-content .ua-option-item';
-    $(allSelector).fadeOut('fast');
-
-    
-
-    $('.category-list ul li').removeClass('active');
-    $('.category-list ul li[data-target=' + free_pro + ']').addClass('active');
-    $('.category-list ul li[data-target=' + category + ']').addClass('active');
-
-
-    let fremum_class = '.' + free_pro;
-    let category_class = '.' + category;
-    if( free_pro === 'free-pro-all' ){
-        fremum_class = '';
-    }
-    
-    if( category === 'category-all' ){
-        category_class = '';
-    }
-    let targetSelector = allSelector + fremum_class + category_class;
-    //console.log(targetSelector);
-    $(targetSelector).fadeIn('medium');
-
-    }
+  initElementsToolbar();
     
 /**
    * Alert for Pro Widget 
    * @author B M Rafiul Alam
    * @Since 1.1.0.11
 */
- var inst = $('[data-remodal-id=modal]').remodal();
- $('.ua-version-free .pro').click(function(e){
-    e.preventDefault();
-    inst.open();
-});
-  
+  var inst = $('[data-remodal-id=modal]').remodal();
+  $('.ua-version-free .pro').click(function(e){
+     e.preventDefault();
+     inst.open();
+  });
 
-  
+  /**
+   * Interactive FAQ Accordion on Welcome Page
+   */
+  $(document).on('click', '.ua-faq-question', function() {
+      var $item = $(this).closest('.ua-faq-accordion-item');
+      var $answer = $item.find('.ua-faq-answer');
+      
+      if ($item.hasClass('active')) {
+          $item.removeClass('active');
+          $answer.slideUp(200);
+      } else {
+          $item.addClass('active');
+          $answer.slideDown(200);
+      }
+  });
 
 } (jQuery, window));
 

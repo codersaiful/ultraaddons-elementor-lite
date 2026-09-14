@@ -31,16 +31,38 @@ $ultraaddons_templates = $ultraaddons_template_obj->get_templates();
 $ultraaddons_add_new_elementor_template = admin_url( 'post-new.php?post_type=' . HF_Post::$post_type );
 ?>
 
-<div class="ultraaddons-section ua-option-wrapper">
+<div class="ultraaddons-section ua-option-wrapper ua-hf-page">
     <div class="ua-section-inside">
-        <div class="ua-header">
-            <h1 class="ua-page-title"><?php echo esc_html__( 'Header & Footer', 'ultraaddons-elementor-lite' ); ?></h1>
+        
+        <!-- Modern Header Card -->
+        <div class="ua-elements-header-card">
+            <div class="ua-header-top-row">
+                <div class="ua-title-area">
+                    <div class="ua-title-group">
+                        <h1 class="ua-main-title"><?php echo esc_html__( 'Header & Footer', 'ultraaddons-elementor-lite' ); ?></h1>
+                        <span class="ua-title-count-pill"><?php echo esc_html__( 'Template Builder', 'ultraaddons-elementor-lite' ); ?></span>
+                    </div>
+                    <p class="ua-sub-title"><?php echo esc_html__( 'Assign Elementor templates as site-wide or conditional header and footer.', 'ultraaddons-elementor-lite' ); ?></p>
+                </div>
+
+                <div class="ua-header-actions">
+                    <a href="<?php echo esc_url( $ultraaddons_add_new_elementor_template ); ?>" target="_blank" class="ua-hero-btn ua-hero-btn-primary" style="text-decoration: none;">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        <span><?php echo esc_html__( 'Create Template', 'ultraaddons-elementor-lite' ); ?></span>
+                    </a>
+
+                    <button type="submit" form="ua-hf-form" class="ua-btn-save-settings">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                        <span><?php echo esc_html__( 'Save Changes', 'ultraaddons-elementor-lite' ); ?></span>
+                    </button>
+                </div>
+            </div>
         </div>
         
         <div class="ua-sectioon-content">
             <div class="ua-content-inside">
 
-                <form class="ua-header-footer-form" action="" method="post">
+                <form class="ua-header-footer-form ua-settings-card-form" id="ua-hf-form" action="" method="post">
                     <div class="ua-form-wrappper">
                     <?php
                     if( is_array( $ultraaddons_templates ) && count( $ultraaddons_templates ) > 0 ){
