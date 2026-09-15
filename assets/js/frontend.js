@@ -1403,6 +1403,98 @@
             EF.hooks.addAction( 'frontend/element_ready/ultraaddons-reading-progress-bar.default', UltraAddonsReadingProgressBar );
 
             /**
+             * UltraAddons Back to Top Handler
+             *
+             * Shows/hides a fixed button on scroll with fade or slide animation.
+             * Smooth-scrolls to the top of the page on click.
+             *
+             * @param {jQuery} $scope
+             */
+            var UltraAddonsBackToTop = function( $scope ) {
+                var $btn = $scope.find( '.ua-stt-btn' );
+                if ( ! $btn.length ) return;
+
+                var rawSettings = $btn.attr( 'data-settings' );
+                if ( ! rawSettings ) return;
+
+                var s = JSON.parse( rawSettings );
+                var isEditMode = ( typeof elementorFrontend !== 'undefined' && typeof elementorFrontend.isEditMode === 'function' && elementorFrontend.isEditMode() ) || $( 'body' ).hasClass( 'elementor-editor-active' );
+
+                if ( s.position === 'fixed' ) {
+                    if ( isEditMode ) {
+                        // In Elementor Editor: keep visible for styling
+                        $btn.css( { 'opacity': '1', 'visibility': 'visible', 'margin-bottom': '0' } );
+                    } else {
+                        var scrollNS = '.uaStt' + $scope.data( 'id' );
+                        var isVisible = false;
+
+                        // Initial state
+                        if ( s.animation === 'slide' ) {
+                            $btn.css( 'margin-bottom', '-100px' );
+                        }
+
+                        function sttCheck() {
+                            var scrollTop = $( window ).scrollTop();
+
+                            if ( scrollTop > s.offset ) {
+                                if ( ! isVisible ) {
+                                    isVisible = true;
+                                    if ( s.animation === 'fade' ) {
+                                        $btn.stop( true, true ).css( 'visibility', 'visible' ).animate( { 'opacity': '1' }, s.animSpeed );
+                                    } else if ( s.animation === 'slide' ) {
+                                        $btn.stop( true, true ).css( 'visibility', 'visible' ).animate( { 'opacity': '1', 'margin-bottom': '0px' }, s.animSpeed );
+                                    } else {
+                                        $btn.css( { 'visibility': 'visible', 'opacity': '1' } );
+                                    }
+                                }
+                            } else {
+                                if ( isVisible ) {
+                                    isVisible = false;
+                                    if ( s.animation === 'fade' ) {
+                                        $btn.stop( true, true ).animate( { 'opacity': '0' }, s.animSpeed, function() {
+                                            $btn.css( 'visibility', 'hidden' );
+                                        } );
+                                    } else if ( s.animation === 'slide' ) {
+                                        $btn.stop( true, true ).animate( { 'margin-bottom': '-100px', 'opacity': '0' }, s.animSpeed, function() {
+                                            $btn.css( 'visibility', 'hidden' );
+                                        } );
+                                    } else {
+                                        $btn.css( { 'visibility': 'hidden', 'opacity': '0' } );
+                                    }
+                                }
+                            }
+                        }
+
+                        // Run on load
+                        sttCheck();
+
+                        // Bind scroll with cleanup
+                        $( window ).off( scrollNS ).on( 'scroll' + scrollNS, sttCheck );
+
+                        // Cleanup on widget removal
+                        $scope.on( 'remove', function() {
+                            $( window ).off( scrollNS );
+                        } );
+                    }
+                }
+
+                // Click to scroll top
+                $btn.off( 'click.uaStt' ).on( 'click.uaStt', function( e ) {
+                    e.preventDefault();
+                    var html = document.documentElement;
+                    var prevScrollBehavior = html.style.scrollBehavior;
+                    html.style.scrollBehavior = 'auto';
+
+                    $( 'html, body' ).stop().animate( { scrollTop: 0 }, s.scrollSpeed, function() {
+                        html.style.scrollBehavior = prevScrollBehavior;
+                    } );
+                    return false;
+                } );
+            };
+
+            EF.hooks.addAction( 'frontend/element_ready/ultraaddons-back-to-top.default', UltraAddonsBackToTop );
+
+            /**
              * UltraAddons Circle Menu Handler
              *
              * Computes circular trigonometry coordinates, sets CSS transform variables,

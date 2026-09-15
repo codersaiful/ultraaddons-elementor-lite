@@ -1,0 +1,115 @@
+/* ==========================================================================
+   Back to Top — Base Styles
+   ========================================================================== */
+
+.ua-stt-wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.ua-stt-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 4px;
+    background-color: #7320e4;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+}
+
+.ua-stt-btn:hover {
+    text-decoration: none;
+}
+
+.ua-stt-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.ua-stt-icon svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.ua-stt-text {
+    line-height: 1;
+    white-space: nowrap;
+}
+
+/* Fixed position — hidden by default on frontend, JS will show on scroll */
+.ua-stt-fixed {
+    position: fixed;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.ua-stt-fixed-right {
+    left: auto;
+    right: 30px;
+    bottom: 30px;
+}
+
+.ua-stt-fixed-left {
+    right: auto;
+    left: 30px;
+    bottom: 30px;
+}
+
+/* Corner alignment for wrapper */
+.ua-stt-pos-fixed.ua-stt-corner-right .ua-stt-wrapper,
+.ua-stt-corner-right .ua-stt-wrapper,
+.elementor-editor-active .ua-stt-pos-fixed.ua-stt-corner-right .ua-stt-wrapper,
+.elementor-editor-active .ua-stt-corner-right .ua-stt-wrapper {
+    justify-content: flex-end !important;
+}
+
+.ua-stt-pos-fixed.ua-stt-corner-left .ua-stt-wrapper,
+.ua-stt-corner-left .ua-stt-wrapper,
+.elementor-editor-active .ua-stt-pos-fixed.ua-stt-corner-left .ua-stt-wrapper,
+.elementor-editor-active .ua-stt-corner-left .ua-stt-wrapper {
+    justify-content: flex-start !important;
+}
+
+/* Elementor editor: keep fixed button visible and positioned */
+.elementor-editor-active .ua-stt-fixed {
+    position: fixed !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin-bottom: 0 !important;
+    z-index: 9999;
+}
+
+/* Icon layout (when text is visible) */
+.ua-stt-icon-left .ua-stt-btn {
+    flex-direction: row;
+}
+
+.ua-stt-icon-right .ua-stt-btn {
+    flex-direction: row-reverse;
+}
+
+.ua-stt-icon-top .ua-stt-btn {
+    flex-direction: column;
+}
+
+.ua-stt-icon-bottom .ua-stt-btn {
+    flex-direction: column-reverse;
+}

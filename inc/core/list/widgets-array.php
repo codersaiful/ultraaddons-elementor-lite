@@ -20,6 +20,16 @@ $ultraaddons_widgetsArray = [
         ],
     ],
 
+    'Back_To_Top' => [
+        'name'   => __( 'Back to Top', 'ultraaddons-elementor-lite' ),
+        'is_pro' => false,
+        'icon'   => 'eicon-arrow-up',
+        'badge'  => 'new',
+        'cat'    => [
+            __( 'General', 'ultraaddons-elementor-lite' ),
+        ],
+    ],
+
    /*  'Simple_Button'=> [
             'name'      => __( 'Simple Button', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
