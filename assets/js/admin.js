@@ -3,6 +3,9 @@
     var $window = $(w);
 
     $($window).ready(function(){
+        // Move any admin notices out of header cards to the top of the dashboard
+        $('.ua-elements-header-card').find('.notice, div.updated, div.error').insertBefore('.wp-header-end');
+
         $(document.body).on('click','.ua-option-item-wrappper .ua-option-item.item_on_off_disable,.ultraaddons-wrap button.ua-primary.ua-no-update',function(e){
             e.preventDefault();
         });
@@ -282,8 +285,82 @@
     var $toggleLabel = $('#ua-toggle-all-label');
     var $items = $('.ua-option-item-wrappper .ua-option-item');
     var $noFound = $('.ua-no-widgets-found');
+    var autoSaveTimer = null;
+    var toastTimer = null;
 
     if (!$items.length) return;
+
+    var $toast = $('#ua-toast-notification');
+    if (!$toast.length) {
+        $toast = $('<div id="ua-toast-notification" class="ua-toast-notification">' +
+            '<span class="ua-toast-text">OPTIONS UPDATED</span>' +
+            '<svg class="ua-toast-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>' +
+            '</div>').appendTo('body');
+    }
+
+    function showToast(text, isError) {
+        clearTimeout(toastTimer);
+        $toast.find('.ua-toast-text').text(text || 'OPTIONS UPDATED');
+        if (isError) {
+            $toast.addClass('is-error');
+        } else {
+            $toast.removeClass('is-error');
+        }
+        $toast.addClass('is-visible');
+
+        toastTimer = setTimeout(function () {
+            $toast.removeClass('is-visible');
+        }, 2200);
+    }
+
+    $toast.on('click', function () {
+        $(this).removeClass('is-visible');
+    });
+
+    function triggerAutoSave() {
+        clearTimeout(autoSaveTimer);
+
+        var isExtensions = $('.ua-extensions-page').length > 0;
+        var itemType = isExtensions ? 'extensions' : 'widgets';
+
+        var disabledItems = [];
+        $('.ua-option-item-wrappper .ua-checkbox-hidden:checked').each(function () {
+            var val = $(this).val();
+            if (val) {
+                disabledItems.push(val);
+            }
+        });
+
+        var ajaxUrl = (window.ultraAddonsAdmin && window.ultraAddonsAdmin.ajaxurl) ? window.ultraAddonsAdmin.ajaxurl : (window.ajaxurl || '/wp-admin/admin-ajax.php');
+        var nonce = (window.ultraAddonsAdmin && window.ultraAddonsAdmin.nonce) ? window.ultraAddonsAdmin.nonce : '';
+
+        $.ajax({
+            url: ajaxUrl,
+            type: 'POST',
+            data: {
+                action: 'ultraaddons_save_items',
+                security: nonce,
+                item_type: itemType,
+                items: disabledItems
+            },
+            dataType: 'json',
+            success: function (res) {
+                if (res && res.success) {
+                    showToast('OPTIONS UPDATED', false);
+                } else {
+                    showToast((res && res.data && res.data.message) ? res.data.message : 'FAILED TO UPDATE', true);
+                }
+            },
+            error: function () {
+                showToast('FAILED TO UPDATE', true);
+            }
+        });
+    }
+
+    function scheduleAutoSave() {
+        clearTimeout(autoSaveTimer);
+        autoSaveTimer = setTimeout(triggerAutoSave, 300);
+    }
 
     // Load saved filters if available
     var savedType = localStorage.getItem('ua_filter_type') || 'free-pro-all';
@@ -341,8 +418,23 @@
         }
     }
 
+    var $clearBtn = $('#ua-search-clear');
+
     // Search event
     $search.on('input keyup search', function () {
+        var val = $(this).val();
+        if (val && val.length > 0) {
+            $clearBtn.css('display', 'inline-flex');
+        } else {
+            $clearBtn.hide();
+        }
+        applyWidgetFilters();
+    });
+
+    // Clear search event
+    $clearBtn.on('click', function () {
+        $search.val('').focus();
+        $clearBtn.hide();
         applyWidgetFilters();
     });
 
@@ -403,13 +495,20 @@
             $targetItems.removeClass('enabled').addClass('disabled');
         }
 
-        // Activate submit button
-        $('.ultraaddons-wrap button.ua-primary').removeClass('ua-no-update');
+        // Trigger autosave immediately for batch action
+        triggerAutoSave();
     });
 
-    // Also update master switch when individual widget is toggled
+    // Also update master switch and trigger autosave when individual widget is toggled
     $(document.body).on('change', '.ua-checkbox-hidden', function () {
         setTimeout(syncMasterToggleState, 50);
+        scheduleAutoSave();
+    });
+
+    // Prevent regular form submit
+    $('#ua-widget-form, #ua-extension-form').on('submit', function (e) {
+        e.preventDefault();
+        return false;
     });
 
     // Initial filter execution

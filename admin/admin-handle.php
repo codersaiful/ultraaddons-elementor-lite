@@ -37,6 +37,7 @@ class Admin_Handle{
         add_filter('plugin_action_links_' . ULTRA_ADDONS_BASE_NAME, [ __CLASS__, 'add_action_links' ] );
         
         add_action( 'admin_menu', [ __CLASS__, 'admin_menu' ] );
+        add_action( 'wp_ajax_ultraaddons_save_items', [ __CLASS__, 'ajax_save_items' ] );
         
 
         /**
@@ -74,8 +75,14 @@ class Admin_Handle{
             return;
         }
 
-        wp_enqueue_style( 'ultraaddons-admin-style', ULTRA_ADDONS_ASSETS . 'css/admin.css', [], ULTRA_ADDONS_VERSION );
-        wp_enqueue_script( 'ultraaddons-admin-script', ULTRA_ADDONS_ASSETS . 'js/admin.js', [ 'jquery' ], ULTRA_ADDONS_VERSION, true );
+        $admin_css_ver = file_exists( ULTRA_ADDONS_DIR . 'assets/css/admin.css' ) ? filemtime( ULTRA_ADDONS_DIR . 'assets/css/admin.css' ) : ULTRA_ADDONS_VERSION;
+        $admin_js_ver  = file_exists( ULTRA_ADDONS_DIR . 'assets/js/admin.js' ) ? filemtime( ULTRA_ADDONS_DIR . 'assets/js/admin.js' ) : ULTRA_ADDONS_VERSION;
+        wp_enqueue_style( 'ultraaddons-admin-style', ULTRA_ADDONS_ASSETS . 'css/admin.css', [], $admin_css_ver );
+        wp_enqueue_script( 'ultraaddons-admin-script', ULTRA_ADDONS_ASSETS . 'js/admin.js', [ 'jquery' ], $admin_js_ver, true );
+        wp_localize_script( 'ultraaddons-admin-script', 'ultraAddonsAdmin', [
+            'ajaxurl' => admin_url( 'admin-ajax.php' ),
+            'nonce'   => wp_create_nonce( 'ultraaddons_save_items' ),
+        ] );
         wp_enqueue_style( 'ultraaddons-icon-font', ULTRA_ADDONS_ASSETS . 'icons/ultraaddons/css/ultraaddons.css', [], ULTRA_ADDONS_VERSION );
         wp_enqueue_style( 'ultraaddons-extra-icons-style', ULTRA_ADDONS_ASSETS . 'icons/ultra-addons-extra/css/fontello.css', [], ULTRA_ADDONS_VERSION );
         if ( wp_style_is( 'elementor-icons', 'registered' ) ) {
@@ -430,7 +437,39 @@ class Admin_Handle{
         //Return to default
         return $submenu_file;
     }
-    
-    
+
+    /**
+     * AJAX auto-save items (Widgets and Extensions).
+     *
+     * @since 2.0.3.4
+     */
+    public static function ajax_save_items() {
+        check_ajax_referer( 'ultraaddons_save_items', 'security' );
+
+        if ( ! current_user_can( self::$capability ) ) {
+            wp_send_json_error( [ 'message' => esc_html__( 'Permission denied.', 'ultraaddons-elementor-lite' ) ], 403 );
+        }
+
+        $type = isset( $_POST['item_type'] ) ? sanitize_key( wp_unslash( $_POST['item_type'] ) ) : 'widgets';
+        $submitted_items = isset( $_POST['items'] ) && is_array( $_POST['items'] )
+            ? array_map( 'sanitize_text_field', wp_unslash( $_POST['items'] ) )
+            : [];
+
+        if ( 'extensions' === $type ) {
+            $all_items = \UltraAddons\Core\Extensions_Manager::get_list();
+            $disabled_items = array_values( array_intersect( $submitted_items, array_keys( $all_items ) ) );
+            update_option( \UltraAddons\Core\Extensions_Manager::$disabled_items_key, $disabled_items );
+        } else {
+            $all_items = \UltraAddons\Core\Widgets_Manager::widgets();
+            $disabled_items = array_values( array_intersect( $submitted_items, array_keys( $all_items ) ) );
+            update_option( \UltraAddons\Core\Widgets_Manager::$disabled_items_key, $disabled_items );
+        }
+
+        wp_send_json_success( [
+            'message'        => esc_html__( 'All changes saved.', 'ultraaddons-elementor-lite' ),
+            'disabled_count' => count( $disabled_items ),
+            'type'           => $type,
+        ] );
+    }
 }
 Admin_Handle::init();

@@ -18,6 +18,8 @@ $ultraaddons_page_class         = strtolower(str_replace(' ', '-', $ultraaddons_
 $is_pro                         = function_exists( 'ultraaddons_is_pro' ) && ultraaddons_is_pro();
 ?>
 <div class="wrap ultraaddons-wrap ultraaddons-admin-wrapper ua-modern-dashboard ua-version-<?php echo esc_attr( ultraaddons_plugin_version() ); ?>">
+    <h1 class="wp-heading-inline screen-reader-text"><?php echo esc_html( $ultraaddons_get_page_name ); ?></h1>
+    <hr class="wp-header-end">
     
     <div class="ultraaddons-dashboard-area <?php echo esc_html( $ultraaddons_page_class ); ?>">
         <!-- Modern SaaS Navbar -->

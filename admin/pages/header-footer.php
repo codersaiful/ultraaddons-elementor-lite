@@ -39,7 +39,7 @@ $ultraaddons_add_new_elementor_template = admin_url( 'post-new.php?post_type=' .
             <div class="ua-header-top-row">
                 <div class="ua-title-area">
                     <div class="ua-title-group">
-                        <h1 class="ua-main-title"><?php echo esc_html__( 'Header & Footer', 'ultraaddons-elementor-lite' ); ?></h1>
+                        <h2 class="ua-main-title"><?php echo esc_html__( 'Header & Footer', 'ultraaddons-elementor-lite' ); ?></h2>
                         <span class="ua-title-count-pill"><?php echo esc_html__( 'Template Builder', 'ultraaddons-elementor-lite' ); ?></span>
                     </div>
                     <p class="ua-sub-title"><?php echo esc_html__( 'Assign Elementor templates as site-wide or conditional header and footer.', 'ultraaddons-elementor-lite' ); ?></p>
