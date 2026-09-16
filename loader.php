@@ -115,6 +115,10 @@ class Loader {
         // Register Timeline AJAX handlers early
         add_action( 'wp_ajax_ua_timeline_load_posts', [ $this, 'handle_timeline_ajax' ] );
         add_action( 'wp_ajax_nopriv_ua_timeline_load_posts', [ $this, 'handle_timeline_ajax' ] );
+
+        // Register Search AJAX handlers early
+        add_action( 'wp_ajax_ultraaddons_ajax_search', [ $this, 'handle_search_ajax' ] );
+        add_action( 'wp_ajax_nopriv_ultraaddons_ajax_search', [ $this, 'handle_search_ajax' ] );
         
     }
 
@@ -377,7 +381,8 @@ class Loader {
         $ajax_url = admin_url( 'admin-ajax.php' );
         $version = ULTRA_ADDONS_VERSION;
         $ULTRAADDONS_DATA = array(
-            'ajax_url' => $ajax_url,
+            'ajax_url'     => $ajax_url,
+            'search_nonce' => wp_create_nonce( 'ultraaddons_search_nonce' ),
         );
         $ULTRAADDONS_DATA = apply_filters( 'ultraaddons_localize_data', $ULTRAADDONS_DATA );
         wp_localize_script( $frontend_js_name, 'ULTRAADDONS_DATA', $ULTRAADDONS_DATA );
@@ -553,6 +558,23 @@ class Loader {
             \UltraAddons\Widget\Timeline::ajax_load_posts();
         } else {
             wp_send_json_error( [ 'message' => 'Timeline widget class not found.' ] );
+        }
+    }
+
+    /**
+     * AJAX proxy: Search for Search widget.
+     * Ensures the Search class file is loaded before calling the handler.
+     */
+    public function handle_search_ajax() {
+        $this->include_widget_base();
+        $search_file = ULTRA_ADDONS_DIR . 'inc/widget/search.php';
+        if ( file_exists( $search_file ) ) {
+            include_once $search_file;
+        }
+        if ( class_exists( '\\UltraAddons\\Widget\\Search' ) ) {
+            \UltraAddons\Widget\Search::ajax_search();
+        } else {
+            wp_send_json_error( [ 'message' => 'Search widget class not found.' ] );
         }
     }
     

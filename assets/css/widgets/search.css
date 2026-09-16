@@ -1,0 +1,518 @@
+/* ==========================================================================
+   UltraAddons Search Widget Styles
+   ========================================================================== */
+
+.ua-search-wrapper {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.ua-search-wrapper *,
+.ua-search-wrapper *::before,
+.ua-search-wrapper *::after {
+    box-sizing: border-box;
+}
+
+/* --- Search Form Layout --- */
+.ua-search-form {
+    display: flex;
+    align-items: stretch;
+    position: relative;
+    width: 100%;
+}
+
+/* --- Category Filter Wrap --- */
+.ua-search-cat-wrap {
+    flex-shrink: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.ua-search-category-select {
+    height: 48px;
+    padding: 0 30px 0 14px;
+    font-size: 14px;
+    color: #444444;
+    background-color: #f4f6f8;
+    border: 1px solid #e2e8f0;
+    border-right: none;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 14px;
+    transition: border-color 0.2s ease;
+}
+
+.ua-search-category-select:focus {
+    border-color: #0284c7;
+}
+
+/* --- Input Wrap --- */
+.ua-search-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    background-color: #ffffff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ua-search-wrapper.ua-search-has-cat .ua-search-input-wrap {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.ua-search-wrapper.is-focused .ua-search-input-wrap {
+    border-color: #0284c7;
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+/* Search Input */
+.ua-search-input {
+    width: 100%;
+    height: 48px;
+    padding: 0 16px;
+    border: none;
+    background: transparent;
+    font-size: 15px;
+    color: #1e293b;
+    outline: none;
+    line-height: 1.5;
+}
+
+.ua-search-input::-webkit-search-cancel-button,
+.ua-search-input::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* --- Clear Button --- */
+.ua-search-clear-btn {
+    position: absolute;
+    right: 48px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: #cbd5e1;
+    color: #475569;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    z-index: 2;
+}
+
+.ua-search-clear-btn:hover {
+    background: #94a3b8;
+    color: #ffffff;
+}
+
+/* When inner button is not shown or outer */
+.ua-search-wrapper.ua-search-btn-outer .ua-search-clear-btn,
+.ua-search-wrapper.ua-search-no-btn .ua-search-clear-btn {
+    right: 14px;
+}
+
+/* --- Spinner Loader --- */
+.ua-search-spinner {
+    position: absolute;
+    right: 48px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(2, 132, 199, 0.2);
+    border-top-color: #0284c7;
+    border-radius: 50%;
+    animation: uaSearchSpin 0.7s linear infinite;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.ua-search-wrapper.ua-search-btn-outer .ua-search-spinner,
+.ua-search-wrapper.ua-search-no-btn .ua-search-spinner {
+    right: 14px;
+}
+
+@keyframes uaSearchSpin {
+    0% { transform: translateY(-50%) rotate(0deg); }
+    100% { transform: translateY(-50%) rotate(360deg); }
+}
+
+/* --- Submit Button --- */
+.ua-search-submit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 48px;
+    padding: 0 20px;
+    border: none;
+    background-color: #0284c7;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.ua-search-submit-btn:hover {
+    background-color: #0369a1;
+}
+
+.ua-search-submit-btn:active {
+    transform: scale(0.98);
+}
+
+.ua-search-submit-btn .ua-search-btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ua-search-submit-btn i {
+    font-size: 15px;
+}
+
+.ua-search-submit-btn svg {
+    width: 15px;
+    height: 15px;
+    fill: currentColor;
+}
+
+/* Inner button positioning */
+.ua-search-btn-inner .ua-search-submit-btn {
+    height: 100%;
+    border-top-right-radius: inherit;
+    border-bottom-right-radius: inherit;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+/* Outer button positioning */
+.ua-search-btn-outer .ua-search-submit-btn {
+    margin-left: 8px;
+    border-radius: 4px;
+}
+
+/* --- Live Results Dropdown Container --- */
+.ua-search-results-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 6px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+    z-index: 999999;
+    overflow: hidden;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Results List */
+.ua-search-results-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 380px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Custom Scrollbar for results */
+.ua-search-results-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ua-search-results-list::-webkit-scrollbar-track {
+    background: #f8fafc;
+}
+
+.ua-search-results-list::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+.ua-search-results-list::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* --- Single Result Item --- */
+.ua-search-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    background: #ffffff;
+    transition: background-color 0.15s ease;
+    cursor: pointer;
+}
+
+.ua-search-item:not(:last-child) {
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.ua-search-item:hover,
+.ua-search-item.is-selected {
+    background-color: #f8fafc;
+}
+
+/* Item Thumbnail */
+.ua-search-item-thumb {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #f1f5f9;
+}
+
+.ua-search-item-thumb a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.ua-search-item-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.ua-search-thumb-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    font-size: 20px;
+}
+
+/* Item Content */
+.ua-search-item-content {
+    flex-grow: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.ua-search-item-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.ua-search-item-title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #0f172a;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ua-search-item-title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.ua-search-item:hover .ua-search-item-title a {
+    color: #0284c7;
+}
+
+/* Item Badge (Category / Post Type) */
+.ua-search-item-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background-color: #e0f2fe;
+    color: #0369a1;
+    border-radius: 9999px;
+    flex-shrink: 0;
+}
+
+/* Item Excerpt / Description */
+.ua-search-item-excerpt {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #64748b;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Item Price (WooCommerce) */
+.ua-search-item-price {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0284c7;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ua-search-item-price del {
+    color: #94a3b8;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.ua-search-item-price ins {
+    text-decoration: none;
+    color: #0284c7;
+    font-weight: 700;
+}
+
+/* Item Action ("View" Button) */
+.ua-search-item-action {
+    flex-shrink: 0;
+}
+
+.ua-search-view-btn {
+    display: inline-block;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #0284c7;
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+}
+
+.ua-search-item:hover .ua-search-view-btn {
+    background: #0284c7;
+    color: #ffffff;
+    border-color: #0284c7;
+}
+
+/* Empty State / No Results */
+.ua-search-no-results {
+    padding: 24px 16px;
+    text-align: center;
+    color: #64748b;
+}
+
+.ua-search-no-results p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* --- Dropdown Footer & Load More --- */
+.ua-search-footer {
+    padding: 10px 16px;
+    background: #f8fafc;
+    border-top: 1px solid #f1f5f9;
+    text-align: center;
+}
+
+.ua-search-load-more-btn {
+    width: 100%;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+    background-color: #e2e8f0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.ua-search-load-more-btn:hover {
+    background-color: #cbd5e1;
+    color: #0f172a;
+}
+
+.ua-search-load-more-spinner {
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(15, 23, 42, 0.2);
+    border-top-color: #0f172a;
+    border-radius: 50%;
+    animation: uaSearchSpin 0.6s linear infinite;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 767px) {
+    .ua-search-form {
+        flex-wrap: wrap;
+    }
+
+    .ua-search-cat-wrap {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .ua-search-category-select {
+        width: 100% !important;
+        border-right: 1px solid #e2e8f0;
+        border-radius: 4px;
+    }
+
+    .ua-search-wrapper.ua-search-has-cat .ua-search-input-wrap {
+        border-radius: 4px;
+    }
+
+    .ua-search-btn-outer .ua-search-submit-btn {
+        margin-left: 0;
+        margin-top: 8px;
+        width: 100%;
+    }
+
+    .ua-search-item {
+        padding: 10px 12px;
+    }
+
+    .ua-search-item-thumb {
+        width: 44px;
+        height: 44px;
+    }
+
+    .ua-search-item-title {
+        font-size: 14px;
+    }
+
+    .ua-search-item-action {
+        display: none; /* Hide view button on mobile for space */
+    }
+}

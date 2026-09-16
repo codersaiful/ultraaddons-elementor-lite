@@ -140,6 +140,16 @@ $ultraaddons_widgetsArray = [
             ],
     ], */
     
+    'Search' => [
+            'name'  => __( 'Search', 'ultraaddons-elementor-lite' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-site-search',
+            'cat'       => [
+                __( 'Header_Footer', 'ultraaddons-elementor-lite' ),
+                __( 'General', 'ultraaddons-elementor-lite' ),
+            ],
+    ],
+    
     'Pricing_Table' => [
             'name'  => __( 'Pricing Table', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
