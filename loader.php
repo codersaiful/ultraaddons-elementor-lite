@@ -119,6 +119,10 @@ class Loader {
         // Register Search AJAX handlers early
         add_action( 'wp_ajax_ultraaddons_ajax_search', [ $this, 'handle_search_ajax' ] );
         add_action( 'wp_ajax_nopriv_ultraaddons_ajax_search', [ $this, 'handle_search_ajax' ] );
+
+        // Register Smart Post List AJAX handlers early
+        add_action( 'wp_ajax_ua_smart_post_list_query', [ $this, 'handle_smart_post_list_ajax' ] );
+        add_action( 'wp_ajax_nopriv_ua_smart_post_list_query', [ $this, 'handle_smart_post_list_ajax' ] );
         
     }
 
@@ -579,6 +583,23 @@ class Loader {
             \UltraAddons\Widget\Search::ajax_search();
         } else {
             wp_send_json_error( [ 'message' => 'Search widget class not found.' ] );
+        }
+    }
+
+    /**
+     * AJAX proxy: Filter, Search & Pagination for Smart Post List widget.
+     * Ensures the Smart_Post_List class file is loaded before calling the handler.
+     */
+    public function handle_smart_post_list_ajax() {
+        $this->include_widget_base();
+        $smart_file = ULTRA_ADDONS_DIR . 'inc/widget/smart-post-list.php';
+        if ( file_exists( $smart_file ) ) {
+            include_once $smart_file;
+        }
+        if ( class_exists( '\\UltraAddons\\Widget\\Smart_Post_List' ) ) {
+            \UltraAddons\Widget\Smart_Post_List::ajax_query_posts();
+        } else {
+            wp_send_json_error( [ 'message' => 'Smart Post List widget class not found.' ] );
         }
     }
     

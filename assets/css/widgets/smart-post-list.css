@@ -1,0 +1,730 @@
+/**
+ * UltraAddons - Smart Post List Widget CSS
+ *
+ * @package UltraAddons
+ * @since 1.1.0.9
+ */
+
+/* ==========================================================================
+   1. Base Wrapper & Layout
+   ========================================================================== */
+.ua-smart-post-list-wrapper {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.ua-smart-post-list-wrapper *,
+.ua-smart-post-list-wrapper *::before,
+.ua-smart-post-list-wrapper *::after {
+    box-sizing: border-box;
+}
+
+.ua-smart-posts-body {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 30px;
+    align-items: stretch;
+    transition: opacity 0.25s ease;
+}
+
+.ua-smart-featured-col {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.ua-smart-list-col {
+    width: calc(50% - 30px);
+    display: flex;
+    flex-direction: column;
+}
+
+.ua-smart-list-col.full-width {
+    width: 100% !important;
+}
+
+/* Featured Position: Right */
+.featured-pos-right .ua-smart-posts-body {
+    flex-direction: row-reverse;
+}
+
+/* ==========================================================================
+   2. Top Bar (Header, Category Filter, Search, Navigation)
+   ========================================================================== */
+.ua-smart-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.ua-smart-top-left {
+    display: flex;
+    align-items: center;
+}
+
+.ua-smart-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.3;
+}
+
+.ua-smart-top-right {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* Category Filter Tabs */
+.ua-smart-cat-filter {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.ua-smart-cat-tab {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    border: none;
+    background: transparent;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    outline: none;
+    line-height: 1.2;
+}
+
+.ua-smart-cat-tab:hover {
+    color: #3b82f6;
+    background: rgba(59, 130, 246, 0.08);
+}
+
+.ua-smart-cat-tab.active {
+    color: #ffffff;
+    background-color: #3b82f6;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.28);
+}
+
+/* Live Search Input */
+.ua-smart-search-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.ua-smart-search-wrap .ua-search-icon {
+    position: absolute;
+    left: 11px;
+    color: #94a3b8;
+    font-size: 12px;
+    pointer-events: none;
+}
+
+.ua-smart-search-input {
+    width: 170px;
+    height: 34px;
+    padding: 6px 28px 6px 32px;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    font-size: 12px;
+    background: #ffffff;
+    color: #1e293b;
+    outline: none;
+    transition: all 0.25s ease;
+}
+
+.ua-smart-search-input:focus {
+    width: 210px;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+.ua-smart-search-clear {
+    position: absolute;
+    right: 8px;
+    background: none;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 1;
+    padding: 0 4px;
+}
+
+.ua-smart-search-clear:hover {
+    color: #ef4444;
+}
+
+/* Navigation Prev/Next Arrows */
+.ua-smart-nav-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ua-smart-nav-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid #e2e8f0;
+    background-color: #f8fafc;
+    color: #334155;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    outline: none;
+}
+
+.ua-smart-nav-btn i,
+.ua-smart-nav-btn svg {
+    font-size: 13px;
+    width: 13px;
+    height: 13px;
+    fill: currentColor;
+    transition: transform 0.2s ease;
+}
+
+.ua-smart-nav-btn:hover:not(.disabled) {
+    background-color: #3b82f6;
+    color: #ffffff;
+    border-color: #3b82f6;
+    transform: scale(1.06);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.ua-smart-nav-prev:hover:not(.disabled) i {
+    transform: translateX(-2px);
+}
+
+.ua-smart-nav-next:hover:not(.disabled) i {
+    transform: translateX(2px);
+}
+
+.ua-smart-nav-btn.disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   3. Featured Post Card
+   ========================================================================== */
+.ua-smart-featured-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #eef2f6;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+    transition: all 0.35s ease;
+    height: 100%;
+}
+
+.ua-smart-featured-card:hover {
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+}
+
+.ua-smart-featured-card .ua-smart-thumb-wrap {
+    position: relative;
+    width: 100%;
+    height: 270px;
+    overflow: hidden;
+    background: #f1f5f9;
+}
+
+.ua-smart-thumb-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.ua-smart-featured-card .ua-smart-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.35s ease;
+}
+
+/* Hover Effects */
+.ua-smart-featured-card:hover .ua-smart-img.effect-zoom {
+    transform: scale(1.08);
+}
+
+.ua-smart-featured-card:hover .ua-smart-img.effect-rotate {
+    transform: scale(1.08) rotate(1.5deg);
+}
+
+.ua-smart-featured-card:hover .ua-smart-img.effect-grayscale {
+    filter: grayscale(100%);
+}
+
+/* Category Badge */
+.ua-smart-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+    background-color: #3b82f6;
+    border-radius: 20px;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.25s ease;
+}
+
+.ua-smart-badge:hover {
+    background-color: #1d4ed8;
+    color: #ffffff;
+}
+
+.ua-smart-featured-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.ua-smart-featured-card .ua-smart-post-title {
+    margin: 0 0 12px 0;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #0f172a;
+}
+
+.ua-smart-featured-card .ua-smart-post-title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.ua-smart-featured-card .ua-smart-post-title a:hover {
+    color: #3b82f6;
+}
+
+.ua-smart-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+    color: #64748b;
+    margin-bottom: 12px;
+}
+
+.ua-smart-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.ua-smart-meta-item i,
+.ua-smart-meta-item svg {
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+.ua-smart-meta-item a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.ua-smart-meta-item a:hover {
+    color: #3b82f6;
+}
+
+.ua-smart-avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.ua-smart-excerpt {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #475569;
+    margin-bottom: 18px;
+}
+
+.ua-smart-btn-wrap {
+    margin-top: auto;
+    padding-top: 4px;
+}
+
+.ua-smart-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #3b82f6;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.ua-smart-btn:hover {
+    color: #1d4ed8;
+    transform: translateX(4px);
+}
+
+.ua-smart-btn i {
+    font-size: 12px;
+    transition: transform 0.25s ease;
+}
+
+.ua-smart-btn:hover i {
+    transform: translateX(3px);
+}
+
+/* ==========================================================================
+   4. List Posts Items
+   ========================================================================== */
+.ua-smart-list-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+}
+
+.list-cols-2 .ua-smart-list-wrap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.ua-smart-list-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #f1f5f9;
+    transition: all 0.25s ease;
+}
+
+.ua-smart-list-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.ua-smart-list-item.thumb-pos-right {
+    flex-direction: row-reverse;
+}
+
+.ua-smart-list-item .ua-smart-thumb-wrap {
+    width: 110px;
+    min-width: 110px;
+    height: 85px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #f1f5f9;
+}
+
+.ua-smart-list-item .ua-smart-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.ua-smart-list-item:hover .ua-smart-img {
+    transform: scale(1.08);
+}
+
+.ua-smart-list-content {
+    flex-grow: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.ua-smart-list-content .ua-smart-badge {
+    position: static;
+    display: inline-block;
+    padding: 2px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 10px;
+    margin-bottom: 4px;
+    align-self: flex-start;
+    box-shadow: none;
+}
+
+.ua-smart-list-content .ua-smart-post-title {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0;
+    color: #1e293b;
+}
+
+.ua-smart-list-content .ua-smart-post-title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.ua-smart-list-content .ua-smart-post-title a:hover {
+    color: #3b82f6;
+}
+
+.ua-smart-list-content .ua-smart-meta {
+    font-size: 11px;
+    margin-bottom: 0;
+    gap: 10px;
+}
+
+.ua-smart-list-content .ua-smart-excerpt {
+    font-size: 12px;
+    line-height: 1.5;
+    color: #64748b;
+    margin: 0;
+}
+
+/* ==========================================================================
+   5. Preset 2: Overlay Hero
+   ========================================================================== */
+.ua-smart-preset-overlay-hero .ua-smart-featured-card {
+    position: relative;
+    min-height: 420px;
+    border: none;
+    overflow: hidden;
+    justify-content: flex-end;
+}
+
+.ua-smart-preset-overlay-hero .ua-smart-featured-card .ua-smart-thumb-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100% !important;
+    z-index: 1;
+}
+
+.ua-smart-preset-overlay-hero .ua-smart-featured-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.15) 0%, rgba(15, 23, 42, 0.45) 45%, rgba(15, 23, 42, 0.95) 100%);
+    z-index: 2;
+    pointer-events: none;
+    transition: background 0.35s ease;
+}
+
+.ua-smart-preset-overlay-hero .ua-smart-featured-card:hover::after {
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.25) 0%, rgba(15, 23, 42, 0.55) 45%, rgba(15, 23, 42, 1) 100%);
+}
+
+.ua-smart-preset-overlay-hero .ua-smart-featured-content {
+    position: relative;
+    z-index: 3;
+    margin-top: auto !important;
+    flex-grow: 0 !important;
+    color: #ffffff;
+    padding: 24px;
+}
+
+.ua-smart-preset-overlay-hero .ua-smart-featured-card .ua-smart-post-title {
+    color: #ffffff;
+}
+
+.ua-smart-preset-overlay-hero .ua-smart-featured-card .ua-smart-post-title a {
+    color: #ffffff;
+}
+
+.ua-smart-preset-overlay-hero .ua-smart-featured-card .ua-smart-post-title a:hover {
+    color: #93c5fd;
+}
+
+.ua-smart-preset-overlay-hero .ua-smart-featured-card .ua-smart-meta {
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.ua-smart-preset-overlay-hero .ua-smart-featured-card .ua-smart-excerpt {
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.ua-smart-preset-overlay-hero .ua-smart-featured-card .ua-smart-btn {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.ua-smart-preset-overlay-hero .ua-smart-featured-card .ua-smart-btn:hover {
+    background: #3b82f6;
+    border-color: #3b82f6;
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   6. Preset 3: Top Banner (Featured Full Width on Top)
+   ========================================================================== */
+.ua-smart-preset-top-banner .ua-smart-posts-body {
+    flex-direction: column;
+}
+
+.ua-smart-preset-top-banner .ua-smart-featured-col {
+    width: 100% !important;
+    margin-bottom: 10px;
+}
+
+.ua-smart-preset-top-banner .ua-smart-list-col {
+    width: 100% !important;
+}
+
+.ua-smart-preset-top-banner .ua-smart-list-wrap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+/* ==========================================================================
+   7. Preset 4: Two-Column Grid List
+   ========================================================================== */
+.ua-smart-preset-two-column-list .ua-smart-featured-col {
+    width: 50% !important;
+}
+
+.ua-smart-preset-two-column-list .ua-smart-list-col {
+    width: calc(50% - 30px) !important;
+}
+
+/* ==========================================================================
+   8. AJAX Loading Overlay
+   ========================================================================== */
+.ua-smart-post-list-wrapper.is-loading .ua-smart-posts-body {
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+.ua-smart-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    pointer-events: none;
+}
+
+.ua-smart-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(59, 130, 246, 0.2);
+    border-top-color: #3b82f6;
+    border-radius: 50%;
+    animation: uaSmartSpin 0.75s linear infinite;
+}
+
+@keyframes uaSmartSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ==========================================================================
+   9. Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .ua-smart-featured-card .ua-smart-thumb-wrap {
+        height: 220px;
+    }
+    .ua-smart-featured-card .ua-smart-post-title {
+        font-size: 18px;
+    }
+    .ua-smart-list-item .ua-smart-thumb-wrap {
+        width: 95px;
+        min-width: 95px;
+        height: 75px;
+    }
+    .ua-smart-search-input {
+        width: 140px;
+    }
+    .ua-smart-search-input:focus {
+        width: 170px;
+    }
+}
+
+@media (max-width: 767px) {
+    .ua-smart-top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    .ua-smart-top-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .ua-smart-cat-filter {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        white-space: nowrap;
+    }
+    .ua-smart-search-wrap {
+        width: 100%;
+    }
+    .ua-smart-search-input {
+        width: 100% !important;
+    }
+    .ua-smart-posts-body {
+        flex-direction: column !important;
+        gap: 24px;
+    }
+    .ua-smart-featured-col,
+    .ua-smart-list-col {
+        width: 100% !important;
+    }
+    .list-cols-2 .ua-smart-list-wrap,
+    .ua-smart-preset-top-banner .ua-smart-list-wrap {
+        grid-template-columns: 1fr;
+    }
+    .ua-smart-featured-card .ua-smart-thumb-wrap {
+        height: 200px;
+    }
+    .ua-smart-preset-overlay-hero .ua-smart-featured-card {
+        min-height: 340px;
+    }
+    .ua-smart-featured-content {
+        padding: 16px;
+    }
+}

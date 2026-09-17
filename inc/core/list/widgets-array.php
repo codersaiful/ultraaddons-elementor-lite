@@ -907,6 +907,16 @@ $ultraaddons_widgetsArray = [
         ],
     ],
 
+    'Smart_Post_List'=> [
+        'name'      => __( 'Smart Post List', 'ultraaddons-elementor-lite' ),
+        'is_pro'    => false,
+        'icon'      => 'ultraaddons eicon-post-list',
+        'badge'     => 'New',
+        'cat'       => [
+            __( 'General', 'ultraaddons-elementor-lite' ),
+        ],
+    ],
+
 ];
 
 return apply_filters( 'ultraaddons/widgets/array', $ultraaddons_widgetsArray );
