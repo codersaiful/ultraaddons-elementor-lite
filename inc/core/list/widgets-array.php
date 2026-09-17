@@ -897,6 +897,16 @@ $ultraaddons_widgetsArray = [
         ],
     ],
 
+    'Post_Carousel'=> [
+        'name'      => __( 'Post Carousel', 'ultraaddons-elementor-lite' ),
+        'is_pro'    => false,
+        'icon'      => 'ultraaddons eicon-posts-carousel',
+        'badge'     => 'New',
+        'cat'       => [
+            __( 'General', 'ultraaddons-elementor-lite' ),
+        ],
+    ],
+
 ];
 
 return apply_filters( 'ultraaddons/widgets/array', $ultraaddons_widgetsArray );

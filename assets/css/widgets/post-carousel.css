@@ -1,0 +1,764 @@
+/**
+ * UltraAddons - Post Carousel Widget Styles
+ *
+ * @package UltraAddons
+ * @since 1.1.0.9
+ */
+
+/* ==========================================================================
+   1. Wrapper & Swiper Container
+   ========================================================================== */
+.ua-post-carousel-wrapper {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.ua-post-carousel-wrapper * {
+    box-sizing: border-box;
+}
+
+.ua-post-carousel-slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.ua-post-carousel-slider .swiper-wrapper {
+    display: flex;
+    align-items: stretch;
+}
+
+.ua-post-carousel-slider .swiper-slide {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+}
+
+/* ==========================================================================
+   2. Post Card Common Base
+   ========================================================================== */
+.ua-post-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.35s ease;
+    border: 1px solid #eef2f6;
+}
+
+.ua-post-card:hover {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    transform: translateY(-4px);
+}
+
+/* Thumbnail Wrap */
+.ua-post-thumb-wrap {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: #f5f7fa;
+    display: block;
+}
+
+.ua-post-thumb-wrap a.ua-post-thumb-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.ua-post-thumb-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.5s ease;
+}
+
+/* Image Hover Effects */
+.ua-post-card:hover .ua-post-thumb-wrap img.effect-zoom {
+    transform: scale(1.08);
+}
+
+.ua-post-card:hover .ua-post-thumb-wrap img.effect-rotate {
+    transform: scale(1.08) rotate(1.5deg);
+}
+
+.ua-post-card:hover .ua-post-thumb-wrap img.effect-grayscale {
+    filter: grayscale(100%);
+}
+
+/* Category Badge */
+.ua-post-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+    background-color: #3b82f6;
+    border-radius: 20px;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.ua-post-badge:hover {
+    background-color: #1d4ed8;
+    color: #ffffff;
+}
+
+/* Content Container */
+.ua-post-content {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* Meta Data */
+.ua-post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+    color: #64748b;
+    margin-bottom: 10px;
+}
+
+.ua-post-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.ua-post-meta-item i,
+.ua-post-meta-item svg {
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+.ua-post-meta-item a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.ua-post-meta-item a:hover {
+    color: #3b82f6;
+}
+
+.ua-author-avatar {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Post Title */
+.ua-post-title {
+    margin: 0 0 12px 0;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #1e293b;
+}
+
+.ua-post-title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+.ua-post-title a:hover {
+    color: #3b82f6;
+}
+
+/* Post Excerpt */
+.ua-post-excerpt {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #475569;
+    margin: 0 0 16px 0;
+    flex-grow: 1;
+}
+
+.ua-post-excerpt p {
+    margin: 0;
+}
+
+/* Read More Button */
+.ua-post-readmore-wrap {
+    margin-top: auto;
+    padding-top: 10px;
+}
+
+.ua-post-readmore-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #3b82f6;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.ua-post-readmore-btn:hover {
+    color: #1d4ed8;
+    transform: translateX(3px);
+}
+
+.ua-post-readmore-btn i,
+.ua-post-readmore-btn svg {
+    font-size: 12px;
+    transition: transform 0.25s ease;
+}
+
+.ua-post-readmore-btn:hover i,
+.ua-post-readmore-btn:hover svg {
+    transform: translateX(3px);
+}
+
+/* ==========================================================================
+   3. Preset 1: Classic Card (Default)
+   ========================================================================== */
+.ua-preset-classic .ua-post-thumb-wrap {
+    height: 220px;
+}
+
+/* ==========================================================================
+   4. Preset 2: Overlay / Hero Style
+   ========================================================================== */
+.ua-preset-overlay .ua-post-card {
+    position: relative;
+    min-height: 440px;
+    height: 100%;
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.ua-preset-overlay .ua-post-card:hover {
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
+    transform: translateY(-5px);
+}
+
+.ua-preset-overlay .ua-post-thumb-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100% !important;
+    z-index: 1;
+}
+
+.ua-preset-overlay .ua-post-thumb-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Multi-stop cinematic dark gradient protection for 100% text readability */
+.ua-preset-overlay .ua-post-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.25) 0%, rgba(15, 23, 42, 0.45) 40%, rgba(15, 23, 42, 0.88) 75%, rgba(15, 23, 42, 0.98) 100%);
+    z-index: 2;
+    transition: opacity 0.35s ease, background 0.35s ease;
+    pointer-events: none;
+}
+
+.ua-preset-overlay .ua-post-card:hover::after {
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.35) 0%, rgba(15, 23, 42, 0.55) 40%, rgba(15, 23, 42, 0.92) 75%, rgba(15, 23, 42, 1) 100%);
+}
+
+/* Badge pinned cleanly at top-left with high z-index and shadow */
+.ua-preset-overlay .ua-post-badge {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    z-index: 4;
+    background: #3b82f6;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    padding: 5px 14px;
+    border-radius: 30px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ua-preset-overlay .ua-post-content {
+    position: relative;
+    z-index: 3;
+    margin-top: auto !important;
+    flex-grow: 0 !important;
+    color: #ffffff;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.ua-preset-overlay .ua-post-title {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.ua-preset-overlay .ua-post-title a {
+    color: #ffffff;
+}
+
+.ua-preset-overlay .ua-post-title a:hover {
+    color: #93c5fd;
+}
+
+.ua-preset-overlay .ua-post-meta {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 12px;
+    margin-bottom: 10px;
+    gap: 12px;
+}
+
+.ua-preset-overlay .ua-post-meta-item i,
+.ua-preset-overlay .ua-post-meta-item svg {
+    color: #60a5fa;
+}
+
+.ua-preset-overlay .ua-post-meta-item a {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.ua-preset-overlay .ua-post-meta-item a:hover {
+    color: #93c5fd;
+}
+
+.ua-preset-overlay .ua-author-avatar {
+    border: 1.5px solid rgba(255, 255, 255, 0.6);
+}
+
+.ua-preset-overlay .ua-post-excerpt {
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 13px;
+    line-height: 1.55;
+    margin-bottom: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.ua-preset-overlay .ua-post-readmore-wrap {
+    margin-top: 0;
+    padding-top: 2px;
+}
+
+.ua-preset-overlay .ua-post-readmore-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    transition: all 0.25s ease;
+}
+
+.ua-preset-overlay .ua-post-readmore-btn:hover {
+    background: #3b82f6;
+    border-color: #3b82f6;
+    color: #ffffff;
+    transform: translateX(4px);
+}
+
+/* ==========================================================================
+   5. Preset 3: Magazine Style
+   ========================================================================== */
+.ua-preset-magazine .ua-post-thumb-wrap {
+    height: 200px;
+    position: relative;
+}
+
+.ua-magazine-date-box {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    z-index: 3;
+    background: #0f172a;
+    color: #ffffff;
+    border-radius: 6px;
+    padding: 6px 10px;
+    text-align: center;
+    line-height: 1;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.ua-magazine-date-box .ua-day {
+    display: block;
+    font-size: 18px;
+    font-weight: 800;
+    color: #38bdf8;
+    margin-bottom: 2px;
+}
+
+.ua-magazine-date-box .ua-month {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.ua-preset-magazine .ua-post-content {
+    padding: 18px;
+}
+
+.ua-preset-magazine .ua-post-title {
+    font-size: 17px;
+    border-left: 3px solid #3b82f6;
+    padding-left: 10px;
+}
+
+/* ==========================================================================
+   6. Preset 4: Minimal Style
+   ========================================================================== */
+.ua-preset-minimal .ua-post-card {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.ua-preset-minimal .ua-post-card:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.ua-preset-minimal .ua-post-thumb-wrap {
+    height: 200px;
+    border-radius: 8px;
+    margin-bottom: 14px;
+}
+
+.ua-preset-minimal .ua-post-content {
+    padding: 0;
+}
+
+.ua-preset-minimal .ua-post-title {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.ua-preset-minimal .ua-post-readmore-btn {
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* ==========================================================================
+   7. Carousel Navigation Arrows
+   ========================================================================== */
+.ua-post-carousel-slider-wrap {
+    position: relative;
+    width: 100%;
+}
+
+.ua-carousel-nav-btn {
+    position: absolute;
+    z-index: 10;
+    width: 42px;
+    height: 42px;
+    background: #ffffff;
+    color: #1e293b;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14), 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    user-select: none;
+    -webkit-user-select: none;
+    outline: none;
+}
+
+.ua-carousel-nav-btn i {
+    font-size: 15px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: inherit;
+    transition: transform 0.25s ease;
+}
+
+.ua-carousel-nav-btn svg {
+    width: 15px;
+    height: 15px;
+    display: block;
+    fill: currentColor;
+    transition: transform 0.25s ease;
+}
+
+.ua-carousel-nav-btn:hover {
+    background: #3b82f6;
+    color: #ffffff;
+    border-color: #3b82f6;
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.38);
+    transform: translateY(-50%) scale(1.08);
+}
+
+.ua-carousel-nav-btn.swiper-button-disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    pointer-events: none;
+    box-shadow: none;
+}
+
+/* Position: Sides (Floating Inside Carousel) */
+.nav-pos-sides .ua-carousel-nav-prev {
+    left: 14px;
+    top: 40%;
+    transform: translateY(-50%);
+}
+
+.nav-pos-sides .ua-carousel-nav-next {
+    right: 14px;
+    top: 40%;
+    transform: translateY(-50%);
+}
+
+.nav-pos-sides .ua-carousel-nav-prev:hover {
+    transform: translateY(-50%) scale(1.08);
+}
+
+.nav-pos-sides .ua-carousel-nav-next:hover {
+    transform: translateY(-50%) scale(1.08);
+}
+
+.nav-pos-sides .ua-carousel-nav-prev:hover i,
+.nav-pos-sides .ua-carousel-nav-prev:hover svg {
+    transform: translateX(-2px);
+}
+
+.nav-pos-sides .ua-carousel-nav-next:hover i,
+.nav-pos-sides .ua-carousel-nav-next:hover svg {
+    transform: translateX(2px);
+}
+
+/* Position: Sides (Outside with Padding) */
+.nav-pos-sides-outer .ua-post-carousel-slider-wrap {
+    padding: 0 45px;
+}
+
+.nav-pos-sides-outer .ua-carousel-nav-prev {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.nav-pos-sides-outer .ua-carousel-nav-next {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.nav-pos-sides-outer .ua-carousel-nav-prev:hover {
+    transform: translateY(-50%) scale(1.08);
+}
+
+.nav-pos-sides-outer .ua-carousel-nav-next:hover {
+    transform: translateY(-50%) scale(1.08);
+}
+
+.nav-pos-sides-outer .ua-carousel-nav-prev:hover i,
+.nav-pos-sides-outer .ua-carousel-nav-prev:hover svg {
+    transform: translateX(-2px);
+}
+
+.nav-pos-sides-outer .ua-carousel-nav-next:hover i,
+.nav-pos-sides-outer .ua-carousel-nav-next:hover svg {
+    transform: translateX(2px);
+}
+
+/* Position: Top Right */
+.ua-carousel-header-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.ua-carousel-header-title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.nav-pos-top-right .ua-carousel-nav-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-pos-top-right .ua-carousel-nav-btn {
+    position: static;
+    transform: none;
+}
+
+.nav-pos-top-right .ua-carousel-nav-btn:hover {
+    transform: scale(1.08);
+}
+
+/* Position: Bottom Center */
+.nav-pos-bottom .ua-carousel-nav-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.nav-pos-bottom .ua-carousel-nav-btn {
+    position: static;
+    transform: none;
+}
+
+.nav-pos-bottom .ua-carousel-nav-btn:hover {
+    transform: scale(1.08);
+}
+
+/* ==========================================================================
+   8. Carousel Pagination / Dots
+   ========================================================================== */
+.ua-carousel-pagination {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 24px;
+    z-index: 10;
+}
+
+.ua-carousel-pagination .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    margin: 0 !important;
+    background: #cbd5e1;
+    opacity: 0.8;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.ua-carousel-pagination .swiper-pagination-bullet-active {
+    width: 26px;
+    background: #3b82f6;
+    opacity: 1;
+    border-radius: 5px;
+}
+
+/* Progressbar mode */
+.ua-carousel-pagination.swiper-pagination-progressbar {
+    height: 4px;
+    background: #e2e8f0;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.ua-carousel-pagination.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+    background: #3b82f6;
+}
+
+/* ==========================================================================
+   9. Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .nav-pos-sides .ua-carousel-nav-prev {
+        left: 8px;
+    }
+    .nav-pos-sides .ua-carousel-nav-next {
+        right: 8px;
+    }
+    .nav-pos-sides-outer .ua-post-carousel-slider-wrap {
+        padding: 0 35px;
+    }
+}
+
+@media (max-width: 767px) {
+    .ua-post-content {
+        padding: 16px;
+    }
+    .ua-post-title {
+        font-size: 16px;
+    }
+    .ua-post-meta {
+        font-size: 11px;
+        gap: 8px;
+    }
+    .ua-preset-overlay .ua-post-card {
+        min-height: 380px;
+        height: auto;
+    }
+    .ua-carousel-nav-btn {
+        width: 36px;
+        height: 36px;
+    }
+    .ua-carousel-nav-btn i {
+        font-size: 13px;
+    }
+    .ua-carousel-nav-btn svg {
+        width: 13px;
+        height: 13px;
+    }
+    .nav-pos-sides .ua-carousel-nav-prev {
+        left: 6px;
+    }
+    .nav-pos-sides .ua-carousel-nav-next {
+        right: 6px;
+    }
+    .nav-pos-sides-outer .ua-post-carousel-slider-wrap {
+        padding: 0 25px;
+    }
+}
