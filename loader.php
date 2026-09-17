@@ -355,6 +355,10 @@ class Loader {
         if ( wp_style_is( $widget_name, 'registered' ) ) {
             wp_enqueue_style( $widget_name );
         }
+
+        if ( wp_script_is( $widget_name, 'registered' ) ) {
+            wp_enqueue_script( $widget_name );
+        }
     }
 
     /**

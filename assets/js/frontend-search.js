@@ -10,17 +10,22 @@
 (function ($) {
     'use strict';
 
-    var UltraAddonsSearch = function ($scope) {
-        var $wrapper = $scope.find('.ua-search-wrapper');
-        if (!$wrapper.length) {
-            $wrapper = $scope.hasClass('ua-search-wrapper') ? $scope : $scope.find('.ua-search-wrapper');
-        }
+    function initUltraAddonsSearch($wrapper) {
         if (!$wrapper.length) return;
 
-        var searchMode = $wrapper.data('search-mode') || 'live_ajax';
-        if (searchMode !== 'live_ajax') return;
+        // Prevent double initialization
+        if ($wrapper.data('ua-search-init')) {
+            return;
+        }
+        $wrapper.data('ua-search-init', true);
 
-        var $input       = $wrapper.find('.ua-search-input'),
+        var searchMode = $wrapper.data('search-mode') || 'live_ajax';
+        if (searchMode !== 'live_ajax') {
+            return;
+        }
+
+        var $form        = $wrapper.find('.ua-search-form'),
+            $input       = $wrapper.find('.ua-search-input'),
             $clearBtn    = $wrapper.find('.ua-search-clear-btn'),
             $spinner     = $wrapper.find('.ua-search-spinner'),
             $dropdown    = $wrapper.find('.ua-search-results-dropdown'),
@@ -49,10 +54,11 @@
             searchTimer   = null,
             selectedIndex = -1;
 
-        // Focus / Blur styling
+        // Focus & Blur styling
         $input.on('focus', function () {
             $wrapper.addClass('is-focused');
-            if ($list.children().length > 0 && $input.val().trim().length >= minChars) {
+            var kw = $input.val().trim();
+            if ($list.children().length > 0 && kw.length >= minChars) {
                 openDropdown();
             }
         });
@@ -86,7 +92,14 @@
         }
 
         function performSearch(isAppend) {
-            var keyword = $input.val().trim();
+            var keyword      = $input.val().trim();
+            var selectedCat  = $catSelect.length ? $catSelect.val() : '';
+            var $selectedOpt = $catSelect.length ? $catSelect.find('option:selected') : null;
+            var taxonomy     = ($selectedOpt && $selectedOpt.data('taxonomy')) ? $selectedOpt.data('taxonomy') : '';
+            var postTypeCat  = ($selectedOpt && $selectedOpt.data('post-type')) ? $selectedOpt.data('post-type') : '';
+            var postType     = postTypeCat || targetType;
+
+            // Live search dropdown requires a keyword with minChars
             if (keyword.length < minChars) {
                 closeDropdown();
                 $list.empty();
@@ -101,7 +114,7 @@
                 $footer.hide();
             }
 
-            // Cancel any in-flight request to prevent race conditions
+            // Cancel any pending request
             if (activeXhr && activeXhr.readyState !== 4) {
                 activeXhr.abort();
             }
@@ -113,11 +126,6 @@
             var nonce = (typeof uaSearchConfig !== 'undefined' && uaSearchConfig.nonce)
                 ? uaSearchConfig.nonce
                 : ((typeof ULTRAADDONS_DATA !== 'undefined' && ULTRAADDONS_DATA.search_nonce) ? ULTRAADDONS_DATA.search_nonce : '');
-
-            var selectedCat  = $catSelect.length ? $catSelect.val() : '';
-            var taxonomyType = ($catSelect.length && $catSelect.find('option:selected').data('taxonomy'))
-                ? $catSelect.find('option:selected').data('taxonomy')
-                : '';
 
             if (!isAppend) {
                 showSpinner();
@@ -134,9 +142,9 @@
                     action: 'ultraaddons_ajax_search',
                     nonce: nonce,
                     keyword: keyword,
-                    post_type: targetType,
+                    post_type: postType,
                     category: selectedCat,
-                    taxonomy: taxonomyType,
+                    taxonomy: taxonomy,
                     per_page: resultsPerPage,
                     offset: currentOffset,
                     exclude_no_thumb: excludeNoThumb,
@@ -185,14 +193,66 @@
             });
         }
 
-        // Keyup / input on search input with 350ms debounce
+        // Form submission handling in AJAX mode
+        $form.on('submit', function (e) {
+            // If an item in the dropdown is currently highlighted, go to it
+            var $selected = $list.find('.ua-search-item.is-selected');
+            if ($selected.length) {
+                e.preventDefault();
+                var $link = $selected.find('.ua-search-item-title a');
+                if ($link.length) {
+                    var href   = $link.attr('href');
+                    var target = $link.attr('target') || '_self';
+                    window.open(href, target);
+                    return false;
+                }
+            }
+
+            var kw = $input.val().trim();
+            var $selectedOpt = $catSelect.length ? $catSelect.find('option:selected') : null;
+            var catLink = ($selectedOpt && $selectedOpt.data('link')) ? $selectedOpt.data('link') : '';
+
+            // If keyword is empty and category is selected with archive link, navigate to that category archive
+            if (kw.length === 0 && catLink) {
+                e.preventDefault();
+                window.location.href = catLink;
+                return false;
+            }
+
+            // If keyword is too short, do not trigger dropdown
+            if (kw.length < minChars) {
+                e.preventDefault();
+                return false;
+            }
+
+            // If results already visible and user hits enter, open first result
+            var $firstItem = $list.find('.ua-search-item').first();
+            if ($dropdown.is(':visible') && $firstItem.length) {
+                e.preventDefault();
+                var $firstLink = $firstItem.find('.ua-search-item-title a');
+                if ($firstLink.length) {
+                    var href   = $firstLink.attr('href');
+                    var target = $firstLink.attr('target') || '_self';
+                    window.open(href, target);
+                    return false;
+                }
+            }
+
+            // Otherwise, perform live search immediately
+            e.preventDefault();
+            performSearch(false);
+            return false;
+        });
+
+        // Keyup / input on search input with 300ms debounce
         $input.on('input keyup', function (e) {
-            // Ignore Arrow keys, Enter, Escape on keyup
+            // Ignore navigation keys here (handled in keydown)
             if ([38, 40, 13, 27].indexOf(e.which) !== -1) {
                 return;
             }
 
             var val = $(this).val();
+
             if (val.length > 0) {
                 $clearBtn.show();
             } else {
@@ -208,17 +268,34 @@
             }
 
             searchTimer = setTimeout(function () {
-                performSearch(false);
-            }, 350);
+                var kw = $input.val().trim();
+                if (kw.length >= minChars) {
+                    performSearch(false);
+                } else {
+                    closeDropdown();
+                    $list.empty();
+                    $footer.hide();
+                }
+            }, 300);
         });
 
         // Keyboard navigation (ArrowDown, ArrowUp, Enter, Escape)
         $input.on('keydown', function (e) {
             var $items = $list.find('.ua-search-item');
+
+            if (e.which === 13) { // Enter key
+                e.preventDefault();
+                $form.trigger('submit');
+                return;
+            }
+
+            if (e.which === 27) { // Escape
+                e.preventDefault();
+                closeDropdown();
+                return;
+            }
+
             if (!$items.length || !$dropdown.is(':visible')) {
-                if (e.which === 27) {
-                    closeDropdown();
-                }
                 return;
             }
 
@@ -234,19 +311,6 @@
                 $items.removeClass('is-selected');
                 var $active = $items.eq(selectedIndex).addClass('is-selected');
                 scrollIntoView($active);
-            } else if (e.which === 13) { // Enter
-                if (selectedIndex >= 0 && selectedIndex < $items.length) {
-                    e.preventDefault();
-                    var $targetLink = $items.eq(selectedIndex).find('.ua-search-item-title a');
-                    if ($targetLink.length) {
-                        var href   = $targetLink.attr('href');
-                        var target = $targetLink.attr('target') || '_self';
-                        window.open(href, target);
-                    }
-                }
-            } else if (e.which === 27) { // Escape
-                e.preventDefault();
-                closeDropdown();
             }
         });
 
@@ -273,11 +337,16 @@
             currentOffset = 0;
         });
 
-        // Category select change triggers instant refresh
+        // Category select change triggers instant refresh only if keyword is typed
         if ($catSelect.length) {
             $catSelect.on('change', function () {
-                if ($input.val().trim().length >= minChars) {
+                var kw = $input.val().trim();
+                if (kw.length >= minChars) {
                     performSearch(false);
+                } else {
+                    closeDropdown();
+                    $list.empty();
+                    $footer.hide();
                 }
             });
         }
@@ -288,7 +357,7 @@
             performSearch(true);
         });
 
-        // Clicking an item in results redirects
+        // Clicking an item redirects to its target URL
         $list.on('click', '.ua-search-item', function (e) {
             if ($(e.target).closest('a').length) return;
             var $link = $(this).find('.ua-search-item-title a');
@@ -305,18 +374,32 @@
                 closeDropdown();
             }
         });
-    };
+    }
 
-    // Register with Elementor frontend hook
+    // Hook into Elementor frontend if initialized
     $(window).on('elementor/frontend/init', function () {
-        elementorFrontend.hooks.addAction('frontend/element_ready/ultraaddons-search.default', UltraAddonsSearch);
+        if (typeof elementorFrontend !== 'undefined' && elementorFrontend.hooks) {
+            elementorFrontend.hooks.addAction('frontend/element_ready/ultraaddons-search.default', function ($scope) {
+                var $wrap = $scope.find('.ua-search-wrapper');
+                if (!$wrap.length && $scope.hasClass('ua-search-wrapper')) {
+                    $wrap = $scope;
+                }
+                initUltraAddonsSearch($wrap);
+            });
+        }
     });
 
-    // Document ready fallback
-    $(document).ready(function () {
-        $('.ua-search-wrapper.ua-search-mode-live_ajax').each(function () {
-            var $scope = $(this).closest('.elementor-widget');
-            UltraAddonsSearch($scope.length ? $scope : $(this));
+    // Direct DOM ready runner
+    $(function () {
+        $('.ua-search-wrapper').each(function () {
+            initUltraAddonsSearch($(this));
+        });
+    });
+
+    // Fallback for late-loaded or AJAX rendered content
+    $(window).on('load', function () {
+        $('.ua-search-wrapper').each(function () {
+            initUltraAddonsSearch($(this));
         });
     });
 

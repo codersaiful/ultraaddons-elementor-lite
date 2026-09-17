@@ -1216,6 +1216,9 @@ class Search extends Base {
      * Render the widget on the frontend.
      */
     protected function render() {
+        wp_enqueue_style( 'ultraaddons-search' );
+        wp_enqueue_script( 'ultraaddons-search' );
+
         $settings = $this->get_settings_for_display();
 
         $search_mode        = ! empty( $settings['search_mode'] ) ? $settings['search_mode'] : 'live_ajax';
@@ -1232,6 +1235,10 @@ class Search extends Base {
             'ua-search-mode-' . sanitize_html_class( $search_mode ),
             'ua-search-btn-' . sanitize_html_class( $btn_pos ),
         ];
+
+        if ( $enable_cat ) {
+            $wrapper_classes[] = 'ua-search-has-cat';
+        }
 
         // Data attributes for JS handling
         $this->add_render_attribute( 'wrapper', [
@@ -1349,19 +1356,68 @@ class Search extends Base {
      * @param string $post_type
      */
     protected function render_category_options( $post_type ) {
-        $taxonomy = 'category';
-        if ( 'product' === $post_type && class_exists( 'WooCommerce' ) ) {
-            $taxonomy = 'product_cat';
-        }
+        if ( 'any' === $post_type ) {
+            $has_wc = class_exists( 'WooCommerce' );
 
-        $categories = get_terms( [
-            'taxonomy'   => $taxonomy,
-            'hide_empty' => true,
-        ] );
+            $categories = get_terms( [
+                'taxonomy'   => 'category',
+                'hide_empty' => true,
+            ] );
 
-        if ( ! is_wp_error( $categories ) && ! empty( $categories ) ) {
-            foreach ( $categories as $category ) {
-                echo '<option value="' . esc_attr( $category->term_id ) . '" data-taxonomy="' . esc_attr( $taxonomy ) . '">' . esc_html( $category->name ) . '</option>';
+            if ( ! is_wp_error( $categories ) && ! empty( $categories ) ) {
+                if ( $has_wc ) {
+                    echo '<optgroup label="' . esc_attr__( 'Blog Categories', 'ultraaddons-elementor-lite' ) . '">';
+                }
+                foreach ( $categories as $category ) {
+                    $link      = get_term_link( $category );
+                    $data_link = ! is_wp_error( $link ) ? $link : '';
+                    echo '<option value="' . esc_attr( $category->term_id ) . '" data-taxonomy="category" data-post-type="post" data-link="' . esc_url( $data_link ) . '">' . esc_html( $category->name ) . '</option>';
+                }
+                if ( $has_wc ) {
+                    echo '</optgroup>';
+                }
+            }
+
+            if ( $has_wc ) {
+                $prod_cats = get_terms( [
+                    'taxonomy'   => 'product_cat',
+                    'hide_empty' => true,
+                ] );
+                if ( ! is_wp_error( $prod_cats ) && ! empty( $prod_cats ) ) {
+                    echo '<optgroup label="' . esc_attr__( 'Product Categories', 'ultraaddons-elementor-lite' ) . '">';
+                    foreach ( $prod_cats as $category ) {
+                        $link      = get_term_link( $category );
+                        $data_link = ! is_wp_error( $link ) ? $link : '';
+                        echo '<option value="' . esc_attr( $category->term_id ) . '" data-taxonomy="product_cat" data-post-type="product" data-link="' . esc_url( $data_link ) . '">' . esc_html( $category->name ) . '</option>';
+                    }
+                    echo '</optgroup>';
+                }
+            }
+        } elseif ( 'product' === $post_type && class_exists( 'WooCommerce' ) ) {
+            $prod_cats = get_terms( [
+                'taxonomy'   => 'product_cat',
+                'hide_empty' => true,
+            ] );
+            if ( ! is_wp_error( $prod_cats ) && ! empty( $prod_cats ) ) {
+                foreach ( $prod_cats as $category ) {
+                    $link      = get_term_link( $category );
+                    $data_link = ! is_wp_error( $link ) ? $link : '';
+                    echo '<option value="' . esc_attr( $category->term_id ) . '" data-taxonomy="product_cat" data-post-type="product" data-link="' . esc_url( $data_link ) . '">' . esc_html( $category->name ) . '</option>';
+                }
+            }
+        } else {
+            $taxonomies = get_object_taxonomies( $post_type, 'names' );
+            $taxonomy   = ! empty( $taxonomies ) ? reset( $taxonomies ) : 'category';
+            $terms      = get_terms( [
+                'taxonomy'   => $taxonomy,
+                'hide_empty' => true,
+            ] );
+            if ( ! is_wp_error( $terms ) && ! empty( $terms ) ) {
+                foreach ( $terms as $category ) {
+                    $link      = get_term_link( $category );
+                    $data_link = ! is_wp_error( $link ) ? $link : '';
+                    echo '<option value="' . esc_attr( $category->term_id ) . '" data-taxonomy="' . esc_attr( $taxonomy ) . '" data-post-type="' . esc_attr( $post_type ) . '" data-link="' . esc_url( $data_link ) . '">' . esc_html( $category->name ) . '</option>';
+                }
             }
         }
     }
@@ -1395,21 +1451,10 @@ class Search extends Base {
         ];
 
         if ( empty( $keyword ) || mb_strlen( $keyword ) < 1 ) {
-            wp_send_json_error( [ 'message' => esc_html__( 'Keyword is too short.', 'ultraaddons-elementor-lite' ) ] );
-        }
-
-        // Post types handling
-        if ( 'any' === $post_type ) {
-            $post_types = get_post_types( [ 'public' => true ], 'names' );
-            unset( $post_types['attachment'], $post_types['revision'], $post_types['nav_menu_item'], $post_types['custom_css'], $post_types['customize_changeset'] );
-            $post_types = array_values( $post_types );
-        } else {
-            $post_types = [ $post_type ];
+            wp_send_json_error( [ 'message' => esc_html__( 'Please enter a search keyword.', 'ultraaddons-elementor-lite' ) ] );
         }
 
         $query_args = [
-            's'                   => $keyword,
-            'post_type'           => $post_types,
             'post_status'         => 'publish',
             'posts_per_page'      => $per_page,
             'offset'              => $offset,
@@ -1417,9 +1462,15 @@ class Search extends Base {
             'no_found_rows'       => false,
         ];
 
+        if ( ! empty( $keyword ) ) {
+            $query_args['s'] = $keyword;
+        }
+
         // Category / Taxonomy query
         if ( ! empty( $category ) ) {
-            $tax = ! empty( $taxonomy ) ? $taxonomy : ( 'product' === $post_type ? 'product_cat' : 'category' );
+            $term = get_term( $category );
+            $tax  = ( $term && ! is_wp_error( $term ) ) ? $term->taxonomy : ( ! empty( $taxonomy ) ? $taxonomy : 'category' );
+
             $query_args['tax_query'] = [
                 [
                     'taxonomy' => $tax,
@@ -1427,7 +1478,44 @@ class Search extends Base {
                     'terms'    => $category,
                 ],
             ];
+
+            // Post type hint from taxonomy if post_type is generic
+            if ( 'product_cat' === $tax && ( 'any' === $post_type || empty( $post_type ) ) ) {
+                $post_types = [ 'product' ];
+            } elseif ( in_array( $tax, [ 'category', 'post_tag' ], true ) && ( 'any' === $post_type || empty( $post_type ) ) ) {
+                $post_types = [ 'post' ];
+            }
         }
+
+        // Post types handling
+        if ( empty( $post_types ) ) {
+            if ( 'any' === $post_type ) {
+                $all_types = get_post_types( [ 'public' => true ], 'names' );
+                unset(
+                    $all_types['attachment'],
+                    $all_types['revision'],
+                    $all_types['nav_menu_item'],
+                    $all_types['custom_css'],
+                    $all_types['customize_changeset'],
+                    $all_types['elementor_library'],
+                    $all_types['elementor_font'],
+                    $all_types['elementor_icons'],
+                    $all_types['header_footer'],
+                    $all_types['ua_mega_menu'],
+                    $all_types['wpr_mega_menu'],
+                    $all_types['wpr_templates'],
+                    $all_types['wp_block'],
+                    $all_types['wp_template'],
+                    $all_types['wp_template_part'],
+                    $all_types['wp_navigation'],
+                    $all_types['e-landing-page']
+                );
+                $post_types = array_values( $all_types );
+            } else {
+                $post_types = [ $post_type ];
+            }
+        }
+        $query_args['post_type'] = $post_types;
 
         // Exclude without thumbnail
         if ( $exclude_no_thumb ) {
