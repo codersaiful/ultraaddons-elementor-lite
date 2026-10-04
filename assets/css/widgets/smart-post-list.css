@@ -218,7 +218,6 @@
 .ua-smart-nav-btn.disabled {
     opacity: 0.35;
     cursor: not-allowed;
-    pointer-events: none;
 }
 
 /* ==========================================================================
@@ -417,10 +416,17 @@
     height: 100%;
 }
 
-.list-cols-2 .ua-smart-list-wrap {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+.ua-smart-post-list-wrapper.list-cols-1 .ua-smart-list-wrap {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: none !important;
+    gap: 20px !important;
+}
+
+.ua-smart-post-list-wrapper.list-cols-2 .ua-smart-list-wrap {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
 }
 
 .ua-smart-list-item {
@@ -514,90 +520,13 @@
     margin: 0;
 }
 
-/* ==========================================================================
-   5. Preset 2: Overlay Hero
-   ========================================================================== */
-.ua-smart-preset-overlay-hero .ua-smart-featured-card {
-    position: relative;
-    min-height: 420px;
-    border: none;
-    overflow: hidden;
-    justify-content: flex-end;
-}
-
-.ua-smart-preset-overlay-hero .ua-smart-featured-card .ua-smart-thumb-wrap {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100% !important;
-    z-index: 1;
-}
-
-.ua-smart-preset-overlay-hero .ua-smart-featured-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(180deg, rgba(15, 23, 42, 0.15) 0%, rgba(15, 23, 42, 0.45) 45%, rgba(15, 23, 42, 0.95) 100%);
-    z-index: 2;
-    pointer-events: none;
-    transition: background 0.35s ease;
-}
-
-.ua-smart-preset-overlay-hero .ua-smart-featured-card:hover::after {
-    background: linear-gradient(180deg, rgba(15, 23, 42, 0.25) 0%, rgba(15, 23, 42, 0.55) 45%, rgba(15, 23, 42, 1) 100%);
-}
-
-.ua-smart-preset-overlay-hero .ua-smart-featured-content {
-    position: relative;
-    z-index: 3;
-    margin-top: auto !important;
-    flex-grow: 0 !important;
-    color: #ffffff;
-    padding: 24px;
-}
-
-.ua-smart-preset-overlay-hero .ua-smart-featured-card .ua-smart-post-title {
-    color: #ffffff;
-}
-
-.ua-smart-preset-overlay-hero .ua-smart-featured-card .ua-smart-post-title a {
-    color: #ffffff;
-}
-
-.ua-smart-preset-overlay-hero .ua-smart-featured-card .ua-smart-post-title a:hover {
-    color: #93c5fd;
-}
-
-.ua-smart-preset-overlay-hero .ua-smart-featured-card .ua-smart-meta {
-    color: rgba(255, 255, 255, 0.82);
-}
-
-.ua-smart-preset-overlay-hero .ua-smart-featured-card .ua-smart-excerpt {
-    color: rgba(255, 255, 255, 0.88);
-}
-
-.ua-smart-preset-overlay-hero .ua-smart-featured-card .ua-smart-btn {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.18);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    padding: 6px 14px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-}
-
-.ua-smart-preset-overlay-hero .ua-smart-featured-card .ua-smart-btn:hover {
-    background: #3b82f6;
-    border-color: #3b82f6;
-    color: #ffffff;
+/* Featured Post Position: Right */
+.ua-smart-post-list-wrapper.featured-pos-right .ua-smart-posts-body {
+    flex-direction: row-reverse;
 }
 
 /* ==========================================================================
-   6. Preset 3: Top Banner (Featured Full Width on Top)
+   5. Preset 2: Top Banner (Featured Full Width on Top)
    ========================================================================== */
 .ua-smart-preset-top-banner .ua-smart-posts-body {
     flex-direction: column;
@@ -612,14 +541,14 @@
     width: 100% !important;
 }
 
-.ua-smart-preset-top-banner .ua-smart-list-wrap {
+.ua-smart-preset-top-banner:not(.list-cols-1) .ua-smart-list-wrap {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
 }
 
 /* ==========================================================================
-   7. Preset 4: Two-Column Grid List
+   6. Preset 3: Two-Column Grid List
    ========================================================================== */
 .ua-smart-preset-two-column-list .ua-smart-featured-col {
     width: 50% !important;
@@ -627,6 +556,12 @@
 
 .ua-smart-preset-two-column-list .ua-smart-list-col {
     width: calc(50% - 30px) !important;
+}
+
+.ua-smart-preset-two-column-list:not(.list-cols-1) .ua-smart-list-wrap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
 }
 
 /* ==========================================================================
@@ -720,9 +655,6 @@
     }
     .ua-smart-featured-card .ua-smart-thumb-wrap {
         height: 200px;
-    }
-    .ua-smart-preset-overlay-hero .ua-smart-featured-card {
-        min-height: 340px;
     }
     .ua-smart-featured-content {
         padding: 16px;

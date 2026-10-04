@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * A modern, interactive, and high-performance magazine post list widget for Elementor.
  * Features an interactive Top Bar with live AJAX Category Filtering, Live Search,
  * Top-Bar Prev/Next Navigation, Large Featured Post + Compact List Post layout,
- * 4 design presets, and extensive styling controls.
+ * 3 design presets, and extensive styling controls.
  *
  * @package UltraAddons
  * @since 1.1.0.9
@@ -302,9 +302,8 @@ class Smart_Post_List extends Base {
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'classic-magazine',
 				'options' => [
-					'classic-magazine' => esc_html__( 'Classic Magazine (Side by Side)', 'ultraaddons-elementor-lite' ),
-					'overlay-hero'     => esc_html__( 'Overlay Hero (Cinematic Card)', 'ultraaddons-elementor-lite' ),
-					'top-banner'       => esc_html__( 'Top Banner (Featured on Top)', 'ultraaddons-elementor-lite' ),
+					'classic-magazine' => esc_html__( 'Classic Magazine', 'ultraaddons-elementor-lite' ),
+					'top-banner'       => esc_html__( 'Top Banner', 'ultraaddons-elementor-lite' ),
 					'two-column-list'  => esc_html__( 'Two Column Grid List', 'ultraaddons-elementor-lite' ),
 				],
 			]
@@ -321,7 +320,7 @@ class Smart_Post_List extends Base {
 					'right' => esc_html__( 'Right', 'ultraaddons-elementor-lite' ),
 				],
 				'condition' => [
-					'layout_preset' => [ 'classic-magazine', 'overlay-hero' ],
+					'layout_preset' => [ 'classic-magazine', 'two-column-list' ],
 				],
 			]
 		);
@@ -343,7 +342,7 @@ class Smart_Post_List extends Base {
 					'size' => 50,
 				],
 				'condition'  => [
-					'layout_preset' => [ 'classic-magazine', 'overlay-hero' ],
+					'layout_preset' => 'classic-magazine',
 				],
 				'selectors'  => [
 					'{{WRAPPER}} .ua-smart-featured-col' => 'width: {{SIZE}}%;',
@@ -532,6 +531,21 @@ class Smart_Post_List extends Base {
 			]
 		);
 
+		$this->add_control(
+			'navigation_loop',
+			[
+				'label'        => esc_html__( 'Loop Navigation', 'ultraaddons-elementor-lite' ),
+				'description'  => esc_html__( 'When on the last page, Next arrow will cycle back to the first page.', 'ultraaddons-elementor-lite' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'return_value' => 'yes',
+				'default'      => 'yes',
+				'condition'    => [
+					'show_top_bar'    => 'yes',
+					'show_navigation' => 'yes',
+				],
+			]
+		);
+
 		$this->end_controls_section();
 	}
 
@@ -619,10 +633,10 @@ class Smart_Post_List extends Base {
 			[
 				'label'   => esc_html__( 'Posts Per Page', 'ultraaddons-elementor-lite' ),
 				'type'    => Controls_Manager::NUMBER,
-				'min'     => 2,
+				'min'     => 1,
 				'max'     => 30,
 				'step'    => 1,
-				'default' => 5,
+				'default' => 4,
 			]
 		);
 
@@ -965,8 +979,8 @@ class Smart_Post_List extends Base {
 				'type'    => Controls_Manager::SELECT,
 				'default' => '1',
 				'options' => [
-					'1' => esc_html__( '1 Column (Standard Vertical Stack)', 'ultraaddons-elementor-lite' ),
-					'2' => esc_html__( '2 Columns (Side by Side Grid)', 'ultraaddons-elementor-lite' ),
+					'1' => esc_html__( '1 Column', 'ultraaddons-elementor-lite' ),
+					'2' => esc_html__( '2 Columns', 'ultraaddons-elementor-lite' ),
 				],
 			]
 		);
@@ -1822,8 +1836,8 @@ class Smart_Post_List extends Base {
 			'ignore_sticky_posts' => true,
 		];
 
-		if ( $offset > 0 && 1 === $paged ) {
-			$query_args['offset'] = $offset;
+		if ( $offset > 0 ) {
+			$query_args['offset'] = $offset + ( ( $paged - 1 ) * $posts_count );
 		}
 
 		// Tax Query
@@ -2240,11 +2254,16 @@ class Smart_Post_List extends Base {
 				<?php endif; ?>
 
 				<?php if ( $show_navigation ) : ?>
+					<?php
+					$is_loop       = ! empty( $settings['navigation_loop'] ) && 'yes' === $settings['navigation_loop'];
+					$prev_disabled = ( $max_pages <= 1 ) || ( ! $is_loop && $paged <= 1 );
+					$next_disabled = ( $max_pages <= 1 ) || ( ! $is_loop && $paged >= $max_pages );
+					?>
 					<div class="ua-smart-nav-wrap">
-						<button type="button" class="ua-smart-nav-btn ua-smart-nav-prev <?php echo ( $paged <= 1 ) ? 'disabled' : ''; ?>" aria-label="<?php esc_attr_e( 'Previous Page', 'ultraaddons-elementor-lite' ); ?>">
+						<button type="button" class="ua-smart-nav-btn ua-smart-nav-prev <?php echo $prev_disabled ? 'disabled' : ''; ?>" aria-label="<?php esc_attr_e( 'Previous Page', 'ultraaddons-elementor-lite' ); ?>">
 							<?php if ( ! empty( $settings['prev_arrow_icon'] ) ) { Icons_Manager::render_icon( $settings['prev_arrow_icon'], [ 'aria-hidden' => 'true' ] ); } else { echo '<i class="fas fa-chevron-left"></i>'; } ?>
 						</button>
-						<button type="button" class="ua-smart-nav-btn ua-smart-nav-next <?php echo ( $paged >= $max_pages ) ? 'disabled' : ''; ?>" aria-label="<?php esc_attr_e( 'Next Page', 'ultraaddons-elementor-lite' ); ?>">
+						<button type="button" class="ua-smart-nav-btn ua-smart-nav-next <?php echo $next_disabled ? 'disabled' : ''; ?>" aria-label="<?php esc_attr_e( 'Next Page', 'ultraaddons-elementor-lite' ); ?>">
 							<?php if ( ! empty( $settings['next_arrow_icon'] ) ) { Icons_Manager::render_icon( $settings['next_arrow_icon'], [ 'aria-hidden' => 'true' ] ); } else { echo '<i class="fas fa-chevron-right"></i>'; } ?>
 						</button>
 					</div>
@@ -2258,6 +2277,9 @@ class Smart_Post_List extends Base {
 	 * Main Render
 	 */
 	protected function render() {
+		wp_enqueue_style( 'ultraaddons-smart-post-list' );
+		wp_enqueue_script( 'frontend-smart-post-list' );
+
 		$settings = $this->get_settings_for_display();
 
 		// Query posts
@@ -2382,7 +2404,10 @@ class Smart_Post_List extends Base {
 			data-settings="<?php echo esc_attr( wp_json_encode( $ajax_settings ) ); ?>"
 			data-paged="1"
 			data-max-pages="<?php echo esc_attr( $post_query->max_num_pages ); ?>"
-			data-cat-id="0">
+			data-cat-id="0"
+			data-loop="<?php echo ( ! empty( $settings['navigation_loop'] ) && 'yes' === $settings['navigation_loop'] ) ? 'yes' : 'no'; ?>"
+			data-ajax-url="<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>"
+			data-nonce="<?php echo esc_attr( wp_create_nonce( 'ua-smart-post-list-nonce' ) ); ?>">
 
 			<?php $this->render_top_bar( $settings, $filter_cats, $post_query->max_num_pages, 1 ); ?>
 
@@ -2419,7 +2444,12 @@ class Smart_Post_List extends Base {
 	 * AJAX Handler for Category Filtering, Search, and Page Navigation
 	 */
 	public static function ajax_query_posts() {
-		check_ajax_referer( 'ua-smart-post-list-nonce', 'nonce' );
+		$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['nonce'] ) ) : '';
+		$is_valid_nonce = wp_verify_nonce( $nonce, 'ua-smart-post-list-nonce' );
+		if ( ! $is_valid_nonce && ! current_user_can( 'edit_posts' ) ) {
+			wp_send_json_error( [ 'message' => esc_html__( 'Security check failed. Please refresh the page.', 'ultraaddons-elementor-lite' ) ] );
+			return;
+		}
 
 		$paged       = ! empty( $_POST['paged'] ) ? max( 1, intval( $_POST['paged'] ) ) : 1;
 		$category_id = isset( $_POST['category_id'] ) ? intval( $_POST['category_id'] ) : 0;
