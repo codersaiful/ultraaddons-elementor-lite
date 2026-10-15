@@ -37,6 +37,7 @@ class Admin_Handle{
         add_filter('plugin_action_links_' . ULTRA_ADDONS_BASE_NAME, [ __CLASS__, 'add_action_links' ] );
         
         add_action( 'admin_menu', [ __CLASS__, 'admin_menu' ] );
+        add_action( 'wp_ajax_ultraaddons_save_items', [ __CLASS__, 'ajax_save_items' ] );
         
 
         /**
@@ -74,8 +75,14 @@ class Admin_Handle{
             return;
         }
 
-        wp_enqueue_style( 'ultraaddons-admin-style', ULTRA_ADDONS_ASSETS . 'css/admin.css', [], ULTRA_ADDONS_VERSION );
-        wp_enqueue_script( 'ultraaddons-admin-script', ULTRA_ADDONS_ASSETS . 'js/admin.js', [ 'jquery' ], ULTRA_ADDONS_VERSION, true );
+        $admin_css_ver = file_exists( ULTRA_ADDONS_DIR . 'assets/css/admin.css' ) ? filemtime( ULTRA_ADDONS_DIR . 'assets/css/admin.css' ) : ULTRA_ADDONS_VERSION;
+        $admin_js_ver  = file_exists( ULTRA_ADDONS_DIR . 'assets/js/admin.js' ) ? filemtime( ULTRA_ADDONS_DIR . 'assets/js/admin.js' ) : ULTRA_ADDONS_VERSION;
+        wp_enqueue_style( 'ultraaddons-admin-style', ULTRA_ADDONS_ASSETS . 'css/admin.css', [], $admin_css_ver );
+        wp_enqueue_script( 'ultraaddons-admin-script', ULTRA_ADDONS_ASSETS . 'js/admin.js', [ 'jquery' ], $admin_js_ver, true );
+        wp_localize_script( 'ultraaddons-admin-script', 'ultraAddonsAdmin', [
+            'ajaxurl' => admin_url( 'admin-ajax.php' ),
+            'nonce'   => wp_create_nonce( 'ultraaddons_save_items' ),
+        ] );
         wp_enqueue_style( 'ultraaddons-icon-font', ULTRA_ADDONS_ASSETS . 'icons/ultraaddons/css/ultraaddons.css', [], ULTRA_ADDONS_VERSION );
         wp_enqueue_style( 'ultraaddons-extra-icons-style', ULTRA_ADDONS_ASSETS . 'icons/ultra-addons-extra/css/fontello.css', [], ULTRA_ADDONS_VERSION );
         if ( wp_style_is( 'elementor-icons', 'registered' ) ) {
@@ -112,7 +119,7 @@ class Admin_Handle{
     public static function add_action_links( $links ) {
         $ultraaddons_links[] = '<a href="' . admin_url( 'admin.php?page=ultraaddons-elementor-lite' ) . '" title="' . esc_attr__( 'Welcome to UltraAddons', 'ultraaddons-elementor-lite' ) . '" target="_blank">' . esc_html__( 'Welcome','ultraaddons-elementor-lite' ).'</a>';
         $ultraaddons_links[] = '<a href="https://ultraaddons.com/pricing/" title="' . esc_attr__( 'GET PRO', 'ultraaddons-elementor-lite' ) . '" target="_blank">' . esc_html__( 'GET PRO','ultraaddons-elementor-lite' ).'</a>';
-        $ultraaddons_links[] = '<a href="https://codeastrology.com/support/" title="' . esc_attr__( 'CodeAstrology Support', 'ultraaddons-elementor-lite' ) . '" target="_blank">'.esc_html__( 'Support','ultraaddons-elementor-lite' ).'</a>';
+        $ultraaddons_links[] = '<a href="https://codeastrology.com/my-support/" title="' . esc_attr__( 'CodeAstrology Support', 'ultraaddons-elementor-lite' ) . '" target="_blank">'.esc_html__( 'Support','ultraaddons-elementor-lite' ).'</a>';
         //$ultraaddons_links[] = '<a href="https://github.com/codersaiful/ultraaddons-elementor-lite" title="' . esc_attr__( 'Github Repo Link', 'ultraaddons-elementor-lite' ) . '" target="_blank">'.esc_html__( 'Github Repository','ultraaddons-elementor-lite' ).'</a>';
         return array_merge( $ultraaddons_links, $links );
     } 
@@ -213,7 +220,7 @@ class Admin_Handle{
             [
                 'parent_slug'   => self::$ultraaddons_menu_slug,//$parent_slug,
                 'page_title'    =>  __( 'UltraAddons Elementor Addons', 'ultraaddons-elementor-lite' ),
-                'menu_title'    =>  __( 'Welcome', 'ultraaddons-elementor-lite' ),
+                'menu_title'    =>  __( 'Dashboard', 'ultraaddons-elementor-lite' ),
                 'capability'    => self::$capability,
                 'menu_slug'     => 'ultraaddons-elementor-lite',
                 'function'      => [__CLASS__, 'welcome_page'],
@@ -315,7 +322,6 @@ class Admin_Handle{
         $header_submenu = self::get_submenu();
         $removed_menu = array(
             'ultraaddons-help-n-others',
-            'ultraaddons-elementor-lite'
         );
         $removed_menu = apply_filters( 'ultraaddons/admin/sub_menu/remove', $removed_menu, __CLASS__ );
         if( ! is_array( $removed_menu ) ) return $header_submenu;
@@ -431,7 +437,39 @@ class Admin_Handle{
         //Return to default
         return $submenu_file;
     }
-    
-    
+
+    /**
+     * AJAX auto-save items (Widgets and Extensions).
+     *
+     * @since 2.0.3.4
+     */
+    public static function ajax_save_items() {
+        check_ajax_referer( 'ultraaddons_save_items', 'security' );
+
+        if ( ! current_user_can( self::$capability ) ) {
+            wp_send_json_error( [ 'message' => esc_html__( 'Permission denied.', 'ultraaddons-elementor-lite' ) ], 403 );
+        }
+
+        $type = isset( $_POST['item_type'] ) ? sanitize_key( wp_unslash( $_POST['item_type'] ) ) : 'widgets';
+        $submitted_items = isset( $_POST['items'] ) && is_array( $_POST['items'] )
+            ? array_map( 'sanitize_text_field', wp_unslash( $_POST['items'] ) )
+            : [];
+
+        if ( 'extensions' === $type ) {
+            $all_items = \UltraAddons\Core\Extensions_Manager::get_list();
+            $disabled_items = array_values( array_intersect( $submitted_items, array_keys( $all_items ) ) );
+            update_option( \UltraAddons\Core\Extensions_Manager::$disabled_items_key, $disabled_items );
+        } else {
+            $all_items = \UltraAddons\Core\Widgets_Manager::widgets();
+            $disabled_items = array_values( array_intersect( $submitted_items, array_keys( $all_items ) ) );
+            update_option( \UltraAddons\Core\Widgets_Manager::$disabled_items_key, $disabled_items );
+        }
+
+        wp_send_json_success( [
+            'message'        => esc_html__( 'All changes saved.', 'ultraaddons-elementor-lite' ),
+            'disabled_count' => count( $disabled_items ),
+            'type'           => $type,
+        ] );
+    }
 }
 Admin_Handle::init();

@@ -23,18 +23,87 @@ if ( isset( $_POST['ultraaddons_nonce'] ) ) {
     update_option( Extensions_Manager::$disabled_items_key, $disabled_items );
 }
 $ultraaddons_disable_item = Extensions_Manager::disableExtensionKeys();
+
+$total_count = count( $ultraaddons_items );
+$free_count  = 0;
+$pro_count   = 0;
+$ultraaddons_ext_cats = [];
+foreach ( $ultraaddons_items as $item ) {
+    if ( ! empty( $item['is_pro'] ) ) {
+        $pro_count++;
+    } else {
+        $free_count++;
+    }
+    if ( ! empty( $item['cat'] ) && is_array( $item['cat'] ) ) {
+        $c = $item['cat'][0] ?? '';
+        if ( ! empty( $c ) ) {
+            $ultraaddons_ext_cats[$c] = ucwords( str_replace( '_', ' ', $c ) );
+        }
+    }
+}
 ?>
 
 <div class="ultraaddons-section ua-option-wrapper ua-extensions-page">
     <div class="ua-section-inside">
-        <div class="ua-header">
-            <h1 class="ua-page-title"><?php echo esc_html__( 'Extension', 'ultraaddons-elementor-lite' ); ?></h1>
+        
+        <!-- Page Intro Header -->
+        <div class="ua-page-intro-header">
+            <h2 class="ua-page-intro-title"><?php echo esc_html__( 'Ultra Extensions', 'ultraaddons-elementor-lite' ); ?></h2>
+            <p class="ua-page-intro-desc"><?php echo esc_html__( 'Enable only the extensions you need to keep your website fast and smooth.', 'ultraaddons-elementor-lite' ); ?></p>
+        </div>
+
+        <div class="ua-elements-header-card">
+            <div class="ua-filter-bar-row">
+                <div class="ua-filter-search-box">
+                    <svg class="ua-search-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <input type="search" id="ua-widget-search" class="ua-search-field" placeholder="<?php echo esc_attr__( 'Search extensions...', 'ultraaddons-elementor-lite' ); ?>" autocomplete="off" />
+                    <button type="button" class="ua-search-clear" id="ua-search-clear" title="<?php echo esc_attr__( 'Clear search', 'ultraaddons-elementor-lite' ); ?>">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                </div>
+
+                <?php if ( ! empty( $ultraaddons_ext_cats ) ) : ?>
+                <div class="ua-filter-category-box">
+                    <select id="ua-widget-category-select" class="ua-category-select">
+                        <option value="category-all"><?php echo esc_html__( 'All Categories', 'ultraaddons-elementor-lite' ); ?></option>
+                        <?php foreach( $ultraaddons_ext_cats as $cat_slug => $cat_title ) : ?>
+                            <option value="<?php echo esc_attr( $cat_slug ); ?>"><?php echo esc_html( $cat_title ); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <?php endif; ?>
+
+                <div class="ua-filter-tabs-group">
+                    <button type="button" class="ua-tab-pill ua-tab-all active" data-target="free-pro-all">
+                        <span class="ua-tab-label"><?php echo esc_html__( 'All', 'ultraaddons-elementor-lite' ); ?></span>
+                    </button>
+                    <button type="button" class="ua-tab-pill ua-tab-free" data-target="free">
+                        <span class="ua-tab-label"><?php echo esc_html__( 'Free', 'ultraaddons-elementor-lite' ); ?></span>
+                    </button>
+                    <button type="button" class="ua-tab-pill ua-tab-pro" data-target="pro">
+                        <span class="ua-tab-label"><?php echo esc_html__( 'Pro', 'ultraaddons-elementor-lite' ); ?></span>
+                    </button>
+                </div>
+
+                <div class="ua-header-actions">
+                    <div class="ua-master-toggle-wrap">
+                        <span class="ua-toggle-text" id="ua-toggle-all-label"><?php echo esc_html__( 'Enable All Extensions', 'ultraaddons-elementor-lite' ); ?></span>
+                        <label class="ua-modern-switch" for="ua-enable-all-elements">
+                            <input type="checkbox" id="ua-enable-all-elements" />
+                            <span class="ua-modern-slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <div class="ua-sectioon-content">
             <div class="ua-content-inside">
+                <div class="ua-no-widgets-found" style="display: none;">
+                    <p><?php echo esc_html__( 'No extensions found matching your criteria.', 'ultraaddons-elementor-lite' ); ?></p>
+                </div>
 
-                <form class="ua-option-list-form" action="" method="post">
+                <form class="ua-option-list-form" id="ua-extension-form" action="" method="post">
                     <?php wp_nonce_field( 'ultraaddons_save_extensions', 'ultraaddons_nonce' ); ?>
                     <div class="ua-option-item-wrappper">
                         <?php 
@@ -77,6 +146,9 @@ $ultraaddons_disable_item = Extensions_Manager::disableExtensionKeys();
                             //$ultraaddons_html_class[] = $ultraaddons_icon;
                             $ultraaddons_html_class[] = $ultraaddons_free_pro;
                             $ultraaddons_html_class[] = $ultraaddons_class_name;
+
+                            $ext_slug = strtolower( str_replace( '_', '-', $ultraaddons_class_name ) );
+                            $demo_url = ! empty( $ultraaddons_item['demo_url'] ) ? $ultraaddons_item['demo_url'] : 'https://ultraaddons.com/extensions/';
                         ?>
                         <label data-name="<?php echo esc_attr( $ultraaddons_name ); ?>" 
                              for="<?php echo esc_attr( $ultraaddons_checkbox_id ); ?>"
@@ -85,9 +157,22 @@ $ultraaddons_disable_item = Extensions_Manager::disableExtensionKeys();
                              data-type="<?php echo esc_attr( $ultraaddons_free_pro ); ?>"
                              class="ua-option-item <?php echo esc_attr( implode( " ", $ultraaddons_html_class ) ); ?>">
                             <div class="ua-option-item-inside">
-                                <span class="ua-option-version-type ua-option-version-type-<?php echo esc_attr( $ultraaddons_free_pro ); ?>"><?php echo $ultraaddons_free_pro == 'pro' ? esc_html__( 'Pro', 'ultraaddons-elementor-lite' ) : esc_html__( 'Free', 'ultraaddons-elementor-lite' ); ?></span>
-                                <i class="ua-option-icon <?php echo esc_attr( $ultraaddons_icon ); ?>"></i>
-                                <h2 class="ua-item-name"><?php echo esc_html( $ultraaddons_name ); ?></h2>
+                                <div class="ua-item-icon-box">
+                                    <i class="ua-option-icon <?php echo esc_attr( $ultraaddons_icon ); ?>"></i>
+                                </div>
+                                <div class="ua-item-content">
+                                    <h2 class="ua-item-name">
+                                        <span class="ua-name-text"><?php echo esc_html( $ultraaddons_name ); ?></span>
+                                        <?php if ( $ultraaddons_free_pro === 'pro' ) : ?>
+                                            <span class="ua-option-version-type ua-option-version-type-pro"><?php echo esc_html__( 'Pro', 'ultraaddons-elementor-lite' ); ?></span>
+                                        <?php endif; ?>
+                                    </h2>
+                                    <div class="ua-item-actions">
+                                        <a href="<?php echo esc_url( $demo_url ); ?>" target="_blank" class="ua-item-action-btn ua-btn-demo" title="<?php esc_attr_e( 'Live Preview', 'ultraaddons-elementor-lite' ); ?>" onclick="event.stopPropagation();">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                        </a>
+                                    </div>
+                                </div>
                                 <div class="ua-option-checkbox">
                                     <input class="ua-checkbox-hidden" id="<?php echo esc_attr( $ultraaddons_checkbox_id ); ?>" type="checkbox" name="item[]" value="<?php echo esc_attr( $ultraaddons_class_name ); ?>" <?php echo esc_attr( $ultraaddons_checkbox ); ?>>
                                     <div class="ua-designed-checkbox"></div>
@@ -95,9 +180,6 @@ $ultraaddons_disable_item = Extensions_Manager::disableExtensionKeys();
                             </div>
                         </label>
                         <?php } ?>
-                    </div>
-                    <div class="ua-widget-footer">
-                        <button class="primary button button-primary ua-primary ua-no-update" type="submit" name="submit" value="submit"><?php echo esc_html__( 'Save Change', 'ultraaddons-elementor-lite' ); ?></button>
                     </div>
                 </form>
                 
