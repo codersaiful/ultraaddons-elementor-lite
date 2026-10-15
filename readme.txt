@@ -172,6 +172,8 @@ Yes. Many filters and action hooks are available for customization.
 * Conditional frontend widget assets and scoped admin assets.
 * Hardened admin settings and request validation.
 * Fixed shortcode, template library, and header/footer query issues.
+* Added new widgets: Product Flip, Product Carousel, and Product Grid and more.
+* Update old widgets to new Elementor widget API.
 
 = 2.0.3 =  
 * Bug fixes and code optimization.
