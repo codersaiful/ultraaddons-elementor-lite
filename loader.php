@@ -72,7 +72,9 @@ class Loader {
         // Register widgets through Elementor's current widget manager API.
         add_action( 'elementor/widgets/register', [ $this, 'register_widgets' ] );
         
-        //add_action( 'elementor/controls/controls_registered', [ $this, 'init_controls' ] );
+        // Register custom Elementor controls
+        add_action( 'elementor/controls/register', [ $this, 'register_controls' ] );
+        add_action( 'elementor/controls/controls_registered', [ $this, 'register_controls' ] );
         add_action( 'elementor/elements/categories_registered', [ $this, 'add_categories' ] );
 
         // Register assets early; Elementor queues the dependencies declared by
@@ -98,6 +100,7 @@ class Loader {
 
         //For Editor Screen
         add_action( 'elementor/editor/before_enqueue_scripts', [ $this, 'elementor_screen_style' ] );
+        add_action( 'elementor/editor/after_enqueue_scripts', [ $this, 'enqueue_editor_scripts' ] );
 
         // Register WC Products AJAX handlers early so they are available
         // on admin-ajax.php requests (outside Elementor's widget registration flow).
@@ -123,6 +126,10 @@ class Loader {
         // Register Smart Post List AJAX handlers early
         add_action( 'wp_ajax_ua_smart_post_list_query', [ $this, 'handle_smart_post_list_ajax' ] );
         add_action( 'wp_ajax_nopriv_ua_smart_post_list_query', [ $this, 'handle_smart_post_list_ajax' ] );
+
+        // Register Select2 AJAX search handlers
+        add_action( 'wp_ajax_ua_select2_search_post', [ $this, 'handle_select2_search_post' ] );
+        add_action( 'wp_ajax_ua_select2_get_title', [ $this, 'handle_select2_get_title' ] );
         
     }
 
@@ -449,6 +456,37 @@ class Loader {
         wp_enqueue_style( 'ultraaddons-extra-icons-style' );
     }
 
+    /**
+     * Enqueue Select2 control scripts for Elementor editor
+     *
+     * @since 2.0.4.0
+     */
+    public function enqueue_editor_scripts() {
+        $deps = wp_script_is( 'jquery-elementor-select2', 'registered' )
+            ? [ 'jquery', 'jquery-elementor-select2' ]
+            : [ 'jquery' ];
+
+        wp_register_script(
+            'ua-select2-control',
+            ULTRA_ADDONS_ASSETS . 'js/ua-select2.js',
+            $deps,
+            ULTRA_ADDONS_VERSION . '.' . time(),
+            true
+        );
+
+        wp_localize_script(
+            'ua-select2-control',
+            'ua_select2_localize',
+            [
+                'ajaxurl'     => admin_url( 'admin-ajax.php' ),
+                'search_text' => esc_html__( 'Search products...', 'ultraaddons-elementor-lite' ),
+                'nonce'       => wp_create_nonce( 'ua_select2_nonce' ),
+            ]
+        );
+
+        wp_enqueue_script( 'ua-select2-control' );
+    }
+
     
     /**
      * Enqueue CSS file based on Widgets Class
@@ -604,23 +642,123 @@ class Loader {
     }
     
     /**
-     * Init Controls
+     * Register Custom Elementor Controls
      *
-     * Include controls files and register them
-     *
-     * @since 1.0.0
-     *
-     * @access public
-     * 
-     * @todo Controll is not empty. we will add it later.
+     * @since 2.0.4.0
+     * @param \Elementor\Controls_Manager $controls_manager
      */
-    public function init_controls() {
+    public function register_controls( $controls_manager = null ) {
+        static $registered = false;
+        if ( $registered ) {
+            return;
+        }
+        $registered = true;
 
-        // Include Control files
-        //require_once( __DIR__ . '/assets/controls/test-control.php' );
+        if ( ! $controls_manager && class_exists( '\Elementor\Plugin' ) ) {
+            $controls_manager = \Elementor\Plugin::$instance->controls_manager;
+        }
+        if ( ! $controls_manager ) {
+            return;
+        }
 
-        // Register control
-        //\Elementor\Plugin::$instance->controls_manager->register_control('control-type-', new \Test_Control());
+        require_once ULTRA_ADDONS_DIR . 'inc/controls/select2.php';
+
+        if ( method_exists( $controls_manager, 'register' ) ) {
+            $controls_manager->register( new \UltraAddons\Controls\Select2() );
+        } elseif ( method_exists( $controls_manager, 'register_control' ) ) {
+            $controls_manager->register_control( 'ua-select2', new \UltraAddons\Controls\Select2() );
+        }
+    }
+
+    /**
+     * AJAX Search Products for Select2 Control
+     *
+     * @since 2.0.4.0
+     */
+    public function handle_select2_search_post() {
+        if ( empty( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'ua_select2_nonce' ) || ! current_user_can( 'edit_posts' ) ) {
+            wp_send_json_error( [ 'error' => esc_html__( 'Unauthorized', 'ultraaddons-elementor-lite' ) ] );
+        }
+
+        $post_type = ! empty( $_POST['post_type'] ) ? sanitize_text_field( wp_unslash( $_POST['post_type'] ) ) : 'product';
+        $search    = ! empty( $_POST['term'] ) ? sanitize_text_field( wp_unslash( $_POST['term'] ) ) : '';
+
+        global $wpdb;
+        $results = [];
+
+        // Exact ID match if numeric
+        if ( is_numeric( $search ) ) {
+            $exact_id   = intval( $search );
+            $exact_post = get_post( $exact_id );
+            if ( $exact_post && $exact_post->post_type === $post_type && 'publish' === $exact_post->post_status ) {
+                $results[] = [
+                    'id'   => $exact_post->ID,
+                    'text' => $exact_post->post_title,
+                ];
+            }
+        }
+
+        $where = $wpdb->prepare( "WHERE post_type = %s AND post_status = 'publish'", $post_type );
+        if ( ! empty( $search ) ) {
+            $like   = '%' . $wpdb->esc_like( $search ) . '%';
+            $where .= $wpdb->prepare( " AND post_title LIKE %s", $like );
+        }
+
+        $query = "SELECT ID, post_title FROM {$wpdb->posts} {$where} ORDER BY post_title ASC LIMIT 15";
+        $posts = $wpdb->get_results( $query );
+
+        if ( ! empty( $posts ) ) {
+            foreach ( $posts as $post ) {
+                if ( is_numeric( $search ) && $post->ID === intval( $search ) ) {
+                    continue;
+                }
+                $results[] = [
+                    'id'   => $post->ID,
+                    'text' => $post->post_title,
+                ];
+            }
+        }
+
+        wp_send_json( [ 'results' => $results ] );
+    }
+
+    /**
+     * AJAX Get Titles of Selected Post IDs for Select2 Control
+     *
+     * @since 2.0.4.0
+     */
+    public function handle_select2_get_title() {
+        if ( empty( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'ua_select2_nonce' ) || ! current_user_can( 'edit_posts' ) ) {
+            wp_send_json_error( [ 'error' => esc_html__( 'Unauthorized', 'ultraaddons-elementor-lite' ) ] );
+        }
+
+        if ( empty( $_POST['id'] ) ) {
+            wp_send_json_error( [] );
+        }
+
+        $raw_ids = is_array( $_POST['id'] ) ? $_POST['id'] : [ $_POST['id'] ];
+        $ids     = array_map( 'intval', array_filter( $raw_ids ) );
+
+        if ( empty( $ids ) ) {
+            wp_send_json_error( [] );
+        }
+
+        global $wpdb;
+        $placeholders = implode( ',', array_fill( 0, count( $ids ), '%d' ) );
+        $query        = $wpdb->prepare(
+            "SELECT ID, post_title FROM {$wpdb->posts} WHERE ID IN ($placeholders)",
+            $ids
+        );
+        $posts = $wpdb->get_results( $query );
+
+        $results = [];
+        if ( ! empty( $posts ) ) {
+            foreach ( $posts as $p ) {
+                $results[ $p->ID ] = $p->post_title;
+            }
+        }
+
+        wp_send_json_success( [ 'results' => $results ] );
     }
 
     /**

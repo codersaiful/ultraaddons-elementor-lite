@@ -604,6 +604,15 @@ $ultraaddons_widgetsArray = [
             __( 'WooCommerce', 'ultraaddons-elementor-lite' ),
         ],
     ],
+    'Product_Compare' => [
+        'name'  => __( 'Product Compare', 'ultraaddons-elementor-lite' ),
+        'is_pro'   => false,
+        'icon'      => 'eicon-table',
+        'badge'     => 'New',
+        'cat'       => [
+            __( 'WooCommerce', 'ultraaddons-elementor-lite' ),
+        ],
+    ],
     'Product_Title' => [
         'name'  => __( 'Product Title', 'ultraaddons-elementor-lite' ),
         'is_pro'   => false,
