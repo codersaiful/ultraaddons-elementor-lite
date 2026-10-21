@@ -249,28 +249,32 @@
           $( event.target ).parent().addClass( 'active' );
       });
 
-      $(".video-gallery").owlCarousel({
-        responsiveClass:true,
-		margin:20,
-        responsive:{
-            0:{
-                items:1,
-            },
-            768:{
-                items:2,
-            },
-            992:{
-                items:3,
-                loop:false
+      if ( $.fn.owlCarousel && $('.video-gallery').length ) {
+          $(".video-gallery").owlCarousel({
+            responsiveClass:true,
+            margin:20,
+            responsive:{
+                0:{
+                    items:1,
+                },
+                768:{
+                    items:2,
+                },
+                992:{
+                    items:3,
+                    loop:false
+                }
             }
-        }
-      });
+          });
+      }
 
       /**
        * Fot Header Footer
        * Display On Options
        */
-      $('.ua-target_rule-condition').select2();
+      if ( $.fn.select2 && $('.ua-target_rule-condition').length ) {
+          $('.ua-target_rule-condition').select2();
+      }
   });
 
 
@@ -522,11 +526,16 @@
    * @author B M Rafiul Alam
    * @Since 1.1.0.11
 */
-  var inst = $('[data-remodal-id=modal]').remodal();
-  $('.ua-version-free .pro').click(function(e){
-     e.preventDefault();
-     inst.open();
-  });
+  if ( $.fn.remodal ) {
+      var $remodalEl = $('[data-remodal-id=modal]');
+      if ( $remodalEl.length ) {
+          var inst = $remodalEl.remodal();
+          $('.ua-version-free .pro').on('click', function(e){
+              e.preventDefault();
+              inst.open();
+          });
+      }
+  }
 
   /**
    * Interactive FAQ Accordion on Welcome Page
@@ -534,13 +543,15 @@
   $(document).on('click', '.ua-faq-question', function() {
       var $item = $(this).closest('.ua-faq-accordion-item');
       var $answer = $item.find('.ua-faq-answer');
+      var $siblings = $item.siblings('.ua-faq-accordion-item');
       
       if ($item.hasClass('active')) {
           $item.removeClass('active');
-          $answer.slideUp(200);
+          $answer.stop(true, true).slideUp(200);
       } else {
+          $siblings.removeClass('active').find('.ua-faq-answer').stop(true, true).slideUp(200);
           $item.addClass('active');
-          $answer.slideDown(200);
+          $answer.stop(true, true).slideDown(200);
       }
   });
 
