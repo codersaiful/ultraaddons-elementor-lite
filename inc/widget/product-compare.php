@@ -162,6 +162,7 @@ class Product_Compare extends Base {
         // Content Tab
         $this->register_content_product_controls();
         $this->register_content_table_settings();
+        $this->register_content_highlight_controls();
 
         // Style Tab
         $this->register_style_table_controls();
@@ -226,6 +227,57 @@ class Product_Compare extends Base {
                     'style-6' => esc_html__( 'Style 6', 'ultraaddons-elementor-lite' ),
                 ],
                 'default' => '',
+            ]
+        );
+
+        $this->end_controls_section();
+    }
+
+    /**
+     * Content: Highlighted / Featured Column
+     */
+    protected function register_content_highlight_controls() {
+        $this->start_controls_section(
+            'ua_compare_highlight_section',
+            [
+                'label' => esc_html__( 'Highlighted / Featured Column', 'ultraaddons-elementor-lite' ),
+                'tab'   => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+            'highlight_column',
+            [
+                'label'       => esc_html__( 'Highlight Column', 'ultraaddons-elementor-lite' ),
+                'type'        => Controls_Manager::SELECT,
+                'options'     => [
+                    'none'    => esc_html__( 'None', 'ultraaddons-elementor-lite' ),
+                    'col-1'   => esc_html__( 'Column 1', 'ultraaddons-elementor-lite' ),
+                    'col-2'   => esc_html__( 'Column 2', 'ultraaddons-elementor-lite' ),
+                    'col-3'   => esc_html__( 'Column 3', 'ultraaddons-elementor-lite' ),
+                    'col-4'   => esc_html__( 'Column 4', 'ultraaddons-elementor-lite' ),
+                    'col-5'   => esc_html__( 'Column 5', 'ultraaddons-elementor-lite' ),
+                    'col-6'   => esc_html__( 'Column 6', 'ultraaddons-elementor-lite' ),
+                    'col-7'   => esc_html__( 'Column 7', 'ultraaddons-elementor-lite' ),
+                    'col-8'   => esc_html__( 'Column 8', 'ultraaddons-elementor-lite' ),
+                    'col-9'   => esc_html__( 'Column 9', 'ultraaddons-elementor-lite' ),
+                    'col-10'  => esc_html__( 'Column 10', 'ultraaddons-elementor-lite' ),
+                ],
+                'default'     => 'none',
+                'description' => esc_html__( 'Select which product column to highlight with a badge ribbon and custom styles.', 'ultraaddons-elementor-lite' ),
+            ]
+        );
+
+        $this->add_control(
+            'highlight_badge_text',
+            [
+                'label'       => esc_html__( 'Badge Text', 'ultraaddons-elementor-lite' ),
+                'type'        => Controls_Manager::TEXT,
+                'default'     => esc_html__( 'Featured', 'ultraaddons-elementor-lite' ),
+                'placeholder' => esc_html__( 'e.g. Featured, Best Value, Popular', 'ultraaddons-elementor-lite' ),
+                'condition'   => [
+                    'highlight_column!' => 'none',
+                ],
             ]
         );
 
@@ -441,7 +493,7 @@ class Product_Compare extends Base {
                 'name'     => 'table_background',
                 'label'    => esc_html__( 'Background', 'ultraaddons-elementor-lite' ),
                 'types'    => [ 'classic', 'gradient' ],
-                'selector' => '{{WRAPPER}} .ua-compare-table',
+                'selector' => '{{WRAPPER}} .ua-product-compare-wrapper .ua-compare-table, {{WRAPPER}} .ua-compare-table',
             ]
         );
 
@@ -450,7 +502,7 @@ class Product_Compare extends Base {
             [
                 'name'     => 'table_border',
                 'label'    => esc_html__( 'Border', 'ultraaddons-elementor-lite' ),
-                'selector' => '{{WRAPPER}} .ua-compare-table',
+                'selector' => '{{WRAPPER}} .ua-product-compare-wrapper .ua-compare-table, {{WRAPPER}} .ua-compare-table',
             ]
         );
 
@@ -461,7 +513,7 @@ class Product_Compare extends Base {
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%', 'em' ],
                 'selectors'  => [
-                    '{{WRAPPER}} .ua-compare-table, {{WRAPPER}} .ua-compare-table-responsive' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .ua-product-compare-wrapper .ua-compare-table, {{WRAPPER}} .ua-compare-table, {{WRAPPER}} .ua-compare-table-responsive' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
                 ],
             ]
         );
@@ -470,7 +522,7 @@ class Product_Compare extends Base {
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'table_box_shadow',
-                'selector' => '{{WRAPPER}} .ua-compare-table',
+                'selector' => '{{WRAPPER}} .ua-product-compare-wrapper .ua-compare-table, {{WRAPPER}} .ua-compare-table',
             ]
         );
 
@@ -652,7 +704,7 @@ class Product_Compare extends Base {
                 'label'     => esc_html__( 'Odd Columns Background', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ua-compare-product-td.ua-odd, {{WRAPPER}} .ua-compare-table td.ua-odd' => 'background-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .ua-compare-product-td.ua-odd:not(.ua-is-highlighted), {{WRAPPER}} .ua-compare-table td.ua-odd:not(.ua-is-highlighted)' => 'background-color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -663,7 +715,7 @@ class Product_Compare extends Base {
                 'label'     => esc_html__( 'Even Columns Background', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ua-compare-product-td.ua-even, {{WRAPPER}} .ua-compare-table td.ua-even' => 'background-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .ua-compare-product-td.ua-even:not(.ua-is-highlighted), {{WRAPPER}} .ua-compare-table td.ua-even:not(.ua-is-highlighted)' => 'background-color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -683,7 +735,7 @@ class Product_Compare extends Base {
                 'name'     => 'highlight_col_bg',
                 'label'    => esc_html__( 'Highlighted Background', 'ultraaddons-elementor-lite' ),
                 'types'    => [ 'classic', 'gradient' ],
-                'selector' => '{{WRAPPER}} .ua-compare-product-td.ua-is-highlighted',
+                'selector' => '{{WRAPPER}} .ua-product-compare-wrapper .ua-compare-table td.ua-compare-product-td.ua-is-highlighted, {{WRAPPER}} .ua-compare-product-td.ua-is-highlighted',
             ]
         );
 
@@ -693,7 +745,9 @@ class Product_Compare extends Base {
                 'label'     => esc_html__( 'Highlighted Border Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ua-compare-product-td.ua-is-highlighted' => 'border-left-color: {{VALUE}} !important; border-right-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .ua-product-compare-wrapper .ua-compare-table td.ua-compare-product-td.ua-is-highlighted, {{WRAPPER}} .ua-compare-product-td.ua-is-highlighted' => 'border-left-color: {{VALUE}} !important; border-right-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .ua-product-compare-wrapper .ua-compare-table tr:first-child td.ua-compare-product-td.ua-is-highlighted' => 'border-top-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .ua-product-compare-wrapper .ua-compare-table tr:last-child td.ua-compare-product-td.ua-is-highlighted' => 'border-bottom-color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -1162,6 +1216,18 @@ class Product_Compare extends Base {
                 break;
 
             case 'title':
+                $has_image_field = false;
+                if ( ! empty( $settings['fields'] ) && is_array( $settings['fields'] ) ) {
+                    foreach ( $settings['fields'] as $f ) {
+                        if ( ( $f['field_type'] ?? '' ) === 'image' ) {
+                            $has_image_field = true;
+                            break;
+                        }
+                    }
+                }
+                if ( ! $has_image_field && $is_highlighted && ! empty( $badge_text ) ) {
+                    echo '<div class="ua-compare-badge-wrap"><span class="ua-compare-badge">' . esc_html( $badge_text ) . '</span></div>';
+                }
                 if ( $link_title ) {
                     echo '<h4 class="ua-compare-product-title"><a href="' . esc_url( $wc_product->get_permalink() ) . '" class="ua-compare-title-link">' . esc_html( $wc_product->get_name() ) . '</a></h4>';
                 } else {
@@ -1281,7 +1347,13 @@ class Product_Compare extends Base {
         $settings = $this->get_settings_for_display();
         $raw_product_ids = ! empty( $settings['product_ids'] ) ? (array) $settings['product_ids'] : [];
         $product_ids = array_map( 'intval', array_filter( $raw_product_ids ) );
+        $highlight_mode = ! empty( $settings['highlight_column'] ) ? $settings['highlight_column'] : 'none';
         $highlighted_id = 0;
+        if ( $highlight_mode === 'product' && ! empty( $settings['highlighted_product_id'] ) ) {
+            $highlighted_id = intval( $settings['highlighted_product_id'] );
+        } elseif ( ! empty( $settings['highlighted_product_id'] ) && $highlight_mode === 'none' ) {
+            $highlighted_id = intval( $settings['highlighted_product_id'] );
+        }
         $fields = ! empty( $settings['fields'] ) && is_array( $settings['fields'] ) ? $settings['fields'] : self::get_default_fields();
         $table_title = ! empty( $settings['table_title'] ) ? $settings['table_title'] : '';
         $table_title_tag = ! empty( $settings['table_title_tag'] ) ? Utils::validate_html_tag( $settings['table_title_tag'] ) : 'h3';
@@ -1300,6 +1372,15 @@ class Product_Compare extends Base {
                 if ( $p && $p->is_visible() ) {
                     $products[ $pid ] = $p;
                 }
+            }
+        }
+
+        // Resolve highlighted product if selected by column number
+        if ( strpos( $highlight_mode, 'col-' ) === 0 && ! empty( $products ) ) {
+            $col_idx = intval( str_replace( 'col-', '', $highlight_mode ) ) - 1;
+            $p_keys  = array_keys( $products );
+            if ( isset( $p_keys[ $col_idx ] ) ) {
+                $highlighted_id = $p_keys[ $col_idx ];
             }
         }
 
