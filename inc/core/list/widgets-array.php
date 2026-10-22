@@ -131,6 +131,17 @@ $ultraaddons_widgetsArray = [
             ],
     ],
     
+    'Woo_Cart' => [
+            'name'  => __( 'Woo Cart', 'ultraaddons-elementor-lite' ),
+            'is_pro'   => false,
+            'is_wc'     => true,
+            'icon'      => 'uicon-cart',
+            'badge'     => 'new',
+            'cat'       => [
+                __( 'WooCommerce', 'ultraaddons-elementor-lite' ),
+            ],
+    ],
+    
    /*  'Menu' => [
             'name'  => __( 'Menu', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
