@@ -255,7 +255,7 @@ if ( ! function_exists( 'ultraaddons_woocommerce_cart_link_fragment' ) ) {
 	/**
 	 * Cart Fragments.
 	 *
-	 * Ensure cart contents update when products are added to the cart via AJAX.
+	 * Ensure cart contents and mini cart badges update when products are added/updated in the cart via AJAX.
 	 *
 	 * @param array $fragments Fragments to refresh via AJAX.
 	 * @return array Fragments to refresh via AJAX.
@@ -264,6 +264,16 @@ if ( ! function_exists( 'ultraaddons_woocommerce_cart_link_fragment' ) ) {
 		ob_start();
 		ultraaddons_woocommerce_cart_link();
 		$fragments['a.cart-contents'] = ob_get_clean();
+
+		if ( function_exists( 'WC' ) && null !== WC()->cart ) {
+			$cart_count = WC()->cart->get_cart_contents_count();
+			$subtotal   = WC()->cart->get_cart_subtotal();
+			$badge_hide = ( $cart_count === 0 ) ? 'ua-badge-hidden' : '';
+
+			$fragments['span.ua-mini-cart-badge'] = '<span class="ua-mini-cart-badge ' . esc_attr( $badge_hide ) . '" data-count="' . esc_attr( $cart_count ) . '">' . esc_html( $cart_count ) . '</span>';
+			$fragments['span.ua-mini-cart-price'] = '<span class="ua-mini-cart-price">' . wp_kses_post( $subtotal ) . '</span>';
+		}
+
 		return $fragments;
 	}
 }

@@ -46,6 +46,10 @@ class Cart extends Base {
             true
         );
         wp_enqueue_script( 'ultraaddons-cart' );
+
+        if ( class_exists( 'WooCommerce' ) ) {
+            wp_enqueue_script( 'wc-cart-fragments' );
+        }
     }
 
     public function get_style_depends() {
@@ -53,7 +57,7 @@ class Cart extends Base {
     }
 
     public function get_script_depends() {
-        return [ 'jquery', 'ultraaddons-cart' ];
+        return [ 'jquery', 'wc-cart-fragments', 'ultraaddons-cart' ];
     }
 
     public function is_reload_preview_required() {

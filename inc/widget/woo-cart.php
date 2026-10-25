@@ -153,10 +153,11 @@ class Woo_Cart extends Base {
                 'label'   => esc_html__( 'Layout Mode', 'ultraaddons-elementor-lite' ),
                 'type'    => Controls_Manager::SELECT,
                 'options' => [
-                    'two-column' => esc_html__( 'Two Columns (Table + Summary)', 'ultraaddons-elementor-lite' ),
-                    'one-column' => esc_html__( 'One Column (Stacked)', 'ultraaddons-elementor-lite' ),
+                    'unified'    => esc_html__( 'Unified Single Card', 'ultraaddons-elementor-lite' ),
+                    'two-column' => esc_html__( 'Two Columns', 'ultraaddons-elementor-lite' ),
+                    'one-column' => esc_html__( 'One Column', 'ultraaddons-elementor-lite' ),
                 ],
-                'default' => 'two-column',
+                'default' => 'unified',
             ]
         );
 
@@ -166,10 +167,12 @@ class Woo_Cart extends Base {
                 'label'   => esc_html__( 'Style Preset', 'ultraaddons-elementor-lite' ),
                 'type'    => Controls_Manager::SELECT,
                 'options' => [
-                    'default' => esc_html__( 'Default (Clean Indigo)', 'ultraaddons-elementor-lite' ),
-                    'modern'  => esc_html__( 'Modern (Vibrant Gradient)', 'ultraaddons-elementor-lite' ),
-                    'minimal' => esc_html__( 'Minimal (Borderless)', 'ultraaddons-elementor-lite' ),
-                    'bold'    => esc_html__( 'Bold (Dark Mode)', 'ultraaddons-elementor-lite' ),
+                    'default'       => esc_html__( 'Clean Store', 'ultraaddons-elementor-lite' ),
+                    'modern'        => esc_html__( 'Modern Tech', 'ultraaddons-elementor-lite' ),
+                    'minimal'       => esc_html__( 'Luxury Boutique', 'ultraaddons-elementor-lite' ),
+                    'neo-card'      => esc_html__( 'Soft Floating Cards', 'ultraaddons-elementor-lite' ),
+                    'fresh-green'   => esc_html__( 'Fresh Organic', 'ultraaddons-elementor-lite' ),
+                    'bold'          => esc_html__( 'Dark Luxury', 'ultraaddons-elementor-lite' ),
                 ],
                 'default' => 'default',
             ]
@@ -185,7 +188,7 @@ class Woo_Cart extends Base {
                 'return_value' => 'yes',
                 'default'      => 'yes',
                 'condition'    => [
-                    'layout' => 'two-column',
+                    'layout!' => 'one-column',
                 ],
                 'description'  => esc_html__( 'Keeps the Cart Totals summary visible while scrolling long cart lists.', 'ultraaddons-elementor-lite' ),
             ]
@@ -205,8 +208,30 @@ class Woo_Cart extends Base {
                     'size' => 30,
                 ],
                 'condition'  => [
-                    'layout'         => 'two-column',
+                    'layout!'        => 'one-column',
                     'sticky_summary' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'columns_gap',
+            [
+                'label'      => esc_html__( 'Columns Gap', 'ultraaddons-elementor-lite' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', 'em', 'rem' ],
+                'range'      => [
+                    'px' => [ 'min' => 0, 'max' => 60, 'step' => 2 ],
+                ],
+                'default'    => [
+                    'unit' => 'px',
+                    'size' => 24,
+                ],
+                'condition'  => [
+                    'layout' => 'two-column',
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .ua-woo-cart-main' => 'gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -328,7 +353,7 @@ class Woo_Cart extends Base {
         $this->add_control(
             'show_remove_btn',
             [
-                'label'        => esc_html__( 'Remove (×) Button', 'ultraaddons-elementor-lite' ),
+                'label'        => esc_html__( 'Remove Button', 'ultraaddons-elementor-lite' ),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => 'yes',
@@ -464,6 +489,18 @@ class Woo_Cart extends Base {
                 'label'   => esc_html__( 'Checkout Button Text', 'ultraaddons-elementor-lite' ),
                 'type'    => Controls_Manager::TEXT,
                 'default' => esc_html__( 'Proceed to Checkout', 'ultraaddons-elementor-lite' ),
+            ]
+        );
+
+        $this->add_control(
+            'show_checkout_arrow',
+            [
+                'label'        => esc_html__( 'Show Button Arrow', 'ultraaddons-elementor-lite' ),
+                'type'         => Controls_Manager::SWITCHER,
+                'label_on'     => esc_html__( 'Yes', 'ultraaddons-elementor-lite' ),
+                'label_off'    => esc_html__( 'No', 'ultraaddons-elementor-lite' ),
+                'return_value' => 'yes',
+                'default'      => 'yes',
             ]
         );
 
@@ -1221,12 +1258,24 @@ class Woo_Cart extends Base {
         $this->end_controls_tabs();
 
         $this->add_responsive_control(
+            'checkout_btn_padding',
+            [
+                'label'      => esc_html__( 'Padding', 'ultraaddons-elementor-lite' ),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'separator'  => 'before',
+                'selectors'  => [
+                    '{{WRAPPER}} .ua-checkout-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
             'checkout_btn_radius',
             [
                 'label'      => esc_html__( 'Border Radius', 'ultraaddons-elementor-lite' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
-                'separator'  => 'before',
                 'selectors'  => [
                     '{{WRAPPER}} .ua-checkout-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
@@ -1346,7 +1395,10 @@ class Woo_Cart extends Base {
 
         $settings = $this->get_settings_for_display();
 
-        $layout                 = ! empty( $settings['layout'] ) ? $settings['layout'] : 'two-column';
+        $layout                 = ! empty( $settings['layout'] ) ? $settings['layout'] : 'unified';
+        if ( 'two-column' === $layout && ( empty( $settings['columns_gap']['size'] ) || (int) $settings['columns_gap']['size'] <= 0 || 24 === (int) $settings['columns_gap']['size'] ) ) {
+            $layout = 'unified';
+        }
         $preset                 = ! empty( $settings['preset'] ) ? $settings['preset'] : 'default';
         $sticky_summary         = ( $settings['sticky_summary'] ?? 'yes' ) === 'yes';
         $sticky_offset          = ! empty( $settings['sticky_offset']['size'] ) ? intval( $settings['sticky_offset']['size'] ) : 30;
@@ -1371,7 +1423,13 @@ class Woo_Cart extends Base {
         $show_shipping_calc     = ( $settings['show_shipping_calc'] ?? 'yes' ) === 'yes';
 
         $update_cart_text       = ! empty( $settings['update_cart_text'] ) ? $settings['update_cart_text'] : esc_html__( 'Update Cart', 'ultraaddons-elementor-lite' );
-        $checkout_text          = ! empty( $settings['checkout_text'] ) ? $settings['checkout_text'] : esc_html__( 'Proceed to Checkout', 'ultraaddons-elementor-lite' );
+        $raw_checkout_text      = ! empty( $settings['checkout_text'] ) ? $settings['checkout_text'] : esc_html__( 'Proceed to Checkout', 'ultraaddons-elementor-lite' );
+        $show_checkout_arrow    = ( $settings['show_checkout_arrow'] ?? 'yes' ) === 'yes';
+
+        // Strip any typed trailing arrows or dashes so we always render one clean animated SVG arrow
+        $decoded_text        = html_entity_decode( $raw_checkout_text, ENT_QUOTES, 'UTF-8' );
+        $clean_checkout_text = preg_replace( '/\s*([\x{2190}-\x{21FF}\x{2790}-\x{27BF}\x{25BA}\x{00BB}]|&rarr;|&#8594;|-+>|-+)\s*$/u', '', $decoded_text );
+        $checkout_text       = ! empty( $clean_checkout_text ) ? $clean_checkout_text : $raw_checkout_text;
 
         $show_cross             = ( $settings['show_cross_sells'] ?? 'yes' ) === 'yes';
         $cross_title            = ! empty( $settings['cross_sells_title'] ) ? $settings['cross_sells_title'] : esc_html__( 'You may also like…', 'ultraaddons-elementor-lite' );
@@ -1398,7 +1456,11 @@ class Woo_Cart extends Base {
             <?php if ( $is_cart_empty ) : ?>
                 <?php $this->render_empty_cart( $settings ); ?>
             <?php else : ?>
-                <form class="ua-woo-cart-form woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
+                <?php
+                $current_page_url = remove_query_arg( [ 'remove_item', 'undo_item', 'remove_coupon', 'applied_coupon', 'update_cart' ] );
+                $form_action_url  = ! empty( $current_page_url ) ? $current_page_url : wc_get_cart_url();
+                ?>
+                <form class="ua-woo-cart-form woocommerce-cart-form" action="<?php echo esc_url( $form_action_url ); ?>" method="post">
                     <div class="ua-woo-cart-main">
                         
                         <!-- Left Column: Cart Items Table & Actions -->
@@ -1436,6 +1498,7 @@ class Woo_Cart extends Base {
 
                                             if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_cart_item_visible', true, $cart_item, $cart_item_key ) ) :
                                                 $product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
+                                                $item_remove_url   = wp_nonce_url( add_query_arg( 'remove_item', $cart_item_key, $form_action_url ), 'woocommerce-cart' );
                                         ?>
                                             <tr class="ua-cart-item woocommerce-cart-form__cart-item <?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>" data-cart-key="<?php echo esc_attr( $cart_item_key ); ?>">
                                                 
@@ -1445,8 +1508,8 @@ class Woo_Cart extends Base {
                                                         echo apply_filters(
                                                             'woocommerce_cart_item_remove_link',
                                                             sprintf(
-                                                                '<a href="%s" class="ua-cart-remove-btn remove" aria-label="%s" data-product_id="%s" data-product_sku="%s" data-cart-key="%s">&times;</a>',
-                                                                esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
+                                                                '<a href="%s" class="ua-cart-remove-btn remove" aria-label="%s" data-product_id="%s" data-product_sku="%s" data-cart-key="%s"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></a>',
+                                                                esc_url( $item_remove_url ),
                                                                 /* translators: %s is the product name */
                                                                 esc_attr( sprintf( __( 'Remove %s from cart', 'ultraaddons-elementor-lite' ), wp_strip_all_tags( $_product->get_name() ) ) ),
                                                                 esc_attr( $product_id ),
@@ -1516,7 +1579,7 @@ class Woo_Cart extends Base {
                                                         }
                                                         ?>
                                                         <div class="ua-cart-quantity-wrap">
-                                                            <button type="button" class="ua-qty-btn ua-qty-minus" aria-label="<?php esc_attr_e( 'Decrease quantity', 'ultraaddons-elementor-lite' ); ?>">&minus;</button>
+                                                            <button type="button" class="ua-qty-btn ua-qty-minus" aria-label="<?php esc_attr_e( 'Decrease quantity', 'ultraaddons-elementor-lite' ); ?>"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
                                                             <input type="number" 
                                                                    class="ua-qty-input input-text qty text" 
                                                                    name="cart[<?php echo esc_attr( $cart_item_key ); ?>][qty]" 
@@ -1528,7 +1591,7 @@ class Woo_Cart extends Base {
                                                                    step="<?php echo esc_attr( apply_filters( 'woocommerce_quantity_input_step', '1', $_product ) ); ?>" 
                                                                    inputmode="numeric" 
                                                                    autocomplete="off" />
-                                                            <button type="button" class="ua-qty-btn ua-qty-plus" aria-label="<?php esc_attr_e( 'Increase quantity', 'ultraaddons-elementor-lite' ); ?>">&plus;</button>
+                                                            <button type="button" class="ua-qty-btn ua-qty-plus" aria-label="<?php esc_attr_e( 'Increase quantity', 'ultraaddons-elementor-lite' ); ?>"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
                                                         </div>
                                                     </td>
                                                 <?php endif; ?>
@@ -1680,7 +1743,10 @@ class Woo_Cart extends Base {
 
                                 <div class="ua-cart-totals-checkout wc-proceed-to-checkout">
                                     <a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="ua-checkout-btn checkout-button button alt wc-forward">
-                                        <?php echo esc_html( $checkout_text ); ?>
+                                        <span><?php echo esc_html( $checkout_text ); ?></span>
+                                        <?php if ( $show_checkout_arrow ) : ?>
+                                            <svg class="ua-btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                        <?php endif; ?>
                                     </a>
                                 </div>
 
@@ -1712,17 +1778,27 @@ class Woo_Cart extends Base {
      */
     protected function render_empty_cart( $settings ) {
         $icon       = ! empty( $settings['empty_cart_icon'] ) ? $settings['empty_cart_icon'] : [];
-        $title      = ! empty( $settings['empty_cart_title'] ) ? $settings['empty_cart_title'] : esc_html__( 'Your cart is currently empty.', 'ultraaddons-elementor-lite' );
-        $message    = ! empty( $settings['empty_cart_message'] ) ? $settings['empty_cart_message'] : esc_html__( 'Before proceed to checkout you must add some products to your shopping cart.', 'ultraaddons-elementor-lite' );
-        $btn_text   = ! empty( $settings['empty_cart_btn_text'] ) ? $settings['empty_cart_btn_text'] : esc_html__( 'Return to Shop', 'ultraaddons-elementor-lite' );
+        $title      = ! empty( $settings['empty_cart_title'] ) ? $settings['empty_cart_title'] : esc_html__( 'Your shopping bag is empty', 'ultraaddons-elementor-lite' );
+        $message    = ! empty( $settings['empty_cart_message'] ) ? $settings['empty_cart_message'] : esc_html__( 'Looks like you haven\'t added anything to your cart yet. Explore our top products and start shopping!', 'ultraaddons-elementor-lite' );
+        $btn_text   = ! empty( $settings['empty_cart_btn_text'] ) ? $settings['empty_cart_btn_text'] : esc_html__( 'Start Shopping', 'ultraaddons-elementor-lite' );
         $btn_url    = ! empty( $settings['empty_cart_btn_url']['url'] ) ? $settings['empty_cart_btn_url']['url'] : wc_get_page_permalink( 'shop' );
         ?>
         <div class="ua-woo-cart-empty">
-            <?php if ( ! empty( $icon['value'] ) ) : ?>
-                <div class="ua-empty-cart-icon">
-                    <?php Icons_Manager::render_icon( $icon, [ 'aria-hidden' => 'true' ] ); ?>
-                </div>
-            <?php endif; ?>
+            <div class="ua-empty-cart-icon-wrap">
+                <?php if ( ! empty( $icon['value'] ) ) : ?>
+                    <div class="ua-empty-cart-icon">
+                        <?php Icons_Manager::render_icon( $icon, [ 'aria-hidden' => 'true' ] ); ?>
+                    </div>
+                <?php else : ?>
+                    <div class="ua-empty-cart-illustration">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <path d="M16 10a4 4 0 0 1-8 0"></path>
+                        </svg>
+                    </div>
+                <?php endif; ?>
+            </div>
 
             <?php if ( ! empty( $title ) ) : ?>
                 <h2 class="ua-empty-cart-title"><?php echo esc_html( $title ); ?></h2>
@@ -1734,7 +1810,8 @@ class Woo_Cart extends Base {
 
             <?php if ( ! empty( $btn_text ) ) : ?>
                 <a href="<?php echo esc_url( $btn_url ); ?>" class="ua-empty-cart-btn button">
-                    <?php echo esc_html( $btn_text ); ?>
+                    <span><?php echo esc_html( $btn_text ); ?></span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </a>
             <?php endif; ?>
         </div>

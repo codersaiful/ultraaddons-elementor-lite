@@ -45,53 +45,61 @@
          * Bind interactive events using delegation
          */
         bindEvents: function ($wrapper) {
-            // Prevent double-binding
-            if ($wrapper.data('ua-cart-initialized')) {
-                return;
-            }
-            $wrapper.data('ua-cart-initialized', true);
+            // Unbind any previous namespaced events on this wrapper first to guarantee no duplicate listeners
+            $wrapper.off('.uacart');
 
             // Quantity Stepper: Minus
-            $wrapper.on('click', '.ua-qty-minus', function (e) {
+            $wrapper.on('click.uacart', '.ua-qty-minus', function (e) {
                 e.preventDefault();
                 UAWooCart.handleQuantityStep($(this), -1);
             });
 
             // Quantity Stepper: Plus
-            $wrapper.on('click', '.ua-qty-plus', function (e) {
+            $wrapper.on('click.uacart', '.ua-qty-plus', function (e) {
                 e.preventDefault();
                 UAWooCart.handleQuantityStep($(this), 1);
             });
 
             // Quantity input manual typing
-            $wrapper.on('input change', '.ua-qty-input', function () {
+            $wrapper.on('input.uacart change.uacart', '.ua-qty-input', function () {
                 var $wrap = $(this).closest('.ua-woo-cart-wrapper');
                 $wrap.find('.ua-cart-update-btn').prop('disabled', false).removeAttr('disabled');
                 UAWooCart.triggerAutoUpdate($wrap);
             });
 
             // Remove Item (×) AJAX
-            $wrapper.on('click', '.ua-cart-remove-btn', function (e) {
+            $wrapper.on('click.uacart', '.ua-cart-remove-btn', function (e) {
                 e.preventDefault();
                 UAWooCart.handleRemoveItem($(this));
             });
 
             // Coupon: Apply Button Click
-            $wrapper.on('click', '.ua-coupon-apply-btn', function (e) {
+            $wrapper.on('click.uacart', '.ua-coupon-apply-btn', function (e) {
                 e.preventDefault();
                 UAWooCart.handleApplyCoupon($(this));
             });
 
             // Coupon: Enter key in input
-            $wrapper.on('keydown', '.ua-coupon-input', function (e) {
+            $wrapper.on('keydown.uacart', '.ua-coupon-input', function (e) {
                 if (e.which === 13) {
                     e.preventDefault();
                     UAWooCart.handleApplyCoupon($(this).siblings('.ua-coupon-apply-btn'));
                 }
             });
 
+            // Coupon: Remove Link Click [Remove]
+            $wrapper.on('click.uacart', '.woocommerce-remove-coupon', function (e) {
+                e.preventDefault();
+                UAWooCart.handleRemoveCoupon($(this));
+            });
+
+            // Prevent natural form submission (everything is handled via AJAX)
+            $wrapper.on('submit.uacart', '.ua-woo-cart-form', function (e) {
+                e.preventDefault();
+            });
+
             // Manual "Update Cart" Button Click
-            $wrapper.on('click', '.ua-cart-update-btn', function (e) {
+            $wrapper.on('click.uacart', '.ua-cart-update-btn', function (e) {
                 e.preventDefault();
                 var $wrap = $(this).closest('.ua-woo-cart-wrapper');
                 UAWooCart.performCartUpdate($wrap);
@@ -103,6 +111,12 @@
          */
         handleQuantityStep: function ($btn, direction) {
             var $wrap = $btn.closest('.ua-woo-cart-wrapper');
+
+            // Prevent spam clicks while an AJAX update is already in progress
+            if ($wrap.find('.ua-woo-cart-table-wrap').hasClass('ua-cart-loading')) {
+                return;
+            }
+
             var $input = $btn.siblings('.ua-qty-input');
             if (!$input.length) {
                 return;
@@ -122,7 +136,8 @@
             }
 
             if (newVal !== currentVal) {
-                $input.val(newVal).trigger('change');
+                // Set the value directly without triggering redundant change event
+                $input.val(newVal);
                 $wrap.find('.ua-cart-update-btn').prop('disabled', false).removeAttr('disabled');
                 UAWooCart.triggerAutoUpdate($wrap);
             }
@@ -148,7 +163,7 @@
          */
         performCartUpdate: function ($wrapper) {
             var $form = $wrapper.find('.ua-woo-cart-form');
-            var actionUrl = $form.attr('action') || window.location.href;
+            var actionUrl = window.location.href;
 
             UAWooCart.showLoading($wrapper);
 
@@ -222,17 +237,21 @@
             }
 
             var $form = $wrapper.find('.ua-woo-cart-form');
-            var actionUrl = $form.attr('action') || window.location.href;
+            var actionUrl = window.location.href;
 
             UAWooCart.showLoading($wrapper);
 
-            var formData = $form.serialize();
-            formData += '&apply_coupon=Apply+coupon&coupon_code=' + encodeURIComponent(couponCode);
+            // Serialize all form fields except the coupon input to prevent duplicate fields
+            var formParams = $form.find(':input:not(.ua-coupon-input)').serialize();
+            if (formParams) {
+                formParams += '&';
+            }
+            formParams += 'coupon_code=' + encodeURIComponent(couponCode) + '&apply_coupon=Apply+coupon';
 
             $.ajax({
                 type: 'POST',
                 url: actionUrl,
-                data: formData,
+                data: formParams,
                 dataType: 'html',
                 success: function (response) {
                     UAWooCart.refreshFromHtml($wrapper, response);
@@ -247,10 +266,108 @@
         },
 
         /**
+         * Handle AJAX coupon removal
+         */
+        handleRemoveCoupon: function ($btn) {
+            var $wrapper = $btn.closest('.ua-woo-cart-wrapper');
+            var couponCode = $btn.data('coupon') || '';
+            var removeUrl = $btn.attr('href') || '';
+
+            // If coupon code is not in data attribute, extract from URL
+            if (!couponCode && removeUrl) {
+                var match = removeUrl.match(/[?&]remove_coupon=([^&#]*)/);
+                if (match && match[1]) {
+                    couponCode = decodeURIComponent(match[1]);
+                }
+            }
+
+            if (!couponCode) {
+                return;
+            }
+
+            UAWooCart.showLoading($wrapper);
+
+            // Send request to current URL with remove_coupon parameter to avoid redirecting to default cart page
+            var currentUrl = window.location.href;
+            var requestUrl = currentUrl + (currentUrl.indexOf('?') !== -1 ? '&' : '?') + 'remove_coupon=' + encodeURIComponent(couponCode);
+
+            $.ajax({
+                type: 'GET',
+                url: requestUrl,
+                dataType: 'html',
+                success: function (response) {
+                    UAWooCart.refreshFromHtml($wrapper, response);
+                },
+                error: function () {
+                    if (removeUrl) {
+                        window.location.href = removeUrl;
+                    } else {
+                        window.location.reload();
+                    }
+                },
+                complete: function () {
+                    UAWooCart.hideLoading($wrapper);
+                }
+            });
+        },
+
+        /**
+         * Synchronize header/page mini carts and external fragments from response HTML
+         */
+        syncExternalCarts: function ($response) {
+            // 1. Sync UltraAddons Mini Cart containers
+            var $newMiniCarts = $response.find('.ua-mini-cart-container');
+            if ($newMiniCarts.length) {
+                $('.ua-mini-cart-container').each(function (index) {
+                    var $matchingNew = $newMiniCarts.eq(index);
+                    if ($matchingNew.length) {
+                        var wasOpen = $(this).hasClass('ua-is-open');
+                        if (wasOpen) {
+                            $matchingNew.addClass('ua-is-open');
+                        }
+                        $(this).replaceWith($matchingNew);
+                    }
+                });
+                if (window.UltraAddonsMiniCart && window.UltraAddonsMiniCart.init) {
+                    window.UltraAddonsMiniCart.init();
+                }
+            } else {
+                // If only badge/price elements exist
+                var $newPrice = $response.find('.ua-mini-cart-price');
+                var $newBadge = $response.find('.ua-mini-cart-badge');
+                if ($newPrice.length) {
+                    $('.ua-mini-cart-price').replaceWith($newPrice);
+                }
+                if ($newBadge.length) {
+                    $('.ua-mini-cart-badge').replaceWith($newBadge);
+                }
+            }
+
+            // 2. Sync Elementor Pro / theme header carts
+            var externalSelectors = [
+                '.elementor-menu-cart__toggle',
+                '.elementor-menu-cart__container',
+                'a.cart-contents',
+                '.site-header-cart',
+                '.ast-header-woo-cart',
+                '.widget_shopping_cart_content'
+            ];
+            $.each(externalSelectors, function (_, selector) {
+                var $newEl = $response.find(selector);
+                if ($newEl.length) {
+                    $(selector).replaceWith($newEl);
+                }
+            });
+        },
+
+        /**
          * Refresh cart widget sections from HTML response
          */
         refreshFromHtml: function ($wrapper, responseHtml) {
             var $response = $('<div>').append($.parseHTML(responseHtml));
+
+            // Sync any header/page mini carts or counters immediately
+            UAWooCart.syncExternalCarts($response);
 
             // Check if cart is now empty
             var $newEmpty = $response.find('.ua-woo-cart-empty');
@@ -265,11 +382,17 @@
                     $wrapper.append($newEmpty);
                 }
                 $(document.body).trigger('wc_cart_emptied');
+                $(document.body).trigger('updated_wc_div');
+                $(document.body).trigger('updated_cart_totals');
+                $(document.body).trigger('wc_fragment_refresh');
                 return;
             } else if ($standardEmpty.length && !$response.find('.ua-woo-cart-table').length) {
                 $wrapper.find('.ua-woo-cart-main').hide();
                 $wrapper.find('.ua-woo-cart-empty').show();
                 $(document.body).trigger('wc_cart_emptied');
+                $(document.body).trigger('updated_wc_div');
+                $(document.body).trigger('updated_cart_totals');
+                $(document.body).trigger('wc_fragment_refresh');
                 return;
             }
 
@@ -292,9 +415,21 @@
             }
 
             // Replace Notices if present
-            var $newNotices = $response.find('.woocommerce-notices-wrapper, .woocommerce-message, .woocommerce-error, .woocommerce-info');
+            var $newNotices = $response.find('.woocommerce-notices-wrapper');
             if ($newNotices.length) {
-                $wrapper.find('.woocommerce-notices-wrapper').replaceWith($newNotices);
+                var $currentNotices = $wrapper.find('.woocommerce-notices-wrapper');
+                if ($currentNotices.length) {
+                    $currentNotices.replaceWith($newNotices);
+                } else {
+                    var $oldMsg = $wrapper.find('.woocommerce-message, .woocommerce-error, .woocommerce-info');
+                    if ($oldMsg.length) {
+                        $oldMsg.replaceWith($newNotices);
+                    } else {
+                        $wrapper.prepend($newNotices);
+                    }
+                }
+            } else {
+                $wrapper.find('.woocommerce-notices-wrapper').empty();
             }
 
             // Disable update cart button until new change
@@ -330,12 +465,10 @@
         UAWooCart.init();
     });
 
-    // Re-initialize when WooCommerce updates cart fragments
+    // Re-initialize sticky positioning when WooCommerce cart updates
     $(document.body).on('updated_wc_div updated_cart_totals', function () {
         $('.ua-woo-cart-wrapper').each(function () {
-            $(this).data('ua-cart-initialized', false);
             UAWooCart.initSticky($(this));
-            UAWooCart.bindEvents($(this));
         });
     });
 
