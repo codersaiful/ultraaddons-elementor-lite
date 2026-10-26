@@ -63,7 +63,6 @@
             // Quantity input manual typing
             $wrapper.on('input.uacart change.uacart', '.ua-qty-input', function () {
                 var $wrap = $(this).closest('.ua-woo-cart-wrapper');
-                $wrap.find('.ua-cart-update-btn').prop('disabled', false).removeAttr('disabled');
                 UAWooCart.triggerAutoUpdate($wrap);
             });
 
@@ -98,12 +97,6 @@
                 e.preventDefault();
             });
 
-            // Manual "Update Cart" Button Click
-            $wrapper.on('click.uacart', '.ua-cart-update-btn', function (e) {
-                e.preventDefault();
-                var $wrap = $(this).closest('.ua-woo-cart-wrapper');
-                UAWooCart.performCartUpdate($wrap);
-            });
         },
 
         /**
@@ -138,7 +131,6 @@
             if (newVal !== currentVal) {
                 // Set the value directly without triggering redundant change event
                 $input.val(newVal);
-                $wrap.find('.ua-cart-update-btn').prop('disabled', false).removeAttr('disabled');
                 UAWooCart.triggerAutoUpdate($wrap);
             }
         },
@@ -432,8 +424,6 @@
                 $wrapper.find('.woocommerce-notices-wrapper').empty();
             }
 
-            // Disable update cart button until new change
-            $wrapper.find('.ua-cart-update-btn').prop('disabled', true).attr('disabled', 'disabled');
 
             // Trigger WooCommerce events for mini carts, fragments, and header carts
             $(document.body).trigger('updated_wc_div');
@@ -449,7 +439,6 @@
          */
         showLoading: function ($wrapper) {
             $wrapper.find('.ua-woo-cart-table-wrap').addClass('ua-cart-loading');
-            $wrapper.find('.ua-cart-update-btn').prop('disabled', true).attr('disabled', 'disabled');
         },
 
         /**

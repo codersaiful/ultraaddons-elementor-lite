@@ -153,11 +153,10 @@ class Woo_Cart extends Base {
                 'label'   => esc_html__( 'Layout Mode', 'ultraaddons-elementor-lite' ),
                 'type'    => Controls_Manager::SELECT,
                 'options' => [
-                    'unified'    => esc_html__( 'Unified Single Card', 'ultraaddons-elementor-lite' ),
                     'two-column' => esc_html__( 'Two Columns', 'ultraaddons-elementor-lite' ),
                     'one-column' => esc_html__( 'One Column', 'ultraaddons-elementor-lite' ),
                 ],
-                'default' => 'unified',
+                'default' => 'two-column',
             ]
         );
 
@@ -188,7 +187,7 @@ class Woo_Cart extends Base {
                 'return_value' => 'yes',
                 'default'      => 'yes',
                 'condition'    => [
-                    'layout!' => 'one-column',
+                    'layout' => 'two-column',
                 ],
                 'description'  => esc_html__( 'Keeps the Cart Totals summary visible while scrolling long cart lists.', 'ultraaddons-elementor-lite' ),
             ]
@@ -208,7 +207,7 @@ class Woo_Cart extends Base {
                     'size' => 30,
                 ],
                 'condition'  => [
-                    'layout!'        => 'one-column',
+                    'layout'         => 'two-column',
                     'sticky_summary' => 'yes',
                 ],
             ]
@@ -225,7 +224,7 @@ class Woo_Cart extends Base {
                 ],
                 'default'    => [
                     'unit' => 'px',
-                    'size' => 24,
+                    'size' => 0,
                 ],
                 'condition'  => [
                     'layout' => 'two-column',
@@ -471,15 +470,6 @@ class Woo_Cart extends Base {
             [
                 'label' => esc_html__( 'Buttons & Action Labels', 'ultraaddons-elementor-lite' ),
                 'tab'   => Controls_Manager::TAB_CONTENT,
-            ]
-        );
-
-        $this->add_control(
-            'update_cart_text',
-            [
-                'label'   => esc_html__( 'Update Cart Button Text', 'ultraaddons-elementor-lite' ),
-                'type'    => Controls_Manager::TEXT,
-                'default' => esc_html__( 'Update Cart', 'ultraaddons-elementor-lite' ),
             ]
         );
 
@@ -771,7 +761,7 @@ class Woo_Cart extends Base {
                 'label'     => esc_html__( 'Odd Rows Background', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ua-woo-cart-table tbody tr.ua-cart-item:nth-child(odd)' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .ua-woo-cart-table tbody tr.ua-cart-item:nth-child(odd), {{WRAPPER}} .ua-woo-cart-table tbody tr.ua-cart-item:nth-child(odd) td' => 'background-color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -782,7 +772,7 @@ class Woo_Cart extends Base {
                 'label'     => esc_html__( 'Even Rows Background', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ua-woo-cart-table tbody tr.ua-cart-item:nth-child(even)' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .ua-woo-cart-table tbody tr.ua-cart-item:nth-child(even), {{WRAPPER}} .ua-woo-cart-table tbody tr.ua-cart-item:nth-child(even) td' => 'background-color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -793,7 +783,7 @@ class Woo_Cart extends Base {
                 'label'     => esc_html__( 'Hover Background', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ua-woo-cart-table tbody tr.ua-cart-item:hover' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .ua-woo-cart-table tbody tr.ua-cart-item:hover, {{WRAPPER}} .ua-woo-cart-table tbody tr.ua-cart-item:hover td' => 'background-color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -850,7 +840,7 @@ class Woo_Cart extends Base {
                 'label'     => esc_html__( 'Title Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ua-cart-product-name a' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .ua-cart-product-name a' => 'color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -861,7 +851,7 @@ class Woo_Cart extends Base {
                 'label'     => esc_html__( 'Title Hover Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ua-cart-product-name a:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .ua-cart-product-name a:hover' => 'color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -908,7 +898,7 @@ class Woo_Cart extends Base {
                 'label'     => esc_html__( 'Unit Price Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ua-cart-price-cell' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .ua-cart-price-cell, {{WRAPPER}} .ua-cart-price-cell *' => 'color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -928,7 +918,7 @@ class Woo_Cart extends Base {
                 'label'     => esc_html__( 'Subtotal Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ua-cart-subtotal-cell' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .ua-cart-subtotal-cell, {{WRAPPER}} .ua-cart-subtotal-cell *' => 'color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -1395,9 +1385,9 @@ class Woo_Cart extends Base {
 
         $settings = $this->get_settings_for_display();
 
-        $layout                 = ! empty( $settings['layout'] ) ? $settings['layout'] : 'unified';
-        if ( 'two-column' === $layout && ( empty( $settings['columns_gap']['size'] ) || (int) $settings['columns_gap']['size'] <= 0 || 24 === (int) $settings['columns_gap']['size'] ) ) {
-            $layout = 'unified';
+        $layout                 = ! empty( $settings['layout'] ) ? $settings['layout'] : 'two-column';
+        if ( 'unified' === $layout ) {
+            $layout = 'two-column';
         }
         $preset                 = ! empty( $settings['preset'] ) ? $settings['preset'] : 'default';
         $sticky_summary         = ( $settings['sticky_summary'] ?? 'yes' ) === 'yes';
@@ -1422,14 +1412,13 @@ class Woo_Cart extends Base {
         $totals_heading_tag     = ! empty( $settings['totals_heading_tag'] ) ? Utils::validate_html_tag( $settings['totals_heading_tag'] ) : 'h3';
         $show_shipping_calc     = ( $settings['show_shipping_calc'] ?? 'yes' ) === 'yes';
 
-        $update_cart_text       = ! empty( $settings['update_cart_text'] ) ? $settings['update_cart_text'] : esc_html__( 'Update Cart', 'ultraaddons-elementor-lite' );
         $raw_checkout_text      = ! empty( $settings['checkout_text'] ) ? $settings['checkout_text'] : esc_html__( 'Proceed to Checkout', 'ultraaddons-elementor-lite' );
         $show_checkout_arrow    = ( $settings['show_checkout_arrow'] ?? 'yes' ) === 'yes';
 
-        // Strip any typed trailing arrows or dashes so we always render one clean animated SVG arrow
+        // Strip any typed trailing arrows or dashes so arrow control is 100% accurate
         $decoded_text        = html_entity_decode( $raw_checkout_text, ENT_QUOTES, 'UTF-8' );
-        $clean_checkout_text = preg_replace( '/\s*([\x{2190}-\x{21FF}\x{2790}-\x{27BF}\x{25BA}\x{00BB}]|&rarr;|&#8594;|-+>|-+)\s*$/u', '', $decoded_text );
-        $checkout_text       = ! empty( $clean_checkout_text ) ? $clean_checkout_text : $raw_checkout_text;
+        $clean_checkout_text = trim( preg_replace( '/\s*([\x{2190}-\x{21FF}\x{2790}-\x{27BF}\x{25BA}\x{00BB}]|&rarr;|&#8594;|-+>|-+)\s*$/u', '', $decoded_text ) );
+        $checkout_text       = ( ! empty( $clean_checkout_text ) || $clean_checkout_text === '0' ) ? $clean_checkout_text : ( $show_checkout_arrow ? '' : $raw_checkout_text );
 
         $show_cross             = ( $settings['show_cross_sells'] ?? 'yes' ) === 'yes';
         $cross_title            = ! empty( $settings['cross_sells_title'] ) ? $settings['cross_sells_title'] : esc_html__( 'You may also like…', 'ultraaddons-elementor-lite' );
@@ -1444,6 +1433,9 @@ class Woo_Cart extends Base {
             'ua-layout-' . esc_attr( $layout ),
             'ua-cart-preset-' . esc_attr( $preset ),
         ];
+        if ( 'two-column' === $layout ) {
+            $wrapper_classes[] = 'ua-layout-unified';
+        }
         ?>
         <div class="<?php echo esc_attr( implode( ' ', $wrapper_classes ) ); ?>" 
              data-auto-update="<?php echo esc_attr( $auto_update ); ?>"
@@ -1621,20 +1613,16 @@ class Woo_Cart extends Base {
                                     </div>
                                 <?php endif; ?>
 
-                                <div class="ua-cart-actions-right">
-                                    <?php if ( $show_continue ) : ?>
+                                <?php if ( $show_continue ) : ?>
+                                    <div class="ua-cart-continue-wrap">
                                         <a href="<?php echo esc_url( $continue_url ); ?>" class="ua-cart-continue-btn">
                                             <?php echo esc_html( $continue_text ); ?>
                                         </a>
-                                    <?php endif; ?>
+                                    </div>
+                                <?php endif; ?>
 
-                                    <button type="submit" class="ua-cart-update-btn button" name="update_cart" value="<?php echo esc_attr( $update_cart_text ); ?>" disabled="disabled">
-                                        <?php echo esc_html( $update_cart_text ); ?>
-                                    </button>
-                                    
-                                    <?php do_action( 'woocommerce_cart_actions' ); ?>
-                                    <?php wp_nonce_field( 'woocommerce-cart', 'woocommerce-cart-nonce' ); ?>
-                                </div>
+                                <?php do_action( 'woocommerce_cart_actions' ); ?>
+                                <?php wp_nonce_field( 'woocommerce-cart', 'woocommerce-cart-nonce' ); ?>
                             </div>
                         </div>
 
@@ -1825,24 +1813,55 @@ class Woo_Cart extends Base {
      * @param string $heading Section title.
      */
     protected function render_cross_sells( $limit = 3, $heading = '' ) {
-        if ( ! function_exists( 'WC' ) || ! WC()->cart ) {
+        if ( ! function_exists( 'WC' ) || ! WC()->cart || WC()->cart->is_empty() ) {
             return;
         }
 
         $cross_sells = WC()->cart->get_cross_sells();
+
+        // Also check parent variable products for any items in cart
+        if ( empty( $cross_sells ) ) {
+            foreach ( WC()->cart->get_cart() as $cart_item ) {
+                if ( ! empty( $cart_item['product_id'] ) ) {
+                    $parent_product = wc_get_product( $cart_item['product_id'] );
+                    if ( $parent_product && method_exists( $parent_product, 'get_cross_sell_ids' ) ) {
+                        $parent_cross = $parent_product->get_cross_sell_ids();
+                        if ( ! empty( $parent_cross ) ) {
+                            $cross_sells = array_merge( $cross_sells, $parent_cross );
+                        }
+                    }
+                }
+            }
+            $cross_sells = array_unique( array_filter( $cross_sells ) );
+        }
+
+        if ( empty( $cross_sells ) ) {
+            return;
+        }
+
+        // Collect all IDs already in cart (both product IDs and variation IDs)
+        $in_cart_ids = [];
+        foreach ( WC()->cart->get_cart() as $cart_item ) {
+            if ( ! empty( $cart_item['product_id'] ) ) {
+                $in_cart_ids[] = (int) $cart_item['product_id'];
+            }
+            if ( ! empty( $cart_item['variation_id'] ) ) {
+                $in_cart_ids[] = (int) $cart_item['variation_id'];
+            }
+        }
+
+        $cross_sells = array_diff( $cross_sells, $in_cart_ids );
         if ( empty( $cross_sells ) ) {
             return;
         }
 
         $args = [
-            'post_type'           => 'product',
+            'post_type'           => [ 'product', 'product_variation' ],
+            'post_status'         => 'publish',
             'ignore_sticky_posts' => 1,
             'no_found_rows'       => 1,
             'posts_per_page'      => $limit,
             'post__in'            => $cross_sells,
-            'post__not_in'        => array_map( function( $item ) {
-                return $item['product_id'];
-            }, WC()->cart->get_cart() ),
         ];
 
         $query = new \WP_Query( $args );
@@ -1861,20 +1880,22 @@ class Woo_Cart extends Base {
                 <?php
                 while ( $query->have_posts() ) :
                     $query->the_post();
-                    global $product;
+                    $product = wc_get_product( get_the_ID() );
                     if ( ! is_object( $product ) ) {
                         continue;
                     }
+                    $product_link = $product->get_permalink();
+                    $product_name = $product->get_name();
                 ?>
                     <div class="ua-cross-sell-card">
                         <div class="ua-cross-sell-thumb">
-                            <a href="<?php the_permalink(); ?>">
+                            <a href="<?php echo esc_url( $product_link ); ?>">
                                 <?php echo $product->get_image( 'woocommerce_thumbnail' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                             </a>
                         </div>
                         <div class="ua-cross-sell-info">
                             <h4 class="ua-cross-sell-title">
-                                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                                <a href="<?php echo esc_url( $product_link ); ?>"><?php echo esc_html( $product_name ); ?></a>
                             </h4>
                             <div class="ua-cross-sell-price">
                                 <?php echo $product->get_price_html(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
