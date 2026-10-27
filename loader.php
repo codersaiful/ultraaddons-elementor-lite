@@ -130,6 +130,10 @@ class Loader {
         // Register Select2 AJAX search handlers
         add_action( 'wp_ajax_ua_select2_search_post', [ $this, 'handle_select2_search_post' ] );
         add_action( 'wp_ajax_ua_select2_get_title', [ $this, 'handle_select2_get_title' ] );
+
+        // Register Woo Checkout AJAX handlers
+        add_action( 'wp_ajax_ua_checkout_update_cart', [ $this, 'handle_checkout_ajax' ] );
+        add_action( 'wp_ajax_nopriv_ua_checkout_update_cart', [ $this, 'handle_checkout_ajax' ] );
         
     }
 
@@ -647,6 +651,22 @@ class Loader {
      * @since 2.0.4.0
      * @param \Elementor\Controls_Manager $controls_manager
      */
+    /**
+     * AJAX handler for Woo Checkout widget cart updates.
+     */
+    public function handle_checkout_ajax() {
+        $this->include_widget_base();
+        $checkout_file = ULTRA_ADDONS_DIR . 'inc/widget/woo-checkout.php';
+        if ( file_exists( $checkout_file ) ) {
+            include_once $checkout_file;
+        }
+        if ( class_exists( '\\UltraAddons\\Widget\\Woo_Checkout' ) ) {
+            \UltraAddons\Widget\Woo_Checkout::ajax_update_cart_item();
+        } else {
+            wp_send_json_error( [ 'message' => 'Woo Checkout widget class not found.' ] );
+        }
+    }
+
     public function register_controls( $controls_manager = null ) {
         static $registered = false;
         if ( $registered ) {
