@@ -142,6 +142,17 @@ $ultraaddons_widgetsArray = [
             ],
     ],
     
+    'Woo_Account' => [
+            'name'  => __( 'Woo Account', 'ultraaddons-elementor-lite' ),
+            'is_pro'   => false,
+            'is_wc'     => true,
+            'icon'      => 'eicon-my-account',
+            'badge'     => 'new',
+            'cat'       => [
+                __( 'WooCommerce', 'ultraaddons-elementor-lite' ),
+            ],
+    ],
+
     'Woo_Checkout' => [
             'name'  => __( 'Woo Checkout', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
