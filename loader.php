@@ -134,6 +134,7 @@ class Loader {
         // Register Woo Checkout AJAX handlers
         add_action( 'wp_ajax_ua_checkout_update_cart', [ $this, 'handle_checkout_ajax' ] );
         add_action( 'wp_ajax_nopriv_ua_checkout_update_cart', [ $this, 'handle_checkout_ajax' ] );
+        add_action( 'woocommerce_checkout_update_order_review', [ $this, 'handle_wc_checkout_ajax' ], 1 );
         
     }
 
@@ -664,6 +665,20 @@ class Loader {
             \UltraAddons\Widget\Woo_Checkout::ajax_update_cart_item();
         } else {
             wp_send_json_error( [ 'message' => 'Woo Checkout widget class not found.' ] );
+        }
+    }
+
+    /**
+     * Bind Woo Checkout filters during standard WooCommerce update_order_review AJAX calls.
+     */
+    public function handle_wc_checkout_ajax() {
+        $this->include_widget_base();
+        $checkout_file = ULTRA_ADDONS_DIR . 'inc/widget/woo-checkout.php';
+        if ( file_exists( $checkout_file ) ) {
+            include_once $checkout_file;
+        }
+        if ( class_exists( '\\UltraAddons\\Widget\\Woo_Checkout' ) ) {
+            \UltraAddons\Widget\Woo_Checkout::hook_wc_ajax_order_review_global();
         }
     }
 

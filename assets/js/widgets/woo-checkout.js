@@ -17,30 +17,45 @@
       if (!$container.length) {
         $container = $scope.is(".ua-woo-checkout") ? $scope : $();
       }
-      if (!$container.length || $container.hasClass("ua-checkout-ready")) {
+      if (!$container.length) {
         return;
       }
-      $container.addClass("ua-checkout-ready");
 
       var layout = $container.data("layout") || "two-columns";
+      if ($scope.hasClass("ua-checkout-layout-one-column") || $container.hasClass("ua-checkout-layout-one-column")) {
+        layout = "one-column";
+      } else if ($scope.hasClass("ua-checkout-layout-multistep") || $container.hasClass("ua-checkout-layout-multistep")) {
+        layout = "multistep";
+      } else if ($scope.hasClass("ua-checkout-layout-accordion") || $container.hasClass("ua-checkout-layout-accordion")) {
+        layout = "accordion";
+      }
 
-      // 1. Ensure DOM normalization for right column & cards
-      UA_Checkout.normalizeLayout($container);
+      // 1. Ensure DOM normalization for two-columns and one-column
+      if (layout === "two-columns" || layout === "one-column") {
+        UA_Checkout.normalizeLayout($container);
+      }
 
       // 2. Initialize Multi-Step Wizard
       if (layout === "multistep") {
         UA_Checkout.initMultiStep($container);
       }
 
-      // 3. Initialize Inline Coupon Form
+      // 3. Initialize Accordion
+      if (layout === "accordion") {
+        UA_Checkout.initAccordion($container);
+      }
+
+      // 4. Initialize Inline Coupon Form
       UA_Checkout.initInlineCoupon($container);
 
-      // 4. Initialize Interactive Quantity Stepper & Removal
+      // 5. Initialize Interactive Quantity Stepper & Removal
       UA_Checkout.initQuantitySteppers($container);
 
-      // 5. Re-bind on WooCommerce AJAX fragment updates
-      $(document.body).on("updated_checkout", function () {
-        UA_Checkout.normalizeLayout($container);
+      // 6. Re-bind on WooCommerce AJAX fragment updates
+      $(document.body).off("updated_checkout.ua_checkout").on("updated_checkout.ua_checkout", function () {
+        if (layout === "two-columns" || layout === "one-column") {
+          UA_Checkout.normalizeLayout($container);
+        }
         UA_Checkout.initQuantitySteppers($container);
       });
     },
@@ -277,6 +292,60 @@
           goToStep(targetStep);
         } else if (targetStep > currentStep && validateStep(currentStep)) {
           goToStep(targetStep);
+        }
+      });
+    },
+
+    /**
+     * Accordion Layout Setup & Interaction
+     */
+    initAccordion: function ($container) {
+      var $form = $container.find("form.woocommerce-checkout");
+      if (!$form.length) return;
+
+      if ($form.find(".ua-accordion-item").length) return;
+
+      var $billing = $form.find(".woocommerce-billing-fields, .woocommerce-account-fields");
+      var $shipping = $form.find(".woocommerce-shipping-fields, .woocommerce-additional-fields");
+      var $orderReview = $form.find("#order_review_heading, #order_review, .checkout-order-review, .woocommerce-checkout-review-order");
+
+      // Wrap Section 1: Billing
+      var $item1 = $('<div class="ua-accordion-item ua-accordion-item-1 is-open"></div>');
+      $item1.append('<div class="ua-accordion-header"><span class="ua-acc-badge">1</span><span class="ua-acc-title">Billing Details</span><span class="ua-acc-toggle">▾</span></div>');
+      var $body1 = $('<div class="ua-accordion-body"></div>');
+      $billing.wrapAll($body1);
+      $item1.append($billing.parent());
+      $form.prepend($item1);
+
+      // Wrap Section 2: Shipping & Additional
+      var $item2 = $('<div class="ua-accordion-item ua-accordion-item-2"></div>');
+      $item2.append('<div class="ua-accordion-header"><span class="ua-acc-badge">2</span><span class="ua-acc-title">Shipping & Order Notes</span><span class="ua-acc-toggle">▾</span></div>');
+      var $body2 = $('<div class="ua-accordion-body" style="display:none;"></div>');
+      $shipping.wrapAll($body2);
+      $item2.append($shipping.parent());
+      $item1.after($item2);
+
+      // Wrap Section 3: Review & Payment
+      var $item3 = $('<div class="ua-accordion-item ua-accordion-item-3"></div>');
+      $item3.append('<div class="ua-accordion-header"><span class="ua-acc-badge">3</span><span class="ua-acc-title">Order Summary & Payment</span><span class="ua-acc-toggle">▾</span></div>');
+      var $body3 = $('<div class="ua-accordion-body" style="display:none;"></div>');
+      $orderReview.wrapAll($body3);
+      $item3.append($orderReview.parent());
+      $item2.after($item3);
+
+      // Accordion toggle click handler
+      $form.on("click", ".ua-accordion-header", function (e) {
+        e.preventDefault();
+        var $currentItem = $(this).closest(".ua-accordion-item");
+        var $currentBody = $currentItem.find(".ua-accordion-body");
+        if ($currentItem.hasClass("is-open")) {
+          $currentBody.slideUp(200);
+          $currentItem.removeClass("is-open");
+        } else {
+          $form.find(".ua-accordion-item.is-open .ua-accordion-body").slideUp(200);
+          $form.find(".ua-accordion-item").removeClass("is-open");
+          $currentBody.slideDown(200);
+          $currentItem.addClass("is-open");
         }
       });
     },

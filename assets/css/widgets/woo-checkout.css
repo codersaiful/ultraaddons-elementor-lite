@@ -231,10 +231,10 @@ body.page-template-template-fullwidth-php .ua-woo-checkout .col2-set .form-row-w
 }
 
 /* ==========================================================================
-   TWO COLUMNS LAYOUT (Split Side-by-Side)
+   LAYOUT 1: TWO COLUMNS (Split Side-by-Side)
    ========================================================================== */
-.ua-woo-checkout.ua-checkout-layout-two-columns form.woocommerce-checkout,
-.ua-woo-checkout.ua-checkout-layout-two-columns .ua-checkout-columns {
+:is(.ua-checkout-layout-two-columns, .ua-checkout-layout-two-columns .ua-woo-checkout, .ua-woo-checkout.ua-checkout-layout-two-columns) form.woocommerce-checkout,
+:is(.ua-checkout-layout-two-columns, .ua-checkout-layout-two-columns .ua-woo-checkout, .ua-woo-checkout.ua-checkout-layout-two-columns) .ua-checkout-columns {
   display: flex !important;
   flex-direction: row !important;
   flex-wrap: wrap !important;
@@ -247,9 +247,8 @@ body.page-template-template-fullwidth-php .ua-woo-checkout .col2-set .form-row-w
   clear: both !important;
 }
 
-/* Left Column: Customer Details */
-.ua-woo-checkout.ua-checkout-layout-two-columns form.woocommerce-checkout > :is(.ua-checkout-col-left, #customer_details, .customer-details, .col2-set),
-.ua-woo-checkout.ua-checkout-layout-two-columns .ua-checkout-col-left {
+:is(.ua-checkout-layout-two-columns, .ua-checkout-layout-two-columns .ua-woo-checkout, .ua-woo-checkout.ua-checkout-layout-two-columns) form.woocommerce-checkout > :is(.ua-checkout-col-left, #customer_details, .customer-details, .col2-set),
+:is(.ua-checkout-layout-two-columns, .ua-checkout-layout-two-columns .ua-woo-checkout, .ua-woo-checkout.ua-checkout-layout-two-columns) .ua-checkout-col-left {
   flex: 0 0 var(--ua-checkout-left-col, 58%) !important;
   max-width: var(--ua-checkout-left-col, 58%) !important;
   width: var(--ua-checkout-left-col, 58%) !important;
@@ -259,9 +258,8 @@ body.page-template-template-fullwidth-php .ua-woo-checkout .col2-set .form-row-w
   margin: 0 !important;
 }
 
-/* Right Column: Order Review */
-.ua-woo-checkout.ua-checkout-layout-two-columns form.woocommerce-checkout > :is(.ua-checkout-col-right, .checkout-order-review, #order_review, .woocommerce-checkout-review-order),
-.ua-woo-checkout.ua-checkout-layout-two-columns .ua-checkout-col-right {
+:is(.ua-checkout-layout-two-columns, .ua-checkout-layout-two-columns .ua-woo-checkout, .ua-woo-checkout.ua-checkout-layout-two-columns) form.woocommerce-checkout > :is(.ua-checkout-col-right, .checkout-order-review, #order_review, .woocommerce-checkout-review-order),
+:is(.ua-checkout-layout-two-columns, .ua-checkout-layout-two-columns .ua-woo-checkout, .ua-woo-checkout.ua-checkout-layout-two-columns) .ua-checkout-col-right {
   flex: 1 1 calc(100% - var(--ua-checkout-left-col, 58%) - var(--ua-checkout-gutter, 28px)) !important;
   max-width: calc(100% - var(--ua-checkout-left-col, 58%) - var(--ua-checkout-gutter, 28px)) !important;
   width: calc(100% - var(--ua-checkout-left-col, 58%) - var(--ua-checkout-gutter, 28px)) !important;
@@ -272,36 +270,132 @@ body.page-template-template-fullwidth-php .ua-woo-checkout .col2-set .form-row-w
 }
 
 /* Sticky Order Review Sidebar */
-.ua-has-sticky-summary .ua-checkout-col-right,
-.ua-has-sticky-summary .ua-checkout-review-sticky-inner {
+:is(.ua-has-sticky-summary, .ua-sticky-summary-yes, .ua-sticky-summary-yes .ua-woo-checkout) .ua-checkout-col-right,
+:is(.ua-has-sticky-summary, .ua-sticky-summary-yes, .ua-sticky-summary-yes .ua-woo-checkout) form.woocommerce-checkout > :is(.checkout-order-review, #order_review, .woocommerce-checkout-review-order) {
   position: -webkit-sticky !important;
   position: sticky !important;
-  top: 30px !important;
+  top: var(--ua-checkout-sticky-top, 30px) !important;
+  align-self: flex-start !important;
   z-index: 10 !important;
 }
 
+:is(.ua-has-sticky-summary, .ua-sticky-summary-yes, .ua-sticky-summary-yes .ua-woo-checkout) .ua-checkout-review-sticky-inner {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: var(--ua-checkout-sticky-top, 30px) !important;
+  z-index: 10 !important;
+}
+
+/* Prevent ancestor containers in Storefront/themes from disabling position: sticky */
+body.theme-storefront,
+body.theme-storefront .site,
+body.theme-storefront #page,
+body.theme-storefront .site-content,
+body.theme-storefront .content-area,
+body.theme-storefront .site-main {
+  overflow-x: clip !important;
+  overflow-y: visible !important;
+}
+
 /* ==========================================================================
-   ONE COLUMN LAYOUT (Vertical Streamlined)
+   LAYOUT 2: ONE COLUMN (Vertical Streamlined)
    ========================================================================== */
-.ua-checkout-layout-one-column form.woocommerce-checkout,
-.ua-checkout-layout-one-column .ua-checkout-columns {
+:is(.ua-checkout-layout-one-column, .ua-checkout-layout-one-column .ua-woo-checkout, .ua-woo-checkout.ua-checkout-layout-one-column) form.woocommerce-checkout,
+:is(.ua-checkout-layout-one-column, .ua-checkout-layout-one-column .ua-woo-checkout, .ua-woo-checkout.ua-checkout-layout-one-column) .ua-checkout-columns {
   display: flex !important;
   flex-direction: column !important;
   gap: var(--ua-checkout-gutter, 28px) !important;
   width: 100% !important;
 }
 
-.ua-checkout-layout-one-column form.woocommerce-checkout > :is(#customer_details, .customer-details, .col2-set, .ua-checkout-col-left),
-.ua-checkout-layout-one-column form.woocommerce-checkout > :is(.checkout-order-review, #order_review, .woocommerce-checkout-review-order, .ua-checkout-col-right),
-.ua-checkout-layout-one-column .ua-checkout-col-left,
-.ua-checkout-layout-one-column .ua-checkout-col-right {
+:is(.ua-checkout-layout-one-column, .ua-checkout-layout-one-column .ua-woo-checkout, .ua-woo-checkout.ua-checkout-layout-one-column) form.woocommerce-checkout > :is(#customer_details, .customer-details, .col2-set, .ua-checkout-col-left),
+:is(.ua-checkout-layout-one-column, .ua-checkout-layout-one-column .ua-woo-checkout, .ua-woo-checkout.ua-checkout-layout-one-column) form.woocommerce-checkout > :is(.checkout-order-review, #order_review, .woocommerce-checkout-review-order, .ua-checkout-col-right),
+:is(.ua-checkout-layout-one-column, .ua-checkout-layout-one-column .ua-woo-checkout, .ua-woo-checkout.ua-checkout-layout-one-column) .ua-checkout-col-left,
+:is(.ua-checkout-layout-one-column, .ua-checkout-layout-one-column .ua-woo-checkout, .ua-woo-checkout.ua-checkout-layout-one-column) .ua-checkout-col-right {
   flex: 0 0 100% !important;
   max-width: 100% !important;
   width: 100% !important;
+  float: none !important;
+  margin: 0 !important;
 }
 
 /* ==========================================================================
-   CARDS & CONTAINERS
+   LAYOUT 4: ACCORDION (Collapsible Panels)
+   ========================================================================== */
+.ua-accordion-item {
+  background-color: var(--ua-checkout-card-bg, #ffffff);
+  border: 1px solid var(--ua-checkout-border, #e5e7eb);
+  border-radius: var(--ua-checkout-card-radius, 14px);
+  margin-bottom: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s ease;
+  width: 100%;
+}
+
+.ua-accordion-header {
+  display: flex;
+  align-items: center;
+  padding: 18px 24px;
+  cursor: pointer;
+  background-color: #fafbfc;
+  user-select: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.ua-accordion-item.is-open .ua-accordion-header {
+  background-color: #ffffff;
+  border-bottom-color: var(--ua-checkout-border, #e5e7eb);
+}
+
+.ua-acc-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #e2e8f0;
+  color: #475569;
+  font-weight: 700;
+  font-size: 13px;
+  margin-right: 14px;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.ua-accordion-item.is-open .ua-acc-badge {
+  background-color: var(--ua-checkout-primary, #5b51d8);
+  color: #ffffff;
+}
+
+.ua-acc-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ua-checkout-text-dark, #111827);
+  flex: 1;
+}
+
+.ua-acc-toggle {
+  font-size: 18px;
+  color: #94a3b8;
+  transition: transform 0.25s ease;
+  transform: rotate(0deg);
+}
+
+.ua-accordion-item.is-open .ua-acc-toggle {
+  transform: rotate(180deg);
+  color: var(--ua-checkout-primary, #5b51d8);
+}
+
+.ua-accordion-body {
+  padding: 24px;
+  background-color: #ffffff;
+}
+
+/* ==========================================================================
+   CARDS & CONTAINERS (Base)
    ========================================================================== */
 .ua-checkout-card {
   background-color: var(--ua-checkout-card-bg, #ffffff);
@@ -314,7 +408,6 @@ body.page-template-template-fullwidth-php .ua-woo-checkout .col2-set .form-row-w
   box-sizing: border-box;
 }
 
-/* Ensure inner containers inside cards do not produce redundant borders/shadows */
 .ua-checkout-col-left #customer_details,
 .ua-checkout-col-left .col2-set,
 .ua-checkout-col-right #order_review,
@@ -327,33 +420,81 @@ body.page-template-template-fullwidth-php .ua-woo-checkout .col2-set .form-row-w
   margin: 0 !important;
 }
 
-/* Presets */
-.ua-checkout-preset-modern .ua-checkout-card,
-.ua-checkout-preset-modern .customer-details,
-.ua-checkout-preset-modern #customer_details,
-.ua-checkout-preset-modern .checkout-order-review,
-.ua-checkout-preset-modern .ua-checkout-review-sticky-inner {
-  box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.06);
-  border-color: #f0f1f3;
+/* ==========================================================================
+   DESIGN PRESETS (High Contrast & Distinct Styling)
+   ========================================================================== */
+
+/* 1. Modern Rounded (Soft Drop Shadow, Curved Corners) */
+:is(.ua-checkout-preset-modern, .ua-checkout-preset-modern .ua-woo-checkout, .ua-woo-checkout.ua-checkout-preset-modern) .ua-checkout-card,
+:is(.ua-checkout-preset-modern, .ua-checkout-preset-modern .ua-woo-checkout, .ua-woo-checkout.ua-checkout-preset-modern) .ua-accordion-item {
+  background-color: #ffffff !important;
+  border: 1px solid #f1f5f9 !important;
+  border-radius: 16px !important;
+  box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.07) !important;
 }
 
-.ua-checkout-preset-clean .ua-checkout-card,
-.ua-checkout-preset-clean .customer-details,
-.ua-checkout-preset-clean #customer_details,
-.ua-checkout-preset-clean .checkout-order-review,
-.ua-checkout-preset-clean .ua-checkout-review-sticky-inner {
-  box-shadow: none;
-  background-color: #fafafa;
-  border-color: #eaeaea;
+:is(.ua-checkout-preset-modern, .ua-checkout-preset-modern .ua-woo-checkout, .ua-woo-checkout.ua-checkout-preset-modern) .input-text,
+:is(.ua-checkout-preset-modern, .ua-checkout-preset-modern .ua-woo-checkout, .ua-woo-checkout.ua-checkout-preset-modern) select,
+:is(.ua-checkout-preset-modern, .ua-checkout-preset-modern .ua-woo-checkout, .ua-woo-checkout.ua-checkout-preset-modern) textarea {
+  border-radius: 10px !important;
+  background-color: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
 }
 
-.ua-checkout-preset-bordered .ua-checkout-card,
-.ua-checkout-preset-bordered .customer-details,
-.ua-checkout-preset-bordered #customer_details,
-.ua-checkout-preset-bordered .checkout-order-review,
-.ua-checkout-preset-bordered .ua-checkout-review-sticky-inner {
-  box-shadow: none;
-  border: 2px solid #e2e8f0;
+/* 2. Clean Minimal (Flat Minimalist Gray Card, Crisp White Inputs, No Shadows) */
+:is(.ua-checkout-preset-clean, .ua-checkout-preset-clean .ua-woo-checkout, .ua-woo-checkout.ua-checkout-preset-clean) .ua-checkout-card,
+:is(.ua-checkout-preset-clean, .ua-checkout-preset-clean .ua-woo-checkout, .ua-woo-checkout.ua-checkout-preset-clean) .ua-accordion-item {
+  background-color: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+
+:is(.ua-checkout-preset-clean, .ua-checkout-preset-clean .ua-woo-checkout, .ua-woo-checkout.ua-checkout-preset-clean) .input-text,
+:is(.ua-checkout-preset-clean, .ua-checkout-preset-clean .ua-woo-checkout, .ua-woo-checkout.ua-checkout-preset-clean) select,
+:is(.ua-checkout-preset-clean, .ua-checkout-preset-clean .ua-woo-checkout, .ua-woo-checkout.ua-checkout-preset-clean) textarea {
+  background-color: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 6px !important;
+}
+
+/* 3. Classic Card (Traditional 1px Slate Border, 4px Radius, Subtle Elevation) */
+:is(.ua-checkout-preset-classic, .ua-checkout-preset-classic .ua-woo-checkout, .ua-woo-checkout.ua-checkout-preset-classic) .ua-checkout-card,
+:is(.ua-checkout-preset-classic, .ua-checkout-preset-classic .ua-woo-checkout, .ua-woo-checkout.ua-checkout-preset-classic) .ua-accordion-item {
+  background-color: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 4px !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+:is(.ua-checkout-preset-classic, .ua-checkout-preset-classic .ua-woo-checkout, .ua-woo-checkout.ua-checkout-preset-classic) .input-text,
+:is(.ua-checkout-preset-classic, .ua-checkout-preset-classic .ua-woo-checkout, .ua-woo-checkout.ua-checkout-preset-classic) select,
+:is(.ua-checkout-preset-classic, .ua-checkout-preset-classic .ua-woo-checkout, .ua-woo-checkout.ua-checkout-preset-classic) textarea {
+  background-color: #ffffff !important;
+  border: 1px solid #94a3b8 !important;
+  border-radius: 4px !important;
+}
+
+/* 4. Elegant Bordered (Bold 2.5px Dark Border, Editorial Typography Lines, No Shadows) */
+:is(.ua-checkout-preset-bordered, .ua-checkout-preset-bordered .ua-woo-checkout, .ua-woo-checkout.ua-checkout-preset-bordered) .ua-checkout-card,
+:is(.ua-checkout-preset-bordered, .ua-checkout-preset-bordered .ua-woo-checkout, .ua-woo-checkout.ua-checkout-preset-bordered) .ua-accordion-item {
+  background-color: #ffffff !important;
+  border: 2.5px solid #1e293b !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+
+:is(.ua-checkout-preset-bordered, .ua-checkout-preset-bordered .ua-woo-checkout, .ua-woo-checkout.ua-checkout-preset-bordered) .input-text,
+:is(.ua-checkout-preset-bordered, .ua-checkout-preset-bordered .ua-woo-checkout, .ua-woo-checkout.ua-checkout-preset-bordered) select,
+:is(.ua-checkout-preset-bordered, .ua-checkout-preset-bordered .ua-woo-checkout, .ua-woo-checkout.ua-checkout-preset-bordered) textarea {
+  background-color: #ffffff !important;
+  border: 1.5px solid #1e293b !important;
+  border-radius: 6px !important;
+}
+
+:is(.ua-checkout-preset-bordered, .ua-checkout-preset-bordered .ua-woo-checkout, .ua-woo-checkout.ua-checkout-preset-bordered) #order_review_heading,
+:is(.ua-checkout-preset-bordered, .ua-checkout-preset-bordered .ua-woo-checkout, .ua-woo-checkout.ua-checkout-preset-bordered) .woocommerce-billing-fields h3 {
+  border-bottom: 2px solid #1e293b !important;
 }
 
 /* ==========================================================================

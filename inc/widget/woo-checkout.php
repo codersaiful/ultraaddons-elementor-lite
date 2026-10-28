@@ -33,10 +33,18 @@ defined( 'ABSPATH' ) || die();
 class Woo_Checkout extends Base {
 
     /**
+     * Active widget settings for AJAX and filter hooks
+     */
+    public static $active_settings = [];
+
+    /**
      * Constructor — register style and script dependencies
      */
     public function __construct( $data = [], $args = null ) {
         parent::__construct( $data, $args );
+
+        // Ensure order review filters (thumbnails, quantity stepper, coupon) persist during WC AJAX
+        add_action( 'woocommerce_checkout_update_order_review', [ $this, 'hook_wc_ajax_order_review' ], 1 );
 
         wp_register_style(
             'ultraaddons-woo-checkout',
@@ -161,11 +169,12 @@ class Woo_Checkout extends Base {
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'modern',
                 'options' => [
-                    'modern'   => esc_html__( 'Modern Rounded (Recommended)', 'ultraaddons-elementor-lite' ),
+                    'modern'   => esc_html__( 'Modern Rounded', 'ultraaddons-elementor-lite' ),
                     'clean'    => esc_html__( 'Clean Minimal', 'ultraaddons-elementor-lite' ),
                     'classic'  => esc_html__( 'Classic Card', 'ultraaddons-elementor-lite' ),
                     'bordered' => esc_html__( 'Elegant Bordered', 'ultraaddons-elementor-lite' ),
                 ],
+                'render_type'  => 'template',
                 'prefix_class' => 'ua-checkout-preset-',
             ]
         );
@@ -177,11 +186,12 @@ class Woo_Checkout extends Base {
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'two-columns',
                 'options' => [
-                    'two-columns' => esc_html__( 'Two Columns (Split Side-by-Side)', 'ultraaddons-elementor-lite' ),
-                    'one-column'  => esc_html__( 'One Column (Vertical Streamlined)', 'ultraaddons-elementor-lite' ),
-                    'multistep'   => esc_html__( 'Multi-Step Wizard (High-Converting)', 'ultraaddons-elementor-lite' ),
-                    'accordion'   => esc_html__( 'Collapsible Accordion', 'ultraaddons-elementor-lite' ),
+                    'two-columns' => esc_html__( 'Two Columns', 'ultraaddons-elementor-lite' ),
+                    'one-column'  => esc_html__( 'One Column', 'ultraaddons-elementor-lite' ),
+                    'multistep'   => esc_html__( 'Multi-Step Wizard', 'ultraaddons-elementor-lite' ),
+                    'accordion'   => esc_html__( 'Accordion', 'ultraaddons-elementor-lite' ),
                 ],
+                'render_type'  => 'template',
                 'prefix_class' => 'ua-checkout-layout-',
             ]
         );
@@ -201,7 +211,7 @@ class Woo_Checkout extends Base {
                     'size' => 60,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}}.ua-checkout-layout-two-columns .ua-checkout-columns' => '--ua-checkout-left-col: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}}' => '--ua-checkout-left-col: {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [
                     'checkout_layout' => 'two-columns',
@@ -218,6 +228,8 @@ class Woo_Checkout extends Base {
                 'label_off'    => esc_html__( 'No', 'ultraaddons-elementor-lite' ),
                 'return_value' => 'yes',
                 'default'      => 'yes',
+                'prefix_class' => 'ua-sticky-summary-',
+                'render_type'  => 'template',
                 'condition'    => [
                     'checkout_layout' => 'two-columns',
                 ],
@@ -238,7 +250,8 @@ class Woo_Checkout extends Base {
                     'size' => 30,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .ua-checkout-sticky-inner' => 'top: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}}' => '--ua-checkout-sticky-top: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .ua-checkout-review-sticky-inner, {{WRAPPER}} .ua-checkout-col-right' => 'top: {{SIZE}}{{UNIT}} !important;',
                 ],
                 'condition' => [
                     'checkout_layout' => 'two-columns',
@@ -322,7 +335,7 @@ class Woo_Checkout extends Base {
         $this->add_control(
             'enable_interactive_qty',
             [
-                'label'        => esc_html__( 'Interactive Quantity (+/-)', 'ultraaddons-elementor-lite' ),
+                'label'        => esc_html__( 'Interactive Quantity', 'ultraaddons-elementor-lite' ),
                 'type'         => Controls_Manager::SWITCHER,
                 'label_on'     => esc_html__( 'Yes', 'ultraaddons-elementor-lite' ),
                 'label_off'    => esc_html__( 'No', 'ultraaddons-elementor-lite' ),
@@ -378,9 +391,9 @@ class Woo_Checkout extends Base {
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'inline',
                 'options' => [
-                    'inline'  => esc_html__( 'Inline Inside Order Review (High Converting)', 'ultraaddons-elementor-lite' ),
-                    'default' => esc_html__( 'Default WooCommerce (Top Alert Toggle)', 'ultraaddons-elementor-lite' ),
-                    'hide'    => esc_html__( 'Hide Coupon Completely', 'ultraaddons-elementor-lite' ),
+                    'inline'  => esc_html__( 'Inline', 'ultraaddons-elementor-lite' ),
+                    'default' => esc_html__( 'WooCommerce Default', 'ultraaddons-elementor-lite' ),
+                    'hide'    => esc_html__( 'Hide', 'ultraaddons-elementor-lite' ),
                 ],
             ]
         );
@@ -1298,7 +1311,7 @@ class Woo_Checkout extends Base {
         $this->add_control(
             'payment_tooltip_bg',
             [
-                'label'     => esc_html__( 'Description Box (Tooltip) BG', 'ultraaddons-elementor-lite' ),
+                'label'     => esc_html__( 'Description Box Background', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
@@ -1577,6 +1590,12 @@ class Woo_Checkout extends Base {
             wp_set_current_user( 0 );
         }
 
+        // Save settings for AJAX persistence
+        self::$active_settings = $settings;
+        if ( function_exists( 'WC' ) && WC()->session ) {
+            WC()->session->set( 'ua_checkout_widget_settings', $settings );
+        }
+
         // Setup filter hooks
         $this->setup_checkout_hooks( $settings );
 
@@ -1651,28 +1670,54 @@ class Woo_Checkout extends Base {
     }
 
     protected function teardown_checkout_hooks( $settings ) {
-        remove_filter( 'woocommerce_cart_item_name', [ $this, 'filter_cart_item_name' ], 20 );
-        remove_filter( 'woocommerce_checkout_cart_item_quantity', [ $this, 'filter_cart_item_quantity' ], 20 );
-
-        $coupon_pos = $settings['coupon_position'] ?? 'inline';
-        if ( 'inline' === $coupon_pos || 'hide' === $coupon_pos ) {
-            add_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
-        }
-
-        if ( 'inline' === $coupon_pos ) {
-            remove_action( 'woocommerce_review_order_before_payment', [ $this, 'render_inline_coupon' ], 5 );
-        }
-
-        if ( ( $settings['enable_trust_badges'] ?? '' ) === 'yes' ) {
-            remove_action( 'woocommerce_review_order_after_payment', [ $this, 'render_trust_badges' ], 20 );
-        }
-
+        // Only remove structural layout container hooks.
+        // We do NOT remove woocommerce_cart_item_name, woocommerce_checkout_cart_item_quantity,
+        // render_inline_coupon, or render_trust_badges because WooCommerce AJAX (update_order_review)
+        // runs immediately after page load and requires these hooks to persist!
         $layout = $settings['checkout_layout'] ?? 'two-columns';
         if ( in_array( $layout, [ 'two-columns', 'one-column' ], true ) ) {
             remove_action( 'woocommerce_checkout_before_customer_details', [ $this, 'hook_col_left_start' ], 1 );
             remove_action( 'woocommerce_checkout_after_customer_details', [ $this, 'hook_col_left_end' ], 999 );
             remove_action( 'woocommerce_checkout_before_order_review_heading', [ $this, 'hook_col_right_start' ], 1 );
             remove_action( 'woocommerce_checkout_after_order_review', [ $this, 'hook_col_right_end' ], 999 );
+        }
+    }
+
+    /**
+     * Re-bind hooks during WooCommerce update_order_review AJAX requests
+     */
+    public function hook_wc_ajax_order_review() {
+        self::hook_wc_ajax_order_review_global( $this );
+    }
+
+    /**
+     * Static helper to bind checkout filters during WC AJAX
+     */
+    public static function hook_wc_ajax_order_review_global( $instance = null ) {
+        $settings = ! empty( self::$active_settings ) ? self::$active_settings : [];
+        if ( empty( $settings ) && function_exists( 'WC' ) && WC()->session ) {
+            $settings = WC()->session->get( 'ua_checkout_widget_settings', [] );
+        }
+
+        if ( ! $instance && class_exists( '\\UltraAddons\\Widget\\Woo_Checkout' ) ) {
+            $instance = new self( [], null );
+        }
+
+        if ( ! $instance ) {
+            return;
+        }
+
+        if ( ( $settings['show_product_thumbnails'] ?? 'yes' ) === 'yes' || ( $settings['enable_interactive_qty'] ?? 'yes' ) === 'yes' ) {
+            add_filter( 'woocommerce_cart_item_name', [ $instance, 'filter_cart_item_name' ], 20, 3 );
+            add_filter( 'woocommerce_checkout_cart_item_quantity', [ $instance, 'filter_cart_item_quantity' ], 20, 3 );
+        }
+
+        if ( ( $settings['coupon_position'] ?? 'inline' ) === 'inline' ) {
+            add_action( 'woocommerce_review_order_before_payment', [ $instance, 'render_inline_coupon' ], 5 );
+        }
+
+        if ( ( $settings['enable_trust_badges'] ?? '' ) === 'yes' ) {
+            add_action( 'woocommerce_review_order_after_payment', [ $instance, 'render_trust_badges' ], 20 );
         }
     }
 
@@ -1704,11 +1749,18 @@ class Woo_Checkout extends Base {
      * ITEM ENHANCEMENT: THUMBNAILS & QUANTITY STEPPER
      * ---------------------------------------------------------------------- */
     public function filter_cart_item_name( $product_name, $cart_item, $cart_item_key ) {
-        if ( ! is_checkout() && ! \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
+        if ( ! is_checkout() && ! \Elementor\Plugin::$instance->editor->is_edit_mode() && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) && ! ( function_exists( 'wp_doing_ajax' ) && wp_doing_ajax() ) ) {
             return $product_name;
         }
 
-        $settings = $this->get_settings_for_display();
+        $settings = ! empty( self::$active_settings ) ? self::$active_settings : [];
+        if ( empty( $settings ) && function_exists( 'WC' ) && WC()->session ) {
+            $settings = WC()->session->get( 'ua_checkout_widget_settings', [] );
+        }
+        if ( empty( $settings ) ) {
+            $settings = $this->get_settings_for_display();
+        }
+
         $product  = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
 
         if ( ! $product || ! $product->exists() ) {
@@ -1781,7 +1833,14 @@ class Woo_Checkout extends Base {
             return;
         }
 
-        $settings    = $this->get_settings_for_display();
+        $settings = ! empty( self::$active_settings ) ? self::$active_settings : [];
+        if ( empty( $settings ) && function_exists( 'WC' ) && WC()->session ) {
+            $settings = WC()->session->get( 'ua_checkout_widget_settings', [] );
+        }
+        if ( empty( $settings ) ) {
+            $settings = $this->get_settings_for_display();
+        }
+
         $title       = ! empty( $settings['coupon_box_title'] ) ? $settings['coupon_box_title'] : esc_html__( 'Have a promo code?', 'ultraaddons-elementor-lite' );
         $placeholder = ! empty( $settings['coupon_placeholder'] ) ? $settings['coupon_placeholder'] : esc_html__( 'Coupon code...', 'ultraaddons-elementor-lite' );
         $btn_text    = ! empty( $settings['coupon_btn_text'] ) ? $settings['coupon_btn_text'] : esc_html__( 'Apply', 'ultraaddons-elementor-lite' );
@@ -1804,7 +1863,14 @@ class Woo_Checkout extends Base {
      * TRUST BADGES & GUARANTEES
      * ---------------------------------------------------------------------- */
     public function render_trust_badges() {
-        $settings = $this->get_settings_for_display();
+        $settings = ! empty( self::$active_settings ) ? self::$active_settings : [];
+        if ( empty( $settings ) && function_exists( 'WC' ) && WC()->session ) {
+            $settings = WC()->session->get( 'ua_checkout_widget_settings', [] );
+        }
+        if ( empty( $settings ) ) {
+            $settings = $this->get_settings_for_display();
+        }
+
         $badges   = $settings['trust_badges_list'] ?? [];
         $show_cards = ( $settings['show_payment_cards_row'] ?? 'yes' ) === 'yes';
 
@@ -1895,8 +1961,10 @@ class Woo_Checkout extends Base {
      * REALISTIC EDITOR PREVIEW (When cart is empty in Elementor Editor)
      * ---------------------------------------------------------------------- */
     protected function render_editor_mock_preview( $settings ) {
+        $is_sticky = ( ( $settings['sticky_summary'] ?? 'yes' ) === 'yes' && ( $settings['checkout_layout'] ?? 'two-columns' ) === 'two-columns' );
+        $sticky_class = $is_sticky ? 'ua-has-sticky-summary' : '';
         ?>
-        <div class="ua-woo-checkout ua-checkout-preset-<?php echo esc_attr( $settings['preset'] ?? 'modern' ); ?> ua-checkout-layout-<?php echo esc_attr( $settings['checkout_layout'] ?? 'two-columns' ); ?>">
+        <div class="ua-woo-checkout ua-checkout-preset-<?php echo esc_attr( $settings['preset'] ?? 'modern' ); ?> ua-checkout-layout-<?php echo esc_attr( $settings['checkout_layout'] ?? 'two-columns' ); ?> <?php echo esc_attr( $sticky_class ); ?>" data-layout="<?php echo esc_attr( $settings['checkout_layout'] ?? 'two-columns' ); ?>">
             <div class="ua-editor-preview-notice">
                 <span>✦ <?php esc_html_e( 'Elementor Editor Preview Mode: Displaying sample checkout fields & live styling.', 'ultraaddons-elementor-lite' ); ?></span>
             </div>
@@ -1938,6 +2006,16 @@ class Woo_Checkout extends Base {
                             <p class="form-row form-row-last">
                                 <label><?php esc_html_e( 'Email address', 'ultraaddons-elementor-lite' ); ?> <abbr class="required">*</abbr></label>
                                 <input type="email" class="input-text" value="alex.morgan@example.com" readonly />
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="woocommerce-additional-fields" style="margin-top: 24px;">
+                        <h3><?php esc_html_e( 'Additional information', 'ultraaddons-elementor-lite' ); ?></h3>
+                        <div class="woocommerce-additional-fields__field-wrapper">
+                            <p class="form-row notes" id="order_comments_field">
+                                <label for="order_comments"><?php esc_html_e( 'Order notes', 'ultraaddons-elementor-lite' ); ?>&nbsp;<span class="optional">(<?php esc_html_e( 'optional', 'ultraaddons-elementor-lite' ); ?>)</span></label>
+                                <textarea name="order_comments" class="input-text" id="order_comments" placeholder="<?php esc_attr_e( 'Notes about your order, e.g. special notes for delivery.', 'ultraaddons-elementor-lite' ); ?>" rows="3" readonly></textarea>
                             </p>
                         </div>
                     </div>
