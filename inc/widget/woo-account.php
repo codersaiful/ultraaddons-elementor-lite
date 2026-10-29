@@ -225,6 +225,9 @@ class Woo_Account extends Base {
                 ],
                 'selectors' => [
                     '{{WRAPPER}}' => '--ua-account-nav-width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .ua-woo-account' => '--ua-account-nav-width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .ua-account-layout-vertical-left .ua-account-main-grid' => 'grid-template-columns: {{SIZE}}{{UNIT}} 1fr !important;',
+                    '{{WRAPPER}} .ua-account-layout-vertical-right .ua-account-main-grid' => 'grid-template-columns: 1fr {{SIZE}}{{UNIT}} !important;',
                 ],
                 'condition' => [
                     'account_layout' => [ 'vertical-left', 'vertical-right' ],
@@ -247,6 +250,9 @@ class Woo_Account extends Base {
                 ],
                 'selectors' => [
                     '{{WRAPPER}}' => '--ua-account-gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .ua-woo-account' => '--ua-account-gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .ua-account-main-grid' => 'gap: {{SIZE}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .ua-account-profile-banner' => 'margin-bottom: {{SIZE}}{{UNIT}} !important;',
                 ],
             ]
         );
@@ -323,6 +329,9 @@ class Woo_Account extends Base {
                 ],
                 'selectors' => [
                     '{{WRAPPER}}' => '--ua-account-avatar-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .ua-woo-account' => '--ua-account-avatar-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .ua-profile-avatar' => 'width: {{SIZE}}{{UNIT}} !important; height: {{SIZE}}{{UNIT}} !important; min-width: {{SIZE}}{{UNIT}} !important; min-height: {{SIZE}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .ua-profile-avatar .ua-default-avatar' => 'font-size: calc({{SIZE}}{{UNIT}} * 0.45) !important;',
                 ],
                 'condition' => [
                     'show_profile_header' => 'yes',

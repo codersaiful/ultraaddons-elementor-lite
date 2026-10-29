@@ -20,9 +20,6 @@
     --ua-account-border: #e2e8f0;
     --ua-account-card-bg: #ffffff;
     --ua-account-radius: 12px;
-    --ua-account-nav-width: 28%;
-    --ua-account-gap: 30px;
-    --ua-account-avatar-size: 74px;
     
     font-family: inherit;
     color: var(--ua-account-text);
@@ -56,7 +53,7 @@
     background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
     padding: 28px 32px;
     border-radius: var(--ua-account-radius);
-    margin-bottom: var(--ua-account-gap);
+    margin-bottom: var(--ua-account-gap, 30px);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -72,8 +69,10 @@
 }
 
 .ua-profile-avatar {
-    width: var(--ua-account-avatar-size);
-    height: var(--ua-account-avatar-size);
+    width: var(--ua-account-avatar-size, 74px);
+    height: var(--ua-account-avatar-size, 74px);
+    min-width: var(--ua-account-avatar-size, 74px);
+    min-height: var(--ua-account-avatar-size, 74px);
     flex-shrink: 0;
     overflow: hidden;
     background: #e2e8f0;
@@ -93,15 +92,25 @@
     border-radius: 0;
 }
 
-.ua-profile-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+.ua-profile-avatar img,
+.ua-profile-avatar .avatar {
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 100% !important;
+    min-height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
 }
 
 .ua-profile-avatar .ua-default-avatar {
-    font-size: 32px;
+    font-size: calc(var(--ua-account-avatar-size, 74px) * 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
     color: #94a3b8;
 }
 
@@ -193,19 +202,19 @@
 /* Main Grid */
 .ua-account-main-grid {
     display: grid;
-    gap: var(--ua-account-gap);
+    gap: var(--ua-account-gap, 30px);
     align-items: start;
     width: 100%;
 }
 
 /* Layout: Vertical Left */
 .ua-woo-account.ua-account-layout-vertical-left .ua-account-main-grid {
-    grid-template-columns: var(--ua-account-nav-width) 1fr;
+    grid-template-columns: var(--ua-account-nav-width, 28%) 1fr;
 }
 
 /* Layout: Vertical Right */
 .ua-woo-account.ua-account-layout-vertical-right .ua-account-main-grid {
-    grid-template-columns: 1fr var(--ua-account-nav-width);
+    grid-template-columns: 1fr var(--ua-account-nav-width, 28%);
 }
 .ua-woo-account.ua-account-layout-vertical-right .ua-account-nav-wrap {
     order: 2;
