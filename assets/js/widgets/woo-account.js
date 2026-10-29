@@ -27,6 +27,26 @@
             UltraAddonsWooAccount.initPasswordToggle($wrapper);
             UltraAddonsWooAccount.initAuthTabs($wrapper);
             UltraAddonsWooAccount.initMobileNav($wrapper);
+            UltraAddonsWooAccount.initOrderBadges($wrapper);
+        },
+
+        /**
+         * Real WooCommerce Orders Status Badges
+         */
+        initOrderBadges: function ($wrapper) {
+            $wrapper.find('.woocommerce-orders-table__row').each(function () {
+                var $row = $(this);
+                var rowClass = this.className || '';
+                var match = rowClass.match(/woocommerce-orders-table__row--status-([a-z0-9-]+)/);
+                if (match && match[1]) {
+                    var status = match[1];
+                    var $cell = $row.find('.woocommerce-orders-table__cell-order-status');
+                    if ($cell.length && !$cell.find('.ua-status-badge').length) {
+                        var text = $cell.text().trim();
+                        $cell.html('<span class="ua-status-badge ua-status-' + status + '">' + text + '</span>');
+                    }
+                }
+            });
         },
 
         /**

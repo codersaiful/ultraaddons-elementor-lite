@@ -731,10 +731,20 @@ class Woo_Account extends Base {
         $this->add_group_control(
             Group_Control_Background::get_type(),
             [
-                'name'     => 'profile_bg',
-                'label'    => esc_html__( 'Banner Background', 'ultraaddons-elementor-lite' ),
-                'types'    => [ 'classic', 'gradient' ],
-                'selector' => '{{WRAPPER}} .ua-account-profile-banner',
+                'name'           => 'profile_bg',
+                'label'          => esc_html__( 'Banner Background', 'ultraaddons-elementor-lite' ),
+                'types'          => [ 'classic', 'gradient' ],
+                'selector'       => '{{WRAPPER}} .ua-woo-account .ua-account-profile-banner, {{WRAPPER}} .ua-account-profile-banner',
+                'fields_options' => [
+                    'background' => [
+                        'label' => esc_html__( 'Banner Background Type', 'ultraaddons-elementor-lite' ),
+                    ],
+                    'color'      => [
+                        'selectors' => [
+                            '{{SELECTOR}}' => 'background-color: {{VALUE}} !important; background-image: none !important;',
+                        ],
+                    ],
+                ],
             ]
         );
 
@@ -745,8 +755,16 @@ class Woo_Account extends Base {
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em', '%' ],
                 'selectors'  => [
-                    '{{WRAPPER}} .ua-account-profile-banner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .ua-account-profile-banner, {{WRAPPER}} .ua-woo-account .ua-account-profile-banner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'     => 'profile_border',
+                'selector' => '{{WRAPPER}} .ua-account-profile-banner, {{WRAPPER}} .ua-woo-account .ua-account-profile-banner',
             ]
         );
 
@@ -757,7 +775,7 @@ class Woo_Account extends Base {
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors'  => [
-                    '{{WRAPPER}} .ua-account-profile-banner' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .ua-account-profile-banner, {{WRAPPER}} .ua-woo-account .ua-account-profile-banner' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -766,7 +784,7 @@ class Woo_Account extends Base {
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'profile_shadow',
-                'selector' => '{{WRAPPER}} .ua-account-profile-banner',
+                'selector' => '{{WRAPPER}} .ua-account-profile-banner, {{WRAPPER}} .ua-woo-account .ua-account-profile-banner',
             ]
         );
 
@@ -785,7 +803,7 @@ class Woo_Account extends Base {
                 'label'     => esc_html__( 'Greeting Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ua-profile-greeting' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .ua-profile-greeting, {{WRAPPER}} .ua-woo-account .ua-profile-greeting' => 'color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -794,7 +812,7 @@ class Woo_Account extends Base {
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'profile_greeting_typo',
-                'selector' => '{{WRAPPER}} .ua-profile-greeting',
+                'selector' => '{{WRAPPER}} .ua-profile-greeting, {{WRAPPER}} .ua-woo-account .ua-profile-greeting',
             ]
         );
 
@@ -804,7 +822,7 @@ class Woo_Account extends Base {
                 'label'     => esc_html__( 'Meta / Subtitle Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ua-profile-meta' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .ua-profile-meta, {{WRAPPER}} .ua-woo-account .ua-profile-meta' => 'color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -827,7 +845,7 @@ class Woo_Account extends Base {
                 'label'     => esc_html__( 'Badge Background', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ua-profile-badge' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .ua-profile-badge, {{WRAPPER}} .ua-woo-account .ua-profile-badge' => 'background-color: {{VALUE}} !important;',
                 ],
                 'condition' => [
                     'show_user_badge' => 'yes',
@@ -841,7 +859,7 @@ class Woo_Account extends Base {
                 'label'     => esc_html__( 'Badge Text Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ua-profile-badge' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .ua-profile-badge, {{WRAPPER}} .ua-woo-account .ua-profile-badge' => 'color: {{VALUE}} !important;',
                 ],
                 'condition' => [
                     'show_user_badge' => 'yes',
@@ -867,7 +885,7 @@ class Woo_Account extends Base {
                 'label'     => esc_html__( 'Stats Card Background', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ua-stat-card' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .ua-stat-card, {{WRAPPER}} .ua-woo-account .ua-stat-card' => 'background-color: {{VALUE}} !important; background-image: none !important;',
                 ],
                 'condition' => [
                     'show_quick_stats' => 'yes',
@@ -881,7 +899,7 @@ class Woo_Account extends Base {
                 'label'     => esc_html__( 'Number Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ua-stat-number' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .ua-stat-number, {{WRAPPER}} .ua-woo-account .ua-stat-number' => 'color: {{VALUE}} !important;',
                 ],
                 'condition' => [
                     'show_quick_stats' => 'yes',
@@ -895,7 +913,7 @@ class Woo_Account extends Base {
                 'label'     => esc_html__( 'Label Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ua-stat-label' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .ua-stat-label, {{WRAPPER}} .ua-woo-account .ua-stat-label' => 'color: {{VALUE}} !important;',
                 ],
                 'condition' => [
                     'show_quick_stats' => 'yes',
@@ -922,7 +940,7 @@ class Woo_Account extends Base {
                 'label'     => esc_html__( 'Nav Box Background', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ua-account-nav-wrap' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .ua-account-nav-wrap, {{WRAPPER}} .ua-woo-account .ua-account-nav-wrap' => 'background-color: {{VALUE}} !important; background-image: none !important;',
                 ],
             ]
         );
@@ -1150,7 +1168,7 @@ class Woo_Account extends Base {
                 'label'     => esc_html__( 'Background Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ua-account-content-card' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .ua-account-content-card, {{WRAPPER}} .ua-woo-account .ua-account-content-card' => 'background-color: {{VALUE}} !important; background-image: none !important;',
                 ],
             ]
         );
@@ -1261,10 +1279,21 @@ class Woo_Account extends Base {
         $this->add_control(
             'badge_completed_color',
             [
-                'label'     => esc_html__( 'Completed / Success Badge', 'ultraaddons-elementor-lite' ),
+                'label'     => esc_html__( 'Completed / Success Badge Background', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ua-status-completed, {{WRAPPER}} .order-status.status-completed' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .ua-status-completed, {{WRAPPER}} .ua-woo-account .ua-status-completed, {{WRAPPER}} .ua-woo-account .status-completed, {{WRAPPER}} .order-status.status-completed, {{WRAPPER}} .woocommerce-orders-table__row--status-completed .woocommerce-orders-table__cell-order-status' => 'background-color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'badge_completed_text_color',
+            [
+                'label'     => esc_html__( 'Completed Badge Text Color', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .ua-status-completed, {{WRAPPER}} .ua-woo-account .ua-status-completed, {{WRAPPER}} .ua-woo-account .status-completed, {{WRAPPER}} .order-status.status-completed, {{WRAPPER}} .woocommerce-orders-table__row--status-completed .woocommerce-orders-table__cell-order-status' => 'color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -1272,10 +1301,21 @@ class Woo_Account extends Base {
         $this->add_control(
             'badge_processing_color',
             [
-                'label'     => esc_html__( 'Processing Badge', 'ultraaddons-elementor-lite' ),
+                'label'     => esc_html__( 'Processing Badge Background', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ua-status-processing, {{WRAPPER}} .order-status.status-processing' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .ua-status-processing, {{WRAPPER}} .ua-woo-account .ua-status-processing, {{WRAPPER}} .ua-woo-account .status-processing, {{WRAPPER}} .order-status.status-processing, {{WRAPPER}} .woocommerce-orders-table__row--status-processing .woocommerce-orders-table__cell-order-status' => 'background-color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'badge_processing_text_color',
+            [
+                'label'     => esc_html__( 'Processing Badge Text Color', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .ua-status-processing, {{WRAPPER}} .ua-woo-account .ua-status-processing, {{WRAPPER}} .ua-woo-account .status-processing, {{WRAPPER}} .order-status.status-processing, {{WRAPPER}} .woocommerce-orders-table__row--status-processing .woocommerce-orders-table__cell-order-status' => 'color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -1283,10 +1323,43 @@ class Woo_Account extends Base {
         $this->add_control(
             'badge_on_hold_color',
             [
-                'label'     => esc_html__( 'On-Hold Badge', 'ultraaddons-elementor-lite' ),
+                'label'     => esc_html__( 'On-Hold Badge Background', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ua-status-on-hold, {{WRAPPER}} .order-status.status-on-hold' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .ua-status-on-hold, {{WRAPPER}} .ua-woo-account .ua-status-on-hold, {{WRAPPER}} .ua-woo-account .status-on-hold, {{WRAPPER}} .order-status.status-on-hold, {{WRAPPER}} .woocommerce-orders-table__row--status-on-hold .woocommerce-orders-table__cell-order-status' => 'background-color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'badge_on_hold_text_color',
+            [
+                'label'     => esc_html__( 'On-Hold Badge Text Color', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .ua-status-on-hold, {{WRAPPER}} .ua-woo-account .ua-status-on-hold, {{WRAPPER}} .ua-woo-account .status-on-hold, {{WRAPPER}} .order-status.status-on-hold, {{WRAPPER}} .woocommerce-orders-table__row--status-on-hold .woocommerce-orders-table__cell-order-status' => 'color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'badge_cancelled_color',
+            [
+                'label'     => esc_html__( 'Cancelled / Failed Badge Background', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .ua-status-cancelled, {{WRAPPER}} .ua-status-failed, {{WRAPPER}} .ua-woo-account .status-cancelled, {{WRAPPER}} .ua-woo-account .status-failed, {{WRAPPER}} .woocommerce-orders-table__row--status-cancelled .woocommerce-orders-table__cell-order-status, {{WRAPPER}} .woocommerce-orders-table__row--status-failed .woocommerce-orders-table__cell-order-status' => 'background-color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'badge_cancelled_text_color',
+            [
+                'label'     => esc_html__( 'Cancelled / Failed Badge Text Color', 'ultraaddons-elementor-lite' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .ua-status-cancelled, {{WRAPPER}} .ua-status-failed, {{WRAPPER}} .ua-woo-account .status-cancelled, {{WRAPPER}} .ua-woo-account .status-failed, {{WRAPPER}} .woocommerce-orders-table__row--status-cancelled .woocommerce-orders-table__cell-order-status, {{WRAPPER}} .woocommerce-orders-table__row--status-failed .woocommerce-orders-table__cell-order-status' => 'color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -1306,7 +1379,7 @@ class Woo_Account extends Base {
                 'label'     => esc_html__( 'Button Background', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .woocommerce-orders-table .woocommerce-button, {{WRAPPER}} .ua-mock-btn' => 'background-color: {{VALUE}}; border-color: {{VALUE}};',
+                    '{{WRAPPER}} .woocommerce-orders-table .woocommerce-button, {{WRAPPER}} .ua-mock-btn' => 'background-color: {{VALUE}} !important; border-color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -1317,7 +1390,7 @@ class Woo_Account extends Base {
                 'label'     => esc_html__( 'Button Text Color', 'ultraaddons-elementor-lite' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .woocommerce-orders-table .woocommerce-button, {{WRAPPER}} .ua-mock-btn' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .woocommerce-orders-table .woocommerce-button, {{WRAPPER}} .ua-mock-btn' => 'color: {{VALUE}} !important;',
                 ],
             ]
         );

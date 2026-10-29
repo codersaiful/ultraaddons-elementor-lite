@@ -50,7 +50,7 @@
    2. Profile Identity Banner
    ========================================================================== */
 .ua-account-profile-banner {
-    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    background-color: #f8fafc;
     padding: 28px 32px;
     border-radius: var(--ua-account-radius);
     margin-bottom: var(--ua-account-gap, 30px);
@@ -476,29 +476,34 @@
 }
 
 .ua-status-completed,
-.ua-woo-account .status-completed {
-    background-color: #dcfce7 !important;
-    color: #15803d !important;
+.ua-woo-account .status-completed,
+.ua-woo-account .woocommerce-orders-table__row--status-completed .woocommerce-orders-table__cell-order-status {
+    background-color: #dcfce7;
+    color: #15803d;
 }
 
 .ua-status-processing,
-.ua-woo-account .status-processing {
-    background-color: #dbeafe !important;
-    color: #1d4ed8 !important;
+.ua-woo-account .status-processing,
+.ua-woo-account .woocommerce-orders-table__row--status-processing .woocommerce-orders-table__cell-order-status {
+    background-color: #dbeafe;
+    color: #1d4ed8;
 }
 
 .ua-status-on-hold,
-.ua-woo-account .status-on-hold {
-    background-color: #fef3c7 !important;
-    color: #b45309 !important;
+.ua-woo-account .status-on-hold,
+.ua-woo-account .woocommerce-orders-table__row--status-on-hold .woocommerce-orders-table__cell-order-status {
+    background-color: #fef3c7;
+    color: #b45309;
 }
 
 .ua-status-cancelled,
 .ua-status-failed,
 .ua-woo-account .status-cancelled,
-.ua-woo-account .status-failed {
-    background-color: #fee2e2 !important;
-    color: #b91c1c !important;
+.ua-woo-account .status-failed,
+.ua-woo-account .woocommerce-orders-table__row--status-cancelled .woocommerce-orders-table__cell-order-status,
+.ua-woo-account .woocommerce-orders-table__row--status-failed .woocommerce-orders-table__cell-order-status {
+    background-color: #fee2e2;
+    color: #b91c1c;
 }
 
 /* Action Buttons */
@@ -507,7 +512,7 @@
     display: inline-block;
     padding: 8px 16px;
     background-color: var(--ua-account-primary);
-    color: #ffffff !important;
+    color: #ffffff;
     font-size: 13px;
     font-weight: 600;
     border-radius: 8px;
@@ -834,60 +839,60 @@
 }
 
 :is(.ua-account-preset-modern, .ua-account-preset-modern .ua-woo-account, .ua-woo-account.ua-account-preset-modern) .ua-account-profile-banner {
-    background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 50%, #ede9fe 100%) !important;
-    border: 1px solid #c7d2fe !important;
-    border-radius: 22px !important;
-    box-shadow: 0 12px 32px -4px rgba(99, 102, 241, 0.12) !important;
+    background-color: #eef2ff;
+    border: 1px solid #c7d2fe;
+    border-radius: 22px;
+    box-shadow: 0 12px 32px -4px rgba(99, 102, 241, 0.12);
 }
 
 :is(.ua-account-preset-modern, .ua-account-preset-modern .ua-woo-account, .ua-woo-account.ua-account-preset-modern) .ua-account-nav-wrap,
 :is(.ua-account-preset-modern, .ua-account-preset-modern .ua-woo-account, .ua-woo-account.ua-account-preset-modern) .ua-account-content-card,
 :is(.ua-account-preset-modern, .ua-account-preset-modern .ua-woo-account, .ua-woo-account.ua-account-preset-modern) .ua-account-logged-out-box {
-    border-radius: 20px !important;
-    box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.06), 0 4px 12px -2px rgba(0, 0, 0, 0.02) !important;
-    border: 1px solid #eef2f6 !important;
-    background: #ffffff !important;
+    border-radius: 20px;
+    box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.06), 0 4px 12px -2px rgba(0, 0, 0, 0.02);
+    border: 1px solid #eef2f6;
+    background: #ffffff;
 }
 
 :is(.ua-account-preset-modern, .ua-account-preset-modern .ua-woo-account, .ua-woo-account.ua-account-preset-modern) .ua-profile-avatar {
-    border-radius: 50% !important;
-    border: 4px solid #ffffff !important;
-    box-shadow: 0 6px 18px rgba(79, 70, 229, 0.15) !important;
+    border-radius: 50%;
+    border: 4px solid #ffffff;
+    box-shadow: 0 6px 18px rgba(79, 70, 229, 0.15);
 }
 
 :is(.ua-account-preset-modern, .ua-account-preset-modern .ua-woo-account, .ua-woo-account.ua-account-preset-modern) .ua-stat-card {
-    background: #ffffff !important;
-    border: 1px solid #e0e7ff !important;
-    border-radius: 16px !important;
-    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.08) !important;
+    background: #ffffff;
+    border: 1px solid #e0e7ff;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.08);
 }
 
 :is(.ua-account-preset-modern, .ua-account-preset-modern .ua-woo-account, .ua-woo-account.ua-account-preset-modern) .ua-stat-number {
-    color: #4f46e5 !important;
+    color: #4f46e5;
 }
 
 :is(.ua-account-preset-modern, .ua-account-preset-modern .ua-woo-account, .ua-woo-account.ua-account-preset-modern) .ua-account-nav-item a {
-    border-radius: 14px !important;
+    border-radius: 14px;
 }
 
 :is(.ua-account-preset-modern, .ua-account-preset-modern .ua-woo-account, .ua-woo-account.ua-account-preset-modern) .ua-account-nav-item.is-active a {
-    background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%) !important;
-    color: #4338ca !important;
-    box-shadow: 0 2px 10px rgba(79, 70, 229, 0.12) !important;
+    background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+    color: #4338ca;
+    box-shadow: 0 2px 10px rgba(79, 70, 229, 0.12);
 }
 
 :is(.ua-account-preset-modern, .ua-account-preset-modern .ua-woo-account, .ua-woo-account.ua-account-preset-modern) .ua-account-nav-item.is-active a::before {
-    background: #4f46e5 !important;
-    width: 5px !important;
-    border-radius: 4px !important;
+    background: #4f46e5;
+    width: 5px;
+    border-radius: 4px;
 }
 
 :is(.ua-account-preset-modern, .ua-account-preset-modern .ua-woo-account, .ua-woo-account.ua-account-preset-modern) .button,
 :is(.ua-account-preset-modern, .ua-account-preset-modern .ua-woo-account, .ua-woo-account.ua-account-preset-modern) .ua-account-submit-btn,
 :is(.ua-account-preset-modern, .ua-account-preset-modern .ua-woo-account, .ua-woo-account.ua-account-preset-modern) .ua-mock-btn {
-    background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%) !important;
-    border-radius: 12px !important;
-    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.25) !important;
+    background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.25);
 }
 
 /* --------------------------------------------------------------------------
@@ -904,87 +909,87 @@
 }
 
 :is(.ua-account-preset-clean, .ua-account-preset-clean .ua-woo-account, .ua-woo-account.ua-account-preset-clean) .ua-account-profile-banner {
-    background: #f8fafc !important;
-    border: 1px solid #e2e8f0 !important;
-    border-radius: 4px !important;
-    box-shadow: none !important;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    box-shadow: none;
 }
 
 :is(.ua-account-preset-clean, .ua-account-preset-clean .ua-woo-account, .ua-woo-account.ua-account-preset-clean) .ua-account-profile-banner .ua-profile-greeting {
-    color: #0f172a !important;
+    color: #0f172a;
     letter-spacing: -0.02em;
 }
 
 :is(.ua-account-preset-clean, .ua-account-preset-clean .ua-woo-account, .ua-woo-account.ua-account-preset-clean) .ua-account-nav-wrap,
 :is(.ua-account-preset-clean, .ua-account-preset-clean .ua-woo-account, .ua-woo-account.ua-account-preset-clean) .ua-account-content-card,
 :is(.ua-account-preset-clean, .ua-account-preset-clean .ua-woo-account, .ua-woo-account.ua-account-preset-clean) .ua-account-logged-out-box {
-    border-radius: 4px !important;
-    box-shadow: none !important;
-    border: 1px solid #e2e8f0 !important;
-    background: #ffffff !important;
+    border-radius: 4px;
+    box-shadow: none;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
 }
 
 :is(.ua-account-preset-clean, .ua-account-preset-clean .ua-woo-account, .ua-woo-account.ua-account-preset-clean) .ua-profile-avatar {
-    border-radius: 4px !important;
-    box-shadow: none !important;
-    border: 1px solid #e2e8f0 !important;
+    border-radius: 4px;
+    box-shadow: none;
+    border: 1px solid #e2e8f0;
 }
 
 :is(.ua-account-preset-clean, .ua-account-preset-clean .ua-woo-account, .ua-woo-account.ua-account-preset-clean) .ua-stat-card {
-    background: #ffffff !important;
-    border: 1px solid #e2e8f0 !important;
-    border-radius: 4px !important;
-    box-shadow: none !important;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    box-shadow: none;
 }
 
 :is(.ua-account-preset-clean, .ua-account-preset-clean .ua-woo-account, .ua-woo-account.ua-account-preset-clean) .ua-stat-number {
-    color: #0f172a !important;
-    font-weight: 700 !important;
+    color: #0f172a;
+    font-weight: 700;
 }
 
 :is(.ua-account-preset-clean, .ua-account-preset-clean .ua-woo-account, .ua-woo-account.ua-account-preset-clean) .ua-account-nav-item a {
-    border-radius: 0 !important;
-    border-bottom: 1px solid #f1f5f9 !important;
-    padding: 13px 14px !important;
+    border-radius: 0;
+    border-bottom: 1px solid #f1f5f9;
+    padding: 13px 14px;
 }
 
 :is(.ua-account-preset-clean, .ua-account-preset-clean .ua-woo-account, .ua-woo-account.ua-account-preset-clean) .ua-account-nav-item a:hover {
-    background: #f8fafc !important;
-    color: #0f172a !important;
+    background: #f8fafc;
+    color: #0f172a;
 }
 
 :is(.ua-account-preset-clean, .ua-account-preset-clean .ua-woo-account, .ua-woo-account.ua-account-preset-clean) .ua-account-nav-item.is-active a {
-    background: #f8fafc !important;
-    color: #0f172a !important;
-    font-weight: 700 !important;
+    background: #f8fafc;
+    color: #0f172a;
+    font-weight: 700;
 }
 
 :is(.ua-account-preset-clean, .ua-account-preset-clean .ua-woo-account, .ua-woo-account.ua-account-preset-clean) .ua-account-nav-item.is-active a::before {
-    background: #0f172a !important;
-    width: 3px !important;
-    top: 0 !important;
-    bottom: 0 !important;
-    border-radius: 0 !important;
+    background: #0f172a;
+    width: 3px;
+    top: 0;
+    bottom: 0;
+    border-radius: 0;
 }
 
 :is(.ua-account-preset-clean, .ua-account-preset-clean .ua-woo-account, .ua-woo-account.ua-account-preset-clean) table.woocommerce-orders-table,
 :is(.ua-account-preset-clean, .ua-account-preset-clean .ua-woo-account, .ua-woo-account.ua-account-preset-clean) table.ua-mock-table {
-    border-radius: 0 !important;
+    border-radius: 0;
 }
 
 :is(.ua-account-preset-clean, .ua-account-preset-clean .ua-woo-account, .ua-woo-account.ua-account-preset-clean) table.woocommerce-orders-table th,
 :is(.ua-account-preset-clean, .ua-account-preset-clean .ua-woo-account, .ua-woo-account.ua-account-preset-clean) table.ua-mock-table th {
-    background: #ffffff !important;
-    border-bottom: 2px solid #0f172a !important;
-    color: #0f172a !important;
+    background: #ffffff;
+    border-bottom: 2px solid #0f172a;
+    color: #0f172a;
 }
 
 :is(.ua-account-preset-clean, .ua-account-preset-clean .ua-woo-account, .ua-woo-account.ua-account-preset-clean) .button,
 :is(.ua-account-preset-clean, .ua-account-preset-clean .ua-woo-account, .ua-woo-account.ua-account-preset-clean) .ua-account-submit-btn,
 :is(.ua-account-preset-clean, .ua-account-preset-clean .ua-woo-account, .ua-woo-account.ua-account-preset-clean) .ua-mock-btn {
-    background: #0f172a !important;
-    border-radius: 4px !important;
-    box-shadow: none !important;
+    background: #0f172a;
+    border-radius: 4px;
+    box-shadow: none;
 }
 
 /* --------------------------------------------------------------------------
@@ -1002,44 +1007,44 @@
 }
 
 :is(.ua-account-preset-classic, .ua-account-preset-classic .ua-woo-account, .ua-woo-account.ua-account-preset-classic) .ua-account-profile-banner {
-    background: #ffffff !important;
-    border: 1px solid #cbd5e1 !important;
-    border-top: 4px solid #1d4ed8 !important;
-    border-radius: 6px !important;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-top: 4px solid #1d4ed8;
+    border-radius: 6px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
 }
 
 :is(.ua-account-preset-classic, .ua-account-preset-classic .ua-woo-account, .ua-woo-account.ua-account-preset-classic) .ua-account-nav-wrap,
 :is(.ua-account-preset-classic, .ua-account-preset-classic .ua-woo-account, .ua-woo-account.ua-account-preset-classic) .ua-account-content-card,
 :is(.ua-account-preset-classic, .ua-account-preset-classic .ua-woo-account, .ua-woo-account.ua-account-preset-classic) .ua-account-logged-out-box {
-    border-radius: 6px !important;
-    border: 1px solid #cbd5e1 !important;
-    border-top: 4px solid #1d4ed8 !important;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
-    background: #ffffff !important;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    border-top: 4px solid #1d4ed8;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    background: #ffffff;
 }
 
 :is(.ua-account-preset-classic, .ua-account-preset-classic .ua-woo-account, .ua-woo-account.ua-account-preset-classic) .ua-profile-avatar {
-    border-radius: 6px !important;
-    border: 2px solid #cbd5e1 !important;
+    border-radius: 6px;
+    border: 2px solid #cbd5e1;
 }
 
 :is(.ua-account-preset-classic, .ua-account-preset-classic .ua-woo-account, .ua-woo-account.ua-account-preset-classic) .ua-stat-card {
-    background: #f8fafc !important;
-    border: 1px solid #cbd5e1 !important;
-    border-top: 3px solid #1d4ed8 !important;
-    border-radius: 6px !important;
-    box-shadow: none !important;
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-top: 3px solid #1d4ed8;
+    border-radius: 6px;
+    box-shadow: none;
 }
 
 :is(.ua-account-preset-classic, .ua-account-preset-classic .ua-woo-account, .ua-woo-account.ua-account-preset-classic) .ua-stat-number {
-    color: #1d4ed8 !important;
+    color: #1d4ed8;
 }
 
 :is(.ua-account-preset-classic, .ua-account-preset-classic .ua-woo-account, .ua-woo-account.ua-account-preset-classic) .ua-account-nav-item a {
-    border-radius: 4px !important;
+    border-radius: 4px;
     border-bottom: 1px solid #f1f5f9;
-    padding: 12px 14px !important;
+    padding: 12px 14px;
 }
 
 /* Classic menu chevron arrow */
@@ -1054,50 +1059,50 @@
 
 /* Solid Blue Active Tab */
 :is(.ua-account-preset-classic, .ua-account-preset-classic .ua-woo-account, .ua-woo-account.ua-account-preset-classic) .ua-account-nav-item.is-active a {
-    background: #1d4ed8 !important;
-    color: #ffffff !important;
-    font-weight: 600 !important;
+    background: #1d4ed8;
+    color: #ffffff;
+    font-weight: 600;
 }
 
 :is(.ua-account-preset-classic, .ua-account-preset-classic .ua-woo-account, .ua-woo-account.ua-account-preset-classic) .ua-account-nav-item.is-active a .ua-tab-icon {
-    color: #ffffff !important;
-    fill: #ffffff !important;
+    color: #ffffff;
+    fill: #ffffff;
 }
 
 :is(.ua-account-preset-classic, .ua-account-preset-classic .ua-woo-account, .ua-woo-account.ua-account-preset-classic) .ua-account-nav-item.is-active a::after {
-    color: #ffffff !important;
+    color: #ffffff;
 }
 
 :is(.ua-account-preset-classic, .ua-account-preset-classic .ua-woo-account, .ua-woo-account.ua-account-preset-classic) .ua-account-nav-item.is-active a::before {
-    display: none !important;
+    display: none;
 }
 
 /* Classic Zebra striped tables */
 :is(.ua-account-preset-classic, .ua-account-preset-classic .ua-woo-account, .ua-woo-account.ua-account-preset-classic) table.woocommerce-orders-table,
 :is(.ua-account-preset-classic, .ua-account-preset-classic .ua-woo-account, .ua-woo-account.ua-account-preset-classic) table.ua-mock-table {
-    border: 1px solid #cbd5e1 !important;
-    border-radius: 4px !important;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
 }
 
 :is(.ua-account-preset-classic, .ua-account-preset-classic .ua-woo-account, .ua-woo-account.ua-account-preset-classic) table.woocommerce-orders-table th,
 :is(.ua-account-preset-classic, .ua-account-preset-classic .ua-woo-account, .ua-woo-account.ua-account-preset-classic) table.ua-mock-table th {
-    background: #f1f5f9 !important;
-    border-bottom: 2px solid #cbd5e1 !important;
-    color: #1e293b !important;
-    font-weight: 700 !important;
+    background: #f1f5f9;
+    border-bottom: 2px solid #cbd5e1;
+    color: #1e293b;
+    font-weight: 700;
 }
 
 :is(.ua-account-preset-classic, .ua-account-preset-classic .ua-woo-account, .ua-woo-account.ua-account-preset-classic) table.woocommerce-orders-table tr:nth-child(even) td,
 :is(.ua-account-preset-classic, .ua-account-preset-classic .ua-woo-account, .ua-woo-account.ua-account-preset-classic) table.ua-mock-table tr:nth-child(even) td {
-    background-color: #f8fafc !important;
+    background-color: #f8fafc;
 }
 
 :is(.ua-account-preset-classic, .ua-account-preset-classic .ua-woo-account, .ua-woo-account.ua-account-preset-classic) .button,
 :is(.ua-account-preset-classic, .ua-account-preset-classic .ua-woo-account, .ua-woo-account.ua-account-preset-classic) .ua-account-submit-btn,
 :is(.ua-account-preset-classic, .ua-account-preset-classic .ua-woo-account, .ua-woo-account.ua-account-preset-classic) .ua-mock-btn {
-    background: #1d4ed8 !important;
-    border-radius: 6px !important;
-    box-shadow: none !important;
+    background: #1d4ed8;
+    border-radius: 6px;
+    box-shadow: none;
 }
 
 /* --------------------------------------------------------------------------
@@ -1113,68 +1118,68 @@
 }
 
 :is(.ua-account-preset-luxury, .ua-account-preset-luxury .ua-woo-account, .ua-woo-account.ua-account-preset-luxury) .ua-account-profile-banner {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
-    color: #f8fafc !important;
-    border: 1px solid #334155 !important;
-    border-radius: 18px !important;
-    box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.25) !important;
+    background-color: #0f172a;
+    color: #f8fafc;
+    border: 1px solid #334155;
+    border-radius: 18px;
+    box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.25);
 }
 
 :is(.ua-account-preset-luxury, .ua-account-preset-luxury .ua-woo-account, .ua-woo-account.ua-account-preset-luxury) .ua-account-profile-banner .ua-profile-greeting {
-    color: #ffffff !important;
+    color: #ffffff;
 }
 
 :is(.ua-account-preset-luxury, .ua-account-preset-luxury .ua-woo-account, .ua-woo-account.ua-account-preset-luxury) .ua-account-profile-banner .ua-profile-meta {
-    color: #94a3b8 !important;
+    color: #94a3b8;
 }
 
 :is(.ua-account-preset-luxury, .ua-account-preset-luxury .ua-woo-account, .ua-woo-account.ua-account-preset-luxury) .ua-account-profile-banner .ua-profile-badge {
-    background: rgba(245, 158, 11, 0.15) !important;
-    color: #fbbf24 !important;
-    border: 1px solid rgba(245, 158, 11, 0.3) !important;
+    background: rgba(245, 158, 11, 0.15);
+    color: #fbbf24;
+    border: 1px solid rgba(245, 158, 11, 0.3);
 }
 
 :is(.ua-account-preset-luxury, .ua-account-preset-luxury .ua-woo-account, .ua-woo-account.ua-account-preset-luxury) .ua-account-profile-banner .ua-stat-card {
-    background: rgba(255, 255, 255, 0.05) !important;
-    border: 1px solid rgba(255, 255, 255, 0.12) !important;
-    border-radius: 14px !important;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
     backdrop-filter: blur(8px);
 }
 
 :is(.ua-account-preset-luxury, .ua-account-preset-luxury .ua-woo-account, .ua-woo-account.ua-account-preset-luxury) .ua-account-profile-banner .ua-stat-number {
-    color: #fbbf24 !important;
+    color: #fbbf24;
 }
 
 :is(.ua-account-preset-luxury, .ua-account-preset-luxury .ua-woo-account, .ua-woo-account.ua-account-preset-luxury) .ua-account-profile-banner .ua-stat-label {
-    color: #cbd5e1 !important;
+    color: #cbd5e1;
 }
 
 :is(.ua-account-preset-luxury, .ua-account-preset-luxury .ua-woo-account, .ua-woo-account.ua-account-preset-luxury) .ua-account-nav-wrap,
 :is(.ua-account-preset-luxury, .ua-account-preset-luxury .ua-woo-account, .ua-woo-account.ua-account-preset-luxury) .ua-account-content-card,
 :is(.ua-account-preset-luxury, .ua-account-preset-luxury .ua-woo-account, .ua-woo-account.ua-account-preset-luxury) .ua-account-logged-out-box {
-    border-radius: 18px !important;
-    border: 1px solid #e2e8f0 !important;
-    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.06) !important;
-    background: #ffffff !important;
+    border-radius: 18px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.06);
+    background: #ffffff;
 }
 
 :is(.ua-account-preset-luxury, .ua-account-preset-luxury .ua-woo-account, .ua-woo-account.ua-account-preset-luxury) .ua-account-nav-item.is-active a {
-    background: rgba(217, 119, 6, 0.1) !important;
-    color: #b45309 !important;
-    font-weight: 700 !important;
+    background: rgba(217, 119, 6, 0.1);
+    color: #b45309;
+    font-weight: 700;
 }
 
 :is(.ua-account-preset-luxury, .ua-account-preset-luxury .ua-woo-account, .ua-woo-account.ua-account-preset-luxury) .ua-account-nav-item.is-active a::before {
-    background: #d97706 !important;
+    background: #d97706;
 }
 
 :is(.ua-account-preset-luxury, .ua-account-preset-luxury .ua-woo-account, .ua-woo-account.ua-account-preset-luxury) .button,
 :is(.ua-account-preset-luxury, .ua-account-preset-luxury .ua-woo-account, .ua-woo-account.ua-account-preset-luxury) .ua-account-submit-btn,
 :is(.ua-account-preset-luxury, .ua-account-preset-luxury .ua-woo-account, .ua-woo-account.ua-account-preset-luxury) .ua-mock-btn {
-    background: linear-gradient(135deg, #d97706 0%, #b45309 100%) !important;
-    color: #ffffff !important;
-    border-radius: 10px !important;
-    box-shadow: 0 4px 14px rgba(217, 119, 6, 0.3) !important;
+    background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+    color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(217, 119, 6, 0.3);
 }
 
 /* ==========================================================================
