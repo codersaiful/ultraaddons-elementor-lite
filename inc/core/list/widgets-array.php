@@ -543,6 +543,15 @@ $ultraaddons_widgetsArray = [
                 __( 'General', 'ultraaddons-elementor-lite' ),
             ],
     ],
+	'Stacked_Cards' => [
+            'name'  => __( 'Stacked Cards', 'ultraaddons-elementor-lite' ),
+            'is_pro'   => false,
+            'icon'      => 'eicon-posts-carousel',
+            'badge'     => 'new',
+            'cat'       => [
+                __( 'General', 'ultraaddons-elementor-lite' ),
+            ],
+    ],
 	'Skill_Chart' => [
             'name'  => __( 'Skill Chart', 'ultraaddons-elementor-lite' ),
             'is_pro'   => false,
